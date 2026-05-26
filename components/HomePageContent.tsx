@@ -21,7 +21,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
     thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
     thumbnailUrl: quiz.homepage.thumbnailUrl,
     category: quiz.eyebrow,
-    difficulty: quiz.difficulty,
+    difficulty: translations.home.difficulty[quiz.difficulty],
     title: quiz.homepage.title ?? quiz.title,
     summary: quiz.homepage.summary ?? quiz.summary,
     stats: quiz.duration,

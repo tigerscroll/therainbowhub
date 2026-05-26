@@ -16,11 +16,6 @@ type LanguageSwitcherProps = {
 const languageNames: Record<SupportedLocale, string> = {
   en: "English",
   es: "Español",
-  fr: "Français",
-  de: "Deutsch",
-  pt: "Português",
-  ar: "العربية",
-  ja: "日本語",
 };
 
 export function LanguageSwitcher({ locale, path, translations }: LanguageSwitcherProps) {

@@ -4,11 +4,11 @@ import path from "node:path";
 import en from "@/data/i18n/en.json";
 
 export type Translations = typeof en;
-export type SupportedLocale = "en" | "es" | "fr" | "de" | "pt" | "ar" | "ja";
+export type SupportedLocale = "en" | "es";
 
 const defaultLocale: SupportedLocale = "en";
-const supportedLocales: SupportedLocale[] = ["en", "es", "fr", "de", "pt", "ar", "ja"];
-const rtlLocales = new Set<SupportedLocale>(["ar"]);
+const supportedLocales: SupportedLocale[] = ["en", "es"];
+const rtlLocales = new Set<SupportedLocale>([]);
 const i18nDirectory = path.join(process.cwd(), "data", "i18n");
 
 export function getDefaultLocale() {

@@ -28,17 +28,6 @@ type QuizScreen = "start" | "question" | "stage-gate" | "result-gate" | "results
 const correctAnswerDelayMs = 950;
 const wrongAnswerDelayMs = 1150;
 const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
-const stageEncouragement = [
-  "You cleared the warm-up. Next comes pattern speed.",
-  "Good pattern work. Next comes visual reasoning.",
-  "Nice focus. The next round checks close attention.",
-  "Your score is building. Next comes number logic.",
-  "Strong pace. The next round moves into word codes.",
-  "You’re deep into the test now. Next comes deduction.",
-  "Only focused players reach this point. Next comes lateral thinking.",
-  "Final stretch. The last round is the scholar challenge.",
-];
-
 function renderTitleWithAccentPercent(title: string) {
   const parts = title.split(/(\d+(?:\.\d+)?%)/g);
 
@@ -85,9 +74,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
   const currentStagePosition = currentStageQuestions.findIndex(({ index }) => index === currentQuestion) + 1;
   const currentStageTotal = currentStageQuestions.length || 1;
   const currentStageProgress = Math.max(0, Math.round(((currentStagePosition - 1) / currentStageTotal) * 100));
-  const firstStageQuestionCount = quiz.questions.filter(
-    (quizQuestion) => (quizQuestion.stage ?? 0) === (quiz.questions[0]?.stage ?? 0),
-  ).length;
   const completedStage = Math.max(0, quiz.questions[Math.max(0, currentQuestion - 1)]?.stage ?? 0);
   const completedStageQuestions = quiz.questions
     .map((quizQuestion, index) => ({ quizQuestion, index }))
@@ -98,6 +84,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
   );
   const nextStage = stageIndexes.find((stage) => stage > completedStage);
   const nextStageName = nextStage !== undefined ? quiz.stages[nextStage] ?? `${translations.quiz.round} ${nextStage + 1}` : null;
+  const profileName = quiz.result.profileName;
   const stageBadge =
     completedStageScore >= Math.ceil(completedStageQuestions.length * 0.75)
       ? translations.results.excellent
@@ -331,9 +318,9 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             </div>
             <h1>{renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
             <p className="legacy-sub">
-              {translations.quiz.quickQuestionsPrefix} {firstStageQuestionCount} {translations.quiz.quickQuestionsSuffix}
+              {quiz.landing.quickStartText}
               <br />
-              {translations.quiz.neverReachFinal}
+              {quiz.landing.challengeText}
             </p>
             <div className="legacy-social">
               <div className="legacy-avatars" aria-hidden="true">
@@ -343,7 +330,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
                 <span className="legacy-avatar legacy-avatar--four" />
               </div>
               <div>
-                <strong>{translations.quiz.peopleTried}</strong>
+                <strong>{quiz.landing.socialProof}</strong>
               </div>
             </div>
             <button className="legacy-primary" type="button" disabled={isStarting} onClick={startQuiz}>
@@ -419,7 +406,9 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
                 ? `${translations.results.startStage} ${nextStageName} →`
                 : `${translations.results.viewResults} →`
             }
-            copy={stageEncouragement[Math.min(completedStage, stageEncouragement.length - 1)]}
+            copy={
+              quiz.stageEncouragement[Math.min(completedStage, quiz.stageEncouragement.length - 1)]
+            }
             helperText={translations.rewardedAd.helper}
             isLoading={isStageLoading}
             nextStageName={nextStageName}
@@ -434,7 +423,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
           <section className="legacy-card legacy-result">
             <span className="legacy-profile-badge">{translations.quiz.profileReady}</span>
             <h2>
-              {translations.quiz.your} {quiz.title.replace(" Test", "").replace(" Check", "")} {translations.quiz.profile}
+              {translations.quiz.your} {profileName} {translations.quiz.profile}
             </h2>
             <button
               type="button"
@@ -444,7 +433,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             >
               {isRevealingResults
                 ? translations.quiz.preparingResults
-                : `${translations.quiz.revealPrefix} ${quiz.title.replace(" Test", "").replace(" Check", "")} ${translations.quiz.profile} →`}
+                : `${translations.quiz.revealPrefix} ${profileName} ${translations.quiz.profile} →`}
             </button>
             <div className="legacy-ad-note">
               <span className="legacy-shield" aria-hidden="true">i</span>

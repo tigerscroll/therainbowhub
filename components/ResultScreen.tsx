@@ -18,10 +18,6 @@ type StageScore = {
   ratio: number;
 };
 
-function getProfileName(quiz: Quiz) {
-  return quiz.title.replace(" Test", "").replace(" Check", "");
-}
-
 function getStageScores(quiz: Quiz, answers: Record<number, number>) {
   return quiz.stages.map((name, stage) => {
     const questions = quiz.questions
@@ -45,59 +41,22 @@ function getStrongestStage(stageScores: StageScore[]) {
   return [...stageScores].sort((a, b) => b.ratio - a.ratio || b.correct - a.correct)[0];
 }
 
-function getResultProfile(score: number, total: number, strongestStage: StageScore, profileName: string) {
+function formatTemplate(template: string, values: Record<string, string>) {
+  return Object.entries(values).reduce((text, [key, value]) => text.replaceAll(`{${key}}`, value), template);
+}
+
+function getResultProfile(quiz: Quiz, score: number, total: number, strongestStage: StageScore) {
   const ratio = total ? score / total : 0;
-
-  if (ratio >= 0.8) {
-    return {
-      tier: `Final 4% ${profileName}`,
-      title: "You beat the test.",
-      copy: `Exceptional reasoning across the full challenge. Your strongest area was ${strongestStage.name}.`,
-      percentile: "Top 4%",
-    };
-  }
-
-  if (ratio >= 0.725) {
-    return {
-      tier: `${profileName} Candidate`,
-      title: "Elite reasoning.",
-      copy: `You stayed sharp through the harder rounds. Your strongest area was ${strongestStage.name}.`,
-      percentile: "Top 7%",
-    };
-  }
-
-  if (ratio >= 0.625) {
-    return {
-      tier: "Scholar Tier",
-      title: "Sharp under pressure.",
-      copy: `Strong performance across the skill rounds, led by ${strongestStage.name}.`,
-      percentile: "Top 15%",
-    };
-  }
-
-  if (ratio >= 0.5) {
-    return {
-      tier: "Pattern Strategist",
-      title: "Above-average reasoning.",
-      copy: `You showed good instincts, especially in ${strongestStage.name}.`,
-      percentile: "Top 31%",
-    };
-  }
-
-  if (ratio >= 0.375) {
-    return {
-      tier: "Logical Mind",
-      title: "Solid score.",
-      copy: `You handled several rounds well. Your strongest area was ${strongestStage.name}.`,
-      percentile: "Top 55%",
-    };
-  }
+  const withStage = (template: string) => formatTemplate(template, { stage: strongestStage.name });
+  const profile = [...quiz.result.profiles]
+    .sort((a, b) => b.minRatio - a.minRatio)
+    .find((item) => ratio >= item.minRatio) ?? quiz.result.profiles[quiz.result.profiles.length - 1];
 
   return {
-    tier: "Rising Scholar",
-    title: "Keep sharpening.",
-    copy: `The hardest rounds reward calm pattern memory. Your best area was ${strongestStage.name}.`,
-    percentile: "Top 78%",
+    tier: profile.tier,
+    title: profile.title,
+    copy: withStage(profile.copy),
+    percentile: profile.percentile,
   };
 }
 
@@ -127,19 +86,20 @@ export function ResultScreen({
   translations,
   onUnlockReview,
 }: ResultScreenProps) {
-  const profileName = getProfileName(quiz);
   const stageScores = getStageScores(quiz, answers);
   const strongestStage = getStrongestStage(stageScores);
-  const profile = getResultProfile(score, quiz.questions.length, strongestStage, profileName);
-  const cognitiveScores = [
-    { label: "Pattern", value: scoreForCategories(quiz, answers, ["visual", "word", "pattern", "attention"]) },
-    { label: "Number Logic", value: scoreForCategories(quiz, answers, ["number"]) },
-    { label: "Deduction", value: scoreForCategories(quiz, answers, ["deduction", "logic"]) },
-    { label: "Lateral Thinking", value: scoreForCategories(quiz, answers, ["lateral"]) },
-  ];
+  const profile = getResultProfile(quiz, score, quiz.questions.length, strongestStage);
+  const cognitiveScores = quiz.result.scoreDimensions.map((dimension) => ({
+    label: dimension.label,
+    value: scoreForCategories(quiz, answers, dimension.categories),
+  }));
   const missedQuestions = quiz.questions
     .map((question, index) => ({ question, index }))
     .filter(({ question, index }) => answers[index] !== question.answerIndex);
+  const missedQuestionLabel =
+    missedQuestions.length === 1
+      ? translations.results.review.missedQuestionSingular
+      : translations.results.review.missedQuestionPlural;
 
   return (
     <section className="legacy-card legacy-result">
@@ -163,11 +123,11 @@ export function ResultScreen({
         ))}
       </div>
       <div className="legacy-unlock-panel">
-        <h3>{missedQuestions.length ? "Want to see what you missed?" : "Perfect score!"}</h3>
+        <h3>{missedQuestions.length ? translations.results.review.wantMissed : translations.results.review.perfectScore}</h3>
         <p>
           {missedQuestions.length
-            ? `${missedQuestions.length} missed ${missedQuestions.length === 1 ? "question" : "questions"} ready to review after one short ad.`
-            : "You answered every question correctly."}
+            ? `${missedQuestions.length} ${missedQuestionLabel} ${translations.results.review.readyToReview}`
+            : translations.results.review.perfectCopy}
         </p>
         {missedQuestions.length ? (
           <button
@@ -177,10 +137,10 @@ export function ResultScreen({
             className="legacy-primary"
           >
             {hasUnlockedReview
-              ? "✓ Incorrect Answers Unlocked"
+              ? translations.results.review.unlockDone
               : isUnlockingReview
                 ? translations.loading.ad
-                : "Show My Missed Answers →"}
+                : translations.results.review.unlockButton}
           </button>
         ) : null}
       </div>
@@ -190,9 +150,9 @@ export function ResultScreen({
             <div key={`${question.prompt}-${index}`} className="legacy-miss">
               <strong>{index + 1}. {question.prompt}</strong>
               <p>
-                Your answer: {question.choices[answers[index]] ?? "Not answered"}
+                {translations.results.review.yourAnswer}: {question.choices[answers[index]] ?? translations.results.review.notAnswered}
                 <br />
-                Correct answer: {question.choices[question.answerIndex]}
+                {translations.results.review.correctAnswer}: {question.choices[question.answerIndex]}
               </p>
               {question.explanation ? <p>{question.explanation}</p> : null}
             </div>

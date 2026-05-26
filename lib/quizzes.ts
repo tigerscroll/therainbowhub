@@ -12,6 +12,12 @@ export type QuizQuestion = {
   stage?: number;
 };
 
+export type QuizStageGroup = {
+  title: string;
+  encouragement?: string;
+  questions: QuizQuestion[];
+};
+
 export type QuizHomepage = {
   title?: string;
   summary?: string;
@@ -33,6 +39,31 @@ export type QuizInfoPanel = {
   footerBody: string;
 };
 
+export type QuizLanding = {
+  quickStartText: string;
+  challengeText: string;
+  socialProof: string;
+};
+
+export type QuizResultProfile = {
+  minRatio: number;
+  tier: string;
+  title: string;
+  copy: string;
+  percentile: string;
+};
+
+export type QuizScoreDimension = {
+  label: string;
+  categories: string[];
+};
+
+export type QuizResultConfig = {
+  profileName: string;
+  profiles: QuizResultProfile[];
+  scoreDimensions: QuizScoreDimension[];
+};
+
 export type Quiz = {
   slug: string;
   title: string;
@@ -50,8 +81,11 @@ export type Quiz = {
   accent: string;
   homepage: QuizHomepage;
   infoPanel?: QuizInfoPanel;
+  landing: QuizLanding;
   stages: string[];
+  stageEncouragement: string[];
   heroPoints: string[];
+  result: QuizResultConfig;
   questions: QuizQuestion[];
 };
 
@@ -61,6 +95,7 @@ type GetAllQuizzesOptions = {
 
 const QUIZ_DIRECTORY = path.join(process.cwd(), "data", "quizzes");
 const TEMPLATE_DIRECTORY_NAME = "example-template";
+const QUIZ_SCHEMA_FILE_NAME = "schema.json";
 const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const supportedLocaleValues = new Set(getSupportedLocales());
 
@@ -76,7 +111,13 @@ function assertStringArray(value: unknown, field: string, fileName: string) {
   }
 }
 
-function validateQuestion(value: unknown, index: number, fileName: string): QuizQuestion {
+function assertOptionalStringArray(value: unknown, field: string, fileName: string) {
+  if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
+    throw new Error(`${fileName}: "${field}" must be an array of non-empty strings.`);
+  }
+}
+
+function validateQuestion(value: unknown, index: number, fileName: string, stageOverride?: number): QuizQuestion {
   if (!value || typeof value !== "object") {
     throw new Error(`${fileName}: question ${index + 1} must be an object.`);
   }
@@ -100,7 +141,10 @@ function validateQuestion(value: unknown, index: number, fileName: string): Quiz
     throw new Error(`${fileName}: "questions[${index}].stage" must be a zero-based number when provided.`);
   }
 
-  return question as QuizQuestion;
+  return {
+    ...(question as QuizQuestion),
+    stage: stageOverride ?? (question.stage as number | undefined),
+  };
 }
 
 function validateHomepage(value: unknown, fileName: string): QuizHomepage {
@@ -160,6 +204,166 @@ function validateInfoPanel(value: unknown, fileName: string): QuizInfoPanel | un
   return infoPanel as QuizInfoPanel;
 }
 
+function validateLanding(value: unknown, fileName: string): QuizLanding {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${fileName}: "landing" must be an object.`);
+  }
+
+  const landing = value as Record<string, unknown>;
+  assertString(landing.quickStartText, "landing.quickStartText", fileName);
+  assertString(landing.challengeText, "landing.challengeText", fileName);
+  assertString(landing.socialProof, "landing.socialProof", fileName);
+
+  return landing as QuizLanding;
+}
+
+function validateResult(value: unknown, fileName: string): QuizResultConfig {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${fileName}: "result" must be an object.`);
+  }
+
+  const result = value as Record<string, unknown>;
+  assertString(result.profileName, "result.profileName", fileName);
+
+  if (!Array.isArray(result.profiles) || result.profiles.length === 0) {
+    throw new Error(`${fileName}: "result.profiles" must be a non-empty array.`);
+  }
+
+  const profiles = result.profiles.map((profile, index) => {
+    if (!profile || typeof profile !== "object" || Array.isArray(profile)) {
+      throw new Error(`${fileName}: "result.profiles[${index}]" must be an object.`);
+    }
+
+    const item = profile as Record<string, unknown>;
+
+    if (typeof item.minRatio !== "number" || item.minRatio < 0 || item.minRatio > 1) {
+      throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
+    }
+
+    assertString(item.tier, `result.profiles[${index}].tier`, fileName);
+    assertString(item.title, `result.profiles[${index}].title`, fileName);
+    assertString(item.copy, `result.profiles[${index}].copy`, fileName);
+    assertString(item.percentile, `result.profiles[${index}].percentile`, fileName);
+
+    return item as QuizResultProfile;
+  });
+
+  if (!profiles.some((profile) => profile.minRatio === 0)) {
+    throw new Error(`${fileName}: "result.profiles" must include a fallback profile with "minRatio": 0.`);
+  }
+
+  if (!Array.isArray(result.scoreDimensions) || result.scoreDimensions.length === 0) {
+    throw new Error(`${fileName}: "result.scoreDimensions" must be a non-empty array.`);
+  }
+
+  const scoreDimensions = result.scoreDimensions.map((dimension, index) => {
+    if (!dimension || typeof dimension !== "object" || Array.isArray(dimension)) {
+      throw new Error(`${fileName}: "result.scoreDimensions[${index}]" must be an object.`);
+    }
+
+    const item = dimension as Record<string, unknown>;
+    assertString(item.label, `result.scoreDimensions[${index}].label`, fileName);
+    assertStringArray(item.categories, `result.scoreDimensions[${index}].categories`, fileName);
+
+    return item as QuizScoreDimension;
+  });
+
+  return {
+    profileName: result.profileName as string,
+    profiles,
+    scoreDimensions,
+  };
+}
+
+function normalizeStageContent(quiz: Record<string, unknown>, fileName: string) {
+  const hasStageGroups = quiz.stageGroups !== undefined;
+  const hasFlatStages = quiz.stages !== undefined || quiz.questions !== undefined;
+
+  if (hasStageGroups && hasFlatStages) {
+    throw new Error(`${fileName}: use either "stageGroups" or the flat "stages" + "questions" format, not both.`);
+  }
+
+  if (hasStageGroups) {
+    if (!Array.isArray(quiz.stageGroups) || quiz.stageGroups.length === 0) {
+      throw new Error(`${fileName}: "stageGroups" must be a non-empty array.`);
+    }
+
+    const stages: string[] = [];
+    const stageEncouragement: string[] = [];
+    const questions: QuizQuestion[] = [];
+
+    quiz.stageGroups.forEach((stageGroup, stageIndex) => {
+      if (!stageGroup || typeof stageGroup !== "object" || Array.isArray(stageGroup)) {
+        throw new Error(`${fileName}: "stageGroups[${stageIndex}]" must be an object.`);
+      }
+
+      const group = stageGroup as Record<string, unknown>;
+      assertString(group.title, `stageGroups[${stageIndex}].title`, fileName);
+
+      if (!Array.isArray(group.questions) || group.questions.length === 0) {
+        throw new Error(`${fileName}: "stageGroups[${stageIndex}].questions" must be a non-empty array.`);
+      }
+
+      if (stageIndex < (quiz.stageGroups as unknown[]).length - 1) {
+        assertString(group.encouragement, `stageGroups[${stageIndex}].encouragement`, fileName);
+        stageEncouragement.push(group.encouragement as string);
+      } else if (group.encouragement !== undefined && typeof group.encouragement !== "string") {
+        throw new Error(`${fileName}: "stageGroups[${stageIndex}].encouragement" must be a string when provided.`);
+      }
+
+      stages.push(group.title as string);
+      group.questions.forEach((question, questionIndex) => {
+        questions.push(validateQuestion(question, questions.length, fileName, stageIndex));
+
+        const rawQuestion = question as Record<string, unknown>;
+        if (rawQuestion.stage !== undefined && rawQuestion.stage !== stageIndex) {
+          throw new Error(
+            `${fileName}: "stageGroups[${stageIndex}].questions[${questionIndex}].stage" must be omitted or match the containing stage index.`,
+          );
+        }
+      });
+    });
+
+    return {
+      stages,
+      stageEncouragement,
+      questions,
+    };
+  }
+
+  assertStringArray(quiz.stages, "stages", fileName);
+
+  if (quiz.stageEncouragement === undefined) {
+    if ((quiz.stages as string[]).length > 1) {
+      throw new Error(`${fileName}: "stageEncouragement" is required when using more than one flat stage.`);
+    }
+  } else {
+    assertOptionalStringArray(quiz.stageEncouragement, "stageEncouragement", fileName);
+  }
+
+  if (!Array.isArray(quiz.questions) || quiz.questions.length === 0) {
+    throw new Error(`${fileName}: "questions" must be a non-empty array.`);
+  }
+
+  const stages = quiz.stages as string[];
+  const stageEncouragement = (quiz.stageEncouragement ?? []) as string[];
+  const questions = quiz.questions.map((question, index) => validateQuestion(question, index, fileName));
+
+  questions.forEach((question, index) => {
+    const stage = question.stage ?? 0;
+
+    if (stage >= stages.length) {
+      throw new Error(`${fileName}: "questions[${index}].stage" must map to an entry in "stages".`);
+    }
+  });
+
+  return {
+    stages,
+    stageEncouragement,
+    questions,
+  };
+}
+
 function validateQuiz(value: unknown, fileName: string): Quiz {
   if (!value || typeof value !== "object") {
     throw new Error(`${fileName}: quiz file must contain a JSON object.`);
@@ -188,28 +392,35 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
   });
 
   const difficulty = quiz.difficulty;
-  const questionCount = quiz.questionCount;
 
   if (typeof difficulty !== "string" || !difficultyValues.has(difficulty)) {
     throw new Error(`${fileName}: "difficulty" must be one of Quick, Medium, Hard, or Expert.`);
   }
 
-  if (!Number.isInteger(questionCount) || typeof questionCount !== "number" || questionCount < 1) {
-    throw new Error(`${fileName}: "questionCount" must be a positive integer.`);
+  if (
+    quiz.questionCount !== undefined &&
+    (!Number.isInteger(quiz.questionCount) || typeof quiz.questionCount !== "number" || quiz.questionCount < 1)
+  ) {
+    throw new Error(`${fileName}: "questionCount" must be a positive integer when provided.`);
   }
 
-  assertStringArray(quiz.stages, "stages", fileName);
-  assertStringArray(quiz.heroPoints, "heroPoints", fileName);
+  if (quiz.heroPoints === undefined) {
+    quiz.heroPoints = [];
+  }
+
+  assertOptionalStringArray(quiz.heroPoints, "heroPoints", fileName);
   const homepage = validateHomepage(quiz.homepage, fileName);
   const infoPanel = validateInfoPanel(quiz.infoPanel, fileName);
+  const landing = validateLanding(quiz.landing, fileName);
+  const result = validateResult(quiz.result, fileName);
+  const { stages, stageEncouragement, questions } = normalizeStageContent(quiz, fileName);
+  const questionCount = typeof quiz.questionCount === "number" ? quiz.questionCount : questions.length;
 
-  if (!Array.isArray(quiz.questions) || quiz.questions.length === 0) {
-    throw new Error(`${fileName}: "questions" must be a non-empty array.`);
+  if (stageEncouragement.length !== stages.length - 1) {
+    throw new Error(`${fileName}: "stageEncouragement" must contain one entry for each completed stage before the final results.`);
   }
 
-  const questions = quiz.questions.map((question, index) => validateQuestion(question, index, fileName));
-
-  if (questionCount !== questions.length) {
+  if (quiz.questionCount !== undefined && questionCount !== questions.length) {
     throw new Error(`${fileName}: "questionCount" is ${questionCount}, but the file contains ${questions.length} questions.`);
   }
 
@@ -230,8 +441,11 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     accent: quiz.accent,
     homepage,
     infoPanel,
-    stages: quiz.stages,
+    landing,
+    stages,
+    stageEncouragement,
     heroPoints: quiz.heroPoints,
+    result,
     questions,
   } as Quiz;
 }
@@ -242,7 +456,7 @@ function getQuizDirectory(slug: string) {
 
 function readQuizFolders() {
   const entries = fs.readdirSync(QUIZ_DIRECTORY, { withFileTypes: true });
-  const rootJsonFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".json"));
+  const rootJsonFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== QUIZ_SCHEMA_FILE_NAME);
 
   if (rootJsonFiles.length) {
     throw new Error(
@@ -300,9 +514,35 @@ function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz
     throw new Error(`${fileName}: "stages" must contain ${canonicalQuiz.stages.length} entries to match en.json.`);
   }
 
+  if (translatedQuiz.stageEncouragement.length !== canonicalQuiz.stageEncouragement.length) {
+    throw new Error(`${fileName}: "stageEncouragement" must contain ${canonicalQuiz.stageEncouragement.length} entries to match en.json.`);
+  }
+
+  if (translatedQuiz.result.profiles.length !== canonicalQuiz.result.profiles.length) {
+    throw new Error(`${fileName}: "result.profiles" must contain ${canonicalQuiz.result.profiles.length} entries to match en.json.`);
+  }
+
+  if (translatedQuiz.result.scoreDimensions.length !== canonicalQuiz.result.scoreDimensions.length) {
+    throw new Error(`${fileName}: "result.scoreDimensions" must contain ${canonicalQuiz.result.scoreDimensions.length} entries to match en.json.`);
+  }
+
   if (translatedQuiz.questions.length !== canonicalQuiz.questions.length) {
     throw new Error(`${fileName}: "questions" must contain ${canonicalQuiz.questions.length} entries to match en.json.`);
   }
+
+  translatedQuiz.result.profiles.forEach((profile, index) => {
+    if (profile.minRatio !== canonicalQuiz.result.profiles[index].minRatio) {
+      throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must match en.json.`);
+    }
+  });
+
+  translatedQuiz.result.scoreDimensions.forEach((dimension, index) => {
+    const canonicalDimension = canonicalQuiz.result.scoreDimensions[index];
+
+    if (dimension.categories.join("\u0000") !== canonicalDimension.categories.join("\u0000")) {
+      throw new Error(`${fileName}: "result.scoreDimensions[${index}].categories" must match en.json.`);
+    }
+  });
 
   translatedQuiz.questions.forEach((question, index) => {
     const canonicalQuestion = canonicalQuiz.questions[index];
