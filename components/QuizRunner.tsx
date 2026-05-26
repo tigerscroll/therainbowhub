@@ -436,7 +436,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             <h2>
               {translations.quiz.your} {quiz.title.replace(" Test", "").replace(" Check", "")} {translations.quiz.profile}
             </h2>
-            <p className="legacy-sub">{translations.rewardedAd.helper}</p>
             <button
               type="button"
               disabled={answeredCount !== quiz.questions.length || isRevealingResults}
@@ -447,6 +446,10 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
                 ? translations.quiz.preparingResults
                 : `${translations.quiz.revealPrefix} ${quiz.title.replace(" Test", "").replace(" Check", "")} ${translations.quiz.profile} →`}
             </button>
+            <div className="legacy-ad-note">
+              <span className="legacy-shield" aria-hidden="true">i</span>
+              <span>{translations.rewardedAd.helper}</span>
+            </div>
           </section>
         ) : null}
 
