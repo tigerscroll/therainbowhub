@@ -7,10 +7,6 @@ export const siteConfig = {
   googleTagId: "AW-18146485081",
   // Replace this with your real Assertive Yield manager URL when needed.
   assertiveYieldManagerUrl: "https://j24iGSTy4hDgBLfJR.ay.delivery/manager/j24iGSTy4hDgBLfJR",
-  // Google Publisher Tag is loaded globally; rewarded ad placements are wired in lib/rewardedAds.ts.
-  googlePublisherTagUrl: "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
-  // Replace this with your real Google Ad Manager rewarded ad unit path when needed.
-  rewardedAdUnitPath: "/22677279144/rewarded",
 };
 
 export const companyLinks = [

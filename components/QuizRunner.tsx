@@ -1,4 +1,3 @@
-import { siteConfig } from "@/lib/siteConfig";
 import type { CSSProperties } from "react";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
@@ -152,7 +151,6 @@ function createQuizRunnerHtml(config: {
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
   progressKey: string;
-  rewardedAdUnitPath: string;
   rootId: string;
   quiz: Quiz;
   translations: Translations;
@@ -162,8 +160,6 @@ function createQuizRunnerScript(config: {
   var config = ${safeJson(config)};
   var correctAnswerDelayMs = 950;
   var wrongAnswerDelayMs = 1150;
-  var adTimeoutMs = 7500;
-  var maxAdAttempts = 3;
 
   function boot() {
     var root = document.getElementById(config.rootId);
@@ -290,107 +286,10 @@ function createQuizRunnerScript(config: {
       return true;
     }
 
-    function clearRewardedSlot(slot) {
-      if (!slot) return;
-      try { window.googletag?.destroySlots?.([slot]); } catch (error) {}
-    }
-
-    function requestRewardedAd(placement, attempt) {
-      var currentAttempt = attempt || 1;
-
-      if (!window.googletag) {
-        window.googletag = { cmd: [] };
-      }
-
-      return new Promise(function (resolve) {
-        var rewardedSlot = null;
-        var rewardGranted = false;
-        var hasSettled = false;
-
-        function settle(value) {
-          if (hasSettled) return;
-          hasSettled = true;
-          window.clearTimeout(timeout);
-          clearRewardedSlot(rewardedSlot);
-          resolve(value);
-        }
-
-        function retryOrContinue() {
-          window.clearTimeout(timeout);
-
-          if (currentAttempt < maxAdAttempts) {
-            window.setTimeout(function () {
-              requestRewardedAd(placement, currentAttempt + 1).then(resolve);
-            }, 450);
-            return;
-          }
-
-          settle(resolveWithoutAd(placement));
-        }
-
-        var timeout = window.setTimeout(retryOrContinue, adTimeoutMs);
-        var googleTag = window.googletag;
-
-        if (!googleTag?.cmd || !googleTag.defineOutOfPageSlot || !googleTag.pubads) {
-          retryOrContinue();
-          return;
-        }
-
-        googleTag.cmd.push(function () {
-          try {
-            var pubads = window.googletag?.pubads?.();
-            pubads?.updateCorrelator?.();
-
-            var rewardedFormat = window.googletag?.enums?.OutOfPageFormat?.REWARDED;
-            var slot = window.googletag?.defineOutOfPageSlot?.(config.rewardedAdUnitPath, rewardedFormat);
-            rewardedSlot = slot || null;
-
-            if (!slot || !pubads) {
-              retryOrContinue();
-              return;
-            }
-
-            function removeListeners() {
-              pubads.removeEventListener?.("rewardedSlotReady", onReady);
-              pubads.removeEventListener?.("rewardedSlotGranted", onGranted);
-              pubads.removeEventListener?.("rewardedSlotClosed", onClosed);
-            }
-
-            function onReady(event) {
-              if (event.slot !== slot) return;
-              window.clearTimeout(timeout);
-              event.makeRewardedVisible?.();
-            }
-
-            function onGranted(event) {
-              if (event.slot !== slot) return;
-              rewardGranted = true;
-              trackRewardGranted({ placement: placement });
-            }
-
-            function onClosed(event) {
-              if (event.slot !== slot) return;
-              removeListeners();
-
-              if (rewardGranted) {
-                trackRewardClosed({ placement: placement });
-                settle(true);
-                return;
-              }
-
-              retryOrContinue();
-            }
-
-            pubads.addEventListener?.("rewardedSlotReady", onReady);
-            pubads.addEventListener?.("rewardedSlotGranted", onGranted);
-            pubads.addEventListener?.("rewardedSlotClosed", onClosed);
-            window.googletag?.enableServices?.();
-            window.googletag?.display?.(slot);
-          } catch (error) {
-            retryOrContinue();
-          }
-        });
-      });
+    function requestRewardedAd(placement) {
+      // Local testing mode: rewarded ad gates continue immediately.
+      // Reconnect Google Ad Manager rewarded code here when you are ready to test ads.
+      return Promise.resolve(resolveWithoutAd(placement));
     }
 
     function getStageIndexes() {
@@ -858,7 +757,6 @@ export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
     locale,
     progressKey,
     quiz,
-    rewardedAdUnitPath: siteConfig.rewardedAdUnitPath,
     rootId,
     translations,
   });
