@@ -6,8 +6,8 @@ type StageResultScreenProps = {
   copy: string;
   helperText: string;
   isLoading?: boolean;
+  nextStageName?: string | null;
   scoreLabel: string;
-  stageName: string;
   title: string;
   translations: Translations;
   onContinue: () => void;
@@ -19,23 +19,32 @@ export function StageResultScreen({
   copy,
   helperText,
   isLoading = false,
+  nextStageName,
   scoreLabel,
-  stageName,
   title,
   translations,
   onContinue,
 }: StageResultScreenProps) {
   return (
-    <section className="legacy-card legacy-result">
-      <span className="legacy-profile-badge">{badge}</span>
+    <section className="legacy-card legacy-result legacy-stage-result">
       <h2>{title}</h2>
-      <p className="legacy-sub">{copy}</p>
-      <p className="legacy-next-round">{translations.results.stageComplete}: {stageName}</p>
-      <div className="legacy-score">
-        <strong>{scoreLabel}</strong>
-        <span>{translations.quiz.finalScore}</span>
+      <p className="legacy-stage-copy">{copy}</p>
+      {nextStageName ? (
+        <p className="legacy-stage-next">
+          {translations.results.nextStage}: {nextStageName}
+        </p>
+      ) : null}
+      <div className="legacy-stage-stats">
+        <div>
+          <strong>{scoreLabel}</strong>
+          <span>{translations.results.scoreSoFar}</span>
+        </div>
+        <div>
+          <strong>{badge}</strong>
+          <span>{translations.results.roundResult}</span>
+        </div>
       </div>
-      <button type="button" disabled={isLoading} onClick={onContinue} className="legacy-primary">
+      <button type="button" disabled={isLoading} onClick={onContinue} className="legacy-primary legacy-stage-button">
         {isLoading ? translations.loading.ad : buttonLabel}
       </button>
       <div className="legacy-ad-note">

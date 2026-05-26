@@ -27,6 +27,7 @@ type QuizScreen = "start" | "question" | "stage-gate" | "result-gate" | "results
 
 const correctAnswerDelayMs = 950;
 const wrongAnswerDelayMs = 1150;
+const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
 const stageEncouragement = [
   "You cleared the warm-up. Next comes pattern speed.",
   "Good pattern work. Next comes visual reasoning.",
@@ -38,6 +39,14 @@ const stageEncouragement = [
   "Final stretch. The last round is the scholar challenge.",
 ];
 
+function renderTitleWithAccentPercent(title: string) {
+  const parts = title.split(/(\d+(?:\.\d+)?%)/g);
+
+  return parts.map((part, index) =>
+    percentTokenPattern.test(part) ? <span key={`${part}-${index}`}>{part}</span> : part,
+  );
+}
+
 export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
   const [screen, setScreen] = useState<QuizScreen>("start");
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -47,6 +56,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
   const [isStageLoading, setIsStageLoading] = useState(false);
   const [isRevealingResults, setIsRevealingResults] = useState(false);
   const [isUnlockingReview, setIsUnlockingReview] = useState(false);
+  const [isRestoringProgress, setIsRestoringProgress] = useState(true);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
 
@@ -74,12 +84,10 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     .filter(({ quizQuestion }) => (quizQuestion.stage ?? 0) === currentStage);
   const currentStagePosition = currentStageQuestions.findIndex(({ index }) => index === currentQuestion) + 1;
   const currentStageTotal = currentStageQuestions.length || 1;
-  const currentStageProgress = Math.max(0, Math.round(((currentStagePosition - 1) / currentStageTotal) * 100));
   const firstStageQuestionCount = quiz.questions.filter(
     (quizQuestion) => (quizQuestion.stage ?? 0) === (quiz.questions[0]?.stage ?? 0),
   ).length;
   const completedStage = Math.max(0, quiz.questions[Math.max(0, currentQuestion - 1)]?.stage ?? 0);
-  const completedStageName = quiz.stages[completedStage] ?? quiz.title;
   const completedStageQuestions = quiz.questions
     .map((quizQuestion, index) => ({ quizQuestion, index }))
     .filter(({ quizQuestion }) => (quizQuestion.stage ?? 0) === completedStage);
@@ -135,34 +143,33 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     try {
       const saved = window.localStorage.getItem(progressKey);
 
-      if (!saved) {
-        return clearAdvanceTimer;
+      if (saved) {
+        const parsed = JSON.parse(saved) as {
+          answers?: Record<string, number>;
+          currentQuestion?: number;
+          screen?: QuizScreen;
+        };
+        const savedAnswers = parsed.answers ?? {};
+        const savedCurrent = parsed.currentQuestion ?? 0;
+
+        if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
+          clearProgress();
+        } else {
+          setAnswers(
+            Object.fromEntries(
+              Object.entries(savedAnswers)
+                .map(([key, value]) => [Number(key), value])
+                .filter(([key, value]) => Number.isInteger(key) && typeof value === "number"),
+            ) as Record<number, number>,
+          );
+          setCurrentQuestion(savedCurrent);
+          setScreen(parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question");
+        }
       }
-
-      const parsed = JSON.parse(saved) as {
-        answers?: Record<string, number>;
-        currentQuestion?: number;
-        screen?: QuizScreen;
-      };
-      const savedAnswers = parsed.answers ?? {};
-      const savedCurrent = parsed.currentQuestion ?? 0;
-
-      if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
-        clearProgress();
-        return clearAdvanceTimer;
-      }
-
-      setAnswers(
-        Object.fromEntries(
-          Object.entries(savedAnswers)
-            .map(([key, value]) => [Number(key), value])
-            .filter(([key, value]) => Number.isInteger(key) && typeof value === "number"),
-        ) as Record<number, number>,
-      );
-      setCurrentQuestion(savedCurrent);
-      setScreen(parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question");
     } catch {
       clearProgress();
+    } finally {
+      setIsRestoringProgress(false);
     }
 
     return clearAdvanceTimer;
@@ -301,6 +308,18 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     });
   }
 
+  if (isRestoringProgress) {
+    return (
+      <div className={`legacy-quiz legacy-quiz--${quiz.slug}`} style={{ "--quiz-accent": quiz.accent } as CSSProperties}>
+        <main id="quiz-top" className="legacy-main">
+          <section className="legacy-card legacy-restoring" aria-live="polite">
+            <p>{translations.loading.quiz}</p>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className={`legacy-quiz legacy-quiz--${quiz.slug}`} style={{ "--quiz-accent": quiz.accent } as CSSProperties}>
       <main id="quiz-top" className="legacy-main">
@@ -309,7 +328,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             <div className="legacy-badge" aria-hidden="true">
               <span>{quiz.cardIcon}</span>
             </div>
-            <h1>{quiz.pageTitle}</h1>
+            <h1>{renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
             <p className="legacy-sub">
               {translations.quiz.quickQuestionsPrefix} {firstStageQuestionCount} {translations.quiz.quickQuestionsSuffix}
               <br />
@@ -342,13 +361,10 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
           <>
             <div className="legacy-progress">
               <div className="legacy-progress__row">
-                <strong>{translations.quiz.round} {(question.stage ?? 0) + 1}</strong>
-                <span>
-                  {stageName} · {translations.quiz.question} {currentStagePosition}/{currentStageTotal}
-                </span>
-              </div>
-              <div className="legacy-bar">
-                <span style={{ width: `${currentStageProgress}%` }} />
+                <strong>
+                  {translations.quiz.round} {(question.stage ?? 0) + 1}: {stageName}
+                </strong>
+                <span>{translations.quiz.question} {currentStagePosition}/{currentStageTotal}</span>
               </div>
             </div>
 
@@ -396,15 +412,15 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             badge={stageBadge}
             buttonLabel={
               nextStageName
-                ? `${translations.results.nextStage}: ${nextStageName} →`
+                ? `${translations.results.startStage} ${nextStageName} →`
                 : `${translations.results.viewResults} →`
             }
-            copy={`${stageEncouragement[Math.min(completedStage, stageEncouragement.length - 1)]} ${nextStageName ? `Next: ${nextStageName}` : ""}`}
+            copy={stageEncouragement[Math.min(completedStage, stageEncouragement.length - 1)]}
             helperText={translations.rewardedAd.helper}
             isLoading={isStageLoading}
+            nextStageName={nextStageName}
             scoreLabel={`${score}/${currentQuestion}`}
-            stageName={completedStageName}
-            title={`${translations.quiz.round} ${completedStage + 1} ${translations.results.stageComplete}`}
+            title={`${translations.quiz.round} ${completedStage + 1} ${translations.results.complete}`}
             translations={translations}
             onContinue={continueFromStageGate}
           />
