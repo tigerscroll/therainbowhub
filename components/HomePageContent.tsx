@@ -7,15 +7,13 @@ type HomePageContentProps = {
   translations: Translations;
 };
 
-const quizzes = getAllQuizzes();
-const categories = Array.from(new Set(quizzes.map((quiz) => quiz.eyebrow))).sort();
-const averageDuration = Math.round(
-  quizzes.reduce((total, quiz) => total + Number(quiz.duration.match(/\d+/)?.[0] ?? 0), 0) /
-    Math.max(quizzes.length, 1),
-);
-const featuredQuiz = quizzes.find((quiz) => quiz.homepage.featured) ?? quizzes.find((quiz) => quiz.slug === "oxford") ?? quizzes[0];
-
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
+  const quizzes = getAllQuizzes(locale, { includeFallback: false });
+  const categories = Array.from(new Set(quizzes.map((quiz) => quiz.eyebrow))).sort();
+  const averageDuration = Math.round(
+    quizzes.reduce((total, quiz) => total + Number(quiz.duration.match(/\d+/)?.[0] ?? 0), 0) /
+      Math.max(quizzes.length, 1),
+  );
   const homepageCards = quizzes.map((quiz) => ({
     href: getLocalePath(locale, `/quiz/${quiz.slug}`),
     banner: quiz.homepage.gradient ?? quiz.cardGradient,
@@ -39,21 +37,11 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
               {translations.home.headlinePrefix} <span>{translations.home.headlineHighlight}</span>
             </h1>
             <p>{translations.home.intro}</p>
-            <div className="hub-hero__cta">
-              {featuredQuiz ? (
-                <Link className="hub-btn-3d" href={getLocalePath(locale, `/quiz/${featuredQuiz.slug}`)}>
-                  ▶ {translations.home.startPrefix} {featuredQuiz.title}
-                </Link>
-              ) : null}
-              <a className="hub-btn-3d hub-btn-3d--alt" href="#all">
-                {translations.home.browseAll}
-              </a>
-            </div>
           </div>
           <div className="hub-hero__stats">
-            <div className="hub-stat"><div>{quizzes.length}</div><span>{translations.home.stats.quizzes}</span></div>
+            <div className="hub-stat"><div>50+</div><span>{translations.home.stats.quizzes}</span></div>
             <div className="hub-stat"><div>{averageDuration || 3} min</div><span>{translations.home.stats.averageTime}</span></div>
-            <div className="hub-stat"><div>97%</div><span>{translations.home.stats.freeForever}</span></div>
+            <div className="hub-stat"><div>100%</div><span>{translations.home.stats.freeForever}</span></div>
             <div className="hub-stat"><div>🏆</div><span>{translations.home.stats.scoreRank}</span></div>
           </div>
         </section>

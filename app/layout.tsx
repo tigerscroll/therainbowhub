@@ -5,8 +5,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "BrainGauge Quiz Tests",
-    template: "%s | BrainGauge",
+    default: "The Rainbow Hub - Quick quizzes. Sharper mind.",
+    template: "%s - The Rainbow Hub",
   },
   description: "Fast, mobile-friendly IQ and academic-style quiz tests.",
 };

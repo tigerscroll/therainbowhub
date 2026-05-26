@@ -33,23 +33,29 @@ Output directory: out
 
 ## Quiz Data
 
-Quizzes live as individual JSON files in:
+Quizzes live in one folder per quiz, with one JSON file per language:
 
 ```text
 data/quizzes/
+  oxford/
+    en.json
+    es.json
+  cambridge/
+    en.json
+    es.json
 ```
 
-Current production quiz files:
+Current production quiz folders:
 
 ```text
-data/quizzes/oxford.json
-data/quizzes/cambridge.json
+data/quizzes/oxford/en.json
+data/quizzes/cambridge/en.json
 ```
 
 The template file is:
 
 ```text
-data/quizzes/example-template.json
+data/quizzes/example-template/en.json
 ```
 
 The app reads quiz JSON files at build time through:
@@ -58,14 +64,23 @@ The app reads quiz JSON files at build time through:
 lib/quizzes.ts
 ```
 
-`example-template.json` is ignored by the loader so it does not appear as a real quiz. To add a quiz:
+`example-template` is ignored by the loader so it does not appear as a real quiz. To add a quiz:
 
-1. Copy `data/quizzes/example-template.json`.
-2. Rename the copy to match the new slug, for example `data/quizzes/memory-test.json`.
-3. Set `"slug": "memory-test"` inside the JSON.
-4. Update title, page copy, homepage fields, stages, and questions.
-5. Commit the JSON file.
-6. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/quiz/memory-test/`.
+1. Copy `data/quizzes/example-template/`.
+2. Rename the copied folder to the new slug, for example `data/quizzes/memory-test/`.
+3. Keep the default quiz file at `data/quizzes/memory-test/en.json`.
+4. Set `"slug": "memory-test"` inside every locale JSON file.
+5. Update title, page copy, homepage fields, stages, and questions.
+6. Commit the quiz folder.
+7. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/quiz/memory-test/`.
+
+To add a translated quiz, add a full self-contained locale file inside the same quiz folder:
+
+```text
+data/quizzes/memory-test/es.json
+```
+
+Then `/es/quiz/memory-test/` will use the Spanish quiz file. If a translated file is missing, the page falls back to `en.json` so links do not break.
 
 Quiz JSON files are only for quiz-specific content:
 
@@ -85,6 +100,8 @@ Each quiz JSON file must include:
 {
   "slug": "memory-test",
   "title": "Memory Test",
+  "seoTitle": "Memory Test Quiz",
+  "seoDescription": "A short SEO description for this quiz page.",
   "pageTitle": "How Sharp Is Your Memory?",
   "eyebrow": "Cognition",
   "summary": "A short homepage description.",
@@ -108,7 +125,7 @@ Each quiz JSON file must include:
   "heroPoints": ["Fast questions", "Instant result", "Mobile friendly"],
   "infoPanel": {
     "title": "About This Quiz",
-    "intro": "Quiz-specific background copy shown on the results screen.",
+    "intro": "Quiz-specific background copy shown below the quiz.",
     "columns": [
       {
         "title": "How It Works",
@@ -141,11 +158,14 @@ Each question must include:
 
 Rules enforced by the loader:
 
-- The file name must match the slug, for example `memory-test.json` must contain `"slug": "memory-test"`.
+- The folder name must match the slug, for example `data/quizzes/memory-test/en.json` must contain `"slug": "memory-test"`.
+- Every quiz folder must contain `en.json`.
+- Locale files must be named with supported locale codes: `en`, `es`, `fr`, `de`, `pt`, `ar`, or `ja`.
+- Translated quiz files must keep the same `slug`, `questionCount`, number of stages, number of questions, answer indexes, choice counts, stages, and categories as `en.json`.
 - `questionCount` must match the actual number of questions.
 - `difficulty` must be one of `Quick`, `Medium`, `Hard`, or `Expert`.
 - `homepage` is optional but recommended. It controls homepage card title, summary, thumbnail image, fallback icon/gradient, and whether the quiz is featured in the hero CTA.
-- `infoPanel` is optional. It controls the editable about/how-it-works/context/disclaimer block shown near the restart button on the result screen.
+- `infoPanel` is optional. It controls the editable about/how-it-works/context/disclaimer block shown below each quiz near the restart button.
 - Put thumbnail files in `public/images/` and reference them as `/images/file-name.jpg`.
 - `answerIndex` must point to an existing choice.
 - `stage` is zero-based and should map to an entry in `stages`.
@@ -227,7 +247,7 @@ To edit footer, header, button, loading, or rewarded-ad helper text, edit the re
 
 ## Translated Quizzes
 
-Quiz-specific text stays in quiz JSON. If you want a fully translated quiz, add translated quiz content by extending the quiz data model or creating locale-aware quiz JSON files in a future content pass. The current locale routes translate shared UI around the existing quiz content, so `/es/quiz/oxford/` uses Spanish buttons/navigation/footer while keeping the current Oxford quiz copy.
+Quiz-specific text stays in quiz JSON. To translate a quiz, copy that quiz's `en.json` to a supported locale file such as `es.json`, translate the full quiz content, and keep the same answer structure. The locale routes combine shared UI translations with locale-specific quiz content, so `/es/quiz/cambridge/` uses Spanish buttons/navigation/footer and `data/quizzes/cambridge/es.json` when that file exists.
 
 ## Tracking
 

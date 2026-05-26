@@ -296,11 +296,14 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     setIsStageLoading(false);
     setIsRevealingResults(false);
     setIsUnlockingReview(false);
+    window.requestAnimationFrame(() => {
+      document.getElementById("quiz-top")?.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   }
 
   return (
     <div className={`legacy-quiz legacy-quiz--${quiz.slug}`} style={{ "--quiz-accent": quiz.accent } as CSSProperties}>
-      <main className="legacy-main">
+      <main id="quiz-top" className="legacy-main">
         {screen === "start" ? (
           <section className="legacy-card legacy-start">
             <div className="legacy-badge" aria-hidden="true">

@@ -28,8 +28,10 @@ export async function generateMetadata({ params }: QuizPageProps): Promise<Metad
   }
 
   return {
-    title: quiz.title,
-    description: quiz.summary,
+    title: {
+      absolute: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+    },
+    description: quiz.seoDescription ?? quiz.summary,
   };
 }
 
