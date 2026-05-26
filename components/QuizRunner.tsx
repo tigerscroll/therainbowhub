@@ -384,7 +384,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
                 {question.choices.map((choice, choiceIndex) => {
                   const isSelected = selectedAnswer === choiceIndex;
                   const isCorrect = question.answerIndex === choiceIndex;
-                  const revealCorrect = hasAnsweredCurrent && isCorrect;
+                  const revealCorrect = hasAnsweredCurrent && isSelected && isCorrect;
                   const revealWrong = hasAnsweredCurrent && isSelected && !isCorrect;
 
                   return (
