@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ResultScreen } from "@/components/ResultScreen";
 import { StageResultScreen } from "@/components/StageResultScreen";
 import {
@@ -28,6 +28,8 @@ type QuizScreen = "start" | "question" | "stage-gate" | "result-gate" | "results
 const correctAnswerDelayMs = 950;
 const wrongAnswerDelayMs = 1150;
 const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 function renderTitleWithAccentPercent(title: string) {
   const parts = title.split(/(\d+(?:\.\d+)?%)/g);
 
@@ -45,7 +47,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
   const [isStageLoading, setIsStageLoading] = useState(false);
   const [isRevealingResults, setIsRevealingResults] = useState(false);
   const [isUnlockingReview, setIsUnlockingReview] = useState(false);
-  const [isRestoringProgress, setIsRestoringProgress] = useState(true);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
 
@@ -123,7 +124,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     window.localStorage.removeItem(progressKey);
   }
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (typeof window === "undefined") {
       return clearAdvanceTimer;
     }
@@ -156,8 +157,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
       }
     } catch {
       clearProgress();
-    } finally {
-      setIsRestoringProgress(false);
     }
 
     return clearAdvanceTimer;
@@ -294,18 +293,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     window.requestAnimationFrame(() => {
       document.getElementById("quiz-top")?.scrollIntoView({ block: "start", behavior: "smooth" });
     });
-  }
-
-  if (isRestoringProgress) {
-    return (
-      <div className={`legacy-quiz legacy-quiz--${quiz.slug}`} style={{ "--quiz-accent": quiz.accent } as CSSProperties}>
-        <main id="quiz-top" className="legacy-main">
-          <section className="legacy-card legacy-restoring" aria-live="polite">
-            <p>{translations.loading.quiz}</p>
-          </section>
-        </main>
-      </div>
-    );
   }
 
   return (
