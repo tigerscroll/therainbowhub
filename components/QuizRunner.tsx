@@ -1,19 +1,5 @@
-"use client";
-
-import { type CSSProperties, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { ResultScreen } from "@/components/ResultScreen";
-import { StageResultScreen } from "@/components/StageResultScreen";
-import {
-  showRewardedAdBeforeFinalResults,
-  showRewardedAdBeforeStageResults,
-  showRewardedAdBeforeStart,
-} from "@/lib/rewardedAds";
-import {
-  trackQuestionAnswered,
-  trackQuizComplete,
-  trackQuizStart,
-  trackStageComplete,
-} from "@/lib/tracking";
+import { siteConfig } from "@/lib/siteConfig";
+import type { CSSProperties } from "react";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
 
@@ -23,12 +9,7 @@ type QuizRunnerProps = {
   translations: Translations;
 };
 
-type QuizScreen = "start" | "question" | "stage-gate" | "result-gate" | "results";
-
-const correctAnswerDelayMs = 950;
-const wrongAnswerDelayMs = 1150;
 const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
-const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 function renderTitleWithAccentPercent(title: string) {
   const parts = title.split(/(\d+(?:\.\d+)?%)/g);
@@ -38,409 +19,835 @@ function renderTitleWithAccentPercent(title: string) {
   );
 }
 
-export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
-  const [screen, setScreen] = useState<QuizScreen>("start");
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [hasUnlockedReview, setHasUnlockedReview] = useState(false);
-  const [isStarting, setIsStarting] = useState(false);
-  const [isStageLoading, setIsStageLoading] = useState(false);
-  const [isRevealingResults, setIsRevealingResults] = useState(false);
-  const [isUnlockingReview, setIsUnlockingReview] = useState(false);
-  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
+function safeJson(value: unknown) {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
 
-  const score = useMemo(
-    () =>
-      quiz.questions.reduce(
-        (total, question, index) => total + (answers[index] === question.answerIndex ? 1 : 0),
-        0,
-      ),
-    [answers, quiz.questions],
-  );
+function createQuizRunnerScript(config: {
+  locale: SupportedLocale;
+  progressKey: string;
+  rewardedAdUnitPath: string;
+  rootId: string;
+  quiz: Quiz;
+  translations: Translations;
+}) {
+  return `
+(function () {
+  var config = ${safeJson(config)};
+  var correctAnswerDelayMs = 950;
+  var wrongAnswerDelayMs = 1150;
+  var adTimeoutMs = 7500;
+  var maxAdAttempts = 3;
 
-  const answeredCount = Object.keys(answers).length;
-  const stageIndexes = useMemo(
-    () => Array.from(new Set(quiz.questions.map((quizQuestion) => quizQuestion.stage ?? 0))).sort((a, b) => a - b),
-    [quiz.questions],
-  );
-  const question = quiz.questions[currentQuestion];
-  const selectedAnswer = answers[currentQuestion];
-  const hasAnsweredCurrent = selectedAnswer !== undefined;
-  const stageName = quiz.stages[question.stage ?? 0] ?? quiz.stages[0] ?? quiz.title;
-  const currentStage = question.stage ?? 0;
-  const currentStageQuestions = quiz.questions
-    .map((quizQuestion, index) => ({ quizQuestion, index }))
-    .filter(({ quizQuestion }) => (quizQuestion.stage ?? 0) === currentStage);
-  const currentStagePosition = currentStageQuestions.findIndex(({ index }) => index === currentQuestion) + 1;
-  const currentStageTotal = currentStageQuestions.length || 1;
-  const currentStageProgress = Math.max(0, Math.round(((currentStagePosition - 1) / currentStageTotal) * 100));
-  const completedStage = Math.max(0, quiz.questions[Math.max(0, currentQuestion - 1)]?.stage ?? 0);
-  const completedStageQuestions = quiz.questions
-    .map((quizQuestion, index) => ({ quizQuestion, index }))
-    .filter(({ quizQuestion }) => (quizQuestion.stage ?? 0) === completedStage);
-  const completedStageScore = completedStageQuestions.reduce(
-    (total, { quizQuestion, index }) => total + (answers[index] === quizQuestion.answerIndex ? 1 : 0),
-    0,
-  );
-  const nextStage = stageIndexes.find((stage) => stage > completedStage);
-  const nextStageName = nextStage !== undefined ? quiz.stages[nextStage] ?? `${translations.quiz.round} ${nextStage + 1}` : null;
-  const profileName = quiz.result.profileName;
-  const stageBadge =
-    completedStageScore >= Math.ceil(completedStageQuestions.length * 0.75)
-      ? translations.results.excellent
-      : completedStageScore >= Math.ceil(completedStageQuestions.length * 0.5)
-        ? translations.results.strong
-        : translations.results.keepGoing;
+  function boot() {
+    var root = document.getElementById(config.rootId);
+    if (!root || root.dataset.booted === "true") return;
+    root.dataset.booted = "true";
 
-  function clearAdvanceTimer() {
-    if (advanceTimer.current) {
-      clearTimeout(advanceTimer.current);
-      advanceTimer.current = null;
-    }
-  }
+    var quiz = config.quiz;
+    var t = config.translations;
+    var current = 0;
+    var answers = {};
+    var advanceTimer = null;
+    var hasUnlockedReview = false;
 
-  function saveProgress(nextCurrentQuestion = currentQuestion, nextAnswers = answers, nextScreen = screen) {
-    if (typeof window === "undefined") {
-      return;
+    var screens = {
+      start: root.querySelector('[data-screen="start"]'),
+      question: root.querySelector('[data-screen="question"]'),
+      stageGate: root.querySelector('[data-screen="stage-gate"]'),
+      resultGate: root.querySelector('[data-screen="result-gate"]'),
+      results: root.querySelector('[data-screen="results"]')
+    };
+
+    function byData(name) {
+      return root.querySelector('[data-js="' + name + '"]');
     }
 
-    window.localStorage.setItem(
-      progressKey,
-      JSON.stringify({
-        answers: nextAnswers,
-        currentQuestion: nextCurrentQuestion,
-        screen: nextScreen,
-        timestamp: Date.now(),
-      }),
-    );
-  }
-
-  function clearProgress() {
-    if (typeof window === "undefined") {
-      return;
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
-    window.localStorage.removeItem(progressKey);
-  }
-
-  useIsomorphicLayoutEffect(() => {
-    if (typeof window === "undefined") {
-      return clearAdvanceTimer;
-    }
-
-    try {
-      const saved = window.localStorage.getItem(progressKey);
-
-      if (saved) {
-        const parsed = JSON.parse(saved) as {
-          answers?: Record<string, number>;
-          currentQuestion?: number;
-          screen?: QuizScreen;
-        };
-        const savedAnswers = parsed.answers ?? {};
-        const savedCurrent = parsed.currentQuestion ?? 0;
-
-        if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
-          clearProgress();
-        } else {
-          setAnswers(
-            Object.fromEntries(
-              Object.entries(savedAnswers)
-                .map(([key, value]) => [Number(key), value])
-                .filter(([key, value]) => Number.isInteger(key) && typeof value === "number"),
-            ) as Record<number, number>,
-          );
-          setCurrentQuestion(savedCurrent);
-          setScreen(parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question");
-        }
+    function clearAdvanceTimer() {
+      if (advanceTimer) {
+        window.clearTimeout(advanceTimer);
+        advanceTimer = null;
       }
-    } catch {
+    }
+
+    function show(screenName, shouldScroll) {
+      Object.keys(screens).forEach(function (key) {
+        if (screens[key]) {
+          screens[key].classList.toggle("legacy-hidden", key !== screenName);
+        }
+      });
+
+      if (screenName === "stageGate" && screens.stageGate) {
+        screens.stageGate.classList.remove("legacy-stage-result");
+        void screens.stageGate.offsetWidth;
+        screens.stageGate.classList.add("legacy-stage-result");
+      }
+
+      if (shouldScroll !== false) {
+        window.requestAnimationFrame(function () {
+          root.querySelector("#quiz-top")?.scrollIntoView({ block: "start", behavior: "smooth" });
+        });
+      }
+    }
+
+    function normalizeAnswers(savedAnswers) {
+      var nextAnswers = {};
+      if (!savedAnswers || typeof savedAnswers !== "object") return nextAnswers;
+      Object.keys(savedAnswers).forEach(function (key) {
+        var index = Number(key);
+        var value = savedAnswers[key];
+        if (Number.isInteger(index) && typeof value === "number") {
+          nextAnswers[index] = value;
+        }
+      });
+      return nextAnswers;
+    }
+
+    function saveProgress(nextScreen) {
+      try {
+        window.localStorage.setItem(config.progressKey, JSON.stringify({
+          answers: answers,
+          currentQuestion: current,
+          screen: nextScreen,
+          timestamp: Date.now()
+        }));
+      } catch (error) {}
+    }
+
+    function clearProgress() {
+      try {
+        window.localStorage.removeItem(config.progressKey);
+      } catch (error) {}
+    }
+
+    function getResumePointAfterAnsweredQuestion(questionIndex) {
+      var answeredQuestion = quiz.questions[questionIndex];
+      var nextQuestion = quiz.questions[questionIndex + 1];
+
+      if (!answeredQuestion || !nextQuestion) {
+        return { currentQuestion: questionIndex, screen: "resultGate" };
+      }
+
+      if ((nextQuestion.stage || 0) !== (answeredQuestion.stage || 0)) {
+        return { currentQuestion: questionIndex + 1, screen: "stageGate" };
+      }
+
+      return { currentQuestion: questionIndex + 1, screen: "question" };
+    }
+
+    function track(eventName, payload) {
+      var data = payload || {};
+      try { window.fbq?.("trackCustom", eventName, data); } catch (error) {}
+      try { window.gtag?.("event", eventName, data); } catch (error) {}
+    }
+
+    function trackRewardGranted(payload) {
+      track("reward_granted", payload);
+    }
+
+    function trackRewardClosed(payload) {
+      track("reward_closed", payload);
+    }
+
+    function resolveWithoutAd(placement) {
+      trackRewardGranted({ placement: placement, fallback: true });
+      trackRewardClosed({ placement: placement, reason: "fallback_resolved" });
+      return true;
+    }
+
+    function clearRewardedSlot(slot) {
+      if (!slot) return;
+      try { window.googletag?.destroySlots?.([slot]); } catch (error) {}
+    }
+
+    function requestRewardedAd(placement, attempt) {
+      var currentAttempt = attempt || 1;
+
+      if (!window.googletag) {
+        window.googletag = { cmd: [] };
+      }
+
+      return new Promise(function (resolve) {
+        var rewardedSlot = null;
+        var rewardGranted = false;
+        var hasSettled = false;
+
+        function settle(value) {
+          if (hasSettled) return;
+          hasSettled = true;
+          window.clearTimeout(timeout);
+          clearRewardedSlot(rewardedSlot);
+          resolve(value);
+        }
+
+        function retryOrContinue() {
+          window.clearTimeout(timeout);
+
+          if (currentAttempt < maxAdAttempts) {
+            window.setTimeout(function () {
+              requestRewardedAd(placement, currentAttempt + 1).then(resolve);
+            }, 450);
+            return;
+          }
+
+          settle(resolveWithoutAd(placement));
+        }
+
+        var timeout = window.setTimeout(retryOrContinue, adTimeoutMs);
+        var googleTag = window.googletag;
+
+        if (!googleTag?.cmd || !googleTag.defineOutOfPageSlot || !googleTag.pubads) {
+          retryOrContinue();
+          return;
+        }
+
+        googleTag.cmd.push(function () {
+          try {
+            var pubads = window.googletag?.pubads?.();
+            pubads?.updateCorrelator?.();
+
+            var rewardedFormat = window.googletag?.enums?.OutOfPageFormat?.REWARDED;
+            var slot = window.googletag?.defineOutOfPageSlot?.(config.rewardedAdUnitPath, rewardedFormat);
+            rewardedSlot = slot || null;
+
+            if (!slot || !pubads) {
+              retryOrContinue();
+              return;
+            }
+
+            function removeListeners() {
+              pubads.removeEventListener?.("rewardedSlotReady", onReady);
+              pubads.removeEventListener?.("rewardedSlotGranted", onGranted);
+              pubads.removeEventListener?.("rewardedSlotClosed", onClosed);
+            }
+
+            function onReady(event) {
+              if (event.slot !== slot) return;
+              window.clearTimeout(timeout);
+              event.makeRewardedVisible?.();
+            }
+
+            function onGranted(event) {
+              if (event.slot !== slot) return;
+              rewardGranted = true;
+              trackRewardGranted({ placement: placement });
+            }
+
+            function onClosed(event) {
+              if (event.slot !== slot) return;
+              removeListeners();
+
+              if (rewardGranted) {
+                trackRewardClosed({ placement: placement });
+                settle(true);
+                return;
+              }
+
+              retryOrContinue();
+            }
+
+            pubads.addEventListener?.("rewardedSlotReady", onReady);
+            pubads.addEventListener?.("rewardedSlotGranted", onGranted);
+            pubads.addEventListener?.("rewardedSlotClosed", onClosed);
+            window.googletag?.enableServices?.();
+            window.googletag?.display?.(slot);
+          } catch (error) {
+            retryOrContinue();
+          }
+        });
+      });
+    }
+
+    function getStageIndexes() {
+      return Array.from(new Set(quiz.questions.map(function (question) {
+        return question.stage || 0;
+      }))).sort(function (a, b) { return a - b; });
+    }
+
+    function getQuestionStage(questionIndex) {
+      return quiz.questions[questionIndex]?.stage || 0;
+    }
+
+    function getStageName(stage) {
+      return quiz.stages[stage] || quiz.stages[0] || quiz.title;
+    }
+
+    function getStageQuestions(stage) {
+      return quiz.questions
+        .map(function (question, index) { return { question: question, index: index }; })
+        .filter(function (item) { return (item.question.stage || 0) === stage; });
+    }
+
+    function getCurrentStagePosition(stage) {
+      var stageQuestions = getStageQuestions(stage);
+      return stageQuestions.findIndex(function (item) { return item.index === current; }) + 1;
+    }
+
+    function getScore() {
+      return quiz.questions.reduce(function (total, question, index) {
+        return total + (answers[index] === question.answerIndex ? 1 : 0);
+      }, 0);
+    }
+
+    function getStageScore(stage) {
+      return getStageQuestions(stage).reduce(function (total, item) {
+        return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
+      }, 0);
+    }
+
+    function getStageBadge(stage) {
+      var stageQuestions = getStageQuestions(stage);
+      var stageScore = getStageScore(stage);
+
+      if (stageScore >= Math.ceil(stageQuestions.length * 0.75)) return t.results.excellent;
+      if (stageScore >= Math.ceil(stageQuestions.length * 0.5)) return t.results.strong;
+      return t.results.keepGoing;
+    }
+
+    function getAnsweredCount() {
+      return Object.keys(answers).length;
+    }
+
+    function setButtonLoading(button, loadingText, isLoading) {
+      if (!button) return;
+      if (isLoading) {
+        button.disabled = true;
+        button.dataset.readyText = button.innerHTML;
+        button.textContent = loadingText;
+        return;
+      }
+      button.disabled = false;
+      if (button.dataset.readyText) {
+        button.innerHTML = button.dataset.readyText;
+      }
+    }
+
+    function applyAnswerState(choiceIndex) {
+      var question = quiz.questions[current];
+      var isCorrect = question.answerIndex === choiceIndex;
+
+      root.querySelectorAll('[data-js="answers"] .legacy-answer').forEach(function (button) {
+        var index = Number(button.dataset.choiceIndex);
+        var isSelected = index === choiceIndex;
+
+        button.disabled = true;
+        button.classList.toggle("selected", isSelected);
+        button.classList.toggle("correct", isSelected && isCorrect);
+        button.classList.toggle("wrong", isSelected && !isCorrect);
+        button.classList.toggle("is-dimmed", !isSelected);
+      });
+    }
+
+    function renderQuestion(shouldScroll) {
+      var question = quiz.questions[current];
+      if (!question) {
+        show("start", shouldScroll);
+        return;
+      }
+
+      var currentStage = getQuestionStage(current);
+      var stageQuestions = getStageQuestions(currentStage);
+      var stagePosition = getCurrentStagePosition(currentStage);
+      var stageTotal = stageQuestions.length || 1;
+      var stageProgress = Math.max(0, Math.round(((stagePosition - 1) / stageTotal) * 100));
+      var visualBox = byData("visual");
+      var answersBox = byData("answers");
+
+      byData("round-label").textContent = t.quiz.round + " " + (currentStage + 1) + ": " + getStageName(currentStage);
+      byData("count-label").textContent = t.quiz.question + " " + stagePosition + "/" + stageTotal;
+      byData("progress-bar").style.width = stageProgress + "%";
+      byData("question-text").textContent = question.prompt;
+
+      if (question.visual) {
+        visualBox.innerHTML = question.visual;
+        visualBox.classList.remove("legacy-hidden");
+      } else {
+        visualBox.innerHTML = "";
+        visualBox.classList.add("legacy-hidden");
+      }
+
+      answersBox.innerHTML = question.choices.map(function (choice, index) {
+        return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
+          '<small>' + String.fromCharCode(65 + index) + '</small>' +
+          escapeHtml(choice) +
+          '</button>';
+      }).join("");
+
+      answersBox.querySelectorAll(".legacy-answer").forEach(function (button) {
+        button.addEventListener("click", function () {
+          answerQuestion(Number(button.dataset.choiceIndex));
+        });
+      });
+
+      show("question", shouldScroll);
+    }
+
+    function answerQuestion(choiceIndex) {
+      if (answers[current] !== undefined) return;
+
+      clearAdvanceTimer();
+      var question = quiz.questions[current];
+      var isCorrect = question.answerIndex === choiceIndex;
+      answers[current] = choiceIndex;
+      saveProgress("question");
+      applyAnswerState(choiceIndex);
+      track("question_answered", {
+        quiz_slug: quiz.slug,
+        question_index: current,
+        stage: question.stage || 0,
+        selected_answer_index: choiceIndex,
+        correct: isCorrect
+      });
+
+      advanceTimer = window.setTimeout(function () {
+        advanceAfterAnswer(choiceIndex);
+      }, isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
+    }
+
+    function advanceAfterAnswer(choiceIndex) {
+      var question = quiz.questions[current];
+      var currentStage = question.stage || 0;
+      var nextQuestion = quiz.questions[current + 1];
+      var nextStage = nextQuestion ? (nextQuestion.stage || 0) : currentStage;
+
+      if (!nextQuestion) {
+        track("stage_complete", {
+          quiz_slug: quiz.slug,
+          stage: currentStage,
+          stage_name: getStageName(currentStage),
+          score: getScore()
+        });
+        saveProgress("result-gate");
+        showResultGate();
+        return;
+      }
+
+      if (nextStage !== currentStage) {
+        track("stage_complete", {
+          quiz_slug: quiz.slug,
+          stage: currentStage,
+          stage_name: getStageName(currentStage),
+          stage_score: getStageScore(currentStage),
+          stage_question_count: getStageQuestions(currentStage).length
+        });
+        current += 1;
+        saveProgress("stage-gate");
+        showStageGate();
+        return;
+      }
+
+      current += 1;
+      saveProgress("question");
+      renderQuestion();
+    }
+
+    function showStageGate(shouldScroll) {
+      var completedStage = Math.max(0, getQuestionStage(Math.max(0, current - 1)));
+      var stageIndexes = getStageIndexes();
+      var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
+      var nextStageName = nextStage !== undefined ? getStageName(nextStage) : null;
+      var buttonLabel = nextStageName
+        ? t.results.startStage + " " + nextStageName + " →"
+        : t.results.viewResults + " →";
+      var copy = quiz.stageEncouragement[Math.min(completedStage, quiz.stageEncouragement.length - 1)] || "";
+
+      byData("stage-title").textContent = t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
+      byData("stage-copy").textContent = copy;
+      byData("stage-next").textContent = nextStageName ? t.results.nextStage + ": " + nextStageName : "";
+      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
+      byData("stage-score").textContent = getScore() + "/" + current;
+      byData("stage-badge").textContent = getStageBadge(completedStage);
+      byData("stage-button").textContent = buttonLabel;
+      byData("stage-button").dataset.readyText = buttonLabel;
+      show("stageGate", shouldScroll);
+    }
+
+    function showResultGate(shouldScroll) {
+      byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
+      byData("result-gate-button").textContent = t.quiz.revealPrefix + " " + quiz.result.profileName + " " + t.quiz.profile + " →";
+      byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
+      show("resultGate", shouldScroll);
+    }
+
+    function getStageScores() {
+      return quiz.stages.map(function (name, stage) {
+        var questions = getStageQuestions(stage);
+        var correct = questions.reduce(function (total, item) {
+          return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
+        }, 0);
+
+        return {
+          name: name,
+          correct: correct,
+          total: questions.length,
+          ratio: questions.length ? correct / questions.length : 0
+        };
+      });
+    }
+
+    function getStrongestStage(stageScores) {
+      return stageScores.slice().sort(function (a, b) {
+        return b.ratio - a.ratio || b.correct - a.correct;
+      })[0] || { name: quiz.title, correct: 0, total: 0, ratio: 0 };
+    }
+
+    function formatTemplate(template, values) {
+      return Object.keys(values).reduce(function (text, key) {
+        return text.split("{" + key + "}").join(values[key]);
+      }, template);
+    }
+
+    function getResultProfile(score, total, strongestStage) {
+      var ratio = total ? score / total : 0;
+      var sortedProfiles = quiz.result.profiles.slice().sort(function (a, b) {
+        return b.minRatio - a.minRatio;
+      });
+      var profile = sortedProfiles.find(function (item) {
+        return ratio >= item.minRatio;
+      }) || quiz.result.profiles[quiz.result.profiles.length - 1];
+
+      return {
+        tier: profile.tier,
+        title: profile.title,
+        copy: formatTemplate(profile.copy, { stage: strongestStage.name }),
+        percentile: profile.percentile
+      };
+    }
+
+    function scoreForCategories(categories) {
+      var items = quiz.questions
+        .map(function (question, index) { return { question: question, index: index }; })
+        .filter(function (item) {
+          return item.question.category && categories.indexOf(item.question.category) !== -1;
+        });
+
+      if (!items.length) return 0;
+
+      var correct = items.reduce(function (total, item) {
+        return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
+      }, 0);
+
+      return Math.round(45 + (correct / items.length) * 55);
+    }
+
+    function getMissedQuestions() {
+      return quiz.questions
+        .map(function (question, index) { return { question: question, index: index }; })
+        .filter(function (item) { return answers[item.index] !== item.question.answerIndex; });
+    }
+
+    function renderReview(missedQuestions) {
+      byData("review").innerHTML = missedQuestions.map(function (item) {
+        var question = item.question;
+        var index = item.index;
+        var answer = question.choices[answers[index]] || t.results.review.notAnswered;
+        var html = '<div class="legacy-miss">' +
+          '<strong>' + (index + 1) + '. ' + escapeHtml(question.prompt) + '</strong>' +
+          '<p>' + escapeHtml(t.results.review.yourAnswer) + ': ' + escapeHtml(answer) + '<br />' +
+          escapeHtml(t.results.review.correctAnswer) + ': ' + escapeHtml(question.choices[question.answerIndex]) + '</p>';
+
+        if (question.explanation) {
+          html += '<p>' + escapeHtml(question.explanation) + '</p>';
+        }
+
+        return html + '</div>';
+      }).join("");
+    }
+
+    function renderResults(shouldScroll) {
+      var score = getScore();
+      var stageScores = getStageScores();
+      var strongestStage = getStrongestStage(stageScores);
+      var profile = getResultProfile(score, quiz.questions.length, strongestStage);
+      var missedQuestions = getMissedQuestions();
+      var missedQuestionLabel = missedQuestions.length === 1
+        ? t.results.review.missedQuestionSingular
+        : t.results.review.missedQuestionPlural;
+
+      hasUnlockedReview = false;
+      byData("result-profile-badge").textContent = profile.tier + " • " + strongestStage.name;
+      byData("result-title").textContent = profile.title;
+      byData("result-copy").textContent = profile.copy;
+      byData("final-score").textContent = score + "/" + quiz.questions.length;
+      byData("percentile").textContent = profile.percentile;
+      byData("cognitive-scores").innerHTML = quiz.result.scoreDimensions.map(function (dimension) {
+        return '<div class="legacy-cog-item"><strong>' + scoreForCategories(dimension.categories) + '</strong><span>' + escapeHtml(dimension.label) + '</span></div>';
+      }).join("");
+      byData("unlock-title").textContent = missedQuestions.length ? t.results.review.wantMissed : t.results.review.perfectScore;
+      byData("unlock-copy").textContent = missedQuestions.length
+        ? missedQuestions.length + " " + missedQuestionLabel + " " + t.results.review.readyToReview
+        : t.results.review.perfectCopy;
+      byData("unlock-button").classList.toggle("legacy-hidden", !missedQuestions.length);
+      byData("unlock-button").disabled = false;
+      byData("unlock-button").textContent = t.results.review.unlockButton;
+      byData("review").innerHTML = "";
+
+      show("results", shouldScroll);
+      track("quiz_complete", {
+        quiz_slug: quiz.slug,
+        quiz_title: quiz.title,
+        score: score,
+        question_count: quiz.questions.length
+      });
       clearProgress();
     }
 
-    return clearAdvanceTimer;
-  }, []);
-
-  async function startQuiz() {
-    clearAdvanceTimer();
-    setIsStarting(true);
-    await showRewardedAdBeforeStart();
-    trackQuizStart({
-      quiz_slug: quiz.slug,
-      quiz_title: quiz.title,
-      question_count: quiz.questions.length,
-    });
-    setCurrentQuestion(0);
-    setAnswers({});
-    setHasUnlockedReview(false);
-    saveProgress(0, {}, "question");
-    setScreen("question");
-    setIsStarting(false);
-  }
-
-  function answerQuestion(choiceIndex: number) {
-    if (hasAnsweredCurrent || screen !== "question") {
-      return;
+    function startFresh() {
+      current = 0;
+      answers = {};
+      hasUnlockedReview = false;
+      saveProgress("question");
+      renderQuestion();
     }
 
-    clearAdvanceTimer();
-    const isCorrect = question.answerIndex === choiceIndex;
-    const nextAnswers = { ...answers, [currentQuestion]: choiceIndex };
-    setAnswers(nextAnswers);
-    saveProgress(currentQuestion, nextAnswers, "question");
-    trackQuestionAnswered({
-      quiz_slug: quiz.slug,
-      question_index: currentQuestion,
-      stage: question.stage ?? 0,
-      selected_answer_index: choiceIndex,
-      correct: isCorrect,
-    });
-
-    advanceTimer.current = setTimeout(() => {
-      advanceAfterAnswer(choiceIndex);
-    }, isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
-  }
-
-  function advanceAfterAnswer(choiceIndex: number) {
-    const currentStage = question.stage ?? 0;
-    const nextQuestion = quiz.questions[currentQuestion + 1];
-    const nextStage = nextQuestion?.stage ?? currentStage;
-    const nextAnswers = { ...answers, [currentQuestion]: choiceIndex };
-    const nextScore = quiz.questions.reduce(
-      (total, quizQuestion, index) => total + (nextAnswers[index] === quizQuestion.answerIndex ? 1 : 0),
-      0,
-    );
-
-    if (!nextQuestion) {
-      trackStageComplete({
-        quiz_slug: quiz.slug,
-        stage: currentStage,
-        stage_name: stageName,
-        score: nextScore,
-      });
-      setScreen("result-gate");
-      saveProgress(currentQuestion, nextAnswers, "result-gate");
-      return;
+    function restartQuiz() {
+      clearAdvanceTimer();
+      clearProgress();
+      current = 0;
+      answers = {};
+      hasUnlockedReview = false;
+      show("start");
     }
 
-    if (nextStage !== currentStage) {
-      const stageQuestions = quiz.questions.filter((quizQuestion) => (quizQuestion.stage ?? 0) === currentStage);
-      const stageScore = quiz.questions.reduce((total, quizQuestion, index) => {
-        if ((quizQuestion.stage ?? 0) !== currentStage) {
-          return total;
+    function loadProgress() {
+      try {
+        var saved = window.localStorage.getItem(config.progressKey);
+        if (!saved) return false;
+
+        var parsed = JSON.parse(saved);
+        var savedCurrent = parsed.currentQuestion || 0;
+        var savedScreen = parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question";
+
+        if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
+          clearProgress();
+          return false;
         }
 
-        return total + (nextAnswers[index] === quizQuestion.answerIndex ? 1 : 0);
-      }, 0);
+        answers = normalizeAnswers(parsed.answers);
+        var resumePoint = savedScreen === "question" && answers[savedCurrent] !== undefined
+          ? getResumePointAfterAnsweredQuestion(savedCurrent)
+          : { currentQuestion: savedCurrent, screen: savedScreen === "stage-gate" ? "stageGate" : savedScreen === "result-gate" ? "resultGate" : "question" };
 
-      trackStageComplete({
-        quiz_slug: quiz.slug,
-        stage: currentStage,
-        stage_name: stageName,
-        stage_score: stageScore,
-        stage_question_count: stageQuestions.length,
-      });
-      setCurrentQuestion((value) => value + 1);
-      setScreen("stage-gate");
-      saveProgress(currentQuestion + 1, nextAnswers, "stage-gate");
-      return;
+        current = resumePoint.currentQuestion;
+
+        if (resumePoint.screen === "stageGate") {
+          saveProgress("stage-gate");
+          showStageGate(false);
+          return true;
+        }
+
+        if (resumePoint.screen === "resultGate") {
+          saveProgress("result-gate");
+          showResultGate(false);
+          return true;
+        }
+
+        saveProgress("question");
+        renderQuestion(false);
+        return true;
+      } catch (error) {
+        clearProgress();
+        return false;
+      }
     }
 
-    setCurrentQuestion((value) => value + 1);
-    saveProgress(currentQuestion + 1, nextAnswers, "question");
-  }
-
-  async function continueFromStageGate() {
-    setIsStageLoading(true);
-    await showRewardedAdBeforeStageResults();
-    setScreen("question");
-    saveProgress(currentQuestion, answers, "question");
-    setIsStageLoading(false);
-  }
-
-  async function revealResults() {
-    setIsRevealingResults(true);
-    await showRewardedAdBeforeFinalResults();
-    trackQuizComplete({
-      quiz_slug: quiz.slug,
-      quiz_title: quiz.title,
-      score,
-      question_count: quiz.questions.length,
+    root.querySelectorAll('[data-action="start"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        setButtonLoading(button, t.quiz.preparing, true);
+        requestRewardedAd("before_start").then(function () {
+          track("quiz_start", {
+            quiz_slug: quiz.slug,
+            quiz_title: quiz.title,
+            question_count: quiz.questions.length
+          });
+          setButtonLoading(button, t.quiz.preparing, false);
+          startFresh();
+        });
+      });
     });
-    setScreen("results");
-    clearProgress();
-    setIsRevealingResults(false);
-  }
 
-  async function unlockReview() {
-    setIsUnlockingReview(true);
-    await showRewardedAdBeforeFinalResults();
-    setHasUnlockedReview(true);
-    setIsUnlockingReview(false);
-  }
-
-  function restartQuiz() {
-    clearAdvanceTimer();
-    clearProgress();
-    setScreen("start");
-    setCurrentQuestion(0);
-    setAnswers({});
-    setHasUnlockedReview(false);
-    setIsStageLoading(false);
-    setIsRevealingResults(false);
-    setIsUnlockingReview(false);
-    window.requestAnimationFrame(() => {
-      document.getElementById("quiz-top")?.scrollIntoView({ block: "start", behavior: "smooth" });
+    root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        setButtonLoading(button, t.loading.ad, true);
+        requestRewardedAd("before_stage_results").then(function () {
+          setButtonLoading(button, t.loading.ad, false);
+          saveProgress("question");
+          renderQuestion();
+        });
+      });
     });
+
+    root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (getAnsweredCount() !== quiz.questions.length) return;
+        setButtonLoading(button, t.quiz.preparingResults, true);
+        requestRewardedAd("before_final_results").then(function () {
+          setButtonLoading(button, t.quiz.preparingResults, false);
+          renderResults();
+        });
+      });
+    });
+
+    root.querySelectorAll('[data-action="unlock-review"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (hasUnlockedReview) return;
+        button.disabled = true;
+        button.textContent = t.loading.ad;
+        requestRewardedAd("before_final_results").then(function () {
+          hasUnlockedReview = true;
+          button.disabled = true;
+          button.textContent = t.results.review.unlockDone;
+          renderReview(getMissedQuestions());
+        });
+      });
+    });
+
+    root.querySelectorAll('[data-action="restart"]').forEach(function (button) {
+      button.addEventListener("click", restartQuiz);
+    });
+
+    if (!loadProgress()) {
+      show("start", false);
+    }
   }
+
+  boot();
+})();
+`;
+}
+
+export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
+  const rootId = `quiz-runner-${quiz.slug}-${locale}`;
+  const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
+  const script = createQuizRunnerScript({
+    locale,
+    progressKey,
+    quiz,
+    rewardedAdUnitPath: siteConfig.rewardedAdUnitPath,
+    rootId,
+    translations,
+  });
 
   return (
-    <div className={`legacy-quiz legacy-quiz--${quiz.slug}`} style={{ "--quiz-accent": quiz.accent } as CSSProperties}>
+    <div
+      id={rootId}
+      className={`legacy-quiz legacy-quiz--${quiz.slug}`}
+      style={{ "--quiz-accent": quiz.accent } as CSSProperties}
+    >
       <main id="quiz-top" className="legacy-main">
-        {screen === "start" ? (
-          <section className="legacy-card legacy-start">
-            <div className="legacy-badge" aria-hidden="true">
-              <span>{quiz.cardIcon}</span>
+        <section data-screen="start" className="legacy-card legacy-start">
+          <div className="legacy-badge" aria-hidden="true">
+            <span>{quiz.cardIcon}</span>
+          </div>
+          <h1>{renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
+          <p className="legacy-sub">
+            {quiz.landing.quickStartText}
+            <br />
+            {quiz.landing.challengeText}
+          </p>
+          <div className="legacy-social">
+            <div className="legacy-avatars" aria-hidden="true">
+              <span className="legacy-avatar legacy-avatar--one" />
+              <span className="legacy-avatar legacy-avatar--two" />
+              <span className="legacy-avatar legacy-avatar--three" />
+              <span className="legacy-avatar legacy-avatar--four" />
             </div>
-            <h1>{renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
-            <p className="legacy-sub">
-              {quiz.landing.quickStartText}
-              <br />
-              {quiz.landing.challengeText}
-            </p>
-            <div className="legacy-social">
-              <div className="legacy-avatars" aria-hidden="true">
-                <span className="legacy-avatar legacy-avatar--one" />
-                <span className="legacy-avatar legacy-avatar--two" />
-                <span className="legacy-avatar legacy-avatar--three" />
-                <span className="legacy-avatar legacy-avatar--four" />
-              </div>
-              <div>
-                <strong>{quiz.landing.socialProof}</strong>
-              </div>
+            <div>
+              <strong>{quiz.landing.socialProof}</strong>
             </div>
-            <button className="legacy-primary" type="button" disabled={isStarting} onClick={startQuiz}>
-              <span aria-hidden="true">▶</span> {isStarting ? translations.quiz.preparing : translations.quiz.startTest}
-            </button>
-            <div className="legacy-ad-note">
-              <span className="legacy-shield" aria-hidden="true">✓</span>
-              <span>
-                {translations.quiz.shortAd} — <b>{translations.quiz.thenBegins}</b>
-              </span>
+          </div>
+          <button className="legacy-primary" type="button" data-action="start">
+            <span aria-hidden="true">▶</span> {translations.quiz.startTest}
+          </button>
+          <div className="legacy-ad-note">
+            <span className="legacy-shield" aria-hidden="true">✓</span>
+            <span>
+              {translations.quiz.shortAd} — <b>{translations.quiz.thenBegins}</b>
+            </span>
+          </div>
+        </section>
+
+        <section data-screen="question" className="legacy-hidden">
+          <div className="legacy-progress">
+            <div className="legacy-progress__row">
+              <strong data-js="round-label" />
+              <span data-js="count-label" />
             </div>
-          </section>
-        ) : null}
-
-        {screen === "question" ? (
-          <>
-            <div className="legacy-progress">
-              <div className="legacy-progress__row">
-                <strong>
-                  {translations.quiz.round} {(question.stage ?? 0) + 1}: {stageName}
-                </strong>
-                <span>{translations.quiz.question} {currentStagePosition}/{currentStageTotal}</span>
-              </div>
-              <div className="legacy-bar">
-                <span style={{ width: `${currentStageProgress}%` }} />
-              </div>
+            <div className="legacy-bar">
+              <span data-js="progress-bar" />
             </div>
+          </div>
 
-            <article className="legacy-card legacy-question">
-              <h2>{question.prompt}</h2>
-              {question.visual ? (
-                <div
-                  className="legacy-visual"
-                  dangerouslySetInnerHTML={{ __html: question.visual }}
-                />
-              ) : null}
-              <div className="legacy-answers">
-                {question.choices.map((choice, choiceIndex) => {
-                  const isSelected = selectedAnswer === choiceIndex;
-                  const isCorrect = question.answerIndex === choiceIndex;
-                  const revealCorrect = hasAnsweredCurrent && isSelected && isCorrect;
-                  const revealWrong = hasAnsweredCurrent && isSelected && !isCorrect;
+          <article className="legacy-card legacy-question">
+            <h2 data-js="question-text" />
+            <div data-js="visual" className="legacy-visual legacy-hidden" />
+            <div data-js="answers" className="legacy-answers" />
+          </article>
+        </section>
 
-                  return (
-                    <button
-                      key={`${choice}-${choiceIndex}`}
-                      type="button"
-                      disabled={hasAnsweredCurrent}
-                      onClick={() => answerQuestion(choiceIndex)}
-                      className={[
-                        "legacy-answer",
-                        isSelected ? "selected" : "",
-                        revealCorrect ? "correct" : "",
-                        revealWrong ? "wrong" : "",
-                        hasAnsweredCurrent && !isSelected ? "is-dimmed" : "",
-                      ].join(" ")}
-                    >
-                      <small>{String.fromCharCode(65 + choiceIndex)}</small>
-                      {choice}
-                    </button>
-                  );
-                })}
-              </div>
-            </article>
-          </>
-        ) : null}
-
-        {screen === "stage-gate" ? (
-          <StageResultScreen
-            badge={stageBadge}
-            buttonLabel={
-              nextStageName
-                ? `${translations.results.startStage} ${nextStageName} →`
-                : `${translations.results.viewResults} →`
-            }
-            copy={
-              quiz.stageEncouragement[Math.min(completedStage, quiz.stageEncouragement.length - 1)]
-            }
-            helperText={translations.rewardedAd.helper}
-            isLoading={isStageLoading}
-            nextStageName={nextStageName}
-            scoreLabel={`${score}/${currentQuestion}`}
-            title={`${translations.quiz.round} ${completedStage + 1} ${translations.results.complete}`}
-            translations={translations}
-            onContinue={continueFromStageGate}
-          />
-        ) : null}
-
-        {screen === "result-gate" ? (
-          <section className="legacy-card legacy-result">
-            <span className="legacy-profile-badge">{translations.quiz.profileReady}</span>
-            <h2>
-              {translations.quiz.your} {profileName} {translations.quiz.profile}
-            </h2>
-            <button
-              type="button"
-              disabled={answeredCount !== quiz.questions.length || isRevealingResults}
-              onClick={revealResults}
-              className="legacy-primary"
-            >
-              {isRevealingResults
-                ? translations.quiz.preparingResults
-                : `${translations.quiz.revealPrefix} ${profileName} ${translations.quiz.profile} →`}
-            </button>
-            <div className="legacy-ad-note">
-              <span className="legacy-shield" aria-hidden="true">i</span>
-              <span>{translations.rewardedAd.helper}</span>
+        <section data-screen="stage-gate" className="legacy-card legacy-result legacy-stage-result legacy-hidden">
+          <h2 data-js="stage-title" />
+          <p data-js="stage-copy" className="legacy-stage-copy" />
+          <p data-js="stage-next" className="legacy-stage-next" />
+          <div className="legacy-stage-stats">
+            <div>
+              <strong data-js="stage-score" />
+              <span>{translations.results.scoreSoFar}</span>
             </div>
-          </section>
-        ) : null}
+            <div>
+              <strong data-js="stage-badge" />
+              <span>{translations.results.roundResult}</span>
+            </div>
+          </div>
+          <button type="button" data-js="stage-button" data-action="stage-continue" className="legacy-primary legacy-stage-button" />
+          <div className="legacy-ad-note">
+            <span className="legacy-shield" aria-hidden="true">i</span>
+            <span>{translations.rewardedAd.helper}</span>
+          </div>
+        </section>
 
-        {screen === "results" ? (
-          <ResultScreen
-            answers={answers}
-            hasUnlockedReview={hasUnlockedReview}
-            isUnlockingReview={isUnlockingReview}
-            quiz={quiz}
-            score={score}
-            translations={translations}
-            onUnlockReview={unlockReview}
-          />
-        ) : null}
+        <section data-screen="result-gate" className="legacy-card legacy-result legacy-hidden">
+          <span className="legacy-profile-badge">{translations.quiz.profileReady}</span>
+          <h2 data-js="result-gate-title" />
+          <button type="button" data-js="result-gate-button" data-action="reveal-results" className="legacy-primary" />
+          <div className="legacy-ad-note">
+            <span className="legacy-shield" aria-hidden="true">i</span>
+            <span>{translations.rewardedAd.helper}</span>
+          </div>
+        </section>
+
+        <section data-screen="results" className="legacy-card legacy-result legacy-hidden">
+          <span data-js="result-profile-badge" className="legacy-profile-badge" />
+          <h2 data-js="result-title" />
+          <p data-js="result-copy" className="legacy-sub" />
+          <div className="legacy-score">
+            <strong data-js="final-score" />
+            <span>{translations.quiz.finalScore}</span>
+          </div>
+          <div className="legacy-score">
+            <strong data-js="percentile" />
+            <span>{translations.quiz.profile}</span>
+          </div>
+          <div data-js="cognitive-scores" className="legacy-cognitive-scores" />
+          <div className="legacy-unlock-panel">
+            <h3 data-js="unlock-title" />
+            <p data-js="unlock-copy" />
+            <button type="button" data-js="unlock-button" data-action="unlock-review" className="legacy-primary" />
+          </div>
+          <div data-js="review" className="legacy-review" />
+        </section>
+
       </main>
+
       {quiz.infoPanel ? (
         <section className="legacy-card quiz-info-panel">
           <h2>{quiz.infoPanel.title}</h2>
@@ -457,11 +864,12 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             <h3>{quiz.infoPanel.footerTitle}</h3>
             <p>{quiz.infoPanel.footerBody}</p>
           </div>
-          <button type="button" onClick={restartQuiz} className="legacy-primary legacy-restart">
+          <button type="button" data-action="restart" className="legacy-primary legacy-restart">
             {translations.quiz.restartTest}
           </button>
         </section>
       ) : null}
+      <script dangerouslySetInnerHTML={{ __html: script }} />
     </div>
   );
 }

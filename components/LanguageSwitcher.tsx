@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   getDefaultLocale,
   getLocalePath,
@@ -32,13 +31,13 @@ export function LanguageSwitcher({ locale, path, translations }: LanguageSwitche
           const href = supportedLocale === defaultLocale ? path : getLocalePath(supportedLocale, path);
 
           return (
-            <Link
+            <a
               key={supportedLocale}
               href={href}
               aria-current={supportedLocale === locale ? "page" : undefined}
             >
               {languageNames[supportedLocale]}
-            </Link>
+            </a>
           );
         })}
       </div>
