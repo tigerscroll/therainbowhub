@@ -11,16 +11,142 @@ type QuizRunnerProps = {
 
 const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
 
+function escapeHtml(value: unknown) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function renderTitleWithAccentPercent(title: string) {
   const parts = title.split(/(\d+(?:\.\d+)?%)/g);
 
-  return parts.map((part, index) =>
-    percentTokenPattern.test(part) ? <span key={`${part}-${index}`}>{part}</span> : part,
-  );
+  return parts
+    .map((part) => (percentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
+    .join("");
 }
 
 function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+function createQuizRunnerHtml(config: {
+  quiz: Quiz;
+  script: string;
+  translations: Translations;
+}) {
+  const { quiz, script, translations } = config;
+  const infoPanel = quiz.infoPanel
+    ? `<section class="legacy-card quiz-info-panel">
+          <h2>${escapeHtml(quiz.infoPanel.title)}</h2>
+          <p>${escapeHtml(quiz.infoPanel.intro)}</p>
+          <div class="quiz-info-panel__columns">
+            ${quiz.infoPanel.columns
+              .map(
+                (column) => `<div>
+                  <h3>${escapeHtml(column.title)}</h3>
+                  <p>${escapeHtml(column.body)}</p>
+                </div>`,
+              )
+              .join("")}
+          </div>
+          <div class="quiz-info-panel__footer">
+            <h3>${escapeHtml(quiz.infoPanel.footerTitle)}</h3>
+            <p>${escapeHtml(quiz.infoPanel.footerBody)}</p>
+          </div>
+          <button type="button" data-action="restart" class="legacy-primary legacy-restart">
+            ${escapeHtml(translations.quiz.restartTest)}
+          </button>
+        </section>`
+    : "";
+
+  return `<main id="quiz-top" class="legacy-main">
+      <section data-screen="start" class="legacy-card legacy-start">
+        <div class="legacy-badge" aria-hidden="true"><span>${escapeHtml(quiz.cardIcon)}</span></div>
+        <h1>${renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
+        <p class="legacy-sub">
+          ${escapeHtml(quiz.landing.quickStartText)}
+          <br />
+          ${escapeHtml(quiz.landing.challengeText)}
+        </p>
+        <div class="legacy-social">
+          <div class="legacy-avatars" aria-hidden="true">
+            <span class="legacy-avatar legacy-avatar--one"></span>
+            <span class="legacy-avatar legacy-avatar--two"></span>
+            <span class="legacy-avatar legacy-avatar--three"></span>
+            <span class="legacy-avatar legacy-avatar--four"></span>
+          </div>
+          <div><strong>${escapeHtml(quiz.landing.socialProof)}</strong></div>
+        </div>
+        <button class="legacy-primary" type="button" data-action="start">
+          <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.startTest)}
+        </button>
+        <div class="legacy-ad-note">
+          <span class="legacy-shield" aria-hidden="true">✓</span>
+          <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
+        </div>
+      </section>
+
+      <section data-screen="question" class="legacy-hidden">
+        <div class="legacy-progress">
+          <div class="legacy-progress__row">
+            <strong data-js="round-label"></strong>
+            <span data-js="count-label"></span>
+          </div>
+          <div class="legacy-bar"><span data-js="progress-bar"></span></div>
+        </div>
+
+        <article class="legacy-card legacy-question">
+          <h2 data-js="question-text"></h2>
+          <div data-js="visual" class="legacy-visual legacy-hidden"></div>
+          <div data-js="answers" class="legacy-answers"></div>
+        </article>
+      </section>
+
+      <section data-screen="stage-gate" class="legacy-card legacy-result legacy-stage-result legacy-hidden">
+        <h2 data-js="stage-title"></h2>
+        <p data-js="stage-copy" class="legacy-stage-copy"></p>
+        <p data-js="stage-next" class="legacy-stage-next"></p>
+        <div class="legacy-stage-stats">
+          <div><strong data-js="stage-score"></strong><span>${escapeHtml(translations.results.scoreSoFar)}</span></div>
+          <div><strong data-js="stage-badge"></strong><span>${escapeHtml(translations.results.roundResult)}</span></div>
+        </div>
+        <button type="button" data-js="stage-button" data-action="stage-continue" class="legacy-primary legacy-stage-button"></button>
+        <div class="legacy-ad-note">
+          <span class="legacy-shield" aria-hidden="true">i</span>
+          <span>${escapeHtml(translations.rewardedAd.helper)}</span>
+        </div>
+      </section>
+
+      <section data-screen="result-gate" class="legacy-card legacy-result legacy-hidden">
+        <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
+        <h2 data-js="result-gate-title"></h2>
+        <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
+        <div class="legacy-ad-note">
+          <span class="legacy-shield" aria-hidden="true">i</span>
+          <span>${escapeHtml(translations.rewardedAd.helper)}</span>
+        </div>
+      </section>
+
+      <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
+        <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
+        <h2 data-js="result-title"></h2>
+        <p data-js="result-copy" class="legacy-sub"></p>
+        <div class="legacy-score"><strong data-js="final-score"></strong><span>${escapeHtml(translations.quiz.finalScore)}</span></div>
+        <div class="legacy-score"><strong data-js="percentile"></strong><span>${escapeHtml(translations.quiz.profile)}</span></div>
+        <div data-js="cognitive-scores" class="legacy-cognitive-scores"></div>
+        <div class="legacy-unlock-panel">
+          <h3 data-js="unlock-title"></h3>
+          <p data-js="unlock-copy"></p>
+          <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
+        </div>
+        <div data-js="review" class="legacy-review"></div>
+      </section>
+    </main>
+    ${infoPanel}
+    <script>${script}</script>`;
 }
 
 function createQuizRunnerScript(config: {
@@ -736,140 +862,15 @@ export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
     rootId,
     translations,
   });
+  const html = createQuizRunnerHtml({ quiz, script, translations });
 
   return (
     <div
       id={rootId}
       className={`legacy-quiz legacy-quiz--${quiz.slug}`}
+      suppressHydrationWarning
       style={{ "--quiz-accent": quiz.accent } as CSSProperties}
-    >
-      <main id="quiz-top" className="legacy-main">
-        <section data-screen="start" className="legacy-card legacy-start">
-          <div className="legacy-badge" aria-hidden="true">
-            <span>{quiz.cardIcon}</span>
-          </div>
-          <h1>{renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
-          <p className="legacy-sub">
-            {quiz.landing.quickStartText}
-            <br />
-            {quiz.landing.challengeText}
-          </p>
-          <div className="legacy-social">
-            <div className="legacy-avatars" aria-hidden="true">
-              <span className="legacy-avatar legacy-avatar--one" />
-              <span className="legacy-avatar legacy-avatar--two" />
-              <span className="legacy-avatar legacy-avatar--three" />
-              <span className="legacy-avatar legacy-avatar--four" />
-            </div>
-            <div>
-              <strong>{quiz.landing.socialProof}</strong>
-            </div>
-          </div>
-          <button className="legacy-primary" type="button" data-action="start">
-            <span aria-hidden="true">▶</span> {translations.quiz.startTest}
-          </button>
-          <div className="legacy-ad-note">
-            <span className="legacy-shield" aria-hidden="true">✓</span>
-            <span>
-              {translations.quiz.shortAd} — <b>{translations.quiz.thenBegins}</b>
-            </span>
-          </div>
-        </section>
-
-        <section data-screen="question" className="legacy-hidden">
-          <div className="legacy-progress">
-            <div className="legacy-progress__row">
-              <strong data-js="round-label" />
-              <span data-js="count-label" />
-            </div>
-            <div className="legacy-bar">
-              <span data-js="progress-bar" />
-            </div>
-          </div>
-
-          <article className="legacy-card legacy-question">
-            <h2 data-js="question-text" />
-            <div data-js="visual" className="legacy-visual legacy-hidden" />
-            <div data-js="answers" className="legacy-answers" />
-          </article>
-        </section>
-
-        <section data-screen="stage-gate" className="legacy-card legacy-result legacy-stage-result legacy-hidden">
-          <h2 data-js="stage-title" />
-          <p data-js="stage-copy" className="legacy-stage-copy" />
-          <p data-js="stage-next" className="legacy-stage-next" />
-          <div className="legacy-stage-stats">
-            <div>
-              <strong data-js="stage-score" />
-              <span>{translations.results.scoreSoFar}</span>
-            </div>
-            <div>
-              <strong data-js="stage-badge" />
-              <span>{translations.results.roundResult}</span>
-            </div>
-          </div>
-          <button type="button" data-js="stage-button" data-action="stage-continue" className="legacy-primary legacy-stage-button" />
-          <div className="legacy-ad-note">
-            <span className="legacy-shield" aria-hidden="true">i</span>
-            <span>{translations.rewardedAd.helper}</span>
-          </div>
-        </section>
-
-        <section data-screen="result-gate" className="legacy-card legacy-result legacy-hidden">
-          <span className="legacy-profile-badge">{translations.quiz.profileReady}</span>
-          <h2 data-js="result-gate-title" />
-          <button type="button" data-js="result-gate-button" data-action="reveal-results" className="legacy-primary" />
-          <div className="legacy-ad-note">
-            <span className="legacy-shield" aria-hidden="true">i</span>
-            <span>{translations.rewardedAd.helper}</span>
-          </div>
-        </section>
-
-        <section data-screen="results" className="legacy-card legacy-result legacy-hidden">
-          <span data-js="result-profile-badge" className="legacy-profile-badge" />
-          <h2 data-js="result-title" />
-          <p data-js="result-copy" className="legacy-sub" />
-          <div className="legacy-score">
-            <strong data-js="final-score" />
-            <span>{translations.quiz.finalScore}</span>
-          </div>
-          <div className="legacy-score">
-            <strong data-js="percentile" />
-            <span>{translations.quiz.profile}</span>
-          </div>
-          <div data-js="cognitive-scores" className="legacy-cognitive-scores" />
-          <div className="legacy-unlock-panel">
-            <h3 data-js="unlock-title" />
-            <p data-js="unlock-copy" />
-            <button type="button" data-js="unlock-button" data-action="unlock-review" className="legacy-primary" />
-          </div>
-          <div data-js="review" className="legacy-review" />
-        </section>
-
-      </main>
-
-      {quiz.infoPanel ? (
-        <section className="legacy-card quiz-info-panel">
-          <h2>{quiz.infoPanel.title}</h2>
-          <p>{quiz.infoPanel.intro}</p>
-          <div className="quiz-info-panel__columns">
-            {quiz.infoPanel.columns.map((column) => (
-              <div key={column.title}>
-                <h3>{column.title}</h3>
-                <p>{column.body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="quiz-info-panel__footer">
-            <h3>{quiz.infoPanel.footerTitle}</h3>
-            <p>{quiz.infoPanel.footerBody}</p>
-          </div>
-          <button type="button" data-action="restart" className="legacy-primary legacy-restart">
-            {translations.quiz.restartTest}
-          </button>
-        </section>
-      ) : null}
-      <script dangerouslySetInnerHTML={{ __html: script }} />
-    </div>
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 }
