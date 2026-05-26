@@ -94,7 +94,7 @@ function createQuizRunnerHtml(config: {
             <strong data-js="round-label"></strong>
             <span data-js="count-label"></span>
           </div>
-          <div class="legacy-bar"><span data-js="progress-bar"></span></div>
+          <div data-js="progress-dots" class="legacy-progress-dots" aria-hidden="true"></div>
         </div>
 
         <article class="legacy-card legacy-question">
@@ -383,13 +383,17 @@ function createQuizRunnerScript(config: {
       var stageQuestions = getStageQuestions(currentStage);
       var stagePosition = getCurrentStagePosition(currentStage);
       var stageTotal = stageQuestions.length || 1;
-      var stageProgress = Math.max(0, Math.round(((stagePosition - 1) / stageTotal) * 100));
       var visualBox = byData("visual");
       var answersBox = byData("answers");
+      var progressDots = byData("progress-dots");
 
       byData("round-label").textContent = t.quiz.round + " " + (currentStage + 1) + ": " + getStageName(currentStage);
       byData("count-label").textContent = t.quiz.question + " " + stagePosition + "/" + stageTotal;
-      byData("progress-bar").style.width = stageProgress + "%";
+      progressDots.style.setProperty("--progress-count", stageTotal);
+      progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
+        var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
+        return '<span class="' + state + '"></span>';
+      }).join("");
       byData("question-text").textContent = question.prompt;
 
       if (question.visual) {
