@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,11 +20,11 @@ export default function RootLayout({
       <body className="min-h-screen font-sans antialiased">
         <Script
           async
-          src={siteConfig.googlePublisherTagUrl}
+          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
           strategy="afterInteractive"
         />
         <Script
-          src={siteConfig.assertiveYieldManagerUrl}
+          src="https://j24iGSTy4hDgBLfJR.ay.delivery/manager/j24iGSTy4hDgBLfJR"
           strategy="afterInteractive"
           referrerPolicy="no-referrer-when-downgrade"
         />
@@ -41,7 +40,7 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${siteConfig.metaPixelId}');
+            fbq('init', '843363384736830');
             fbq('track', 'PageView');
           `}
         </Script>
@@ -50,7 +49,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${siteConfig.metaPixelId}&ev=PageView&noscript=1`}
+            src="https://www.facebook.com/tr?id=843363384736830&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
@@ -58,7 +57,7 @@ export default function RootLayout({
 
         <Script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleTagId}`}
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18146485081"
           strategy="afterInteractive"
         />
         <Script id="google-tag" strategy="afterInteractive">
@@ -66,7 +65,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag("js", new Date());
-            gtag("config", "${siteConfig.googleTagId}");
+            gtag("config", "AW-18146485081");
           `}
         </Script>
 

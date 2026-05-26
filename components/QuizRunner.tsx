@@ -353,9 +353,6 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             </div>
 
             <article className="legacy-card legacy-question">
-              <p className="legacy-count">
-                {translations.quiz.question} {currentQuestion + 1} {translations.quiz.of} {quiz.questions.length}
-              </p>
               <h2>{question.prompt}</h2>
               {question.visual ? (
                 <div

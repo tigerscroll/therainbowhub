@@ -187,6 +187,8 @@ a {
 }
 
 .legacy-quiz {
+  --legacy-shell-width: 760px;
+  --legacy-shell-gutter: 14px;
   --legacy-navy: #071b34;
   --legacy-navy-2: #0b294d;
   --legacy-gold: #d6a94d;
@@ -260,9 +262,9 @@ a {
 }
 
 .legacy-main {
-  width: min(760px, 100%);
+  width: min(var(--legacy-shell-width), 100%);
   margin: 0 auto;
-  padding: 18px 14px;
+  padding: 18px var(--legacy-shell-gutter);
 }
 
 .legacy-card {
@@ -697,7 +699,7 @@ a {
 }
 
 .quiz-info-panel {
-  width: min(760px, calc(100% - 28px));
+  width: min(732px, calc(100% - 28px));
   margin: 12px auto 28px;
   padding: 24px 22px;
   color: #4b5563;
