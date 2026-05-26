@@ -84,6 +84,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
     .filter(({ quizQuestion }) => (quizQuestion.stage ?? 0) === currentStage);
   const currentStagePosition = currentStageQuestions.findIndex(({ index }) => index === currentQuestion) + 1;
   const currentStageTotal = currentStageQuestions.length || 1;
+  const currentStageProgress = Math.max(0, Math.round(((currentStagePosition - 1) / currentStageTotal) * 100));
   const firstStageQuestionCount = quiz.questions.filter(
     (quizQuestion) => (quizQuestion.stage ?? 0) === (quiz.questions[0]?.stage ?? 0),
   ).length;
@@ -365,6 +366,9 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
                   {translations.quiz.round} {(question.stage ?? 0) + 1}: {stageName}
                 </strong>
                 <span>{translations.quiz.question} {currentStagePosition}/{currentStageTotal}</span>
+              </div>
+              <div className="legacy-bar">
+                <span style={{ width: `${currentStageProgress}%` }} />
               </div>
             </div>
 
