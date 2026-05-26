@@ -27,21 +27,23 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: LocaleQuizPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  const quiz = getQuizBySlug(slug);
+  const quiz = getQuizBySlug(slug, locale);
 
   if (!isSupportedLocale(locale) || locale === "en" || !quiz) {
     return {};
   }
 
   return {
-    title: quiz.title,
-    description: quiz.summary,
+    title: {
+      absolute: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+    },
+    description: quiz.seoDescription ?? quiz.summary,
   };
 }
 
 export default async function LocaleQuizPage({ params }: LocaleQuizPageProps) {
   const { locale, slug } = await params;
-  const quiz = getQuizBySlug(slug);
+  const quiz = getQuizBySlug(slug, locale);
 
   if (!isSupportedLocale(locale) || locale === "en" || !quiz) {
     notFound();
