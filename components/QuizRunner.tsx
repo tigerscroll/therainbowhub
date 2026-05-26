@@ -333,7 +333,7 @@ export function QuizRunner({ quiz, translations }: QuizRunnerProps) {
             <p className="legacy-sub">
               {translations.quiz.quickQuestionsPrefix} {firstStageQuestionCount} {translations.quiz.quickQuestionsSuffix}
               <br />
-              {translations.quiz.neverReachPrefix} {quiz.stages.at(-1) ?? "final"} {translations.quiz.neverReachSuffix}
+              {translations.quiz.neverReachFinal}
             </p>
             <div className="legacy-social">
               <div className="legacy-avatars" aria-hidden="true">
