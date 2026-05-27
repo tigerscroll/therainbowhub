@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://therainbowhub.local/data/quizzes/schema.json",
+  "title": "The Rainbow Hub Quiz JSON",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "title",
+    "seoTitle",
+    "seoDescription",
+    "pageTitle",
+    "eyebrow",
+    "summary",
+    "duration",
+    "difficulty",
+    "passRate",
+    "cardIcon",
+    "cardGradient",
+    "accent",
+    "landing",
+    "result"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "seoTitle": { "type": "string", "minLength": 1 },
+    "seoDescription": { "type": "string", "minLength": 1 },
+    "pageTitle": { "type": "string", "minLength": 1 },
+    "eyebrow": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "duration": { "type": "string", "minLength": 1 },
+    "questionCount": { "type": "integer", "minimum": 1 },
+    "difficulty": {
+      "type": "string",
+      "enum": ["Quick", "Medium", "Hard", "Expert"]
+    },
+    "passRate": { "type": "string", "minLength": 1 },
+    "cardIcon": { "type": "string", "minLength": 1 },
+    "cardGradient": { "type": "string", "minLength": 1 },
+    "accent": { "type": "string", "minLength": 1 },
+    "homepage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "thumbnailAlt": { "type": "string" },
+        "icon": { "type": "string" },
+        "gradient": { "type": "string" },
+        "featured": { "type": "boolean" }
+      }
+    },
+    "landing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["quickStartText", "challengeText", "socialProof"],
+      "properties": {
+        "quickStartText": { "type": "string", "minLength": 1 },
+        "challengeText": { "type": "string", "minLength": 1 },
+        "socialProof": { "type": "string", "minLength": 1 }
+      }
+    },
+    "heroPoints": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "stageGroups": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/stageGroup" }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "stageEncouragement": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/question" }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileName", "profiles", "scoreDimensions"],
+      "properties": {
+        "profileName": { "type": "string", "minLength": 1 },
+        "profiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/resultProfile" }
+        },
+        "scoreDimensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/scoreDimension" }
+        }
+      }
+    },
+    "infoPanel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "intro", "columns", "footerTitle", "footerBody"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "intro": { "type": "string", "minLength": 1 },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "body"],
+            "properties": {
+              "title": { "type": "string", "minLength": 1 },
+              "body": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "footerTitle": { "type": "string", "minLength": 1 },
+        "footerBody": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["stageGroups"],
+      "not": {
+        "anyOf": [
+          { "required": ["stages"] },
+          { "required": ["questions"] },
+          { "required": ["stageEncouragement"] }
+        ]
+      }
+    },
+    {
+      "required": ["stages", "questions"],
+      "not": { "required": ["stageGroups"] }
+    }
+  ],
+  "$defs": {
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "choices", "answerIndex", "explanation", "category"],
+      "properties": {
+        "prompt": { "type": "string", "minLength": 1 },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "answerIndex": { "type": "integer", "minimum": 0 },
+        "explanation": { "type": "string", "minLength": 1 },
+        "visual": { "type": "string" },
+        "category": { "type": "string", "minLength": 1 },
+        "stage": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "stageGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "questions"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "encouragement": { "type": "string", "minLength": 1 },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/question" }
+        }
+      }
+    },
+    "resultProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minRatio", "tier", "title", "copy", "percentile"],
+      "properties": {
+        "minRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "tier": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "copy": { "type": "string", "minLength": 1 },
+        "percentile": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scoreDimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "categories"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

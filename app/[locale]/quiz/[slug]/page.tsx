@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
+import { getAllQuizzes, getQuizBySlug, getQuizLocales } from "@/lib/quizzes";
 
 type LocaleQuizPageProps = {
   params: Promise<{
@@ -13,23 +13,33 @@ type LocaleQuizPageProps = {
 };
 
 export const dynamicParams = false;
+const emptyLocaleQuizSlug = "__no-localized-quizzes__";
 
 export function generateStaticParams() {
-  return getSupportedLocales()
+  const params = getSupportedLocales()
     .filter((locale) => locale !== "en")
     .flatMap((locale) =>
-      getAllQuizzes().map((quiz) => ({
+      getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
         locale,
         slug: quiz.slug,
       })),
     );
+
+  return params.length
+    ? params
+    : [
+        {
+          locale: "es",
+          slug: emptyLocaleQuizSlug,
+        },
+      ];
 }
 
 export async function generateMetadata({ params }: LocaleQuizPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const quiz = getQuizBySlug(slug, locale);
 
-  if (!isSupportedLocale(locale) || locale === "en" || !quiz) {
+  if (!isSupportedLocale(locale) || locale === "en" || !quiz || !getQuizLocales(slug).includes(locale)) {
     return {};
   }
 
@@ -45,7 +55,7 @@ export default async function LocaleQuizPage({ params }: LocaleQuizPageProps) {
   const { locale, slug } = await params;
   const quiz = getQuizBySlug(slug, locale);
 
-  if (!isSupportedLocale(locale) || locale === "en" || !quiz) {
+  if (!isSupportedLocale(locale) || locale === "en" || !quiz || !getQuizLocales(slug).includes(locale)) {
     notFound();
   }
 

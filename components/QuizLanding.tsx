@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
 
@@ -37,13 +36,13 @@ export function QuizLanding({ locale, quiz, showStartLink = true, translations }
           </div>
         </div>
         {showStartLink ? (
-          <Link
+          <a
             href={getLocalePath(locale, `/quiz/${quiz.slug}`)}
             className="mt-7 inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-6 text-base font-black text-white shadow-soft transition hover:-translate-y-0.5"
             style={{ backgroundColor: quiz.accent }}
           >
             {translations.quiz.startTest}
-          </Link>
+          </a>
         ) : null}
       </div>
       <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">

@@ -22,6 +22,12 @@ Build the static export:
 npm run build
 ```
 
+Validate quiz JSON files before committing:
+
+```bash
+npm run validate
+```
+
 ## Cloudflare Pages
 
 Use these Cloudflare Pages settings:
@@ -37,19 +43,24 @@ Quizzes live in one folder per quiz, with one JSON file per language:
 
 ```text
 data/quizzes/
+  schema.json
   oxford/
     en.json
     es.json
   cambridge/
     en.json
     es.json
+  example-template/
+    en.json
 ```
 
 Current production quiz folders:
 
 ```text
 data/quizzes/oxford/en.json
+data/quizzes/oxford/es.json
 data/quizzes/cambridge/en.json
+data/quizzes/cambridge/es.json
 ```
 
 The template file is:
@@ -64,13 +75,27 @@ The app reads quiz JSON files at build time through:
 lib/quizzes.ts
 ```
 
+You can quickly check quiz files without running a full Next.js build:
+
+```bash
+npm run validate
+```
+
+This validates required fields, stage/question structure, answer indexes, translated quiz alignment, local thumbnail paths, explanations, and result scoring categories.
+
+The JSON schema for AI tools and editors is:
+
+```text
+data/quizzes/schema.json
+```
+
 `example-template` is ignored by the loader so it does not appear as a real quiz. To add a quiz:
 
 1. Copy `data/quizzes/example-template/`.
 2. Rename the copied folder to the new slug, for example `data/quizzes/memory-test/`.
 3. Keep the default quiz file at `data/quizzes/memory-test/en.json`.
 4. Set `"slug": "memory-test"` inside every locale JSON file.
-5. Update title, page copy, homepage fields, stages, and questions.
+5. Update title, page copy, homepage fields, stage groups, and questions.
 6. Commit the quiz folder.
 7. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/quiz/memory-test/`.
 
@@ -86,15 +111,22 @@ Quiz JSON files are only for quiz-specific content:
 
 - quiz title and subtitle/page title
 - SEO title and SEO description
+- start-screen landing copy and social proof
+- stage-complete encouragement copy
 - quiz questions and answer choices
 - explanations and result descriptions
+- result profile tiers and score dimension labels
 - quiz card/homepage metadata such as thumbnail URL, icon, category, difficulty, duration, and pass rate
 
 Do not put shared header, footer, button, navigation, legal, loading, rewarded-ad, or language-switcher text in quiz JSON files.
 
-## Required Quiz JSON Fields
+## Recommended AI-Friendly Quiz JSON
 
-Each quiz JSON file must include:
+For new quizzes, use the nested `stageGroups` format. It is the easiest format to give to AI because each stage contains its own questions and the stage-complete message that appears after it.
+
+`questionCount` is optional. If you include it, the build checks it. If you omit it, the loader calculates it from the questions.
+
+Each quiz JSON file should look like this:
 
 ```json
 {
@@ -106,7 +138,6 @@ Each quiz JSON file must include:
   "eyebrow": "Cognition",
   "summary": "A short homepage description.",
   "duration": "~3 min",
-  "questionCount": 2,
   "difficulty": "Medium",
   "passRate": "25%",
   "cardIcon": "🧠",
@@ -121,8 +152,64 @@ Each quiz JSON file must include:
     "gradient": "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
     "featured": false
   },
-  "stages": ["Opening Round"],
+  "landing": {
+    "quickStartText": "Just 8 quick questions to begin.",
+    "challengeText": "Most players never reach the final round.",
+    "socialProof": "50,000+ people tried it this week"
+  },
   "heroPoints": ["Fast questions", "Instant result", "Mobile friendly"],
+  "stageGroups": [
+    {
+      "title": "Warm-Up",
+      "encouragement": "Nice start. Next comes visual logic.",
+      "questions": [
+        {
+          "prompt": "Question text",
+          "choices": ["A", "B", "C", "D"],
+          "answerIndex": 0,
+          "explanation": "Why the answer is correct.",
+          "category": "logic"
+        }
+      ]
+    },
+    {
+      "title": "Final Round",
+      "questions": [
+        {
+          "prompt": "Final question text",
+          "choices": ["A", "B", "C", "D"],
+          "answerIndex": 1,
+          "explanation": "Why the answer is correct.",
+          "category": "deduction"
+        }
+      ]
+    }
+  ],
+  "result": {
+    "profileName": "Memory",
+    "profiles": [
+      {
+        "minRatio": 0.8,
+        "tier": "Top Performer",
+        "title": "You beat the test.",
+        "copy": "Excellent work across the full quiz. Your strongest area was {stage}.",
+        "percentile": "Top 10%"
+      },
+      {
+        "minRatio": 0,
+        "tier": "Rising Performer",
+        "title": "Keep sharpening.",
+        "copy": "The next attempt can be stronger. Your best area was {stage}.",
+        "percentile": "Top 80%"
+      }
+    ],
+    "scoreDimensions": [
+      {
+        "label": "Memory",
+        "categories": ["memory"]
+      }
+    ]
+  },
   "infoPanel": {
     "title": "About This Quiz",
     "intro": "Quiz-specific background copy shown below the quiz.",
@@ -138,10 +225,15 @@ Each quiz JSON file must include:
     ],
     "footerTitle": "Fair & Transparent",
     "footerBody": "Explain scoring and any important disclaimers."
-  },
-  "questions": []
+  }
 }
 ```
+
+Each nested stage group must include:
+
+- `title`
+- `questions`
+- `encouragement` for every stage except the final stage
 
 Each question must include:
 
@@ -151,26 +243,47 @@ Each question must include:
   "choices": ["A", "B", "C", "D"],
   "answerIndex": 0,
   "explanation": "Why the answer is correct.",
-  "category": "logic",
-  "stage": 0
+  "category": "logic"
 }
 ```
+
+The loader also still supports the older flat format with `stages`, `stageEncouragement`, and `questions`. In that format, each question can include a zero-based `stage` number. The nested `stageGroups` format is preferred for new AI-generated quizzes.
 
 Rules enforced by the loader:
 
 - The folder name must match the slug, for example `data/quizzes/memory-test/en.json` must contain `"slug": "memory-test"`.
 - Every quiz folder must contain `en.json`.
-- Locale files must be named with supported locale codes: `en`, `es`, `fr`, `de`, `pt`, `ar`, or `ja`.
+- Locale files must be named with supported locale codes. Currently enabled: `en`, `es`.
 - Translated quiz files must keep the same `slug`, `questionCount`, number of stages, number of questions, answer indexes, choice counts, stages, and categories as `en.json`.
-- `questionCount` must match the actual number of questions.
+- Translated quiz files must also keep the same `stageEncouragement` count, result profile thresholds, and score dimension category mappings as `en.json`.
+- With `stageGroups`, the app automatically generates the internal `stages`, `stageEncouragement`, `questions`, and per-question stage numbers.
+- `landing` controls the start-screen subtitle and social proof text.
+- In the flat format, `stageEncouragement` contains one message for each completed stage before final results. A one-stage quiz can use an empty array.
+- `result.profileName`, `result.profiles`, and `result.scoreDimensions` control the final result screen. Use `{stage}` inside result copy to insert the strongest stage name.
+- `questionCount` is optional, but must match the actual number of questions if provided.
 - `difficulty` must be one of `Quick`, `Medium`, `Hard`, or `Expert`.
 - `homepage` is optional but recommended. It controls homepage card title, summary, thumbnail image, fallback icon/gradient, and whether the quiz is featured in the hero CTA.
 - `infoPanel` is optional. It controls the editable about/how-it-works/context/disclaimer block shown below each quiz near the restart button.
 - Put thumbnail files in `public/images/` and reference them as `/images/file-name.jpg`.
 - `answerIndex` must point to an existing choice.
-- `stage` is zero-based and should map to an entry in `stages`.
+- `category` is a stable scoring tag, not display text. Keep category values consistent across translations.
+- In flat-format quizzes, `stage` is zero-based and must map to an entry in `stages`.
 
-## Tracking
+## AI Prompt Template
+
+Use this when asking AI to create a quiz:
+
+```text
+Create a valid JSON quiz for The Rainbow Hub.
+Use the nested stageGroups format from data/quizzes/schema.json.
+Do not include shared UI text such as header, footer, button, legal, loading, or language switcher text.
+Create {number} stages with {number} questions per stage.
+Every non-final stage must include an encouragement message.
+Every question must include prompt, choices, answerIndex, explanation, and category.
+Use exactly 4 choices per question unless I say otherwise.
+Do not include questionCount unless you are certain it matches the total question count.
+Return valid JSON only.
+```
 
 ## Shared Site Translations
 
@@ -185,11 +298,6 @@ Current global translation files:
 ```text
 data/i18n/en.json
 data/i18n/es.json
-data/i18n/fr.json
-data/i18n/de.json
-data/i18n/pt.json
-data/i18n/ar.json
-data/i18n/ja.json
 ```
 
 These files translate shared UI only:
@@ -199,7 +307,7 @@ These files translate shared UI only:
 - footer text and footer link labels
 - homepage labels
 - quiz interface buttons and progress labels
-- result screen labels
+- reusable result screen labels such as "Final score" and missed-answer review buttons
 - loading and rewarded-ad helper copy
 - language switcher labels
 - not-found/error copy
@@ -229,19 +337,19 @@ Translated shared UI routes use a locale prefix:
 ```text
 /es/
 /es/quiz/oxford/
-/fr/
-/fr/quiz/oxford/
 ```
 
-Arabic uses RTL direction through `getLocaleDirection("ar")`.
+Only English and Spanish are currently enabled. Additional languages can be added later without changing the quiz JSON structure.
 
 To add a new language:
 
 1. Copy `data/i18n/en.json` to `data/i18n/{locale}.json`.
 2. Translate all shared strings.
-3. Add the locale code to `supportedLocales` in `lib/i18n.ts`.
-4. Add the display name in `components/LanguageSwitcher.tsx`.
-5. Run `npm run build`.
+3. Copy `data/info-pages/en.json` to `data/info-pages/{locale}.json` and translate the legal/about pages.
+4. Add the locale code to `supportedLocales` in `lib/i18n.ts`.
+5. Add the display name in `components/LanguageSwitcher.tsx`.
+6. For RTL languages, add the locale code to `rtlLocales` in `lib/i18n.ts`.
+7. Run `npm run build`.
 
 To edit footer, header, button, loading, or rewarded-ad helper text, edit the relevant key in `data/i18n/*.json`.
 

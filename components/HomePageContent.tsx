@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
 
@@ -21,7 +20,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
     thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
     thumbnailUrl: quiz.homepage.thumbnailUrl,
     category: quiz.eyebrow,
-    difficulty: quiz.difficulty,
+    difficulty: translations.home.difficulty[quiz.difficulty],
     title: quiz.homepage.title ?? quiz.title,
     summary: quiz.homepage.summary ?? quiz.summary,
     stats: quiz.duration,
@@ -56,7 +55,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
           <h2 className="hub-section-title">{translations.home.allQuizzes}</h2>
           <div className="hub-quiz-grid">
             {homepageCards.map((quiz) => (
-              <Link key={quiz.title} href={quiz.href} className="hub-quiz-card">
+              <a key={quiz.title} href={quiz.href} className="hub-quiz-card">
                 <div className="hub-quiz-card__banner" style={{ background: quiz.banner }}>
                   {quiz.thumbnailUrl ? (
                     <img src={quiz.thumbnailUrl} alt={quiz.thumbnailAlt} />
@@ -76,7 +75,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                     <span>{translations.home.passRate} {quiz.passRate}</span>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </section>

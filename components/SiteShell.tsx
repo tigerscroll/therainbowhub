@@ -11,8 +11,15 @@ type SiteShellProps = {
 };
 
 export function SiteShell({ children, currentPath, locale, translations }: SiteShellProps) {
+  const direction = getLocaleDirection(locale);
+
   return (
-    <div className="flex min-h-screen flex-col" dir={getLocaleDirection(locale)} lang={locale}>
+    <div className="flex min-h-screen flex-col" dir={direction} lang={locale}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang=${JSON.stringify(locale)};document.documentElement.dir=${JSON.stringify(direction)};`,
+        }}
+      />
       <TrackingPageView />
       <Header currentPath={currentPath} locale={locale} translations={translations} />
       <main className="flex-1">{children}</main>

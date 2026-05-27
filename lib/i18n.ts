@@ -4,10 +4,71 @@ import path from "node:path";
 import en from "@/data/i18n/en.json";
 
 export type Translations = typeof en;
-export type SupportedLocale = "en" | "es" | "fr" | "de" | "pt" | "ar" | "ja";
+export type SupportedLocale =
+  | "en"
+  | "pt"
+  | "fr"
+  | "es"
+  | "ar"
+  | "de"
+  | "tr"
+  | "it"
+  | "nl"
+  | "hu"
+  | "ro"
+  | "pl"
+  | "ja"
+  | "zh"
+  | "id"
+  | "bg"
+  | "sv"
+  | "cs"
+  | "el"
+  | "uk"
+  | "da"
+  | "no"
+  | "ko"
+  | "lt"
+  | "lv"
+  | "fi";
+
+export type LocaleOption = {
+  code: SupportedLocale;
+  name: string;
+  flag: string;
+};
+
+export const localeOptions: LocaleOption[] = [
+  { code: "en", name: "English", flag: "🇬🇧" },
+  { code: "pt", name: "Portuguese", flag: "🇧🇷" },
+  { code: "fr", name: "French", flag: "🇫🇷" },
+  { code: "es", name: "Spanish", flag: "🇪🇸" },
+  { code: "ar", name: "Arabic", flag: "🇦🇪" },
+  { code: "de", name: "German", flag: "🇩🇪" },
+  { code: "tr", name: "Turkish", flag: "🇹🇷" },
+  { code: "it", name: "Italian", flag: "🇮🇹" },
+  { code: "nl", name: "Dutch", flag: "🇳🇱" },
+  { code: "hu", name: "Hungarian", flag: "🇭🇺" },
+  { code: "ro", name: "Romanian", flag: "🇷🇴" },
+  { code: "pl", name: "Polish", flag: "🇵🇱" },
+  { code: "ja", name: "Japanese", flag: "🇯🇵" },
+  { code: "zh", name: "Chinese", flag: "🇨🇳" },
+  { code: "id", name: "Indonesian", flag: "🇮🇩" },
+  { code: "bg", name: "Bulgarian", flag: "🇧🇬" },
+  { code: "sv", name: "Swedish", flag: "🇸🇪" },
+  { code: "cs", name: "Czech", flag: "🇨🇿" },
+  { code: "el", name: "Greek", flag: "🇬🇷" },
+  { code: "uk", name: "Ukrainian", flag: "🇺🇦" },
+  { code: "da", name: "Danish", flag: "🇩🇰" },
+  { code: "no", name: "Norwegian", flag: "🇳🇴" },
+  { code: "ko", name: "Korean", flag: "🇰🇷" },
+  { code: "lt", name: "Lithuanian", flag: "🇱🇹" },
+  { code: "lv", name: "Latvian", flag: "🇱🇻" },
+  { code: "fi", name: "Finnish", flag: "🇫🇮" },
+];
 
 const defaultLocale: SupportedLocale = "en";
-const supportedLocales: SupportedLocale[] = ["en", "es", "fr", "de", "pt", "ar", "ja"];
+const supportedLocales: SupportedLocale[] = localeOptions.map((locale) => locale.code);
 const rtlLocales = new Set<SupportedLocale>(["ar"]);
 const i18nDirectory = path.join(process.cwd(), "data", "i18n");
 
@@ -17,6 +78,10 @@ export function getDefaultLocale() {
 
 export function getSupportedLocales() {
   return supportedLocales;
+}
+
+export function getLocaleOptions() {
+  return localeOptions;
 }
 
 export function isSupportedLocale(locale: string): locale is SupportedLocale {
