@@ -4,7 +4,7 @@
   "seoTitle": "Cambridge Challenge Quiz",
   "seoDescription": "Take a fast Cambridge-style reasoning quiz with staged visual logic, number patterns, deduction, and analytical puzzles.",
   "pageTitle": "Only 4% Can Pass This Cambridge Test",
-  "eyebrow": "Academic Challenge",
+  "eyebrow": "Intelligence",
   "summary": "A staged 80-question challenge inspired by the reasoning, clarity, and problem-solving expected in high-level university entrance tests.",
   "duration": "~12 min",
   "difficulty": "Expert",
@@ -23,29 +23,29 @@
     "featured": false
   },
   "heroPoints": [
-    "Cambridge-style academic reasoning",
-    "80 staged questions",
+    "Fun quick-fire warm-up rounds",
+    "80 staged reasoning questions",
     "Instant result profile"
   ],
   "infoPanel": {
     "title": "About This Test",
-    "intro": "This quiz is an entertainment and self-challenge test inspired by the reasoning skills often valued in selective university admissions. It is not an official Cambridge University admissions test.",
+    "intro": "This quiz is an entertainment and self-challenge experience inspired by the kind of clear thinking, logic, and judgement often associated with competitive university entrance tests.",
     "columns": [
       {
         "title": "How It Works",
-        "body": "You will move through 10 stages of 8 questions. The early rounds test clear thinking and core skills, while later rounds require sharper analysis, careful comparison, and multi-step reasoning."
+        "body": "The quiz has 10 stages with 8 questions in each stage. The early rounds are quick and approachable, while the later rounds gradually introduce more layered reasoning."
       },
       {
         "title": "About This Topic",
-        "body": "The quiz covers academic-style reasoning across logic, language, numbers, evidence, science, ethics, and problem solving, with each stage built around a different sub-theme."
+        "body": "Rather than copying any real admissions paper, this challenge uses Cambridge-inspired reasoning: spotting patterns, weighing evidence, identifying assumptions, and solving unfamiliar problems."
       }
     ],
     "footerTitle": "Fair & Transparent",
-    "footerBody": "Every question has one correct answer and a short explanation. Scores are for entertainment and self-challenge only."
+    "footerBody": "Every question has one correct answer and an explanation. Scores are for entertainment and self-challenge only."
   },
   "landing": {
-    "quickStartText": "Start with 8 warm-up questions.",
-    "challengeText": "The final rounds are designed to test calm, precise reasoning.",
+    "quickStartText": "Just 8 quick questions to begin.",
+    "challengeText": "It starts easy, but the final rounds test serious reasoning.",
     "socialProof": "50,000+ people tried it this week"
   },
   "result": {
@@ -53,49 +53,36 @@
     "profiles": [
       {
         "minRatio": 0.8,
-        "tier": "Fellowship Tier",
-        "title": "You handled the hardest reasoning.",
-        "copy": "Exceptional performance across the full challenge. Your strongest area was {stage}.",
-        "percentile": "Top 4%"
+        "tier": "Elite Tier",
+        "title": "You thought like a top applicant.",
+        "copy": "Exceptional reasoning across the full challenge. Your strongest area was {stage}.",
+        "percentile": "Top 8%"
       },
       {
         "minRatio": 0.65,
-        "tier": "Scholar Tier",
-        "title": "A strong academic result.",
-        "copy": "You stayed accurate through demanding stages. Your strongest area was {stage}.",
-        "percentile": "Top 15%"
+        "tier": "Advanced Tier",
+        "title": "Strong performance.",
+        "copy": "You stayed sharp as the questions became more demanding. Your strongest area was {stage}.",
+        "percentile": "Top 18%"
       },
       {
         "minRatio": 0.5,
-        "tier": "Candidate Tier",
-        "title": "A solid, thoughtful score.",
-        "copy": "You showed good reasoning across several stages. Your strongest area was {stage}.",
-        "percentile": "Top 35%"
+        "tier": "Solid Tier",
+        "title": "Good score.",
+        "copy": "You handled the core reasoning rounds well. Your strongest area was {stage}.",
+        "percentile": "Top 40%"
       },
       {
         "minRatio": 0,
-        "tier": "Apprentice Tier",
-        "title": "Keep sharpening the method.",
-        "copy": "The hardest questions reward careful reading and patient logic. Your best area was {stage}.",
+        "tier": "Rising Tier",
+        "title": "Keep sharpening.",
+        "copy": "The later rounds reward calm pattern recognition and careful logic. Your best area was {stage}.",
         "percentile": "Top 80%"
       }
     ],
     "scoreDimensions": [
       {
-        "label": "Logic",
-        "categories": [
-          "logic",
-          "deduction"
-        ]
-      },
-      {
-        "label": "Number Sense",
-        "categories": [
-          "number"
-        ]
-      },
-      {
-        "label": "Pattern Reading",
+        "label": "Pattern",
         "categories": [
           "visual",
           "pattern",
@@ -103,7 +90,20 @@
         ]
       },
       {
-        "label": "Flexible Thinking",
+        "label": "Number Logic",
+        "categories": [
+          "number"
+        ]
+      },
+      {
+        "label": "Deduction",
+        "categories": [
+          "deduction",
+          "logic"
+        ]
+      },
+      {
+        "label": "Lateral Thinking",
         "categories": [
           "lateral"
         ]
@@ -112,1030 +112,1020 @@
   },
   "stageGroups": [
     {
-      "title": "Stage 1: Academic Warm-Up",
+      "title": "Quick-Fire Warm Up",
+      "encouragement": "Good start. The first round was about fast, clear thinking. Next, the patterns get a little sharper.",
       "questions": [
         {
-          "prompt": "A tutor says a strong answer should be clear, justified, and relevant. Which response best follows that advice?",
+          "prompt": "Which item does not belong with the others?",
           "choices": [
-            "It gives a direct answer and explains the reason.",
-            "It uses the longest possible vocabulary.",
-            "It repeats the question in different words.",
-            "It avoids taking a clear position."
-          ],
-          "answerIndex": 0,
-          "explanation": "A strong academic answer should state a position and support it with a reason.",
-          "category": "logic",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Claim</span><span>Reason</span><span>Answer</span></div>"
-        },
-        {
-          "prompt": "Which skill is most useful when deciding whether a source supports a conclusion?",
-          "choices": [
-            "Remembering the title of the source",
-            "Checking what the source actually says",
-            "Counting how many paragraphs it has",
-            "Looking only at the final sentence"
-          ],
-          "answerIndex": 1,
-          "explanation": "Evidence must be judged by its actual content, not by surface features.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A sequence increases by 3 each time: 4, 7, 10, 13. What comes next?",
-          "choices": [
-            "14",
-            "15",
-            "16",
-            "17"
-          ],
-          "answerIndex": 2,
-          "explanation": "The pattern adds 3 each time, so 13 becomes 16.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which statement is an opinion rather than a fact?",
-          "choices": [
-            "Water freezes at 0 degrees Celsius under standard conditions.",
-            "The Earth orbits the Sun.",
-            "A triangle has three sides.",
-            "This essay is more interesting than the other one."
+            "Spoon",
+            "Fork",
+            "Plate",
+            "Pencil"
           ],
           "answerIndex": 3,
-          "explanation": "Interest is a judgement, so it depends on personal opinion.",
-          "category": "logic"
-        },
-        {
-          "prompt": "If every member of Group A is in Group B, and Mira is in Group A, what must be true?",
-          "choices": [
-            "Mira is in Group B.",
-            "Mira created Group A.",
-            "Group B has only one member.",
-            "Group A and Group B are the same size."
-          ],
-          "answerIndex": 0,
-          "explanation": "If all members of A are inside B, any member of A must also be in B.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which pair shows the strongest contrast?",
-          "choices": [
-            "Large and huge",
-            "Temporary and permanent",
-            "Quiet and silent",
-            "Ancient and old"
-          ],
-          "answerIndex": 1,
-          "explanation": "Temporary and permanent are opposites, while the other pairs are similar in meaning.",
+          "explanation": "A pencil is used for writing, while the others are used for eating or serving food.",
           "category": "attention"
         },
         {
-          "prompt": "A student has 12 books and gives away one quarter of them. How many books remain?",
+          "prompt": "If 2 + 3 = 5, what is 5 + 4?",
+          "choices": [
+            "7",
+            "8",
+            "10",
+            "9"
+          ],
+          "answerIndex": 3,
+          "explanation": "5 plus 4 equals 9.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which word best completes the idea: book is to reading as fork is to ____?",
+          "choices": [
+            "Cooking",
+            "Eating",
+            "Drawing",
+            "Writing"
+          ],
+          "answerIndex": 1,
+          "explanation": "A book is commonly used for reading, and a fork is commonly used for eating.",
+          "category": "logic"
+        },
+        {
+          "prompt": "A student has three pencils and gives one away. How many pencils remain?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "answerIndex": 1,
+          "explanation": "Starting with 3 and giving away 1 leaves 2.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which shape has three sides?",
+          "choices": [
+            "Circle",
+            "Square",
+            "Rectangle",
+            "Triangle"
+          ],
+          "answerIndex": 3,
+          "explanation": "A triangle is defined by having three sides.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "Which statement is most clearly true?",
+          "choices": [
+            "A day has 30 hours",
+            "A month always has 30 days",
+            "A year always has 360 days",
+            "A week has seven days"
+          ],
+          "answerIndex": 3,
+          "explanation": "A week has seven days; the other statements are not generally true.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which number comes next: 2, 4, 6, 8, ____?",
+          "choices": [
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "answerIndex": 1,
+          "explanation": "The sequence increases by 2 each time, so the next number is 10.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A door is locked. Which object is most likely to open it?",
+          "choices": [
+            "A cup",
+            "A key",
+            "A notebook",
+            "A lamp"
+          ],
+          "answerIndex": 1,
+          "explanation": "A key is the object normally used to open a locked door.",
+          "category": "lateral"
+        }
+      ]
+    },
+    {
+      "title": "Spot the Simple Pattern",
+      "encouragement": "Nice work. You are warming up quickly. Now the questions start asking for a little more attention.",
+      "questions": [
+        {
+          "prompt": "Which number is the odd one out?",
+          "choices": [
+            "12",
+            "14",
+            "16",
+            "19"
+          ],
+          "answerIndex": 3,
+          "explanation": "19 is odd, while the other numbers are even.",
+          "category": "attention"
+        },
+        {
+          "prompt": "Which pair follows the same relationship as hot and cold?",
+          "choices": [
+            "Tall and high",
+            "Fast and quick",
+            "Large and big",
+            "Light and dark"
+          ],
+          "answerIndex": 3,
+          "explanation": "Hot and cold are opposites, and light and dark are also opposites.",
+          "category": "logic"
+        },
+        {
+          "prompt": "What comes next: red, blue, red, blue, ____?",
+          "choices": [
+            "Yellow",
+            "Blue",
+            "Green",
+            "Red"
+          ],
+          "answerIndex": 3,
+          "explanation": "The colours alternate red and blue, so the next one is red.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "If every square is a shape, which statement must be true?",
+          "choices": [
+            "Every shape is a square",
+            "Some squares are not shapes",
+            "No square is a shape",
+            "Every square is a shape"
+          ],
+          "answerIndex": 3,
+          "explanation": "The statement directly says that every square is a shape.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which is the largest number?",
+          "choices": [
+            "0.55",
+            "0.75",
+            "0.6",
+            "0.8"
+          ],
+          "answerIndex": 3,
+          "explanation": "0.8 is greater than 0.75, 0.6, and 0.55.",
+          "category": "number"
+        },
+        {
+          "prompt": "A bag contains only apples. You take one item from the bag. What must it be?",
+          "choices": [
+            "A book",
+            "A pear",
+            "A coin",
+            "An apple"
+          ],
+          "answerIndex": 3,
+          "explanation": "If the bag contains only apples, any item taken from it must be an apple.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which set is in the correct order from smallest to largest?",
+          "choices": [
+            "3, 1, 2",
+            "2, 3, 1",
+            "1, 2, 3",
+            "1, 3, 2"
+          ],
+          "answerIndex": 2,
+          "explanation": "1, 2, 3 is the ascending order.",
+          "category": "attention"
+        },
+        {
+          "prompt": "If a train leaves at 10:00 and the journey takes 30 minutes, when does it arrive?",
+          "choices": [
+            "10:15",
+            "10:30",
+            "10:45",
+            "11:00"
+          ],
+          "answerIndex": 1,
+          "explanation": "Thirty minutes after 10:00 is 10:30.",
+          "category": "number"
+        }
+      ]
+    },
+    {
+      "title": "Everyday Logic",
+      "encouragement": "That round tested common sense and clean reasoning. The next stage adds slightly more careful choices.",
+      "questions": [
+        {
+          "prompt": "Maya studies for 20 minutes, rests for 10 minutes, then studies for 20 more minutes. How much study time is that?",
+          "choices": [
+            "30 minutes",
+            "40 minutes",
+            "50 minutes",
+            "60 minutes"
+          ],
+          "answerIndex": 1,
+          "explanation": "Only the two study periods count, so 20 plus 20 is 40 minutes.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which conclusion follows best: All library books must be returned. This book is from the library.",
+          "choices": [
+            "The book has no pages",
+            "The book is new",
+            "The book is expensive",
+            "The book must be returned"
+          ],
+          "answerIndex": 3,
+          "explanation": "If all library books must be returned and this is a library book, it must be returned.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which choice is most like a timetable?",
+          "choices": [
+            "A locked box",
+            "A bowl of fruit",
+            "A pair of shoes",
+            "A list of scheduled times"
+          ],
+          "answerIndex": 3,
+          "explanation": "A timetable is a plan or list of scheduled times.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Which number completes the pattern: 5, 10, 15, 20, ____?",
+          "choices": [
+            "22",
+            "24",
+            "25",
+            "30"
+          ],
+          "answerIndex": 2,
+          "explanation": "The pattern increases by 5 each time, so the next number is 25.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A cup is fuller than a bowl, and the bowl is fuller than a glass. Which is fullest?",
+          "choices": [
+            "The glass",
+            "The bowl",
+            "The cup",
+            "They are equal"
+          ],
+          "answerIndex": 2,
+          "explanation": "The cup is fuller than the bowl, and the bowl is fuller than the glass.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which instruction is most precise?",
+          "choices": [
+            "Read more",
+            "Read chapter 3 before 6 p.m.",
+            "Study soon",
+            "Try harder"
+          ],
+          "answerIndex": 1,
+          "explanation": "It gives a specific task and a specific deadline.",
+          "category": "attention"
+        },
+        {
+          "prompt": "If one ticket costs 4 units, how much do three tickets cost?",
+          "choices": [
+            "7 units",
+            "8 units",
+            "12 units",
+            "16 units"
+          ],
+          "answerIndex": 2,
+          "explanation": "Three tickets cost 3 times 4, which is 12.",
+          "category": "number"
+        },
+        {
+          "prompt": "A researcher wants the most reliable result. What should they do?",
+          "choices": [
+            "Guess quickly",
+            "Use only one example",
+            "Collect enough evidence",
+            "Ignore unexpected results"
+          ],
+          "answerIndex": 2,
+          "explanation": "Reliable conclusions are stronger when based on enough evidence.",
+          "category": "logic"
+        }
+      ]
+    },
+    {
+      "title": "Smart Choices",
+      "encouragement": "You are now thinking like a problem-solver. Next comes a round of patterns and careful comparisons.",
+      "questions": [
+        {
+          "prompt": "A recipe for 2 people uses 4 eggs. How many eggs are needed for 4 people?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          "answerIndex": 2,
+          "explanation": "Doubling the number of people doubles the eggs from 4 to 8.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which sentence gives evidence rather than opinion?",
+          "choices": [
+            "This is the best idea",
+            "I prefer this plan",
+            "The test score increased by 10 points",
+            "The design looks nicer"
+          ],
+          "answerIndex": 2,
+          "explanation": "A measured increase in a score is evidence, not just personal opinion.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Which item would be most useful for measuring length?",
+          "choices": [
+            "A chair",
+            "A calendar",
+            "A bowl",
+            "A ruler"
+          ],
+          "answerIndex": 3,
+          "explanation": "A ruler is designed to measure length.",
+          "category": "attention"
+        },
+        {
+          "prompt": "A box is heavier than a bag. The bag is heavier than a book. Which is lightest?",
+          "choices": [
+            "The box",
+            "The bag",
+            "The book",
+            "They weigh the same"
+          ],
+          "answerIndex": 2,
+          "explanation": "The book is lighter than the bag, and the bag is lighter than the box.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "What comes next: 1, 3, 6, 10, ____?",
+          "choices": [
+            "12",
+            "14",
+            "15",
+            "16"
+          ],
+          "answerIndex": 2,
+          "explanation": "The increases are 2, 3, and 4, so the next increase is 5, giving 15.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "Which question is best for testing cause and effect?",
+          "choices": [
+            "What colour is it?",
+            "What happens if the temperature rises?",
+            "Who likes it most?",
+            "What is its name?"
+          ],
+          "answerIndex": 1,
+          "explanation": "Asking what happens after a change tests cause and effect.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Four students score 7, 8, 8, and 9. What is the average score?",
+          "choices": [
+            "7",
+            "8",
+            "8.5",
+            "9"
+          ],
+          "answerIndex": 1,
+          "explanation": "The total is 32, and 32 divided by 4 is 8.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which plan is most likely to reduce mistakes?",
+          "choices": [
+            "Work faster without checking",
+            "Guess when unsure",
+            "Review each answer once",
+            "Ignore the instructions"
+          ],
+          "answerIndex": 2,
+          "explanation": "Reviewing answers gives a chance to catch and correct mistakes.",
+          "category": "lateral"
+        }
+      ]
+    },
+    {
+      "title": "Pattern Playground",
+      "encouragement": "Halfway through, and you are still in the game. From here, the questions become more layered.",
+      "questions": [
+        {
+          "prompt": "Which number completes the sequence: 3, 6, 12, 24, ____?",
+          "choices": [
+            "30",
+            "36",
+            "42",
+            "48"
+          ],
+          "answerIndex": 3,
+          "explanation": "Each number is doubled, so 24 becomes 48.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A code changes 2 to 6 and 4 to 12. What would it change 5 to?",
+          "choices": [
+            "10",
+            "12",
+            "15",
+            "20"
+          ],
+          "answerIndex": 2,
+          "explanation": "The rule is multiply by 3, so 5 becomes 15.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which comparison is strongest?",
+          "choices": [
+            "There is no evidence against it",
+            "One person says it is true",
+            "It sounds possible",
+            "Some evidence supports the idea"
+          ],
+          "answerIndex": 3,
+          "explanation": "Evidence gives stronger support than opinion, possibility, or lack of disproof.",
+          "category": "logic"
+        },
+        {
+          "prompt": "If all glims are vors, and no vors are tazes, what must be true?",
+          "choices": [
+            "All tazes are glims",
+            "No glims are tazes",
+            "Some vors are not glims",
+            "All glims are tazes"
+          ],
+          "answerIndex": 1,
+          "explanation": "If glims are inside the vor group and vors cannot be tazes, glims cannot be tazes.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which set follows the same pattern as 2, 5, 8?",
+          "choices": [
+            "5, 7, 10",
+            "3, 6, 8",
+            "4, 8, 12",
+            "1, 4, 7"
+          ],
+          "answerIndex": 3,
+          "explanation": "2, 5, 8 increases by 3 each time, and 1, 4, 7 does the same.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A notice says: Submit the form before Friday. Which action follows the notice?",
+          "choices": [
+            "Submit it after Friday",
+            "Submit it on Monday",
+            "Keep it blank",
+            "Send a different form"
+          ],
+          "answerIndex": 1,
+          "explanation": "Monday is before Friday, so it follows the instruction.",
+          "category": "attention"
+        },
+        {
+          "prompt": "Which result would most weaken the claim: Exercise improved memory in the group?",
+          "choices": [
+            "The group slept less than usual",
+            "A similar group improved without exercise",
+            "The exercise was popular",
+            "Some people enjoyed the test"
+          ],
+          "answerIndex": 1,
+          "explanation": "If a similar group improved without exercise, the improvement may not be caused by exercise.",
+          "category": "logic"
+        },
+        {
+          "prompt": "A square garden has four equal sides. If one side is 6 metres, what is the perimeter?",
+          "choices": [
+            "12 metres",
+            "18 metres",
+            "24 metres",
+            "36 metres"
+          ],
+          "answerIndex": 2,
+          "explanation": "A square has four equal sides, so 4 times 6 is 24 metres.",
+          "category": "number"
+        }
+      ]
+    },
+    {
+      "title": "Applicant Thinking",
+      "encouragement": "Now it feels more like an entrance challenge. Stay calm: every answer is still reachable with clear thinking.",
+      "questions": [
+        {
+          "prompt": "A student argues, 'This idea is old, so it must be wrong.' What is the main flaw?",
+          "choices": [
+            "The student used no numbers",
+            "Old ideas are always correct",
+            "The idea has too many words",
+            "Age alone does not prove truth or falsehood"
+          ],
+          "answerIndex": 3,
+          "explanation": "Whether an idea is old does not by itself show whether it is right or wrong.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Which number best completes the pattern: 4, 9, 19, 39, ____?",
+          "choices": [
+            "59",
+            "69",
+            "79",
+            "89"
+          ],
+          "answerIndex": 2,
+          "explanation": "Each term doubles and adds 1: 4 to 9, 9 to 19, 19 to 39, so 39 becomes 79.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A class has 30 students. Two thirds choose biology. How many choose biology?",
+          "choices": [
+            "10",
+            "15",
+            "20",
+            "25"
+          ],
+          "answerIndex": 2,
+          "explanation": "Two thirds of 30 is 20.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which statement is an assumption in this argument: 'The lecture is popular because the room is full.'",
+          "choices": [
+            "Lectures can happen in rooms",
+            "The room is full because people came to the lecture",
+            "The room has a door",
+            "People sometimes attend lectures"
+          ],
+          "answerIndex": 1,
+          "explanation": "The argument assumes the full room is due to the lecture, not some other reason.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "A scientist changes one factor at a time during an experiment. Why?",
+          "choices": [
+            "To guarantee a surprising answer",
+            "To make the experiment longer",
+            "To avoid writing notes",
+            "To make the result easier to compare"
+          ],
+          "answerIndex": 3,
+          "explanation": "Changing one factor at a time helps identify what caused any change in results.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Which is the best summary of: 'More data can improve a conclusion, but only if the data is relevant and reliable'?",
+          "choices": [
+            "More data is always enough",
+            "Data quality matters as well as amount",
+            "Small data sets are always better",
+            "Conclusions do not need evidence"
+          ],
+          "answerIndex": 1,
+          "explanation": "The sentence says both the amount and quality of data matter.",
+          "category": "attention"
+        },
+        {
+          "prompt": "If three machines make three parts in three minutes, how many parts do six similar machines make in three minutes?",
           "choices": [
             "3",
             "6",
             "9",
-            "8"
+            "12"
           ],
-          "answerIndex": 2,
-          "explanation": "One quarter of 12 is 3, so 9 books remain.",
+          "answerIndex": 1,
+          "explanation": "Doubling the machines doubles the parts made in the same time, so they make 6 parts.",
           "category": "number"
         },
         {
-          "prompt": "Which question is most useful for checking a claim?",
+          "prompt": "Which choice shows the best lateral thinking?",
           "choices": [
-            "Is the claim written in a large font?",
-            "Does the claim sound confident?",
-            "Is the claim short enough to remember?",
-            "Who benefits if this claim is accepted?"
-          ],
-          "answerIndex": 3,
-          "explanation": "Asking who benefits can reveal possible bias or motivation.",
-          "category": "lateral"
-        }
-      ],
-      "encouragement": "Good start. The next stage asks you to read more carefully and separate evidence from impression."
-    },
-    {
-      "title": "Stage 2: Clear Reading",
-      "questions": [
-        {
-          "prompt": "A passage says, 'The experiment reduced errors, but it did not remove them.' Which summary is most accurate?",
-          "choices": [
-            "Errors became less frequent but still existed.",
-            "The experiment failed completely.",
-            "Errors became impossible.",
-            "The experiment measured speed only."
-          ],
-          "answerIndex": 0,
-          "explanation": "The phrase says errors decreased, not that they disappeared.",
-          "category": "deduction",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Reduced</span><span>≠</span><span>Removed</span></div>"
-        },
-        {
-          "prompt": "Which word best completes the relationship: evidence is to conclusion as foundation is to what?",
-          "choices": [
-            "Window",
-            "Building",
-            "Paint",
-            "Door"
+            "Repeating a failed method faster",
+            "Asking whether the problem is framed correctly",
+            "Ignoring the problem",
+            "Choosing the first answer"
           ],
           "answerIndex": 1,
-          "explanation": "Evidence supports a conclusion as a foundation supports a building.",
+          "explanation": "Lateral thinking often begins by questioning the framing of the problem.",
+          "category": "lateral"
+        }
+      ]
+    },
+    {
+      "title": "Evidence and Assumptions",
+      "encouragement": "Good reasoning. The next stage pushes your ability to hold several ideas at once.",
+      "questions": [
+        {
+          "prompt": "A survey says 80% of 10 people liked a product. What is the biggest caution?",
+          "choices": [
+            "The sample may be too small",
+            "80% is not a number",
+            "Products cannot be surveyed",
+            "People cannot have preferences"
+          ],
+          "answerIndex": 0,
+          "explanation": "A sample of 10 people is small, so the result may not generalise well.",
+          "category": "logic"
+        },
+        {
+          "prompt": "Which statement follows: If it rains, the match is cancelled. It is raining.",
+          "choices": [
+            "The match is cancelled",
+            "The match is delayed",
+            "It did not rain before",
+            "The match is indoors"
+          ],
+          "answerIndex": 0,
+          "explanation": "The rule says rain causes cancellation, and it is raining.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "What is the missing number: 2, 6, 18, 54, ____?",
+          "choices": [
+            "72",
+            "108",
+            "144",
+            "162"
+          ],
+          "answerIndex": 3,
+          "explanation": "Each number is multiplied by 3, so 54 becomes 162.",
           "category": "pattern"
         },
         {
-          "prompt": "A paragraph gives three reasons for a claim. What should you check first?",
+          "prompt": "A result is described as 'consistent'. What does that most likely mean?",
           "choices": [
-            "Whether the paragraph uses short sentences",
-            "Whether the claim appears at the top",
-            "Whether the reasons are relevant to the claim",
-            "Whether the examples are colourful"
+            "It changes randomly each time",
+            "It gives similar outcomes when repeated",
+            "It cannot be checked",
+            "It is always exciting"
           ],
-          "answerIndex": 2,
-          "explanation": "Relevant reasons are central to whether the argument works.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Which statement is the most cautious academic claim?",
-          "choices": [
-            "This proves the answer forever.",
-            "This is obvious to everyone.",
-            "This cannot be questioned.",
-            "This may suggest a possible explanation."
-          ],
-          "answerIndex": 3,
-          "explanation": "A cautious claim recognises limits and avoids overstating certainty.",
+          "answerIndex": 1,
+          "explanation": "A consistent result is one that stays similar across repeated checks.",
           "category": "attention"
         },
         {
-          "prompt": "A text says a policy 'may increase participation'. What can safely be inferred?",
+          "prompt": "A map scale says 1 cm represents 5 km. How far is 4 cm on the map?",
           "choices": [
-            "An increase is possible but not guaranteed.",
-            "Participation will definitely double.",
-            "The policy is impossible to measure.",
-            "Participation will fall."
-          ],
-          "answerIndex": 0,
-          "explanation": "The word 'may' signals possibility, not certainty.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which sentence gives the clearest cause-and-effect relationship?",
-          "choices": [
-            "The room was bright, and the chairs were blue.",
-            "Because the road was icy, the bus moved slowly.",
-            "The lecture was long and held on Tuesday.",
-            "Several students arrived with notebooks."
-          ],
-          "answerIndex": 1,
-          "explanation": "It clearly links icy roads as the cause of slow movement.",
-          "category": "logic"
-        },
-        {
-          "prompt": "If a writer uses one example to represent a whole group, what should you question?",
-          "choices": [
-            "Whether the example has a name",
-            "Whether the group is mentioned first",
-            "Whether one example is enough evidence",
-            "Whether the sentence is too short"
+            "9 km",
+            "15 km",
+            "20 km",
+            "25 km"
           ],
           "answerIndex": 2,
-          "explanation": "A single example may not fairly represent a wider group.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "A text compares two plans but gives costs for only one. What is the main weakness?",
-          "choices": [
-            "The plans are both impossible.",
-            "The cheaper plan must be better.",
-            "Costs are never relevant.",
-            "The comparison is incomplete."
-          ],
-          "answerIndex": 3,
-          "explanation": "A fair comparison needs relevant information for both options.",
-          "category": "deduction"
-        }
-      ],
-      "encouragement": "Strong reading. Now the numbers start to matter more."
-    },
-    {
-      "title": "Stage 3: Number Sense",
-      "questions": [
-        {
-          "prompt": "A value rises from 50 to 60. What is the percentage increase?",
-          "choices": [
-            "20%",
-            "10%",
-            "15%",
-            "25%"
-          ],
-          "answerIndex": 0,
-          "explanation": "The increase is 10, which is 20% of 50.",
-          "category": "number",
-          "visual": "<div class=\"legacy-symbol-row\"><span>50</span><span>→</span><span>60</span></div>"
-        },
-        {
-          "prompt": "Which number completes the sequence: 2, 4, 8, 16, ?",
-          "choices": [
-            "20",
-            "32",
-            "24",
-            "30"
-          ],
-          "answerIndex": 1,
-          "explanation": "Each term is doubled, so 16 becomes 32.",
+          "explanation": "Four centimetres represents 4 times 5 km, which is 20 km.",
           "category": "number"
         },
         {
-          "prompt": "A class has 18 students. Two thirds choose biology. How many choose biology?",
+          "prompt": "Which question best tests whether a claim is biased?",
           "choices": [
-            "6",
-            "9",
-            "12",
-            "15"
+            "Who benefits if people believe it?",
+            "How long is the sentence?",
+            "Is the paper white?",
+            "Can it be read aloud?"
           ],
-          "answerIndex": 2,
-          "explanation": "Two thirds of 18 is 12.",
+          "answerIndex": 0,
+          "explanation": "A useful bias check asks whether someone has an interest in the claim being accepted.",
+          "category": "logic"
+        },
+        {
+          "prompt": "If no musicians are pilots, and Lena is a musician, what must be true?",
+          "choices": [
+            "Lena is not a pilot",
+            "Lena is a pilot",
+            "All pilots are musicians",
+            "No one is a musician"
+          ],
+          "answerIndex": 0,
+          "explanation": "If no musicians are pilots, then a musician such as Lena cannot be a pilot.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which choice is most likely to improve a weak argument?",
+          "choices": [
+            "Add a clear reason with evidence",
+            "Use longer words",
+            "Repeat the claim",
+            "Remove the conclusion"
+          ],
+          "answerIndex": 0,
+          "explanation": "A weak argument is usually improved by a clear reason supported by evidence.",
+          "category": "logic"
+        }
+      ]
+    },
+    {
+      "title": "Two-Step Reasoning",
+      "encouragement": "That was a strong round. Now you are entering the harder end of the challenge.",
+      "questions": [
+        {
+          "prompt": "A price rises by 10% and then falls by 10%. Compared with the original price, what is true?",
+          "choices": [
+            "It is unchanged",
+            "It is slightly lower",
+            "It is slightly higher",
+            "It has doubled"
+          ],
+          "answerIndex": 1,
+          "explanation": "A 10% fall after a 10% rise is taken from the larger amount, leaving the result slightly lower than the original.",
           "category": "number"
         },
         {
-          "prompt": "If 5 notebooks cost the same total as 2 folders, and one folder costs 10 units, what does one notebook cost?",
+          "prompt": "Which conclusion is best supported: Students who slept longer scored higher, but the study did not control for study time.",
           "choices": [
-            "2 units",
-            "5 units",
-            "10 units",
-            "4 units"
-          ],
-          "answerIndex": 3,
-          "explanation": "Two folders cost 20 units, so each of 5 notebooks costs 4 units.",
-          "category": "number"
-        },
-        {
-          "prompt": "A graph line goes steadily downward from left to right. What does this usually show?",
-          "choices": [
-            "A decrease over time or across the measured range",
-            "No change",
-            "A sudden increase",
-            "Two equal values only"
+            "Sleep may be linked to scores, but other factors could matter",
+            "Sleep definitely caused higher scores",
+            "Studying has no effect",
+            "The scores must be false"
           ],
           "answerIndex": 0,
-          "explanation": "A downward line usually represents a falling value.",
-          "category": "visual"
-        },
-        {
-          "prompt": "A sample of 100 people includes 55 who prefer option A. What fraction prefer option A?",
-          "choices": [
-            "9/20",
-            "11/20",
-            "5/11",
-            "20/55"
-          ],
-          "answerIndex": 1,
-          "explanation": "55 out of 100 simplifies to 11 out of 20.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which average is most affected by one unusually large value?",
-          "choices": [
-            "Median",
-            "Mode",
-            "Mean",
-            "Range midpoint"
-          ],
-          "answerIndex": 2,
-          "explanation": "The mean uses every value, so an extreme value can pull it upward.",
+          "explanation": "The link may be real, but without controlling for study time, causation is uncertain.",
           "category": "logic"
         },
         {
-          "prompt": "A ratio of students to tutors is 12:3. What is the simplified ratio?",
-          "choices": [
-            "6:3",
-            "3:12",
-            "2:1",
-            "4:1"
-          ],
-          "answerIndex": 3,
-          "explanation": "Both parts divide by 3, giving 4:1.",
-          "category": "number"
-        }
-      ],
-      "encouragement": "You have cleared the first quantitative stage. Next, look for hidden assumptions."
-    },
-    {
-      "title": "Stage 4: Evidence and Assumptions",
-      "questions": [
-        {
-          "prompt": "A study finds that students who sleep more score higher. What extra evidence is needed before saying sleep caused the higher scores?",
-          "choices": [
-            "Whether other factors were controlled",
-            "Whether the scores were written in a table",
-            "Whether students liked the study",
-            "Whether the study title was clear"
-          ],
-          "answerIndex": 0,
-          "explanation": "Correlation alone does not prove cause, so other factors matter.",
-          "category": "deduction",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Correlation</span><span>?</span><span>Cause</span></div>"
-        },
-        {
-          "prompt": "Which statement is an assumption?",
-          "choices": [
-            "The test lasted 60 minutes.",
-            "Higher attendance always means better learning.",
-            "The group included 40 people.",
-            "The survey had five questions."
-          ],
-          "answerIndex": 1,
-          "explanation": "It makes a broad claim that would need support.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A conclusion is based on data from 12 people. What is the best concern?",
-          "choices": [
-            "The conclusion must be false.",
-            "The data cannot contain numbers.",
-            "The sample may be too small.",
-            "The people must all disagree."
-          ],
-          "answerIndex": 2,
-          "explanation": "A small sample may not represent a wider population well.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which evidence would best support the claim that a course improved writing skills?",
-          "choices": [
-            "Students liked the classroom.",
-            "Students wrote longer essays after the course.",
-            "The course had an attractive website.",
-            "Independent markers rated post-course essays higher using the same criteria."
-          ],
-          "answerIndex": 3,
-          "explanation": "Independent ratings using the same criteria directly assess improvement.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A researcher changes two variables at the same time. What problem does this create?",
-          "choices": [
-            "It may be unclear which variable caused the result.",
-            "The experiment becomes impossible to record.",
-            "The result must be random.",
-            "The sample size becomes zero."
-          ],
-          "answerIndex": 0,
-          "explanation": "Changing two variables makes cause harder to identify.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which question best tests whether a survey is biased?",
-          "choices": [
-            "Was the survey printed on paper?",
-            "Were the questions leading or neutral?",
-            "Did the survey have a title?",
-            "Were the answers placed in boxes?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Leading questions can push respondents toward certain answers.",
-          "category": "attention"
-        },
-        {
-          "prompt": "An argument says, 'This idea is popular, so it must be correct.' What is the weakness?",
-          "choices": [
-            "Correct ideas are never popular.",
-            "The idea has no audience.",
-            "Popularity does not prove truth.",
-            "The argument is too short to read."
-          ],
-          "answerIndex": 2,
-          "explanation": "Many people believing something does not make it true.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Which source is likely to be most reliable for a scientific claim?",
-          "choices": [
-            "An anonymous comment",
-            "A slogan on a poster",
-            "A rumour repeated many times",
-            "A peer-reviewed study with clear methods"
-          ],
-          "answerIndex": 3,
-          "explanation": "Clear methods and peer review make a scientific source easier to assess.",
-          "category": "deduction"
-        }
-      ],
-      "encouragement": "Your reasoning is warming up. The next stage tests scientific thinking rather than memorised facts."
-    },
-    {
-      "title": "Stage 5: Scientific Reasoning",
-      "questions": [
-        {
-          "prompt": "In an experiment, the control group is used mainly to do what?",
-          "choices": [
-            "Provide a comparison for the tested condition",
-            "Make the result more dramatic",
-            "Replace the need for measurement",
-            "Choose the final answer in advance"
-          ],
-          "answerIndex": 0,
-          "explanation": "A control group helps show what changes when the tested condition is introduced.",
-          "category": "logic",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Control</span><span>vs</span><span>Test</span></div>"
-        },
-        {
-          "prompt": "Which claim is best supported by repeated similar results from different studies?",
-          "choices": [
-            "A weaker claim",
-            "A more reliable claim",
-            "A purely personal claim",
-            "A claim with no evidence"
-          ],
-          "answerIndex": 1,
-          "explanation": "Replication across studies usually strengthens confidence in a finding.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A plant receives less light and grows more slowly. Which variable was changed?",
-          "choices": [
-            "Growth rate",
-            "Plant colour",
-            "Light exposure",
-            "Pot label"
-          ],
-          "answerIndex": 2,
-          "explanation": "Light exposure is the condition deliberately changed.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which statement is a hypothesis?",
-          "choices": [
-            "The beaker is made of glass.",
-            "The room has four tables.",
-            "The graph has two axes.",
-            "If temperature rises, the reaction may happen faster."
-          ],
-          "answerIndex": 3,
-          "explanation": "A hypothesis is a testable proposed explanation or prediction.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A measurement is precise but not accurate. What does that mean?",
-          "choices": [
-            "It gives similar results that are not close to the true value.",
-            "It is close to the true value every time.",
-            "It cannot be repeated.",
-            "It has no units."
-          ],
-          "answerIndex": 0,
-          "explanation": "Precision means consistency; accuracy means closeness to the true value.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which observation best suggests a chemical reaction has occurred?",
-          "choices": [
-            "A solid object changes position.",
-            "A new gas forms during mixing.",
-            "A book is placed on a table.",
-            "A container is labelled clearly."
-          ],
-          "answerIndex": 1,
-          "explanation": "Gas formation can be evidence of a chemical reaction.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A model is useful in science mainly because it can do what?",
-          "choices": [
-            "Remove the need for evidence",
-            "Guarantee perfect predictions",
-            "Represent a complex system in a simpler form",
-            "Make every result visible"
-          ],
-          "answerIndex": 2,
-          "explanation": "Models simplify complex systems so they can be studied and tested.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Which result would most challenge a proposed theory?",
-          "choices": [
-            "A result predicted by the theory",
-            "A result unrelated to the theory",
-            "A result shown in a neat table",
-            "A repeatable result that contradicts the theory"
-          ],
-          "answerIndex": 3,
-          "explanation": "A repeatable contradiction is strong evidence against a theory.",
-          "category": "logic"
-        }
-      ],
-      "encouragement": "Stage 5 complete. Now the questions move into social evidence and historical judgement."
-    },
-    {
-      "title": "Stage 6: Historical and Social Judgement",
-      "questions": [
-        {
-          "prompt": "A historian compares two accounts of the same event. What should they check first?",
-          "choices": [
-            "Who wrote each account and why",
-            "Which account has more pages",
-            "Which account uses shorter sentences",
-            "Which account has a nicer cover"
-          ],
-          "answerIndex": 0,
-          "explanation": "Author perspective and purpose affect how evidence should be interpreted.",
-          "category": "deduction",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Source</span><span>Purpose</span><span>Context</span></div>"
-        },
-        {
-          "prompt": "Which evidence is strongest for showing a change over time?",
-          "choices": [
-            "One description from a single year",
-            "Several comparable records from different years",
-            "A single memorable quotation",
-            "A modern opinion about the past"
-          ],
-          "answerIndex": 1,
-          "explanation": "Comparable records across years can reveal a pattern of change.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A map shows trade routes between cities. What can it most directly help explain?",
-          "choices": [
-            "What every person believed",
-            "The exact weather every day",
-            "How goods and ideas may have moved",
-            "Which language was easiest to learn"
-          ],
-          "answerIndex": 2,
-          "explanation": "Trade routes can show possible movement of goods, people, and ideas.",
-          "category": "visual"
-        },
-        {
-          "prompt": "A social policy benefits one group but disadvantages another. What academic skill is most needed to assess it fairly?",
-          "choices": [
-            "Ignoring both groups",
-            "Choosing the louder group",
-            "Assuming the policy must be good",
-            "Considering evidence from multiple perspectives"
-          ],
-          "answerIndex": 3,
-          "explanation": "Fair assessment requires weighing effects across more than one perspective.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Which statement best separates description from explanation?",
-          "choices": [
-            "Description says what happened; explanation says why it happened.",
-            "Description is always false; explanation is always true.",
-            "Description uses numbers; explanation never does.",
-            "Description is for science only."
-          ],
-          "answerIndex": 0,
-          "explanation": "Description identifies events or features; explanation gives reasons or causes.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Why might a primary source still be unreliable?",
-          "choices": [
-            "It is always written too late.",
-            "It may reflect bias, limited knowledge, or a specific purpose.",
-            "It cannot contain useful information.",
-            "It must agree with every other source."
-          ],
-          "answerIndex": 1,
-          "explanation": "Being close to an event does not remove bias or limitation.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A claim says one invention alone caused a major social change. What is the best objection?",
-          "choices": [
-            "Inventions never matter.",
-            "Social change cannot be studied.",
-            "Major social changes often have several causes.",
-            "One cause is always enough."
-          ],
-          "answerIndex": 2,
-          "explanation": "Large social changes are usually influenced by multiple factors.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Which comparison is fairest when studying two countries?",
-          "choices": [
-            "Comparing one city with an entire continent",
-            "Using one statistic for one country and a different statistic for the other",
-            "Choosing only the most surprising example",
-            "Comparing similar periods and similar measures"
-          ],
-          "answerIndex": 3,
-          "explanation": "Fair comparison needs similar time periods and comparable measures.",
-          "category": "attention"
-        }
-      ],
-      "encouragement": "You are past the midpoint. Next comes ethical reasoning with carefully balanced choices."
-    },
-    {
-      "title": "Stage 7: Philosophy and Ethics",
-      "questions": [
-        {
-          "prompt": "In ethical reasoning, what is a trade-off?",
-          "choices": [
-            "A situation where gaining one value may reduce another",
-            "A calculation with no human effect",
-            "A rule that answers every case automatically",
-            "A decision with only one possible result"
-          ],
-          "answerIndex": 0,
-          "explanation": "A trade-off occurs when values or benefits conflict.",
-          "category": "logic",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Benefit</span><span>↔</span><span>Cost</span></div>"
-        },
-        {
-          "prompt": "Which question best tests whether a rule is applied fairly?",
-          "choices": [
-            "Does the rule sound impressive?",
-            "Would the same rule apply to similar cases?",
-            "Is the rule easy to memorise?",
-            "Was the rule written recently?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Fairness often requires treating relevantly similar cases consistently.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A decision helps many people but harms a few. Which issue is most directly raised?",
-          "choices": [
-            "The spelling of the decision",
-            "The speed of writing the decision",
-            "The balance between overall benefit and individual cost",
-            "The colour of the report"
-          ],
-          "answerIndex": 2,
-          "explanation": "The case raises a common ethical tension between collective benefit and individual harm.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Which statement best describes a principle?",
-          "choices": [
-            "A one-time guess",
-            "A random example",
-            "A number without context",
-            "A general standard used to guide judgement"
-          ],
-          "answerIndex": 3,
-          "explanation": "A principle is a general guide for evaluating choices.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Two people disagree because they value freedom and safety differently. What is the deepest source of disagreement?",
-          "choices": [
-            "They give different weight to competing values.",
-            "They cannot read the same facts.",
-            "One of them must be dishonest.",
-            "The question has no meaning."
-          ],
-          "answerIndex": 0,
-          "explanation": "They may accept the same facts but prioritise values differently.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which argument is strongest?",
-          "choices": [
-            "This action is right because I prefer it.",
-            "This action is right because it follows a clear principle and avoids serious harm.",
-            "This action is right because it is traditional.",
-            "This action is right because it is easy."
-          ],
-          "answerIndex": 1,
-          "explanation": "It gives both a principle and a consequence-based reason.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A policy treats everyone identically but ignores major differences in need. What concern does this raise?",
-          "choices": [
-            "Fairness means never comparing people.",
-            "Identical treatment is always unfair.",
-            "Equal treatment may not always produce fair outcomes.",
-            "Needs can never matter."
-          ],
-          "answerIndex": 2,
-          "explanation": "Sometimes fairness requires attention to relevant differences.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which question best reveals a hidden ethical assumption?",
-          "choices": [
-            "How many letters are in the policy title?",
-            "Is the speaker using a calm voice?",
-            "Does the example appear first or last?",
-            "What value is being treated as most important?"
-          ],
-          "answerIndex": 3,
-          "explanation": "Identifying the priority value helps reveal the assumption behind the judgement.",
-          "category": "lateral"
-        }
-      ],
-      "encouragement": "Good progress. The next stage is more abstract and pattern-heavy."
-    },
-    {
-      "title": "Stage 8: Abstract Patterns",
-      "questions": [
-        {
-          "prompt": "Which item breaks the pattern: square, triangle, circle, rectangle?",
-          "choices": [
-            "Circle",
-            "Square",
-            "Triangle",
-            "Rectangle"
-          ],
-          "answerIndex": 0,
-          "explanation": "Circle is the only shape listed without straight sides.",
-          "category": "visual",
-          "visual": "<div class=\"legacy-symbol-row\"><span>□</span><span>△</span><span>○</span><span>▭</span></div>"
-        },
-        {
-          "prompt": "Complete the analogy: seed is to plant as idea is to what?",
-          "choices": [
-            "Notebook",
-            "Argument",
-            "Pencil",
-            "Silence"
-          ],
-          "answerIndex": 1,
-          "explanation": "A seed can develop into a plant; an idea can develop into an argument.",
-          "category": "pattern"
-        },
-        {
-          "prompt": "Which sequence follows a pattern of adding increasing odd numbers: 1, 4, 9, 16, ?",
+          "prompt": "Which number completes the pattern: 1, 4, 9, 16, ____?",
           "choices": [
             "20",
             "24",
             "25",
-            "27"
+            "32"
           ],
           "answerIndex": 2,
-          "explanation": "These are square numbers: 1, 2 squared, 3 squared, 4 squared, then 5 squared.",
-          "category": "number"
-        },
-        {
-          "prompt": "In the set {2, 3, 5, 8, 13}, which number does not share the same property as the others if the property is prime?",
-          "choices": [
-            "2",
-            "3",
-            "13",
-            "8"
-          ],
-          "answerIndex": 3,
-          "explanation": "8 is not prime; the other listed numbers are prime.",
-          "category": "attention"
-        },
-        {
-          "prompt": "A pattern alternates between adding 2 and multiplying by 2: 3, 5, 10, 12, 24. What comes next?",
-          "choices": [
-            "26",
-            "28",
-            "36",
-            "48"
-          ],
-          "answerIndex": 0,
-          "explanation": "After multiplying by 2 to get 24, the next step is adding 2.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which pair has the same relationship as author and book?",
-          "choices": [
-            "Reader and library",
-            "Painter and painting",
-            "Student and exam",
-            "Clock and hour"
-          ],
-          "answerIndex": 1,
-          "explanation": "An author creates a book as a painter creates a painting.",
-          "category": "logic"
-        },
-        {
-          "prompt": "If all blue tokens are heavy and no heavy tokens are small, what must be true about blue tokens?",
-          "choices": [
-            "They are all small.",
-            "They are all light.",
-            "They are not small.",
-            "They are not tokens."
-          ],
-          "answerIndex": 2,
-          "explanation": "Blue tokens are heavy, and heavy tokens are not small.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A table lists A above B, B above C, and C above D. Which item is lowest?",
-          "choices": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "answerIndex": 3,
-          "explanation": "The order places D below C, so D is lowest.",
-          "category": "visual"
-        }
-      ],
-      "encouragement": "You handled the abstract round. The next stage combines several skills at once."
-    },
-    {
-      "title": "Stage 9: Multi-Step Problems",
-      "questions": [
-        {
-          "prompt": "A train travels 180 kilometres in 3 hours. If it keeps the same speed, how far will it travel in 5 hours?",
-          "choices": [
-            "300 kilometres",
-            "240 kilometres",
-            "270 kilometres",
-            "360 kilometres"
-          ],
-          "answerIndex": 0,
-          "explanation": "The speed is 60 kilometres per hour, so in 5 hours it travels 300 kilometres.",
-          "category": "number",
-          "visual": "<div class=\"legacy-symbol-row\"><span>180 km</span><span>÷</span><span>3 h</span></div>"
-        },
-        {
-          "prompt": "A claim has three premises. Two are true, but one is irrelevant. What happens to the argument?",
-          "choices": [
-            "It is automatically proven.",
-            "It may be weakened because relevance matters.",
-            "It becomes a mathematical proof.",
-            "It cannot be assessed."
-          ],
-          "answerIndex": 1,
-          "explanation": "True premises still need to support the conclusion.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A committee must choose the option with the lowest cost among those that meet the safety standard. Option A costs 80 and fails safety. Option B costs 95 and meets safety. Option C costs 90 and meets safety. Which should it choose?",
-          "choices": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "No option"
-          ],
-          "answerIndex": 2,
-          "explanation": "Only B and C meet safety, and C has the lower cost among them.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A box contains 3 red, 2 blue, and 5 green tokens. What is the probability of choosing a blue token?",
-          "choices": [
-            "1/4",
-            "1/3",
-            "1/2",
-            "1/5"
-          ],
-          "answerIndex": 3,
-          "explanation": "There are 2 blue tokens out of 10 total, which is 1/5.",
-          "category": "number"
-        },
-        {
-          "prompt": "A report says test scores rose after a new timetable, but also says extra tutoring began at the same time. What is the main issue?",
-          "choices": [
-            "There is a possible confounding factor.",
-            "The timetable is the only possible cause.",
-            "The scores cannot have risen.",
-            "Tutoring never affects learning."
-          ],
-          "answerIndex": 0,
-          "explanation": "Extra tutoring could also explain the score increase.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Four applicants are ranked by interview and written score. The rule says the written score breaks ties. Lina and Omar have equal interviews; Lina has a higher written score. Who ranks higher?",
-          "choices": [
-            "Omar",
-            "Lina",
-            "They must be equal",
-            "The written score is ignored"
-          ],
-          "answerIndex": 1,
-          "explanation": "The written score breaks the interview tie, so Lina ranks higher.",
-          "category": "attention"
-        },
-        {
-          "prompt": "A machine doubles a number and then subtracts 5. If the output is 17, what was the input?",
-          "choices": [
-            "6",
-            "9",
-            "11",
-            "12"
-          ],
-          "answerIndex": 2,
-          "explanation": "Solving 2x minus 5 equals 17 gives x equals 11.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which conclusion follows: Some researchers are mathematicians. All mathematicians use logic. Therefore...",
-          "choices": [
-            "All researchers use logic.",
-            "No researchers use logic.",
-            "All logic users are researchers.",
-            "Some researchers use logic."
-          ],
-          "answerIndex": 3,
-          "explanation": "The researchers who are mathematicians use logic, so some researchers use logic.",
-          "category": "logic"
-        }
-      ],
-      "encouragement": "One stage remains. The final round rewards calm, precise academic judgement."
-    },
-    {
-      "title": "Stage 10: Final Tutorial Challenge",
-      "questions": [
-        {
-          "prompt": "A passage argues that a policy should be adopted because it is efficient, but it ignores whether it is fair. What is the strongest critique?",
-          "choices": [
-            "The argument leaves out a relevant ethical dimension.",
-            "Efficiency is the only academic value.",
-            "Fairness can never be discussed.",
-            "The policy must be inefficient."
-          ],
-          "answerIndex": 0,
-          "explanation": "A full evaluation may need both efficiency and fairness.",
-          "category": "logic",
-          "visual": "<div class=\"legacy-symbol-row\"><span>Efficient</span><span>+</span><span>Fair?</span></div>"
-        },
-        {
-          "prompt": "A dataset has values 4, 4, 5, 7, 30. Which measure best represents the typical value if you want to reduce the effect of the outlier?",
-          "choices": [
-            "Mean",
-            "Median",
-            "Maximum",
-            "Range"
-          ],
-          "answerIndex": 1,
-          "explanation": "The median is less affected by the unusually high value 30.",
-          "category": "number"
-        },
-        {
-          "prompt": "A scientist predicts that increasing pressure will reduce volume. The results are: pressure rises, volume falls in every trial. What is the best description?",
-          "choices": [
-            "The results disprove the prediction.",
-            "The results are unrelated to the prediction.",
-            "The results support the prediction.",
-            "The prediction cannot be tested."
-          ],
-          "answerIndex": 2,
-          "explanation": "The observed pattern matches the prediction.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which assumption is needed for this argument: 'The library should extend hours because more students asked for evening access.'",
-          "choices": [
-            "Students never use libraries.",
-            "Libraries should close earlier.",
-            "Requests are always unimportant.",
-            "Evening access would help address the request."
-          ],
-          "answerIndex": 3,
-          "explanation": "The argument assumes longer hours would meet the demand for evening access.",
-          "category": "logic"
-        },
-        {
-          "prompt": "A pattern uses two rules: multiply by 3, then subtract 2. Starting at 2 gives 6, then 4, then 12, then 10. What comes next?",
-          "choices": [
-            "30",
-            "8",
-            "20",
-            "28"
-          ],
-          "answerIndex": 0,
-          "explanation": "After subtracting 2 to get 10, the next rule is multiply by 3.",
+          "explanation": "The numbers are square numbers: 1, 4, 9, 16, then 25.",
           "category": "pattern"
         },
         {
-          "prompt": "In a debate, one speaker attacks the person making an argument instead of the argument itself. What is the main flaw?",
+          "prompt": "An argument says, 'Most people in this room agree, so the claim is true.' What is the weakness?",
           "choices": [
-            "It gives too much evidence.",
-            "It changes the subject from evidence to personal criticism.",
-            "It uses only mathematics.",
-            "It proves the opponent is correct."
+            "Agreement alone does not prove truth",
+            "Rooms cannot contain people",
+            "Most means less than half",
+            "Claims must be short"
           ],
-          "answerIndex": 1,
-          "explanation": "Personal attacks do not address whether the argument is sound.",
-          "category": "lateral"
+          "answerIndex": 0,
+          "explanation": "A claim is not proved true simply because many people agree with it.",
+          "category": "logic"
         },
         {
-          "prompt": "A university interview question asks why a conclusion might be true, not whether it is popular. What skill is being tested?",
+          "prompt": "Three friends each shake hands with every other friend once. How many handshakes occur?",
           "choices": [
-            "Popularity ranking",
-            "Memory of names",
-            "Reasoned justification",
-            "Fast guessing"
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "answerIndex": 1,
+          "explanation": "The handshakes are A-B, A-C, and B-C, making 3.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which sentence is the clearest definition?",
+          "choices": [
+            "Energy is when things happen",
+            "Energy is the capacity to do work or cause change",
+            "Energy is very useful",
+            "Energy is a difficult thing"
+          ],
+          "answerIndex": 1,
+          "explanation": "It gives a specific meaning rather than a vague description or opinion.",
+          "category": "attention"
+        },
+        {
+          "prompt": "If all A are B, and some B are C, what must be true?",
+          "choices": [
+            "All A are C",
+            "Some C are A",
+            "Some B are C",
+            "No A are B"
           ],
           "answerIndex": 2,
-          "explanation": "The question asks for reasons that support a conclusion.",
+          "explanation": "The statement directly includes that some B are C; nothing definite follows about A and C.",
           "category": "deduction"
         },
         {
-          "prompt": "A fair test compares two methods. Method A is tested on beginners, and Method B is tested on experts. What is the problem?",
+          "prompt": "A problem seems impossible because one rule is assumed but never stated. What is the best first move?",
           "choices": [
-            "Beginners can never learn.",
-            "Experts cannot be tested.",
-            "The methods must be identical.",
-            "The groups differ in a relevant way before the test."
+            "Identify the hidden assumption",
+            "Choose the longest answer",
+            "Ignore the rule",
+            "Stop solving"
+          ],
+          "answerIndex": 0,
+          "explanation": "Finding hidden assumptions can reveal a new way to solve the problem.",
+          "category": "lateral"
+        }
+      ]
+    },
+    {
+      "title": "Cambridge-Style Challenge",
+      "encouragement": "Excellent. One final stage remains, and it rewards calm judgement over speed.",
+      "questions": [
+        {
+          "prompt": "A researcher finds that people who read more also have larger vocabularies. Which conclusion is safest?",
+          "choices": [
+            "Reading may be associated with vocabulary size",
+            "Reading is the only cause of vocabulary size",
+            "Vocabulary cannot be measured",
+            "People with larger vocabularies never read"
+          ],
+          "answerIndex": 0,
+          "explanation": "The finding shows an association, but it does not prove a single cause.",
+          "category": "logic"
+        },
+        {
+          "prompt": "What is the next number: 2, 3, 5, 9, 17, ____?",
+          "choices": [
+            "25",
+            "31",
+            "33",
+            "35"
+          ],
+          "answerIndex": 2,
+          "explanation": "The increases are 1, 2, 4, and 8, so the next increase is 16, giving 33.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "A statement is necessary for an argument if the argument fails without it. Which is the necessary assumption here: 'The bridge is safe because it passed inspection yesterday.'",
+          "choices": [
+            "The inspection was capable of detecting major safety problems",
+            "The bridge is made of metal",
+            "People like crossing bridges",
+            "Yesterday was a weekday"
+          ],
+          "answerIndex": 0,
+          "explanation": "The argument depends on the inspection being able to detect serious safety issues.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "A group of 5 numbers has an average of 12. What is their total?",
+          "choices": [
+            "48",
+            "50",
+            "60",
+            "72"
+          ],
+          "answerIndex": 2,
+          "explanation": "Average equals total divided by count, so the total is 12 times 5, which is 60.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which criticism is most relevant to a study with no control group?",
+          "choices": [
+            "It is harder to know what would have happened without the treatment",
+            "The title may be too short",
+            "The results include numbers",
+            "The study took place indoors"
+          ],
+          "answerIndex": 0,
+          "explanation": "A control group helps compare the treatment against what happens without it.",
+          "category": "logic"
+        },
+        {
+          "prompt": "If every item in a set is either red or blue, and an item is not red, what must be true?",
+          "choices": [
+            "It is blue",
+            "It is green",
+            "It is both red and blue",
+            "It is outside the set"
+          ],
+          "answerIndex": 0,
+          "explanation": "Within that set, anything not red must be blue.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which phrase best describes a counterexample?",
+          "choices": [
+            "A case that challenges a general claim",
+            "A longer version of a claim",
+            "A result that repeats perfectly",
+            "A number used for counting"
+          ],
+          "answerIndex": 0,
+          "explanation": "A counterexample is a case that shows a general claim may not always hold.",
+          "category": "logic"
+        },
+        {
+          "prompt": "A student solves a problem by trying a simpler version first. Why can that help?",
+          "choices": [
+            "It can reveal the underlying structure",
+            "It makes the answer random",
+            "It removes the need for logic",
+            "It guarantees the answer is small"
+          ],
+          "answerIndex": 0,
+          "explanation": "A simpler version can make the structure of the harder problem easier to see.",
+          "category": "lateral"
+        }
+      ]
+    },
+    {
+      "title": "Final Interview Round",
+      "questions": [
+        {
+          "prompt": "An applicant says, 'This solution is elegant because it uses fewer assumptions.' Why might that matter?",
+          "choices": [
+            "Fewer assumptions can make reasoning easier to test",
+            "Fewer assumptions make every answer correct",
+            "Assumptions are never useful",
+            "Elegant solutions must be short"
+          ],
+          "answerIndex": 0,
+          "explanation": "Using fewer assumptions can make an explanation clearer and easier to challenge or verify.",
+          "category": "logic"
+        },
+        {
+          "prompt": "What number completes the pattern: 1, 2, 6, 24, 120, ____?",
+          "choices": [
+            "240",
+            "360",
+            "600",
+            "720"
           ],
           "answerIndex": 3,
-          "explanation": "Different starting ability makes the comparison unfair.",
+          "explanation": "The pattern multiplies by 2, then 3, then 4, then 5, so the next step is times 6, giving 720.",
+          "category": "pattern"
+        },
+        {
+          "prompt": "Which statement is logically equivalent to: If a claim is proven, it has evidence?",
+          "choices": [
+            "If a claim has no evidence, it is not proven",
+            "If a claim has evidence, it is proven",
+            "If a claim is not proven, it has no evidence",
+            "If a claim is popular, it is proven"
+          ],
+          "answerIndex": 0,
+          "explanation": "The equivalent contrapositive is: if it does not have evidence, it is not proven.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "A fair coin is flipped twice. What is the probability of getting two heads?",
+          "choices": [
+            "1 in 2",
+            "1 in 3",
+            "1 in 4",
+            "1 in 8"
+          ],
+          "answerIndex": 2,
+          "explanation": "The four equally likely outcomes are HH, HT, TH, and TT, so HH is 1 out of 4.",
+          "category": "number"
+        },
+        {
+          "prompt": "Which is the strongest objection to: 'No one complained, so everyone was satisfied'?",
+          "choices": [
+            "People may be dissatisfied without complaining",
+            "Complaints are always written",
+            "Satisfaction cannot exist",
+            "Everyone must complain daily"
+          ],
+          "answerIndex": 0,
+          "explanation": "Silence does not necessarily mean satisfaction.",
+          "category": "logic"
+        },
+        {
+          "prompt": "A theory explains the evidence, but another theory explains the same evidence with fewer unsupported claims. Which is usually preferable?",
+          "choices": [
+            "The theory with fewer unsupported claims",
+            "The theory with the longer name",
+            "The theory mentioned first",
+            "The theory that sounds more dramatic"
+          ],
+          "answerIndex": 0,
+          "explanation": "When explanations fit the evidence equally well, fewer unsupported claims are usually preferred.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which answer best reflects intellectual humility?",
+          "choices": [
+            "I may need to revise my view if better evidence appears",
+            "I am right because I said it first",
+            "Changing my mind is always weakness",
+            "Evidence matters only when it agrees with me"
+          ],
+          "answerIndex": 0,
+          "explanation": "Intellectual humility means being willing to update a view when better evidence appears.",
+          "category": "lateral"
+        },
+        {
+          "prompt": "A puzzle has many details, but only two affect the answer. What is the best strategy?",
+          "choices": [
+            "Separate relevant information from distractions",
+            "Use every detail equally",
+            "Ignore the question",
+            "Pick the most complex option"
+          ],
+          "answerIndex": 0,
+          "explanation": "Hard reasoning often requires identifying which details actually matter.",
           "category": "attention"
         }
       ]

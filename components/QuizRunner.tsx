@@ -494,7 +494,7 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
-      byData("result-gate-button").textContent = t.quiz.revealPrefix + " " + quiz.result.profileName + " " + t.quiz.profile + " →";
+      byData("result-gate-button").textContent = "Reveal My Result →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
