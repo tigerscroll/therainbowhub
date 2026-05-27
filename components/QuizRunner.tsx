@@ -110,7 +110,6 @@ function createQuizRunnerHtml(config: {
         <p data-js="stage-next" class="legacy-stage-next"></p>
         <div class="legacy-stage-stats">
           <div><strong data-js="stage-score"></strong><span>${escapeHtml(translations.results.scoreSoFar)}</span></div>
-          <div><strong data-js="stage-badge"></strong><span>${escapeHtml(translations.results.roundResult)}</span></div>
         </div>
         <button type="button" data-js="stage-button" data-action="stage-continue" class="legacy-primary legacy-stage-button"></button>
         <div class="legacy-ad-note">
@@ -329,15 +328,6 @@ function createQuizRunnerScript(config: {
       }, 0);
     }
 
-    function getStageBadge(stage) {
-      var stageQuestions = getStageQuestions(stage);
-      var stageScore = getStageScore(stage);
-
-      if (stageScore >= Math.ceil(stageQuestions.length * 0.75)) return t.results.excellent;
-      if (stageScore >= Math.ceil(stageQuestions.length * 0.5)) return t.results.strong;
-      return t.results.keepGoing;
-    }
-
     function getAnsweredCount() {
       return Object.keys(answers).length;
     }
@@ -390,7 +380,7 @@ function createQuizRunnerScript(config: {
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
 
-      byData("round-label").textContent = t.quiz.round + " " + stageNumber + "/" + stageCount;
+      byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
@@ -488,7 +478,7 @@ function createQuizRunnerScript(config: {
       var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
       var nextStageName = nextStage !== undefined ? getStageName(nextStage) : null;
       var buttonLabel = nextStageName
-        ? t.results.startStage + " " + nextStageName + " →"
+        ? t.quiz.continue + " →"
         : t.results.viewResults + " →";
       var copy = quiz.stageEncouragement[Math.min(completedStage, quiz.stageEncouragement.length - 1)] || "";
 
@@ -497,7 +487,6 @@ function createQuizRunnerScript(config: {
       byData("stage-next").textContent = nextStageName ? t.results.nextStage + ": " + nextStageName : "";
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-score").textContent = getScore() + "/" + current;
-      byData("stage-badge").textContent = getStageBadge(completedStage);
       byData("stage-button").textContent = buttonLabel;
       byData("stage-button").dataset.readyText = buttonLabel;
       show("stageGate", shouldScroll);

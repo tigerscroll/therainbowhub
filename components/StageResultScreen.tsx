@@ -1,7 +1,6 @@
 import type { Translations } from "@/lib/i18n";
 
 type StageResultScreenProps = {
-  badge: string;
   buttonLabel: string;
   copy: string;
   helperText: string;
@@ -14,7 +13,6 @@ type StageResultScreenProps = {
 };
 
 export function StageResultScreen({
-  badge,
   buttonLabel,
   copy,
   helperText,
@@ -38,10 +36,6 @@ export function StageResultScreen({
         <div>
           <strong>{scoreLabel}</strong>
           <span>{translations.results.scoreSoFar}</span>
-        </div>
-        <div>
-          <strong>{badge}</strong>
-          <span>{translations.results.roundResult}</span>
         </div>
       </div>
       <button type="button" disabled={isLoading} onClick={onContinue} className="legacy-primary legacy-stage-button">

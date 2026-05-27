@@ -891,15 +891,15 @@ a {
 .legacy-stage-stats {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  max-width: 390px;
+  grid-template-columns: minmax(0, 1fr);
   margin: 0 0 16px;
 }
 
 .legacy-stage-stats div {
   min-height: auto;
   display: block;
-  padding: 12px 8px;
+  padding: 14px 10px;
   border: 1px solid #e6edf5;
   border-radius: 16px;
   background: linear-gradient(180deg, #fff, #f8fafc);
@@ -907,14 +907,10 @@ a {
   animation: legacy-stat-rise 380ms ease both;
 }
 
-.legacy-stage-stats div:nth-child(2) {
-  animation-delay: 50ms;
-}
-
 .legacy-stage-stats strong {
   display: block;
   color: var(--legacy-navy);
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 950;
   line-height: 1;
   letter-spacing: 0;
