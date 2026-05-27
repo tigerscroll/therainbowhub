@@ -22,6 +22,12 @@ Build the static export:
 npm run build
 ```
 
+Validate quiz JSON files before committing:
+
+```bash
+npm run validate
+```
+
 ## Cloudflare Pages
 
 Use these Cloudflare Pages settings:
@@ -68,6 +74,14 @@ The app reads quiz JSON files at build time through:
 ```text
 lib/quizzes.ts
 ```
+
+You can quickly check quiz files without running a full Next.js build:
+
+```bash
+npm run validate
+```
+
+This validates required fields, stage/question structure, answer indexes, translated quiz alignment, local thumbnail paths, explanations, and result scoring categories.
 
 The JSON schema for AI tools and editors is:
 

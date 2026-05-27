@@ -18,7 +18,7 @@ export function generateStaticParams() {
   return getSupportedLocales()
     .filter((locale) => locale !== "en")
     .flatMap((locale) =>
-      getAllQuizzes().map((quiz) => ({
+      getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
         locale,
         slug: quiz.slug,
       })),

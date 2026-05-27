@@ -1,10 +1,12 @@
 import {
   getDefaultLocale,
+  getLocaleOptions,
   getLocalePath,
   getSupportedLocales,
   type SupportedLocale,
   type Translations,
 } from "@/lib/i18n";
+import { getQuizLocales } from "@/lib/quizzes";
 
 type LanguageSwitcherProps = {
   locale: SupportedLocale;
@@ -14,21 +16,62 @@ type LanguageSwitcherProps = {
 
 const languageNames: Record<SupportedLocale, string> = {
   en: "English",
-  es: "Español",
+  pt: "Portuguese",
+  fr: "French",
+  es: "Spanish",
+  ar: "Arabic",
+  de: "German",
+  tr: "Turkish",
+  it: "Italian",
+  nl: "Dutch",
+  hu: "Hungarian",
+  ro: "Romanian",
+  pl: "Polish",
+  ja: "Japanese",
+  zh: "Chinese",
+  id: "Indonesian",
+  bg: "Bulgarian",
+  sv: "Swedish",
+  cs: "Czech",
+  el: "Greek",
+  uk: "Ukrainian",
+  da: "Danish",
+  no: "Norwegian",
+  ko: "Korean",
+  lt: "Lithuanian",
+  lv: "Latvian",
+  fi: "Finnish",
 };
 
-export function LanguageSwitcher({ locale, path, translations }: LanguageSwitcherProps) {
+const languageFlags = Object.fromEntries(getLocaleOptions().map((option) => [option.code, option.flag])) as Record<SupportedLocale, string>;
+
+function getSwitcherHref(locale: SupportedLocale, path: string) {
   const defaultLocale = getDefaultLocale();
+  const quizMatch = path.match(/^\/quiz\/([^/]+)/);
+
+  if (quizMatch) {
+    const quizSlug = quizMatch[1];
+    const quizLocales = getQuizLocales(quizSlug);
+
+    if (!quizLocales.includes(locale)) {
+      return getLocalePath(locale, "/");
+    }
+  }
+
+  return locale === defaultLocale ? path : getLocalePath(locale, path);
+}
+
+export function LanguageSwitcher({ locale, path, translations }: LanguageSwitcherProps) {
   const currentLanguageName = languageNames[locale];
 
   return (
     <details className="language-switcher">
       <summary aria-label={translations.locale.switcherLabel}>
-        <span>{currentLanguageName}</span>
+        <span><span aria-hidden="true">{languageFlags[locale]}</span>{currentLanguageName}</span>
       </summary>
       <div className="language-switcher__menu">
         {getSupportedLocales().map((supportedLocale) => {
-          const href = supportedLocale === defaultLocale ? path : getLocalePath(supportedLocale, path);
+          const href = getSwitcherHref(supportedLocale, path);
 
           return (
             <a
@@ -36,7 +79,8 @@ export function LanguageSwitcher({ locale, path, translations }: LanguageSwitche
               href={href}
               aria-current={supportedLocale === locale ? "page" : undefined}
             >
-              {languageNames[supportedLocale]}
+              <span aria-hidden="true">{languageFlags[supportedLocale]}</span>
+              <span>{languageNames[supportedLocale]}</span>
             </a>
           );
         })}

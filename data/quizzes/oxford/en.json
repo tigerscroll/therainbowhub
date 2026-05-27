@@ -2,8 +2,8 @@
   "slug": "oxford",
   "title": "Oxford Entrance Test",
   "seoTitle": "Oxford Entrance Test Quiz",
-  "seoDescription": "Take a fast Oxford-style reasoning quiz with staged logic, pattern, deduction, and word challenges.",
-  "pageTitle": "Only 4% Can Pass This Oxford Test",
+  "seoDescription": "Take a fast Oxford-style reasoning quiz with staged logic, pattern, deduction, number, and visual challenges.",
+  "pageTitle": "Only 3% Can Pass This Oxford Test",
   "eyebrow": "Intelligence",
   "summary": "Only 3% can pass this elite reasoning test.",
   "duration": "~3 min",
@@ -23,7 +23,7 @@
   },
   "heroPoints": [
     "Oxford-style reasoning",
-    "80 staged questions",
+    "40 staged questions",
     "Instant profile at the end"
   ],
   "infoPanel": {
@@ -32,7 +32,7 @@
     "columns": [
       {
         "title": "How It Works",
-        "body": "The quiz begins with a short confidence check, then moves through visual logic, attention, number patterns, word reasoning, deduction, lateral thinking, and final elite questions. Each round is short, so the test stays quick while gradually becoming harder."
+        "body": "The quiz moves through five escalating stages: Warm Up, Challenge Round, Expert Round, Impossible Round, and Final 3%. Each short stage mixes visual, number, logic, deduction, pattern, attention, and lateral-style reasoning so the challenge feels varied while steadily becoming harder."
       },
       {
         "title": "About Oxford Admissions",
@@ -98,7 +98,6 @@
         "label": "Pattern",
         "categories": [
           "visual",
-          "word",
           "pattern",
           "attention"
         ]
@@ -126,7 +125,7 @@
   },
   "stageGroups": [
     {
-      "title": "Quick Confidence Check",
+      "title": "Warm Up",
       "questions": [
         {
           "prompt": "Which item does not belong?",
@@ -138,7 +137,7 @@
           ],
           "answerIndex": 2,
           "explanation": "Apple, orange, and banana are fruits. Carrot is a vegetable.",
-          "category": "logic"
+          "category": "visual"
         },
         {
           "prompt": "What comes next?",
@@ -150,35 +149,36 @@
           ],
           "answerIndex": 2,
           "explanation": "The numbers double each time: 3, 6, 12, 24, 48.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">3   6   12   24   ?</text></svg>",
-          "category": "number"
+          "category": "number",
+          "visual": "<svg viewBox=\"0 0 340 90\" style=\"width:340px;max-width:100%;height:90px\"><text x=\"170\" y=\"53\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">3   6   12   24   ?</text></svg>"
         },
         {
-          "prompt": "Choose the only number divisible by 3.",
+          "prompt": "Choose the only even number.",
           "choices": [
-            "22",
-            "28",
-            "33",
-            "41"
+            "13",
+            "27",
+            "34",
+            "51"
           ],
           "answerIndex": 2,
-          "explanation": "33 is divisible by 3 because 3 + 3 = 6.",
-          "category": "number"
+          "explanation": "34 is the only number divisible by 2.",
+          "category": "logic"
         },
         {
-          "prompt": "If CAT becomes DBU, then DOG becomes...",
+          "prompt": "Which group has the most dots?",
           "choices": [
-            "EPH",
-            "CNE",
-            "EOG",
-            "FQH"
+            "A",
+            "B",
+            "C",
+            "D"
           ],
-          "answerIndex": 0,
-          "explanation": "Each letter moves forward by one: D to E, O to P, G to H.",
-          "category": "word"
+          "answerIndex": 2,
+          "explanation": "Group C has six dots, more than the other groups.",
+          "category": "deduction",
+          "visual": "<svg viewBox=\"0 0 360 90\" style=\"width:360px;max-width:100%;height:90px\"><text x=\"180\" y=\"53\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">A: ●●●   B: ●●●●   C: ●●●●●●   D: ●●</text></svg>"
         },
         {
-          "prompt": "Which shape has one more side than a pentagon?",
+          "prompt": "Which shape has six sides?",
           "choices": [
             "Triangle",
             "Square",
@@ -186,158 +186,52 @@
             "Octagon"
           ],
           "answerIndex": 2,
-          "explanation": "A pentagon has five sides. A hexagon has six.",
-          "category": "visual"
+          "explanation": "A hexagon has six sides.",
+          "category": "pattern"
         },
         {
-          "prompt": "Hand is to glove as foot is to...",
+          "prompt": "Which arrow points the other way?",
           "choices": [
-            "Hat",
-            "Shoe",
-            "Ring",
-            "Sleeve"
+            "A",
+            "B",
+            "C",
+            "D"
           ],
           "answerIndex": 1,
-          "explanation": "A glove covers a hand; a shoe covers a foot.",
-          "category": "word"
+          "explanation": "A, C, and D point up. B points down.",
+          "category": "attention",
+          "visual": "<svg viewBox=\"0 0 330 90\" style=\"width:330px;max-width:100%;height:90px\"><text x=\"165\" y=\"53\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"950\" fill=\"#071b34\">A ↑     B ↓     C ↑     D ↑</text></svg>"
         },
         {
-          "prompt": "All scholars read. Maya is a scholar. What must be true?",
+          "prompt": "All members read. A is a member. What must be true?",
           "choices": [
-            "Maya reads",
-            "All readers are scholars",
-            "Maya writes essays",
-            "No scholars read"
+            "A reads",
+            "All readers are members",
+            "A writes",
+            "No members read"
           ],
           "answerIndex": 0,
-          "explanation": "If all scholars read and Maya is a scholar, then Maya reads.",
-          "category": "deduction"
+          "explanation": "If all members read and A is a member, then A reads.",
+          "category": "lateral"
         },
         {
-          "prompt": "Which word is a palindrome?",
+          "prompt": "Which shape is the only outline?",
           "choices": [
-            "RADAR",
-            "REASON",
-            "TUTOR",
-            "CLAIM"
+            "A",
+            "B",
+            "C",
+            "D"
           ],
-          "answerIndex": 0,
-          "explanation": "RADAR reads the same forwards and backwards.",
-          "category": "word"
+          "answerIndex": 2,
+          "explanation": "C is the only outline shape. The others are filled.",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 330 90\" style=\"width:330px;max-width:100%;height:90px\"><text x=\"165\" y=\"53\" text-anchor=\"middle\" font-size=\"32\" font-weight=\"950\" fill=\"#071b34\">A ●     B ●     C ○     D ●</text></svg>"
         }
       ],
-      "encouragement": "You passed the warm-up. The next round checks visual pattern speed."
+      "encouragement": "You cleared the warm-up. Next comes the challenge round, where the patterns get quicker."
     },
     {
-      "title": "Visual Logic",
-      "questions": [
-        {
-          "prompt": "Which number is largest?",
-          "choices": [
-            "19",
-            "41",
-            "27",
-            "33"
-          ],
-          "answerIndex": 1,
-          "explanation": "41 is the largest number.",
-          "category": "number"
-        },
-        {
-          "prompt": "Which comes next in the day sequence?",
-          "choices": [
-            "Morning",
-            "Night",
-            "Lunch",
-            "Clock"
-          ],
-          "answerIndex": 1,
-          "explanation": "Dawn, morning, afternoon, evening, then night.",
-          "visual": "<div class=\"sequence-visual\"><span>Dawn</span><span>→</span><span>Morning</span><span>→</span><span>Afternoon</span><span>→</span><span>Evening</span><span>→</span><span>?</span></div>",
-          "category": "logic"
-        },
-        {
-          "prompt": "Which shape comes next?",
-          "choices": [
-            "Triangle",
-            "Square",
-            "Pentagon",
-            "Hexagon"
-          ],
-          "answerIndex": 3,
-          "explanation": "The shapes increase by one side: 3, 4, 5, then 6.",
-          "visual": "<svg viewBox=\"0 0 260 96\" style=\"width:260px;max-width:100%;height:96px\"><polygon points=\"42,24 66,66 18,66\" fill=\"#071b34\"/><rect x=\"92\" y=\"27\" width=\"42\" height=\"42\" rx=\"6\" fill=\"#071b34\"/><polygon points=\"181,20 210,42 199,76 163,76 152,42\" fill=\"#071b34\"/><text x=\"234\" y=\"62\" font-size=\"35\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
-        },
-        {
-          "prompt": "Which row does not belong?",
-          "choices": [
-            "Row A",
-            "Row B",
-            "Row C",
-            "Row D"
-          ],
-          "answerIndex": 3,
-          "explanation": "Row D has four shapes; the others have three.",
-          "visual": "<svg viewBox=\"0 0 260 150\" style=\"width:260px;max-width:100%;height:150px\"><rect x=\"20\" y=\"12\" width=\"220\" height=\"28\" rx=\"10\" fill=\"#f1f5f9\"/><rect x=\"20\" y=\"45\" width=\"220\" height=\"28\" rx=\"10\" fill=\"#f8fafc\"/><rect x=\"20\" y=\"78\" width=\"220\" height=\"28\" rx=\"10\" fill=\"#f1f5f9\"/><rect x=\"20\" y=\"111\" width=\"220\" height=\"28\" rx=\"10\" fill=\"#f8fafc\"/><text x=\"130\" y=\"34\" text-anchor=\"middle\" font-size=\"24\" fill=\"#071b34\">◆  ◆  ◆</text><text x=\"130\" y=\"67\" text-anchor=\"middle\" font-size=\"24\" fill=\"#071b34\">●  ●  ●</text><text x=\"130\" y=\"100\" text-anchor=\"middle\" font-size=\"24\" fill=\"#071b34\">■  ■  ■</text><text x=\"130\" y=\"133\" text-anchor=\"middle\" font-size=\"24\" fill=\"#071b34\">▲  ▲  ▲  ▲</text></svg>",
-          "category": "visual"
-        },
-        {
-          "prompt": "Which tile completes the checker grid?",
-          "choices": [
-            "Black square",
-            "White square",
-            "Black circle",
-            "White circle"
-          ],
-          "answerIndex": 0,
-          "explanation": "The grid alternates black and white squares, so the missing tile is black.",
-          "visual": "<svg viewBox=\"0 0 210 210\" style=\"width:210px;max-width:100%;height:210px\"><rect x=\"20\" y=\"20\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#071b34\"/><rect x=\"80\" y=\"20\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><rect x=\"140\" y=\"20\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#071b34\"/><rect x=\"20\" y=\"80\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><rect x=\"80\" y=\"80\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#071b34\"/><rect x=\"140\" y=\"80\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><rect x=\"20\" y=\"140\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#071b34\"/><rect x=\"80\" y=\"140\" width=\"50\" height=\"50\" rx=\"10\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><text x=\"165\" y=\"174\" text-anchor=\"middle\" font-size=\"31\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
-        },
-        {
-          "prompt": "The arrow turns clockwise. What comes next?",
-          "choices": [
-            "←",
-            "↑",
-            "→",
-            "↓"
-          ],
-          "answerIndex": 0,
-          "explanation": "After up, right, and down, the next clockwise direction is left.",
-          "visual": "<svg viewBox=\"0 0 260 88\" style=\"width:260px;max-width:100%;height:88px\"><text x=\"48\" y=\"55\" text-anchor=\"middle\" font-size=\"42\" font-weight=\"950\" fill=\"#071b34\">↑</text><text x=\"104\" y=\"55\" text-anchor=\"middle\" font-size=\"42\" font-weight=\"950\" fill=\"#071b34\">→</text><text x=\"160\" y=\"55\" text-anchor=\"middle\" font-size=\"42\" font-weight=\"950\" fill=\"#071b34\">↓</text><text x=\"216\" y=\"55\" text-anchor=\"middle\" font-size=\"38\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
-        },
-        {
-          "prompt": "Which set breaks the pattern?",
-          "choices": [
-            "● ●",
-            "■ ■",
-            "▲ ▲",
-            "◆ ◇"
-          ],
-          "answerIndex": 3,
-          "explanation": "The first three pairs match. The final pair contains two different diamonds.",
-          "category": "visual"
-        },
-        {
-          "prompt": "What comes next in the repeating pattern?",
-          "choices": [
-            "Triangle",
-            "Circle",
-            "Square",
-            "Pentagon"
-          ],
-          "answerIndex": 0,
-          "explanation": "The cycle is circle, square, triangle, then repeats.",
-          "visual": "<svg viewBox=\"0 0 280 92\" style=\"width:280px;max-width:100%;height:92px\"><circle cx=\"35\" cy=\"46\" r=\"16\" fill=\"#071b34\"/><rect x=\"78\" y=\"30\" width=\"32\" height=\"32\" rx=\"6\" fill=\"#071b34\"/><polygon points=\"151,25 171,64 131,64\" fill=\"#071b34\"/><circle cx=\"207\" cy=\"46\" r=\"16\" fill=\"#071b34\"/><rect x=\"246\" y=\"30\" width=\"32\" height=\"32\" rx=\"6\" fill=\"#071b34\"/></svg>",
-          "category": "visual"
-        }
-      ],
-      "encouragement": "Most players start missing here. The next round tests careful attention."
-    },
-    {
-      "title": "Attention Test",
+      "title": "Challenge Round",
       "questions": [
         {
           "prompt": "Which option completes the size pattern?",
@@ -349,8 +243,8 @@
           ],
           "answerIndex": 0,
           "explanation": "The circles alternate small, large, small, large, then small.",
-          "visual": "<svg viewBox=\"0 0 260 92\" style=\"width:260px;max-width:100%;height:92px\"><circle cx=\"38\" cy=\"46\" r=\"10\" fill=\"#071b34\"/><circle cx=\"88\" cy=\"46\" r=\"20\" fill=\"#071b34\"/><circle cx=\"146\" cy=\"46\" r=\"10\" fill=\"#071b34\"/><circle cx=\"196\" cy=\"46\" r=\"20\" fill=\"#071b34\"/><text x=\"238\" y=\"58\" font-size=\"34\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 260 90\" style=\"width:260px;max-width:100%;height:90px\"><text x=\"130\" y=\"53\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"950\" fill=\"#071b34\">●  ●   ●  ●   ?</text></svg>"
         },
         {
           "prompt": "Which image has the odd symbol?",
@@ -362,8 +256,8 @@
           ],
           "answerIndex": 2,
           "explanation": "C contains a star while the others are circles.",
-          "visual": "<svg viewBox=\"0 0 300 86\" style=\"width:300px;max-width:100%;height:86px\"><text x=\"45\" y=\"26\" font-size=\"14\" font-weight=\"900\" fill=\"#667085\">A</text><circle cx=\"45\" cy=\"52\" r=\"14\" fill=\"#071b34\"/><text x=\"115\" y=\"26\" font-size=\"14\" font-weight=\"900\" fill=\"#667085\">B</text><circle cx=\"115\" cy=\"52\" r=\"14\" fill=\"#071b34\"/><text x=\"185\" y=\"26\" font-size=\"14\" font-weight=\"900\" fill=\"#667085\">C</text><polygon points=\"185,34 190,47 204,47 193,55 197,69 185,61 173,69 177,55 166,47 180,47\" fill=\"#071b34\"/><text x=\"255\" y=\"26\" font-size=\"14\" font-weight=\"900\" fill=\"#667085\">D</text><circle cx=\"255\" cy=\"52\" r=\"14\" fill=\"#071b34\"/></svg>",
-          "category": "visual"
+          "category": "number",
+          "visual": "<svg viewBox=\"0 0 340 90\" style=\"width:340px;max-width:100%;height:90px\"><text x=\"170\" y=\"53\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"950\" fill=\"#071b34\">A ●     B ●     C ★     D ●</text></svg>"
         },
         {
           "prompt": "Which missing shape keeps the pair rule?",
@@ -374,9 +268,9 @@
             "White square"
           ],
           "answerIndex": 3,
-          "explanation": "Each pair shows the same shape in black then white.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><circle cx=\"42\" cy=\"45\" r=\"16\" fill=\"#071b34\"/><circle cx=\"82\" cy=\"45\" r=\"16\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><rect x=\"142\" y=\"29\" width=\"32\" height=\"32\" rx=\"6\" fill=\"#071b34\"/><text x=\"214\" y=\"56\" font-size=\"34\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
+          "explanation": "Each pair shows the same shape in black, then white.",
+          "category": "logic",
+          "visual": "<svg viewBox=\"0 0 240 90\" style=\"width:240px;max-width:100%;height:90px\"><text x=\"120\" y=\"53\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"950\" fill=\"#071b34\">● ○     ■ ?</text></svg>"
         },
         {
           "prompt": "Which shape should come after two triangles?",
@@ -388,66 +282,189 @@
           ],
           "answerIndex": 1,
           "explanation": "The pattern is circle, triangle, triangle, square, then repeats.",
-          "visual": "<svg viewBox=\"0 0 340 90\" style=\"width:340px;max-width:100%;height:90px\"><text x=\"170\" y=\"45\" text-anchor=\"middle\" font-size=\"25\" font-weight=\"950\" fill=\"#071b34\">○   △   △   □   ○   △   △   ?</text></svg>",
-          "category": "visual"
+          "category": "deduction",
+          "visual": "<svg viewBox=\"0 0 360 90\" style=\"width:360px;max-width:100%;height:90px\"><text x=\"180\" y=\"53\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"950\" fill=\"#071b34\">○ △ △ □   ○ △ △ ?</text></svg>"
         },
         {
-          "prompt": "Choose the option that is alphabetically first.",
+          "prompt": "Which number is the smallest?",
           "choices": [
-            "Almond",
-            "Banana",
-            "Carrot",
-            "Date"
+            "61",
+            "47",
+            "39",
+            "52"
           ],
-          "answerIndex": 0,
-          "explanation": "Almond comes first alphabetically.",
-          "category": "attention"
+          "answerIndex": 2,
+          "explanation": "39 is the smallest of the four numbers.",
+          "category": "pattern"
         },
         {
-          "prompt": "How many letter S characters are in MISSISSIPPI?",
+          "prompt": "How many stars are in the row?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "answerIndex": 1,
+          "explanation": "There are four stars in the row.",
+          "category": "attention",
+          "visual": "<svg viewBox=\"0 0 340 90\" style=\"width:340px;max-width:100%;height:90px\"><text x=\"170\" y=\"53\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"950\" fill=\"#071b34\">● ★ ● ★ ● ★ ★ ●</text></svg>"
+        },
+        {
+          "prompt": "Which group is the odd one out?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answerIndex": 1,
+          "explanation": "A, C, and D each have four dots. B has five.",
+          "category": "lateral",
+          "visual": "<svg viewBox=\"0 0 400 100\" style=\"width:400px;max-width:100%;height:100px\"><text x=\"200\" y=\"58\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"950\" fill=\"#071b34\">A: ●●●●   B: ●●●●●   C: ●●●●   D: ●●●●</text></svg>"
+        },
+        {
+          "prompt": "Which symbol appears twice?",
+          "choices": [
+            "Circle",
+            "Square",
+            "Triangle",
+            "Diamond"
+          ],
+          "answerIndex": 2,
+          "explanation": "The triangle is the only symbol shown two times.",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"53\" text-anchor=\"middle\" font-size=\"32\" font-weight=\"950\" fill=\"#071b34\">●   ■   ▲   ◆   ▲</text></svg>"
+        }
+      ],
+      "encouragement": "Good pace. The expert round now asks for slower, more deliberate thinking."
+    },
+    {
+      "title": "Expert Round",
+      "questions": [
+        {
+          "prompt": "Which square number comes after 25?",
+          "choices": [
+            "31",
+            "33",
+            "36",
+            "40"
+          ],
+          "answerIndex": 2,
+          "explanation": "These are square numbers: 1², 2², 3², 4², 5², then 6².",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 340 90\" style=\"width:340px;max-width:100%;height:90px\"><text x=\"170\" y=\"53\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">1   4   9   16   25   ?</text></svg>"
+        },
+        {
+          "prompt": "How many dots come next?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "answerIndex": 2,
+          "explanation": "The groups contain 1, 2, 4, then 7 dots. The increases are +1, +2, and +3.",
+          "category": "number",
+          "visual": "<svg viewBox=\"0 0 330 90\" style=\"width:330px;max-width:100%;height:90px\"><text x=\"165\" y=\"53\" text-anchor=\"middle\" font-size=\"26\" font-weight=\"950\" fill=\"#071b34\">●     ●●     ●●●●     ?</text></svg>"
+        },
+        {
+          "prompt": "Which number is the odd one out?",
+          "choices": [
+            "27",
+            "64",
+            "100",
+            "125"
+          ],
+          "answerIndex": 2,
+          "explanation": "27, 64, and 125 are cubes. 100 is not.",
+          "category": "logic"
+        },
+        {
+          "prompt": "What number finishes the bottom row?",
+          "choices": [
+            "18",
+            "20",
+            "24",
+            "28"
+          ],
+          "answerIndex": 2,
+          "explanation": "In each row, the first two numbers multiply to give the third.",
+          "category": "deduction",
+          "visual": "<svg viewBox=\"0 0 260 120\" style=\"width:260px;max-width:100%;height:120px\"><text x=\"130\" y=\"68\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">2  3  6\n3  5  15\n4  6  ?</text></svg>"
+        },
+        {
+          "prompt": "Which option is the mirror image of the first shape?",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "answerIndex": 1,
+          "explanation": "B is the left-to-right mirror image of the first arrow.",
+          "category": "pattern",
+          "visual": "<svg viewBox=\"0 0 380 90\" style=\"width:380px;max-width:100%;height:90px\"><text x=\"190\" y=\"53\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">Shape →    A →    B ←    C ↑    D ↓</text></svg>"
+        },
+        {
+          "prompt": "Which position does the star take?",
+          "choices": [
+            "1st",
+            "2nd",
+            "3rd",
+            "4th"
+          ],
+          "answerIndex": 2,
+          "explanation": "Counting from the left, the star is in the third position.",
+          "category": "attention",
+          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"53\" text-anchor=\"middle\" font-size=\"32\" font-weight=\"950\" fill=\"#071b34\">●   ●   ★   ●   ●</text></svg>"
+        },
+        {
+          "prompt": "If ▲ = 3 and ● = 5, what is ▲ + ● + ▲?",
+          "choices": [
+            "10",
+            "11",
+            "13",
+            "15"
+          ],
+          "answerIndex": 1,
+          "explanation": "3 + 5 + 3 = 11.",
+          "category": "lateral",
+          "visual": "<svg viewBox=\"0 0 260 90\" style=\"width:260px;max-width:100%;height:90px\"><text x=\"130\" y=\"53\" text-anchor=\"middle\" font-size=\"28\" font-weight=\"950\" fill=\"#071b34\">▲ + ● + ▲ = ?</text></svg>"
+        },
+        {
+          "prompt": "A box has twice as many red balls as blue balls. There are 6 blue balls. How many balls are there in total?",
+          "choices": [
+            "12",
+            "15",
+            "18",
+            "24"
+          ],
+          "answerIndex": 2,
+          "explanation": "There are 12 red balls and 6 blue balls, which gives 18 balls in total.",
+          "category": "visual"
+        }
+      ],
+      "encouragement": "You reached expert territory. The impossible round is built to stop most players."
+    },
+    {
+      "title": "Impossible Round",
+      "questions": [
+        {
+          "prompt": "Remove every filled circle. How many shapes remain?",
           "choices": [
             "2",
             "3",
             "4",
             "5"
           ],
-          "answerIndex": 2,
-          "explanation": "MISSISSIPPI contains four S characters.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Choose the option with exactly five letters.",
-          "choices": [
-            "Orange",
-            "Apple",
-            "Pear",
-            "Banana"
-          ],
           "answerIndex": 1,
-          "explanation": "Apple has exactly five letters.",
-          "category": "attention"
+          "explanation": "Three outlined shapes remain after the filled circles are removed.",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 330 90\" style=\"width:330px;max-width:100%;height:90px\"><text x=\"165\" y=\"53\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"950\" fill=\"#071b34\">●   ○   ■   △   ●   ◇</text></svg>"
         },
         {
-          "prompt": "Which word appears twice?",
-          "choices": [
-            "Red",
-            "Green",
-            "Blue",
-            "Yellow"
-          ],
-          "answerIndex": 2,
-          "explanation": "Blue appears twice.",
-          "visual": "<svg viewBox=\"0 0 330 95\" style=\"width:330px;max-width:100%;height:95px\"><text x=\"165\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"950\" fill=\"#071b34\">Red — Green — Blue — Yellow</text><text x=\"165\" y=\"63\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"950\" fill=\"#071b34\">Black — Blue</text></svg>",
-          "category": "attention"
-        }
-      ],
-      "encouragement": "Nice focus. The next round moves into number sequences."
-    },
-    {
-      "title": "Number Logic",
-      "questions": [
-        {
-          "prompt": "If the instruction says choose option C, which option should you choose?",
+          "prompt": "Which option is this shape turned upside down?",
           "choices": [
             "A",
             "B",
@@ -455,438 +472,9 @@
             "D"
           ],
           "answerIndex": 2,
-          "explanation": "The instruction explicitly says option C.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which number is repeated?",
-          "choices": [
-            "483",
-            "728",
-            "619",
-            "846"
-          ],
-          "answerIndex": 1,
-          "explanation": "728 appears twice.",
-          "visual": "<svg viewBox=\"0 0 320 88\" style=\"width:320px;max-width:100%;height:88px\"><text x=\"160\" y=\"44\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">483    728    619    728</text></svg>",
-          "category": "attention"
-        },
-        {
-          "prompt": "Ignore the largest number. Which remaining number is smallest?",
-          "choices": [
-            "98",
-            "17",
-            "2",
-            "41"
-          ],
-          "answerIndex": 2,
-          "explanation": "After ignoring 98, the smallest remaining number is 2.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which pair is identical?",
-          "choices": [
-            "OXFORD / OXF0RD",
-            "LOGIC / LOGIC",
-            "CLAIM / CALIM",
-            "TRUE / TRUCE"
-          ],
-          "answerIndex": 1,
-          "explanation": "LOGIC / LOGIC is the only identical pair.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which colour is written in the middle?",
-          "choices": [
-            "Blue",
-            "Green",
-            "Red",
-            "Yellow"
-          ],
-          "answerIndex": 1,
-          "explanation": "Green is in the middle of the three words shown.",
-          "visual": "<svg viewBox=\"0 0 320 88\" style=\"width:320px;max-width:100%;height:88px\"><text x=\"160\" y=\"44\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">Blue     Green     Red</text></svg>",
-          "category": "attention"
-        },
-        {
-          "prompt": "Which option contains exactly two vowels?",
-          "choices": [
-            "Proof",
-            "Reason",
-            "Claim",
-            "Study"
-          ],
-          "answerIndex": 2,
-          "explanation": "Claim contains two vowels: a and i.",
-          "category": "attention"
-        },
-        {
-          "prompt": "What comes next?",
-          "choices": [
-            "60",
-            "70",
-            "75",
-            "80"
-          ],
-          "answerIndex": 3,
-          "explanation": "The sequence doubles each time: 5, 10, 20, 40, 80.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">5   10   20   40   ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "What comes next?",
-          "choices": [
-            "11",
-            "12",
-            "13",
-            "14"
-          ],
-          "answerIndex": 2,
-          "explanation": "This is the Fibonacci sequence: 1, 1, 2, 3, 5, 8, 13.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">1   1   2   3   5   8   ?</text></svg>",
-          "category": "number"
-        }
-      ],
-      "encouragement": "Your score is building. Next comes word-code reasoning."
-    },
-    {
-      "title": "Word Reasoning",
-      "questions": [
-        {
-          "prompt": "Which number completes the sequence?",
-          "choices": [
-            "30",
-            "36",
-            "42",
-            "49"
-          ],
-          "answerIndex": 1,
-          "explanation": "The numbers are square numbers: 2², 3², 4², 5², then 6².",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">4   9   16   25   ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "What comes next?",
-          "choices": [
-            "12",
-            "13",
-            "14",
-            "15"
-          ],
-          "answerIndex": 1,
-          "explanation": "The sequence lists prime numbers, so after 11 comes 13.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">2   3   5   7   11   ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "What replaces the question mark?",
-          "choices": [
-            "32",
-            "34",
-            "35",
-            "37"
-          ],
-          "answerIndex": 3,
-          "explanation": "The differences are +3, +5, +7, +9, then +11.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">2   5   10   17   26   ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "What number completes the grid?",
-          "choices": [
-            "14",
-            "16",
-            "18",
-            "24"
-          ],
-          "answerIndex": 2,
-          "explanation": "Each row shows a number, double it, then triple it.",
-          "visual": "<svg viewBox=\"0 0 240 160\" style=\"width:240px;max-width:100%;height:160px\"><rect x=\"26\" y=\"18\" width=\"188\" height=\"124\" rx=\"18\" fill=\"#f8fafc\" stroke=\"#d7e0ea\"/><path d=\"M88 18v124M152 18v124M26 59h188M26 101h188\" stroke=\"#d7e0ea\" stroke-width=\"3\"/><text x=\"57\" y=\"45\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">3</text><text x=\"120\" y=\"45\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">6</text><text x=\"183\" y=\"45\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">9</text><text x=\"57\" y=\"86\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">4</text><text x=\"120\" y=\"86\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">8</text><text x=\"183\" y=\"86\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">12</text><text x=\"57\" y=\"128\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">6</text><text x=\"120\" y=\"128\" text-anchor=\"middle\" font-size=\"23\" font-weight=\"950\" fill=\"#071b34\">12</text><text x=\"183\" y=\"130\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "If 5 notebooks cost £35, what do 8 notebooks cost?",
-          "choices": [
-            "£48",
-            "£52",
-            "£56",
-            "£60"
-          ],
-          "answerIndex": 2,
-          "explanation": "Each notebook costs £7, so 8 cost £56.",
-          "category": "number"
-        },
-        {
-          "prompt": "The average of 7, 11, and x is 13. What is x?",
-          "choices": [
-            "17",
-            "19",
-            "21",
-            "23"
-          ],
-          "answerIndex": 2,
-          "explanation": "The total must be 39. Since 7 + 11 = 18, x is 21.",
-          "category": "number"
-        },
-        {
-          "prompt": "A value falls from 120 to 90. What is the percentage decrease?",
-          "choices": [
-            "20%",
-            "25%",
-            "30%",
-            "35%"
-          ],
-          "answerIndex": 1,
-          "explanation": "The drop is 30 out of 120, which is 25%.",
-          "category": "number"
-        },
-        {
-          "prompt": "What comes next?",
-          "choices": [
-            "40",
-            "42",
-            "44",
-            "46"
-          ],
-          "answerIndex": 1,
-          "explanation": "The terms are n × (n + 1): 1×2, 2×3, 3×4, and so on.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">2   6   12   20   30   ?</text></svg>",
-          "category": "number"
-        }
-      ],
-      "encouragement": "Strong pace. The next round switches to lateral thinking."
-    },
-    {
-      "title": "Deduction",
-      "questions": [
-        {
-          "prompt": "If COLD becomes DPME, then WARM becomes...",
-          "choices": [
-            "XBSN",
-            "VZQL",
-            "XARM",
-            "YCTO"
-          ],
-          "answerIndex": 0,
-          "explanation": "Each letter shifts forward by one.",
-          "category": "word"
-        },
-        {
-          "prompt": "What letter comes next?",
-          "choices": [
-            "R",
-            "S",
-            "T",
-            "U"
-          ],
-          "answerIndex": 3,
-          "explanation": "The gaps increase by 1: +2, +3, +4, +5, then +6.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">A   C   F   J   O   ?</text></svg>",
-          "category": "word"
-        },
-        {
-          "prompt": "Which word does not belong?",
-          "choices": [
-            "Listen",
-            "Silent",
-            "Enlist",
-            "Stone"
-          ],
-          "answerIndex": 3,
-          "explanation": "Listen, Silent, and Enlist are anagrams. Stone is not.",
-          "category": "word"
-        },
-        {
-          "prompt": "If BLUE = 4 and ORANGE = 6, then PURPLE = ?",
-          "choices": [
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          "answerIndex": 2,
-          "explanation": "The number equals the number of letters.",
-          "category": "word"
-        },
-        {
-          "prompt": "If stressed becomes desserts, then drawer becomes...",
-          "choices": [
-            "reward",
-            "warder",
-            "redraw",
-            "drawer"
-          ],
-          "answerIndex": 0,
-          "explanation": "The word is reversed.",
-          "category": "word"
-        },
-        {
-          "prompt": "What letter is two letters after the letter before M?",
-          "choices": [
-            "L",
-            "M",
-            "N",
-            "O"
-          ],
-          "answerIndex": 2,
-          "explanation": "The letter before M is L. Two letters after L is N.",
-          "category": "word"
-        },
-        {
-          "prompt": "Which word means the opposite of certain?",
-          "choices": [
-            "Doubtful",
-            "Exact",
-            "Final",
-            "Fixed"
-          ],
-          "answerIndex": 0,
-          "explanation": "Doubtful means unsure, which is the opposite of certain.",
-          "category": "word"
-        },
-        {
-          "prompt": "Which phrase sounds most precise?",
-          "choices": [
-            "The evidence suggests",
-            "Everyone knows",
-            "It feels obvious",
-            "People say"
-          ],
-          "answerIndex": 0,
-          "explanation": "The evidence suggests is the most careful academic phrase.",
-          "category": "word"
-        }
-      ],
-      "encouragement": "You're deep into the test now. Next comes deduction."
-    },
-    {
-      "title": "Lateral Thinking",
-      "questions": [
-        {
-          "prompt": "Premise is to argument as evidence is to...",
-          "choices": [
-            "Support",
-            "Noise",
-            "Question",
-            "Guess"
-          ],
-          "answerIndex": 0,
-          "explanation": "Evidence supports a claim or argument.",
-          "category": "word"
-        },
-        {
-          "prompt": "Which word is closest to “implicit”?",
-          "choices": [
-            "Unstated",
-            "Ancient",
-            "Loud",
-            "Random"
-          ],
-          "answerIndex": 0,
-          "explanation": "Implicit means unstated but understood.",
-          "category": "word"
-        },
-        {
-          "prompt": "All dax are vem. No vem are lop. What must be true?",
-          "choices": [
-            "No dax are lop",
-            "Some lop are dax",
-            "All lop are vem",
-            "Cannot determine"
-          ],
-          "answerIndex": 0,
-          "explanation": "If every dax is a vem and no vem is a lop, no dax can be a lop.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A is taller than B. C is shorter than B. D is taller than A. Who is tallest?",
-          "choices": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
-          "answerIndex": 3,
-          "explanation": "D is taller than A, and A is taller than B and C.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "All roses are flowers. All flowers fade. Therefore...",
-          "choices": [
-            "Some roses fade",
-            "All roses fade",
-            "All fading things are flowers",
-            "Cannot determine"
-          ],
-          "answerIndex": 1,
-          "explanation": "If all roses are flowers and all flowers fade, all roses fade.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Some artists are poets. All poets are readers. Therefore...",
-          "choices": [
-            "Some artists are readers",
-            "All artists are readers",
-            "No readers are artists",
-            "Cannot determine"
-          ],
-          "answerIndex": 0,
-          "explanation": "The artists who are poets must also be readers.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Maya is before Leo. Leo is before Nina. Who is last?",
-          "choices": [
-            "Maya",
-            "Leo",
-            "Nina",
-            "Cannot determine"
-          ],
-          "answerIndex": 2,
-          "explanation": "The order is Maya, Leo, Nina.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "I have cities but no houses, forests but no trees, and water but no fish. What am I?",
-          "choices": [
-            "Dream",
-            "Painting",
-            "Map",
-            "Book"
-          ],
-          "answerIndex": 2,
-          "explanation": "A map can show places without containing the real things.",
-          "category": "lateral"
-        }
-      ],
-      "encouragement": "Only committed players reach this point. Next comes trap questions."
-    },
-    {
-      "title": "Oxford Pressure",
-      "questions": [
-        {
-          "prompt": "The more you take, the more you leave behind. What are they?",
-          "choices": [
-            "Coins",
-            "Footsteps",
-            "Photos",
-            "Notes"
-          ],
-          "answerIndex": 1,
-          "explanation": "Each step taken leaves a footprint behind.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "What can you break without touching it?",
-          "choices": [
-            "A promise",
-            "A shadow",
-            "A window",
-            "A clock"
-          ],
-          "answerIndex": 0,
-          "explanation": "A promise can be broken without physical contact.",
-          "category": "lateral"
+          "explanation": "C is the original triangle rotated 180 degrees.",
+          "category": "number",
+          "visual": "<svg viewBox=\"0 0 380 90\" style=\"width:380px;max-width:100%;height:90px\"><text x=\"190\" y=\"53\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">Shape ▲    A ▲    B ▶    C ▼    D ◀</text></svg>"
         },
         {
           "prompt": "Every marble in Box A is blue. Some blue marbles are large. Are all marbles in Box A large?",
@@ -898,31 +486,31 @@
           ],
           "answerIndex": 3,
           "explanation": "Some blue marbles being large does not prove all blue marbles are large.",
-          "category": "deduction"
+          "category": "logic"
         },
         {
-          "prompt": "Only birds can enter the room. A robin enters the room. What must be true?",
+          "prompt": "Only round shapes fit the slot. This shape fits the slot. What must be true?",
           "choices": [
-            "The robin is a bird",
-            "All birds are robins",
-            "No birds entered",
+            "The shape is round",
+            "The shape is square",
+            "All round shapes fit",
             "Cannot determine"
           ],
           "answerIndex": 0,
-          "explanation": "If only birds can enter and a robin enters, the robin must be a bird.",
+          "explanation": "If only round shapes fit and this shape fits, then the shape must be round.",
           "category": "deduction"
         },
         {
-          "prompt": "A bat and ball cost £1.10 total. The bat costs £1 more than the ball. How much is the ball?",
+          "prompt": "Two numbers add to 10. One number is 4 times the other. What is the smaller number?",
           "choices": [
-            "5p",
-            "10p",
-            "15p",
-            "20p"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
           "answerIndex": 0,
-          "explanation": "If the ball is 5p, the bat is £1.05, totaling £1.10.",
-          "category": "deduction"
+          "explanation": "The numbers are 2 and 8. The smaller number is 2.",
+          "category": "pattern"
         },
         {
           "prompt": "You pass the person in second place. What place are you now in?",
@@ -933,41 +521,42 @@
             "Last"
           ],
           "answerIndex": 1,
-          "explanation": "Passing second place puts you in second place.",
+          "explanation": "Passing the person in second place puts you in second place.",
+          "category": "attention"
+        },
+        {
+          "prompt": "If the light is on, the door is locked. The door is open. What must be true?",
+          "choices": [
+            "The light is off",
+            "The light is on",
+            "The door is locked",
+            "Cannot determine"
+          ],
+          "answerIndex": 0,
+          "explanation": "An open door is not locked, so the light cannot be on.",
           "category": "lateral"
         },
         {
-          "prompt": "Three boxes are labelled Apples, Oranges, Mixed. All labels are wrong. Which labelled box should you sample first?",
+          "prompt": "If the pattern continues, what is the next shape?",
           "choices": [
-            "Apples",
-            "Oranges",
-            "Mixed",
-            "Any box"
+            "Circle",
+            "Square",
+            "Triangle",
+            "Diamond"
           ],
-          "answerIndex": 2,
-          "explanation": "Since the Mixed label is wrong, that box contains only one fruit type, revealing the rest.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Given: X is not equal to Y. Y is equal to Z. What must be true?",
-          "choices": [
-            "X = Z",
-            "X ≠ Z",
-            "X = Y",
-            "Cannot determine"
-          ],
-          "answerIndex": 1,
-          "explanation": "If Y equals Z and X does not equal Y, then X does not equal Z.",
-          "category": "deduction"
+          "answerIndex": 3,
+          "explanation": "The cycle is circle, square, triangle, diamond. After triangle comes diamond.",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 380 90\" style=\"width:380px;max-width:100%;height:90px\"><text x=\"190\" y=\"53\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"950\" fill=\"#071b34\">●   ■   ▲   ◆   ●   ■   ▲   ?</text></svg>"
         }
       ],
-      "encouragement": "Final stretch. The next round is the 3% challenge."
+      "encouragement": "Final stretch. The last stage is the 3% Oxford challenge."
     },
     {
-      "title": "Final 3% Round",
+      "title": "Final 3%",
       "questions": [
         {
-          "prompt": "Final pattern: what comes next?",
+          "prompt": "What comes next in the sequence?",
           "choices": [
             "312211",
             "1111221",
@@ -975,202 +564,99 @@
             "13112221"
           ],
           "answerIndex": 0,
-          "explanation": "This is the look-and-say sequence.",
-          "visual": "<svg viewBox=\"0 0 260 170\" style=\"width:260px;max-width:100%;height:170px\"><text x=\"130\" y=\"28\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">1</text><text x=\"130\" y=\"56\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">11</text><text x=\"130\" y=\"85\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">21</text><text x=\"130\" y=\"113\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">1211</text><text x=\"130\" y=\"141\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">111221</text></svg>",
-          "category": "pattern"
+          "explanation": "This is the look-and-say sequence. 111221 is read as three 1s, two 2s, and one 1.",
+          "category": "visual",
+          "visual": "<svg viewBox=\"0 0 260 160\" style=\"width:260px;max-width:100%;height:160px\"><text x=\"130\" y=\"88\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"950\" fill=\"#071b34\">1\n11\n21\n1211\n111221\n?</text></svg>"
         },
         {
-          "prompt": "A clock loses 5 minutes every hour. If set correctly at noon, what time does it show after 6 real hours?",
+          "prompt": "A clock loses 5 minutes every hour. If it is set correctly at 12:00, what time does it show after 6 real hours?",
           "choices": [
-            "5:25",
+            "5:00",
             "5:30",
-            "5:35",
+            "6:00",
             "6:30"
           ],
           "answerIndex": 1,
-          "explanation": "It loses 30 minutes over 6 hours, so it shows 5:30.",
+          "explanation": "The clock loses 30 minutes in 6 hours, so it shows 5:30.",
           "category": "number"
         },
         {
-          "prompt": "What comes next?",
+          "prompt": "Which number completes the rule?",
           "choices": [
-            "360",
-            "600",
-            "720",
-            "840"
+            "14",
+            "16",
+            "18",
+            "20"
           ],
           "answerIndex": 2,
-          "explanation": "This is the factorial sequence: 1!, 2!, 3!, 4!, 5!, then 6!.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">1   2   6   24   120   ?</text></svg>",
-          "category": "number"
+          "explanation": "Each bottom number is the sum of the two numbers above it.",
+          "category": "logic",
+          "visual": "<svg viewBox=\"0 0 260 90\" style=\"width:260px;max-width:100%;height:90px\"><text x=\"130\" y=\"53\" text-anchor=\"middle\" font-size=\"30\" font-weight=\"950\" fill=\"#071b34\">7 + 11 = ?</text></svg>"
         },
         {
-          "prompt": "Some A are B. No B are C. What must be true?",
+          "prompt": "A, B, and C stand in one row. A is not first. B is immediately left of C. What is the order?",
           "choices": [
-            "Some A are not C",
-            "All A are C",
-            "No A are B",
+            "A B C",
+            "B C A",
+            "B A C",
+            "C B A"
+          ],
+          "answerIndex": 1,
+          "explanation": "B must stand directly before C, and A cannot be first. The order is B C A.",
+          "category": "deduction"
+        },
+        {
+          "prompt": "Which conclusion is valid? All L are M. No M are N.",
+          "choices": [
+            "No L are N",
+            "Some N are L",
+            "All N are L",
             "Cannot determine"
           ],
           "answerIndex": 0,
-          "explanation": "The A that are B cannot be C.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "If P = 16 and CAT = 24, then DOG = ?",
-          "choices": [
-            "24",
-            "26",
-            "28",
-            "30"
-          ],
-          "answerIndex": 1,
-          "explanation": "Letters are converted to positions and added: D=4, O=15, G=7, total 26.",
-          "category": "word"
-        },
-        {
-          "prompt": "What number completes the pattern?",
-          "choices": [
-            "72",
-            "85",
-            "89",
-            "97"
-          ],
-          "answerIndex": 1,
-          "explanation": "Square both numbers and add them: 6² + 7² = 36 + 49 = 85.",
-          "visual": "<svg viewBox=\"0 0 270 130\" style=\"width:270px;max-width:100%;height:130px\"><text x=\"135\" y=\"26\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"950\" fill=\"#071b34\">3 + 4 = 25</text><text x=\"135\" y=\"52\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"950\" fill=\"#071b34\">4 + 5 = 41</text><text x=\"135\" y=\"78\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"950\" fill=\"#071b34\">5 + 6 = 61</text><text x=\"135\" y=\"104\" text-anchor=\"middle\" font-size=\"21\" font-weight=\"950\" fill=\"#071b34\">6 + 7 = ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "What comes next in the sequence?",
-          "choices": [
-            "55",
-            "63",
-            "71",
-            "79"
-          ],
-          "answerIndex": 1,
-          "explanation": "The pattern adds 4, then 6, then 8, then 10, then 12.",
-          "visual": "<svg viewBox=\"0 0 300 90\" style=\"width:300px;max-width:100%;height:90px\"><text x=\"150\" y=\"45\" text-anchor=\"middle\" font-size=\"24\" font-weight=\"950\" fill=\"#071b34\">23   27   33   41   51   ?</text></svg>",
-          "category": "number"
-        },
-        {
-          "prompt": "Which statement must be true? All glips are nors. No nors are taves.",
-          "choices": [
-            "No glips are taves",
-            "Some taves are glips",
-            "All taves are nors",
-            "Cannot determine"
-          ],
-          "answerIndex": 0,
-          "explanation": "If every glip is a nor and no nors are taves, then no glips can be taves.",
-          "category": "deduction"
-        }
-      ],
-      "encouragement": "One last push. The Oxford elite round is ready."
-    },
-    {
-      "title": "Oxford Elite Round",
-      "questions": [
-        {
-          "prompt": "If OXFORD is coded as PYGPSE, what happens to each letter?",
-          "choices": [
-            "Moves back one",
-            "Moves forward one",
-            "Letters are reversed",
-            "Vowels are removed"
-          ],
-          "answerIndex": 1,
-          "explanation": "Each letter has moved forward by one: O to P, X to Y, and so on.",
-          "category": "word"
-        },
-        {
-          "prompt": "Which option completes the visual pattern?",
-          "choices": [
-            "Black circle",
-            "White circle",
-            "Black square",
-            "White square"
-          ],
-          "answerIndex": 1,
-          "explanation": "The shape stays a circle while the fill alternates black, white, black, white.",
-          "visual": "<svg viewBox=\"0 0 270 90\" style=\"width:270px;max-width:100%;height:90px\"><circle cx=\"42\" cy=\"45\" r=\"17\" fill=\"#071b34\"/><circle cx=\"96\" cy=\"45\" r=\"17\" fill=\"#eef3f8\" stroke=\"#d7e0ea\"/><circle cx=\"150\" cy=\"45\" r=\"17\" fill=\"#071b34\"/><text x=\"214\" y=\"56\" font-size=\"34\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
-          "category": "visual"
-        },
-        {
-          "prompt": "Only essays with evidence are accepted. This essay was accepted. What must be true?",
-          "choices": [
-            "It had evidence",
-            "It was long",
-            "It was perfect",
-            "It used quotes"
-          ],
-          "answerIndex": 0,
-          "explanation": "If only essays with evidence are accepted, an accepted essay must have evidence.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "A candidate starts third and passes one person. What place are they in now?",
-          "choices": [
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "answerIndex": 1,
-          "explanation": "Passing the person in second place puts the candidate in second place.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Which number is the odd one out?",
-          "choices": [
-            "16",
-            "25",
-            "36",
-            "48"
-          ],
-          "answerIndex": 3,
-          "explanation": "16, 25, and 36 are square numbers. 48 is not.",
-          "category": "number"
-        },
-        {
-          "prompt": "What is the safest conclusion? Some tutors are researchers. All researchers read papers.",
-          "choices": [
-            "Some tutors read papers",
-            "All tutors read papers",
-            "No tutors read papers",
-            "All readers are tutors"
-          ],
-          "answerIndex": 0,
-          "explanation": "The tutors who are researchers must read papers.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "What comes next?",
-          "choices": [
-            "13112221",
-            "312211",
-            "1113213211",
-            "31131211131221"
-          ],
-          "answerIndex": 0,
-          "explanation": "This follows the look-and-say pattern after 111221.",
-          "visual": "<svg viewBox=\"0 0 260 170\" style=\"width:260px;max-width:100%;height:170px\"><text x=\"130\" y=\"28\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">21</text><text x=\"130\" y=\"58\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">1211</text><text x=\"130\" y=\"88\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">111221</text><text x=\"130\" y=\"122\" text-anchor=\"middle\" font-size=\"34\" font-weight=\"950\" fill=\"#667085\">?</text></svg>",
+          "explanation": "If all L are M, and no M are N, then no L are N.",
           "category": "pattern"
         },
         {
-          "prompt": "Final question: which answer is most logically careful?",
+          "prompt": "Which value completes the grid?",
           "choices": [
-            "This proves everything",
-            "This may support the claim",
-            "Everyone knows it",
-            "No objection is possible"
+            "9",
+            "10",
+            "11",
+            "12"
           ],
-          "answerIndex": 1,
-          "explanation": "A careful conclusion avoids overclaiming. 'May support' is the most precise option.",
-          "category": "deduction"
+          "answerIndex": 3,
+          "explanation": "In each row, the right number equals left plus middle: 4 + 8 = 12.",
+          "category": "attention",
+          "visual": "<svg viewBox=\"0 0 260 120\" style=\"width:260px;max-width:100%;height:120px\"><text x=\"130\" y=\"68\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"950\" fill=\"#071b34\">2  3  5\n5  6  11\n4  8  ?</text></svg>"
+        },
+        {
+          "prompt": "A shape turns 90 degrees each step. What comes next?",
+          "choices": [
+            "↑",
+            "→",
+            "↓",
+            "←"
+          ],
+          "answerIndex": 3,
+          "explanation": "The turns are up, right, down, then left.",
+          "category": "lateral",
+          "visual": "<svg viewBox=\"0 0 260 90\" style=\"width:260px;max-width:100%;height:90px\"><text x=\"130\" y=\"53\" text-anchor=\"middle\" font-size=\"40\" font-weight=\"950\" fill=\"#071b34\">↑   →   ↓   ?</text></svg>"
+        },
+        {
+          "prompt": "Boxes A, B, and C hold a circle, square, and triangle. A is not circle or triangle. C is not square. What is in Box B?",
+          "choices": [
+            "Circle",
+            "Square",
+            "Triangle",
+            "Cannot determine"
+          ],
+          "answerIndex": 0,
+          "explanation": "A must be square. C cannot be square, so B must be circle.",
+          "category": "visual"
         }
       ]
     }
-  ]
+  ],
+  "questionCount": 40
 }

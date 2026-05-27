@@ -383,12 +383,15 @@ function createQuizRunnerScript(config: {
       var stageQuestions = getStageQuestions(currentStage);
       var stagePosition = getCurrentStagePosition(currentStage);
       var stageTotal = stageQuestions.length || 1;
+      var stageIndexes = getStageIndexes();
+      var stageNumber = stageIndexes.indexOf(currentStage) + 1;
+      var stageCount = stageIndexes.length;
       var visualBox = byData("visual");
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
 
-      byData("round-label").textContent = t.quiz.round + " " + (currentStage + 1) + ": " + getStageName(currentStage);
-      byData("count-label").textContent = t.quiz.question + " " + stagePosition + "/" + stageTotal;
+      byData("round-label").textContent = t.quiz.round + " " + stageNumber + "/" + stageCount;
+      byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
