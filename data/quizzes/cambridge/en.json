@@ -49,7 +49,7 @@
     "socialProof": "50,000+ people tried it this week"
   },
   "result": {
-    "profileName": "Cambridge",
+    "profileName": "Cambridge Entrance Test",
     "profiles": [
       {
         "minRatio": 0.8,
@@ -112,19 +112,20 @@
   },
   "stageGroups": [
     {
-      "title": "Academic Warm-Up",
+      "title": "Stage 1: Academic Warm-Up",
       "questions": [
         {
           "prompt": "A tutor says a strong answer should be clear, justified, and relevant. Which response best follows that advice?",
           "choices": [
-            "It gives a direct answer and explains the reason",
-            "It uses the longest possible vocabulary",
-            "It repeats the question in different words",
-            "It avoids taking a clear position"
+            "It gives a direct answer and explains the reason.",
+            "It uses the longest possible vocabulary.",
+            "It repeats the question in different words.",
+            "It avoids taking a clear position."
           ],
           "answerIndex": 0,
           "explanation": "A strong academic answer should state a position and support it with a reason.",
-          "category": "logic"
+          "category": "logic",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Claim</span><span>Reason</span><span>Answer</span></div>"
         },
         {
           "prompt": "Which skill is most useful when deciding whether a source supports a conclusion?",
@@ -153,10 +154,10 @@
         {
           "prompt": "Which statement is an opinion rather than a fact?",
           "choices": [
-            "Water freezes at 0 degrees Celsius under standard conditions",
-            "The Earth orbits the Sun",
-            "A triangle has three sides",
-            "This essay is more interesting than the other one"
+            "Water freezes at 0 degrees Celsius under standard conditions.",
+            "The Earth orbits the Sun.",
+            "A triangle has three sides.",
+            "This essay is more interesting than the other one."
           ],
           "answerIndex": 3,
           "explanation": "Interest is a judgement, so it depends on personal opinion.",
@@ -165,10 +166,10 @@
         {
           "prompt": "If every member of Group A is in Group B, and Mira is in Group A, what must be true?",
           "choices": [
-            "Mira is in Group B",
-            "Mira created Group A",
-            "Group B has only one member",
-            "Group A and Group B are the same size"
+            "Mira is in Group B.",
+            "Mira created Group A.",
+            "Group B has only one member.",
+            "Group A and Group B are the same size."
           ],
           "answerIndex": 0,
           "explanation": "If all members of A are inside B, any member of A must also be in B.",
@@ -214,19 +215,20 @@
       "encouragement": "Good start. The next stage asks you to read more carefully and separate evidence from impression."
     },
     {
-      "title": "Clear Reading",
+      "title": "Stage 2: Clear Reading",
       "questions": [
         {
           "prompt": "A passage says, 'The experiment reduced errors, but it did not remove them.' Which summary is most accurate?",
           "choices": [
-            "Errors became less frequent but still existed",
-            "The experiment failed completely",
-            "Errors became impossible",
-            "The experiment measured speed only"
+            "Errors became less frequent but still existed.",
+            "The experiment failed completely.",
+            "Errors became impossible.",
+            "The experiment measured speed only."
           ],
           "answerIndex": 0,
           "explanation": "The phrase says errors decreased, not that they disappeared.",
-          "category": "deduction"
+          "category": "deduction",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Reduced</span><span>≠</span><span>Removed</span></div>"
         },
         {
           "prompt": "Which word best completes the relationship: evidence is to conclusion as foundation is to what?",
@@ -255,10 +257,10 @@
         {
           "prompt": "Which statement is the most cautious academic claim?",
           "choices": [
-            "This proves the answer forever",
-            "This is obvious to everyone",
-            "This cannot be questioned",
-            "This may suggest a possible explanation"
+            "This proves the answer forever.",
+            "This is obvious to everyone.",
+            "This cannot be questioned.",
+            "This may suggest a possible explanation."
           ],
           "answerIndex": 3,
           "explanation": "A cautious claim recognises limits and avoids overstating certainty.",
@@ -267,10 +269,10 @@
         {
           "prompt": "A text says a policy 'may increase participation'. What can safely be inferred?",
           "choices": [
-            "An increase is possible but not guaranteed",
-            "Participation will definitely double",
-            "The policy is impossible to measure",
-            "Participation will fall"
+            "An increase is possible but not guaranteed.",
+            "Participation will definitely double.",
+            "The policy is impossible to measure.",
+            "Participation will fall."
           ],
           "answerIndex": 0,
           "explanation": "The word 'may' signals possibility, not certainty.",
@@ -279,10 +281,10 @@
         {
           "prompt": "Which sentence gives the clearest cause-and-effect relationship?",
           "choices": [
-            "The room was bright, and the chairs were blue",
-            "Because the road was icy, the bus moved slowly",
-            "The lecture was long and held on Tuesday",
-            "Several students arrived with notebooks"
+            "The room was bright, and the chairs were blue.",
+            "Because the road was icy, the bus moved slowly.",
+            "The lecture was long and held on Tuesday.",
+            "Several students arrived with notebooks."
           ],
           "answerIndex": 1,
           "explanation": "It clearly links icy roads as the cause of slow movement.",
@@ -303,10 +305,10 @@
         {
           "prompt": "A text compares two plans but gives costs for only one. What is the main weakness?",
           "choices": [
-            "The plans are both impossible",
-            "The cheaper plan must be better",
-            "Costs are never relevant",
-            "The comparison is incomplete"
+            "The plans are both impossible.",
+            "The cheaper plan must be better.",
+            "Costs are never relevant.",
+            "The comparison is incomplete."
           ],
           "answerIndex": 3,
           "explanation": "A fair comparison needs relevant information for both options.",
@@ -316,7 +318,7 @@
       "encouragement": "Strong reading. Now the numbers start to matter more."
     },
     {
-      "title": "Number Sense",
+      "title": "Stage 3: Number Sense",
       "questions": [
         {
           "prompt": "A value rises from 50 to 60. What is the percentage increase?",
@@ -419,7 +421,7 @@
       "encouragement": "You have cleared the first quantitative stage. Next, look for hidden assumptions."
     },
     {
-      "title": "Evidence and Assumptions",
+      "title": "Stage 4: Evidence and Assumptions",
       "questions": [
         {
           "prompt": "A study finds that students who sleep more score higher. What extra evidence is needed before saying sleep caused the higher scores?",
@@ -431,15 +433,16 @@
           ],
           "answerIndex": 0,
           "explanation": "Correlation alone does not prove cause, so other factors matter.",
-          "category": "deduction"
+          "category": "deduction",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Correlation</span><span>?</span><span>Cause</span></div>"
         },
         {
           "prompt": "Which statement is an assumption?",
           "choices": [
-            "The test lasted 60 minutes",
-            "Higher attendance always means better learning",
-            "The group included 40 people",
-            "The survey had five questions"
+            "The test lasted 60 minutes.",
+            "Higher attendance always means better learning.",
+            "The group included 40 people.",
+            "The survey had five questions."
           ],
           "answerIndex": 1,
           "explanation": "It makes a broad claim that would need support.",
@@ -448,10 +451,10 @@
         {
           "prompt": "A conclusion is based on data from 12 people. What is the best concern?",
           "choices": [
-            "The conclusion must be false",
-            "The data cannot contain numbers",
-            "The sample may be too small",
-            "The people must all disagree"
+            "The conclusion must be false.",
+            "The data cannot contain numbers.",
+            "The sample may be too small.",
+            "The people must all disagree."
           ],
           "answerIndex": 2,
           "explanation": "A small sample may not represent a wider population well.",
@@ -460,10 +463,10 @@
         {
           "prompt": "Which evidence would best support the claim that a course improved writing skills?",
           "choices": [
-            "Students liked the classroom",
-            "Students wrote longer essays after the course",
-            "The course had an attractive website",
-            "Independent markers rated post-course essays higher using the same criteria"
+            "Students liked the classroom.",
+            "Students wrote longer essays after the course.",
+            "The course had an attractive website.",
+            "Independent markers rated post-course essays higher using the same criteria."
           ],
           "answerIndex": 3,
           "explanation": "Independent ratings using the same criteria directly assess improvement.",
@@ -472,10 +475,10 @@
         {
           "prompt": "A researcher changes two variables at the same time. What problem does this create?",
           "choices": [
-            "It may be unclear which variable caused the result",
-            "The experiment becomes impossible to record",
-            "The result must be random",
-            "The sample size becomes zero"
+            "It may be unclear which variable caused the result.",
+            "The experiment becomes impossible to record.",
+            "The result must be random.",
+            "The sample size becomes zero."
           ],
           "answerIndex": 0,
           "explanation": "Changing two variables makes cause harder to identify.",
@@ -496,10 +499,10 @@
         {
           "prompt": "An argument says, 'This idea is popular, so it must be correct.' What is the weakness?",
           "choices": [
-            "Correct ideas are never popular",
-            "The idea has no audience",
-            "Popularity does not prove truth",
-            "The argument is too short to read"
+            "Correct ideas are never popular.",
+            "The idea has no audience.",
+            "Popularity does not prove truth.",
+            "The argument is too short to read."
           ],
           "answerIndex": 2,
           "explanation": "Many people believing something does not make it true.",
@@ -521,7 +524,7 @@
       "encouragement": "Your reasoning is warming up. The next stage tests scientific thinking rather than memorised facts."
     },
     {
-      "title": "Scientific Reasoning",
+      "title": "Stage 5: Scientific Reasoning",
       "questions": [
         {
           "prompt": "In an experiment, the control group is used mainly to do what?",
@@ -533,7 +536,8 @@
           ],
           "answerIndex": 0,
           "explanation": "A control group helps show what changes when the tested condition is introduced.",
-          "category": "logic"
+          "category": "logic",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Control</span><span>vs</span><span>Test</span></div>"
         },
         {
           "prompt": "Which claim is best supported by repeated similar results from different studies?",
@@ -562,10 +566,10 @@
         {
           "prompt": "Which statement is a hypothesis?",
           "choices": [
-            "The beaker is made of glass",
-            "The room has four tables",
-            "The graph has two axes",
-            "If temperature rises, the reaction may happen faster"
+            "The beaker is made of glass.",
+            "The room has four tables.",
+            "The graph has two axes.",
+            "If temperature rises, the reaction may happen faster."
           ],
           "answerIndex": 3,
           "explanation": "A hypothesis is a testable proposed explanation or prediction.",
@@ -574,10 +578,10 @@
         {
           "prompt": "A measurement is precise but not accurate. What does that mean?",
           "choices": [
-            "It gives similar results that are not close to the true value",
-            "It is close to the true value every time",
-            "It cannot be repeated",
-            "It has no units"
+            "It gives similar results that are not close to the true value.",
+            "It is close to the true value every time.",
+            "It cannot be repeated.",
+            "It has no units."
           ],
           "answerIndex": 0,
           "explanation": "Precision means consistency; accuracy means closeness to the true value.",
@@ -586,10 +590,10 @@
         {
           "prompt": "Which observation best suggests a chemical reaction has occurred?",
           "choices": [
-            "A solid object changes position",
-            "A new gas forms during mixing",
-            "A book is placed on a table",
-            "A container is labelled clearly"
+            "A solid object changes position.",
+            "A new gas forms during mixing.",
+            "A book is placed on a table.",
+            "A container is labelled clearly."
           ],
           "answerIndex": 1,
           "explanation": "Gas formation can be evidence of a chemical reaction.",
@@ -623,7 +627,7 @@
       "encouragement": "Stage 5 complete. Now the questions move into social evidence and historical judgement."
     },
     {
-      "title": "Historical and Social Judgement",
+      "title": "Stage 6: Historical and Social Judgement",
       "questions": [
         {
           "prompt": "A historian compares two accounts of the same event. What should they check first?",
@@ -635,7 +639,8 @@
           ],
           "answerIndex": 0,
           "explanation": "Author perspective and purpose affect how evidence should be interpreted.",
-          "category": "deduction"
+          "category": "deduction",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Source</span><span>Purpose</span><span>Context</span></div>"
         },
         {
           "prompt": "Which evidence is strongest for showing a change over time?",
@@ -676,10 +681,10 @@
         {
           "prompt": "Which statement best separates description from explanation?",
           "choices": [
-            "Description says what happened; explanation says why it happened",
-            "Description is always false; explanation is always true",
-            "Description uses numbers; explanation never does",
-            "Description is for science only"
+            "Description says what happened; explanation says why it happened.",
+            "Description is always false; explanation is always true.",
+            "Description uses numbers; explanation never does.",
+            "Description is for science only."
           ],
           "answerIndex": 0,
           "explanation": "Description identifies events or features; explanation gives reasons or causes.",
@@ -688,10 +693,10 @@
         {
           "prompt": "Why might a primary source still be unreliable?",
           "choices": [
-            "It is always written too late",
-            "It may reflect bias, limited knowledge, or a specific purpose",
-            "It cannot contain useful information",
-            "It must agree with every other source"
+            "It is always written too late.",
+            "It may reflect bias, limited knowledge, or a specific purpose.",
+            "It cannot contain useful information.",
+            "It must agree with every other source."
           ],
           "answerIndex": 1,
           "explanation": "Being close to an event does not remove bias or limitation.",
@@ -700,10 +705,10 @@
         {
           "prompt": "A claim says one invention alone caused a major social change. What is the best objection?",
           "choices": [
-            "Inventions never matter",
-            "Social change cannot be studied",
-            "Major social changes often have several causes",
-            "One cause is always enough"
+            "Inventions never matter.",
+            "Social change cannot be studied.",
+            "Major social changes often have several causes.",
+            "One cause is always enough."
           ],
           "answerIndex": 2,
           "explanation": "Large social changes are usually influenced by multiple factors.",
@@ -725,7 +730,7 @@
       "encouragement": "You are past the midpoint. Next comes ethical reasoning with carefully balanced choices."
     },
     {
-      "title": "Philosophy and Ethics",
+      "title": "Stage 7: Philosophy and Ethics",
       "questions": [
         {
           "prompt": "In ethical reasoning, what is a trade-off?",
@@ -737,7 +742,8 @@
           ],
           "answerIndex": 0,
           "explanation": "A trade-off occurs when values or benefits conflict.",
-          "category": "logic"
+          "category": "logic",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Benefit</span><span>↔</span><span>Cost</span></div>"
         },
         {
           "prompt": "Which question best tests whether a rule is applied fairly?",
@@ -778,10 +784,10 @@
         {
           "prompt": "Two people disagree because they value freedom and safety differently. What is the deepest source of disagreement?",
           "choices": [
-            "They give different weight to competing values",
-            "They cannot read the same facts",
-            "One of them must be dishonest",
-            "The question has no meaning"
+            "They give different weight to competing values.",
+            "They cannot read the same facts.",
+            "One of them must be dishonest.",
+            "The question has no meaning."
           ],
           "answerIndex": 0,
           "explanation": "They may accept the same facts but prioritise values differently.",
@@ -790,10 +796,10 @@
         {
           "prompt": "Which argument is strongest?",
           "choices": [
-            "This action is right because I prefer it",
-            "This action is right because it follows a clear principle and avoids serious harm",
-            "This action is right because it is traditional",
-            "This action is right because it is easy"
+            "This action is right because I prefer it.",
+            "This action is right because it follows a clear principle and avoids serious harm.",
+            "This action is right because it is traditional.",
+            "This action is right because it is easy."
           ],
           "answerIndex": 1,
           "explanation": "It gives both a principle and a consequence-based reason.",
@@ -802,10 +808,10 @@
         {
           "prompt": "A policy treats everyone identically but ignores major differences in need. What concern does this raise?",
           "choices": [
-            "Fairness means never comparing people",
-            "Identical treatment is always unfair",
-            "Equal treatment may not always produce fair outcomes",
-            "Needs can never matter"
+            "Fairness means never comparing people.",
+            "Identical treatment is always unfair.",
+            "Equal treatment may not always produce fair outcomes.",
+            "Needs can never matter."
           ],
           "answerIndex": 2,
           "explanation": "Sometimes fairness requires attention to relevant differences.",
@@ -827,7 +833,7 @@
       "encouragement": "Good progress. The next stage is more abstract and pattern-heavy."
     },
     {
-      "title": "Abstract Patterns",
+      "title": "Stage 8: Abstract Patterns",
       "questions": [
         {
           "prompt": "Which item breaks the pattern: square, triangle, circle, rectangle?",
@@ -905,10 +911,10 @@
         {
           "prompt": "If all blue tokens are heavy and no heavy tokens are small, what must be true about blue tokens?",
           "choices": [
-            "They are all small",
-            "They are all light",
-            "They are not small",
-            "They are not tokens"
+            "They are all small.",
+            "They are all light.",
+            "They are not small.",
+            "They are not tokens."
           ],
           "answerIndex": 2,
           "explanation": "Blue tokens are heavy, and heavy tokens are not small.",
@@ -930,7 +936,7 @@
       "encouragement": "You handled the abstract round. The next stage combines several skills at once."
     },
     {
-      "title": "Multi-Step Problems",
+      "title": "Stage 9: Multi-Step Problems",
       "questions": [
         {
           "prompt": "A train travels 180 kilometres in 3 hours. If it keeps the same speed, how far will it travel in 5 hours?",
@@ -948,10 +954,10 @@
         {
           "prompt": "A claim has three premises. Two are true, but one is irrelevant. What happens to the argument?",
           "choices": [
-            "It is automatically proven",
-            "It may be weakened because relevance matters",
-            "It becomes a mathematical proof",
-            "It cannot be assessed"
+            "It is automatically proven.",
+            "It may be weakened because relevance matters.",
+            "It becomes a mathematical proof.",
+            "It cannot be assessed."
           ],
           "answerIndex": 1,
           "explanation": "True premises still need to support the conclusion.",
@@ -984,10 +990,10 @@
         {
           "prompt": "A report says test scores rose after a new timetable, but also says extra tutoring began at the same time. What is the main issue?",
           "choices": [
-            "There is a possible confounding factor",
-            "The timetable is the only possible cause",
-            "The scores cannot have risen",
-            "Tutoring never affects learning"
+            "There is a possible confounding factor.",
+            "The timetable is the only possible cause.",
+            "The scores cannot have risen.",
+            "Tutoring never affects learning."
           ],
           "answerIndex": 0,
           "explanation": "Extra tutoring could also explain the score increase.",
@@ -1020,10 +1026,10 @@
         {
           "prompt": "Which conclusion follows: Some researchers are mathematicians. All mathematicians use logic. Therefore...",
           "choices": [
-            "All researchers use logic",
-            "No researchers use logic",
-            "All logic users are researchers",
-            "Some researchers use logic"
+            "All researchers use logic.",
+            "No researchers use logic.",
+            "All logic users are researchers.",
+            "Some researchers use logic."
           ],
           "answerIndex": 3,
           "explanation": "The researchers who are mathematicians use logic, so some researchers use logic.",
@@ -1033,19 +1039,20 @@
       "encouragement": "One stage remains. The final round rewards calm, precise academic judgement."
     },
     {
-      "title": "Final Tutorial Challenge",
+      "title": "Stage 10: Final Tutorial Challenge",
       "questions": [
         {
           "prompt": "A passage argues that a policy should be adopted because it is efficient, but it ignores whether it is fair. What is the strongest critique?",
           "choices": [
-            "The argument leaves out a relevant ethical dimension",
-            "Efficiency is the only academic value",
-            "Fairness can never be discussed",
-            "The policy must be inefficient"
+            "The argument leaves out a relevant ethical dimension.",
+            "Efficiency is the only academic value.",
+            "Fairness can never be discussed.",
+            "The policy must be inefficient."
           ],
           "answerIndex": 0,
           "explanation": "A full evaluation may need both efficiency and fairness.",
-          "category": "logic"
+          "category": "logic",
+          "visual": "<div class=\"legacy-symbol-row\"><span>Efficient</span><span>+</span><span>Fair?</span></div>"
         },
         {
           "prompt": "A dataset has values 4, 4, 5, 7, 30. Which measure best represents the typical value if you want to reduce the effect of the outlier?",
@@ -1062,10 +1069,10 @@
         {
           "prompt": "A scientist predicts that increasing pressure will reduce volume. The results are: pressure rises, volume falls in every trial. What is the best description?",
           "choices": [
-            "The results disprove the prediction",
-            "The results are unrelated to the prediction",
-            "The results support the prediction",
-            "The prediction cannot be tested"
+            "The results disprove the prediction.",
+            "The results are unrelated to the prediction.",
+            "The results support the prediction.",
+            "The prediction cannot be tested."
           ],
           "answerIndex": 2,
           "explanation": "The observed pattern matches the prediction.",
@@ -1074,10 +1081,10 @@
         {
           "prompt": "Which assumption is needed for this argument: 'The library should extend hours because more students asked for evening access.'",
           "choices": [
-            "Students never use libraries",
-            "Libraries should close earlier",
-            "Requests are always unimportant",
-            "Evening access would help address the request"
+            "Students never use libraries.",
+            "Libraries should close earlier.",
+            "Requests are always unimportant.",
+            "Evening access would help address the request."
           ],
           "answerIndex": 3,
           "explanation": "The argument assumes longer hours would meet the demand for evening access.",
@@ -1098,10 +1105,10 @@
         {
           "prompt": "In a debate, one speaker attacks the person making an argument instead of the argument itself. What is the main flaw?",
           "choices": [
-            "It gives too much evidence",
-            "It changes the subject from evidence to personal criticism",
-            "It uses only mathematics",
-            "It proves the opponent is correct"
+            "It gives too much evidence.",
+            "It changes the subject from evidence to personal criticism.",
+            "It uses only mathematics.",
+            "It proves the opponent is correct."
           ],
           "answerIndex": 1,
           "explanation": "Personal attacks do not address whether the argument is sound.",
@@ -1122,10 +1129,10 @@
         {
           "prompt": "A fair test compares two methods. Method A is tested on beginners, and Method B is tested on experts. What is the problem?",
           "choices": [
-            "Beginners can never learn",
-            "Experts cannot be tested",
-            "The methods must be identical",
-            "The groups differ in a relevant way before the test"
+            "Beginners can never learn.",
+            "Experts cannot be tested.",
+            "The methods must be identical.",
+            "The groups differ in a relevant way before the test."
           ],
           "answerIndex": 3,
           "explanation": "Different starting ability makes the comparison unfair.",
