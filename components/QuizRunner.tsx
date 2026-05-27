@@ -31,35 +31,112 @@ function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
+function renderInfoIcon(type: "building" | "path" | "brain" | "report" | "search" | "bolt" | "star") {
+  const icons = {
+    building:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32M12 36V18m8 18V18m8 18V18m8 18V18M7 18h34L24 8 7 18Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    path:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 33c7-11 13 3 20-8s11-4 12-4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M32 8v18m0-16h9l-3 4 3 4h-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="33" r="3" fill="currentColor"/><circle cx="28" cy="25" r="3" fill="currentColor"/></svg>',
+    brain:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 10c-5 0-8 4-8 9-4 2-5 8-1 12-1 5 3 9 8 9 3 0 5-2 6-4 1 2 3 4 6 4 5 0 9-4 8-9 4-4 3-10-1-12 0-5-3-9-8-9-3 0-5 2-6 4-1-2-3-4-6-4Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 14v22M17 21h7m0 7h-7m14-7h-7m7 7h-7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    report:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h17l7 7v29H13V6Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M29 6v9h8M18 24h10M18 31h7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="34" cy="34" r="8" fill="white" stroke="currentColor" stroke-width="3.5"/><path d="m30 34 3 3 6-7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    search:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="m30 30 10 10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
+    bolt:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M27 4 10 27h13l-2 17 17-24H25l2-16Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></svg>',
+    star:
+      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 7 5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1 5-11Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></svg>',
+  };
+
+  return icons[type];
+}
+
+function getDimensionSubtitle(label: string) {
+  const normalized = label.toLowerCase();
+
+  if (normalized.includes("pattern")) return "Find what others miss.";
+  if (normalized.includes("number")) return "Work through the numbers.";
+  if (normalized.includes("deduction") || normalized.includes("logic")) return "Think clearly.";
+  if (normalized.includes("lateral") || normalized.includes("flexible")) return "Adapt under pressure.";
+
+  return "Build sharper judgement.";
+}
+
+function renderQuizInfoPanel(quiz: Quiz, translations: Translations) {
+  if (!quiz.infoPanel) {
+    return "";
+  }
+
+  const firstColumn = quiz.infoPanel.columns[0];
+  const secondColumn = quiz.infoPanel.columns[1] || quiz.infoPanel.columns[0];
+  const testBullets = quiz.result.scoreDimensions
+    .map((dimension) => `<li><span aria-hidden="true">✓</span>${escapeHtml(dimension.label)}</li>`)
+    .join("");
+  const featureCards = quiz.result.scoreDimensions
+    .slice(0, 3)
+    .map((dimension, index) => {
+      const icons: Array<"brain" | "search" | "bolt"> = ["brain", "search", "bolt"];
+      return `<div class="quiz-info-panel__skill quiz-info-panel__skill--${index + 1}">
+        <span class="quiz-info-panel__skill-icon">${renderInfoIcon(icons[index] || "star")}</span>
+        <strong>${escapeHtml(dimension.label)}</strong>
+        <small>${escapeHtml(getDimensionSubtitle(dimension.label))}</small>
+      </div>`;
+    })
+    .join("");
+
+  return `<section class="legacy-card quiz-info-panel">
+    <div class="quiz-info-panel__intro">
+      <span class="quiz-info-panel__icon quiz-info-panel__icon--primary">${renderInfoIcon("building")}</span>
+      <div>
+        <h2>${escapeHtml(quiz.infoPanel.title)}</h2>
+        <p>${escapeHtml(quiz.infoPanel.intro)}</p>
+      </div>
+    </div>
+
+    <div class="quiz-info-panel__columns">
+      <div class="quiz-info-panel__column">
+        <span class="quiz-info-panel__icon">${renderInfoIcon("path")}</span>
+        <h3>${escapeHtml(firstColumn.title)}</h3>
+        <p>${escapeHtml(firstColumn.body)}</p>
+      </div>
+      <div class="quiz-info-panel__column">
+        <span class="quiz-info-panel__icon">${renderInfoIcon("brain")}</span>
+        <h3>${escapeHtml(secondColumn.title)}</h3>
+        <p>${escapeHtml(secondColumn.body)}</p>
+        <ul class="quiz-info-panel__checks">${testBullets}</ul>
+      </div>
+    </div>
+
+    <div class="quiz-info-panel__scoring">
+      <span class="quiz-info-panel__icon quiz-info-panel__icon--purple">${renderInfoIcon("report")}</span>
+      <div>
+        <h3>${escapeHtml(quiz.infoPanel.footerTitle)}</h3>
+        <p>${escapeHtml(quiz.infoPanel.footerBody)}</p>
+      </div>
+    </div>
+
+    <div class="quiz-info-panel__notice">
+      <span>${renderInfoIcon("star")}</span>
+      <strong>There is no pass or fail score. The challenge increases gradually as you progress.</strong>
+    </div>
+
+    <div class="quiz-info-panel__skills">${featureCards}</div>
+
+    <button type="button" data-action="restart" class="legacy-primary legacy-restart">
+      <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.restartTest)}
+    </button>
+    <p class="quiz-info-panel__restart-note">Your progress will be cleared and the challenge will restart.</p>
+  </section>`;
+}
+
 function createQuizRunnerHtml(config: {
   quiz: Quiz;
   script: string;
   translations: Translations;
 }) {
   const { quiz, script, translations } = config;
-  const infoPanel = quiz.infoPanel
-    ? `<section class="legacy-card quiz-info-panel">
-          <h2>${escapeHtml(quiz.infoPanel.title)}</h2>
-          <p>${escapeHtml(quiz.infoPanel.intro)}</p>
-          <div class="quiz-info-panel__columns">
-            ${quiz.infoPanel.columns
-              .map(
-                (column) => `<div>
-                  <h3>${escapeHtml(column.title)}</h3>
-                  <p>${escapeHtml(column.body)}</p>
-                </div>`,
-              )
-              .join("")}
-          </div>
-          <div class="quiz-info-panel__footer">
-            <h3>${escapeHtml(quiz.infoPanel.footerTitle)}</h3>
-            <p>${escapeHtml(quiz.infoPanel.footerBody)}</p>
-          </div>
-          <button type="button" data-action="restart" class="legacy-primary legacy-restart">
-            ${escapeHtml(translations.quiz.restartTest)}
-          </button>
-        </section>`
-    : "";
+  const infoPanel = renderQuizInfoPanel(quiz, translations);
 
   return `<main id="quiz-top" class="legacy-main">
       <section data-screen="start" class="legacy-card legacy-start">
@@ -105,12 +182,22 @@ function createQuizRunnerHtml(config: {
       </section>
 
       <section data-screen="stage-gate" class="legacy-card legacy-result legacy-stage-result legacy-hidden">
-        <h2 data-js="stage-title"></h2>
-        <p data-js="stage-copy" class="legacy-stage-copy"></p>
-        <p data-js="stage-next" class="legacy-stage-next"></p>
-        <div class="legacy-stage-stats">
-          <div><strong data-js="stage-score"></strong><span>${escapeHtml(translations.results.scoreSoFar)}</span></div>
+        <div class="legacy-stage-heading">
+          <span data-js="stage-icon" class="legacy-stage-emoji" aria-hidden="true">✅</span>
+          <h2 data-js="stage-title"></h2>
         </div>
+        <p data-js="stage-copy" class="legacy-stage-copy"></p>
+        <div data-js="stage-next" class="legacy-stage-next">
+          <span data-js="stage-next-label"></span>
+          <strong data-js="stage-next-name"></strong>
+        </div>
+        <div class="legacy-stage-stats">
+          <div>
+            <span><strong data-js="stage-round-score"></strong><em>${escapeHtml(translations.results.roundResult)}</em></span>
+            <span><strong data-js="stage-score"></strong><em>${escapeHtml(translations.results.scoreSoFar)}</em></span>
+          </div>
+        </div>
+        <div data-js="stage-trail" class="legacy-stage-trail" aria-hidden="true"></div>
         <button type="button" data-js="stage-button" data-action="stage-continue" class="legacy-primary legacy-stage-button"></button>
         <div class="legacy-ad-note">
           <span class="legacy-shield" aria-hidden="true">i</span>
@@ -142,8 +229,8 @@ function createQuizRunnerHtml(config: {
         </div>
         <div data-js="review" class="legacy-review"></div>
       </section>
+      ${infoPanel}
     </main>
-    ${infoPanel}
     <script>${script}</script>`;
 }
 
@@ -215,7 +302,19 @@ function createQuizRunnerScript(config: {
 
       if (shouldScroll !== false) {
         window.requestAnimationFrame(function () {
-          root.querySelector("#quiz-top")?.scrollIntoView({ block: "start", behavior: "smooth" });
+          var target = screens[screenName] || root.querySelector("#quiz-top");
+          var header = document.querySelector(".hub-header");
+          var headerOffset = header ? header.getBoundingClientRect().height : 50;
+          var headerBorder = header ? parseFloat(window.getComputedStyle(header).borderBottomWidth) || 4 : 4;
+          var visibleHeaderOffset = window.matchMedia("(max-width: 619px)").matches ? headerBorder : headerOffset;
+          var targetTop = 0;
+          var node = target;
+          while (node) {
+            targetTop += node.offsetTop || 0;
+            node = node.offsetParent;
+          }
+          var top = targetTop - visibleHeaderOffset;
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         });
       }
     }
@@ -481,12 +580,23 @@ function createQuizRunnerScript(config: {
         ? t.quiz.continue + " →"
         : t.results.viewResults + " →";
       var copy = quiz.stageEncouragement[Math.min(completedStage, quiz.stageEncouragement.length - 1)] || "";
+      var stageTotal = getStageQuestions(completedStage).length;
+      var stageScore = getStageScore(completedStage);
+      var stageIcons = ["✅", "⭐", "🧠", "🧩", "🔎", "🎯", "🚀", "🏆", "💎", "🎉"];
 
       byData("stage-title").textContent = t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
+      byData("stage-icon").textContent = stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
-      byData("stage-next").textContent = nextStageName ? t.results.nextStage + ": " + nextStageName : "";
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
+      byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
+      byData("stage-next-name").textContent = nextStageName || "";
+      byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
       byData("stage-score").textContent = getScore() + "/" + current;
+      byData("stage-trail").innerHTML = stageIndexes.map(function (stage, index) {
+        var status = stage <= completedStage ? "complete" : stage === nextStage ? "next" : "locked";
+        var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
+        return '<span class="legacy-stage-trail__dot legacy-stage-trail__dot--' + status + '" title="' + escapeHtml(label) + '">' + (status === "complete" ? "✓" : "") + '</span>';
+      }).join("");
       byData("stage-button").textContent = buttonLabel;
       byData("stage-button").dataset.readyText = buttonLabel;
       show("stageGate", shouldScroll);
