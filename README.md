@@ -97,7 +97,7 @@ data/quizzes/schema.json
 4. Set `"slug": "memory-test"` inside every locale JSON file.
 5. Update title, page copy, homepage fields, stage groups, and questions.
 6. Commit the quiz folder.
-7. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/quiz/memory-test/`.
+7. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/memory-test/`.
 
 To add a translated quiz, add a full self-contained locale file inside the same quiz folder:
 
@@ -105,7 +105,7 @@ To add a translated quiz, add a full self-contained locale file inside the same 
 data/quizzes/memory-test/es.json
 ```
 
-Then `/es/quiz/memory-test/` will use the Spanish quiz file. If a translated file is missing, the page falls back to `en.json` so links do not break.
+Then `/es/memory-test/` will use the Spanish quiz file. If a translated file is missing, the locale route still works using the English quiz data with translated shared UI until the quiz JSON is added.
 
 Quiz JSON files are only for quiz-specific content:
 
@@ -329,14 +329,14 @@ Default English routes stay unprefixed:
 
 ```text
 /
-/quiz/oxford/
+/oxford/
 ```
 
 Translated shared UI routes use a locale prefix:
 
 ```text
 /es/
-/es/quiz/oxford/
+/es/oxford/
 ```
 
 Only English and Spanish are currently enabled. Additional languages can be added later without changing the quiz JSON structure.
@@ -355,7 +355,7 @@ To edit footer, header, button, loading, or rewarded-ad helper text, edit the re
 
 ## Translated Quizzes
 
-Quiz-specific text stays in quiz JSON. To translate a quiz, copy that quiz's `en.json` to a supported locale file such as `es.json`, translate the full quiz content, and keep the same answer structure. The locale routes combine shared UI translations with locale-specific quiz content, so `/es/quiz/cambridge/` uses Spanish buttons/navigation/footer and `data/quizzes/cambridge/es.json` when that file exists.
+Quiz-specific text stays in quiz JSON. To translate a quiz, copy that quiz's `en.json` to a supported locale file such as `es.json`, translate the full quiz content, and keep the same answer structure. The locale routes combine shared UI translations with locale-specific quiz content, so `/es/cambridge/` uses Spanish buttons/navigation/footer and `data/quizzes/cambridge/es.json` when that file exists.
 
 ## Tracking
 

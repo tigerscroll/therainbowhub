@@ -7,6 +7,7 @@ import {
   type InfoPageSlug,
 } from "@/lib/infoPages";
 import type { SupportedLocale } from "@/lib/i18n";
+import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
 export { getInfoPageMetadata, infoPageMetadata, infoPageSlugs, isInfoPageSlug };
 
@@ -20,16 +21,16 @@ export function InfoPageContent({ locale, slug }: InfoPageContentProps) {
 
   return (
     <article className={`legal-page ${slug === "about" ? "about-page" : ""}`}>
-      <p className="legal-kicker">{page.kicker}</p>
       <h1>{page.title}</h1>
       <p className="legal-updated">{page.updated}</p>
 
-      {page.sections.map((section) => (
+      {page.sections.map((section, index) => (
         <section key={section.heading}>
           <h2>{section.heading}</h2>
           {section.paragraphs?.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          {slug === "contact" && index === 0 ? <ObfuscatedEmail /> : null}
           {section.list ? (
             <ul>
               {section.list.map((item) => (

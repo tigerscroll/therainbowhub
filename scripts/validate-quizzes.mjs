@@ -81,6 +81,10 @@ function validateHomepage(homepage, fileName, options) {
 }
 
 function validateInfoPanel(infoPanel, fileName) {
+  if (infoPanel === undefined) {
+    return;
+  }
+
   if (!isObject(infoPanel)) {
     addError(`${fileName}: "infoPanel" must be an object.`);
     return;
@@ -106,15 +110,38 @@ function validateInfoPanel(infoPanel, fileName) {
   });
 }
 
+function validateFooter(footer, fileName) {
+  if (footer === undefined) {
+    return;
+  }
+
+  if (!isObject(footer)) {
+    addError(`${fileName}: "footer" must be an object.`);
+    return;
+  }
+
+  ["aboutTitle", "aboutText"].forEach((field) => {
+    requireString(footer[field], `footer.${field}`, fileName);
+  });
+
+  if (footer.topicText !== undefined && typeof footer.topicText !== "string") {
+    addError(`${fileName}: "footer.topicText" must be a string when provided.`);
+  }
+}
+
 function validateLanding(landing, fileName) {
   if (!isObject(landing)) {
     addError(`${fileName}: "landing" must be an object.`);
     return;
   }
 
-  ["quickStartText", "challengeText", "socialProof"].forEach((field) => {
+  ["quickStartText", "socialProof"].forEach((field) => {
     requireString(landing[field], `landing.${field}`, fileName);
   });
+
+  if (landing.challengeText !== undefined) {
+    requireString(landing.challengeText, "landing.challengeText", fileName);
+  }
 }
 
 function validateResult(result, fileName) {
@@ -292,7 +319,12 @@ function validateQuizFile(filePath, options = {}) {
 
   validateHomepage(quiz.homepage, fileName, options);
   validateLanding(quiz.landing, fileName);
+  validateFooter(quiz.footer, fileName);
   validateInfoPanel(quiz.infoPanel, fileName);
+
+  if (quiz.footer === undefined && quiz.infoPanel === undefined) {
+    addError(`${fileName}: provide either "footer" or legacy "infoPanel".`);
+  }
 
   if (quiz.stageGroups === undefined) {
     addError(`${fileName}: use "stageGroups" so each quiz is self-contained and easy to translate.`);

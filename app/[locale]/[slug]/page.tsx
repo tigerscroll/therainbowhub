@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { getAllQuizzes, getQuizBySlug, getQuizLocales } from "@/lib/quizzes";
+import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
 
 type LocaleQuizPageProps = {
   params: Promise<{
@@ -13,33 +13,20 @@ type LocaleQuizPageProps = {
 };
 
 export const dynamicParams = false;
-const emptyLocaleQuizSlug = "__no-localized-quizzes__";
 
 export function generateStaticParams() {
-  const params = getSupportedLocales()
-    .filter((locale) => locale !== "en")
-    .flatMap((locale) =>
-      getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
-        locale,
-        slug: quiz.slug,
-      })),
-    );
+  const defaultQuizSlugs = getAllQuizzes(getDefaultLocale()).map((quiz) => quiz.slug);
 
-  return params.length
-    ? params
-    : [
-        {
-          locale: "es",
-          slug: emptyLocaleQuizSlug,
-        },
-      ];
+  return getSupportedLocales()
+    .filter((locale) => locale !== getDefaultLocale())
+    .flatMap((locale) => defaultQuizSlugs.map((slug) => ({ locale, slug })));
 }
 
 export async function generateMetadata({ params }: LocaleQuizPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const quiz = getQuizBySlug(slug, locale);
 
-  if (!isSupportedLocale(locale) || locale === "en" || !quiz || !getQuizLocales(slug).includes(locale)) {
+  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !quiz) {
     return {};
   }
 
@@ -55,14 +42,14 @@ export default async function LocaleQuizPage({ params }: LocaleQuizPageProps) {
   const { locale, slug } = await params;
   const quiz = getQuizBySlug(slug, locale);
 
-  if (!isSupportedLocale(locale) || locale === "en" || !quiz || !getQuizLocales(slug).includes(locale)) {
+  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !quiz) {
     notFound();
   }
 
   const translations = getTranslations(locale);
 
   return (
-    <SiteShell currentPath={`/quiz/${quiz.slug}`} locale={locale} translations={translations}>
+    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} translations={translations}>
       <QuizTemplate locale={locale} quiz={quiz} translations={translations} />
     </SiteShell>
   );

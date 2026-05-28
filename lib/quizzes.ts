@@ -39,9 +39,15 @@ export type QuizInfoPanel = {
   footerBody: string;
 };
 
+export type QuizFooterContent = {
+  aboutTitle: string;
+  aboutText: string;
+  topicText?: string;
+};
+
 export type QuizLanding = {
   quickStartText: string;
-  challengeText: string;
+  challengeText?: string;
   socialProof: string;
 };
 
@@ -80,6 +86,7 @@ export type Quiz = {
   cardGradient: string;
   accent: string;
   homepage: QuizHomepage;
+  footer?: QuizFooterContent;
   infoPanel?: QuizInfoPanel;
   landing: QuizLanding;
   stages: string[];
@@ -204,6 +211,26 @@ function validateInfoPanel(value: unknown, fileName: string): QuizInfoPanel | un
   return infoPanel as QuizInfoPanel;
 }
 
+function validateFooter(value: unknown, fileName: string): QuizFooterContent | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${fileName}: "footer" must be an object when provided.`);
+  }
+
+  const footer = value as Record<string, unknown>;
+  assertString(footer.aboutTitle, "footer.aboutTitle", fileName);
+  assertString(footer.aboutText, "footer.aboutText", fileName);
+
+  if (footer.topicText !== undefined && typeof footer.topicText !== "string") {
+    throw new Error(`${fileName}: "footer.topicText" must be a string when provided.`);
+  }
+
+  return footer as QuizFooterContent;
+}
+
 function validateLanding(value: unknown, fileName: string): QuizLanding {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     throw new Error(`${fileName}: "landing" must be an object.`);
@@ -211,7 +238,9 @@ function validateLanding(value: unknown, fileName: string): QuizLanding {
 
   const landing = value as Record<string, unknown>;
   assertString(landing.quickStartText, "landing.quickStartText", fileName);
-  assertString(landing.challengeText, "landing.challengeText", fileName);
+  if (landing.challengeText !== undefined) {
+    assertString(landing.challengeText, "landing.challengeText", fileName);
+  }
   assertString(landing.socialProof, "landing.socialProof", fileName);
 
   return landing as QuizLanding;
@@ -410,6 +439,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
 
   assertOptionalStringArray(quiz.heroPoints, "heroPoints", fileName);
   const homepage = validateHomepage(quiz.homepage, fileName);
+  const footer = validateFooter(quiz.footer, fileName);
   const infoPanel = validateInfoPanel(quiz.infoPanel, fileName);
   const landing = validateLanding(quiz.landing, fileName);
   const result = validateResult(quiz.result, fileName);
@@ -440,6 +470,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     cardGradient: quiz.cardGradient,
     accent: quiz.accent,
     homepage,
+    footer,
     infoPanel,
     landing,
     stages,

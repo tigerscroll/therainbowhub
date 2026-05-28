@@ -10,14 +10,14 @@ export const siteConfig = {
 };
 
 export const companyLinks = [
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  { href: "/accessibility", label: "Accessibility" },
+  { href: "/info/about", label: "About" },
+  { href: "/info/contact", label: "Contact" },
+  { href: "/info/accessibility", label: "Accessibility" },
 ];
 
 export const legalLinks = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/cookie-policy", label: "Cookie Policy" },
-  { href: "/terms-of-use", label: "Terms of Use" },
-  { href: "/disclaimer", label: "Quiz Disclaimer" },
+  { href: "/info/privacy-policy", label: "Privacy Policy" },
+  { href: "/info/cookie-policy", label: "Cookie Policy" },
+  { href: "/info/terms-of-use", label: "Terms of Use" },
+  { href: "/info/disclaimer", label: "Disclaimer" },
 ];

@@ -6,7 +6,6 @@ import {
   type SupportedLocale,
   type Translations,
 } from "@/lib/i18n";
-import { getQuizLocales } from "@/lib/quizzes";
 
 type LanguageSwitcherProps = {
   locale: SupportedLocale;
@@ -47,17 +46,6 @@ const languageFlags = Object.fromEntries(getLocaleOptions().map((option) => [opt
 
 function getSwitcherHref(locale: SupportedLocale, path: string) {
   const defaultLocale = getDefaultLocale();
-  const quizMatch = path.match(/^\/quiz\/([^/]+)/);
-
-  if (quizMatch) {
-    const quizSlug = quizMatch[1];
-    const quizLocales = getQuizLocales(quizSlug);
-
-    if (!quizLocales.includes(locale)) {
-      return getLocalePath(locale, "/");
-    }
-  }
-
   return locale === defaultLocale ? path : getLocalePath(locale, path);
 }
 

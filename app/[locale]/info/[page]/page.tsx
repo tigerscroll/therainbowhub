@@ -8,6 +8,7 @@ import {
 } from "@/components/InfoPageContent";
 import { SiteShell } from "@/components/SiteShell";
 import {
+  getDefaultLocale,
   getSupportedLocales,
   getTranslations,
   isSupportedLocale,
@@ -21,16 +22,18 @@ type LocalizedInfoPageProps = {
   }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getSupportedLocales()
-    .filter((locale) => locale !== "en")
+    .filter((locale) => locale !== getDefaultLocale())
     .flatMap((locale) => infoPageSlugs.map((page) => ({ locale, page })));
 }
 
 export async function generateMetadata({ params }: LocalizedInfoPageProps): Promise<Metadata> {
   const { locale, page } = await params;
 
-  if (!isSupportedLocale(locale) || locale === "en" || !isInfoPageSlug(page)) {
+  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     return {};
   }
 
@@ -40,7 +43,7 @@ export async function generateMetadata({ params }: LocalizedInfoPageProps): Prom
 export default async function LocalizedInfoPage({ params }: LocalizedInfoPageProps) {
   const { locale, page } = await params;
 
-  if (!isSupportedLocale(locale) || locale === "en" || !isInfoPageSlug(page)) {
+  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     notFound();
   }
 
@@ -48,7 +51,7 @@ export default async function LocalizedInfoPage({ params }: LocalizedInfoPagePro
   const translations = getTranslations(safeLocale);
 
   return (
-    <SiteShell currentPath={`/${page}`} locale={safeLocale} translations={translations}>
+    <SiteShell currentPath={`/info/${page}`} locale={safeLocale} translations={translations}>
       <InfoPageContent locale={safeLocale} slug={page} />
     </SiteShell>
   );

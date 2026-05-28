@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/postprocess-html-lang.mjs",
     "start": "next start",
     "lint": "next lint",
     "validate": "node scripts/validate-quizzes.mjs",

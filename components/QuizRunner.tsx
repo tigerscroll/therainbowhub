@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { getQuizFooterContent, QuizFooter } from "@/components/QuizFooter";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
 
@@ -27,126 +28,34 @@ function renderTitleWithAccentPercent(title: string) {
     .join("");
 }
 
+function renderSocialProof(value: string) {
+  const match = value.match(/^(.+?\bpeople\b)(.*)$/i);
+
+  if (!match) {
+    return escapeHtml(value);
+  }
+
+  return `${escapeHtml(match[1])}<span class="legacy-social__muted">${escapeHtml(match[2])}</span>`;
+}
+
 function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-function renderInfoIcon(type: "building" | "path" | "brain" | "report" | "search" | "bolt" | "star") {
-  const icons = {
-    building:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32M12 36V18m8 18V18m8 18V18m8 18V18M7 18h34L24 8 7 18Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    path:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 33c7-11 13 3 20-8s11-4 12-4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M32 8v18m0-16h9l-3 4 3 4h-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="33" r="3" fill="currentColor"/><circle cx="28" cy="25" r="3" fill="currentColor"/></svg>',
-    brain:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 10c-5 0-8 4-8 9-4 2-5 8-1 12-1 5 3 9 8 9 3 0 5-2 6-4 1 2 3 4 6 4 5 0 9-4 8-9 4-4 3-10-1-12 0-5-3-9-8-9-3 0-5 2-6 4-1-2-3-4-6-4Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 14v22M17 21h7m0 7h-7m14-7h-7m7 7h-7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
-    report:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h17l7 7v29H13V6Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M29 6v9h8M18 24h10M18 31h7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="34" cy="34" r="8" fill="white" stroke="currentColor" stroke-width="3.5"/><path d="m30 34 3 3 6-7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    search:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="m30 30 10 10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>',
-    bolt:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M27 4 10 27h13l-2 17 17-24H25l2-16Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></svg>',
-    star:
-      '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 7 5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1 5-11Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></svg>',
-  };
-
-  return icons[type];
-}
-
-function getDimensionSubtitle(label: string) {
-  const normalized = label.toLowerCase();
-
-  if (normalized.includes("pattern")) return "Find what others miss.";
-  if (normalized.includes("number")) return "Work through the numbers.";
-  if (normalized.includes("deduction") || normalized.includes("logic")) return "Think clearly.";
-  if (normalized.includes("lateral") || normalized.includes("flexible")) return "Adapt under pressure.";
-
-  return "Build sharper judgement.";
-}
-
-function renderQuizInfoPanel(quiz: Quiz, translations: Translations) {
-  if (!quiz.infoPanel) {
-    return "";
-  }
-
-  const firstColumn = quiz.infoPanel.columns[0];
-  const secondColumn = quiz.infoPanel.columns[1] || quiz.infoPanel.columns[0];
-  const testBullets = quiz.result.scoreDimensions
-    .map((dimension) => `<li><span aria-hidden="true">✓</span>${escapeHtml(dimension.label)}</li>`)
-    .join("");
-  const featureCards = quiz.result.scoreDimensions
-    .slice(0, 3)
-    .map((dimension, index) => {
-      const icons: Array<"brain" | "search" | "bolt"> = ["brain", "search", "bolt"];
-      return `<div class="quiz-info-panel__skill quiz-info-panel__skill--${index + 1}">
-        <span class="quiz-info-panel__skill-icon">${renderInfoIcon(icons[index] || "star")}</span>
-        <strong>${escapeHtml(dimension.label)}</strong>
-        <small>${escapeHtml(getDimensionSubtitle(dimension.label))}</small>
-      </div>`;
-    })
-    .join("");
-
-  return `<section class="legacy-card quiz-info-panel">
-    <div class="quiz-info-panel__intro">
-      <span class="quiz-info-panel__icon quiz-info-panel__icon--primary">${renderInfoIcon("building")}</span>
-      <div>
-        <h2>${escapeHtml(quiz.infoPanel.title)}</h2>
-        <p>${escapeHtml(quiz.infoPanel.intro)}</p>
-      </div>
-    </div>
-
-    <div class="quiz-info-panel__columns">
-      <div class="quiz-info-panel__column">
-        <span class="quiz-info-panel__icon">${renderInfoIcon("path")}</span>
-        <h3>${escapeHtml(firstColumn.title)}</h3>
-        <p>${escapeHtml(firstColumn.body)}</p>
-      </div>
-      <div class="quiz-info-panel__column">
-        <span class="quiz-info-panel__icon">${renderInfoIcon("brain")}</span>
-        <h3>${escapeHtml(secondColumn.title)}</h3>
-        <p>${escapeHtml(secondColumn.body)}</p>
-        <ul class="quiz-info-panel__checks">${testBullets}</ul>
-      </div>
-    </div>
-
-    <div class="quiz-info-panel__scoring">
-      <span class="quiz-info-panel__icon quiz-info-panel__icon--purple">${renderInfoIcon("report")}</span>
-      <div>
-        <h3>${escapeHtml(quiz.infoPanel.footerTitle)}</h3>
-        <p>${escapeHtml(quiz.infoPanel.footerBody)}</p>
-      </div>
-    </div>
-
-    <div class="quiz-info-panel__notice">
-      <span>${renderInfoIcon("star")}</span>
-      <strong>There is no pass or fail score. The challenge increases gradually as you progress.</strong>
-    </div>
-
-    <div class="quiz-info-panel__skills">${featureCards}</div>
-
-    <button type="button" data-action="restart" class="legacy-primary legacy-restart">
-      <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.restartTest)}
-    </button>
-    <p class="quiz-info-panel__restart-note">Your progress will be cleared and the challenge will restart.</p>
-  </section>`;
-}
-
 function createQuizRunnerHtml(config: {
   quiz: Quiz;
-  script: string;
   translations: Translations;
 }) {
-  const { quiz, script, translations } = config;
-  const infoPanel = renderQuizInfoPanel(quiz, translations);
+  const { quiz, translations } = config;
+  const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
+    .filter((line) => line && line.trim().length > 0)
+    .map((line) => escapeHtml(line))
+    .join("<br />");
 
-  return `<main id="quiz-top" class="legacy-main">
-      <section data-screen="start" class="legacy-card legacy-start">
+  return `<section data-screen="start" class="legacy-card legacy-start">
         <div class="legacy-badge" aria-hidden="true"><span>${escapeHtml(quiz.cardIcon)}</span></div>
         <h1>${renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
-        <p class="legacy-sub">
-          ${escapeHtml(quiz.landing.quickStartText)}
-          <br />
-          ${escapeHtml(quiz.landing.challengeText)}
-        </p>
+        <p class="legacy-sub">${landingLines}</p>
         <div class="legacy-social">
           <div class="legacy-avatars" aria-hidden="true">
             <span class="legacy-avatar legacy-avatar--one"></span>
@@ -154,7 +63,7 @@ function createQuizRunnerHtml(config: {
             <span class="legacy-avatar legacy-avatar--three"></span>
             <span class="legacy-avatar legacy-avatar--four"></span>
           </div>
-          <div><strong>${escapeHtml(quiz.landing.socialProof)}</strong></div>
+          <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
         </div>
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.startTest)}
@@ -228,10 +137,7 @@ function createQuizRunnerHtml(config: {
           <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
         </div>
         <div data-js="review" class="legacy-review"></div>
-      </section>
-      ${infoPanel}
-    </main>
-    <script>${script}</script>`;
+      </section>`;
 }
 
 function createQuizRunnerScript(config: {
@@ -304,9 +210,8 @@ function createQuizRunnerScript(config: {
         window.requestAnimationFrame(function () {
           var target = screens[screenName] || root.querySelector("#quiz-top");
           var header = document.querySelector(".hub-header");
-          var headerOffset = header ? header.getBoundingClientRect().height : 50;
           var headerBorder = header ? parseFloat(window.getComputedStyle(header).borderBottomWidth) || 4 : 4;
-          var visibleHeaderOffset = window.matchMedia("(max-width: 619px)").matches ? headerBorder : headerOffset;
+          var visibleHeaderOffset = headerBorder;
           var targetTop = 0;
           var node = target;
           while (node) {
@@ -694,7 +599,7 @@ function createQuizRunnerScript(config: {
       }).join("");
     }
 
-    function renderResults(shouldScroll) {
+    function renderResults(shouldScroll, shouldTrack) {
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -723,13 +628,15 @@ function createQuizRunnerScript(config: {
       byData("review").innerHTML = "";
 
       show("results", shouldScroll);
-      track("quiz_complete", {
-        quiz_slug: quiz.slug,
-        quiz_title: quiz.title,
-        score: score,
-        question_count: quiz.questions.length
-      });
-      clearProgress();
+      if (shouldTrack !== false) {
+        track("quiz_complete", {
+          quiz_slug: quiz.slug,
+          quiz_title: quiz.title,
+          score: score,
+          question_count: quiz.questions.length
+        });
+      }
+      saveProgress("results");
     }
 
     function startFresh() {
@@ -756,7 +663,7 @@ function createQuizRunnerScript(config: {
 
         var parsed = JSON.parse(saved);
         var savedCurrent = parsed.currentQuestion || 0;
-        var savedScreen = parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question";
+        var savedScreen = parsed.screen === "stage-gate" || parsed.screen === "result-gate" || parsed.screen === "results" ? parsed.screen : "question";
 
         if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
           clearProgress();
@@ -766,7 +673,7 @@ function createQuizRunnerScript(config: {
         answers = normalizeAnswers(parsed.answers);
         var resumePoint = savedScreen === "question" && answers[savedCurrent] !== undefined
           ? getResumePointAfterAnsweredQuestion(savedCurrent)
-          : { currentQuestion: savedCurrent, screen: savedScreen === "stage-gate" ? "stageGate" : savedScreen === "result-gate" ? "resultGate" : "question" };
+          : { currentQuestion: savedCurrent, screen: savedScreen === "stage-gate" ? "stageGate" : savedScreen === "result-gate" ? "resultGate" : savedScreen === "results" ? "results" : "question" };
 
         current = resumePoint.currentQuestion;
 
@@ -779,6 +686,12 @@ function createQuizRunnerScript(config: {
         if (resumePoint.screen === "resultGate") {
           saveProgress("result-gate");
           showResultGate(false);
+          return true;
+        }
+
+        if (resumePoint.screen === "results") {
+          saveProgress("results");
+          renderResults(false, false);
           return true;
         }
 
@@ -866,7 +779,8 @@ export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
     rootId,
     translations,
   });
-  const html = createQuizRunnerHtml({ quiz, script, translations });
+  const html = createQuizRunnerHtml({ quiz, translations });
+  const footer = getQuizFooterContent(quiz);
 
   return (
     <div
@@ -874,7 +788,12 @@ export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
       className={`legacy-quiz legacy-quiz--${quiz.slug}`}
       suppressHydrationWarning
       style={{ "--quiz-accent": quiz.accent } as CSSProperties}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    >
+      <main id="quiz-top" className="legacy-main">
+        <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: html }} />
+        {footer ? <QuizFooter footer={footer} translations={translations} /> : null}
+      </main>
+      <script dangerouslySetInnerHTML={{ __html: script }} />
+    </div>
   );
 }
