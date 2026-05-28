@@ -13,7 +13,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
       Math.max(quizzes.length, 1),
   );
   const homepageCards = quizzes.map((quiz) => ({
-    href: getLocalePath(locale, `/quiz/${quiz.slug}`),
+    href: getLocalePath(locale, `/${quiz.slug}`),
     banner: quiz.homepage.gradient ?? quiz.cardGradient,
     icon: quiz.homepage.icon ?? quiz.cardIcon,
     thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,

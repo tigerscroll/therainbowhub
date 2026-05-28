@@ -8,16 +8,16 @@ type FooterProps = {
 };
 
 const footerCompanyLabels: Record<string, keyof Translations["footer"]["links"]> = {
-  "/about": "about",
-  "/contact": "contact",
-  "/accessibility": "accessibility",
+  "/info/about": "about",
+  "/info/contact": "contact",
+  "/info/accessibility": "accessibility",
 };
 
 const footerLegalLabels: Record<string, keyof Translations["footer"]["links"]> = {
-  "/privacy-policy": "privacyPolicy",
-  "/cookie-policy": "cookiePolicy",
-  "/terms-of-use": "termsOfUse",
-  "/disclaimer": "disclaimer",
+  "/info/privacy-policy": "privacyPolicy",
+  "/info/cookie-policy": "cookiePolicy",
+  "/info/terms-of-use": "termsOfUse",
+  "/info/disclaimer": "disclaimer",
 };
 
 export function Footer({ locale, translations }: FooterProps) {

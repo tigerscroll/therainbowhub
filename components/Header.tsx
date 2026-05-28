@@ -7,7 +7,7 @@ import {
   type SupportedLocale,
   type Translations,
 } from "@/lib/i18n";
-import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
+import { getAllQuizzes } from "@/lib/quizzes";
 
 type HeaderProps = {
   currentPath: string;
@@ -17,31 +17,20 @@ type HeaderProps = {
 
 function getSwitcherHref(locale: SupportedLocale, path: string) {
   const defaultLocale = getDefaultLocale();
-  const quizMatch = path.match(/^\/quiz\/([^/]+)/);
-
-  if (quizMatch) {
-    const quizSlug = quizMatch[1];
-    const quizLocales = getQuizLocales(quizSlug);
-
-    if (!quizLocales.includes(locale)) {
-      return getLocalePath(locale, "/");
-    }
-  }
-
   return locale === defaultLocale ? path : getLocalePath(locale, path);
 }
 
 export function Header({ currentPath, locale, translations }: HeaderProps) {
   const searchItems = getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
     category: quiz.eyebrow,
-    href: getLocalePath(locale, `/quiz/${quiz.slug}`),
+    href: getLocalePath(locale, `/${quiz.slug}`),
     summary: quiz.homepage.summary ?? quiz.summary,
     title: quiz.homepage.title ?? quiz.title,
   }));
   const navLinks = [
     { href: getLocalePath(locale, "/"), label: translations.nav.home },
-    { href: getLocalePath(locale, "/about"), label: translations.footer.links.about },
-    { href: getLocalePath(locale, "/contact"), label: translations.footer.links.contact },
+    { href: getLocalePath(locale, "/info/about"), label: translations.footer.links.about },
+    { href: getLocalePath(locale, "/info/contact"), label: translations.footer.links.contact },
   ];
   const languageOptions = getLocaleOptions();
   const currentLanguage = languageOptions.find((option) => option.code === locale) ?? languageOptions[0];

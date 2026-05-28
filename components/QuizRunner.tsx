@@ -599,7 +599,7 @@ function createQuizRunnerScript(config: {
       }).join("");
     }
 
-    function renderResults(shouldScroll) {
+    function renderResults(shouldScroll, shouldTrack) {
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -628,13 +628,15 @@ function createQuizRunnerScript(config: {
       byData("review").innerHTML = "";
 
       show("results", shouldScroll);
-      track("quiz_complete", {
-        quiz_slug: quiz.slug,
-        quiz_title: quiz.title,
-        score: score,
-        question_count: quiz.questions.length
-      });
-      clearProgress();
+      if (shouldTrack !== false) {
+        track("quiz_complete", {
+          quiz_slug: quiz.slug,
+          quiz_title: quiz.title,
+          score: score,
+          question_count: quiz.questions.length
+        });
+      }
+      saveProgress("results");
     }
 
     function startFresh() {
@@ -661,7 +663,7 @@ function createQuizRunnerScript(config: {
 
         var parsed = JSON.parse(saved);
         var savedCurrent = parsed.currentQuestion || 0;
-        var savedScreen = parsed.screen === "stage-gate" || parsed.screen === "result-gate" ? parsed.screen : "question";
+        var savedScreen = parsed.screen === "stage-gate" || parsed.screen === "result-gate" || parsed.screen === "results" ? parsed.screen : "question";
 
         if (!Number.isInteger(savedCurrent) || savedCurrent < 0 || savedCurrent >= quiz.questions.length) {
           clearProgress();
@@ -671,7 +673,7 @@ function createQuizRunnerScript(config: {
         answers = normalizeAnswers(parsed.answers);
         var resumePoint = savedScreen === "question" && answers[savedCurrent] !== undefined
           ? getResumePointAfterAnsweredQuestion(savedCurrent)
-          : { currentQuestion: savedCurrent, screen: savedScreen === "stage-gate" ? "stageGate" : savedScreen === "result-gate" ? "resultGate" : "question" };
+          : { currentQuestion: savedCurrent, screen: savedScreen === "stage-gate" ? "stageGate" : savedScreen === "result-gate" ? "resultGate" : savedScreen === "results" ? "results" : "question" };
 
         current = resumePoint.currentQuestion;
 
@@ -684,6 +686,12 @@ function createQuizRunnerScript(config: {
         if (resumePoint.screen === "resultGate") {
           saveProgress("result-gate");
           showResultGate(false);
+          return true;
+        }
+
+        if (resumePoint.screen === "results") {
+          saveProgress("results");
+          renderResults(false, false);
           return true;
         }
 

@@ -37,7 +37,7 @@ export function QuizLanding({ locale, quiz, showStartLink = true, translations }
         </div>
         {showStartLink ? (
           <a
-            href={getLocalePath(locale, `/quiz/${quiz.slug}`)}
+            href={getLocalePath(locale, `/${quiz.slug}`)}
             className="mt-7 inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-6 text-base font-black text-white shadow-soft transition hover:-translate-y-0.5"
             style={{ backgroundColor: quiz.accent }}
           >
