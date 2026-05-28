@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/postprocess-html-lang.mjs",
+    "build": "next build",
+    "postbuild": "node scripts/postprocess-html-lang.mjs",
     "start": "next start",
     "lint": "next lint",
     "validate": "node scripts/validate-quizzes.mjs",
