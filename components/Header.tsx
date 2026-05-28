@@ -1,6 +1,13 @@
 import Link from "next/link";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
+import { QuizSearch } from "@/components/QuizSearch";
+import {
+  getDefaultLocale,
+  getLocaleOptions,
+  getLocalePath,
+  type SupportedLocale,
+  type Translations,
+} from "@/lib/i18n";
+import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 
 type HeaderProps = {
   currentPath: string;
@@ -8,7 +15,43 @@ type HeaderProps = {
   translations: Translations;
 };
 
+function getSwitcherHref(locale: SupportedLocale, path: string) {
+  const defaultLocale = getDefaultLocale();
+  const quizMatch = path.match(/^\/quiz\/([^/]+)/);
+
+  if (quizMatch) {
+    const quizSlug = quizMatch[1];
+    const quizLocales = getQuizLocales(quizSlug);
+
+    if (!quizLocales.includes(locale)) {
+      return getLocalePath(locale, "/");
+    }
+  }
+
+  return locale === defaultLocale ? path : getLocalePath(locale, path);
+}
+
 export function Header({ currentPath, locale, translations }: HeaderProps) {
+  const searchItems = getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
+    category: quiz.eyebrow,
+    href: getLocalePath(locale, `/quiz/${quiz.slug}`),
+    summary: quiz.homepage.summary ?? quiz.summary,
+    title: quiz.homepage.title ?? quiz.title,
+  }));
+  const navLinks = [
+    { href: getLocalePath(locale, "/"), label: translations.nav.home },
+    { href: getLocalePath(locale, "/about"), label: translations.footer.links.about },
+    { href: getLocalePath(locale, "/contact"), label: translations.footer.links.contact },
+  ];
+  const languageOptions = getLocaleOptions();
+  const currentLanguage = languageOptions.find((option) => option.code === locale) ?? languageOptions[0];
+  const languageLinks = languageOptions.map((option) => ({
+    flag: option.flag,
+    href: getSwitcherHref(option.code, currentPath),
+    isCurrent: option.code === locale,
+    label: option.name,
+  }));
+
   return (
     <header className="hub-header">
       <div className="hub-header__inner">
@@ -16,7 +59,17 @@ export function Header({ currentPath, locale, translations }: HeaderProps) {
           <span className="hub-brand__mark">🌈</span>
           <span className="hub-brand__name">{translations.site.name}</span>
         </Link>
-        <LanguageSwitcher locale={locale} path={currentPath} translations={translations} />
+        <QuizSearch
+          currentLanguage={{
+            flag: currentLanguage.flag,
+            label: currentLanguage.name,
+          }}
+          items={searchItems}
+          labels={translations.search}
+          languageLabel={translations.locale.switcherLabel}
+          languageLinks={languageLinks}
+          navLinks={navLinks}
+        />
       </div>
     </header>
   );

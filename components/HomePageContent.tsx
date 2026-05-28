@@ -8,7 +8,6 @@ type HomePageContentProps = {
 
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
-  const categories = Array.from(new Set(quizzes.map((quiz) => quiz.eyebrow))).sort();
   const averageDuration = Math.round(
     quizzes.reduce((total, quiz) => total + Number(quiz.duration.match(/\d+/)?.[0] ?? 0), 0) /
       Math.max(quizzes.length, 1),
@@ -45,14 +44,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
           </div>
         </section>
 
-        <section id="categories" className="hub-categories">
-          {categories.map((category) => (
-            <span className="hub-pill" key={category}>{category}</span>
-          ))}
-        </section>
-
         <section id="all">
-          <h2 className="hub-section-title">{translations.home.allQuizzes}</h2>
           <div className="hub-quiz-grid">
             {homepageCards.map((quiz) => (
               <a key={quiz.title} href={quiz.href} className="hub-quiz-card">
@@ -65,7 +57,6 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                 </div>
                 <div className="hub-quiz-card__body">
                   <div className="hub-quiz-card__meta">
-                    <span>{quiz.category}</span>
                     <span className="hub-chip">{quiz.difficulty}</span>
                   </div>
                   <h3>{quiz.title}</h3>

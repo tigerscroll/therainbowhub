@@ -19,5 +19,5 @@ export const legalLinks = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/cookie-policy", label: "Cookie Policy" },
   { href: "/terms-of-use", label: "Terms of Use" },
-  { href: "/disclaimer", label: "Quiz Disclaimer" },
+  { href: "/disclaimer", label: "Disclaimer" },
 ];

@@ -61,7 +61,7 @@ export const infoPageMetadata: Record<InfoPageSlug, { title: string; description
     description: "Terms governing use of The Rainbow Hub quizzes and website.",
   },
   disclaimer: {
-    title: "Quiz Disclaimer",
+    title: "Disclaimer",
     description: "Important limitations for quiz scores, pass rates, and academic-style tests.",
   },
 };

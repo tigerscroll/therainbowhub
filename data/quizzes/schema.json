@@ -58,7 +58,7 @@
     "landing": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["quickStartText", "challengeText", "socialProof"],
+      "required": ["quickStartText", "socialProof"],
       "properties": {
         "quickStartText": { "type": "string", "minLength": 1 },
         "challengeText": { "type": "string", "minLength": 1 },
@@ -68,6 +68,16 @@
     "heroPoints": {
       "type": "array",
       "items": { "type": "string", "minLength": 1 }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aboutTitle", "aboutText"],
+      "properties": {
+        "aboutTitle": { "type": "string", "minLength": 1 },
+        "aboutText": { "type": "string", "minLength": 1 },
+        "topicText": { "type": "string", "minLength": 1 }
+      }
     },
     "stageGroups": {
       "type": "array",
