@@ -392,7 +392,7 @@ function createQuizRunnerScript(config: {
       progressDots.style.setProperty("--progress-fill", stageTotal > 1 ? ((stagePosition - 1) / (stageTotal - 1)) * 100 : 100);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
-        return '<span class="' + state + '">' + (index + 1) + '</span>';
+        return '<span class="' + state + '">' + (state === "is-complete" ? "✓" : index + 1) + '</span>';
       }).join("");
       progressDots.classList.remove("is-advancing");
       if (previousProgressPosition && previousProgressPosition !== nextProgressPosition) {
