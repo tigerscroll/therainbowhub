@@ -383,6 +383,8 @@ function createQuizRunnerScript(config: {
       var visualBox = byData("visual");
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
+      var previousProgressPosition = progressDots.dataset.stagePosition || "";
+      var nextProgressPosition = currentStage + ":" + stagePosition;
 
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
@@ -392,6 +394,12 @@ function createQuizRunnerScript(config: {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
         return '<span class="' + state + '">' + (index + 1) + '</span>';
       }).join("");
+      progressDots.classList.remove("is-advancing");
+      if (previousProgressPosition && previousProgressPosition !== nextProgressPosition) {
+        void progressDots.offsetWidth;
+        progressDots.classList.add("is-advancing");
+      }
+      progressDots.dataset.stagePosition = nextProgressPosition;
       byData("question-text").textContent = question.prompt;
 
       if (question.visual) {

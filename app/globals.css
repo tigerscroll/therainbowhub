@@ -553,6 +553,7 @@ a {
   right: calc(100% - (var(--progress-fill, 0) * 1%));
   background: var(--legacy-green);
   box-shadow: 0 2px 7px color-mix(in srgb, var(--legacy-green) 26%, transparent);
+  transition: right 0.56s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .legacy-progress-dots span {
@@ -581,8 +582,33 @@ a {
 
 .legacy-progress-dots span.is-current {
   transform: translateY(-1px) scale(1.18);
-  box-shadow: 0 0 0 7px color-mix(in srgb, var(--legacy-green) 14%, transparent), 0 5px 14px color-mix(in srgb, var(--legacy-green) 34%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
-  animation: legacyCurrentDot 1.1s ease-in-out infinite;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--legacy-green) 25%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.legacy-progress-dots.is-advancing span.is-current {
+  animation: legacyStepPulse 0.82s cubic-bezier(0.2, 0.9, 0.2, 1) 1;
+}
+
+@keyframes legacyStepPulse {
+  0% {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--legacy-green) 0%, transparent), 0 3px 10px color-mix(in srgb, var(--legacy-green) 18%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  34% {
+    transform: translateY(-1px) scale(1.18);
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--legacy-green) 14%, transparent), 0 6px 16px color-mix(in srgb, var(--legacy-green) 28%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  68% {
+    transform: translateY(-1px) scale(1.18);
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--legacy-green) 9%, transparent), 0 5px 14px color-mix(in srgb, var(--legacy-green) 25%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  100% {
+    transform: translateY(-1px) scale(1.18);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--legacy-green) 25%, transparent), inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  }
 }
 
 .legacy-question {
