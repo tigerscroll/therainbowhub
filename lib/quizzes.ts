@@ -79,6 +79,7 @@ export type Quiz = {
   eyebrow: string;
   summary: string;
   duration: string;
+  publishedAt: string;
   questionCount: number;
   difficulty: "Quick" | "Medium" | "Hard" | "Expert";
   passRate: string;
@@ -115,6 +116,16 @@ function assertString(value: unknown, field: string, fileName: string) {
 function assertStringArray(value: unknown, field: string, fileName: string) {
   if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
     throw new Error(`${fileName}: "${field}" must be a non-empty string array.`);
+  }
+}
+
+function assertIsoDateTime(value: unknown, field: string, fileName: string) {
+  assertString(value, field, fileName);
+
+  const parsedDate = Date.parse(value as string);
+
+  if (Number.isNaN(parsedDate)) {
+    throw new Error(`${fileName}: "${field}" must be a valid ISO date-time string.`);
   }
 }
 
@@ -406,6 +417,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     "eyebrow",
     "summary",
     "duration",
+    "publishedAt",
     "passRate",
     "cardIcon",
     "cardGradient",
@@ -413,6 +425,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
   ];
 
   requiredStrings.forEach((field) => assertString(quiz[field], field, fileName));
+  assertIsoDateTime(quiz.publishedAt, "publishedAt", fileName);
 
   ["seoTitle", "seoDescription"].forEach((field) => {
     if (quiz[field] !== undefined && typeof quiz[field] !== "string") {
@@ -463,6 +476,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     eyebrow: quiz.eyebrow,
     summary: quiz.summary,
     duration: quiz.duration,
+    publishedAt: quiz.publishedAt,
     questionCount,
     difficulty: difficulty as Quiz["difficulty"],
     passRate: quiz.passRate,

@@ -3,10 +3,11 @@
   "title": "Pilot Test",
   "seoTitle": "Pilot Test Quiz",
   "seoDescription": "Take a fun staged pilot aptitude quiz with 80 questions across attention, navigation, weather judgement, numbers, logic, and calm decision-making.",
-  "pageTitle": "Only 1 in 12 People Can Ace This Pilot Test",
+  "pageTitle": "Only 1 in 12 People Can Pass This Pilot Test",
   "eyebrow": "Aviation Challenge",
   "summary": "A fun 80-question pilot-style challenge built around focus, navigation sense, practical judgement, patterns, and calm thinking.",
   "duration": "~7 min",
+  "publishedAt": "2026-05-29T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
   "cardIcon": "✈️",
@@ -14,9 +15,9 @@
   "accent": "#0ea5e9",
   "questionCount": 80,
   "homepage": {
-    "title": "Can You Pass This Pilot Entrance Test?",
+    "title": "Can You Pass This Pilot Test?",
     "summary": "Think you can stay calm, focused, and sharp through 10 rounds of pilot-style challenges?",
-    "thumbnailUrl": "/images/pilot-thumbnail.jpg",
+    "thumbnailUrl": "/images/thumbnails/pilot.jpg",
     "thumbnailAlt": "Pilot Test quiz",
     "icon": "✈️",
     "gradient": "linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%)",
@@ -32,7 +33,7 @@
     "aboutText": "This pilot-style test is a staged aptitude quiz inspired by the focus, observation, navigation sense, weather awareness, and calm judgement often associated with aviation training. Real pilots use checklists, communication, careful planning, and disciplined decision-making to manage complex situations safely. This challenge turns those broad skills into a fun self-test for entertainment and curiosity. It is not an official flight school exam, pilot licence test, medical assessment, or aviation qualification."
   },
   "landing": {
-    "quickStartText": "Takeoff feels easy. The cockpit checks get harder.",
+    "quickStartText": "The flight starts simple. The later rounds get harder.",
     "socialProof": "49,000+ people tried it this week"
   },
   "result": {
@@ -40,7 +41,7 @@
     "profiles": [
       {
         "minRatio": 0.8,
-        "tier": "Ace Pilot",
+        "tier": "Top Pilot",
         "title": "You stayed calm through the hardest rounds.",
         "copy": "Excellent focus and practical reasoning across the full challenge. Your strongest area was {stage}.",
         "percentile": "Top 8%"
@@ -61,7 +62,7 @@
       },
       {
         "minRatio": 0,
-        "tier": "Ground School Starter",
+        "tier": "Pilot Trainee",
         "title": "Keep sharpening the checklist.",
         "copy": "The later rounds reward calm attention, clean reasoning, and careful decisions. Your best area was {stage}.",
         "percentile": "Top 80%"
@@ -217,15 +218,15 @@
           "category": "attention"
         },
         {
-          "prompt": "If one runway marker is placed every 100 metres, how far apart are 4 markers from first to last?",
+          "prompt": "If one runway marker is placed every 100 units, how far apart are 4 markers from first to last?",
           "choices": [
-            "200 metres",
-            "300 metres",
-            "400 metres",
-            "500 metres"
+            "200 units",
+            "300 units",
+            "400 units",
+            "500 units"
           ],
           "answerIndex": 1,
-          "explanation": "Four markers create three gaps, and each gap is 100 metres.",
+          "explanation": "Four markers create three gaps, and each gap is 100 units.",
           "category": "number"
         },
         {
@@ -409,15 +410,15 @@
       "encouragement": "Good navigation instincts. Next you will read weather and risk more carefully.",
       "questions": [
         {
-          "prompt": "A route goes east for 10 km, then east for 15 km. How far east is the aircraft from the start?",
+          "prompt": "A route goes east for 10 units, then east for 15 units. How far east is the aircraft from the start?",
           "choices": [
-            "5 km",
-            "15 km",
-            "20 km",
-            "25 km"
+            "5 units",
+            "15 units",
+            "20 units",
+            "25 units"
           ],
           "answerIndex": 3,
-          "explanation": "Both parts go east, so 10 plus 15 equals 25 km.",
+          "explanation": "Both parts go east, so 10 plus 15 equals 25 units.",
           "category": "number"
         },
         {
@@ -457,15 +458,15 @@
           "category": "pattern"
         },
         {
-          "prompt": "A plane travels 120 km in 2 hours at a steady speed. How far does it travel in 1 hour?",
+          "prompt": "A plane travels 120 units in 2 hours at a steady speed. How far does it travel in 1 hour?",
           "choices": [
-            "40 km",
-            "50 km",
-            "60 km",
-            "80 km"
+            "40 units",
+            "50 units",
+            "60 units",
+            "80 units"
           ],
           "answerIndex": 2,
-          "explanation": "120 divided by 2 equals 60 km per hour.",
+          "explanation": "120 divided by 2 equals 60 units per hour.",
           "category": "number"
         },
         {
@@ -775,15 +776,15 @@
           "category": "pattern"
         },
         {
-          "prompt": "A message says: hold position until cleared. Which action follows the message?",
+          "prompt": "A message says: stay in position until permission is given. Which action follows the message?",
           "choices": [
             "Move immediately",
-            "Hold position",
+            "Stay in position",
             "Turn off communication",
             "Choose any runway"
           ],
           "answerIndex": 1,
-          "explanation": "The instruction is to hold position until clearance is given.",
+          "explanation": "The instruction is to stay in position until permission is given.",
           "category": "attention"
         },
         {
@@ -814,7 +815,7 @@
     },
     {
       "title": "Emergency Thinking",
-      "encouragement": "You handled the pressure round. Now the challenge turns into captain-level judgement.",
+      "encouragement": "You handled the pressure round. Now the challenge turns into advanced pilot judgement.",
       "questions": [
         {
           "prompt": "In a high-pressure situation, which order is most sensible?",
@@ -829,7 +830,7 @@
           "category": "logic"
         },
         {
-          "prompt": "A plane is 30 km from Airport A and 45 km from Airport B. Which is closer?",
+          "prompt": "A plane is 30 units from Airport A and 45 units from Airport B. Which is closer?",
           "choices": [
             "Airport A",
             "Airport B",
@@ -837,7 +838,7 @@
             "Cannot be measured"
           ],
           "answerIndex": 0,
-          "explanation": "30 km is less than 45 km.",
+          "explanation": "30 units is less than 45 units.",
           "category": "number"
         },
         {
@@ -915,7 +916,7 @@
       ]
     },
     {
-      "title": "Captain's Challenge",
+      "title": "Advanced Flight Challenge",
       "encouragement": "Excellent. One final stage remains, and it rewards calm attention over speed.",
       "questions": [
         {
@@ -931,27 +932,27 @@
           "category": "logic"
         },
         {
-          "prompt": "A plane travels 150 km in 50 minutes. At the same rate, how far does it travel in 100 minutes?",
+          "prompt": "A plane travels 150 units in 50 minutes. At the same rate, how far does it travel in 100 minutes?",
           "choices": [
-            "200 km",
-            "250 km",
-            "300 km",
-            "350 km"
+            "200 units",
+            "250 units",
+            "300 units",
+            "350 units"
           ],
           "answerIndex": 2,
-          "explanation": "100 minutes is twice 50 minutes, so the distance doubles to 300 km.",
+          "explanation": "100 minutes is twice 50 minutes, so the distance doubles to 300 units.",
           "category": "number"
         },
         {
-          "prompt": "All clearances are instructions. Some instructions are urgent. What must be true?",
+          "prompt": "All permissions are instructions. Some instructions are urgent. What must be true?",
           "choices": [
-            "All clearances are urgent",
-            "No clearances are instructions",
-            "Some urgent items are clearances",
-            "All clearances are instructions"
+            "All permissions are urgent",
+            "No permissions are instructions",
+            "Some urgent items are permissions",
+            "All permissions are instructions"
           ],
           "answerIndex": 3,
-          "explanation": "The first statement directly says all clearances are instructions.",
+          "explanation": "The first statement directly says all permissions are instructions.",
           "category": "deduction"
         },
         {
@@ -1003,7 +1004,7 @@
           "category": "deduction"
         },
         {
-          "prompt": "Which choice best describes captain-level judgement?",
+          "prompt": "Which choice best describes advanced pilot judgement?",
           "choices": [
             "Choosing fast options without evidence",
             "Balancing safety, information, and timing",
@@ -1017,7 +1018,7 @@
       ]
     },
     {
-      "title": "Ace Pilot Final",
+      "title": "Final Pilot Challenge",
       "questions": [
         {
           "prompt": "A route has lower fuel use but worse visibility. Another uses more fuel but has clear visibility and enough reserve. Which factor decides the safer choice?",

@@ -4,7 +4,7 @@ import path from "node:path";
 const outDirectory = path.join(process.cwd(), "out");
 const localeDirectory = path.join(process.cwd(), "data", "i18n");
 const defaultLocale = "en";
-const rtlLocales = new Set(["ar"]);
+const rtlLocales = new Set(["ar", "he"]);
 
 function getSupportedLocales() {
   return new Set(
@@ -38,8 +38,9 @@ function walkHtmlFiles(directory) {
 function getLocaleForFile(filePath, supportedLocales) {
   const relativePath = path.relative(outDirectory, filePath);
   const firstSegment = relativePath.split(path.sep)[0];
+  const slashlessSegment = firstSegment.endsWith(".html") ? firstSegment.replace(/\.html$/, "") : firstSegment;
 
-  return supportedLocales.has(firstSegment) ? firstSegment : defaultLocale;
+  return supportedLocales.has(slashlessSegment) ? slashlessSegment : defaultLocale;
 }
 
 function rewriteHtmlTag(html, locale) {

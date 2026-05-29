@@ -6,25 +6,40 @@ type HomePageContentProps = {
   translations: Translations;
 };
 
+function formatPublishedDate(locale: SupportedLocale, publishedAt: string) {
+  const safeLocale = locale === "no" ? "nb" : locale;
+
+  return new Intl.DateTimeFormat(safeLocale, {
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC",
+    year: "numeric",
+  }).format(new Date(publishedAt));
+}
+
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
   const averageDuration = Math.round(
     quizzes.reduce((total, quiz) => total + Number(quiz.duration.match(/\d+/)?.[0] ?? 0), 0) /
       Math.max(quizzes.length, 1),
   );
-  const homepageCards = quizzes.map((quiz) => ({
-    href: getLocalePath(locale, `/${quiz.slug}`),
-    banner: quiz.homepage.gradient ?? quiz.cardGradient,
-    icon: quiz.homepage.icon ?? quiz.cardIcon,
-    thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
-    thumbnailUrl: quiz.homepage.thumbnailUrl,
-    category: quiz.eyebrow,
-    difficulty: translations.home.difficulty[quiz.difficulty],
-    title: quiz.homepage.title ?? quiz.title,
-    summary: quiz.homepage.summary ?? quiz.summary,
-    stats: quiz.duration,
-    passRate: quiz.passRate,
-  }));
+  const homepageCards = quizzes
+    .map((quiz) => ({
+      href: getLocalePath(locale, `/${quiz.slug}`),
+      banner: quiz.homepage.gradient ?? quiz.cardGradient,
+      icon: quiz.homepage.icon ?? quiz.cardIcon,
+      thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
+      thumbnailUrl: quiz.homepage.thumbnailUrl,
+      category: quiz.eyebrow,
+      difficulty: translations.home.difficulty[quiz.difficulty],
+      publishedAt: quiz.publishedAt,
+      publishedDate: formatPublishedDate(locale, quiz.publishedAt),
+      title: quiz.homepage.title ?? quiz.title,
+      summary: quiz.homepage.summary ?? quiz.summary,
+      stats: quiz.duration,
+      passRate: quiz.passRate,
+    }))
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt) || a.title.localeCompare(b.title));
 
   return (
     <div className="hub-home">
@@ -58,6 +73,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                 <div className="hub-quiz-card__body">
                   <div className="hub-quiz-card__meta">
                     <span className="hub-chip">{quiz.difficulty}</span>
+                    <time dateTime={quiz.publishedAt}>{quiz.publishedDate}</time>
                   </div>
                   <h3>{quiz.title}</h3>
                   <p>{quiz.summary}</p>

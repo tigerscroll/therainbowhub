@@ -9,7 +9,7 @@ type QuizRunnerProps = {
   translations: Translations;
 };
 
-const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
+const titleAccentTokenPattern = /^(?:\d+(?:\.\d+)?%|\d+\/\d+)$/;
 
 function escapeHtml(value: unknown) {
   return String(value)
@@ -21,10 +21,10 @@ function escapeHtml(value: unknown) {
 }
 
 function renderTitleWithAccentPercent(title: string) {
-  const parts = title.split(/(\d+(?:\.\d+)?%)/g);
+  const parts = title.split(/(\d+(?:\.\d+)?%|\d+\/\d+)/g);
 
   return parts
-    .map((part) => (percentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
+    .map((part) => (titleAccentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
     .join("");
 }
 
@@ -387,9 +387,10 @@ function createQuizRunnerScript(config: {
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
+      progressDots.style.setProperty("--progress-fill", stageTotal > 1 ? ((stagePosition - 1) / (stageTotal - 1)) * 100 : 100);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
-        return '<span class="' + state + '"></span>';
+        return '<span class="' + state + '">' + (index + 1) + '</span>';
       }).join("");
       byData("question-text").textContent = question.prompt;
 

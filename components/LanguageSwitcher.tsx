@@ -15,7 +15,8 @@ type LanguageSwitcherProps = {
 
 const languageNames: Record<SupportedLocale, string> = {
   en: "English",
-  pt: "Portuguese",
+  pt: "Portuguese (Portugal)",
+  "pt-br": "Portuguese (Brazil)",
   fr: "French",
   es: "Spanish",
   ar: "Arabic",
@@ -40,6 +41,11 @@ const languageNames: Record<SupportedLocale, string> = {
   lt: "Lithuanian",
   lv: "Latvian",
   fi: "Finnish",
+  hi: "Hindi",
+  vi: "Vietnamese",
+  th: "Thai",
+  ms: "Malay",
+  he: "Hebrew",
 };
 
 const languageFlags = Object.fromEntries(getLocaleOptions().map((option) => [option.code, option.flag])) as Record<SupportedLocale, string>;

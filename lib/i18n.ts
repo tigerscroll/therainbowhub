@@ -7,6 +7,7 @@ export type Translations = typeof en;
 export type SupportedLocale =
   | "en"
   | "pt"
+  | "pt-br"
   | "fr"
   | "es"
   | "ar"
@@ -30,7 +31,12 @@ export type SupportedLocale =
   | "ko"
   | "lt"
   | "lv"
-  | "fi";
+  | "fi"
+  | "hi"
+  | "vi"
+  | "th"
+  | "ms"
+  | "he";
 
 export type LocaleOption = {
   code: SupportedLocale;
@@ -40,7 +46,8 @@ export type LocaleOption = {
 
 export const localeOptions: LocaleOption[] = [
   { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "pt", name: "Portuguese", flag: "🇧🇷" },
+  { code: "pt", name: "Portuguese (Portugal)", flag: "🇵🇹" },
+  { code: "pt-br", name: "Portuguese (Brazil)", flag: "🇧🇷" },
   { code: "fr", name: "French", flag: "🇫🇷" },
   { code: "es", name: "Spanish", flag: "🇪🇸" },
   { code: "ar", name: "Arabic", flag: "🇦🇪" },
@@ -65,11 +72,16 @@ export const localeOptions: LocaleOption[] = [
   { code: "lt", name: "Lithuanian", flag: "🇱🇹" },
   { code: "lv", name: "Latvian", flag: "🇱🇻" },
   { code: "fi", name: "Finnish", flag: "🇫🇮" },
+  { code: "hi", name: "Hindi", flag: "🇮🇳" },
+  { code: "vi", name: "Vietnamese", flag: "🇻🇳" },
+  { code: "th", name: "Thai", flag: "🇹🇭" },
+  { code: "ms", name: "Malay", flag: "🇲🇾" },
+  { code: "he", name: "Hebrew", flag: "🇮🇱" },
 ];
 
 const defaultLocale: SupportedLocale = "en";
 const supportedLocales: SupportedLocale[] = localeOptions.map((locale) => locale.code);
-const rtlLocales = new Set<SupportedLocale>(["ar"]);
+const rtlLocales = new Set<SupportedLocale>(["ar", "he"]);
 const i18nDirectory = path.join(process.cwd(), "data", "i18n");
 
 export function getDefaultLocale() {
