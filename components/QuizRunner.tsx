@@ -290,8 +290,6 @@ function createQuizRunnerScript(config: {
     }
 
     function requestRewardedAd(placement) {
-      // Local testing mode: rewarded ad gates continue immediately.
-      // Reconnect Google Ad Manager rewarded code here when you are ready to test ads.
       return Promise.resolve(resolveWithoutAd(placement));
     }
 
@@ -374,12 +372,10 @@ function createQuizRunnerScript(config: {
       }
 
       var currentStage = getQuestionStage(current);
-      var stageQuestions = getStageQuestions(currentStage);
       var stagePosition = getCurrentStagePosition(currentStage);
-      var stageTotal = stageQuestions.length || 1;
+      var stageTotal = 8;
       var stageIndexes = getStageIndexes();
       var stageNumber = stageIndexes.indexOf(currentStage) + 1;
-      var stageCount = stageIndexes.length;
       var visualBox = byData("visual");
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
@@ -389,10 +385,11 @@ function createQuizRunnerScript(config: {
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
-      progressDots.style.setProperty("--progress-fill", stageTotal > 1 ? ((stagePosition - 1) / (stageTotal - 1)) * 100 : 100);
+      progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
-        return '<span class="' + state + '">' + (state === "is-complete" ? "✓" : index + 1) + '</span>';
+        var label = state === "is-complete" ? "✓" : index + 1;
+        return '<span class="' + state + '" aria-label="Step ' + (index + 1) + '">' + label + '</span>';
       }).join("");
       progressDots.classList.remove("is-advancing");
       if (previousProgressPosition && previousProgressPosition !== nextProgressPosition) {
