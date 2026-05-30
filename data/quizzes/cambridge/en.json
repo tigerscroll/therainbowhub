@@ -16,7 +16,7 @@
   "questionCount": 80,
   "homepage": {
     "title": "Can You Pass This Cambridge Challenge?",
-    "summary": "Think you can handle 10 rounds of clear academic reasoning?",
+    "summary": "Think you can handle 10 rounds of logical reasoning and problem-solving?",
     "thumbnailUrl": "/images/thumbnails/cambridge.jpg",
     "thumbnailAlt": "Cambridge Challenge quiz",
     "icon": "🎓",
@@ -24,7 +24,7 @@
     "featured": false
   },
   "heroPoints": [
-    "Fun quick-fire warm-up rounds",
+    "Fast warm-up rounds",
     "80 staged reasoning questions",
     "Instant result profile"
   ],
@@ -42,7 +42,7 @@
       {
         "minRatio": 0.8,
         "tier": "Elite Tier",
-        "title": "You thought like a strong problem solver.",
+        "title": "You reasoned like a strong problem solver.",
         "copy": "Exceptional reasoning across the full challenge. Your strongest area was {stage}.",
         "percentile": "Top 8%"
       },
@@ -140,39 +140,39 @@
           "category": "logic"
         },
         {
-          "prompt": "A student has three pencils and gives one away. How many pencils remain?",
+          "prompt": "If all roses are flowers, which statement must be true?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "All flowers are roses",
+            "Some roses are not flowers",
+            "Every rose is a flower",
+            "No roses are flowers"
           ],
-          "answerIndex": 1,
-          "explanation": "Starting with 3 and giving away 1 leaves 2.",
-          "category": "number"
+          "answerIndex": 2,
+          "explanation": "If all roses are flowers, then every rose must be a flower.",
+          "category": "deduction"
         },
         {
-          "prompt": "Which shape has three sides?",
+          "prompt": "Which number comes next: 3, 6, 9, 12, ____?",
           "choices": [
-            "Circle",
-            "Square",
-            "Rectangle",
-            "Triangle"
+            "14",
+            "15",
+            "16",
+            "18"
           ],
-          "answerIndex": 3,
-          "explanation": "A triangle is defined by having three sides.",
+          "answerIndex": 1,
+          "explanation": "The sequence increases by 3 each time, so the next number is 15.",
           "category": "pattern"
         },
         {
-          "prompt": "Which statement is most clearly true?",
+          "prompt": "Which statement must be true?",
           "choices": [
-            "A day has 30 hours",
-            "A month always has 30 days",
-            "A year always has 360 days",
-            "A week has seven days"
+            "Some birds can fly",
+            "All birds can fly",
+            "Every triangle has three sides",
+            "Every animal has four legs"
           ],
-          "answerIndex": 3,
-          "explanation": "A week has seven days; the other statements are not generally true.",
+          "answerIndex": 2,
+          "explanation": "A triangle is defined as a shape with three sides.",
           "category": "deduction"
         },
         {
@@ -188,16 +188,16 @@
           "category": "pattern"
         },
         {
-          "prompt": "A door is locked. Which object is most likely to open it?",
+          "prompt": "Which number is largest?",
           "choices": [
-            "A container",
-            "A key",
-            "A notebook",
-            "A lamp"
+            "0.09",
+            "0.9",
+            "0.19",
+            "0.29"
           ],
           "answerIndex": 1,
-          "explanation": "A key is the object normally used to open a locked door.",
-          "category": "lateral"
+          "explanation": "0.9 is larger than 0.29, 0.19, and 0.09.",
+          "category": "number"
         }
       ]
     },
@@ -290,16 +290,16 @@
           "category": "attention"
         },
         {
-          "prompt": "If a train leaves at 10:00 and the journey takes 30 minutes, when does it arrive?",
+          "prompt": "Which number does not belong?",
           "choices": [
-            "10:15",
-            "10:30",
-            "10:45",
-            "11:00"
+            "4",
+            "8",
+            "12",
+            "13"
           ],
-          "answerIndex": 1,
-          "explanation": "Thirty minutes after 10:00 is 10:30.",
-          "category": "number"
+          "answerIndex": 3,
+          "explanation": "13 does not belong because the other numbers are divisible by 4.",
+          "category": "attention"
         }
       ]
     },
@@ -332,7 +332,7 @@
           "category": "deduction"
         },
         {
-          "prompt": "Which choice is most like a timetable?",
+          "prompt": "Which choice is most like a timetable or schedule?",
           "choices": [
             "A locked box",
             "A bowl of fruit",
@@ -340,7 +340,7 @@
             "A list of scheduled times"
           ],
           "answerIndex": 3,
-          "explanation": "A timetable is a plan or list of scheduled times.",
+          "explanation": "A timetable or schedule is a plan or list of scheduled times.",
           "category": "logic"
         },
         {

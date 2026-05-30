@@ -140,39 +140,39 @@
           "category": "logic"
         },
         {
-          "prompt": "Un estudiante tiene tres lápices y regala uno. ¿Cuántos lápices quedan?",
+          "prompt": "Si todas las rosas son flores, ¿qué afirmación debe ser verdadera?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "Todas las flores son rosas",
+            "Algunas rosas no son flores",
+            "Toda rosa es una flor",
+            "Ninguna rosa es una flor"
           ],
-          "answerIndex": 1,
-          "explanation": "Si empieza con 3 y regala 1, quedan 2.",
-          "category": "number"
+          "answerIndex": 2,
+          "explanation": "Si todas las rosas son flores, entonces toda rosa debe ser una flor.",
+          "category": "deduction"
         },
         {
-          "prompt": "¿Qué forma tiene tres lados?",
+          "prompt": "¿Qué número viene después: 3, 6, 9, 12, ____?",
           "choices": [
-            "Círculo",
-            "Cuadrado",
-            "Rectángulo",
-            "Triángulo"
+            "14",
+            "15",
+            "16",
+            "18"
           ],
-          "answerIndex": 3,
-          "explanation": "Un triángulo se define por tener tres lados.",
+          "answerIndex": 1,
+          "explanation": "La secuencia aumenta de 3 en 3, así que el siguiente número es 15.",
           "category": "pattern"
         },
         {
-          "prompt": "¿Qué afirmación es claramente verdadera?",
+          "prompt": "¿Qué afirmación debe ser verdadera?",
           "choices": [
-            "Un día tiene 30 horas",
-            "Un mes siempre tiene 30 días",
-            "Un año siempre tiene 360 días",
-            "Una semana tiene siete días"
+            "Algunas aves pueden volar",
+            "Todas las aves pueden volar",
+            "Todo triángulo tiene tres lados",
+            "Todo animal tiene cuatro patas"
           ],
-          "answerIndex": 3,
-          "explanation": "Una semana tiene siete días; las otras afirmaciones no son verdaderas en general.",
+          "answerIndex": 2,
+          "explanation": "Un triángulo se define como una forma con tres lados.",
           "category": "deduction"
         },
         {
@@ -188,16 +188,16 @@
           "category": "pattern"
         },
         {
-          "prompt": "Una puerta está cerrada con llave. ¿Qué objeto es más probable que la abra?",
+          "prompt": "¿Qué número es el mayor?",
           "choices": [
-            "Un recipiente",
-            "Una llave",
-            "Un cuaderno",
-            "Una lámpara"
+            "0.09",
+            "0.9",
+            "0.19",
+            "0.29"
           ],
           "answerIndex": 1,
-          "explanation": "Una llave es el objeto que normalmente se usa para abrir una puerta cerrada con llave.",
-          "category": "lateral"
+          "explanation": "0.9 es mayor que 0.29, 0.19 y 0.09.",
+          "category": "number"
         }
       ]
     },
@@ -290,16 +290,16 @@
           "category": "attention"
         },
         {
-          "prompt": "Si un tren sale a las 10:00 y el viaje dura 30 minutos, ¿cuándo llega?",
+          "prompt": "¿Qué número no encaja?",
           "choices": [
-            "10:15",
-            "10:30",
-            "10:45",
-            "11:00"
+            "4",
+            "8",
+            "12",
+            "13"
           ],
-          "answerIndex": 1,
-          "explanation": "Treinta minutos después de las 10:00 son las 10:30.",
-          "category": "number"
+          "answerIndex": 3,
+          "explanation": "13 no encaja porque los otros números son divisibles por 4.",
+          "category": "attention"
         }
       ]
     },
