@@ -10,7 +10,7 @@ export function HeadScripts() {
         referrerPolicy="no-referrer-when-downgrade"
       />
 
-      {/* Meta Pixel Code: replace siteConfig.metaPixelId when changing accounts. */}
+      {/* Meta Pixel Code */}
       <Script id="meta-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
