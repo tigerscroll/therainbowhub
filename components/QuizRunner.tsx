@@ -6,7 +6,20 @@ import type { Quiz } from "@/lib/quizzes";
 type QuizRunnerProps = {
   locale: SupportedLocale;
   quiz: Quiz;
+  relatedQuizzes?: RelatedQuiz[];
   translations: Translations;
+};
+
+type RelatedQuiz = {
+  accent: string;
+  duration: string;
+  href: string;
+  icon: string;
+  passRate: string;
+  summary: string;
+  thumbnailAlt?: string;
+  thumbnailUrl?: string;
+  title: string;
 };
 
 const titleAccentTokenPattern = /^(?:\d+(?:\.\d+)?%|\d+\/\d+)$/;
@@ -44,13 +57,39 @@ function safeJson(value: unknown) {
 
 function createQuizRunnerHtml(config: {
   quiz: Quiz;
+  relatedQuizzes: RelatedQuiz[];
   translations: Translations;
 }) {
-  const { quiz, translations } = config;
+  const { quiz, relatedQuizzes, translations } = config;
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
     .map((line) => escapeHtml(line))
     .join("<br />");
+  const adGateCopy = {
+    beforeTitle: translations.rewardedAd.gate?.beforeTitle ?? translations.quiz.shortAd,
+    stepOne: translations.rewardedAd.gate?.stepOne ?? translations.rewardedAd.helper,
+    stepTwo: translations.rewardedAd.gate?.stepTwo ?? translations.quiz.thenBegins,
+  };
+  const relatedHtml = relatedQuizzes.length
+    ? `<div data-js="related-quizzes" class="legacy-related">
+          <h3>Try Another Challenge</h3>
+          <div class="legacy-related-grid">
+            ${relatedQuizzes
+              .map((item) => {
+                const media = item.thumbnailUrl
+                  ? `<img src="${escapeHtml(item.thumbnailUrl)}" alt="${escapeHtml(item.thumbnailAlt ?? item.title)}" />`
+                  : `<span aria-hidden="true">${escapeHtml(item.icon)}</span>`;
+
+                return `<a class="legacy-related-card" href="${escapeHtml(item.href)}" style="--related-accent:${escapeHtml(item.accent)}">
+                  <div class="legacy-related-card__media">${media}</div>
+                  <strong>${escapeHtml(item.title)}</strong>
+                  <em>${escapeHtml(item.duration)} • ${escapeHtml(translations.home.passRate)} ${escapeHtml(item.passRate)}</em>
+                </a>`;
+              })
+              .join("")}
+          </div>
+        </div>`
+    : "";
 
   return `<section data-screen="start" class="legacy-card legacy-start">
         <div class="legacy-badge" aria-hidden="true"><span>${escapeHtml(quiz.cardIcon)}</span></div>
@@ -68,10 +107,28 @@ function createQuizRunnerHtml(config: {
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.startTest)}
         </button>
-        <div class="legacy-ad-note">
+        <div class="legacy-ad-note" data-js="start-ad-note">
           <span class="legacy-shield" aria-hidden="true">✓</span>
           <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
         </div>
+      </section>
+
+      <section data-screen="start-ad-gate" class="legacy-card legacy-start-ad-gate legacy-hidden">
+        <div class="legacy-start-ad-gate__play" aria-hidden="true"><span>▶</span></div>
+        <h2>${escapeHtml(adGateCopy.beforeTitle)}</h2>
+        <div class="legacy-start-ad-gate__steps">
+          <div class="legacy-start-ad-gate__step">
+            <span>1</span>
+            <p>${escapeHtml(adGateCopy.stepOne)}</p>
+          </div>
+          <div class="legacy-start-ad-gate__step">
+            <span>2</span>
+            <p>${escapeHtml(adGateCopy.stepTwo)}</p>
+          </div>
+        </div>
+        <button type="button" data-action="start-gate-continue" class="legacy-primary">
+          ${escapeHtml(translations.quiz.continue)} →
+        </button>
       </section>
 
       <section data-screen="question" class="legacy-hidden">
@@ -114,7 +171,7 @@ function createQuizRunnerHtml(config: {
         </div>
       </section>
 
-      <section data-screen="result-gate" class="legacy-card legacy-result legacy-hidden">
+      <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
         <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
         <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
@@ -125,24 +182,41 @@ function createQuizRunnerHtml(config: {
       </section>
 
       <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
-        <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
-        <h2 data-js="result-title"></h2>
-        <p data-js="result-copy" class="legacy-sub"></p>
-        <div class="legacy-score"><strong data-js="final-score"></strong><span>${escapeHtml(translations.quiz.finalScore)}</span></div>
-        <div class="legacy-score"><strong data-js="percentile"></strong><span>${escapeHtml(translations.quiz.profile)}</span></div>
+        <div class="legacy-result-hero">
+          <div class="legacy-result-medal" aria-hidden="true">
+            <span>🏆</span>
+          </div>
+          <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
+          <h2 data-js="result-title"></h2>
+          <p data-js="result-copy" class="legacy-sub"></p>
+        </div>
+        <div class="legacy-result-scoreboard">
+          <div class="legacy-score legacy-score-primary">
+            <strong data-js="final-score"></strong>
+            <span>${escapeHtml(translations.quiz.finalScore)}</span>
+          </div>
+          <div class="legacy-score">
+            <strong data-js="percentile"></strong>
+            <span>${escapeHtml(translations.quiz.profile)}</span>
+          </div>
+        </div>
+        <div class="legacy-result-meter" aria-hidden="true"><span data-js="result-meter-fill"></span></div>
         <div data-js="cognitive-scores" class="legacy-cognitive-scores"></div>
+        <div data-js="stage-breakdown" class="legacy-stage-breakdown"></div>
         <div class="legacy-unlock-panel">
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
           <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
         </div>
         <div data-js="review" class="legacy-review"></div>
+        ${relatedHtml}
       </section>`;
 }
 
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
   progressKey: string;
+  relatedQuizzes: RelatedQuiz[];
   rootId: string;
   quiz: Quiz;
   translations: Translations;
@@ -164,9 +238,15 @@ function createQuizRunnerScript(config: {
     var answers = {};
     var advanceTimer = null;
     var hasUnlockedReview = false;
+    var useStartAdGate = false;
+
+    try {
+      useStartAdGate = new URLSearchParams(window.location.search).get("gate") === "1";
+    } catch (error) {}
 
     var screens = {
       start: root.querySelector('[data-screen="start"]'),
+      startAdGate: root.querySelector('[data-screen="start-ad-gate"]'),
       question: root.querySelector('[data-screen="question"]'),
       stageGate: root.querySelector('[data-screen="stage-gate"]'),
       resultGate: root.querySelector('[data-screen="result-gate"]'),
@@ -175,6 +255,10 @@ function createQuizRunnerScript(config: {
 
     function byData(name) {
       return root.querySelector('[data-js="' + name + '"]');
+    }
+
+    if (useStartAdGate && byData("start-ad-note")) {
+      byData("start-ad-note").classList.add("legacy-hidden");
     }
 
     function escapeHtml(value) {
@@ -621,8 +705,20 @@ function createQuizRunnerScript(config: {
       byData("result-copy").textContent = profile.copy;
       byData("final-score").textContent = score + "/" + quiz.questions.length;
       byData("percentile").textContent = profile.percentile;
+      byData("result-meter-fill").style.width = Math.round((score / quiz.questions.length) * 100) + "%";
       byData("cognitive-scores").innerHTML = quiz.result.scoreDimensions.map(function (dimension) {
-        return '<div class="legacy-cog-item"><strong>' + scoreForCategories(dimension.categories) + '</strong><span>' + escapeHtml(dimension.label) + '</span></div>';
+        var dimensionScore = scoreForCategories(dimension.categories);
+        return '<div class="legacy-cog-item" style="--skill-score:' + dimensionScore + '%"><strong>' + dimensionScore + '</strong><span>' + escapeHtml(dimension.label) + '</span><em aria-hidden="true"><i></i></em></div>';
+      }).join("");
+      byData("stage-breakdown").innerHTML = stageScores.map(function (stage, index) {
+        var ratio = stage.total ? Math.round((stage.correct / stage.total) * 100) : 0;
+        var stageClass = stage.ratio >= 0.75 ? "is-high" : stage.ratio >= 0.5 ? "is-mid" : "is-low";
+        return '<div class="legacy-stage-chip ' + stageClass + '" style="--stage-score:' + ratio + '%">' +
+          '<span>' + escapeHtml(t.quiz.round) + ' ' + (index + 1) + '</span>' +
+          '<strong>' + escapeHtml(stage.name) + '</strong>' +
+          '<em>' + stage.correct + '/' + stage.total + '</em>' +
+          '<i aria-hidden="true"></i>' +
+          '</div>';
       }).join("");
       byData("unlock-title").textContent = missedQuestions.length ? t.results.review.wantMissed : t.results.review.perfectScore;
       byData("unlock-copy").textContent = missedQuestions.length
@@ -710,8 +806,7 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    root.querySelectorAll('[data-action="start"]').forEach(function (button) {
-      button.addEventListener("click", function () {
+    function beginStartAd(button) {
         setButtonLoading(button, t.quiz.preparing, true);
         requestRewardedAd("before_start").then(function () {
           track("quiz_start", {
@@ -722,6 +817,31 @@ function createQuizRunnerScript(config: {
           setButtonLoading(button, t.quiz.preparing, false);
           startFresh();
         });
+    }
+
+    root.querySelectorAll('[data-action="start"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (useStartAdGate) {
+          var currentScroll = window.scrollY || 0;
+          if (button.blur) button.blur();
+          show("startAdGate", false);
+          window.scrollTo(0, currentScroll);
+          window.requestAnimationFrame(function () {
+            window.scrollTo(0, currentScroll);
+            window.setTimeout(function () {
+              window.scrollTo(0, currentScroll);
+            }, 80);
+          });
+          return;
+        }
+
+        beginStartAd(button);
+      });
+    });
+
+    root.querySelectorAll('[data-action="start-gate-continue"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        beginStartAd(button);
       });
     });
 
@@ -775,17 +895,18 @@ function createQuizRunnerScript(config: {
 `;
 }
 
-export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
+export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: QuizRunnerProps) {
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
     locale,
     progressKey,
+    relatedQuizzes,
     quiz,
     rootId,
     translations,
   });
-  const html = createQuizRunnerHtml({ quiz, translations });
+  const html = createQuizRunnerHtml({ quiz, relatedQuizzes, translations });
   const footer = getQuizFooterContent(quiz);
 
   return (
