@@ -1,2 +1,5 @@
-# Keep all non-root page URLs canonical without a trailing slash.
-/*/ /:splat 301
+# Static export pages are emitted without a trailing slash. Keep the root route intact.
+/info/:page/ /info/:page 301
+/:locale/info/:page/ /:locale/info/:page 301
+/:locale/:slug/ /:locale/:slug 301
+/:slug/ /:slug 301

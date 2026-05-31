@@ -1,7 +1,8 @@
 "use client";
 
+import enTranslations from "@/data/i18n/en.json";
 import { siteConfig } from "@/lib/siteConfig";
-import { trackRewardClosed, trackRewardGranted } from "@/lib/tracking";
+import { trackRewardBypass, trackRewardClosed, trackRewardGranted } from "@/lib/tracking";
 
 type RewardedPlacement = "before_start" | "before_stage_results" | "before_final_results";
 type RewardedSlot = {
@@ -39,6 +40,10 @@ type RewardedResult = {
   reason: string;
   status: "closed_without_reward" | "granted" | "unavailable";
 };
+type RewardedMessages = {
+  closedWithoutReward: string;
+  retryUnavailable: string;
+};
 type RewardedStatusCallback = (message: string) => void;
 
 declare global {
@@ -52,6 +57,11 @@ let listenersInstalled = false;
 let servicesEnabled = false;
 let requestId = 0;
 const googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
+const defaultRewardedMessages = enTranslations.rewardedAd.status;
+
+function formatRewardedMessage(template: string, values: Record<string, string | number>) {
+  return Object.keys(values).reduce((text, key) => text.split(`{${key}}`).join(String(values[key])), template);
+}
 
 function finishRewardedAd(status: RewardedResult["status"], reason: string) {
   const request = activeRewardedAd;
@@ -123,7 +133,7 @@ function ensureRewardedListeners() {
 
 function loadGooglePublisherTag() {
   if (typeof window.googletag?.defineOutOfPageSlot === "function") return;
-  if (document.querySelector('script[data-rainbow-gpt-loader="true"]')) return;
+  if (document.querySelector('script[data-rainbow-gpt-loader="true"], script[src*="securepubads.g.doubleclick.net/tag/js/gpt.js"]')) return;
 
   const script = document.createElement("script");
   script.async = true;
@@ -197,7 +207,11 @@ function requestRewardedAdOnce(placement: RewardedPlacement): Promise<RewardedRe
   });
 }
 
-function requestRewardedAd(placement: RewardedPlacement, onStatus?: RewardedStatusCallback): Promise<boolean> {
+function requestRewardedAd(
+  placement: RewardedPlacement,
+  onStatus?: RewardedStatusCallback,
+  messages: RewardedMessages = defaultRewardedMessages,
+): Promise<boolean> {
   const maxUnavailableAttempts = 3;
   let unavailableAttempts = 0;
 
@@ -207,7 +221,7 @@ function requestRewardedAd(placement: RewardedPlacement, onStatus?: RewardedStat
     }
 
     function proceedWithoutAd(reason: string) {
-      trackRewardGranted({
+      trackRewardBypass({
         placement,
         fallback: true,
         reason,
@@ -224,7 +238,7 @@ function requestRewardedAd(placement: RewardedPlacement, onStatus?: RewardedStat
         }
 
         if (result.status === "closed_without_reward") {
-          setStatus("Please complete the ad to continue. Reopening...");
+          setStatus(messages.closedWithoutReward);
           window.setTimeout(tryAd, 350);
           return;
         }
@@ -235,7 +249,10 @@ function requestRewardedAd(placement: RewardedPlacement, onStatus?: RewardedStat
           return;
         }
 
-        setStatus(`No ad was available. Trying again ${unavailableAttempts + 1}/${maxUnavailableAttempts}`);
+        setStatus(formatRewardedMessage(messages.retryUnavailable, {
+          attempt: unavailableAttempts + 1,
+          max: maxUnavailableAttempts,
+        }));
         window.setTimeout(tryAd, 450);
       });
     }
@@ -244,14 +261,14 @@ function requestRewardedAd(placement: RewardedPlacement, onStatus?: RewardedStat
   });
 }
 
-export function showRewardedAdBeforeStart(onStatus?: RewardedStatusCallback) {
-  return requestRewardedAd("before_start", onStatus);
+export function showRewardedAdBeforeStart(onStatus?: RewardedStatusCallback, messages?: RewardedMessages) {
+  return requestRewardedAd("before_start", onStatus, messages);
 }
 
-export function showRewardedAdBeforeStageResults(onStatus?: RewardedStatusCallback) {
-  return requestRewardedAd("before_stage_results", onStatus);
+export function showRewardedAdBeforeStageResults(onStatus?: RewardedStatusCallback, messages?: RewardedMessages) {
+  return requestRewardedAd("before_stage_results", onStatus, messages);
 }
 
-export function showRewardedAdBeforeFinalResults(onStatus?: RewardedStatusCallback) {
-  return requestRewardedAd("before_final_results", onStatus);
+export function showRewardedAdBeforeFinalResults(onStatus?: RewardedStatusCallback, messages?: RewardedMessages) {
+  return requestRewardedAd("before_final_results", onStatus, messages);
 }

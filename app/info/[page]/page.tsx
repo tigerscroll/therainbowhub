@@ -8,6 +8,7 @@ import {
 } from "@/components/InfoPageContent";
 import { SiteShell } from "@/components/SiteShell";
 import { getDefaultLocale, getTranslations } from "@/lib/i18n";
+import { buildMetadata, getInfoPath, infoAlternates } from "@/lib/seo";
 
 type InfoPageProps = {
   params: Promise<{
@@ -28,7 +29,16 @@ export async function generateMetadata({ params }: InfoPageProps): Promise<Metad
     return {};
   }
 
-  return getInfoPageMetadata(getDefaultLocale(), page);
+  const locale = getDefaultLocale();
+  const metadata = getInfoPageMetadata(locale, page);
+
+  return buildMetadata({
+    alternates: infoAlternates(locale, page),
+    description: metadata.description,
+    locale,
+    path: getInfoPath(locale, page),
+    title: `${metadata.title} - The Rainbow Hub`,
+  });
 }
 
 export default async function InfoPage({ params }: InfoPageProps) {

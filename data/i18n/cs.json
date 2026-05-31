@@ -11,7 +11,8 @@
   "nav": {
     "home": "Domů",
     "categories": "Kategorie",
-    "quizzes": "Kvízy"
+    "quizzes": "Kvízy",
+    "quickLinks": "Rychlé odkazy"
   },
   "footer": {
     "description": "Rychlé mobilní IQ a akademické kvízy.",
@@ -70,7 +71,10 @@
     "profileReady": "Tvůj profil je připraven",
     "your": "Tvůj",
     "finalScore": "Konečné skóre",
-    "restartTest": "Restartovat test"
+    "restartTest": "Restartovat test",
+    "tryAnotherChallenge": "Zkuste Jinou Výzvu",
+    "step": "Krok",
+    "answered": "Zodpovězeno"
   },
   "results": {
     "complete": "Dokončeno",
@@ -110,7 +114,11 @@
     },
     "helper": "Pro pokračování zhlédněte krátkou reklamu.",
     "granted": "Odměna udělena.",
-    "closed": "Sponzorovaná zpráva zavřena."
+    "closed": "Sponzorovaná zpráva zavřena.",
+    "status": {
+      "closedWithoutReward": "Pro pokračování dokončete reklamu. Znovu se otevírá...",
+      "retryUnavailable": "Nebyla k dispozici žádná reklama. Zkouším znovu {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Stránka nenalezena",
@@ -128,32 +136,32 @@
   },
   "quizFooter": {
     "howItWorksTitle": "Jak výzva funguje",
-    "howItWorksBody": "Kvíz probíhá v několika etapách. První kola se zaměřují na rychlé postřehy a přístupné otázky, zatímco pozdější etapy přidávají složitější uvažování, měnící se vzorce, pečlivá porovnání a neznámé úlohy určené k prověření pružného myšlení. Každá etapa navazuje na předchozí a podporuje rychlá rozhodnutí, pozornost k detailům a přizpůsobivost pod tlakem.",
-    "whatThisTestsTitle": "Co tento kvíz testuje",
-    "whatThisTestsBody": "Místo měření jednoho úzkého tématu tato výzva zkoumá obecné kvízové dovednosti užitečné v mnoha oblastech:",
+    "howItWorksBody": "Výzva probíhá v několika etapách. První kola se zaměřují na přístupné otázky a rychlá rozhodnutí, zatímco pozdější etapy mohou přinést složitější myšlenky, měnící se vzorce, pečlivá porovnání nebo neznámé scénáře. Každá etapa navazuje na tu předchozí a podporuje soustředění, pozornost k detailům, přizpůsobivost a sebejisté rozhodování.",
+    "whatThisTestsTitle": "Co zkoumá",
+    "whatThisTestsBody": "Místo zaměření na jediné téma tato výzva zkoumá řadu dovedností, preferencí a způsobů myšlení, které mohou být užitečné v různých situacích:",
     "testBullets": [
-      "Odhalování skrytých vzorců",
-      "Rozpoznání užitečných vodítek",
-      "Zvažování důkazů",
-      "Rozpoznání nesrovnalostí",
-      "Přizpůsobení se neznámým otázkám"
+      "Rozpoznávání vzorců a souvislostí",
+      "Identifikace relevantních informací",
+      "Hodnocení možností a důkazů",
+      "Všímání si detailů a nesrovnalostí",
+      "Přizpůsobení se novým otázkám a scénářům"
     ],
-    "scoringTitle": "Skóre a vysvětlení",
-    "scoringBody": "Každá otázka obsahuje jednu správnou odpověď a krátké vysvětlení. Skóre slouží jako zábavné měřítko pro osobní výzvu a srovnání, nikoli jako akademické, profesní nebo oficiální hodnocení.",
-    "passFailNotice": "Neexistuje hranice pro úspěch nebo neúspěch. Výzva se postupně ztěžuje.",
-    "restartNote": "Tvůj postup bude vymazán a výzva začne znovu.",
+    "scoringTitle": "Skóre a výsledky",
+    "scoringBody": "Otázky mohou během postupu obsahovat vysvětlení, postřehy nebo další kontext. Skóre a výsledky slouží jako zábavné měřítko pro sebepoznání, výzvu a srovnání, nikoli jako vědecké, akademické, profesní nebo oficiální hodnocení. Neexistuje univerzální hranice úspěchu nebo neúspěchu. Každá výzva je navržena tak, aby nabídla poutavý zážitek od začátku do konce.",
+    "passFailNotice": "Neexistuje univerzální hranice úspěchu nebo neúspěchu. Každá výzva je navržena tak, aby nabídla poutavý zážitek od začátku do konce.",
+    "restartNote": "Váš postup bude vymazán a výzva začne znovu.",
     "featureCards": [
       {
-        "title": "Logika a uvažování",
-        "body": "Mysli jasně."
+        "title": "Jasné myšlení",
+        "body": "Zvažte své možnosti."
       },
       {
         "title": "Rozpoznávání vzorců",
-        "body": "Najdi, co ostatním uniká."
+        "body": "Všímejte si užitečných detailů."
       },
       {
-        "title": "Rychlá rozhodnutí",
-        "body": "Reaguj s jistotou."
+        "title": "Sebejisté volby",
+        "body": "Vyberte svou odpověď."
       }
     ]
   },

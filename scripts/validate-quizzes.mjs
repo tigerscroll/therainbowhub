@@ -9,6 +9,8 @@ const publicDir = path.join(rootDir, "public");
 const defaultLocale = "en";
 const skippedQuizDirs = new Set(["example-template"]);
 const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
+const safeImageVisualPattern =
+  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
 
 const errors = [];
 const warnings = [];
@@ -235,8 +237,10 @@ function validateQuestion(question, fileName, questionPath, stageIndex) {
   requireString(question.explanation, `${questionPath}.explanation`, fileName);
   requireString(question.category, `${questionPath}.category`, fileName);
 
-  if (question.visual !== undefined && typeof question.visual !== "string") {
-    addError(`${fileName}: "${questionPath}.visual" must be a string when provided.`);
+  if (question.visual !== undefined) {
+    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
+      addError(`${fileName}: "${questionPath}.visual" must be a safe local legacy-question-image <img> tag.`);
+    }
   }
 
   if (question.stage !== undefined && question.stage !== stageIndex) {

@@ -109,6 +109,8 @@ const TEMPLATE_DIRECTORY_NAME = "example-template";
 const QUIZ_SCHEMA_FILE_NAME = "schema.json";
 const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const supportedLocaleValues = new Set(getSupportedLocales());
+const safeImageVisualPattern =
+  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
 
 function assertString(value: unknown, field: string, fileName: string) {
   if (typeof value !== "string" || value.trim().length === 0) {
@@ -170,6 +172,14 @@ function validateQuestion(value: unknown, index: number, fileName: string, stage
 
   if (stage !== undefined && (!Number.isInteger(stage) || typeof stage !== "number" || stage < 0)) {
     throw new Error(`${fileName}: "questions[${index}].stage" must be a zero-based number when provided.`);
+  }
+
+  if (question.visual !== undefined) {
+    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
+      throw new Error(
+        `${fileName}: "questions[${index}].visual" must be a safe local legacy-question-image <img> tag with a /quizzes/... image src.`,
+      );
+    }
   }
 
   return {

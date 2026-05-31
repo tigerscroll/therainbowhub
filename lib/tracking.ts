@@ -50,11 +50,17 @@ export function trackRewardGranted(payload: TrackingPayload = {}) {
     return;
   }
 
-  if (!payload.fallback) {
-    console.log("fbq custom event: Reward", payload);
-    window.fbq?.("trackCustom", "Reward", payload);
-  }
+  console.log("fbq custom event: Reward", payload);
+  window.fbq?.("trackCustom", "Reward", payload);
   window.gtag?.("event", "reward_granted", payload);
+}
+
+export function trackRewardBypass(payload: TrackingPayload = {}) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.gtag?.("event", "reward_bypass", payload);
 }
 
 export function trackRewardClosed(payload: TrackingPayload = {}) {
@@ -62,7 +68,7 @@ export function trackRewardClosed(payload: TrackingPayload = {}) {
     return;
   }
 
-  if (payload.granted === true && !payload.fallback && payload.reason === "reward_granted") {
+  if (payload.granted === true && payload.reason === "reward_granted") {
     console.log("fbq custom event: RewardClosed", payload);
     window.fbq?.("trackCustom", "RewardClosed", payload);
   }

@@ -16,7 +16,6 @@ export function HeadScripts() {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${siteConfig.metaPixelId}');
-          fbq('track', 'PageView');
         `}
       </Script>
 
@@ -30,7 +29,7 @@ export function HeadScripts() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag("js", new Date());
-          gtag("config", "${siteConfig.googleTagId}");
+          gtag("config", "${siteConfig.googleTagId}", { send_page_view: false });
         `}
       </Script>
     </>

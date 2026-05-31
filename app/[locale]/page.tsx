@@ -6,6 +6,7 @@ import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
+import { buildMetadata, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
 
 type SegmentPageProps = {
   params: Promise<{
@@ -31,10 +32,13 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
     const translations = getTranslations(segment);
 
     return {
-      title: {
-        absolute: `${translations.site.name} - ${translations.home.headlinePrefix} ${translations.home.headlineHighlight}`,
-      },
-      description: translations.site.description,
+      ...buildMetadata({
+        alternates: localizedHomeAlternates(segment),
+        description: translations.site.description,
+        locale: segment,
+        path: getHomePath(segment),
+        title: `${translations.site.name} - ${translations.home.headlinePrefix} ${translations.home.headlineHighlight}`,
+      }),
     };
   }
 
@@ -44,12 +48,12 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
     return {};
   }
 
-  return {
-    title: {
-      absolute: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
-    },
+  return buildMetadata({
+    alternates: quizAlternates(quiz.slug),
     description: quiz.seoDescription ?? quiz.summary,
-  };
+    path: getQuizPath(getDefaultLocale(), quiz.slug),
+    title: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+  });
 }
 
 export default async function SegmentPage({ params }: SegmentPageProps) {

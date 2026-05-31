@@ -73,7 +73,7 @@ function createQuizRunnerHtml(config: {
   };
   const relatedHtml = relatedQuizzes.length
     ? `<div data-js="related-quizzes" class="legacy-related">
-          <h3>Try Another Challenge</h3>
+          <h3>${escapeHtml(translations.quiz.tryAnotherChallenge)}</h3>
           <div class="legacy-related-grid">
             ${relatedQuizzes
               .map((item) => {
@@ -389,16 +389,19 @@ function createQuizRunnerScript(config: {
 
     function trackRewardGranted(payload) {
       var data = payload || {};
-      if (!data.fallback) {
-        try { console.log("fbq custom event: Reward", data); } catch (error) {}
-        try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
-      }
+      try { console.log("fbq custom event: Reward", data); } catch (error) {}
+      try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
       try { window.gtag?.("event", "reward_granted", data); } catch (error) {}
+    }
+
+    function trackRewardBypass(payload) {
+      var data = payload || {};
+      try { window.gtag?.("event", "reward_bypass", data); } catch (error) {}
     }
 
     function trackRewardClosed(payload) {
       var data = payload || {};
-      if (data.granted === true && !data.fallback && data.reason === "reward_granted") {
+      if (data.granted === true && data.reason === "reward_granted") {
         try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
         try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
       }
@@ -480,7 +483,7 @@ function createQuizRunnerScript(config: {
 
     function loadGooglePublisherTag() {
       if (typeof window.googletag?.defineOutOfPageSlot === "function") return;
-      if (document.querySelector('script[data-rainbow-gpt-loader="true"]')) return;
+      if (document.querySelector('script[data-rainbow-gpt-loader="true"], script[src*="securepubads.g.doubleclick.net/tag/js/gpt.js"]')) return;
 
       var script = document.createElement("script");
       script.async = true;
@@ -566,7 +569,7 @@ function createQuizRunnerScript(config: {
         }
 
         function proceedWithoutAd(reason) {
-          trackRewardGranted({
+          trackRewardBypass({
             placement: placement,
             fallback: true,
             reason: reason,
@@ -583,7 +586,7 @@ function createQuizRunnerScript(config: {
             }
 
             if (result.status === "closed_without_reward") {
-              setStatus("Please complete the ad to continue. Reopening...");
+              setStatus(t.rewardedAd.status.closedWithoutReward);
               window.setTimeout(tryAd, 350);
               return;
             }
@@ -594,7 +597,10 @@ function createQuizRunnerScript(config: {
               return;
             }
 
-            setStatus("No ad was available. Trying again " + (unavailableAttempts + 1) + "/" + maxUnavailableAttempts);
+            setStatus(formatTemplate(t.rewardedAd.status.retryUnavailable, {
+              attempt: unavailableAttempts + 1,
+              max: maxUnavailableAttempts
+            }));
             window.setTimeout(tryAd, 450);
           });
         }
@@ -607,6 +613,33 @@ function createQuizRunnerScript(config: {
       if (!visualHtml || typeof window.Image !== "function") return "";
       var match = String(visualHtml).match(/<img\\b[^>]*\\bsrc=(["'])(.*?)\\1/i);
       return match ? match[2] : "";
+    }
+
+    function getSafeVisualImage(visualHtml) {
+      if (!visualHtml) return null;
+      var source = String(visualHtml).trim();
+      var match = source.match(/^<img\\s+class=(["'])legacy-question-image\\1\\s+src=(["'])(\\/quizzes\\/[a-z0-9-]+\\/images\\/[a-z0-9._-]+\\.(?:png|jpg|jpeg|webp))\\2\\s+alt=(["'])([^"']*)\\4\\s*\\/>$/i);
+      if (!match) return null;
+      return { src: match[3], alt: match[5] };
+    }
+
+    function renderQuestionVisual(visualBox, visualHtml) {
+      var imageData = getSafeVisualImage(visualHtml);
+      visualBox.replaceChildren();
+
+      if (!imageData) {
+        visualBox.classList.add("legacy-hidden");
+        return;
+      }
+
+      var image = document.createElement("img");
+      image.className = "legacy-question-image";
+      image.src = imageData.src;
+      image.alt = imageData.alt;
+      image.loading = "eager";
+      image.decoding = "async";
+      visualBox.appendChild(image);
+      visualBox.classList.remove("legacy-hidden");
     }
 
     function preloadQuestionVisual(questionIndex) {
@@ -726,7 +759,7 @@ function createQuizRunnerScript(config: {
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
         var label = state === "is-complete" ? "✓" : index + 1;
-        return '<span class="' + state + '" aria-label="Step ' + (index + 1) + '">' + label + '</span>';
+        return '<span class="' + state + '" aria-label="' + escapeHtml(t.quiz.step) + ' ' + (index + 1) + '">' + label + '</span>';
       }).join("");
       progressDots.classList.remove("is-advancing");
       if (previousProgressPosition && previousProgressPosition !== nextProgressPosition) {
@@ -736,13 +769,7 @@ function createQuizRunnerScript(config: {
       progressDots.dataset.stagePosition = nextProgressPosition;
       byData("question-text").textContent = question.prompt;
 
-      if (question.visual) {
-        visualBox.innerHTML = question.visual;
-        visualBox.classList.remove("legacy-hidden");
-      } else {
-        visualBox.innerHTML = "";
-        visualBox.classList.add("legacy-hidden");
-      }
+      renderQuestionVisual(visualBox, question.visual);
 
       answersBox.innerHTML = question.choices.map(function (choice, index) {
         return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
@@ -844,7 +871,7 @@ function createQuizRunnerScript(config: {
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
       byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
-      byData("stage-round-score-label").textContent = isPersonalityQuiz ? "Round complete" : t.results.roundResult;
+      byData("stage-round-score-label").textContent = isPersonalityQuiz ? t.results.stageComplete : t.results.roundResult;
       var personalityStageStatus = isPersonalityQuiz ? getPersonalityClarityStatus(completedStage) : null;
       byData("stage-score").textContent = personalityStageStatus ? personalityStageStatus.title : getScore() + "/" + current;
       byData("stage-score-label").textContent = personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
@@ -862,7 +889,7 @@ function createQuizRunnerScript(config: {
     function showResultGate(shouldScroll) {
       clearAdStatuses();
       byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
-      byData("result-gate-button").textContent = "Reveal My Result →";
+      byData("result-gate-button").textContent = t.results.viewResults + " →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -931,30 +958,10 @@ function createQuizRunnerScript(config: {
     }
 
     function getPersonalityClarityStatus(stage) {
-      var zodiacStatuses = [
-        { title: "First Zodiac Signals", label: "Beginning Your Reading" },
-        { title: "Early Personality Patterns", label: "Signs Are Emerging" },
-        { title: "Personality Insights", label: "Narrowing The Possibilities" },
-        { title: "Strong Zodiac Signal", label: "Your Profile Is Taking Shape" },
-        { title: "Values And Drive", label: "Key Traits Identified" },
-        { title: "Emotional Patterns", label: "Deeper Connections Found" },
-        { title: "Natural Strengths", label: "Your Match Is Becoming Clear" },
-        { title: "Core Personality", label: "High Zodiac Alignment" },
-        { title: "Final Sign Analysis", label: "Only A Few Signs Remain" },
-        { title: "True Zodiac Match", label: "Preparing Your Results" }
-      ];
-      var fallbackStatuses = [
-        { title: "Building", label: "Profile clarity" },
-        { title: "Taking shape", label: "Profile clarity" },
-        { title: "Getting clearer", label: "Profile clarity" },
-        { title: "Strong signal", label: "Profile clarity" },
-        { title: "Profile forming", label: "Profile clarity" },
-        { title: "Nearly clear", label: "Profile clarity" },
-        { title: "Almost ready", label: "Profile clarity" },
-        { title: "Profile locked", label: "Profile clarity" }
-      ];
-      var statuses = quiz.slug === "zodiac" ? zodiacStatuses : fallbackStatuses;
-      return statuses[stage % statuses.length];
+      return {
+        title: getStageName(stage),
+        label: t.results.stageComplete
+      };
     }
 
     function getResultProfile(score, total, strongestStage) {
@@ -1059,9 +1066,9 @@ function createQuizRunnerScript(config: {
       byData("result-title").textContent = profile.title;
       byData("result-copy").textContent = profile.copy;
       byData("final-score").textContent = isPersonalityQuiz ? getAnsweredCount() + "/" + quiz.questions.length : score + "/" + quiz.questions.length;
-      byData("final-score-label").textContent = isPersonalityQuiz ? "Answered" : t.quiz.finalScore;
+      byData("final-score-label").textContent = isPersonalityQuiz ? t.quiz.answered : t.quiz.finalScore;
       byData("percentile").textContent = profile.percentile;
-      byData("percentile-label").textContent = isPersonalityQuiz ? "Result" : t.quiz.profile;
+      byData("percentile-label").textContent = isPersonalityQuiz ? t.results.viewResults : t.quiz.profile;
       byData("result-meter-fill").style.width = isPersonalityQuiz
         ? Math.round(((profile.count || 0) / Math.max(1, getAnsweredCount())) * 100) + "%"
         : Math.round((score / quiz.questions.length) * 100) + "%";
@@ -1287,7 +1294,7 @@ function createQuizRunnerScript(config: {
 
 export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: QuizRunnerProps) {
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
-  const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
+  const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
     locale,
     progressKey,

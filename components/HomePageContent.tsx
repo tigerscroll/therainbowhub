@@ -59,7 +59,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
               <a key={quiz.title} href={quiz.href} className="hub-quiz-card">
                 <div className="hub-quiz-card__banner" style={{ background: quiz.banner }}>
                   {quiz.thumbnailUrl ? (
-                    <img src={quiz.thumbnailUrl} alt={quiz.thumbnailAlt} />
+                    <img src={quiz.thumbnailUrl} alt={quiz.thumbnailAlt} width={640} height={360} loading="lazy" decoding="async" />
                   ) : (
                     <span>{quiz.icon}</span>
                   )}

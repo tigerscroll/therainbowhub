@@ -11,7 +11,8 @@
   "nav": {
     "home": "Etusivu",
     "categories": "Kategoriat",
-    "quizzes": "Visat"
+    "quizzes": "Visat",
+    "quickLinks": "Pikalinkit"
   },
   "footer": {
     "description": "Nopeat mobiiliystävälliset IQ- ja akateemiset visat.",
@@ -70,7 +71,10 @@
     "profileReady": "Profiilisi on valmis",
     "your": "Sinun",
     "finalScore": "Lopulliset pisteet",
-    "restartTest": "Aloita testi uudelleen"
+    "restartTest": "Aloita testi uudelleen",
+    "tryAnotherChallenge": "Kokeile Toista Haastetta",
+    "step": "Vaihe",
+    "answered": "Vastattu"
   },
   "results": {
     "complete": "Valmis",
@@ -110,7 +114,11 @@
     },
     "helper": "Katso lyhyt mainos jatkaaksesi.",
     "granted": "Palkinto myonnetty.",
-    "closed": "Sponsoriviesti suljettu."
+    "closed": "Sponsoriviesti suljettu.",
+    "status": {
+      "closedWithoutReward": "Katso mainos loppuun jatkaaksesi. Avataan uudelleen...",
+      "retryUnavailable": "Mainosta ei ollut saatavilla. Yritetään uudelleen {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Sivua ei loydy",
@@ -128,32 +136,32 @@
   },
   "quizFooter": {
     "howItWorksTitle": "Miten haaste toimii",
-    "howItWorksBody": "Visailu etenee useissa vaiheissa. Ensimmäiset kierrokset keskittyvät nopeisiin havaintoihin ja helposti lähestyttäviin kysymyksiin, kun taas myöhemmät vaiheet tuovat mukaan kerroksellisempaa päättelyä, muuttuvia malleja, tarkkoja vertailuja ja uusia kysymyksiä, jotka testaavat joustavaa ajattelua. Jokainen vaihe rakentuu edellisen päälle ja kannustaa nopeisiin päätöksiin, yksityiskohtien huomaamiseen ja paineensietoon.",
-    "whatThisTestsTitle": "Mitä tämä visailu testaa",
-    "whatThisTestsBody": "Yhden kapean aiheen sijaan tämä haaste tutkii laajoja visailutaitoja, joista on hyötyä monissa aiheissa:",
+    "howItWorksBody": "Haaste etenee useiden vaiheiden kautta. Alkuvaiheet keskittyvät helposti lähestyttäviin kysymyksiin ja nopeisiin päätöksiin, kun taas myöhemmät vaiheet voivat tuoda mukaan monimutkaisempia ideoita, muuttuvia kuvioita, huolellisia vertailuja tai vieraita tilanteita. Jokainen vaihe rakentuu edellisen päälle ja kannustaa keskittymiseen, yksityiskohtien huomioimiseen, mukautumiseen ja varmoihin päätöksiin.",
+    "whatThisTestsTitle": "Mitä se tutkii",
+    "whatThisTestsBody": "Sen sijaan että haaste keskittyisi yhteen aiheeseen, se tutkii erilaisia taitoja, mieltymyksiä ja ajattelutapoja, joista voi olla hyötyä eri tilanteissa:",
     "testBullets": [
-      "Piilotettujen mallien havaitseminen",
-      "Hyödyllisten vihjeiden tunnistaminen",
-      "Todisteiden punnitseminen",
-      "Ristiriitojen tunnistaminen",
-      "Sopeutuminen uusiin kysymyksiin"
+      "Kuvioiden ja yhteyksien tunnistaminen",
+      "Olennaisen tiedon tunnistaminen",
+      "Vaihtoehtojen ja todisteiden arviointi",
+      "Yksityiskohtien ja epäjohdonmukaisuuksien huomaaminen",
+      "Sopeutuminen uusiin kysymyksiin ja tilanteisiin"
     ],
-    "scoringTitle": "Pisteet ja selitykset",
-    "scoringBody": "Jokaisessa kysymyksessä on yksi oikea vastaus ja lyhyt selitys. Pisteet ovat hauska vertailukohta omalle haasteelle ja vertailulle, eivät akateeminen, ammatillinen tai virallinen arvio.",
-    "passFailNotice": "Läpäisy- tai hylkäysrajaa ei ole. Haaste vaikeutuu vähitellen edetessäsi.",
+    "scoringTitle": "Pisteet ja tulokset",
+    "scoringBody": "Kysymykset voivat sisältää selityksiä, oivalluksia tai lisäkontekstia edetessäsi. Pisteet ja tulokset on tarkoitettu hauskaksi vertailukohdaksi itsensä löytämiseen, haastamiseen ja vertailuun, eivät tieteelliseksi, akateemiseksi, ammatilliseksi tai viralliseksi arvioinniksi. Ei ole olemassa yleistä hyväksyttyä tai hylättyä pistemäärää. Jokainen haaste on suunniteltu tarjoamaan kiinnostava kokemus alusta loppuun.",
+    "passFailNotice": "Ei ole olemassa yleistä hyväksyttyä tai hylättyä pistemäärää. Jokainen haaste on suunniteltu tarjoamaan kiinnostava kokemus alusta loppuun.",
     "restartNote": "Edistymisesi tyhjennetään ja haaste alkaa alusta.",
     "featureCards": [
       {
-        "title": "Logiikka ja päättely",
-        "body": "Ajattele selkeästi."
+        "title": "Selkeä ajattelu",
+        "body": "Harkitse vaihtoehtojasi."
       },
       {
-        "title": "Mallien tunnistus",
-        "body": "Löydä se, minkä muut ohittavat."
+        "title": "Kuvioiden tunnistus",
+        "body": "Huomaa hyödylliset yksityiskohdat."
       },
       {
-        "title": "Nopeat päätökset",
-        "body": "Vastaa luottavaisesti."
+        "title": "Varmat valinnat",
+        "body": "Valitse vastauksesi."
       }
     ]
   },

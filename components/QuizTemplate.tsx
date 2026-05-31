@@ -2,6 +2,8 @@ import { QuizRunner } from "@/components/QuizRunner";
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
 import type { Quiz } from "@/lib/quizzes";
+import { absoluteUrl, getQuizPath } from "@/lib/seo";
+import { siteConfig } from "@/lib/siteConfig";
 
 type QuizTemplateProps = {
   locale: SupportedLocale;
@@ -26,5 +28,30 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
       title: item.homepage.title ?? item.title,
     }));
 
-  return <QuizRunner locale={locale} quiz={quiz} relatedQuizzes={relatedQuizzes} translations={translations} />;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    name: quiz.homepage.title ?? quiz.title,
+    description: quiz.seoDescription ?? quiz.summary,
+    inLanguage: locale,
+    numberOfQuestions: quiz.questions.length,
+    url: absoluteUrl(getQuizPath(locale, quiz.slug)),
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <QuizRunner locale={locale} quiz={quiz} relatedQuizzes={relatedQuizzes} translations={translations} />
+    </>
+  );
 }

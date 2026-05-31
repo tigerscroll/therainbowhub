@@ -31,13 +31,14 @@ type QuizSearchProps = {
     href: string;
     label: string;
   }>;
+  quickLinksLabel: string;
 };
 
 function normalize(value: string) {
   return value.toLowerCase().trim();
 }
 
-export function QuizSearch({ currentLanguage, items, labels, languageLabel, languageLinks, navLinks }: QuizSearchProps) {
+export function QuizSearch({ currentLanguage, items, labels, languageLabel, languageLinks, navLinks, quickLinksLabel }: QuizSearchProps) {
   const inputId = useId();
   const dropdownId = useId();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -103,7 +104,7 @@ export function QuizSearch({ currentLanguage, items, labels, languageLabel, lang
 
       {isOpen ? (
         <div className="quiz-search__menu" id={dropdownId}>
-          <nav className="quiz-search__nav" aria-label="Quick links">
+          <nav className="quiz-search__nav" aria-label={quickLinksLabel}>
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
                 {link.label}

@@ -11,7 +11,8 @@
   "nav": {
     "home": "Trang chủ",
     "categories": "Danh mục",
-    "quizzes": "Quiz"
+    "quizzes": "Quiz",
+    "quickLinks": "Liên kết nhanh"
   },
   "footer": {
     "description": "Các quiz giáo dục nhanh để giải trí, tự thử thách và học hỏi chung. Điểm số chỉ là ước tính, không phải kết quả học thuật, lâm sàng, tuyển dụng hoặc tuyển sinh chính thức.",
@@ -70,7 +71,10 @@
     "profileReady": "Hồ sơ của bạn đã sẵn sàng",
     "your": "Của bạn",
     "finalScore": "Điểm cuối cùng",
-    "restartTest": "Làm lại bài test"
+    "restartTest": "Làm lại bài test",
+    "tryAnotherChallenge": "Thử Thử Thách Khác",
+    "step": "Bước",
+    "answered": "Đã trả lời"
   },
   "results": {
     "complete": "Hoàn thành",
@@ -110,7 +114,11 @@
     },
     "helper": "Xem một quảng cáo ngắn để tiếp tục.",
     "granted": "Đã nhận phần thưởng.",
-    "closed": "Đã đóng thông điệp tài trợ."
+    "closed": "Đã đóng thông điệp tài trợ.",
+    "status": {
+      "closedWithoutReward": "Vui lòng hoàn tất quảng cáo để tiếp tục. Đang mở lại...",
+      "retryUnavailable": "Không có quảng cáo nào khả dụng. Đang thử lại {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Không tìm thấy trang",
@@ -128,32 +136,32 @@
   },
   "quizFooter": {
     "howItWorksTitle": "Thử thách hoạt động như thế nào",
-    "howItWorksBody": "Quiz diễn ra qua nhiều giai đoạn. Các vòng đầu tập trung vào quan sát nhanh và câu hỏi dễ tiếp cận, còn các giai đoạn sau có suy luận nhiều lớp hơn, mẫu thay đổi và so sánh cẩn thận.",
-    "whatThisTestsTitle": "Quiz này kiểm tra gì",
-    "whatThisTestsBody": "Thay vì đo một chủ đề hẹp, thử thách này khám phá các kỹ năng quiz rộng có ích trong nhiều lĩnh vực:",
+    "howItWorksBody": "Thử thách diễn ra qua nhiều giai đoạn. Các vòng đầu tập trung vào câu hỏi dễ tiếp cận và quyết định nhanh, trong khi các giai đoạn sau có thể đưa ra ý tưởng phức tạp hơn, mô hình thay đổi, so sánh cẩn thận hoặc tình huống chưa quen thuộc. Mỗi giai đoạn xây dựng trên giai đoạn trước, khuyến khích sự tập trung, chú ý đến chi tiết, khả năng thích nghi và ra quyết định tự tin.",
+    "whatThisTestsTitle": "Nó khám phá điều gì",
+    "whatThisTestsBody": "Thay vì tập trung vào một chủ đề duy nhất, thử thách này khám phá nhiều kỹ năng, sở thích và cách suy nghĩ có thể liên quan trong các tình huống khác nhau:",
     "testBullets": [
-      "Nhận ra mẫu ẩn",
-      "Xác định manh mối hữu ích",
-      "Cân nhắc bằng chứng",
-      "Nhận ra điểm không nhất quán",
-      "Thích nghi với câu hỏi lạ"
+      "Nhận ra mẫu hình và kết nối",
+      "Xác định thông tin liên quan",
+      "Đánh giá lựa chọn và bằng chứng",
+      "Chú ý chi tiết và điểm không nhất quán",
+      "Thích nghi với câu hỏi và tình huống mới"
     ],
-    "scoringTitle": "Điểm số & giải thích",
-    "scoringBody": "Mỗi câu hỏi có một đáp án đúng và giải thích ngắn. Điểm số là mốc vui để tự thử thách và so sánh, không phải đánh giá học thuật, nghề nghiệp hoặc chính thức.",
-    "passFailNotice": "Không có điểm đậu hay rớt chính thức. Thử thách khó dần khi bạn tiến lên.",
+    "scoringTitle": "Điểm số và kết quả",
+    "scoringBody": "Các câu hỏi có thể bao gồm giải thích, góc nhìn hoặc ngữ cảnh bổ sung khi bạn tiến bộ. Điểm số và kết quả nhằm làm mốc tham khảo thú vị cho tự khám phá, thử thách và so sánh, không phải là đánh giá khoa học, học thuật, chuyên môn hoặc chính thức. Không có điểm đậu hay rớt chung cho mọi người. Mỗi thử thách được thiết kế để mang lại trải nghiệm hấp dẫn từ đầu đến cuối.",
+    "passFailNotice": "Không có điểm đậu hay rớt chung cho mọi người. Mỗi thử thách được thiết kế để mang lại trải nghiệm hấp dẫn từ đầu đến cuối.",
     "restartNote": "Tiến trình của bạn sẽ bị xóa và thử thách sẽ bắt đầu lại.",
     "featureCards": [
       {
-        "title": "Logic & suy luận",
-        "body": "Suy nghĩ rõ ràng."
+        "title": "Tư duy rõ ràng",
+        "body": "Cân nhắc các lựa chọn."
       },
       {
-        "title": "Nhận diện mẫu",
-        "body": "Tìm điều người khác bỏ lỡ."
+        "title": "Nhận dạng mẫu",
+        "body": "Chú ý các chi tiết hữu ích."
       },
       {
-        "title": "Quyết định nhanh",
-        "body": "Trả lời tự tin."
+        "title": "Lựa chọn tự tin",
+        "body": "Chọn câu trả lời."
       }
     ]
   },
