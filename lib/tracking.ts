@@ -21,7 +21,6 @@ function fireEvent(eventName: string, payload: TrackingPayload = {}) {
     return;
   }
 
-  window.fbq?.("trackCustom", eventName, payload);
   window.gtag?.("event", eventName, payload);
 }
 
@@ -47,11 +46,27 @@ export function trackStageComplete(payload: TrackingPayload = {}) {
 }
 
 export function trackRewardGranted(payload: TrackingPayload = {}) {
-  fireEvent("reward_granted", payload);
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  if (!payload.fallback) {
+    console.log("fbq custom event: Reward", payload);
+    window.fbq?.("trackCustom", "Reward", payload);
+  }
+  window.gtag?.("event", "reward_granted", payload);
 }
 
 export function trackRewardClosed(payload: TrackingPayload = {}) {
-  fireEvent("reward_closed", payload);
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  if (payload.granted === true && !payload.fallback && payload.reason === "reward_granted") {
+    console.log("fbq custom event: RewardClosed", payload);
+    window.fbq?.("trackCustom", "RewardClosed", payload);
+  }
+  window.gtag?.("event", "reward_closed", payload);
 }
 
 export function trackQuizComplete(payload: TrackingPayload = {}) {

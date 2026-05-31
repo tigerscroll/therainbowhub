@@ -19,6 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className="min-h-screen font-sans antialiased" suppressHydrationWarning>
+        <div
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `<script src="${siteConfig.assertiveYieldManagerUrl}" type="text/javascript" referrerpolicy="no-referrer-when-downgrade"></script><script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>`,
+          }}
+        />
         <HeadScripts />
         <noscript>
           <img

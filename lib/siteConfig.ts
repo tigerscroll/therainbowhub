@@ -3,6 +3,7 @@ export const siteConfig = {
   description: "Fast, mobile-friendly IQ and academic-style quiz tests.",
   metaPixelId: "843363384736830",
   googleTagId: "AW-18146485081",
+  googleAdManagerRewardedAdUnitPath: "/22639388115/rewarded_web_example",
   assertiveYieldManagerUrl: "https://j24iGSTy4hDgBLfJR.ay.delivery/manager/j24iGSTy4hDgBLfJR",
 };
 

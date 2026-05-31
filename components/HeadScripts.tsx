@@ -4,12 +4,6 @@ import { siteConfig } from "@/lib/siteConfig";
 export function HeadScripts() {
   return (
     <>
-      <Script
-        src={siteConfig.assertiveYieldManagerUrl}
-        strategy="afterInteractive"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
-
       {/* Meta Pixel Code */}
       <Script id="meta-pixel" strategy="afterInteractive">
         {`

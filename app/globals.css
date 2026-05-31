@@ -463,6 +463,18 @@ a {
   font-weight: 900;
 }
 
+.legacy-ad-status {
+  min-height: 18px;
+  width: min(100%, 430px);
+  max-width: 430px;
+  margin: 10px auto 0;
+  color: #cf3b3b;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .legacy-shield {
   width: 22px;
   height: 22px;
@@ -1524,8 +1536,7 @@ a {
 }
 
 .quiz-info-panel__icon svg,
-.quiz-info-panel__skill-icon svg,
-.quiz-info-panel__notice svg {
+.quiz-info-panel__skill-icon svg {
   width: 56%;
   height: 56%;
   display: block;
@@ -1618,37 +1629,6 @@ a {
   padding: 30px 0 0;
 }
 
-.quiz-info-panel__notice {
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
-  width: min(100%, 620px);
-  margin: 24px auto 0;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: linear-gradient(90deg, #f2eafe, #f8f2ff);
-  color: var(--legacy-navy);
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 760;
-}
-
-.quiz-info-panel__notice span {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 2px solid #9a75d6;
-  border-radius: 999px;
-  color: #8a65cc;
-}
-
-.quiz-info-panel__notice svg {
-  width: 62%;
-  height: 62%;
-}
-
 .quiz-info-panel__skills {
   display: grid;
   gap: 18px;
@@ -1718,11 +1698,13 @@ a {
 .quiz-info-panel__restart-note {
   display: flex;
   justify-content: center;
+  width: min(100%, 430px);
+  max-width: 430px;
   margin: 14px auto 0 !important;
-  color: #7a8597 !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  font-weight: 650 !important;
+  color: #6f7b89 !important;
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+  font-weight: 720 !important;
   text-align: center;
 }
 
@@ -2145,12 +2127,6 @@ a {
     font-size: 16px;
   }
 
-  .quiz-info-panel__notice {
-    grid-template-columns: 30px minmax(0, 1fr);
-    padding: 14px 16px;
-    font-size: 14px;
-  }
-
   .quiz-info-panel__skill {
     min-height: 92px;
     padding: 16px;
@@ -2159,10 +2135,6 @@ a {
   .quiz-info-panel .legacy-restart {
     min-height: 72px;
     font-size: 22px;
-  }
-
-  .quiz-info-panel__restart-note {
-    font-size: 14px !important;
   }
 
   .legacy-start .legacy-sub {

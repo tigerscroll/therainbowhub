@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { getQuizFooterContent, QuizFooter } from "@/components/QuizFooter";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
+import { siteConfig } from "@/lib/siteConfig";
 
 type QuizRunnerProps = {
   locale: SupportedLocale;
@@ -111,6 +112,7 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">✓</span>
           <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
         </div>
+        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="start-ad-gate" class="legacy-card legacy-start-ad-gate legacy-hidden">
@@ -129,6 +131,7 @@ function createQuizRunnerHtml(config: {
         <button type="button" data-action="start-gate-continue" class="legacy-primary">
           ${escapeHtml(translations.quiz.continue)} →
         </button>
+        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="question" class="legacy-hidden">
@@ -169,6 +172,7 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
+        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
@@ -179,6 +183,7 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
+        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
@@ -207,6 +212,7 @@ function createQuizRunnerHtml(config: {
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
           <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
+          <div class="legacy-ad-status" data-js="unlock-ad-status" aria-live="polite"></div>
         </div>
         <div data-js="review" class="legacy-review"></div>
         ${relatedHtml}
@@ -216,6 +222,7 @@ function createQuizRunnerHtml(config: {
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
   progressKey: string;
+  rewardedAdUnitPath: string;
   relatedQuizzes: RelatedQuiz[];
   rootId: string;
   quiz: Quiz;
@@ -240,7 +247,14 @@ function createQuizRunnerScript(config: {
     var advanceTimer = null;
     var hasUnlockedReview = false;
     var useStartAdGate = false;
+    var activeRewardedAd = null;
+    var rewardedListenersInstalled = false;
+    var rewardedServicesEnabled = false;
+    var rewardedRequestId = 0;
+    var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
+
+    window.googletag = window.googletag || { cmd: [] };
 
     try {
       useStartAdGate = new URLSearchParams(window.location.search).get("gate") === "1";
@@ -257,6 +271,19 @@ function createQuizRunnerScript(config: {
 
     function byData(name) {
       return root.querySelector('[data-js="' + name + '"]');
+    }
+
+    function setAdStatus(name, message) {
+      var status = byData(name);
+      if (status) {
+        status.textContent = message || "";
+      }
+    }
+
+    function clearAdStatuses() {
+      ["start-ad-status", "start-gate-ad-status", "stage-ad-status", "result-ad-status", "unlock-ad-status"].forEach(function (name) {
+        setAdStatus(name, "");
+      });
     }
 
     if (useStartAdGate && byData("start-ad-note")) {
@@ -357,26 +384,223 @@ function createQuizRunnerScript(config: {
 
     function track(eventName, payload) {
       var data = payload || {};
-      try { window.fbq?.("trackCustom", eventName, data); } catch (error) {}
       try { window.gtag?.("event", eventName, data); } catch (error) {}
     }
 
     function trackRewardGranted(payload) {
-      track("reward_granted", payload);
+      var data = payload || {};
+      if (!data.fallback) {
+        try { console.log("fbq custom event: Reward", data); } catch (error) {}
+        try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
+      }
+      try { window.gtag?.("event", "reward_granted", data); } catch (error) {}
     }
 
     function trackRewardClosed(payload) {
-      track("reward_closed", payload);
+      var data = payload || {};
+      if (data.granted === true && !data.fallback && data.reason === "reward_granted") {
+        try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
+        try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
+      }
+      try { window.gtag?.("event", "reward_closed", data); } catch (error) {}
     }
 
-    function resolveWithoutAd(placement) {
-      trackRewardGranted({ placement: placement, fallback: true });
-      trackRewardClosed({ placement: placement, reason: "fallback_resolved" });
-      return true;
+    function finishRewardedAd(status, reason) {
+      var request = activeRewardedAd;
+      if (!request) return;
+      var granted = status === "granted";
+      var closedWithoutReward = status === "closed_without_reward";
+      var unavailable = status === "unavailable";
+
+      activeRewardedAd = null;
+      window.clearTimeout(request.failTimer);
+
+      if (request.slot && window.googletag?.cmd) {
+        try {
+          window.googletag.cmd.push(function () {
+            try { window.googletag.destroySlots([request.slot]); } catch (error) {}
+          });
+        } catch (error) {}
+      }
+
+      trackRewardClosed({
+        placement: request.placement,
+        fallback: unavailable,
+        granted: granted,
+        reason: reason,
+        ad_unit_path: config.rewardedAdUnitPath
+      });
+
+      request.resolve({
+        reason: reason,
+        status: granted ? "granted" : closedWithoutReward ? "closed_without_reward" : "unavailable"
+      });
     }
 
-    function requestRewardedAd(placement) {
-      return Promise.resolve(resolveWithoutAd(placement));
+    function ensureRewardedListeners() {
+      if (rewardedListenersInstalled || !window.googletag?.pubads) return;
+
+      var pubads = window.googletag.pubads();
+
+      pubads.addEventListener("rewardedSlotReady", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        request.ready = true;
+        window.clearTimeout(request.failTimer);
+
+        try {
+          event.makeRewardedVisible();
+        } catch (error) {
+          finishRewardedAd("unavailable", "make_visible_failed");
+        }
+      });
+
+      pubads.addEventListener("rewardedSlotGranted", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        request.granted = true;
+        trackRewardGranted({
+          placement: request.placement,
+          fallback: false,
+          ad_unit_path: config.rewardedAdUnitPath
+        });
+      });
+
+      pubads.addEventListener("rewardedSlotClosed", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        finishRewardedAd(request.granted ? "granted" : "closed_without_reward", request.granted ? "reward_granted" : "closed_without_reward");
+      });
+
+      rewardedListenersInstalled = true;
+    }
+
+    function loadGooglePublisherTag() {
+      if (typeof window.googletag?.defineOutOfPageSlot === "function") return;
+      if (document.querySelector('script[data-rainbow-gpt-loader="true"]')) return;
+
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = googlePublisherTagUrl;
+      script.setAttribute("data-rainbow-gpt-loader", "true");
+      document.head.appendChild(script);
+    }
+
+    function requestRewardedAdOnce(placement) {
+      if (!config.rewardedAdUnitPath) {
+        return Promise.resolve({ status: "unavailable", reason: "missing_ad_unit_path" });
+      }
+
+      if (activeRewardedAd) {
+        return Promise.resolve({ status: "unavailable", reason: "ad_request_already_active" });
+      }
+
+      return new Promise(function (resolve) {
+        var requestId = ++rewardedRequestId;
+
+        window.googletag = window.googletag || { cmd: [] };
+        loadGooglePublisherTag();
+        activeRewardedAd = {
+          granted: false,
+          placement: placement,
+          ready: false,
+          requestId: requestId,
+          resolve: resolve,
+          slot: null,
+          failTimer: window.setTimeout(function () {
+            if (activeRewardedAd && activeRewardedAd.requestId === requestId && !activeRewardedAd.ready) {
+              finishRewardedAd("unavailable", "no_rewarded_ad");
+            }
+          }, 8000)
+        };
+
+        try {
+          window.googletag.cmd.push(function () {
+            var request = activeRewardedAd;
+            if (!request || request.requestId !== requestId) return;
+
+            try {
+              ensureRewardedListeners();
+
+              var slot = window.googletag.defineOutOfPageSlot(
+                config.rewardedAdUnitPath,
+                window.googletag.enums.OutOfPageFormat.REWARDED
+              );
+
+              if (!slot) {
+                finishRewardedAd("unavailable", "slot_unavailable");
+                return;
+              }
+
+              request.slot = slot;
+              slot.addService(window.googletag.pubads());
+
+              if (!rewardedServicesEnabled) {
+                window.googletag.enableServices();
+                rewardedServicesEnabled = true;
+              }
+
+              window.googletag.display(slot);
+            } catch (error) {
+              finishRewardedAd("unavailable", "request_error");
+            }
+          });
+        } catch (error) {
+          finishRewardedAd("unavailable", "gpt_queue_error");
+        }
+      });
+    }
+
+    function requestRewardedAd(placement, onStatus) {
+      var maxUnavailableAttempts = 3;
+      var unavailableAttempts = 0;
+
+      return new Promise(function (resolve) {
+        function setStatus(message) {
+          if (typeof onStatus === "function") {
+            onStatus(message);
+          }
+        }
+
+        function proceedWithoutAd(reason) {
+          trackRewardGranted({
+            placement: placement,
+            fallback: true,
+            reason: reason,
+            ad_unit_path: config.rewardedAdUnitPath
+          });
+          resolve(true);
+        }
+
+        function tryAd() {
+          requestRewardedAdOnce(placement).then(function (result) {
+            if (result.status === "granted") {
+              resolve(true);
+              return;
+            }
+
+            if (result.status === "closed_without_reward") {
+              setStatus("Please complete the ad to continue. Reopening...");
+              window.setTimeout(tryAd, 350);
+              return;
+            }
+
+            unavailableAttempts += 1;
+            if (unavailableAttempts >= maxUnavailableAttempts) {
+              proceedWithoutAd("no_rewarded_ad_after_3_attempts");
+              return;
+            }
+
+            setStatus("No ad was available. Trying again " + (unavailableAttempts + 1) + "/" + maxUnavailableAttempts);
+            window.setTimeout(tryAd, 450);
+          });
+        }
+
+        tryAd();
+      });
     }
 
     function getVisualImageSrc(visualHtml) {
@@ -598,6 +822,7 @@ function createQuizRunnerScript(config: {
     }
 
     function showStageGate(shouldScroll) {
+      clearAdStatuses();
       var completedStage = Math.max(0, getQuestionStage(Math.max(0, current - 1)));
       var stageIndexes = getStageIndexes();
       var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
@@ -635,6 +860,7 @@ function createQuizRunnerScript(config: {
     }
 
     function showResultGate(shouldScroll) {
+      clearAdStatuses();
       byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
       byData("result-gate-button").textContent = "Reveal My Result →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
@@ -818,6 +1044,7 @@ function createQuizRunnerScript(config: {
     }
 
     function renderResults(shouldScroll, shouldTrack) {
+      clearAdStatuses();
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -874,6 +1101,7 @@ function createQuizRunnerScript(config: {
     }
 
     function startFresh() {
+      clearAdStatuses();
       current = 0;
       answers = {};
       hasUnlockedReview = false;
@@ -882,6 +1110,7 @@ function createQuizRunnerScript(config: {
     }
 
     function restartQuiz() {
+      clearAdStatuses();
       clearAdvanceTimer();
       clearProgress();
       current = 0;
@@ -938,15 +1167,24 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    function beginStartAd(button) {
-        setButtonLoading(button, t.quiz.preparing, true);
-        requestRewardedAd("before_start").then(function () {
+    function beginStartAd(button, statusName) {
+        clearAdStatuses();
+        setButtonLoading(button, t.loading.ad, true);
+        requestRewardedAd("before_start", function (message) {
+          setAdStatus(statusName, message);
+        }).then(function (granted) {
+          if (!granted) {
+            setButtonLoading(button, t.quiz.preparing, false);
+            setAdStatus(statusName, "");
+            return;
+          }
           track("quiz_start", {
             quiz_slug: quiz.slug,
             quiz_title: quiz.title,
             question_count: quiz.questions.length
           });
           setButtonLoading(button, t.quiz.preparing, false);
+          setAdStatus(statusName, "");
           startFresh();
         });
     }
@@ -967,21 +1205,26 @@ function createQuizRunnerScript(config: {
           return;
         }
 
-        beginStartAd(button);
+        beginStartAd(button, "start-ad-status");
       });
     });
 
     root.querySelectorAll('[data-action="start-gate-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        beginStartAd(button);
+        beginStartAd(button, "start-gate-ad-status");
       });
     });
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
+        clearAdStatuses();
         setButtonLoading(button, t.loading.ad, true);
-        requestRewardedAd("before_stage_results").then(function () {
+        requestRewardedAd("before_stage_results", function (message) {
+          setAdStatus("stage-ad-status", message);
+        }).then(function (granted) {
           setButtonLoading(button, t.loading.ad, false);
+          if (!granted) return;
+          setAdStatus("stage-ad-status", "");
           saveProgress("question");
           renderQuestion();
         });
@@ -991,9 +1234,14 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (getAnsweredCount() !== quiz.questions.length) return;
-        setButtonLoading(button, t.quiz.preparingResults, true);
-        requestRewardedAd("before_final_results").then(function () {
-          setButtonLoading(button, t.quiz.preparingResults, false);
+        clearAdStatuses();
+        setButtonLoading(button, t.loading.ad, true);
+        requestRewardedAd("before_final_results", function (message) {
+          setAdStatus("result-ad-status", message);
+        }).then(function (granted) {
+          setButtonLoading(button, t.loading.ad, false);
+          if (!granted) return;
+          setAdStatus("result-ad-status", "");
           renderResults();
         });
       });
@@ -1002,12 +1250,22 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="unlock-review"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (hasUnlockedReview) return;
+        clearAdStatuses();
         button.disabled = true;
         button.textContent = t.loading.ad;
-        requestRewardedAd("before_final_results").then(function () {
+        requestRewardedAd("before_final_results", function (message) {
+          setAdStatus("unlock-ad-status", message);
+        }).then(function (granted) {
+          if (!granted) {
+            button.disabled = false;
+            button.textContent = t.results.review.unlockButton;
+            setAdStatus("unlock-ad-status", "");
+            return;
+          }
           hasUnlockedReview = true;
           button.disabled = true;
           button.textContent = t.results.review.unlockDone;
+          setAdStatus("unlock-ad-status", "");
           renderReview(getMissedQuestions());
         });
       });
@@ -1033,6 +1291,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const script = createQuizRunnerScript({
     locale,
     progressKey,
+    rewardedAdUnitPath: siteConfig.googleAdManagerRewardedAdUnitPath,
     relatedQuizzes,
     quiz,
     rootId,
