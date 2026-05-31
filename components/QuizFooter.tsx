@@ -165,13 +165,6 @@ export function QuizFooter({ footer, translations }: QuizFooterProps) {
         </div>
       </div>
 
-      <div className="quiz-info-panel__notice">
-        <span>
-          <InfoIcon type="star" />
-        </span>
-        <strong>{template.passFailNotice}</strong>
-      </div>
-
       <div className="quiz-info-panel__skills">
         {template.featureCards.slice(0, 3).map((card, index) => (
           <div key={card.title} className={`quiz-info-panel__skill quiz-info-panel__skill--${index + 1}`}>

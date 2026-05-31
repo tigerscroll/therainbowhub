@@ -17,7 +17,7 @@ export function ObfuscatedEmail() {
       {address ? (
         <a href={`mailto:${address}`}>{address}</a>
       ) : (
-        <span aria-live="polite">Email address loading...</span>
+        <span aria-hidden="true">...</span>
       )}
     </p>
   );

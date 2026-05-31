@@ -4,6 +4,7 @@ import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
+import { buildMetadata, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
 
 type LocaleQuizPageProps = {
   params: Promise<{
@@ -30,12 +31,13 @@ export async function generateMetadata({ params }: LocaleQuizPageProps): Promise
     return {};
   }
 
-  return {
-    title: {
-      absolute: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
-    },
+  return buildMetadata({
+    alternates: localizedQuizAlternates(locale, quiz.slug),
     description: quiz.seoDescription ?? quiz.summary,
-  };
+    locale,
+    path: getQuizPath(locale, quiz.slug),
+    title: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+  });
 }
 
 export default async function LocaleQuizPage({ params }: LocaleQuizPageProps) {

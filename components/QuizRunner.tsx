@@ -2,14 +2,28 @@ import type { CSSProperties } from "react";
 import { getQuizFooterContent, QuizFooter } from "@/components/QuizFooter";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
+import { siteConfig } from "@/lib/siteConfig";
 
 type QuizRunnerProps = {
   locale: SupportedLocale;
   quiz: Quiz;
+  relatedQuizzes?: RelatedQuiz[];
   translations: Translations;
 };
 
-const percentTokenPattern = /^\d+(?:\.\d+)?%$/;
+type RelatedQuiz = {
+  accent: string;
+  duration: string;
+  href: string;
+  icon: string;
+  passRate: string;
+  summary: string;
+  thumbnailAlt?: string;
+  thumbnailUrl?: string;
+  title: string;
+};
+
+const titleAccentTokenPattern = /^(?:\d+(?:\.\d+)?%|\d+\/\d+)$/;
 
 function escapeHtml(value: unknown) {
   return String(value)
@@ -21,10 +35,10 @@ function escapeHtml(value: unknown) {
 }
 
 function renderTitleWithAccentPercent(title: string) {
-  const parts = title.split(/(\d+(?:\.\d+)?%)/g);
+  const parts = title.split(/(\d+(?:\.\d+)?%|\d+\/\d+)/g);
 
   return parts
-    .map((part) => (percentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
+    .map((part) => (titleAccentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
     .join("");
 }
 
@@ -44,13 +58,39 @@ function safeJson(value: unknown) {
 
 function createQuizRunnerHtml(config: {
   quiz: Quiz;
+  relatedQuizzes: RelatedQuiz[];
   translations: Translations;
 }) {
-  const { quiz, translations } = config;
+  const { quiz, relatedQuizzes, translations } = config;
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
     .map((line) => escapeHtml(line))
     .join("<br />");
+  const adGateCopy = {
+    beforeTitle: translations.rewardedAd.gate?.beforeTitle ?? translations.quiz.shortAd,
+    stepOne: translations.rewardedAd.gate?.stepOne ?? translations.rewardedAd.helper,
+    stepTwo: translations.rewardedAd.gate?.stepTwo ?? translations.quiz.thenBegins,
+  };
+  const relatedHtml = relatedQuizzes.length
+    ? `<div data-js="related-quizzes" class="legacy-related">
+          <h3>${escapeHtml(translations.quiz.tryAnotherChallenge)}</h3>
+          <div class="legacy-related-grid">
+            ${relatedQuizzes
+              .map((item) => {
+                const media = item.thumbnailUrl
+                  ? `<img src="${escapeHtml(item.thumbnailUrl)}" alt="${escapeHtml(item.thumbnailAlt ?? item.title)}" />`
+                  : `<span aria-hidden="true">${escapeHtml(item.icon)}</span>`;
+
+                return `<a class="legacy-related-card" href="${escapeHtml(item.href)}" style="--related-accent:${escapeHtml(item.accent)}">
+                  <div class="legacy-related-card__media">${media}</div>
+                  <strong>${escapeHtml(item.title)}</strong>
+                  <em>${escapeHtml(item.duration)} • ${escapeHtml(translations.home.passRate)} ${escapeHtml(item.passRate)}</em>
+                </a>`;
+              })
+              .join("")}
+          </div>
+        </div>`
+    : "";
 
   return `<section data-screen="start" class="legacy-card legacy-start">
         <div class="legacy-badge" aria-hidden="true"><span>${escapeHtml(quiz.cardIcon)}</span></div>
@@ -68,10 +108,30 @@ function createQuizRunnerHtml(config: {
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.startTest)}
         </button>
-        <div class="legacy-ad-note">
+        <div class="legacy-ad-note" data-js="start-ad-note">
           <span class="legacy-shield" aria-hidden="true">✓</span>
           <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
         </div>
+        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
+      </section>
+
+      <section data-screen="start-ad-gate" class="legacy-card legacy-start-ad-gate legacy-hidden">
+        <div class="legacy-start-ad-gate__play" aria-hidden="true"><span>▶</span></div>
+        <h2>${escapeHtml(adGateCopy.beforeTitle)}</h2>
+        <div class="legacy-start-ad-gate__steps">
+          <div class="legacy-start-ad-gate__step">
+            <span>1</span>
+            <p>${escapeHtml(adGateCopy.stepOne)}</p>
+          </div>
+          <div class="legacy-start-ad-gate__step">
+            <span>2</span>
+            <p>${escapeHtml(adGateCopy.stepTwo)}</p>
+          </div>
+        </div>
+        <button type="button" data-action="start-gate-continue" class="legacy-primary">
+          ${escapeHtml(translations.quiz.continue)} →
+        </button>
+        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="question" class="legacy-hidden">
@@ -102,8 +162,8 @@ function createQuizRunnerHtml(config: {
         </div>
         <div class="legacy-stage-stats">
           <div>
-            <span><strong data-js="stage-round-score"></strong><em>${escapeHtml(translations.results.roundResult)}</em></span>
-            <span><strong data-js="stage-score"></strong><em>${escapeHtml(translations.results.scoreSoFar)}</em></span>
+            <span><strong data-js="stage-round-score"></strong><em data-js="stage-round-score-label">${escapeHtml(translations.results.roundResult)}</em></span>
+            <span><strong data-js="stage-score"></strong><em data-js="stage-score-label">${escapeHtml(translations.results.scoreSoFar)}</em></span>
           </div>
         </div>
         <div data-js="stage-trail" class="legacy-stage-trail" aria-hidden="true"></div>
@@ -112,9 +172,10 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
+        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
       </section>
 
-      <section data-screen="result-gate" class="legacy-card legacy-result legacy-hidden">
+      <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
         <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
         <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
@@ -122,27 +183,47 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
+        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
-        <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
-        <h2 data-js="result-title"></h2>
-        <p data-js="result-copy" class="legacy-sub"></p>
-        <div class="legacy-score"><strong data-js="final-score"></strong><span>${escapeHtml(translations.quiz.finalScore)}</span></div>
-        <div class="legacy-score"><strong data-js="percentile"></strong><span>${escapeHtml(translations.quiz.profile)}</span></div>
+        <div class="legacy-result-hero">
+          <div class="legacy-result-medal" aria-hidden="true">
+            <span>🏆</span>
+          </div>
+          <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
+          <h2 data-js="result-title"></h2>
+          <p data-js="result-copy" class="legacy-sub"></p>
+        </div>
+        <div class="legacy-result-scoreboard">
+          <div class="legacy-score legacy-score-primary">
+            <strong data-js="final-score"></strong>
+            <span data-js="final-score-label">${escapeHtml(translations.quiz.finalScore)}</span>
+          </div>
+          <div class="legacy-score">
+            <strong data-js="percentile"></strong>
+            <span data-js="percentile-label">${escapeHtml(translations.quiz.profile)}</span>
+          </div>
+        </div>
+        <div class="legacy-result-meter" aria-hidden="true"><span data-js="result-meter-fill"></span></div>
         <div data-js="cognitive-scores" class="legacy-cognitive-scores"></div>
+        <div data-js="stage-breakdown" class="legacy-stage-breakdown"></div>
         <div class="legacy-unlock-panel">
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
           <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
+          <div class="legacy-ad-status" data-js="unlock-ad-status" aria-live="polite"></div>
         </div>
         <div data-js="review" class="legacy-review"></div>
+        ${relatedHtml}
       </section>`;
 }
 
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
   progressKey: string;
+  rewardedAdUnitPath: string;
+  relatedQuizzes: RelatedQuiz[];
   rootId: string;
   quiz: Quiz;
   translations: Translations;
@@ -160,13 +241,28 @@ function createQuizRunnerScript(config: {
 
     var quiz = config.quiz;
     var t = config.translations;
+    var isPersonalityQuiz = quiz.mode === "personality";
     var current = 0;
     var answers = {};
     var advanceTimer = null;
     var hasUnlockedReview = false;
+    var useStartAdGate = false;
+    var activeRewardedAd = null;
+    var rewardedListenersInstalled = false;
+    var rewardedServicesEnabled = false;
+    var rewardedRequestId = 0;
+    var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
+    var preloadedVisuals = {};
+
+    window.googletag = window.googletag || { cmd: [] };
+
+    try {
+      useStartAdGate = new URLSearchParams(window.location.search).get("gate") === "1";
+    } catch (error) {}
 
     var screens = {
       start: root.querySelector('[data-screen="start"]'),
+      startAdGate: root.querySelector('[data-screen="start-ad-gate"]'),
       question: root.querySelector('[data-screen="question"]'),
       stageGate: root.querySelector('[data-screen="stage-gate"]'),
       resultGate: root.querySelector('[data-screen="result-gate"]'),
@@ -175,6 +271,23 @@ function createQuizRunnerScript(config: {
 
     function byData(name) {
       return root.querySelector('[data-js="' + name + '"]');
+    }
+
+    function setAdStatus(name, message) {
+      var status = byData(name);
+      if (status) {
+        status.textContent = message || "";
+      }
+    }
+
+    function clearAdStatuses() {
+      ["start-ad-status", "start-gate-ad-status", "stage-ad-status", "result-ad-status", "unlock-ad-status"].forEach(function (name) {
+        setAdStatus(name, "");
+      });
+    }
+
+    if (useStartAdGate && byData("start-ad-note")) {
+      byData("start-ad-note").classList.add("legacy-hidden");
     }
 
     function escapeHtml(value) {
@@ -271,28 +384,272 @@ function createQuizRunnerScript(config: {
 
     function track(eventName, payload) {
       var data = payload || {};
-      try { window.fbq?.("trackCustom", eventName, data); } catch (error) {}
       try { window.gtag?.("event", eventName, data); } catch (error) {}
     }
 
     function trackRewardGranted(payload) {
-      track("reward_granted", payload);
+      var data = payload || {};
+      try { console.log("fbq custom event: Reward", data); } catch (error) {}
+      try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
+      try { window.gtag?.("event", "reward_granted", data); } catch (error) {}
+    }
+
+    function trackRewardBypass(payload) {
+      var data = payload || {};
+      try { window.gtag?.("event", "reward_bypass", data); } catch (error) {}
     }
 
     function trackRewardClosed(payload) {
-      track("reward_closed", payload);
+      var data = payload || {};
+      if (data.granted === true && data.reason === "reward_granted") {
+        try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
+        try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
+      }
+      try { window.gtag?.("event", "reward_closed", data); } catch (error) {}
     }
 
-    function resolveWithoutAd(placement) {
-      trackRewardGranted({ placement: placement, fallback: true });
-      trackRewardClosed({ placement: placement, reason: "fallback_resolved" });
-      return true;
+    function finishRewardedAd(status, reason) {
+      var request = activeRewardedAd;
+      if (!request) return;
+      var granted = status === "granted";
+      var closedWithoutReward = status === "closed_without_reward";
+      var unavailable = status === "unavailable";
+
+      activeRewardedAd = null;
+      window.clearTimeout(request.failTimer);
+
+      if (request.slot && window.googletag?.cmd) {
+        try {
+          window.googletag.cmd.push(function () {
+            try { window.googletag.destroySlots([request.slot]); } catch (error) {}
+          });
+        } catch (error) {}
+      }
+
+      trackRewardClosed({
+        placement: request.placement,
+        fallback: unavailable,
+        granted: granted,
+        reason: reason,
+        ad_unit_path: config.rewardedAdUnitPath
+      });
+
+      request.resolve({
+        reason: reason,
+        status: granted ? "granted" : closedWithoutReward ? "closed_without_reward" : "unavailable"
+      });
     }
 
-    function requestRewardedAd(placement) {
-      // Local testing mode: rewarded ad gates continue immediately.
-      // Reconnect Google Ad Manager rewarded code here when you are ready to test ads.
-      return Promise.resolve(resolveWithoutAd(placement));
+    function ensureRewardedListeners() {
+      if (rewardedListenersInstalled || !window.googletag?.pubads) return;
+
+      var pubads = window.googletag.pubads();
+
+      pubads.addEventListener("rewardedSlotReady", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        request.ready = true;
+        window.clearTimeout(request.failTimer);
+
+        try {
+          event.makeRewardedVisible();
+        } catch (error) {
+          finishRewardedAd("unavailable", "make_visible_failed");
+        }
+      });
+
+      pubads.addEventListener("rewardedSlotGranted", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        request.granted = true;
+        trackRewardGranted({
+          placement: request.placement,
+          fallback: false,
+          ad_unit_path: config.rewardedAdUnitPath
+        });
+      });
+
+      pubads.addEventListener("rewardedSlotClosed", function (event) {
+        var request = activeRewardedAd;
+        if (!request || event.slot !== request.slot) return;
+
+        finishRewardedAd(request.granted ? "granted" : "closed_without_reward", request.granted ? "reward_granted" : "closed_without_reward");
+      });
+
+      rewardedListenersInstalled = true;
+    }
+
+    function loadGooglePublisherTag() {
+      if (typeof window.googletag?.defineOutOfPageSlot === "function") return;
+      if (document.querySelector('script[data-rainbow-gpt-loader="true"], script[src*="securepubads.g.doubleclick.net/tag/js/gpt.js"]')) return;
+
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = googlePublisherTagUrl;
+      script.setAttribute("data-rainbow-gpt-loader", "true");
+      document.head.appendChild(script);
+    }
+
+    function requestRewardedAdOnce(placement) {
+      if (!config.rewardedAdUnitPath) {
+        return Promise.resolve({ status: "unavailable", reason: "missing_ad_unit_path" });
+      }
+
+      if (activeRewardedAd) {
+        return Promise.resolve({ status: "unavailable", reason: "ad_request_already_active" });
+      }
+
+      return new Promise(function (resolve) {
+        var requestId = ++rewardedRequestId;
+
+        window.googletag = window.googletag || { cmd: [] };
+        loadGooglePublisherTag();
+        activeRewardedAd = {
+          granted: false,
+          placement: placement,
+          ready: false,
+          requestId: requestId,
+          resolve: resolve,
+          slot: null,
+          failTimer: window.setTimeout(function () {
+            if (activeRewardedAd && activeRewardedAd.requestId === requestId && !activeRewardedAd.ready) {
+              finishRewardedAd("unavailable", "no_rewarded_ad");
+            }
+          }, 8000)
+        };
+
+        try {
+          window.googletag.cmd.push(function () {
+            var request = activeRewardedAd;
+            if (!request || request.requestId !== requestId) return;
+
+            try {
+              ensureRewardedListeners();
+
+              var slot = window.googletag.defineOutOfPageSlot(
+                config.rewardedAdUnitPath,
+                window.googletag.enums.OutOfPageFormat.REWARDED
+              );
+
+              if (!slot) {
+                finishRewardedAd("unavailable", "slot_unavailable");
+                return;
+              }
+
+              request.slot = slot;
+              slot.addService(window.googletag.pubads());
+
+              if (!rewardedServicesEnabled) {
+                window.googletag.enableServices();
+                rewardedServicesEnabled = true;
+              }
+
+              window.googletag.display(slot);
+            } catch (error) {
+              finishRewardedAd("unavailable", "request_error");
+            }
+          });
+        } catch (error) {
+          finishRewardedAd("unavailable", "gpt_queue_error");
+        }
+      });
+    }
+
+    function requestRewardedAd(placement, onStatus) {
+      var maxUnavailableAttempts = 3;
+      var unavailableAttempts = 0;
+
+      return new Promise(function (resolve) {
+        function setStatus(message) {
+          if (typeof onStatus === "function") {
+            onStatus(message);
+          }
+        }
+
+        function proceedWithoutAd(reason) {
+          trackRewardBypass({
+            placement: placement,
+            fallback: true,
+            reason: reason,
+            ad_unit_path: config.rewardedAdUnitPath
+          });
+          resolve(true);
+        }
+
+        function tryAd() {
+          requestRewardedAdOnce(placement).then(function (result) {
+            if (result.status === "granted") {
+              resolve(true);
+              return;
+            }
+
+            if (result.status === "closed_without_reward") {
+              setStatus(t.rewardedAd.status.closedWithoutReward);
+              window.setTimeout(tryAd, 350);
+              return;
+            }
+
+            unavailableAttempts += 1;
+            if (unavailableAttempts >= maxUnavailableAttempts) {
+              proceedWithoutAd("no_rewarded_ad_after_3_attempts");
+              return;
+            }
+
+            setStatus(formatTemplate(t.rewardedAd.status.retryUnavailable, {
+              attempt: unavailableAttempts + 1,
+              max: maxUnavailableAttempts
+            }));
+            window.setTimeout(tryAd, 450);
+          });
+        }
+
+        tryAd();
+      });
+    }
+
+    function getVisualImageSrc(visualHtml) {
+      if (!visualHtml || typeof window.Image !== "function") return "";
+      var match = String(visualHtml).match(/<img\\b[^>]*\\bsrc=(["'])(.*?)\\1/i);
+      return match ? match[2] : "";
+    }
+
+    function getSafeVisualImage(visualHtml) {
+      if (!visualHtml) return null;
+      var source = String(visualHtml).trim();
+      var match = source.match(/^<img\\s+class=(["'])legacy-question-image\\1\\s+src=(["'])(\\/quizzes\\/[a-z0-9-]+\\/images\\/[a-z0-9._-]+\\.(?:png|jpg|jpeg|webp))\\2\\s+alt=(["'])([^"']*)\\4\\s*\\/>$/i);
+      if (!match) return null;
+      return { src: match[3], alt: match[5] };
+    }
+
+    function renderQuestionVisual(visualBox, visualHtml) {
+      var imageData = getSafeVisualImage(visualHtml);
+      visualBox.replaceChildren();
+
+      if (!imageData) {
+        visualBox.classList.add("legacy-hidden");
+        return;
+      }
+
+      var image = document.createElement("img");
+      image.className = "legacy-question-image";
+      image.src = imageData.src;
+      image.alt = imageData.alt;
+      image.loading = "eager";
+      image.decoding = "async";
+      visualBox.appendChild(image);
+      visualBox.classList.remove("legacy-hidden");
+    }
+
+    function preloadQuestionVisual(questionIndex) {
+      if (!isPersonalityQuiz) return;
+      var question = quiz.questions[questionIndex];
+      var src = question ? getVisualImageSrc(question.visual) : "";
+      if (!src || preloadedVisuals[src]) return;
+      preloadedVisuals[src] = true;
+      var image = new Image();
+      image.src = src;
     }
 
     function getStageIndexes() {
@@ -321,12 +678,22 @@ function createQuizRunnerScript(config: {
     }
 
     function getScore() {
+      if (isPersonalityQuiz) {
+        return getAnsweredCount();
+      }
+
       return quiz.questions.reduce(function (total, question, index) {
         return total + (answers[index] === question.answerIndex ? 1 : 0);
       }, 0);
     }
 
     function getStageScore(stage) {
+      if (isPersonalityQuiz) {
+        return getStageQuestions(stage).reduce(function (total, item) {
+          return total + (answers[item.index] !== undefined ? 1 : 0);
+        }, 0);
+      }
+
       return getStageQuestions(stage).reduce(function (total, item) {
         return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
       }, 0);
@@ -360,8 +727,9 @@ function createQuizRunnerScript(config: {
 
         button.disabled = true;
         button.classList.toggle("selected", isSelected);
-        button.classList.toggle("correct", isSelected && isCorrect);
-        button.classList.toggle("wrong", isSelected && !isCorrect);
+        button.classList.toggle("personality-selected", isPersonalityQuiz && isSelected);
+        button.classList.toggle("correct", !isPersonalityQuiz && isSelected && isCorrect);
+        button.classList.toggle("wrong", !isPersonalityQuiz && isSelected && !isCorrect);
         button.classList.toggle("is-dimmed", !isSelected);
       });
     }
@@ -374,32 +742,34 @@ function createQuizRunnerScript(config: {
       }
 
       var currentStage = getQuestionStage(current);
-      var stageQuestions = getStageQuestions(currentStage);
       var stagePosition = getCurrentStagePosition(currentStage);
-      var stageTotal = stageQuestions.length || 1;
+      var stageTotal = getStageQuestions(currentStage).length || 8;
       var stageIndexes = getStageIndexes();
       var stageNumber = stageIndexes.indexOf(currentStage) + 1;
-      var stageCount = stageIndexes.length;
       var visualBox = byData("visual");
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
+      var previousProgressPosition = progressDots.dataset.stagePosition || "";
+      var nextProgressPosition = currentStage + ":" + stagePosition;
 
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
+      progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
-        return '<span class="' + state + '"></span>';
+        var label = state === "is-complete" ? "✓" : index + 1;
+        return '<span class="' + state + '" aria-label="' + escapeHtml(t.quiz.step) + ' ' + (index + 1) + '">' + label + '</span>';
       }).join("");
+      progressDots.classList.remove("is-advancing");
+      if (previousProgressPosition && previousProgressPosition !== nextProgressPosition) {
+        void progressDots.offsetWidth;
+        progressDots.classList.add("is-advancing");
+      }
+      progressDots.dataset.stagePosition = nextProgressPosition;
       byData("question-text").textContent = question.prompt;
 
-      if (question.visual) {
-        visualBox.innerHTML = question.visual;
-        visualBox.classList.remove("legacy-hidden");
-      } else {
-        visualBox.innerHTML = "";
-        visualBox.classList.add("legacy-hidden");
-      }
+      renderQuestionVisual(visualBox, question.visual);
 
       answersBox.innerHTML = question.choices.map(function (choice, index) {
         return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
@@ -414,6 +784,7 @@ function createQuizRunnerScript(config: {
         });
       });
 
+      preloadQuestionVisual(current + 1);
       show("question", shouldScroll);
     }
 
@@ -431,12 +802,13 @@ function createQuizRunnerScript(config: {
         question_index: current,
         stage: question.stage || 0,
         selected_answer_index: choiceIndex,
+        selected_profile_id: question.choiceProfileIds ? question.choiceProfileIds[choiceIndex] : undefined,
         correct: isCorrect
       });
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
-      }, isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
+      }, isPersonalityQuiz || isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
     }
 
     function advanceAfterAnswer(choiceIndex) {
@@ -477,6 +849,7 @@ function createQuizRunnerScript(config: {
     }
 
     function showStageGate(shouldScroll) {
+      clearAdStatuses();
       var completedStage = Math.max(0, getQuestionStage(Math.max(0, current - 1)));
       var stageIndexes = getStageIndexes();
       var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
@@ -495,8 +868,13 @@ function createQuizRunnerScript(config: {
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
+      root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
+      byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
-      byData("stage-score").textContent = getScore() + "/" + current;
+      byData("stage-round-score-label").textContent = isPersonalityQuiz ? t.results.stageComplete : t.results.roundResult;
+      var personalityStageStatus = isPersonalityQuiz ? getPersonalityClarityStatus(completedStage) : null;
+      byData("stage-score").textContent = personalityStageStatus ? personalityStageStatus.title : getScore() + "/" + current;
+      byData("stage-score-label").textContent = personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
       byData("stage-trail").innerHTML = stageIndexes.map(function (stage, index) {
         var status = stage <= completedStage ? "complete" : stage === nextStage ? "next" : "locked";
         var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
@@ -504,12 +882,14 @@ function createQuizRunnerScript(config: {
       }).join("");
       byData("stage-button").textContent = buttonLabel;
       byData("stage-button").dataset.readyText = buttonLabel;
+      preloadQuestionVisual(current);
       show("stageGate", shouldScroll);
     }
 
     function showResultGate(shouldScroll) {
+      clearAdStatuses();
       byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
-      byData("result-gate-button").textContent = "Reveal My Result →";
+      byData("result-gate-button").textContent = t.results.viewResults + " →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -518,6 +898,10 @@ function createQuizRunnerScript(config: {
       return quiz.stages.map(function (name, stage) {
         var questions = getStageQuestions(stage);
         var correct = questions.reduce(function (total, item) {
+          if (isPersonalityQuiz) {
+            return total + (answers[item.index] !== undefined ? 1 : 0);
+          }
+
           return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
         }, 0);
 
@@ -542,7 +926,58 @@ function createQuizRunnerScript(config: {
       }, template);
     }
 
+    function getPersonalityProfileCounts() {
+      var counts = {};
+      quiz.result.profiles.forEach(function (profile) {
+        if (profile.id) counts[profile.id] = 0;
+      });
+
+      quiz.questions.forEach(function (question, index) {
+        var answer = answers[index];
+        if (answer === undefined || !question.choiceProfileIds) return;
+        var profileId = question.choiceProfileIds[answer];
+        if (!profileId) return;
+        counts[profileId] = (counts[profileId] || 0) + 1;
+      });
+
+      return counts;
+    }
+
+    function getDominantPersonalityProfile() {
+      var counts = getPersonalityProfileCounts();
+      var profiles = quiz.result.profiles.filter(function (profile) { return profile.id; });
+      var fallback = profiles[0] || quiz.result.profiles[0];
+      var profile = profiles.slice().sort(function (a, b) {
+        return (counts[b.id] || 0) - (counts[a.id] || 0);
+      })[0] || fallback;
+
+      return {
+        profile: profile,
+        count: profile && profile.id ? (counts[profile.id] || 0) : 0
+      };
+    }
+
+    function getPersonalityClarityStatus(stage) {
+      return {
+        title: getStageName(stage),
+        label: t.results.stageComplete
+      };
+    }
+
     function getResultProfile(score, total, strongestStage) {
+      if (isPersonalityQuiz) {
+        var personality = getDominantPersonalityProfile();
+        var personalityProfile = personality.profile || quiz.result.profiles[0];
+
+        return {
+          tier: personalityProfile.tier,
+          title: personalityProfile.title,
+          copy: formatTemplate(personalityProfile.copy, { stage: personalityProfile.tier }),
+          percentile: personalityProfile.percentile,
+          count: personality.count
+        };
+      }
+
       var ratio = total ? score / total : 0;
       var sortedProfiles = quiz.result.profiles.slice().sort(function (a, b) {
         return b.minRatio - a.minRatio;
@@ -560,6 +995,18 @@ function createQuizRunnerScript(config: {
     }
 
     function scoreForCategories(categories) {
+      if (isPersonalityQuiz) {
+        var counts = getPersonalityProfileCounts();
+        var answered = getAnsweredCount();
+        if (!answered) return 0;
+
+        var categoryTotal = categories.reduce(function (total, category) {
+          return total + (counts[category] || 0);
+        }, 0);
+
+        return Math.round((categoryTotal / answered) * 100);
+      }
+
       var items = quiz.questions
         .map(function (question, index) { return { question: question, index: index }; })
         .filter(function (item) {
@@ -576,6 +1023,10 @@ function createQuizRunnerScript(config: {
     }
 
     function getMissedQuestions() {
+      if (isPersonalityQuiz) {
+        return [];
+      }
+
       return quiz.questions
         .map(function (question, index) { return { question: question, index: index }; })
         .filter(function (item) { return answers[item.index] !== item.question.answerIndex; });
@@ -600,6 +1051,7 @@ function createQuizRunnerScript(config: {
     }
 
     function renderResults(shouldScroll, shouldTrack) {
+      clearAdStatuses();
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -610,13 +1062,29 @@ function createQuizRunnerScript(config: {
         : t.results.review.missedQuestionPlural;
 
       hasUnlockedReview = false;
-      byData("result-profile-badge").textContent = profile.tier + " • " + strongestStage.name;
+      byData("result-profile-badge").textContent = isPersonalityQuiz ? profile.tier : profile.tier + " • " + strongestStage.name;
       byData("result-title").textContent = profile.title;
       byData("result-copy").textContent = profile.copy;
-      byData("final-score").textContent = score + "/" + quiz.questions.length;
+      byData("final-score").textContent = isPersonalityQuiz ? getAnsweredCount() + "/" + quiz.questions.length : score + "/" + quiz.questions.length;
+      byData("final-score-label").textContent = isPersonalityQuiz ? t.quiz.answered : t.quiz.finalScore;
       byData("percentile").textContent = profile.percentile;
+      byData("percentile-label").textContent = isPersonalityQuiz ? t.results.viewResults : t.quiz.profile;
+      byData("result-meter-fill").style.width = isPersonalityQuiz
+        ? Math.round(((profile.count || 0) / Math.max(1, getAnsweredCount())) * 100) + "%"
+        : Math.round((score / quiz.questions.length) * 100) + "%";
       byData("cognitive-scores").innerHTML = quiz.result.scoreDimensions.map(function (dimension) {
-        return '<div class="legacy-cog-item"><strong>' + scoreForCategories(dimension.categories) + '</strong><span>' + escapeHtml(dimension.label) + '</span></div>';
+        var dimensionScore = scoreForCategories(dimension.categories);
+        return '<div class="legacy-cog-item" style="--skill-score:' + dimensionScore + '%"><strong>' + dimensionScore + '</strong><span>' + escapeHtml(dimension.label) + '</span><em aria-hidden="true"><i></i></em></div>';
+      }).join("");
+      byData("stage-breakdown").innerHTML = stageScores.map(function (stage, index) {
+        var ratio = stage.total ? Math.round((stage.correct / stage.total) * 100) : 0;
+        var stageClass = stage.ratio >= 0.75 ? "is-high" : stage.ratio >= 0.5 ? "is-mid" : "is-low";
+        return '<div class="legacy-stage-chip ' + stageClass + '" style="--stage-score:' + ratio + '%">' +
+          '<span>' + escapeHtml(t.quiz.round) + ' ' + (index + 1) + '</span>' +
+          '<strong>' + escapeHtml(stage.name) + '</strong>' +
+          '<em>' + stage.correct + '/' + stage.total + '</em>' +
+          '<i aria-hidden="true"></i>' +
+          '</div>';
       }).join("");
       byData("unlock-title").textContent = missedQuestions.length ? t.results.review.wantMissed : t.results.review.perfectScore;
       byData("unlock-copy").textContent = missedQuestions.length
@@ -640,6 +1108,7 @@ function createQuizRunnerScript(config: {
     }
 
     function startFresh() {
+      clearAdStatuses();
       current = 0;
       answers = {};
       hasUnlockedReview = false;
@@ -648,6 +1117,7 @@ function createQuizRunnerScript(config: {
     }
 
     function restartQuiz() {
+      clearAdStatuses();
       clearAdvanceTimer();
       clearProgress();
       current = 0;
@@ -704,26 +1174,64 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    root.querySelectorAll('[data-action="start"]').forEach(function (button) {
-      button.addEventListener("click", function () {
-        setButtonLoading(button, t.quiz.preparing, true);
-        requestRewardedAd("before_start").then(function () {
+    function beginStartAd(button, statusName) {
+        clearAdStatuses();
+        setButtonLoading(button, t.loading.ad, true);
+        requestRewardedAd("before_start", function (message) {
+          setAdStatus(statusName, message);
+        }).then(function (granted) {
+          if (!granted) {
+            setButtonLoading(button, t.quiz.preparing, false);
+            setAdStatus(statusName, "");
+            return;
+          }
           track("quiz_start", {
             quiz_slug: quiz.slug,
             quiz_title: quiz.title,
             question_count: quiz.questions.length
           });
           setButtonLoading(button, t.quiz.preparing, false);
+          setAdStatus(statusName, "");
           startFresh();
         });
+    }
+
+    root.querySelectorAll('[data-action="start"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (useStartAdGate) {
+          var currentScroll = window.scrollY || 0;
+          if (button.blur) button.blur();
+          show("startAdGate", false);
+          window.scrollTo(0, currentScroll);
+          window.requestAnimationFrame(function () {
+            window.scrollTo(0, currentScroll);
+            window.setTimeout(function () {
+              window.scrollTo(0, currentScroll);
+            }, 80);
+          });
+          return;
+        }
+
+        beginStartAd(button, "start-ad-status");
+      });
+    });
+
+    root.querySelectorAll('[data-action="start-gate-continue"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        beginStartAd(button, "start-gate-ad-status");
       });
     });
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
+        clearAdStatuses();
         setButtonLoading(button, t.loading.ad, true);
-        requestRewardedAd("before_stage_results").then(function () {
+        requestRewardedAd("before_stage_results", function (message) {
+          setAdStatus("stage-ad-status", message);
+        }).then(function (granted) {
           setButtonLoading(button, t.loading.ad, false);
+          if (!granted) return;
+          setAdStatus("stage-ad-status", "");
           saveProgress("question");
           renderQuestion();
         });
@@ -733,9 +1241,14 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (getAnsweredCount() !== quiz.questions.length) return;
-        setButtonLoading(button, t.quiz.preparingResults, true);
-        requestRewardedAd("before_final_results").then(function () {
-          setButtonLoading(button, t.quiz.preparingResults, false);
+        clearAdStatuses();
+        setButtonLoading(button, t.loading.ad, true);
+        requestRewardedAd("before_final_results", function (message) {
+          setAdStatus("result-ad-status", message);
+        }).then(function (granted) {
+          setButtonLoading(button, t.loading.ad, false);
+          if (!granted) return;
+          setAdStatus("result-ad-status", "");
           renderResults();
         });
       });
@@ -744,12 +1257,22 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="unlock-review"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (hasUnlockedReview) return;
+        clearAdStatuses();
         button.disabled = true;
         button.textContent = t.loading.ad;
-        requestRewardedAd("before_final_results").then(function () {
+        requestRewardedAd("before_final_results", function (message) {
+          setAdStatus("unlock-ad-status", message);
+        }).then(function (granted) {
+          if (!granted) {
+            button.disabled = false;
+            button.textContent = t.results.review.unlockButton;
+            setAdStatus("unlock-ad-status", "");
+            return;
+          }
           hasUnlockedReview = true;
           button.disabled = true;
           button.textContent = t.results.review.unlockDone;
+          setAdStatus("unlock-ad-status", "");
           renderReview(getMissedQuestions());
         });
       });
@@ -769,17 +1292,19 @@ function createQuizRunnerScript(config: {
 `;
 }
 
-export function QuizRunner({ locale, quiz, translations }: QuizRunnerProps) {
+export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: QuizRunnerProps) {
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
-  const progressKey = `rainbowHub:${quiz.slug}:${quiz.questions.length}:progress`;
+  const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
     locale,
     progressKey,
+    rewardedAdUnitPath: siteConfig.googleAdManagerRewardedAdUnitPath,
+    relatedQuizzes,
     quiz,
     rootId,
     translations,
   });
-  const html = createQuizRunnerHtml({ quiz, translations });
+  const html = createQuizRunnerHtml({ quiz, relatedQuizzes, translations });
   const footer = getQuizFooterContent(quiz);
 
   return (

@@ -7,15 +7,10 @@ import {
   isInfoPageSlug,
 } from "@/components/InfoPageContent";
 import { SiteShell } from "@/components/SiteShell";
-import {
-  getDefaultLocale,
-  getSupportedLocales,
-  getTranslations,
-  isSupportedLocale,
-  type SupportedLocale,
-} from "@/lib/i18n";
+import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { buildMetadata, getInfoPath, infoAlternates } from "@/lib/seo";
 
-type LocalizedInfoPageProps = {
+type LocaleInfoPageProps = {
   params: Promise<{
     locale: string;
     page: string;
@@ -30,29 +25,36 @@ export function generateStaticParams() {
     .flatMap((locale) => infoPageSlugs.map((page) => ({ locale, page })));
 }
 
-export async function generateMetadata({ params }: LocalizedInfoPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocaleInfoPageProps): Promise<Metadata> {
   const { locale, page } = await params;
 
   if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     return {};
   }
 
-  return getInfoPageMetadata(locale, page);
+  const metadata = getInfoPageMetadata(locale, page);
+
+  return buildMetadata({
+    alternates: infoAlternates(locale, page),
+    description: metadata.description,
+    locale,
+    path: getInfoPath(locale, page),
+    title: `${metadata.title} - The Rainbow Hub`,
+  });
 }
 
-export default async function LocalizedInfoPage({ params }: LocalizedInfoPageProps) {
+export default async function LocaleInfoPage({ params }: LocaleInfoPageProps) {
   const { locale, page } = await params;
 
   if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     notFound();
   }
 
-  const safeLocale = locale as SupportedLocale;
-  const translations = getTranslations(safeLocale);
+  const translations = getTranslations(locale);
 
   return (
-    <SiteShell currentPath={`/info/${page}`} locale={safeLocale} translations={translations}>
-      <InfoPageContent locale={safeLocale} slug={page} />
+    <SiteShell currentPath={`/info/${page}`} locale={locale} translations={translations}>
+      <InfoPageContent locale={locale} slug={page} />
     </SiteShell>
   );
 }

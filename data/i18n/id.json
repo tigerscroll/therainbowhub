@@ -2,7 +2,7 @@
   "locale": {
     "code": "id",
     "name": "Indonesian",
-    "switcherLabel": "Language"
+    "switcherLabel": "Bahasa"
   },
   "site": {
     "name": "The Rainbow Hub",
@@ -11,15 +11,16 @@
   "nav": {
     "home": "Beranda",
     "categories": "Kategori",
-    "quizzes": "Kuis"
+    "quizzes": "Kuis",
+    "quickLinks": "Tautan cepat"
   },
   "footer": {
     "description": "Kuis cepat ramah seluler dengan tantangan IQ dan gaya akademik.",
     "quizzes": "Kuis",
     "company": "Perusahaan",
-    "legal": "Legal",
+    "legal": "Hukum",
     "rights": "Hak cipta dilindungi.",
-    "lastUpdated": "Last updated May 24, 2026.",
+    "lastUpdated": "Terakhir diperbarui 24 Mei 2026.",
     "links": {
       "about": "Tentang",
       "contact": "Kontak",
@@ -35,7 +36,7 @@
     "quizzesLabel": "kuis",
     "headlinePrefix": "Kuis cepat.",
     "headlineHighlight": "Pikiran lebih tajam.",
-    "intro": "Kuis cepat ramah seluler dengan tantangan IQ dan gaya akademik.",
+    "intro": "Tantangan singkat tentang IQ, kosakata, logika, sains, dan pengetahuan umum. Pilih satu; sebagian besar memakan waktu sekitar 6 menit.",
     "startPrefix": "Mulai tes",
     "browseAll": "Jelajahi semua",
     "stats": {
@@ -70,7 +71,10 @@
     "profileReady": "Profilmu siap",
     "your": "Milikmu",
     "finalScore": "Skor akhir",
-    "restartTest": "Mulai ulang tes"
+    "restartTest": "Mulai ulang tes",
+    "tryAnotherChallenge": "Coba Tantangan Lain",
+    "step": "Langkah",
+    "answered": "Terjawab"
   },
   "results": {
     "complete": "Selesai",
@@ -103,9 +107,18 @@
     "ad": "Memuat iklan..."
   },
   "rewardedAd": {
+    "gate": {
+      "beforeTitle": "Sebelum melanjutkan...",
+      "stepOne": "Tonton iklan singkat.",
+      "stepTwo": "Setelah selesai, ketuk tombol tutup di sudut kanan atas untuk mulai."
+    },
     "helper": "Tonton iklan singkat untuk melanjutkan.",
     "granted": "Hadiah diberikan.",
-    "closed": "Pesan sponsor ditutup."
+    "closed": "Pesan sponsor ditutup.",
+    "status": {
+      "closedWithoutReward": "Selesaikan iklan untuk melanjutkan. Membuka lagi...",
+      "retryUnavailable": "Tidak ada iklan yang tersedia. Mencoba lagi {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Halaman tidak ditemukan",
@@ -114,7 +127,7 @@
   },
   "localizedPages": {
     "about": "Kuis cepat ramah seluler dengan tantangan IQ dan gaya akademik.",
-    "contact": "Kontak",
+    "contact": "Untuk pertanyaan tentang kuis, privasi, aksesibilitas, atau masalah situs, gunakan halaman Kontak.",
     "accessibility": "Aksesibilitas",
     "privacyPolicy": "Kebijakan Privasi",
     "cookiePolicy": "Kebijakan Cookie",
@@ -123,32 +136,32 @@
   },
   "quizFooter": {
     "howItWorksTitle": "Cara kerja tantangan",
-    "howItWorksBody": "Kuis berjalan melalui beberapa tahap. Ronde awal berfokus pada pengamatan cepat dan pertanyaan yang mudah diikuti, sementara tahap berikutnya memperkenalkan penalaran yang lebih berlapis, pola yang berubah, perbandingan yang cermat, dan pertanyaan baru untuk menguji pemikiran fleksibel. Setiap tahap dibangun dari tahap sebelumnya dan mendorong keputusan cepat, perhatian pada detail, serta kemampuan beradaptasi di bawah tekanan.",
-    "whatThisTestsTitle": "Apa yang diuji kuis ini",
-    "whatThisTestsBody": "Alih-alih mengukur satu topik sempit, tantangan ini mengeksplorasi keterampilan kuis umum yang berguna di banyak tema:",
+    "howItWorksBody": "Tantangan berlangsung melalui beberapa tahap. Ronde awal berfokus pada pertanyaan yang mudah diakses dan keputusan cepat, sementara tahap berikutnya dapat memperkenalkan ide yang lebih kompleks, pola yang berubah, perbandingan yang cermat, atau skenario yang belum dikenal. Setiap tahap dibangun dari tahap sebelumnya, mendorong fokus, perhatian pada detail, kemampuan beradaptasi, dan pengambilan keputusan yang percaya diri.",
+    "whatThisTestsTitle": "Apa yang dieksplorasi",
+    "whatThisTestsBody": "Alih-alih berfokus pada satu topik, tantangan ini mengeksplorasi berbagai keterampilan, preferensi, dan cara berpikir yang mungkin relevan dalam situasi berbeda:",
     "testBullets": [
-      "Menemukan pola tersembunyi",
-      "Mengidentifikasi petunjuk berguna",
-      "Menimbang bukti",
-      "Mengenali ketidakkonsistenan",
-      "Beradaptasi dengan pertanyaan baru"
+      "Mengenali pola dan hubungan",
+      "Mengidentifikasi informasi yang relevan",
+      "Mengevaluasi pilihan dan bukti",
+      "Memperhatikan detail dan ketidakkonsistenan",
+      "Beradaptasi dengan pertanyaan dan skenario baru"
     ],
-    "scoringTitle": "Skor dan penjelasan",
-    "scoringBody": "Setiap pertanyaan memiliki satu jawaban benar dan penjelasan singkat. Skor dimaksudkan sebagai patokan menyenangkan untuk tantangan diri dan perbandingan, bukan penilaian akademik, profesional, atau resmi.",
-    "passFailNotice": "Tidak ada skor lulus atau gagal. Tantangan meningkat secara bertahap saat kamu maju.",
-    "restartNote": "Kemajuanmu akan dihapus dan tantangan dimulai ulang.",
+    "scoringTitle": "Skor dan hasil",
+    "scoringBody": "Pertanyaan dapat menyertakan penjelasan, wawasan, atau konteks tambahan saat kamu maju. Skor dan hasil dimaksudkan sebagai tolok ukur yang menyenangkan untuk penemuan diri, tantangan, dan perbandingan, bukan sebagai penilaian ilmiah, akademik, profesional, atau resmi. Tidak ada skor lulus atau gagal yang universal. Setiap tantangan dirancang untuk memberikan pengalaman yang menarik dari awal hingga akhir.",
+    "passFailNotice": "Tidak ada skor lulus atau gagal yang universal. Setiap tantangan dirancang untuk memberikan pengalaman yang menarik dari awal hingga akhir.",
+    "restartNote": "Progresmu akan dihapus dan tantangan akan dimulai ulang.",
     "featureCards": [
       {
-        "title": "Logika dan penalaran",
-        "body": "Berpikir jernih."
+        "title": "Berpikir jernih",
+        "body": "Pertimbangkan pilihanmu."
       },
       {
         "title": "Pengenalan pola",
-        "body": "Temukan yang terlewat orang lain."
+        "body": "Perhatikan detail yang berguna."
       },
       {
-        "title": "Keputusan cepat",
-        "body": "Jawab dengan percaya diri."
+        "title": "Pilihan percaya diri",
+        "body": "Pilih jawabanmu."
       }
     ]
   },

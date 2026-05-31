@@ -58,6 +58,7 @@ export function Header({ currentPath, locale, translations }: HeaderProps) {
           languageLabel={translations.locale.switcherLabel}
           languageLinks={languageLinks}
           navLinks={navLinks}
+          quickLinksLabel={translations.nav.quickLinks}
         />
       </div>
     </header>

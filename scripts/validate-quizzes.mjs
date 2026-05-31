@@ -9,6 +9,8 @@ const publicDir = path.join(rootDir, "public");
 const defaultLocale = "en";
 const skippedQuizDirs = new Set(["example-template"]);
 const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
+const safeImageVisualPattern =
+  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
 
 const errors = [];
 const warnings = [];
@@ -135,9 +137,11 @@ function validateLanding(landing, fileName) {
     return;
   }
 
-  ["quickStartText", "socialProof"].forEach((field) => {
-    requireString(landing[field], `landing.${field}`, fileName);
-  });
+  if (typeof landing.quickStartText !== "string") {
+    addError(`${fileName}: "landing.quickStartText" must be a string.`);
+  }
+
+  requireString(landing.socialProof, "landing.socialProof", fileName);
 
   if (landing.challengeText !== undefined) {
     requireString(landing.challengeText, "landing.challengeText", fileName);
@@ -166,6 +170,10 @@ function validateResult(result, fileName) {
 
     if (typeof profile.minRatio !== "number" || profile.minRatio < 0 || profile.minRatio > 1) {
       addError(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
+    }
+
+    if (profile.id !== undefined) {
+      requireString(profile.id, `result.profiles[${index}].id`, fileName);
     }
 
     ["tier", "title", "copy", "percentile"].forEach((field) => {
@@ -216,11 +224,23 @@ function validateQuestion(question, fileName, questionPath, stageIndex) {
     addError(`${fileName}: "${questionPath}.answerIndex" must point to one of the choices.`);
   }
 
+  if (question.choiceProfileIds !== undefined) {
+    if (!Array.isArray(question.choiceProfileIds) || question.choiceProfileIds.length !== (question.choices?.length ?? 0)) {
+      addError(`${fileName}: "${questionPath}.choiceProfileIds" must contain one profile id for each choice.`);
+    } else {
+      question.choiceProfileIds.forEach((profileId, index) => {
+        requireString(profileId, `${questionPath}.choiceProfileIds[${index}]`, fileName);
+      });
+    }
+  }
+
   requireString(question.explanation, `${questionPath}.explanation`, fileName);
   requireString(question.category, `${questionPath}.category`, fileName);
 
-  if (question.visual !== undefined && typeof question.visual !== "string") {
-    addError(`${fileName}: "${questionPath}.visual" must be a string when provided.`);
+  if (question.visual !== undefined) {
+    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
+      addError(`${fileName}: "${questionPath}.visual" must be a safe local legacy-question-image <img> tag.`);
+    }
   }
 
   if (question.stage !== undefined && question.stage !== stageIndex) {
@@ -313,6 +333,10 @@ function validateQuizFile(filePath, options = {}) {
     addError(`${fileName}: "difficulty" must be one of Quick, Medium, Hard, or Expert.`);
   }
 
+  if (quiz.mode !== undefined && quiz.mode !== "scored" && quiz.mode !== "personality") {
+    addError(`${fileName}: "mode" must be either "scored" or "personality" when provided.`);
+  }
+
   if (quiz.questionCount !== undefined && (!Number.isInteger(quiz.questionCount) || quiz.questionCount < 1)) {
     addError(`${fileName}: "questionCount" must be a positive integer when provided.`);
   }
@@ -362,7 +386,7 @@ function validateQuizFile(filePath, options = {}) {
   const scoredCategories = new Set(scoreDimensions.flatMap((dimension) => dimension.categories ?? []));
   const unscoredCategories = [...usedCategories].filter((category) => category && !scoredCategories.has(category));
 
-  if (unscoredCategories.length) {
+  if (quiz.mode !== "personality" && unscoredCategories.length) {
     addWarning(`${fileName}: question categories not used in result.scoreDimensions: ${unscoredCategories.join(", ")}.`);
   }
 
@@ -408,6 +432,10 @@ function assertTranslatedStructure(translated, canonical, fileName) {
     if (profile.minRatio !== canonical.profiles[index]?.minRatio) {
       addError(`${fileName}: result.profiles[${index}].minRatio must match en.json.`);
     }
+
+    if ((profile.id ?? "") !== (canonical.profiles[index]?.id ?? "")) {
+      addError(`${fileName}: result.profiles[${index}].id must match en.json.`);
+    }
   });
 
   translated.scoreDimensions.forEach((dimension, index) => {
@@ -445,6 +473,10 @@ function assertTranslatedStructure(translated, canonical, fileName) {
 
     if (question.category !== canonicalQuestion.category) {
       addError(`${fileName}: question ${index + 1} category must match en.json.`);
+    }
+
+    if ((question.choiceProfileIds ?? []).join("\u0000") !== (canonicalQuestion.choiceProfileIds ?? []).join("\u0000")) {
+      addError(`${fileName}: question ${index + 1} choiceProfileIds must match en.json.`);
     }
   });
 }

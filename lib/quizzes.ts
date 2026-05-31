@@ -6,6 +6,7 @@ export type QuizQuestion = {
   prompt: string;
   choices: string[];
   answerIndex: number;
+  choiceProfileIds?: string[];
   explanation?: string;
   visual?: string;
   category?: string;
@@ -52,6 +53,7 @@ export type QuizLanding = {
 };
 
 export type QuizResultProfile = {
+  id?: string;
   minRatio: number;
   tier: string;
   title: string;
@@ -72,6 +74,7 @@ export type QuizResultConfig = {
 
 export type Quiz = {
   slug: string;
+  mode?: "scored" | "personality";
   title: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -79,6 +82,7 @@ export type Quiz = {
   eyebrow: string;
   summary: string;
   duration: string;
+  publishedAt: string;
   questionCount: number;
   difficulty: "Quick" | "Medium" | "Hard" | "Expert";
   passRate: string;
@@ -105,6 +109,8 @@ const TEMPLATE_DIRECTORY_NAME = "example-template";
 const QUIZ_SCHEMA_FILE_NAME = "schema.json";
 const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const supportedLocaleValues = new Set(getSupportedLocales());
+const safeImageVisualPattern =
+  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
 
 function assertString(value: unknown, field: string, fileName: string) {
   if (typeof value !== "string" || value.trim().length === 0) {
@@ -115,6 +121,16 @@ function assertString(value: unknown, field: string, fileName: string) {
 function assertStringArray(value: unknown, field: string, fileName: string) {
   if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
     throw new Error(`${fileName}: "${field}" must be a non-empty string array.`);
+  }
+}
+
+function assertIsoDateTime(value: unknown, field: string, fileName: string) {
+  assertString(value, field, fileName);
+
+  const parsedDate = Date.parse(value as string);
+
+  if (Number.isNaN(parsedDate)) {
+    throw new Error(`${fileName}: "${field}" must be a valid ISO date-time string.`);
   }
 }
 
@@ -144,8 +160,26 @@ function validateQuestion(value: unknown, index: number, fileName: string, stage
     throw new Error(`${fileName}: "questions[${index}].answerIndex" must point to one of the choices.`);
   }
 
+  if (question.choiceProfileIds !== undefined) {
+    if (
+      !Array.isArray(question.choiceProfileIds) ||
+      question.choiceProfileIds.length !== choices.length ||
+      question.choiceProfileIds.some((id) => typeof id !== "string" || id.trim().length === 0)
+    ) {
+      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must contain one non-empty profile id for each choice.`);
+    }
+  }
+
   if (stage !== undefined && (!Number.isInteger(stage) || typeof stage !== "number" || stage < 0)) {
     throw new Error(`${fileName}: "questions[${index}].stage" must be a zero-based number when provided.`);
+  }
+
+  if (question.visual !== undefined) {
+    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
+      throw new Error(
+        `${fileName}: "questions[${index}].visual" must be a safe local legacy-question-image <img> tag with a /quizzes/... image src.`,
+      );
+    }
   }
 
   return {
@@ -237,7 +271,9 @@ function validateLanding(value: unknown, fileName: string): QuizLanding {
   }
 
   const landing = value as Record<string, unknown>;
-  assertString(landing.quickStartText, "landing.quickStartText", fileName);
+  if (typeof landing.quickStartText !== "string") {
+    throw new Error(`${fileName}: "landing.quickStartText" must be a string.`);
+  }
   if (landing.challengeText !== undefined) {
     assertString(landing.challengeText, "landing.challengeText", fileName);
   }
@@ -267,6 +303,10 @@ function validateResult(value: unknown, fileName: string): QuizResultConfig {
 
     if (typeof item.minRatio !== "number" || item.minRatio < 0 || item.minRatio > 1) {
       throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
+    }
+
+    if (item.id !== undefined) {
+      assertString(item.id, `result.profiles[${index}].id`, fileName);
     }
 
     assertString(item.tier, `result.profiles[${index}].tier`, fileName);
@@ -399,6 +439,10 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
   }
 
   const quiz = value as Record<string, unknown>;
+  if (quiz.mode !== undefined && quiz.mode !== "scored" && quiz.mode !== "personality") {
+    throw new Error(`${fileName}: "mode" must be either "scored" or "personality" when provided.`);
+  }
+
   const requiredStrings = [
     "slug",
     "title",
@@ -406,6 +450,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     "eyebrow",
     "summary",
     "duration",
+    "publishedAt",
     "passRate",
     "cardIcon",
     "cardGradient",
@@ -413,6 +458,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
   ];
 
   requiredStrings.forEach((field) => assertString(quiz[field], field, fileName));
+  assertIsoDateTime(quiz.publishedAt, "publishedAt", fileName);
 
   ["seoTitle", "seoDescription"].forEach((field) => {
     if (quiz[field] !== undefined && typeof quiz[field] !== "string") {
@@ -456,6 +502,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
 
   return {
     slug: quiz.slug,
+    mode: quiz.mode as Quiz["mode"],
     title: quiz.title,
     seoTitle: quiz.seoTitle,
     seoDescription: quiz.seoDescription,
@@ -463,6 +510,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
     eyebrow: quiz.eyebrow,
     summary: quiz.summary,
     duration: quiz.duration,
+    publishedAt: quiz.publishedAt,
     questionCount,
     difficulty: difficulty as Quiz["difficulty"],
     passRate: quiz.passRate,
@@ -565,6 +613,10 @@ function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz
     if (profile.minRatio !== canonicalQuiz.result.profiles[index].minRatio) {
       throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must match en.json.`);
     }
+
+    if ((profile.id ?? "") !== (canonicalQuiz.result.profiles[index].id ?? "")) {
+      throw new Error(`${fileName}: "result.profiles[${index}].id" must match en.json.`);
+    }
   });
 
   translatedQuiz.result.scoreDimensions.forEach((dimension, index) => {
@@ -592,6 +644,10 @@ function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz
 
     if (question.category !== canonicalQuestion.category) {
       throw new Error(`${fileName}: "questions[${index}].category" must match en.json.`);
+    }
+
+    if ((question.choiceProfileIds ?? []).join("\u0000") !== (canonicalQuestion.choiceProfileIds ?? []).join("\u0000")) {
+      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must match en.json.`);
     }
   });
 }

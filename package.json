@@ -7,9 +7,10 @@
     "build": "next build",
     "postbuild": "node scripts/postprocess-html-lang.mjs",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "tsc --noEmit && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs",
     "validate": "node scripts/validate-quizzes.mjs",
-    "validate:quizzes": "node scripts/validate-quizzes.mjs"
+    "validate:quizzes": "node scripts/validate-quizzes.mjs",
+    "validate:production": "node scripts/validate-production.mjs"
   },
   "dependencies": {
     "next": "15.5.18",

@@ -401,7 +401,13 @@ Available placeholders:
 - `showRewardedAdBeforeStageResults()`
 - `showRewardedAdBeforeFinalResults()`
 
-They currently resolve successfully without showing an ad. Add Google Ad Manager rewarded ad code inside `lib/rewardedAds.ts` when the real ad unit paths and reward flow are ready.
+The live Google Ad Manager rewarded ad unit path is configured in `lib/siteConfig.ts`:
+
+```text
+/22677279144/display
+```
+
+The quiz runner requests a rewarded out-of-page slot and advances after `rewardedSlotGranted`. It tries up to 3 times when no ad is available or an error occurs, then falls back and continues so users are not blocked. If a user closes an ad before reward is granted, the gate reopens another ad and does not continue until a reward is completed or the no-ad/error fallback is reached.
 
 ## Generated Files
 

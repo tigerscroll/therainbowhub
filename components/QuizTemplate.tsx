@@ -1,6 +1,9 @@
 import { QuizRunner } from "@/components/QuizRunner";
-import type { SupportedLocale, Translations } from "@/lib/i18n";
+import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
+import { getAllQuizzes } from "@/lib/quizzes";
 import type { Quiz } from "@/lib/quizzes";
+import { absoluteUrl, getQuizPath } from "@/lib/seo";
+import { siteConfig } from "@/lib/siteConfig";
 
 type QuizTemplateProps = {
   locale: SupportedLocale;
@@ -9,5 +12,46 @@ type QuizTemplateProps = {
 };
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
-  return <QuizRunner locale={locale} quiz={quiz} translations={translations} />;
+  const relatedQuizzes = getAllQuizzes(locale, { includeFallback: false })
+    .filter((item) => item.slug !== quiz.slug)
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt) || a.title.localeCompare(b.title))
+    .slice(0, 4)
+    .map((item) => ({
+      accent: item.accent,
+      duration: item.duration,
+      href: getLocalePath(locale, `/${item.slug}`),
+      icon: item.homepage.icon ?? item.cardIcon,
+      passRate: item.passRate,
+      summary: item.homepage.summary ?? item.summary,
+      thumbnailAlt: item.homepage.thumbnailAlt ?? item.title,
+      thumbnailUrl: item.homepage.thumbnailUrl,
+      title: item.homepage.title ?? item.title,
+    }));
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    name: quiz.homepage.title ?? quiz.title,
+    description: quiz.seoDescription ?? quiz.summary,
+    inLanguage: locale,
+    numberOfQuestions: quiz.questions.length,
+    url: absoluteUrl(getQuizPath(locale, quiz.slug)),
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <QuizRunner locale={locale} quiz={quiz} relatedQuizzes={relatedQuizzes} translations={translations} />
+    </>
+  );
 }

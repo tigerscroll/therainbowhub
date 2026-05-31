@@ -2,7 +2,7 @@
   "locale": {
     "code": "pl",
     "name": "Polish",
-    "switcherLabel": "Language"
+    "switcherLabel": "Język"
   },
   "site": {
     "name": "The Rainbow Hub",
@@ -11,7 +11,8 @@
   "nav": {
     "home": "Strona glowna",
     "categories": "Kategorie",
-    "quizzes": "Quizy"
+    "quizzes": "Quizy",
+    "quickLinks": "Szybkie linki"
   },
   "footer": {
     "description": "Szybkie, mobilne testy IQ i wyzwania akademickie.",
@@ -19,15 +20,15 @@
     "company": "Firma",
     "legal": "Prawne",
     "rights": "Wszelkie prawa zastrzezone.",
-    "lastUpdated": "Last updated May 24, 2026.",
+    "lastUpdated": "Ostatnia aktualizacja: 24 maja 2026.",
     "links": {
       "about": "O nas",
       "contact": "Kontakt",
-      "accessibility": "Dostepnosc",
-      "privacyPolicy": "Polityka prywatnosci",
+      "accessibility": "Dostępność",
+      "privacyPolicy": "Polityka prywatności",
       "cookiePolicy": "Polityka cookies",
       "termsOfUse": "Warunki korzystania",
-      "disclaimer": "Zastrzezenie"
+      "disclaimer": "Zastrzeżenie"
     }
   },
   "home": {
@@ -35,7 +36,7 @@
     "quizzesLabel": "quizy",
     "headlinePrefix": "Szybkie quizy.",
     "headlineHighlight": "Bystrzejszy umysl.",
-    "intro": "Szybkie, mobilne testy IQ i wyzwania akademickie.",
+    "intro": "Krótkie wyzwania z IQ, słownictwa, logiki, nauki i wiedzy ogólnej. Wybierz jedno; większość zajmuje około 6 minut.",
     "startPrefix": "Rozpocznij test",
     "browseAll": "Przegladaj wszystkie",
     "stats": {
@@ -66,11 +67,14 @@
     "continue": "Kontynuuj",
     "revealPrefix": "Pokaz moj",
     "profile": "Profil",
-    "preparingResults": "Przygotowywanie wynikow...",
+    "preparingResults": "Przygotowywanie wyników...",
     "profileReady": "Twoj profil jest gotowy",
     "your": "Twoj",
-    "finalScore": "Wynik koncowy",
-    "restartTest": "Uruchom test ponownie"
+    "finalScore": "Wynik końcowy",
+    "restartTest": "Uruchom test ponownie",
+    "tryAnotherChallenge": "Spróbuj Innego Wyzwania",
+    "step": "Krok",
+    "answered": "Odpowiedziano"
   },
   "results": {
     "complete": "Ukonczono",
@@ -103,9 +107,18 @@
     "ad": "Ladowanie reklamy..."
   },
   "rewardedAd": {
+    "gate": {
+      "beforeTitle": "Zanim przejdziesz dalej...",
+      "stepOne": "Obejrzyj krótką reklamę.",
+      "stepTwo": "Gdy się skończy, stuknij przycisk zamykania w prawym górnym rogu, aby zacząć."
+    },
     "helper": "Obejrzyj krotka reklame, aby kontynuowac.",
     "granted": "Nagroda przyznana.",
-    "closed": "Wiadomosc sponsora zamknieta."
+    "closed": "Wiadomosc sponsora zamknieta.",
+    "status": {
+      "closedWithoutReward": "Obejrzyj reklamę do końca, aby kontynuować. Otwieranie ponownie...",
+      "retryUnavailable": "Nie było dostępnej reklamy. Ponowna próba {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Nie znaleziono strony",
@@ -114,41 +127,41 @@
   },
   "localizedPages": {
     "about": "Szybkie, mobilne testy IQ i wyzwania akademickie.",
-    "contact": "Kontakt",
-    "accessibility": "Dostepnosc",
-    "privacyPolicy": "Polityka prywatnosci",
+    "contact": "W przypadku pytań o quizy, prywatność, dostępność lub problemy z witryną skorzystaj ze strony Kontakt.",
+    "accessibility": "Dostępność",
+    "privacyPolicy": "Polityka prywatności",
     "cookiePolicy": "Polityka cookies",
     "termsOfUse": "Warunki korzystania",
-    "disclaimer": "Zastrzezenie"
+    "disclaimer": "Zastrzeżenie"
   },
   "quizFooter": {
     "howItWorksTitle": "Jak działa wyzwanie",
-    "howItWorksBody": "Quiz przebiega przez kilka etapów. Pierwsze rundy skupiają się na szybkiej obserwacji i przystępnych pytaniach, a późniejsze etapy wprowadzają bardziej złożone rozumowanie, zmieniające się wzorce, uważne porównania i nietypowe pytania sprawdzające elastyczne myślenie. Każdy etap opiera się na poprzednim i zachęca do szybkich decyzji, uwagi na szczegóły oraz dostosowania się pod presją.",
-    "whatThisTestsTitle": "Co sprawdza ten quiz",
-    "whatThisTestsBody": "Zamiast mierzyć jedną wąską dziedzinę, to wyzwanie sprawdza szerokie umiejętności quizowe przydatne w wielu tematach:",
+    "howItWorksBody": "Wyzwanie przebiega przez kilka etapów. Pierwsze rundy skupiają się na przystępnych pytaniach i szybkich decyzjach, a późniejsze etapy mogą wprowadzać bardziej złożone pomysły, zmieniające się wzorce, uważne porównania lub nieznane scenariusze. Każdy etap opiera się na poprzednim, zachęcając do skupienia, uwagi na szczegóły, elastyczności i pewnego podejmowania decyzji.",
+    "whatThisTestsTitle": "Co bada",
+    "whatThisTestsBody": "Zamiast skupiać się na jednym temacie, to wyzwanie bada zakres umiejętności, preferencji i sposobów myślenia, które mogą mieć znaczenie w różnych sytuacjach:",
     "testBullets": [
-      "Dostrzeganie ukrytych wzorców",
-      "Rozpoznawanie przydatnych wskazówek",
-      "Ważenie dowodów",
-      "Wykrywanie niespójności",
-      "Dostosowanie się do nietypowych pytań"
+      "Rozpoznawanie wzorców i powiązań",
+      "Identyfikowanie istotnych informacji",
+      "Ocenianie opcji i dowodów",
+      "Dostrzeganie szczegółów i niespójności",
+      "Dostosowywanie się do nowych pytań i scenariuszy"
     ],
-    "scoringTitle": "Wynik i wyjaśnienia",
-    "scoringBody": "Każde pytanie ma jedną poprawną odpowiedź i krótkie wyjaśnienie. Wyniki są zabawnym punktem odniesienia do samodzielnego wyzwania i porównania, a nie oceną akademicką, zawodową ani oficjalną.",
-    "passFailNotice": "Nie ma wyniku zaliczenia ani porażki. Wyzwanie stopniowo staje się trudniejsze.",
-    "restartNote": "Twój postęp zostanie wyczyszczony, a wyzwanie rozpocznie się od nowa.",
+    "scoringTitle": "Wyniki i rezultaty",
+    "scoringBody": "Pytania mogą zawierać wyjaśnienia, spostrzeżenia lub dodatkowy kontekst w miarę postępów. Wyniki i rezultaty mają być zabawnym punktem odniesienia do samopoznania, wyzwania i porównania, a nie oceną naukową, akademicką, zawodową czy oficjalną. Nie ma uniwersalnego wyniku zaliczenia ani niezaliczenia. Każde wyzwanie ma zapewniać angażujące doświadczenie od początku do końca.",
+    "passFailNotice": "Nie ma uniwersalnego wyniku zaliczenia ani niezaliczenia. Każde wyzwanie ma zapewniać angażujące doświadczenie od początku do końca.",
+    "restartNote": "Twój postęp zostanie usunięty, a wyzwanie zacznie się od nowa.",
     "featureCards": [
       {
-        "title": "Logika i rozumowanie",
-        "body": "Myśl jasno."
+        "title": "Jasne myślenie",
+        "body": "Rozważ swoje opcje."
       },
       {
         "title": "Rozpoznawanie wzorców",
-        "body": "Znajdź to, co inni przeoczą."
+        "body": "Zauważ przydatne szczegóły."
       },
       {
-        "title": "Szybkie decyzje",
-        "body": "Odpowiadaj pewnie."
+        "title": "Pewne wybory",
+        "body": "Wybierz odpowiedź."
       }
     ]
   },

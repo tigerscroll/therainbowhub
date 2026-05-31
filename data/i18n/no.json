@@ -2,7 +2,7 @@
   "locale": {
     "code": "no",
     "name": "Norwegian",
-    "switcherLabel": "Language"
+    "switcherLabel": "Språk"
   },
   "site": {
     "name": "The Rainbow Hub",
@@ -11,7 +11,8 @@
   "nav": {
     "home": "Hjem",
     "categories": "Kategorier",
-    "quizzes": "Quizer"
+    "quizzes": "Quizer",
+    "quickLinks": "Hurtiglenker"
   },
   "footer": {
     "description": "Raske mobilvennlige IQ- og akademiske quizer.",
@@ -19,23 +20,23 @@
     "company": "Selskap",
     "legal": "Juridisk",
     "rights": "Alle rettigheter forbeholdt.",
-    "lastUpdated": "Last updated May 24, 2026.",
+    "lastUpdated": "Sist oppdatert 24. mai 2026.",
     "links": {
       "about": "Om oss",
       "contact": "Kontakt",
       "accessibility": "Tilgjengelighet",
-      "privacyPolicy": "Personvernerklaering",
+      "privacyPolicy": "Personvernerklæring",
       "cookiePolicy": "Cookiepolicy",
-      "termsOfUse": "Bruksvilkar",
+      "termsOfUse": "Bruksvilkår",
       "disclaimer": "Ansvarsfraskrivelse"
     }
   },
   "home": {
-    "liveLabel": "Live",
+    "liveLabel": "Aktiv",
     "quizzesLabel": "quizer",
     "headlinePrefix": "Raske quizer.",
     "headlineHighlight": "Skarpere sinn.",
-    "intro": "Raske mobilvennlige IQ- og akademiske quizer.",
+    "intro": "Korte utfordringer innen IQ, ordforråd, logikk, vitenskap og allmennkunnskap. Velg én; de fleste tar rundt 6 minutter.",
     "startPrefix": "Start test",
     "browseAll": "Bla gjennom alle",
     "stats": {
@@ -70,7 +71,10 @@
     "profileReady": "Profilen din er klar",
     "your": "Din",
     "finalScore": "Sluttpoeng",
-    "restartTest": "Start testen pa nytt"
+    "restartTest": "Start testen på nytt",
+    "tryAnotherChallenge": "Prøv En Annen Utfordring",
+    "step": "Trinn",
+    "answered": "Besvart"
   },
   "results": {
     "complete": "Fullfort",
@@ -103,9 +107,18 @@
     "ad": "Laster annonse..."
   },
   "rewardedAd": {
+    "gate": {
+      "beforeTitle": "Før du fortsetter...",
+      "stepOne": "Se en kort annonse.",
+      "stepTwo": "Når den er ferdig, trykker du på lukkeknappen øverst til høyre for å starte."
+    },
     "helper": "Se en kort annonse for a fortsette.",
     "granted": "Belonning gitt.",
-    "closed": "Sponsorbeskjed lukket."
+    "closed": "Sponsorbeskjed lukket.",
+    "status": {
+      "closedWithoutReward": "Fullfør annonsen for å fortsette. Åpner igjen...",
+      "retryUnavailable": "Ingen annonse var tilgjengelig. Prøver igjen {attempt}/{max}"
+    }
   },
   "error": {
     "notFoundTitle": "Siden finnes ikke",
@@ -114,41 +127,41 @@
   },
   "localizedPages": {
     "about": "Raske mobilvennlige IQ- og akademiske quizer.",
-    "contact": "Kontakt",
+    "contact": "Bruk kontaktsiden for spørsmål om quizer, personvern, tilgjengelighet eller problemer med nettstedet.",
     "accessibility": "Tilgjengelighet",
-    "privacyPolicy": "Personvernerklaering",
+    "privacyPolicy": "Personvernerklæring",
     "cookiePolicy": "Cookiepolicy",
-    "termsOfUse": "Bruksvilkar",
+    "termsOfUse": "Bruksvilkår",
     "disclaimer": "Ansvarsfraskrivelse"
   },
   "quizFooter": {
     "howItWorksTitle": "Slik fungerer utfordringen",
-    "howItWorksBody": "Quizen går gjennom flere etapper. De første rundene handler om raske observasjoner og tilgjengelige spørsmål, mens senere etapper introduserer mer sammensatt resonnering, skiftende mønstre, nøye sammenligninger og ukjente spørsmål som tester fleksibel tenkning. Hver etappe bygger på den forrige og oppmuntrer til raske beslutninger, oppmerksomhet på detaljer og tilpasning under press.",
-    "whatThisTestsTitle": "Hva denne quizen tester",
-    "whatThisTestsBody": "I stedet for å måle ett smalt tema utforsker denne utfordringen brede quizferdigheter som hjelper på tvers av mange emner:",
+    "howItWorksBody": "Utfordringen foregår gjennom flere trinn. De første rundene fokuserer på tilgjengelige spørsmål og raske beslutninger, mens senere trinn kan introdusere mer komplekse ideer, skiftende mønstre, nøye sammenligninger eller ukjente scenarioer. Hvert trinn bygger på det forrige og oppmuntrer til fokus, oppmerksomhet på detaljer, tilpasningsevne og trygge beslutninger.",
+    "whatThisTestsTitle": "Hva den utforsker",
+    "whatThisTestsBody": "I stedet for å fokusere på ett enkelt tema utforsker denne utfordringen en rekke ferdigheter, preferanser og måter å tenke på som kan være relevante i ulike situasjoner:",
     "testBullets": [
-      "Oppdage skjulte mønstre",
-      "Finne nyttige spor",
-      "Vurdere bevis",
-      "Gjenkjenne inkonsekvenser",
-      "Tilpasse seg ukjente spørsmål"
+      "Gjenkjenne mønstre og sammenhenger",
+      "Identifisere relevant informasjon",
+      "Vurdere alternativer og bevis",
+      "Legge merke til detaljer og inkonsekvenser",
+      "Tilpasse seg nye spørsmål og scenarioer"
     ],
-    "scoringTitle": "Poeng og forklaringer",
-    "scoringBody": "Hvert spørsmål har ett riktig svar og en kort forklaring. Poengene er ment som en morsom målestokk for egen utfordring og sammenligning, ikke som en akademisk, profesjonell eller offisiell vurdering.",
-    "passFailNotice": "Det finnes ingen bestått- eller strykgrense. Utfordringen blir gradvis vanskeligere etter hvert som du går videre.",
+    "scoringTitle": "Poeng og resultater",
+    "scoringBody": "Spørsmål kan inneholde forklaringer, innsikt eller ekstra kontekst etter hvert som du går videre. Poeng og resultater er ment som en morsom målestokk for selvoppdagelse, utfordring og sammenligning, ikke som en vitenskapelig, akademisk, profesjonell eller offisiell vurdering. Det finnes ingen universell bestått- eller strykgrense. Hver utfordring er laget for å gi en engasjerende opplevelse fra start til slutt.",
+    "passFailNotice": "Det finnes ingen universell bestått- eller strykgrense. Hver utfordring er laget for å gi en engasjerende opplevelse fra start til slutt.",
     "restartNote": "Fremgangen din blir slettet, og utfordringen starter på nytt.",
     "featureCards": [
       {
-        "title": "Logikk og resonnering",
-        "body": "Tenk klart."
+        "title": "Klar tenkning",
+        "body": "Vurder alternativene dine."
       },
       {
         "title": "Mønstergjenkjenning",
-        "body": "Finn det andre overser."
+        "body": "Legg merke til nyttige detaljer."
       },
       {
-        "title": "Raske beslutninger",
-        "body": "Svar med selvtillit."
+        "title": "Trygge valg",
+        "body": "Velg svaret ditt."
       }
     ]
   },
