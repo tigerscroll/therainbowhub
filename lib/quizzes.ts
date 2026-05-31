@@ -6,6 +6,7 @@ export type QuizQuestion = {
   prompt: string;
   choices: string[];
   answerIndex: number;
+  choiceProfileIds?: string[];
   explanation?: string;
   visual?: string;
   category?: string;
@@ -52,6 +53,7 @@ export type QuizLanding = {
 };
 
 export type QuizResultProfile = {
+  id?: string;
   minRatio: number;
   tier: string;
   title: string;
@@ -72,6 +74,7 @@ export type QuizResultConfig = {
 
 export type Quiz = {
   slug: string;
+  mode?: "scored" | "personality";
   title: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -153,6 +156,16 @@ function validateQuestion(value: unknown, index: number, fileName: string, stage
 
   if (!Number.isInteger(answerIndex) || typeof answerIndex !== "number" || answerIndex < 0 || answerIndex >= choices.length) {
     throw new Error(`${fileName}: "questions[${index}].answerIndex" must point to one of the choices.`);
+  }
+
+  if (question.choiceProfileIds !== undefined) {
+    if (
+      !Array.isArray(question.choiceProfileIds) ||
+      question.choiceProfileIds.length !== choices.length ||
+      question.choiceProfileIds.some((id) => typeof id !== "string" || id.trim().length === 0)
+    ) {
+      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must contain one non-empty profile id for each choice.`);
+    }
   }
 
   if (stage !== undefined && (!Number.isInteger(stage) || typeof stage !== "number" || stage < 0)) {
@@ -248,7 +261,9 @@ function validateLanding(value: unknown, fileName: string): QuizLanding {
   }
 
   const landing = value as Record<string, unknown>;
-  assertString(landing.quickStartText, "landing.quickStartText", fileName);
+  if (typeof landing.quickStartText !== "string") {
+    throw new Error(`${fileName}: "landing.quickStartText" must be a string.`);
+  }
   if (landing.challengeText !== undefined) {
     assertString(landing.challengeText, "landing.challengeText", fileName);
   }
@@ -278,6 +293,10 @@ function validateResult(value: unknown, fileName: string): QuizResultConfig {
 
     if (typeof item.minRatio !== "number" || item.minRatio < 0 || item.minRatio > 1) {
       throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
+    }
+
+    if (item.id !== undefined) {
+      assertString(item.id, `result.profiles[${index}].id`, fileName);
     }
 
     assertString(item.tier, `result.profiles[${index}].tier`, fileName);
@@ -410,6 +429,10 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
   }
 
   const quiz = value as Record<string, unknown>;
+  if (quiz.mode !== undefined && quiz.mode !== "scored" && quiz.mode !== "personality") {
+    throw new Error(`${fileName}: "mode" must be either "scored" or "personality" when provided.`);
+  }
+
   const requiredStrings = [
     "slug",
     "title",
@@ -469,6 +492,7 @@ function validateQuiz(value: unknown, fileName: string): Quiz {
 
   return {
     slug: quiz.slug,
+    mode: quiz.mode as Quiz["mode"],
     title: quiz.title,
     seoTitle: quiz.seoTitle,
     seoDescription: quiz.seoDescription,
@@ -579,6 +603,10 @@ function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz
     if (profile.minRatio !== canonicalQuiz.result.profiles[index].minRatio) {
       throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must match en.json.`);
     }
+
+    if ((profile.id ?? "") !== (canonicalQuiz.result.profiles[index].id ?? "")) {
+      throw new Error(`${fileName}: "result.profiles[${index}].id" must match en.json.`);
+    }
   });
 
   translatedQuiz.result.scoreDimensions.forEach((dimension, index) => {
@@ -606,6 +634,10 @@ function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz
 
     if (question.category !== canonicalQuestion.category) {
       throw new Error(`${fileName}: "questions[${index}].category" must match en.json.`);
+    }
+
+    if ((question.choiceProfileIds ?? []).join("\u0000") !== (canonicalQuestion.choiceProfileIds ?? []).join("\u0000")) {
+      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must match en.json.`);
     }
   });
 }

@@ -27,6 +27,10 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
+    "mode": {
+      "type": "string",
+      "enum": ["scored", "personality"]
+    },
     "title": { "type": "string", "minLength": 1 },
     "seoTitle": { "type": "string", "minLength": 1 },
     "seoDescription": { "type": "string", "minLength": 1 },
@@ -62,7 +66,7 @@
       "additionalProperties": false,
       "required": ["quickStartText", "socialProof"],
       "properties": {
-        "quickStartText": { "type": "string", "minLength": 1 },
+        "quickStartText": { "type": "string" },
         "challengeText": { "type": "string", "minLength": 1 },
         "socialProof": { "type": "string", "minLength": 1 }
       }
@@ -172,6 +176,11 @@
           "items": { "type": "string", "minLength": 1 }
         },
         "answerIndex": { "type": "integer", "minimum": 0 },
+        "choiceProfileIds": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        },
         "explanation": { "type": "string", "minLength": 1 },
         "visual": { "type": "string" },
         "category": { "type": "string", "minLength": 1 },
@@ -197,6 +206,7 @@
       "additionalProperties": false,
       "required": ["minRatio", "tier", "title", "copy", "percentile"],
       "properties": {
+        "id": { "type": "string", "minLength": 1 },
         "minRatio": { "type": "number", "minimum": 0, "maximum": 1 },
         "tier": { "type": "string", "minLength": 1 },
         "title": { "type": "string", "minLength": 1 },

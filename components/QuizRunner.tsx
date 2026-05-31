@@ -159,8 +159,8 @@ function createQuizRunnerHtml(config: {
         </div>
         <div class="legacy-stage-stats">
           <div>
-            <span><strong data-js="stage-round-score"></strong><em>${escapeHtml(translations.results.roundResult)}</em></span>
-            <span><strong data-js="stage-score"></strong><em>${escapeHtml(translations.results.scoreSoFar)}</em></span>
+            <span><strong data-js="stage-round-score"></strong><em data-js="stage-round-score-label">${escapeHtml(translations.results.roundResult)}</em></span>
+            <span><strong data-js="stage-score"></strong><em data-js="stage-score-label">${escapeHtml(translations.results.scoreSoFar)}</em></span>
           </div>
         </div>
         <div data-js="stage-trail" class="legacy-stage-trail" aria-hidden="true"></div>
@@ -193,11 +193,11 @@ function createQuizRunnerHtml(config: {
         <div class="legacy-result-scoreboard">
           <div class="legacy-score legacy-score-primary">
             <strong data-js="final-score"></strong>
-            <span>${escapeHtml(translations.quiz.finalScore)}</span>
+            <span data-js="final-score-label">${escapeHtml(translations.quiz.finalScore)}</span>
           </div>
           <div class="legacy-score">
             <strong data-js="percentile"></strong>
-            <span>${escapeHtml(translations.quiz.profile)}</span>
+            <span data-js="percentile-label">${escapeHtml(translations.quiz.profile)}</span>
           </div>
         </div>
         <div class="legacy-result-meter" aria-hidden="true"><span data-js="result-meter-fill"></span></div>
@@ -234,11 +234,13 @@ function createQuizRunnerScript(config: {
 
     var quiz = config.quiz;
     var t = config.translations;
+    var isPersonalityQuiz = quiz.mode === "personality";
     var current = 0;
     var answers = {};
     var advanceTimer = null;
     var hasUnlockedReview = false;
     var useStartAdGate = false;
+    var preloadedVisuals = {};
 
     try {
       useStartAdGate = new URLSearchParams(window.location.search).get("gate") === "1";
@@ -377,6 +379,22 @@ function createQuizRunnerScript(config: {
       return Promise.resolve(resolveWithoutAd(placement));
     }
 
+    function getVisualImageSrc(visualHtml) {
+      if (!visualHtml || typeof window.Image !== "function") return "";
+      var match = String(visualHtml).match(/<img\\b[^>]*\\bsrc=(["'])(.*?)\\1/i);
+      return match ? match[2] : "";
+    }
+
+    function preloadQuestionVisual(questionIndex) {
+      if (!isPersonalityQuiz) return;
+      var question = quiz.questions[questionIndex];
+      var src = question ? getVisualImageSrc(question.visual) : "";
+      if (!src || preloadedVisuals[src]) return;
+      preloadedVisuals[src] = true;
+      var image = new Image();
+      image.src = src;
+    }
+
     function getStageIndexes() {
       return Array.from(new Set(quiz.questions.map(function (question) {
         return question.stage || 0;
@@ -403,12 +421,22 @@ function createQuizRunnerScript(config: {
     }
 
     function getScore() {
+      if (isPersonalityQuiz) {
+        return getAnsweredCount();
+      }
+
       return quiz.questions.reduce(function (total, question, index) {
         return total + (answers[index] === question.answerIndex ? 1 : 0);
       }, 0);
     }
 
     function getStageScore(stage) {
+      if (isPersonalityQuiz) {
+        return getStageQuestions(stage).reduce(function (total, item) {
+          return total + (answers[item.index] !== undefined ? 1 : 0);
+        }, 0);
+      }
+
       return getStageQuestions(stage).reduce(function (total, item) {
         return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
       }, 0);
@@ -442,8 +470,9 @@ function createQuizRunnerScript(config: {
 
         button.disabled = true;
         button.classList.toggle("selected", isSelected);
-        button.classList.toggle("correct", isSelected && isCorrect);
-        button.classList.toggle("wrong", isSelected && !isCorrect);
+        button.classList.toggle("personality-selected", isPersonalityQuiz && isSelected);
+        button.classList.toggle("correct", !isPersonalityQuiz && isSelected && isCorrect);
+        button.classList.toggle("wrong", !isPersonalityQuiz && isSelected && !isCorrect);
         button.classList.toggle("is-dimmed", !isSelected);
       });
     }
@@ -457,7 +486,7 @@ function createQuizRunnerScript(config: {
 
       var currentStage = getQuestionStage(current);
       var stagePosition = getCurrentStagePosition(currentStage);
-      var stageTotal = 8;
+      var stageTotal = getStageQuestions(currentStage).length || 8;
       var stageIndexes = getStageIndexes();
       var stageNumber = stageIndexes.indexOf(currentStage) + 1;
       var visualBox = byData("visual");
@@ -504,6 +533,7 @@ function createQuizRunnerScript(config: {
         });
       });
 
+      preloadQuestionVisual(current + 1);
       show("question", shouldScroll);
     }
 
@@ -521,12 +551,13 @@ function createQuizRunnerScript(config: {
         question_index: current,
         stage: question.stage || 0,
         selected_answer_index: choiceIndex,
+        selected_profile_id: question.choiceProfileIds ? question.choiceProfileIds[choiceIndex] : undefined,
         correct: isCorrect
       });
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
-      }, isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
+      }, isPersonalityQuiz || isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
     }
 
     function advanceAfterAnswer(choiceIndex) {
@@ -585,8 +616,13 @@ function createQuizRunnerScript(config: {
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
+      root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
+      byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
-      byData("stage-score").textContent = getScore() + "/" + current;
+      byData("stage-round-score-label").textContent = isPersonalityQuiz ? "Round complete" : t.results.roundResult;
+      var personalityStageStatus = isPersonalityQuiz ? getPersonalityClarityStatus(completedStage) : null;
+      byData("stage-score").textContent = personalityStageStatus ? personalityStageStatus.title : getScore() + "/" + current;
+      byData("stage-score-label").textContent = personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
       byData("stage-trail").innerHTML = stageIndexes.map(function (stage, index) {
         var status = stage <= completedStage ? "complete" : stage === nextStage ? "next" : "locked";
         var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
@@ -594,6 +630,7 @@ function createQuizRunnerScript(config: {
       }).join("");
       byData("stage-button").textContent = buttonLabel;
       byData("stage-button").dataset.readyText = buttonLabel;
+      preloadQuestionVisual(current);
       show("stageGate", shouldScroll);
     }
 
@@ -608,6 +645,10 @@ function createQuizRunnerScript(config: {
       return quiz.stages.map(function (name, stage) {
         var questions = getStageQuestions(stage);
         var correct = questions.reduce(function (total, item) {
+          if (isPersonalityQuiz) {
+            return total + (answers[item.index] !== undefined ? 1 : 0);
+          }
+
           return total + (answers[item.index] === item.question.answerIndex ? 1 : 0);
         }, 0);
 
@@ -632,7 +673,78 @@ function createQuizRunnerScript(config: {
       }, template);
     }
 
+    function getPersonalityProfileCounts() {
+      var counts = {};
+      quiz.result.profiles.forEach(function (profile) {
+        if (profile.id) counts[profile.id] = 0;
+      });
+
+      quiz.questions.forEach(function (question, index) {
+        var answer = answers[index];
+        if (answer === undefined || !question.choiceProfileIds) return;
+        var profileId = question.choiceProfileIds[answer];
+        if (!profileId) return;
+        counts[profileId] = (counts[profileId] || 0) + 1;
+      });
+
+      return counts;
+    }
+
+    function getDominantPersonalityProfile() {
+      var counts = getPersonalityProfileCounts();
+      var profiles = quiz.result.profiles.filter(function (profile) { return profile.id; });
+      var fallback = profiles[0] || quiz.result.profiles[0];
+      var profile = profiles.slice().sort(function (a, b) {
+        return (counts[b.id] || 0) - (counts[a.id] || 0);
+      })[0] || fallback;
+
+      return {
+        profile: profile,
+        count: profile && profile.id ? (counts[profile.id] || 0) : 0
+      };
+    }
+
+    function getPersonalityClarityStatus(stage) {
+      var zodiacStatuses = [
+        { title: "First Zodiac Signals", label: "Beginning Your Reading" },
+        { title: "Early Personality Patterns", label: "Signs Are Emerging" },
+        { title: "Personality Insights", label: "Narrowing The Possibilities" },
+        { title: "Strong Zodiac Signal", label: "Your Profile Is Taking Shape" },
+        { title: "Values And Drive", label: "Key Traits Identified" },
+        { title: "Emotional Patterns", label: "Deeper Connections Found" },
+        { title: "Natural Strengths", label: "Your Match Is Becoming Clear" },
+        { title: "Core Personality", label: "High Zodiac Alignment" },
+        { title: "Final Sign Analysis", label: "Only A Few Signs Remain" },
+        { title: "True Zodiac Match", label: "Preparing Your Results" }
+      ];
+      var fallbackStatuses = [
+        { title: "Building", label: "Profile clarity" },
+        { title: "Taking shape", label: "Profile clarity" },
+        { title: "Getting clearer", label: "Profile clarity" },
+        { title: "Strong signal", label: "Profile clarity" },
+        { title: "Profile forming", label: "Profile clarity" },
+        { title: "Nearly clear", label: "Profile clarity" },
+        { title: "Almost ready", label: "Profile clarity" },
+        { title: "Profile locked", label: "Profile clarity" }
+      ];
+      var statuses = quiz.slug === "zodiac" ? zodiacStatuses : fallbackStatuses;
+      return statuses[stage % statuses.length];
+    }
+
     function getResultProfile(score, total, strongestStage) {
+      if (isPersonalityQuiz) {
+        var personality = getDominantPersonalityProfile();
+        var personalityProfile = personality.profile || quiz.result.profiles[0];
+
+        return {
+          tier: personalityProfile.tier,
+          title: personalityProfile.title,
+          copy: formatTemplate(personalityProfile.copy, { stage: personalityProfile.tier }),
+          percentile: personalityProfile.percentile,
+          count: personality.count
+        };
+      }
+
       var ratio = total ? score / total : 0;
       var sortedProfiles = quiz.result.profiles.slice().sort(function (a, b) {
         return b.minRatio - a.minRatio;
@@ -650,6 +762,18 @@ function createQuizRunnerScript(config: {
     }
 
     function scoreForCategories(categories) {
+      if (isPersonalityQuiz) {
+        var counts = getPersonalityProfileCounts();
+        var answered = getAnsweredCount();
+        if (!answered) return 0;
+
+        var categoryTotal = categories.reduce(function (total, category) {
+          return total + (counts[category] || 0);
+        }, 0);
+
+        return Math.round((categoryTotal / answered) * 100);
+      }
+
       var items = quiz.questions
         .map(function (question, index) { return { question: question, index: index }; })
         .filter(function (item) {
@@ -666,6 +790,10 @@ function createQuizRunnerScript(config: {
     }
 
     function getMissedQuestions() {
+      if (isPersonalityQuiz) {
+        return [];
+      }
+
       return quiz.questions
         .map(function (question, index) { return { question: question, index: index }; })
         .filter(function (item) { return answers[item.index] !== item.question.answerIndex; });
@@ -700,12 +828,16 @@ function createQuizRunnerScript(config: {
         : t.results.review.missedQuestionPlural;
 
       hasUnlockedReview = false;
-      byData("result-profile-badge").textContent = profile.tier + " • " + strongestStage.name;
+      byData("result-profile-badge").textContent = isPersonalityQuiz ? profile.tier : profile.tier + " • " + strongestStage.name;
       byData("result-title").textContent = profile.title;
       byData("result-copy").textContent = profile.copy;
-      byData("final-score").textContent = score + "/" + quiz.questions.length;
+      byData("final-score").textContent = isPersonalityQuiz ? getAnsweredCount() + "/" + quiz.questions.length : score + "/" + quiz.questions.length;
+      byData("final-score-label").textContent = isPersonalityQuiz ? "Answered" : t.quiz.finalScore;
       byData("percentile").textContent = profile.percentile;
-      byData("result-meter-fill").style.width = Math.round((score / quiz.questions.length) * 100) + "%";
+      byData("percentile-label").textContent = isPersonalityQuiz ? "Result" : t.quiz.profile;
+      byData("result-meter-fill").style.width = isPersonalityQuiz
+        ? Math.round(((profile.count || 0) / Math.max(1, getAnsweredCount())) * 100) + "%"
+        : Math.round((score / quiz.questions.length) * 100) + "%";
       byData("cognitive-scores").innerHTML = quiz.result.scoreDimensions.map(function (dimension) {
         var dimensionScore = scoreForCategories(dimension.categories);
         return '<div class="legacy-cog-item" style="--skill-score:' + dimensionScore + '%"><strong>' + dimensionScore + '</strong><span>' + escapeHtml(dimension.label) + '</span><em aria-hidden="true"><i></i></em></div>';

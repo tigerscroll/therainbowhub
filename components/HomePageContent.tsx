@@ -19,10 +19,6 @@ function formatPublishedDate(locale: SupportedLocale, publishedAt: string) {
 
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
-  const averageDuration = Math.round(
-    quizzes.reduce((total, quiz) => total + Number(quiz.duration.match(/\d+/)?.[0] ?? 0), 0) /
-      Math.max(quizzes.length, 1),
-  );
   const homepageCards = quizzes
     .map((quiz) => ({
       href: getLocalePath(locale, `/${quiz.slug}`),
@@ -36,8 +32,6 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
       publishedDate: formatPublishedDate(locale, quiz.publishedAt),
       title: quiz.homepage.title ?? quiz.title,
       summary: quiz.homepage.summary ?? quiz.summary,
-      stats: quiz.duration,
-      passRate: quiz.passRate,
     }))
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt) || a.title.localeCompare(b.title));
 
@@ -53,7 +47,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
           </div>
           <div className="hub-hero__stats">
             <div className="hub-stat"><div>50+</div><span>{translations.home.stats.quizzes}</span></div>
-            <div className="hub-stat"><div>{averageDuration || 3} min</div><span>{translations.home.stats.averageTime}</span></div>
+            <div className="hub-stat"><div>6 min</div><span>{translations.home.stats.averageTime}</span></div>
             <div className="hub-stat"><div>100%</div><span>{translations.home.stats.freeForever}</span></div>
             <div className="hub-stat"><div>🏆</div><span>{translations.home.stats.scoreRank}</span></div>
           </div>
@@ -77,10 +71,6 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                   </div>
                   <h3>{quiz.title}</h3>
                   <p>{quiz.summary}</p>
-                  <div className="hub-quiz-card__foot">
-                    <span>{quiz.stats}</span>
-                    <span>{translations.home.passRate} {quiz.passRate}</span>
-                  </div>
                 </div>
               </a>
             ))}
