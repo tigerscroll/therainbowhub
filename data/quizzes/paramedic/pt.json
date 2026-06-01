@@ -44,28 +44,28 @@
         "tier": "Líder de Resposta Rápida",
         "title": "Mantiveste a calma durante as chamadas mais difíceis.",
         "copy": "Excelente raciocínio prático ao longo de todo o desafio. A tua área mais forte era {stage}.",
-        "percentile": "Top 9%"
+        "percentile": "Melhores 9%"
       },
       {
         "minRatio": 0.65,
         "tier": "Pensador de Emergência",
         "title": "Tomada de decisão de resposta forte.",
         "copy": "Mantiveste a precisão à medida que a pressão aumentava. A tua área mais forte era {stage}.",
-        "percentile": "Top 22%"
+        "percentile": "Melhores 22%"
       },
       {
         "minRatio": 0.5,
         "tier": "Respondedor calmo",
         "title": "Boa pontuação prática.",
         "copy": "Mostraste um raciocínio firme ao longo de várias rondas de resposta. A tua área mais forte era {stage}.",
-        "percentile": "Top 45%"
+        "percentile": "Melhores 45%"
       },
       {
         "minRatio": 0,
         "tier": "Aprendiz de Primeiros Socorros",
         "title": "Continua a construir a lista de verificação.",
         "copy": "As rondas mais avançadas recompensam verificações de segurança, comunicação clara e prioridades calmas. A tua melhor área era {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "Melhores 80%"
       }
     ],
     "scoreDimensions": [
@@ -152,15 +152,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Todas as equipas que fizeram check-in recebem a atualização mais recente da rota. A Tripulação 7 confirma que recebeu a atualização. O que pode concluir?",
+          "prompt": "Todas as equipas que fizeram o registo de entrada recebem a atualização mais recente da rota. A Tripulação 7 confirma que recebeu a atualização. O que pode concluir?",
           "choices": [
-            "A tripulação 7 já fez o check-in",
+            "A tripulação 7 já fez o registo de entrada",
             "Toda a equipa já está no local",
             "A Tripulação 7 não necessita de mais informações",
             "Não foi enviada nenhuma atualização da rota"
           ],
           "answerIndex": 0,
-          "explanation": "Se apenas as equipas que fizeram check-in recebem a atualização da rota, a Crew 7 a receber mostra que já fizeram check-in.",
+          "explanation": "Se apenas as equipas que fizeram o registo de entrada recebem a atualização da rota, a a Tripulação 7 a recebê-la mostra que já fizeram o registo de entrada.",
           "category": "deduction"
         },
         {
@@ -626,7 +626,7 @@
           "category": "logic"
         },
         {
-          "prompt": "Tem uma equipa disponível e dois pedidos não urgentes. O que deve orientar qual pedido é tratado primeiro?",
+          "prompt": "Tem uma equipa disponível e dois pedidos não urgentes. O que deve orientar que pedido é tratado primeiro?",
           "choices": [
             "Que pedido tem uma necessidade mais clara e maior prioridade operacional",
             "Qual dos chamadores usou palavras mais fortes",
@@ -815,7 +815,7 @@
     },
     {
       "title": "Lógica de Rotas e Recursos",
-      "encouragement": "Boa disciplina de checklist. A ronda seguinte acrescenta mais pressão e escolhas em camadas.",
+      "encouragement": "Boa disciplina de lista de verificação. A ronda seguinte acrescenta mais pressão e escolhas em camadas.",
       "questions": [
         {
           "prompt": "Estão disponíveis duas equipas. A equipa A está mais próxima. A Equipa B está mais longe, mas tem equipamento extra. O que deve ser verificado antes de escolher?",

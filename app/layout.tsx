@@ -46,7 +46,7 @@ export default function RootLayout({
         <div
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: `<script src="${siteConfig.assertiveYieldManagerUrl}" type="text/javascript" referrerpolicy="no-referrer-when-downgrade"></script><script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>`,
+            __html: `<script async src="${siteConfig.assertiveYieldManagerUrl}" type="text/javascript" referrerpolicy="no-referrer-when-downgrade"></script><script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>`,
           }}
         />
         <HeadScripts />

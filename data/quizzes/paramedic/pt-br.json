@@ -30,7 +30,7 @@
   ],
   "footer": {
     "aboutTitle": "Sobre este desafio de paramédico",
-    "aboutText": "Este desafio no estilo paramédico é um quiz em etapas inspirado em amplas habilidades de pensamento de resposta a emergências: manter a calma, verificar a segurança, notar mudanças, comunicar-se claramente, planejar rotas, usar listas de verificação e definir prioridades sensatas para o que se tratem. Paramédicos reais trabalham sob sistemas locais de treinamento e seguem protocolos profissionais que variam conforme o local. Este quiz transforma ideias gerais de observação e tomada de decisão em um divertido autoteste para entretenimento e curiosidade. Não é aconselhamento médico, orientação de emergência, treinamento clínico, teste de certificação ou avaliação oficial de paramédicos."
+    "aboutText": "Este desafio no estilo paramédico é um quiz em etapas inspirado em habilidades amplas de resposta a emergências: manter a calma, verificar a segurança, notar mudanças, comunicar-se claramente, planejar rotas, usar listas de verificação e definir prioridades sensatas para o que deve ser tratado primeiro. Paramédicos reais trabalham sob sistemas locais de treinamento e seguem protocolos profissionais que variam conforme o local. Este quiz transforma ideias gerais de observação e tomada de decisão em uma autoavaliação divertida para entretenimento e curiosidade. Não é aconselhamento médico, orientação de emergência, treinamento clínico, teste de certificação ou avaliação oficial de paramédicos."
   },
   "landing": {
     "quickStartText": "As primeiras chamadas parecem simples. As rodadas posteriores testam o julgamento calmo.",
@@ -44,28 +44,28 @@
         "tier": "Líder de Resposta Rápida",
         "title": "Você manteve a calma nas decisões mais difíceis.",
         "copy": "Excelente raciocínio prático durante todo o desafio. Sua área mais forte era {stage}.",
-        "percentile": "Top 9%"
+        "percentile": "Melhores 9%"
       },
       {
         "minRatio": 0.65,
         "tier": "Pensador de Emergência",
         "title": "Tomada de decisão forte no estilo de resposta.",
         "copy": "Você manteve a precisão enquanto a pressão aumentava. Sua área mais forte era {stage}.",
-        "percentile": "Top 22%"
+        "percentile": "Melhores 22%"
       },
       {
         "minRatio": 0.5,
         "tier": "Resposta Calma",
         "title": "Boa nota prática.",
         "copy": "Você mostrou um raciocínio firme em várias rodadas de resposta. Sua área mais forte era {stage}.",
-        "percentile": "Top 45%"
+        "percentile": "Melhores 45%"
       },
       {
         "minRatio": 0,
         "tier": "Aprendiz de Primeiros Socorros",
         "title": "Continue construindo a lista de verificação.",
-        "copy": "As rodadas mais avançadas recompensam as verificações de segurança, comunicação clara e prioridades calmas. Sua melhor área era {stage}.",
-        "percentile": "Top 80%"
+        "copy": "As rodadas mais avançadas recompensam as verificações de segurança, comunicação clara e prioridades calmas. Sua melhor área foi {stage}.",
+        "percentile": "Melhores 80%"
       }
     ],
     "scoreDimensions": [
@@ -152,15 +152,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Toda equipe que fez check-in recebe a atualização mais recente da rota. A tripulação 7 confirma que recebeu a atualização. O que você pode concluir?",
+          "prompt": "Toda equipe que fez o registro de entrada recebe a atualização mais recente da rota. A tripulação 7 confirma que recebeu a atualização. O que você pode concluir?",
           "choices": [
-            "A equipe 7 fez o check-in",
+            "A equipe 7 fez o registro de entrada",
             "Toda equipe já está no local",
             "A tripulação 7 não precisa de mais informações",
             "Nenhuma atualização da rota foi enviada"
           ],
           "answerIndex": 0,
-          "explanation": "Se apenas as equipes que fizeram check-in recebem a atualização da rota, a Equipe 7 que a recebe mostra que já fizeram o check-in.",
+          "explanation": "Se apenas as equipes que fizeram o registro de entrada recebem a atualização da rota, a Equipe 7 que a recebe mostra que já fizeram o registro de entrada.",
           "category": "deduction"
         },
         {
@@ -316,7 +316,7 @@
             "A cena parecia irritante"
           ],
           "answerIndex": 2,
-          "explanation": "Observações objetivas descrevem o que foi visto ou ouvido, não sentimentos pessoais.",
+          "explanation": "Observações objetivas descrevem o que foi visso ou ouvido, não sentimentos pessoais.",
           "category": "attention"
         },
         {
@@ -462,7 +462,7 @@
           "choices": [
             "Estamos a cinco minutos de distância",
             "Use o portão oeste",
-            "O elevador ou elevador não está funcionando",
+            "O portão ou o elevador não está funcionando",
             "É ali"
           ],
           "answerIndex": 3,
@@ -611,7 +611,7 @@
     },
     {
       "title": "Pensamento de Prioridade",
-      "encouragement": "Seu timing está melhorando. Depois vem a lógica do equipamento e a disciplina da checklist.",
+      "encouragement": "Seu senso de tempo está melhorando. Depois vem a lógica do equipamento e a disciplina da lista de verificação.",
       "questions": [
         {
           "prompt": "Qual tarefa geralmente deve vir antes da papelada detalhada durante uma resposta ativa?",
@@ -716,7 +716,7 @@
       "encouragement": "Boas prioridades. A próxima rodada mistura escolhas de rotas com decisões de recursos.",
       "questions": [
         {
-          "prompt": "Por que um checklist é útil antes de sair de uma cena?",
+          "prompt": "Por que uma lista de verificação é útil antes de sair de uma cena?",
           "choices": [
             "Isso reduz a chance de perder itens importantes",
             "Ele substitui a comunicação",
@@ -724,7 +724,7 @@
             "Remove todas as decisões"
           ],
           "answerIndex": 0,
-          "explanation": "Um checklist reduz a chance de esquecer itens importantes.",
+          "explanation": "Uma lista de verificação reduz a chance de esquecer itens importantes.",
           "category": "logic"
         },
         {
@@ -815,7 +815,7 @@
     },
     {
       "title": "Lógica de rota e de recursos",
-      "encouragement": "Boa disciplina de checklist. A próxima rodada adiciona mais pressão e escolhas em camadas.",
+      "encouragement": "Boa disciplina de lista de verificação. A próxima rodada adiciona mais pressão e escolhas em camadas.",
       "questions": [
         {
           "prompt": "Duas equipes estão disponíveis. O Time A está mais perto. O time B está mais longe, mas tem equipamentos extras. O que deve ser verificado antes de escolher?",
