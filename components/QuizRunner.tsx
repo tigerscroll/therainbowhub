@@ -157,7 +157,10 @@ function createQuizRunnerHtml(config: {
         </div>
 
         <article class="legacy-card legacy-question">
-          <h2 data-js="question-text"></h2>
+          <h2 data-js="question-card" class="legacy-question-prompt legacy-bg-blue">
+            <span class="legacy-question-icon" aria-hidden="true">?</span>
+            <span data-js="question-text" class="legacy-question-text"></span>
+          </h2>
           <div data-js="visual" class="legacy-visual legacy-hidden"></div>
           <div data-js="answers" class="legacy-answers"></div>
         </article>
@@ -246,6 +249,18 @@ function createQuizRunnerScript(config: {
   var config = ${safeJson(config)};
   var correctAnswerDelayMs = 950;
   var wrongAnswerDelayMs = 1150;
+  var questionBackgrounds = [
+    "legacy-bg-blue",
+    "legacy-bg-mint",
+    "legacy-bg-lavender",
+    "legacy-bg-peach",
+    "legacy-bg-teal",
+    "legacy-bg-yellow",
+    "legacy-bg-pink",
+    "legacy-bg-sage",
+    "legacy-bg-powder",
+    "legacy-bg-ivory"
+  ];
 
   function boot() {
     var root = document.getElementById(config.rootId);
@@ -762,9 +777,15 @@ function createQuizRunnerScript(config: {
       var visualBox = byData("visual");
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
+      var questionCard = byData("question-card");
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
+      var questionBackgroundClass = questionBackgrounds[current % questionBackgrounds.length];
 
+      questionBackgrounds.forEach(function (className) {
+        questionCard.classList.remove(className);
+      });
+      questionCard.classList.add(questionBackgroundClass);
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
