@@ -30,10 +30,10 @@
   ],
   "footer": {
     "aboutTitle": "Sobre este desafio de conhecimento em obstetrícia",
-    "aboutText": "Este teste de conhecimentos de obstetrícia é um quiz por etapas inspirado em competências amplas, muitas vezes associadas ao apoio ao parto e ao recém-nascido: escuta, observação, cordialidade, privacidade, comunicação, cuidados centrados nos pais e obtenção de ajuda extra quando necessário. A prática da obstetrícia pode variar consoante o país e o contexto, mas a tomada de decisões claras e o apoio respeitoso são amplamente valorizados. Este quiz é apenas para entretenimento e curiosidade. Não é um conselho médico, nem um guia de emergência, nem uma qualificação oficial de obstetrícia ou de exame clínico."
+    "aboutText": "Este teste de conhecimentos de obstetrícia é um quiz por etapas inspirado em habilidades amplas, muitas vezes associadas ao apoio ao parto e ao recém-nascido: escuta, observação, cordialidade, privacidade, comunicação, cuidado centrado na família e busca de ajuda extra quando necessário. A prática da obstetrícia pode variar conforme o país e o contexto, mas a tomada de decisões claras e o apoio respeitoso são amplamente valorizados. Este quiz é apenas para entretenimento e curiosidade. Não é aconselhamento médico, guia de emergência, qualificação oficial de obstetrícia nem exame clínico."
   },
   "landing": {
-    "quickStartText": "As primeiras verificações são suaves. As rodadas posteriores necessitam de decisões calmas sobre os cuidados de parto.",
+    "quickStartText": "As primeiras verificações são suaves. As rodadas posteriores precisam de decisões calmas sobre os cuidados de parto.",
     "socialProof": "Mais de 44.000 pessoas experimentaram esta semana"
   },
   "result": {
@@ -44,28 +44,28 @@
         "tier": "Especialista em cuidados de parto",
         "title": "Você se manteve calmo nos cenários mais difíceis.",
         "copy": "Excelente tomada de decisão em todo o desafio. Sua área mais forte foi {stage}.",
-        "percentile": "Top 7%"
+        "percentile": "Melhores 7%"
       },
       {
         "minRatio": 0.65,
         "tier": "Pronto para os cuidados ao recém-nascido",
         "title": "Pensamento forte no estilo obstetrícia.",
-        "copy": "Respondeu às perguntas sobre os cuidados com os pais e o bebé com confiança. Sua área mais forte foi {stage}.",
-        "percentile": "Top 18%"
+        "copy": "Respondeu às perguntas sobre os cuidados com os pais e o recém-nascido com confiança. Sua área mais forte foi {stage}.",
+        "percentile": "Melhores 18%"
       },
       {
         "minRatio": 0.5,
         "tier": "Pensador Solidário",
         "title": "Boa pontuação prática.",
         "copy": "Você mostrou um raciocínio constante em várias rodadas de atendimento. Sua área mais forte foi {stage}.",
-        "percentile": "Top 40%"
+        "percentile": "Melhores 40%"
       },
       {
         "minRatio": 0,
         "tier": "Estudante de cuidados",
         "title": "Continue melhorando as verificações.",
         "copy": "As últimas rodadas recompensam a comunicação respeitosa, as prioridades seguras e a observação atenta. Sua melhor área foi {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "Melhores 80%"
       }
     ],
     "scoreDimensions": [
@@ -101,7 +101,7 @@
   "stageGroups": [
     {
       "title": "Aquecimento para os cuidados ao parto",
-      "encouragement": "Bom começo. A próxima rodada pede mais atenção aos cuidados com os pais e com o bebé.",
+      "encouragement": "Bom começo. A próxima rodada pede mais atenção aos cuidados com os pais e com o bebê.",
       "questions": [
         {
           "prompt": "O que é mais útil no início dos cuidados de suporte?",
@@ -128,7 +128,7 @@
           "category": "number"
         },
         {
-          "prompt": "Qual o item que está mais relacionado com a verificação do peso do bebé?",
+          "prompt": "Qual é o item que está mais relacionado com a verificação do peso do bebê?",
           "choices": [
             "Escala",
             "Cortina",
@@ -142,8 +142,8 @@
         {
           "prompt": "Se um recém-nascido deve ser mantido quente, qual a ação que melhor o suporta?",
           "choices": [
-            "Seque e cubra o bebé adequadamente",
-            "Coloque o bebé numa sala fria",
+            "Seque e cubra o bebê adequadamente",
+            "Coloque o bebê em uma sala fria",
             "Atrasar o calor sem motivo",
             "Não utilize nenhuma cobertura"
           ],
@@ -176,7 +176,7 @@
           "category": "lateral"
         },
         {
-          "prompt": "Qual o sinal que necessitaria de atenção cuidadosa?",
+          "prompt": "Qual o sinal que precisaria de atenção cuidadosa?",
           "choices": [
             "Sangramento intenso e repentino",
             "Uma etiqueta de nome completa",
@@ -188,7 +188,7 @@
           "category": "deduction"
         },
         {
-          "prompt": "A visita tem início às 09h00 e tem a duração de 30 minutos. Quando é que isto termina?",
+          "prompt": "A visita tem início às 09h00 e tem a duração de 30 minutos. Quando termina?",
           "choices": [
             "09:15",
             "09:30",
@@ -206,19 +206,19 @@
       "encouragement": "Bom trabalho. Agora o quiz passa para verificações simples de recém-nascidos.",
       "questions": [
         {
-          "prompt": "Porque é que o calor é importante para um recém-nascido?",
+          "prompt": "Por que o calor é importante para um recém-nascido?",
           "choices": [
             "Os recém-nascidos podem perder calor rapidamente",
             "O calor substitui toda a alimentação",
-            "O ar frio melhora todo o bebé",
+            "O ar frio melhora todo o bebê",
             "A temperatura nunca importa"
           ],
           "answerIndex": 0,
-          "explanation": "Os recém-nascidos podem perder calor rapidamente e necessitam de calor.",
+          "explanation": "Os recém-nascidos podem perder calor rapidamente e precisam de calor.",
           "category": "logic"
         },
         {
-          "prompt": "Um bebé tem 4 notas de cuidados registadas de manhã e 3 depois. Qual é o total?",
+          "prompt": "Um bebê tem 4 notas de cuidados registradas de manhã e 3 depois. Qual é o total?",
           "choices": [
             "6",
             "7",
@@ -232,29 +232,29 @@
         {
           "prompt": "Qual a observação mais específica?",
           "choices": [
-            "O bebé parece bem",
-            "O bebé alimentou-se durante 15 minutos",
-            "O bebé é legal",
-            "O bebé é pequenino"
+            "O bebê parece bem",
+            "O bebê se alimentou durante 15 minutos",
+            "O bebê está tranquilo",
+            "O bebê é pequeno"
           ],
           "answerIndex": 1,
           "explanation": "A hora da alimentação é uma observação específica.",
           "category": "attention"
         },
         {
-          "prompt": "Se todos os bebés de uma lista precisarem de uma etiqueta de identidade verificada e o bebé A estiver na lista, o que se segue?",
+          "prompt": "Se todos os bebês de uma lista precisarem de uma etiqueta de identidade verificada e o bebê A estiver na lista, o que vem a seguir?",
           "choices": [
-            "O bebé A precisa da etiqueta verificada",
-            "O bebé A não necessita de verificações",
-            "Apenas o bebé A necessita de alimentação",
+            "O bebê A precisa da etiqueta verificada",
+            "O bebê A não precisa de verificações",
+            "Apenas o bebê A precisa de alimentação",
             "A lista não tem qualquer propósito"
           ],
           "answerIndex": 0,
-          "explanation": "A regra aplica-se a todos os bebés da lista.",
+          "explanation": "A regra se aplica a todos os bebês da lista.",
           "category": "deduction"
         },
         {
-          "prompt": "Qual o padrão que se adapta às verificações regulares a cada hora?",
+          "prompt": "Qual é o padrão que se adapta às verificações regulares a cada hora?",
           "choices": [
             "10h, 11h, 12h",
             "10h, 10h20, 12h",
@@ -266,10 +266,10 @@
           "category": "pattern"
         },
         {
-          "prompt": "Um pai diz que o bebé está a alimentar-se de forma diferente hoje. Qual é a melhor resposta?",
+          "prompt": "Um pai diz que o bebê está se alimentando de forma diferente hoje. Qual é a melhor resposta?",
           "choices": [
             "Ouça e avalie melhor",
-            "Descarte porque os bebés variam",
+            "Descarte porque os bebês variam",
             "Ignore a visão dos pais",
             "Grave o oposto"
           ],
@@ -278,7 +278,7 @@
           "category": "lateral"
         },
         {
-          "prompt": "Qual o item que está mais ligado ao apoio à alimentação?",
+          "prompt": "Qual é o item que está mais ligado ao apoio à alimentação?",
           "choices": [
             "Conselhos claros sobre o posicionamento",
             "Poster de parede",
@@ -290,7 +290,7 @@
           "category": "logic"
         },
         {
-          "prompt": "Um bebé dorme 2 horas, acorda 1 hora e dorme mais 2 horas. Quanto sono é?",
+          "prompt": "Um bebê dorme 2 horas, acorda 1 hora e dorme mais 2 horas. Quanto sono é?",
           "choices": [
             "3 horas",
             "4 horas",
@@ -308,7 +308,7 @@
       "encouragement": "Está a construir ritmo. A próxima rodada adiciona a tomada de decisão prática.",
       "questions": [
         {
-          "prompt": "Qual a resposta que apoia melhor um pai ansioso?",
+          "prompt": "Qual é a resposta que apoia melhor um pai ansioso?",
           "choices": [
             "Ouça com calma e explique os próximos passos",
             "Diga-lhes para pararem de perguntar",
@@ -344,11 +344,11 @@
           "category": "attention"
         },
         {
-          "prompt": "Se todas as preocupações sobre a redução do movimento precisam de ser comunicadas, e esta é uma grande preocupação, o que se segue?",
+          "prompt": "Se todas as preocupações sobre a redução do movimento precisam de ser comunicadas, e esta é uma grande preocupação, o que vem a seguir?",
           "choices": [
             "Deveria ser reportado",
             "Deveria estar escondido",
-            "Isto prova que nada pode ajudar",
+            "Isso prova que nada pode ajudar",
             "Não precisa de atenção"
           ],
           "answerIndex": 0,
@@ -358,7 +358,7 @@
         {
           "prompt": "Qual a sequência mais segura para uma preocupação?",
           "choices": [
-            "Ouça, avalie, registe, relate, se necessário",
+            "Ouça, avalie, registre, relate, se necessário",
             "Dispensar, esquecer, adivinhar, sair",
             "Grave, ignore, apresse-se, esconda",
             "Espere, brinque, salte, termine"
@@ -373,7 +373,7 @@
             "Uma linguagem clara apoia a compreensão",
             "Palavras técnicas pouco claras tornam o cuidado mais seguro",
             "Os pais devem adivinhar os significados",
-            "Os registos não importam"
+            "Os registros não importam"
           ],
           "answerIndex": 0,
           "explanation": "A linguagem simples ajuda as pessoas a compreender as decisões sobre os cuidados.",
@@ -382,7 +382,7 @@
         {
           "prompt": "Qual o detalhe mais relevante para o apoio alimentar?",
           "choices": [
-            "Com que frequência o bebé mama",
+            "Com que frequência o bebê mama",
             "O tamanho do cartaz",
             "O número num cartaz",
             "A forma de uma janela"
@@ -407,10 +407,10 @@
     },
     {
       "title": "Pensamento de parto seguro",
-      "encouragement": "Pensamento de apoio forte. Agora as questões centram-se em prioridades seguras.",
+      "encouragement": "Pensamento de apoio forte. Agora as perguntas centram-se em prioridades seguras.",
       "questions": [
         {
-          "prompt": "Qual a situação que geralmente necessita de atenção mais rápida?",
+          "prompt": "Qual é a situação que geralmente precisa de atenção mais rápida?",
           "choices": [
             "Sangramento intenso",
             "Um quarto arrumado",
@@ -454,7 +454,7 @@
             "Dormir"
           ],
           "answerIndex": 0,
-          "explanation": "O padrão repete-se: respire, descanse, beba.",
+          "explanation": "O padrão se repete: respire, descanse, beba.",
           "category": "pattern"
         },
         {
@@ -475,7 +475,7 @@
             "Explique novamente com palavras mais claras",
             "Assumir acordo",
             "Pare todos os cuidados para sempre",
-            "Altere os registos para parecerem simples"
+            "Altere os registros para parecerem simples"
           ],
           "answerIndex": 0,
           "explanation": "Explicações claras apoiam decisões informadas.",
@@ -512,7 +512,7 @@
       "encouragement": "Bom progresso. A etapa seguinte exige uma observação e comparação mais cuidadosas.",
       "questions": [
         {
-          "prompt": "Porque é que as verificações após o nascimento são repetidas?",
+          "prompt": "Por que as verificações após o nascimento são repetidas?",
           "choices": [
             "Para perceber as mudanças ao longo do tempo",
             "Para tornar os gráficos mais longos apenas",
@@ -544,23 +544,23 @@
             "Um corredor silencioso"
           ],
           "answerIndex": 0,
-          "explanation": "O aumento da dor com nova hemorragia pode necessitar de avaliação.",
+          "explanation": "O aumento da dor com nova hemorragia pode precisar de avaliação.",
           "category": "attention"
         },
         {
-          "prompt": "Se todos os novos sintomas devem ser revistos e este é um sintoma novo, o que se segue?",
+          "prompt": "Se todos os novos sintomas devem ser revisados e este é um sintoma novo, o que vem a seguir?",
           "choices": [
-            "Deve ser revisto",
+            "Deve ser revisado",
             "Deveria ser ignorado",
-            "Isto prova que a recuperação está completa",
-            "Não necessita de registo"
+            "Isso prova que a recuperação está completa",
+            "Não precisa de registro"
           ],
           "answerIndex": 0,
-          "explanation": "A regra diz que os novos sintomas devem ser revistos.",
+          "explanation": "A regra diz que os novos sintomas devem ser revisados.",
           "category": "deduction"
         },
         {
-          "prompt": "Qual o padrão que apresenta um aumento constante?",
+          "prompt": "Qual é o padrão que apresenta um aumento constante?",
           "choices": [
             "1, 2, 3, 4",
             "4, 2, 3, 1",
@@ -596,7 +596,7 @@
           "category": "logic"
         },
         {
-          "prompt": "Um bebé aumenta 30 g num dia e 40 g no dia seguinte. Qual é o ganho total?",
+          "prompt": "Um bebê aumenta 30 g em um dia e 40 g no dia seguinte. Qual é o ganho total?",
           "choices": [
             "60g",
             "70g",
@@ -611,10 +611,10 @@
     },
     {
       "title": "Rodada de Comunicação",
-      "encouragement": "A comunicação clara está a funcionar muito aqui. Em seguida, surge o raciocínio de pressão.",
+      "encouragement": "A comunicação clara está funcionando muito aqui. Em seguida, surge o raciocínio de pressão.",
       "questions": [
         {
-          "prompt": "Qual a mensagem de atualização de cuidados mais clara?",
+          "prompt": "Qual é a mensagem de atualização de cuidados mais clara?",
           "choices": [
             "Houve um problema",
             "O pai referiu tonturas ao ficar de pé",
@@ -626,11 +626,11 @@
           "category": "attention"
         },
         {
-          "prompt": "Porque é que as escolhas devem ser explicadas antes dos cuidados não urgentes?",
+          "prompt": "Por que as escolhas devem ser explicadas antes dos cuidados não urgentes?",
           "choices": [
             "As pessoas devem compreender e estar envolvidas",
-            "Isto torna o cuidado menos respeitoso",
-            "Remove todos os registos",
+            "Isso torna o cuidado menos respeitoso",
+            "Remove todos os registros",
             "Evita perguntas para sempre"
           ],
           "answerIndex": 0,
@@ -638,7 +638,7 @@
           "category": "logic"
         },
         {
-          "prompt": "Se um bebé deve ser alimentado pelo menos de 3 em 3 horas, qual é o maior intervalo planeado?",
+          "prompt": "Se um bebê deve ser alimentado pelo menos de 3 em 3 horas, qual é o maior intervalo planejado?",
           "choices": [
             "1 hora",
             "2 horas",
@@ -646,7 +646,7 @@
             "4 horas"
           ],
           "answerIndex": 2,
-          "explanation": "Pelo menos a cada 3 horas significa que o intervalo planeado não deve exceder as 3 horas.",
+          "explanation": "Pelo menos a cada 3 horas significa que o intervalo planejado não deve exceder as 3 horas.",
           "category": "deduction"
         },
         {
@@ -662,7 +662,7 @@
           "category": "number"
         },
         {
-          "prompt": "Qual o pedido que suporta melhor uma atualização segura?",
+          "prompt": "Qual é o pedido que suporta melhor uma atualização segura?",
           "choices": [
             "Identificar, preocupação, ação necessária",
             "Preocupação, boato, palpite",
@@ -686,19 +686,19 @@
           "category": "lateral"
         },
         {
-          "prompt": "Qual das afirmações separa melhor facto e interpretação?",
+          "prompt": "Qual das afirmações separa melhor fato e interpretação?",
           "choices": [
-            "Facto: pulso contado como 92; interpretação: pode necessitar de revisão",
-            "Facto: o quarto é bom; interpretação: tudo está seguro",
-            "Facto: alguém pensa; interpretação: nenhum cuidado necessário",
-            "Facto: parece ocupado; interpretação: os registos estão completos"
+            "Fato: pulso contado como 92; interpretação: pode precisar de revisão",
+            "Fato: o quarto é bom; interpretação: tudo está seguro",
+            "Fato: alguém pensa; interpretação: nenhum cuidado necessário",
+            "Fato: parece ocupado; interpretação: os registros estão completos"
           ],
           "answerIndex": 0,
-          "explanation": "Um pulso contado é um facto; se necessita de revisão é interpretação.",
+          "explanation": "Um pulso contado é um fato; se precisa de revisão é interpretação.",
           "category": "logic"
         },
         {
-          "prompt": "Um registo tem verificações às 08h00, 10h00, 12h00. Que horas virão se o padrão se mantiver?",
+          "prompt": "Um registro tem verificações às 08h00, 10h00, 12h00. Que horas virão se o padrão se mantiver?",
           "choices": [
             "13:00",
             "14:00",
@@ -752,7 +752,7 @@
           "category": "attention"
         },
         {
-          "prompt": "Se todas as preocupações urgentes necessitarem de ajuda extra e esta preocupação for urgente, o que se segue?",
+          "prompt": "Se todas as preocupações urgentes precisarem de ajuda extra e esta preocupação for urgente, o que vem a seguir?",
           "choices": [
             "Precisa de ajuda extra",
             "Deve esperar pela comodidade",
@@ -788,19 +788,19 @@
           "category": "lateral"
         },
         {
-          "prompt": "Qual a conclusão mais segura a partir de um registo incompleto?",
+          "prompt": "Qual a conclusão mais segura a partir de um registro incompleto?",
           "choices": [
             "Precisa de ser verificado antes de conclusões fortes",
-            "Isto prova que tudo está normal",
-            "Isto prova que tudo está errado",
+            "Isso prova que tudo está normal",
+            "Isso prova que tudo está errado",
             "Deve substituir todas as outras evidências"
           ],
           "answerIndex": 0,
-          "explanation": "Os registos incompletos devem ser verificados antes de conclusões fortes.",
+          "explanation": "Os registros incompletos devem ser verificados antes de conclusões fortes.",
           "category": "logic"
         },
         {
-          "prompt": "Um bebé mama 2 vezes, depois 3 mamadas e depois 4 mamadas em períodos iguais. Se o padrão se mantiver, o que vem a seguir?",
+          "prompt": "Um bebê mama 2 vezes, depois 3 mamadas e depois 4 mamadas em períodos iguais. Se o padrão se mantiver, o que vem a seguir?",
           "choices": [
             "4",
             "5",
@@ -830,7 +830,7 @@
           "category": "logic"
         },
         {
-          "prompt": "Um bebé pesa 3,2 kg e depois 3,4 kg. Qual é o ganho?",
+          "prompt": "Um bebê pesa 3,2 kg e depois 3,4 kg. Qual é o ganho?",
           "choices": [
             "0,1kg",
             "0,2kg",
@@ -854,7 +854,7 @@
           "category": "lateral"
         },
         {
-          "prompt": "Todos os casos de alto risco necessitam de revisão por um médico mais experiente. Este caso é de alto risco. O que deve acontecer?",
+          "prompt": "Todos os casos de alto risco precisam de revisão por um médico mais experiente. Este caso é de alto risco. O que deve acontecer?",
           "choices": [
             "É necessária a revisão por um médico mais experiente",
             "Revisão é proibida",
@@ -862,7 +862,7 @@
             "Apenas é permitida uma nota de rotina"
           ],
           "answerIndex": 0,
-          "explanation": "A norma diz que os casos de alto risco precisam de ser revistos por um médico mais experiente.",
+          "explanation": "A norma diz que os casos de alto risco precisam de ser revisados por um médico mais experiente.",
           "category": "deduction"
         },
         {
@@ -920,7 +920,7 @@
       "encouragement": "Ótimo trabalho. Um último desafio permanece, com escolhas criteriosas nos cuidados aos pais e aos recém-nascidos.",
       "questions": [
         {
-          "prompt": "Um pai viu dois membros diferentes da equipa e recebeu conselhos ligeiramente diferentes. Qual é o melhor passo seguinte?",
+          "prompt": "Um pai viu dois membros diferentes da equipe e recebeu conselhos ligeiramente diferentes. Qual é o melhor passo seguinte?",
           "choices": [
             "Esclareça o plano e dê uma explicação consistente",
             "Diga-lhes para escolherem aleatoriamente",
@@ -956,7 +956,7 @@
           "category": "attention"
         },
         {
-          "prompt": "Se toda a preocupação não resolvida necessita de acompanhamento e essa preocupação não for resolvida, o que se segue?",
+          "prompt": "Se toda a preocupação não resolvida precisa de acompanhamento e essa preocupação não for resolvida, o que vem a seguir?",
           "choices": [
             "Necessita de acompanhamento",
             "Deveria ser eliminado",
@@ -968,7 +968,7 @@
           "category": "deduction"
         },
         {
-          "prompt": "Um padrão é verificar, apoiar, registar, verificar, apoiar,?. O que vem a seguir?",
+          "prompt": "Um padrão é verificar, apoiar, registrar, verificar, apoiar,?. O que vem a seguir?",
           "choices": [
             "Gravar",
             "Verifique",
@@ -976,7 +976,7 @@
             "Pare"
           ],
           "answerIndex": 0,
-          "explanation": "O padrão repete verificação, suporte, registo.",
+          "explanation": "O padrão repete verificação, suporte, registro.",
           "category": "pattern"
         },
         {
@@ -994,13 +994,13 @@
         {
           "prompt": "Que detalhe liga melhor o cuidado entre turnos?",
           "choices": [
-            "Um registo claro do que mudou e do que foi feito",
-            "Um nome de ficheiro mais longo",
+            "Um registro claro do que mudou e do que foi feito",
+            "Um nome de arquivo mais longo",
             "Uma caneta diferente",
             "Um cobertor dobrado"
           ],
           "answerIndex": 0,
-          "explanation": "Registos claros ajudam a equipa seguinte a compreender as mudanças e as ações.",
+          "explanation": "Registros claros ajudam a equipe seguinte a compreender as mudanças e as ações.",
           "category": "logic"
         },
         {
@@ -1019,7 +1019,7 @@
     },
     {
       "title": "Desafio Final de Obstetrícia",
-      "encouragement": "Chegou à rodada final. Estas questões recompensam a tomada de decisões seguras e respeitosas.",
+      "encouragement": "Chegou à rodada final. Estas perguntas recompensam a tomada de decisões seguras e respeitosas.",
       "questions": [
         {
           "prompt": "Um recém-nascido tem frio e outro formulário de rotina está incompleto. O que deveria vir primeiro?",
@@ -1085,7 +1085,7 @@
           "prompt": "Apenas os detalhes verificados devem orientar a atualização final dos cuidados. Um detalhe é útil, mas não verificado. O que deveria acontecer?",
           "choices": [
             "Verifique ou descreva-o com cautela",
-            "Use-o como um facto certo",
+            "Use-o como um fato certo",
             "Oculte todos os detalhes",
             "Ignore todas as informações úteis"
           ],
