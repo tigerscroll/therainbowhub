@@ -779,7 +779,7 @@ function createQuizRunnerScript(config: {
       var questionCard = byData("question-card");
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
-      var questionBackgroundClass = questionBackgrounds[current % questionBackgrounds.length];
+      var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
 
       questionBackgrounds.forEach(function (className) {
         questionCard.classList.remove(className);
