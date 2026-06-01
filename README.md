@@ -374,14 +374,8 @@ lib/tracking.ts
 Available helpers:
 
 - `trackPageView()`
-- `trackQuizStart()`
-- `trackQuestionAnswered()`
-- `trackStageComplete()`
-- `trackRewardGranted()`
-- `trackRewardClosed()`
-- `trackQuizComplete()`
 
-These helpers safely check whether `fbq` or `gtag` exists before firing, so missing pixels will not break the quiz.
+This helper safely checks whether `fbq` or `gtag` exists before firing, so missing pixels will not break the quiz.
 
 To change Meta Pixel later, update `metaPixelId` in `lib/siteConfig.ts`.
 
@@ -389,25 +383,13 @@ To change Google Tag later, update `googleTagId` in `lib/siteConfig.ts`.
 
 ## Rewarded Ads
 
-Rewarded ad placeholders are in:
-
-```text
-lib/rewardedAds.ts
-```
-
-Available placeholders:
-
-- `showRewardedAdBeforeStart()`
-- `showRewardedAdBeforeStageResults()`
-- `showRewardedAdBeforeFinalResults()`
-
 The live Google Ad Manager rewarded ad unit path is configured in `lib/siteConfig.ts`:
 
 ```text
 /22677279144/display
 ```
 
-The quiz runner requests a rewarded out-of-page slot and advances after `rewardedSlotGranted`. It tries up to 3 times when no ad is available or an error occurs, then falls back and continues so users are not blocked. If a user closes an ad before reward is granted, the gate reopens another ad and does not continue until a reward is completed or the no-ad/error fallback is reached.
+The active rewarded-ad flow lives in `components/QuizRunner.tsx`. The quiz runner requests a rewarded out-of-page slot and advances after `rewardedSlotGranted`. It tries up to 3 times when no ad is available or an error occurs, then falls back and continues so users are not blocked. If a user closes an ad before reward is granted, the gate reopens another ad and does not continue until a reward is completed or the no-ad/error fallback is reached.
 
 ## Generated Files
 

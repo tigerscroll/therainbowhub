@@ -16,14 +16,6 @@ declare global {
   }
 }
 
-function fireEvent(eventName: string, payload: TrackingPayload = {}) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  window.gtag?.("event", eventName, payload);
-}
-
 export function trackPageView(payload: TrackingPayload = {}) {
   if (typeof window === "undefined") {
     return;
@@ -31,50 +23,4 @@ export function trackPageView(payload: TrackingPayload = {}) {
 
   window.fbq?.("track", "PageView", payload);
   window.gtag?.("event", "page_view", payload);
-}
-
-export function trackQuizStart(payload: TrackingPayload = {}) {
-  fireEvent("quiz_start", payload);
-}
-
-export function trackQuestionAnswered(payload: TrackingPayload = {}) {
-  fireEvent("question_answered", payload);
-}
-
-export function trackStageComplete(payload: TrackingPayload = {}) {
-  fireEvent("stage_complete", payload);
-}
-
-export function trackRewardGranted(payload: TrackingPayload = {}) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  console.log("fbq custom event: Reward", payload);
-  window.fbq?.("trackCustom", "Reward", payload);
-  window.gtag?.("event", "reward_granted", payload);
-}
-
-export function trackRewardBypass(payload: TrackingPayload = {}) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  window.gtag?.("event", "reward_bypass", payload);
-}
-
-export function trackRewardClosed(payload: TrackingPayload = {}) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  if (payload.granted === true && payload.reason === "reward_granted") {
-    console.log("fbq custom event: RewardClosed", payload);
-    window.fbq?.("trackCustom", "RewardClosed", payload);
-  }
-  window.gtag?.("event", "reward_closed", payload);
-}
-
-export function trackQuizComplete(payload: TrackingPayload = {}) {
-  fireEvent("quiz_complete", payload);
 }
