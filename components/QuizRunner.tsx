@@ -94,7 +94,7 @@ function createQuizRunnerHtml(config: {
             ${relatedQuizzes
               .map((item) => {
                 const media = item.thumbnailUrl
-                  ? `<img src="${escapeHtml(item.thumbnailUrl)}" alt="${escapeHtml(item.thumbnailAlt ?? item.title)}" />`
+                  ? `<img data-related-src="${escapeHtml(item.thumbnailUrl)}" alt="${escapeHtml(item.thumbnailAlt ?? item.title)}" loading="lazy" decoding="async" />`
                   : `<span aria-hidden="true">${escapeHtml(item.icon)}</span>`;
 
                 return `<a class="legacy-related-card" href="${escapeHtml(item.href)}" style="--related-accent:${escapeHtml(item.accent)}">
@@ -1097,6 +1097,15 @@ function createQuizRunnerScript(config: {
       }).join("");
     }
 
+    function loadRelatedQuizImages() {
+      root.querySelectorAll("img[data-related-src]").forEach(function (image) {
+        var src = image.getAttribute("data-related-src");
+        if (!src) return;
+        image.src = src;
+        image.removeAttribute("data-related-src");
+      });
+    }
+
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
       var score = getScore();
@@ -1141,6 +1150,7 @@ function createQuizRunnerScript(config: {
       byData("unlock-button").disabled = false;
       byData("unlock-button").textContent = t.results.review.unlockButton;
       byData("review").innerHTML = "";
+      loadRelatedQuizImages();
 
       show("results", shouldScroll);
       if (shouldTrack !== false) {
