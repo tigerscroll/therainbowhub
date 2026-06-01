@@ -158,7 +158,6 @@ function createQuizRunnerHtml(config: {
 
         <article class="legacy-card legacy-question">
           <h2 data-js="question-card" class="legacy-question-prompt legacy-bg-blue">
-            <span class="legacy-question-icon" aria-hidden="true">?</span>
             <span data-js="question-text" class="legacy-question-text"></span>
           </h2>
           <div data-js="visual" class="legacy-visual legacy-hidden"></div>

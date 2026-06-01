@@ -643,7 +643,7 @@ a {
   margin: 0 calc(var(--legacy-question-pad-x) * -1) 24px;
   min-height: 108px;
   display: block;
-  padding: 28px 32px 28px 78px;
+  padding: 30px 34px;
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 28px;
   color: var(--legacy-navy);
@@ -660,24 +660,6 @@ a {
   overflow-wrap: anywhere;
 }
 
-.legacy-question-icon {
-  position: absolute;
-  left: 28px;
-  top: 28px;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 6px rgba(0, 0, 0, 0.05);
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1;
-}
-
 .legacy-question-text {
   display: block;
   min-width: 0;
@@ -692,90 +674,40 @@ a {
   background: #eef7ff;
 }
 
-.legacy-bg-blue .legacy-question-icon {
-  background: #ddebff;
-  color: #3b82f6;
-}
-
 .legacy-bg-mint {
   background: #f1fff4;
-}
-
-.legacy-bg-mint .legacy-question-icon {
-  background: #dcfce7;
-  color: #10b981;
 }
 
 .legacy-bg-lavender {
   background: #f7f2ff;
 }
 
-.legacy-bg-lavender .legacy-question-icon {
-  background: #e9d5ff;
-  color: #8b5cf6;
-}
-
 .legacy-bg-peach {
   background: #fff5ec;
-}
-
-.legacy-bg-peach .legacy-question-icon {
-  background: #fed7aa;
-  color: #f97316;
 }
 
 .legacy-bg-teal {
   background: #eefffb;
 }
 
-.legacy-bg-teal .legacy-question-icon {
-  background: #ccfbf1;
-  color: #14b8a6;
-}
-
 .legacy-bg-yellow {
   background: #fffbea;
-}
-
-.legacy-bg-yellow .legacy-question-icon {
-  background: #fef3c7;
-  color: #f59e0b;
 }
 
 .legacy-bg-pink {
   background: #fff1f5;
 }
 
-.legacy-bg-pink .legacy-question-icon {
-  background: #fbcfe8;
-  color: #ec4899;
-}
-
 .legacy-bg-sage {
   background: #f4faf3;
-}
-
-.legacy-bg-sage .legacy-question-icon {
-  background: #dcfce7;
-  color: #65a30d;
 }
 
 .legacy-bg-powder {
   background: #f2f8ff;
 }
 
-.legacy-bg-powder .legacy-question-icon {
-  background: #dbeafe;
-  color: #2563eb;
-}
-
 .legacy-bg-ivory {
   background: #f9f7f2;
-}
-
-.legacy-bg-ivory .legacy-question-icon {
-  background: #e7e5e4;
-  color: #78716c;
 }
 
 @media (max-width: 619px) {
@@ -790,17 +722,9 @@ a {
   }
 
   .legacy-question h2 {
-    padding: 22px 18px 22px 64px;
+    padding: 24px 20px;
     border-top: 0;
     border-radius: 0;
-  }
-
-  .legacy-question-icon {
-    left: 18px;
-    top: 22px;
-    width: 34px;
-    height: 34px;
-    font-size: 20px;
   }
 
   .legacy-question h2,
