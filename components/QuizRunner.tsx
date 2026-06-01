@@ -555,6 +555,8 @@ function createQuizRunnerScript(config: {
             try {
               ensureRewardedListeners();
 
+              try { window.googletag.pubads()?.updateCorrelator?.(); } catch (error) {}
+
               var slot = window.googletag.defineOutOfPageSlot(
                 config.rewardedAdUnitPath,
                 window.googletag.enums.OutOfPageFormat.REWARDED
