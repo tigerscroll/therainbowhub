@@ -60,6 +60,18 @@ function getResultProfile(quiz: Quiz, score: number, total: number, strongestSta
   };
 }
 
+function getIqRange(score: number, total: number) {
+  const percentage = total ? (score / total) * 100 : 0;
+
+  if (percentage >= 95) return "140+";
+  if (percentage >= 90) return "130-139";
+  if (percentage >= 80) return "120-129";
+  if (percentage >= 70) return "110-119";
+  if (percentage >= 60) return "100-109";
+  if (percentage >= 50) return "90-99";
+  return "Under 90";
+}
+
 function scoreForCategories(quiz: Quiz, answers: Record<number, number>, categories: string[]) {
   const items = quiz.questions
     .map((question, index) => ({ question, index }))
@@ -111,8 +123,8 @@ export function ResultScreen({
         <span>{translations.quiz.finalScore}</span>
       </div>
       <div className="legacy-score">
-        <strong>{profile.percentile}</strong>
-        <span>{translations.quiz.profile}</span>
+        <strong>{quiz.slug === "iq" ? getIqRange(score, quiz.questions.length) : profile.percentile}</strong>
+        <span>{quiz.slug === "iq" ? translations.quiz.estimatedIqRange : translations.quiz.profile}</span>
       </div>
       <div className="legacy-cognitive-scores">
         {cognitiveScores.map((item) => (

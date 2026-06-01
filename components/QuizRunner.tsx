@@ -24,6 +24,16 @@ type RelatedQuiz = {
 };
 
 const titleAccentTokenPattern = /^(?:\d+(?:\.\d+)?%|\d+\/\d+)$/;
+const socialAvatarCount = 50;
+
+function getSocialAvatarUrls(slug: string) {
+  const hash = Array.from(slug).reduce((total, char) => total + char.charCodeAt(0), 0);
+
+  return Array.from({ length: 4 }, (_, index) => {
+    const avatarNumber = ((hash + index * 11) % socialAvatarCount) + 1;
+    return `/images/avatars/social-${String(avatarNumber).padStart(2, "0")}.jpg`;
+  });
+}
 
 function escapeHtml(value: unknown) {
   return String(value)
@@ -71,6 +81,12 @@ function createQuizRunnerHtml(config: {
     stepOne: translations.rewardedAd.gate?.stepOne ?? translations.rewardedAd.helper,
     stepTwo: translations.rewardedAd.gate?.stepTwo ?? translations.quiz.thenBegins,
   };
+  const avatarHtml = getSocialAvatarUrls(quiz.slug)
+    .map(
+      (url) =>
+        `<span class="legacy-avatar" style="background-image:url('${escapeHtml(url)}')"></span>`,
+    )
+    .join("");
   const relatedHtml = relatedQuizzes.length
     ? `<div data-js="related-quizzes" class="legacy-related">
           <h3>${escapeHtml(translations.quiz.tryAnotherChallenge)}</h3>
@@ -98,10 +114,7 @@ function createQuizRunnerHtml(config: {
         <p class="legacy-sub">${landingLines}</p>
         <div class="legacy-social">
           <div class="legacy-avatars" aria-hidden="true">
-            <span class="legacy-avatar legacy-avatar--one"></span>
-            <span class="legacy-avatar legacy-avatar--two"></span>
-            <span class="legacy-avatar legacy-avatar--three"></span>
-            <span class="legacy-avatar legacy-avatar--four"></span>
+            ${avatarHtml}
           </div>
           <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
         </div>
@@ -920,6 +933,18 @@ function createQuizRunnerScript(config: {
       })[0] || { name: quiz.title, correct: 0, total: 0, ratio: 0 };
     }
 
+    function getIqRange(score, total) {
+      var percentage = total ? (score / total) * 100 : 0;
+
+      if (percentage >= 95) return "140+";
+      if (percentage >= 90) return "130-139";
+      if (percentage >= 80) return "120-129";
+      if (percentage >= 70) return "110-119";
+      if (percentage >= 60) return "100-109";
+      if (percentage >= 50) return "90-99";
+      return "Under 90";
+    }
+
     function formatTemplate(template, values) {
       return Object.keys(values).reduce(function (text, key) {
         return text.split("{" + key + "}").join(values[key]);
@@ -1067,8 +1092,8 @@ function createQuizRunnerScript(config: {
       byData("result-copy").textContent = profile.copy;
       byData("final-score").textContent = isPersonalityQuiz ? getAnsweredCount() + "/" + quiz.questions.length : score + "/" + quiz.questions.length;
       byData("final-score-label").textContent = isPersonalityQuiz ? t.quiz.answered : t.quiz.finalScore;
-      byData("percentile").textContent = profile.percentile;
-      byData("percentile-label").textContent = isPersonalityQuiz ? t.results.viewResults : t.quiz.profile;
+      byData("percentile").textContent = quiz.slug === "iq" && !isPersonalityQuiz ? getIqRange(score, quiz.questions.length) : profile.percentile;
+      byData("percentile-label").textContent = quiz.slug === "iq" && !isPersonalityQuiz ? t.quiz.estimatedIqRange : isPersonalityQuiz ? t.results.viewResults : t.quiz.profile;
       byData("result-meter-fill").style.width = isPersonalityQuiz
         ? Math.round(((profile.count || 0) / Math.max(1, getAnsweredCount())) * 100) + "%"
         : Math.round((score / quiz.questions.length) * 100) + "%";
