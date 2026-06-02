@@ -18,20 +18,6 @@ export function HeadScripts() {
           fbq('init', '${siteConfig.metaPixelId}');
         `}
       </Script>
-
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleTagId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-tag" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag("js", new Date());
-          gtag("config", "${siteConfig.googleTagId}", { send_page_view: false });
-        `}
-      </Script>
     </>
   );
 }
