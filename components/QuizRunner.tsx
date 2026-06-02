@@ -333,6 +333,24 @@ function createQuizRunnerScript(config: {
       }
     }
 
+    function getScreenScrollTop(screenName) {
+      var target = screens[screenName] || root.querySelector("#quiz-top");
+      var header = document.querySelector(".hub-header");
+      var headerBorder = header ? parseFloat(window.getComputedStyle(header).borderBottomWidth) || 4 : 4;
+      var visibleHeaderOffset = headerBorder;
+      var targetTop = 0;
+      var node = target;
+      while (node) {
+        targetTop += node.offsetTop || 0;
+        node = node.offsetParent;
+      }
+      return Math.max(0, targetTop - visibleHeaderOffset);
+    }
+
+    function scrollToScreen(screenName, behavior) {
+      window.scrollTo({ top: getScreenScrollTop(screenName), behavior: behavior || "smooth" });
+    }
+
     function show(screenName, shouldScroll) {
       Object.keys(screens).forEach(function (key) {
         if (screens[key]) {
@@ -348,18 +366,7 @@ function createQuizRunnerScript(config: {
 
       if (shouldScroll !== false) {
         window.requestAnimationFrame(function () {
-          var target = screens[screenName] || root.querySelector("#quiz-top");
-          var header = document.querySelector(".hub-header");
-          var headerBorder = header ? parseFloat(window.getComputedStyle(header).borderBottomWidth) || 4 : 4;
-          var visibleHeaderOffset = headerBorder;
-          var targetTop = 0;
-          var node = target;
-          while (node) {
-            targetTop += node.offsetTop || 0;
-            node = node.offsetParent;
-          }
-          var top = targetTop - visibleHeaderOffset;
-          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+          scrollToScreen(screenName, "smooth");
         });
       }
     }
@@ -1117,13 +1124,13 @@ function createQuizRunnerScript(config: {
       saveProgress("results");
     }
 
-    function startFresh() {
+    function startFresh(shouldScroll) {
       clearAdStatuses();
       current = 0;
       answers = {};
       hasUnlockedReview = false;
       saveProgress("question");
-      renderQuestion();
+      renderQuestion(shouldScroll);
     }
 
     function restartQuiz() {
@@ -1185,20 +1192,21 @@ function createQuizRunnerScript(config: {
     }
 
     function beginStartAd(button, statusName) {
-        clearAdStatuses();
-        setButtonLoading(button, t.loading.ad, true);
-        requestRewardedAd("before_start", function (message) {
-          setAdStatus(statusName, message);
-        }).then(function (granted) {
-          if (!granted) {
-            setButtonLoading(button, t.quiz.preparing, false);
-            setAdStatus(statusName, "");
-            return;
-          }
+      clearAdStatuses();
+      setButtonLoading(button, t.loading.ad, true);
+      requestRewardedAd("before_start", function (message) {
+        setAdStatus(statusName, message);
+      }).then(function (granted) {
+        if (!granted) {
           setButtonLoading(button, t.quiz.preparing, false);
           setAdStatus(statusName, "");
-          startFresh();
-        });
+          return;
+        }
+        setButtonLoading(button, t.quiz.preparing, false);
+        setAdStatus(statusName, "");
+        scrollToScreen("start", "auto");
+        startFresh(false);
+      });
     }
 
     root.querySelectorAll('[data-action="start"]').forEach(function (button) {
