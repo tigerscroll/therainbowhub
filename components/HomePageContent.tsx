@@ -1,5 +1,6 @@
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
+import { HomeQuizGrid, type HomeQuizCard } from "./HomeQuizGrid";
 
 type HomePageContentProps = {
   locale: SupportedLocale;
@@ -19,14 +20,13 @@ function formatPublishedDate(locale: SupportedLocale, publishedAt: string) {
 
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
-  const homepageCards = quizzes
+  const homepageCards: HomeQuizCard[] = quizzes
     .map((quiz) => ({
       href: getLocalePath(locale, `/${quiz.slug}`),
       banner: quiz.homepage.gradient ?? quiz.cardGradient,
       icon: quiz.homepage.icon ?? quiz.cardIcon,
       thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
       thumbnailUrl: quiz.homepage.thumbnailUrl,
-      category: quiz.eyebrow,
       difficulty: translations.home.difficulty[quiz.difficulty],
       publishedAt: quiz.publishedAt,
       publishedDate: formatPublishedDate(locale, quiz.publishedAt),
@@ -54,27 +54,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
         </section>
 
         <section id="all">
-          <div className="hub-quiz-grid">
-            {homepageCards.map((quiz) => (
-              <a key={quiz.title} href={quiz.href} className="hub-quiz-card">
-                <div className="hub-quiz-card__banner" style={{ background: quiz.banner }}>
-                  {quiz.thumbnailUrl ? (
-                    <img src={quiz.thumbnailUrl} alt={quiz.thumbnailAlt} width={640} height={360} loading="lazy" decoding="async" />
-                  ) : (
-                    <span>{quiz.icon}</span>
-                  )}
-                </div>
-                <div className="hub-quiz-card__body">
-                  <div className="hub-quiz-card__meta">
-                    <span className="hub-chip">{quiz.difficulty}</span>
-                    <time dateTime={quiz.publishedAt}>{quiz.publishedDate}</time>
-                  </div>
-                  <h3>{quiz.title}</h3>
-                  <p>{quiz.summary}</p>
-                </div>
-              </a>
-            ))}
-          </div>
+          <HomeQuizGrid quizzes={homepageCards} loadMoreLabel={translations.home.loadMore} />
         </section>
       </div>
     </div>
