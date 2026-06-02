@@ -409,21 +409,10 @@ function createQuizRunnerScript(config: {
       return { currentQuestion: questionIndex + 1, screen: "question" };
     }
 
-    function track(eventName, payload) {
-      var data = payload || {};
-      try { window.gtag?.("event", eventName, data); } catch (error) {}
-    }
-
     function trackRewardGranted(payload) {
       var data = payload || {};
       try { console.log("fbq custom event: Reward", data); } catch (error) {}
       try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
-      try { window.gtag?.("event", "reward_granted", data); } catch (error) {}
-    }
-
-    function trackRewardBypass(payload) {
-      var data = payload || {};
-      try { window.gtag?.("event", "reward_bypass", data); } catch (error) {}
     }
 
     function trackRewardClosed(payload) {
@@ -432,7 +421,6 @@ function createQuizRunnerScript(config: {
         try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
         try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
       }
-      try { window.gtag?.("event", "reward_closed", data); } catch (error) {}
     }
 
     function finishRewardedAd(status, reason) {
@@ -598,12 +586,6 @@ function createQuizRunnerScript(config: {
         }
 
         function proceedWithoutAd(reason) {
-          trackRewardBypass({
-            placement: placement,
-            fallback: true,
-            reason: reason,
-            ad_unit_path: config.rewardedAdUnitPath
-          });
           resolve(true);
         }
 
@@ -832,14 +814,6 @@ function createQuizRunnerScript(config: {
       answers[current] = choiceIndex;
       saveProgress("question");
       applyAnswerState(choiceIndex);
-      track("question_answered", {
-        quiz_slug: quiz.slug,
-        question_index: current,
-        stage: question.stage || 0,
-        selected_answer_index: choiceIndex,
-        selected_profile_id: question.choiceProfileIds ? question.choiceProfileIds[choiceIndex] : undefined,
-        correct: isCorrect
-      });
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
@@ -853,25 +827,12 @@ function createQuizRunnerScript(config: {
       var nextStage = nextQuestion ? (nextQuestion.stage || 0) : currentStage;
 
       if (!nextQuestion) {
-        track("stage_complete", {
-          quiz_slug: quiz.slug,
-          stage: currentStage,
-          stage_name: getStageName(currentStage),
-          score: getScore()
-        });
         saveProgress("result-gate");
         showResultGate();
         return;
       }
 
       if (nextStage !== currentStage) {
-        track("stage_complete", {
-          quiz_slug: quiz.slug,
-          stage: currentStage,
-          stage_name: getStageName(currentStage),
-          stage_score: getStageScore(currentStage),
-          stage_question_count: getStageQuestions(currentStage).length
-        });
         current += 1;
         saveProgress("stage-gate");
         showStageGate();
@@ -1153,14 +1114,6 @@ function createQuizRunnerScript(config: {
       loadRelatedQuizImages();
 
       show("results", shouldScroll);
-      if (shouldTrack !== false) {
-        track("quiz_complete", {
-          quiz_slug: quiz.slug,
-          quiz_title: quiz.title,
-          score: score,
-          question_count: quiz.questions.length
-        });
-      }
       saveProgress("results");
     }
 
@@ -1242,11 +1195,6 @@ function createQuizRunnerScript(config: {
             setAdStatus(statusName, "");
             return;
           }
-          track("quiz_start", {
-            quiz_slug: quiz.slug,
-            quiz_title: quiz.title,
-            question_count: quiz.questions.length
-          });
           setButtonLoading(button, t.quiz.preparing, false);
           setAdStatus(statusName, "");
           startFresh();
