@@ -761,10 +761,11 @@ a {
 }
 
 .legacy-question-image {
-  width: min(100%, 520px);
-  aspect-ratio: 3 / 2;
+  width: min(100%, 720px);
+  max-height: min(52vh, 560px);
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 16px;
 }
 
