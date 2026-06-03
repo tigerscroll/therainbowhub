@@ -33,7 +33,7 @@
     "aboutText": "This Vision Test is designed for entertainment and self-checking. It is not a medical diagnosis, eye exam, occupational assessment, or professional color vision evaluation. Screen brightness, device settings, lighting, and display quality may affect results. If you are concerned about your vision, ask an eye care professional for a proper vision assessment."
   },
   "landing": {
-    "quickStartText": "The first plates look easy. Later rounds reveal hidden numbers, letters, symbols, shapes, and color patterns many people miss.",
+    "quickStartText": "Only those with perfect vision will be able to pass this.",
     "socialProof": "88,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
@@ -662,16 +662,16 @@
           "category": "hidden-number"
         },
         {
-          "prompt": "Do these all show the number 8?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q41.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Which green strip looks darker?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q61.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "No numbers",
-            "No, all differ",
-            "Yes, it's 8",
-            "Yes, it's 9"
+            "Left",
+            "Right",
+            "Both look the same",
+            "No green strip"
           ],
           "answerIndex": 2,
-          "explanation": "Natural light may improve color perception.",
+          "explanation": "The strips are the same shade, but the surrounding lines can change how they look.",
           "category": "comparison"
         },
         {
@@ -694,43 +694,43 @@
       "encouragement": "You are near the finish. The next plates are more varied and harder to read.",
       "questions": [
         {
-          "prompt": "Which letter appears here?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q43.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Which bottom rectangle matches the top color?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q62.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "M",
-            "N",
-            "T",
-            "W"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
           "answerIndex": 0,
-          "explanation": "ColorADD uses symbols to label colors for accessibility.",
-          "category": "hidden-letter"
+          "explanation": "The first bottom rectangle matches the top color most closely.",
+          "category": "comparison"
         },
         {
-          "prompt": "Which three letters do you see?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q44.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Which middle circle is larger?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q63.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "Not three letters",
-            "BSF",
-            "BSE",
-            "DSE"
+            "Left",
+            "Right",
+            "Same size",
+            "No circle"
           ],
           "answerIndex": 2,
-          "explanation": "Some color vision differences can make certain optical illusions look weaker.",
-          "category": "hidden-word"
+          "explanation": "Both middle circles are the same size; the surrounding circles create the illusion.",
+          "category": "comparison"
         },
         {
-          "prompt": "What number is shown in the image?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q45.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Are the horizontal lines curved or straight?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q64.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "3",
-            "2",
-            "5",
-            "6"
+            "Curved",
+            "Straight",
+            "Slanted",
+            "Only vertical lines"
           ],
           "answerIndex": 1,
-          "explanation": "This is a pink number 2 on a green background. Colorblind people may face challenges in activities like cooking, where color is a cue for doneness.",
-          "category": "hidden-number"
+          "explanation": "The horizontal lines are straight, even though the pattern makes them look bent.",
+          "category": "hidden-pattern"
         },
         {
           "prompt": "What number do you see?",
@@ -791,17 +791,17 @@
           "category": "hidden-number"
         },
         {
-          "prompt": "Which number is here?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q50.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Which box looks lighter?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q65.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "7",
-            "6",
-            "5",
-            "15"
+            "A",
+            "B",
+            "Both the same",
+            "Neither"
           ],
           "answerIndex": 2,
-          "explanation": "This is a tan number 5 on a green and blue background. Colorblindness can influence design choices, with colorblind designers focusing more on contrast and patterns.",
-          "category": "hidden-number"
+          "explanation": "Both boxes are the same color; the surrounding shade changes the impression.",
+          "category": "comparison"
         },
         {
           "prompt": "What letter do you detect?",
@@ -817,30 +817,30 @@
           "category": "hidden-letter"
         },
         {
-          "prompt": "Which letter is this?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q52.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "Are the long lines tilted or parallel?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q66.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "G",
-            "D",
-            "C",
-            "B"
+            "Tilted",
+            "Parallel",
+            "Curved",
+            "Only one line"
           ],
-          "answerIndex": 2,
-          "explanation": "This is a green letter C on a red and orange background. Certain types of color blindness are more prevalent in some ethnic groups than others.",
-          "category": "hidden-letter"
+          "answerIndex": 1,
+          "explanation": "The long lines are parallel, even when the short marks make them look tilted.",
+          "category": "hidden-pattern"
         },
         {
-          "prompt": "Which number do you detect?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q53.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "How many colors are inside the circles?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q67.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "5",
-            "6",
+            "1",
             "2",
-            "3"
+            "3",
+            "4"
           ],
-          "answerIndex": 2,
-          "explanation": "This is a tan number 2 on a blue and green background. Colorblindness is not considered a disability by many organizations, though it can pose challenges in specific situations.",
-          "category": "hidden-number"
+          "answerIndex": 0,
+          "explanation": "There is one color inside the circles; the lines can make it seem like more.",
+          "category": "comparison"
         },
         {
           "prompt": "What letter is this?",
@@ -887,17 +887,17 @@
           "category": "hidden-letter"
         },
         {
-          "prompt": "Which animal is visible?",
-          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q57.webp\" alt=\"Color pattern plate\" />",
+          "prompt": "How many legs does the elephant have?",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q68.jpg\" alt=\"Color pattern plate\" />",
           "choices": [
-            "An elephant",
-            "A dog",
-            "A horse",
-            "A bird"
+            "4",
+            "6",
+            "8",
+            "5"
           ],
-          "answerIndex": 2,
-          "explanation": "This is a red horse on a yellow background. Colorblindness can affect the perception of safety signs, which often rely on color for urgency.",
-          "category": "hidden-animal"
+          "answerIndex": 0,
+          "explanation": "The drawing creates a visual trick, but the clear answer is four legs.",
+          "category": "hidden-pattern"
         },
         {
           "prompt": "Which number is this?",
