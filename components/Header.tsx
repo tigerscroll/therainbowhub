@@ -29,7 +29,6 @@ export function Header({ currentPath, locale, translations }: HeaderProps) {
   }));
   const navLinks = [
     { href: getLocalePath(locale, "/"), label: translations.nav.home },
-    { href: getLocalePath(locale, "/info/about"), label: translations.footer.links.about },
     { href: getLocalePath(locale, "/info/contact"), label: translations.footer.links.contact },
   ];
   const languageOptions = getLocaleOptions();

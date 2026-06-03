@@ -112,26 +112,6 @@ export function QuizSearch({ currentLanguage, items, labels, languageLabel, lang
             ))}
           </nav>
 
-          <details className="quiz-search__language">
-            <summary aria-label={languageLabel}>
-              <span aria-hidden="true">{currentLanguage.flag}</span>
-              <span>{currentLanguage.label}</span>
-            </summary>
-            <div className="quiz-search__language-menu">
-              {languageLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  aria-current={link.isCurrent ? "page" : undefined}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span aria-hidden="true">{link.flag}</span>
-                  <span>{link.label}</span>
-                </a>
-              ))}
-            </div>
-          </details>
-
           <div className="quiz-search__field">
             <label className="sr-only" htmlFor={inputId}>
               {labels.label}
@@ -164,6 +144,26 @@ export function QuizSearch({ currentLanguage, items, labels, languageLabel, lang
               )}
             </div>
           ) : null}
+
+          <details className="quiz-search__language">
+            <summary aria-label={languageLabel}>
+              <span aria-hidden="true">{currentLanguage.flag}</span>
+              <span>{currentLanguage.label}</span>
+            </summary>
+            <div className="quiz-search__language-menu">
+              {languageLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  aria-current={link.isCurrent ? "page" : undefined}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span aria-hidden="true">{link.flag}</span>
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </div>
+          </details>
         </div>
       ) : null}
     </div>
