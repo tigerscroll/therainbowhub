@@ -49,6 +49,7 @@ export type QuizFooterContent = {
 export type QuizLanding = {
   quickStartText: string;
   challengeText?: string;
+  ctaLabel?: string;
   socialProof: string;
 };
 
@@ -276,6 +277,9 @@ function validateLanding(value: unknown, fileName: string): QuizLanding {
   }
   if (landing.challengeText !== undefined) {
     assertString(landing.challengeText, "landing.challengeText", fileName);
+  }
+  if (landing.ctaLabel !== undefined) {
+    assertString(landing.ctaLabel, "landing.ctaLabel", fileName);
   }
   assertString(landing.socialProof, "landing.socialProof", fileName);
 

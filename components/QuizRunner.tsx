@@ -76,6 +76,7 @@ function createQuizRunnerHtml(config: {
     .filter((line) => line && line.trim().length > 0)
     .map((line) => escapeHtml(line))
     .join("<br />");
+  const startCtaLabel = quiz.landing.ctaLabel ?? translations.quiz.startTest;
   const adGateCopy = {
     beforeTitle: translations.rewardedAd.gate?.beforeTitle ?? translations.quiz.shortAd,
     stepOne: translations.rewardedAd.gate?.stepOne ?? translations.rewardedAd.helper,
@@ -119,7 +120,7 @@ function createQuizRunnerHtml(config: {
           <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
         </div>
         <button class="legacy-primary" type="button" data-action="start">
-          <span aria-hidden="true">▶</span> ${escapeHtml(translations.quiz.startTest)}
+          <span aria-hidden="true">▶</span> ${escapeHtml(startCtaLabel)}
         </button>
         <div class="legacy-ad-note" data-js="start-ad-note">
           <span class="legacy-shield" aria-hidden="true">✓</span>
