@@ -178,7 +178,7 @@ export function QuizFooter({ footer, translations }: QuizFooterProps) {
       </div>
 
       <button type="button" data-action="restart" className="legacy-primary legacy-restart">
-        <span aria-hidden="true">▶</span> {translations.quiz.restartTest}
+        <span aria-hidden="true">↻</span> {translations.quiz.restartTest}
       </button>
       <p className="quiz-info-panel__restart-note">{template.restartNote}</p>
     </section>

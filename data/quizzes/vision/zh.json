@@ -1,0 +1,944 @@
+{
+  "slug": "vision",
+  "title": "视力测试",
+  "seoTitle": "视力测试",
+  "seoDescription": "参加一个有趣的在线视力测试，识别隐藏的数字、字母、形状、符号和彩色图案板。",
+  "pageTitle": "只有7%的人能通过这个视力测试",
+  "eyebrow": "视力挑战",
+  "summary": "包含隐藏数字、字母、形状、符号和混合色板的视觉颜色图案测试。",
+  "duration": "~5 分钟",
+  "publishedAt": "2026-06-03T13:00:00Z",
+  "difficulty": "Medium",
+  "passRate": "7%",
+  "cardIcon": "🎨",
+  "cardGradient": "linear-gradient(135deg, #ef4444 0%, #f59e0b 32%, #22c55e 65%, #2563eb 100%)",
+  "accent": "#16a34a",
+  "questionCount": 60,
+  "homepage": {
+    "title": "你能通过这个视力测试吗？",
+    "summary": "在 10 快速彩色轮中发现隐藏的数字、字母、形状和符号。",
+    "thumbnailUrl": "/images/thumbnails/vision.jpg",
+    "thumbnailAlt": "带隐藏图板的视力测试",
+    "icon": "🎨",
+    "gradient": "linear-gradient(135deg, #ef4444 0%, #f59e0b 32%, #22c55e 65%, #2563eb 100%)",
+    "featured": false
+  },
+  "heroPoints": [
+    "真正的隐藏色板",
+    "60 视觉问题",
+    "即时结果简介"
+  ],
+  "footer": {
+    "aboutTitle": "关于此视力测试",
+    "aboutText": "这个视力测试用于娱乐和自我检查。它不是医学诊断、眼科检查、职业评估，也不是专业的色觉评估。屏幕亮度、设备设置、光线和显示质量都可能影响结果。如果你担心自己的视力，请向眼科护理专业人士咨询，进行适当的视力评估。"
+  },
+  "landing": {
+    "quickStartText": "最初的图板看起来很简单。后面的回合会显示许多人漏看的隐藏数字、字母、符号、形状和彩色图案。",
+    "socialProof": "88,000+ 人们本周尝试过",
+    "ctaLabel": "开始测试"
+  },
+  "result": {
+    "profileName": "视力测试",
+    "profiles": [
+      {
+        "minRatio": 0.85,
+        "tier": "色彩图案专家",
+        "title": "您发现了最难的颜色图案。",
+        "copy": "整个测试过程中视觉焦点极佳。您最强的领域是{stage}。",
+        "percentile": "Top 7%"
+      },
+      {
+        "minRatio": 0.7,
+        "tier": "锐利色彩检测仪",
+        "title": "强烈的色彩图案得分。",
+        "copy": "你清楚地阅读了许多隐藏的板块并很好地处理了混合回合。您最强的领域是{stage}。",
+        "percentile": "Top 22%"
+      },
+      {
+        "minRatio": 0.5,
+        "tier": "混合调色板阅读器",
+        "title": "你发现了大量的颜色线索。",
+        "copy": "有些车牌很容易在屏幕上阅读，而另一些则比较困难。您最强的领域是{stage}。",
+        "percentile": "Top 50%"
+      },
+      {
+        "minRatio": 0,
+        "tier": "颜色检查入门",
+        "title": "这是一次快速的颜色图案检查。",
+        "copy": "颜色板可能因屏幕和照明而有很大差异。您的最佳区域是{stage}。",
+        "percentile": "Top 80%"
+      }
+    ],
+    "scoreDimensions": [
+      {
+        "label": "隐藏数字",
+        "categories": [
+          "hidden-number"
+        ]
+      },
+      {
+        "label": "字母和单词",
+        "categories": [
+          "hidden-letter",
+          "hidden-word"
+        ]
+      },
+      {
+        "label": "形状和符号",
+        "categories": [
+          "hidden-shape",
+          "hidden-symbol"
+        ]
+      },
+      {
+        "label": "图片和图案识别",
+        "categories": [
+          "hidden-animal",
+          "comparison",
+          "hidden-pattern"
+        ]
+      }
+    ]
+  },
+  "stageGroups": [
+    {
+      "title": "颜色图案预热",
+      "encouragement": "好的开始。下一轮将保持板块简单，但要求更清晰的焦点。",
+      "questions": [
+        {
+          "prompt": "这里隐藏着什么号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q01.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "16",
+            "20",
+            "19",
+            "10"
+          ],
+          "answerIndex": 3,
+          "explanation": "红绿色盲患者很难区分蓝绿色和红黄橙色。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你看到什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q02.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "8"
+          ],
+          "answerIndex": 3,
+          "explanation": "黄色背景上的红色 8。当视网膜锥细胞缺失或出现故障时，就会出现色盲。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "哪个数字是可见的？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q03.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "8",
+            "9",
+            "5",
+            "6"
+          ],
+          "answerIndex": 1,
+          "explanation": "人眼使用对红、绿或蓝光敏感的视锥细胞。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你发现什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q04.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "7",
+            "1",
+            "2",
+            "8"
+          ],
+          "answerIndex": 0,
+          "explanation": "在异常三色视中，一种视锥细胞类型功能不正确。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么形状？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q05.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "一个圆圈",
+            "一个正方形",
+            "一个六边形",
+            "一颗星"
+          ],
+          "answerIndex": 3,
+          "explanation": "红色盲是由错误或缺失的红色视锥细胞引起的。",
+          "category": "hidden-shape"
+        },
+        {
+          "prompt": "这是什么符号？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q06.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "字母 S",
+            "编号 8",
+            "冒号",
+            "百分号"
+          ],
+          "answerIndex": 0,
+          "explanation": "绿色盲是由于缺失绿色视锥细胞而导致的红绿色盲。",
+          "category": "hidden-symbol"
+        }
+      ]
+    },
+    {
+      "title": "隐藏车牌",
+      "encouragement": "干得好。现在，测验混合了形状、符号和隐藏标记。",
+      "questions": [
+        {
+          "prompt": "显示哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q07.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "C",
+            "G",
+            "D",
+            "O"
+          ],
+          "answerIndex": 1,
+          "explanation": "蓝色盲会影响蓝视锥细胞的感知。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "这里写的是什么字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q08.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "RAIN",
+            "POLE",
+            "LOVE",
+            "EVOLVE"
+          ],
+          "answerIndex": 2,
+          "explanation": "“LOVE” 为红色，蓝-绿-粉-黄背景。全色盲会导致完全色盲，只能看到灰色。",
+          "category": "hidden-word"
+        },
+        {
+          "prompt": "这是什么形状？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q09.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "长方形",
+            "钻石",
+            "正方形",
+            "菱形"
+          ],
+          "answerIndex": 2,
+          "explanation": "Ishihara 板使用点图案来测试色盲。",
+          "category": "hidden-shape"
+        },
+        {
+          "prompt": "你能读出这个数字吗？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q10.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "4",
+            "2",
+            "5",
+            "3"
+          ],
+          "answerIndex": 1,
+          "explanation": "深绿色背景上的红色 2。色觉缺陷意味着看到颜色的方式不同，而不是黑白。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q11.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "6",
+            "0",
+            "10",
+            "5"
+          ],
+          "answerIndex": 1,
+          "explanation": "绿色-深蓝色背景上的亮蓝色 0。狗和猫并不是完全色盲，但看到的颜色比人类少。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么动物？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q12.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "公鸡",
+            "鲸",
+            "鲨鱼",
+            "狗"
+          ],
+          "answerIndex": 0,
+          "explanation": "浅绿色背景上的粉红色公鸡。有些动物，如鸟类和蝴蝶，可以看到人类看不见的紫外线。",
+          "category": "hidden-animal"
+        }
+      ]
+    },
+    {
+      "title": "形状和符号",
+      "encouragement": "继续前进。下一轮添加字母和短单词。",
+      "questions": [
+        {
+          "prompt": "这是什么号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q13.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "14",
+            "5",
+            "7",
+            "4"
+          ],
+          "answerIndex": 3,
+          "explanation": "女性可能携带并传递色盲基因。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你看到什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q14.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "4",
+            "7",
+            "14",
+            "17"
+          ],
+          "answerIndex": 1,
+          "explanation": "浅紫色背景上的深紫色 7。四色性可以让人们通过四种视锥细胞看到更多颜色。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "显示的是哪个序列？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q15.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "ACH",
+            "EDB",
+            "ADC",
+            "ABC"
+          ],
+          "answerIndex": 3,
+          "explanation": "John Dalton 在 1794 中首次描述了色盲。",
+          "category": "hidden-word"
+        },
+        {
+          "prompt": "你看到哪个数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q16.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "8",
+            "16",
+            "5",
+            "6"
+          ],
+          "answerIndex": 3,
+          "explanation": "\"Daltonism\" 是红绿色盲的别称。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "命名这封信。",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q17.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "Q",
+            "O",
+            "D",
+            "P"
+          ],
+          "answerIndex": 0,
+          "explanation": "这是浅红色和橙色背景上的浅绿色字母 Q。由于眼部疾病、衰老或受伤，色盲有时会在以后的生活中出现。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "这是什么符号？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q18.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "$$",
+            "@",
+            "&",
+            "%"
+          ],
+          "answerIndex": 1,
+          "explanation": "交通灯可以帮助色盲用户获得位置提示。",
+          "category": "hidden-symbol"
+        }
+      ]
+    },
+    {
+      "title": "字母和单词",
+      "encouragement": "强定位。接下来的盘子混合了数字、符号和图片。",
+      "questions": [
+        {
+          "prompt": "显示什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q19.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "B",
+            "R",
+            "G",
+            "D"
+          ],
+          "answerIndex": 0,
+          "explanation": "这是红色背景上的绿色字母 \"B\"。色盲者可以很好地看到对比度，有时比色觉正常的人更好，尤其是在弱光下。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "这是什么形状？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q20.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "一张笑脸",
+            "一颗心",
+            "一个美元符号",
+            "\"@\" 符号"
+          ],
+          "answerIndex": 1,
+          "explanation": "这是绿色背景上的一颗红心。色盲友好型设计使用纹理、图案和标签来区分元素，而不仅仅依赖颜色。",
+          "category": "hidden-shape"
+        },
+        {
+          "prompt": "可见的数字是多少？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q21.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "6",
+            "0",
+            "15",
+            "5"
+          ],
+          "answerIndex": 3,
+          "explanation": "杆状细胞负责夜视，不受色盲的影响。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么形状？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q22.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "八边形",
+            "正方形",
+            "三角形",
+            "钻石"
+          ],
+          "answerIndex": 2,
+          "explanation": "色觉差异在某些人群中比其他人群更常见。",
+          "category": "hidden-shape"
+        },
+        {
+          "prompt": "那是哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q23.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "M",
+            "N",
+            "L",
+            "A"
+          ],
+          "answerIndex": 0,
+          "explanation": "红绿色混淆在色盲中最常见。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "显示什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q24.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "6",
+            "9",
+            "8",
+            "0"
+          ],
+          "answerIndex": 2,
+          "explanation": "上下文可以帮助色盲人士解释不清楚的视觉效果。",
+          "category": "hidden-number"
+        }
+      ]
+    },
+    {
+      "title": "混合色板",
+      "encouragement": "很好的焦点。下一轮使隐藏的数字更难分离。",
+      "questions": [
+        {
+          "prompt": "你发现什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q25.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "0",
+            "8",
+            "9",
+            "6"
+          ],
+          "answerIndex": 1,
+          "explanation": "这是浅红色和橙色背景下的浅绿色数字 8。一些视频游戏和软件包含色盲模式，改变视觉效果以使其更易于访问。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "圆圈内的数字是多少？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q26.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "10",
+            "1",
+            "20",
+            "70"
+          ],
+          "answerIndex": 0,
+          "explanation": "有些工作会使用正式的色觉检查，因为颜色可能是工作的一部分。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "显示哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q27.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "M",
+            "S",
+            "T",
+            "R"
+          ],
+          "answerIndex": 1,
+          "explanation": "色盲可能有助于发现隐藏的伪装。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "你能读懂这个数字吗？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q28.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "7",
+            "14",
+            "4",
+            "5"
+          ],
+          "answerIndex": 2,
+          "explanation": "EnChroma 眼镜可以增强某些色盲人士的色彩。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你看到什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q29.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "O",
+            "C",
+            "B",
+            "D"
+          ],
+          "answerIndex": 3,
+          "explanation": "这是蓝色和绿色背景上的粉红色字母 D。色盲不会影响整体视力或视觉清晰度。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "你认识什么号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q30.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "19",
+            "8",
+            "9",
+            "6"
+          ],
+          "answerIndex": 2,
+          "explanation": "大脑通过纹理和亮度进行补偿。",
+          "category": "hidden-number"
+        }
+      ]
+    },
+    {
+      "title": "较硬的车牌号",
+      "encouragement": "保持小心。现在一些答案取决于微小的模式差异。",
+      "questions": [
+        {
+          "prompt": "这是哪两个数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q31.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "13 and 6",
+            "7 and 13",
+            "17 and 4",
+            "7 and 14"
+          ],
+          "answerIndex": 1,
+          "explanation": "不同的点颜色针对色觉差异。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么标点符号？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q32.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "!",
+            "?",
+            ".",
+            ";"
+          ],
+          "answerIndex": 1,
+          "explanation": "尽管患有色盲，像 Monet 这样的艺术家仍然蓬勃发展。",
+          "category": "hidden-symbol"
+        },
+        {
+          "prompt": "这里出现什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q33.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "O",
+            "A",
+            "D",
+            "U"
+          ],
+          "answerIndex": 3,
+          "explanation": "九月是色盲意识月。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "这是什么小写字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q34.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "h",
+            "o",
+            "n",
+            "m"
+          ],
+          "answerIndex": 2,
+          "explanation": "早期发现可以改善教育支持。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "哪个气泡有相同的数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q35.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "两者都不",
+            "正确的",
+            "两个都",
+            "左边"
+          ],
+          "answerIndex": 3,
+          "explanation": "照明条件会影响色盲者的颜色感知。",
+          "category": "comparison"
+        },
+        {
+          "prompt": "命名形状。",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q36.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "一颗星",
+            "一颗心",
+            "一个正方形",
+            "一轮新月"
+          ],
+          "answerIndex": 1,
+          "explanation": "这是黄色背景上的浅绿色和灰色的心形。色盲不会影响颜色命名；人们可能会记住颜色的名称，即使他们对颜色的看法不同。",
+          "category": "hidden-shape"
+        }
+      ]
+    },
+    {
+      "title": "模式识别回合",
+      "encouragement": "进展不错。下一轮使用对比度较低且较繁忙的印版。",
+      "questions": [
+        {
+          "prompt": "你能看到什么动物？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q37.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "一只火鸡",
+            "一只狗",
+            "一头大象",
+            "一头犀牛"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是红色和粉色背景上的绿色大象。可以调整数字屏幕以增加对比度或更改颜色，以更好地适应色盲用户。",
+          "category": "hidden-animal"
+        },
+        {
+          "prompt": "这是哪三个大写字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q38.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "KRT",
+            "DLP",
+            "MBN",
+            "VIP"
+          ],
+          "answerIndex": 3,
+          "explanation": "红粉色背景上的蓝绿色 “VIP”。有些药物，如羟氯喹，会影响色觉。",
+          "category": "hidden-word"
+        },
+        {
+          "prompt": "这是什么动物？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q39.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "猫",
+            "狗",
+            "河马",
+            "鸟"
+          ],
+          "answerIndex": 3,
+          "explanation": "牛顿色轮对于色盲者来说可能看起来不同。",
+          "category": "hidden-animal"
+        },
+        {
+          "prompt": "这是哪个号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q40.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "3",
+            "5",
+            "16",
+            "6"
+          ],
+          "answerIndex": 3,
+          "explanation": "这是浅绿色背景上的棕褐色数字 6。色盲与某些药物有关，例如羟氯喹，它可以改变色觉。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这些都显示数字8吗？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q41.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "没有数字",
+            "不，一切都不同",
+            "是的，它是 8",
+            "是的，它是 9"
+          ],
+          "answerIndex": 2,
+          "explanation": "自然光可以改善色彩感知。",
+          "category": "comparison"
+        },
+        {
+          "prompt": "这里是什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q42.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "8",
+            "3",
+            "6",
+            "5"
+          ],
+          "answerIndex": 1,
+          "explanation": "多彩背景（蓝色、黄色、粉色、橙色、绿色、红色）上的亮粉色 3。色盲不会影响深度知觉或 3D 视力。",
+          "category": "hidden-number"
+        }
+      ]
+    },
+    {
+      "title": "低对比度挑战",
+      "encouragement": "你已经接近终点了。接下来的板块更加多样化，也更难阅读。",
+      "questions": [
+        {
+          "prompt": "这里出现哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q43.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "M",
+            "N",
+            "T",
+            "W"
+          ],
+          "answerIndex": 0,
+          "explanation": "ColorADD 使用符号来标记颜色以方便访问。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "你看到哪三个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q44.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "不是三个字母",
+            "BSF",
+            "BSE",
+            "DSE"
+          ],
+          "answerIndex": 2,
+          "explanation": "一些色觉差异可能会使某些视错觉看起来较弱。",
+          "category": "hidden-word"
+        },
+        {
+          "prompt": "图像中显示的数字是多少？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q45.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "3",
+            "2",
+            "5",
+            "6"
+          ],
+          "answerIndex": 1,
+          "explanation": "这是绿色背景上的粉红色数字 2。色盲者可能会在烹饪等活动中面临挑战，因为颜色是熟度的提示。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你看到什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q46.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "6",
+            "0",
+            "9",
+            "19"
+          ],
+          "answerIndex": 2,
+          "explanation": "螳螂虾拥有多达 16 光感受器——比人类还多。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "可见的数字是多少？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q47.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "19",
+            "6",
+            "8",
+            "96"
+          ],
+          "answerIndex": 3,
+          "explanation": "色盲经常出现在幼儿期。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "显示哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q48.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "P",
+            "O",
+            "Q",
+            "R"
+          ],
+          "answerIndex": 1,
+          "explanation": "这是绿色背景上的粉红色字母 O。大约 8% 的北欧血统男性和 0.5% 的女性是色盲。",
+          "category": "hidden-letter"
+        }
+      ]
+    },
+    {
+      "title": "高级隐藏板",
+      "encouragement": "最后一轮即将到来。首先检查图像，然后选择最清晰的匹配。",
+      "questions": [
+        {
+          "prompt": "可见的数字是多少？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q49.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "2",
+            "3",
+            "5",
+            "8"
+          ],
+          "answerIndex": 0,
+          "explanation": "这是红色和粉色背景上的绿色数字 2。滤色镜等色觉辅助工具可以帮助一些色盲人士更清楚地区分颜色。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这里是哪个号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q50.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "7",
+            "6",
+            "5",
+            "15"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是绿色和蓝色背景上的棕褐色数字 5。色盲会影响设计选择，色盲设计师更关注对比度和图案。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "你检测到什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q51.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "A",
+            "D",
+            "E",
+            "B"
+          ],
+          "answerIndex": 0,
+          "explanation": "罕见的形式可能会导致颜色呈现灰色。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "这是哪个字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q52.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "G",
+            "D",
+            "C",
+            "B"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是红色和橙色背景上的绿色字母 C。某些类型的色盲在某些种族群体中比其他种族群体中更为普遍。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "您检测到哪个数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q53.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "5",
+            "6",
+            "2",
+            "3"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是蓝色和绿色背景上的棕褐色数字 2。尽管色盲在特定情况下可能会带来挑战，但许多组织并不认为色盲是一种残疾。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q54.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "X",
+            "W",
+            "M",
+            "N"
+          ],
+          "answerIndex": 1,
+          "explanation": "色盲用户经常将色调描述为 “warm” 或“酷”。",
+          "category": "hidden-letter"
+        }
+      ]
+    },
+    {
+      "title": "最终视力测试",
+      "questions": [
+        {
+          "prompt": "你看到什么数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q55.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "10",
+            "0",
+            "8",
+            "9"
+          ],
+          "answerIndex": 1,
+          "explanation": "标签和记忆有助于识别颜色。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这是哪个小写字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q56.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "d",
+            "c",
+            "b",
+            "e"
+          ],
+          "answerIndex": 0,
+          "explanation": "这是红色和橙色背景上的绿色小写字母 \"d\"。专门的应用程序可以帮助色盲人士使用智能手机上的摄像头识别颜色。",
+          "category": "hidden-letter"
+        },
+        {
+          "prompt": "哪种动物是可见的？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q57.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "一头大象",
+            "一只狗",
+            "一匹马",
+            "一只鸟"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是一匹黄底红马。色盲会影响对安全标志的感知，而安全标志通常依赖颜色来表示紧急程度。",
+          "category": "hidden-animal"
+        },
+        {
+          "prompt": "这是哪个号码？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q58.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "17",
+            "4",
+            "7",
+            "2"
+          ],
+          "answerIndex": 2,
+          "explanation": "这是深红色背景上的绿色数字 7。不同的屏幕和照明可以使色板更容易或更难阅读。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "显示哪个数字？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q59.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "6",
+            "3",
+            "8",
+            "9"
+          ],
+          "answerIndex": 2,
+          "explanation": "红色背景上的绿色 8。色盲不会损害眼睛健康；风险与正常视力相同。",
+          "category": "hidden-number"
+        },
+        {
+          "prompt": "这里描绘了什么字母？",
+          "visual": "<img class=\"legacy-question-image\" src=\"/quizzes/vision/images/q60.webp\" alt=\"Color pattern plate\" />",
+          "choices": [
+            "S",
+            "O",
+            "Q",
+            "P"
+          ],
+          "answerIndex": 1,
+          "explanation": "红黄橙色背景上的绿色 “O”。色盲通常是遗传性的，男性多于女性。",
+          "category": "hidden-letter"
+        }
+      ]
+    }
+  ]
+}
