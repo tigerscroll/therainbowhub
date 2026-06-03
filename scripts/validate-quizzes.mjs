@@ -146,6 +146,10 @@ function validateLanding(landing, fileName) {
   if (landing.challengeText !== undefined) {
     requireString(landing.challengeText, "landing.challengeText", fileName);
   }
+
+  if (landing.ctaLabel !== undefined) {
+    requireString(landing.ctaLabel, "landing.ctaLabel", fileName);
+  }
 }
 
 function validateResult(result, fileName) {

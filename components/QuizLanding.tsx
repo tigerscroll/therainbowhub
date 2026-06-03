@@ -9,6 +9,8 @@ type QuizLandingProps = {
 };
 
 export function QuizLanding({ locale, quiz, showStartLink = true, translations }: QuizLandingProps) {
+  const startCtaLabel = quiz.landing.ctaLabel ?? translations.quiz.startTest;
+
   return (
     <section className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
       <div>
@@ -41,7 +43,7 @@ export function QuizLanding({ locale, quiz, showStartLink = true, translations }
             className="mt-7 inline-flex min-h-12 items-center justify-center rounded-md bg-ink px-6 text-base font-black text-white shadow-soft transition hover:-translate-y-0.5"
             style={{ backgroundColor: quiz.accent }}
           >
-            {translations.quiz.startTest}
+            {startCtaLabel}
           </a>
         ) : null}
       </div>
