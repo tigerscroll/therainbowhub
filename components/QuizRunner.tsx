@@ -655,7 +655,6 @@ function createQuizRunnerScript(config: {
     }
 
     function preloadQuestionVisual(questionIndex) {
-      if (!isPersonalityQuiz) return;
       var question = quiz.questions[questionIndex];
       var src = question ? getVisualImageSrc(question.visual) : "";
       if (!src || preloadedVisuals[src]) return;
