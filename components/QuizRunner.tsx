@@ -119,10 +119,10 @@ function createQuizRunnerHtml(config: {
           </div>
           <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
         </div>
-        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(startCtaLabel)}
         </button>
+        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
         <div class="legacy-ad-note" data-js="start-ad-note">
           <span class="legacy-shield" aria-hidden="true">✓</span>
           <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
@@ -142,10 +142,10 @@ function createQuizRunnerHtml(config: {
             <p>${escapeHtml(adGateCopy.stepTwo)}</p>
           </div>
         </div>
-        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
         <button type="button" data-action="start-gate-continue" class="legacy-primary">
           ${escapeHtml(translations.quiz.continue)} →
         </button>
+        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="question" class="legacy-hidden">
@@ -183,8 +183,8 @@ function createQuizRunnerHtml(config: {
           </div>
         </div>
         <div data-js="stage-trail" class="legacy-stage-trail" aria-hidden="true"></div>
-        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
         <button type="button" data-js="stage-button" data-action="stage-continue" class="legacy-primary legacy-stage-button"></button>
+        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
         <div class="legacy-ad-note">
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
@@ -194,8 +194,8 @@ function createQuizRunnerHtml(config: {
       <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
         <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
-        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
         <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
+        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
         <div class="legacy-ad-note">
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
@@ -227,8 +227,8 @@ function createQuizRunnerHtml(config: {
         <div class="legacy-unlock-panel">
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
-          <div class="legacy-ad-status" data-js="unlock-ad-status" aria-live="polite"></div>
           <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
+          <div class="legacy-ad-status" data-js="unlock-ad-status" aria-live="polite"></div>
         </div>
         <div data-js="review" class="legacy-review"></div>
         ${relatedHtml}
@@ -290,10 +290,12 @@ function createQuizRunnerScript(config: {
     var preloadedVisuals = {};
     var retryRewardedAction = null;
 
-    window.googletag = window.googletag || { cmd: [] };
+    if (config.rewardedAdUnitPath) {
+      window.googletag = window.googletag || { cmd: [] };
+    }
 
     try {
-      useStartAdGate = new URLSearchParams(window.location.search).get("gate") === "1";
+      useStartAdGate = Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
     } catch (error) {}
 
     var screens = {
@@ -391,6 +393,15 @@ function createQuizRunnerScript(config: {
             node = node.offsetParent;
           }
           var top = targetTop - visibleHeaderOffset;
+          if (header) {
+            var headerTop = 0;
+            var headerNode = header;
+            while (headerNode) {
+              headerTop += headerNode.offsetTop || 0;
+              headerNode = headerNode.offsetParent;
+            }
+            top = headerTop + (header.offsetHeight || 0) - headerBorder;
+          }
           window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         });
       }
