@@ -8,6 +8,26 @@ type QuizLandingProps = {
   translations: Translations;
 };
 
+function renderPageTitle(quiz: Quiz) {
+  if (quiz.slug !== "country-match") {
+    return quiz.pageTitle;
+  }
+
+  const [before, ...rest] = quiz.pageTitle.split("Country");
+
+  if (!rest.length) {
+    return quiz.pageTitle;
+  }
+
+  return (
+    <>
+      {before}
+      <span style={{ color: quiz.accent }}>Country</span>
+      {rest.join("Country")}
+    </>
+  );
+}
+
 export function QuizLanding({ locale, quiz, showStartLink = true, translations }: QuizLandingProps) {
   const startCtaLabel = quiz.landing.ctaLabel ?? translations.quiz.startTest;
 
@@ -18,7 +38,7 @@ export function QuizLanding({ locale, quiz, showStartLink = true, translations }
           {quiz.eyebrow}
         </p>
         <h1 className="max-w-3xl text-4xl font-black leading-tight text-ink sm:text-5xl">
-          {quiz.pageTitle}
+          {renderPageTitle(quiz)}
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
           {quiz.summary}
