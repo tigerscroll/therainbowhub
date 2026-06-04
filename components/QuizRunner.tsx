@@ -53,13 +53,51 @@ function renderTitleWithAccent(title: string, slug: string) {
 }
 
 function renderSocialProof(value: string) {
-  const match = value.match(/^(.+?\bpeople\b)(.*)$/i);
+  const text = value.trim();
+  const countMatch = text.match(/\d[\d\s,.\u00a0'’]*\+?/);
 
-  if (!match) {
-    return escapeHtml(value);
+  if (!countMatch || countMatch.index === undefined) {
+    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(text)}</strong>`;
   }
 
-  return `${escapeHtml(match[1])}<span class="legacy-social__muted">${escapeHtml(match[2])}</span>`;
+  const personTerms = [
+    "people", "personas", "pessoas", "persone", "personnes", "Menschen", "mensen",
+    "mennesker", "personer", "ihmistä", "ember", "orang", "người", "kişi",
+    "oameni", "osób", "lidí", "žmonių", "cilvēku", "души", "άτομα", "людей",
+    "אנשים", "लोगों", "คน", "人以上", "人", "명 이상의 사람들이", "사람들이", "شخص",
+  ];
+  const qualifierTerms = [
+    "Más de ", "Mais de ", "Plus de ", "Oltre ", "Über ", "Yli ", "Hơn ", "Peste ",
+    "Ruim ", "ponad ", "понад ", "більше ніж ", "יותר מ-", "أكثر من ", "กว่า ", "超过 ",
+  ];
+  const numberStart = countMatch.index;
+  const numberEnd = numberStart + countMatch[0].length;
+  const before = text.slice(0, numberStart);
+  const afterNumber = text.slice(numberEnd);
+  const qualifier = qualifierTerms.find((term) => before.endsWith(term)) ?? "";
+  const boldStart = numberStart - qualifier.length;
+  const nearbyAfterNumber = afterNumber.slice(0, 48);
+  const personMatch = personTerms
+    .map((term) => {
+      const index = nearbyAfterNumber.indexOf(term);
+      return index >= 0 ? { index, term } : null;
+    })
+    .filter((item): item is { index: number; term: string } => item !== null)
+    .sort((a, b) => a.index - b.index)[0];
+  const boldEnd = personMatch ? numberEnd + personMatch.index + personMatch.term.length : numberEnd;
+  const bold = text.slice(boldStart, boldEnd).trim();
+  const mutedBefore = text.slice(0, boldStart).trim();
+  const mutedAfter = text.slice(boldEnd).trim();
+
+  if (!mutedBefore && !mutedAfter) {
+    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(bold)}</strong>`;
+  }
+
+  if (!mutedBefore) {
+    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(bold)}</strong> <span class="legacy-social__muted legacy-social__muted--line">${escapeHtml(mutedAfter)}</span>`;
+  }
+
+  return `<span class="legacy-social__muted">${escapeHtml(mutedBefore)} </span><strong class="legacy-social__primary">${escapeHtml(bold)}</strong>${mutedAfter ? `<span class="legacy-social__muted"> ${escapeHtml(mutedAfter)}</span>` : ""}`;
 }
 
 function safeJson(value: unknown) {
@@ -117,7 +155,7 @@ function createQuizRunnerHtml(config: {
           <div class="legacy-avatars" aria-hidden="true">
             ${avatarHtml}
           </div>
-          <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
+          <div class="legacy-social__text">${renderSocialProof(quiz.landing.socialProof)}</div>
         </div>
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(startCtaLabel)}

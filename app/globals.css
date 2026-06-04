@@ -358,22 +358,43 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 0 0 18px;
+  gap: 15px;
+  margin: 2px 0 20px;
   color: #667286;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.06;
+  text-align: left;
 }
 
-.legacy-social strong {
+.legacy-social__text {
+  min-width: 0;
+}
+
+.legacy-social__primary {
+  display: inline;
   color: var(--legacy-navy);
+  font-size: 14px;
   font-weight: 950;
+  letter-spacing: -0.015em;
+}
+
+.legacy-social__primary--line {
+  display: block;
 }
 
 .legacy-social__muted {
-  color: #667286;
-  font-weight: 600;
+  display: inline;
+  margin-top: 0;
+  color: #697286;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.legacy-social__muted--line {
+  display: block;
+  margin-top: 3px;
 }
 
 .legacy-avatars {
@@ -382,15 +403,15 @@ a {
 }
 
 .legacy-avatar {
-  width: 30px;
-  height: 30px;
-  margin-left: -9px;
-  border: 2px solid #fff;
+  width: 38px;
+  height: 38px;
+  margin-left: -12px;
+  border: 3px solid #fff;
   border-radius: 50%;
   background-color: #d8e7ff;
   background-position: center;
   background-size: cover;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 7px 16px rgba(7, 27, 52, 0.18);
 }
 
 .legacy-avatar:first-child {
@@ -3201,7 +3222,7 @@ a {
 }
 
 .hub-quiz-card__banner {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   width: 100%;
   display: flex;
   align-items: center;
@@ -3740,7 +3761,7 @@ a {
   }
 
   .hub-quiz-card__banner {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
   }
 
   .hub-quiz-card__body {
