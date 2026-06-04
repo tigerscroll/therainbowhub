@@ -232,7 +232,14 @@ function createQuizRunnerHtml(config: {
         </div>
         <div data-js="review" class="legacy-review"></div>
         ${relatedHtml}
-      </section>`;
+      </section>
+      <div data-js="ad-early-close-modal" class="legacy-ad-modal legacy-hidden" role="dialog" aria-modal="true" aria-labelledby="ad-early-close-title">
+        <div class="legacy-ad-modal__panel">
+          <h3 id="ad-early-close-title">${escapeHtml(translations.rewardedAd.earlyClose.title)}</h3>
+          <p>${escapeHtml(translations.rewardedAd.earlyClose.body)}</p>
+          <button type="button" data-action="ad-early-close-retry" class="legacy-primary">${escapeHtml(translations.rewardedAd.earlyClose.retry)}</button>
+        </div>
+      </div>`;
 }
 
 function createQuizRunnerScript(config: {
@@ -281,6 +288,7 @@ function createQuizRunnerScript(config: {
     var rewardedRequestId = 0;
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
+    var retryRewardedAction = null;
 
     window.googletag = window.googletag || { cmd: [] };
 
@@ -313,6 +321,28 @@ function createQuizRunnerScript(config: {
         if (name === exceptName) return;
         setAdStatus(name, "");
       });
+    }
+
+    function canUseEarlyCloseModal() {
+      return Boolean(byData("ad-early-close-modal"));
+    }
+
+    function showEarlyCloseModal() {
+      var modal = byData("ad-early-close-modal");
+      if (!modal) return false;
+      modal.classList.remove("legacy-hidden");
+      var retryButton = root.querySelector('[data-action="ad-early-close-retry"]');
+      if (retryButton && retryButton.focus) {
+        window.setTimeout(function () {
+          retryButton.focus();
+        }, 0);
+      }
+      return true;
+    }
+
+    function hideEarlyCloseModal() {
+      var modal = byData("ad-early-close-modal");
+      if (modal) modal.classList.add("legacy-hidden");
     }
 
     if (useStartAdGate && byData("start-ad-note")) {
@@ -599,7 +629,9 @@ function createQuizRunnerScript(config: {
             }
 
             if (result.status === "closed_without_reward") {
-              setStatus(t.rewardedAd.status.closedWithoutReward);
+              if (!canUseEarlyCloseModal() || !showEarlyCloseModal()) {
+                setStatus(t.rewardedAd.status.closedWithoutReward);
+              }
               resolve(false);
               return;
             }
@@ -1185,7 +1217,11 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    function beginStartAd(button, statusName) {
+    function beginStartAd(button, statusName, keepModalOpen) {
+        retryRewardedAction = function (retryButton) {
+          beginStartAd(retryButton, statusName, true);
+        };
+        if (!keepModalOpen) hideEarlyCloseModal();
         clearAdStatuses(statusName);
         setButtonLoading(button, t.loading.ad, true);
         requestRewardedAd("before_start", function (message) {
@@ -1197,8 +1233,77 @@ function createQuizRunnerScript(config: {
           }
           setButtonLoading(button, t.quiz.preparing, false);
           setAdStatus(statusName, "");
+          hideEarlyCloseModal();
           startFresh();
         });
+    }
+
+    function beginStageAd(button, keepModalOpen) {
+      retryRewardedAction = function (retryButton) {
+        beginStageAd(retryButton, true);
+      };
+      if (!keepModalOpen) hideEarlyCloseModal();
+      clearAdStatuses("stage-ad-status");
+      setButtonLoading(button, t.loading.ad, true);
+      requestRewardedAd("before_stage_results", function (message) {
+        setAdStatus("stage-ad-status", message);
+      }).then(function (granted) {
+        setButtonLoading(button, t.loading.ad, false);
+        if (!granted) return;
+        setAdStatus("stage-ad-status", "");
+        hideEarlyCloseModal();
+        saveProgress("question");
+        renderQuestion();
+      });
+    }
+
+    function beginResultAd(button, keepModalOpen) {
+      retryRewardedAction = function (retryButton) {
+        beginResultAd(retryButton, true);
+      };
+      if (!keepModalOpen) hideEarlyCloseModal();
+      clearAdStatuses("result-ad-status");
+      setButtonLoading(button, t.loading.ad, true);
+      requestRewardedAd("before_final_results", function (message) {
+        setAdStatus("result-ad-status", message);
+      }).then(function (granted) {
+        setButtonLoading(button, t.loading.ad, false);
+        if (!granted) return;
+        setAdStatus("result-ad-status", "");
+        hideEarlyCloseModal();
+        renderResults();
+      });
+    }
+
+    function beginUnlockReviewAd(button, keepModalOpen) {
+      if (hasUnlockedReview) return;
+      retryRewardedAction = function (retryButton) {
+        beginUnlockReviewAd(retryButton, true);
+      };
+      if (!keepModalOpen) hideEarlyCloseModal();
+      clearAdStatuses("unlock-ad-status");
+      button.disabled = true;
+      button.textContent = t.loading.ad;
+      requestRewardedAd("before_final_results", function (message) {
+        setAdStatus("unlock-ad-status", message);
+      }).then(function (granted) {
+        if (!granted) {
+          button.disabled = false;
+          button.textContent = keepModalOpen ? t.rewardedAd.earlyClose.retry : t.results.review.unlockButton;
+          return;
+        }
+        hasUnlockedReview = true;
+        button.disabled = true;
+        button.textContent = t.results.review.unlockDone;
+        var unlockButton = byData("unlock-button");
+        if (unlockButton && unlockButton !== button) {
+          unlockButton.disabled = true;
+          unlockButton.textContent = t.results.review.unlockDone;
+        }
+        setAdStatus("unlock-ad-status", "");
+        hideEarlyCloseModal();
+        renderReview(getMissedQuestions());
+      });
     }
 
     root.querySelectorAll('[data-action="start"]').forEach(function (button) {
@@ -1229,61 +1334,33 @@ function createQuizRunnerScript(config: {
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        clearAdStatuses("stage-ad-status");
-        setButtonLoading(button, t.loading.ad, true);
-        requestRewardedAd("before_stage_results", function (message) {
-          setAdStatus("stage-ad-status", message);
-        }).then(function (granted) {
-          setButtonLoading(button, t.loading.ad, false);
-          if (!granted) return;
-          setAdStatus("stage-ad-status", "");
-          saveProgress("question");
-          renderQuestion();
-        });
+        beginStageAd(button, false);
       });
     });
 
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (getAnsweredCount() !== quiz.questions.length) return;
-        clearAdStatuses("result-ad-status");
-        setButtonLoading(button, t.loading.ad, true);
-        requestRewardedAd("before_final_results", function (message) {
-          setAdStatus("result-ad-status", message);
-        }).then(function (granted) {
-          setButtonLoading(button, t.loading.ad, false);
-          if (!granted) return;
-          setAdStatus("result-ad-status", "");
-          renderResults();
-        });
+        beginResultAd(button, false);
       });
     });
 
     root.querySelectorAll('[data-action="unlock-review"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        if (hasUnlockedReview) return;
-        clearAdStatuses("unlock-ad-status");
-        button.disabled = true;
-        button.textContent = t.loading.ad;
-        requestRewardedAd("before_final_results", function (message) {
-          setAdStatus("unlock-ad-status", message);
-        }).then(function (granted) {
-          if (!granted) {
-            button.disabled = false;
-            button.textContent = t.results.review.unlockButton;
-            return;
-          }
-          hasUnlockedReview = true;
-          button.disabled = true;
-          button.textContent = t.results.review.unlockDone;
-          setAdStatus("unlock-ad-status", "");
-          renderReview(getMissedQuestions());
-        });
+        beginUnlockReviewAd(button, false);
       });
     });
 
     root.querySelectorAll('[data-action="restart"]').forEach(function (button) {
       button.addEventListener("click", restartQuiz);
+    });
+
+    root.querySelectorAll('[data-action="ad-early-close-retry"]').forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (typeof retryRewardedAction === "function" && !button.disabled) {
+          retryRewardedAction(button);
+        }
+      });
     });
 
     if (!loadProgress()) {

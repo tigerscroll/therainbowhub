@@ -2037,6 +2037,57 @@ a {
   font-weight: 700;
 }
 
+.legacy-ad-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.legacy-ad-modal__panel {
+  position: relative;
+  width: min(100%, 520px);
+  padding: 30px 24px 28px;
+  border: 1px solid color-mix(in srgb, var(--legacy-green) 16%, #e8edf3);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.94)),
+    color-mix(in srgb, var(--legacy-gold) 5%, #fff);
+  text-align: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 22px 55px rgba(7, 27, 52, 0.18);
+}
+
+.legacy-ad-modal__panel h3 {
+  margin: 0;
+  color: var(--legacy-navy);
+  font-size: clamp(27px, 5.4vw, 36px);
+  font-weight: 950;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.legacy-ad-modal__panel p {
+  max-width: 390px;
+  margin: 16px auto 24px;
+  color: #5f6b7d;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.42;
+}
+
+.legacy-ad-modal__panel .legacy-primary {
+  width: min(100%, 230px);
+  min-height: 62px;
+  margin: 0 auto;
+  font-size: 21px;
+}
+
 .legacy-review {
   display: grid;
   gap: 10px;
