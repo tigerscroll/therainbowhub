@@ -3,7 +3,6 @@ const publicEnv = {
   NEXT_PUBLIC_ALLOW_TEST_REWARDED_AD: process.env.NEXT_PUBLIC_ALLOW_TEST_REWARDED_AD,
   NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL: process.env.NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL,
   NEXT_PUBLIC_GAM_REWARDED_AD_UNIT: process.env.NEXT_PUBLIC_GAM_REWARDED_AD_UNIT,
-  NEXT_PUBLIC_META_CAPI_ENDPOINT: process.env.NEXT_PUBLIC_META_CAPI_ENDPOINT,
   NEXT_PUBLIC_META_PIXEL_ID: process.env.NEXT_PUBLIC_META_PIXEL_ID,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 };
@@ -20,7 +19,6 @@ export const siteConfig = {
   name: "The Rainbow Hub",
   description: "Fast, mobile-friendly IQ and academic-style quiz tests.",
   siteUrl: getPublicEnv("NEXT_PUBLIC_SITE_URL", "https://therainbowhub.com"),
-  metaCapiEndpoint: getPublicEnv("NEXT_PUBLIC_META_CAPI_ENDPOINT", "/api/meta-capi"),
   metaPixelId: getPublicEnv("NEXT_PUBLIC_META_PIXEL_ID", "843363384736830"),
   googleAdManagerRewardedAdUnitPath: getRewardedAdUnitPath(),
   assertiveYieldManagerUrl: getPublicEnv(
