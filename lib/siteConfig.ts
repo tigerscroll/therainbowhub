@@ -1,4 +1,4 @@
-const rewardedAdUnitPath = "/22677279144/rewarded";
+const rewardedAdUnitPath = "/22639388115/rewarded_web_example";
 const publicEnv = {
   NEXT_PUBLIC_ALLOW_TEST_REWARDED_AD: process.env.NEXT_PUBLIC_ALLOW_TEST_REWARDED_AD,
   NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL: process.env.NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL,
