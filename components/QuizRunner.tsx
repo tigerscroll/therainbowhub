@@ -119,6 +119,7 @@ function createQuizRunnerHtml(config: {
           </div>
           <div><strong>${renderSocialProof(quiz.landing.socialProof)}</strong></div>
         </div>
+        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
         <button class="legacy-primary" type="button" data-action="start">
           <span aria-hidden="true">▶</span> ${escapeHtml(startCtaLabel)}
         </button>
@@ -126,7 +127,6 @@ function createQuizRunnerHtml(config: {
           <span class="legacy-shield" aria-hidden="true">✓</span>
           <span>${escapeHtml(translations.quiz.shortAd)} — <b>${escapeHtml(translations.quiz.thenBegins)}</b></span>
         </div>
-        <div class="legacy-ad-status" data-js="start-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="start-ad-gate" class="legacy-card legacy-start-ad-gate legacy-hidden">
@@ -142,10 +142,10 @@ function createQuizRunnerHtml(config: {
             <p>${escapeHtml(adGateCopy.stepTwo)}</p>
           </div>
         </div>
+        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
         <button type="button" data-action="start-gate-continue" class="legacy-primary">
           ${escapeHtml(translations.quiz.continue)} →
         </button>
-        <div class="legacy-ad-status" data-js="start-gate-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="question" class="legacy-hidden">
@@ -183,23 +183,23 @@ function createQuizRunnerHtml(config: {
           </div>
         </div>
         <div data-js="stage-trail" class="legacy-stage-trail" aria-hidden="true"></div>
+        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
         <button type="button" data-js="stage-button" data-action="stage-continue" class="legacy-primary legacy-stage-button"></button>
         <div class="legacy-ad-note">
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
-        <div class="legacy-ad-status" data-js="stage-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
         <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
+        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
         <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
         <div class="legacy-ad-note">
           <span class="legacy-shield" aria-hidden="true">i</span>
           <span>${escapeHtml(translations.rewardedAd.helper)}</span>
         </div>
-        <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
       </section>
 
       <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
@@ -227,8 +227,8 @@ function createQuizRunnerHtml(config: {
         <div class="legacy-unlock-panel">
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
-          <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
           <div class="legacy-ad-status" data-js="unlock-ad-status" aria-live="polite"></div>
+          <button type="button" data-js="unlock-button" data-action="unlock-review" class="legacy-primary"></button>
         </div>
         <div data-js="review" class="legacy-review"></div>
         ${relatedHtml}
@@ -308,8 +308,9 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    function clearAdStatuses() {
+    function clearAdStatuses(exceptName) {
       ["start-ad-status", "start-gate-ad-status", "stage-ad-status", "result-ad-status", "unlock-ad-status"].forEach(function (name) {
+        if (name === exceptName) return;
         setAdStatus(name, "");
       });
     }
@@ -599,7 +600,7 @@ function createQuizRunnerScript(config: {
 
             if (result.status === "closed_without_reward") {
               setStatus(t.rewardedAd.status.closedWithoutReward);
-              window.setTimeout(tryAd, 350);
+              resolve(false);
               return;
             }
 
@@ -1185,14 +1186,13 @@ function createQuizRunnerScript(config: {
     }
 
     function beginStartAd(button, statusName) {
-        clearAdStatuses();
+        clearAdStatuses(statusName);
         setButtonLoading(button, t.loading.ad, true);
         requestRewardedAd("before_start", function (message) {
           setAdStatus(statusName, message);
         }).then(function (granted) {
           if (!granted) {
             setButtonLoading(button, t.quiz.preparing, false);
-            setAdStatus(statusName, "");
             return;
           }
           setButtonLoading(button, t.quiz.preparing, false);
@@ -1229,7 +1229,7 @@ function createQuizRunnerScript(config: {
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        clearAdStatuses();
+        clearAdStatuses("stage-ad-status");
         setButtonLoading(button, t.loading.ad, true);
         requestRewardedAd("before_stage_results", function (message) {
           setAdStatus("stage-ad-status", message);
@@ -1246,7 +1246,7 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (getAnsweredCount() !== quiz.questions.length) return;
-        clearAdStatuses();
+        clearAdStatuses("result-ad-status");
         setButtonLoading(button, t.loading.ad, true);
         requestRewardedAd("before_final_results", function (message) {
           setAdStatus("result-ad-status", message);
@@ -1262,7 +1262,7 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="unlock-review"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (hasUnlockedReview) return;
-        clearAdStatuses();
+        clearAdStatuses("unlock-ad-status");
         button.disabled = true;
         button.textContent = t.loading.ad;
         requestRewardedAd("before_final_results", function (message) {
@@ -1271,7 +1271,6 @@ function createQuizRunnerScript(config: {
           if (!granted) {
             button.disabled = false;
             button.textContent = t.results.review.unlockButton;
-            setAdStatus("unlock-ad-status", "");
             return;
           }
           hasUnlockedReview = true;
