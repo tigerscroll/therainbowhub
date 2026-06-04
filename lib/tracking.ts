@@ -42,31 +42,6 @@ function getCookieValue(name: string) {
     .join("=");
 }
 
-function shouldSendMetaTestEvent() {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const flag = params.get("capi_test");
-
-    if (flag === "1") {
-      window.sessionStorage.setItem("metaCapiTest", "1");
-      return true;
-    }
-
-    if (flag === "0") {
-      window.sessionStorage.removeItem("metaCapiTest");
-      return false;
-    }
-
-    return window.sessionStorage.getItem("metaCapiTest") === "1";
-  } catch (error) {
-    return false;
-  }
-}
-
 function sendCapiEvent(eventName: string, eventId: string, payload: TrackingPayload) {
   if (typeof window === "undefined") {
     return;
@@ -84,7 +59,6 @@ function sendCapiEvent(eventName: string, eventId: string, payload: TrackingPayl
     eventSourceUrl: window.location.href,
     fbc: getCookieValue("_fbc"),
     fbp: getCookieValue("_fbp"),
-    testEvent: shouldSendMetaTestEvent(),
   };
 
   try {
