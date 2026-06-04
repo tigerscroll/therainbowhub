@@ -44,11 +44,11 @@ function escapeHtml(value: unknown) {
     .replace(/'/g, "&#039;");
 }
 
-function renderTitleWithAccentPercent(title: string) {
-  const parts = title.split(/(\d+(?:\.\d+)?%|\d+\/\d+)/g);
+function renderTitleWithAccent(title: string, slug: string) {
+  const parts = title.split(/(\d+(?:\.\d+)?%|\d+\/\d+|Country)/g);
 
   return parts
-    .map((part) => (titleAccentTokenPattern.test(part) ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
+    .map((part) => (titleAccentTokenPattern.test(part) || (slug === "country-match" && part === "Country") ? `<span>${escapeHtml(part)}</span>` : escapeHtml(part)))
     .join("");
 }
 
@@ -111,7 +111,7 @@ function createQuizRunnerHtml(config: {
 
   return `<section data-screen="start" class="legacy-card legacy-start">
         <div class="legacy-badge" aria-hidden="true"><span>${escapeHtml(quiz.cardIcon)}</span></div>
-        <h1>${renderTitleWithAccentPercent(quiz.pageTitle)}</h1>
+        <h1>${renderTitleWithAccent(quiz.pageTitle, quiz.slug)}</h1>
         <p class="legacy-sub">${landingLines}</p>
         <div class="legacy-social">
           <div class="legacy-avatars" aria-hidden="true">
