@@ -244,7 +244,6 @@ function createQuizRunnerHtml(config: {
 
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
-  metaCapiEndpoint: string;
   progressKey: string;
   rewardedAdUnitPath: string;
   relatedQuizzes: RelatedQuiz[];
@@ -442,58 +441,17 @@ function createQuizRunnerScript(config: {
       return { currentQuestion: questionIndex + 1, screen: "question" };
     }
 
-    function createMetaEventId(eventName) {
-      var random = window.crypto && typeof window.crypto.randomUUID === "function"
-        ? window.crypto.randomUUID()
-        : String(Date.now()) + "-" + Math.random().toString(36).slice(2);
-      return eventName + "." + random;
-    }
-
-    function getCookieValue(name) {
-      return document.cookie
-        .split("; ")
-        .find(function (cookie) { return cookie.indexOf(name + "=") === 0; })
-        ?.split("=")
-        .slice(1)
-        .join("=");
-    }
-
-    function sendMetaCapiEvent(eventName, eventId, payload) {
-      if (!config.metaCapiEndpoint) return;
-
-      try {
-        window.fetch(config.metaCapiEndpoint, {
-          body: JSON.stringify({
-            customData: payload || {},
-            eventId: eventId,
-            eventName: eventName,
-            eventSourceUrl: window.location.href,
-            fbc: getCookieValue("_fbc"),
-            fbp: getCookieValue("_fbp")
-          }),
-          headers: { "Content-Type": "application/json" },
-          keepalive: true,
-          method: "POST"
-        }).catch(function () {});
-      } catch (error) {}
-    }
-
-    function trackMetaCustomEvent(eventName, payload) {
-      var data = payload || {};
-      var eventId = createMetaEventId(eventName);
-      try { console.log("fbq custom event: " + eventName, data); } catch (error) {}
-      try { window.fbq?.("trackCustom", eventName, data, { eventID: eventId }); } catch (error) {}
-      sendMetaCapiEvent(eventName, eventId, data);
-    }
-
     function trackRewardGranted(payload) {
-      trackMetaCustomEvent("Reward", payload);
+      var data = payload || {};
+      try { console.log("fbq custom event: Reward", data); } catch (error) {}
+      try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
     }
 
     function trackRewardClosed(payload) {
       var data = payload || {};
       if (data.granted === true && data.reason === "reward_granted") {
-        trackMetaCustomEvent("RewardClosed", data);
+        try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
+        try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
       }
     }
 
@@ -1420,7 +1378,6 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
     locale,
-    metaCapiEndpoint: siteConfig.metaCapiEndpoint,
     progressKey,
     rewardedAdUnitPath: siteConfig.googleAdManagerRewardedAdUnitPath,
     relatedQuizzes,
