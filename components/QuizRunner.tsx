@@ -458,27 +458,6 @@ function createQuizRunnerScript(config: {
         .join("=");
     }
 
-    function shouldSendMetaTestEvent() {
-      try {
-        var params = new URLSearchParams(window.location.search);
-        var flag = params.get("capi_test");
-
-        if (flag === "1") {
-          window.sessionStorage.setItem("metaCapiTest", "1");
-          return true;
-        }
-
-        if (flag === "0") {
-          window.sessionStorage.removeItem("metaCapiTest");
-          return false;
-        }
-
-        return window.sessionStorage.getItem("metaCapiTest") === "1";
-      } catch (error) {
-        return false;
-      }
-    }
-
     function sendMetaCapiEvent(eventName, eventId, payload) {
       if (!config.metaCapiEndpoint) return;
 
@@ -490,8 +469,7 @@ function createQuizRunnerScript(config: {
             eventName: eventName,
             eventSourceUrl: window.location.href,
             fbc: getCookieValue("_fbc"),
-            fbp: getCookieValue("_fbp"),
-            testEvent: shouldSendMetaTestEvent()
+            fbp: getCookieValue("_fbp")
           }),
           headers: { "Content-Type": "application/json" },
           keepalive: true,

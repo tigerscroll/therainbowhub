@@ -49,7 +49,6 @@ export async function onRequestPost(context) {
   const eventSourceUrl = typeof body.eventSourceUrl === "string" ? body.eventSourceUrl : request.headers.get("Referer") || "";
   const userAgent = request.headers.get("User-Agent") || undefined;
   const customData = body.customData && typeof body.customData === "object" ? body.customData : {};
-  const useTestEventCode = body.testEvent === true;
 
   const event = cleanObject({
     action_source: "website",
@@ -68,7 +67,6 @@ export async function onRequestPost(context) {
 
   const metaBody = cleanObject({
     data: [event],
-    test_event_code: useTestEventCode ? env.META_CAPI_TEST_EVENT_CODE : undefined,
   });
 
   const url = new URL(`https://graph.facebook.com/${graphVersion}/${pixelId}/events`);
