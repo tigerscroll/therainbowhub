@@ -57,7 +57,7 @@ function renderSocialProof(value: string) {
   const countMatch = text.match(/\d[\d\s,.\u00a0'’]*\+?/);
 
   if (!countMatch || countMatch.index === undefined) {
-    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(text)}</strong>`;
+    return `<strong class="legacy-social__primary">${escapeHtml(text)}</strong>`;
   }
 
   const personTerms = [
@@ -90,11 +90,11 @@ function renderSocialProof(value: string) {
   const mutedAfter = text.slice(boldEnd).trim();
 
   if (!mutedBefore && !mutedAfter) {
-    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(bold)}</strong>`;
+    return `<strong class="legacy-social__primary">${escapeHtml(bold)}</strong>`;
   }
 
   if (!mutedBefore) {
-    return `<strong class="legacy-social__primary legacy-social__primary--line">${escapeHtml(bold)}</strong> <span class="legacy-social__muted legacy-social__muted--line">${escapeHtml(mutedAfter)}</span>`;
+    return `<strong class="legacy-social__primary">${escapeHtml(bold)}</strong> <span class="legacy-social__muted">${escapeHtml(mutedAfter)}</span>`;
   }
 
   return `<span class="legacy-social__muted">${escapeHtml(mutedBefore)} </span><strong class="legacy-social__primary">${escapeHtml(bold)}</strong>${mutedAfter ? `<span class="legacy-social__muted"> ${escapeHtml(mutedAfter)}</span>` : ""}`;
