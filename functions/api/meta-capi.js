@@ -22,8 +22,13 @@ function getClientIp(request) {
   );
 }
 
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { env, request } = context;
+
+  if (request.method !== "POST") {
+    return jsonResponse({ error: "method_not_allowed" }, 405);
+  }
+
   const accessToken = env.META_CAPI_ACCESS_TOKEN;
 
   if (!accessToken) {
@@ -84,8 +89,4 @@ export async function onRequestPost(context) {
   }
 
   return jsonResponse({ ok: true, meta: responseBody });
-}
-
-export function onRequest() {
-  return jsonResponse({ error: "method_not_allowed" }, 405);
 }
