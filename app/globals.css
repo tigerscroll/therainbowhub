@@ -448,15 +448,43 @@ a {
 }
 
 .legacy-ad-status {
-  min-height: 18px;
-  width: min(100%, 430px);
-  max-width: 430px;
-  margin: 10px auto 0;
-  color: #cf3b3b;
-  font-size: 13px;
+  display: none;
+  width: min(100%, 390px);
+  max-width: 390px;
+  margin: 0 auto 14px;
+  color: #9f2f16;
+  font-size: 14px;
   font-weight: 850;
-  line-height: 1.35;
+  line-height: 1.38;
   text-align: center;
+}
+
+.legacy-ad-status:not(:empty) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #f3b27b;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff7ed, #ffedd5);
+  box-shadow: 0 8px 22px rgba(159, 47, 22, 0.12);
+}
+
+.legacy-ad-status:not(:empty)::before {
+  content: "!";
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fb923c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 950;
+  line-height: 1;
 }
 
 .legacy-shield {
