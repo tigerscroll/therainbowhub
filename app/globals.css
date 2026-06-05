@@ -3035,9 +3035,72 @@ a {
 .hub-hero {
   display: grid;
   align-items: center;
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 22px;
   margin-bottom: 40px;
-  padding: 32px;
+  padding: 28px;
+  border-color: rgba(14, 42, 44, 0.14);
+  box-shadow: 0 6px 0 var(--shadow-soft);
+}
+
+.hub-hero__art {
+  position: relative;
+  width: min(148px, 48vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+}
+
+.hub-hero__brain {
+  display: grid;
+  place-items: center;
+  width: 104px;
+  height: 104px;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #fff7bd, #d9f7f1 48%, #e5d8ff);
+  box-shadow: 0 14px 28px rgba(31, 122, 124, 0.16), inset 0 0 0 2px rgba(255, 255, 255, 0.82);
+  font-size: 64px;
+  line-height: 1;
+}
+
+.hub-hero__spark {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(14, 42, 44, 0.14);
+  line-height: 1;
+}
+
+.hub-hero__spark--bulb {
+  top: 2px;
+  left: 6px;
+  width: 44px;
+  height: 44px;
+  color: #d49a00;
+  font-size: 28px;
+}
+
+.hub-hero__spark--puzzle {
+  top: 10px;
+  right: 8px;
+  width: 42px;
+  height: 42px;
+  color: #7c3aed;
+  font-size: 28px;
+}
+
+.hub-hero__spark--check {
+  bottom: 10px;
+  left: 4px;
+  width: 34px;
+  height: 34px;
+  background: #55c878;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 950;
 }
 
 .hub-pill {
@@ -3122,28 +3185,67 @@ a {
 }
 
 .hub-stat {
-  padding: 16px;
-  border: 3px solid rgba(14, 42, 44, 0.18);
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(14, 42, 44, 0.08);
   border-radius: var(--radius);
   background: var(--card);
-  box-shadow: 0 8px 0 var(--shadow-soft);
-  text-align: center;
+  box-shadow: 0 9px 22px rgba(14, 42, 44, 0.08);
+  text-align: left;
 }
 
-.hub-stat div {
-  color: var(--primary);
-  font-size: 24px;
+.hub-stat__icon {
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  font-size: 21px;
   font-weight: 900;
+  line-height: 1;
 }
 
-.hub-stat span {
+.hub-stat__icon--mint {
+  background: #daf6ea;
+  color: #10a06c;
+}
+
+.hub-stat__icon--blue {
+  background: #dbecff;
+  color: #1f78d1;
+}
+
+.hub-stat__icon--violet {
+  background: #eadcff;
+  color: #8b3df2;
+}
+
+.hub-stat__icon--gold {
+  background: #fff1bd;
+  color: #d99a00;
+}
+
+.hub-stat strong {
   display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  color: #071b24;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.hub-stat div > span {
+  display: block;
+  margin-top: 3px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
 }
 
 .hub-categories {
@@ -3617,18 +3719,215 @@ a {
   }
 }
 
+@media (min-width: 640px) and (max-width: 767px) {
+  .hub-main {
+    padding: 22px 18px 34px;
+  }
+
+  .hub-hero {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 18px;
+    margin-bottom: 28px;
+    padding: 22px 20px 20px;
+  }
+
+  .hub-hero__art {
+    width: 112px;
+    justify-self: start;
+  }
+
+  .hub-hero__brain {
+    width: 78px;
+    height: 78px;
+    border-radius: 24px;
+    font-size: 48px;
+  }
+
+  .hub-hero__spark--bulb,
+  .hub-hero__spark--puzzle {
+    width: 32px;
+    height: 32px;
+    font-size: 21px;
+  }
+
+  .hub-hero__spark--check {
+    width: 27px;
+    height: 27px;
+    font-size: 18px;
+  }
+
+  .hub-hero h1 {
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  .hub-hero p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .hub-hero__stats {
+    grid-column: 1 / -1;
+    gap: 10px;
+  }
+
+  .hub-stat {
+    min-height: 72px;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .hub-stat__icon {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .hub-stat strong {
+    font-size: 20px;
+  }
+
+  .hub-stat div > span {
+    font-size: 13px;
+  }
+}
+
 @media (min-width: 768px) {
   .hub-hero {
-    grid-template-columns: 1.4fr 1fr;
-    padding: 40px;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .hub-hero h1 {
+    font-size: 40px;
+  }
+
+  .hub-hero p {
+    font-size: 16px;
+    line-height: 1.42;
+  }
+
+  .hub-hero__art {
+    width: 104px;
+  }
+
+  .hub-hero__brain {
+    width: 76px;
+    height: 76px;
+    border-radius: 23px;
+    font-size: 46px;
+  }
+
+  .hub-hero__spark--bulb,
+  .hub-hero__spark--puzzle {
+    width: 32px;
+    height: 32px;
+    font-size: 21px;
+  }
+
+  .hub-hero__spark--check {
+    width: 27px;
+    height: 27px;
+    font-size: 18px;
+  }
+
+  .hub-hero__stats {
+    grid-column: 1 / -1;
+    gap: 10px;
+  }
+
+  .hub-stat {
+    min-height: 76px;
+    gap: 10px;
+    padding: 11px 12px;
+  }
+
+  .hub-stat__icon {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .hub-stat strong {
+    font-size: 20px;
+  }
+
+  .hub-stat div > span {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hub-hero {
+    grid-template-columns: 156px minmax(0, 1fr) minmax(360px, 0.95fr);
+    gap: 28px;
+    padding: 36px;
   }
 
   .hub-hero h1 {
     font-size: 52px;
   }
-}
 
-@media (min-width: 1024px) {
+  .hub-hero p {
+    font-size: 18px;
+  }
+
+  .hub-hero__art {
+    width: min(148px, 48vw);
+  }
+
+  .hub-hero__brain {
+    width: 104px;
+    height: 104px;
+    border-radius: 32px;
+    font-size: 64px;
+  }
+
+  .hub-hero__spark--bulb {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+  }
+
+  .hub-hero__spark--puzzle {
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
+  }
+
+  .hub-hero__spark--check {
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+  }
+
+  .hub-hero__stats {
+    grid-column: auto;
+    gap: 12px;
+  }
+
+  .hub-stat {
+    min-height: 86px;
+    gap: 12px;
+    padding: 13px 14px;
+  }
+
+  .hub-stat__icon {
+    width: 38px;
+    height: 38px;
+    font-size: 21px;
+  }
+
+  .hub-stat strong {
+    font-size: 22px;
+  }
+
+  .hub-stat div > span {
+    font-size: 14px;
+  }
+
   .hub-quiz-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -3673,62 +3972,97 @@ a {
 
   .hub-main {
     max-width: none;
-    padding: 12px 10px 30px;
+    padding: 8px 10px 28px;
   }
 
   .hub-card-3d {
     border-width: 2px;
-    box-shadow: 0 6px 0 rgba(207, 227, 227, 0.95), 0 14px 28px rgba(31, 122, 124, 0.1);
+    box-shadow: 0 6px 0 rgba(207, 227, 227, 0.95), 0 14px 26px rgba(14, 42, 44, 0.07);
   }
 
   .hub-hero {
-    gap: 18px;
-    margin: 0 0 24px;
-    padding: 24px 16px 20px;
+    grid-template-columns: 82px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+    padding: 16px 12px 14px;
     border-radius: var(--radius);
     background: var(--card);
   }
 
+  .hub-hero__art {
+    width: 82px;
+    justify-self: start;
+  }
+
+  .hub-hero__brain {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    font-size: 36px;
+  }
+
+  .hub-hero__spark--bulb,
+  .hub-hero__spark--puzzle {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  .hub-hero__spark--check {
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+  }
+
+  .hub-hero__copy {
+    min-width: 0;
+  }
+
   .hub-hero h1 {
     max-width: none;
-    font-size: clamp(30px, 8.4vw, 40px);
+    font-size: clamp(28px, 7.6vw, 34px);
     line-height: 1.06;
     letter-spacing: -0.02em;
   }
 
   .hub-hero p {
-    margin-top: 12px;
+    margin-top: 8px;
     max-width: 34rem;
-    font-size: 16px;
-    line-height: 1.45;
+    font-size: 15px;
+    line-height: 1.42;
   }
 
   .hub-hero__stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 7px;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
     width: 100%;
   }
 
   .hub-stat {
-    min-height: 74px;
-    display: grid;
-    align-content: center;
-    padding: 10px 5px;
+    min-height: 62px;
+    gap: 7px;
+    padding: 8px;
     border-width: 1px;
-    border-radius: 10px;
-    box-shadow: 0 4px 0 rgba(207, 227, 227, 0.9);
+    box-shadow: 0 5px 14px rgba(14, 42, 44, 0.08);
   }
 
-  .hub-stat div {
-    font-size: 18px;
+  .hub-stat__icon {
+    width: 29px;
+    height: 29px;
+    font-size: 17px;
+  }
+
+  .hub-stat strong {
+    font-size: 17px;
     line-height: 1;
   }
 
-  .hub-stat span {
-    margin-top: 5px;
-    font-size: 9px;
+  .hub-stat div > span {
+    margin-top: 3px;
+    font-size: 11px;
     line-height: 1.1;
-    letter-spacing: 0.02em;
   }
 
   #all {
@@ -3810,5 +4144,49 @@ a {
 
   .quiz-search__language-menu {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .hub-hero {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+
+  .hub-hero__art {
+    width: 70px;
+  }
+
+  .hub-hero__brain {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 31px;
+  }
+
+  .hub-hero h1 {
+    font-size: clamp(25px, 7.3vw, 29px);
+  }
+
+  .hub-hero p {
+    font-size: 13.5px;
+  }
+
+  .hub-stat {
+    gap: 5px;
+    padding: 6px;
+  }
+
+  .hub-stat__icon {
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
+  }
+
+  .hub-stat strong {
+    font-size: 15px;
+  }
+
+  .hub-stat div > span {
+    font-size: 10px;
   }
 }
