@@ -11,7 +11,7 @@ export type HomeQuizCard = {
   icon: string;
   thumbnailAlt: string;
   thumbnailUrl?: string;
-  difficulty: string;
+  chipLabel: string;
   publishedAt: string;
   publishedDate: string;
   title: string;
@@ -49,7 +49,7 @@ export function HomeQuizGrid({ quizzes, loadMoreLabel }: HomeQuizGridProps) {
             </div>
             <div className="hub-quiz-card__body">
               <div className="hub-quiz-card__meta">
-                <span className="hub-chip">{quiz.difficulty}</span>
+                <span className="hub-chip">{quiz.chipLabel}</span>
                 <time dateTime={quiz.publishedAt}>{quiz.publishedDate}</time>
               </div>
               <h3>{quiz.title}</h3>
