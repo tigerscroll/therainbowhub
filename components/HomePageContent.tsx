@@ -20,6 +20,32 @@ function formatPublishedDate(locale: SupportedLocale, publishedAt: string) {
 
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
+  const heroStats = [
+    {
+      icon: "▤",
+      label: translations.home.stats.quizzes,
+      tone: "mint",
+      value: "50+",
+    },
+    {
+      icon: "◷",
+      label: translations.home.stats.averageTime,
+      tone: "blue",
+      value: translations.home.stats.averageTimeValue,
+    },
+    {
+      icon: "✓",
+      label: translations.home.stats.players,
+      tone: "violet",
+      value: "250,000+",
+    },
+    {
+      icon: "★",
+      label: translations.home.stats.results,
+      tone: "gold",
+      value: translations.home.stats.instant,
+    },
+  ];
   const homepageCards: HomeQuizCard[] = quizzes
     .map((quiz) => ({
       href: getLocalePath(locale, `/${quiz.slug}`),
@@ -39,17 +65,30 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
     <div className="hub-home">
       <div className="hub-main">
         <section className="hub-card-3d hub-hero">
-          <div>
+          <div className="hub-hero__art" aria-hidden="true">
+            <span className="hub-hero__spark hub-hero__spark--bulb">💡</span>
+            <span className="hub-hero__spark hub-hero__spark--puzzle">🧩</span>
+            <span className="hub-hero__spark hub-hero__spark--check">✓</span>
+            <span className="hub-hero__brain">🧠</span>
+          </div>
+          <div className="hub-hero__copy">
             <h1>
               {translations.home.headlinePrefix} <span>{translations.home.headlineHighlight}</span>
             </h1>
             <p>{translations.home.intro}</p>
           </div>
           <div className="hub-hero__stats">
-            <div className="hub-stat"><div>50+</div><span>{translations.home.stats.quizzes}</span></div>
-            <div className="hub-stat"><div>6 min</div><span>{translations.home.stats.averageTime}</span></div>
-            <div className="hub-stat"><div>100%</div><span>{translations.home.stats.freeForever}</span></div>
-            <div className="hub-stat"><div>🏆</div><span>{translations.home.stats.scoreRank}</span></div>
+            {heroStats.map((stat) => (
+              <div className="hub-stat" key={stat.label}>
+                <span className={`hub-stat__icon hub-stat__icon--${stat.tone}`} aria-hidden="true">
+                  {stat.icon}
+                </span>
+                <div>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
