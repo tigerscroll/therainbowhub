@@ -53,7 +53,7 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
       icon: quiz.homepage.icon ?? quiz.cardIcon,
       thumbnailAlt: quiz.homepage.thumbnailAlt ?? quiz.title,
       thumbnailUrl: quiz.homepage.thumbnailUrl,
-      difficulty: translations.home.difficulty[quiz.difficulty],
+      chipLabel: quiz.mode === "personality" ? translations.home.personality : translations.home.difficulty[quiz.difficulty],
       publishedAt: quiz.publishedAt,
       publishedDate: formatPublishedDate(locale, quiz.publishedAt),
       title: quiz.homepage.title ?? quiz.title,
