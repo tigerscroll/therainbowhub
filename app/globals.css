@@ -2578,13 +2578,13 @@ a {
   --primary-fg: #ffffff;
   --yellow: #f4c542;
   --ink: #0e2a2c;
-  height: 50px;
-  max-height: 50px;
-  min-height: 50px;
+  height: 48px;
+  max-height: 48px;
+  min-height: 48px;
   box-sizing: border-box;
-  border-bottom: 4px solid var(--yellow);
+  border-bottom: 3px solid var(--yellow);
   background: var(--primary);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .hub-header__inner {
@@ -2607,8 +2607,8 @@ a {
 }
 
 .hub-brand__mark {
-  width: 30px;
-  height: 30px;
+  width: 29px;
+  height: 29px;
   display: grid;
   place-items: center;
   border-radius: 6px;
@@ -2623,7 +2623,7 @@ a {
 .hub-brand__name {
   color: #fff;
   display: inline;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
@@ -3941,9 +3941,30 @@ a {
       #f7fbfb;
   }
 
+  .hub-header {
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+  }
+
   .hub-header__inner {
     padding: 0 12px;
     gap: 8px;
+  }
+
+  .hub-brand {
+    gap: 7px;
+  }
+
+  .hub-brand__mark {
+    width: 27px;
+    height: 27px;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+
+  .hub-brand__name {
+    font-size: 18px;
   }
 
   .quiz-search {
@@ -3951,6 +3972,16 @@ a {
     display: flex;
     align-items: center;
     flex-basis: auto;
+  }
+
+  .quiz-search__button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .quiz-search__menu-icon {
+    width: 18px;
+    height: 16px;
   }
 
   .quiz-search__icon {
