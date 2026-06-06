@@ -418,31 +418,13 @@ function createQuizRunnerScript(config: {
         screens.stageGate.classList.add("legacy-stage-result");
       }
 
-      if (shouldScroll !== false) {
-        window.requestAnimationFrame(function () {
-          var target = screens[screenName] || root.querySelector("#quiz-top");
-          var header = document.querySelector(".hub-header");
-          var headerBorder = header ? parseFloat(window.getComputedStyle(header).borderBottomWidth) || 4 : 4;
-          var visibleHeaderOffset = headerBorder;
-          var targetTop = 0;
-          var node = target;
-          while (node) {
-            targetTop += node.offsetTop || 0;
-            node = node.offsetParent;
-          }
-          var top = targetTop - visibleHeaderOffset;
-          if (header) {
-            var headerTop = 0;
-            var headerNode = header;
-            while (headerNode) {
-              headerTop += headerNode.offsetTop || 0;
-              headerNode = headerNode.offsetParent;
-            }
-            top = headerTop + (header.offsetHeight || 0) - headerBorder;
-          }
-          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-        });
-      }
+      void shouldScroll;
+    }
+
+    function scrollToPageTop() {
+      window.requestAnimationFrame(function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     }
 
     function normalizeAnswers(savedAnswers) {
@@ -911,6 +893,7 @@ function createQuizRunnerScript(config: {
       if (!nextQuestion) {
         saveProgress("result-gate");
         showResultGate();
+        scrollToPageTop();
         return;
       }
 
@@ -918,12 +901,14 @@ function createQuizRunnerScript(config: {
         current += 1;
         saveProgress("stage-gate");
         showStageGate();
+        scrollToPageTop();
         return;
       }
 
       current += 1;
       saveProgress("question");
       renderQuestion();
+      scrollToPageTop();
     }
 
     function showStageGate(shouldScroll) {
@@ -1358,16 +1343,8 @@ function createQuizRunnerScript(config: {
     root.querySelectorAll('[data-action="start"]').forEach(function (button) {
       button.addEventListener("click", function () {
         if (useStartAdGate) {
-          var currentScroll = window.scrollY || 0;
           if (button.blur) button.blur();
           show("startAdGate", false);
-          window.scrollTo(0, currentScroll);
-          window.requestAnimationFrame(function () {
-            window.scrollTo(0, currentScroll);
-            window.setTimeout(function () {
-              window.scrollTo(0, currentScroll);
-            }, 80);
-          });
           return;
         }
 
