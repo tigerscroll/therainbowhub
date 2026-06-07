@@ -1201,6 +1201,7 @@ function createQuizRunnerScript(config: {
       answers = {};
       hasUnlockedReview = false;
       show("start");
+      scrollToPageTop();
     }
 
     function loadProgress() {
