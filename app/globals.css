@@ -3184,6 +3184,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(14, 42, 44, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 12px 28px rgba(14, 42, 44, 0.05);
 }
 
 .hub-stat {
@@ -3265,6 +3270,10 @@ a {
   letter-spacing: 0;
   line-height: 1.1;
   text-transform: none;
+}
+
+.hub-stat__mobile-text {
+  display: none;
 }
 
 .hub-categories {
@@ -3753,7 +3762,7 @@ a {
 
   .hub-hero__stats {
     grid-column: auto;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
   }
 
@@ -3763,11 +3772,27 @@ a {
   }
 
   .hub-stat:nth-child(2) {
+    display: none;
+  }
+
+  .hub-stat:nth-child(3) {
     border-inline-end: 1px solid rgba(14, 42, 44, 0.18);
   }
 
   .hub-stat:last-child {
     border-inline-end: 0;
+  }
+
+  .hub-stat__desktop-text {
+    display: none;
+  }
+
+  .hub-stat__mobile-text {
+    display: block;
+  }
+
+  .hub-stat > div {
+    display: block;
   }
 
   .hub-stat__icon {
@@ -3782,6 +3807,11 @@ a {
 
   .hub-stat div > span {
     font-size: 12px;
+  }
+
+  .hub-stat__label {
+    min-height: 0;
+    display: block;
   }
 }
 
@@ -3959,17 +3989,21 @@ a {
   .hub-hero p {
     margin-top: 16px;
     max-width: 31rem;
+    padding-inline: 10px;
     font-size: 18px;
     line-height: 1.36;
   }
 
   .hub-hero__stats {
-    width: 100%;
-    max-width: none;
+    width: min(calc(100vw - 28px), 480px);
+    max-width: 100%;
+    margin-inline: auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
     gap: 0;
+    padding: 7px 6px;
+    border-radius: 16px;
   }
 
   .hub-stat {
@@ -3985,8 +4019,10 @@ a {
   }
 
   .hub-stat > div {
-    flex: 0 0 76px;
-    width: 76px;
+    display: block;
+    flex: 0 1 auto;
+    width: auto;
+    min-width: 0;
   }
 
   .hub-stat:nth-child(2) {
@@ -4010,12 +4046,27 @@ a {
     font-size: 15px;
     font-weight: 900;
     line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hub-stat__desktop-text {
+    display: none;
+  }
+
+  .hub-stat__mobile-text {
+    display: block;
   }
 
   .hub-stat div > span {
     margin-top: 3px;
     font-size: 10px;
     line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .hub-stat__label {
+    min-height: 0;
+    display: block;
   }
 
   #all {
@@ -4116,8 +4167,8 @@ a {
   }
 
   .hub-stat > div {
-    flex-basis: 72px;
-    width: 72px;
+    flex-basis: auto;
+    width: auto;
   }
 
   .hub-stat__icon {
@@ -4126,7 +4177,7 @@ a {
   }
 
   .hub-stat strong {
-    font-size: 14px;
+    font-size: 13.5px;
   }
 
   .hub-stat div > span {
