@@ -119,8 +119,14 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                   <HeroStatIcon type={stat.icon} />
                 </span>
                 <div>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
+                  <strong>
+                    <span className="hub-stat__desktop-text">{stat.value}</span>
+                    <span className="hub-stat__mobile-text">{stat.value}</span>
+                  </strong>
+                  <span className="hub-stat__label">
+                    <span className="hub-stat__desktop-text">{stat.label}</span>
+                    <span className="hub-stat__mobile-text">{stat.label}</span>
+                  </span>
                 </div>
               </div>
             ))}
