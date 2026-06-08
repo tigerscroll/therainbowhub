@@ -806,14 +806,14 @@ a {
 }
 
 .legacy-visual {
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
+  max-width: 720px;
   min-height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: -2px auto 18px;
-  padding: 14px 16px;
+  padding: 0;
   border: 1px solid #e8edf3;
   border-radius: 22px;
   background: linear-gradient(180deg, #fff, #f8fafc);
@@ -828,12 +828,18 @@ a {
 }
 
 .legacy-question-image {
-  width: min(100%, 720px);
+  width: 100%;
   max-height: min(52vh, 560px);
   height: auto;
   display: block;
   object-fit: contain;
-  border-radius: 16px;
+  border-radius: 20px;
+}
+
+@media (min-width: 620px) {
+  .legacy-visual {
+    max-width: 660px;
+  }
 }
 
 .legacy-symbol-row {
