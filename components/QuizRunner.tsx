@@ -727,6 +727,12 @@ function createQuizRunnerScript(config: {
       image.src = src;
     }
 
+    function preloadUpcomingQuestionVisuals(startIndex, count) {
+      for (var offset = 0; offset < count; offset += 1) {
+        preloadQuestionVisual(startIndex + offset);
+      }
+    }
+
     function getStageIndexes() {
       return Array.from(new Set(quiz.questions.map(function (question) {
         return question.stage || 0;
@@ -865,7 +871,7 @@ function createQuizRunnerScript(config: {
         });
       });
 
-      preloadQuestionVisual(current + 1);
+      preloadUpcomingQuestionVisuals(current + 1, 2);
       show("question", shouldScroll);
     }
 
