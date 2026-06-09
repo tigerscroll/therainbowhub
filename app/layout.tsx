@@ -69,6 +69,22 @@ fbq('init', '${siteConfig.metaPixelId}');
         </noscript>
 
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.addEventListener("assertive_predictedRevenue", function (e) {
+  var sessionRPM = e?.data?.predictedRevenueCPM?.session;
+
+  if (typeof sessionRPM === "number") {
+    console.log("Current session RPM:", sessionRPM.toFixed(3));
+    console.log("Estimated session value:", "$" + (sessionRPM / 1000).toFixed(6));
+  } else {
+    console.log("No session RPM found:", e.data);
+  }
+});
+`,
+          }}
+        />
       </body>
     </html>
   );
