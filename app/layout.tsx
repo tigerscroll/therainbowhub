@@ -69,6 +69,29 @@ fbq('init', '${siteConfig.metaPixelId}');
         </noscript>
 
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+window.addEventListener(
+  "assertive_predictedRevenue",
+  function (e) {
+    var sessionCPM = e?.data?.predictedRevenueCPM?.session;
+
+    if (typeof sessionCPM === "number") {
+      var sessionValue = sessionCPM / 1000;
+
+      console.log("AY current predicted session CPM:", sessionCPM);
+      console.log("AY current predicted session value:", sessionValue);
+      console.log("AY current predicted session value USD:", "$" + sessionValue.toFixed(6));
+    } else {
+      console.log("AY predicted revenue event received, but no session value found:", e.data);
+    }
+  },
+  false
+);
+`,
+          }}
+        />
       </body>
     </html>
   );
