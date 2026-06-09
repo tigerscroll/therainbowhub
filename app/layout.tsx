@@ -76,8 +76,24 @@ window.addEventListener("assertive_predictedRevenue", function (e) {
   var sessionRPM = e?.data?.predictedRevenueCPM?.session;
 
   if (typeof sessionRPM === "number") {
-    console.log("Current session RPM:", sessionRPM.toFixed(3));
-    console.log("Estimated session value:", "$" + (sessionRPM / 1000).toFixed(6));
+    var sessionValue = sessionRPM / 1000;
+
+    if (sessionRPM >= 10 && !window.__rps1Tracked) {
+      window.__rps1Tracked = true;
+
+      if (typeof window.fbq === "function") {
+        window.fbq("trackCustom", "RPS1", {
+          currency: "USD",
+          predicted_session_rpm: sessionRPM,
+          value: 0.01
+        });
+      }
+
+      console.log("RPS1 fired:", {
+        predicted_session_rpm: sessionRPM,
+        predicted_session_value: sessionValue
+      });
+    }
   } else {
     console.log("No session RPM found:", e.data);
   }
