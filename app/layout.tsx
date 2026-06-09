@@ -76,7 +76,7 @@ window.addEventListener("assertive_predictedRevenue", function (e) {
   var sessionRPM = e?.data?.predictedRevenueCPM?.session;
 
   if (typeof sessionRPM === "number") {
-    console.log("Current session value:", "$" + (sessionRPM / 1000).toFixed(6));
+    console.log("Current predicted session CPM:", "$" + sessionRPM.toFixed(2) + " CPM");
   }
 });
 `,
