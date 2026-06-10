@@ -324,6 +324,10 @@ function createQuizRunnerScript(config: {
     var rewardedListenersInstalled = false;
     var rewardedServicesEnabled = false;
     var rewardedRequestId = 0;
+    var rewardedGrantedCount = 0;
+    var rewardedClosedCount = 0;
+    var reward2Tracked = false;
+    var rewardClosed2Tracked = false;
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
     var retryRewardedAction = null;
@@ -474,15 +478,31 @@ function createQuizRunnerScript(config: {
 
     function trackRewardGranted(payload) {
       var data = payload || {};
+      rewardedGrantedCount += 1;
+      data.reward_count = rewardedGrantedCount;
       try { console.log("fbq custom event: Reward", data); } catch (error) {}
       try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
+
+      if (rewardedGrantedCount >= 2 && !reward2Tracked) {
+        reward2Tracked = true;
+        try { console.log("fbq custom event: Reward2", data); } catch (error) {}
+        try { window.fbq?.("trackCustom", "Reward2", data); } catch (error) {}
+      }
     }
 
     function trackRewardClosed(payload) {
       var data = payload || {};
       if (data.granted === true && data.reason === "reward_granted") {
+        rewardedClosedCount += 1;
+        data.reward_closed_count = rewardedClosedCount;
         try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
         try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
+
+        if (rewardedClosedCount >= 2 && !rewardClosed2Tracked) {
+          rewardClosed2Tracked = true;
+          try { console.log("fbq custom event: RewardClosed2", data); } catch (error) {}
+          try { window.fbq?.("trackCustom", "RewardClosed2", data); } catch (error) {}
+        }
       }
     }
 
