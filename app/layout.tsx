@@ -69,36 +69,6 @@ fbq('init', '${siteConfig.metaPixelId}');
         </noscript>
 
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-window.addEventListener("assertive_predictedRevenue", function (e) {
-  var sessionRPM = e?.data?.predictedRevenueCPM?.session;
-
-  if (typeof sessionRPM === "number") {
-    console.log("Current predicted session CPM:", "$" + sessionRPM.toFixed(2) + " CPM");
-
-    if (sessionRPM >= 5 && !window.__rps05Tracked) {
-      window.__rps05Tracked = true;
-
-      if (typeof window.fbq === "function") {
-        window.fbq("trackCustom", "RPS05", {
-          currency: "USD",
-          predicted_session_cpm: sessionRPM,
-          value: 0.005
-        });
-      }
-
-      console.log("RPS05 fired:", {
-        predicted_session_cpm: sessionRPM,
-        predicted_session_value: sessionRPM / 1000
-      });
-    }
-  }
-});
-`,
-          }}
-        />
       </body>
     </html>
   );
