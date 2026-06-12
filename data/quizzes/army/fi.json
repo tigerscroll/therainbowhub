@@ -6,7 +6,7 @@
   "pageTitle": "Vain 8 % läpäisee tämän armeijatyylisen soveltuvuushaasteen",
   "eyebrow": "Sotilaallinen soveltuvuushaaste",
   "summary": "Hauska armeijatyylinen soveltuvuushaaste, joka perustuu keskittymiseen, käytännölliseen päättelyyn, karttaruudukkopulmiin, toimituslogiikkaan, selkeään viestintään ja rauhallisiin päätöksiin.",
-  "duration": "~7 min",
+  "duration": "noin 7 minuuttia",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -41,7 +41,7 @@
     "profiles": [
       {
         "minRatio": 0.8,
-        "tier": "Elite Field Thinker",
+        "tier": "Eliittitason kenttäajattelija",
         "title": "Hoidit vaikeimmat suunnittelukierrokset.",
         "copy": "Erinomainen keskittyminen ja käytännöllinen päättely koko haasteen läpi. Vahvin alueesi oli {stage}.",
         "percentile": "Top 8 %"
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Tilauskortissa lukee: aloitus, sininen piste, toimitusruutu, maali. Mikä askel tulee sinisen pisteen jälkeen?",
+          "prompt": "Ohjekortissa lukee: aloitus, sininen piste, tarvikeruutu, maali. Mikä vaihe tulee sinisen pisteen jälkeen?",
           "choices": [
-            "Aloita",
-            "Tarjonnan neliö",
-            "Palaa",
-            "Tiedotustilaisuus"
+            "Aloitus",
+            "Tarvikeruutu",
+            "Paluu",
+            "Ohjeistus"
           ],
           "answerIndex": 1,
-          "explanation": "Tarjonnan neliö näkyy heti sinisen pisteen jälkeen.",
+          "explanation": "Tarvikeruutu on heti sinisen pisteen jälkeen.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Tarkistuslistakortti sanoo: check, label, score. Minkä vaiheen pitäisi tapahtua ensin?",
+          "prompt": "Tarkistuslistakortissa lukee: tarkista, merkitse, pisteytä. Mikä vaihe pitäisi tehdä ensin?",
           "choices": [
             "Tarkista",
-            "Label",
-            "Pisteet",
-            "Store"
+            "Merkitse",
+            "Pisteytä",
+            "Tallenna"
           ],
           "answerIndex": 0,
-          "explanation": "Tarkista on ensimmäinen vaihe luettelossa.",
+          "explanation": "Tarkista on luettelon ensimmäinen vaihe.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Viesti sanoo: \"Aseta vihreä laatikko syöttöruutuun.\" Mikä yksityiskohta on määränpää?",
+          "prompt": "Viesti sanoo: ”Aseta vihreä laatikko tarvikeruutuun.” Mikä yksityiskohta on määränpää?",
           "choices": [
             "Vihreä laatikko",
-            "Tarjonnan neliö",
+            "Tarvikeruutu",
             "Tuo",
             "Viesti"
           ],
           "answerIndex": 1,
-          "explanation": "Tarjontaneliö on paikka, johon laatikon pitäisi mennä.",
+          "explanation": "Tarvikeruutu on paikka, johon laatikko pitää sijoittaa.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Hyvä tarjonnan taju. Nyt painekierrokset vaativat rauhallisia prioriteetteja ja huolellisia oletuksia.",
       "questions": [
         {
-          "prompt": "Tarjontaruudussa on 12 vesikuvaketta. Palapeli poistaa 5. Kuinka monta on jäljellä?",
+          "prompt": "Tarvikeruudussa on 12 vesikuvaketta. Pulma poistaa niistä 5. Kuinka monta jää jäljelle?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 miinus 5 on yhtä kuin 7.",
+          "explanation": "12 miinus 5 on 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Ohjekortissa lukee, että keltainen merkki tarkoittaa syöttöruutua. Kartalla näkyy keltainen merkki. Mitä se tarkoittaa?",
+          "prompt": "Ohjekortissa lukee, että keltainen merkki tarkoittaa tarvikeruutua. Kartalla näkyy keltainen merkki. Mitä se tarkoittaa?",
           "choices": [
-            "Tarjonnan neliö",
+            "Tarvikeruutu",
             "Aloituspiste",
             "Lepoalue",
-            "Tuntematon kohta"
+            "Tuntematon piste"
           ],
           "answerIndex": 0,
-          "explanation": "Ohjekortti määrittelee keltaisen merkin syöttöruuduksi.",
+          "explanation": "Ohjekortti määrittelee keltaisen merkin tarvikeruuduksi.",
           "category": "deduction"
         },
         {

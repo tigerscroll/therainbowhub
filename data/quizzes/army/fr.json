@@ -6,7 +6,7 @@
   "pageTitle": "Seulement 8 % peuvent réussir ce défi d’aptitude de l’armée",
   "eyebrow": "Défi d'aptitude militaire",
   "summary": "Un défi d'aptitude amusant de style militaire construit autour de la concentration, du raisonnement pratique, des énigmes de la grille de cartes, de la logique d'approvisionnement, d'une communication claire et de décisions calmes.",
-  "duration": "~7 min",
+  "duration": "env. 7 minutes",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Une carte de commande indique : départ, point bleu, case de ravitaillement, arrivée. Quelle étape vient après le point bleu ?",
+          "prompt": "Une carte d’instructions indique : départ, point bleu, case de ravitaillement, arrivée. Quelle étape vient après le point bleu ?",
           "choices": [
-            "Commencer",
-            "Place d'approvisionnement",
+            "Départ",
+            "Case de ravitaillement",
             "Retour",
             "Briefing"
           ],
           "answerIndex": 1,
-          "explanation": "La case de ravitaillement est répertoriée immédiatement après le point bleu.",
+          "explanation": "La case de ravitaillement est indiquée immédiatement après le point bleu.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Une carte de liste de contrôle dit : vérifier, étiqueter, noter. Quelle étape doit avoir lieu en premier ?",
+          "prompt": "Une carte de liste de contrôle dit : vérifier, étiqueter, noter. Quelle étape doit avoir lieu en premier ?",
           "choices": [
             "Vérifier",
-            "Étiquette",
-            "Score",
-            "Magasin"
+            "Étiqueter",
+            "Noter",
+            "Stocker"
           ],
           "answerIndex": 0,
-          "explanation": "Vérifier est la première étape répertoriée.",
+          "explanation": "Vérifier est la première étape de la liste.",
           "category": "logic"
         },
         {
@@ -626,11 +626,11 @@
           "category": "logic"
         },
         {
-          "prompt": "Un message dit : « Placez la boîte verte sur la case de réserve. » Quel détail est la destination ?",
+          "prompt": "Un message dit : « Placez la boîte verte sur la case de ravitaillement. » Quel détail indique la destination ?",
           "choices": [
             "Boîte verte",
-            "Place d'approvisionnement",
-            "Apportez",
+            "Case de ravitaillement",
+            "Apporter",
             "Message"
           ],
           "answerIndex": 1,
@@ -642,7 +642,7 @@
           "choices": [
             "Utilisez le chemin 2 après la vérification des couleurs",
             "Rendez-vous au Checkpoint C à 12h00",
-            "Bouge quand tu te sens bien",
+            "Avancer quand le moment semble juste",
             "Comptez 6 cartons avant de charger"
           ],
           "answerIndex": 2,
@@ -716,7 +716,7 @@
       "encouragement": "Bon sens de l'approvisionnement. Désormais, les cycles de pression exigent des priorités sereines et des hypothèses prudentes.",
       "questions": [
         {
-          "prompt": "Une case de ravitaillement comporte 12 icônes d’eau. Le puzzle en supprime 5. Combien en reste-t-il ?",
+          "prompt": "Une case de ravitaillement contient 12 icônes d’eau. L’énigme en retire 5. Combien en reste-t-il ?",
           "choices": [
             "5",
             "6",
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "La carte d'instructions indique que le marqueur jaune signifie le carré de ravitaillement. La carte montre un marqueur jaune. Qu'est-ce que ça veut dire?",
+          "prompt": "La carte d’instructions indique que le marqueur jaune signifie case de ravitaillement. La carte montre un marqueur jaune. Que signifie-t-il ?",
           "choices": [
-            "Place d'approvisionnement",
+            "Case de ravitaillement",
             "Point de départ",
             "Aire de repos",
             "Point inconnu"
           ],
           "answerIndex": 0,
-          "explanation": "La carte d'instruction définit le marqueur jaune comme une case de ravitaillement.",
+          "explanation": "La carte d’instructions définit le marqueur jaune comme une case de ravitaillement.",
           "category": "deduction"
         },
         {

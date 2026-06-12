@@ -6,7 +6,7 @@
   "pageTitle": "Tikai 8% var izturēt šo armijas spēju izaicinājumu",
   "eyebrow": "Militāro spēju izaicinājums",
   "summary": "Jautrs armijas stila spēju izaicinājums, kura pamatā ir fokuss, praktiska spriešana, karšu režģa mīklas, piegādes loģika, skaidra komunikācija un mierīgi lēmumi.",
-  "duration": "~7 min",
+  "duration": "apm. 7 minūtes",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -51,21 +51,21 @@
         "tier": "Misijai gatavs prātotājs",
         "title": "Spēcīgas armijas stila spējas.",
         "copy": "Jūs palikāt precīzs, jo karšu režģa mīklas, signāli un lēmumi kļuva arvien prasīgāki. Jūsu spēcīgākā zona bija {stage}.",
-        "percentile": "Top 20%"
+        "percentile": "Labākie 20%"
       },
       {
         "minRatio": 0.5,
         "tier": "Pastāvīgs taktiskais domātājs",
         "title": "Labs praktiskais rādītājs.",
         "copy": "Jūs parādījāt stabilu domāšanu vairākās plānošanas karšu un kontrolsarakstu kārtās. Jūsu spēcīgākā zona bija {stage}.",
-        "percentile": "Top 42%"
+        "percentile": "Labākie 42%"
       },
       {
         "minRatio": 0,
         "tier": "Apmācības vietas audzēknis",
         "title": "Turpiniet veidot metodi.",
         "copy": "Vēlākās kārtas atalgo rūpīgas pārbaudes, skaidrus ziņojumus, kartes režģa izpratni un mierīgus lēmumus. Jūsu labākais apgabals bija {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "Labākie 80%"
       }
     ],
     "scoreDimensions": [
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Pasūtījuma kartīte saka: sākums, zils punkts, piegādes laukums, finišs. Kurš solis nāk aiz zilā punkta?",
+          "prompt": "Instrukciju kartītē rakstīts: sākums, zils punkts, apgādes lauciņš, finišs. Kurš solis seko zilajam punktam?",
           "choices": [
-            "Sākt",
-            "Piegādes laukums",
-            "Atgriezties",
-            "Briefings"
+            "Sākums",
+            "Apgādes lauciņš",
+            "Atgriešanās",
+            "Instruktāža"
           ],
           "answerIndex": 1,
-          "explanation": "Piegādes kvadrāts ir norādīts uzreiz aiz zilā punkta.",
+          "explanation": "Apgādes lauciņš ir norādīts uzreiz pēc zilā punkta.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Ziņojumā ir teikts: \"Novietojiet zaļo lodziņu piegādes laukumā.\" Kura detaļa ir galamērķis?",
+          "prompt": "Ziņojumā teikts: “Novieto zaļo kasti apgādes lauciņā.” Kura detaļa ir galamērķis?",
           "choices": [
             "Zaļā kaste",
-            "Piegādes laukums",
+            "Apgādes lauciņš",
             "Atnest",
             "Ziņojums"
           ],
           "answerIndex": 1,
-          "explanation": "Piegādes laukums ir vieta, kur kastei vajadzētu nonākt.",
+          "explanation": "Apgādes lauciņš ir vieta, kur kaste jānovieto.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Laba piegādes sajūta. Tagad spiediena kārtas prasa mierīgas prioritātes un rūpīgi pieņēmumus.",
       "questions": [
         {
-          "prompt": "Piegādes laukumā ir 12 ūdens ikonas. Puzle noņem 5. Cik paliek?",
+          "prompt": "Apgādes lauciņā ir 12 ūdens ikonas. Uzdevums noņem 5. Cik paliek?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 mīnus 5 ir vienāds ar 7.",
+          "explanation": "12 mīnus 5 ir 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Instrukciju kartītē teikts, ka dzeltenais marķieris nozīmē piegādes kvadrātu. Kartē ir redzams dzeltens marķieris. Ko tas nozīmē?",
+          "prompt": "Instrukciju kartītē teikts, ka dzeltenais marķieris nozīmē apgādes lauciņu. Kartē redzams dzeltens marķieris. Ko tas nozīmē?",
           "choices": [
-            "Piegādes laukums",
+            "Apgādes lauciņš",
             "Sākuma punkts",
             "Atpūtas vieta",
             "Nezināms punkts"
           ],
           "answerIndex": 0,
-          "explanation": "Instrukciju kartīte definē dzelteno marķieri kā piegādes kvadrātu.",
+          "explanation": "Instrukciju kartīte definē dzelteno marķieri kā apgādes lauciņu.",
           "category": "deduction"
         },
         {

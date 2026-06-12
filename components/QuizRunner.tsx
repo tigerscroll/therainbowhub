@@ -324,10 +324,14 @@ function createQuizRunnerScript(config: {
     var rewardedListenersInstalled = false;
     var rewardedServicesEnabled = false;
     var rewardedRequestId = 0;
-    var rewardedGrantedCount = 0;
-    var rewardedClosedCount = 0;
-    var reward2Tracked = false;
-    var rewardClosed2Tracked = false;
+    var rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
+    var rewardedClosedCountKey = "rainbowhub.rewardedClosedCount";
+    var reward2TrackedKey = "rainbowhub.reward2Tracked";
+    var rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
+    var rewardedGrantedCount = readSessionNumber(rewardedGrantedCountKey, 0);
+    var rewardedClosedCount = readSessionNumber(rewardedClosedCountKey, 0);
+    var reward2Tracked = readSessionFlag(reward2TrackedKey);
+    var rewardClosed2Tracked = readSessionFlag(rewardClosed2TrackedKey);
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
     var retryRewardedAction = null;
@@ -476,15 +480,41 @@ function createQuizRunnerScript(config: {
       return { currentQuestion: questionIndex + 1, screen: "question" };
     }
 
+    function readSessionNumber(key, fallback) {
+      try {
+        var stored = window.sessionStorage.getItem(key);
+        var parsed = Number(stored);
+        return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function readSessionFlag(key) {
+      try {
+        return window.sessionStorage.getItem(key) === "1";
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function writeSessionValue(key, value) {
+      try {
+        window.sessionStorage.setItem(key, String(value));
+      } catch (error) {}
+    }
+
     function trackRewardGranted(payload) {
       var data = payload || {};
       rewardedGrantedCount += 1;
+      writeSessionValue(rewardedGrantedCountKey, rewardedGrantedCount);
       data.reward_count = rewardedGrantedCount;
       try { console.log("fbq custom event: Reward", data); } catch (error) {}
       try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
 
       if (rewardedGrantedCount >= 2 && !reward2Tracked) {
         reward2Tracked = true;
+        writeSessionValue(reward2TrackedKey, "1");
         try { console.log("fbq custom event: Reward2", data); } catch (error) {}
         try { window.fbq?.("trackCustom", "Reward2", data); } catch (error) {}
       }
@@ -494,12 +524,15 @@ function createQuizRunnerScript(config: {
       var data = payload || {};
       if (data.granted === true && data.reason === "reward_granted") {
         rewardedClosedCount += 1;
+        writeSessionValue(rewardedClosedCountKey, rewardedClosedCount);
+        data.reward_count = rewardedGrantedCount;
         data.reward_closed_count = rewardedClosedCount;
         try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
         try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
 
         if (rewardedClosedCount >= 2 && !rewardClosed2Tracked) {
           rewardClosed2Tracked = true;
+          writeSessionValue(rewardClosed2TrackedKey, "1");
           try { console.log("fbq custom event: RewardClosed2", data); } catch (error) {}
           try { window.fbq?.("trackCustom", "RewardClosed2", data); } catch (error) {}
         }
