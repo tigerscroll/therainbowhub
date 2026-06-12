@@ -6,7 +6,7 @@
   "pageTitle": "Endast 8 % klarar denna militära lämplighetsutmaning",
   "eyebrow": "Militär lämplighetsutmaning",
   "summary": "En rolig begåvningsutmaning i arméstil byggd kring fokus, praktiska resonemang, pussel med kartnät, logik, tydlig kommunikation och lugna beslut.",
-  "duration": "~7 min",
+  "duration": "ca 7 minuter",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Ett beställningskort säger: start, blå punkt, leveransruta, slut. Vilket steg kommer efter blå punkt?",
+          "prompt": "Ett instruktionskort säger: start, blå punkt, förrådsruta, mål. Vilket steg kommer efter blå punkt?",
           "choices": [
-            "Starta",
-            "Försörjningstorg",
-            "Återgå",
-            "Briefing"
+            "Start",
+            "Förrådsruta",
+            "Retur",
+            "Genomgång"
           ],
           "answerIndex": 1,
-          "explanation": "Försörjningsruta anges omedelbart efter blå punkt.",
+          "explanation": "Förrådsrutan står direkt efter blå punkt.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Ett checklistakort säger: check, label, score. Vilket steg ska ske först?",
+          "prompt": "Ett checklistakort säger: kontrollera, märk, poängsätt. Vilket steg ska göras först?",
           "choices": [
             "Kontrollera",
-            "Etikett",
-            "Betyg",
-            "Butik"
+            "Märk",
+            "Poängsätt",
+            "Lagra"
           ],
           "answerIndex": 0,
-          "explanation": "Check är det första steget som anges.",
+          "explanation": "Kontrollera är det första steget i listan.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Ett meddelande säger: \"Placera den gröna rutan på förrådsrutan.\" Vilken detalj är destinationen?",
+          "prompt": "Ett meddelande säger: ”Placera den gröna lådan på förrådsrutan.” Vilken detalj är destinationen?",
           "choices": [
             "Grön låda",
-            "Försörjningstorg",
+            "Förrådsruta",
             "Ta med",
             "Meddelande"
           ],
           "answerIndex": 1,
-          "explanation": "Tillförseltorget är där lådan ska gå.",
+          "explanation": "Förrådsrutan är platsen där lådan ska placeras.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Bra utbudskänsla. Nu ber pressrundorna om lugna prioriteringar och noggranna antaganden.",
       "questions": [
         {
-          "prompt": "En försörjningsruta har 12 vattenikoner. Pusslet tar bort 5. Hur många finns kvar?",
+          "prompt": "En förrådsruta har 12 vattenikoner. Pusslet tar bort 5. Hur många är kvar?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 minus 5 är lika med 7.",
+          "explanation": "12 minus 5 är 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Instruktionskortet säger att den gula markören betyder leveransruta. Kartan visar en gul markör. Vad betyder det?",
+          "prompt": "Instruktionskortet säger att den gula markören betyder förrådsruta. Kartan visar en gul markör. Vad betyder det?",
           "choices": [
-            "Försörjningstorg",
+            "Förrådsruta",
             "Startpunkt",
             "Rastplats",
             "Okänd punkt"
           ],
           "answerIndex": 0,
-          "explanation": "Instruktionskortet definierar den gula markören som en leveransruta.",
+          "explanation": "Instruktionskortet definierar den gula markören som en förrådsruta.",
           "category": "deduction"
         },
         {

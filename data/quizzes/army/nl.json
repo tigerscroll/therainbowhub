@@ -6,7 +6,7 @@
   "pageTitle": "Slechts 8% kan slagen voor deze legervaardigheidsuitdaging",
   "eyebrow": "Militaire bekwaamheidsuitdaging",
   "summary": "Een leuke vaardigheidsuitdaging in legerstijl, opgebouwd rond focus, praktisch redeneren, kaartrasterpuzzels, aanbodlogica, duidelijke communicatie en rustige beslissingen.",
-  "duration": "~7 min",
+  "duration": "ongeveer 7 minuten",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -44,28 +44,28 @@
         "tier": "Elite velddenker",
         "title": "Je hebt de moeilijkste planningsronden afgehandeld.",
         "copy": "Uitstekende focus en praktische redenering tijdens de volledige uitdaging. Je sterkste gebied was {stage}.",
-        "percentile": "Top 8%"
+        "percentile": "Beste 8%"
       },
       {
         "minRatio": 0.65,
         "tier": "Missie-Ready Redener",
         "title": "Sterke aanleg in legerstijl.",
         "copy": "Je bleef accuraat naarmate de kaartrasterpuzzels, signalen en beslissingen veeleisender werden. Je sterkste gebied was {stage}.",
-        "percentile": "Top 20%"
+        "percentile": "Beste 20%"
       },
       {
         "minRatio": 0.5,
         "tier": "Stabiele tactische denker",
         "title": "Goede praktijkscore.",
         "copy": "Je hebt tijdens verschillende planningskaarten- en checklistronden blijk gegeven van vast denkvermogen. Je sterkste gebied was {stage}.",
-        "percentile": "Top 42%"
+        "percentile": "Beste 42%"
       },
       {
         "minRatio": 0,
         "tier": "Opleiding grondleerling",
         "title": "Blijf de methode ontwikkelen.",
         "copy": "De latere rondes belonen zorgvuldige controles, duidelijke berichten, kaartrastergevoel en rustige beslissingen. Je beste gebied was {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "Beste 80%"
       }
     ],
     "scoreDimensions": [
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Op een bestelkaart staat: start, blauw punt, bevoorradingsveld, finish. Welke stap komt na het blauwe punt?",
+          "prompt": "Op een instructiekaart staat: start, blauw punt, bevoorradingsvak, finish. Welke stap komt na het blauwe punt?",
           "choices": [
-            "Begin",
-            "Bevoorradingsplein",
-            "Keer terug",
+            "Start",
+            "Bevoorradingsvak",
+            "Terugkeer",
             "Briefing"
           ],
           "answerIndex": 1,
-          "explanation": "Het aanbodveld staat direct na het blauwe punt vermeld.",
+          "explanation": "Het bevoorradingsvak staat direct na het blauwe punt.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Op een checklistkaart staat: check, label, score. Welke stap moet als eerste gebeuren?",
+          "prompt": "Op een checklistkaart staat: controleren, labelen, scoren. Welke stap moet eerst gebeuren?",
           "choices": [
-            "Controleer",
-            "Etiket",
+            "Controleren",
+            "Labelen",
             "Scoren",
-            "Winkel"
+            "Opslaan"
           ],
           "answerIndex": 0,
-          "explanation": "Controle is de eerste stap die wordt vermeld.",
+          "explanation": "Controleren is de eerste stap in de lijst.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Er verschijnt een bericht: \"Plaats het groene vak op het voorraadveld.\" Welk detail is de bestemming?",
+          "prompt": "Een bericht zegt: “Plaats de groene doos op het bevoorradingsvak.” Welk detail is de bestemming?",
           "choices": [
             "Groene doos",
-            "Bevoorradingsplein",
-            "Breng",
+            "Bevoorradingsvak",
+            "Brengen",
             "Bericht"
           ],
           "answerIndex": 1,
-          "explanation": "Het aanbodveld is waar de doos moet komen.",
+          "explanation": "Het bevoorradingsvak is de plek waar de doos naartoe moet.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Goed aanbodgevoel. Nu vragen de drukrondes om kalme prioriteiten en zorgvuldige aannames.",
       "questions": [
         {
-          "prompt": "Een voorraadveld heeft 12 waterpictogrammen. De puzzel verwijdert er 5. Hoeveel zijn er nog over?",
+          "prompt": "Een bevoorradingsvak heeft 12 waterpictogrammen. De puzzel haalt er 5 weg. Hoeveel blijven er over?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 min 5 is gelijk aan 7.",
+          "explanation": "12 min 5 is 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Op de instructiekaart staat dat de gele marker het voorraadveld betekent. Op de kaart staat een gele markering. Wat betekent het?",
+          "prompt": "Op de instructiekaart staat dat de gele markering het bevoorradingsvak betekent. Op de kaart staat een gele markering. Wat betekent dit?",
           "choices": [
-            "Bevoorradingsplein",
+            "Bevoorradingsvak",
             "Startpunt",
-            "Rustruimte",
+            "Rustgebied",
             "Onbekend punt"
           ],
           "answerIndex": 0,
-          "explanation": "De instructiekaart definieert het gele markeerpunt als een voorraadveld.",
+          "explanation": "De instructiekaart definieert de gele markering als het bevoorradingsvak.",
           "category": "deduction"
         },
         {

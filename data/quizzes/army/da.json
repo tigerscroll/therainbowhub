@@ -6,7 +6,7 @@
   "pageTitle": "Kun 8 % kan klare denne militære egnethedsudfordring",
   "eyebrow": "Militær egnethedsudfordring",
   "summary": "En sjov egnethedsudfordring i hærstil bygget op omkring fokus, praktisk ræsonnement, puslespil med kortgitter, logik, klar kommunikation og rolige beslutninger.",
-  "duration": "~7 min",
+  "duration": "ca. 7 minutter",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Et ordrekort siger: start, blåt punkt, forsyningsfirkant, slut. Hvilket trin kommer efter blåt punkt?",
+          "prompt": "Et instruktionskort siger: start, blåt punkt, forsyningsfelt, slut. Hvilket trin kommer efter blåt punkt?",
           "choices": [
             "Start",
-            "Forsyningsplads",
+            "Forsyningsfelt",
             "Retur",
             "Briefing"
           ],
           "answerIndex": 1,
-          "explanation": "Forsyningsfirkant er anført umiddelbart efter blåt punkt.",
+          "explanation": "Forsyningsfeltet står umiddelbart efter blåt punkt.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Et tjeklistekort siger: check, label, score. Hvilket trin skal ske først?",
+          "prompt": "Et tjeklistekort siger: tjek, mærk, giv point. Hvilket trin skal ske først?",
           "choices": [
             "Tjek",
-            "Etiket",
-            "Score",
-            "Butik"
+            "Mærk",
+            "Giv point",
+            "Gem"
           ],
           "answerIndex": 0,
-          "explanation": "Check er det første trin på listen.",
+          "explanation": "Tjek er det første trin på listen.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "En meddelelse siger: \"Placer den grønne boks på forsyningspladsen.\" Hvilken detalje er destinationen?",
+          "prompt": "En besked siger: \"Placer den grønne boks på forsyningsfeltet.\" Hvilken detalje er destinationen?",
           "choices": [
-            "Grøn kasse",
-            "Forsyningsplads",
+            "Grøn boks",
+            "Forsyningsfelt",
             "Medbring",
             "Besked"
           ],
           "answerIndex": 1,
-          "explanation": "Forsyningsfirkanten er, hvor kassen skal gå.",
+          "explanation": "Forsyningsfeltet er stedet, hvor boksen skal placeres.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "God forsyningssans. Nu beder presserunderne om rolige prioriteringer og omhyggelige antagelser.",
       "questions": [
         {
-          "prompt": "En forsyningsplads har 12 vandikoner. Puslespillet fjerner 5. Hvor mange er der tilbage?",
+          "prompt": "Et forsyningsfelt har 12 vandikoner. Puslespillet fjerner 5. Hvor mange er tilbage?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 minus 5 er lig med 7.",
+          "explanation": "12 minus 5 er 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Instruktionskortet siger, at den gule markør betyder forsyningsfirkant. Kortet viser en gul markør. Hvad betyder det?",
+          "prompt": "Instruktionskortet siger, at den gule markør betyder forsyningsfelt. Kortet viser en gul markør. Hvad betyder det?",
           "choices": [
-            "Forsyningsplads",
+            "Forsyningsfelt",
             "Startpunkt",
             "Rasteplads",
             "Ukendt punkt"
           ],
           "answerIndex": 0,
-          "explanation": "Instruktionskortet definerer den gule markør som en forsyningsfirkant.",
+          "explanation": "Instruktionskortet definerer den gule markør som et forsyningsfelt.",
           "category": "deduction"
         },
         {

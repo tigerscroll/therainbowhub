@@ -6,7 +6,7 @@
   "pageTitle": "Csak 8% tudja teljesíteni ezt a katonai alkalmassági kihívást",
   "eyebrow": "Katonai alkalmassági kihívás",
   "summary": "Szórakoztató, hadsereg-stílusú alkalmassági kihívás, amely a fókuszra, a gyakorlatias érvelésre, a térképrács-rejtvényekre, az ellátási logikára, a világos kommunikációra és a nyugodt döntésekre épül.",
-  "duration": "~7 min",
+  "duration": "kb. 7 perc",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -51,14 +51,14 @@
         "tier": "Küldetéskész okoskodó",
         "title": "Erős katonai alkalmasság.",
         "copy": "Pontos maradtál, ahogy a térképrács-rejtvények, jelzések és döntések egyre nehezebbé váltak. A legerősebb területed a {stage} volt.",
-        "percentile": "Top 20%"
+        "percentile": "Legjobb 20%"
       },
       {
         "minRatio": 0.5,
         "tier": "Állandó taktikai gondolkodó",
         "title": "Jó gyakorlati pontszám.",
         "copy": "Kitartó gondolkodást tanúsított több tervezési kártya és ellenőrző lista során. A legerősebb területed a {stage} volt.",
-        "percentile": "Top 42%"
+        "percentile": "Legjobb 42%"
       },
       {
         "minRatio": 0,
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "A rendelési kártyán ez áll: start, kék pont, ellátási négyzet, cél. Melyik lépés következik a kék pont után?",
+          "prompt": "Az utasításkártyán ez áll: start, kék pont, ellátási mező, cél. Melyik lépés következik a kék pont után?",
           "choices": [
-            "Indítsa el",
-            "Ellátási tér",
+            "Start",
+            "Ellátási mező",
             "Vissza",
-            "Tájékoztató"
+            "Eligazítás"
           ],
           "answerIndex": 1,
-          "explanation": "Az ellátási négyzet közvetlenül a kék pont után jelenik meg.",
+          "explanation": "Az ellátási mező közvetlenül a kék pont után szerepel.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "A következő üzenet jelenik meg: \"Helyezze el a zöld dobozt a készlet négyzetére.\" Melyik részlet az úti cél?",
+          "prompt": "Az üzenet így szól: „Tedd a zöld dobozt az ellátási mezőre.” Melyik részlet jelöli a célhelyet?",
           "choices": [
             "Zöld doboz",
-            "Ellátási tér",
-            "Hozd",
+            "Ellátási mező",
+            "Hozd el",
             "Üzenet"
           ],
           "answerIndex": 1,
-          "explanation": "Az ellátási négyzet az, ahová a doboznak kerülnie kell.",
+          "explanation": "Az ellátási mező az a hely, ahová a doboznak kerülnie kell.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Jó ellátási érzék. Most a nyomási körök nyugodt prioritásokat és óvatos feltételezéseket követelnek.",
       "questions": [
         {
-          "prompt": "Egy ellátó négyzeten 12 víz ikon található. A rejtvény eltávolítja az 5-öt. Hány marad?",
+          "prompt": "Egy ellátási mezőn 12 vízikon van. A feladvány 5-öt eltávolít. Mennyi marad?",
           "choices": [
             "5",
             "6",
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Az utasítási kártya azt írja, hogy a sárga jelölő az ellátási négyzetet jelenti. A térképen egy sárga marker látható. Mit jelent ez?",
+          "prompt": "Az utasításkártya szerint a sárga jelölő ellátási mezőt jelent. A térképen sárga jelölő látható. Mit jelent ez?",
           "choices": [
-            "Ellátási tér",
+            "Ellátási mező",
             "Kezdőpont",
             "Pihenőhely",
             "Ismeretlen pont"
           ],
           "answerIndex": 0,
-          "explanation": "Az utasításkártya a sárga jelzőt ellátmánynégyzetként határozza meg.",
+          "explanation": "Az utasításkártya a sárga jelölőt ellátási mezőként határozza meg.",
           "category": "deduction"
         },
         {

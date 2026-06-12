@@ -6,7 +6,7 @@
   "pageTitle": "Bare 8 % klarer denne militære egnethetsutfordringen",
   "eyebrow": "Militær evneutfordring",
   "summary": "En morsom egnethetsutfordring i hærstil bygget rundt fokus, praktisk resonnement, kart-rutespill, forsyningslogikk, klar kommunikasjon og rolige beslutninger.",
-  "duration": "~7 min",
+  "duration": "ca. 7 minutter",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Et ordrekort sier: start, blått punkt, forsyningsrute, mål. Hvilket trinn kommer etter blått punkt?",
+          "prompt": "Et instruksjonskort sier: start, blått punkt, forsyningsfelt, mål. Hvilket trinn kommer etter blått punkt?",
           "choices": [
             "Start",
-            "Forsyningstorg",
+            "Forsyningsfelt",
             "Retur",
             "Briefing"
           ],
           "answerIndex": 1,
-          "explanation": "Forsyningstorg er oppført umiddelbart etter blått punkt.",
+          "explanation": "Forsyningsfeltet står rett etter blått punkt.",
           "category": "logic"
         },
         {
@@ -446,15 +446,15 @@
           "category": "number"
         },
         {
-          "prompt": "Et sjekklistekort sier: check, label, score. Hvilket trinn bør skje først?",
+          "prompt": "Et sjekklistekort sier: sjekk, merk, gi poeng. Hvilket trinn bør skje først?",
           "choices": [
             "Sjekk",
-            "Etikett",
-            "Score",
-            "Butikk"
+            "Merk",
+            "Gi poeng",
+            "Lagre"
           ],
           "answerIndex": 0,
-          "explanation": "Sjekk er det første trinnet som er oppført.",
+          "explanation": "Sjekk er det første trinnet i listen.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "En melding sier: \"Plasser den grønne boksen på forsyningsplassen.\" Hvilken detalj er destinasjonen?",
+          "prompt": "En melding sier: «Plasser den grønne boksen på forsyningsfeltet.» Hvilken detalj er destinasjonen?",
           "choices": [
             "Grønn boks",
-            "Forsyningstorg",
+            "Forsyningsfelt",
             "Ta med",
             "Melding"
           ],
           "answerIndex": 1,
-          "explanation": "Forsyningsplassen er der boksen skal gå.",
+          "explanation": "Forsyningsfeltet er stedet boksen skal plasseres.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "God forsyningssans. Nå ber pressrundene om rolige prioriteringer og forsiktige forutsetninger.",
       "questions": [
         {
-          "prompt": "Et forsyningsfelt har 12 vannikoner. Puslespillet fjerner 5. Hvor mange gjenstår?",
+          "prompt": "Et forsyningsfelt har 12 vannikoner. Oppgaven fjerner 5. Hvor mange er igjen?",
           "choices": [
             "5",
             "6",
@@ -724,7 +724,7 @@
             "8"
           ],
           "answerIndex": 2,
-          "explanation": "12 minus 5 tilsvarer 7.",
+          "explanation": "12 minus 5 er 7.",
           "category": "number"
         },
         {
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Instruksjonskortet sier at den gule markøren betyr forsyningsrute. Kartet viser en gul markør. Hva betyr det?",
+          "prompt": "Instruksjonskortet sier at den gule markøren betyr forsyningsfelt. Kartet viser en gul markør. Hva betyr det?",
           "choices": [
-            "Forsyningstorg",
+            "Forsyningsfelt",
             "Startpunkt",
             "Rasteplass",
-            "Ukjent poeng"
+            "Ukjent punkt"
           ],
           "answerIndex": 0,
-          "explanation": "Instruksjonskortet definerer den gule markøren som en forsyningsrute.",
+          "explanation": "Instruksjonskortet definerer den gule markøren som et forsyningsfelt.",
           "category": "deduction"
         },
         {

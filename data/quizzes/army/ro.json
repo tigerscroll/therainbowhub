@@ -6,7 +6,7 @@
   "pageTitle": "Doar 8% pot trece această provocare pentru aptitudinile armatei",
   "eyebrow": "Provocarea aptitudinilor militare",
   "summary": "O provocare distractivă a aptitudinilor în stilul armatei, construită în jurul concentrării, raționamentului practic, puzzle-urilor cu hărți, logica furnizării, comunicare clară și decizii calme.",
-  "duration": "~7 min",
+  "duration": "aprox. 7 minute",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -44,28 +44,28 @@
         "tier": "Gânditor de câmp de elită",
         "title": "Te-ai descurcat cu cele mai grele runde de planificare.",
         "copy": "Focalizare excelentă și raționament practic în întreaga provocare. Zona ta cea mai puternică a fost {stage}.",
-        "percentile": "Top 8%"
+        "percentile": "În top 8%"
       },
       {
         "minRatio": 0.65,
         "tier": "Raționator pregătit pentru misiune",
         "title": "Aptitudine puternică în stilul armatei.",
         "copy": "Ai rămas precis, pe măsură ce puzzle-urile, semnalele și deciziile cu grilă de hartă au devenit mai solicitante. Zona ta cea mai puternică a fost {stage}.",
-        "percentile": "Top 20%"
+        "percentile": "În top 20%"
       },
       {
         "minRatio": 0.5,
         "tier": "Gânditor tactic constant",
         "title": "Scor practic bun.",
         "copy": "Ați dat dovadă de gândire constantă în mai multe runde de carduri de planificare și liste de verificare. Zona ta cea mai puternică a fost {stage}.",
-        "percentile": "Top 42%"
+        "percentile": "În top 42%"
       },
       {
         "minRatio": 0,
         "tier": "Curent de antrenament",
         "title": "Continuați să construiți metoda.",
         "copy": "Rundele ulterioare recompensează verificările atente, mesajele clare, simțul hărții și deciziile calme. Cea mai bună zonă a ta a fost {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "În top 80%"
       }
     ],
     "scoreDimensions": [
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Un card de comandă spune: început, punct albastru, pătrat de aprovizionare, sfârșit. Care pas vine după punctul albastru?",
+          "prompt": "Un card cu instrucțiuni spune: început, punct albastru, casetă de aprovizionare, final. Care pas vine după punctul albastru?",
           "choices": [
-            "Începeți",
-            "Pătrat de aprovizionare",
-            "Întoarce-te",
-            "Briefing"
+            "Început",
+            "Casetă de aprovizionare",
+            "Întoarcere",
+            "Instructaj"
           ],
           "answerIndex": 1,
-          "explanation": "Pătratul de aprovizionare este listat imediat după punctul albastru.",
+          "explanation": "Caseta de aprovizionare este listată imediat după punctul albastru.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Un mesaj spune: „Puneți caseta verde pe pătratul de provizii”. Ce detaliu este destinația?",
+          "prompt": "Un mesaj spune: „Pune cutia verde în caseta de aprovizionare.” Ce detaliu indică destinația?",
           "choices": [
             "Cutie verde",
-            "Pătrat de aprovizionare",
+            "Casetă de aprovizionare",
             "Adu",
             "Mesaj"
           ],
           "answerIndex": 1,
-          "explanation": "Pătratul de aprovizionare este locul unde ar trebui să meargă cutia.",
+          "explanation": "Caseta de aprovizionare este locul unde trebuie pusă cutia.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Bun simț al aprovizionării. Acum, rundele de presiune cer priorități calme și presupuneri atente.",
       "questions": [
         {
-          "prompt": "Un pătrat de aprovizionare are 12 pictograme de apă. Puzzle-ul elimină 5. Câte au mai rămas?",
+          "prompt": "O casetă de aprovizionare are 12 pictograme cu apă. Puzzle-ul elimină 5. Câte rămân?",
           "choices": [
             "5",
             "6",
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Fișa de instrucțiuni spune că marcajul galben înseamnă pătratul de aprovizionare. Harta prezintă un marcator galben. Ce înseamnă?",
+          "prompt": "Fișa de instrucțiuni spune că marcajul galben înseamnă casetă de aprovizionare. Harta arată un marcaj galben. Ce înseamnă?",
           "choices": [
-            "Pătrat de aprovizionare",
-            "Punctul de pornire",
-            "Zona de odihnă",
+            "Casetă de aprovizionare",
+            "Punct de pornire",
+            "Zonă de odihnă",
             "Punct necunoscut"
           ],
           "answerIndex": 0,
-          "explanation": "Fișa de instrucțiuni definește marcatorul galben ca un pătrat de provizii.",
+          "explanation": "Fișa de instrucțiuni definește marcajul galben ca o casetă de aprovizionare.",
           "category": "deduction"
         },
         {

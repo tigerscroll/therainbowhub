@@ -6,7 +6,7 @@
   "pageTitle": "Apenas 8% conseguem passar neste Desafio de Aptidão do Exército",
   "eyebrow": "Desafio de Aptidão Militar",
   "summary": "Um desafio divertido de aptidão no estilo do Exército, baseado em foco, raciocínio prático, quebra-cabeças de grade de mapas, lógica de suprimentos, comunicação clara e decisões calmas.",
-  "duration": "~7 min",
+  "duration": "cerca de 7 minutos",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
@@ -44,28 +44,28 @@
         "tier": "Pensador de Campo de Elite",
         "title": "Você lidou com as rodadas de planejamento mais difíceis.",
         "copy": "Excelente foco e raciocínio prático ao longo de todo o desafio. Sua área mais forte foi {stage}.",
-        "percentile": "Top 8%"
+        "percentile": "Entre os 8% melhores"
       },
       {
         "minRatio": 0.65,
         "tier": "Raciocinador Pronto para a Missão",
         "title": "Forte aptidão no estilo do Exército.",
         "copy": "Você manteve a precisão à medida que os quebra-cabeças de grade de mapas, sinais e decisões ficaram mais exigentes. Sua área mais forte foi {stage}.",
-        "percentile": "Top 20%"
+        "percentile": "Entre os 20% melhores"
       },
       {
         "minRatio": 0.5,
         "tier": "Pensador Tático Estável",
         "title": "Boa pontuação prática.",
         "copy": "Você mostrou pensamento estável em várias rodadas de cartões de planejamento e listas de verificação. Sua área mais forte foi {stage}.",
-        "percentile": "Top 42%"
+        "percentile": "Entre os 42% melhores"
       },
       {
         "minRatio": 0,
         "tier": "Aprendiz do Campo de Treinamento",
         "title": "Continue construindo o método.",
         "copy": "As rodadas posteriores recompensam verificações cuidadosas, mensagens claras, senso de grade de mapas e decisões calmas. Sua melhor área foi {stage}.",
-        "percentile": "Top 80%"
+        "percentile": "Entre os 80% melhores"
       }
     ],
     "scoreDimensions": [
@@ -344,15 +344,15 @@
           "category": "attention"
         },
         {
-          "prompt": "Um cartão de ordem diz: início, ponto azul, quadrado de abastecimento, fim. Qual etapa vem depois do ponto azul?",
+          "prompt": "Um cartão de instruções diz: início, ponto azul, casa de abastecimento, fim. Qual etapa vem depois do ponto azul?",
           "choices": [
             "Início",
-            "Quadrado de abastecimento",
+            "Casa de abastecimento",
             "Retorno",
-            "Briefing"
+            "Instruções"
           ],
           "answerIndex": 1,
-          "explanation": "O quadrado de abastecimento vem imediatamente depois do ponto azul.",
+          "explanation": "A casa de abastecimento aparece imediatamente depois do ponto azul.",
           "category": "logic"
         },
         {
@@ -626,15 +626,15 @@
           "category": "logic"
         },
         {
-          "prompt": "Uma mensagem diz: “Coloque a caixa verde no quadrado de abastecimento”. Qual detalhe indica o destino?",
+          "prompt": "Uma mensagem diz: “Coloque a caixa verde na casa de abastecimento”. Qual detalhe indica o destino?",
           "choices": [
             "Caixa verde",
-            "Quadrado de abastecimento",
+            "Casa de abastecimento",
             "Trazer",
             "Mensagem"
           ],
           "answerIndex": 1,
-          "explanation": "O quadrado de abastecimento é onde a caixa deve ficar.",
+          "explanation": "A casa de abastecimento é onde a caixa deve ficar.",
           "category": "attention"
         },
         {
@@ -716,7 +716,7 @@
       "encouragement": "Bom senso de suprimentos. Agora as rodadas de pressão exigem prioridades calmas e suposições cuidadosas.",
       "questions": [
         {
-          "prompt": "Um quadrado de abastecimento possui 12 ícones de água. O quebra-cabeça remove 5. Quantos restam?",
+          "prompt": "Uma casa de abastecimento tem 12 ícones de água. O quebra-cabeça remove 5. Quantos restam?",
           "choices": [
             "5",
             "6",
@@ -980,15 +980,15 @@
           "category": "logic"
         },
         {
-          "prompt": "O cartão de instruções diz que o marcador amarelo significa quadrado de abastecimento. O mapa mostra um marcador amarelo. O que isso significa?",
+          "prompt": "O cartão de instruções diz que o marcador amarelo significa casa de abastecimento. O mapa mostra um marcador amarelo. O que isso significa?",
           "choices": [
-            "Quadrado de abastecimento",
+            "Casa de abastecimento",
             "Ponto inicial",
             "Área de descanso",
             "Ponto desconhecido"
           ],
           "answerIndex": 0,
-          "explanation": "O cartão de instruções define o marcador amarelo como um quadrado de abastecimento.",
+          "explanation": "O cartão de instruções define o marcador amarelo como uma casa de abastecimento.",
           "category": "deduction"
         },
         {

@@ -13,42 +13,9 @@ type LanguageSwitcherProps = {
   translations: Translations;
 };
 
-const languageNames: Record<SupportedLocale, string> = {
-  en: "English",
-  pt: "Portuguese (Portugal)",
-  "pt-br": "Portuguese (Brazil)",
-  fr: "French",
-  es: "Spanish",
-  ar: "Arabic",
-  de: "German",
-  tr: "Turkish",
-  it: "Italian",
-  nl: "Dutch",
-  hu: "Hungarian",
-  ro: "Romanian",
-  pl: "Polish",
-  ja: "Japanese",
-  zh: "Chinese",
-  id: "Indonesian",
-  bg: "Bulgarian",
-  sv: "Swedish",
-  cs: "Czech",
-  el: "Greek",
-  uk: "Ukrainian",
-  da: "Danish",
-  no: "Norwegian",
-  ko: "Korean",
-  lt: "Lithuanian",
-  lv: "Latvian",
-  fi: "Finnish",
-  hi: "Hindi",
-  vi: "Vietnamese",
-  th: "Thai",
-  ms: "Malay",
-  he: "Hebrew",
-};
-
-const languageFlags = Object.fromEntries(getLocaleOptions().map((option) => [option.code, option.flag])) as Record<SupportedLocale, string>;
+const localeOptions = getLocaleOptions();
+const languageNames = Object.fromEntries(localeOptions.map((option) => [option.code, option.name])) as Record<SupportedLocale, string>;
+const languageFlags = Object.fromEntries(localeOptions.map((option) => [option.code, option.flag])) as Record<SupportedLocale, string>;
 
 function getSwitcherHref(locale: SupportedLocale, path: string) {
   const defaultLocale = getDefaultLocale();
