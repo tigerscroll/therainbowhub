@@ -120,6 +120,11 @@ function createQuizRunnerHtml(config: {
     stepOne: translations.rewardedAd.gate?.stepOne ?? translations.rewardedAd.helper,
     stepTwo: translations.rewardedAd.gate?.stepTwo ?? translations.quiz.thenBegins,
   };
+  const displayAdHtml = quiz.slug === "nursing2"
+    ? `<div class="legacy-display-ad" data-js="question-display-ad-wrap" aria-label="Advertisement">
+          <div id="question-display-ad-${escapeHtml(quiz.slug)}" data-js="question-display-ad"></div>
+        </div>`
+    : "";
   const avatarHtml = getSocialAvatarUrls(quiz.slug)
     .map(
       (url) =>
@@ -202,6 +207,7 @@ function createQuizRunnerHtml(config: {
           <div data-js="visual" class="legacy-visual legacy-hidden"></div>
           <div data-js="answers" class="legacy-answers"></div>
         </article>
+        ${displayAdHtml}
       </section>
 
       <section data-screen="stage-gate" class="legacy-card legacy-result legacy-stage-result legacy-hidden">
@@ -281,6 +287,7 @@ function createQuizRunnerHtml(config: {
 }
 
 function createQuizRunnerScript(config: {
+  displayAdUnitPath: string;
   locale: SupportedLocale;
   progressKey: string;
   rewardedAdUnitPath: string;
@@ -321,8 +328,10 @@ function createQuizRunnerScript(config: {
     var hasUnlockedReview = false;
     var useStartAdGate = false;
     var activeRewardedAd = null;
+    var displayAdSlot = null;
+    var displayAdSlotShown = false;
     var rewardedListenersInstalled = false;
-    var rewardedServicesEnabled = false;
+    var googlePublisherServicesEnabled = false;
     var rewardedRequestId = 0;
     var rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
     var rewardedClosedCountKey = "rainbowhub.rewardedClosedCount";
@@ -340,7 +349,7 @@ function createQuizRunnerScript(config: {
     var preloadedVisuals = {};
     var retryRewardedAction = null;
 
-    if (config.rewardedAdUnitPath) {
+    if (config.rewardedAdUnitPath || config.displayAdUnitPath) {
       window.googletag = window.googletag || { cmd: [] };
     }
 
@@ -633,6 +642,53 @@ function createQuizRunnerScript(config: {
       document.head.appendChild(script);
     }
 
+    function ensureGooglePublisherServices() {
+      if (googlePublisherServicesEnabled) return;
+      window.googletag.enableServices();
+      googlePublisherServicesEnabled = true;
+    }
+
+    function refreshQuestionDisplayAd(shouldRefresh) {
+      if (!config.displayAdUnitPath) return;
+
+      var adElement = byData("question-display-ad");
+      if (!adElement || !adElement.id) return;
+
+      window.googletag = window.googletag || { cmd: [] };
+      loadGooglePublisherTag();
+
+      try {
+        window.googletag.cmd.push(function () {
+          try {
+            if (!displayAdSlot) {
+              displayAdSlot = window.googletag.defineSlot(
+                config.displayAdUnitPath,
+                [[336, 280], [300, 250], [320, 100], [300, 100]],
+                adElement.id
+              );
+
+              if (!displayAdSlot) return;
+
+              displayAdSlot.addService(window.googletag.pubads());
+              try { window.googletag.pubads()?.collapseEmptyDivs?.(); } catch (error) {}
+              ensureGooglePublisherServices();
+              window.googletag.display(adElement.id);
+              displayAdSlotShown = true;
+              return;
+            }
+
+            ensureGooglePublisherServices();
+            if (displayAdSlotShown && shouldRefresh) {
+              window.googletag.pubads().refresh([displayAdSlot]);
+            } else if (!displayAdSlotShown) {
+              window.googletag.display(adElement.id);
+              displayAdSlotShown = true;
+            }
+          } catch (error) {}
+        });
+      } catch (error) {}
+    }
+
     function requestRewardedAdOnce(placement) {
       if (!config.rewardedAdUnitPath) {
         return Promise.resolve({ status: "unavailable", reason: "missing_ad_unit_path" });
@@ -684,10 +740,7 @@ function createQuizRunnerScript(config: {
               request.slot = slot;
               slot.addService(window.googletag.pubads());
 
-              if (!rewardedServicesEnabled) {
-                window.googletag.enableServices();
-                rewardedServicesEnabled = true;
-              }
+              ensureGooglePublisherServices();
 
               window.googletag.display(slot);
             } catch (error) {
@@ -936,6 +989,7 @@ function createQuizRunnerScript(config: {
 
       preloadUpcomingQuestionVisuals(current + 1, 2);
       show("question", shouldScroll);
+      refreshQuestionDisplayAd(false);
     }
 
     function answerQuestion(choiceIndex) {
@@ -947,6 +1001,7 @@ function createQuizRunnerScript(config: {
       answers[current] = choiceIndex;
       saveProgress("question");
       applyAnswerState(choiceIndex);
+      refreshQuestionDisplayAd(true);
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
@@ -1473,6 +1528,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
+    displayAdUnitPath: quiz.slug === "nursing2" ? siteConfig.googleAdManagerDisplayAdUnitPath : "",
     locale,
     progressKey,
     rewardedAdUnitPath: siteConfig.googleAdManagerRewardedAdUnitPath,
