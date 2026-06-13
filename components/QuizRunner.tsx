@@ -326,11 +326,15 @@ function createQuizRunnerScript(config: {
     var rewardedRequestId = 0;
     var rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
     var rewardedClosedCountKey = "rainbowhub.rewardedClosedCount";
+    var rewardTrackedKey = "rainbowhub.rewardTracked";
     var reward2TrackedKey = "rainbowhub.reward2Tracked";
+    var rewardClosedTrackedKey = "rainbowhub.rewardClosedTracked";
     var rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
     var rewardedGrantedCount = readSessionNumber(rewardedGrantedCountKey, 0);
     var rewardedClosedCount = readSessionNumber(rewardedClosedCountKey, 0);
+    var rewardTracked = readSessionFlag(rewardTrackedKey);
     var reward2Tracked = readSessionFlag(reward2TrackedKey);
+    var rewardClosedTracked = readSessionFlag(rewardClosedTrackedKey);
     var rewardClosed2Tracked = readSessionFlag(rewardClosed2TrackedKey);
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
@@ -504,19 +508,26 @@ function createQuizRunnerScript(config: {
       } catch (error) {}
     }
 
+    function trackFbqCustomEventOnce(eventName, data, trackedKey) {
+      if (readSessionFlag(trackedKey)) return true;
+      writeSessionValue(trackedKey, "1");
+      try { console.log("fbq custom event: " + eventName, data); } catch (error) {}
+      try { window.fbq?.("trackCustom", eventName, data); } catch (error) {}
+      return true;
+    }
+
     function trackRewardGranted(payload) {
       var data = payload || {};
       rewardedGrantedCount += 1;
       writeSessionValue(rewardedGrantedCountKey, rewardedGrantedCount);
       data.reward_count = rewardedGrantedCount;
-      try { console.log("fbq custom event: Reward", data); } catch (error) {}
-      try { window.fbq?.("trackCustom", "Reward", data); } catch (error) {}
+      if (!rewardTracked) {
+        rewardTracked = trackFbqCustomEventOnce("Reward", data, rewardTrackedKey);
+      }
 
       if (rewardedGrantedCount >= 2 && !reward2Tracked) {
         reward2Tracked = true;
-        writeSessionValue(reward2TrackedKey, "1");
-        try { console.log("fbq custom event: Reward2", data); } catch (error) {}
-        try { window.fbq?.("trackCustom", "Reward2", data); } catch (error) {}
+        trackFbqCustomEventOnce("Reward2", data, reward2TrackedKey);
       }
     }
 
@@ -527,14 +538,13 @@ function createQuizRunnerScript(config: {
         writeSessionValue(rewardedClosedCountKey, rewardedClosedCount);
         data.reward_count = rewardedGrantedCount;
         data.reward_closed_count = rewardedClosedCount;
-        try { console.log("fbq custom event: RewardClosed", data); } catch (error) {}
-        try { window.fbq?.("trackCustom", "RewardClosed", data); } catch (error) {}
+        if (!rewardClosedTracked) {
+          rewardClosedTracked = trackFbqCustomEventOnce("RewardClosed", data, rewardClosedTrackedKey);
+        }
 
         if (rewardedClosedCount >= 2 && !rewardClosed2Tracked) {
           rewardClosed2Tracked = true;
-          writeSessionValue(rewardClosed2TrackedKey, "1");
-          try { console.log("fbq custom event: RewardClosed2", data); } catch (error) {}
-          try { window.fbq?.("trackCustom", "RewardClosed2", data); } catch (error) {}
+          trackFbqCustomEventOnce("RewardClosed2", data, rewardClosed2TrackedKey);
         }
       }
     }
