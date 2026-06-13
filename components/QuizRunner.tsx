@@ -205,9 +205,9 @@ function createQuizRunnerHtml(config: {
             <span data-js="question-text" class="legacy-question-text"></span>
           </h2>
           <div data-js="visual" class="legacy-visual legacy-hidden"></div>
+          ${displayAdHtml}
           <div data-js="answers" class="legacy-answers"></div>
         </article>
-        ${displayAdHtml}
       </section>
 
       <section data-screen="stage-gate" class="legacy-card legacy-result legacy-stage-result legacy-hidden">
@@ -652,7 +652,10 @@ function createQuizRunnerScript(config: {
       if (!config.displayAdUnitPath) return;
 
       var adElement = byData("question-display-ad");
-      if (!adElement || !adElement.id) return;
+      if (!adElement || !adElement.id) {
+        try { console.log("display ad skipped: missing question display container"); } catch (error) {}
+        return;
+      }
 
       window.googletag = window.googletag || { cmd: [] };
       loadGooglePublisherTag();
@@ -661,18 +664,23 @@ function createQuizRunnerScript(config: {
         window.googletag.cmd.push(function () {
           try {
             if (!displayAdSlot) {
+              try { console.log("display ad define:", config.displayAdUnitPath, adElement.id); } catch (error) {}
               displayAdSlot = window.googletag.defineSlot(
                 config.displayAdUnitPath,
                 [[336, 280], [300, 250], [320, 100], [300, 100]],
                 adElement.id
               );
 
-              if (!displayAdSlot) return;
+              if (!displayAdSlot) {
+                try { console.log("display ad define failed:", config.displayAdUnitPath); } catch (error) {}
+                return;
+              }
 
               displayAdSlot.addService(window.googletag.pubads());
               try { window.googletag.pubads()?.collapseEmptyDivs?.(); } catch (error) {}
               ensureGooglePublisherServices();
               window.googletag.display(adElement.id);
+              try { console.log("display ad fired:", config.displayAdUnitPath); } catch (error) {}
               displayAdSlotShown = true;
               return;
             }
@@ -680,13 +688,19 @@ function createQuizRunnerScript(config: {
             ensureGooglePublisherServices();
             if (displayAdSlotShown && shouldRefresh) {
               window.googletag.pubads().refresh([displayAdSlot]);
+              try { console.log("display ad refreshed:", config.displayAdUnitPath); } catch (error) {}
             } else if (!displayAdSlotShown) {
               window.googletag.display(adElement.id);
+              try { console.log("display ad fired:", config.displayAdUnitPath); } catch (error) {}
               displayAdSlotShown = true;
             }
-          } catch (error) {}
+          } catch (error) {
+            try { console.log("display ad error:", error); } catch (logError) {}
+          }
         });
-      } catch (error) {}
+      } catch (error) {
+        try { console.log("display ad queue error:", error); } catch (logError) {}
+      }
     }
 
     function requestRewardedAdOnce(placement) {
@@ -989,7 +1003,7 @@ function createQuizRunnerScript(config: {
 
       preloadUpcomingQuestionVisuals(current + 1, 2);
       show("question", shouldScroll);
-      refreshQuestionDisplayAd(false);
+      refreshQuestionDisplayAd(current > 0);
     }
 
     function answerQuestion(choiceIndex) {
@@ -1001,7 +1015,6 @@ function createQuizRunnerScript(config: {
       answers[current] = choiceIndex;
       saveProgress("question");
       applyAnswerState(choiceIndex);
-      refreshQuestionDisplayAd(true);
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
