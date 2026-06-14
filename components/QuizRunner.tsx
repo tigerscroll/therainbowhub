@@ -110,6 +110,11 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
+  const displayAdHtml = quiz.slug === "years-left2"
+    ? `<div data-js="question-display-ad" class="legacy-display-ad" aria-label="Advertisement">
+          <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
+        </div>`
+    : "";
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
     .map((line) => escapeHtml(line))
@@ -200,6 +205,7 @@ function createQuizRunnerHtml(config: {
             <span data-js="question-text" class="legacy-question-text"></span>
           </h2>
           <div data-js="visual" class="legacy-visual legacy-hidden"></div>
+          ${displayAdHtml}
           <div data-js="answers" class="legacy-answers"></div>
         </article>
       </section>
@@ -282,6 +288,7 @@ function createQuizRunnerHtml(config: {
 
 function createQuizRunnerScript(config: {
   locale: SupportedLocale;
+  displayAdUnitPath: string;
   progressKey: string;
   rewardedAdUnitPath: string;
   relatedQuizzes: RelatedQuiz[];
@@ -316,6 +323,8 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var hideAnswerFeedback = quiz.slug === "nursing2";
+    var skipStartRewardedAd = quiz.slug === "years-left2";
+    var useQuestionDisplayAd = quiz.slug === "years-left2" && Boolean(config.displayAdUnitPath);
     var current = 0;
     var answers = {};
     var advanceTimer = null;
@@ -323,6 +332,8 @@ function createQuizRunnerScript(config: {
     var useStartAdGate = false;
     var activeRewardedAd = null;
     var rewardedListenersInstalled = false;
+    var questionDisplayAdSlot = null;
+    var questionDisplayAdLoaded = false;
     var googlePublisherServicesEnabled = false;
     var rewardedRequestId = 0;
     var rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
@@ -341,12 +352,12 @@ function createQuizRunnerScript(config: {
     var preloadedVisuals = {};
     var retryRewardedAction = null;
 
-    if (config.rewardedAdUnitPath) {
+    if (config.rewardedAdUnitPath || useQuestionDisplayAd) {
       window.googletag = window.googletag || { cmd: [] };
     }
 
     try {
-      useStartAdGate = Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
+      useStartAdGate = !skipStartRewardedAd && Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
     } catch (error) {}
 
     var screens = {
@@ -398,7 +409,7 @@ function createQuizRunnerScript(config: {
       if (modal) modal.classList.add("legacy-hidden");
     }
 
-    if (useStartAdGate && byData("start-ad-note")) {
+    if ((useStartAdGate || skipStartRewardedAd) && byData("start-ad-note")) {
       byData("start-ad-note").classList.add("legacy-hidden");
     }
 
@@ -638,6 +649,37 @@ function createQuizRunnerScript(config: {
       if (googlePublisherServicesEnabled) return;
       window.googletag.enableServices();
       googlePublisherServicesEnabled = true;
+    }
+
+    function ensureQuestionDisplayAd() {
+      if (!useQuestionDisplayAd || questionDisplayAdLoaded) return;
+
+      var displayWrap = byData("question-display-ad");
+      var slotElement = byData("question-display-ad-slot");
+      if (!displayWrap || !slotElement) return;
+
+      var slotId = config.rootId + "-question-display-ad";
+      slotElement.id = slotId;
+
+      window.googletag = window.googletag || { cmd: [] };
+      loadGooglePublisherTag();
+
+      try {
+        window.googletag.cmd.push(function () {
+          if (questionDisplayAdLoaded || !window.googletag?.defineSlot) return;
+
+          try {
+            questionDisplayAdSlot = window.googletag.defineSlot(config.displayAdUnitPath, [300, 250], slotId);
+            if (!questionDisplayAdSlot) return;
+
+            questionDisplayAdSlot.addService(window.googletag.pubads());
+            ensureGooglePublisherServices();
+            window.googletag.display(slotId);
+            questionDisplayAdLoaded = true;
+            displayWrap.classList.add("is-loaded");
+          } catch (error) {}
+        });
+      } catch (error) {}
     }
 
     function requestRewardedAdOnce(placement) {
@@ -924,6 +966,7 @@ function createQuizRunnerScript(config: {
       byData("question-text").textContent = question.prompt;
 
       renderQuestionVisual(visualBox, question.visual);
+      ensureQuestionDisplayAd();
 
       answersBox.innerHTML = question.choices.map(function (choice, index) {
         return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
@@ -1422,6 +1465,11 @@ function createQuizRunnerScript(config: {
           return;
         }
 
+        if (skipStartRewardedAd) {
+          startFresh();
+          return;
+        }
+
         beginStartAd(button, "start-ad-status");
       });
     });
@@ -1478,6 +1526,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const script = createQuizRunnerScript({
     locale,
+    displayAdUnitPath: siteConfig.googleAdManagerDisplayAdUnitPath,
     progressKey,
     rewardedAdUnitPath: siteConfig.googleAdManagerRewardedAdUnitPath,
     relatedQuizzes,
