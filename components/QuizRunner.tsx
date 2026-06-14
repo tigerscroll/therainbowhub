@@ -332,6 +332,7 @@ function createQuizRunnerScript(config: {
     var useStartAdGate = false;
     var activeRewardedAd = null;
     var rewardedListenersInstalled = false;
+    var questionDisplayAdLastQuestion = -1;
     var questionDisplayAdSlot = null;
     var questionDisplayAdLoaded = false;
     var googlePublisherServicesEnabled = false;
@@ -682,6 +683,22 @@ function createQuizRunnerScript(config: {
       } catch (error) {}
     }
 
+    function refreshQuestionDisplayAdForQuestion(questionIndex) {
+      if (!useQuestionDisplayAd) return;
+      ensureQuestionDisplayAd();
+      if (!questionDisplayAdLoaded || !questionDisplayAdSlot || questionDisplayAdLastQuestion === questionIndex) return;
+
+      questionDisplayAdLastQuestion = questionIndex;
+
+      try {
+        window.googletag.cmd.push(function () {
+          try {
+            window.googletag.pubads().refresh([questionDisplayAdSlot]);
+          } catch (error) {}
+        });
+      } catch (error) {}
+    }
+
     function requestRewardedAdOnce(placement) {
       if (!config.rewardedAdUnitPath) {
         return Promise.resolve({ status: "unavailable", reason: "missing_ad_unit_path" });
@@ -966,7 +983,7 @@ function createQuizRunnerScript(config: {
       byData("question-text").textContent = question.prompt;
 
       renderQuestionVisual(visualBox, question.visual);
-      ensureQuestionDisplayAd();
+      refreshQuestionDisplayAdForQuestion(current);
 
       answersBox.innerHTML = question.choices.map(function (choice, index) {
         return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
