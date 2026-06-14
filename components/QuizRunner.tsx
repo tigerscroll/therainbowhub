@@ -907,7 +907,7 @@ function createQuizRunnerScript(config: {
       });
       questionCard.classList.add(questionBackgroundClass);
       byData("round-label").textContent = t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = getStageName(currentStage);
+      byData("count-label").textContent = quiz.slug === "nursing2" && question.category ? question.category : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
