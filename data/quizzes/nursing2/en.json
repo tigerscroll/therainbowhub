@@ -1,22 +1,22 @@
 {
   "slug": "nursing2",
-  "title": "Only 8% Can Answer These 6 Nursing Questions. Can You?",
-  "seoTitle": "Only 8% Can Answer These 6 Nursing Questions. Can You?",
-  "seoDescription": "Take a quick 6-question nursing knowledge quiz covering hand hygiene, patient safety, privacy, identity checks, observation, and urgent priorities.",
-  "pageTitle": "Only 8% Can Answer These 6 Nursing Questions. Can You?",
+  "title": "Only 8% Can Answer These 10 Nursing Questions. Can You?",
+  "seoTitle": "Only 8% Can Answer These 10 Nursing Questions. Can You?",
+  "seoDescription": "Take a quick 10-question nursing knowledge quiz covering hand hygiene, patient safety, privacy, identity checks, observation, medicine checks, and urgent priorities.",
+  "pageTitle": "Only 8% Can Answer These 10 Nursing Questions. Can You?",
   "eyebrow": "Healthcare Challenge",
-  "summary": "A short nursing-style quiz with six practical care, safety, privacy, and priority questions.",
-  "duration": "2 mins",
+  "summary": "A short nursing-style quiz with 10 practical care, safety, privacy, observation, and priority questions.",
+  "duration": "3 mins",
   "publishedAt": "2026-05-29T10:00:00Z",
   "difficulty": "Quick",
   "passRate": "8%",
   "cardIcon": "🩺",
   "cardGradient": "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)",
   "accent": "#0f8f84",
-  "questionCount": 6,
+  "questionCount": 10,
   "homepage": {
-    "title": "Only 8% Can Answer These 6 Nursing Questions. Can You?",
-    "summary": "Six nursing-style care decisions. Stay calm, choose safely, and see your result.",
+    "title": "Only 8% Can Answer These 10 Nursing Questions. Can You?",
+    "summary": "Ten nursing-style care decisions. Stay calm, choose safely, and see your result.",
     "thumbnailUrl": "/images/thumbnails/nursing.jpg",
     "thumbnailAlt": "Quick Nursing Knowledge Challenge quiz",
     "icon": "🩺",
@@ -24,16 +24,16 @@
     "featured": false
   },
   "heroPoints": [
-    "6 nursing-style questions",
+    "10 nursing-style questions",
     "Safety and care priorities",
     "Instant result profile"
   ],
   "footer": {
     "aboutTitle": "About This Quick Nursing Knowledge Challenge",
-    "aboutText": "This short nursing knowledge quiz is inspired by broad thinking skills used in safe, respectful patient care, including hygiene, observation, privacy, identity checks, and urgent priorities. It is for entertainment and curiosity only, not a nursing qualification, clinical assessment, medical advice, or official training exam."
+    "aboutText": "This short nursing knowledge quiz is inspired by broad thinking skills used in safe, respectful patient care, including hygiene, observation, privacy, identity checks, medicine checks, and urgent priorities. It is for entertainment and curiosity only, not a nursing qualification, clinical assessment, medical advice, or official training exam."
   },
   "landing": {
-    "quickStartText": "Answer 6 quick nursing-style questions and see if you can beat the 8%.",
+    "quickStartText": "Answer 10 quick nursing-style questions and see if you can beat the 8%.",
     "socialProof": "47,000+ people tried it this week",
     "ctaLabel": "Start Quiz"
   },
@@ -71,27 +71,33 @@
     ],
     "scoreDimensions": [
       {
-        "label": "Safety Priorities",
+        "label": "Safety Basics",
         "categories": [
-          "deduction"
+          "hand-hygiene",
+          "fall-safety"
         ]
       },
       {
-        "label": "Care Checks",
+        "label": "Privacy And Identity",
         "categories": [
-          "logic"
+          "privacy",
+          "identity-check",
+          "confidentiality"
         ]
       },
       {
-        "label": "Observation",
+        "label": "Observation Checks",
         "categories": [
-          "attention"
+          "reading-check",
+          "condition-change"
         ]
       },
       {
-        "label": "Patient Respect",
+        "label": "Care Priorities",
         "categories": [
-          "lateral"
+          "medicine-check",
+          "urgent-priority",
+          "breathing-priority"
         ]
       }
     ]
@@ -110,7 +116,7 @@
           ],
           "answerIndex": 1,
           "explanation": "Hand hygiene helps reduce the spread of germs.",
-          "category": "deduction"
+          "category": "hand-hygiene"
         },
         {
           "prompt": "A patient says they feel dizzy when standing. What is the safest first response?",
@@ -122,7 +128,7 @@
           ],
           "answerIndex": 1,
           "explanation": "Dizziness can increase fall risk, so steadying or sitting first is safer.",
-          "category": "deduction"
+          "category": "fall-safety"
         },
         {
           "prompt": "Which action best protects privacy?",
@@ -134,7 +140,7 @@
           ],
           "answerIndex": 2,
           "explanation": "Private discussions help protect personal information.",
-          "category": "logic"
+          "category": "privacy"
         },
         {
           "prompt": "Why is a patient identity check important before care?",
@@ -146,7 +152,31 @@
           ],
           "answerIndex": 1,
           "explanation": "Identity checks help ensure care is given to the correct person.",
-          "category": "logic"
+          "category": "identity-check"
+        },
+        {
+          "prompt": "A reading is very different from the previous one. What is a wise first step?",
+          "choices": [
+            "Assume it is correct forever",
+            "Check the reading again if safe",
+            "Delete the previous reading",
+            "Stop all recording"
+          ],
+          "answerIndex": 1,
+          "explanation": "Unexpected readings often need a careful recheck.",
+          "category": "reading-check"
+        },
+        {
+          "prompt": "A patient says a tablet looks different from usual. What should happen?",
+          "choices": [
+            "Check before giving it",
+            "Tell them not to ask",
+            "Give it faster",
+            "Throw away all medicine doses"
+          ],
+          "answerIndex": 0,
+          "explanation": "A concern about a medicine should be checked before it is given.",
+          "category": "medicine-check"
         },
         {
           "prompt": "A patient is usually alert but is suddenly very confused. What matters most?",
@@ -158,7 +188,31 @@
           ],
           "answerIndex": 0,
           "explanation": "A sudden change from normal can be clinically important.",
-          "category": "attention"
+          "category": "condition-change"
+        },
+        {
+          "prompt": "A family member asks for private information in a public area. What is the best response?",
+          "choices": [
+            "Move to a suitable process or private setting",
+            "Answer loudly to save time",
+            "Share everything with anyone nearby",
+            "Ignore privacy because they asked nicely"
+          ],
+          "answerIndex": 0,
+          "explanation": "Privacy should be protected even when questions are reasonable.",
+          "category": "confidentiality"
+        },
+        {
+          "prompt": "A patient asks for help, but another patient has an emergency. What is the best approach?",
+          "choices": [
+            "Address the emergency and arrange support for the other need",
+            "Ignore both requests",
+            "Help only the person who asked first",
+            "Choose randomly"
+          ],
+          "answerIndex": 0,
+          "explanation": "Emergency needs take priority, while other needs should still be managed.",
+          "category": "urgent-priority"
         },
         {
           "prompt": "A patient suddenly becomes short of breath while another asks for a blanket. What should happen first?",
@@ -170,7 +224,7 @@
           ],
           "answerIndex": 0,
           "explanation": "A sudden breathing concern is the higher immediate priority.",
-          "category": "deduction"
+          "category": "breathing-priority"
         }
       ]
     }
