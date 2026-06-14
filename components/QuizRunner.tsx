@@ -315,6 +315,7 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
+    var hideAnswerFeedback = quiz.slug === "nursing2";
     var current = 0;
     var answers = {};
     var advanceTimer = null;
@@ -875,8 +876,8 @@ function createQuizRunnerScript(config: {
         button.disabled = true;
         button.classList.toggle("selected", isSelected);
         button.classList.toggle("personality-selected", isPersonalityQuiz && isSelected);
-        button.classList.toggle("correct", !isPersonalityQuiz && isSelected && isCorrect);
-        button.classList.toggle("wrong", !isPersonalityQuiz && isSelected && !isCorrect);
+        button.classList.toggle("correct", !hideAnswerFeedback && !isPersonalityQuiz && isSelected && isCorrect);
+        button.classList.toggle("wrong", !hideAnswerFeedback && !isPersonalityQuiz && isSelected && !isCorrect);
         button.classList.toggle("is-dimmed", !isSelected);
       });
     }
@@ -953,7 +954,7 @@ function createQuizRunnerScript(config: {
 
       advanceTimer = window.setTimeout(function () {
         advanceAfterAnswer(choiceIndex);
-      }, isPersonalityQuiz || isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
+      }, hideAnswerFeedback || isPersonalityQuiz || isCorrect ? correctAnswerDelayMs : wrongAnswerDelayMs);
     }
 
     function advanceAfterAnswer(choiceIndex) {
