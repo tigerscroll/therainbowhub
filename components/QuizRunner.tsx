@@ -1035,7 +1035,7 @@ function createQuizRunnerScript(config: {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = isNursing2 ? "Question " + (current + 1) + " of " + quiz.questions.length : t.quiz.round + " " + stageNumber;
+      byData("round-label").textContent = isNursing2 ? t.quiz.question + " " + (current + 1) + " " + t.quiz.of + " " + quiz.questions.length : t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = isNursing2 && question.category ? question.category : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
@@ -1176,12 +1176,12 @@ function createQuizRunnerScript(config: {
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isNursing2 ? "" : t.quiz.profileReady;
       resultGateBadge.classList.toggle("legacy-hidden", isNursing2);
-      byData("result-gate-title").textContent = isNursing2 ? "Your nursing results are ready." : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
+      byData("result-gate-title").textContent = isNursing2 ? getNursing2ResultGateTitle() : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
       if (resultGateCopy) {
-        resultGateCopy.textContent = isNursing2 ? "One short unlock reveals your score and answer review." : "";
+        resultGateCopy.textContent = isNursing2 ? getNursing2ResultGateCopy() : "";
         resultGateCopy.classList.toggle("legacy-hidden", !isNursing2);
       }
-      byData("result-gate-button").textContent = isNursing2 ? "See My Results →" : t.results.viewResults + " →";
+      byData("result-gate-button").textContent = isNursing2 ? getNursing2ResultGateButtonLabel() : t.results.viewResults + " →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -1225,7 +1225,20 @@ function createQuizRunnerScript(config: {
     }
 
     function getUnlockReviewButtonLabel() {
+      if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       return quiz.slug === "nursing2" ? "View Incorrect Answers" : t.results.review.unlockButton;
+    }
+
+    function getNursing2ResultGateTitle() {
+      return t.locale && t.locale.code === "nl" ? "Je verpleegkundige resultaat is klaar." : "Your nursing results are ready.";
+    }
+
+    function getNursing2ResultGateCopy() {
+      return t.locale && t.locale.code === "nl" ? "Een korte ontgrendeling toont je score en antwoordoverzicht." : "One short unlock reveals your score and answer review.";
+    }
+
+    function getNursing2ResultGateButtonLabel() {
+      return t.locale && t.locale.code === "nl" ? t.results.viewResults + " →" : "See My Results →";
     }
 
     function formatTemplate(template, values) {
