@@ -324,6 +324,7 @@ function createQuizRunnerScript(config: {
     var isPersonalityQuiz = quiz.mode === "personality";
     var hideAnswerFeedback = quiz.slug === "nursing2";
     var skipStageRewardedGates = quiz.slug === "years-left2";
+    var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
     var useQuestionDisplayAd = quiz.slug === "years-left2" && Boolean(config.displayAdUnitPath);
     var current = 0;
     var answers = {};
@@ -653,6 +654,10 @@ function createQuizRunnerScript(config: {
           fallback: false,
           ad_unit_path: config.rewardedAdUnitPath
         });
+
+        if (autoCloseRewardedOnGrant) {
+          finishRewardedAd("granted", "reward_granted");
+        }
       });
 
       pubads.addEventListener("rewardedSlotClosed", function (event) {
