@@ -323,7 +323,7 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var hideAnswerFeedback = quiz.slug === "nursing2";
-    var skipStartRewardedAd = quiz.slug === "years-left2";
+    var skipStageRewardedGates = quiz.slug === "years-left2";
     var useQuestionDisplayAd = quiz.slug === "years-left2" && Boolean(config.displayAdUnitPath);
     var current = 0;
     var answers = {};
@@ -332,7 +332,10 @@ function createQuizRunnerScript(config: {
     var useStartAdGate = false;
     var activeRewardedAd = null;
     var rewardedListenersInstalled = false;
-    var questionDisplayAdLastQuestion = -1;
+    var displayAdRequestLimit = 8;
+    var displayAdRequestWindowMs = 60000;
+    var displayAdRequestTimestampsKey = "rainbowhub.displayAdRequests";
+    var questionDisplayAdLastRefreshStep = -1;
     var questionDisplayAdSlot = null;
     var questionDisplayAdLoaded = false;
     var googlePublisherServicesEnabled = false;
@@ -358,7 +361,7 @@ function createQuizRunnerScript(config: {
     }
 
     try {
-      useStartAdGate = !skipStartRewardedAd && Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
+      useStartAdGate = Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
     } catch (error) {}
 
     var screens = {
@@ -410,7 +413,7 @@ function createQuizRunnerScript(config: {
       if (modal) modal.classList.add("legacy-hidden");
     }
 
-    if ((useStartAdGate || skipStartRewardedAd) && byData("start-ad-note")) {
+    if (useStartAdGate && byData("start-ad-note")) {
       byData("start-ad-note").classList.add("legacy-hidden");
     }
 
@@ -519,6 +522,33 @@ function createQuizRunnerScript(config: {
       try {
         window.sessionStorage.setItem(key, String(value));
       } catch (error) {}
+    }
+
+    function readSessionJsonArray(key) {
+      try {
+        var parsed = JSON.parse(window.sessionStorage.getItem(key) || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function canRequestDisplayAd() {
+      if (!useQuestionDisplayAd) return false;
+
+      var now = Date.now();
+      var recent = readSessionJsonArray(displayAdRequestTimestampsKey).filter(function (timestamp) {
+        return typeof timestamp === "number" && Number.isFinite(timestamp) && now - timestamp < displayAdRequestWindowMs;
+      });
+
+      if (recent.length >= displayAdRequestLimit) {
+        writeSessionValue(displayAdRequestTimestampsKey, JSON.stringify(recent));
+        return false;
+      }
+
+      recent.push(now);
+      writeSessionValue(displayAdRequestTimestampsKey, JSON.stringify(recent));
+      return true;
     }
 
     function trackFbqCustomEventOnce(eventName, data, trackedKey) {
@@ -670,6 +700,8 @@ function createQuizRunnerScript(config: {
           if (questionDisplayAdLoaded || !window.googletag?.defineSlot) return;
 
           try {
+            if (!canRequestDisplayAd()) return;
+
             questionDisplayAdSlot = window.googletag.defineSlot(config.displayAdUnitPath, [300, 250], slotId);
             if (!questionDisplayAdSlot) return;
 
@@ -686,13 +718,16 @@ function createQuizRunnerScript(config: {
     function refreshQuestionDisplayAdForQuestion(questionIndex) {
       if (!useQuestionDisplayAd) return;
       ensureQuestionDisplayAd();
-      if (!questionDisplayAdLoaded || !questionDisplayAdSlot || questionDisplayAdLastQuestion === questionIndex) return;
+      if (!questionDisplayAdLoaded || !questionDisplayAdSlot || questionIndex < 2) return;
 
-      questionDisplayAdLastQuestion = questionIndex;
+      var refreshStep = Math.floor(questionIndex / 2);
+      if (questionDisplayAdLastRefreshStep === refreshStep) return;
+      questionDisplayAdLastRefreshStep = refreshStep;
 
       try {
         window.googletag.cmd.push(function () {
           try {
+            if (!canRequestDisplayAd()) return;
             window.googletag.pubads().refresh([questionDisplayAdSlot]);
           } catch (error) {}
         });
@@ -1032,6 +1067,13 @@ function createQuizRunnerScript(config: {
 
       if (nextStage !== currentStage) {
         current += 1;
+        if (skipStageRewardedGates) {
+          saveProgress("question");
+          renderQuestion();
+          scrollToPageTop();
+          return;
+        }
+
         saveProgress("stage-gate");
         showStageGate();
         scrollToPageTop();
@@ -1359,6 +1401,12 @@ function createQuizRunnerScript(config: {
         current = resumePoint.currentQuestion;
 
         if (resumePoint.screen === "stageGate") {
+          if (skipStageRewardedGates) {
+            saveProgress("question");
+            renderQuestion(false);
+            return true;
+          }
+
           saveProgress("stage-gate");
           showStageGate(false);
           return true;
@@ -1479,11 +1527,6 @@ function createQuizRunnerScript(config: {
         if (useStartAdGate) {
           if (button.blur) button.blur();
           show("startAdGate", false);
-          return;
-        }
-
-        if (skipStartRewardedAd) {
-          startFresh();
           return;
         }
 

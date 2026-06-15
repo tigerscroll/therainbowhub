@@ -2,14 +2,14 @@
   "slug": "years-left2",
   "mode": "personality",
   "title": "How Many Years Do You Have Left?",
-  "seoTitle": "How Many Years Do You Have Left? | 10-Question Lifestyle Quiz",
-  "seoDescription": "Take a quick 10-question lifestyle personality quiz about habits, stress, food, movement, social energy, and curiosity to reveal your playful years-left vibe.",
+  "seoTitle": "How Many Years Do You Have Left? | Lifestyle Personality Quiz",
+  "seoDescription": "Take a playful lifestyle personality quiz about habits, energy, stress, curiosity, food, movement, and everyday choices to reveal your years-left vibe.",
   "pageTitle": "How Many Years Do You Have Left?",
   "eyebrow": "Lifestyle Personality Quiz",
-  "summary": "A fast 10-question version of the cheeky lifestyle quiz that turns everyday choices into a playful years-left vibe.",
-  "duration": "2 mins",
+  "summary": "A cheeky personality quiz that turns your habits, energy, stress style, and daily choices into a playful years-left vibe.",
+  "duration": "6 mins",
   "publishedAt": "2026-06-12T09:00:00Z",
-  "questionCount": 10,
+  "questionCount": 60,
   "difficulty": "Quick",
   "passRate": "Personality",
   "cardIcon": "🪦",
@@ -17,7 +17,7 @@
   "accent": "#b7791f",
   "homepage": {
     "title": "How Many Years Do You Have Left?",
-    "summary": "Answer 10 quick lifestyle questions to reveal your playful years-left vibe.",
+    "summary": "Answer quick lifestyle questions about habits, energy, stress, food, fun, and routine to reveal your playful years-left vibe.",
     "thumbnailUrl": "/images/thumbnails/years-left.jpg",
     "thumbnailAlt": "Warm lifestyle collage with candles, fruit, shoes, coffee, and an hourglass for a years-left personality quiz",
     "icon": "🪦",
@@ -25,18 +25,18 @@
     "featured": false
   },
   "landing": {
-    "quickStartText": "Answer 10 quick questions to find out how long you have left.",
-    "socialProof": "82,000+ people tried the full version this week",
+    "quickStartText": "Answer these questions to find out how long you have left.",
+    "socialProof": "82,000+ people tried it this week",
     "ctaLabel": "Start Quiz"
   },
   "heroPoints": [
     "8 playful lifestyle-style results",
-    "10 quick personality choices",
+    "60 quick personality choices",
     "Instant entertainment-only result"
   ],
   "footer": {
-    "aboutTitle": "About This Quick Years-Left Personality Quiz",
-    "topicText": "This quick version uses 10 everyday lifestyle clues like routine, food, movement, stress, social energy, curiosity, and small choices to create a playful personality-style result.",
+    "aboutTitle": "About This Years-Left Personality Quiz",
+    "topicText": "This quiz uses everyday lifestyle clues like routine, food, movement, stress, sleep, social energy, curiosity, and tiny brain teasers to create a playful personality-style result.",
     "aboutText": "This quiz is for entertainment and self-reflection only. It does not predict your lifespan, health, future, mortality risk, or medical outcomes. Results are playful lifestyle-style profiles based only on your quiz choices. If you have health concerns, speak to a qualified healthcare professional."
   },
   "result": {
@@ -140,7 +140,8 @@
   },
   "stageGroups": [
     {
-      "title": "Quick Years-Left Check",
+      "title": "Daily Rhythm",
+      "encouragement": "Your rhythm says a lot already. Now let us see what fuels it.",
       "questions": [
         {
           "prompt": "Your ideal Saturday morning starts with...",
@@ -159,6 +160,92 @@
           "category": "routine"
         },
         {
+          "prompt": "When your week gets crowded, what usually saves you?",
+          "choices": [
+            "A simple list and one thing at a time",
+            "Pushing harder until the pressure finally breaks",
+            "Cancelling everything and choosing the sofa in peace"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "stress_sprinter",
+            "comfort_creature"
+          ],
+          "explanation": "Busy weeks reveal whether you reset, sprint, or retreat.",
+          "category": "stress"
+        },
+        {
+          "prompt": "Pick the daily routine that sounds least annoying.",
+          "choices": [
+            "A short walk, a decent meal, and an earlyish night",
+            "A burst of work, a burst of fun, and no boring schedule",
+            "Whatever feels good in the moment"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "weekend_chaos",
+            "adventure_fuse"
+          ],
+          "explanation": "The routine you can tolerate often says more than the routine you admire.",
+          "category": "routine"
+        },
+        {
+          "prompt": "Your phone battery is at 3%. What happens next?",
+          "choices": [
+            "You calmly switch to low power and save it for what matters",
+            "You keep scrolling and trust destiny",
+            "You panic, borrow a charger, and check every outlet"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "stress_sprinter"
+          ],
+          "explanation": "Tiny emergencies are a surprisingly good window into your default style.",
+          "category": "balance"
+        },
+        {
+          "prompt": "Which evening sounds most like your reset button?",
+          "choices": [
+            "Cooking something simple and closing the laptop",
+            "A spontaneous plan that turns into a story",
+            "Blanket, snacks, and absolutely no further questions"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your reset style points toward the kind of energy you protect.",
+          "category": "routine"
+        },
+        {
+          "prompt": "How often do you make life harder than it needs to be?",
+          "choices": [
+            "Only when I ignore the obvious fix",
+            "Regularly, but at least it keeps things interesting",
+            "I am currently doing that right now"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "Self-awareness is half the battle, and occasionally the whole comedy.",
+          "category": "balance"
+        }
+      ]
+    },
+    {
+      "title": "Food And Fuel",
+      "encouragement": "Fuel choices are on the table. Next up: how your body likes to move.",
+      "questions": [
+        {
           "prompt": "Which snack table are you drifting toward?",
           "choices": [
             "Fruit, nuts, and something that still feels like a treat",
@@ -173,6 +260,124 @@
           ],
           "explanation": "Snack instincts can reveal whether you chase balance, joy, or convenience.",
           "category": "fuel"
+        },
+        {
+          "prompt": "Your breakfast personality is...",
+          "choices": [
+            "Reliable enough to stop the morning wobble",
+            "A coffee with far too much confidence",
+            "Breakfast? I prefer a dramatic lunch debut"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "weekend_chaos"
+          ],
+          "explanation": "Morning fuel often shows whether you plan ahead or improvise boldly.",
+          "category": "fuel"
+        },
+        {
+          "prompt": "At a restaurant, you usually pick...",
+          "choices": [
+            "The thing you know will leave you feeling good",
+            "The richest thing on the menu because life is short",
+            "Something new because curiosity is louder than caution"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "comfort_creature",
+            "adventure_fuse"
+          ],
+          "explanation": "Your menu choice shows how you balance comfort, curiosity, and after-effects.",
+          "category": "fuel"
+        },
+        {
+          "prompt": "Your water bottle is most likely...",
+          "choices": [
+            "Nearby and actually used",
+            "Somewhere in the house, technically",
+            "Replaced by coffee until further notice"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "reset_needed",
+            "stress_sprinter"
+          ],
+          "explanation": "Small habits are not dramatic, but they do reveal your daily operating system.",
+          "category": "fuel"
+        },
+        {
+          "prompt": "Someone offers you a mystery smoothie. You...",
+          "choices": [
+            "Ask what is in it, then decide",
+            "Drink it because mystery is part of the brand",
+            "Politely hold it and hope no one notices"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your smoothie strategy says a lot about curiosity versus control.",
+          "category": "curiosity"
+        },
+        {
+          "prompt": "Which food motto sounds most like you?",
+          "choices": [
+            "Mostly sensible, sometimes celebratory",
+            "If it brings joy, it has a seat at the table",
+            "Future me can file the complaint"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "centenarian_energy",
+            "weekend_chaos"
+          ],
+          "explanation": "Food mottos reveal the tiny negotiations you make with yourself.",
+          "category": "fuel"
+        }
+      ]
+    },
+    {
+      "title": "Movement And Energy",
+      "encouragement": "Movement tells one story. Stress and sleep tell another.",
+      "questions": [
+        {
+          "prompt": "Which movement plan would you actually keep?",
+          "choices": [
+            "A walk that does not require a new personality",
+            "A dramatic two-week fitness era",
+            "Dancing around while cleaning and calling it cardio"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "centenarian_energy"
+          ],
+          "explanation": "The best plan is usually the one your real life will tolerate.",
+          "category": "movement"
+        },
+        {
+          "prompt": "When stairs and an elevator are both available, you choose...",
+          "choices": [
+            "Stairs if I am not carrying the entire universe",
+            "Elevator, because civilization invented it for a reason",
+            "Whichever one gets me there with flair"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "comfort_creature",
+            "adventure_fuse"
+          ],
+          "explanation": "Tiny movement choices often reveal your everyday energy setting.",
+          "category": "movement"
         },
         {
           "prompt": "Your energy at 3 p.m. is usually...",
@@ -191,6 +396,76 @@
           "category": "movement"
         },
         {
+          "prompt": "Pick the activity that sounds most fun.",
+          "choices": [
+            "A scenic walk with good conversation",
+            "A last-minute road trip with snacks",
+            "A long bath and zero notifications"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Fun is a strong clue to the kind of life pace you recharge from.",
+          "category": "movement"
+        },
+        {
+          "prompt": "If a friend says, “Let’s try something active,” you think...",
+          "choices": [
+            "Sure, as long as it is not secretly a punishment",
+            "Excellent, make it weird",
+            "I cheer from a chair"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your reaction to movement shows how much novelty you enjoy.",
+          "category": "movement"
+        },
+        {
+          "prompt": "Which phrase describes your body language on a busy day?",
+          "choices": [
+            "Moving steadily, conserving energy",
+            "Fast, tense, and somehow everywhere",
+            "Collapsed elegantly at the earliest opportunity"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "reset_needed"
+          ],
+          "explanation": "Busy-day body language shows whether you pace yourself or burn bright.",
+          "category": "stress"
+        }
+      ]
+    },
+    {
+      "title": "Stress And Sleep",
+      "encouragement": "You have survived the pressure round. Time for a few brainy little detours.",
+      "questions": [
+        {
+          "prompt": "Your bedtime routine is closest to...",
+          "choices": [
+            "A decent wind-down that mostly works",
+            "One more thing, then one more thing, then oops",
+            "Falling asleep wherever the day drops me"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "reset_needed"
+          ],
+          "explanation": "Bedtime habits are basically a diary written in yawns.",
+          "category": "sleep"
+        },
+        {
           "prompt": "When stress walks into the room, you usually...",
           "choices": [
             "Shrink the problem into the next clear step",
@@ -205,6 +480,140 @@
           ],
           "explanation": "Stress style often reveals your strongest and funniest coping pattern.",
           "category": "stress"
+        },
+        {
+          "prompt": "Your alarm clock relationship is...",
+          "choices": [
+            "Respectful but not romantic",
+            "A daily courtroom battle",
+            "Mostly imaginary because I wake before it"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "stress_sprinter",
+            "centenarian_energy"
+          ],
+          "explanation": "Morning timing says plenty about your rhythm.",
+          "category": "sleep"
+        },
+        {
+          "prompt": "A tiny inconvenience appears. You...",
+          "choices": [
+            "Handle it before it becomes a saga",
+            "Make it a saga with excellent narration",
+            "Leave it for later and hope it works out"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "reset_needed"
+          ],
+          "explanation": "Small inconveniences reveal whether you tidy, dramatize, or delay.",
+          "category": "stress"
+        },
+        {
+          "prompt": "What helps you sleep best?",
+          "choices": [
+            "A calm room and a calmer brain",
+            "Being completely exhausted by adventure",
+            "Background noise and a soft escape from reality"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your sleep setup shows what your nervous system seems to ask for.",
+          "category": "sleep"
+        },
+        {
+          "prompt": "Which stress snack are you emotionally choosing?",
+          "choices": [
+            "Tea, toast, or something gentle",
+            "Crunchy chaos with confidence",
+            "Whatever can be eaten while standing"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "comfort_creature",
+            "weekend_chaos",
+            "stress_sprinter"
+          ],
+          "explanation": "Stress snacks are not science, but they are very honest.",
+          "category": "fuel"
+        }
+      ]
+    },
+    {
+      "title": "Thinking Style",
+      "encouragement": "Nice. Your thinking style is showing. Now let us check your social battery.",
+      "questions": [
+        {
+          "prompt": "A quick calendar puzzle appears. You...",
+          "choices": [
+            "Count it carefully before answering",
+            "Guess fast and trust the vibe",
+            "Wonder why the calendar is testing you"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "This is not about a perfect score. It shows whether you slow down, go by instinct, or want the puzzle to leave politely.",
+          "category": "thinking"
+        },
+        {
+          "prompt": "Someone asks you to remember three random words. You...",
+          "choices": [
+            "Repeat them in order until they stick",
+            "Turn them into a strange little story",
+            "Hope at least one word survives"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Memory style can reveal whether you like structure, imagination, or a gentler level of pressure.",
+          "category": "thinking"
+        },
+        {
+          "prompt": "A number pattern shows up. You...",
+          "choices": [
+            "Look for the clean rule",
+            "Pick the answer with confidence",
+            "Hope the pattern is friendly"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "Pattern questions can reveal how calmly you handle small moments of uncertainty.",
+          "category": "thinking"
+        },
+        {
+          "prompt": "A direction puzzle asks you to turn twice. You...",
+          "choices": [
+            "Walk through it step by step in your head",
+            "Picture the route like a tiny adventure",
+            "Answer quickly and check later"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "stress_sprinter"
+          ],
+          "explanation": "Direction puzzles are a neat clue to whether you process slowly, visually, or at speed.",
+          "category": "thinking"
         },
         {
           "prompt": "Which tiny puzzle would you actually enjoy?",
@@ -223,6 +632,44 @@
           "category": "curiosity"
         },
         {
+          "prompt": "A friend says, “I have a theory.” You...",
+          "choices": [
+            "Listen, then ask the useful question",
+            "Add a dramatic theory of your own",
+            "Listen while hoping it has a simple ending"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "stress_sprinter",
+            "comfort_creature"
+          ],
+          "explanation": "Your thinking style shows up in how you handle other people’s ideas.",
+          "category": "thinking"
+        }
+      ]
+    },
+    {
+      "title": "Social Battery",
+      "encouragement": "Your social battery has spoken. Next we look at routine, risk, and tiny chaos.",
+      "questions": [
+        {
+          "prompt": "Your perfect group plan has...",
+          "choices": [
+            "Good people, clear timing, and an easy exit",
+            "A twist no one saw coming",
+            "A quiet place nearby just in case"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "reset_needed"
+          ],
+          "explanation": "Social plans reveal how much structure your energy wants.",
+          "category": "social"
+        },
+        {
           "prompt": "At a party, you are most likely...",
           "choices": [
             "Talking deeply with one or two people",
@@ -237,6 +684,124 @@
           ],
           "explanation": "Party behavior is just personality wearing better lighting.",
           "category": "social"
+        },
+        {
+          "prompt": "When someone texts “quick question,” you feel...",
+          "choices": [
+            "Ready, but cautious",
+            "Immediately suspicious of the word quick",
+            "Happy if it turns into gossip"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "stress_sprinter",
+            "weekend_chaos"
+          ],
+          "explanation": "Your reaction to vague messages shows your pressure radar.",
+          "category": "social"
+        },
+        {
+          "prompt": "Your friends would probably call you...",
+          "choices": [
+            "Reliable in a refreshingly normal way",
+            "A lovable source of side quests",
+            "Hard to pin down, but worth the wait"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "weekend_chaos"
+          ],
+          "explanation": "Friend descriptions reveal the energy you bring into a room.",
+          "category": "social"
+        },
+        {
+          "prompt": "After a big social day, you need...",
+          "choices": [
+            "A quiet evening and a clean slate",
+            "Another plan if the vibe is good",
+            "A long quiet reset before I feel normal again"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "reset_needed"
+          ],
+          "explanation": "Recharge time is one of the clearest lifestyle clues.",
+          "category": "social"
+        },
+        {
+          "prompt": "Your ideal conversation is...",
+          "choices": [
+            "Warm, funny, and not trying too hard",
+            "Deep enough to forget the time",
+            "Short enough to leave me peaceful"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Conversation style shows the kind of connection that keeps you lit up.",
+          "category": "social"
+        }
+      ]
+    },
+    {
+      "title": "Risk And Routine",
+      "encouragement": "Tiny chaos logged. Now we check what keeps life interesting.",
+      "questions": [
+        {
+          "prompt": "A cheap flight appears for tomorrow. You...",
+          "choices": [
+            "Check the details before your imagination takes over",
+            "Start packing emotionally",
+            "Close the tab because tomorrow is already too soon"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Travel impulses reveal how much uncertainty you enjoy.",
+          "category": "risk"
+        },
+        {
+          "prompt": "Which risk feels most like you?",
+          "choices": [
+            "Trying a new habit without making it dramatic",
+            "Saying yes before reading the full plan",
+            "Ordering something new and hoping for the best"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "adventure_fuse"
+          ],
+          "explanation": "Everyday risk does not need danger; sometimes it is just novelty.",
+          "category": "risk"
+        },
+        {
+          "prompt": "Your calendar is usually...",
+          "choices": [
+            "Useful enough to prevent disasters",
+            "Decorative, in theory",
+            "Full of things I forgot I agreed to"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "stress_sprinter"
+          ],
+          "explanation": "Calendar style is life-admin honesty in grid form.",
+          "category": "routine"
         },
         {
           "prompt": "When a plan changes last minute, you...",
@@ -255,6 +820,92 @@
           "category": "balance"
         },
         {
+          "prompt": "What is your relationship with safety instructions?",
+          "choices": [
+            "I skim the important bits",
+            "I learn them after things get complicated",
+            "I read them and then read them again"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "stress_sprinter"
+          ],
+          "explanation": "This is about attention style, not bravery points.",
+          "category": "risk"
+        },
+        {
+          "prompt": "Which routine would improve your life most?",
+          "choices": [
+            "A simple weekly reset",
+            "More play built into normal days",
+            "A pause button for my brain"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "centenarian_energy",
+            "reset_needed"
+          ],
+          "explanation": "The routine you crave points toward the profile your answers are building.",
+          "category": "routine"
+        }
+      ]
+    },
+    {
+      "title": "Joy And Curiosity",
+      "encouragement": "The joy clues are in. Now for the small admin habits that reveal everything.",
+      "questions": [
+        {
+          "prompt": "Which tiny joy works every time?",
+          "choices": [
+            "Fresh air and a good little errand",
+            "Laughing until the plan changes",
+            "A quiet corner and something comforting"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "weekend_chaos",
+            "comfort_creature"
+          ],
+          "explanation": "Joy habits show what kind of fuel actually reaches you.",
+          "category": "curiosity"
+        },
+        {
+          "prompt": "You find a class for something random. You...",
+          "choices": [
+            "Consider whether it fits real life",
+            "Sign up because the story needs texture",
+            "Save it and never open it again"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "centenarian_energy",
+            "reset_needed"
+          ],
+          "explanation": "Curiosity is strongest when it becomes something you can actually touch.",
+          "category": "curiosity"
+        },
+        {
+          "prompt": "Pick a hobby mood.",
+          "choices": [
+            "Steady, satisfying, and quietly impressive",
+            "Chaotic, hilarious, and possibly expensive",
+            "Soft, familiar, and low-pressure"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "comfort_creature"
+          ],
+          "explanation": "Hobby mood reveals how you like your free time to feel.",
+          "category": "curiosity"
+        },
+        {
           "prompt": "Which compliment would secretly delight you?",
           "choices": [
             "You seem really grounded",
@@ -269,6 +920,60 @@
           ],
           "explanation": "The compliment you want often names the energy you value.",
           "category": "social"
+        },
+        {
+          "prompt": "Your “I am alive” moment is usually...",
+          "choices": [
+            "Sunlight, movement, and a clear head",
+            "A ridiculous story unfolding in real time",
+            "Realizing I can say no and stay home"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "weekend_chaos",
+            "comfort_creature"
+          ],
+          "explanation": "Alive moments point toward the kind of life you are drawn to protect.",
+          "category": "curiosity"
+        },
+        {
+          "prompt": "If your life had a theme song today, it would be...",
+          "choices": [
+            "Calm beat, steady bassline",
+            "Fast chorus, dramatic bridge",
+            "Lo-fi comfort on repeat"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "stress_sprinter",
+            "comfort_creature"
+          ],
+          "explanation": "Your imaginary soundtrack is basically your energy report.",
+          "category": "balance"
+        }
+      ]
+    },
+    {
+      "title": "Life Admin",
+      "encouragement": "Life admin never lies. Your final vibe is nearly ready.",
+      "questions": [
+        {
+          "prompt": "Your unread emails are...",
+          "choices": [
+            "Mostly handled before they become folklore",
+            "A pile of good intentions",
+            "A thrilling problem for another day"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "reset_needed",
+            "weekend_chaos"
+          ],
+          "explanation": "Inbox style is modern personality archaeology.",
+          "category": "routine"
         },
         {
           "prompt": "A bill, form, or appointment reminder appears. You...",
@@ -287,6 +992,91 @@
           "category": "stress"
         },
         {
+          "prompt": "Your home when life gets busy is...",
+          "choices": [
+            "A little messy, but recoverable",
+            "Evidence that a side quest happened",
+            "A comfort cave with snacks nearby"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your busy-home style shows what your energy prioritizes.",
+          "category": "routine"
+        },
+        {
+          "prompt": "Which personal rule would help you most?",
+          "choices": [
+            "Do the two-minute task now",
+            "Leave room for surprise",
+            "Rest before everything turns dramatic"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "reset_needed"
+          ],
+          "explanation": "The rule that helps most often points to your missing ingredient.",
+          "category": "balance"
+        },
+        {
+          "prompt": "Your future self would thank you for...",
+          "choices": [
+            "Making one boring thing easier",
+            "Collecting one unforgettable memory",
+            "Taking a proper break before crashing"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "reset_needed"
+          ],
+          "explanation": "Future-you choices reveal the lifestyle pattern behind the jokes.",
+          "category": "balance"
+        },
+        {
+          "prompt": "Which phrase makes you feel called out?",
+          "choices": [
+            "I know exactly what I should do, annoyingly",
+            "This could either be brilliant or a mess",
+            "I need to stop treating rest like a reward"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "The phrase that stings a little often carries the clearest signal.",
+          "category": "stress"
+        }
+      ]
+    },
+    {
+      "title": "Your Years-Left Vibe",
+      "questions": [
+        {
+          "prompt": "Choose the life pace that feels most like home.",
+          "choices": [
+            "Steady enough to last",
+            "Fast enough to sparkle",
+            "Soft enough to recover"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your preferred pace helps confirm the final lifestyle-style result.",
+          "category": "balance"
+        },
+        {
           "prompt": "Which version of older-you sounds most believable?",
           "choices": [
             "Wise, active, and weirdly good at routines",
@@ -301,6 +1091,70 @@
           ],
           "explanation": "Older-you is imaginary here, but the fantasy still reveals your vibe.",
           "category": "curiosity"
+        },
+        {
+          "prompt": "What would give your life more years-left energy?",
+          "choices": [
+            "More small habits that do not feel like homework",
+            "More fun that does not require recovery paperwork",
+            "More rest before the warning lights blink"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "steady_long_game",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "This answer names the adjustment your personality keeps circling.",
+          "category": "balance"
+        },
+        {
+          "prompt": "Pick the final motto.",
+          "choices": [
+            "Keep it simple. Keep it joyful. Keep going.",
+            "Make the story worth retelling.",
+            "Protect the peace like it pays rent."
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "A motto works because it compresses your whole vibe into one tiny flag.",
+          "category": "curiosity"
+        },
+        {
+          "prompt": "Which result would secretly make you grin?",
+          "choices": [
+            "Centenarian energy, but with better snacks",
+            "A chaos legend with surprising durability",
+            "A reset era that actually sticks"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "centenarian_energy",
+            "weekend_chaos",
+            "reset_needed"
+          ],
+          "explanation": "The result you hope for can reveal the lifestyle identity you already like.",
+          "category": "balance"
+        },
+        {
+          "prompt": "Final check: what are you choosing more of?",
+          "choices": [
+            "Balance, movement, laughter, and sunlight",
+            "Stories, surprises, and yes-energy",
+            "Calm, comfort, and a real pause"
+          ],
+          "answerIndex": 0,
+          "choiceProfileIds": [
+            "balanced_realist",
+            "adventure_fuse",
+            "comfort_creature"
+          ],
+          "explanation": "Your final choice gives the quiz one last clear personality signal.",
+          "category": "balance"
         }
       ]
     }
