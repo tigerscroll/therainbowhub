@@ -115,6 +115,46 @@ function createQuizRunnerHtml(config: {
           <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
         </div>`
     : "";
+  const nursingResultStoryHtml = quiz.slug === "nursing2"
+    ? `<div data-js="nursing-result-story" class="legacy-nursing-result-story">
+          <section class="legacy-nursing-result-section">
+            <span>Score snapshot</span>
+            <h3>Your quick-care instincts are now scored.</h3>
+            <p>This short challenge checked calm judgement across safety, privacy, observation, medicine checks, and urgent priorities. Read the sections below before you unlock the full answer review.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="0" class="legacy-result-display-ad__slot"></div></div>
+          <section class="legacy-nursing-result-section">
+            <span>Safety basics</span>
+            <h3>Small checks can change the whole answer.</h3>
+            <p>Questions about hand hygiene, dizziness, and safe first responses were designed to reward steady, practical thinking instead of rushed guessing.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="1" class="legacy-result-display-ad__slot"></div></div>
+          <section class="legacy-nursing-result-section">
+            <span>Privacy and identity</span>
+            <h3>The careful answer is often the strongest one.</h3>
+            <p>Privacy, identity checks, and confidentiality questions tested whether you spotted the safest process before jumping straight into action.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="2" class="legacy-result-display-ad__slot"></div></div>
+          <section class="legacy-nursing-result-section">
+            <span>Observation</span>
+            <h3>Changes from normal matter.</h3>
+            <p>The observation questions focused on noticing unusual readings or sudden changes. Those are the moments where calm attention beats autopilot.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="3" class="legacy-result-display-ad__slot"></div></div>
+          <section class="legacy-nursing-result-section">
+            <span>Priorities</span>
+            <h3>Urgent needs rise to the top.</h3>
+            <p>The priority questions asked you to separate comfort needs from immediate concerns, especially when two things were happening at once.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="4" class="legacy-result-display-ad__slot"></div></div>
+          <section class="legacy-nursing-result-section">
+            <span>Answer review</span>
+            <h3>Want to see what tripped you up?</h3>
+            <p>Your full missed-answer review sits just below. Unlock it when you are ready to compare your choices with the correct nursing-style priorities.</p>
+          </section>
+          <div data-js="nursing-result-display-ad" class="legacy-result-display-ad" aria-label="Advertisement"><div data-js="nursing-result-display-ad-slot" data-slot-index="5" class="legacy-result-display-ad__slot"></div></div>
+        </div>`
+    : "";
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
     .map((line) => escapeHtml(line))
@@ -236,8 +276,12 @@ function createQuizRunnerHtml(config: {
       </section>
 
       <section data-screen="result-gate" class="legacy-card legacy-result legacy-result-gate legacy-hidden">
-        <span class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
+        <div class="legacy-result-celebration" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span data-js="result-gate-badge" class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
+        <p data-js="result-gate-copy" class="legacy-result-gate-copy legacy-hidden"></p>
         <button type="button" data-js="result-gate-button" data-action="reveal-results" class="legacy-primary"></button>
         <div class="legacy-ad-status" data-js="result-ad-status" aria-live="polite"></div>
         <div class="legacy-ad-note">
@@ -268,6 +312,7 @@ function createQuizRunnerHtml(config: {
         <div class="legacy-result-meter" aria-hidden="true"><span data-js="result-meter-fill"></span></div>
         <div data-js="cognitive-scores" class="legacy-cognitive-scores"></div>
         <div data-js="stage-breakdown" class="legacy-stage-breakdown"></div>
+        ${nursingResultStoryHtml}
         <div class="legacy-unlock-panel">
           <h3 data-js="unlock-title"></h3>
           <p data-js="unlock-copy"></p>
@@ -325,7 +370,9 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = quiz.slug === "nursing2";
     var skipStageRewardedGates = quiz.slug === "years-left2";
     var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
+    var useNursingResultDisplayAds = quiz.slug === "nursing2" && Boolean(config.displayAdUnitPath);
     var useQuestionDisplayAd = quiz.slug === "years-left2" && Boolean(config.displayAdUnitPath);
+    var useDisplayAds = useQuestionDisplayAd || useNursingResultDisplayAds;
     var current = 0;
     var answers = {};
     var advanceTimer = null;
@@ -336,6 +383,8 @@ function createQuizRunnerScript(config: {
     var displayAdRequestLimit = 8;
     var displayAdRequestWindowMs = 60000;
     var displayAdRequestTimestampsKey = "rainbowhub.displayAdRequests";
+    var nursingResultDisplayAdsLoaded = false;
+    var nursingResultDisplayAdSlots = [];
     var questionDisplayAdLastRefreshStep = -1;
     var questionDisplayAdSlot = null;
     var questionDisplayAdLoaded = false;
@@ -357,7 +406,7 @@ function createQuizRunnerScript(config: {
     var preloadedVisuals = {};
     var retryRewardedAction = null;
 
-    if (config.rewardedAdUnitPath || useQuestionDisplayAd) {
+    if (config.rewardedAdUnitPath || useDisplayAds) {
       window.googletag = window.googletag || { cmd: [] };
     }
 
@@ -535,7 +584,7 @@ function createQuizRunnerScript(config: {
     }
 
     function canRequestDisplayAd() {
-      if (!useQuestionDisplayAd) return false;
+      if (!useDisplayAds) return false;
 
       var now = Date.now();
       var recent = readSessionJsonArray(displayAdRequestTimestampsKey).filter(function (timestamp) {
@@ -735,6 +784,53 @@ function createQuizRunnerScript(config: {
             if (!canRequestDisplayAd()) return;
             window.googletag.pubads().refresh([questionDisplayAdSlot]);
           } catch (error) {}
+        });
+      } catch (error) {}
+    }
+
+    function ensureNursingResultDisplayAds() {
+      if (!useNursingResultDisplayAds || nursingResultDisplayAdsLoaded) return;
+
+      var slotElements = Array.from(root.querySelectorAll('[data-js="nursing-result-display-ad-slot"]'));
+      if (!slotElements.length) return;
+
+      window.googletag = window.googletag || { cmd: [] };
+      loadGooglePublisherTag();
+
+      try {
+        window.googletag.cmd.push(function () {
+          if (nursingResultDisplayAdsLoaded || !window.googletag?.defineSlot) return;
+
+          slotElements.forEach(function (slotElement, index) {
+            if (!canRequestDisplayAd()) return;
+
+            var slotId = config.rootId + "-nursing-result-display-ad-" + index;
+            slotElement.id = slotId;
+
+            try {
+              var slot = window.googletag.defineSlot(config.displayAdUnitPath, [300, 250], slotId);
+              if (!slot) return;
+
+              slot.addService(window.googletag.pubads());
+              nursingResultDisplayAdSlots.push({ id: slotId, slot: slot, element: slotElement });
+            } catch (error) {}
+          });
+
+          if (!nursingResultDisplayAdSlots.length) {
+            nursingResultDisplayAdsLoaded = true;
+            return;
+          }
+
+          try {
+            ensureGooglePublisherServices();
+            nursingResultDisplayAdSlots.forEach(function (item) {
+              window.googletag.display(item.id);
+              var wrap = item.element.closest('[data-js="nursing-result-display-ad"]');
+              if (wrap) wrap.classList.add("is-loaded");
+            });
+          } catch (error) {}
+
+          nursingResultDisplayAdsLoaded = true;
         });
       } catch (error) {}
     }
@@ -1000,13 +1096,14 @@ function createQuizRunnerScript(config: {
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
       var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
+      var isNursing2 = quiz.slug === "nursing2";
 
       questionBackgrounds.forEach(function (className) {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = quiz.slug === "nursing2" && question.category ? question.category : getStageName(currentStage);
+      byData("round-label").textContent = isNursing2 ? "Question " + (current + 1) + " of " + quiz.questions.length : t.quiz.round + " " + stageNumber;
+      byData("count-label").textContent = isNursing2 && question.category ? question.category : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
@@ -1131,8 +1228,15 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      byData("result-gate-title").textContent = t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
-      byData("result-gate-button").textContent = t.results.viewResults + " →";
+      var isNursing2 = quiz.slug === "nursing2";
+      var resultGateCopy = byData("result-gate-copy");
+      byData("result-gate-badge").textContent = t.quiz.profileReady;
+      byData("result-gate-title").textContent = isNursing2 ? "Your nursing score is ready." : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
+      if (resultGateCopy) {
+        resultGateCopy.textContent = isNursing2 ? "No hints. No instant reveals. Just your final score after one short unlock." : "";
+        resultGateCopy.classList.toggle("legacy-hidden", !isNursing2);
+      }
+      byData("result-gate-button").textContent = isNursing2 ? "Reveal My Score →" : t.results.viewResults + " →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -1361,6 +1465,7 @@ function createQuizRunnerScript(config: {
       loadRelatedQuizImages();
 
       show("results", shouldScroll);
+      ensureNursingResultDisplayAds();
       saveProgress("results");
     }
 
