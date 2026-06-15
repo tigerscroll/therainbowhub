@@ -774,6 +774,11 @@ function createQuizRunnerScript(config: {
 
     function refreshQuestionDisplayAdForQuestion(questionIndex) {
       if (!useQuestionDisplayAd) return;
+      var displayWrap = byData("question-display-ad");
+      var shouldShowDisplayAd = quiz.slug !== "anatomy2" || questionIndex >= 1;
+      if (displayWrap) displayWrap.classList.toggle("legacy-hidden", !shouldShowDisplayAd);
+      if (!shouldShowDisplayAd) return;
+
       ensureQuestionDisplayAd();
       if (!questionDisplayAdLoaded || !questionDisplayAdSlot || questionIndex < 2) return;
 
