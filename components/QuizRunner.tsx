@@ -110,7 +110,8 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
-  const displayAdHtml = quiz.slug === "years-left2"
+  const hasQuestionDisplayAd = quiz.slug === "years-left2" || quiz.slug === "anatomy2";
+  const displayAdHtml = hasQuestionDisplayAd
     ? `<div data-js="question-display-ad" class="legacy-display-ad" aria-label="Advertisement">
           <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
         </div>`
@@ -367,11 +368,12 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
-    var hideAnswerFeedback = quiz.slug === "nursing2";
-    var skipStageRewardedGates = quiz.slug === "years-left2";
+    var hideAnswerFeedback = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
+    var skipFinalRewardedGate = quiz.slug === "anatomy2";
+    var skipStageRewardedGates = quiz.slug === "years-left2" || quiz.slug === "anatomy2";
     var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
     var useNursingResultDisplayAds = quiz.slug === "nursing2" && Boolean(config.displayAdUnitPath);
-    var useQuestionDisplayAd = quiz.slug === "years-left2" && Boolean(config.displayAdUnitPath);
+    var useQuestionDisplayAd = (quiz.slug === "years-left2" || quiz.slug === "anatomy2") && Boolean(config.displayAdUnitPath);
     var useDisplayAds = useQuestionDisplayAd || useNursingResultDisplayAds;
     var current = 0;
     var answers = {};
@@ -756,7 +758,8 @@ function createQuizRunnerScript(config: {
           try {
             if (!canRequestDisplayAd()) return;
 
-            questionDisplayAdSlot = window.googletag.defineSlot(config.displayAdUnitPath, [300, 250], slotId);
+            var questionDisplayAdSizes = quiz.slug === "anatomy2" ? [[336, 280], [300, 250]] : [300, 250];
+            questionDisplayAdSlot = window.googletag.defineSlot(config.displayAdUnitPath, questionDisplayAdSizes, slotId);
             if (!questionDisplayAdSlot) return;
 
             questionDisplayAdSlot.addService(window.googletag.pubads());
@@ -1161,6 +1164,13 @@ function createQuizRunnerScript(config: {
       var nextStage = nextQuestion ? (nextQuestion.stage || 0) : currentStage;
 
       if (!nextQuestion) {
+        if (skipFinalRewardedGate) {
+          saveProgress("results");
+          renderResults();
+          scrollToPageTop();
+          return;
+        }
+
         saveProgress("result-gate");
         showResultGate();
         scrollToPageTop();
