@@ -744,18 +744,18 @@ a {
   overflow: hidden;
 }
 
-.legacy-quiz--anatomy2 .legacy-display-ad {
+.legacy-quiz--anatomy-display .legacy-display-ad {
   width: min(100%, 336px);
   min-height: 280px;
 }
 
-.legacy-quiz--anatomy2 .legacy-display-ad__slot {
+.legacy-quiz--anatomy-display .legacy-display-ad__slot {
   width: 336px;
   height: 280px;
   max-height: 280px;
 }
 
-.legacy-quiz--anatomy2 .legacy-question h2 {
+.legacy-quiz--anatomy-display .legacy-question h2 {
   width: min(100%, 760px);
   min-height: 118px;
   margin-bottom: 20px;
@@ -771,7 +771,7 @@ a {
     0 16px 36px rgba(8, 145, 178, 0.11);
 }
 
-.legacy-quiz--anatomy2 .legacy-question-text {
+.legacy-quiz--anatomy-display .legacy-question-text {
   max-width: 700px;
   color: color-mix(in srgb, var(--legacy-navy) 92%, var(--quiz-accent));
 }
@@ -854,13 +854,13 @@ a {
     font-size: 17px;
   }
 
-  .legacy-quiz--anatomy2 .legacy-answers {
+  .legacy-quiz--anatomy-display .legacy-answers {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
-  .legacy-quiz--anatomy2 .legacy-answer {
+  .legacy-quiz--anatomy-display .legacy-answer {
     min-height: 78px;
     flex-direction: row;
     align-items: center;
@@ -870,13 +870,13 @@ a {
     line-height: 1.12;
   }
 
-  .legacy-quiz--anatomy2 .legacy-answer small {
+  .legacy-quiz--anatomy-display .legacy-answer small {
     width: 26px;
     height: 26px;
     font-size: 12px;
   }
 
-  .legacy-quiz--anatomy2 .legacy-answer.selected::after {
+  .legacy-quiz--anatomy-display .legacy-answer.selected::after {
     right: 10px;
     top: auto;
     bottom: 7px;
@@ -997,13 +997,13 @@ a {
   gap: 12px;
 }
 
-.legacy-quiz--anatomy2 .legacy-answers {
+.legacy-quiz--anatomy-display .legacy-answers {
   width: min(100%, 760px);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-.legacy-quiz--anatomy2 .legacy-answer {
+.legacy-quiz--anatomy-display .legacy-answer {
   min-height: 82px;
   align-items: center;
   gap: 10px;
@@ -1015,13 +1015,13 @@ a {
   hyphens: none;
 }
 
-.legacy-quiz--anatomy2 .legacy-answer small {
+.legacy-quiz--anatomy-display .legacy-answer small {
   width: 30px;
   height: 30px;
   font-size: 14px;
 }
 
-.legacy-quiz--anatomy2 .legacy-answer.selected {
+.legacy-quiz--anatomy-display .legacy-answer.selected {
   border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--quiz-accent) 10%, #fff), #fff),
@@ -1032,7 +1032,7 @@ a {
   animation: legacyAnswerPop 0.34s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.legacy-quiz--anatomy2 .legacy-answer.selected::after {
+.legacy-quiz--anatomy-display .legacy-answer.selected::after {
   content: "Locked";
   right: 10px;
   width: auto;
@@ -1048,7 +1048,7 @@ a {
   transform: translateY(-50%) scale(1);
 }
 
-.legacy-quiz--anatomy2 .legacy-answer.selected small {
+.legacy-quiz--anatomy-display .legacy-answer.selected small {
   border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
   background: color-mix(in srgb, var(--quiz-accent) 13%, #fff);
   color: var(--quiz-accent);
@@ -1056,7 +1056,7 @@ a {
 }
 
 @media (max-width: 619px) {
-  .legacy-quiz--anatomy2 .legacy-answer.selected::after {
+  .legacy-quiz--anatomy-display .legacy-answer.selected::after {
     right: 10px;
     top: auto;
     bottom: 9px;
