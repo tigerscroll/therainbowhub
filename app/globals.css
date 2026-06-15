@@ -1109,6 +1109,109 @@ a {
   animation: legacyBadgePop 0.36s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.legacy-quiz--nursing2 .legacy-progress {
+  width: min(100%, 700px);
+  margin: 6px auto 18px;
+  padding: 14px 16px 16px;
+  border: 1px solid color-mix(in srgb, var(--quiz-accent) 20%, #dce5ef);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 252, 251, 0.96)),
+    radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--quiz-accent) 12%, transparent), transparent 36%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 12px 28px rgba(7, 27, 52, 0.08);
+}
+
+.legacy-quiz--nursing2 .legacy-progress__row {
+  margin-bottom: 12px;
+}
+
+.legacy-quiz--nursing2 .legacy-progress__row strong {
+  color: var(--legacy-navy);
+  font-size: 17px;
+}
+
+.legacy-quiz--nursing2 .legacy-progress__row span {
+  max-width: 48%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--quiz-accent) 11%, #fff);
+  color: color-mix(in srgb, var(--quiz-accent) 82%, #082f2b);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.legacy-quiz--nursing2 .legacy-progress-dots {
+  --step-size: min(38px, calc((100vw - 94px) / var(--progress-count, 10)));
+}
+
+.legacy-quiz--nursing2 .legacy-progress-dots::before {
+  height: 8px;
+  background: #ddece9;
+}
+
+.legacy-quiz--nursing2 .legacy-progress-dots::after {
+  height: 8px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--quiz-accent) 82%, #22c55e), var(--legacy-gold));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--quiz-accent) 18%, transparent);
+}
+
+.legacy-quiz--nursing2 .legacy-progress-dots span {
+  border-radius: 12px;
+  border-color: #c8ded9;
+  background: #fff;
+  color: #51645f;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.legacy-quiz--nursing2 .legacy-progress-dots span.is-complete,
+.legacy-quiz--nursing2 .legacy-progress-dots span.is-current {
+  border-color: #fff;
+  background: var(--quiz-accent);
+  color: #fff;
+}
+
+.legacy-quiz--nursing2 .legacy-answer.selected {
+  border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--quiz-accent) 10%, #fff), #fff),
+    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--legacy-gold) 18%, transparent), transparent 34%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 12px 28px color-mix(in srgb, var(--quiz-accent) 18%, transparent);
+  animation: legacyAnswerPop 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.legacy-quiz--nursing2 .legacy-answer {
+  padding-right: 86px;
+}
+
+.legacy-quiz--nursing2 .legacy-answer.selected::after {
+  content: "Locked";
+  right: 12px;
+  width: auto;
+  min-width: 58px;
+  padding: 0 9px;
+  color: #fff;
+  background: var(--quiz-accent);
+  border-color: color-mix(in srgb, var(--quiz-accent) 45%, #fff);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.legacy-quiz--nursing2 .legacy-answer.selected small {
+  border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
+  background: color-mix(in srgb, var(--quiz-accent) 13%, #fff);
+  color: var(--quiz-accent);
+  animation: legacyBadgePop 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @keyframes legacyCurrentDot {
   0%,
   100% {
@@ -1294,6 +1397,69 @@ a {
   font-weight: 700;
 }
 
+.legacy-nursing-result-story {
+  width: min(100%, 760px);
+  margin: 24px auto 8px;
+  display: grid;
+  gap: 18px;
+  text-align: left;
+}
+
+.legacy-nursing-result-section {
+  padding: 18px 0 2px;
+  border-top: 1px solid color-mix(in srgb, var(--quiz-accent) 18%, #e3e9f1);
+}
+
+.legacy-nursing-result-section span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--quiz-accent) 10%, #fff);
+  color: color-mix(in srgb, var(--quiz-accent) 84%, #082f2b);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.legacy-nursing-result-section h3 {
+  margin: 0 0 7px;
+  color: var(--legacy-navy);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 950;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.legacy-nursing-result-section p {
+  max-width: 650px;
+  margin: 0;
+  color: #586778;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.legacy-result-display-ad {
+  width: min(100%, 300px);
+  min-height: 250px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.legacy-result-display-ad__slot {
+  width: 300px;
+  max-width: 100%;
+  height: 250px;
+  max-height: 250px;
+  overflow: hidden;
+}
+
 .legacy-result-gate {
   display: grid;
   justify-items: center;
@@ -1313,12 +1479,187 @@ a {
   letter-spacing: -0.028em;
 }
 
+.legacy-result-gate-copy {
+  max-width: 520px;
+  margin: -4px auto 0;
+  color: #5f6f7d;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.42;
+}
+
+.legacy-result-celebration {
+  display: none;
+}
+
 .legacy-result-gate .legacy-primary {
   margin-top: 0;
 }
 
 .legacy-result-gate .legacy-ad-note {
   margin-top: 0;
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate {
+  gap: 18px;
+  padding-top: 42px;
+  background:
+    radial-gradient(circle at 18% 10%, color-mix(in srgb, var(--quiz-accent) 20%, transparent), transparent 32%),
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--legacy-gold) 20%, transparent), transparent 30%),
+    linear-gradient(180deg, #ffffff, #f5fbfa);
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: 11px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--quiz-accent);
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(var(--confetti-rotate, 0deg));
+  animation: legacyNursingConfetti 1.8s cubic-bezier(0.17, 0.84, 0.44, 1) infinite;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(1) {
+  --confetti-x: -190px;
+  --confetti-y: 86px;
+  --confetti-rotate: -28deg;
+  background: #14b8a6;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(2) {
+  --confetti-x: -118px;
+  --confetti-y: 142px;
+  --confetti-rotate: 44deg;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f4c542;
+  animation-delay: 0.14s;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(3) {
+  --confetti-x: -42px;
+  --confetti-y: 96px;
+  --confetti-rotate: 78deg;
+  background: #7c3aed;
+  animation-delay: 0.24s;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(4) {
+  --confetti-x: 62px;
+  --confetti-y: 138px;
+  --confetti-rotate: -54deg;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation-delay: 0.08s;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(5) {
+  --confetti-x: 132px;
+  --confetti-y: 88px;
+  --confetti-rotate: 32deg;
+  background: #0ea5e9;
+  animation-delay: 0.2s;
+}
+
+.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(6) {
+  --confetti-x: 202px;
+  --confetti-y: 150px;
+  --confetti-rotate: -82deg;
+  background: #f97316;
+  animation-delay: 0.32s;
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate > :not(.legacy-result-celebration) {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate::after {
+  content: "🩺";
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--quiz-accent) 13%, #fff);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 18px 34px color-mix(in srgb, var(--quiz-accent) 18%, transparent);
+  font-size: 42px;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  animation: legacyNursingMedalPop 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate .legacy-profile-badge {
+  background: color-mix(in srgb, var(--quiz-accent) 14%, #fff);
+  color: color-mix(in srgb, var(--quiz-accent) 82%, #082f2b);
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate h2 {
+  max-width: 620px;
+  color: var(--legacy-navy);
+  text-wrap: balance;
+}
+
+.legacy-quiz--nursing2 .legacy-result-gate .legacy-primary {
+  min-width: min(100%, 320px);
+  box-shadow:
+    inset 0 -4px 0 rgba(0, 0, 0, 0.16),
+    0 18px 34px color-mix(in srgb, var(--quiz-accent) 24%, transparent);
+}
+
+@keyframes legacyNursingConfetti {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72) rotate(var(--confetti-rotate, 0deg));
+  }
+
+  18% {
+    opacity: 0.95;
+  }
+
+  72% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--confetti-x)), calc(-50% + var(--confetti-y))) scale(1) rotate(calc(var(--confetti-rotate, 0deg) + 190deg));
+  }
+}
+
+@keyframes legacyNursingMedalPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.86);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.06);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .legacy-start-ad-gate {
