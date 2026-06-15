@@ -110,7 +110,8 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
-  const hasQuestionDisplayAd = quiz.slug === "years-left2" || quiz.slug === "anatomy2";
+  const isAnatomyDisplayVariant = quiz.slug === "anatomy2" || quiz.slug === "anatomy3";
+  const hasQuestionDisplayAd = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
   const displayAdHtml = hasQuestionDisplayAd
     ? `<div data-js="question-display-ad" class="legacy-display-ad" aria-label="Advertisement">
           <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
@@ -368,12 +369,14 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
-    var hideAnswerFeedback = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
-    var skipFinalRewardedGate = quiz.slug === "anatomy2";
-    var skipStageRewardedGates = quiz.slug === "years-left2" || quiz.slug === "anatomy2";
+    var isAnatomyDisplayVariant = quiz.slug === "anatomy2" || quiz.slug === "anatomy3";
+    var autoStartQuiz = quiz.slug === "anatomy3";
+    var hideAnswerFeedback = quiz.slug === "nursing2" || isAnatomyDisplayVariant;
+    var skipFinalRewardedGate = isAnatomyDisplayVariant;
+    var skipStageRewardedGates = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
     var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
     var useNursingResultDisplayAds = quiz.slug === "nursing2" && Boolean(config.displayAdUnitPath);
-    var useQuestionDisplayAd = (quiz.slug === "years-left2" || quiz.slug === "anatomy2") && Boolean(config.displayAdUnitPath);
+    var useQuestionDisplayAd = (quiz.slug === "years-left2" || isAnatomyDisplayVariant) && Boolean(config.displayAdUnitPath);
     var useDisplayAds = useQuestionDisplayAd || useNursingResultDisplayAds;
     var current = 0;
     var answers = {};
@@ -398,12 +401,14 @@ function createQuizRunnerScript(config: {
     var reward2TrackedKey = "rainbowhub.reward2Tracked";
     var rewardClosedTrackedKey = "rainbowhub.rewardClosedTracked";
     var rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
+    var quizStartTrackedKey = "rainbowhub.quizStartTracked:" + quiz.slug;
     var rewardedGrantedCount = readSessionNumber(rewardedGrantedCountKey, 0);
     var rewardedClosedCount = readSessionNumber(rewardedClosedCountKey, 0);
     var rewardTracked = readSessionFlag(rewardTrackedKey);
     var reward2Tracked = readSessionFlag(reward2TrackedKey);
     var rewardClosedTracked = readSessionFlag(rewardClosedTrackedKey);
     var rewardClosed2Tracked = readSessionFlag(rewardClosed2TrackedKey);
+    var quizStartTracked = readSessionFlag(quizStartTrackedKey);
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
     var retryRewardedAction = null;
@@ -644,6 +649,15 @@ function createQuizRunnerScript(config: {
       }
     }
 
+    function trackQuizStart() {
+      if (quizStartTracked) return;
+      quizStartTracked = trackFbqCustomEventOnce("Engaged", {
+        quiz_slug: quiz.slug,
+        quiz_title: quiz.title,
+        question_count: quiz.questions.length
+      }, quizStartTrackedKey);
+    }
+
     function finishRewardedAd(status, reason) {
       var request = activeRewardedAd;
       if (!request) return;
@@ -758,7 +772,7 @@ function createQuizRunnerScript(config: {
           try {
             if (!canRequestDisplayAd()) return;
 
-            var questionDisplayAdSizes = quiz.slug === "anatomy2" ? [[336, 280], [300, 250]] : [300, 250];
+            var questionDisplayAdSizes = isAnatomyDisplayVariant ? [[336, 280], [300, 250]] : [300, 250];
             questionDisplayAdSlot = window.googletag.defineSlot(config.displayAdUnitPath, questionDisplayAdSizes, slotId);
             if (!questionDisplayAdSlot) return;
 
@@ -775,7 +789,7 @@ function createQuizRunnerScript(config: {
     function refreshQuestionDisplayAdForQuestion(questionIndex) {
       if (!useQuestionDisplayAd) return;
       var displayWrap = byData("question-display-ad");
-      var shouldShowDisplayAd = quiz.slug !== "anatomy2" || questionIndex >= 1;
+      var shouldShowDisplayAd = !isAnatomyDisplayVariant || questionIndex >= 1;
       if (displayWrap) displayWrap.classList.toggle("legacy-hidden", !shouldShowDisplayAd);
       if (!shouldShowDisplayAd) return;
 
@@ -1155,6 +1169,9 @@ function createQuizRunnerScript(config: {
       var isCorrect = question.answerIndex === choiceIndex;
       answers[current] = choiceIndex;
       saveProgress("question");
+      if (current === 0) {
+        trackQuizStart();
+      }
       applyAnswerState(choiceIndex);
 
       advanceTimer = window.setTimeout(function () {
@@ -1500,6 +1517,11 @@ function createQuizRunnerScript(config: {
       current = 0;
       answers = {};
       hasUnlockedReview = false;
+      if (autoStartQuiz) {
+        startFresh();
+        scrollToPageTop();
+        return;
+      }
       show("start");
       scrollToPageTop();
     }
@@ -1696,7 +1718,14 @@ function createQuizRunnerScript(config: {
       });
     });
 
-    if (!loadProgress()) {
+    var didLoadProgress = loadProgress();
+
+    if (!didLoadProgress && autoStartQuiz) {
+      startFresh();
+      return;
+    }
+
+    if (!didLoadProgress) {
       show("start", false);
     }
   }
@@ -1709,6 +1738,7 @@ function createQuizRunnerScript(config: {
 export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: QuizRunnerProps) {
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
+  const variantClass = quiz.slug === "anatomy2" || quiz.slug === "anatomy3" ? " legacy-quiz--anatomy-display" : "";
   const script = createQuizRunnerScript({
     locale,
     displayAdUnitPath: siteConfig.googleAdManagerDisplayAdUnitPath,
@@ -1725,7 +1755,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   return (
     <div
       id={rootId}
-      className={`legacy-quiz legacy-quiz--${quiz.slug}`}
+      className={`legacy-quiz legacy-quiz--${quiz.slug}${variantClass}`}
       suppressHydrationWarning
       style={{ "--quiz-accent": quiz.accent } as CSSProperties}
     >
