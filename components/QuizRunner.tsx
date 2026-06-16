@@ -608,13 +608,22 @@ function createQuizRunnerScript(config: {
       }
     }
 
-    function trackQuizStart() {
+    function trackEngaged(source, payload) {
       if (quizStartTracked) return;
-      quizStartTracked = trackFbqCustomEventOnce("Engaged", {
+      var data = payload || {};
+      data.engagement_source = source;
+      data.quiz_slug = quiz.slug;
+      data.quiz_title = quiz.title;
+      data.question_count = quiz.questions.length;
+      quizStartTracked = trackFbqCustomEventOnce("Engaged", data, quizStartTrackedKey);
+    }
+
+    function trackQuizStart() {
+      trackEngaged("question_1_completed", {
         quiz_slug: quiz.slug,
         quiz_title: quiz.title,
         question_count: quiz.questions.length
-      }, quizStartTrackedKey);
+      });
     }
 
     function finishRewardedAd(status, reason) {
@@ -663,6 +672,11 @@ function createQuizRunnerScript(config: {
 
         try {
           event.makeRewardedVisible();
+          trackEngaged("rewarded_ad_initiated", {
+            placement: request.placement,
+            fallback: false,
+            ad_unit_path: config.rewardedAdUnitPath
+          });
         } catch (error) {
           finishRewardedAd("unavailable", "make_visible_failed");
         }
@@ -943,6 +957,61 @@ function createQuizRunnerScript(config: {
       return quiz.stages[stage] || quiz.stages[0] || quiz.title;
     }
 
+    function titleCaseCategory(category) {
+      return category.split("-").map(function (part) {
+        return part.charAt(0).toUpperCase() + part.slice(1);
+      }).join(" ");
+    }
+
+    function getShortLockedCategoryLabel(category) {
+      if (!category) return "";
+      var labels = {
+        nursing2: {
+          en: {
+            "hand-hygiene": "Hand hygiene",
+            "fall-safety": "Fall safety",
+            "privacy": "Privacy",
+            "identity-check": "Identity check",
+            "reading-check": "Reading check",
+            "medicine-check": "Medicine check",
+            "condition-change": "Condition change",
+            "confidentiality": "Confidentiality",
+            "urgent-priority": "Urgent priority",
+            "breathing-priority": "Breathing priority"
+          },
+          nl: {
+            "hand-hygiene": "Handhygiene",
+            "fall-safety": "Valveiligheid",
+            "privacy": "Privacy",
+            "identity-check": "Identiteitscontrole",
+            "reading-check": "Meting controleren",
+            "medicine-check": "Medicatiecontrole",
+            "condition-change": "Verandering in toestand",
+            "confidentiality": "Vertrouwelijkheid",
+            "urgent-priority": "Urgente prioriteit",
+            "breathing-priority": "Ademhalingsprioriteit"
+          }
+        },
+        anatomy2: {
+          en: {
+            "body-basics": "Body basics",
+            "skeletal": "Bones",
+            "muscular": "Muscles",
+            "circulatory": "Heart and blood",
+            "respiratory": "Breathing",
+            "nervous": "Brain and nerves",
+            "digestive": "Digestion",
+            "sensory": "Senses",
+            "organ-systems": "Organs and systems",
+            "terminology": "Anatomy terms"
+          }
+        }
+      };
+      var quizLabels = labels[quiz.slug] || {};
+      var localeLabels = quizLabels[t.locale && t.locale.code] || quizLabels.en || {};
+      return localeLabels[category] || titleCaseCategory(category);
+    }
+
     function getStageQuestions(stage) {
       return quiz.questions
         .map(function (question, index) { return { question: question, index: index }; })
@@ -1037,7 +1106,7 @@ function createQuizRunnerScript(config: {
       });
       questionCard.classList.add(questionBackgroundClass);
       byData("round-label").textContent = isShortLockedScoreQuiz ? t.quiz.question + " " + (current + 1) + " " + t.quiz.of + " " + quiz.questions.length : t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = isShortLockedScoreQuiz && question.category ? question.category : getStageName(currentStage);
+      byData("count-label").textContent = isShortLockedScoreQuiz && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
