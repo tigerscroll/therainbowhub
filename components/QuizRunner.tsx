@@ -110,7 +110,7 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
-  const isAnatomyDisplayVariant = quiz.slug === "anatomy2" || quiz.slug === "anatomy3";
+  const isAnatomyDisplayVariant = quiz.slug === "anatomy3";
   const hasQuestionDisplayAd = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
   const displayAdHtml = hasQuestionDisplayAd
     ? `<div data-js="question-display-ad" class="legacy-display-ad" aria-label="Advertisement">
@@ -330,9 +330,10 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
-    var isAnatomyDisplayVariant = quiz.slug === "anatomy2" || quiz.slug === "anatomy3";
+    var isAnatomyDisplayVariant = quiz.slug === "anatomy3";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
     var autoStartQuiz = quiz.slug === "anatomy3";
-    var hideAnswerFeedback = quiz.slug === "nursing2" || isAnatomyDisplayVariant;
+    var hideAnswerFeedback = isShortLockedScoreQuiz || isAnatomyDisplayVariant;
     var skipFinalRewardedGate = isAnatomyDisplayVariant;
     var skipStageRewardedGates = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
     var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
@@ -1029,14 +1030,14 @@ function createQuizRunnerScript(config: {
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
       var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
-      var isNursing2 = quiz.slug === "nursing2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
 
       questionBackgrounds.forEach(function (className) {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = isNursing2 ? t.quiz.question + " " + (current + 1) + " " + t.quiz.of + " " + quiz.questions.length : t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = isNursing2 && question.category ? question.category : getStageName(currentStage);
+      byData("round-label").textContent = isShortLockedScoreQuiz ? t.quiz.question + " " + (current + 1) + " " + t.quiz.of + " " + quiz.questions.length : t.quiz.round + " " + stageNumber;
+      byData("count-label").textContent = isShortLockedScoreQuiz && question.category ? question.category : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
@@ -1171,17 +1172,17 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isNursing2 = quiz.slug === "nursing2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
-      resultGateBadge.textContent = isNursing2 ? "" : t.quiz.profileReady;
-      resultGateBadge.classList.toggle("legacy-hidden", isNursing2);
-      byData("result-gate-title").textContent = isNursing2 ? getNursing2ResultGateTitle() : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
+      resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
+      resultGateBadge.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
+      byData("result-gate-title").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateTitle() : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
       if (resultGateCopy) {
-        resultGateCopy.textContent = isNursing2 ? getNursing2ResultGateCopy() : "";
-        resultGateCopy.classList.toggle("legacy-hidden", !isNursing2);
+        resultGateCopy.textContent = isShortLockedScoreQuiz ? getShortLockedResultGateCopy() : "";
+        resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz);
       }
-      byData("result-gate-button").textContent = isNursing2 ? getNursing2ResultGateButtonLabel() : t.results.viewResults + " →";
+      byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : t.results.viewResults + " →";
       byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -1226,18 +1227,19 @@ function createQuizRunnerScript(config: {
 
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
-      return quiz.slug === "nursing2" ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
-    function getNursing2ResultGateTitle() {
+    function getShortLockedResultGateTitle() {
+      if (quiz.slug === "anatomy2") return "Your anatomy results are ready.";
       return t.locale && t.locale.code === "nl" ? "Je verpleegkundige resultaat is klaar." : "Your nursing results are ready.";
     }
 
-    function getNursing2ResultGateCopy() {
+    function getShortLockedResultGateCopy() {
       return t.locale && t.locale.code === "nl" ? "Een korte ontgrendeling toont je score en antwoordoverzicht." : "One short unlock reveals your score and answer review.";
     }
 
-    function getNursing2ResultGateButtonLabel() {
+    function getShortLockedResultGateButtonLabel() {
       return t.locale && t.locale.code === "nl" ? t.results.viewResults + " →" : "See My Results →";
     }
 
@@ -1382,7 +1384,7 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isNursing2 = quiz.slug === "nursing2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -1393,10 +1395,10 @@ function createQuizRunnerScript(config: {
         : t.results.review.missedQuestionPlural;
 
       hasUnlockedReview = false;
-      byData("result-profile-badge").textContent = isNursing2 ? profile.tier : isPersonalityQuiz ? profile.tier : profile.tier + " • " + strongestStage.name;
+      byData("result-profile-badge").textContent = isShortLockedScoreQuiz ? profile.tier : isPersonalityQuiz ? profile.tier : profile.tier + " • " + strongestStage.name;
       byData("result-title").textContent = profile.title;
-      byData("result-copy").textContent = isNursing2 ? "" : profile.copy;
-      byData("result-copy").classList.toggle("legacy-hidden", isNursing2);
+      byData("result-copy").textContent = isShortLockedScoreQuiz ? "" : profile.copy;
+      byData("result-copy").classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
       byData("final-score").textContent = isPersonalityQuiz ? getAnsweredCount() + "/" + quiz.questions.length : score + "/" + quiz.questions.length;
       byData("final-score-label").textContent = isPersonalityQuiz ? t.quiz.answered : t.quiz.finalScore;
       byData("percentile").textContent = quiz.slug === "iq" && !isPersonalityQuiz ? getIqRange(score, quiz.questions.length) : profile.percentile;
@@ -1405,14 +1407,14 @@ function createQuizRunnerScript(config: {
         ? Math.round(((profile.count || 0) / Math.max(1, getAnsweredCount())) * 100) + "%"
         : Math.round((score / quiz.questions.length) * 100) + "%";
       var cognitiveScores = byData("cognitive-scores");
-      cognitiveScores.classList.toggle("legacy-hidden", isNursing2);
-      cognitiveScores.innerHTML = isNursing2 ? "" : quiz.result.scoreDimensions.map(function (dimension) {
+      cognitiveScores.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
+      cognitiveScores.innerHTML = isShortLockedScoreQuiz ? "" : quiz.result.scoreDimensions.map(function (dimension) {
         var dimensionScore = scoreForCategories(dimension.categories);
         return '<div class="legacy-cog-item" style="--skill-score:' + dimensionScore + '%"><strong>' + dimensionScore + '</strong><span>' + escapeHtml(dimension.label) + '</span><em aria-hidden="true"><i></i></em></div>';
       }).join("");
       var stageBreakdown = byData("stage-breakdown");
-      stageBreakdown.classList.toggle("legacy-hidden", isNursing2);
-      stageBreakdown.innerHTML = isNursing2 ? "" : stageScores.map(function (stage, index) {
+      stageBreakdown.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
+      stageBreakdown.innerHTML = isShortLockedScoreQuiz ? "" : stageScores.map(function (stage, index) {
         var ratio = stage.total ? Math.round((stage.correct / stage.total) * 100) : 0;
         var stageClass = stage.ratio >= 0.75 ? "is-high" : stage.ratio >= 0.5 ? "is-mid" : "is-low";
         return '<div class="legacy-stage-chip ' + stageClass + '" style="--stage-score:' + ratio + '%">' +
@@ -1673,7 +1675,10 @@ function createQuizRunnerScript(config: {
 export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: QuizRunnerProps) {
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
-  const variantClass = quiz.slug === "anatomy2" || quiz.slug === "anatomy3" ? " legacy-quiz--anatomy-display" : "";
+  const variantClass = [
+    quiz.slug === "anatomy3" ? "legacy-quiz--anatomy-display" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" ? "legacy-quiz--short-locked" : "",
+  ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
     displayAdUnitPath: siteConfig.googleAdManagerDisplayAdUnitPath,

@@ -1243,7 +1243,7 @@ a {
   animation: legacyBadgePop 0.36s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.legacy-quiz--nursing2 .legacy-progress {
+.legacy-quiz--short-locked .legacy-progress {
   width: min(100%, 660px);
   margin: 4px auto 16px;
   padding: 12px 14px 14px;
@@ -1257,17 +1257,17 @@ a {
     0 12px 28px rgba(7, 27, 52, 0.08);
 }
 
-.legacy-quiz--nursing2 .legacy-progress__row {
+.legacy-quiz--short-locked .legacy-progress__row {
   gap: 8px;
   margin-bottom: 10px;
 }
 
-.legacy-quiz--nursing2 .legacy-progress__row strong {
+.legacy-quiz--short-locked .legacy-progress__row strong {
   color: var(--legacy-navy);
   font-size: clamp(15px, 2vw, 17px);
 }
 
-.legacy-quiz--nursing2 .legacy-progress__row span {
+.legacy-quiz--short-locked .legacy-progress__row span {
   max-width: 52%;
   padding: 5px 9px;
   border-radius: 999px;
@@ -1278,24 +1278,24 @@ a {
   letter-spacing: 0.06em;
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots {
+.legacy-quiz--short-locked .legacy-progress-dots {
   --step-size: min(34px, calc((100vw - 116px) / var(--progress-count, 10)));
   --current-step-size: var(--step-size);
   min-height: calc(var(--step-size) + 2px);
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots::before {
+.legacy-quiz--short-locked .legacy-progress-dots::before {
   height: 7px;
   background: #ddece9;
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots::after {
+.legacy-quiz--short-locked .legacy-progress-dots::after {
   height: 7px;
   background: linear-gradient(90deg, color-mix(in srgb, var(--quiz-accent) 82%, #22c55e), var(--legacy-gold));
   box-shadow: 0 6px 18px color-mix(in srgb, var(--quiz-accent) 18%, transparent);
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots span {
+.legacy-quiz--short-locked .legacy-progress-dots span {
   border-radius: 12px;
   border-color: #c8ded9;
   background: #fff;
@@ -1304,14 +1304,14 @@ a {
   font-weight: 950;
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots span.is-complete,
-.legacy-quiz--nursing2 .legacy-progress-dots span.is-current {
+.legacy-quiz--short-locked .legacy-progress-dots span.is-complete,
+.legacy-quiz--short-locked .legacy-progress-dots span.is-current {
   border-color: #fff;
   background: var(--quiz-accent);
   color: #fff;
 }
 
-.legacy-quiz--nursing2 .legacy-progress-dots span.is-current {
+.legacy-quiz--short-locked .legacy-progress-dots span.is-current {
   animation: legacyNursingProgressPulse 1.25s ease-in-out infinite;
 }
 
@@ -1332,7 +1332,7 @@ a {
   }
 }
 
-.legacy-quiz--nursing2 .legacy-answer.selected {
+.legacy-quiz--short-locked .legacy-answer.selected {
   border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--quiz-accent) 10%, #fff), #fff),
@@ -1343,11 +1343,11 @@ a {
   animation: legacyAnswerPop 0.34s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.legacy-quiz--nursing2 .legacy-answer {
+.legacy-quiz--short-locked .legacy-answer {
   padding-right: 86px;
 }
 
-.legacy-quiz--nursing2 .legacy-answer.selected::after {
+.legacy-quiz--short-locked .legacy-answer.selected::after {
   content: "Locked";
   right: 12px;
   width: auto;
@@ -1363,7 +1363,7 @@ a {
   transform: translateY(-50%) scale(1);
 }
 
-.legacy-quiz--nursing2 .legacy-answer.selected small {
+.legacy-quiz--short-locked .legacy-answer.selected small {
   border-color: color-mix(in srgb, var(--quiz-accent) 72%, #fff);
   background: color-mix(in srgb, var(--quiz-accent) 13%, #fff);
   color: var(--quiz-accent);
@@ -1595,7 +1595,7 @@ a {
   margin-top: 0;
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate {
+.legacy-quiz--short-locked .legacy-result-gate {
   gap: 18px;
   padding-top: 42px;
   background:
@@ -1604,7 +1604,7 @@ a {
     linear-gradient(180deg, #ffffff, #f5fbfa);
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration {
+.legacy-quiz--short-locked .legacy-result-celebration {
   position: absolute;
   inset: 0;
   display: block;
@@ -1613,7 +1613,7 @@ a {
   z-index: 0;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span {
+.legacy-quiz--short-locked .legacy-result-celebration span {
   position: absolute;
   top: 18%;
   left: 50%;
@@ -1626,14 +1626,14 @@ a {
   animation: legacyNursingConfetti 1.8s cubic-bezier(0.17, 0.84, 0.44, 1) infinite;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(1) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(1) {
   --confetti-x: -190px;
   --confetti-y: 86px;
   --confetti-rotate: -28deg;
   background: #14b8a6;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(2) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(2) {
   --confetti-x: -118px;
   --confetti-y: 142px;
   --confetti-rotate: 44deg;
@@ -1644,7 +1644,7 @@ a {
   animation-delay: 0.14s;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(3) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(3) {
   --confetti-x: -42px;
   --confetti-y: 96px;
   --confetti-rotate: 78deg;
@@ -1652,7 +1652,7 @@ a {
   animation-delay: 0.24s;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(4) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(4) {
   --confetti-x: 62px;
   --confetti-y: 138px;
   --confetti-rotate: -54deg;
@@ -1663,7 +1663,7 @@ a {
   animation-delay: 0.08s;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(5) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(5) {
   --confetti-x: 132px;
   --confetti-y: 88px;
   --confetti-rotate: 32deg;
@@ -1671,7 +1671,7 @@ a {
   animation-delay: 0.2s;
 }
 
-.legacy-quiz--nursing2 .legacy-result-celebration span:nth-child(6) {
+.legacy-quiz--short-locked .legacy-result-celebration span:nth-child(6) {
   --confetti-x: 202px;
   --confetti-y: 150px;
   --confetti-rotate: -82deg;
@@ -1679,12 +1679,12 @@ a {
   animation-delay: 0.32s;
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate > :not(.legacy-result-celebration) {
+.legacy-quiz--short-locked .legacy-result-gate > :not(.legacy-result-celebration) {
   position: relative;
   z-index: 1;
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate::after {
+.legacy-quiz--short-locked .legacy-result-gate::after {
   content: "🩺";
   width: 82px;
   height: 82px;
@@ -1702,81 +1702,85 @@ a {
   animation: legacyNursingMedalPop 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate .legacy-profile-badge {
+.legacy-quiz--anatomy2.legacy-quiz--short-locked .legacy-result-gate::after {
+  content: "🫀";
+}
+
+.legacy-quiz--short-locked .legacy-result-gate .legacy-profile-badge {
   background: color-mix(in srgb, var(--quiz-accent) 14%, #fff);
   color: color-mix(in srgb, var(--quiz-accent) 82%, #082f2b);
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate h2 {
+.legacy-quiz--short-locked .legacy-result-gate h2 {
   max-width: 620px;
   color: var(--legacy-navy);
   text-wrap: balance;
 }
 
-.legacy-quiz--nursing2 .legacy-result-gate .legacy-primary {
+.legacy-quiz--short-locked .legacy-result-gate .legacy-primary {
   min-width: min(100%, 320px);
   box-shadow:
     inset 0 -4px 0 rgba(0, 0, 0, 0.16),
     0 18px 34px color-mix(in srgb, var(--quiz-accent) 24%, transparent);
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] {
+.legacy-quiz--short-locked [data-screen="results"] {
   padding-top: 26px;
   padding-bottom: 26px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-result-hero {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-result-hero {
   gap: 8px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-result-medal {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-result-medal {
   width: 70px;
   height: 70px;
   margin-bottom: 0;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-result-medal span {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-result-medal span {
   width: 48px;
   height: 48px;
   font-size: 25px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] h2 {
+.legacy-quiz--short-locked [data-screen="results"] h2 {
   max-width: 560px;
   font-size: clamp(30px, 5vw, 46px);
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-result-scoreboard {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-result-scoreboard {
   width: min(100%, 430px);
   margin: 14px auto 10px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-score {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-score {
   padding: 14px 10px;
   border-radius: 17px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-score strong {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-score strong {
   font-size: clamp(30px, 7vw, 42px);
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-result-meter {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-result-meter {
   width: min(100%, 430px);
   margin: 0 auto 14px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-unlock-panel {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-unlock-panel {
   width: min(100%, 460px);
   margin: 14px auto 0;
   padding: 14px;
   border-radius: 18px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-unlock-panel h3 {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-unlock-panel h3 {
   font-size: 18px;
 }
 
-.legacy-quiz--nursing2 [data-screen="results"] .legacy-unlock-panel p {
+.legacy-quiz--short-locked [data-screen="results"] .legacy-unlock-panel p {
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.35;
@@ -2941,7 +2945,7 @@ a {
     line-height: 1.36;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress {
+  .legacy-quiz--short-locked .legacy-progress {
     width: calc(100% - 18px);
     margin: 6px auto 14px;
     padding: 10px 10px 12px;
@@ -2950,7 +2954,7 @@ a {
     border-radius: 16px;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress__row {
+  .legacy-quiz--short-locked .legacy-progress__row {
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 6px;
@@ -2958,13 +2962,13 @@ a {
     text-align: left;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress__row strong {
+  .legacy-quiz--short-locked .legacy-progress__row strong {
     flex: 1 1 auto;
     font-size: 13px;
     white-space: nowrap;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress__row span {
+  .legacy-quiz--short-locked .legacy-progress__row span {
     flex: 0 1 auto;
     max-width: 48%;
     padding: 5px 8px;
@@ -2976,17 +2980,17 @@ a {
     white-space: nowrap;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress-dots {
+  .legacy-quiz--short-locked .legacy-progress-dots {
     --step-size: min(27px, calc((100vw - 66px) / var(--progress-count, 10)));
     min-height: calc(var(--step-size) + 3px);
   }
 
-  .legacy-quiz--nursing2 .legacy-progress-dots::before,
-  .legacy-quiz--nursing2 .legacy-progress-dots::after {
+  .legacy-quiz--short-locked .legacy-progress-dots::before,
+  .legacy-quiz--short-locked .legacy-progress-dots::after {
     height: 5px;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress-dots span {
+  .legacy-quiz--short-locked .legacy-progress-dots span {
     border-radius: 9px;
     font-size: 10px;
   }
@@ -3027,26 +3031,26 @@ a {
     right: var(--step-line-inset);
   }
 
-  .legacy-quiz--nursing2 .legacy-progress {
+  .legacy-quiz--short-locked .legacy-progress {
     width: calc(100% - 10px);
     padding: 9px 8px 10px;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress__row strong {
+  .legacy-quiz--short-locked .legacy-progress__row strong {
     font-size: 12px;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress__row span {
+  .legacy-quiz--short-locked .legacy-progress__row span {
     max-width: 50%;
     padding: 4px 7px;
     font-size: 9px;
   }
 
-  .legacy-quiz--nursing2 .legacy-progress-dots {
+  .legacy-quiz--short-locked .legacy-progress-dots {
     --step-size: min(24px, calc((100vw - 54px) / var(--progress-count, 10)));
   }
 
-  .legacy-quiz--nursing2 .legacy-progress-dots span {
+  .legacy-quiz--short-locked .legacy-progress-dots span {
     font-size: 9px;
   }
 
