@@ -990,6 +990,18 @@ function createQuizRunnerScript(config: {
             "confidentiality": "Vertrouwelijkheid",
             "urgent-priority": "Urgente prioriteit",
             "breathing-priority": "Ademhalingsprioriteit"
+          },
+          de: {
+            "hand-hygiene": "Handhygiene",
+            "fall-safety": "Sturzsicherheit",
+            "privacy": "Datenschutz",
+            "identity-check": "Identitätskontrolle",
+            "reading-check": "Messwert prüfen",
+            "medicine-check": "Medikamentencheck",
+            "condition-change": "Zustandsänderung",
+            "confidentiality": "Vertraulichkeit",
+            "urgent-priority": "Dringende Priorität",
+            "breathing-priority": "Atempriorität"
           }
         },
         anatomy2: {
@@ -1322,10 +1334,12 @@ function createQuizRunnerScript(config: {
 
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
+      if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
       return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function getShortLockedResultGateTitle() {
+      if (t.locale && t.locale.code === "de") return "Deine Ergebnisse sind bereit.";
       return t.locale && t.locale.code === "nl" ? "Je resultaten zijn klaar." : "Your results are ready.";
     }
 
@@ -1334,6 +1348,7 @@ function createQuizRunnerScript(config: {
     }
 
     function getShortLockedResultGateButtonLabel() {
+      if (t.locale && t.locale.code === "de") return "Meine Ergebnisse ansehen →";
       return t.locale && t.locale.code === "nl" ? t.results.viewResults + " →" : "See My Results →";
     }
 
