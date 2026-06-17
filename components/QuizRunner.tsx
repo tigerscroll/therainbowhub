@@ -110,13 +110,7 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
-  const isAnatomyDisplayVariant = quiz.slug === "anatomy3";
-  const hasQuestionDisplayAd = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
-  const displayAdHtml = hasQuestionDisplayAd
-    ? `<div data-js="question-display-ad" class="legacy-display-ad" aria-label="Advertisement">
-          <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
-        </div>`
-    : "";
+  const displayAdHtml = "";
   const nursingResultStoryHtml = "";
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
@@ -330,17 +324,16 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
-    var isAnatomyDisplayVariant = quiz.slug === "anatomy3";
     var isHarvard2Quiz = quiz.slug === "harvard2";
     var usesRoundCheckpointFlow = quiz.slug === "harvard2" || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
-    var autoStartQuiz = quiz.slug === "anatomy3";
-    var hideAnswerFeedback = isShortLockedScoreQuiz || isAnatomyDisplayVariant;
-    var skipFinalRewardedGate = isAnatomyDisplayVariant;
-    var skipStageRewardedGates = quiz.slug === "years-left2" || isAnatomyDisplayVariant;
-    var autoCloseRewardedOnGrant = quiz.slug === "years-left2";
-    var useQuestionDisplayAd = (quiz.slug === "years-left2" || isAnatomyDisplayVariant) && Boolean(config.displayAdUnitPath);
+    var autoStartQuiz = false;
+    var hideAnswerFeedback = isShortLockedScoreQuiz;
+    var skipFinalRewardedGate = false;
+    var skipStageRewardedGates = false;
+    var autoCloseRewardedOnGrant = false;
+    var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var current = 0;
     var answers = {};
@@ -1950,7 +1943,6 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "anatomy3" ? "legacy-quiz--anatomy-display" : "",
     quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || quiz.slug === "harvard2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
