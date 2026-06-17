@@ -500,6 +500,12 @@ function createQuizRunnerScript(config: {
       } catch (error) {}
     }
 
+    function reloadBeforeResultsReadyGate() {
+      if (!usesRoundCheckpointFlow) return false;
+      window.location.reload();
+      return true;
+    }
+
     function clearProgress() {
       try {
         window.localStorage.removeItem(config.progressKey);
@@ -1248,6 +1254,7 @@ function createQuizRunnerScript(config: {
         }
 
         saveProgress("result-gate");
+        if (reloadBeforeResultsReadyGate()) return;
         showResultGate();
         scrollToPageTop();
         return;
@@ -1263,6 +1270,7 @@ function createQuizRunnerScript(config: {
         }
 
         saveProgress("stage-gate");
+        if (reloadBeforeResultsReadyGate()) return;
         showStageGate();
         scrollToPageTop();
         return;
