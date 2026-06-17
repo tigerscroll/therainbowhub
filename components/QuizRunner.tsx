@@ -331,7 +331,7 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var isAnatomyDisplayVariant = quiz.slug === "anatomy3";
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
     var autoStartQuiz = quiz.slug === "anatomy3";
     var hideAnswerFeedback = isShortLockedScoreQuiz || isAnatomyDisplayVariant;
     var skipFinalRewardedGate = isAnatomyDisplayVariant;
@@ -1005,6 +1005,32 @@ function createQuizRunnerScript(config: {
             "organ-systems": "Organs and systems",
             "terminology": "Anatomy terms"
           }
+        },
+        pilot2: {
+          en: {
+            "checklist": "Checklist",
+            "focus": "Focus",
+            "navigation": "Navigation",
+            "weather": "Weather",
+            "instrument-check": "Instrument check",
+            "time-planning": "Time planning",
+            "route-choice": "Route choice",
+            "priority": "Priority",
+            "fuel-planning": "Fuel planning",
+            "verification": "Verification"
+          },
+          nl: {
+            "checklist": "Checklist",
+            "focus": "Focus",
+            "navigation": "Navigatie",
+            "weather": "Weer",
+            "instrument-check": "Instrumentcheck",
+            "time-planning": "Tijdplanning",
+            "route-choice": "Routekeuze",
+            "priority": "Prioriteit",
+            "fuel-planning": "Brandstofplanning",
+            "verification": "Verificatie"
+          }
         }
       };
       var quizLabels = labels[quiz.slug] || {};
@@ -1099,7 +1125,7 @@ function createQuizRunnerScript(config: {
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
       var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
 
       questionBackgrounds.forEach(function (className) {
         questionCard.classList.remove(className);
@@ -1241,7 +1267,7 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
@@ -1296,7 +1322,7 @@ function createQuizRunnerScript(config: {
 
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function getShortLockedResultGateTitle() {
@@ -1452,7 +1478,7 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -1745,7 +1771,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
     quiz.slug === "anatomy3" ? "legacy-quiz--anatomy-display" : "",
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
