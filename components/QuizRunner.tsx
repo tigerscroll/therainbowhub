@@ -331,7 +331,9 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var isAnatomyDisplayVariant = quiz.slug === "anatomy3";
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
+    var isHarvard2Quiz = quiz.slug === "harvard2";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
+    var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = quiz.slug === "anatomy3";
     var hideAnswerFeedback = isShortLockedScoreQuiz || isAnatomyDisplayVariant;
     var skipFinalRewardedGate = isAnatomyDisplayVariant;
@@ -343,6 +345,8 @@ function createQuizRunnerScript(config: {
     var answers = {};
     var advanceTimer = null;
     var hasUnlockedReview = false;
+    var harvardStageResultPending = false;
+    var harvardStageResultReady = false;
     var useStartAdGate = false;
     var activeRewardedAd = null;
     var rewardedListenersInstalled = false;
@@ -1018,6 +1022,23 @@ function createQuizRunnerScript(config: {
             "terminology": "Anatomy terms"
           }
         },
+        harvard2: {
+          en: {
+            "pattern": "Patterns",
+            "number": "Numbers",
+            "probability": "Probability",
+            "logic": "Logic",
+            "deduction": "Deduction",
+            "ordering": "Ordering",
+            "verbal": "Words",
+            "coding": "Code clues",
+            "analogy": "Analogies",
+            "calendar": "Calendar",
+            "time": "Time",
+            "geometry": "Geometry",
+            "spatial": "Spatial"
+          }
+        },
         pilot2: {
           en: {
             "checklist": "Checklist",
@@ -1151,16 +1172,15 @@ function createQuizRunnerScript(config: {
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
       var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
 
       questionBackgrounds.forEach(function (className) {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = isShortLockedScoreQuiz ? t.quiz.question + " " + (current + 1) + "/" + quiz.questions.length : t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = isShortLockedScoreQuiz && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
+      byData("round-label").textContent = usesCompactProgress ? t.quiz.question + " " + (isHarvard2Quiz ? stagePosition : current + 1) + "/" + (isHarvard2Quiz ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
+      byData("count-label").textContent = usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
-      progressDots.style.setProperty("--progress-ratio", isShortLockedScoreQuiz ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
+      progressDots.style.setProperty("--progress-ratio", usesCompactProgress ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
         var label = state === "is-complete" ? "✓" : index + 1;
@@ -1255,6 +1275,9 @@ function createQuizRunnerScript(config: {
 
     function showStageGate(shouldScroll) {
       clearAdStatuses();
+      harvardStageResultPending = false;
+      harvardStageResultReady = false;
+      byData("stage-trail").classList.remove("legacy-stage-trail--bar");
       var completedStage = Math.max(0, getQuestionStage(Math.max(0, current - 1)));
       var stageIndexes = getStageIndexes();
       var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
@@ -1266,6 +1289,14 @@ function createQuizRunnerScript(config: {
       var stageTotal = getStageQuestions(completedStage).length;
       var stageScore = getStageScore(completedStage);
       var stageIcons = ["✅", "⭐", "🧠", "🧩", "🔎", "🎯", "🚀", "🏆", "💎", "🎉"];
+      var stageStats = root.querySelector(".legacy-stage-stats");
+      var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
+
+      if (isHarvard2Quiz) {
+        harvardStageResultPending = true;
+        showResultGate(shouldScroll);
+        return;
+      }
 
       byData("stage-title").textContent = t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
       byData("stage-icon").textContent = stageIcons[completedStage % stageIcons.length];
@@ -1273,6 +1304,8 @@ function createQuizRunnerScript(config: {
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
+      if (stageStats) stageStats.classList.remove("legacy-hidden");
+      if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
       byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
@@ -1291,9 +1324,46 @@ function createQuizRunnerScript(config: {
       show("stageGate", shouldScroll);
     }
 
+    function showHarvardStageResults(shouldScroll) {
+      clearAdStatuses();
+      harvardStageResultPending = false;
+      harvardStageResultReady = true;
+      var completedStage = Math.max(0, getQuestionStage(Math.max(0, current - 1)));
+      var stageIndexes = getStageIndexes();
+      var nextStage = stageIndexes.find(function (stage) { return stage > completedStage; });
+      var nextStageName = nextStage !== undefined ? getStageName(nextStage) : null;
+      var stageTotal = getStageQuestions(completedStage).length;
+      var stageScore = getStageScore(completedStage);
+      var stageStats = root.querySelector(".legacy-stage-stats");
+      var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
+      var progressPercent = Math.round(((completedStage + 1) / stageIndexes.length) * 100);
+
+      byData("stage-title").textContent = "Round " + (completedStage + 1) + "/" + stageIndexes.length + " results";
+      byData("stage-icon").textContent = stageScore >= Math.ceil(stageTotal * 0.8) ? "🏆" : "🎓";
+      byData("stage-copy").textContent = nextStageName ? "Your score is locked in. Start the next stage when you're ready." : "Your score is locked in. The final result is next.";
+      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
+      byData("stage-next-label").textContent = nextStageName ? "Next stage" : "";
+      byData("stage-next-name").textContent = nextStageName || "";
+      if (stageStats) {
+        stageStats.classList.remove("legacy-hidden");
+        stageStats.classList.remove("legacy-stage-stats--single");
+      }
+      byData("stage-round-score").parentElement.classList.remove("legacy-hidden");
+      byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
+      byData("stage-round-score-label").textContent = "Round score";
+      byData("stage-score").textContent = getScore() + "/" + current;
+      byData("stage-score-label").textContent = "Score so far";
+      byData("stage-trail").classList.add("legacy-stage-trail--bar");
+      byData("stage-trail").innerHTML = '<div class="legacy-stage-progressbar" aria-hidden="true"><span style="width: ' + progressPercent + '%"></span></div><strong class="legacy-stage-progressbar-label">' + progressPercent + '% complete</strong>';
+      byData("stage-button").textContent = nextStageName ? "Start Next Stage →" : "See Final Results →";
+      byData("stage-button").dataset.readyText = byData("stage-button").textContent;
+      if (stageAdNote) stageAdNote.classList.add("legacy-hidden");
+      show("stageGate", shouldScroll);
+    }
+
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
@@ -1304,7 +1374,7 @@ function createQuizRunnerScript(config: {
         resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz);
       }
       byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : t.results.viewResults + " →";
-      byData("result-gate-button").disabled = getAnsweredCount() !== quiz.questions.length;
+      byData("result-gate-button").disabled = harvardStageResultPending ? false : getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
 
@@ -1349,7 +1419,7 @@ function createQuizRunnerScript(config: {
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function getShortLockedResultGateTitle() {
@@ -1358,6 +1428,10 @@ function createQuizRunnerScript(config: {
     }
 
     function getShortLockedResultGateCopy() {
+      if (isHarvard2Quiz && harvardStageResultPending) {
+        return "One short unlock reveals your round score.";
+      }
+
       return t.locale && t.locale.code === "nl" ? "Een korte ontgrendeling toont je score en antwoordoverzicht." : "One short unlock reveals your score and answer review.";
     }
 
@@ -1507,7 +1581,7 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -1566,6 +1640,8 @@ function createQuizRunnerScript(config: {
       current = 0;
       answers = {};
       hasUnlockedReview = false;
+      harvardStageResultPending = false;
+      harvardStageResultReady = false;
       saveProgress("question");
       renderQuestion();
     }
@@ -1577,6 +1653,8 @@ function createQuizRunnerScript(config: {
       current = 0;
       answers = {};
       hasUnlockedReview = false;
+      harvardStageResultPending = false;
+      harvardStageResultReady = false;
       if (autoStartQuiz) {
         startFresh();
         scrollToPageTop();
@@ -1661,20 +1739,25 @@ function createQuizRunnerScript(config: {
         });
     }
 
-    function beginStageAd(button, keepModalOpen) {
+    function beginStageAd(button, keepModalOpen, statusName) {
+      var adStatusName = statusName || "stage-ad-status";
       retryRewardedAction = function (retryButton) {
-        beginStageAd(retryButton, true);
+        beginStageAd(retryButton, true, adStatusName);
       };
       if (!keepModalOpen) hideEarlyCloseModal();
-      clearAdStatuses("stage-ad-status");
+      clearAdStatuses(adStatusName);
       setButtonLoading(button, t.loading.ad, true);
       requestRewardedAd("before_stage_results", function (message) {
-        setAdStatus("stage-ad-status", message);
+        setAdStatus(adStatusName, message);
       }).then(function (granted) {
         setButtonLoading(button, t.loading.ad, false);
         if (!granted) return;
-        setAdStatus("stage-ad-status", "");
+        setAdStatus(adStatusName, "");
         hideEarlyCloseModal();
+        if (isHarvard2Quiz) {
+          showHarvardStageResults();
+          return;
+        }
         saveProgress("question");
         renderQuestion();
       });
@@ -1749,12 +1832,25 @@ function createQuizRunnerScript(config: {
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
+        if (isHarvard2Quiz && harvardStageResultReady) {
+          harvardStageResultReady = false;
+          saveProgress("question");
+          renderQuestion();
+          scrollToPageTop();
+          return;
+        }
+
         beginStageAd(button, false);
       });
     });
 
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
+        if (isHarvard2Quiz && harvardStageResultPending) {
+          beginStageAd(button, false, "result-ad-status");
+          return;
+        }
+
         if (getAnsweredCount() !== quiz.questions.length) return;
         beginResultAd(button, false);
       });
@@ -1800,7 +1896,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
     quiz.slug === "anatomy3" ? "legacy-quiz--anatomy-display" : "",
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || quiz.slug === "harvard2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
