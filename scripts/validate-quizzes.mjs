@@ -238,7 +238,9 @@ function validateQuestion(question, fileName, questionPath, stageIndex) {
     }
   }
 
-  requireString(question.explanation, `${questionPath}.explanation`, fileName);
+  if (question.explanation !== undefined) {
+    requireString(question.explanation, `${questionPath}.explanation`, fileName);
+  }
   requireString(question.category, `${questionPath}.category`, fileName);
 
   if (question.visual !== undefined) {

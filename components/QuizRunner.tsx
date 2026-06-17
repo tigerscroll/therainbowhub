@@ -332,6 +332,7 @@ function createQuizRunnerScript(config: {
     var isPersonalityQuiz = quiz.mode === "personality";
     var isAnatomyDisplayVariant = quiz.slug === "anatomy3";
     var isHarvard2Quiz = quiz.slug === "harvard2";
+    var usesRoundCheckpointFlow = quiz.slug === "harvard2" || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = quiz.slug === "anatomy3";
@@ -1177,7 +1178,7 @@ function createQuizRunnerScript(config: {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = usesCompactProgress ? t.quiz.question + " " + (isHarvard2Quiz ? stagePosition : current + 1) + "/" + (isHarvard2Quiz ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
+      byData("round-label").textContent = usesCompactProgress ? t.quiz.question + " " + (usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", usesCompactProgress ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
@@ -1292,7 +1293,7 @@ function createQuizRunnerScript(config: {
       var stageStats = root.querySelector(".legacy-stage-stats");
       var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
 
-      if (isHarvard2Quiz) {
+      if (usesRoundCheckpointFlow) {
         harvardStageResultPending = true;
         showResultGate(shouldScroll);
         return;
@@ -1324,6 +1325,54 @@ function createQuizRunnerScript(config: {
       show("stageGate", shouldScroll);
     }
 
+    function getRoundCheckpointText() {
+      if (t.locale && t.locale.code === "nl") {
+        return {
+          round: "Ronde",
+          results: "resultaten",
+          lockedNext: "Je score is vastgelegd. Start de volgende ronde wanneer je klaar bent.",
+          lockedFinal: "Je score is vastgelegd. Het eindresultaat is nu aan de beurt.",
+          nextStage: "Volgende ronde",
+          roundScore: "Rondescore",
+          scoreSoFar: "Score tot nu toe",
+          complete: "voltooid",
+          startNext: "Start volgende ronde →",
+          seeFinal: "Bekijk eindresultaat →",
+          roundUnlock: "Een korte ontgrendeling toont je rondescore."
+        };
+      }
+
+      if (t.locale && t.locale.code === "de") {
+        return {
+          round: "Runde",
+          results: "Ergebnisse",
+          lockedNext: "Deine Punktzahl ist gespeichert. Starte die nächste Runde, wenn du bereit bist.",
+          lockedFinal: "Deine Punktzahl ist gespeichert. Jetzt folgt das Endergebnis.",
+          nextStage: "Nächste Runde",
+          roundScore: "Rundenergebnis",
+          scoreSoFar: "Punktzahl bisher",
+          complete: "abgeschlossen",
+          startNext: "Nächste Runde starten →",
+          seeFinal: "Endergebnis ansehen →",
+          roundUnlock: "Eine kurze Freischaltung zeigt deine Punktzahl für diese Runde."
+        };
+      }
+
+      return {
+        round: "Round",
+        results: "results",
+        lockedNext: "Your score is locked in. Start the next stage when you're ready.",
+        lockedFinal: "Your score is locked in. The final result is next.",
+        nextStage: "Next stage",
+        roundScore: "Round score",
+        scoreSoFar: "Score so far",
+        complete: "complete",
+        startNext: "Start Next Stage →",
+        seeFinal: "See Final Results →",
+        roundUnlock: "One short unlock reveals your round score."
+      };
+    }
+
     function showHarvardStageResults(shouldScroll) {
       clearAdStatuses();
       harvardStageResultPending = false;
@@ -1337,12 +1386,13 @@ function createQuizRunnerScript(config: {
       var stageStats = root.querySelector(".legacy-stage-stats");
       var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
       var progressPercent = Math.round(((completedStage + 1) / stageIndexes.length) * 100);
+      var checkpointText = getRoundCheckpointText();
 
-      byData("stage-title").textContent = "Round " + (completedStage + 1) + "/" + stageIndexes.length + " results";
-      byData("stage-icon").textContent = stageScore >= Math.ceil(stageTotal * 0.8) ? "🏆" : "🎓";
-      byData("stage-copy").textContent = nextStageName ? "Your score is locked in. Start the next stage when you're ready." : "Your score is locked in. The final result is next.";
+      byData("stage-title").textContent = checkpointText.round + " " + (completedStage + 1) + "/" + stageIndexes.length + " " + checkpointText.results;
+      byData("stage-icon").textContent = stageScore >= Math.ceil(stageTotal * 0.8) ? "🏆" : quiz.cardIcon || "✅";
+      byData("stage-copy").textContent = nextStageName ? checkpointText.lockedNext : checkpointText.lockedFinal;
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
-      byData("stage-next-label").textContent = nextStageName ? "Next stage" : "";
+      byData("stage-next-label").textContent = nextStageName ? checkpointText.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
       if (stageStats) {
         stageStats.classList.remove("legacy-hidden");
@@ -1350,12 +1400,12 @@ function createQuizRunnerScript(config: {
       }
       byData("stage-round-score").parentElement.classList.remove("legacy-hidden");
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
-      byData("stage-round-score-label").textContent = "Round score";
+      byData("stage-round-score-label").textContent = checkpointText.roundScore;
       byData("stage-score").textContent = getScore() + "/" + current;
-      byData("stage-score-label").textContent = "Score so far";
+      byData("stage-score-label").textContent = checkpointText.scoreSoFar;
       byData("stage-trail").classList.add("legacy-stage-trail--bar");
-      byData("stage-trail").innerHTML = '<div class="legacy-stage-progressbar" aria-hidden="true"><span style="width: ' + progressPercent + '%"></span></div><strong class="legacy-stage-progressbar-label">' + progressPercent + '% complete</strong>';
-      byData("stage-button").textContent = nextStageName ? "Start Next Stage →" : "See Final Results →";
+      byData("stage-trail").innerHTML = '<div class="legacy-stage-progressbar" aria-hidden="true"><span style="width: ' + progressPercent + '%"></span></div><strong class="legacy-stage-progressbar-label">' + progressPercent + '% ' + checkpointText.complete + '</strong>';
+      byData("stage-button").textContent = nextStageName ? checkpointText.startNext : checkpointText.seeFinal;
       byData("stage-button").dataset.readyText = byData("stage-button").textContent;
       if (stageAdNote) stageAdNote.classList.add("legacy-hidden");
       show("stageGate", shouldScroll);
@@ -1422,16 +1472,21 @@ function createQuizRunnerScript(config: {
       return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
+    function hidesAnswerExplanations() {
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
+    }
+
     function getShortLockedResultGateTitle() {
       if (t.locale && t.locale.code === "de") return "Deine Ergebnisse sind bereit.";
       return t.locale && t.locale.code === "nl" ? "Je resultaten zijn klaar." : "Your results are ready.";
     }
 
     function getShortLockedResultGateCopy() {
-      if (isHarvard2Quiz && harvardStageResultPending) {
-        return "One short unlock reveals your round score.";
+      if (usesRoundCheckpointFlow && harvardStageResultPending) {
+        return getRoundCheckpointText().roundUnlock;
       }
 
+      if (t.locale && t.locale.code === "de") return "Eine kurze Freischaltung zeigt deine Punktzahl und Antwortübersicht.";
       return t.locale && t.locale.code === "nl" ? "Een korte ontgrendeling toont je score en antwoordoverzicht." : "One short unlock reveals your score and answer review.";
     }
 
@@ -1562,7 +1617,7 @@ function createQuizRunnerScript(config: {
           '<p>' + escapeHtml(t.results.review.yourAnswer) + ': ' + escapeHtml(answer) + '<br />' +
           escapeHtml(t.results.review.correctAnswer) + ': ' + escapeHtml(question.choices[question.answerIndex]) + '</p>';
 
-        if (question.explanation) {
+        if (question.explanation && !hidesAnswerExplanations()) {
           html += '<p>' + escapeHtml(question.explanation) + '</p>';
         }
 
@@ -1754,7 +1809,7 @@ function createQuizRunnerScript(config: {
         if (!granted) return;
         setAdStatus(adStatusName, "");
         hideEarlyCloseModal();
-        if (isHarvard2Quiz) {
+        if (usesRoundCheckpointFlow) {
           showHarvardStageResults();
           return;
         }
@@ -1832,7 +1887,7 @@ function createQuizRunnerScript(config: {
 
     root.querySelectorAll('[data-action="stage-continue"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        if (isHarvard2Quiz && harvardStageResultReady) {
+        if (usesRoundCheckpointFlow && harvardStageResultReady) {
           harvardStageResultReady = false;
           saveProgress("question");
           renderQuestion();
@@ -1846,7 +1901,7 @@ function createQuizRunnerScript(config: {
 
     root.querySelectorAll('[data-action="reveal-results"]').forEach(function (button) {
       button.addEventListener("click", function () {
-        if (isHarvard2Quiz && harvardStageResultPending) {
+        if (usesRoundCheckpointFlow && harvardStageResultPending) {
           beginStageAd(button, false, "result-ad-status");
           return;
         }
