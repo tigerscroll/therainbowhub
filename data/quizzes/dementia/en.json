@@ -2,21 +2,21 @@
   "slug": "dementia",
   "title": "Do You Show Dementia Signs?",
   "seoTitle": "Do You Show Dementia Signs?",
-  "seoDescription": "Answer 10 quick personal memory, word, confusion, and reasoning questions. This quiz is for entertainment and self-reflection only, not diagnosis.",
+  "seoDescription": "Answer 30 quick personal memory, word, confusion, recall, and reasoning questions. This quiz is for entertainment and self-reflection only, not a diagnosis.",
   "pageTitle": "Do You Show Dementia Signs?",
   "eyebrow": "Memory Check",
-  "summary": "Answer 10 quick questions about your memory slips, word mix-ups, confusion, and basic reasoning.",
-  "duration": "3 mins",
+  "summary": "Answer 30 quick questions about memory slips, word mix-ups, daily thinking, recall, and basic reasoning.",
+  "duration": "6 mins",
   "publishedAt": "2026-06-17T09:00:00Z",
   "difficulty": "Quick",
   "passRate": "8%",
   "cardIcon": "🧠",
   "cardGradient": "linear-gradient(135deg, #38bdf8 0%, #2563eb 100%)",
   "accent": "#2563eb",
-  "questionCount": 10,
+  "questionCount": 30,
   "homepage": {
     "title": "Do You Show Dementia Signs?",
-    "summary": "Ten quick personal memory and thinking questions. See how your answers stack up.",
+    "summary": "Three rounds of personal memory and thinking questions. See how your answers stack up.",
     "thumbnailUrl": "/images/thumbnails/anatomy.jpg",
     "thumbnailAlt": "Memory and thinking quiz",
     "icon": "🧠",
@@ -24,16 +24,16 @@
     "featured": false
   },
   "heroPoints": [
-    "10 quick memory clues",
-    "Personal memory-style prompts",
-    "See your result instantly"
+    "30 quick memory clues",
+    "Three quick rounds",
+    "Personal memory-style prompts"
   ],
   "footer": {
     "aboutTitle": "About This Dementia Signs Quiz",
     "aboutText": "This quiz is for general knowledge, entertainment, and self-reflection only. It is not a dementia screening tool, medical advice, diagnosis, cognitive assessment, or clinical test. Dementia symptoms can have many causes, and only a qualified healthcare professional can assess real concerns. If you are worried about memory, thinking, mood, communication, or daily functioning changes in yourself or someone else, speak with a qualified healthcare professional."
   },
   "landing": {
-    "quickStartText": "Answer 10 quick questions about your memory slips, word mix-ups, confusion, and basic reasoning.",
+    "quickStartText": "Answer 30 quick questions about memory slips, word mix-ups, daily thinking, and basic reasoning.",
     "socialProof": "38,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
@@ -104,7 +104,8 @@
   },
   "stageGroups": [
     {
-      "title": "Quick Memory And Thinking Check",
+      "title": "Memory Clues",
+      "encouragement": "Good start. Your first memory-check score is locked in.",
       "questions": [
         {
           "prompt": "How often do you forget something someone told you recently?",
@@ -115,7 +116,6 @@
             "Very often, and it affects my day"
           ],
           "answerIndex": 0,
-          "explanation": "Frequent memory changes that affect daily life are more worth discussing than occasional slips.",
           "category": "memory"
         },
         {
@@ -127,7 +127,6 @@
             "Often with tasks I used to do easily"
           ],
           "answerIndex": 0,
-          "explanation": "New or repeated difficulty with familiar tasks can be more important than finding new tasks hard.",
           "category": "daily-tasks"
         },
         {
@@ -139,9 +138,91 @@
             "Very often, and I lose track of what I was saying"
           ],
           "answerIndex": 0,
-          "explanation": "Occasional word-finding is common; frequent trouble following conversation can be more important.",
           "category": "conversation"
         },
+        {
+          "prompt": "How often do you walk into a room and forget the reason?",
+          "choices": [
+            "Rarely, or it comes back quickly",
+            "Sometimes when distracted",
+            "Often enough to interrupt my day",
+            "Very often with familiar tasks"
+          ],
+          "answerIndex": 0,
+          "category": "memory"
+        },
+        {
+          "prompt": "How often do you repeat the same question without realizing it?",
+          "choices": [
+            "Rarely",
+            "Sometimes if I am stressed",
+            "Often enough that others mention it",
+            "Very often in the same conversation"
+          ],
+          "answerIndex": 0,
+          "category": "conversation"
+        },
+        {
+          "prompt": "How often do you lose track while making a familiar meal or drink?",
+          "choices": [
+            "Rarely",
+            "Only if I am interrupted",
+            "Sometimes with familiar steps",
+            "Often enough that I avoid it"
+          ],
+          "answerIndex": 0,
+          "category": "daily-tasks"
+        },
+        {
+          "prompt": "Quick recall: remember this pair for later: River = 42. What word should you remember?",
+          "choices": [
+            "River",
+            "Mountain",
+            "Garden",
+            "Window"
+          ],
+          "answerIndex": 0,
+          "category": "memory"
+        },
+        {
+          "prompt": "How often do you forget appointments even when they matter to you?",
+          "choices": [
+            "Rarely, especially with reminders",
+            "Sometimes if my routine changes",
+            "Often enough to cause problems",
+            "Very often, even with reminders"
+          ],
+          "answerIndex": 0,
+          "category": "memory"
+        },
+        {
+          "prompt": "How often do you lose the thread of a simple conversation?",
+          "choices": [
+            "Rarely",
+            "Sometimes when tired",
+            "Often enough to feel awkward",
+            "Very often, even in quiet settings"
+          ],
+          "answerIndex": 0,
+          "category": "conversation"
+        },
+        {
+          "prompt": "How often do familiar chores feel harder to sequence than before?",
+          "choices": [
+            "Rarely",
+            "Only with interruptions",
+            "Sometimes with chores I know well",
+            "Often enough that I need help"
+          ],
+          "answerIndex": 0,
+          "category": "daily-tasks"
+        }
+      ]
+    },
+    {
+      "title": "Daily Thinking Checks",
+      "encouragement": "Keep going. The final round mixes quick reasoning and recall.",
+      "questions": [
         {
           "prompt": "How often do you feel unsure about the day, place, or route in familiar situations?",
           "choices": [
@@ -151,7 +232,6 @@
             "Often enough that I need help"
           ],
           "answerIndex": 0,
-          "explanation": "Repeated confusion about time, place, or familiar routes can be more meaningful than a brief lapse.",
           "category": "orientation"
         },
         {
@@ -163,7 +243,6 @@
             "Often enough that I avoid them"
           ],
           "answerIndex": 0,
-          "explanation": "New difficulty with familiar planning tasks can be worth paying attention to.",
           "category": "planning"
         },
         {
@@ -175,9 +254,90 @@
             "Very often, and I cannot work out what happened"
           ],
           "answerIndex": 0,
-          "explanation": "Misplacing things happens to many people, but unusual patterns plus difficulty retracing steps can matter more.",
           "category": "misplacing"
         },
+        {
+          "prompt": "How often do you feel turned around on a familiar walk or drive?",
+          "choices": [
+            "Rarely",
+            "Briefly, then I correct myself",
+            "Sometimes in familiar places",
+            "Often enough that I avoid routes"
+          ],
+          "answerIndex": 0,
+          "category": "orientation"
+        },
+        {
+          "prompt": "How often do you make unusual money or shopping choices that surprise you later?",
+          "choices": [
+            "Rarely",
+            "Sometimes with stress or distraction",
+            "Often enough to worry me",
+            "Very often and it causes problems"
+          ],
+          "answerIndex": 0,
+          "category": "judgment"
+        },
+        {
+          "prompt": "How often do you lose important items in places that do not make sense?",
+          "choices": [
+            "Rarely",
+            "Sometimes, but I find them by retracing steps",
+            "Often enough to disrupt my day",
+            "Very often and I cannot retrace it"
+          ],
+          "answerIndex": 0,
+          "category": "misplacing"
+        },
+        {
+          "prompt": "How often do you feel less interested in normal social plans?",
+          "choices": [
+            "Rarely",
+            "Sometimes when tired",
+            "Often enough that others notice",
+            "Very often, and it feels unlike me"
+          ],
+          "answerIndex": 0,
+          "category": "social-mood"
+        },
+        {
+          "prompt": "How often do you need extra help organizing simple plans?",
+          "choices": [
+            "Rarely",
+            "Only for new or complicated plans",
+            "Sometimes for familiar plans",
+            "Often even for routine plans"
+          ],
+          "answerIndex": 0,
+          "category": "planning"
+        },
+        {
+          "prompt": "How often do you confuse left and right in familiar settings?",
+          "choices": [
+            "Rarely",
+            "Sometimes when rushing",
+            "Often enough to cause mistakes",
+            "Very often in places I know"
+          ],
+          "answerIndex": 0,
+          "category": "visual-spatial"
+        },
+        {
+          "prompt": "How often do people say your mood or personality seems different?",
+          "choices": [
+            "Rarely",
+            "Sometimes during stressful periods",
+            "Often enough that I notice a pattern",
+            "Very often and it affects relationships"
+          ],
+          "answerIndex": 0,
+          "category": "social-mood"
+        }
+      ]
+    },
+    {
+      "title": "Reasoning And Recall",
+      "questions": [
         {
           "prompt": "Basic reasoning: what comes next? 2, 4, 8, 16, ?",
           "choices": [
@@ -187,7 +347,6 @@
             "36"
           ],
           "answerIndex": 2,
-          "explanation": "The pattern doubles each time, so 16 becomes 32.",
           "category": "judgment"
         },
         {
@@ -199,11 +358,10 @@
             "North"
           ],
           "answerIndex": 0,
-          "explanation": "A right turn from north points east.",
           "category": "visual-spatial"
         },
         {
-          "prompt": "Quick recall: remember this pair for the next question: River = 42. What number is paired with River?",
+          "prompt": "Earlier, River was paired with which number?",
           "choices": [
             "24",
             "32",
@@ -211,19 +369,83 @@
             "52"
           ],
           "answerIndex": 2,
-          "explanation": "The pair was River = 42.",
-          "category": "social-mood"
+          "category": "memory"
         },
         {
-          "prompt": "Quick logic: if all zibs are naks, and some naks are blue, what must be true?",
+          "prompt": "Which word best completes the pair: hot is to cold as up is to ___?",
           "choices": [
-            "All zibs are blue",
-            "Some zibs are definitely blue",
-            "All zibs are naks",
-            "No naks are blue"
+            "Down",
+            "Side",
+            "Bright",
+            "Soft"
+          ],
+          "answerIndex": 0,
+          "category": "language"
+        },
+        {
+          "prompt": "If today is Tuesday, what day is it in three days?",
+          "choices": [
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "answerIndex": 1,
+          "category": "orientation"
+        },
+        {
+          "prompt": "Which item does not belong: apple, banana, carrot, orange?",
+          "choices": [
+            "Apple",
+            "Banana",
+            "Carrot",
+            "Orange"
           ],
           "answerIndex": 2,
-          "explanation": "The only statement guaranteed by the first rule is that all zibs are naks.",
+          "category": "judgment"
+        },
+        {
+          "prompt": "You walk forward, turn left, then turn left again. Which way are you facing compared with the start?",
+          "choices": [
+            "Opposite direction",
+            "Same direction",
+            "To the right",
+            "Straight up"
+          ],
+          "answerIndex": 0,
+          "category": "visual-spatial"
+        },
+        {
+          "prompt": "Which sentence is easiest to follow?",
+          "choices": [
+            "The keys are on the table.",
+            "Keys table on are the.",
+            "The table keys on are.",
+            "On keys the table are."
+          ],
+          "answerIndex": 0,
+          "category": "language"
+        },
+        {
+          "prompt": "Remember this short list: cup, moon, train. Which item was second?",
+          "choices": [
+            "Cup",
+            "Moon",
+            "Train",
+            "River"
+          ],
+          "answerIndex": 1,
+          "category": "memory"
+        },
+        {
+          "prompt": "If memory or thinking changes are new, frequent, or affecting daily life, what is the best real-world step?",
+          "choices": [
+            "Speak with a qualified healthcare professional",
+            "Use one quiz as a diagnosis",
+            "Ignore every change forever",
+            "Assume one score explains everything"
+          ],
+          "answerIndex": 0,
           "category": "language"
         }
       ]
