@@ -1105,10 +1105,10 @@ function createQuizRunnerScript(config: {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = isShortLockedScoreQuiz ? t.quiz.question + " " + (current + 1) + " " + t.quiz.of + " " + quiz.questions.length : t.quiz.round + " " + stageNumber;
+      byData("round-label").textContent = isShortLockedScoreQuiz ? t.quiz.question + " " + (current + 1) + "/" + quiz.questions.length : t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = isShortLockedScoreQuiz && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
-      progressDots.style.setProperty("--progress-ratio", stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
+      progressDots.style.setProperty("--progress-ratio", isShortLockedScoreQuiz ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
         var label = state === "is-complete" ? "✓" : index + 1;
@@ -1300,8 +1300,7 @@ function createQuizRunnerScript(config: {
     }
 
     function getShortLockedResultGateTitle() {
-      if (quiz.slug === "anatomy2") return "Your anatomy results are ready.";
-      return t.locale && t.locale.code === "nl" ? "Je verpleegkundige resultaat is klaar." : "Your nursing results are ready.";
+      return t.locale && t.locale.code === "nl" ? "Je resultaten zijn klaar." : "Your results are ready.";
     }
 
     function getShortLockedResultGateCopy() {
