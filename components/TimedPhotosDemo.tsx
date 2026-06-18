@@ -39,6 +39,17 @@ declare global {
   }
 }
 
+type FbqPayload = Record<string, string | number | boolean | null | undefined>;
+
+const articleTrackingName = "procedures_after_70_article";
+const rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
+const rewardedClosedCountKey = "rainbowhub.rewardedClosedCount";
+const rewardTrackedKey = "rainbowhub.rewardTracked";
+const reward2TrackedKey = "rainbowhub.reward2Tracked";
+const rewardClosedTrackedKey = "rainbowhub.rewardClosedTracked";
+const rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
+const articleEngagedTrackedKey = "rainbowhub.articleEngagedTracked:medical-procedures";
+
 const articleItems: ArticleItem[] = [
   {
     accentIcon: "🚶",
@@ -324,16 +335,91 @@ function loadGooglePublisherTag() {
   document.head.appendChild(script);
 }
 
-function trackEngaged(placement: string) {
-  if (typeof window.fbq !== "function") return;
-
+function readSessionNumber(key: string, fallback: number) {
   try {
-    window.fbq("trackCustom", "Engaged", {
-      content_name: "procedures_after_70_demo",
-      placement,
-    });
+    const parsed = Number(window.sessionStorage.getItem(key));
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
   } catch {
-    // Tracking should never block the demo flow.
+    return fallback;
+  }
+}
+
+function readSessionFlag(key: string) {
+  try {
+    return window.sessionStorage.getItem(key) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function writeSessionValue(key: string, value: string | number) {
+  try {
+    window.sessionStorage.setItem(key, String(value));
+  } catch {}
+}
+
+function trackFbqCustomEventOnce(eventName: string, data: FbqPayload, trackedKey: string) {
+  if (readSessionFlag(trackedKey)) return true;
+  writeSessionValue(trackedKey, "1");
+  try {
+    console.log("fbq custom event: " + eventName, data);
+  } catch {}
+  try {
+    window.fbq?.("trackCustom", eventName, data);
+  } catch {}
+  return true;
+}
+
+function trackArticleEngaged(placement: string, adUnitPath: string) {
+  trackFbqCustomEventOnce("Engaged", {
+    content_name: articleTrackingName,
+    content_type: "article",
+    engagement_source: "rewarded_ad_initiated",
+    placement,
+    ad_unit_path: adUnitPath,
+  }, articleEngagedTrackedKey);
+}
+
+function trackRewardGranted(placement: string, adUnitPath: string) {
+  const rewardCount = readSessionNumber(rewardedGrantedCountKey, 0) + 1;
+  writeSessionValue(rewardedGrantedCountKey, rewardCount);
+  const data = {
+    content_name: articleTrackingName,
+    content_type: "article",
+    placement,
+    fallback: false,
+    ad_unit_path: adUnitPath,
+    reward_count: rewardCount,
+  };
+
+  trackFbqCustomEventOnce("Reward", data, rewardTrackedKey);
+  if (rewardCount >= 2) {
+    trackFbqCustomEventOnce("Reward2", data, reward2TrackedKey);
+  }
+}
+
+function trackRewardClosed(placement: string, adUnitPath: string, granted: boolean, reason: string) {
+  if (!granted || reason !== "reward_granted") return;
+
+  const rewardCount = readSessionNumber(rewardedGrantedCountKey, 0);
+  const closedCount = readSessionNumber(rewardedClosedCountKey, 0) + 1;
+  writeSessionValue(rewardedClosedCountKey, closedCount);
+
+  const data = {
+    content_name: articleTrackingName,
+    content_type: "article",
+    placement,
+    fallback: false,
+    granted,
+    reason,
+    ad_unit_path: adUnitPath,
+    reward_count: rewardCount,
+    reward_closed_count: closedCount,
+  };
+
+  trackFbqCustomEventOnce("RewardClosed", data, rewardClosedTrackedKey);
+  if (closedCount >= 2) {
+    trackFbqCustomEventOnce("RewardClosed2", data, rewardClosed2TrackedKey);
   }
 }
 
@@ -347,10 +433,12 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
     let settled = false;
     let granted = false;
 
-    function settle(status: RewardedStatus) {
+    function settle(status: RewardedStatus, reason: string) {
       if (settled) return;
       settled = true;
       window.clearTimeout(failTimer);
+
+      trackRewardClosed(placement, adUnitPath, status === "granted", reason);
 
       if (slot && window.googletag?.cmd && window.googletag.destroySlots) {
         try {
@@ -365,7 +453,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
       resolve(status);
     }
 
-    const failTimer = window.setTimeout(() => settle("unavailable"), 8000);
+    const failTimer = window.setTimeout(() => settle("unavailable", "no_rewarded_ad"), 8000);
 
     window.googletag = window.googletag || { cmd: [] };
     loadGooglePublisherTag();
@@ -377,7 +465,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
           const outOfPageSlot = window.googletag?.defineOutOfPageSlot?.(adUnitPath, rewardedFormat);
 
           if (!outOfPageSlot || !window.googletag?.pubads) {
-            settle("unavailable");
+            settle("unavailable", "slot_unavailable");
             return;
           }
 
@@ -391,20 +479,21 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
 
             try {
               event.makeRewardedVisible();
-              trackEngaged(placement);
+              trackArticleEngaged(placement, adUnitPath);
             } catch {
-              settle("unavailable");
+              settle("unavailable", "make_visible_failed");
             }
           });
 
           pubads.addEventListener("rewardedSlotGranted", (event) => {
             if (event.slot !== slot || settled) return;
             granted = true;
+            trackRewardGranted(placement, adUnitPath);
           });
 
           pubads.addEventListener("rewardedSlotClosed", (event) => {
             if (event.slot !== slot || settled) return;
-            settle(granted ? "granted" : "closed_without_reward");
+            settle(granted ? "granted" : "closed_without_reward", granted ? "reward_granted" : "closed_without_reward");
           });
 
           try {
@@ -415,11 +504,11 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
           window.googletag?.enableServices?.();
           window.googletag?.display?.(slot);
         } catch {
-          settle("unavailable");
+          settle("unavailable", "request_error");
         }
       });
     } catch {
-      settle("unavailable");
+      settle("unavailable", "gpt_queue_error");
     }
   });
 }
