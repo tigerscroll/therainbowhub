@@ -383,6 +383,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
 
           slot = outOfPageSlot;
           const pubads = window.googletag.pubads();
+          const rewardedSlot = outOfPageSlot as { addService?: (service: unknown) => void };
 
           pubads.addEventListener("rewardedSlotReady", (event) => {
             if (event.slot !== slot || settled) return;
@@ -410,6 +411,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
             pubads.updateCorrelator?.();
           } catch {}
 
+          rewardedSlot.addService?.(pubads);
           window.googletag?.enableServices?.();
           window.googletag?.display?.(slot);
         } catch {
