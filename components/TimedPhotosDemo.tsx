@@ -603,26 +603,32 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
       </div>
 
       {started ? (
-        <section id="timed-gallery-start" className="timed-gallery" aria-label="Procedures after age 70 article demo">
-          <div className="timed-gallery__intro">
+        <section id="timed-gallery-start" className="timed-gallery timed-article" aria-label="Procedures after age 70 article">
+          <header className="timed-gallery__intro timed-article-header">
             <p className="timed-kicker">Important reading</p>
             <h2>Before saying yes to a procedure</h2>
+            <p className="timed-article-byline">The Rainbow Hub Health Desk · Updated this month</p>
             <p>
               Some choices sound simple until recovery, side effects, sedation, and daily independence enter the picture. Here is what to pause over - and the question worth asking first.
             </p>
-          </div>
+          </header>
 
           {visibleItems.map((item, index) => (
-            <article className="timed-photo-card" id={`timed-photo-${index + 1}`} key={item.kicker}>
-              <h3>{index + 1}. {item.title}</h3>
-              <div className={`timed-photo timed-photo--${item.style}`} role="img" aria-label={item.title}>
+            <article className="timed-photo-card timed-article-section" id={`timed-photo-${index + 1}`} key={item.kicker}>
+              <header className="timed-section-heading">
+                <span className="timed-section-number" aria-hidden="true">{index + 1}</span>
+                <h3>{item.title}</h3>
+              </header>
+              <figure className="timed-article-figure">
+                <div className={`timed-photo timed-photo--${item.style}`} role="img" aria-label={item.title}>
                 <span className="timed-visual-glow" />
                 <span className="timed-visual-card">
                   <span className="timed-visual-icon" aria-hidden="true">{item.icon}</span>
                 </span>
                 <span className="timed-visual-bubble timed-visual-bubble--one" aria-hidden="true">?</span>
                 <span className="timed-visual-bubble timed-visual-bubble--two" aria-hidden="true">{item.accentIcon}</span>
-              </div>
+                </div>
+              </figure>
               <div className="timed-card-copy">
                 <div className="timed-risk-box">
                   <strong>Why it can be risky</strong>
@@ -635,10 +641,10 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
           {hasMore ? (
             <aside className="timed-unlock" aria-live="polite">
               <p className="timed-kicker">Keep reading</p>
-              <h2>Unlock the next {nextCount} sections</h2>
-              <p>View a short ad to continue reading.</p>
+              <h2>Unlock the next {nextCount} procedures</h2>
+              <p>View a short ad to continue.</p>
               <button className="legacy-primary" type="button" onClick={unlockNextSet} disabled={unlocking}>
-                {unlocking ? "Loading Ad.." : "Unlock Next Section"}
+                {unlocking ? "Loading Ad.." : "Continue Reading"}
               </button>
               <span className="timed-ad-note">Short ad first — then reading continues.</span>
               {status ? <span className="timed-status">{status}</span> : null}
