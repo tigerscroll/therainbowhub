@@ -325,8 +325,8 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var isHarvard2Quiz = quiz.slug === "harvard2";
-    var usesRoundCheckpointFlow = quiz.slug === "harvard2" || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia";
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
+    var usesRoundCheckpointFlow = quiz.slug === "harvard2" || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || isHarvard2Quiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = false;
     var hideAnswerFeedback = isShortLockedScoreQuiz;
@@ -1057,20 +1057,42 @@ function createQuizRunnerScript(config: {
             "priority": "Prioriteit",
             "fuel-planning": "Brandstofplanning",
             "verification": "Verificatie"
-          }
-        },
-        dementia: {
-          en: {
-            "memory": "Memory slips",
-            "daily-tasks": "Daily tasks",
-            "conversation": "Word finding",
-            "orientation": "Confusion",
-            "planning": "Planning",
-            "misplacing": "Misplacing",
-            "judgment": "Number pattern",
-            "visual-spatial": "Direction sense",
-            "social-mood": "Quick recall",
-            "language": "Quiz safety"
+          },
+          de: {
+            "checklist": "Checkliste",
+            "focus": "Fokus",
+            "navigation": "Navigation",
+            "weather": "Wetter",
+            "instrument-check": "Instrumentencheck",
+            "time-planning": "Zeitplanung",
+            "route-choice": "Routenwahl",
+            "priority": "Priorität",
+            "fuel-planning": "Treibstoffplanung",
+            "verification": "Prüfung"
+          },
+          fr: {
+            "checklist": "Checklist",
+            "focus": "Concentration",
+            "navigation": "Navigation",
+            "weather": "Météo",
+            "instrument-check": "Instruments",
+            "time-planning": "Temps",
+            "route-choice": "Route",
+            "priority": "Priorité",
+            "fuel-planning": "Carburant",
+            "verification": "Vérification"
+          },
+          es: {
+            "checklist": "Checklist",
+            "focus": "Concentración",
+            "navigation": "Navegación",
+            "weather": "Clima",
+            "instrument-check": "Instrumentos",
+            "time-planning": "Tiempo",
+            "route-choice": "Ruta",
+            "priority": "Prioridad",
+            "fuel-planning": "Combustible",
+            "verification": "Verificación"
           }
         }
       };
@@ -1406,7 +1428,7 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || isHarvard2Quiz;
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
@@ -1462,7 +1484,7 @@ function createQuizRunnerScript(config: {
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || isHarvard2Quiz ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function hidesAnswerExplanations() {
@@ -1629,7 +1651,7 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || isHarvard2Quiz;
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || isHarvard2Quiz;
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -1943,7 +1965,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "dementia" || quiz.slug === "harvard2" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "harvard2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
