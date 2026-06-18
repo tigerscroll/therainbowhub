@@ -1946,20 +1946,17 @@ a {
 }
 
 .timed-photo-card {
-  margin: 0 0 clamp(26px, 5vw, 46px);
-  padding: clamp(14px, 3vw, 20px);
-  border: 1px solid rgba(9, 47, 50, 0.11);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: 0 16px 34px rgba(15, 73, 76, 0.09);
+  margin: 0;
+  padding: clamp(26px, 5vw, 42px) 0;
+  border-bottom: 1px solid rgba(9, 47, 50, 0.12);
 }
 
 .timed-photo-card h3 {
-  margin: 0 0 12px;
+  margin: 0;
   color: var(--timed-ink);
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-size: clamp(1.42rem, 3.4vw, 2.08rem);
   font-weight: 950;
-  line-height: 1.08;
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
@@ -1971,12 +1968,12 @@ a {
 }
 
 .timed-card-copy {
-  padding: 2px clamp(2px, 1vw, 6px) 0;
+  padding: 0;
 }
 
 .timed-risk-box {
-  margin-top: 14px;
-  padding: 15px 16px;
+  margin-top: 16px;
+  padding: clamp(15px, 3vw, 18px);
   border: 1px solid rgba(185, 28, 28, 0.18);
   border-radius: 14px;
   background:
@@ -2008,8 +2005,8 @@ a {
 }
 
 .timed-gallery__intro {
-  margin: 0 auto 24px;
-  text-align: center;
+  margin: 0 auto 10px;
+  text-align: left;
 }
 
 .timed-gallery__intro h2,
@@ -2022,13 +2019,61 @@ a {
 
 .timed-gallery__intro p {
   max-width: 680px;
-  margin: 14px auto 0;
+  margin: 14px 0 0;
+}
+
+.timed-article {
+  box-sizing: border-box;
+  width: min(100%, 808px);
+  padding-inline: clamp(16px, 4vw, 24px);
+}
+
+.timed-article-header {
+  padding: clamp(18px, 4vw, 28px) 0 clamp(16px, 4vw, 28px);
+  border-bottom: 2px solid rgba(9, 47, 50, 0.12);
+}
+
+.timed-article-header .timed-kicker {
+  margin-bottom: 12px;
+}
+
+.timed-article-byline {
+  color: #7b8b91 !important;
+  font-size: clamp(0.92rem, 1.8vw, 1rem) !important;
+  font-weight: 850;
+  line-height: 1.35 !important;
+}
+
+.timed-section-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.timed-section-number {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-top: 1px;
+  border-radius: 999px;
+  background: var(--timed-ink);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.timed-article-figure {
+  margin: 0;
 }
 
 .timed-photo {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .timed-photo span,
@@ -2191,11 +2236,6 @@ a {
     line-height: 1.13;
   }
 
-  .timed-photo-card figcaption {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    text-align: left;
-  }
 }
 
 .legacy-quiz--short-locked .legacy-result-gate .legacy-profile-badge {
