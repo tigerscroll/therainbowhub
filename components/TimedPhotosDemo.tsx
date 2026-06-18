@@ -593,7 +593,7 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
             </span>
           </div>
           <button className="legacy-primary" type="button" onClick={startArticle} disabled={startUnlocking}>
-            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> Read Article</>}
+            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> See The List</>}
           </button>
           <div className="legacy-ad-note">
             <span className="legacy-shield" aria-hidden="true">✓</span>
