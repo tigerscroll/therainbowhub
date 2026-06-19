@@ -489,6 +489,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
             if (event.slot !== slot || settled) return;
             granted = true;
             trackRewardGranted(placement, adUnitPath);
+            settle("granted", "reward_granted");
           });
 
           pubads.addEventListener("rewardedSlotClosed", (event) => {
