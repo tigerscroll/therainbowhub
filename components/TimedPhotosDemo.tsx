@@ -597,7 +597,7 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
           </button>
           <div className="legacy-ad-note">
             <span className="legacy-shield" aria-hidden="true">✓</span>
-            <span>Short ad first - <b>then article starts</b></span>
+            <span>{startUnlocking ? <>When the ad ends, <b>tap the X</b> in the top right to continue.</> : <>Short ad first - <b>then article starts</b></>}</span>
           </div>
         </section>
       </div>
@@ -645,7 +645,7 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
               <button className="legacy-primary" type="button" onClick={unlockNextSet} disabled={unlocking}>
                 {unlocking ? "Loading Ad.." : "Continue Reading"}
               </button>
-              <span className="timed-ad-note">Short ad first — then reading continues.</span>
+              <span className="timed-ad-note">{unlocking ? <>When the ad ends, <b>tap the X</b> in the top right to continue.</> : "Short ad first — then reading continues."}</span>
               {status ? <span className="timed-status">{status}</span> : null}
             </aside>
           ) : (
