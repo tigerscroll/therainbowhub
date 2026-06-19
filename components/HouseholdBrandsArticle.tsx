@@ -302,7 +302,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
             <span>💰</span>
           </div>
           <h1>These Old Household Items Could Be Worth More Than You Think</h1>
-          <p className="legacy-sub">Some old cupboard classics and forgotten attic finds are now attracting serious collector interest. See which items made the list.</p>
+          <p className="legacy-sub">Some of these items have been sitting in homes for decades. A few now sell for surprisingly high prices.</p>
           <div className="timed-meta-row" aria-label="Article details">
             <span>
               <span aria-hidden="true">⏱️</span>
