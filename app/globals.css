@@ -1963,8 +1963,8 @@ a {
 .timed-photo-card p {
   margin: 14px 2px 0;
   color: var(--timed-muted);
-  font-size: clamp(1rem, 2vw, 1.18rem);
-  line-height: 1.5;
+  font-size: clamp(1.18rem, 2.35vw, 1.45rem);
+  line-height: 1.58;
 }
 
 .timed-card-copy {
@@ -1996,8 +1996,8 @@ a {
 .timed-photo-card .timed-risk-box p {
   margin: 0;
   color: #4b2730;
-  font-size: clamp(1rem, 1.9vw, 1.14rem);
-  line-height: 1.46;
+  font-size: clamp(1.18rem, 2.35vw, 1.45rem);
+  line-height: 1.58;
 }
 
 .timed-gallery {
@@ -2067,13 +2067,44 @@ a {
 }
 
 .timed-article-figure {
-  margin: 0;
+  margin: 14px 0 0;
+}
+
+.timed-article-lead {
+  margin: 10px 0 0;
+  color: #43565e;
+  font-size: clamp(1.18rem, 2.35vw, 1.45rem);
+  line-height: 1.58;
 }
 
 .timed-photo {
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 16px;
+}
+
+.timed-real-photo {
+  background: #eef5f4;
+}
+
+.timed-real-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timed-brand-article .timed-card-copy {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.timed-brand-article .timed-card-copy p {
+  margin: 0;
+  color: #43565e;
+  font-size: clamp(1.18rem, 2.35vw, 1.45rem);
+  line-height: 1.58;
 }
 
 .timed-photo span,
