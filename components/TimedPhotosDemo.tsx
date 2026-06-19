@@ -576,8 +576,8 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
           <div className="legacy-badge" aria-hidden="true">
             <span>⚠️</span>
           </div>
-          <h1>Procedures That Should Be Avoided After Age 70</h1>
-          <p className="legacy-sub">Some procedures are routine. Others deserve a much harder question before you say yes.</p>
+          <h1>Doctors Often Warn Against These Procedures After 70</h1>
+          <p className="legacy-sub">Some of these procedures are more common than you think.</p>
           <div className="timed-meta-row" aria-label="Article details">
             <span>
               <span aria-hidden="true">⏱️</span>
@@ -593,7 +593,7 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
             </span>
           </div>
           <button className="legacy-primary" type="button" onClick={startArticle} disabled={startUnlocking}>
-            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> See The List</>}
+            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> Reveal The List</>}
           </button>
           <div className="legacy-ad-note">
             <span className="legacy-shield" aria-hidden="true">✓</span>

@@ -302,7 +302,7 @@ export function Last48HoursArticle({ rewardedAdUnitPath }: Last48HoursArticlePro
             <span>🕯️</span>
           </div>
           <h1>The Signs Often Seen In The Last 48 Hours Of Life</h1>
-          <p className="legacy-sub">The final hours can bring quiet physical and emotional changes many families do not expect.</p>
+          <p className="legacy-sub">Many families are surprised by what can happen during life's final hours.</p>
           <div className="timed-meta-row" aria-label="Article details">
             <span>
               <span aria-hidden="true">⏱️</span>
@@ -318,7 +318,7 @@ export function Last48HoursArticle({ rewardedAdUnitPath }: Last48HoursArticlePro
             </span>
           </div>
           <button className="legacy-primary" type="button" onClick={startArticle} disabled={startUnlocking}>
-            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> See The Signs</>}
+            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> Reveal The Signs</>}
           </button>
           <div className="legacy-ad-note">
             <span className="legacy-shield" aria-hidden="true">✓</span>
