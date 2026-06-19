@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-import articleData from "@/data/articles/household-brands.json";
+import articleData from "@/data/articles/last-48-hours.json";
 
 type ArticleItem = {
   image: string;
@@ -11,21 +11,21 @@ type ArticleItem = {
   title: string;
 };
 
-type HouseholdBrandsArticleProps = {
+type Last48HoursArticleProps = {
   rewardedAdUnitPath: string;
 };
 
 type RewardedStatus = "granted" | "closed_without_reward" | "unavailable";
 
 const articleItems = articleData.items as ArticleItem[];
-const articleTrackingName = "household_brands_article";
+const articleTrackingName = "last_48_hours_article";
 const rewardedGrantedCountKey = "rainbowhub.rewardedGrantedCount";
 const rewardedClosedCountKey = "rainbowhub.rewardedClosedCount";
 const rewardTrackedKey = "rainbowhub.rewardTracked";
 const reward2TrackedKey = "rainbowhub.reward2Tracked";
 const rewardClosedTrackedKey = "rainbowhub.rewardClosedTracked";
 const rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
-const articleEngagedTrackedKey = "rainbowhub.articleEngagedTracked:household-brands";
+const articleEngagedTrackedKey = "rainbowhub.articleEngagedTracked:last-48-hours";
 
 declare global {
   interface Window {
@@ -238,7 +238,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
   });
 }
 
-export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsArticleProps) {
+export function Last48HoursArticle({ rewardedAdUnitPath }: Last48HoursArticleProps) {
   const [started, setStarted] = useState(false);
   const [startUnlocking, setStartUnlocking] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
@@ -256,7 +256,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
     let result: RewardedStatus = "unavailable";
 
     for (let attempt = 0; attempt < 3; attempt += 1) {
-      result = await requestRewardedAd(rewardedAdUnitPath, "household_brands_start");
+      result = await requestRewardedAd(rewardedAdUnitPath, "last_48_hours_start");
       if (result === "granted") break;
       if (result === "closed_without_reward") {
         setStartUnlocking(false);
@@ -267,7 +267,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
     setStarted(true);
     setStartUnlocking(false);
     window.setTimeout(() => {
-      document.getElementById("household-brands-start")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("last-48-hours-start")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   }
 
@@ -279,7 +279,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
     let result: RewardedStatus = "unavailable";
 
     for (let attempt = 0; attempt < 3; attempt += 1) {
-      result = await requestRewardedAd(rewardedAdUnitPath, `household_brands_unlock_${visibleCount}`);
+      result = await requestRewardedAd(rewardedAdUnitPath, `last_48_hours_unlock_${visibleCount}`);
       if (result === "granted") break;
       if (result === "closed_without_reward") {
         setStatus("The ad was closed early. Try again to unlock the next section.");
@@ -295,18 +295,18 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
   }
 
   return (
-    <article className="timed-demo legacy-quiz timed-brand-article">
+    <article className="timed-demo legacy-quiz timed-brand-article timed-life-article">
       <div className="legacy-main">
         <section className="legacy-card legacy-start">
           <div className="legacy-badge" aria-hidden="true">
-            <span>💰</span>
+            <span>🕯️</span>
           </div>
-          <h1>These Old Household Items Could Be Worth More Than You Think</h1>
-          <p className="legacy-sub">Some old cupboard classics and forgotten attic finds are now attracting serious collector interest. See which items made the list.</p>
+          <h1>The Signs Often Seen In The Last 48 Hours Of Life</h1>
+          <p className="legacy-sub">The final hours can bring quiet physical and emotional changes many families do not expect.</p>
           <div className="timed-meta-row" aria-label="Article details">
             <span>
               <span aria-hidden="true">⏱️</span>
-              <strong>7 minute<br />read</strong>
+              <strong>6 minute<br />read</strong>
             </span>
             <span>
               <span aria-hidden="true">📅</span>
@@ -318,7 +318,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
             </span>
           </div>
           <button className="legacy-primary" type="button" onClick={startArticle} disabled={startUnlocking}>
-            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> Reveal The List</>}
+            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> See The Signs</>}
           </button>
           <div className="legacy-ad-note">
             <span className="legacy-shield" aria-hidden="true">✓</span>
@@ -328,27 +328,26 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
       </div>
 
       {started ? (
-        <section id="household-brands-start" className="timed-gallery timed-article" aria-label="Old household brands worth money article">
+        <section id="last-48-hours-start" className="timed-gallery timed-article" aria-label="Last 48 hours of life article">
           <header className="timed-gallery__intro timed-article-header timed-life-intro">
-            <h2>These Old Household Items Could Be Worth More Than You Think</h2>
+            <h2>10+ Things You Feel in the Last 48 Hours of Life</h2>
             <p className="timed-article-byline">By The Rainbow Hub</p>
             <p className="timed-life-summary">{articleData.summary}</p>
           </header>
 
           {visibleItems.map((item, index) => (
-            <article className="timed-photo-card timed-article-section" id={`household-brand-${index + 1}`} key={`${item.title}-${index}`}>
+            <article className="timed-photo-card timed-article-section" id={`last-48-hour-${index + 1}`} key={`${item.title}-${index}`}>
               <header className="timed-section-heading">
                 <span className="timed-section-number" aria-hidden="true">{index + 1}</span>
                 <h3>{item.title}</h3>
               </header>
-              {item.paragraphs[0] ? <p className="timed-article-lead">{item.paragraphs[0]}</p> : null}
               <figure className="timed-article-figure">
                 <div className="timed-photo timed-real-photo" role="img" aria-label={item.imageAlt}>
                   <img src={item.image} alt={item.imageAlt} loading={index < 5 ? "eager" : "lazy"} />
                 </div>
               </figure>
               <div className="timed-card-copy">
-                {item.paragraphs.slice(1).map((paragraph) => (
+                {item.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
@@ -358,7 +357,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
           {hasMore ? (
             <aside className="timed-unlock" aria-live="polite">
               <p className="timed-kicker">Keep reading</p>
-              <h2>Unlock the next {nextCount} items</h2>
+              <h2>Unlock the next {nextCount} signs</h2>
               <p>View a short ad to continue.</p>
               <button className="legacy-primary" type="button" onClick={unlockNextSet} disabled={unlocking}>
                 {unlocking ? "Loading Ad.." : "Continue Reading"}
@@ -370,7 +369,7 @@ export function HouseholdBrandsArticle({ rewardedAdUnitPath }: HouseholdBrandsAr
             <aside className="timed-finished">
               <p className="timed-kicker">Article complete</p>
               <h2>You have reached the end.</h2>
-              <p>That is the full list. If one of these brands is sitting in a cupboard, attic, garage, or storage box, it may be worth a closer look before it gets thrown away.</p>
+              <p>That is the full list. This article is general information only and is not medical advice. If someone is nearing the end of life, speak with a qualified healthcare professional or hospice team for guidance.</p>
             </aside>
           )}
         </section>

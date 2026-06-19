@@ -604,11 +604,10 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
 
       {started ? (
         <section id="timed-gallery-start" className="timed-gallery timed-article" aria-label="Procedures after age 70 article">
-          <header className="timed-gallery__intro timed-article-header">
-            <p className="timed-kicker">Important reading</p>
-            <h2>Before saying yes to a procedure</h2>
-            <p className="timed-article-byline">The Rainbow Hub Health Desk · Updated this month</p>
-            <p>
+          <header className="timed-gallery__intro timed-article-header timed-life-intro">
+            <h2>Procedures That Should Be Avoided After Age 70</h2>
+            <p className="timed-article-byline">By The Rainbow Hub</p>
+            <p className="timed-life-summary">
               Some choices sound simple until recovery, side effects, sedation, and daily independence enter the picture. Here is what to pause over - and the question worth asking first.
             </p>
           </header>
