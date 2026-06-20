@@ -1,0 +1,51 @@
+# Beach Article Image Sources
+
+Images copied from the permitted source article and stored locally. Copy was rewritten for this implementation.
+
+- 01-thanks-for-helping-me-move-i-ll-just-pass-out-here.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/ysNzf1WIn9fnVnIJ.jpg; original title: Thanks For Helping Me Move, I'll Just Pass Out Here; edit: resized to max width 960 and converted to WebP.
+- 02-what-sunburn.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/nPfh2DWxhRk9WqnO.jpg; original title: What Sunburn?; edit: resized to max width 960 and converted to WebP.
+- 03-not-sure-that-ll-stop-them.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/o6I4QAJSBsQ9muge.jpg; original title: Not Sure That’ll Stop Them; edit: resized to max width 960 and converted to WebP.
+- 04-water-doggo-enjoying-some-sun-time.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/7HGkTWMbgjnba0vR.jpg; original title: Water Doggo Enjoying Some Sun Time; edit: resized to max width 960 and converted to WebP.
+- 05-santa-is-that-you.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/tTa0OmilUivI4Sbw.jpeg; original title: Santa, Is That You?; edit: resized to max width 960 and converted to WebP.
+- 06-everybody-wants-a-ride.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/uCyjo9dIPT9VsKUB.jpg; original title: Everybody Wants A Ride; edit: resized to max width 960 and converted to WebP.
+- 07-mount-ruffmore.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/MDA4ZJ3TkvFPgXq5.jpg; original title: Mount Ruffmore; edit: resized to max width 960 and converted to WebP.
+- 08-is-he-a-man-or-a-giraffe.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/uNEQ3kS2iYFXPsoX.jpg; original title: Is He A Man? Or A Giraffe?; edit: resized to max width 960 and converted to WebP.
+- 09-yes-we-re-making-fun-of-instagram-models.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/lwYk4BOC8vGW8e6k.jpg; original title: Yes, We're Making Fun Of Instagram Models; edit: resized to max width 960 and converted to WebP.
+- 10-no-freaking-way.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/GBd6K8ysFaCZVzT1.jpg; original title: No Freaking Way; edit: resized to max width 960 and converted to WebP.
+- 11-real-or-fake.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/VWRRXxIMNUoEoawE.jpg; original title: Real Or Fake?; edit: resized to max width 960 and converted to WebP.
+- 12-a-b-grade-shark-movie.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/Y4ho8ZVhRNHroSX8.jpg; original title: A B-Grade Shark Movie; edit: resized to max width 960 and converted to WebP.
+- 13-this-should-be-everywhere.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/IislpCVc9amOaitM.jpg; original title: This Should Be Everywhere!; edit: resized to max width 960 and converted to WebP.
+- 14-a-perfect-towel-for-social-distancing.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/bFQK9e96YV6uPSpW.jpg; original title: A Perfect Towel For Social Distancing; edit: resized to max width 960 and converted to WebP.
+- 15-headless-body-tanning.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/GjdHTkOoWTqDqXml.jpg; original title: Headless Body Tanning; edit: resized to max width 960 and converted to WebP.
+- 16-so-much-sand-so-little-poop.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/aCRmoSQ2FZF1jx2M.jpg; original title: So Much Sand... So Little Poop; edit: resized to max width 960 and converted to WebP.
+- 17-just-another-day-at-the-beach-in-australia.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/qB2b9G8fvUh5X91n.jpg; original title: Just Another Day At The Beach In Australia; edit: resized to max width 960 and converted to WebP.
+- 18-for-the-love-of-instagram.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/XJIrUGOXdgJjT2iQ.jpg; original title: For the Love of Instagram; edit: resized to max width 960 and converted to WebP.
+- 19-a-totally-not-appropriate-gift-from-the-grandkids.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/VLMIGtaaUuRtGRyb.jpg; original title: A (Totally Not Appropriate) Gift From The Grandkids; edit: resized to max width 960 and converted to WebP.
+- 20-is-that-a-tyrannosaurus-ruff.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/iRAOr8FBiuqNO9Ct.jpg; original title: Is That A Tyrannosaurus-Ruff?; edit: resized to max width 960 and converted to WebP.
+- 21-ponies-always-steal-the-best-spots.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/3lLUIdT31B3k2TCL.jpg; original title: Ponies Always Steal The Best Spots; edit: resized to max width 960 and converted to WebP.
+- 22-the-perfect-story-in-three-panels-doesn-t-exi-never-mind.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/MtaDaXF1iQDWZckk.jpg; original title: The Perfect "Story in Three Panels" Doesn't Exi...Never Mind; edit: resized to max width 960 and converted to WebP.
+- 23-anybody-looking-for-a-great-deal.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/HUgJ3zoSAQ8Mmcw6.jpg; original title: Anybody Looking For A Great Deal?; edit: resized to max width 960 and converted to WebP.
+- 24-so-e-stands-for-existential-crisis.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/u06p2iyPowCKWRGR.jpg; original title: So E Stands For Existential Crisis?; edit: resized to max width 960 and converted to WebP.
+- 25-full-body-sunscreen.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/image-SoPtM6RuWPq85U6K.jpg; original title: Full Body Sunscreen; edit: resized to max width 960 and converted to WebP.
+- 26-take-my-money-and-leave-this-beach.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/dLgWpbHDPOgTn70f.jpg; original title: Take My Money And Leave This Beach; edit: resized to max width 960 and converted to WebP.
+- 27-not-everyone-s-enjoying-this-beach-day.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/lETj5AqNbGilxMMU.jpg; original title: Not Everyone's Enjoying This Beach Day; edit: resized to max width 960 and converted to WebP.
+- 28-don-t-open-it.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/RlCXMlWn1rVoKT0g.jpg; original title: Don't Open It!; edit: resized to max width 960 and converted to WebP.
+- 29-where-could-he-have-gone.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/H2DOmMpy2bUdMI1b.jpg; original title: Where Could He Have Gone?; edit: resized to max width 960 and converted to WebP.
+- 30-expensive-flip-flops.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/E4nOU4h24mMeHDyM.jpg; original title: Expensive Flip Flops; edit: resized to max width 960 and converted to WebP.
+- 31-just-bro-ing-out-at-the-beach.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/013IIcXygptcGlKj.jpg; original title: Just Bro-ing Out At The Beach; edit: resized to max width 960 and converted to WebP.
+- 32-well-that-s-not-creepy-at-all.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/uXgIiZsrTsfbycID.jpg; original title: Well That's Not Creepy At All; edit: resized to max width 960 and converted to WebP.
+- 33-not-a-good-idea-man.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/vXjYQzxNPCMiKXfu.jpg; original title: Not a Good Idea Man; edit: resized to max width 960 and converted to WebP.
+- 34-no-more-photos-for-your-instagram.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/S5mOm5qF7CgC9qKZ.jpg; original title: No More Photos For Your Instagram; edit: resized to max width 960 and converted to WebP.
+- 35-one-at-a-time-everyone.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/RybN6J1elIxNcOBM.jpg; original title: One At A Time Everyone; edit: resized to max width 960 and converted to WebP.
+- 36-rest-is-more-important-than-fun.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/FhqET2cmNz7NQf5R.jpg; original title: Rest Is More Important Than Fun; edit: resized to max width 960 and converted to WebP.
+- 37-that-didn-t-go-as-planned.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/image-tfST7WnSTwLL7p26.jpg; original title: That Didn't Go As Planned; edit: resized to max width 960 and converted to WebP.
+- 38-the-perfect-sos-message.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/b6nr6vcKBuusnHPa.jpg; original title: The Perfect SOS Message; edit: resized to max width 960 and converted to WebP.
+- 39-next-level-improvising-game.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/3YVZF08FPiXZLThx.jpg; original title: Next Level Improvising Game; edit: resized to max width 960 and converted to WebP.
+- 40-hats-off-to-the-bird.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/9gsbw71cpLXhXc61.jpg; original title: Hats Off To The Bird; edit: resized to max width 960 and converted to WebP.
+- 41-could-ve-made-it-out-of-sand.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/G257Z78AQPEJ0Um1.jpg; original title: Could've Made It Out of Sand; edit: resized to max width 960 and converted to WebP.
+- 42-at-least-he-s-wearing-underwear.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/jaCZcHEH0lHzhvMl.jpg; original title: At Least He's Wearing Underwear; edit: resized to max width 960 and converted to WebP.
+- 43-a-brand-new-style-of-surfing.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/bJqtPlLdEgZ2Jiah.jpg; original title: A Brand New Style Of Surfing; edit: resized to max width 960 and converted to WebP.
+- 44-summer-chilling-at-its-best.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/NisWaJcXVEgV7XBp.jpg; original title: Summer Chilling At Its Best; edit: resized to max width 960 and converted to WebP.
+- 45-trying-to-be-michael-jackson.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/nkjHZtV6W1vIG2Am.jpg; original title: Trying To Be Michael Jackson?; edit: resized to max width 960 and converted to WebP.
+- 46-she-s-now-the-queen-of-the-starfish.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/ok4O71IqKYE1jSI3.jpg; original title: She's Now The Queen Of The Starfish; edit: resized to max width 960 and converted to WebP.
+- 47-photobombed-by-a-poster.webp — source: https://posts-cdn.kueez.net/0EQBgPCqM0YDLa0B/image-NfR5XPMhYupjpcB7.jpg; original title: Photobombed By A Poster; edit: resized to max width 960 and converted to WebP.
