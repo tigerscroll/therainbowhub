@@ -323,6 +323,13 @@ const articleItems: ArticleItem[] = [
   },
 ];
 
+function procedureImageSlug(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function loadGooglePublisherTag() {
   if (typeof window === "undefined") return;
   if (typeof window.googletag?.defineOutOfPageSlot === "function") return;
@@ -620,13 +627,12 @@ export function TimedPhotosDemo({ rewardedAdUnitPath }: TimedPhotosDemoProps) {
                 <h3>{item.title}</h3>
               </header>
               <figure className="timed-article-figure">
-                <div className={`timed-photo timed-photo--${item.style}`} role="img" aria-label={item.title}>
-                <span className="timed-visual-glow" />
-                <span className="timed-visual-card">
-                  <span className="timed-visual-icon" aria-hidden="true">{item.icon}</span>
-                </span>
-                <span className="timed-visual-bubble timed-visual-bubble--one" aria-hidden="true">?</span>
-                <span className="timed-visual-bubble timed-visual-bubble--two" aria-hidden="true">{item.accentIcon}</span>
+                <div className="timed-photo timed-real-photo" role="img" aria-label={`${item.title} article image`}>
+                  <img
+                    src={`/images/articles/medical-procedures/${String(index + 1).padStart(2, "0")}-${procedureImageSlug(item.title)}.webp`}
+                    alt={`${item.title} article image`}
+                    loading={index < 5 ? "eager" : "lazy"}
+                  />
                 </div>
               </figure>
               <div className="timed-card-copy">
