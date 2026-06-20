@@ -1,0 +1,226 @@
+# Historical Article Image Sources
+
+Source article: https://ramber.com/trending/incredible-stories-behind-50-iconic-historical-photos
+
+Images copied locally with permission from the source article for local delivery. Original article text has been rewritten for this version.
+
+- `01-a-victorian-photo-surprise.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Prohibido-sonreír-a-la-cámara-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `02-against-all-odds.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Una-trágica-coincidencia-min-1.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `03-when-iranian-women-took-to-the-streets.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Las-mujeres-iraníes-alzan-su-voz-contra-el-país-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `04-the-love-story-of-david-bowie-and-iman.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-amor-algo-secreto-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `05-apollos-code-queen.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Esta-mujer-puede-prometer-de-todo…-hasta-la-luna-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `06-the-timeless-diva-of-cinema.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Ningún-italiano-se-resiste-a-un-buen-plato-de-pastas-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `07-a-young-rebel-with-a-cause.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-protesta-del-senador-estadounidense-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `08-love-through-the-lens.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Prohibido-amar-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `09-when-spikes-and-smiles-meet.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Las-apariencias-muchas-veces-engañan…-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `10-dolly-and-carl-loves-country-road.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-privacidad-es-la-clave-del-éxito-en-el-amor-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `11-shoes-on-the-danube.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-lamentable-recuerdo-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `12-a-moment-of-compassion-amid-chaos.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Morir-en-manos-de-tu-país-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `13-the-unsung-heroes-of-wwi.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Las-guerreras-alemanas-de-la-Primera-Guerra-Mundial-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `14-beach-days-to-dark-times.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-conmovedora-historia-de-Margot-y-Ana-Frank-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `15-the-tale-of-two-smallpox-cases.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-verdadera-responsable-de-este-avance-de-la-medicina-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `16-packed-to-the-rafters.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Todos-juntos-de-regreso-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `17-taking-matters-into-his-own-hands.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Rogozov-su-propio-médico-cirujano-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `18-innocence-interrupted.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/El-último-almuerzo-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `19-kiss-of-life.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Si-este-no-fue-el-beso-de-amor-verdadero…-Cuál-lo-sería-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `20-strength-and-spirit.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-pedacito-de-nuestra-historia-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `21-the-joyful-end-to-a-nightmare.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-inusual-momento-de-alegría-en-los-campos-de-concentración-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `22-katherine-switzers-bold-marathon-move.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-carrera-de-los-derechos-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `23-resilience-in-a-pandemic.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Covid-19-y-sus-grandes-luchadores-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `24-when-cats-and-cows-collaborate.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Extracción-manual-o-robótica-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `25-a-scandalous-swimsuit.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-traje-de-baño-le-ha-costado-la-carrera-a-la-nadadora-Annette-Kellerman-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `26-night-witches-the-fearless-female-pilots-of-wwii.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Las-superheroínas-rusas-que-bombardearon-al-régimen-nazi-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `27-australian-pows-reunite-over-a-cup-of-tea.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-conflicto-político-que-decidió-ignorar-la-humanidad-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `28-the-original-backless-bombshell.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Espalda-al-descubierto-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `29-a-hand-of-hope.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Starving-in-Uganda-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `30-love-in-the-shadows.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-libertad-de-amar-sin-prejuicios-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `31-hidden-love.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Amar-sólo-a-escondidas-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `32-surfing-the-physics-wave.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-pequeño-cambio-de-paradigma-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `33-innocence-in-the-face-of-hate.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Los-niños-nos-enseñan-a-respetar-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `34-high-school-hustle.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Comienzos-similares-y-destinos-completamente-opuestos-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `35-love-and-legacy.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Cambio-de-gustos-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `36-a-troubled-icons-final-glimpse.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-imagen-de-la-despedida-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `37-the-obamas-wedding-magic.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Un-romance-polémico-pero-duradero-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `38-crocodile-hunter-and-fairy-princess.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Morir-trabajando-de-lo-que-amas-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `39-beach-days-and-big-dreams.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-conmovedora-historia-de-vida-de-Barack-Obama-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `40-love-fried-chicken-and-civil-rights.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Sobreviviendo-a-la-cena-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `41-hepburn-and-kelly-at-the-oscars.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Demasiadas-similitudes-para-ser-desconocidas-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `42-a-tearful-reunion.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Las-madres-son-las-mayores-guerreras-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `43-a-love-beyond-limits.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Amar-en-la-salud-y-en-la-enfermedad-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `44-the-chameleon-of-rock.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Mi-nombre-no-es-del-todo-conveniente-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `45-a-rock-legends-purr-fect-companions.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Una-familia-poco-convencional-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `46-a-brave-pioneer-in-the-face-of-prejudice.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/La-dura-historia-de-Dorothy-Counts-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `47-the-master-of-lightning.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Una-pieza-clave-de-la-historia-en-la-física-y-la-ingeniería-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `48-the-joy-of-new-shoes.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Una-caricia-en-medio-de-la-guerra-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `49-the-moment-of-freedom.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/El-rostro-de-la-libertad-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `50-love-beyond-walls.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Juntos-hasta-el-final-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `51-one-mans-silent-defiance-in-a-sea-of-conformity.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Una-revelación-que-podría-costarle-la-vida-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `52-harold-whittles-first-sound.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Cuál-es-el-sonido-de-la-vida-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `53-one-job-please.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/En-busca-de-un-nuevo-empleo-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `54-when-sweden-changed-traffic-sides.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/Suecia-un-ligero-cambio-de-dirección-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
+- `55-the-shock-of-truth.jpg`
+  - Source image: https://ramber.com/wp-content/uploads/2023/03/El-peso-de-la-consciencia-min.jpg
+  - Usage note: copied from permitted source article for local hosting.
+  - Edits: saved locally with original aspect ratio preserved; no labels or overlays added.
