@@ -1,21 +1,21 @@
 {
   "slug": "paramedic",
-  "title": "Provocarea Paramedicilor",
-  "seoTitle": "Quiz pentru Provocarea Paramedicilor",
-  "seoDescription": "Acceptă o provocare distractivă de 80 de întrebări, în stil paramedic, care acoperă observația, siguranța, comunicarea, prioritățile, sincronizarea, logica și luarea deciziilor calme.",
-  "pageTitle": "Doar 9% pot trece această provocare de paramedic",
+  "title": "Doar 9% trec acest test de admitere pentru paramedici",
+  "seoTitle": "Doar 9% trec acest test de admitere pentru paramedici",
+  "seoDescription": "Acceptă o provocare distractivă de 40 de întrebări, în stil paramedic, care acoperă observația, siguranța, comunicarea, prioritățile, sincronizarea, logica și luarea deciziilor calme.",
+  "pageTitle": "Doar 9% trec acest test de admitere pentru paramedici",
   "eyebrow": "Provocarea Sănătății",
   "summary": "O provocare rapidă de tip paramedic, construită pe judecată solidă, observație ascuțită, comunicare clară, verificări de siguranță și luare a deciziilor practice.",
-  "duration": "aprox. 7 minute",
+  "duration": "aprox. 5 minute",
   "publishedAt": "2026-05-30T09:00:00Z",
-  "difficulty": "Hard",
+  "difficulty": "Quick",
   "passRate": "9%",
   "cardIcon": "🚑",
   "cardGradient": "linear-gradient(135deg, #0f766e 0%, #155e75 100%)",
   "accent": "#0f8f84",
-  "questionCount": 80,
+  "questionCount": 40,
   "homepage": {
-    "title": "Poți să treci această provocare de paramedic?",
+    "title": "Doar 9% trec acest test de admitere pentru paramedici",
     "summary": "Crezi că poți rămâne calm, să observi detalii și să iei decizii sigure prin 10 runde de urgență?",
     "thumbnailUrl": "/images/thumbnails/paramedic.jpg",
     "thumbnailAlt": "Quiz Provocarea Paramedicilor",
@@ -25,7 +25,7 @@
   },
   "heroPoints": [
     "Runde de judecată în stil paramedic",
-    "80 de scenarii de răspuns de urgență",
+    "40 de scenarii de răspuns de urgență",
     "Profil de rezultat instant"
   ],
   "footer": {
@@ -34,7 +34,8 @@
   },
   "landing": {
     "quickStartText": "Primele apeluri par simple. Rundele ulterioare testează judecata calmă.",
-    "socialProof": "45.000+ persoane l-au încercat săptămâna aceasta"
+    "socialProof": "45.000+ persoane l-au încercat săptămâna aceasta",
+    "ctaLabel": "Începe testul"
   },
   "result": {
     "profileName": "Provocarea Paramedicilor",
@@ -100,8 +101,8 @@
   },
   "stageGroups": [
     {
-      "title": "Încălzirea Primului Răspuns",
-      "encouragement": "Un început bun. Runda următoare cere verificări de siguranță mai stricte înainte de orice acțiune.",
+      "title": "Verificarea siguranței locului",
+      "encouragement": "Bună treabă. Acum alegerile se concentrează pe ceea ce este sigur, clar și util.",
       "questions": [
         {
           "prompt": "Un apelant dă numele clădirii, dar nu o intrare exactă. Ce ar trebui confirmat mai întâi?",
@@ -164,48 +165,6 @@
           "category": "deduction"
         },
         {
-          "prompt": "Un apelant spune că pacientul este \"mai rău\", dar nu oferă detalii. Care întrebare este cea mai utilă?",
-          "choices": [
-            "Îți place aranjamentul camerei?",
-            "Poți descrie ce s-a schimbat?",
-            "E vreme frumoasă acolo?",
-            "Ce este agățat pe cel mai apropiat perete?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Întrebarea ce s-a schimbat transformă un raport vag într-o informație utilă.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Care comportament susține cel mai bine munca calmă în echipă?",
-          "choices": [
-            "Vorbește peste toată lumea",
-            "Oferă o actualizare clară pe rând",
-            "Ascunde informații utile",
-            "Schimbă planul fără să spui nimănui"
-          ],
-          "answerIndex": 1,
-          "explanation": "O actualizare clară pe rând ajută echipa să lucreze pe baza informațiilor comune.",
-          "category": "logic"
-        },
-        {
-          "prompt": "O clădire are scări, o intrare de serviciu și o intrare principală. Care detaliu este cel mai util înainte de a decide ruta de acces?",
-          "choices": [
-            "Care intrare pare cea mai nouă",
-            "Care intrare pare cel mai ușor de reținut",
-            "Ce punct de acces este disponibil și sigur în prezent",
-            "Care intrare are mai multe indicatoare"
-          ],
-          "answerIndex": 2,
-          "explanation": "Cea mai bună cale de acces depinde de opțiunea disponibilă și sigură în prezent.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Verificarea siguranței locului",
-      "encouragement": "Bună treabă. Acum alegerile se concentrează pe ceea ce este sigur, clar și util.",
-      "questions": [
-        {
           "prompt": "Care detaliu contează cel mai mult înainte de a aborda o scenă?",
           "choices": [
             "Apariția semnelor din apropiere",
@@ -264,48 +223,12 @@
           "answerIndex": 3,
           "explanation": "Un nou pericol de siguranță și un plan de mișcare sigură sunt imediat relevante.",
           "category": "attention"
-        },
-        {
-          "prompt": "Un membru al echipei spune: \"Cred că zona este sigură.\" Ce ar face această afirmație mai puternică?",
-          "choices": [
-            "O verificare directă a pericolelor vizibile și a accesului",
-            "O presupunere bazată pe încredere",
-            "O voce mai tare",
-            "O pedeapsă mai lungă"
-          ],
-          "answerIndex": 0,
-          "explanation": "O verificare directă a siguranței este mai puternică decât încrederea sau presupunerile.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Care alegere evită cel mai bine o presupunere nesigură?",
-          "choices": [
-            "Presupune că locul este sigur",
-            "Verifică înainte de a decide",
-            "Ignoră semnul de avertizare",
-            "Urmărește cea mai apropiată mulțime"
-          ],
-          "answerIndex": 1,
-          "explanation": "Verificarea înainte de a decide evită să te bazezi pe presupuneri.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "O mulțime s-a adunat în apropierea locului. Ce ar trebui luat în considerare mai întâi?",
-          "choices": [
-            "Câți oameni poartă pălării",
-            "Dacă mulțimea a venit împreună",
-            "Dacă mulțimea afectează siguranța sau accesul",
-            "Care persoană este cea mai înaltă"
-          ],
-          "answerIndex": 2,
-          "explanation": "O mulțime contează cel mai mult dacă afectează siguranța, mișcarea sau accesul.",
-          "category": "attention"
         }
       ]
     },
     {
-      "title": "Observație calmă",
-      "encouragement": "Bună concentrare. Runda următoare testează o comunicare clară sub o presiune simplă.",
+      "title": "Releul de comunicații",
+      "encouragement": "Observație solidă. Urmează sincronizarea, distanța și logica simplă a traseului.",
       "questions": [
         {
           "prompt": "Care observație este cea mai obiectivă?",
@@ -368,48 +291,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Doi martori sunt de acord asupra unui detaliu, dar nu sunt de acord cu restul. Care detaliu merită cea mai mare încredere?",
-          "choices": [
-            "Cea mai lungă poveste",
-            "Cel mai dramatic detaliu",
-            "Detaliile pe care ambii martori le-au raportat independent",
-            "Detaliul a raportat primul"
-          ],
-          "answerIndex": 2,
-          "explanation": "Un detaliu raportat independent de mai mulți martori merită de obicei mai multă încredere.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Trei martori oferă relatări diferite despre ce s-a întâmplat. Ce ar trebui identificat mai întâi?",
-          "choices": [
-            "Care martor a sosit ultimul",
-            "Care detalii au fost observate direct",
-            "Care relatare sună cel mai dramatic",
-            "Care martor vorbește cel mai repede"
-          ],
-          "answerIndex": 1,
-          "explanation": "Detaliile observate direct sunt mai puternice decât presupunerile sau poveștile repetate.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Care răspuns este cel mai bun atunci când informațiile noi intră în conflict cu primul raport?",
-          "choices": [
-            "Ignoră noile informații",
-            "Verifică și actualizează echipa",
-            "Ascunde conflictul",
-            "Presupune că primul raport are întotdeauna dreptate"
-          ],
-          "answerIndex": 1,
-          "explanation": "Informațiile contradictorii ar trebui verificate și împărtășite clar.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Releul de comunicații",
-      "encouragement": "Observație solidă. Urmează sincronizarea, distanța și logica simplă a traseului.",
-      "questions": [
-        {
           "prompt": "Care transferul este cel mai clar?",
           "choices": [
             "S-a întâmplat ceva mai devreme",
@@ -468,48 +349,12 @@
           "answerIndex": 3,
           "explanation": "Acolo este vag pentru că nu oferă o locație clară.",
           "category": "attention"
-        },
-        {
-          "prompt": "Un apelant spune: \"Vino în spate.\" Ce ar trebui confirmat?",
-          "choices": [
-            "Intrarea lor preferată",
-            "Indiferent dacă \"spate\" înseamnă ușa din spate, poarta de serviciu sau un alt punct de acces",
-            "Aspectul hainelor apelantului",
-            "Epoca clădirii"
-          ],
-          "answerIndex": 1,
-          "explanation": "Cuvintele direcționale trebuie clarificate într-un punct de acces specific.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Care actualizare ar trebui escaladată imediat?",
-          "choices": [
-            "O schimbare confirmată care afectează accesul sau siguranța",
-            "O corectură ortografică",
-            "O schimbare a etichetei unui vehicul",
-            "O preferință neurgentă"
-          ],
-          "answerIndex": 0,
-          "explanation": "Schimbările confirmate care afectează accesul sau siguranța ar trebui escaladate rapid.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Care întrebare este cea mai utilă dacă indicațiile nu sunt clare?",
-          "choices": [
-            "Poți repeta punctul de acces?",
-            "De ce durează mult?",
-            "Toți cei din jur sunt liniștiți?",
-            "Îți place această clădire?"
-          ],
-          "answerIndex": 0,
-          "explanation": "Repetarea punctului de acces clarifică direct unde să mergi.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Timp și distanță",
-      "encouragement": "Comunicare bună. Runda următoare îți cere să stabilești priorități fără să gândești prea mult.",
+      "title": "Gândirea prioritară",
+      "encouragement": "Sincronizarea ta se îmbunătățește. Urmează logica echipamentului și disciplina listei de verificare.",
       "questions": [
         {
           "prompt": "O rută liberă durează puțin mai mult, în timp ce o rută mai scurtă are o poartă blocată neconfirmată. Care este alegerea de planificare mai sigură?",
@@ -572,48 +417,6 @@
           "category": "logic"
         },
         {
-          "prompt": "Care instrucțiune este cea mai precisă?",
-          "choices": [
-            "Pleacă curând",
-            "Apropie-te când ești gata",
-            "Ne întâlnim la ușa de sud în 3 minute",
-            "Așteaptă undeva în apropiere"
-          ],
-          "answerIndex": 2,
-          "explanation": "Oferă un loc și o perioadă clară.",
-          "category": "attention"
-        },
-        {
-          "prompt": "O rută pare mai rapidă, dar nu are o confirmare recentă. Care este cel mai mare risc?",
-          "choices": [
-            "Traseul s-ar putea să nu mai fie utilizabil",
-            "Numele traseului s-ar putea schimba",
-            "Vremea s-ar putea îmbunătăți",
-            "Harta ar putea fi mai mare"
-          ],
-          "answerIndex": 0,
-          "explanation": "O rută neconfirmată poate fi mai rapidă în teorie, dar inutilizabilă în practică.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "O clădire are două puncte de acces. Una este deschisă, dar mai departe; Unul este mai aproape, dar neconfirmat. Ce ar trebui confirmat înainte de a folosi punctul de acces mai apropiat?",
-          "choices": [
-            "Decorațiunea de lângă ușă",
-            "Dacă punctul de acces mai apropiat este deschis și sigur",
-            "Opinia apelantului despre clădire",
-            "Aspectul zonei de acces"
-          ],
-          "answerIndex": 1,
-          "explanation": "Accesul mai apropiat este util doar dacă este deschis și sigur.",
-          "category": "attention"
-        }
-      ]
-    },
-    {
-      "title": "Gândirea prioritară",
-      "encouragement": "Sincronizarea ta se îmbunătățește. Urmează logica echipamentului și disciplina listei de verificare.",
-      "questions": [
-        {
           "prompt": "Ce sarcină ar trebui să vină de obicei înaintea documentației detaliate în timpul unui răspuns activ?",
           "choices": [
             "Verificarea siguranței imediate și a nevoilor",
@@ -672,48 +475,12 @@
           "answerIndex": 1,
           "explanation": "Scurtăturile neconfirmate ar trebui verificate înainte de utilizare.",
           "category": "lateral"
-        },
-        {
-          "prompt": "Care alegere arată cel mai bine o gândire flexibilă?",
-          "choices": [
-            "Repetă un plan blocat",
-            "Întreabă dacă există o altă rută sigură",
-            "Ignoră bariera",
-            "Nu mai distribui actualizări"
-          ],
-          "answerIndex": 1,
-          "explanation": "O rută alternativă sigură se adaptează la barieră.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Apare o nouă sarcină în timp ce toate echipajele sunt ocupate. Ce ar trebui să se întâmple mai întâi?",
-          "choices": [
-            "Atribuie-l aleatoriu",
-            "Reevaluează prioritățile și resursele disponibile",
-            "Ignoră sarcina",
-            "Întârzie toate comunicațiile"
-          ],
-          "answerIndex": 1,
-          "explanation": "O nouă sarcină ar trebui cântărită în raport cu prioritățile actuale și resursele disponibile.",
-          "category": "logic"
-        },
-        {
-          "prompt": "În timpul unui răspuns aglomerat, doi membri ai echipei încep să lucreze la aceeași sarcină, în timp ce o altă sarcină este descoperită. Ce ar trebui să se întâmple?",
-          "choices": [
-            "Să continue amândoi fără comentarii",
-            "Începe o a patra sarcină",
-            "Opriți toată munca imediat",
-            "Clarifică responsabilitățile și atribuie roluri"
-          ],
-          "answerIndex": 3,
-          "explanation": "Clarificarea rolurilor previne efortul duplicat și lasă mai puține sarcini neacoperite.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Echipament și listă de verificare",
-      "encouragement": "Priorități frumoase. Runda următoare combină alegerile de trasee cu deciziile privind resursele.",
+      "title": "Provocarea Finală a Paramedicilor",
+      "encouragement": "Provocarea este îndeplinită. Profilul tău de rezultate este pregătit.",
       "questions": [
         {
           "prompt": "De ce este utilă o listă de verificare înainte de a părăsi o scenă?",
@@ -752,72 +519,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Un articol folosit este raportat în timpul reaprovizionării. Care este cel mai util pas următor?",
-          "choices": [
-            "Înlocuiește sau marchează produsul conform listei de verificare",
-            "Presupune că altcineva s-a ocupat de asta",
-            "Lasă kitul neverificat",
-            "Înregistrează doar eticheta articolului"
-          ],
-          "answerIndex": 0,
-          "explanation": "Un articol second-hand trebuie înlocuit sau clar marcat astfel încât kitul să fie pregătit pentru următorul răspuns.",
-          "category": "logic"
-        },
-        {
-          "prompt": "O listă de verificare spune \"radio, card de acces, geantă de răspuns.\" Care actualizare este cea mai utilă dacă cardul de acces lipsește?",
-          "choices": [
-            "Cardul de acces lipsește; Verific acum procesul de rezervă",
-            "Geanta este grea",
-            "Radioul este negru",
-            "Lista are trei elemente"
-          ],
-          "answerIndex": 0,
-          "explanation": "Actualizarea numește obiectul lipsă și următoarea acțiune.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Care acțiune verifică cel mai bine o posibilă problemă de echipament?",
-          "choices": [
-            "Presupune că funcționează",
-            "Testează-l sau inspectează-l înainte de a te baza pe el",
-            "Ascunde problema",
-            "Folosește-l fără să spui nimănui"
-          ],
-          "answerIndex": 1,
-          "explanation": "Testarea sau inspecția confirmă dacă echipamentul este pregătit.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Un vehicul are spațiu limitat și două obiecte neurgente nu pot fi transportate amândouă. Ce ar trebui să ghideze alegerea?",
-          "choices": [
-            "Care produs a fost împachetat primul",
-            "Care obiect are eticheta mai luminoasă",
-            "Care element este mai relevant pentru apelul curent",
-            "Ce obiect este mai ușor de numit"
-          ],
-          "answerIndex": 2,
-          "explanation": "Alegerile de resurse ar trebui să corespundă nevoii actuale.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Care răspuns este cel mai bun dacă lipsește un element din lista de verificare?",
-          "choices": [
-            "Prefă-te că e prezent",
-            "Faceți o pauză și raportați obiectul lipsă",
-            "Șterge întreaga listă",
-            "Alege un substitut aleatoriu"
-          ],
-          "answerIndex": 1,
-          "explanation": "Raportarea obiectului lipsă ajută echipa să repare golul în siguranță.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Logica rutei și a resurselor",
-      "encouragement": "O disciplină bună pe lista de verificare. Runda următoare adaugă mai multă presiune și alegeri stratificate.",
-      "questions": [
-        {
           "prompt": "Sunt disponibile două echipe. Echipa A este mai aproape. Echipa B este mai departe, dar are echipament suplimentar. Ce ar trebui verificat înainte de a alege?",
           "choices": [
             "Dacă viteza sau echipamentul sunt prioritatea mai mare pentru acest apel",
@@ -854,72 +555,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Fiecare echipaj care primește cea mai recentă notă de siguranță trebuie să o recunoască. Echipa 5 a confirmat nota. Ce poți concluziona?",
-          "choices": [
-            "Echipajul 5 a primit cea mai recentă notă de siguranță",
-            "Echipa 5 este cea mai apropiată de scenă",
-            "Toate echipajele au recunoscut acest lucru",
-            "Nu era nevoie de nicio notă de siguranță"
-          ],
-          "answerIndex": 0,
-          "explanation": "Confirmarea notei înseamnă că Echipa 5 a primit-o.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Care plan echilibrează cel mai bine viteza și claritatea?",
-          "choices": [
-            "Pleacă repede și nu spune nimănui",
-            "Confirmă traseul, apoi pleacă cu o scurtă actualizare",
-            "Așteaptă fără să verifici nimic",
-            "Trimite mai multe mesaje contradictorii"
-          ],
-          "answerIndex": 1,
-          "explanation": "Confirmarea traseului și oferirea unui scurt update susțin atât viteza, cât și claritatea.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Un membru al echipei se ocupă de indicații, în timp ce altul verifică echipamentul. Ce face ca această divizare să fie mai sigură?",
-          "choices": [
-            "Amândoi făcând aceeași sarcină în tăcere",
-            "Roluri clare și un punct comun de actualizare",
-            "Nimeni nu confirmă nimic",
-            "Schimbarea rolurilor la fiecare câteva secunde"
-          ],
-          "answerIndex": 1,
-          "explanation": "Rolurile clare și un punct de actualizare comun reduc confuzia.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Ce detaliu ar trebui verificat mai întâi dacă două notițe de locație nu sunt de acord?",
-          "choices": [
-            "Care notă este mai lungă",
-            "Care sursă este cea mai recentă și de încredere",
-            "Care notă are o formulare mai plăcută",
-            "Care notă folosește mai puține numere"
-          ],
-          "answerIndex": 1,
-          "explanation": "Sursele recente și de încredere sunt mai utile atunci când informațiile intră în conflict.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Sunt disponibile două resurse, dar doar una poate fi folosită imediat. Ce ar trebui să ghideze decizia?",
-          "choices": [
-            "Care resursă a ajuns prima",
-            "Ce resursă susține cel mai bine prioritatea curentă",
-            "Ce resursă costă mai mult",
-            "Care resursă are denumirea mai scurtă"
-          ],
-          "answerIndex": 1,
-          "explanation": "Cea mai utilă resursă este cea care susține cel mai bine prioritatea curentă.",
-          "category": "logic"
-        }
-      ]
-    },
-    {
-      "title": "Decizii de presiune",
-      "encouragement": "A fost o rundă puternică. Etapa finală cere o judecată calmă în mai multe detalii.",
-      "questions": [
-        {
           "prompt": "Un raport spune că intrarea de est este deschisă, dar echipa ajunge și o găsește încuiată. Care este cel mai bun răspuns inițial?",
           "choices": [
             "Ignoră ușa încuiată",
@@ -944,84 +579,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Se trimite o actualizare cu prioritate ridicată în timp ce echipajul se deplasează. Ce ar trebui să se întâmple înainte ca echipa să se bazeze pe vechiul plan?",
-          "choices": [
-            "Actualizarea trebuie recunoscută și luată în considerare",
-            "Actualizarea ar trebui ignorată până mai târziu",
-            "Trebuie folosit doar primul plan",
-            "Actualizarea ar trebui să fie ascunsă de echipă"
-          ],
-          "answerIndex": 0,
-          "explanation": "O actualizare cu prioritate ridicată ar trebui recunoscută și luată în considerare înainte de a continua cu un plan vechi.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "O echipă trebuie să aleagă între o rută clară care durează mai mult și una incertă care poate fi blocată. Care judecată este cea mai echilibrată?",
-          "choices": [
-            "Ruta incertă este întotdeauna mai bună",
-            "Ruta clară poate fi mai sigură dacă fiabilitatea contează",
-            "Timpul de călătorie este irelevant",
-            "Ruta clară trebuie ignorată"
-          ],
-          "answerIndex": 1,
-          "explanation": "O rută fiabilă poate fi mai bună atunci când incertitudinea creează risc.",
-          "category": "logic"
-        },
-        {
-          "prompt": "În timpul predării, următoarea echipă întreabă ce s-a schimbat cel mai recent. Care răspuns este cel mai bun?",
-          "choices": [
-            "Doar cel mai vechi detaliu",
-            "Tot ce s-ar fi putut întâmpla",
-            "Cea mai recentă schimbare confirmată și când s-a întâmplat",
-            "O presupunere despre cauza"
-          ],
-          "answerIndex": 2,
-          "explanation": "Cea mai recentă schimbare confirmată este direct relevantă pentru această întrebare.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Un membru al echipei primește informații noi, dar deja se ocupă de o altă sarcină. Ce reduce șansa ca actualizarea să fie ratată?",
-          "choices": [
-            "Sper că și altcineva își amintește",
-            "Atribuind clar responsabilitatea pentru actualizare",
-            "Așteptând până mai târziu",
-            "Evitarea discuțiilor"
-          ],
-          "answerIndex": 1,
-          "explanation": "Atribuirea responsabilității clarifică cine va acționa în funcție de actualizare.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Care alegere gestionează cel mai bine mai multe sarcini simultan?",
-          "choices": [
-            "Fă doar cea mai ușoară sarcină",
-            "Stabilește prioritățile și atribuie roluri clare",
-            "Schimbă sarcinile aleatoriu",
-            "Evită să-ți faci un plan"
-          ],
-          "answerIndex": 1,
-          "explanation": "Prioritățile și rolurile clare ajută la gestionarea mai multor sarcini.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Unii respondenți adună informații. Toți cei care culeg informații trebuie să împărtășească concluziile cheie. Ce urmează?",
-          "choices": [
-            "Unii respondenți trebuie să împărtășească concluziile cheie",
-            "Toți respondenții colectează informații",
-            "Nu trebuie împărtășite concluzii",
-            "Doar driverele au nevoie de actualizări"
-          ],
-          "answerIndex": 0,
-          "explanation": "Respondenții care adună informații trebuie să împărtășească concluziile cheie.",
-          "category": "deduction"
-        }
-      ]
-    },
-    {
-      "title": "Provocarea Finală a Paramedicilor",
-      "encouragement": "Provocarea este îndeplinită. Profilul tău de rezultate este pregătit.",
-      "questions": [
-        {
           "prompt": "O rută este mai rapidă, dar incertă. O a doua rută este mai lentă, dar confirmată. Condițiile se schimbă rapid. Care factor ar trebui să aibă cea mai mare greutate?",
           "choices": [
             "Care rută sună mai familiar",
@@ -1043,78 +600,6 @@
           ],
           "answerIndex": 1,
           "explanation": "Deciziile privind resursele ar trebui să țină cont de disponibilitate, prioritate și volumul actual de sarcini.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Raportul original nu mai corespunde cu ceea ce vede echipa la sosire. Ce ar trebui să ghideze următoarea decizie?",
-          "choices": [
-            "Doar raportul original",
-            "Informații confirmate în prezent",
-            "O presupunere despre ce s-a schimbat",
-            "Cel mai dramatic detaliu"
-          ],
-          "answerIndex": 1,
-          "explanation": "Informațiile confirmate actuale ar trebui să ghideze deciziile atunci când scena s-a schimbat.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Un pacient, un membru al familiei, administratorul clădirii și agentul de securitate încep să ofere informații simultan. Ce ar trebui să se întâmple mai întâi?",
-          "choices": [
-            "Stabilește o sursă clară pe rând",
-            "Acceptă fiecare detaliu fără să verifici",
-            "Urmărește cea mai tare voce",
-            "Nu mai aduna informații"
-          ],
-          "answerIndex": 0,
-          "explanation": "O sursă clară pe rând ajută echipa să confirme informațiile fără a fi suprasolicitată.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "O actualizare cheie sosește chiar înainte de plecare, dar nimeni nu confirmă că a auzit-o. Ce ar trebui să se întâmple mai întâi?",
-          "choices": [
-            "Pleacă fără să verifici",
-            "Confirmă că actualizarea a fost primită și înțeleasă",
-            "Ignoră actualizarea",
-            "Schimbă destinația aleatoriu"
-          ],
-          "answerIndex": 1,
-          "explanation": "Actualizările importante ar trebui confirmate înainte ca echipa să acționeze asupra planului.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "O rută mai rapidă, spațiul limitat pentru echipamente și un nou avertisment de acces apar simultan. Ce ar trebui separat mai întâi?",
-          "choices": [
-            "Fiecare detaliu, cât de interesant sună",
-            "Fapte critice pentru siguranță, din detalii utile, dar neurgente",
-            "Doar cea mai rapidă opțiune de rută",
-            "Doar lista de echipamente"
-          ],
-          "answerIndex": 1,
-          "explanation": "Faptele critice pentru siguranță trebuie separate mai întâi atunci când mai mulți factori concurează.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Doi membri ai echipajului nu sunt de acord cu privire la următoarea sarcină din cauza unei schimbări bruște. Care acțiune de conducere reduce cel mai bine confuzia?",
-          "choices": [
-            "Să continue dezacordul",
-            "Declară prioritatea, atribuie rolurile și confirmă următorul pas",
-            "Evită să iei o decizie",
-            "Roagă pe toată lumea să lucreze mai repede"
-          ],
-          "answerIndex": 1,
-          "explanation": "Prioritatea clară, atribuirea rolului și confirmarea reduc confuzia în timpul schimbării.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Trei surse nu sunt de acord. Una este recentă, dar indirectă. Una este directă, dar veche. Unul este recent și direct. Care sursă ar trebui să poarte de obicei cea mai mare greutate?",
-          "choices": [
-            "Cele mai vechi informații",
-            "Informații recente și directe",
-            "Cea mai lungă explicație",
-            "Cel mai încrezător vorbitor"
-          ],
-          "answerIndex": 1,
-          "explanation": "Informațiile care sunt atât recente, cât și directe sunt de obicei mai puternice decât cele mai vechi sau indirecte.",
           "category": "logic"
         }
       ]

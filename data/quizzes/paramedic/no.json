@@ -1,21 +1,21 @@
 {
   "slug": "paramedic",
-  "title": "Ambulanseutfordring",
-  "seoTitle": "Ambulanseutfordringsquiz",
-  "seoDescription": "Ta en morsom 80-spørsmåls ambulanseutfordring som dekker observasjon, sikkerhet, kommunikasjon, prioriteringer, timing, logikk og rolig beslutningstaking.",
-  "pageTitle": "Bare 9 % klarer denne ambulanseutfordringen",
+  "title": "Bare 9 % består denne opptakstesten for ambulansepersonell",
+  "seoTitle": "Bare 9 % består denne opptakstesten for ambulansepersonell",
+  "seoDescription": "Ta en morsom 40-spørsmåls ambulanseutfordring som dekker observasjon, sikkerhet, kommunikasjon, prioriteringer, timing, logikk og rolig beslutningstaking.",
+  "pageTitle": "Bare 9 % består denne opptakstesten for ambulansepersonell",
   "eyebrow": "Helseutfordringen",
   "summary": "En rask ambulansefaglig utfordring bygget rundt god dømmekraft, skarp observasjon, klar kommunikasjon, sikkerhetskontroller og praktiske beslutninger.",
-  "duration": "ca. 7 minutter",
+  "duration": "ca. 5 minutter",
   "publishedAt": "2026-05-30T09:00:00Z",
-  "difficulty": "Hard",
+  "difficulty": "Quick",
   "passRate": "9%",
   "cardIcon": "🚑",
   "cardGradient": "linear-gradient(135deg, #0f766e 0%, #155e75 100%)",
   "accent": "#0f8f84",
-  "questionCount": 80,
+  "questionCount": 40,
   "homepage": {
-    "title": "Kan du bestå denne ambulanseutfordringen?",
+    "title": "Bare 9 % består denne opptakstesten for ambulansepersonell",
     "summary": "Tror du at du kan holde deg rolig, legge merke til detaljer og ta trygge valg gjennom 10 nødrunder?",
     "thumbnailUrl": "/images/thumbnails/paramedic.jpg",
     "thumbnailAlt": "Ambulanseutfordringsquiz",
@@ -25,7 +25,7 @@
   },
   "heroPoints": [
     "Ambulansestil vurderingsrunder",
-    "80 nødsituasjonsscenarier",
+    "40 nødsituasjonsscenarier",
     "Umiddelbar resultatprofil"
   ],
   "footer": {
@@ -34,7 +34,8 @@
   },
   "landing": {
     "quickStartText": "De første samtalene føles enkle. De senere rundene tester rolig dømmekraft.",
-    "socialProof": "45 000+ personer prøvde det denne uken"
+    "socialProof": "45 000+ personer prøvde det denne uken",
+    "ctaLabel": "Start testen"
   },
   "result": {
     "profileName": "Ambulanseutfordring",
@@ -100,8 +101,8 @@
   },
   "stageGroups": [
     {
-      "title": "Oppvarming av første respons",
-      "encouragement": "God start. Neste runde krever skarpere sikkerhetssjekker før noen handling.",
+      "title": "Sikkerhetssjekk på stedet",
+      "encouragement": "Bra jobbet. Nå fokuserer valgene på det som er trygt, klart og nyttig.",
       "questions": [
         {
           "prompt": "En innringer oppgir et bygningsnavn, men ingen eksakt inngang. Hva bør bekreftes først?",
@@ -164,48 +165,6 @@
           "category": "deduction"
         },
         {
-          "prompt": "En innringer sier at pasienten er «verre», men gir ingen detaljer. Hvilket spørsmål er mest nyttig?",
-          "choices": [
-            "Liker du romoppsettet?",
-            "Kan du beskrive hva som har endret seg?",
-            "Er været fint der?",
-            "Hva henger på nærmeste vegg?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Å spørre hva som endret seg gjør en vag rapport om til nyttig informasjon.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Hvilken atferd støtter best rolig samarbeid?",
-          "choices": [
-            "Snakk over alle",
-            "Gi én tydelig oppdatering om gangen",
-            "Skjul nyttig informasjon",
-            "Endre planen uten å si ifra til noen"
-          ],
-          "answerIndex": 1,
-          "explanation": "Én klar oppdatering om gangen hjelper teamet å jobbe ut fra delt informasjon.",
-          "category": "logic"
-        },
-        {
-          "prompt": "En bygning har trapper, en tjenesteinngang og en hovedinngang. Hvilken detalj er mest nyttig før man bestemmer seg for adkomstveien?",
-          "choices": [
-            "Hvilken inngang ser nyeste ut",
-            "Hvilken inngang som ser lettest ut å huske",
-            "Hvilket tilgangspunkt er for øyeblikket tilgjengelig og trygt",
-            "Hvilken inngang har flere skilt"
-          ],
-          "answerIndex": 2,
-          "explanation": "Den beste adkomstruten avhenger av hvilket alternativ som er tilgjengelig og trygt.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Sikkerhetssjekk på stedet",
-      "encouragement": "Bra jobbet. Nå fokuserer valgene på det som er trygt, klart og nyttig.",
-      "questions": [
-        {
           "prompt": "Hvilken detalj betyr mest før man nærmer seg en åsted?",
           "choices": [
             "Fremkomsten av nærliggende skilt",
@@ -264,48 +223,12 @@
           "answerIndex": 3,
           "explanation": "En ny sikkerhetsrisiko og en sikker bevegelsesplan er umiddelbart relevante.",
           "category": "attention"
-        },
-        {
-          "prompt": "Et teammedlem sier: «Jeg tror området er trygt.» Hva ville gjort den uttalelsen sterkere?",
-          "choices": [
-            "En direkte sjekk av synlige farer og tilgang",
-            "Et gjetning basert på tillit",
-            "En høyere stemme",
-            "En lengre straff"
-          ],
-          "answerIndex": 0,
-          "explanation": "En direkte sikkerhetssjekk er sterkere enn selvtillit eller gjetting.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Hvilket valg unngår best en usikker antakelse?",
-          "choices": [
-            "Anta at åstedet er trygt",
-            "Sjekk før du bestemmer deg",
-            "Ignorer varselsignalet",
-            "Følg nærmeste folkemengde"
-          ],
-          "answerIndex": 1,
-          "explanation": "Å sjekke før man bestemmer seg unngår å stole på antakelser.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "En folkemengde har samlet seg nær åstedet. Hva bør vurderes først?",
-          "choices": [
-            "Hvor mange har på seg hatter",
-            "Om folkemengden kom sammen",
-            "Enten folkemengden påvirker sikkerheten eller tilgangen",
-            "Hvilken person er høyest"
-          ],
-          "answerIndex": 2,
-          "explanation": "En folkemengde betyr mest hvis det påvirker sikkerhet, bevegelse eller tilgang.",
-          "category": "attention"
         }
       ]
     },
     {
-      "title": "Rolig observasjon",
-      "encouragement": "God fokus. Neste runde tester klar kommunikasjon under enkelt press.",
+      "title": "Kommunikasjonsrelé",
+      "encouragement": "Sterk observasjon. Deretter kommer timing, avstand og enkel rutelogikk.",
       "questions": [
         {
           "prompt": "Hvilken observasjon er mest objektiv?",
@@ -368,48 +291,6 @@
           "category": "attention"
         },
         {
-          "prompt": "To vitner er enige om én detalj, men er uenige om alt annet. Hvilken detalj fortjener mest tillit?",
-          "choices": [
-            "Den lengste historien",
-            "Den mest dramatiske detaljen",
-            "Detaljene rapporterte begge vitnene uavhengig",
-            "Detaljene rapporterte først"
-          ],
-          "answerIndex": 2,
-          "explanation": "En detalj som er uavhengig rapportert av mer enn ett vitne, fortjener vanligvis mer tillit.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Tre vitner gir ulike forklaringer på hva som skjedde. Hva bør identifiseres først?",
-          "choices": [
-            "Hvilket vitne kom sist",
-            "Hvilke detaljer ble direkte observert",
-            "Hvilken beretning høres mest dramatisk ut",
-            "Hvilket vitne taler raskest"
-          ],
-          "answerIndex": 1,
-          "explanation": "Direkte observerte detaljer er sterkere enn gjetninger eller gjentatte historier.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Hvilket svar er best når ny informasjon kolliderer med den første rapporten?",
-          "choices": [
-            "Ignorer den nye informasjonen",
-            "Sjekk og oppdater teamet",
-            "Skjul konflikten",
-            "Anta at den første rapporten alltid er riktig"
-          ],
-          "answerIndex": 1,
-          "explanation": "Motstridende informasjon bør sjekkes og deles tydelig.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Kommunikasjonsrelé",
-      "encouragement": "Sterk observasjon. Deretter kommer timing, avstand og enkel rutelogikk.",
-      "questions": [
-        {
           "prompt": "Hvilken overlevering er klarest?",
           "choices": [
             "Noe skjedde tidligere",
@@ -468,48 +349,12 @@
           "answerIndex": 3,
           "explanation": "Der borte er vagt fordi det ikke gir en klar plassering.",
           "category": "attention"
-        },
-        {
-          "prompt": "En innringer sier: «Kom til baksiden.» Hva bør bekreftes?",
-          "choices": [
-            "Deres favorittinngang",
-            "Om \"bak\" betyr bakdør, serviceport eller et annet tilgangspunkt",
-            "Utseendet til innringerens klær",
-            "Bygningens alder"
-          ],
-          "answerIndex": 1,
-          "explanation": "Retningsord bør presiseres til et spesifikt tilgangspunkt.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Hvilken oppdatering bør eskaleres umiddelbart?",
-          "choices": [
-            "En bekreftet endring som påvirker tilgang eller sikkerhet",
-            "En rettskrivningskorrigering",
-            "En endring av kjøretøyetikett",
-            "En ikke-presserende preferanse"
-          ],
-          "answerIndex": 0,
-          "explanation": "Bekreftede endringer som påvirker tilgang eller sikkerhet bør eskaleres raskt.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Hvilket spørsmål er mest nyttig hvis instruksjonene er uklare?",
-          "choices": [
-            "Kan du gjenta tilgangspunktet?",
-            "Hvorfor tar dette lang tid?",
-            "Er alle i nærheten rolige?",
-            "Liker du denne bygningen?"
-          ],
-          "answerIndex": 0,
-          "explanation": "Å gjenta aksesspunktet direkte klargjør hvor du skal gå.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Tid og avstand",
-      "encouragement": "God kommunikasjon. Neste runde ber deg sette prioriteringer uten å overtenke.",
+      "title": "Prioritert tenkning",
+      "encouragement": "Timingen din blir bedre. Deretter kommer utstyrslogikk og sjekklistedisiplin.",
       "questions": [
         {
           "prompt": "En klar rute tar litt lengre tid, mens en kortere rute har en ubekreftet låst port. Hva er det tryggeste planleggingsvalget?",
@@ -572,48 +417,6 @@
           "category": "logic"
         },
         {
-          "prompt": "Hvilken instruksjon er mest presis?",
-          "choices": [
-            "Gå snart",
-            "Flytt nærmere når du er klar",
-            "Møt ved sørdøren om 3 minutter",
-            "Vent et sted i nærheten"
-          ],
-          "answerIndex": 2,
-          "explanation": "Det gir et sted og en klar tid.",
-          "category": "attention"
-        },
-        {
-          "prompt": "En rute virker raskere, men har ingen nylig bekreftelse. Hva er den største risikoen?",
-          "choices": [
-            "Ruten kan være ubrukelig",
-            "Rutenavnet kan endres",
-            "Været kan bli bedre",
-            "Kartet kan være større"
-          ],
-          "answerIndex": 0,
-          "explanation": "En ubekreftet rute kan være raskere i teorien, men ubrukelig i praksis.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "En bygning har to tilgangspunkter. Den ene er åpen, men lenger unna; En er nærmere, men ikke bekreftet. Hva bør bekreftes før man bruker nærmeste tilgangspunkt?",
-          "choices": [
-            "Dekorasjonen nær døren",
-            "Om det nærmeste tilgangspunktet er åpent og trygt",
-            "Innringerens mening om bygningen",
-            "Utseendet til adkomstområdet"
-          ],
-          "answerIndex": 1,
-          "explanation": "Nærmere tilgang er bare nyttig hvis det er åpent og trygt.",
-          "category": "attention"
-        }
-      ]
-    },
-    {
-      "title": "Prioritert tenkning",
-      "encouragement": "Timingen din blir bedre. Deretter kommer utstyrslogikk og sjekklistedisiplin.",
-      "questions": [
-        {
           "prompt": "Hvilken oppgave bør vanligvis komme før detaljert papirarbeid under en aktiv respons?",
           "choices": [
             "Sjekker umiddelbar sikkerhet og behov",
@@ -672,48 +475,12 @@
           "answerIndex": 1,
           "explanation": "Ubekreftede snarveier bør sjekkes før bruk.",
           "category": "lateral"
-        },
-        {
-          "prompt": "Hvilket valg viser best fleksibel tenkning?",
-          "choices": [
-            "Gjenta en blokkert plan",
-            "Spør om det finnes en annen trygg rute",
-            "Ignorer barrieren",
-            "Slutt å dele oppdateringer"
-          ],
-          "answerIndex": 1,
-          "explanation": "En trygg alternativ rute tilpasses barrieren.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "En ny oppgave dukker opp mens alle mannskapene er opptatt. Hva bør skje først?",
-          "choices": [
-            "Tildel det tilfeldig",
-            "Revurder prioriteringer og tilgjengelige ressurser",
-            "Ignorer oppgaven",
-            "Forsink all kommunikasjon"
-          ],
-          "answerIndex": 1,
-          "explanation": "En ny oppgave bør veies opp mot dagens prioriteringer og tilgjengelige ressurser.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Under en travel respons begynner to teammedlemmer å jobbe med samme oppgave mens en annen oppgave er avdekket. Hva bør skje?",
-          "choices": [
-            "La begge fortsette uten kommentar",
-            "Start en fjerde oppgave",
-            "Stopp alt arbeid umiddelbart",
-            "Klargjør ansvarsområder og tildel roller"
-          ],
-          "answerIndex": 3,
-          "explanation": "Å klargjøre roller forhindrer dobbeltarbeid og etterlater færre oppgaver ubehandlet.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Utstyr og sjekkliste",
-      "encouragement": "Fine prioriteringer. Neste runde blander rutevalg med ressursvalg.",
+      "title": "Siste paramedikerutfordring",
+      "encouragement": "Utfordring fullført. Resultatprofilen din er klar.",
       "questions": [
         {
           "prompt": "Hvorfor er en sjekkliste nyttig før man forlater en scene?",
@@ -752,72 +519,6 @@
           "category": "attention"
         },
         {
-          "prompt": "En brukt vare rapporteres under påfylling. Hva er det mest nyttige neste steget?",
-          "choices": [
-            "Bytt ut eller flagg elementet i henhold til sjekklisten",
-            "Anta at noen andre ordnet det",
-            "La settet være ukontrollert",
-            "Registrer kun vareetiketten"
-          ],
-          "answerIndex": 0,
-          "explanation": "En brukt vare bør erstattes eller tydelig flagges slik at settet er klart for neste svar.",
-          "category": "logic"
-        },
-        {
-          "prompt": "En sjekkliste sier \"radio, adgangskort, responspose.\" Hvilken oppdatering er mest nyttig hvis adgangskortet mangler?",
-          "choices": [
-            "Adgangskortet mangler; Sjekker reserveprosessen nå",
-            "Vesken er tung",
-            "Radioen er svart",
-            "Listen har tre punkter"
-          ],
-          "answerIndex": 0,
-          "explanation": "Oppdateringen navngir det manglende elementet og neste handling.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Hvilken handling sjekker best et mulig utstyrsproblem?",
-          "choices": [
-            "Anta at det fungerer",
-            "Test eller inspiser den før du stoler på den",
-            "Skjul problemet",
-            "Bruk den uten å si ifra til noen"
-          ],
-          "answerIndex": 1,
-          "explanation": "Testing eller inspeksjon bekrefter om utstyret er klart.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Et kjøretøy har begrenset plass, og to ikke-akutte gjenstander kan ikke bæres begge. Hva bør styre valget?",
-          "choices": [
-            "Hvilken vare ble pakket først",
-            "Hvilket element har den lysere etiketten",
-            "Hvilket element er mest relevant for den nåværende samtalen",
-            "Hvilken gjenstand er lettest å navngi"
-          ],
-          "answerIndex": 2,
-          "explanation": "Ressursvalg bør samsvare med dagens behov.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Hvilket svar er best hvis en sjekkliste mangler?",
-          "choices": [
-            "Lat som om den er til stede",
-            "Pause og rapporter den manglende gjenstanden",
-            "Stryk ut hele listen",
-            "Velg en tilfeldig erstatning"
-          ],
-          "answerIndex": 1,
-          "explanation": "Å rapportere en manglende gjenstand hjelper teamet med å tette gapet på en trygg måte.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Rute- og ressurslogikk",
-      "encouragement": "God disiplin i sjekklisten. Neste runde gir mer press og lagdelte valg.",
-      "questions": [
-        {
           "prompt": "To lag er tilgjengelige. Team A er nærmere. Team B er lenger unna, men har ekstra utstyr. Hva bør sjekkes før man velger?",
           "choices": [
             "Om hastighet eller utstyr er høyere prioritet for denne samtalen",
@@ -854,72 +555,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Hvert mannskap som mottar den siste sikkerhetsmeldingen må bekrefte den. Crew 5 har bekreftet notatet. Hva kan du konkludere med?",
-          "choices": [
-            "Mannskap 5 mottok den siste sikkerhetsmeldingen",
-            "Crew 5 er nærmest åstedet",
-            "Alle mannskaper har anerkjent det",
-            "Ingen sikkerhetsnotat var nødvendig"
-          ],
-          "answerIndex": 0,
-          "explanation": "Å bekrefte betyr at Crew 5 mottok den.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Hvilken plan balanserer best fart og klarhet?",
-          "choices": [
-            "Gå fort og si det ikke til noen",
-            "Bekreft ruten, og dra deretter med en kort oppdatering",
-            "Vent uten å sjekke noe",
-            "Send flere motstridende meldinger"
-          ],
-          "answerIndex": 1,
-          "explanation": "Å bekrefte ruten og gi en kort oppdatering støtter både hastighet og klarhet.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Et teammedlem håndterer instruksjonene mens et annet sjekker utstyret. Hva gjør denne splittingen tryggere?",
-          "choices": [
-            "Begge gjør den samme oppgaven stille",
-            "Klare roller og et delt oppdateringspunkt",
-            "Ingen bekrefter noe",
-            "Bytter rolle hvert par sekunder"
-          ],
-          "answerIndex": 1,
-          "explanation": "Tydelige roller og et delt oppdateringspunkt reduserer forvirring.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Hvilken detalj bør sjekkes først hvis to stedsnotater er uenige?",
-          "choices": [
-            "Hvilken tone er lengst",
-            "Hvilken kilde er den nyeste og mest pålitelige",
-            "Hvilken har finere formulering",
-            "Hvilken note bruker færrest tall"
-          ],
-          "answerIndex": 1,
-          "explanation": "Nylige og pålitelige kilder er mer nyttige når informasjon er konfliktfylt.",
-          "category": "attention"
-        },
-        {
-          "prompt": "To ressurser er tilgjengelige, men bare én kan brukes umiddelbart. Hva bør styre beslutningen?",
-          "choices": [
-            "Hvilken ressurs kom først",
-            "Hvilken ressurs støtter best den nåværende prioriteten",
-            "Hvilken ressurs koster mest",
-            "Hvilken ressurs har det kortere navnet"
-          ],
-          "answerIndex": 1,
-          "explanation": "Den mest nyttige ressursen er den som best støtter den nåværende prioriteten.",
-          "category": "logic"
-        }
-      ]
-    },
-    {
-      "title": "Pressbeslutninger",
-      "encouragement": "Det var en sterk runde. Den siste fasen krever rolig vurdering av flere detaljer.",
-      "questions": [
-        {
           "prompt": "En rapport sier at østinngangen er åpen, men teamet ankommer og finner den låst. Hva er den beste første responsen?",
           "choices": [
             "Ignorer den låste døren",
@@ -944,84 +579,6 @@
           "category": "attention"
         },
         {
-          "prompt": "En høyprioritert oppdatering sendes mens mannskapet er i bevegelse. Hva bør skje før mannskapet stoler på den gamle planen?",
-          "choices": [
-            "Oppdateringen bør anerkjennes og vurderes",
-            "Oppdateringen bør ignoreres til senere",
-            "Kun den første planen bør brukes",
-            "Oppdateringen bør holdes skjult for teamet"
-          ],
-          "answerIndex": 0,
-          "explanation": "En oppdatering med høy prioritet bør anerkjennes og vurderes før man fortsetter med en gammel plan.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Et lag må velge mellom en klar rute som tar lengre tid og en usikker rute som kan bli blokkert. Hvilken dom er mest balansert?",
-          "choices": [
-            "Den usikre ruten er alltid bedre",
-            "Den klare ruten kan være tryggere hvis pålitelighet betyr noe",
-            "Reisetid er irrelevant",
-            "Den klare ruten må ignoreres"
-          ],
-          "answerIndex": 1,
-          "explanation": "En pålitelig rute kan være bedre når usikkerhet skaper risiko.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Under en overlevering spør neste team hva som har endret seg nylig. Hvilket svar er best?",
-          "choices": [
-            "Bare den eldste detaljen",
-            "Alt som kunne ha skjedd",
-            "Den siste bekreftede endringen og når den skjedde",
-            "Et gjetning om årsaken"
-          ],
-          "answerIndex": 2,
-          "explanation": "Den siste bekreftede endringen er direkte relevant for spørsmålet.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Et teammedlem mottar ny informasjon, men håndterer allerede en annen oppgave. Hva reduserer sjansen for at oppdateringen blir oversett?",
-          "choices": [
-            "Håper noen andre husker det",
-            "Å tydelig tildele ansvaret for oppdateringen",
-            "Venter til senere",
-            "Unngå diskusjon"
-          ],
-          "answerIndex": 1,
-          "explanation": "Å tildele ansvar gjør det klart hvem som vil handle på oppdateringen.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Hvilket valg håndterer best flere oppgaver samtidig?",
-          "choices": [
-            "Gjør bare den enkleste oppgaven",
-            "Sett prioriteringer og tildel klare roller",
-            "Bytt oppgaver tilfeldig",
-            "Unngå å lage en plan"
-          ],
-          "answerIndex": 1,
-          "explanation": "Prioriteringer og klare roller hjelper til med å håndtere flere oppgaver.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Noen respondenter samler inn informasjon. Alle informasjonsinnsamlere må dele viktige funn. Hva følger?",
-          "choices": [
-            "Noen respondenter må dele viktige funn",
-            "Alle respondenter samler inn informasjon",
-            "Ingen funn bør deles",
-            "Kun drivere trenger oppdateringer"
-          ],
-          "answerIndex": 0,
-          "explanation": "De som samler inn informasjon må dele viktige funn.",
-          "category": "deduction"
-        }
-      ]
-    },
-    {
-      "title": "Siste paramedikerutfordring",
-      "encouragement": "Utfordring fullført. Resultatprofilen din er klar.",
-      "questions": [
-        {
           "prompt": "En rute er raskere, men usikker. En andre rute er tregere, men bekreftet. Forholdene endrer seg raskt. Hvilken faktor bør veie mest?",
           "choices": [
             "Hvilken rute høres mest kjent ut",
@@ -1043,78 +600,6 @@
           ],
           "answerIndex": 1,
           "explanation": "Ressursbeslutninger bør ta hensyn til tilgjengelighet, prioritet og den nåværende oppgavebelastningen.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Den opprinnelige rapporten stemmer ikke lenger overens med det laget ser ved ankomst. Hva bør styre neste beslutning?",
-          "choices": [
-            "Kun den opprinnelige rapporten",
-            "Nåværende bekreftet informasjon",
-            "Et gjetning på hva som endret seg",
-            "Den mest dramatiske detaljen"
-          ],
-          "answerIndex": 1,
-          "explanation": "Nåværende bekreftet informasjon bør veilede beslutninger når scenen har endret seg.",
-          "category": "logic"
-        },
-        {
-          "prompt": "En pasient, et familiemedlem, en bygningsleder og en sikkerhetsvakt begynner alle å gi informasjon samtidig. Hva bør skje først?",
-          "choices": [
-            "Etabler én klar kilde om gangen",
-            "Aksepter alle detaljer uten å sjekke",
-            "Følg den høyeste stemmen",
-            "Slutt å samle informasjon"
-          ],
-          "answerIndex": 0,
-          "explanation": "Én tydelig kilde om gangen hjelper teamet med å bekrefte informasjon uten overbelastning.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "En viktig oppdatering kommer like før avreise, men ingen bekrefter at de har hørt den. Hva bør skje først?",
-          "choices": [
-            "Gå uten å sjekke",
-            "Bekreft at oppdateringen ble mottatt og forstått",
-            "Ignorer oppdateringen",
-            "Endre destinasjonen tilfeldig"
-          ],
-          "answerIndex": 1,
-          "explanation": "Viktige oppdateringer bør bekreftes før teamet handler på planen.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "En raskere rute, begrenset utstyrsplass og en ny tilgangsadvarsel dukker opp samtidig. Hva bør skilles først?",
-          "choices": [
-            "Hver detalj på hvor interessant det høres ut",
-            "Sikkerhetskritiske fakta fra nyttige, men ikke-presserende detaljer",
-            "Bare det raskeste alternativet",
-            "Kun utstyrslisten"
-          ],
-          "answerIndex": 1,
-          "explanation": "Sikkerhetskritiske fakta bør skilles først når flere faktorer konkurrerer.",
-          "category": "attention"
-        },
-        {
-          "prompt": "To mannskapsmedlemmer er uenige om neste oppgave under en plutselig endring. Hvilken lederhandling reduserer best forvirring?",
-          "choices": [
-            "La uenigheten fortsette",
-            "Oppgi prioriteten, tildel roller, og bekreft neste steg",
-            "Unngå å ta en avgjørelse",
-            "Be alle jobbe raskere"
-          ],
-          "answerIndex": 1,
-          "explanation": "Klar prioritet, rollefordeling og bekreftelse reduserer forvirring under endring.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Tre kilder er uenige. Den ene er nylig, men indirekte. Den ene er direkte, men gammel. Den ene er nylig og direkte. Hvilken kilde bør vanligvis veie mest?",
-          "choices": [
-            "Den eldste informasjonen",
-            "Nylig og direkte informasjon",
-            "Den lengste forklaringen",
-            "Den mest selvsikre taleren"
-          ],
-          "answerIndex": 1,
-          "explanation": "Informasjon som er både nylig og direkte er vanligvis sterkere enn eldre eller indirekte informasjon.",
           "category": "logic"
         }
       ]
