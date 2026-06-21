@@ -1,21 +1,21 @@
 {
   "slug": "paramedic",
-  "title": "Ensihoitajan haaste",
-  "seoTitle": "Ensihoitajan haastevisailu",
-  "seoDescription": "Ota hauska 80 kysymyksen ensihoitajatyyppinen haaste, joka kattaa havainnointia, turvallisuutta, viestintää, prioriteetteja, ajoitusta, logiikkaa ja rauhallista päätöksentekoa.",
-  "pageTitle": "Vain 9 % pystyy läpäisemään tämän ensihoitajan haasteen",
+  "title": "Vain 9 % läpäisee tämän ensihoitajan pääsytestin",
+  "seoTitle": "Vain 9 % läpäisee tämän ensihoitajan pääsytestin",
+  "seoDescription": "Ota hauska 40 kysymyksen ensihoitajatyyppinen haaste, joka kattaa havainnointia, turvallisuutta, viestintää, prioriteetteja, ajoitusta, logiikkaa ja rauhallista päätöksentekoa.",
+  "pageTitle": "Vain 9 % läpäisee tämän ensihoitajan pääsytestin",
   "eyebrow": "Terveydenhuollon haaste",
   "summary": "Nopea ensihoitajatyylinen haaste, joka perustuu järkevään harkintaan, tarkkaavaiseen havainnointiin, selkeään viestintään, turvallisuustarkastuksiin ja käytännön päätöksentekoon.",
-  "duration": "noin 7 minuuttia",
+  "duration": "noin 5 minuuttia",
   "publishedAt": "2026-05-30T09:00:00Z",
-  "difficulty": "Hard",
+  "difficulty": "Quick",
   "passRate": "9%",
   "cardIcon": "🚑",
   "cardGradient": "linear-gradient(135deg, #0f766e 0%, #155e75 100%)",
   "accent": "#0f8f84",
-  "questionCount": 80,
+  "questionCount": 40,
   "homepage": {
-    "title": "Voitko läpäistä tämän ensihoitajan haasteen?",
+    "title": "Vain 9 % läpäisee tämän ensihoitajan pääsytestin",
     "summary": "Luulitko, että pystyt pysymään rauhallisena, huomaamaan yksityiskohdat ja tekemään turvallisia valintoja kymmenellä hätäkierroksella?",
     "thumbnailUrl": "/images/thumbnails/paramedic.jpg",
     "thumbnailAlt": "Ensihoitajahaaste -tietovisa",
@@ -25,7 +25,7 @@
   },
   "heroPoints": [
     "Ensihoitajatyyliset arviointikierrokset",
-    "80 hätätilanteen tilannetta",
+    "40 hätätilanteen tilannetta",
     "Välitön tulosprofiili"
   ],
   "footer": {
@@ -34,7 +34,8 @@
   },
   "landing": {
     "quickStartText": "Ensimmäiset puhelut tuntuvat yksinkertaisilta. Myöhemmät kierrokset testaavat rauhallista harkintaa.",
-    "socialProof": "45 000+ ihmistä kokeili sitä tällä viikolla"
+    "socialProof": "45 000+ ihmistä kokeili sitä tällä viikolla",
+    "ctaLabel": "Aloita testi"
   },
   "result": {
     "profileName": "Ensihoitajan haaste",
@@ -100,8 +101,8 @@
   },
   "stageGroups": [
     {
-      "title": "Ensireaktion lämmittely",
-      "encouragement": "Hyvä alku. Seuraava kierros vaatii terävämpiä turvatarkastuksia ennen mitään toimintaa.",
+      "title": "Tapahtumapaikan turvallisuustarkastus",
+      "encouragement": "Hienoa työtä. Nyt valinnat keskittyvät siihen, mikä on turvallista, selkeää ja hyödyllistä.",
       "questions": [
         {
           "prompt": "Soittaja antaa rakennuksen nimen, mutta ei tarkkaa sisäänkäyntiä. Mitä pitäisi varmistaa ensin?",
@@ -164,48 +165,6 @@
           "category": "deduction"
         },
         {
-          "prompt": "Soittaja sanoo, että potilas on \"huonommin\", mutta ei anna yksityiskohtia. Mikä kysymys on hyödyllisin?",
-          "choices": [
-            "Pidätkö huoneen pohjaratkaisusta?",
-            "Voisitko kuvailla, mitä on muuttunut?",
-            "Onko siellä sää hyvä?",
-            "Mitä lähimmällä seinällä roikkuu?"
-          ],
-          "answerIndex": 1,
-          "explanation": "Kysyminen, mikä muuttui, muuttaa epämääräisen raportin hyödylliseksi tiedoksi.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Mikä käyttäytyminen tukee parhaiten rauhallista tiimityöskentelyä?",
-          "choices": [
-            "Puhu kaikkien päälle",
-            "Anna yksi selkeä päivitys kerrallaan",
-            "Piilota hyödyllistä tietoa",
-            "Muuta suunnitelmaa kertomatta kenellekään"
-          ],
-          "answerIndex": 1,
-          "explanation": "Yksi selkeä päivitys kerrallaan auttaa tiimiä työskentelemään jaetun tiedon pohjalta.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Rakennuksessa on portaat, huolto-sisäänkäynti ja pääsisäänkäynti. Mikä yksityiskohta on hyödyllisin ennen pääsyreitin päättämistä?",
-          "choices": [
-            "Mikä sisäänkäynti näyttää uusimmalta",
-            "Mikä sisäänkäynti näyttää helpoimmalta muistaa",
-            "Mikä tukiasema on tällä hetkellä saatavilla ja turvallinen",
-            "Missä sisäänkäynnissä on enemmän kylttejä"
-          ],
-          "answerIndex": 2,
-          "explanation": "Paras kulkureitti riippuu siitä, mikä vaihtoehto on tällä hetkellä saatavilla ja turvallinen.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Tapahtumapaikan turvallisuustarkastus",
-      "encouragement": "Hienoa työtä. Nyt valinnat keskittyvät siihen, mikä on turvallista, selkeää ja hyödyllistä.",
-      "questions": [
-        {
           "prompt": "Mikä yksityiskohta on tärkeintä ennen kuin lähestytään kohtausta?",
           "choices": [
             "Läheisten kylttien ilmestyminen",
@@ -264,48 +223,12 @@
           "answerIndex": 3,
           "explanation": "Uusi turvallisuusriski ja turvallisen liikkumisen suunnitelma ovat välittömästi merkityksellisiä.",
           "category": "attention"
-        },
-        {
-          "prompt": "Tiimin jäsen sanoo: \"Luulen, että alue on turvallinen.\" Mikä tekisi tuosta väitteestä vahvemman?",
-          "choices": [
-            "Suora tarkastus näkyvistä vaaroista ja kulkuyhteyksistä",
-            "Arvaus, joka perustuu itsevarmuuteen",
-            "Kovempi ääni",
-            "Pidempi lause"
-          ],
-          "answerIndex": 0,
-          "explanation": "Suora turvallisuustarkastus on vahvempi kuin luottamus tai arvailu.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Mikä valinta välttää parhaiten vaarallisen oletuksen?",
-          "choices": [
-            "Oletetaan, että paikka on turvallinen",
-            "Tarkista ennen kuin päätät",
-            "Älä välitä varoituskyltistä",
-            "Seuraa lähintä väkijoukkoa"
-          ],
-          "answerIndex": 1,
-          "explanation": "Ennen päätöksen tarkistamista välttää oletuksiin luottamista.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Väkijoukko on kerääntynyt tapahtumapaikan läheisyyteen. Mitä tulisi ottaa ensin huomioon?",
-          "choices": [
-            "Kuinka moni käyttää hattuja",
-            "Saapuiko väkijoukko yhdessä.",
-            "Vaikuttaako väkijoukko turvallisuuteen tai pääsyyn",
-            "Kumpi henkilö on pisin"
-          ],
-          "answerIndex": 2,
-          "explanation": "Väkijoukko on tärkein, jos se vaikuttaa turvallisuuteen, liikkumiseen tai pääsyyn.",
-          "category": "attention"
         }
       ]
     },
     {
-      "title": "Rauhallinen tarkkailu",
-      "encouragement": "Hyvä keskittyminen. Seuraava kierros testaa selkeää viestintää yksinkertaisen paineen alla.",
+      "title": "Viestintärele",
+      "encouragement": "Vahva havainto. Seuraavaksi tulevat ajoitus, etäisyys ja yksinkertainen reittilogiikka.",
       "questions": [
         {
           "prompt": "Mikä havainto on objektiivisin?",
@@ -368,48 +291,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Kaksi todistajaa on samaa mieltä yhdestä yksityiskohdasta, mutta eri mieltä kaikesta muusta. Mikä yksityiskohta ansaitsee eniten luottamusta?",
-          "choices": [
-            "Pisin tarina",
-            "Dramaattisin yksityiskohta",
-            "Molemmat todistajat raportoivat yksityiskohdat itsenäisesti",
-            "Ryhmä raportoi ensimmäisenä"
-          ],
-          "answerIndex": 2,
-          "explanation": "Yksityiskohta, jonka useampi todistaja raportoi itsenäisesti, ansaitsee yleensä enemmän luottamusta.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Kolme todistajaa kertoo eri tavalla tapahtuneesta. Mitä tulisi tunnistaa ensin?",
-          "choices": [
-            "Kuka todistaja saapui viimeisenä",
-            "Mitkä yksityiskohdat havaittiin suoraan",
-            "Mikä kertomus kuulostaa dramaattisimmalta",
-            "Kumpi todistaja puhuu nopeimmin"
-          ],
-          "answerIndex": 1,
-          "explanation": "Suoraan havaitut yksityiskohdat ovat vahvempia kuin arvaukset tai toistuvat tarinat.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Mikä vastaus on paras, kun uusi tieto on ristiriidassa ensimmäisen raportin kanssa?",
-          "choices": [
-            "Älä välitä uudesta tiedosta",
-            "Tarkista ja päivitä tiimi",
-            "Piilota konflikti",
-            "Oletetaan, että ensimmäinen raportti on aina oikeassa"
-          ],
-          "answerIndex": 1,
-          "explanation": "Ristiriitaiset tiedot tulisi tarkistaa ja jakaa selkeästi.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Viestintärele",
-      "encouragement": "Vahva havainto. Seuraavaksi tulevat ajoitus, etäisyys ja yksinkertainen reittilogiikka.",
-      "questions": [
-        {
           "prompt": "Mikä siirto on selkein?",
           "choices": [
             "Jotain tapahtui aiemmin",
@@ -468,48 +349,12 @@
           "answerIndex": 3,
           "explanation": "Tuolla on epämääräistä, koska se ei anna selvää sijaintia.",
           "category": "attention"
-        },
-        {
-          "prompt": "Soittaja sanoo: \"Tule taakse.\" Mitä pitäisi vahvistaa?",
-          "choices": [
-            "Heidän suosikkisisääntulonsa",
-            "Tarkoittaako \"back\" takaovea, huoltoporttia vai muuta kulkupistettä",
-            "Soittajan vaatteiden ulkonäkö",
-            "Rakennuksen ikäkausi"
-          ],
-          "answerIndex": 1,
-          "explanation": "Suuntasanat tulisi selkeyttää tiettyyn pääsypisteeseen asti.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Mikä päivitys pitäisi eskaloida välittömästi?",
-          "choices": [
-            "Vahvistettu muutos, joka vaikuttaa pääsyyn tai turvallisuuteen",
-            "Oikeinkirjoituskorjaus",
-            "Ajoneuvon etiketin muutos",
-            "Ei-kiireellinen mieltymys"
-          ],
-          "answerIndex": 0,
-          "explanation": "Vahvistetut muutokset, jotka vaikuttavat pääsyyn tai turvallisuuteen, tulisi eskaloida nopeasti.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Mikä kysymys on hyödyllisin, jos ohjeet ovat epäselvät?",
-          "choices": [
-            "Voitko toistaa pääsypisteen?",
-            "Miksi tämä kestää kauan?",
-            "Ovatko kaikki lähellä rauhalliset?",
-            "Pidätkö tästä rakennuksesta?"
-          ],
-          "answerIndex": 0,
-          "explanation": "Tukikohdan toistaminen selventää suoraan, minne mennä.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Aika ja etäisyys",
-      "encouragement": "Hyvä viestintä. Seuraava kierros pyytää sinua asettamaan prioriteetit ilman liiallista pohdintaa.",
+      "title": "Prioriteettiajattelu",
+      "encouragement": "Ajoituksesi paranee. Seuraavaksi tulee laitelogiikka ja tarkistuslistan kurinalaisuus.",
       "questions": [
         {
           "prompt": "Selkeä reitti vie hieman kauemmin, kun taas lyhyemmällä reitillä on vahvistamaton lukittu portti. Mikä on turvallisempi suunnitteluratkaisu?",
@@ -572,48 +417,6 @@
           "category": "logic"
         },
         {
-          "prompt": "Mikä ohje on tarkin?",
-          "choices": [
-            "Mene pian",
-            "Siirry lähemmäs, kun olet valmis",
-            "Tavataan eteläovella kolmen minuutin päästä",
-            "Odota jossain lähellä"
-          ],
-          "answerIndex": 2,
-          "explanation": "Se antaa paikan ja selkeän ajan.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Reitti vaikuttaa nopeammalta, mutta sillä ei ole tuoretta vahvistusta. Mikä on suurin riski?",
-          "choices": [
-            "Reitti ei välttämättä enää ole käyttökelpoinen",
-            "Reitin nimi saattaa muuttua",
-            "Sää saattaa parantua",
-            "Kartta voisi olla suurempi"
-          ],
-          "answerIndex": 0,
-          "explanation": "Vahvistamaton reitti voi teoriassa olla nopeampi, mutta käytännössä käyttökelvoton.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Rakennuksessa on kaksi sisäänkäyntiä. Toinen on avoin mutta kauempana; toinen on lähempänä, mutta vahvistamatta. Mitä pitäisi varmistaa ennen läheisemmän tukiaseman käyttöä?",
-          "choices": [
-            "Oven lähellä oleva koriste",
-            "Onko läheisempi pääsy avoin ja turvallinen",
-            "Soittajan mielipide rakennuksesta",
-            "Kulkualueen ulkonäkö"
-          ],
-          "answerIndex": 1,
-          "explanation": "Lähempi pääsy on hyödyllistä vain, jos se on avoin ja turvallinen.",
-          "category": "attention"
-        }
-      ]
-    },
-    {
-      "title": "Prioriteettiajattelu",
-      "encouragement": "Ajoituksesi paranee. Seuraavaksi tulee laitelogiikka ja tarkistuslistan kurinalaisuus.",
-      "questions": [
-        {
           "prompt": "Mikä tehtävä tulisi yleensä olla ennen yksityiskohtaista paperitöitä aktiivisen vastauksen aikana?",
           "choices": [
             "Välittömän turvallisuuden ja tarpeiden tarkistaminen",
@@ -672,48 +475,12 @@
           "answerIndex": 1,
           "explanation": "Vahvistamattomat pikakuvakkeet kannattaa tarkistaa ennen käyttöä.",
           "category": "lateral"
-        },
-        {
-          "prompt": "Mikä valinta osoittaa parhaiten joustavaa ajattelua?",
-          "choices": [
-            "Toista estetty suunnitelma",
-            "Kysy, onko olemassa toinen turvallinen reitti",
-            "Älä välitä esteestä",
-            "Lopeta päivitysten jakaminen"
-          ],
-          "answerIndex": 1,
-          "explanation": "Turvallinen vaihtoehtoinen reitti mukautuu esteeseen.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Uusi tehtävä ilmestyy, kun kaikki miehistöt ovat kiireisiä. Mitä pitäisi tapahtua ensin?",
-          "choices": [
-            "Määritä se satunnaisesti",
-            "Arvioi uudelleen prioriteetit ja käytettävissä olevat resurssit",
-            "Älä välitä tehtävästä",
-            "Viivästytä kaikki viestintä"
-          ],
-          "answerIndex": 1,
-          "explanation": "Uusi tehtävä tulisi punnita nykyisten prioriteettien ja käytettävissä olevien resurssien kanssa.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Kiireisen vastauksen aikana kaksi tiimin jäsentä alkaa työskennellä saman tehtävän parissa samalla kun toinen tehtävä paljastuu. Mitä pitäisi tapahtua?",
-          "choices": [
-            "Jatkakoot molempien kommentoimatta",
-            "Aloita neljäs tehtävä",
-            "Lopeta kaikki työ välittömästi",
-            "Selvennä vastuut ja jaa roolit"
-          ],
-          "answerIndex": 3,
-          "explanation": "Roolien selkeyttäminen estää päällekkäisen työn ja jättää vähemmän tehtäviä avoimiksi.",
-          "category": "lateral"
         }
       ]
     },
     {
-      "title": "Varusteet ja tarkistuslista",
-      "encouragement": "Hyvät prioriteetit. Seuraava kierros yhdistää reittivalinnat ja resurssipäätökset.",
+      "title": "Viimeinen ensihoitajahaaste",
+      "encouragement": "Haaste suoritettu. Tulosprofiilisi on valmis.",
       "questions": [
         {
           "prompt": "Miksi tarkistuslista on hyödyllinen ennen paikalta poistumista?",
@@ -752,72 +519,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Käytetty tuote raportoidaan täydennyksen yhteydessä. Mikä on hyödyllisin seuraava askel?",
-          "choices": [
-            "Korvaa tai merkitse kohde tarkistuslistan mukaan",
-            "Oletetaan, että joku muu hoiti asian",
-            "Jätä setti tarkistamatta.",
-            "Tallenna vain tuotteen etiketti"
-          ],
-          "answerIndex": 0,
-          "explanation": "Käytetty esine tulisi vaihtaa tai merkitä selvästi, jotta paketti on valmis seuraavaa vastausta varten.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Tarkistuslistalla lukee \"radio, kulkukortti, vastauslaukku.\" Mikä päivitys on hyödyllisin, jos pääsykortti puuttuu?",
-          "choices": [
-            "Kulkukortti puuttuu; Tarkistan varaprosessin nyt",
-            "Laukku on painava",
-            "Radio on musta",
-            "Listalla on kolme kohtaa"
-          ],
-          "answerIndex": 0,
-          "explanation": "Päivitys nimeää puuttuvan esineen ja seuraavan toiminnon.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Mikä toimenpide tarkistaa parhaiten mahdollisen laiteongelman?",
-          "choices": [
-            "Oletetaan, että se toimii",
-            "Testaa tai tarkasta se ennen kuin luotat siihen",
-            "Piilota ongelma",
-            "Käytä sitä ilman, että kerrot kenellekään"
-          ],
-          "answerIndex": 1,
-          "explanation": "Testaus tai tarkastus vahvistaa, onko laitteisto valmis.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Ajoneuvossa on rajallinen tila, eikä kahta ei-kiireellistä tavaraa voi molempia kantaa. Mikä ohjaa valintaa?",
-          "choices": [
-            "Mikä tuote pakataan ensin",
-            "Mikä tuote on kirkkaampi etiketti",
-            "Mikä esine on relevantimpi nykyiselle kutsulle",
-            "Kumpi esine on helpompi nimetä"
-          ],
-          "answerIndex": 2,
-          "explanation": "Resurssivalintojen tulisi vastata nykyistä tarvetta.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Mikä vastaus on paras, jos tarkistuslistan kohta puuttuu?",
-          "choices": [
-            "Kuvittele, että se on läsnä",
-            "Pysäytä ja ilmoita puuttuva esine",
-            "Yliviivaa koko lista",
-            "Valitse satunnainen korvaaja"
-          ],
-          "answerIndex": 1,
-          "explanation": "Puuttuvan esineen ilmoittaminen auttaa tiimiä korjaamaan aukon turvallisesti.",
-          "category": "lateral"
-        }
-      ]
-    },
-    {
-      "title": "Reitti- ja resurssilogiikka",
-      "encouragement": "Hyvä tarkistuslistan kurinalaisuus. Seuraava kierros lisää painetta ja kerroksellisia vaihtoehtoja.",
-      "questions": [
-        {
           "prompt": "Käytettävissä on kaksi joukkuetta. Joukkue A on lähempänä. Joukkue B on kauempana, mutta sillä on ylimääräistä varustusta. Mitä pitäisi tarkistaa ennen valintaa?",
           "choices": [
             "Nopeus vai laitteet ovat tässä puhelussa tärkeämpää",
@@ -854,72 +555,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Jokaisen miehistön, joka saa viimeisimmän turvahuomautuksen, on huomioittava se. Miehistö 5 on vahvistanut viestin. Mitä voit päätellä?",
-          "choices": [
-            "Miehistö 5 sai viimeisimmän turvallisuushuomautuksen",
-            "Miehistö 5 on lähimpänä tapahtumapaikkaa",
-            "Kaikki miehistöt ovat tunnustaneet sen",
-            "Turvahuomautusta ei tarvittu"
-          ],
-          "answerIndex": 0,
-          "explanation": "Viestin vastaanottaminen tarkoittaa, että Crew 5 sai sen.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Mikä suunnitelma tasapainottaa nopeuden ja selkeyden parhaiten?",
-          "choices": [
-            "Lähde nopeasti äläkä kerro kenellekään",
-            "Vahvista reitti ja lähde sitten lyhyellä päivityksellä",
-            "Odota tarkistamatta mitään",
-            "Lähetä useita ristiriitaisia viestejä"
-          ],
-          "answerIndex": 1,
-          "explanation": "Reitin vahvistaminen ja lyhyt päivitys tukevat sekä nopeutta että selkeyttä.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Yksi tiimin jäsen hoitaa ohjeita ja toinen tarkistaa varusteita. Mikä tekee tästä jaosta turvallisemman?",
-          "choices": [
-            "Molemmat tekevät samaa tehtävää hiljaa",
-            "Selkeät roolit ja yhteinen päivityspiste",
-            "Kukaan ei vahvista mitään",
-            "Roolien vaihto muutaman sekunnin välein"
-          ],
-          "answerIndex": 1,
-          "explanation": "Selkeät roolit ja yhteinen päivityspiste vähentävät sekaannusta.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Mikä yksityiskohta tulisi tarkistaa ensin, jos kaksi sijaintimainintaa on eri mieltä?",
-          "choices": [
-            "Mikä nuotti on pidempi",
-            "Mikä lähde on tuorein ja luotettavin",
-            "Mikä nuotti on kauniimpi sanamuoto",
-            "Mikä nuotti käyttää vähemmän lukuja"
-          ],
-          "answerIndex": 1,
-          "explanation": "Tuoreet ja luotettavat lähteet ovat hyödyllisempiä, kun tieto on ristiriidassa.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Käytettävissä on kaksi resurssia, mutta vain toista voi käyttää heti. Mikä ohjaa päätöstä?",
-          "choices": [
-            "Mikä resurssi saapui ensin",
-            "Mikä resurssi tukee parhaiten nykyistä prioriteettia",
-            "Mikä resurssi maksaa enemmän",
-            "Mikä resurssi on lyhyempi nimi"
-          ],
-          "answerIndex": 1,
-          "explanation": "Hyödyllisin resurssi on se, joka parhaiten tukee nykyistä prioriteettia.",
-          "category": "logic"
-        }
-      ]
-    },
-    {
-      "title": "Painostuspäätökset",
-      "encouragement": "Se oli vahva kierros. Viimeinen vaihe vaatii rauhallista harkintaa useissa yksityiskohdissa.",
-      "questions": [
-        {
           "prompt": "Raportin mukaan itäinen sisäänkäynti on auki, mutta tiimi saapuu ja löytää sen lukossa. Mikä on paras ensireaktio?",
           "choices": [
             "Älä välitä lukitusta ovesta",
@@ -944,84 +579,6 @@
           "category": "attention"
         },
         {
-          "prompt": "Korkean prioriteetin päivitys lähetetään miehistön liikkuessa. Mitä pitäisi tapahtua ennen kuin miehistö luottaa vanhaan suunnitelmaan?",
-          "choices": [
-            "Päivitys tulisi huomioida ja harkita",
-            "Päivitys tulisi jättää huomiotta myöhempään asti",
-            "Vain ensimmäistä suunnitelmaa tulisi käyttää",
-            "Päivitys pitäisi olla piilossa tiimiltä"
-          ],
-          "answerIndex": 0,
-          "explanation": "Korkean prioriteetin päivitys tulisi huomioida ja harkita ennen vanhan suunnitelman jatkamista.",
-          "category": "deduction"
-        },
-        {
-          "prompt": "Joukkueen on valittava selkeän reitin, joka kestää kauemmin, ja epävarman reitin, joka saattaa olla estetty. Mikä arvio on tasapainoisin?",
-          "choices": [
-            "Epävarma reitti on aina parempi",
-            "Selkeä reitti voi olla turvallisempi, jos luotettavuus on tärkeää",
-            "Matka-aika on merkityksetön",
-            "Selkeä reitti on jätettävä huomiotta"
-          ],
-          "answerIndex": 1,
-          "explanation": "Luotettava reitti voi olla parempi, kun epävarmuus aiheuttaa riskejä.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Luovutuksen aikana seuraava tiimi kysyy, mikä on muuttunut viimeisimmin. Kumpi vastaus on paras?",
-          "choices": [
-            "Vain vanhin yksityiskohta",
-            "Kaikki, mitä olisi voinut tapahtua",
-            "Viimeisin vahvistettu muutos ja milloin se tapahtui",
-            "Arvaus syystä."
-          ],
-          "answerIndex": 2,
-          "explanation": "Viimeisin vahvistettu muutos liittyy suoraan kysymykseen.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Tiimin jäsen saa uutta tietoa, mutta hoitaa jo toista tehtävää. Mikä vähentää päivityksen missaamisen riskiä?",
-          "choices": [
-            "Toivon, että joku muu muistaa sen",
-            "Selkeä vastuun määrittäminen päivityksestä",
-            "Odotan myöhempään",
-            "Keskustelun välttäminen"
-          ],
-          "answerIndex": 1,
-          "explanation": "Vastuun jakaminen tekee selväksi, kuka toimii päivityksen perusteella.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Mikä vaihtoehto hoitaa parhaiten useita tehtäviä yhtä aikaa?",
-          "choices": [
-            "Tee vain helpoin tehtävä",
-            "Aseta prioriteetit ja jaa selkeät roolit",
-            "Vaihda tehtäviä satunnaisesti",
-            "Vältä suunnitelman tekemistä"
-          ],
-          "answerIndex": 1,
-          "explanation": "Prioriteetit ja selkeät roolit auttavat hallitsemaan useita tehtäviä.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Jotkut vastaajat keräävät tietoa. Kaikkien tiedonkerääjien on jaettava keskeiset havainnot. Mitä seuraa?",
-          "choices": [
-            "Jotkut vastaajat joutuvat jakamaan keskeiset havainnot",
-            "Kaikki vastaajat keräävät tietoa",
-            "Löydöksiä ei tulisi jakaa",
-            "Vain ajurit tarvitsevat päivityksiä"
-          ],
-          "answerIndex": 0,
-          "explanation": "Tietoa keräävien vastaajien on jaettava keskeiset havainnot.",
-          "category": "deduction"
-        }
-      ]
-    },
-    {
-      "title": "Viimeinen ensihoitajahaaste",
-      "encouragement": "Haaste suoritettu. Tulosprofiilisi on valmis.",
-      "questions": [
-        {
           "prompt": "Reitti on nopeampi mutta epävarma. Toinen reitti on hitaampi, mutta vahvistettu. Olosuhteet muuttuvat nopeasti. Mikä tekijä kantaa eniten painoarvoa?",
           "choices": [
             "Mikä reitti kuulostaa tutummalta",
@@ -1043,78 +600,6 @@
           ],
           "answerIndex": 1,
           "explanation": "Resurssipäätöksissä tulisi ottaa huomioon saatavuus, prioriteetti ja nykyinen tehtäväkuorma.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Alkuperäinen raportti ei enää vastaa sitä, mitä joukkue näkee saapuessaan. Mikä ohjaa seuraavaa päätöstä?",
-          "choices": [
-            "Vain alkuperäinen raportti",
-            "Nykyiset varmistut tiedot",
-            "Arvaus siitä, mikä muuttui",
-            "Dramaattisin yksityiskohta"
-          ],
-          "answerIndex": 1,
-          "explanation": "Nykyiset vahvistetut tiedot ohjaavat päätöksiä, kun tilanne on muuttunut.",
-          "category": "logic"
-        },
-        {
-          "prompt": "Potilas, perheenjäsen, talonhoitaja ja vartija alkavat antaa tietoa yhtä aikaa. Mitä pitäisi tapahtua ensin?",
-          "choices": [
-            "Luo yksi selkeä lähde kerrallaan",
-            "Hyväksy jokainen yksityiskohta tarkistamatta",
-            "Seuraa kovinta ääntä",
-            "Lopeta tiedonkeruu"
-          ],
-          "answerIndex": 0,
-          "explanation": "Yksi selkeä lähde kerrallaan auttaa tiimiä varmistamaan tiedot ilman ylikuormitusta.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Tärkeä päivitys saapuu juuri ennen lähtöä, mutta kukaan ei vahvista kuulleensa sitä. Mitä pitäisi tapahtua ensin?",
-          "choices": [
-            "Lähde tarkistamatta",
-            "Vahvista, että päivitys on vastaanotettu ja ymmärretty",
-            "Älä välitä päivityksestä",
-            "Vaihda kohde satunnaisesti"
-          ],
-          "answerIndex": 1,
-          "explanation": "Tärkeät päivitykset tulisi vahvistaa ennen kuin tiimi toimii suunnitelman mukaisesti.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Nopeampi reitti, rajallinen varustetila ja uusi pääsyvaroitus ilmestyvät kaikki yhtä aikaa. Mitä pitäisi erottaa ensin?",
-          "choices": [
-            "Jokainen yksityiskohta sen mukaan, kuinka mielenkiintoiselta se kuulostaa",
-            "Turvallisuuskriittisiä faktoja hyödyllisistä mutta ei-kiireellisistä yksityiskohdista",
-            "Vain nopein reittivaihtoehto",
-            "Vain varusteluettelo"
-          ],
-          "answerIndex": 1,
-          "explanation": "Turvallisuuskriittiset faktat tulisi erottaa ensin, kun useat tekijät kilpailevat.",
-          "category": "attention"
-        },
-        {
-          "prompt": "Kaksi miehistön jäsentä on eri mieltä seuraavasta tehtävästä äkillisen muutoksen aikana. Mikä johtajuuden toiminta vähentää parhaiten sekaannusta?",
-          "choices": [
-            "Antakaa erimielisyyden jatkua",
-            "Määritä prioriteetti, jaa roolit ja vahvista seuraava vaihe",
-            "Vältä päätöksen tekemistä",
-            "Pyydä kaikkia työskentelemään nopeammin"
-          ],
-          "answerIndex": 1,
-          "explanation": "Selkeä prioriteetti, roolien jakaminen ja vahvistus vähentävät sekaannusta muutoksen aikana.",
-          "category": "lateral"
-        },
-        {
-          "prompt": "Kolme lähdettä on eri mieltä. Yksi on tuore, mutta epäsuora. Toinen on suora mutta vanha. Toinen on tuore ja suora. Mikä lähde yleensä kantaa eniten painoarvoa?",
-          "choices": [
-            "Vanhimmat tiedot",
-            "Viimeisimmät ja suorat tiedot",
-            "Pisimmän selityksen",
-            "Itsevarmin puhuja"
-          ],
-          "answerIndex": 1,
-          "explanation": "Sekä tuore että suora tieto on yleensä vahvempaa kuin vanhempi tai epäsuora tieto.",
           "category": "logic"
         }
       ]
