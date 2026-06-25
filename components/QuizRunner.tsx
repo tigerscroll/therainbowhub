@@ -325,8 +325,10 @@ function createQuizRunnerScript(config: {
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
     var isHarvard2Quiz = quiz.slug === "harvard2";
-    var usesRoundCheckpointFlow = quiz.slug === "harvard2" || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isHarvard2Quiz;
+    var isOxford2Quiz = quiz.slug === "oxford2";
+    var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz;
+    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = false;
     var hideAnswerFeedback = isShortLockedScoreQuiz;
@@ -1033,6 +1035,23 @@ function createQuizRunnerScript(config: {
             "spatial": "Spatial"
           }
         },
+        oxford2: {
+          en: {
+            "pattern": "Patterns",
+            "number": "Numbers",
+            "probability": "Probability",
+            "logic": "Logic",
+            "deduction": "Deduction",
+            "ordering": "Ordering",
+            "verbal": "Words",
+            "coding": "Code clues",
+            "analogy": "Analogies",
+            "calendar": "Calendar",
+            "time": "Time",
+            "geometry": "Geometry",
+            "spatial": "Spatial"
+          }
+        },
         pilot2: {
           en: {
             "checklist": "Checklist",
@@ -1441,7 +1460,7 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isHarvard2Quiz;
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
@@ -1497,7 +1516,7 @@ function createQuizRunnerScript(config: {
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isHarvard2Quiz ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function hidesAnswerExplanations() {
@@ -1664,7 +1683,7 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isHarvard2Quiz;
+      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
@@ -1978,7 +1997,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
