@@ -326,7 +326,8 @@ function createQuizRunnerScript(config: {
     var isPersonalityQuiz = quiz.mode === "personality";
     var isHarvard2Quiz = quiz.slug === "harvard2";
     var isOxford2Quiz = quiz.slug === "oxford2";
-    var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz;
+    var isCambridge2Quiz = quiz.slug === "cambridge2";
+    var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
@@ -1036,6 +1037,23 @@ function createQuizRunnerScript(config: {
           }
         },
         oxford2: {
+          en: {
+            "pattern": "Patterns",
+            "number": "Numbers",
+            "probability": "Probability",
+            "logic": "Logic",
+            "deduction": "Deduction",
+            "ordering": "Ordering",
+            "verbal": "Words",
+            "coding": "Code clues",
+            "analogy": "Analogies",
+            "calendar": "Calendar",
+            "time": "Time",
+            "geometry": "Geometry",
+            "spatial": "Spatial"
+          }
+        },
+        cambridge2: {
           en: {
             "pattern": "Patterns",
             "number": "Numbers",
@@ -1997,7 +2015,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
