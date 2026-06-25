@@ -1081,6 +1081,316 @@ function createQuizRunnerScript(config: {
             "pattern-memory": "Patterns",
             "long-recall": "Long recall",
             "exclusion-recall": "Memory check"
+          },
+          ar: {
+            "fact-recall": "تذكّر الحقائق",
+            "general-knowledge": "حقائق سريعة",
+            "recent-recall": "تذكّر حديث",
+            "detail-recall": "تذكّر التفاصيل",
+            "category-memory": "فئات",
+            "pattern-memory": "أنماط",
+            "long-recall": "تذكّر بعيد",
+            "exclusion-recall": "فحص الذاكرة"
+          },
+          bg: {
+            "fact-recall": "Факти",
+            "general-knowledge": "Бързи факти",
+            "recent-recall": "Скорошен спомен",
+            "detail-recall": "Детайли",
+            "category-memory": "Категории",
+            "pattern-memory": "Модели",
+            "long-recall": "Дълъг спомен",
+            "exclusion-recall": "Проверка"
+          },
+          cs: {
+            "fact-recall": "Fakta",
+            "general-knowledge": "Rychlá fakta",
+            "recent-recall": "Nedávná paměť",
+            "detail-recall": "Detaily",
+            "category-memory": "Kategorie",
+            "pattern-memory": "Vzorce",
+            "long-recall": "Dlouhá paměť",
+            "exclusion-recall": "Kontrola paměti"
+          },
+          da: {
+            "fact-recall": "Fakta",
+            "general-knowledge": "Hurtige fakta",
+            "recent-recall": "Nylig hukommelse",
+            "detail-recall": "Detaljer",
+            "category-memory": "Kategorier",
+            "pattern-memory": "Mønstre",
+            "long-recall": "Lang hukommelse",
+            "exclusion-recall": "Hukommelsestjek"
+          },
+          de: {
+            "fact-recall": "Fakten",
+            "general-knowledge": "Schnellwissen",
+            "recent-recall": "Kurzzeit-Erinnerung",
+            "detail-recall": "Details",
+            "category-memory": "Kategorien",
+            "pattern-memory": "Muster",
+            "long-recall": "Langzeit-Erinnerung",
+            "exclusion-recall": "Gedächtnischeck"
+          },
+          el: {
+            "fact-recall": "Γεγονότα",
+            "general-knowledge": "Γρήγορες γνώσεις",
+            "recent-recall": "Πρόσφατη μνήμη",
+            "detail-recall": "Λεπτομέρειες",
+            "category-memory": "Κατηγορίες",
+            "pattern-memory": "Μοτίβα",
+            "long-recall": "Μακρά ανάκληση",
+            "exclusion-recall": "Έλεγχος μνήμης"
+          },
+          es: {
+            "fact-recall": "Datos",
+            "general-knowledge": "Datos rápidos",
+            "recent-recall": "Recuerdo reciente",
+            "detail-recall": "Detalles",
+            "category-memory": "Categorías",
+            "pattern-memory": "Patrones",
+            "long-recall": "Recuerdo largo",
+            "exclusion-recall": "Comprobación"
+          },
+          fi: {
+            "fact-recall": "Faktat",
+            "general-knowledge": "Pikafaktat",
+            "recent-recall": "Tuore muisti",
+            "detail-recall": "Yksityiskohdat",
+            "category-memory": "Kategoriat",
+            "pattern-memory": "Kuviot",
+            "long-recall": "Pitkä muisti",
+            "exclusion-recall": "Muistitarkistus"
+          },
+          fr: {
+            "fact-recall": "Faits",
+            "general-knowledge": "Faits rapides",
+            "recent-recall": "Mémoire récente",
+            "detail-recall": "Détails",
+            "category-memory": "Catégories",
+            "pattern-memory": "Motifs",
+            "long-recall": "Rappel long",
+            "exclusion-recall": "Vérification"
+          },
+          he: {
+            "fact-recall": "זכירת עובדות",
+            "general-knowledge": "עובדות מהירות",
+            "recent-recall": "זיכרון קרוב",
+            "detail-recall": "פרטים",
+            "category-memory": "קטגוריות",
+            "pattern-memory": "דפוסים",
+            "long-recall": "זיכרון ארוך",
+            "exclusion-recall": "בדיקת זיכרון"
+          },
+          hi: {
+            "fact-recall": "तथ्य याद",
+            "general-knowledge": "त्वरित तथ्य",
+            "recent-recall": "हाल की याद",
+            "detail-recall": "विवरण",
+            "category-memory": "श्रेणियां",
+            "pattern-memory": "पैटर्न",
+            "long-recall": "लंबी याद",
+            "exclusion-recall": "स्मृति जांच"
+          },
+          hu: {
+            "fact-recall": "Tények",
+            "general-knowledge": "Gyors tények",
+            "recent-recall": "Friss emlék",
+            "detail-recall": "Részletek",
+            "category-memory": "Kategóriák",
+            "pattern-memory": "Minták",
+            "long-recall": "Hosszú emlék",
+            "exclusion-recall": "Memóriaellenőrzés"
+          },
+          id: {
+            "fact-recall": "Ingat fakta",
+            "general-knowledge": "Fakta cepat",
+            "recent-recall": "Ingat baru",
+            "detail-recall": "Detail",
+            "category-memory": "Kategori",
+            "pattern-memory": "Pola",
+            "long-recall": "Ingat lama",
+            "exclusion-recall": "Cek memori"
+          },
+          it: {
+            "fact-recall": "Fatti",
+            "general-knowledge": "Fatti rapidi",
+            "recent-recall": "Ricordo recente",
+            "detail-recall": "Dettagli",
+            "category-memory": "Categorie",
+            "pattern-memory": "Schemi",
+            "long-recall": "Ricordo lungo",
+            "exclusion-recall": "Controllo memoria"
+          },
+          ja: {
+            "fact-recall": "事実の記憶",
+            "general-knowledge": "クイック知識",
+            "recent-recall": "直前の記憶",
+            "detail-recall": "詳細記憶",
+            "category-memory": "カテゴリー",
+            "pattern-memory": "パターン",
+            "long-recall": "長期記憶",
+            "exclusion-recall": "記憶チェック"
+          },
+          ko: {
+            "fact-recall": "사실 기억",
+            "general-knowledge": "빠른 상식",
+            "recent-recall": "최근 회상",
+            "detail-recall": "세부 기억",
+            "category-memory": "범주",
+            "pattern-memory": "패턴",
+            "long-recall": "장기 회상",
+            "exclusion-recall": "기억 확인"
+          },
+          lt: {
+            "fact-recall": "Faktai",
+            "general-knowledge": "Greiti faktai",
+            "recent-recall": "Nauja atmintis",
+            "detail-recall": "Detalės",
+            "category-memory": "Kategorijos",
+            "pattern-memory": "Šablonai",
+            "long-recall": "Ilga atmintis",
+            "exclusion-recall": "Atminties patikra"
+          },
+          lv: {
+            "fact-recall": "Fakti",
+            "general-knowledge": "Ātrie fakti",
+            "recent-recall": "Nesenā atmiņa",
+            "detail-recall": "Detaļas",
+            "category-memory": "Kategorijas",
+            "pattern-memory": "Modeļi",
+            "long-recall": "Ilgā atmiņa",
+            "exclusion-recall": "Atmiņas pārbaude"
+          },
+          ms: {
+            "fact-recall": "Ingat fakta",
+            "general-knowledge": "Fakta pantas",
+            "recent-recall": "Ingatan baru",
+            "detail-recall": "Butiran",
+            "category-memory": "Kategori",
+            "pattern-memory": "Corak",
+            "long-recall": "Ingatan lama",
+            "exclusion-recall": "Semakan ingatan"
+          },
+          nl: {
+            "fact-recall": "Feiten",
+            "general-knowledge": "Snelle feiten",
+            "recent-recall": "Recente herinnering",
+            "detail-recall": "Details",
+            "category-memory": "Categorieën",
+            "pattern-memory": "Patronen",
+            "long-recall": "Lang geheugen",
+            "exclusion-recall": "Geheugencheck"
+          },
+          no: {
+            "fact-recall": "Fakta",
+            "general-knowledge": "Raske fakta",
+            "recent-recall": "Nylig minne",
+            "detail-recall": "Detaljer",
+            "category-memory": "Kategorier",
+            "pattern-memory": "Mønstre",
+            "long-recall": "Langt minne",
+            "exclusion-recall": "Minnesjekk"
+          },
+          pl: {
+            "fact-recall": "Fakty",
+            "general-knowledge": "Szybkie fakty",
+            "recent-recall": "Świeża pamięć",
+            "detail-recall": "Szczegóły",
+            "category-memory": "Kategorie",
+            "pattern-memory": "Wzory",
+            "long-recall": "Długa pamięć",
+            "exclusion-recall": "Test pamięci"
+          },
+          pt: {
+            "fact-recall": "Factos",
+            "general-knowledge": "Factos rápidos",
+            "recent-recall": "Memória recente",
+            "detail-recall": "Detalhes",
+            "category-memory": "Categorias",
+            "pattern-memory": "Padrões",
+            "long-recall": "Recordação longa",
+            "exclusion-recall": "Verificação"
+          },
+          "pt-br": {
+            "fact-recall": "Fatos",
+            "general-knowledge": "Fatos rápidos",
+            "recent-recall": "Memória recente",
+            "detail-recall": "Detalhes",
+            "category-memory": "Categorias",
+            "pattern-memory": "Padrões",
+            "long-recall": "Recordação longa",
+            "exclusion-recall": "Verificação"
+          },
+          ro: {
+            "fact-recall": "Fapte",
+            "general-knowledge": "Fapte rapide",
+            "recent-recall": "Memorie recentă",
+            "detail-recall": "Detalii",
+            "category-memory": "Categorii",
+            "pattern-memory": "Tipare",
+            "long-recall": "Memorie lungă",
+            "exclusion-recall": "Verificare"
+          },
+          sv: {
+            "fact-recall": "Fakta",
+            "general-knowledge": "Snabba fakta",
+            "recent-recall": "Nyligt minne",
+            "detail-recall": "Detaljer",
+            "category-memory": "Kategorier",
+            "pattern-memory": "Mönster",
+            "long-recall": "Långt minne",
+            "exclusion-recall": "Minneskoll"
+          },
+          th: {
+            "fact-recall": "จำข้อเท็จจริง",
+            "general-knowledge": "ความรู้เร็ว",
+            "recent-recall": "จำล่าสุด",
+            "detail-recall": "จำรายละเอียด",
+            "category-memory": "หมวดหมู่",
+            "pattern-memory": "รูปแบบ",
+            "long-recall": "จำระยะยาว",
+            "exclusion-recall": "เช็กความจำ"
+          },
+          tr: {
+            "fact-recall": "Bilgi hatırlama",
+            "general-knowledge": "Hızlı bilgiler",
+            "recent-recall": "Yakın hafıza",
+            "detail-recall": "Detaylar",
+            "category-memory": "Kategoriler",
+            "pattern-memory": "Desenler",
+            "long-recall": "Uzun hatırlama",
+            "exclusion-recall": "Hafıza kontrolü"
+          },
+          uk: {
+            "fact-recall": "Факти",
+            "general-knowledge": "Швидкі факти",
+            "recent-recall": "Нещодавня пам’ять",
+            "detail-recall": "Деталі",
+            "category-memory": "Категорії",
+            "pattern-memory": "Шаблони",
+            "long-recall": "Довга пам’ять",
+            "exclusion-recall": "Перевірка"
+          },
+          vi: {
+            "fact-recall": "Nhớ sự thật",
+            "general-knowledge": "Kiến thức nhanh",
+            "recent-recall": "Nhớ gần đây",
+            "detail-recall": "Chi tiết",
+            "category-memory": "Danh mục",
+            "pattern-memory": "Mẫu",
+            "long-recall": "Nhớ lâu",
+            "exclusion-recall": "Kiểm tra trí nhớ"
+          },
+          zh: {
+            "fact-recall": "事实记忆",
+            "general-knowledge": "快速知识",
+            "recent-recall": "近期回忆",
+            "detail-recall": "细节记忆",
+            "category-memory": "类别",
+            "pattern-memory": "模式",
+            "long-recall": "长期回忆",
+            "exclusion-recall": "记忆检查"
           }
         },
         pilot2: {
@@ -1404,39 +1714,7 @@ function createQuizRunnerScript(config: {
     }
 
     function getRoundCheckpointText() {
-      if (t.locale && t.locale.code === "nl") {
-        return {
-          round: "Ronde",
-          results: "resultaten",
-          lockedNext: "Je score is vastgelegd. Start de volgende ronde wanneer je klaar bent.",
-          lockedFinal: "Je score is vastgelegd. Het eindresultaat is nu aan de beurt.",
-          nextStage: "Volgende ronde",
-          roundScore: "Rondescore",
-          scoreSoFar: "Score tot nu toe",
-          complete: "voltooid",
-          startNext: "Start volgende ronde →",
-          seeFinal: "Bekijk eindresultaat →",
-          roundUnlock: "Een korte ontgrendeling toont je rondescore."
-        };
-      }
-
-      if (t.locale && t.locale.code === "de") {
-        return {
-          round: "Runde",
-          results: "Ergebnisse",
-          lockedNext: "Deine Punktzahl ist gespeichert. Starte die nächste Runde, wenn du bereit bist.",
-          lockedFinal: "Deine Punktzahl ist gespeichert. Jetzt folgt das Endergebnis.",
-          nextStage: "Nächste Runde",
-          roundScore: "Rundenergebnis",
-          scoreSoFar: "Punktzahl bisher",
-          complete: "abgeschlossen",
-          startNext: "Nächste Runde starten →",
-          seeFinal: "Endergebnis ansehen →",
-          roundUnlock: "Eine kurze Freischaltung zeigt deine Punktzahl für diese Runde."
-        };
-      }
-
-      return {
+      var defaults = {
         round: "Round",
         results: "results",
         lockedNext: "Your score is locked in. Start the next stage when you're ready.",
@@ -1449,6 +1727,42 @@ function createQuizRunnerScript(config: {
         seeFinal: "See Final Results →",
         roundUnlock: "One short unlock reveals your round score."
       };
+
+      var labels = {
+        ar: { round: "الجولة", results: "النتائج", lockedNext: "تم تسجيل نتيجتك. ابدأ الجولة التالية عندما تكون جاهزًا.", lockedFinal: "تم تسجيل نتيجتك. النتيجة النهائية هي التالية.", nextStage: "الجولة التالية", roundScore: "نتيجة الجولة", scoreSoFar: "النتيجة حتى الآن", complete: "مكتمل", startNext: "ابدأ الجولة التالية →", seeFinal: "اعرض النتيجة النهائية →", roundUnlock: "يفتح إعلان قصير نتيجة هذه الجولة." },
+        bg: { round: "Рунд", results: "резултати", lockedNext: "Резултатът ти е запазен. Започни следващия рунд, когато си готов.", lockedFinal: "Резултатът ти е запазен. Следва крайният резултат.", nextStage: "Следващ рунд", roundScore: "Резултат от рунда", scoreSoFar: "Резултат досега", complete: "завършено", startNext: "Започни следващия рунд →", seeFinal: "Виж крайния резултат →", roundUnlock: "Кратко отключване показва резултата от рунда." },
+        cs: { round: "Kolo", results: "výsledky", lockedNext: "Tvé skóre je uloženo. Až budeš připravený, spusť další kolo.", lockedFinal: "Tvé skóre je uloženo. Teď přijde finální výsledek.", nextStage: "Další kolo", roundScore: "Skóre kola", scoreSoFar: "Skóre zatím", complete: "hotovo", startNext: "Spustit další kolo →", seeFinal: "Zobrazit finální výsledek →", roundUnlock: "Krátké odemčení ukáže skóre kola." },
+        da: { round: "Runde", results: "resultater", lockedNext: "Din score er gemt. Start næste runde, når du er klar.", lockedFinal: "Din score er gemt. Det endelige resultat er næste.", nextStage: "Næste runde", roundScore: "Rundescore", scoreSoFar: "Score indtil nu", complete: "fuldført", startNext: "Start næste runde →", seeFinal: "Se endeligt resultat →", roundUnlock: "En kort oplåsning viser din rundescore." },
+        de: { round: "Runde", results: "Ergebnisse", lockedNext: "Deine Punktzahl ist gespeichert. Starte die nächste Runde, wenn du bereit bist.", lockedFinal: "Deine Punktzahl ist gespeichert. Jetzt folgt das Endergebnis.", nextStage: "Nächste Runde", roundScore: "Rundenergebnis", scoreSoFar: "Punktzahl bisher", complete: "abgeschlossen", startNext: "Nächste Runde starten →", seeFinal: "Endergebnis ansehen →", roundUnlock: "Eine kurze Freischaltung zeigt deine Punktzahl für diese Runde." },
+        el: { round: "Γύρος", results: "αποτελέσματα", lockedNext: "Το σκορ σου αποθηκεύτηκε. Ξεκίνα τον επόμενο γύρο όταν είσαι έτοιμος.", lockedFinal: "Το σκορ σου αποθηκεύτηκε. Ακολουθεί το τελικό αποτέλεσμα.", nextStage: "Επόμενος γύρος", roundScore: "Σκορ γύρου", scoreSoFar: "Σκορ μέχρι τώρα", complete: "ολοκληρώθηκε", startNext: "Ξεκίνα τον επόμενο γύρο →", seeFinal: "Δες το τελικό αποτέλεσμα →", roundUnlock: "Ένα σύντομο ξεκλείδωμα αποκαλύπτει το σκορ του γύρου." },
+        es: { round: "Ronda", results: "resultados", lockedNext: "Tu puntuación está guardada. Empieza la siguiente ronda cuando quieras.", lockedFinal: "Tu puntuación está guardada. Ahora viene el resultado final.", nextStage: "Siguiente ronda", roundScore: "Puntuación de ronda", scoreSoFar: "Puntuación hasta ahora", complete: "completo", startNext: "Empezar siguiente ronda →", seeFinal: "Ver resultado final →", roundUnlock: "Un desbloqueo breve revela tu puntuación de la ronda." },
+        fi: { round: "Kierros", results: "tulokset", lockedNext: "Pisteesi on tallennettu. Aloita seuraava kierros, kun olet valmis.", lockedFinal: "Pisteesi on tallennettu. Seuraavaksi tulee lopputulos.", nextStage: "Seuraava kierros", roundScore: "Kierroksen pisteet", scoreSoFar: "Pisteet tähän asti", complete: "valmis", startNext: "Aloita seuraava kierros →", seeFinal: "Näytä lopputulos →", roundUnlock: "Lyhyt avaus näyttää kierroksen pisteesi." },
+        fr: { round: "Manche", results: "résultats", lockedNext: "Ton score est enregistré. Lance la manche suivante quand tu es prêt.", lockedFinal: "Ton score est enregistré. Le résultat final arrive maintenant.", nextStage: "Manche suivante", roundScore: "Score de la manche", scoreSoFar: "Score jusqu’ici", complete: "terminé", startNext: "Lancer la manche suivante →", seeFinal: "Voir le résultat final →", roundUnlock: "Un court déblocage révèle ton score de manche." },
+        he: { round: "סיבוב", results: "תוצאות", lockedNext: "הציון שלך נשמר. התחילו את הסיבוב הבא כשתהיו מוכנים.", lockedFinal: "הציון שלך נשמר. עכשיו מגיעה התוצאה הסופית.", nextStage: "הסיבוב הבא", roundScore: "ציון הסיבוב", scoreSoFar: "ציון עד עכשיו", complete: "הושלם", startNext: "התחלת הסיבוב הבא →", seeFinal: "הצגת התוצאה הסופית →", roundUnlock: "פתיחה קצרה מציגה את ציון הסיבוב שלך." },
+        hi: { round: "राउंड", results: "परिणाम", lockedNext: "आपका स्कोर लॉक हो गया है। तैयार हों तो अगला राउंड शुरू करें।", lockedFinal: "आपका स्कोर लॉक हो गया है। अब अंतिम परिणाम आएगा।", nextStage: "अगला राउंड", roundScore: "राउंड स्कोर", scoreSoFar: "अब तक का स्कोर", complete: "पूरा", startNext: "अगला राउंड शुरू करें →", seeFinal: "अंतिम परिणाम देखें →", roundUnlock: "एक छोटा अनलॉक आपका राउंड स्कोर दिखाता है।" },
+        hu: { round: "Forduló", results: "eredmények", lockedNext: "A pontszámod rögzítve. Indítsd a következő fordulót, amikor készen állsz.", lockedFinal: "A pontszámod rögzítve. Most jön a végső eredmény.", nextStage: "Következő forduló", roundScore: "Forduló pontszáma", scoreSoFar: "Pontszám eddig", complete: "kész", startNext: "Következő forduló indítása →", seeFinal: "Végső eredmény megtekintése →", roundUnlock: "Egy rövid feloldás megmutatja a forduló pontszámát." },
+        id: { round: "Ronde", results: "hasil", lockedNext: "Skormu sudah terkunci. Mulai ronde berikutnya saat kamu siap.", lockedFinal: "Skormu sudah terkunci. Berikutnya adalah hasil akhir.", nextStage: "Ronde berikutnya", roundScore: "Skor ronde", scoreSoFar: "Skor sejauh ini", complete: "selesai", startNext: "Mulai ronde berikutnya →", seeFinal: "Lihat hasil akhir →", roundUnlock: "Satu buka singkat menampilkan skor rondemu." },
+        it: { round: "Round", results: "risultati", lockedNext: "Il tuo punteggio è salvato. Inizia il prossimo round quando vuoi.", lockedFinal: "Il tuo punteggio è salvato. Ora arriva il risultato finale.", nextStage: "Prossimo round", roundScore: "Punteggio round", scoreSoFar: "Punteggio finora", complete: "completo", startNext: "Inizia il prossimo round →", seeFinal: "Vedi risultato finale →", roundUnlock: "Un breve sblocco rivela il punteggio del round." },
+        ja: { round: "ラウンド", results: "結果", lockedNext: "スコアが保存されました。準備ができたら次のラウンドへ進みましょう。", lockedFinal: "スコアが保存されました。次は最終結果です。", nextStage: "次のラウンド", roundScore: "ラウンドスコア", scoreSoFar: "ここまでのスコア", complete: "完了", startNext: "次のラウンドを始める →", seeFinal: "最終結果を見る →", roundUnlock: "短い解除でラウンドスコアが表示されます。" },
+        ko: { round: "라운드", results: "결과", lockedNext: "점수가 저장되었습니다. 준비되면 다음 라운드를 시작하세요.", lockedFinal: "점수가 저장되었습니다. 이제 최종 결과가 나옵니다.", nextStage: "다음 라운드", roundScore: "라운드 점수", scoreSoFar: "현재 점수", complete: "완료", startNext: "다음 라운드 시작 →", seeFinal: "최종 결과 보기 →", roundUnlock: "짧은 잠금 해제로 라운드 점수를 볼 수 있습니다." },
+        lt: { round: "Raundas", results: "rezultatai", lockedNext: "Tavo rezultatas užfiksuotas. Pradėk kitą raundą, kai būsi pasiruošęs.", lockedFinal: "Tavo rezultatas užfiksuotas. Toliau laukia galutinis rezultatas.", nextStage: "Kitas raundas", roundScore: "Raundo rezultatas", scoreSoFar: "Rezultatas iki šiol", complete: "baigta", startNext: "Pradėti kitą raundą →", seeFinal: "Žiūrėti galutinį rezultatą →", roundUnlock: "Trumpas atrakinimas parodys raundo rezultatą." },
+        lv: { round: "Raunds", results: "rezultāti", lockedNext: "Tavs rezultāts ir saglabāts. Sāc nākamo raundu, kad esi gatavs.", lockedFinal: "Tavs rezultāts ir saglabāts. Tālāk būs gala rezultāts.", nextStage: "Nākamais raunds", roundScore: "Raunda rezultāts", scoreSoFar: "Rezultāts līdz šim", complete: "pabeigts", startNext: "Sākt nākamo raundu →", seeFinal: "Skatīt gala rezultātu →", roundUnlock: "Īsa atbloķēšana parādīs raunda rezultātu." },
+        ms: { round: "Pusingan", results: "keputusan", lockedNext: "Skor anda sudah dikunci. Mulakan pusingan seterusnya apabila anda bersedia.", lockedFinal: "Skor anda sudah dikunci. Keputusan akhir seterusnya.", nextStage: "Pusingan seterusnya", roundScore: "Skor pusingan", scoreSoFar: "Skor setakat ini", complete: "selesai", startNext: "Mulakan pusingan seterusnya →", seeFinal: "Lihat keputusan akhir →", roundUnlock: "Satu buka kunci ringkas memaparkan skor pusingan anda." },
+        nl: { round: "Ronde", results: "resultaten", lockedNext: "Je score is vastgelegd. Start de volgende ronde wanneer je klaar bent.", lockedFinal: "Je score is vastgelegd. Het eindresultaat is nu aan de beurt.", nextStage: "Volgende ronde", roundScore: "Rondescore", scoreSoFar: "Score tot nu toe", complete: "voltooid", startNext: "Start volgende ronde →", seeFinal: "Bekijk eindresultaat →", roundUnlock: "Een korte ontgrendeling toont je rondescore." },
+        no: { round: "Runde", results: "resultater", lockedNext: "Poengsummen din er lagret. Start neste runde når du er klar.", lockedFinal: "Poengsummen din er lagret. Sluttresultatet kommer nå.", nextStage: "Neste runde", roundScore: "Rundescore", scoreSoFar: "Score så langt", complete: "fullført", startNext: "Start neste runde →", seeFinal: "Se sluttresultat →", roundUnlock: "En kort opplåsing viser rundescoren din." },
+        pl: { round: "Runda", results: "wyniki", lockedNext: "Twój wynik jest zapisany. Zacznij kolejną rundę, gdy będziesz gotowy.", lockedFinal: "Twój wynik jest zapisany. Teraz czas na wynik końcowy.", nextStage: "Następna runda", roundScore: "Wynik rundy", scoreSoFar: "Wynik do tej pory", complete: "ukończono", startNext: "Zacznij następną rundę →", seeFinal: "Zobacz wynik końcowy →", roundUnlock: "Krótkie odblokowanie pokaże wynik tej rundy." },
+        pt: { round: "Ronda", results: "resultados", lockedNext: "A tua pontuação ficou guardada. Começa a próxima ronda quando estiveres pronto.", lockedFinal: "A tua pontuação ficou guardada. Segue-se o resultado final.", nextStage: "Próxima ronda", roundScore: "Pontuação da ronda", scoreSoFar: "Pontuação até agora", complete: "concluído", startNext: "Começar próxima ronda →", seeFinal: "Ver resultado final →", roundUnlock: "Um desbloqueio curto revela a tua pontuação da ronda." },
+        "pt-br": { round: "Rodada", results: "resultados", lockedNext: "Sua pontuação foi salva. Comece a próxima rodada quando estiver pronto.", lockedFinal: "Sua pontuação foi salva. Agora vem o resultado final.", nextStage: "Próxima rodada", roundScore: "Pontuação da rodada", scoreSoFar: "Pontuação até agora", complete: "concluído", startNext: "Começar próxima rodada →", seeFinal: "Ver resultado final →", roundUnlock: "Um desbloqueio curto revela sua pontuação da rodada." },
+        ro: { round: "Runda", results: "rezultate", lockedNext: "Scorul tău este salvat. Începe runda următoare când ești pregătit.", lockedFinal: "Scorul tău este salvat. Urmează rezultatul final.", nextStage: "Runda următoare", roundScore: "Scorul rundei", scoreSoFar: "Scor până acum", complete: "finalizat", startNext: "Începe runda următoare →", seeFinal: "Vezi rezultatul final →", roundUnlock: "O scurtă deblocare îți arată scorul rundei." },
+        sv: { round: "Runda", results: "resultat", lockedNext: "Din poäng är sparad. Starta nästa runda när du är redo.", lockedFinal: "Din poäng är sparad. Slutresultatet kommer härnäst.", nextStage: "Nästa runda", roundScore: "Rundpoäng", scoreSoFar: "Poäng hittills", complete: "klart", startNext: "Starta nästa runda →", seeFinal: "Se slutresultat →", roundUnlock: "En kort upplåsning visar din rundpoäng." },
+        th: { round: "รอบ", results: "ผลลัพธ์", lockedNext: "คะแนนของคุณถูกบันทึกแล้ว เริ่มรอบถัดไปเมื่อพร้อม", lockedFinal: "คะแนนของคุณถูกบันทึกแล้ว ต่อไปคือผลลัพธ์สุดท้าย", nextStage: "รอบถัดไป", roundScore: "คะแนนรอบนี้", scoreSoFar: "คะแนนจนถึงตอนนี้", complete: "เสร็จแล้ว", startNext: "เริ่มรอบถัดไป →", seeFinal: "ดูผลลัพธ์สุดท้าย →", roundUnlock: "ปลดล็อกสั้น ๆ เพื่อดูคะแนนรอบนี้" },
+        tr: { round: "Tur", results: "sonuçları", lockedNext: "Puanın kaydedildi. Hazır olduğunda sonraki turu başlat.", lockedFinal: "Puanın kaydedildi. Sırada final sonucu var.", nextStage: "Sonraki tur", roundScore: "Tur puanı", scoreSoFar: "Şu ana kadarki puan", complete: "tamamlandı", startNext: "Sonraki turu başlat →", seeFinal: "Final sonucunu gör →", roundUnlock: "Kısa bir kilit açma tur puanını gösterir." },
+        uk: { round: "Раунд", results: "результати", lockedNext: "Твій рахунок збережено. Почни наступний раунд, коли будеш готовий.", lockedFinal: "Твій рахунок збережено. Далі фінальний результат.", nextStage: "Наступний раунд", roundScore: "Рахунок раунду", scoreSoFar: "Рахунок наразі", complete: "завершено", startNext: "Почати наступний раунд →", seeFinal: "Переглянути фінальний результат →", roundUnlock: "Коротке розблокування покаже рахунок раунду." },
+        vi: { round: "Vòng", results: "kết quả", lockedNext: "Điểm của bạn đã được lưu. Bắt đầu vòng tiếp theo khi bạn sẵn sàng.", lockedFinal: "Điểm của bạn đã được lưu. Tiếp theo là kết quả cuối cùng.", nextStage: "Vòng tiếp theo", roundScore: "Điểm vòng", scoreSoFar: "Điểm hiện tại", complete: "hoàn tất", startNext: "Bắt đầu vòng tiếp theo →", seeFinal: "Xem kết quả cuối cùng →", roundUnlock: "Một lần mở khóa ngắn sẽ hiển thị điểm vòng này." },
+        zh: { round: "第", results: "轮结果", lockedNext: "你的分数已保存。准备好后开始下一轮。", lockedFinal: "你的分数已保存。接下来是最终结果。", nextStage: "下一轮", roundScore: "本轮分数", scoreSoFar: "当前总分", complete: "完成", startNext: "开始下一轮 →", seeFinal: "查看最终结果 →", roundUnlock: "短暂解锁后即可查看本轮分数。" }
+      };
+
+      return labels[t.locale && t.locale.code] || defaults;
     }
 
     function showHarvardStageResults(shouldScroll) {
@@ -1491,7 +1805,6 @@ function createQuizRunnerScript(config: {
 
     function showResultGate(shouldScroll) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
@@ -1547,7 +1860,7 @@ function createQuizRunnerScript(config: {
     function getUnlockReviewButtonLabel() {
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz ? "View Incorrect Answers" : t.results.review.unlockButton;
+      return isShortLockedScoreQuiz ? "View Incorrect Answers" : t.results.review.unlockButton;
     }
 
     function hidesAnswerExplanations() {
@@ -1555,8 +1868,40 @@ function createQuizRunnerScript(config: {
     }
 
     function getShortLockedResultGateTitle() {
-      if (t.locale && t.locale.code === "de") return "Deine Ergebnisse sind bereit.";
-      return t.locale && t.locale.code === "nl" ? "Je resultaten zijn klaar." : "Your results are ready.";
+      var labels = {
+        ar: "نتائجك جاهزة.",
+        bg: "Резултатите ти са готови.",
+        cs: "Tvé výsledky jsou připravené.",
+        da: "Dine resultater er klar.",
+        de: "Deine Ergebnisse sind bereit.",
+        el: "Τα αποτελέσματά σου είναι έτοιμα.",
+        es: "Tus resultados están listos.",
+        fi: "Tuloksesi ovat valmiit.",
+        fr: "Tes résultats sont prêts.",
+        he: "התוצאות שלך מוכנות.",
+        hi: "आपके परिणाम तैयार हैं।",
+        hu: "Az eredményeid készen állnak.",
+        id: "Hasilmu sudah siap.",
+        it: "I tuoi risultati sono pronti.",
+        ja: "結果の準備ができました。",
+        ko: "결과가 준비되었습니다.",
+        lt: "Tavo rezultatai paruošti.",
+        lv: "Tavi rezultāti ir gatavi.",
+        ms: "Keputusan anda sudah sedia.",
+        nl: "Je resultaten zijn klaar.",
+        no: "Resultatene dine er klare.",
+        pl: "Twoje wyniki są gotowe.",
+        pt: "Os teus resultados estão prontos.",
+        "pt-br": "Seus resultados estão prontos.",
+        ro: "Rezultatele tale sunt gata.",
+        sv: "Dina resultat är klara.",
+        th: "ผลลัพธ์ของคุณพร้อมแล้ว",
+        tr: "Sonuçların hazır.",
+        uk: "Твої результати готові.",
+        vi: "Kết quả của bạn đã sẵn sàng.",
+        zh: "你的结果已准备好。"
+      };
+      return labels[t.locale && t.locale.code] || "Your results are ready.";
     }
 
     function getShortLockedResultGateCopy() {
@@ -1564,13 +1909,77 @@ function createQuizRunnerScript(config: {
         return getRoundCheckpointText().roundUnlock;
       }
 
-      if (t.locale && t.locale.code === "de") return "Eine kurze Freischaltung zeigt deine Punktzahl und Antwortübersicht.";
-      return t.locale && t.locale.code === "nl" ? "Een korte ontgrendeling toont je score en antwoordoverzicht." : "One short unlock reveals your score and answer review.";
+      var labels = {
+        ar: "يفتح إعلان قصير نتيجتك ومراجعة الإجابات.",
+        bg: "Кратко отключване показва резултата и прегледа на отговорите.",
+        cs: "Krátké odemčení ukáže tvé skóre a přehled odpovědí.",
+        da: "En kort oplåsning viser din score og svaroversigt.",
+        de: "Eine kurze Freischaltung zeigt deine Punktzahl und Antwortübersicht.",
+        el: "Ένα σύντομο ξεκλείδωμα δείχνει το σκορ και την ανασκόπηση των απαντήσεων.",
+        es: "Un desbloqueo breve revela tu puntuación y revisión de respuestas.",
+        fi: "Lyhyt avaus näyttää pisteesi ja vastauskatsauksen.",
+        fr: "Un court déblocage révèle ton score et le récapitulatif des réponses.",
+        he: "פתיחה קצרה מציגה את הציון שלך ואת סקירת התשובות.",
+        hi: "एक छोटा अनलॉक आपका स्कोर और उत्तर समीक्षा दिखाता है।",
+        hu: "Egy rövid feloldás megmutatja a pontszámodat és a válaszaid áttekintését.",
+        id: "Satu buka singkat menampilkan skor dan ulasan jawabanmu.",
+        it: "Un breve sblocco mostra il tuo punteggio e il riepilogo delle risposte.",
+        ja: "短い解除でスコアと回答レビューが表示されます。",
+        ko: "짧은 잠금 해제로 점수와 답변 리뷰를 볼 수 있습니다.",
+        lt: "Trumpas atrakinimas parodys tavo rezultatą ir atsakymų peržiūrą.",
+        lv: "Īsa atbloķēšana parādīs tavu rezultātu un atbilžu pārskatu.",
+        ms: "Satu buka kunci ringkas memaparkan skor dan semakan jawapan anda.",
+        nl: "Een korte ontgrendeling toont je score en antwoordoverzicht.",
+        no: "En kort opplåsing viser poengsummen og svaroversikten din.",
+        pl: "Krótkie odblokowanie pokaże twój wynik i przegląd odpowiedzi.",
+        pt: "Um desbloqueio curto revela a tua pontuação e a revisão das respostas.",
+        "pt-br": "Um desbloqueio curto revela sua pontuação e a revisão das respostas.",
+        ro: "O scurtă deblocare îți arată scorul și recapitularea răspunsurilor.",
+        sv: "En kort upplåsning visar din poäng och svarsgenomgång.",
+        th: "ปลดล็อกสั้น ๆ เพื่อดูคะแนนและสรุปคำตอบของคุณ",
+        tr: "Kısa bir kilit açma, puanını ve cevap özetini gösterir.",
+        uk: "Коротке розблокування покаже твій рахунок і огляд відповідей.",
+        vi: "Một lần mở khóa ngắn sẽ hiển thị điểm và phần xem lại câu trả lời.",
+        zh: "短暂解锁后即可查看分数和答案回顾。"
+      };
+      return labels[t.locale && t.locale.code] || "One short unlock reveals your score and answer review.";
     }
 
     function getShortLockedResultGateButtonLabel() {
-      if (t.locale && t.locale.code === "de") return "Meine Ergebnisse ansehen →";
-      return t.locale && t.locale.code === "nl" ? t.results.viewResults + " →" : "See My Results →";
+      var labels = {
+        ar: "اعرض نتائجي →",
+        bg: "Виж резултатите ми →",
+        cs: "Zobrazit moje výsledky →",
+        da: "Se mine resultater →",
+        de: "Meine Ergebnisse ansehen →",
+        el: "Δες τα αποτελέσματά μου →",
+        es: "Ver mis resultados →",
+        fi: "Näytä tulokseni →",
+        fr: "Voir mes résultats →",
+        he: "הצג את התוצאות שלי →",
+        hi: "मेरे परिणाम देखें →",
+        hu: "Eredményeim megtekintése →",
+        id: "Lihat hasil saya →",
+        it: "Vedi i miei risultati →",
+        ja: "結果を見る →",
+        ko: "내 결과 보기 →",
+        lt: "Žiūrėti mano rezultatus →",
+        lv: "Skatīt manus rezultātus →",
+        ms: "Lihat keputusan saya →",
+        nl: "Mijn resultaten bekijken →",
+        no: "Se resultatene mine →",
+        pl: "Zobacz moje wyniki →",
+        pt: "Ver os meus resultados →",
+        "pt-br": "Ver meus resultados →",
+        ro: "Vezi rezultatele mele →",
+        sv: "Se mina resultat →",
+        th: "ดูผลลัพธ์ของฉัน →",
+        tr: "Sonuçlarımı gör →",
+        uk: "Переглянути мої результати →",
+        vi: "Xem kết quả của tôi →",
+        zh: "查看我的结果 →"
+      };
+      return labels[t.locale && t.locale.code] || "See My Results →";
     }
 
     function formatTemplate(template, values) {
@@ -1714,7 +2123,6 @@ function createQuizRunnerScript(config: {
 
     function renderResults(shouldScroll, shouldTrack) {
       clearAdStatuses();
-      var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
       var score = getScore();
       var stageScores = getStageScores();
       var strongestStage = getStrongestStage(stageScores);
