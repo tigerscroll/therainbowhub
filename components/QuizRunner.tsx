@@ -327,15 +327,16 @@ function createQuizRunnerScript(config: {
     var isHarvard2Quiz = quiz.slug === "harvard2";
     var isOxford2Quiz = quiz.slug === "oxford2";
     var isCambridge2Quiz = quiz.slug === "cambridge2";
+    var isMemoryQuiz = quiz.slug === "memory";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz;
-    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz;
+    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = false;
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz;
+    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var current = 0;
@@ -1068,6 +1069,18 @@ function createQuizRunnerScript(config: {
             "time": "Time",
             "geometry": "Geometry",
             "spatial": "Spatial"
+          }
+        },
+        memory: {
+          en: {
+            "fact-recall": "Fact recall",
+            "general-knowledge": "Quick facts",
+            "recent-recall": "Recent recall",
+            "detail-recall": "Detail recall",
+            "category-memory": "Categories",
+            "pattern-memory": "Patterns",
+            "long-recall": "Long recall",
+            "exclusion-recall": "Memory check"
           }
         },
         pilot2: {
@@ -2015,7 +2028,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "memory" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
