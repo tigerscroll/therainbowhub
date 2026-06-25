@@ -335,7 +335,7 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isOxford2Quiz;
+    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var current = 0;
