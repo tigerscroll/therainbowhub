@@ -1799,7 +1799,7 @@ function createQuizRunnerScript(config: {
       var checkpointText = getRoundCheckpointText();
 
       byData("stage-title").textContent = checkpointText.round + " " + (completedStage + 1) + "/" + stageIndexes.length + " " + checkpointText.results;
-      byData("stage-icon").textContent = stageScore >= Math.ceil(stageTotal * 0.8) ? "🏆" : quiz.cardIcon || "✅";
+      byData("stage-icon").textContent = isAirforceQuiz ? quiz.cardIcon || "✈️" : stageScore >= Math.ceil(stageTotal * 0.8) ? "🏆" : quiz.cardIcon || "✅";
       byData("stage-copy").textContent = nextStageName ? checkpointText.lockedNext : checkpointText.lockedFinal;
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-next-label").textContent = nextStageName ? checkpointText.nextStage : "";
