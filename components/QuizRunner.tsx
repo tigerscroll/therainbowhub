@@ -337,7 +337,7 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz;
+    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || quiz.slug === "anatomy2";
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var current = 0;
