@@ -327,8 +327,9 @@ function createQuizRunnerScript(config: {
     var isHarvard2Quiz = quiz.slug === "harvard2";
     var isOxford2Quiz = quiz.slug === "oxford2";
     var isCambridge2Quiz = quiz.slug === "cambridge2";
+    var isAirforceQuiz = quiz.slug === "airforce";
     var isMemoryQuiz = quiz.slug === "memory";
-    var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz;
+    var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic";
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
@@ -1069,6 +1070,23 @@ function createQuizRunnerScript(config: {
             "time": "Time",
             "geometry": "Geometry",
             "spatial": "Spatial"
+          }
+        },
+        airforce: {
+          en: {
+            "flight-logic": "Flight logic",
+            "aviation-maths": "Air maths",
+            "fuel-time": "Fuel and time",
+            "map-reading": "Map reading",
+            "direction": "Direction",
+            "spatial": "Spatial",
+            "instrument-focus": "Instruments",
+            "attention": "Focus",
+            "sequence": "Sequence",
+            "priority": "Priority",
+            "weather": "Weather",
+            "safety": "Safety",
+            "analogy": "Analogies"
           }
         },
         memory: {
@@ -2436,7 +2454,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "memory" ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "memory" ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
