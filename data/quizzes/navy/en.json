@@ -1,23 +1,23 @@
 {
   "slug": "navy",
   "mode": "scored",
-  "title": "Only 3% Can Pass This Navy Logic Test",
-  "seoTitle": "Only 3% Can Pass This Navy Logic Test",
+  "title": "Only 4% Pass This Navy Entrance Test",
+  "seoTitle": "Only 4% Pass This Navy Entrance Test",
   "seoDescription": "Take a fast Navy-style aptitude quiz with bearings, signals, harbour logic, chart clues, and pressure decisions.",
-  "pageTitle": "Only 3% Can Pass This Navy Logic Test",
+  "pageTitle": "Only 4% Pass This Navy Entrance Test",
   "eyebrow": "Navy Test",
   "summary": "A fast Navy-style mission challenge with navigation, ship logic, signals, callbacks, and pressure decisions.",
-  "duration": "5 mins",
+  "duration": "6 mins",
   "publishedAt": "2026-06-27T09:00:00Z",
   "difficulty": "Hard",
-  "passRate": "3%",
+  "passRate": "4%",
   "cardIcon": "⚓",
   "cardGradient": "linear-gradient(135deg, #0b1f3a 0%, #0f5f8f 100%)",
   "accent": "#0f5f8f",
-  "questionCount": 30,
+  "questionCount": 40,
   "homepage": {
-    "title": "Only 3% Can Pass This Navy Logic Test",
-    "summary": "Take quick navigation, signal, chart-reading, and mission-priority questions and see if you can beat the 3%.",
+    "title": "Only 4% Pass This Navy Entrance Test",
+    "summary": "Take quick navigation, signal, chart-reading, and mission-priority questions and see if you can beat the 4%.",
     "thumbnailUrl": "/images/thumbnails/navy.jpg",
     "thumbnailAlt": "Navy aptitude quiz with sea chart, compass, binoculars, and navigation tools on a chart table",
     "icon": "⚓",
@@ -25,28 +25,28 @@
     "featured": false
   },
   "heroPoints": [
-    "3 pressure rounds",
+    "4 pressure rounds",
     "Signals and navigation",
     "Instant score result"
   ],
   "footer": {
-    "aboutTitle": "About This Navy Logic Test",
+    "aboutTitle": "About This Navy Entrance Test",
     "aboutText": "This is a fun Navy-style aptitude quiz built around bearings, chart clues, signals, memory callbacks, safe decisions, and quick crew logic. It is for entertainment and self-challenge only. It is not an official Navy test, recruitment exam, military assessment, maritime credential, or training advice."
   },
   "landing": {
-    "quickStartText": "Take the fast naval logic challenge and see if you can beat the 3%.",
+    "quickStartText": "Take the fast naval logic challenge and see if you can beat the 4%.",
     "socialProof": "64,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
   "result": {
-    "profileName": "Navy Logic Test",
+    "profileName": "Navy Entrance Test",
     "profiles": [
       {
         "minRatio": 0.8,
         "tier": "Command Tier",
         "title": "You stayed calm when the pressure rose.",
         "copy": "Excellent score across signals, chart logic, route choices, and final command decisions. Your strongest area was {stage}.",
-        "percentile": "Top 3%"
+        "percentile": "Top 4%"
       },
       {
         "minRatio": 0.65,
@@ -84,6 +84,7 @@
         "categories": [
           "ship-logic",
           "attention",
+          "deduction",
           "sequence",
           "code-clue"
         ]
@@ -224,7 +225,7 @@
     },
     {
       "title": "Harbour Mission",
-      "encouragement": "You got through the harbour run. The final command check now mixes callbacks, route pressure, and decisions that come fast.",
+      "encouragement": "You got through the harbour run. The next round adds faster signals, route trade-offs, and decisions under pressure.",
       "questions": [
         {
           "prompt": "The Harbour Mission starts at marker A2. The crew moves two columns right and one row up. Where are they now?",
@@ -315,26 +316,142 @@
           "category": "sequence"
         },
         {
-          "prompt": "A supply craft checks in once every 6 minutes. In a 24-minute window, how many check-ins are expected?",
+          "prompt": "The crew has 24 minutes before visibility worsens. A chart check takes 6 minutes and a signal check takes 6 minutes. They still need one final route check after that. What matters most?",
           "choices": [
-            "3",
-            "5",
-            "4",
-            "6"
+            "Whether there is still enough time to complete the checks before visibility drops",
+            "Whether the rope locker is tidy",
+            "Which crew member speaks first",
+            "Whether the boat looks faster from the dock"
           ],
-          "answerIndex": 2,
-          "category": "attention"
+          "answerIndex": 0,
+          "category": "time-distance"
         },
         {
-          "prompt": "If MAST becomes NBTU by moving each letter forward by one, what does DECK become?",
+          "prompt": "A signal sheet says: A = slow approach, B = hold position, C = safe channel. The lamp flashes B while visibility drops. What should the crew do?",
           "choices": [
-            "EEDL",
-            "EFDL",
-            "DFDL",
-            "EFDK"
+            "Speed up before visibility gets worse",
+            "Hold position and confirm the next move",
+            "Switch channels without telling the crew",
+            "Ignore the lamp and trust the chart"
           ],
           "answerIndex": 1,
           "category": "code-clue"
+        }
+      ]
+    },
+    {
+      "title": "Signal Pressure",
+      "encouragement": "This is where the mission tightens. The final round brings back earlier clues when the pressure is highest.",
+      "questions": [
+        {
+          "prompt": "A warning lamp flashes twice, then stops. What is the smartest first move?",
+          "choices": [
+            "Assume it was harmless and continue",
+            "Log it and confirm what the signal means",
+            "Change route without telling anyone",
+            "Ignore all other updates"
+          ],
+          "answerIndex": 1,
+          "category": "signals"
+        },
+        {
+          "prompt": "A route through open water is quicker, but the sheltered route is steadier in worsening weather. Which choice is smarter?",
+          "choices": [
+            "Take the quicker open-water route every time",
+            "Split the crew between both routes",
+            "Take the steadier sheltered route",
+            "Stop and wait with no plan"
+          ],
+          "answerIndex": 2,
+          "category": "priority"
+        },
+        {
+          "prompt": "Mission Control says the vessel is at D4 and must move one column right and one row down. Where does it end up?",
+          "choices": [
+            "E5",
+            "D5",
+            "E4",
+            "C5"
+          ],
+          "answerIndex": 0,
+          "category": "spatial"
+        },
+        {
+          "prompt": "A route update must include location, hazard, and next move. Which message does that best?",
+          "choices": [
+            "We are somewhere near the marker",
+            "Visibility dropping near B6; slowing and switching to the marked safe channel",
+            "Weather is not ideal",
+            "We may need to rethink things"
+          ],
+          "answerIndex": 1,
+          "category": "attention"
+        },
+        {
+          "prompt": "A deck team has 14 minutes left. A line reset takes 5 minutes and a signal check takes 4 minutes. How much time remains?",
+          "choices": [
+            "6 minutes",
+            "7 minutes",
+            "5 minutes",
+            "4 minutes"
+          ],
+          "answerIndex": 2,
+          "category": "time-distance"
+        },
+        {
+          "prompt": "If only confirmed routes show a green light, and Route C has a green light, what can you safely conclude?",
+          "choices": [
+            "Route C is confirmed",
+            "Every route is confirmed",
+            "Green lights no longer matter",
+            "Route C is the fastest"
+          ],
+          "answerIndex": 0,
+          "category": "deduction"
+        },
+        {
+          "prompt": "A crew member reports, “The marker looked wrong.” What is the smartest follow-up?",
+          "choices": [
+            "Ask what exactly looked wrong and where",
+            "Ignore it because the route is familiar",
+            "Tell them to keep quiet until docking",
+            "Assume the marker has moved"
+          ],
+          "answerIndex": 0,
+          "category": "ship-logic"
+        },
+        {
+          "prompt": "A vessel faces east, turns left, then turns left again. Which direction is it facing now?",
+          "choices": [
+            "North",
+            "West",
+            "South",
+            "East"
+          ],
+          "answerIndex": 1,
+          "category": "bearing"
+        },
+        {
+          "prompt": "The crew hears three updates at once: rising wind, a loose rope, and a missing mug. Which gets priority?",
+          "choices": [
+            "The missing mug",
+            "The loose rope",
+            "The rising wind that affects the route",
+            "Whichever update arrived first"
+          ],
+          "answerIndex": 2,
+          "category": "weather"
+        },
+        {
+          "prompt": "Which sequence is smartest when a signal is unclear and the weather is worsening?",
+          "choices": [
+            "Guess the signal, speed up, explain later",
+            "Confirm the signal, slow the approach, update the crew",
+            "Ignore the signal because weather matters more",
+            "Wait silently and hope the route clears"
+          ],
+          "answerIndex": 1,
+          "category": "sequence"
         }
       ]
     },
@@ -376,15 +493,15 @@
           "category": "attention"
         },
         {
-          "prompt": "A course changes from 045 to 135. How many degrees did it turn?",
+          "prompt": "Earlier in the mission, what did a green light show?",
           "choices": [
-            "45°",
-            "90°",
-            "135°",
-            "180°"
+            "A route was confirmed",
+            "The weather had cleared",
+            "The crew should increase speed",
+            "The harbour gate had opened"
           ],
-          "answerIndex": 1,
-          "category": "bearing"
+          "answerIndex": 0,
+          "category": "deduction"
         },
         {
           "prompt": "The blue marker showed the safe channel, and visibility is now poor. Which choice is safest?",
