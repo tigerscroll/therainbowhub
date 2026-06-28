@@ -372,6 +372,8 @@ function createQuizRunnerScript(config: {
     var rewardClosedTrackedKey = "rainbowhub.rewardClosedTracked";
     var rewardClosed2TrackedKey = "rainbowhub.rewardClosed2Tracked";
     var quizStartTrackedKey = "rainbowhub.quizStartTracked:" + quiz.slug;
+    var quizRewardPlacementsKey = "rainbowhub.quizRewardPlacements:" + quiz.slug;
+    var quizResultsTrackedKey = "rainbowhub.quizResultsTracked:" + quiz.slug;
     var rewardedGrantedCount = readSessionNumber(rewardedGrantedCountKey, 0);
     var rewardedClosedCount = readSessionNumber(rewardedClosedCountKey, 0);
     var rewardTracked = readSessionFlag(rewardTrackedKey);
@@ -379,6 +381,7 @@ function createQuizRunnerScript(config: {
     var rewardClosedTracked = readSessionFlag(rewardClosedTrackedKey);
     var rewardClosed2Tracked = readSessionFlag(rewardClosed2TrackedKey);
     var quizStartTracked = readSessionFlag(quizStartTrackedKey);
+    var quizResultsTracked = readSessionFlag(quizResultsTrackedKey);
     var googlePublisherTagUrl = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     var preloadedVisuals = {};
     var retryRewardedAction = null;
@@ -586,10 +589,48 @@ function createQuizRunnerScript(config: {
       return true;
     }
 
+    function readQuizRewardPlacements() {
+      var placements = readSessionJsonArray(quizRewardPlacementsKey);
+      return placements.filter(function (placement) {
+        return typeof placement === "string" && placement.length > 0;
+      });
+    }
+
+    function writeQuizRewardPlacements(placements) {
+      try {
+        window.sessionStorage.setItem(quizRewardPlacementsKey, JSON.stringify(placements));
+      } catch (error) {}
+    }
+
+    function rememberQuizRewardPlacement(placement) {
+      if (!placement) return;
+      var placements = readQuizRewardPlacements();
+      if (placements.indexOf(placement) !== -1) return;
+      placements.push(placement);
+      writeQuizRewardPlacements(placements);
+    }
+
+    function hasRequiredResultsRewards() {
+      var placements = readQuizRewardPlacements();
+      return placements.indexOf("before_start") !== -1 && placements.indexOf("before_final_results") !== -1;
+    }
+
+    function trackResultsEvent() {
+      if (quizResultsTracked || !hasRequiredResultsRewards()) return;
+      quizResultsTracked = trackFbqCustomEventOnce("Results", {
+        quiz_slug: quiz.slug,
+        quiz_title: quiz.title,
+        question_count: quiz.questions.length,
+        rewarded_before_results: 2,
+        rewarded_placements: readQuizRewardPlacements()
+      }, quizResultsTrackedKey);
+    }
+
     function trackRewardGranted(payload) {
       var data = payload || {};
       rewardedGrantedCount += 1;
       writeSessionValue(rewardedGrantedCountKey, rewardedGrantedCount);
+      rememberQuizRewardPlacement(data.placement);
       data.reward_count = rewardedGrantedCount;
       if (!rewardTracked) {
         rewardTracked = trackFbqCustomEventOnce("Reward", data, rewardTrackedKey);
@@ -2243,6 +2284,7 @@ function createQuizRunnerScript(config: {
 
       show("results", shouldScroll);
       saveProgress("results");
+      trackResultsEvent();
     }
 
     function startFresh() {
@@ -2252,6 +2294,9 @@ function createQuizRunnerScript(config: {
       hasUnlockedReview = false;
       harvardStageResultPending = false;
       harvardStageResultReady = false;
+      quizResultsTracked = false;
+      writeSessionValue(quizResultsTrackedKey, "0");
+      writeQuizRewardPlacements([]);
       saveProgress("question");
       renderQuestion();
     }
@@ -2265,6 +2310,9 @@ function createQuizRunnerScript(config: {
       hasUnlockedReview = false;
       harvardStageResultPending = false;
       harvardStageResultReady = false;
+      quizResultsTracked = false;
+      writeSessionValue(quizResultsTrackedKey, "0");
+      writeQuizRewardPlacements([]);
       if (autoStartQuiz) {
         startFresh();
         scrollToPageTop();
