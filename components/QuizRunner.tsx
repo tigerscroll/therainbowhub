@@ -336,16 +336,17 @@ function createQuizRunnerScript(config: {
     var isMemoryQuiz = quiz.slug === "memory";
     var isConnectionQuiz = quiz.slug === "connection";
     var isParamedicQuiz = quiz.slug === "paramedic";
+    var isMedicineQuiz = quiz.slug === "medicine";
     var isArmyQuiz = quiz.slug === "army" && t.locale && t.locale.code === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
-    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz;
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz;
+    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isMedicineQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = false;
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isParamedicQuiz || isArmyQuiz;
+    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isParamedicQuiz || isArmyQuiz || isMedicineQuiz;
     var useQuestionDisplayAd = isParamedicQuiz;
     var useDisplayAds = useQuestionDisplayAd;
     var isLargeQuestionDisplayVariant = isParamedicQuiz;
@@ -1164,6 +1165,20 @@ function createQuizRunnerScript(config: {
             "pattern": "Patterns",
             "lateral": "Composure",
             "grid": "Route sense"
+          }
+        },
+        medicine: {
+          en: {
+            "observation": "Observation",
+            "terminology": "Terms",
+            "anatomy": "Anatomy",
+            "memory": "Memory",
+            "priority": "Priority",
+            "sequence": "Sequence",
+            "timing": "Timing",
+            "chart": "Charts",
+            "reasoning": "Reasoning",
+            "data": "Data"
           }
         },
         connection: {
@@ -1986,7 +2001,7 @@ function createQuizRunnerScript(config: {
     }
 
     function hidesAnswerExplanations() {
-      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "paramedic" || isArmyQuiz;
+      return quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
     }
 
     function getShortLockedResultGateTitle() {
@@ -2566,7 +2581,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const isEnglishArmyShortLocked = quiz.slug === "army" && locale === "en";
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
     quiz.slug === "paramedic" ? "legacy-quiz--paramedic-display" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
