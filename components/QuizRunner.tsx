@@ -110,11 +110,7 @@ function createQuizRunnerHtml(config: {
   translations: Translations;
 }) {
   const { quiz, relatedQuizzes, translations } = config;
-  const displayAdHtml = quiz.slug === "paramedic"
-    ? `<div data-js="question-display-ad" class="legacy-display-ad legacy-hidden" aria-hidden="true">
-          <div data-js="question-display-ad-slot" class="legacy-display-ad__slot"></div>
-        </div>`
-    : "";
+  const displayAdHtml = "";
   const nursingResultStoryHtml = "";
   const landingLines = [quiz.landing.quickStartText, quiz.landing.challengeText]
     .filter((line) => line && line.trim().length > 0)
@@ -347,9 +343,9 @@ function createQuizRunnerScript(config: {
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
     var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isParamedicQuiz || isArmyQuiz || isMedicineQuiz;
-    var useQuestionDisplayAd = isParamedicQuiz;
+    var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
-    var isLargeQuestionDisplayVariant = isParamedicQuiz;
+    var isLargeQuestionDisplayVariant = false;
     var current = 0;
     var answers = {};
     var advanceTimer = null;
@@ -2582,7 +2578,6 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const isEnglishArmyShortLocked = quiz.slug === "army" && locale === "en";
   const variantClass = [
     quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
-    quiz.slug === "paramedic" ? "legacy-quiz--paramedic-display" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
