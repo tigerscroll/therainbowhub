@@ -333,6 +333,7 @@ function createQuizRunnerScript(config: {
     var isConnectionQuiz = quiz.slug === "connection";
     var isParamedicQuiz = quiz.slug === "paramedic";
     var isMedicineQuiz = quiz.slug === "medicine";
+    var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
     var isArmyQuiz = quiz.slug === "army" && t.locale && t.locale.code === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
@@ -343,7 +344,7 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isParamedicQuiz || isArmyQuiz || isMedicineQuiz || isYearsLeftQuiz;
+    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isAnatomyQuiz || isParamedicQuiz || isArmyQuiz || isMedicineQuiz || isYearsLeftQuiz;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var isLargeQuestionDisplayVariant = false;
