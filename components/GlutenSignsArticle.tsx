@@ -253,6 +253,8 @@ export function GlutenSignsArticle({ rewardedAdUnitPath }: GlutenSignsArticlePro
   const totalSlides = articleItems.length;
   const currentItem = articleItems[currentIndex];
   const hasMore = currentIndex < totalSlides - 1;
+  const currentSlideNumber = currentIndex + 1;
+  const nextSlideRequiresRewarded = currentSlideNumber === 1 || currentSlideNumber % 5 === 0;
 
   useEffect(() => {
     const nextImage = articleItems[currentIndex + 1]?.image;
@@ -265,11 +267,23 @@ export function GlutenSignsArticle({ rewardedAdUnitPath }: GlutenSignsArticlePro
 
   async function goToNextSlide() {
     if (unlocking || !hasMore) return;
+    const nextSlideNumber = currentIndex + 2;
+    const shouldRequireRewarded = nextSlideRequiresRewarded;
+
+    if (!shouldRequireRewarded) {
+      setCurrentIndex((index) => Math.min(index + 1, totalSlides - 1));
+      setStatus("");
+
+      window.setTimeout(() => {
+        document.getElementById("gluten-signs-current-slide")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+      return;
+    }
+
     setUnlocking(true);
     setStatus("");
 
     let result: RewardedStatus = "unavailable";
-    const nextSlideNumber = currentIndex + 2;
 
     for (let attempt = 0; attempt < 3; attempt += 1) {
       result = await requestRewardedAd(rewardedAdUnitPath, `gluten_signs_slide_${nextSlideNumber}`);
@@ -324,9 +338,11 @@ export function GlutenSignsArticle({ rewardedAdUnitPath }: GlutenSignsArticlePro
             <button className="legacy-primary" type="button" onClick={goToNextSlide} disabled={unlocking}>
               {unlocking ? "Loading Ad.." : nextSlideLabel}
             </button>
-            <span className="timed-ad-note">
-              <>✓ <b>Short ad first</b> — then article continues.</>
-            </span>
+            {nextSlideRequiresRewarded ? (
+              <span className="timed-ad-note">
+                <>✓ <b>Short ad first</b> — then article continues.</>
+              </span>
+            ) : null}
             {status ? <span className="timed-status">{status}</span> : null}
           </div>
         ) : (
