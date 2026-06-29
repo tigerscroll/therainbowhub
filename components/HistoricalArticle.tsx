@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import articleData from "@/data/articles/historical.json";
 
@@ -98,13 +98,17 @@ function trackFbqCustomEventOnce(eventName: string, data: FbqPayload, trackedKey
 }
 
 function trackArticleEngaged(placement: string, adUnitPath: string) {
-  trackFbqCustomEventOnce("Engaged", {
-    content_name: articleTrackingName,
-    content_type: "article",
-    engagement_source: "rewarded_ad_initiated",
-    placement,
-    ad_unit_path: adUnitPath,
-  }, articleEngagedTrackedKey);
+  trackFbqCustomEventOnce(
+    "Engaged",
+    {
+      content_name: articleTrackingName,
+      content_type: "article",
+      engagement_source: "rewarded_ad_initiated",
+      placement,
+      ad_unit_path: adUnitPath,
+    },
+    articleEngagedTrackedKey,
+  );
 }
 
 function trackRewardGranted(placement: string, adUnitPath: string) {
@@ -159,22 +163,23 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
     let settled = false;
     let granted = false;
 
+    function destroyRewardedSlot() {
+      if (!slot || !window.googletag?.cmd || !window.googletag.destroySlots) return;
+      try {
+        window.googletag.cmd.push(() => {
+          try {
+            window.googletag?.destroySlots?.([slot]);
+          } catch {}
+        });
+      } catch {}
+    }
+
     function settle(status: RewardedStatus, reason: string) {
       if (settled) return;
       settled = true;
       window.clearTimeout(failTimer);
       trackRewardClosed(placement, adUnitPath, status === "granted", reason);
-
-      if (slot && window.googletag?.cmd && window.googletag.destroySlots) {
-        try {
-          window.googletag.cmd.push(() => {
-            try {
-              window.googletag?.destroySlots?.([slot]);
-            } catch {}
-          });
-        } catch {}
-      }
-
+      destroyRewardedSlot();
       resolve(status);
     }
 
@@ -214,6 +219,7 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
             if (event.slot !== slot || settled) return;
             granted = true;
             trackRewardGranted(placement, adUnitPath);
+            destroyRewardedSlot();
             settle("granted", "reward_granted");
           });
 
@@ -240,141 +246,113 @@ function requestRewardedAd(adUnitPath: string, placement: string) {
 }
 
 export function HistoricalArticle({ rewardedAdUnitPath }: HistoricalArticleProps) {
-  const [started, setStarted] = useState(false);
-  const [startUnlocking, setStartUnlocking] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(5);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [unlocking, setUnlocking] = useState(false);
   const [status, setStatus] = useState("");
 
-  const visibleItems = useMemo(() => articleItems.slice(0, visibleCount), [visibleCount]);
-  const hasMore = visibleCount < articleItems.length;
-  const nextCount = Math.min(5, articleItems.length - visibleCount);
+  const totalSlides = articleItems.length;
+  const currentItem = articleItems[currentIndex];
+  const hasMore = currentIndex < totalSlides - 1;
+  const currentSlideNumber = currentIndex + 1;
+  const nextSlideRequiresRewarded = currentSlideNumber === 1 || currentSlideNumber % 5 === 0;
 
-  async function startArticle() {
-    if (startUnlocking || started) return;
-    setStartUnlocking(true);
+  useEffect(() => {
+    const nextImage = articleItems[currentIndex + 1]?.image;
+    if (!nextImage || typeof window === "undefined") return;
+    const image = new window.Image();
+    image.src = nextImage;
+  }, [currentIndex]);
 
-    let result: RewardedStatus = "unavailable";
+  const nextSlideLabel = useMemo(() => `Next Slide >`, []);
 
-    for (let attempt = 0; attempt < 3; attempt += 1) {
-      result = await requestRewardedAd(rewardedAdUnitPath, "historical_start");
-      if (result === "granted") break;
-      if (result === "closed_without_reward") {
-        setStartUnlocking(false);
-        return;
-      }
+  async function goToNextSlide() {
+    if (unlocking || !hasMore) return;
+    const nextSlideNumber = currentIndex + 2;
+    const shouldRequireRewarded = nextSlideRequiresRewarded;
+
+    if (!shouldRequireRewarded) {
+      setCurrentIndex((index) => Math.min(index + 1, totalSlides - 1));
+      setStatus("");
+
+      window.setTimeout(() => {
+        document.getElementById("historical-current-slide")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+      return;
     }
 
-    setStarted(true);
-    setStartUnlocking(false);
-    window.setTimeout(() => {
-      document.getElementById("historical-start")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }
-
-  async function unlockNextSet() {
-    if (unlocking) return;
     setUnlocking(true);
-    setStatus("Loading a short ad...");
+    setStatus("");
 
     let result: RewardedStatus = "unavailable";
 
     for (let attempt = 0; attempt < 3; attempt += 1) {
-      result = await requestRewardedAd(rewardedAdUnitPath, `historical_unlock_${visibleCount}`);
+      result = await requestRewardedAd(rewardedAdUnitPath, `historical_slide_${nextSlideNumber}`);
       if (result === "granted") break;
       if (result === "closed_without_reward") {
-        setStatus("The ad was closed early. Try again to unlock the next section.");
+        setStatus("The ad was closed early. Try again to unlock the next slide.");
         setUnlocking(false);
         return;
       }
       setStatus(attempt < 2 ? "Still looking for an ad..." : "No ad available, continuing.");
     }
 
-    setVisibleCount((count) => Math.min(count + 5, articleItems.length));
-    setStatus(result === "granted" ? "Unlocked." : "");
+    setCurrentIndex((index) => Math.min(index + 1, totalSlides - 1));
+    setStatus(result === "granted" ? "" : "Unlocked.");
     setUnlocking(false);
+
+    window.setTimeout(() => {
+      document.getElementById("historical-current-slide")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   }
 
   return (
     <article className="timed-demo legacy-quiz timed-brand-article timed-historical-article">
-      <div className="legacy-main">
-        <section className="legacy-card legacy-start">
-          <div className="legacy-badge" aria-hidden="true">
-            <span>📸</span>
-          </div>
-          <h1>{articleData.landingTitle}</h1>
-          <p className="legacy-sub">{articleData.summary}</p>
-          <div className="timed-meta-row" aria-label="Article details">
-            <span>
-              <span aria-hidden="true">⏱️</span>
-              <strong>5 minute<br />read</strong>
-            </span>
-            <span>
-              <span aria-hidden="true">📅</span>
-              <strong>Updated<br />this month</strong>
-            </span>
-            <span>
-              <span aria-hidden="true">👥</span>
-              <strong>64,000+<br />readers this week</strong>
-            </span>
-          </div>
-          <button className="legacy-primary" type="button" onClick={startArticle} disabled={startUnlocking}>
-            {startUnlocking ? "Loading Ad.." : <><span aria-hidden="true">▶</span> See The Photos</>}
-          </button>
-          <div className="legacy-ad-note">
-            <span className="legacy-shield" aria-hidden="true">✓</span>
-            <span>{startUnlocking ? <>When the ad ends, <b>tap the X</b> in the top right to continue.</> : <>Short ad first - <b>then article starts</b></>}</span>
-          </div>
-        </section>
-      </div>
+      <section id="historical-start" className="timed-gallery timed-article" aria-label="Historical photos article">
+        <header className="timed-gallery__intro timed-article-header timed-life-intro">
+          <h2>{articleData.title}</h2>
+          <p className="timed-life-summary">{articleData.summary}</p>
+        </header>
 
-      {started ? (
-        <section id="historical-start" className="timed-gallery timed-article" aria-label="Historical photos article">
-          <header className="timed-gallery__intro timed-article-header timed-life-intro">
-            <h2>{articleData.title}</h2>
-            <p className="timed-article-byline">By The Rainbow Hub</p>
+        <article
+          className="timed-photo-card timed-article-section timed-single-slide"
+          id="historical-current-slide"
+          key={`${currentItem.title}-${currentIndex}`}
+        >
+          <header className="timed-section-heading">
+            <h3>{`${currentSlideNumber}. ${currentItem.title}`}</h3>
           </header>
+          <figure className="timed-article-figure">
+            <div className="timed-photo timed-real-photo" role="img" aria-label={currentItem.imageAlt}>
+              <img src={currentItem.image} alt={currentItem.imageAlt} loading="eager" />
+            </div>
+          </figure>
+          <div className="timed-card-copy">
+            {currentItem.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </article>
 
-          {visibleItems.map((item, index) => (
-            <article className="timed-photo-card timed-article-section" id={`historical-photo-${index + 1}`} key={`${item.title}-${index}`}>
-              <header className="timed-section-heading">
-                <span className="timed-section-number" aria-hidden="true">{index + 1}</span>
-                <h3>{item.title}</h3>
-              </header>
-              {item.paragraphs[0] ? <p className="timed-article-lead">{item.paragraphs[0]}</p> : null}
-              <figure className="timed-article-figure">
-                <div className="timed-photo timed-real-photo" role="img" aria-label={item.imageAlt}>
-                  <img src={item.image} alt={item.imageAlt} loading={index < 5 ? "eager" : "lazy"} />
-                </div>
-              </figure>
-              <div className="timed-card-copy">
-                {item.paragraphs.slice(1).map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </article>
-          ))}
-
-          {hasMore ? (
-            <aside className="timed-unlock" aria-live="polite">
-              <p className="timed-kicker">Keep reading</p>
-              <h2>Unlock the next {nextCount} photos</h2>
-              <p>View a short ad to continue.</p>
-              <button className="legacy-primary" type="button" onClick={unlockNextSet} disabled={unlocking}>
-                {unlocking ? "Loading Ad.." : "Continue Reading"}
-              </button>
-              <span className="timed-ad-note">{unlocking ? <>When the ad ends, <b>tap the X</b> in the top right to continue.</> : "Short ad first — then reading continues."}</span>
-              {status ? <span className="timed-status">{status}</span> : null}
-            </aside>
-          ) : (
-            <aside className="timed-finished">
-              <p className="timed-kicker">Article complete</p>
-              <h2>You have reached the end.</h2>
-              <p>That is the full collection. These rewritten historical-photo stories are made for curious reading, using the permitted source images with fresh captions for this version.</p>
-            </aside>
-          )}
-        </section>
-      ) : null}
+        {hasMore ? (
+          <div className="timed-gluten-nav timed-historical-nav" aria-live="polite">
+            <button className="legacy-primary" type="button" onClick={goToNextSlide} disabled={unlocking}>
+              {unlocking ? "Loading Ad.." : nextSlideLabel}
+            </button>
+            {nextSlideRequiresRewarded ? (
+              <span className="timed-ad-note">
+                <>✓ <b>Short ad first</b> — then article continues.</>
+              </span>
+            ) : null}
+            {status ? <span className="timed-status">{status}</span> : null}
+          </div>
+        ) : (
+          <aside className="timed-finished timed-gluten-finished timed-historical-finished">
+            <p className="timed-kicker">Article complete</p>
+            <h2>You have reached the end.</h2>
+            <p>That is the full list. These rewritten historical captions use the permitted source images with fresh copy for this version.</p>
+          </aside>
+        )}
+      </section>
     </article>
   );
 }
