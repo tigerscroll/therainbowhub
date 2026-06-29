@@ -2170,6 +2170,285 @@ a {
   line-height: 1.58;
 }
 
+.serial-novel {
+  width: 100%;
+  --serial-paper: #fffdf8;
+  --serial-ink: #1f2d36;
+  --serial-muted: #6a7981;
+  --serial-rule: rgba(23, 42, 53, 0.12);
+  --serial-accent: #6f1230;
+}
+
+.serial-novel .timed-gallery {
+  width: min(100%, 880px);
+  padding-top: clamp(10px, 2vw, 22px);
+  padding-bottom: clamp(32px, 6vw, 58px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 253, 248, 0.98)),
+    var(--serial-paper);
+}
+
+.serial-novel__intro {
+  padding-bottom: clamp(22px, 5vw, 44px);
+  border-bottom: 0;
+}
+
+.serial-novel__eyebrow {
+  margin: 0 0 14px !important;
+  color: var(--serial-accent) !important;
+  font-size: 0.8rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.serial-novel .timed-life-intro h2 {
+  max-width: 760px;
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.serial-novel .timed-life-intro .timed-article-byline {
+  margin-top: clamp(14px, 3vw, 22px);
+  color: var(--serial-ink) !important;
+  font-size: clamp(1rem, 2vw, 1.16rem) !important;
+  font-weight: 700;
+}
+
+.serial-novel .timed-life-summary {
+  max-width: 34em !important;
+  margin-top: clamp(28px, 6vw, 42px) !important;
+  color: #34444d !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.16rem, 2.1vw, 1.38rem) !important;
+  font-weight: 400;
+  line-height: 1.72 !important;
+}
+
+.serial-novel__divider {
+  display: grid;
+  place-items: center;
+  margin-top: clamp(28px, 5vw, 40px);
+}
+
+.serial-novel__divider span {
+  display: block;
+  width: min(100%, 180px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--serial-rule), transparent);
+}
+
+.serial-chapter-card {
+  padding: clamp(28px, 5vw, 40px) 0;
+  border: 0;
+  border-top: 1px solid var(--serial-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.serial-chapter-card .timed-card-copy {
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.serial-chapter-kicker {
+  margin: 0 0 9px;
+  color: var(--serial-accent);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.serial-novel .timed-article-lead,
+.serial-novel .timed-card-copy p {
+  max-width: 35em;
+  color: var(--serial-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.1rem, 2vw, 1.26rem);
+  line-height: 1.84;
+  text-wrap: pretty;
+}
+
+.serial-novel .timed-article-lead {
+  margin-top: 14px;
+}
+
+.serial-novel .timed-article-lead::first-letter {
+  float: left;
+  margin: 0.09em 0.12em 0 0;
+  color: var(--serial-accent);
+  font-size: 3.55em;
+  font-weight: 700;
+  line-height: 0.82;
+}
+
+.serial-novel .timed-section-heading {
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.serial-novel .timed-section-number {
+  width: 44px;
+  height: 44px;
+  margin-top: 2px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--serial-accent) 92%, #fff), color-mix(in srgb, var(--serial-accent) 76%, #000));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 10px 24px rgba(111, 18, 48, 0.18);
+}
+
+.serial-novel .timed-section-heading h3 {
+  max-width: 16ch;
+  color: #142933;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.serial-novel__unlock,
+.serial-novel__finished {
+  width: min(100%, 760px);
+  margin-top: 38px;
+  padding: clamp(28px, 5vw, 42px);
+  border: 1px solid rgba(17, 41, 51, 0.13);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(255,255,255,0.96), transparent 52%),
+    linear-gradient(180deg, rgba(255,255,255,0.985), rgba(249,252,252,0.975)),
+    #fff;
+  box-shadow:
+    0 20px 44px rgba(15, 64, 66, 0.08),
+    0 0 0 1px rgba(255,255,255,0.72) inset;
+}
+
+.serial-novel__unlock .timed-kicker,
+.serial-novel__finished .timed-kicker {
+  color: var(--serial-accent);
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.serial-novel__unlock h2,
+.serial-novel__finished h2 {
+  max-width: none;
+  margin-inline: auto;
+  color: #11333c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 5vw, 3.55rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.serial-novel__unlock p,
+.serial-novel__finished p {
+  max-width: 28ch;
+  margin: 16px auto 0;
+  color: #60747d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.14rem, 2.4vw, 1.36rem);
+  line-height: 1.45;
+}
+
+.serial-novel__unlock .serial-novel__teaser {
+  max-width: 34ch;
+  margin-top: 12px;
+  color: #31424a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 2vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.serial-novel__unlock .legacy-primary,
+.serial-novel__finished .legacy-primary {
+  width: min(100%, 620px);
+  margin-top: 18px;
+  margin-inline: auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 3vw, 1.62rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.serial-novel__unlock .legacy-primary *,
+.serial-novel__finished .legacy-primary * {
+  font-family: inherit;
+}
+
+.serial-novel__unlock .timed-ad-note,
+.serial-novel__unlock .timed-status {
+  margin-top: 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.02rem, 1.95vw, 1.14rem);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.serial-novel__unlock .timed-ad-note {
+  color: #5f737b;
+}
+
+.serial-novel__unlock,
+.serial-novel__finished {
+  margin-top: 28px;
+}
+
+@media (max-width: 760px) {
+  .serial-novel .timed-gallery {
+    width: 100%;
+    padding-inline: 18px;
+  }
+
+  .serial-novel .timed-life-intro h2 {
+    font-size: clamp(2.05rem, 11vw, 3.1rem);
+    line-height: 0.98;
+  }
+
+  .serial-novel .timed-article-lead,
+  .serial-novel .timed-card-copy p,
+  .serial-novel .timed-life-summary {
+    max-width: none !important;
+    font-size: clamp(1.06rem, 4.6vw, 1.16rem) !important;
+    line-height: 1.8 !important;
+  }
+
+  .serial-novel .timed-section-heading h3 {
+    font-size: clamp(1.72rem, 8vw, 2.25rem);
+  }
+
+  .serial-novel .timed-section-number {
+    width: 40px;
+    height: 40px;
+  }
+
+  .serial-novel__unlock,
+  .serial-novel__finished {
+    padding: 24px 18px 28px;
+    border-radius: 24px;
+  }
+
+  .serial-novel__unlock h2,
+  .serial-novel__finished h2 {
+    font-size: clamp(1.9rem, 9vw, 2.55rem);
+  }
+
+  .serial-novel__unlock .legacy-primary,
+  .serial-novel__finished .legacy-primary {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
 .timed-beach-article .timed-photo {
   height: auto;
   aspect-ratio: auto;
