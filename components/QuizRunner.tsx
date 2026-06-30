@@ -236,9 +236,6 @@ function createQuizRunnerHtml(config: {
         <div class="legacy-result-celebration" aria-hidden="true">
           <span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <div class="legacy-result-medal" data-js="result-gate-icon" aria-hidden="true">
-          <span>${escapeHtml(siteConfig.googleAdManagerRewardedAdUnitPath ? "🧠" : "🧠")}</span>
-        </div>
         <span data-js="result-gate-badge" class="legacy-profile-badge">${escapeHtml(translations.quiz.profileReady)}</span>
         <h2 data-js="result-gate-title"></h2>
         <p data-js="result-gate-copy" class="legacy-result-gate-copy legacy-hidden"></p>
@@ -1951,10 +1948,6 @@ function createQuizRunnerScript(config: {
       clearAdStatuses();
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
-      var resultGateIcon = byData("result-gate-icon");
-      if (resultGateIcon) {
-        resultGateIcon.innerHTML = "<span>" + escapeHtml(isMemoryQuiz ? (quiz.cardIcon || "🧠") : (quiz.cardIcon || "🏆")) + "</span>";
-      }
       resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
       resultGateBadge.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
       byData("result-gate-title").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateTitle() : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
