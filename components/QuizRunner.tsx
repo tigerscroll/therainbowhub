@@ -2452,6 +2452,12 @@ function createQuizRunnerScript(config: {
       });
     }
 
+    function refreshMemoryAfterStageStart() {
+      if (!isMemoryQuiz) return false;
+      window.location.reload();
+      return true;
+    }
+
     function beginResultAd(button, keepModalOpen) {
       retryRewardedAction = function (retryButton) {
         beginResultAd(retryButton, true);
@@ -2524,6 +2530,7 @@ function createQuizRunnerScript(config: {
         if (usesRoundCheckpointFlow && harvardStageResultReady) {
           harvardStageResultReady = false;
           saveProgress("question");
+          if (refreshMemoryAfterStageStart()) return;
           renderQuestion();
           scrollToPageTop();
           return;
