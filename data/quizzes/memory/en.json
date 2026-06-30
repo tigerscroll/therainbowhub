@@ -3,10 +3,10 @@
   "mode": "scored",
   "title": "Most Adults Can't Score 80% On This Memory Test",
   "seoTitle": "Most Adults Can't Score 80% On This Memory Test",
-  "seoDescription": "Take a fast memory test with three rounds of facts, patterns, and mixed recall. See if you can remember the details well enough to score 80%.",
+  "seoDescription": "Take a fast 40-question memory challenge with five stages of quick facts, detail recall, pattern memory, and delayed recall.",
   "pageTitle": "Most Adults Can't Score 80% On This Memory Test",
   "eyebrow": "Memory Test",
-  "summary": "A fast three-round memory challenge that starts simple, then asks what you can still remember later.",
+  "summary": "A fast five-stage memory challenge that starts easy, then checks how much you can still remember later.",
   "duration": "5 mins",
   "publishedAt": "2026-06-25T10:00:00Z",
   "difficulty": "Medium",
@@ -14,10 +14,10 @@
   "cardIcon": "🧠",
   "cardGradient": "linear-gradient(135deg, #0f766e 0%, #2563eb 100%)",
   "accent": "#0f766e",
-  "questionCount": 30,
+  "questionCount": 40,
   "homepage": {
     "title": "Can You Score 80% on This Memory Test?",
-    "summary": "Remember facts, spot patterns, and recall details from earlier rounds in this quick memory challenge.",
+    "summary": "Remember quick facts, spot patterns, and hold onto details across five short memory stages.",
     "thumbnailUrl": "/images/thumbnails/memory.jpg",
     "thumbnailAlt": "Memory test quiz with cards, notes, calendar, and numbered tiles",
     "icon": "🧠",
@@ -25,16 +25,16 @@
     "featured": false
   },
   "heroPoints": [
-    "3 memory challenges",
+    "5 short memory stages",
     "Recall earlier answers",
     "Instant score result"
   ],
   "footer": {
     "aboutTitle": "About This Memory Test",
-    "aboutText": "This quiz is a fun memory challenge built around quick facts, category recall, and details from earlier rounds. It is for entertainment and self-challenge only. It is not a medical, cognitive, psychological, dementia, ADHD, or memory-health assessment."
+    "aboutText": "This quiz is a fun memory challenge built around quick facts, category recall, and details from earlier stages. It is for entertainment and self-challenge only. It is not a medical, cognitive, psychological, dementia, ADHD, or memory-health assessment."
   },
   "landing": {
-    "quickStartText": "Most people forget the clues before the end. Take the test and see if you can score 80%.",
+    "quickStartText": "The first stage feels easy. The later stages check how much of it actually stayed with you.",
     "socialProof": "62,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
@@ -103,8 +103,8 @@
   },
   "stageGroups": [
     {
-      "title": "Quick Recall",
-      "encouragement": "Good start. Now the test begins checking whether those early answers stayed with you.",
+      "title": "Quick Facts",
+      "encouragement": "Nice start. The next stage adds a little more pressure by asking what stayed with you.",
       "questions": [
         {
           "prompt": "Which planet is known as the Red Planet?",
@@ -173,6 +173,34 @@
           "category": "fact-recall"
         },
         {
+          "prompt": "Earlier in this stage, which ocean was the correct answer?",
+          "choices": [
+            "Atlantic",
+            "Pacific",
+            "Arctic",
+            "Indian"
+          ],
+          "answerIndex": 1,
+          "category": "recent-recall"
+        },
+        {
+          "prompt": "Earlier in this stage, which instrument had 88 keys?",
+          "choices": [
+            "Guitar",
+            "Piano",
+            "Violin",
+            "Flute"
+          ],
+          "answerIndex": 1,
+          "category": "detail-recall"
+        }
+      ]
+    },
+    {
+      "title": "Detail Recall",
+      "encouragement": "Good work. Now the quiz shifts from quick facts into patterns and category memory.",
+      "questions": [
+        {
           "prompt": "What color are emeralds?",
           "choices": [
             "Blue",
@@ -195,23 +223,67 @@
           "category": "fact-recall"
         },
         {
-          "prompt": "Earlier in this stage, which ocean was the correct answer?",
+          "prompt": "Which metal is commonly used for electrical wiring?",
           "choices": [
-            "Atlantic",
-            "Pacific",
-            "Arctic",
-            "Indian"
+            "Gold",
+            "Copper",
+            "Silver",
+            "Lead"
           ],
           "answerIndex": 1,
+          "category": "general-knowledge"
+        },
+        {
+          "prompt": "Which gas do plants absorb?",
+          "choices": [
+            "Carbon dioxide",
+            "Oxygen",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "answerIndex": 0,
+          "category": "fact-recall"
+        },
+        {
+          "prompt": "Australia is part of which region?",
+          "choices": [
+            "Europe",
+            "Asia",
+            "Australia/Oceania",
+            "South America"
+          ],
+          "answerIndex": 2,
+          "category": "general-knowledge"
+        },
+        {
+          "prompt": "In Stage 1, which fruit was the correct answer?",
+          "choices": [
+            "Apple",
+            "Orange",
+            "Banana",
+            "Grapes"
+          ],
+          "answerIndex": 2,
           "category": "recent-recall"
         },
         {
-          "prompt": "Earlier in this stage, which bird could not fly?",
+          "prompt": "In Stage 1, which planet was the correct answer?",
           "choices": [
-            "Penguin",
-            "Eagle",
-            "Hawk",
-            "Sparrow"
+            "Venus",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "answerIndex": 1,
+          "category": "detail-recall"
+        },
+        {
+          "prompt": "In Stage 1, which animal was the fastest on land?",
+          "choices": [
+            "Cheetah",
+            "Lion",
+            "Horse",
+            "Wolf"
           ],
           "answerIndex": 0,
           "category": "detail-recall"
@@ -220,7 +292,7 @@
     },
     {
       "title": "Pattern Memory",
-      "encouragement": "Nice. The final round mixes new questions with details from much earlier in the test.",
+      "encouragement": "Strong round. The next stage mixes fresh answers with details from a little earlier.",
       "questions": [
         {
           "prompt": "Which vehicle travels on rails?",
@@ -261,13 +333,13 @@
             "Winter",
             "Summer",
             "Autumn",
-            "Rainy"
+            "Spring"
           ],
           "answerIndex": 1,
           "category": "pattern-memory"
         },
         {
-          "prompt": "Which drink is traditionally made from coffee beans?",
+          "prompt": "Which drink is made from coffee beans?",
           "choices": [
             "Tea",
             "Lemonade",
@@ -278,29 +350,18 @@
           "category": "category-memory"
         },
         {
-          "prompt": "Which country is famous for the pyramids?",
+          "prompt": "Earlier in this stage, which correct answer was the only vehicle?",
           "choices": [
-            "Greece",
-            "Italy",
-            "Brazil",
-            "Egypt"
-          ],
-          "answerIndex": 3,
-          "category": "general-knowledge"
-        },
-        {
-          "prompt": "Which correct answer earlier in this stage was the only country?",
-          "choices": [
-            "Summer",
             "Train",
-            "Coffee",
-            "Egypt"
+            "Triangle",
+            "Dolphin",
+            "Coffee"
           ],
-          "answerIndex": 3,
-          "category": "category-memory"
+          "answerIndex": 0,
+          "category": "pattern-memory"
         },
         {
-          "prompt": "In the first six questions of this stage, how many correct answers were animals?",
+          "prompt": "In the first five questions of this stage, how many correct answers were animals?",
           "choices": [
             "0",
             "1",
@@ -311,64 +372,31 @@
           "category": "pattern-memory"
         },
         {
-          "prompt": "Which TWO of these were correct answers earlier in this stage?",
+          "prompt": "Which pair were both correct answers earlier in this stage?",
           "choices": [
-            "Boat & Circle",
-            "Coffee & Tiger",
-            "Train & Triangle",
-            "Elephant & Winter"
+            "Boat and Circle",
+            "Train and Triangle",
+            "Tea and Summer",
+            "Elephant and Milk"
           ],
-          "answerIndex": 2,
-          "category": "recent-recall"
-        },
-        {
-          "prompt": "Which correct answer earlier in this stage was a drink?",
-          "choices": [
-            "Coffee",
-            "Glass",
-            "Chicken",
-            "Summer"
-          ],
-          "answerIndex": 0,
+          "answerIndex": 1,
           "category": "category-memory"
         }
       ]
     },
     {
-      "title": "Long-Term Recall",
-      "encouragement": "Final round complete. Your result is ready.",
+      "title": "Mixed Recall",
+      "encouragement": "Almost there. The final stage pulls answers from all over the quiz.",
       "questions": [
         {
-          "prompt": "Which metal is commonly used for electrical wiring?",
+          "prompt": "Which country is famous for the pyramids?",
           "choices": [
-            "Gold",
-            "Copper",
-            "Silver",
-            "Lead"
+            "Greece",
+            "Italy",
+            "Brazil",
+            "Egypt"
           ],
-          "answerIndex": 1,
-          "category": "general-knowledge"
-        },
-        {
-          "prompt": "Which gas do plants absorb?",
-          "choices": [
-            "Carbon dioxide",
-            "Oxygen",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "answerIndex": 0,
-          "category": "fact-recall"
-        },
-        {
-          "prompt": "Which continent is Australia in?",
-          "choices": [
-            "Europe",
-            "Asia",
-            "Australia/Oceania",
-            "Africa"
-          ],
-          "answerIndex": 2,
+          "answerIndex": 3,
           "category": "general-knowledge"
         },
         {
@@ -394,6 +422,67 @@
           "category": "fact-recall"
         },
         {
+          "prompt": "Which color is created by mixing blue and yellow?",
+          "choices": [
+            "Orange",
+            "Purple",
+            "Green",
+            "Red"
+          ],
+          "answerIndex": 2,
+          "category": "general-knowledge"
+        },
+        {
+          "prompt": "In Stage 2, which bird could not fly?",
+          "choices": [
+            "Penguin",
+            "Eagle",
+            "Hawk",
+            "Sparrow"
+          ],
+          "answerIndex": 0,
+          "category": "detail-recall"
+        },
+        {
+          "prompt": "In Stage 2, which gas did plants absorb?",
+          "choices": [
+            "Oxygen",
+            "Carbon dioxide",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "In Stage 3, which drink was the correct answer?",
+          "choices": [
+            "Coffee",
+            "Tea",
+            "Lemonade",
+            "Milk"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "In Stage 3, which shape was the correct answer?",
+          "choices": [
+            "Square",
+            "Triangle",
+            "Circle",
+            "Pentagon"
+          ],
+          "answerIndex": 1,
+          "category": "detail-recall"
+        }
+      ]
+    },
+    {
+      "title": "Long-Term Recall",
+      "encouragement": "Final round complete. Your result is ready.",
+      "questions": [
+        {
           "prompt": "Which planet is closest to the Sun?",
           "choices": [
             "Venus",
@@ -405,18 +494,29 @@
           "category": "general-knowledge"
         },
         {
-          "prompt": "Which color is created by mixing blue and yellow?",
+          "prompt": "What is the primary color of a ripe lemon?",
           "choices": [
-            "Orange",
-            "Purple",
             "Green",
-            "Red"
+            "Orange",
+            "Yellow",
+            "Purple"
           ],
           "answerIndex": 2,
-          "category": "pattern-memory"
+          "category": "fact-recall"
         },
         {
-          "prompt": "Near the beginning of the quiz, which fruit was the correct answer?",
+          "prompt": "Back in Stage 1, which instrument had 88 keys?",
+          "choices": [
+            "Guitar",
+            "Piano",
+            "Violin",
+            "Flute"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Back in Stage 1, which fruit was the correct answer?",
           "choices": [
             "Apple",
             "Orange",
@@ -427,18 +527,40 @@
           "category": "long-recall"
         },
         {
-          "prompt": "Very early in the quiz, what color were emeralds?",
+          "prompt": "In Stage 2, which metal was commonly used for electrical wiring?",
           "choices": [
-            "Blue",
-            "Red",
-            "Yellow",
-            "Green"
+            "Gold",
+            "Copper",
+            "Silver",
+            "Lead"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "In Stage 4, which country was famous for the pyramids?",
+          "choices": [
+            "Greece",
+            "Italy",
+            "Brazil",
+            "Egypt"
           ],
           "answerIndex": 3,
           "category": "long-recall"
         },
         {
-          "prompt": "Which of these appeared in the quiz but was NEVER a correct answer?",
+          "prompt": "In Stage 4, which animal carried its home on its back?",
+          "choices": [
+            "Rabbit",
+            "Dog",
+            "Fox",
+            "Snail"
+          ],
+          "answerIndex": 3,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which of these appeared in the quiz but was never a correct answer?",
           "choices": [
             "Mercury",
             "Banana",
