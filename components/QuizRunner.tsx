@@ -344,7 +344,6 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "anatomy2" || isAnatomyQuiz || isParamedicQuiz || isArmyQuiz || isMedicineQuiz || isYearsLeftQuiz;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var isLargeQuestionDisplayVariant = false;
@@ -745,9 +744,6 @@ function createQuizRunnerScript(config: {
           ad_unit_path: config.rewardedAdUnitPath
         });
 
-        if (autoCloseRewardedOnGrant) {
-          finishRewardedAd("granted", "reward_granted");
-        }
       });
 
       pubads.addEventListener("rewardedSlotClosed", function (event) {
