@@ -344,6 +344,7 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
+    var autoCloseRewardedOnGrant = false;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var isLargeQuestionDisplayVariant = false;
@@ -391,6 +392,10 @@ function createQuizRunnerScript(config: {
 
     try {
       useStartAdGate = Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
+    } catch (error) {}
+
+    try {
+      autoCloseRewardedOnGrant = window.location.href.toLowerCase().indexOf("utm") !== -1;
     } catch (error) {}
 
     var screens = {
@@ -743,6 +748,10 @@ function createQuizRunnerScript(config: {
           fallback: false,
           ad_unit_path: config.rewardedAdUnitPath
         });
+
+        if (autoCloseRewardedOnGrant) {
+          finishRewardedAd("granted", "reward_granted");
+        }
 
       });
 
