@@ -344,7 +344,6 @@ function createQuizRunnerScript(config: {
     var hideAnswerFeedback = isShortLockedScoreQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
-    var autoCloseRewardedOnGrant = false;
     var useQuestionDisplayAd = false;
     var useDisplayAds = useQuestionDisplayAd;
     var isLargeQuestionDisplayVariant = false;
@@ -392,10 +391,6 @@ function createQuizRunnerScript(config: {
 
     try {
       useStartAdGate = Boolean(config.rewardedAdUnitPath) && new URLSearchParams(window.location.search).get("gate") === "1";
-    } catch (error) {}
-
-    try {
-      autoCloseRewardedOnGrant = window.location.href.toLowerCase().indexOf("utm") !== -1;
     } catch (error) {}
 
     var screens = {
@@ -748,10 +743,6 @@ function createQuizRunnerScript(config: {
           fallback: false,
           ad_unit_path: config.rewardedAdUnitPath
         });
-
-        if (autoCloseRewardedOnGrant) {
-          finishRewardedAd("granted", "reward_granted");
-        }
 
       });
 
@@ -1828,7 +1819,7 @@ function createQuizRunnerScript(config: {
       }
 
       byData("stage-title").textContent = t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
-      byData("stage-icon").textContent = stageIcons[completedStage % stageIcons.length];
+      byData("stage-icon").textContent = isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
@@ -1842,6 +1833,14 @@ function createQuizRunnerScript(config: {
       var personalityStageStatus = isPersonalityQuiz ? getPersonalityClarityStatus(completedStage) : null;
       byData("stage-score").textContent = personalityStageStatus ? personalityStageStatus.title : getScore() + "/" + current;
       byData("stage-score-label").textContent = personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
+      if (stageStats) {
+        stageStats.classList.toggle("legacy-stage-stats--vibe", isPersonalityQuiz);
+        if (isPersonalityQuiz) {
+          stageStats.classList.remove("legacy-vibe-reveal");
+          void stageStats.offsetWidth;
+          stageStats.classList.add("legacy-vibe-reveal");
+        }
+      }
       byData("stage-trail").innerHTML = stageIndexes.map(function (stage, index) {
         var status = stage <= completedStage ? "complete" : stage === nextStage ? "next" : "locked";
         var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
@@ -2166,9 +2165,11 @@ function createQuizRunnerScript(config: {
     }
 
     function getPersonalityClarityStatus(stage) {
+      var dominant = getDominantPersonalityProfile();
+      var prof = (dominant && dominant.profile) || quiz.result.profiles[0];
       return {
-        title: getStageName(stage),
-        label: t.results.stageComplete
+        title: prof.tier,
+        label: quiz.result.profileName
       };
     }
 

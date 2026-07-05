@@ -12,9 +12,22 @@ type QuizTemplateProps = {
 };
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
+  const themedRelatedSlugs =
+    quiz.slug === "years-left"
+      ? ["past-life", "zodiac", "soulmate", "memory", "narcissist", "connection"]
+      : [];
   const relatedQuizzes = getAllQuizzes(locale, { includeFallback: false })
     .filter((item) => item.slug !== quiz.slug)
-    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt) || a.title.localeCompare(b.title))
+    .sort((a, b) => {
+      const aThemeRank = themedRelatedSlugs.indexOf(a.slug);
+      const bThemeRank = themedRelatedSlugs.indexOf(b.slug);
+
+      if (aThemeRank !== -1 || bThemeRank !== -1) {
+        return (aThemeRank === -1 ? themedRelatedSlugs.length : aThemeRank) - (bThemeRank === -1 ? themedRelatedSlugs.length : bThemeRank);
+      }
+
+      return Date.parse(b.publishedAt) - Date.parse(a.publishedAt) || a.title.localeCompare(b.title);
+    })
     .slice(0, 4)
     .map((item) => ({
       accent: item.accent,
