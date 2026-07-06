@@ -2629,6 +2629,36 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
   color: #d6a65a;
 }
 
+@media (min-width: 620px) and (max-width: 920px) {
+  .legacy-quiz--years-left .legacy-main {
+    padding-top: 16px;
+  }
+
+  .legacy-quiz--years-left .legacy-start {
+    min-height: auto;
+    margin-bottom: 24px;
+    padding: 30px clamp(22px, 5vw, 44px) 30px;
+    align-content: start;
+  }
+
+  .legacy-quiz--years-left .legacy-badge {
+    margin-bottom: 6px;
+  }
+
+  .legacy-quiz--years-left .legacy-start h1 {
+    margin-bottom: 10px;
+    font-size: clamp(42px, 7.8vw, 54px);
+  }
+
+  .legacy-quiz--years-left .legacy-start .legacy-sub {
+    margin-bottom: 14px;
+  }
+
+  .legacy-quiz--years-left .legacy-social {
+    margin-bottom: 16px;
+  }
+}
+
 @media (max-width: 619px) {
   .legacy-quiz--years-left .legacy-main {
     padding-top: 0;
@@ -2642,10 +2672,14 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
     border-radius: 0;
   }
 
+  .legacy-quiz--years-left .quiz-info-panel {
+    margin-top: 300px;
+  }
+
   .legacy-quiz--years-left .legacy-start {
-    width: calc(100% - 16px);
+    width: calc(100% - 12px);
     min-height: auto;
-    margin: 0 auto 18px;
+    margin: 8px auto 18px;
     align-content: start;
     padding: 18px 16px 24px;
     border-radius: 150px 150px 18px 18px;
@@ -2657,34 +2691,34 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
   }
 
   .legacy-quiz--years-left .legacy-badge {
-    width: 82px;
-    height: 82px;
+    width: 88px;
+    height: 94px;
     margin-bottom: 2px;
   }
 
   .legacy-quiz--years-left .legacy-badge::before {
     top: 4px;
-    width: 52px;
-    height: 62px;
+    width: 56px;
+    height: 72px;
   }
 
   .legacy-quiz--years-left .legacy-badge::after {
-    top: 62px;
-    width: 70px;
+    top: 72px;
+    width: 74px;
   }
 
   .legacy-quiz--years-left .legacy-badge span {
-    width: 52px;
-    height: 62px;
+    width: 56px;
+    height: 72px;
   }
 
   .legacy-quiz--years-left .legacy-badge span::before {
-    top: 20px;
+    top: 22px;
     font-size: 12px;
   }
 
   .legacy-quiz--years-left .legacy-badge span::after {
-    top: 41px;
+    top: 48px;
   }
 
   .legacy-quiz--years-left .legacy-start h1 {
