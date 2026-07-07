@@ -2392,6 +2392,118 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
     inset 0 2px 0 rgba(255, 255, 255, 0.4);
 }
 
+.legacy-quiz--years-left .legacy-stage-result .legacy-stage-heading {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  width: min(100%, 720px);
+  margin-bottom: 14px;
+}
+
+.legacy-quiz--years-left .legacy-stage-result .legacy-stage-emoji {
+  justify-self: center;
+  width: 62px;
+  height: 62px;
+  font-size: 28px;
+}
+
+.legacy-quiz--years-left .legacy-stage-result h2 {
+  max-width: 720px;
+  font-size: clamp(38px, 8vw, 62px);
+  line-height: 0.98;
+}
+
+.legacy-quiz--years-left .legacy-stage-result .legacy-stage-copy {
+  max-width: 700px;
+  margin-bottom: 14px;
+  font-size: clamp(17px, 2.8vw, 23px);
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 620px);
+  margin: 0 auto 14px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 229, 166, 0.26);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(122, 160, 120, 0.22), transparent 38%),
+    linear-gradient(90deg, rgba(248, 239, 217, 0.11), rgba(214, 166, 90, 0.12), rgba(248, 239, 217, 0.055));
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 0 34%, rgba(255, 239, 196, 0.13) 50%, transparent 66% 100%);
+  transform: translateX(-120%);
+  animation: legacyYearsAiScan 2.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff4d6;
+  text-align: center;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__top strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: clamp(18px, 3.2vw, 24px);
+  font-weight: 900;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__pulse {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #7aa078;
+  box-shadow: 0 0 0 0 rgba(122, 160, 120, 0.55);
+  transform: translateY(-50%);
+  animation: legacyYearsPulse 1.45s ease-out infinite;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__next {
+  position: relative;
+  margin-top: 6px;
+  color: #d8ccb0;
+  font-size: clamp(13px, 2.4vw, 15px);
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__next strong {
+  color: #d6a65a;
+  font-weight: 950;
+}
+
+@keyframes legacyYearsAiScan {
+  0% { transform: translateX(-120%); }
+  48%, 100% { transform: translateX(120%); }
+}
+
+@keyframes legacyYearsPulse {
+  0% { box-shadow: 0 0 0 0 rgba(122, 160, 120, 0.55); }
+  100% { box-shadow: 0 0 0 12px rgba(122, 160, 120, 0); }
+}
+
 /* Progressive "vibe so far" reveal card (replaces the redundant stage-name chip) */
 .legacy-quiz--years-left .legacy-stage-stats--vibe {
   max-width: 440px;
@@ -2465,7 +2577,9 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
 
 @media (prefers-reduced-motion: reduce) {
   .legacy-quiz--years-left .legacy-stage-stats--vibe.legacy-vibe-reveal div::after,
-  .legacy-quiz--years-left .legacy-stage-stats--vibe.legacy-vibe-reveal strong {
+  .legacy-quiz--years-left .legacy-stage-stats--vibe.legacy-vibe-reveal strong,
+  .legacy-quiz--years-left .legacy-years-ai-panel::before,
+  .legacy-quiz--years-left .legacy-years-ai-panel__pulse {
     animation: none;
   }
 }
@@ -2753,6 +2867,30 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
     align-content: start;
     padding-top: 24px;
     padding-bottom: 34px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-stage-emoji {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result h2 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-stage-copy {
+    font-size: 16px;
+  }
+
+  .legacy-quiz--years-left .legacy-years-ai-panel {
+    width: min(100%, 390px);
+    padding: 12px 13px;
+    border-radius: 16px;
+  }
+
+  .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
+    font-size: 18px;
   }
 
   .legacy-quiz--years-left .legacy-progress {

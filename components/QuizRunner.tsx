@@ -213,6 +213,7 @@ function createQuizRunnerHtml(config: {
           <h2 data-js="stage-title"></h2>
         </div>
         <p data-js="stage-copy" class="legacy-stage-copy"></p>
+        <div data-js="years-left-ai-panel" class="legacy-years-ai-panel legacy-hidden" aria-live="polite"></div>
         <div data-js="stage-next" class="legacy-stage-next">
           <span data-js="stage-next-label"></span>
           <strong data-js="stage-next-name"></strong>
@@ -335,6 +336,7 @@ function createQuizRunnerScript(config: {
     var isMedicineQuiz = quiz.slug === "medicine";
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
+    var isEnglishYearsLeftQuiz = isYearsLeftQuiz && t.locale && t.locale.code === "en";
     var isArmyQuiz = quiz.slug === "army" && t.locale && t.locale.code === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
@@ -1811,6 +1813,8 @@ function createQuizRunnerScript(config: {
       var stageIcons = ["✅", "⭐", "🧠", "🧩", "🔎", "🎯", "🚀", "🏆", "💎", "🎉"];
       var stageStats = root.querySelector(".legacy-stage-stats");
       var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
+      var stageAdNoteText = stageAdNote ? stageAdNote.querySelector("span:last-child") : null;
+      var yearsLeftAiPanel = byData("years-left-ai-panel");
 
       if (usesRoundCheckpointFlow) {
         harvardStageResultPending = true;
@@ -1818,14 +1822,35 @@ function createQuizRunnerScript(config: {
         return;
       }
 
-      byData("stage-title").textContent = t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
+      byData("stage-title").textContent = isEnglishYearsLeftQuiz && nextStageName
+        ? "Next: " + formatYearsLeftStageName(nextStageName)
+        : t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
       byData("stage-icon").textContent = isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
-      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName);
+      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName || isEnglishYearsLeftQuiz);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
-      if (stageStats) stageStats.classList.remove("legacy-hidden");
+      if (yearsLeftAiPanel) {
+        if (isEnglishYearsLeftQuiz && nextStageName) {
+          yearsLeftAiPanel.innerHTML =
+            '<div class="legacy-years-ai-panel__top">' +
+              '<span class="legacy-years-ai-panel__pulse"></span>' +
+              '<strong>' + escapeHtml(getYearsLeftAiPredictorLine(completedStage)) + '</strong>' +
+            '</div>' +
+            '<div class="legacy-years-ai-panel__next">' + escapeHtml(getYearsLeftAiLoggedLine(completedStage)) + '</div>';
+          yearsLeftAiPanel.classList.remove("legacy-hidden");
+        } else {
+          yearsLeftAiPanel.innerHTML = "";
+          yearsLeftAiPanel.classList.add("legacy-hidden");
+        }
+      }
+      if (stageStats) stageStats.classList.toggle("legacy-hidden", isEnglishYearsLeftQuiz);
       if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
+      if (stageAdNoteText) {
+        stageAdNoteText.textContent = isEnglishYearsLeftQuiz
+          ? "Short ad first - then next section starts."
+          : t.rewardedAd.helper;
+      }
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
       byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
@@ -1846,8 +1871,8 @@ function createQuizRunnerScript(config: {
         var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
         return '<span class="legacy-stage-trail__dot legacy-stage-trail__dot--' + status + '" title="' + escapeHtml(label) + '">' + (status === "complete" ? "✓" : "") + '</span>';
       }).join("");
-      byData("stage-button").textContent = buttonLabel;
-      byData("stage-button").dataset.readyText = buttonLabel;
+      byData("stage-button").textContent = isEnglishYearsLeftQuiz && nextStageName ? "Continue →" : buttonLabel;
+      byData("stage-button").dataset.readyText = byData("stage-button").textContent;
       preloadQuestionVisual(current);
       show("stageGate", shouldScroll);
     }
@@ -1952,14 +1977,22 @@ function createQuizRunnerScript(config: {
       clearAdStatuses();
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
-      resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : t.quiz.profileReady;
+      resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : isEnglishYearsLeftQuiz ? "Estimate ready" : t.quiz.profileReady;
       resultGateBadge.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
-      byData("result-gate-title").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateTitle() : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
+      byData("result-gate-title").textContent = isShortLockedScoreQuiz
+        ? getShortLockedResultGateTitle()
+        : isEnglishYearsLeftQuiz
+          ? "Your estimate is ready."
+          : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
       if (resultGateCopy) {
-        resultGateCopy.textContent = isShortLockedScoreQuiz ? getShortLockedResultGateCopy() : "";
-        resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz);
+        resultGateCopy.textContent = isShortLockedScoreQuiz
+          ? getShortLockedResultGateCopy()
+          : isEnglishYearsLeftQuiz
+            ? "We have calculated your playful years-left vibe from your answers. One short unlock reveals the estimate."
+            : "";
+        resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz && !isEnglishYearsLeftQuiz);
       }
-      byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : t.results.viewResults + " →";
+      byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : isEnglishYearsLeftQuiz ? "Reveal my estimate →" : t.results.viewResults + " →";
       byData("result-gate-button").disabled = harvardStageResultPending ? false : getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -2171,6 +2204,44 @@ function createQuizRunnerScript(config: {
         title: prof.tier,
         label: quiz.result.profileName
       };
+    }
+
+    function formatYearsLeftStageName(name) {
+      return String(name || "").replace(/\s+And\s+/g, " & ");
+    }
+
+    function getYearsLeftAiPredictorLine(stage) {
+      var lines = [
+        "AI predictor reading your rhythm",
+        "AI predictor weighing fuel clues",
+        "AI predictor mapping energy patterns",
+        "AI predictor checking recovery signals",
+        "AI predictor reading mindset clues",
+        "AI predictor measuring social energy",
+        "AI predictor weighing lifestyle patterns",
+        "AI predictor mapping positive signals",
+        "AI predictor narrowing your estimate",
+        "AI predictor finalizing your estimate"
+      ];
+
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "AI predictor recalculating";
+    }
+
+    function getYearsLeftAiLoggedLine(stage) {
+      var lines = [
+        "Daily patterns logged",
+        "Fuel signals logged",
+        "Energy patterns logged",
+        "Recovery signals logged",
+        "Mindset clues logged",
+        "Social energy logged",
+        "Lifestyle patterns logged",
+        "Positive signals logged",
+        "Estimate clues logged",
+        "Final answers logged"
+      ];
+
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "Signals logged";
     }
 
     function getResultProfile(score, total, strongestStage) {
