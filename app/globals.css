@@ -2464,12 +2464,12 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
 
 .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
   min-width: 0;
-  overflow: hidden;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   font-size: clamp(18px, 3.2vw, 24px);
   font-weight: 900;
   line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .legacy-quiz--years-left .legacy-years-ai-panel__pulse {
@@ -2892,7 +2892,7 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
   }
 
   .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
-    font-size: clamp(16px, 4.45vw, 18px);
+    font-size: clamp(15px, 4.15vw, 17px);
   }
 
   .legacy-quiz--years-left .legacy-years-ai-panel__pulse {
