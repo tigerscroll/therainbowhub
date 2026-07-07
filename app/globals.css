@@ -2447,12 +2447,19 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
 
 .legacy-quiz--years-left .legacy-years-ai-panel__top {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 12px minmax(0, max-content) 12px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  column-gap: 10px;
   color: #fff4d6;
   text-align: center;
+}
+
+.legacy-quiz--years-left .legacy-years-ai-panel__top::after {
+  content: "";
+  width: 12px;
+  height: 12px;
 }
 
 .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
@@ -2466,16 +2473,11 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
 }
 
 .legacy-quiz--years-left .legacy-years-ai-panel__pulse {
-  position: absolute;
-  top: 50%;
-  left: 10px;
   width: 12px;
   height: 12px;
-  flex: 0 0 auto;
   border-radius: 999px;
   background: #7aa078;
   box-shadow: 0 0 0 0 rgba(122, 160, 120, 0.55);
-  transform: translateY(-50%);
   animation: legacyYearsPulse 1.45s ease-out infinite;
 }
 
@@ -2890,7 +2892,11 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
   }
 
   .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
-    font-size: 18px;
+    font-size: clamp(16px, 4.45vw, 18px);
+  }
+
+  .legacy-quiz--years-left .legacy-years-ai-panel__pulse {
+    display: block;
   }
 
   .legacy-quiz--years-left .legacy-progress {
@@ -7217,5 +7223,65 @@ body:has(.legacy-quiz--years-left) .quiz-search__button {
 
   .hub-stat div > span {
     font-size: 10px;
+  }
+}
+
+@media (min-width: 620px) {
+  .legacy-quiz--years-left {
+    --legacy-shell-width: 760px;
+  }
+
+  .legacy-quiz--years-left .legacy-main {
+    padding-top: clamp(14px, 2.6vw, 28px);
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result {
+    min-height: min(560px, calc(100vh - 112px));
+    padding: 18px 22px 22px;
+    border-radius: 22px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-stage-heading {
+    width: min(100%, 640px);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-stage-emoji {
+    width: 54px;
+    height: 54px;
+    font-size: 25px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result h2 {
+    max-width: 640px;
+    font-size: clamp(38px, 5.2vw, 54px);
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-stage-copy {
+    max-width: 560px;
+    margin-bottom: 12px;
+    font-size: clamp(17px, 2vw, 20px);
+  }
+
+  .legacy-quiz--years-left .legacy-years-ai-panel {
+    width: min(100%, 520px);
+    margin-bottom: 12px;
+    padding: 12px 14px;
+  }
+
+  .legacy-quiz--years-left .legacy-years-ai-panel__top strong {
+    font-size: clamp(18px, 2.3vw, 22px);
+  }
+
+  .legacy-quiz--years-left .legacy-stage-button {
+    max-width: 340px;
+    min-height: 58px;
+    font-size: 19px;
+  }
+
+  .legacy-quiz--years-left .legacy-stage-result .legacy-ad-note {
+    margin-top: 10px;
+    font-size: 13px;
   }
 }
