@@ -1702,8 +1702,12 @@ function createQuizRunnerScript(config: {
         questionCard.classList.remove(className);
       });
       questionCard.classList.add(questionBackgroundClass);
-      byData("round-label").textContent = usesCompactProgress ? t.quiz.question + " " + (usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
-      byData("count-label").textContent = usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
+      byData("round-label").textContent = isMemoryQuiz
+        ? t.quiz.round + " " + stageNumber
+        : usesCompactProgress ? t.quiz.question + " " + (usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
+      byData("count-label").textContent = isMemoryQuiz
+        ? getStageName(currentStage)
+        : usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
       progressDots.style.setProperty("--progress-count", stageTotal);
       progressDots.style.setProperty("--progress-ratio", usesCompactProgress ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {

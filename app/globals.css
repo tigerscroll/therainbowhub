@@ -7806,6 +7806,10 @@ body:has(.legacy-quiz--memory-lab .legacy-start:not(.legacy-hidden)) .quiz-searc
     0 12px 24px rgba(7, 27, 52, 0.07);
 }
 
+.legacy-quiz--memory.legacy-quiz--short-locked .legacy-progress__row {
+  justify-content: space-between;
+}
+
 .legacy-quiz--memory.legacy-quiz--short-locked .legacy-progress-dots {
   --step-size: clamp(40px, 5vw, 50px);
   --current-step-size: var(--step-size);
