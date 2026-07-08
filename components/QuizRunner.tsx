@@ -198,6 +198,7 @@ function createQuizRunnerHtml(config: {
         </div>
 
         <article class="legacy-card legacy-question">
+          <div data-js="memory-seed" class="legacy-memory-seed legacy-hidden"></div>
           <h2 data-js="question-card" class="legacy-question-prompt legacy-bg-blue">
             <span data-js="question-text" class="legacy-question-text"></span>
           </h2>
@@ -336,14 +337,15 @@ function createQuizRunnerScript(config: {
     var isMedicineQuiz = quiz.slug === "medicine";
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
+    var isEnglishMemoryQuiz = isMemoryQuiz && t.locale && t.locale.code === "en";
     var isEnglishYearsLeftQuiz = isYearsLeftQuiz && t.locale && t.locale.code === "en";
     var isArmyQuiz = quiz.slug === "army" && t.locale && t.locale.code === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
-    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
+    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isMedicineQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
-    var autoStartQuiz = isMemoryQuiz;
-    var hideAnswerFeedback = isShortLockedScoreQuiz;
+    var autoStartQuiz = isMemoryQuiz && !isEnglishMemoryQuiz;
+    var hideAnswerFeedback = isShortLockedScoreQuiz || isEnglishMemoryQuiz;
     var skipFinalRewardedGate = false;
     var skipStageRewardedGates = false;
     var useQuestionDisplayAd = false;
@@ -1691,6 +1693,7 @@ function createQuizRunnerScript(config: {
       var answersBox = byData("answers");
       var progressDots = byData("progress-dots");
       var questionCard = byData("question-card");
+      var memorySeedBox = byData("memory-seed");
       var previousProgressPosition = progressDots.dataset.stagePosition || "";
       var nextProgressPosition = currentStage + ":" + stagePosition;
       var questionBackgroundClass = questionBackgrounds[currentStage % questionBackgrounds.length];
@@ -1705,7 +1708,7 @@ function createQuizRunnerScript(config: {
       progressDots.style.setProperty("--progress-ratio", usesCompactProgress ? stagePosition / stageTotal : stageTotal > 1 ? (stagePosition - 1) / (stageTotal - 1) : 1);
       progressDots.innerHTML = Array.from({ length: stageTotal }).map(function (_, index) {
         var state = index + 1 < stagePosition ? "is-complete" : index + 1 === stagePosition ? "is-current" : "";
-        var label = state === "is-complete" ? "✓" : index + 1;
+        var label = isMemoryQuiz ? "🧠" : state === "is-complete" ? "✓" : index + 1;
         return '<span class="' + state + '" aria-label="' + escapeHtml(t.quiz.step) + ' ' + (index + 1) + '">' + label + '</span>';
       }).join("");
       progressDots.classList.remove("is-advancing");
@@ -1714,6 +1717,18 @@ function createQuizRunnerScript(config: {
         progressDots.classList.add("is-advancing");
       }
       progressDots.dataset.stagePosition = nextProgressPosition;
+      if (memorySeedBox) {
+        if (isMemoryQuiz && question.memorySeed && question.memorySeed.label && question.memorySeed.value) {
+          var seedIcon = question.memorySeed.icon ? escapeHtml(question.memorySeed.icon) + " " : "";
+          memorySeedBox.innerHTML =
+            '<span>Remember for later</span>' +
+            '<strong>' + seedIcon + escapeHtml(question.memorySeed.label) + ' = ' + escapeHtml(question.memorySeed.value) + '</strong>';
+          memorySeedBox.classList.remove("legacy-hidden");
+        } else {
+          memorySeedBox.innerHTML = "";
+          memorySeedBox.classList.add("legacy-hidden");
+        }
+      }
       byData("question-text").textContent = question.prompt;
 
       renderQuestionVisual(visualBox, question.visual);
@@ -1761,6 +1776,13 @@ function createQuizRunnerScript(config: {
       var nextStage = nextQuestion ? (nextQuestion.stage || 0) : currentStage;
 
       if (!nextQuestion) {
+        if (isEnglishMemoryQuiz) {
+          saveProgress("stage-gate");
+          showStageGate();
+          scrollToPageTop();
+          return;
+        }
+
         if (skipFinalRewardedGate) {
           saveProgress("results");
           renderResults();
@@ -1815,6 +1837,9 @@ function createQuizRunnerScript(config: {
       var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
       var stageAdNoteText = stageAdNote ? stageAdNote.querySelector("span:last-child") : null;
       var yearsLeftAiPanel = byData("years-left-ai-panel");
+      var isAiCheckpointQuiz = isEnglishYearsLeftQuiz;
+      var usesAiCheckpointPanel = isEnglishYearsLeftQuiz || isEnglishMemoryQuiz;
+      var isFinalMemoryCheckpoint = isEnglishMemoryQuiz && !nextStageName;
 
       if (usesRoundCheckpointFlow) {
         harvardStageResultPending = true;
@@ -1822,16 +1847,27 @@ function createQuizRunnerScript(config: {
         return;
       }
 
-      byData("stage-title").textContent = isEnglishYearsLeftQuiz && nextStageName
-        ? "Next: " + formatYearsLeftStageName(nextStageName)
-        : t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
-      byData("stage-icon").textContent = isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
+      byData("stage-title").textContent = isEnglishMemoryQuiz
+        ? (nextStageName ? "Next: " + nextStageName : "Memory Scan Complete")
+        : isEnglishYearsLeftQuiz && nextStageName
+          ? "Next: " + formatYearsLeftStageName(nextStageName)
+          : t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
+      byData("stage-icon").textContent = isEnglishMemoryQuiz ? quiz.cardIcon || "🧠" : isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
-      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName || isEnglishYearsLeftQuiz);
+      byData("stage-next").classList.toggle("legacy-hidden", !nextStageName || usesAiCheckpointPanel);
       byData("stage-next-label").textContent = nextStageName ? t.results.nextStage : "";
       byData("stage-next-name").textContent = nextStageName || "";
       if (yearsLeftAiPanel) {
-        if (isEnglishYearsLeftQuiz && nextStageName) {
+        yearsLeftAiPanel.classList.toggle("legacy-memory-ai-panel", isEnglishMemoryQuiz);
+        if (isEnglishMemoryQuiz) {
+          yearsLeftAiPanel.innerHTML =
+            '<div class="legacy-years-ai-panel__top">' +
+              '<span class="legacy-years-ai-panel__pulse"></span>' +
+              '<strong>' + escapeHtml(getMemoryAiPredictorLine(completedStage)) + '</strong>' +
+            '</div>' +
+            '<div class="legacy-years-ai-panel__next">' + escapeHtml(getMemoryAiLoggedLine(completedStage)) + '</div>';
+          yearsLeftAiPanel.classList.remove("legacy-hidden");
+        } else if (isEnglishYearsLeftQuiz && nextStageName) {
           yearsLeftAiPanel.innerHTML =
             '<div class="legacy-years-ai-panel__top">' +
               '<span class="legacy-years-ai-panel__pulse"></span>' +
@@ -1844,11 +1880,11 @@ function createQuizRunnerScript(config: {
           yearsLeftAiPanel.classList.add("legacy-hidden");
         }
       }
-      if (stageStats) stageStats.classList.toggle("legacy-hidden", isEnglishYearsLeftQuiz);
+      if (stageStats) stageStats.classList.toggle("legacy-hidden", isAiCheckpointQuiz);
       if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
       if (stageAdNoteText) {
-        stageAdNoteText.textContent = isEnglishYearsLeftQuiz
-          ? "Short ad first - then next section starts."
+        stageAdNoteText.textContent = usesAiCheckpointPanel
+          ? "Short ad first — then the next section starts."
           : t.rewardedAd.helper;
       }
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
@@ -1871,8 +1907,13 @@ function createQuizRunnerScript(config: {
         var label = stage === nextStage ? getStageName(stage) : t.quiz.round + " " + (index + 1);
         return '<span class="legacy-stage-trail__dot legacy-stage-trail__dot--' + status + '" title="' + escapeHtml(label) + '">' + (status === "complete" ? "✓" : "") + '</span>';
       }).join("");
-      byData("stage-button").textContent = isEnglishYearsLeftQuiz && nextStageName ? "Continue →" : buttonLabel;
+      byData("stage-button").textContent = isEnglishMemoryQuiz
+        ? (isFinalMemoryCheckpoint ? "Reveal My Score →" : "Continue →")
+        : isEnglishYearsLeftQuiz && nextStageName
+          ? "Continue →"
+          : buttonLabel;
       byData("stage-button").dataset.readyText = byData("stage-button").textContent;
+      byData("stage-button").dataset.memoryFinal = isFinalMemoryCheckpoint ? "true" : "";
       preloadQuestionVisual(current);
       show("stageGate", shouldScroll);
     }
@@ -2244,6 +2285,40 @@ function createQuizRunnerScript(config: {
       return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "Signals logged";
     }
 
+    function getMemoryAiPredictorLine(stage) {
+      var lines = [
+        "AI recall engine scanning quick facts",
+        "AI recall engine testing detail retention",
+        "AI recall engine mapping clue memory",
+        "AI recall engine mapping pattern memory",
+        "AI recall engine mapping recall patterns",
+        "AI recall engine measuring delayed recall",
+        "AI recall engine checking sequence memory",
+        "AI recall engine combining memory signals",
+        "AI recall engine testing what stayed",
+        "AI recall engine finalizing your memory score"
+      ];
+
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "AI recall engine updating your score";
+    }
+
+    function getMemoryAiLoggedLine(stage) {
+      var lines = [
+        "Quick facts logged",
+        "Detail signals logged",
+        "Clue signals logged",
+        "Pattern signals logged",
+        "Recall profile updated",
+        "Earlier details checked",
+        "Sequence signals logged",
+        "Memory profile updated",
+        "Long-term clues checked",
+        "Final signals processed"
+      ];
+
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "Memory signals logged";
+    }
+
     function getResultProfile(score, total, strongestStage) {
       if (isPersonalityQuiz) {
         var personality = getDominantPersonalityProfile();
@@ -2535,19 +2610,20 @@ function createQuizRunnerScript(config: {
       return true;
     }
 
-    function beginResultAd(button, keepModalOpen) {
+    function beginResultAd(button, keepModalOpen, statusName) {
+      var adStatusName = statusName || "result-ad-status";
       retryRewardedAction = function (retryButton) {
-        beginResultAd(retryButton, true);
+        beginResultAd(retryButton, true, adStatusName);
       };
       if (!keepModalOpen) hideEarlyCloseModal();
-      clearAdStatuses("result-ad-status");
+      clearAdStatuses(adStatusName);
       setButtonLoading(button, t.loading.ad, true);
       requestRewardedAd("before_final_results", function (message) {
-        setAdStatus("result-ad-status", message);
+        setAdStatus(adStatusName, message);
       }).then(function (granted) {
         setButtonLoading(button, t.loading.ad, false);
         if (!granted) return;
-        setAdStatus("result-ad-status", "");
+        setAdStatus(adStatusName, "");
         hideEarlyCloseModal();
         renderResults();
       });
@@ -2613,6 +2689,11 @@ function createQuizRunnerScript(config: {
           return;
         }
 
+        if (isEnglishMemoryQuiz && button.dataset.memoryFinal === "true") {
+          beginResultAd(button, false, "stage-ad-status");
+          return;
+        }
+
         beginStageAd(button, false);
       });
     });
@@ -2668,6 +2749,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const rootId = `quiz-runner-${quiz.slug}-${locale}`;
   const progressKey = `rainbowHub:${locale}:${quiz.slug}:${quiz.questions.length}:progress`;
   const isEnglishArmyShortLocked = quiz.slug === "army" && locale === "en";
+  const isEnglishMemoryQuiz = quiz.slug === "memory" && locale === "en";
   const variantClass = [
     quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");

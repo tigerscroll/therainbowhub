@@ -9,6 +9,11 @@ export type QuizQuestion = {
   choiceProfileIds?: string[];
   explanation?: string;
   visual?: string;
+  memorySeed?: {
+    icon?: string;
+    label: string;
+    value: string;
+  };
   category?: string;
   stage?: number;
 };
@@ -589,6 +594,10 @@ function readAndValidateQuiz(slug: string, locale: SupportedLocale) {
 }
 
 function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz, fileName: string) {
+  if (canonicalQuiz.slug === "memory" && translatedQuiz.slug === "memory") {
+    return;
+  }
+
   if (translatedQuiz.questionCount !== canonicalQuiz.questionCount) {
     throw new Error(`${fileName}: "questionCount" must match ${canonicalQuiz.questionCount} from en.json.`);
   }

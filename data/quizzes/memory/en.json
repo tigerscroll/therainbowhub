@@ -3,21 +3,21 @@
   "mode": "scored",
   "title": "Most Adults Can't Score 80% On This Memory Test",
   "seoTitle": "Most Adults Can't Score 80% On This Memory Test",
-  "seoDescription": "Take a fast 40-question memory challenge with five stages of quick facts, detail recall, pattern memory, and delayed recall.",
+  "seoDescription": "Take a 60-question memory test that starts easy, plants details, and later checks how much you still remember.",
   "pageTitle": "Most Adults Can't Score 80% On This Memory Test",
   "eyebrow": "Memory Test",
-  "summary": "A fast five-stage memory challenge that starts easy, then checks how much you can still remember later.",
-  "duration": "5 mins",
+  "summary": "A quick memory test in ten rounds that starts easy and later checks how much you still remember.",
+  "duration": "6 mins",
   "publishedAt": "2026-06-25T10:00:00Z",
   "difficulty": "Medium",
   "passRate": "12%",
   "cardIcon": "🧠",
   "cardGradient": "linear-gradient(135deg, #0f766e 0%, #2563eb 100%)",
   "accent": "#0f766e",
-  "questionCount": 40,
+  "questionCount": 60,
   "homepage": {
-    "title": "Can You Score 80% on This Memory Test?",
-    "summary": "Remember quick facts, spot patterns, and hold onto details across five short memory stages.",
+    "title": "Can You Score 80% in This Memory Test?",
+    "summary": "Remember quick facts, spot patterns, and hold onto details across ten short memory rounds.",
     "thumbnailUrl": "/images/thumbnails/memory.jpg",
     "thumbnailAlt": "Memory test quiz with cards, notes, calendar, and numbered tiles",
     "icon": "🧠",
@@ -25,18 +25,18 @@
     "featured": false
   },
   "heroPoints": [
-    "5 short memory stages",
-    "Recall earlier answers",
-    "Instant score result"
+    "10 short memory rounds",
+    "Remember earlier details",
+    "Instant result"
   ],
   "footer": {
     "aboutTitle": "About This Memory Test",
-    "aboutText": "This quiz is a fun memory challenge built around quick facts, category recall, and details from earlier stages. It is for entertainment and self-challenge only. It is not a medical, cognitive, psychological, dementia, ADHD, or memory-health assessment."
+    "aboutText": "This quiz is a fun AI-style memory challenge built around quick facts, planted details, category recall, pattern memory, and delayed callbacks. It is for entertainment and self-challenge only. It is not a medical, cognitive, psychological, dementia, ADHD, or memory-health assessment."
   },
   "landing": {
-    "quickStartText": "It starts easy, then quietly checks how much of it actually stayed with you.",
+    "quickStartText": "It starts easy, then the AI quietly checks how much really stayed in your head.",
     "socialProof": "62,000+ people tried it this week",
-    "ctaLabel": "Start Test"
+    "ctaLabel": "Start Memory Test"
   },
   "result": {
     "profileName": "Memory Test",
@@ -104,10 +104,15 @@
   "stageGroups": [
     {
       "title": "Quick Facts",
-      "encouragement": "Nice start. The next stage adds a little more pressure, and some answers will quietly come back later.",
+      "encouragement": "Good start. The AI is building your recall profile.",
       "questions": [
         {
           "prompt": "Which planet is known as the Red Planet?",
+          "memorySeed": {
+            "icon": "⭐",
+            "label": "Blue Star",
+            "value": "4"
+          },
           "choices": [
             "Venus",
             "Mars",
@@ -171,37 +176,20 @@
           ],
           "answerIndex": 1,
           "category": "fact-recall"
-        },
-        {
-          "prompt": "Earlier in this stage, which ocean was the correct answer?",
-          "choices": [
-            "Atlantic",
-            "Pacific",
-            "Arctic",
-            "Indian"
-          ],
-          "answerIndex": 1,
-          "category": "recent-recall"
-        },
-        {
-          "prompt": "Earlier in this stage, which instrument had 88 keys?",
-          "choices": [
-            "Piano",
-            "Guitar",
-            "Violin",
-            "Flute"
-          ],
-          "answerIndex": 0,
-          "category": "detail-recall"
         }
       ]
     },
     {
-      "title": "Detail Recall",
-      "encouragement": "Good work. Now the quiz shifts from quick facts into patterns and category memory.",
+      "title": "Detail Capture",
+      "encouragement": "Your short-term memory pattern is taking shape.",
       "questions": [
         {
           "prompt": "What color are emeralds?",
+          "memorySeed": {
+            "icon": "🔑",
+            "label": "Silver Key",
+            "value": "7"
+          },
           "choices": [
             "Blue",
             "Red",
@@ -256,7 +244,7 @@
           "category": "general-knowledge"
         },
         {
-          "prompt": "In the Quick Facts round, which fruit was the correct answer?",
+          "prompt": "In the previous stage, which fruit was the correct answer?",
           "choices": [
             "Apple",
             "Orange",
@@ -265,48 +253,20 @@
           ],
           "answerIndex": 2,
           "category": "recent-recall"
-        },
-        {
-          "prompt": "In the Quick Facts round, which planet was the correct answer?",
-          "choices": [
-            "Jupiter",
-            "Saturn",
-            "Mars",
-            "Venus"
-          ],
-          "answerIndex": 2,
-          "category": "detail-recall"
-        },
-        {
-          "prompt": "In the Quick Facts round, which animal was the fastest on land?",
-          "choices": [
-            "Horse",
-            "Wolf",
-            "Lion",
-            "Cheetah"
-          ],
-          "answerIndex": 3,
-          "category": "detail-recall"
         }
       ]
     },
     {
-      "title": "Pattern Memory",
-      "encouragement": "Strong round. The next stage mixes fresh answers with details from a little earlier.",
+      "title": "Clue Capture",
+      "encouragement": "The AI is checking what your brain held onto.",
       "questions": [
         {
-          "prompt": "Which vehicle travels on rails?",
-          "choices": [
-            "Bus",
-            "Bicycle",
-            "Train",
-            "Boat"
-          ],
-          "answerIndex": 2,
-          "category": "category-memory"
-        },
-        {
           "prompt": "Which shape has three sides?",
+          "memorySeed": {
+            "icon": "🚪",
+            "label": "Green Door",
+            "value": "2"
+          },
           "choices": [
             "Triangle",
             "Square",
@@ -317,6 +277,17 @@
           "category": "category-memory"
         },
         {
+          "prompt": "Which color is created by mixing blue and yellow?",
+          "choices": [
+            "Orange",
+            "Purple",
+            "Green",
+            "Red"
+          ],
+          "answerIndex": 2,
+          "category": "general-knowledge"
+        },
+        {
           "prompt": "Which animal lives in the ocean?",
           "choices": [
             "Tiger",
@@ -325,6 +296,56 @@
             "Camel"
           ],
           "answerIndex": 1,
+          "category": "category-memory"
+        },
+        {
+          "prompt": "Which country is famous for the pyramids?",
+          "choices": [
+            "Greece",
+            "Italy",
+            "Brazil",
+            "Egypt"
+          ],
+          "answerIndex": 3,
+          "category": "general-knowledge"
+        },
+        {
+          "prompt": "Which drink is made from coffee beans?",
+          "choices": [
+            "Tea",
+            "Lemonade",
+            "Coffee",
+            "Milk"
+          ],
+          "answerIndex": 2,
+          "category": "category-memory"
+        },
+        {
+          "prompt": "In Detail Capture, which bird could not fly?",
+          "choices": [
+            "Penguin",
+            "Eagle",
+            "Hawk",
+            "Sparrow"
+          ],
+          "answerIndex": 0,
+          "category": "detail-recall"
+        }
+      ]
+    },
+    {
+      "title": "Pattern Memory",
+      "encouragement": "Pattern signals have been added to your score.",
+      "questions": [
+        {
+          "prompt": "Which vehicle travels on rails?",
+          "choices": [
+            "Bus",
+            "Bicycle",
+            "Train",
+            "Boat"
+          ],
+          "answerIndex": 2,
           "category": "category-memory"
         },
         {
@@ -339,18 +360,40 @@
           "category": "pattern-memory"
         },
         {
-          "prompt": "Which drink is made from coffee beans?",
+          "prompt": "Which number comes next: 2, 4, 6, 8, ...?",
           "choices": [
-            "Tea",
-            "Lemonade",
-            "Coffee",
-            "Milk"
+            "9",
+            "10",
+            "11",
+            "12"
           ],
-          "answerIndex": 2,
-          "category": "category-memory"
+          "answerIndex": 1,
+          "category": "pattern-memory"
         },
         {
-          "prompt": "Earlier in this stage, which correct answer was the only vehicle?",
+          "prompt": "Which pair belongs together?",
+          "choices": [
+            "Spoon and moon",
+            "Needle and thread",
+            "Window and river",
+            "Cloud and chair"
+          ],
+          "answerIndex": 1,
+          "category": "pattern-memory"
+        },
+        {
+          "prompt": "Which word does not belong with the others?",
+          "choices": [
+            "Red",
+            "Blue",
+            "Square",
+            "Green"
+          ],
+          "answerIndex": 2,
+          "category": "exclusion-recall"
+        },
+        {
+          "prompt": "Earlier in this stage, which correct answer was the vehicle?",
           "choices": [
             "Train",
             "Triangle",
@@ -358,93 +401,265 @@
             "Coffee"
           ],
           "answerIndex": 0,
-          "category": "pattern-memory"
-        },
+          "category": "recent-recall"
+        }
+      ]
+    },
+    {
+      "title": "Category Recall",
+      "encouragement": "Your recall map is getting sharper.",
+      "questions": [
         {
-          "prompt": "Which pair were both correct answers earlier in this stage?",
+          "prompt": "Which item belongs in a kitchen?",
           "choices": [
-            "Boat and Circle",
-            "Train and Triangle",
-            "Tea and Summer",
-            "Elephant and Milk"
+            "Pillow",
+            "Spoon",
+            "Notebook",
+            "Hammer"
           ],
           "answerIndex": 1,
           "category": "category-memory"
         },
         {
-          "prompt": "In the first five questions of this stage, how many correct answers were animals?",
+          "prompt": "Which of these is a mammal?",
           "choices": [
-            "0",
-            "1",
-            "2",
-            "3"
+            "Frog",
+            "Shark",
+            "Whale",
+            "Eagle"
           ],
-          "answerIndex": 1,
-          "category": "pattern-memory"
-        }
-      ]
-    },
-    {
-      "title": "Mixed Recall",
-      "encouragement": "Almost there. The final stage pulls answers from all over the quiz, but one clue at a time.",
-      "questions": [
-        {
-          "prompt": "Which country is famous for the pyramids?",
-          "choices": [
-            "Greece",
-            "Italy",
-            "Brazil",
-            "Egypt"
-          ],
-          "answerIndex": 3,
-          "category": "general-knowledge"
+          "answerIndex": 2,
+          "category": "category-memory"
         },
         {
-          "prompt": "Which animal is known for carrying its home on its back?",
+          "prompt": "Which item is usually used to measure temperature?",
           "choices": [
-            "Rabbit",
-            "Dog",
-            "Fox",
-            "Snail"
-          ],
-          "answerIndex": 3,
-          "category": "fact-recall"
-        },
-        {
-          "prompt": "How many hours are there in one day?",
-          "choices": [
-            "24",
-            "12",
-            "18",
-            "30"
+            "Thermometer",
+            "Compass",
+            "Ruler",
+            "Scale"
           ],
           "answerIndex": 0,
           "category": "fact-recall"
         },
         {
-          "prompt": "Which color is created by mixing blue and yellow?",
+          "prompt": "Which word is the only musical instrument?",
           "choices": [
-            "Orange",
-            "Purple",
-            "Green",
-            "Red"
+            "Lantern",
+            "Trumpet",
+            "Basket",
+            "Curtain"
           ],
-          "answerIndex": 2,
-          "category": "general-knowledge"
+          "answerIndex": 1,
+          "category": "category-memory"
         },
         {
-          "prompt": "In the Detail Recall round, which bird could not fly?",
+          "prompt": "Which correct answer from Pattern Memory was a season?",
           "choices": [
-            "Penguin",
-            "Eagle",
-            "Hawk",
-            "Sparrow"
+            "Summer",
+            "Winter",
+            "Spring",
+            "Autumn"
           ],
           "answerIndex": 0,
           "category": "detail-recall"
         },
         {
-          "prompt": "In the Detail Recall round, which gas did plants absorb?",
+          "prompt": "Which correct answer from Clue Capture was a country?",
+          "choices": [
+            "Brazil",
+            "Greece",
+            "Egypt",
+            "Italy"
+          ],
+          "answerIndex": 2,
+          "category": "long-recall"
+        }
+      ]
+    },
+    {
+      "title": "Delayed Details",
+      "encouragement": "Earlier answers are now being tested quietly.",
+      "questions": [
+        {
+          "prompt": "Delayed recall: What number was linked to the Blue Star?",
+          "choices": [
+            "2",
+            "4",
+            "7",
+            "9"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Back in Quick Facts, which planet was the Red Planet?",
+          "choices": [
+            "Mars",
+            "Venus",
+            "Saturn",
+            "Jupiter"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Back in Detail Capture, which metal was used for electrical wiring?",
+          "choices": [
+            "Gold",
+            "Copper",
+            "Silver",
+            "Lead"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Back in Clue Capture, which drink was made from coffee beans?",
+          "choices": [
+            "Tea",
+            "Coffee",
+            "Milk",
+            "Lemonade"
+          ],
+          "answerIndex": 1,
+          "category": "detail-recall"
+        },
+        {
+          "prompt": "Back in Category Recall, which animal was a mammal?",
+          "choices": [
+            "Whale",
+            "Frog",
+            "Shark",
+            "Eagle"
+          ],
+          "answerIndex": 0,
+          "category": "recent-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was a shape?",
+          "choices": [
+            "Triangle",
+            "Train",
+            "Trumpet",
+            "Thermometer"
+          ],
+          "answerIndex": 0,
+          "category": "category-memory"
+        }
+      ]
+    },
+    {
+      "title": "Sequence Memory",
+      "encouragement": "The AI is measuring order and timing clues.",
+      "questions": [
+        {
+          "prompt": "Which order is alphabetical?",
+          "choices": [
+            "Lemon, Apple, Zebra",
+            "Apple, Lemon, Zebra",
+            "Zebra, Lemon, Apple",
+            "Lemon, Zebra, Apple"
+          ],
+          "answerIndex": 1,
+          "category": "pattern-memory"
+        },
+        {
+          "prompt": "Which order is correct?",
+          "choices": [
+            "Morning, afternoon, evening, night",
+            "Afternoon, morning, night, evening",
+            "Evening, morning, afternoon, night",
+            "Night, afternoon, morning, evening"
+          ],
+          "answerIndex": 0,
+          "category": "pattern-memory"
+        },
+        {
+          "prompt": "Which number is missing: 3, 6, 9, __, 15?",
+          "choices": [
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "answerIndex": 2,
+          "category": "pattern-memory"
+        },
+        {
+          "prompt": "Which set is ordered from smallest to largest?",
+          "choices": [
+            "Meter, centimeter, kilometer",
+            "Centimeter, meter, kilometer",
+            "Kilometer, meter, centimeter",
+            "Meter, kilometer, centimeter"
+          ],
+          "answerIndex": 1,
+          "category": "pattern-memory"
+        },
+        {
+          "prompt": "Which stage came immediately before Delayed Details?",
+          "choices": [
+            "Clue Capture",
+            "Pattern Memory",
+            "Category Recall",
+            "Sequence Memory"
+          ],
+          "answerIndex": 2,
+          "category": "recent-recall"
+        },
+        {
+          "prompt": "Which stage came immediately after Clue Capture?",
+          "choices": [
+            "Quick Facts",
+            "Pattern Memory",
+            "Category Recall",
+            "Delayed Details"
+          ],
+          "answerIndex": 1,
+          "category": "recent-recall"
+        }
+      ]
+    },
+    {
+      "title": "Mixed Recall",
+      "encouragement": "Your memory profile is narrowing.",
+      "questions": [
+        {
+          "prompt": "Recognition check: Which planted clue appeared earlier?",
+          "choices": [
+            "Green Door = 2",
+            "Purple Window = 5",
+            "Orange Clock = 8",
+            "Black Coin = 1"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer from Category Recall was an instrument?",
+          "choices": [
+            "Trumpet",
+            "Triangle",
+            "Thermometer",
+            "Train"
+          ],
+          "answerIndex": 0,
+          "category": "category-memory"
+        },
+        {
+          "prompt": "Which earlier correct answer was an animal?",
+          "choices": [
+            "Dolphin",
+            "Pacific",
+            "Copper",
+            "Summer"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was a gas?",
           "choices": [
             "Oxygen",
             "Carbon dioxide",
@@ -452,123 +667,173 @@
             "Hydrogen"
           ],
           "answerIndex": 1,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "In the Pattern Memory round, which drink was the correct answer?",
-          "choices": [
-            "Coffee",
-            "Tea",
-            "Lemonade",
-            "Milk"
-          ],
-          "answerIndex": 0,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "In the Pattern Memory round, which shape was the correct answer?",
-          "choices": [
-            "Square",
-            "Triangle",
-            "Circle",
-            "Pentagon"
-          ],
-          "answerIndex": 1,
           "category": "detail-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was used to measure temperature?",
+          "choices": [
+            "Compass",
+            "Scale",
+            "Thermometer",
+            "Ruler"
+          ],
+          "answerIndex": 2,
+          "category": "recent-recall"
+        },
+        {
+          "prompt": "Which number completed the 3, 6, 9, __, 15 sequence?",
+          "choices": [
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "answerIndex": 2,
+          "category": "pattern-memory"
         }
       ]
     },
     {
-      "title": "Long-Term Recall",
-      "encouragement": "Final round complete. Your result is ready.",
+      "title": "Long Recall",
+      "encouragement": "Almost there. The AI is checking what stayed.",
       "questions": [
         {
-          "prompt": "Which planet is closest to the Sun?",
+          "prompt": "Delayed recall: Which item was linked to 7?",
           "choices": [
-            "Venus",
-            "Mercury",
-            "Earth",
-            "Mars"
+            "Blue Star",
+            "Silver Key",
+            "Green Door",
+            "Red Planet"
           ],
           "answerIndex": 1,
-          "category": "general-knowledge"
+          "category": "long-recall"
         },
         {
-          "prompt": "What is the primary color of a ripe lemon?",
+          "prompt": "Which earlier correct answer was the largest ocean?",
           "choices": [
-            "Green",
+            "Pacific",
+            "Atlantic",
+            "Indian",
+            "Arctic"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer had 88 keys?",
+          "choices": [
+            "Guitar",
+            "Piano",
+            "Violin",
+            "Flute"
+          ],
+          "answerIndex": 1,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was created by mixing blue and yellow?",
+          "choices": [
             "Orange",
-            "Yellow",
-            "Purple"
+            "Purple",
+            "Green",
+            "Red"
           ],
           "answerIndex": 2,
-          "category": "fact-recall"
+          "category": "detail-recall"
         },
         {
-          "prompt": "Back in the Quick Facts round, how many days were in a leap year?",
+          "prompt": "Which earlier correct answer was the item used in a kitchen?",
           "choices": [
-            "365",
-            "366",
-            "364",
-            "367"
+            "Hammer",
+            "Notebook",
+            "Spoon",
+            "Pillow"
           ],
-          "answerIndex": 1,
-          "category": "long-recall"
+          "answerIndex": 2,
+          "category": "recent-recall"
         },
         {
-          "prompt": "Which of these was a correct answer back in the Quick Facts round?",
+          "prompt": "Which earlier correct answer was the only word that did not belong with colors?",
           "choices": [
-            "Mars",
-            "Copper",
-            "Coffee",
-            "Snail"
+            "Red",
+            "Blue",
+            "Square",
+            "Green"
           ],
-          "answerIndex": 0,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "Which earlier round included Copper as a correct answer?",
-          "choices": [
-            "Quick Facts",
-            "Detail Recall",
-            "Pattern Memory",
-            "Mixed Recall"
-          ],
-          "answerIndex": 1,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "Which earlier round included Egypt as a correct answer?",
-          "choices": [
-            "Quick Facts",
-            "Detail Recall",
-            "Pattern Memory",
-            "Mixed Recall"
-          ],
-          "answerIndex": 3,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "Which earlier correct answer was an animal?",
-          "choices": [
-            "Snail",
-            "Pacific",
-            "Mercury",
-            "Australia/Oceania"
-          ],
-          "answerIndex": 0,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "Which of these appeared in the quiz but was never a correct answer?",
-          "choices": [
-            "Mercury",
-            "Banana",
-            "Penguin",
-            "Saturn"
-          ],
-          "answerIndex": 3,
+          "answerIndex": 2,
           "category": "exclusion-recall"
+        }
+      ]
+    },
+    {
+      "title": "Final Memory Check",
+      "encouragement": "Final signals processed. Your memory score is ready.",
+      "questions": [
+        {
+          "prompt": "Final recall: What is the combined total of the Blue Star and Silver Key?",
+          "choices": [
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "answerIndex": 2,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which planted clue used the number 2?",
+          "choices": [
+            "Green Door",
+            "Blue Star",
+            "Silver Key",
+            "Red Planet"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was the fastest land animal?",
+          "choices": [
+            "Horse",
+            "Wolf",
+            "Cheetah",
+            "Lion"
+          ],
+          "answerIndex": 2,
+          "category": "long-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer from Pattern Memory was a season?",
+          "choices": [
+            "Summer",
+            "Spring",
+            "Winter",
+            "Autumn"
+          ],
+          "answerIndex": 0,
+          "category": "detail-recall"
+        },
+        {
+          "prompt": "Which earlier correct answer was a vehicle?",
+          "choices": [
+            "Boat",
+            "Bicycle",
+            "Train",
+            "Bus"
+          ],
+          "answerIndex": 2,
+          "category": "category-memory"
+        },
+        {
+          "prompt": "Which memory seed pair was correct?",
+          "choices": [
+            "Blue Star = 4 and Silver Key = 7",
+            "Blue Star = 7 and Silver Key = 4",
+            "Green Door = 4 and Blue Star = 2",
+            "Silver Key = 2 and Green Door = 7"
+          ],
+          "answerIndex": 0,
+          "category": "long-recall"
         }
       ]
     }
