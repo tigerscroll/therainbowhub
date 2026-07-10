@@ -326,6 +326,7 @@ function createQuizRunnerScript(config: {
     var quiz = config.quiz;
     var t = config.translations;
     var isPersonalityQuiz = quiz.mode === "personality";
+    var localeCode = (t.locale && t.locale.code) || "en";
     var isHarvard2Quiz = quiz.slug === "harvard2";
     var isOxford2Quiz = quiz.slug === "oxford2";
     var isCambridge2Quiz = quiz.slug === "cambridge2";
@@ -337,9 +338,9 @@ function createQuizRunnerScript(config: {
     var isMedicineQuiz = quiz.slug === "medicine";
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
-    var isEnglishMemoryQuiz = isMemoryQuiz && t.locale && t.locale.code === "en";
-    var isEnglishYearsLeftQuiz = isYearsLeftQuiz && t.locale && t.locale.code === "en";
-    var isArmyQuiz = quiz.slug === "army" && t.locale && t.locale.code === "en";
+    var isEnglishMemoryQuiz = isMemoryQuiz && localeCode === "en";
+    var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl"].includes(localeCode);
+    var isArmyQuiz = quiz.slug === "army" && localeCode === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
     var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isMedicineQuiz;
@@ -1845,8 +1846,8 @@ function createQuizRunnerScript(config: {
       var stageAdNote = screens.stageGate ? screens.stageGate.querySelector(".legacy-ad-note") : null;
       var stageAdNoteText = stageAdNote ? stageAdNote.querySelector("span:last-child") : null;
       var yearsLeftAiPanel = byData("years-left-ai-panel");
-      var isAiCheckpointQuiz = isEnglishYearsLeftQuiz;
-      var usesAiCheckpointPanel = isEnglishYearsLeftQuiz || isEnglishMemoryQuiz;
+      var isAiCheckpointQuiz = isLocalizedYearsLeftAiQuiz;
+      var usesAiCheckpointPanel = isLocalizedYearsLeftAiQuiz || isEnglishMemoryQuiz;
       var isFinalMemoryCheckpoint = isEnglishMemoryQuiz && !nextStageName;
 
       if (usesRoundCheckpointFlow) {
@@ -1857,8 +1858,8 @@ function createQuizRunnerScript(config: {
 
       byData("stage-title").textContent = isEnglishMemoryQuiz
         ? (nextStageName ? "Next: " + nextStageName : "Memory Scan Complete")
-        : isEnglishYearsLeftQuiz && nextStageName
-          ? "Next: " + formatYearsLeftStageName(nextStageName)
+        : isLocalizedYearsLeftAiQuiz && nextStageName
+          ? getYearsLeftAiText().nextPrefix + formatYearsLeftStageName(nextStageName)
           : t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
       byData("stage-icon").textContent = isEnglishMemoryQuiz ? quiz.cardIcon || "🧠" : isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
@@ -1875,7 +1876,7 @@ function createQuizRunnerScript(config: {
             '</div>' +
             '<div class="legacy-years-ai-panel__next">' + escapeHtml(getMemoryAiLoggedLine(completedStage)) + '</div>';
           yearsLeftAiPanel.classList.remove("legacy-hidden");
-        } else if (isEnglishYearsLeftQuiz && nextStageName) {
+        } else if (isLocalizedYearsLeftAiQuiz && nextStageName) {
           yearsLeftAiPanel.innerHTML =
             '<div class="legacy-years-ai-panel__top">' +
               '<span class="legacy-years-ai-panel__pulse"></span>' +
@@ -1892,7 +1893,7 @@ function createQuizRunnerScript(config: {
       if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
       if (stageAdNoteText) {
         stageAdNoteText.textContent = usesAiCheckpointPanel
-          ? "Short ad first — then the next section starts."
+          ? (isLocalizedYearsLeftAiQuiz ? getYearsLeftAiText().adNote : "Short ad first — then the next section starts.")
           : t.rewardedAd.helper;
       }
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
@@ -1917,8 +1918,8 @@ function createQuizRunnerScript(config: {
       }).join("");
       byData("stage-button").textContent = isEnglishMemoryQuiz
         ? (isFinalMemoryCheckpoint ? "Reveal My Score →" : "Continue →")
-        : isEnglishYearsLeftQuiz && nextStageName
-          ? "Continue →"
+        : isLocalizedYearsLeftAiQuiz && nextStageName
+          ? t.quiz.continue + " →"
           : buttonLabel;
       byData("stage-button").dataset.readyText = byData("stage-button").textContent;
       byData("stage-button").dataset.memoryFinal = isFinalMemoryCheckpoint ? "true" : "";
@@ -2026,22 +2027,22 @@ function createQuizRunnerScript(config: {
       clearAdStatuses();
       var resultGateCopy = byData("result-gate-copy");
       var resultGateBadge = byData("result-gate-badge");
-      resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : isEnglishYearsLeftQuiz ? "Estimate ready" : t.quiz.profileReady;
+      resultGateBadge.textContent = isShortLockedScoreQuiz ? "" : isLocalizedYearsLeftAiQuiz ? getYearsLeftAiText().resultBadge : t.quiz.profileReady;
       resultGateBadge.classList.toggle("legacy-hidden", isShortLockedScoreQuiz);
       byData("result-gate-title").textContent = isShortLockedScoreQuiz
         ? getShortLockedResultGateTitle()
-        : isEnglishYearsLeftQuiz
-          ? "Your estimate is ready."
+        : isLocalizedYearsLeftAiQuiz
+          ? getYearsLeftAiText().resultTitle
           : t.quiz.your + " " + quiz.result.profileName + " " + t.quiz.profile;
       if (resultGateCopy) {
         resultGateCopy.textContent = isShortLockedScoreQuiz
           ? getShortLockedResultGateCopy()
-          : isEnglishYearsLeftQuiz
-            ? "We have calculated your playful years-left vibe from your answers. One short unlock reveals the estimate."
+          : isLocalizedYearsLeftAiQuiz
+            ? getYearsLeftAiText().resultCopy
             : "";
-        resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz && !isEnglishYearsLeftQuiz);
+        resultGateCopy.classList.toggle("legacy-hidden", !isShortLockedScoreQuiz && !isLocalizedYearsLeftAiQuiz);
       }
-      byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : isEnglishYearsLeftQuiz ? "Reveal my estimate →" : t.results.viewResults + " →";
+      byData("result-gate-button").textContent = isShortLockedScoreQuiz ? getShortLockedResultGateButtonLabel() : isLocalizedYearsLeftAiQuiz ? getYearsLeftAiText().resultButton : t.results.viewResults + " →";
       byData("result-gate-button").disabled = harvardStageResultPending ? false : getAnsweredCount() !== quiz.questions.length;
       show("resultGate", shouldScroll);
     }
@@ -2255,42 +2256,197 @@ function createQuizRunnerScript(config: {
       };
     }
 
+    function getYearsLeftAiText() {
+      var texts = {
+        en: {
+          nextPrefix: "Next: ",
+          adNote: "Short ad first — then the next section starts.",
+          resultBadge: "Estimate ready",
+          resultTitle: "Your estimate is ready.",
+          resultCopy: "We have calculated your playful years-left vibe from your answers. One short unlock reveals the estimate.",
+          resultButton: "Reveal my estimate →",
+          predictor: [
+            "AI predictor reading your rhythm",
+            "AI predictor weighing fuel clues",
+            "AI predictor mapping energy patterns",
+            "AI predictor checking recovery signals",
+            "AI predictor reading mindset clues",
+            "AI predictor measuring social energy",
+            "AI predictor weighing lifestyle patterns",
+            "AI predictor mapping positive signals",
+            "AI predictor narrowing your estimate",
+            "AI predictor finalizing your estimate"
+          ],
+          logged: [
+            "Daily patterns logged",
+            "Fuel signals logged",
+            "Energy patterns logged",
+            "Recovery signals logged",
+            "Mindset clues logged",
+            "Social energy logged",
+            "Lifestyle patterns logged",
+            "Positive signals logged",
+            "Estimate clues logged",
+            "Final answers logged"
+          ],
+          recalculating: "AI predictor recalculating",
+          signalsLogged: "Signals logged"
+        },
+        es: {
+          nextPrefix: "Siguiente: ",
+          adNote: "Primero un anuncio breve; luego empieza la siguiente sección.",
+          resultBadge: "Estimación lista",
+          resultTitle: "Tu estimación está lista.",
+          resultCopy: "Hemos calculado tu perfil lúdico sobre cuántos años te quedan a partir de tus respuestas. Un desbloqueo breve revela la estimación.",
+          resultButton: "Revelar mi estimación →",
+          predictor: [
+            "La IA predictiva está leyendo tu ritmo",
+            "La IA predictiva está evaluando tus señales de energía",
+            "La IA predictiva está mapeando tus patrones de energía",
+            "La IA predictiva está revisando tus señales de recuperación",
+            "La IA predictiva está leyendo tus pistas mentales",
+            "La IA predictiva está midiendo tu energía social",
+            "La IA predictiva está evaluando tus patrones de estilo de vida",
+            "La IA predictiva está mapeando tus señales positivas",
+            "La IA predictiva está afinando tu estimación",
+            "La IA predictiva está finalizando tu estimación"
+          ],
+          logged: [
+            "Patrones diarios registrados",
+            "Señales de energía registradas",
+            "Patrones de energía registrados",
+            "Señales de recuperación registradas",
+            "Pistas mentales registradas",
+            "Energía social registrada",
+            "Patrones de estilo de vida registrados",
+            "Señales positivas registradas",
+            "Pistas de estimación registradas",
+            "Respuestas finales registradas"
+          ],
+          recalculating: "La IA predictiva está recalculando",
+          signalsLogged: "Señales registradas"
+        },
+        it: {
+          nextPrefix: "Prossimo: ",
+          adNote: "Prima un breve annuncio, poi inizia la sezione successiva.",
+          resultBadge: "Stima pronta",
+          resultTitle: "La tua stima è pronta.",
+          resultCopy: "Abbiamo calcolato il tuo profilo giocoso su quanti anni ti restano a partire dalle tue risposte. Un breve sblocco rivela la stima.",
+          resultButton: "Rivela la mia stima →",
+          predictor: [
+            "L’IA predittiva sta leggendo il tuo ritmo",
+            "L’IA predittiva sta valutando gli indizi sull’energia",
+            "L’IA predittiva sta mappando i tuoi schemi energetici",
+            "L’IA predittiva sta controllando i segnali di recupero",
+            "L’IA predittiva sta leggendo gli indizi mentali",
+            "L’IA predittiva sta misurando la tua energia sociale",
+            "L’IA predittiva sta valutando i tuoi schemi di stile di vita",
+            "L’IA predittiva sta mappando i segnali positivi",
+            "L’IA predittiva sta affinando la tua stima",
+            "L’IA predittiva sta finalizzando la tua stima"
+          ],
+          logged: [
+            "Ritmi quotidiani registrati",
+            "Segnali di energia registrati",
+            "Schemi energetici registrati",
+            "Segnali di recupero registrati",
+            "Indizi mentali registrati",
+            "Energia sociale registrata",
+            "Schemi di stile di vita registrati",
+            "Segnali positivi registrati",
+            "Indizi per la stima registrati",
+            "Risposte finali registrate"
+          ],
+          recalculating: "L’IA predittiva sta ricalcolando",
+          signalsLogged: "Segnali registrati"
+        },
+        de: {
+          nextPrefix: "Als Nächstes: ",
+          adNote: "Erst eine kurze Anzeige, dann startet der nächste Abschnitt.",
+          resultBadge: "Schätzung bereit",
+          resultTitle: "Deine Schätzung ist bereit.",
+          resultCopy: "Wir haben aus deinen Antworten dein spielerisches Profil dazu berechnet, wie viele Jahre dir noch bleiben. Eine kurze Freischaltung zeigt die Schätzung.",
+          resultButton: "Meine Schätzung anzeigen →",
+          predictor: [
+            "Die KI-Prognose liest deinen Rhythmus",
+            "Die KI-Prognose bewertet deine Energiehinweise",
+            "Die KI-Prognose kartiert deine Energiemuster",
+            "Die KI-Prognose prüft deine Erholungssignale",
+            "Die KI-Prognose liest deine Denkhinweise",
+            "Die KI-Prognose misst deine soziale Energie",
+            "Die KI-Prognose bewertet deine Lebensstilmuster",
+            "Die KI-Prognose kartiert positive Signale",
+            "Die KI-Prognose grenzt deine Schätzung ein",
+            "Die KI-Prognose finalisiert deine Schätzung"
+          ],
+          logged: [
+            "Tagesmuster erfasst",
+            "Energiesignale erfasst",
+            "Energiemuster erfasst",
+            "Erholungssignale erfasst",
+            "Denkhinweise erfasst",
+            "Soziale Energie erfasst",
+            "Lebensstilmuster erfasst",
+            "Positive Signale erfasst",
+            "Schätzungshinweise erfasst",
+            "Letzte Antworten erfasst"
+          ],
+          recalculating: "Die KI-Prognose berechnet neu",
+          signalsLogged: "Signale erfasst"
+        },
+        nl: {
+          nextPrefix: "Volgende: ",
+          adNote: "Eerst een korte advertentie, daarna begint het volgende onderdeel.",
+          resultBadge: "Schatting klaar",
+          resultTitle: "Je schatting is klaar.",
+          resultCopy: "We hebben je speelse profiel over hoeveel jaar je nog hebt berekend op basis van je antwoorden. Eén korte ontgrendeling onthult de schatting.",
+          resultButton: "Mijn schatting onthullen →",
+          predictor: [
+            "De AI-voorspeller leest je ritme",
+            "De AI-voorspeller weegt je energiesignalen",
+            "De AI-voorspeller brengt je energiepatronen in kaart",
+            "De AI-voorspeller controleert je herstelsignalen",
+            "De AI-voorspeller leest je denkpatronen",
+            "De AI-voorspeller meet je sociale energie",
+            "De AI-voorspeller weegt je leefstijlpatronen",
+            "De AI-voorspeller brengt positieve signalen in kaart",
+            "De AI-voorspeller verfijnt je schatting",
+            "De AI-voorspeller rondt je schatting af"
+          ],
+          logged: [
+            "Dagelijkse patronen vastgelegd",
+            "Energiesignalen vastgelegd",
+            "Energiepatronen vastgelegd",
+            "Herstelsignalen vastgelegd",
+            "Denkpatronen vastgelegd",
+            "Sociale energie vastgelegd",
+            "Leefstijlpatronen vastgelegd",
+            "Positieve signalen vastgelegd",
+            "Aanwijzingen voor de schatting vastgelegd",
+            "Laatste antwoorden vastgelegd"
+          ],
+          recalculating: "De AI-voorspeller berekent opnieuw",
+          signalsLogged: "Signalen vastgelegd"
+        }
+      };
+
+      return texts[localeCode] || texts.en;
+    }
+
     function formatYearsLeftStageName(name) {
       return String(name || "").replace(/\s+And\s+/g, " & ");
     }
 
     function getYearsLeftAiPredictorLine(stage) {
-      var lines = [
-        "AI predictor reading your rhythm",
-        "AI predictor weighing fuel clues",
-        "AI predictor mapping energy patterns",
-        "AI predictor checking recovery signals",
-        "AI predictor reading mindset clues",
-        "AI predictor measuring social energy",
-        "AI predictor weighing lifestyle patterns",
-        "AI predictor mapping positive signals",
-        "AI predictor narrowing your estimate",
-        "AI predictor finalizing your estimate"
-      ];
-
-      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "AI predictor recalculating";
+      var text = getYearsLeftAiText();
+      var lines = text.predictor;
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || text.recalculating;
     }
 
     function getYearsLeftAiLoggedLine(stage) {
-      var lines = [
-        "Daily patterns logged",
-        "Fuel signals logged",
-        "Energy patterns logged",
-        "Recovery signals logged",
-        "Mindset clues logged",
-        "Social energy logged",
-        "Lifestyle patterns logged",
-        "Positive signals logged",
-        "Estimate clues logged",
-        "Final answers logged"
-      ];
-
-      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || "Signals logged";
+      var text = getYearsLeftAiText();
+      var lines = text.logged;
+      return lines[Math.min(Math.max(stage, 0), lines.length - 1)] || text.signalsLogged;
     }
 
     function getMemoryAiPredictorLine(stage) {
