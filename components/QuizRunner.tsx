@@ -1156,13 +1156,16 @@ function createQuizRunnerScript(config: {
         },
         army: {
           en: {
-            "attention": "Focus",
-            "logic": "Judgment",
-            "number": "Numbers",
-            "deduction": "Deduction",
-            "pattern": "Patterns",
-            "lateral": "Composure",
-            "grid": "Route sense"
+            "readiness-checks": "Readiness",
+            "map-direction": "Map direction",
+            "signals-codes": "Signals",
+            "supply-load": "Supplies",
+            "time-distance": "Timing",
+            "observation-detail": "Observation",
+            "sequence-orders": "Orders",
+            "safety-priority": "Safety",
+            "pressure-logic": "Pressure logic",
+            "mission-synthesis": "Final synthesis"
           }
         },
         medicine: {

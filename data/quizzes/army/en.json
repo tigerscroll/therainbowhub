@@ -2,21 +2,21 @@
   "slug": "army",
   "title": "Only 8% Pass This Army Aptitude Test",
   "seoTitle": "Only 8% Pass This Army Aptitude Test",
-  "seoDescription": "Think fast through 4 Army-style rounds built around focus, route logic, signals, supply checks, and calm decisions under pressure.",
+  "seoDescription": "Take a 70-question Army Aptitude Test with safe fictional checks on readiness, route logic, signals, supplies, timing, observation, sequencing, and pressure reasoning.",
   "pageTitle": "Only 8% Pass This Army Aptitude Test",
   "eyebrow": "Army Aptitude Test",
-  "summary": "A fast Army-style mission test built around route clues, signal calls, supply checks, and calm decisions under pressure.",
-  "duration": "5 mins",
+  "summary": "A 10-stage Army Aptitude Test built around clear reasoning, route logic, signals, supplies, timing, observation, sequencing, and pressure decisions.",
+  "duration": "~10 min",
   "publishedAt": "2026-06-02T09:00:00Z",
   "difficulty": "Hard",
   "passRate": "8%",
   "cardIcon": "🧭",
   "cardGradient": "linear-gradient(135deg, #3f6212 0%, #334155 100%)",
   "accent": "#4d7c0f",
-  "questionCount": 40,
+  "questionCount": 70,
   "homepage": {
     "title": "Only 8% Pass This Army Aptitude Test",
-    "summary": "Stay sharp through 4 Army-style rounds of route clues, signal calls, quick checks, and pressure decisions.",
+    "summary": "Work through 10 Army-style aptitude stages covering readiness, routes, signals, supplies, timing, observation, and calm reasoning.",
     "thumbnailUrl": "/images/thumbnails/army.jpg",
     "thumbnailAlt": "Army Aptitude Test quiz",
     "icon": "🧭",
@@ -24,16 +24,18 @@
     "featured": false
   },
   "heroPoints": [
-    "4 pressure rounds",
-    "40 fast judgment checks",
+    "10 aptitude stages",
+    "70 objective reasoning checks",
     "Locked answers until results"
   ],
   "footer": {
     "aboutTitle": "About This Army Aptitude Test",
-    "aboutText": "This Army-style aptitude test is for entertainment and self-testing only. It is not an official army test, recruitment assessment, military training, tactical guidance, or qualification. The quiz uses safe fictional scenarios built around focus, route sense, signals, supply logic, and calm judgment under pressure."
+    "topicText": "This test uses safe fictional Army-style aptitude scenarios about readiness checks, route sense, signals, supplies, timing, observation, order sequencing, stated safety rules, and calm logic under pressure.",
+    "aboutText": "This Army Aptitude Test is for entertainment and self-testing only. It is not an official army test, recruitment assessment, military training, tactical guidance, or qualification. Every question is designed to be solved from the information given in the prompt, without specialist military knowledge or country-specific terminology."
   },
   "landing": {
-    "quickStartText": "The first drills feel simple. Then the mission clues start stacking up and the pressure kicks in.",
+    "quickStartText": "The first checks are clean. Later stages combine routes, signals, supplies, timing, and stated priority rules.",
+    "challengeText": "There are 10 stages with 7 objective questions in each stage.",
     "socialProof": "58,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
@@ -43,524 +45,962 @@
       {
         "minRatio": 0.8,
         "tier": "Elite Field Thinker",
-        "title": "You stayed sharp all the way through.",
-        "copy": "You handled the mission clues, signal calls, and pressure decisions with elite-level focus. Your strongest area was {stage}.",
+        "title": "You stayed sharp through every aptitude stage.",
+        "copy": "You handled readiness, routes, signals, supplies, timing, observation, and pressure logic with elite-level focus. Your strongest area was {stage}.",
         "percentile": "Top 8%"
       },
       {
         "minRatio": 0.65,
         "tier": "Mission-Ready Reasoner",
-        "title": "You kept your head when the pressure climbed.",
-        "copy": "You stayed steady as the mission details tightened and the choices got trickier. Your strongest area was {stage}.",
+        "title": "You kept control as the constraints stacked up.",
+        "copy": "You made strong calls across the route, signal, supply, timing, and priority checks. Your strongest area was {stage}.",
         "percentile": "Top 20%"
       },
       {
         "minRatio": 0.5,
-        "tier": "Steady Tactical Thinker",
-        "title": "You spotted the smart move more often than most.",
-        "copy": "You made plenty of solid calls across the route, signal, and supply checks. Your strongest area was {stage}.",
+        "tier": "Steady Aptitude Candidate",
+        "title": "You solved plenty of the field reasoning checks.",
+        "copy": "You spotted many of the stated rules and practical constraints, with the later synthesis stage raising the pressure. Your strongest area was {stage}.",
         "percentile": "Top 42%"
       },
       {
         "minRatio": 0,
         "tier": "Training Ground Learner",
-        "title": "You made some smart calls - but the later pressure caught you.",
-        "copy": "The tougher rounds reward calm checks, clean thinking, and strong attention to mission clues. Your best area was {stage}.",
+        "title": "The test caught you when the clues combined.",
+        "copy": "This Army Aptitude Test rewards careful reading, clean arithmetic, route logic, and applying stated priority rules. Your best area was {stage}.",
         "percentile": "Top 80%"
       }
     ],
     "scoreDimensions": [
       {
-        "label": "Focus And Detail",
+        "label": "Field Awareness",
         "categories": [
-          "attention",
-          "grid"
+          "readiness-checks",
+          "map-direction",
+          "observation-detail"
         ]
       },
       {
-        "label": "Practical Reasoning",
+        "label": "Communication And Orders",
         "categories": [
-          "logic",
-          "deduction"
+          "signals-codes",
+          "sequence-orders"
         ]
       },
       {
-        "label": "Number And Supply Sense",
+        "label": "Practical Planning",
         "categories": [
-          "number"
+          "supply-load",
+          "time-distance"
         ]
       },
       {
-        "label": "Signal And Pattern Sense",
+        "label": "Aptitude Under Pressure",
         "categories": [
-          "pattern",
-          "lateral"
+          "safety-priority",
+          "pressure-logic",
+          "mission-synthesis"
         ]
       }
     ]
   },
   "stageGroups": [
     {
-      "title": "Round 1: Spot the Smart Move",
-      "encouragement": "You handled the first drills well. Most people start slipping once the details get messier.",
+      "title": "Readiness Checks",
+      "encouragement": "Good start. Next, the test moves from kit checks into map and direction logic.",
       "questions": [
         {
-          "prompt": "You reach a training building with two entrances. What is the smartest first move?",
+          "prompt": "A briefing says each team must carry a map, water, radio card, and first-aid kit before leaving. Team A has a map, water, and radio card. What is missing?",
           "choices": [
-            "Confirm which entrance the briefing means",
-            "Pick the nearest door and keep moving",
-            "Split up without checking",
-            "Wait for someone else to choose"
+            "First-aid kit",
+            "Second map",
+            "Extra radio card",
+            "Route marker"
           ],
           "answerIndex": 0,
-          "category": "logic"
+          "explanation": "The required list includes a first-aid kit, and that is the only required item not listed for Team A.",
+          "category": "readiness-checks"
         },
         {
-          "prompt": "A briefing says: map, water, signal card. At a route split, the signal card cannot be found. What should the team check before moving?",
+          "prompt": "A readiness board says green labels mean checked, yellow labels mean waiting, and red labels mean remove from use. A crate has a yellow label. What does the label mean?",
           "choices": [
-            "Whether the signal card was packed",
-            "Which bag looks newest",
-            "Whether the floor is dry",
-            "How fast the team can run"
+            "Checked",
+            "Waiting",
+            "Remove from use",
+            "Ready to load"
           ],
-          "answerIndex": 0,
-          "category": "logic"
+          "answerIndex": 1,
+          "explanation": "The prompt defines yellow labels as waiting, so the crate is not yet checked.",
+          "category": "readiness-checks"
         },
         {
-          "prompt": "A route card says Route Red is blocked. Which route should the team avoid?",
+          "prompt": "A unit can move only when all three boxes are ticked: route confirmed, kit checked, radio tested. The route and radio boxes are ticked, but kit checked is blank. What is the correct status?",
           "choices": [
-            "Route Red",
-            "Route Blue",
-            "The river path",
-            "The north path"
+            "Ready to move",
+            "Radio failed",
+            "Not ready yet",
+            "Route cancelled"
           ],
-          "answerIndex": 0,
-          "category": "attention"
+          "answerIndex": 2,
+          "explanation": "All three boxes must be ticked. Since kit checked is blank, the unit is not ready yet.",
+          "category": "readiness-checks"
         },
         {
-          "prompt": "Only checked bags get a white label. Bag 2 has a white label. What follows?",
+          "prompt": "A vehicle check requires fuel above half, two spare water cans, and a working radio. Vehicle 4 has fuel above half, two spare water cans, and a radio marked faulty. Which check fails?",
           "choices": [
-            "Bag 2 is empty",
-            "Every bag was checked",
-            "Bag 2 is the newest",
-            "Bag 2 was checked"
+            "Fuel",
+            "Water cans",
+            "Vehicle number",
+            "Radio"
           ],
           "answerIndex": 3,
-          "category": "deduction"
+          "explanation": "The radio must be working, but Vehicle 4's radio is marked faulty.",
+          "category": "readiness-checks"
         },
         {
-          "prompt": "Remember this pair for later: Falcon - 6. Which number is paired with Falcon?",
+          "prompt": "A packing rule says heavy items go at the bottom, fragile items go in the middle, and the route card stays on top. Which item should be placed on top?",
           "choices": [
-            "6",
+            "Route card",
+            "Water can",
+            "Tool box",
+            "Glass marker"
+          ],
+          "answerIndex": 0,
+          "explanation": "The rule explicitly says the route card stays on top.",
+          "category": "readiness-checks"
+        },
+        {
+          "prompt": "A team leader checks four names against four assigned radios. Noor has R1, Pavel has R2, Lina has R3, and Mateo has no radio. Who still needs a radio?",
+          "choices": [
+            "Noor",
+            "Mateo",
+            "Pavel",
+            "Lina"
+          ],
+          "answerIndex": 1,
+          "explanation": "Mateo is the only person listed without an assigned radio.",
+          "category": "readiness-checks"
+        },
+        {
+          "prompt": "A readiness rule says if the map is missing, stop the check and report it before counting supplies. The map folder is empty. What should happen next?",
+          "choices": [
+            "Count the supplies first",
+            "Begin the route anyway",
+            "Report the missing map",
+            "Ignore the folder"
+          ],
+          "answerIndex": 2,
+          "explanation": "The stated rule says a missing map must be reported before supplies are counted.",
+          "category": "readiness-checks"
+        }
+      ]
+    },
+    {
+      "title": "Map And Direction",
+      "encouragement": "Route sense is warming up. Next, the signals and codes get tighter.",
+      "questions": [
+        {
+          "prompt": "On a grid, a marker starts at the center, moves one square north, then one square east. Where does it finish?",
+          "choices": [
+            "Center",
+            "South-east of center",
+            "North of center",
+            "North-east of center"
+          ],
+          "answerIndex": 3,
+          "explanation": "One move north and one move east puts the marker north-east of the center.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A route card says Point B is two kilometres after Point A, and Point C is one kilometre before Point B. Where is Point C compared with Point A?",
+          "choices": [
+            "One kilometre after Point A",
+            "Three kilometres after Point A",
+            "At Point A",
+            "One kilometre before Point A"
+          ],
+          "answerIndex": 0,
+          "explanation": "Point B is 2 km after A, and C is 1 km before B, so C is 1 km after A.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A map key says a triangle marks a checkpoint, a square marks supplies, and a circle marks water. Which shape marks supplies?",
+          "choices": [
+            "Circle",
+            "Square",
+            "Triangle",
+            "Line"
+          ],
+          "answerIndex": 1,
+          "explanation": "The map key defines the square as the supply marker.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A team faces north. It turns right, moves forward, then turns right again. Which direction is it facing now?",
+          "choices": [
+            "North",
+            "East",
+            "South",
+            "West"
+          ],
+          "answerIndex": 2,
+          "explanation": "Facing north, the first right turn faces east. A second right turn faces south.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A safe route must avoid blocked roads. The map shows Route 1 is open, Route 2 is blocked, and Route 3 is open. Which route must be avoided?",
+          "choices": [
+            "Route 3",
+            "Route 1",
+            "Any open route",
+            "Route 2"
+          ],
+          "answerIndex": 3,
+          "explanation": "The rule says blocked roads must be avoided, and Route 2 is the blocked route.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A marker starts in the top-left cell of a 3 by 3 grid. It moves right, right, down. Where is it?",
+          "choices": [
+            "Middle-right",
+            "Top-right",
+            "Center",
+            "Bottom-right"
+          ],
+          "answerIndex": 0,
+          "explanation": "Right, right moves to the top-right cell; down moves to the middle-right cell.",
+          "category": "map-direction"
+        },
+        {
+          "prompt": "A route note says the east track is shorter than the west track, but the west track is the only confirmed route. The instruction says use confirmed routes only. Which track should be used?",
+          "choices": [
+            "East track",
+            "West track",
+            "Both tracks",
+            "Neither track"
+          ],
+          "answerIndex": 1,
+          "explanation": "The instruction prioritizes confirmed routes only, so the west track should be used even though it is longer.",
+          "category": "map-direction"
+        }
+      ]
+    },
+    {
+      "title": "Signals And Codes",
+      "encouragement": "Signals decoded. Next, the test checks supply and load planning.",
+      "questions": [
+        {
+          "prompt": "A signal card says one short flash means stop, two short flashes mean move, and one long flash means return. The signal is two short flashes. What does it mean?",
+          "choices": [
+            "Stop",
+            "Return",
+            "Move",
+            "Wait for supplies"
+          ],
+          "answerIndex": 2,
+          "explanation": "The card states that two short flashes mean move.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A radio code list says Alpha means check route, Bravo means check supplies, and Charlie means check radio. Which code means check supplies?",
+          "choices": [
+            "Alpha",
+            "Charlie",
+            "Delta",
+            "Bravo"
+          ],
+          "answerIndex": 3,
+          "explanation": "The prompt defines Bravo as the code for checking supplies.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A lamp pattern repeats red, blue, blue, red, blue, blue. What colour comes next?",
+          "choices": [
+            "Red",
+            "Blue",
+            "Green",
+            "White"
+          ],
+          "answerIndex": 0,
+          "explanation": "The repeating pattern is red, blue, blue, so the next colour is red.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A code rule says the second letter gives the checkpoint number: A2 means checkpoint 2, B4 means checkpoint 4. What checkpoint does C3 mean?",
+          "choices": [
+            "Checkpoint C",
+            "Checkpoint 3",
+            "Checkpoint 2",
+            "Checkpoint 4"
+          ],
+          "answerIndex": 1,
+          "explanation": "The rule says the number gives the checkpoint, so C3 means checkpoint 3.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A message has three parts: route, time, load. The message reads Route 5, 14:00, 8 crates. Which part gives the load?",
+          "choices": [
+            "Route 5",
+            "14:00",
+            "8 crates",
+            "Message order"
+          ],
+          "answerIndex": 2,
+          "explanation": "The stated order is route, time, load, and 8 crates is the load.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A flag rule says raised flag means ready, lowered flag means not ready, and crossed flags mean pause. The flags are crossed. What does that mean?",
+          "choices": [
+            "Ready",
+            "Not ready",
+            "Route clear",
+            "Pause"
+          ],
+          "answerIndex": 3,
+          "explanation": "The rule defines crossed flags as pause.",
+          "category": "signals-codes"
+        },
+        {
+          "prompt": "A code sheet says odd numbers mean report to Point A and even numbers mean report to Point B. The message number is 16. Where should the report go?",
+          "choices": [
+            "Point A",
+            "Point B",
+            "Both points",
+            "No point"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sixteen is even, and the rule says even numbers report to Point B.",
+          "category": "signals-codes"
+        }
+      ]
+    },
+    {
+      "title": "Supply And Load",
+      "encouragement": "Supply planning is set. Next comes time and distance under clean constraints.",
+      "questions": [
+        {
+          "prompt": "A supply point needs 18 water cans. One vehicle carries 6 cans. How many full vehicle loads are needed?",
+          "choices": [
+            "2",
             "4",
             "3",
-            "8"
-          ],
-          "answerIndex": 0,
-          "category": "attention"
-        },
-        {
-          "prompt": "A signal flashes green, red, green, red, green. What comes next?",
-          "choices": [
-            "Blue",
-            "White",
-            "Red",
-            "Green"
+            "6"
           ],
           "answerIndex": 2,
-          "category": "pattern"
+          "explanation": "Eighteen cans divided by 6 cans per load equals 3 full loads.",
+          "category": "supply-load"
         },
         {
-          "prompt": "A signal sheet says Falcon means hold position. What should the team do if Falcon flashes?",
+          "prompt": "A crate limit is 20 kg. Three items weigh 7 kg, 6 kg, and 5 kg. What is their total weight?",
           "choices": [
-            "Push ahead before the route changes",
-            "Switch to Route Red immediately",
-            "Hold position",
-            "Ignore the signal and finish loading"
+            "17 kg",
+            "19 kg",
+            "20 kg",
+            "18 kg"
           ],
-          "answerIndex": 2,
-          "category": "logic"
+          "answerIndex": 3,
+          "explanation": "The total is 7 + 6 + 5 = 18 kg.",
+          "category": "supply-load"
         },
         {
-          "prompt": "Which choice best shows calm judgment?",
+          "prompt": "A load rule says food crates go before tool crates, and tool crates go before spare parts. Which order follows the rule?",
           "choices": [
-            "Move before reading",
-            "Stop, check, then decide",
-            "Ignore unclear notes",
-            "Follow the loudest voice"
-          ],
-          "answerIndex": 1,
-          "category": "logic"
-        },
-        {
-          "prompt": "A checklist says rope, map, gloves, water. At the first stop, the team only has rope, gloves, and water. What should be flagged before they continue?",
-          "choices": [
-            "The map is missing",
-            "The rope is too long",
-            "The gloves are too clean",
-            "The water should be left behind"
+            "Food, tools, spare parts",
+            "Tools, food, spare parts",
+            "Spare parts, tools, food",
+            "Food, spare parts, tools"
           ],
           "answerIndex": 0,
-          "category": "attention"
+          "explanation": "The rule requires food before tools and tools before spare parts.",
+          "category": "supply-load"
         },
         {
-          "prompt": "A drill board says Checkpoint C opens last. The team reaches a locked gate marked C before the others open. What is the smartest read of the situation?",
-          "choices": [
-            "Checkpoint C is probably not ready yet",
-            "Checkpoint C should be forced open first",
-            "Every checkpoint must already be open",
-            "The marker C probably means supplies"
-          ],
-          "answerIndex": 0,
-          "category": "deduction"
-        }
-      ]
-    },
-    {
-      "title": "Round 2: Read The Route",
-      "encouragement": "You are still on track to beat the 8%. The next round adds more route clues and signal pressure.",
-      "questions": [
-        {
-          "prompt": "On a simple grid, a marker starts at the center and moves one space north. Where is it now?",
-          "choices": [
-            "One space left of the center",
-            "One space below the center",
-            "One space above the center",
-            "Still at the center"
-          ],
-          "answerIndex": 2,
-          "category": "grid"
-        },
-        {
-          "prompt": "A route note says the blue marker is the supply point. Which marker should the team move toward if they need supplies?",
-          "choices": [
-            "Blue marker",
-            "White marker",
-            "Red marker",
-            "Blank marker"
-          ],
-          "answerIndex": 0,
-          "category": "attention"
-        },
-        {
-          "prompt": "Remember this pair for later: Blue marker - 4. Which number is paired with Blue marker?",
+          "prompt": "A team has 24 ration packs. Each person needs 3 packs. How many people can be supplied?",
           "choices": [
             "6",
-            "4",
-            "2",
-            "8"
+            "8",
+            "9",
+            "12"
           ],
           "answerIndex": 1,
-          "category": "attention"
+          "explanation": "Twenty-four packs divided by 3 packs per person supplies 8 people.",
+          "category": "supply-load"
         },
         {
-          "prompt": "An order card says: start, blue point, supply square, finish. Which step comes after blue point?",
+          "prompt": "A supply rule says the heaviest crate must be loaded first. The crate weights are 12 kg, 15 kg, 9 kg, and 14 kg. Which crate goes first?",
           "choices": [
-            "Start",
-            "Finish",
-            "Return point",
-            "Supply square"
-          ],
-          "answerIndex": 3,
-          "category": "logic"
-        },
-        {
-          "prompt": "A marker starts in the top-left cell of a 3 by 3 grid and moves one cell right. Where is it?",
-          "choices": [
-            "Top middle",
-            "Top right",
-            "Center",
-            "Bottom left"
-          ],
-          "answerIndex": 0,
-          "category": "grid"
-        },
-        {
-          "prompt": "A marker starts at the center, moves one space south, then one space north. Where does it finish?",
-          "choices": [
-            "Top middle",
-            "Bottom middle",
-            "Center",
-            "Middle left"
+            "12 kg",
+            "14 kg",
+            "15 kg",
+            "9 kg"
           ],
           "answerIndex": 2,
-          "category": "grid"
+          "explanation": "The heaviest listed crate is 15 kg.",
+          "category": "supply-load"
         },
         {
-          "prompt": "A signal pattern is short, long, short, long. What comes next?",
+          "prompt": "A vehicle can carry 10 boxes. It already has 4 boxes loaded. How many more boxes can it carry?",
           "choices": [
-            "Long",
-            "Short",
-            "Stop",
-            "Blue"
+            "4",
+            "5",
+            "10",
+            "6"
           ],
-          "answerIndex": 1,
-          "category": "pattern"
+          "answerIndex": 3,
+          "explanation": "The remaining capacity is 10 - 4 = 6 boxes.",
+          "category": "supply-load"
         },
         {
-          "prompt": "Route Red is blocked, but the north path is clear. Which path is safer to name as usable?",
+          "prompt": "A kit list requires 5 torches and 5 batteries. The box has 5 torches and 4 batteries. What must be added to complete the kit list?",
           "choices": [
-            "Route Red",
-            "The north path",
-            "A shortcut no one has checked",
-            "Any path with dust on it"
-          ],
-          "answerIndex": 1,
-          "category": "logic"
-        },
-        {
-          "prompt": "A signal on the practice board is unclear. What is the best first action?",
-          "choices": [
-            "Ask for a clear repeat",
-            "Guess quickly",
-            "Ignore the board",
-            "Pick the longest option"
+            "1 battery",
+            "1 torch",
+            "5 torches",
+            "4 batteries"
           ],
           "answerIndex": 0,
-          "category": "lateral"
-        },
-        {
-          "prompt": "A message says, \"Deliver the pack to the blue marker before Checkpoint C opens.\" Which location matters first?",
-          "choices": [
-            "Checkpoint C",
-            "The blue marker",
-            "The starting gate",
-            "The signal tower"
-          ],
-          "answerIndex": 1,
-          "category": "logic"
+          "explanation": "The torch count is complete, but the battery count is short by 1.",
+          "category": "supply-load"
         }
       ]
     },
     {
-      "title": "Round 3: Pressure Decisions",
-      "encouragement": "Good calls so far. This is where more than one option can sound plausible, but only one is the smart move.",
+      "title": "Time And Distance",
+      "encouragement": "Timing is under control. Next, observation and detail decide the score.",
       "questions": [
         {
-          "prompt": "A map note and a supply note disagree on the practice board. What should happen before scoring?",
+          "prompt": "A route takes 35 minutes. The team must arrive by 10:00. What is the latest start time?",
           "choices": [
-            "Choose the shorter note",
-            "Ignore both notes",
-            "Confirm the correct information",
-            "Move without checking"
-          ],
-          "answerIndex": 2,
-          "category": "logic"
-        },
-        {
-          "prompt": "A point marker is missing from the practice map. Which choice avoids a bad assumption?",
-          "choices": [
-            "Guess the nearest point",
-            "Use the oldest note",
-            "Remove the whole map",
-            "Ask for the marker position to be confirmed"
-          ],
-          "answerIndex": 3,
-          "category": "deduction"
-        },
-        {
-          "prompt": "Blue marker is the supply point, Falcon means hold position, and Route Red is blocked. The team reaches Route Red while Falcon is showing. What should happen first?",
-          "choices": [
-            "Push through Route Red before the route changes",
-            "Head for the blue marker immediately without stopping",
-            "Hold position and avoid Route Red",
-            "Ignore Falcon because the team is close"
-          ],
-          "answerIndex": 2,
-          "category": "logic"
-        },
-        {
-          "prompt": "A drill rule says to wait for a clear signal. The signal has not appeared. What is the best choice?",
-          "choices": [
-            "Pretend it arrived",
-            "Choose any signal",
-            "Wait for the clear signal",
-            "Change the rule"
-          ],
-          "answerIndex": 2,
-          "category": "deduction"
-        },
-        {
-          "prompt": "Checkpoint C opens last, but a fresh note tells the team to enter it now. What is the smartest response?",
-          "choices": [
-            "Trust the note without checking",
-            "Confirm the timing before moving",
-            "Use any open gate instead",
-            "Skip Checkpoint C for the whole mission"
+            "09:20",
+            "09:25",
+            "09:30",
+            "09:35"
           ],
           "answerIndex": 1,
-          "category": "deduction"
+          "explanation": "Starting at 09:25 and travelling for 35 minutes gives an arrival time of 10:00.",
+          "category": "time-distance"
         },
         {
-          "prompt": "A new note says Point C moved, but gives no new square. What is the strongest conclusion?",
+          "prompt": "A vehicle travels 12 km each hour. How far does it travel in 3 hours?",
           "choices": [
-            "The old location may now be unreliable",
-            "Checkpoint C is finished",
-            "The new location is north",
-            "All points moved"
-          ],
-          "answerIndex": 0,
-          "category": "deduction"
-        },
-        {
-          "prompt": "Which detail matters most in a fast readiness check?",
-          "choices": [
-            "Whether the box looks new",
-            "Whether the label is tidy",
-            "Whether the table is clean",
-            "Whether required items are present"
-          ],
-          "answerIndex": 3,
-          "category": "attention"
-        },
-        {
-          "prompt": "A calm teammate notices the plan may be wrong. What is the best next action?",
-          "choices": [
-            "Stay silent",
-            "Raise the concern clearly",
-            "Follow the plan blindly",
-            "Change every map"
-          ],
-          "answerIndex": 1,
-          "category": "lateral"
-        },
-        {
-          "prompt": "A checked route shows a green light toward Checkpoint B. Another route heads to Checkpoint C, which opens last, but it is unconfirmed. Which option is most careful?",
-          "choices": [
-            "Take the unconfirmed route because it might save time",
-            "Ignore both routes and wait forever",
-            "Use the checked route unless the other route is confirmed",
-            "Drive toward Checkpoint C and decide on arrival"
+            "24 km",
+            "30 km",
+            "36 km",
+            "48 km"
           ],
           "answerIndex": 2,
-          "category": "logic"
+          "explanation": "Twelve kilometres per hour for 3 hours equals 36 km.",
+          "category": "time-distance"
         },
         {
-          "prompt": "If only confirmed routes show a green light, and Route C has a green light, what can you safely conclude?",
+          "prompt": "A checkpoint opens at 13:40 and closes 20 minutes later. What time does it close?",
           "choices": [
-            "Route C is confirmed",
-            "Every route is confirmed",
-            "Green lights no longer matter",
-            "Route C is the fastest"
+            "14:10",
+            "13:50",
+            "14:20",
+            "14:00"
+          ],
+          "answerIndex": 3,
+          "explanation": "Twenty minutes after 13:40 is 14:00.",
+          "category": "time-distance"
+        },
+        {
+          "prompt": "A march is split into three equal 4 km sections. What is the total distance?",
+          "choices": [
+            "12 km",
+            "7 km",
+            "8 km",
+            "16 km"
           ],
           "answerIndex": 0,
-          "category": "deduction"
+          "explanation": "Three sections of 4 km make 12 km in total.",
+          "category": "time-distance"
+        },
+        {
+          "prompt": "A route is 18 km. The first vehicle has already covered 11 km. How many kilometres remain?",
+          "choices": [
+            "5 km",
+            "7 km",
+            "9 km",
+            "11 km"
+          ],
+          "answerIndex": 1,
+          "explanation": "The remaining distance is 18 - 11 = 7 km.",
+          "category": "time-distance"
+        },
+        {
+          "prompt": "A signal check takes 6 minutes, a route check takes 9 minutes, and both must be completed before departure. How long do the checks take in total?",
+          "choices": [
+            "12 minutes",
+            "14 minutes",
+            "15 minutes",
+            "18 minutes"
+          ],
+          "answerIndex": 2,
+          "explanation": "The total check time is 6 + 9 = 15 minutes.",
+          "category": "time-distance"
+        },
+        {
+          "prompt": "A team starts at 08:10, rests for 10 minutes at 08:40, then travels for 20 more minutes. What time does it finish?",
+          "choices": [
+            "09:00",
+            "09:10",
+            "08:50",
+            "09:20"
+          ],
+          "answerIndex": 1,
+          "explanation": "From 08:10 to 08:40 is 30 minutes, then a 10-minute rest ends at 08:50, and 20 more minutes ends at 09:10.",
+          "category": "time-distance"
         }
       ]
     },
     {
-      "title": "Round 4: Final Judgment Check",
-      "encouragement": "You made it through the hardest checks. Your result is ready to reveal.",
+      "title": "Observation And Detail",
+      "encouragement": "Sharp detail work. Next, orders must be placed in the right sequence.",
       "questions": [
         {
-          "prompt": "Earlier, which number was paired with Blue marker?",
+          "prompt": "A board lists Gate A open, Gate B closed, Gate C open, Gate D closed. Which gates are open?",
           "choices": [
-            "6",
-            "4",
-            "2",
-            "8"
-          ],
-          "answerIndex": 1,
-          "category": "attention"
-        },
-        {
-          "prompt": "A final plan card says Route Red is blocked, Falcon means hold, and Blue marker is the supply point. Which detail matters first if Falcon is flashing?",
-          "choices": [
-            "The team should hold position",
-            "The team should count packs first",
-            "Route Red might reopen by itself",
-            "Checkpoint C no longer matters"
+            "Gate A and Gate C",
+            "Gate B and Gate D",
+            "Gate A and Gate D",
+            "Gate B and Gate C"
           ],
           "answerIndex": 0,
-          "category": "logic"
+          "explanation": "Only Gate A and Gate C are marked open.",
+          "category": "observation-detail"
         },
         {
-          "prompt": "A marker starts at the center, moves north, east, south, then west. Where does it finish?",
+          "prompt": "A label reads R-47B. Which option matches it exactly?",
           "choices": [
-            "Top right",
-            "Bottom left",
-            "Center",
-            "Middle right"
+            "R-74B",
+            "R-47B",
+            "R-47D",
+            "B-47R"
+          ],
+          "answerIndex": 1,
+          "explanation": "R-47B exactly matches the label.",
+          "category": "observation-detail"
+        },
+        {
+          "prompt": "A notice says use the blue folder, not the green folder. The table has blue, green, and white folders. Which folder should be used?",
+          "choices": [
+            "Green folder",
+            "White folder",
+            "Blue folder",
+            "Any folder"
           ],
           "answerIndex": 2,
-          "category": "grid"
+          "explanation": "The notice directly says to use the blue folder.",
+          "category": "observation-detail"
         },
         {
-          "prompt": "Falcon needs 6 packs, Blue marker needs 4 packs, and Route Red closing adds 2 extra packs to the same run. How many packs must that run carry?",
+          "prompt": "A kit tag says expiry 06/28. Another says expiry 06/26. The rule says use the later expiry. Which tag should be chosen?",
           "choices": [
-            "10",
-            "12",
-            "14",
-            "16"
+            "06/24",
+            "06/26",
+            "Either tag",
+            "06/28"
           ],
-          "answerIndex": 1,
-          "category": "number"
+          "answerIndex": 3,
+          "explanation": "06/28 is later than 06/26.",
+          "category": "observation-detail"
         },
         {
-          "prompt": "Checkpoint C opens last, Blue marker is the supply point, and Falcon means hold. The team reaches Blue marker early while Falcon is flashing. What is the better move?",
+          "prompt": "A checklist line says: compass - checked; radio - checked; lamp - unchecked; rope - checked. Which item is unchecked?",
           "choices": [
-            "Unload the packs and rush Checkpoint C immediately",
-            "Hold position near Blue marker and wait for the next clear instruction",
-            "Switch to Route Red because it is the direct route",
-            "Leave the packs and look for a new marker"
-          ],
-          "answerIndex": 1,
-          "category": "logic"
-        },
-        {
-          "prompt": "All confirmed paths have a check number. Path K has no check number. What can you safely say?",
-          "choices": [
-            "Path K is always clear",
-            "Path K is not confirmed by that rule",
-            "Path K is the longest",
-            "Every path is unconfirmed"
-          ],
-          "answerIndex": 1,
-          "category": "deduction"
-        },
-        {
-          "prompt": "Earlier, which route was marked as blocked?",
-          "choices": [
-            "Route Blue",
-            "Route Red",
-            "Checkpoint C",
-            "The river path"
-          ],
-          "answerIndex": 1,
-          "category": "attention"
-        },
-        {
-          "prompt": "A route check takes 4 minutes, a signal check takes 3, and loading the Falcon and Blue marker packs takes 5. How many minutes pass before the team can move?",
-          "choices": [
-            "10",
-            "11",
-            "12",
-            "13"
-          ],
-          "answerIndex": 2,
-          "category": "number"
-        },
-        {
-          "prompt": "Earlier in the quiz, what did a green light show?",
-          "choices": [
-            "A confirmed route",
-            "A supply square",
-            "A late check-in",
-            "A blocked path"
+            "Lamp",
+            "Compass",
+            "Radio",
+            "Rope"
           ],
           "answerIndex": 0,
-          "category": "attention"
+          "explanation": "The line marks only the lamp as unchecked.",
+          "category": "observation-detail"
         },
         {
-          "prompt": "Earlier, Falcon was paired with 6, Blue marker was paired with 4, Blue marker was the supply point, and Route Red was blocked. If Falcon is flashing during the final run, what is the smartest call?",
+          "prompt": "A route note says checkpoint marker is black with two white stripes. Which marker matches?",
           "choices": [
-            "Push through Route Red and deliver faster",
-            "Hold position, avoid Route Red, and protect the supply run",
-            "Ignore Falcon because the packs are already loaded",
-            "Skip the blue marker and go straight to Checkpoint C"
+            "Black with one white stripe",
+            "Black with two white stripes",
+            "White with two black stripes",
+            "Blue with two white stripes"
           ],
           "answerIndex": 1,
-          "category": "logic"
+          "explanation": "The matching marker must be black and have two white stripes.",
+          "category": "observation-detail"
+        },
+        {
+          "prompt": "A form says the correct box has code 8K2 and weight 14 kg. Which box matches both details?",
+          "choices": [
+            "Code 8K2, weight 12 kg",
+            "Code 8K4, weight 14 kg",
+            "Code 8K2, weight 14 kg",
+            "Code 8K4, weight 12 kg"
+          ],
+          "answerIndex": 2,
+          "explanation": "The box must match both the code 8K2 and the weight 14 kg.",
+          "category": "observation-detail"
+        }
+      ]
+    },
+    {
+      "title": "Sequence And Orders",
+      "encouragement": "The order checks are complete. Now the stated safety rules take priority.",
+      "questions": [
+        {
+          "prompt": "An order card says inspect, load, report, depart. What comes immediately after load?",
+          "choices": [
+            "Inspect",
+            "Depart",
+            "Wait",
+            "Report"
+          ],
+          "answerIndex": 3,
+          "explanation": "In the listed order, report comes immediately after load.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A rule says confirm route before testing radio, and test radio before loading supplies. Which task comes first?",
+          "choices": [
+            "Confirm route",
+            "Load supplies",
+            "Test radio",
+            "Depart"
+          ],
+          "answerIndex": 0,
+          "explanation": "The rule places route confirmation before radio testing and supply loading.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A sequence repeats kit, map, radio, kit, map, radio. What comes next?",
+          "choices": [
+            "Map",
+            "Radio",
+            "Kit",
+            "Water"
+          ],
+          "answerIndex": 2,
+          "explanation": "The repeating sequence is kit, map, radio, so kit comes next.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A four-step plan says Step 1: mark route. Step 2: check supplies. Step 3: send update. Step 4: move. Which step is send update?",
+          "choices": [
+            "Step 1",
+            "Step 2",
+            "Step 4",
+            "Step 3"
+          ],
+          "answerIndex": 3,
+          "explanation": "The plan explicitly lists send update as Step 3.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A loading order says crates marked A go before B, and B goes before C. Which order follows the rule?",
+          "choices": [
+            "A, B, C",
+            "B, A, C",
+            "C, B, A",
+            "A, C, B"
+          ],
+          "answerIndex": 0,
+          "explanation": "The required order is A before B and B before C.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A route sheet says first reach Point 1, then Point 3, then Point 2. Which point is reached last?",
+          "choices": [
+            "Point 1",
+            "Point 2",
+            "Point 3",
+            "Point 4"
+          ],
+          "answerIndex": 1,
+          "explanation": "The route sheet ends with Point 2.",
+          "category": "sequence-orders"
+        },
+        {
+          "prompt": "A check cycle is radio, fuel, tyres, radio, fuel, tyres. Which check comes after fuel?",
+          "choices": [
+            "Radio",
+            "Fuel",
+            "Tyres",
+            "Map"
+          ],
+          "answerIndex": 2,
+          "explanation": "In the cycle, tyres comes after fuel.",
+          "category": "sequence-orders"
+        }
+      ]
+    },
+    {
+      "title": "Safety And Priority",
+      "encouragement": "Safety priorities held. Next, pressure logic combines the constraints more tightly.",
+      "questions": [
+        {
+          "prompt": "The priority rule is safety first, then route speed, then comfort. Route A is slower but confirmed safe. Route B is faster but marked unsafe. Which route should be chosen?",
+          "choices": [
+            "Route B",
+            "No route",
+            "Whichever is more comfortable",
+            "Route A"
+          ],
+          "answerIndex": 3,
+          "explanation": "Safety is the first priority, so the slower safe route beats the faster unsafe route.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "The rule says if a hazard marker appears, stop and report before moving any supplies. A hazard marker appears near the supply point. What comes first?",
+          "choices": [
+            "Stop and report",
+            "Move supplies",
+            "Change the route silently",
+            "Count the crates"
+          ],
+          "answerIndex": 0,
+          "explanation": "The stated rule says to stop and report before moving supplies.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "A priority card says protect people, then protect equipment, then save time. A leaking fuel can is beside a busy walkway. What should be addressed first?",
+          "choices": [
+            "Saving time",
+            "People near the leak",
+            "Cleaning labels",
+            "Packing spare rope"
+          ],
+          "answerIndex": 1,
+          "explanation": "The highest priority is protecting people, and people are near the leak.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "A rule says no vehicle moves until the radio check and brake check both pass. The radio passes and the brake check fails. What is the status?",
+          "choices": [
+            "Ready to move",
+            "Needs only fuel",
+            "Not cleared to move",
+            "Ready if the route is short"
+          ],
+          "answerIndex": 2,
+          "explanation": "Both checks must pass, and the brake check failed, so the vehicle is not cleared to move.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "The rule says unclear signals must be clarified before action. A signal is partly hidden by rain. What should the team do?",
+          "choices": [
+            "Act on the visible part only",
+            "Use the fastest route",
+            "Ignore all signals later",
+            "Ask for a clear signal"
+          ],
+          "answerIndex": 3,
+          "explanation": "The rule says unclear signals must be clarified before action.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "A priority rule says medical kit shortages are reported before food shortages. The team has one missing bandage and two missing meal packs. What should be reported first?",
+          "choices": [
+            "Missing bandage",
+            "Missing meal packs",
+            "Vehicle colour",
+            "Checkpoint name"
+          ],
+          "answerIndex": 0,
+          "explanation": "The medical kit shortage is the missing bandage, and it has higher priority than food shortages.",
+          "category": "safety-priority"
+        },
+        {
+          "prompt": "A safety board says enter only if the gate is open and the light is green. The gate is open, but the light is red. What is the correct decision?",
+          "choices": [
+            "Enter because the gate is open",
+            "Do not enter",
+            "Enter if carrying supplies",
+            "Ignore the light"
+          ],
+          "answerIndex": 1,
+          "explanation": "Both conditions must be true. The red light means the entry condition is not met.",
+          "category": "safety-priority"
+        }
+      ]
+    },
+    {
+      "title": "Logic Under Pressure",
+      "encouragement": "You have reached the final test stage. Now each question combines multiple aptitude skills.",
+      "questions": [
+        {
+          "prompt": "A rule says only checked routes have a blue stamp. Route 4 has a blue stamp. What can be concluded?",
+          "choices": [
+            "Route 4 is blocked",
+            "Every route is checked",
+            "Route 4 is checked",
+            "Route 4 is shortest"
+          ],
+          "answerIndex": 2,
+          "explanation": "If only checked routes have a blue stamp, then a route with a blue stamp is checked.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "A supply point can accept either water or food first, but fuel must arrive after both. Water has arrived and fuel is waiting. What is still needed before fuel?",
+          "choices": [
+            "More fuel",
+            "A new route",
+            "A radio code",
+            "Food"
+          ],
+          "answerIndex": 3,
+          "explanation": "Fuel must arrive after both water and food. Water has arrived, so food is still needed.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "If a route is unconfirmed, the rule says use it only if all confirmed routes are closed. Route A is confirmed and open. Route B is unconfirmed. Which route should be used?",
+          "choices": [
+            "Route A",
+            "Route B",
+            "Both routes",
+            "No route"
+          ],
+          "answerIndex": 0,
+          "explanation": "An unconfirmed route is used only if all confirmed routes are closed. Route A is confirmed and open.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "A code says M means move and H means hold. A second rule says if two codes conflict, follow hold. The board shows M and H together. What should the team do?",
+          "choices": [
+            "Move",
+            "Hold",
+            "Split the team",
+            "Ignore both forever"
+          ],
+          "answerIndex": 1,
+          "explanation": "The conflict rule says hold takes priority when M and H appear together.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "A planner says take the route with the lowest risk number. The options are Route A risk 4, Route B risk 2, Route C risk 5. Which route fits the rule?",
+          "choices": [
+            "Route A",
+            "Route C",
+            "Route B",
+            "Any route"
+          ],
+          "answerIndex": 2,
+          "explanation": "Route B has the lowest risk number, 2.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "A rule says a kit passes only if it has water, map, and radio. Kit X has water and radio. Kit Y has water, map, and radio. Which kit passes?",
+          "choices": [
+            "Kit X only",
+            "Both kits",
+            "Neither kit",
+            "Kit Y only"
+          ],
+          "answerIndex": 3,
+          "explanation": "Only Kit Y has all three required items.",
+          "category": "pressure-logic"
+        },
+        {
+          "prompt": "A checkpoint accepts teams before 16:00 only. Team A arrives at 15:50, Team B at 16:05, and Team C at 16:00. Which team clearly arrives before 16:00?",
+          "choices": [
+            "Team A",
+            "Team B",
+            "Team C",
+            "All teams"
+          ],
+          "answerIndex": 0,
+          "explanation": "Only 15:50 is before 16:00. Arriving at 16:00 is not before 16:00.",
+          "category": "pressure-logic"
+        }
+      ]
+    },
+    {
+      "title": "Final Mission Synthesis",
+      "questions": [
+        {
+          "prompt": "A unit must use a confirmed route and arrive by 12:00. Route A is confirmed and takes 35 minutes. Route B is unconfirmed and takes 20 minutes. Starting at 11:20, which route meets both rules?",
+          "choices": [
+            "Route B only",
+            "Route A only",
+            "Both routes",
+            "Neither route"
+          ],
+          "answerIndex": 1,
+          "explanation": "Route A is confirmed and arrives at 11:55. Route B is faster but unconfirmed, so it fails the confirmed-route rule.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "A signal card says H means hold and M means move. The safety rule says a red marker overrides move signals. The board shows M and a red marker. What is the correct action?",
+          "choices": [
+            "Move because M appears",
+            "Ignore the marker",
+            "Hold because the red marker overrides M",
+            "Change the code card"
+          ],
+          "answerIndex": 2,
+          "explanation": "The red marker overrides move signals, so the team should hold despite the M signal.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "A load limit is 30 kg. A route requires water at 10 kg, radio kit at 4 kg, and two tool bags at 7 kg each. Does the load fit?",
+          "choices": [
+            "No, it is 31 kg",
+            "No, it is 34 kg",
+            "Yes, it is 24 kg",
+            "Yes, it is 28 kg"
+          ],
+          "answerIndex": 3,
+          "explanation": "The total is 10 + 4 + 7 + 7 = 28 kg, which is within the 30 kg limit.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "On a grid, the supply marker is one square east of center. A team starts at center, moves north, east, then south. It also must end on the supply marker. Does it meet the position rule?",
+          "choices": [
+            "Yes, it ends one square east of center",
+            "No, it ends north-east of center",
+            "No, it returns to center",
+            "Yes, it ends one square south of center"
+          ],
+          "answerIndex": 0,
+          "explanation": "North, east, then south leaves the team one square east of center, which matches the supply marker.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "A sequence rule says inspect before load and load before depart. A timing rule says departure must be before 09:30. Inspect takes 10 minutes and load takes 15 minutes. What latest start time allows departure before 09:30?",
+          "choices": [
+            "09:10",
+            "09:15",
+            "09:05",
+            "09:00"
+          ],
+          "answerIndex": 3,
+          "explanation": "The two required steps take 25 minutes. Starting at 09:00 gives departure at 09:25, which is before 09:30.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "A form says choose the crate with code K7 and the later expiry. Two K7 crates expire in 06/27 and 06/29. A K8 crate expires in 07/29. Which crate should be chosen?",
+          "choices": [
+            "K7 expiring 06/27",
+            "K7 expiring 06/29",
+            "K8 expiring 07/29",
+            "Any crate with 29"
+          ],
+          "answerIndex": 1,
+          "explanation": "The crate must have code K7, and among K7 crates, 06/29 is the later expiry.",
+          "category": "mission-synthesis"
+        },
+        {
+          "prompt": "The priority rule is safety, then confirmed route, then speed. Route A is safe, confirmed, and takes 50 minutes. Route B is safe, unconfirmed, and takes 30 minutes. Route C is unsafe, confirmed, and takes 20 minutes. Which route wins?",
+          "choices": [
+            "Route C",
+            "Route B",
+            "Route A",
+            "No route can be compared"
+          ],
+          "answerIndex": 2,
+          "explanation": "Safety comes first, so Route C loses. Confirmed route comes before speed, so Route A beats the faster but unconfirmed Route B.",
+          "category": "mission-synthesis"
         }
       ]
     }
