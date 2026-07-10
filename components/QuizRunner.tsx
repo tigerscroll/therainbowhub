@@ -1741,8 +1741,9 @@ function createQuizRunnerScript(config: {
       renderQuestionVisual(visualBox, question.visual);
       refreshQuestionDisplayAdForQuestion(current);
 
+      var selectedAnswerLabel = t.quiz.chosen || "Chosen";
       answersBox.innerHTML = question.choices.map(function (choice, index) {
-        return '<button class="legacy-answer" type="button" data-choice-index="' + index + '">' +
+        return '<button class="legacy-answer" type="button" data-choice-index="' + index + '" data-selected-label="' + escapeHtml(selectedAnswerLabel) + '">' +
           '<small>' + String.fromCharCode(65 + index) + '</small>' +
           escapeHtml(choice) +
           '</button>';
