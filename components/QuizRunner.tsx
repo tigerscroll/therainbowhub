@@ -339,7 +339,7 @@ function createQuizRunnerScript(config: {
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
     var isEnglishMemoryQuiz = isMemoryQuiz && localeCode === "en";
-    var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl", "fr"].includes(localeCode);
+    var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl", "fr", "pt"].includes(localeCode);
     var isArmyQuiz = quiz.slug === "army" && localeCode === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
@@ -2359,6 +2359,40 @@ function createQuizRunnerScript(config: {
           ],
           recalculating: "L’IA recalcule ton verdict",
           signalsLogged: "Signaux détectés"
+        },
+        pt: {
+          nextPrefix: "Próximo: ",
+          adNote: "Primeiro, um anúncio curto; depois começa a próxima parte.",
+          resultBadge: "Veredito da IA pronto",
+          resultTitle: "A IA concluiu a estimativa.",
+          resultCopy: "A IA analisou as respostas e o estilo de vida para estimar quantos anos ainda poderá ter pela frente. Um passo rápido revela o veredito.",
+          resultButton: "Ver o veredito da IA →",
+          predictor: [
+            "A IA analisa o ritmo de vida",
+            "A IA identifica os sinais de energia",
+            "A IA identifica os hábitos menos evidentes",
+            "A IA verifica os sinais de recuperação",
+            "A IA analisa os traços de personalidade",
+            "A IA mede a energia social",
+            "A IA compara os hábitos de vida",
+            "A IA adiciona os sinais positivos ao cálculo",
+            "A IA ajusta a estimativa final",
+            "A IA prepara o veredito"
+          ],
+          logged: [
+            "Ritmo diário identificado",
+            "Sinais de energia identificados",
+            "Hábitos analisados",
+            "Recuperação analisada",
+            "Traços de personalidade analisados",
+            "Energia social analisada",
+            "Estilo de vida comparado",
+            "Sinais positivos adicionados",
+            "Últimos sinais analisados",
+            "Respostas finais analisadas"
+          ],
+          recalculating: "A IA recalcula o veredito",
+          signalsLogged: "Sinais identificados"
         },
         it: {
           nextPrefix: "Prossimo: ",
