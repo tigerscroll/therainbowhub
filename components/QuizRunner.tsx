@@ -339,7 +339,7 @@ function createQuizRunnerScript(config: {
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
     var isEnglishMemoryQuiz = isMemoryQuiz && localeCode === "en";
-    var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl"].includes(localeCode);
+    var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl", "fr"].includes(localeCode);
     var isArmyQuiz = quiz.slug === "army" && localeCode === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
@@ -2325,6 +2325,40 @@ function createQuizRunnerScript(config: {
           ],
           recalculating: "La IA predictiva está recalculando",
           signalsLogged: "Señales registradas"
+        },
+        fr: {
+          nextPrefix: "Prochain : ",
+          adNote: "D’abord une courte annonce, puis la section suivante commence.",
+          resultBadge: "Verdict IA prêt",
+          resultTitle: "L’IA a trouvé ton estimation.",
+          resultCopy: "L’IA a analysé tes réponses et ton mode de vie pour estimer combien d’années il pourrait te rester. Un court déblocage révèle le verdict.",
+          resultButton: "Voir le verdict de l’IA →",
+          predictor: [
+            "L’IA analyse ton rythme de vie",
+            "L’IA détecte tes signaux d’énergie",
+            "L’IA repère tes habitudes cachées",
+            "L’IA vérifie tes signaux de récupération",
+            "L’IA lit tes indices de personnalité",
+            "L’IA mesure ton énergie sociale",
+            "L’IA compare tes habitudes de mode de vie",
+            "L’IA ajoute les signaux positifs au calcul",
+            "L’IA resserre ton estimation finale",
+            "L’IA prépare ton verdict"
+          ],
+          logged: [
+            "Rythme quotidien détecté",
+            "Signaux d’énergie détectés",
+            "Habitudes cachées détectées",
+            "Récupération analysée",
+            "Indices de personnalité détectés",
+            "Énergie sociale analysée",
+            "Mode de vie comparé",
+            "Signaux positifs ajoutés",
+            "Derniers indices verrouillés",
+            "Réponses finales verrouillées"
+          ],
+          recalculating: "L’IA recalcule ton verdict",
+          signalsLogged: "Signaux détectés"
         },
         it: {
           nextPrefix: "Prossimo: ",
