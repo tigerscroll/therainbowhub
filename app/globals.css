@@ -1943,7 +1943,7 @@ body:has(.legacy-quiz--harvard) .quiz-search__button {
 }
 
 .legacy-quiz--harvard .legacy-start h1::before {
-  content: "ENTRANCE CHALLENGE";
+  content: "ENTRANCE EXAM";
   display: block;
   margin-bottom: 16px;
   color: #9b742a;
@@ -1970,10 +1970,10 @@ body:has(.legacy-quiz--harvard) .quiz-search__button {
 
 .legacy-quiz--harvard .legacy-social {
   width: min(100%, 410px);
-  min-height: 56px;
+  min-height: 48px;
   justify-content: center;
   margin: 0 0 18px;
-  padding: 8px 15px;
+  padding: 6px 14px;
   border: 1px solid rgba(159, 32, 50, 0.18);
   border-radius: 20px;
   background: rgba(255, 251, 238, 0.72);
@@ -1981,8 +1981,8 @@ body:has(.legacy-quiz--harvard) .quiz-search__button {
 }
 
 .legacy-quiz--harvard .legacy-avatar {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-color: #f7efd9;
 }
 
@@ -2227,7 +2227,7 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
 
 .legacy-quiz--oxford .legacy-start h1::before,
 .legacy-quiz--cambridge .legacy-start h1::before {
-  content: "ENTRANCE CHALLENGE";
+  content: "ENTRANCE EXAM";
   display: block;
   margin-bottom: 16px;
   color: var(--uni-gold);
@@ -2257,13 +2257,170 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
   color: #385650;
 }
 
+.legacy-quiz--cambridge {
+  background:
+    linear-gradient(90deg, rgba(6, 22, 20, 0.78), transparent 21%, transparent 79%, rgba(6, 22, 20, 0.78)),
+    repeating-linear-gradient(90deg, rgba(150, 119, 57, 0.11) 0 3px, transparent 3px 43px),
+    radial-gradient(circle at 50% 0%, rgba(116, 165, 143, 0.2), transparent 34%),
+    linear-gradient(160deg, #0c1c20 0%, #153331 52%, #091719 100%);
+}
+
+.legacy-quiz--cambridge .legacy-card {
+  border-color: rgba(56, 113, 99, 0.74);
+  background-color: #f4f0dd;
+  background-image:
+    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.82) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 24%, rgba(34, 91, 76, 0.08) 0 1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(211, 226, 208, 0.2));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34), 0 0 0 5px rgba(144, 183, 164, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.legacy-quiz--cambridge .legacy-start::before {
+  border-color: rgba(36, 108, 90, 0.46);
+  box-shadow: inset 0 0 0 4px rgba(169, 126, 53, 0.06);
+}
+
+.legacy-quiz--cambridge .legacy-start::after {
+  border-top-color: rgba(39, 112, 95, 0.3);
+  color: #9f7934;
+}
+
+.legacy-quiz--cambridge .legacy-badge {
+  background: linear-gradient(135deg, #e3c779, #987233);
+  filter: drop-shadow(0 10px 12px rgba(24, 61, 51, 0.18));
+}
+
+.legacy-quiz--cambridge .legacy-badge span {
+  background:
+    radial-gradient(circle at 34% 22%, rgba(123, 193, 164, 0.36), transparent 38%),
+    linear-gradient(145deg, #377b6a, #153f37);
+}
+
+.legacy-quiz--cambridge .legacy-start h1::before {
+  color: #9b7430;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.legacy-quiz.legacy-quiz--cambridge .legacy-social {
+  border-color: rgba(39, 112, 95, 0.26);
+  background: linear-gradient(135deg, rgba(255, 254, 244, 0.88), rgba(229, 239, 226, 0.74));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 9px 18px rgba(25, 72, 61, 0.09);
+}
+
+.legacy-quiz.legacy-quiz--cambridge .legacy-primary {
+  box-shadow: 0 8px 0 #865915, 0 18px 25px rgba(121, 80, 18, 0.28), 0 0 0 2px rgba(39, 112, 95, 0.46), inset 0 1px 0 rgba(255, 248, 211, 0.86);
+}
+
+.legacy-quiz.legacy-quiz--cambridge .legacy-shield {
+  border-color: #3c8b76;
+  color: #28705f;
+}
+
+.legacy-quiz--harvard {
+  background:
+    linear-gradient(90deg, rgba(24, 8, 14, 0.8), transparent 21%, transparent 79%, rgba(24, 8, 14, 0.8)),
+    repeating-linear-gradient(90deg, rgba(182, 126, 47, 0.1) 0 3px, transparent 3px 43px),
+    radial-gradient(circle at 50% 0%, rgba(161, 37, 58, 0.24), transparent 34%),
+    linear-gradient(160deg, #161824 0%, #322130 52%, #12151f 100%);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-card {
+  border-color: rgba(159, 32, 50, 0.6);
+  background-color: #f7f0df;
+  background-image:
+    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.82) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 24%, rgba(136, 27, 46, 0.08) 0 1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(238, 213, 205, 0.22));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.36), 0 0 0 5px rgba(176, 47, 67, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-start::before {
+  border-color: rgba(159, 32, 50, 0.44);
+  box-shadow: inset 0 0 0 4px rgba(180, 135, 56, 0.06);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-badge {
+  background: linear-gradient(135deg, #e4c779, #9a6b25);
+  filter: drop-shadow(0 10px 12px rgba(83, 20, 31, 0.18));
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-badge span {
+  background:
+    radial-gradient(circle at 34% 22%, rgba(214, 92, 106, 0.32), transparent 38%),
+    linear-gradient(145deg, #b12a3d, #741221);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-social {
+  border-color: rgba(159, 32, 50, 0.26);
+  background: linear-gradient(135deg, rgba(255, 254, 244, 0.9), rgba(246, 226, 222, 0.72));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 9px 18px rgba(106, 27, 41, 0.09);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-primary {
+  box-shadow: 0 8px 0 #865915, 0 18px 25px rgba(121, 80, 18, 0.28), 0 0 0 2px rgba(159, 32, 50, 0.45), inset 0 1px 0 rgba(255, 248, 211, 0.86);
+}
+
+.legacy-quiz.legacy-quiz--harvard .legacy-shield {
+  border-color: #b12a3d;
+  color: #9f2032;
+}
+
+.legacy-quiz--oxford {
+  background:
+    linear-gradient(90deg, rgba(5, 17, 31, 0.8), transparent 21%, transparent 79%, rgba(5, 17, 31, 0.8)),
+    repeating-linear-gradient(90deg, rgba(181, 132, 51, 0.1) 0 3px, transparent 3px 43px),
+    radial-gradient(circle at 50% 0%, rgba(53, 117, 163, 0.2), transparent 34%),
+    linear-gradient(160deg, #0a1829 0%, #123452 52%, #091623 100%);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-card {
+  border-color: rgba(25, 82, 121, 0.7);
+  background-color: #f2f1e7;
+  background-image:
+    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.84) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 24%, rgba(20, 75, 112, 0.08) 0 1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(211, 227, 237, 0.24));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.36), 0 0 0 5px rgba(77, 134, 171, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-start::before {
+  border-color: rgba(25, 82, 121, 0.45);
+  box-shadow: inset 0 0 0 4px rgba(180, 135, 56, 0.06);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-badge {
+  background: linear-gradient(135deg, #e5c97b, #987033);
+  filter: drop-shadow(0 10px 12px rgba(14, 52, 83, 0.18));
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-badge span {
+  background:
+    radial-gradient(circle at 34% 22%, rgba(90, 159, 201, 0.32), transparent 38%),
+    linear-gradient(145deg, #245f89, #0d3758);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-social {
+  border-color: rgba(25, 82, 121, 0.26);
+  background: linear-gradient(135deg, rgba(255, 254, 244, 0.9), rgba(225, 237, 244, 0.74));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 9px 18px rgba(16, 65, 100, 0.09);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-primary {
+  box-shadow: 0 8px 0 #865915, 0 18px 25px rgba(121, 80, 18, 0.28), 0 0 0 2px rgba(25, 82, 121, 0.46), inset 0 1px 0 rgba(255, 248, 211, 0.86);
+}
+
+.legacy-quiz.legacy-quiz--oxford .legacy-shield {
+  border-color: #3776a2;
+  color: #195279;
+}
+
 .legacy-quiz--oxford .legacy-social,
 .legacy-quiz--cambridge .legacy-social {
   width: min(100%, 410px);
-  min-height: 56px;
+  min-height: 48px;
   justify-content: center;
   margin: 0 0 18px;
-  padding: 8px 15px;
+  padding: 6px 14px;
   border: 1px solid color-mix(in srgb, var(--uni-accent) 18%, #fff);
   border-radius: 20px;
   background: rgba(255, 251, 238, 0.72);
@@ -2272,8 +2429,8 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
 
 .legacy-quiz--oxford .legacy-avatar,
 .legacy-quiz--cambridge .legacy-avatar {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-color: #f7efd9;
 }
 
@@ -2355,6 +2512,15 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
     border-radius: 164px 164px 24px 24px / 136px 136px 24px 24px;
   }
 
+  .legacy-quiz--cambridge .legacy-start {
+    padding-top: 30px;
+  }
+
+  .legacy-quiz--harvard .legacy-start,
+  .legacy-quiz--oxford .legacy-start {
+    padding-top: 30px;
+  }
+
   .legacy-quiz--oxford .legacy-start::before,
   .legacy-quiz--cambridge .legacy-start::before {
     inset: 8px;
@@ -2366,6 +2532,15 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
     width: 86px;
     height: 98px;
     margin-bottom: 18px;
+  }
+
+  .legacy-quiz--cambridge .legacy-badge {
+    margin-bottom: 12px;
+  }
+
+  .legacy-quiz--harvard .legacy-badge,
+  .legacy-quiz--oxford .legacy-badge {
+    margin-bottom: 12px;
   }
 
   .legacy-quiz--oxford .legacy-badge span,
@@ -2407,6 +2582,15 @@ body:has(.legacy-quiz--cambridge) .quiz-search__button {
     min-height: 610px;
     padding: 34px 34px 30px;
     border-radius: 170px 170px 28px 28px / 142px 142px 28px 28px;
+  }
+
+  .legacy-quiz--cambridge .legacy-start {
+    padding-top: 28px;
+  }
+
+  .legacy-quiz--harvard .legacy-start,
+  .legacy-quiz--oxford .legacy-start {
+    padding-top: 28px;
   }
 
   .legacy-quiz--harvard .legacy-start::before,
