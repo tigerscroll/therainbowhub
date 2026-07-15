@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { absoluteUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
@@ -42,6 +43,19 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className="min-h-screen font-sans antialiased" suppressHydrationWarning>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-44LV753KWN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-44LV753KWN');
+          `}
+        </Script>
         <div
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
