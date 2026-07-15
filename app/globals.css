@@ -9176,3 +9176,183 @@ body:has(.legacy-quiz--cambridge .legacy-start:not(.legacy-hidden)) {
     margin-bottom: 18px;
   }
 }
+
+/* Country Match keeps the compact start-card proportions, styled as an atlas cover. */
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) {
+  --legacy-shell-width: 760px;
+  --country-accent: #1676a9;
+  --country-deep: #0c425f;
+  background:
+    radial-gradient(circle at 16% -8%, rgba(89, 195, 223, 0.34), transparent 36%),
+    radial-gradient(circle at 88% 5%, rgba(240, 183, 70, 0.24), transparent 29%),
+    linear-gradient(135deg, #073249, #146787 52%, #082f45);
+}
+
+body:has(.legacy-quiz--country-match .legacy-start:not(.legacy-hidden)) {
+  background: #073249;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-main {
+  padding-top: clamp(18px, 4vw, 40px);
+  padding-bottom: clamp(24px, 5vw, 48px);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-card.legacy-start {
+  min-height: 0;
+  position: relative;
+  padding: clamp(42px, 6vw, 62px) clamp(28px, 6vw, 58px) 44px;
+  border: 1px solid #d7cfbc;
+  border-left: 12px solid var(--country-accent);
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, #fffdf8, #f1eee1);
+  box-shadow: 0 24px 54px rgba(3, 28, 40, 0.4), inset 0 0 0 6px rgba(255, 255, 255, 0.46);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  display: block;
+  width: min(92%, 760px);
+  aspect-ratio: 1200 / 610;
+  background: url("/images/decor/world-map.svg") center / contain no-repeat;
+  content: "";
+  opacity: 0.2;
+  pointer-events: none;
+  transform: translate(-50%, -48%);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start::after {
+  display: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start > * {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  clip-path: none;
+  box-shadow: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge::before,
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge::after {
+  display: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge span {
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  clip-path: none;
+  box-shadow: none;
+  font-size: 54px;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge span::before {
+  display: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge span::after {
+  display: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start h1 {
+  max-width: 650px;
+  margin-bottom: 16px;
+  color: #000;
+  font-size: clamp(38px, 6vw, 56px);
+  line-height: 1.03;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start h1::before {
+  content: "COUNTRY PERSONALITY QUIZ";
+  display: block;
+  margin-bottom: 13px;
+  color: var(--country-accent);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-shadow: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start h1 span {
+  color: var(--country-accent);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-start .legacy-sub {
+  max-width: 550px;
+  margin-bottom: 20px;
+  color: #40596a;
+  font-size: clamp(16px, 2.5vw, 19px);
+  line-height: 1.45;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-social {
+  width: min(100%, 500px);
+  min-height: 52px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(22, 118, 169, 0.24);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: none;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-social__primary {
+  color: var(--country-deep);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-primary {
+  max-width: 390px;
+  min-height: 60px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--country-accent);
+  color: #fffdf8;
+  box-shadow: 0 5px 0 var(--country-deep), 0 12px 20px rgba(12, 66, 95, 0.22);
+  font-size: 20px;
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-primary:active {
+  box-shadow: 0 2px 0 var(--country-deep), 0 6px 12px rgba(12, 66, 95, 0.18);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-ad-note b {
+  color: var(--country-deep);
+}
+
+.legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-shield {
+  border-color: var(--country-accent);
+  color: var(--country-accent);
+}
+
+@media (max-width: 619px) {
+  .legacy-quiz--country-match .quiz-info-panel {
+    margin-top: 300px;
+  }
+
+  .legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-main {
+    padding: 12px 10px 24px;
+  }
+
+  .legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-card.legacy-start {
+    padding: 38px 22px 34px;
+    border-left-width: 8px;
+  }
+
+  .legacy-quiz--country-match:has(.legacy-start:not(.legacy-hidden)) .legacy-badge {
+    width: 62px;
+    height: 62px;
+    margin-bottom: 18px;
+  }
+}
