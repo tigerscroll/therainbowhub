@@ -341,9 +341,10 @@ function createQuizRunnerScript(config: {
     var isEnglishMemoryQuiz = isMemoryQuiz && localeCode === "en";
     var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl", "fr", "pt"].includes(localeCode);
     var isArmyQuiz = quiz.slug === "army" && localeCode === "en";
+    var isTrainQuiz = quiz.slug === "train" && localeCode === "en";
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
-    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isMedicineQuiz;
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isMedicineQuiz;
+    var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isArmyQuiz || isTrainQuiz || isMedicineQuiz;
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isTrainQuiz || isMedicineQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = isMemoryQuiz && !isEnglishMemoryQuiz;
     var hideAnswerFeedback = isShortLockedScoreQuiz || isEnglishMemoryQuiz;
@@ -1167,6 +1168,20 @@ function createQuizRunnerScript(config: {
             "safety-priority": "Safety",
             "pressure-logic": "Pressure logic",
             "mission-synthesis": "Final synthesis"
+          }
+        },
+        train: {
+          en: {
+            "platform-focus": "Platform focus",
+            "display-board-details": "Board details",
+            "timetable-timing": "Timetable",
+            "route-finder": "Route finder",
+            "signal-clues": "Signal clues",
+            "sequence-checks": "Sequence",
+            "observation-desk": "Observation",
+            "priority-rules": "Priority",
+            "calm-decisions": "Calm decisions",
+            "final-route-synthesis": "Final route"
           }
         },
         medicine: {
@@ -2983,7 +2998,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const isEnglishArmyShortLocked = quiz.slug === "army" && locale === "en";
   const isEnglishMemoryQuiz = quiz.slug === "memory" && locale === "en";
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || quiz.slug === "train" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,

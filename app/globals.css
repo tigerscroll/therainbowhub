@@ -9356,3 +9356,289 @@ body:has(.legacy-quiz--country-match .legacy-start:not(.legacy-hidden)) {
     margin-bottom: 18px;
   }
 }
+
+/* Train Driver Entrance Exam */
+.legacy-quiz.legacy-quiz--train {
+  --legacy-shell-width: 720px;
+  --train-night: #071521;
+  --train-rail: #284a55;
+  --train-brass: #bf8a3a;
+  --train-ivory: #f3e8d2;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #f8efdc;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(57, 110, 121, 0.35), transparent 36%),
+    repeating-linear-gradient(90deg, transparent 0 84px, rgba(214, 172, 92, 0.08) 85px 88px, transparent 89px 174px),
+    linear-gradient(155deg, #112b39 0%, var(--train-night) 42%, #050c14 100%);
+}
+
+body:has(.legacy-quiz--train) {
+  background: var(--train-night);
+}
+
+body:has(.legacy-quiz--train) .hub-header {
+  border-bottom-color: rgba(191, 138, 58, 0.5);
+  background: rgba(7, 21, 33, 0.94);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
+}
+
+body:has(.legacy-quiz--train) .hub-brand,
+body:has(.legacy-quiz--train) .quiz-search__button {
+  color: #f8efdc;
+}
+
+.legacy-quiz--train::before,
+.legacy-quiz--train::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  width: min(115vw, 1100px);
+  height: 2px;
+  background: rgba(214, 172, 92, 0.24);
+  box-shadow: 0 34px 0 rgba(214, 172, 92, 0.15), 0 68px 0 rgba(214, 172, 92, 0.1);
+  transform: translateX(-50%) perspective(360px) rotateX(62deg);
+  pointer-events: none;
+}
+
+.legacy-quiz--train::before { bottom: 100px; }
+.legacy-quiz--train::after { bottom: 1px; opacity: 0.75; }
+
+.legacy-quiz--train .legacy-main {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(16px, 3vw, 34px);
+}
+
+.legacy-quiz--train .legacy-card:not(.legacy-start) {
+  border-color: rgba(244, 232, 210, 0.2);
+  background: linear-gradient(180deg, rgba(19, 40, 51, 0.96), rgba(7, 18, 28, 0.98));
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.legacy-quiz--train .legacy-start {
+  position: relative;
+  min-height: min(568px, calc(100vh - 130px));
+  align-content: center;
+  padding: clamp(28px, 5vw, 48px) clamp(22px, 6vw, 58px) 34px;
+  border: 2px solid rgba(183, 132, 59, 0.72);
+  border-radius: 220px 220px 26px 26px;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.68) 0 1px, transparent 2px) 0 0 / 17px 17px,
+    linear-gradient(90deg, rgba(102, 75, 44, 0.05) 50%, transparent 50%) 0 0 / 5px 5px,
+    linear-gradient(180deg, #f9f1df 0%, var(--train-ivory) 62%, #dcc9a4 100%);
+  color: #10253a;
+  box-shadow: 0 38px 90px rgba(0, 0, 0, 0.52), inset 0 2px 0 rgba(255, 255, 255, 0.88), inset 0 -24px 44px rgba(112, 76, 35, 0.17);
+}
+
+.legacy-quiz--train .legacy-start::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(159, 111, 46, 0.45);
+  border-radius: 202px 202px 16px 16px;
+  pointer-events: none;
+}
+
+.legacy-quiz--train .legacy-badge {
+  width: 94px;
+  height: 84px;
+  margin-bottom: 9px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.legacy-quiz--train .legacy-badge::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 55px;
+  height: 52px;
+  border: 3px solid #b68135;
+  border-radius: 22px 22px 10px 10px;
+  background: linear-gradient(180deg, #34586a 0 42%, #183646 43% 100%);
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.25), 0 8px 14px rgba(67, 46, 20, 0.2);
+  transform: translateX(-50%);
+}
+
+.legacy-quiz--train .legacy-badge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 61px;
+  width: 76px;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #b68135 0 14%, #213e4c 14% 86%, #b68135 86%);
+  box-shadow: 0 9px 0 -3px #80602e;
+  transform: translateX(-50%);
+}
+
+.legacy-quiz--train .legacy-badge span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+
+.legacy-quiz--train .legacy-badge span::before,
+.legacy-quiz--train .legacy-badge span::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 42px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f8d77b;
+  box-shadow: 0 0 9px rgba(248, 215, 123, 0.9);
+}
+
+.legacy-quiz--train .legacy-badge span::before { left: 31px; }
+.legacy-quiz--train .legacy-badge span::after { right: 31px; }
+
+.legacy-quiz--train .legacy-start h1 {
+  max-width: 660px;
+  color: #10253a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 5.3vw, 54px);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+.legacy-quiz--train .legacy-start h1::before {
+  content: "OFFICIAL ENTRANCE EXAM";
+  display: block;
+  margin-bottom: 12px;
+  color: #9c6a27;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
+
+.legacy-quiz--train .legacy-start .legacy-sub {
+  max-width: 500px;
+  margin: 16px auto 18px;
+  color: #435361;
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 800;
+}
+
+.legacy-quiz--train .legacy-social {
+  width: min(100%, 520px);
+  min-height: 54px;
+  margin: 0 auto 18px;
+  padding: 7px 16px;
+  border: 1px solid rgba(159, 111, 46, 0.35);
+  border-radius: 18px;
+  background: rgba(255, 251, 240, 0.66);
+  box-shadow: 0 6px 13px rgba(80, 56, 23, 0.12);
+}
+
+.legacy-quiz--train .legacy-social__avatars img {
+  width: 34px;
+  height: 34px;
+  border-color: #f5ead4;
+}
+
+.legacy-quiz--train .legacy-social__primary { color: #9f2331; }
+.legacy-quiz--train .legacy-social__secondary { color: #253b4c; }
+
+.legacy-quiz--train .legacy-primary {
+  width: min(100%, 430px);
+  min-height: 62px;
+  border: 2px solid #f8dda0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f4c667, #cf8528);
+  box-shadow: 0 7px 0 #85501d, 0 14px 24px rgba(74, 39, 8, 0.27), inset 0 2px 0 rgba(255, 255, 255, 0.48);
+  color: #1b1b18;
+  font-size: 20px;
+}
+
+.legacy-quiz--train .legacy-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px 0 #85501d, 0 8px 16px rgba(74, 39, 8, 0.22), inset 0 2px 0 rgba(255, 255, 255, 0.48);
+}
+
+.legacy-quiz--train .legacy-ad-note { color: #405360; }
+.legacy-quiz--train .legacy-ad-note b { color: #1e3f45; }
+.legacy-quiz--train .legacy-shield { border-color: #3d8667; color: #3d8667; }
+
+.legacy-quiz--train .quiz-info-panel {
+  border-color: rgba(244, 232, 210, 0.22);
+  background: linear-gradient(180deg, rgba(18, 43, 55, 0.98), rgba(7, 21, 33, 0.98));
+}
+
+.legacy-quiz--train .quiz-info-panel h2,
+.legacy-quiz--train .quiz-info-panel h3,
+.legacy-quiz--train .quiz-info-panel__skill strong {
+  color: #f9efd9;
+}
+
+.legacy-quiz--train .quiz-info-panel p,
+.legacy-quiz--train .quiz-info-panel__skill small,
+.legacy-quiz--train .quiz-info-panel__restart-note {
+  color: #d9e3de !important;
+}
+
+.legacy-quiz--train .quiz-info-panel__skill {
+  border-color: rgba(244, 232, 210, 0.16);
+  background: rgba(244, 232, 210, 0.06);
+}
+
+.legacy-quiz--train .quiz-info-panel__checks span {
+  border-color: #d6a65a;
+  color: #f2c56d;
+}
+
+.legacy-quiz--train .legacy-progress,
+.legacy-quiz--train .legacy-question h2,
+.legacy-quiz--train .legacy-stage-result h2,
+.legacy-quiz--train .legacy-result-gate h2 { color: #f9efd9; }
+
+.legacy-quiz--train .legacy-answer {
+  border-color: rgba(230, 218, 191, 0.24);
+  background: rgba(247, 239, 222, 0.08);
+  color: #f8efdc;
+}
+
+.legacy-quiz--train .legacy-answer:hover { border-color: rgba(230, 182, 95, 0.82); }
+
+@media (min-width: 620px) {
+  .legacy-quiz.legacy-quiz--train { --legacy-shell-width: 720px; }
+}
+
+@media (max-width: 619px) {
+  .legacy-quiz--train .quiz-info-panel { margin-top: 300px; }
+
+  .legacy-quiz--train .legacy-main { padding: 12px 10px 24px; }
+
+  .legacy-quiz--train .legacy-start {
+    min-height: 540px;
+    padding: 30px 20px 28px;
+    border-radius: 118px 118px 22px 22px;
+  }
+
+  .legacy-quiz--train .legacy-start::before {
+    inset: 10px;
+    border-radius: 108px 108px 14px 14px;
+  }
+
+  .legacy-quiz--train .legacy-badge { transform: scale(0.87); margin-bottom: 0; }
+
+  .legacy-quiz--train .legacy-start h1 { font-size: clamp(34px, 10vw, 44px); }
+
+  .legacy-quiz--train .legacy-social { min-height: 48px; padding: 6px 11px; }
+  .legacy-quiz--train .legacy-social__avatars img { width: 29px; height: 29px; }
+  .legacy-quiz--train .legacy-primary { min-height: 60px; }
+}
