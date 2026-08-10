@@ -10932,3 +10932,325 @@ body:has(.legacy-quiz--train) .hub-header {
     margin-top: 28px;
   }
 }
+
+/* Simple single-card career challenge themes: barrister and chef. */
+.legacy-quiz--barrister {
+  --career-bg: #0d1725;
+  --career-bg-soft: #24384f;
+  --career-accent: #8f3346;
+  --career-accent-dark: #632234;
+  --career-gold: #c99d52;
+  --career-paper: #f7f0e2;
+  --career-ink: #172437;
+}
+
+.legacy-quiz--chef {
+  --career-bg: #17191b;
+  --career-bg-soft: #42352f;
+  --career-accent: #b85f32;
+  --career-accent-dark: #7b381f;
+  --career-gold: #d99a5e;
+  --career-paper: #fff3df;
+  --career-ink: #2b211c;
+}
+
+.legacy-quiz--barrister,
+.legacy-quiz--chef {
+  min-height: calc(100vh - 72px);
+  background:
+    radial-gradient(circle at 16% 10%, color-mix(in srgb, var(--career-accent) 25%, transparent), transparent 32%),
+    repeating-linear-gradient(90deg, transparent 0 155px, rgba(255, 255, 255, 0.025) 155px 158px),
+    linear-gradient(155deg, var(--career-bg-soft), var(--career-bg) 48%, #080b0e);
+  color: var(--career-ink);
+}
+
+body:has(.legacy-quiz--barrister) {
+  background: #0d1725;
+}
+
+body:has(.legacy-quiz--chef) {
+  background: #17191b;
+}
+
+body:has(.legacy-quiz--barrister) .hub-header {
+  border-bottom-color: #c99d52;
+  background: #0d1725;
+}
+
+body:has(.legacy-quiz--chef) .hub-header {
+  border-bottom-color: #d99a5e;
+  background: #17191b;
+}
+
+body:has(.legacy-quiz--barrister) .hub-brand,
+body:has(.legacy-quiz--barrister) .quiz-search__button,
+body:has(.legacy-quiz--chef) .hub-brand,
+body:has(.legacy-quiz--chef) .quiz-search__button {
+  color: #fff8ea;
+}
+
+body:has(.legacy-quiz--barrister) .quiz-search__button,
+body:has(.legacy-quiz--chef) .quiz-search__button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+body:has(.legacy-quiz--barrister) .quiz-search__menu-icon span,
+body:has(.legacy-quiz--chef) .quiz-search__menu-icon span {
+  background: #fffdf7;
+}
+
+.legacy-quiz--barrister .legacy-main,
+.legacy-quiz--chef .legacy-main {
+  width: min(100%, 720px);
+  padding: 26px 16px 38px;
+}
+
+.legacy-quiz--barrister .legacy-start,
+.legacy-quiz--chef .legacy-start {
+  position: relative;
+  min-height: 0;
+  padding: 44px 42px 38px;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--career-gold) 72%, #fff);
+  border-radius: 30px;
+  background:
+    linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.15)),
+    repeating-linear-gradient(90deg, transparent 0 8px, rgba(77,55,33,.025) 8px 10px),
+    var(--career-paper);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.38), inset 0 0 0 1px rgba(255,255,255,.75);
+}
+
+.legacy-quiz--barrister .legacy-start::before,
+.legacy-quiz--chef .legacy-start::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 9px;
+  background: linear-gradient(90deg, var(--career-accent-dark), var(--career-gold), var(--career-accent-dark));
+}
+
+.legacy-quiz--barrister .legacy-badge,
+.legacy-quiz--chef .legacy-badge {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+  border: 2px solid color-mix(in srgb, var(--career-gold) 72%, #fff);
+  border-radius: 23px;
+  background: linear-gradient(145deg, var(--career-bg-soft), var(--career-bg));
+  box-shadow: 0 13px 25px rgba(0,0,0,.2), inset 0 1px rgba(255,255,255,.18);
+  transform: none;
+}
+
+.legacy-quiz--barrister .legacy-badge span,
+.legacy-quiz--chef .legacy-badge span {
+  font-size: 42px;
+}
+
+.legacy-quiz--barrister .legacy-start h1,
+.legacy-quiz--chef .legacy-start h1 {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--career-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(43px, 7vw, 66px);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+
+.legacy-quiz--barrister .legacy-start h1::before,
+.legacy-quiz--chef .legacy-start h1::before {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--career-accent);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1.2;
+  letter-spacing: .18em;
+}
+
+.legacy-quiz--barrister .legacy-start h1::before { content: "BARRISTER REASONING CHALLENGE"; }
+.legacy-quiz--chef .legacy-start h1::before { content: "CHEF SKILLS CHALLENGE"; }
+
+.legacy-quiz--barrister .legacy-start .legacy-sub,
+.legacy-quiz--chef .legacy-start .legacy-sub {
+  max-width: 535px;
+  margin: 18px auto 21px;
+  color: color-mix(in srgb, var(--career-ink) 72%, #fff);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.legacy-quiz--barrister .legacy-social,
+.legacy-quiz--chef .legacy-social {
+  width: min(100%, 500px);
+  min-height: 52px;
+  margin: 0 auto 22px;
+  padding: 7px 15px;
+  border: 1px solid color-mix(in srgb, var(--career-gold) 30%, #ddd);
+  border-radius: 14px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 7px 18px rgba(0,0,0,.06);
+}
+
+.legacy-quiz--barrister .legacy-social__primary,
+.legacy-quiz--chef .legacy-social__primary { color: var(--career-accent); }
+
+.legacy-quiz--barrister .legacy-social__muted,
+.legacy-quiz--chef .legacy-social__muted { color: color-mix(in srgb, var(--career-ink) 70%, #fff); }
+
+.legacy-quiz--barrister .legacy-primary,
+.legacy-quiz--chef .legacy-primary {
+  width: min(100%, 450px);
+  min-height: 66px;
+  border: 2px solid var(--career-accent-dark);
+  border-radius: 13px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--career-accent) 86%, #fff), var(--career-accent));
+  box-shadow: 0 7px 0 var(--career-accent-dark), 0 16px 28px color-mix(in srgb, var(--career-accent) 25%, transparent), inset 0 1px rgba(255,255,255,.28);
+  color: #fffdf8;
+  font-size: 19px;
+}
+
+.legacy-quiz--barrister .legacy-primary:active,
+.legacy-quiz--chef .legacy-primary:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 var(--career-accent-dark), 0 8px 15px rgba(0,0,0,.16);
+}
+
+.legacy-quiz--barrister .legacy-ad-note,
+.legacy-quiz--chef .legacy-ad-note { color: color-mix(in srgb, var(--career-ink) 66%, #fff); }
+.legacy-quiz--barrister .legacy-ad-note b,
+.legacy-quiz--chef .legacy-ad-note b { color: var(--career-ink); }
+.legacy-quiz--barrister .legacy-shield,
+.legacy-quiz--chef .legacy-shield { border-color: var(--career-accent); color: var(--career-accent); }
+
+.legacy-quiz--barrister .legacy-card:not(.legacy-start),
+.legacy-quiz--barrister .quiz-info-panel,
+.legacy-quiz--chef .legacy-card:not(.legacy-start),
+.legacy-quiz--chef .quiz-info-panel {
+  border-color: color-mix(in srgb, var(--career-gold) 42%, #ddd);
+  background: color-mix(in srgb, var(--career-paper) 96%, #fff);
+  color: var(--career-ink);
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+
+.legacy-quiz--barrister .quiz-info-panel,
+.legacy-quiz--chef .quiz-info-panel { margin-top: 30px; }
+.legacy-quiz--barrister .quiz-info-panel h2,
+.legacy-quiz--barrister .quiz-info-panel h3,
+.legacy-quiz--barrister .quiz-info-panel__skill strong,
+.legacy-quiz--chef .quiz-info-panel h2,
+.legacy-quiz--chef .quiz-info-panel h3,
+.legacy-quiz--chef .quiz-info-panel__skill strong { color: var(--career-ink); }
+.legacy-quiz--barrister .quiz-info-panel p,
+.legacy-quiz--barrister .quiz-info-panel__skill small,
+.legacy-quiz--barrister .quiz-info-panel__restart-note,
+.legacy-quiz--chef .quiz-info-panel p,
+.legacy-quiz--chef .quiz-info-panel__skill small,
+.legacy-quiz--chef .quiz-info-panel__restart-note { color: color-mix(in srgb, var(--career-ink) 66%, #fff) !important; }
+.legacy-quiz--barrister .quiz-info-panel__skill,
+.legacy-quiz--chef .quiz-info-panel__skill { border-color: color-mix(in srgb, var(--career-gold) 28%, #ddd); background: rgba(255,255,255,.58); }
+
+.legacy-quiz--barrister .legacy-progress,
+.legacy-quiz--chef .legacy-progress { border-color: rgba(255,255,255,.13); background: color-mix(in srgb, var(--career-bg) 90%, transparent); }
+.legacy-quiz--barrister .legacy-progress__row strong,
+.legacy-quiz--chef .legacy-progress__row strong { color: #fff8e9; }
+.legacy-quiz--barrister .legacy-progress__row span,
+.legacy-quiz--chef .legacy-progress__row span { background: var(--career-accent); color: #fff; }
+.legacy-quiz--barrister .legacy-progress-dots,
+.legacy-quiz--chef .legacy-progress-dots { background: rgba(255,255,255,.12); }
+
+.legacy-quiz--barrister .legacy-question h2,
+.legacy-quiz--chef .legacy-question h2 {
+  border-color: color-mix(in srgb, var(--career-gold) 30%, #ddd);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--career-paper) 70%, #fff), #fff);
+  color: var(--career-ink);
+  box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.legacy-quiz--barrister .legacy-answer,
+.legacy-quiz--chef .legacy-answer {
+  min-height: 68px;
+  padding-right: 18px;
+  border-color: color-mix(in srgb, var(--career-gold) 24%, #ddd);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--career-ink);
+  box-shadow: 0 7px 18px rgba(0,0,0,.055);
+}
+
+.legacy-quiz--barrister .legacy-answer:hover:not(:disabled),
+.legacy-quiz--chef .legacy-answer:hover:not(:disabled) { border-color: var(--career-accent); background: color-mix(in srgb, var(--career-paper) 78%, #fff); }
+.legacy-quiz--barrister.legacy-quiz--short-locked .legacy-answer.selected::after,
+.legacy-quiz--barrister.legacy-quiz--short-locked .legacy-answer.selected:not(.correct):not(.wrong)::after,
+.legacy-quiz--chef.legacy-quiz--short-locked .legacy-answer.selected::after,
+.legacy-quiz--chef.legacy-quiz--short-locked .legacy-answer.selected:not(.correct):not(.wrong)::after { content: none; display: none; }
+
+.legacy-quiz--barrister .legacy-stage-result,
+.legacy-quiz--barrister .legacy-result-gate,
+.legacy-quiz--barrister [data-screen="results"],
+.legacy-quiz--chef .legacy-stage-result,
+.legacy-quiz--chef .legacy-result-gate,
+.legacy-quiz--chef [data-screen="results"] { border-top: 8px solid var(--career-gold); border-radius: 22px; }
+.legacy-quiz--barrister.legacy-quiz--short-locked .legacy-result-gate::after { content: "⚖️"; }
+.legacy-quiz--chef.legacy-quiz--short-locked .legacy-result-gate::after { content: "🧑‍🍳"; }
+
+.legacy-quiz--barrister .legacy-stage-heading h2,
+.legacy-quiz--barrister .legacy-result-hero h2,
+.legacy-quiz--barrister .legacy-result-gate h2,
+.legacy-quiz--chef .legacy-stage-heading h2,
+.legacy-quiz--chef .legacy-result-hero h2,
+.legacy-quiz--chef .legacy-result-gate h2 { color: var(--career-ink); }
+.legacy-quiz--barrister .legacy-stage-emoji,
+.legacy-quiz--barrister .legacy-result-medal,
+.legacy-quiz--chef .legacy-stage-emoji,
+.legacy-quiz--chef .legacy-result-medal { border: 1px solid color-mix(in srgb, var(--career-gold) 34%, #ddd); background: linear-gradient(145deg, var(--career-paper), #fff); }
+.legacy-quiz--barrister .legacy-stage-next,
+.legacy-quiz--barrister .legacy-stage-stats div,
+.legacy-quiz--barrister .legacy-unlock-panel,
+.legacy-quiz--barrister .legacy-cog-item,
+.legacy-quiz--barrister .legacy-stage-chip,
+.legacy-quiz--chef .legacy-stage-next,
+.legacy-quiz--chef .legacy-stage-stats div,
+.legacy-quiz--chef .legacy-unlock-panel,
+.legacy-quiz--chef .legacy-cog-item,
+.legacy-quiz--chef .legacy-stage-chip { border-color: color-mix(in srgb, var(--career-gold) 28%, #ddd); background: rgba(255,255,255,.56); }
+.legacy-quiz--barrister .legacy-stage-next strong,
+.legacy-quiz--barrister .legacy-stage-stats strong,
+.legacy-quiz--barrister .legacy-profile-badge,
+.legacy-quiz--chef .legacy-stage-next strong,
+.legacy-quiz--chef .legacy-stage-stats strong,
+.legacy-quiz--chef .legacy-profile-badge { color: var(--career-accent); }
+.legacy-quiz--barrister .legacy-stage-trail__dot--complete,
+.legacy-quiz--chef .legacy-stage-trail__dot--complete { border-color: var(--career-accent); background: var(--career-accent); }
+.legacy-quiz--barrister .legacy-stage-trail__dot--next,
+.legacy-quiz--chef .legacy-stage-trail__dot--next { border-color: var(--career-gold); box-shadow: 0 0 0 4px color-mix(in srgb, var(--career-gold) 20%, transparent); }
+.legacy-quiz--barrister .legacy-result-meter span,
+.legacy-quiz--barrister .legacy-cog-item em i,
+.legacy-quiz--barrister .legacy-stage-chip i,
+.legacy-quiz--chef .legacy-result-meter span,
+.legacy-quiz--chef .legacy-cog-item em i,
+.legacy-quiz--chef .legacy-stage-chip i { background: linear-gradient(90deg, var(--career-accent), var(--career-gold)); }
+
+@media (max-width: 619px) {
+  .legacy-quiz--barrister .legacy-main,
+  .legacy-quiz--chef .legacy-main { padding: 12px 10px 24px; }
+  .legacy-quiz--barrister .legacy-start,
+  .legacy-quiz--chef .legacy-start { padding: 30px 19px 29px; border-radius: 24px; }
+  .legacy-quiz--barrister .legacy-badge,
+  .legacy-quiz--chef .legacy-badge { width: 70px; height: 70px; margin-bottom: 14px; border-radius: 20px; }
+  .legacy-quiz--barrister .legacy-badge span,
+  .legacy-quiz--chef .legacy-badge span { font-size: 36px; }
+  .legacy-quiz--barrister .legacy-start h1,
+  .legacy-quiz--chef .legacy-start h1 { font-size: clamp(37px, 11.2vw, 48px); }
+  .legacy-quiz--barrister .legacy-start .legacy-sub,
+  .legacy-quiz--barrister .legacy-social,
+  .legacy-quiz--chef .legacy-start .legacy-sub,
+  .legacy-quiz--chef .legacy-social { margin-bottom: 17px; }
+  .legacy-quiz--barrister .legacy-primary,
+  .legacy-quiz--chef .legacy-primary { min-height: 60px; font-size: 18px; }
+}

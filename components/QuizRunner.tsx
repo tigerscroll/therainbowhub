@@ -252,7 +252,7 @@ function createQuizRunnerHtml(config: {
       <section data-screen="results" class="legacy-card legacy-result legacy-hidden">
         <div class="legacy-result-hero">
           <div class="legacy-result-medal" aria-hidden="true">
-            <span>${escapeHtml(quiz.slug === "paramedic" ? "🚑" : quiz.slug === "train" ? "🚆" : "🏆")}</span>
+            <span>${escapeHtml(quiz.slug === "paramedic" ? "🚑" : quiz.slug === "train" ? "🚆" : quiz.slug === "barrister" ? "⚖️" : quiz.slug === "chef" ? "🧑‍🍳" : "🏆")}</span>
           </div>
           <span data-js="result-profile-badge" class="legacy-profile-badge"></span>
           <h2 data-js="result-title"></h2>
@@ -335,6 +335,8 @@ function createQuizRunnerScript(config: {
     var isMemoryQuiz = quiz.slug === "memory";
     var isConnectionQuiz = quiz.slug === "connection";
     var isParamedicQuiz = quiz.slug === "paramedic";
+    var isBarristerQuiz = quiz.slug === "barrister";
+    var isChefQuiz = quiz.slug === "chef";
     var isMedicineQuiz = quiz.slug === "medicine";
     var isAnatomyQuiz = quiz.slug === "anatomy";
     var isYearsLeftQuiz = quiz.slug === "years-left";
@@ -342,9 +344,10 @@ function createQuizRunnerScript(config: {
     var isLocalizedYearsLeftAiQuiz = isYearsLeftQuiz && ["en", "es", "it", "de", "nl", "fr", "pt"].includes(localeCode);
     var isArmyQuiz = quiz.slug === "army" && localeCode === "en";
     var isTrainQuiz = quiz.slug === "train" && localeCode === "en";
+    var isCareerJourneyQuiz = isParamedicQuiz || isTrainQuiz || isBarristerQuiz || isChefQuiz;
     var isUniversityEntranceQuiz = isHarvard2Quiz || isOxford2Quiz || isCambridge2Quiz || isAirforceQuiz || isNavyQuiz;
     var usesRoundCheckpointFlow = isUniversityEntranceQuiz || (isMemoryQuiz && !isEnglishMemoryQuiz) || isConnectionQuiz || quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || isArmyQuiz || isMedicineQuiz;
-    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isTrainQuiz || isMedicineQuiz;
+    var isShortLockedScoreQuiz = quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || isUniversityEntranceQuiz || isMemoryQuiz || isConnectionQuiz || isArmyQuiz || isTrainQuiz || isBarristerQuiz || isChefQuiz || isMedicineQuiz;
     var usesCompactProgress = isShortLockedScoreQuiz;
     var autoStartQuiz = isMemoryQuiz && !isEnglishMemoryQuiz;
     var hideAnswerFeedback = isShortLockedScoreQuiz || isEnglishMemoryQuiz;
@@ -1198,6 +1201,34 @@ function createQuizRunnerScript(config: {
             "final-route-synthesis": "The Final Run"
           }
         },
+        barrister: {
+          en: {
+            "case-file": "Case File Scan",
+            "witness-words": "Witness Words",
+            "timeline-test": "Timeline Test",
+            "argument-anatomy": "Argument Anatomy",
+            "exhibit-control": "Exhibit Control",
+            "cross-examination": "Cross-Examination",
+            "ethics-scope": "Ethics & Scope",
+            "objection-logic": "Objection Logic",
+            "under-pressure": "Under Pressure",
+            "final-hearing": "The Final Hearing"
+          }
+        },
+        chef: {
+          en: {
+            "mise-en-place": "Mise en Place",
+            "ingredient-eye": "Ingredient Eye",
+            "timing-heat": "Timing & Heat",
+            "ratio-control": "Ratio Control",
+            "order-flow": "Order Flow",
+            "kitchen-comms": "Kitchen Comms",
+            "hygiene-judgment": "Hygiene Judgment",
+            "problem-solving": "Problem Solving",
+            "service-pressure": "Under Pressure",
+            "final-service": "The Final Service"
+          }
+        },
         medicine: {
           en: {
             "observation": "Observation",
@@ -1737,7 +1768,7 @@ function createQuizRunnerScript(config: {
       questionCard.classList.add(questionBackgroundClass);
       byData("round-label").textContent = isMemoryQuiz
         ? t.quiz.round + " " + stageNumber
-        : usesCompactProgress ? t.quiz.question + " " + (isParamedicQuiz || isTrainQuiz || usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (isParamedicQuiz || isTrainQuiz || usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
+        : usesCompactProgress ? t.quiz.question + " " + (isCareerJourneyQuiz || usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (isCareerJourneyQuiz || usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = isMemoryQuiz
         ? getStageName(currentStage)
         : usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
@@ -1885,21 +1916,25 @@ function createQuizRunnerScript(config: {
         return;
       }
 
-      byData("stage-title").textContent = isParamedicQuiz || isTrainQuiz
+      byData("stage-title").textContent = isCareerJourneyQuiz
         ? getStageName(completedStage) + " complete"
         : isEnglishMemoryQuiz
         ? (nextStageName ? "Next: " + nextStageName : "Memory Scan Complete")
         : isLocalizedYearsLeftAiQuiz && nextStageName
           ? getYearsLeftAiText().nextPrefix + formatYearsLeftStageName(nextStageName)
           : t.quiz.round + " " + (completedStage + 1) + " " + t.results.complete;
-      byData("stage-icon").textContent = isParamedicQuiz || isTrainQuiz
+      byData("stage-icon").textContent = isCareerJourneyQuiz
         ? (isParamedicQuiz
           ? ["🛡️", "💬", "👁️", "📻", "🧭", "🤝", "🫶", "⚡", "📋", "🚑"]
-          : ["🔍", "🧾", "⏱️", "🗺️", "🚦", "🔢", "🔎", "🎛️", "⚡", "🚆"])[completedStage % 10]
+          : isTrainQuiz
+            ? ["🔍", "🧾", "⏱️", "🗺️", "🚦", "🔢", "🔎", "🎛️", "⚡", "🚆"]
+            : isBarristerQuiz
+              ? ["📁", "🗣️", "🕰️", "🧩", "🔍", "❓", "🧭", "⚖️", "🔥", "🏛️"]
+              : ["🔪", "🥕", "⏱️", "⚖️", "🧾", "📣", "🧼", "🛠️", "🔥", "🧑‍🍳"])[completedStage % 10]
         : isEnglishMemoryQuiz ? quiz.cardIcon || "🧠" : isPersonalityQuiz ? "✓" : stageIcons[completedStage % stageIcons.length];
       byData("stage-copy").textContent = copy;
       byData("stage-next").classList.toggle("legacy-hidden", !nextStageName || usesAiCheckpointPanel);
-      byData("stage-next-label").textContent = nextStageName ? (isParamedicQuiz ? "Next call" : isTrainQuiz ? "Next section" : t.results.nextStage) : "";
+      byData("stage-next-label").textContent = nextStageName ? (isParamedicQuiz ? "Next call" : isTrainQuiz ? "Next section" : isBarristerQuiz ? "Next case" : isChefQuiz ? "Next station" : t.results.nextStage) : "";
       byData("stage-next-name").textContent = nextStageName || "";
       if (yearsLeftAiPanel) {
         yearsLeftAiPanel.classList.toggle("legacy-memory-ai-panel", isEnglishMemoryQuiz);
@@ -1927,8 +1962,8 @@ function createQuizRunnerScript(config: {
       if (stageStats) stageStats.classList.toggle("legacy-hidden", isAiCheckpointQuiz);
       if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
       if (stageAdNoteText) {
-        stageAdNoteText.textContent = isParamedicQuiz || isTrainQuiz
-          ? (isParamedicQuiz ? "Short rewarded ad first — then the next call starts." : "Short rewarded ad first — then the next section starts.")
+        stageAdNoteText.textContent = isCareerJourneyQuiz
+          ? (isParamedicQuiz ? "Short rewarded ad first — then the next call starts." : isTrainQuiz ? "Short rewarded ad first — then the next section starts." : isBarristerQuiz ? "Short rewarded ad first — then the next case starts." : "Short rewarded ad first — then the next station starts.")
           : usesAiCheckpointPanel
           ? (isLocalizedYearsLeftAiQuiz ? getYearsLeftAiText().adNote : "Short ad first — then the next section starts.")
           : t.rewardedAd.helper;
@@ -1936,10 +1971,10 @@ function createQuizRunnerScript(config: {
       root.querySelector(".legacy-stage-stats").classList.toggle("legacy-stage-stats--single", isPersonalityQuiz);
       byData("stage-round-score").parentElement.classList.toggle("legacy-hidden", isPersonalityQuiz);
       byData("stage-round-score").textContent = stageScore + "/" + stageTotal;
-      byData("stage-round-score-label").textContent = isParamedicQuiz ? "Call score" : isTrainQuiz ? "Section score" : isPersonalityQuiz ? t.results.stageComplete : t.results.roundResult;
+      byData("stage-round-score-label").textContent = isParamedicQuiz ? "Call score" : isTrainQuiz ? "Section score" : isBarristerQuiz ? "Case score" : isChefQuiz ? "Station score" : isPersonalityQuiz ? t.results.stageComplete : t.results.roundResult;
       var personalityStageStatus = isPersonalityQuiz ? getPersonalityClarityStatus(completedStage) : null;
       byData("stage-score").textContent = personalityStageStatus ? personalityStageStatus.title : getScore() + "/" + current;
-      byData("stage-score-label").textContent = isParamedicQuiz || isTrainQuiz ? "Overall score" : personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
+      byData("stage-score-label").textContent = isCareerJourneyQuiz ? "Overall score" : personalityStageStatus ? personalityStageStatus.label : t.results.scoreSoFar;
       if (stageStats) {
         stageStats.classList.toggle("legacy-stage-stats--vibe", isPersonalityQuiz);
         if (isPersonalityQuiz) {
@@ -1950,11 +1985,11 @@ function createQuizRunnerScript(config: {
       }
       byData("stage-trail").innerHTML = stageIndexes.map(function (stage, index) {
         var status = stage <= completedStage ? "complete" : stage === nextStage ? "next" : "locked";
-        var label = stage === nextStage ? getStageName(stage) : (isParamedicQuiz ? "Call " : isTrainQuiz ? "Section " : t.quiz.round + " ") + (index + 1);
+        var label = stage === nextStage ? getStageName(stage) : (isParamedicQuiz ? "Call " : isTrainQuiz ? "Section " : isBarristerQuiz ? "Case " : isChefQuiz ? "Station " : t.quiz.round + " ") + (index + 1);
         return '<span class="legacy-stage-trail__dot legacy-stage-trail__dot--' + status + '" title="' + escapeHtml(label) + '">' + (status === "complete" ? "✓" : "") + '</span>';
       }).join("");
-      byData("stage-button").textContent = isParamedicQuiz || isTrainQuiz
-        ? (isParamedicQuiz ? "Dispatch Next Call →" : "Continue →")
+      byData("stage-button").textContent = isCareerJourneyQuiz
+        ? (isParamedicQuiz ? "Dispatch Next Call →" : isTrainQuiz ? "Continue →" : isBarristerQuiz ? "Take the Next Case →" : "Continue to Next Station →")
         : isEnglishMemoryQuiz
         ? (isFinalMemoryCheckpoint ? "Reveal My Score →" : "Continue →")
         : isLocalizedYearsLeftAiQuiz && nextStageName
@@ -2127,6 +2162,8 @@ function createQuizRunnerScript(config: {
     function getUnlockReviewButtonLabel() {
       if (isParamedicQuiz) return "Review Missed Calls";
       if (isTrainQuiz) return "Review Missed Signals";
+      if (isBarristerQuiz) return "Review Missed Arguments";
+      if (isChefQuiz) return "Review Missed Orders";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "nl") return "Foute antwoorden bekijken";
       if (quiz.slug === "nursing2" && t.locale && t.locale.code === "de") return "Falsche Antworten ansehen";
       return isShortLockedScoreQuiz ? "View Incorrect Answers" : t.results.review.unlockButton;
@@ -2139,6 +2176,8 @@ function createQuizRunnerScript(config: {
     function getShortLockedResultGateTitle() {
       if (isParamedicQuiz) return "Your final response profile is ready.";
       if (isTrainQuiz) return "Your final driver profile is ready.";
+      if (isBarristerQuiz) return "Your final advocate profile is ready.";
+      if (isChefQuiz) return "Your final chef profile is ready.";
       var labels = {
         ar: "نتائجك جاهزة.",
         bg: "Резултатите ти са готови.",
@@ -2178,6 +2217,8 @@ function createQuizRunnerScript(config: {
     function getShortLockedResultGateCopy() {
       if (isParamedicQuiz) return "One short unlock reveals your score and responder profile.";
       if (isTrainQuiz) return "One short unlock reveals your score and rail-focus profile.";
+      if (isBarristerQuiz) return "One short unlock reveals your score and courtroom reasoning profile.";
+      if (isChefQuiz) return "One short unlock reveals your score and kitchen-focus profile.";
       if (usesRoundCheckpointFlow && harvardStageResultPending) {
         return getRoundCheckpointText().roundUnlock;
       }
@@ -2221,6 +2262,8 @@ function createQuizRunnerScript(config: {
     function getShortLockedResultGateButtonLabel() {
       if (isParamedicQuiz) return "Reveal My Response Profile →";
       if (isTrainQuiz) return "Reveal My Driver Profile →";
+      if (isBarristerQuiz) return "Reveal My Advocate Profile →";
+      if (isChefQuiz) return "Reveal My Chef Profile →";
       var labels = {
         ar: "اعرض نتائجي →",
         bg: "Виж резултатите ми →",
@@ -2703,7 +2746,7 @@ function createQuizRunnerScript(config: {
       var missedQuestionLabel = missedQuestions.length === 1
         ? t.results.review.missedQuestionSingular
         : t.results.review.missedQuestionPlural;
-      var hidesDetailedResults = isShortLockedScoreQuiz && !isParamedicQuiz && !isTrainQuiz;
+      var hidesDetailedResults = isShortLockedScoreQuiz && !isCareerJourneyQuiz;
 
       hasUnlockedReview = false;
       byData("result-profile-badge").textContent = hidesDetailedResults ? profile.tier : isPersonalityQuiz ? profile.tier : profile.tier + " • " + strongestStage.name;
@@ -2729,7 +2772,7 @@ function createQuizRunnerScript(config: {
         var ratio = stage.total ? Math.round((stage.correct / stage.total) * 100) : 0;
         var stageClass = stage.ratio >= 0.75 ? "is-high" : stage.ratio >= 0.5 ? "is-mid" : "is-low";
         return '<div class="legacy-stage-chip ' + stageClass + '" style="--stage-score:' + ratio + '%">' +
-          '<span>' + escapeHtml(isParamedicQuiz ? "Call" : isTrainQuiz ? "Section" : t.quiz.round) + ' ' + (index + 1) + '</span>' +
+          '<span>' + escapeHtml(isParamedicQuiz ? "Call" : isTrainQuiz ? "Section" : isBarristerQuiz ? "Case" : isChefQuiz ? "Station" : t.quiz.round) + ' ' + (index + 1) + '</span>' +
           '<strong>' + escapeHtml(stage.name) + '</strong>' +
           '<em>' + stage.correct + '/' + stage.total + '</em>' +
           '<i aria-hidden="true"></i>' +
@@ -2868,7 +2911,7 @@ function createQuizRunnerScript(config: {
       if (!keepModalOpen) hideEarlyCloseModal();
       clearAdStatuses(adStatusName);
       setButtonLoading(button, t.loading.ad, true);
-      requestRewardedAd(isParamedicQuiz ? "before_next_call" : isTrainQuiz ? "before_next_section" : "before_stage_results", function (message) {
+      requestRewardedAd(isParamedicQuiz ? "before_next_call" : isTrainQuiz ? "before_next_section" : isBarristerQuiz ? "before_next_case" : isChefQuiz ? "before_next_station" : "before_stage_results", function (message) {
         setAdStatus(adStatusName, message);
       }).then(function (granted) {
         setButtonLoading(button, t.loading.ad, false);
@@ -2881,7 +2924,7 @@ function createQuizRunnerScript(config: {
         }
         saveProgress("question");
         renderQuestion();
-        if (isParamedicQuiz || isTrainQuiz) scrollToPageTop();
+        if (isCareerJourneyQuiz) scrollToPageTop();
       });
     }
 
@@ -3032,7 +3075,7 @@ export function QuizRunner({ locale, quiz, relatedQuizzes = [], translations }: 
   const isEnglishArmyShortLocked = quiz.slug === "army" && locale === "en";
   const isEnglishMemoryQuiz = quiz.slug === "memory" && locale === "en";
   const variantClass = [
-    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || quiz.slug === "train" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
+    quiz.slug === "nursing2" || quiz.slug === "anatomy2" || quiz.slug === "pilot2" || quiz.slug === "bible" || quiz.slug === "paramedic" || quiz.slug === "harvard2" || quiz.slug === "oxford2" || quiz.slug === "cambridge2" || quiz.slug === "airforce" || quiz.slug === "navy" || quiz.slug === "memory" || quiz.slug === "connection" || quiz.slug === "medicine" || quiz.slug === "train" || quiz.slug === "barrister" || quiz.slug === "chef" || isEnglishArmyShortLocked ? "legacy-quiz--short-locked" : "",
   ].filter(Boolean).map((className) => ` ${className}`).join("");
   const script = createQuizRunnerScript({
     locale,
