@@ -10469,6 +10469,10 @@ body:has(.legacy-quiz--paramedic) .quiz-search__button {
   border-radius: 22px;
 }
 
+.legacy-quiz--paramedic.legacy-quiz--short-locked .legacy-result-gate::after {
+  content: "🚑";
+}
+
 .legacy-quiz--paramedic .legacy-stage-emoji,
 .legacy-quiz--paramedic .legacy-result-medal {
   border: 1px solid #bfe3de;
@@ -10826,6 +10830,10 @@ body:has(.legacy-quiz--train) .hub-header {
 .legacy-quiz--train [data-screen="results"] {
   border-top: 8px solid var(--train-amber);
   border-radius: 22px;
+}
+
+.legacy-quiz--train.legacy-quiz--short-locked .legacy-result-gate::after {
+  content: "🚆";
 }
 
 .legacy-quiz--train .legacy-stage-heading h2,

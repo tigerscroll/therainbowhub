@@ -138,7 +138,7 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
     ? [
         "Scanning a scene before acting",
         "Communicating clearly and inclusively",
-        "Prioritising useful facts under pressure",
+        "Prioritizing useful facts under pressure",
         "Supporting teammates and clean handovers",
         "Respecting scope and seeking support",
       ]
