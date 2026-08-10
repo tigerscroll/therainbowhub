@@ -1954,7 +1954,7 @@ function createQuizRunnerScript(config: {
         return '<span class="legacy-stage-trail__dot legacy-stage-trail__dot--' + status + '" title="' + escapeHtml(label) + '">' + (status === "complete" ? "✓" : "") + '</span>';
       }).join("");
       byData("stage-button").textContent = isParamedicQuiz || isTrainQuiz
-        ? (isParamedicQuiz ? "Dispatch Next Call →" : "Unlock Next Section →")
+        ? (isParamedicQuiz ? "Dispatch Next Call →" : "Continue →")
         : isEnglishMemoryQuiz
         ? (isFinalMemoryCheckpoint ? "Reveal My Score →" : "Continue →")
         : isLocalizedYearsLeftAiQuiz && nextStageName
