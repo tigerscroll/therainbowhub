@@ -10573,3 +10573,354 @@ body:has(.legacy-quiz--paramedic) .quiz-search__button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Train driver challenge — simple rail-specific flow matching the paramedic layout. */
+.legacy-quiz.legacy-quiz--train {
+  --legacy-shell-width: 760px;
+  --train-ink: #102c35;
+  --train-deep: #0a2933;
+  --train-teal: #17665f;
+  --train-amber: #d89a32;
+  --train-cream: #fbf6e9;
+  min-height: 100vh;
+  color: var(--train-ink);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 94px, rgba(216, 154, 50, 0.08) 95px 98px, transparent 99px 190px),
+    radial-gradient(circle at 50% 0%, rgba(56, 132, 125, 0.3), transparent 38%),
+    linear-gradient(155deg, #123d47 0%, var(--train-deep) 50%, #06151c 100%);
+}
+
+body:has(.legacy-quiz--train) .hub-header {
+  border-bottom-color: rgba(216, 154, 50, 0.55);
+  background: rgba(6, 28, 36, 0.96);
+}
+
+.legacy-quiz--train .legacy-main {
+  width: 100%;
+  padding: clamp(14px, 2.8vw, 28px) 12px 42px;
+}
+
+.legacy-quiz--train .legacy-start {
+  position: relative;
+  display: grid;
+  min-height: 0;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(35px, 6vw, 58px) clamp(22px, 7vw, 68px) 39px;
+  overflow: hidden;
+  border: 1px solid rgba(223, 188, 119, 0.72);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.82) 0 2px, transparent 3px) 0 0 / 24px 24px,
+    linear-gradient(145deg, #fffdf7, var(--train-cream));
+  color: var(--train-ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42), inset 0 1px 0 #fff;
+  text-align: center;
+}
+
+.legacy-quiz--train .legacy-start::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  width: auto;
+  height: 8px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, #b63b3b 0 30%, var(--train-cream) 30% 38%, var(--train-teal) 38% 68%, var(--train-cream) 68% 76%, var(--train-amber) 76% 100%);
+  pointer-events: none;
+}
+
+.legacy-quiz--train .legacy-badge {
+  position: relative;
+  display: grid;
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+  place-items: center;
+  border: 1px solid #c7ded6;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #e5f3ef, #fff);
+  box-shadow: 0 14px 28px rgba(12, 59, 61, 0.14), inset 0 1px 0 #fff;
+  transform: none;
+}
+
+.legacy-quiz--train .legacy-badge::before,
+.legacy-quiz--train .legacy-badge::after,
+.legacy-quiz--train .legacy-badge span::before,
+.legacy-quiz--train .legacy-badge span::after {
+  content: none;
+  display: none;
+}
+
+.legacy-quiz--train .legacy-badge span {
+  display: block;
+  width: auto;
+  height: auto;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.legacy-quiz--train .legacy-start h1 {
+  max-width: 660px;
+  margin: 0;
+  color: var(--train-ink);
+  font-family: inherit;
+  font-size: clamp(42px, 7vw, 64px);
+  font-weight: 950;
+  line-height: 0.97;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.legacy-quiz--train .legacy-start h1::before {
+  content: "TRAIN DRIVER APTITUDE CHALLENGE";
+  display: block;
+  margin-bottom: 14px;
+  color: var(--train-teal);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+}
+
+.legacy-quiz--train .legacy-start h1 span {
+  color: #b63b3b;
+}
+
+.legacy-quiz--train .legacy-start .legacy-sub {
+  max-width: 540px;
+  margin: 18px auto 21px;
+  color: #51666c;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 760;
+  line-height: 1.44;
+}
+
+.legacy-quiz--train .legacy-social {
+  width: min(100%, 500px);
+  min-height: 52px;
+  margin: 0 auto 22px;
+  padding: 7px 15px;
+  border: 1px solid #d8e4db;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 7px 18px rgba(7, 45, 54, 0.06);
+}
+
+.legacy-quiz--train .legacy-social__primary {
+  color: #a93438;
+}
+
+.legacy-quiz--train .legacy-social__muted,
+.legacy-quiz--train .legacy-social__secondary {
+  color: #53676d;
+}
+
+.legacy-quiz--train .legacy-primary {
+  width: min(100%, 440px);
+  min-height: 66px;
+  border: 2px solid #0d4b48;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #23786f, #155c57);
+  box-shadow: 0 7px 0 #0b413f, 0 16px 28px rgba(13, 75, 72, 0.23), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #fffdf6;
+  font-size: 20px;
+}
+
+.legacy-quiz--train .legacy-primary:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 #0b413f, 0 8px 15px rgba(13, 75, 72, 0.2);
+}
+
+.legacy-quiz--train .legacy-ad-note {
+  color: #64777b;
+}
+
+.legacy-quiz--train .legacy-ad-note b {
+  color: #24474c;
+}
+
+.legacy-quiz--train .legacy-shield {
+  border-color: var(--train-teal);
+  color: var(--train-teal);
+}
+
+.legacy-quiz--train .legacy-card:not(.legacy-start),
+.legacy-quiz--train .quiz-info-panel {
+  border-color: rgba(223, 188, 119, 0.5);
+  background: rgba(253, 250, 241, 0.985);
+  color: var(--train-ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.legacy-quiz--train .quiz-info-panel {
+  margin-top: 30px;
+}
+
+.legacy-quiz--train .quiz-info-panel h2,
+.legacy-quiz--train .quiz-info-panel h3,
+.legacy-quiz--train .quiz-info-panel__skill strong {
+  color: var(--train-ink);
+}
+
+.legacy-quiz--train .quiz-info-panel p,
+.legacy-quiz--train .quiz-info-panel__skill small,
+.legacy-quiz--train .quiz-info-panel__restart-note {
+  color: #5c6e72 !important;
+}
+
+.legacy-quiz--train .quiz-info-panel__skill {
+  border-color: #d9e5df;
+  background: #f3f8f5;
+}
+
+.legacy-quiz--train .legacy-progress {
+  border-color: rgba(218, 181, 107, 0.34);
+  background: rgba(6, 36, 44, 0.9);
+}
+
+.legacy-quiz--train .legacy-progress__row strong {
+  color: #fff9e9;
+}
+
+.legacy-quiz--train .legacy-progress__row span {
+  background: var(--train-teal);
+  color: #fff;
+}
+
+.legacy-quiz--train .legacy-progress-dots {
+  background: rgba(236, 218, 180, 0.17);
+}
+
+.legacy-quiz--train .legacy-question h2 {
+  border-color: #d6e4df;
+  background: linear-gradient(145deg, #edf7f3, #fff);
+  color: var(--train-ink);
+  box-shadow: 0 15px 35px rgba(4, 29, 40, 0.1);
+}
+
+.legacy-quiz--train .legacy-answer {
+  min-height: 68px;
+  padding-right: 18px;
+  border-color: #d8e3df;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--train-ink);
+  box-shadow: 0 7px 18px rgba(4, 29, 40, 0.06);
+}
+
+.legacy-quiz--train .legacy-answer:hover:not(:disabled) {
+  border-color: var(--train-amber);
+  background: #fffaf0;
+}
+
+.legacy-quiz--train.legacy-quiz--short-locked .legacy-answer.selected::after,
+.legacy-quiz--train.legacy-quiz--short-locked .legacy-answer.selected:not(.correct):not(.wrong)::after {
+  content: none;
+  display: none;
+}
+
+.legacy-quiz--train .legacy-stage-result,
+.legacy-quiz--train .legacy-result-gate,
+.legacy-quiz--train [data-screen="results"] {
+  border-top: 8px solid var(--train-amber);
+  border-radius: 22px;
+}
+
+.legacy-quiz--train .legacy-stage-heading h2,
+.legacy-quiz--train .legacy-result-hero h2,
+.legacy-quiz--train .legacy-result-gate h2 {
+  color: var(--train-ink);
+}
+
+.legacy-quiz--train .legacy-stage-copy,
+.legacy-quiz--train .legacy-result-gate-copy,
+.legacy-quiz--train .legacy-result .legacy-sub {
+  color: #5b7074;
+}
+
+.legacy-quiz--train .legacy-stage-emoji,
+.legacy-quiz--train .legacy-result-medal {
+  border: 1px solid #d5e3dc;
+  background: linear-gradient(145deg, #eaf5f0, #fff);
+  box-shadow: 0 12px 26px rgba(6, 70, 76, 0.12);
+}
+
+.legacy-quiz--train .legacy-stage-next,
+.legacy-quiz--train .legacy-stage-stats div,
+.legacy-quiz--train .legacy-unlock-panel,
+.legacy-quiz--train .legacy-cog-item,
+.legacy-quiz--train .legacy-stage-chip {
+  border-color: #d5e3dc;
+  background: #f3f8f5;
+}
+
+.legacy-quiz--train .legacy-stage-next span,
+.legacy-quiz--train .legacy-stage-stats em {
+  color: #687c80;
+}
+
+.legacy-quiz--train .legacy-stage-next strong,
+.legacy-quiz--train .legacy-stage-stats strong,
+.legacy-quiz--train .legacy-profile-badge {
+  color: #175f59;
+}
+
+.legacy-quiz--train .legacy-stage-trail__dot--complete {
+  border-color: var(--train-teal);
+  background: var(--train-teal);
+}
+
+.legacy-quiz--train .legacy-stage-trail__dot--next {
+  border-color: var(--train-amber);
+  box-shadow: 0 0 0 4px rgba(216, 154, 50, 0.17);
+}
+
+.legacy-quiz--train .legacy-result-meter span,
+.legacy-quiz--train .legacy-cog-item em i,
+.legacy-quiz--train .legacy-stage-chip i {
+  background: linear-gradient(90deg, var(--train-teal), var(--train-amber));
+}
+
+@media (max-width: 619px) {
+  .legacy-quiz--train .legacy-main {
+    padding: 12px 10px 24px;
+  }
+
+  .legacy-quiz--train .legacy-start {
+    min-height: 0;
+    padding: 30px 19px 29px;
+    border-radius: 24px;
+  }
+
+  .legacy-quiz--train .legacy-badge {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 14px;
+    border-radius: 20px;
+    transform: none;
+  }
+
+  .legacy-quiz--train .legacy-badge span {
+    font-size: 36px;
+  }
+
+  .legacy-quiz--train .legacy-start h1 {
+    font-size: clamp(37px, 11.2vw, 48px);
+  }
+
+  .legacy-quiz--train .legacy-start .legacy-sub,
+  .legacy-quiz--train .legacy-social {
+    margin-bottom: 17px;
+  }
+
+  .legacy-quiz--train .legacy-primary {
+    min-height: 60px;
+    font-size: 18px;
+  }
+
+  .legacy-quiz--train .quiz-info-panel {
+    margin-top: 28px;
+  }
+}

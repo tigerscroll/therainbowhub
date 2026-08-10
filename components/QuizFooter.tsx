@@ -119,14 +119,21 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
   const template = translations.quizFooter;
   const skillIcons: InfoIconType[] = ["brain", "search", "bolt"];
   const isParamedicQuiz = quizSlug === "paramedic";
-  const howItWorksTitle = isParamedicQuiz ? "From Arrival to Handover" : template.howItWorksTitle;
+  const isTrainQuiz = quizSlug === "train";
+  const howItWorksTitle = isParamedicQuiz
+    ? "From Arrival to Handover"
+    : isTrainQuiz ? "From Platform Scan to Final Run" : template.howItWorksTitle;
   const howItWorksBody = isParamedicQuiz
     ? "Every call presents four fast choices. Read the scene, identify the useful facts, and choose the clearest next step as the pressure builds."
-    : template.howItWorksBody;
-  const whatThisTestsTitle = isParamedicQuiz ? "Skills On Call" : template.whatThisTestsTitle;
+    : isTrainQuiz
+      ? "Every section presents four fast choices. Read the board, apply the stated rule, and keep the route clear as timing and signal clues become more demanding."
+      : template.howItWorksBody;
+  const whatThisTestsTitle = isParamedicQuiz ? "Skills On Call" : isTrainQuiz ? "Skills On The Route" : template.whatThisTestsTitle;
   const whatThisTestsBody = isParamedicQuiz
     ? "The scenarios explore practical thinking and human skills that help a response team stay coordinated:"
-    : template.whatThisTestsBody;
+    : isTrainQuiz
+      ? "The fictional railway scenarios explore the focus and logic needed to keep changing information organized:"
+      : template.whatThisTestsBody;
   const testBullets = isParamedicQuiz
     ? [
         "Scanning a scene before acting",
@@ -135,18 +142,34 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
         "Supporting teammates and clean handovers",
         "Respecting scope and seeking support",
       ]
-    : template.testBullets;
-  const scoringTitle = isParamedicQuiz ? "Your Response Profile" : template.scoringTitle;
+    : isTrainQuiz
+      ? [
+          "Reading boards and spotting changes",
+          "Working with time and route constraints",
+          "Applying fictional signal rules exactly",
+          "Sequencing checks in the correct order",
+          "Prioritizing confirmed information under pressure",
+        ]
+      : template.testBullets;
+  const scoringTitle = isParamedicQuiz ? "Your Response Profile" : isTrainQuiz ? "Your Driver Focus Profile" : template.scoringTitle;
   const scoringBody = isParamedicQuiz
     ? "Your entertainment-only result combines accuracy across awareness, communication, decision-making, and professional thinking. It is a challenge profile, not a clinical or employment assessment."
-    : template.scoringBody;
+    : isTrainQuiz
+      ? "Your entertainment-only result combines attention, timing, route logic, signal rules, sequencing, and calm decisions. It is a challenge profile, not a railway qualification or recruitment result."
+      : template.scoringBody;
   const featureCards = isParamedicQuiz
     ? [
         { title: "Scene Awareness", body: "Spot risks and key details." },
         { title: "Clear Communication", body: "Get and give usable information." },
         { title: "Calm Decisions", body: "Choose practical next steps." },
       ]
-    : template.featureCards.slice(0, 3);
+    : isTrainQuiz
+      ? [
+          { title: "Signal Focus", body: "Apply each stated rule." },
+          { title: "Timing & Routes", body: "Track time, stops, and direction." },
+          { title: "Calm Control", body: "Prioritize reliable information." },
+        ]
+      : template.featureCards.slice(0, 3);
 
   return (
     <section className="legacy-card quiz-info-panel">
@@ -210,7 +233,9 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
       <button type="button" data-action="restart" className="legacy-primary legacy-restart">
         <span aria-hidden="true">↻</span> {translations.quiz.restartTest}
       </button>
-      <p className="quiz-info-panel__restart-note">{isParamedicQuiz ? "Restart the shift from the first call." : template.restartNote}</p>
+      <p className="quiz-info-panel__restart-note">
+        {isParamedicQuiz ? "Restart the shift from the first call." : isTrainQuiz ? "Restart the run from the first platform." : template.restartNote}
+      </p>
     </section>
   );
 }
