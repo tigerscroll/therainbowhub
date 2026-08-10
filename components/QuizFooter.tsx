@@ -125,7 +125,7 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
     : template.howItWorksBody;
   const whatThisTestsTitle = isParamedicQuiz ? "Skills On Call" : template.whatThisTestsTitle;
   const whatThisTestsBody = isParamedicQuiz
-    ? "The scenarios explore practical thinking and human skills that help a response team stay organised:"
+    ? "The scenarios explore practical thinking and human skills that help a response team stay coordinated:"
     : template.whatThisTestsBody;
   const testBullets = isParamedicQuiz
     ? [

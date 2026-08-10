@@ -1737,7 +1737,7 @@ function createQuizRunnerScript(config: {
       questionCard.classList.add(questionBackgroundClass);
       byData("round-label").textContent = isMemoryQuiz
         ? t.quiz.round + " " + stageNumber
-        : usesCompactProgress ? t.quiz.question + " " + (usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
+        : usesCompactProgress ? t.quiz.question + " " + (isParamedicQuiz || usesRoundCheckpointFlow ? stagePosition : current + 1) + "/" + (isParamedicQuiz || usesRoundCheckpointFlow ? stageTotal : quiz.questions.length) : t.quiz.round + " " + stageNumber;
       byData("count-label").textContent = isMemoryQuiz
         ? getStageName(currentStage)
         : usesCompactProgress && question.category ? getShortLockedCategoryLabel(question.category) : getStageName(currentStage);
@@ -1923,9 +1923,11 @@ function createQuizRunnerScript(config: {
         }
       }
       if (stageStats) stageStats.classList.toggle("legacy-hidden", isAiCheckpointQuiz);
-      if (stageAdNote) stageAdNote.classList.toggle("legacy-hidden", isParamedicQuiz);
+      if (stageAdNote) stageAdNote.classList.remove("legacy-hidden");
       if (stageAdNoteText) {
-        stageAdNoteText.textContent = usesAiCheckpointPanel
+        stageAdNoteText.textContent = isParamedicQuiz
+          ? "Short rewarded ad first — then the next call starts."
+          : usesAiCheckpointPanel
           ? (isLocalizedYearsLeftAiQuiz ? getYearsLeftAiText().adNote : "Short ad first — then the next section starts.")
           : t.rewardedAd.helper;
       }
@@ -2860,7 +2862,7 @@ function createQuizRunnerScript(config: {
       if (!keepModalOpen) hideEarlyCloseModal();
       clearAdStatuses(adStatusName);
       setButtonLoading(button, t.loading.ad, true);
-      requestRewardedAd("before_stage_results", function (message) {
+      requestRewardedAd(isParamedicQuiz ? "before_next_call" : "before_stage_results", function (message) {
         setAdStatus(adStatusName, message);
       }).then(function (granted) {
         setButtonLoading(button, t.loading.ad, false);
@@ -2873,6 +2875,7 @@ function createQuizRunnerScript(config: {
         }
         saveProgress("question");
         renderQuestion();
+        if (isParamedicQuiz) scrollToPageTop();
       });
     }
 
@@ -2963,13 +2966,6 @@ function createQuizRunnerScript(config: {
 
         if (isEnglishMemoryQuiz && button.dataset.memoryFinal === "true") {
           beginResultAd(button, false, "stage-ad-status");
-          return;
-        }
-
-        if (isParamedicQuiz) {
-          saveProgress("question");
-          renderQuestion();
-          scrollToPageTop();
           return;
         }
 

@@ -10452,6 +10452,16 @@ body:has(.legacy-quiz--paramedic) .quiz-search__button {
   background: #f0fbf9;
 }
 
+.legacy-quiz--paramedic.legacy-quiz--short-locked .legacy-answer {
+  padding-right: 18px;
+}
+
+.legacy-quiz--paramedic.legacy-quiz--short-locked .legacy-answer.selected::after,
+.legacy-quiz--paramedic.legacy-quiz--short-locked .legacy-answer.selected:not(.correct):not(.wrong)::after {
+  content: none;
+  display: none;
+}
+
 .legacy-quiz--paramedic .legacy-stage-result,
 .legacy-quiz--paramedic .legacy-result-gate,
 .legacy-quiz--paramedic [data-screen="results"] {
