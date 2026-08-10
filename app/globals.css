@@ -11254,3 +11254,347 @@ body:has(.legacy-quiz--chef) .quiz-search__menu-icon span {
   .legacy-quiz--barrister .legacy-primary,
   .legacy-quiz--chef .legacy-primary { min-height: 60px; font-size: 18px; }
 }
+
+/* Mechanic challenge — compact workshop card with a distinct industrial finish. */
+.legacy-quiz.legacy-quiz--mechanic {
+  --mechanic-bg: #101820;
+  --mechanic-panel: #27333b;
+  --mechanic-ink: #16212a;
+  --mechanic-paper: #f4f1e8;
+  --mechanic-orange: #e58a22;
+  --mechanic-orange-dark: #9b4f12;
+  --mechanic-yellow: #f4c542;
+  min-height: calc(100vh - 48px);
+  color: var(--mechanic-ink);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(229, 138, 34, .24), transparent 34%),
+    repeating-linear-gradient(90deg, transparent 0 146px, rgba(244, 197, 66, .035) 146px 149px),
+    linear-gradient(150deg, #2b3942 0%, var(--mechanic-bg) 54%, #080e13 100%);
+}
+
+body:has(.legacy-quiz--mechanic) {
+  --mechanic-bg: #101820;
+  --mechanic-orange: #e58a22;
+  background: var(--mechanic-bg);
+}
+
+body:has(.legacy-quiz--mechanic) .hub-header {
+  border-bottom-color: var(--mechanic-orange);
+  background: #11191f;
+}
+
+body:has(.legacy-quiz--mechanic) .hub-brand,
+body:has(.legacy-quiz--mechanic) .quiz-search__button {
+  color: #fff9e8;
+}
+
+body:has(.legacy-quiz--mechanic) .quiz-search__button {
+  border: 1px solid rgba(244, 197, 66, .25);
+  background: rgba(255, 255, 255, .08);
+}
+
+body:has(.legacy-quiz--mechanic) .quiz-search__menu-icon span {
+  background: #fff9e8;
+}
+
+.legacy-quiz--mechanic .legacy-main {
+  width: min(100%, 720px);
+  padding: 26px 16px 38px;
+}
+
+.legacy-quiz--mechanic .legacy-start {
+  position: relative;
+  min-height: 0;
+  padding: 42px 42px 37px;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--mechanic-orange) 68%, #fff);
+  border-radius: 27px;
+  background:
+    linear-gradient(rgba(255, 255, 255, .56), rgba(255, 255, 255, .08)),
+    repeating-linear-gradient(0deg, transparent 0 13px, rgba(22, 33, 42, .025) 13px 14px),
+    var(--mechanic-paper);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(255, 255, 255, .8);
+}
+
+.legacy-quiz--mechanic .legacy-start::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 9px;
+  background:
+    repeating-linear-gradient(135deg, var(--mechanic-yellow) 0 18px, #151d22 18px 36px);
+}
+
+.legacy-quiz--mechanic .legacy-badge {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+  border: 2px solid var(--mechanic-yellow);
+  border-radius: 21px;
+  background: linear-gradient(145deg, #34444d, #101820);
+  box-shadow: 0 13px 25px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .18);
+  transform: none;
+}
+
+.legacy-quiz--mechanic .legacy-badge span {
+  font-size: 43px;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .35));
+}
+
+.legacy-quiz--mechanic .legacy-start h1 {
+  max-width: 610px;
+  margin: 0 auto;
+  color: var(--mechanic-ink);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(41px, 7vw, 64px);
+  font-weight: 900;
+  line-height: .98;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.legacy-quiz--mechanic .legacy-start h1::before {
+  content: "MECHANIC SKILLS CHALLENGE";
+  display: block;
+  margin-bottom: 13px;
+  color: var(--mechanic-orange-dark);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1.2;
+  letter-spacing: .18em;
+}
+
+.legacy-quiz--mechanic .legacy-start .legacy-sub {
+  max-width: 540px;
+  margin: 18px auto 21px;
+  color: #44515a;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.legacy-quiz--mechanic .legacy-social {
+  width: min(100%, 500px);
+  min-height: 52px;
+  margin: 0 auto 22px;
+  padding: 7px 15px;
+  border: 1px solid rgba(155, 79, 18, .25);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, .06);
+}
+
+.legacy-quiz--mechanic .legacy-social__primary {
+  color: var(--mechanic-orange-dark);
+}
+
+.legacy-quiz--mechanic .legacy-social__muted,
+.legacy-quiz--mechanic .legacy-social__secondary {
+  color: #56616a;
+}
+
+.legacy-quiz--mechanic .legacy-primary {
+  width: min(100%, 450px);
+  min-height: 66px;
+  border: 2px solid var(--mechanic-orange-dark);
+  border-radius: 13px;
+  background: linear-gradient(180deg, #f0a23a, var(--mechanic-orange));
+  box-shadow: 0 7px 0 var(--mechanic-orange-dark), 0 16px 28px rgba(229, 138, 34, .28), inset 0 1px rgba(255, 255, 255, .3);
+  color: #11191f;
+  font-size: 19px;
+  font-weight: 950;
+}
+
+.legacy-quiz--mechanic .legacy-primary:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 var(--mechanic-orange-dark), 0 8px 15px rgba(0, 0, 0, .18);
+}
+
+.legacy-quiz--mechanic .legacy-ad-note {
+  color: #56616a;
+}
+
+.legacy-quiz--mechanic .legacy-ad-note b {
+  color: var(--mechanic-ink);
+}
+
+.legacy-quiz--mechanic .legacy-shield {
+  border-color: var(--mechanic-orange-dark);
+  color: var(--mechanic-orange-dark);
+}
+
+.legacy-quiz--mechanic .legacy-card:not(.legacy-start),
+.legacy-quiz--mechanic .quiz-info-panel {
+  border-color: rgba(229, 138, 34, .38);
+  background: color-mix(in srgb, var(--mechanic-paper) 97%, #fff);
+  color: var(--mechanic-ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .27);
+}
+
+.legacy-quiz--mechanic .quiz-info-panel {
+  margin-top: 30px;
+}
+
+.legacy-quiz--mechanic .quiz-info-panel h2,
+.legacy-quiz--mechanic .quiz-info-panel h3,
+.legacy-quiz--mechanic .quiz-info-panel__skill strong {
+  color: var(--mechanic-ink);
+}
+
+.legacy-quiz--mechanic .quiz-info-panel p,
+.legacy-quiz--mechanic .quiz-info-panel__skill small,
+.legacy-quiz--mechanic .quiz-info-panel__restart-note {
+  color: #58636b !important;
+}
+
+.legacy-quiz--mechanic .quiz-info-panel__skill {
+  border-color: rgba(229, 138, 34, .23);
+  background: rgba(255, 255, 255, .62);
+}
+
+.legacy-quiz--mechanic .quiz-info-panel__icon,
+.legacy-quiz--mechanic .quiz-info-panel__skill-icon {
+  color: var(--mechanic-orange-dark);
+}
+
+.legacy-quiz--mechanic .legacy-progress {
+  border-color: rgba(244, 197, 66, .18);
+  background: rgba(11, 18, 23, .82);
+}
+
+.legacy-quiz--mechanic .legacy-progress__row strong {
+  color: #fff8e2;
+}
+
+.legacy-quiz--mechanic .legacy-progress__row span {
+  background: var(--mechanic-orange);
+  color: #11191f;
+}
+
+.legacy-quiz--mechanic .legacy-progress-dots {
+  background: rgba(255, 255, 255, .12);
+}
+
+.legacy-quiz--mechanic .legacy-question h2 {
+  border-color: rgba(229, 138, 34, .28);
+  background: linear-gradient(145deg, #fffefa, var(--mechanic-paper));
+  color: var(--mechanic-ink);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+}
+
+.legacy-quiz--mechanic .legacy-answer {
+  min-height: 68px;
+  padding-right: 18px;
+  border-color: rgba(229, 138, 34, .24);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--mechanic-ink);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, .055);
+}
+
+.legacy-quiz--mechanic .legacy-answer:hover:not(:disabled) {
+  border-color: var(--mechanic-orange);
+  background: #fff9ed;
+}
+
+.legacy-quiz--mechanic.legacy-quiz--short-locked .legacy-answer.selected::after,
+.legacy-quiz--mechanic.legacy-quiz--short-locked .legacy-answer.selected:not(.correct):not(.wrong)::after {
+  content: none;
+  display: none;
+}
+
+.legacy-quiz--mechanic .legacy-stage-result,
+.legacy-quiz--mechanic .legacy-result-gate,
+.legacy-quiz--mechanic [data-screen="results"] {
+  border-top: 8px solid var(--mechanic-yellow);
+  border-radius: 22px;
+}
+
+.legacy-quiz--mechanic.legacy-quiz--short-locked .legacy-result-gate::after {
+  content: "🔧";
+}
+
+.legacy-quiz--mechanic .legacy-stage-heading h2,
+.legacy-quiz--mechanic .legacy-result-hero h2,
+.legacy-quiz--mechanic .legacy-result-gate h2 {
+  color: var(--mechanic-ink);
+}
+
+.legacy-quiz--mechanic .legacy-stage-emoji,
+.legacy-quiz--mechanic .legacy-result-medal {
+  border: 1px solid rgba(229, 138, 34, .32);
+  background: linear-gradient(145deg, var(--mechanic-paper), #fff);
+}
+
+.legacy-quiz--mechanic .legacy-stage-next,
+.legacy-quiz--mechanic .legacy-stage-stats div,
+.legacy-quiz--mechanic .legacy-unlock-panel,
+.legacy-quiz--mechanic .legacy-cog-item,
+.legacy-quiz--mechanic .legacy-stage-chip {
+  border-color: rgba(229, 138, 34, .25);
+  background: rgba(255, 255, 255, .6);
+}
+
+.legacy-quiz--mechanic .legacy-stage-next strong,
+.legacy-quiz--mechanic .legacy-stage-stats strong,
+.legacy-quiz--mechanic .legacy-profile-badge {
+  color: var(--mechanic-orange-dark);
+}
+
+.legacy-quiz--mechanic .legacy-stage-trail__dot--complete {
+  border-color: var(--mechanic-orange);
+  background: var(--mechanic-orange);
+}
+
+.legacy-quiz--mechanic .legacy-stage-trail__dot--next {
+  border-color: var(--mechanic-yellow);
+  box-shadow: 0 0 0 4px rgba(244, 197, 66, .22);
+}
+
+.legacy-quiz--mechanic .legacy-result-meter span,
+.legacy-quiz--mechanic .legacy-cog-item em i,
+.legacy-quiz--mechanic .legacy-stage-chip i {
+  background: linear-gradient(90deg, var(--mechanic-orange), var(--mechanic-yellow));
+}
+
+@media (max-width: 619px) {
+  .legacy-quiz.legacy-quiz--mechanic {
+    min-height: calc(100vh - 44px);
+  }
+
+  .legacy-quiz--mechanic .legacy-main {
+    padding: 12px 10px 24px;
+  }
+
+  .legacy-quiz--mechanic .legacy-start {
+    padding: 30px 19px 29px;
+    border-radius: 23px;
+  }
+
+  .legacy-quiz--mechanic .legacy-badge {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 14px;
+    border-radius: 19px;
+  }
+
+  .legacy-quiz--mechanic .legacy-badge span {
+    font-size: 36px;
+  }
+
+  .legacy-quiz--mechanic .legacy-start h1 {
+    font-size: clamp(35px, 10.8vw, 46px);
+  }
+
+  .legacy-quiz--mechanic .legacy-start .legacy-sub,
+  .legacy-quiz--mechanic .legacy-social {
+    margin-bottom: 17px;
+  }
+
+  .legacy-quiz--mechanic .legacy-primary {
+    min-height: 60px;
+    font-size: 18px;
+  }
+}

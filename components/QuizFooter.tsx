@@ -122,6 +122,7 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
   const isTrainQuiz = quizSlug === "train";
   const isBarristerQuiz = quizSlug === "barrister";
   const isChefQuiz = quizSlug === "chef";
+  const isMechanicQuiz = quizSlug === "mechanic";
   const customFooter = isParamedicQuiz
     ? {
         icon: "bolt" as InfoIconType,
@@ -174,6 +175,19 @@ export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) 
               cards: [{ title: "Prep Control", body: "Plan the work before service." }, { title: "Timing & Ratios", body: "Keep quantities and clocks aligned." }, { title: "Service Focus", body: "Stay clear when orders build." }],
               restart: "Restart service from the first prep list.",
             }
+          : isMechanicQuiz
+            ? {
+                icon: "bolt" as InfoIconType,
+                howTitle: "From Workshop Scan to Final Repair",
+                howBody: "Every bay presents four fast choices. Read the job card, spot the useful detail, and trace the fault as the workshop pressure builds.",
+                testsTitle: "Skills In The Workshop",
+                testsBody: "The fictional scenarios use worldwide-friendly language and self-contained rules to explore practical mechanic-style thinking:",
+                bullets: ["Matching tools and parts to a stated job", "Reading measurements and simple ratios", "Following repair sequences exactly", "Tracing faults from clear evidence", "Giving calm, useful workshop handovers"],
+                scoringTitle: "Your Mechanic Profile",
+                scoringBody: "Your entertainment-only result combines observation, tool knowledge, measurement, fault logic, communication, and calm judgment. It is not repair advice, safety guidance, professional training, certification, or an employment assessment.",
+                cards: [{ title: "Tools & Detail", body: "Spot the part or tool that matters." }, { title: "Measure & Sequence", body: "Keep values and steps in order." }, { title: "Fault Logic", body: "Follow the evidence to the cause." }],
+                restart: "Restart from the first workshop scan.",
+              }
           : null;
   const howItWorksTitle = customFooter?.howTitle ?? template.howItWorksTitle;
   const howItWorksBody = customFooter?.howBody ?? template.howItWorksBody;
