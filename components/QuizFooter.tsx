@@ -3,6 +3,7 @@ import type { Translations } from "@/lib/i18n";
 
 type QuizFooterProps = {
   footer: QuizFooterContent;
+  quizSlug: string;
   translations: Translations;
 };
 
@@ -114,15 +115,44 @@ export function getQuizFooterContent(quiz: Quiz): QuizFooterContent | null {
   return null;
 }
 
-export function QuizFooter({ footer, translations }: QuizFooterProps) {
+export function QuizFooter({ footer, quizSlug, translations }: QuizFooterProps) {
   const template = translations.quizFooter;
   const skillIcons: InfoIconType[] = ["brain", "search", "bolt"];
+  const isParamedicQuiz = quizSlug === "paramedic";
+  const howItWorksTitle = isParamedicQuiz ? "From Arrival to Handover" : template.howItWorksTitle;
+  const howItWorksBody = isParamedicQuiz
+    ? "Every call presents four fast choices. Read the scene, identify the useful facts, and choose the clearest next step as the pressure builds."
+    : template.howItWorksBody;
+  const whatThisTestsTitle = isParamedicQuiz ? "Skills On Call" : template.whatThisTestsTitle;
+  const whatThisTestsBody = isParamedicQuiz
+    ? "The scenarios explore practical thinking and human skills that help a response team stay organised:"
+    : template.whatThisTestsBody;
+  const testBullets = isParamedicQuiz
+    ? [
+        "Scanning a scene before acting",
+        "Communicating clearly and inclusively",
+        "Prioritising useful facts under pressure",
+        "Supporting teammates and clean handovers",
+        "Respecting scope and seeking support",
+      ]
+    : template.testBullets;
+  const scoringTitle = isParamedicQuiz ? "Your Response Profile" : template.scoringTitle;
+  const scoringBody = isParamedicQuiz
+    ? "Your entertainment-only result combines accuracy across awareness, communication, decision-making, and professional thinking. It is a challenge profile, not a clinical or employment assessment."
+    : template.scoringBody;
+  const featureCards = isParamedicQuiz
+    ? [
+        { title: "Scene Awareness", body: "Spot risks and key details." },
+        { title: "Clear Communication", body: "Get and give usable information." },
+        { title: "Calm Decisions", body: "Choose practical next steps." },
+      ]
+    : template.featureCards.slice(0, 3);
 
   return (
     <section className="legacy-card quiz-info-panel">
       <div className="quiz-info-panel__intro">
         <span className="quiz-info-panel__icon quiz-info-panel__icon--primary">
-          <InfoIcon type="building" />
+          <InfoIcon type={isParamedicQuiz ? "bolt" : "building"} />
         </span>
         <div>
           <h2>{footer.aboutTitle}</h2>
@@ -135,17 +165,17 @@ export function QuizFooter({ footer, translations }: QuizFooterProps) {
           <span className="quiz-info-panel__icon">
             <InfoIcon type="path" />
           </span>
-          <h3>{template.howItWorksTitle}</h3>
-          <p>{template.howItWorksBody}</p>
+          <h3>{howItWorksTitle}</h3>
+          <p>{howItWorksBody}</p>
         </div>
         <div className="quiz-info-panel__column">
           <span className="quiz-info-panel__icon">
             <InfoIcon type="brain" />
           </span>
-          <h3>{template.whatThisTestsTitle}</h3>
-          <p>{template.whatThisTestsBody}</p>
+          <h3>{whatThisTestsTitle}</h3>
+          <p>{whatThisTestsBody}</p>
           <ul className="quiz-info-panel__checks">
-            {template.testBullets.map((bullet) => (
+            {testBullets.map((bullet) => (
               <li key={bullet}>
                 <span aria-hidden="true">✓</span>
                 {bullet}
@@ -160,13 +190,13 @@ export function QuizFooter({ footer, translations }: QuizFooterProps) {
           <InfoIcon type="report" />
         </span>
         <div>
-          <h3>{template.scoringTitle}</h3>
-          <p>{template.scoringBody}</p>
+          <h3>{scoringTitle}</h3>
+          <p>{scoringBody}</p>
         </div>
       </div>
 
       <div className="quiz-info-panel__skills">
-        {template.featureCards.slice(0, 3).map((card, index) => (
+        {featureCards.map((card, index) => (
           <div key={card.title} className={`quiz-info-panel__skill quiz-info-panel__skill--${index + 1}`}>
             <span className="quiz-info-panel__skill-icon">
               <InfoIcon type={skillIcons[index] || "star"} />
@@ -180,7 +210,7 @@ export function QuizFooter({ footer, translations }: QuizFooterProps) {
       <button type="button" data-action="restart" className="legacy-primary legacy-restart">
         <span aria-hidden="true">↻</span> {translations.quiz.restartTest}
       </button>
-      <p className="quiz-info-panel__restart-note">{template.restartNote}</p>
+      <p className="quiz-info-panel__restart-note">{isParamedicQuiz ? "Restart the shift from the first call." : template.restartNote}</p>
     </section>
   );
 }
