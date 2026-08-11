@@ -1,0 +1,918 @@
+{
+  "slug": "memory",
+  "mode": "scored",
+  "title": "Die meisten Erwachsenen erreichen bei diesem Gedächtnistest keine 80 %",
+  "seoTitle": "Gedächtnistest | Herausforderung zum verzögerten Abruf",
+  "seoDescription": "Ein unterhaltsamer Gedächtnistest mit Signalen, Szenendetails, Reihenfolgen, Ablenkungen und verzögertem Abruf.",
+  "pageTitle": "Die meisten Erwachsenen erreichen bei diesem Gedächtnistest keine 80 %",
+  "eyebrow": "Gedächtnis-Challenge",
+  "summary": "Eine schnelle Gedächtnis-Challenge, bei der du dir kleine Details merkst, abgelenkt wirst und später unerwartet wieder danach gefragt wirst.",
+  "duration": "~8 min",
+  "publishedAt": "2026-08-11T09:00:00Z",
+  "difficulty": "Hard",
+  "passRate": "14%",
+  "cardIcon": "🧠",
+  "cardGradient": "linear-gradient(135deg, #24124d 0%, #673ab7 52%, #19a7a0 100%)",
+  "accent": "#673ab7",
+  "homepage": {
+    "title": "Die meisten Erwachsenen erreichen bei diesem Gedächtnistest keine 80 %",
+    "summary": "Signale, Szenen und Reihenfolgen einprägen – und herausfinden, was die Ablenkungen übersteht.",
+    "thumbnailUrl": "/images/thumbnails/memory.jpg",
+    "thumbnailAlt": "Gedächtnis-Challenge mit farbigen Karten, Symbolen und Zahlenhinweisen",
+    "icon": "🧠",
+    "gradient": "linear-gradient(135deg, #24124d 0%, #673ab7 52%, #19a7a0 100%)",
+    "featured": false
+  },
+  "heroPoints": [
+    "Gezielt entwickelte Gedächtnishinweise",
+    "Verzögerte Rückfragen und Ablenkungen",
+    "Sofortiges Ergebnis nur zur Unterhaltung"
+  ],
+  "landing": {
+    "quickStartText": "Es beginnt einfach. Dann kehren frühere Details zurück, wenn man am wenigsten damit rechnet.",
+    "socialProof": "Mehr als 62.000 Personen haben es diese Woche versucht",
+    "ctaLabel": "Test starten"
+  },
+  "footer": {
+    "aboutTitle": "Über diese Gedächtnis-Challenge",
+    "aboutText": "Diese reine Unterhaltungs-Challenge untersucht Aufmerksamkeit, Wiedererkennen, Reihenfolge, Arbeitsgedächtnis und verzögerten Abruf mit fiktiven Hinweisen und eigenständigen Aufgaben. Sie ist keine medizinische, kognitive, psychologische, Demenz-, ADHS-, Gedächtnis-, Bildungs- oder Eignungsbeurteilung."
+  },
+  "result": {
+    "profileName": "Gedächtnis-Challenge",
+    "profiles": [
+      {
+        "minRatio": 0.8,
+        "tier": "Gedächtnis-Meister",
+        "title": "Die Hinweise blieben sicher gespeichert.",
+        "copy": "Hervorragender Abruf von Signalen, Szenen, Sequenzen und verzögerten Kombinationen. Der stärkste Bereich war {stage}.",
+        "percentile": "Top 8 %"
+      },
+      {
+        "minRatio": 0.65,
+        "tier": "Scharfes Gedächtnis",
+        "title": "Die Ablenkungen hatten kaum eine Chance.",
+        "copy": "Starke Details blieben erhalten, obwohl neue Muster um Aufmerksamkeit konkurrierten. Der stärkste Bereich war {stage}.",
+        "percentile": "Top 22 %"
+      },
+      {
+        "minRatio": 0.5,
+        "tier": "Solides Gedächtnis",
+        "title": "Mehr Details blieben hängen als bei den meisten Teilnehmern.",
+        "copy": "Ein guter Teil der Signale, Szenendetails und Sequenzen blieb abrufbar. Der stärkste Bereich war {stage}.",
+        "percentile": "Top 45 %"
+      },
+      {
+        "minRatio": 0,
+        "tier": "Gedächtnis im Training",
+        "title": "Die verzögerten Hinweise zeigten ihre Wirkung.",
+        "copy": "Bei den schwierigsten Rückfragen helfen bewusstes Einprägen und ruhiges Vergleichen. Der beste Bereich war {stage}.",
+        "percentile": "Challenge abgeschlossen"
+      }
+    ],
+    "scoreDimensions": [
+      {
+        "label": "Einprägen & Aufmerksamkeit",
+        "categories": [
+          "signal-lock",
+          "detail-capture"
+        ]
+      },
+      {
+        "label": "Reihenfolge",
+        "categories": [
+          "order-lock",
+          "sequence-recall"
+        ]
+      },
+      {
+        "label": "Verzögerter Abruf",
+        "categories": [
+          "first-recall",
+          "scene-recall",
+          "deep-recall"
+        ]
+      },
+      {
+        "label": "Arbeitsgedächtnis",
+        "categories": [
+          "interference-grid",
+          "cross-link",
+          "final-memory"
+        ]
+      }
+    ]
+  },
+  "questionCount": 60,
+  "stageGroups": [
+    {
+      "title": "Signal-Codes",
+      "encouragement": "Signale gespeichert. Jetzt zählen die kleinen Details in sechs kurzen Szenen.",
+      "questions": [
+        {
+          "prompt": "Präge dir das Signal Blauer Komet ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "☄️",
+            "label": "Blauer Komet",
+            "value": "47"
+          },
+          "choices": [
+            "74",
+            "47",
+            "29",
+            "54"
+          ],
+          "answerIndex": 1,
+          "explanation": "Das Signal Blauer Komet gehört zur Zahl 47.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Präge dir das Signal Kupferfuchs ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "🦊",
+            "label": "Kupferfuchs",
+            "value": "18"
+          },
+          "choices": [
+            "81",
+            "36",
+            "63",
+            "18"
+          ],
+          "answerIndex": 3,
+          "explanation": "Das Signal Kupferfuchs gehört zur Zahl 18.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Präge dir das Signal Grüne Laterne ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "🏮",
+            "label": "Grüne Laterne",
+            "value": "63"
+          },
+          "choices": [
+            "63",
+            "36",
+            "54",
+            "47"
+          ],
+          "answerIndex": 0,
+          "explanation": "Das Signal Grüne Laterne gehört zur Zahl 63.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Präge dir das Signal Silberschlüssel ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "🔑",
+            "label": "Silberschlüssel",
+            "value": "29"
+          },
+          "choices": [
+            "92",
+            "47",
+            "29",
+            "18"
+          ],
+          "answerIndex": 2,
+          "explanation": "Das Signal Silberschlüssel gehört zur Zahl 29.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Präge dir das Signal Violetter Mond ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "🌙",
+            "label": "Violetter Mond",
+            "value": "54"
+          },
+          "choices": [
+            "45",
+            "54",
+            "63",
+            "36"
+          ],
+          "answerIndex": 1,
+          "explanation": "Das Signal Violetter Mond gehört zur Zahl 54.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Präge dir das Signal Bernsteindrachen ein. Welche Zahl gehört dazu?",
+          "memorySeed": {
+            "icon": "🪁",
+            "label": "Bernsteindrachen",
+            "value": "36"
+          },
+          "choices": [
+            "36",
+            "63",
+            "18",
+            "54"
+          ],
+          "answerIndex": 0,
+          "explanation": "Das Signal Bernsteindrachen gehört zur Zahl 36.",
+          "category": "signal-lock"
+        }
+      ]
+    },
+    {
+      "title": "Details erfassen",
+      "encouragement": "Szenen erfasst. Als Nächstes musst du dir drei kurze Sequenzen in der richtigen Reihenfolge merken.",
+      "questions": [
+        {
+          "prompt": "Maya legte ein rotes Notizbuch neben einen silbernen Becher. Welcher Gegenstand war silbern?",
+          "choices": [
+            "Notizbuch",
+            "Tisch",
+            "Becher",
+            "Tasche"
+          ],
+          "answerIndex": 2,
+          "explanation": "In der Szene wird der Becher als silbern beschrieben.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "Auf einer Paketkarte steht Dienstag um 14:30 Uhr. Welcher Tag steht auf der Karte?",
+          "choices": [
+            "Dienstag",
+            "Donnerstag",
+            "Freitag",
+            "Montag"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die Paketkarte nennt Dienstag.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "In Leos Spind befinden sich ein Schal, ein Kompass und eine Zitrone – in dieser Reihenfolge. Welcher Gegenstand ist in der Mitte?",
+          "choices": [
+            "Schal",
+            "Zitrone",
+            "Schlüssel",
+            "Kompass"
+          ],
+          "answerIndex": 3,
+          "explanation": "Der Kompass sitzt zwischen Schal und Zitrone.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "Die Café-Bestellung ist ein Haferdrink mit Zimt und ohne Eis. Welcher Artikel ist ausgeschlossen?",
+          "choices": [
+            "Zimt",
+            "Eis",
+            "Haferdrink",
+            "Becher"
+          ],
+          "answerIndex": 1,
+          "explanation": "In der Bestellung steht ausdrücklich kein Eis.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "Ein Abzeichen zeigt ein Dreieck, drei Punkte und einen orangefarbenen Rand. Welche Farbe hat der Rand?",
+          "choices": [
+            "Blau",
+            "Silber",
+            "Orange",
+            "Grün"
+          ],
+          "answerIndex": 2,
+          "explanation": "Die Abzeichenbeschreibung weist einen orangefarbenen Rand auf.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "Eine Shuttle-Karte zeigt Bereich C, Sitzplatz 12, Ziel Nordpier. Welcher Sitzplatz ist aufgeführt?",
+          "choices": [
+            "21",
+            "C",
+            "14",
+            "12"
+          ],
+          "answerIndex": 3,
+          "explanation": "Die Shuttle-Karte weist Sitzplatz 12 zu.",
+          "category": "detail-capture"
+        }
+      ]
+    },
+    {
+      "title": "Reihenfolge merken",
+      "encouragement": "Reihenfolgen gespeichert. Jetzt werden die Signale ohne ihre Karten abgerufen.",
+      "questions": [
+        {
+          "prompt": "Drei Lichter blinken rot, blau und dann gold. Welche Farbe kommt als zweite?",
+          "choices": [
+            "Gold",
+            "Rot",
+            "Grün",
+            "Blau"
+          ],
+          "answerIndex": 3,
+          "explanation": "Blau liegt in der angegebenen Reihenfolge zwischen Rot und Gold.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "Ein Code erscheint als 8, 3, 6. Welche Zahl ist die letzte?",
+          "choices": [
+            "8",
+            "6",
+            "3",
+            "9"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sechs ist die letzte Zahl in der Reihenfolge.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "Die Aufgaben sind: Karte falten, klingeln, Schachtel schließen. Welche Aufgabe kommt zuerst?",
+          "choices": [
+            "Schließen Sie die Box",
+            "Klingeln Sie",
+            "Falten Sie die Karte",
+            "Öffne die Kiste"
+          ],
+          "answerIndex": 2,
+          "explanation": "Das Falten der Karte wird vor den anderen Aufgaben aufgeführt.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "Die Tierkarten erscheinen als Eule, Fuchs, Wal. Bei welcher Option bleibt die Reihenfolge erhalten?",
+          "choices": [
+            "Eule → Fuchs → Wal",
+            "Fuchs → Eule → Wal",
+            "Wal → Fuchs → Eule",
+            "Eule → Wal → Fuchs"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die ursprüngliche Reihenfolge ist Eule, dann Fuchs, dann Wal.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "Die Formen sind Kreis, Stern, Quadrat, Dreieck. Welche Form steht unmittelbar vor dem Dreieck?",
+          "choices": [
+            "Kreis",
+            "Stern",
+            "Dreieck",
+            "Quadrat"
+          ],
+          "answerIndex": 3,
+          "explanation": "Das Quadrat erscheint direkt vor dem Dreieck.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "Die Namen erscheinen als Imani, Sofia, Kenji. Welcher Name steht in der Mitte?",
+          "choices": [
+            "Kenji",
+            "Sofia",
+            "Imani",
+            "Maya"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sofia liegt zwischen Imani und Kenji.",
+          "category": "order-lock"
+        }
+      ]
+    },
+    {
+      "title": "Erster Abruf",
+      "encouragement": "Erster Abruf geschafft. Jetzt fordert ein Ablenkungsraster deine Aufmerksamkeit.",
+      "questions": [
+        {
+          "prompt": "Welche Nummer gehörte ohne die Signalkarte zum Blauen Kometen?",
+          "choices": [
+            "47",
+            "54",
+            "29",
+            "74"
+          ],
+          "answerIndex": 0,
+          "explanation": "Der Blaue Komet wurde mit 47 gepaart.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "Welche Nummer gehörte dem Kupferfuchs?",
+          "choices": [
+            "36",
+            "81",
+            "18",
+            "63"
+          ],
+          "answerIndex": 2,
+          "explanation": "Der Kupferfuchs wurde mit 18 gepaart.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "Welche Nummer gehörte zur Grünen Laterne?",
+          "choices": [
+            "36",
+            "63",
+            "47",
+            "54"
+          ],
+          "answerIndex": 1,
+          "explanation": "Die Grüne Laterne wurde mit 63 gepaart.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "Welche Nummer gehörte zum Silberschlüssel?",
+          "choices": [
+            "47",
+            "92",
+            "18",
+            "29"
+          ],
+          "answerIndex": 3,
+          "explanation": "Der Silberschlüssel wurde mit 29 gepaart.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "Welche Zahl gehörte zum Violetten Mond?",
+          "choices": [
+            "54",
+            "45",
+            "36",
+            "63"
+          ],
+          "answerIndex": 0,
+          "explanation": "Der Violette Mond wurde mit 54 gepaart.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "Welche Nummer gehörte zum Bernsteindrachen?",
+          "choices": [
+            "63",
+            "18",
+            "36",
+            "54"
+          ],
+          "answerIndex": 2,
+          "explanation": "Der Bernsteindrachen wurde mit 36 gepaart.",
+          "category": "first-recall"
+        }
+      ]
+    },
+    {
+      "title": "Ablenkungsraster",
+      "encouragement": "Ablenkungen überwunden. Jetzt kehren die früheren Szenendetails zurück.",
+      "questions": [
+        {
+          "prompt": "Welcher Gegenstand gehört nicht zu den anderen?",
+          "choices": [
+            "Violine",
+            "Trommel",
+            "Leiter",
+            "Flöte"
+          ],
+          "answerIndex": 2,
+          "explanation": "Leiter ist kein Musikinstrument.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Welche Zahl setzt das Muster fort: 5, 10, 15, ...?",
+          "choices": [
+            "18",
+            "20",
+            "25",
+            "30"
+          ],
+          "answerIndex": 1,
+          "explanation": "Das Muster erhöht sich um fünf, die nächste Zahl ist also 20.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Welches Paar hat den klarsten funktionalen Zusammenhang?",
+          "choices": [
+            "Wolke und Stuhl",
+            "Fluss und Bleistift",
+            "Fenster und Löffel",
+            "Schloss und Schlüssel"
+          ],
+          "answerIndex": 3,
+          "explanation": "Ein Schlüssel dient dazu, ein passendes Schloss zu bedienen.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Welche Dauer ist die kürzeste?",
+          "choices": [
+            "15 Minuten",
+            "45 Minuten",
+            "30 Minuten",
+            "60 Minuten"
+          ],
+          "answerIndex": 0,
+          "explanation": "Fünfzehn Minuten sind kürzer als die anderen Dauern.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Welche Liste ist alphabetisch geordnet?",
+          "choices": [
+            "Birne, Apfel, Mango",
+            "Apfel, Birne, Mango",
+            "Mango, Birne, Apfel",
+            "Birne, Mango, Apfel"
+          ],
+          "answerIndex": 1,
+          "explanation": "Apfel, Birne, Mango steht in alphabetischer Reihenfolge.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Vervollständigen Sie das Wechselmuster: Kreis, Quadrat, Kreis, ...",
+          "choices": [
+            "Dreieck",
+            "Kreis",
+            "Quadrat",
+            "Stern"
+          ],
+          "answerIndex": 2,
+          "explanation": "Das Muster wechselt zwischen Kreis und Quadrat.",
+          "category": "interference-grid"
+        }
+      ]
+    },
+    {
+      "title": "Szenen abrufen",
+      "encouragement": "Szenen abgerufen. Als Nächstes sind die ursprünglichen Sequenzen dran.",
+      "questions": [
+        {
+          "prompt": "Welcher Gegenstand in Mayas Szene war silbern?",
+          "choices": [
+            "Notizbuch",
+            "Becher",
+            "Tasche",
+            "Tisch"
+          ],
+          "answerIndex": 1,
+          "explanation": "Maya legte ein rotes Notizbuch neben einen silbernen Becher.",
+          "category": "scene-recall"
+        },
+        {
+          "prompt": "Welcher Tag stand auf der Paketkarte?",
+          "choices": [
+            "Dienstag",
+            "Donnerstag",
+            "Montag",
+            "Freitag"
+          ],
+          "answerIndex": 0,
+          "explanation": "Auf der Paketkarte stand Dienstag um 14:30 Uhr.",
+          "category": "scene-recall"
+        },
+        {
+          "prompt": "Welcher Gegenstand lag zwischen dem Schal und der Zitrone?",
+          "choices": [
+            "Schlüssel",
+            "Schal",
+            "Kompass",
+            "Becher"
+          ],
+          "answerIndex": 2,
+          "explanation": "Die Reihenfolge im Schließfach lautete: Schal, Kompass, Zitrone.",
+          "category": "scene-recall"
+        },
+        {
+          "prompt": "Welcher Artikel wurde von der Café-Bestellung ausgeschlossen?",
+          "choices": [
+            "Zimt",
+            "Haferdrink",
+            "Becher",
+            "Eis"
+          ],
+          "answerIndex": 3,
+          "explanation": "In der Café-Bestellung war kein Eis angegeben.",
+          "category": "scene-recall"
+        },
+        {
+          "prompt": "Welche Farbe hatte der Abzeichenrand?",
+          "choices": [
+            "Orange",
+            "Grün",
+            "Silber",
+            "Blau"
+          ],
+          "answerIndex": 0,
+          "explanation": "Das Dreiecksabzeichen hatte einen orangefarbenen Rand.",
+          "category": "scene-recall"
+        },
+        {
+          "prompt": "Welcher Sitzplatz stand auf der Shuttle-Karte?",
+          "choices": [
+            "21",
+            "14",
+            "C",
+            "12"
+          ],
+          "answerIndex": 3,
+          "explanation": "Auf der Shuttle-Karte war Platz 12 aufgeführt.",
+          "category": "scene-recall"
+        }
+      ]
+    },
+    {
+      "title": "Sequenzen abrufen",
+      "encouragement": "Sequenzen wiederhergestellt. Jetzt müssen ältere Hinweise miteinander verknüpft werden.",
+      "questions": [
+        {
+          "prompt": "Welche Farbe kam in der Sequenz aus drei Lichtern an zweiter Stelle?",
+          "choices": [
+            "Gold",
+            "Rot",
+            "Grün",
+            "Blau"
+          ],
+          "answerIndex": 3,
+          "explanation": "Die Lichter blinkten rot, blau und dann gold.",
+          "category": "sequence-recall"
+        },
+        {
+          "prompt": "Welche Zahl beendete den Code 8, 3, 6?",
+          "choices": [
+            "8",
+            "3",
+            "6",
+            "9"
+          ],
+          "answerIndex": 2,
+          "explanation": "Sechs war die letzte Zahl im Code.",
+          "category": "sequence-recall"
+        },
+        {
+          "prompt": "Welche Aufgabe kam zuerst?",
+          "choices": [
+            "Falten Sie die Karte",
+            "Klingeln Sie",
+            "Schließen Sie die Box",
+            "Öffne die Kiste"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die erste Aufgabe bestand darin, die Karte zu falten.",
+          "category": "sequence-recall"
+        },
+        {
+          "prompt": "Welche Option stellt die Reihenfolge der Tierkarten wieder her?",
+          "choices": [
+            "Fuchs → Eule → Wal",
+            "Eule → Fuchs → Wal",
+            "Wal → Eule → Fuchs",
+            "Eule → Wal → Fuchs"
+          ],
+          "answerIndex": 1,
+          "explanation": "Die Karten erschienen als Eule, Fuchs, Wal.",
+          "category": "sequence-recall"
+        },
+        {
+          "prompt": "Welche Form kam unmittelbar vor dem Dreieck?",
+          "choices": [
+            "Kreis",
+            "Stern",
+            "Dreieck",
+            "Quadrat"
+          ],
+          "answerIndex": 3,
+          "explanation": "Die Sequenz endete mit einem Quadrat, dann einem Dreieck.",
+          "category": "sequence-recall"
+        },
+        {
+          "prompt": "Welcher Name stand zwischen Imani und Kenji?",
+          "choices": [
+            "Sofia",
+            "Maya",
+            "Kenji",
+            "Imani"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die Namensreihenfolge war Imani, Sofia, Kenji.",
+          "category": "sequence-recall"
+        }
+      ]
+    },
+    {
+      "title": "Hinweise verknüpfen",
+      "encouragement": "Verbindungen hergestellt. Die ältesten Szenendetails kehren mit weniger Hinweisen zurück.",
+      "questions": [
+        {
+          "prompt": "Wie hoch ist der Gesamtwert des Blauen Kometen und des Kupferfuchses?",
+          "choices": [
+            "65",
+            "72",
+            "76",
+            "83"
+          ],
+          "answerIndex": 0,
+          "explanation": "Der Blaue Komet hatte den Wert 47 und der Kupferfuchs 18; zusammen ergeben sie 65.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Welches Signal hatte den größeren Wert: Grüne Laterne oder Violetter Mond?",
+          "choices": [
+            "Sie waren gleich",
+            "Violetter Mond",
+            "Keiner hatte eine Nummer",
+            "Grüne Laterne"
+          ],
+          "answerIndex": 3,
+          "explanation": "Die Grüne Laterne hatte den Wert 63 und damit mehr als der Violette Mond mit 54.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Welches Paar ergibt 90?",
+          "choices": [
+            "Blauer Komet + Silberschlüssel",
+            "Violetter Mond + Bernsteindrachen",
+            "Kupferfuchs + Grüne Laterne",
+            "Silberschlüssel + Violetter Mond"
+          ],
+          "answerIndex": 1,
+          "explanation": "Der Violette Mond hatte den Wert 54 und der Bernsteindrachen 36; zusammen ergeben sie 90.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Welches Signal hatte den kleinsten Wert?",
+          "choices": [
+            "Bernsteindrachen",
+            "Silberschlüssel",
+            "Kupferfuchs",
+            "Blauer Komet"
+          ],
+          "answerIndex": 2,
+          "explanation": "Der Kupferfuchs hatte mit 18 den kleinsten Signalwert.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Blauer Komet minus Silberschlüssel ergibt was?",
+          "choices": [
+            "11",
+            "18",
+            "25",
+            "29"
+          ],
+          "answerIndex": 1,
+          "explanation": "Der Blaue Komet hatte den Wert 47 und der Silberschlüssel 29; die Differenz beträgt 18.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Welches Signal trug ursprünglich diese Differenz von 18?",
+          "choices": [
+            "Bernsteindrachen",
+            "Violetter Mond",
+            "Kupferfuchs",
+            "Grüne Laterne"
+          ],
+          "answerIndex": 2,
+          "explanation": "Der Kupferfuchs war das Signal mit dem Wert 18.",
+          "category": "cross-link"
+        }
+      ]
+    },
+    {
+      "title": "Langzeitabruf",
+      "encouragement": "Langzeitabruf geschafft. Nur der finale Gedächtnischeck bleibt.",
+      "questions": [
+        {
+          "prompt": "Welches Ziel stand auf der Shuttle-Karte?",
+          "choices": [
+            "Westmarkt",
+            "Bucht C",
+            "Nordpier",
+            "Zentralpark"
+          ],
+          "answerIndex": 2,
+          "explanation": "Auf der Shuttle-Karte war Nordpier als Ziel aufgeführt.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Welche Angaben waren neben dem Haferdrink auch auf der Café-Bestellung enthalten?",
+          "choices": [
+            "Zimt",
+            "Eis",
+            "Zitrone",
+            "Milch"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die Bestellung beinhaltete Zimt und kein Eis.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Welche Nummer erschien als Shuttle-Sitz?",
+          "choices": [
+            "14",
+            "21",
+            "C",
+            "12"
+          ],
+          "answerIndex": 3,
+          "explanation": "Auf der Shuttle-Karte stand Platz 12.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Wie viele Punkte erschienen auf dem Dreiecksabzeichen?",
+          "choices": [
+            "Zwei",
+            "Drei",
+            "Vier",
+            "Fünf"
+          ],
+          "answerIndex": 1,
+          "explanation": "Die Abzeichenbeschreibung enthielt drei Punkte.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Welcher Schließfachgegenstand erschien nach dem Kompass?",
+          "choices": [
+            "Schal",
+            "Schlüssel",
+            "Zitrone",
+            "Becher"
+          ],
+          "answerIndex": 2,
+          "explanation": "Die Reihenfolge im Schließfach lautete: Schal, Kompass, Zitrone.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Welche Uhrzeit stand auf der Paketkarte?",
+          "choices": [
+            "12:30",
+            "14:00",
+            "16:30",
+            "14:30"
+          ],
+          "answerIndex": 3,
+          "explanation": "Auf der Paketkarte stand Dienstag um 14:30 Uhr.",
+          "category": "deep-recall"
+        }
+      ]
+    },
+    {
+      "title": "Finaler Gedächtnischeck",
+      "encouragement": "Alle Signale verarbeitet. Dein Gedächtnisprofil ist fertig.",
+      "questions": [
+        {
+          "prompt": "Wie hoch ist der Gesamtwert von Silberschlüssel und Bernsteindrachen?",
+          "choices": [
+            "54",
+            "65",
+            "72",
+            "83"
+          ],
+          "answerIndex": 1,
+          "explanation": "Der Silberschlüssel hatte den Wert 29 und der Bernsteindrachen 36; zusammen ergeben sie 65.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Welche Farben eröffneten und schlossen die Sequenz aus drei Lichtern?",
+          "choices": [
+            "Blau und Gold",
+            "Rot und Blau",
+            "Rot und Gold",
+            "Gold und Rot"
+          ],
+          "answerIndex": 2,
+          "explanation": "Die Lichtsequenz begann mit Rot und endete mit Gold.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Welche Signalaussage ist richtig?",
+          "choices": [
+            "Grüne Laterne = 63",
+            "Violetter Mond = 45",
+            "Kupferfuchs = 81",
+            "Blauer Komet = 74"
+          ],
+          "answerIndex": 0,
+          "explanation": "Grüne Laterne wurde mit 63 gepaart.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Im finalen Check: Welcher Gegenstand lag zwischen Schal und Zitrone?",
+          "choices": [
+            "Becher",
+            "Schlüssel",
+            "Notizbuch",
+            "Kompass"
+          ],
+          "answerIndex": 3,
+          "explanation": "Der Kompass nahm die mittlere Position im Spind ein.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Welche Option stellt die ursprüngliche Drei-Namen-Reihenfolge wieder her?",
+          "choices": [
+            "Imani → Sofia → Kenji",
+            "Sofia → Imani → Kenji",
+            "Kenji → Sofia → Imani",
+            "Imani → Kenji → Sofia"
+          ],
+          "answerIndex": 0,
+          "explanation": "Die ursprüngliche Namensreihenfolge war Imani, Sofia, Kenji.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Welcher Satz enthält nur korrekte Signalpaare?",
+          "choices": [
+            "Blauer Komet = 54; Kupferfuchs = 36; Violetter Mond = 47",
+            "Blauer Komet = 47; Kupferfuchs = 18; Violetter Mond = 54",
+            "Blauer Komet = 29; Kupferfuchs = 63; Violetter Mond = 36",
+            "Blauer Komet = 18; Kupferfuchs = 47; Violetter Mond = 63"
+          ],
+          "answerIndex": 1,
+          "explanation": "Die ursprünglichen Paare waren Blauer Komet 47, Kupferfuchs 18 und Violetter Mond 54.",
+          "category": "final-memory"
+        }
+      ]
+    }
+  ]
+}

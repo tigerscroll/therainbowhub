@@ -2,838 +2,577 @@
   "slug": "memory",
   "mode": "scored",
   "title": "Most Adults Can't Score 80% On This Memory Test",
-  "seoTitle": "Most Adults Can't Score 80% On This Memory Test",
-  "seoDescription": "Take a 60-question memory test that starts easy, plants details, and later checks how much you still remember.",
+  "seoTitle": "Memory Test | Delayed Recall Challenge",
+  "seoDescription": "Take an engaging memory challenge built around planted signals, scene details, sequences, interference, and delayed recall.",
   "pageTitle": "Most Adults Can't Score 80% On This Memory Test",
-  "eyebrow": "Memory Test",
-  "summary": "A quick memory test in ten rounds that starts easy and later checks how much you still remember.",
-  "duration": "6 mins",
-  "publishedAt": "2026-06-25T10:00:00Z",
-  "difficulty": "Medium",
-  "passRate": "12%",
+  "eyebrow": "Memory Challenge",
+  "summary": "A fast memory challenge that plants small details, distracts you, and brings them back when you least expect it.",
+  "duration": "~8 min",
+  "publishedAt": "2026-08-11T09:00:00Z",
+  "difficulty": "Hard",
+  "passRate": "14%",
   "cardIcon": "🧠",
-  "cardGradient": "linear-gradient(135deg, #0f766e 0%, #2563eb 100%)",
-  "accent": "#0f766e",
-  "questionCount": 60,
+  "cardGradient": "linear-gradient(135deg, #24124d 0%, #673ab7 52%, #19a7a0 100%)",
+  "accent": "#673ab7",
   "homepage": {
-    "title": "Can You Score 80% in This Memory Test?",
-    "summary": "Remember quick facts, spot patterns, and hold onto details across ten short memory rounds.",
+    "title": "Most Adults Can't Score 80% On This Memory Test",
+    "summary": "Lock in signals, scenes, and sequences—then see what survives the distractions.",
     "thumbnailUrl": "/images/thumbnails/memory.jpg",
-    "thumbnailAlt": "Memory test quiz with cards, notes, calendar, and numbered tiles",
+    "thumbnailAlt": "Memory challenge with colorful cards, symbols, and numbered clues",
     "icon": "🧠",
-    "gradient": "linear-gradient(135deg, #0f766e 0%, #2563eb 100%)",
+    "gradient": "linear-gradient(135deg, #24124d 0%, #673ab7 52%, #19a7a0 100%)",
     "featured": false
   },
   "heroPoints": [
-    "10 short memory rounds",
-    "Remember earlier details",
-    "Instant result"
+    "Purpose-built memory clues",
+    "Delayed callbacks and distractions",
+    "Instant entertainment-only result"
   ],
-  "footer": {
-    "aboutTitle": "About This Memory Test",
-    "aboutText": "This quiz is a fun AI-style memory challenge built around quick facts, planted details, category recall, pattern memory, and delayed callbacks. It is for entertainment and self-challenge only. It is not a medical, cognitive, psychological, dementia, ADHD, or memory-health assessment."
-  },
   "landing": {
-    "quickStartText": "It starts easy, then the AI quietly checks how much really stayed in your head.",
+    "quickStartText": "It starts simple. Then details from earlier return when you least expect them.",
     "socialProof": "62,000+ people tried it this week",
     "ctaLabel": "Start Test"
   },
+  "footer": {
+    "aboutTitle": "About This Memory Challenge",
+    "aboutText": "This entertainment-only challenge explores attention, recognition, order memory, working memory, and delayed recall using fictional clues and self-contained tasks. It is not a medical, cognitive, psychological, dementia, ADHD, memory-health, educational, or employment assessment."
+  },
   "result": {
-    "profileName": "Memory Test",
+    "profileName": "Memory Challenge",
     "profiles": [
       {
         "minRatio": 0.8,
         "tier": "Memory Master",
-        "title": "You kept the details locked in.",
-        "copy": "Excellent score across facts, patterns, and delayed recall. Your strongest area was {stage}.",
+        "title": "You kept the clues locked in.",
+        "copy": "Excellent recall across signals, scenes, sequences, and delayed combinations. Your strongest area was {stage}.",
         "percentile": "Top 8%"
       },
       {
         "minRatio": 0.65,
         "tier": "Sharp Recall",
-        "title": "Strong memory score.",
-        "copy": "You remembered plenty of details even after the quiz tried to distract you. Your strongest area was {stage}.",
+        "title": "The distractions barely touched your memory.",
+        "copy": "You retained strong detail even after new patterns competed for attention. Your strongest area was {stage}.",
         "percentile": "Top 22%"
       },
       {
         "minRatio": 0.5,
         "tier": "Steady Rememberer",
-        "title": "You caught more than you missed.",
-        "copy": "You held onto a good share of the facts, categories, and earlier answers. Your strongest area was {stage}.",
+        "title": "You held onto more than most.",
+        "copy": "You kept a useful share of the signals, scene details, and sequences in reach. Your strongest area was {stage}.",
         "percentile": "Top 45%"
       },
       {
         "minRatio": 0,
         "tier": "Memory Warm-Up",
-        "title": "The recall rounds were sneaky.",
-        "copy": "This test gets harder once earlier details start coming back. Your best area was {stage}.",
-        "percentile": "Top 80%"
+        "title": "The delayed clues did their job.",
+        "copy": "The hardest callbacks reward deliberate encoding and calm comparison. Your best area was {stage}.",
+        "percentile": "Challenge complete"
       }
     ],
     "scoreDimensions": [
       {
-        "label": "Quick Facts",
-        "categories": [
-          "fact-recall",
-          "general-knowledge"
-        ]
+        "label": "Encoding & Attention",
+        "categories": ["signal-lock", "detail-capture"]
       },
       {
-        "label": "Recent Recall",
-        "categories": [
-          "recent-recall",
-          "detail-recall"
-        ]
+        "label": "Order Memory",
+        "categories": ["order-lock", "sequence-recall"]
       },
       {
-        "label": "Patterns And Categories",
-        "categories": [
-          "category-memory",
-          "pattern-memory"
-        ]
+        "label": "Delayed Recall",
+        "categories": ["first-recall", "scene-recall", "deep-recall"]
       },
       {
-        "label": "Mixed Memory",
-        "categories": [
-          "long-recall",
-          "exclusion-recall"
-        ]
+        "label": "Working Memory",
+        "categories": ["interference-grid", "cross-link", "final-memory"]
       }
     ]
   },
+  "questionCount": 60,
   "stageGroups": [
     {
-      "title": "Quick Facts",
-      "encouragement": "Good start. The AI is building your recall profile.",
+      "title": "Signal Lock",
+      "encouragement": "Signals stored. Now capture the tiny details inside six quick scenes.",
       "questions": [
         {
-          "prompt": "Which planet is known as the Red Planet?",
-          "memorySeed": {
-            "icon": "⭐",
-            "label": "Blue Star",
-            "value": "4"
-          },
-          "choices": [
-            "Venus",
-            "Mars",
-            "Jupiter",
-            "Saturn"
-          ],
+          "prompt": "Lock in the Blue Comet signal. Which number is paired with it?",
+          "memorySeed": {"icon": "☄️", "label": "Blue Comet", "value": "47"},
+          "choices": ["74", "47", "29", "54"],
           "answerIndex": 1,
-          "category": "general-knowledge"
+          "explanation": "The signal card pairs the Blue Comet with 47.",
+          "category": "signal-lock"
         },
         {
-          "prompt": "Which animal is the fastest on land?",
-          "choices": [
-            "Cheetah",
-            "Lion",
-            "Horse",
-            "Wolf"
-          ],
-          "answerIndex": 0,
-          "category": "general-knowledge"
-        },
-        {
-          "prompt": "How many days are there in a leap year?",
-          "choices": [
-            "365",
-            "367",
-            "366",
-            "364"
-          ],
-          "answerIndex": 2,
-          "category": "fact-recall"
-        },
-        {
-          "prompt": "Which ocean is the largest?",
-          "choices": [
-            "Atlantic",
-            "Indian",
-            "Arctic",
-            "Pacific"
-          ],
+          "prompt": "Lock in the Copper Fox signal. Which number is paired with it?",
+          "memorySeed": {"icon": "🦊", "label": "Copper Fox", "value": "18"},
+          "choices": ["81", "36", "63", "18"],
           "answerIndex": 3,
-          "category": "fact-recall"
+          "explanation": "The signal card pairs the Copper Fox with 18.",
+          "category": "signal-lock"
         },
         {
-          "prompt": "Which fruit is known for containing plenty of potassium?",
-          "choices": [
-            "Banana",
-            "Apple",
-            "Orange",
-            "Grapes"
-          ],
+          "prompt": "Lock in the Green Lantern signal. Which number is paired with it?",
+          "memorySeed": {"icon": "🏮", "label": "Green Lantern", "value": "63"},
+          "choices": ["63", "36", "54", "47"],
           "answerIndex": 0,
-          "category": "general-knowledge"
+          "explanation": "The signal card pairs the Green Lantern with 63.",
+          "category": "signal-lock"
         },
         {
-          "prompt": "Which instrument has 88 keys?",
-          "choices": [
-            "Guitar",
-            "Piano",
-            "Violin",
-            "Flute"
-          ],
+          "prompt": "Lock in the Silver Key signal. Which number is paired with it?",
+          "memorySeed": {"icon": "🔑", "label": "Silver Key", "value": "29"},
+          "choices": ["92", "47", "29", "18"],
+          "answerIndex": 2,
+          "explanation": "The signal card pairs the Silver Key with 29.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Lock in the Violet Moon signal. Which number is paired with it?",
+          "memorySeed": {"icon": "🌙", "label": "Violet Moon", "value": "54"},
+          "choices": ["45", "54", "63", "36"],
           "answerIndex": 1,
-          "category": "fact-recall"
+          "explanation": "The signal card pairs the Violet Moon with 54.",
+          "category": "signal-lock"
+        },
+        {
+          "prompt": "Lock in the Amber Kite signal. Which number is paired with it?",
+          "memorySeed": {"icon": "🪁", "label": "Amber Kite", "value": "36"},
+          "choices": ["36", "63", "18", "54"],
+          "answerIndex": 0,
+          "explanation": "The signal card pairs the Amber Kite with 36.",
+          "category": "signal-lock"
         }
       ]
     },
     {
       "title": "Detail Capture",
-      "encouragement": "Your short-term memory pattern is taking shape.",
+      "encouragement": "Scenes captured. Next, keep three short sequences in the correct order.",
       "questions": [
         {
-          "prompt": "What color are emeralds?",
-          "memorySeed": {
-            "icon": "🔑",
-            "label": "Silver Key",
-            "value": "7"
-          },
-          "choices": [
-            "Blue",
-            "Red",
-            "Yellow",
-            "Green"
-          ],
+          "prompt": "Maya placed a red notebook beside a silver cup. Which item was silver?",
+          "choices": ["Notebook", "Table", "Cup", "Bag"],
+          "answerIndex": 2,
+          "explanation": "The scene describes the cup as silver.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "A parcel card says Tuesday at 14:30. Which day is on the card?",
+          "choices": ["Tuesday", "Thursday", "Friday", "Monday"],
+          "answerIndex": 0,
+          "explanation": "The parcel card names Tuesday.",
+          "category": "detail-capture"
+        },
+        {
+          "prompt": "Leo's locker holds a scarf, a compass, and a lemon—in that order. Which item is in the middle?",
+          "choices": ["Scarf", "Lemon", "Key", "Compass"],
           "answerIndex": 3,
-          "category": "general-knowledge"
+          "explanation": "The compass sits between the scarf and the lemon.",
+          "category": "detail-capture"
         },
         {
-          "prompt": "Which bird cannot fly?",
-          "choices": [
-            "Eagle",
-            "Sparrow",
-            "Penguin",
-            "Hawk"
-          ],
-          "answerIndex": 2,
-          "category": "fact-recall"
-        },
-        {
-          "prompt": "Which metal is commonly used for electrical wiring?",
-          "choices": [
-            "Gold",
-            "Copper",
-            "Silver",
-            "Lead"
-          ],
+          "prompt": "The cafe order is an oat drink with cinnamon and no ice. Which item is excluded?",
+          "choices": ["Cinnamon", "Ice", "Oat drink", "Cup"],
           "answerIndex": 1,
-          "category": "general-knowledge"
+          "explanation": "The order explicitly says no ice.",
+          "category": "detail-capture"
         },
         {
-          "prompt": "Which gas do plants absorb?",
-          "choices": [
-            "Carbon dioxide",
-            "Oxygen",
-            "Nitrogen",
-            "Hydrogen"
-          ],
-          "answerIndex": 0,
-          "category": "fact-recall"
-        },
-        {
-          "prompt": "Australia is part of which region?",
-          "choices": [
-            "Europe",
-            "Asia",
-            "Australia/Oceania",
-            "South America"
-          ],
+          "prompt": "A badge shows a triangle, three dots, and an orange border. What color is the border?",
+          "choices": ["Blue", "Silver", "Orange", "Green"],
           "answerIndex": 2,
-          "category": "general-knowledge"
+          "explanation": "The badge description gives it an orange border.",
+          "category": "detail-capture"
         },
         {
-          "prompt": "In the previous stage, which fruit was the correct answer?",
-          "choices": [
-            "Apple",
-            "Orange",
-            "Banana",
-            "Grapes"
-          ],
-          "answerIndex": 2,
-          "category": "recent-recall"
-        }
-      ]
-    },
-    {
-      "title": "Clue Capture",
-      "encouragement": "The AI is checking what your brain held onto.",
-      "questions": [
-        {
-          "prompt": "Which shape has three sides?",
-          "memorySeed": {
-            "icon": "🚪",
-            "label": "Green Door",
-            "value": "2"
-          },
-          "choices": [
-            "Triangle",
-            "Square",
-            "Circle",
-            "Pentagon"
-          ],
-          "answerIndex": 0,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which color is created by mixing blue and yellow?",
-          "choices": [
-            "Orange",
-            "Purple",
-            "Green",
-            "Red"
-          ],
-          "answerIndex": 2,
-          "category": "general-knowledge"
-        },
-        {
-          "prompt": "Which animal lives in the ocean?",
-          "choices": [
-            "Tiger",
-            "Dolphin",
-            "Elephant",
-            "Camel"
-          ],
-          "answerIndex": 1,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which country is famous for the pyramids?",
-          "choices": [
-            "Greece",
-            "Italy",
-            "Brazil",
-            "Egypt"
-          ],
+          "prompt": "A shuttle card shows Bay C, seat 12, destination North Pier. Which seat is listed?",
+          "choices": ["21", "C", "14", "12"],
           "answerIndex": 3,
-          "category": "general-knowledge"
-        },
-        {
-          "prompt": "Which drink is made from coffee beans?",
-          "choices": [
-            "Tea",
-            "Lemonade",
-            "Coffee",
-            "Milk"
-          ],
-          "answerIndex": 2,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "In Detail Capture, which bird could not fly?",
-          "choices": [
-            "Penguin",
-            "Eagle",
-            "Hawk",
-            "Sparrow"
-          ],
-          "answerIndex": 0,
-          "category": "detail-recall"
+          "explanation": "The shuttle card assigns seat 12.",
+          "category": "detail-capture"
         }
       ]
     },
     {
-      "title": "Pattern Memory",
-      "encouragement": "Pattern signals have been added to your score.",
+      "title": "Order Lock",
+      "encouragement": "Orders locked. Time to retrieve the signals without seeing their cards.",
       "questions": [
         {
-          "prompt": "Which vehicle travels on rails?",
-          "choices": [
-            "Bus",
-            "Bicycle",
-            "Train",
-            "Boat"
-          ],
+          "prompt": "Three lights flash red, blue, then gold. Which color is second?",
+          "choices": ["Gold", "Red", "Green", "Blue"],
+          "answerIndex": 3,
+          "explanation": "Blue is between red and gold in the stated sequence.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "A code appears as 8, 3, 6. Which number is last?",
+          "choices": ["8", "6", "3", "9"],
+          "answerIndex": 1,
+          "explanation": "Six is the final number in the sequence.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "The tasks are: fold the map, ring the bell, close the box. Which task is first?",
+          "choices": ["Close the box", "Ring the bell", "Fold the map", "Open the box"],
           "answerIndex": 2,
-          "category": "category-memory"
+          "explanation": "Folding the map is listed before the other tasks.",
+          "category": "order-lock"
         },
         {
-          "prompt": "Which season comes after spring?",
-          "choices": [
-            "Winter",
-            "Summer",
-            "Autumn",
-            "Spring"
-          ],
-          "answerIndex": 1,
-          "category": "pattern-memory"
-        },
-        {
-          "prompt": "Which number comes next: 2, 4, 6, 8, ...?",
-          "choices": [
-            "9",
-            "10",
-            "11",
-            "12"
-          ],
-          "answerIndex": 1,
-          "category": "pattern-memory"
-        },
-        {
-          "prompt": "Which pair belongs together?",
-          "choices": [
-            "Spoon and moon",
-            "Needle and thread",
-            "Window and river",
-            "Cloud and chair"
-          ],
-          "answerIndex": 1,
-          "category": "pattern-memory"
-        },
-        {
-          "prompt": "Which word does not belong with the others?",
-          "choices": [
-            "Red",
-            "Blue",
-            "Square",
-            "Green"
-          ],
-          "answerIndex": 2,
-          "category": "exclusion-recall"
-        },
-        {
-          "prompt": "Earlier in this stage, which correct answer was the vehicle?",
-          "choices": [
-            "Train",
-            "Triangle",
-            "Dolphin",
-            "Coffee"
-          ],
+          "prompt": "The animal cards appear as owl, fox, whale. Which option preserves the order?",
+          "choices": ["Owl → Fox → Whale", "Fox → Owl → Whale", "Whale → Fox → Owl", "Owl → Whale → Fox"],
           "answerIndex": 0,
-          "category": "recent-recall"
+          "explanation": "The original order is owl, then fox, then whale.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "The shapes are circle, star, square, triangle. Which shape comes immediately before the triangle?",
+          "choices": ["Circle", "Star", "Triangle", "Square"],
+          "answerIndex": 3,
+          "explanation": "Square appears directly before triangle.",
+          "category": "order-lock"
+        },
+        {
+          "prompt": "The names appear as Imani, Sofia, Kenji. Which name is in the middle?",
+          "choices": ["Kenji", "Sofia", "Imani", "Maya"],
+          "answerIndex": 1,
+          "explanation": "Sofia is between Imani and Kenji.",
+          "category": "order-lock"
         }
       ]
     },
     {
-      "title": "Category Recall",
-      "encouragement": "Your recall map is getting sharper.",
+      "title": "First Recall",
+      "encouragement": "First recall complete. A distraction grid now competes for your attention.",
       "questions": [
         {
-          "prompt": "Which item belongs in a kitchen?",
-          "choices": [
-            "Pillow",
-            "Spoon",
-            "Notebook",
-            "Hammer"
-          ],
-          "answerIndex": 1,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which of these is a mammal?",
-          "choices": [
-            "Frog",
-            "Shark",
-            "Whale",
-            "Eagle"
-          ],
-          "answerIndex": 2,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which item is usually used to measure temperature?",
-          "choices": [
-            "Thermometer",
-            "Compass",
-            "Ruler",
-            "Scale"
-          ],
+          "prompt": "Without the signal card, what number belonged to the Blue Comet?",
+          "choices": ["47", "54", "29", "74"],
           "answerIndex": 0,
-          "category": "fact-recall"
+          "explanation": "The Blue Comet was paired with 47.",
+          "category": "first-recall"
         },
         {
-          "prompt": "Which word is the only musical instrument?",
-          "choices": [
-            "Lantern",
-            "Trumpet",
-            "Basket",
-            "Curtain"
-          ],
-          "answerIndex": 1,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which correct answer from Pattern Memory was a season?",
-          "choices": [
-            "Summer",
-            "Winter",
-            "Spring",
-            "Autumn"
-          ],
-          "answerIndex": 0,
-          "category": "detail-recall"
-        },
-        {
-          "prompt": "Which correct answer from Clue Capture was a country?",
-          "choices": [
-            "Brazil",
-            "Greece",
-            "Egypt",
-            "Italy"
-          ],
+          "prompt": "What number belonged to the Copper Fox?",
+          "choices": ["36", "81", "18", "63"],
           "answerIndex": 2,
-          "category": "long-recall"
+          "explanation": "The Copper Fox was paired with 18.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "What number belonged to the Green Lantern?",
+          "choices": ["36", "63", "47", "54"],
+          "answerIndex": 1,
+          "explanation": "The Green Lantern was paired with 63.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "What number belonged to the Silver Key?",
+          "choices": ["47", "92", "18", "29"],
+          "answerIndex": 3,
+          "explanation": "The Silver Key was paired with 29.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "What number belonged to the Violet Moon?",
+          "choices": ["54", "45", "36", "63"],
+          "answerIndex": 0,
+          "explanation": "The Violet Moon was paired with 54.",
+          "category": "first-recall"
+        },
+        {
+          "prompt": "What number belonged to the Amber Kite?",
+          "choices": ["63", "18", "36", "54"],
+          "answerIndex": 2,
+          "explanation": "The Amber Kite was paired with 36.",
+          "category": "first-recall"
         }
       ]
     },
     {
-      "title": "Delayed Details",
-      "encouragement": "Earlier answers are now being tested quietly.",
+      "title": "Interference Grid",
+      "encouragement": "Distractions cleared. Now recover the scene details from earlier.",
       "questions": [
         {
-          "prompt": "Delayed recall: What number was linked to the Blue Star?",
-          "choices": [
-            "2",
-            "4",
-            "7",
-            "9"
-          ],
+          "prompt": "Which item does not belong with the others?",
+          "choices": ["Violin", "Drum", "Ladder", "Flute"],
+          "answerIndex": 2,
+          "explanation": "Ladder is not a musical instrument.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Which number continues the pattern: 5, 10, 15, ...?",
+          "choices": ["18", "20", "25", "30"],
           "answerIndex": 1,
-          "category": "long-recall"
+          "explanation": "The pattern increases by five, so the next number is 20.",
+          "category": "interference-grid"
         },
         {
-          "prompt": "Back in Quick Facts, which planet was the Red Planet?",
-          "choices": [
-            "Mars",
-            "Venus",
-            "Saturn",
-            "Jupiter"
-          ],
+          "prompt": "Which pair has the clearest functional connection?",
+          "choices": ["Cloud and chair", "River and pencil", "Window and spoon", "Lock and key"],
+          "answerIndex": 3,
+          "explanation": "A key is designed to operate a matching lock.",
+          "category": "interference-grid"
+        },
+        {
+          "prompt": "Which is the shortest duration?",
+          "choices": ["15 minutes", "45 minutes", "30 minutes", "60 minutes"],
           "answerIndex": 0,
-          "category": "long-recall"
+          "explanation": "Fifteen minutes is shorter than the other durations.",
+          "category": "interference-grid"
         },
         {
-          "prompt": "Back in Detail Capture, which metal was used for electrical wiring?",
-          "choices": [
-            "Gold",
-            "Copper",
-            "Silver",
-            "Lead"
-          ],
+          "prompt": "Which list is in alphabetical order?",
+          "choices": ["Pear, Apple, Mango", "Apple, Mango, Pear", "Mango, Pear, Apple", "Pear, Mango, Apple"],
           "answerIndex": 1,
-          "category": "long-recall"
+          "explanation": "Apple, Mango, Pear follows alphabetical order.",
+          "category": "interference-grid"
         },
         {
-          "prompt": "Back in Clue Capture, which drink was made from coffee beans?",
-          "choices": [
-            "Tea",
-            "Coffee",
-            "Milk",
-            "Lemonade"
-          ],
-          "answerIndex": 1,
-          "category": "detail-recall"
-        },
-        {
-          "prompt": "Back in Category Recall, which animal was a mammal?",
-          "choices": [
-            "Whale",
-            "Frog",
-            "Shark",
-            "Eagle"
-          ],
-          "answerIndex": 0,
-          "category": "recent-recall"
-        },
-        {
-          "prompt": "Which earlier correct answer was a shape?",
-          "choices": [
-            "Triangle",
-            "Train",
-            "Trumpet",
-            "Thermometer"
-          ],
-          "answerIndex": 0,
-          "category": "category-memory"
+          "prompt": "Complete the alternating pattern: circle, square, circle, ...",
+          "choices": ["Triangle", "Circle", "Square", "Star"],
+          "answerIndex": 2,
+          "explanation": "The pattern alternates between circle and square.",
+          "category": "interference-grid"
         }
       ]
     },
     {
-      "title": "Sequence Memory",
-      "encouragement": "The AI is measuring order and timing clues.",
+      "title": "Scene Recall",
+      "encouragement": "Scene memory recovered. The original sequences are waiting next.",
       "questions": [
         {
-          "prompt": "Which order is alphabetical?",
-          "choices": [
-            "Lemon, Apple, Zebra",
-            "Apple, Lemon, Zebra",
-            "Zebra, Lemon, Apple",
-            "Lemon, Zebra, Apple"
-          ],
+          "prompt": "In Maya's scene, which item was silver?",
+          "choices": ["Notebook", "Cup", "Bag", "Table"],
           "answerIndex": 1,
-          "category": "pattern-memory"
+          "explanation": "Maya placed a red notebook beside a silver cup.",
+          "category": "scene-recall"
         },
         {
-          "prompt": "Which order is correct?",
-          "choices": [
-            "Morning, afternoon, evening, night",
-            "Afternoon, morning, night, evening",
-            "Evening, morning, afternoon, night",
-            "Night, afternoon, morning, evening"
-          ],
+          "prompt": "Which day appeared on the parcel card?",
+          "choices": ["Tuesday", "Thursday", "Monday", "Friday"],
           "answerIndex": 0,
-          "category": "pattern-memory"
+          "explanation": "The parcel card showed Tuesday at 14:30.",
+          "category": "scene-recall"
         },
         {
-          "prompt": "Which number is missing: 3, 6, 9, __, 15?",
-          "choices": [
-            "10",
-            "11",
-            "12",
-            "13"
-          ],
+          "prompt": "Which item sat between the scarf and the lemon?",
+          "choices": ["Key", "Scarf", "Compass", "Cup"],
           "answerIndex": 2,
-          "category": "pattern-memory"
+          "explanation": "The locker order was scarf, compass, lemon.",
+          "category": "scene-recall"
         },
         {
-          "prompt": "Which set is ordered from smallest to largest?",
-          "choices": [
-            "Meter, centimeter, kilometer",
-            "Centimeter, meter, kilometer",
-            "Kilometer, meter, centimeter",
-            "Meter, kilometer, centimeter"
-          ],
-          "answerIndex": 1,
-          "category": "pattern-memory"
+          "prompt": "Which item was excluded from the cafe order?",
+          "choices": ["Cinnamon", "Oat drink", "Cup", "Ice"],
+          "answerIndex": 3,
+          "explanation": "The cafe order specified no ice.",
+          "category": "scene-recall"
         },
         {
-          "prompt": "Which stage came immediately before Delayed Details?",
-          "choices": [
-            "Clue Capture",
-            "Pattern Memory",
-            "Category Recall",
-            "Sequence Memory"
-          ],
-          "answerIndex": 2,
-          "category": "recent-recall"
+          "prompt": "What color was the badge border?",
+          "choices": ["Orange", "Green", "Silver", "Blue"],
+          "answerIndex": 0,
+          "explanation": "The triangle badge had an orange border.",
+          "category": "scene-recall"
         },
         {
-          "prompt": "Which stage came immediately after Clue Capture?",
-          "choices": [
-            "Quick Facts",
-            "Pattern Memory",
-            "Category Recall",
-            "Delayed Details"
-          ],
-          "answerIndex": 1,
-          "category": "recent-recall"
+          "prompt": "Which seat appeared on the shuttle card?",
+          "choices": ["21", "14", "C", "12"],
+          "answerIndex": 3,
+          "explanation": "The shuttle card listed seat 12.",
+          "category": "scene-recall"
         }
       ]
     },
     {
-      "title": "Mixed Recall",
-      "encouragement": "Your memory profile is narrowing.",
+      "title": "Sequence Recall",
+      "encouragement": "Sequences restored. Now combine old clues instead of recalling them one at a time.",
       "questions": [
         {
-          "prompt": "Recognition check: Which planted clue appeared earlier?",
-          "choices": [
-            "Green Door = 2",
-            "Purple Window = 5",
-            "Orange Clock = 8",
-            "Black Coin = 1"
-          ],
-          "answerIndex": 0,
-          "category": "long-recall"
+          "prompt": "Which color was second in the three-light sequence?",
+          "choices": ["Gold", "Red", "Green", "Blue"],
+          "answerIndex": 3,
+          "explanation": "The lights flashed red, blue, then gold.",
+          "category": "sequence-recall"
         },
         {
-          "prompt": "Which earlier correct answer from Category Recall was an instrument?",
-          "choices": [
-            "Trumpet",
-            "Triangle",
-            "Thermometer",
-            "Train"
-          ],
-          "answerIndex": 0,
-          "category": "category-memory"
+          "prompt": "Which number ended the 8, 3, 6 code?",
+          "choices": ["8", "3", "6", "9"],
+          "answerIndex": 2,
+          "explanation": "Six was the final number in the code.",
+          "category": "sequence-recall"
         },
         {
-          "prompt": "Which earlier correct answer was an animal?",
-          "choices": [
-            "Dolphin",
-            "Pacific",
-            "Copper",
-            "Summer"
-          ],
+          "prompt": "Which task came first?",
+          "choices": ["Fold the map", "Ring the bell", "Close the box", "Open the box"],
           "answerIndex": 0,
-          "category": "long-recall"
+          "explanation": "The first task was to fold the map.",
+          "category": "sequence-recall"
         },
         {
-          "prompt": "Which earlier correct answer was a gas?",
-          "choices": [
-            "Oxygen",
-            "Carbon dioxide",
-            "Nitrogen",
-            "Hydrogen"
-          ],
+          "prompt": "Which option restores the animal-card order?",
+          "choices": ["Fox → Owl → Whale", "Owl → Fox → Whale", "Whale → Owl → Fox", "Owl → Whale → Fox"],
           "answerIndex": 1,
-          "category": "detail-recall"
+          "explanation": "The cards appeared as owl, fox, whale.",
+          "category": "sequence-recall"
         },
         {
-          "prompt": "Which earlier correct answer was used to measure temperature?",
-          "choices": [
-            "Compass",
-            "Scale",
-            "Thermometer",
-            "Ruler"
-          ],
-          "answerIndex": 2,
-          "category": "recent-recall"
+          "prompt": "Which shape came immediately before the triangle?",
+          "choices": ["Circle", "Star", "Triangle", "Square"],
+          "answerIndex": 3,
+          "explanation": "The sequence ended with square, then triangle.",
+          "category": "sequence-recall"
         },
         {
-          "prompt": "Which number completed the 3, 6, 9, __, 15 sequence?",
-          "choices": [
-            "10",
-            "11",
-            "12",
-            "13"
-          ],
-          "answerIndex": 2,
-          "category": "pattern-memory"
+          "prompt": "Which name was between Imani and Kenji?",
+          "choices": ["Sofia", "Maya", "Kenji", "Imani"],
+          "answerIndex": 0,
+          "explanation": "The name order was Imani, Sofia, Kenji.",
+          "category": "sequence-recall"
         }
       ]
     },
     {
-      "title": "Long Recall",
-      "encouragement": "Almost there. The AI is checking what stayed.",
+      "title": "Cross-Link",
+      "encouragement": "Connections made. The oldest scene details now return with fewer clues.",
       "questions": [
         {
-          "prompt": "Delayed recall: Which item was linked to 7?",
-          "choices": [
-            "Blue Star",
-            "Silver Key",
-            "Green Door",
-            "Red Planet"
-          ],
-          "answerIndex": 1,
-          "category": "long-recall"
-        },
-        {
-          "prompt": "Which earlier correct answer was the largest ocean?",
-          "choices": [
-            "Pacific",
-            "Atlantic",
-            "Indian",
-            "Arctic"
-          ],
+          "prompt": "What is the combined value of the Blue Comet and Copper Fox?",
+          "choices": ["65", "72", "76", "83"],
           "answerIndex": 0,
-          "category": "long-recall"
+          "explanation": "Blue Comet was 47 and Copper Fox was 18; together they total 65.",
+          "category": "cross-link"
         },
         {
-          "prompt": "Which earlier correct answer had 88 keys?",
-          "choices": [
-            "Guitar",
-            "Piano",
-            "Violin",
-            "Flute"
-          ],
+          "prompt": "Which signal had the larger value: Green Lantern or Violet Moon?",
+          "choices": ["They were equal", "Violet Moon", "Neither had a number", "Green Lantern"],
+          "answerIndex": 3,
+          "explanation": "Green Lantern was 63, which is larger than Violet Moon at 54.",
+          "category": "cross-link"
+        },
+        {
+          "prompt": "Which pair totals 90?",
+          "choices": ["Blue Comet + Silver Key", "Violet Moon + Amber Kite", "Copper Fox + Green Lantern", "Silver Key + Violet Moon"],
           "answerIndex": 1,
-          "category": "long-recall"
+          "explanation": "Violet Moon was 54 and Amber Kite was 36, totaling 90.",
+          "category": "cross-link"
         },
         {
-          "prompt": "Which earlier correct answer was created by mixing blue and yellow?",
-          "choices": [
-            "Orange",
-            "Purple",
-            "Green",
-            "Red"
-          ],
+          "prompt": "Which signal had the smallest value?",
+          "choices": ["Amber Kite", "Silver Key", "Copper Fox", "Blue Comet"],
           "answerIndex": 2,
-          "category": "detail-recall"
+          "explanation": "Copper Fox had the smallest signal value at 18.",
+          "category": "cross-link"
         },
         {
-          "prompt": "Which earlier correct answer was the item used in a kitchen?",
-          "choices": [
-            "Hammer",
-            "Notebook",
-            "Spoon",
-            "Pillow"
-          ],
-          "answerIndex": 2,
-          "category": "recent-recall"
+          "prompt": "Blue Comet minus Silver Key equals what?",
+          "choices": ["11", "18", "25", "29"],
+          "answerIndex": 1,
+          "explanation": "Blue Comet was 47 and Silver Key was 29; the difference is 18.",
+          "category": "cross-link"
         },
         {
-          "prompt": "Which earlier correct answer was the only word that did not belong with colors?",
-          "choices": [
-            "Red",
-            "Blue",
-            "Square",
-            "Green"
-          ],
+          "prompt": "Which signal originally carried that difference of 18?",
+          "choices": ["Amber Kite", "Violet Moon", "Copper Fox", "Green Lantern"],
           "answerIndex": 2,
-          "category": "exclusion-recall"
+          "explanation": "Copper Fox was the signal paired with 18.",
+          "category": "cross-link"
+        }
+      ]
+    },
+    {
+      "title": "Deep Recall",
+      "encouragement": "Deep recall complete. One cumulative memory check remains.",
+      "questions": [
+        {
+          "prompt": "What destination appeared on the shuttle card?",
+          "choices": ["West Market", "Bay C", "North Pier", "Central Park"],
+          "answerIndex": 2,
+          "explanation": "The shuttle card listed North Pier as its destination.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Besides the oat drink, which included detail appeared on the cafe order?",
+          "choices": ["Cinnamon", "Ice", "Lemon", "Milk"],
+          "answerIndex": 0,
+          "explanation": "The order included cinnamon and excluded ice.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "What number appeared as the shuttle seat?",
+          "choices": ["14", "21", "C", "12"],
+          "answerIndex": 3,
+          "explanation": "Seat 12 appeared on the shuttle card.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "How many dots appeared on the triangle badge?",
+          "choices": ["Two", "Three", "Four", "Five"],
+          "answerIndex": 1,
+          "explanation": "The badge description included three dots.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "Which locker item appeared after the compass?",
+          "choices": ["Scarf", "Key", "Lemon", "Cup"],
+          "answerIndex": 2,
+          "explanation": "The locker order was scarf, compass, lemon.",
+          "category": "deep-recall"
+        },
+        {
+          "prompt": "What time appeared on the parcel card?",
+          "choices": ["12:30", "14:00", "16:30", "14:30"],
+          "answerIndex": 3,
+          "explanation": "The parcel card showed Tuesday at 14:30.",
+          "category": "deep-recall"
         }
       ]
     },
     {
       "title": "Final Memory Check",
-      "encouragement": "Final signals processed. Your memory score is ready.",
+      "encouragement": "Final signals processed. Your memory profile is ready.",
       "questions": [
         {
-          "prompt": "Final recall: What is the combined total of the Blue Star and Silver Key?",
-          "choices": [
-            "9",
-            "10",
-            "11",
-            "12"
-          ],
+          "prompt": "What is the combined value of the Silver Key and Amber Kite?",
+          "choices": ["54", "65", "72", "83"],
+          "answerIndex": 1,
+          "explanation": "Silver Key was 29 and Amber Kite was 36; together they total 65.",
+          "category": "final-memory"
+        },
+        {
+          "prompt": "Which colors opened and closed the three-light sequence?",
+          "choices": ["Blue and Gold", "Red and Blue", "Red and Gold", "Gold and Red"],
           "answerIndex": 2,
-          "category": "long-recall"
+          "explanation": "The light sequence started red and ended gold.",
+          "category": "final-memory"
         },
         {
-          "prompt": "Which planted clue used the number 2?",
-          "choices": [
-            "Green Door",
-            "Blue Star",
-            "Silver Key",
-            "Red Planet"
-          ],
+          "prompt": "Which signal statement is correct?",
+          "choices": ["Green Lantern = 63", "Violet Moon = 45", "Copper Fox = 81", "Blue Comet = 74"],
           "answerIndex": 0,
-          "category": "long-recall"
+          "explanation": "Green Lantern was paired with 63.",
+          "category": "final-memory"
         },
         {
-          "prompt": "Which earlier correct answer was the fastest land animal?",
-          "choices": [
-            "Horse",
-            "Wolf",
-            "Cheetah",
-            "Lion"
-          ],
-          "answerIndex": 2,
-          "category": "long-recall"
+          "prompt": "Which object sat between the scarf and the lemon?",
+          "choices": ["Cup", "Key", "Notebook", "Compass"],
+          "answerIndex": 3,
+          "explanation": "The compass occupied the middle position in the locker.",
+          "category": "final-memory"
         },
         {
-          "prompt": "Which earlier correct answer from Pattern Memory was a season?",
-          "choices": [
-            "Summer",
-            "Spring",
-            "Winter",
-            "Autumn"
-          ],
+          "prompt": "Which option restores the original three-name order?",
+          "choices": ["Imani → Sofia → Kenji", "Sofia → Imani → Kenji", "Kenji → Sofia → Imani", "Imani → Kenji → Sofia"],
           "answerIndex": 0,
-          "category": "detail-recall"
+          "explanation": "The original name order was Imani, Sofia, Kenji.",
+          "category": "final-memory"
         },
         {
-          "prompt": "Which earlier correct answer was a vehicle?",
-          "choices": [
-            "Boat",
-            "Bicycle",
-            "Train",
-            "Bus"
-          ],
-          "answerIndex": 2,
-          "category": "category-memory"
-        },
-        {
-          "prompt": "Which memory seed pair was correct?",
-          "choices": [
-            "Blue Star = 4 and Silver Key = 7",
-            "Blue Star = 7 and Silver Key = 4",
-            "Green Door = 4 and Blue Star = 2",
-            "Silver Key = 2 and Green Door = 7"
-          ],
-          "answerIndex": 0,
-          "category": "long-recall"
+          "prompt": "Which set contains only correct signal pairs?",
+          "choices": ["Blue Comet = 54; Copper Fox = 36; Violet Moon = 47", "Blue Comet = 47; Copper Fox = 18; Violet Moon = 54", "Blue Comet = 29; Copper Fox = 63; Violet Moon = 36", "Blue Comet = 18; Copper Fox = 47; Violet Moon = 63"],
+          "answerIndex": 1,
+          "explanation": "The original pairs were Blue Comet 47, Copper Fox 18, and Violet Moon 54.",
+          "category": "final-memory"
         }
       ]
     }
