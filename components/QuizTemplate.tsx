@@ -1,4 +1,5 @@
 import { QuizEngine } from "@/components/quiz/QuizEngine";
+import { getQuizStorageKey, PROGRESS_TTL_MS } from "@/components/quiz/progressStorage";
 import { QuizThemeBoundary } from "@/components/quiz/QuizThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
@@ -12,7 +13,7 @@ type QuizTemplateProps = {
 };
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
-  const storageKey = `rainbowhub:quiz-progress:v3:${quiz.slug}:${locale}`;
+  const storageKey = getQuizStorageKey(quiz.slug, locale);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Quiz",
@@ -41,7 +42,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
       />
       <script
         dangerouslySetInnerHTML={{
-          __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};if(window.localStorage.getItem(${JSON.stringify(storageKey)})){document.documentElement.classList.add("quiz-resuming")}}catch(e){}})();`,
+          __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=window.localStorage.getItem(k);if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS}){document.documentElement.classList.add("quiz-resuming")}else{window.localStorage.removeItem(k)}}}catch(e){try{window.localStorage.removeItem(${JSON.stringify(storageKey)})}catch(x){}}})();`,
         }}
       />
       <QuizThemeBoundary customCss={quiz.customCss} theme={quiz.theme}>

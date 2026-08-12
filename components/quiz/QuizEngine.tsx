@@ -7,6 +7,7 @@ import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { requestRewardedAd } from "./rewardedAds";
+import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
 type QuizEngineProps = {
@@ -29,8 +30,6 @@ type SavedProgress = {
   updatedAt: string;
 };
 
-const STORAGE_VERSION = 3;
-
 function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
   if (typeof window === "undefined") return;
   window.fbq?.("trackCustom", name, { quiz_slug: quiz.slug, locale });
@@ -45,6 +44,25 @@ type QuestionRendererProps = {
   studyComplete: boolean;
 };
 
+function QuestionVisual({ question }: { question: QuizQuestion }) {
+  const visual = question.visual;
+  if (!visual) return null;
+  return (
+    <div
+      aria-label={visual.ariaLabel}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}`}
+      style={question.presentation === "grid" ? { gridTemplateColumns: `repeat(${visual.columns}, minmax(0, 1fr))` } : undefined}
+    >
+      {visual.items.map((item, index) => (
+        <span key={`${item}-${index}`}>
+          <strong>{item}</strong>
+          {question.presentation === "sequence" && index < visual.items.length - 1 ? <i aria-hidden="true">{visual.separator ?? "→"}</i> : null}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function ChoiceQuestion({
   answer,
   feedback,
@@ -52,6 +70,8 @@ function ChoiceQuestion({
   question,
 }: QuestionRendererProps) {
   return (
+    <>
+    <QuestionVisual question={question} />
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
@@ -73,13 +93,14 @@ function ChoiceQuestion({
             type="button"
           >
             {question.presentation === "icons" ? <span className="quiz-engine__answer-icon" aria-hidden="true">{question.icons?.[index]}</span> : null}
-            {question.presentation === "text" ? <span>{String.fromCharCode(65 + index)}</span> : null}
+            {question.presentation !== "icons" && question.presentation !== "scale" ? <span>{String.fromCharCode(65 + index)}</span> : null}
             {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
             <strong>{choice}</strong>
           </button>
         );
       })}
     </div>
+    </>
   );
 }
 
@@ -178,6 +199,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
   if (saved.version !== STORAGE_VERSION || saved.signature !== signature) return null;
+  if (!isProgressTimestampFresh(saved.updatedAt)) return null;
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
   if (!saved.screen || !["question", "checkpoint", "results"].includes(saved.screen)) return null;
@@ -210,6 +232,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         scoring: quiz.engine.scoring,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
+        derivedScore: quiz.engine.derivedScore,
+        tieBreaks: quiz.engine.tieBreaks,
       },
       stages: quiz.stages,
       questions: quiz.questions.map((question) => [
@@ -217,6 +241,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         question.stage,
         question.presentation,
         question.context,
+        question.visual,
         question.prompt,
         question.choices,
         question.icons,
@@ -227,6 +252,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         question.choiceProfileIds,
         question.choiceWeights,
         question.category,
+        question.reasoningSteps,
       ]),
       results: {
         profiles: quiz.result.profiles.map((profile) => [profile.id, profile.minRatio]),
@@ -235,7 +261,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     }),
     [quiz],
   );
-  const storageKey = `rainbowhub:quiz-progress:v${STORAGE_VERSION}:${quiz.slug}:${locale}`;
+  const storageKey = getQuizStorageKey(quiz.slug, locale);
   const currentQuestion = quiz.questions[questionIndex];
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
   const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
@@ -400,6 +426,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>
           <h1>{quiz.title}</h1>
           <p className="quiz-engine__lede">{quiz.summary}</p>
+          {quiz.landing.infoBadge ? <p className="quiz-engine__info-badge">{quiz.landing.infoBadge}</p> : null}
           <div className="quiz-engine__landing-meta">
             <span>{quiz.duration}</span>
           </div>
@@ -475,6 +502,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "results") {
     const estimate = quiz.result.estimate;
     const scoreCopy = quiz.result.score;
+    const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
     return (
       <>
@@ -482,12 +510,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <div className="quiz-engine__result-icon" aria-hidden="true">
           {quiz.theme.artwork?.icon ?? quiz.cardIcon}
         </div>
-        <span className="quiz-engine__eyebrow">{estimate?.eyebrow ?? quiz.result.profileName}</span>
+        <span className="quiz-engine__eyebrow">{hasDerivedScore ? scoreCopy?.derivedLabel : estimate?.eyebrow ?? quiz.result.profileName}</span>
         {result.estimatedAge !== undefined ? <div className="quiz-engine__result-age"><strong>{result.estimatedAge}</strong><span>{estimate?.ageSuffix}</span></div> : null}
-        {scoreCopy ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
-        <h2>{scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
+        {hasDerivedScore ? <div className="quiz-engine__result-derived"><strong>{result.derivedScore}</strong></div> : scoreCopy ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
+        <h2>{hasDerivedScore ? result.profile.title : scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
-        {scoreCopy ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
+        {scoreCopy?.showPercentage ? <p className="quiz-engine__result-accuracy">{result.percentage}%</p> : null}
+        {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>

@@ -16,7 +16,21 @@ export type QuizFlow = {
 
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
-export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue";
+export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
+export type QuizDerivedScoreConfig = {
+  breakpoints: Array<{ ratio: number; value: number }>;
+  roundTo: number;
+};
+export type QuizTieBreakConfig = {
+  categories: "harder-correct";
+  bestRound: "later";
+};
+export type QuizQuestionVisual = {
+  items: string[];
+  columns?: number;
+  separator?: string;
+  ariaLabel: string;
+};
 export type QuizStudyCue = {
   title: string;
   instruction?: string;
@@ -43,6 +57,8 @@ export type QuizEngineConfig = {
   advanceDelayMs: number;
   targetRatio?: number;
   estimate?: QuizEstimateConfig;
+  derivedScore?: QuizDerivedScoreConfig;
+  tieBreaks?: QuizTieBreakConfig;
 };
 
 export type QuizQuestion = {
@@ -50,6 +66,7 @@ export type QuizQuestion = {
   type: "single-choice";
   presentation: QuizPresentation;
   context?: string;
+  visual?: QuizQuestionVisual;
   prompt: string;
   choices: string[];
   icons?: string[];
@@ -63,6 +80,7 @@ export type QuizQuestion = {
   choiceWeights?: Record<string, number>[];
   explanation?: string;
   category?: string;
+  reasoningSteps?: number;
   stage: number;
 };
 
@@ -148,6 +166,8 @@ export type QuizScoreResultCopy = {
   trickiest: string;
   bestRound: string;
   disclaimer: string;
+  derivedLabel?: string;
+  showPercentage?: boolean;
 };
 
 export type Quiz = {
@@ -166,7 +186,7 @@ export type Quiz = {
   thumbnailUrl?: string;
   thumbnailAlt: string;
   footer?: { aboutText: string; topicText?: string };
-  landing: { quickStartText: string; ctaLabel?: string; socialProof: string; socialAvatars: string[] };
+  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[] };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -186,6 +206,8 @@ type QuizManifest = {
     advanceDelayMs?: number;
     targetRatio?: number;
     estimate?: QuizEstimateConfig;
+    derivedScore?: QuizDerivedScoreConfig;
+    tieBreaks?: QuizTieBreakConfig;
   };
   listing: {
     thumbnail?: string;
@@ -201,7 +223,7 @@ type QuizLocaleFile = {
   title: string;
   eyebrow?: string;
   summary: string;
-  landing?: { intro?: string; socialProof?: string; cta?: string };
+  landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string };
   about?: { body: string; disclaimer?: string };
   checkpoint?: QuizCheckpointCopy;
   results: {
@@ -224,6 +246,7 @@ type QuizLocaleFile = {
     questions: Array<{
       id?: string;
       context?: string;
+      visual?: QuizQuestionVisual;
       question: string;
       presentation?: QuizPresentation;
       answers?: string[] | Record<string, string | Record<string, number>>;
@@ -245,6 +268,7 @@ type QuizLocaleFile = {
       correct?: number;
       explanation?: string;
       category?: string;
+      reasoningSteps?: number;
     }>;
   }>;
 };
@@ -299,6 +323,27 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 350) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 350.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
   if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
+  let derivedScore: QuizDerivedScoreConfig | undefined;
+  if (engine.derivedScore !== undefined) {
+    const rawDerived = object(engine.derivedScore, "engine.derivedScore", file);
+    if (!Array.isArray(rawDerived.breakpoints) || rawDerived.breakpoints.length < 2) throw new Error(`${file}: derivedScore needs at least two breakpoints.`);
+    const breakpoints = rawDerived.breakpoints.map((item, index) => {
+      const point = object(item, `engine.derivedScore.breakpoints[${index}]`, file);
+      if (typeof point.ratio !== "number" || !Number.isFinite(point.ratio) || point.ratio < 0 || point.ratio > 1) throw new Error(`${file}: derivedScore breakpoint ratios must be between 0 and 1.`);
+      if (typeof point.value !== "number" || !Number.isFinite(point.value)) throw new Error(`${file}: derivedScore breakpoint values must be numbers.`);
+      return { ratio: point.ratio, value: point.value };
+    });
+    if (breakpoints.some((point, index) => index > 0 && point.ratio <= breakpoints[index - 1].ratio)) throw new Error(`${file}: derivedScore breakpoints must use strictly increasing ratios.`);
+    const roundTo = Number(rawDerived.roundTo);
+    if (!Number.isFinite(roundTo) || roundTo <= 0) throw new Error(`${file}: derivedScore.roundTo must be greater than zero.`);
+    derivedScore = { breakpoints, roundTo };
+  }
+  let tieBreaks: QuizTieBreakConfig | undefined;
+  if (engine.tieBreaks !== undefined) {
+    const rawTieBreaks = object(engine.tieBreaks, "engine.tieBreaks", file);
+    if (rawTieBreaks.categories !== "harder-correct" || rawTieBreaks.bestRound !== "later") throw new Error(`${file}: invalid tie-break configuration.`);
+    tieBreaks = { categories: "harder-correct", bestRound: "later" };
+  }
   if (engine.rewarded !== undefined) {
     const rewarded = object(engine.rewarded, "engine.rewarded", file);
     if (rewarded.start !== undefined && typeof rewarded.start !== "boolean") throw new Error(`${file}: rewarded.start must be a boolean.`);
@@ -331,7 +376,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   const slug = text(raw.slug, "slug", file);
   return {
     slug,
-    engine: { ...engine, advanceDelayMs, targetRatio, estimate } as QuizManifest["engine"],
+    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -411,7 +456,7 @@ function normalizeLocale(
       else if (!reveal.variants || Object.values(reveal.variants).some((variant) => typeof variant !== "string" || !variant.trim())) throw new Error(`${file}: checkpoint reveal ${index + 1} needs variants.`);
     });
     strings(value.checkpoint.finalChecklist, "checkpoint.finalChecklist", file);
-    if (value.checkpoint.finalChecklist.length !== 6) throw new Error(`${file}: final checklist needs six items.`);
+    if (value.checkpoint.finalChecklist.length < 3 || value.checkpoint.finalChecklist.length > 8) throw new Error(`${file}: final checklist needs three to eight items.`);
     ["nextPrefix", "adNote", "finalBadge", "finalTitle", "finalCopy", "finalButton"].forEach((key) => text(value.checkpoint?.[key as keyof QuizCheckpointCopy], `checkpoint.${key}`, file));
   }
 
@@ -425,7 +470,7 @@ function normalizeLocale(
       const index = questions.length;
       const prompt = text(rawQuestion.question, `questions[${index}].question`, file);
       const presentation = rawQuestion.presentation ?? "text";
-      if (!["text", "icons", "scale", "memory-cue"].includes(presentation)) throw new Error(`${file}: question ${index + 1} has an invalid presentation.`);
+      if (!["text", "icons", "scale", "memory-cue", "sequence", "grid", "code", "spatial"].includes(presentation)) throw new Error(`${file}: question ${index + 1} has an invalid presentation.`);
       const isKnowledgeQuiz = manifest.engine.scoring === "correct-answer";
       const isMemoryCue = presentation === "memory-cue";
       let study: QuizStudyCue | undefined;
@@ -468,13 +513,30 @@ function normalizeLocale(
       }
       if (presentation === "icons" && (!rawQuestion.icons || rawQuestion.icons.length !== choices.length)) throw new Error(`${file}: icon question ${index + 1} needs one icon per answer.`);
       if (presentation === "scale" && choices.length !== 5) throw new Error(`${file}: scale question ${index + 1} needs five stops.`);
+      let visual: QuizQuestionVisual | undefined;
+      if (["sequence", "grid", "code", "spatial"].includes(presentation)) {
+        const rawVisual = object(rawQuestion.visual, `questions[${index}].visual`, file);
+        const items = strings(rawVisual.items, `questions[${index}].visual.items`, file);
+        const ariaLabel = text(rawVisual.ariaLabel, `questions[${index}].visual.ariaLabel`, file);
+        const columns = rawVisual.columns === undefined ? undefined : Number(rawVisual.columns);
+        const separator = rawVisual.separator === undefined ? undefined : text(rawVisual.separator, `questions[${index}].visual.separator`, file);
+        if (presentation === "sequence" && (items.length < 3 || items.length > 8)) throw new Error(`${file}: sequence question ${index + 1} needs three to eight visual items.`);
+        if (presentation === "grid" && (![4, 9].includes(items.length) || ![2, 3].includes(columns ?? 0))) throw new Error(`${file}: grid question ${index + 1} needs four or nine items and two or three columns.`);
+        if (presentation === "code" && (items.length < 2 || items.length > 6)) throw new Error(`${file}: code question ${index + 1} needs two to six visual rules.`);
+        if (presentation === "spatial" && (items.length < 1 || items.length > 6)) throw new Error(`${file}: spatial question ${index + 1} needs one to six visual items.`);
+        visual = { items, columns, separator, ariaLabel };
+      } else if (rawQuestion.visual !== undefined) {
+        throw new Error(`${file}: question ${index + 1} cannot use visual data with ${presentation} presentation.`);
+      }
       if (rawQuestion.calibration && (rawQuestion.calibration.length !== choices.length || rawQuestion.calibration.some((item) => typeof item !== "number" || item < -1 || item > 1))) throw new Error(`${file}: question ${index + 1} calibration values must match answers and be between -1 and 1.`);
       if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 400)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 400.`);
+      if (rawQuestion.reasoningSteps !== undefined && (!Number.isInteger(rawQuestion.reasoningSteps) || rawQuestion.reasoningSteps < 1 || rawQuestion.reasoningSteps > 4)) throw new Error(`${file}: question ${index + 1} reasoningSteps must be between one and four.`);
       questions.push({
         id: rawQuestion.id ?? `q-${index + 1}`,
         type: "single-choice",
         presentation,
         context: rawQuestion.context === undefined ? undefined : text(rawQuestion.context, "question context", file),
+        visual,
         prompt,
         choices,
         icons: rawQuestion.icons,
@@ -488,6 +550,7 @@ function normalizeLocale(
         choiceWeights: weights.some((item) => Object.keys(item).length) ? weights : undefined,
         explanation: rawQuestion.explanation,
         category: rawQuestion.category,
+        reasoningSteps: rawQuestion.reasoningSteps,
         stage: stageIndex,
       });
     });
@@ -507,6 +570,8 @@ function normalizeLocale(
   if (manifest.engine.scoring === "correct-answer" && value.results.score) {
     (["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer"] as const)
       .forEach((key) => text(value.results.score?.[key], `results.score.${key}`, file));
+    if (manifest.engine.derivedScore) text(value.results.score.derivedLabel, "results.score.derivedLabel", file);
+    if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
   }
 
   return {
@@ -523,6 +588,8 @@ function normalizeLocale(
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
       targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,
+      derivedScore: manifest.engine.derivedScore,
+      tieBreaks: manifest.engine.tieBreaks,
     },
     theme,
     customCss,
@@ -542,6 +609,7 @@ function normalizeLocale(
     } : undefined,
     landing: {
       quickStartText: value.landing?.intro ?? summary,
+      infoBadge: value.landing?.badge,
       socialProof: value.landing?.socialProof ?? "",
       ctaLabel: value.landing?.cta,
       socialAvatars,
@@ -602,7 +670,9 @@ function sameStructure(localized: Quiz, source: Quiz, file: string) {
     const original = source.questions[index];
     const studyStructure = question.study ? [question.study.presentation, question.study.items.length, question.study.durationMs, question.study.mode] : undefined;
     const originalStudyStructure = original.study ? [original.study.presentation, original.study.items.length, original.study.durationMs, original.study.mode] : undefined;
-    if (question.id !== original.id || question.presentation !== original.presentation || Boolean(question.context) !== Boolean(original.context) || question.choices.length !== original.choices.length || question.stage !== original.stage || question.answerIndex !== original.answerIndex || question.category !== original.category || JSON.stringify(question.icons) !== JSON.stringify(original.icons) || JSON.stringify(studyStructure) !== JSON.stringify(originalStudyStructure) || JSON.stringify(question.calibrationValues) !== JSON.stringify(original.calibrationValues) || JSON.stringify(question.choiceProfileIds) !== JSON.stringify(original.choiceProfileIds) || JSON.stringify(question.choiceWeights) !== JSON.stringify(original.choiceWeights)) {
+    const visualStructure = question.visual ? [question.visual.items.length, question.visual.columns, question.visual.separator] : undefined;
+    const originalVisualStructure = original.visual ? [original.visual.items.length, original.visual.columns, original.visual.separator] : undefined;
+    if (question.id !== original.id || question.presentation !== original.presentation || Boolean(question.context) !== Boolean(original.context) || question.choices.length !== original.choices.length || question.stage !== original.stage || question.answerIndex !== original.answerIndex || question.category !== original.category || question.advanceDelayMs !== original.advanceDelayMs || question.reasoningSteps !== original.reasoningSteps || JSON.stringify(question.icons) !== JSON.stringify(original.icons) || JSON.stringify(visualStructure) !== JSON.stringify(originalVisualStructure) || JSON.stringify(studyStructure) !== JSON.stringify(originalStudyStructure) || JSON.stringify(question.calibrationValues) !== JSON.stringify(original.calibrationValues) || JSON.stringify(question.choiceProfileIds) !== JSON.stringify(original.choiceProfileIds) || JSON.stringify(question.choiceWeights) !== JSON.stringify(original.choiceWeights)) {
       throw new Error(`${file}: question ${index + 1} structure must match en.json.`);
     }
   });

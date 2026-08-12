@@ -1,4 +1,4 @@
-import type { Quiz, QuizEstimateConfig, QuizResultProfile } from "@/lib/quizzes";
+import type { Quiz, QuizDerivedScoreConfig, QuizEstimateConfig, QuizResultProfile } from "@/lib/quizzes";
 
 export type QuizAnswers = Record<string, number>;
 export type AnswerConsistency = "high" | "medium" | "mixed";
@@ -14,6 +14,7 @@ export type QuizScore = {
   score: number;
   total: number;
   estimatedAge?: number;
+  derivedScore?: number;
   strongestSignal?: string;
   wildcard?: string;
   weakestSignal?: string;
@@ -64,6 +65,27 @@ export function calculateEstimatedAge(
   )));
 }
 
+export function calculateDerivedScore(config: QuizDerivedScoreConfig, ratio: number) {
+  const points = [...config.breakpoints].sort((a, b) => a.ratio - b.ratio);
+  const first = points[0];
+  const last = points[points.length - 1];
+  const clampedRatio = Math.min(last.ratio, Math.max(first.ratio, ratio));
+  let lower = first;
+  let upper = last;
+  for (let index = 1; index < points.length; index += 1) {
+    if (clampedRatio <= points[index].ratio) {
+      lower = points[index - 1];
+      upper = points[index];
+      break;
+    }
+  }
+  const span = upper.ratio - lower.ratio;
+  const progress = span ? (clampedRatio - lower.ratio) / span : 0;
+  const interpolated = lower.value + (upper.value - lower.value) * progress;
+  const rounded = Math.round((interpolated + Number.EPSILON) / config.roundTo) * config.roundTo;
+  return Math.min(Math.max(first.value, last.value), Math.max(Math.min(first.value, last.value), rounded));
+}
+
 function dimensionSummary(quiz: Quiz, weights: Record<string, number>, positiveTotal: number) {
   const dimensionScores = Object.fromEntries(
     quiz.result.scoreDimensions.map((dimension) => {
@@ -88,14 +110,28 @@ function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
   });
   const dimensionScores = Object.fromEntries(dimensions.map((dimension) => [dimension.label, dimension.score]));
   const attemptedDimensions = dimensions.filter((dimension) => dimension.attempts > 0);
-  const rankedBest = [...attemptedDimensions].sort((a, b) => b.score - a.score);
-  const rankedWorst = [...attemptedDimensions].sort((a, b) => a.score - b.score);
+  const dimensionTieStats = quiz.result.scoreDimensions.map((dimension, order) => {
+    const matching = answered.filter((question) => question.category && dimension.categories.includes(question.category));
+    const correctQuestions = matching.filter((question) => answers[question.id] === question.answerIndex);
+    return {
+      label: dimension.label,
+      order,
+      correct: correctQuestions.length,
+      difficulty: correctQuestions.reduce((sum, question) => sum + quiz.questions.findIndex((item) => item.id === question.id) + 1, 0),
+    };
+  }).filter((dimension) => attemptedDimensions.some((attempted) => attempted.label === dimension.label));
+  const rankedBest = quiz.engine.tieBreaks?.categories === "harder-correct"
+    ? [...dimensionTieStats].sort((a, b) => b.correct - a.correct || b.difficulty - a.difficulty || a.order - b.order)
+    : [...attemptedDimensions].sort((a, b) => b.score - a.score);
+  const rankedWorst = quiz.engine.tieBreaks?.categories === "harder-correct"
+    ? [...dimensionTieStats].sort((a, b) => a.correct - b.correct || a.difficulty - b.difficulty || a.order - b.order)
+    : [...attemptedDimensions].sort((a, b) => a.score - b.score);
   const stageScores = quiz.stages.map((label, stage) => {
     const matching = answered.filter((question) => question.stage === stage);
     const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
     return { label, attempts: matching.length, score: matching.length ? correct / matching.length : -1 };
   }).filter((stage) => stage.attempts > 0);
-  const bestStage = [...stageScores].sort((a, b) => b.score - a.score)[0]?.label;
+  const bestStage = [...stageScores].sort((a, b) => b.score - a.score || (quiz.engine.tieBreaks?.bestRound === "later" ? quiz.stages.indexOf(b.label) - quiz.stages.indexOf(a.label) : 0))[0]?.label;
   return {
     answered: answered.length,
     dimensionScores,
@@ -103,6 +139,7 @@ function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
     ratio,
     score,
     total: scored.length,
+    derivedScore: quiz.engine.derivedScore ? calculateDerivedScore(quiz.engine.derivedScore, ratio) : undefined,
     strongestSignal: rankedBest[0]?.label,
     weakestSignal: rankedWorst[0]?.label,
     bestStage,

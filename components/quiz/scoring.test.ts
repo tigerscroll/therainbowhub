@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Quiz, QuizEstimateConfig } from "../../lib/quizzes.ts";
-import { answerConsistencyFromShares, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreQuiz } from "./scoring.ts";
+import { answerConsistencyFromShares, calculateDerivedScore, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreQuiz } from "./scoring.ts";
 
 const estimate: QuizEstimateConfig = {
   baseAge: 84,
@@ -106,4 +106,58 @@ test("correct-answer summaries break category and round ties by first encounter"
   assert.equal(result.strongestSignal, "word_recall");
   assert.equal(result.weakestSignal, "word_recall");
   assert.equal(result.bestStage, "Round 1");
+});
+
+test("derived IQ Challenge Score interpolates and rounds at every acceptance boundary", () => {
+  const config = {
+    breakpoints: [{ ratio: 0, value: 70 }, { ratio: 0.5, value: 100 }, { ratio: 1, value: 145 }],
+    roundTo: 5,
+  };
+  const expected = new Map([[0, 70], [15, 85], [30, 100], [36, 110], [42, 120], [48, 125], [54, 135], [60, 145]]);
+  for (const [correct, score] of expected) assert.equal(calculateDerivedScore(config, correct / 60), score);
+  assert.equal(calculateDerivedScore(config, -0.25), 70);
+  assert.equal(calculateDerivedScore(config, 1.25), 145);
+  assert.equal(calculateDerivedScore(config, 0.5000000001), 100);
+});
+
+test("IQ result profiles switch at each exact boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.engine.derivedScore = {
+    breakpoints: [{ ratio: 0, value: 70 }, { ratio: 0.5, value: 100 }, { ratio: 1, value: 145 }],
+    roundTo: 5,
+  };
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Systems Mastermind" },
+    { minRatio: 0.8, title: "The Precision Thinker" },
+    { minRatio: 0.7, title: "The Pattern Navigator" },
+    { minRatio: 0.6, title: "The Adaptive Solver" },
+    { minRatio: 0.5, title: "The Curious Analyst" },
+    { minRatio: 0, title: "The Creative Wildcard" },
+  ];
+  const cases = [
+    [29, "The Creative Wildcard"], [30, "The Curious Analyst"], [35, "The Curious Analyst"],
+    [36, "The Adaptive Solver"], [41, "The Adaptive Solver"], [42, "The Pattern Navigator"],
+    [47, "The Pattern Navigator"], [48, "The Precision Thinker"], [53, "The Precision Thinker"],
+    [54, "The Systems Mastermind"], [60, "The Systems Mastermind"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+});
+
+test("configured tie-breaking prefers harder correct categories and the later best round", () => {
+  const quiz = {
+    engine: { scoring: { type: "correct-answer" }, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
+    questions: [
+      { id: "a", answerIndex: 0, category: "first", stage: 0 },
+      { id: "b", answerIndex: 0, category: "second", stage: 1 },
+    ],
+    stages: ["First", "Second"],
+    result: {
+      profiles: [{ minRatio: 0, title: "Profile" }],
+      scoreDimensions: [{ label: "First area", categories: ["first"] }, { label: "Second area", categories: ["second"] }],
+    },
+  } as Quiz;
+  const result = scoreQuiz(quiz, { a: 0, b: 0 });
+  assert.equal(result.strongestSignal, "Second area");
+  assert.equal(result.weakestSignal, "First area");
+  assert.equal(result.bestStage, "Second");
 });
