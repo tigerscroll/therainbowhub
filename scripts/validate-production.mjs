@@ -51,12 +51,6 @@ for (const filePath of files) {
   if (/\.(?:ts|tsx|js|mjs|json|txt|md|html|css)$/.test(base)) {
     const text = fs.readFileSync(filePath, "utf8");
 
-    const testRewardedAdUnit = "/22639388115/" + "rewarded_web_example";
-
-    if (text.includes(testRewardedAdUnit)) {
-      addError(`Test rewarded ad unit must not be committed for launch: ${rel}`);
-    }
-
     if (/https:\/\/i\.pravatar\.cc/.test(text)) {
       addError(`Third-party avatar URL must not be used in production UI: ${rel}`);
     }

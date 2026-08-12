@@ -42,7 +42,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <body className="min-h-screen font-sans antialiased" suppressHydrationWarning>
+      <head>
+        <script
+          id="document-language"
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function () {
+              var supported = ["fr", "de", "pt", "nl", "es", "it"];
+              var firstSegment = window.location.pathname.split("/")[1];
+              var locale = supported.indexOf(firstSegment) >= 0 ? firstSegment : "en";
+              document.documentElement.lang = locale;
+              document.documentElement.dir = "ltr";
+            })();
+          `,
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <Script
+          referrerPolicy="no-referrer-when-downgrade"
+          src={siteConfig.assertiveYieldManagerUrl}
+          strategy="afterInteractive"
+        />
+        <Script
+          async
+          src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+          strategy="afterInteractive"
+        />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-44LV753KWN"
@@ -56,22 +82,19 @@ export default function RootLayout({
             gtag('config', 'G-44LV753KWN');
           `}
         </Script>
-        <div
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: `<script src="${siteConfig.assertiveYieldManagerUrl}" type="text/javascript" referrerpolicy="no-referrer-when-downgrade"></script><script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script><script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${siteConfig.metaPixelId}');
-</script>`,
-          }}
-        />
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${siteConfig.metaPixelId}');
+          `}
+        </Script>
         <noscript>
           <img
             height="1"

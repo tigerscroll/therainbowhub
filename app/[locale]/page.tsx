@@ -50,9 +50,9 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
 
   return buildMetadata({
     alternates: quizAlternates(quiz.slug),
-    description: quiz.seoDescription ?? quiz.summary,
+    description: quiz.summary,
     path: getQuizPath(getDefaultLocale(), quiz.slug),
-    title: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+    title: `${quiz.title} - The Rainbow Hub`,
   });
 }
 
@@ -78,7 +78,7 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
   }
 
   return (
-    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} translations={translations}>
+    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} quizTheme={quiz.theme} translations={translations}>
       <QuizTemplate locale={locale} quiz={quiz} translations={translations} />
     </SiteShell>
   );

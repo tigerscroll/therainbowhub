@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: LocaleQuizPageProps): Promise
 
   return buildMetadata({
     alternates: localizedQuizAlternates(locale, quiz.slug),
-    description: quiz.seoDescription ?? quiz.summary,
+    description: quiz.summary,
     locale,
     path: getQuizPath(locale, quiz.slug),
-    title: `${quiz.homepage.title ?? quiz.title} - The Rainbow Hub`,
+    title: `${quiz.title} - The Rainbow Hub`,
   });
 }
 
@@ -51,7 +51,7 @@ export default async function LocaleQuizPage({ params }: LocaleQuizPageProps) {
   const translations = getTranslations(locale);
 
   return (
-    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} translations={translations}>
+    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} quizTheme={quiz.theme} translations={translations}>
       <QuizTemplate locale={locale} quiz={quiz} translations={translations} />
     </SiteShell>
   );

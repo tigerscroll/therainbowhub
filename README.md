@@ -1,406 +1,63 @@
-# The Rainbow Hub Quiz Site
+# Rainbow Hub quiz engine
 
-A mobile-first quiz website built with Next.js App Router, TypeScript, Tailwind CSS, and static export for Cloudflare Pages.
+Each quiz is one folder:
 
-## Local Setup
-
-Install dependencies:
-
-```bash
-npm install
+```text
+data/quizzes/my-quiz/
+  quiz.json
+  en.json
+  fr.json
+  theme.css        # optional
+  assets/          # optional thumbnail, artwork and avatar images
 ```
 
-Run the development server:
+`quiz.json` contains engine, listing, estimate and theme settings. Locale files contain only visible translated content. `title` is also the SEO title and `summary` is also the SEO description.
+
+Quiz-specific text belongs in the quiz folder. `landing.cta` controls that quiz's start button in each locale. Shared runner labels such as Continue, Loading ad, Restart and About This Quiz live once in `data/i18n/<locale>.json`; every quiz reuses them and validation rejects missing labels. An `about` block only needs `body` and an optional `disclaimer`—there is no custom About title to maintain.
+
+## Quiz types
+
+Set `engine.scoring` in `quiz.json`:
+
+- `correct-answer` for knowledge tests. Use an answer array and `correct` index.
+- `weighted-profile` for personality tests. Use an answer map from visible answer to profile id or weight map.
+
+Every question can choose a folder-configured `presentation`:
+
+- `text` for two to four standard choices.
+- `icons` with one localized `icons` entry per choice.
+- `scale` for five discrete, keyboard-accessible stops.
+- `memory-cue` with three or four `memoryItems` and a localized `continueLabel`.
+
+Questions may also set `delay` (200–400ms), `correct` for hidden objective scoring, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–350ms).
+
+Set `engine.flow` to `linear` or `staged`. Set `advance` to `automatic` or `manual`, and `feedback` to `instant`, `selection-only`, or `after-results`.
+
+For rewarded gates, add `engine.rewarded` with `start`, `stages` and `attempts`. The engine requests Google rewarded inventory itself; AssertiveYield remains responsible for yield/performance tracking. If no rewarded ad can be shown, the engine retries up to `attempts` and then continues automatically. The GAM unit can be changed with `NEXT_PUBLIC_GAM_REWARDED_AD_UNIT`.
+
+Set `engine.checkpoint` to `ai` when the locale files provide the compact `checkpoint` copy block. Each reveal declares `fixed`, `trend`, or `consistency`, so checkpoints can react qualitatively without showing false precision. This creates a localized analysis screen after every stage without editing the runner.
+
+An optional `engine.estimate` keeps entertainment estimates quiz-folder controlled: base and clamp ages, profile adjustments, brain boundaries and final-calibration limit. No estimate logic or content needs to be added to the runner.
+
+## Theme and landing page
+
+All normal customisation is in `quiz.json`: colors, type preset, texture, artwork, header colors and landing/question/result layouts. No engine code changes are needed. The optional `theme.header` block accepts `background`, `text`, `border` and `shadow`; the shared header remains exactly 50px high.
+
+If a quiz needs art direction beyond those settings, add `theme.css` inside that quiz folder. It is discovered automatically—there is no theme registry to edit. Scope every selector under `[data-quiz-theme="<slug>"]` so it cannot affect the shared site header or footer.
+
+To create another quiz, copy one quiz folder, change its slug/config/content, and add or remove locale files. Relative paths such as `assets/thumbnail.jpg` are loaded from that folder automatically. The shared runner does not need to be edited.
+
+## Saved progress
+
+Quiz progress is saved indefinitely in `localStorage`, separately for every quiz and locale. Answers, memory-cue completion, the current question, checkpoint and result screen are restored after refreshes and browser restarts. A synchronous pre-paint restore prevents the server landing from flashing before the saved screen. Ad-loading screens are never persisted: reloading during an ad returns to the safe question/checkpoint that launched it. A structural content signature rejects incompatible progress after a quiz changes, and Restart clears that quiz's saved progress and returns to its landing.
+
+## Add a language
+
+Add one entry to `localeOptions` in `lib/i18n.ts`, add `data/i18n/<locale>.json` and `data/info-pages/<locale>.json`, then add `<locale>.json` to each translated quiz folder. Routes and language menus are generated from that registry.
+
+## Check the site
 
 ```bash
-npm run dev
-```
-
-Build the static export:
-
-```bash
+npm run lint
 npm run build
 ```
-
-Validate quiz JSON files before committing:
-
-```bash
-npm run validate
-```
-
-## Cloudflare Pages
-
-Use these Cloudflare Pages settings:
-
-```text
-Build command: npm run build
-Output directory: out
-```
-
-## Quiz Data
-
-Quizzes live in one folder per quiz, with one JSON file per language:
-
-```text
-data/quizzes/
-  schema.json
-  oxford/
-    en.json
-    es.json
-  cambridge/
-    en.json
-    es.json
-  example-template/
-    en.json
-```
-
-Current production quiz folders:
-
-```text
-data/quizzes/oxford/en.json
-data/quizzes/oxford/es.json
-data/quizzes/cambridge/en.json
-data/quizzes/cambridge/es.json
-```
-
-The template file is:
-
-```text
-data/quizzes/example-template/en.json
-```
-
-The app reads quiz JSON files at build time through:
-
-```text
-lib/quizzes.ts
-```
-
-You can quickly check quiz files without running a full Next.js build:
-
-```bash
-npm run validate
-```
-
-This validates required fields, stage/question structure, answer indexes, translated quiz alignment, local thumbnail paths, explanations, and result scoring categories.
-
-The JSON schema for AI tools and editors is:
-
-```text
-data/quizzes/schema.json
-```
-
-`example-template` is ignored by the loader so it does not appear as a real quiz. To add a quiz:
-
-1. Copy `data/quizzes/example-template/`.
-2. Rename the copied folder to the new slug, for example `data/quizzes/memory-test/`.
-3. Keep the default quiz file at `data/quizzes/memory-test/en.json`.
-4. Set `"slug": "memory-test"` inside every locale JSON file.
-5. Update title, page copy, homepage fields, stage groups, and questions.
-6. Commit the quiz folder.
-7. Cloudflare Pages rebuilds and the new quiz appears on the homepage and at `/memory-test/`.
-
-To add a translated quiz, add a full self-contained locale file inside the same quiz folder:
-
-```text
-data/quizzes/memory-test/es.json
-```
-
-Then `/es/memory-test/` will use the Spanish quiz file. If a translated file is missing, the locale route still works using the English quiz data with translated shared UI until the quiz JSON is added.
-
-Quiz JSON files are only for quiz-specific content:
-
-- quiz title and subtitle/page title
-- SEO title and SEO description
-- start-screen landing copy and social proof
-- stage-complete encouragement copy
-- quiz questions and answer choices
-- explanations and result descriptions
-- result profile tiers and score dimension labels
-- quiz card/homepage metadata such as thumbnail URL, icon, category, difficulty, duration, and pass rate
-
-Do not put shared header, footer, button, navigation, legal, loading, rewarded-ad, or language-switcher text in quiz JSON files.
-
-## Recommended AI-Friendly Quiz JSON
-
-For new quizzes, use the nested `stageGroups` format. It is the easiest format to give to AI because each stage contains its own questions and the stage-complete message that appears after it.
-
-`questionCount` is optional. If you include it, the build checks it. If you omit it, the loader calculates it from the questions.
-
-Each quiz JSON file should look like this:
-
-```json
-{
-  "slug": "memory-test",
-  "title": "Memory Test",
-  "seoTitle": "Memory Test Quiz",
-  "seoDescription": "A short SEO description for this quiz page.",
-  "pageTitle": "How Sharp Is Your Memory?",
-  "eyebrow": "Cognition",
-  "summary": "A short homepage description.",
-  "duration": "~3 min",
-  "difficulty": "Medium",
-  "passRate": "25%",
-  "cardIcon": "🧠",
-  "cardGradient": "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-  "accent": "#4f46e5",
-  "homepage": {
-    "title": "Memory Test",
-    "summary": "Homepage card copy for this quiz.",
-    "thumbnailUrl": "/images/memory-test.jpg",
-    "thumbnailAlt": "Memory Test quiz thumbnail",
-    "icon": "🧠",
-    "gradient": "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-    "featured": false
-  },
-  "landing": {
-    "quickStartText": "Just 8 quick questions to begin.",
-    "challengeText": "Most players never reach the final round.",
-    "socialProof": "50,000+ people tried it this week"
-  },
-  "heroPoints": ["Fast questions", "Instant result", "Mobile friendly"],
-  "stageGroups": [
-    {
-      "title": "Warm-Up",
-      "encouragement": "Nice start. Next comes visual logic.",
-      "questions": [
-        {
-          "prompt": "Question text",
-          "choices": ["A", "B", "C", "D"],
-          "answerIndex": 0,
-          "explanation": "Why the answer is correct.",
-          "category": "logic"
-        }
-      ]
-    },
-    {
-      "title": "Final Round",
-      "questions": [
-        {
-          "prompt": "Final question text",
-          "choices": ["A", "B", "C", "D"],
-          "answerIndex": 1,
-          "explanation": "Why the answer is correct.",
-          "category": "deduction"
-        }
-      ]
-    }
-  ],
-  "result": {
-    "profileName": "Memory",
-    "profiles": [
-      {
-        "minRatio": 0.8,
-        "tier": "Top Performer",
-        "title": "You beat the test.",
-        "copy": "Excellent work across the full quiz. Your strongest area was {stage}.",
-        "percentile": "Top 10%"
-      },
-      {
-        "minRatio": 0,
-        "tier": "Rising Performer",
-        "title": "Keep sharpening.",
-        "copy": "The next attempt can be stronger. Your best area was {stage}.",
-        "percentile": "Top 80%"
-      }
-    ],
-    "scoreDimensions": [
-      {
-        "label": "Memory",
-        "categories": ["memory"]
-      }
-    ]
-  },
-  "infoPanel": {
-    "title": "About This Quiz",
-    "intro": "Quiz-specific background copy shown below the quiz.",
-    "columns": [
-      {
-        "title": "How It Works",
-        "body": "Explain the quiz flow and question types."
-      },
-      {
-        "title": "About This Topic",
-        "body": "Add topic, institution, or subject background."
-      }
-    ],
-    "footerTitle": "Fair & Transparent",
-    "footerBody": "Explain scoring and any important disclaimers."
-  }
-}
-```
-
-Each nested stage group must include:
-
-- `title`
-- `questions`
-- `encouragement` for every stage except the final stage
-
-Each question must include:
-
-```json
-{
-  "prompt": "Question text",
-  "choices": ["A", "B", "C", "D"],
-  "answerIndex": 0,
-  "explanation": "Why the answer is correct.",
-  "category": "logic"
-}
-```
-
-The loader also still supports the older flat format with `stages`, `stageEncouragement`, and `questions`. In that format, each question can include a zero-based `stage` number. The nested `stageGroups` format is preferred for new AI-generated quizzes.
-
-Rules enforced by the loader:
-
-- The folder name must match the slug, for example `data/quizzes/memory-test/en.json` must contain `"slug": "memory-test"`.
-- Every quiz folder must contain `en.json`.
-- Locale files must be named with supported locale codes. Currently enabled: `en`, `es`.
-- Translated quiz files must keep the same `slug`, `questionCount`, number of stages, number of questions, answer indexes, choice counts, stages, and categories as `en.json`.
-- Translated quiz files must also keep the same `stageEncouragement` count, result profile thresholds, and score dimension category mappings as `en.json`.
-- With `stageGroups`, the app automatically generates the internal `stages`, `stageEncouragement`, `questions`, and per-question stage numbers.
-- `landing` controls the start-screen subtitle and social proof text.
-- In the flat format, `stageEncouragement` contains one message for each completed stage before final results. A one-stage quiz can use an empty array.
-- `result.profileName`, `result.profiles`, and `result.scoreDimensions` control the final result screen. Use `{stage}` inside result copy to insert the strongest stage name.
-- `questionCount` is optional, but must match the actual number of questions if provided.
-- `difficulty` must be one of `Quick`, `Medium`, `Hard`, or `Expert`.
-- `homepage` is optional but recommended. It controls homepage card title, summary, thumbnail image, fallback icon/gradient, and whether the quiz is featured in the hero CTA.
-- `infoPanel` is optional. It controls the editable about/how-it-works/context/disclaimer block shown below each quiz near the restart button.
-- Put thumbnail files in `public/images/` and reference them as `/images/file-name.jpg`.
-- `answerIndex` must point to an existing choice.
-- `category` is a stable scoring tag, not display text. Keep category values consistent across translations.
-- In flat-format quizzes, `stage` is zero-based and must map to an entry in `stages`.
-
-## AI Prompt Template
-
-Use this when asking AI to create a quiz:
-
-```text
-Create a valid JSON quiz for The Rainbow Hub.
-Use the nested stageGroups format from data/quizzes/schema.json.
-Do not include shared UI text such as header, footer, button, legal, loading, or language switcher text.
-Create {number} stages with {number} questions per stage.
-Every non-final stage must include an encouragement message.
-Every question must include prompt, choices, answerIndex, explanation, and category.
-Use exactly 4 choices per question unless I say otherwise.
-Do not include questionCount unless you are certain it matches the total question count.
-Return valid JSON only.
-```
-
-## Shared Site Translations
-
-Shared site text lives in:
-
-```text
-data/i18n/
-```
-
-Current global translation files:
-
-```text
-data/i18n/en.json
-data/i18n/es.json
-```
-
-These files translate shared UI only:
-
-- site name and description
-- header navigation
-- footer text and footer link labels
-- homepage labels
-- quiz interface buttons and progress labels
-- reusable result screen labels such as "Final score" and missed-answer review buttons
-- loading and rewarded-ad helper copy
-- language switcher labels
-- not-found/error copy
-
-The helper for loading translations is:
-
-```text
-lib/i18n.ts
-```
-
-It exposes:
-
-- `getTranslations(locale)`
-- `getLocaleDirection(locale)`
-- `getSupportedLocales()`
-- `getDefaultLocale()`
-
-Default English routes stay unprefixed:
-
-```text
-/
-/oxford/
-```
-
-Translated shared UI routes use a locale prefix:
-
-```text
-/es/
-/es/oxford/
-```
-
-Only English and Spanish are currently enabled. Additional languages can be added later without changing the quiz JSON structure.
-
-To add a new language:
-
-1. Copy `data/i18n/en.json` to `data/i18n/{locale}.json`.
-2. Translate all shared strings.
-3. Copy `data/info-pages/en.json` to `data/info-pages/{locale}.json` and translate the legal/about pages.
-4. Add the locale code to `supportedLocales` in `lib/i18n.ts`.
-5. Add the display name in `components/LanguageSwitcher.tsx`.
-6. For RTL languages, add the locale code to `rtlLocales` in `lib/i18n.ts`.
-7. Run `npm run build`.
-
-To edit footer, header, button, loading, or rewarded-ad helper text, edit the relevant key in `data/i18n/*.json`.
-
-## Translated Quizzes
-
-Quiz-specific text stays in quiz JSON. To translate a quiz, copy that quiz's `en.json` to a supported locale file such as `es.json`, translate the full quiz content, and keep the same answer structure. The locale routes combine shared UI translations with locale-specific quiz content, so `/es/cambridge/` uses Spanish buttons/navigation/footer and `data/quizzes/cambridge/es.json` when that file exists.
-
-## Tracking
-
-Global script IDs and URLs are configured in:
-
-```text
-lib/siteConfig.ts
-```
-
-Tracking helper functions are in:
-
-```text
-lib/tracking.ts
-```
-
-Available helpers:
-
-- `trackPageView()`
-
-This helper safely checks whether `fbq` or `gtag` exists before firing, so missing pixels will not break the quiz.
-
-To change Meta Pixel later, update `metaPixelId` in `lib/siteConfig.ts`.
-
-To change Google Tag later, update `googleTagId` in `lib/siteConfig.ts`.
-
-## Rewarded Ads
-
-The live Google Ad Manager rewarded ad unit path is configured in `lib/siteConfig.ts`:
-
-```text
-/22677279144/display
-```
-
-The active rewarded-ad flow lives in `components/QuizRunner.tsx`. The quiz runner requests a rewarded out-of-page slot and advances after `rewardedSlotGranted`. It tries up to 3 times when no ad is available or an error occurs, then falls back and continues so users are not blocked. If a user closes an ad before reward is granted, the gate reopens another ad and does not continue until a reward is completed or the no-ad/error fallback is reached.
-
-## Generated Files
-
-Do not commit generated folders or platform files:
-
-```text
-node_modules
-.next
-out
-.DS_Store
-__MACOSX
-```
-
-These are ignored in `.gitignore`.

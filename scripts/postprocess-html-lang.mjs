@@ -4,7 +4,6 @@ import path from "node:path";
 const outDirectory = path.join(process.cwd(), "out");
 const localeDirectory = path.join(process.cwd(), "data", "i18n");
 const defaultLocale = "en";
-const rtlLocales = new Set(["ar", "he"]);
 
 function getSupportedLocales() {
   return new Set(
@@ -44,7 +43,8 @@ function getLocaleForFile(filePath, supportedLocales) {
 }
 
 function rewriteHtmlTag(html, locale) {
-  const direction = rtlLocales.has(locale) ? "rtl" : "ltr";
+  const localeFile = JSON.parse(fs.readFileSync(path.join(localeDirectory, `${locale}.json`), "utf8"));
+  const direction = localeFile.locale?.direction ?? "ltr";
 
   return html.replace(/<html\b([^>]*)>/i, (tag) => {
     const withoutLang = tag
