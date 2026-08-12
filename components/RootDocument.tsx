@@ -1,63 +1,17 @@
-import type { Metadata } from "next";
 import Script from "next/script";
-import { absoluteUrl } from "@/lib/seo";
-import { siteConfig } from "@/lib/siteConfig";
-import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
-  applicationName: siteConfig.name,
-  title: {
-    default: "The Rainbow Hub - Quick quizzes. Sharper mind.",
-    template: "%s - The Rainbow Hub",
-  },
-  description: "Fast, mobile-friendly IQ and academic-style quiz tests.",
-  openGraph: {
-    description: siteConfig.description,
-    images: [
-      {
-        url: absoluteUrl("/og-default.svg"),
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-    siteName: siteConfig.name,
-    title: "The Rainbow Hub - Quick quizzes. Sharper mind.",
-    type: "website",
-    url: siteConfig.siteUrl,
-  },
-  twitter: {
-    card: "summary_large_image",
-    description: siteConfig.description,
-    images: [absoluteUrl("/og-default.svg")],
-    title: "The Rainbow Hub - Quick quizzes. Sharper mind.",
-  },
+import type { SupportedLocale } from "@/lib/i18n";
+import { siteConfig } from "@/lib/siteConfig";
+
+type RootDocumentProps = {
+  children: React.ReactNode;
+  direction: string;
+  locale: SupportedLocale;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export function RootDocument({ children, direction, locale }: RootDocumentProps) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
-      <head>
-        <script
-          id="document-language"
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function () {
-              var supported = ["fr", "de", "pt", "nl", "es", "it"];
-              var firstSegment = window.location.pathname.split("/")[1];
-              var locale = supported.indexOf(firstSegment) >= 0 ? firstSegment : "en";
-              document.documentElement.lang = locale;
-              document.documentElement.dir = "ltr";
-            })();
-          `,
-          }}
-        />
-      </head>
+    <html dir={direction} lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Script
           referrerPolicy="no-referrer-when-downgrade"
@@ -97,14 +51,13 @@ export default function RootLayout({
         </Script>
         <noscript>
           <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${siteConfig.metaPixelId}&ev=PageView&noscript=1`}
             alt=""
+            height="1"
+            src={`https://www.facebook.com/tr?id=${siteConfig.metaPixelId}&ev=PageView&noscript=1`}
+            style={{ display: "none" }}
+            width="1"
           />
         </noscript>
-
         {children}
       </body>
     </html>

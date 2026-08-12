@@ -1,6 +1,6 @@
 "use client";
 
-type RewardedResult = "granted" | "closed" | "unavailable";
+export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
@@ -141,11 +141,17 @@ export async function requestRewardedAd({
   timeoutMs?: number;
 }) {
   const maximum = Math.max(1, attempts);
-  for (let attempt = 1; attempt <= maximum; attempt += 1) {
+  let unavailableAttempts = 0;
+
+  while (unavailableAttempts < maximum) {
+    const attempt = unavailableAttempts + 1;
     onAttempt?.(attempt, maximum);
     const result = await requestOnce(adUnitPath, timeoutMs);
-    if (result === "granted") return true;
-    if (attempt < maximum) await new Promise((resolve) => window.setTimeout(resolve, 450));
+    if (result === "granted" || result === "closed") return result;
+
+    unavailableAttempts += 1;
+    if (unavailableAttempts < maximum) await new Promise((resolve) => window.setTimeout(resolve, 450));
   }
-  return false;
+
+  return "unavailable";
 }

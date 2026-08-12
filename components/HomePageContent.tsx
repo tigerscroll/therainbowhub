@@ -13,21 +13,30 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
     <div className="hub-home">
       <div className="hub-main">
         <section className="hub-hero">
-          <h1>{translations.home.headlinePrefix} <span>{translations.home.headlineHighlight}</span></h1>
+          <h1>
+            <span className="hub-hero__lead">{translations.home.headlinePrefix}</span>
+            <span>{translations.home.headlineHighlight}</span>
+          </h1>
           <p>{translations.home.intro}</p>
         </section>
-        <section className="hub-quiz-grid" aria-label={translations.home.stats.quizzes}>
-          {quizzes.map((quiz) => (
-            <LinkCard
-              href={getLocalePath(locale, `/${quiz.slug}`)}
-              image={quiz.thumbnailUrl}
-              imageAlt={quiz.thumbnailAlt}
-              key={quiz.slug}
-              label={quiz.engine.scoring.type === "weighted-profile" ? translations.home.personality : translations.home.difficulty[quiz.difficulty]}
-              summary={quiz.summary}
-              title={quiz.title}
-            />
-          ))}
+        <section className="hub-quizzes" aria-labelledby="quiz-list-title">
+          <div className="hub-quizzes__heading">
+            <h2 id="quiz-list-title">{translations.home.stats.quizzes}</h2>
+            <span aria-hidden="true" />
+          </div>
+          <div className="hub-quiz-grid">
+            {quizzes.map((quiz) => (
+              <LinkCard
+                href={getLocalePath(locale, `/${quiz.slug}`)}
+                image={quiz.thumbnailUrl}
+                imageAlt={quiz.thumbnailAlt}
+                key={quiz.slug}
+                label={quiz.engine.scoring.type === "weighted-profile" ? translations.home.personality : translations.home.difficulty[quiz.difficulty]}
+                summary={quiz.summary}
+                title={quiz.title}
+              />
+            ))}
+          </div>
         </section>
       </div>
     </div>
@@ -49,6 +58,7 @@ function LinkCard({ href, image, imageAlt, label, summary, title }: {
         <span className="hub-chip">{label}</span>
         <h2>{title}</h2>
         <p>{summary}</p>
+        <span aria-hidden="true" className="hub-quiz-card__arrow">→</span>
       </div>
     </a>
   );

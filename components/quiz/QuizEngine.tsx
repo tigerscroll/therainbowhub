@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
@@ -226,23 +227,35 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey]);
 
   function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
 
   async function runRewardedGate(onComplete: () => void) {
     if (adRequestActive.current) return;
     adRequestActive.current = true;
     setAdBusy(true);
+    let outcome;
     try {
-      await requestRewardedAd({
+      outcome = await requestRewardedAd({
         adUnitPath: siteConfig.rewardedAdUnitPath,
         attempts: quiz.engine.rewarded.attempts,
       });
-    } finally {
+    } catch {
       adRequestActive.current = false;
       setAdBusy(false);
+      return;
     }
-    onComplete();
+
+    adRequestActive.current = false;
+    if (outcome === "closed") {
+      setAdBusy(false);
+      return;
+    }
+
+    flushSync(() => {
+      onComplete();
+      setAdBusy(false);
+    });
     scrollToTop();
   }
 
