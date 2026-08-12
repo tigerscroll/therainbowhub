@@ -3,6 +3,8 @@ import type { Quiz, QuizEstimateConfig, QuizResultProfile } from "@/lib/quizzes"
 export type QuizAnswers = Record<string, number>;
 export type AnswerConsistency = "high" | "medium" | "mixed";
 export type EstimateTrend = "up" | "steady" | "down";
+export type TargetStatus = "achieved" | "reachable" | "unreachable";
+export type ScoreBand = "onTrack" | "needsBoost";
 
 export type QuizScore = {
   answered: number;
@@ -14,6 +16,11 @@ export type QuizScore = {
   estimatedAge?: number;
   strongestSignal?: string;
   wildcard?: string;
+  weakestSignal?: string;
+  bestStage?: string;
+  percentage: number;
+  targetStatus: TargetStatus;
+  scoreBand: ScoreBand;
   consistency: AnswerConsistency;
   trend: EstimateTrend;
   brainCorrect: number;
@@ -42,6 +49,12 @@ export function rankDimensions(dimensionScores: Record<string, number>) {
   return { strongestSignal: ranked[0]?.[0], wildcard: ranked[1]?.[0] };
 }
 
+export function getTargetStatus(score: number, answered: number, total: number, targetRatio: number): TargetStatus {
+  const target = Math.ceil(total * targetRatio);
+  if (score >= target) return "achieved";
+  return score + Math.max(0, total - answered) >= target ? "reachable" : "unreachable";
+}
+
 export function calculateEstimatedAge(
   estimate: QuizEstimateConfig,
   adjustments: { personality: number; brain: number; calibration: number },
@@ -65,21 +78,37 @@ function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
   const scored = quiz.questions.filter((question) => question.answerIndex !== undefined);
   const score = scored.reduce((total, question) => total + (answers[question.id] === question.answerIndex ? 1 : 0), 0);
   const ratio = scored.length ? score / scored.length : 0;
+  const answered = scored.filter((question) => answers[question.id] !== undefined);
+  const targetRatio = quiz.engine.targetRatio ?? 1;
   const profile = [...quiz.result.profiles].sort((a, b) => b.minRatio - a.minRatio).find((item) => ratio >= item.minRatio) ?? fallbackProfile(quiz);
-  const dimensionScores = Object.fromEntries(
-    quiz.result.scoreDimensions.map((dimension) => {
-      const matching = scored.filter((question) => question.category && dimension.categories.includes(question.category));
-      const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
-      return [dimension.label, matching.length ? Math.round((correct / matching.length) * 100) : 0];
-    }),
-  );
+  const dimensions = quiz.result.scoreDimensions.map((dimension) => {
+    const matching = answered.filter((question) => question.category && dimension.categories.includes(question.category));
+    const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
+    return { label: dimension.label, attempts: matching.length, score: matching.length ? Math.round((correct / matching.length) * 100) : 0 };
+  });
+  const dimensionScores = Object.fromEntries(dimensions.map((dimension) => [dimension.label, dimension.score]));
+  const attemptedDimensions = dimensions.filter((dimension) => dimension.attempts > 0);
+  const rankedBest = [...attemptedDimensions].sort((a, b) => b.score - a.score);
+  const rankedWorst = [...attemptedDimensions].sort((a, b) => a.score - b.score);
+  const stageScores = quiz.stages.map((label, stage) => {
+    const matching = answered.filter((question) => question.stage === stage);
+    const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
+    return { label, attempts: matching.length, score: matching.length ? correct / matching.length : -1 };
+  }).filter((stage) => stage.attempts > 0);
+  const bestStage = [...stageScores].sort((a, b) => b.score - a.score)[0]?.label;
   return {
-    answered: Object.keys(answers).length,
+    answered: answered.length,
     dimensionScores,
     profile,
     ratio,
     score,
     total: scored.length,
+    strongestSignal: rankedBest[0]?.label,
+    weakestSignal: rankedWorst[0]?.label,
+    bestStage,
+    percentage: Math.round(ratio * 100),
+    targetStatus: getTargetStatus(score, answered.length, scored.length, targetRatio),
+    scoreBand: answered.length && score / answered.length >= targetRatio ? "onTrack" : "needsBoost",
     consistency: "mixed",
     trend: "steady",
     brainCorrect: score,
@@ -150,6 +179,11 @@ function scoreWeightedProfile(quiz: Quiz, answers: QuizAnswers): QuizScore {
     estimatedAge,
     strongestSignal: dimensions.strongestSignal,
     wildcard: dimensions.wildcard,
+    weakestSignal: undefined,
+    bestStage: undefined,
+    percentage: Math.round((positiveTotal ? winningScore / positiveTotal : 0) * 100),
+    targetStatus: "reachable",
+    scoreBand: "onTrack",
     consistency: consistencyFromWeights(weights),
     trend: personality > 0.75 ? "up" : personality < -0.75 ? "down" : "steady",
     brainCorrect,

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
+import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { getAllQuizzes, getQuizBySlug, getQuizLocales } from "@/lib/quizzes";
 import { buildMetadata, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
 
 type LocaleQuizPageProps = {
@@ -16,11 +16,12 @@ type LocaleQuizPageProps = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const defaultQuizSlugs = getAllQuizzes(getDefaultLocale()).map((quiz) => quiz.slug);
-
-  return getSupportedLocales()
-    .filter((locale) => locale !== getDefaultLocale())
-    .flatMap((locale) => defaultQuizSlugs.map((slug) => ({ locale, slug })));
+  const defaultLocale = getDefaultLocale();
+  return getAllQuizzes(defaultLocale).flatMap((quiz) =>
+    getQuizLocales(quiz.slug)
+      .filter((locale) => locale !== defaultLocale)
+      .map((locale) => ({ locale, slug: quiz.slug })),
+  );
 }
 
 export async function generateMetadata({ params }: LocaleQuizPageProps): Promise<Metadata> {

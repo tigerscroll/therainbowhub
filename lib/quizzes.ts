@@ -17,6 +17,16 @@ export type QuizFlow = {
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue";
+export type QuizStudyCue = {
+  title: string;
+  instruction?: string;
+  presentation: "text" | "icons";
+  items: string[];
+  durationMs: number;
+  mode: "manual" | "automatic";
+  continueLabel?: string;
+  ariaLabel?: string;
+};
 export type QuizEstimateConfig = {
   baseAge: number;
   minAge: number;
@@ -31,6 +41,7 @@ export type QuizEngineConfig = {
   checkpoint: "standard" | "ai";
   rewarded: QuizRewardedConfig;
   advanceDelayMs: number;
+  targetRatio?: number;
   estimate?: QuizEstimateConfig;
 };
 
@@ -38,11 +49,13 @@ export type QuizQuestion = {
   id: string;
   type: "single-choice";
   presentation: QuizPresentation;
+  context?: string;
   prompt: string;
   choices: string[];
   icons?: string[];
   memoryItems?: string[];
   continueLabel?: string;
+  study?: QuizStudyCue;
   calibrationValues?: number[];
   advanceDelayMs?: number;
   answerIndex?: number;
@@ -111,8 +124,9 @@ export type QuizTheme = {
 
 export type QuizCheckpointReveal = {
   title: string;
-  signal: "fixed" | "trend" | "consistency";
+  signal: "fixed" | "trend" | "consistency" | "score-band" | "strongest-dimension" | "target-status";
   message?: string;
+  template?: string;
   variants?: Record<string, string>;
 };
 export type QuizCheckpointCopy = {
@@ -124,6 +138,16 @@ export type QuizCheckpointCopy = {
   finalCopy: string;
   finalButton: string;
   finalChecklist: string[];
+};
+
+export type QuizScoreResultCopy = {
+  passed: string;
+  finished: string;
+  correctLabel: string;
+  strongest: string;
+  trickiest: string;
+  bestRound: string;
+  disclaimer: string;
 };
 
 export type Quiz = {
@@ -146,7 +170,7 @@ export type Quiz = {
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
-  result: QuizResultConfig;
+  result: QuizResultConfig & { score?: QuizScoreResultCopy };
   questions: QuizQuestion[];
 };
 
@@ -160,6 +184,7 @@ type QuizManifest = {
     checkpoint?: QuizEngineConfig["checkpoint"];
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
+    targetRatio?: number;
     estimate?: QuizEstimateConfig;
   };
   listing: {
@@ -191,18 +216,30 @@ type QuizLocaleFile = {
     }>;
     dimensions?: Array<{ label: string; profiles?: string[]; categories?: string[] }>;
     estimate?: QuizResultConfig["estimate"];
+    score?: QuizScoreResultCopy;
   };
   stages: Array<{
     title: string;
     complete?: string;
     questions: Array<{
       id?: string;
+      context?: string;
       question: string;
       presentation?: QuizPresentation;
       answers?: string[] | Record<string, string | Record<string, number>>;
       icons?: string[];
       memoryItems?: string[];
       continueLabel?: string;
+      study?: {
+        title: string;
+        instruction?: string;
+        presentation?: QuizStudyCue["presentation"];
+        items: string[];
+        durationMs?: number;
+        mode?: QuizStudyCue["mode"];
+        continueLabel?: string;
+        ariaLabel?: string;
+      };
       calibration?: number[];
       delay?: number;
       correct?: number;
@@ -226,7 +263,8 @@ function quizAsset(slug: string, value?: string) {
   const file = path.join(directory(slug), value);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) throw new Error(`${slug}: missing asset ${value}.`);
   const extension = path.extname(file).slice(1).toLowerCase().replace("jpg", "jpeg");
-  return `data:image/${extension};base64,${fs.readFileSync(file).toString("base64")}`;
+  const mimeSubtype = extension === "svg" ? "svg+xml" : extension;
+  return `data:image/${mimeSubtype};base64,${fs.readFileSync(file).toString("base64")}`;
 }
 
 function object(value: unknown, name: string, file: string): Record<string, unknown> {
@@ -259,6 +297,8 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 350) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 350.`);
+  const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
+  if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
   if (engine.rewarded !== undefined) {
     const rewarded = object(engine.rewarded, "engine.rewarded", file);
     if (rewarded.start !== undefined && typeof rewarded.start !== "boolean") throw new Error(`${file}: rewarded.start must be a boolean.`);
@@ -291,7 +331,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   const slug = text(raw.slug, "slug", file);
   return {
     slug,
-    engine: { ...engine, advanceDelayMs, estimate } as QuizManifest["engine"],
+    engine: { ...engine, advanceDelayMs, targetRatio, estimate } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -365,8 +405,9 @@ function normalizeLocale(
     if (!Array.isArray(value.checkpoint.reveals) || value.checkpoint.reveals.length !== value.stages.length) throw new Error(`${file}: checkpoint reveals must match the stage count.`);
     value.checkpoint.reveals.forEach((reveal, index) => {
       text(reveal.title, `checkpoint.reveals[${index}].title`, file);
-      if (!["fixed", "trend", "consistency"].includes(reveal.signal)) throw new Error(`${file}: invalid checkpoint signal.`);
+      if (!["fixed", "trend", "consistency", "score-band", "strongest-dimension", "target-status"].includes(reveal.signal)) throw new Error(`${file}: invalid checkpoint signal.`);
       if (reveal.signal === "fixed") text(reveal.message, `checkpoint.reveals[${index}].message`, file);
+      else if (reveal.signal === "strongest-dimension") text(reveal.template, `checkpoint.reveals[${index}].template`, file);
       else if (!reveal.variants || Object.values(reveal.variants).some((variant) => typeof variant !== "string" || !variant.trim())) throw new Error(`${file}: checkpoint reveal ${index + 1} needs variants.`);
     });
     strings(value.checkpoint.finalChecklist, "checkpoint.finalChecklist", file);
@@ -387,6 +428,28 @@ function normalizeLocale(
       if (!["text", "icons", "scale", "memory-cue"].includes(presentation)) throw new Error(`${file}: question ${index + 1} has an invalid presentation.`);
       const isKnowledgeQuiz = manifest.engine.scoring === "correct-answer";
       const isMemoryCue = presentation === "memory-cue";
+      let study: QuizStudyCue | undefined;
+      if (rawQuestion.study) {
+        const studyPresentation = rawQuestion.study.presentation ?? "text";
+        const studyMode = rawQuestion.study.mode ?? "manual";
+        const durationMs = rawQuestion.study.durationMs ?? 2000;
+        if (!["text", "icons"].includes(studyPresentation)) throw new Error(`${file}: question ${index + 1} has an invalid study presentation.`);
+        if (!["manual", "automatic"].includes(studyMode)) throw new Error(`${file}: question ${index + 1} has an invalid study mode.`);
+        if (!Number.isInteger(durationMs) || durationMs < 1000 || durationMs > 6000) throw new Error(`${file}: question ${index + 1} study duration must be 1000–6000ms.`);
+        const studyItems = strings(rawQuestion.study.items, `questions[${index}].study.items`, file);
+        if (studyItems.length < 2 || studyItems.length > 8) throw new Error(`${file}: question ${index + 1} study needs two to eight items.`);
+        study = {
+          title: text(rawQuestion.study.title, `questions[${index}].study.title`, file),
+          instruction: rawQuestion.study.instruction,
+          presentation: studyPresentation,
+          items: studyItems,
+          durationMs,
+          mode: studyMode,
+          continueLabel: rawQuestion.study.continueLabel,
+          ariaLabel: rawQuestion.study.ariaLabel,
+        };
+        if (studyMode === "manual") text(study.continueLabel, `questions[${index}].study.continueLabel`, file);
+      }
       if (isMemoryCue && (!rawQuestion.memoryItems || rawQuestion.memoryItems.length < 3 || rawQuestion.memoryItems.length > 4)) throw new Error(`${file}: memory cue ${index + 1} needs three or four items.`);
       if (!isMemoryCue && (!rawQuestion.answers || typeof rawQuestion.answers !== "object")) throw new Error(`${file}: question ${index + 1} needs answers.`);
       if (isKnowledgeQuiz && !isMemoryCue && !Array.isArray(rawQuestion.answers)) throw new Error(`${file}: knowledge question ${index + 1} needs an answer array.`);
@@ -411,11 +474,13 @@ function normalizeLocale(
         id: rawQuestion.id ?? `q-${index + 1}`,
         type: "single-choice",
         presentation,
+        context: rawQuestion.context === undefined ? undefined : text(rawQuestion.context, "question context", file),
         prompt,
         choices,
         icons: rawQuestion.icons,
         memoryItems: rawQuestion.memoryItems,
         continueLabel: rawQuestion.continueLabel,
+        study,
         calibrationValues: rawQuestion.calibration,
         advanceDelayMs: rawQuestion.delay,
         answerIndex: rawQuestion.correct,
@@ -439,6 +504,10 @@ function normalizeLocale(
   if (manifest.engine.scoring === "weighted-profile" && profiles.some((profile) => !profile.id)) {
     throw new Error(`${file}: weighted result profiles need ids.`);
   }
+  if (manifest.engine.scoring === "correct-answer" && value.results.score) {
+    (["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer"] as const)
+      .forEach((key) => text(value.results.score?.[key], `results.score.${key}`, file));
+  }
 
   return {
     slug: manifest.slug,
@@ -452,6 +521,7 @@ function normalizeLocale(
         attempts: manifest.engine.rewarded?.attempts ?? 3,
       },
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
+      targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,
     },
     theme,
@@ -487,6 +557,7 @@ function normalizeLocale(
         categories: dimension.profiles ?? dimension.categories ?? [],
       })),
       estimate: value.results.estimate,
+      score: value.results.score,
     },
     questions,
   };
@@ -529,7 +600,9 @@ function sameStructure(localized: Quiz, source: Quiz, file: string) {
   if (localized.questions.length !== source.questions.length || localized.stages.length !== source.stages.length) throw new Error(`${file}: structure must match en.json.`);
   localized.questions.forEach((question, index) => {
     const original = source.questions[index];
-    if (question.id !== original.id || question.presentation !== original.presentation || question.choices.length !== original.choices.length || question.stage !== original.stage || question.answerIndex !== original.answerIndex || JSON.stringify(question.icons) !== JSON.stringify(original.icons) || JSON.stringify(question.calibrationValues) !== JSON.stringify(original.calibrationValues) || JSON.stringify(question.choiceProfileIds) !== JSON.stringify(original.choiceProfileIds) || JSON.stringify(question.choiceWeights) !== JSON.stringify(original.choiceWeights)) {
+    const studyStructure = question.study ? [question.study.presentation, question.study.items.length, question.study.durationMs, question.study.mode] : undefined;
+    const originalStudyStructure = original.study ? [original.study.presentation, original.study.items.length, original.study.durationMs, original.study.mode] : undefined;
+    if (question.id !== original.id || question.presentation !== original.presentation || Boolean(question.context) !== Boolean(original.context) || question.choices.length !== original.choices.length || question.stage !== original.stage || question.answerIndex !== original.answerIndex || question.category !== original.category || JSON.stringify(question.icons) !== JSON.stringify(original.icons) || JSON.stringify(studyStructure) !== JSON.stringify(originalStudyStructure) || JSON.stringify(question.calibrationValues) !== JSON.stringify(original.calibrationValues) || JSON.stringify(question.choiceProfileIds) !== JSON.stringify(original.choiceProfileIds) || JSON.stringify(question.choiceWeights) !== JSON.stringify(original.choiceWeights)) {
       throw new Error(`${file}: question ${index + 1} structure must match en.json.`);
     }
   });

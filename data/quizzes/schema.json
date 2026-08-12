@@ -26,14 +26,60 @@
               "type": "object",
               "required": ["question", "answers"],
               "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "context": { "type": "string", "minLength": 1 },
                 "question": { "type": "string" },
+                "presentation": {
+                  "enum": ["text", "icons", "scale", "memory-cue"]
+                },
                 "answers": {
                   "oneOf": [
                     { "type": "array", "items": { "type": "string" }, "minItems": 2 },
                     { "type": "object", "minProperties": 2 }
                   ]
                 },
-                "correct": { "type": "integer", "minimum": 0 }
+                "icons": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "minItems": 2
+                },
+                "memoryItems": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "minItems": 2
+                },
+                "continueLabel": { "type": "string" },
+                "category": { "type": "string", "minLength": 1 },
+                "delay": { "type": "integer", "minimum": 150, "maximum": 1000 },
+                "correct": { "type": "integer", "minimum": 0 },
+                "study": {
+                  "type": "object",
+                  "required": ["title", "items"],
+                  "allOf": [
+                    {
+                      "if": {
+                        "required": ["mode"],
+                        "properties": { "mode": { "const": "automatic" } }
+                      },
+                      "else": { "required": ["continueLabel"] }
+                    }
+                  ],
+                  "properties": {
+                    "title": { "type": "string", "minLength": 1 },
+                    "instruction": { "type": "string" },
+                    "presentation": { "enum": ["text", "icons"] },
+                    "items": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "minItems": 2,
+                      "maxItems": 8
+                    },
+                    "durationMs": { "type": "integer", "minimum": 1000, "maximum": 6000 },
+                    "mode": { "enum": ["manual", "automatic"] },
+                    "continueLabel": { "type": "string", "minLength": 1 },
+                    "ariaLabel": { "type": "string" }
+                  }
+                }
               }
             }
           }

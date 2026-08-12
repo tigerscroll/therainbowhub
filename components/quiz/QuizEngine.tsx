@@ -19,16 +19,17 @@ type QuizScreen = "landing" | "question" | "checkpoint" | "results";
 type SavedScreen = Exclude<QuizScreen, "landing">;
 
 type SavedProgress = {
-  version: 2;
+  version: 3;
   signature: string;
   answers: QuizAnswers;
   questionIndex: number;
   completedStage: number;
   screen: SavedScreen;
+  studiedQuestions?: string[];
   updatedAt: string;
 };
 
-const STORAGE_VERSION = 2;
+const STORAGE_VERSION = 3;
 
 function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
   if (typeof window === "undefined") return;
@@ -39,7 +40,9 @@ type QuestionRendererProps = {
   answer?: number;
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => void;
+  onStudyComplete: () => void;
   question: QuizQuestion;
+  studyComplete: boolean;
 };
 
 function ChoiceQuestion({
@@ -80,6 +83,36 @@ function ChoiceQuestion({
   );
 }
 
+function StudyCue({ onStudyComplete, question }: QuestionRendererProps) {
+  const [ready, setReady] = useState(false);
+  const study = question.study!;
+
+  useLayoutEffect(() => {
+    setReady(false);
+    const timer = window.setTimeout(() => {
+      setReady(true);
+      if (study.mode === "automatic") onStudyComplete();
+    }, study.durationMs);
+    return () => window.clearTimeout(timer);
+    // The cue is restarted only when its content changes, not when the parent rerenders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [question.id, study.durationMs, study.mode]);
+
+  return (
+    <div className={`quiz-engine__study quiz-engine__study--${study.presentation}`}>
+      {study.instruction ? <p>{study.instruction}</p> : null}
+      <div className="quiz-engine__study-items" aria-label={study.ariaLabel ?? study.items.join(", ")}>
+        {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
+      </div>
+      {study.mode === "manual" ? (
+        <button className="quiz-engine__primary" disabled={!ready} onClick={onStudyComplete} type="button">
+          {study.continueLabel}
+        </button>
+      ) : <span className="quiz-engine__study-timer" aria-live="polite">{ready ? "" : "•••"}</span>}
+    </div>
+  );
+}
+
 function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
@@ -101,6 +134,7 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
 }
 
 function QuestionRenderer(props: QuestionRendererProps) {
+  if (props.question.study && !props.studyComplete) return <StudyCue {...props} />;
   return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} /> : <ChoiceQuestion {...props} />;
 }
 
@@ -166,24 +200,45 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [screen, setScreen] = useState<QuizScreen>("landing");
   const [hydrated, setHydrated] = useState(false);
   const [adBusy, setAdBusy] = useState(false);
+  const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const adRequestActive = useRef(false);
 
   const progressSignature = useMemo(
-    () => quiz.questions.map((question) => JSON.stringify([
-      question.id,
-      question.presentation,
-      question.choices,
-      question.memoryItems,
-      question.answerIndex,
-      question.calibrationValues,
-      question.choiceProfileIds,
-      question.choiceWeights,
-    ])).join("|"),
-    [quiz.questions],
+    () => JSON.stringify({
+      engine: {
+        flow: quiz.engine.flow,
+        scoring: quiz.engine.scoring,
+        targetRatio: quiz.engine.targetRatio,
+        estimate: quiz.engine.estimate,
+      },
+      stages: quiz.stages,
+      questions: quiz.questions.map((question) => [
+        question.id,
+        question.stage,
+        question.presentation,
+        question.context,
+        question.prompt,
+        question.choices,
+        question.icons,
+        question.memoryItems,
+        question.study ? [question.study.presentation, question.study.items, question.study.durationMs, question.study.mode] : null,
+        question.answerIndex,
+        question.calibrationValues,
+        question.choiceProfileIds,
+        question.choiceWeights,
+        question.category,
+      ]),
+      results: {
+        profiles: quiz.result.profiles.map((profile) => [profile.id, profile.minRatio]),
+        dimensions: quiz.result.scoreDimensions,
+      },
+    }),
+    [quiz],
   );
   const storageKey = `rainbowhub:quiz-progress:v${STORAGE_VERSION}:${quiz.slug}:${locale}`;
   const currentQuestion = quiz.questions[questionIndex];
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
+  const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
   const stageQuestionIndex = Math.max(0, stageQuestions.findIndex((question) => question.id === currentQuestion?.id));
@@ -199,6 +254,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         setQuestionIndex(saved.questionIndex);
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
+        setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
         window.localStorage.removeItem(storageKey);
       }
@@ -221,13 +277,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       questionIndex,
       completedStage,
       screen,
+      studiedQuestions,
       updatedAt: new Date().toISOString(),
     };
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey, studiedQuestions]);
 
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
 
   async function runRewardedGate(onComplete: () => void) {
@@ -293,6 +351,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
   }
 
+  function completeStudy() {
+    if (!currentQuestion?.study) return;
+    setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
+    scrollToTop();
+  }
+
   function beginQuiz() {
     setScreen("question");
     trackQuizEvent("QuizStart", quiz, locale);
@@ -322,6 +386,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
+    setStudiedQuestions([]);
     setScreen("landing");
     scrollToTop();
   }
@@ -365,8 +430,14 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const checkpoint = quiz.checkpoint;
     const reveal = checkpoint?.reveals[completedStage];
-    const revealKey = reveal?.signal === "trend" ? result.trend : reveal?.signal === "consistency" ? result.consistency : "fixed";
-    const revealMessage = reveal?.signal === "fixed" ? reveal.message : reveal?.variants?.[revealKey];
+    const revealKey = reveal?.signal === "trend" ? result.trend
+      : reveal?.signal === "consistency" ? result.consistency
+        : reveal?.signal === "score-band" ? result.scoreBand
+          : reveal?.signal === "target-status" ? result.targetStatus
+            : "fixed";
+    const revealMessage = reveal?.signal === "fixed" ? reveal.message
+      : reveal?.signal === "strongest-dimension" ? reveal.template?.replace("{value}", result.strongestSignal ?? "—")
+        : reveal?.variants?.[revealKey];
     return (
       <>
       <section className="quiz-engine__checkpoint quiz-engine__card">
@@ -403,6 +474,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   if (screen === "results") {
     const estimate = quiz.result.estimate;
+    const scoreCopy = quiz.result.score;
     const consistency = estimate?.consistencyLabels[result.consistency];
     return (
       <>
@@ -412,16 +484,26 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         </div>
         <span className="quiz-engine__eyebrow">{estimate?.eyebrow ?? quiz.result.profileName}</span>
         {result.estimatedAge !== undefined ? <div className="quiz-engine__result-age"><strong>{result.estimatedAge}</strong><span>{estimate?.ageSuffix}</span></div> : null}
-        <h2>{result.profile.title}</h2>
+        {scoreCopy ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
+        <h2>{scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
+        {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
+        {scoreCopy ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{estimate.wildcard}</dt><dd>{result.wildcard}</dd></div>
             <div><dt>{estimate.consistency}</dt><dd>{consistency}</dd></div>
           </dl>
-        ) : <p className="quiz-engine__result-tier">{result.profile.tier}</p>}
+        ) : !scoreCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
         <p className="quiz-engine__result-copy">{result.profile.copy}</p>
-        {!estimate ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
+        {scoreCopy ? (
+          <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
+            <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
+            <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
+            <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
+          </dl>
+        ) : null}
+        {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.answered}/{result.total}</strong>
             <span>{translations.quiz.finalScore}</span>
@@ -441,7 +523,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {estimate ? <p className="quiz-engine__disclaimer">{estimate.disclaimer}</p> : null}
+        {estimate || scoreCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer}</p> : null}
         <button className="quiz-engine__secondary" onClick={restartQuiz} type="button">
           {translations.quiz.restartTest}
         </button>
@@ -462,12 +544,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <i style={{ width: `${progress}%` }} />
       </div>
       <article className="quiz-engine__question quiz-engine__card">
-        <h1>{currentQuestion.prompt}</h1>
+        {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
+        <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
           onAnswer={answerQuestion}
+          onStudyComplete={completeStudy}
           question={currentQuestion}
+          studyComplete={studyComplete}
         />
         {selectedAnswer !== undefined && quiz.engine.flow.feedback === "instant" && currentQuestion.explanation ? (
           <p className="quiz-engine__explanation">{currentQuestion.explanation}</p>

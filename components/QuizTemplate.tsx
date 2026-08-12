@@ -12,7 +12,7 @@ type QuizTemplateProps = {
 };
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
-  const storageKey = `rainbowhub:quiz-progress:v2:${quiz.slug}:${locale}`;
+  const storageKey = `rainbowhub:quiz-progress:v3:${quiz.slug}:${locale}`;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Quiz",

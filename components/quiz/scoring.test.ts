@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { QuizEstimateConfig } from "../../lib/quizzes.ts";
-import { answerConsistencyFromShares, calculateEstimatedAge, rankDimensions } from "./scoring.ts";
+import type { Quiz, QuizEstimateConfig } from "../../lib/quizzes.ts";
+import { answerConsistencyFromShares, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreQuiz } from "./scoring.ts";
 
 const estimate: QuizEstimateConfig = {
   baseAge: 84,
@@ -42,4 +42,68 @@ test("strongest signal and wildcard use the top two dimensions", () => {
     strongestSignal: "Adventure",
     wildcard: "Balance",
   });
+});
+
+function memoryQuiz(): Quiz {
+  const categories = ["word_recall", "visual", "numbers", "working_memory", "association", "attention"];
+  return {
+    engine: {
+      scoring: { type: "correct-answer" },
+      targetRatio: 0.8,
+    },
+    questions: Array.from({ length: 60 }, (_, index) => ({
+      id: `m-${index + 1}`,
+      answerIndex: 0,
+      category: categories[index % categories.length],
+      stage: Math.floor(index / 6),
+    })),
+    stages: Array.from({ length: 10 }, (_, index) => `Round ${index + 1}`),
+    result: {
+      profiles: [
+        { minRatio: 0.9, title: "Memory Mastermind" },
+        { minRatio: 0.8, title: "Razor-Sharp Recall" },
+        { minRatio: 0.7, title: "Almost Unforgettable" },
+        { minRatio: 0.6, title: "Selective Genius" },
+        { minRatio: 0.5, title: "Memory With Opinions" },
+        { minRatio: 0, title: "Beautifully Distracted" },
+      ],
+      scoreDimensions: categories.map((category) => ({ label: category, categories: [category] })),
+    },
+  } as Quiz;
+}
+
+function answersWithCorrectCount(correct: number) {
+  return Object.fromEntries(Array.from({ length: 60 }, (_, index) => [`m-${index + 1}`, index < correct ? 0 : 1]));
+}
+
+test("Memory result profiles switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  const cases = [
+    [29, "Beautifully Distracted"],
+    [30, "Memory With Opinions"],
+    [35, "Memory With Opinions"],
+    [36, "Selective Genius"],
+    [41, "Selective Genius"],
+    [42, "Almost Unforgettable"],
+    [47, "Almost Unforgettable"],
+    [48, "Razor-Sharp Recall"],
+    [53, "Razor-Sharp Recall"],
+    [54, "Memory Mastermind"],
+  ] as const;
+  for (const [correct, profile] of cases) {
+    assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  }
+});
+
+test("80% target state distinguishes achieved, reachable and unreachable", () => {
+  assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
+  assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");
+  assert.equal(getTargetStatus(35, 48, 60, 0.8), "unreachable");
+});
+
+test("correct-answer summaries break category and round ties by first encounter", () => {
+  const result = scoreQuiz(memoryQuiz(), answersWithCorrectCount(30));
+  assert.equal(result.strongestSignal, "word_recall");
+  assert.equal(result.weakestSignal, "word_recall");
+  assert.equal(result.bestStage, "Round 1");
 });

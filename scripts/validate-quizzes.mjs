@@ -16,6 +16,20 @@ function read(file) {
 
 function fail(condition, message) { if (!condition) errors.push(message); }
 
+function validateStudy(study, location) {
+  if (study === undefined) return;
+  fail(study && typeof study === "object" && !Array.isArray(study), `${location}: study must be an object.`);
+  if (!study || typeof study !== "object" || Array.isArray(study)) return;
+  fail(typeof study.title === "string" && Boolean(study.title.trim()), `${location}: study.title is required.`);
+  fail(["text", "icons"].includes(study.presentation ?? "text"), `${location}: study.presentation must be text or icons.`);
+  fail(Array.isArray(study.items) && study.items.length >= 2 && study.items.length <= 8, `${location}: study.items must contain 2–8 items.`);
+  fail(Number.isInteger(study.durationMs ?? 2000) && (study.durationMs ?? 2000) >= 1000 && (study.durationMs ?? 2000) <= 6000, `${location}: study.durationMs must be 1000–6000ms.`);
+  fail(["manual", "automatic"].includes(study.mode ?? "manual"), `${location}: study.mode must be manual or automatic.`);
+  if ((study.mode ?? "manual") === "manual") {
+    fail(typeof study.continueLabel === "string" && Boolean(study.continueLabel.trim()), `${location}: manual study cues need continueLabel.`);
+  }
+}
+
 const requiredUiKeys = [
   "locale.direction", "locale.code", "locale.name", "locale.switcherLabel",
   "site.name", "nav.home", "nav.quickLinks",
@@ -42,6 +56,7 @@ for (const folder of folders) {
   if (!config) continue;
   fail(config.slug === folder.name, `${folder.name}: quiz.json slug must match its folder.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.checkpoint === "ai") fail(config.engine?.rewarded, `${folder.name}: AI checkpoint quizzes need rewarded-ad settings.`);
   fail(config.theme?.colors && config.theme?.layout, `${folder.name}: quiz.json needs theme colors and layouts.`);
 
@@ -77,6 +92,20 @@ for (const folder of folders) {
     fail(source.stages?.[5]?.questions?.every((question) => Object.keys(question.answers ?? {}).length === 2), `${folder.name}: People & Personality must remain a binary recovery round.`);
     fail(source.stages?.[9]?.questions?.every((question) => question.calibration?.length === Object.keys(question.answers ?? {}).length), `${folder.name}: final calibration values must match every answer.`);
   }
+  if (folder.name === "memory") {
+    const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
+    const ids = sourceQuestions.map((question) => question.id);
+    fail(source.stages?.length === 10, `${folder.name}/en.json: Memory must contain ten rounds.`);
+    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Memory round must contain six scored questions.`);
+    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Memory must contain exactly 60 scored questions.`);
+    fail(ids.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/en.json: every Memory question needs a stable ID.`);
+    fail(new Set(ids).size === 60, `${folder.name}/en.json: Memory question IDs must be unique.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct)), `${folder.name}/en.json: every Memory question needs a correct index.`);
+    fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
+    fail(config.engine?.targetRatio === 0.8, `${folder.name}: Memory targetRatio must be exactly 0.8.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
+    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: Memory is English-only at launch.`);
+  }
 
   for (const localeFile of localeFiles) {
     const localized = read(path.join(directory, localeFile));
@@ -92,11 +121,25 @@ for (const folder of folders) {
       const sourceQuestion = sourceQuestions[index];
       const answers = Array.isArray(question.answers) ? question.answers : Object.keys(question.answers ?? {});
       const sourceAnswers = Array.isArray(sourceQuestion?.answers) ? sourceQuestion.answers : Object.keys(sourceQuestion?.answers ?? {});
+      validateStudy(question.study, `${folder.name}/${localeFile}: question ${index + 1}`);
       fail(answers.length === sourceAnswers.length, `${folder.name}/${localeFile}: question ${index + 1} answer count differs from English.`);
       fail((question.presentation ?? "text") === (sourceQuestion?.presentation ?? "text"), `${folder.name}/${localeFile}: question ${index + 1} presentation differs from English.`);
       fail(question.correct === sourceQuestion?.correct, `${folder.name}/${localeFile}: question ${index + 1} correct answer differs from English.`);
+      fail(Boolean(question.context) === Boolean(sourceQuestion?.context), "Question context structure differs from English.");
+      fail(question.category === sourceQuestion?.category, `${folder.name}/${localeFile}: question ${index + 1} category differs from English.`);
       fail(JSON.stringify(question.calibration) === JSON.stringify(sourceQuestion?.calibration), `${folder.name}/${localeFile}: question ${index + 1} calibration differs from English.`);
       fail(JSON.stringify(question.icons) === JSON.stringify(sourceQuestion?.icons), `${folder.name}/${localeFile}: question ${index + 1} icons differ from English.`);
+      fail(JSON.stringify(question.study ? {
+        presentation: question.study.presentation ?? "text",
+        items: question.study.items?.length,
+        durationMs: question.study.durationMs ?? 2000,
+        mode: question.study.mode ?? "manual",
+      } : undefined) === JSON.stringify(sourceQuestion?.study ? {
+        presentation: sourceQuestion.study.presentation ?? "text",
+        items: sourceQuestion.study.items?.length,
+        durationMs: sourceQuestion.study.durationMs ?? 2000,
+        mode: sourceQuestion.study.mode ?? "manual",
+      } : undefined), `${folder.name}/${localeFile}: question ${index + 1} study structure differs from English.`);
       if (config.engine.scoring === "weighted-profile" && !Array.isArray(question.answers)) {
         const meanings = Object.values(question.answers ?? {});
         const sourceMeanings = Object.values(sourceQuestion?.answers ?? {});

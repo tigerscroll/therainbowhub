@@ -29,13 +29,15 @@ Every question can choose a folder-configured `presentation`:
 - `scale` for five discrete, keyboard-accessible stops.
 - `memory-cue` with three or four `memoryItems` and a localized `continueLabel`.
 
-Questions may also set `delay` (200–400ms), `correct` for hidden objective scoring, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–350ms).
+Any scored question may also include a localized `study` block. A study cue displays two to eight text or icon items before the answer phase, supports a timed automatic transition or a timed manual Continue, and never adds another question to the progress or score denominator. Questions may set `delay` (200–400ms), `correct` for hidden objective scoring, `category` for score summaries, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–350ms).
 
 Set `engine.flow` to `linear` or `staged`. Set `advance` to `automatic` or `manual`, and `feedback` to `instant`, `selection-only`, or `after-results`.
 
 For rewarded gates, add `engine.rewarded` with `start`, `stages` and `attempts`. The engine requests Google rewarded inventory itself from GAM path `/22677279144/rewarded`; AssertiveYield remains responsible for yield/performance tracking. Only genuine no-fill or unavailable responses count toward the retry limit. Closing an ad before the reward is granted automatically requests another ad and keeps the user at the same gate until a reward is completed.
 
-Set `engine.checkpoint` to `ai` when the locale files provide the compact `checkpoint` copy block. Each reveal declares `fixed`, `trend`, or `consistency`, so checkpoints can react qualitatively without showing false precision. This creates a localized analysis screen after every stage without editing the runner.
+Set `engine.checkpoint` to `ai` when the locale files provide the compact `checkpoint` copy block. Reveals can be fixed or react to trend, answer consistency, cumulative score, strongest category, or whether a configured target is achieved, reachable, or unreachable. This creates a localized analysis screen after every stage without editing the runner.
+
+Correct-answer quizzes can set `engine.targetRatio` and a localized `results.score` block. The runner then provides percentage, exact score, strongest and trickiest category, best round, target-aware finish copy and the quiz disclaimer without quiz-specific result code.
 
 An optional `engine.estimate` keeps entertainment estimates quiz-folder controlled: base and clamp ages, profile adjustments, brain boundaries and final-calibration limit. No estimate logic or content needs to be added to the runner.
 
