@@ -17,49 +17,49 @@
         "id": "centenarian_energy",
         "tier": "Energía centenaria",
         "title": "Energía centenaria",
-        "copy": "Tus respuestas transmiten energía de hábitos constantes: pequeños placeres, algo de movimiento y un talento sorprendente para elegir la opción sensata sin hacer la vida aburrida. Haces que la constancia parezca natural, no estricta."
+        "copy": "Tus respuestas reflejan hábitos constantes: pequeños placeres, algo de movimiento y buen criterio para elegir lo sensato sin volver la vida aburrida. La constancia te sale de forma natural, no rígida."
       },
       {
         "id": "steady_long_game",
-        "tier": "El largo plazo constante",
-        "title": "El largo plazo constante",
-        "copy": "Tus respuestas apuntan a un estilo de vida de avance tranquilo: decisiones prácticas, buen ritmo y esa constancia diaria que tu yo del futuro agradecería en silencio. Sueles elegir avances que realmente puedes mantener."
+        "tier": "La constancia a largo plazo",
+        "title": "La constancia a largo plazo",
+        "copy": "Tus respuestas muestran un ritmo tranquilo y sostenible: decisiones prácticas, buen equilibrio y hábitos que se mantienen incluso en días ajetreados. Prefieres los avances que de verdad pueden durar."
       },
       {
         "id": "balanced_realist",
         "tier": "El realista equilibrado",
         "title": "El realista equilibrado",
-        "copy": "Tus respuestas sugieren una mezcla bien centrada de sentido común y diversión. Sabes que la vida no es un folleto de bienestar, pero también sabes cuándo una pequeña elección suaviza las cosas."
+        "copy": "Tus respuestas combinan sentido común y diversión. Sabes que la vida no es un manual de bienestar, pero también que una pequeña elección puede hacer que todo resulte más fácil."
       },
       {
         "id": "weekend_chaos",
         "tier": "Modo caos de fin de semana",
         "title": "Modo caos de fin de semana",
-        "copy": "Tus respuestas tienen una energía brillante, caótica, de “esto acaba en historia”. Puede que no siempre elijas el camino ordenado, pero aportas chispa, humor e impulso."
+        "copy": "Tus respuestas tienen una energía viva y un punto caótico, de la que luego salen buenas historias. No siempre eliges el camino más ordenado, pero aportas humor, chispa e impulso."
       },
       {
         "id": "stress_sprinter",
-        "tier": "El esprínter del estrés",
-        "title": "El esprínter del estrés",
-        "copy": "Tus respuestas apuntan a energía de fechas límite: rápida, capaz y a veces impulsada por puro suspense. Tu mejor mejora es dosificar, no entrar en pánico."
+        "tier": "La carrera contra el estrés",
+        "title": "La carrera contra el estrés",
+        "copy": "Tus respuestas muestran energía bajo presión: rápida, resolutiva y a veces impulsada por la tensión del momento. El mejor ajuste es encontrar un ritmo estable, no añadir más presión."
       },
       {
         "id": "comfort_creature",
-        "tier": "La criatura del confort",
-        "title": "La criatura del confort",
-        "copy": "Tus respuestas tienden a lo familiar, con poco drama y mucho confort. Conoces el valor de la comodidad, y tu punto ideal es una vida suave con suficiente aire fresco."
+        "tier": "El confort ante todo",
+        "title": "El confort ante todo",
+        "copy": "Tus respuestas valoran lo familiar, la calma y la comodidad. Tu punto ideal combina una vida tranquila con un poco de novedad y suficiente aire fresco."
       },
       {
         "id": "adventure_fuse",
-        "tier": "Mecha de aventura",
-        "title": "Mecha de aventura",
-        "copy": "Tus respuestas tienen energía inquieta, curiosa y de decir que sí. Te atraen la novedad, las historias, el movimiento y la sensación de que un día normal aún puede volverse memorable."
+        "tier": "Chispa de aventura",
+        "title": "Chispa de aventura",
+        "copy": "Tus respuestas muestran curiosidad, movimiento y ganas de decir que sí. Las novedades y las buenas historias pueden convertir un día cualquiera en algo memorable."
       },
       {
         "id": "reset_needed",
-        "tier": "Necesita reinicio",
-        "title": "Necesita reinicio",
-        "copy": "Tus respuestas sugieren que tu sistema pide un reinicio: menos pequeños incendios, más espacio para respirar y un ritmo que te deje sentirte persona otra vez. Muy arreglable. Muy reconocible."
+        "tier": "Hora de recargar",
+        "title": "Hora de recargar",
+        "copy": "Tus respuestas indican que toca recargar: menos pequeños incendios, más espacio para respirar y un ritmo que permita recuperar energía. Se puede ajustar, y es algo muy común."
       }
     ],
     "dimensions": [
@@ -93,7 +93,7 @@
       }
     ],
     "estimate": {
-      "eyebrow": "TU ESTIMACIÓN DE ENTRETENIMIENTO",
+      "eyebrow": "TU ESTIMACIÓN LÚDICA",
       "ageSuffix": "AÑOS",
       "strongestSignal": "Señal más fuerte",
       "wildcard": "Factor sorpresa",
@@ -221,7 +221,7 @@
           "question": "¿Qué lema de comida va más contigo?",
           "answers": {
             "Mi yo del futuro puede poner la queja": "weekend_chaos",
-            "Mayormente sensato, a veces celebratorio": "steady_long_game",
+            "Casi siempre sensato, a veces festivo": "steady_long_game",
             "Si aporta alegría, tiene sitio en la mesa": "centenarian_energy"
           },
           "id": "r2q6"
@@ -356,7 +356,7 @@
         },
         {
           "id": "r4q3",
-          "question": "¿Cómo de descansado sueles sentirte al despertar?",
+          "question": "¿Con cuánta energía sueles despertar?",
           "presentation": "scale",
           "answers": {
             "Nada": "reset_needed",
@@ -410,7 +410,7 @@
             "AZUL",
             "VELA"
           ],
-          "continueLabel": "Estoy listo/a",
+          "continueLabel": "Ya lo he memorizado",
           "delay": 400
         },
         {
@@ -504,7 +504,7 @@
           "question": "Cuando alguien escribe “pregunta rápida”, te sientes...",
           "answers": {
             "Feliz si se convierte en cotilleo": "weekend_chaos",
-            "Listo, pero cauteloso": "balanced_realist"
+            "Con atención, pero con cautela": "balanced_realist"
           },
           "id": "r6q3"
         },
@@ -542,7 +542,7 @@
           "question": "Aparece un vuelo barato para mañana. Tú...",
           "answers": {
             "Revisas los detalles antes de que tu imaginación tome el control": "steady_long_game",
-            "Empiezas a hacer la maleta emocionalmente": "adventure_fuse",
+            "Mentalmente ya estás de viaje": "adventure_fuse",
             "Cierras la pestaña porque mañana ya es demasiado pronto": "comfort_creature"
           },
           "id": "r7q1"
@@ -601,7 +601,7 @@
         {
           "question": "¿Qué pequeña alegría funciona siempre?",
           "answers": {
-            "Aire fresco y un buen pequeño recado": "centenarian_energy",
+            "Aire fresco y una tarea sencilla": "centenarian_energy",
             "Reír hasta que el plan cambia": "weekend_chaos",
             "Un rincón tranquilo y algo reconfortante": "comfort_creature"
           },
@@ -631,7 +631,7 @@
           "delay": 340
         },
         {
-          "question": "Elige un ambiente de hobby.",
+          "question": "Elige el ambiente ideal para una afición.",
           "answers": {
             "Suave, familiar y de baja presión": "comfort_creature",
             "Constante, satisfactorio y discretamente impresionante": "steady_long_game",
@@ -697,8 +697,8 @@
       ]
     },
     {
-      "title": "Sé sincero…",
-      "complete": "Sé sincero…",
+      "title": "Confiesa…",
+      "complete": "Confiesa…",
       "questions": [
         {
           "question": "Tus correos sin leer están...",
@@ -739,14 +739,14 @@
         {
           "question": "Tu yo del futuro te agradecería por...",
           "answers": {
-            "Recoger un recuerdo inolvidable": "adventure_fuse",
+            "Crear un recuerdo inolvidable": "adventure_fuse",
             "Tomar un descanso de verdad antes de estrellarte": "reset_needed",
             "Hacer más fácil una cosa aburrida": "balanced_realist"
           },
           "id": "r9q5"
         },
         {
-          "question": "¿Qué frase te hace sentir aludido?",
+          "question": "¿Cuál de estas frases da en el clavo?",
           "answers": {
             "Necesito dejar de tratar el descanso como una recompensa": "reset_needed",
             "Sé exactamente lo que debería hacer, y eso molesta": "balanced_realist",
@@ -821,11 +821,11 @@
         },
         {
           "id": "r10q5",
-          "question": "Mi actitud ante envejecer es…",
+          "question": "Mi forma de ver el paso de los años es…",
           "answers": {
-            "Positiva": "adventure_fuse",
-            "Neutral": "balanced_realist",
-            "Preocupada": "stress_sprinter"
+            "Con optimismo": "adventure_fuse",
+            "Con neutralidad": "balanced_realist",
+            "Con preocupación": "stress_sprinter"
           },
           "calibration": [
             1,
@@ -836,12 +836,12 @@
         },
         {
           "id": "r10q6",
-          "question": "Me imagino llegando a…",
+          "question": "Me imagino viviendo hasta…",
           "answers": {
-            "Los 70": "stress_sprinter",
-            "Los 80": "balanced_realist",
-            "Los 90": "steady_long_game",
-            "100+": "centenarian_energy"
+            "Entre 70 y 79 años": "stress_sprinter",
+            "Entre 80 y 89 años": "balanced_realist",
+            "Entre 90 y 99 años": "steady_long_game",
+            "100 años o más": "centenarian_energy"
           },
           "calibration": [
             -1,
@@ -860,7 +860,7 @@
     "adNote": "Primero un anuncio corto; después empieza la siguiente sección.",
     "finalBadge": "CÁLCULO FINAL",
     "finalTitle": "Tu estimación está lista",
-    "finalCopy": "Un último anuncio corto desbloquea tu resultado de entretenimiento.",
+    "finalCopy": "Un último anuncio corto desbloquea tu resultado lúdico.",
     "finalButton": "Ver mi estimación",
     "finalChecklist": [
       "Estilo de vida",
@@ -877,7 +877,7 @@
         "message": "Tu ritmo diario ya forma parte del perfil."
       },
       {
-        "title": "Señal alimentaria añadida",
+        "title": "Patrón de alimentación añadido",
         "signal": "trend",
         "variants": {
           "up": "Tu estimación subió.",
@@ -900,7 +900,7 @@
         "variants": {
           "up": "Tus señales de recuperación mejoraron la estimación.",
           "steady": "Tus señales de recuperación están equilibradas.",
-          "down": "Tus señales de recuperación suavizaron la estimación."
+          "down": "Tus señales de recuperación redujeron un poco la estimación."
         }
       },
       {
@@ -935,7 +935,7 @@
       {
         "title": "Calibración final completada",
         "signal": "fixed",
-        "message": "Las diez señales están listas para la estimación de entretenimiento."
+        "message": "Las diez señales están listas para la estimación lúdica."
       }
     ]
   }

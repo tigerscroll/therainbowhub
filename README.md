@@ -33,7 +33,7 @@ Questions may also set `delay` (200–400ms), `correct` for hidden objective sco
 
 Set `engine.flow` to `linear` or `staged`. Set `advance` to `automatic` or `manual`, and `feedback` to `instant`, `selection-only`, or `after-results`.
 
-For rewarded gates, add `engine.rewarded` with `start`, `stages` and `attempts`. The engine requests Google rewarded inventory itself; AssertiveYield remains responsible for yield/performance tracking. If no rewarded ad can be shown, the engine retries up to `attempts` and then continues automatically. The GAM unit can be changed with `NEXT_PUBLIC_GAM_REWARDED_AD_UNIT`.
+For rewarded gates, add `engine.rewarded` with `start`, `stages` and `attempts`. The engine requests Google rewarded inventory itself from GAM path `/22677279144/rewarded`; AssertiveYield remains responsible for yield/performance tracking. Only genuine no-fill or unavailable responses count toward the retry limit. Closing an ad before the reward is granted automatically requests another ad and keeps the user at the same gate until a reward is completed.
 
 Set `engine.checkpoint` to `ai` when the locale files provide the compact `checkpoint` copy block. Each reveal declares `fixed`, `trend`, or `consistency`, so checkpoints can react qualitatively without showing false precision. This creates a localized analysis screen after every stage without editing the runner.
 

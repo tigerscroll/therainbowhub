@@ -19,7 +19,6 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
     name: quiz.title,
     description: quiz.summary,
     inLanguage: locale,
-    numberOfQuestions: quiz.questions.length,
     url: absoluteUrl(getQuizPath(locale, quiz.slug)),
     publisher: {
       "@type": "Organization",

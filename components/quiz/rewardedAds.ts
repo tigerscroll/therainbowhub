@@ -147,7 +147,11 @@ export async function requestRewardedAd({
     const attempt = unavailableAttempts + 1;
     onAttempt?.(attempt, maximum);
     const result = await requestOnce(adUnitPath, timeoutMs);
-    if (result === "granted" || result === "closed") return result;
+    if (result === "granted") return result;
+    if (result === "closed") {
+      await new Promise((resolve) => window.setTimeout(resolve, 450));
+      continue;
+    }
 
     unavailableAttempts += 1;
     if (unavailableAttempts < maximum) await new Promise((resolve) => window.setTimeout(resolve, 450));

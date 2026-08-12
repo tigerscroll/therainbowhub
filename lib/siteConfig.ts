@@ -1,7 +1,6 @@
 const publicEnv = {
   NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL: process.env.NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL,
   NEXT_PUBLIC_META_PIXEL_ID: process.env.NEXT_PUBLIC_META_PIXEL_ID,
-  NEXT_PUBLIC_GAM_REWARDED_AD_UNIT: process.env.NEXT_PUBLIC_GAM_REWARDED_AD_UNIT,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 };
 
@@ -14,7 +13,7 @@ export const siteConfig = {
   description: "Fast, mobile-friendly IQ and academic-style quiz tests.",
   siteUrl: getPublicEnv("NEXT_PUBLIC_SITE_URL", "https://therainbowhub.com"),
   metaPixelId: getPublicEnv("NEXT_PUBLIC_META_PIXEL_ID", "843363384736830"),
-  rewardedAdUnitPath: getPublicEnv("NEXT_PUBLIC_GAM_REWARDED_AD_UNIT", "/22677279144/rewarded"),
+  rewardedAdUnitPath: "/22677279144/rewarded",
   assertiveYieldManagerUrl: getPublicEnv(
     "NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL",
     "https://j24iGSTy4hDgBLfJR.ay.delivery/manager/j24iGSTy4hDgBLfJR",

@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 
-test("rewarded ads distinguish reward, early close, and genuine unavailability", async () => {
+test("rewarded ads reopen after early closes and only count genuine unavailability", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
   const listeners = new Map<string, Listener>();
   const outcomes: RewardedResult[] = [];
@@ -50,15 +50,15 @@ test("rewarded ads distinguish reward, early close, and genuine unavailability",
     value: { clearTimeout, googletag, setTimeout },
   });
 
-  outcomes.push("closed");
-  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "closed");
-  assert.equal(requests, 1, "an early close must not be counted as three inventory failures");
+  outcomes.push("closed", "closed", "granted");
+  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "granted");
+  assert.equal(requests, 3, "each early close must reopen until the reward is granted");
 
   outcomes.push("unavailable", "unavailable", "unavailable");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "unavailable");
-  assert.equal(requests, 4, "only genuine unavailable responses use the three-attempt fallback");
+  assert.equal(requests, 6, "only genuine unavailable responses use the three-attempt fallback");
 
   outcomes.push("granted");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "granted");
-  assert.equal(requests, 5);
+  assert.equal(requests, 7);
 });
