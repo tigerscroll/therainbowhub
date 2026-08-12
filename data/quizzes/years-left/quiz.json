@@ -1,0 +1,89 @@
+{
+  "slug": "years-left",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "weighted-profile",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 275,
+    "estimate": {
+      "baseAge": 84,
+      "minAge": 73,
+      "maxAge": 95,
+      "calibrationMax": 3,
+      "profileAdjustments": {
+        "centenarian_energy": 5,
+        "steady_long_game": 3,
+        "balanced_realist": 1,
+        "comfort_creature": 0,
+        "adventure_fuse": 0,
+        "weekend_chaos": -1,
+        "stress_sprinter": -3,
+        "reset_needed": -5
+      },
+      "brainAdjustments": {
+        "0": -3,
+        "1": -2,
+        "2": -1,
+        "3": 0,
+        "4": 1,
+        "5": 3
+      }
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.jpg",
+    "published": "2026-06-12",
+    "duration": "6 min",
+    "difficulty": "Quick",
+    "icon": "🪦"
+  },
+  "theme": {
+    "preset": "immersive",
+    "layout": {
+      "landing": "card",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#111015",
+      "pageAlt": "#241f2a",
+      "surface": "#f5eddd",
+      "surfaceRaised": "#fffaf0",
+      "text": "#18161d",
+      "muted": "#6e665d",
+      "primary": "#d6a65a",
+      "primaryText": "#18130c",
+      "border": "#a9854f",
+      "correct": "#668b68",
+      "incorrect": "#a94f4f"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "18px",
+      "buttonRadius": "12px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, rgba(21, 19, 15, 0.94), rgba(39, 34, 46, 0.94)), #17151c",
+      "text": "#f8efd9",
+      "border": "rgba(214, 166, 90, 0.55)",
+      "shadow": "0 8px 28px rgba(0, 0, 0, 0.28)"
+    },
+    "artwork": {
+      "icon": "🪦"
+    }
+  }
+}

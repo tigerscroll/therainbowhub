@@ -8,13 +8,13 @@ export function NotFoundContent() {
 
   return (
     <SiteShell currentPath="/" locale={locale} translations={translations}>
-      <article className="legacy-main not-found-page" aria-labelledby="not-found-title">
-        <section className="legacy-card not-found-hero">
+      <article className="not-found-page" aria-labelledby="not-found-title">
+        <section className="not-found-hero">
           <div className="not-found-hero__mark" aria-hidden="true">
             <span>?</span>
           </div>
           <h1 id="not-found-title">{translations.error.notFoundTitle}</h1>
-          <p>{translations.error.notFoundBody} Head back to the homepage to pick a fresh quiz.</p>
+          <p>{translations.error.notFoundBody}</p>
           <div className="hub-load-more">
             <Link className="hub-load-more__button hub-load-more__button--plain" href="/">
               Home

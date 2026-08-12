@@ -1,0 +1,167 @@
+import type { Quiz, QuizEstimateConfig, QuizResultProfile } from "@/lib/quizzes";
+
+export type QuizAnswers = Record<string, number>;
+export type AnswerConsistency = "high" | "medium" | "mixed";
+export type EstimateTrend = "up" | "steady" | "down";
+
+export type QuizScore = {
+  answered: number;
+  dimensionScores: Record<string, number>;
+  profile: QuizResultProfile;
+  ratio: number;
+  score: number;
+  total: number;
+  estimatedAge?: number;
+  strongestSignal?: string;
+  wildcard?: string;
+  consistency: AnswerConsistency;
+  trend: EstimateTrend;
+  brainCorrect: number;
+  adjustments: { personality: number; brain: number; calibration: number };
+};
+
+function fallbackProfile(quiz: Quiz) {
+  return quiz.result.profiles[quiz.result.profiles.length - 1];
+}
+
+export function answerConsistencyFromShares(top: number, second: number, total: number): AnswerConsistency {
+  const gap = total ? (top - second) / total * 100 : 0;
+  if (gap >= 12) return "high";
+  if (gap >= 6) return "medium";
+  return "mixed";
+}
+
+function consistencyFromWeights(weights: Record<string, number>): AnswerConsistency {
+  const ranked = Object.values(weights).map((value) => Math.max(0, value)).sort((a, b) => b - a);
+  const total = ranked.reduce((sum, value) => sum + value, 0);
+  return answerConsistencyFromShares(ranked[0] ?? 0, ranked[1] ?? 0, total);
+}
+
+export function rankDimensions(dimensionScores: Record<string, number>) {
+  const ranked = Object.entries(dimensionScores).sort((a, b) => b[1] - a[1]);
+  return { strongestSignal: ranked[0]?.[0], wildcard: ranked[1]?.[0] };
+}
+
+export function calculateEstimatedAge(
+  estimate: QuizEstimateConfig,
+  adjustments: { personality: number; brain: number; calibration: number },
+) {
+  return Math.min(estimate.maxAge, Math.max(estimate.minAge, Math.round(
+    estimate.baseAge + adjustments.personality + adjustments.brain + adjustments.calibration,
+  )));
+}
+
+function dimensionSummary(quiz: Quiz, weights: Record<string, number>, positiveTotal: number) {
+  const dimensionScores = Object.fromEntries(
+    quiz.result.scoreDimensions.map((dimension) => {
+      const value = dimension.categories.reduce((sum, id) => sum + Math.max(0, weights[id] ?? 0), 0);
+      return [dimension.label, positiveTotal ? Math.round((value / positiveTotal) * 100) : 0];
+    }),
+  );
+  return { dimensionScores, ...rankDimensions(dimensionScores) };
+}
+
+function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
+  const scored = quiz.questions.filter((question) => question.answerIndex !== undefined);
+  const score = scored.reduce((total, question) => total + (answers[question.id] === question.answerIndex ? 1 : 0), 0);
+  const ratio = scored.length ? score / scored.length : 0;
+  const profile = [...quiz.result.profiles].sort((a, b) => b.minRatio - a.minRatio).find((item) => ratio >= item.minRatio) ?? fallbackProfile(quiz);
+  const dimensionScores = Object.fromEntries(
+    quiz.result.scoreDimensions.map((dimension) => {
+      const matching = scored.filter((question) => question.category && dimension.categories.includes(question.category));
+      const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
+      return [dimension.label, matching.length ? Math.round((correct / matching.length) * 100) : 0];
+    }),
+  );
+  return {
+    answered: Object.keys(answers).length,
+    dimensionScores,
+    profile,
+    ratio,
+    score,
+    total: scored.length,
+    consistency: "mixed",
+    trend: "steady",
+    brainCorrect: score,
+    adjustments: { personality: 0, brain: 0, calibration: 0 },
+  };
+}
+
+function scoreWeightedProfile(quiz: Quiz, answers: QuizAnswers): QuizScore {
+  const weights: Record<string, number> = {};
+  quiz.result.profiles.forEach((profile) => { if (profile.id) weights[profile.id] = 0; });
+
+  let personalityAdjustmentTotal = 0;
+  let personalityAdjustmentCount = 0;
+  const estimate = quiz.engine.estimate;
+
+  quiz.questions.forEach((question) => {
+    const choiceIndex = answers[question.id];
+    if (choiceIndex === undefined) return;
+    const profileId = question.choiceProfileIds?.[choiceIndex];
+    const choiceWeights = question.choiceWeights?.[choiceIndex];
+    if (profileId) weights[profileId] = (weights[profileId] ?? 0) + 1;
+    Object.entries(choiceWeights ?? {}).forEach(([id, weight]) => { weights[id] = (weights[id] ?? 0) + weight; });
+
+    if (!question.calibrationValues && question.answerIndex === undefined && estimate) {
+      if (profileId && estimate.profileAdjustments[profileId] !== undefined) {
+        personalityAdjustmentTotal += estimate.profileAdjustments[profileId];
+        personalityAdjustmentCount += 1;
+      } else if (choiceWeights) {
+        const entries = Object.entries(choiceWeights).filter(([id, value]) => value > 0 && estimate.profileAdjustments[id] !== undefined);
+        const totalWeight = entries.reduce((sum, [, value]) => sum + value, 0);
+        if (totalWeight) {
+          personalityAdjustmentTotal += entries.reduce((sum, [id, value]) => sum + estimate.profileAdjustments[id] * value, 0) / totalWeight;
+          personalityAdjustmentCount += 1;
+        }
+      }
+    }
+  });
+
+  const rankedProfiles = Object.entries(weights).sort((a, b) => b[1] - a[1]);
+  const winningId = rankedProfiles[0]?.[0];
+  const profile = quiz.result.profiles.find((item) => item.id === winningId) ?? fallbackProfile(quiz);
+  const positiveTotal = Object.values(weights).reduce((sum, weight) => sum + Math.max(0, weight), 0);
+  const winningScore = winningId ? Math.max(0, weights[winningId] ?? 0) : 0;
+  const dimensions = dimensionSummary(quiz, weights, positiveTotal);
+
+  const personality = personalityAdjustmentCount ? personalityAdjustmentTotal / personalityAdjustmentCount : 0;
+  const brainQuestions = quiz.questions.filter((question) => question.answerIndex !== undefined);
+  const answeredBrain = brainQuestions.filter((question) => answers[question.id] !== undefined);
+  const brainCorrect = answeredBrain.filter((question) => answers[question.id] === question.answerIndex).length;
+  const brain = estimate && answeredBrain.length === brainQuestions.length ? estimate.brainAdjustments[String(brainCorrect)] ?? 0 : 0;
+  const calibrationQuestions = quiz.questions.filter((question) => question.calibrationValues);
+  const calibrationValues = calibrationQuestions.flatMap((question) => {
+    const selected = answers[question.id];
+    return selected === undefined ? [] : [question.calibrationValues?.[selected] ?? 0];
+  });
+  const calibration = estimate && calibrationValues.length
+    ? calibrationValues.reduce((sum, value) => sum + value, 0) / calibrationValues.length * estimate.calibrationMax
+    : 0;
+  const estimatedAge = estimate ? calculateEstimatedAge(estimate, { personality, brain, calibration }) : undefined;
+
+  return {
+    answered: Object.keys(answers).length,
+    dimensionScores: dimensions.dimensionScores,
+    profile,
+    ratio: positiveTotal ? winningScore / positiveTotal : 0,
+    score: winningScore,
+    total: Object.keys(answers).length,
+    estimatedAge,
+    strongestSignal: dimensions.strongestSignal,
+    wildcard: dimensions.wildcard,
+    consistency: consistencyFromWeights(weights),
+    trend: personality > 0.75 ? "up" : personality < -0.75 ? "down" : "steady",
+    brainCorrect,
+    adjustments: { personality, brain, calibration },
+  };
+}
+
+const scoringStrategies = {
+  "correct-answer": scoreCorrectAnswers,
+  "weighted-profile": scoreWeightedProfile,
+} satisfies Record<Quiz["engine"]["scoring"]["type"], (quiz: Quiz, answers: QuizAnswers) => QuizScore>;
+
+export function scoreQuiz(quiz: Quiz, answers: QuizAnswers) {
+  return scoringStrategies[quiz.engine.scoring.type](quiz, answers);
+}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { QuizSearch } from "@/components/QuizSearch";
+
 import {
   getDefaultLocale,
   getLocaleOptions,
@@ -7,7 +7,7 @@ import {
   type SupportedLocale,
   type Translations,
 } from "@/lib/i18n";
-import { getAllQuizzes } from "@/lib/quizzes";
+import { getQuizBySlug } from "@/lib/quizzes";
 
 type HeaderProps = {
   currentPath: string;
@@ -15,50 +15,46 @@ type HeaderProps = {
   translations: Translations;
 };
 
-function getSwitcherHref(locale: SupportedLocale, path: string) {
-  const defaultLocale = getDefaultLocale();
-  return locale === defaultLocale ? path : getLocalePath(locale, path);
+function localizedPath(locale: SupportedLocale, path: string) {
+  return locale === getDefaultLocale() ? path : getLocalePath(locale, path);
 }
 
 export function Header({ currentPath, locale, translations }: HeaderProps) {
-  const searchItems = getAllQuizzes(locale, { includeFallback: false }).map((quiz) => ({
-    category: quiz.eyebrow,
-    href: getLocalePath(locale, `/${quiz.slug}`),
-    summary: quiz.homepage.summary ?? quiz.summary,
-    title: quiz.homepage.title ?? quiz.title,
-  }));
-  const navLinks = [
-    { href: getLocalePath(locale, "/"), label: translations.nav.home },
-    { href: getLocalePath(locale, "/info/contact"), label: translations.footer.links.contact },
-  ];
-  const languageOptions = getLocaleOptions();
-  const currentLanguage = languageOptions.find((option) => option.code === locale) ?? languageOptions[0];
-  const languageLinks = languageOptions.map((option) => ({
-    flag: option.flag,
-    href: getSwitcherHref(option.code, currentPath),
-    isCurrent: option.code === locale,
-    label: option.name,
-  }));
+  const quizSlug = currentPath.match(/^\/([a-z0-9-]+)$/)?.[1];
+  const languageOptions = getLocaleOptions().filter(
+    (option) => !quizSlug || Boolean(getQuizBySlug(quizSlug, option.code)),
+  );
 
   return (
     <header className="hub-header">
       <div className="hub-header__inner">
         <Link className="hub-brand" href={getLocalePath(locale, "/")}>
           <span className="hub-brand__mark">🌈</span>
-          <span className="hub-brand__name">{translations.site.name}</span>
+          <span>{translations.site.name}</span>
         </Link>
-        <QuizSearch
-          currentLanguage={{
-            flag: currentLanguage.flag,
-            label: currentLanguage.name,
-          }}
-          items={searchItems}
-          labels={translations.search}
-          languageLabel={translations.locale.switcherLabel}
-          languageLinks={languageLinks}
-          navLinks={navLinks}
-          quickLinksLabel={translations.nav.quickLinks}
-        />
+        <details className="site-menu">
+          <summary aria-label={translations.nav.quickLinks}>
+            <span /><span /><span />
+          </summary>
+          <div className="site-menu__panel">
+            <nav aria-label={translations.nav.quickLinks}>
+              <Link href={getLocalePath(locale, "/")}>{translations.nav.home}</Link>
+              <Link href={getLocalePath(locale, "/info/contact")}>{translations.footer.links.contact}</Link>
+            </nav>
+            <div className="site-menu__languages">
+              <strong>{translations.locale.switcherLabel}</strong>
+              {languageOptions.map((option) => (
+                <Link
+                  aria-current={option.code === locale ? "page" : undefined}
+                  href={localizedPath(option.code, currentPath)}
+                  key={option.code}
+                >
+                  <span aria-hidden="true">{option.flag}</span> {option.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </details>
       </div>
     </header>
   );

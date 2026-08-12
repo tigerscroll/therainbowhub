@@ -1,562 +1,114 @@
 import fs from "node:fs";
 import path from "node:path";
-import process from "node:process";
 
-const rootDir = process.cwd();
-const quizDir = path.join(rootDir, "data", "quizzes");
-const i18nDir = path.join(rootDir, "data", "i18n");
-const publicDir = path.join(rootDir, "public");
-const defaultLocale = "en";
-const skippedQuizDirs = new Set(["example-template"]);
-const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
-const safeImageVisualPattern =
-  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
-
+const root = path.join(process.cwd(), "data", "quizzes");
+const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
+  .filter((file) => file.endsWith(".json"))
+  .map((file) => file.replace(/\.json$/, "")));
 const errors = [];
-const warnings = [];
-const checked = [];
+const folders = fs.readdirSync(root, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
 
-function addError(message) {
-  errors.push(message);
+function read(file) {
+  try { return JSON.parse(fs.readFileSync(file, "utf8")); }
+  catch (error) { errors.push(`${path.relative(process.cwd(), file)}: ${error.message}`); return null; }
 }
 
-function addWarning(message) {
-  warnings.push(message);
-}
+function fail(condition, message) { if (!condition) errors.push(message); }
 
-function readJson(filePath) {
-  try {
-    return JSON.parse(fs.readFileSync(filePath, "utf8"));
-  } catch (error) {
-    addError(`${relative(filePath)}: invalid JSON (${error.message})`);
-    return undefined;
+const requiredUiKeys = [
+  "locale.direction", "locale.code", "locale.name", "locale.switcherLabel",
+  "site.name", "nav.home", "nav.quickLinks",
+  "quiz.startTest", "quiz.question", "quiz.questions", "quiz.continue",
+  "quiz.profile", "quiz.finalScore", "quiz.restartTest", "quiz.answered", "quiz.round", "quiz.of",
+  "quiz.aboutTitle",
+  "results.complete", "results.stageComplete", "results.viewResults", "results.nextStage", "results.startStage",
+  "ad.beforeTitle", "ad.stepOne", "ad.stepTwo", "ad.loading", "ad.retryUnavailable", "ad.startNote",
+];
+
+for (const locale of supportedLocales) {
+  const ui = read(path.join(process.cwd(), "data", "i18n", `${locale}.json`));
+  if (!ui) continue;
+  fail(ui.locale?.code === locale, `data/i18n/${locale}.json: locale.code must match the filename.`);
+  for (const key of requiredUiKeys) {
+    const value = key.split(".").reduce((current, part) => current?.[part], ui);
+    fail(typeof value === "string" && Boolean(value.trim()), `data/i18n/${locale}.json: missing shared UI translation ${key}.`);
   }
 }
 
-function relative(filePath) {
-  return path.relative(rootDir, filePath);
-}
+for (const folder of folders) {
+  const directory = path.join(root, folder.name);
+  const config = read(path.join(directory, "quiz.json"));
+  if (!config) continue;
+  fail(config.slug === folder.name, `${folder.name}: quiz.json slug must match its folder.`);
+  fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  if (config.engine?.checkpoint === "ai") fail(config.engine?.rewarded, `${folder.name}: AI checkpoint quizzes need rewarded-ad settings.`);
+  fail(config.theme?.colors && config.theme?.layout, `${folder.name}: quiz.json needs theme colors and layouts.`);
 
-function isObject(value) {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
-
-function requireString(value, field, fileName) {
-  if (typeof value !== "string" || value.trim().length === 0) {
-    addError(`${fileName}: "${field}" must be a non-empty string.`);
-    return false;
+  const themeFile = path.join(directory, "theme.css");
+  if (fs.existsSync(themeFile)) {
+    const css = fs.readFileSync(themeFile, "utf8");
+    fail(css.includes(`[data-quiz-theme="${folder.name}"]`), `${folder.name}/theme.css must be scoped to its quiz theme.`);
+    fail(!/(?:^|[}\s])(?:body|html|:root|\.hub-header|\.site-footer)\b/m.test(css), `${folder.name}/theme.css must not style the shared header, footer, html or body.`);
   }
 
-  return true;
-}
+  const localeFiles = fs.readdirSync(directory)
+    .filter((file) => file.endsWith(".json") && file !== "quiz.json");
+  const invalid = localeFiles.filter((file) => !supportedLocales.has(file.replace(/\.json$/, "")));
+  fail(!invalid.length, `${folder.name}: unsupported locale files: ${invalid.join(", ")}.`);
+  fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
 
-function requireStringArray(value, field, fileName) {
-  if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
-    addError(`${fileName}: "${field}" must be a non-empty string array.`);
-    return false;
+  const source = read(path.join(directory, "en.json"));
+  if (!source) continue;
+  const sourceQuestions = (source.stages ?? []).flatMap((stage) => stage.questions ?? []);
+  fail(Boolean(source.title && source.summary), `${folder.name}/en.json: title and summary are required.`);
+  fail(sourceQuestions.length > 0, `${folder.name}/en.json: at least one question is required.`);
+  if (folder.name === "years-left") {
+    fail(source.stages?.length === 10, `${folder.name}/en.json: Years Left must contain ten rounds.`);
+    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Years Left round must contain six interactions.`);
+    fail(config.engine?.advanceDelayMs >= 200 && config.engine?.advanceDelayMs <= 350, `${folder.name}: default advance delay must be 200–350ms.`);
+    fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, `${folder.name}: estimate base and safety clamp are incorrect.`);
+    const brain = source.stages?.[4]?.questions ?? [];
+    fail(JSON.stringify(source.stages?.[1]?.questions?.map((question) => Object.keys(question.answers ?? {}).length)) === JSON.stringify([4, 3, 4, 3, 2, 3]), `${folder.name}: food round must use the approved 4/3/4/3/2/3 choice rhythm.`);
+    fail(JSON.stringify(source.stages?.[2]?.questions?.map((question) => Object.keys(question.answers ?? {}).length)) === JSON.stringify([3, 3, 3, 3, 3, 4]), `${folder.name}: movement round must end with a four-icon interaction.`);
+    fail(source.stages?.[3]?.questions?.[2]?.presentation === "scale", `${folder.name}: Sleep & Stress Q3 must be the five-stop scale.`);
+    fail(brain[0]?.presentation === "memory-cue" && brain[0]?.memoryItems?.length === 4, `${folder.name}: Brain Check must begin with a four-item memory cue.`);
+    fail(brain.slice(1).every((question) => Number.isInteger(question.correct)), `${folder.name}: Brain Check Q2–Q6 need correct indices.`);
+    fail(source.stages?.[5]?.questions?.every((question) => Object.keys(question.answers ?? {}).length === 2), `${folder.name}: People & Personality must remain a binary recovery round.`);
+    fail(source.stages?.[9]?.questions?.every((question) => question.calibration?.length === Object.keys(question.answers ?? {}).length), `${folder.name}: final calibration values must match every answer.`);
   }
 
-  return true;
-}
-
-function validateHomepage(homepage, fileName, options) {
-  if (!isObject(homepage)) {
-    addError(`${fileName}: "homepage" must be an object.`);
-    return;
-  }
-
-  ["title", "summary", "thumbnailUrl", "thumbnailAlt", "icon", "gradient"].forEach((field) => {
-    requireString(homepage[field], `homepage.${field}`, fileName);
-  });
-
-  if (typeof homepage.featured !== "boolean") {
-    addError(`${fileName}: "homepage.featured" must be true or false.`);
-  }
-
-  if (!options.isTemplate && typeof homepage.thumbnailUrl === "string" && homepage.thumbnailUrl.startsWith("/")) {
-    const thumbnailPath = path.join(publicDir, homepage.thumbnailUrl);
-
-    if (!fs.existsSync(thumbnailPath)) {
-      addError(`${fileName}: "homepage.thumbnailUrl" points to missing file "${homepage.thumbnailUrl}".`);
+  for (const localeFile of localeFiles) {
+    const localized = read(path.join(directory, localeFile));
+    if (!localized) continue;
+    const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
+    if (config.engine?.checkpoint === "ai") {
+      fail(localized.checkpoint?.reveals?.length === localized.stages?.length, `${folder.name}/${localeFile}: checkpoint reveals must match stage count.`);
+      fail(localized.checkpoint?.finalChecklist?.length === 6, `${folder.name}/${localeFile}: final checklist must contain six items.`);
     }
-  }
-}
-
-function validateInfoPanel(infoPanel, fileName) {
-  if (infoPanel === undefined) {
-    return;
-  }
-
-  if (!isObject(infoPanel)) {
-    addError(`${fileName}: "infoPanel" must be an object.`);
-    return;
-  }
-
-  ["title", "intro", "footerTitle", "footerBody"].forEach((field) => {
-    requireString(infoPanel[field], `infoPanel.${field}`, fileName);
-  });
-
-  if (!Array.isArray(infoPanel.columns) || infoPanel.columns.length === 0) {
-    addError(`${fileName}: "infoPanel.columns" must be a non-empty array.`);
-    return;
-  }
-
-  infoPanel.columns.forEach((column, index) => {
-    if (!isObject(column)) {
-      addError(`${fileName}: "infoPanel.columns[${index}]" must be an object.`);
-      return;
-    }
-
-    requireString(column.title, `infoPanel.columns[${index}].title`, fileName);
-    requireString(column.body, `infoPanel.columns[${index}].body`, fileName);
-  });
-}
-
-function validateFooter(footer, fileName) {
-  if (footer === undefined) {
-    return;
-  }
-
-  if (!isObject(footer)) {
-    addError(`${fileName}: "footer" must be an object.`);
-    return;
-  }
-
-  ["aboutTitle", "aboutText"].forEach((field) => {
-    requireString(footer[field], `footer.${field}`, fileName);
-  });
-
-  if (footer.topicText !== undefined && typeof footer.topicText !== "string") {
-    addError(`${fileName}: "footer.topicText" must be a string when provided.`);
-  }
-}
-
-function validateLanding(landing, fileName) {
-  if (!isObject(landing)) {
-    addError(`${fileName}: "landing" must be an object.`);
-    return;
-  }
-
-  if (typeof landing.quickStartText !== "string") {
-    addError(`${fileName}: "landing.quickStartText" must be a string.`);
-  }
-
-  requireString(landing.socialProof, "landing.socialProof", fileName);
-
-  if (landing.challengeText !== undefined) {
-    requireString(landing.challengeText, "landing.challengeText", fileName);
-  }
-
-  if (landing.ctaLabel !== undefined) {
-    requireString(landing.ctaLabel, "landing.ctaLabel", fileName);
-  }
-}
-
-function validateResult(result, fileName) {
-  if (!isObject(result)) {
-    addError(`${fileName}: "result" must be an object.`);
-    return { profiles: [], scoreDimensions: [] };
-  }
-
-  requireString(result.profileName, "result.profileName", fileName);
-
-  const profiles = Array.isArray(result.profiles) ? result.profiles : [];
-
-  if (!profiles.length) {
-    addError(`${fileName}: "result.profiles" must be a non-empty array.`);
-  }
-
-  profiles.forEach((profile, index) => {
-    if (!isObject(profile)) {
-      addError(`${fileName}: "result.profiles[${index}]" must be an object.`);
-      return;
-    }
-
-    if (typeof profile.minRatio !== "number" || profile.minRatio < 0 || profile.minRatio > 1) {
-      addError(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
-    }
-
-    if (profile.id !== undefined) {
-      requireString(profile.id, `result.profiles[${index}].id`, fileName);
-    }
-
-    ["tier", "title", "copy", "percentile"].forEach((field) => {
-      requireString(profile[field], `result.profiles[${index}].${field}`, fileName);
-    });
-  });
-
-  if (!profiles.some((profile) => isObject(profile) && profile.minRatio === 0)) {
-    addError(`${fileName}: "result.profiles" must include a fallback profile with "minRatio": 0.`);
-  }
-
-  const scoreDimensions = Array.isArray(result.scoreDimensions) ? result.scoreDimensions : [];
-
-  if (!scoreDimensions.length) {
-    addError(`${fileName}: "result.scoreDimensions" must be a non-empty array.`);
-  }
-
-  scoreDimensions.forEach((dimension, index) => {
-    if (!isObject(dimension)) {
-      addError(`${fileName}: "result.scoreDimensions[${index}]" must be an object.`);
-      return;
-    }
-
-    requireString(dimension.label, `result.scoreDimensions[${index}].label`, fileName);
-    requireStringArray(dimension.categories, `result.scoreDimensions[${index}].categories`, fileName);
-  });
-
-  return { profiles, scoreDimensions };
-}
-
-function validateQuestion(question, fileName, questionPath, stageIndex) {
-  if (!isObject(question)) {
-    addError(`${fileName}: "${questionPath}" must be an object.`);
-    return undefined;
-  }
-
-  requireString(question.prompt, `${questionPath}.prompt`, fileName);
-
-  if (!Array.isArray(question.choices) || question.choices.length < 2) {
-    addError(`${fileName}: "${questionPath}.choices" must contain at least two answers.`);
-  } else {
-    question.choices.forEach((choice, index) => {
-      requireString(choice, `${questionPath}.choices[${index}]`, fileName);
-    });
-  }
-
-  if (!Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex >= (question.choices?.length ?? 0)) {
-    addError(`${fileName}: "${questionPath}.answerIndex" must point to one of the choices.`);
-  }
-
-  if (question.choiceProfileIds !== undefined) {
-    if (!Array.isArray(question.choiceProfileIds) || question.choiceProfileIds.length !== (question.choices?.length ?? 0)) {
-      addError(`${fileName}: "${questionPath}.choiceProfileIds" must contain one profile id for each choice.`);
-    } else {
-      question.choiceProfileIds.forEach((profileId, index) => {
-        requireString(profileId, `${questionPath}.choiceProfileIds[${index}]`, fileName);
-      });
-    }
-  }
-
-  if (question.explanation !== undefined) {
-    requireString(question.explanation, `${questionPath}.explanation`, fileName);
-  }
-  requireString(question.category, `${questionPath}.category`, fileName);
-
-  if (question.visual !== undefined) {
-    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
-      addError(`${fileName}: "${questionPath}.visual" must be a safe local legacy-question-image <img> tag.`);
-    }
-  }
-
-  if (question.stage !== undefined && question.stage !== stageIndex) {
-    addError(`${fileName}: "${questionPath}.stage" must be omitted or match its containing stage index (${stageIndex}).`);
-  }
-
-  return {
-    ...question,
-    stage: stageIndex,
-  };
-}
-
-function validateStageGroups(stageGroups, fileName) {
-  if (!Array.isArray(stageGroups) || stageGroups.length === 0) {
-    addError(`${fileName}: "stageGroups" must be a non-empty array.`);
-    return { stages: [], encouragement: [], questions: [], stageSizes: [] };
-  }
-
-  const stages = [];
-  const encouragement = [];
-  const questions = [];
-  const stageSizes = [];
-
-  stageGroups.forEach((stage, stageIndex) => {
-    if (!isObject(stage)) {
-      addError(`${fileName}: "stageGroups[${stageIndex}]" must be an object.`);
-      return;
-    }
-
-    requireString(stage.title, `stageGroups[${stageIndex}].title`, fileName);
-    stages.push(stage.title);
-
-    if (stageIndex < stageGroups.length - 1) {
-      requireString(stage.encouragement, `stageGroups[${stageIndex}].encouragement`, fileName);
-      encouragement.push(stage.encouragement);
-    } else if (stage.encouragement !== undefined && typeof stage.encouragement !== "string") {
-      addError(`${fileName}: "stageGroups[${stageIndex}].encouragement" must be a string when provided.`);
-    }
-
-    if (!Array.isArray(stage.questions) || stage.questions.length === 0) {
-      addError(`${fileName}: "stageGroups[${stageIndex}].questions" must be a non-empty array.`);
-      stageSizes.push(0);
-      return;
-    }
-
-    stageSizes.push(stage.questions.length);
-    stage.questions.forEach((question, questionIndex) => {
-      const validatedQuestion = validateQuestion(question, fileName, `stageGroups[${stageIndex}].questions[${questionIndex}]`, stageIndex);
-
-      if (validatedQuestion) {
-        questions.push(validatedQuestion);
+    fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
+    fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
+    questions.forEach((question, index) => {
+      const sourceQuestion = sourceQuestions[index];
+      const answers = Array.isArray(question.answers) ? question.answers : Object.keys(question.answers ?? {});
+      const sourceAnswers = Array.isArray(sourceQuestion?.answers) ? sourceQuestion.answers : Object.keys(sourceQuestion?.answers ?? {});
+      fail(answers.length === sourceAnswers.length, `${folder.name}/${localeFile}: question ${index + 1} answer count differs from English.`);
+      fail((question.presentation ?? "text") === (sourceQuestion?.presentation ?? "text"), `${folder.name}/${localeFile}: question ${index + 1} presentation differs from English.`);
+      fail(question.correct === sourceQuestion?.correct, `${folder.name}/${localeFile}: question ${index + 1} correct answer differs from English.`);
+      fail(JSON.stringify(question.calibration) === JSON.stringify(sourceQuestion?.calibration), `${folder.name}/${localeFile}: question ${index + 1} calibration differs from English.`);
+      fail(JSON.stringify(question.icons) === JSON.stringify(sourceQuestion?.icons), `${folder.name}/${localeFile}: question ${index + 1} icons differ from English.`);
+      if (config.engine.scoring === "weighted-profile" && !Array.isArray(question.answers)) {
+        const meanings = Object.values(question.answers ?? {});
+        const sourceMeanings = Object.values(sourceQuestion?.answers ?? {});
+        fail(JSON.stringify(meanings) === JSON.stringify(sourceMeanings), `${folder.name}/${localeFile}: question ${index + 1} scoring differs from English.`);
       }
     });
-  });
-
-  return { stages, encouragement, questions, stageSizes };
-}
-
-function validateQuizFile(filePath, options = {}) {
-  const fileName = relative(filePath);
-  const quiz = readJson(filePath);
-
-  if (!quiz) {
-    return undefined;
   }
-
-  if (!isObject(quiz)) {
-    addError(`${fileName}: quiz file must contain a JSON object.`);
-    return undefined;
-  }
-
-  [
-    "slug",
-    "title",
-    "seoTitle",
-    "seoDescription",
-    "pageTitle",
-    "eyebrow",
-    "summary",
-    "duration",
-    "passRate",
-    "cardIcon",
-    "cardGradient",
-    "accent",
-  ].forEach((field) => {
-    requireString(quiz[field], field, fileName);
-  });
-
-  if (typeof quiz.difficulty !== "string" || !difficultyValues.has(quiz.difficulty)) {
-    addError(`${fileName}: "difficulty" must be one of Quick, Medium, Hard, or Expert.`);
-  }
-
-  if (quiz.mode !== undefined && quiz.mode !== "scored" && quiz.mode !== "personality") {
-    addError(`${fileName}: "mode" must be either "scored" or "personality" when provided.`);
-  }
-
-  if (quiz.questionCount !== undefined && (!Number.isInteger(quiz.questionCount) || quiz.questionCount < 1)) {
-    addError(`${fileName}: "questionCount" must be a positive integer when provided.`);
-  }
-
-  validateHomepage(quiz.homepage, fileName, options);
-  validateLanding(quiz.landing, fileName);
-  validateFooter(quiz.footer, fileName);
-  validateInfoPanel(quiz.infoPanel, fileName);
-
-  if (quiz.footer === undefined && quiz.infoPanel === undefined) {
-    addError(`${fileName}: provide either "footer" or legacy "infoPanel".`);
-  }
-
-  if (quiz.stageGroups === undefined) {
-    addError(`${fileName}: use "stageGroups" so each quiz is self-contained and easy to translate.`);
-  }
-
-  const { stages, encouragement, questions, stageSizes } = validateStageGroups(quiz.stageGroups, fileName);
-  const { profiles, scoreDimensions } = validateResult(quiz.result, fileName);
-
-  if (quiz.questionCount !== undefined && quiz.questionCount !== questions.length) {
-    addError(`${fileName}: "questionCount" is ${quiz.questionCount}, but the file contains ${questions.length} questions.`);
-  }
-
-  if (encouragement.length !== Math.max(0, stages.length - 1)) {
-    addError(`${fileName}: every non-final stage needs one "encouragement" string.`);
-  }
-
-  const uniqueStageSizes = new Set(stageSizes.filter(Boolean));
-  if (uniqueStageSizes.size > 1) {
-    addWarning(`${fileName}: stage sizes are uneven (${stageSizes.join(", ")}). This works, but uniform stages usually feel better.`);
-  }
-
-  const promptCounts = new Map();
-  questions.forEach((question) => {
-    if (typeof question.prompt === "string") {
-      promptCounts.set(question.prompt, (promptCounts.get(question.prompt) ?? 0) + 1);
-    }
-  });
-
-  const duplicatePrompts = [...promptCounts.entries()].filter(([, count]) => count > 1).map(([prompt]) => prompt);
-  if (duplicatePrompts.length) {
-    addWarning(`${fileName}: duplicate prompts found: ${duplicatePrompts.slice(0, 3).join(" | ")}${duplicatePrompts.length > 3 ? " ..." : ""}`);
-  }
-
-  const usedCategories = new Set(questions.map((question) => question.category));
-  const scoredCategories = new Set(scoreDimensions.flatMap((dimension) => dimension.categories ?? []));
-  const unscoredCategories = [...usedCategories].filter((category) => category && !scoredCategories.has(category));
-
-  if (quiz.mode !== "personality" && unscoredCategories.length) {
-    addWarning(`${fileName}: question categories not used in result.scoreDimensions: ${unscoredCategories.join(", ")}.`);
-  }
-
-  checked.push(fileName);
-
-  return {
-    slug: quiz.slug,
-    questionCount: questions.length,
-    stages,
-    encouragement,
-    questions,
-    profiles,
-    scoreDimensions,
-  };
-}
-
-function assertTranslatedStructure(translated, canonical, fileName) {
-  if (!translated || !canonical) {
-    return;
-  }
-
-  if (translated.slug !== canonical.slug) {
-    addError(`${fileName}: "slug" must match en.json.`);
-  }
-
-  if (translated.questionCount !== canonical.questionCount) {
-    addError(`${fileName}: must contain ${canonical.questionCount} questions to match en.json.`);
-  }
-
-  if (translated.stages.length !== canonical.stages.length) {
-    addError(`${fileName}: must contain ${canonical.stages.length} stages to match en.json.`);
-  }
-
-  if (translated.encouragement.length !== canonical.encouragement.length) {
-    addError(`${fileName}: must contain ${canonical.encouragement.length} stage encouragement strings to match en.json.`);
-  }
-
-  if (translated.profiles.length !== canonical.profiles.length) {
-    addError(`${fileName}: result.profiles count must match en.json.`);
-  }
-
-  translated.profiles.forEach((profile, index) => {
-    if (profile.minRatio !== canonical.profiles[index]?.minRatio) {
-      addError(`${fileName}: result.profiles[${index}].minRatio must match en.json.`);
-    }
-
-    if ((profile.id ?? "") !== (canonical.profiles[index]?.id ?? "")) {
-      addError(`${fileName}: result.profiles[${index}].id must match en.json.`);
-    }
-  });
-
-  translated.scoreDimensions.forEach((dimension, index) => {
-    const canonicalDimension = canonical.scoreDimensions[index];
-
-    if (!canonicalDimension) {
-      addError(`${fileName}: result.scoreDimensions[${index}] has no matching dimension in en.json.`);
-      return;
-    }
-
-    if ((dimension.categories ?? []).join("\u0000") !== (canonicalDimension.categories ?? []).join("\u0000")) {
-      addError(`${fileName}: result.scoreDimensions[${index}].categories must match en.json.`);
-    }
-  });
-
-  translated.questions.forEach((question, index) => {
-    const canonicalQuestion = canonical.questions[index];
-
-    if (!canonicalQuestion) {
-      addError(`${fileName}: question ${index + 1} has no matching question in en.json.`);
-      return;
-    }
-
-    if ((question.choices?.length ?? 0) !== (canonicalQuestion.choices?.length ?? 0)) {
-      addError(`${fileName}: question ${index + 1} must have ${canonicalQuestion.choices.length} choices to match en.json.`);
-    }
-
-    if (question.answerIndex !== canonicalQuestion.answerIndex) {
-      addError(`${fileName}: question ${index + 1} answerIndex must match en.json.`);
-    }
-
-    if (question.stage !== canonicalQuestion.stage) {
-      addError(`${fileName}: question ${index + 1} stage must match en.json.`);
-    }
-
-    if (question.category !== canonicalQuestion.category) {
-      addError(`${fileName}: question ${index + 1} category must match en.json.`);
-    }
-
-    if ((question.choiceProfileIds ?? []).join("\u0000") !== (canonicalQuestion.choiceProfileIds ?? []).join("\u0000")) {
-      addError(`${fileName}: question ${index + 1} choiceProfileIds must match en.json.`);
-    }
-  });
-}
-
-function getSupportedLocales() {
-  if (!fs.existsSync(i18nDir)) {
-    addError("data/i18n: directory is missing.");
-    return new Set([defaultLocale]);
-  }
-
-  return new Set(
-    fs
-      .readdirSync(i18nDir)
-      .filter((fileName) => fileName.endsWith(".json"))
-      .map((fileName) => fileName.replace(/\.json$/, "")),
-  );
-}
-
-function validateAllQuizzes() {
-  const supportedLocales = getSupportedLocales();
-  const entries = fs.readdirSync(quizDir, { withFileTypes: true });
-
-  entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== "schema.json")
-    .forEach((entry) => {
-      addError(`data/quizzes/${entry.name}: quiz JSON files must live in data/quizzes/<slug>/<locale>.json.`);
-    });
-
-  const quizFolders = entries.filter((entry) => entry.isDirectory() && !entry.name.startsWith("."));
-
-  quizFolders.forEach((entry) => {
-    const slug = entry.name;
-    const quizFolder = path.join(quizDir, slug);
-    const isTemplate = skippedQuizDirs.has(slug);
-    const localeFiles = fs.readdirSync(quizFolder).filter((fileName) => fileName.endsWith(".json")).sort();
-
-    if (!localeFiles.includes(`${defaultLocale}.json`)) {
-      addError(`data/quizzes/${slug}: missing required ${defaultLocale}.json file.`);
-      return;
-    }
-
-    localeFiles.forEach((fileName) => {
-      const locale = fileName.replace(/\.json$/, "");
-      if (!supportedLocales.has(locale)) {
-        addError(`data/quizzes/${slug}/${fileName}: unsupported locale. Add data/i18n/${locale}.json first.`);
-      }
-    });
-
-    const canonical = validateQuizFile(path.join(quizFolder, `${defaultLocale}.json`), { isTemplate });
-
-    if (!isTemplate && canonical?.slug !== slug) {
-      addError(`data/quizzes/${slug}/en.json: "slug" must match folder name "${slug}".`);
-    }
-
-    localeFiles
-      .filter((fileName) => fileName !== `${defaultLocale}.json`)
-      .forEach((fileName) => {
-        const translated = validateQuizFile(path.join(quizFolder, fileName), { isTemplate });
-        assertTranslatedStructure(translated, canonical, `data/quizzes/${slug}/${fileName}`);
-      });
-  });
-}
-
-validateAllQuizzes();
-
-if (warnings.length) {
-  console.log("\nQuiz validation warnings:");
-  warnings.forEach((warning) => console.log(`- ${warning}`));
 }
 
 if (errors.length) {
-  console.error("\nQuiz validation failed:");
-  errors.forEach((error) => console.error(`- ${error}`));
+  console.error(`Quiz validation failed:\n- ${errors.join("\n- ")}`);
   process.exit(1);
 }
 
-console.log(`\nQuiz validation passed. Checked ${checked.length} JSON file${checked.length === 1 ? "" : "s"}.`);
+console.log(`Quiz validation passed. Checked ${folders.length} quiz folder(s).`);

@@ -1,61 +1,56 @@
 import fs from "node:fs";
 import path from "node:path";
-import { getDefaultLocale, getSupportedLocales, isSupportedLocale, type SupportedLocale } from "@/lib/i18n";
+
+import {
+  getDefaultLocale,
+  getSupportedLocales,
+  isSupportedLocale,
+  type SupportedLocale,
+} from "@/lib/i18n";
+
+export type QuizFlow = {
+  type: "linear" | "staged";
+  advance: "automatic" | "manual";
+  feedback: "instant" | "selection-only" | "after-results";
+};
+
+export type QuizScoring = { type: "correct-answer" | "weighted-profile" };
+export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
+export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue";
+export type QuizEstimateConfig = {
+  baseAge: number;
+  minAge: number;
+  maxAge: number;
+  calibrationMax: number;
+  profileAdjustments: Record<string, number>;
+  brainAdjustments: Record<string, number>;
+};
+export type QuizEngineConfig = {
+  flow: QuizFlow;
+  scoring: QuizScoring;
+  checkpoint: "standard" | "ai";
+  rewarded: QuizRewardedConfig;
+  advanceDelayMs: number;
+  estimate?: QuizEstimateConfig;
+};
 
 export type QuizQuestion = {
+  id: string;
+  type: "single-choice";
+  presentation: QuizPresentation;
   prompt: string;
   choices: string[];
-  answerIndex: number;
+  icons?: string[];
+  memoryItems?: string[];
+  continueLabel?: string;
+  calibrationValues?: number[];
+  advanceDelayMs?: number;
+  answerIndex?: number;
   choiceProfileIds?: string[];
+  choiceWeights?: Record<string, number>[];
   explanation?: string;
-  visual?: string;
-  memorySeed?: {
-    icon?: string;
-    label: string;
-    value: string;
-  };
   category?: string;
-  stage?: number;
-};
-
-export type QuizStageGroup = {
-  title: string;
-  encouragement?: string;
-  questions: QuizQuestion[];
-};
-
-export type QuizHomepage = {
-  title?: string;
-  summary?: string;
-  thumbnailUrl?: string;
-  thumbnailAlt?: string;
-  icon?: string;
-  gradient?: string;
-  featured?: boolean;
-};
-
-export type QuizInfoPanel = {
-  title: string;
-  intro: string;
-  columns: {
-    title: string;
-    body: string;
-  }[];
-  footerTitle: string;
-  footerBody: string;
-};
-
-export type QuizFooterContent = {
-  aboutTitle: string;
-  aboutText: string;
-  topicText?: string;
-};
-
-export type QuizLanding = {
-  quickStartText: string;
-  challengeText?: string;
-  ctaLabel?: string;
-  socialProof: string;
+  stage: number;
 };
 
 export type QuizResultProfile = {
@@ -67,670 +62,500 @@ export type QuizResultProfile = {
   percentile: string;
 };
 
-export type QuizScoreDimension = {
-  label: string;
-  categories: string[];
-};
-
+export type QuizScoreDimension = { label: string; categories: string[] };
 export type QuizResultConfig = {
   profileName: string;
   profiles: QuizResultProfile[];
   scoreDimensions: QuizScoreDimension[];
+  estimate?: {
+    eyebrow: string;
+    ageSuffix: string;
+    strongestSignal: string;
+    wildcard: string;
+    consistency: string;
+    consistencyLabels: { high: string; medium: string; mixed: string };
+    disclaimer: string;
+  };
+};
+
+export type QuizTheme = {
+  id: string;
+  preset: "clean" | "editorial" | "playful" | "immersive";
+  layout: {
+    landing: "card" | "split" | "immersive";
+    questions: "card" | "open";
+    results: "card" | "immersive";
+  };
+  colors: {
+    page: string;
+    pageAlt: string;
+    surface: string;
+    surfaceRaised: string;
+    text: string;
+    muted: string;
+    primary: string;
+    primaryText: string;
+    border: string;
+    correct: string;
+    incorrect: string;
+  };
+  typography: { heading: "sans" | "serif" | "rounded"; body: "sans" | "serif" };
+  shape: { cardRadius: string; buttonRadius: string };
+  effects: {
+    shadow: "none" | "soft" | "dramatic";
+    texture: "none" | "paper" | "grain" | "stars";
+  };
+  header?: { background: string; text: string; border: string; shadow: string };
+  artwork?: { landing?: string; result?: string; icon?: string };
+};
+
+export type QuizCheckpointReveal = {
+  title: string;
+  signal: "fixed" | "trend" | "consistency";
+  message?: string;
+  variants?: Record<string, string>;
+};
+export type QuizCheckpointCopy = {
+  nextPrefix: string;
+  adNote: string;
+  reveals: QuizCheckpointReveal[];
+  finalBadge: string;
+  finalTitle: string;
+  finalCopy: string;
+  finalButton: string;
+  finalChecklist: string[];
 };
 
 export type Quiz = {
   slug: string;
-  mode?: "scored" | "personality";
+  engine: QuizEngineConfig;
+  theme: QuizTheme;
+  customCss?: string;
   title: string;
-  seoTitle?: string;
-  seoDescription?: string;
-  pageTitle: string;
   eyebrow: string;
   summary: string;
   duration: string;
   publishedAt: string;
   questionCount: number;
   difficulty: "Quick" | "Medium" | "Hard" | "Expert";
-  passRate: string;
   cardIcon: string;
-  cardGradient: string;
-  accent: string;
-  homepage: QuizHomepage;
-  footer?: QuizFooterContent;
-  infoPanel?: QuizInfoPanel;
-  landing: QuizLanding;
+  thumbnailUrl?: string;
+  thumbnailAlt: string;
+  footer?: { aboutText: string; topicText?: string };
+  landing: { quickStartText: string; ctaLabel?: string; socialProof: string; socialAvatars: string[] };
   stages: string[];
   stageEncouragement: string[];
-  heroPoints: string[];
+  checkpoint?: QuizCheckpointCopy;
   result: QuizResultConfig;
   questions: QuizQuestion[];
 };
 
-type GetAllQuizzesOptions = {
-  includeFallback?: boolean;
+type QuizManifest = {
+  slug: string;
+  engine: {
+    flow: QuizFlow["type"];
+    advance: QuizFlow["advance"];
+    feedback: QuizFlow["feedback"];
+    scoring: QuizScoring["type"];
+    checkpoint?: QuizEngineConfig["checkpoint"];
+    rewarded?: Partial<QuizRewardedConfig>;
+    advanceDelayMs?: number;
+    estimate?: QuizEstimateConfig;
+  };
+  listing: {
+    thumbnail?: string;
+    published: string;
+    duration: string;
+    difficulty: Quiz["difficulty"];
+    icon: string;
+  };
+  theme: QuizTheme;
 };
 
-const QUIZ_DIRECTORY = path.join(process.cwd(), "data", "quizzes");
-const TEMPLATE_DIRECTORY_NAME = "example-template";
-const QUIZ_SCHEMA_FILE_NAME = "schema.json";
-const difficultyValues = new Set(["Quick", "Medium", "Hard", "Expert"]);
-const supportedLocaleValues = new Set(getSupportedLocales());
-const safeImageVisualPattern =
-  /^<img\s+class=(["'])legacy-question-image\1\s+src=(["'])\/quizzes\/[a-z0-9-]+\/images\/[a-z0-9._-]+\.(?:png|jpg|jpeg|webp)\2\s+alt=(["'])[^"']*\3\s*\/>$/i;
-
-function assertString(value: unknown, field: string, fileName: string) {
-  if (typeof value !== "string" || value.trim().length === 0) {
-    throw new Error(`${fileName}: "${field}" must be a non-empty string.`);
-  }
-}
-
-function assertStringArray(value: unknown, field: string, fileName: string) {
-  if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
-    throw new Error(`${fileName}: "${field}" must be a non-empty string array.`);
-  }
-}
-
-function assertIsoDateTime(value: unknown, field: string, fileName: string) {
-  assertString(value, field, fileName);
-
-  const parsedDate = Date.parse(value as string);
-
-  if (Number.isNaN(parsedDate)) {
-    throw new Error(`${fileName}: "${field}" must be a valid ISO date-time string.`);
-  }
-}
-
-function assertOptionalStringArray(value: unknown, field: string, fileName: string) {
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || item.trim().length === 0)) {
-    throw new Error(`${fileName}: "${field}" must be an array of non-empty strings.`);
-  }
-}
-
-function validateQuestion(value: unknown, index: number, fileName: string, stageOverride?: number): QuizQuestion {
-  if (!value || typeof value !== "object") {
-    throw new Error(`${fileName}: question ${index + 1} must be an object.`);
-  }
-
-  const question = value as Record<string, unknown>;
-  assertString(question.prompt, `questions[${index}].prompt`, fileName);
-
-  const choices = question.choices;
-  const answerIndex = question.answerIndex;
-  const stage = question.stage;
-
-  if (!Array.isArray(choices) || choices.length < 2 || choices.some((choice) => typeof choice !== "string" || choice.trim().length === 0)) {
-    throw new Error(`${fileName}: "questions[${index}].choices" must contain at least two non-empty strings.`);
-  }
-
-  if (!Number.isInteger(answerIndex) || typeof answerIndex !== "number" || answerIndex < 0 || answerIndex >= choices.length) {
-    throw new Error(`${fileName}: "questions[${index}].answerIndex" must point to one of the choices.`);
-  }
-
-  if (question.choiceProfileIds !== undefined) {
-    if (
-      !Array.isArray(question.choiceProfileIds) ||
-      question.choiceProfileIds.length !== choices.length ||
-      question.choiceProfileIds.some((id) => typeof id !== "string" || id.trim().length === 0)
-    ) {
-      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must contain one non-empty profile id for each choice.`);
-    }
-  }
-
-  if (stage !== undefined && (!Number.isInteger(stage) || typeof stage !== "number" || stage < 0)) {
-    throw new Error(`${fileName}: "questions[${index}].stage" must be a zero-based number when provided.`);
-  }
-
-  if (question.visual !== undefined) {
-    if (typeof question.visual !== "string" || !safeImageVisualPattern.test(question.visual.trim())) {
-      throw new Error(
-        `${fileName}: "questions[${index}].visual" must be a safe local legacy-question-image <img> tag with a /quizzes/... image src.`,
-      );
-    }
-  }
-
-  return {
-    ...(question as QuizQuestion),
-    stage: stageOverride ?? (question.stage as number | undefined),
+type QuizLocaleFile = {
+  title: string;
+  eyebrow?: string;
+  summary: string;
+  landing?: { intro?: string; socialProof?: string; cta?: string };
+  about?: { body: string; disclaimer?: string };
+  checkpoint?: QuizCheckpointCopy;
+  results: {
+    name: string;
+    profiles: Array<{
+      id?: string;
+      min?: number;
+      tier: string;
+      title: string;
+      copy: string;
+      label?: string;
+    }>;
+    dimensions?: Array<{ label: string; profiles?: string[]; categories?: string[] }>;
+    estimate?: QuizResultConfig["estimate"];
   };
+  stages: Array<{
+    title: string;
+    complete?: string;
+    questions: Array<{
+      id?: string;
+      question: string;
+      presentation?: QuizPresentation;
+      answers?: string[] | Record<string, string | Record<string, number>>;
+      icons?: string[];
+      memoryItems?: string[];
+      continueLabel?: string;
+      calibration?: number[];
+      delay?: number;
+      correct?: number;
+      explanation?: string;
+      category?: string;
+    }>;
+  }>;
+};
+
+const ROOT = path.join(process.cwd(), "data", "quizzes");
+const LOCALES = new Set(getSupportedLocales());
+const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
+const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
+
+function json<T>(filePath: string): T {
+  return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
 }
 
-function validateHomepage(value: unknown, fileName: string): QuizHomepage {
-  if (value === undefined) {
-    return {};
-  }
+function quizAsset(slug: string, value?: string) {
+  if (!value || value.startsWith("/")) return value;
+  const file = path.join(directory(slug), value);
+  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) throw new Error(`${slug}: missing asset ${value}.`);
+  const extension = path.extname(file).slice(1).toLowerCase().replace("jpg", "jpeg");
+  return `data:image/${extension};base64,${fs.readFileSync(file).toString("base64")}`;
+}
 
+function object(value: unknown, name: string, file: string): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${fileName}: "homepage" must be an object when provided.`);
+    throw new Error(`${file}: ${name} must be an object.`);
   }
-
-  const homepage = value as Record<string, unknown>;
-  const optionalStrings = ["title", "summary", "thumbnailUrl", "thumbnailAlt", "icon", "gradient"];
-
-  optionalStrings.forEach((field) => {
-    if (homepage[field] !== undefined && typeof homepage[field] !== "string") {
-      throw new Error(`${fileName}: "homepage.${field}" must be a string when provided.`);
-    }
-  });
-
-  if (homepage.featured !== undefined && typeof homepage.featured !== "boolean") {
-    throw new Error(`${fileName}: "homepage.featured" must be a boolean when provided.`);
-  }
-
-  return homepage as QuizHomepage;
+  return value as Record<string, unknown>;
 }
 
-function validateInfoPanel(value: unknown, fileName: string): QuizInfoPanel | undefined {
-  if (value === undefined) {
-    return undefined;
-  }
-
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${fileName}: "infoPanel" must be an object when provided.`);
-  }
-
-  const infoPanel = value as Record<string, unknown>;
-  assertString(infoPanel.title, "infoPanel.title", fileName);
-  assertString(infoPanel.intro, "infoPanel.intro", fileName);
-  assertString(infoPanel.footerTitle, "infoPanel.footerTitle", fileName);
-  assertString(infoPanel.footerBody, "infoPanel.footerBody", fileName);
-
-  if (!Array.isArray(infoPanel.columns) || infoPanel.columns.length === 0) {
-    throw new Error(`${fileName}: "infoPanel.columns" must be a non-empty array.`);
-  }
-
-  infoPanel.columns.forEach((column, index) => {
-    if (!column || typeof column !== "object" || Array.isArray(column)) {
-      throw new Error(`${fileName}: "infoPanel.columns[${index}]" must be an object.`);
-    }
-
-    const item = column as Record<string, unknown>;
-    assertString(item.title, `infoPanel.columns[${index}].title`, fileName);
-    assertString(item.body, `infoPanel.columns[${index}].body`, fileName);
-  });
-
-  return infoPanel as QuizInfoPanel;
+function text(value: unknown, name: string, file: string) {
+  if (typeof value !== "string" || !value.trim()) throw new Error(`${file}: ${name} is required.`);
+  return value;
 }
 
-function validateFooter(value: unknown, fileName: string): QuizFooterContent | undefined {
-  if (value === undefined) {
-    return undefined;
+function strings(value: unknown, name: string, file: string) {
+  if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || !item.trim())) {
+    throw new Error(`${file}: ${name} must be a string array.`);
   }
-
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${fileName}: "footer" must be an object when provided.`);
-  }
-
-  const footer = value as Record<string, unknown>;
-  assertString(footer.aboutTitle, "footer.aboutTitle", fileName);
-  assertString(footer.aboutText, "footer.aboutText", fileName);
-
-  if (footer.topicText !== undefined && typeof footer.topicText !== "string") {
-    throw new Error(`${fileName}: "footer.topicText" must be a string when provided.`);
-  }
-
-  return footer as QuizFooterContent;
+  return value as string[];
 }
 
-function validateLanding(value: unknown, fileName: string): QuizLanding {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${fileName}: "landing" must be an object.`);
+function validateManifest(value: unknown, file: string): QuizManifest {
+  const raw = object(value, "quiz", file);
+  const engine = object(raw.engine, "engine", file);
+  const listing = object(raw.listing, "listing", file);
+  if (!["linear", "staged"].includes(String(engine.flow))) throw new Error(`${file}: invalid flow.`);
+  if (!["automatic", "manual"].includes(String(engine.advance))) throw new Error(`${file}: invalid advance mode.`);
+  if (!["instant", "selection-only", "after-results"].includes(String(engine.feedback))) throw new Error(`${file}: invalid feedback mode.`);
+  if (!["correct-answer", "weighted-profile"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
+  if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
+  const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
+  if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 350) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 350.`);
+  if (engine.rewarded !== undefined) {
+    const rewarded = object(engine.rewarded, "engine.rewarded", file);
+    if (rewarded.start !== undefined && typeof rewarded.start !== "boolean") throw new Error(`${file}: rewarded.start must be a boolean.`);
+    if (rewarded.stages !== undefined && typeof rewarded.stages !== "boolean") throw new Error(`${file}: rewarded.stages must be a boolean.`);
+    if (rewarded.attempts !== undefined && (!Number.isInteger(rewarded.attempts) || Number(rewarded.attempts) < 1 || Number(rewarded.attempts) > 5)) throw new Error(`${file}: rewarded.attempts must be between 1 and 5.`);
   }
-
-  const landing = value as Record<string, unknown>;
-  if (typeof landing.quickStartText !== "string") {
-    throw new Error(`${fileName}: "landing.quickStartText" must be a string.`);
-  }
-  if (landing.challengeText !== undefined) {
-    assertString(landing.challengeText, "landing.challengeText", fileName);
-  }
-  if (landing.ctaLabel !== undefined) {
-    assertString(landing.ctaLabel, "landing.ctaLabel", fileName);
-  }
-  assertString(landing.socialProof, "landing.socialProof", fileName);
-
-  return landing as QuizLanding;
-}
-
-function validateResult(value: unknown, fileName: string): QuizResultConfig {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${fileName}: "result" must be an object.`);
-  }
-
-  const result = value as Record<string, unknown>;
-  assertString(result.profileName, "result.profileName", fileName);
-
-  if (!Array.isArray(result.profiles) || result.profiles.length === 0) {
-    throw new Error(`${fileName}: "result.profiles" must be a non-empty array.`);
-  }
-
-  const profiles = result.profiles.map((profile, index) => {
-    if (!profile || typeof profile !== "object" || Array.isArray(profile)) {
-      throw new Error(`${fileName}: "result.profiles[${index}]" must be an object.`);
-    }
-
-    const item = profile as Record<string, unknown>;
-
-    if (typeof item.minRatio !== "number" || item.minRatio < 0 || item.minRatio > 1) {
-      throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must be a number from 0 to 1.`);
-    }
-
-    if (item.id !== undefined) {
-      assertString(item.id, `result.profiles[${index}].id`, fileName);
-    }
-
-    assertString(item.tier, `result.profiles[${index}].tier`, fileName);
-    assertString(item.title, `result.profiles[${index}].title`, fileName);
-    assertString(item.copy, `result.profiles[${index}].copy`, fileName);
-    assertString(item.percentile, `result.profiles[${index}].percentile`, fileName);
-
-    return item as QuizResultProfile;
-  });
-
-  if (!profiles.some((profile) => profile.minRatio === 0)) {
-    throw new Error(`${fileName}: "result.profiles" must include a fallback profile with "minRatio": 0.`);
-  }
-
-  if (!Array.isArray(result.scoreDimensions) || result.scoreDimensions.length === 0) {
-    throw new Error(`${fileName}: "result.scoreDimensions" must be a non-empty array.`);
-  }
-
-  const scoreDimensions = result.scoreDimensions.map((dimension, index) => {
-    if (!dimension || typeof dimension !== "object" || Array.isArray(dimension)) {
-      throw new Error(`${fileName}: "result.scoreDimensions[${index}]" must be an object.`);
-    }
-
-    const item = dimension as Record<string, unknown>;
-    assertString(item.label, `result.scoreDimensions[${index}].label`, fileName);
-    assertStringArray(item.categories, `result.scoreDimensions[${index}].categories`, fileName);
-
-    return item as QuizScoreDimension;
-  });
-
-  return {
-    profileName: result.profileName as string,
-    profiles,
-    scoreDimensions,
-  };
-}
-
-function normalizeStageContent(quiz: Record<string, unknown>, fileName: string) {
-  const hasStageGroups = quiz.stageGroups !== undefined;
-  const hasFlatStages = quiz.stages !== undefined || quiz.questions !== undefined;
-
-  if (hasStageGroups && hasFlatStages) {
-    throw new Error(`${fileName}: use either "stageGroups" or the flat "stages" + "questions" format, not both.`);
-  }
-
-  if (hasStageGroups) {
-    if (!Array.isArray(quiz.stageGroups) || quiz.stageGroups.length === 0) {
-      throw new Error(`${fileName}: "stageGroups" must be a non-empty array.`);
-    }
-
-    const stages: string[] = [];
-    const stageEncouragement: string[] = [];
-    const questions: QuizQuestion[] = [];
-
-    quiz.stageGroups.forEach((stageGroup, stageIndex) => {
-      if (!stageGroup || typeof stageGroup !== "object" || Array.isArray(stageGroup)) {
-        throw new Error(`${fileName}: "stageGroups[${stageIndex}]" must be an object.`);
-      }
-
-      const group = stageGroup as Record<string, unknown>;
-      assertString(group.title, `stageGroups[${stageIndex}].title`, fileName);
-
-      if (!Array.isArray(group.questions) || group.questions.length === 0) {
-        throw new Error(`${fileName}: "stageGroups[${stageIndex}].questions" must be a non-empty array.`);
-      }
-
-      if (stageIndex < (quiz.stageGroups as unknown[]).length - 1) {
-        assertString(group.encouragement, `stageGroups[${stageIndex}].encouragement`, fileName);
-        stageEncouragement.push(group.encouragement as string);
-      } else if (group.encouragement !== undefined && typeof group.encouragement !== "string") {
-        throw new Error(`${fileName}: "stageGroups[${stageIndex}].encouragement" must be a string when provided.`);
-      }
-
-      stages.push(group.title as string);
-      group.questions.forEach((question, questionIndex) => {
-        questions.push(validateQuestion(question, questions.length, fileName, stageIndex));
-
-        const rawQuestion = question as Record<string, unknown>;
-        if (rawQuestion.stage !== undefined && rawQuestion.stage !== stageIndex) {
-          throw new Error(
-            `${fileName}: "stageGroups[${stageIndex}].questions[${questionIndex}].stage" must be omitted or match the containing stage index.`,
-          );
-        }
-      });
+  let estimate: QuizEstimateConfig | undefined;
+  if (engine.estimate !== undefined) {
+    const rawEstimate = object(engine.estimate, "engine.estimate", file);
+    const profileAdjustments = object(rawEstimate.profileAdjustments, "engine.estimate.profileAdjustments", file);
+    const brainAdjustments = object(rawEstimate.brainAdjustments, "engine.estimate.brainAdjustments", file);
+    ["baseAge", "minAge", "maxAge", "calibrationMax"].forEach((key) => {
+      if (typeof rawEstimate[key] !== "number" || !Number.isFinite(rawEstimate[key])) throw new Error(`${file}: engine.estimate.${key} must be a number.`);
     });
-
-    return {
-      stages,
-      stageEncouragement,
-      questions,
+    if (Object.values(profileAdjustments).some((item) => typeof item !== "number" || !Number.isFinite(item))) throw new Error(`${file}: profile adjustments must be numbers.`);
+    if (Object.values(brainAdjustments).some((item) => typeof item !== "number" || !Number.isFinite(item))) throw new Error(`${file}: brain adjustments must be numbers.`);
+    estimate = {
+      baseAge: rawEstimate.baseAge as number,
+      minAge: rawEstimate.minAge as number,
+      maxAge: rawEstimate.maxAge as number,
+      calibrationMax: rawEstimate.calibrationMax as number,
+      profileAdjustments: profileAdjustments as Record<string, number>,
+      brainAdjustments: brainAdjustments as Record<string, number>,
     };
   }
+  if (!DIFFICULTIES.has(String(listing.difficulty))) throw new Error(`${file}: invalid difficulty.`);
+  if (listing.thumbnail !== undefined && (typeof listing.thumbnail !== "string" || !ASSET_PATH.test(listing.thumbnail))) {
+    throw new Error(`${file}: thumbnail must be a local asset path.`);
+  }
+  const slug = text(raw.slug, "slug", file);
+  return {
+    slug,
+    engine: { ...engine, advanceDelayMs, estimate } as QuizManifest["engine"],
+    listing: {
+      thumbnail: listing.thumbnail as string | undefined,
+      published: text(listing.published, "listing.published", file),
+      duration: text(listing.duration, "listing.duration", file),
+      difficulty: listing.difficulty as Quiz["difficulty"],
+      icon: text(listing.icon, "listing.icon", file),
+    },
+    theme: validateTheme({ ...object(raw.theme, "theme", file), id: slug }, file),
+  };
+}
 
-  assertStringArray(quiz.stages, "stages", fileName);
+function validateTheme(value: unknown, file: string): QuizTheme {
+  const raw = object(value, "theme", file);
+  const layout = object(raw.layout, "layout", file);
+  const colors = object(raw.colors, "colors", file);
+  const typography = object(raw.typography, "typography", file);
+  const shape = object(raw.shape, "shape", file);
+  const effects = object(raw.effects, "effects", file);
+  const colorKeys = ["page", "pageAlt", "surface", "surfaceRaised", "text", "muted", "primary", "primaryText", "border", "correct", "incorrect"];
+  colorKeys.forEach((key) => text(colors[key], `colors.${key}`, file));
+  if (!["clean", "editorial", "playful", "immersive"].includes(String(raw.preset))) throw new Error(`${file}: invalid preset.`);
+  if (!["card", "split", "immersive"].includes(String(layout.landing))) throw new Error(`${file}: invalid landing layout.`);
+  if (!["card", "open"].includes(String(layout.questions))) throw new Error(`${file}: invalid question layout.`);
+  if (!["card", "immersive"].includes(String(layout.results))) throw new Error(`${file}: invalid result layout.`);
+  if (!["sans", "serif", "rounded"].includes(String(typography.heading))) throw new Error(`${file}: invalid heading.`);
+  if (!["sans", "serif"].includes(String(typography.body))) throw new Error(`${file}: invalid body font.`);
+  if (!["none", "soft", "dramatic"].includes(String(effects.shadow))) throw new Error(`${file}: invalid shadow.`);
+  if (!["none", "paper", "grain", "stars"].includes(String(effects.texture))) throw new Error(`${file}: invalid texture.`);
+  const artwork = raw.artwork === undefined ? undefined : object(raw.artwork, "artwork", file);
+  const header = raw.header === undefined ? undefined : object(raw.header, "header", file);
+  return {
+    id: text(raw.id, "id", file),
+    preset: raw.preset as QuizTheme["preset"],
+    layout: layout as QuizTheme["layout"],
+    colors: colors as QuizTheme["colors"],
+    typography: typography as QuizTheme["typography"],
+    shape: {
+      cardRadius: text(shape.cardRadius, "shape.cardRadius", file),
+      buttonRadius: text(shape.buttonRadius, "shape.buttonRadius", file),
+    },
+    effects: effects as QuizTheme["effects"],
+    header: header ? {
+      background: text(header.background, "header.background", file),
+      text: text(header.text, "header.text", file),
+      border: text(header.border, "header.border", file),
+      shadow: text(header.shadow, "header.shadow", file),
+    } : undefined,
+    artwork: artwork ? {
+      landing: artwork.landing as string | undefined,
+      result: artwork.result as string | undefined,
+      icon: artwork.icon as string | undefined,
+    } : undefined,
+  };
+}
 
-  if (quiz.stageEncouragement === undefined) {
-    if ((quiz.stages as string[]).length > 1) {
-      throw new Error(`${fileName}: "stageEncouragement" is required when using more than one flat stage.`);
-    }
-  } else {
-    assertOptionalStringArray(quiz.stageEncouragement, "stageEncouragement", fileName);
+function normalizeLocale(
+  value: QuizLocaleFile,
+  manifest: QuizManifest,
+  theme: QuizTheme,
+  customCss: string | undefined,
+  socialAvatars: string[],
+  file: string,
+): Quiz {
+  const title = text(value.title, "title", file);
+  const summary = text(value.summary, "summary", file);
+  if (!Array.isArray(value.stages) || !value.stages.length) throw new Error(`${file}: stages are required.`);
+  if (!Array.isArray(value.results?.profiles) || !value.results.profiles.length) throw new Error(`${file}: result profiles are required.`);
+  if (manifest.engine.flow === "staged" && value.stages.length < 2) throw new Error(`${file}: staged quizzes need at least two stages.`);
+  if (manifest.engine.checkpoint === "ai") {
+    if (!value.checkpoint) throw new Error(`${file}: AI checkpoints need checkpoint copy.`);
+    if (!Array.isArray(value.checkpoint.reveals) || value.checkpoint.reveals.length !== value.stages.length) throw new Error(`${file}: checkpoint reveals must match the stage count.`);
+    value.checkpoint.reveals.forEach((reveal, index) => {
+      text(reveal.title, `checkpoint.reveals[${index}].title`, file);
+      if (!["fixed", "trend", "consistency"].includes(reveal.signal)) throw new Error(`${file}: invalid checkpoint signal.`);
+      if (reveal.signal === "fixed") text(reveal.message, `checkpoint.reveals[${index}].message`, file);
+      else if (!reveal.variants || Object.values(reveal.variants).some((variant) => typeof variant !== "string" || !variant.trim())) throw new Error(`${file}: checkpoint reveal ${index + 1} needs variants.`);
+    });
+    strings(value.checkpoint.finalChecklist, "checkpoint.finalChecklist", file);
+    if (value.checkpoint.finalChecklist.length !== 6) throw new Error(`${file}: final checklist needs six items.`);
+    ["nextPrefix", "adNote", "finalBadge", "finalTitle", "finalCopy", "finalButton"].forEach((key) => text(value.checkpoint?.[key as keyof QuizCheckpointCopy], `checkpoint.${key}`, file));
   }
 
-  if (!Array.isArray(quiz.questions) || quiz.questions.length === 0) {
-    throw new Error(`${fileName}: "questions" must be a non-empty array.`);
-  }
-
-  const stages = quiz.stages as string[];
-  const stageEncouragement = (quiz.stageEncouragement ?? []) as string[];
-  const questions = quiz.questions.map((question, index) => validateQuestion(question, index, fileName));
-
-  questions.forEach((question, index) => {
-    const stage = question.stage ?? 0;
-
-    if (stage >= stages.length) {
-      throw new Error(`${fileName}: "questions[${index}].stage" must map to an entry in "stages".`);
-    }
+  const questions: QuizQuestion[] = [];
+  const stageEncouragement: string[] = [];
+  value.stages.forEach((stage, stageIndex) => {
+    text(stage.title, `stages[${stageIndex}].title`, file);
+    if (!Array.isArray(stage.questions) || !stage.questions.length) throw new Error(`${file}: every stage needs questions.`);
+    if (stageIndex < value.stages.length - 1) stageEncouragement.push(text(stage.complete, `stages[${stageIndex}].complete`, file));
+    stage.questions.forEach((rawQuestion) => {
+      const index = questions.length;
+      const prompt = text(rawQuestion.question, `questions[${index}].question`, file);
+      const presentation = rawQuestion.presentation ?? "text";
+      if (!["text", "icons", "scale", "memory-cue"].includes(presentation)) throw new Error(`${file}: question ${index + 1} has an invalid presentation.`);
+      const isKnowledgeQuiz = manifest.engine.scoring === "correct-answer";
+      const isMemoryCue = presentation === "memory-cue";
+      if (isMemoryCue && (!rawQuestion.memoryItems || rawQuestion.memoryItems.length < 3 || rawQuestion.memoryItems.length > 4)) throw new Error(`${file}: memory cue ${index + 1} needs three or four items.`);
+      if (!isMemoryCue && (!rawQuestion.answers || typeof rawQuestion.answers !== "object")) throw new Error(`${file}: question ${index + 1} needs answers.`);
+      if (isKnowledgeQuiz && !isMemoryCue && !Array.isArray(rawQuestion.answers)) throw new Error(`${file}: knowledge question ${index + 1} needs an answer array.`);
+      const answerEntries = isMemoryCue ? [[text(rawQuestion.continueLabel, `questions[${index}].continueLabel`, file), null] as const] : Array.isArray(rawQuestion.answers)
+        ? rawQuestion.answers.map((answer) => [text(answer, `questions[${index}].answers`, file), null] as const)
+        : Object.entries(rawQuestion.answers ?? {});
+      if (!isMemoryCue && (answerEntries.length < 2 || answerEntries.length > 5)) throw new Error(`${file}: question ${index + 1} needs two to five answers.`);
+      const choices = answerEntries.map(([answer]) => answer);
+      const profileIds = answerEntries.map(([, meaning]) => typeof meaning === "string" ? meaning : "");
+      const weights = answerEntries.map(([, meaning]) => meaning && typeof meaning === "object" ? meaning : {});
+      if (!isMemoryCue && (isKnowledgeQuiz || rawQuestion.correct !== undefined) && (!Number.isInteger(rawQuestion.correct) || rawQuestion.correct! < 0 || rawQuestion.correct! >= choices.length)) {
+        throw new Error(`${file}: knowledge question ${index + 1} needs a valid correct index.`);
+      }
+      if (!isKnowledgeQuiz && !isMemoryCue && !Array.isArray(rawQuestion.answers) && answerEntries.some(([, meaning]) => typeof meaning !== "string" && (!meaning || typeof meaning !== "object"))) {
+        throw new Error(`${file}: weighted question ${index + 1} needs a profile id or weight map for every answer.`);
+      }
+      if (presentation === "icons" && (!rawQuestion.icons || rawQuestion.icons.length !== choices.length)) throw new Error(`${file}: icon question ${index + 1} needs one icon per answer.`);
+      if (presentation === "scale" && choices.length !== 5) throw new Error(`${file}: scale question ${index + 1} needs five stops.`);
+      if (rawQuestion.calibration && (rawQuestion.calibration.length !== choices.length || rawQuestion.calibration.some((item) => typeof item !== "number" || item < -1 || item > 1))) throw new Error(`${file}: question ${index + 1} calibration values must match answers and be between -1 and 1.`);
+      if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 400)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 400.`);
+      questions.push({
+        id: rawQuestion.id ?? `q-${index + 1}`,
+        type: "single-choice",
+        presentation,
+        prompt,
+        choices,
+        icons: rawQuestion.icons,
+        memoryItems: rawQuestion.memoryItems,
+        continueLabel: rawQuestion.continueLabel,
+        calibrationValues: rawQuestion.calibration,
+        advanceDelayMs: rawQuestion.delay,
+        answerIndex: rawQuestion.correct,
+        choiceProfileIds: profileIds.some(Boolean) ? profileIds : undefined,
+        choiceWeights: weights.some((item) => Object.keys(item).length) ? weights : undefined,
+        explanation: rawQuestion.explanation,
+        category: rawQuestion.category,
+        stage: stageIndex,
+      });
+    });
   });
 
+  const profiles = value.results.profiles.map((profile, index) => ({
+    id: profile.id,
+    minRatio: profile.min ?? 0,
+    tier: text(profile.tier, `results.profiles[${index}].tier`, file),
+    title: text(profile.title, `results.profiles[${index}].title`, file),
+    copy: text(profile.copy, `results.profiles[${index}].copy`, file),
+    percentile: profile.label ?? profile.tier,
+  }));
+  if (manifest.engine.scoring === "weighted-profile" && profiles.some((profile) => !profile.id)) {
+    throw new Error(`${file}: weighted result profiles need ids.`);
+  }
+
   return {
-    stages,
+    slug: manifest.slug,
+    engine: {
+      flow: { type: manifest.engine.flow, advance: manifest.engine.advance, feedback: manifest.engine.feedback },
+      scoring: { type: manifest.engine.scoring },
+      checkpoint: manifest.engine.checkpoint ?? "standard",
+      rewarded: {
+        start: manifest.engine.rewarded?.start ?? false,
+        stages: manifest.engine.rewarded?.stages ?? false,
+        attempts: manifest.engine.rewarded?.attempts ?? 3,
+      },
+      advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
+      estimate: manifest.engine.estimate,
+    },
+    theme,
+    customCss,
+    title,
+    eyebrow: value.eyebrow ?? "Quiz",
+    summary,
+    duration: manifest.listing.duration,
+    publishedAt: `${manifest.listing.published}T00:00:00Z`,
+    questionCount: questions.length,
+    difficulty: manifest.listing.difficulty,
+    cardIcon: manifest.listing.icon,
+    thumbnailUrl: manifest.listing.thumbnail,
+    thumbnailAlt: title,
+    footer: value.about ? {
+      topicText: value.about.body,
+      aboutText: value.about.disclaimer ?? value.about.body,
+    } : undefined,
+    landing: {
+      quickStartText: value.landing?.intro ?? summary,
+      socialProof: value.landing?.socialProof ?? "",
+      ctaLabel: value.landing?.cta,
+      socialAvatars,
+    },
+    stages: value.stages.map((stage) => stage.title),
     stageEncouragement,
+    checkpoint: value.checkpoint,
+    result: {
+      profileName: text(value.results.name, "results.name", file),
+      profiles,
+      scoreDimensions: (value.results.dimensions ?? []).map((dimension) => ({
+        label: dimension.label,
+        categories: dimension.profiles ?? dimension.categories ?? [],
+      })),
+      estimate: value.results.estimate,
+    },
     questions,
   };
 }
 
-function validateQuiz(value: unknown, fileName: string): Quiz {
-  if (!value || typeof value !== "object") {
-    throw new Error(`${fileName}: quiz file must contain a JSON object.`);
-  }
-
-  const quiz = value as Record<string, unknown>;
-  if (quiz.mode !== undefined && quiz.mode !== "scored" && quiz.mode !== "personality") {
-    throw new Error(`${fileName}: "mode" must be either "scored" or "personality" when provided.`);
-  }
-
-  const requiredStrings = [
-    "slug",
-    "title",
-    "pageTitle",
-    "eyebrow",
-    "summary",
-    "duration",
-    "publishedAt",
-    "passRate",
-    "cardIcon",
-    "cardGradient",
-    "accent",
-  ];
-
-  requiredStrings.forEach((field) => assertString(quiz[field], field, fileName));
-  assertIsoDateTime(quiz.publishedAt, "publishedAt", fileName);
-
-  ["seoTitle", "seoDescription"].forEach((field) => {
-    if (quiz[field] !== undefined && typeof quiz[field] !== "string") {
-      throw new Error(`${fileName}: "${field}" must be a string when provided.`);
-    }
-  });
-
-  const difficulty = quiz.difficulty;
-
-  if (typeof difficulty !== "string" || !difficultyValues.has(difficulty)) {
-    throw new Error(`${fileName}: "difficulty" must be one of Quick, Medium, Hard, or Expert.`);
-  }
-
-  if (
-    quiz.questionCount !== undefined &&
-    (!Number.isInteger(quiz.questionCount) || typeof quiz.questionCount !== "number" || quiz.questionCount < 1)
-  ) {
-    throw new Error(`${fileName}: "questionCount" must be a positive integer when provided.`);
-  }
-
-  if (quiz.heroPoints === undefined) {
-    quiz.heroPoints = [];
-  }
-
-  assertOptionalStringArray(quiz.heroPoints, "heroPoints", fileName);
-  const homepage = validateHomepage(quiz.homepage, fileName);
-  const footer = validateFooter(quiz.footer, fileName);
-  const infoPanel = validateInfoPanel(quiz.infoPanel, fileName);
-  const landing = validateLanding(quiz.landing, fileName);
-  const result = validateResult(quiz.result, fileName);
-  const { stages, stageEncouragement, questions } = normalizeStageContent(quiz, fileName);
-  const questionCount = typeof quiz.questionCount === "number" ? quiz.questionCount : questions.length;
-
-  if (stageEncouragement.length !== stages.length - 1) {
-    throw new Error(`${fileName}: "stageEncouragement" must contain one entry for each completed stage before the final results.`);
-  }
-
-  if (quiz.questionCount !== undefined && questionCount !== questions.length) {
-    throw new Error(`${fileName}: "questionCount" is ${questionCount}, but the file contains ${questions.length} questions.`);
-  }
-
-  return {
-    slug: quiz.slug,
-    mode: quiz.mode as Quiz["mode"],
-    title: quiz.title,
-    seoTitle: quiz.seoTitle,
-    seoDescription: quiz.seoDescription,
-    pageTitle: quiz.pageTitle,
-    eyebrow: quiz.eyebrow,
-    summary: quiz.summary,
-    duration: quiz.duration,
-    publishedAt: quiz.publishedAt,
-    questionCount,
-    difficulty: difficulty as Quiz["difficulty"],
-    passRate: quiz.passRate,
-    cardIcon: quiz.cardIcon,
-    cardGradient: quiz.cardGradient,
-    accent: quiz.accent,
-    homepage,
-    footer,
-    infoPanel,
-    landing,
-    stages,
-    stageEncouragement,
-    heroPoints: quiz.heroPoints,
-    result,
-    questions,
-  } as Quiz;
-}
-
-function getQuizDirectory(slug: string) {
-  return path.join(QUIZ_DIRECTORY, slug);
-}
-
-function readQuizFolders() {
-  const entries = fs.readdirSync(QUIZ_DIRECTORY, { withFileTypes: true });
-  const rootJsonFiles = entries.filter((entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== QUIZ_SCHEMA_FILE_NAME);
-
-  if (rootJsonFiles.length) {
-    throw new Error(
-      `Quiz JSON files must live in per-quiz locale folders. Move ${rootJsonFiles
-        .map((entry) => `"${entry.name}"`)
-        .join(", ")} into "data/quizzes/<slug>/en.json".`,
-    );
-  }
-
-  return entries
-    .filter((entry) => entry.isDirectory() && !entry.name.startsWith(".") && entry.name !== TEMPLATE_DIRECTORY_NAME)
+function directory(slug: string) { return path.join(ROOT, slug); }
+function hasLocale(slug: string, locale: SupportedLocale) { return fs.existsSync(path.join(directory(slug), `${locale}.json`)); }
+function slugs() {
+  return fs.readdirSync(ROOT, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(ROOT, entry.name, "quiz.json")))
     .map((entry) => entry.name)
     .sort();
 }
 
-function assertCanonicalQuizFile(slug: string) {
-  const quizDirectory = getQuizDirectory(slug);
-  const localeFiles = fs.readdirSync(quizDirectory).filter((fileName) => fileName.endsWith(".json"));
-  const invalidLocaleFiles = localeFiles.filter((fileName) => !supportedLocaleValues.has(fileName.replace(/\.json$/, "") as SupportedLocale));
-
-  if (invalidLocaleFiles.length) {
-    throw new Error(
-      `${slug}: quiz locale files must be named with a supported locale. Invalid files: ${invalidLocaleFiles
-        .map((fileName) => `"${fileName}"`)
-        .join(", ")}.`,
-    );
+function readQuiz(slug: string, locale: SupportedLocale) {
+  const manifest = validateManifest(json(path.join(directory(slug), "quiz.json")), `${slug}/quiz.json`);
+  if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
+  manifest.listing.thumbnail = quizAsset(slug, manifest.listing.thumbnail);
+  if (manifest.theme.artwork) {
+    manifest.theme.artwork.landing = quizAsset(slug, manifest.theme.artwork.landing);
+    manifest.theme.artwork.result = quizAsset(slug, manifest.theme.artwork.result);
   }
-
-  const canonicalPath = path.join(quizDirectory, `${getDefaultLocale()}.json`);
-
-  if (!fs.existsSync(canonicalPath)) {
-    throw new Error(`${slug}: every quiz folder must contain "${getDefaultLocale()}.json".`);
-  }
+  const cssFile = path.join(directory(slug), "theme.css");
+  const customCss = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf8") : undefined;
+  const avatarDirectory = path.join(directory(slug), "assets", "avatars");
+  const socialAvatars = fs.existsSync(avatarDirectory)
+    ? fs.readdirSync(avatarDirectory)
+      .filter((file) => /\.(?:jpe?g|png|webp)$/i.test(file))
+      .sort()
+      .slice(0, 4)
+      .map((file) => {
+        const extension = path.extname(file).slice(1).toLowerCase().replace("jpg", "jpeg");
+        return `data:image/${extension};base64,${fs.readFileSync(path.join(avatarDirectory, file)).toString("base64")}`;
+      })
+    : [];
+  return normalizeLocale(json(path.join(directory(slug), `${locale}.json`)), manifest, manifest.theme, customCss, socialAvatars, `${slug}/${locale}.json`);
 }
 
-function readAndValidateQuiz(slug: string, locale: SupportedLocale) {
-  const fileName = `${slug}/${locale}.json`;
-  const filePath = path.join(getQuizDirectory(slug), `${locale}.json`);
-  const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  const quiz = validateQuiz(parsed, fileName);
-
-  if (quiz.slug !== slug) {
-    throw new Error(`${fileName}: "slug" must match the quiz folder name "${slug}".`);
-  }
-
-  return quiz;
-}
-
-function assertTranslatedQuizStructure(translatedQuiz: Quiz, canonicalQuiz: Quiz, fileName: string) {
-  if (canonicalQuiz.slug === "memory" && translatedQuiz.slug === "memory") {
-    return;
-  }
-
-  if (translatedQuiz.questionCount !== canonicalQuiz.questionCount) {
-    throw new Error(`${fileName}: "questionCount" must match ${canonicalQuiz.questionCount} from en.json.`);
-  }
-
-  if (translatedQuiz.stages.length !== canonicalQuiz.stages.length) {
-    throw new Error(`${fileName}: "stages" must contain ${canonicalQuiz.stages.length} entries to match en.json.`);
-  }
-
-  if (translatedQuiz.stageEncouragement.length !== canonicalQuiz.stageEncouragement.length) {
-    throw new Error(`${fileName}: "stageEncouragement" must contain ${canonicalQuiz.stageEncouragement.length} entries to match en.json.`);
-  }
-
-  if (translatedQuiz.result.profiles.length !== canonicalQuiz.result.profiles.length) {
-    throw new Error(`${fileName}: "result.profiles" must contain ${canonicalQuiz.result.profiles.length} entries to match en.json.`);
-  }
-
-  if (translatedQuiz.result.scoreDimensions.length !== canonicalQuiz.result.scoreDimensions.length) {
-    throw new Error(`${fileName}: "result.scoreDimensions" must contain ${canonicalQuiz.result.scoreDimensions.length} entries to match en.json.`);
-  }
-
-  if (translatedQuiz.questions.length !== canonicalQuiz.questions.length) {
-    throw new Error(`${fileName}: "questions" must contain ${canonicalQuiz.questions.length} entries to match en.json.`);
-  }
-
-  translatedQuiz.result.profiles.forEach((profile, index) => {
-    if (profile.minRatio !== canonicalQuiz.result.profiles[index].minRatio) {
-      throw new Error(`${fileName}: "result.profiles[${index}].minRatio" must match en.json.`);
-    }
-
-    if ((profile.id ?? "") !== (canonicalQuiz.result.profiles[index].id ?? "")) {
-      throw new Error(`${fileName}: "result.profiles[${index}].id" must match en.json.`);
+function sameStructure(localized: Quiz, source: Quiz, file: string) {
+  if (localized.questions.length !== source.questions.length || localized.stages.length !== source.stages.length) throw new Error(`${file}: structure must match en.json.`);
+  localized.questions.forEach((question, index) => {
+    const original = source.questions[index];
+    if (question.id !== original.id || question.presentation !== original.presentation || question.choices.length !== original.choices.length || question.stage !== original.stage || question.answerIndex !== original.answerIndex || JSON.stringify(question.icons) !== JSON.stringify(original.icons) || JSON.stringify(question.calibrationValues) !== JSON.stringify(original.calibrationValues) || JSON.stringify(question.choiceProfileIds) !== JSON.stringify(original.choiceProfileIds) || JSON.stringify(question.choiceWeights) !== JSON.stringify(original.choiceWeights)) {
+      throw new Error(`${file}: question ${index + 1} structure must match en.json.`);
     }
   });
-
-  translatedQuiz.result.scoreDimensions.forEach((dimension, index) => {
-    const canonicalDimension = canonicalQuiz.result.scoreDimensions[index];
-
-    if (dimension.categories.join("\u0000") !== canonicalDimension.categories.join("\u0000")) {
-      throw new Error(`${fileName}: "result.scoreDimensions[${index}].categories" must match en.json.`);
-    }
-  });
-
-  translatedQuiz.questions.forEach((question, index) => {
-    const canonicalQuestion = canonicalQuiz.questions[index];
-
-    if (question.choices.length !== canonicalQuestion.choices.length) {
-      throw new Error(`${fileName}: "questions[${index}].choices" must contain ${canonicalQuestion.choices.length} choices to match en.json.`);
-    }
-
-    if (question.answerIndex !== canonicalQuestion.answerIndex) {
-      throw new Error(`${fileName}: "questions[${index}].answerIndex" must match en.json.`);
-    }
-
-    if ((question.stage ?? 0) !== (canonicalQuestion.stage ?? 0)) {
-      throw new Error(`${fileName}: "questions[${index}].stage" must match en.json.`);
-    }
-
-    if (question.category !== canonicalQuestion.category) {
-      throw new Error(`${fileName}: "questions[${index}].category" must match en.json.`);
-    }
-
-    if ((question.choiceProfileIds ?? []).join("\u0000") !== (canonicalQuestion.choiceProfileIds ?? []).join("\u0000")) {
-      throw new Error(`${fileName}: "questions[${index}].choiceProfileIds" must match en.json.`);
-    }
-  });
-}
-
-function resolveLocale(locale?: string): SupportedLocale {
-  return locale && isSupportedLocale(locale) ? locale : getDefaultLocale();
 }
 
 export function getQuizLocales(slug: string) {
-  const quizDirectory = getQuizDirectory(slug);
-
-  if (!fs.existsSync(quizDirectory)) {
-    return [];
-  }
-
-  return fs
-    .readdirSync(quizDirectory)
-    .filter((fileName) => fileName.endsWith(".json"))
-    .map((fileName) => fileName.replace(/\.json$/, ""))
-    .filter((locale): locale is SupportedLocale => supportedLocaleValues.has(locale as SupportedLocale))
+  if (!fs.existsSync(directory(slug))) return [];
+  return fs.readdirSync(directory(slug))
+    .filter((file) => file.endsWith(".json") && file !== "quiz.json")
+    .map((file) => file.replace(/\.json$/, ""))
+    .filter((locale): locale is SupportedLocale => LOCALES.has(locale as SupportedLocale))
     .sort();
 }
 
-function hasLocaleQuiz(slug: string, locale: SupportedLocale) {
-  return fs.existsSync(path.join(getQuizDirectory(slug), `${locale}.json`));
+export function getQuizBySlug(slug: string, locale?: string, options: { includeFallback?: boolean } = {}) {
+  const safeLocale = locale && isSupportedLocale(locale) ? locale : getDefaultLocale();
+  if (!slugs().includes(slug)) return undefined;
+  if (!hasLocale(slug, safeLocale)) return options.includeFallback ? readQuiz(slug, getDefaultLocale()) : undefined;
+  const quiz = readQuiz(slug, safeLocale);
+  if (safeLocale !== getDefaultLocale()) sameStructure(quiz, readQuiz(slug, getDefaultLocale()), `${slug}/${safeLocale}.json`);
+  return quiz;
 }
 
-export function getAllQuizzes(locale?: string, options: GetAllQuizzesOptions = {}) {
-  const safeLocale = resolveLocale(locale);
-  const includeFallback = options.includeFallback ?? true;
-
-  return readQuizFolders().flatMap((slug) => {
-    if (!includeFallback && !hasLocaleQuiz(slug, safeLocale)) {
-      return [];
-    }
-
-    const quiz = getQuizBySlug(slug, locale);
-
-    if (!quiz) {
-      throw new Error(`${slug}: quiz folder could not be loaded.`);
-    }
-
-    return [quiz];
+export function getAllQuizzes(locale?: string, options: { includeFallback?: boolean } = {}) {
+  return slugs().flatMap((slug) => {
+    const quiz = getQuizBySlug(slug, locale, options);
+    return quiz ? [quiz] : [];
   });
-}
-
-export function getQuizBySlug(slug: string, locale?: string) {
-  const quizDirectory = getQuizDirectory(slug);
-
-  if (!fs.existsSync(quizDirectory) || !fs.statSync(quizDirectory).isDirectory()) {
-    return undefined;
-  }
-
-  assertCanonicalQuizFile(slug);
-
-  const safeLocale = resolveLocale(locale);
-  const canonicalQuiz = readAndValidateQuiz(slug, getDefaultLocale());
-
-  if (safeLocale === getDefaultLocale()) {
-    return canonicalQuiz;
-  }
-
-  const localizedPath = path.join(quizDirectory, `${safeLocale}.json`);
-
-  if (!fs.existsSync(localizedPath)) {
-    return canonicalQuiz;
-  }
-
-  const translatedQuiz = readAndValidateQuiz(slug, safeLocale);
-  assertTranslatedQuizStructure(translatedQuiz, canonicalQuiz, `${slug}/${safeLocale}.json`);
-
-  return translatedQuiz;
 }
