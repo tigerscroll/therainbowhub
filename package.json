@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/postprocess-html-lang.mjs",
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
     "lint": "tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs",
