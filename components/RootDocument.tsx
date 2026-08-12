@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-import type { SupportedLocale } from "@/lib/i18n";
+import { getLocaleDirection, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/siteConfig";
 
 type RootDocumentProps = {
@@ -10,8 +10,16 @@ type RootDocumentProps = {
 };
 
 export function RootDocument({ children, direction, locale }: RootDocumentProps) {
+  const localeDirections = Object.fromEntries(
+    getSupportedLocales().map((supportedLocale) => [supportedLocale, getLocaleDirection(supportedLocale)]),
+  );
+  const documentLocaleScript = `(function(){var locales=${JSON.stringify(localeDirections)};var segment=location.pathname.split('/').filter(Boolean)[0];var locale=Object.prototype.hasOwnProperty.call(locales,segment)?segment:${JSON.stringify(locale)};document.documentElement.lang=locale;document.documentElement.dir=locales[locale]||${JSON.stringify(direction)};}());`;
+
   return (
     <html dir={direction} lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: documentLocaleScript }} />
+      </head>
       <body suppressHydrationWarning>
         <Script
           referrerPolicy="no-referrer-when-downgrade"

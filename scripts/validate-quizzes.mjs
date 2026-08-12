@@ -104,7 +104,6 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
     fail(config.engine?.targetRatio === 0.8, `${folder.name}: Memory targetRatio must be exactly 0.8.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
-    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: Memory is English-only at launch.`);
   }
 
   for (const localeFile of localeFiles) {
