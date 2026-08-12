@@ -6,12 +6,12 @@ import en from "@/data/i18n/en.json";
 export type Translations = typeof en;
 export const localeOptions = [
   { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "fr", name: "French", flag: "🇫🇷" },
-  { code: "de", name: "German", flag: "🇩🇪" },
-  { code: "it", name: "Italian", flag: "🇮🇹" },
-  { code: "nl", name: "Dutch", flag: "🇳🇱" },
-  { code: "es", name: "Spanish", flag: "🇪🇸" },
-  { code: "pt", name: "Portuguese", flag: "🇵🇹" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
+  { code: "de", name: "Deutsch", flag: "🇩🇪" },
+  { code: "it", name: "Italiano", flag: "🇮🇹" },
+  { code: "nl", name: "Nederlands", flag: "🇳🇱" },
+  { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "pt", name: "Português", flag: "🇵🇹" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];

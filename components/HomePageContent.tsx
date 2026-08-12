@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
 
@@ -13,22 +15,23 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
     <div className="hub-home">
       <div className="hub-main">
         <section className="hub-hero">
-          <span aria-hidden="true" className="hub-hero__brain">🧠</span>
-          <div className="hub-hero__copy">
-            <div className="hub-hero__proof">
-              <span aria-hidden="true" className="hub-hero__proof-icon"><i /><i /><i /></span>
-              <strong>{translations.home.socialProof}</strong>
+          <div className="hub-hero__top">
+            <div className="hub-hero__copy">
+              <div className="hub-hero__proof">
+                <span aria-hidden="true" className="hub-hero__proof-icon"><i /><i /><i /></span>
+                <strong>{translations.home.socialProof}</strong>
+              </div>
+              <h1>
+                <span className="hub-hero__lead">{translations.home.headlinePrefix}</span>
+                <span>{translations.home.headlineHighlight}</span>
+              </h1>
+              <p>{translations.home.intro}</p>
             </div>
-            <h1>
-              <span className="hub-hero__lead">{translations.home.headlinePrefix}</span>
-              <span>{translations.home.headlineHighlight}</span>
-            </h1>
-            <p>{translations.home.intro}</p>
           </div>
           <div className="hub-hero__features" aria-label={translations.home.features.label}>
-            <HeroFeature icon="↯" title={translations.home.features.fastTitle} copy={translations.home.features.fastCopy} />
-            <HeroFeature icon="◎" title={translations.home.features.resultsTitle} copy={translations.home.features.resultsCopy} />
-            <HeroFeature icon="◆" title={translations.home.features.challengeTitle} copy={translations.home.features.challengeCopy} />
+            <HeroFeature icon="bolt" title={translations.home.features.fastTitle} copy={translations.home.features.fastCopy} />
+            <HeroFeature icon="target" title={translations.home.features.resultsTitle} copy={translations.home.features.resultsCopy} />
+            <HeroFeature icon="spark" title={translations.home.features.challengeTitle} copy={translations.home.features.challengeCopy} />
           </div>
         </section>
         {quizzes.length ? (
@@ -57,16 +60,30 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
   );
 }
 
-function HeroFeature({ copy, icon, title }: { copy: string; icon: string; title: string }) {
+function HeroFeature({ copy, icon, title }: { copy: string; icon: "bolt" | "spark" | "target"; title: string }) {
   return (
     <div className="hub-hero__feature">
-      <span aria-hidden="true">{icon}</span>
+      <span aria-hidden="true">
+        <FeatureIcon icon={icon} />
+      </span>
       <div>
         <strong>{title}</strong>
         <small>{copy}</small>
       </div>
     </div>
   );
+}
+
+function FeatureIcon({ icon }: { icon: "bolt" | "spark" | "target" }) {
+  if (icon === "bolt") {
+    return <svg viewBox="0 0 24 24"><path d="M13.2 2.8 5.8 13h5.1l-.2 8.2L18.2 11h-5.1l.1-8.2Z" /></svg>;
+  }
+
+  if (icon === "target") {
+    return <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /></svg>;
+  }
+
+  return <svg viewBox="0 0 24 24"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2Z" /><path d="m18.5 15 .8 2.7 2.7.8-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8.8-2.7Z" /></svg>;
 }
 
 function LinkCard({ href, image, imageAlt, label, summary, title }: {
@@ -78,7 +95,7 @@ function LinkCard({ href, image, imageAlt, label, summary, title }: {
   title: string;
 }) {
   return (
-    <a className="hub-quiz-card" href={href}>
+    <Link className="hub-quiz-card" href={href}>
       {image ? <img alt={imageAlt} src={image} /> : null}
       <div className="hub-quiz-card__body">
         <span className="hub-chip">{label}</span>
@@ -86,6 +103,6 @@ function LinkCard({ href, image, imageAlt, label, summary, title }: {
         <p>{summary}</p>
         <span aria-hidden="true" className="hub-quiz-card__arrow">→</span>
       </div>
-    </a>
+    </Link>
   );
 }
