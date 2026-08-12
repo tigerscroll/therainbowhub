@@ -129,6 +129,7 @@ for (const folder of folders) {
     ]));
     fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: IQ must support every site locale.`);
     fail(source.stages?.length === 10, `${folder.name}/en.json: IQ must contain ten rounds.`);
+    fail(/\b10\b/.test(source.landing?.intro ?? ""), `${folder.name}/en.json: IQ landing intro must use numeral 10.`);
     fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every IQ round must contain six questions.`);
     fail(sourceQuestions.length === 60, `${folder.name}/en.json: IQ must contain exactly 60 questions.`);
     fail(new Set(ids).size === 60 && ids.every((id) => typeof id === "string" && id.trim()), `${folder.name}/en.json: IQ needs 60 unique stable question IDs.`);
@@ -166,6 +167,7 @@ for (const folder of folders) {
     const localized = read(path.join(directory, localeFile));
     if (!localized) continue;
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
+    if (folder.name === "iq") fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: IQ landing intro must use numeral 10.`);
     if (config.engine?.checkpoint === "ai") {
       fail(localized.checkpoint?.reveals?.length === localized.stages?.length, `${folder.name}/${localeFile}: checkpoint reveals must match stage count.`);
       fail(localized.checkpoint?.finalChecklist?.length >= 3 && localized.checkpoint.finalChecklist.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);

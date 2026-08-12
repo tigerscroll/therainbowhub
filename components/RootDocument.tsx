@@ -11,7 +11,7 @@ type RootDocumentProps = {
 
 export function RootDocument({ children, direction, locale }: RootDocumentProps) {
   return (
-    <html dir={direction} lang={locale}>
+    <html dir={direction} lang={locale} suppressHydrationWarning>
       <head />
       <body suppressHydrationWarning>
         <Script
