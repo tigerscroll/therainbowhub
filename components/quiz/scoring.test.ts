@@ -114,6 +114,25 @@ test("Biology result profiles switch at every exact score boundary", () => {
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
 });
 
+test("Mechanic result profiles switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Master Diagnostician" },
+    { minRatio: 0.8, title: "The Workshop Natural" },
+    { minRatio: 0.7, title: "The Skilled Fault Finder" },
+    { minRatio: 0.6, title: "The Practical Problem-Solver" },
+    { minRatio: 0.5, title: "The Hands-On Learner" },
+    { minRatio: 0, title: "The Curious Car Owner" },
+  ];
+  const cases = [
+    [29, "The Curious Car Owner"], [30, "The Hands-On Learner"], [35, "The Hands-On Learner"],
+    [36, "The Practical Problem-Solver"], [41, "The Practical Problem-Solver"], [42, "The Skilled Fault Finder"],
+    [47, "The Skilled Fault Finder"], [48, "The Workshop Natural"], [53, "The Workshop Natural"],
+    [54, "The Master Diagnostician"], [60, "The Master Diagnostician"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+});
+
 test("80% target state distinguishes achieved, reachable and unreachable", () => {
   assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
   assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");
