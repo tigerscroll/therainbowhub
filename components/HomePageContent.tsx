@@ -27,11 +27,11 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
               </h1>
               <p>{translations.home.intro}</p>
             </div>
-          </div>
-          <div className="hub-hero__features" aria-label={translations.home.features.label}>
-            <HeroFeature icon="bolt" title={translations.home.features.fastTitle} copy={translations.home.features.fastCopy} />
-            <HeroFeature icon="target" title={translations.home.features.resultsTitle} copy={translations.home.features.resultsCopy} />
-            <HeroFeature icon="spark" title={translations.home.features.challengeTitle} copy={translations.home.features.challengeCopy} />
+            <div className="hub-hero__features" aria-label={translations.home.features.label}>
+              <HeroFeature icon="bolt" title={translations.home.features.fastTitle} copy={translations.home.features.fastCopy} />
+              <HeroFeature icon="target" title={translations.home.features.resultsTitle} copy={translations.home.features.resultsCopy} />
+              <HeroFeature icon="spark" title={translations.home.features.challengeTitle} copy={translations.home.features.challengeCopy} />
+            </div>
           </div>
         </section>
         {quizzes.length ? (

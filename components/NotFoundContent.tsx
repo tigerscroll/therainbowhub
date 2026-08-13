@@ -15,16 +15,16 @@ export function NotFoundContent({ locale = getDefaultLocale() }: { locale?: Supp
     <SiteShell currentPath={homePath} locale={locale} translations={translations}>
       <article className="not-found-page" aria-labelledby="not-found-title">
         <section className="not-found-hero">
+          <span className="not-found-hero__code">404</span>
           <div className="not-found-hero__mark" aria-hidden="true">
             <span>?</span>
           </div>
           <h1 id="not-found-title">{translations.error.notFoundTitle}</h1>
           <p>{translations.error.notFoundBody}</p>
-          <div className="hub-load-more">
-            <Link className="hub-load-more__button hub-load-more__button--plain" href={homePath}>
-              {translations.error.backHome}
-            </Link>
-          </div>
+          <Link className="not-found-hero__button" href={homePath} prefetch={false}>
+            <span>{translations.error.backHome}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
         </section>
       </article>
     </SiteShell>

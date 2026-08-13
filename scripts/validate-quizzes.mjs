@@ -265,7 +265,7 @@ for (const folder of folders) {
     const scored = sourceQuestions.filter((question) => Number.isInteger(question.correct));
     const fit = sourceQuestions.filter((question) => question.correct === undefined);
     const traits = new Set(config.engine?.match?.traits ?? []);
-    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: University must launch in English only.`);
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"]), `${folder.name}: University must support the complete seven-locale set.`);
     fail(config.engine?.scoring === "hybrid-match", `${folder.name}: University must use generic hybrid-match scoring.`);
     fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}: University needs ten rounds of six interactions.`);
     fail(sourceQuestions.length === 60 && scored.length === 42 && fit.length === 18, `${folder.name}: University needs 42 scored challenges and 18 fit decisions.`);

@@ -210,7 +210,11 @@ export type Quiz = {
   cardIcon: string;
   thumbnailUrl?: string;
   thumbnailAlt: string;
-  footer?: { aboutText: string; topicText?: string };
+  footer?: {
+    aboutText: string;
+    topicText?: string;
+    howToPlay?: { title: string; steps: string[] };
+  };
   landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[] };
   stages: string[];
   stageEncouragement: string[];
@@ -250,7 +254,11 @@ type QuizLocaleFile = {
   eyebrow?: string;
   summary: string;
   landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string };
-  about?: { body: string; disclaimer?: string };
+  about?: {
+    body: string;
+    disclaimer?: string;
+    howToPlay?: { title: string; steps: string[] };
+  };
   checkpoint?: QuizCheckpointCopy;
   results: {
     name: string;
@@ -687,6 +695,11 @@ function normalizeLocale(
     if (manifest.engine.derivedScore) text(value.results.score.derivedLabel, "results.score.derivedLabel", file);
     if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
   }
+  if (value.about?.howToPlay) {
+    text(value.about.howToPlay.title, "about.howToPlay.title", file);
+    const steps = strings(value.about.howToPlay.steps, "about.howToPlay.steps", file);
+    if (steps.length < 2 || steps.length > 5) throw new Error(`${file}: about.howToPlay needs two to five steps.`);
+  }
 
   return {
     slug: manifest.slug,
@@ -721,6 +734,7 @@ function normalizeLocale(
     footer: value.about ? {
       topicText: value.about.body,
       aboutText: value.about.disclaimer ?? value.about.body,
+      howToPlay: value.about.howToPlay,
     } : undefined,
     landing: {
       quickStartText: value.landing?.intro ?? summary,

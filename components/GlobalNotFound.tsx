@@ -44,14 +44,14 @@ export function GlobalNotFound() {
       <main className="site-content">
         <article className="not-found-page" aria-labelledby="not-found-title">
           <section className="not-found-hero">
-            <div className="not-found-hero__mark" aria-hidden="true">?</div>
+            <span className="not-found-hero__code">404</span>
+            <div className="not-found-hero__mark" aria-hidden="true"><span>?</span></div>
             <h1 id="not-found-title">{copy.error.notFoundTitle}</h1>
             <p>{copy.error.notFoundBody}</p>
-            <div className="hub-load-more">
-              <a className="hub-load-more__button hub-load-more__button--plain" href={homePath}>
-                {copy.error.backHome}
-              </a>
-            </div>
+            <a className="not-found-hero__button" href={homePath}>
+              <span>{copy.error.backHome}</span>
+              <span aria-hidden="true">→</span>
+            </a>
           </section>
         </article>
       </main>

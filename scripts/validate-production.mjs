@@ -74,6 +74,7 @@ requireFile("public/og-default.svg");
 requireFile("app/robots.ts");
 requireFile("app/sitemap.ts");
 requireFile("app/not-found.tsx");
+requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
 requireFile("scripts/prepare-quiz-assets.mjs");
 
