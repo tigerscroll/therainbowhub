@@ -237,6 +237,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
         tieBreaks: quiz.engine.tieBreaks,
+        match: quiz.engine.match,
       },
       stages: quiz.stages,
       questions: quiz.questions.map((question) => [
@@ -530,6 +531,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "results") {
     const estimate = quiz.result.estimate;
     const scoreCopy = quiz.result.score;
+    const matchCopy = quiz.result.match;
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
     return (
@@ -539,9 +541,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           {quiz.theme.artwork?.icon ?? quiz.cardIcon}
         </div>
         <span className="quiz-engine__eyebrow">{hasDerivedScore ? scoreCopy?.derivedLabel : estimate?.eyebrow ?? quiz.result.profileName}</span>
+        {matchCopy ? <div className="quiz-engine__match-name">{result.profile.title}</div> : null}
         {result.estimatedAge !== undefined ? <div className="quiz-engine__result-age"><strong>{result.estimatedAge}</strong><span>{estimate?.ageSuffix}</span></div> : null}
-        {hasDerivedScore ? <div className="quiz-engine__result-derived"><strong>{result.derivedScore}</strong></div> : scoreCopy?.showPercentage !== false ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
-        <h2>{hasDerivedScore ? result.profile.title : scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
+        {hasDerivedScore ? <div className="quiz-engine__result-derived"><strong>{result.derivedScore}</strong></div> : matchCopy ? null : scoreCopy?.showPercentage !== false ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
+        <h2>{matchCopy ? result.profile.tier : hasDerivedScore ? result.profile.title : scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
+        {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
         {estimate ? (
@@ -552,6 +556,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </dl>
         ) : !scoreCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
         <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+        {matchCopy ? (
+          <dl className="quiz-engine__result-signals quiz-engine__result-signals--match">
+            <div><dt>{matchCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
+            <div><dt>{matchCopy.preferredStyle}</dt><dd>{result.preferredStyle}</dd></div>
+            <div><dt>{matchCopy.alternative}</dt><dd>{result.alternativeMatch}</dd></div>
+            <div><dt>{matchCopy.wildcard}</dt><dd>{result.wildcardMatch}<small>{matchCopy.wildcardTemplate.replace("{value}", result.wildcardReason ?? "—")}</small></dd></div>
+            <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
+          </dl>
+        ) : null}
         {scoreCopy ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
             <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
@@ -579,7 +592,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {estimate || scoreCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer}</p> : null}
+        {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
         <button className="quiz-engine__secondary" onClick={restartQuiz} type="button">
           {translations.quiz.restartTest}
         </button>

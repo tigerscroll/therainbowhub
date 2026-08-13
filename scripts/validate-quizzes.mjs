@@ -31,13 +31,13 @@ function validateResultProfiles(value, scoring, location) {
     for (const key of ["tier", "title", "copy"]) {
       fail(typeof profile?.[key] === "string" && Boolean(profile[key].trim()), `${location}: result profile ${index + 1} needs ${key}.`);
     }
-    if (scoring === "weighted-profile") {
-      fail(typeof profile?.id === "string" && Boolean(profile.id.trim()), `${location}: weighted result profile ${index + 1} needs an id.`);
+    if (["weighted-profile", "hybrid-match"].includes(scoring)) {
+      fail(typeof profile?.id === "string" && Boolean(profile.id.trim()), `${location}: profile or match result ${index + 1} needs an id.`);
     } else {
       fail(typeof profile?.min === "number" && profile.min >= 0 && profile.min <= 1, `${location}: result profile ${index + 1} needs a min ratio from zero to one.`);
     }
   });
-  if (scoring === "weighted-profile") {
+  if (["weighted-profile", "hybrid-match"].includes(scoring)) {
     const ids = profiles.map((profile) => profile?.id);
     fail(new Set(ids).size === ids.length, `${location}: weighted result profile ids must be unique.`);
   } else {
@@ -256,6 +256,50 @@ for (const folder of folders) {
     fail(finalSpecimen.filter((question) => question.reasoningSteps >= 2).length >= 3, `${folder.name}/en.json: at least three Final Specimen questions need two-step reasoning.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Biology profile thresholds are incorrect.`);
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Biology must lead its result with the percentage.`);
+  }
+  if (folder.name === "university") {
+    const expectedCategories = Object.fromEntries([
+      "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",
+    ].map((category) => [category, 7]));
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
+    const scored = sourceQuestions.filter((question) => Number.isInteger(question.correct));
+    const fit = sourceQuestions.filter((question) => question.correct === undefined);
+    const traits = new Set(config.engine?.match?.traits ?? []);
+    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: University must launch in English only.`);
+    fail(config.engine?.scoring === "hybrid-match", `${folder.name}: University must use generic hybrid-match scoring.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}: University needs ten rounds of six interactions.`);
+    fail(sourceQuestions.length === 60 && scored.length === 42 && fit.length === 18, `${folder.name}: University needs 42 scored challenges and 18 fit decisions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}: every academic category must appear exactly seven times.`);
+    fail(scored.every((question) => Array.isArray(question.answers) && question.answers.length >= 3 && question.answers.length <= 5 && question.correct >= 0 && question.correct < question.answers.length), `${folder.name}: scored challenges need 3–5 choices and one valid answer.`);
+    const correctPositionCounts = scored.reduce((counts, question) => {
+      counts[question.correct] = (counts[question.correct] ?? 0) + 1;
+      return counts;
+    }, Array(4).fill(0));
+    fail(correctPositionCounts.every((count) => count >= 9 && count <= 11), `${folder.name}: correct-answer positions must remain balanced across A–D.`);
+    for (const question of fit) {
+      fail(question.answers && !Array.isArray(question.answers), `${folder.name}: fit question ${question.id} needs weighted answer choices.`);
+      for (const weights of Object.values(question.answers ?? {})) {
+        const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
+        fail(entries.length >= 2 && entries.every(([trait, weight]) => traits.has(trait) && typeof weight === "number" && weight >= 0) && Math.abs(entries.reduce((sum, [, weight]) => sum + weight, 0) - 1) < 1e-9, `${folder.name}: every fit choice needs soft known-trait weights totalling 1.`);
+      }
+    }
+    const primaryExposure = Object.fromEntries([...traits].map((trait) => [trait, 0]));
+    const traitMass = Object.fromEntries([...traits].map((trait) => [trait, 0]));
+    for (const question of fit) for (const weights of Object.values(question.answers ?? {})) {
+      const primary = Object.entries(weights).sort((a, b) => b[1] - a[1])[0]?.[0];
+      if (primary in primaryExposure) primaryExposure[primary] += 1;
+      for (const [trait, weight] of Object.entries(weights)) traitMass[trait] += weight;
+    }
+    const totalTraitMass = Object.values(traitMass).reduce((sum, value) => sum + value, 0);
+    fail(Object.values(primaryExposure).every((count) => count >= 9 && count <= 15), `${folder.name}: primary learning-style opportunities must remain balanced.`);
+    fail(Object.values(traitMass).every((mass) => mass / totalTraitMass >= .14 && mass / totalTraitMass <= .19), `${folder.name}: total learning-style scoring mass must remain balanced.`);
+    const sprint = source.stages[7].questions;
+    fail(sprint.every((question) => question.delay === 350) && sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}: Global Campus Sprint needs six 350ms compact prompts.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}: only Global Campus Sprint may override the 450ms default.`);
+    fail(source.stages[9].questions.filter((question) => question.correct !== undefined && question.reasoningSteps >= 2).length >= 3, `${folder.name}: Final Admissions Board needs at least three two-step scored questions.`);
+    fail(config.engine?.advanceDelayMs === 450 && config.engine?.rewarded?.attempts === 3, `${folder.name}: University timing and rewarded fallback configuration are incorrect.`);
+    fail(config.engine?.match?.academicWeight === .55 && config.engine?.match?.styleWeight === .45, `${folder.name}: University match blend must be 55% academic and 45% style.`);
+    fail(config.engine?.match?.candidates?.length === 10 && source.results?.profiles?.length === 10, `${folder.name}: University needs ten match outcomes.`);
   }
 
   for (const localeFile of localeFiles) {

@@ -1,0 +1,282 @@
+{
+  "slug": "university",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "hybrid-match",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.75,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "match": {
+      "academicWeight": 0.55,
+      "styleWeight": 0.45,
+      "categories": [
+        "verbal_reasoning",
+        "numerical_reasoning",
+        "scientific_reasoning",
+        "critical_thinking",
+        "worldwide_knowledge",
+        "practical_problem_solving"
+      ],
+      "traits": [
+        "tutorial_dialogue",
+        "structured_rigour",
+        "inventive_building",
+        "leadership_breadth",
+        "independent_research",
+        "global_application"
+      ],
+      "candidates": [
+        {
+          "id": "oxford",
+          "academicWeights": {
+            "verbal_reasoning": 1,
+            "numerical_reasoning": 0.35,
+            "scientific_reasoning": 0.35,
+            "critical_thinking": 1,
+            "worldwide_knowledge": 0.7,
+            "practical_problem_solving": 0.35
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 1,
+            "structured_rigour": 0.5,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.2,
+            "independent_research": 0.75,
+            "global_application": 0.2
+          }
+        },
+        {
+          "id": "cambridge",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 1,
+            "scientific_reasoning": 1,
+            "critical_thinking": 0.7,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 0.35
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.5,
+            "structured_rigour": 1,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.2,
+            "independent_research": 0.75,
+            "global_application": 0.2
+          }
+        },
+        {
+          "id": "harvard",
+          "academicWeights": {
+            "verbal_reasoning": 1,
+            "numerical_reasoning": 0.35,
+            "scientific_reasoning": 0.35,
+            "critical_thinking": 0.35,
+            "worldwide_knowledge": 1,
+            "practical_problem_solving": 0.7
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.5,
+            "structured_rigour": 0.2,
+            "inventive_building": 0.2,
+            "leadership_breadth": 1,
+            "independent_research": 0.2,
+            "global_application": 0.75
+          }
+        },
+        {
+          "id": "mit",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 1,
+            "scientific_reasoning": 0.7,
+            "critical_thinking": 0.35,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 1
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.2,
+            "structured_rigour": 0.75,
+            "inventive_building": 1,
+            "leadership_breadth": 0.2,
+            "independent_research": 0.5,
+            "global_application": 0.2
+          }
+        },
+        {
+          "id": "stanford",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 0.35,
+            "scientific_reasoning": 0.7,
+            "critical_thinking": 1,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 1
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.2,
+            "structured_rigour": 0.2,
+            "inventive_building": 1,
+            "leadership_breadth": 0.75,
+            "independent_research": 0.2,
+            "global_application": 0.5
+          }
+        },
+        {
+          "id": "yale",
+          "academicWeights": {
+            "verbal_reasoning": 1,
+            "numerical_reasoning": 0.35,
+            "scientific_reasoning": 0.35,
+            "critical_thinking": 0.7,
+            "worldwide_knowledge": 1,
+            "practical_problem_solving": 0.35
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 1,
+            "structured_rigour": 0.2,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.75,
+            "independent_research": 0.2,
+            "global_application": 0.5
+          }
+        },
+        {
+          "id": "princeton",
+          "academicWeights": {
+            "verbal_reasoning": 0.7,
+            "numerical_reasoning": 1,
+            "scientific_reasoning": 0.35,
+            "critical_thinking": 1,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 0.35
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.5,
+            "structured_rigour": 0.75,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.2,
+            "independent_research": 1,
+            "global_application": 0.2
+          }
+        },
+        {
+          "id": "imperial",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 0.7,
+            "scientific_reasoning": 1,
+            "critical_thinking": 0.35,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 1
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.2,
+            "structured_rigour": 0.75,
+            "inventive_building": 0.5,
+            "leadership_breadth": 0.2,
+            "independent_research": 0.2,
+            "global_application": 1
+          }
+        },
+        {
+          "id": "eth_zurich",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 1,
+            "scientific_reasoning": 1,
+            "critical_thinking": 0.35,
+            "worldwide_knowledge": 0.35,
+            "practical_problem_solving": 0.7
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.2,
+            "structured_rigour": 1,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.2,
+            "independent_research": 0.75,
+            "global_application": 0.5
+          }
+        },
+        {
+          "id": "nus",
+          "academicWeights": {
+            "verbal_reasoning": 0.35,
+            "numerical_reasoning": 0.35,
+            "scientific_reasoning": 0.7,
+            "critical_thinking": 0.35,
+            "worldwide_knowledge": 1,
+            "practical_problem_solving": 1
+          },
+          "styleWeights": {
+            "tutorial_dialogue": 0.2,
+            "structured_rigour": 0.5,
+            "inventive_building": 0.2,
+            "leadership_breadth": 0.75,
+            "independent_research": 0.2,
+            "global_application": 1
+          }
+        }
+      ]
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-13",
+    "duration": "8 min",
+    "difficulty": "Expert",
+    "icon": "🎓"
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#eee9df",
+      "pageAlt": "#ddd3c3",
+      "surface": "#fffdf8",
+      "surfaceRaised": "#f7f2e8",
+      "text": "#12203a",
+      "muted": "#667080",
+      "primary": "#172844",
+      "primaryText": "#ffffff",
+      "border": "#c8baa5",
+      "correct": "#2b745d",
+      "incorrect": "#a1444a"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "22px",
+      "buttonRadius": "14px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #101d34, #1c3152)",
+      "text": "#fffdf8",
+      "border": "#b38a4a",
+      "shadow": "0 8px 24px rgba(15,29,52,.2)"
+    },
+    "artwork": {
+      "icon": "🎓"
+    }
+  }
+}

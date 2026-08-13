@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Quiz, QuizEstimateConfig } from "../../lib/quizzes.ts";
-import { answerConsistencyFromShares, calculateDerivedScore, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreQuiz } from "./scoring.ts";
+import { answerConsistencyFromShares, calculateDerivedScore, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreHybridMatch, scoreQuiz } from "./scoring.ts";
 
 const estimate: QuizEstimateConfig = {
   baseAge: 84,
@@ -208,4 +208,46 @@ test("category ranking uses percentage before harder-correct tie-breaking when d
   assert.deepEqual(result.dimensionScores, { "Short category": 100, "Long category": 78 });
   assert.equal(result.strongestSignal, "Short category");
   assert.equal(result.weakestSignal, "Long category");
+});
+
+test("hybrid matching normalises academic weights and keeps fit choices out of the raw score", () => {
+  const quiz = {
+    slug: "match-test",
+    engine: {
+      scoring: { type: "hybrid-match" },
+      match: {
+        academicWeight: .55,
+        styleWeight: .45,
+        categories: ["words", "numbers"],
+        traits: ["debate", "build"],
+        candidates: [
+          { id: "scholar", academicWeights: { words: 10, numbers: 1 }, styleWeights: { debate: 1, build: .2 } },
+          { id: "maker", academicWeights: { words: 1, numbers: 10 }, styleWeights: { debate: .2, build: 1 } },
+          { id: "balanced", academicWeights: { words: 1, numbers: 1 }, styleWeights: { debate: .6, build: .6 } },
+        ],
+      },
+    },
+    questions: [
+      { id: "word", answerIndex: 0, category: "words", stage: 0 },
+      { id: "number", answerIndex: 0, category: "numbers", stage: 0 },
+      { id: "fit", choiceWeights: [{ debate: .7, build: .3 }, { debate: .2, build: .8 }], stage: 0 },
+    ],
+    stages: ["Round"],
+    result: {
+      profiles: [
+        { id: "scholar", minRatio: 0, title: "Oxford", tier: "Scholar" },
+        { id: "maker", minRatio: 0, title: "MIT", tier: "Maker" },
+        { id: "balanced", minRatio: 0, title: "NUS", tier: "Balanced" },
+      ],
+      scoreDimensions: [{ label: "Words", categories: ["words"] }, { label: "Numbers", categories: ["numbers"] }],
+      match: { traitLabels: { debate: "Debate", build: "Building" } },
+    },
+  } as Quiz;
+  const result = scoreHybridMatch(quiz, { word: 0, number: 1, fit: 0 });
+  assert.equal(result.score, 1);
+  assert.equal(result.total, 2);
+  assert.equal(result.profile.id, "scholar");
+  assert.equal(result.preferredStyle, "Debate");
+  assert.notEqual(result.alternativeMatch, result.profile.title);
+  assert.notEqual(result.wildcardMatch, result.profile.title);
 });

@@ -14,7 +14,7 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-export type QuizScoring = { type: "correct-answer" | "weighted-profile" };
+export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybrid-match" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
 export type QuizDerivedScoreConfig = {
@@ -24,6 +24,18 @@ export type QuizDerivedScoreConfig = {
 export type QuizTieBreakConfig = {
   categories: "harder-correct";
   bestRound: "later";
+};
+export type QuizMatchCandidate = {
+  id: string;
+  academicWeights: Record<string, number>;
+  styleWeights: Record<string, number>;
+};
+export type QuizMatchConfig = {
+  academicWeight: number;
+  styleWeight: number;
+  categories: string[];
+  traits: string[];
+  candidates: QuizMatchCandidate[];
 };
 export type QuizQuestionVisual = {
   items: string[];
@@ -59,6 +71,7 @@ export type QuizEngineConfig = {
   estimate?: QuizEstimateConfig;
   derivedScore?: QuizDerivedScoreConfig;
   tieBreaks?: QuizTieBreakConfig;
+  match?: QuizMatchConfig;
 };
 
 export type QuizQuestion = {
@@ -169,6 +182,18 @@ export type QuizScoreResultCopy = {
   derivedLabel?: string;
   showPercentage?: boolean;
 };
+export type QuizMatchResultCopy = {
+  academicChallenge: string;
+  correctLabel: string;
+  strongest: string;
+  preferredStyle: string;
+  alternative: string;
+  wildcard: string;
+  wildcardTemplate: string;
+  bestRound: string;
+  disclaimer: string;
+  traitLabels: Record<string, string>;
+};
 
 export type Quiz = {
   slug: string;
@@ -190,7 +215,7 @@ export type Quiz = {
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
-  result: QuizResultConfig & { score?: QuizScoreResultCopy };
+  result: QuizResultConfig & { score?: QuizScoreResultCopy; match?: QuizMatchResultCopy };
   questions: QuizQuestion[];
 };
 
@@ -208,6 +233,7 @@ type QuizManifest = {
     estimate?: QuizEstimateConfig;
     derivedScore?: QuizDerivedScoreConfig;
     tieBreaks?: QuizTieBreakConfig;
+    match?: QuizMatchConfig;
   };
   listing: {
     thumbnail?: string;
@@ -239,6 +265,7 @@ type QuizLocaleFile = {
     dimensions?: Array<{ label: string; profiles?: string[]; categories?: string[] }>;
     estimate?: QuizResultConfig["estimate"];
     score?: QuizScoreResultCopy;
+    match?: QuizMatchResultCopy;
   };
   stages: Array<{
     title: string;
@@ -324,7 +351,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["linear", "staged"].includes(String(engine.flow))) throw new Error(`${file}: invalid flow.`);
   if (!["automatic", "manual"].includes(String(engine.advance))) throw new Error(`${file}: invalid advance mode.`);
   if (!["instant", "selection-only", "after-results"].includes(String(engine.feedback))) throw new Error(`${file}: invalid feedback mode.`);
-  if (!["correct-answer", "weighted-profile"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
+  if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 600) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 600.`);
@@ -350,6 +377,29 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const rawTieBreaks = object(engine.tieBreaks, "engine.tieBreaks", file);
     if (rawTieBreaks.categories !== "harder-correct" || rawTieBreaks.bestRound !== "later") throw new Error(`${file}: invalid tie-break configuration.`);
     tieBreaks = { categories: "harder-correct", bestRound: "later" };
+  }
+  let match: QuizMatchConfig | undefined;
+  if (engine.match !== undefined) {
+    const rawMatch = object(engine.match, "engine.match", file);
+    const academicWeight = Number(rawMatch.academicWeight);
+    const styleWeight = Number(rawMatch.styleWeight);
+    if (![academicWeight, styleWeight].every((weight) => Number.isFinite(weight) && weight > 0) || Math.abs(academicWeight + styleWeight - 1) > 1e-9) {
+      throw new Error(`${file}: match academicWeight and styleWeight must be positive and total 1.`);
+    }
+    const categories = strings(rawMatch.categories, "engine.match.categories", file);
+    const traits = strings(rawMatch.traits, "engine.match.traits", file);
+    if (new Set(categories).size !== categories.length || new Set(traits).size !== traits.length) throw new Error(`${file}: match categories and traits must be unique.`);
+    if (!Array.isArray(rawMatch.candidates) || rawMatch.candidates.length < 2) throw new Error(`${file}: match needs at least two candidates.`);
+    const candidates = rawMatch.candidates.map((item, index) => {
+      const candidate = object(item, `engine.match.candidates[${index}]`, file);
+      const academicWeights = object(candidate.academicWeights, `engine.match.candidates[${index}].academicWeights`, file);
+      const styleWeights = object(candidate.styleWeights, `engine.match.candidates[${index}].styleWeights`, file);
+      if (Object.keys(academicWeights).some((key) => !categories.includes(key)) || Object.keys(styleWeights).some((key) => !traits.includes(key))) throw new Error(`${file}: match candidate ${index + 1} references an unknown category or trait.`);
+      if (categories.some((key) => typeof academicWeights[key] !== "number" || Number(academicWeights[key]) <= 0) || traits.some((key) => typeof styleWeights[key] !== "number" || Number(styleWeights[key]) <= 0)) throw new Error(`${file}: match candidate ${index + 1} must have positive weights for every category and trait.`);
+      return { id: text(candidate.id, `engine.match.candidates[${index}].id`, file), academicWeights: academicWeights as Record<string, number>, styleWeights: styleWeights as Record<string, number> };
+    });
+    if (new Set(candidates.map((candidate) => candidate.id)).size !== candidates.length) throw new Error(`${file}: match candidate ids must be unique.`);
+    match = { academicWeight, styleWeight, categories, traits, candidates };
   }
   if (engine.rewarded !== undefined) {
     const rewarded = object(engine.rewarded, "engine.rewarded", file);
@@ -383,13 +433,15 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   const slug = text(raw.slug, "slug", file);
   if (!SLUG_PATTERN.test(slug)) throw new Error(`${file}: slug must use lowercase URL-safe words separated by hyphens.`);
   if (RESERVED_SLUGS.has(slug)) throw new Error(`${file}: slug ${slug} is reserved by site routing.`);
-  if (engine.scoring === "weighted-profile" && derivedScore) throw new Error(`${file}: derivedScore is only supported by correct-answer quizzes.`);
-  if (engine.scoring === "weighted-profile" && engine.targetRatio !== undefined) throw new Error(`${file}: targetRatio is only supported by correct-answer quizzes.`);
-  if (engine.scoring === "correct-answer" && estimate) throw new Error(`${file}: estimate is only supported by weighted-profile quizzes.`);
-  if (engine.scoring !== "correct-answer" && tieBreaks) throw new Error(`${file}: tieBreaks are only supported by correct-answer quizzes.`);
+  if (engine.scoring !== "correct-answer" && derivedScore) throw new Error(`${file}: derivedScore is only supported by correct-answer quizzes.`);
+  if (engine.scoring === "weighted-profile" && engine.targetRatio !== undefined) throw new Error(`${file}: targetRatio is only supported by scored quizzes.`);
+  if (engine.scoring !== "weighted-profile" && estimate) throw new Error(`${file}: estimate is only supported by weighted-profile quizzes.`);
+  if (!["correct-answer", "hybrid-match"].includes(String(engine.scoring)) && tieBreaks) throw new Error(`${file}: tieBreaks are only supported by scored quizzes.`);
+  if (engine.scoring === "hybrid-match" && !match) throw new Error(`${file}: hybrid-match scoring needs engine.match.`);
+  if (engine.scoring !== "hybrid-match" && match) throw new Error(`${file}: engine.match is only supported by hybrid-match scoring.`);
   return {
     slug,
-    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks } as QuizManifest["engine"],
+    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -490,6 +542,7 @@ function normalizeLocale(
       const presentation = rawQuestion.presentation ?? "text";
       if (!["text", "icons", "scale", "memory-cue", "sequence", "grid", "code", "spatial"].includes(presentation)) throw new Error(`${file}: question ${index + 1} has an invalid presentation.`);
       const isKnowledgeQuiz = manifest.engine.scoring === "correct-answer";
+      const isHybridQuiz = manifest.engine.scoring === "hybrid-match";
       const isMemoryCue = presentation === "memory-cue";
       let study: QuizStudyCue | undefined;
       if (rawQuestion.study) {
@@ -516,6 +569,8 @@ function normalizeLocale(
       if (isMemoryCue && (!rawQuestion.memoryItems || rawQuestion.memoryItems.length < 3 || rawQuestion.memoryItems.length > 4)) throw new Error(`${file}: memory cue ${index + 1} needs three or four items.`);
       if (!isMemoryCue && (!rawQuestion.answers || typeof rawQuestion.answers !== "object")) throw new Error(`${file}: question ${index + 1} needs answers.`);
       if (isKnowledgeQuiz && !isMemoryCue && !Array.isArray(rawQuestion.answers)) throw new Error(`${file}: knowledge question ${index + 1} needs an answer array.`);
+      if (isHybridQuiz && !isMemoryCue && rawQuestion.correct !== undefined && !Array.isArray(rawQuestion.answers)) throw new Error(`${file}: hybrid scored question ${index + 1} needs an answer array.`);
+      if (isHybridQuiz && !isMemoryCue && rawQuestion.correct === undefined && Array.isArray(rawQuestion.answers)) throw new Error(`${file}: hybrid fit question ${index + 1} needs weighted answers.`);
       const answerEntries = isMemoryCue ? [[text(rawQuestion.continueLabel, `questions[${index}].continueLabel`, file), null] as const] : Array.isArray(rawQuestion.answers)
         ? rawQuestion.answers.map((answer) => [text(answer, `questions[${index}].answers`, file), null] as const)
         : Object.entries(rawQuestion.answers ?? {});
@@ -528,6 +583,15 @@ function normalizeLocale(
       }
       if (!isKnowledgeQuiz && !isMemoryCue && !Array.isArray(rawQuestion.answers) && answerEntries.some(([, meaning]) => typeof meaning !== "string" && (!meaning || typeof meaning !== "object"))) {
         throw new Error(`${file}: weighted question ${index + 1} needs a profile id or weight map for every answer.`);
+      }
+      if (isHybridQuiz && rawQuestion.correct === undefined) {
+        const traits = new Set(manifest.engine.match?.traits ?? []);
+        weights.forEach((weightMap, choiceIndex) => {
+          const entries = Object.entries(weightMap);
+          if (!entries.length || entries.some(([trait, weight]) => !traits.has(trait) || typeof weight !== "number" || !Number.isFinite(weight) || weight < 0) || Math.abs(entries.reduce((sum, [, weight]) => sum + weight, 0) - 1) > 1e-9) {
+            throw new Error(`${file}: hybrid fit question ${index + 1} answer ${choiceIndex + 1} needs known non-negative trait weights totalling 1.`);
+          }
+        });
       }
       if (presentation === "icons" && (!rawQuestion.icons || rawQuestion.icons.length !== choices.length)) throw new Error(`${file}: icon question ${index + 1} needs one icon per answer.`);
       if (presentation === "scale" && choices.length !== 5) throw new Error(`${file}: scale question ${index + 1} needs five stops.`);
@@ -587,8 +651,8 @@ function normalizeLocale(
     copy: text(profile.copy, `results.profiles[${index}].copy`, file),
     percentile: profile.label ?? profile.tier,
   }));
-  if (manifest.engine.scoring === "weighted-profile" && profiles.some((profile) => !profile.id)) {
-    throw new Error(`${file}: weighted result profiles need ids.`);
+  if (["weighted-profile", "hybrid-match"].includes(manifest.engine.scoring) && profiles.some((profile) => !profile.id)) {
+    throw new Error(`${file}: profile and match result profiles need ids.`);
   }
   const profileIds = new Set(profiles.flatMap((profile) => profile.id ? [profile.id] : []));
   if (manifest.engine.scoring === "weighted-profile") {
@@ -606,6 +670,16 @@ function normalizeLocale(
         if (!profileIds.has(profileId)) throw new Error(`${file}: question ${index + 1} references unknown profile ${profileId}.`);
       });
     });
+  }
+  if (manifest.engine.scoring === "hybrid-match") {
+    const candidateIds = manifest.engine.match?.candidates.map((candidate) => candidate.id) ?? [];
+    if (JSON.stringify(profiles.map((profile) => profile.id)) !== JSON.stringify(candidateIds)) throw new Error(`${file}: hybrid result profile ids must match candidate ids in configured order.`);
+    const matchCopy = value.results.match;
+    if (!matchCopy) throw new Error(`${file}: hybrid-match results need match copy.`);
+    (["academicChallenge", "correctLabel", "strongest", "preferredStyle", "alternative", "wildcard", "wildcardTemplate", "bestRound", "disclaimer"] as const)
+      .forEach((key) => text(matchCopy[key], `results.match.${key}`, file));
+    const traitLabels = object(matchCopy.traitLabels, "results.match.traitLabels", file);
+    if (manifest.engine.match?.traits.some((trait) => typeof traitLabels[trait] !== "string" || !String(traitLabels[trait]).trim())) throw new Error(`${file}: results.match.traitLabels must cover every configured trait.`);
   }
   if (manifest.engine.scoring === "correct-answer" && value.results.score) {
     (["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer"] as const)
@@ -630,6 +704,7 @@ function normalizeLocale(
       estimate: manifest.engine.estimate,
       derivedScore: manifest.engine.derivedScore,
       tieBreaks: manifest.engine.tieBreaks,
+      match: manifest.engine.match,
     },
     theme,
     customCss,
@@ -666,6 +741,7 @@ function normalizeLocale(
       })),
       estimate: value.results.estimate,
       score: value.results.score,
+      match: value.results.match,
     },
     questions,
   };

@@ -17,6 +17,10 @@ export type QuizScore = {
   derivedScore?: number;
   strongestSignal?: string;
   wildcard?: string;
+  alternativeMatch?: string;
+  wildcardMatch?: string;
+  wildcardReason?: string;
+  preferredStyle?: string;
   weakestSignal?: string;
   bestStage?: string;
   percentage: number;
@@ -229,9 +233,89 @@ function scoreWeightedProfile(quiz: Quiz, answers: QuizAnswers): QuizScore {
   };
 }
 
+function cosineSimilarity(left: Record<string, number>, right: Record<string, number>, keys: string[]) {
+  const dot = keys.reduce((sum, key) => sum + (left[key] ?? 0) * (right[key] ?? 0), 0);
+  const leftMagnitude = Math.sqrt(keys.reduce((sum, key) => sum + (left[key] ?? 0) ** 2, 0));
+  const rightMagnitude = Math.sqrt(keys.reduce((sum, key) => sum + (right[key] ?? 0) ** 2, 0));
+  return leftMagnitude && rightMagnitude ? dot / (leftMagnitude * rightMagnitude) : 0;
+}
+
+export function scoreHybridMatch(quiz: Quiz, answers: QuizAnswers): QuizScore {
+  const config = quiz.engine.match;
+  if (!config) throw new Error(`${quiz.slug}: hybrid-match scoring needs match configuration.`);
+  const scored = quiz.questions.filter((question) => question.answerIndex !== undefined);
+  const answeredScored = scored.filter((question) => answers[question.id] !== undefined);
+  const score = answeredScored.filter((question) => answers[question.id] === question.answerIndex).length;
+  const ratio = scored.length ? score / scored.length : 0;
+  const categoryAccuracy = Object.fromEntries(config.categories.map((category) => {
+    const questions = scored.filter((question) => question.category === category);
+    const correct = questions.filter((question) => answers[question.id] === question.answerIndex).length;
+    return [category, questions.length ? correct / questions.length : 0];
+  }));
+  const styleVector: Record<string, number> = Object.fromEntries(config.traits.map((trait) => [trait, 0]));
+  quiz.questions.filter((question) => question.answerIndex === undefined).forEach((question) => {
+    const selected = answers[question.id];
+    if (selected === undefined) return;
+    Object.entries(question.choiceWeights?.[selected] ?? {}).forEach(([trait, weight]) => {
+      styleVector[trait] = (styleVector[trait] ?? 0) + weight;
+    });
+  });
+  const ranked = config.candidates.map((candidate, order) => {
+    const academicWeightTotal = config.categories.reduce((sum, category) => sum + candidate.academicWeights[category], 0);
+    const academicMatch = config.categories.reduce((sum, category) => sum + categoryAccuracy[category] * candidate.academicWeights[category], 0) / academicWeightTotal;
+    const styleMatch = cosineSimilarity(styleVector, candidate.styleWeights, config.traits);
+    return { ...candidate, order, academicMatch, styleMatch, finalMatch: academicMatch * config.academicWeight + styleMatch * config.styleWeight };
+  }).sort((a, b) => b.finalMatch - a.finalMatch || b.academicMatch - a.academicMatch || b.styleMatch - a.styleMatch || a.order - b.order);
+  const winner = ranked[0];
+  const alternative = ranked[1];
+  const wildcardPool = ranked.slice(2);
+  const positiveWildcard = [...wildcardPool].filter((candidate) => candidate.styleMatch - candidate.academicMatch > 0)
+    .sort((a, b) => (b.styleMatch - b.academicMatch) - (a.styleMatch - a.academicMatch) || b.finalMatch - a.finalMatch || a.order - b.order)[0];
+  const wildcard = positiveWildcard ?? wildcardPool[0];
+  const preferredTrait = [...config.traits].sort((a, b) => styleVector[b] - styleVector[a] || config.traits.indexOf(a) - config.traits.indexOf(b))[0];
+  const wildcardTrait = wildcard ? [...config.traits].sort((a, b) => wildcard.styleWeights[b] - wildcard.styleWeights[a] || config.traits.indexOf(a) - config.traits.indexOf(b))[0] : undefined;
+  const profile = quiz.result.profiles.find((item) => item.id === winner?.id) ?? fallbackProfile(quiz);
+  const dimensions = quiz.result.scoreDimensions.map((dimension) => {
+    const categories = dimension.categories.filter((category) => category in categoryAccuracy);
+    const value = categories.length ? categories.reduce((sum, category) => sum + categoryAccuracy[category], 0) / categories.length : 0;
+    return { label: dimension.label, value };
+  });
+  const rankedDimensions = [...dimensions].sort((a, b) => b.value - a.value || dimensions.indexOf(a) - dimensions.indexOf(b));
+  const stageScores = quiz.stages.map((label, stage) => {
+    const questions = scored.filter((question) => question.stage === stage);
+    const correct = questions.filter((question) => answers[question.id] === question.answerIndex).length;
+    return { label, ratio: questions.length ? correct / questions.length : 0 };
+  });
+  const bestStage = [...stageScores].sort((a, b) => b.ratio - a.ratio || quiz.stages.indexOf(b.label) - quiz.stages.indexOf(a.label))[0]?.label;
+  const traitLabels = quiz.result.match?.traitLabels ?? {};
+  return {
+    answered: Object.keys(answers).length,
+    dimensionScores: Object.fromEntries(dimensions.map((dimension) => [dimension.label, Math.round(dimension.value * 100)])),
+    profile,
+    ratio,
+    score,
+    total: scored.length,
+    strongestSignal: rankedDimensions[0]?.label,
+    weakestSignal: [...rankedDimensions].reverse()[0]?.label,
+    bestStage,
+    alternativeMatch: quiz.result.profiles.find((item) => item.id === alternative?.id)?.title,
+    wildcardMatch: quiz.result.profiles.find((item) => item.id === wildcard?.id)?.title,
+    preferredStyle: preferredTrait ? traitLabels[preferredTrait] ?? preferredTrait : undefined,
+    wildcardReason: wildcardTrait ? traitLabels[wildcardTrait] ?? wildcardTrait : undefined,
+    percentage: Math.round(ratio * 100),
+    targetStatus: "reachable",
+    scoreBand: "onTrack",
+    consistency: "mixed",
+    trend: "steady",
+    brainCorrect: score,
+    adjustments: { personality: 0, brain: 0, calibration: 0 },
+  };
+}
+
 const scoringStrategies = {
   "correct-answer": scoreCorrectAnswers,
   "weighted-profile": scoreWeightedProfile,
+  "hybrid-match": scoreHybridMatch,
 } satisfies Record<Quiz["engine"]["scoring"]["type"], (quiz: Quiz, answers: QuizAnswers) => QuizScore>;
 
 export function scoreQuiz(quiz: Quiz, answers: QuizAnswers) {
