@@ -160,7 +160,19 @@
   .quiz-engine__landing-art img { min-height: 210px; }
   .quiz-engine__landing-symbol { min-height: 130px; font-size: 72px; }
   .quiz-engine__card { padding: 25px 18px; }
-  .quiz-engine__question-shell { padding-inline: 10px; }
+  /*
+   * Active quiz screens use one deliberate viewport gutter. This prevents
+   * quiz-folder padding and the shared question inset from stacking up on
+   * phones, while keeping each custom landing page exactly as designed.
+   */
+  .quiz-theme[data-quiz-theme] .quiz-engine__question-shell.quiz-engine__question-shell,
+  .quiz-theme[data-quiz-theme] .quiz-engine__checkpoint.quiz-engine__card,
+  .quiz-theme[data-quiz-theme] .quiz-engine__results.quiz-engine__card {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    margin-inline: calc(50% - 50vw + 8px);
+  }
+  .quiz-theme[data-quiz-theme] .quiz-engine__question-shell.quiz-engine__question-shell { padding-inline: 0; }
   .quiz-engine__progress-head { gap: 12px; margin-bottom: 9px; padding: 0 5px; font-size: 13px; }
   .quiz-engine__progress { height: 8px; margin: 0 4px 17px; }
   .quiz-engine__question h1 { margin-bottom: 22px; }
