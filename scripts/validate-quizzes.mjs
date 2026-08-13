@@ -240,7 +240,7 @@ for (const folder of folders) {
     ]));
     const rapidLab = source.stages?.[7]?.questions ?? [];
     const finalSpecimen = source.stages?.[9]?.questions ?? [];
-    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: Biology must launch in English only.`);
+    fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: Biology must support every site locale.`);
     fail(source.stages?.length === 10, `${folder.name}/en.json: Biology must contain ten rounds.`);
     fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Biology round must contain six questions.`);
     fail(sourceQuestions.length === 60, `${folder.name}/en.json: Biology must contain exactly 60 questions.`);
