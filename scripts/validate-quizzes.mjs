@@ -272,10 +272,26 @@ for (const folder of folders) {
     if (folder.name === "iq") {
       const mirror = questions.find((question) => question.id === "iq-r5q3");
       fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
+      const letterCode = questions.find((question) => question.id === "iq-r6q3");
+      const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
+      fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
       for (const id of ["iq-r4q3", "iq-r10q3"]) {
         const linking = questions.find((question) => question.id === id);
         fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
       }
+    }
+    if (folder.name === "biology") {
+      const locale = localeFile.replace(/\.json$/, "");
+      const expectedCorrectLabels = {
+        en: "correct",
+        fr: "bonnes réponses",
+        de: "richtige Antworten",
+        pt: "respostas certas",
+        nl: "goede antwoorden",
+        es: "respuestas correctas",
+        it: "risposte corrette",
+      };
+      fail(localized.results?.score?.correctLabel === expectedCorrectLabels[locale], `${folder.name}/${localeFile}: result fraction label must use the approved localized wording.`);
     }
     if (config.engine?.checkpoint === "ai") {
       fail(localized.stages?.every((stage) => stage.complete === undefined), `${folder.name}/${localeFile}: AI checkpoint stages must not contain unused complete copy.`);
