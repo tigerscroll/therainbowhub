@@ -34,12 +34,13 @@ declare global {
 }
 
 type ActiveRequest = {
+  cleanup?: () => void;
   granted: boolean;
   id: number;
-  ready: boolean;
   resolve: (result: RewardedResult) => void;
   slot: GptSlot | null;
   timer: number;
+  visibleTimeoutMs: number;
 };
 
 let activeRequest: ActiveRequest | null = null;
@@ -52,6 +53,7 @@ function finish(result: RewardedResult) {
   if (!request) return;
   activeRequest = null;
   window.clearTimeout(request.timer);
+  request.cleanup?.();
   if (request.slot) {
     try { window.googletag?.destroySlots?.([request.slot]); } catch { /* GPT cleanup is best effort. */ }
   }
@@ -65,9 +67,17 @@ function installListeners() {
 
   pubads.addEventListener("rewardedSlotReady", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
-    activeRequest.ready = true;
-    window.clearTimeout(activeRequest.timer);
-    try { event.makeRewardedVisible?.(); } catch { finish("unavailable"); }
+    const request = activeRequest;
+    window.clearTimeout(request.timer);
+    if (!event.makeRewardedVisible) {
+      finish("unavailable");
+      return;
+    }
+    try { event.makeRewardedVisible(); } catch { finish("unavailable"); return; }
+    if (!activeRequest || activeRequest.id !== request.id) return;
+    request.timer = window.setTimeout(() => {
+      if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
+    }, request.visibleTimeoutMs);
   });
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (activeRequest && event.slot === activeRequest.slot) activeRequest.granted = true;
@@ -82,22 +92,32 @@ function installListeners() {
   listenersInstalled = true;
 }
 
-function requestOnce(adUnitPath: string, timeoutMs: number) {
+function requestOnce(adUnitPath: string, timeoutMs: number, visibleTimeoutMs: number, signal?: AbortSignal) {
+  if (signal?.aborted) return Promise.resolve<RewardedResult>("closed");
   if (activeRequest) return Promise.resolve<RewardedResult>("unavailable");
 
   return new Promise<RewardedResult>((resolve) => {
     const id = ++requestId;
+    const onAbort = () => {
+      if (activeRequest?.id === id) finish("closed");
+    };
     window.googletag = window.googletag ?? { cmd: [] };
     activeRequest = {
+      cleanup: signal ? () => signal.removeEventListener("abort", onAbort) : undefined,
       granted: false,
       id,
-      ready: false,
       resolve,
       slot: null,
       timer: window.setTimeout(() => {
-        if (activeRequest?.id === id && !activeRequest.ready) finish("unavailable");
+        if (activeRequest?.id === id) finish("unavailable");
       }, timeoutMs),
+      visibleTimeoutMs,
     };
+    signal?.addEventListener("abort", onAbort, { once: true });
+    if (signal?.aborted) {
+      onAbort();
+      return;
+    }
 
     window.googletag.cmd.push(() => {
       if (!activeRequest || activeRequest.id !== id) return;
@@ -129,32 +149,52 @@ function requestOnce(adUnitPath: string, timeoutMs: number) {
   });
 }
 
+function waitBeforeRetry(signal?: AbortSignal) {
+  if (signal?.aborted) return Promise.resolve();
+  return new Promise<void>((resolve) => {
+    let timer = 0;
+    const finishWait = () => {
+      window.clearTimeout(timer);
+      signal?.removeEventListener("abort", finishWait);
+      resolve();
+    };
+    timer = window.setTimeout(finishWait, 450);
+    signal?.addEventListener("abort", finishWait, { once: true });
+  });
+}
+
 export async function requestRewardedAd({
   adUnitPath,
   attempts,
   onAttempt,
+  signal,
   timeoutMs = 4000,
+  visibleTimeoutMs = 120000,
 }: {
   adUnitPath: string;
   attempts: number;
   onAttempt?: (attempt: number, maximum: number) => void;
+  signal?: AbortSignal;
   timeoutMs?: number;
+  visibleTimeoutMs?: number;
 }) {
   const maximum = Math.max(1, attempts);
   let unavailableAttempts = 0;
 
   while (unavailableAttempts < maximum) {
+    if (signal?.aborted) return "closed";
     const attempt = unavailableAttempts + 1;
     onAttempt?.(attempt, maximum);
-    const result = await requestOnce(adUnitPath, timeoutMs);
+    const result = await requestOnce(adUnitPath, timeoutMs, visibleTimeoutMs, signal);
+    if (signal?.aborted) return "closed";
     if (result === "granted") return result;
     if (result === "closed") {
-      await new Promise((resolve) => window.setTimeout(resolve, 450));
+      await waitBeforeRetry(signal);
       continue;
     }
 
     unavailableAttempts += 1;
-    if (unavailableAttempts < maximum) await new Promise((resolve) => window.setTimeout(resolve, 450));
+    if (unavailableAttempts < maximum) await waitBeforeRetry(signal);
   }
 
   return "unavailable";

@@ -248,10 +248,12 @@
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease, opacity .18s ease;
 }
 
-[data-quiz-theme="years-left"] .quiz-engine__answer:hover:not(:disabled) {
-  border-color: rgba(255,230,173,.72);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 0 rgba(57,50,42,.62), 0 26px 38px rgba(0,0,0,.25), inset 0 2px rgba(255,255,255,.32);
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="years-left"] .quiz-engine__answer:hover:not(:disabled) {
+    border-color: rgba(255,230,173,.72);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 0 rgba(57,50,42,.62), 0 26px 38px rgba(0,0,0,.25), inset 0 2px rgba(255,255,255,.32);
+  }
 }
 
 [data-quiz-theme="years-left"] .quiz-engine__checkpoint .quiz-engine__eyebrow,

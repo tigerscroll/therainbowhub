@@ -7,9 +7,12 @@ type FacebookPixel = {
   (method: "track", eventName: string, payload?: TrackingPayload): void;
 };
 
+type GoogleTag = (command: "config", id: string, payload?: TrackingPayload) => void;
+
 declare global {
   interface Window {
     fbq?: FacebookPixel;
+    gtag?: GoogleTag;
   }
 }
 
@@ -19,4 +22,5 @@ export function trackPageView(payload: TrackingPayload = {}) {
   }
 
   window.fbq?.("track", "PageView", payload);
+  window.gtag?.("config", "G-44LV753KWN", payload);
 }

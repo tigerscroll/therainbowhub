@@ -21,6 +21,8 @@ export type InfoPageSection = {
 export type InfoPage = {
   kicker: string;
   title: string;
+  metaDescription: string;
+  lastModified: string;
   updated: string;
   sections: InfoPageSection[];
 };
@@ -82,11 +84,9 @@ export function getInfoPage(locale: string, slug: InfoPageSlug): InfoPage {
 
 export function getInfoPageMetadata(locale: string, slug: InfoPageSlug) {
   const page = getInfoPage(locale, slug);
-  const firstSection = page.sections[0];
-  const description = firstSection.paragraphs?.[0] ?? firstSection.list?.[0] ?? infoPageMetadata[slug].description;
 
   return {
     title: page.title,
-    description,
+    description: page.metaDescription || infoPageMetadata[slug].description,
   };
 }

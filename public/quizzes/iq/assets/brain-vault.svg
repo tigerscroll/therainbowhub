@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">The Brain Vault</title>
+  <desc id="desc">An illuminated abstract brain inside a futuristic circular vault with puzzle symbols and circuit traces.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="74%">
+      <stop offset="0" stop-color="#14375a"/>
+      <stop offset=".5" stop-color="#07172e"/>
+      <stop offset="1" stop-color="#030710"/>
+    </radialGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#9af8ff"/>
+      <stop offset=".46" stop-color="#20d7e5"/>
+      <stop offset="1" stop-color="#0976a8"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e1ff94"/>
+      <stop offset="1" stop-color="#8ed726"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#2a7595" stroke-opacity=".16" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" rx="46" fill="url(#bg)"/>
+  <rect width="1600" height="900" rx="46" fill="url(#grid)"/>
+  <g fill="none" stroke="#20d7e5" stroke-opacity=".24" stroke-width="3">
+    <path d="M72 162h210l54 54h128M1128 166h170l42 42h188"/>
+    <path d="M70 728h238l42-42h104M1146 730h166l50-50h166"/>
+  </g>
+  <g fill="#20d7e5">
+    <circle cx="72" cy="162" r="7"/><circle cx="464" cy="216" r="7"/>
+    <circle cx="1128" cy="166" r="7"/><circle cx="1528" cy="208" r="7"/>
+    <circle cx="70" cy="728" r="7"/><circle cx="454" cy="686" r="7"/>
+    <circle cx="1146" cy="730" r="7"/><circle cx="1528" cy="680" r="7"/>
+  </g>
+  <circle cx="808" cy="446" r="324" fill="#20d7e5" opacity=".09" filter="url(#soft)"/>
+  <circle cx="808" cy="446" r="310" fill="#071222" stroke="#183d59" stroke-width="24"/>
+  <circle cx="808" cy="446" r="275" fill="none" stroke="#20d7e5" stroke-opacity=".56" stroke-width="5"/>
+  <circle cx="808" cy="446" r="242" fill="none" stroke="#25506c" stroke-width="2" stroke-dasharray="9 18"/>
+  <g fill="#0b1c30" stroke="#20d7e5" stroke-opacity=".65" stroke-width="4">
+    <path d="M760 214h96l22 38-22 38h-96l-22-38z"/>
+    <path d="M1004 286h92l24 36-24 36h-92l-24-36z"/>
+    <path d="M1012 564h92l24 36-24 36h-92l-24-36z"/>
+    <path d="M512 286h92l24 36-24 36h-92l-24-36z"/>
+    <path d="M506 564h92l24 36-24 36h-92l-24-36z"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="44" font-weight="800" text-anchor="middle">
+    <text x="808" y="268" fill="#b7f34a">7 → 14</text>
+    <text x="1050" y="336" fill="#20d7e5">△ ○</text>
+    <text x="1058" y="614" fill="#ffbd52">A:B</text>
+    <text x="558" y="336" fill="#ffbd52">↗</text>
+    <text x="552" y="614" fill="#20d7e5">?</text>
+  </g>
+  <g filter="url(#glow)" fill="none" stroke="url(#cyan)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M774 612c-86 7-162-47-162-126 0-40 19-76 51-99-5-14-8-29-8-44 0-69 56-125 125-125 31 0 60 11 82 30 23-19 52-30 84-30 73 0 132 59 132 132 0 17-3 34-9 49 28 23 45 58 45 96 0 72-62 130-139 130-32 0-62-10-86-28-32 11-71 16-115 15z" stroke-width="11"/>
+    <path d="M744 259c-38 16-60 49-60 87 0 22 8 42 22 58-40 22-61 56-61 96" stroke-width="7"/>
+    <path d="M823 246c-25 33-27 69-7 107-33 15-51 43-51 80 0 28 11 52 32 72-26 29-35 61-27 96" stroke-width="7"/>
+    <path d="M902 251c-27 25-38 55-31 89 44 3 75 27 92 70-25 25-33 56-24 92 35 12 59 37 70 74" stroke-width="7"/>
+    <path d="M705 404c34 4 60 20 78 49M817 352c31 1 55 14 74 38M963 410c34-2 62 9 83 34M797 505c41-4 75 8 102 36M682 512c30 3 54 16 72 39" stroke-width="6"/>
+  </g>
+  <g fill="url(#lime)" filter="url(#glow)">
+    <circle cx="706" cy="404" r="9"/><circle cx="817" cy="352" r="9"/><circle cx="963" cy="410" r="9"/>
+    <circle cx="797" cy="505" r="9"/><circle cx="899" cy="541" r="9"/>
+  </g>
+  <g fill="#08131f" stroke="#b7f34a" stroke-width="4">
+    <circle cx="808" cy="446" r="62"/>
+    <path d="M783 447l17 17 34-42" fill="none" stroke="#b7f34a" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="808" y="792" fill="#8ba7bd" font-size="20" font-weight="700" letter-spacing="8">MIDNIGHT BRAIN LAB</text>
+    <text x="808" y="835" fill="#f2f7ff" font-size="34" font-weight="900" letter-spacing="4">THE BRAIN VAULT</text>
+  </g>
+</svg>

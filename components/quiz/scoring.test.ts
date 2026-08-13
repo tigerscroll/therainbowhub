@@ -161,3 +161,32 @@ test("configured tie-breaking prefers harder correct categories and the later be
   assert.equal(result.weakestSignal, "First area");
   assert.equal(result.bestStage, "Second");
 });
+
+test("category ranking uses percentage before harder-correct tie-breaking when denominators differ", () => {
+  const questions = [
+    ...Array.from({ length: 6 }, (_, index) => ({ id: `short-${index}`, answerIndex: 0, category: "short", stage: 0 })),
+    ...Array.from({ length: 9 }, (_, index) => ({ id: `long-${index}`, answerIndex: 0, category: "long", stage: 0 })),
+  ];
+  const quiz = {
+    engine: { scoring: { type: "correct-answer" }, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
+    questions,
+    stages: ["Only round"],
+    result: {
+      profiles: [{ minRatio: 0, title: "Profile" }],
+      scoreDimensions: [
+        { label: "Short category", categories: ["short"] },
+        { label: "Long category", categories: ["long"] },
+      ],
+    },
+  } as Quiz;
+  const answers = Object.fromEntries([
+    ...questions.slice(0, 6).map((question) => [question.id, 0]),
+    ...questions.slice(6).map((question, index) => [question.id, index < 7 ? 0 : 1]),
+  ]);
+
+  const result = scoreQuiz(quiz, answers);
+
+  assert.deepEqual(result.dimensionScores, { "Short category": 100, "Long category": 78 });
+  assert.equal(result.strongestSignal, "Short category");
+  assert.equal(result.weakestSignal, "Long category");
+});

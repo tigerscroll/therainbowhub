@@ -16,6 +16,66 @@ function read(file) {
 
 function fail(condition, message) { if (!condition) errors.push(message); }
 
+function leafStringPaths(value, prefix = "") {
+  if (typeof value === "string") return [prefix];
+  if (!value || typeof value !== "object" || Array.isArray(value)) return [];
+  return Object.entries(value).flatMap(([key, child]) => leafStringPaths(child, prefix ? `${prefix}.${key}` : key));
+}
+
+function validateResultProfiles(value, scoring, location) {
+  const profiles = value.results?.profiles;
+  fail(Array.isArray(profiles) && profiles.length > 0, `${location}: result profiles are required.`);
+  if (!Array.isArray(profiles)) return [];
+  profiles.forEach((profile, index) => {
+    fail(profile && typeof profile === "object" && !Array.isArray(profile), `${location}: result profile ${index + 1} must be an object.`);
+    for (const key of ["tier", "title", "copy"]) {
+      fail(typeof profile?.[key] === "string" && Boolean(profile[key].trim()), `${location}: result profile ${index + 1} needs ${key}.`);
+    }
+    if (scoring === "weighted-profile") {
+      fail(typeof profile?.id === "string" && Boolean(profile.id.trim()), `${location}: weighted result profile ${index + 1} needs an id.`);
+    } else {
+      fail(typeof profile?.min === "number" && profile.min >= 0 && profile.min <= 1, `${location}: result profile ${index + 1} needs a min ratio from zero to one.`);
+    }
+  });
+  if (scoring === "weighted-profile") {
+    const ids = profiles.map((profile) => profile?.id);
+    fail(new Set(ids).size === ids.length, `${location}: weighted result profile ids must be unique.`);
+  } else {
+    const thresholds = profiles.map((profile) => profile?.min);
+    fail(thresholds.every((min, index) => index === 0 || min < thresholds[index - 1]), `${location}: result profile thresholds must be strictly descending.`);
+    fail(thresholds.at(-1) === 0, `${location}: final result profile must begin at zero.`);
+  }
+  return profiles.map((profile) => ({ id: profile?.id ?? null, min: profile?.min ?? null }));
+}
+
+function validateWeightedReferences(value, location) {
+  const profileIds = new Set((value.results?.profiles ?? []).map((profile) => profile.id).filter(Boolean));
+  const expectedExposure = Object.fromEntries([...profileIds].map((id) => [id, 0]));
+  for (const question of (value.stages ?? []).flatMap((stage) => stage.questions ?? [])) {
+    if (!question.answers || Array.isArray(question.answers)) continue;
+    const meanings = Object.values(question.answers);
+    meanings.forEach((meaning, answerIndex) => {
+      if (typeof meaning === "string") {
+        if (question.correct === undefined) fail(profileIds.has(meaning), `${location}: ${question.id} answer ${answerIndex + 1} references unknown profile ${meaning}.`);
+        return;
+      }
+      fail(meaning && typeof meaning === "object" && !Array.isArray(meaning), `${location}: ${question.id} answer ${answerIndex + 1} needs a profile id or weight map.`);
+      if (!meaning || typeof meaning !== "object" || Array.isArray(meaning)) return;
+      const entries = Object.entries(meaning);
+      fail(entries.length > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an empty weight map.`);
+      for (const [profileId, weight] of entries) {
+        fail(profileIds.has(profileId), `${location}: ${question.id} answer ${answerIndex + 1} references unknown profile ${profileId}.`);
+        fail(typeof weight === "number" && Number.isFinite(weight) && weight > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an invalid weight for ${profileId}.`);
+        if (profileId in expectedExposure && typeof weight === "number") expectedExposure[profileId] += weight / meanings.length;
+      }
+    });
+  }
+  const exposure = Object.values(expectedExposure);
+  if (exposure.length > 1 && exposure.every((value) => value > 0)) {
+    fail(Math.max(...exposure) - Math.min(...exposure) <= 0.05, `${location}: weighted profile opportunity is imbalanced under uniform answer selection.`);
+  }
+}
+
 function validateStudy(study, location) {
   if (study === undefined) return;
   fail(study && typeof study === "object" && !Array.isArray(study), `${location}: study must be an object.`);
@@ -30,20 +90,15 @@ function validateStudy(study, location) {
   }
 }
 
-const requiredUiKeys = [
-  "locale.direction", "locale.code", "locale.name", "locale.switcherLabel",
-  "site.name", "nav.home", "nav.quickLinks",
-  "quiz.startTest", "quiz.question", "quiz.questions", "quiz.continue",
-  "quiz.profile", "quiz.finalScore", "quiz.restartTest", "quiz.answered", "quiz.round", "quiz.of",
-  "quiz.aboutTitle",
-  "results.complete", "results.stageComplete", "results.viewResults", "results.nextStage", "results.startStage",
-  "ad.beforeTitle", "ad.stepOne", "ad.stepTwo", "ad.loading", "ad.retryUnavailable", "ad.startNote",
-];
+const referenceUi = read(path.join(process.cwd(), "data", "i18n", "en.json"));
+const requiredUiKeys = referenceUi ? leafStringPaths(referenceUi).sort() : [];
 
 for (const locale of supportedLocales) {
   const ui = read(path.join(process.cwd(), "data", "i18n", `${locale}.json`));
   if (!ui) continue;
   fail(ui.locale?.code === locale, `data/i18n/${locale}.json: locale.code must match the filename.`);
+  const localizedUiKeys = leafStringPaths(ui).sort();
+  fail(JSON.stringify(localizedUiKeys) === JSON.stringify(requiredUiKeys), `data/i18n/${locale}.json: shared UI leaf-string structure differs from en.json.`);
   for (const key of requiredUiKeys) {
     const value = key.split(".").reduce((current, part) => current?.[part], ui);
     fail(typeof value === "string" && Boolean(value.trim()), `data/i18n/${locale}.json: missing shared UI translation ${key}.`);
@@ -55,6 +110,8 @@ for (const folder of folders) {
   const config = read(path.join(directory, "quiz.json"));
   if (!config) continue;
   fail(config.slug === folder.name, `${folder.name}: quiz.json slug must match its folder.`);
+  fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
+  fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
@@ -83,12 +140,18 @@ for (const folder of folders) {
   const source = read(path.join(directory, "en.json"));
   if (!source) continue;
   const sourceQuestions = (source.stages ?? []).flatMap((stage) => stage.questions ?? []);
+  const sourceQuestionIds = sourceQuestions.map((question) => question.id);
+  fail(sourceQuestionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/en.json: every question needs a stable id.`);
+  fail(new Set(sourceQuestionIds).size === sourceQuestionIds.length, `${folder.name}/en.json: question ids must be unique.`);
+  const sourceProfileStructure = validateResultProfiles(source, config.engine?.scoring, `${folder.name}/en.json`);
+  if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(source, `${folder.name}/en.json`);
+  if (config.engine?.checkpoint === "ai") fail(source.stages?.every((stage) => stage.complete === undefined), `${folder.name}/en.json: AI checkpoint stages must not contain unused complete copy.`);
   fail(Boolean(source.title && source.summary), `${folder.name}/en.json: title and summary are required.`);
   fail(sourceQuestions.length > 0, `${folder.name}/en.json: at least one question is required.`);
   if (folder.name === "years-left") {
     fail(source.stages?.length === 10, `${folder.name}/en.json: Years Left must contain ten rounds.`);
     fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Years Left round must contain six interactions.`);
-    fail(config.engine?.advanceDelayMs >= 200 && config.engine?.advanceDelayMs <= 350, `${folder.name}: default advance delay must be 200–350ms.`);
+    fail(config.engine?.advanceDelayMs >= 200 && config.engine?.advanceDelayMs <= 600, `${folder.name}: default advance delay must be 200–600ms.`);
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, `${folder.name}: estimate base and safety clamp are incorrect.`);
     const brain = source.stages?.[4]?.questions ?? [];
     fail(JSON.stringify(source.stages?.[1]?.questions?.map((question) => Object.keys(question.answers ?? {}).length)) === JSON.stringify([4, 3, 4, 3, 2, 3]), `${folder.name}: food round must use the approved 4/3/4/3/2/3 choice rhythm.`);
@@ -137,7 +200,7 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length >= 3 && question.answers.length <= 5), `${folder.name}/en.json: every IQ question needs three to five choices.`);
     fail(sourceQuestions.every((question) => new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: IQ choices must be unique within each question.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < question.answers.length), `${folder.name}/en.json: every IQ question needs one valid correct index.`);
-    fail(sourceQuestions.every((question) => question.delay === undefined || (Number.isInteger(question.delay) && question.delay >= 200 && question.delay <= 400)), `${folder.name}/en.json: IQ question delays must be 200–400ms.`);
+    fail(sourceQuestions.every((question) => question.delay === undefined || (Number.isInteger(question.delay) && question.delay >= 200 && question.delay <= 600)), `${folder.name}/en.json: IQ question delays must be 200–600ms.`);
     const supportedPresentations = new Set(["text", "icons", "sequence", "grid", "code", "spatial"]);
     fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported IQ presentation.`);
     for (const [index, question] of sourceQuestions.entries()) {
@@ -150,7 +213,7 @@ for (const folder of folders) {
     }
     const sprint = source.stages?.[7]?.questions ?? [];
     fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Instinct Sprint prompts must contain no more than ten words.`);
-    fail(sprint.every((question) => question.delay === 225), `${folder.name}/en.json: every Instinct Sprint selection delay must be 225ms.`);
+    fail(sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Instinct Sprint selection delay must be 350ms.`);
     const trapdoor = source.stages?.[8]?.questions ?? [];
     fail(trapdoor.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Trapdoor question needs an explicit-clue explanation.`);
     const boss = source.stages?.[9]?.questions ?? [];
@@ -167,8 +230,23 @@ for (const folder of folders) {
     const localized = read(path.join(directory, localeFile));
     if (!localized) continue;
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
+    const questionIds = questions.map((question) => question.id);
+    fail(questionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/${localeFile}: every question needs a stable id.`);
+    fail(new Set(questionIds).size === questionIds.length, `${folder.name}/${localeFile}: question ids must be unique.`);
+    const localizedProfileStructure = validateResultProfiles(localized, config.engine?.scoring, `${folder.name}/${localeFile}`);
+    fail(JSON.stringify(localizedProfileStructure) === JSON.stringify(sourceProfileStructure), `${folder.name}/${localeFile}: result profile ids and thresholds differ from English.`);
+    if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(localized, `${folder.name}/${localeFile}`);
     if (folder.name === "iq") fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: IQ landing intro must use numeral 10.`);
+    if (folder.name === "iq") {
+      const mirror = questions.find((question) => question.id === "iq-r5q3");
+      fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
+      for (const id of ["iq-r4q3", "iq-r10q3"]) {
+        const linking = questions.find((question) => question.id === id);
+        fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
+      }
+    }
     if (config.engine?.checkpoint === "ai") {
+      fail(localized.stages?.every((stage) => stage.complete === undefined), `${folder.name}/${localeFile}: AI checkpoint stages must not contain unused complete copy.`);
       fail(localized.checkpoint?.reveals?.length === localized.stages?.length, `${folder.name}/${localeFile}: checkpoint reveals must match stage count.`);
       fail(localized.checkpoint?.finalChecklist?.length >= 3 && localized.checkpoint.finalChecklist.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
     }

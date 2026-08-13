@@ -276,6 +276,8 @@ type QuizLocaleFile = {
 const ROOT = path.join(process.cwd(), "data", "quizzes");
 const LOCALES = new Set(getSupportedLocales());
 const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
+const RESERVED_SLUGS = new Set([...getSupportedLocales(), "info", "api", "_next"]);
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
 
 function json<T>(filePath: string): T {
@@ -286,9 +288,14 @@ function quizAsset(slug: string, value?: string) {
   if (!value || value.startsWith("/")) return value;
   const file = path.join(directory(slug), value);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) throw new Error(`${slug}: missing asset ${value}.`);
-  const extension = path.extname(file).slice(1).toLowerCase().replace("jpg", "jpeg");
-  const mimeSubtype = extension === "svg" ? "svg+xml" : extension;
-  return `data:image/${mimeSubtype};base64,${fs.readFileSync(file).toString("base64")}`;
+  const publicValue = /^assets\/thumbnail\.(?:jpe?g|png|webp)$/i.test(value)
+    ? "assets/thumbnail-960.webp"
+    : value;
+  const publicFile = path.join(process.cwd(), "public", "quizzes", slug, publicValue);
+  if (!fs.existsSync(publicFile) || !fs.statSync(publicFile).isFile()) {
+    throw new Error(`${slug}: missing public asset ${publicValue}.`);
+  }
+  return `/quizzes/${slug}/${publicValue}`;
 }
 
 function object(value: unknown, name: string, file: string): Record<string, unknown> {
@@ -320,7 +327,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["correct-answer", "weighted-profile"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
-  if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 350) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 350.`);
+  if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 600) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 600.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
   if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
   let derivedScore: QuizDerivedScoreConfig | undefined;
@@ -374,6 +381,12 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     throw new Error(`${file}: thumbnail must be a local asset path.`);
   }
   const slug = text(raw.slug, "slug", file);
+  if (!SLUG_PATTERN.test(slug)) throw new Error(`${file}: slug must use lowercase URL-safe words separated by hyphens.`);
+  if (RESERVED_SLUGS.has(slug)) throw new Error(`${file}: slug ${slug} is reserved by site routing.`);
+  if (engine.scoring === "weighted-profile" && derivedScore) throw new Error(`${file}: derivedScore is only supported by correct-answer quizzes.`);
+  if (engine.scoring === "weighted-profile" && engine.targetRatio !== undefined) throw new Error(`${file}: targetRatio is only supported by correct-answer quizzes.`);
+  if (engine.scoring === "correct-answer" && estimate) throw new Error(`${file}: estimate is only supported by weighted-profile quizzes.`);
+  if (engine.scoring !== "correct-answer" && tieBreaks) throw new Error(`${file}: tieBreaks are only supported by correct-answer quizzes.`);
   return {
     slug,
     engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks } as QuizManifest["engine"],
@@ -461,11 +474,16 @@ function normalizeLocale(
   }
 
   const questions: QuizQuestion[] = [];
+  const questionIds = new Set<string>();
   const stageEncouragement: string[] = [];
   value.stages.forEach((stage, stageIndex) => {
     text(stage.title, `stages[${stageIndex}].title`, file);
     if (!Array.isArray(stage.questions) || !stage.questions.length) throw new Error(`${file}: every stage needs questions.`);
-    if (stageIndex < value.stages.length - 1) stageEncouragement.push(text(stage.complete, `stages[${stageIndex}].complete`, file));
+    if (stageIndex < value.stages.length - 1) {
+      stageEncouragement.push(manifest.engine.checkpoint === "ai"
+        ? ""
+        : text(stage.complete, `stages[${stageIndex}].complete`, file));
+    }
     stage.questions.forEach((rawQuestion) => {
       const index = questions.length;
       const prompt = text(rawQuestion.question, `questions[${index}].question`, file);
@@ -529,10 +547,15 @@ function normalizeLocale(
         throw new Error(`${file}: question ${index + 1} cannot use visual data with ${presentation} presentation.`);
       }
       if (rawQuestion.calibration && (rawQuestion.calibration.length !== choices.length || rawQuestion.calibration.some((item) => typeof item !== "number" || item < -1 || item > 1))) throw new Error(`${file}: question ${index + 1} calibration values must match answers and be between -1 and 1.`);
-      if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 400)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 400.`);
+      if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 600)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 600.`);
       if (rawQuestion.reasoningSteps !== undefined && (!Number.isInteger(rawQuestion.reasoningSteps) || rawQuestion.reasoningSteps < 1 || rawQuestion.reasoningSteps > 4)) throw new Error(`${file}: question ${index + 1} reasoningSteps must be between one and four.`);
+      const id = rawQuestion.id === undefined
+        ? `q-${index + 1}`
+        : text(rawQuestion.id, `questions[${index}].id`, file);
+      if (questionIds.has(id)) throw new Error(`${file}: duplicate question id ${id}.`);
+      questionIds.add(id);
       questions.push({
-        id: rawQuestion.id ?? `q-${index + 1}`,
+        id,
         type: "single-choice",
         presentation,
         context: rawQuestion.context === undefined ? undefined : text(rawQuestion.context, "question context", file),
@@ -566,6 +589,23 @@ function normalizeLocale(
   }));
   if (manifest.engine.scoring === "weighted-profile" && profiles.some((profile) => !profile.id)) {
     throw new Error(`${file}: weighted result profiles need ids.`);
+  }
+  const profileIds = new Set(profiles.flatMap((profile) => profile.id ? [profile.id] : []));
+  if (manifest.engine.scoring === "weighted-profile") {
+    questions.forEach((question, index) => {
+      if (question.presentation === "memory-cue") return;
+      if (question.answerIndex !== undefined) return;
+      const referencedProfiles = [
+        ...(question.choiceProfileIds ?? []).filter(Boolean),
+        ...(question.choiceWeights ?? []).flatMap((weights) => Object.keys(weights)),
+      ];
+      if (!referencedProfiles.length && question.calibrationValues === undefined && question.answerIndex === undefined) {
+        throw new Error(`${file}: weighted question ${index + 1} has no scoring contribution.`);
+      }
+      referencedProfiles.forEach((profileId) => {
+        if (!profileIds.has(profileId)) throw new Error(`${file}: question ${index + 1} references unknown profile ${profileId}.`);
+      });
+    });
   }
   if (manifest.engine.scoring === "correct-answer" && value.results.score) {
     (["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer"] as const)
@@ -656,10 +696,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
       .filter((file) => /\.(?:jpe?g|png|webp)$/i.test(file))
       .sort()
       .slice(0, 4)
-      .map((file) => {
-        const extension = path.extname(file).slice(1).toLowerCase().replace("jpg", "jpeg");
-        return `data:image/${extension};base64,${fs.readFileSync(path.join(avatarDirectory, file)).toString("base64")}`;
-      })
+      .map((file) => quizAsset(slug, `assets/avatars/${file}`)!)
     : [];
   return normalizeLocale(json(path.join(directory(slug), `${locale}.json`)), manifest, manifest.theme, customCss, socialAvatars, `${slug}/${locale}.json`);
 }
@@ -676,6 +713,16 @@ function sameStructure(localized: Quiz, source: Quiz, file: string) {
       throw new Error(`${file}: question ${index + 1} structure must match en.json.`);
     }
   });
+  const localizedProfiles = localized.result.profiles.map(({ id, minRatio }) => ({ id, minRatio }));
+  const sourceProfiles = source.result.profiles.map(({ id, minRatio }) => ({ id, minRatio }));
+  if (JSON.stringify(localizedProfiles) !== JSON.stringify(sourceProfiles)) {
+    throw new Error(`${file}: result profile ids and thresholds must match en.json.`);
+  }
+  const localizedDimensions = localized.result.scoreDimensions.map((dimension) => dimension.categories);
+  const sourceDimensions = source.result.scoreDimensions.map((dimension) => dimension.categories);
+  if (JSON.stringify(localizedDimensions) !== JSON.stringify(sourceDimensions)) {
+    throw new Error(`${file}: result dimension category ids must match en.json.`);
+  }
 }
 
 export function getQuizLocales(slug: string) {

@@ -1,5 +1,5 @@
-import { NotFoundContent } from "@/components/NotFoundContent";
+import { GlobalNotFound } from "@/components/GlobalNotFound";
 
 export default function NotFound() {
-  return <NotFoundContent />;
+  return <GlobalNotFound />;
 }

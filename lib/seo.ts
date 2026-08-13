@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
+import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
@@ -85,54 +85,90 @@ export function infoAlternates(locale: SupportedLocale, slug: InfoPageSlug) {
   };
 }
 
+export function withSiteName(title: string) {
+  const normalizedTitle = title.trim();
+  return normalizedTitle.toLocaleLowerCase().includes(siteConfig.name.toLocaleLowerCase())
+    ? normalizedTitle
+    : `${normalizedTitle} - ${siteConfig.name}`;
+}
+
+export function clampMetaDescription(description: string, maxLength = 160) {
+  const normalizedDescription = description.replace(/\s+/g, " ").trim();
+  if (normalizedDescription.length <= maxLength) return normalizedDescription;
+
+  const candidate = normalizedDescription.slice(0, maxLength - 1);
+  const wordBoundary = candidate.lastIndexOf(" ");
+  const cutoff = wordBoundary > maxLength * 0.7 ? wordBoundary : candidate.length;
+  return `${candidate.slice(0, cutoff).trimEnd()}…`;
+}
+
 export function buildMetadata({
   description,
   locale = defaultLocale,
   path,
   title,
   alternates,
+  image,
 }: {
   alternates: Metadata["alternates"];
   description: string;
+  image?: {
+    alt: string;
+    height: number;
+    path: string;
+    width: number;
+  };
   locale?: SupportedLocale;
   path: string;
   title: string;
 }): Metadata {
   const url = absoluteUrl(path);
+  const metadataDescription = clampMetaDescription(description);
+  const metadataTitle = withSiteName(title);
+  const metadataImage = image ?? {
+    alt: siteConfig.name,
+    height: 630,
+    path: "/og-default.svg",
+    width: 1200,
+  };
+  const imageUrl = absoluteUrl(metadataImage.path);
 
   return {
     title: {
-      absolute: title,
+      absolute: metadataTitle,
     },
-    description,
+    description: metadataDescription,
     alternates,
     openGraph: {
-      description,
+      description: metadataDescription,
       locale,
       siteName: siteConfig.name,
-      title,
+      title: metadataTitle,
       type: "website",
       url,
       images: [
         {
-          url: absoluteUrl("/og-default.svg"),
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
+          url: imageUrl,
+          width: metadataImage.width,
+          height: metadataImage.height,
+          alt: metadataImage.alt,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      description,
-      title,
-      images: [absoluteUrl("/og-default.svg")],
+      description: metadataDescription,
+      title: metadataTitle,
+      images: [imageUrl],
     },
   };
 }
 
 export function getSitemapEntries() {
-  const now = new Date();
+  const localeContentDate = (locale: SupportedLocale) => new Date(Math.max(
+    ...getAllQuizzes(locale).map((quiz) => Date.parse(quiz.publishedAt)),
+    ...infoPageSlugs.map((slug) => Date.parse(`${getInfoPage(locale, slug).lastModified}T00:00:00Z`)),
+  ));
   const entries: Array<{
     changeFrequency: "daily" | "weekly" | "monthly";
     lastModified: Date;
@@ -141,7 +177,7 @@ export function getSitemapEntries() {
   }> = [
     {
       url: absoluteUrl("/"),
-      lastModified: now,
+      lastModified: localeContentDate(defaultLocale),
       changeFrequency: "daily" as const,
       priority: 1,
     },
@@ -150,7 +186,7 @@ export function getSitemapEntries() {
   for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
     entries.push({
       url: absoluteUrl(getHomePath(locale)),
-      lastModified: now,
+      lastModified: localeContentDate(locale),
       changeFrequency: "daily" as const,
       priority: 0.9,
     });
@@ -172,7 +208,7 @@ export function getSitemapEntries() {
     for (const locale of getSupportedLocales()) {
       entries.push({
         url: absoluteUrl(getInfoPath(locale, slug)),
-        lastModified: now,
+        lastModified: new Date(`${getInfoPage(locale, slug).lastModified}T00:00:00Z`),
         changeFrequency: "monthly" as const,
         priority: locale === defaultLocale ? 0.45 : 0.35,
       });

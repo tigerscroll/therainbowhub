@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: InfoPageProps): Promise<Metad
     description: metadata.description,
     locale,
     path: getInfoPath(locale, page),
-    title: `${metadata.title} - The Rainbow Hub`,
+    title: metadata.title,
   });
 }
 

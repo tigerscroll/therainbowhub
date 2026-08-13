@@ -6,6 +6,7 @@ import { flushSync } from "react-dom";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
+import { getStageCompletionPercentage } from "./engineState";
 import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
@@ -87,7 +88,7 @@ function ChoiceQuestion({
             data-incorrect={incorrect || undefined}
             data-selected={selected || undefined}
             disabled={answer !== undefined}
-            key={`${choice}-${index}`}
+            key={`${question.id}-${index}`}
             onClick={() => onAnswer(index)}
             role={question.presentation === "scale" ? "radio" : undefined}
             type="button"
@@ -224,6 +225,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [adBusy, setAdBusy] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const adRequestActive = useRef(false);
+  const adRequestController = useRef<AbortController | null>(null);
+  const adRequestGeneration = useRef(0);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -268,7 +271,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
   const stageQuestionIndex = Math.max(0, stageQuestions.findIndex((question) => question.id === currentQuestion?.id));
-  const progress = stageQuestions.length ? Math.round(((stageQuestionIndex + 1) / stageQuestions.length) * 100) : 0;
+  const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
   useLayoutEffect(() => {
@@ -309,6 +312,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
   }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey, studiedQuestions]);
 
+  useEffect(() => () => {
+    adRequestGeneration.current += 1;
+    adRequestController.current?.abort();
+  }, []);
+
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
@@ -316,6 +324,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   async function runRewardedGate(onComplete: () => void) {
     if (adRequestActive.current) return;
+    const generation = ++adRequestGeneration.current;
+    const controller = new AbortController();
+    adRequestController.current = controller;
     adRequestActive.current = true;
     setAdBusy(true);
     let outcome;
@@ -323,13 +334,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       outcome = await requestRewardedAd({
         adUnitPath: siteConfig.rewardedAdUnitPath,
         attempts: quiz.engine.rewarded.attempts,
+        signal: controller.signal,
       });
     } catch {
+      if (generation !== adRequestGeneration.current) return;
+      adRequestController.current = null;
       adRequestActive.current = false;
       setAdBusy(false);
       return;
     }
 
+    if (generation !== adRequestGeneration.current) return;
+    adRequestController.current = null;
     adRequestActive.current = false;
     if (outcome === "closed") {
       setAdBusy(false);
@@ -408,7 +424,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   function restartQuiz() {
+    adRequestGeneration.current += 1;
+    adRequestController.current?.abort();
+    adRequestController.current = null;
+    adRequestActive.current = false;
     try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable. */ }
+    setAdBusy(false);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
@@ -456,6 +477,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "checkpoint") {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const checkpoint = quiz.checkpoint;
+    const checkpointTitle = isFinalStage && checkpoint ? checkpoint.finalTitle : quiz.stages[completedStage];
+    const checkpointCopy = isFinalStage
+      ? checkpoint?.finalCopy ?? translations.results.complete
+      : quiz.engine.checkpoint !== "ai" ? quiz.stageEncouragement[completedStage] : undefined;
+    const checkpointButton = isFinalStage
+      ? checkpoint?.finalButton ?? translations.results.viewResults
+      : translations.quiz.continue;
     const reveal = checkpoint?.reveals[completedStage];
     const revealKey = reveal?.signal === "trend" ? result.trend
       : reveal?.signal === "consistency" ? result.consistency
@@ -470,8 +498,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <section className="quiz-engine__checkpoint quiz-engine__card">
         <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : translations.results.stageComplete}</span>
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? "✦" : "✓"}</div>
-        <h2>{isFinalStage && checkpoint ? checkpoint.finalTitle : quiz.stages[completedStage]}</h2>
-        {isFinalStage && checkpoint ? <p>{checkpoint.finalCopy}</p> : quiz.engine.checkpoint !== "ai" ? <p>{quiz.stageEncouragement[completedStage]}</p> : null}
+        <h2>{checkpointTitle}</h2>
+        {checkpointCopy ? <p>{checkpointCopy}</p> : null}
         {quiz.engine.checkpoint === "ai" && checkpoint ? (
           <div className="quiz-engine__ai-panel">
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
@@ -490,9 +518,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
-          {adBusy ? translations.ad.loading : isFinalStage && checkpoint ? checkpoint.finalButton : translations.quiz.continue}
+          {adBusy ? translations.ad.loading : checkpointButton}
         </button>
-        {!isFinalStage && quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
+        {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -534,7 +562,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
-            <strong>{result.answered}/{result.total}</strong>
+            <strong>{result.score}/{result.total}</strong>
             <span>{translations.quiz.finalScore}</span>
           </div> : null}
           <div>
@@ -569,7 +597,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <span>{translations.quiz.round} {currentStage + 1}</span>
         <strong>{quiz.stages[currentStage]}</strong>
       </div>
-      <div className="quiz-engine__progress" aria-label={`${progress}% ${translations.results.complete}`}>
+      <div className="quiz-engine__progress">
         <i style={{ width: `${progress}%` }} />
       </div>
       <article className="quiz-engine__question quiz-engine__card">
@@ -578,6 +606,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <QuestionRenderer
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
+          key={currentQuestion.id}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}

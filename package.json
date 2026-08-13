@@ -5,14 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/prepare-quiz-assets.mjs && next build",
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
-    "lint": "tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs",
+    "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs",
     "test": "node --experimental-strip-types --test components/quiz/*.test.ts",
     "validate": "node scripts/validate-quizzes.mjs",
     "validate:quizzes": "node scripts/validate-quizzes.mjs",
-    "validate:production": "node scripts/validate-production.mjs"
+    "validate:production": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-production.mjs"
   },
   "dependencies": {
     "next": "15.5.18",
@@ -24,6 +24,7 @@
     "@types/node": "^22.15.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.8.3"
   }
 }

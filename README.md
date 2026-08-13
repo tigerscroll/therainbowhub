@@ -11,7 +11,7 @@ data/quizzes/my-quiz/
   assets/          # optional thumbnail, artwork and avatar images
 ```
 
-`quiz.json` contains engine, listing, estimate and theme settings. Locale files contain only visible translated content. `title` is also the SEO title and `summary` is also the SEO description.
+`quiz.json` contains engine, listing, estimate and theme settings. Locale files contain visible translated content and stable scoring identifiers. Page metadata uses concise, route-safe versions of the editorial title and summary when necessary.
 
 Quiz-specific text belongs in the quiz folder. `landing.cta` controls that quiz's start button in each locale. Shared runner labels such as Continue, Loading ad, Restart and About This Quiz live once in `data/i18n/<locale>.json`; every quiz reuses them and validation rejects missing labels. An `about` block only needs `body` and an optional `disclaimer`—there is no custom About title to maintain.
 
@@ -28,8 +28,12 @@ Every question can choose a folder-configured `presentation`:
 - `icons` with one localized `icons` entry per choice.
 - `scale` for five discrete, keyboard-accessible stops.
 - `memory-cue` with three or four `memoryItems` and a localized `continueLabel`.
+- `sequence` for ordered visual items.
+- `grid` for 2×2 or 3×3 visual matrices.
+- `code` for two to six displayed rules.
+- `spatial` for arrows and shape transformations.
 
-Any scored question may also include a localized `study` block. A study cue displays two to eight text or icon items before the answer phase, supports a timed automatic transition or a timed manual Continue, and never adds another question to the progress or score denominator. Questions may set `delay` (200–400ms), `correct` for hidden objective scoring, `category` for score summaries, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–350ms).
+Any scored question may also include a localized `study` block. A study cue displays two to eight text or icon items before the answer phase, supports a timed automatic transition or a timed manual Continue, and never adds another question to the progress or score denominator. Questions may set `delay` (200–600ms), `correct` for hidden objective scoring, `category` for score summaries, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–600ms).
 
 Set `engine.flow` to `linear` or `staged`. Set `advance` to `automatic` or `manual`, and `feedback` to `instant`, `selection-only`, or `after-results`.
 
@@ -43,7 +47,7 @@ An optional `engine.estimate` keeps entertainment estimates quiz-folder controll
 
 ## Theme and landing page
 
-All normal customisation is in `quiz.json`: colors, type preset, texture, artwork, header colors and landing/question/result layouts. No engine code changes are needed. The optional `theme.header` block accepts `background`, `text`, `border` and `shadow`; the shared header remains exactly 50px high.
+All normal customisation is in `quiz.json`: colors, typography, texture, artwork, header colors and landing/question/result layouts. No engine code changes are needed. The optional `theme.header` block accepts `background`, `text`, `border` and `shadow`; the shared header is 50px on desktop and 40px on mobile/tablet.
 
 If a quiz needs art direction beyond those settings, add `theme.css` inside that quiz folder. It is discovered automatically—there is no theme registry to edit. Scope every selector under `[data-quiz-theme="<slug>"]` so it cannot affect the shared site header or footer.
 
@@ -51,7 +55,7 @@ To create another quiz, copy one quiz folder, change its slug/config/content, an
 
 ## Saved progress
 
-Quiz progress is saved indefinitely in `localStorage`, separately for every quiz and locale. Answers, memory-cue completion, the current question, checkpoint and result screen are restored after refreshes and browser restarts. A synchronous pre-paint restore prevents the server landing from flashing before the saved screen. Ad-loading screens are never persisted: reloading during an ad returns to the safe question/checkpoint that launched it. A structural content signature rejects incompatible progress after a quiz changes, and Restart clears that quiz's saved progress and returns to its landing.
+Quiz progress is saved for 30 minutes in `localStorage`, separately for every quiz and locale. Answers, memory-cue completion, the current question, checkpoint and result screen are restored after refreshes and browser restarts during that window. A synchronous pre-paint restore prevents the server landing from flashing before the saved screen. Ad-loading screens are never persisted: reloading during an ad returns to the safe question/checkpoint that launched it. A structural content signature rejects incompatible progress after a quiz changes, and Restart clears that quiz's saved progress and returns to its landing.
 
 ## Add a language
 

@@ -94,9 +94,24 @@ function LinkCard({ href, image, imageAlt, label, summary, title }: {
   summary: string;
   title: string;
 }) {
+  const compactImage = image?.endsWith("-960.webp")
+    ? image.replace(/-960\.webp$/, "-480.webp")
+    : undefined;
+
   return (
-    <Link className="hub-quiz-card" href={href}>
-      {image ? <img alt={imageAlt} src={image} /> : null}
+    <Link className="hub-quiz-card" href={href} prefetch={false}>
+      {image ? (
+        <img
+          alt={imageAlt}
+          decoding="async"
+          height={540}
+          loading="lazy"
+          sizes="(max-width: 760px) calc(100vw - 24px), (max-width: 940px) calc((100vw - 66px) / 2), (max-width: 1208px) calc((100vw - 84px) / 3), 375px"
+          src={image}
+          srcSet={compactImage ? `${compactImage} 480w, ${image} 960w` : undefined}
+          width={960}
+        />
+      ) : null}
       <div className="hub-quiz-card__body">
         <span className="hub-chip">{label}</span>
         <h2>{title}</h2>

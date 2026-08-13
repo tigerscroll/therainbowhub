@@ -106,7 +106,8 @@ function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
   const dimensions = quiz.result.scoreDimensions.map((dimension) => {
     const matching = answered.filter((question) => question.category && dimension.categories.includes(question.category));
     const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
-    return { label: dimension.label, attempts: matching.length, score: matching.length ? Math.round((correct / matching.length) * 100) : 0 };
+    const ratio = matching.length ? correct / matching.length : 0;
+    return { label: dimension.label, attempts: matching.length, ratio, score: Math.round(ratio * 100) };
   });
   const dimensionScores = Object.fromEntries(dimensions.map((dimension) => [dimension.label, dimension.score]));
   const attemptedDimensions = dimensions.filter((dimension) => dimension.attempts > 0);
@@ -116,16 +117,16 @@ function scoreCorrectAnswers(quiz: Quiz, answers: QuizAnswers): QuizScore {
     return {
       label: dimension.label,
       order,
-      correct: correctQuestions.length,
+      ratio: matching.length ? correctQuestions.length / matching.length : 0,
       difficulty: correctQuestions.reduce((sum, question) => sum + quiz.questions.findIndex((item) => item.id === question.id) + 1, 0),
     };
   }).filter((dimension) => attemptedDimensions.some((attempted) => attempted.label === dimension.label));
   const rankedBest = quiz.engine.tieBreaks?.categories === "harder-correct"
-    ? [...dimensionTieStats].sort((a, b) => b.correct - a.correct || b.difficulty - a.difficulty || a.order - b.order)
-    : [...attemptedDimensions].sort((a, b) => b.score - a.score);
+    ? [...dimensionTieStats].sort((a, b) => b.ratio - a.ratio || b.difficulty - a.difficulty || a.order - b.order)
+    : [...attemptedDimensions].sort((a, b) => b.ratio - a.ratio);
   const rankedWorst = quiz.engine.tieBreaks?.categories === "harder-correct"
-    ? [...dimensionTieStats].sort((a, b) => a.correct - b.correct || a.difficulty - b.difficulty || a.order - b.order)
-    : [...attemptedDimensions].sort((a, b) => a.score - b.score);
+    ? [...dimensionTieStats].sort((a, b) => a.ratio - b.ratio || a.difficulty - b.difficulty || a.order - b.order)
+    : [...attemptedDimensions].sort((a, b) => a.ratio - b.ratio);
   const stageScores = quiz.stages.map((label, stage) => {
     const matching = answered.filter((question) => question.stage === stage);
     const correct = matching.filter((question) => answers[question.id] === question.answerIndex).length;
