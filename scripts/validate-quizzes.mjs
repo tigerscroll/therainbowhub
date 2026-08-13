@@ -225,6 +225,38 @@ for (const folder of folders) {
       roundTo: 5,
     }), `${folder.name}: IQ derived-score configuration is incorrect.`);
   }
+  if (folder.name === "biology") {
+    const expectedCategories = {
+      human_body: 10,
+      animals: 10,
+      plants: 10,
+      cells_genetics: 10,
+      ecosystems: 10,
+      life_processes: 10,
+    };
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const rapidLab = source.stages?.[7]?.questions ?? [];
+    const finalSpecimen = source.stages?.[9]?.questions ?? [];
+    fail(localeFiles.length === 1 && localeFiles[0] === "en.json", `${folder.name}: Biology must launch in English only.`);
+    fail(source.stages?.length === 10, `${folder.name}/en.json: Biology must contain ten rounds.`);
+    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Biology round must contain six questions.`);
+    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Biology must contain exactly 60 questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Biology needs exactly ten questions in each category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length >= 3 && question.answers.length <= 5), `${folder.name}/en.json: every Biology question needs three to five choices.`);
+    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim()))), `${folder.name}/en.json: every Biology choice must be non-empty text.`);
+    fail(sourceQuestions.every((question) => new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: Biology choices must be unique within each question.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < question.answers.length), `${folder.name}/en.json: every Biology question needs one valid correct index.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Biology default advancement must be exactly 450ms.`);
+    fail(rapidLab.length === 6 && rapidLab.every((question) => question.delay === 350), `${folder.name}/en.json: every Rapid Lab question must use 350ms.`);
+    fail(rapidLab.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Rapid Lab prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => rapidLab.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Rapid Lab may override Biology's default advancement.`);
+    fail(finalSpecimen.filter((question) => question.reasoningSteps >= 2).length >= 3, `${folder.name}/en.json: at least three Final Specimen questions need two-step reasoning.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Biology profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Biology must lead its result with the percentage.`);
+  }
 
   for (const localeFile of localeFiles) {
     const localized = read(path.join(directory, localeFile));

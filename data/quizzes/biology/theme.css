@@ -1,0 +1,279 @@
+[data-quiz-theme="biology"] {
+  --bio-forest: #155c4b;
+  --bio-forest-dark: #103c33;
+  --bio-teal: #218c82;
+  --bio-mint: #dff0e7;
+  --bio-ivory: #fffdf4;
+  --bio-coral: #df7769;
+  --bio-yellow: #e7b84b;
+  --bio-ink: #17372f;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 9% 10%, rgba(255, 255, 255, .9) 0 3px, transparent 4px),
+    radial-gradient(circle at 91% 22%, rgba(33, 140, 130, .13) 0 2px, transparent 3px),
+    linear-gradient(145deg, #edf6f0 0%, #dcece3 48%, #c9dfd3 100%);
+  background-size: 54px 54px, 42px 42px, auto;
+  color: var(--bio-ink);
+}
+
+[data-quiz-theme="biology"]::before,
+[data-quiz-theme="biology"]::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(21, 92, 75, .12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+[data-quiz-theme="biology"]::before { top: 70px; right: -130px; width: 380px; height: 380px; box-shadow: inset 0 0 0 30px rgba(255, 255, 255, .12); }
+[data-quiz-theme="biology"]::after { bottom: 120px; left: -100px; width: 270px; height: 270px; box-shadow: inset 0 0 0 18px rgba(33, 140, 130, .04); }
+[data-quiz-theme="biology"] > * { position: relative; z-index: 1; }
+
+/* A bright, compact Living Lab landing using the established quiz hierarchy. */
+[data-quiz-theme="biology"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  width: min(900px, 100%);
+  overflow: hidden;
+  padding: clamp(36px, 5.5vw, 66px);
+  border: 1px solid rgba(21, 92, 75, .24);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% -8%, rgba(33, 140, 130, .12), transparent 35%),
+    linear-gradient(155deg, rgba(255, 255, 255, .98), rgba(255, 253, 244, .96));
+  color: var(--bio-ink);
+  box-shadow: 0 32px 80px rgba(17, 76, 63, .16), 0 3px 0 rgba(255, 255, 255, .8) inset;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__landing::before {
+  position: absolute;
+  inset: 18px;
+  content: "";
+  border: 1px solid rgba(33, 140, 130, .12);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__landing::after {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  width: 62px;
+  height: 5px;
+  content: "";
+  border-radius: 8px;
+  background: var(--bio-coral);
+  box-shadow: 72px 0 var(--bio-yellow), 111px 0 var(--bio-teal);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__landing-copy {
+  display: grid;
+  width: 100%;
+  max-width: 730px;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__landing-badge {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  margin: 2px auto 11px;
+  border: 1px solid rgba(21, 92, 75, .2);
+  border-radius: 23px;
+  background: linear-gradient(145deg, #ffffff, #e9f5ee);
+  box-shadow: 0 13px 30px rgba(21, 92, 75, .14), inset 0 0 0 7px rgba(223, 240, 231, .7);
+  transform: rotate(-2deg);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__landing-badge span { font-size: 35px; transform: rotate(2deg); }
+[data-quiz-theme="biology"] .quiz-engine__eyebrow { color: var(--bio-teal); font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+[data-quiz-theme="biology"] .quiz-engine__landing .quiz-engine__eyebrow,
+[data-quiz-theme="biology"] .quiz-engine__landing .quiz-engine__lede,
+[data-quiz-theme="biology"] .quiz-engine__landing .quiz-engine__landing-meta { display: none; }
+
+[data-quiz-theme="biology"] .quiz-engine__landing h1 {
+  max-width: 740px;
+  margin: 12px auto 22px;
+  color: var(--bio-ink);
+  font-size: clamp(45px, 5vw, 66px);
+  font-weight: 900;
+  line-height: .96;
+  letter-spacing: -.052em;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__quick-start {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  padding: 0;
+  border: 0;
+  color: #536b63;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.48;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__social {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 13px;
+  margin: 0 auto 20px;
+  padding: 9px 15px;
+  border: 1px solid rgba(21, 92, 75, .22);
+  border-radius: 999px;
+  background: rgba(245, 251, 247, .92);
+  color: var(--bio-ink);
+  box-shadow: 0 8px 22px rgba(21, 92, 75, .08);
+  font-size: 14px;
+  text-align: left;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__social-text strong { color: var(--bio-teal); font-weight: 900; }
+[data-quiz-theme="biology"] .quiz-engine__social-text span { color: var(--bio-ink); font-weight: 750; }
+[data-quiz-theme="biology"] .quiz-engine__avatars { display: flex; flex: 0 0 auto; }
+[data-quiz-theme="biology"] .quiz-engine__avatars span { width: 30px; height: 30px; margin-left: -9px; border: 2px solid #fff; border-radius: 50%; background-position: center; background-size: cover; box-shadow: 0 4px 10px rgba(16, 60, 51, .18); }
+[data-quiz-theme="biology"] .quiz-engine__avatars span:first-child { margin-left: 0; }
+
+[data-quiz-theme="biology"] .quiz-engine__landing .quiz-engine__primary {
+  display: inline-flex;
+  width: min(100%, 390px);
+  min-height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-size: 19px;
+}
+
+[data-quiz-theme="biology"] .quiz-engine__primary {
+  border: 1px solid #0f4b3e;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #176854, #104c40);
+  color: #fff;
+  box-shadow: 0 6px 0 #0d3d34, 0 15px 28px rgba(15, 75, 62, .2);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__primary:active { background: linear-gradient(135deg, #176854, #104c40); color: #fff; }
+[data-quiz-theme="biology"] .quiz-engine__primary-icon { display: inline; color: #ffe39a; }
+[data-quiz-theme="biology"] .quiz-engine__ad-note { justify-content: center; color: #667970; }
+[data-quiz-theme="biology"] .quiz-engine__ad-note span { border-color: var(--bio-teal); color: var(--bio-teal); }
+[data-quiz-theme="biology"] .quiz-engine__landing-art,
+[data-quiz-theme="biology"] .quiz-engine__landing-symbol { display: none !important; }
+
+/* Specimen-card question system. */
+[data-quiz-theme="biology"] .quiz-engine__question-shell { width: min(780px, 100%); }
+[data-quiz-theme="biology"] .quiz-engine__progress-head { color: #49655b; font-weight: 800; }
+[data-quiz-theme="biology"] .quiz-engine__progress-head strong { color: var(--bio-forest); }
+[data-quiz-theme="biology"] .quiz-engine__progress { height: 10px; border: 1px solid rgba(21, 92, 75, .18); background: rgba(255, 255, 255, .72); box-shadow: inset 0 2px 5px rgba(21, 92, 75, .08); }
+[data-quiz-theme="biology"] .quiz-engine__progress i { background: linear-gradient(90deg, var(--bio-teal), #6cb98d 70%, var(--bio-yellow)); box-shadow: 0 0 14px rgba(33, 140, 130, .28); }
+
+[data-quiz-theme="biology"] .quiz-engine__question,
+[data-quiz-theme="biology"] .quiz-engine__checkpoint,
+[data-quiz-theme="biology"] .quiz-engine__results,
+[data-quiz-theme="biology"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(21, 92, 75, .24);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(33, 140, 130, .08), transparent 27%),
+    rgba(255, 253, 244, .97);
+  color: var(--bio-ink);
+  box-shadow: 0 26px 62px rgba(17, 76, 63, .15), inset 0 2px 0 rgba(255, 255, 255, .9);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__question::before,
+[data-quiz-theme="biology"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="biology"] .quiz-engine__results::before,
+[data-quiz-theme="biology"] .quiz-engine__about::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: "";
+  background: linear-gradient(90deg, var(--bio-teal) 0 54%, var(--bio-yellow) 54% 73%, var(--bio-coral) 73%);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__question h1 { max-width: 690px; margin: 0 auto 28px; color: var(--bio-ink); font-size: clamp(30px, 5vw, 47px); line-height: 1.05; letter-spacing: -.035em; }
+[data-quiz-theme="biology"] .quiz-engine__question-context { width: fit-content; margin: 0 auto 14px; padding: 6px 11px; border-radius: 999px; background: var(--bio-mint); color: var(--bio-forest); font-weight: 850; letter-spacing: .08em; }
+
+[data-quiz-theme="biology"] .quiz-engine__visual {
+  border: 1px solid rgba(21, 92, 75, .2);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f4fbf7, #e8f4ed);
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, .55);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__visual span strong { color: var(--bio-forest-dark); }
+[data-quiz-theme="biology"] .quiz-engine__visual i { color: var(--bio-coral); }
+[data-quiz-theme="biology"] .quiz-engine__answer {
+  border: 1px solid rgba(21, 92, 75, .24);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, .9);
+  color: var(--bio-ink);
+  box-shadow: 0 7px 16px rgba(21, 92, 75, .07);
+}
+
+[data-quiz-theme="biology"] .quiz-engine__answer > span { border: 0; background: var(--bio-mint); color: var(--bio-forest); box-shadow: inset 0 0 0 1px rgba(21, 92, 75, .13); }
+[data-quiz-theme="biology"] .quiz-engine__answer[data-selected] { border-color: var(--bio-teal); background: #dff3e9; box-shadow: 0 0 0 3px rgba(33, 140, 130, .15), 0 8px 20px rgba(21, 92, 75, .12); }
+[data-quiz-theme="biology"] .quiz-engine__answers--icons .quiz-engine__answer-icon { border: 0; background: transparent; box-shadow: none; font-size: 43px; }
+
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="biology"] .quiz-engine__answer:hover:not(:disabled) { border-color: var(--bio-teal); background: #f5fbf7; transform: translateY(-2px); }
+  [data-quiz-theme="biology"] .quiz-engine__primary:hover:not(:disabled) { filter: brightness(1.05); transform: translateY(-1px); }
+}
+
+/* Laboratory checkpoints and result readouts. */
+[data-quiz-theme="biology"] .quiz-engine__checkpoint-icon,
+[data-quiz-theme="biology"] .quiz-engine__result-icon { border: 1px solid rgba(21, 92, 75, .28); background: linear-gradient(145deg, #dff2e8, #fffdf4); color: var(--bio-forest); box-shadow: 0 12px 30px rgba(21, 92, 75, .14); }
+[data-quiz-theme="biology"] .quiz-engine__checkpoint h2,
+[data-quiz-theme="biology"] .quiz-engine__results h2 { color: var(--bio-ink); letter-spacing: -.04em; }
+[data-quiz-theme="biology"] .quiz-engine__checkpoint > p,
+[data-quiz-theme="biology"] .quiz-engine__result-copy,
+[data-quiz-theme="biology"] .quiz-engine__about p { color: #60756c; }
+[data-quiz-theme="biology"] .quiz-engine__ai-panel { border: 1px solid rgba(21, 92, 75, .2); border-radius: 17px; background: #f2f9f5; box-shadow: inset 0 0 0 5px rgba(255,255,255,.55); }
+[data-quiz-theme="biology"] .quiz-engine__ai-top > span { background: var(--bio-teal); box-shadow: 0 0 0 6px rgba(33, 140, 130, .1); }
+[data-quiz-theme="biology"] .quiz-engine__ai-panel > p { color: #586d64; }
+[data-quiz-theme="biology"] .quiz-engine__checkpoint-next,
+[data-quiz-theme="biology"] .quiz-engine__checklist li,
+[data-quiz-theme="biology"] .quiz-engine__result-signals div,
+[data-quiz-theme="biology"] .quiz-engine__result-summary div { border: 1px solid rgba(21, 92, 75, .18); border-radius: 14px; background: rgba(245, 251, 247, .86); }
+[data-quiz-theme="biology"] .quiz-engine__checkpoint-next span { color: #74877f; }
+[data-quiz-theme="biology"] .quiz-engine__checkpoint-next strong { color: var(--bio-forest); }
+[data-quiz-theme="biology"] .quiz-engine__checklist span { color: var(--bio-teal); }
+[data-quiz-theme="biology"] .quiz-engine__result-percentage strong { color: var(--bio-forest); text-shadow: 0 8px 25px rgba(21, 92, 75, .12); }
+[data-quiz-theme="biology"] .quiz-engine__result-profile { display: inline-block; padding: 8px 15px; border-radius: 999px; background: var(--bio-forest); color: #fff; font-size: clamp(18px, 3vw, 24px); letter-spacing: .02em; }
+[data-quiz-theme="biology"] .quiz-engine__result-signals { border: 1px solid rgba(21, 92, 75, .18); border-radius: 18px; background: rgba(223, 240, 231, .5); }
+[data-quiz-theme="biology"] .quiz-engine__result-signals dt { color: #74877f; }
+[data-quiz-theme="biology"] .quiz-engine__result-signals dd { color: var(--bio-forest-dark); }
+[data-quiz-theme="biology"] .quiz-engine__dimension b { background: linear-gradient(90deg, var(--bio-teal), #6cb98d); }
+[data-quiz-theme="biology"] .quiz-engine__disclaimer { border: 1px solid rgba(223, 119, 105, .45); border-radius: 15px; background: rgba(223, 119, 105, .08); color: #63776e; }
+[data-quiz-theme="biology"] .quiz-engine__secondary { border-color: rgba(21, 92, 75, .3); color: var(--bio-forest); }
+[data-quiz-theme="biology"] .quiz-engine__study-items strong,
+[data-quiz-theme="biology"] .quiz-engine__memory-items strong { border: 1px solid rgba(21, 92, 75, .22); border-radius: 15px; background: #f4fbf7; color: var(--bio-forest-dark); box-shadow: 0 8px 18px rgba(21, 92, 75, .08); }
+
+@media (max-width: 700px) {
+  [data-quiz-theme="biology"] { padding: 10px 8px 30px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing { padding: 27px 19px 31px; border-radius: 22px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing::before { inset: 10px; border-radius: 16px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing::after { top: 15px; left: 20px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing-badge { width: 62px; height: 62px; margin-top: 5px; border-radius: 20px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing-badge span { font-size: 31px; }
+  [data-quiz-theme="biology"] .quiz-engine__landing h1 { margin: 10px auto 19px; font-size: clamp(38px, 11vw, 50px); line-height: .98; letter-spacing: -.045em; }
+  [data-quiz-theme="biology"] .quiz-engine__quick-start { margin-bottom: 17px; font-size: 16px; }
+  [data-quiz-theme="biology"] .quiz-engine__social { gap: 10px; padding: 8px 12px; white-space: normal; }
+  [data-quiz-theme="biology"] .quiz-engine__landing .quiz-engine__primary { min-height: 58px; }
+  [data-quiz-theme="biology"] .quiz-engine__question,
+  [data-quiz-theme="biology"] .quiz-engine__checkpoint,
+  [data-quiz-theme="biology"] .quiz-engine__results { border-radius: 20px; }
+  [data-quiz-theme="biology"] .quiz-engine__question h1 { font-size: clamp(27px, 8vw, 38px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="biology"] .quiz-engine__landing-badge { transform: none; }
+}
