@@ -16,15 +16,19 @@ type SiteShellProps = {
 
 export function SiteShell({ children, currentPath, locale, quizTheme, translations }: SiteShellProps) {
   const direction = getLocaleDirection(locale);
-  const headerStyle = quizTheme?.header ? {
+  const shellStyle = quizTheme?.header ? {
     "--site-header-background": quizTheme.header.background,
     "--site-header-text": quizTheme.header.text,
     "--site-header-border": quizTheme.header.border,
     "--site-header-shadow": quizTheme.header.shadow,
+    "--site-footer-background": quizTheme.header.background,
+    "--site-footer-text": quizTheme.header.text,
+    "--site-footer-border": quizTheme.header.border,
+    "--site-footer-accent": quizTheme.header.border,
   } as CSSProperties : undefined;
 
   return (
-    <div className="site-shell" dir={direction} style={headerStyle}>
+    <div className="site-shell" dir={direction} style={shellStyle}>
       <DocumentLocale direction={direction} locale={locale} />
       <TrackingPageView />
       <Header currentPath={currentPath} locale={locale} translations={translations} />

@@ -78,6 +78,30 @@ requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
 requireFile("scripts/prepare-quiz-assets.mjs");
 
+const quizEngineCssPath = path.join(rootDir, "styles", "quiz-engine.css");
+const quizEngineCss = fs.readFileSync(quizEngineCssPath, "utf8");
+const requiredQuizShellContract = [
+  "--quiz-shell-container-width: 900px;",
+  "--quiz-shell-header-gap: 18px;",
+  "--quiz-shell-side-gutter: 16px;",
+  "width: min(var(--quiz-shell-container-width), 100%) !important;",
+  "max-width: var(--quiz-shell-container-width) !important;",
+  "margin-inline: auto !important;",
+  "margin-top: 0 !important;",
+  "padding-top: var(--quiz-shell-header-gap) !important;",
+  "padding: var(--quiz-shell-header-gap) var(--quiz-shell-side-gutter) 28px !important;",
+  "--quiz-shell-header-gap: 6px;",
+  "--quiz-shell-side-gutter: 6px;",
+  "--quiz-shell-header-gap: 4px;",
+  "--quiz-shell-side-gutter: 3px;",
+];
+
+for (const declaration of requiredQuizShellContract) {
+  if (!quizEngineCss.includes(declaration)) {
+    addError(`Shared quiz-container contract is missing \`${declaration}\`: styles/quiz-engine.css`);
+  }
+}
+
 const infoRoot = path.join(rootDir, "data", "info-pages");
 const referenceInfo = JSON.parse(fs.readFileSync(path.join(infoRoot, "en.json"), "utf8"));
 const referenceInfoShape = JSON.stringify(dataShape(referenceInfo));
@@ -99,8 +123,32 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 const quizRoot = path.join(rootDir, "data", "quizzes");
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
+  const themeRelativePath = `data/quizzes/${entry.name}/theme.css`;
+  const themePath = path.join(rootDir, themeRelativePath);
+  requireFile(themeRelativePath);
   requireFile(`public/quizzes/${entry.name}/assets/thumbnail-480.webp`);
   requireFile(`public/quizzes/${entry.name}/assets/thumbnail-960.webp`);
+
+  if (!fs.existsSync(themePath)) continue;
+  const themeCss = fs.readFileSync(themePath, "utf8");
+
+  if (themeCss.includes("--quiz-shell-")) {
+    addError(`Quiz themes cannot redefine reserved shared geometry variables: ${themeRelativePath}`);
+  }
+
+  const blockPattern = /([^{}]+)\{([^{}]*)\}/g;
+  let block;
+  while ((block = blockPattern.exec(themeCss))) {
+    const selector = block[1];
+    const declarations = block[2];
+    const targetsProtectedContainer = /\.quiz-engine__(?:landing|about)(?![-\w])/.test(selector);
+    const forcesProtectedGeometry = /(?:^|;)\s*(?:width|max-width|margin(?:-(?:top|left|right|inline(?:-start|-end)?))?)\s*:[^;]*!important/i.test(declarations);
+
+    if (targetsProtectedContainer && forcesProtectedGeometry) {
+      addError(`Quiz themes cannot force landing/About width or alignment outside the shared site rule: ${themeRelativePath}`);
+      break;
+    }
+  }
 }
 
 if (errors.length) {
