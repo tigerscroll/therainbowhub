@@ -171,6 +171,27 @@ test("Midwifery result profiles switch at every exact score boundary", () => {
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
 });
 
+test("Idiom result profiles and ace threshold switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Phrase Master" },
+    { minRatio: 0.8, title: "The Natural Wordsmith" },
+    { minRatio: 0.7, title: "The Idiom Insider" },
+    { minRatio: 0.6, title: "The Context Catcher" },
+    { minRatio: 0.5, title: "The Phrase Explorer" },
+    { minRatio: 0, title: "The Literal Wildcard" },
+  ];
+  const cases = [
+    [29, "The Literal Wildcard"], [30, "The Phrase Explorer"], [35, "The Phrase Explorer"],
+    [36, "The Context Catcher"], [41, "The Context Catcher"], [42, "The Idiom Insider"],
+    [47, "The Idiom Insider"], [48, "The Natural Wordsmith"], [53, "The Natural Wordsmith"],
+    [54, "The Phrase Master"], [60, "The Phrase Master"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
+});
+
 test("80% target state distinguishes achieved, reachable and unreachable", () => {
   assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
   assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");

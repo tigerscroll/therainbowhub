@@ -52,11 +52,19 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   const columnCount = visual.columns
     ?? (question.presentation === "code" ? Math.min(visual.items.length, 2) : visual.items.length);
   const isVerboseSequence = question.presentation === "sequence"
-    && (visual.items.some((item) => item.length > 16) || visual.items.join("").length > 52);
+    && (
+      (visual.items.length >= 4 && visual.items.some((item) => item.length > 10))
+      || visual.items.join("").length > 52
+    );
   const isCompactSequence = question.presentation === "sequence"
     && visual.items.every((item) => item.length <= 10);
   const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
+  const needsMobileTwoColumns = question.presentation !== "sequence"
+    && question.presentation !== "code"
+    && columnCount >= 4
+    && visual.items.some((item) => item.length > 6);
+  const hasUnbalancedLastTile = columnCount === 2 && visual.items.length % 2 === 1;
   const visualStyle = {
     "--quiz-visual-columns": Math.max(1, columnCount),
   } as CSSProperties;
@@ -64,7 +72,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}`}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}`}
       style={visualStyle}
     >
       {visual.items.map((item, index) => (

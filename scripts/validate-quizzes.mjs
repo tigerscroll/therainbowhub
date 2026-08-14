@@ -396,6 +396,95 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Midwifery must lead its result with the percentage.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Midwifery rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "idiom") {
+    const targetMap = [
+      ["break_the_ice", "break the ice"], ["piece_of_cake", "piece of cake"], ["under_the_weather", "under the weather"], ["spill_the_beans", "spill the beans"], ["raining_cats_and_dogs", "raining cats and dogs"], ["hit_the_nail_on_the_head", "hit the nail on the head"],
+      ["on_the_same_page", "on the same page"], ["once_in_a_blue_moon", "once in a blue moon"], ["cost_an_arm_and_a_leg", "cost an arm and a leg"], ["burn_the_midnight_oil", "burn the midnight oil"], ["let_the_cat_out_of_the_bag", "let the cat out of the bag"], ["pull_someones_leg", "pull someone's leg"],
+      ["walking_on_eggshells", "walking on eggshells"], ["keep_an_eye_on", "keep an eye on"], ["add_fuel_to_the_fire", "add fuel to the fire"], ["fish_out_of_water", "fish out of water"], ["elephant_in_the_room", "elephant in the room"], ["see_eye_to_eye", "see eye to eye"],
+      ["back_to_square_one", "back to square one"], ["call_it_a_day", "call it a day"], ["go_the_extra_mile", "go the extra mile"], ["get_the_ball_rolling", "get the ball rolling"], ["read_the_room", "read the room"], ["sit_on_the_fence", "sit on the fence"],
+      ["blessing_in_disguise", "blessing in disguise"], ["silver_lining", "silver lining"], ["tip_of_the_iceberg", "tip of the iceberg"], ["through_thick_and_thin", "through thick and thin"], ["up_in_the_air", "up in the air"], ["not_my_cup_of_tea", "not my cup of tea"],
+      ["beat_around_the_bush", "beat around the bush"], ["dont_judge_a_book_by_its_cover", "don't judge a book by its cover"], ["easier_said_than_done", "easier said than done"], ["hang_in_there", "hang in there"], ["no_hard_feelings", "no hard feelings"], ["benefit_of_the_doubt", "benefit of the doubt"],
+      ["miss_the_boat", "miss the boat"], ["break_a_leg", "break a leg"], ["head_in_the_clouds", "head in the clouds"], ["barking_up_the_wrong_tree", "barking up the wrong tree"], ["jump_on_the_bandwagon", "jump on the bandwagon"], ["cross_that_bridge_when_we_come_to_it", "cross that bridge when we come to it"],
+      ["the_ball_is_in_your_court", "the ball is in your court"], ["better_late_than_never", "better late than never"], ["keep_your_chin_up", "keep your chin up"], ["i_wouldnt_hold_my_breath", "i wouldn't hold my breath"], ["time_flies", "time flies"], ["cut_to_the_chase", "cut to the chase"],
+      ["take_the_bull_by_the_horns", "take the bull by the horns"], ["the_best_of_both_worlds", "the best of both worlds"], ["the_last_straw", "the last straw"], ["two_sides_of_the_same_coin", "two sides of the same coin"], ["water_under_the_bridge", "water under the bridge"], ["throw_in_the_towel", "throw in the towel"],
+      ["move_the_goalposts", "move the goalposts"], ["the_calm_before_the_storm", "the calm before the storm"], ["leave_no_stone_unturned", "leave no stone unturned"], ["the_writing_is_on_the_wall", "the writing is on the wall"], ["open_a_can_of_worms", "open a can of worms"], ["needle_in_a_haystack", "needle in a haystack"],
+    ];
+    const expectedCategories = Object.fromEntries([
+      "meaning_interpretation", "phrase_completion", "context_usage", "tone_intent", "visual_metaphor", "precision_correction",
+    ].map((category) => [category, 10]));
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const normalizePhrase = (value) => String(value ?? "")
+      .toLowerCase()
+      .normalize("NFKC")
+      .replace(/[‘’]/g, "'")
+      .replace(/[^a-z0-9']+/g, " ")
+      .trim()
+      .replace(/\s+/g, " ");
+    const visibleQuestionText = (question) => [
+      question.question,
+      question.context,
+      question.explanation,
+      ...(question.answers ?? []),
+      ...(question.visual?.items ?? []),
+    ].map(normalizePhrase).filter(Boolean).join(" | ");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Idiom must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer" && config.engine?.targetRatio === .8, `${folder.name}: Idiom must use correct-answer scoring and the 80% ace threshold.`);
+    fail(source.title === "Only 5% Of Adults Can Ace This Idiom Quiz", `${folder.name}/en.json: Idiom title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Idiom landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Idiom needs ten rounds of six questions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Idiom must contain 60 uniquely identified questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Idiom needs exactly ten questions in every language-skill category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && question.answers.every((answer) => typeof answer === "string" && answer.trim()) && new Set(question.answers).size === 4), `${folder.name}/en.json: every Idiom question needs four unique non-empty choices.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Idiom question needs one valid correct index.`);
+    const iconQuestions = sourceQuestions.filter((question) => question.presentation === "icons");
+    fail(iconQuestions.every((question) => Array.isArray(question.icons) && question.icons.length === question.answers.length && question.icons.every((icon) => typeof icon === "string" && icon.trim() && !/^[○●◯□■◇◆△▲▽▼?]+$/u.test(icon.trim()))), `${folder.name}/en.json: icon answers need genuine aligned emoji rather than placeholder geometry.`);
+    const expectedIconSets = {
+      "idiom-r2q5": ["📦", "🧺", "👜", "🎩"],
+      "idiom-r3q1": ["🏃", "🤫", "🍳", "🥚"],
+      "idiom-r3q4": ["🐦", "🐢", "🐟", "🦀"],
+      "idiom-r3q5": ["💡", "🐘", "🚪", "✅"],
+    };
+    for (const [id, icons] of Object.entries(expectedIconSets)) fail(JSON.stringify(sourceQuestions.find((question) => question.id === id)?.icons) === JSON.stringify(icons), `${folder.name}/en.json: ${id} icon meanings are misaligned with their answers.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Idiom correct-answer positions must be exactly 15 each across A–D.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Idiom question needs a post-result explanation.`);
+    fail(sourceQuestions.every((question) => !question.visual || (typeof question.visual.separator === "string" && question.visual.separator.trim() && typeof question.visual.ariaLabel === "string" && question.visual.ariaLabel.trim())), `${folder.name}/en.json: every Idiom visual needs a visible separator and accessible label.`);
+    fail(JSON.stringify(sourceQuestions.map((question) => question.targetIdiom)) === JSON.stringify(targetMap.map(([id]) => id)), `${folder.name}/en.json: targetIdiom order must exactly match the locked 60-phrase inventory.`);
+    fail(new Set(sourceQuestions.map((question) => question.targetIdiom)).size === 60, `${folder.name}/en.json: every targetIdiom must appear exactly once.`);
+    targetMap.forEach(([id, canonical], targetIndex) => {
+      const canonicalText = normalizePhrase(canonical);
+      const ownText = visibleQuestionText(sourceQuestions[targetIndex]);
+      fail(ownText.includes(canonicalText), `${folder.name}/en.json: ${id} must expose its canonical English phrase in its own question or explanation.`);
+      sourceQuestions.forEach((question, questionIndex) => {
+        if (questionIndex === targetIndex) return;
+        fail(!(question.answers ?? []).some((answer) => normalizePhrase(answer).includes(canonicalText)), `${folder.name}/en.json: ${id} leaks into another question's answer choices.`);
+        if (questionIndex < targetIndex) fail(!visibleQuestionText(question).includes(canonicalText), `${folder.name}/en.json: future target ${id} is exposed before its scored question.`);
+      });
+    });
+    const sprint = source.stages?.[7]?.questions ?? [];
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Idiom default advancement must be exactly 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Phrase Flash question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Phrase Flash prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Phrase Flash may override the 450ms default.`);
+    const trapdoor = source.stages?.[8]?.questions ?? [];
+    trapdoor.forEach((question) => {
+      const correctTokens = normalizePhrase(question.answers[question.correct]).split(" ");
+      question.answers.forEach((answer, answerIndex) => {
+        if (answerIndex === question.correct) return;
+        const answerTokens = normalizePhrase(answer).split(" ");
+        const differences = correctTokens.reduce((total, token, index) => total + Number(answerTokens[index] !== token), Math.abs(answerTokens.length - correctTokens.length));
+        fail(differences === 1, `${folder.name}/en.json: ${question.id} distractor ${answerIndex + 1} must contain exactly one lexical error.`);
+      });
+    });
+    const finalRound = source.stages?.[9]?.questions ?? [];
+    fail(finalRound.filter((question) => question.reasoningSteps >= 2 && typeof question.context === "string" && question.context.trim()).length >= 4, `${folder.name}/en.json: The Last Word needs at least four two-clue questions.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Idiom profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Idiom must lead its result with the percentage.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Idiom rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",
@@ -507,6 +596,7 @@ for (const folder of folders) {
       } : undefined), `${folder.name}/${localeFile}: question ${index + 1} visual structure differs from English.`);
       fail(question.delay === sourceQuestion?.delay, `${folder.name}/${localeFile}: question ${index + 1} delay differs from English.`);
       fail(question.reasoningSteps === sourceQuestion?.reasoningSteps, `${folder.name}/${localeFile}: question ${index + 1} reasoning-step structure differs from English.`);
+      fail(question.targetIdiom === sourceQuestion?.targetIdiom, `${folder.name}/${localeFile}: question ${index + 1} targetIdiom differs from English.`);
       fail(JSON.stringify(question.study ? {
         presentation: question.study.presentation ?? "text",
         items: question.study.items?.length,

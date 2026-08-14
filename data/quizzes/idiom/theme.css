@@ -1,0 +1,335 @@
+[data-quiz-theme="idiom"] {
+  --phrase-ink: #24214f;
+  --phrase-indigo: #342b72;
+  --phrase-indigo-dark: #261f5b;
+  --phrase-coral: #ef756a;
+  --phrase-yellow: #f5c84c;
+  --phrase-mint: #9fe0c7;
+  --phrase-cream: #fff8e9;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(239,117,106,.12) 0 7%, transparent 7.3%),
+    radial-gradient(circle at 90% 28%, rgba(159,224,199,.18) 0 9%, transparent 9.3%),
+    linear-gradient(145deg, #fff9ed 0%, #f5ead7 52%, #ead8c4 100%);
+  color: var(--phrase-ink);
+}
+
+[data-quiz-theme="idiom"]::before,
+[data-quiz-theme="idiom"]::after {
+  position: absolute;
+  content: "“";
+  z-index: 0;
+  color: rgba(52,43,114,.045);
+  font-family: Georgia, serif;
+  font-size: 340px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+[data-quiz-theme="idiom"]::before { top: 90px; left: -35px; }
+[data-quiz-theme="idiom"]::after { right: -20px; bottom: 60px; content: "”"; }
+[data-quiz-theme="idiom"] > * { position: relative; z-index: 1; }
+
+[data-quiz-theme="idiom"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  width: min(900px, 100%);
+  overflow: hidden;
+  padding: clamp(36px, 5.5vw, 66px);
+  border: 1px solid rgba(52,43,114,.2);
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, transparent 0 76%, rgba(159,224,199,.12) 76%),
+    rgba(255,253,248,.985);
+  box-shadow: 0 32px 82px rgba(52,43,114,.15), inset 0 3px 0 rgba(255,255,255,.94);
+  color: var(--phrase-ink);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__landing::before {
+  position: absolute;
+  inset: 18px;
+  content: "";
+  border: 1px solid rgba(52,43,114,.1);
+  border-radius: 21px;
+  pointer-events: none;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__landing::after {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  width: 58px;
+  height: 6px;
+  content: "";
+  border-radius: 99px;
+  background: var(--phrase-coral);
+  box-shadow: 68px 0 var(--phrase-yellow), 104px 0 var(--phrase-mint);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__landing-copy {
+  display: grid;
+  width: 100%;
+  max-width: 760px;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__landing-badge {
+  display: grid;
+  width: 74px;
+  height: 66px;
+  place-items: center;
+  margin: 2px auto 12px;
+  border: 1px solid rgba(52,43,114,.16);
+  border-radius: 25px 25px 25px 9px;
+  background: linear-gradient(145deg, #fff, #fff1d5);
+  box-shadow: 0 13px 28px rgba(52,43,114,.12), inset 0 0 0 7px rgba(245,200,76,.14);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__landing-badge span { font-size: 35px; }
+[data-quiz-theme="idiom"] .quiz-engine__landing .quiz-engine__eyebrow,
+[data-quiz-theme="idiom"] .quiz-engine__landing .quiz-engine__lede,
+[data-quiz-theme="idiom"] .quiz-engine__landing .quiz-engine__landing-meta { display: none; }
+
+[data-quiz-theme="idiom"] .quiz-engine__landing h1 {
+  max-width: 760px;
+  margin: 12px auto 22px;
+  color: var(--phrase-ink);
+  font-size: clamp(44px, 5vw, 66px);
+  font-weight: 900;
+  line-height: .97;
+  letter-spacing: -.05em;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__quick-start {
+  max-width: 690px;
+  margin: 0 auto 20px;
+  padding: 0;
+  border: 0;
+  color: #686172;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.48;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__social {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 13px;
+  margin: 0 auto 20px;
+  padding: 9px 15px;
+  border: 1px solid rgba(52,43,114,.16);
+  border-radius: 999px;
+  background: rgba(255,248,233,.95);
+  color: var(--phrase-ink);
+  box-shadow: 0 8px 22px rgba(52,43,114,.08);
+  font-size: 14px;
+  text-align: left;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__social-text strong { color: var(--phrase-indigo); font-weight: 900; }
+[data-quiz-theme="idiom"] .quiz-engine__social-text span { color: var(--phrase-ink); font-weight: 750; }
+[data-quiz-theme="idiom"] .quiz-engine__avatars { display: flex; flex: 0 0 auto; }
+[data-quiz-theme="idiom"] .quiz-engine__avatars span {
+  width: 30px;
+  height: 30px;
+  margin-left: -9px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 4px 10px rgba(52,43,114,.18);
+}
+[data-quiz-theme="idiom"] .quiz-engine__avatars span:first-child { margin-left: 0; }
+
+[data-quiz-theme="idiom"] .quiz-engine__landing .quiz-engine__primary {
+  display: inline-flex;
+  width: min(100%, 390px);
+  min-height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-size: 19px;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__primary {
+  border: 1px solid var(--phrase-indigo-dark);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #40358b, #2c2467);
+  color: #fff;
+  box-shadow: 0 6px 0 #201a50, 0 15px 28px rgba(52,43,114,.2);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__primary:active,
+[data-quiz-theme="idiom"] .quiz-engine__primary[disabled] {
+  background: linear-gradient(135deg, #40358b, #2c2467);
+  color: #fff;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__primary-icon { display: inline; color: var(--phrase-yellow); }
+[data-quiz-theme="idiom"] .quiz-engine__ad-note { justify-content: center; color: #716a78; }
+[data-quiz-theme="idiom"] .quiz-engine__ad-note span { border-color: var(--phrase-indigo); color: var(--phrase-indigo); }
+[data-quiz-theme="idiom"] .quiz-engine__landing-art,
+[data-quiz-theme="idiom"] .quiz-engine__landing-symbol { display: none !important; }
+
+[data-quiz-theme="idiom"] .quiz-engine__question-shell { width: min(800px, 100%); }
+[data-quiz-theme="idiom"] .quiz-engine__progress-head { color: #696270; font-weight: 800; }
+[data-quiz-theme="idiom"] .quiz-engine__progress-head strong { color: var(--phrase-indigo); }
+[data-quiz-theme="idiom"] .quiz-engine__progress {
+  height: 10px;
+  border: 1px solid rgba(52,43,114,.16);
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 2px 5px rgba(52,43,114,.08);
+}
+[data-quiz-theme="idiom"] .quiz-engine__progress i {
+  background: linear-gradient(90deg, var(--phrase-coral), var(--phrase-yellow) 55%, var(--phrase-mint));
+  box-shadow: 0 0 14px rgba(239,117,106,.25);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__question,
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint,
+[data-quiz-theme="idiom"] .quiz-engine__results,
+[data-quiz-theme="idiom"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(52,43,114,.19);
+  border-radius: 26px;
+  background: rgba(255,253,248,.985);
+  color: var(--phrase-ink);
+  box-shadow: 0 26px 64px rgba(52,43,114,.14), inset 0 2px 0 rgba(255,255,255,.94);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__question::before,
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="idiom"] .quiz-engine__results::before,
+[data-quiz-theme="idiom"] .quiz-engine__about::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  content: "";
+  background: linear-gradient(90deg, var(--phrase-indigo) 0 48%, var(--phrase-coral) 48% 68%, var(--phrase-yellow) 68% 84%, var(--phrase-mint) 84%);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__question h1 {
+  max-width: 700px;
+  margin: 0 auto 25px;
+  color: var(--phrase-ink);
+  font-size: clamp(29px, 5vw, 45px);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__question-context {
+  width: min(100%, 680px);
+  margin: 0 auto 16px;
+  padding: 13px 16px;
+  border: 1px solid rgba(52,43,114,.15);
+  border-radius: 17px 17px 17px 6px;
+  background: #fff6df;
+  color: #514a66;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__visual {
+  width: min(100%, 680px);
+  margin: -2px auto 22px;
+  padding: 14px;
+  border: 1px solid rgba(52,43,114,.14);
+  border-radius: 20px;
+  background:
+    linear-gradient(rgba(52,43,114,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52,43,114,.03) 1px, transparent 1px),
+    #fff9ed;
+  background-size: 24px 24px;
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__visual > span > strong {
+  border-color: rgba(52,43,114,.16);
+  border-radius: 15px 15px 15px 5px;
+  background: #fff;
+  color: var(--phrase-ink);
+  box-shadow: 0 5px 13px rgba(52,43,114,.06);
+}
+[data-quiz-theme="idiom"] .quiz-engine__visual > span > i { color: var(--phrase-coral); }
+
+[data-quiz-theme="idiom"] .quiz-engine__answers { gap: 12px; }
+[data-quiz-theme="idiom"] .quiz-engine__answer {
+  min-height: 64px;
+  border: 1px solid rgba(52,43,114,.17);
+  border-radius: 17px 17px 17px 6px;
+  background: #fff;
+  color: var(--phrase-ink);
+  box-shadow: 0 5px 0 rgba(52,43,114,.08);
+  font-weight: 800;
+}
+[data-quiz-theme="idiom"] .quiz-engine__answer:hover { border-color: rgba(52,43,114,.36); background: #fffaf0; }
+[data-quiz-theme="idiom"] .quiz-engine__answer.is-selected {
+  border-color: var(--phrase-indigo);
+  background: #eeeafb;
+  color: var(--phrase-indigo-dark);
+  box-shadow: 0 3px 0 rgba(52,43,114,.18);
+}
+
+[data-quiz-theme="idiom"] .quiz-engine__answer-icon { font-size: clamp(28px, 5vw, 42px); }
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint-icon,
+[data-quiz-theme="idiom"] .quiz-engine__result-icon {
+  border: 4px solid #fff4d5;
+  background: linear-gradient(145deg, var(--phrase-coral), #d85165);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(209,95,103,.24);
+}
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint h2,
+[data-quiz-theme="idiom"] .quiz-engine__results h2 { color: var(--phrase-ink); }
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint-next,
+[data-quiz-theme="idiom"] .quiz-engine__result-details,
+[data-quiz-theme="idiom"] .quiz-engine__review-item {
+  border: 1px solid rgba(52,43,114,.13);
+  background: #fff8e9;
+}
+[data-quiz-theme="idiom"] .quiz-engine__checkpoint-next strong,
+[data-quiz-theme="idiom"] .quiz-engine__result-score,
+[data-quiz-theme="idiom"] .quiz-engine__result-profile { color: var(--phrase-indigo); }
+[data-quiz-theme="idiom"] .quiz-engine__checklist li span { color: #2f806c; }
+[data-quiz-theme="idiom"] .quiz-engine__eyebrow { color: var(--phrase-coral); }
+
+[data-quiz-theme="idiom"] .quiz-engine__about h2,
+[data-quiz-theme="idiom"] .quiz-engine__about h3 { color: var(--phrase-ink); }
+[data-quiz-theme="idiom"] .quiz-engine__about p,
+[data-quiz-theme="idiom"] .quiz-engine__how-to li { color: #655e6e; }
+
+@media (max-width: 720px) {
+  [data-quiz-theme="idiom"] .quiz-engine__landing {
+    padding: 34px 20px 31px;
+    border-radius: 24px;
+  }
+  [data-quiz-theme="idiom"] .quiz-engine__landing::before { inset: 10px; border-radius: 17px; }
+  [data-quiz-theme="idiom"] .quiz-engine__landing::after { top: 16px; left: 20px; width: 36px; height: 4px; box-shadow: 44px 0 var(--phrase-yellow), 68px 0 var(--phrase-mint); }
+  [data-quiz-theme="idiom"] .quiz-engine__landing-badge { width: 62px; height: 56px; margin-bottom: 8px; border-radius: 21px 21px 21px 8px; }
+  [data-quiz-theme="idiom"] .quiz-engine__landing-badge span { font-size: 30px; }
+  [data-quiz-theme="idiom"] .quiz-engine__landing h1 { margin: 9px auto 17px; font-size: clamp(36px, 10.6vw, 47px); line-height: .99; letter-spacing: -.045em; }
+  [data-quiz-theme="idiom"] .quiz-engine__quick-start { margin-bottom: 17px; font-size: 15px; }
+  [data-quiz-theme="idiom"] .quiz-engine__social { gap: 9px; margin-bottom: 17px; padding: 8px 11px; font-size: 12px; }
+  [data-quiz-theme="idiom"] .quiz-engine__avatars span { width: 26px; height: 26px; }
+  [data-quiz-theme="idiom"] .quiz-engine__landing .quiz-engine__primary { min-height: 58px; font-size: 18px; }
+  [data-quiz-theme="idiom"] .quiz-engine__question,
+  [data-quiz-theme="idiom"] .quiz-engine__checkpoint,
+  [data-quiz-theme="idiom"] .quiz-engine__results { border-radius: 22px; }
+  [data-quiz-theme="idiom"] .quiz-engine__question h1 { margin-bottom: 20px; font-size: clamp(27px, 8vw, 37px); }
+  [data-quiz-theme="idiom"] .quiz-engine__visual { padding: 9px; border-radius: 16px; }
+  [data-quiz-theme="idiom"] .quiz-engine__answer { min-height: 58px; border-radius: 15px 15px 15px 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="idiom"] * { scroll-behavior: auto !important; }
+}
