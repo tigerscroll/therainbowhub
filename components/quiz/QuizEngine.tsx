@@ -7,7 +7,6 @@ import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
-import { QuestionDisplayAd } from "./QuestionDisplayAd";
 import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
@@ -631,12 +630,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <article className="quiz-engine__question quiz-engine__card">
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
-        {questionIndex > 0 && (!currentQuestion.study || studyComplete) ? (
-          <QuestionDisplayAd
-            adUnitPath={siteConfig.questionDisplayAdUnitPath}
-            questionId={currentQuestion.id}
-          />
-        ) : null}
         <QuestionRenderer
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
