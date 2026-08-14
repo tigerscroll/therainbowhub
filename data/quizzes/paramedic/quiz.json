@@ -1,0 +1,71 @@
+{
+  "slug": "paramedic",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-14",
+    "duration": "8 min",
+    "difficulty": "Hard",
+    "icon": "🚑"
+  },
+  "theme": {
+    "id": "paramedic",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#e7eef2",
+      "pageAlt": "#cbd9df",
+      "surface": "#fffdfa",
+      "surfaceRaised": "#f2f7f9",
+      "text": "#12283a",
+      "muted": "#617581",
+      "primary": "#183f57",
+      "primaryText": "#ffffff",
+      "border": "#9eb6c2",
+      "correct": "#2f7b67",
+      "incorrect": "#b94f4b"
+    },
+    "typography": {
+      "heading": "sans",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "24px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #0b1c2a, #183f57)",
+      "text": "#ffffff",
+      "border": "#f2b84b",
+      "shadow": "0 8px 26px rgba(11, 28, 42, 0.28)"
+    },
+    "artwork": {
+      "icon": "🚑"
+    }
+  }
+}

@@ -455,6 +455,78 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Nursing must lead its result with the percentage.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Nursing rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "paramedic") {
+    const expectedCategories = {
+      anatomy_physiology: 10,
+      observation_vitals: 10,
+      numeracy_measurement: 10,
+      scene_safety: 10,
+      communication_handover: 10,
+      reasoning_priorities: 10,
+    };
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const priorities = source.stages?.[6]?.questions ?? [];
+    const sprint = source.stages?.[7]?.questions ?? [];
+    const handovers = source.stages?.[8]?.questions ?? [];
+    const finalResponse = source.stages?.[9]?.questions ?? [];
+    const questionById = Object.fromEntries(sourceQuestions.map((question) => [question.id, question]));
+    const visibleQuestionCopy = (question) => [
+      question?.question,
+      question?.context,
+      ...(question?.answers ?? []),
+      question?.explanation,
+      ...(question?.visual?.items ?? []),
+    ].filter(Boolean).join(" ");
+    const sprintCopy = sprint.map(visibleQuestionCopy).join("\n");
+    const liveElectricalScenarios = sourceQuestions.filter((question) => /(?:live electrical cable|cable is sparking|sparking electrical cable)/i.test(visibleQuestionCopy(question)));
+    const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|extricat\w*|reduce a fracture|perform a procedure|911|999|112)\b/i;
+    const questionCopy = sourceQuestions.map((question) => [
+      question.question,
+      question.context,
+      question.answers?.[question.correct],
+      question.explanation,
+      ...(question.visual?.items ?? []),
+    ].filter(Boolean).join(" ")).join("\n");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Paramedic must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Paramedic must use correct-answer scoring.`);
+    fail(source.title === "Only 8% Pass This Paramedic Entrance Exam", `${folder.name}/en.json: Paramedic title must match the approved headline.`);
+    fail(source.landing?.intro === "From scene hazards and vital signs to emergency maths and calm communication, prove you can think clearly when every clue matters.", `${folder.name}/en.json: Paramedic landing intro changed.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Test", `${folder.name}/en.json: Paramedic landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Paramedic needs ten stages of six questions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Paramedic must contain 60 uniquely identified questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Paramedic needs exactly ten questions in each entrance category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Paramedic question needs exactly four choices.`);
+    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Paramedic choices must be non-empty and unique within each question.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Paramedic question needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Paramedic correct-answer positions must be exactly 15 each across A–D.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Paramedic question needs a post-result explanation.`);
+    fail(sourceQuestions.every((question) => !question.visual || (typeof question.visual.separator === "string" && Boolean(question.visual.separator.trim()))), `${folder.name}/en.json: every Paramedic visual needs a visible separator.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Paramedic default advancement must be exactly 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Rapid Response Sprint question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Rapid Response Sprint prompts must contain no more than ten words.`);
+    fail(!/(?:which organ pumps blood|litres? equals|live (?:electrical )?cable|i['’]m scared)/i.test(sprintCopy), `${folder.name}/en.json: Rapid Response Sprint must not repeat the quiz's opening heart, litre-conversion, live-cable or fear prompts.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Rapid Response Sprint may override the 450ms default.`);
+    fail(liveElectricalScenarios.length <= 2, `${folder.name}/en.json: electrical-cable hazards must not be repeated across multiple stages.`);
+    fail(questionById["paramedic-r3q6"]?.category === "reasoning_priorities" && !/(?:litres?|millilitres?|\bmL\b|convert|units?)/i.test(visibleQuestionCopy(questionById["paramedic-r3q6"])), `${folder.name}/en.json: R3Q6 must measure emergency reasoning rather than unit conversion.`);
+    fail(!/(?:cable|electrical)/i.test(visibleQuestionCopy(questionById["paramedic-r8q5"])), `${folder.name}/en.json: the sprint safety item must use a distinct non-electrical hazard.`);
+    fail(!/(?:cable|electrical)/i.test(visibleQuestionCopy(questionById["paramedic-r10q4"])), `${folder.name}/en.json: the final safety case must not repeat the opening electrical hazard.`);
+    fail(priorities.length === 6 && priorities.every((question) => typeof question.context === "string" && question.context.split(/[.!?]+/).filter((clue) => clue.trim()).length >= 2), `${folder.name}/en.json: every priority-stage question needs at least two visible clues.`);
+    fail(priorities.filter((question) => /Person A/i.test(question.context) && /Person B/i.test(question.context)).length >= 4, `${folder.name}/en.json: at least four priority-stage questions must compare two people directly.`);
+    fail(handovers.length === 6 && handovers.every((question) => typeof question.context === "string" && /(handover|note|timeline|incident|record)/i.test(question.context)), `${folder.name}/en.json: every Handover Trapdoor needs a visible handover, note, timeline or incident record.`);
+    fail(finalResponse.length === 6 && finalResponse.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Response questions need visible context and two-step reasoning.`);
+    fail(!prohibitedClinicalCopy.test(questionCopy), `${folder.name}/en.json: Paramedic questions must not teach treatment procedures, medication, emergency numbers or local protocol.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Paramedic profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Paramedic must lead its result with the percentage.`);
+    fail(config.engine?.targetRatio === 0.8, `${folder.name}: Paramedic pass threshold must be 80%.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Paramedic rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "midwifery") {
     const expectedCategories = {
       pregnancy_physiology: 10,

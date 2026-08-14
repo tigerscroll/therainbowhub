@@ -1,0 +1,952 @@
+{
+  "eyebrow": "PARAMEDIC ENTRANCE CHALLENGE",
+  "title": "Only 8% Pass This Paramedic Entrance Exam",
+  "summary": "Scene safety, vital signs, emergency maths and rapid-response judgement get harder across 10 stages.",
+  "landing": {
+    "intro": "From scene hazards and vital signs to emergency maths and calm communication, prove you can think clearly when every clue matters.",
+    "socialProof": "81,000+ people played this",
+    "cta": "Start Test"
+  },
+  "stages": [
+    {
+      "title": "Dispatch Briefing",
+      "questions": [
+        {
+          "id": "paramedic-r1q1",
+          "question": "Which organ pumps blood around the body?",
+          "presentation": "icons",
+          "icons": ["🫀", "🫁", "🧠", "🦴"],
+          "answers": ["Heart", "Lungs", "Brain", "Bones"],
+          "correct": 0,
+          "category": "anatomy_physiology",
+          "explanation": "The heart contracts to move blood through the circulation."
+        },
+        {
+          "id": "paramedic-r1q2",
+          "question": "Which observation changed while the others stayed the same?",
+          "presentation": "grid",
+          "visual": {
+            "items": ["PULSE 78 → 78", "BREATHING 16 → 24", "ALERT YES → YES", "SKIN WARM → WARM"],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Pulse unchanged, breathing increased, alertness unchanged, skin warmth unchanged"
+          },
+          "answers": ["Pulse", "Breathing", "Alertness", "Skin warmth"],
+          "correct": 1,
+          "category": "observation_vitals",
+          "explanation": "Breathing changed from 16 to 24 while every other recorded observation stayed the same."
+        },
+        {
+          "id": "paramedic-r1q3",
+          "question": "Four sealed packs hold five dressings each. How many dressings are there?",
+          "answers": ["9", "15", "20", "25"],
+          "correct": 2,
+          "category": "numeracy_measurement",
+          "explanation": "Four groups of five contain 20 items in total."
+        },
+        {
+          "id": "paramedic-r1q4",
+          "question": "A live electrical cable lies across the only doorway. What comes first?",
+          "answers": [
+            "Step over it carefully",
+            "Move it with a dry object",
+            "Ask a bystander to watch it",
+            "Keep everyone clear and get qualified help to make it safe"
+          ],
+          "correct": 3,
+          "category": "scene_safety",
+          "explanation": "A live cable creates an immediate scene hazard; nobody should approach or handle it until qualified help makes the area safe."
+        },
+        {
+          "id": "paramedic-r1q5",
+          "question": "Which opening makes the clearest handover?",
+          "answers": [
+            "At 14:20, breathing became faster and alertness decreased",
+            "Something changed earlier, probably",
+            "Here are all the minor details in random order",
+            "I already know exactly what caused it"
+          ],
+          "correct": 0,
+          "category": "communication_handover",
+          "explanation": "A time plus two clearly observed changes gives the next person concise, useful information without making unsupported assumptions."
+        },
+        {
+          "id": "paramedic-r1q6",
+          "question": "Which takes priority?",
+          "context": "A routine equipment checklist is due soon. At the same time, a person who was comfortable becomes pale, dizzy and less responsive.",
+          "answers": [
+            "Complete the routine checklist before responding",
+            "Prioritise the person’s sudden deterioration and seek qualified help",
+            "Wait until the checklist deadline has passed",
+            "Choose whichever task is physically nearest"
+          ],
+          "correct": 1,
+          "category": "reasoning_priorities",
+          "explanation": "A sudden change in colour, dizziness and responsiveness takes priority over routine administrative work."
+        }
+      ]
+    },
+    {
+      "title": "Body Under Pressure 🫀",
+      "questions": [
+        {
+          "id": "paramedic-r2q1",
+          "question": "Which route correctly follows oxygen into the circulation?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["AIRWAY", "LUNGS", "?"],
+            "columns": 3,
+            "separator": "→",
+            "ariaLabel": "Airway to lungs to unknown"
+          },
+          "answers": ["Stomach", "Bones", "Blood", "Kidneys"],
+          "correct": 2,
+          "category": "anatomy_physiology",
+          "explanation": "Air travels through the airway to the lungs, where oxygen crosses into the blood."
+        },
+        {
+          "id": "paramedic-r2q2",
+          "question": "Which blood vessels carry blood away from the heart?",
+          "answers": ["Veins", "Capillaries", "Airways", "Arteries"],
+          "correct": 3,
+          "category": "anatomy_physiology",
+          "explanation": "Arteries carry blood away from the heart into the circulation."
+        },
+        {
+          "id": "paramedic-r2q3",
+          "question": "Which body system carries signals between the brain and the rest of the body?",
+          "answers": ["Nervous system", "Digestive system", "Skeletal system", "Urinary system"],
+          "correct": 0,
+          "category": "anatomy_physiology",
+          "explanation": "The brain, spinal cord and nerves form the communication network of the nervous system."
+        },
+        {
+          "id": "paramedic-r2q4",
+          "question": "Which statement best describes the kidneys?",
+          "answers": [
+            "They exchange oxygen and carbon dioxide",
+            "They remove wastes from blood and help regulate water balance",
+            "They pump blood through arteries",
+            "They control every voluntary movement"
+          ],
+          "correct": 1,
+          "category": "anatomy_physiology",
+          "explanation": "The kidneys filter the blood, remove wastes and help regulate the body's water and electrolyte balance."
+        },
+        {
+          "id": "paramedic-r2q5",
+          "question": "Which body-function detail changed?",
+          "context": "Earlier, both hand grips were equal. Now the right grip is unchanged, but the left grip is weaker than before.",
+          "answers": ["Right grip weakened", "Both grips strengthened", "Left grip weakened", "Nothing changed"],
+          "correct": 2,
+          "category": "observation_vitals",
+          "explanation": "The visible comparison shows a new reduction in left-hand grip strength."
+        },
+        {
+          "id": "paramedic-r2q6",
+          "question": "Which concern has the highest priority?",
+          "context": "The person's chest is moving, but very little air movement can be detected and they cannot speak normally.",
+          "answers": [
+            "A possible digestive problem",
+            "A minor muscle strain",
+            "A routine hydration check",
+            "A possible airway or breathing problem needing immediate qualified assessment"
+          ],
+          "correct": 3,
+          "category": "reasoning_priorities",
+          "explanation": "Minimal air movement plus difficulty speaking points to an immediate airway or breathing concern."
+        }
+      ]
+    },
+    {
+      "title": "Numbers in Motion 🔢",
+      "questions": [
+        {
+          "id": "paramedic-r3q1",
+          "question": "How many millilitres are in 1.25 litres?",
+          "answers": ["1,250 mL", "125 mL", "1,025 mL", "12,500 mL"],
+          "correct": 0,
+          "category": "numeracy_measurement",
+          "explanation": "Multiplying 1.25 by 1,000 gives 1,250 mL."
+        },
+        {
+          "id": "paramedic-r3q2",
+          "question": "How much time passes from 14:35 to 15:20?",
+          "presentation": "code",
+          "visual": {
+            "items": ["START 14:35", "END 15:20"],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Start 14:35, end 15:20"
+          },
+          "answers": ["35 minutes", "45 minutes", "55 minutes", "85 minutes"],
+          "correct": 1,
+          "category": "numeracy_measurement",
+          "explanation": "There are 25 minutes to 15:00 and another 20 minutes to 15:20, making 45 minutes."
+        },
+        {
+          "id": "paramedic-r3q3",
+          "question": "What is the combined recorded volume?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["300 mL", "450 mL", "250 mL", "?"],
+            "columns": 4,
+            "separator": "+",
+            "ariaLabel": "300 plus 450 plus 250 millilitres"
+          },
+          "answers": ["900 mL", "950 mL", "1,000 mL", "1,100 mL"],
+          "correct": 2,
+          "category": "numeracy_measurement",
+          "explanation": "300 + 450 + 250 equals 1,000 mL."
+        },
+        {
+          "id": "paramedic-r3q4",
+          "question": "What is 30% of 200?",
+          "answers": ["30", "40", "50", "60"],
+          "correct": 3,
+          "category": "numeracy_measurement",
+          "explanation": "Thirty per cent of 200 is 0.30 × 200, which equals 60."
+        },
+        {
+          "id": "paramedic-r3q5",
+          "question": "You count 8 breaths in 30 seconds. What is the rate per minute?",
+          "answers": ["16 breaths per minute", "8 breaths per minute", "24 breaths per minute", "30 breaths per minute"],
+          "correct": 0,
+          "category": "observation_vitals",
+          "explanation": "Thirty seconds is half a minute, so doubling 8 gives 16 breaths per minute."
+        },
+        {
+          "id": "paramedic-r3q6",
+          "question": "Which message should be communicated first?",
+          "context": "One message confirms a routine arrival time. A second reports new heavy bleeding and that the person is becoming faint.",
+          "answers": [
+            "The routine arrival time, because it came first",
+            "The new bleeding concern, because it may signal urgent deterioration",
+            "Neither message until every detail is available",
+            "Whichever message is shorter"
+          ],
+          "correct": 1,
+          "category": "reasoning_priorities",
+          "explanation": "New heavy bleeding plus faintness is more urgent than a routine timing update."
+        }
+      ]
+    },
+    {
+      "title": "Secure the Scene ⚠️",
+      "questions": [
+        {
+          "id": "paramedic-r4q1",
+          "question": "A person is beside moving traffic with no protected working area. What is safest?",
+          "answers": [
+            "Walk into traffic and wave vehicles around",
+            "Ask the person to cross the road immediately",
+            "Keep clear, identify the danger and seek appropriate scene support",
+            "Place equipment in the road to slow vehicles"
+          ],
+          "correct": 2,
+          "category": "scene_safety",
+          "explanation": "Moving traffic is an immediate environmental hazard; the area must be made safe before anyone enters it."
+        },
+        {
+          "id": "paramedic-r4q2",
+          "question": "A cable is sparking beside a metal fence. What should you do?",
+          "answers": [
+            "Pull the cable away by its covering",
+            "Touch the fence briefly to test it",
+            "Pour water over the sparking point",
+            "Keep everyone clear and get qualified emergency help"
+          ],
+          "correct": 3,
+          "category": "scene_safety",
+          "explanation": "Sparking electricity near metal may energise the surrounding area; nobody should touch or approach it."
+        },
+        {
+          "id": "paramedic-r4q3",
+          "question": "Broken glass and a used sharp object are on the floor. What is the safest response?",
+          "answers": [
+            "Keep people away and arrange safe handling through the proper trained process",
+            "Pick everything up with bare hands",
+            "Kick the items under nearby furniture",
+            "Leave the sharp unmarked for someone else"
+          ],
+          "correct": 0,
+          "category": "scene_safety",
+          "explanation": "Sharps should not be handled casually; isolate the hazard and use an appropriately trained safe-disposal process."
+        },
+        {
+          "id": "paramedic-r4q4",
+          "question": "A task may expose the face and hands to splashing body fluid. What guides PPE choice?",
+          "answers": [
+            "The colour of the equipment bag",
+            "The assessed exposure risk, including hand and eye or face protection",
+            "Whether the person looks unwell",
+            "The time of day"
+          ],
+          "correct": 1,
+          "category": "scene_safety",
+          "explanation": "Standard Precautions select PPE according to the anticipated exposure to blood or body fluids."
+        },
+        {
+          "id": "paramedic-r4q5",
+          "question": "A bystander starts discussing a person's private details where others can hear. What is best?",
+          "answers": [
+            "Invite more people to listen",
+            "Repeat the details so everyone understands",
+            "Move the conversation to a private setting and share only necessary information",
+            "Post the information on a public notice"
+          ],
+          "correct": 2,
+          "category": "communication_handover",
+          "explanation": "Privacy and dignity require sensitive information to be discussed discreetly and only when necessary."
+        },
+        {
+          "id": "paramedic-r4q6",
+          "question": "Smoke is coming from a building and someone inside can be heard coughing. What comes first?",
+          "answers": [
+            "Enter alone to look around",
+            "Open every door without checking conditions",
+            "Ask an untrained bystander to go inside",
+            "Stay clear of the unsafe building and alert appropriate emergency help"
+          ],
+          "correct": 3,
+          "category": "reasoning_priorities",
+          "explanation": "Smoke makes the scene unsafe; entering could create additional casualties, so specialist emergency help is required."
+        }
+      ]
+    },
+    {
+      "title": "Read the Deterioration 👀",
+      "questions": [
+        {
+          "id": "paramedic-r5q1",
+          "question": "Which observation was recorded as 76?",
+          "study": {
+            "title": "Study this observation card",
+            "instruction": "Read each line before continuing.",
+            "items": ["PULSE — 76", "BREATHING — 14", "ALERT — YES", "SKIN — WARM"],
+            "durationMs": 2200,
+            "mode": "manual",
+            "continueLabel": "Card checked"
+          },
+          "answers": ["Pulse", "Breathing", "Alertness", "Skin warmth"],
+          "correct": 0,
+          "category": "observation_vitals",
+          "explanation": "The observation card recorded the pulse as 76."
+        },
+        {
+          "id": "paramedic-r5q2",
+          "question": "Which measurement changed while the others stayed the same?",
+          "presentation": "grid",
+          "visual": {
+            "items": ["PULSE 82 → 82", "BREATHING 16 → 25", "ALERT YES → YES", "SKIN WARM → WARM"],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Pulse unchanged, breathing increased, alertness unchanged, skin warmth unchanged"
+          },
+          "answers": ["Pulse", "Breathing", "Alertness", "Skin warmth"],
+          "correct": 1,
+          "category": "observation_vitals",
+          "explanation": "Breathing increased from 16 to 25 while the remaining observations stayed unchanged."
+        },
+        {
+          "id": "paramedic-r5q3",
+          "question": "Which newly recorded change matters most?",
+          "context": "Earlier the person was alert and answered promptly. Now they are drowsy and respond much more slowly.",
+          "answers": ["The earlier alert record", "The time written on the card", "Responsiveness has declined", "The card uses two sentences"],
+          "correct": 2,
+          "category": "observation_vitals",
+          "explanation": "A new reduction in responsiveness is a significant change from the person's earlier condition."
+        },
+        {
+          "id": "paramedic-r5q4",
+          "question": "What is the best interpretation of this pattern?",
+          "context": "Across three checks the pulse rises from 80 to 92 to 108. The person also becomes pale and dizzy.",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["80", "92", "108", "PALE + DIZZY"],
+            "columns": 4,
+            "separator": "→",
+            "ariaLabel": "Pulse 80 then 92 then 108, with pallor and dizziness"
+          },
+          "answers": [
+            "The record is unchanged",
+            "Only the first number matters",
+            "The symptoms can be ignored because no diagnosis is shown",
+            "The combined trend suggests deterioration needing prompt qualified assessment"
+          ],
+          "correct": 3,
+          "category": "observation_vitals",
+          "explanation": "A rising pulse together with new pallor and dizziness is a combined pattern of deterioration."
+        },
+        {
+          "id": "paramedic-r5q5",
+          "question": "Why can reduced breathing affect working tissues?",
+          "answers": [
+            "Less oxygen can enter the blood and reach the tissues",
+            "The stomach immediately stops digestion",
+            "Bones stop supporting the body",
+            "The kidneys stop receiving nerve signals"
+          ],
+          "correct": 0,
+          "category": "anatomy_physiology",
+          "explanation": "Breathing supplies oxygen to the lungs; reduced gas exchange can reduce oxygen delivery through the blood."
+        },
+        {
+          "id": "paramedic-r5q6",
+          "question": "Who needs attention first?",
+          "context": "Person A feels well and their observations remain steady. Person B is newly clammy and dizzy, and their pulse has risen across three checks.",
+          "answers": [
+            "Person A, because their observations were recorded first",
+            "Person B, because several changes point to deterioration",
+            "Both can wait because neither has a named diagnosis",
+            "The person with the shorter name"
+          ],
+          "correct": 1,
+          "category": "reasoning_priorities",
+          "explanation": "Person B has multiple new changes and a worsening trend, making them the priority."
+        }
+      ]
+    },
+    {
+      "title": "Radio & Reassurance 🎙️",
+      "questions": [
+        {
+          "id": "paramedic-r6q1",
+          "question": "A person says, “I'm terrified.” Which response is best?",
+          "answers": [
+            "There is nothing to be scared about",
+            "Try not to think about it",
+            "I can see this is frightening. Tell me what worries you most",
+            "I guarantee everything will be fine"
+          ],
+          "correct": 2,
+          "category": "communication_handover",
+          "explanation": "The response acknowledges the emotion and invites the person to explain their concern."
+        },
+        {
+          "id": "paramedic-r6q2",
+          "question": "A person nods but appears not to understand your explanation. What should happen next?",
+          "answers": [
+            "Repeat the same technical words more quickly",
+            "Assume a nod always means understanding",
+            "End the conversation immediately",
+            "Use plain language, suitable communication support and check understanding"
+          ],
+          "correct": 3,
+          "category": "communication_handover",
+          "explanation": "Clear language, appropriate communication support and a check-back confirm whether the message was understood."
+        },
+        {
+          "id": "paramedic-r6q3",
+          "question": "Someone needs to discuss a sensitive health concern. What protects dignity?",
+          "answers": [
+            "Find a private setting and listen without making assumptions",
+            "Ask them to explain in front of everyone",
+            "Tell nearby people the concern first",
+            "Dismiss the concern as embarrassing"
+          ],
+          "correct": 0,
+          "category": "communication_handover",
+          "explanation": "A private setting and non-judgemental listening protect confidentiality and dignity."
+        },
+        {
+          "id": "paramedic-r6q4",
+          "question": "A person asks, “Am I definitely going to be okay?” What is the best response?",
+          "answers": [
+            "Yes, nothing can go wrong",
+            "Avoid unsupported promises, listen and explain what can be said clearly",
+            "Ignore the question",
+            "Give a diagnosis without enough information"
+          ],
+          "correct": 1,
+          "category": "communication_handover",
+          "explanation": "Honest, compassionate communication avoids false reassurance while keeping the person informed."
+        },
+        {
+          "id": "paramedic-r6q5",
+          "question": "A coughing person is sharing a small waiting area. Which general safety action fits the visible risk?",
+          "answers": [
+            "Share used tissues between people",
+            "Turn off all ventilation without assessment",
+            "Encourage respiratory and hand hygiene and follow risk-based precautions",
+            "Ignore respiratory secretions"
+          ],
+          "correct": 2,
+          "category": "scene_safety",
+          "explanation": "Respiratory hygiene, hand hygiene and risk-based precautions are core infection-prevention measures."
+        },
+        {
+          "id": "paramedic-r6q6",
+          "question": "Which detail belongs first in a concise handover?",
+          "context": "Earlier the person was alert. At 16:20 they became newly confused and their breathing became faster.",
+          "answers": [
+            "The colour of the room",
+            "An unrelated event from last week",
+            "Every normal detail before mentioning the change",
+            "The new confusion, faster breathing and the time the change occurred"
+          ],
+          "correct": 3,
+          "category": "reasoning_priorities",
+          "explanation": "A concise handover leads with the important new change and when it occurred."
+        }
+      ]
+    },
+    {
+      "title": "Who Needs Help First? 🚨",
+      "questions": [
+        {
+          "id": "paramedic-r7q1",
+          "question": "Who needs attention first?",
+          "context": "Person A has ankle pain, is comfortable and speaks normally. Person B is suddenly confused, breathing rapidly and looks pale.",
+          "answers": [
+            "Person B, because several new signs suggest sudden deterioration",
+            "Person A, because pain always comes first",
+            "Both can wait until every form is completed",
+            "Whichever person is standing closest"
+          ],
+          "correct": 0,
+          "category": "reasoning_priorities",
+          "explanation": "Person B has combined breathing, circulation and mental-status changes that require immediate attention."
+        },
+        {
+          "id": "paramedic-r7q2",
+          "question": "Which situation takes priority?",
+          "context": "Person A requests a blanket and is speaking comfortably. Person B has new breathing difficulty and cannot finish a sentence.",
+          "answers": [
+            "Person A's blanket",
+            "Person B's breathing difficulty",
+            "Both situations have equal urgency",
+            "Whichever request was made more loudly"
+          ],
+          "correct": 1,
+          "category": "reasoning_priorities",
+          "explanation": "New breathing difficulty severe enough to limit speech is the immediate priority."
+        },
+        {
+          "id": "paramedic-r7q3",
+          "question": "Who needs attention first?",
+          "context": "Person A has a mild headache that is unchanged. Person B briefly collapsed and is now clammy, dizzy and unusually weak.",
+          "answers": [
+            "Person A, because headaches are always urgent",
+            "Neither person, because both are awake",
+            "Person B, because collapse plus new circulation-related signs suggests deterioration",
+            "The person who can answer most questions"
+          ],
+          "correct": 2,
+          "category": "reasoning_priorities",
+          "explanation": "A recent collapse combined with clamminess, dizziness and weakness makes Person B the priority."
+        },
+        {
+          "id": "paramedic-r7q4",
+          "question": "Which body-system concern needs immediate qualified assessment?",
+          "context": "Person A has temporary tingling after resting on one elbow and moves normally. Person B develops sudden one-sided weakness and a new speech change.",
+          "answers": [
+            "A routine digestive concern in Person A",
+            "A minor skin concern in Person B",
+            "A bone-growth concern in Person A",
+            "A possible brain or nervous-system problem in Person B"
+          ],
+          "correct": 3,
+          "category": "anatomy_physiology",
+          "explanation": "Sudden one-sided weakness and a speech change together indicate an urgent nervous-system concern."
+        },
+        {
+          "id": "paramedic-r7q5",
+          "question": "Which observation pattern needs attention first?",
+          "context": "Person A's pulse rises after stairs, then returns towards their earlier level. Person B's breathing becomes faster across three checks and they become drowsy.",
+          "answers": [
+            "Person B's worsening breathing trend with reduced responsiveness",
+            "Person A's improving recovery pattern",
+            "Both patterns are equally reassuring",
+            "Neither pattern matters because only trends are shown"
+          ],
+          "correct": 0,
+          "category": "observation_vitals",
+          "explanation": "Person B shows both a worsening breathing trend and a decline in responsiveness."
+        },
+        {
+          "id": "paramedic-r7q6",
+          "question": "Which communication need comes first?",
+          "context": "Person A asks repeated questions because the area is noisy and relaxes when things are explained. Person B says a violent person is nearby and they do not feel safe.",
+          "answers": [
+            "Continue the conversation where everyone can hear",
+            "Move towards safety and communicate the immediate safety concern",
+            "Tell Person B to ignore the concern",
+            "Discuss Person A's questions before addressing danger"
+          ],
+          "correct": 1,
+          "category": "communication_handover",
+          "explanation": "An immediate safety concern must be communicated and addressed before routine explanation continues."
+        }
+      ]
+    },
+    {
+      "title": "Rapid Response Sprint ⚡",
+      "questions": [
+        {
+          "id": "paramedic-r8q1",
+          "question": "Which organ coordinates the nervous system?",
+          "delay": 350,
+          "presentation": "icons",
+          "icons": ["🫁", "🫀", "🧠", "🦴"],
+          "answers": ["Lungs", "Heart", "Brain", "Bones"],
+          "correct": 2,
+          "category": "anatomy_physiology",
+          "explanation": "The brain processes information and coordinates activity through the nervous system."
+        },
+        {
+          "id": "paramedic-r8q2",
+          "question": "What is 25% of 80?",
+          "delay": 350,
+          "answers": ["10", "15", "25", "20"],
+          "correct": 3,
+          "category": "numeracy_measurement",
+          "explanation": "Twenty-five per cent is one quarter, and one quarter of 80 is 20."
+        },
+        {
+          "id": "paramedic-r8q3",
+          "question": "08:40 to 09:05?",
+          "delay": 350,
+          "answers": ["25 minutes", "15 minutes", "35 minutes", "65 minutes"],
+          "correct": 0,
+          "category": "numeracy_measurement",
+          "explanation": "There are 20 minutes to 09:00 and five more to 09:05."
+        },
+        {
+          "id": "paramedic-r8q4",
+          "question": "Which record shows a rising trend?",
+          "delay": 350,
+          "answers": ["18 → 18 → 18", "16 → 20 → 24", "90 → 82 → 76", "12 → 12 → 11"],
+          "correct": 1,
+          "category": "observation_vitals",
+          "explanation": "The values 16, 20 and 24 rise at each successive check."
+        },
+        {
+          "id": "paramedic-r8q5",
+          "question": "Heavy shelf tilting overhead?",
+          "delay": 350,
+          "answers": ["Stand underneath", "Hold it up alone", "Move clear and warn others", "Ignore the movement"],
+          "correct": 2,
+          "category": "scene_safety",
+          "explanation": "A falling-object risk makes the immediate area unsafe; move clear and prevent others from entering it."
+        },
+        {
+          "id": "paramedic-r8q6",
+          "question": "They look confused after your explanation.",
+          "delay": 350,
+          "answers": ["Continue quickly", "Use more jargon", "Assume they understood", "Rephrase and check understanding"],
+          "correct": 3,
+          "category": "communication_handover",
+          "explanation": "Rephrasing in plain language and checking understanding responds directly to visible confusion."
+        }
+      ]
+    },
+    {
+      "title": "Handover Trapdoors",
+      "questions": [
+        {
+          "id": "paramedic-r9q1",
+          "question": "Which body-function detail changed?",
+          "context": "HANDOVER NOTE — Earlier: both arms raised equally. Now: the right arm stays raised, but the left arm drifts down. Both legs still move equally.",
+          "answers": ["Left-arm control changed", "Right-arm control changed", "Both legs weakened", "No movement changed"],
+          "correct": 0,
+          "category": "anatomy_physiology",
+          "explanation": "The new left-arm drift is the only changed movement described in the handover."
+        },
+        {
+          "id": "paramedic-r9q2",
+          "question": "How much time passed before arrival?",
+          "context": "INCIDENT TIMELINE — Dispatch recorded: 14:10. Arrival recorded: 14:28.",
+          "answers": ["8 minutes", "18 minutes", "28 minutes", "38 minutes"],
+          "correct": 1,
+          "category": "numeracy_measurement",
+          "explanation": "From 14:10 to 14:28 is 18 minutes."
+        },
+        {
+          "id": "paramedic-r9q3",
+          "question": "What total distance belongs in the record?",
+          "context": "INCIDENT RECORD — One access route measures 0.4 km. A second section measures 250 m. Write the combined distance in metres.",
+          "answers": ["290 m", "400 m", "650 m", "4,250 m"],
+          "correct": 2,
+          "category": "numeracy_measurement",
+          "explanation": "0.4 km is 400 m; adding 250 m gives a combined distance of 650 m."
+        },
+        {
+          "id": "paramedic-r9q4",
+          "question": "Which missing detail matters most for scene safety?",
+          "context": "SCENE HANDOVER — A vehicle is stationary. Two people are nearby. A strong fuel smell was noticed but not included in the spoken handover.",
+          "answers": ["The vehicle's colour", "The number of windows", "The weather earlier that morning", "The fuel smell and possible ignition hazard"],
+          "correct": 3,
+          "category": "scene_safety",
+          "explanation": "A strong fuel smell may indicate an immediate scene hazard and must be communicated clearly."
+        },
+        {
+          "id": "paramedic-r9q5",
+          "question": "Which safety step was missed?",
+          "context": "INFECTION NOTE — Gloves were removed after contact with body fluid. A shared radio was then handled before hand hygiene was performed.",
+          "answers": [
+            "Perform hand hygiene before touching shared equipment",
+            "Keep the same gloves on for every task",
+            "Place the radio on the floor",
+            "Skip hand hygiene because gloves were worn"
+          ],
+          "correct": 0,
+          "category": "scene_safety",
+          "explanation": "Gloves do not replace hand hygiene, which should occur before clean shared equipment is handled."
+        },
+        {
+          "id": "paramedic-r9q6",
+          "question": "Which sentence is the clearest concise handover?",
+          "context": "HANDOVER DETAIL — At 10:20, breathing became faster and the person became newly confused. Both changes are new.",
+          "answers": [
+            "Things changed at some point and there were several details",
+            "At 10:20, breathing became faster and the person became newly confused",
+            "The room was quiet before something happened",
+            "There are many normal details to discuss before the new changes"
+          ],
+          "correct": 1,
+          "category": "communication_handover",
+          "explanation": "The correct sentence states both important changes and the time they occurred without distraction."
+        }
+      ]
+    },
+    {
+      "title": "Final Response 🚑",
+      "questions": [
+        {
+          "id": "paramedic-r10q1",
+          "question": "If shallow breathing reduces gas exchange, what downstream effect follows most directly?",
+          "context": "Use the process: air reaches lungs → oxygen enters blood → blood supplies working tissues.",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["SHALLOW BREATHING", "LESS GAS EXCHANGE", "?", "LESS OXYGEN TO TISSUES"],
+            "columns": 4,
+            "separator": "→",
+            "ariaLabel": "Shallow breathing, less gas exchange, unknown, less oxygen to tissues"
+          },
+          "reasoningSteps": 2,
+          "answers": ["More food enters the stomach", "Bones produce extra movement", "Less oxygen enters the blood", "The kidneys create more air"],
+          "correct": 2,
+          "category": "anatomy_physiology",
+          "explanation": "Reduced gas exchange means less oxygen enters the blood, so less can reach working tissues."
+        },
+        {
+          "id": "paramedic-r10q2",
+          "question": "What is the best interpretation of the complete trend?",
+          "context": "Check 1: breathing 16 and alert. Check 2: breathing 22 and anxious. Check 3: breathing 28 and drowsy.",
+          "presentation": "grid",
+          "visual": {
+            "items": ["16 — ALERT", "22 — ANXIOUS", "28 — DROWSY", "TREND — ?"],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Breathing 16 alert, then 22 anxious, then 28 drowsy"
+          },
+          "reasoningSteps": 2,
+          "answers": [
+            "The person is steadily improving",
+            "Only the middle check matters",
+            "The values can be ignored because no diagnosis is named",
+            "Breathing is worsening while responsiveness is declining"
+          ],
+          "correct": 3,
+          "category": "observation_vitals",
+          "explanation": "The breathing rate rises across checks while alertness falls, producing a clear worsening pattern."
+        },
+        {
+          "id": "paramedic-r10q3",
+          "question": "What combined volume should be written in millilitres?",
+          "context": "The record contains 0.65 L and 350 mL. Convert the units, then calculate the total.",
+          "reasoningSteps": 2,
+          "answers": ["1,000 mL", "415 mL", "650 mL", "3,565 mL"],
+          "correct": 0,
+          "category": "numeracy_measurement",
+          "explanation": "0.65 L is 650 mL; 650 + 350 equals 1,000 mL."
+        },
+        {
+          "id": "paramedic-r10q4",
+          "question": "What is the safest response to the combined hazards?",
+          "context": "INCIDENT RECORD — An aggressive person is throwing objects near the entrance. Equipment partly blocks the nearest exit route.",
+          "reasoningSteps": 2,
+          "answers": [
+            "Approach and argue until the person stops",
+            "Keep clear, move others towards a safer route and alert appropriate help",
+            "Retrieve the equipment beside the person before leaving",
+            "Ask an untrained bystander to block the thrown objects"
+          ],
+          "correct": 1,
+          "category": "scene_safety",
+          "explanation": "Thrown objects and a blocked exit create immediate danger; increase distance, use a safer route and communicate the hazard."
+        },
+        {
+          "id": "paramedic-r10q5",
+          "question": "Which response protects privacy and checks understanding?",
+          "context": "The person says, “I do not want this discussed where others can hear, and I still do not understand why you are asking.”",
+          "reasoningSteps": 2,
+          "answers": [
+            "Continue the discussion where everyone can hear",
+            "Avoid explaining and ask the same questions again",
+            "Move to an appropriate private setting, explain plainly and check understanding",
+            "Ask a bystander to explain on your behalf"
+          ],
+          "correct": 2,
+          "category": "communication_handover",
+          "explanation": "A private setting protects dignity, while plain language and a check-back address the person’s lack of understanding."
+        },
+        {
+          "id": "paramedic-r10q6",
+          "question": "Who needs attention first, and why?",
+          "context": "Person A has a sore wrist, normal speech and steady observations. Person B briefly collapsed and is now pale, breathing rapidly and newly confused.",
+          "reasoningSteps": 2,
+          "answers": [
+            "Person A, because wrist pain is easier to see",
+            "Both people have equal priority",
+            "Neither person until a diagnosis is available",
+            "Person B, because collapse plus breathing, circulation and mental-status changes suggest deterioration"
+          ],
+          "correct": 3,
+          "category": "reasoning_priorities",
+          "explanation": "Person B has multiple time-sensitive signs across several systems, making them the clear priority."
+        }
+      ]
+    }
+  ],
+  "checkpoint": {
+    "nextPrefix": "NEXT STAGE",
+    "adNote": "Short ad first — then the next stage starts.",
+    "finalBadge": "ENTRANCE REVIEW",
+    "finalTitle": "Your paramedic result is ready",
+    "finalCopy": "Every scene clue, trend, calculation and handover decision has been reviewed. One final reveal remains.",
+    "finalButton": "Reveal My Score",
+    "finalChecklist": [
+      "Anatomy and physiology",
+      "Observations and trends",
+      "Numeracy and measurement",
+      "Scene safety",
+      "Communication and handover",
+      "Emergency priorities"
+    ],
+    "reveals": [
+      {
+        "title": "Dispatch accepted",
+        "signal": "fixed",
+        "message": "Your first rapid-response signals have been recorded."
+      },
+      {
+        "title": "Body systems mapped",
+        "signal": "fixed",
+        "message": "Your anatomy and physiology answers are now part of the assessment."
+      },
+      {
+        "title": "Emergency maths verified",
+        "signal": "fixed",
+        "message": "Your timing, unit and measurement answers have been checked."
+      },
+      {
+        "title": "Scene hazards identified",
+        "signal": "fixed",
+        "message": "Your scene-safety and infection-prevention decisions have been added."
+      },
+      {
+        "title": "Deterioration signals read",
+        "signal": "strongest-dimension",
+        "template": "Strongest entrance area so far: {value}."
+      },
+      {
+        "title": "Communication channel clear",
+        "signal": "fixed",
+        "message": "Your reassurance and handover choices are now part of the result."
+      },
+      {
+        "title": "Priorities set",
+        "signal": "strongest-dimension",
+        "template": "Current strongest signal: {value}."
+      },
+      {
+        "title": "Rapid response complete",
+        "signal": "fixed",
+        "message": "Fast questions, same scoring. Every answer has been logged."
+      },
+      {
+        "title": "Handover details checked",
+        "signal": "fixed",
+        "message": "Six integrated final cases remain."
+      },
+      {
+        "title": "Entrance result ready",
+        "signal": "fixed",
+        "message": "All sixty answers have been processed."
+      }
+    ]
+  },
+  "results": {
+    "name": "YOUR PARAMEDIC SCORE",
+    "profiles": [
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "The Emergency Standout",
+        "copy": "You combined excellent foundational knowledge with calm, evidence-led judgement across the entire response assessment. Scene hazards, changing observations and communication details stayed clear even when the final cases became demanding."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "The Rapid-Response Natural",
+        "copy": "You showed a strong feel for the knowledge and judgement behind safe emergency response. Most of the assessment's trend, numeracy, safety and handover traps did not pull you off course."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "The Calm Scene Solver",
+        "copy": "You handled a broad mix of body knowledge, scene decisions and multi-clue cases with steady reasoning. A few finer handover and observation details kept the entrance challenge interesting."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "The Steady Responder",
+        "copy": "You built a solid result by following visible evidence and treating safety seriously. Your strongest stage shows where your emergency-learning instincts are already taking shape."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "The Promising Candidate",
+        "copy": "You solved a good share of the assessment and showed useful instincts across several response areas. The answer review will reveal which foundations are ready for another look."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "The First-Response Explorer",
+        "copy": "The assessment uncovered some knowledge gaps, but it also found moments of thoughtful, safety-first judgement. Every explanation is a fresh chance to strengthen the foundations behind calm emergency thinking."
+      }
+    ],
+    "dimensions": [
+      {"label": "Anatomy and physiology", "categories": ["anatomy_physiology"]},
+      {"label": "Observation and vital signs", "categories": ["observation_vitals"]},
+      {"label": "Numeracy and measurement", "categories": ["numeracy_measurement"]},
+      {"label": "Scene safety and infection prevention", "categories": ["scene_safety"]},
+      {"label": "Communication and handover", "categories": ["communication_handover"]},
+      {"label": "Emergency reasoning and priorities", "categories": ["reasoning_priorities"]}
+    ],
+    "score": {
+      "passed": "You passed the paramedic entrance challenge!",
+      "finished": "Paramedic entrance challenge complete",
+      "correctLabel": "correct",
+      "strongest": "Strongest entrance area",
+      "trickiest": "Trickiest entrance area",
+      "bestRound": "Best response stage",
+      "showPercentage": true,
+      "disclaimer": "For entertainment and general learning only. This is not an accredited paramedic entrance examination, clinical assessment, professional qualification or medical advice. Emergency procedures and responsibilities vary; always follow local guidance and appropriately qualified emergency professionals."
+    }
+  },
+  "about": {
+    "body": "This Rapid Response Assessment turns entrance-level paramedic knowledge into ten increasingly demanding stages. The questions cover anatomy and physiology, emergency numeracy, observation trends, scene safety, infection prevention, calm communication, handover and multi-clue prioritisation.\n\nThe challenge is designed for curious adults, prospective paramedic students and emergency-care learners around the world. It uses universal principles such as recognising immediate hazards, noticing deterioration, protecting dignity, communicating clearly and seeking appropriately qualified help—never country-specific protocols or specialist treatment decisions.\n\nYour final percentage reflects only the answers given in this entertainment quiz. It is a playful snapshot of the entrance areas that felt strongest and the topics that proved more challenging, not a judgement of clinical competence or suitability for paramedic practice.",
+    "howToPlay": {
+      "title": "How to Play",
+      "steps": [
+        "Answer six questions in each stage and choose the single response best supported by the visible information.",
+        "Correct answers stay hidden while you play, so inspect every scene clue, timeline, trend and handover carefully.",
+        "Complete all ten stages to reveal your Paramedic Score, strongest entrance area and full answer review."
+      ]
+    },
+    "disclaimer": "For entertainment and general learning only. This is not an accredited paramedic entrance examination, clinical assessment, professional qualification or medical advice. Emergency procedures and responsibilities vary; always follow local guidance and appropriately qualified emergency professionals."
+  }
+}

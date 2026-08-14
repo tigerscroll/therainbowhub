@@ -213,6 +213,28 @@ test("Nursing result profiles switch at every exact score boundary", () => {
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
 });
 
+test("Paramedic result profiles and pass threshold switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.engine.targetRatio = 0.8;
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Emergency Standout" },
+    { minRatio: 0.8, title: "The Rapid-Response Natural" },
+    { minRatio: 0.7, title: "The Calm Scene Solver" },
+    { minRatio: 0.6, title: "The Steady Responder" },
+    { minRatio: 0.5, title: "The Promising Candidate" },
+    { minRatio: 0, title: "The First-Response Explorer" },
+  ];
+  const cases = [
+    [29, "The First-Response Explorer"], [30, "The Promising Candidate"], [35, "The Promising Candidate"],
+    [36, "The Steady Responder"], [41, "The Steady Responder"], [42, "The Calm Scene Solver"],
+    [47, "The Calm Scene Solver"], [48, "The Rapid-Response Natural"], [53, "The Rapid-Response Natural"],
+    [54, "The Emergency Standout"], [60, "The Emergency Standout"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
+});
+
 test("Midwifery result profiles switch at every exact score boundary", () => {
   const quiz = memoryQuiz();
   quiz.result.profiles = [
