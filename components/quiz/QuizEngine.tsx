@@ -599,7 +599,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             {profileArtwork ? <div className="quiz-engine__profile-portrait"><img alt="" src={profileArtwork} /></div> : null}
             <div className="quiz-engine__profile-animal">{result.profile.tier}</div>
             <h2 className="quiz-engine__profile-title">{result.profile.title}</h2>
-            <p className="quiz-engine__profile-aura">{result.profile.aura} {profileReveal.auraLabel}</p>
+            <p className="quiz-engine__profile-aura">
+              {profileReveal.auraLabelFirst ? (
+                <><span>{profileReveal.auraLabel}</span><span>{result.profile.aura}</span></>
+              ) : (
+                <><span>{result.profile.aura}</span><span>{profileReveal.auraLabel}</span></>
+              )}
+            </p>
             <p className="quiz-engine__profile-traits">{result.profile.traits?.join(" · ")}</p>
             <dl className="quiz-engine__result-signals">
               <div><dt>{profileReveal.strongestEnergy}</dt><dd>{result.strongestSignal}</dd></div>

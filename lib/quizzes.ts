@@ -126,6 +126,7 @@ export type QuizResultConfig = {
   profileReveal?: {
     eyebrow: string;
     auraLabel: string;
+    auraLabelFirst?: boolean;
     traitsLabel: string;
     strongestEnergy: string;
     hiddenEnergy: string;
@@ -691,6 +692,7 @@ function normalizeLocale(
     (["eyebrow", "auraLabel", "traitsLabel", "strongestEnergy", "hiddenEnergy", "consistency", "disclaimer"] as const)
       .forEach((key) => text(reveal[key], `results.profileReveal.${key}`, file));
     (["high", "medium", "mixed"] as const).forEach((key) => text(reveal.consistencyLabels?.[key], `results.profileReveal.consistencyLabels.${key}`, file));
+    if (reveal.auraLabelFirst !== undefined && typeof reveal.auraLabelFirst !== "boolean") throw new Error(`${file}: results.profileReveal.auraLabelFirst must be a boolean.`);
     profiles.forEach((profile, index) => {
       text(profile.icon, `results.profiles[${index}].icon`, file);
       text(profile.aura, `results.profiles[${index}].aura`, file);

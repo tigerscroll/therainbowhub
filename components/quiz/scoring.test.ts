@@ -84,6 +84,33 @@ test("weighted-profile ties keep fixed profile order", () => {
   assert.equal(scoreQuiz(quiz, { "aura-choice": 0 }).profile.id, "tiger");
 });
 
+test("single-profile dimensions expose deterministic primary and secondary spectrum styles", () => {
+  const quiz = {
+    engine: { scoring: { type: "weighted-profile" } },
+    questions: [{
+      id: "spectrum-choice",
+      stage: 0,
+      choiceWeights: [{ linguistic: .6, intrapersonal: .4 }],
+    }],
+    stages: ["Mirror"],
+    result: {
+      profiles: [
+        { id: "linguistic", minRatio: 0, tier: "LINGUISTIC", title: "Story", copy: "", percentile: "" },
+        { id: "intrapersonal", minRatio: 0, tier: "INTRAPERSONAL", title: "Compass", copy: "", percentile: "" },
+      ],
+      scoreDimensions: [
+        { label: "Linguistic", categories: ["linguistic"] },
+        { label: "Intrapersonal", categories: ["intrapersonal"] },
+      ],
+      profileReveal: {} as Quiz["result"]["profileReveal"],
+    },
+  } as Quiz;
+  const result = scoreQuiz(quiz, { "spectrum-choice": 0 });
+  assert.equal(result.profile.id, "linguistic");
+  assert.equal(result.strongestSignal, "Linguistic");
+  assert.equal(result.hiddenSignal, "Intrapersonal");
+});
+
 function memoryQuiz(): Quiz {
   const categories = ["word_recall", "visual", "numbers", "working_memory", "association", "attention"];
   return {

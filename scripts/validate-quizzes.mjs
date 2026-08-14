@@ -736,6 +736,118 @@ for (const folder of folders) {
     }
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Aura rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "spectrum") {
+    const profileOrder = [
+      "linguistic", "logical_mathematical", "intrapersonal", "musical",
+      "interpersonal", "bodily_kinesthetic", "spatial", "naturalist",
+    ];
+    const profileLabels = [
+      "Linguistic", "Logical-Mathematical", "Intrapersonal", "Musical",
+      "Interpersonal", "Bodily-Kinesthetic", "Spatial", "Naturalist",
+    ];
+    const orientations = ["INTROVERT", "INTROVERT", "INTROVERT", "INTROVERT", "EXTROVERT", "EXTROVERT", "EXTROVERT", "FLEXIBLE TYPE"];
+    const profileIds = new Set(profileOrder);
+    const rawOpportunity = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+    const uniformExpectation = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+    const ordinaryPairCounts = new Map();
+    const forbiddenResultCopy = /\b(?:linguistic|logical[- ]mathematical|intrapersonal|musical|interpersonal|bodily[- ]kinesthetic|spatial|naturalist|introvert|extrovert|word[- ]smart|number[- ]smart|flexible type)\b/i;
+    const visibleQuestionText = (question) => [question.question, question.context, question.explanation, ...Object.keys(question.answers ?? {}), ...(question.visual?.items ?? [])].filter(Boolean).join(" ");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Spectrum must launch in English only.`);
+    fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, `${folder.name}: Spectrum needs weighted-profile scoring and 450ms default advancement.`);
+    fail(source.title === "What Side Of The Intelligence Spectrum Are You On?", `${folder.name}/en.json: Spectrum title must match the approved headline.`);
+    fail(source.landing?.intro === "Words, patterns, people, rhythm, movement or the natural world—follow your instincts to reveal how your mind connects best.", `${folder.name}/en.json: Spectrum landing intro changed.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Reveal My Spectrum", `${folder.name}/en.json: Spectrum social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Spectrum needs ten rounds of six interactions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Spectrum needs 60 uniquely identified interactions.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(profileOrder), `${folder.name}/en.json: Spectrum profile IDs or tie order changed.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.aura)) === JSON.stringify(orientations), `${folder.name}/en.json: Spectrum quiz-orientation labels changed.`);
+    fail(JSON.stringify((source.results?.dimensions ?? []).map((dimension) => [dimension.label, dimension.profiles])) === JSON.stringify(profileLabels.map((label, index) => [label, [profileOrder[index]]])), `${folder.name}/en.json: Spectrum primary/secondary dimension order changed.`);
+    fail(source.results?.profileReveal?.strongestEnergy === "Primary spectrum style" && source.results?.profileReveal?.hiddenEnergy === "Secondary spectrum style", `${folder.name}/en.json: Spectrum result must use style rather than measured-intelligence labels.`);
+    fail(source.results?.profileReveal?.auraLabel === "QUIZ ORIENTATION" && source.results?.profileReveal?.auraLabelFirst === true, `${folder.name}/en.json: Spectrum result must label orientation as a quiz-only profile label.`);
+    fail(/does not measure the strength of any intelligence/i.test(source.about?.body ?? "") && /not separately assessed/i.test(source.about?.body ?? ""), `${folder.name}/en.json: Spectrum About copy must explain its preference and orientation limits.`);
+    for (const profile of source.results?.profiles ?? []) {
+      fail(typeof profile.aura === "string" && profile.aura.trim(), `${folder.name}/en.json: ${profile.id} needs a quiz orientation.`);
+      fail(Array.isArray(profile.traits) && profile.traits.length === 3 && profile.traits.every((trait) => typeof trait === "string" && trait.trim()), `${folder.name}/en.json: ${profile.id} needs exactly three traits.`);
+      const artwork = config.theme?.artwork?.profiles?.[profile.id];
+      fail(typeof artwork === "string" && fs.existsSync(path.join(directory, artwork)), `${folder.name}: ${profile.id} needs local result artwork.`);
+    }
+    for (const question of sourceQuestions) {
+      const meanings = question.answers && !Array.isArray(question.answers) ? Object.values(question.answers) : [];
+      fail(question.correct === undefined, `${folder.name}/en.json: ${question.id} must not contain correctness.`);
+      fail(meanings.length === (question.presentation === "scale" ? 5 : 4), `${folder.name}/en.json: ${question.id} needs the approved answer count.`);
+      meanings.forEach((weights, answerIndex) => {
+        const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
+        fail(entries.length >= 2 && entries.every(([id, weight]) => profileIds.has(id) && typeof weight === "number" && weight > 0), `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} needs positive weights for at least two known styles.`);
+        const total = entries.reduce((sum, [, weight]) => sum + weight, 0);
+        fail(Math.abs(total - 1) < 1e-9, `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} weights must total 1.`);
+        fail(Math.max(...entries.map(([, weight]) => weight)) <= .75, `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} overweights one style.`);
+        for (const [id, weight] of entries) {
+          rawOpportunity[id] += weight;
+          uniformExpectation[id] += weight / meanings.length;
+        }
+        if (question.presentation !== "scale") {
+          const pair = entries.map(([id]) => id).sort().join("+");
+          ordinaryPairCounts.set(pair, (ordinaryPairCounts.get(pair) ?? 0) + 1);
+        }
+      });
+      fail(!forbiddenResultCopy.test(visibleQuestionText(question)), `${folder.name}/en.json: ${question.id} exposes a result label before the reveal.`);
+    }
+    for (const [id, opportunity] of Object.entries(rawOpportunity)) fail(Math.abs(opportunity - 30.25) < .000001, `${folder.name}/en.json: ${id} raw opportunity must be exactly 30.25 within tolerance.`);
+    for (const [id, expectation] of Object.entries(uniformExpectation)) fail(Math.abs(expectation - 7.5) < .000001, `${folder.name}/en.json: ${id} uniform-random expectation must be exactly 7.5 within tolerance.`);
+    const scales = sourceQuestions.filter((question) => question.presentation === "scale");
+    fail(JSON.stringify(scales.map((question) => question.id)) === JSON.stringify(["spectrum-r4q2", "spectrum-r4q5"]), `${folder.name}/en.json: Spectrum needs exactly two separated Round 4 scales.`);
+    fail(ordinaryPairCounts.size >= 20 && Math.max(...ordinaryPairCounts.values()) <= 12, `${folder.name}/en.json: ordinary answers must rotate across diverse style pairings instead of coupling fixed results.`);
+    const reflectionScale = sourceQuestions.find((question) => question.id === "spectrum-r4q5");
+    const reflectionStops = Object.values(reflectionScale?.answers ?? {});
+    const decisionScale = sourceQuestions.find((question) => question.id === "spectrum-r4q2");
+    const decisionStops = Object.values(decisionScale?.answers ?? {});
+    const introvertProfiles = profileOrder.slice(0, 4);
+    const extrovertProfiles = profileOrder.slice(4, 7);
+    const styleShare = (weights, targets) => targets.reduce((sum, id) => sum + (weights?.[id] ?? 0), 0);
+    fail(styleShare(decisionStops.at(-1), introvertProfiles) > styleShare(decisionStops[0], introvertProfiles), `${folder.name}/en.json: inward decision alignment must progressively favour the reflective profile group.`);
+    fail(styleShare(decisionStops.at(-1), extrovertProfiles) < styleShare(decisionStops[0], extrovertProfiles), `${folder.name}/en.json: outside decision signals must progressively favour the outward profile group.`);
+    fail(styleShare(reflectionStops.at(-1), introvertProfiles) > styleShare(reflectionStops[0], introvertProfiles), `${folder.name}/en.json: protected thinking time must progressively favour the reflective profile group.`);
+    fail(styleShare(reflectionStops.at(-1), extrovertProfiles) < styleShare(reflectionStops[0], extrovertProfiles), `${folder.name}/en.json: active-environment preference must progressively favour the outward profile group.`);
+    fail(Math.abs((reflectionStops.at(-1)?.naturalist ?? 0) - (reflectionStops[0]?.naturalist ?? 0)) < 1e-9, `${folder.name}/en.json: Naturalist must remain neutral across the protected-thinking scale.`);
+    fail(JSON.stringify(source.stages?.[3]?.questions?.map((question) => question.presentation ?? "text")) === JSON.stringify(["text", "scale", "icons", "text", "scale", "text"]), `${folder.name}/en.json: Inside Your Head must keep the approved presentation sequence.`);
+    fail(source.stages?.[4]?.questions?.every((question) => question.presentation === "icons"), `${folder.name}/en.json: Sense the Pattern must remain an aesthetic icon round.`);
+    const sprint = source.stages?.[7]?.questions ?? [];
+    fail(sprint.length === 6 && sprint.every((question) => question.presentation === "icons" && question.delay === 350), `${folder.name}/en.json: Brainwave Sprint needs six icon-dominant 350ms questions.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Brainwave Sprint prompts need ten words or fewer.`);
+    fail(sprint.every((question) => Object.keys(question.answers ?? {}).every((answer) => answer.trim().split(/\s+/).length >= 2)), `${folder.name}/en.json: Brainwave Sprint choices must be brief situations rather than exposed style labels.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Brainwave Sprint may override the 450ms default.`);
+    fail(source.checkpoint?.reveals?.every((reveal, index) => reveal.signal === (index === 7 ? "consistency" : "fixed")), `${folder.name}/en.json: Spectrum checkpoints must not reveal a profile before the result.`);
+    for (const target of profileOrder) {
+      const totals = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+      for (const question of sourceQuestions) {
+        const best = Object.values(question.answers ?? {}).sort((left, right) => (right[target] ?? 0) - (left[target] ?? 0))[0];
+        for (const [id, weight] of Object.entries(best)) totals[id] += weight;
+      }
+      const winner = profileOrder.map((id, order) => ({ id, order, score: totals[id] })).sort((left, right) => right.score - left.score || left.order - right.order)[0]?.id;
+      fail(winner === target, `${folder.name}/en.json: ${target} is not reachable through its strongest plausible response path.`);
+    }
+    let randomState = 0x5eed1234;
+    const nextRandom = () => ((randomState = (Math.imul(randomState, 1664525) + 1013904223) >>> 0) / 2 ** 32);
+    const winCounts = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+    const secondaryCounts = Object.fromEntries(profileOrder.map((id) => [id, Object.fromEntries(profileOrder.map((secondary) => [secondary, 0]))]));
+    for (let run = 0; run < 20000; run += 1) {
+      const totals = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+      for (const question of sourceQuestions) {
+        const meanings = Object.values(question.answers ?? {});
+        const selected = meanings[Math.floor(nextRandom() * meanings.length)];
+        for (const [id, weight] of Object.entries(selected)) totals[id] += weight;
+      }
+      const winner = profileOrder.map((id, order) => ({ id, order, score: totals[id] })).sort((left, right) => right.score - left.score || left.order - right.order)[0]?.id;
+      const ranked = profileOrder.map((id, order) => ({ id, order, score: totals[id] })).sort((left, right) => right.score - left.score || left.order - right.order);
+      winCounts[winner] += 1;
+      secondaryCounts[ranked[0].id][ranked[1].id] += 1;
+    }
+    const winnerRates = Object.values(winCounts).map((count) => count / 20000);
+    fail(Math.max(...winnerRates) - Math.min(...winnerRates) < .015, `${folder.name}/en.json: seeded random simulation exposes material winner bias.`);
+    const strongestSecondaryCoupling = Math.max(...profileOrder.flatMap((primary) => profileOrder.filter((secondary) => secondary !== primary).map((secondary) => secondaryCounts[primary][secondary] / winCounts[primary])));
+    fail(strongestSecondaryCoupling < .3, `${folder.name}/en.json: a primary style is too strongly coupled to a predetermined secondary style.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Spectrum rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",
