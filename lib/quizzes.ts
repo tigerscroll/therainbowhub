@@ -104,6 +104,9 @@ export type QuizResultProfile = {
   title: string;
   copy: string;
   percentile: string;
+  icon?: string;
+  aura?: string;
+  traits?: [string, string, string];
 };
 
 export type QuizScoreDimension = { label: string; categories: string[] };
@@ -116,6 +119,16 @@ export type QuizResultConfig = {
     ageSuffix: string;
     strongestSignal: string;
     wildcard: string;
+    consistency: string;
+    consistencyLabels: { high: string; medium: string; mixed: string };
+    disclaimer: string;
+  };
+  profileReveal?: {
+    eyebrow: string;
+    auraLabel: string;
+    traitsLabel: string;
+    strongestEnergy: string;
+    hiddenEnergy: string;
     consistency: string;
     consistencyLabels: { high: string; medium: string; mixed: string };
     disclaimer: string;
@@ -150,7 +163,7 @@ export type QuizTheme = {
     texture: "none" | "paper" | "grain" | "stars";
   };
   header?: { background: string; text: string; border: string; shadow: string };
-  artwork?: { landing?: string; result?: string; icon?: string };
+  artwork?: { landing?: string; result?: string; icon?: string; profiles?: Record<string, string> };
 };
 
 export type QuizCheckpointReveal = {
@@ -269,9 +282,13 @@ type QuizLocaleFile = {
       title: string;
       copy: string;
       label?: string;
+      icon?: string;
+      aura?: string;
+      traits?: string[];
     }>;
     dimensions?: Array<{ label: string; profiles?: string[]; categories?: string[] }>;
     estimate?: QuizResultConfig["estimate"];
+    profileReveal?: QuizResultConfig["profileReveal"];
     score?: QuizScoreResultCopy;
     match?: QuizMatchResultCopy;
   };
@@ -501,6 +518,9 @@ function validateTheme(value: unknown, file: string): QuizTheme {
       landing: artwork.landing as string | undefined,
       result: artwork.result as string | undefined,
       icon: artwork.icon as string | undefined,
+      profiles: artwork.profiles === undefined
+        ? undefined
+        : Object.fromEntries(Object.entries(object(artwork.profiles, "artwork.profiles", file)).map(([id, value]) => [id, text(value, `artwork.profiles.${id}`, file)])),
     } : undefined,
   };
 }
@@ -658,9 +678,26 @@ function normalizeLocale(
     title: text(profile.title, `results.profiles[${index}].title`, file),
     copy: text(profile.copy, `results.profiles[${index}].copy`, file),
     percentile: profile.label ?? profile.tier,
+    icon: profile.icon,
+    aura: profile.aura,
+    traits: profile.traits as [string, string, string] | undefined,
   }));
   if (["weighted-profile", "hybrid-match"].includes(manifest.engine.scoring) && profiles.some((profile) => !profile.id)) {
     throw new Error(`${file}: profile and match result profiles need ids.`);
+  }
+  if (value.results.profileReveal) {
+    if (manifest.engine.scoring !== "weighted-profile") throw new Error(`${file}: profileReveal is only supported by weighted-profile quizzes.`);
+    const reveal = value.results.profileReveal;
+    (["eyebrow", "auraLabel", "traitsLabel", "strongestEnergy", "hiddenEnergy", "consistency", "disclaimer"] as const)
+      .forEach((key) => text(reveal[key], `results.profileReveal.${key}`, file));
+    (["high", "medium", "mixed"] as const).forEach((key) => text(reveal.consistencyLabels?.[key], `results.profileReveal.consistencyLabels.${key}`, file));
+    profiles.forEach((profile, index) => {
+      text(profile.icon, `results.profiles[${index}].icon`, file);
+      text(profile.aura, `results.profiles[${index}].aura`, file);
+      if (!Array.isArray(profile.traits) || profile.traits.length !== 3) throw new Error(`${file}: profileReveal profile ${index + 1} needs exactly three traits.`);
+      profile.traits.forEach((trait, traitIndex) => text(trait, `results.profiles[${index}].traits[${traitIndex}]`, file));
+      if (!profile.id || !manifest.theme.artwork?.profiles?.[profile.id]) throw new Error(`${file}: profileReveal profile ${profile.id ?? index + 1} needs configured artwork.`);
+    });
   }
   const profileIds = new Set(profiles.flatMap((profile) => profile.id ? [profile.id] : []));
   if (manifest.engine.scoring === "weighted-profile") {
@@ -756,6 +793,7 @@ function normalizeLocale(
       estimate: value.results.estimate,
       score: value.results.score,
       match: value.results.match,
+      profileReveal: value.results.profileReveal,
     },
     questions,
   };
@@ -777,6 +815,10 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   if (manifest.theme.artwork) {
     manifest.theme.artwork.landing = quizAsset(slug, manifest.theme.artwork.landing);
     manifest.theme.artwork.result = quizAsset(slug, manifest.theme.artwork.result);
+    if (manifest.theme.artwork.profiles) {
+      manifest.theme.artwork.profiles = Object.fromEntries(Object.entries(manifest.theme.artwork.profiles)
+        .map(([id, value]) => [id, quizAsset(slug, value)!]));
+    }
   }
   const cssFile = path.join(directory(slug), "theme.css");
   const customCss = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf8") : undefined;

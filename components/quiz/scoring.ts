@@ -16,6 +16,7 @@ export type QuizScore = {
   estimatedAge?: number;
   derivedScore?: number;
   strongestSignal?: string;
+  hiddenSignal?: string;
   wildcard?: string;
   alternativeMatch?: string;
   wildcardMatch?: string;
@@ -52,6 +53,23 @@ function consistencyFromWeights(weights: Record<string, number>): AnswerConsiste
 export function rankDimensions(dimensionScores: Record<string, number>) {
   const ranked = Object.entries(dimensionScores).sort((a, b) => b[1] - a[1]);
   return { strongestSignal: ranked[0]?.[0], wildcard: ranked[1]?.[0] };
+}
+
+export function rankProfileRevealDimensions(
+  dimensions: Quiz["result"]["scoreDimensions"],
+  profileWeights: Record<string, number>,
+  winningProfileId?: string,
+) {
+  const ranked = dimensions.map((dimension, order) => ({
+    label: dimension.label,
+    order,
+    score: dimension.categories.reduce((sum, profileId) => sum + Math.max(0, profileWeights[profileId] ?? 0), 0),
+    containsWinner: Boolean(winningProfileId && dimension.categories.includes(winningProfileId)),
+  })).sort((left, right) => right.score - left.score || left.order - right.order);
+  return {
+    strongestEnergy: ranked[0]?.label,
+    hiddenEnergy: ranked.find((dimension) => !dimension.containsWinner)?.label,
+  };
 }
 
 export function getTargetStatus(score: number, answered: number, total: number, targetRatio: number): TargetStatus {
@@ -195,6 +213,9 @@ function scoreWeightedProfile(quiz: Quiz, answers: QuizAnswers): QuizScore {
   const positiveTotal = Object.values(weights).reduce((sum, weight) => sum + Math.max(0, weight), 0);
   const winningScore = winningId ? Math.max(0, weights[winningId] ?? 0) : 0;
   const dimensions = dimensionSummary(quiz, weights, positiveTotal);
+  const profileRevealSignals = quiz.result.profileReveal
+    ? rankProfileRevealDimensions(quiz.result.scoreDimensions, weights, winningId)
+    : undefined;
 
   const personality = personalityAdjustmentCount ? personalityAdjustmentTotal / personalityAdjustmentCount : 0;
   const brainQuestions = quiz.questions.filter((question) => question.answerIndex !== undefined);
@@ -219,7 +240,8 @@ function scoreWeightedProfile(quiz: Quiz, answers: QuizAnswers): QuizScore {
     score: winningScore,
     total: Object.keys(answers).length,
     estimatedAge,
-    strongestSignal: dimensions.strongestSignal,
+    strongestSignal: profileRevealSignals?.strongestEnergy ?? dimensions.strongestSignal,
+    hiddenSignal: profileRevealSignals?.hiddenEnergy,
     wildcard: dimensions.wildcard,
     weakestSignal: undefined,
     bestStage: undefined,

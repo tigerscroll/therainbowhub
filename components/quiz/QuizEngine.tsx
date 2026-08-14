@@ -575,11 +575,35 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const estimate = quiz.result.estimate;
     const scoreCopy = quiz.result.score;
     const matchCopy = quiz.result.match;
+    const profileReveal = quiz.result.profileReveal;
+    const profileArtwork = result.profile.id ? quiz.theme.artwork?.profiles?.[result.profile.id] : undefined;
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
+    const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
     return (
       <>
-      <section className="quiz-engine__results quiz-engine__card">
+      <section
+        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}`}
+        data-profile-id={profileReveal ? result.profile.id : undefined}
+      >
+        {profileReveal ? (
+          <>
+            <span className="quiz-engine__eyebrow">{profileReveal.eyebrow}</span>
+            {profileArtwork ? <div className="quiz-engine__profile-portrait"><img alt="" src={profileArtwork} /></div> : null}
+            <div className="quiz-engine__profile-animal">{result.profile.tier}</div>
+            <h2 className="quiz-engine__profile-title">{result.profile.title}</h2>
+            <p className="quiz-engine__profile-aura">{result.profile.aura} {profileReveal.auraLabel}</p>
+            <p className="quiz-engine__profile-traits">{result.profile.traits?.join(" · ")}</p>
+            <dl className="quiz-engine__result-signals">
+              <div><dt>{profileReveal.strongestEnergy}</dt><dd>{result.strongestSignal}</dd></div>
+              <div><dt>{profileReveal.hiddenEnergy}</dt><dd>{result.hiddenSignal}</dd></div>
+              <div><dt>{profileReveal.consistency}</dt><dd>{revealConsistency}</dd></div>
+            </dl>
+            <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+            <p className="quiz-engine__disclaimer">{profileReveal.disclaimer}</p>
+          </>
+        ) : (
+          <>
         <div className="quiz-engine__result-icon" aria-hidden="true">
           {quiz.theme.artwork?.icon ?? quiz.cardIcon}
         </div>
@@ -636,6 +660,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         ) : null}
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
+          </>
+        )}
         <button className="quiz-engine__secondary" onClick={restartQuiz} type="button">
           {translations.quiz.restartTest}
         </button>

@@ -485,6 +485,75 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Idiom must lead its result with the percentage.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Idiom rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "aura") {
+    const profileOrder = ["tiger", "wolf", "jaguar", "owl", "deer", "fox", "dolphin", "eagle", "bear", "butterfly"];
+    const dimensionOrder = [
+      ["Command and Courage", ["tiger", "eagle"]],
+      ["Loyalty and Protection", ["wolf", "bear"]],
+      ["Intuition and Mystery", ["jaguar", "owl"]],
+      ["Warmth and Sensitivity", ["deer", "dolphin"]],
+      ["Cleverness and Transformation", ["fox", "butterfly"]],
+    ];
+    const profileIds = new Set(profileOrder);
+    const rawOpportunity = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+    const uniformExpectation = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+    const forbiddenWords = /\b(?:tiger|wolf|jaguar|owl|deer|fox|dolphin|eagle|bear|butterfly|feline|canine|raptor|antler)\b/i;
+    const forbiddenIcons = /[🐅🐯🐺🐆🦉🦌🦊🐬🦅🐻🦋]/u;
+    const visibleQuestionText = (question) => [question.question, question.context, question.explanation, ...Object.keys(question.answers ?? {}), ...(question.visual?.items ?? [])].filter(Boolean).join(" ");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Aura must launch in English only.`);
+    fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, `${folder.name}: Aura needs weighted-profile scoring and 450ms default advancement.`);
+    fail(source.title === "What’s Your Animal Aura Based On Your Personality?", `${folder.name}/en.json: Aura title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Reveal My Aura", `${folder.name}/en.json: Aura landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Aura needs ten rounds of six interactions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Aura needs 60 uniquely identified interactions.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(profileOrder), `${folder.name}/en.json: Aura profile IDs or fixed tie order changed.`);
+    fail(JSON.stringify((source.results?.dimensions ?? []).map((dimension) => [dimension.label, dimension.profiles])) === JSON.stringify(dimensionOrder), `${folder.name}/en.json: Aura energy dimensions or fixed tie order changed.`);
+    fail(Boolean(source.results?.profileReveal), `${folder.name}/en.json: Aura needs profileReveal result copy.`);
+    for (const profile of source.results?.profiles ?? []) {
+      fail(typeof profile.aura === "string" && profile.aura.trim(), `${folder.name}/en.json: ${profile.id} needs an aura label.`);
+      fail(Array.isArray(profile.traits) && profile.traits.length === 3 && profile.traits.every((trait) => typeof trait === "string" && trait.trim()), `${folder.name}/en.json: ${profile.id} needs exactly three traits.`);
+      const artwork = config.theme?.artwork?.profiles?.[profile.id];
+      fail(typeof artwork === "string" && fs.existsSync(path.join(directory, artwork)), `${folder.name}: ${profile.id} needs local result artwork.`);
+    }
+    for (const question of sourceQuestions) {
+      const meanings = question.answers && !Array.isArray(question.answers) ? Object.values(question.answers) : [];
+      fail(meanings.length === (question.presentation === "scale" ? 5 : 4), `${folder.name}/en.json: ${question.id} needs the approved answer count.`);
+      meanings.forEach((weights, answerIndex) => {
+        const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
+        fail(entries.length >= 2 && entries.every(([id, weight]) => profileIds.has(id) && typeof weight === "number" && weight > 0), `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} needs positive weights for at least two known animals.`);
+        const total = entries.reduce((sum, [, weight]) => sum + weight, 0);
+        fail(Math.abs(total - 1) < 1e-9, `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} weights must total 1.`);
+        fail(Math.max(...entries.map(([, weight]) => weight)) <= .75, `${folder.name}/en.json: ${question.id} answer ${answerIndex + 1} overweights one profile.`);
+        for (const [id, weight] of entries) {
+          rawOpportunity[id] += weight;
+          uniformExpectation[id] += weight / meanings.length;
+        }
+      });
+      fail(!forbiddenWords.test(visibleQuestionText(question)), `${folder.name}/en.json: ${question.id} leaks a result animal or substitute clue in visible copy.`);
+      fail(!(question.icons ?? []).some((icon) => forbiddenIcons.test(icon)), `${folder.name}/en.json: ${question.id} leaks a result animal through an answer icon.`);
+    }
+    for (const [id, opportunity] of Object.entries(rawOpportunity)) fail(Math.abs(opportunity - 24.2) < .000001, `${folder.name}/en.json: ${id} opportunity must be exactly 24.2 within tolerance.`);
+    const expectedValues = Object.values(uniformExpectation);
+    fail(Math.max(...expectedValues) - Math.min(...expectedValues) < 1e-9, `${folder.name}/en.json: uniform random answers produce structural result bias.`);
+    const scales = sourceQuestions.filter((question) => question.presentation === "scale");
+    fail(scales.length === 2 && scales.every((question) => question.id.startsWith("aura-r4")), `${folder.name}/en.json: Aura needs exactly two Round 4 scales.`);
+    fail(source.stages?.[3]?.questions?.[1]?.presentation === "scale" && source.stages?.[3]?.questions?.[4]?.presentation === "scale", `${folder.name}/en.json: Round 4 scales must remain separated by two text questions.`);
+    fail(source.stages?.[4]?.questions?.every((question) => question.presentation === "icons"), `${folder.name}/en.json: Choose Your Aura must remain an aesthetic icon round.`);
+    const sprint = source.stages?.[7]?.questions ?? [];
+    fail(sprint.length === 6 && sprint.every((question) => question.presentation === "icons" && question.delay === 350), `${folder.name}/en.json: Instinct Sprint needs six icon-dominant 350ms questions.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Instinct Sprint prompts need ten words or fewer.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Instinct Sprint may override the 450ms default.`);
+    for (const target of profileOrder) {
+      const totals = Object.fromEntries(profileOrder.map((id) => [id, 0]));
+      for (const question of sourceQuestions) {
+        const best = Object.values(question.answers ?? {}).sort((left, right) => (right[target] ?? 0) - (left[target] ?? 0))[0];
+        for (const [id, weight] of Object.entries(best)) totals[id] += weight;
+      }
+      const winner = profileOrder.map((id, order) => ({ id, order, score: totals[id] })).sort((left, right) => right.score - left.score || left.order - right.order)[0]?.id;
+      fail(winner === target, `${folder.name}/en.json: ${target} is not reachable through its strongest plausible response path.`);
+    }
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Aura rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",

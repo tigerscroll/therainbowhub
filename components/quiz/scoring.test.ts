@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Quiz, QuizEstimateConfig } from "../../lib/quizzes.ts";
-import { answerConsistencyFromShares, calculateDerivedScore, calculateEstimatedAge, getTargetStatus, rankDimensions, scoreHybridMatch, scoreQuiz } from "./scoring.ts";
+import { answerConsistencyFromShares, calculateDerivedScore, calculateEstimatedAge, getTargetStatus, rankDimensions, rankProfileRevealDimensions, scoreHybridMatch, scoreQuiz } from "./scoring.ts";
 
 const estimate: QuizEstimateConfig = {
   baseAge: 84,
@@ -42,6 +42,46 @@ test("strongest signal and wildcard use the top two dimensions", () => {
     strongestSignal: "Adventure",
     wildcard: "Balance",
   });
+});
+
+test("profile reveal excludes the winning animal's dimension from hidden energy", () => {
+  const dimensions = [
+    { label: "Command and Courage", categories: ["tiger", "eagle"] },
+    { label: "Loyalty and Protection", categories: ["wolf", "bear"] },
+    { label: "Warmth and Sensitivity", categories: ["deer", "dolphin"] },
+  ];
+  assert.deepEqual(rankProfileRevealDimensions(dimensions, {
+    tiger: 12, eagle: 2, wolf: 5, bear: 3, deer: 6, dolphin: 5,
+  }, "tiger"), {
+    strongestEnergy: "Command and Courage",
+    hiddenEnergy: "Warmth and Sensitivity",
+  });
+  assert.deepEqual(rankProfileRevealDimensions(dimensions, {
+    tiger: 1, eagle: 1, wolf: 1, bear: 1, deer: 1, dolphin: 1,
+  }, "tiger"), {
+    strongestEnergy: "Command and Courage",
+    hiddenEnergy: "Loyalty and Protection",
+  });
+});
+
+test("weighted-profile ties keep fixed profile order", () => {
+  const quiz = {
+    engine: { scoring: { type: "weighted-profile" } },
+    questions: [{ id: "aura-choice", stage: 0, choiceWeights: [{ tiger: .5, wolf: .5 }] }],
+    stages: ["Mirror"],
+    result: {
+      profiles: [
+        { id: "tiger", minRatio: 0, tier: "TIGER", title: "Tiger", copy: "", percentile: "" },
+        { id: "wolf", minRatio: 0, tier: "WOLF", title: "Wolf", copy: "", percentile: "" },
+      ],
+      scoreDimensions: [
+        { label: "Command", categories: ["tiger"] },
+        { label: "Loyalty", categories: ["wolf"] },
+      ],
+      profileReveal: {} as Quiz["result"]["profileReveal"],
+    },
+  } as Quiz;
+  assert.equal(scoreQuiz(quiz, { "aura-choice": 0 }).profile.id, "tiger");
 });
 
 function memoryQuiz(): Quiz {

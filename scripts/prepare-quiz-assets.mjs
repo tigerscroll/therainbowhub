@@ -56,7 +56,7 @@ async function prepareQuiz(slug) {
   } catch { /* Custom question icons are optional. */ }
 
   const artwork = manifest.theme?.artwork ?? {};
-  await Promise.all([artwork.landing, artwork.result]
+  await Promise.all([artwork.landing, artwork.result, ...Object.values(artwork.profiles ?? {})]
     .filter((value, index, values) => typeof value === "string" && !value.startsWith("/") && values.indexOf(value) === index)
     .map((value) => copyIfPresent(path.join(source, value), path.join(destination, value))));
 }
