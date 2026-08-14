@@ -1,0 +1,71 @@
+{
+  "slug": "grammar",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-14",
+    "duration": "8 min",
+    "difficulty": "Hard",
+    "icon": "✍️"
+  },
+  "theme": {
+    "id": "grammar",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#f4efe5",
+      "pageAlt": "#e8dfd1",
+      "surface": "#fffdf7",
+      "surfaceRaised": "#f6f2e9",
+      "text": "#17243a",
+      "muted": "#68707a",
+      "primary": "#172d4d",
+      "primaryText": "#fffdf7",
+      "border": "#b9c0c7",
+      "correct": "#36785f",
+      "incorrect": "#b94e52"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "24px",
+      "buttonRadius": "14px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "none"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #13243e, #1d365c)",
+      "text": "#fffdf7",
+      "border": "#e2b84f",
+      "shadow": "0 8px 26px rgba(17, 32, 54, 0.28)"
+    },
+    "artwork": {
+      "icon": "✍️"
+    }
+  }
+}

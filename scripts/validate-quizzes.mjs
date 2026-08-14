@@ -353,6 +353,62 @@ for (const folder of folders) {
     fail(config.engine?.targetRatio === 0.8, `${folder.name}: Chef pass threshold must be 80%.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Chef rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "grammar") {
+    const expectedCategories = {
+      sentence_structure: 10,
+      verbs_agreement: 10,
+      punctuation_apostrophes: 10,
+      pronouns_reference: 10,
+      modifiers_word_choice: 10,
+      editing_context: 10,
+    };
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const sprint = source.stages?.[7]?.questions ?? [];
+    const trapdoors = source.stages?.[8]?.questions ?? [];
+    const finalProof = source.stages?.[9]?.questions ?? [];
+    const questionCopy = sourceQuestions.flatMap((question) => [
+      question.context,
+      question.question,
+      ...(Array.isArray(question.answers) ? question.answers : []),
+      question.explanation,
+    ].filter(Boolean)).join(" ");
+    const singularTheyQuestions = ["grammar-r5q2", "grammar-r10q4"]
+      .map((id) => sourceQuestions.find((question) => question.id === id));
+
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Grammar must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Grammar must use correct-answer scoring.`);
+    fail(source.title === "Only 10% Of The Population Can Pass This Grammar Quiz", `${folder.name}/en.json: Grammar title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Grammar landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Grammar needs ten rounds of six questions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Grammar must contain 60 uniquely identified questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Grammar needs exactly ten questions in each language category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Grammar question needs exactly four choices.`);
+    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Grammar choices must be non-empty and unique within each question.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Grammar question needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Grammar correct-answer positions must be exactly 15 each across A–D.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Grammar question needs a post-result explanation.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Grammar default advancement must be exactly 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Quick Fix Sprint question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Quick Fix Sprint prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Quick Fix Sprint may override the 450ms default.`);
+    fail(trapdoors.length === 6 && trapdoors.every((question) => Array.isArray(question.trapdoorErrors) && question.trapdoorErrors.length === 4 && question.trapdoorErrors[question.correct] === null && question.trapdoorErrors.filter(Boolean).length === 3), `${folder.name}/en.json: every Grammar Trapdoor needs one identified error for each distractor and none for the correct answer.`);
+    fail(finalProof.length === 6 && finalProof.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Proof questions need visible context and two-step reasoning.`);
+    fail(singularTheyQuestions.every((question) => question && /\b(?:they|their)\b/i.test(question.answers[question.correct]) && /standard/i.test(question.explanation)), `${folder.name}/en.json: singular they/their must remain explicitly accepted as standard English.`);
+    fail(!/\bwhom\b/i.test(questionCopy), `${folder.name}/en.json: unsupported who/whom distinctions are not allowed.`);
+    fail(!/\bJames(?:['’]s|['’])\b/.test(questionCopy), `${folder.name}/en.json: style-dependent possessives of names ending in s are not allowed.`);
+    fail(!/\b(?:gotten|color|colour|center|centre|organize|organise)\b/i.test(questionCopy), `${folder.name}/en.json: regional spelling or got/gotten distinctions are not allowed.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Grammar profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Grammar must lead its result with the percentage.`);
+    fail(config.engine?.targetRatio === 0.8, `${folder.name}: Grammar pass threshold must be 80%.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Grammar rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "nursing") {
     const expectedCategories = {
       anatomy_physiology: 10,

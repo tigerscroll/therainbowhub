@@ -253,6 +253,27 @@ test("Idiom result profiles and ace threshold switch at every exact score bounda
   assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
 });
 
+test("Grammar result profiles and pass threshold switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Master Editor" },
+    { minRatio: 0.8, title: "The Natural Grammarian" },
+    { minRatio: 0.7, title: "The Sentence Specialist" },
+    { minRatio: 0.6, title: "The Careful Communicator" },
+    { minRatio: 0.5, title: "The Language Improver" },
+    { minRatio: 0, title: "The Grammar Detective" },
+  ];
+  const cases = [
+    [29, "The Grammar Detective"], [30, "The Language Improver"], [35, "The Language Improver"],
+    [36, "The Careful Communicator"], [41, "The Careful Communicator"], [42, "The Sentence Specialist"],
+    [47, "The Sentence Specialist"], [48, "The Natural Grammarian"], [53, "The Natural Grammarian"],
+    [54, "The Master Editor"], [60, "The Master Editor"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
+});
+
 test("80% target state distinguishes achieved, reachable and unreachable", () => {
   assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
   assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");
