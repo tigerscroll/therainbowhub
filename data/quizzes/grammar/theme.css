@@ -175,7 +175,6 @@
   color: var(--grammar-text);
 }
 
-[data-quiz-theme="grammar"] .quiz-engine__question::before,
 [data-quiz-theme="grammar"] .quiz-engine__checkpoint::before,
 [data-quiz-theme="grammar"] .quiz-engine__results::before,
 [data-quiz-theme="grammar"] .quiz-engine__about::before {
@@ -214,7 +213,9 @@
   background: rgba(255,255,255,.9);
   color: var(--grammar-text);
 }
-[data-quiz-theme="grammar"] .quiz-engine__answer:hover { border-color: var(--grammar-ink); background: #f8faf9; }
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="grammar"] .quiz-engine__answer:hover:not(:disabled) { border-color: var(--grammar-ink); background: #f8faf9; }
+}
 [data-quiz-theme="grammar"] .quiz-engine__answer.is-selected { border-color: var(--grammar-red); background: #faeaeb; color: #302237; box-shadow: 0 0 0 3px rgba(185,78,82,.13); }
 
 [data-quiz-theme="grammar"] .quiz-engine__checkpoint-badge,

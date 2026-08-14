@@ -273,7 +273,9 @@
   box-shadow: 0 5px 0 rgba(52,43,114,.08);
   font-weight: 800;
 }
-[data-quiz-theme="idiom"] .quiz-engine__answer:hover { border-color: rgba(52,43,114,.36); background: #fffaf0; }
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="idiom"] .quiz-engine__answer:hover:not(:disabled) { border-color: rgba(52,43,114,.36); background: #fffaf0; }
+}
 [data-quiz-theme="idiom"] .quiz-engine__answer.is-selected {
   border-color: var(--phrase-indigo);
   background: #eeeafb;

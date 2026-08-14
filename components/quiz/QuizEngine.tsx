@@ -53,8 +53,9 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
     ?? (question.presentation === "code" ? Math.min(visual.items.length, 2) : visual.items.length);
   const isVerboseSequence = question.presentation === "sequence"
     && (
-      (visual.items.length >= 4 && visual.items.some((item) => item.length > 10))
-      || visual.items.join("").length > 52
+      visual.items.some((item) => item.length > 18)
+      || (visual.items.length >= 4 && visual.items.some((item) => item.length > 10))
+      || visual.items.join("").length > 42
     );
   const isCompactSequence = question.presentation === "sequence"
     && visual.items.every((item) => item.length <= 7);
@@ -111,7 +112,13 @@ function ChoiceQuestion({
             data-selected={selected || undefined}
             disabled={answer !== undefined}
             key={`${question.id}-${index}`}
-            onClick={() => onAnswer(index)}
+            onClick={(event) => {
+              // Mobile Safari can preserve focus/hover paint on a tapped button
+              // while React advances. Blur before updating so interaction state
+              // cannot visually leak into the next question.
+              event.currentTarget.blur();
+              onAnswer(index);
+            }}
             role={question.presentation === "scale" ? "radio" : undefined}
             type="button"
           >
