@@ -634,7 +634,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {questionIndex > 0 && (!currentQuestion.study || studyComplete) ? (
           <QuestionDisplayAd
             adUnitPath={siteConfig.questionDisplayAdUnitPath}
-            refreshKey={selectedAnswer === undefined ? null : `${currentQuestion.id}:${selectedAnswer}`}
+            questionId={currentQuestion.id}
           />
         ) : null}
         <QuestionRenderer

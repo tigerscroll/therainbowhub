@@ -25,10 +25,11 @@ function googleTag() {
   return target.googletag;
 }
 
-export function QuestionDisplayAd({ adUnitPath, refreshKey }: { adUnitPath: string; refreshKey: string | null }) {
+export function QuestionDisplayAd({ adUnitPath, questionId }: { adUnitPath: string; questionId: string }) {
   const reactId = useId();
   const elementId = `quiz-question-ad-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const slotRef = useRef<DisplaySlot | null>(null);
+  const previousQuestionId = useRef(questionId);
 
   useEffect(() => {
     let cancelled = false;
@@ -57,15 +58,21 @@ export function QuestionDisplayAd({ adUnitPath, refreshKey }: { adUnitPath: stri
   }, [adUnitPath, elementId]);
 
   useEffect(() => {
-    if (refreshKey === null) return;
-    const googletag = googleTag();
-    googletag.cmd.push(() => {
-      const slot = slotRef.current;
-      const pubads = googletag.pubads?.();
-      if (!slot || !pubads?.refresh) return;
-      pubads.refresh([slot], { changeCorrelator: true });
+    if (previousQuestionId.current === questionId) return;
+    previousQuestionId.current = questionId;
+
+    const frame = window.requestAnimationFrame(() => {
+      const googletag = googleTag();
+      googletag.cmd.push(() => {
+        const slot = slotRef.current;
+        const pubads = googletag.pubads?.();
+        if (!slot || !pubads?.refresh) return;
+        pubads.refresh([slot], { changeCorrelator: true });
+      });
     });
-  }, [refreshKey]);
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [questionId]);
 
   return (
     <div className="quiz-engine__question-ad" data-ad-size="300x250">
