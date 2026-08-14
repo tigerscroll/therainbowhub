@@ -57,7 +57,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
       || visual.items.join("").length > 52
     );
   const isCompactSequence = question.presentation === "sequence"
-    && visual.items.every((item) => item.length <= 10);
+    && visual.items.every((item) => item.length <= 7);
   const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
   const needsMobileTwoColumns = question.presentation !== "sequence"
