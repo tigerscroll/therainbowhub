@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
@@ -48,11 +48,24 @@ type QuestionRendererProps = {
 function QuestionVisual({ question }: { question: QuizQuestion }) {
   const visual = question.visual;
   if (!visual) return null;
+
+  const columnCount = visual.columns
+    ?? (question.presentation === "code" ? Math.min(visual.items.length, 2) : visual.items.length);
+  const isVerboseSequence = question.presentation === "sequence"
+    && (visual.items.some((item) => item.length > 16) || visual.items.join("").length > 52);
+  const isCompactSequence = question.presentation === "sequence"
+    && visual.items.every((item) => item.length <= 10);
+  const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
+  const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
+  const visualStyle = {
+    "--quiz-visual-columns": Math.max(1, columnCount),
+  } as CSSProperties;
+
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}`}
-      style={question.presentation === "grid" ? { gridTemplateColumns: `repeat(${visual.columns}, minmax(0, 1fr))` } : undefined}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}`}
+      style={visualStyle}
     >
       {visual.items.map((item, index) => (
         <span key={`${item}-${index}`}>
@@ -76,6 +89,7 @@ function ChoiceQuestion({
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
+        const icon = question.icons?.[index];
         const revealCorrectness = feedback === "instant" && answer !== undefined && question.answerIndex !== undefined;
         const correct = revealCorrectness && index === question.answerIndex;
         const incorrect = revealCorrectness && selected && index !== question.answerIndex;
@@ -93,7 +107,13 @@ function ChoiceQuestion({
             role={question.presentation === "scale" ? "radio" : undefined}
             type="button"
           >
-            {question.presentation === "icons" ? <span className="quiz-engine__answer-icon" aria-hidden="true">{question.icons?.[index]}</span> : null}
+            {question.presentation === "icons" ? (
+              <span className="quiz-engine__answer-icon" aria-hidden="true">
+                {typeof icon === "string" && icon.startsWith("/quizzes/")
+                  ? <img alt="" decoding="async" src={icon} />
+                  : icon}
+              </span>
+            ) : null}
             {question.presentation !== "icons" && question.presentation !== "scale" ? <span>{String.fromCharCode(65 + index)}</span> : null}
             {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
             <strong>{choice}</strong>

@@ -1,0 +1,70 @@
+{
+  "slug": "midwifery",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-14",
+    "duration": "8 min",
+    "difficulty": "Hard",
+    "icon": "👶"
+  },
+  "theme": {
+    "id": "midwifery",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#eee8e2",
+      "pageAlt": "#d8cec5",
+      "surface": "#fffdf8",
+      "surfaceRaised": "#f6f1eb",
+      "text": "#35233b",
+      "muted": "#746975",
+      "primary": "#6c405f",
+      "primaryText": "#ffffff",
+      "border": "#c4afa9",
+      "correct": "#557c69",
+      "incorrect": "#b95e67"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "26px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #35233b, #6c405f)",
+      "text": "#ffffff",
+      "border": "#d7ad63",
+      "shadow": "0 8px 26px rgba(53, 35, 59, 0.24)"
+    },
+    "artwork": {
+      "icon": "👶"
+    }
+  }
+}

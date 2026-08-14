@@ -133,6 +133,44 @@ test("Mechanic result profiles switch at every exact score boundary", () => {
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
 });
 
+test("Nursing result profiles switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Admissions Standout" },
+    { minRatio: 0.8, title: "The Nursing Natural" },
+    { minRatio: 0.7, title: "The Calm Candidate" },
+    { minRatio: 0.6, title: "The Careful Problem-Solver" },
+    { minRatio: 0.5, title: "The Promising Applicant" },
+    { minRatio: 0, title: "The Compassionate Explorer" },
+  ];
+  const cases = [
+    [29, "The Compassionate Explorer"], [30, "The Promising Applicant"], [35, "The Promising Applicant"],
+    [36, "The Careful Problem-Solver"], [41, "The Careful Problem-Solver"], [42, "The Calm Candidate"],
+    [47, "The Calm Candidate"], [48, "The Nursing Natural"], [53, "The Nursing Natural"],
+    [54, "The Admissions Standout"], [60, "The Admissions Standout"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+});
+
+test("Midwifery result profiles switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Birth Centre Standout" },
+    { minRatio: 0.8, title: "The Midwifery Natural" },
+    { minRatio: 0.7, title: "The Calm Candidate" },
+    { minRatio: 0.6, title: "The Thoughtful Supporter" },
+    { minRatio: 0.5, title: "The Promising Applicant" },
+    { minRatio: 0, title: "The Compassionate Explorer" },
+  ];
+  const cases = [
+    [29, "The Compassionate Explorer"], [30, "The Promising Applicant"], [35, "The Promising Applicant"],
+    [36, "The Thoughtful Supporter"], [41, "The Thoughtful Supporter"], [42, "The Calm Candidate"],
+    [47, "The Calm Candidate"], [48, "The Midwifery Natural"], [53, "The Midwifery Natural"],
+    [54, "The Birth Centre Standout"], [60, "The Birth Centre Standout"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+});
+
 test("80% target state distinguishes achieved, reachable and unreachable", () => {
   assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
   assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");
