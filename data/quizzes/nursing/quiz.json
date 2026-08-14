@@ -1,0 +1,70 @@
+{
+  "slug": "nursing",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-14",
+    "duration": "8 min",
+    "difficulty": "Hard",
+    "icon": "🩺"
+  },
+  "theme": {
+    "id": "nursing",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#e6eef1",
+      "pageAlt": "#c8d9df",
+      "surface": "#fffdf9",
+      "surfaceRaised": "#f3f8fa",
+      "text": "#173142",
+      "muted": "#657984",
+      "primary": "#126873",
+      "primaryText": "#ffffff",
+      "border": "#9ebbc4",
+      "correct": "#2b7b67",
+      "incorrect": "#c45f69"
+    },
+    "typography": {
+      "heading": "sans",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "24px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #163747, #126873)",
+      "text": "#ffffff",
+      "border": "#e8bc58",
+      "shadow": "0 8px 26px rgba(20, 55, 70, 0.24)"
+    },
+    "artwork": {
+      "icon": "🩺"
+    }
+  }
+}

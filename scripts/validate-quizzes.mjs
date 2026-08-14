@@ -299,6 +299,51 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Mechanic must lead its result with the percentage.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Mechanic rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "nursing") {
+    const expectedCategories = {
+      anatomy_physiology: 10,
+      numeracy_measurement: 10,
+      observation_vitals: 10,
+      infection_safety: 10,
+      communication_compassion: 10,
+      reasoning_priorities: 10,
+    };
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const priorities = source.stages?.[6]?.questions ?? [];
+    const sprint = source.stages?.[7]?.questions ?? [];
+    const handovers = source.stages?.[8]?.questions ?? [];
+    const finalHandover = source.stages?.[9]?.questions ?? [];
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Nursing must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Nursing must use correct-answer scoring.`);
+    fail(source.title === "Only 7% Pass This Nursing Entrance Exam", `${folder.name}/en.json: Nursing title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Nursing landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Nursing needs ten stages of six questions.`);
+    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Nursing must contain exactly 60 questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Nursing needs exactly ten questions in each entrance category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Nursing question needs exactly four choices.`);
+    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Nursing choices must be non-empty and unique within each question.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Nursing question needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Nursing correct-answer positions must be exactly 15 each across A–D.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Nursing question needs a post-result explanation.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Nursing default advancement must be exactly 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Nurses’ Station Sprint question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Nurses’ Station Sprint prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Nurses’ Station Sprint may override the 450ms default.`);
+    fail(priorities.length === 6 && priorities.every((question) => typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: every priority-stage question needs multiple visible clues.`);
+    fail(priorities.filter((question) => /Person A/i.test(question.context) && /Person B/i.test(question.context)).length >= 4, `${folder.name}/en.json: at least four priority-stage questions must compare two people directly.`);
+    fail(handovers.length === 6 && handovers.every((question) => typeof question.context === "string" && /(handover|note|chart|detail)/i.test(question.context)), `${folder.name}/en.json: every Shift-Change Trap needs a visible handover, note, chart or detail context.`);
+    fail(finalHandover.length === 6 && finalHandover.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Handover questions need two visible clues and two-step reasoning.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Nursing profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Nursing must lead its result with the percentage.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Nursing rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",

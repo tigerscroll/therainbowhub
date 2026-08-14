@@ -1,0 +1,435 @@
+[data-quiz-theme="nursing"] {
+  --nurse-navy: #173142;
+  --nurse-navy-dark: #102735;
+  --nurse-teal: #126873;
+  --nurse-teal-bright: #2d8c92;
+  --nurse-blue: #dcecf1;
+  --nurse-paper: #fffdf9;
+  --nurse-coral: #d66b76;
+  --nurse-gold: #e8bc58;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(18,104,115,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,104,115,.035) 1px, transparent 1px),
+    linear-gradient(145deg, #f1f6f7 0%, #e1ebee 50%, #ccdce1 100%);
+  background-size: 32px 32px, 32px 32px, auto;
+  color: var(--nurse-navy);
+}
+
+[data-quiz-theme="nursing"]::before,
+[data-quiz-theme="nursing"]::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+[data-quiz-theme="nursing"]::before {
+  top: 95px;
+  right: -90px;
+  width: 360px;
+  height: 160px;
+  opacity: .25;
+  background: linear-gradient(90deg,
+    transparent 0 8%,
+    var(--nurse-teal) 8% 10%,
+    transparent 10% 20%,
+    var(--nurse-teal) 20% 23%,
+    transparent 23% 31%,
+    var(--nurse-coral) 31% 35%,
+    transparent 35% 46%,
+    var(--nurse-teal) 46% 49%,
+    transparent 49%);
+  clip-path: polygon(0 48%, 15% 48%, 19% 31%, 24% 70%, 30% 43%, 36% 52%, 100% 52%, 100% 58%, 34% 58%, 31% 53%, 24% 83%, 18% 42%, 16% 55%, 0 55%);
+}
+
+[data-quiz-theme="nursing"]::after {
+  bottom: 120px;
+  left: -90px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(18,104,115,.12);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 25px rgba(255,255,255,.1);
+}
+
+[data-quiz-theme="nursing"] > * { position: relative; z-index: 1; }
+
+/* The same proven landing hierarchy as the other quizzes, with a clinical admissions finish. */
+[data-quiz-theme="nursing"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  width: min(900px, 100%);
+  overflow: hidden;
+  padding: clamp(36px, 5.5vw, 66px);
+  border: 1px solid rgba(18,104,115,.24);
+  border-radius: 28px;
+  background:
+    linear-gradient(90deg, transparent 0 97%, rgba(18,104,115,.06) 97%),
+    linear-gradient(155deg, rgba(255,255,255,.99), rgba(255,253,249,.97));
+  color: var(--nurse-navy);
+  box-shadow: 0 32px 80px rgba(20,55,70,.16), inset 0 3px 0 rgba(255,255,255,.9);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__landing::before {
+  position: absolute;
+  inset: 18px;
+  content: "";
+  border: 1px solid rgba(18,104,115,.12);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__landing::after {
+  position: absolute;
+  top: 27px;
+  left: 31px;
+  width: 54px;
+  height: 5px;
+  content: "";
+  border-radius: 8px;
+  background: var(--nurse-teal);
+  box-shadow: 64px 0 var(--nurse-coral), 96px 0 var(--nurse-gold);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__landing-copy {
+  display: grid;
+  width: 100%;
+  max-width: 750px;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__landing-badge {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  margin: 2px auto 11px;
+  border: 1px solid rgba(18,104,115,.2);
+  border-radius: 23px;
+  background: linear-gradient(145deg, #fff, #e8f3f5);
+  box-shadow: 0 13px 30px rgba(20,55,70,.13), inset 0 0 0 7px rgba(220,236,241,.75);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__landing-badge span { font-size: 35px; }
+[data-quiz-theme="nursing"] .quiz-engine__landing .quiz-engine__eyebrow,
+[data-quiz-theme="nursing"] .quiz-engine__landing .quiz-engine__lede,
+[data-quiz-theme="nursing"] .quiz-engine__landing .quiz-engine__landing-meta { display: none; }
+
+[data-quiz-theme="nursing"] .quiz-engine__landing h1 {
+  max-width: 760px;
+  margin: 12px auto 22px;
+  color: var(--nurse-navy);
+  font-size: clamp(45px, 5vw, 66px);
+  font-weight: 900;
+  line-height: .97;
+  letter-spacing: -.05em;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__quick-start {
+  max-width: 670px;
+  margin: 0 auto 20px;
+  padding: 0;
+  border: 0;
+  color: #586f7b;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.48;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__social {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 13px;
+  margin: 0 auto 20px;
+  padding: 9px 15px;
+  border: 1px solid rgba(18,104,115,.2);
+  border-radius: 999px;
+  background: rgba(243,248,250,.94);
+  color: var(--nurse-navy);
+  box-shadow: 0 8px 22px rgba(20,55,70,.08);
+  font-size: 14px;
+  text-align: left;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__social-text strong { color: var(--nurse-teal); font-weight: 900; }
+[data-quiz-theme="nursing"] .quiz-engine__social-text span { color: var(--nurse-navy); font-weight: 750; }
+[data-quiz-theme="nursing"] .quiz-engine__avatars { display: flex; flex: 0 0 auto; }
+[data-quiz-theme="nursing"] .quiz-engine__avatars span {
+  width: 30px;
+  height: 30px;
+  margin-left: -9px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 4px 10px rgba(20,55,70,.18);
+}
+[data-quiz-theme="nursing"] .quiz-engine__avatars span:first-child { margin-left: 0; }
+
+[data-quiz-theme="nursing"] .quiz-engine__landing .quiz-engine__primary {
+  display: inline-flex;
+  width: min(100%, 390px);
+  min-height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-size: 19px;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__primary {
+  border: 1px solid #0c5058;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #177783, #105c66);
+  color: #fff;
+  box-shadow: 0 6px 0 #0c4850, 0 15px 28px rgba(16,92,102,.2);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__primary:active {
+  background: linear-gradient(135deg, #177783, #105c66);
+  color: #fff;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__primary-icon { display: inline; color: #ffe2a0; }
+[data-quiz-theme="nursing"] .quiz-engine__ad-note { justify-content: center; color: #667a84; }
+[data-quiz-theme="nursing"] .quiz-engine__ad-note span { border-color: var(--nurse-teal); color: var(--nurse-teal); }
+[data-quiz-theme="nursing"] .quiz-engine__landing-art,
+[data-quiz-theme="nursing"] .quiz-engine__landing-symbol { display: none !important; }
+
+/* Observation-card questions. */
+[data-quiz-theme="nursing"] .quiz-engine__question-shell { width: min(800px, 100%); }
+[data-quiz-theme="nursing"] .quiz-engine__progress-head { color: #536c78; font-weight: 800; }
+[data-quiz-theme="nursing"] .quiz-engine__progress-head strong { color: var(--nurse-teal); }
+[data-quiz-theme="nursing"] .quiz-engine__progress {
+  height: 10px;
+  border: 1px solid rgba(18,104,115,.18);
+  background: rgba(255,255,255,.76);
+  box-shadow: inset 0 2px 5px rgba(20,55,70,.08);
+}
+[data-quiz-theme="nursing"] .quiz-engine__progress i {
+  background: linear-gradient(90deg, var(--nurse-teal), #56a7a7 72%, var(--nurse-gold));
+  box-shadow: 0 0 14px rgba(18,104,115,.25);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__question,
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint,
+[data-quiz-theme="nursing"] .quiz-engine__results,
+[data-quiz-theme="nursing"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(18,104,115,.24);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, transparent 0 96%, rgba(18,104,115,.045) 96%),
+    rgba(255,253,249,.98);
+  color: var(--nurse-navy);
+  box-shadow: 0 26px 62px rgba(20,55,70,.15), inset 0 2px 0 rgba(255,255,255,.9);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__question::before,
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="nursing"] .quiz-engine__results::before,
+[data-quiz-theme="nursing"] .quiz-engine__about::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: "";
+  background: linear-gradient(90deg, var(--nurse-teal) 0 58%, var(--nurse-coral) 58% 78%, var(--nurse-gold) 78%);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__question h1 {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  color: var(--nurse-navy);
+  font-size: clamp(29px, 5vw, 46px);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__question-context {
+  width: min(100%, 680px);
+  margin: 0 auto 16px;
+  padding: 12px 15px;
+  border: 1px solid rgba(18,104,115,.17);
+  border-radius: 14px;
+  background: #eaf4f6;
+  color: #34525f;
+  font-weight: 720;
+  line-height: 1.45;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__visual {
+  border: 1px solid rgba(18,104,115,.2);
+  border-radius: 16px;
+  background:
+    linear-gradient(rgba(18,104,115,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,104,115,.045) 1px, transparent 1px),
+    linear-gradient(145deg, #f5fafb, #e7f2f4);
+  background-size: 22px 22px, 22px 22px, auto;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.55);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__visual span strong { color: var(--nurse-navy-dark); }
+[data-quiz-theme="nursing"] .quiz-engine__visual i { color: var(--nurse-coral); }
+
+[data-quiz-theme="nursing"] .quiz-engine__answer {
+  border: 1px solid rgba(18,104,115,.24);
+  border-radius: 15px;
+  background: rgba(255,255,255,.93);
+  color: var(--nurse-navy);
+  box-shadow: 0 7px 16px rgba(20,55,70,.07);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__answer > span {
+  border: 0;
+  background: var(--nurse-blue);
+  color: var(--nurse-teal);
+  box-shadow: inset 0 0 0 1px rgba(18,104,115,.12);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__answer[data-selected] {
+  border-color: var(--nurse-teal);
+  background: #e1f1f3;
+  box-shadow: 0 0 0 3px rgba(18,104,115,.14), 0 8px 20px rgba(20,55,70,.12);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__answers--icons .quiz-engine__answer-icon {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 43px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="nursing"] .quiz-engine__answer:hover:not(:disabled) {
+    border-color: var(--nurse-teal);
+    background: #f4fafb;
+    transform: translateY(-2px);
+  }
+  [data-quiz-theme="nursing"] .quiz-engine__primary:hover:not(:disabled) {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+}
+
+/* Admissions checkpoints and result chart. */
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint-icon,
+[data-quiz-theme="nursing"] .quiz-engine__result-icon {
+  border: 1px solid rgba(18,104,115,.26);
+  background: linear-gradient(145deg, #dceff1, #fffdf9);
+  color: var(--nurse-teal);
+  box-shadow: 0 12px 30px rgba(20,55,70,.14);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint h2,
+[data-quiz-theme="nursing"] .quiz-engine__results h2 {
+  color: var(--nurse-navy);
+  letter-spacing: -.04em;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint > p,
+[data-quiz-theme="nursing"] .quiz-engine__result-copy,
+[data-quiz-theme="nursing"] .quiz-engine__about p { color: #607681; }
+
+[data-quiz-theme="nursing"] .quiz-engine__ai-panel {
+  border: 1px solid rgba(18,104,115,.2);
+  border-radius: 17px;
+  background: #eff7f8;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,.55);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__ai-top > span {
+  background: var(--nurse-teal);
+  box-shadow: 0 0 0 6px rgba(18,104,115,.1);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__ai-panel > p { color: #5b717c; }
+
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint-next,
+[data-quiz-theme="nursing"] .quiz-engine__checklist li,
+[data-quiz-theme="nursing"] .quiz-engine__result-signals div,
+[data-quiz-theme="nursing"] .quiz-engine__result-summary div {
+  border: 1px solid rgba(18,104,115,.18);
+  border-radius: 14px;
+  background: rgba(243,248,250,.9);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint-next span { color: #72858d; }
+[data-quiz-theme="nursing"] .quiz-engine__checkpoint-next strong { color: var(--nurse-teal); }
+[data-quiz-theme="nursing"] .quiz-engine__checklist span { color: var(--nurse-teal-bright); }
+[data-quiz-theme="nursing"] .quiz-engine__result-percentage strong {
+  color: var(--nurse-teal);
+  text-shadow: 0 8px 25px rgba(18,104,115,.12);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__result-profile {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--nurse-navy);
+  color: #fff;
+  font-size: clamp(18px, 3vw, 24px);
+  letter-spacing: .02em;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__result-signals {
+  border: 1px solid rgba(18,104,115,.18);
+  border-radius: 18px;
+  background: rgba(220,236,241,.55);
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__result-signals dt { color: #74878f; }
+[data-quiz-theme="nursing"] .quiz-engine__result-signals dd { color: var(--nurse-navy-dark); }
+[data-quiz-theme="nursing"] .quiz-engine__dimension b { background: linear-gradient(90deg, var(--nurse-teal), #57a8a7); }
+
+[data-quiz-theme="nursing"] .quiz-engine__disclaimer {
+  border: 1px solid rgba(214,107,118,.42);
+  border-radius: 15px;
+  background: rgba(214,107,118,.07);
+  color: #617680;
+}
+
+[data-quiz-theme="nursing"] .quiz-engine__secondary { border-color: rgba(18,104,115,.3); color: var(--nurse-teal); }
+[data-quiz-theme="nursing"] .quiz-engine__study-items strong,
+[data-quiz-theme="nursing"] .quiz-engine__memory-items strong {
+  border: 1px solid rgba(18,104,115,.22);
+  border-radius: 15px;
+  background: #f2f8f9;
+  color: var(--nurse-navy-dark);
+  box-shadow: 0 8px 18px rgba(20,55,70,.08);
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="nursing"] { padding: 10px 8px 30px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing { padding: 27px 19px 31px; border-radius: 22px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing::before { inset: 10px; border-radius: 16px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing::after { top: 15px; left: 20px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing-badge { width: 62px; height: 62px; margin-top: 5px; border-radius: 20px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing-badge span { font-size: 31px; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing h1 {
+    margin: 10px auto 19px;
+    font-size: clamp(37px, 10.8vw, 49px);
+    line-height: .99;
+    letter-spacing: -.043em;
+  }
+  [data-quiz-theme="nursing"] .quiz-engine__quick-start { margin-bottom: 17px; font-size: 16px; }
+  [data-quiz-theme="nursing"] .quiz-engine__social { gap: 10px; padding: 8px 12px; white-space: normal; }
+  [data-quiz-theme="nursing"] .quiz-engine__landing .quiz-engine__primary { min-height: 58px; }
+  [data-quiz-theme="nursing"] .quiz-engine__question,
+  [data-quiz-theme="nursing"] .quiz-engine__checkpoint,
+  [data-quiz-theme="nursing"] .quiz-engine__results { border-radius: 20px; }
+  [data-quiz-theme="nursing"] .quiz-engine__question h1 { font-size: clamp(27px, 8vw, 38px); }
+  [data-quiz-theme="nursing"] .quiz-engine__question-context { padding: 10px 12px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="nursing"] .quiz-engine__answer,
+  [data-quiz-theme="nursing"] .quiz-engine__primary { transition: none; }
+}
+
