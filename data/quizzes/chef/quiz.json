@@ -1,0 +1,71 @@
+{
+  "slug": "chef",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-14",
+    "duration": "8 min",
+    "difficulty": "Hard",
+    "icon": "🧑‍🍳"
+  },
+  "theme": {
+    "id": "chef",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#e8dfd2",
+      "pageAlt": "#c8beb0",
+      "surface": "#fffaf0",
+      "surfaceRaised": "#f6efe4",
+      "text": "#272522",
+      "muted": "#756d64",
+      "primary": "#282724",
+      "primaryText": "#fffaf0",
+      "border": "#b7a99a",
+      "correct": "#39735a",
+      "incorrect": "#ad4f42"
+    },
+    "typography": {
+      "heading": "sans",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "24px",
+      "buttonRadius": "14px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #222321, #34342f)",
+      "text": "#fffaf0",
+      "border": "#c97142",
+      "shadow": "0 8px 26px rgba(28, 28, 25, 0.28)"
+    },
+    "artwork": {
+      "icon": "🧑‍🍳"
+    }
+  }
+}

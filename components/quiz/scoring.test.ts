@@ -173,6 +173,27 @@ test("Mechanic result profiles switch at every exact score boundary", () => {
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
 });
 
+test("Chef result profiles and pass threshold switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Master of the Pass" },
+    { minRatio: 0.8, title: "The Kitchen Natural" },
+    { minRatio: 0.7, title: "The Skilled Sous Chef" },
+    { minRatio: 0.6, title: "The Confident Line Cook" },
+    { minRatio: 0.5, title: "The Promising Prep Cook" },
+    { minRatio: 0, title: "The Curious Food Lover" },
+  ];
+  const cases = [
+    [29, "The Curious Food Lover"], [30, "The Promising Prep Cook"], [35, "The Promising Prep Cook"],
+    [36, "The Confident Line Cook"], [41, "The Confident Line Cook"], [42, "The Skilled Sous Chef"],
+    [47, "The Skilled Sous Chef"], [48, "The Kitchen Natural"], [53, "The Kitchen Natural"],
+    [54, "The Master of the Pass"], [60, "The Master of the Pass"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
+});
+
 test("Nursing result profiles switch at every exact score boundary", () => {
   const quiz = memoryQuiz();
   quiz.result.profiles = [

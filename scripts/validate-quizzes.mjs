@@ -299,6 +299,60 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Mechanic must lead its result with the percentage.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Mechanic rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "chef") {
+    const expectedCategories = {
+      kitchen_fundamentals: 10,
+      ingredients_flavour: 10,
+      heat_methods: 10,
+      baking_pastry: 10,
+      kitchen_maths: 10,
+      safety_service: 10,
+    };
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const service = source.stages?.[6]?.questions ?? [];
+    const sprint = source.stages?.[7]?.questions ?? [];
+    const mistakes = source.stages?.[8]?.questions ?? [];
+    const finalTable = source.stages?.[9]?.questions ?? [];
+    const visibleClueCount = (question) => (question.context ?? "")
+      .split(/[.;\n]/)
+      .map((part) => part.trim())
+      .filter(Boolean).length;
+    const serialized = JSON.stringify(source);
+
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Chef must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Chef must use correct-answer scoring.`);
+    fail(source.title === "Only 12% Pass This Chef's Entrance Exam", `${folder.name}/en.json: Chef title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Chef landing social proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Chef needs ten rounds of six questions.`);
+    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Chef must contain exactly 60 questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Chef needs exactly ten questions in each culinary category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Chef question needs exactly four choices.`);
+    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Chef choices must be non-empty and unique within each question.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Chef question needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Chef correct-answer positions must be exactly 15 each across A–D.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Chef question needs a post-result explanation.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Chef default advancement must be exactly 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Quick-Fire Pass question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Quick-Fire Pass prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Quick-Fire Pass may override the 450ms default.`);
+    fail(service.length === 6 && service.every((question) => visibleClueCount(question) >= 2), `${folder.name}/en.json: every Service Under Pressure question needs at least two visible clues.`);
+    fail(mistakes.length === 6 && mistakes.every((question) => (typeof question.context === "string" && question.context.trim()) || question.visual), `${folder.name}/en.json: every Spot the Kitchen Mistake question needs a visible ticket, recipe, process or record.`);
+    fail(finalTable.length === 6 && finalTable.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Chef’s Table questions need visible context and two-step reasoning.`);
+    fail(sourceQuestions.every((question) => !question.contextRequired || ((typeof question.context === "string" && question.context.trim()) || question.visual)), `${folder.name}/en.json: every context-dependent Chef question needs visible context or a visual panel.`);
+    fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), `${folder.name}/en.json: Chef must use metric or unit-neutral worldwide measurements.`);
+    fail(!/(searing (?:always )?seals|universally best|always needs exactly|steak is done after)/i.test(serialized), `${folder.name}/en.json: Chef contains a disputed culinary absolute.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Chef profile thresholds are incorrect.`);
+    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Chef must lead its result with the percentage.`);
+    fail(config.engine?.targetRatio === 0.8, `${folder.name}: Chef pass threshold must be 80%.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Chef rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "nursing") {
     const expectedCategories = {
       anatomy_physiology: 10,

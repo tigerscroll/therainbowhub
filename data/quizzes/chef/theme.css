@@ -1,0 +1,262 @@
+[data-quiz-theme="chef"] {
+  --chef-charcoal: #282724;
+  --chef-charcoal-deep: #1e1e1b;
+  --chef-ivory: #fffaf0;
+  --chef-porcelain: #fffefd;
+  --chef-tomato: #b9553f;
+  --chef-copper: #c87945;
+  --chef-herb: #46745a;
+  --chef-ink: #292622;
+  --chef-muted: #756d64;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(71,62,52,.045) 1px, transparent 1px),
+    linear-gradient(rgba(71,62,52,.035) 1px, transparent 1px),
+    linear-gradient(145deg, #eee7dc, #d8cfc2 58%, #c6baaa);
+  background-size: 46px 46px, 46px 46px, auto;
+  color: var(--chef-ink);
+}
+
+[data-quiz-theme="chef"]::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 88% 8%, rgba(200,121,69,.17), transparent 27%),
+    radial-gradient(circle at 10% 84%, rgba(70,116,90,.12), transparent 25%);
+  pointer-events: none;
+}
+
+[data-quiz-theme="chef"] > * { position: relative; z-index: 1; }
+
+[data-quiz-theme="chef"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  padding: clamp(34px, 5vw, 62px);
+  border: 1px solid #9e8f7d;
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,254,253,.98), rgba(255,250,240,.97));
+  color: var(--chef-ink);
+  box-shadow: 0 28px 70px rgba(47,40,34,.2), inset 0 2px #fff;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__landing::before {
+  position: absolute;
+  inset: 15px;
+  content: "";
+  border: 1px solid rgba(200,121,69,.2);
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__landing::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  content: "";
+  background: linear-gradient(90deg, var(--chef-tomato) 0 34%, var(--chef-copper) 34% 67%, var(--chef-herb) 67%);
+}
+
+[data-quiz-theme="chef"] .quiz-engine__landing-copy {
+  display: grid;
+  width: 100%;
+  max-width: 760px;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__landing-badge {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  margin: 2px auto 10px;
+  border: 1px solid rgba(185,85,63,.32);
+  border-radius: 19px;
+  background: linear-gradient(145deg, #fffdf8, #f4e8d8);
+  box-shadow: 0 12px 28px rgba(64,48,35,.14), inset 0 0 0 5px rgba(200,121,69,.07);
+}
+
+[data-quiz-theme="chef"] .quiz-engine__landing-badge span { font-size: 35px; }
+[data-quiz-theme="chef"] .quiz-engine__landing .quiz-engine__eyebrow,
+[data-quiz-theme="chef"] .quiz-engine__landing .quiz-engine__lede,
+[data-quiz-theme="chef"] .quiz-engine__landing .quiz-engine__landing-meta { display: none; }
+
+[data-quiz-theme="chef"] .quiz-engine__landing h1 {
+  max-width: 760px;
+  margin: 12px auto 20px;
+  color: var(--chef-ink);
+  font-size: clamp(43px, 5vw, 66px);
+  font-weight: 920;
+  line-height: .97;
+  letter-spacing: -.05em;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__quick-start {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  color: var(--chef-muted);
+  font-size: 17px;
+  font-weight: 680;
+  line-height: 1.48;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__social {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 13px;
+  margin: 0 auto 20px;
+  padding: 9px 15px;
+  border: 1px solid #c6b7a6;
+  border-radius: 999px;
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 8px 22px rgba(64,48,35,.1);
+  font-size: 14px;
+  text-align: left;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__social-text strong { color: #9d492f; font-weight: 900; }
+[data-quiz-theme="chef"] .quiz-engine__social-text span { color: var(--chef-ink); font-weight: 760; }
+[data-quiz-theme="chef"] .quiz-engine__avatars { display: flex; flex: 0 0 auto; }
+[data-quiz-theme="chef"] .quiz-engine__avatars span {
+  width: 30px;
+  height: 30px;
+  margin-left: -9px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 4px 10px rgba(53,42,32,.18);
+}
+[data-quiz-theme="chef"] .quiz-engine__avatars span:first-child { margin-left: 0; }
+
+[data-quiz-theme="chef"] .quiz-engine__landing .quiz-engine__primary {
+  display: inline-flex;
+  width: min(100%, 390px);
+  min-height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-size: 19px;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__primary {
+  border: 1px solid #171715;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #34332f, var(--chef-charcoal-deep));
+  color: var(--chef-ivory);
+  box-shadow: 0 6px 0 #151513, 0 15px 28px rgba(31,30,27,.24);
+}
+
+[data-quiz-theme="chef"] .quiz-engine__primary:active { background: linear-gradient(135deg, #34332f, var(--chef-charcoal-deep)); color: var(--chef-ivory); }
+[data-quiz-theme="chef"] .quiz-engine__primary-icon { display: inline; color: #e6a062; }
+[data-quiz-theme="chef"] .quiz-engine__ad-note { color: #756e67; }
+[data-quiz-theme="chef"] .quiz-engine__ad-note span { border-color: var(--chef-herb); color: var(--chef-herb); }
+[data-quiz-theme="chef"] .quiz-engine__landing-art,
+[data-quiz-theme="chef"] .quiz-engine__landing-symbol { display: none !important; }
+
+[data-quiz-theme="chef"] .quiz-engine__question-shell { width: min(800px, 100%); }
+[data-quiz-theme="chef"] .quiz-engine__progress-head { color: #6e655c; font-weight: 800; }
+[data-quiz-theme="chef"] .quiz-engine__progress-head strong { color: var(--chef-charcoal); }
+[data-quiz-theme="chef"] .quiz-engine__progress { height: 10px; border: 1px solid #a69787; background: rgba(255,255,255,.68); box-shadow: inset 0 2px 5px rgba(62,50,38,.1); }
+[data-quiz-theme="chef"] .quiz-engine__progress i { background: linear-gradient(90deg, var(--chef-tomato), var(--chef-copper), var(--chef-herb)); }
+
+[data-quiz-theme="chef"] .quiz-engine__question,
+[data-quiz-theme="chef"] .quiz-engine__checkpoint,
+[data-quiz-theme="chef"] .quiz-engine__results,
+[data-quiz-theme="chef"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #aa9b8a;
+  border-radius: 22px;
+  background: linear-gradient(150deg, rgba(255,255,255,.99), rgba(255,250,240,.98));
+  color: var(--chef-ink);
+  box-shadow: 0 24px 58px rgba(52,43,35,.18), inset 0 2px #fff;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__question::before,
+[data-quiz-theme="chef"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="chef"] .quiz-engine__results::before,
+[data-quiz-theme="chef"] .quiz-engine__about::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  content: "";
+  background: linear-gradient(90deg, var(--chef-tomato) 0 34%, var(--chef-copper) 34% 67%, var(--chef-herb) 67%);
+}
+
+[data-quiz-theme="chef"] .quiz-engine__question h2,
+[data-quiz-theme="chef"] .quiz-engine__checkpoint h2,
+[data-quiz-theme="chef"] .quiz-engine__results h2 { color: var(--chef-ink); }
+
+[data-quiz-theme="chef"] .quiz-engine__context,
+[data-quiz-theme="chef"] .quiz-engine__visual {
+  border: 1px solid #d6c8b8;
+  background:
+    linear-gradient(rgba(185,85,63,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185,85,63,.04) 1px, transparent 1px),
+    #fbf7ef;
+  background-size: 24px 24px, 24px 24px, auto;
+  color: #50483f;
+}
+
+[data-quiz-theme="chef"] .quiz-engine__visual-item {
+  min-width: 0;
+  border-color: #b9a795;
+  background: rgba(255,255,255,.91);
+  color: var(--chef-ink);
+}
+
+[data-quiz-theme="chef"] .quiz-engine__visual-separator { color: var(--chef-tomato); }
+[data-quiz-theme="chef"] .quiz-engine__answer {
+  border-color: #c5b6a6;
+  background: #fffefd;
+  color: var(--chef-ink);
+  box-shadow: 0 5px 14px rgba(61,49,39,.07);
+}
+[data-quiz-theme="chef"] .quiz-engine__answer:hover { border-color: var(--chef-copper); background: #fff8ef; }
+[data-quiz-theme="chef"] .quiz-engine__answer.is-selected { border-color: var(--chef-tomato); background: #f8e7df; color: #3b2b24; box-shadow: 0 0 0 3px rgba(185,85,63,.14); }
+
+[data-quiz-theme="chef"] .quiz-engine__checkpoint-badge,
+[data-quiz-theme="chef"] .quiz-engine__result-kicker,
+[data-quiz-theme="chef"] .quiz-engine__result-percentage { color: var(--chef-tomato); }
+[data-quiz-theme="chef"] .quiz-engine__checkpoint-signal,
+[data-quiz-theme="chef"] .quiz-engine__result-fact,
+[data-quiz-theme="chef"] .quiz-engine__review { border-color: #d0c1b1; background: rgba(255,255,255,.72); }
+
+[data-quiz-theme="chef"] .quiz-engine__about h2,
+[data-quiz-theme="chef"] .quiz-engine__about h3 { color: var(--chef-charcoal); }
+[data-quiz-theme="chef"] .quiz-engine__about p,
+[data-quiz-theme="chef"] .quiz-engine__about li { color: #655d55; }
+
+@media (max-width: 720px) {
+  [data-quiz-theme="chef"] .quiz-engine__landing { padding: 28px 18px 30px; border-radius: 20px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing::before { inset: 9px; border-radius: 14px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing-badge { width: 60px; height: 60px; margin-bottom: 8px; border-radius: 17px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing-badge span { font-size: 31px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing h1 { margin: 10px auto 17px; font-size: clamp(35px, 10.8vw, 48px); line-height: .98; }
+  [data-quiz-theme="chef"] .quiz-engine__quick-start { margin-bottom: 17px; font-size: 16px; }
+  [data-quiz-theme="chef"] .quiz-engine__social { gap: 10px; margin-bottom: 17px; padding: 8px 12px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing .quiz-engine__primary { width: min(100%, 360px); min-height: 58px; }
+}
+
+@media (max-width: 390px) {
+  [data-quiz-theme="chef"] .quiz-engine__landing { padding-inline: 14px; }
+  [data-quiz-theme="chef"] .quiz-engine__landing h1 { font-size: clamp(32px, 10.5vw, 41px); }
+  [data-quiz-theme="chef"] .quiz-engine__social { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="chef"] *,
+  [data-quiz-theme="chef"] *::before,
+  [data-quiz-theme="chef"] *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
