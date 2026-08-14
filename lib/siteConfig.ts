@@ -14,6 +14,7 @@ export const siteConfig = {
   siteUrl: getPublicEnv("NEXT_PUBLIC_SITE_URL", "https://therainbowhub.com"),
   metaPixelId: getPublicEnv("NEXT_PUBLIC_META_PIXEL_ID", "843363384736830"),
   rewardedAdUnitPath: "/22677279144/rewarded",
+  questionDisplayAdUnitPath: "/22677279144/display",
   assertiveYieldManagerUrl: getPublicEnv(
     "NEXT_PUBLIC_ASSERTIVE_YIELD_MANAGER_URL",
     "https://j24iGSTy4hDgBLfJR.ay.delivery/manager/j24iGSTy4hDgBLfJR",
