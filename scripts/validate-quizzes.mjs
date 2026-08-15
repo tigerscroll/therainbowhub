@@ -856,6 +856,48 @@ for (const folder of folders) {
     fail(strongestSecondaryCoupling < .3, `${folder.name}/en.json: a primary style is too strongly coupled to a predetermined secondary style.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Spectrum rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "vision") {
+    const expectedCategories = Object.fromEntries([
+      "colour_contrast", "detail_detection", "pattern_tracking", "spatial_orientation", "visual_memory", "attention_control",
+    ].map((category) => [category, 10]));
+    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
+    const correctPositions = sourceQuestions.reduce((positions, question) => {
+      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
+      return positions;
+    }, Array(4).fill(0));
+    const sprint = source.stages?.[7]?.questions ?? [];
+    const trapdoors = source.stages?.[8]?.questions ?? [];
+    const finalFocus = source.stages?.[9]?.questions ?? [];
+    const categoryOrder = Object.keys(expectedCategories);
+    const firstSevenQuestions = source.stages?.slice(0, 7).flatMap((stage) => stage.questions) ?? [];
+    const colourQuestions = sourceQuestions.filter((question) => question.category === "colour_contrast");
+
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Vision must launch in English only.`);
+    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Vision must use correct-answer scoring.`);
+    fail(source.title === "Only 7% Can Pass This Vision Test", `${folder.name}/en.json: Vision title must match the approved headline.`);
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Test", `${folder.name}/en.json: Vision landing proof or CTA changed.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Vision needs ten rounds of six questions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestionIds).size === 60, `${folder.name}/en.json: Vision needs 60 unique scored questions.`);
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Vision needs exactly ten questions in every visual-skill category.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && question.answers.every((answer) => typeof answer === "string" && answer.trim()) && new Set(question.answers).size === 4), `${folder.name}/en.json: every Vision question needs four unique non-empty choices.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Vision question needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Vision correct positions must be exactly 15/15/15/15.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Vision question needs a post-result explanation.`);
+    fail(categoryOrder.every((category) => firstSevenQuestions.filter((question) => question.category === category).length === 7), `${folder.name}/en.json: every visual skill must reach seven questions after Round 7.`);
+    fail(colourQuestions.every((question) => question.presentation === "icons" || question.visual), `${folder.name}/en.json: every Colour Contrast question must use visible swatches or a visual panel.`);
+    fail(colourQuestions.every((question) => !/(comes next|same colour order|step 4|repeating sequence)/i.test(`${question.question} ${question.context ?? ""}`)), `${folder.name}/en.json: Colour Contrast must test colour perception rather than sequence or order tracking.`);
+    for (const stage of [7, 8, 9]) fail(source.stages[stage].questions.map((question) => question.category).sort().join("|") === [...categoryOrder].sort().join("|"), `${folder.name}/en.json: Vision round ${stage + 1} needs one question from every category.`);
+    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Vision default advancement must be 450ms.`);
+    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Focus Sprint question must use 350ms.`);
+    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Focus Sprint prompts must contain no more than ten words.`);
+    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Focus Sprint may override the 450ms default.`);
+    fail(trapdoors.every((question) => (typeof question.context === "string" && question.context.trim()) || question.visual || question.study), `${folder.name}/en.json: every Optical Trapdoor needs a visible comparison, pattern or snapshot.`);
+    fail(finalFocus.length === 6 && finalFocus.every((question) => question.reasoningSteps === 2 && ((typeof question.context === "string" && question.context.trim()) || question.visual || question.study)), `${folder.name}/en.json: Final Focus needs six visible two-step questions.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Vision result thresholds are incomplete.`);
+    fail(source.results?.score?.showPercentage === true && config.engine?.targetRatio === 0.8, `${folder.name}: Vision must lead with percentage and use the 80% challenge line.`);
+    fail(/not an eye examination/i.test(source.about?.disclaimer ?? "") && /cannot diagnose/i.test(source.about?.disclaimer ?? ""), `${folder.name}/en.json: Vision needs an explicit entertainment-only medical boundary.`);
+    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Vision rewarded fallback must require three genuine unavailable attempts.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",

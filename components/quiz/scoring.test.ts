@@ -323,6 +323,27 @@ test("Grammar result profiles and pass threshold switch at every exact score bou
   assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
 });
 
+test("Vision result profiles and challenge threshold switch at every exact score boundary", () => {
+  const quiz = memoryQuiz();
+  quiz.result.profiles = [
+    { minRatio: 0.9, title: "The Eagle Eye" },
+    { minRatio: 0.8, title: "The Visual Virtuoso" },
+    { minRatio: 0.7, title: "The Pattern Spotter" },
+    { minRatio: 0.6, title: "The Detail Detective" },
+    { minRatio: 0.5, title: "The Focus Finder" },
+    { minRatio: 0, title: "The Curious Observer" },
+  ];
+  const cases = [
+    [29, "The Curious Observer"], [30, "The Focus Finder"], [35, "The Focus Finder"],
+    [36, "The Detail Detective"], [41, "The Detail Detective"], [42, "The Pattern Spotter"],
+    [47, "The Pattern Spotter"], [48, "The Visual Virtuoso"], [53, "The Visual Virtuoso"],
+    [54, "The Eagle Eye"], [60, "The Eagle Eye"],
+  ] as const;
+  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
+  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
+});
+
 test("80% target state distinguishes achieved, reachable and unreachable", () => {
   assert.equal(getTargetStatus(48, 48, 60, 0.8), "achieved");
   assert.equal(getTargetStatus(36, 48, 60, 0.8), "reachable");
