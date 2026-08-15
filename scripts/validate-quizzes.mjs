@@ -882,6 +882,10 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && question.answers.every((answer) => typeof answer === "string" && answer.trim()) && new Set(question.answers).size === 4), `${folder.name}/en.json: every Vision question needs four unique non-empty choices.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Vision question needs one valid correct index.`);
     fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Vision correct positions must be exactly 15/15/15/15.`);
+    const answerSequence = sourceQuestions.map((question) => question.correct);
+    const repeatsWithPeriod = (period) => answerSequence.every((answer, index) => index < period || answer === answerSequence[index - period]);
+    fail(!Array.from({ length: 14 }, (_, index) => index + 2).some(repeatsWithPeriod), `${folder.name}/en.json: Vision correct positions must not repeat a predictable source pattern.`);
+    fail(source.stages.every((stage) => new Set(stage.questions.map((question) => question.correct)).size >= 3), `${folder.name}/en.json: every Vision round needs varied correct-answer positions.`);
     fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Vision question needs a post-result explanation.`);
     fail(categoryOrder.every((category) => firstSevenQuestions.filter((question) => question.category === category).length === 7), `${folder.name}/en.json: every visual skill must reach seven questions after Round 7.`);
     fail(colourQuestions.every((question) => question.presentation === "icons" || question.visual), `${folder.name}/en.json: every Colour Contrast question must use visible swatches or a visual panel.`);
@@ -890,6 +894,9 @@ for (const folder of folders) {
     fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Vision default advancement must be 450ms.`);
     fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Focus Sprint question must use 350ms.`);
     fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Focus Sprint prompts must contain no more than ten words.`);
+    fail(sprint.every((question) => question.visual || question.study || question.icons || question.context), `${folder.name}/en.json: every Focus Sprint question needs a genuine visible clue.`);
+    fail(sourceQuestions.find((question) => question.id === "vision-r4q4")?.visual?.ariaLabel === "Explicit circle-size sequence", `${folder.name}/en.json: the size sequence must use fixed CSS circles.`);
+    fail(sourceQuestions.find((question) => question.id === "vision-r9q1")?.visual?.ariaLabel === "Simultaneous contrast panels", `${folder.name}/en.json: the contrast illusion must use fixed CSS panels.`);
     fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Focus Sprint may override the 450ms default.`);
     fail(trapdoors.every((question) => (typeof question.context === "string" && question.context.trim()) || question.visual || question.study), `${folder.name}/en.json: every Optical Trapdoor needs a visible comparison, pattern or snapshot.`);
     fail(finalFocus.length === 6 && finalFocus.every((question) => question.reasoningSteps === 2 && ((typeof question.context === "string" && question.context.trim()) || question.visual || question.study)), `${folder.name}/en.json: Final Focus needs six visible two-step questions.`);

@@ -8,7 +8,7 @@
     "cta": "Start Test"
   },
   "about": {
-    "body": "This visual-perception challenge turns colours, symbols, patterns, spatial turns and hidden details into ten increasingly tricky rounds. Some questions reward a quick scan, while others ask you to slow down, compare two nearly identical records or remember a short visual arrangement.\n\nThe quiz is designed for worldwide entertainment and general learning. It measures only how accurately you answer the puzzles shown on your current screen; brightness, display calibration, screen size, viewing distance and surrounding light can all affect what you see.\n\nYour final percentage reflects your answers in this quiz, not the health or quality of your eyesight. A real vision assessment requires appropriate equipment and a qualified eye-care professional.",
+    "body": "This visual-perception challenge turns colours, symbols, patterns, spatial turns and hidden details into ten increasingly tricky rounds. Some questions reward a quick scan, while others ask you to slow down, compare two nearly identical records or remember a short visual arrangement.\n\nThe quiz is designed for worldwide entertainment and general learning. It measures only how accurately you answer the puzzles shown on your current screen; brightness, display calibration, screen size, viewing distance and surrounding light can all affect what you see.\n\nYour final percentage reflects your answers in this quiz, not the health or quality of your eyesight. A real vision assessment requires appropriate equipment and a qualified eye-care professional. The 7% headline and participation figure are promotional entertainment wording supplied for this quiz. They are not live analytics or independently verified performance benchmarks.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
@@ -60,12 +60,42 @@
       }
     ],
     "dimensions": [
-      { "label": "Colour contrast", "categories": ["colour_contrast"] },
-      { "label": "Detail detection", "categories": ["detail_detection"] },
-      { "label": "Pattern tracking", "categories": ["pattern_tracking"] },
-      { "label": "Spatial orientation", "categories": ["spatial_orientation"] },
-      { "label": "Visual memory", "categories": ["visual_memory"] },
-      { "label": "Attention control", "categories": ["attention_control"] }
+      {
+        "label": "Colour contrast",
+        "categories": [
+          "colour_contrast"
+        ]
+      },
+      {
+        "label": "Detail detection",
+        "categories": [
+          "detail_detection"
+        ]
+      },
+      {
+        "label": "Pattern tracking",
+        "categories": [
+          "pattern_tracking"
+        ]
+      },
+      {
+        "label": "Spatial orientation",
+        "categories": [
+          "spatial_orientation"
+        ]
+      },
+      {
+        "label": "Visual memory",
+        "categories": [
+          "visual_memory"
+        ]
+      },
+      {
+        "label": "Attention control",
+        "categories": [
+          "attention_control"
+        ]
+      }
     ],
     "score": {
       "passed": "You passed the vision challenge!",
@@ -86,9 +116,23 @@
           "id": "vision-r1q1",
           "question": "Which tile is a different colour?",
           "presentation": "grid",
-          "visual": { "items": ["🔵", "🔵", "🔵", "🟣"], "columns": 2, "ariaLabel": "Three blue circles and one violet circle" },
-          "answers": ["Bottom right", "Top left", "Top right", "Bottom left"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "🔵",
+              "🔵",
+              "🔵",
+              "🟣"
+            ],
+            "columns": 2,
+            "ariaLabel": "Three blue circles and one violet circle"
+          },
+          "answers": [
+            "Top left",
+            "Bottom right",
+            "Top right",
+            "Bottom left"
+          ],
+          "correct": 1,
           "category": "colour_contrast",
           "explanation": "The bottom-right tile is violet; the other three are blue."
         },
@@ -97,9 +141,20 @@
           "context": "REFERENCE: M7K2P9",
           "question": "Which code matches exactly?",
           "presentation": "code",
-          "visual": { "items": ["REFERENCE", "M7K2P9"], "ariaLabel": "Reference code M 7 K 2 P 9" },
-          "answers": ["M7K2R9", "M7K2P9", "M7KZP9", "N7K2P9"],
-          "correct": 1,
+          "visual": {
+            "items": [
+              "REFERENCE",
+              "M7K2P9"
+            ],
+            "ariaLabel": "Reference code M 7 K 2 P 9"
+          },
+          "answers": [
+            "M7K2P9",
+            "M7K2R9",
+            "M7KZP9",
+            "N7K2P9"
+          ],
+          "correct": 0,
           "category": "detail_detection",
           "explanation": "M7K2P9 matches every letter and number in the reference."
         },
@@ -107,9 +162,24 @@
           "id": "vision-r1q3",
           "question": "What comes next in the pattern?",
           "presentation": "sequence",
-          "visual": { "items": ["▲", "●", "▲", "●", "?"], "separator": "→", "ariaLabel": "Triangle, circle, triangle, circle, unknown" },
-          "answers": ["■", "●", "▲", "◆"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "▲",
+              "●",
+              "▲",
+              "●",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Triangle, circle, triangle, circle, unknown"
+          },
+          "answers": [
+            "■",
+            "●",
+            "◆",
+            "▲"
+          ],
+          "correct": 3,
           "category": "pattern_tracking",
           "explanation": "The pattern alternates triangle and circle, so the next symbol is a triangle."
         },
@@ -117,8 +187,22 @@
           "id": "vision-r1q4",
           "question": "The arrow turns right each time. What comes next?",
           "presentation": "sequence",
-          "visual": { "items": ["↑", "→", "↓", "?"], "separator": "→", "ariaLabel": "Up arrow, right arrow, down arrow, unknown" },
-          "answers": ["↑", "→", "↓", "←"],
+          "visual": {
+            "items": [
+              "↑",
+              "→",
+              "↓",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Up arrow, right arrow, down arrow, unknown"
+          },
+          "answers": [
+            "↑",
+            "→",
+            "↓",
+            "←"
+          ],
           "correct": 3,
           "category": "spatial_orientation",
           "explanation": "A quarter-turn to the right after down points left."
@@ -126,19 +210,45 @@
         {
           "id": "vision-r1q5",
           "question": "Which icon appeared first?",
-          "answers": ["Star", "Key", "Umbrella", "Lemon"],
+          "answers": [
+            "Star",
+            "Key",
+            "Umbrella",
+            "Lemon"
+          ],
           "correct": 0,
           "category": "visual_memory",
-          "study": { "title": "Remember the order", "presentation": "icons", "items": ["⭐", "🍋", "🔑", "☂️"], "durationMs": 1800, "mode": "automatic" },
+          "study": {
+            "title": "Remember the order",
+            "presentation": "icons",
+            "items": [
+              "⭐",
+              "🍋",
+              "🔑",
+              "☂️"
+            ],
+            "durationMs": 1800,
+            "mode": "automatic"
+          },
           "explanation": "The star was the first icon in the displayed sequence."
         },
         {
           "id": "vision-r1q6",
           "question": "How many filled circles are shown?",
           "presentation": "spatial",
-          "visual": { "items": ["● ● ○ ● ○ ●"], "ariaLabel": "Four filled circles and two outline circles" },
-          "answers": ["3", "4", "5", "6"],
-          "correct": 1,
+          "visual": {
+            "items": [
+              "● ● ○ ● ○ ●"
+            ],
+            "ariaLabel": "Four filled circles and two outline circles"
+          },
+          "answers": [
+            "3",
+            "6",
+            "5",
+            "4"
+          ],
+          "correct": 3,
           "category": "attention_control",
           "explanation": "Four of the six circles are filled."
         }
@@ -151,9 +261,28 @@
           "id": "vision-r2q1",
           "question": "Where is the violet tile?",
           "presentation": "grid",
-          "visual": { "items": ["🔵", "🔵", "🔵", "🔵", "🟣", "🔵", "🔵", "🔵", "🔵"], "columns": 3, "ariaLabel": "A three by three grid with violet in the centre and blue elsewhere" },
-          "answers": ["Top left", "Bottom right", "Centre", "Top right"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "🔵",
+              "🔵",
+              "🔵",
+              "🔵",
+              "🟣",
+              "🔵",
+              "🔵",
+              "🔵",
+              "🔵"
+            ],
+            "columns": 3,
+            "ariaLabel": "A three by three grid with violet in the centre and blue elsewhere"
+          },
+          "answers": [
+            "Centre",
+            "Bottom right",
+            "Top left",
+            "Top right"
+          ],
+          "correct": 0,
           "category": "colour_contrast",
           "explanation": "The only violet tile sits in the centre of the grid."
         },
@@ -161,48 +290,97 @@
           "id": "vision-r2q2",
           "question": "Which pair has the strongest light–dark contrast?",
           "presentation": "icons",
-          "answers": ["Pale yellow and white", "Light blue and white", "Grey and silver", "Black and white"],
-          "icons": ["🟡 ⬜", "🩵 ⬜", "🩶 ◽", "⬛ ⬜"],
+          "answers": [
+            "Pair A",
+            "Pair B",
+            "Pair C",
+            "Pair D"
+          ],
+          "icons": [
+            "🟡 ⬜",
+            "🩵 ⬜",
+            "🩶 ◽",
+            "⬛ ⬜"
+          ],
           "correct": 3,
           "category": "colour_contrast",
-          "explanation": "Black and white create the strongest contrast among these pairs."
+          "explanation": "Pair D, black and white, creates the strongest light–dark contrast among the four swatch pairs."
         },
         {
           "id": "vision-r2q3",
-          "question": "Which pair creates the clearest colour contrast?",
+          "question": "Which pair creates the clearest hue contrast?",
           "presentation": "icons",
-          "answers": ["Blue and orange", "Red and orange", "Blue and violet", "Yellow and orange"],
-          "icons": ["🔵 🟠", "🔴 🟠", "🔵 🟣", "🟡 🟠"],
-          "correct": 0,
+          "answers": [
+            "Pair D",
+            "Pair B",
+            "Pair C",
+            "Pair A"
+          ],
+          "icons": [
+            "🟡 🟠",
+            "🔴 🟠",
+            "🔵 🟣",
+            "🔵 🟠"
+          ],
+          "correct": 3,
           "category": "colour_contrast",
-          "explanation": "Blue and orange are far apart in hue, making them easier to distinguish than the more closely related pairs."
+          "explanation": "Pair A places blue and orange far apart in hue, making them easier to distinguish than the more closely related pairs."
         },
         {
           "id": "vision-r2q4",
-          "question": "Which swatch is the warmest colour?",
+          "question": "Which swatch has the warmest visual temperature?",
           "presentation": "icons",
-          "answers": ["Ocean blue", "Flame orange", "Forest green", "Deep violet"],
-          "icons": ["🔵", "🟠", "🟢", "🟣"],
-          "correct": 1,
+          "answers": [
+            "Swatch A",
+            "Swatch C",
+            "Swatch B",
+            "Swatch D"
+          ],
+          "icons": [
+            "🔵",
+            "🟢",
+            "🟠",
+            "🟣"
+          ],
+          "correct": 2,
           "category": "colour_contrast",
-          "explanation": "Orange is the warm colour; blue, green and violet read as cooler here."
+          "explanation": "Swatch B is orange, the clearly warm colour beside the cooler blue, green and violet swatches."
         },
         {
           "id": "vision-r2q5",
           "context": "REFERENCE: Q8B6D3",
           "question": "Which copy changes only one character?",
-          "answers": ["Q8R6P3", "QBB6D8", "Q8B6D8", "O8BGO3"],
-          "correct": 2,
+          "answers": [
+            "Q8B6D8",
+            "QBB6D8",
+            "Q8R6P3",
+            "O8BGO3"
+          ],
+          "correct": 0,
           "category": "detail_detection",
           "explanation": "Q8B6D8 changes only the final character; every other option changes more than one."
         },
         {
           "id": "vision-r2q6",
           "question": "Which colour was on the right?",
-          "answers": ["Indigo", "Coral", "Blue", "Gold"],
-          "correct": 3,
+          "answers": [
+            "Indigo",
+            "Coral",
+            "Gold",
+            "Blue"
+          ],
+          "correct": 2,
           "category": "visual_memory",
-          "study": { "title": "Remember each position", "items": ["TOP — BLUE", "LEFT — CORAL", "RIGHT — GOLD"], "durationMs": 1900, "mode": "automatic" },
+          "study": {
+            "title": "Remember each position",
+            "items": [
+              "TOP — BLUE",
+              "LEFT — CORAL",
+              "RIGHT — GOLD"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          },
           "explanation": "Gold was paired with the right-hand position."
         }
       ]
@@ -213,16 +391,26 @@
         {
           "id": "vision-r3q1",
           "question": "Which pair is completely identical?",
-          "answers": ["K4M8P2 / K4M8P2", "R7Q3B6 / R7O3B6", "T9L2C5 / T9LZC5", "A6D4N8 / A6D4M8"],
-          "correct": 0,
+          "answers": [
+            "R7Q3B6 / R7O3B6",
+            "K4M8P2 / K4M8P2",
+            "T9L2C5 / T9LZC5",
+            "A6D4N8 / A6D4M8"
+          ],
+          "correct": 1,
           "category": "detail_detection",
           "explanation": "Both copies of K4M8P2 contain the same six characters in the same order."
         },
         {
           "id": "vision-r3q2",
           "question": "Which row contains exactly seven dots?",
-          "answers": ["••••••", "•••••••", "••••••••", "•••••"],
-          "correct": 1,
+          "answers": [
+            "••••••",
+            "•••••",
+            "••••••••",
+            "•••••••"
+          ],
+          "correct": 3,
           "category": "detail_detection",
           "explanation": "The second row contains seven dots."
         },
@@ -230,26 +418,46 @@
           "id": "vision-r3q3",
           "context": "FIRST: FOCUS — FRAME — FIND\nSECOND: FOCUS — FIND",
           "question": "Which word disappeared from the second line?",
-          "answers": ["Focus", "Find", "Frame", "First"],
-          "correct": 2,
+          "answers": [
+            "Frame",
+            "Find",
+            "Focus",
+            "First"
+          ],
+          "correct": 0,
           "category": "detail_detection",
           "explanation": "FRAME appears between FOCUS and FIND in the first line but is missing from the second."
         },
         {
           "id": "vision-r3q4",
-          "question": "Which position contains the changed symbol?",
+          "question": "Which position contains the different symbol?",
           "presentation": "spatial",
-          "visual": { "items": ["◇  ◇  ◆  ◇"], "ariaLabel": "Three outline diamonds with a filled diamond in the third position" },
-          "answers": ["First", "Second", "Fourth", "Third"],
-          "correct": 3,
+          "visual": {
+            "items": [
+              "◇  ◇  ◆  ◇"
+            ],
+            "ariaLabel": "Three outline diamonds with a filled diamond in the third position"
+          },
+          "answers": [
+            "First",
+            "Second",
+            "Third",
+            "Fourth"
+          ],
+          "correct": 2,
           "category": "detail_detection",
           "explanation": "The third diamond is filled while the others are outlines."
         },
         {
           "id": "vision-r3q5",
           "question": "Which symbol looks unchanged after a half-turn?",
-          "answers": ["●", "↑", "L", "↗"],
-          "correct": 0,
+          "answers": [
+            "L",
+            "↑",
+            "●",
+            "↗"
+          ],
+          "correct": 2,
           "category": "spatial_orientation",
           "explanation": "A circle looks the same after a 180-degree rotation."
         },
@@ -257,7 +465,12 @@
           "id": "vision-r3q6",
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "How many letter Fs are shown?",
-          "answers": ["6", "7", "8", "9"],
+          "answers": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
           "correct": 1,
           "category": "attention_control",
           "explanation": "OFFICE contains two Fs, and FOCUS, FIND, FIVE, FLAGS and FAST add five more, making seven."
@@ -271,9 +484,23 @@
           "id": "vision-r4q1",
           "question": "Which shape continues the increasing side count?",
           "presentation": "sequence",
-          "visual": { "items": ["▲", "■", "⬟", "?"], "separator": "→", "ariaLabel": "Triangle, square, pentagon, unknown" },
-          "answers": ["Circle", "Triangle", "Hexagon", "Square"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "▲",
+              "■",
+              "⬟",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Triangle, square, pentagon, unknown"
+          },
+          "answers": [
+            "Circle",
+            "Hexagon",
+            "Triangle",
+            "Square"
+          ],
+          "correct": 1,
           "category": "pattern_tracking",
           "explanation": "The shapes have three, four and five sides, so a six-sided hexagon comes next."
         },
@@ -281,9 +508,25 @@
           "id": "vision-r4q2",
           "question": "Which tile completes the alternating row?",
           "presentation": "sequence",
-          "visual": { "items": ["X", "O", "X", "O", "X", "?"], "separator": "·", "ariaLabel": "X, O, X, O, X, unknown" },
-          "answers": ["X", "XX", "OO", "O"],
-          "correct": 3,
+          "visual": {
+            "items": [
+              "X",
+              "O",
+              "X",
+              "O",
+              "X",
+              "?"
+            ],
+            "separator": "·",
+            "ariaLabel": "X, O, X, O, X, unknown"
+          },
+          "answers": [
+            "O",
+            "XX",
+            "OO",
+            "X"
+          ],
+          "correct": 0,
           "category": "pattern_tracking",
           "explanation": "The row alternates X and O, so O completes it."
         },
@@ -291,38 +534,83 @@
           "id": "vision-r4q3",
           "question": "Which arrow completes the rotation?",
           "presentation": "sequence",
-          "visual": { "items": ["↗", "↘", "↙", "?"], "separator": "→", "ariaLabel": "Northeast, southeast, southwest, unknown arrow" },
-          "answers": ["↖", "↗", "↘", "↓"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "↗",
+              "↘",
+              "↙",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Northeast, southeast, southwest, unknown arrow"
+          },
+          "answers": [
+            "↘",
+            "↗",
+            "↖",
+            "↓"
+          ],
+          "correct": 2,
           "category": "pattern_tracking",
           "explanation": "Each arrow turns 90 degrees clockwise, making northwest the next direction."
         },
         {
           "id": "vision-r4q4",
-          "question": "What size comes next?",
+          "question": "Which size comes next?",
           "presentation": "sequence",
-          "visual": { "items": ["·", "●", "⬤", "●", "·", "?"], "separator": "→", "ariaLabel": "Small dot, medium dot, large dot, medium dot, small dot, unknown" },
-          "answers": ["Large", "Medium", "Tiny", "Extra large"],
-          "correct": 1,
+          "visual": {
+            "items": [
+              "small",
+              "medium",
+              "large",
+              "medium",
+              "small",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Explicit circle-size sequence"
+          },
+          "answers": [
+            "Large",
+            "Tiny",
+            "Medium",
+            "Extra large"
+          ],
+          "correct": 2,
           "category": "pattern_tracking",
-          "explanation": "The sizes rise to large and then reverse, so medium follows small."
+          "explanation": "The circles grow from small to medium to large, then shrink in reverse, so medium follows the final small circle."
         },
         {
           "id": "vision-r4q5",
           "question": "Which colour stands out most against deep navy?",
           "presentation": "icons",
-          "answers": ["Dark violet", "Deep blue", "Bright yellow", "Forest green"],
-          "icons": ["🟣", "🔵", "🟡", "🟢"],
-          "correct": 2,
+          "answers": [
+            "Swatch A",
+            "Swatch B",
+            "Swatch D",
+            "Swatch C"
+          ],
+          "icons": [
+            "🟣",
+            "🔵",
+            "🟢",
+            "🟡"
+          ],
+          "correct": 3,
           "category": "colour_contrast",
-          "explanation": "Bright yellow creates the strongest light–dark and warm–cool contrast against deep navy."
+          "explanation": "Swatch C is bright yellow, creating the strongest light–dark and warm–cool contrast against deep navy."
         },
         {
           "id": "vision-r4q6",
           "context": "REFERENCE: ◇ ● ▲ ■",
           "question": "Which row repeats the reference exactly?",
-          "answers": ["◇ ● ■ ▲", "● ◇ ▲ ■", "◇ ○ ▲ ■", "◇ ● ▲ ■"],
-          "correct": 3,
+          "answers": [
+            "◇ ● ■ ▲",
+            "◇ ● ▲ ■",
+            "◇ ○ ▲ ■",
+            "● ◇ ▲ ■"
+          ],
+          "correct": 1,
           "category": "attention_control",
           "explanation": "The fourth row preserves every symbol, fill and position from the reference."
         }
@@ -335,9 +623,21 @@
           "id": "vision-r5q1",
           "question": "Which arrow is the vertical mirror of ↗?",
           "presentation": "spatial",
-          "visual": { "items": ["↗", "│", "?"], "ariaLabel": "Northeast arrow reflected across a vertical mirror" },
-          "answers": ["↖", "↘", "↗", "↙"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "↗",
+              "│",
+              "?"
+            ],
+            "ariaLabel": "Northeast arrow reflected across a vertical mirror"
+          },
+          "answers": [
+            "↙",
+            "↘",
+            "↗",
+            "↖"
+          ],
+          "correct": 3,
           "category": "spatial_orientation",
           "explanation": "A vertical mirror swaps right and left, turning northeast into northwest."
         },
@@ -345,24 +645,39 @@
           "id": "vision-r5q2",
           "context": "Start in the centre. Move up twice, right once, then down once.",
           "question": "Where do you finish relative to the start?",
-          "answers": ["Down-left", "Up-right", "Directly above", "Directly right"],
-          "correct": 1,
+          "answers": [
+            "Down-left",
+            "Directly above",
+            "Up-right",
+            "Directly right"
+          ],
+          "correct": 2,
           "category": "spatial_orientation",
           "explanation": "Two moves up and one down leave one move up; the right move leaves you up-right."
         },
         {
           "id": "vision-r5q3",
           "question": "Rotate ← clockwise by 90 degrees.",
-          "answers": ["↓", "→", "↑", "←"],
-          "correct": 2,
+          "answers": [
+            "↓",
+            "→",
+            "←",
+            "↑"
+          ],
+          "correct": 3,
           "category": "spatial_orientation",
           "explanation": "A clockwise quarter-turn changes a left arrow into an up arrow."
         },
         {
           "id": "vision-r5q4",
           "question": "Which symbol stays unchanged in a vertical mirror?",
-          "answers": ["F", "↗", "L", "↕"],
-          "correct": 3,
+          "answers": [
+            "F",
+            "↗",
+            "↕",
+            "L"
+          ],
+          "correct": 2,
           "category": "spatial_orientation",
           "explanation": "The vertical double arrow is symmetrical from left to right."
         },
@@ -370,19 +685,51 @@
           "id": "vision-r5q5",
           "question": "Which tile comes next?",
           "presentation": "sequence",
-          "visual": { "items": ["■", "□", "□", "■", "□", "□", "?"], "separator": "·", "ariaLabel": "Filled square, two outline squares, filled square, two outline squares, unknown" },
-          "answers": ["■", "□", "●", "◇"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "■",
+              "□",
+              "□",
+              "■",
+              "□",
+              "□",
+              "?"
+            ],
+            "separator": "·",
+            "ariaLabel": "Filled square, two outline squares, filled square, two outline squares, unknown"
+          },
+          "answers": [
+            "●",
+            "□",
+            "■",
+            "◇"
+          ],
+          "correct": 2,
           "category": "pattern_tracking",
           "explanation": "Each group starts with one filled square followed by two outline squares."
         },
         {
           "id": "vision-r5q6",
           "question": "Which object was in the bottom-left position?",
-          "answers": ["Leaf", "Key", "Moon", "Star"],
-          "correct": 1,
+          "answers": [
+            "Key",
+            "Leaf",
+            "Moon",
+            "Star"
+          ],
+          "correct": 0,
           "category": "visual_memory",
-          "study": { "title": "Remember the four positions", "items": ["TOP LEFT — STAR", "TOP RIGHT — MOON", "BOTTOM LEFT — KEY", "BOTTOM RIGHT — LEAF"], "durationMs": 2200, "mode": "automatic" },
+          "study": {
+            "title": "Remember the four positions",
+            "items": [
+              "TOP LEFT — STAR",
+              "TOP RIGHT — MOON",
+              "BOTTOM LEFT — KEY",
+              "BOTTOM RIGHT — LEAF"
+            ],
+            "durationMs": 2200,
+            "mode": "automatic"
+          },
           "explanation": "The key occupied the bottom-left position."
         }
       ]
@@ -393,48 +740,128 @@
         {
           "id": "vision-r6q1",
           "question": "Which number was paired with blue?",
-          "answers": ["2", "4", "7", "9"],
-          "correct": 2,
+          "answers": [
+            "2",
+            "7",
+            "4",
+            "9"
+          ],
+          "correct": 1,
           "category": "visual_memory",
-          "study": { "title": "Remember the colour–number pairs", "items": ["RED — 4", "BLUE — 7", "GOLD — 2"], "durationMs": 1900, "mode": "automatic" },
+          "study": {
+            "title": "Remember the colour–number pairs",
+            "items": [
+              "RED — 4",
+              "BLUE — 7",
+              "GOLD — 2"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          },
           "explanation": "Blue was paired with the number 7."
         },
         {
           "id": "vision-r6q2",
           "question": "Which shape came immediately before the star?",
-          "answers": ["Circle", "Triangle", "Star", "Square"],
+          "answers": [
+            "Circle",
+            "Triangle",
+            "Star",
+            "Square"
+          ],
           "correct": 3,
           "category": "visual_memory",
-          "study": { "title": "Remember the sequence", "items": ["▲", "●", "■", "★"], "durationMs": 1800, "mode": "automatic" },
+          "study": {
+            "title": "Remember the sequence",
+            "items": [
+              "▲",
+              "●",
+              "■",
+              "★"
+            ],
+            "durationMs": 1800,
+            "mode": "automatic"
+          },
           "explanation": "The square appeared directly before the star."
         },
         {
           "id": "vision-r6q3",
           "question": "Which landmark was east?",
-          "answers": ["Tower", "Bridge", "Garden", "Station"],
-          "correct": 0,
+          "answers": [
+            "Bridge",
+            "Tower",
+            "Garden",
+            "Station"
+          ],
+          "correct": 1,
           "category": "visual_memory",
-          "study": { "title": "Remember the simple map", "items": ["NORTH — BRIDGE", "EAST — TOWER", "SOUTH — GARDEN"], "durationMs": 2000, "mode": "automatic" },
+          "study": {
+            "title": "Remember the simple map",
+            "items": [
+              "NORTH — BRIDGE",
+              "EAST — TOWER",
+              "SOUTH — GARDEN"
+            ],
+            "durationMs": 2000,
+            "mode": "automatic"
+          },
           "explanation": "The tower was shown to the east."
         },
         {
           "id": "vision-r6q4",
           "question": "Which icon was NOT shown?",
           "presentation": "icons",
-          "answers": ["Bell", "Anchor", "Feather", "Balloon"],
-          "icons": ["🔔", "⚓", "🪶", "🎈"],
-          "correct": 1,
+          "answers": [
+            "Bell",
+            "Balloon",
+            "Feather",
+            "Anchor"
+          ],
+          "icons": [
+            "🔔",
+            "🎈",
+            "🪶",
+            "⚓"
+          ],
+          "correct": 3,
           "category": "visual_memory",
-          "study": { "title": "Scan the icons", "presentation": "icons", "items": ["🔔", "🧲", "🪶", "🧩", "🎈"], "durationMs": 1900, "mode": "automatic" },
+          "study": {
+            "title": "Scan the icons",
+            "presentation": "icons",
+            "items": [
+              "🔔",
+              "🧲",
+              "🪶",
+              "🧩",
+              "🎈"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          },
           "explanation": "The bell, feather and balloon were shown; the anchor was not."
         },
         {
           "id": "vision-r6q5",
           "question": "Which letter comes next?",
           "presentation": "sequence",
-          "visual": { "items": ["A", "C", "F", "J", "?"], "separator": "→", "ariaLabel": "A, C, F, J, unknown" },
-          "answers": ["M", "N", "O", "P"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "A",
+              "C",
+              "F",
+              "J",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "A, C, F, J, unknown"
+          },
+          "answers": [
+            "O",
+            "N",
+            "M",
+            "P"
+          ],
+          "correct": 0,
           "category": "pattern_tracking",
           "explanation": "The jumps increase by one letter each time: plus 2, plus 3, plus 4, then plus 5 from J to O."
         },
@@ -442,8 +869,13 @@
           "id": "vision-r6q6",
           "context": "REFERENCE: R3M8K2",
           "question": "Which code is unchanged?",
-          "answers": ["R3N8K2", "R3M8KZ", "P3M8K2", "R3M8K2"],
-          "correct": 3,
+          "answers": [
+            "R3N8K2",
+            "R3M8K2",
+            "P3M8K2",
+            "R3M8KZ"
+          ],
+          "correct": 1,
           "category": "detail_detection",
           "explanation": "The fourth code matches all six reference characters exactly."
         }
@@ -456,8 +888,13 @@
           "id": "vision-r7q1",
           "context": "THE OTHER THEME HID THE WORD THE.",
           "question": "How many standalone instances of THE appear?",
-          "answers": ["3", "4", "5", "6"],
-          "correct": 0,
+          "answers": [
+            "5",
+            "4",
+            "3",
+            "6"
+          ],
+          "correct": 2,
           "category": "attention_control",
           "explanation": "THE appears three times as a standalone word; OTHER and THEME do not count."
         },
@@ -465,9 +902,23 @@
           "id": "vision-r7q2",
           "question": "Which code appears twice?",
           "presentation": "grid",
-          "visual": { "items": ["A7Q", "B4M", "C2R", "B4M"], "columns": 2, "ariaLabel": "Codes A7Q, B4M, C2R and B4M" },
-          "answers": ["A7Q", "B4M", "C2R", "None"],
-          "correct": 1,
+          "visual": {
+            "items": [
+              "A7Q",
+              "B4M",
+              "C2R",
+              "B4M"
+            ],
+            "columns": 2,
+            "ariaLabel": "Codes A7Q, B4M, C2R and B4M"
+          },
+          "answers": [
+            "B4M",
+            "A7Q",
+            "C2R",
+            "None"
+          ],
+          "correct": 0,
           "category": "attention_control",
           "explanation": "B4M appears in both the second and fourth cells."
         },
@@ -475,19 +926,39 @@
           "id": "vision-r7q3",
           "question": "Which position contains the dot inside a circle?",
           "presentation": "spatial",
-          "visual": { "items": ["○  ○  ⊙  ○"], "ariaLabel": "Four circles with a dot inside the third" },
-          "answers": ["First", "Second", "Third", "Fourth"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "○  ○  ⊙  ○"
+            ],
+            "ariaLabel": "Four circles with a dot inside the third"
+          },
+          "answers": [
+            "First",
+            "Second",
+            "Fourth",
+            "Third"
+          ],
+          "correct": 3,
           "category": "attention_control",
           "explanation": "Only the third circle contains a central dot."
         },
         {
           "id": "vision-r7q4",
-          "question": "How many triangles are hidden in the row?",
+          "question": "How many triangles are shown in the row?",
           "presentation": "spatial",
-          "visual": { "items": ["▲  ●  ▲  ■  ▲  ◆  ▲"], "ariaLabel": "A row containing four triangles and three other shapes" },
-          "answers": ["1", "2", "3", "4"],
-          "correct": 3,
+          "visual": {
+            "items": [
+              "▲  ●  ▲  ■  ▲  ◆  ▲"
+            ],
+            "ariaLabel": "A row containing four triangles and three other shapes"
+          },
+          "answers": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "correct": 1,
           "category": "attention_control",
           "explanation": "Triangles appear in the first, third, fifth and seventh positions."
         },
@@ -495,9 +966,23 @@
           "id": "vision-r7q5",
           "question": "Which centre tile is easiest to spot in the dark cluster?",
           "presentation": "grid",
-          "visual": { "items": ["⚫🟡⚫", "⚫🟣⚫", "⚫🔵⚫", "⚫🟢⚫"], "columns": 2, "ariaLabel": "Four dark clusters with yellow, violet, blue and green centre tiles" },
-          "answers": ["Top left", "Top right", "Bottom left", "Bottom right"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "⚫🟡⚫",
+              "⚫🟣⚫",
+              "⚫🔵⚫",
+              "⚫🟢⚫"
+            ],
+            "columns": 2,
+            "ariaLabel": "Four dark clusters with yellow, violet, blue and green centre tiles"
+          },
+          "answers": [
+            "Bottom left",
+            "Top right",
+            "Top left",
+            "Bottom right"
+          ],
+          "correct": 2,
           "category": "colour_contrast",
           "explanation": "The yellow centre at top left has the greatest light–dark contrast with the surrounding black tiles."
         },
@@ -505,8 +990,13 @@
           "id": "vision-r7q6",
           "context": "From the centre: ↑ ↑ → ↓",
           "question": "Which direction is the finish from the start?",
-          "answers": ["Down-right", "Up-right", "Up-left", "Directly right"],
-          "correct": 1,
+          "answers": [
+            "Up-right",
+            "Down-right",
+            "Up-left",
+            "Directly right"
+          ],
+          "correct": 0,
           "category": "spatial_orientation",
           "explanation": "The moves cancel to one step up and one step right."
         }
@@ -517,67 +1007,156 @@
       "questions": [
         {
           "id": "vision-r8q1",
-          "question": "Which tile breaks the colour?",
+          "question": "Which tile shifts toward green?",
           "presentation": "grid",
-          "visual": { "items": ["🟢", "🟢", "🔵", "🟢"], "columns": 2, "ariaLabel": "Three green circles and a blue circle in the third position" },
-          "answers": ["First", "Second", "Third", "Fourth"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "columns": 3,
+            "ariaLabel": "Nine fixed blue swatches with one teal shift"
+          },
+          "answers": [
+            "Top left",
+            "Centre",
+            "Bottom right",
+            "Bottom centre"
+          ],
+          "correct": 3,
           "category": "colour_contrast",
           "delay": 350,
-          "explanation": "The third tile is blue while the others are green."
+          "explanation": "The bottom-centre tile shifts from blue toward teal; the other eight use the same blue."
         },
         {
           "id": "vision-r8q2",
-          "context": "MATCH: V6K9",
+          "context": "MATCH: V6K9-M2Q8",
           "question": "Which code matches exactly?",
-          "answers": ["V6K8", "V9K6", "Y6K9", "V6K9"],
-          "correct": 3,
+          "answers": [
+            "V6K9-M2Q3",
+            "V6K9-M2Q8",
+            "V6K9-M2O8",
+            "V6K9-N2Q8"
+          ],
+          "correct": 1,
           "category": "detail_detection",
           "delay": 350,
-          "explanation": "V6K9 is identical to the displayed code."
+          "explanation": "V6K9-M2Q8 preserves all eight letters, digits and positions from the reference."
         },
         {
           "id": "vision-r8q3",
-          "question": "What comes next?",
+          "question": "Which tile completes both patterns?",
           "presentation": "sequence",
-          "visual": { "items": ["●", "○", "●", "○", "?"], "separator": "·", "ariaLabel": "Filled circle, outline circle, filled circle, outline circle, unknown" },
-          "answers": ["●", "○", "■", "□"],
+          "visual": {
+            "items": [
+              "▲",
+              "○",
+              "■",
+              "△",
+              "●",
+              "□",
+              "?"
+            ],
+            "separator": "·",
+            "ariaLabel": "Triangle circle square cycle with alternating filled and outline shapes"
+          },
+          "answers": [
+            "▲",
+            "△",
+            "●",
+            "■"
+          ],
           "correct": 0,
           "category": "pattern_tracking",
           "delay": 350,
-          "explanation": "Filled and outline circles alternate, so a filled circle comes next."
+          "explanation": "The shapes cycle triangle, circle, square while fill alternates filled and outline, so a filled triangle follows."
         },
         {
           "id": "vision-r8q4",
-          "question": "Turn ↓ clockwise once.",
-          "answers": ["↑", "←", "→", "↓"],
-          "correct": 1,
+          "question": "Turn ↘ right twice.",
+          "answers": [
+            "↙",
+            "↘",
+            "↗",
+            "↖"
+          ],
+          "correct": 3,
           "category": "spatial_orientation",
           "delay": 350,
-          "explanation": "A clockwise quarter-turn from down points left."
+          "explanation": "The first turn points southwest and the second points northwest.",
+          "presentation": "sequence",
+          "visual": {
+            "items": [
+              "↘",
+              "↻ 90°",
+              "↻ 90°",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Southeast arrow followed by two clockwise quarter-turns"
+          }
         },
         {
           "id": "vision-r8q5",
-          "question": "Which icon appeared second?",
+          "question": "Which icon appeared fourth?",
           "presentation": "icons",
-          "answers": ["Moon", "Sun", "Key", "Star"],
-          "icons": ["🌙", "☀️", "🔑", "⭐"],
-          "correct": 2,
+          "answers": [
+            "Moon",
+            "Anchor",
+            "Sun",
+            "Star"
+          ],
+          "icons": [
+            "🌙",
+            "⚓",
+            "☀️",
+            "⭐"
+          ],
+          "correct": 1,
           "category": "visual_memory",
           "delay": 350,
-          "study": { "title": "Quick snapshot", "presentation": "icons", "items": ["☀️", "🔑", "🌙"], "durationMs": 1400, "mode": "automatic" },
-          "explanation": "The key was the second icon."
+          "study": {
+            "title": "Quick snapshot",
+            "presentation": "icons",
+            "items": [
+              "☀️",
+              "🔑",
+              "🌙",
+              "⚓",
+              "🪶"
+            ],
+            "durationMs": 1400,
+            "mode": "automatic"
+          },
+          "explanation": "The anchor was fourth in the five-icon snapshot."
         },
         {
           "id": "vision-r8q6",
           "question": "How many filled stars?",
           "presentation": "spatial",
-          "visual": { "items": ["★ ☆ ★ ★ ☆ ★"], "ariaLabel": "Four filled stars and two outline stars" },
-          "answers": ["1", "2", "3", "4"],
-          "correct": 3,
+          "visual": {
+            "items": [
+              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
+            ],
+            "ariaLabel": "Five filled stars mixed with seven outline or geometric distractors"
+          },
+          "answers": [
+            "5",
+            "3",
+            "4",
+            "2"
+          ],
+          "correct": 0,
           "category": "attention_control",
           "delay": 350,
-          "explanation": "Four of the six stars are filled."
+          "explanation": "Five filled stars appear among the outline stars and geometric distractors."
         }
       ]
     },
@@ -586,64 +1165,148 @@
       "questions": [
         {
           "id": "vision-r9q1",
-          "context": "Two centre squares carry the same colour code but sit on different backgrounds.",
-          "question": "Why can the centre squares appear different?",
+          "context": "The centre squares use the same fixed grey value.",
+          "question": "Why can the centre squares still appear different?",
           "presentation": "spatial",
-          "visual": { "items": ["⬜ ◼️ ⬜", "⬛ ◼️ ⬛"], "ariaLabel": "The same dark centre square shown once against white and once against black" },
-          "answers": ["Surrounding contrast changes their appearance", "One must secretly be brighter", "The colour code changes with distance", "Identical colours always look identical"],
-          "correct": 0,
+          "visual": {
+            "items": [
+              "light panel",
+              "dark panel"
+            ],
+            "ariaLabel": "Simultaneous contrast panels"
+          },
+          "answers": [
+            "One must secretly be brighter",
+            "Surrounding contrast changes their appearance",
+            "The colour changes with viewing distance",
+            "Identical colours always look identical"
+          ],
+          "correct": 1,
           "category": "colour_contrast",
-          "explanation": "Surrounding colours can change perceived contrast even when the centre colours are identical."
+          "explanation": "The centre squares are identical; the light and dark surroundings alter how their shared grey appears."
         },
         {
           "id": "vision-r9q2",
-          "context": "VERSION A: FOCUS 2026\nVERSION B: F0CUS 2026",
-          "question": "What changed in Version B?",
-          "answers": ["The F became an E", "The O became a zero", "The U became a V", "The final digit changed"],
-          "correct": 1,
+          "context": "VERSION A: FOCUS-M7Q2-2026\nVERSION B: F0CUS-M7Q2-2026",
+          "question": "Which precise position changed in Version B?",
+          "answers": [
+            "The first F",
+            "The Q",
+            "The second character",
+            "The final digit"
+          ],
+          "correct": 2,
           "category": "detail_detection",
-          "explanation": "The second character changed from the letter O to the numeral 0."
+          "explanation": "The second character changed from the letter O to the numeral 0; every other position matches."
         },
         {
           "id": "vision-r9q3",
-          "question": "Each group doubles its dots. What comes next?",
+          "question": "Which tile completes both hidden cycles?",
           "presentation": "sequence",
-          "visual": { "items": ["•", "••", "••••", "••••••••", "?"], "separator": "→", "ariaLabel": "One dot, two dots, four dots, eight dots, unknown" },
-          "answers": ["10 dots", "12 dots", "16 dots", "18 dots"],
-          "correct": 2,
+          "visual": {
+            "items": [
+              "▲1",
+              "○2",
+              "■3",
+              "△1",
+              "●2",
+              "□3",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Triangle circle square cycle paired with one two three and alternating fill"
+          },
+          "answers": [
+            "▲1",
+            "▲2",
+            "△1",
+            "●1"
+          ],
+          "correct": 0,
           "category": "pattern_tracking",
-          "explanation": "The count doubles from one to two to four to eight, so the next group has sixteen dots."
+          "explanation": "Shape and number restart at triangle and 1, while the alternating fill returns to filled: ▲1."
         },
         {
           "id": "vision-r9q4",
-          "context": "The whole page turns, carrying the arrow with it.",
-          "question": "Where does the arrow point to the viewer now?",
+          "context": "First rotate the arrow 90° clockwise. Then reflect that result in a vertical mirror.",
+          "question": "Where does the arrow finally point?",
           "presentation": "sequence",
-          "visual": { "items": ["⬆️", "↻ 180°", "?"], "separator": "→", "ariaLabel": "Up arrow, rotate one hundred and eighty degrees, unknown direction" },
-          "answers": ["North", "East", "West", "South"],
-          "correct": 3,
+          "visual": {
+            "items": [
+              "↗",
+              "↻ 90°",
+              "│",
+              "?"
+            ],
+            "separator": "→",
+            "ariaLabel": "Northeast arrow, clockwise quarter-turn, then vertical mirror"
+          },
+          "answers": [
+            "↗",
+            "↘",
+            "↙",
+            "↖"
+          ],
+          "correct": 2,
           "category": "spatial_orientation",
-          "explanation": "A half-turn reverses north to south relative to the viewer."
+          "explanation": "The clockwise turn changes northeast to southeast; the vertical mirror then changes southeast to southwest."
         },
         {
           "id": "vision-r9q5",
-          "question": "Which colour and position were paired?",
+          "question": "What sat immediately right of the gold triangle?",
           "presentation": "icons",
-          "answers": ["Gold in the centre", "Blue in the centre", "Coral on the left", "Gold on the right"],
-          "icons": ["🟨", "🟦", "🟥", "🟨"],
-          "correct": 0,
+          "answers": [
+            "Violet star",
+            "Blue circle",
+            "Green diamond",
+            "Coral square"
+          ],
+          "icons": [
+            "🟣★",
+            "🔵●",
+            "🟢◆",
+            "🔴■"
+          ],
+          "correct": 3,
           "category": "visual_memory",
-          "study": { "title": "Hold the arrangement", "items": ["🟦 ◻️ ◻️", "◻️ 🟨 ◻️", "◻️ ◻️ 🟥"], "durationMs": 1700, "mode": "automatic" },
-          "explanation": "Gold was shown in the centre position."
+          "study": {
+            "title": "Hold the five-tile row",
+            "items": [
+              "🔵●",
+              "🟡▲",
+              "🔴■",
+              "🟢◆",
+              "🟣★"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          },
+          "explanation": "The coral square followed immediately after the gold triangle."
         },
         {
           "id": "vision-r9q6",
           "context": "REFERENCE: SIGHT · LIGHT · NIGHT\nCOPY: SIGHT · L1GHT · NIGHT",
-          "question": "Which word was altered?",
-          "answers": ["SIGHT", "LIGHT", "NIGHT", "None"],
-          "correct": 1,
+          "question": "Which label conflicts with its colour tile?",
+          "answers": [
+            "First",
+            "Second",
+            "Third",
+            "Fourth"
+          ],
+          "correct": 2,
           "category": "attention_control",
-          "explanation": "LIGHT was changed to L1GHT by replacing the letter I with the number 1."
+          "explanation": "The third label says RED but is paired with a blue tile; the other labels match their tiles.",
+          "presentation": "grid",
+          "visual": {
+            "items": [
+              "BLUE 🟦",
+              "GREEN 🟩",
+              "RED 🟦",
+              "GOLD 🟨"
+            ],
+            "columns": 2,
+            "ariaLabel": "Four colour labels and tiles with the third label mismatched"
+          }
         }
       ]
     },
@@ -652,66 +1315,129 @@
       "questions": [
         {
           "id": "vision-r10q1",
-          "context": "Find the pair that changes in two ways: it must shift from light to dark and also move to a clearly different hue.",
+          "context": "Compare each pair twice: first for a light-to-dark shift, then for a move to a clearly different hue.",
           "question": "Which pair changes both brightness and hue?",
           "presentation": "icons",
-          "answers": ["Light blue to dark blue", "Red to orange", "Pale yellow to deep violet", "Black to grey"],
-          "icons": ["🩵 🔵", "🔴 🟠", "🟡 🟣", "⚫ 🩶"],
-          "correct": 2,
+          "answers": [
+            "Pair A",
+            "Pair C",
+            "Pair B",
+            "Pair D"
+          ],
+          "icons": [
+            "🩵 🔵",
+            "🟡 🟣",
+            "🔴 🟠",
+            "⚫ 🩶"
+          ],
+          "correct": 1,
           "category": "colour_contrast",
           "reasoningSteps": 2,
-          "explanation": "Pale yellow to deep violet changes from light to dark and crosses to a distinctly different hue; the other pairs mainly change only one of those qualities."
+          "explanation": "Pair C moves from pale yellow to deep violet, changing both brightness and hue; the other pairs mainly change only one quality."
         },
         {
           "id": "vision-r10q2",
-          "context": "BASE: M8Q2-K7P4\nCOPY: M8Q2-K7P9",
-          "question": "Which precise change was made?",
-          "answers": ["M changed to N", "Q changed to O", "7 changed to 1", "The final 4 changed to 9"],
-          "correct": 3,
+          "context": "BASE: M8Q2-K7P4-R6N3\nCOPY: M8Q2-K1P4-R6M3",
+          "question": "Which two positions changed?",
+          "answers": [
+            "7 and N",
+            "8 and 6",
+            "Q and P",
+            "K and R"
+          ],
+          "correct": 0,
           "category": "detail_detection",
           "reasoningSteps": 2,
-          "explanation": "The strings match until the final character, where 4 becomes 9."
+          "explanation": "The 7 in the second group becomes 1, and the N in the final group becomes M; all other positions match."
         },
         {
           "id": "vision-r10q3",
-          "context": "Shapes alternate circle, square. Fills repeat filled, outline, outline.",
+          "context": "Track the shape cycle and fill cycle independently.",
           "question": "Which item follows the six shown?",
           "presentation": "sequence",
-          "visual": { "items": ["●", "□", "○", "■", "○", "□", "?"], "separator": "·", "ariaLabel": "Filled circle, outline square, outline circle, filled square, outline circle, outline square, unknown" },
-          "answers": ["●", "■", "○", "□"],
+          "visual": {
+            "items": [
+              "●",
+              "□",
+              "○",
+              "■",
+              "○",
+              "□",
+              "?"
+            ],
+            "separator": "·",
+            "ariaLabel": "Six shapes combining an alternating circle-square cycle and a three-step fill cycle"
+          },
+          "answers": [
+            "●",
+            "■",
+            "○",
+            "□"
+          ],
           "correct": 0,
           "category": "pattern_tracking",
           "reasoningSteps": 2,
-          "explanation": "The next shape is a circle and the fill cycle returns to filled, producing a filled circle."
+          "explanation": "The shape cycle returns to circle while the three-step fill cycle returns to filled, producing a filled circle."
         },
         {
           "id": "vision-r10q4",
           "context": "An arrow starts pointing up. Turn it right once, then rotate it 180 degrees.",
           "question": "Which direction does it finally point?",
-          "answers": ["South", "West", "North", "East"],
-          "correct": 1,
+          "answers": [
+            "South",
+            "North",
+            "West",
+            "East"
+          ],
+          "correct": 2,
           "category": "spatial_orientation",
           "reasoningSteps": 2,
           "explanation": "The first turn points east; a further half-turn points west."
         },
         {
           "id": "vision-r10q5",
-          "question": "Where was the triangle, and what colour was it?",
+          "question": "Which tile was two places right of the blue circle?",
           "presentation": "icons",
-          "answers": ["Left and blue", "Right and coral", "Centre and gold", "Centre and blue"],
-          "icons": ["🔵▲", "🔴▲", "🟡▲", "🔵▲"],
-          "correct": 2,
+          "answers": [
+            "Green diamond",
+            "Coral square",
+            "Violet star",
+            "Gold triangle"
+          ],
+          "icons": [
+            "🟢◆",
+            "🔴■",
+            "🟣★",
+            "🟡▲"
+          ],
+          "correct": 1,
           "category": "visual_memory",
           "reasoningSteps": 2,
-          "study": { "title": "Remember both details", "items": ["🔵● ◻️ ◻️", "◻️ 🟡▲ ◻️", "◻️ ◻️ 🔴■"], "durationMs": 2200, "mode": "automatic" },
-          "explanation": "The triangle was in the centre and was paired with gold."
+          "study": {
+            "title": "Remember colour, shape and position",
+            "items": [
+              "🔵●",
+              "🟡▲",
+              "🔴■",
+              "🟢◆",
+              "🟣★"
+            ],
+            "durationMs": 2200,
+            "mode": "automatic"
+          },
+          "explanation": "The coral square was two positions to the right of the blue circle."
         },
         {
           "id": "vision-r10q6",
           "context": "LINE A: A7K2-M9Q4-R6\nLINE B: A7K2-N9Q4-R8",
           "question": "How many character positions are different?",
-          "answers": ["0", "1", "3", "2"],
-          "correct": 3,
+          "answers": [
+            "0",
+            "2",
+            "3",
+            "1"
+          ],
+          "correct": 1,
           "category": "attention_control",
           "reasoningSteps": 2,
           "explanation": "M changes to N and the final 6 changes to 8, giving two differences."
@@ -726,18 +1452,65 @@
     "finalTitle": "Your vision result is ready",
     "finalCopy": "Every colour, symbol and hidden detail has been checked. One final reveal remains.",
     "finalButton": "Reveal My Score",
-    "finalChecklist": ["Colour contrast", "Detail detection", "Pattern tracking", "Spatial orientation", "Visual memory", "Attention control"],
+    "finalChecklist": [
+      "Colour contrast",
+      "Detail detection",
+      "Pattern tracking",
+      "Spatial orientation",
+      "Visual memory",
+      "Attention control"
+    ],
     "reveals": [
-      { "title": "Focus locked", "signal": "fixed", "message": "Your first visual signals have been captured." },
-      { "title": "Colour signals mapped", "signal": "fixed", "message": "Contrast and colour-order clues are now in the analysis." },
-      { "title": "Fine details detected", "signal": "fixed", "message": "Tiny changes and exact matches have been logged." },
-      { "title": "Pattern pulse tracked", "signal": "strongest-dimension", "template": "Strongest visual signal so far: {value}." },
-      { "title": "Spatial map aligned", "signal": "fixed", "message": "Rotations, mirrors and movement paths are now included." },
-      { "title": "Memory snapshot stored", "signal": "fixed", "message": "Your visual recall is now part of the result." },
-      { "title": "Clutter cleared", "signal": "strongest-dimension", "template": "Current strongest visual skill: {value}." },
-      { "title": "Focus sprint complete", "signal": "fixed", "message": "Fast questions, same scoring. Every choice was counted." },
-      { "title": "Optical traps exposed", "signal": "fixed", "message": "Only the final focus round remains." },
-      { "title": "Vision analysis ready", "signal": "fixed", "message": "All sixty answers have been processed." }
+      {
+        "title": "Focus locked",
+        "signal": "fixed",
+        "message": "Your first visual signals have been captured."
+      },
+      {
+        "title": "Colour signals mapped",
+        "signal": "fixed",
+        "message": "Contrast and colour-order clues are now included in your analysis."
+      },
+      {
+        "title": "Fine details detected",
+        "signal": "fixed",
+        "message": "Tiny changes and exact matches have been logged."
+      },
+      {
+        "title": "Pattern pulse tracked",
+        "signal": "strongest-dimension",
+        "template": "Strongest visual signal so far: {value}."
+      },
+      {
+        "title": "Spatial map aligned",
+        "signal": "fixed",
+        "message": "Rotations, mirrors and movement paths are now included."
+      },
+      {
+        "title": "Memory snapshot stored",
+        "signal": "fixed",
+        "message": "Your visual recall is now part of the result."
+      },
+      {
+        "title": "Clutter cleared",
+        "signal": "strongest-dimension",
+        "template": "Current strongest visual skill: {value}."
+      },
+      {
+        "title": "Focus sprint complete",
+        "signal": "fixed",
+        "message": "Fast questions, same scoring. Every choice was counted."
+      },
+      {
+        "title": "Optical traps exposed",
+        "signal": "fixed",
+        "message": "Only the final focus round remains."
+      },
+      {
+        "title": "Vision analysis ready",
+        "signal": "fixed",
+        "message": "All sixty answers have been processed."
+      }
     ]
   }
 }

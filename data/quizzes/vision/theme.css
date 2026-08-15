@@ -344,3 +344,59 @@
   [data-quiz-theme="vision"] *::before,
   [data-quiz-theme="vision"] *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* Fixed Vision perception panels. */
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span > strong {
+  display: grid;
+  min-width: 46px;
+  min-height: 54px;
+  place-items: center;
+  font-size: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(-n+5) > strong::after {
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--vision-indigo);
+  content: "";
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(2) > strong::after,
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(4) > strong::after { width: 23px; }
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(3) > strong::after { width: 35px; }
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:last-child > strong { font-size: 29px; }
+
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span > strong {
+  position: relative;
+  display: grid;
+  min-height: 126px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  place-items: center;
+  background: #edf1f3;
+  color: transparent;
+  font-size: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span:nth-child(2) > strong { background: #17253a; }
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span > strong::after {
+  width: 48px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  background: #7b8491;
+  box-shadow: 0 2px 7px rgba(10,32,57,.12);
+  content: "";
+}
+
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Nine fixed blue swatches with one teal shift"] > span > strong {
+  min-height: 55px;
+  border: 0;
+  background: #346fb0;
+  color: transparent;
+  font-size: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Nine fixed blue swatches with one teal shift"] > span:nth-child(8) > strong { background: #258e9b; }
