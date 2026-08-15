@@ -294,7 +294,10 @@ export function scoreHybridMatch(quiz: Quiz, answers: QuizAnswers): QuizScore {
   const positiveWildcard = [...wildcardPool].filter((candidate) => candidate.styleMatch - candidate.academicMatch > 0)
     .sort((a, b) => (b.styleMatch - b.academicMatch) - (a.styleMatch - a.academicMatch) || b.finalMatch - a.finalMatch || a.order - b.order)[0];
   const wildcard = positiveWildcard ?? wildcardPool[0];
-  const preferredTrait = [...config.traits].sort((a, b) => styleVector[b] - styleVector[a] || config.traits.indexOf(a) - config.traits.indexOf(b))[0];
+  const hasStyleAnswers = Object.values(styleVector).some((value) => value > 0);
+  const preferredTrait = [...config.traits].sort((a, b) => hasStyleAnswers
+    ? styleVector[b] - styleVector[a] || config.traits.indexOf(a) - config.traits.indexOf(b)
+    : (winner?.styleWeights[b] ?? 0) - (winner?.styleWeights[a] ?? 0) || config.traits.indexOf(a) - config.traits.indexOf(b))[0];
   const wildcardTrait = wildcard ? [...config.traits].sort((a, b) => wildcard.styleWeights[b] - wildcard.styleWeights[a] || config.traits.indexOf(a) - config.traits.indexOf(b))[0] : undefined;
   const profile = quiz.result.profiles.find((item) => item.id === winner?.id) ?? fallbackProfile(quiz);
   const dimensions = quiz.result.scoreDimensions.map((dimension) => {

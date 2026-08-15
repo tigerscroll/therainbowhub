@@ -460,3 +460,42 @@ test("hybrid matching normalises academic weights and keeps fit choices out of t
   assert.notEqual(result.alternativeMatch, result.profile.title);
   assert.notEqual(result.wildcardMatch, result.profile.title);
 });
+
+test("academic-only hybrid matching derives the study environment from the winning university", () => {
+  const quiz = {
+    slug: "academic-match-test",
+    engine: {
+      scoring: { type: "hybrid-match" },
+      match: {
+        academicWeight: 1,
+        styleWeight: 0,
+        categories: ["words", "numbers"],
+        traits: ["tutorial", "building"],
+        candidates: [
+          { id: "scholar", academicWeights: { words: 1, numbers: .2 }, styleWeights: { tutorial: 1, building: .2 } },
+          { id: "maker", academicWeights: { words: .2, numbers: 1 }, styleWeights: { tutorial: .2, building: 1 } },
+          { id: "balanced", academicWeights: { words: .6, numbers: .6 }, styleWeights: { tutorial: .6, building: .6 } },
+        ],
+      },
+    },
+    questions: [
+      { id: "word", answerIndex: 0, category: "words", stage: 0 },
+      { id: "number", answerIndex: 0, category: "numbers", stage: 0 },
+    ],
+    stages: ["Round"],
+    result: {
+      profiles: [
+        { id: "scholar", minRatio: 0, title: "Oxford", tier: "Scholar" },
+        { id: "maker", minRatio: 0, title: "MIT", tier: "Maker" },
+        { id: "balanced", minRatio: 0, title: "NUS", tier: "Balanced" },
+      ],
+      scoreDimensions: [{ label: "Words", categories: ["words"] }, { label: "Numbers", categories: ["numbers"] }],
+      match: { traitLabels: { tutorial: "Tutorial dialogue", building: "Inventive building" } },
+    },
+  } as Quiz;
+  const result = scoreHybridMatch(quiz, { word: 0, number: 1 });
+  assert.equal(result.score, 1);
+  assert.equal(result.total, 2);
+  assert.equal(result.profile.id, "scholar");
+  assert.equal(result.preferredStyle, "Tutorial dialogue");
+});

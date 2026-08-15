@@ -409,8 +409,8 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const rawMatch = object(engine.match, "engine.match", file);
     const academicWeight = Number(rawMatch.academicWeight);
     const styleWeight = Number(rawMatch.styleWeight);
-    if (![academicWeight, styleWeight].every((weight) => Number.isFinite(weight) && weight > 0) || Math.abs(academicWeight + styleWeight - 1) > 1e-9) {
-      throw new Error(`${file}: match academicWeight and styleWeight must be positive and total 1.`);
+    if (![academicWeight, styleWeight].every((weight) => Number.isFinite(weight) && weight >= 0) || Math.abs(academicWeight + styleWeight - 1) > 1e-9) {
+      throw new Error(`${file}: match academicWeight and styleWeight must be non-negative and total 1.`);
     }
     const categories = strings(rawMatch.categories, "engine.match.categories", file);
     const traits = strings(rawMatch.traits, "engine.match.traits", file);
