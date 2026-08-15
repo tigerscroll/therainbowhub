@@ -12,6 +12,16 @@ export const localeOptions = [
   { code: "nl", name: "Nederlands", flag: "🇳🇱" },
   { code: "es", name: "Español", flag: "🇪🇸" },
   { code: "pt", name: "Português", flag: "🇵🇹" },
+  { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
+  { code: "ar", name: "العربية", flag: "🇸🇦" },
+  { code: "id", name: "Bahasa Indonesia", flag: "🇮🇩" },
+  { code: "bn", name: "বাংলা", flag: "🇧🇩" },
+  { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
+  { code: "fil", name: "Filipino", flag: "🇵🇭" },
+  { code: "ur", name: "اردو", flag: "🇵🇰" },
+  { code: "th", name: "ไทย", flag: "🇹🇭" },
+  { code: "tr", name: "Türkçe", flag: "🇹🇷" },
+  { code: "pl", name: "Polski", flag: "🇵🇱" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];

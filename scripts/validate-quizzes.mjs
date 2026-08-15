@@ -5,6 +5,11 @@ const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.replace(/\.json$/, "")));
+const expectedDirections = {
+  en: "ltr", fr: "ltr", de: "ltr", pt: "ltr", nl: "ltr", es: "ltr", it: "ltr",
+  hi: "ltr", ar: "rtl", id: "ltr", bn: "ltr", vi: "ltr", fil: "ltr", ur: "rtl",
+  th: "ltr", tr: "ltr", pl: "ltr",
+};
 const errors = [];
 const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
@@ -97,6 +102,7 @@ for (const locale of supportedLocales) {
   const ui = read(path.join(process.cwd(), "data", "i18n", `${locale}.json`));
   if (!ui) continue;
   fail(ui.locale?.code === locale, `data/i18n/${locale}.json: locale.code must match the filename.`);
+  fail(ui.locale?.direction === expectedDirections[locale], `data/i18n/${locale}.json: locale.direction must be ${expectedDirections[locale]}.`);
   const localizedUiKeys = leafStringPaths(ui).sort();
   fail(JSON.stringify(localizedUiKeys) === JSON.stringify(requiredUiKeys), `data/i18n/${locale}.json: shared UI leaf-string structure differs from en.json.`);
   for (const key of requiredUiKeys) {
@@ -165,6 +171,8 @@ for (const folder of folders) {
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
     const ids = sourceQuestions.map((question) => question.id);
+    const expectedMemoryLocales = Object.keys(expectedDirections).map((locale) => `${locale}.json`).sort();
+    fail(JSON.stringify(localeFiles.sort()) === JSON.stringify(expectedMemoryLocales), `${folder.name}: Memory must support the complete ${expectedMemoryLocales.length}-locale set.`);
     fail(source.stages?.length === 10, `${folder.name}/en.json: Memory must contain ten rounds.`);
     fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Memory round must contain six scored questions.`);
     fail(sourceQuestions.length === 60, `${folder.name}/en.json: Memory must contain exactly 60 scored questions.`);

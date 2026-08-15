@@ -53,7 +53,7 @@ img { display: block; max-width: 100%; }
 .site-menu > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .site-menu > summary::-webkit-details-marker { display: none; }
 .site-menu > summary > span { width: 20px; height: 2px; border-radius: 999px; background: currentColor; }
-.site-menu__panel { position: absolute; top: calc(100% + 7px); right: 0; width: min(318px, calc(100vw - 24px)); padding: 10px; overflow: hidden; border: 1px solid #d6e2e1; border-radius: 16px; background: rgba(255,255,255,.99); color: #172033; box-shadow: 0 22px 56px rgba(22,45,51,.19), 0 3px 10px rgba(22,45,51,.08); }
+.site-menu__panel { position: absolute; top: calc(100% + 7px); inset-inline-end: 0; width: min(318px, calc(100vw - 24px)); max-height: calc(100dvh - 62px); padding: 10px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; border: 1px solid #d6e2e1; border-radius: 16px; background: rgba(255,255,255,.99); color: #172033; box-shadow: 0 22px 56px rgba(22,45,51,.19), 0 3px 10px rgba(22,45,51,.08); scrollbar-width: thin; }
 .site-menu__section { padding-bottom: 8px; border-bottom: 1px solid #e2eaea; }
 .site-menu__language-section { padding-top: 8px; }
 .site-menu__section > strong { display: block; padding: 6px 8px 7px; color: #738181; font-size: 9px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
@@ -66,7 +66,7 @@ img { display: block; max-width: 100%; }
 .site-menu a[aria-current="page"] { background: var(--brand-teal-soft); color: var(--brand-teal-deep); }
 .site-menu a:focus-visible { outline: 2px solid var(--brand-teal-rich); outline-offset: -1px; }
 .site-menu__language-options a > span:nth-child(2) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.site-menu__language-check { margin-left: auto; opacity: 0; font-size: 11px; }
+.site-menu__language-check { margin-inline-start: auto; opacity: 0; font-size: 11px; }
 .site-menu a[aria-current="page"] .site-menu__language-check { opacity: 1; }
 .site-language-switcher > summary { display: grid; grid-template-columns: auto 1fr auto auto; gap: 9px; align-items: center; width: 100%; height: auto; min-height: 48px; padding: 7px 9px; border: 1px solid #dce8e7; border-radius: 10px; background: #f5f9f8; color: #172033; cursor: pointer; list-style: none; transition: border-color .16s ease, background .16s ease; }
 .site-language-switcher > summary::-webkit-details-marker { display: none; }
