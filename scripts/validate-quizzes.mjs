@@ -186,29 +186,27 @@ for (const folder of folders) {
   if (folder.name === "memory-short") {
     const categories = ["word_recall", "visual", "numbers", "working_memory", "association", "attention"];
     fail(JSON.stringify(localeFiles.sort()) === JSON.stringify(["en.json"]), `${folder.name}: Memory Short must launch in English only.`);
-    fail(config.engine?.flow === "staged", `${folder.name}: Memory Short must use the ten-round staged flow.`);
-    fail(config.engine?.startOnLoad === false && config.engine?.stageResults === true, `${folder.name}: Memory Short must use its landing gate and rewarded round-result screens.`);
-    fail(source.progressLabel === undefined, `${folder.name}/en.json: the ten-round format must use the standard round label.`);
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory Short must contain ten rounds of eight questions.`);
-    fail(sourceQuestions.length === 80 && new Set(sourceQuestionIds).size === 80, `${folder.name}/en.json: Memory Short needs 80 unique stable question IDs.`);
+    fail(config.engine?.flow === "linear", `${folder.name}: Memory Short must use the single-stage linear flow.`);
+    fail(config.engine?.startOnLoad === false && config.engine?.stageResults === undefined, `${folder.name}: Memory Short must use its rewarded start pop-up without intermediate score screens.`);
+    fail(source.progressLabel === "complete", `${folder.name}/en.json: the single stage must show percentage completion rather than a round number.`);
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Memory Short must contain one stage of ten questions.`);
+    fail(sourceQuestions.length === 10 && new Set(sourceQuestionIds).size === 10, `${folder.name}/en.json: Memory Short needs ten unique stable question IDs.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && categories.includes(question.category)), `${folder.name}/en.json: every Memory Short question needs one correct answer and an approved memory category.`);
-    fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([20, 20, 20, 20]), `${folder.name}/en.json: Memory Short correct positions must be balanced 20/20/20/20.`);
-    fail(source.stages.every((stage) => new Set(stage.questions.map((question) => question.correct)).size >= 3), `${folder.name}/en.json: every Memory Short round needs varied correct-answer positions.`);
+    fail(sourceQuestions.every((question) => question.answers?.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every Memory Short question needs four unique answers.`);
+    fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([3, 2, 2, 3]), `${folder.name}/en.json: Memory Short correct positions must use the approved irregular 3/2/2/3 balance.`);
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions[0]?.study?.continueLabel === "I’ve memorised them", `${folder.name}/en.json: the opening must be an untimed memory cue with an explicit ready button.`);
     fail(sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening memory cue may use manual study timing.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2500), `${folder.name}/en.json: automatic study cues must allow at least 2500ms for worldwide and older audiences.`);
-    fail(source.stages[7].questions.every((question) => question.advanceDelayMs === 350) && source.stages.filter((_, index) => index !== 7).every((stage) => stage.questions.every((question) => question.advanceDelayMs === undefined)), `${folder.name}/en.json: only Rapid Fire may override answer advancement to 350ms.`);
-    const shapeCue = sourceQuestions.find((question) => question.id === "m-r1q4");
-    fail(shapeCue?.question === "What colour was the circle?" && shapeCue?.answers?.[shapeCue.correct] === "Green" && JSON.stringify(shapeCue?.study?.items) === JSON.stringify(["🔺 TRIANGLE", "🟦 SQUARE", "🟢 CIRCLE"]), `${folder.name}/en.json: the colour-and-shape cue must use three genuine shapes with a matching answer.`);
-    const fruitCue = sourceQuestions.find((question) => question.id === "m-r9q3");
-    fail(fruitCue?.answers?.every((answer, index) => ({ Lemon: "🍋", Orange: "🍊", Apple: "🍎", Banana: "🍌" })[answer] === fruitCue.icons?.[index]) && fruitCue?.answers?.[fruitCue.correct] === "Orange", `${folder.name}/en.json: the odd-fruit answer labels and icons must remain semantically aligned.`);
-    fail(sourceQuestions.find((question) => question.id === "m-r5q6")?.question === "Which complete set appeared earlier in the test?", `${folder.name}/en.json: the delayed set callback must describe its placement accurately.`);
-    fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 64, `${folder.name}: the 80% Memory Short pass line must begin at 64/80 correct.`);
-    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must request one start ad and rewarded gates after all ten rounds.`);
+    fail(sourceQuestions.every((question) => question.delay === undefined), `${folder.name}/en.json: the compact test must use the default answer transition throughout.`);
+    const shapeCue = sourceQuestions.find((question) => question.id === "ms-short-q4");
+    fail(shapeCue?.question === "What colour was the circle?" && shapeCue?.answers?.[shapeCue.correct] === "Green" && JSON.stringify(shapeCue?.study?.items) === JSON.stringify(["🔺 RED TRIANGLE", "🟦 BLUE SQUARE", "🟢 GREEN CIRCLE"]), `${folder.name}/en.json: the colour-and-shape cue must use three genuine shapes with a matching answer.`);
+    fail(sourceQuestions[5]?.answers?.[sourceQuestions[5]?.correct] === "8" && sourceQuestions[6]?.answers?.[sourceQuestions[6]?.correct] === "The star became a heart" && sourceQuestions[7]?.answers?.[sourceQuestions[7]?.correct] === "Beside a red postbox", `${folder.name}/en.json: arithmetic, change-detection and story questions must keep their approved answers.`);
+    fail(sourceQuestions[9]?.study === undefined && sourceQuestions[9]?.answers?.[sourceQuestions[9]?.correct] === "BLUE — BICYCLE — 5837 — MARCUS", `${folder.name}/en.json: the final question must be a genuine delayed multi-source callback.`);
+    fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 8, `${folder.name}: the 80% Memory Short pass line must begin at 8/10 correct.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must request exactly one start gate and one final-result gate.`);
     fail(source.landing?.startPrompt?.title === "Test Ready! 🎉" && source.landing?.startPrompt?.copy === "Watch a short ad to start the test." && source.landing?.startPrompt?.button === "OK", `${folder.name}/en.json: Memory Short needs the approved pre-test rewarded pop-up.`);
-    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined && source.checkpoint?.finalButton === "Reveal My Results", `${folder.name}/en.json: Memory Short needs nine round-score gates, one final result gate and no separate checkpoint progress block.`);
-    fail(source.checkpoint?.stageResult?.title === "Your Round {round} Score Is Ready" && source.checkpoint?.stageResult?.revealButton === "See My Score" && source.checkpoint?.stageResult?.lockedLabel === "Round score locked" && source.checkpoint?.stageResult?.scoreLabel === "{correct} / {total}", `${folder.name}/en.json: every intermediate rewarded gate must unlock a real round score.`);
-    fail(source.results?.score?.retryLabel === "Try Again", `${folder.name}/en.json: the result must offer a Try Again action.`);
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.stageResult === undefined && source.checkpoint?.finalTitle === "Test Completed! 🎉" && source.checkpoint?.finalButton === "See My Score", `${folder.name}/en.json: Memory Short needs one clean final rewarded score gate.`);
+    fail(source.results?.score?.retryLabel === "Try Again" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: the result must offer Try Again without a redundant best-round field.`);
   }
   if (folder.name === "iq") {
     const ids = sourceQuestions.map((question) => question.id);

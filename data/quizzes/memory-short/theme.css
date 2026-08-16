@@ -68,17 +68,8 @@
 
 [data-quiz-theme="memory-short"] > * { position: relative; z-index: 1; }
 
-/* One coherent paper system, with a distinct stamped identity for every memory lab. */
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="1"] { --memory-round-accent: #a82c32; --memory-round-label: "✎ WORDS"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="2"] { --memory-round-accent: #27657a; --memory-round-label: "◉ PICTURES"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="3"] { --memory-round-accent: #966514; --memory-round-label: "# NUMBERS"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="4"] { --memory-round-accent: #78436e; --memory-round-label: "✦ DETAILS"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="5"] { --memory-round-accent: #3f7651; --memory-round-label: "⌁ INTERFERENCE"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="6"] { --memory-round-accent: #9a502b; --memory-round-label: "□ EVERYDAY"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="7"] { --memory-round-accent: #2f7070; --memory-round-label: "↔ CHANGES"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="8"] { --memory-round-accent: #8a660d; --memory-round-label: "⚡ RAPID"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="9"] { --memory-round-accent: #4c4f88; --memory-round-label: "◷ DELAYED"; }
-[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="10"] { --memory-round-accent: #a82c32; --memory-round-label: "◆ FINAL"; }
+/* One coherent paper system for the compact ten-question memory test. */
+[data-quiz-theme="memory-short"] :is(.quiz-engine__question-shell, .quiz-engine__checkpoint)[data-round="1"] { --memory-round-accent: #a82c32; --memory-round-label: "✦ MEMORY TEST"; }
 
 /* Custom editorial landing page. */
 [data-quiz-theme="memory-short"] .quiz-engine__landing {
@@ -487,31 +478,6 @@
   margin: 18px auto 20px;
 }
 
-[data-quiz-theme="memory-short"] .quiz-engine__stage-score {
-  width: min(100%, 590px);
-  border: 2px solid var(--memory-ink);
-  border-left: 7px solid var(--memory-green);
-  border-radius: 3px;
-  background: var(--memory-paper-light);
-  box-shadow: 5px 5px 0 rgba(25,23,19,.12);
-}
-
-[data-quiz-theme="memory-short"] .quiz-engine__stage-score strong { color: var(--memory-green); font-family: Georgia, "Times New Roman", serif; }
-[data-quiz-theme="memory-short"] .quiz-engine__stage-score span { color: #514b42; font-family: Arial, sans-serif; }
-[data-quiz-theme="memory-short"] .quiz-engine__stage-result .quiz-engine__stage-score { animation: memory-short-score-pop .42s cubic-bezier(.2,.85,.3,1.2) both; }
-
-[data-quiz-theme="memory-short"] .quiz-engine__stage-score-teaser {
-  width: min(100%, 300px);
-  border: 2px dashed var(--memory-round-accent, var(--memory-red));
-  border-radius: 3px;
-  background:
-    repeating-linear-gradient(135deg, transparent 0 9px, color-mix(in srgb, var(--memory-round-accent, var(--memory-red)) 5%, transparent) 9px 18px),
-    var(--memory-paper-light);
-  box-shadow: 4px 4px 0 rgba(25,23,19,.1);
-}
-
-[data-quiz-theme="memory-short"] .quiz-engine__stage-score-teaser strong { color: var(--memory-round-accent, var(--memory-red)); font-family: Georgia, "Times New Roman", serif; }
-
 [data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress-copy {
   color: #6c6459;
   font-family: Arial, sans-serif;
@@ -691,11 +657,6 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes memory-short-score-pop {
-  0% { opacity: 0; transform: translateY(8px) scale(.94); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 @keyframes memory-short-scan {
   0%, 28% { transform: translateX(-110%); }
   72%, 100% { transform: translateX(110%); }
@@ -708,7 +669,6 @@
 @media (prefers-reduced-motion: reduce) {
   [data-quiz-theme="memory-short"] .quiz-engine__checkpoint-icon,
   [data-quiz-theme="memory-short"] .quiz-engine__question,
-  [data-quiz-theme="memory-short"] .quiz-engine__stage-result .quiz-engine__stage-score,
   [data-quiz-theme="memory-short"] .quiz-engine__ai-panel::after,
   [data-quiz-theme="memory-short"] .quiz-engine__ai-top > span { animation: none; }
 }
