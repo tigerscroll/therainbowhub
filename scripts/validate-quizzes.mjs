@@ -224,6 +224,10 @@ for (const folder of folders) {
     fail(sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening memory cue may use manual study timing.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2500), `${folder.name}/en.json: automatic study cues must allow at least 2500ms for worldwide and older audiences.`);
     fail(Object.entries(expectedStudyDurations).every(([id, durationMs]) => sourceQuestions.find((question) => question.id === id)?.study?.durationMs === durationMs), `${folder.name}/en.json: Memory Short study timings must match the approved accessible timing map.`);
+    const shapeCue = sourceQuestions.find((question) => question.id === "m-r1q4");
+    fail(shapeCue?.question === "What colour was the circle?" && shapeCue?.answers?.[shapeCue.correct] === "Green" && JSON.stringify(shapeCue?.study?.items) === JSON.stringify(["🔺 TRIANGLE", "🟦 SQUARE", "🟢 CIRCLE"]), `${folder.name}/en.json: the colour-and-shape cue must use three genuine shapes with a matching answer.`);
+    const fruitCue = sourceQuestions.find((question) => question.id === "m-r9q3");
+    fail(fruitCue?.answers?.[0] === "Lemon" && fruitCue?.icons?.[0] === "🍋" && fruitCue?.answers?.[fruitCue.correct] === "Orange", `${folder.name}/en.json: the odd-fruit answer labels and icons must remain semantically aligned.`);
     fail(sourceQuestions.find((question) => question.id === "m-r5q6")?.question === "Which complete set appeared earlier in the test?", `${folder.name}/en.json: the delayed set callback must describe its placement accurately.`);
     fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 32, `${folder.name}: the 80% Memory Short pass line must begin at 32/40 correct.`);
     fail(config.engine?.rewarded?.start === false && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must skip the start ad and request rewarded gates at all five round checkpoints.`);
