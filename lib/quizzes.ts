@@ -69,6 +69,7 @@ export type QuizEngineConfig = {
   rewarded: QuizRewardedConfig;
   advanceDelayMs: number;
   targetRatio?: number;
+  stageResults?: boolean;
   estimate?: QuizEstimateConfig;
   derivedScore?: QuizDerivedScoreConfig;
   tieBreaks?: QuizTieBreakConfig;
@@ -190,6 +191,15 @@ export type QuizCheckpointCopy = {
   finalCopy: string;
   finalButton: string;
   finalChecklist: string[];
+  stageResult?: {
+    badge: string;
+    title: string;
+    revealButton: string;
+    lockedLabel: string;
+    scoreLabel: string;
+    accuracyLabel: string;
+    continueButton: string;
+  };
 };
 
 export type QuizRewardPrompt = {
@@ -267,6 +277,7 @@ type QuizManifest = {
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
     targetRatio?: number;
+    stageResults?: boolean;
     estimate?: QuizEstimateConfig;
     derivedScore?: QuizDerivedScoreConfig;
     tieBreaks?: QuizTieBreakConfig;
@@ -400,6 +411,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
   if (engine.startOnLoad !== undefined && typeof engine.startOnLoad !== "boolean") throw new Error(`${file}: engine.startOnLoad must be a boolean.`);
+  if (engine.stageResults !== undefined && typeof engine.stageResults !== "boolean") throw new Error(`${file}: engine.stageResults must be a boolean.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 600) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 600.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -456,6 +468,9 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   }
   if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
     throw new Error(`${file}: a direct-start quiz cannot also request a rewarded start gate.`);
+  }
+  if (engine.stageResults === true && (engine.scoring !== "correct-answer" || engine.flow !== "staged")) {
+    throw new Error(`${file}: engine.stageResults requires a staged correct-answer quiz.`);
   }
   let estimate: QuizEstimateConfig | undefined;
   if (engine.estimate !== undefined) {
@@ -588,6 +603,16 @@ function normalizeLocale(
     if (value.checkpoint.progressComplete !== undefined) {
       const progressComplete = text(value.checkpoint.progressComplete, "checkpoint.progressComplete", file);
       if (!progressComplete.includes("{value}")) throw new Error(`${file}: checkpoint.progressComplete must include {value}.`);
+    }
+    if (value.checkpoint.stageResult) {
+      if (manifest.engine.scoring !== "correct-answer") throw new Error(`${file}: checkpoint.stageResult requires correct-answer scoring.`);
+      if (manifest.engine.stageResults !== true) throw new Error(`${file}: checkpoint.stageResult requires engine.stageResults.`);
+      (["badge", "title", "revealButton", "lockedLabel", "scoreLabel", "accuracyLabel", "continueButton"] as const)
+        .forEach((key) => text(value.checkpoint?.stageResult?.[key], `checkpoint.stageResult.${key}`, file));
+      if (!value.checkpoint.stageResult.scoreLabel.includes("{correct}") || !value.checkpoint.stageResult.scoreLabel.includes("{total}")) {
+        throw new Error(`${file}: checkpoint.stageResult.scoreLabel must include {correct} and {total}.`);
+      }
+      if (!value.checkpoint.stageResult.accuracyLabel.includes("{value}")) throw new Error(`${file}: checkpoint.stageResult.accuracyLabel must include {value}.`);
     }
   }
 
@@ -793,6 +818,7 @@ function normalizeLocale(
       },
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
       targetRatio: manifest.engine.targetRatio,
+      stageResults: manifest.engine.stageResults ?? false,
       estimate: manifest.engine.estimate,
       derivedScore: manifest.engine.derivedScore,
       tieBreaks: manifest.engine.tieBreaks,

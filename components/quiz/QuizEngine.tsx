@@ -17,7 +17,7 @@ type QuizEngineProps = {
   translations: Translations;
 };
 
-type QuizScreen = "landing" | "question" | "checkpoint" | "results";
+type QuizScreen = "landing" | "question" | "checkpoint" | "stage-result" | "results";
 type SavedScreen = Exclude<QuizScreen, "landing">;
 
 type SavedProgress = {
@@ -262,7 +262,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!isProgressTimestampFresh(saved.updatedAt)) return null;
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
-  if (!saved.screen || !["question", "checkpoint", "results"].includes(saved.screen)) return null;
+  if (!saved.screen || !["question", "checkpoint", "stage-result", "results"].includes(saved.screen)) return null;
 
   const answers: QuizAnswers = {};
   if (saved.answers && typeof saved.answers === "object") {
@@ -294,6 +294,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         flow: quiz.engine.flow,
         scoring: quiz.engine.scoring,
         startOnLoad: quiz.engine.startOnLoad,
+        stageResults: quiz.engine.stageResults,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
@@ -491,12 +492,19 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       if (isFinalStage) {
         setScreen("results");
         trackQuizEvent("QuizComplete", quiz, locale);
+      } else if (quiz.engine.stageResults) {
+        setScreen("stage-result");
       } else {
         setScreen("question");
       }
     };
     if (quiz.engine.rewarded.stages) void runRewardedGate(next);
     else next();
+  }
+
+  function continueAfterStageResult() {
+    setScreen("question");
+    scrollToTop();
   }
 
   function restartQuiz() {
@@ -568,12 +576,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "checkpoint") {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const checkpoint = quiz.checkpoint;
-    const checkpointTitle = isFinalStage && checkpoint ? checkpoint.finalTitle : quiz.stages[completedStage];
+    const checkpointTitle = isFinalStage && checkpoint
+      ? checkpoint.finalTitle
+      : checkpoint?.stageResult
+        ? checkpoint.stageResult.title.replace("{round}", String(completedStage + 1))
+        : quiz.stages[completedStage];
     const checkpointCopy = isFinalStage
       ? checkpoint?.finalCopy ?? translations.results.complete
+      : checkpoint?.stageResult
+        ? checkpoint.adNote
       : quiz.engine.checkpoint !== "ai" ? quiz.stageEncouragement[completedStage] : undefined;
     const checkpointButton = isFinalStage
       ? checkpoint?.finalButton ?? translations.results.viewResults
+      : checkpoint?.stageResult
+        ? checkpoint.stageResult.revealButton
       : translations.quiz.continue;
     const reveal = checkpoint?.reveals[completedStage];
     const revealKey = reveal?.signal === "trend" ? result.trend
@@ -586,14 +602,21 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         : reveal?.variants?.[revealKey];
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
+    const completedStageTotal = quiz.questions.filter((question) => question.stage === completedStage).length;
     return (
       <>
-      <section className="quiz-engine__checkpoint quiz-engine__card">
-        <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : reveal?.badge ?? translations.results.stageComplete}</span>
+      <section className="quiz-engine__checkpoint quiz-engine__card" data-round={completedStage + 1}>
+        <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : checkpoint?.stageResult?.badge ?? reveal?.badge ?? translations.results.stageComplete}</span>
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{checkpointTitle}</h2>
         {checkpointCopy ? <p>{checkpointCopy}</p> : null}
-        {quiz.engine.checkpoint === "ai" && checkpoint ? (
+        {!isFinalStage && checkpoint?.stageResult ? (
+          <div className="quiz-engine__stage-score-teaser" aria-label={checkpoint.stageResult.lockedLabel}>
+            <strong>? / {completedStageTotal}</strong>
+            <span>🔒 {checkpoint.stageResult.lockedLabel}</span>
+          </div>
+        ) : null}
+        {quiz.engine.checkpoint === "ai" && checkpoint && (!checkpoint.stageResult || isFinalStage) ? (
           <div className="quiz-engine__ai-panel">
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
             <p>{revealMessage}</p>
@@ -635,7 +658,60 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : checkpointButton}
         </button>
-        {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
+        {quiz.engine.rewarded.stages && checkpoint && !checkpoint.stageResult ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
+      </section>
+      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      </>
+    );
+  }
+
+  if (screen === "stage-result" && quiz.checkpoint?.stageResult) {
+    const checkpoint = quiz.checkpoint;
+    const copy = checkpoint.stageResult!;
+    const reveal = checkpoint.reveals[completedStage];
+    const completedQuestions = quiz.questions.filter((question) => question.stage === completedStage);
+    const correct = completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
+    const percentage = Math.round((correct / completedQuestions.length) * 100);
+    const revealKey = reveal?.signal === "trend" ? result.trend
+      : reveal?.signal === "consistency" ? result.consistency
+        : reveal?.signal === "score-band" ? result.scoreBand
+          : reveal?.signal === "target-status" ? result.targetStatus
+            : "fixed";
+    const revealMessage = reveal?.signal === "fixed" ? reveal.message
+      : reveal?.signal === "strongest-dimension" ? reveal.template?.replace("{value}", result.strongestSignal ?? "—")
+        : reveal?.variants?.[revealKey];
+    const completedStageCount = completedStage + 1;
+    const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
+    return (
+      <>
+      <section className="quiz-engine__stage-result quiz-engine__checkpoint quiz-engine__card" data-round={completedStage + 1}>
+        <span className="quiz-engine__eyebrow">{reveal?.badge ?? copy.badge}</span>
+        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{reveal?.icon ?? "✓"}</div>
+        <h2>{quiz.stages[completedStage]}</h2>
+        <div className="quiz-engine__stage-score" aria-label={`${correct} of ${completedQuestions.length} correct`}>
+          <strong>{copy.scoreLabel.replace("{correct}", String(correct)).replace("{total}", String(completedQuestions.length))}</strong>
+          <span>{copy.accuracyLabel.replace("{value}", String(percentage))}</span>
+        </div>
+        <div className="quiz-engine__ai-panel">
+          <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
+          <p>{revealMessage}</p>
+        </div>
+        {checkpoint.progressLabel && checkpoint.progressComplete ? (
+          <div className="quiz-engine__checkpoint-progress">
+            <div className="quiz-engine__checkpoint-progress-copy">
+              <strong>{checkpoint.progressLabel}</strong>
+              <span>{checkpoint.progressComplete.replace("{value}", String(checkpointPercent))}</span>
+            </div>
+            <div className="quiz-engine__checkpoint-progress-track" role="progressbar" aria-label={`${completedStageCount} of ${quiz.stages.length} complete`} aria-valuemax={quiz.stages.length} aria-valuemin={0} aria-valuenow={completedStageCount} style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}>
+              {quiz.stages.map((stage, index) => <i aria-hidden="true" data-complete={index < completedStageCount ? "true" : undefined} key={stage} />)}
+            </div>
+          </div>
+        ) : null}
+        <div className="quiz-engine__checkpoint-next">
+          <span>{checkpoint.nextPrefix}</span>
+          <strong>{quiz.stages[completedStage + 1]}</strong>
+        </div>
+        <button className="quiz-engine__primary" onClick={continueAfterStageResult} type="button">{copy.continueButton}</button>
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -750,7 +826,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   return (
     <>
-    <section className="quiz-engine__question-shell">
+    <section className="quiz-engine__question-shell" data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
         <span>{quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
         <strong>{quiz.stages[currentStage]}</strong>
@@ -758,7 +834,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <div className="quiz-engine__progress">
         <i style={{ width: `${progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card">
+      <article className="quiz-engine__question quiz-engine__card" key={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
