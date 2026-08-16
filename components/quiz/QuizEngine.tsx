@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
+import { DisplayAd } from "./DisplayAd";
 import { getStageCompletionPercentage } from "./engineState";
 import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
@@ -37,6 +38,7 @@ function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
 }
 
 type QuestionRendererProps = {
+  displayAd?: ReactNode;
   answer?: number;
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => void;
@@ -88,6 +90,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
 
 function ChoiceQuestion({
   answer,
+  displayAd,
   feedback,
   onAnswer,
   question,
@@ -95,6 +98,7 @@ function ChoiceQuestion({
   return (
     <>
     <QuestionVisual question={question} />
+    {displayAd}
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
@@ -191,8 +195,8 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
 }
 
 function QuestionRenderer(props: QuestionRendererProps) {
-  if (props.question.study && !props.studyComplete) return <StudyCue {...props} />;
-  return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} /> : <ChoiceQuestion {...props} />;
+  if (props.question.study && !props.studyComplete) return <StudyCue {...props} key={props.question.id} />;
+  return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} key={props.question.id} /> : <ChoiceQuestion {...props} />;
 }
 
 function SocialProof({ avatars, text }: { avatars: string[]; text: string }) {
@@ -698,9 +702,14 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
+          displayAd={questionIndex > 0 ? (
+            <DisplayAd
+              adUnitPath={siteConfig.displayAdUnitPath}
+              questionKey={currentQuestion.id}
+            />
+          ) : undefined}
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
-          key={currentQuestion.id}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}

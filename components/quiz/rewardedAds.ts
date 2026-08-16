@@ -2,26 +2,29 @@
 
 export type RewardedResult = "granted" | "closed" | "unavailable";
 
-type GptSlot = {
+export type GptSlot = {
   addService(service: unknown): GptSlot;
 };
 
-type RewardedEvent = {
+export type GptEvent = {
   slot: GptSlot;
   makeRewardedVisible?: () => void;
   isEmpty?: boolean;
 };
 
-type PubAds = {
-  addEventListener(name: string, listener: (event: RewardedEvent) => void): void;
+export type PubAds = {
+  addEventListener(name: string, listener: (event: GptEvent) => void): void;
+  removeEventListener?: (name: string, listener: (event: GptEvent) => void) => void;
+  refresh?: (slots?: GptSlot[], options?: { changeCorrelator?: boolean }) => void;
   updateCorrelator?: () => void;
 };
 
-type GoogleTag = {
+export type GoogleTag = {
   cmd: Array<() => void>;
+  defineSlot?: (path: string, size: [number, number], elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
-  display?: (slot: GptSlot) => void;
+  display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
