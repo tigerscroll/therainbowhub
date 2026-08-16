@@ -206,6 +206,7 @@ export type QuizScoreResultCopy = {
   derivedLabel?: string;
   showPercentage?: boolean;
   showBestRound?: boolean;
+  retryLabel?: string;
 };
 export type QuizMatchResultCopy = {
   academicChallenge: string;
@@ -753,6 +754,7 @@ function normalizeLocale(
     if (manifest.engine.derivedScore) text(value.results.score.derivedLabel, "results.score.derivedLabel", file);
     if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
     if (value.results.score.showBestRound !== undefined && typeof value.results.score.showBestRound !== "boolean") throw new Error(`${file}: results.score.showBestRound must be a boolean.`);
+    if (value.results.score.retryLabel !== undefined) text(value.results.score.retryLabel, "results.score.retryLabel", file);
   }
   if (value.about?.howToPlay) {
     text(value.about.howToPlay.title, "about.howToPlay.title", file);

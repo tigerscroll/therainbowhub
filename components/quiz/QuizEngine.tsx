@@ -706,8 +706,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}
-        <button className="quiz-engine__secondary" onClick={restartQuiz} type="button">
-          {translations.quiz.restartTest}
+        <button className={`quiz-engine__secondary${scoreCopy?.retryLabel ? " quiz-engine__retry" : ""}`} onClick={restartQuiz} type="button">
+          {scoreCopy?.retryLabel ?? translations.quiz.restartTest}
         </button>
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />

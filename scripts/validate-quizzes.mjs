@@ -214,6 +214,7 @@ for (const folder of folders) {
     fail(source.landing?.startPrompt?.copy?.includes("short ad") && source.checkpoint?.finalCopy?.includes("short ad"), `${folder.name}/en.json: both rewarded confirmation screens must explain the short ad.`);
     fail(source.checkpoint?.finalChecklist?.length === 0 && source.checkpoint?.reveals?.length === 0, `${folder.name}/en.json: the short result gate must not add checklist or reveal-unlock steps.`);
     fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: the single-stage result must hide the redundant best-round row.`);
+    fail(source.results?.score?.retryLabel === "Try Again", `${folder.name}/en.json: the result must offer a Try Again action.`);
   }
   if (folder.name === "iq") {
     const ids = sourceQuestions.map((question) => question.id);
