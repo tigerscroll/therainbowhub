@@ -185,6 +185,33 @@ for (const folder of folders) {
   }
   if (folder.name === "memory-short") {
     const categories = ["word_recall", "visual", "numbers", "working_memory", "association", "attention"];
+    const expectedStudyDurations = {
+      "m-r1q1": 4500,
+      "m-r1q2": 3000,
+      "m-r1q4": 5000,
+      "m-r1q5": 5500,
+      "m-r1q6": 3200,
+      "m-r2q1": 6000,
+      "m-r4q1": 6000,
+      "m-r7q1": 5000,
+      "m-r7q3": 3500,
+      "m-r7q4": 4000,
+      "m-r7q5": 4000,
+      "m-r3q2": 2800,
+      "m-r3q4": 2500,
+      "m-r3q5": 5000,
+      "m-r3q6": 3500,
+      "m-r5q1": 5500,
+      "m-r5q3": 3500,
+      "m-r9q3": 2500,
+      "m-r9q1": 6000,
+      "m-r9q5": 6000,
+      "m-r8q2": 2500,
+      "m-r8q3": 3000,
+      "m-r10q1": 6000,
+      "m-r10q2": 2800,
+      "m-r10q4": 3200,
+    };
     fail(JSON.stringify(localeFiles.sort()) === JSON.stringify(["en.json"]), `${folder.name}: Memory Short must launch in English only.`);
     fail(config.engine?.flow === "staged", `${folder.name}: Memory Short must use the five-round staged flow.`);
     fail(config.engine?.startOnLoad === true, `${folder.name}: Memory Short must open directly on its first question.`);
@@ -195,6 +222,8 @@ for (const folder of folders) {
     fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory Short correct positions must be balanced 10/10/10/10.`);
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions[0]?.study?.continueLabel === "I’ve memorised them", `${folder.name}/en.json: the direct-start opening must be an untimed memory cue with an explicit ready button.`);
     fail(sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening memory cue may use manual study timing.`);
+    fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2500), `${folder.name}/en.json: automatic study cues must allow at least 2500ms for worldwide and older audiences.`);
+    fail(Object.entries(expectedStudyDurations).every(([id, durationMs]) => sourceQuestions.find((question) => question.id === id)?.study?.durationMs === durationMs), `${folder.name}/en.json: Memory Short study timings must match the approved accessible timing map.`);
     fail(sourceQuestions.find((question) => question.id === "m-r5q6")?.question === "Which complete set appeared earlier in the test?", `${folder.name}/en.json: the delayed set callback must describe its placement accurately.`);
     fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 32, `${folder.name}: the 80% Memory Short pass line must begin at 32/40 correct.`);
     fail(config.engine?.rewarded?.start === false && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must skip the start ad and request rewarded gates at all five round checkpoints.`);

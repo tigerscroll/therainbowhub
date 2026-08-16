@@ -333,6 +333,27 @@
   padding-bottom: 4px;
 }
 
+[data-quiz-theme="memory-short"] .quiz-engine__study-progress {
+  gap: 7px;
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__study-progress::before {
+  color: var(--memory-red);
+  content: "MEMORISE";
+  font-size: 11px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+  letter-spacing: .17em;
+  line-height: 1;
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__study-progress > i {
+  height: 5px;
+  border: 1px solid rgba(25,23,19,.24);
+  border-radius: 1px;
+  background: var(--memory-red);
+}
+
 [data-quiz-theme="memory-short"] .quiz-engine__study > p {
   max-width: 520px;
   font-size: 15px;

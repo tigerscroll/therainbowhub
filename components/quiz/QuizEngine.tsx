@@ -161,6 +161,11 @@ function StudyCue({ onStudyComplete, question }: QuestionRendererProps) {
 
   return (
     <div className={`quiz-engine__study quiz-engine__study--${study.presentation}`}>
+      {study.mode === "automatic" ? (
+        <div aria-hidden="true" className="quiz-engine__study-progress">
+          <i style={{ animationDuration: `${study.durationMs}ms` }} />
+        </div>
+      ) : null}
       {study.instruction ? <p>{study.instruction}</p> : null}
       <div className="quiz-engine__study-items" aria-label={study.ariaLabel ?? study.items.join(", ")}>
         {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
