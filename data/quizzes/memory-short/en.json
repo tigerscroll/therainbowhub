@@ -1,0 +1,251 @@
+{
+  "title": "Most Adults Can’t Score 80% On This Memory Test",
+  "eyebrow": "Quick Memory Challenge",
+  "summary": "Twelve focused challenges test words, pictures, numbers, order, associations and the details that disappear fastest.",
+  "progressLabel": "Complete",
+  "landing": {
+    "intro": "Think your memory is still sharp? Some challenges are easy. Some are designed to catch you out. Can you score 80%?",
+    "socialProof": "81,000+ people played this",
+    "cta": "Start Test",
+    "startPrompt": {
+      "eyebrow": "READY TO BEGIN",
+      "icon": "✓",
+      "title": "Test Ready! 🎉",
+      "copy": "Watch a short ad to start the test.",
+      "button": "OK"
+    }
+  },
+  "about": {
+    "body": "This short memory test packs word recall, visual details, number memory, ordering, associations and close attention into one focused set of twelve questions. Some clues are tested immediately, while others return later when you may no longer expect them.\n\nThe challenge is designed to feel quick without becoming throwaway. Study cards disappear, earlier details return and the final question combines information from several moments in the test.\n\nYour result shows the number answered correctly and the memory area that suited you best. Attention, tiredness and chance can affect performance, so treat the score as entertainment rather than a judgement about cognitive health.",
+    "howToPlay": {
+      "title": "How to Play",
+      "steps": [
+        "Study every word, symbol, number and pairing carefully when it appears.",
+        "Choose one answer for each of the twelve questions before the test moves on.",
+        "Finish the single challenge to reveal your score and strongest memory area."
+      ]
+    },
+    "disclaimer": "For entertainment and self-reflection only. This test is not a medical, neurological or cognitive assessment and cannot diagnose memory problems."
+  },
+  "results": {
+    "name": "YOUR MEMORY RESULT",
+    "profiles": [
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "Memory Mastermind",
+        "copy": "You held onto immediate clues and delayed details with exceptional precision. Even the final combination struggled to catch you out."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "Razor-Sharp Recall",
+        "copy": "You cleared the 80% challenge with sharp attention and reliable recall. Most details stayed available exactly when you needed them."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "Almost Unforgettable",
+        "copy": "Your memory caught most of the test’s important clues. Only a few carefully delayed details slipped away."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "Selective Genius",
+        "copy": "You remembered a strong selection of words, images and patterns. Your mind clearly had favourites among the clues."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "Memory With Opinions",
+        "copy": "Some details stuck instantly while others disappeared on their own schedule. You still caught enough to keep the challenge close."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "Beautifully Distracted",
+        "copy": "This compact test found several ways to split your attention. You still rescued some excellent details from the noise."
+      }
+    ],
+    "dimensions": [
+      { "label": "📝 Word recall", "categories": ["word_recall"] },
+      { "label": "👀 Visual memory", "categories": ["visual"] },
+      { "label": "🔢 Number recall", "categories": ["numbers"] },
+      { "label": "🧠 Working memory", "categories": ["working_memory"] },
+      { "label": "🔗 Association", "categories": ["association"] },
+      { "label": "🔍 Attention", "categories": ["attention"] }
+    ],
+    "score": {
+      "passed": "You beat the 80% challenge! 🧠",
+      "finished": "You completed the short memory test",
+      "correctLabel": "correct",
+      "strongest": "Your strongest memory",
+      "trickiest": "Your trickiest area",
+      "bestRound": "Challenge",
+      "showBestRound": false,
+      "disclaimer": "For entertainment only. This quiz isn’t a medical or cognitive assessment."
+    }
+  },
+  "stages": [
+    {
+      "title": "12-Question Recall",
+      "questions": [
+        {
+          "id": "ms-q1",
+          "question": "Which word appeared in the list?",
+          "answers": ["HARBOR", "RIVER", "WINDOW", "GARDEN"],
+          "correct": 1,
+          "category": "word_recall",
+          "study": {
+            "title": "Remember these six words",
+            "instruction": "The order may matter later.",
+            "items": ["MAPLE", "VELVET", "RIVER", "CANDLE", "ORBIT", "POCKET"],
+            "durationMs": 4500,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "ms-q2",
+          "question": "Which object was NOT shown?",
+          "presentation": "icons",
+          "answers": ["Compass", "Balloon", "Lemon", "Guitar"],
+          "icons": ["🧭", "🎈", "🍋", "🎸"],
+          "correct": 3,
+          "category": "visual",
+          "study": {
+            "title": "Look carefully",
+            "instruction": "These five objects will disappear.",
+            "presentation": "icons",
+            "items": ["☂️", "🔑", "🎈", "🧭", "🍋"],
+            "durationMs": 3200,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "ms-q3",
+          "question": "Add the second digit to the final digit. What is the total?",
+          "answers": ["9", "7", "13", "3"],
+          "correct": 0,
+          "category": "numbers",
+          "study": {
+            "title": "Remember this five-digit code",
+            "instruction": "You will use it more than once.",
+            "items": ["5", "8", "2", "6", "1"],
+            "durationMs": 2800,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "ms-q4",
+          "question": "Which symbol came directly before the glove?",
+          "presentation": "icons",
+          "answers": ["Moon", "Coffee", "Star", "Key"],
+          "icons": ["🌙", "☕", "⭐", "🔑"],
+          "correct": 2,
+          "category": "working_memory",
+          "study": {
+            "title": "Remember the exact order",
+            "presentation": "icons",
+            "items": ["🌙", "☕", "⭐", "🧤"],
+            "durationMs": 2800,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "ms-q5",
+          "question": "Which pair appeared exactly as shown?",
+          "answers": ["CLOUD — CLOCK", "AMBER — CLOCK", "PINE — BOOK", "CORAL — SPOON"],
+          "correct": 1,
+          "category": "association",
+          "study": {
+            "title": "Link each word to its partner",
+            "instruction": "Two of these pairs return later.",
+            "items": ["PINE — BELL", "CORAL — BOOK", "AMBER — CLOCK", "CLOUD — SPOON"],
+            "durationMs": 5000,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "ms-q6",
+          "context": "One row contains a tiny change",
+          "question": "Which row is different?",
+          "presentation": "code",
+          "visual": {
+            "items": ["6K2N8P", "6K2M8P", "6K2M8P", "6K2M8P"],
+            "ariaLabel": "Four rows of six characters; one row differs by one letter"
+          },
+          "answers": ["Top row", "Second row", "Third row", "Bottom row"],
+          "correct": 0,
+          "category": "attention"
+        },
+        {
+          "id": "ms-q7",
+          "context": "Think back to the opening word list",
+          "question": "What came immediately after RIVER?",
+          "answers": ["ORBIT", "MAPLE", "POCKET", "CANDLE"],
+          "correct": 3,
+          "category": "word_recall"
+        },
+        {
+          "id": "ms-q8",
+          "context": "Return to the five objects",
+          "question": "Which object was immediately left of the balloon?",
+          "presentation": "icons",
+          "answers": ["Umbrella", "Compass", "Key", "Lemon"],
+          "icons": ["☂️", "🧭", "🔑", "🍋"],
+          "correct": 2,
+          "category": "visual"
+        },
+        {
+          "id": "ms-q9",
+          "context": "Recall the five-digit code",
+          "question": "What was the middle digit?",
+          "answers": ["2", "8", "6", "5"],
+          "correct": 0,
+          "category": "numbers"
+        },
+        {
+          "id": "ms-q10",
+          "question": "Start with 7. Add 5, then halve the total. What remains?",
+          "answers": ["5", "12", "7", "6"],
+          "correct": 3,
+          "category": "working_memory"
+        },
+        {
+          "id": "ms-q11",
+          "context": "Recall the paired words",
+          "question": "Which object was paired with CLOUD?",
+          "answers": ["Clock", "Spoon", "Bell", "Book"],
+          "correct": 1,
+          "category": "association"
+        },
+        {
+          "id": "ms-q12",
+          "context": "FINAL QUESTION — combine four earlier details",
+          "question": "Which complete set matches the study cards?",
+          "answers": [
+            "ORBIT — umbrella — middle digit 6 — CORAL with BOOK",
+            "RIVER — key — middle digit 2 — AMBER with SPOON",
+            "ORBIT — umbrella — middle digit 2 — CORAL with BOOK",
+            "ORBIT — compass — middle digit 2 — PINE with BOOK"
+          ],
+          "correct": 2,
+          "category": "attention",
+          "reasoningSteps": 4
+        }
+      ]
+    }
+  ],
+  "checkpoint": {
+    "nextPrefix": "Next",
+    "adNote": "One short ad — then your result appears.",
+    "reveals": [],
+    "finalBadge": "TEST COMPLETE",
+    "finalIcon": "✓",
+    "finalTitle": "Test Completed! 🎉",
+    "finalCopy": "You successfully completed the test. You must watch a short ad to see your results.",
+    "finalButton": "OK",
+    "buttonIcon": "▶",
+    "finalChecklist": []
+  }
+}

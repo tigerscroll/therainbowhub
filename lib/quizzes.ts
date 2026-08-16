@@ -179,10 +179,20 @@ export type QuizCheckpointCopy = {
   adNote: string;
   reveals: QuizCheckpointReveal[];
   finalBadge: string;
+  finalIcon?: string;
+  buttonIcon?: string;
   finalTitle: string;
   finalCopy: string;
   finalButton: string;
   finalChecklist: string[];
+};
+
+export type QuizRewardPrompt = {
+  eyebrow: string;
+  icon: string;
+  title: string;
+  copy: string;
+  button: string;
 };
 
 export type QuizScoreResultCopy = {
@@ -195,6 +205,7 @@ export type QuizScoreResultCopy = {
   disclaimer: string;
   derivedLabel?: string;
   showPercentage?: boolean;
+  showBestRound?: boolean;
 };
 export type QuizMatchResultCopy = {
   academicChallenge: string;
@@ -217,6 +228,7 @@ export type Quiz = {
   title: string;
   eyebrow: string;
   summary: string;
+  progressLabel?: string;
   duration: string;
   publishedAt: string;
   questionCount: number;
@@ -229,7 +241,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[] };
+  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -267,7 +279,8 @@ type QuizLocaleFile = {
   title: string;
   eyebrow?: string;
   summary: string;
-  landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string };
+  progressLabel?: string;
+  landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string; startPrompt?: QuizRewardPrompt };
   about?: {
     body: string;
     disclaimer?: string;
@@ -536,6 +549,11 @@ function normalizeLocale(
 ): Quiz {
   const title = text(value.title, "title", file);
   const summary = text(value.summary, "summary", file);
+  if (value.landing?.startPrompt) {
+    if (!manifest.engine.rewarded?.start) throw new Error(`${file}: landing.startPrompt requires a rewarded start gate.`);
+    (["eyebrow", "icon", "title", "copy", "button"] as const)
+      .forEach((key) => text(value.landing?.startPrompt?.[key], `landing.startPrompt.${key}`, file));
+  }
   if (!Array.isArray(value.stages) || !value.stages.length) throw new Error(`${file}: stages are required.`);
   if (!Array.isArray(value.results?.profiles) || !value.results.profiles.length) throw new Error(`${file}: result profiles are required.`);
   if (manifest.engine.flow === "staged" && value.stages.length < 2) throw new Error(`${file}: staged quizzes need at least two stages.`);
@@ -552,6 +570,7 @@ function normalizeLocale(
     strings(value.checkpoint.finalChecklist, "checkpoint.finalChecklist", file);
     if (value.checkpoint.finalChecklist.length < 3 || value.checkpoint.finalChecklist.length > 8) throw new Error(`${file}: final checklist needs three to eight items.`);
     ["nextPrefix", "adNote", "finalBadge", "finalTitle", "finalCopy", "finalButton"].forEach((key) => text(value.checkpoint?.[key as keyof QuizCheckpointCopy], `checkpoint.${key}`, file));
+    if (value.checkpoint.buttonIcon !== undefined) text(value.checkpoint.buttonIcon, "checkpoint.buttonIcon", file);
   }
 
   const questions: QuizQuestion[] = [];
@@ -733,6 +752,7 @@ function normalizeLocale(
       .forEach((key) => text(value.results.score?.[key], `results.score.${key}`, file));
     if (manifest.engine.derivedScore) text(value.results.score.derivedLabel, "results.score.derivedLabel", file);
     if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
+    if (value.results.score.showBestRound !== undefined && typeof value.results.score.showBestRound !== "boolean") throw new Error(`${file}: results.score.showBestRound must be a boolean.`);
   }
   if (value.about?.howToPlay) {
     text(value.about.howToPlay.title, "about.howToPlay.title", file);
@@ -763,6 +783,7 @@ function normalizeLocale(
     title,
     eyebrow: value.eyebrow ?? "Quiz",
     summary,
+    progressLabel: value.progressLabel === undefined ? undefined : text(value.progressLabel, "progressLabel", file),
     duration: manifest.listing.duration,
     publishedAt: `${manifest.listing.published}T00:00:00Z`,
     questionCount: questions.length,
@@ -781,6 +802,7 @@ function normalizeLocale(
       socialProof: value.landing?.socialProof ?? "",
       ctaLabel: value.landing?.cta,
       socialAvatars,
+      startPrompt: value.landing?.startPrompt,
     },
     stages: value.stages.map((stage) => stage.title),
     stageEncouragement,

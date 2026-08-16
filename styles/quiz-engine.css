@@ -65,6 +65,13 @@
 .quiz-engine__ad-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; color: var(--quiz-muted); font-size: 13px; font-weight: 750; }
 .quiz-engine__ad-note span { display: grid; width: 20px; height: 20px; place-items: center; border: 1px solid var(--quiz-correct); border-radius: 50%; color: var(--quiz-correct); font-size: 11px; }
 
+.quiz-engine__reward-prompt { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 18px; background: rgba(10, 12, 18, .72); backdrop-filter: blur(5px); }
+.quiz-engine__reward-prompt-card { width: min(520px, 100%); max-height: calc(100svh - 36px); overflow-y: auto; text-align: center; }
+.quiz-engine__reward-prompt-icon { display: grid; width: 88px; height: 88px; margin: 12px auto 24px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--quiz-correct) 14%, var(--quiz-surface-raised)); color: var(--quiz-correct); font-size: 42px; font-weight: 950; }
+.quiz-engine__reward-prompt-card h2 { margin: 0 0 14px; font-size: clamp(32px, 6vw, 48px); line-height: 1.05; }
+.quiz-engine__reward-prompt-card > p { margin: 0 auto 28px; color: var(--quiz-muted); font-size: clamp(17px, 3vw, 21px); line-height: 1.55; }
+.quiz-engine__reward-prompt-card > .quiz-engine__primary { display: inline-flex; width: min(100%, 390px); align-items: center; justify-content: center; gap: 10px; }
+
 .quiz-engine__question-shell { width: min(720px, 100%); margin: 0 auto; }
 .quiz-engine__progress-head { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 18px; margin-bottom: 11px; color: color-mix(in srgb, var(--quiz-primary-text) 86%, transparent); font-size: 13px; line-height: 1.25; }
 .quiz-engine__progress-head > span { white-space: nowrap; }
@@ -87,32 +94,6 @@
 .quiz-engine__visual--spatial > span > strong { width: 100%; }
 .quiz-engine__visual--verbose-sequence > span > strong { height: 100%; overflow-wrap: normal; word-break: normal; font-size: clamp(16px, 2vw, 22px); }
 .quiz-engine__visual--balanced-last-tile > span:last-child { grid-column: 1 / -1; }
-.quiz-engine__display-ad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  margin: -3px auto 24px;
-}
-.quiz-engine__display-ad[data-state="empty"] { display: none; }
-.quiz-engine__display-ad > span {
-  margin-bottom: 4px;
-  color: var(--quiz-muted);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-.quiz-engine__display-ad-slot {
-  display: grid;
-  width: 300px;
-  height: 250px;
-  overflow: hidden;
-  place-items: center;
-  background: color-mix(in srgb, var(--quiz-surface-raised) 72%, transparent);
-}
-.quiz-engine__display-ad[data-state="filled"] .quiz-engine__display-ad-slot { background: transparent; }
 .quiz-engine__answers { display: grid; gap: 12px; }
 .quiz-engine__answer { display: grid; grid-template-columns: 44px 1fr; gap: 15px; align-items: center; min-height: 72px; padding: 11px 17px; border: 1px solid color-mix(in srgb, var(--quiz-border) 65%, transparent); border-radius: var(--quiz-button-radius); background: var(--quiz-surface-raised); color: var(--quiz-text); text-align: left; touch-action: manipulation; -webkit-tap-highlight-color: transparent; box-shadow: 0 7px 20px rgba(0,0,0,.07); transition: border-color .15s ease, transform .15s ease, opacity .15s ease; }
 @media (hover: hover) and (pointer: fine) {
@@ -248,7 +229,6 @@
   .quiz-engine__visual--verbose-sequence > span { display: grid; justify-items: center; }
   .quiz-engine__visual--verbose-sequence > span > strong { width: min(260px, calc(100vw - 80px)); height: auto; }
   .quiz-engine__visual--verbose-sequence > span > i { position: static; height: 28px; transform: rotate(90deg); }
-  .quiz-engine__display-ad { max-width: none; margin-bottom: 20px; }
   .quiz-engine__answers--scale { grid-template-columns: 1fr; gap: 8px; }
   .quiz-engine__answers--scale .quiz-engine__answer { grid-template-columns: 32px 1fr; justify-items: start; min-height: 56px; padding: 8px 14px; text-align: left; }
   .quiz-engine__answers--scale .quiz-engine__answer strong { font-size: 14px; line-height: 1.2; }

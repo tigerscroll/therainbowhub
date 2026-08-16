@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
-import { DisplayAd } from "./DisplayAd";
 import { getStageCompletionPercentage } from "./engineState";
 import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
@@ -38,7 +37,6 @@ function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
 }
 
 type QuestionRendererProps = {
-  displayAd?: ReactNode;
   answer?: number;
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => void;
@@ -90,7 +88,6 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
 
 function ChoiceQuestion({
   answer,
-  displayAd,
   feedback,
   onAnswer,
   question,
@@ -98,7 +95,6 @@ function ChoiceQuestion({
   return (
     <>
     <QuestionVisual question={question} />
-    {displayAd}
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
@@ -195,8 +191,8 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
 }
 
 function QuestionRenderer(props: QuestionRendererProps) {
-  if (props.question.study && !props.studyComplete) return <StudyCue {...props} key={props.question.id} />;
-  return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} key={props.question.id} /> : <ChoiceQuestion {...props} />;
+  if (props.question.study && !props.studyComplete) return <StudyCue {...props} />;
+  return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} /> : <ChoiceQuestion {...props} />;
 }
 
 function SocialProof({ avatars, text }: { avatars: string[]; text: string }) {
@@ -277,6 +273,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [screen, setScreen] = useState<QuizScreen>("landing");
   const [hydrated, setHydrated] = useState(false);
   const [adBusy, setAdBusy] = useState(false);
+  const [startPromptOpen, setStartPromptOpen] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
@@ -372,6 +369,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     adRequestController.current?.abort();
   }, []);
 
+  useEffect(() => {
+    if (!startPromptOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [startPromptOpen]);
+
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
@@ -455,11 +459,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   function beginQuiz() {
+    setStartPromptOpen(false);
     setScreen("question");
     trackQuizEvent("QuizStart", quiz, locale);
   }
 
   function startQuiz() {
+    if (quiz.engine.rewarded.start && quiz.landing.startPrompt) setStartPromptOpen(true);
+    else if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
+    else beginQuiz();
+  }
+
+  function confirmStartQuiz() {
     if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
     else beginQuiz();
   }
@@ -485,6 +496,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     adRequestActive.current = false;
     try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable. */ }
     setAdBusy(false);
+    setStartPromptOpen(false);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
@@ -524,6 +536,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         )}
       </section>
+      {startPromptOpen && quiz.landing.startPrompt ? (
+        <div className="quiz-engine__reward-prompt" role="presentation">
+          <section aria-labelledby="quiz-reward-prompt-title" aria-modal="true" className="quiz-engine__reward-prompt-card quiz-engine__card" role="dialog">
+            <span className="quiz-engine__eyebrow">{quiz.landing.startPrompt.eyebrow}</span>
+            <div className="quiz-engine__reward-prompt-icon" aria-hidden="true">{quiz.landing.startPrompt.icon}</div>
+            <h2 id="quiz-reward-prompt-title">{quiz.landing.startPrompt.title}</h2>
+            <p>{quiz.landing.startPrompt.copy}</p>
+            <button className="quiz-engine__primary" disabled={adBusy} onClick={confirmStartQuiz} type="button">
+              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
+              {adBusy ? translations.ad.loading : quiz.landing.startPrompt.button}
+            </button>
+          </section>
+        </div>
+      ) : null}
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
@@ -552,7 +578,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <>
       <section className="quiz-engine__checkpoint quiz-engine__card">
         <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : translations.results.stageComplete}</span>
-        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? "✦" : "✓"}</div>
+        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint?.finalIcon ?? "✦" : "✓"}</div>
         <h2>{checkpointTitle}</h2>
         {checkpointCopy ? <p>{checkpointCopy}</p> : null}
         {quiz.engine.checkpoint === "ai" && checkpoint ? (
@@ -561,7 +587,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <p>{revealMessage}</p>
           </div>
         ) : null}
-        {isFinalStage && checkpoint ? (
+        {isFinalStage && checkpoint && checkpoint.finalChecklist.length ? (
           <ul className="quiz-engine__checklist">
             {checkpoint.finalChecklist.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
@@ -573,6 +599,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
+          {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : checkpointButton}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
@@ -653,7 +680,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
             <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
-            <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
+            {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
@@ -692,7 +719,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     <>
     <section className="quiz-engine__question-shell">
       <div className="quiz-engine__progress-head">
-        <span>{translations.quiz.round} {currentStage + 1}</span>
+        <span>{quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
         <strong>{quiz.stages[currentStage]}</strong>
       </div>
       <div className="quiz-engine__progress">
@@ -702,14 +729,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
-          displayAd={questionIndex > 0 ? (
-            <DisplayAd
-              adUnitPath={siteConfig.displayAdUnitPath}
-              questionKey={currentQuestion.id}
-            />
-          ) : undefined}
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
+          key={currentQuestion.id}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}

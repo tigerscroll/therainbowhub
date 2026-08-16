@@ -77,7 +77,6 @@ requireFile("app/not-found.tsx");
 requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
 requireFile("scripts/prepare-quiz-assets.mjs");
-requireFile("components/quiz/DisplayAd.tsx");
 
 const quizEngineCssPath = path.join(rootDir, "styles", "quiz-engine.css");
 const quizEngineCss = fs.readFileSync(quizEngineCssPath, "utf8");
@@ -103,19 +102,16 @@ for (const declaration of requiredQuizShellContract) {
   }
 }
 
-const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
 const quizEngineText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
-const displayAdText = fs.readFileSync(path.join(rootDir, "components", "quiz", "DisplayAd.tsx"), "utf8");
-const requiredDisplayAdContract = [
-  [siteConfigText, 'displayAdUnitPath: "/22677279144/display"', "configured display ad-unit path"],
-  [quizEngineText, "questionIndex > 0", "Question 1 display-ad exclusion"],
-  [displayAdText, "[300, 250]", "fixed 300x250 display size"],
-  [displayAdText, "window.scrollY <= 4", "post-scroll refresh trigger"],
-  [displayAdText, 'data-state={displayState}', "no-fill collapse state"],
-  [quizEngineCss, '.quiz-engine__display-ad[data-state="empty"] { display: none; }', "empty display-ad collapse styling"],
+const rewardedPromptContract = [
+  "quiz.landing.startPrompt",
+  "setStartPromptOpen(true)",
+  "onClick={confirmStartQuiz}",
+  "runRewardedGate(beginQuiz)",
+  "disabled={adBusy}",
 ];
-for (const [source, declaration, label] of requiredDisplayAdContract) {
-  if (!source.includes(declaration)) addError(`Shared display-ad contract is missing ${label}.`);
+for (const declaration of rewardedPromptContract) {
+  if (!quizEngineText.includes(declaration)) addError(`Rewarded confirmation prompt contract is missing: ${declaration}`);
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");
