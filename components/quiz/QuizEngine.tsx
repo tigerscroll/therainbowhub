@@ -145,10 +145,14 @@ function StudyCue({ onStudyComplete, question }: QuestionRendererProps) {
   const study = question.study!;
 
   useLayoutEffect(() => {
+    if (study.mode === "manual") {
+      setReady(true);
+      return;
+    }
     setReady(false);
     const timer = window.setTimeout(() => {
       setReady(true);
-      if (study.mode === "automatic") onStudyComplete();
+      onStudyComplete();
     }, study.durationMs);
     return () => window.clearTimeout(timer);
     // The cue is restarted only when its content changes, not when the parent rerenders.
@@ -270,7 +274,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
-  const [screen, setScreen] = useState<QuizScreen>("landing");
+  const [screen, setScreen] = useState<QuizScreen>(() => quiz.engine.startOnLoad ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
   const [adBusy, setAdBusy] = useState(false);
   const [startPromptOpen, setStartPromptOpen] = useState(false);
@@ -284,6 +288,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       engine: {
         flow: quiz.engine.flow,
         scoring: quiz.engine.scoring,
+        startOnLoad: quiz.engine.startOnLoad,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
@@ -501,7 +506,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
-    setScreen("landing");
+    setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();
   }
 

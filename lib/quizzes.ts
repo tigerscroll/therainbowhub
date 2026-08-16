@@ -65,6 +65,7 @@ export type QuizEngineConfig = {
   flow: QuizFlow;
   scoring: QuizScoring;
   checkpoint: "standard" | "ai";
+  startOnLoad: boolean;
   rewarded: QuizRewardedConfig;
   advanceDelayMs: number;
   targetRatio?: number;
@@ -258,6 +259,7 @@ type QuizManifest = {
     feedback: QuizFlow["feedback"];
     scoring: QuizScoring["type"];
     checkpoint?: QuizEngineConfig["checkpoint"];
+    startOnLoad?: boolean;
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
     targetRatio?: number;
@@ -393,6 +395,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["instant", "selection-only", "after-results"].includes(String(engine.feedback))) throw new Error(`${file}: invalid feedback mode.`);
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
+  if (engine.startOnLoad !== undefined && typeof engine.startOnLoad !== "boolean") throw new Error(`${file}: engine.startOnLoad must be a boolean.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 600) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 600.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -446,6 +449,9 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     if (rewarded.start !== undefined && typeof rewarded.start !== "boolean") throw new Error(`${file}: rewarded.start must be a boolean.`);
     if (rewarded.stages !== undefined && typeof rewarded.stages !== "boolean") throw new Error(`${file}: rewarded.stages must be a boolean.`);
     if (rewarded.attempts !== undefined && (!Number.isInteger(rewarded.attempts) || Number(rewarded.attempts) < 1 || Number(rewarded.attempts) > 5)) throw new Error(`${file}: rewarded.attempts must be between 1 and 5.`);
+  }
+  if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
+    throw new Error(`${file}: a direct-start quiz cannot also request a rewarded start gate.`);
   }
   let estimate: QuizEstimateConfig | undefined;
   if (engine.estimate !== undefined) {
@@ -768,6 +774,7 @@ function normalizeLocale(
       flow: { type: manifest.engine.flow, advance: manifest.engine.advance, feedback: manifest.engine.feedback },
       scoring: { type: manifest.engine.scoring },
       checkpoint: manifest.engine.checkpoint ?? "standard",
+      startOnLoad: manifest.engine.startOnLoad ?? false,
       rewarded: {
         start: manifest.engine.rewarded?.start ?? false,
         stages: manifest.engine.rewarded?.stages ?? false,

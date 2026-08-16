@@ -185,35 +185,18 @@ for (const folder of folders) {
   }
   if (folder.name === "memory-short") {
     const categories = ["word_recall", "visual", "numbers", "working_memory", "association", "attention"];
-    const categoryCounts = Object.fromEntries(categories.map((category) => [
-      category,
-      sourceQuestions.filter((question) => question.category === category).length,
-    ]));
-    const answerPositions = [0, 1, 2, 3].map((position) => sourceQuestions.filter((question) => question.correct === position).length);
-    const studyQuestions = sourceQuestions.filter((question) => question.study);
     fail(JSON.stringify(localeFiles.sort()) === JSON.stringify(["en.json"]), `${folder.name}: Memory Short must launch in English only.`);
-    fail(config.engine?.flow === "linear", `${folder.name}: Memory Short must use one linear stage.`);
-    fail(source.progressLabel === "Complete", `${folder.name}/en.json: Memory Short must show percentage Complete instead of Round 1.`);
-    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 12, `${folder.name}/en.json: Memory Short must contain one stage of exactly 12 questions.`);
-    fail(sourceQuestions.length === 12 && new Set(sourceQuestionIds).size === 12, `${folder.name}/en.json: Memory Short needs 12 unique stable question IDs.`);
-    fail(JSON.stringify(categoryCounts) === JSON.stringify(Object.fromEntries(categories.map((category) => [category, 2]))), `${folder.name}/en.json: Memory Short needs exactly two questions in each memory category.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && Number.isInteger(question.correct)), `${folder.name}/en.json: every Memory Short question needs four choices and one correct answer.`);
-    fail(JSON.stringify(answerPositions) === JSON.stringify([3, 3, 3, 3]), `${folder.name}/en.json: Memory Short correct positions must be balanced 3/3/3/3.`);
-    fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 10, `${folder.name}: the 80% Memory Short pass line must begin at 10/12 correct.`);
-    fail(JSON.stringify(studyQuestions.map((question) => [question.id, question.study.durationMs])) === JSON.stringify([
-      ["ms-q1", 4500],
-      ["ms-q2", 3200],
-      ["ms-q3", 2800],
-      ["ms-q4", 2800],
-      ["ms-q5", 5000],
-    ]), `${folder.name}/en.json: the five first-exposure study timings must remain locked.`);
-    fail(studyQuestions.every((question) => question.study.mode === "automatic" && question.study.continueLabel === undefined), `${folder.name}/en.json: all five Memory Short study cards must advance automatically without manual controls.`);
-    fail(sourceQuestions.slice(5).every((question) => question.study === undefined), `${folder.name}/en.json: delayed recall questions must not re-expose any study material.`);
-    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must request only its start and final rewarded gates with three unavailable attempts.`);
-    fail(source.landing?.startPrompt?.button === "OK" && source.checkpoint?.finalButton === "OK", `${folder.name}/en.json: both rewarded confirmation buttons must read OK.`);
-    fail(source.landing?.startPrompt?.copy?.includes("short ad") && source.checkpoint?.finalCopy?.includes("short ad"), `${folder.name}/en.json: both rewarded confirmation screens must explain the short ad.`);
-    fail(source.checkpoint?.finalChecklist?.length === 0 && source.checkpoint?.reveals?.length === 0, `${folder.name}/en.json: the short result gate must not add checklist or reveal-unlock steps.`);
-    fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: the single-stage result must hide the redundant best-round row.`);
+    fail(config.engine?.flow === "staged", `${folder.name}: Memory Short must use the ten-round staged flow.`);
+    fail(config.engine?.startOnLoad === true, `${folder.name}: Memory Short must open directly on its first question.`);
+    fail(source.progressLabel === undefined, `${folder.name}/en.json: the ten-round format must use the standard round label.`);
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Memory Short must contain ten rounds of six questions.`);
+    fail(sourceQuestions.length === 60 && new Set(sourceQuestionIds).size === 60, `${folder.name}/en.json: Memory Short needs 60 unique stable question IDs.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && categories.includes(question.category)), `${folder.name}/en.json: every Memory Short question needs one correct answer and an approved memory category.`);
+    fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions[0]?.study?.continueLabel === "I’ve memorised them", `${folder.name}/en.json: the direct-start opening must be an untimed memory cue with an explicit ready button.`);
+    fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 48, `${folder.name}: the 80% Memory Short pass line must begin at 48/60 correct.`);
+    fail(config.engine?.rewarded?.start === false && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory Short must skip the start ad and request rewarded gates at all ten round checkpoints.`);
+    fail(source.landing?.startPrompt === undefined, `${folder.name}/en.json: direct-start Memory Short must not contain an unused landing reward prompt.`);
+    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint?.finalButton === "Reveal My Score", `${folder.name}/en.json: Memory Short needs nine continuation checkpoints and one final score gate.`);
     fail(source.results?.score?.retryLabel === "Try Again", `${folder.name}/en.json: the result must offer a Try Again action.`);
   }
   if (folder.name === "iq") {

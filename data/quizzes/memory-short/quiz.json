@@ -1,13 +1,14 @@
 {
   "slug": "memory-short",
   "engine": {
-    "flow": "linear",
+    "flow": "staged",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
-    "checkpoint": "standard",
+    "checkpoint": "ai",
+    "startOnLoad": true,
     "rewarded": {
-      "start": true,
+      "start": false,
       "stages": true,
       "attempts": 3
     },
@@ -17,7 +18,7 @@
   "listing": {
     "thumbnail": "assets/thumbnail.jpg",
     "published": "2026-08-16",
-    "duration": "3 min",
+    "duration": "8 min",
     "difficulty": "Hard",
     "icon": "🧠"
   },
