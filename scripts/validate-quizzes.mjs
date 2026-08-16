@@ -181,6 +181,11 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct)), `${folder.name}/en.json: every Memory question needs a correct index.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
     fail(config.engine?.targetRatio === 0.8, `${folder.name}: Memory targetRatio must be exactly 0.8.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory must retain its rewarded start and all ten rewarded stage gates.`);
+    fail(source.landing?.startPrompt?.eyebrow === "READY TO BEGIN" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Test Ready! 🎉" && source.landing?.startPrompt?.copy === "Watch a short ad to start the test." && source.landing?.startPrompt?.button === "OK", `${folder.name}/en.json: Memory needs the approved pre-test rewarded pop-up.`);
+    fail(source.checkpoint?.progressLabel === "Memory test progress" && source.checkpoint?.progressComplete === "{value}% complete", `${folder.name}/en.json: every Memory gate must show overall ten-stage progress.`);
+    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint.reveals.every((reveal) => typeof reveal.badge === "string" && reveal.badge.trim() && typeof reveal.icon === "string" && reveal.icon.trim()), `${folder.name}/en.json: every Memory stage needs its own complete badge and icon.`);
+    fail(new Set(source.checkpoint?.reveals?.slice(0, 9).map((reveal) => reveal.badge)).size === 9, `${folder.name}/en.json: the first nine Memory stage gates need distinct momentum badges.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "memory-short") {

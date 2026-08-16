@@ -5,7 +5,14 @@
   "landing": {
     "intro": "Think your memory is still sharp? Some challenges are easy. Some are designed to catch you out. Can you score 80%?",
     "socialProof": "81,000+ people played this",
-    "cta": "Start Test"
+    "cta": "Start Test",
+    "startPrompt": {
+      "eyebrow": "READY TO BEGIN",
+      "icon": "✓",
+      "title": "Test Ready! 🎉",
+      "copy": "Watch a short ad to start the test.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "This memory quiz uses short word, picture, number, association and attention challenges to create a playful snapshot of your recall. Across ten rounds, you may be asked to hold details in mind, recognise an earlier image, remember an order, notice a change or retrieve information after a brief distraction.\n\nThese activities touch on everyday cognitive skills such as concentration, visual memory, working memory and detail recall. The quiz is designed for anyone who enjoys brain games, memory exercises and informal cognitive challenges.\n\nYour final score shows how many answers were correct and highlights the category and round that suited you best. Performance can vary with attention, tiredness, stress, familiarity and simple chance, so the result should be treated as entertainment rather than a judgement about brain health or long-term memory ability.",
@@ -554,23 +561,25 @@
   ],
   "checkpoint": {
     "nextPrefix": "Next round",
-    "adNote": "Short ad first — then the next round starts.",
+    "progressLabel": "Memory test progress",
+    "progressComplete": "{value}% complete",
+    "adNote": "Short ad first — then the next memory step unlocks.",
     "finalBadge": "CALCULATING YOUR MEMORY RESULT",
     "finalTitle": "Your result is ready",
     "finalCopy": "One final short ad unlocks your memory score.",
     "finalButton": "Reveal My Score",
     "finalChecklist": ["Word recall", "Visual memory", "Number memory", "Working memory", "Detail recall", "Final score"],
     "reveals": [
-      { "title": "Round 1 complete ✓", "signal": "fixed", "message": "Good start. The easy ones are over." },
-      { "title": "Visual memory logged ✓", "signal": "fixed", "message": "You’re still in the running for 80%." },
-      { "title": "Number memory analysed", "signal": "score-band", "variants": { "onTrack": "Your number memory is looking strong.", "needsBoost": "The number round changed things…" } },
-      { "title": "Forty percent complete", "signal": "score-band", "variants": { "onTrack": "You’re currently tracking toward a pass.", "needsBoost": "You’ll need a stronger second half to hit 80%." } },
-      { "title": "Long-term recall added 🧠", "signal": "fixed", "message": "That round was designed to catch you out." },
-      { "title": "Your memory profile is becoming clear", "signal": "strongest-dimension", "template": "Strongest so far: {value}" },
-      { "title": "The hardest part starts now", "signal": "fixed", "message": "Eighteen questions remain." },
-      { "title": "Can you still reach 80%?", "signal": "target-status", "variants": { "achieved": "You have already secured the 80% line — now finish strongly.", "reachable": "Yes — but the final twelve matter.", "unreachable": "Let’s see how strongly you can finish." } },
-      { "title": "Six questions left", "signal": "fixed", "message": "Your final score is still hidden. One last memory challenge." },
-      { "title": "Final score calculated", "signal": "fixed", "message": "Every scored answer has been checked." }
+      { "badge": "BASELINE CAPTURED", "icon": "✓", "title": "Your first memory signal is locked", "signal": "fixed", "message": "Strong start. Now we test whether pictures stick better than words." },
+      { "badge": "VISUAL SIGNAL LOGGED", "icon": "👀", "title": "Your picture memory is mapped", "signal": "fixed", "message": "Two signals captured. Numbers and patterns are about to raise the difficulty." },
+      { "badge": "NUMBER PATTERN READ", "icon": "🔢", "title": "Your number memory has been analysed", "signal": "score-band", "variants": { "onTrack": "The pattern is looking strong. Faces and tiny details are next.", "needsBoost": "That round changed the pattern. Faces and tiny details could change it again." } },
+      { "badge": "RECALL TREND UPDATED", "icon": "⚡", "title": "Your recall trend just shifted", "signal": "score-band", "variants": { "onTrack": "You’re tracking toward the 80% line. The Memory Trap is waiting.", "needsBoost": "The second half can still transform your result. The Memory Trap is next." } },
+      { "badge": "DELAYED RECALL CHECKED", "icon": "🧠", "title": "The Memory Trap has been scored", "signal": "fixed", "message": "Halfway through—and the test is now checking what survives distraction." },
+      { "badge": "PROFILE TAKING SHAPE", "icon": "📊", "title": "Your memory profile is taking shape", "signal": "strongest-dimension", "template": "Current strongest signal: {value}. Next comes change detection." },
+      { "badge": "DIFFICULTY RISING", "icon": "🔥", "title": "Your change-detection signal is locked", "signal": "fixed", "message": "Eighteen questions remain, and Rapid Fire is about to test your instincts." },
+      { "badge": "FINAL STRETCH", "icon": "🎯", "title": "Can you still reach 80%?", "signal": "target-status", "variants": { "achieved": "You’ve secured the 80% line. Now see how high you can finish.", "reachable": "Yes—but the final twelve answers matter most.", "unreachable": "The pass line has moved out of reach, but your strongest finish is still ahead." } },
+      { "badge": "ONE ROUND LEFT", "icon": "🏁", "title": "One final memory challenge remains", "signal": "fixed", "message": "Your score is still hidden. The final six combine everything you’ve faced." },
+      { "badge": "ANALYSIS COMPLETE", "icon": "✓", "title": "Final score calculated", "signal": "fixed", "message": "Every scored answer has been checked." }
     ]
   }
 }
