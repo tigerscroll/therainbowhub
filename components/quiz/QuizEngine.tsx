@@ -579,17 +579,40 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const revealMessage = reveal?.signal === "fixed" ? reveal.message
       : reveal?.signal === "strongest-dimension" ? reveal.template?.replace("{value}", result.strongestSignal ?? "—")
         : reveal?.variants?.[revealKey];
+    const completedStageCount = completedStage + 1;
+    const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     return (
       <>
       <section className="quiz-engine__checkpoint quiz-engine__card">
-        <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : translations.results.stageComplete}</span>
-        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint?.finalIcon ?? "✦" : "✓"}</div>
+        <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : reveal?.badge ?? translations.results.stageComplete}</span>
+        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{checkpointTitle}</h2>
         {checkpointCopy ? <p>{checkpointCopy}</p> : null}
         {quiz.engine.checkpoint === "ai" && checkpoint ? (
           <div className="quiz-engine__ai-panel">
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
             <p>{revealMessage}</p>
+          </div>
+        ) : null}
+        {checkpoint?.progressLabel && checkpoint.progressComplete ? (
+          <div className="quiz-engine__checkpoint-progress">
+            <div className="quiz-engine__checkpoint-progress-copy">
+              <strong>{checkpoint.progressLabel}</strong>
+              <span>{checkpoint.progressComplete.replace("{value}", String(checkpointPercent))}</span>
+            </div>
+            <div
+              aria-label={`${completedStageCount} of ${quiz.stages.length} complete`}
+              className="quiz-engine__checkpoint-progress-track"
+              role="progressbar"
+              aria-valuemax={quiz.stages.length}
+              aria-valuemin={0}
+              aria-valuenow={completedStageCount}
+              style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}
+            >
+              {quiz.stages.map((stage, index) => (
+                <i aria-hidden="true" data-complete={index < completedStageCount ? "true" : undefined} key={stage} />
+              ))}
+            </div>
           </div>
         ) : null}
         {isFinalStage && checkpoint && checkpoint.finalChecklist.length ? (

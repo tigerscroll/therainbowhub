@@ -170,6 +170,8 @@ export type QuizTheme = {
 
 export type QuizCheckpointReveal = {
   title: string;
+  badge?: string;
+  icon?: string;
   signal: "fixed" | "trend" | "consistency" | "score-band" | "strongest-dimension" | "target-status";
   message?: string;
   template?: string;
@@ -178,6 +180,8 @@ export type QuizCheckpointReveal = {
 export type QuizCheckpointCopy = {
   nextPrefix: string;
   adNote: string;
+  progressLabel?: string;
+  progressComplete?: string;
   reveals: QuizCheckpointReveal[];
   finalBadge: string;
   finalIcon?: string;
@@ -569,6 +573,8 @@ function normalizeLocale(
     if (!Array.isArray(value.checkpoint.reveals) || value.checkpoint.reveals.length !== value.stages.length) throw new Error(`${file}: checkpoint reveals must match the stage count.`);
     value.checkpoint.reveals.forEach((reveal, index) => {
       text(reveal.title, `checkpoint.reveals[${index}].title`, file);
+      if (reveal.badge !== undefined) text(reveal.badge, `checkpoint.reveals[${index}].badge`, file);
+      if (reveal.icon !== undefined) text(reveal.icon, `checkpoint.reveals[${index}].icon`, file);
       if (!["fixed", "trend", "consistency", "score-band", "strongest-dimension", "target-status"].includes(reveal.signal)) throw new Error(`${file}: invalid checkpoint signal.`);
       if (reveal.signal === "fixed") text(reveal.message, `checkpoint.reveals[${index}].message`, file);
       else if (reveal.signal === "strongest-dimension") text(reveal.template, `checkpoint.reveals[${index}].template`, file);
@@ -578,6 +584,11 @@ function normalizeLocale(
     if (value.checkpoint.finalChecklist.length < 3 || value.checkpoint.finalChecklist.length > 8) throw new Error(`${file}: final checklist needs three to eight items.`);
     ["nextPrefix", "adNote", "finalBadge", "finalTitle", "finalCopy", "finalButton"].forEach((key) => text(value.checkpoint?.[key as keyof QuizCheckpointCopy], `checkpoint.${key}`, file));
     if (value.checkpoint.buttonIcon !== undefined) text(value.checkpoint.buttonIcon, "checkpoint.buttonIcon", file);
+    if (value.checkpoint.progressLabel !== undefined) text(value.checkpoint.progressLabel, "checkpoint.progressLabel", file);
+    if (value.checkpoint.progressComplete !== undefined) {
+      const progressComplete = text(value.checkpoint.progressComplete, "checkpoint.progressComplete", file);
+      if (!progressComplete.includes("{value}")) throw new Error(`${file}: checkpoint.progressComplete must include {value}.`);
+    }
   }
 
   const questions: QuizQuestion[] = [];

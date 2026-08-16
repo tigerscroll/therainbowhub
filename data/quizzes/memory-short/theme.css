@@ -190,7 +190,7 @@
 [data-quiz-theme="memory-short"] .quiz-engine__result-copy,
 [data-quiz-theme="memory-short"] .quiz-engine__about p { color: #5d574d; }
 [data-quiz-theme="memory-short"] .quiz-engine__ai-panel { border: 2px solid var(--memory-ink); border-radius: 3px; background: var(--memory-paper-light); box-shadow: 5px 5px 0 rgba(25,23,19,.12); }
-[data-quiz-theme="memory-short"] .quiz-engine__ai-top > span { border-radius: 0; background: var(--memory-red); }
+[data-quiz-theme="memory-short"] .quiz-engine__ai-top > span { border-radius: 50%; background: var(--memory-green); }
 [data-quiz-theme="memory-short"] .quiz-engine__ai-panel > p { color: #514b42; }
 [data-quiz-theme="memory-short"] .quiz-engine__checkpoint-next,
 [data-quiz-theme="memory-short"] .quiz-engine__checklist li,
@@ -372,7 +372,7 @@
   width: min(100%, 590px);
   margin-top: 24px;
   padding: 17px 18px;
-  border-left: 7px solid var(--memory-red);
+  border-left: 7px solid var(--memory-green);
 }
 
 [data-quiz-theme="memory-short"] .quiz-engine__checkpoint-next {
@@ -394,6 +394,33 @@
 [data-quiz-theme="memory-short"] .quiz-engine__checkpoint-next strong {
   color: var(--memory-red);
   font-size: 18px;
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress {
+  width: min(100%, 590px);
+  margin: 18px auto 20px;
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress-copy {
+  color: #6c6459;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress-copy strong {
+  color: var(--memory-ink);
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress-track i {
+  height: 9px;
+  border: 1px solid rgba(25, 23, 19, .2);
+  border-radius: 1px;
+  background: rgba(25, 23, 19, .1);
+}
+
+[data-quiz-theme="memory-short"] .quiz-engine__checkpoint-progress-track i[data-complete] {
+  border-color: var(--memory-red);
+  background: var(--memory-red);
 }
 
 [data-quiz-theme="memory-short"] .quiz-engine__checkpoint > .quiz-engine__primary,
@@ -515,7 +542,7 @@
   z-index: 0;
   inset: 0;
   content: "";
-  background: linear-gradient(105deg, transparent 34%, rgba(168,44,50,.1) 48%, transparent 62%);
+  background: linear-gradient(105deg, transparent 34%, rgba(63,118,81,.12) 48%, transparent 62%);
   transform: translateX(-110%);
   animation: memory-short-scan 2.8s ease-in-out infinite;
   pointer-events: none;

@@ -141,6 +141,12 @@
 .quiz-engine__checkpoint > p, .quiz-engine__result-copy { color: var(--quiz-muted); line-height: 1.65; }
 .quiz-engine__checkpoint-next { display: grid; gap: 4px; margin: 24px 0; padding: 16px; border-radius: var(--quiz-button-radius); background: var(--quiz-surface-raised); }
 .quiz-engine__checkpoint-next span { color: var(--quiz-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+.quiz-engine__checkpoint-progress { display: grid; gap: 10px; margin: 20px auto; }
+.quiz-engine__checkpoint-progress-copy { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--quiz-muted); font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.quiz-engine__checkpoint-progress-copy strong { color: var(--quiz-text); }
+.quiz-engine__checkpoint-progress-track { display: grid; gap: 7px; }
+.quiz-engine__checkpoint-progress-track i { height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--quiz-border) 22%, transparent); }
+.quiz-engine__checkpoint-progress-track i[data-complete] { background: var(--quiz-primary); }
 .quiz-engine__checkpoint > .quiz-engine__primary { width: 100%; margin-top: 12px; }
 .quiz-engine__checkpoint > .quiz-engine__checkpoint-ad-note { margin: 16px 0 0; }
 .quiz-engine__checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 20px 0; padding: 0; list-style: none; text-align: left; }

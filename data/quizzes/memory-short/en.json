@@ -1,20 +1,20 @@
 {
   "title": "Most Adults Can’t Score 80% On This Memory Test",
   "eyebrow": "Memory Challenge",
-  "summary": "Ten quick rounds test words, pictures, numbers, details and the tiny things you did not realise you were remembering.",
+  "summary": "Five focused rounds test words, pictures, numbers, details and the tiny things you did not realise you were remembering.",
   "landing": {
     "intro": "Think your memory is still sharp? Some challenges are easy. Some are designed to catch you out. Can you score 80%?",
     "socialProof": "81,000+ people played this",
     "cta": "Start Test"
   },
   "about": {
-    "body": "This memory quiz uses short word, picture, number, association and attention challenges to create a playful snapshot of your recall. Across ten rounds, you may be asked to hold details in mind, recognise an earlier image, remember an order, notice a change or retrieve information after a brief distraction.\n\nThese activities touch on everyday cognitive skills such as concentration, visual memory, working memory and detail recall. The quiz is designed for anyone who enjoys brain games, memory exercises and informal cognitive challenges.\n\nYour final score shows how many answers were correct and highlights the category and round that suited you best. Performance can vary with attention, tiredness, stress, familiarity and simple chance, so the result should be treated as entertainment rather than a judgement about brain health or long-term memory ability.",
+    "body": "This memory quiz uses short word, picture, number, association and attention challenges to create a playful snapshot of your recall. Across five focused rounds, you may be asked to hold details in mind, recognise an earlier image, remember an order, notice a change or retrieve information after a distraction.\n\nThese activities touch on everyday cognitive skills such as concentration, visual memory, working memory and detail recall. The quiz is designed for anyone who enjoys brain games, memory exercises and informal cognitive challenges.\n\nYour final score shows how many answers were correct and highlights the category and round that suited you best. Performance can vary with attention, tiredness, stress, familiarity and simple chance, so the result should be treated as entertainment rather than a judgement about brain health or long-term memory ability.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
         "Study each cue carefully when it appears; some details will be tested later.",
         "Choose one answer for each recall challenge before the quiz moves forward.",
-        "Complete all ten rounds to see your score, strongest memory category and best round."
+        "Complete all five rounds to see your score, strongest memory category and best round."
       ]
     },
     "disclaimer": "For entertainment and self-reflection only. This quiz is not a medical, neurological or cognitive assessment and cannot diagnose memory problems. If you are concerned about your memory or health, speak to a qualified healthcare professional."
@@ -60,12 +60,42 @@
       }
     ],
     "dimensions": [
-      { "label": "📝 Word recall", "categories": ["word_recall"] },
-      { "label": "👀 Visual memory", "categories": ["visual"] },
-      { "label": "🔢 Number recall", "categories": ["numbers"] },
-      { "label": "🧠 Working memory", "categories": ["working_memory"] },
-      { "label": "🔗 Association", "categories": ["association"] },
-      { "label": "🔍 Attention", "categories": ["attention"] }
+      {
+        "label": "📝 Word recall",
+        "categories": [
+          "word_recall"
+        ]
+      },
+      {
+        "label": "👀 Visual memory",
+        "categories": [
+          "visual"
+        ]
+      },
+      {
+        "label": "🔢 Number recall",
+        "categories": [
+          "numbers"
+        ]
+      },
+      {
+        "label": "🧠 Working memory",
+        "categories": [
+          "working_memory"
+        ]
+      },
+      {
+        "label": "🔗 Association",
+        "categories": [
+          "association"
+        ]
+      },
+      {
+        "label": "🔍 Attention",
+        "categories": [
+          "attention"
+        ]
+      }
     ],
     "score": {
       "passed": "You beat the 80% challenge! 🧠",
@@ -85,13 +115,23 @@
         {
           "id": "m-r1q1",
           "question": "Which word appeared in the list?",
-          "answers": ["KEY", "BOOK", "TREE", "CHAIR"],
-          "correct": 0,
+          "answers": [
+            "TREE",
+            "BOOK",
+            "KEY",
+            "CHAIR"
+          ],
+          "correct": 2,
           "category": "word_recall",
           "study": {
             "title": "Remember these four words",
             "instruction": "Take as long as you need, then continue when you are ready.",
-            "items": ["🍋 LEMON", "🚂 TRAIN", "💙 BLUE", "🔑 KEY"],
+            "items": [
+              "🍋 LEMON",
+              "🚂 TRAIN",
+              "💙 BLUE",
+              "🔑 KEY"
+            ],
             "durationMs": 4500,
             "mode": "manual",
             "continueLabel": "I’ve memorised them"
@@ -101,31 +141,29 @@
           "id": "m-r1q2",
           "question": "Which object was NOT shown?",
           "presentation": "icons",
-          "answers": ["Apple", "Umbrella", "Bicycle", "Guitar"],
-          "icons": ["🍎", "☂️", "🚲", "🎸"],
-          "correct": 3,
+          "answers": [
+            "Guitar",
+            "Umbrella",
+            "Bicycle",
+            "Apple"
+          ],
+          "icons": [
+            "🎸",
+            "☂️",
+            "🚲",
+            "🍎"
+          ],
+          "correct": 0,
           "category": "visual",
           "study": {
             "title": "Look carefully",
             "instruction": "These will disappear automatically.",
             "presentation": "icons",
-            "items": ["🍎", "☂️", "🚲"],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r1q3",
-          "question": "Which symbol came first?",
-          "presentation": "icons",
-          "answers": ["Moon", "Star", "Sun"],
-          "icons": ["🌙", "⭐", "☀️"],
-          "correct": 0,
-          "category": "working_memory",
-          "study": {
-            "title": "Remember the order",
-            "presentation": "icons",
-            "items": ["🌙", "⭐", "☀️"],
+            "items": [
+              "🍎",
+              "☂️",
+              "🚲"
+            ],
             "durationMs": 1800,
             "mode": "automatic"
           }
@@ -133,445 +171,826 @@
         {
           "id": "m-r1q4",
           "question": "What colour was the triangle?",
-          "answers": ["Red", "Blue", "Green", "Yellow"],
-          "correct": 2,
+          "answers": [
+            "Red",
+            "Blue",
+            "Yellow",
+            "Green"
+          ],
+          "correct": 3,
           "category": "association",
           "study": {
             "title": "Match each colour and shape",
-            "items": ["🔴 CIRCLE", "🔵 SQUARE", "🟢 TRIANGLE"],
-            "durationMs": 2000,
-            "mode": "manual",
-            "continueLabel": "Continue"
+            "items": [
+              "🔴 CIRCLE",
+              "🔵 SQUARE",
+              "🟢 TRIANGLE"
+            ],
+            "durationMs": 4000,
+            "mode": "automatic"
           }
         },
         {
           "id": "m-r1q5",
           "question": "Which drink belonged to Leo?",
-          "answers": ["Tea", "Juice", "Water", "Coffee"],
+          "answers": [
+            "Tea",
+            "Juice",
+            "Water",
+            "Coffee"
+          ],
           "correct": 1,
           "category": "association",
           "study": {
             "title": "Remember the pairings",
-            "items": ["MAYA — TEA", "LEO — JUICE", "NORA — WATER"],
-            "durationMs": 2200,
-            "mode": "manual",
-            "continueLabel": "Got it"
+            "items": [
+              "MAYA — TEA",
+              "LEO — JUICE",
+              "NORA — WATER"
+            ],
+            "durationMs": 3600,
+            "mode": "automatic"
           }
         },
         {
           "id": "m-r1q6",
           "question": "Which word described the elephant?",
-          "answers": ["Silver", "Purple", "Tiny", "Striped"],
+          "answers": [
+            "Silver",
+            "Purple",
+            "Tiny",
+            "Striped"
+          ],
           "correct": 1,
           "category": "word_recall",
           "study": {
             "title": "One strange image",
             "instruction": "Keep this somewhere in your memory.",
-            "items": ["PURPLE", "ELEPHANT"],
-            "durationMs": 2000,
-            "mode": "manual",
-            "continueLabel": "Stored"
+            "items": [
+              "PURPLE",
+              "ELEPHANT"
+            ],
+            "durationMs": 2600,
+            "mode": "automatic"
           }
-        }
-      ]
-    },
-    {
-      "title": "Picture Memory 👀",
-      "questions": [
+        },
         {
           "id": "m-r2q1",
           "question": "Which object was NOT in the picture list?",
           "presentation": "icons",
-          "answers": ["Cat", "Bicycle", "Guitar", "Apple"],
-          "icons": ["🐱", "🚲", "🎸", "🍎"],
-          "correct": 2,
+          "answers": [
+            "Cat",
+            "Bicycle",
+            "Apple",
+            "Guitar"
+          ],
+          "icons": [
+            "🐱",
+            "🚲",
+            "🍎",
+            "🎸"
+          ],
+          "correct": 3,
           "category": "visual",
           "study": {
             "title": "Remember these six things",
             "instruction": "Their order matters too.",
             "presentation": "icons",
-            "items": ["🍎", "☂️", "🚲", "🐱", "⏰", "🌳"],
-            "durationMs": 2600,
-            "mode": "manual",
-            "continueLabel": "Ready"
+            "items": [
+              "🍎",
+              "☂️",
+              "🚲",
+              "🐱",
+              "⏰",
+              "🌳"
+            ],
+            "durationMs": 4500,
+            "mode": "automatic"
           }
         },
-        { "id": "m-r2q2", "context": "From the same picture…", "question": "Which object was third?", "presentation": "icons", "answers": ["Umbrella", "Bicycle", "Cat", "Clock"], "icons": ["☂️", "🚲", "🐱", "⏰"], "correct": 1, "category": "visual" },
-        { "id": "m-r2q3", "context": "From the same picture…", "question": "What came immediately after the bicycle?", "presentation": "icons", "answers": ["Apple", "Cat", "Clock", "Tree"], "icons": ["🍎", "🐱", "⏰", "🌳"], "correct": 1, "category": "working_memory" },
-        { "id": "m-r2q4", "context": "From the same picture…", "question": "What came immediately before the clock?", "presentation": "icons", "answers": ["Cat", "Tree", "Umbrella", "Bicycle"], "icons": ["🐱", "🌳", "☂️", "🚲"], "correct": 0, "category": "working_memory" },
-        { "id": "m-r2q5", "context": "From the same picture…", "question": "Which object appeared first?", "presentation": "icons", "answers": ["Apple", "Umbrella", "Bicycle", "Tree"], "icons": ["🍎", "☂️", "🚲", "🌳"], "correct": 0, "category": "visual" },
-        { "id": "m-r2q6", "context": "From the same picture…", "question": "Which object appeared last?", "presentation": "icons", "answers": ["Clock", "Cat", "Tree", "Apple"], "icons": ["⏰", "🐱", "🌳", "🍎"], "correct": 2, "category": "visual" }
+        {
+          "id": "m-r2q2",
+          "context": "From the same picture…",
+          "question": "Which object was third?",
+          "presentation": "icons",
+          "answers": [
+            "Bicycle",
+            "Umbrella",
+            "Cat",
+            "Clock"
+          ],
+          "icons": [
+            "🚲",
+            "☂️",
+            "🐱",
+            "⏰"
+          ],
+          "correct": 0,
+          "category": "visual"
+        },
+        {
+          "id": "m-r2q3",
+          "context": "From the same picture…",
+          "question": "What came immediately after the bicycle?",
+          "presentation": "icons",
+          "answers": [
+            "Apple",
+            "Clock",
+            "Cat",
+            "Tree"
+          ],
+          "icons": [
+            "🍎",
+            "⏰",
+            "🐱",
+            "🌳"
+          ],
+          "correct": 2,
+          "category": "working_memory"
+        }
+      ]
+    },
+    {
+      "title": "Pictures & Details 👀",
+      "questions": [
+        {
+          "id": "m-r4q1",
+          "question": "Who was wearing the red hat?",
+          "answers": [
+            "Emma",
+            "Sarah",
+            "David",
+            "Marcus"
+          ],
+          "correct": 1,
+          "category": "association",
+          "study": {
+            "title": "Meet these four people",
+            "instruction": "Remember each name and detail.",
+            "items": [
+              "👩‍🦰 EMMA — GREEN SCARF",
+              "👨‍🦲 DAVID — BLUE GLASSES",
+              "👩 SARAH — RED HAT",
+              "👨 MARCUS — YELLOW COAT"
+            ],
+            "durationMs": 5200,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r4q2",
+          "question": "What colour were David’s glasses?",
+          "answers": [
+            "Red",
+            "Green",
+            "Black",
+            "Blue"
+          ],
+          "correct": 3,
+          "category": "association"
+        },
+        {
+          "id": "m-r4q4",
+          "question": "Who had the yellow coat?",
+          "answers": [
+            "Sarah",
+            "Emma",
+            "Marcus",
+            "David"
+          ],
+          "correct": 2,
+          "category": "association"
+        },
+        {
+          "id": "m-r4q5",
+          "question": "Who was wearing glasses?",
+          "answers": [
+            "David",
+            "Marcus",
+            "Sarah",
+            "Emma"
+          ],
+          "correct": 0,
+          "category": "visual"
+        },
+        {
+          "id": "m-r7q1",
+          "question": "What changed in the sequence? 🍎 🐶 🚗 ❤️ ☕ 🌙",
+          "answers": [
+            "Nothing changed",
+            "Car changed",
+            "Coffee disappeared",
+            "Star became a heart"
+          ],
+          "correct": 3,
+          "category": "visual",
+          "study": {
+            "title": "Study this row",
+            "presentation": "icons",
+            "items": [
+              "🍎",
+              "🐶",
+              "🚗",
+              "⭐",
+              "☕",
+              "🌙"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r7q3",
+          "question": "Which pair swapped places? 🟢 🔵 🔴 🟡",
+          "answers": [
+            "Blue and red",
+            "Green and red",
+            "Red and yellow",
+            "Green and blue"
+          ],
+          "correct": 0,
+          "category": "working_memory",
+          "study": {
+            "title": "Remember the colour order",
+            "items": [
+              "🟢",
+              "🔴",
+              "🔵",
+              "🟡"
+            ],
+            "durationMs": 1700,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r7q4",
+          "question": "Which letter changed? M K R T P",
+          "answers": [
+            "Second",
+            "Fourth",
+            "Third",
+            "Fifth"
+          ],
+          "correct": 1,
+          "category": "attention",
+          "study": {
+            "title": "Remember the letters",
+            "items": [
+              "M",
+              "K",
+              "R",
+              "S",
+              "P"
+            ],
+            "durationMs": 1600,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r7q5",
+          "question": "What is missing from the second row? 8 · 3 · 6 · 1",
+          "answers": [
+            "2",
+            "5",
+            "4",
+            "7"
+          ],
+          "correct": 2,
+          "category": "numbers",
+          "study": {
+            "title": "Remember five numbers",
+            "items": [
+              "8",
+              "3",
+              "4",
+              "6",
+              "1"
+            ],
+            "durationMs": 1700,
+            "mode": "automatic"
+          }
+        }
       ]
     },
     {
       "title": "Numbers & Patterns",
       "questions": [
         {
-          "id": "m-r3q1",
-          "question": "Which number did you see?",
-          "answers": ["5387", "5837", "5873", "5738"],
-          "correct": 1,
-          "category": "numbers",
-          "study": { "title": "Remember this number", "items": ["5837", "HOLD IT"], "durationMs": 1800, "mode": "automatic" }
-        },
-        {
           "id": "m-r3q2",
           "question": "Which is the same sequence backwards?",
-          "answers": ["2 – 9 – 4", "2 – 4 – 9", "9 – 2 – 4"],
+          "answers": [
+            "2 – 9 – 4",
+            "2 – 4 – 9",
+            "9 – 2 – 4"
+          ],
           "correct": 0,
           "category": "working_memory",
-          "study": { "title": "Remember the sequence", "items": ["4", "9", "2"], "durationMs": 1800, "mode": "automatic" }
+          "study": {
+            "title": "Remember the sequence",
+            "items": [
+              "4",
+              "9",
+              "2"
+            ],
+            "durationMs": 1800,
+            "mode": "automatic"
+          }
         },
-        { "id": "m-r3q3", "question": "What comes next: 3, 6, 12, 24, …?", "answers": ["30", "36", "42", "48"], "correct": 3, "category": "numbers" },
+        {
+          "id": "m-r3q3",
+          "question": "What comes next: 3, 6, 12, 24, …?",
+          "answers": [
+            "30",
+            "36",
+            "48",
+            "42"
+          ],
+          "correct": 2,
+          "category": "numbers"
+        },
         {
           "id": "m-r3q4",
           "question": "What do the two digits add up to?",
-          "answers": ["6", "7", "8", "9"],
-          "correct": 2,
+          "answers": [
+            "6",
+            "8",
+            "7",
+            "9"
+          ],
+          "correct": 1,
           "category": "working_memory",
-          "study": { "title": "Hold this number", "items": ["26", "DON’T WRITE IT DOWN"], "durationMs": 1700, "mode": "automatic" }
+          "study": {
+            "title": "Hold this number",
+            "items": [
+              "26",
+              "DON’T WRITE IT DOWN"
+            ],
+            "durationMs": 1700,
+            "mode": "automatic"
+          }
         },
         {
           "id": "m-r3q5",
           "question": "Which was the largest number?",
-          "answers": ["14", "27", "63", "81"],
+          "answers": [
+            "14",
+            "27",
+            "63",
+            "81"
+          ],
           "correct": 3,
           "category": "numbers",
-          "study": { "title": "Scan these numbers once", "items": ["81", "14", "63", "27"], "durationMs": 1900, "mode": "automatic" }
+          "study": {
+            "title": "Scan these numbers once",
+            "items": [
+              "81",
+              "14",
+              "63",
+              "27"
+            ],
+            "durationMs": 1900,
+            "mode": "automatic"
+          }
         },
         {
           "id": "m-r3q6",
           "question": "Which number was second from the end?",
-          "answers": ["2", "4", "7", "9"],
-          "correct": 3,
-          "category": "numbers",
-          "study": { "title": "Remember the order", "items": ["7", "2", "9", "4"], "durationMs": 1800, "mode": "automatic" }
-        }
-      ]
-    },
-    {
-      "title": "Faces & Details",
-      "questions": [
-        {
-          "id": "m-r4q1",
-          "question": "Who was wearing the red hat?",
-          "answers": ["Emma", "David", "Sarah", "Marcus"],
+          "answers": [
+            "2",
+            "4",
+            "9",
+            "7"
+          ],
           "correct": 2,
-          "category": "association",
+          "category": "numbers",
           "study": {
-            "title": "Meet these four people",
-            "instruction": "Remember each name and detail.",
-            "items": ["👩‍🦰 EMMA — GREEN SCARF", "👨‍🦲 DAVID — BLUE GLASSES", "👩 SARAH — RED HAT", "👨 MARCUS — YELLOW COAT"],
-            "durationMs": 3200,
-            "mode": "manual",
-            "continueLabel": "I remember them"
+            "title": "Remember the order",
+            "items": [
+              "7",
+              "2",
+              "9",
+              "4"
+            ],
+            "durationMs": 1800,
+            "mode": "automatic"
           }
         },
-        { "id": "m-r4q2", "question": "What colour were David’s glasses?", "answers": ["Blue", "Green", "Black", "Red"], "correct": 0, "category": "association" },
-        { "id": "m-r4q3", "question": "What was Emma wearing?", "answers": ["A red hat", "A green scarf", "Blue glasses", "A yellow coat"], "correct": 1, "category": "association" },
-        { "id": "m-r4q4", "question": "Who had the yellow coat?", "answers": ["Marcus", "Emma", "Sarah", "David"], "correct": 0, "category": "association" },
-        { "id": "m-r4q5", "question": "Who was wearing glasses?", "answers": ["Sarah", "Marcus", "David", "Emma"], "correct": 2, "category": "visual" },
-        { "id": "m-r4q6", "question": "Which item was green?", "answers": ["The hat", "The scarf", "The glasses", "The coat"], "correct": 1, "category": "visual" }
+        {
+          "id": "m-r5q1",
+          "question": "What completes the pattern: 2, 4, 8, 16, …?",
+          "answers": [
+            "20",
+            "32",
+            "30",
+            "24"
+          ],
+          "correct": 1,
+          "category": "working_memory",
+          "study": {
+            "title": "PAY ATTENTION",
+            "instruction": "You are going to need this later.",
+            "items": [
+              "DOG",
+              "17",
+              "YELLOW",
+              "SPOON"
+            ],
+            "durationMs": 4000,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r5q3",
+          "question": "Which is the same set in reverse order?",
+          "answers": [
+            "BLUE — CAT — 7",
+            "7 — CAT — BLUE",
+            "CAT — BLUE — 7",
+            "CAT — 7 — BLUE"
+          ],
+          "correct": 3,
+          "category": "working_memory",
+          "study": {
+            "title": "Remember this set",
+            "items": [
+              "BLUE",
+              "7",
+              "CAT"
+            ],
+            "durationMs": 1800,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r5q5",
+          "question": "Face north. Turn right, right, then left. Which way are you facing?",
+          "answers": [
+            "East",
+            "North",
+            "South",
+            "West"
+          ],
+          "correct": 0,
+          "category": "working_memory"
+        }
       ]
     },
     {
       "title": "The Memory Trap 🧠",
       "questions": [
         {
-          "id": "m-r5q1",
-          "question": "What completes the pattern: 2, 4, 8, 16, …?",
-          "answers": ["20", "24", "30", "32"],
-          "correct": 3,
-          "category": "working_memory",
-          "study": {
-            "title": "PAY ATTENTION",
-            "instruction": "You are going to need this later.",
-            "items": ["DOG", "17", "YELLOW", "SPOON"],
-            "durationMs": 2400,
-            "mode": "manual",
-            "continueLabel": "Continue"
-          }
-        },
-        { "id": "m-r5q2", "question": "What is 18 − 7?", "answers": ["9", "10", "11", "12"], "correct": 2, "category": "working_memory" },
-        {
-          "id": "m-r5q3",
-          "question": "Which is the same set in reverse order?",
-          "answers": ["CAT — 7 — BLUE", "7 — CAT — BLUE", "CAT — BLUE — 7", "BLUE — CAT — 7"],
-          "correct": 0,
-          "category": "working_memory",
-          "study": { "title": "Remember this set", "items": ["BLUE", "7", "CAT"], "durationMs": 1800, "mode": "automatic" }
-        },
-        { "id": "m-r5q4", "question": "Bonus memory check: what animal appeared near the beginning of the test?", "answers": ["Elephant", "Tiger", "Rabbit", "Dolphin"], "correct": 0, "category": "word_recall" },
-        { "id": "m-r5q5", "question": "Face north. Turn right, right, then left. Which way are you facing?", "answers": ["North", "East", "South", "West"], "correct": 1, "category": "working_memory" },
-        { "id": "m-r5q6", "question": "Which complete set appeared at the start of this round?", "answers": ["DOG — 17 — YELLOW — SPOON", "DOG — 71 — YELLOW — FORK", "CAT — 17 — BLUE — SPOON", "DOG — 17 — BLUE — SPOON"], "correct": 0, "category": "word_recall" }
-      ]
-    },
-    {
-      "title": "Would You Remember This?",
-      "questions": [
-        {
-          "id": "m-r6q1",
-          "question": "Who ordered coffee?",
-          "answers": ["James", "Lucy", "Ben"],
-          "correct": 1,
-          "category": "association",
-          "study": { "title": "Three people place an order", "items": ["JAMES — TEA", "LUCY — COFFEE", "BEN — ORANGE JUICE"], "durationMs": 2300, "mode": "manual", "continueLabel": "Order remembered" }
-        },
-        {
-          "id": "m-r6q2",
-          "question": "What time was the appointment?",
-          "answers": ["3:20 PM", "3:40 PM", "4:30 PM", "4:40 PM"],
-          "correct": 1,
-          "category": "numbers",
-          "study": { "title": "Your appointment", "items": ["TUESDAY", "3:40 PM"], "durationMs": 1800, "mode": "automatic" }
-        },
-        {
-          "id": "m-r6q3",
-          "question": "Which room is the meeting in?",
-          "answers": ["Room 12", "Room 14", "Room 21", "Room 41"],
-          "correct": 1,
-          "category": "numbers",
-          "study": { "title": "Meeting note", "items": ["FRIDAY", "ROOM 14", "10:15"], "durationMs": 2000, "mode": "automatic" }
-        },
-        {
-          "id": "m-r6q4",
-          "question": "Which item did Priya need?",
-          "answers": ["Milk", "Bread", "Batteries", "Soap"],
-          "correct": 2,
-          "category": "association",
-          "study": { "title": "A quick shopping message", "items": ["MILO — BREAD", "PRIYA — BATTERIES", "ANA — SOAP"], "durationMs": 2200, "mode": "manual", "continueLabel": "Message read" }
-        },
-        {
-          "id": "m-r6q5",
-          "question": "Which platform does the train leave from?",
-          "answers": ["4", "6", "8", "9"],
-          "correct": 2,
-          "category": "attention",
-          "study": { "title": "Travel update", "items": ["11:25", "PLATFORM 8", "ON TIME"], "durationMs": 1800, "mode": "automatic" }
-        },
-        {
-          "id": "m-r6q6",
-          "question": "Which door colour belongs to number 23?",
-          "answers": ["Green", "Blue", "Red", "Yellow"],
-          "correct": 1,
-          "category": "association",
-          "study": { "title": "Find the right house", "items": ["21 — GREEN", "23 — BLUE", "25 — RED"], "durationMs": 2000, "mode": "manual", "continueLabel": "Continue" }
-        }
-      ]
-    },
-    {
-      "title": "Spot the Change",
-      "questions": [
-        {
-          "id": "m-r7q1",
-          "question": "What changed in the sequence? 🍎 🐶 🚗 ❤️ ☕ 🌙",
-          "answers": ["Star became a heart", "Car changed", "Coffee disappeared", "Nothing changed"],
-          "correct": 0,
-          "category": "visual",
-          "study": { "title": "Study this row", "presentation": "icons", "items": ["🍎", "🐶", "🚗", "⭐", "☕", "🌙"], "durationMs": 1900, "mode": "automatic" }
-        },
-        {
-          "id": "m-r7q2",
-          "question": "Which item disappeared? 🔑 📘 🕯️ 🧤",
-          "presentation": "icons",
-          "answers": ["Key", "Book", "Clock", "Candle"],
-          "icons": ["🔑", "📘", "⏰", "🕯️"],
-          "correct": 2,
-          "category": "visual",
-          "study": { "title": "Study this set", "presentation": "icons", "items": ["🔑", "📘", "⏰", "🕯️", "🧤"], "durationMs": 1800, "mode": "automatic" }
-        },
-        {
-          "id": "m-r7q3",
-          "question": "Which pair swapped places? 🟢 🔵 🔴 🟡",
-          "answers": ["Green and red", "Blue and red", "Red and yellow", "Green and blue"],
-          "correct": 1,
-          "category": "working_memory",
-          "study": { "title": "Remember the colour order", "items": ["🟢", "🔴", "🔵", "🟡"], "durationMs": 1700, "mode": "automatic" }
-        },
-        {
-          "id": "m-r7q4",
-          "question": "Which letter changed? M K R T P",
-          "answers": ["Second", "Third", "Fourth", "Fifth"],
-          "correct": 2,
-          "category": "attention",
-          "study": { "title": "Remember the letters", "items": ["M", "K", "R", "S", "P"], "durationMs": 1600, "mode": "automatic" }
-        },
-        {
-          "id": "m-r7q5",
-          "question": "What is missing from the second row? 8 · 3 · 6 · 1",
-          "answers": ["2", "4", "5", "7"],
-          "correct": 1,
-          "category": "numbers",
-          "study": { "title": "Remember five numbers", "items": ["8", "3", "4", "6", "1"], "durationMs": 1700, "mode": "automatic" }
-        },
-        {
-          "id": "m-r7q6",
-          "question": "Which icon moved from the end to the beginning? 🐟 🐦 🐢 🐶",
-          "presentation": "icons",
-          "answers": ["Fish", "Bird", "Turtle", "Dog"],
-          "icons": ["🐟", "🐦", "🐢", "🐶"],
-          "correct": 0,
-          "category": "visual",
-          "study": { "title": "Remember the animal order", "presentation": "icons", "items": ["🐦", "🐢", "🐶", "🐟"], "durationMs": 1800, "mode": "automatic" }
-        }
-      ]
-    },
-    {
-      "title": "Rapid Fire ⚡",
-      "questions": [
-        {
-          "id": "m-r8q1",
-          "question": "What came second?",
-          "answers": ["Red", "Green", "Blue"],
-          "correct": 0,
-          "category": "visual",
-          "delay": 350,
-          "study": { "title": "DON’T OVERTHINK IT", "items": ["🔵", "🔴", "🟢"], "durationMs": 1200, "mode": "automatic" }
-        },
-        {
-          "id": "m-r8q2",
-          "question": "What was the last digit?",
-          "answers": ["4", "1", "8"],
-          "correct": 0,
-          "category": "numbers",
-          "delay": 350,
-          "study": { "title": "Remember", "items": ["814", "GO"], "durationMs": 1100, "mode": "automatic" }
-        },
-        {
-          "id": "m-r8q3",
-          "question": "Which animal appeared twice?",
-          "presentation": "icons",
-          "answers": ["Dog", "Cat", "Rabbit"],
-          "icons": ["🐶", "🐱", "🐰"],
-          "correct": 0,
-          "category": "attention",
-          "delay": 350,
-          "study": { "title": "Quick look", "presentation": "icons", "items": ["🐶", "🐱", "🐶", "🐰"], "durationMs": 1200, "mode": "automatic" }
-        },
-        {
-          "id": "m-r8q4",
-          "question": "Which letter came first?",
-          "answers": ["B", "D", "F", "H"],
-          "correct": 2,
-          "category": "word_recall",
-          "delay": 350,
-          "study": { "title": "Three letters", "items": ["F", "B", "H"], "durationMs": 1100, "mode": "automatic" }
-        },
-        {
-          "id": "m-r8q5",
-          "question": "What was in the middle?",
-          "presentation": "icons",
-          "answers": ["Leaf", "Diamond", "Flame"],
-          "icons": ["🍃", "💎", "🔥"],
-          "correct": 1,
-          "category": "visual",
-          "delay": 350,
-          "study": { "title": "Three icons", "presentation": "icons", "items": ["🍃", "💎", "🔥"], "durationMs": 1100, "mode": "automatic" }
-        },
-        {
-          "id": "m-r8q6",
-          "question": "Which number was smallest?",
-          "answers": ["3", "5", "7", "9"],
-          "correct": 0,
-          "category": "numbers",
-          "delay": 350,
-          "study": { "title": "One glance", "items": ["7", "3", "9", "5"], "durationMs": 1200, "mode": "automatic" }
-        }
-      ]
-    },
-    {
-      "title": "Be Honest… Did You Notice? 😈",
-      "questions": [
-        {
-          "id": "m-r9q1",
-          "question": "Which destination was Sarah travelling to?",
-          "answers": ["Rome", "Paris", "Madrid", "Dublin"],
-          "correct": 1,
-          "category": "attention",
-          "study": { "title": "Read this once", "items": ["Sarah bought a blue suitcase", "for her holiday to Paris."], "durationMs": 2200, "mode": "manual", "continueLabel": "Continue" }
-        },
-        { "id": "m-r9q2", "question": "What colour was Sarah’s suitcase?", "answers": ["Red", "Green", "Blue", "Black"], "correct": 2, "category": "attention" },
-        {
           "id": "m-r9q3",
           "question": "Which fruit was different?",
           "presentation": "icons",
-          "answers": ["Orange", "Apple", "Banana", "Lime"],
-          "icons": ["🍊", "🍎", "🍌", "🍋"],
-          "correct": 0,
+          "answers": [
+            "Lime",
+            "Apple",
+            "Banana",
+            "Orange"
+          ],
+          "icons": [
+            "🍋",
+            "🍎",
+            "🍌",
+            "🍊"
+          ],
+          "correct": 3,
           "category": "visual",
-          "study": { "title": "Pick the odd one out", "presentation": "icons", "items": ["🍋", "🍋", "🍊", "🍋"], "durationMs": 1600, "mode": "automatic" }
+          "study": {
+            "title": "Pick the odd one out",
+            "presentation": "icons",
+            "items": [
+              "🍋",
+              "🍋",
+              "🍊",
+              "🍋"
+            ],
+            "durationMs": 1600,
+            "mode": "automatic"
+          }
         },
-        { "id": "m-r9q4", "question": "Where was the different fruit positioned?", "answers": ["First", "Second", "Third", "Fourth"], "correct": 2, "category": "attention" },
+        {
+          "id": "m-r9q4",
+          "question": "Where was the different fruit positioned?",
+          "answers": [
+            "First",
+            "Third",
+            "Second",
+            "Fourth"
+          ],
+          "correct": 1,
+          "category": "attention"
+        },
+        {
+          "id": "m-r5q4",
+          "question": "Bonus memory check: what animal appeared near the beginning of the test?",
+          "answers": [
+            "Elephant",
+            "Tiger",
+            "Rabbit",
+            "Dolphin"
+          ],
+          "correct": 0,
+          "category": "word_recall"
+        },
+        {
+          "id": "m-r5q6",
+          "question": "Which complete set appeared earlier in the test?",
+          "answers": [
+            "CAT — 17 — BLUE — SPOON",
+            "DOG — 71 — YELLOW — FORK",
+            "DOG — 17 — YELLOW — SPOON",
+            "DOG — 17 — BLUE — SPOON"
+          ],
+          "correct": 2,
+          "category": "word_recall"
+        },
+        {
+          "id": "m-r9q1",
+          "question": "Which destination was Sarah travelling to?",
+          "answers": [
+            "Paris",
+            "Rome",
+            "Madrid",
+            "Dublin"
+          ],
+          "correct": 0,
+          "category": "attention",
+          "study": {
+            "title": "Read this once",
+            "items": [
+              "Sarah bought a blue suitcase",
+              "for her holiday to Paris."
+            ],
+            "durationMs": 4200,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r9q2",
+          "question": "What colour was Sarah’s suitcase?",
+          "answers": [
+            "Red",
+            "Green",
+            "Black",
+            "Blue"
+          ],
+          "correct": 3,
+          "category": "attention"
+        },
         {
           "id": "m-r9q5",
           "question": "What was the dog called?",
-          "answers": ["Milo", "Baxter", "Ollie", "Teddy"],
-          "correct": 1,
+          "answers": [
+            "Milo",
+            "Ollie",
+            "Baxter",
+            "Teddy"
+          ],
+          "correct": 2,
           "category": "association",
-          "study": { "title": "A tiny story", "items": ["At 7:15, Nina walked Baxter", "past the old red postbox."], "durationMs": 2200, "mode": "manual", "continueLabel": "Story read" }
+          "study": {
+            "title": "A tiny story",
+            "items": [
+              "At 7:15, Nina walked Baxter",
+              "past the old red postbox."
+            ],
+            "durationMs": 4000,
+            "mode": "automatic"
+          }
         },
-        { "id": "m-r9q6", "question": "What colour was the postbox?", "answers": ["Blue", "Green", "Red", "Yellow"], "correct": 2, "category": "attention" }
+        {
+          "id": "m-r9q6",
+          "question": "What colour was the postbox?",
+          "answers": [
+            "Blue",
+            "Red",
+            "Green",
+            "Yellow"
+          ],
+          "correct": 1,
+          "category": "attention"
+        }
       ]
     },
     {
       "title": "Final Memory Challenge 🔥",
       "questions": [
         {
+          "id": "m-r8q2",
+          "question": "What was the last digit?",
+          "answers": [
+            "8",
+            "1",
+            "4"
+          ],
+          "correct": 2,
+          "category": "numbers",
+          "delay": 350,
+          "study": {
+            "title": "Remember",
+            "items": [
+              "814",
+              "GO"
+            ],
+            "durationMs": 1100,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r8q3",
+          "question": "Which animal appeared twice?",
+          "presentation": "icons",
+          "answers": [
+            "Dog",
+            "Cat",
+            "Rabbit"
+          ],
+          "icons": [
+            "🐶",
+            "🐱",
+            "🐰"
+          ],
+          "correct": 0,
+          "category": "attention",
+          "delay": 350,
+          "study": {
+            "title": "Quick look",
+            "presentation": "icons",
+            "items": [
+              "🐶",
+              "🐱",
+              "🐶",
+              "🐰"
+            ],
+            "durationMs": 1200,
+            "mode": "automatic"
+          }
+        },
+        {
           "id": "m-r10q1",
           "question": "Which symbol completes this sequence: ▲ ● ▲ ● …?",
-          "answers": ["▲", "●", "■", "◆"],
-          "correct": 0,
+          "answers": [
+            "◆",
+            "●",
+            "■",
+            "▲"
+          ],
+          "correct": 3,
           "category": "working_memory",
           "study": {
             "title": "FINAL ROUND",
             "instruction": "Six questions stand between you and the 80% line. Remember everything here.",
-            "items": ["4", "APPLE", "🐘", "PURPLE", "29"],
-            "durationMs": 2800,
-            "mode": "manual",
-            "continueLabel": "Start final round"
+            "items": [
+              "4",
+              "APPLE",
+              "🐘",
+              "PURPLE",
+              "29"
+            ],
+            "durationMs": 5000,
+            "mode": "automatic"
           }
         },
         {
           "id": "m-r10q2",
           "question": "Which is 6 – 1 – 8 backwards?",
-          "answers": ["8 – 1 – 6", "8 – 6 – 1", "1 – 8 – 6", "6 – 8 – 1"],
-          "correct": 0,
+          "answers": [
+            "8 – 6 – 1",
+            "8 – 1 – 6",
+            "1 – 8 – 6",
+            "6 – 8 – 1"
+          ],
+          "correct": 1,
           "category": "numbers",
-          "study": { "title": "Hold this order", "items": ["6", "1", "8"], "durationMs": 1400, "mode": "automatic" }
+          "study": {
+            "title": "Hold this order",
+            "items": [
+              "6",
+              "1",
+              "8"
+            ],
+            "durationMs": 1400,
+            "mode": "automatic"
+          }
         },
-        { "id": "m-r10q3", "question": "One last surprise: what colour was the elephant from the beginning of the test?", "answers": ["Blue", "Purple", "Yellow", "Silver"], "correct": 1, "category": "word_recall" },
+        {
+          "id": "m-r10q3",
+          "question": "One last surprise: what colour was the elephant from the beginning of the test?",
+          "answers": [
+            "Blue",
+            "Purple",
+            "Yellow",
+            "Silver"
+          ],
+          "correct": 1,
+          "category": "word_recall"
+        },
         {
           "id": "m-r10q4",
           "question": "What changed? 🌙 🔑 ❤️ ☕",
-          "answers": ["Star became a heart", "Key disappeared", "Moon moved", "Coffee changed"],
-          "correct": 0,
+          "answers": [
+            "Moon moved",
+            "Key disappeared",
+            "Star became a heart",
+            "Coffee changed"
+          ],
+          "correct": 2,
           "category": "visual",
-          "study": { "title": "Final change test", "presentation": "icons", "items": ["🌙", "🔑", "⭐", "☕"], "durationMs": 1500, "mode": "automatic" }
+          "study": {
+            "title": "Final change test",
+            "presentation": "icons",
+            "items": [
+              "🌙",
+              "🔑",
+              "⭐",
+              "☕"
+            ],
+            "durationMs": 1500,
+            "mode": "automatic"
+          }
         },
-        { "id": "m-r10q5", "question": "Which number appeared in the final-round set?", "answers": ["19", "24", "29", "49"], "correct": 2, "category": "numbers" },
-        { "id": "m-r10q6", "question": "FINAL QUESTION: which complete set opened this round?", "answers": ["4 — APPLE — ELEPHANT — PURPLE — 29", "4 — APPLE — ELEPHANT — YELLOW — 29", "9 — APPLE — ELEPHANT — PURPLE — 24", "4 — PEAR — ELEPHANT — PURPLE — 29"], "correct": 0, "category": "word_recall" }
+        {
+          "id": "m-r10q5",
+          "question": "Which number appeared in the final-round set?",
+          "answers": [
+            "29",
+            "24",
+            "19",
+            "49"
+          ],
+          "correct": 0,
+          "category": "numbers"
+        },
+        {
+          "id": "m-r10q6",
+          "question": "FINAL QUESTION: which complete set opened this round?",
+          "answers": [
+            "4 — PEAR — ELEPHANT — PURPLE — 29",
+            "4 — APPLE — ELEPHANT — YELLOW — 29",
+            "9 — APPLE — ELEPHANT — PURPLE — 24",
+            "4 — APPLE — ELEPHANT — PURPLE — 29"
+          ],
+          "correct": 3,
+          "category": "word_recall"
+        }
       ]
     }
   ],
   "checkpoint": {
     "nextPrefix": "Next round",
     "adNote": "Short ad first — then you continue.",
-    "finalBadge": "FINAL MEMORY ANALYSIS",
+    "finalBadge": "FINAL AI MEMORY ANALYSIS",
     "finalTitle": "AI is calculating your memory score",
     "finalCopy": "Your answers are ready for the final check. Watch one short ad to reveal your result.",
     "finalButton": "Reveal My Score",
-    "finalChecklist": ["Word recall", "Visual memory", "Number memory", "Working memory", "Detail recall", "Final score"],
+    "finalChecklist": [
+      "Word recall",
+      "Visual memory",
+      "Number memory",
+      "Working memory",
+      "Detail recall",
+      "Final score"
+    ],
     "reveals": [
-      { "title": "First memory signal captured ✓", "signal": "fixed", "message": "Strong start — now let’s see what your visual memory holds." },
-      { "title": "Visual recall mapped ✓", "signal": "fixed", "message": "Your memory profile is beginning to take shape." },
-      { "title": "Number patterns analysed", "signal": "fixed", "message": "Those number clues are now part of your growing memory map." },
-      { "title": "Detail memory connected", "signal": "fixed", "message": "Names, colours and small details have all been added to the analysis." },
-      { "title": "Delayed recall detected 🧠", "signal": "fixed", "message": "You’ve reached the halfway point — keep trusting your first memory." },
-      { "title": "Your clearest memory signal is emerging", "signal": "strongest-dimension", "template": "Leading the way so far: {value}" },
-      { "title": "Change detection complete", "signal": "fixed", "message": "Your focus is holding — the rapid-fire round is next." },
-      { "title": "Rapid-fire memory processed ⚡", "signal": "fixed", "message": "Quick choices added a fresh layer to your memory profile." },
-      { "title": "Hidden details recovered", "signal": "fixed", "message": "One final challenge remains before your full result is calculated." },
-      { "title": "AI memory analysis in progress", "signal": "fixed", "message": "Your words, pictures, numbers and details are being combined into one final score." }
-    ]
+      {
+        "badge": "AI BASELINE CAPTURED",
+        "icon": "🧠",
+        "title": "AI recall baseline locked",
+        "signal": "fixed",
+        "message": "Your first word, object and association signals are now being compared for recall consistency."
+      },
+      {
+        "badge": "VISUAL SCAN COMPLETE",
+        "icon": "👁️",
+        "title": "AI visual fingerprint mapped",
+        "signal": "fixed",
+        "message": "Faces, colours and change-detection choices have created your visual-memory signature."
+      },
+      {
+        "badge": "PATTERN ENGINE UPDATED",
+        "icon": "🔢",
+        "title": "AI pattern engine calibrated",
+        "signal": "fixed",
+        "message": "Sequence accuracy and working-memory load are now being weighed together."
+      },
+      {
+        "badge": "DELAYED RECALL VERIFIED",
+        "icon": "🧩",
+        "title": "AI delayed-recall scan complete",
+        "signal": "fixed",
+        "message": "Your strongest details survived the distractions. One final memory stress test remains."
+      },
+      {
+        "badge": "FINAL AI MEMORY ANALYSIS",
+        "icon": "✦",
+        "title": "AI memory model complete",
+        "signal": "fixed",
+        "message": "All five memory channels are now being combined into your final score."
+      }
+    ],
+    "progressLabel": "Memory test progress",
+    "progressComplete": "{value}% complete",
+    "finalIcon": "✦"
   }
 }
