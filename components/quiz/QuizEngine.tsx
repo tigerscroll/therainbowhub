@@ -17,7 +17,7 @@ type QuizEngineProps = {
   translations: Translations;
 };
 
-type QuizScreen = "landing" | "question" | "checkpoint" | "results";
+type QuizScreen = "landing" | "question" | "checkpoint" | "stage-result" | "results";
 type SavedScreen = Exclude<QuizScreen, "landing">;
 
 type SavedProgress = {
@@ -28,6 +28,7 @@ type SavedProgress = {
   completedStage: number;
   screen: SavedScreen;
   studiedQuestions?: string[];
+  reportUnlocked?: boolean;
   updatedAt: string;
 };
 
@@ -274,7 +275,8 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!isProgressTimestampFresh(saved.updatedAt)) return null;
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
-  if (!saved.screen || !["question", "checkpoint", "results"].includes(saved.screen)) return null;
+  if (!saved.screen || !["question", "checkpoint", "stage-result", "results"].includes(saved.screen)) return null;
+  if (saved.reportUnlocked !== undefined && typeof saved.reportUnlocked !== "boolean") return null;
 
   const answers: QuizAnswers = {};
   if (saved.answers && typeof saved.answers === "object") {
@@ -296,6 +298,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [adBusy, setAdBusy] = useState(false);
   const [startPromptOpen, setStartPromptOpen] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
+  const [reportUnlocked, setReportUnlocked] = useState(false);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -307,13 +310,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   useEffect(() => {
     const hasResultReport = quiz.result.score?.insights?.details || quiz.result.estimate?.insights?.details;
-    if (screen !== "results" || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length) return;
+    if (screen !== "results" || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length || (quiz.career && !reportUnlocked)) return;
     return mountDisplayAds({
       adUnitPath: quiz.engine.resultAds.adUnitPath,
       elementIds: resultAdIds,
       sizes: quiz.engine.resultAds.sizes,
     });
-  }, [quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, resultAdIds, screen]);
+  }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -326,6 +329,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         derivedScore: quiz.engine.derivedScore,
         tieBreaks: quiz.engine.tieBreaks,
         match: quiz.engine.match,
+        career: quiz.career,
       },
       stages: quiz.stages,
       questions: quiz.questions.map((question) => [
@@ -345,6 +349,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         question.choiceWeights,
         question.category,
         question.reasoningSteps,
+        question.interactionStyle,
       ]),
       results: {
         profiles: quiz.result.profiles.map((profile) => [profile.id, profile.minRatio]),
@@ -372,6 +377,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         setQuestionIndex(saved.questionIndex);
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
+        setReportUnlocked(saved.reportUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
         window.localStorage.removeItem(storageKey);
@@ -396,10 +402,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       completedStage,
       screen,
       studiedQuestions,
+      reportUnlocked,
       updatedAt: new Date().toISOString(),
     };
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey, studiedQuestions]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => () => {
     adRequestGeneration.current += 1;
@@ -515,7 +522,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   function continueAfterCheckpoint() {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const next = () => {
-      if (isFinalStage) {
+      if (quiz.career && !isFinalStage) {
+        setScreen("stage-result");
+      } else if (isFinalStage) {
         setScreen("results");
         trackQuizEvent("QuizComplete", quiz, locale);
       } else {
@@ -524,6 +533,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     };
     if (quiz.engine.rewarded.stages) void runRewardedGate(next);
     else next();
+  }
+
+  function enterNextCareerStage() {
+    setScreen("question");
+    scrollToTop();
+  }
+
+  function unlockFullReport() {
+    void runRewardedGate(() => setReportUnlocked(true));
   }
 
   function restartQuiz() {
@@ -538,6 +556,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
+    setReportUnlocked(false);
     setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();
   }
@@ -595,6 +614,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "checkpoint") {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const checkpoint = quiz.checkpoint;
+    const careerStage = quiz.career?.stages[completedStage];
     const checkpointTitle = isFinalStage && checkpoint ? checkpoint.finalTitle : quiz.stages[completedStage];
     const checkpointCopy = isFinalStage
       ? checkpoint?.finalCopy ?? translations.results.complete
@@ -616,17 +636,21 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     return (
       <>
       <section className="quiz-engine__checkpoint quiz-engine__card" data-round={completedStage + 1}>
-        <span className="quiz-engine__eyebrow">{isFinalStage && checkpoint ? checkpoint.finalBadge : reveal?.badge ?? translations.results.stageComplete}</span>
-        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
-        <h2>{checkpointTitle}</h2>
-        {checkpointCopy ? <p>{checkpointCopy}</p> : null}
-        {quiz.engine.checkpoint === "ai" && checkpoint ? (
+        <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? (isFinalStage && checkpoint ? checkpoint.finalBadge : reveal?.badge ?? translations.results.stageComplete)}</span>
+        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
+        <h2>{careerStage?.preAdTitle ?? checkpointTitle}</h2>
+        {careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
+        {careerStage ? (
+          <ul className="quiz-engine__checklist quiz-engine__career-checklist">
+            {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
+          </ul>
+        ) : quiz.engine.checkpoint === "ai" && checkpoint ? (
           <div className="quiz-engine__ai-panel">
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
             <p>{revealMessage}</p>
           </div>
         ) : null}
-        {checkpoint?.progressLabel && checkpoint.progressComplete ? (
+        {!careerStage && checkpoint?.progressLabel && checkpoint.progressComplete ? (
           <div className="quiz-engine__checkpoint-progress">
             <div className="quiz-engine__checkpoint-progress-copy">
               <strong>{checkpoint.progressLabel}</strong>
@@ -647,12 +671,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </div>
           </div>
         ) : null}
-        {isFinalStage && checkpoint && checkpoint.finalChecklist.length ? (
+        {!careerStage && isFinalStage && checkpoint && checkpoint.finalChecklist.length ? (
           <ul className="quiz-engine__checklist">
             {checkpoint.finalChecklist.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
         ) : null}
-        {!isFinalStage ? (
+        {!careerStage && !isFinalStage ? (
           <div className="quiz-engine__checkpoint-next">
             <span>{checkpoint?.nextPrefix ?? translations.results.nextStage}</span>
             <strong>{quiz.stages[completedStage + 1]}</strong>
@@ -660,9 +684,67 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
-          {adBusy ? translations.ad.loading : checkpointButton}
+          {adBusy ? translations.ad.loading : careerStage?.preAdButton ?? checkpointButton}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
+      </section>
+      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      </>
+    );
+  }
+
+  if (screen === "stage-result" && quiz.career) {
+    const stageCopy = quiz.career.stages[completedStage];
+    const completedQuestions = quiz.questions.filter((question) => question.stage === completedStage);
+    const stageCorrect = completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
+    const stageBand = stageCorrect >= 5 ? stageCopy.resultBands.high : stageCorrect >= 3 ? stageCopy.resultBands.medium : stageCopy.resultBands.low;
+    const cleared = completedStage + 1;
+    const currentRank = [...quiz.career.ranks].reverse().find((rank) => cleared >= rank.afterStage)?.label ?? quiz.career.ranks[0].label;
+    return (
+      <>
+      <section className="quiz-engine__stage-result quiz-engine__card" data-round={cleared}>
+        <span className="quiz-engine__eyebrow">{completedStage === 0 ? quiz.career.unlockEyebrow : stageCopy.resultLabel}</span>
+        <div className="quiz-engine__stage-result-icon" aria-hidden="true">{stageCopy.resultIcon}</div>
+        <div className="quiz-engine__stage-score"><strong>{stageCorrect}</strong><span>/ {completedQuestions.length}</span></div>
+        <h2>{stageBand.title}</h2>
+        <p className="quiz-engine__stage-insight">{stageBand.insight}</p>
+
+        {completedStage === 0 ? (
+          <section className="quiz-engine__career-unlock">
+            <span>{quiz.career.unlockEyebrow}</span>
+            <h3>{quiz.career.unlockTitle}</h3>
+            <p>{quiz.career.unlockCopy}</p>
+          </section>
+        ) : null}
+
+        {stageCopy.promotion ? (
+          <section className="quiz-engine__career-promotion">
+            <span>{stageCopy.promotion.eyebrow}</span>
+            <h3>{stageCopy.promotion.title}</h3>
+            <p>{stageCopy.promotion.copy}</p>
+          </section>
+        ) : null}
+
+        <section className="quiz-engine__career-progress">
+          <div><span>{quiz.career.journeyLabel}</span><strong>{quiz.career.kitchensCleared.replace("{value}", String(cleared)).replace("{total}", String(quiz.stages.length))}</strong></div>
+          <div className="quiz-engine__career-dots" aria-label={`${cleared} of ${quiz.stages.length} kitchens cleared`}>
+            {quiz.stages.map((stage, index) => <i aria-hidden="true" data-complete={index < cleared ? "true" : undefined} key={stage} />)}
+          </div>
+          <p><span>{quiz.career.currentRank}</span><strong>{currentRank}</strong></p>
+          <div className="quiz-engine__career-ladder" aria-label={quiz.career.ranks.map((rank) => rank.label).join(", ")}>
+            {quiz.career.ranks.map((rank, index) => <span data-active={rank.label === currentRank ? "true" : undefined} key={rank.label}>{rank.label}{index < quiz.career!.ranks.length - 1 ? <i>→</i> : null}</span>)}
+          </div>
+        </section>
+
+        {stageCopy.next ? (
+          <section className="quiz-engine__career-next">
+            <span>{stageCopy.next.eyebrow}</span>
+            <h3>{stageCopy.next.title}</h3>
+            <b>{stageCopy.next.difficulty}</b>
+            <p><strong>{stageCopy.next.tagline}</strong>{stageCopy.next.copy}</p>
+            <button className="quiz-engine__primary" onClick={enterNextCareerStage} type="button">{stageCopy.next.button}</button>
+          </section>
+        ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -692,6 +774,41 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const estimatePosition = result.estimatedAge === undefined
       ? 0
       : Math.min(100, Math.max(0, ((result.estimatedAge - estimateMinimum) / estimateRange) * 100));
+    if (quiz.career && !reportUnlocked) {
+      const report = quiz.career.reportUnlock;
+      return (
+        <>
+        <section className="quiz-engine__career-final quiz-engine__card" data-round={quiz.stages.length}>
+          <span className="quiz-engine__eyebrow">{quiz.career.finalEyebrow}</span>
+          <div className="quiz-engine__result-icon" aria-hidden="true">{quiz.theme.artwork?.icon ?? quiz.cardIcon}</div>
+          <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div>
+          <h2>{result.profile.title}</h2>
+          <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy?.correctLabel}</p>
+          <section className="quiz-engine__career-complete">
+            <span>✓</span>
+            <div><small>{quiz.career.currentRank}</small><strong>{quiz.career.finalCareerTitle}</strong></div>
+          </section>
+          <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
+            <div><dt>{quiz.career.strongestLabel}</dt><dd>{result.strongestSignal}</dd></div>
+          </dl>
+          <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+          <section className="quiz-engine__report-unlock">
+            <span>{report.eyebrow}</span>
+            <h3>{report.title}</h3>
+            <p>{report.copy}</p>
+            <ul>{report.checks.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul>
+            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockFullReport} type="button">
+              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
+              {adBusy ? translations.ad.loading : report.button}
+            </button>
+            <p className="quiz-engine__checkpoint-ad-note">{report.adNote}</p>
+          </section>
+          <p className="quiz-engine__disclaimer">{scoreCopy?.disclaimer}</p>
+        </section>
+        <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+        </>
+      );
+    }
     return (
       <>
       {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
@@ -903,8 +1020,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     <>
     <section className="quiz-engine__question-shell" data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
-        <span>{quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
+        <span>{quiz.career
+          ? currentStage === 0 ? quiz.career.stages[0].difficulty : `${quiz.career.levelLabel} ${currentStage + 1} / ${quiz.stages.length}`
+          : quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
         <strong>{quiz.stages[currentStage]}</strong>
+        {quiz.career ? <em>{currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} / ${stageQuestions.length}`}</em> : null}
       </div>
       <div className="quiz-engine__progress">
         <i style={{ width: `${progress}%` }} />

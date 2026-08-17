@@ -81,6 +81,60 @@ export type QuizEngineConfig = {
   match?: QuizMatchConfig;
 };
 
+export type QuizCareerResultBand = {
+  title: string;
+  insight: string;
+};
+
+export type QuizCareerStageCopy = {
+  difficulty: string;
+  preAdBadge: string;
+  preAdTitle: string;
+  preAdCopy: string;
+  preAdChecks: string[];
+  preAdButton: string;
+  resultIcon: string;
+  resultLabel: string;
+  resultBands: {
+    high: QuizCareerResultBand;
+    medium: QuizCareerResultBand;
+    low: QuizCareerResultBand;
+  };
+  promotion?: { eyebrow: string; title: string; copy: string };
+  next?: {
+    eyebrow: string;
+    title: string;
+    difficulty: string;
+    tagline: string;
+    copy: string;
+    button: string;
+  };
+};
+
+export type QuizCareerCopy = {
+  levelLabel: string;
+  scoreSuffix: string;
+  journeyLabel: string;
+  kitchensCleared: string;
+  currentRank: string;
+  ranks: Array<{ afterStage: number; label: string }>;
+  unlockEyebrow: string;
+  unlockTitle: string;
+  unlockCopy: string;
+  finalEyebrow: string;
+  finalCareerTitle: string;
+  strongestLabel: string;
+  stages: QuizCareerStageCopy[];
+  reportUnlock: {
+    eyebrow: string;
+    title: string;
+    copy: string;
+    checks: string[];
+    button: string;
+    adNote: string;
+  };
+};
+
 export type QuizQuestion = {
   id: string;
   type: "single-choice";
@@ -101,6 +155,7 @@ export type QuizQuestion = {
   explanation?: string;
   category?: string;
   reasoningSteps?: number;
+  interactionStyle?: string;
   stage: number;
 };
 
@@ -294,6 +349,7 @@ export type Quiz = {
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
+  career?: QuizCareerCopy;
   result: QuizResultConfig & { score?: QuizScoreResultCopy; match?: QuizMatchResultCopy };
   questions: QuizQuestion[];
 };
@@ -338,6 +394,7 @@ type QuizLocaleFile = {
     howToPlay?: { title: string; steps: string[] };
   };
   checkpoint?: QuizCheckpointCopy;
+  career?: QuizCareerCopy;
   results: {
     name: string;
     profiles: Array<{
@@ -386,6 +443,7 @@ type QuizLocaleFile = {
       explanation?: string;
       category?: string;
       reasoningSteps?: number;
+      interactionStyle?: string;
     }>;
   }>;
 };
@@ -651,6 +709,34 @@ function normalizeLocale(
       if (!progressComplete.includes("{value}")) throw new Error(`${file}: checkpoint.progressComplete must include {value}.`);
     }
   }
+  if (value.career) {
+    const career = value.career;
+    (["levelLabel", "scoreSuffix", "journeyLabel", "kitchensCleared", "currentRank", "unlockEyebrow", "unlockTitle", "unlockCopy", "finalEyebrow", "finalCareerTitle", "strongestLabel"] as const)
+      .forEach((key) => text(career[key], `career.${key}`, file));
+    if (!Array.isArray(career.ranks) || career.ranks.length < 2) throw new Error(`${file}: career.ranks needs at least two ranks.`);
+    career.ranks.forEach((rank, index) => {
+      if (!Number.isInteger(rank.afterStage) || rank.afterStage < 0 || rank.afterStage > value.stages.length) throw new Error(`${file}: career.ranks[${index}].afterStage is invalid.`);
+      text(rank.label, `career.ranks[${index}].label`, file);
+    });
+    if (!Array.isArray(career.stages) || career.stages.length !== value.stages.length) throw new Error(`${file}: career stages must match quiz stages.`);
+    career.stages.forEach((stage, index) => {
+      (["difficulty", "preAdBadge", "preAdTitle", "preAdCopy", "preAdButton", "resultIcon", "resultLabel"] as const)
+        .forEach((key) => text(stage[key], `career.stages[${index}].${key}`, file));
+      const checks = strings(stage.preAdChecks, `career.stages[${index}].preAdChecks`, file);
+      if (checks.length < 2 || checks.length > 4) throw new Error(`${file}: career stage ${index + 1} needs two to four checks.`);
+      (["high", "medium", "low"] as const).forEach((band) => {
+        text(stage.resultBands?.[band]?.title, `career.stages[${index}].resultBands.${band}.title`, file);
+        text(stage.resultBands?.[band]?.insight, `career.stages[${index}].resultBands.${band}.insight`, file);
+      });
+      if (stage.promotion) (["eyebrow", "title", "copy"] as const).forEach((key) => text(stage.promotion?.[key], `career.stages[${index}].promotion.${key}`, file));
+      if (index < value.stages.length - 1 && !stage.next) throw new Error(`${file}: career stage ${index + 1} needs a next-stage teaser.`);
+      if (stage.next) (["eyebrow", "title", "difficulty", "tagline", "copy", "button"] as const).forEach((key) => text(stage.next?.[key], `career.stages[${index}].next.${key}`, file));
+    });
+    (["eyebrow", "title", "copy", "button", "adNote"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));
+    const reportChecks = strings(career.reportUnlock?.checks, "career.reportUnlock.checks", file);
+    if (reportChecks.length < 3 || reportChecks.length > 6) throw new Error(`${file}: career.reportUnlock.checks needs three to six items.`);
+    if (manifest.engine.flow !== "staged" || manifest.engine.scoring !== "correct-answer" || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged, scored quiz with rewarded stage results.`);
+  }
 
   const questions: QuizQuestion[] = [];
   const questionIds = new Set<string>();
@@ -741,6 +827,7 @@ function normalizeLocale(
       if (rawQuestion.calibration && (rawQuestion.calibration.length !== choices.length || rawQuestion.calibration.some((item) => typeof item !== "number" || item < -1 || item > 1))) throw new Error(`${file}: question ${index + 1} calibration values must match answers and be between -1 and 1.`);
       if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 600)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 600.`);
       if (rawQuestion.reasoningSteps !== undefined && (!Number.isInteger(rawQuestion.reasoningSteps) || rawQuestion.reasoningSteps < 1 || rawQuestion.reasoningSteps > 4)) throw new Error(`${file}: question ${index + 1} reasoningSteps must be between one and four.`);
+      if (rawQuestion.interactionStyle !== undefined) text(rawQuestion.interactionStyle, `questions[${index}].interactionStyle`, file);
       const id = rawQuestion.id === undefined
         ? `q-${index + 1}`
         : text(rawQuestion.id, `questions[${index}].id`, file);
@@ -766,6 +853,7 @@ function normalizeLocale(
         explanation: rawQuestion.explanation,
         category: rawQuestion.category,
         reasoningSteps: rawQuestion.reasoningSteps,
+        interactionStyle: rawQuestion.interactionStyle,
         stage: stageIndex,
       });
     });
@@ -934,6 +1022,7 @@ function normalizeLocale(
     stages: value.stages.map((stage) => stage.title),
     stageEncouragement,
     checkpoint: value.checkpoint,
+    career: value.career,
     result: {
       profileName: text(value.results.name, "results.name", file),
       profiles,
