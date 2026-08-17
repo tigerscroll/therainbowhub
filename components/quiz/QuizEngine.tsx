@@ -10,6 +10,11 @@ import { getStageCompletionPercentage } from "./engineState";
 import { mountDisplayAds, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
+import {
+  nextResultRecommendation,
+  supportsResultRecommendation,
+  type ResultRecommendation,
+} from "./resultRecommendations";
 
 type QuizEngineProps = {
   locale: SupportedLocale;
@@ -278,6 +283,31 @@ function ResultDisplayAd({ elementId }: { elementId: string }) {
   );
 }
 
+function NextQuizRecommendation({ currentSlug, recommendation }: { currentSlug: string; recommendation: ResultRecommendation }) {
+  const href = `/${recommendation.slug}`;
+
+  function trackClick() {
+    window.fbq?.("trackCustom", "QuizRecommendationClick", {
+      quiz_slug: currentSlug,
+      recommended_quiz_slug: recommendation.slug,
+    });
+  }
+
+  return (
+    <a className="quiz-engine__next-quiz" data-sticky-visible href={href} onClick={trackClick}>
+      <img alt="" decoding="async" src={recommendation.thumbnail} />
+      <div>
+        <span className="quiz-engine__next-quiz-eyebrow">YOUR NEXT CHALLENGE</span>
+        <h3>{recommendation.title}</h3>
+        <p>{recommendation.summary}</p>
+        <span className="quiz-engine__next-quiz-cta">
+          {recommendation.cta}<b aria-hidden="true">→</b>
+        </span>
+      </div>
+    </a>
+  );
+}
+
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
@@ -309,6 +339,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [startPromptOpen, setStartPromptOpen] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [reportUnlocked, setReportUnlocked] = useState(false);
+  const [resultRecommendation, setResultRecommendation] = useState<ResultRecommendation>();
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -327,6 +358,25 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       sizes: quiz.engine.resultAds.sizes,
     });
   }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, screen]);
+
+  useEffect(() => {
+    if (screen !== "results" || locale !== "en" || !supportsResultRecommendation(quiz.slug)) {
+      setResultRecommendation(undefined);
+      return;
+    }
+
+    const storageKey = `rainbowhub:result-recommendation:v1:${quiz.slug}`;
+    let previousSlug: string | null = null;
+    try { previousSlug = window.localStorage.getItem(storageKey); } catch { /* Rotation still works if storage is blocked. */ }
+    const recommendation = nextResultRecommendation(quiz.slug, previousSlug);
+    setResultRecommendation(recommendation);
+    if (!recommendation) return;
+    try { window.localStorage.setItem(storageKey, recommendation.slug); } catch { /* Rotation remains deterministic without storage. */ }
+    window.fbq?.("trackCustom", "QuizRecommendationImpression", {
+      quiz_slug: quiz.slug,
+      recommended_quiz_slug: recommendation.slug,
+    });
+  }, [locale, quiz.slug, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -1042,10 +1092,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}
-        <button className={`quiz-engine__secondary${scoreCopy?.retryLabel ? " quiz-engine__retry" : ""}`} onClick={restartQuiz} type="button">
-          {scoreCopy?.retryLabel ?? translations.quiz.restartTest}
-        </button>
       </section>
+      {resultRecommendation ? <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} /> : null}
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
