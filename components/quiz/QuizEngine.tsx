@@ -729,7 +729,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <span className="quiz-engine__eyebrow">{hasDerivedScore ? scoreCopy?.derivedLabel : estimate?.eyebrow ?? quiz.result.profileName}</span>
         {matchCopy ? <div className="quiz-engine__match-name">{result.profile.title}</div> : null}
         {result.estimatedAge !== undefined ? <div className="quiz-engine__result-age"><strong>{result.estimatedAge}</strong><span>{estimate?.ageSuffix}</span></div> : null}
-        {hasDerivedScore ? <div className="quiz-engine__result-derived"><strong>{result.derivedScore}</strong></div> : matchCopy ? null : scoreCopy?.showPercentage !== false ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
+        {hasDerivedScore ? <div className="quiz-engine__result-derived"><strong>{result.derivedScore}</strong></div> : matchCopy ? null : scoreCopy && scoreCopy.showPercentage !== false ? <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div> : null}
         <h2>{matchCopy ? result.profile.tier : hasDerivedScore ? result.profile.title : scoreCopy ? (result.targetStatus === "achieved" ? scoreCopy.passed : scoreCopy.finished) : result.profile.title}</h2>
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
@@ -745,7 +745,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {resultAds && scoreInsights ? (
-          <section className="quiz-engine__result-metrics">
+          <section className="quiz-engine__result-metrics quiz-engine__result-metrics--estimate">
             <h3>{scoreInsights.overview}</h3>
             <div>
               <article><strong>{result.score}</strong><span>{scoreInsights.correct}</span></article>

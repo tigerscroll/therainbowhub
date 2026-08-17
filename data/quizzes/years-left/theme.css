@@ -196,6 +196,35 @@
 [data-quiz-theme="years-left"] .quiz-engine__result-signals dd { color: #fff4d6; }
 [data-quiz-theme="years-left"] .quiz-engine__disclaimer { border-color: rgba(214,166,90,.42); background: rgba(214,166,90,.09); color: #e3d7bd; }
 
+/* The extended report uses pale editorial panels inside the dark result shell. */
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-roadmap,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-metrics,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-analysis,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-position,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-measured,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-takeaway,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-tips,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-final-summary {
+  color: #18161d;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads :is(
+  .quiz-engine__result-roadmap,
+  .quiz-engine__result-metrics,
+  .quiz-engine__result-analysis,
+  .quiz-engine__result-position,
+  .quiz-engine__result-measured,
+  .quiz-engine__result-takeaway,
+  .quiz-engine__result-tips,
+  .quiz-engine__result-final-summary
+) :is(h3, h4) { color: #18161d; }
+
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-roadmap li,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-takeaway .quiz-engine__result-copy { color: #4b433a; }
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-metrics article strong,
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-final-summary > strong { color: #71491f; }
+[data-quiz-theme="years-left"] .quiz-engine__results--with-ads .quiz-engine__result-final-summary .quiz-engine__eyebrow { color: #765027; }
+
 /* Animated AI analysis card shown after every six-question stage. */
 [data-quiz-theme="years-left"] .quiz-engine__ai-panel {
   z-index: 1;
