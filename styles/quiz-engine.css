@@ -32,7 +32,9 @@
 }
 .quiz-engine__display-ad-frame {
   display: grid;
-  width: 336px;
+  width: 100% !important;
+  max-width: none;
+  min-width: 300px;
   min-height: 280px;
   place-items: center;
 }
@@ -318,7 +320,7 @@
 
 @media (max-width: 359px) {
   .quiz-engine__display-ad-row { min-height: 286px; padding-block: 18px; }
-  .quiz-engine__display-ad-frame { width: 300px; min-height: 250px; }
+  .quiz-engine__display-ad-frame { min-height: 250px; }
 }
 
 @media (max-width: 820px) {

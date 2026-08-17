@@ -32,6 +32,7 @@ type GoogleTag = {
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
+  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
   sizeMapping?: () => SizeMappingBuilder;
 };
 
@@ -73,6 +74,11 @@ export function mountDisplayAds({
     const googletag = window.googletag;
     const pubads = googletag?.pubads?.();
     if (!googletag?.defineSlot || !googletag.display || !pubads) return;
+
+    // Keep the configured sizes as the base inventory request while allowing
+    // eligible Ad Manager/Ad Exchange mobile-web demand to expand toward the
+    // full device width. Server-side format rules still determine eligibility.
+    googletag.setConfig?.({ adExpansion: { enabled: true } });
 
     const mapping = googletag.sizeMapping?.()
       .addSize([0, 0], [[300, 250]])
