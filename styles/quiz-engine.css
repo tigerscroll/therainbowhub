@@ -41,13 +41,16 @@
   place-items: center;
 }
 .quiz-engine__display-ad-row--inline {
-  width: min(100%, 336px);
+  position: relative;
+  left: 50%;
+  width: min(336px, calc(100vw - 12px));
   min-height: 280px;
-  margin: clamp(24px, 5vw, 38px) auto;
+  margin: clamp(24px, 5vw, 38px) 0;
   padding: 0;
   overflow: visible;
   border: 0;
   background: transparent;
+  transform: translateX(-50%);
 }
 .quiz-theme[data-quiz-theme] .quiz-engine__results--with-ads.quiz-engine__card {
   width: 100vw !important;
