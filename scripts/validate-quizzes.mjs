@@ -199,6 +199,12 @@ for (const folder of folders) {
     fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 8, `${folder.name}: the 80% Memory pass line must begin at 8/10 correct.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory must request exactly one start gate and one result-unlock gate.`);
     fail(config.engine?.resultAds?.adUnitPath === "/22677279144/display" && config.engine?.resultAds?.count === 5 && JSON.stringify(config.engine?.resultAds?.sizes) === JSON.stringify([[336, 280], [300, 250]]), `${folder.name}: Memory results must use five approved full-width display placements with 336x280 and 300x250 creatives.`);
+    const resultDetails = source.results?.score?.insights?.details;
+    fail(Boolean(resultDetails) && resultDetails.roadmapItems?.length === 4 && resultDetails.measuredAreas?.length === 3 && resultDetails.tips?.length === 3, `${folder.name}/en.json: English Memory needs the complete long-form five-ad result report.`);
+    localeFiles.filter((file) => file !== "en.json").forEach((file) => {
+      const locale = read(path.join(directory, file));
+      fail(locale?.results?.score?.insights === undefined, `${folder.name}/${file}: the expanded result report must remain English-only.`);
+    });
     fail(source.landing?.startPrompt?.eyebrow === "READY TO BEGIN" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Test Ready! 🎉" && source.landing?.startPrompt?.copy === "Watch a short ad to start the test." && source.landing?.startPrompt?.button === "OK", `${folder.name}/en.json: Memory needs the approved pre-test rewarded pop-up.`);
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, `${folder.name}/en.json: Memory must have one clean final checkpoint without redundant progress.`);
     fail(source.checkpoint?.finalTitle === "Your result is ready" && source.checkpoint?.finalCopy === "One final short ad unlocks your memory score." && source.checkpoint?.finalButton === "See My Results", `${folder.name}/en.json: Memory needs the approved final rewarded result gate.`);

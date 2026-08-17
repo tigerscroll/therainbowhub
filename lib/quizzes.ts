@@ -225,6 +225,23 @@ export type QuizScoreResultCopy = {
     target: string;
     breakdown: string;
     snapshot: string;
+    targetReached?: string;
+    targetRemaining?: string;
+    details?: {
+      analysisTitle: string;
+      analysisCopy: string;
+      roadmapTitle: string;
+      roadmapIntro: string;
+      roadmapItems: string[];
+      positionTitle: string;
+      positionCopy: string;
+      measuredTitle: string;
+      measuredIntro: string;
+      measuredAreas: Array<{ title: string; copy: string }>;
+      tipsTitle: string;
+      tipsIntro: string;
+      tips: Array<{ title: string; copy: string }>;
+    };
   };
 };
 export type QuizMatchResultCopy = {
@@ -807,6 +824,21 @@ function normalizeLocale(
     if (value.results.score.insights !== undefined) {
       (["overview", "correct", "missed", "target", "breakdown", "snapshot"] as const)
         .forEach((key) => text(value.results.score?.insights?.[key], `results.score.insights.${key}`, file));
+      if (value.results.score.insights.targetReached !== undefined) text(value.results.score.insights.targetReached, "results.score.insights.targetReached", file);
+      if (value.results.score.insights.targetRemaining !== undefined) text(value.results.score.insights.targetRemaining, "results.score.insights.targetRemaining", file);
+      if (value.results.score.insights.details !== undefined) {
+        const details = value.results.score.insights.details;
+        (["analysisTitle", "analysisCopy", "roadmapTitle", "roadmapIntro", "positionTitle", "positionCopy", "measuredTitle", "measuredIntro", "tipsTitle", "tipsIntro"] as const)
+          .forEach((key) => text(details[key], `results.score.insights.details.${key}`, file));
+        const roadmapItems = strings(details.roadmapItems, "results.score.insights.details.roadmapItems", file);
+        if (roadmapItems.length !== 4) throw new Error(`${file}: results.score.insights.details.roadmapItems needs exactly four items.`);
+        if (!Array.isArray(details.measuredAreas) || details.measuredAreas.length !== 3) throw new Error(`${file}: results.score.insights.details.measuredAreas needs exactly three items.`);
+        if (!Array.isArray(details.tips) || details.tips.length !== 3) throw new Error(`${file}: results.score.insights.details.tips needs exactly three items.`);
+        [...details.measuredAreas, ...details.tips].forEach((item, index) => {
+          text(item.title, `results.score.insights.details.items[${index}].title`, file);
+          text(item.copy, `results.score.insights.details.items[${index}].copy`, file);
+        });
+      }
     }
   }
   if (value.about?.howToPlay) {

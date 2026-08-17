@@ -302,13 +302,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   );
 
   useEffect(() => {
-    if (screen !== "results" || !quiz.engine.resultAds || !resultAdIds.length) return;
+    if (screen !== "results" || !quiz.engine.resultAds || !quiz.result.score?.insights?.details || !resultAdIds.length) return;
     return mountDisplayAds({
       adUnitPath: quiz.engine.resultAds.adUnitPath,
       elementIds: resultAdIds,
       sizes: quiz.engine.resultAds.sizes,
     });
-  }, [quiz.engine.resultAds, resultAdIds, screen]);
+  }, [quiz.engine.resultAds, quiz.result.score?.insights?.details, resultAdIds, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -673,7 +673,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
     const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
-    const resultAds = quiz.engine.resultAds && resultAdIds.length === 5;
+    const scoreInsights = scoreCopy?.insights;
+    const scoreDetails = scoreInsights?.details;
+    const resultAds = quiz.engine.resultAds && scoreDetails && resultAdIds.length === 5;
+    const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
+    const targetRemaining = Math.max(0, targetCorrect - result.score);
     return (
       <>
       {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
@@ -716,15 +720,33 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
+        {resultAds ? (
+          <section className="quiz-engine__result-roadmap">
+            <h3>{scoreDetails.roadmapTitle}</h3>
+            <p>{scoreDetails.roadmapIntro}</p>
+            <ol>
+              {scoreDetails.roadmapItems.map((item, index) => <li key={item}><span>{index + 1}</span>{item}</li>)}
+            </ol>
+          </section>
+        ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
-        {resultAds && scoreCopy?.insights ? (
+        {resultAds && scoreInsights ? (
           <section className="quiz-engine__result-metrics">
-            <h3>{scoreCopy.insights.overview}</h3>
+            <h3>{scoreInsights.overview}</h3>
             <div>
-              <article><strong>{result.score}</strong><span>{scoreCopy.insights.correct}</span></article>
-              <article><strong>{result.total - result.score}</strong><span>{scoreCopy.insights.missed}</span></article>
-              <article><strong>{Math.ceil(result.total * (quiz.engine.targetRatio ?? .8))}</strong><span>{scoreCopy.insights.target}</span></article>
+              <article><strong>{result.score}</strong><span>{scoreInsights.correct}</span></article>
+              <article><strong>{result.total - result.score}</strong><span>{scoreInsights.missed}</span></article>
+              <article>
+                <strong>{targetRemaining ? targetRemaining : "✓"}</strong>
+                <span>{targetRemaining ? scoreInsights.targetRemaining ?? scoreInsights.target : scoreInsights.targetReached ?? scoreInsights.target}</span>
+              </article>
             </div>
+          </section>
+        ) : null}
+        {resultAds ? (
+          <section className="quiz-engine__result-analysis">
+            <h3>{scoreDetails.analysisTitle}</h3>
+            <p>{scoreDetails.analysisCopy}</p>
           </section>
         ) : null}
         {estimate ? (
@@ -751,6 +773,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
+        {resultAds ? (
+          <section className="quiz-engine__result-position">
+            <h3>{scoreDetails.positionTitle}</h3>
+            <p>{scoreDetails.positionCopy}</p>
+            <div className="quiz-engine__result-position-track">
+              <i style={{ width: `${result.percentage}%` }} />
+              <b style={{ left: `${Math.min(96, Math.max(4, result.percentage))}%` }}>{result.percentage}%</b>
+              <em style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }} />
+            </div>
+            <div className="quiz-engine__result-position-labels"><span>0%</span><span>50%</span><strong style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }}>{targetCorrect}/{result.total}</strong><span>100%</span></div>
+          </section>
+        ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
@@ -764,7 +798,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         </div> : null}
         {!estimate && Object.keys(result.dimensionScores).length ? (
           <div className="quiz-engine__dimensions">
-            {resultAds && scoreCopy?.insights ? <h3>{scoreCopy.insights.breakdown}</h3> : null}
+            {resultAds && scoreInsights ? <h3>{scoreInsights.breakdown}</h3> : null}
             {Object.entries(result.dimensionScores).map(([label, value]) => (
               <div className="quiz-engine__dimension" key={label}>
                 <div><span>{label}</span><strong>{value}%</strong></div>
@@ -774,13 +808,35 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
-        {resultAds && scoreCopy?.insights ? (
+        {resultAds ? (
+          <section className="quiz-engine__result-measured">
+            <h3>{scoreDetails.measuredTitle}</h3>
+            <p>{scoreDetails.measuredIntro}</p>
+            <div>
+              {scoreDetails.measuredAreas.map((item, index) => (
+                <article key={item.title}><span>{index + 1}</span><h4>{item.title}</h4><p>{item.copy}</p></article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+        {resultAds && scoreInsights ? (
           <section className="quiz-engine__result-takeaway">
-            <h3>{scoreCopy.insights.snapshot}</h3>
+            <h3>{scoreInsights.snapshot}</h3>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[4]} /> : null}
+        {resultAds ? (
+          <section className="quiz-engine__result-tips">
+            <h3>{scoreDetails.tipsTitle}</h3>
+            <p>{scoreDetails.tipsIntro}</p>
+            <div>
+              {scoreDetails.tips.map((item, index) => (
+                <article key={item.title}><span>{index + 1}</span><div><h4>{item.title}</h4><p>{item.copy}</p></div></article>
+              ))}
+            </div>
+          </section>
+        ) : null}
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}

@@ -15,6 +15,8 @@ type RewardedEvent = {
 
 type PubAds = {
   addEventListener(name: string, listener: (event: RewardedEvent) => void): void;
+  collapseEmptyDivs?: (collapseBeforeAdFetch?: boolean) => boolean;
+  removeEventListener?: (name: string, listener: (event: RewardedEvent) => void) => void;
   updateCorrelator?: () => void;
 };
 
@@ -32,7 +34,14 @@ type GoogleTag = {
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
-  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
+  setConfig?: (config: {
+    adExpansion?: { enabled: boolean };
+    lazyLoad?: {
+      fetchMarginPercent?: number;
+      mobileScaling?: number;
+      renderMarginPercent?: number;
+    };
+  }) => void;
   sizeMapping?: () => SizeMappingBuilder;
 };
 
@@ -68,17 +77,29 @@ export function mountDisplayAds({
 }) {
   let cancelled = false;
   const slots: GptSlot[] = [];
+  const slotElements = new Map<GptSlot, string>();
+  let displayPubAds: PubAds | undefined;
+  let renderListener: ((event: RewardedEvent) => void) | undefined;
   window.googletag = window.googletag ?? { cmd: [] };
   window.googletag.cmd.push(() => {
     if (cancelled) return;
     const googletag = window.googletag;
     const pubads = googletag?.pubads?.();
     if (!googletag?.defineSlot || !googletag.display || !pubads) return;
+    displayPubAds = pubads;
 
     // Keep the configured sizes as the base inventory request while allowing
     // eligible Ad Manager/Ad Exchange mobile-web demand to expand toward the
     // full device width. Server-side format rules still determine eligibility.
-    googletag.setConfig?.({ adExpansion: { enabled: true } });
+    googletag.setConfig?.({
+      adExpansion: { enabled: true },
+      lazyLoad: {
+        fetchMarginPercent: 200,
+        renderMarginPercent: 100,
+        mobileScaling: 1.5,
+      },
+    });
+    pubads.collapseEmptyDivs?.(true);
 
     const mapping = googletag.sizeMapping?.()
       .addSize([0, 0], [[300, 250]])
@@ -89,9 +110,19 @@ export function mountDisplayAds({
       const slot = googletag.defineSlot?.(adUnitPath, sizes.map(([width, height]) => [width, height]), elementId);
       if (!slot) return;
       if (mapping) slot.defineSizeMapping?.(mapping);
+      slotElements.set(slot, elementId);
       slots.push(slot.addService(pubads));
     });
     if (!slots.length || cancelled) return;
+    renderListener = (event) => {
+      const elementId = slotElements.get(event.slot);
+      if (!elementId) return;
+      const row = document.getElementById(elementId)?.closest<HTMLElement>(".quiz-engine__display-ad-row");
+      if (!row) return;
+      if (event.isEmpty) row.dataset.adEmpty = "true";
+      else delete row.dataset.adEmpty;
+    };
+    pubads.addEventListener("slotRenderEnded", renderListener);
     if (!servicesEnabled) {
       googletag.enableServices?.();
       servicesEnabled = true;
@@ -101,6 +132,7 @@ export function mountDisplayAds({
 
   return () => {
     cancelled = true;
+    if (displayPubAds && renderListener) displayPubAds.removeEventListener?.("slotRenderEnded", renderListener);
     if (slots.length) {
       try { window.googletag?.destroySlots?.(slots); } catch { /* GPT cleanup is best effort. */ }
     }
