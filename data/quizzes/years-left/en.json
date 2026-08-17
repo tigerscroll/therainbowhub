@@ -1,6 +1,6 @@
 {
   "title": "How Many Years Do You Have Left?",
-  "summary": "A cheeky personality quiz that turns your habits, energy, stress style, and daily choices into a playful years-left vibe.",
+  "summary": "Routine, food, movement, sleep, stress and recovery shape a playful AI lifestyle prediction.",
   "landing": {
     "intro": "Answer these questions and AI will predict how long you have left to live.",
     "socialProof": "82,000+ people tried it this week",
@@ -14,16 +14,16 @@
     }
   },
   "about": {
-    "body": "This quiz uses everyday lifestyle clues—including routine, food, movement, sleep, stress, social energy, curiosity and small brain teasers—to create a playful personality-style result. The questions touch on familiar health and wellbeing themes such as nutrition, physical activity, recovery, healthy habits, mental wellbeing, social connection and attitudes towards healthy ageing.\n\nYour choices are combined with a short memory and reasoning check to produce an entertainment estimate and a lifestyle profile, with deliberately restrained scoring so one answer cannot dominate the outcome. It can be a light-hearted prompt for self-reflection about daily routines and wellness priorities.\n\nThe quiz does not use medical records, clinical research, family history, current age, healthcare data or an individual risk assessment. The displayed estimate is a quiz mechanic based only on the answers selected during this session.",
+    "body": "This quick quiz uses familiar lifestyle clues—including routine, food, movement, sleep, stress, social connection, daily activity and recovery—to create a playful years-left estimate and personality-style result. The ten interactions are deliberately varied, so it feels more like a fast AI lifestyle scan than a health questionnaire.\n\nNormal choices, icon cards and short scales reveal different parts of your everyday pattern. The final prediction choice provides only a restrained calibration, so it cannot determine the displayed estimate on its own.\n\nThe quiz does not use medical records, clinical research, family history, current age, healthcare data or an individual risk assessment. The displayed estimate is an entertainment mechanic based only on the choices made during this attempt.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Choose the answer that feels most like you; there are no right answers in the lifestyle rounds.",
-        "Complete the short Brain Check and final calibration questions without overthinking them.",
-        "Finish all ten rounds to reveal your entertainment estimate and personality profile."
+        "Choose the lifestyle answer that feels most like you without overthinking it.",
+        "Use the icon choices and scales to describe your usual routine, activity and recovery.",
+        "Finish the final calibration to unlock your playful AI estimate and profile."
       ]
     },
-    "disclaimer": "This quiz is for entertainment and self-reflection only. It does not predict your lifespan, health, future, mortality risk, or medical outcomes. Results are playful lifestyle-style profiles based only on your quiz choices. If you have health concerns, speak to a qualified healthcare professional."
+    "disclaimer": "This quiz is for entertainment and self-reflection only. It does not predict your lifespan, health, future, mortality risk or medical outcomes. If you have health concerns, speak to a qualified healthcare professional."
   },
   "results": {
     "name": "Years-Left Vibe",
@@ -123,215 +123,141 @@
   },
   "stages": [
     {
-      "title": "Your Daily Life",
+      "title": "AI Lifestyle Prediction",
       "questions": [
-        {
-          "question": "Your ideal Saturday morning starts with...",
-          "answers": {
-            "A slow breakfast and a plan that actually feels possible": { "steady_long_game": 0.899 },
-            "Five alarms, three errands, and a heroic amount of coffee": { "stress_sprinter": 1.144 },
-            "No plan at all, just seeing where the day pulls you": { "adventure_fuse": 0.933 }
-          },
-          "id": "r1q1"
-        },
-        {
-          "question": "When your week gets crowded, what usually saves you?",
-          "answers": {
-            "Pushing harder until the pressure finally breaks": { "stress_sprinter": 1.144 },
-            "Cancelling everything and choosing the sofa in peace": { "comfort_creature": 1.091 },
-            "A simple list and one thing at a time": { "balanced_realist": 0.919 }
-          },
-          "id": "r1q2"
-        },
         {
           "question": "Pick the daily routine that sounds least annoying.",
           "answers": {
-            "Whatever feels good in the moment": { "adventure_fuse": 0.933 },
-            "A short walk, a decent meal, and an earlyish night": { "centenarian_energy": 1.058 },
-            "A burst of work, a burst of fun, and no boring schedule": { "weekend_chaos": 1.12 }
+            "Whatever feels good in the moment": {
+              "centenarian_energy": 0.000106,
+              "steady_long_game": 0.000127,
+              "balanced_realist": 0.000048,
+              "weekend_chaos": 0.003435,
+              "stress_sprinter": 0.002328,
+              "comfort_creature": 0.0001,
+              "adventure_fuse": 0.991498,
+              "reset_needed": 0.002358
+            },
+            "A short walk, a decent meal, and an earlyish night": {
+              "centenarian_energy": 0.841877,
+              "steady_long_game": 0.001908,
+              "balanced_realist": 0.000728,
+              "weekend_chaos": 0.051639,
+              "stress_sprinter": 0.035008,
+              "comfort_creature": 0.001506,
+              "adventure_fuse": 0.031888,
+              "reset_needed": 0.035446
+            },
+            "A burst of work, a burst of fun, and no boring schedule": {
+              "centenarian_energy": 0.000055,
+              "steady_long_game": 0.000066,
+              "balanced_realist": 0.000025,
+              "weekend_chaos": 0.996283,
+              "stress_sprinter": 0.001204,
+              "comfort_creature": 0.000052,
+              "adventure_fuse": 0.001097,
+              "reset_needed": 0.001218
+            }
           },
           "id": "r1q3"
         },
         {
-          "question": "Your phone battery is at 3%. What happens next?",
-          "answers": {
-            "You calmly switch to low power and save it for what matters": { "steady_long_game": 0.899 },
-            "You keep scrolling and trust destiny": { "weekend_chaos": 1.12 },
-            "You panic, borrow a charger, and check every outlet": { "stress_sprinter": 1.144 }
-          },
-          "id": "r1q4"
-        },
-        {
-          "question": "Which evening sounds most like your reset button?",
-          "answers": {
-            "A spontaneous plan that turns into a story": { "adventure_fuse": 0.933 },
-            "Blanket, snacks, and absolutely no further questions": { "comfort_creature": 1.091 },
-            "Cooking something simple and closing the laptop": { "balanced_realist": 0.919 }
-          },
-          "id": "r1q5"
-        },
-        {
-          "question": "How often do you make life harder than it needs to be?",
-          "answers": {
-            "I am currently doing that right now": { "reset_needed": 1.228 },
-            "Only when I ignore the obvious fix": { "balanced_realist": 0.919 },
-            "Regularly, but at least it keeps things interesting": { "weekend_chaos": 1.12 }
-          },
-          "id": "r1q6"
-        }
-      ]
-    },
-    {
-      "title": "What You Eat",
-      "questions": [
-        {
           "question": "Which snack table are you drifting toward?",
           "answers": {
-            "Fruit, nuts, and something that still feels like a treat": { "centenarian_energy": 1.058 },
-            "Cake first, logic later": { "weekend_chaos": 1.12 },
-            "Something savoury": { "balanced_realist": 0.919 },
-            "Whatever is closest to my hand": { "comfort_creature": 1.091 }
+            "Fruit, nuts, and something that still feels like a treat": {
+              "centenarian_energy": 0.841877,
+              "steady_long_game": 0.001908,
+              "balanced_realist": 0.000728,
+              "weekend_chaos": 0.051639,
+              "stress_sprinter": 0.035008,
+              "comfort_creature": 0.001506,
+              "adventure_fuse": 0.031888,
+              "reset_needed": 0.035446
+            },
+            "Cake first, logic later": {
+              "centenarian_energy": 0.000055,
+              "steady_long_game": 0.000066,
+              "balanced_realist": 0.000025,
+              "weekend_chaos": 0.996283,
+              "stress_sprinter": 0.001204,
+              "comfort_creature": 0.000052,
+              "adventure_fuse": 0.001097,
+              "reset_needed": 0.001218
+            },
+            "Something savoury": {
+              "centenarian_energy": 0.003215,
+              "steady_long_game": 0.003862,
+              "balanced_realist": 0.678241,
+              "weekend_chaos": 0.104509,
+              "stress_sprinter": 0.07085,
+              "comfort_creature": 0.003048,
+              "adventure_fuse": 0.064535,
+              "reset_needed": 0.07174
+            },
+            "Whatever is closest to my hand": {
+              "centenarian_energy": 0.001619,
+              "steady_long_game": 0.001945,
+              "balanced_realist": 0.000742,
+              "weekend_chaos": 0.052625,
+              "stress_sprinter": 0.035676,
+              "comfort_creature": 0.838773,
+              "adventure_fuse": 0.032496,
+              "reset_needed": 0.036124
+            }
           },
-          "id": "r2q1"
-        },
-        {
-          "question": "Your breakfast personality is...",
-          "answers": {
-            "A coffee with far too much confidence": { "stress_sprinter": 1.144 },
-            "Breakfast? I prefer a dramatic lunch debut": { "weekend_chaos": 1.12 },
-            "Reliable enough to stop the morning wobble": { "steady_long_game": 0.899 }
-          },
-          "id": "r2q2"
-        },
-        {
-          "question": "At a restaurant, you usually pick...",
-          "answers": {
-            "Something new because curiosity is louder than caution": { "adventure_fuse": 0.933 },
-            "The thing you know will leave you feeling good": { "balanced_realist": 0.919 },
-            "The house special, after one sensible question": { "steady_long_game": 0.899 },
-            "The richest thing on the menu because life is short": { "comfort_creature": 1.091 }
-          },
-          "id": "r2q3"
-        },
-        {
-          "question": "Your water bottle is most likely...",
-          "answers": {
-            "Nearby and actually used": { "centenarian_energy": 1.058 },
-            "Somewhere in the house, technically": { "reset_needed": 1.228 },
-            "Replaced by coffee until further notice": { "stress_sprinter": 1.144 }
-          },
-          "id": "r2q4"
-        },
-        {
-          "question": "Someone offers you a mystery smoothie. You...",
-          "answers": {
-            "Try it 😈": { "adventure_fuse": 0.933 },
-            "Absolutely not 😂": { "comfort_creature": 1.091 }
-          },
-          "id": "r2q5"
-        },
-        {
-          "question": "Which food motto sounds most like you?",
-          "answers": {
-            "Future me can file the complaint": { "weekend_chaos": 1.12 },
-            "Mostly sensible, sometimes celebratory": { "steady_long_game": 0.899 },
-            "If it brings joy, it has a seat at the table": { "centenarian_energy": 1.058 }
-          },
-          "id": "r2q6"
-        }
-      ]
-    },
-    {
-      "title": "How You Move",
-      "questions": [
-        {
-          "question": "Which movement plan would you actually keep?",
-          "answers": {
-            "A walk that does not require a new personality": { "steady_long_game": 0.899 },
-            "A dramatic two-week fitness era": { "stress_sprinter": 1.144 },
-            "Dancing around while cleaning and calling it cardio": { "centenarian_energy": 1.058 }
-          },
-          "id": "r3q1",
+          "id": "r2q1",
           "presentation": "icons",
           "icons": [
-            "🚶",
-            "⚡",
-            "💃"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "When stairs and an elevator are both available, you choose...",
-          "answers": {
-            "Elevator, because civilization invented it for a reason": { "comfort_creature": 1.091 },
-            "Whichever one gets me there with flair": { "adventure_fuse": 0.933 },
-            "Stairs if I am not carrying the entire universe": { "centenarian_energy": 1.058 }
-          },
-          "id": "r3q2",
-          "presentation": "icons",
-          "icons": [
-            "🛗",
-            "✨",
-            "🪜"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "Your energy at 3 p.m. is usually...",
-          "answers": {
-            "Looking for a soft place to land": { "reset_needed": 1.228 },
-            "Still usable, if treated kindly": { "balanced_realist": 0.919 },
-            "Powered by deadlines and mild panic": { "stress_sprinter": 1.144 }
-          },
-          "id": "r3q3",
-          "presentation": "icons",
-          "icons": [
-            "🛋️",
-            "🌤️",
-            "☕"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "Pick the activity that sounds most fun.",
-          "answers": {
-            "A scenic walk with good conversation": { "centenarian_energy": 1.058 },
-            "A last-minute road trip with snacks": { "adventure_fuse": 0.933 },
-            "A long bath and zero notifications": { "comfort_creature": 1.091 }
-          },
-          "id": "r3q4",
-          "presentation": "icons",
-          "icons": [
-            "🌳",
-            "🚗",
-            "🛁"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "If a friend says, “Let’s try something active,” you think...",
-          "answers": {
-            "Excellent, make it weird": { "adventure_fuse": 0.933 },
-            "I cheer from a chair": { "comfort_creature": 1.091 },
-            "Sure, as long as it is not secretly a punishment": { "balanced_realist": 0.919 }
-          },
-          "id": "r3q5",
-          "presentation": "icons",
-          "icons": [
-            "🎯",
-            "🪑",
-            "👍"
-          ],
-          "delay": 500
+            "🍎",
+            "🍰",
+            "🥨",
+            "🍽️"
+          ]
         },
         {
           "id": "r3q6",
           "question": "It’s Sunday. Pick your movement level.",
           "answers": {
-            "Sofa mode": { "comfort_creature": 1.091 },
-            "A gentle walk": { "steady_long_game": 0.899 },
-            "A bike ride": { "adventure_fuse": 0.933 },
-            "A proper run": { "centenarian_energy": 1.058 }
+            "Sofa mode": {
+              "centenarian_energy": 0.001619,
+              "steady_long_game": 0.001945,
+              "balanced_realist": 0.000742,
+              "weekend_chaos": 0.052625,
+              "stress_sprinter": 0.035676,
+              "comfort_creature": 0.838773,
+              "adventure_fuse": 0.032496,
+              "reset_needed": 0.036124
+            },
+            "A gentle walk": {
+              "centenarian_energy": 0.001561,
+              "steady_long_game": 0.844918,
+              "balanced_realist": 0.000715,
+              "weekend_chaos": 0.050749,
+              "stress_sprinter": 0.034404,
+              "comfort_creature": 0.00148,
+              "adventure_fuse": 0.031338,
+              "reset_needed": 0.034835
+            },
+            "A bike ride": {
+              "centenarian_energy": 0.000106,
+              "steady_long_game": 0.000127,
+              "balanced_realist": 0.000048,
+              "weekend_chaos": 0.003435,
+              "stress_sprinter": 0.002328,
+              "comfort_creature": 0.0001,
+              "adventure_fuse": 0.991498,
+              "reset_needed": 0.002358
+            },
+            "A proper run": {
+              "centenarian_energy": 0.841877,
+              "steady_long_game": 0.001908,
+              "balanced_realist": 0.000728,
+              "weekend_chaos": 0.051639,
+              "stress_sprinter": 0.035008,
+              "comfort_creature": 0.001506,
+              "adventure_fuse": 0.031888,
+              "reset_needed": 0.035446
+            }
           },
           "presentation": "icons",
           "icons": [
@@ -339,632 +265,371 @@
             "🚶",
             "🚴",
             "🏃"
-          ],
-          "delay": 500
-        }
-      ]
-    },
-    {
-      "title": "Sleep & Stress",
-      "questions": [
-        {
-          "question": "Your bedtime routine is closest to...",
-          "answers": {
-            "A decent wind-down that mostly works": { "steady_long_game": 0.899 },
-            "One more thing, then one more thing, then oops": { "stress_sprinter": 1.144 },
-            "Falling asleep wherever the day drops me": { "reset_needed": 1.228 }
-          },
-          "id": "r4q1"
-        },
-        {
-          "question": "When stress walks into the room, you usually...",
-          "answers": {
-            "Start solving six things at once": { "stress_sprinter": 1.144 },
-            "Avoid eye contact and hope it leaves": { "comfort_creature": 1.091 },
-            "Shrink the problem into the next clear step": { "balanced_realist": 0.919 }
-          },
-          "id": "r4q2"
+          ]
         },
         {
           "id": "r4q3",
           "question": "How rested do you usually feel when you wake up?",
           "presentation": "scale",
           "answers": {
-            "Not at all": { "reset_needed": 1.228 },
-            "A little": { "stress_sprinter": 1.144 },
-            "Somewhat": { "balanced_realist": 0.919 },
-            "Mostly": { "steady_long_game": 0.899 },
-            "Completely": { "centenarian_energy": 1.058 }
-          },
-          "delay": 500
+            "Not at all": {
+              "centenarian_energy": 0.000072,
+              "steady_long_game": 0.000087,
+              "balanced_realist": 0.000033,
+              "weekend_chaos": 0.002355,
+              "stress_sprinter": 0.001597,
+              "comfort_creature": 0.000069,
+              "adventure_fuse": 0.001454,
+              "reset_needed": 0.994333
+            },
+            "A little": {
+              "centenarian_energy": 0.000079,
+              "steady_long_game": 0.000095,
+              "balanced_realist": 0.000036,
+              "weekend_chaos": 0.002558,
+              "stress_sprinter": 0.993822,
+              "comfort_creature": 0.000075,
+              "adventure_fuse": 0.00158,
+              "reset_needed": 0.001755
+            },
+            "Somewhat": {
+              "centenarian_energy": 0.003215,
+              "steady_long_game": 0.003862,
+              "balanced_realist": 0.678241,
+              "weekend_chaos": 0.104509,
+              "stress_sprinter": 0.07085,
+              "comfort_creature": 0.003048,
+              "adventure_fuse": 0.064535,
+              "reset_needed": 0.07174
+            },
+            "Mostly": {
+              "centenarian_energy": 0.001561,
+              "steady_long_game": 0.844918,
+              "balanced_realist": 0.000715,
+              "weekend_chaos": 0.050749,
+              "stress_sprinter": 0.034404,
+              "comfort_creature": 0.00148,
+              "adventure_fuse": 0.031338,
+              "reset_needed": 0.034835
+            },
+            "Completely": {
+              "centenarian_energy": 0.841877,
+              "steady_long_game": 0.001908,
+              "balanced_realist": 0.000728,
+              "weekend_chaos": 0.051639,
+              "stress_sprinter": 0.035008,
+              "comfort_creature": 0.001506,
+              "adventure_fuse": 0.031888,
+              "reset_needed": 0.035446
+            }
+          }
         },
         {
-          "question": "Your alarm clock relationship is...",
+          "question": "When stress walks into the room, you usually...",
           "answers": {
-            "Mostly imaginary because I wake before it": { "centenarian_energy": 1.058 },
-            "Respectful but not romantic": { "balanced_realist": 0.919 },
-            "A daily courtroom battle": { "stress_sprinter": 1.144 }
+            "Start solving six things at once": {
+              "centenarian_energy": 0.000079,
+              "steady_long_game": 0.000095,
+              "balanced_realist": 0.000036,
+              "weekend_chaos": 0.002558,
+              "stress_sprinter": 0.993822,
+              "comfort_creature": 0.000075,
+              "adventure_fuse": 0.00158,
+              "reset_needed": 0.001755
+            },
+            "Avoid eye contact and hope it leaves": {
+              "centenarian_energy": 0.001619,
+              "steady_long_game": 0.001945,
+              "balanced_realist": 0.000742,
+              "weekend_chaos": 0.052625,
+              "stress_sprinter": 0.035676,
+              "comfort_creature": 0.838773,
+              "adventure_fuse": 0.032496,
+              "reset_needed": 0.036124
+            },
+            "Shrink the problem into the next clear step": {
+              "centenarian_energy": 0.003215,
+              "steady_long_game": 0.003862,
+              "balanced_realist": 0.678241,
+              "weekend_chaos": 0.104509,
+              "stress_sprinter": 0.07085,
+              "comfort_creature": 0.003048,
+              "adventure_fuse": 0.064535,
+              "reset_needed": 0.07174
+            }
           },
-          "id": "r4q4"
+          "id": "r4q2"
         },
         {
-          "question": "A tiny inconvenience appears. You...",
+          "id": "r6q6",
+          "question": "How often do you make time for people you genuinely enjoy?",
+          "presentation": "scale",
           "answers": {
-            "Handle it before it becomes a saga": { "steady_long_game": 0.899 },
-            "Make it a saga with excellent narration": { "stress_sprinter": 1.144 },
-            "Leave it for later and hope it works out": { "reset_needed": 1.228 }
-          },
-          "id": "r4q5"
+            "Almost never": {
+              "centenarian_energy": 0.000116,
+              "steady_long_game": 0.00014,
+              "balanced_realist": 0.000053,
+              "weekend_chaos": 0.003786,
+              "stress_sprinter": 0.002566,
+              "comfort_creature": 0.013912,
+              "adventure_fuse": 0.002338,
+              "reset_needed": 0.977089
+            },
+            "Rarely": {
+              "centenarian_energy": 0.000308,
+              "steady_long_game": 0.00037,
+              "balanced_realist": 0.000141,
+              "weekend_chaos": 0.010017,
+              "stress_sprinter": 0.006791,
+              "comfort_creature": 0.109843,
+              "adventure_fuse": 0.006185,
+              "reset_needed": 0.866345
+            },
+            "Sometimes": {
+              "centenarian_energy": 0.002558,
+              "steady_long_game": 0.003074,
+              "balanced_realist": 0.440721,
+              "weekend_chaos": 0.083172,
+              "stress_sprinter": 0.056385,
+              "comfort_creature": 0.305639,
+              "adventure_fuse": 0.051359,
+              "reset_needed": 0.057092
+            },
+            "Often": {
+              "centenarian_energy": 0.186367,
+              "steady_long_game": 0.668171,
+              "balanced_realist": 0.000678,
+              "weekend_chaos": 0.048084,
+              "stress_sprinter": 0.032598,
+              "comfort_creature": 0.001402,
+              "adventure_fuse": 0.029693,
+              "reset_needed": 0.033007
+            },
+            "Very often": {
+              "centenarian_energy": 0.125968,
+              "steady_long_game": 0.000403,
+              "balanced_realist": 0.000153,
+              "weekend_chaos": 0.010891,
+              "stress_sprinter": 0.007384,
+              "comfort_creature": 0.000318,
+              "adventure_fuse": 0.847407,
+              "reset_needed": 0.007476
+            }
+          }
         },
         {
-          "question": "What helps you sleep best?",
-          "answers": {
-            "Being completely exhausted by adventure": { "adventure_fuse": 0.933 },
-            "Background noise and a soft escape from reality": { "comfort_creature": 1.091 },
-            "A calm room and a calmer brain": { "steady_long_game": 0.899 }
-          },
-          "id": "r4q6"
-        }
-      ]
-    },
-    {
-      "title": "Brain Check 🧠",
-      "questions": [
-        {
-          "id": "r5q1",
-          "presentation": "memory-cue",
-          "question": "Keep these four items in mind. You’ll need one of them later.",
-          "memoryItems": [
-            "APPLE",
-            "TRAIN",
-            "BLUE",
-            "CANDLE"
+          "id": "r3q2",
+          "question": "A nearby errand appears. How do you usually get there?",
+          "presentation": "icons",
+          "icons": [
+            "🚗",
+            "🚌",
+            "🚶",
+            "🚲"
           ],
-          "continueLabel": "I’m ready",
-          "delay": 550
+          "answers": {
+            "Drive or ride": {
+              "centenarian_energy": 0.001948,
+              "steady_long_game": 0.00234,
+              "balanced_realist": 0.112448,
+              "weekend_chaos": 0.063326,
+              "stress_sprinter": 0.042931,
+              "comfort_creature": 0.694434,
+              "adventure_fuse": 0.039104,
+              "reset_needed": 0.043469
+            },
+            "Public transport": {
+              "centenarian_energy": 0.002367,
+              "steady_long_game": 0.358272,
+              "balanced_realist": 0.407694,
+              "weekend_chaos": 0.076939,
+              "stress_sprinter": 0.05216,
+              "comfort_creature": 0.002244,
+              "adventure_fuse": 0.047511,
+              "reset_needed": 0.052813
+            },
+            "Walk": {
+              "centenarian_energy": 0.186367,
+              "steady_long_game": 0.668171,
+              "balanced_realist": 0.000678,
+              "weekend_chaos": 0.048084,
+              "stress_sprinter": 0.032598,
+              "comfort_creature": 0.001402,
+              "adventure_fuse": 0.029693,
+              "reset_needed": 0.033007
+            },
+            "Cycle": {
+              "centenarian_energy": 0.016251,
+              "steady_long_game": 0.000155,
+              "balanced_realist": 0.000059,
+              "weekend_chaos": 0.004193,
+              "stress_sprinter": 0.002842,
+              "comfort_creature": 0.000122,
+              "adventure_fuse": 0.9735,
+              "reset_needed": 0.002878
+            }
+          }
         },
         {
-          "id": "r5q2",
+          "id": "r10q4",
+          "question": "Healthy habits for me are…",
           "presentation": "text",
-          "question": "What comes next? 2 → 6 → 12 → 20 → ?",
-          "answers": [
-            "26",
-            "28",
-            "30",
-            "32"
-          ],
-          "correct": 2,
-          "delay": 550
-        },
-        {
-          "id": "r5q3",
-          "presentation": "text",
-          "question": "24 tokens are shared equally between 3 people. How many does each get?",
-          "answers": [
-            "6",
-            "8",
-            "10",
-            "12"
-          ],
-          "correct": 1,
-          "delay": 550
-        },
-        {
-          "id": "r5q4",
-          "presentation": "text",
-          "question": "Which item appeared in the memory list?",
-          "answers": [
-            "ORANGE",
-            "CANDLE",
-            "RIVER",
-            "CLOCK"
-          ],
-          "correct": 1,
-          "delay": 550
-        },
-        {
-          "id": "r5q5",
-          "presentation": "text",
-          "question": "You face north, turn right, right, then left. Which way are you facing?",
-          "answers": [
-            "North",
-            "East",
-            "South",
-            "West"
-          ],
-          "correct": 1,
-          "delay": 550
-        },
-        {
-          "id": "r5q6",
-          "presentation": "text",
-          "question": "All tulips are flowers. Some flowers fade quickly. Which statement must be true?",
-          "answers": [
-            "All tulips are flowers",
-            "All flowers are tulips",
-            "No tulips fade quickly",
-            "Every flower fades quickly"
-          ],
-          "correct": 0,
-          "delay": 550
-        }
-      ]
-    },
-    {
-      "title": "People & Personality",
-      "questions": [
-        {
-          "question": "Your perfect group plan has...",
           "answers": {
-            "Good people, clear timing, and an easy exit": { "balanced_realist": 0.919 },
-            "A twist no one saw coming": { "adventure_fuse": 0.933 }
-          },
-          "id": "r6q1"
-        },
-        {
-          "question": "At a party, you are most likely...",
-          "answers": {
-            "Becoming part of a story that starts with “somehow”": { "weekend_chaos": 1.12 },
-            "Helping with snacks because it gives you purpose": { "centenarian_energy": 1.058 }
-          },
-          "id": "r6q2"
-        },
-        {
-          "question": "When someone texts “quick question,” you feel...",
-          "answers": {
-            "Happy if it turns into gossip": { "weekend_chaos": 1.12 },
-            "Ready, but cautious": { "balanced_realist": 0.919 }
-          },
-          "id": "r6q3"
-        },
-        {
-          "question": "Your friends would probably call you...",
-          "answers": {
-            "Reliable in a refreshingly normal way": { "steady_long_game": 0.899 },
-            "A lovable source of side quests": { "adventure_fuse": 0.933 }
-          },
-          "id": "r6q4"
-        },
-        {
-          "question": "After a big social day, you need...",
-          "answers": {
-            "Another plan if the vibe is good": { "adventure_fuse": 0.933 },
-            "A long quiet reset before I feel normal again": { "reset_needed": 1.228 }
-          },
-          "id": "r6q5"
-        },
-        {
-          "question": "Your ideal conversation is...",
-          "answers": {
-            "Short enough to leave me peaceful": { "comfort_creature": 1.091 },
-            "Warm, funny, and not trying too hard": { "centenarian_energy": 1.058 }
-          },
-          "id": "r6q6"
-        }
-      ]
-    },
-    {
-      "title": "Risk Test",
-      "questions": [
-        {
-          "question": "A cheap flight appears for tomorrow. You...",
-          "answers": {
-            "Check the details before your imagination takes over": { "steady_long_game": 0.899 },
-            "Start packing emotionally": { "adventure_fuse": 0.933 },
-            "Close the tab because tomorrow is already too soon": { "comfort_creature": 1.091 }
-          },
-          "id": "r7q1"
-        },
-        {
-          "question": "Which risk feels most like you?",
-          "answers": {
-            "Saying yes before reading the full plan": { "weekend_chaos": 1.12 },
-            "Ordering something new and hoping for the best": { "adventure_fuse": 0.933 },
-            "Trying a new habit without making it dramatic": { "steady_long_game": 0.899 }
-          },
-          "id": "r7q2"
-        },
-        {
-          "question": "Your calendar is usually...",
-          "answers": {
-            "Full of things I forgot I agreed to": { "stress_sprinter": 1.144 },
-            "Useful enough to prevent disasters": { "steady_long_game": 0.899 },
-            "Decorative, in theory": { "weekend_chaos": 1.12 }
-          },
-          "id": "r7q3"
-        },
-        {
-          "question": "When a plan changes last minute, you...",
-          "answers": {
-            "Adjust and find the new sensible route": { "balanced_realist": 0.919 },
-            "Pretend this was the plan all along": { "adventure_fuse": 0.933 },
-            "Need a minute to reboot": { "reset_needed": 1.228 }
-          },
-          "id": "r7q4"
-        },
-        {
-          "question": "What is your relationship with safety instructions?",
-          "answers": {
-            "I learn them after things get complicated": { "weekend_chaos": 1.12 },
-            "I read them and then read them again": { "stress_sprinter": 1.144 },
-            "I skim the important bits": { "steady_long_game": 0.899 }
-          },
-          "id": "r7q5"
-        },
-        {
-          "question": "Which routine would improve your life most?",
-          "answers": {
-            "A pause button for my brain": { "reset_needed": 1.228 },
-            "A simple weekly reset": { "steady_long_game": 0.899 },
-            "More play built into normal days": { "centenarian_energy": 1.058 }
-          },
-          "id": "r7q6"
-        }
-      ]
-    },
-    {
-      "title": "Your Fun Factor",
-      "questions": [
-        {
-          "question": "Which tiny joy works every time?",
-          "answers": {
-            "Fresh air and a good little errand": { "centenarian_energy": 1.058 },
-            "Laughing until the plan changes": { "weekend_chaos": 1.12 },
-            "A quiet corner and something comforting": { "comfort_creature": 1.091 }
-          },
-          "id": "r8q1",
-          "presentation": "icons",
-          "icons": [
-            "🌿",
-            "😂",
-            "🛋️"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "You find a class for something random. You...",
-          "answers": {
-            "Sign up because the story needs texture": { "centenarian_energy": 1.058 },
-            "Save it and never open it again": { "reset_needed": 1.228 },
-            "Consider whether it fits real life": { "balanced_realist": 0.919 }
-          },
-          "id": "r8q2",
-          "presentation": "icons",
-          "icons": [
-            "🚀",
-            "🔖",
-            "🤔"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "Pick a hobby mood.",
-          "answers": {
-            "Soft, familiar, and low-pressure": { "comfort_creature": 1.091 },
-            "Steady, satisfying, and quietly impressive": { "steady_long_game": 0.899 },
-            "Chaotic, hilarious, and possibly expensive": { "weekend_chaos": 1.12 }
-          },
-          "id": "r8q3",
-          "presentation": "icons",
-          "icons": [
-            "🧸",
-            "🌱",
-            "🎪"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "Which compliment would secretly delight you?",
-          "answers": {
-            "You seem really grounded": { "centenarian_energy": 1.058 },
-            "You make things more fun": { "adventure_fuse": 0.933 },
-            "You know how to take care of yourself": { "balanced_realist": 0.919 }
-          },
-          "id": "r8q4",
-          "presentation": "icons",
-          "icons": [
-            "⚓",
-            "✨",
-            "🌿"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "Your “I am alive” moment is usually...",
-          "answers": {
-            "A ridiculous story unfolding in real time": { "weekend_chaos": 1.12 },
-            "Realizing I can say no and stay home": { "comfort_creature": 1.091 },
-            "Sunlight, movement, and a clear head": { "centenarian_energy": 1.058 }
-          },
-          "id": "r8q5",
-          "presentation": "icons",
-          "icons": [
-            "🎉",
-            "🏠",
-            "☀️"
-          ],
-          "delay": 500
-        },
-        {
-          "question": "If your life had a theme song today, it would be...",
-          "answers": {
-            "Lo-fi comfort on repeat": { "comfort_creature": 1.091 },
-            "Calm beat, steady bassline": { "steady_long_game": 0.899 },
-            "Fast chorus, dramatic bridge": { "stress_sprinter": 1.144 }
-          },
-          "id": "r8q6",
-          "presentation": "icons",
-          "icons": [
-            "🎧",
-            "🎵",
-            "🎸"
-          ],
-          "delay": 500
-        }
-      ]
-    },
-    {
-      "title": "Be Honest…",
-      "questions": [
-        {
-          "question": "Your unread emails are...",
-          "answers": {
-            "Mostly handled before they become folklore": { "steady_long_game": 0.899 },
-            "A pile of good intentions": { "reset_needed": 1.228 },
-            "A thrilling problem for another day": { "weekend_chaos": 1.12 }
-          },
-          "id": "r9q1"
-        },
-        {
-          "question": "A bill, form, or appointment reminder appears. You...",
-          "answers": {
-            "Put it somewhere safe, then forget where safe is": { "weekend_chaos": 1.12 },
-            "Set three reminders and still feel suspicious": { "stress_sprinter": 1.144 },
-            "Deal with it while it is still small": { "balanced_realist": 0.919 }
-          },
-          "id": "r9q2"
-        },
-        {
-          "question": "Your home when life gets busy is...",
-          "answers": {
-            "A comfort cave with snacks nearby": { "comfort_creature": 1.091 },
-            "A little messy, but recoverable": { "balanced_realist": 0.919 },
-            "Evidence that a side quest happened": { "adventure_fuse": 0.933 }
-          },
-          "id": "r9q3"
-        },
-        {
-          "question": "Which personal rule would help you most?",
-          "answers": {
-            "Do the two-minute task now": { "steady_long_game": 0.899 },
-            "Leave room for surprise": { "adventure_fuse": 0.933 },
-            "Rest before everything turns dramatic": { "reset_needed": 1.228 }
-          },
-          "id": "r9q4"
-        },
-        {
-          "question": "Your future self would thank you for...",
-          "answers": {
-            "Collecting one unforgettable memory": { "adventure_fuse": 0.933 },
-            "Taking a proper break before crashing": { "reset_needed": 1.228 },
-            "Making one boring thing easier": { "balanced_realist": 0.919 }
-          },
-          "id": "r9q5"
-        },
-        {
-          "question": "Which phrase makes you feel called out?",
-          "answers": {
-            "I need to stop treating rest like a reward": { "reset_needed": 1.228 },
-            "I know exactly what I should do, annoyingly": { "balanced_realist": 0.919 },
-            "This could either be brilliant or a mess": { "weekend_chaos": 1.12 }
-          },
-          "id": "r9q6"
-        }
-      ]
-    },
-    {
-      "title": "Final Prediction 🔮",
-      "questions": [
-        {
-          "id": "r10q1",
-          "question": "People usually think I look…",
-          "answers": {
-            "Younger": { "centenarian_energy": 1.058 },
-            "About my age": { "balanced_realist": 0.919 },
-            "Older": { "reset_needed": 1.228 }
-          },
-          "calibration": [
-            1,
-            0,
-            -1
-          ],
-          "delay": 450
-        },
-        {
-          "id": "r10q2",
-          "question": "Compared with five years ago, my energy is…",
-          "answers": {
-            "Better": { "centenarian_energy": 1.058 },
-            "Similar": { "steady_long_game": 0.899 },
-            "Lower": { "reset_needed": 1.228 }
-          },
-          "calibration": [
-            1,
-            0,
-            -1
-          ],
-          "delay": 450
+            "Automatic": {
+              "centenarian_energy": 0.186367,
+              "steady_long_game": 0.668171,
+              "balanced_realist": 0.000678,
+              "weekend_chaos": 0.048084,
+              "stress_sprinter": 0.032598,
+              "comfort_creature": 0.001402,
+              "adventure_fuse": 0.029693,
+              "reset_needed": 0.033007
+            },
+            "Mostly consistent": {
+              "centenarian_energy": 0.002367,
+              "steady_long_game": 0.358272,
+              "balanced_realist": 0.407694,
+              "weekend_chaos": 0.076939,
+              "stress_sprinter": 0.05216,
+              "comfort_creature": 0.002244,
+              "adventure_fuse": 0.047511,
+              "reset_needed": 0.052813
+            },
+            "On and off": {
+              "centenarian_energy": 0.000081,
+              "steady_long_game": 0.000097,
+              "balanced_realist": 0.000037,
+              "weekend_chaos": 0.984968,
+              "stress_sprinter": 0.001776,
+              "comfort_creature": 0.009626,
+              "adventure_fuse": 0.001618,
+              "reset_needed": 0.001797
+            },
+            "Aspirational": {
+              "centenarian_energy": 0.00009,
+              "steady_long_game": 0.000108,
+              "balanced_realist": 0.000041,
+              "weekend_chaos": 0.002914,
+              "stress_sprinter": 0.742893,
+              "comfort_creature": 0.000085,
+              "adventure_fuse": 0.0018,
+              "reset_needed": 0.252069
+            }
+          }
         },
         {
           "id": "r10q3",
           "question": "After a bad week I recover…",
           "answers": {
-            "Quickly": { "balanced_realist": 0.919 },
-            "Eventually": { "comfort_creature": 1.091 },
-            "Slowly": { "reset_needed": 1.228 }
-          },
-          "calibration": [
-            1,
-            0,
-            -1
-          ],
-          "delay": 450
-        },
-        {
-          "id": "r10q4",
-          "question": "Healthy habits for me are…",
-          "answers": {
-            "Automatic": { "steady_long_game": 0.899 },
-            "Inconsistent": { "weekend_chaos": 1.12 },
-            "Aspirational": { "stress_sprinter": 1.144 }
-          },
-          "calibration": [
-            1,
-            0,
-            -1
-          ],
-          "delay": 450
-        },
-        {
-          "id": "r10q5",
-          "question": "My outlook on getting older is…",
-          "answers": {
-            "Positive": { "adventure_fuse": 0.933 },
-            "Neutral": { "balanced_realist": 0.919 },
-            "Worried": { "stress_sprinter": 1.144 }
-          },
-          "calibration": [
-            1,
-            0,
-            -1
-          ],
-          "delay": 450
+            "Quickly": {
+              "centenarian_energy": 0.003215,
+              "steady_long_game": 0.003862,
+              "balanced_realist": 0.678241,
+              "weekend_chaos": 0.104509,
+              "stress_sprinter": 0.07085,
+              "comfort_creature": 0.003048,
+              "adventure_fuse": 0.064535,
+              "reset_needed": 0.07174
+            },
+            "Eventually": {
+              "centenarian_energy": 0.001619,
+              "steady_long_game": 0.001945,
+              "balanced_realist": 0.000742,
+              "weekend_chaos": 0.052625,
+              "stress_sprinter": 0.035676,
+              "comfort_creature": 0.838773,
+              "adventure_fuse": 0.032496,
+              "reset_needed": 0.036124
+            },
+            "Slowly": {
+              "centenarian_energy": 0.000072,
+              "steady_long_game": 0.000087,
+              "balanced_realist": 0.000033,
+              "weekend_chaos": 0.002355,
+              "stress_sprinter": 0.001597,
+              "comfort_creature": 0.000069,
+              "adventure_fuse": 0.001454,
+              "reset_needed": 0.994333
+            }
+          }
         },
         {
           "id": "r10q6",
-          "question": "I imagine myself reaching…",
+          "question": "Final prediction: I imagine myself reaching…",
           "answers": {
-            "My 70s": { "stress_sprinter": 1.144 },
-            "My 80s": { "balanced_realist": 0.919 },
-            "My 90s": { "steady_long_game": 0.899 },
-            "100+": { "centenarian_energy": 1.058 }
+            "My 70s": {
+              "centenarian_energy": 0.000079,
+              "steady_long_game": 0.000095,
+              "balanced_realist": 0.000036,
+              "weekend_chaos": 0.002558,
+              "stress_sprinter": 0.993822,
+              "comfort_creature": 0.000075,
+              "adventure_fuse": 0.00158,
+              "reset_needed": 0.001755
+            },
+            "My 80s": {
+              "centenarian_energy": 0.003215,
+              "steady_long_game": 0.003862,
+              "balanced_realist": 0.678241,
+              "weekend_chaos": 0.104509,
+              "stress_sprinter": 0.07085,
+              "comfort_creature": 0.003048,
+              "adventure_fuse": 0.064535,
+              "reset_needed": 0.07174
+            },
+            "My 90s": {
+              "centenarian_energy": 0.001561,
+              "steady_long_game": 0.844918,
+              "balanced_realist": 0.000715,
+              "weekend_chaos": 0.050749,
+              "stress_sprinter": 0.034404,
+              "comfort_creature": 0.00148,
+              "adventure_fuse": 0.031338,
+              "reset_needed": 0.034835
+            },
+            "100+": {
+              "centenarian_energy": 0.841877,
+              "steady_long_game": 0.001908,
+              "balanced_realist": 0.000728,
+              "weekend_chaos": 0.051639,
+              "stress_sprinter": 0.035008,
+              "comfort_creature": 0.001506,
+              "adventure_fuse": 0.031888,
+              "reset_needed": 0.035446
+            }
           },
           "calibration": [
             -1,
             -0.25,
             0.5,
             1
-          ],
-          "delay": 450
+          ]
         }
       ]
     }
   ],
   "checkpoint": {
     "nextPrefix": "Next section",
-    "progressLabel": "Prediction progress",
-    "progressComplete": "{value}% complete",
-    "adNote": "Short ad first — then the next signal unlocks.",
-    "finalBadge": "FINAL CALCULATION",
+    "adNote": "Short ad first — then your prediction unlocks.",
+    "finalBadge": "FINAL AI CALCULATION",
     "finalIcon": "⚰️",
-    "finalTitle": "Your estimate is ready",
-    "finalCopy": "One last short ad unlocks your entertainment result.",
-    "finalButton": "Reveal my estimate",
+    "finalTitle": "Your prediction is ready",
+    "finalCopy": "One final short ad unlocks your entertainment estimate.",
+    "finalButton": "See My Results",
     "finalChecklist": [
-      "Lifestyle",
-      "Energy",
-      "Stress",
-      "Memory",
-      "Personality",
-      "Final prediction"
+      "Lifestyle patterns",
+      "Daily activity",
+      "Final calibration"
     ],
     "reveals": [
       {
-        "badge": "DAILY RHYTHM CAPTURED",
+        "badge": "FINAL AI CALCULATION",
         "icon": "✓",
-        "title": "Your daily rhythm is locked",
+        "title": "Prediction calculated",
         "signal": "fixed",
-        "message": "Your first lifestyle signal is in. Food choices could shift the prediction next."
-      },
-      {
-        "badge": "FOOD SIGNAL ADDED",
-        "icon": "🍽️",
-        "title": "Your food pattern changed the estimate",
-        "signal": "trend",
-        "variants": {
-          "up": "The prediction moved upward. Now your energy pattern goes under the lens.",
-          "steady": "The prediction held steady. Your energy pattern could change it next.",
-          "down": "The prediction shifted downward—but your energy pattern could pull it back."
-        }
-      },
-      {
-        "badge": "ENERGY PATTERN FOUND",
-        "icon": "⚡",
-        "title": "Your energy signal has been measured",
-        "signal": "trend",
-        "variants": {
-          "up": "Your energy signal strengthened the profile. Sleep and stress are next.",
-          "steady": "Your energy signal looks balanced. Sleep and stress could break the tie.",
-          "down": "Your energy signal is mixed so far. Recovery habits may change the direction."
-        }
-      },
-      {
-        "badge": "RECOVERY SIGNAL READ",
-        "icon": "🌙",
-        "title": "Your recovery pattern is mapped",
-        "signal": "trend",
-        "variants": {
-          "up": "Recovery improved the estimate. The Brain Check now tests a different signal.",
-          "steady": "Recovery held the estimate steady. The Brain Check could shift it.",
-          "down": "Recovery softened the estimate. The Brain Check is your chance to change course."
-        }
-      },
-      {
-        "badge": "BRAIN CHECK COMPLETE",
-        "icon": "🧠",
-        "title": "Your brain signal has been added",
-        "signal": "fixed",
-        "message": "Halfway through. Memory and reasoning are now shaping the estimate alongside your habits."
-      },
-      {
-        "badge": "SOCIAL ENERGY MAPPED",
-        "icon": "👥",
-        "title": "Your people pattern is now visible",
-        "signal": "fixed",
-        "message": "Your social style is in the model. Risk and resilience are about to narrow the range."
-      },
-      {
-        "badge": "RISK PATTERN ADDED",
-        "icon": "🎲",
-        "title": "The predicted range is narrowing",
-        "signal": "fixed",
-        "message": "Seven signals are locked. The Fun Factor now checks how you balance caution and curiosity."
-      },
-      {
-        "badge": "FUN FACTOR LOGGED",
-        "icon": "✨",
-        "title": "Your wildcard signal is in",
-        "signal": "fixed",
-        "message": "Only twelve choices remain. The next section checks whether your answers tell one clear story."
-      },
-      {
-        "badge": "CONSISTENCY CHECKED",
-        "icon": "📊",
-        "title": "Your answer pattern has been checked",
-        "signal": "consistency",
-        "variants": {
-          "high": "Answer consistency: High. One final calibration decides the entertainment estimate.",
-          "medium": "Answer consistency: Medium. The final calibration can still sharpen the result.",
-          "mixed": "Answer consistency: Mixed. The final calibration will decide which signal wins."
-        }
-      },
-      {
-        "badge": "CALCULATION COMPLETE",
-        "icon": "✓",
-        "title": "Your entertainment estimate is calculated",
-        "signal": "fixed",
-        "message": "All ten signals have been combined. One final short ad reveals your result."
+        "message": "Your routine, activity, recovery and final calibration have been combined."
       }
     ]
-  }
+  },
+  "progressLabel": "complete"
 }

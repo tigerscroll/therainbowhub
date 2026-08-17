@@ -149,18 +149,29 @@ for (const folder of folders) {
   fail(Boolean(source.title && source.summary), `${folder.name}/en.json: title and summary are required.`);
   fail(sourceQuestions.length > 0, `${folder.name}/en.json: at least one question is required.`);
   if (folder.name === "years-left") {
-    fail(source.stages?.length === 10, `${folder.name}/en.json: Years Left must contain ten rounds.`);
-    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Years Left round must contain six interactions.`);
-    fail(config.engine?.advanceDelayMs >= 200 && config.engine?.advanceDelayMs <= 600, `${folder.name}: default advance delay must be 200–600ms.`);
-    fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, `${folder.name}: estimate base and safety clamp are incorrect.`);
-    const brain = source.stages?.[4]?.questions ?? [];
-    fail(JSON.stringify(source.stages?.[1]?.questions?.map((question) => Object.keys(question.answers ?? {}).length)) === JSON.stringify([4, 3, 4, 3, 2, 3]), `${folder.name}: food round must use the approved 4/3/4/3/2/3 choice rhythm.`);
-    fail(JSON.stringify(source.stages?.[2]?.questions?.map((question) => Object.keys(question.answers ?? {}).length)) === JSON.stringify([3, 3, 3, 3, 3, 4]), `${folder.name}: movement round must end with a four-icon interaction.`);
-    fail(source.stages?.[3]?.questions?.[2]?.presentation === "scale", `${folder.name}: Sleep & Stress Q3 must be the five-stop scale.`);
-    fail(brain[0]?.presentation === "memory-cue" && brain[0]?.memoryItems?.length === 4, `${folder.name}: Brain Check must begin with a four-item memory cue.`);
-    fail(brain.slice(1).every((question) => Number.isInteger(question.correct)), `${folder.name}: Brain Check Q2–Q6 need correct indices.`);
-    fail(source.stages?.[5]?.questions?.every((question) => Object.keys(question.answers ?? {}).length === 2), `${folder.name}: People & Personality must remain a binary recovery round.`);
-    fail(source.stages?.[9]?.questions?.every((question) => question.calibration?.length === Object.keys(question.answers ?? {}).length), `${folder.name}: final calibration values must match every answer.`);
+    const approvedIds = ["r1q3", "r2q1", "r3q6", "r4q3", "r4q2", "r6q6", "r3q2", "r10q4", "r10q3", "r10q6"];
+    const ids = sourceQuestions.map((question) => question.id);
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), "years-left: must launch in English only.");
+    fail(config.engine?.flow === "linear" && source.progressLabel === "complete", "years-left: must use its percentage-led single-stage flow.");
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, "years-left/en.json: must contain one stage of ten interactions.");
+    fail(JSON.stringify(ids) === JSON.stringify(approvedIds), "years-left/en.json: must retain the approved ten-interaction order.");
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "years-left/en.json: compact screens must not use separate context banners.");
+    fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
+    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
+    fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs the approved start and result rewarded gates.");
+    fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
+    fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: compact estimate calibration is incorrect.");
+    fail(sourceQuestions[1]?.presentation === "icons" && sourceQuestions[1]?.icons?.length === 4, "years-left: snack-table interaction needs four aligned icons.");
+    fail(sourceQuestions[2]?.presentation === "icons" && JSON.stringify(sourceQuestions[2]?.icons) === JSON.stringify(["🛋️", "🚶", "🚴", "🏃"]), "years-left: movement interaction icons changed.");
+    fail(sourceQuestions[3]?.presentation === "scale" && Object.keys(sourceQuestions[3]?.answers ?? {}).length === 5, "years-left: rested interaction must remain a five-stop scale.");
+    fail(sourceQuestions[5]?.presentation === "scale" && Object.keys(sourceQuestions[5]?.answers ?? {}).length === 5, "years-left: social connection must remain a five-stop scale.");
+    fail(sourceQuestions[6]?.presentation === "icons" && JSON.stringify(sourceQuestions[6]?.icons) === JSON.stringify(["🚗", "🚌", "🚶", "🚲"]), "years-left: everyday activity icons changed.");
+    fail(sourceQuestions[7]?.presentation === "text" && Object.keys(sourceQuestions[7]?.answers ?? {}).length === 4, "years-left: habit consistency must remain a compact four-choice interaction.");
+    fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: compact lifestyle flow must not contain unrelated Brain Check scoring.");
+    fail(sourceQuestions[8]?.calibration === undefined && sourceQuestions[9]?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results", "years-left/en.json: final gate changed.");
+    fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
