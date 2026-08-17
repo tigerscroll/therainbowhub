@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
-import { requestRewardedAd } from "./rewardedAds";
+import { mountDisplayAds, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
@@ -255,6 +255,43 @@ function QuizAbout({ label, onRestart, quiz, title }: { label?: string; onRestar
   );
 }
 
+function ResultDisplayAd({ elementId }: { elementId: string }) {
+  return (
+    <div className="quiz-engine__display-ad-row">
+      <div className="quiz-engine__display-ad-frame" id={elementId} />
+    </div>
+  );
+}
+
+function QuizResultReading({ panel, quiz, title }: { panel: number; quiz: Quiz; title: string }) {
+  if (!quiz.footer) return null;
+  const topicParagraphs = quiz.footer.topicText?.split(/\n\s*\n/).filter(Boolean) ?? [];
+  const aboutParagraphs = quiz.footer.aboutText.split(/\n\s*\n/).filter(Boolean);
+  if (panel < 3 && !topicParagraphs[panel]) return null;
+  if (panel === 3 && !aboutParagraphs.length) return null;
+
+  return (
+    <aside className="quiz-engine__about quiz-engine__result-reading">
+      {panel === 0 ? <h2>{title}</h2> : null}
+      {panel < 3 ? <p>{topicParagraphs[panel]}</p> : null}
+      {panel === 2 && quiz.footer.howToPlay ? (
+        <section className="quiz-engine__how-to-play">
+          <h3>{quiz.footer.howToPlay.title}</h3>
+          <ol>
+            {quiz.footer.howToPlay.steps.map((step, index) => (
+              <li key={step}>
+                <span aria-hidden="true">{index + 1}</span>
+                <p>{step}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
+      {panel === 3 ? aboutParagraphs.map((paragraph, index) => <p className="quiz-engine__about-disclaimer" key={`result-about-${index}`}>{paragraph}</p>) : null}
+    </aside>
+  );
+}
+
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
@@ -287,6 +324,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
+  const resultAdBaseId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
+  const resultAdIds = useMemo(
+    () => Array.from({ length: quiz.engine.resultAds?.count ?? 0 }, (_, index) => `quiz-result-ad-${resultAdBaseId}-${index + 1}`),
+    [quiz.engine.resultAds?.count, resultAdBaseId],
+  );
+
+  useEffect(() => {
+    if (screen !== "results" || !quiz.engine.resultAds || !resultAdIds.length) return;
+    return mountDisplayAds({
+      adUnitPath: quiz.engine.resultAds.adUnitPath,
+      elementIds: resultAdIds,
+      sizes: quiz.engine.resultAds.sizes,
+    });
+  }, [quiz.engine.resultAds, resultAdIds, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -651,8 +702,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
     const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
+    const resultAds = quiz.engine.resultAds && resultAdIds.length === 5;
     return (
       <>
+      {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
       <section
         className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
@@ -743,7 +796,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           {scoreCopy?.retryLabel ?? translations.quiz.restartTest}
         </button>
       </section>
-      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      {resultAds ? (
+        <>
+          <ResultDisplayAd elementId={resultAdIds[1]} />
+          <QuizResultReading panel={0} quiz={quiz} title={translations.quiz.aboutTitle} />
+          <ResultDisplayAd elementId={resultAdIds[2]} />
+          <QuizResultReading panel={1} quiz={quiz} title={translations.quiz.aboutTitle} />
+          <ResultDisplayAd elementId={resultAdIds[3]} />
+          <QuizResultReading panel={2} quiz={quiz} title={translations.quiz.aboutTitle} />
+          <ResultDisplayAd elementId={resultAdIds[4]} />
+          <QuizResultReading panel={3} quiz={quiz} title={translations.quiz.aboutTitle} />
+        </>
+      ) : <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
       </>
     );
   }

@@ -16,6 +16,11 @@ export type QuizFlow = {
 
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybrid-match" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
+export type QuizResultAdsConfig = {
+  adUnitPath: string;
+  count: number;
+  sizes: Array<[number, number]>;
+};
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
 export type QuizDerivedScoreConfig = {
   breakpoints: Array<{ ratio: number; value: number }>;
@@ -67,6 +72,7 @@ export type QuizEngineConfig = {
   checkpoint: "standard" | "ai";
   startOnLoad: boolean;
   rewarded: QuizRewardedConfig;
+  resultAds?: QuizResultAdsConfig;
   advanceDelayMs: number;
   targetRatio?: number;
   estimate?: QuizEstimateConfig;
@@ -265,6 +271,7 @@ type QuizManifest = {
     checkpoint?: QuizEngineConfig["checkpoint"];
     startOnLoad?: boolean;
     rewarded?: Partial<QuizRewardedConfig>;
+    resultAds?: QuizResultAdsConfig;
     advanceDelayMs?: number;
     targetRatio?: number;
     estimate?: QuizEstimateConfig;
@@ -454,6 +461,23 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     if (rewarded.stages !== undefined && typeof rewarded.stages !== "boolean") throw new Error(`${file}: rewarded.stages must be a boolean.`);
     if (rewarded.attempts !== undefined && (!Number.isInteger(rewarded.attempts) || Number(rewarded.attempts) < 1 || Number(rewarded.attempts) > 5)) throw new Error(`${file}: rewarded.attempts must be between 1 and 5.`);
   }
+  let resultAds: QuizResultAdsConfig | undefined;
+  if (engine.resultAds !== undefined) {
+    const rawResultAds = object(engine.resultAds, "engine.resultAds", file);
+    const adUnitPath = text(rawResultAds.adUnitPath, "engine.resultAds.adUnitPath", file);
+    const count = Number(rawResultAds.count);
+    if (!adUnitPath.startsWith("/")) throw new Error(`${file}: engine.resultAds.adUnitPath must start with a slash.`);
+    if (!Number.isInteger(count) || count < 1 || count > 5) throw new Error(`${file}: engine.resultAds.count must be between one and five.`);
+    if (!Array.isArray(rawResultAds.sizes) || !rawResultAds.sizes.length) throw new Error(`${file}: engine.resultAds.sizes are required.`);
+    const sizes = rawResultAds.sizes.map((size, index) => {
+      if (!Array.isArray(size) || size.length !== 2 || !size.every((value) => Number.isInteger(value) && value > 0)) {
+        throw new Error(`${file}: engine.resultAds.sizes[${index}] must be a positive width-height pair.`);
+      }
+      if (size[0] > 336 || size[1] > 280) throw new Error(`${file}: result display ads cannot exceed 336x280.`);
+      return [size[0], size[1]] as [number, number];
+    });
+    resultAds = { adUnitPath, count, sizes };
+  }
   if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
     throw new Error(`${file}: a direct-start quiz cannot also request a rewarded start gate.`);
   }
@@ -491,7 +515,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.scoring !== "hybrid-match" && match) throw new Error(`${file}: engine.match is only supported by hybrid-match scoring.`);
   return {
     slug,
-    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
+    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match, resultAds } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -791,6 +815,7 @@ function normalizeLocale(
         stages: manifest.engine.rewarded?.stages ?? false,
         attempts: manifest.engine.rewarded?.attempts ?? 3,
       },
+      resultAds: manifest.engine.resultAds,
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
       targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,

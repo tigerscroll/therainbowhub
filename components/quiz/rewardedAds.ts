@@ -4,6 +4,7 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
+  defineSizeMapping?: (mapping: unknown) => GptSlot;
 };
 
 type RewardedEvent = {
@@ -17,14 +18,21 @@ type PubAds = {
   updateCorrelator?: () => void;
 };
 
+type SizeMappingBuilder = {
+  addSize(viewport: number[], sizes: number[][]): SizeMappingBuilder;
+  build(): unknown;
+};
+
 type GoogleTag = {
   cmd: Array<() => void>;
+  defineSlot?: (path: string, sizes: number[][], elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
-  display?: (slot: GptSlot) => void;
+  display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
+  sizeMapping?: () => SizeMappingBuilder;
 };
 
 declare global {
@@ -47,6 +55,51 @@ let activeRequest: ActiveRequest | null = null;
 let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
+
+export function mountDisplayAds({
+  adUnitPath,
+  elementIds,
+  sizes,
+}: {
+  adUnitPath: string;
+  elementIds: string[];
+  sizes: Array<[number, number]>;
+}) {
+  let cancelled = false;
+  const slots: GptSlot[] = [];
+  window.googletag = window.googletag ?? { cmd: [] };
+  window.googletag.cmd.push(() => {
+    if (cancelled) return;
+    const googletag = window.googletag;
+    const pubads = googletag?.pubads?.();
+    if (!googletag?.defineSlot || !googletag.display || !pubads) return;
+
+    const mapping = googletag.sizeMapping?.()
+      .addSize([0, 0], [[300, 250]])
+      .addSize([360, 0], sizes.map(([width, height]) => [width, height]))
+      .build();
+
+    elementIds.forEach((elementId) => {
+      const slot = googletag.defineSlot?.(adUnitPath, sizes.map(([width, height]) => [width, height]), elementId);
+      if (!slot) return;
+      if (mapping) slot.defineSizeMapping?.(mapping);
+      slots.push(slot.addService(pubads));
+    });
+    if (!slots.length || cancelled) return;
+    if (!servicesEnabled) {
+      googletag.enableServices?.();
+      servicesEnabled = true;
+    }
+    elementIds.forEach((elementId) => googletag.display?.(elementId));
+  });
+
+  return () => {
+    cancelled = true;
+    if (slots.length) {
+      try { window.googletag?.destroySlots?.(slots); } catch { /* GPT cleanup is best effort. */ }
+    }
+  };
+}
 
 function finish(result: RewardedResult) {
   const request = activeRequest;
