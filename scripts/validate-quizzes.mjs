@@ -169,6 +169,7 @@ for (const folder of folders) {
     fail(config.engine?.flow === "linear" && source.progressLabel === "complete", `${folder.name}: Memory must use its percentage-led single-stage flow.`);
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Memory must contain one stage of ten questions.`);
     fail(JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: Memory must retain the approved ten-question order.`);
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Memory screens must not use separate context banners.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length >= 3 && question.answers?.length <= 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs one valid answer and unique choices.`);
     fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([3, 2, 2, 3]), `${folder.name}/en.json: Memory correct positions must keep their irregular 3/2/2/3 balance.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
@@ -347,6 +348,7 @@ for (const folder of folders) {
     fail(source.landing?.startPrompt?.button === "OK" && /short ad/i.test(source.landing?.startPrompt?.copy ?? ""), `${folder.name}/en.json: a clean pre-start rewarded prompt is required.`);
     fail(source.progressLabel === "complete", `${folder.name}/en.json: compact quiz must show percentage completion rather than a round number.`);
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: compact quiz needs one round of ten questions.`);
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact quiz screens must not use separate context banners.`);
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(specification.ids), `${folder.name}/en.json: approved ten-question selection or order changed.`);
     fail(JSON.stringify(counts) === JSON.stringify(specification.categories), `${folder.name}/en.json: compact skill-category distribution changed.`);
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact question needs four unique choices.`);
