@@ -837,6 +837,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </div>
           </section>
         ) : null}
+        {resultAds ? (
+          <section className="quiz-engine__result-final-summary">
+            <span className="quiz-engine__eyebrow">{scoreDetails.finalTitle}</span>
+            <strong>{result.percentage}%</strong>
+            <h3>{result.profile.title}</h3>
+            <p>
+              {scoreDetails.finalCopy
+                .replace("{score}", String(result.score))
+                .replace("{total}", String(result.total))}
+            </p>
+          </section>
+        ) : null}
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}

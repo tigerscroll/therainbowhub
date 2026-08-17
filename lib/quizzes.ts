@@ -241,6 +241,8 @@ export type QuizScoreResultCopy = {
       tipsTitle: string;
       tipsIntro: string;
       tips: Array<{ title: string; copy: string }>;
+      finalTitle: string;
+      finalCopy: string;
     };
   };
 };
@@ -828,7 +830,7 @@ function normalizeLocale(
       if (value.results.score.insights.targetRemaining !== undefined) text(value.results.score.insights.targetRemaining, "results.score.insights.targetRemaining", file);
       if (value.results.score.insights.details !== undefined) {
         const details = value.results.score.insights.details;
-        (["analysisTitle", "analysisCopy", "roadmapTitle", "roadmapIntro", "positionTitle", "positionCopy", "measuredTitle", "measuredIntro", "tipsTitle", "tipsIntro"] as const)
+        (["analysisTitle", "analysisCopy", "roadmapTitle", "roadmapIntro", "positionTitle", "positionCopy", "measuredTitle", "measuredIntro", "tipsTitle", "tipsIntro", "finalTitle", "finalCopy"] as const)
           .forEach((key) => text(details[key], `results.score.insights.details.${key}`, file));
         const roadmapItems = strings(details.roadmapItems, "results.score.insights.details.roadmapItems", file);
         if (roadmapItems.length !== 4) throw new Error(`${file}: results.score.insights.details.roadmapItems needs exactly four items.`);
