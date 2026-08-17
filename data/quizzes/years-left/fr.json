@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Réponds à ces questions et l’IA prédira combien de temps il te reste à vivre.",
     "socialProof": "Plus de 82 000 personnes l’ont essayé cette semaine",
-    "cta": "Commencer le quiz"
+    "cta": "Commencer le quiz",
+    "startPrompt": {
+      "eyebrow": "PRÊT À COMMENCER",
+      "icon": "✓",
+      "title": "Votre prédiction est prête ⚰️",
+      "copy": "Regardez une courte publicité pour commencer le quiz.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "Ce quiz utilise des indices du quotidien — routine, alimentation, activité physique, sommeil, stress, énergie sociale, curiosité et petits casse-têtes — pour créer un résultat ludique sous forme de profil de personnalité. Les questions abordent des thèmes familiers liés à la santé et au bien-être, comme la nutrition, le mouvement, la récupération, les habitudes saines, le bien-être mental, les liens sociaux et la façon d’envisager le vieillissement en bonne santé.\n\nVos choix sont associés à un court test de mémoire et de raisonnement afin de produire une estimation de divertissement et un profil de mode de vie. Le calcul reste volontairement modéré pour qu’une seule réponse ne puisse pas dominer le résultat. Le quiz peut ainsi servir de point de départ léger pour réfléchir aux habitudes quotidiennes et aux priorités de bien-être.\n\nLe quiz n’utilise ni dossier médical, ni recherche clinique, ni antécédents familiaux, ni âge actuel, ni données de santé, ni évaluation individuelle des risques. L’estimation affichée est un mécanisme de quiz fondé uniquement sur les réponses choisies pendant cette session.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Section suivante",
-    "adNote": "Une courte pub d’abord — puis la section suivante commence.",
+    "progressLabel": "Progression de la prédiction",
+    "progressComplete": "{value} % terminé",
+    "adNote": "Une courte publicité d’abord — puis le prochain signal se débloque.",
     "finalBadge": "CALCUL FINAL",
+    "finalIcon": "⚰️",
     "finalTitle": "Ton estimation est prête",
     "finalCopy": "Une dernière courte pub débloque ton résultat ludique.",
     "finalButton": "Voir mon estimation",
@@ -870,11 +880,15 @@
     ],
     "reveals": [
       {
+        "badge": "RYTHME QUOTIDIEN CAPTÉ",
+        "icon": "✓",
         "title": "Habitudes quotidiennes analysées",
         "signal": "fixed",
         "message": "Ton rythme quotidien fait maintenant partie du profil."
       },
       {
+        "badge": "SIGNAL ALIMENTAIRE AJOUTÉ",
+        "icon": "🍽️",
         "title": "Habitudes alimentaires analysées",
         "signal": "trend",
         "variants": {
@@ -884,6 +898,8 @@
         }
       },
       {
+        "badge": "PROFIL D’ÉNERGIE IDENTIFIÉ",
+        "icon": "⚡",
         "title": "Profil d’énergie identifié",
         "signal": "trend",
         "variants": {
@@ -893,6 +909,8 @@
         }
       },
       {
+        "badge": "SIGNAL DE RÉCUPÉRATION LU",
+        "icon": "🌙",
         "title": "Récupération analysée",
         "signal": "trend",
         "variants": {
@@ -902,26 +920,36 @@
         }
       },
       {
+        "badge": "TEST CÉRÉBRAL TERMINÉ",
+        "icon": "🧠",
         "title": "Test cérébral terminé",
         "signal": "fixed",
         "message": "Les signaux de mémoire et de raisonnement ont été ajoutés à ton estimation."
       },
       {
+        "badge": "ÉNERGIE SOCIALE CARTOGRAPHIÉE",
+        "icon": "👥",
         "title": "Profil social identifié",
         "signal": "fixed",
         "message": "Ton style relationnel fait maintenant partie du profil."
       },
       {
+        "badge": "PROFIL DE RISQUE AJOUTÉ",
+        "icon": "🎲",
         "title": "Profil de risque ajouté",
         "signal": "fixed",
         "message": "La fourchette prévue se resserre."
       },
       {
+        "badge": "FACTEUR PLAISIR ENREGISTRÉ",
+        "icon": "✨",
         "title": "Facteur plaisir enregistré",
         "signal": "fixed",
         "message": "La fourchette continue de se resserrer."
       },
       {
+        "badge": "COHÉRENCE VÉRIFIÉE",
+        "icon": "📊",
         "title": "Cohérence des réponses vérifiée",
         "signal": "consistency",
         "variants": {
@@ -931,6 +959,8 @@
         }
       },
       {
+        "badge": "CALCUL TERMINÉ",
+        "icon": "✓",
         "title": "Calibrage final terminé",
         "signal": "fixed",
         "message": "Les dix signaux sont prêts pour l’estimation ludique."

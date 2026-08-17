@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Beantworte diese Fragen und die KI sagt voraus, wie lange du noch leben wirst.",
     "socialProof": "Über 82.000 Menschen haben es diese Woche ausprobiert",
-    "cta": "Quiz starten"
+    "cta": "Quiz starten",
+    "startPrompt": {
+      "eyebrow": "BEREIT ZUM START",
+      "icon": "✓",
+      "title": "Deine Vorhersage ist bereit ⚰️",
+      "copy": "Sieh dir eine kurze Werbung an, um das Quiz zu starten.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "Dieses Quiz nutzt Alltagshinweise wie Routine, Ernährung, Bewegung, Schlaf, Stress, soziale Energie, Neugier und kleine Denksportaufgaben, um ein spielerisches Persönlichkeitsprofil zu erstellen. Die Fragen greifen vertraute Gesundheits- und Wohlfühlthemen auf, darunter Ernährung, körperliche Aktivität, Erholung, gesunde Gewohnheiten, mentales Wohlbefinden, soziale Kontakte und die Einstellung zum gesunden Älterwerden.\n\nDeine Antworten werden mit einem kurzen Gedächtnis- und Denktest kombiniert, um eine Unterhaltungsschätzung und ein Lebensstilprofil zu erstellen. Die Wertung ist bewusst zurückhaltend, damit keine einzelne Antwort das Ergebnis bestimmen kann. So kann das Quiz auf leichte Weise zum Nachdenken über Alltagsroutinen und persönliche Wohlfühlziele anregen.\n\nDas Quiz verwendet keine Krankenakten, klinischen Studien, Familiengeschichte, Angaben zum aktuellen Alter, Gesundheitsdaten oder persönliche Risikobewertungen. Die angezeigte Schätzung ist ein Quizmechanismus, der ausschließlich auf den Antworten dieser Sitzung beruht.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Nächster Abschnitt",
-    "adNote": "Erst eine kurze Werbung — dann startet der nächste Abschnitt.",
+    "progressLabel": "Fortschritt der Vorhersage",
+    "progressComplete": "{value} % abgeschlossen",
+    "adNote": "Erst eine kurze Werbung — dann wird das nächste Signal freigeschaltet.",
     "finalBadge": "LETZTE BERECHNUNG",
+    "finalIcon": "⚰️",
     "finalTitle": "Deine Schätzung ist bereit",
     "finalCopy": "Eine letzte kurze Werbung schaltet dein spielerisches Ergebnis frei.",
     "finalButton": "Schätzung anzeigen",
@@ -870,11 +880,15 @@
     ],
     "reveals": [
       {
+        "badge": "ALLTAGSRHYTHMUS ERFASST",
+        "icon": "✓",
         "title": "Alltagsgewohnheiten analysiert",
         "signal": "fixed",
         "message": "Dein täglicher Rhythmus ist nun Teil des Profils."
       },
       {
+        "badge": "ESSENSSIGNAL ERFASST",
+        "icon": "🍽️",
         "title": "Essgewohnheiten analysiert",
         "signal": "trend",
         "variants": {
@@ -884,6 +898,8 @@
         }
       },
       {
+        "badge": "ENERGIEMUSTER ERKANNT",
+        "icon": "⚡",
         "title": "Energiemuster erkannt",
         "signal": "trend",
         "variants": {
@@ -893,6 +909,8 @@
         }
       },
       {
+        "badge": "ERHOLUNGSSIGNAL GEPRÜFT",
+        "icon": "🌙",
         "title": "Erholung analysiert",
         "signal": "trend",
         "variants": {
@@ -902,26 +920,36 @@
         }
       },
       {
+        "badge": "GEHIRN-CHECK ABGESCHLOSSEN",
+        "icon": "🧠",
         "title": "Gehirn-Check abgeschlossen",
         "signal": "fixed",
         "message": "Gedächtnis- und Denksignale wurden deiner Schätzung hinzugefügt."
       },
       {
+        "badge": "SOZIALE ENERGIE ERFASST",
+        "icon": "👥",
         "title": "Soziales Muster erkannt",
         "signal": "fixed",
         "message": "Dein sozialer Stil ist jetzt Teil des Profils."
       },
       {
+        "badge": "RISIKOMUSTER ERGÄNZT",
+        "icon": "🎲",
         "title": "Risikomuster hinzugefügt",
         "signal": "fixed",
         "message": "Der vorhergesagte Bereich wird enger."
       },
       {
+        "badge": "SPASSFAKTOR ERFASST",
+        "icon": "✨",
         "title": "Spaßfaktor erfasst",
         "signal": "fixed",
         "message": "Der Bereich wird weiter eingegrenzt."
       },
       {
+        "badge": "KONSISTENZ GEPRÜFT",
+        "icon": "📊",
         "title": "Antwortmuster geprüft",
         "signal": "consistency",
         "variants": {
@@ -931,6 +959,8 @@
         }
       },
       {
+        "badge": "BERECHNUNG ABGESCHLOSSEN",
+        "icon": "✓",
         "title": "Letzte Feinabstimmung abgeschlossen",
         "signal": "fixed",
         "message": "Alle zehn Signale sind bereit für deine spielerische Schätzung."

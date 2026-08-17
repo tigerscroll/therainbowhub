@@ -21,6 +21,58 @@
 
 [data-quiz-theme="years-left"] > * { position: relative; z-index: 1; }
 
+/* Rewarded start confirmation: a focused prediction card, not an inline extra panel. */
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  width: auto !important;
+  margin: 0 !important;
+  background: rgba(10, 9, 12, .76);
+  backdrop-filter: blur(9px) saturate(.72);
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card {
+  position: relative;
+  padding: clamp(32px, 7vw, 52px);
+  border: 2px solid rgba(255, 244, 214, .72);
+  border-radius: 120px 120px 18px 18px;
+  background:
+    radial-gradient(100% 70% at 50% -8%, rgba(255,255,255,.55), transparent 58%),
+    linear-gradient(180deg, #eee5d3, #c7b99c);
+  color: #18161d;
+  box-shadow: 0 34px 90px rgba(0,0,0,.48), inset 0 2px rgba(255,255,255,.72), inset 0 -18px 38px rgba(100,84,62,.2);
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card .quiz-engine__eyebrow { color: #765027; }
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card h2 { color: #18161d; font-family: Georgia, "Times New Roman", serif; }
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card p { color: #4b433a; }
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-icon {
+  border: 1px solid rgba(70, 92, 63, .25);
+  background: rgba(122, 160, 120, .17);
+  color: #486442;
+}
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card > .quiz-engine__primary { margin-inline: auto; }
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card > .quiz-engine__primary:disabled {
+  border-color: #777067;
+  background: linear-gradient(180deg, #aaa49a, #817b72);
+  color: #eee8dc;
+  box-shadow: 0 7px 0 #57524c;
+  opacity: 1;
+}
+
+/* Ten distinct analysis signals keep the prediction journey moving. */
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="1"] { --years-stage-accent: #d6a65a; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="2"] { --years-stage-accent: #c9825b; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="3"] { --years-stage-accent: #7aa078; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="4"] { --years-stage-accent: #8a83b7; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="5"] { --years-stage-accent: #72a9aa; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="6"] { --years-stage-accent: #c487a8; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="7"] { --years-stage-accent: #d28c63; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="8"] { --years-stage-accent: #dbbd62; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="9"] { --years-stage-accent: #7799c0; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round="10"] { --years-stage-accent: #87ac78; }
+
 /* The original pale, arched tombstone landing card. */
 [data-quiz-theme="years-left"] { padding-top: clamp(18px, 4vw, 42px); }
 [data-quiz-theme="years-left"] .quiz-engine__landing {
@@ -156,6 +208,7 @@
   background: radial-gradient(circle at 8% 0%, rgba(122,160,120,.22), transparent 38%), linear-gradient(90deg, rgba(248,239,217,.11), rgba(214,166,90,.12), rgba(248,239,217,.055));
   box-shadow: 0 12px 28px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.08);
 }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round] .quiz-engine__ai-panel { border-left: 5px solid var(--years-stage-accent, var(--years-gold)); }
 [data-quiz-theme="years-left"] .quiz-engine__ai-panel::before { position: absolute; inset: 0; content: ""; background: linear-gradient(105deg, transparent 0 34%, rgba(255,239,196,.13) 50%, transparent 66% 100%); transform: translateX(-120%); animation: yearsAiScan 2.1s ease-in-out infinite; pointer-events: none; }
 [data-quiz-theme="years-left"] .quiz-engine__ai-top { color: #fff4d6; text-align: center; }
 [data-quiz-theme="years-left"] .quiz-engine__ai-top strong { overflow-wrap: anywhere; font-size: clamp(18px,3.2vw,24px); font-weight: 900; line-height: 1.1; }
@@ -163,10 +216,39 @@
 [data-quiz-theme="years-left"] .quiz-engine__ai-panel > p { color: #d8ccb0; font-size: clamp(13px,2.4vw,15px); }
 [data-quiz-theme="years-left"] .quiz-engine__checkpoint-next { width: min(100%, 620px); margin: 14px auto 24px; padding: 14px 16px; border: 1px solid rgba(255,229,166,.26); border-radius: 18px; background: radial-gradient(circle at 8% 0%, rgba(122,160,120,.16), transparent 38%), linear-gradient(90deg, rgba(248,239,217,.11), rgba(214,166,90,.1), rgba(248,239,217,.055)); box-shadow: 0 12px 28px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.08); }
 [data-quiz-theme="years-left"] .quiz-engine__checkpoint-next span { color: #b9ad94; }
-[data-quiz-theme="years-left"] .quiz-engine__checkpoint-next strong { color: var(--years-gold); }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-next strong { color: var(--years-stage-accent, var(--years-gold)); }
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress {
+  width: min(100%, 620px);
+  margin: 16px auto 18px;
+}
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress-copy {
+  color: #b9ad94;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress-copy strong { color: #fff4d6; }
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress-track i {
+  height: 8px;
+  border: 1px solid rgba(248,239,217,.16);
+  border-radius: 999px;
+  background: rgba(248,239,217,.1);
+}
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress-track i[data-complete] {
+  border-color: var(--years-stage-accent, var(--years-gold));
+  background: var(--years-stage-accent, var(--years-gold));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--years-stage-accent, var(--years-gold)) 40%, transparent);
+}
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round] .quiz-engine__checkpoint-icon {
+  border-color: var(--years-stage-accent, var(--years-gold));
+  background: color-mix(in srgb, var(--years-stage-accent, var(--years-gold)) 18%, #28232e);
+  color: #fff4d6;
+  animation: yearsCheckpointReveal .48s cubic-bezier(.2,.85,.3,1.18) both;
+}
 
 @keyframes yearsAiScan { 0% { transform: translateX(-120%); } 48%, 100% { transform: translateX(120%); } }
 @keyframes yearsAiPulse { 0% { box-shadow: 0 0 0 0 rgba(122,160,120,.55); } 100% { box-shadow: 0 0 0 12px rgba(122,160,120,0); } }
+@keyframes yearsCheckpointReveal { from { opacity: 0; transform: translateY(-8px) scale(.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 @media (max-width: 700px) {
   [data-quiz-theme="years-left"] { padding: 0 0 28px; }
@@ -191,11 +273,23 @@
   [data-quiz-theme="years-left"] .quiz-engine__checkpoint-next { width: 100%; }
   [data-quiz-theme="years-left"] .quiz-engine__ai-panel { padding: 12px 13px; border-radius: 16px; }
   [data-quiz-theme="years-left"] .quiz-engine__ai-top strong { font-size: clamp(15px,4.15vw,17px); }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint { padding-top: 22px; padding-bottom: 24px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint .quiz-engine__eyebrow { display: none; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint .quiz-engine__checkpoint-icon { width: 56px; height: 56px; margin: 7px auto; font-size: 25px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint h2 { margin: 6px 0; font-size: clamp(28px,8.6vw,39px); }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint .quiz-engine__ai-panel { margin-bottom: 10px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint .quiz-engine__ai-panel > p { margin-top: 6px; line-height: 1.38; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress { gap: 8px; margin: 13px auto 15px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-progress-track i { height: 7px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-next { gap: 3px; margin: 12px auto 16px; padding: 12px 13px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint > .quiz-engine__primary { margin-top: 4px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint > .quiz-engine__checkpoint-ad-note { margin-top: 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-quiz-theme="years-left"] .quiz-engine__ai-panel::before,
-  [data-quiz-theme="years-left"] .quiz-engine__ai-top > span { animation: none; }
+  [data-quiz-theme="years-left"] .quiz-engine__ai-top > span,
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-round] .quiz-engine__checkpoint-icon { animation: none; }
 }
 
 /* Final visual refinement: carry the tombstone language through the full flow. */
@@ -368,8 +462,9 @@
   [data-quiz-theme="years-left"] .quiz-engine__question h1 { padding: 22px 16px; border-radius: 20px 20px 12px 12px; font-size: clamp(28px, 8.7vw, 39px); }
   [data-quiz-theme="years-left"] .quiz-engine__checkpoint h2,
   [data-quiz-theme="years-left"] .quiz-engine__results h2 { font-size: clamp(31px, 9.4vw, 42px); }
-  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-icon,
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint h2 { font-size: clamp(28px, 8.6vw, 39px); }
   [data-quiz-theme="years-left"] .quiz-engine__result-icon { width: 70px; height: 70px; font-size: 31px; }
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-icon { width: 56px; height: 56px; font-size: 25px; }
   [data-quiz-theme="years-left"] .quiz-engine__result-age { min-height: 146px; padding: 34px 18px 22px; border-radius: 100px 100px 15px 15px; }
   [data-quiz-theme="years-left"] .quiz-engine__result-age strong { font-size: clamp(68px, 21vw, 94px); }
   [data-quiz-theme="years-left"] .quiz-engine__result-signals div { min-height: 0; }

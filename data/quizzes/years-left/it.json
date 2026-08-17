@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Rispondi a queste domande e l’IA prevederà quanto ti resta da vivere.",
     "socialProof": "Oltre 82.000 persone hanno fatto il quiz questa settimana",
-    "cta": "Inizia il quiz"
+    "cta": "Inizia il quiz",
+    "startPrompt": {
+      "eyebrow": "TUTTO PRONTO",
+      "icon": "✓",
+      "title": "La tua previsione è pronta ⚰️",
+      "copy": "Guarda un breve annuncio per iniziare il quiz.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "Questo quiz usa indizi quotidiani — routine, alimentazione, movimento, sonno, stress, energia sociale, curiosità e piccoli rompicapi — per creare un risultato divertente sotto forma di profilo di personalità. Le domande toccano temi familiari legati alla salute e al benessere, come nutrizione, attività fisica, recupero, abitudini sane, benessere mentale, relazioni sociali e atteggiamenti verso un invecchiamento sano.\n\nLe tue scelte vengono combinate con una breve prova di memoria e ragionamento per produrre una stima di intrattenimento e un profilo dello stile di vita. Il punteggio è volutamente moderato, in modo che una sola risposta non possa dominare il risultato. Il quiz può offrire uno spunto leggero per riflettere sulle abitudini quotidiane e sulle priorità di benessere.\n\nIl quiz non utilizza cartelle cliniche, ricerche mediche, storia familiare, età attuale, dati sanitari o una valutazione individuale del rischio. La stima visualizzata è un meccanismo del quiz basato esclusivamente sulle risposte scelte durante questa sessione.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Sezione successiva",
-    "adNote": "Prima un breve annuncio, poi inizierà la sezione successiva.",
+    "progressLabel": "Avanzamento della previsione",
+    "progressComplete": "{value}% completato",
+    "adNote": "Prima un breve annuncio, poi si sbloccherà il segnale successivo.",
     "finalBadge": "CALCOLO FINALE",
+    "finalIcon": "⚰️",
     "finalTitle": "La tua stima è pronta",
     "finalCopy": "Un ultimo breve annuncio sblocca il tuo risultato ludico.",
     "finalButton": "Mostra la mia stima",
@@ -870,11 +880,15 @@
     ],
     "reveals": [
       {
+        "badge": "RITMO QUOTIDIANO ACQUISITO",
+        "icon": "✓",
         "title": "Abitudini quotidiane analizzate",
         "signal": "fixed",
         "message": "Il tuo ritmo quotidiano ora fa parte del profilo."
       },
       {
+        "badge": "SEGNALE ALIMENTARE AGGIUNTO",
+        "icon": "🍽️",
         "title": "Abitudini alimentari analizzate",
         "signal": "trend",
         "variants": {
@@ -884,6 +898,8 @@
         }
       },
       {
+        "badge": "SCHEMA ENERGETICO RILEVATO",
+        "icon": "⚡",
         "title": "Schema energetico rilevato",
         "signal": "trend",
         "variants": {
@@ -893,6 +909,8 @@
         }
       },
       {
+        "badge": "SEGNALE DI RECUPERO LETTO",
+        "icon": "🌙",
         "title": "Recupero analizzato",
         "signal": "trend",
         "variants": {
@@ -902,26 +920,36 @@
         }
       },
       {
+        "badge": "TEST MENTALE COMPLETATO",
+        "icon": "🧠",
         "title": "Test mentale completato",
         "signal": "fixed",
         "message": "I segnali di memoria e ragionamento sono stati aggiunti alla tua stima."
       },
       {
+        "badge": "ENERGIA SOCIALE ANALIZZATA",
+        "icon": "👥",
         "title": "Schema sociale identificato",
         "signal": "fixed",
         "message": "Il tuo stile sociale ora fa parte del profilo."
       },
       {
+        "badge": "SCHEMA DI RISCHIO AGGIUNTO",
+        "icon": "🎲",
         "title": "Schema di rischio aggiunto",
         "signal": "fixed",
         "message": "L’intervallo previsto si sta restringendo."
       },
       {
+        "badge": "FATTORE DIVERTIMENTO REGISTRATO",
+        "icon": "✨",
         "title": "Lato divertente registrato",
         "signal": "fixed",
         "message": "L’intervallo continua a restringersi."
       },
       {
+        "badge": "COERENZA VERIFICATA",
+        "icon": "📊",
         "title": "Coerenza delle risposte verificata",
         "signal": "consistency",
         "variants": {
@@ -931,6 +959,8 @@
         }
       },
       {
+        "badge": "CALCOLO COMPLETATO",
+        "icon": "✓",
         "title": "Calibrazione finale completata",
         "signal": "fixed",
         "message": "Tutti e dieci i segnali sono pronti per la stima giocosa."

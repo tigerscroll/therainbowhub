@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Answer these questions and AI will predict how long you have left to live.",
     "socialProof": "82,000+ people tried it this week",
-    "cta": "Start Quiz"
+    "cta": "Start Quiz",
+    "startPrompt": {
+      "eyebrow": "READY TO BEGIN",
+      "icon": "✓",
+      "title": "Your Prediction Is Ready ⚰️",
+      "copy": "Watch a short ad to start the quiz.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "This quiz uses everyday lifestyle clues—including routine, food, movement, sleep, stress, social energy, curiosity and small brain teasers—to create a playful personality-style result. The questions touch on familiar health and wellbeing themes such as nutrition, physical activity, recovery, healthy habits, mental wellbeing, social connection and attitudes towards healthy ageing.\n\nYour choices are combined with a short memory and reasoning check to produce an entertainment estimate and a lifestyle profile, with deliberately restrained scoring so one answer cannot dominate the outcome. It can be a light-hearted prompt for self-reflection about daily routines and wellness priorities.\n\nThe quiz does not use medical records, clinical research, family history, current age, healthcare data or an individual risk assessment. The displayed estimate is a quiz mechanic based only on the answers selected during this session.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Next section",
-    "adNote": "Short ad first — then the next section starts.",
+    "progressLabel": "Prediction progress",
+    "progressComplete": "{value}% complete",
+    "adNote": "Short ad first — then the next signal unlocks.",
     "finalBadge": "FINAL CALCULATION",
+    "finalIcon": "⚰️",
     "finalTitle": "Your estimate is ready",
     "finalCopy": "One last short ad unlocks your entertainment result.",
     "finalButton": "Reveal my estimate",
@@ -870,70 +880,90 @@
     ],
     "reveals": [
       {
-        "title": "Daily habits analysed",
+        "badge": "DAILY RHYTHM CAPTURED",
+        "icon": "✓",
+        "title": "Your daily rhythm is locked",
         "signal": "fixed",
-        "message": "Your everyday rhythm is now part of the profile."
+        "message": "Your first lifestyle signal is in. Food choices could shift the prediction next."
       },
       {
-        "title": "Food signal added",
+        "badge": "FOOD SIGNAL ADDED",
+        "icon": "🍽️",
+        "title": "Your food pattern changed the estimate",
         "signal": "trend",
         "variants": {
-          "up": "Your estimate moved upward.",
-          "steady": "Your estimate held steady.",
-          "down": "Your estimate shifted downward."
+          "up": "The prediction moved upward. Now your energy pattern goes under the lens.",
+          "steady": "The prediction held steady. Your energy pattern could change it next.",
+          "down": "The prediction shifted downward—but your energy pattern could pull it back."
         }
       },
       {
-        "title": "Energy pattern found",
+        "badge": "ENERGY PATTERN FOUND",
+        "icon": "⚡",
+        "title": "Your energy signal has been measured",
         "signal": "trend",
         "variants": {
-          "up": "Your energy signal is getting stronger.",
-          "steady": "Your energy signal looks balanced.",
-          "down": "Your energy signal is mixed so far."
+          "up": "Your energy signal strengthened the profile. Sleep and stress are next.",
+          "steady": "Your energy signal looks balanced. Sleep and stress could break the tie.",
+          "down": "Your energy signal is mixed so far. Recovery habits may change the direction."
         }
       },
       {
-        "title": "Recovery pattern analysed",
+        "badge": "RECOVERY SIGNAL READ",
+        "icon": "🌙",
+        "title": "Your recovery pattern is mapped",
         "signal": "trend",
         "variants": {
-          "up": "Your recovery signals improved the estimate.",
-          "steady": "Your recovery signals look balanced.",
-          "down": "Your recovery signals softened the estimate."
+          "up": "Recovery improved the estimate. The Brain Check now tests a different signal.",
+          "steady": "Recovery held the estimate steady. The Brain Check could shift it.",
+          "down": "Recovery softened the estimate. The Brain Check is your chance to change course."
         }
       },
       {
-        "title": "Brain check complete",
+        "badge": "BRAIN CHECK COMPLETE",
+        "icon": "🧠",
+        "title": "Your brain signal has been added",
         "signal": "fixed",
-        "message": "Memory and reasoning signals have been added to your estimate."
+        "message": "Halfway through. Memory and reasoning are now shaping the estimate alongside your habits."
       },
       {
-        "title": "Social pattern identified",
+        "badge": "SOCIAL ENERGY MAPPED",
+        "icon": "👥",
+        "title": "Your people pattern is now visible",
         "signal": "fixed",
-        "message": "Your people-and-personality style is now part of the profile."
+        "message": "Your social style is in the model. Risk and resilience are about to narrow the range."
       },
       {
-        "title": "Risk pattern added",
+        "badge": "RISK PATTERN ADDED",
+        "icon": "🎲",
+        "title": "The predicted range is narrowing",
         "signal": "fixed",
-        "message": "Your predicted range is narrowing."
+        "message": "Seven signals are locked. The Fun Factor now checks how you balance caution and curiosity."
       },
       {
-        "title": "Fun factor logged",
+        "badge": "FUN FACTOR LOGGED",
+        "icon": "✨",
+        "title": "Your wildcard signal is in",
         "signal": "fixed",
-        "message": "The range continues to narrow."
+        "message": "Only twelve choices remain. The next section checks whether your answers tell one clear story."
       },
       {
-        "title": "Answer pattern checked",
+        "badge": "CONSISTENCY CHECKED",
+        "icon": "📊",
+        "title": "Your answer pattern has been checked",
         "signal": "consistency",
         "variants": {
-          "high": "Answer consistency: High",
-          "medium": "Answer consistency: Medium",
-          "mixed": "Answer consistency: Mixed"
+          "high": "Answer consistency: High. One final calibration decides the entertainment estimate.",
+          "medium": "Answer consistency: Medium. The final calibration can still sharpen the result.",
+          "mixed": "Answer consistency: Mixed. The final calibration will decide which signal wins."
         }
       },
       {
-        "title": "Final calibration complete",
+        "badge": "CALCULATION COMPLETE",
+        "icon": "✓",
+        "title": "Your entertainment estimate is calculated",
         "signal": "fixed",
-        "message": "All ten signals are ready for the entertainment estimate."
+        "message": "All ten signals have been combined. One final short ad reveals your result."
       }
     ]
   }

@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Responda às perguntas e a IA vai prever quanto tempo ainda resta.",
     "socialProof": "Mais de 82 mil pessoas fizeram o quiz esta semana",
-    "cta": "Começar o quiz"
+    "cta": "Começar o quiz",
+    "startPrompt": {
+      "eyebrow": "TUDO PRONTO",
+      "icon": "✓",
+      "title": "A previsão está pronta ⚰️",
+      "copy": "Veja um anúncio curto para começar o quiz.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "Este quiz usa pistas do dia a dia — rotina, alimentação, movimento, sono, pressão, energia social, curiosidade e pequenos desafios mentais — para criar um resultado divertido baseado no perfil das respostas. As perguntas abordam temas conhecidos de saúde e bem-estar, como nutrição, atividade física, recuperação, hábitos saudáveis, bem-estar mental, ligações sociais e atitudes perante um envelhecimento saudável.\n\nAs escolhas são combinadas com um pequeno teste de memória e raciocínio para produzir uma estimativa de entretenimento e um perfil de estilo de vida. A pontuação é deliberadamente moderada para evitar que uma única resposta domine o resultado. O quiz pode servir como um convite leve à reflexão sobre rotinas diárias e prioridades de bem-estar.\n\nO quiz não utiliza informações médicas, estudos clínicos, histórico familiar, idade atual, dados de saúde ou uma avaliação individual de risco. A estimativa apresentada é apenas um mecanismo do quiz baseado nas respostas escolhidas durante esta sessão.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Próxima etapa",
-    "adNote": "Primeiro, um anúncio curto — depois começa a etapa seguinte.",
+    "progressLabel": "Progresso da previsão",
+    "progressComplete": "{value}% concluído",
+    "adNote": "Primeiro, um anúncio curto — depois é desbloqueado o sinal seguinte.",
     "finalBadge": "CÁLCULO FINAL",
+    "finalIcon": "⚰️",
     "finalTitle": "A estimativa está pronta",
     "finalCopy": "Um último anúncio curto dá acesso ao resultado lúdico.",
     "finalButton": "Revelar a estimativa",
@@ -870,11 +880,15 @@
     ],
     "reveals": [
       {
+        "badge": "RITMO DIÁRIO CAPTADO",
+        "icon": "✓",
         "title": "Hábitos diários analisados",
         "signal": "fixed",
         "message": "O ritmo diário já faz parte do perfil."
       },
       {
+        "badge": "SINAL ALIMENTAR ADICIONADO",
+        "icon": "🍽️",
         "title": "Hábitos alimentares analisados",
         "signal": "trend",
         "variants": {
@@ -884,6 +898,8 @@
         }
       },
       {
+        "badge": "PADRÃO DE ENERGIA ENCONTRADO",
+        "icon": "⚡",
         "title": "Padrão de energia encontrado",
         "signal": "trend",
         "variants": {
@@ -893,6 +909,8 @@
         }
       },
       {
+        "badge": "SINAL DE RECUPERAÇÃO ANALISADO",
+        "icon": "🌙",
         "title": "Recuperação analisada",
         "signal": "trend",
         "variants": {
@@ -902,26 +920,36 @@
         }
       },
       {
+        "badge": "TESTE CEREBRAL CONCLUÍDO",
+        "icon": "🧠",
         "title": "Teste cerebral concluído",
         "signal": "fixed",
         "message": "Os sinais de memória e raciocínio foram adicionados à estimativa."
       },
       {
+        "badge": "ENERGIA SOCIAL ANALISADA",
+        "icon": "👥",
         "title": "Padrão social identificado",
         "signal": "fixed",
         "message": "O estilo social já faz parte do perfil."
       },
       {
+        "badge": "PADRÃO DE RISCO ADICIONADO",
+        "icon": "🎲",
         "title": "Padrão de risco adicionado",
         "signal": "fixed",
         "message": "O intervalo previsto ficou mais curto."
       },
       {
+        "badge": "FATOR DE DIVERSÃO REGISTADO",
+        "icon": "✨",
         "title": "Lado divertido analisado",
         "signal": "fixed",
         "message": "O intervalo ficou ainda mais curto."
       },
       {
+        "badge": "CONSISTÊNCIA VERIFICADA",
+        "icon": "📊",
         "title": "Respostas verificadas",
         "signal": "consistency",
         "variants": {
@@ -931,6 +959,8 @@
         }
       },
       {
+        "badge": "CÁLCULO CONCLUÍDO",
+        "icon": "✓",
         "title": "Calibração final concluída",
         "signal": "fixed",
         "message": "Os dez sinais estão prontos para a estimativa lúdica."

@@ -167,6 +167,11 @@ for (const folder of folders) {
     fail(brain.slice(1).every((question) => Number.isInteger(question.correct)), `${folder.name}: Brain Check Q2–Q6 need correct indices.`);
     fail(source.stages?.[5]?.questions?.every((question) => Object.keys(question.answers ?? {}).length === 2), `${folder.name}: People & Personality must remain a binary recovery round.`);
     fail(source.stages?.[9]?.questions?.every((question) => question.calibration?.length === Object.keys(question.answers ?? {}).length), `${folder.name}: final calibration values must match every answer.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Years Left must retain its rewarded start and all ten rewarded stage gates.`);
+    fail(source.landing?.startPrompt?.eyebrow === "READY TO BEGIN" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Your Prediction Is Ready ⚰️" && source.landing?.startPrompt?.copy === "Watch a short ad to start the quiz." && source.landing?.startPrompt?.button === "OK", `${folder.name}/en.json: Years Left needs the approved pre-test rewarded pop-up.`);
+    fail(source.checkpoint?.progressLabel === "Prediction progress" && source.checkpoint?.progressComplete === "{value}% complete", `${folder.name}/en.json: every Years Left gate must show overall ten-stage progress.`);
+    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint.reveals.every((reveal) => typeof reveal.badge === "string" && reveal.badge.trim() && typeof reveal.icon === "string" && reveal.icon.trim()), `${folder.name}/en.json: every Years Left stage needs its own complete badge and icon.`);
+    fail(new Set(source.checkpoint?.reveals?.slice(0, 9).map((reveal) => reveal.badge)).size === 9, `${folder.name}/en.json: the first nine Years Left stage gates need distinct momentum badges.`);
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);

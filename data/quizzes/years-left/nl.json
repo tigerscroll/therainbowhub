@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Beantwoord deze vragen en AI voorspelt hoelang je nog te leven hebt.",
     "socialProof": "Meer dan 82.000 mensen deden de quiz deze week",
-    "cta": "Quiz starten"
+    "cta": "Quiz starten",
+    "startPrompt": {
+      "eyebrow": "KLAAR OM TE BEGINNEN",
+      "icon": "✓",
+      "title": "Je voorspelling is klaar ⚰️",
+      "copy": "Bekijk een korte advertentie om de quiz te starten.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "Deze quiz gebruikt alledaagse aanwijzingen zoals routine, voeding, beweging, slaap, stress, sociale energie, nieuwsgierigheid en kleine breinbrekers om een speels persoonlijkheidsprofiel te maken. De vragen gaan over herkenbare thema’s rond gezondheid en welzijn, zoals voeding, lichamelijke activiteit, herstel, gezonde gewoonten, mentaal welzijn, sociale contacten en je kijk op gezond ouder worden.\n\nJe keuzes worden gecombineerd met een korte geheugen- en redeneertoets om een entertainmentschatting en leefstijlprofiel te maken. De puntentelling blijft bewust beperkt, zodat één antwoord nooit het hele resultaat kan bepalen. De quiz kan op een luchtige manier aanzetten tot nadenken over dagelijkse routines en persoonlijke welzijnsdoelen.\n\nDe quiz gebruikt geen medische dossiers, klinisch onderzoek, familiegeschiedenis, huidige leeftijd, gezondheidsgegevens of persoonlijke risicobeoordeling. De weergegeven schatting is een quizmechanisme dat alleen is gebaseerd op de antwoorden die je tijdens deze sessie kiest.",
@@ -855,8 +862,11 @@
   ],
   "checkpoint": {
     "nextPrefix": "Volgende onderdeel",
-    "adNote": "Eerst een korte advertentie — daarna begint het volgende onderdeel.",
+    "progressLabel": "Voortgang van de voorspelling",
+    "progressComplete": "{value}% voltooid",
+    "adNote": "Eerst een korte advertentie — daarna wordt het volgende signaal ontgrendeld.",
     "finalBadge": "EINDBEREKENING",
+    "finalIcon": "⚰️",
     "finalTitle": "Je schatting is klaar",
     "finalCopy": "Eén laatste korte advertentie ontgrendelt je speelse resultaat.",
     "finalButton": "Toon mijn schatting",
@@ -870,11 +880,15 @@
     ],
     "reveals": [
       {
+        "badge": "DAGRITME VASTGELEGD",
+        "icon": "✓",
         "title": "Dagelijkse gewoontes geanalyseerd",
         "signal": "fixed",
         "message": "Je dagelijkse ritme maakt nu deel uit van het profiel."
       },
       {
+        "badge": "VOEDINGSSIGNAAL TOEGEVOEGD",
+        "icon": "🍽️",
         "title": "Eetpatroon toegevoegd",
         "signal": "trend",
         "variants": {
@@ -884,6 +898,8 @@
         }
       },
       {
+        "badge": "ENERGIEPATROON GEVONDEN",
+        "icon": "⚡",
         "title": "Energiepatroon gevonden",
         "signal": "trend",
         "variants": {
@@ -893,6 +909,8 @@
         }
       },
       {
+        "badge": "HERSTELSIGNAAL GELEZEN",
+        "icon": "🌙",
         "title": "Herstel geanalyseerd",
         "signal": "trend",
         "variants": {
@@ -902,26 +920,36 @@
         }
       },
       {
+        "badge": "HERSENCHECK VOLTOOID",
+        "icon": "🧠",
         "title": "Hersencheck voltooid",
         "signal": "fixed",
         "message": "Geheugen- en redeneersignalen zijn aan je schatting toegevoegd."
       },
       {
+        "badge": "SOCIALE ENERGIE IN KAART",
+        "icon": "👥",
         "title": "Sociaal patroon herkend",
         "signal": "fixed",
         "message": "Je sociale stijl maakt nu deel uit van het profiel."
       },
       {
+        "badge": "RISICOPATROON TOEGEVOEGD",
+        "icon": "🎲",
         "title": "Risicopatroon toegevoegd",
         "signal": "fixed",
         "message": "Het voorspelde bereik wordt smaller."
       },
       {
+        "badge": "SPEELSE FACTOR VASTGELEGD",
+        "icon": "✨",
         "title": "Speelse kant vastgelegd",
         "signal": "fixed",
         "message": "Het bereik wordt verder versmald."
       },
       {
+        "badge": "SAMENHANG GECONTROLEERD",
+        "icon": "📊",
         "title": "Samenhang in antwoorden gecontroleerd",
         "signal": "consistency",
         "variants": {
@@ -931,6 +959,8 @@
         }
       },
       {
+        "badge": "BEREKENING VOLTOOID",
+        "icon": "✓",
         "title": "Eindkalibratie voltooid",
         "signal": "fixed",
         "message": "Alle tien signalen zijn klaar voor de speelse schatting."
