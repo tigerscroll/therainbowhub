@@ -188,7 +188,7 @@ for (const folder of folders) {
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2800), `${folder.name}/en.json: automatic study cues need at least 2800ms.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and two rewarded gates changed.`);
-    fail(config.engine?.resultAds === undefined, `${folder.name}: Memory result display placements must remain disabled.`);
+    fail(config.engine?.resultAds?.adUnitPath === "/22677279144/display" && config.engine?.resultAds?.count === 1 && JSON.stringify(config.engine?.resultAds?.sizes) === JSON.stringify([[300, 600], [336, 280], [300, 250]]), `${folder.name}: Memory needs one approved inline result display placement.`);
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: Memory final gate or compact result settings changed.`);
@@ -351,7 +351,7 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.delay === undefined), "chef/en.json: compact questions must use the shared 450ms transition.");
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, "chef: compact timing and 80% target changed.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.");
-    fail(config.engine?.resultAds === undefined, "chef: display placements must remain disabled.");
+    fail(config.engine?.resultAds?.adUnitPath === "/22677279144/display" && config.engine?.resultAds?.count === 1 && JSON.stringify(config.engine?.resultAds?.sizes) === JSON.stringify([[300, 600], [336, 280], [300, 250]]), "chef: compact results need one approved inline display placement.");
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, "chef/en.json: compact result must lead with percentage and hide the redundant best-round field.");
@@ -802,7 +802,7 @@ for (const folder of folders) {
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Vintage must launch in English only.`);
     fail(config.engine?.flow === "linear" && config.engine?.scoring === "correct-answer", `${folder.name}: Vintage must use the one-round scored flow.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Vintage needs rewarded Start and result gates with three unavailable attempts.`);
-    fail(config.engine?.resultAds === undefined, `${folder.name}: Vintage must not configure display ads.`);
+    fail(config.engine?.resultAds?.adUnitPath === "/22677279144/display" && config.engine?.resultAds?.count === 1 && JSON.stringify(config.engine?.resultAds?.sizes) === JSON.stringify([[300, 600], [336, 280], [300, 250]]), `${folder.name}: Vintage needs one approved inline result display placement.`);
     fail(source.title === "Only 7% Can Name These Vintage Items", `${folder.name}/en.json: Vintage title changed.`);
     fail(source.stages?.length === 1 && sourceQuestions.length === 10, `${folder.name}/en.json: Vintage needs one round of ten questions.`);
     fail(JSON.stringify(sourceQuestions.map((question) => question.id)) === JSON.stringify(expectedIds), `${folder.name}/en.json: Vintage question IDs or order changed.`);
