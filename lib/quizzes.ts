@@ -117,6 +117,23 @@ export type QuizResultProfile = {
 };
 
 export type QuizScoreDimension = { label: string; categories: string[] };
+export type QuizResultReportDetails = {
+  analysisTitle: string;
+  analysisCopy: string;
+  roadmapTitle: string;
+  roadmapIntro: string;
+  roadmapItems: string[];
+  positionTitle: string;
+  positionCopy: string;
+  measuredTitle: string;
+  measuredIntro: string;
+  measuredAreas: Array<{ title: string; copy: string }>;
+  tipsTitle: string;
+  tipsIntro: string;
+  tips: Array<{ title: string; copy: string }>;
+  finalTitle: string;
+  finalCopy: string;
+};
 export type QuizResultConfig = {
   profileName: string;
   profiles: QuizResultProfile[];
@@ -129,6 +146,15 @@ export type QuizResultConfig = {
     consistency: string;
     consistencyLabels: { high: string; medium: string; mixed: string };
     disclaimer: string;
+    insights?: {
+      overview: string;
+      estimate: string;
+      signal: string;
+      consistency: string;
+      breakdown: string;
+      snapshot: string;
+      details?: QuizResultReportDetails;
+    };
   };
   profileReveal?: {
     eyebrow: string;
@@ -227,23 +253,7 @@ export type QuizScoreResultCopy = {
     snapshot: string;
     targetReached?: string;
     targetRemaining?: string;
-    details?: {
-      analysisTitle: string;
-      analysisCopy: string;
-      roadmapTitle: string;
-      roadmapIntro: string;
-      roadmapItems: string[];
-      positionTitle: string;
-      positionCopy: string;
-      measuredTitle: string;
-      measuredIntro: string;
-      measuredAreas: Array<{ title: string; copy: string }>;
-      tipsTitle: string;
-      tipsIntro: string;
-      tips: Array<{ title: string; copy: string }>;
-      finalTitle: string;
-      finalCopy: string;
-    };
+    details?: QuizResultReportDetails;
   };
 };
 export type QuizMatchResultCopy = {
@@ -710,7 +720,8 @@ function normalizeLocale(
           }
         });
       }
-      if (presentation === "icons" && (!rawQuestion.icons || rawQuestion.icons.length !== choices.length)) throw new Error(`${file}: icon question ${index + 1} needs one icon per answer.`);
+      if (presentation === "icons" && !rawQuestion.icons) throw new Error(`${file}: icon question ${index + 1} needs one icon per answer.`);
+      if (rawQuestion.icons && rawQuestion.icons.length !== choices.length) throw new Error(`${file}: question ${index + 1} needs one icon per answer.`);
       if (presentation === "scale" && choices.length !== 5) throw new Error(`${file}: scale question ${index + 1} needs five stops.`);
       let visual: QuizQuestionVisual | undefined;
       if (["sequence", "grid", "code", "spatial"].includes(presentation)) {
@@ -815,6 +826,31 @@ function normalizeLocale(
       .forEach((key) => text(matchCopy[key], `results.match.${key}`, file));
     const traitLabels = object(matchCopy.traitLabels, "results.match.traitLabels", file);
     if (manifest.engine.match?.traits.some((trait) => typeof traitLabels[trait] !== "string" || !String(traitLabels[trait]).trim())) throw new Error(`${file}: results.match.traitLabels must cover every configured trait.`);
+  }
+  if (value.results.estimate !== undefined) {
+    const estimate = value.results.estimate;
+    (["eyebrow", "ageSuffix", "strongestSignal", "wildcard", "consistency", "disclaimer"] as const)
+      .forEach((key) => text(estimate[key], `results.estimate.${key}`, file));
+    (["high", "medium", "mixed"] as const)
+      .forEach((key) => text(estimate.consistencyLabels?.[key], `results.estimate.consistencyLabels.${key}`, file));
+    if (estimate.insights !== undefined) {
+      const insights = estimate.insights;
+      (["overview", "estimate", "signal", "consistency", "breakdown", "snapshot"] as const)
+        .forEach((key) => text(insights[key], `results.estimate.insights.${key}`, file));
+      if (insights.details !== undefined) {
+        const details = insights.details;
+        (["analysisTitle", "analysisCopy", "roadmapTitle", "roadmapIntro", "positionTitle", "positionCopy", "measuredTitle", "measuredIntro", "tipsTitle", "tipsIntro", "finalTitle", "finalCopy"] as const)
+          .forEach((key) => text(details[key], `results.estimate.insights.details.${key}`, file));
+        const roadmapItems = strings(details.roadmapItems, "results.estimate.insights.details.roadmapItems", file);
+        if (roadmapItems.length !== 4) throw new Error(`${file}: results.estimate.insights.details.roadmapItems needs exactly four items.`);
+        if (!Array.isArray(details.measuredAreas) || details.measuredAreas.length !== 3) throw new Error(`${file}: results.estimate.insights.details.measuredAreas needs exactly three items.`);
+        if (!Array.isArray(details.tips) || details.tips.length !== 3) throw new Error(`${file}: results.estimate.insights.details.tips needs exactly three items.`);
+        [...details.measuredAreas, ...details.tips].forEach((item, index) => {
+          text(item.title, `results.estimate.insights.details.items[${index}].title`, file);
+          text(item.copy, `results.estimate.insights.details.items[${index}].copy`, file);
+        });
+      }
+    }
   }
   if (manifest.engine.scoring === "correct-answer" && value.results.score) {
     (["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer"] as const)

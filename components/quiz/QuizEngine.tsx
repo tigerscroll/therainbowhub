@@ -61,6 +61,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
     && visual.items.every((item) => item.length <= 7);
   const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
+  const isFourStepSequence = question.presentation === "sequence" && visual.items.length === 4;
   const needsMobileTwoColumns = question.presentation !== "sequence"
     && question.presentation !== "code"
     && columnCount >= 4
@@ -73,7 +74,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}`}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}`}
       style={visualStyle}
     >
       {visual.items.map((item, index) => (
@@ -92,10 +93,13 @@ function ChoiceQuestion({
   onAnswer,
   question,
 }: QuestionRendererProps) {
+  const hasAnswerIcons = question.icons?.length === question.choices.length;
+  const usesCompactMobileGrid = question.choices.length === 4
+    && question.choices.every((choice) => choice.length <= 22);
   return (
     <>
     <QuestionVisual question={question} />
-    <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
+    <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
         const icon = question.icons?.[index];
@@ -122,14 +126,14 @@ function ChoiceQuestion({
             role={question.presentation === "scale" ? "radio" : undefined}
             type="button"
           >
-            {question.presentation === "icons" ? (
+            {hasAnswerIcons ? (
               <span className="quiz-engine__answer-icon" aria-hidden="true">
                 {typeof icon === "string" && icon.startsWith("/quizzes/")
                   ? <img alt="" decoding="async" src={icon} />
                   : icon}
               </span>
             ) : null}
-            {question.presentation !== "icons" && question.presentation !== "scale" ? <span>{String.fromCharCode(65 + index)}</span> : null}
+            {!hasAnswerIcons && question.presentation !== "scale" ? <span>{String.fromCharCode(65 + index)}</span> : null}
             {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
             <strong>{choice}</strong>
           </button>
@@ -302,13 +306,14 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   );
 
   useEffect(() => {
-    if (screen !== "results" || !quiz.engine.resultAds || !quiz.result.score?.insights?.details || !resultAdIds.length) return;
+    const hasResultReport = quiz.result.score?.insights?.details || quiz.result.estimate?.insights?.details;
+    if (screen !== "results" || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length) return;
     return mountDisplayAds({
       adUnitPath: quiz.engine.resultAds.adUnitPath,
       elementIds: resultAdIds,
       sizes: quiz.engine.resultAds.sizes,
     });
-  }, [quiz.engine.resultAds, quiz.result.score?.insights?.details, resultAdIds, screen]);
+  }, [quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, resultAdIds, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -675,9 +680,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
     const scoreInsights = scoreCopy?.insights;
     const scoreDetails = scoreInsights?.details;
-    const resultAds = quiz.engine.resultAds && scoreDetails && resultAdIds.length === 5;
+    const estimateInsights = estimate?.insights;
+    const resultInsights = scoreInsights ?? estimateInsights;
+    const resultDetails = scoreDetails ?? estimateInsights?.details;
+    const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length === 5;
     const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
     const targetRemaining = Math.max(0, targetCorrect - result.score);
+    const estimateMinimum = quiz.engine.estimate?.minAge ?? 0;
+    const estimateMaximum = quiz.engine.estimate?.maxAge ?? 100;
+    const estimateRange = Math.max(1, estimateMaximum - estimateMinimum);
+    const estimatePosition = result.estimatedAge === undefined
+      ? 0
+      : Math.min(100, Math.max(0, ((result.estimatedAge - estimateMinimum) / estimateRange) * 100));
     return (
       <>
       {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
@@ -722,10 +736,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
         {resultAds ? (
           <section className="quiz-engine__result-roadmap">
-            <h3>{scoreDetails.roadmapTitle}</h3>
-            <p>{scoreDetails.roadmapIntro}</p>
+            <h3>{resultDetails.roadmapTitle}</h3>
+            <p>{resultDetails.roadmapIntro}</p>
             <ol>
-              {scoreDetails.roadmapItems.map((item, index) => <li key={item}><span>{index + 1}</span>{item}</li>)}
+              {resultDetails.roadmapItems.map((item, index) => <li key={item}><span>{index + 1}</span>{item}</li>)}
             </ol>
           </section>
         ) : null}
@@ -743,10 +757,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </div>
           </section>
         ) : null}
+        {resultAds && estimateInsights ? (
+          <section className="quiz-engine__result-metrics">
+            <h3>{estimateInsights.overview}</h3>
+            <div>
+              <article><strong>{result.estimatedAge}</strong><span>{estimateInsights.estimate}</span></article>
+              <article><strong>{result.strongestSignal}</strong><span>{estimateInsights.signal}</span></article>
+              <article><strong>{consistency}</strong><span>{estimateInsights.consistency}</span></article>
+            </div>
+          </section>
+        ) : null}
         {resultAds ? (
           <section className="quiz-engine__result-analysis">
-            <h3>{scoreDetails.analysisTitle}</h3>
-            <p>{scoreDetails.analysisCopy}</p>
+            <h3>{resultDetails.analysisTitle}</h3>
+            <p>{resultDetails.analysisCopy}</p>
           </section>
         ) : null}
         {estimate ? (
@@ -775,14 +799,26 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         {resultAds ? (
           <section className="quiz-engine__result-position">
-            <h3>{scoreDetails.positionTitle}</h3>
-            <p>{scoreDetails.positionCopy}</p>
-            <div className="quiz-engine__result-position-track">
-              <i style={{ width: `${result.percentage}%` }} />
-              <b style={{ left: `${Math.min(96, Math.max(4, result.percentage))}%` }}>{result.percentage}%</b>
-              <em style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }} />
-            </div>
-            <div className="quiz-engine__result-position-labels"><span>0%</span><span>50%</span><strong style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }}>{targetCorrect}/{result.total}</strong><span>100%</span></div>
+            <h3>{resultDetails.positionTitle}</h3>
+            <p>{resultDetails.positionCopy}</p>
+            {estimate && result.estimatedAge !== undefined ? (
+              <>
+                <div className="quiz-engine__result-position-track">
+                  <i style={{ width: `${estimatePosition}%` }} />
+                  <b style={{ left: `${Math.min(96, Math.max(4, estimatePosition))}%` }}>{result.estimatedAge}</b>
+                </div>
+                <div className="quiz-engine__result-position-labels"><span>{estimateMinimum}</span><span>{Math.round((estimateMinimum + estimateMaximum) / 2)}</span><span>{estimateMaximum}</span></div>
+              </>
+            ) : (
+              <>
+                <div className="quiz-engine__result-position-track">
+                  <i style={{ width: `${result.percentage}%` }} />
+                  <b style={{ left: `${Math.min(96, Math.max(4, result.percentage))}%` }}>{result.percentage}%</b>
+                  <em style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }} />
+                </div>
+                <div className="quiz-engine__result-position-labels"><span>0%</span><span>50%</span><strong style={{ left: `${(quiz.engine.targetRatio ?? .8) * 100}%` }}>{targetCorrect}/{result.total}</strong><span>100%</span></div>
+              </>
+            )}
           </section>
         ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
@@ -796,9 +832,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span>{translations.quiz.profile}</span>
           </div>
         </div> : null}
-        {!estimate && Object.keys(result.dimensionScores).length ? (
+        {(!estimate || resultAds) && Object.keys(result.dimensionScores).length ? (
           <div className="quiz-engine__dimensions">
-            {resultAds && scoreInsights ? <h3>{scoreInsights.breakdown}</h3> : null}
+            {resultAds && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
             {Object.entries(result.dimensionScores).map(([label, value]) => (
               <div className="quiz-engine__dimension" key={label}>
                 <div><span>{label}</span><strong>{value}%</strong></div>
@@ -810,28 +846,28 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-measured">
-            <h3>{scoreDetails.measuredTitle}</h3>
-            <p>{scoreDetails.measuredIntro}</p>
+            <h3>{resultDetails.measuredTitle}</h3>
+            <p>{resultDetails.measuredIntro}</p>
             <div>
-              {scoreDetails.measuredAreas.map((item, index) => (
+              {resultDetails.measuredAreas.map((item, index) => (
                 <article key={item.title}><span>{index + 1}</span><h4>{item.title}</h4><p>{item.copy}</p></article>
               ))}
             </div>
           </section>
         ) : null}
-        {resultAds && scoreInsights ? (
+        {resultAds && resultInsights ? (
           <section className="quiz-engine__result-takeaway">
-            <h3>{scoreInsights.snapshot}</h3>
+            <h3>{resultInsights.snapshot}</h3>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[4]} /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-tips">
-            <h3>{scoreDetails.tipsTitle}</h3>
-            <p>{scoreDetails.tipsIntro}</p>
+            <h3>{resultDetails.tipsTitle}</h3>
+            <p>{resultDetails.tipsIntro}</p>
             <div>
-              {scoreDetails.tips.map((item, index) => (
+              {resultDetails.tips.map((item, index) => (
                 <article key={item.title}><span>{index + 1}</span><div><h4>{item.title}</h4><p>{item.copy}</p></div></article>
               ))}
             </div>
@@ -839,13 +875,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         {resultAds ? (
           <section className="quiz-engine__result-final-summary">
-            <span className="quiz-engine__eyebrow">{scoreDetails.finalTitle}</span>
-            <strong>{result.percentage}%</strong>
+            <span className="quiz-engine__eyebrow">{resultDetails.finalTitle}</span>
+            <strong>{estimate ? result.estimatedAge : `${result.percentage}%`}</strong>
             <h3>{result.profile.title}</h3>
             <p>
-              {scoreDetails.finalCopy
+              {resultDetails.finalCopy
                 .replace("{score}", String(result.score))
-                .replace("{total}", String(result.total))}
+                .replace("{total}", String(result.total))
+                .replace("{age}", String(result.estimatedAge ?? ""))
+                .replace("{profile}", result.profile.title)}
             </p>
           </section>
         ) : null}
