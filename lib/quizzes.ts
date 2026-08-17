@@ -218,6 +218,14 @@ export type QuizScoreResultCopy = {
   showPercentage?: boolean;
   showBestRound?: boolean;
   retryLabel?: string;
+  insights?: {
+    overview: string;
+    correct: string;
+    missed: string;
+    target: string;
+    breakdown: string;
+    snapshot: string;
+  };
 };
 export type QuizMatchResultCopy = {
   academicChallenge: string;
@@ -796,6 +804,10 @@ function normalizeLocale(
     if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
     if (value.results.score.showBestRound !== undefined && typeof value.results.score.showBestRound !== "boolean") throw new Error(`${file}: results.score.showBestRound must be a boolean.`);
     if (value.results.score.retryLabel !== undefined) text(value.results.score.retryLabel, "results.score.retryLabel", file);
+    if (value.results.score.insights !== undefined) {
+      (["overview", "correct", "missed", "target", "breakdown", "snapshot"] as const)
+        .forEach((key) => text(value.results.score?.insights?.[key], `results.score.insights.${key}`, file));
+    }
   }
   if (value.about?.howToPlay) {
     text(value.about.howToPlay.title, "about.howToPlay.title", file);

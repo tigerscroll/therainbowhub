@@ -263,35 +263,6 @@ function ResultDisplayAd({ elementId }: { elementId: string }) {
   );
 }
 
-function QuizResultReading({ panel, quiz, title }: { panel: number; quiz: Quiz; title: string }) {
-  if (!quiz.footer) return null;
-  const topicParagraphs = quiz.footer.topicText?.split(/\n\s*\n/).filter(Boolean) ?? [];
-  const aboutParagraphs = quiz.footer.aboutText.split(/\n\s*\n/).filter(Boolean);
-  if (panel < 3 && !topicParagraphs[panel]) return null;
-  if (panel === 3 && !aboutParagraphs.length) return null;
-
-  return (
-    <aside className="quiz-engine__about quiz-engine__result-reading">
-      {panel === 0 ? <h2>{title}</h2> : null}
-      {panel < 3 ? <p>{topicParagraphs[panel]}</p> : null}
-      {panel === 2 && quiz.footer.howToPlay ? (
-        <section className="quiz-engine__how-to-play">
-          <h3>{quiz.footer.howToPlay.title}</h3>
-          <ol>
-            {quiz.footer.howToPlay.steps.map((step, index) => (
-              <li key={step}>
-                <span aria-hidden="true">{index + 1}</span>
-                <p>{step}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-      ) : null}
-      {panel === 3 ? aboutParagraphs.map((paragraph, index) => <p className="quiz-engine__about-disclaimer" key={`result-about-${index}`}>{paragraph}</p>) : null}
-    </aside>
-  );
-}
-
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
@@ -707,7 +678,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <>
       {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
       <section
-        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}`}
+        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${resultAds ? " quiz-engine__results--with-ads" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
       >
         {profileReveal ? (
@@ -745,6 +716,17 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
+        {resultAds ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
+        {resultAds && scoreCopy?.insights ? (
+          <section className="quiz-engine__result-metrics">
+            <h3>{scoreCopy.insights.overview}</h3>
+            <div>
+              <article><strong>{result.score}</strong><span>{scoreCopy.insights.correct}</span></article>
+              <article><strong>{result.total - result.score}</strong><span>{scoreCopy.insights.missed}</span></article>
+              <article><strong>{Math.ceil(result.total * (quiz.engine.targetRatio ?? .8))}</strong><span>{scoreCopy.insights.target}</span></article>
+            </div>
+          </section>
+        ) : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
@@ -752,7 +734,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <div><dt>{estimate.consistency}</dt><dd>{consistency}</dd></div>
           </dl>
         ) : !scoreCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
-        <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+        {!resultAds ? <p className="quiz-engine__result-copy">{result.profile.copy}</p> : null}
         {matchCopy ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--match">
             <div><dt>{matchCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
@@ -769,6 +751,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
+        {resultAds ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.score}/{result.total}</strong>
@@ -781,6 +764,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         </div> : null}
         {!estimate && Object.keys(result.dimensionScores).length ? (
           <div className="quiz-engine__dimensions">
+            {resultAds && scoreCopy?.insights ? <h3>{scoreCopy.insights.breakdown}</h3> : null}
             {Object.entries(result.dimensionScores).map(([label, value]) => (
               <div className="quiz-engine__dimension" key={label}>
                 <div><span>{label}</span><strong>{value}%</strong></div>
@@ -789,6 +773,14 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
+        {resultAds ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
+        {resultAds && scoreCopy?.insights ? (
+          <section className="quiz-engine__result-takeaway">
+            <h3>{scoreCopy.insights.snapshot}</h3>
+            <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+          </section>
+        ) : null}
+        {resultAds ? <ResultDisplayAd elementId={resultAdIds[4]} /> : null}
         {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}
@@ -796,18 +788,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           {scoreCopy?.retryLabel ?? translations.quiz.restartTest}
         </button>
       </section>
-      {resultAds ? (
-        <>
-          <ResultDisplayAd elementId={resultAdIds[1]} />
-          <QuizResultReading panel={0} quiz={quiz} title={translations.quiz.aboutTitle} />
-          <ResultDisplayAd elementId={resultAdIds[2]} />
-          <QuizResultReading panel={1} quiz={quiz} title={translations.quiz.aboutTitle} />
-          <ResultDisplayAd elementId={resultAdIds[3]} />
-          <QuizResultReading panel={2} quiz={quiz} title={translations.quiz.aboutTitle} />
-          <ResultDisplayAd elementId={resultAdIds[4]} />
-          <QuizResultReading panel={3} quiz={quiz} title={translations.quiz.aboutTitle} />
-        </>
-      ) : <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
+      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
   }
