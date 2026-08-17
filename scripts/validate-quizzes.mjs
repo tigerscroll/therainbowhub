@@ -319,55 +319,47 @@ for (const folder of folders) {
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Mechanic rewarded fallback must require three genuine unavailable attempts.`);
   }
   if (folder.name === "chef") {
-    const expectedCategories = {
-      kitchen_fundamentals: 10,
-      ingredients_flavour: 10,
-      heat_methods: 10,
-      baking_pastry: 10,
-      kitchen_maths: 10,
-      safety_service: 10,
+    const specification = {
+      ids: ["chef-r2q1", "chef-r3q1", "chef-r4q2", "chef-r5q2", "chef-r6q1", "chef-r7q2", "chef-r9q1", "chef-r9q6", "chef-r10q2", "chef-r10q6"],
+      categories: { kitchen_fundamentals: 2, ingredients_flavour: 2, heat_methods: 2, baking_pastry: 1, kitchen_maths: 1, safety_service: 2 },
+      positions: [2, 2, 3, 3],
     };
-    const expectedTitles = ["Kitchen Induction", "Prep Bench 🔪", "Control the Heat 🔥", "Flavour Lab 🧂", "Pastry Precision 🥐", "Service Rush 🍽️", "Kitchen Maths ⏱️", "Spot the Mistake 👀", "Sous Chef Decisions", "Chef’s Table 👨‍🍳"];
-    const expectedDifficulties = ["Foundation", "Developing", "Developing", "Skilled", "Skilled", "Pressure", "Pressure", "Advanced", "Expert", "Final Assessment"];
-    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
+    const counts = Object.fromEntries(Object.keys(specification.categories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
     const correctPositions = sourceQuestions.reduce((positions, question) => {
       positions[question.correct] = (positions[question.correct] ?? 0) + 1;
       return positions;
     }, Array(4).fill(0));
-    const sprint = source.stages?.[5]?.questions ?? [];
-    const inspections = source.stages?.[7]?.questions ?? [];
-    const expert = source.stages?.[8]?.questions ?? [];
-    const final = source.stages?.[9]?.questions ?? [];
     const serialized = JSON.stringify(source);
-    const preRevealCopy = JSON.stringify({ landing: source.landing, about: source.about, firstStage: source.stages?.[0]?.title });
 
-    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), "chef: Career Mode must launch in English only.");
-    fail(config.engine?.scoring === "correct-answer" && config.engine?.flow === "staged", "chef: Career Mode needs staged correct-answer scoring.");
-    fail(source.title === "Only 12% Pass This Chef's Entrance Exam" && source.landing?.cta === "Start Quiz" && source.landing?.socialProof === "81,000+ people played this", "chef/en.json: approved landing copy changed.");
-    fail(!/career|ten (?:levels|kitchens)|sixty|60 questions|head chef/i.test(preRevealCopy), "chef/en.json: the ten-kitchen career journey must remain hidden before the induction result.");
-    fail(source.landing?.startPrompt?.title === "The Kitchen Is Ready 🔥" && source.landing?.startPrompt?.button === "OK", "chef/en.json: the rewarded start prompt is incomplete.");
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: Career Mode needs ten kitchens of six questions.");
-    fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedTitles), "chef/en.json: kitchen order or titles changed.");
-    fail(sourceQuestions.length === 60 && new Set(sourceQuestionIds).size === 60, "chef/en.json: Career Mode needs 60 stable, unique question ids.");
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), "chef/en.json: every kitchen-skill category needs exactly ten questions.");
-    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), "chef/en.json: correct positions must be exactly 15/15/15/15.");
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4 && Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4 && typeof question.explanation === "string" && question.explanation.trim()), "chef/en.json: every question needs four unique choices, one answer and an explanation.");
-    fail(source.stages.every((stage) => new Set(stage.questions.map((question) => question.interactionStyle)).size >= 3), "chef/en.json: every kitchen needs at least three interaction styles.");
-    fail(source.stages.every((stage) => stage.questions.every((question, index, questions) => index < 2 || question.interactionStyle !== questions[index - 1].interactionStyle || question.interactionStyle !== questions[index - 2].interactionStyle)), "chef/en.json: one interaction style cannot appear three times consecutively.");
-    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350) && sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, "chef/en.json: Service Rush needs six 350ms questions and five short prompts.");
-    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), "chef/en.json: only Service Rush may override 450ms.");
-    fail(inspections.length === 6 && inspections.every((question) => question.visual && ["code", "grid", "sequence", "spatial"].includes(question.presentation)), "chef/en.json: Spot the Mistake needs six visible inspection records.");
-    fail(expert.length === 6 && expert.every((question) => typeof question.context === "string" && question.context.trim().split(/[.!?]+/).filter(Boolean).length >= 2) && expert.filter((question) => question.interactionStyle === "prioritisation").length >= 4, "chef/en.json: every Sous Chef case needs multiple clues and at least four prioritisation decisions.");
-    fail(final.length === 6 && final.every((question) => question.reasoningSteps === 2 && (question.context || question.visual)), "chef/en.json: every Chef’s Table question needs visible two-step reasoning.");
-    fail(source.stages?.[6]?.questions?.slice(0, 5).every((question) => /recipe|portion|table|tray|oven|service|batch|ratio/i.test(`${question.question} ${question.context ?? ""}`)), "chef/en.json: Kitchen Maths must remain attached to kitchen situations.");
-    fail(JSON.stringify(source.career?.stages?.map((stage) => stage.difficulty)) === JSON.stringify(expectedDifficulties), "chef/en.json: Career Mode difficulty order changed.");
-    fail(source.career?.stages?.length === 10 && source.career.stages.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && (index === 9 || stage.next)), "chef/en.json: every kitchen needs unique result bands and a next-kitchen teaser.");
-    fail([2, 5, 8, 9].every((index) => source.career?.stages?.[index]?.promotion) && source.career?.stages?.every((stage, index) => [2, 5, 8, 9].includes(index) || stage.promotion === undefined), "chef/en.json: promotion moments are incomplete.");
-    fail(source.career?.reportUnlock?.checks?.length === 5 && /short ad/i.test(source.career?.reportUnlock?.adNote ?? ""), "chef/en.json: optional rewarded Full Kitchen Report is incomplete.");
-    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: start and ten result reward gates need three genuine unavailable attempts.");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), "chef: compact quiz must launch in English only.");
+    fail(config.engine?.scoring === "correct-answer" && config.engine?.flow === "linear", "chef: compact quiz must use linear correct-answer scoring.");
+    fail(source.title === "Only 12% Pass This Chef's Entrance Exam", "chef/en.json: approved headline changed.");
+    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", "chef/en.json: landing social proof or CTA changed.");
+    fail(source.landing?.startPrompt?.button === "OK" && /short ad/i.test(source.landing?.startPrompt?.copy ?? ""), "chef/en.json: a clean pre-start rewarded prompt is required.");
+    fail(source.progressLabel === "complete", "chef/en.json: compact quiz must show percentage completion rather than a round number.");
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, "chef/en.json: compact quiz needs one round of ten questions.");
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "chef/en.json: compact quiz screens must not use separate context banners.");
+    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "chef/en.json: compact questions must contain no more than twenty words.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(specification.ids), "chef/en.json: approved ten-question selection or order changed.");
+    fail(JSON.stringify(counts) === JSON.stringify(specification.categories), "chef/en.json: compact skill-category distribution changed.");
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), "chef/en.json: every compact question needs four unique choices.");
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4 && typeof question.explanation === "string" && question.explanation.trim()), "chef/en.json: every compact question needs one valid answer and explanation.");
+    fail(JSON.stringify(correctPositions) === JSON.stringify(specification.positions), "chef/en.json: compact correct-answer positions must keep their approved irregular balance.");
+    fail(sourceQuestions.every((question) => question.delay === undefined), "chef/en.json: compact questions must use the shared 450ms transition.");
+    fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, "chef: compact timing and 80% target changed.");
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.");
     fail(config.engine?.resultAds === undefined, "chef: display placements must remain disabled.");
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
+    fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");
+    fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, "chef/en.json: compact result must lead with percentage and hide the redundant best-round field.");
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
+    const details = source.results?.score?.insights?.details;
+    fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, "chef/en.json: complete long-form result report is required.");
+    fail(source.about?.howToPlay?.steps?.length === 3 && !/all ten (?:rounds|stages)/i.test(source.about?.body ?? ""), "chef/en.json: About and How to Play must describe the compact flow.");
     fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), "chef/en.json: Chef must retain worldwide metric or unit-neutral wording.");
-    fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.insights?.details, "chef/en.json: compact final score and full report copy are required.");
   }
   if (["grammar", "paramedic"].includes(folder.name)) {
     const specifications = {
