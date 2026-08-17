@@ -91,39 +91,27 @@
     ],
     "dimensions": [
       {
-        "label": "Sentence structure",
+        "label": "Sentence building",
         "categories": [
-          "sentence_structure"
+          "sentence_building"
         ]
       },
       {
-        "label": "Verbs and agreement",
+        "label": "Verbs and pronouns",
         "categories": [
-          "verbs_agreement"
+          "verbs_pronouns"
         ]
       },
       {
-        "label": "Punctuation and apostrophes",
+        "label": "Punctuation",
         "categories": [
-          "punctuation_apostrophes"
+          "punctuation"
         ]
       },
       {
-        "label": "Pronouns and reference",
+        "label": "Precision",
         "categories": [
-          "pronouns_reference"
-        ]
-      },
-      {
-        "label": "Modifiers and word choice",
-        "categories": [
-          "modifiers_word_choice"
-        ]
-      },
-      {
-        "label": "Editing in context",
-        "categories": [
-          "editing_context"
+          "precision"
         ]
       }
     ],
@@ -154,7 +142,7 @@
           "roadmapItems": [
             "Score analysis",
             "Strongest grammar skill",
-            "Six-skill breakdown",
+            "Four-skill breakdown",
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
@@ -203,30 +191,29 @@
       "questions": [
         {
           "id": "grammar-r2q3",
-          "question": "Which sentence is complete and correctly punctuated?",
+          "question": "Although the rain stopped ___ the path remained slippery. What belongs in the gap?",
           "answers": [
-            "Although the rain stopped.",
-            "The rain stopped, the path stayed wet.",
-            "The rain stopped because, the path stayed wet.",
-            "Although the rain stopped, the path remained slippery."
+            ";",
+            ":",
+            ".",
+            ","
           ],
           "correct": 3,
-          "category": "sentence_structure",
-          "explanation": "The introductory dependent clause is followed by a comma and a complete main clause."
+          "category": "punctuation",
+          "explanation": "A comma follows the introductory dependent clause before the complete main clause begins."
         },
         {
           "id": "grammar-r10q1",
-          "question": "Which sentence is grammatically complete and shows a contrast?",
+          "question": "Which sentence has correct subject–verb agreement?",
           "answers": [
-            "The exhibition opened late because hundreds of visitors arrived before noon.",
-            "Although the exhibition opened late, hundreds of visitors arrived before noon.",
-            "The exhibition opened late, and therefore hundreds arrived before noon.",
-            "Opening late, hundreds of visitors were the exhibition before noon."
+            "The list of ingredients are on the counter.",
+            "The list of ingredients is on the counter.",
+            "The list of ingredients were on the counter.",
+            "The list of ingredients be on the counter."
           ],
           "correct": 1,
-          "category": "sentence_structure",
-          "reasoningSteps": 2,
-          "explanation": "“Although” repairs the comma splice and preserves the stated contrast rather than inventing a cause."
+          "category": "verbs_pronouns",
+          "explanation": "The singular subject is “list,” so it takes the singular verb “is.”"
         },
         {
           "id": "grammar-r3q1",
@@ -238,12 +225,12 @@
             "Leo had completed the chart before the meeting began."
           ],
           "correct": 3,
-          "category": "verbs_agreement",
+          "category": "verbs_pronouns",
           "explanation": "The past perfect marks the earlier completed action, while the simple past marks the later meeting."
         },
         {
           "id": "grammar-r4q3",
-          "question": "Which sentence correctly joins two complete clauses?",
+          "question": "Which sentence uses a semicolon correctly?",
           "answers": [
             "The file; because it was large, loaded slowly.",
             "The file was large; it loaded slowly.",
@@ -251,7 +238,7 @@
             "The file was large; and because loaded slowly."
           ],
           "correct": 1,
-          "category": "punctuation_apostrophes",
+          "category": "punctuation",
           "explanation": "A semicolon correctly joins the two closely related independent clauses."
         },
         {
@@ -264,36 +251,34 @@
             "Please send the draft to Lina and myself."
           ],
           "correct": 0,
-          "category": "pronouns_reference",
+          "category": "verbs_pronouns",
           "explanation": "After the preposition “to,” the object pronoun “me” is required."
         },
         {
           "id": "grammar-r10q4",
-          "question": "Which sentence is correct for a formal application form?",
+          "question": "Several chefs share these lockers. Which sign is written correctly?",
           "answers": [
-            "Each applicant should attach your receipt and keep your original.",
-            "Applicants should attach his receipt and keep their original.",
-            "Each applicant should attach their receipt and keep the original.",
-            "Each applicant should attach our receipt and keep its original."
+            "The chefs lockers",
+            "The chef's lockers",
+            "The chefs' lockers",
+            "The chefs's lockers"
           ],
           "correct": 2,
-          "category": "pronouns_reference",
-          "reasoningSteps": 2,
-          "explanation": "Singular “their” is standard English, maintains third-person reference and avoids the draft’s shift to second person."
+          "category": "punctuation",
+          "explanation": "The apostrophe follows the plural noun “chefs” to show that the lockers belong to several chefs."
         },
         {
           "id": "grammar-r10q5",
-          "question": "The new guide is clearer but has no extra information. Which sentence says that exactly?",
+          "question": "Which notice is grammatically correct?",
           "answers": [
-            "The new guide explains more information than the earlier guide.",
-            "The new guide explains the process more clearly than the earlier guide.",
-            "The new guide more explains clearly information than earlier.",
-            "Clearly, the new guide contains more process information."
+            "Visitors must signing in, wear a badge and return it.",
+            "Visitors must sign in, wear a badge and return it before leaving.",
+            "Visitors must signed in, wear a badge and returning it.",
+            "Visitors signing in, badge wearing and it returns."
           ],
           "correct": 1,
-          "category": "modifiers_word_choice",
-          "reasoningSteps": 2,
-          "explanation": "The correct option compares clarity, not quantity, and places the adverb “clearly” with the verb it modifies."
+          "category": "sentence_building",
+          "explanation": "“Sign,” “wear” and “return” use matching base forms after “must.”"
         },
         {
           "id": "grammar-r9q5",
@@ -305,7 +290,7 @@
             "The editor revised only the first report."
           ],
           "correct": 3,
-          "category": "modifiers_word_choice",
+          "category": "precision",
           "trapdoorErrors": [
             "only changes who performed the action",
             "the purpose phrase changes why the report was revised",
@@ -316,30 +301,42 @@
         },
         {
           "id": "grammar-r7q2",
-          "question": "Which formal notice uses three parallel verb forms?",
+          "question": "Which numbered part contains the error?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "A · The final reports",
+              "B · were checked",
+              "C · before the editor approve",
+              "D · them"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "The final reports were checked before the editor approve them"
+          },
           "answers": [
-            "Visitors must signing in, wearing a badge and return it.",
-            "Visitors must signed in, wear a badge and returned it.",
-            "Visitors must sign in, wear a badge and return it before leaving.",
-            "Visitors signing in, badge wearing and it returns."
+            "A",
+            "B",
+            "C",
+            "D"
           ],
           "correct": 2,
-          "category": "editing_context",
-          "explanation": "“Sign,” “wear” and “return” use matching base forms after “must.”"
+          "category": "sentence_building",
+          "explanation": "Part C needs the past-tense verb “approved” to match the completed action."
         },
         {
           "id": "grammar-r10q6",
-          "question": "Which email clearly states Hall B, keeps 14:00 and asks for confirmation?",
+          "question": "Which sentence is completely correct?",
           "answers": [
-            "The venue is now Hall B; the start time remains 14:00. Please confirm receipt of this update.",
-            "Something changed, but the time did not. Reply.",
-            "Hall B is at 14:00 because confirmation changed the venue.",
-            "Please confirm the venue, which is changing the time to Hall B."
+            "After reviewing the figures, Maya confirmed that each total was accurate.",
+            "After reviewing the figures, each total were confirmed by Maya.",
+            "After reviewing the figures Maya confirmed, that each total was accurate.",
+            "After reviewing the figures; Maya confirmed that each total were accurate."
           ],
           "correct": 0,
-          "category": "editing_context",
+          "category": "precision",
           "reasoningSteps": 2,
-          "explanation": "The first revision retains the new venue, unchanged time and request for confirmation in clear grammatical sentences."
+          "explanation": "The opening modifier clearly describes Maya, the comma is correctly placed and “each total” takes the singular verb “was.”"
         }
       ]
     }

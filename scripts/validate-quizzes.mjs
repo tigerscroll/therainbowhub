@@ -319,14 +319,14 @@ for (const folder of folders) {
         title: "Only 10% Of The Population Can Pass This Grammar Quiz",
         cta: "Start Quiz",
         ids: ["grammar-r2q3", "grammar-r10q1", "grammar-r3q1", "grammar-r4q3", "grammar-r5q4", "grammar-r10q4", "grammar-r10q5", "grammar-r9q5", "grammar-r7q2", "grammar-r10q6"],
-        categories: { sentence_structure: 2, verbs_agreement: 1, punctuation_apostrophes: 1, pronouns_reference: 2, modifiers_word_choice: 2, editing_context: 2 },
+        categories: { sentence_building: 2, verbs_pronouns: 3, punctuation: 3, precision: 2 },
         positions: [2, 3, 2, 3],
       },
       paramedic: {
         title: "Only 8% Pass This Paramedic Entrance Exam",
         cta: "Start Test",
         ids: ["paramedic-r2q1", "paramedic-r3q2", "paramedic-r4q3", "paramedic-r5q2", "paramedic-r6q2", "paramedic-r7q2", "paramedic-r8q1", "paramedic-r9q4", "paramedic-r10q3", "paramedic-r10q6"],
-        categories: { anatomy_physiology: 2, observation_vitals: 1, numeracy_measurement: 2, scene_safety: 2, communication_handover: 1, reasoning_priorities: 2 },
+        categories: { anatomy_physiology: 1, observation_vitals: 2, numeracy_measurement: 2, scene_safety: 2, communication_handover: 1, reasoning_priorities: 2 },
         positions: [2, 3, 2, 3],
       },
     };
@@ -349,6 +349,7 @@ for (const folder of folders) {
     fail(source.progressLabel === "complete", `${folder.name}/en.json: compact quiz must show percentage completion rather than a round number.`);
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: compact quiz needs one round of ten questions.`);
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact quiz screens must not use separate context banners.`);
+    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), `${folder.name}/en.json: compact quiz questions must contain no more than twenty words.`);
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(specification.ids), `${folder.name}/en.json: approved ten-question selection or order changed.`);
     fail(JSON.stringify(counts) === JSON.stringify(specification.categories), `${folder.name}/en.json: compact skill-category distribution changed.`);
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact question needs four unique choices.`);
@@ -372,8 +373,7 @@ for (const folder of folders) {
     }
     if (folder.name === "grammar") {
       const questionCopy = sourceQuestions.flatMap((question) => [question.context, question.question, ...question.answers, question.explanation].filter(Boolean)).join(" ");
-      const singularThey = sourceQuestions.find((question) => question.id === "grammar-r10q4");
-      fail(singularThey && /\btheir\b/i.test(singularThey.answers[singularThey.correct]) && /standard/i.test(singularThey.explanation), "grammar/en.json: singular they/their must remain explicitly accepted as standard English.");
+      fail(JSON.stringify(source.results?.dimensions?.map((dimension) => dimension.label)) === JSON.stringify(["Sentence building", "Verbs and pronouns", "Punctuation", "Precision"]), "grammar/en.json: compact Grammar needs its four meaningful result dimensions.");
       fail(!/\bwhom\b/i.test(questionCopy) && !/\bJames(?:['’]s|['’])\b/.test(questionCopy), "grammar/en.json: disputed worldwide-English variants are not allowed.");
     }
     if (folder.name === "paramedic") {

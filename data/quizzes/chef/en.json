@@ -232,7 +232,7 @@
             "The salt disappeared",
             "The pan created no heat",
             "The vegetables became frozen",
-            "Released moisture was trapped and produced steam"
+            "Trapped moisture produced steam"
           ],
           "correct": 3,
           "category": "heat_methods",
@@ -240,7 +240,7 @@
         },
         {
           "id": "chef-r4q2",
-          "question": "A reduced sauce is too salty and may be thinned. What is the best use of unsalted stock?",
+          "question": "A sauce is too salty. What is the best fix?",
           "answers": [
             "Add more salt",
             "Boil it harder",
@@ -258,7 +258,7 @@
             "To make the dough sweeter",
             "To dissolve the flour",
             "To stop all browning",
-            "Their melting helps create separated flaky layers"
+            "Melting butter creates flaky layers"
           ],
           "correct": 3,
           "category": "baking_pastry",
@@ -279,7 +279,17 @@
         },
         {
           "id": "chef-r7q2",
-          "question": "Dish A takes 4 minutes and Dish B takes 8; both must arrive together without being held. What is the best plan?",
+          "question": "Both dishes must finish together. What is the best plan?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "DISH A · 4 MIN",
+              "DISH B · 8 MIN"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Dish A takes four minutes and Dish B takes eight minutes"
+          },
           "answers": [
             "Start B, then add A four minutes later",
             "Start A, then B four minutes later",
@@ -292,33 +302,54 @@
         },
         {
           "id": "chef-r9q1",
-          "question": "A rolling pin was selected to finely chop fresh herbs. What is the mistake?",
+          "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
           "answers": [
-            "The herbs are fresh",
-            "A sharp knife is the appropriate tool",
-            "The task happens before service",
-            "The herbs are green"
+            "Rolling pin",
+            "Fine grater or zester",
+            "Ladle",
+            "Potato masher"
           ],
           "correct": 1,
           "category": "kitchen_fundamentals",
-          "explanation": "A rolling pin does not finely chop herbs; a suitable sharp knife does."
+          "explanation": "A fine grater or zester removes the coloured outer peel while helping avoid the bitter white pith."
         },
         {
           "id": "chef-r9q6",
-          "question": "An order declares a sesame allergy but lists sesame seeds as garnish. What is the critical conflict?",
+          "question": "What must change?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "ALLERGY · SESAME",
+              "GARNISH · SESAME SEEDS"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Declared sesame allergy and planned sesame seed garnish"
+          },
           "answers": [
-            "The garnish is small",
-            "The garnish contains the declared allergen",
-            "The ticket has two lines",
-            "The order includes a garnish"
+            "Nothing—the garnish is small",
+            "Stop and replace the garnish safely",
+            "Rewrite the ticket only",
+            "Add more garnish"
           ],
           "correct": 1,
           "category": "safety_service",
-          "explanation": "The planned garnish directly contains the declared allergen and must not be used."
+          "explanation": "The planned garnish contains the declared allergen, so service must stop while it is safely replaced and cross-contact is prevented."
         },
         {
           "id": "chef-r10q2",
-          "question": "A rich dish lacks fresh aroma. Which permitted lemon-and-herb adjustment addresses both clues?",
+          "question": "Which finishing adjustment best answers these clues?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "RICH",
+              "HEAVY",
+              "NEEDS FRESHNESS"
+            ],
+            "columns": 3,
+            "separator": "·",
+            "ariaLabel": "Rich, heavy and needs freshness"
+          },
           "answers": [
             "A little lemon and fresh herbs",
             "More cream and butter",
@@ -332,7 +363,18 @@
         },
         {
           "id": "chef-r10q6",
-          "question": "Cooked rice stayed warm on the bench through service with no verified time or temperature record. What is safest?",
+          "question": "What is the safest service decision?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "COOKED RICE",
+              "WARM ON BENCH THROUGH SERVICE",
+              "NO VERIFIED TIME OR TEMPERATURE"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "Cooked rice remained warm on the bench through service with no verified time or temperature record"
+          },
           "answers": [
             "Serve it immediately without checking",
             "Cool it beside raw food",

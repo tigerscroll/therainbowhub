@@ -33,10 +33,10 @@
             "ariaLabel": "Airway to lungs to unknown"
           },
           "answers": [
-            "Stomach",
-            "Bones",
+            "Heart chambers",
+            "Body tissues",
             "Blood",
-            "Kidneys"
+            "Digestive tract"
           ],
           "correct": 2,
           "category": "anatomy_physiology",
@@ -67,12 +67,23 @@
         },
         {
           "id": "paramedic-r4q3",
-          "question": "Broken glass and a used sharp object are on the floor. What is the safest response?",
+          "question": "How should the floor hazard be handled first?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "💉 USED SHARP",
+              "BROKEN GLASS",
+              "🚪 CLEAR EXIT"
+            ],
+            "columns": 3,
+            "separator": "•",
+            "ariaLabel": "Used sharp, broken glass and a clear exit"
+          },
           "answers": [
-            "Keep people away and arrange safe handling through the proper trained process",
-            "Pick everything up with bare hands",
-            "Kick the items under nearby furniture",
-            "Leave the sharp unmarked for someone else"
+            "Isolate the hazard and report it",
+            "Pick it up by hand",
+            "Push it aside",
+            "Leave it unmarked"
           ],
           "correct": 0,
           "category": "scene_safety",
@@ -81,7 +92,7 @@
         {
           "id": "paramedic-r5q2",
           "question": "Which measurement changed while the others stayed the same?",
-          "presentation": "grid",
+          "presentation": "code",
           "visual": {
             "items": [
               "PULSE 82 → 82",
@@ -105,12 +116,12 @@
         },
         {
           "id": "paramedic-r6q2",
-          "question": "A person nods but appears not to understand your explanation. What should happen next?",
+          "question": "A person keeps nodding but has not understood. What should happen next?",
           "answers": [
-            "Repeat the same technical words more quickly",
-            "Assume a nod always means understanding",
-            "End the conversation immediately",
-            "Use plain language, suitable communication support and check understanding"
+            "Repeat the jargon faster",
+            "Assume the nod means yes",
+            "End the conversation",
+            "Use plain words and check back"
           ],
           "correct": 3,
           "category": "communication_handover",
@@ -118,12 +129,22 @@
         },
         {
           "id": "paramedic-r7q2",
-          "question": "Person A requests a blanket and speaks comfortably. Person B has new breathing difficulty and cannot finish a sentence. Who takes priority?",
+          "question": "Who takes priority?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "A · COMFORTABLE · ASKS FOR BLANKET",
+              "B · NEW BREATHING DIFFICULTY · CANNOT FINISH A SENTENCE"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Person A is comfortable and asks for a blanket. Person B has new breathing difficulty and cannot finish a sentence."
+          },
           "answers": [
-            "Person A's blanket",
-            "Person B's breathing difficulty",
-            "Both situations have equal urgency",
-            "Whichever request was made more loudly"
+            "Person A",
+            "Person B",
+            "Equal priority",
+            "Whichever spoke louder"
           ],
           "correct": 1,
           "category": "reasoning_priorities",
@@ -131,27 +152,31 @@
         },
         {
           "id": "paramedic-r8q1",
-          "question": "Which organ coordinates the nervous system?",
-          "presentation": "icons",
-          "icons": [
-            "🫁",
-            "🫀",
-            "🧠",
-            "🦴"
-          ],
+          "question": "Which change is the strongest warning of deterioration?",
           "answers": [
-            "Lungs",
-            "Heart",
-            "Brain",
-            "Bones"
+            "Pulse 78 → 80",
+            "Temperature 36.8 → 36.9",
+            "Alert → newly confused",
+            "Pain 4/10 → 4/10"
           ],
           "correct": 2,
-          "category": "anatomy_physiology",
-          "explanation": "The brain processes information and coordinates activity through the nervous system."
+          "category": "observation_vitals",
+          "explanation": "New confusion is a major change from baseline, while the other values are unchanged or only minimally different."
         },
         {
           "id": "paramedic-r9q4",
-          "question": "A handover omits a strong fuel smell near a stationary vehicle. Which missing detail matters most for scene safety?",
+          "question": "Which detail is most urgent to hand over?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "🚗 VEHICLE STOPPED",
+              "👥 TWO PEOPLE",
+              "⛽ STRONG FUEL SMELL"
+            ],
+            "columns": 3,
+            "separator": "•",
+            "ariaLabel": "Vehicle stopped, two people, strong fuel smell"
+          },
           "answers": [
             "The vehicle's colour",
             "The number of windows",
@@ -164,7 +189,7 @@
         },
         {
           "id": "paramedic-r10q3",
-          "question": "A record contains 0.65 L and 350 mL. What combined volume should be written in millilitres?",
+          "question": "0.65 L + 350 mL = ?",
           "reasoningSteps": 2,
           "answers": [
             "1,000 mL",
@@ -178,13 +203,23 @@
         },
         {
           "id": "paramedic-r10q6",
-          "question": "Person A has a sore wrist and steady observations. Person B collapsed and is now pale, breathing rapidly and newly confused. Who needs attention first?",
+          "question": "Who needs attention first?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "PERSON A · SORE WRIST · NORMAL SPEECH · STEADY OBSERVATIONS",
+              "PERSON B · COLLAPSED · PALE · RAPID BREATHING · NEW CONFUSION"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Person A has a sore wrist, normal speech and steady observations. Person B collapsed and is pale, breathing rapidly and newly confused."
+          },
           "reasoningSteps": 2,
           "answers": [
-            "Person A, because wrist pain is easier to see",
-            "Both people have equal priority",
-            "Neither person until a diagnosis is available",
-            "Person B, because collapse plus breathing, circulation and mental-status changes suggest deterioration"
+            "Person A — visible wrist pain",
+            "Equal priority",
+            "Wait for a diagnosis",
+            "Person B — multiple deterioration signs"
           ],
           "correct": 3,
           "category": "reasoning_priorities",
