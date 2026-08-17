@@ -960,6 +960,28 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
+        {quiz.career && reportUnlocked ? (
+          <section className="quiz-engine__answer-review">
+            <h3>{quiz.career.reportUnlock.reviewTitle}</h3>
+            {quiz.questions.every((question) => answers[question.id] === question.answerIndex) ? (
+              <p>{quiz.career.reportUnlock.perfectReview}</p>
+            ) : (
+              <div>
+                {quiz.questions.filter((question) => answers[question.id] !== question.answerIndex).map((question) => (
+                  <article key={question.id}>
+                    <span>{quiz.stages[question.stage]}</span>
+                    <h4>{question.prompt}</h4>
+                    <dl>
+                      <div><dt>{quiz.career!.reportUnlock.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
+                      <div><dt>{quiz.career!.reportUnlock.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
+                    </dl>
+                    {question.explanation ? <p>{question.explanation}</p> : null}
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+        ) : null}
         {resultAds ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-measured">

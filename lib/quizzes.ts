@@ -132,6 +132,10 @@ export type QuizCareerCopy = {
     checks: string[];
     button: string;
     adNote: string;
+    reviewTitle: string;
+    perfectReview: string;
+    yourAnswer: string;
+    correctAnswer: string;
   };
 };
 
@@ -732,7 +736,7 @@ function normalizeLocale(
       if (index < value.stages.length - 1 && !stage.next) throw new Error(`${file}: career stage ${index + 1} needs a next-stage teaser.`);
       if (stage.next) (["eyebrow", "title", "difficulty", "tagline", "copy", "button"] as const).forEach((key) => text(stage.next?.[key], `career.stages[${index}].next.${key}`, file));
     });
-    (["eyebrow", "title", "copy", "button", "adNote"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));
+    (["eyebrow", "title", "copy", "button", "adNote", "reviewTitle", "perfectReview", "yourAnswer", "correctAnswer"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));
     const reportChecks = strings(career.reportUnlock?.checks, "career.reportUnlock.checks", file);
     if (reportChecks.length < 3 || reportChecks.length > 6) throw new Error(`${file}: career.reportUnlock.checks needs three to six items.`);
     if (manifest.engine.flow !== "staged" || manifest.engine.scoring !== "correct-answer" || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged, scored quiz with rewarded stage results.`);

@@ -339,7 +339,7 @@
           "interactionStyle": "core-concept",
           "icons": [
             "🧂",
-            "🍬",
+            "🫗",
             "🦠",
             "💧"
           ]
@@ -553,12 +553,16 @@
           "category": "heat_methods",
           "explanation": "A gentle simmer shows small bubbles rising intermittently rather than a vigorous rolling boil.",
           "interactionStyle": "visual-identification",
-          "icons": [
-            "🫧",
-            "♨️",
-            "🌋",
-            "❄️"
-          ]
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "LIQUID SURFACE",
+              "GENTLE SIMMER"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Choose the visible behaviour of a gentle simmer"
+          }
         },
         {
           "id": "chef-r3q3",
@@ -678,7 +682,7 @@
         },
         {
           "id": "chef-r4q3",
-          "question": "Which basic taste does lemon juice contribute most directly?",
+          "question": "Which flavour quality does lemon juice contribute most directly?",
           "answers": [
             "Sweetness",
             "Acidity",
@@ -728,12 +732,12 @@
           "presentation": "sequence",
           "visual": {
             "items": [
-              "AROMATIC BASE",
-              "GENTLE HEAT",
-              "LIQUID"
+              "BARELY SIMMERING WATER",
+              "BOWL ABOVE",
+              "CHOCOLATE"
             ],
             "separator": "→",
-            "ariaLabel": "Aromatic base, gentle heat, then liquid"
+            "ariaLabel": "Barely simmering water, a bowl held above it, then chocolate in the bowl"
           }
         },
         {
@@ -864,8 +868,8 @@
           "interactionStyle": "calculation",
           "icons": [
             "🥄",
-            "🥣",
-            "📏",
+            "⏱️",
+            "🌡️",
             "⚖️"
           ]
         },
@@ -904,12 +908,16 @@
           "delay": 350,
           "explanation": "A sieve separates and aerates dry particles, removing lumps from flour.",
           "interactionStyle": "visual-identification",
-          "icons": [
-            "🌀",
-            "🥢",
-            "🥕",
-            "🕸️"
-          ]
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "DRY FLOUR",
+              "VISIBLE LUMPS"
+            ],
+            "columns": 2,
+            "separator": "•",
+            "ariaLabel": "Dry flour contains visible lumps"
+          }
         },
         {
           "id": "chef-r8q2",
@@ -1103,7 +1111,7 @@
         },
         {
           "id": "chef-r6q6",
-          "question": "A cook becomes ill during service. What is the responsible first decision?",
+          "question": "A cook develops vomiting during service. What is the responsible first decision?",
           "answers": [
             "Continue with ready-to-eat food",
             "Hide the symptoms",
@@ -1112,7 +1120,7 @@
           ],
           "correct": 2,
           "category": "safety_service",
-          "explanation": "Stopping food handling and reporting symptoms protects others and allows the kitchen’s illness procedure to be followed.",
+          "explanation": "Stopping food handling and reporting the vomiting promptly protects others and allows the kitchen’s illness procedure to be followed.",
           "interactionStyle": "safety-judgement"
         }
       ]
@@ -1125,13 +1133,13 @@
           "question": "What is the mistake?",
           "answers": [
             "The herbs are fresh",
-            "A sharp knife is the appropriate tool",
+            "A rolling pin is being used to chop the herbs",
             "The task happens before service",
             "The herbs are green"
           ],
           "correct": 1,
           "category": "kitchen_fundamentals",
-          "explanation": "A rolling pin does not finely chop herbs; a suitable sharp knife does.",
+          "explanation": "A rolling pin cannot chop fresh herbs; the selected tool conflicts directly with the stated task.",
           "interactionStyle": "visual-identification",
           "presentation": "code",
           "visual": {
@@ -1283,7 +1291,7 @@
           ],
           "correct": 2,
           "category": "ingredients_flavour",
-          "explanation": "Lemon adds acidity, which can brighten richness and counter excessive sweetness.",
+          "explanation": "Lemon adds acidity that can brighten the richness without delaying service.",
           "interactionStyle": "prioritisation"
         },
         {
@@ -1304,9 +1312,9 @@
         },
         {
           "id": "chef-r7q3",
-          "context": "A pastry card says rest the shaped dough before baking. Service is close, but skipping the rest risks the stated texture.",
+          "context": "A tart rim is already dark, but the centre still needs time. The recipe permits a foil rim shield and continued baking at the stated heat.",
           "contextRequired": true,
-          "question": "Which response best balances the card and service pressure?",
+          "question": "Which response protects both the rim and the centre?",
           "answers": [
             "Remove it and serve immediately",
             "Shield the rim and continue as directed",
@@ -1315,7 +1323,7 @@
           ],
           "correct": 1,
           "category": "baking_pastry",
-          "explanation": "Shielding protects the already dark rim while allowing the cool centre more time to bake.",
+          "explanation": "Shielding protects the already-dark rim while continued baking gives the centre the time specified by the recipe.",
           "interactionStyle": "applied-scenario"
         },
         {
@@ -1892,7 +1900,11 @@
         "Best kitchen level"
       ],
       "button": "Unlock Full Kitchen Report",
-      "adNote": "One short ad unlocks your complete report."
+      "adNote": "One short ad unlocks your complete report.",
+      "reviewTitle": "Your missed kitchen questions",
+      "perfectReview": "You answered every kitchen question correctly—there are no missed answers to review.",
+      "yourAnswer": "Your answer",
+      "correctAnswer": "Correct answer"
     }
   }
 }

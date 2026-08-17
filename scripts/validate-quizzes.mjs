@@ -187,7 +187,7 @@ for (const folder of folders) {
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2800), `${folder.name}/en.json: automatic study cues need at least 2800ms.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and two rewarded gates changed.`);
-    fail(config.engine?.resultAds?.adUnitPath === "/22677279144/display" && config.engine?.resultAds?.count === 5 && JSON.stringify(config.engine?.resultAds?.sizes) === JSON.stringify([[336, 280], [300, 250]]), `${folder.name}: Memory needs five approved result display placements.`);
+    fail(config.engine?.resultAds === undefined, `${folder.name}: Memory result display placements must remain disabled.`);
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: Memory final gate or compact result settings changed.`);
@@ -361,7 +361,7 @@ for (const folder of folders) {
     fail(source.stages?.[6]?.questions?.slice(0, 5).every((question) => /recipe|portion|table|tray|oven|service|batch|ratio/i.test(`${question.question} ${question.context ?? ""}`)), "chef/en.json: Kitchen Maths must remain attached to kitchen situations.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.difficulty)) === JSON.stringify(expectedDifficulties), "chef/en.json: Career Mode difficulty order changed.");
     fail(source.career?.stages?.length === 10 && source.career.stages.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && (index === 9 || stage.next)), "chef/en.json: every kitchen needs unique result bands and a next-kitchen teaser.");
-    fail(JSON.stringify(source.career?.stages?.filter((stage) => stage.promotion).map((_, index) => [2, 5, 8, 9][index])) === JSON.stringify([2, 5, 8, 9]), "chef/en.json: promotion moments are incomplete.");
+    fail([2, 5, 8, 9].every((index) => source.career?.stages?.[index]?.promotion) && source.career?.stages?.every((stage, index) => [2, 5, 8, 9].includes(index) || stage.promotion === undefined), "chef/en.json: promotion moments are incomplete.");
     fail(source.career?.reportUnlock?.checks?.length === 5 && /short ad/i.test(source.career?.reportUnlock?.adNote ?? ""), "chef/en.json: optional rewarded Full Kitchen Report is incomplete.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: start and ten result reward gates need three genuine unavailable attempts.");
     fail(config.engine?.resultAds === undefined, "chef: display placements must remain disabled.");
