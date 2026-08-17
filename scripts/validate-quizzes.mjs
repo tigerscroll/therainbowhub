@@ -175,22 +175,31 @@ for (const folder of folders) {
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
+    const approvedIds = ["m-r1q1", "m-r1q2", "m-r1q6", "m-r3q1", "m-r3q2", "m-r1q4", "m-r9q1", "m-r7q1", "m-r9q2", "m-r10q3"];
     const ids = sourceQuestions.map((question) => question.id);
     const expectedMemoryLocales = Object.keys(expectedDirections).map((locale) => `${locale}.json`).sort();
     fail(JSON.stringify(localeFiles.sort()) === JSON.stringify(expectedMemoryLocales), `${folder.name}: Memory must support the complete ${expectedMemoryLocales.length}-locale set.`);
-    fail(source.stages?.length === 10, `${folder.name}/en.json: Memory must contain ten rounds.`);
-    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every Memory round must contain six scored questions.`);
-    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Memory must contain exactly 60 scored questions.`);
+    fail(config.engine?.flow === "linear", `${folder.name}: Memory must use the single-stage linear flow.`);
+    fail(source.progressLabel === "complete", `${folder.name}/en.json: Memory must show percentage completion rather than a round number.`);
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Memory must contain one stage of ten questions.`);
+    fail(sourceQuestions.length === 10, `${folder.name}/en.json: Memory must contain exactly ten scored questions.`);
     fail(ids.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/en.json: every Memory question needs a stable ID.`);
-    fail(new Set(ids).size === 60, `${folder.name}/en.json: Memory question IDs must be unique.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct)), `${folder.name}/en.json: every Memory question needs a correct index.`);
+    fail(new Set(ids).size === 10 && JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: Memory must retain the approved ten-question order.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length >= 3 && question.answers?.length <= 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs one correct index and three or four unique answers.`);
+    fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([3, 2, 2, 3]), `${folder.name}/en.json: Memory correct positions must use the approved irregular 3/2/2/3 balance.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
-    fail(config.engine?.targetRatio === 0.8, `${folder.name}: Memory targetRatio must be exactly 0.8.`);
-    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory must retain its rewarded start and all ten rewarded stage gates.`);
+    fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions[0]?.study?.continueLabel === "I’ve memorised them", `${folder.name}/en.json: the opening must be the only untimed study cue.`);
+    fail(sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening memory cue may use manual study timing.`);
+    fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2800), `${folder.name}/en.json: automatic study cues must allow at least 2800ms.`);
+    fail(sourceQuestions.every((question) => question.delay === undefined), `${folder.name}/en.json: Memory must use its default answer transition throughout.`);
+    fail(sourceQuestions[8]?.study === undefined && sourceQuestions[8]?.answers?.[sourceQuestions[8]?.correct] === "Blue", `${folder.name}/en.json: the suitcase-colour question must be a genuine delayed callback with the correct answer.`);
+    fail(sourceQuestions[9]?.study === undefined && sourceQuestions[9]?.answers?.[sourceQuestions[9]?.correct] === "Purple", `${folder.name}/en.json: the elephant-colour question must be a genuine delayed callback with the correct answer.`);
+    fail(config.engine?.targetRatio === 0.8 && Math.ceil(sourceQuestions.length * config.engine.targetRatio) === 8, `${folder.name}: the 80% Memory pass line must begin at 8/10 correct.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory must request exactly one start gate and one result-unlock gate.`);
     fail(source.landing?.startPrompt?.eyebrow === "READY TO BEGIN" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Test Ready! 🎉" && source.landing?.startPrompt?.copy === "Watch a short ad to start the test." && source.landing?.startPrompt?.button === "OK", `${folder.name}/en.json: Memory needs the approved pre-test rewarded pop-up.`);
-    fail(source.checkpoint?.progressLabel === "Memory test progress" && source.checkpoint?.progressComplete === "{value}% complete", `${folder.name}/en.json: every Memory gate must show overall ten-stage progress.`);
-    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint.reveals.every((reveal) => typeof reveal.badge === "string" && reveal.badge.trim() && typeof reveal.icon === "string" && reveal.icon.trim()), `${folder.name}/en.json: every Memory stage needs its own complete badge and icon.`);
-    fail(new Set(source.checkpoint?.reveals?.slice(0, 9).map((reveal) => reveal.badge)).size === 9, `${folder.name}/en.json: the first nine Memory stage gates need distinct momentum badges.`);
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, `${folder.name}/en.json: Memory must have one clean final checkpoint without redundant progress.`);
+    fail(source.checkpoint?.finalTitle === "Your result is ready" && source.checkpoint?.finalCopy === "One final short ad unlocks your memory score." && source.checkpoint?.finalButton === "Reveal My Score", `${folder.name}/en.json: Memory needs the approved final rewarded result gate.`);
+    fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: the single-stage result must hide the redundant best-round field.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "memory-short") {
@@ -373,6 +382,16 @@ for (const folder of folders) {
     fail(config.engine?.scoring === "correct-answer", `${folder.name}: Chef must use correct-answer scoring.`);
     fail(source.title === "Only 12% Pass This Chef's Entrance Exam", `${folder.name}/en.json: Chef title must match the approved headline.`);
     fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Chef landing social proof or CTA changed.`);
+    fail(JSON.stringify(source.landing?.startPrompt) === JSON.stringify({
+      eyebrow: "READY FOR SERVICE",
+      icon: "✓",
+      title: "The Kitchen Is Ready 🔥",
+      copy: "Watch a short ad to enter the kitchen.",
+      button: "OK",
+    }), `${folder.name}/en.json: Chef needs the approved pre-start rewarded prompt.`);
+    fail(source.checkpoint?.progressLabel === "Culinary pass progress" && source.checkpoint?.progressComplete === "{value}% complete", `${folder.name}/en.json: Chef checkpoints need the approved progress copy.`);
+    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint.reveals.every((reveal) => typeof reveal.badge === "string" && reveal.badge.trim() && typeof reveal.icon === "string" && reveal.icon.trim()), `${folder.name}/en.json: every Chef checkpoint needs a badge and icon.`);
+    fail(new Set(source.checkpoint?.reveals?.slice(0, 9).map((reveal) => reveal.badge)).size === 9, `${folder.name}/en.json: the first nine Chef checkpoint badges must be distinct.`);
     fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Chef needs ten rounds of six questions.`);
     fail(sourceQuestions.length === 60, `${folder.name}/en.json: Chef must contain exactly 60 questions.`);
     fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Chef needs exactly ten questions in each culinary category.`);
@@ -394,7 +413,7 @@ for (const folder of folders) {
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Chef profile thresholds are incorrect.`);
     fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Chef must lead its result with the percentage.`);
     fail(config.engine?.targetRatio === 0.8, `${folder.name}: Chef pass threshold must be 80%.`);
-    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Chef rewarded fallback must require three genuine unavailable attempts.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Chef needs rewarded Start and every checkpoint with three genuine unavailable attempts.`);
   }
   if (folder.name === "grammar") {
     const expectedCategories = {

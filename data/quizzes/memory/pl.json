@@ -1,20 +1,20 @@
 {
   "title": "Większość dorosłych nie zdobywa 80% w tym teście pamięci",
   "eyebrow": "Wyzwanie pamięci",
-  "summary": "Dziesięć szybkich rund sprawdza pamięć słów, obrazów, liczb, szczegółów i drobiazgów, których zapamiętania możesz nawet nie zauważyć.",
+  "summary": "Dziesięć różnorodnych zadań sprawdza pamięć słów, obrazów, liczb, skojarzeń, pamięć roboczą i odroczone przypominanie.",
   "landing": {
     "intro": "Myślisz, że Twoja pamięć wciąż jest świetna? Niektóre zadania są łatwe, a inne celowo próbują Cię zmylić. Czy zdobędziesz 80%?",
     "socialProof": "Grało w to ponad 81 000 osób",
     "cta": "Rozpocznij test"
   },
   "about": {
-    "body": "Ten quiz w lekki i zabawny sposób sprawdza pamięć za pomocą krótkich zadań ze słowami, obrazami, liczbami, skojarzeniami i uwagą. W dziesięciu rundach możesz mieć za zadanie zachować szczegół w pamięci, rozpoznać wcześniej pokazany obraz, odtworzyć kolejność, zauważyć zmianę albo przypomnieć sobie informację po krótkim rozproszeniu.\n\nZadania angażują codzienne umiejętności poznawcze, takie jak koncentracja, pamięć wzrokowa, pamięć robocza i zapamiętywanie szczegółów. Quiz jest przeznaczony dla wszystkich, którzy lubią gry umysłowe, ćwiczenia pamięci i lekkie wyzwania poznawcze.\n\nWynik końcowy pokaże liczbę poprawnych odpowiedzi, najmocniejszą kategorię pamięci i najlepszą rundę. Na wynik mogą wpływać uwaga, zmęczenie, stres, znajomość tematu i zwykły przypadek, dlatego potraktuj go jako rozrywkę, a nie ocenę zdrowia mózgu czy długotrwałej zdolności zapamiętywania.",
+    "body": "Ten quiz w lekki i zabawny sposób sprawdza pamięć za pomocą krótkich zadań ze słowami, obrazami, liczbami, skojarzeniami i uwagą. W dziesięciu różnorodnych zadaniach możesz mieć za zadanie zachować szczegół w pamięci, rozpoznać wcześniej pokazany obraz, odtworzyć kolejność, zauważyć zmianę albo przypomnieć sobie informację po krótkim rozproszeniu.\n\nZadania angażują codzienne umiejętności poznawcze, takie jak koncentracja, pamięć wzrokowa, pamięć robocza i zapamiętywanie szczegółów. Quiz jest przeznaczony dla wszystkich, którzy lubią gry umysłowe, ćwiczenia pamięci i lekkie wyzwania poznawcze.\n\nWynik końcowy pokaże liczbę poprawnych odpowiedzi, najmocniejsze kategorie pamięci. Na wynik mogą wpływać uwaga, zmęczenie, stres, znajomość tematu i zwykły przypadek, dlatego potraktuj go jako rozrywkę, a nie ocenę zdrowia mózgu czy długotrwałej zdolności zapamiętywania.",
     "howToPlay": {
       "title": "Jak grać",
       "steps": [
         "Uważnie przyjrzyj się każdej wskazówce, gdy się pojawi; niektóre szczegóły wrócą w późniejszych pytaniach.",
         "Wybierz jedną odpowiedź w każdym zadaniu pamięciowym, zanim quiz przejdzie dalej.",
-        "Ukończ wszystkie dziesięć rund, aby poznać wynik, najmocniejszą kategorię pamięci i najlepszą rundę."
+        "Ukończ wszystkie dziesięć zadań, aby poznać wynik i najmocniejsze kategorie pamięci."
       ]
     },
     "disclaimer": "Wyłącznie do celów rozrywkowych i autorefleksji. Ten quiz nie jest oceną medyczną, neurologiczną ani poznawczą i nie może diagnozować problemów z pamięcią. Jeśli martwisz się o swoją pamięć lub zdrowie, skonsultuj się z wykwalifikowanym pracownikiem ochrony zdrowia."
@@ -104,7 +104,8 @@
       "strongest": "Twoja najmocniejsza strona pamięci",
       "trickiest": "Najtrudniejszy dla Ciebie obszar",
       "bestRound": "Najlepsza runda",
-      "disclaimer": "Tylko dla rozrywki. Ten quiz nie jest oceną medyczną ani poznawczą."
+      "disclaimer": "Tylko dla rozrywki. Ten quiz nie jest oceną medyczną ani poznawczą.",
+      "showBestRound": false
     }
   },
   "stages": [
@@ -131,7 +132,7 @@
               "💙 NIEBIESKI",
               "🔑 KLUCZ"
             ],
-            "durationMs": 2000,
+            "durationMs": 4500,
             "mode": "manual",
             "continueLabel": "Zapamiętane"
           }
@@ -163,82 +164,8 @@
               "☂️",
               "🚲"
             ],
-            "durationMs": 1800,
+            "durationMs": 3200,
             "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r1q3",
-          "question": "Który symbol był pierwszy?",
-          "presentation": "icons",
-          "answers": [
-            "Księżyc",
-            "Gwiazda",
-            "Słońce"
-          ],
-          "icons": [
-            "🌙",
-            "⭐",
-            "☀️"
-          ],
-          "correct": 0,
-          "category": "working_memory",
-          "study": {
-            "title": "Zapamiętaj kolejność",
-            "presentation": "icons",
-            "items": [
-              "🌙",
-              "⭐",
-              "☀️"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r1q4",
-          "question": "Jakiego koloru był trójkąt?",
-          "answers": [
-            "Czerwony",
-            "Niebieski",
-            "Zielony",
-            "Żółty"
-          ],
-          "correct": 2,
-          "category": "association",
-          "study": {
-            "title": "Dopasuj każdy kolor i kształt",
-            "items": [
-              "🔴 KRĄG",
-              "🔵 KWADRAT",
-              "🟢 TRÓJKĄT"
-            ],
-            "durationMs": 2000,
-            "mode": "manual",
-            "continueLabel": "Kontynuuj"
-          }
-        },
-        {
-          "id": "m-r1q5",
-          "question": "Który napój należał do Leo?",
-          "answers": [
-            "Herbata",
-            "Sok",
-            "Woda",
-            "Kawa"
-          ],
-          "correct": 1,
-          "category": "association",
-          "study": {
-            "title": "Pamiętaj o parach",
-            "items": [
-              "MAJA — HERBATA",
-              "LEO — SOK",
-              "NORA — WODA"
-            ],
-            "durationMs": 2200,
-            "mode": "manual",
-            "continueLabel": "Rozumiem"
           }
         },
         {
@@ -259,166 +186,20 @@
               "FIOLETOWY",
               "SŁOŃ"
             ],
-            "durationMs": 2000,
-            "mode": "manual",
-            "continueLabel": "Zapamiętane"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Pamięć Obrazów 👀",
-      "questions": [
-        {
-          "id": "m-r2q1",
-          "question": "Który obiekt NIE znajdował się na liście obrazów?",
-          "presentation": "icons",
-          "answers": [
-            "Kot",
-            "Rower",
-            "Gitara",
-            "Jabłko"
-          ],
-          "icons": [
-            "🐱",
-            "🚲",
-            "🎸",
-            "🍎"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "study": {
-            "title": "Zapamiętaj te sześć rzeczy",
-            "instruction": "Ich kolejność też ma znaczenie.",
-            "presentation": "icons",
-            "items": [
-              "🍎",
-              "☂️",
-              "🚲",
-              "🐱",
-              "⏰",
-              "🌳"
-            ],
-            "durationMs": 2600,
-            "mode": "manual",
-            "continueLabel": "Gotowy"
+            "durationMs": 3000,
+            "mode": "automatic"
           }
         },
-        {
-          "id": "m-r2q2",
-          "context": "Z tego samego zdjęcia…",
-          "question": "Który obiekt był trzeci?",
-          "presentation": "icons",
-          "answers": [
-            "Parasol",
-            "Rower",
-            "Kot",
-            "Zegar"
-          ],
-          "icons": [
-            "☂️",
-            "🚲",
-            "🐱",
-            "⏰"
-          ],
-          "correct": 1,
-          "category": "visual"
-        },
-        {
-          "id": "m-r2q3",
-          "context": "Z tego samego zdjęcia…",
-          "question": "Co było bezpośrednio po rowerze?",
-          "presentation": "icons",
-          "answers": [
-            "Jabłko",
-            "Kot",
-            "Zegar",
-            "Drzewo"
-          ],
-          "icons": [
-            "🍎",
-            "🐱",
-            "⏰",
-            "🌳"
-          ],
-          "correct": 1,
-          "category": "working_memory"
-        },
-        {
-          "id": "m-r2q4",
-          "context": "Z tego samego zdjęcia…",
-          "question": "Co pojawiło się bezpośrednio przed zegarem?",
-          "presentation": "icons",
-          "answers": [
-            "Kot",
-            "Drzewo",
-            "Parasol",
-            "Rower"
-          ],
-          "icons": [
-            "🐱",
-            "🌳",
-            "☂️",
-            "🚲"
-          ],
-          "correct": 0,
-          "category": "working_memory"
-        },
-        {
-          "id": "m-r2q5",
-          "context": "Z tego samego zdjęcia…",
-          "question": "Który przedmiot pojawił się jako pierwszy?",
-          "presentation": "icons",
-          "answers": [
-            "Jabłko",
-            "Parasol",
-            "Rower",
-            "Drzewo"
-          ],
-          "icons": [
-            "🍎",
-            "☂️",
-            "🚲",
-            "🌳"
-          ],
-          "correct": 0,
-          "category": "visual"
-        },
-        {
-          "id": "m-r2q6",
-          "context": "Z tego samego zdjęcia…",
-          "question": "Który przedmiot pojawił się jako ostatni?",
-          "presentation": "icons",
-          "answers": [
-            "Zegar",
-            "Kot",
-            "Drzewo",
-            "Jabłko"
-          ],
-          "icons": [
-            "⏰",
-            "🐱",
-            "🌳",
-            "🍎"
-          ],
-          "correct": 2,
-          "category": "visual"
-        }
-      ]
-    },
-    {
-      "title": "Liczby i Wzory",
-      "questions": [
         {
           "id": "m-r3q1",
           "question": "Którą liczbę pokazano?",
           "answers": [
             "5387",
-            "5837",
             "5873",
+            "5837",
             "5738"
           ],
-          "correct": 1,
+          "correct": 2,
           "category": "numbers",
           "study": {
             "title": "Zapamiętaj tę liczbę",
@@ -426,7 +207,7 @@
               "5837",
               "ZAPAMIĘTAJ"
             ],
-            "durationMs": 1800,
+            "durationMs": 2800,
             "mode": "automatic"
           }
         },
@@ -447,741 +228,32 @@
               "9",
               "2"
             ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r3q3",
-          "question": "Co będzie dalej: 3, 6, 12, 24,…?",
-          "answers": [
-            "30",
-            "36",
-            "42",
-            "48"
-          ],
-          "correct": 3,
-          "category": "numbers"
-        },
-        {
-          "id": "m-r3q4",
-          "question": "Ile wynosi suma tych dwóch cyfr?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
-          "correct": 2,
-          "category": "working_memory",
-          "study": {
-            "title": "Zapamiętaj tę liczbę",
-            "items": [
-              "26",
-              "NIE PISZ TEGO"
-            ],
-            "durationMs": 1700,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r3q5",
-          "question": "Która liczba była największa?",
-          "answers": [
-            "14",
-            "27",
-            "63",
-            "81"
-          ],
-          "correct": 3,
-          "category": "numbers",
-          "study": {
-            "title": "Spójrz raz na te liczby",
-            "items": [
-              "81",
-              "14",
-              "63",
-              "27"
-            ],
-            "durationMs": 1900,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r3q6",
-          "question": "Która liczba była druga od końca?",
-          "answers": [
-            "2",
-            "4",
-            "7",
-            "9"
-          ],
-          "correct": 3,
-          "category": "numbers",
-          "study": {
-            "title": "Zapamiętaj kolejność",
-            "items": [
-              "7",
-              "2",
-              "9",
-              "4"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Twarze i Szczegóły",
-      "questions": [
-        {
-          "id": "m-r4q1",
-          "question": "Kto miał na sobie czerwoną czapkę?",
-          "answers": [
-            "Emma",
-            "David",
-            "Sarah",
-            "Marcus"
-          ],
-          "correct": 2,
-          "category": "association",
-          "study": {
-            "title": "Poznaj te cztery osoby",
-            "instruction": "Zapamiętaj każde imię i szczegół.",
-            "items": [
-              "👩‍🦰 EMMA — ZIELONY SZALIK",
-              "👨‍🦲 DAVID — NIEBIESKIE OKULARY",
-              "👩 SARAH — CZERWONY KAPELUSZ",
-              "👨 MARCUS — ŻÓŁTY PŁASZCZ"
-            ],
             "durationMs": 3200,
-            "mode": "manual",
-            "continueLabel": "Pamiętam ich"
+            "mode": "automatic"
           }
         },
         {
-          "id": "m-r4q2",
-          "question": "Jakiego koloru były okulary Davida?",
+          "id": "m-r1q4",
+          "question": "Jakiego koloru był trójkąt?",
           "answers": [
+            "Czerwony",
             "Niebieski",
-            "Zielony",
-            "Czarny",
-            "Czerwony"
-          ],
-          "correct": 0,
-          "category": "association"
-        },
-        {
-          "id": "m-r4q3",
-          "question": "Co miała na sobie Emma?",
-          "answers": [
-            "Czerwony kapelusz",
-            "Zielony szalik",
-            "Niebieskie okulary",
-            "Żółty płaszcz"
-          ],
-          "correct": 1,
-          "category": "association"
-        },
-        {
-          "id": "m-r4q4",
-          "question": "Kto miał żółty płaszcz?",
-          "answers": [
-            "Marcus",
-            "Emma",
-            "Sarah",
-            "David"
-          ],
-          "correct": 0,
-          "category": "association"
-        },
-        {
-          "id": "m-r4q5",
-          "question": "Kto nosił okulary?",
-          "answers": [
-            "Sarah",
-            "Marcus",
-            "David",
-            "Emma"
-          ],
-          "correct": 2,
-          "category": "visual"
-        },
-        {
-          "id": "m-r4q6",
-          "question": "Który przedmiot był zielony?",
-          "answers": [
-            "Kapelusz",
-            "Szalik",
-            "Okulary",
-            "Płaszcz"
-          ],
-          "correct": 1,
-          "category": "visual"
-        }
-      ]
-    },
-    {
-      "title": "Pułapka Pamięci 🧠",
-      "questions": [
-        {
-          "id": "m-r5q1",
-          "question": "Co uzupełnia wzór: 2, 4, 8, 16, …?",
-          "answers": [
-            "20",
-            "24",
-            "30",
-            "32"
+            "Żółty",
+            "Zielony"
           ],
           "correct": 3,
-          "category": "working_memory",
-          "study": {
-            "title": "ZWRÓĆ UWAGĘ",
-            "instruction": "Będziesz tego potrzebować później.",
-            "items": [
-              "PIES",
-              "17",
-              "ŻÓŁTY",
-              "Łyżka"
-            ],
-            "durationMs": 2400,
-            "mode": "manual",
-            "continueLabel": "Kontynuuj"
-          }
-        },
-        {
-          "id": "m-r5q2",
-          "question": "Co to jest 18 - 7?",
-          "answers": [
-            "9",
-            "10",
-            "11",
-            "12"
-          ],
-          "correct": 2,
-          "category": "working_memory"
-        },
-        {
-          "id": "m-r5q3",
-          "question": "Który zestaw przedstawia te same elementy w odwrotnej kolejności?",
-          "answers": [
-            "KOT — 7 — NIEBIESKI",
-            "7 — KOT — NIEBIESKI",
-            "KOT — NIEBIESKI — 7",
-            "NIEBIESKI — KOT — 7"
-          ],
-          "correct": 0,
-          "category": "working_memory",
-          "study": {
-            "title": "Zapamiętaj ten zestaw",
-            "items": [
-              "NIEBIESKI",
-              "7",
-              "KOT"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r5q4",
-          "question": "Dodatkowa kontrola pamięci: jakie zwierzę pojawiło się na początku testu?",
-          "answers": [
-            "Słoń",
-            "Tygrys",
-            "Królik",
-            "Delfin"
-          ],
-          "correct": 0,
-          "category": "word_recall"
-        },
-        {
-          "id": "m-r5q5",
-          "question": "Stań twarzą na północ. Skręć w prawo, znów w prawo, a potem w lewo. W którą stronę teraz patrzysz?",
-          "answers": [
-            "Północ",
-            "Wschód",
-            "Południe",
-            "Zachód"
-          ],
-          "correct": 1,
-          "category": "working_memory"
-        },
-        {
-          "id": "m-r5q6",
-          "question": "Który komplet pojawił się na początku tej rundy?",
-          "answers": [
-            "PIES — 17 — ŻÓŁTY — ŁYŻKA",
-            "PIES — 71 — ŻÓŁTY — WIDELEC",
-            "KOT — 17 — NIEBIESKI — ŁYŻKA",
-            "PIES — 17 — NIEBIESKI — ŁYŻKA"
-          ],
-          "correct": 0,
-          "category": "word_recall"
-        }
-      ]
-    },
-    {
-      "title": "Czy To Zapamiętasz?",
-      "questions": [
-        {
-          "id": "m-r6q1",
-          "question": "Kto zamawiał kawę?",
-          "answers": [
-            "James",
-            "Lucy",
-            "Ben"
-          ],
-          "correct": 1,
           "category": "association",
           "study": {
-            "title": "Trzy osoby składają zamówienie",
+            "title": "Dopasuj każdy kolor i kształt",
             "items": [
-              "JAMES – HERBATA",
-              "LUCY – KAWA",
-              "BEN – SOK POMARAŃCZOWY"
+              "🔴 KRĄG",
+              "🔵 KWADRAT",
+              "🟢 TRÓJKĄT"
             ],
-            "durationMs": 2300,
-            "mode": "manual",
-            "continueLabel": "Zamówienie zapamiętane"
-          }
-        },
-        {
-          "id": "m-r6q2",
-          "question": "O której godzinie było spotkanie?",
-          "answers": [
-            "15:20",
-            "15:40",
-            "16:30",
-            "16:40"
-          ],
-          "correct": 1,
-          "category": "numbers",
-          "study": {
-            "title": "Twoje spotkanie",
-            "items": [
-              "WTOREK",
-              "15:40"
-            ],
-            "durationMs": 1800,
+            "durationMs": 3500,
             "mode": "automatic"
           }
         },
-        {
-          "id": "m-r6q3",
-          "question": "W którym pomieszczeniu odbywa się spotkanie?",
-          "answers": [
-            "Pokój 12",
-            "Pokój 14",
-            "Pokój 21",
-            "Pokój 41"
-          ],
-          "correct": 1,
-          "category": "numbers",
-          "study": {
-            "title": "Notatka ze spotkania",
-            "items": [
-              "PIĄTEK",
-              "POKÓJ 14",
-              "10:15"
-            ],
-            "durationMs": 2000,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r6q4",
-          "question": "Jakiego przedmiotu potrzebowała Priya?",
-          "answers": [
-            "Mleko",
-            "Chleb",
-            "Baterie",
-            "Mydło"
-          ],
-          "correct": 2,
-          "category": "association",
-          "study": {
-            "title": "Szybka wiadomość zakupowa",
-            "items": [
-              "MILO – CHLEB",
-              "PRIYA — BATERIE",
-              "ANA – MYDŁO"
-            ],
-            "durationMs": 2200,
-            "mode": "manual",
-            "continueLabel": "Wiadomość przeczytana"
-          }
-        },
-        {
-          "id": "m-r6q5",
-          "question": "Z którego peronu odjeżdża pociąg?",
-          "answers": [
-            "4",
-            "6",
-            "8",
-            "9"
-          ],
-          "correct": 2,
-          "category": "attention",
-          "study": {
-            "title": "Aktualizacja podróży",
-            "items": [
-              "11:25",
-              "PLATFORMA 8",
-              "NA CZAS"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r6q6",
-          "question": "Który kolor drzwi należy do numeru 23?",
-          "answers": [
-            "Zielony",
-            "Niebieski",
-            "Czerwony",
-            "Żółty"
-          ],
-          "correct": 1,
-          "category": "association",
-          "study": {
-            "title": "Znajdź odpowiedni dom",
-            "items": [
-              "21 — ZIELONY",
-              "23 — NIEBIESKI",
-              "25 — CZERWONY"
-            ],
-            "durationMs": 2000,
-            "mode": "manual",
-            "continueLabel": "Kontynuuj"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Znajdź Zmianę",
-      "questions": [
-        {
-          "id": "m-r7q1",
-          "question": "Co się zmieniło w sekwencji? 🍎 🐶 🚗 ❤️ ☕ 🌙",
-          "answers": [
-            "Gwiazda stała się sercem",
-            "Samochód zmieniony",
-            "Kawa zniknęła",
-            "Nic się nie zmieniło"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "study": {
-            "title": "Przestudiuj ten rząd",
-            "presentation": "icons",
-            "items": [
-              "🍎",
-              "🐶",
-              "🚗",
-              "⭐",
-              "☕",
-              "🌙"
-            ],
-            "durationMs": 1900,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r7q2",
-          "question": "Który przedmiot zniknął? 🔑 📘 🕯️ 🧤",
-          "presentation": "icons",
-          "answers": [
-            "Klucz",
-            "Książka",
-            "Zegar",
-            "Świeca"
-          ],
-          "icons": [
-            "🔑",
-            "📘",
-            "⏰",
-            "🕯️"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "study": {
-            "title": "Przestudiuj ten zestaw",
-            "presentation": "icons",
-            "items": [
-              "🔑",
-              "📘",
-              "⏰",
-              "🕯️",
-              "🧤"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r7q3",
-          "question": "Która para zamieniła się miejscami? 🟢 🔵 🔴 🟡",
-          "answers": [
-            "Zielony i czerwony",
-            "Niebieski i czerwony",
-            "Czerwony i żółty",
-            "Zielony i niebieski"
-          ],
-          "correct": 1,
-          "category": "working_memory",
-          "study": {
-            "title": "Zapamiętaj kolejność kolorów",
-            "items": [
-              "🟢",
-              "🔴",
-              "🔵",
-              "🟡"
-            ],
-            "durationMs": 1700,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r7q4",
-          "question": "Która litera została zmieniona? M K R T P",
-          "answers": [
-            "Druga",
-            "Trzecia",
-            "Czwarta",
-            "Piąta"
-          ],
-          "correct": 2,
-          "category": "attention",
-          "study": {
-            "title": "Zapamiętaj litery",
-            "items": [
-              "M",
-              "K",
-              "R",
-              "S",
-              "P"
-            ],
-            "durationMs": 1600,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r7q5",
-          "question": "Czego brakuje w drugim rzędzie? 8 · 3 · 6 · 1",
-          "answers": [
-            "2",
-            "4",
-            "5",
-            "7"
-          ],
-          "correct": 1,
-          "category": "numbers",
-          "study": {
-            "title": "Zapamiętaj pięć liczb",
-            "items": [
-              "8",
-              "3",
-              "4",
-              "6",
-              "1"
-            ],
-            "durationMs": 1700,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r7q6",
-          "question": "Która ikona przesunęła się z końca na początek? 🐟 🐦 🐢 🐶",
-          "presentation": "icons",
-          "answers": [
-            "Ryba",
-            "Ptak",
-            "Żółw",
-            "Pies"
-          ],
-          "icons": [
-            "🐟",
-            "🐦",
-            "🐢",
-            "🐶"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "study": {
-            "title": "Zapamiętaj kolejność zwierząt",
-            "presentation": "icons",
-            "items": [
-              "🐦",
-              "🐢",
-              "🐶",
-              "🐟"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Szybka Seria ⚡",
-      "questions": [
-        {
-          "id": "m-r8q1",
-          "question": "Który kolor był drugi?",
-          "answers": [
-            "Czerwony",
-            "Zielony",
-            "Niebieski"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "delay": 350,
-          "study": {
-            "title": "NIE MYŚL NAD TYM ZA DŁUGO",
-            "items": [
-              "🔵",
-              "🔴",
-              "🟢"
-            ],
-            "durationMs": 1200,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r8q2",
-          "question": "Jaka była ostatnia cyfra?",
-          "answers": [
-            "4",
-            "1",
-            "8"
-          ],
-          "correct": 0,
-          "category": "numbers",
-          "delay": 350,
-          "study": {
-            "title": "NIE MYŚL NAD TYM ZA DŁUGO",
-            "items": [
-              "814",
-              "Idź"
-            ],
-            "durationMs": 1100,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r8q3",
-          "question": "Które zwierzę pojawiło się dwukrotnie?",
-          "presentation": "icons",
-          "answers": [
-            "Pies",
-            "Kot",
-            "Królik"
-          ],
-          "icons": [
-            "🐶",
-            "🐱",
-            "🐰"
-          ],
-          "correct": 0,
-          "category": "attention",
-          "delay": 350,
-          "study": {
-            "title": "Szybkie spojrzenie",
-            "presentation": "icons",
-            "items": [
-              "🐶",
-              "🐱",
-              "🐶",
-              "🐰"
-            ],
-            "durationMs": 1200,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r8q4",
-          "question": "Która litera była pierwsza?",
-          "answers": [
-            "B",
-            "D",
-            "F",
-            "H"
-          ],
-          "correct": 2,
-          "category": "word_recall",
-          "delay": 350,
-          "study": {
-            "title": "Trzy litery",
-            "items": [
-              "F",
-              "B",
-              "H"
-            ],
-            "durationMs": 1100,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r8q5",
-          "question": "Co było w środku?",
-          "presentation": "icons",
-          "answers": [
-            "Liść",
-            "Diament",
-            "Płomień"
-          ],
-          "icons": [
-            "🍃",
-            "💎",
-            "🔥"
-          ],
-          "correct": 1,
-          "category": "visual",
-          "delay": 350,
-          "study": {
-            "title": "Trzy ikony",
-            "presentation": "icons",
-            "items": [
-              "🍃",
-              "💎",
-              "🔥"
-            ],
-            "durationMs": 1100,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r8q6",
-          "question": "Która liczba była najmniejsza?",
-          "answers": [
-            "3",
-            "5",
-            "7",
-            "9"
-          ],
-          "correct": 0,
-          "category": "numbers",
-          "delay": 350,
-          "study": {
-            "title": "Jedno spojrzenie",
-            "items": [
-              "7",
-              "3",
-              "9",
-              "5"
-            ],
-            "durationMs": 1200,
-            "mode": "automatic"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Szczerze… Czy udało Ci się to zauważyć? 😈",
-      "questions": [
         {
           "id": "m-r9q1",
           "question": "Do jakiego celu podróżowała Sarah?",
@@ -1199,211 +271,58 @@
               "Sarah kupiła niebieską walizkę",
               "na wakacje do Paryża."
             ],
-            "durationMs": 2200,
-            "mode": "manual",
-            "continueLabel": "Kontynuuj"
+            "durationMs": 4500,
+            "mode": "automatic"
+          }
+        },
+        {
+          "id": "m-r7q1",
+          "question": "Co się zmieniło w sekwencji? 🍎 🐶 🚗 ❤️ ☕ 🌙",
+          "answers": [
+            "Kawa zniknęła",
+            "Samochód zmieniony",
+            "Gwiazda stała się sercem",
+            "Nic się nie zmieniło"
+          ],
+          "correct": 2,
+          "category": "visual",
+          "study": {
+            "title": "Przestudiuj ten rząd",
+            "presentation": "icons",
+            "items": [
+              "🍎",
+              "🐶",
+              "🚗",
+              "⭐",
+              "☕",
+              "🌙"
+            ],
+            "durationMs": 5000,
+            "mode": "automatic"
           }
         },
         {
           "id": "m-r9q2",
           "question": "Jakiego koloru była walizka Sary?",
           "answers": [
-            "Czerwony",
-            "Zielony",
             "Niebieski",
+            "Zielony",
+            "Czerwony",
             "Czarny"
           ],
-          "correct": 2,
-          "category": "attention"
-        },
-        {
-          "id": "m-r9q3",
-          "question": "Który owoc był inny?",
-          "presentation": "icons",
-          "answers": [
-            "Pomarańcza",
-            "Jabłko",
-            "Banan",
-            "Limonka"
-          ],
-          "icons": [
-            "🍊",
-            "🍎",
-            "🍌",
-            "🍋"
-          ],
           "correct": 0,
-          "category": "visual",
-          "study": {
-            "title": "Wybierz element, który nie pasuje",
-            "presentation": "icons",
-            "items": [
-              "🍋",
-              "🍋",
-              "🍊",
-              "🍋"
-            ],
-            "durationMs": 1600,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r9q4",
-          "question": "Na której pozycji znajdował się inny owoc?",
-          "answers": [
-            "Pierwszej",
-            "Drugiej",
-            "Trzeciej",
-            "Czwartej"
-          ],
-          "correct": 2,
           "category": "attention"
-        },
-        {
-          "id": "m-r9q5",
-          "question": "Jak nazywał się pies?",
-          "answers": [
-            "Milo",
-            "Baxter",
-            "Ollie",
-            "Teddy"
-          ],
-          "correct": 1,
-          "category": "association",
-          "study": {
-            "title": "Mała historia",
-            "items": [
-              "O 7:15 Nina zabrała Baxtera na spacer",
-              "i minęła starą czerwoną skrzynkę pocztową."
-            ],
-            "durationMs": 2200,
-            "mode": "manual",
-            "continueLabel": "Historia przeczytana"
-          }
-        },
-        {
-          "id": "m-r9q6",
-          "question": "Jakiego koloru była skrzynka pocztowa?",
-          "answers": [
-            "Niebieski",
-            "Zielony",
-            "Czerwony",
-            "Żółty"
-          ],
-          "correct": 2,
-          "category": "attention"
-        }
-      ]
-    },
-    {
-      "title": "Finałowe Wyzwanie Pamięci 🔥",
-      "questions": [
-        {
-          "id": "m-r10q1",
-          "question": "Który symbol uzupełnia tę sekwencję: ▲ ● ▲ ● …?",
-          "answers": [
-            "▲",
-            "●",
-            "■",
-            "◆"
-          ],
-          "correct": 0,
-          "category": "working_memory",
-          "study": {
-            "title": "RUNDA KOŃCOWA",
-            "instruction": "Do wyniku 80% brakuje tylko sześciu pytań. Zapamiętaj wszystko, co pokazano poniżej.",
-            "items": [
-              "4",
-              "JABŁKO",
-              "🐘",
-              "FIOLETOWY",
-              "29"
-            ],
-            "durationMs": 2800,
-            "mode": "manual",
-            "continueLabel": "Rozpocznij rundę finałową"
-          }
-        },
-        {
-          "id": "m-r10q2",
-          "question": "Co to jest 6 – 1 – 8 od tyłu?",
-          "answers": [
-            "8 – 1 – 6",
-            "8 – 6 – 1",
-            "1 – 8 – 6",
-            "6 – 8 – 1"
-          ],
-          "correct": 0,
-          "category": "numbers",
-          "study": {
-            "title": "Zapamiętaj tę kolejność",
-            "items": [
-              "6",
-              "1",
-              "8"
-            ],
-            "durationMs": 1400,
-            "mode": "automatic"
-          }
         },
         {
           "id": "m-r10q3",
           "question": "Ostatnia niespodzianka: jakiego koloru był słoń pokazany na początku testu?",
           "answers": [
             "Niebieski",
-            "Fioletowy",
+            "Srebrny",
             "Żółty",
-            "Srebrny"
+            "Fioletowy"
           ],
-          "correct": 1,
-          "category": "word_recall"
-        },
-        {
-          "id": "m-r10q4",
-          "question": "Co się zmieniło? 🌙 🔑 ❤️ ☕",
-          "answers": [
-            "Gwiazda stała się sercem",
-            "Klucz zniknął",
-            "Księżyc się poruszył",
-            "Kawa zmieniona"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "study": {
-            "title": "Ostateczny test zmiany",
-            "presentation": "icons",
-            "items": [
-              "🌙",
-              "🔑",
-              "⭐",
-              "☕"
-            ],
-            "durationMs": 1500,
-            "mode": "automatic"
-          }
-        },
-        {
-          "id": "m-r10q5",
-          "question": "Która liczba pojawiła się w zestawie rundy finałowej?",
-          "answers": [
-            "19",
-            "24",
-            "29",
-            "49"
-          ],
-          "correct": 2,
-          "category": "numbers"
-        },
-        {
-          "id": "m-r10q6",
-          "question": "PYTANIE KOŃCOWE: który pełny zestaw pokazano na początku tej rundy?",
-          "answers": [
-            "4 — JABŁKO — SŁOŃ — FIOLETOWY — 29",
-            "4 — JABŁKO — SŁOŃ — ŻÓŁTY — 29",
-            "9 — JABŁKO — SŁOŃ — FIOLETOWY — 24",
-            "4 — GRUSZKA — SŁOŃ — FIOLETOWY — 29"
-          ],
-          "correct": 0,
+          "correct": 3,
           "category": "word_recall"
         }
       ]
@@ -1411,7 +330,7 @@
   ],
   "checkpoint": {
     "nextPrefix": "Następna runda",
-    "adNote": "Najpierw krótka reklama — potem rozpoczyna się następna runda.",
+    "adNote": "Najpierw krótka reklama, a potem zobaczysz swój wynik.",
     "finalBadge": "OBLICZANIE WYNIKU TESTU PAMIĘCI",
     "finalTitle": "Twój wynik jest gotowy",
     "finalCopy": "Po ostatniej krótkiej reklamie zobaczysz swój wynik.",
@@ -1426,65 +345,14 @@
     ],
     "reveals": [
       {
-        "title": "Runda 1 zakończona ✓",
-        "signal": "fixed",
-        "message": "Dobry początek. Łatwe już się skończyły."
-      },
-      {
-        "title": "Zarejestrowana pamięć wzrokowa ✓",
-        "signal": "fixed",
-        "message": "Nadal masz szansę na 80%."
-      },
-      {
-        "title": "Analiza pamięci liczb",
-        "signal": "score-band",
-        "variants": {
-          "onTrack": "Twoja pamięć liczbowa wygląda na dobrą.",
-          "needsBoost": "Runda liczbowa zmieniła wszystko…"
-        }
-      },
-      {
-        "title": "Ukończono 40%",
-        "signal": "score-band",
-        "variants": {
-          "onTrack": "Jesteś na dobrej drodze do 80%.",
-          "needsBoost": "Aby osiągnąć 80%, trzeba lepiej odpowiedzieć na pozostałe pytania."
-        }
-      },
-      {
-        "title": "Sprawdzono pamięć długotrwałą 🧠",
-        "signal": "fixed",
-        "message": "Ta runda miała Cię zmylić."
-      },
-      {
-        "title": "Twój profil pamięci staje się jasny",
-        "signal": "strongest-dimension",
-        "template": "Najsilniejszy jak dotąd: {value}"
-      },
-      {
-        "title": "Najtrudniejsza część zaczyna się teraz",
-        "signal": "fixed",
-        "message": "Pozostaje osiemnaście pytań."
-      },
-      {
-        "title": "Czy nadal możesz osiągnąć 80%?",
-        "signal": "target-status",
-        "variants": {
-          "achieved": "Próg 80% jest już osiągnięty — teraz zakończ mocnym akcentem.",
-          "reachable": "Tak, ale liczy się ostatnie dwanaście pytań.",
-          "unreachable": "Zobaczmy, jak mocno potrafisz zakończyć."
-        }
-      },
-      {
-        "title": "Pozostało sześć pytań",
-        "signal": "fixed",
-        "message": "Twój końcowy wynik jest nadal ukryty. Ostatnie wyzwanie pamięciowe."
-      },
-      {
+        "badge": "OBLICZANIE WYNIKU TESTU PAMIĘCI",
+        "icon": "✓",
         "title": "Wynik końcowy obliczony",
         "signal": "fixed",
-        "message": "Każda punktowana odpowiedź została sprawdzona."
+        "message": "Sprawdzono wszystkie dziesięć punktowanych odpowiedzi."
       }
-    ]
-  }
+    ],
+    "finalIcon": "🧠"
+  },
+  "progressLabel": "ukończono"
 }

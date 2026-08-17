@@ -5,7 +5,14 @@
   "landing": {
     "intro": "From flavour and fire to pastry, timing and service pressure, prove you can think like a chef when the kitchen heats up.",
     "socialProof": "81,000+ people played this",
-    "cta": "Start Quiz"
+    "cta": "Start Quiz",
+    "startPrompt": {
+      "eyebrow": "READY FOR SERVICE",
+      "icon": "✓",
+      "title": "The Kitchen Is Ready 🔥",
+      "copy": "Watch a short ad to enter the kitchen.",
+      "button": "OK"
+    }
   },
   "about": {
     "body": "This worldwide chef quiz turns practical kitchen knowledge into ten increasingly difficult rounds. It covers preparation, ingredients and flavour, heat and cooking methods, baking and pastry, kitchen maths, food safety and the judgement needed when several clues arrive at once.\n\nThe questions are designed for curious home cooks, food enthusiasts and aspiring chefs. Every recipe-dependent problem supplies the temperature, ratio, timing or intended result needed to find one fair answer, while the service rounds reward observation, organisation and calm decision-making.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the kitchen skills you recognised most confidently, not a culinary qualification or food-safety certification.",
@@ -21,23 +28,26 @@
   },
   "checkpoint": {
     "nextPrefix": "NEXT ROUND",
-    "adNote": "Short ad first — then the next kitchen round starts.",
+    "progressLabel": "Culinary pass progress",
+    "progressComplete": "{value}% complete",
+    "adNote": "Short ad first — then the next kitchen challenge unlocks.",
     "finalBadge": "CULINARY REPORT",
+    "finalIcon": "👨‍🍳",
     "finalTitle": "Your chef result is ready",
     "finalCopy": "Every recipe, service decision and kitchen answer has been checked. One final reveal remains.",
     "finalButton": "Reveal My Score",
     "finalChecklist": ["Kitchen fundamentals", "Ingredients and flavour", "Heat control", "Baking and pastry", "Kitchen maths", "Safety and service"],
     "reveals": [
-      { "title": "Kitchen induction complete", "signal": "fixed", "message": "Your first culinary signals are on the pass." },
-      { "title": "Prep station ready", "signal": "fixed", "message": "Tools, order and preparation choices have been logged." },
-      { "title": "Heat control calibrated", "signal": "fixed", "message": "Your cooking-method instincts are now part of the result." },
-      { "title": "Flavour balance mapped", "signal": "fixed", "message": "Salt, acid, richness and aroma have joined the picture." },
-      { "title": "Pastry instincts tested", "signal": "strongest-dimension", "template": "Strongest kitchen skill so far: {value}." },
-      { "title": "Kitchen maths checked", "signal": "fixed", "message": "Timing, yield and scaling decisions are now verified." },
-      { "title": "Service judgement logged", "signal": "strongest-dimension", "template": "Current strongest kitchen skill: {value}." },
-      { "title": "Quick-fire pass complete", "signal": "fixed", "message": "Fast questions, same scoring. Your answers are logged." },
-      { "title": "Kitchen traps spotted", "signal": "fixed", "message": "Six final chef challenges remain." },
-      { "title": "Chef result ready", "signal": "fixed", "message": "All sixty answers have been processed." }
+      { "badge": "FIRST TICKET CLEARED", "icon": "✓", "title": "Kitchen induction passed", "signal": "fixed", "message": "Your first ticket is clear. The Prep Bench now tests whether your setup can survive service." },
+      { "badge": "PREP STATION READY", "icon": "🔪", "title": "Your station is set", "signal": "fixed", "message": "Tools, order and preparation choices are logged. Now prove you can control the heat." },
+      { "badge": "HEAT CONTROL LOGGED", "icon": "🔥", "title": "The pans are under control", "signal": "fixed", "message": "Your cooking-method instincts are on the pass. Next, the flavours get harder to balance." },
+      { "badge": "FLAVOUR PROFILE MAPPED", "icon": "🧂", "title": "Your palate is taking shape", "signal": "fixed", "message": "Salt, acid, richness and aroma have joined the result. The Pastry Bench is waiting." },
+      { "badge": "PASTRY SIGNAL SCORED", "icon": "🥐", "title": "Pastry instincts recorded", "signal": "strongest-dimension", "template": "Strongest kitchen skill so far: {value}. Kitchen Maths is next." },
+      { "badge": "NUMBERS CHECKED", "icon": "⏱️", "title": "The numbers balance", "signal": "fixed", "message": "Timing, yield and scaling decisions are verified. Service pressure now turns up." },
+      { "badge": "SERVICE PRESSURE HANDLED", "icon": "🍽️", "title": "You kept the pass moving", "signal": "strongest-dimension", "template": "Current strongest kitchen skill: {value}. The quick-fire round is next." },
+      { "badge": "QUICK-FIRE CLEARED", "icon": "⚡", "title": "Fast hands, answers locked", "signal": "fixed", "message": "The sprint is complete. Now six believable kitchen mistakes are waiting to catch you." },
+      { "badge": "FINAL TABLE AWAITS", "icon": "👀", "title": "The kitchen traps are cleared", "signal": "fixed", "message": "Only the Final Chef’s Table remains. Every answer now needs two clues." },
+      { "badge": "CULINARY REPORT READY", "icon": "👨‍🍳", "title": "Chef result ready", "signal": "fixed", "message": "All sixty answers have been processed. Your Chef Score is ready to reveal." }
     ]
   },
   "results": {
@@ -151,11 +161,11 @@
       "title": "Quick-Fire Pass ⚡",
       "questions": [
         { "id": "chef-r8q1", "question": "Which tool removes lumps from dry flour?", "answers": ["Whisk", "Tongs", "Peeler", "Sieve"], "correct": 3, "category": "kitchen_fundamentals", "delay": 350, "explanation": "A sieve separates and aerates dry particles, removing lumps from flour." },
-        { "id": "chef-r8q2", "question": "Which ingredient adds acidity?", "answers": ["Butter", "Lemon juice", "Flour", "Cream"], "correct": 1, "category": "ingredients_flavour", "delay": 350, "explanation": "Lemon juice contributes acidity through its citric acid." },
+        { "id": "chef-r8q2", "question": "Which ingredient deepens savoury umami?", "answers": ["Caster sugar", "Mushrooms", "Whipped cream", "Plain water"], "correct": 1, "category": "ingredients_flavour", "delay": 350, "explanation": "Mushrooms contain naturally occurring glutamates that can deepen savoury flavour." },
         { "id": "chef-r8q3", "question": "Which method uses dry oven heat?", "answers": ["Poaching", "Steaming", "Roasting", "Blanching"], "correct": 2, "category": "heat_methods", "delay": 350, "explanation": "Roasting cooks with dry heat in an oven." },
-        { "id": "chef-r8q4", "question": "What helps yeast dough rise?", "answers": ["Fermentation", "Freezing", "Draining", "Filtering"], "correct": 0, "category": "baking_pastry", "delay": 350, "explanation": "Fermentation releases gas that expands the dough." },
-        { "id": "chef-r8q5", "question": "Half of 1 litre?", "answers": ["100 mL", "250 mL", "750 mL", "500 mL"], "correct": 3, "category": "kitchen_maths", "delay": 350, "explanation": "One litre is 1,000 mL, so half is 500 mL." },
-        { "id": "chef-r8q6", "question": "Raw and cooked food should be?", "answers": ["Stacked together", "Separated", "Served on one board", "Mixed before storage"], "correct": 1, "category": "safety_service", "delay": 350, "explanation": "Separating raw and cooked food helps prevent harmful cross-contamination." }
+        { "id": "chef-r8q4", "question": "What sets a baked custard?", "answers": ["Eggs", "Ice", "Flour dust", "Oil alone"], "correct": 0, "category": "baking_pastry", "delay": 350, "explanation": "Egg proteins coagulate as a custard bakes, setting the mixture." },
+        { "id": "chef-r8q5", "question": "3 × 175 g equals?", "answers": ["350 g", "475 g", "575 g", "525 g"], "correct": 3, "category": "kitchen_maths", "delay": 350, "explanation": "Three portions of 175 g total 525 g." },
+        { "id": "chef-r8q6", "question": "Unknown ingredient on an allergy order?", "answers": ["Serve a small amount", "Stop and verify", "Remove the garnish", "Ask after service"], "correct": 1, "category": "safety_service", "delay": 350, "explanation": "An unknown ingredient must be verified before an allergy order is prepared or served." }
       ]
     },
     {
@@ -163,8 +173,8 @@
       "questions": [
         { "id": "chef-r9q1", "context": "TASK: finely chop fresh herbs\nTOOL SELECTED: rolling pin", "question": "What is the mistake?", "answers": ["The herbs are fresh", "A sharp knife is the appropriate tool", "The task happens before service", "The herbs are green"], "correct": 1, "category": "kitchen_fundamentals", "explanation": "A rolling pin does not finely chop herbs; a suitable sharp knife does." },
         { "id": "chef-r9q2", "context": "SALAD RECORD\nGreens ✓\nOil ✓\nSeasoning ✓\nAcid —", "question": "Which flavour component is missing from this simple dressing?", "answers": ["More greens", "More oil only", "Acid", "A raising agent"], "correct": 2, "category": "ingredients_flavour", "explanation": "The record includes oil and seasoning but no acidic component to balance the dressing." },
-        { "id": "chef-r9q3", "context": "PROCESS\nPreheat pan → add food → overcrowd pan → food turns pale and wet", "question": "Which step caused the stated heat-control problem?", "answers": ["Preheating", "Adding food", "Using a pan", "Overcrowding the pan"], "correct": 3, "category": "heat_methods", "explanation": "Overcrowding traps moisture and suppresses surface browning, producing the pale, wet result shown." },
-        { "id": "chef-r9q4", "context": "QUICK CAKE RECIPE\nRaising agent: baking powder\nIngredient used: yeast", "question": "What was the mistake?", "answers": ["The specified raising agent was replaced", "The recipe used flour", "The cake was mixed", "The ingredients were measured"], "correct": 0, "category": "baking_pastry", "explanation": "The recipe specified baking powder, but yeast was used instead, changing the intended raising method." },
+        { "id": "chef-r9q3", "context": "PROCESS\nTarget: gentle poach\nActual: liquid at a rolling boil\nResult: delicate food breaks apart", "question": "Which step caused the stated problem?", "answers": ["Using enough liquid", "Starting with the correct target", "Watching the food", "Using a rolling boil"], "correct": 3, "category": "heat_methods", "explanation": "A rolling boil is much more turbulent than a gentle poach and can break apart delicate food." },
+        { "id": "chef-r9q4", "context": "MERINGUE RECORD\nBowl: clean and dry\nEgg whites: ready\nTool selected: greasy whisk", "question": "What is the mistake?", "answers": ["Fat on the whisk can prevent a stable foam", "The bowl is dry", "Egg whites are used", "A whisk was selected"], "correct": 0, "category": "baking_pastry", "explanation": "Even a trace of fat can interfere with the stable egg-white foam a meringue needs." },
         { "id": "chef-r9q5", "context": "PORTION RECORD\n3 portions × 180 g\nRecorded total: 360 g", "question": "What should the total be?", "answers": ["360 g", "480 g", "540 g", "720 g"], "correct": 2, "category": "kitchen_maths", "explanation": "Three portions at 180 g each total 540 g, so the recorded 360 g is incorrect." },
         { "id": "chef-r9q6", "context": "ORDER TICKET\nDeclared allergy: sesame\nPlanned garnish: sesame seeds", "question": "What is the critical conflict?", "answers": ["The garnish is small", "The garnish contains the declared allergen", "The ticket has two lines", "The order includes a garnish"], "correct": 1, "category": "safety_service", "explanation": "The planned garnish directly contains the declared allergen and must not be used." }
       ]
@@ -172,12 +182,12 @@
     {
       "title": "Final Chef’s Table 👨‍🍳",
       "questions": [
-        { "id": "chef-r10q1", "context": "RECIPE: rinse potato pieces, then dry thoroughly before oiling and roasting.\nRESULT: the cook skipped drying; the potatoes are pale and soft.", "contextRequired": true, "question": "Which missed step best explains the result?", "answers": ["Rinsing", "Cutting", "Adding oil", "Drying thoroughly"], "correct": 3, "category": "kitchen_fundamentals", "reasoningSteps": 2, "explanation": "The visible recipe requires drying, and the pale, soft result is consistent with surface moisture inhibiting browning and crispness." },
-        { "id": "chef-r10q2", "context": "A soup has reduced until it is both too salty and too thick. Unsalted stock is available, and the recipe permits consistency adjustment.", "contextRequired": true, "question": "Which response addresses both clues?", "answers": ["Add unsalted stock gradually and retaste", "Add more salt", "Reduce it further", "Add a salty garnish"], "correct": 0, "category": "ingredients_flavour", "reasoningSteps": 2, "explanation": "Unsalted stock reduces the salt concentration while restoring liquid to the over-thick soup." },
+        { "id": "chef-r10q1", "context": "RECIPE ORDER\n1. Cook diced onion until softened\n2. Finish with chopped fresh herbs\nSETUP\nBoth ingredients were chopped together and placed in one bowl.", "contextRequired": true, "question": "Which setup change follows both recipe clues?", "answers": ["Cook everything at the finish", "Add the herbs at the start", "Leave both ingredients unprepared", "Organise the onion and herbs separately by when they are used"], "correct": 3, "category": "kitchen_fundamentals", "reasoningSteps": 2, "explanation": "The onion and herbs enter at different times, so organising them separately follows the recipe order and avoids adding either at the wrong stage." },
+        { "id": "chef-r10q2", "context": "A finished dish tastes rich and lacks fresh aroma. Lemon and fresh herbs are available, and the recipe permits a final adjustment.", "contextRequired": true, "question": "Which adjustment addresses both clues?", "answers": ["A little lemon and fresh herbs", "More cream and butter", "More flour", "More syrup"], "correct": 0, "category": "ingredients_flavour", "reasoningSteps": 2, "explanation": "A little lemon brightens the richness while fresh herbs answer the missing aroma clue." },
         { "id": "chef-r10q3", "context": "The exterior is browning quickly, but the centre remains below the recipe’s target. The recipe permits a lower-oven finish.", "contextRequired": true, "question": "What is the best next step?", "answers": ["Increase the oven sharply", "Lower the heat and continue until the stated target is reached", "Serve it immediately", "Cool it and stop cooking"], "correct": 1, "category": "heat_methods", "reasoningSteps": 2, "explanation": "Lower heat slows further surface browning while giving the centre time to reach the recipe’s stated target." },
-        { "id": "chef-r10q4", "context": "The cake is dense. Ingredient weights were accurate, the raising agent was fresh and the fat and sugar were creamed. After flour was added, the mixture was beaten for eight minutes although the recipe said to fold briefly.", "contextRequired": true, "question": "Which clue is the strongest explanation?", "answers": ["The ingredients were weighed", "The raising agent was fresh", "The mixture was overworked after flour was added", "The fat and sugar were creamed"], "correct": 2, "category": "baking_pastry", "reasoningSteps": 2, "explanation": "The other checks were correct, while prolonged mixing after adding flour can build excessive structure and produce a denser result." },
+        { "id": "chef-r10q4", "context": "BISCUIT RECIPE\nFlour: 200 g\nButter: 100 g\nBATCH RECORD\nFlour: 200 g\nButter: 200 g\nRESULT\nThe biscuits spread excessively.", "contextRequired": true, "question": "Which clue best explains the result?", "answers": ["The flour matched the recipe", "The ingredients were weighed", "Twice the specified butter was used", "The biscuits were baked"], "correct": 2, "category": "baking_pastry", "reasoningSteps": 2, "explanation": "The batch used twice the specified butter while the flour stayed unchanged, disrupting the supplied ratio and explaining the excessive spread." },
         { "id": "chef-r10q5", "context": "The original order needs 12 portions at 150 g each. The revised order needs 18 portions at the same size.", "contextRequired": true, "question": "What total prepared mass is required?", "answers": ["2,700 g", "1,800 g", "2,250 g", "3,000 g"], "correct": 0, "category": "kitchen_maths", "reasoningSteps": 2, "explanation": "Eighteen portions multiplied by 150 g gives a required total of 2,700 g." },
-        { "id": "chef-r10q6", "context": "An allergy order was prepared at a verified clean station. Before service, an unverified sauce was added to the finished plate.", "question": "What is the correct decision?", "answers": ["Remove only the visible sauce", "Serve it if the guest is hungry", "Add another garnish", "Stop, reject the plate and remake it only after verifying the sauce"], "correct": 3, "category": "safety_service", "reasoningSteps": 2, "explanation": "The unverified sauce breaks the controlled allergy process, so the plate must not be served and the ingredient must be verified before remaking." }
+        { "id": "chef-r10q6", "context": "Cooked rice has remained warm on the preparation bench throughout service. No verified time or temperature record is available.", "question": "What is the safest decision?", "answers": ["Serve it immediately without checking", "Cool it beside raw food", "Mix it with a fresh batch", "Do not serve it; isolate it and follow the kitchen’s food-safety procedure"], "correct": 3, "category": "safety_service", "reasoningSteps": 2, "explanation": "Prolonged uncontrolled warm holding and missing verification mean the rice should not be served; isolate it and follow the kitchen’s food-safety procedure." }
       ]
     }
   ]
