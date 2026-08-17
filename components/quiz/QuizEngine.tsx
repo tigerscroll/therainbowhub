@@ -270,9 +270,9 @@ function QuizAbout({ label, onRestart, quiz, title }: { label?: string; onRestar
   );
 }
 
-function ResultDisplayAd({ elementId, inline = false }: { elementId: string; inline?: boolean }) {
+function ResultDisplayAd({ elementId }: { elementId: string }) {
   return (
-    <div className={`quiz-engine__display-ad-row${inline ? " quiz-engine__display-ad-row--inline" : ""}`}>
+    <div className="quiz-engine__display-ad-row">
       <div className="quiz-engine__display-ad-frame" id={elementId} />
     </div>
   );
@@ -779,7 +779,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const career = quiz.career;
     const careerReport = career?.reportUnlock;
     const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length === 5;
-    const singleResultAd = quiz.engine.resultAds && resultDetails && resultAdIds.length === 1;
     const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
     const targetRemaining = Math.max(0, targetCorrect - result.score);
     const estimateMinimum = quiz.engine.estimate?.minAge ?? 0;
@@ -865,7 +864,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
-        {singleResultAd ? <ResultDisplayAd elementId={resultAdIds[0]} inline /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-roadmap">
             <h3>{resultDetails.roadmapTitle}</h3>

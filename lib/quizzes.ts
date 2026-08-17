@@ -581,7 +581,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       if (!Array.isArray(size) || size.length !== 2 || !size.every((value) => Number.isInteger(value) && value > 0)) {
         throw new Error(`${file}: engine.resultAds.sizes[${index}] must be a positive width-height pair.`);
       }
-      if (size[0] > 336 || size[1] > 600) throw new Error(`${file}: result display ads cannot exceed 336px wide or 600px high.`);
+      if (size[0] > 336 || size[1] > 280) throw new Error(`${file}: result display ads cannot exceed 336x280.`);
       return [size[0], size[1]] as [number, number];
     });
     resultAds = { adUnitPath, count, sizes };
