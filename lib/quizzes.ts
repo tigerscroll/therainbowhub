@@ -48,6 +48,10 @@ export type QuizQuestionVisual = {
   separator?: string;
   ariaLabel: string;
 };
+export type QuizQuestionImage = {
+  src: string;
+  alt: string;
+};
 export type QuizStudyCue = {
   title: string;
   instruction?: string;
@@ -71,6 +75,7 @@ export type QuizEngineConfig = {
   scoring: QuizScoring;
   checkpoint: "standard" | "ai";
   startOnLoad: boolean;
+  localeParity: "strict" | "independent";
   rewarded: QuizRewardedConfig;
   resultAds?: QuizResultAdsConfig;
   advanceDelayMs: number;
@@ -125,7 +130,7 @@ export type QuizCareerCopy = {
   finalCareerTitle: string;
   strongestLabel: string;
   stages: QuizCareerStageCopy[];
-  reportUnlock: {
+  reportUnlock?: {
     eyebrow: string;
     title: string;
     copy: string;
@@ -145,6 +150,7 @@ export type QuizQuestion = {
   presentation: QuizPresentation;
   context?: string;
   visual?: QuizQuestionVisual;
+  image?: QuizQuestionImage;
   prompt: string;
   choices: string[];
   icons?: string[];
@@ -367,6 +373,7 @@ type QuizManifest = {
     scoring: QuizScoring["type"];
     checkpoint?: QuizEngineConfig["checkpoint"];
     startOnLoad?: boolean;
+    localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     resultAds?: QuizResultAdsConfig;
     advanceDelayMs?: number;
@@ -425,6 +432,7 @@ type QuizLocaleFile = {
       id?: string;
       context?: string;
       visual?: QuizQuestionVisual;
+      image?: QuizQuestionImage;
       question: string;
       presentation?: QuizPresentation;
       answers?: string[] | Record<string, string | Record<string, number>>;
@@ -506,6 +514,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.checkpoint !== undefined && !["standard", "ai"].includes(String(engine.checkpoint))) throw new Error(`${file}: invalid checkpoint mode.`);
   if (engine.startOnLoad !== undefined && typeof engine.startOnLoad !== "boolean") throw new Error(`${file}: engine.startOnLoad must be a boolean.`);
+  if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
   const advanceDelayMs = engine.advanceDelayMs === undefined ? 275 : Number(engine.advanceDelayMs);
   if (!Number.isInteger(advanceDelayMs) || advanceDelayMs < 200 || advanceDelayMs > 600) throw new Error(`${file}: engine.advanceDelayMs must be between 200 and 600.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -690,7 +699,8 @@ function normalizeLocale(
   }
   if (!Array.isArray(value.stages) || !value.stages.length) throw new Error(`${file}: stages are required.`);
   if (!Array.isArray(value.results?.profiles) || !value.results.profiles.length) throw new Error(`${file}: result profiles are required.`);
-  if (manifest.engine.flow === "staged" && value.stages.length < 2) throw new Error(`${file}: staged quizzes need at least two stages.`);
+  const localeFlow = manifest.engine.localeParity === "independent" && value.stages.length < 2 ? "linear" : manifest.engine.flow;
+  if (localeFlow === "staged" && value.stages.length < 2) throw new Error(`${file}: staged quizzes need at least two stages.`);
   if (manifest.engine.checkpoint === "ai") {
     if (!value.checkpoint) throw new Error(`${file}: AI checkpoints need checkpoint copy.`);
     if (!Array.isArray(value.checkpoint.reveals) || value.checkpoint.reveals.length !== value.stages.length) throw new Error(`${file}: checkpoint reveals must match the stage count.`);
@@ -736,10 +746,12 @@ function normalizeLocale(
       if (index < value.stages.length - 1 && !stage.next) throw new Error(`${file}: career stage ${index + 1} needs a next-stage teaser.`);
       if (stage.next) (["eyebrow", "title", "difficulty", "tagline", "copy", "button"] as const).forEach((key) => text(stage.next?.[key], `career.stages[${index}].next.${key}`, file));
     });
-    (["eyebrow", "title", "copy", "button", "adNote", "reviewTitle", "perfectReview", "yourAnswer", "correctAnswer"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));
-    const reportChecks = strings(career.reportUnlock?.checks, "career.reportUnlock.checks", file);
-    if (reportChecks.length < 3 || reportChecks.length > 6) throw new Error(`${file}: career.reportUnlock.checks needs three to six items.`);
-    if (manifest.engine.flow !== "staged" || manifest.engine.scoring !== "correct-answer" || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged, scored quiz with rewarded stage results.`);
+    if (career.reportUnlock) {
+      (["eyebrow", "title", "copy", "button", "adNote", "reviewTitle", "perfectReview", "yourAnswer", "correctAnswer"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));
+      const reportChecks = strings(career.reportUnlock.checks, "career.reportUnlock.checks", file);
+      if (reportChecks.length < 3 || reportChecks.length > 6) throw new Error(`${file}: career.reportUnlock.checks needs three to six items.`);
+    }
+    if (localeFlow !== "staged" || manifest.engine.scoring !== "correct-answer" || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged, scored quiz with rewarded stage results.`);
   }
 
   const questions: QuizQuestion[] = [];
@@ -828,6 +840,14 @@ function normalizeLocale(
       } else if (rawQuestion.visual !== undefined) {
         throw new Error(`${file}: question ${index + 1} cannot use visual data with ${presentation} presentation.`);
       }
+      let image: QuizQuestionImage | undefined;
+      if (rawQuestion.image !== undefined) {
+        const rawImage = object(rawQuestion.image, `questions[${index}].image`, file);
+        image = {
+          src: text(rawImage.src, `questions[${index}].image.src`, file),
+          alt: text(rawImage.alt, `questions[${index}].image.alt`, file),
+        };
+      }
       if (rawQuestion.calibration && (rawQuestion.calibration.length !== choices.length || rawQuestion.calibration.some((item) => typeof item !== "number" || item < -1 || item > 1))) throw new Error(`${file}: question ${index + 1} calibration values must match answers and be between -1 and 1.`);
       if (rawQuestion.delay !== undefined && (!Number.isInteger(rawQuestion.delay) || rawQuestion.delay < 200 || rawQuestion.delay > 600)) throw new Error(`${file}: question ${index + 1} delay must be between 200 and 600.`);
       if (rawQuestion.reasoningSteps !== undefined && (!Number.isInteger(rawQuestion.reasoningSteps) || rawQuestion.reasoningSteps < 1 || rawQuestion.reasoningSteps > 4)) throw new Error(`${file}: question ${index + 1} reasoningSteps must be between one and four.`);
@@ -843,6 +863,7 @@ function normalizeLocale(
         presentation,
         context: rawQuestion.context === undefined ? undefined : text(rawQuestion.context, "question context", file),
         visual,
+        image,
         prompt,
         choices,
         icons: rawQuestion.icons,
@@ -980,10 +1001,11 @@ function normalizeLocale(
   return {
     slug: manifest.slug,
     engine: {
-      flow: { type: manifest.engine.flow, advance: manifest.engine.advance, feedback: manifest.engine.feedback },
+      flow: { type: localeFlow, advance: manifest.engine.advance, feedback: manifest.engine.feedback },
       scoring: { type: manifest.engine.scoring },
       checkpoint: manifest.engine.checkpoint ?? "standard",
       startOnLoad: manifest.engine.startOnLoad ?? false,
+      localeParity: manifest.engine.localeParity ?? "strict",
       rewarded: {
         start: manifest.engine.rewarded?.start ?? false,
         stages: manifest.engine.rewarded?.stages ?? false,
@@ -1115,7 +1137,7 @@ export function getQuizBySlug(slug: string, locale?: string, options: { includeF
   if (!slugs().includes(slug)) return undefined;
   if (!hasLocale(slug, safeLocale)) return options.includeFallback ? readQuiz(slug, getDefaultLocale()) : undefined;
   const quiz = readQuiz(slug, safeLocale);
-  if (safeLocale !== getDefaultLocale()) sameStructure(quiz, readQuiz(slug, getDefaultLocale()), `${slug}/${safeLocale}.json`);
+  if (safeLocale !== getDefaultLocale() && quiz.engine.localeParity === "strict") sameStructure(quiz, readQuiz(slug, getDefaultLocale()), `${slug}/${safeLocale}.json`);
   return quiz;
 }
 

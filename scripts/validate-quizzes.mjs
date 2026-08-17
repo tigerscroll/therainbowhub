@@ -113,6 +113,7 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
     const points = config.engine.derivedScore.breakpoints;
@@ -799,6 +800,31 @@ for (const folder of folders) {
     fail(strongestSecondaryCoupling < .3, `${folder.name}/en.json: a primary style is too strongly coupled to a predetermined secondary style.`);
     fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Spectrum rewarded fallback must require three genuine unavailable attempts.`);
   }
+  if (folder.name === "vintage") {
+    const expectedIds = Array.from({ length: 10 }, (_, index) => `vintage-q${index + 1}`);
+    const positionCounts = sourceQuestions.reduce((counts, question) => {
+      counts[question.correct] = (counts[question.correct] ?? 0) + 1;
+      return counts;
+    }, [0, 0, 0, 0]);
+    const expectedImages = Array.from({ length: 10 }, (_, index) => `/quizzes/vintage/assets/items/${String(index + 1).padStart(2, "0")}.jpg`);
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Vintage must launch in English only.`);
+    fail(config.engine?.flow === "linear" && config.engine?.scoring === "correct-answer", `${folder.name}: Vintage must use the one-round scored flow.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Vintage needs rewarded Start and result gates with three unavailable attempts.`);
+    fail(config.engine?.resultAds === undefined, `${folder.name}: Vintage must not configure display ads.`);
+    fail(source.title === "Only 7% Can Name These Vintage Items", `${folder.name}/en.json: Vintage title changed.`);
+    fail(source.stages?.length === 1 && sourceQuestions.length === 10, `${folder.name}/en.json: Vintage needs one round of ten questions.`);
+    fail(JSON.stringify(sourceQuestions.map((question) => question.id)) === JSON.stringify(expectedIds), `${folder.name}/en.json: Vintage question IDs or order changed.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Vintage item needs four answers and one valid key.`);
+    fail(JSON.stringify(positionCounts) === JSON.stringify([3, 3, 2, 2]), `${folder.name}/en.json: Vintage correct positions must keep the approved irregular 3/3/2/2 distribution.`);
+    fail(JSON.stringify(sourceQuestions.map((question) => question.image?.src)) === JSON.stringify(expectedImages), `${folder.name}/en.json: Vintage image order changed.`);
+    sourceQuestions.forEach((question) => {
+      fail(typeof question.image?.alt === "string" && question.image.alt.trim().length >= 12, `${folder.name}/en.json: ${question.id} needs meaningful image alternative text.`);
+      const imagePath = question.image?.src?.replace("/quizzes/vintage/", "");
+      fail(Boolean(imagePath) && fs.existsSync(path.join(directory, imagePath)), `${folder.name}/en.json: ${question.id} image file is missing.`);
+      fail(typeof question.explanation === "string" && question.explanation.trim().length >= 40, `${folder.name}/en.json: ${question.id} needs a useful answer explanation.`);
+    });
+    fail(source.checkpoint?.reveals?.length === 1 && source.results?.score?.showBestRound === false, `${folder.name}/en.json: Vintage needs one final checkpoint and no redundant best-round result.`);
+  }
   if (folder.name === "university") {
     const expectedCategories = Object.fromEntries([
       "verbal_reasoning", "numerical_reasoning", "scientific_reasoning", "critical_thinking", "worldwide_knowledge", "practical_problem_solving",
@@ -887,9 +913,11 @@ for (const folder of folders) {
       fail(localized.checkpoint?.finalChecklist?.length >= 3 && localized.checkpoint.finalChecklist.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
     }
     fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
-    fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
-    fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
-    questions.forEach((question, index) => {
+    if (config.engine?.localeParity !== "independent") {
+      fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
+      fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
+    }
+    if (config.engine?.localeParity !== "independent") questions.forEach((question, index) => {
       const sourceQuestion = sourceQuestions[index];
       const answers = Array.isArray(question.answers) ? question.answers : Object.keys(question.answers ?? {});
       const sourceAnswers = Array.isArray(sourceQuestion?.answers) ? sourceQuestion.answers : Object.keys(sourceQuestion?.answers ?? {});
@@ -910,6 +938,13 @@ for (const folder of folders) {
         columns: sourceQuestion.visual.columns,
         separator: sourceQuestion.visual.separator,
       } : undefined), `${folder.name}/${localeFile}: question ${index + 1} visual structure differs from English.`);
+      fail(JSON.stringify(question.image ? {
+        src: question.image.src,
+        alt: Boolean(question.image.alt),
+      } : undefined) === JSON.stringify(sourceQuestion?.image ? {
+        src: sourceQuestion.image.src,
+        alt: Boolean(sourceQuestion.image.alt),
+      } : undefined), `${folder.name}/${localeFile}: question ${index + 1} image structure differs from English.`);
       fail(question.delay === sourceQuestion?.delay, `${folder.name}/${localeFile}: question ${index + 1} delay differs from English.`);
       fail(question.reasoningSteps === sourceQuestion?.reasoningSteps, `${folder.name}/${localeFile}: question ${index + 1} reasoning-step structure differs from English.`);
       fail(question.targetIdiom === sourceQuestion?.targetIdiom, `${folder.name}/${localeFile}: question ${index + 1} targetIdiom differs from English.`);

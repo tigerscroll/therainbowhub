@@ -88,6 +88,15 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   );
 }
 
+function QuestionImage({ question }: { question: QuizQuestion }) {
+  if (!question.image) return null;
+  return (
+    <figure className="quiz-engine__question-image">
+      <img alt={question.image.alt} decoding="async" src={question.image.src} />
+    </figure>
+  );
+}
+
 function ChoiceQuestion({
   answer,
   feedback,
@@ -99,6 +108,7 @@ function ChoiceQuestion({
     && question.choices.every((choice) => choice.length <= 22);
   return (
     <>
+    <QuestionImage question={question} />
     <QuestionVisual question={question} />
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
@@ -338,6 +348,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         question.presentation,
         question.context,
         question.visual,
+        question.image,
         question.prompt,
         question.choices,
         question.icons,
@@ -727,7 +738,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
         <section className="quiz-engine__career-progress">
           <div><span>{quiz.career.journeyLabel}</span><strong>{quiz.career.kitchensCleared.replace("{value}", String(cleared)).replace("{total}", String(quiz.stages.length))}</strong></div>
-          <div className="quiz-engine__career-dots" aria-label={`${cleared} of ${quiz.stages.length} kitchens cleared`}>
+          <div className="quiz-engine__career-dots" aria-label={`${cleared} of ${quiz.stages.length} complete`} style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}>
             {quiz.stages.map((stage, index) => <i aria-hidden="true" data-complete={index < cleared ? "true" : undefined} key={stage} />)}
           </div>
           <p><span>{quiz.career.currentRank}</span><strong>{currentRank}</strong></p>
@@ -765,6 +776,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const estimateInsights = estimate?.insights;
     const resultInsights = scoreInsights ?? estimateInsights;
     const resultDetails = scoreDetails ?? estimateInsights?.details;
+    const career = quiz.career;
+    const careerReport = career?.reportUnlock;
     const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length === 5;
     const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
     const targetRemaining = Math.max(0, targetCorrect - result.score);
@@ -774,22 +787,22 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const estimatePosition = result.estimatedAge === undefined
       ? 0
       : Math.min(100, Math.max(0, ((result.estimatedAge - estimateMinimum) / estimateRange) * 100));
-    if (quiz.career && !reportUnlocked) {
-      const report = quiz.career.reportUnlock;
+    if (careerReport && !reportUnlocked) {
+      const report = careerReport;
       return (
         <>
         <section className="quiz-engine__career-final quiz-engine__card" data-round={quiz.stages.length}>
-          <span className="quiz-engine__eyebrow">{quiz.career.finalEyebrow}</span>
+          <span className="quiz-engine__eyebrow">{career!.finalEyebrow}</span>
           <div className="quiz-engine__result-icon" aria-hidden="true">{quiz.theme.artwork?.icon ?? quiz.cardIcon}</div>
           <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div>
           <h2>{result.profile.title}</h2>
           <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy?.correctLabel}</p>
           <section className="quiz-engine__career-complete">
             <span>✓</span>
-            <div><small>{quiz.career.currentRank}</small><strong>{quiz.career.finalCareerTitle}</strong></div>
+            <div><small>{career!.currentRank}</small><strong>{career!.finalCareerTitle}</strong></div>
           </section>
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
-            <div><dt>{quiz.career.strongestLabel}</dt><dd>{result.strongestSignal}</dd></div>
+            <div><dt>{career!.strongestLabel}</dt><dd>{result.strongestSignal}</dd></div>
           </dl>
           <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           <section className="quiz-engine__report-unlock">
@@ -960,11 +973,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {quiz.career && reportUnlocked ? (
+        {careerReport && reportUnlocked ? (
           <section className="quiz-engine__answer-review">
-            <h3>{quiz.career.reportUnlock.reviewTitle}</h3>
+            <h3>{careerReport.reviewTitle}</h3>
             {quiz.questions.every((question) => answers[question.id] === question.answerIndex) ? (
-              <p>{quiz.career.reportUnlock.perfectReview}</p>
+              <p>{careerReport.perfectReview}</p>
             ) : (
               <div>
                 {quiz.questions.filter((question) => answers[question.id] !== question.answerIndex).map((question) => (
@@ -972,8 +985,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
                     <span>{quiz.stages[question.stage]}</span>
                     <h4>{question.prompt}</h4>
                     <dl>
-                      <div><dt>{quiz.career!.reportUnlock.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
-                      <div><dt>{quiz.career!.reportUnlock.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
+                      <div><dt>{careerReport.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
+                      <div><dt>{careerReport.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
                     </dl>
                     {question.explanation ? <p>{question.explanation}</p> : null}
                   </article>

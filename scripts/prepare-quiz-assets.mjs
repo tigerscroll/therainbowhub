@@ -55,6 +55,14 @@ async function prepareQuiz(slug) {
       .map((file) => copyIfPresent(path.join(icons, file), path.join(destination, "assets", "icons", file))));
   } catch { /* Custom question icons are optional. */ }
 
+  const items = path.join(source, "assets", "items");
+  try {
+    const files = await fs.readdir(items);
+    await Promise.all(files
+      .filter((file) => /\.(?:jpe?g|png|webp|avif)$/i.test(file))
+      .map((file) => copyIfPresent(path.join(items, file), path.join(destination, "assets", "items", file))));
+  } catch { /* Question imagery is optional. */ }
+
   const artwork = manifest.theme?.artwork ?? {};
   await Promise.all([artwork.landing, artwork.result, ...Object.values(artwork.profiles ?? {})]
     .filter((value, index, values) => typeof value === "string" && !value.startsWith("/") && values.indexOf(value) === index)
