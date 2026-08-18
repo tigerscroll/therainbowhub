@@ -626,7 +626,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     return (
       <>
       <section className="quiz-engine__checkpoint quiz-engine__card" data-round={completedStage + 1}>
-        <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? (isFinalStage && checkpoint ? checkpoint.finalBadge : reveal?.badge ?? translations.results.stageComplete)}</span>
+        {!isFinalStage ? (
+          <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? reveal?.badge ?? translations.results.stageComplete}</span>
+        ) : null}
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{careerStage?.preAdTitle ?? checkpointTitle}</h2>
         {careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
