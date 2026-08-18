@@ -124,51 +124,53 @@
   "questions": [
     {
       "id": "iq-r1q2",
-      "question": "Which symbol completes the pattern?",
+      "question": "Which symbol completes both patterns?",
       "presentation": "sequence",
       "visual": {
         "items": [
           "○",
+          "▲",
+          "□",
+          "●",
           "△",
-          "○",
-          "△",
+          "■",
           "?"
         ],
-        "columns": 5,
+        "columns": 7,
         "separator": "•",
-        "ariaLabel": "circle, triangle, circle, triangle, unknown"
+        "ariaLabel": "outline circle, filled triangle, outline square, filled circle, outline triangle, filled square, unknown"
       },
       "answers": [
-        "△",
+        "●",
         "○",
         "□",
-        "◇"
+        "△"
       ],
       "correct": 1,
       "category": "pattern",
-      "explanation": "The symbols alternate circle, triangle, circle, triangle, so the next symbol is a circle."
+      "explanation": "The shapes repeat circle, triangle, square while the fill alternates outline, solid. The next symbol is an outline circle."
     },
     {
       "id": "iq-r6q2",
-      "question": "Use the key. What is square × triangle + 2?",
+      "question": "Use both clues. What is triangle × square?",
       "presentation": "code",
       "visual": {
         "items": [
-          "□ = 4",
-          "△ = 3"
+          "□ + □ = 10",
+          "△ + □ = 8"
         ],
         "columns": 1,
-        "ariaLabel": "square equals 4, triangle equals 3"
+        "ariaLabel": "two squares equal ten; triangle plus square equals eight"
       },
       "answers": [
         "12",
-        "14",
-        "16",
-        "18"
+        "15",
+        "18",
+        "20"
       ],
       "correct": 1,
       "category": "numerical",
-      "explanation": "The key gives square as 4 and triangle as 3. Multiplication comes first: 4 × 3 + 2 = 14."
+      "explanation": "Two squares total 10, so each square is 5. The triangle is 3, and 3 × 5 = 15."
     },
     {
       "id": "iq-r4q3",
@@ -216,25 +218,25 @@
     },
     {
       "id": "iq-r6q3",
-      "question": "Each letter moves forward once. How is DOG coded?",
+      "question": "The shifts repeat +1, +2, +1. How is DOG coded?",
       "presentation": "code",
       "visual": {
         "items": [
-          "RULE: EACH LETTER +1",
-          "CAT → DBU"
+          "RULE: +1, +2, +1",
+          "CAT → DCU"
         ],
         "columns": 1,
-        "ariaLabel": "each letter moves forward one; CAT becomes DBU"
+        "ariaLabel": "letter shifts repeat plus one, plus two, plus one; CAT becomes DCU"
       },
       "answers": [
+        "EQH",
         "EPH",
-        "CPF",
-        "EOH",
-        "FQI"
+        "FQH",
+        "ERJ"
       ],
       "correct": 0,
       "category": "verbal",
-      "explanation": "Each letter advances once: D becomes E, O becomes P and G becomes H, producing EPH."
+      "explanation": "Apply +1, +2, +1: D becomes E, O becomes Q and G becomes H, producing EQH."
     },
     {
       "id": "iq-r7q5",
@@ -251,17 +253,17 @@
     },
     {
       "id": "iq-r2q5",
-      "question": "Which copy contains a zero instead of the letter O?",
+      "question": "Which row breaks the two-part matching pattern?",
       "presentation": "code",
       "visual": {
         "items": [
-          "LOCK",
-          "LOCK",
-          "LOCK",
-          "L0CK"
+          "A → B  |  2 → 4",
+          "C → D  |  3 → 6",
+          "F → G  |  4 → 8",
+          "H → J  |  5 → 10"
         ],
         "columns": 2,
-        "ariaLabel": "LOCK, LOCK, LOCK, L zero CK"
+        "ariaLabel": "Four rows pairing a letter with its successor and a number with its double; the fourth row skips a letter"
       },
       "answers": [
         "First",
@@ -271,31 +273,29 @@
       ],
       "correct": 3,
       "category": "attention",
-      "explanation": "The fourth copy uses the digit 0 in L0CK, while the other three use the letter O in LOCK."
+      "explanation": "Each row should advance the letter by one and double the number. The fourth row doubles 5 correctly but skips from H to J."
     },
     {
       "id": "iq-r9q3",
-      "question": "The arrow turns 90° clockwise, then 180°. Where does it point?",
+      "question": "Apply the same turn: if ↑ becomes ↘, what does ← become?",
       "presentation": "spatial",
       "visual": {
         "items": [
-          "↑",
-          "↷ 90°",
-          "↻ 180°",
-          "?"
+          "↑ → ↘",
+          "← → ?"
         ],
-        "columns": 4,
-        "ariaLabel": "up arrow, rotate clockwise 90 degrees, then 180 degrees, unknown"
+        "columns": 2,
+        "ariaLabel": "An up arrow becomes down-right after the same turn that must be applied to a left arrow"
       },
       "answers": [
-        "↑",
-        "→",
         "↓",
-        "←"
+        "↙",
+        "→",
+        "↗"
       ],
       "correct": 3,
       "category": "spatial",
-      "explanation": "Up turns right after 90 degrees clockwise, then points left after a further 180 degrees.",
+      "explanation": "Up becomes down-right after a 135-degree clockwise turn. Applying that turn to left produces up-right.",
       "reasoningSteps": 2
     },
     {

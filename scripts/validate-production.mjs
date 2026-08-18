@@ -103,15 +103,14 @@ for (const declaration of requiredQuizShellContract) {
 }
 
 const quizEngineText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
-const rewardedPromptContract = [
-  "quiz.landing.startPrompt",
-  "setStartPromptOpen(true)",
-  "onClick={confirmStartQuiz}",
+const rewardedStartContract = [
+  "function startQuiz()",
   "runRewardedGate(beginQuiz)",
+  "onClick={startQuiz}",
   "disabled={adBusy}",
 ];
-for (const declaration of rewardedPromptContract) {
-  if (!quizEngineText.includes(declaration)) addError(`Rewarded confirmation prompt contract is missing: ${declaration}`);
+for (const declaration of rewardedStartContract) {
+  if (!quizEngineText.includes(declaration)) addError(`Direct rewarded-start contract is missing: ${declaration}`);
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");

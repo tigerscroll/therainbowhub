@@ -221,7 +221,7 @@ for (const folder of folders) {
         fail(typeof question.visual?.ariaLabel === "string" && question.visual.ariaLabel.trim(), `${location} visual needs an accessible label.`);
       }
     }
-    fail(sourceQuestions.find((question) => question.id === "iq-r2q5")?.visual?.items?.[3] === "L0CK", `${folder.name}/en.json: the dedicated LOCK/L0CK attention trap is required.`);
+    fail(sourceQuestions.find((question) => question.id === "iq-r2q5")?.visual?.items?.[3] === "H → J  |  5 → 10", `${folder.name}/en.json: the two-rule attention trap is required.`);
     fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2), `${folder.name}/en.json: the final three IQ puzzles must require multi-step reasoning.`);
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: compact IQ needs the full Smart Score report.`);
@@ -455,8 +455,8 @@ for (const folder of folders) {
   if (folder.name === "idiom") {
     const targetMap = [
       ["break_the_ice", "break the ice"],
-      ["piece_of_cake", "piece of cake"],
-      ["under_the_weather", "under the weather"],
+      ["bite_the_bullet", "bite the bullet"],
+      ["cut_corners", "cut corners"],
       ["spill_the_beans", "spill the beans"],
       ["walking_on_eggshells", "walking on eggshells"],
       ["fish_out_of_water", "fish out of water"],

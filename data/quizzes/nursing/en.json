@@ -165,23 +165,23 @@
       "questions": [
         {
           "id": "nurse-r1q1",
-          "question": "Which organ pumps blood around the body?",
+          "question": "Which gas has blood picked up as it returns from the lungs?",
           "presentation": "icons",
           "icons": [
-            "🫀",
-            "🫁",
-            "/quizzes/nursing/assets/icons/kidneys.svg",
-            "/quizzes/nursing/assets/icons/stomach.svg"
+            "O₂",
+            "N₂",
+            "CO₂",
+            "H₂"
           ],
           "answers": [
-            "Heart",
-            "Lungs",
-            "Kidneys",
-            "Stomach"
+            "Oxygen",
+            "Nitrogen",
+            "Carbon dioxide",
+            "Hydrogen"
           ],
           "correct": 0,
           "category": "anatomy_physiology",
-          "explanation": "The heart contracts to move blood through the circulation."
+          "explanation": "Blood returning from the lungs has gained oxygen before it is pumped around the body."
         },
         {
           "id": "nurse-r3q2",
@@ -230,9 +230,9 @@
           "id": "nurse-r6q3",
           "question": "Someone asks a sensitive question in a busy public area. What should you do?",
           "answers": [
-            "Answer loudly so everyone can hear",
-            "Discuss the details with nearby visitors",
-            "Ignore the person without explanation",
+            "Answer briefly and quietly where you are",
+            "Ask nearby people to give you some space",
+            "Give only the non-sensitive part of the answer",
             "Offer to continue the conversation somewhere private"
           ],
           "correct": 3,
@@ -266,27 +266,27 @@
         },
         {
           "id": "nurse-r2q1",
-          "question": "Which route correctly follows oxygen into the circulation?",
+          "question": "Which vessels carry oxygen-rich blood from the lungs toward the heart?",
           "presentation": "sequence",
           "visual": {
             "items": [
-              "AIRWAY",
               "LUNGS",
-              "?"
+              "?",
+              "HEART"
             ],
             "columns": 3,
             "separator": "→",
-            "ariaLabel": "Airway to lungs to unknown"
+            "ariaLabel": "Lungs through unknown vessels toward the heart"
           },
           "answers": [
-            "Blood",
-            "Stomach",
-            "Kidneys",
-            "Bones"
+            "Pulmonary veins",
+            "Pulmonary arteries",
+            "Airways",
+            "Lymph vessels"
           ],
           "correct": 0,
           "category": "anatomy_physiology",
-          "explanation": "Oxygen travels through the airway to the lungs, then crosses into the blood."
+          "explanation": "Pulmonary veins carry oxygen-rich blood from the lungs toward the left side of the heart."
         },
         {
           "id": "nurse-r3q5",
@@ -303,25 +303,26 @@
         },
         {
           "id": "nurse-r7q2",
-          "question": "Who has priority?",
+          "question": "What is the main problem with this fluid record?",
           "answers": [
-            "Person A’s blanket",
-            "Both tasks have equal urgency",
-            "Person B’s breathing difficulty",
-            "Whichever task is closer"
+            "The intake is automatically too high",
+            "The reported output proves the total was normal",
+            "The output record is incomplete",
+            "The entire chart should be ignored"
           ],
           "correct": 2,
           "category": "reasoning_priorities",
-          "explanation": "New breathing difficulty that limits speech signals an immediate airway or breathing concern.",
+          "explanation": "Reported urine output has not been measured or recorded, so the chart cannot show a complete fluid balance.",
+          "reasoningSteps": 2,
           "presentation": "code",
           "visual": {
             "items": [
-              "PERSON A::Comfortable · asks for blanket",
-              "PERSON B::Breathing difficulty · cannot finish sentence"
+              "INTAKE::800 mL recorded",
+              "OUTPUT::Blank · urine reported twice"
             ],
             "columns": 2,
             "separator": "•",
-            "ariaLabel": "Person A is comfortable and asks for a blanket. Person B has breathing difficulty and cannot finish a sentence."
+            "ariaLabel": "Fluid chart records 800 millilitres of intake; output is blank although urine was reported twice"
           }
         },
         {

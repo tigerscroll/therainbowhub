@@ -20,56 +20,50 @@
       "questions": [
         {
           "id": "paramedic-r2q1",
-          "question": "Which route correctly follows oxygen into the circulation?",
+          "question": "Which chamber receives oxygen-rich blood returning from the lungs?",
           "presentation": "sequence",
       "visual": {
         "items": [
-          "AIRWAY",
-          "LUNGS",
-          "?"
+              "LUNGS",
+              "?",
+              "LEFT VENTRICLE"
         ],
             "columns": 3,
             "separator": "→",
-            "ariaLabel": "Airway to lungs to unknown"
+            "ariaLabel": "Oxygen-rich blood travels from the lungs through an unknown chamber before the left ventricle"
           },
       "answers": [
-        "Heart chambers",
-        "Body tissues",
-        "Blood",
-        "Digestive tract"
-      ],
-      "icons": [
-        "🫀",
-        "💪",
-        "🩸",
-        "🍽️"
+            "Right atrium",
+            "Right ventricle",
+            "Left atrium",
+            "Left ventricle"
       ],
           "correct": 2,
           "category": "anatomy_physiology",
-          "explanation": "Air travels through the airway to the lungs, where oxygen crosses into the blood."
+          "explanation": "Oxygen-rich blood returns from the lungs to the left atrium before moving into the left ventricle."
         },
         {
           "id": "paramedic-r3q2",
-          "question": "How much time passes from 14:35 to 15:20?",
+          "question": "A call is logged at 14:35. The crew reaches the destination at 15:12. How much time has passed?",
           "presentation": "code",
           "visual": {
             "items": [
-              "START::14:35",
-              "END::15:20"
+              "CALL LOGGED::14:35",
+              "ARRIVAL::15:12"
             ],
             "columns": 2,
             "separator": "•",
-            "ariaLabel": "Start 14:35, end 15:20"
+            "ariaLabel": "Call logged at 14:35 and arrival at 15:12"
           },
           "answers": [
-            "35 minutes",
-            "45 minutes",
-            "55 minutes",
-            "85 minutes"
+            "27 minutes",
+            "37 minutes",
+            "47 minutes",
+            "57 minutes"
           ],
           "correct": 1,
           "category": "numeracy_measurement",
-          "explanation": "There are 25 minutes to 15:00 and another 20 minutes to 15:20, making 45 minutes."
+          "explanation": "There are 25 minutes to 15:00 and another 12 minutes to 15:12, making 37 minutes."
         },
         {
           "id": "paramedic-r4q3",
@@ -87,9 +81,9 @@
           },
           "answers": [
             "Isolate the hazard and report it",
-            "Pick it up by hand",
-            "Push it aside",
-            "Leave it unmarked"
+            "Move it carefully with a gloved hand",
+            "Slide it away from the walkway with your shoe",
+            "Leave it until the scene is quieter"
           ],
           "correct": 0,
           "category": "scene_safety",
@@ -124,9 +118,9 @@
           "id": "paramedic-r6q2",
           "question": "A person keeps nodding but has not understood. What should happen next?",
           "answers": [
-            "Repeat the jargon faster",
-            "Assume the nod means yes",
-            "End the conversation",
+            "Repeat the same explanation more slowly",
+            "Ask, ‘Do you understand?’ and continue if they say yes",
+            "Shorten the explanation but keep the same terminology",
             "Use plain words and check back"
           ],
           "correct": 3,
@@ -135,26 +129,26 @@
         },
         {
           "id": "paramedic-r7q2",
-          "question": "Who takes priority?",
+          "question": "Which first radio message gives responders the clearest immediate picture?",
           "presentation": "code",
           "visual": {
             "items": [
-              "PERSON A::Comfortable · asks for blanket",
-              "PERSON B::New breathing difficulty · cannot finish a sentence"
+              "ONE URGENT MESSAGE FIRST",
+              "RADIO TIME IS LIMITED"
             ],
             "columns": 2,
             "separator": "•",
-            "ariaLabel": "Person A is comfortable and asks for a blanket. Person B has new breathing difficulty and cannot finish a sentence."
+            "ariaLabel": "Only one urgent message can be sent first and radio time is limited"
           },
           "answers": [
-            "Person A",
-            "Person B",
-            "Equal priority",
-            "Whichever spoke louder"
+            "We need help somewhere near the road",
+            "River Gate: two people, smoke present, access blocked",
+            "The scene is difficult; more details will follow",
+            "Please arrive quickly; equipment may be needed"
           ],
           "correct": 1,
           "category": "reasoning_priorities",
-          "explanation": "New breathing difficulty severe enough to limit speech is the immediate priority."
+          "explanation": "The second message supplies the exact location, number of people, immediate hazard and access problem in one concise update."
         },
         {
           "id": "paramedic-r8q1",

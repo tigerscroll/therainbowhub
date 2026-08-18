@@ -1,0 +1,234 @@
+[data-quiz-theme="medical"] {
+  --medical-ink: #183343;
+  --medical-navy: #153647;
+  --medical-teal: #0d6872;
+  --medical-aqua: #4eb6bb;
+  --medical-gold: #efbd52;
+  --medical-coral: #cf6670;
+  --medical-paper: #fffdf8;
+  --medical-mist: #edf5f6;
+  min-height: 100vh;
+  color: var(--medical-ink);
+  background:
+    radial-gradient(circle at 84% 13%, rgba(78,182,187,.2), transparent 25%),
+    radial-gradient(circle at 8% 72%, rgba(239,189,82,.12), transparent 24%),
+    linear-gradient(rgba(21,54,71,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,54,71,.045) 1px, transparent 1px),
+    linear-gradient(145deg, #e9f1f3, #bfd1d7);
+  background-size: auto, auto, 34px 34px, 34px 34px, auto;
+}
+
+[data-quiz-theme="medical"] > * { position: relative; z-index: 1; }
+
+[data-quiz-theme="medical"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  width: min(900px, 100%);
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: clamp(36px, 5.5vw, 62px);
+  border: 1px solid rgba(13,83,96,.28);
+  border-radius: 26px;
+  background:
+    linear-gradient(rgba(13,83,96,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,83,96,.035) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(255,255,252,.99), rgba(239,246,247,.985));
+  background-size: 38px 38px, 38px 38px, auto;
+  box-shadow: 0 24px 58px rgba(20,53,67,.22);
+  color: var(--medical-ink);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__landing::before {
+  position: absolute;
+  inset: 11px;
+  content: "";
+  border: 1px solid rgba(13,104,114,.14);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+[data-quiz-theme="medical"] .quiz-engine__landing::after,
+[data-quiz-theme="medical"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="medical"] .quiz-engine__results::before,
+[data-quiz-theme="medical"] .quiz-engine__about::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  content: "";
+  background: linear-gradient(90deg, var(--medical-teal) 0 36%, var(--medical-aqua) 36% 68%, var(--medical-gold) 68% 84%, var(--medical-coral) 84%);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__landing-copy {
+  display: grid;
+  width: 100%;
+  max-width: 760px;
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+[data-quiz-theme="medical"] .quiz-engine__landing-badge {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  margin: 0 auto 12px;
+  border: 1px solid rgba(78,182,187,.58);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #17485a, #0a5360);
+  box-shadow: 0 11px 0 rgba(13,83,96,.12), 0 18px 30px rgba(20,53,67,.18);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__landing-badge span { font-size: 34px; }
+[data-quiz-theme="medical"] .quiz-engine__landing .quiz-engine__eyebrow,
+[data-quiz-theme="medical"] .quiz-engine__landing .quiz-engine__lede,
+[data-quiz-theme="medical"] .quiz-engine__landing .quiz-engine__landing-meta { display: none; }
+
+[data-quiz-theme="medical"] .quiz-engine__landing h1 {
+  max-width: 770px;
+  margin: 13px auto 20px;
+  color: var(--medical-ink);
+  font-size: clamp(43px, 5.25vw, 66px);
+  font-weight: 920;
+  letter-spacing: -.05em;
+  line-height: .98;
+}
+
+[data-quiz-theme="medical"] .quiz-engine__quick-start {
+  max-width: 690px;
+  margin: 0 auto 20px;
+  padding: 0;
+  border: 0;
+  color: #5f747d;
+  font-size: 17px;
+  font-weight: 680;
+  line-height: 1.5;
+}
+
+[data-quiz-theme="medical"] .quiz-engine__social {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 21px;
+  padding: 9px 15px;
+  border: 1px solid rgba(13,104,114,.19);
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 6px 18px rgba(20,53,67,.08);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__social-text strong { color: var(--medical-teal); }
+[data-quiz-theme="medical"] .quiz-engine__social-text span { color: var(--medical-ink); font-weight: 760; }
+[data-quiz-theme="medical"] .quiz-engine__avatars { display: flex; }
+[data-quiz-theme="medical"] .quiz-engine__avatars span {
+  width: 30px;
+  height: 30px;
+  margin-left: -9px;
+  border: 2px solid var(--medical-paper);
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+}
+[data-quiz-theme="medical"] .quiz-engine__avatars span:first-child { margin-left: 0; }
+
+[data-quiz-theme="medical"] .quiz-engine__landing .quiz-engine__primary {
+  display: inline-flex;
+  width: min(100%, 390px);
+  min-height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin: 0 auto;
+  font-size: 19px;
+}
+
+[data-quiz-theme="medical"] .quiz-engine__primary {
+  border: 1px solid #092f38;
+  background: linear-gradient(135deg, var(--medical-teal), #123c4c);
+  color: #fff;
+  box-shadow: 0 9px 0 #0a3540, 0 16px 30px rgba(20,53,67,.2);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__primary-icon { display: inline; color: var(--medical-gold); }
+[data-quiz-theme="medical"] .quiz-engine__ad-note { color: #667a82; }
+[data-quiz-theme="medical"] .quiz-engine__ad-note span { border-color: var(--medical-teal); color: var(--medical-teal); }
+[data-quiz-theme="medical"] .quiz-engine__landing-art,
+[data-quiz-theme="medical"] .quiz-engine__landing-symbol { display: none !important; }
+
+[data-quiz-theme="medical"] .quiz-engine__question-shell { width: min(800px, 100%); }
+[data-quiz-theme="medical"] .quiz-engine__progress-head { color: rgba(255,255,255,.9); font-weight: 850; }
+[data-quiz-theme="medical"] .quiz-engine__progress-head strong { color: #fff; }
+[data-quiz-theme="medical"] .quiz-engine__progress { height: 9px; border: 1px solid rgba(255,255,255,.55); background: rgba(21,54,71,.25); }
+[data-quiz-theme="medical"] .quiz-engine__progress i { background: linear-gradient(90deg, var(--medical-teal), var(--medical-aqua), var(--medical-gold)); }
+
+[data-quiz-theme="medical"] .quiz-engine__question,
+[data-quiz-theme="medical"] .quiz-engine__checkpoint,
+[data-quiz-theme="medical"] .quiz-engine__results,
+[data-quiz-theme="medical"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #9bb7bf;
+  border-radius: 24px;
+  background: rgba(255,253,248,.985);
+  box-shadow: 0 20px 46px rgba(20,53,67,.18);
+  color: var(--medical-ink);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__question-image {
+  margin-top: -10px;
+  border-color: #9bb7bf;
+  background: #dbe8eb;
+  box-shadow: inset 0 0 0 8px rgba(255,255,255,.56), 0 12px 26px rgba(20,53,67,.15);
+}
+
+[data-quiz-theme="medical"] .quiz-engine__question-image img { max-height: 330px; padding: 7px; }
+[data-quiz-theme="medical"] .quiz-engine__answers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+[data-quiz-theme="medical"] .quiz-engine__answer {
+  grid-template-columns: 38px 1fr;
+  min-height: 78px;
+  border-color: #a9c0c6;
+  background: rgba(255,255,255,.9);
+  color: var(--medical-ink);
+}
+[data-quiz-theme="medical"] .quiz-engine__answer > span { width: 34px; height: 34px; background: #dce9ec; }
+[data-quiz-theme="medical"] .quiz-engine__answer[data-selected] { border-color: var(--medical-teal); background: #e3f2f2; }
+[data-quiz-theme="medical"] .quiz-engine__checkpoint-badge,
+[data-quiz-theme="medical"] .quiz-engine__result-kicker,
+[data-quiz-theme="medical"] .quiz-engine__result-percentage { color: var(--medical-teal); }
+[data-quiz-theme="medical"] .quiz-engine__checkpoint-icon,
+[data-quiz-theme="medical"] .quiz-engine__result-icon { background: var(--medical-navy); color: #fff; }
+[data-quiz-theme="medical"] .quiz-engine__ai-panel,
+[data-quiz-theme="medical"] .quiz-engine__result-fact,
+[data-quiz-theme="medical"] .quiz-engine__review { border-color: #b2c8cd; background: rgba(255,255,255,.62); }
+[data-quiz-theme="medical"] .quiz-engine__about h2,
+[data-quiz-theme="medical"] .quiz-engine__about h3 { color: var(--medical-teal); }
+[data-quiz-theme="medical"] .quiz-engine__about p,
+[data-quiz-theme="medical"] .quiz-engine__about li { color: #60757e; }
+
+@media (max-width: 700px) {
+  [data-quiz-theme="medical"] .quiz-engine__landing { padding: 28px 18px 30px; border-radius: 20px; }
+  [data-quiz-theme="medical"] .quiz-engine__landing::before { inset: 9px; border-radius: 14px; }
+  [data-quiz-theme="medical"] .quiz-engine__landing-badge { width: 62px; height: 62px; }
+  [data-quiz-theme="medical"] .quiz-engine__landing-badge span { font-size: 30px; }
+  [data-quiz-theme="medical"] .quiz-engine__landing h1 { margin-top: 10px; font-size: clamp(37px, 11.3vw, 50px); }
+  [data-quiz-theme="medical"] .quiz-engine__quick-start { font-size: 15.5px; }
+  [data-quiz-theme="medical"] .quiz-engine__question { padding: 22px 14px; }
+  [data-quiz-theme="medical"] .quiz-engine__question h1 { margin-bottom: 18px; font-size: clamp(27px, 8vw, 36px); }
+  [data-quiz-theme="medical"] .quiz-engine__question-image { margin-bottom: 16px; }
+  [data-quiz-theme="medical"] .quiz-engine__question-image img { max-height: 250px; padding: 5px; }
+  [data-quiz-theme="medical"] .quiz-engine__answers { gap: 8px; }
+  [data-quiz-theme="medical"] .quiz-engine__answer { grid-template-columns: 30px 1fr; min-height: 72px; gap: 8px; padding: 9px; }
+  [data-quiz-theme="medical"] .quiz-engine__answer > span { width: 28px; height: 28px; }
+  [data-quiz-theme="medical"] .quiz-engine__answer strong { font-size: 13.5px; line-height: 1.25; }
+}
+
+@media (max-width: 380px) {
+  [data-quiz-theme="medical"] .quiz-engine__question { padding-inline: 11px; }
+  [data-quiz-theme="medical"] .quiz-engine__answer { grid-template-columns: 1fr; justify-items: center; min-height: 82px; text-align: center; }
+  [data-quiz-theme="medical"] .quiz-engine__answer > span { display: none; }
+  [data-quiz-theme="medical"] .quiz-engine__answer strong { font-size: 13px; }
+}

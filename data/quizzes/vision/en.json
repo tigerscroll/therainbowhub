@@ -167,15 +167,15 @@
           "id": "vision-r1q1",
           "question": "Which tile is a different colour?",
           "presentation": "grid",
-          "visual": {
-            "items": [
-              "🔵",
-              "🔵",
-              "🔵",
-              "🟣"
-            ],
-            "columns": 2,
-            "ariaLabel": "Three blue circles and one violet circle"
+      "visual": {
+        "items": [
+          "TILE",
+          "TILE",
+          "TILE",
+          "TILE"
+        ],
+        "columns": 2,
+        "ariaLabel": "Four close blue swatches with a subtly different bottom-right tile"
           },
           "answers": [
             "Top left",
@@ -185,22 +185,21 @@
           ],
           "correct": 1,
           "category": "colour_contrast",
-          "explanation": "The bottom-right tile is violet; the other three are blue."
+      "explanation": "The bottom-right swatch has a slightly more violet-blue tone than the other three."
         },
         {
           "id": "vision-r3q4",
           "question": "Which position contains the different symbol?",
-          "presentation": "sequence",
+          "presentation": "spatial",
           "visual": {
-            "items": [
-              "◇",
-              "◇",
-              "◆",
-              "◇"
+        "items": [
+          "◖",
+          "◖",
+          "◗",
+          "◖"
             ],
             "columns": 4,
-            "separator": "•",
-            "ariaLabel": "Three outline diamonds with a filled diamond in the third position"
+            "ariaLabel": "Four half-filled circles; the third is filled on the opposite side"
           },
           "answers": [
             "First",
@@ -210,7 +209,7 @@
           ],
           "correct": 3,
           "category": "detail_detection",
-          "explanation": "The third diamond is filled while the others are outlines."
+      "explanation": "The third symbol is filled on the right; the other three are filled on the left."
         },
         {
           "id": "vision-r4q3",
@@ -338,30 +337,21 @@
         },
         {
           "id": "vision-r8q3",
-          "question": "Which tile completes both patterns?",
-          "presentation": "sequence",
-          "visual": {
-            "items": [
-              "▲",
-              "○",
-              "■",
-              "△",
-              "●",
-              "□",
-              "?"
-            ],
-            "separator": "·",
-            "ariaLabel": "Triangle circle square cycle with alternating filled and outline shapes"
+          "question": "Start at the red dot and follow only the solid line. Which letter do you reach?",
+          "presentation": "text",
+          "image": {
+            "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg",
+            "alt": "A red starting dot with one solid winding line and several dashed crossing lines leading towards endpoints A, B, C and D"
           },
           "answers": [
-            "△",
-            "●",
-            "▲",
-            "■"
+            "A",
+            "B",
+            "C",
+            "D"
           ],
           "correct": 2,
           "category": "pattern_tracking",
-          "explanation": "The shapes cycle triangle, circle, square while fill alternates filled and outline, so a filled triangle follows."
+          "explanation": "The uninterrupted solid route passes through the dashed crossings and finishes at C."
         },
         {
           "id": "vision-r10q2",
@@ -389,28 +379,28 @@
         },
         {
           "id": "vision-r10q4",
-          "question": "An arrow turns right once, then 180°. Where does it finally point?",
-          "answers": [
-            "South",
-            "West",
-            "North",
-            "East"
+          "question": "Fold a square left to right, then top to bottom. Punch away from folded edges. How many holes when unfolded?",
+      "answers": [
+        "2",
+        "4",
+        "6",
+        "8"
           ],
           "correct": 1,
           "category": "spatial_orientation",
           "reasoningSteps": 2,
-          "explanation": "The first turn points east; a further half-turn points west.",
+      "explanation": "Two half-folds create four layers. One punch passes through all four, producing four holes when the square is unfolded.",
           "presentation": "sequence",
           "visual": {
-            "items": [
-              "↑",
-              "+90°",
-              "+180°",
-              "?"
+        "items": [
+          "FOLD LEFT → RIGHT",
+          "FOLD TOP → BOTTOM",
+          "PUNCH × 1",
+          "UNFOLD → ?"
             ],
             "columns": 4,
             "separator": "→",
-            "ariaLabel": "Arrow pointing up, turn right 90 degrees, then rotate 180 degrees"
+        "ariaLabel": "Square folded in half from left to right, then top to bottom, punched once and unfolded"
           }
         }
       ]
