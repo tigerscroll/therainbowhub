@@ -346,10 +346,10 @@ function MoreQuizRecommendations({ currentSlug, stickySlug }: { currentSlug: str
           >
             <img alt="" decoding="async" loading="lazy" src={recommendation.thumbnail} />
             <div>
-              <span className="quiz-engine__more-quiz-icon" aria-hidden="true">{recommendation.icon}</span>
+              <span className="quiz-engine__more-quiz-chip"><i aria-hidden="true">{recommendation.icon}</i> Quick quiz</span>
               <h3>{recommendation.title}</h3>
               <p>{recommendation.summary}</p>
-              <strong>{recommendation.cta}<b aria-hidden="true">→</b></strong>
+              <span className="quiz-engine__more-quiz-arrow" aria-hidden="true">→</span>
             </div>
           </a>
         ))}
