@@ -1,5 +1,5 @@
 export type ResultRecommendation = {
-  slug: "memory" | "chef" | "paramedic" | "years-left" | "vintage";
+  slug: "memory" | "chef" | "paramedic" | "years-left" | "vintage" | "vision" | "nursing" | "midwifery" | "grammar";
   icon: string;
   title: string;
   shortTitle: string;
@@ -53,6 +53,42 @@ export const RESULT_RECOMMENDATIONS: ResultRecommendation[] = [
     summary: "Cassette tapes, rotary phones and forgotten objects make one quick trip through the past.",
     cta: "Take the Vintage Quiz",
     thumbnail: "/quizzes/vintage/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "vision",
+    icon: "👁️",
+    title: "Only 7% Can Pass This Vision Test",
+    shortTitle: "Test Your Visual Focus",
+    summary: "Colours, tiny details, patterns and rotations combine in one fast visual challenge.",
+    cta: "Take the Vision Test",
+    thumbnail: "/quizzes/vision/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "nursing",
+    icon: "🩺",
+    title: "Only 7% Pass This Nursing Entrance Exam",
+    shortTitle: "Try the Nursing Exam",
+    summary: "Anatomy, observations, safety and patient-care judgement test your clinical thinking.",
+    cta: "Take the Nursing Exam",
+    thumbnail: "/quizzes/nursing/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "midwifery",
+    icon: "👶",
+    title: "Only 7% Pass This Midwifery Entrance Exam",
+    shortTitle: "Try the Midwifery Exam",
+    summary: "Pregnancy, labour, newborn care and compassionate judgement come together in one challenge.",
+    cta: "Take the Midwifery Exam",
+    thumbnail: "/quizzes/midwifery/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "grammar",
+    icon: "✍️",
+    title: "Only 10% Of The Population Can Pass This Grammar Quiz",
+    shortTitle: "Test Your Grammar",
+    summary: "Sentence structure, punctuation and almost-correct wording make ten fast editing traps.",
+    cta: "Take the Grammar Quiz",
+    thumbnail: "/quizzes/grammar/assets/thumbnail-480.webp",
   },
 ];
 

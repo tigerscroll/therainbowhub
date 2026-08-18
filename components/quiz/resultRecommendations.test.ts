@@ -7,10 +7,10 @@ import {
   supportsResultRecommendation,
 } from "./resultRecommendations.ts";
 
-test("the result recommendation pool contains only the five recent quizzes", () => {
+test("the result recommendation pool contains the approved recent quizzes", () => {
   assert.deepEqual(
     RESULT_RECOMMENDATIONS.map((quiz) => quiz.slug),
-    ["memory", "chef", "paramedic", "years-left", "vintage"],
+    ["memory", "chef", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar"],
   );
 });
 
@@ -19,7 +19,7 @@ test("recommendations never return the quiz that has just been completed", () =>
     assert.equal(supportsResultRecommendation(quiz.slug), true);
     assert.notEqual(nextResultRecommendation(quiz.slug)?.slug, quiz.slug);
   }
-  assert.equal(supportsResultRecommendation("grammar"), false);
+  assert.equal(supportsResultRecommendation("mechanic"), false);
 });
 
 test("repeat result visits rotate through every other recent quiz", () => {
