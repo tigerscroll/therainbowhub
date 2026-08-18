@@ -491,12 +491,12 @@
 .quiz-engine__more-quizzes-head > span { color: var(--quiz-primary); font-size: 11px; font-weight: 950; letter-spacing: .15em; }
 .quiz-engine__more-quizzes-head h2 { margin: 7px 0 8px; color: var(--quiz-text); font-size: clamp(25px, 4vw, 36px); line-height: 1.05; }
 .quiz-engine__more-quizzes-head p { margin: 0; color: var(--quiz-muted); line-height: 1.5; }
-.quiz-engine__more-quizzes-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.5vw, 14px); }
+.quiz-engine__more-quizzes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 16px); }
 .quiz-engine__more-quiz {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(132px, .72fr) minmax(0, 1.28fr);
   min-width: 0;
-  min-height: 260px;
-  flex-direction: column;
+  min-height: 184px;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--quiz-primary) 25%, var(--quiz-border));
   border-radius: calc(var(--quiz-button-radius) * .82);
@@ -508,7 +508,7 @@
 }
 .quiz-engine__more-quiz:hover { border-color: color-mix(in srgb, var(--quiz-primary) 70%, var(--quiz-border)); box-shadow: 0 12px 26px color-mix(in srgb, var(--quiz-primary) 16%, transparent); transform: translateY(-2px); }
 .quiz-engine__more-quiz:focus-visible { outline: 3px solid color-mix(in srgb, var(--quiz-primary) 68%, white); outline-offset: 3px; }
-.quiz-engine__more-quiz > img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.quiz-engine__more-quiz > img { width: 100%; height: 100%; min-height: 184px; object-fit: cover; }
 .quiz-engine__more-quiz > div { display: flex; min-width: 0; height: 100%; padding: 14px; flex-direction: column; align-items: flex-start; }
 .quiz-engine__more-quiz-icon { font-size: 20px; line-height: 1; }
 .quiz-engine__more-quiz h3 { margin: 7px 0 0; color: var(--quiz-text); font-size: clamp(14px, 1.45vw, 17px); line-height: 1.14; }
@@ -607,8 +607,8 @@
 }
 
 @media (max-width: 800px) {
-  .quiz-engine__more-quizzes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .quiz-engine__more-quiz { min-height: 0; }
+  .quiz-engine__more-quiz { grid-template-columns: minmax(112px, .68fr) minmax(0, 1.32fr); min-height: 160px; }
+  .quiz-engine__more-quiz > img { min-height: 160px; }
 }
 
 @media (max-width: 700px) {
