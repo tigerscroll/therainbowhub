@@ -664,7 +664,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         ) : null}
         {!careerStage && isFinalStage && checkpoint && checkpoint.finalChecklist.length ? (
-          <ul className="quiz-engine__checklist">
+          <ul className="quiz-engine__checklist quiz-engine__checklist--final-compact">
             {checkpoint.finalChecklist.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
         ) : null}
