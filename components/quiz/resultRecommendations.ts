@@ -84,7 +84,7 @@ export const RESULT_RECOMMENDATIONS: ResultRecommendation[] = [
   {
     slug: "grammar",
     icon: "✍️",
-    title: "Only 10% Of The Population Can Pass This Grammar Quiz",
+    title: "Only 10% Can Pass This Grammar Quiz",
     shortTitle: "Test Your Grammar",
     summary: "Sentence structure, punctuation and almost-correct wording make ten fast editing traps.",
     cta: "Take the Grammar Quiz",
