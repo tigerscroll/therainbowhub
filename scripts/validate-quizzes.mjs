@@ -348,7 +348,7 @@ for (const folder of folders) {
   if (["grammar", "paramedic", "vision", "nursing", "midwifery"].includes(folder.name)) {
     const specifications = {
       grammar: {
-        title: "Only 10% Of The Population Can Pass This Grammar Quiz",
+        title: "Only 10% Can Pass This Grammar Quiz",
         cta: "Start Quiz",
         ids: ["grammar-r2q3", "grammar-r10q1", "grammar-r3q1", "grammar-r4q3", "grammar-r5q4", "grammar-r10q4", "grammar-r10q5", "grammar-r9q5", "grammar-r7q2", "grammar-r10q6"],
         categories: { sentence_building: 2, verbs_pronouns: 3, punctuation: 3, precision: 2 },
