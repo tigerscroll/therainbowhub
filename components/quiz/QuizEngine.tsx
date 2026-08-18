@@ -10,12 +10,6 @@ import { getStageCompletionPercentage } from "./engineState";
 import { mountDisplayAds, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
-import {
-  nextResultRecommendation,
-  otherResultRecommendations,
-  supportsResultRecommendation,
-  type ResultRecommendation,
-} from "./resultRecommendations";
 
 type QuizEngineProps = {
   locale: SupportedLocale;
@@ -293,71 +287,6 @@ function ResultDisplayAd({ elementId }: { elementId: string }) {
   );
 }
 
-function NextQuizRecommendation({ currentSlug, recommendation }: { currentSlug: string; recommendation: ResultRecommendation }) {
-  const href = `/${recommendation.slug}`;
-
-  function trackClick() {
-    window.fbq?.("trackCustom", "QuizRecommendationClick", {
-      quiz_slug: currentSlug,
-      recommended_quiz_slug: recommendation.slug,
-    });
-  }
-
-  return (
-    <a className="quiz-engine__next-quiz" data-sticky-visible href={href} onClick={trackClick}>
-      <img alt="" decoding="async" src={recommendation.thumbnail} />
-      <div>
-        <span className="quiz-engine__next-quiz-eyebrow">YOUR NEXT CHALLENGE</span>
-        <h3>{recommendation.title}</h3>
-        <p>{recommendation.summary}</p>
-        <span className="quiz-engine__next-quiz-cta">
-          {recommendation.cta}<b aria-hidden="true">→</b>
-        </span>
-      </div>
-    </a>
-  );
-}
-
-function MoreQuizRecommendations({ currentSlug, stickySlug }: { currentSlug: string; stickySlug: string }) {
-  const recommendations = otherResultRecommendations(currentSlug, stickySlug);
-  if (!recommendations.length) return null;
-
-  function trackClick(recommendedSlug: string) {
-    window.fbq?.("trackCustom", "QuizRecommendationGridClick", {
-      quiz_slug: currentSlug,
-      recommended_quiz_slug: recommendedSlug,
-    });
-  }
-
-  return (
-    <section className="quiz-engine__more-quizzes" aria-labelledby="more-quizzes-title">
-      <header className="quiz-engine__more-quizzes-head">
-        <span>KEEP PLAYING</span>
-        <h2 id="more-quizzes-title">Choose your next challenge</h2>
-        <p>Try another quick test and discover a completely different result.</p>
-      </header>
-      <div className="quiz-engine__more-quizzes-grid">
-        {recommendations.map((recommendation) => (
-          <a
-            className="quiz-engine__more-quiz"
-            href={`/${recommendation.slug}`}
-            key={recommendation.slug}
-            onClick={() => trackClick(recommendation.slug)}
-          >
-            <img alt="" decoding="async" loading="lazy" src={recommendation.thumbnail} />
-            <div>
-              <span className="quiz-engine__more-quiz-chip"><i aria-hidden="true">{recommendation.icon}</i> Quick quiz</span>
-              <h3>{recommendation.title}</h3>
-              <p>{recommendation.summary}</p>
-              <span className="quiz-engine__more-quiz-arrow" aria-hidden="true">→</span>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
@@ -386,10 +315,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [screen, setScreen] = useState<QuizScreen>(() => quiz.engine.startOnLoad ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
   const [adBusy, setAdBusy] = useState(false);
-  const [startPromptOpen, setStartPromptOpen] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [reportUnlocked, setReportUnlocked] = useState(false);
-  const [resultRecommendation, setResultRecommendation] = useState<ResultRecommendation>();
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -408,25 +335,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       sizes: quiz.engine.resultAds.sizes,
     });
   }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, screen]);
-
-  useEffect(() => {
-    if (screen !== "results" || locale !== "en" || !supportsResultRecommendation(quiz.slug)) {
-      setResultRecommendation(undefined);
-      return;
-    }
-
-    const storageKey = `rainbowhub:result-recommendation:v1:${quiz.slug}`;
-    let previousSlug: string | null = null;
-    try { previousSlug = window.localStorage.getItem(storageKey); } catch { /* Rotation still works if storage is blocked. */ }
-    const recommendation = nextResultRecommendation(quiz.slug, previousSlug);
-    setResultRecommendation(recommendation);
-    if (!recommendation) return;
-    try { window.localStorage.setItem(storageKey, recommendation.slug); } catch { /* Rotation remains deterministic without storage. */ }
-    window.fbq?.("trackCustom", "QuizRecommendationImpression", {
-      quiz_slug: quiz.slug,
-      recommended_quiz_slug: recommendation.slug,
-    });
-  }, [locale, quiz.slug, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -524,13 +432,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     adRequestController.current?.abort();
   }, []);
 
-  useEffect(() => {
-    if (!startPromptOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previousOverflow; };
-  }, [startPromptOpen]);
-
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
@@ -614,18 +515,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   function beginQuiz() {
-    setStartPromptOpen(false);
     setScreen("question");
     trackQuizEvent("QuizStart", quiz, locale);
   }
 
   function startQuiz() {
-    if (quiz.engine.rewarded.start && quiz.landing.startPrompt) setStartPromptOpen(true);
-    else if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
-    else beginQuiz();
-  }
-
-  function confirmStartQuiz() {
     if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
     else beginQuiz();
   }
@@ -662,7 +556,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     adRequestActive.current = false;
     try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable. */ }
     setAdBusy(false);
-    setStartPromptOpen(false);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
@@ -703,20 +596,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         )}
       </section>
-      {startPromptOpen && quiz.landing.startPrompt ? (
-        <div className="quiz-engine__reward-prompt" role="presentation">
-          <section aria-labelledby="quiz-reward-prompt-title" aria-modal="true" className="quiz-engine__reward-prompt-card quiz-engine__card" role="dialog">
-            <span className="quiz-engine__eyebrow">{quiz.landing.startPrompt.eyebrow}</span>
-            <div className="quiz-engine__reward-prompt-icon" aria-hidden="true">{quiz.landing.startPrompt.icon}</div>
-            <h2 id="quiz-reward-prompt-title">{quiz.landing.startPrompt.title}</h2>
-            <p>{quiz.landing.startPrompt.copy}</p>
-            <button className="quiz-engine__primary" disabled={adBusy} onClick={confirmStartQuiz} type="button">
-              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-              {adBusy ? translations.ad.loading : quiz.landing.startPrompt.button}
-            </button>
-          </section>
-        </div>
-      ) : null}
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
@@ -887,6 +766,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const estimatePosition = result.estimatedAge === undefined
       ? 0
       : Math.min(100, Math.max(0, ((result.estimatedAge - estimateMinimum) / estimateRange) * 100));
+    const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
+      ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
+      : [];
     if (careerReport && !reportUnlocked) {
       const report = careerReport;
       return (
@@ -1073,20 +955,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {careerReport && reportUnlocked ? (
+        {quiz.engine.scoring.type === "correct-answer" ? (
           <section className="quiz-engine__answer-review">
-            <h3>{careerReport.reviewTitle}</h3>
-            {quiz.questions.every((question) => answers[question.id] === question.answerIndex) ? (
-              <p>{careerReport.perfectReview}</p>
+            <h3>{translations.quiz.answersToReview}</h3>
+            {incorrectQuestions.length === 0 ? (
+              <p>{translations.quiz.perfectReview}</p>
             ) : (
               <div>
-                {quiz.questions.filter((question) => answers[question.id] !== question.answerIndex).map((question) => (
+                {incorrectQuestions.map((question) => (
                   <article key={question.id}>
                     <span>{quiz.stages[question.stage]}</span>
                     <h4>{question.prompt}</h4>
                     <dl>
-                      <div><dt>{careerReport.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
-                      <div><dt>{careerReport.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
+                      <div><dt>{translations.quiz.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
+                      <div><dt>{translations.quiz.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
                     </dl>
                     {question.explanation ? <p>{question.explanation}</p> : null}
                   </article>
@@ -1141,10 +1023,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
           </>
         )}
-        {resultRecommendation ? <MoreQuizRecommendations currentSlug={quiz.slug} stickySlug={resultRecommendation.slug} /> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
-      {resultRecommendation ? <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} /> : null}
       </>
     );
   }
