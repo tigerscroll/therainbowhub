@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import test from "node:test";
 
 import {
@@ -13,6 +15,17 @@ test("the result recommendation pool contains the approved recent quizzes", () =
     RESULT_RECOMMENDATIONS.map((quiz) => quiz.slug),
     ["memory", "chef", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar"],
   );
+});
+
+test("every promoted result recommendation is a one-stage ten-question quiz", () => {
+  for (const recommendation of RESULT_RECOMMENDATIONS) {
+    const folder = join(process.cwd(), "data", "quizzes", recommendation.slug);
+    const config = JSON.parse(readFileSync(join(folder, "quiz.json"), "utf8"));
+    const locale = JSON.parse(readFileSync(join(folder, "en.json"), "utf8"));
+    assert.equal(config.engine.flow, "linear", recommendation.slug);
+    assert.equal(locale.stages.length, 1, recommendation.slug);
+    assert.equal(locale.stages[0].questions.length, 10, recommendation.slug);
+  }
 });
 
 test("recommendations never return the quiz that has just been completed", () => {
@@ -40,8 +53,8 @@ test("repeat result visits rotate through every other recent quiz", () => {
 
 test("the full recommendation section excludes the current and sticky quizzes", () => {
   const recommendations = otherResultRecommendations("vision", "midwifery");
-  assert.equal(recommendations.length, RESULT_RECOMMENDATIONS.length - 2);
+  assert.equal(recommendations.length, 4);
   assert.equal(recommendations.some((quiz) => quiz.slug === "vision"), false);
   assert.equal(recommendations.some((quiz) => quiz.slug === "midwifery"), false);
-  assert.equal(recommendations.some((quiz) => quiz.slug === "grammar"), true);
+  assert.deepEqual(recommendations.map((quiz) => quiz.slug), ["memory", "chef", "paramedic", "years-left"]);
 });

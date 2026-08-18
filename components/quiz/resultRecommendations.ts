@@ -112,5 +112,5 @@ export function nextResultRecommendation(currentSlug: string, previousSlug?: str
 export function otherResultRecommendations(currentSlug: string, stickySlug?: string | null) {
   return RESULT_RECOMMENDATIONS.filter(
     (quiz) => quiz.slug !== currentSlug && quiz.slug !== stickySlug,
-  );
+  ).slice(0, 4);
 }

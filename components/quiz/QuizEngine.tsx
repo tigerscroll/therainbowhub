@@ -1141,14 +1141,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
           </>
         )}
+        {resultRecommendation ? <MoreQuizRecommendations currentSlug={quiz.slug} stickySlug={resultRecommendation.slug} /> : null}
       </section>
-      {resultRecommendation ? (
-        <>
-          <MoreQuizRecommendations currentSlug={quiz.slug} stickySlug={resultRecommendation.slug} />
-          <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} />
-        </>
-      ) : null}
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      {resultRecommendation ? <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} /> : null}
       </>
     );
   }
