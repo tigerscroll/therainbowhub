@@ -196,54 +196,37 @@ for (const folder of folders) {
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "iq") {
+    const approvedIds = ["iq-r1q2", "iq-r6q2", "iq-r4q3", "iq-r5q3", "iq-r6q3", "iq-r7q5", "iq-r2q5", "iq-r9q3", "iq-r10q1", "iq-r10q5"];
     const ids = sourceQuestions.map((question) => question.id);
-    const expectedCategories = {
-      pattern: 9,
-      numerical: 9,
-      verbal: 9,
-      spatial: 9,
-      logic: 9,
-      attention: 9,
-      general_knowledge: 6,
-    };
-    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
-      category,
-      sourceQuestions.filter((question) => question.category === category).length,
-    ]));
-    fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: IQ must support every site locale.`);
-    fail(source.stages?.length === 10, `${folder.name}/en.json: IQ must contain ten rounds.`);
-    fail(/\b10\b/.test(source.landing?.intro ?? ""), `${folder.name}/en.json: IQ landing intro must use numeral 10.`);
-    fail(source.stages?.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: every IQ round must contain six questions.`);
-    fail(sourceQuestions.length === 60, `${folder.name}/en.json: IQ must contain exactly 60 questions.`);
-    fail(new Set(ids).size === 60 && ids.every((id) => typeof id === "string" && id.trim()), `${folder.name}/en.json: IQ needs 60 unique stable question IDs.`);
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: category balance must be 9 each for six reasoning areas and 6 worldwide general-knowledge questions.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length >= 3 && question.answers.length <= 5), `${folder.name}/en.json: every IQ question needs three to five choices.`);
-    fail(sourceQuestions.every((question) => new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: IQ choices must be unique within each question.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < question.answers.length), `${folder.name}/en.json: every IQ question needs one valid correct index.`);
-    fail(sourceQuestions.every((question) => question.delay === undefined || (Number.isInteger(question.delay) && question.delay >= 200 && question.delay <= 600)), `${folder.name}/en.json: IQ question delays must be 200–600ms.`);
+    const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
     const supportedPresentations = new Set(["text", "icons", "sequence", "grid", "code", "spatial"]);
-    fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported IQ presentation.`);
+    fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: IQ must retain every existing locale.`);
+    fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: compact English IQ must use independent locale flow.`);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.derivedScore === undefined, `${folder.name}: IQ must use an 80% Smart Score without a derived IQ score.`);
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: IQ must contain one stage of ten puzzles.`);
+    fail(JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: IQ must retain the approved ten-puzzle order.`);
+    fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(source.landing?.intro ?? ""), `${folder.name}/en.json: compact IQ landing copy must not promise rounds or an IQ score.`);
+    fail(source.results?.name === "YOUR SMART SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Smart Score.`);
+    fail(new Set(ids).size === 10, `${folder.name}/en.json: IQ needs ten unique stable question IDs.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact IQ puzzle needs four unique choices.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every compact IQ puzzle needs one valid correct index.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([3, 3, 2, 2]), `${folder.name}/en.json: compact IQ correct positions must keep their irregular 3/3/2/2 balance.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every compact IQ puzzle needs a result explanation.`);
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact IQ screens must not use separate context banners.`);
+    fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported compact IQ presentation.`);
     for (const [index, question] of sourceQuestions.entries()) {
       const location = `${folder.name}/en.json: question ${index + 1}`;
-      if (question.presentation === "sequence") fail(question.visual?.items?.length >= 3 && question.visual.items.length <= 8, `${location} sequence needs 3–8 items.`);
-      if (question.presentation === "grid") fail([4, 9].includes(question.visual?.items?.length) && [2, 3].includes(question.visual?.columns), `${location} grid needs 4 or 9 cells and 2 or 3 columns.`);
-      if (question.presentation === "code") fail(question.visual?.items?.length >= 2 && question.visual.items.length <= 6, `${location} code needs 2–6 rules.`);
-      if (question.presentation === "spatial") fail(question.visual?.items?.length >= 1 && question.visual.items.length <= 6, `${location} spatial display needs 1–6 symbols.`);
-      if (["sequence", "grid", "code", "spatial"].includes(question.presentation)) fail(typeof question.visual?.ariaLabel === "string" && question.visual.ariaLabel.trim(), `${location} visual needs an accessible label.`);
+      if (["sequence", "grid", "code", "spatial"].includes(question.presentation)) {
+        fail(Array.isArray(question.visual?.items) && question.visual.items.length >= 1 && question.visual.items.length <= 8, `${location} visual needs 1–8 items.`);
+        fail(typeof question.visual?.ariaLabel === "string" && question.visual.ariaLabel.trim(), `${location} visual needs an accessible label.`);
+      }
     }
-    const sprint = source.stages?.[7]?.questions ?? [];
-    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Instinct Sprint prompts must contain no more than ten words.`);
-    fail(sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Instinct Sprint selection delay must be 350ms.`);
-    const trapdoor = source.stages?.[8]?.questions ?? [];
-    fail(trapdoor.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Trapdoor question needs an explicit-clue explanation.`);
-    const boss = source.stages?.[9]?.questions ?? [];
-    fail(boss.find((question) => question.category === "numerical")?.reasoningSteps >= 2, `${folder.name}/en.json: the numerical boss question must require two reasoning steps.`);
-    fail(boss.find((question) => question.category === "logic")?.reasoningSteps >= 2, `${folder.name}/en.json: the logical boss question must require two reasoning steps.`);
+    fail(sourceQuestions.find((question) => question.id === "iq-r2q5")?.visual?.items?.[3] === "L0CK", `${folder.name}/en.json: the dedicated LOCK/L0CK attention trap is required.`);
+    fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2), `${folder.name}/en.json: the final three IQ puzzles must require multi-step reasoning.`);
+    const details = source.results?.score?.insights?.details;
+    fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: compact IQ needs the full Smart Score report.`);
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: compact IQ final gate settings changed.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: IQ profile thresholds are incorrect.`);
-    fail(JSON.stringify(config.engine?.derivedScore) === JSON.stringify({
-      breakpoints: [{ ratio: 0, value: 70 }, { ratio: 0.5, value: 100 }, { ratio: 1, value: 145 }],
-      roundTo: 5,
-    }), `${folder.name}: IQ derived-score configuration is incorrect.`);
   }
   if (folder.name === "biology") {
     const expectedCategories = {
@@ -471,25 +454,19 @@ for (const folder of folders) {
   }
   if (folder.name === "idiom") {
     const targetMap = [
-      ["break_the_ice", "break the ice"], ["piece_of_cake", "piece of cake"], ["under_the_weather", "under the weather"], ["spill_the_beans", "spill the beans"], ["raining_cats_and_dogs", "raining cats and dogs"], ["hit_the_nail_on_the_head", "hit the nail on the head"],
-      ["on_the_same_page", "on the same page"], ["once_in_a_blue_moon", "once in a blue moon"], ["cost_an_arm_and_a_leg", "cost an arm and a leg"], ["burn_the_midnight_oil", "burn the midnight oil"], ["let_the_cat_out_of_the_bag", "let the cat out of the bag"], ["pull_someones_leg", "pull someone's leg"],
-      ["walking_on_eggshells", "walking on eggshells"], ["keep_an_eye_on", "keep an eye on"], ["add_fuel_to_the_fire", "add fuel to the fire"], ["fish_out_of_water", "fish out of water"], ["elephant_in_the_room", "elephant in the room"], ["see_eye_to_eye", "see eye to eye"],
-      ["back_to_square_one", "back to square one"], ["call_it_a_day", "call it a day"], ["go_the_extra_mile", "go the extra mile"], ["get_the_ball_rolling", "get the ball rolling"], ["read_the_room", "read the room"], ["sit_on_the_fence", "sit on the fence"],
-      ["blessing_in_disguise", "blessing in disguise"], ["silver_lining", "silver lining"], ["tip_of_the_iceberg", "tip of the iceberg"], ["through_thick_and_thin", "through thick and thin"], ["up_in_the_air", "up in the air"], ["not_my_cup_of_tea", "not my cup of tea"],
-      ["beat_around_the_bush", "beat around the bush"], ["dont_judge_a_book_by_its_cover", "don't judge a book by its cover"], ["easier_said_than_done", "easier said than done"], ["hang_in_there", "hang in there"], ["no_hard_feelings", "no hard feelings"], ["benefit_of_the_doubt", "benefit of the doubt"],
-      ["miss_the_boat", "miss the boat"], ["break_a_leg", "break a leg"], ["head_in_the_clouds", "head in the clouds"], ["barking_up_the_wrong_tree", "barking up the wrong tree"], ["jump_on_the_bandwagon", "jump on the bandwagon"], ["cross_that_bridge_when_we_come_to_it", "cross that bridge when we come to it"],
-      ["the_ball_is_in_your_court", "the ball is in your court"], ["better_late_than_never", "better late than never"], ["keep_your_chin_up", "keep your chin up"], ["i_wouldnt_hold_my_breath", "i wouldn't hold my breath"], ["time_flies", "time flies"], ["cut_to_the_chase", "cut to the chase"],
-      ["take_the_bull_by_the_horns", "take the bull by the horns"], ["the_best_of_both_worlds", "the best of both worlds"], ["the_last_straw", "the last straw"], ["two_sides_of_the_same_coin", "two sides of the same coin"], ["water_under_the_bridge", "water under the bridge"], ["throw_in_the_towel", "throw in the towel"],
-      ["move_the_goalposts", "move the goalposts"], ["the_calm_before_the_storm", "the calm before the storm"], ["leave_no_stone_unturned", "leave no stone unturned"], ["the_writing_is_on_the_wall", "the writing is on the wall"], ["open_a_can_of_worms", "open a can of worms"], ["needle_in_a_haystack", "needle in a haystack"],
+      ["break_the_ice", "break the ice"],
+      ["piece_of_cake", "piece of cake"],
+      ["under_the_weather", "under the weather"],
+      ["spill_the_beans", "spill the beans"],
+      ["walking_on_eggshells", "walking on eggshells"],
+      ["fish_out_of_water", "fish out of water"],
+      ["back_to_square_one", "back to square one"],
+      ["silver_lining", "silver lining"],
+      ["barking_up_the_wrong_tree", "barking up the wrong tree"],
+      ["move_the_goalposts", "move the goalposts"],
     ];
-    const expectedCategories = Object.fromEntries([
-      "meaning_interpretation", "phrase_completion", "context_usage", "tone_intent", "visual_metaphor", "precision_correction",
-    ].map((category) => [category, 10]));
-    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
-    const correctPositions = sourceQuestions.reduce((positions, question) => {
-      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
-      return positions;
-    }, Array(4).fill(0));
+    const approvedIds = ["idiom-r1q1", "idiom-r1q2", "idiom-r1q3", "idiom-r1q4", "idiom-r3q1", "idiom-r3q4", "idiom-r4q1", "idiom-r5q2", "idiom-r7q4", "idiom-r10q1"];
+    const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
     const normalizePhrase = (value) => String(value ?? "")
       .toLowerCase()
       .normalize("NFKC")
@@ -499,64 +476,43 @@ for (const folder of folders) {
       .replace(/\s+/g, " ");
     const visibleQuestionText = (question) => [
       question.question,
-      question.context,
       question.explanation,
       ...(question.answers ?? []),
       ...(question.visual?.items ?? []),
     ].map(normalizePhrase).filter(Boolean).join(" | ");
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Idiom must launch in English only.`);
-    fail(config.engine?.scoring === "correct-answer" && config.engine?.targetRatio === .8, `${folder.name}: Idiom must use correct-answer scoring and the 80% ace threshold.`);
+    fail(config.engine?.flow === "linear" && config.engine?.scoring === "correct-answer" && config.engine?.targetRatio === .8, `${folder.name}: compact Idiom must use linear correct-answer scoring and the 80% threshold.`);
     fail(source.title === "Only 5% Of Adults Can Ace This Idiom Quiz", `${folder.name}/en.json: Idiom title must match the approved headline.`);
     fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Idiom landing social proof or CTA changed.`);
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Idiom needs ten rounds of six questions.`);
-    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Idiom must contain 60 uniquely identified questions.`);
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Idiom needs exactly ten questions in every language-skill category.`);
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Idiom needs one stage of ten questions.`);
+    fail(JSON.stringify(sourceQuestions.map((question) => question.id)) === JSON.stringify(approvedIds), `${folder.name}/en.json: Idiom must retain the approved compact question order.`);
+    fail(JSON.stringify(sourceQuestions.map((question) => question.targetIdiom)) === JSON.stringify(targetMap.map(([id]) => id)), `${folder.name}/en.json: compact targetIdiom order changed.`);
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && question.answers.every((answer) => typeof answer === "string" && answer.trim()) && new Set(question.answers).size === 4), `${folder.name}/en.json: every Idiom question needs four unique non-empty choices.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Idiom question needs one valid correct index.`);
-    const iconQuestions = sourceQuestions.filter((question) => question.presentation === "icons");
-    fail(iconQuestions.every((question) => Array.isArray(question.icons) && question.icons.length === question.answers.length && question.icons.every((icon) => typeof icon === "string" && icon.trim() && !/^[○●◯□■◇◆△▲▽▼?]+$/u.test(icon.trim()))), `${folder.name}/en.json: icon answers need genuine aligned emoji rather than placeholder geometry.`);
-    const expectedIconSets = {
-      "idiom-r2q5": ["📦", "🧺", "👜", "🎩"],
-      "idiom-r3q1": ["🏃", "🤫", "🍳", "🥚"],
-      "idiom-r3q4": ["🐦", "🐢", "🐟", "🦀"],
-      "idiom-r3q5": ["💡", "🐘", "🚪", "✅"],
-    };
-    for (const [id, icons] of Object.entries(expectedIconSets)) fail(JSON.stringify(sourceQuestions.find((question) => question.id === id)?.icons) === JSON.stringify(icons), `${folder.name}/en.json: ${id} icon meanings are misaligned with their answers.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Idiom correct-answer positions must be exactly 15 each across A–D.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([3, 3, 2, 2]), `${folder.name}/en.json: compact Idiom correct positions must keep their irregular 3/3/2/2 balance.`);
     fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Idiom question needs a post-result explanation.`);
-    fail(sourceQuestions.every((question) => !question.visual || (typeof question.visual.separator === "string" && question.visual.separator.trim() && typeof question.visual.ariaLabel === "string" && question.visual.ariaLabel.trim())), `${folder.name}/en.json: every Idiom visual needs a visible separator and accessible label.`);
-    fail(JSON.stringify(sourceQuestions.map((question) => question.targetIdiom)) === JSON.stringify(targetMap.map(([id]) => id)), `${folder.name}/en.json: targetIdiom order must exactly match the locked 60-phrase inventory.`);
-    fail(new Set(sourceQuestions.map((question) => question.targetIdiom)).size === 60, `${folder.name}/en.json: every targetIdiom must appear exactly once.`);
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Idiom screens must not use separate context banners.`);
+    const expectedIconSets = {
+      "idiom-r3q1": ["🏃", "🤫", "🍳", "🥚"],
+      "idiom-r3q4": ["🐦", "🐟", "🐢", "🦀"],
+    };
+    for (const [id, icons] of Object.entries(expectedIconSets)) {
+      fail(JSON.stringify(sourceQuestions.find((question) => question.id === id)?.icons) === JSON.stringify(icons), `${folder.name}/en.json: ${id} icon meanings are misaligned with their answers.`);
+    }
     targetMap.forEach(([id, canonical], targetIndex) => {
       const canonicalText = normalizePhrase(canonical);
-      const ownText = visibleQuestionText(sourceQuestions[targetIndex]);
-      fail(ownText.includes(canonicalText), `${folder.name}/en.json: ${id} must expose its canonical English phrase in its own question or explanation.`);
+      fail(visibleQuestionText(sourceQuestions[targetIndex]).includes(canonicalText), `${folder.name}/en.json: ${id} must expose its canonical phrase in its own question or explanation.`);
       sourceQuestions.forEach((question, questionIndex) => {
         if (questionIndex === targetIndex) return;
         fail(!(question.answers ?? []).some((answer) => normalizePhrase(answer).includes(canonicalText)), `${folder.name}/en.json: ${id} leaks into another question's answer choices.`);
         if (questionIndex < targetIndex) fail(!visibleQuestionText(question).includes(canonicalText), `${folder.name}/en.json: future target ${id} is exposed before its scored question.`);
       });
     });
-    const sprint = source.stages?.[7]?.questions ?? [];
-    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Idiom default advancement must be exactly 450ms.`);
-    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Phrase Flash question must use 350ms.`);
-    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Phrase Flash prompts must contain no more than ten words.`);
-    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Phrase Flash may override the 450ms default.`);
-    const trapdoor = source.stages?.[8]?.questions ?? [];
-    trapdoor.forEach((question) => {
-      const correctTokens = normalizePhrase(question.answers[question.correct]).split(" ");
-      question.answers.forEach((answer, answerIndex) => {
-        if (answerIndex === question.correct) return;
-        const answerTokens = normalizePhrase(answer).split(" ");
-        const differences = correctTokens.reduce((total, token, index) => total + Number(answerTokens[index] !== token), Math.abs(answerTokens.length - correctTokens.length));
-        fail(differences === 1, `${folder.name}/en.json: ${question.id} distractor ${answerIndex + 1} must contain exactly one lexical error.`);
-      });
-    });
-    const finalRound = source.stages?.[9]?.questions ?? [];
-    fail(finalRound.filter((question) => question.reasoningSteps >= 2 && typeof question.context === "string" && question.context.trim()).length >= 4, `${folder.name}/en.json: The Last Word needs at least four two-clue questions.`);
+    const details = source.results?.score?.insights?.details;
+    fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: compact Idiom needs the full result report.`);
+    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: compact Idiom final gate settings changed.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Idiom profile thresholds are incorrect.`);
-    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Idiom must lead its result with the percentage.`);
-    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Idiom rewarded fallback must require three genuine unavailable attempts.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Idiom rewarded gates or fallback changed.`);
   }
   if (folder.name === "aura") {
     const profileOrder = ["tiger", "wolf", "jaguar", "owl", "deer", "fox", "dolphin", "eagle", "bear", "butterfly"];
@@ -821,14 +777,18 @@ for (const folder of folders) {
     const localizedProfileStructure = validateResultProfiles(localized, config.engine?.scoring, `${folder.name}/${localeFile}`);
     fail(JSON.stringify(localizedProfileStructure) === JSON.stringify(sourceProfileStructure), `${folder.name}/${localeFile}: result profile ids and thresholds differ from English.`);
     if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(localized, `${folder.name}/${localeFile}`);
-    if (folder.name === "iq") fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: IQ landing intro must use numeral 10.`);
     if (folder.name === "iq") {
+      if (localeFile === "en.json") {
+        fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: compact Smart Score intro contains obsolete IQ or round copy.`);
+      } else {
+        fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: legacy localized IQ landing intro must use numeral 10.`);
+      }
       const mirror = questions.find((question) => question.id === "iq-r5q3");
       fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
       const letterCode = questions.find((question) => question.id === "iq-r6q3");
       const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
       fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-      for (const id of ["iq-r4q3", "iq-r10q3"]) {
+      for (const id of localeFile === "en.json" ? ["iq-r4q3"] : ["iq-r4q3", "iq-r10q3"]) {
         const linking = questions.find((question) => question.id === id);
         fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
       }
@@ -851,8 +811,8 @@ for (const folder of folders) {
       fail(localized.checkpoint?.reveals?.length === localized.stages?.length, `${folder.name}/${localeFile}: checkpoint reveals must match stage count.`);
       fail(localized.checkpoint?.finalChecklist?.length >= 3 && localized.checkpoint.finalChecklist.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
     }
-    fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
     if (config.engine?.localeParity !== "independent") {
+      fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
       fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
       fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
     }

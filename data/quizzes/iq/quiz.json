@@ -2,6 +2,7 @@
   "slug": "iq",
   "engine": {
     "flow": "staged",
+    "localeParity": "independent",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
@@ -12,14 +13,7 @@
       "attempts": 3
     },
     "advanceDelayMs": 450,
-    "derivedScore": {
-      "breakpoints": [
-        { "ratio": 0, "value": 70 },
-        { "ratio": 0.5, "value": 100 },
-        { "ratio": 1, "value": 145 }
-      ],
-      "roundTo": 5
-    },
+    "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
@@ -28,7 +22,7 @@
   "listing": {
     "thumbnail": "assets/thumbnail.jpg",
     "published": "2026-08-12",
-    "duration": "9 min",
+    "duration": "4 min",
     "difficulty": "Expert",
     "icon": "🧠"
   },
@@ -70,10 +64,6 @@
       "border": "#dfe7ed",
       "shadow": "0 8px 28px rgba(2, 8, 18, 0.45)"
     },
-    "artwork": {
-      "landing": "assets/brain-vault.svg",
-      "result": "assets/brain-vault.svg",
-      "icon": "🧠"
-    }
+    "artwork": { "icon": "🧠" }
   }
 }

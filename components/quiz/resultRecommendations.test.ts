@@ -13,7 +13,7 @@ import {
 test("the result recommendation pool contains the approved recent quizzes", () => {
   assert.deepEqual(
     RESULT_RECOMMENDATIONS.map((quiz) => quiz.slug),
-    ["memory", "chef", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar"],
+    ["memory", "chef", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar", "idiom", "iq"],
   );
 });
 
@@ -22,7 +22,12 @@ test("every promoted result recommendation is a one-stage ten-question quiz", ()
     const folder = join(process.cwd(), "data", "quizzes", recommendation.slug);
     const config = JSON.parse(readFileSync(join(folder, "quiz.json"), "utf8"));
     const locale = JSON.parse(readFileSync(join(folder, "en.json"), "utf8"));
-    assert.equal(config.engine.flow, "linear", recommendation.slug);
+    assert.equal(
+      config.engine.flow === "linear" ||
+        (config.engine.flow === "staged" && config.engine.localeParity === "independent"),
+      true,
+      recommendation.slug,
+    );
     assert.equal(locale.stages.length, 1, recommendation.slug);
     assert.equal(locale.stages[0].questions.length, 10, recommendation.slug);
   }

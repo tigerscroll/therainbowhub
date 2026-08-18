@@ -1,5 +1,5 @@
 export type ResultRecommendation = {
-  slug: "memory" | "chef" | "paramedic" | "years-left" | "vintage" | "vision" | "nursing" | "midwifery" | "grammar";
+  slug: "memory" | "chef" | "paramedic" | "years-left" | "vintage" | "vision" | "nursing" | "midwifery" | "grammar" | "idiom" | "iq";
   icon: string;
   title: string;
   shortTitle: string;
@@ -89,6 +89,24 @@ export const RESULT_RECOMMENDATIONS: ResultRecommendation[] = [
     summary: "Sentence structure, punctuation and almost-correct wording make ten fast editing traps.",
     cta: "Take the Grammar Quiz",
     thumbnail: "/quizzes/grammar/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "idiom",
+    icon: "💬",
+    title: "Only 5% Of Adults Can Ace This Idiom Quiz",
+    shortTitle: "Test Your Idioms",
+    summary: "Hidden meanings, emoji clues and almost-right expressions make one fast phrase challenge.",
+    cta: "Take the Idiom Quiz",
+    thumbnail: "/quizzes/idiom/assets/thumbnail-480.webp",
+  },
+  {
+    slug: "iq",
+    icon: "🧠",
+    title: "Are You Smarter Than 96% Of The Population?",
+    shortTitle: "Test Your Smarts",
+    summary: "Patterns, codes, word links and logic traps challenge how quickly you spot the rule.",
+    cta: "Take the Smart Test",
+    thumbnail: "/quizzes/iq/assets/thumbnail-480.webp",
   },
 ];
 
