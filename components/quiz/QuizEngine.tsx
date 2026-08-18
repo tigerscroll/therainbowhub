@@ -68,6 +68,11 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
   const isFourStepSequence = question.presentation === "sequence" && visual.items.length === 4;
+  const codeRows = question.presentation === "code"
+    ? visual.items.map((item) => item.split("::").map((part) => part.trim()))
+    : [];
+  const isObservationBoard = codeRows.length > 0 && codeRows.every((parts) => parts.length === 3 && parts.every(Boolean));
+  const isKeyValueBoard = codeRows.length > 0 && codeRows.every((parts) => parts.length === 2 && parts.every(Boolean));
   const needsMobileTwoColumns = question.presentation !== "sequence"
     && question.presentation !== "code"
     && columnCount >= 4
@@ -80,12 +85,16 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}`}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}${isObservationBoard ? " quiz-engine__visual--observation-board" : ""}${isKeyValueBoard ? " quiz-engine__visual--key-value-board" : ""}`}
       style={visualStyle}
     >
       {visual.items.map((item, index) => (
         <span key={`${item}-${index}`}>
-          <strong>{item}</strong>
+          {isObservationBoard ? (
+            <strong><b>{codeRows[index][0]}</b><em>{codeRows[index][1]}</em><small aria-hidden="true">→</small><em>{codeRows[index][2]}</em></strong>
+          ) : isKeyValueBoard ? (
+            <strong><b>{codeRows[index][0]}</b><em>{codeRows[index][1]}</em></strong>
+          ) : <strong>{item}</strong>}
           {question.presentation === "sequence" && index < visual.items.length - 1 ? <i aria-hidden="true">{visual.separator ?? "→"}</i> : null}
         </span>
       ))}
@@ -1112,7 +1121,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <div className="quiz-engine__progress">
         <i style={{ width: `${progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card" key={currentQuestion.id}>
+      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} key={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer

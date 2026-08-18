@@ -291,6 +291,16 @@
 
 [data-quiz-theme="paramedic"] .quiz-engine__visual span strong { color: var(--response-navy-dark); }
 [data-quiz-theme="paramedic"] .quiz-engine__visual i { color: var(--response-coral); }
+[data-quiz-theme="paramedic"] .quiz-engine__visual--observation-board,
+[data-quiz-theme="paramedic"] .quiz-engine__visual--key-value-board {
+  background: linear-gradient(145deg, #f8fbfc, #eaf3f6);
+  box-shadow: inset 4px 0 0 var(--response-teal), inset 0 0 0 1px rgba(255,255,255,.72);
+}
+[data-quiz-theme="paramedic"] .quiz-engine__visual--observation-board b,
+[data-quiz-theme="paramedic"] .quiz-engine__visual--key-value-board b { color: #52707d; }
+[data-quiz-theme="paramedic"] .quiz-engine__visual--observation-board em,
+[data-quiz-theme="paramedic"] .quiz-engine__visual--key-value-board em { color: var(--response-navy-dark); }
+[data-quiz-theme="paramedic"] .quiz-engine__visual--observation-board small { color: var(--response-teal); }
 
 [data-quiz-theme="paramedic"] .quiz-engine__answer {
   border: 1px solid rgba(36,110,145,.24);
@@ -437,7 +447,10 @@
   [data-quiz-theme="paramedic"] .quiz-engine__question,
   [data-quiz-theme="paramedic"] .quiz-engine__checkpoint,
   [data-quiz-theme="paramedic"] .quiz-engine__results { border-radius: 20px; }
-  [data-quiz-theme="paramedic"] .quiz-engine__question h1 { font-size: clamp(27px, 8vw, 38px); }
+  [data-quiz-theme="paramedic"] .quiz-engine__question h1 { margin-bottom: 18px; font-size: clamp(25px, 7.2vw, 34px); line-height: 1.08; }
+  [data-quiz-theme="paramedic"] .quiz-engine__visual { margin-top: -3px; }
+  [data-quiz-theme="paramedic"] .quiz-engine__visual--observation-board,
+  [data-quiz-theme="paramedic"] .quiz-engine__visual--key-value-board { margin-bottom: 14px; }
   [data-quiz-theme="paramedic"] .quiz-engine__question-context { padding: 10px 12px; font-size: 14px; }
 }
 
