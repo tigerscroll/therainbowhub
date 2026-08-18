@@ -362,7 +362,7 @@ for (const folder of folders) {
     fail(source.about?.howToPlay?.steps?.length === 3 && !/all ten (?:rounds|stages)/i.test(source.about?.body ?? ""), "chef/en.json: About and How to Play must describe the compact flow.");
     fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), "chef/en.json: Chef must retain worldwide metric or unit-neutral wording.");
   }
-  if (["grammar", "paramedic"].includes(folder.name)) {
+  if (["grammar", "paramedic", "vision", "nursing", "midwifery"].includes(folder.name)) {
     const specifications = {
       grammar: {
         title: "Only 10% Of The Population Can Pass This Grammar Quiz",
@@ -377,6 +377,33 @@ for (const folder of folders) {
         ids: ["paramedic-r2q1", "paramedic-r3q2", "paramedic-r4q3", "paramedic-r5q2", "paramedic-r6q2", "paramedic-r7q2", "paramedic-r8q1", "paramedic-r9q4", "paramedic-r10q3", "paramedic-r10q6"],
         categories: { anatomy_physiology: 1, observation_vitals: 2, numeracy_measurement: 2, scene_safety: 2, communication_handover: 1, reasoning_priorities: 2 },
         positions: [2, 3, 2, 3],
+      },
+      vision: {
+        title: "Only 7% Can Pass This Vision Test",
+        cta: "Start Test",
+        ids: ["vision-r1q1", "vision-r3q4", "vision-r4q3", "vision-r5q1", "vision-r9q5", "vision-r7q2", "vision-r9q1", "vision-r8q3", "vision-r10q2", "vision-r10q4"],
+        categories: { colour_contrast: 2, detail_detection: 2, pattern_tracking: 2, spatial_orientation: 2, visual_memory: 1, attention_control: 1 },
+        positions: [3, 3, 2, 2],
+        dimensionLabels: ["Colour and memory", "Detail and attention", "Patterns and space"],
+        presentations: 5,
+      },
+      nursing: {
+        title: "Only 7% Pass This Nursing Entrance Exam",
+        cta: "Start Quiz",
+        ids: ["nurse-r1q1", "nurse-r3q2", "nurse-r4q3", "nurse-r6q3", "nurse-r5q2", "nurse-r2q1", "nurse-r3q5", "nurse-r7q2", "nurse-r10q3", "nurse-r10q6"],
+        categories: { anatomy_physiology: 2, numeracy_measurement: 2, infection_safety: 1, communication_compassion: 1, observation_vitals: 2, reasoning_priorities: 2 },
+        positions: [3, 3, 2, 2],
+        dimensionLabels: ["Clinical foundations", "Observation and priorities", "Safety and communication"],
+        presentations: 4,
+      },
+      midwifery: {
+        title: "Only 7% Pass This Midwifery Entrance Exam",
+        cta: "Start Quiz",
+        ids: ["mid-r1q1", "mid-r2q5", "mid-r3q2", "mid-r4q4", "mid-r5q4", "mid-r6q3", "mid-r7q2", "mid-r7q4", "mid-r5q6", "mid-r10q6"],
+        categories: { pregnancy_physiology: 1, antenatal_wellbeing: 2, communication_priorities: 2, labour_birth: 2, newborn_care: 2, infection_safety: 1 },
+        positions: [3, 3, 2, 2],
+        dimensionLabels: ["Pregnancy and antenatal care", "Labour and newborn care", "Safety and communication"],
+        presentations: 4,
       },
     };
     const specification = specifications[folder.name];
@@ -415,6 +442,10 @@ for (const folder of folders) {
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: complete long-form result report is required.`);
     fail(source.about?.howToPlay?.steps?.length === 3 && !/all ten (?:rounds|stages)/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About and How to Play must describe the compact flow.`);
+    if (specification.dimensionLabels) {
+      fail(JSON.stringify(source.results?.dimensions?.map((dimension) => dimension.label)) === JSON.stringify(specification.dimensionLabels), `${folder.name}/en.json: compact result dimensions changed.`);
+      fail(new Set(sourceQuestions.map((question) => question.presentation ?? "text")).size >= specification.presentations, `${folder.name}/en.json: compact interaction variety is below the approved minimum.`);
+    }
 
     if (folder.name === "grammar") {
       const questionCopy = sourceQuestions.flatMap((question) => [question.context, question.question, ...question.answers, question.explanation].filter(Boolean)).join(" ");
@@ -426,102 +457,17 @@ for (const folder of folders) {
       const questionCopy = sourceQuestions.map((question) => [question.question, question.context, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
       fail(!prohibitedClinicalCopy.test(questionCopy), "paramedic/en.json: questions must not teach treatment procedures, medication, emergency numbers or local protocol.");
     }
-  }  if (folder.name === "nursing") {
-    const expectedCategories = {
-      anatomy_physiology: 10,
-      numeracy_measurement: 10,
-      observation_vitals: 10,
-      infection_safety: 10,
-      communication_compassion: 10,
-      reasoning_priorities: 10,
-    };
-    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
-      category,
-      sourceQuestions.filter((question) => question.category === category).length,
-    ]));
-    const correctPositions = sourceQuestions.reduce((positions, question) => {
-      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
-      return positions;
-    }, Array(4).fill(0));
-    const priorities = source.stages?.[6]?.questions ?? [];
-    const sprint = source.stages?.[7]?.questions ?? [];
-    const handovers = source.stages?.[8]?.questions ?? [];
-    const finalHandover = source.stages?.[9]?.questions ?? [];
-    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Nursing must launch in English only.`);
-    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Nursing must use correct-answer scoring.`);
-    fail(source.title === "Only 7% Pass This Nursing Entrance Exam", `${folder.name}/en.json: Nursing title must match the approved headline.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Nursing landing social proof or CTA changed.`);
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Nursing needs ten stages of six questions.`);
-    fail(sourceQuestions.length === 60, `${folder.name}/en.json: Nursing must contain exactly 60 questions.`);
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Nursing needs exactly ten questions in each entrance category.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Nursing question needs exactly four choices.`);
-    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Nursing choices must be non-empty and unique within each question.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Nursing question needs one valid correct index.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Nursing correct-answer positions must be exactly 15 each across A–D.`);
-    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Nursing question needs a post-result explanation.`);
-    fail(sourceQuestions.every((question) => !question.visual || (typeof question.visual.separator === "string" && Boolean(question.visual.separator.trim()))), `${folder.name}/en.json: every Nursing visual needs a visible separator.`);
-    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Nursing default advancement must be exactly 450ms.`);
-    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Nurses’ Station Sprint question must use 350ms.`);
-    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Nurses’ Station Sprint prompts must contain no more than ten words.`);
-    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Nurses’ Station Sprint may override the 450ms default.`);
-    fail(priorities.length === 6 && priorities.every((question) => typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: every priority-stage question needs multiple visible clues.`);
-    fail(priorities.filter((question) => /Person A/i.test(question.context) && /Person B/i.test(question.context)).length >= 4, `${folder.name}/en.json: at least four priority-stage questions must compare two people directly.`);
-    fail(handovers.length === 6 && handovers.every((question) => typeof question.context === "string" && /(handover|note|chart|detail)/i.test(question.context)), `${folder.name}/en.json: every Shift-Change Trap needs a visible handover, note, chart or detail context.`);
-    fail(finalHandover.length === 6 && finalHandover.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Handover questions need two visible clues and two-step reasoning.`);
-    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Nursing profile thresholds are incorrect.`);
-    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Nursing must lead its result with the percentage.`);
-    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Nursing rewarded fallback must require three genuine unavailable attempts.`);
-  }
-  if (folder.name === "midwifery") {
-    const expectedCategories = {
-      pregnancy_physiology: 10,
-      antenatal_wellbeing: 10,
-      labour_birth: 10,
-      newborn_care: 10,
-      infection_safety: 10,
-      communication_priorities: 10,
-    };
-    const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [
-      category,
-      sourceQuestions.filter((question) => question.category === category).length,
-    ]));
-    const correctPositions = sourceQuestions.reduce((positions, question) => {
-      positions[question.correct] = (positions[question.correct] ?? 0) + 1;
-      return positions;
-    }, Array(4).fill(0));
-    const birthRoom = source.stages?.[5]?.questions ?? [];
-    const sprint = source.stages?.[7]?.questions ?? [];
-    const handovers = source.stages?.[8]?.questions ?? [];
-    const finalHandover = source.stages?.[9]?.questions ?? [];
-    const newbornQuestions = sourceQuestions.filter((question) => question.category === "newborn_care");
-    const prohibitedBirthRoomLanguage = /\b(diagnos(?:e|is)|prescrib(?:e|ing)|administer|dosage|perform a procedure|procedural management)\b/i;
-    const prohibitedNewbornLanguage = /\b(resuscitat\w*|ventilat\w*|intubat\w*|medication dosage|administer\w* medication|procedur(?:e|al) technique|diagnos(?:e|is)|local protocol)\b/i;
-    const permittedNewbornThemes = /\b(newborn|baby|warm|heat|feed|breath|cord|skin-to-skin|parent|dry|hygiene|contact|colour|tone|movement|change)\b/i;
-    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Midwifery must launch in English only.`);
-    fail(config.engine?.scoring === "correct-answer", `${folder.name}: Midwifery must use correct-answer scoring.`);
-    fail(source.title === "Only 7% Pass This Midwifery Entrance Exam", `${folder.name}/en.json: Midwifery title must match the approved headline.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Midwifery landing social proof or CTA changed.`);
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Midwifery needs ten stages of six questions.`);
-    fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Midwifery must contain 60 uniquely identified questions.`);
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), `${folder.name}/en.json: Midwifery needs exactly ten questions in each entrance category.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4), `${folder.name}/en.json: every Midwifery question needs exactly four choices.`);
-    fail(sourceQuestions.every((question) => question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim())) && new Set(question.answers).size === 4), `${folder.name}/en.json: Midwifery choices must be non-empty and unique within each question.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Midwifery question needs one valid correct index.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), `${folder.name}/en.json: Midwifery correct-answer positions must be exactly 15 each across A–D.`);
-    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && Boolean(question.explanation.trim())), `${folder.name}/en.json: every Midwifery question needs a post-result explanation.`);
-    fail(config.engine?.advanceDelayMs === 450, `${folder.name}: Midwifery default advancement must be exactly 450ms.`);
-    fail(sprint.length === 6 && sprint.every((question) => question.delay === 350), `${folder.name}/en.json: every Birth Centre Sprint question must use 350ms.`);
-    fail(sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, `${folder.name}/en.json: at least five Birth Centre Sprint prompts must contain no more than ten words.`);
-    fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), `${folder.name}/en.json: only Birth Centre Sprint may override the 450ms default.`);
-    fail(birthRoom.length === 6 && birthRoom.every((question) => typeof question.context === "string" && question.context.split(/[.!?]+/).filter((clue) => clue.trim()).length >= 2), `${folder.name}/en.json: every Birth Room Decision needs at least two visible clues.`);
-    fail(birthRoom.every((question) => !prohibitedBirthRoomLanguage.test([question.question, question.answers[question.correct], question.explanation].join(" "))), `${folder.name}/en.json: Birth Room Decisions must test recognition, safety or escalation rather than diagnosis, treatment or procedural management.`);
-    fail(newbornQuestions.length === 10 && newbornQuestions.every((question) => permittedNewbornThemes.test([question.question, question.answers[question.correct], question.explanation].join(" "))), `${folder.name}/en.json: newborn questions must stay within the approved worldwide entrance-level themes.`);
-    fail(newbornQuestions.every((question) => !prohibitedNewbornLanguage.test([question.question, question.answers[question.correct], question.explanation].join(" "))), `${folder.name}/en.json: newborn questions must not require diagnosis, resuscitation, treatment selection or local protocols.`);
-    fail(handovers.length === 6 && handovers.every((question) => typeof question.context === "string" && /(handover|note|chart|detail)/i.test(question.context)), `${folder.name}/en.json: every Shift-Handover Trap needs a visible handover, note, chart or detail context.`);
-    fail(finalHandover.length === 6 && finalHandover.every((question) => question.reasoningSteps === 2 && typeof question.context === "string" && question.context.trim()), `${folder.name}/en.json: all six Final Birth Centre Handover questions need two visible clues and two-step reasoning.`);
-    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: Midwifery profile thresholds are incorrect.`);
-    fail(source.results?.score?.showPercentage === true, `${folder.name}/en.json: Midwifery must lead its result with the percentage.`);
-    fail(config.engine?.rewarded?.attempts === 3, `${folder.name}: Midwifery rewarded fallback must require three genuine unavailable attempts.`);
+    if (folder.name === "vision") {
+      const memoryCue = sourceQuestions.find((question) => question.id === "vision-r9q5")?.study;
+      fail(memoryCue?.mode === "automatic" && memoryCue?.durationMs === 3500 && memoryCue?.items?.length === 5, "vision/en.json: the visual-memory cue must remain fair, automatic and five items long.");
+      fail(sourceQuestions.some((question) => question.visual?.ariaLabel === "Simultaneous contrast panels"), "vision/en.json: the genuine simultaneous-contrast interaction is required.");
+    }
+    if (["nursing", "midwifery"].includes(folder.name)) {
+      const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|resuscitat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|perform a procedure|911|999|112)\b/i;
+      const questionCopy = sourceQuestions.map((question) => [question.question, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
+      fail(!prohibitedClinicalCopy.test(questionCopy), `${folder.name}/en.json: compact clinical content must stay at safe recognition and escalation level.`);
+      fail(sourceQuestions.filter((question) => question.reasoningSteps === 2).length >= 2, `${folder.name}/en.json: compact clinical challenge needs at least two multi-clue questions.`);
+    }
   }
   if (folder.name === "idiom") {
     const targetMap = [
