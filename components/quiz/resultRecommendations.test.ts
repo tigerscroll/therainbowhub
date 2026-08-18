@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   RESULT_RECOMMENDATIONS,
   nextResultRecommendation,
+  otherResultRecommendations,
   supportsResultRecommendation,
 } from "./resultRecommendations.ts";
 
@@ -35,4 +36,12 @@ test("repeat result visits rotate through every other recent quiz", () => {
     }
     assert.equal(new Set(seen).size, RESULT_RECOMMENDATIONS.length - 1);
   }
+});
+
+test("the full recommendation section excludes the current and sticky quizzes", () => {
+  const recommendations = otherResultRecommendations("vision", "midwifery");
+  assert.equal(recommendations.length, RESULT_RECOMMENDATIONS.length - 2);
+  assert.equal(recommendations.some((quiz) => quiz.slug === "vision"), false);
+  assert.equal(recommendations.some((quiz) => quiz.slug === "midwifery"), false);
+  assert.equal(recommendations.some((quiz) => quiz.slug === "grammar"), true);
 });

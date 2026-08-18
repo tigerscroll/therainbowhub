@@ -12,6 +12,7 @@ import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 import {
   nextResultRecommendation,
+  otherResultRecommendations,
   supportsResultRecommendation,
   type ResultRecommendation,
 } from "./resultRecommendations";
@@ -314,6 +315,46 @@ function NextQuizRecommendation({ currentSlug, recommendation }: { currentSlug: 
         </span>
       </div>
     </a>
+  );
+}
+
+function MoreQuizRecommendations({ currentSlug, stickySlug }: { currentSlug: string; stickySlug: string }) {
+  const recommendations = otherResultRecommendations(currentSlug, stickySlug);
+  if (!recommendations.length) return null;
+
+  function trackClick(recommendedSlug: string) {
+    window.fbq?.("trackCustom", "QuizRecommendationGridClick", {
+      quiz_slug: currentSlug,
+      recommended_quiz_slug: recommendedSlug,
+    });
+  }
+
+  return (
+    <section className="quiz-engine__more-quizzes" aria-labelledby="more-quizzes-title">
+      <header className="quiz-engine__more-quizzes-head">
+        <span>KEEP PLAYING</span>
+        <h2 id="more-quizzes-title">Choose your next challenge</h2>
+        <p>Try another quick test and discover a completely different result.</p>
+      </header>
+      <div className="quiz-engine__more-quizzes-grid">
+        {recommendations.map((recommendation) => (
+          <a
+            className="quiz-engine__more-quiz"
+            href={`/${recommendation.slug}`}
+            key={recommendation.slug}
+            onClick={() => trackClick(recommendation.slug)}
+          >
+            <img alt="" decoding="async" loading="lazy" src={recommendation.thumbnail} />
+            <div>
+              <span className="quiz-engine__more-quiz-icon" aria-hidden="true">{recommendation.icon}</span>
+              <h3>{recommendation.title}</h3>
+              <p>{recommendation.summary}</p>
+              <strong>{recommendation.cta}<b aria-hidden="true">→</b></strong>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1098,11 +1139,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </p>
           </section>
         ) : null}
-        {estimate || scoreCopy || matchCopy ? <p className="quiz-engine__disclaimer">{estimate?.disclaimer ?? scoreCopy?.disclaimer ?? matchCopy?.disclaimer}</p> : null}
           </>
         )}
       </section>
-      {resultRecommendation ? <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} /> : null}
+      {resultRecommendation ? (
+        <>
+          <MoreQuizRecommendations currentSlug={quiz.slug} stickySlug={resultRecommendation.slug} />
+          <NextQuizRecommendation currentSlug={quiz.slug} recommendation={resultRecommendation} />
+        </>
+      ) : null}
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );

@@ -108,3 +108,9 @@ export function nextResultRecommendation(currentSlug: string, previousSlug?: str
   const sourceIndex = RESULT_RECOMMENDATIONS.findIndex((quiz) => quiz.slug === currentSlug);
   return candidates[Math.max(0, sourceIndex) % candidates.length];
 }
+
+export function otherResultRecommendations(currentSlug: string, stickySlug?: string | null) {
+  return RESULT_RECOMMENDATIONS.filter(
+    (quiz) => quiz.slug !== currentSlug && quiz.slug !== stickySlug,
+  );
+}
