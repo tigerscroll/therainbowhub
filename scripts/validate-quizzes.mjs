@@ -450,7 +450,19 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.delay === undefined), `${folder.name}/en.json: compact questions must use the shared 450ms transition.`);
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, `${folder.name}: compact timing and 80% target changed.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.`);
-    fail(config.engine?.resultAds === undefined, `${folder.name}: compact result display placements must remain disabled.`);
+    if (folder.name === "vision") {
+      fail(
+        config.engine?.resultAds?.adUnitPath === "/22677279144/display"
+        && config.engine.resultAds.count === 4
+        && config.engine.resultAds.bottomAnchor === true
+        && config.engine.resultAds.reviewUnlock === true
+        && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
+        "vision: results must match Memory and Chef with one header placement, three in-content placements, a bottom anchor and rewarded answer-review unlock.",
+      );
+      fail(source.results?.score?.reviewUnlock?.button === "Reveal Incorrect Answers" && /incorrect answers/i.test(source.results?.score?.reviewUnlock?.title ?? ""), "vision/en.json: rewarded incorrect-answer reveal copy is incomplete.");
+    } else {
+      fail(config.engine?.resultAds === undefined, `${folder.name}: compact result display placements must remain disabled.`);
+    }
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, `${folder.name}/en.json: compact quiz needs one clean final checkpoint without staged progress.`);
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, `${folder.name}/en.json: final rewarded result gate is incomplete.`);
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, `${folder.name}/en.json: compact result must lead with percentage and hide the redundant best-round field.`);
