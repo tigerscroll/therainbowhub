@@ -191,11 +191,11 @@ for (const folder of folders) {
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and two rewarded gates changed.`);
     fail(
       config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-      && config.engine.resultAds.count === 5
+      && config.engine.resultAds.count === 3
       && config.engine.resultAds.bottomAnchor === true
       && config.engine.resultAds.reviewUnlock === true
       && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-      `${folder.name}: Memory must keep five responsive result placements, the bottom anchor and rewarded answer-review unlock.`,
+      `${folder.name}: Memory must keep three responsive result placements, the bottom anchor and rewarded answer-review unlock.`,
     );
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);

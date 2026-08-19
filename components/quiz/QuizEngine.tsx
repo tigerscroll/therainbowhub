@@ -770,7 +770,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const resultDetails = scoreDetails ?? estimateInsights?.details;
     const career = quiz.career;
     const careerReport = career?.reportUnlock;
-    const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length === 5;
+    const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length > 0;
     const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
     const targetRemaining = Math.max(0, targetCorrect - result.score);
     const estimateMinimum = quiz.engine.estimate?.minAge ?? 0;
@@ -874,7 +874,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </ol>
           </section>
         ) : null}
-        {resultAds ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {resultAds && scoreInsights ? (
           <section className="quiz-engine__result-metrics quiz-engine__result-metrics--estimate">
             <h3>{scoreInsights.overview}</h3>
@@ -952,7 +951,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             )}
           </section>
         ) : null}
-        {resultAds ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
+        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.score}/{result.total}</strong>
@@ -1008,7 +1007,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             )}
           </section>
         ) : null}
-        {resultAds ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-measured">
             <h3>{resultDetails.measuredTitle}</h3>
@@ -1026,7 +1024,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
-        {resultAds ? <ResultDisplayAd elementId={resultAdIds[4]} /> : null}
+        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {resultAds ? (
           <section className="quiz-engine__result-tips">
             <h3>{resultDetails.tipsTitle}</h3>
