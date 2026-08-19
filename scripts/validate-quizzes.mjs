@@ -342,7 +342,14 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.delay === undefined), "chef/en.json: compact questions must use the shared 450ms transition.");
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, "chef: compact timing and 80% target changed.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.");
-    fail(config.engine?.resultAds === undefined, "chef: compact result display placements must remain disabled.");
+    fail(
+      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
+      && config.engine.resultAds.count === 4
+      && config.engine.resultAds.bottomAnchor === true
+      && config.engine.resultAds.reviewUnlock === true
+      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
+      "chef: results must keep one header and three in-content placements, the bottom anchor and rewarded answer-review unlock.",
+    );
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, "chef/en.json: compact result must lead with percentage and hide the redundant best-round field.");
