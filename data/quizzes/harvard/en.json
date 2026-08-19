@@ -1,0 +1,312 @@
+{
+  "title": "Only 7% Pass This Harvard Entrance Exam",
+  "eyebrow": "THE DECISION ROOM",
+  "summary": "Evidence, practical numbers and committee judgement combine in one fast admissions-day gauntlet.",
+  "progressLabel": "COMPLETE",
+  "landing": {
+    "intro": "Build the team, read the evidence and make the decision. Ten varied questions test whether you can keep every criterion in view.",
+    "badge": "10 QUESTIONS · 8 TO PASS",
+    "socialProof": "81,000+ people played this",
+    "cta": "Start Test",
+    "startPrompt": {
+      "eyebrow": "COMMITTEE READY",
+      "icon": "◆",
+      "title": "Your Harvard Challenge Is Ready",
+      "copy": "Watch a short ad to begin the test.",
+      "button": "OK"
+    }
+  },
+  "about": {
+    "body": "This independent ten-question entertainment challenge tests team optimisation, percentages, data interpretation, evidence quality, funnel diagnosis, prioritisation, normalized comparisons, formal logic and explicit decision rules. It finishes with a weighted committee problem whose tied scores require a stated tie-break.\n\nAll facts and criteria appear on screen. No specialist university or worldwide knowledge is required, and speed never affects the result. The final percentage reflects the decisions supported by the supplied evidence in this attempt.",
+    "howToPlay": {
+      "title": "How to Play",
+      "steps": [
+        "Use the stated rule or metric rather than choosing the option that merely sounds impressive.",
+        "Compare like with like—rates and per-person values can reveal what raw totals conceal.",
+        "Score at least eight out of ten to pass the entertainment challenge."
+      ]
+    },
+    "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+  },
+  "results": {
+    "name": "YOUR HARVARD DECISION SCORE",
+    "profiles": [
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "The Committee Standout",
+        "copy": "You extracted the relevant evidence, applied explicit criteria and kept checking after the headline calculation. Your decisions remained rigorous even when the final scores tied."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "The Harvard Natural",
+        "copy": "You crossed the pass line with an unusually broad decision-making result. Numbers, evidence quality and priorities stayed clear across very different scenarios."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "The Committee Contender",
+        "copy": "You handled most of the admissions-day gauntlet with strong practical judgement. One more precise comparison would have moved this attempt above the pass line."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "The Strategic Thinker",
+        "copy": "You made several well-supported choices across evidence, numbers and formal rules. The review shows where an irrelevant detail or missed normalization changed the outcome."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "The Promising Candidate",
+        "copy": "You solved at least half of a deliberately broad challenge. Your strongest dimension shows whether evidence, quantitative comparison or explicit decision rules suited you best."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "The Ambitious Explorer",
+        "copy": "This attempt showed how quickly a busy dossier can distract from the governing rule. Review the explanations, identify the exact decision criterion, and the same scenarios become far more manageable."
+      }
+    ],
+    "dimensions": [
+      {
+        "label": "Quantitative evidence",
+        "categories": ["percentage", "data_reading", "normalized_comparison"]
+      },
+      {
+        "label": "Judgement and diagnosis",
+        "categories": ["evidence_quality", "funnel_diagnosis", "prioritization"]
+      },
+      {
+        "label": "Logic and decisions",
+        "categories": ["team_optimization", "formal_logic", "rule_application", "weighted_decision"]
+      }
+    ],
+    "score": {
+      "passed": "You passed the Harvard challenge!",
+      "finished": "Harvard challenge complete",
+      "correctLabel": "correct",
+      "strongest": "Strongest decision area",
+      "trickiest": "Trickiest decision area",
+      "bestRound": "Best challenge",
+      "showPercentage": true,
+      "showBestRound": false,
+      "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+    }
+  },
+  "checkpoint": {
+    "nextPrefix": "NEXT QUESTION",
+    "adNote": "Short ad first — then your Harvard decision score unlocks.",
+    "reveals": [
+      {
+        "badge": "COMMITTEE REVIEW",
+        "icon": "◆",
+        "title": "Decision dossier calculated",
+        "signal": "fixed",
+        "message": "All ten evidence and judgement decisions have been checked."
+      }
+    ],
+    "finalBadge": "COMMITTEE REPORT",
+    "finalIcon": "◆",
+    "finalTitle": "Your result is ready",
+    "finalCopy": "One final short ad unlocks your Harvard decision score.",
+    "finalChecklist": [
+      "Quantitative evidence",
+      "Judgement and diagnosis",
+      "Logic and decisions"
+    ],
+    "finalButton": "See My Results"
+  },
+  "stages": [
+    {
+      "title": "Harvard Decision Challenge",
+      "questions": [
+        {
+          "id": "harvard-q1",
+          "context": "ADMISSIONS DESK 🎓",
+          "question": "What is the smallest team that can cover writing, numbers and presentation?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "MAYA::Writing + presentation",
+              "LEO::Numbers",
+              "NORA::Writing + numbers",
+              "GOAL::Cover all three skills"
+            ],
+            "columns": 1,
+            "ariaLabel": "Maya covers writing and presentation. Leo covers numbers. Nora covers writing and numbers. The team must cover writing, numbers and presentation."
+          },
+          "answers": ["One person", "All three people", "Two people", "No listed team can do it"],
+          "correct": 2,
+          "category": "team_optimization",
+          "explanation": "Maya supplies writing and presentation; either Leo or Nora can add numbers. No single person covers all three, so two is the minimum."
+        },
+        {
+          "id": "harvard-q2",
+          "context": "NUMBERS UNDER PRESSURE 🔢",
+          "question": "A project has a $240 budget and spends 35%. How much remains?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["BUDGET $240", "SPENT 35%", "REMAINS ?"],
+            "columns": 3,
+            "separator": "→",
+            "ariaLabel": "A budget of two hundred forty dollars spends thirty-five percent. Calculate the amount remaining."
+          },
+          "answers": ["$156", "$144", "$168", "$84"],
+          "correct": 0,
+          "category": "percentage",
+          "explanation": "Thirty-five percent of $240 is $84. Subtracting $84 from $240 leaves $156."
+        },
+        {
+          "id": "harvard-q3",
+          "context": "READ THE EVIDENCE 📊",
+          "question": "Which programme had the largest absolute increase in applications?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "PROGRAMME A::120 → 150",
+              "PROGRAMME B::80 → 125",
+              "PROGRAMME C::200 → 230",
+              "PROGRAMME D::150 → 170"
+            ],
+            "columns": 2,
+            "ariaLabel": "Programme A rose from 120 to 150. B rose from 80 to 125. C rose from 200 to 230. D rose from 150 to 170."
+          },
+          "answers": ["Programme A", "Programme B", "Programme C", "Programme D"],
+          "correct": 1,
+          "category": "data_reading",
+          "explanation": "The absolute increases are A: 30, B: 45, C: 30 and D: 20. Programme B increased the most."
+        },
+        {
+          "id": "harvard-q4",
+          "context": "THE INTERVIEW 🗣️",
+          "question": "Which result would provide the strongest direct evidence that students currently face unmet demand for evening library space?",
+          "answers": [
+            "A survey finds that students generally value the library",
+            "Morning visitor totals rose during the previous semester",
+            "A nearby café reports more customers studying after dinner",
+            "A controlled trial during proposed extended hours shows sustained full occupancy and students unable to find seats"
+          ],
+          "correct": 3,
+          "category": "evidence_quality",
+          "explanation": "The controlled trial directly observes demand during the exact hours being considered and records both full occupancy and unmet need. The other evidence is indirect or concerns different times."
+        },
+        {
+          "id": "harvard-q5",
+          "context": "THINK BIGGER 💡",
+          "question": "Applications fell. Which single dashboard question can distinguish reduced reach, weaker click-through and form abandonment?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["REACH", "CLICK-THROUGH RATE", "COMPLETION RATE"],
+            "columns": 3,
+            "separator": "→",
+            "ariaLabel": "An application funnel proceeds from reach to click-through rate to completion rate."
+          },
+          "answers": [
+            "Did the total number of applications fall?",
+            "Was total campaign spending unchanged?",
+            "Which funnel metric first deteriorated versus the previous period?",
+            "Did average time on the website change?"
+          ],
+          "correct": 2,
+          "category": "funnel_diagnosis",
+          "explanation": "The first deteriorating metric locates the failure: reach down with stable rates indicates reach; CTR down after stable reach indicates click-through; completion down after stable earlier metrics indicates form abandonment."
+        },
+        {
+          "id": "harvard-q6",
+          "context": "DECISION ROOM ⚖️",
+          "question": "Rule: handle approved work with the nearest deadline first. Which project should be handled now?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "PROJECT A::High impact · due tomorrow · unapproved",
+              "PROJECT B::Medium impact · due today · approved",
+              "PROJECT C::High impact · due next month · approved"
+            ],
+            "columns": 3,
+            "ariaLabel": "Project A is high impact, due tomorrow and unapproved. Project B is medium impact, due today and approved. Project C is high impact, due next month and approved."
+          },
+          "answers": ["Project A", "Project B", "Project C", "Wait until all three are approved"],
+          "correct": 1,
+          "category": "prioritization",
+          "explanation": "Only approved projects are eligible under the rule. Of B and C, B has the nearest deadline, so B must be handled first."
+        },
+        {
+          "id": "harvard-q7",
+          "context": "GLOBAL CHALLENGE 🌎",
+          "question": "Which region has the highest scholarship budget per resident?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "NORTH::$6m / 2m residents",
+              "EAST::$4m / 1m residents",
+              "SOUTH::$9m / 3m residents",
+              "COMPARE::Budget ÷ residents"
+            ],
+            "columns": 1,
+            "ariaLabel": "North has six million dollars for two million residents. East has four million dollars for one million residents. South has nine million dollars for three million residents. Compare budget per resident."
+          },
+          "answers": ["East", "North", "South", "All are equal"],
+          "correct": 0,
+          "category": "normalized_comparison",
+          "explanation": "North and South each have 3 budget units per resident; East has 4. Normalizing by population makes East the highest."
+        },
+        {
+          "id": "harvard-q8",
+          "context": "Q8 — ADMISSIONS LEVEL · SPOT THE ASSUMPTION 👀",
+          "question": "Every admitted student was interviewed. Elena was interviewed, so Elena was admitted. What is the flaw?",
+          "answers": [
+            "It assumes no admitted student was interviewed",
+            "It compares percentages with raw totals",
+            "It ignores the order in which interviews occurred",
+            "It treats being interviewed as sufficient when it was stated only as necessary"
+          ],
+          "correct": 3,
+          "category": "formal_logic",
+          "explanation": "Admission implies an interview, but an interview does not imply admission. The argument reverses the conditional—also called affirming the consequent."
+        },
+        {
+          "id": "harvard-q9",
+          "context": "Q9 — FINAL SHORTLIST · ADMISSIONS COMMITTEE 🏛️",
+          "question": "Rule: test score at least 90 AND project rated Excellent. Who satisfies the rule?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "MAYA::Test 92 · Project Excellent · Interview Good",
+              "LEO::Test 87 · Project Excellent · Interview Excellent",
+              "NORA::Test 95 · Project Good · Interview Excellent"
+            ],
+            "columns": 3,
+            "ariaLabel": "Maya scored ninety-two with an Excellent project and Good interview. Leo scored eighty-seven with an Excellent project and Excellent interview. Nora scored ninety-five with a Good project and Excellent interview."
+          },
+          "answers": ["Maya", "Leo", "Nora", "Maya and Nora"],
+          "correct": 0,
+          "category": "rule_application",
+          "reasoningSteps": 2,
+          "explanation": "Maya meets both required conditions. Leo misses the score threshold, while Nora's project is not rated Excellent. Interview rating is not part of the rule."
+        },
+        {
+          "id": "harvard-q10",
+          "context": "Q10 — FINAL ASSESSMENT · THE HARVARD QUESTION 🔐",
+          "question": "Which proposal wins under the scoring rule?",
+          "presentation": "grid",
+          "visual": {
+            "items": [
+              "A · Impact 9 · Feasibility 6 · Evidence 8",
+              "B · Impact 8 · Feasibility 8 · Evidence 7",
+              "C · Impact 7 · Feasibility 9 · Evidence 9",
+              "RULE · 2×Impact + Feasibility + Evidence · Ties: higher evidence"
+            ],
+            "columns": 2,
+            "ariaLabel": "Proposal A has impact nine, feasibility six and evidence eight. B has impact eight, feasibility eight and evidence seven. C has impact seven, feasibility nine and evidence nine. Double impact, then add feasibility and evidence; ties use higher evidence."
+          },
+          "answers": ["Proposal A", "Proposal C", "Proposal B", "A and C remain tied"],
+          "correct": 1,
+          "category": "weighted_decision",
+          "reasoningSteps": 4,
+          "explanation": "A scores 32, B scores 31 and C scores 32. A and C tie, so the stated tie-break applies: C's evidence rating of 9 beats A's 8."
+        }
+      ]
+    }
+  ]
+}

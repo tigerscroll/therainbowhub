@@ -1,0 +1,72 @@
+{
+  "slug": "oxford",
+  "engine": {
+    "flow": "linear",
+    "localeParity": "independent",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-18",
+    "duration": "3 min",
+    "difficulty": "Expert",
+    "icon": "🎓"
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#e8dfcf",
+      "pageAlt": "#cfc1aa",
+      "surface": "#fbf5e8",
+      "surfaceRaised": "#fffaf0",
+      "text": "#14213b",
+      "muted": "#6f665c",
+      "primary": "#702638",
+      "primaryText": "#fffaf0",
+      "border": "#aa9478",
+      "correct": "#2f765d",
+      "incorrect": "#9d3d49"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "8px",
+      "buttonRadius": "7px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #101a31, #1e3154)",
+      "text": "#fff8e8",
+      "border": "#9e704d",
+      "shadow": "0 8px 28px rgba(12, 24, 45, .28)"
+    },
+    "artwork": {
+      "landing": "/quizzes/oxford/assets/thumbnail-960.webp",
+      "icon": "◈"
+    }
+  }
+}

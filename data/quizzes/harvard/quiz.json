@@ -1,0 +1,72 @@
+{
+  "slug": "harvard",
+  "engine": {
+    "flow": "linear",
+    "localeParity": "independent",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-18",
+    "duration": "3 min",
+    "difficulty": "Expert",
+    "icon": "⚖️"
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#eee8e2",
+      "pageAlt": "#d8cbc2",
+      "surface": "#fffdf9",
+      "surfaceRaised": "#f9f3ee",
+      "text": "#1e1b1b",
+      "muted": "#706767",
+      "primary": "#8f2035",
+      "primaryText": "#ffffff",
+      "border": "#b9a29a",
+      "correct": "#32735d",
+      "incorrect": "#a94351"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "14px",
+      "buttonRadius": "9px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #211b1c, #651829)",
+      "text": "#fffaf3",
+      "border": "#b78162",
+      "shadow": "0 8px 28px rgba(45, 16, 22, .28)"
+    },
+    "artwork": {
+      "landing": "/quizzes/harvard/assets/thumbnail-960.webp",
+      "icon": "◆"
+    }
+  }
+}

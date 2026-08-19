@@ -1,0 +1,72 @@
+{
+  "slug": "cambridge",
+  "engine": {
+    "flow": "linear",
+    "localeParity": "independent",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "correct-answer",
+    "checkpoint": "ai",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3
+    },
+    "advanceDelayMs": 450,
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-18",
+    "duration": "3 min",
+    "difficulty": "Expert",
+    "icon": "🔬"
+  },
+  "theme": {
+    "preset": "clean",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#e7f1f3",
+      "pageAlt": "#c9e2e8",
+      "surface": "#fffdf8",
+      "surfaceRaised": "#f4fafb",
+      "text": "#20323a",
+      "muted": "#667980",
+      "primary": "#276b78",
+      "primaryText": "#ffffff",
+      "border": "#9ebfc7",
+      "correct": "#2f7d69",
+      "incorrect": "#a94c5a"
+    },
+    "typography": {
+      "heading": "sans",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "18px",
+      "buttonRadius": "12px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #193943, #2f7480)",
+      "text": "#ffffff",
+      "border": "#9fd7e1",
+      "shadow": "0 8px 28px rgba(24, 66, 76, .24)"
+    },
+    "artwork": {
+      "landing": "/quizzes/cambridge/assets/thumbnail-960.webp",
+      "icon": "⌬"
+    }
+  }
+}

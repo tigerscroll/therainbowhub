@@ -1,0 +1,326 @@
+{
+  "title": "Only 7% Pass This Oxford Entrance Exam",
+  "eyebrow": "THE TUTORIAL CHALLENGE",
+  "summary": "Arguments, assumptions, patterns and intellectual traps build towards one final admissions-style reasoning problem.",
+  "progressLabel": "COMPLETE",
+  "landing": {
+    "intro": "Ten questions begin simply, then turn into the kind of reasoning where every word and assumption matters. Can you reach the 8/10 pass line?",
+    "badge": "10 QUESTIONS · 8 TO PASS",
+    "socialProof": "81,000+ people played this",
+    "cta": "Start Test",
+    "startPrompt": {
+      "eyebrow": "TUTORIAL READY",
+      "icon": "◈",
+      "title": "Your Oxford Challenge Is Ready",
+      "copy": "Watch a short ad to begin the test.",
+      "button": "OK"
+    }
+  },
+  "about": {
+    "body": "This independent ten-question entertainment challenge explores verbal analogies, patterns, formal deduction, numerical rules, information limits, causal arguments, spatial transformations and necessary-versus-sufficient reasoning. The questions become progressively more demanding, culminating in a two-step logic dossier.\n\nUse only the information shown. No specialist university knowledge is required, and speed never affects the result. Your final percentage reflects the number of questions answered correctly and highlights the reasoning areas that felt strongest in this attempt.",
+    "howToPlay": {
+      "title": "How to Play",
+      "steps": [
+        "Answer all ten questions using only the information supplied.",
+        "Check conditional wording carefully; tempting answers often assume more than the evidence supports.",
+        "Score at least eight out of ten to pass the entertainment challenge."
+      ]
+    },
+    "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+  },
+  "results": {
+    "name": "YOUR OXFORD REASONING SCORE",
+    "profiles": [
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "The Tutorial Standout",
+        "copy": "You challenged assumptions, followed conditional arguments and kept your precision through the hardest reasoning dossier. Your answers showed an unusually disciplined feel for what the evidence does—and does not—establish."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "The Oxford Natural",
+        "copy": "You crossed the pass line with strong critical reasoning. Most traps, transformations and hidden assumptions failed to pull you away from the conclusion that was actually supported."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "The Shortlisted Thinker",
+        "copy": "You handled a demanding mix of language, patterns and deduction with real control. One more carefully checked inference would have carried this attempt over the pass line."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "The Careful Reasoner",
+        "copy": "You found several of the challenge's deeper rules and showed good resistance to its most tempting assumptions. The answer review reveals where one extra logical step mattered."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "The Promising Applicant",
+        "copy": "You solved half or more of a deliberately varied reasoning set. Your strongest area provides a clear foundation for a sharper second attempt."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "The Curious Challenger",
+        "copy": "This attempt exposed how easily confident wording can conceal missing information. Review each explanation, name the exact rule, and the same traps become much easier to resist."
+      }
+    ],
+    "dimensions": [
+      {
+        "label": "Argument and inference",
+        "categories": ["deduction", "causal_reasoning", "formal_logic"]
+      },
+      {
+        "label": "Patterns and precision",
+        "categories": ["analogy", "visual_pattern", "number_rule", "spatial_reasoning"]
+      },
+      {
+        "label": "Assumptions and constraints",
+        "categories": ["information_limits", "necessary_sufficient", "ordering"]
+      }
+    ],
+    "score": {
+      "passed": "You passed the Oxford challenge!",
+      "finished": "Oxford challenge complete",
+      "correctLabel": "correct",
+      "strongest": "Strongest reasoning area",
+      "trickiest": "Trickiest reasoning area",
+      "bestRound": "Best challenge",
+      "showPercentage": true,
+      "showBestRound": false,
+      "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+    }
+  },
+  "checkpoint": {
+    "nextPrefix": "NEXT QUESTION",
+    "adNote": "Short ad first — then your Oxford reasoning score unlocks.",
+    "reveals": [
+      {
+        "badge": "ADMISSIONS REVIEW",
+        "icon": "◈",
+        "title": "Reasoning dossier checked",
+        "signal": "fixed",
+        "message": "All ten answers have been reviewed against the supplied evidence."
+      }
+    ],
+    "finalBadge": "TUTORIAL REVIEW",
+    "finalIcon": "◈",
+    "finalTitle": "Your result is ready",
+    "finalCopy": "One final short ad unlocks your Oxford reasoning score.",
+    "finalChecklist": [
+      "Argument and inference",
+      "Patterns and precision",
+      "Assumptions and constraints"
+    ],
+    "finalButton": "See My Results"
+  },
+  "stages": [
+    {
+      "title": "Oxford Tutorial Challenge",
+      "questions": [
+        {
+          "id": "oxford-q1",
+          "context": "FIRST QUESTION 🎓",
+          "question": "ARCHIVE is to DOCUMENTS as ANTHOLOGY is to…",
+          "answers": [
+            "Individual volumes",
+            "Selected works",
+            "Library shelves",
+            "Critical notes"
+          ],
+          "correct": 1,
+          "category": "analogy",
+          "explanation": "An archive is a collected body of documents; an anthology is a collected body of selected works. The relationship is collection to its contents."
+        },
+        {
+          "id": "oxford-q2",
+          "context": "SPOT THE RULE 🧩",
+          "question": "Which row completes the pattern?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["▲▲▲○", "▲▲○○", "▲○○○", "?"],
+            "columns": 4,
+            "separator": "→",
+            "ariaLabel": "Three triangles and one circle, then two triangles and two circles, then one triangle and three circles, then an unknown row."
+          },
+          "answers": [
+            "▲▲▲▲",
+            "▲○▲○",
+            "○○○▲",
+            "○○○○"
+          ],
+          "correct": 3,
+          "category": "visual_pattern",
+          "explanation": "Each step replaces one triangle with one circle while keeping four symbols. The missing row therefore contains four circles."
+        },
+        {
+          "id": "oxford-q3",
+          "context": "TUTORIAL TEST 📚",
+          "question": "Which conclusion must follow?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "RULE 1::All fellows attend seminars",
+              "RULE 2::No seminar attendee is a silent observer",
+              "FACT::Mira is a fellow"
+            ],
+            "columns": 3,
+            "ariaLabel": "All fellows attend seminars. No seminar attendee is a silent observer. Mira is a fellow."
+          },
+          "answers": [
+            "Mira sometimes misses seminars",
+            "Mira is a silent observer",
+            "Mira is not a silent observer",
+            "Every seminar attendee is a fellow"
+          ],
+          "correct": 2,
+          "category": "deduction",
+          "reasoningSteps": 2,
+          "explanation": "Mira is a fellow, so she attends seminars. No seminar attendee is a silent observer, so Mira cannot be a silent observer."
+        },
+        {
+          "id": "oxford-q4",
+          "context": "NUMBER CHALLENGE 🔢",
+          "question": "Which number comes next?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["3", "8", "18", "38", "?"],
+            "columns": 5,
+            "separator": "→",
+            "ariaLabel": "3, 8, 18, 38, unknown."
+          },
+          "answers": ["78", "76", "74", "80"],
+          "correct": 0,
+          "category": "number_rule",
+          "reasoningSteps": 2,
+          "explanation": "Each term is the previous term multiplied by two, then increased by two: 38 × 2 + 2 = 78."
+        },
+        {
+          "id": "oxford-q5",
+          "context": "THINK SIDEWAYS 💡",
+          "question": "How many students selected both tutorials and lectures?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "SURVEYED::100",
+              "TUTORIALS::60",
+              "LECTURES::55",
+              "NOTE::Both or neither allowed"
+            ],
+            "columns": 1,
+            "ariaLabel": "One hundred students were surveyed. Sixty selected tutorials, fifty-five selected lectures, and students could select either, both, or neither."
+          },
+          "answers": [
+            "Exactly 15",
+            "Exactly 55",
+            "Exactly 5",
+            "It cannot be determined"
+          ],
+          "correct": 3,
+          "category": "information_limits",
+          "reasoningSteps": 2,
+          "explanation": "Fifteen is only the minimum overlap. If some students selected neither, more than 15 could have selected both, so the exact overlap cannot be determined."
+        },
+        {
+          "id": "oxford-q6",
+          "context": "OXFORD INTERVIEW 🗣️",
+          "question": "Which question most directly challenges the claim that seminars caused the rise in grades?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "OBSERVATION::Grades rose after seminars began",
+              "CLAIM::The seminars caused the rise"
+            ],
+            "columns": 2,
+            "ariaLabel": "Grades rose after seminars began. The claim is that the seminars caused the rise."
+          },
+          "answers": [
+            "Did students enjoy discussing the seminar topics?",
+            "Did cohort ability or assessment difficulty also change?",
+            "Were the seminars compulsory for every student?",
+            "Were final grades reported as numbers or letters?"
+          ],
+          "correct": 1,
+          "category": "causal_reasoning",
+          "explanation": "A change in cohort ability or assessment difficulty could independently raise grades. That directly tests whether the seminars, rather than another changed factor, caused the improvement."
+        },
+        {
+          "id": "oxford-q7",
+          "context": "DIAGRAM TEST ◈",
+          "question": "An arrow points northeast. Rotate it 90° clockwise, then reflect it across a vertical mirror line. Where does it point?",
+          "presentation": "spatial",
+          "visual": {
+            "items": ["↗", "ROTATE 90° CLOCKWISE", "VERTICAL MIRROR"],
+            "columns": 3,
+            "separator": "→",
+            "ariaLabel": "A northeast arrow is rotated ninety degrees clockwise and then reflected across a vertical mirror line."
+          },
+          "answers": ["Northwest", "Southeast", "Southwest", "Northeast"],
+          "correct": 2,
+          "category": "spatial_reasoning",
+          "reasoningSteps": 2,
+          "explanation": "The clockwise rotation changes northeast to southeast. Reflecting southeast across a vertical line swaps east for west, producing southwest."
+        },
+        {
+          "id": "oxford-q8",
+          "context": "Q8 — ADMISSIONS LEVEL · THE TRAP QUESTION 👀",
+          "question": "A rule says: ‘No candidate without a blue badge may enter.’ Lena has a blue badge. What follows?",
+          "answers": [
+            "We cannot tell whether Lena meets every entry condition",
+            "Lena is permitted to enter",
+            "Lena is required to enter",
+            "The badge rule has been broken"
+          ],
+          "correct": 0,
+          "category": "necessary_sufficient",
+          "explanation": "The rule makes a blue badge necessary for entry, but it never says the badge is sufficient. Lena may still need to satisfy other conditions."
+        },
+        {
+          "id": "oxford-q9",
+          "context": "Q9 — FINAL SHORTLIST · ORDERING DEDUCTION 🏛️",
+          "question": "Amina, Ben and Cleo are interviewed at 9, 10 and 11. Amina is not first. Ben is before Cleo. Cleo is not at 11. Who must be interviewed at 10?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["Ben before Cleo", "Cleo not at 11", "Amina not first"],
+            "columns": 3,
+            "separator": "·",
+            "ariaLabel": "Ben is before Cleo. Cleo is not interviewed at eleven. Amina is not interviewed first."
+          },
+          "answers": ["Amina", "Cleo", "Ben", "It cannot be determined"],
+          "correct": 1,
+          "category": "ordering",
+          "reasoningSteps": 3,
+          "explanation": "Cleo must be after Ben but cannot be at 11. The only possibility is Ben at 9, Cleo at 10 and Amina at 11."
+        },
+        {
+          "id": "oxford-q10",
+          "context": "Q10 — FINAL ASSESSMENT · THE ADMISSIONS QUESTION 🔐",
+          "question": "Priya was shortlisted but did not receive an interview. Which conclusion must be true?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "RULE 1::Shortlisted → passed Logic",
+              "RULE 2::Passed Logic + submitted essay → interview",
+              "PRIYA::Shortlisted · no interview"
+            ],
+            "columns": 3,
+            "ariaLabel": "Every shortlisted candidate passed Logic. Anyone who passed Logic and submitted the essay received an interview. Priya was shortlisted but did not receive an interview."
+          },
+          "answers": [
+            "She passed Logic and did not submit the essay",
+            "She failed Logic and submitted the essay",
+            "She passed Logic and submitted the essay late",
+            "She was interviewed but not shortlisted"
+          ],
+          "correct": 0,
+          "category": "formal_logic",
+          "reasoningSteps": 3,
+          "explanation": "Shortlisting guarantees that Priya passed Logic. If she had also submitted the essay, Rule 2 says she would have received an interview. Because she did not, the essay was not submitted."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "title": "Only 7% Pass This Cambridge Entrance Exam",
+  "eyebrow": "THE SYSTEMS LAB",
+  "summary": "Patterns, evidence, mechanisms and precise data build towards one two-stage instrument problem.",
+  "progressLabel": "COMPLETE",
+  "landing": {
+    "intro": "Discover the rule, test the evidence and work out how each system behaves. Eight correct answers are needed to pass.",
+    "badge": "10 QUESTIONS · 8 TO PASS",
+    "socialProof": "81,000+ people played this",
+    "cta": "Start Test",
+    "startPrompt": {
+      "eyebrow": "LAB READY",
+      "icon": "⌬",
+      "title": "Your Cambridge Challenge Is Ready",
+      "copy": "Watch a short ad to begin the test.",
+      "button": "OK"
+    }
+  },
+  "about": {
+    "body": "This independent ten-question entertainment challenge moves through number systems, classification, ordering, evidence interpretation, symbolic mathematics, mechanisms, spatial transformations, experimental control and applied data. The final instrument problem requires two different calculations.\n\nEverything needed appears on screen. No specialist science or university knowledge is required, and speed never affects the result. Your final percentage reflects the number of supported answers selected in this attempt.",
+    "howToPlay": {
+      "title": "How to Play",
+      "steps": [
+        "Inspect every pattern, table and mechanism before choosing one answer.",
+        "Use only the supplied evidence; do not import assumptions that the experiment does not establish.",
+        "Score at least eight out of ten to pass the entertainment challenge."
+      ]
+    },
+    "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+  },
+  "results": {
+    "name": "YOUR CAMBRIDGE SYSTEMS SCORE",
+    "profiles": [
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "The Systems Standout",
+        "copy": "You moved confidently between patterns, evidence, mechanisms and calibrated data. Even when the challenge required two different rules, your method stayed precise."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "The Cambridge Natural",
+        "copy": "You crossed the pass line by finding the structure behind a broad range of problems. Your strongest answers combined careful observation with an efficient method."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "The Methodical Candidate",
+        "copy": "You handled most of the systems lab with disciplined reasoning. One more checked pattern or controlled variable would have taken this attempt over the pass line."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "The Emerging Analyst",
+        "copy": "You identified several important rules and constraints across a deliberately varied set. The explanations show where a second calculation or comparison changed the result."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "The Promising Solver",
+        "copy": "You solved at least half of an Expert-labelled systems challenge. Your strongest dimension points to the approach that already feels most natural."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "The Curious Experimenter",
+        "copy": "The lab revealed where fast pattern guesses need a more explicit method. Work through each supplied rule one step at a time and the hidden system becomes much clearer."
+      }
+    ],
+    "dimensions": [
+      {
+        "label": "Patterns and mathematics",
+        "categories": ["number_pattern", "classification", "symbolic_math"]
+      },
+      {
+        "label": "Evidence and systems",
+        "categories": ["evidence", "mechanism", "experimental_control"]
+      },
+      {
+        "label": "Space and applied data",
+        "categories": ["ordering", "spatial", "data_constraints", "instrument_logic"]
+      }
+    ],
+    "score": {
+      "passed": "You passed the Cambridge challenge!",
+      "finished": "Cambridge challenge complete",
+      "correctLabel": "correct",
+      "strongest": "Strongest systems area",
+      "trickiest": "Trickiest systems area",
+      "bestRound": "Best challenge",
+      "showPercentage": true,
+      "showBestRound": false,
+      "disclaimer": "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard."
+    }
+  },
+  "checkpoint": {
+    "nextPrefix": "NEXT QUESTION",
+    "adNote": "Short ad first — then your Cambridge systems score unlocks.",
+    "reveals": [
+      {
+        "badge": "SYSTEMS REVIEW",
+        "icon": "⌬",
+        "title": "Instrument report calculated",
+        "signal": "fixed",
+        "message": "All ten patterns, experiments and calculations have been checked."
+      }
+    ],
+    "finalBadge": "LAB REPORT",
+    "finalIcon": "⌬",
+    "finalTitle": "Your result is ready",
+    "finalCopy": "One final short ad unlocks your Cambridge systems score.",
+    "finalChecklist": [
+      "Patterns and mathematics",
+      "Evidence and systems",
+      "Space and applied data"
+    ],
+    "finalButton": "See My Results"
+  },
+  "stages": [
+    {
+      "title": "Cambridge Systems Challenge",
+      "questions": [
+        {
+          "id": "cambridge-q1",
+          "context": "THE FIRST PATTERN 🔢",
+          "question": "Which number comes next?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["2", "6", "12", "20", "30", "?"],
+            "columns": 6,
+            "separator": "→",
+            "ariaLabel": "2, 6, 12, 20, 30, unknown."
+          },
+          "answers": ["38", "40", "44", "42"],
+          "correct": 3,
+          "category": "number_pattern",
+          "explanation": "The differences are 4, 6, 8 and 10. The next difference is 12, so 30 + 12 = 42."
+        },
+        {
+          "id": "cambridge-q2",
+          "context": "FIND THE ODD ONE 🧩",
+          "question": "Which number does not belong with the other three?",
+          "presentation": "grid",
+          "visual": {
+            "items": ["16", "27", "64", "125"],
+            "columns": 2,
+            "ariaLabel": "The numbers 16, 27, 64 and 125."
+          },
+          "answers": ["16", "27", "64", "125"],
+          "correct": 0,
+          "category": "classification",
+          "explanation": "27, 64 and 125 are consecutive cubes: 3 cubed, 4 cubed and 5 cubed. Sixteen is not part of that sequence."
+        },
+        {
+          "id": "cambridge-q3",
+          "context": "SUPERVISION PROBLEM 📖",
+          "question": "Logic, Physics and History sit left to right. Physics is not at either end, and History is to the right of Physics. What is the order?",
+          "presentation": "code",
+          "visual": {
+            "items": ["LEFT::?", "MIDDLE::?", "RIGHT::?"],
+            "columns": 3,
+            "ariaLabel": "Three positions from left to right. Physics is not at either end, and History is to the right of Physics."
+          },
+          "answers": [
+            "History, Physics, Logic",
+            "Logic, Physics, History",
+            "Physics, Logic, History",
+            "Logic, History, Physics"
+          ],
+          "correct": 1,
+          "category": "ordering",
+          "explanation": "Physics must occupy the middle. History must then be on its right, leaving Logic on the left."
+        },
+        {
+          "id": "cambridge-q4",
+          "context": "SCIENCE LAB 🔬",
+          "question": "Both plants received equal water. Which conclusion is supported by this result?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "PLANT A::Light · equal water · 14 cm",
+              "PLANT B::Darkness · equal water · 6 cm"
+            ],
+            "columns": 2,
+            "ariaLabel": "Plant A received light and equal water and grew to fourteen centimetres. Plant B was in darkness with equal water and grew to six centimetres."
+          },
+          "answers": [
+            "Light always makes every plant grow to 14 cm",
+            "Water had no effect on either plant",
+            "Light was associated with greater growth under these conditions",
+            "Darkness permanently stops all plant growth"
+          ],
+          "correct": 2,
+          "category": "evidence",
+          "explanation": "The experiment supports only the limited comparison observed: with equal water in these conditions, the plant in light grew more. It does not establish universal outcomes."
+        },
+        {
+          "id": "cambridge-q5",
+          "context": "HALFWAY EQUATION ✏️",
+          "question": "What is ■ + ● × ▲?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["■ + ■ + ■ = 18", "■ + ● = 10", "● + ▲ + ▲ = 10"],
+            "columns": 3,
+            "separator": "•",
+            "ariaLabel": "Three squares equal eighteen. A square plus a circle equals ten. A circle plus two triangles equals ten."
+          },
+          "answers": ["30", "24", "21", "18"],
+          "correct": 3,
+          "category": "symbolic_math",
+          "reasoningSteps": 3,
+          "explanation": "The square is 6, the circle is 4 and the triangle is 3. Apply multiplication first: 6 + 4 × 3 = 18."
+        },
+        {
+          "id": "cambridge-q6",
+          "context": "WHAT HAPPENS NEXT? ⚙️",
+          "question": "Gear A turns clockwise and meshes with B, which meshes with C. Which way does C turn?",
+          "presentation": "spatial",
+          "visual": {
+            "items": ["A ↻", "⚙", "B", "⚙", "C ?"],
+            "columns": 5,
+            "separator": "↔",
+            "ariaLabel": "Gear A turns clockwise and meshes with gear B, which meshes with gear C."
+          },
+          "icons": ["↻", "↺", "⇄", "—"],
+          "answers": ["Clockwise", "Anticlockwise", "It alternates", "It does not move"],
+          "correct": 0,
+          "category": "mechanism",
+          "reasoningSteps": 2,
+          "explanation": "Each mesh reverses direction. B turns anticlockwise, so C reverses again and turns clockwise like A."
+        },
+        {
+          "id": "cambridge-q7",
+          "context": "SPATIAL SHIFT ◈",
+          "question": "Rotate the marker 90° clockwise around the centre of the 3×3 grid, then move it down one cell. Where does it finish?",
+          "presentation": "grid",
+          "visual": {
+            "items": ["·", "●", "·", "·", "+", "·", "·", "·", "·"],
+            "columns": 3,
+            "ariaLabel": "A three by three grid has a marker in the top-middle cell and a centre point in the middle cell. Rotate the marker ninety degrees clockwise around the centre, then move it down one cell."
+          },
+          "answers": ["Top-right", "Middle-right", "Bottom-right", "Bottom-middle"],
+          "correct": 2,
+          "category": "spatial",
+          "reasoningSteps": 2,
+          "explanation": "Rotating the top-middle cell around the grid's centre places the marker at middle-right. Moving down one cell finishes at bottom-right."
+        },
+        {
+          "id": "cambridge-q8",
+          "context": "Q8 — ADMISSIONS LEVEL · THE HIDDEN VARIABLE 👀",
+          "question": "A researcher claims fertiliser caused the difference. Which uncontrolled variable prevents that conclusion?",
+          "presentation": "grid",
+          "visual": {
+            "items": [
+              "PLANT A · Fertiliser",
+              "PLANT A · 8 hours of light",
+              "PLANT B · No fertiliser",
+              "PLANT B · 3 hours of light"
+            ],
+            "columns": 2,
+            "ariaLabel": "Plant A received fertiliser and eight hours of light. Plant B received no fertiliser and three hours of light."
+          },
+          "answers": ["The plant labels", "The amount of light", "The order of observation", "The unit used for height"],
+          "correct": 1,
+          "category": "experimental_control",
+          "explanation": "The plants received different amounts of light as well as different fertiliser treatments. Light could therefore explain some or all of the observed difference."
+        },
+        {
+          "id": "cambridge-q9",
+          "context": "Q9 — FINAL SHORTLIST · CAMBRIDGE CHALLENGE 🧠",
+          "question": "Which sample meets every rule?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "RULE::Density 3 · below 50°C · below 20 g",
+              "SAMPLE A::18 g · 6 mL · 40°C",
+              "SAMPLE B::12 g · 4 mL · 55°C",
+              "SAMPLE C::20 g · 5 mL · 45°C"
+            ],
+            "columns": 1,
+            "ariaLabel": "The rule requires density exactly three grams per millilitre, temperature below fifty degrees and mass below twenty grams. Sample A has mass eighteen grams, volume six millilitres and temperature forty degrees. Sample B has mass twelve grams, volume four millilitres and temperature fifty-five degrees. Sample C has mass twenty grams, volume five millilitres and temperature forty-five degrees."
+          },
+          "answers": ["Sample A", "Sample B", "Sample C", "No sample"],
+          "correct": 0,
+          "category": "data_constraints",
+          "reasoningSteps": 3,
+          "explanation": "A has density 18 ÷ 6 = 3 g/mL, is below 50°C and has mass below 20 g. B fails the temperature rule; C has density 4 g/mL and is not below 20 g."
+        },
+        {
+          "id": "cambridge-q10",
+          "context": "Q10 — FINAL ASSESSMENT · THE FINAL PROBLEM 🔐",
+          "question": "What value will the calibrated display show next?",
+          "presentation": "sequence",
+          "visual": {
+            "items": ["RAW: 4", "10", "22", "46", "?", "DISPLAY = (RAW − 14) ÷ 4"],
+            "columns": 6,
+            "separator": "→",
+            "ariaLabel": "Raw readings are four, ten, twenty-two, forty-six and unknown. Each raw reading is the previous value times two plus two. The display equals raw minus fourteen, divided by four."
+          },
+          "answers": ["18", "20", "22", "24"],
+          "correct": 1,
+          "category": "instrument_logic",
+          "reasoningSteps": 3,
+          "explanation": "The raw rule is ×2 + 2, so 46 becomes 94. Apply the calibration separately: (94 − 14) ÷ 4 = 80 ÷ 4 = 20."
+        }
+      ]
+    }
+  ]
+}

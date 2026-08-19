@@ -1,0 +1,143 @@
+[data-quiz-theme="harvard"] {
+  --harvard-black: #1e1b1b;
+  --harvard-crimson: #8f2035;
+  --harvard-crimson-dark: #641426;
+  --harvard-warm: #fffaf3;
+  --harvard-paper: #fffdf9;
+  --harvard-brass: #b58b63;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(143,32,53,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143,32,53,.035) 1px, transparent 1px),
+    radial-gradient(circle at 85% 3%, rgba(143,32,53,.18), transparent 27%),
+    linear-gradient(145deg, #f3eee9, #d8cbc2);
+  background-size: 38px 38px, 38px 38px, auto, auto;
+  color: var(--harvard-black);
+}
+
+[data-quiz-theme="harvard"] > * { position: relative; z-index: 1; }
+
+[data-quiz-theme="harvard"] .quiz-engine__landing {
+  position: relative;
+  grid-template-columns: 1fr;
+  gap: clamp(30px, 5vw, 58px);
+  overflow: hidden;
+  padding: clamp(34px, 5vw, 60px);
+  border: 1px solid rgba(30,27,27,.28);
+  border-radius: 15px;
+  background: var(--harvard-paper);
+  box-shadow: 0 32px 75px rgba(55,28,32,.18), inset 0 0 0 7px rgba(143,32,53,.035);
+}
+
+[data-quiz-theme="harvard"] .quiz-engine__landing::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  content: "";
+  background: linear-gradient(90deg, var(--harvard-crimson) 0 72%, var(--harvard-black) 72%);
+}
+
+[data-quiz-theme="harvard"] .quiz-engine__landing-copy { display: grid; width: 100%; max-width: 760px; justify-items: center; align-content: center; margin: 0 auto; text-align: center; }
+[data-quiz-theme="harvard"] .quiz-engine__landing-badge { display: grid; width: 68px; height: 68px; place-items: center; border: 1px solid var(--harvard-brass); border-radius: 10px; background: #fff7ec; box-shadow: inset 0 0 0 5px #f0dfcf, 0 12px 26px rgba(55,28,32,.13); }
+[data-quiz-theme="harvard"] .quiz-engine__landing-badge span { font-size: 30px; }
+[data-quiz-theme="harvard"] .quiz-engine__eyebrow { color: var(--harvard-crimson); font-weight: 950; letter-spacing: .16em; }
+[data-quiz-theme="harvard"] .quiz-engine__landing h1 { color: var(--harvard-black); font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 5.4vw, 67px); line-height: .95; letter-spacing: -.05em; text-wrap: balance; }
+[data-quiz-theme="harvard"] .quiz-engine__lede { max-width: 650px; color: #665d5d; font-size: 17px; line-height: 1.5; }
+[data-quiz-theme="harvard"] .quiz-engine__quick-start { max-width: 650px; color: #554d4d; font-size: 16px; line-height: 1.5; }
+[data-quiz-theme="harvard"] .quiz-engine__social { margin-inline: auto; border: 1px solid rgba(143,32,53,.18); border-radius: 7px; background: #fff8f2; box-shadow: 0 8px 20px rgba(55,28,32,.08); }
+[data-quiz-theme="harvard"] .quiz-engine__social-text strong { color: var(--harvard-crimson); }
+[data-quiz-theme="harvard"] .quiz-engine__landing-art { display: none; }
+[data-quiz-theme="harvard"] .quiz-engine__landing-art img { width: 100%; height: 100%; min-height: 390px; object-fit: cover; }
+
+[data-quiz-theme="harvard"] .quiz-engine__primary { border: 1px solid #52101e; border-radius: 9px; background: linear-gradient(135deg, #a32a42, #7c1a2e); color: #fff; box-shadow: 0 6px 0 #54101f, 0 15px 28px rgba(104,22,39,.22); }
+[data-quiz-theme="harvard"] .quiz-engine__landing .quiz-engine__primary { width: min(100%, 390px); min-height: 62px; justify-content: center; }
+[data-quiz-theme="harvard"] .quiz-engine__primary-icon { display: inline; color: #f0cfa6; }
+[data-quiz-theme="harvard"] .quiz-engine__ad-note span { border-color: #34765f; color: #34765f; }
+
+[data-quiz-theme="harvard"] .quiz-engine__question-shell { width: min(100%, 810px); }
+[data-quiz-theme="harvard"] .quiz-engine__progress-head { color: #726969; font-weight: 850; }
+[data-quiz-theme="harvard"] .quiz-engine__progress-head strong { color: var(--harvard-crimson); }
+[data-quiz-theme="harvard"] .quiz-engine__progress { height: 9px; border: 1px solid rgba(30,27,27,.25); background: rgba(255,255,255,.68); }
+[data-quiz-theme="harvard"] .quiz-engine__progress i { background: linear-gradient(90deg, var(--harvard-crimson), #c15163); }
+
+[data-quiz-theme="harvard"] .quiz-engine__card,
+[data-quiz-theme="harvard"] .quiz-engine__about {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(30,27,27,.28);
+  border-radius: 14px;
+  background: var(--harvard-paper);
+  color: var(--harvard-black);
+  box-shadow: 0 27px 62px rgba(55,28,32,.16);
+}
+
+[data-quiz-theme="harvard"] .quiz-engine__question::before,
+[data-quiz-theme="harvard"] .quiz-engine__checkpoint::before,
+[data-quiz-theme="harvard"] .quiz-engine__results::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  content: "";
+  background: linear-gradient(90deg, var(--harvard-crimson) 0 68%, var(--harvard-black) 68%);
+}
+
+[data-quiz-theme="harvard"] .quiz-engine__question-context { width: fit-content; margin-inline: auto; padding: 6px 11px; border: 1px solid #d8b8b0; border-radius: 4px; background: #f9ebe7; color: var(--harvard-crimson); font-size: 11px; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
+[data-quiz-theme="harvard"] .quiz-engine__question h1 { max-width: 710px; margin: 0 auto 28px; color: var(--harvard-black); font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4.5vw, 43px); line-height: 1.08; letter-spacing: -.032em; text-wrap: balance; }
+[data-quiz-theme="harvard"] .quiz-engine__visual { border: 1px solid #d7c7c1; border-radius: 9px; background: #fbf6f2; box-shadow: inset 0 1px #fff; }
+[data-quiz-theme="harvard"] .quiz-engine__visual span { color: var(--harvard-black); }
+[data-quiz-theme="harvard"] .quiz-engine__visual i { color: var(--harvard-crimson); }
+[data-quiz-theme="harvard"] .quiz-engine__visual--grid span,
+[data-quiz-theme="harvard"] .quiz-engine__visual--code span { border-color: #ddccc5; border-radius: 6px; background: rgba(255,255,255,.82); }
+[data-quiz-theme="harvard"] .quiz-engine__visual--code b { color: var(--harvard-crimson); }
+[data-quiz-theme="harvard"] .quiz-engine__answer { min-height: 66px; border: 1px solid #d8c8c2; border-radius: 8px; background: #fff; color: var(--harvard-black); box-shadow: 0 7px 17px rgba(55,28,32,.07); }
+[data-quiz-theme="harvard"] .quiz-engine__answer > span:first-child { border-radius: 4px; background: var(--harvard-black); color: #fff; }
+[data-quiz-theme="harvard"] .quiz-engine__answer[data-selected="true"] { border-color: var(--harvard-crimson); background: #f9e9e7; box-shadow: inset 0 0 0 2px rgba(143,32,53,.11); }
+
+/* Keep committee evidence editorial and airy, not spreadsheet-like. */
+[data-quiz-theme="harvard"] .quiz-engine__visual { padding: 6px; border: 0; background: transparent; box-shadow: none; }
+[data-quiz-theme="harvard"] .quiz-engine__visual--key-value-board { padding: 2px 8px; border-block: 1px solid rgba(143,32,53,.14); }
+[data-quiz-theme="harvard"] .quiz-engine__visual--key-value-board > span { border: 0; border-bottom: 1px solid rgba(30,27,27,.1); border-radius: 0; background: transparent; }
+[data-quiz-theme="harvard"] .quiz-engine__visual--key-value-board > span:last-child { border-bottom: 0; }
+[data-quiz-theme="harvard"] .quiz-engine__visual--grid > span > strong { border-color: rgba(30,27,27,.13); background: rgba(255,255,255,.62); box-shadow: none; }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"] .quiz-engine__visual--grid { grid-template-columns: 1fr; gap: 0; padding-inline: 8px; border-block: 1px solid rgba(143,32,53,.14); }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"] .quiz-engine__visual--grid > span > strong { justify-items: start; min-height: 43px; padding: 8px 4px; border: 0; border-bottom: 1px solid rgba(30,27,27,.1); border-radius: 0; background: transparent; font-size: 15px; text-align: left; }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"] .quiz-engine__visual--grid > span:last-child > strong { border-bottom: 0; }
+
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q8"] { border-color: var(--harvard-brass); }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q9"] { border-width: 2px; border-color: var(--harvard-crimson); }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"] { border-width: 2px; border-color: var(--harvard-black); background: radial-gradient(circle at 50% 0, rgba(143,32,53,.13), transparent 38%), var(--harvard-paper); box-shadow: 0 36px 82px rgba(55,28,32,.24); }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"] .quiz-engine__visual { border: 0; border-block: 1px solid rgba(143,32,53,.16); background: transparent; box-shadow: none; }
+[data-quiz-theme="harvard"] .quiz-engine__question[data-question-id="harvard-q10"]::after { display: grid; width: 50px; height: 50px; place-items: center; margin: 20px auto 0; border: 1px solid var(--harvard-brass); border-radius: 10px; content: "🔐"; background: var(--harvard-black); font-size: 20px; }
+
+[data-quiz-theme="harvard"] .quiz-engine__checkpoint-icon,
+[data-quiz-theme="harvard"] .quiz-engine__result-icon { border: 1px solid var(--harvard-brass); border-radius: 12px; background: var(--harvard-black); color: #efcea5; }
+[data-quiz-theme="harvard"] .quiz-engine__checkpoint h2,
+[data-quiz-theme="harvard"] .quiz-engine__results h2,
+[data-quiz-theme="harvard"] .quiz-engine__about h2 { color: var(--harvard-black); font-family: Georgia, "Times New Roman", serif; }
+[data-quiz-theme="harvard"] .quiz-engine__result-percentage strong { color: var(--harvard-crimson); text-shadow: 0 8px 24px rgba(143,32,53,.13); }
+[data-quiz-theme="harvard"] .quiz-engine__result-profile { color: var(--harvard-crimson); font-family: Georgia, "Times New Roman", serif; }
+[data-quiz-theme="harvard"] .quiz-engine__dimension b { background: linear-gradient(90deg, var(--harvard-crimson), #c15b6c); }
+[data-quiz-theme="harvard"] .quiz-engine__disclaimer { border-color: #d2aaa4; background: #faece9; }
+
+@media (hover: hover) and (pointer: fine) {
+  [data-quiz-theme="harvard"] .quiz-engine__answer:hover:not(:disabled) { border-color: var(--harvard-crimson); background: #fff7f5; transform: translateY(-2px); box-shadow: 0 11px 24px rgba(55,28,32,.11); }
+}
+
+@media (max-width: 840px) {
+  [data-quiz-theme="harvard"] .quiz-engine__landing { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="harvard"] .quiz-engine__landing { padding: 28px 18px 24px; border-radius: 11px; }
+  [data-quiz-theme="harvard"] .quiz-engine__landing h1 { font-size: clamp(38px, 11.5vw, 51px); }
+  [data-quiz-theme="harvard"] .quiz-engine__visual--key-value-board { padding-inline: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="harvard"] .quiz-engine__answer { transform: none; }
+}
