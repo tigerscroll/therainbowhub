@@ -399,7 +399,7 @@ for (const folder of folders) {
         cta: "Start Test",
         ids: ["vision-r1q1", "vision-r3q4", "vision-r4q3", "vision-r5q1", "vision-r9q5", "vision-r7q2", "vision-r9q1", "vision-r8q3", "vision-r10q2", "vision-r10q4"],
         categories: { colour_contrast: 2, detail_detection: 2, pattern_tracking: 2, spatial_orientation: 2, visual_memory: 1, attention_control: 1 },
-        positions: [3, 3, 2, 2],
+        positions: [3, 2, 3, 2],
         dimensionLabels: ["Colour and memory", "Detail and attention", "Patterns and space"],
         presentations: 5,
       },
@@ -487,7 +487,26 @@ for (const folder of folders) {
     }
     if (folder.name === "vision") {
       const memoryCue = sourceQuestions.find((question) => question.id === "vision-r9q5")?.study;
-      fail(memoryCue?.mode === "automatic" && memoryCue?.durationMs === 3500 && memoryCue?.items?.length === 5, "vision/en.json: the visual-memory cue must remain fair, automatic and five items long.");
+      const memoryQuestion = sourceQuestions.find((question) => question.id === "vision-r9q5");
+      const halfCircleQuestion = sourceQuestions.find((question) => question.id === "vision-r3q4");
+      const paperFoldQuestion = sourceQuestions.find((question) => question.id === "vision-r10q4");
+      fail(
+        memoryCue?.mode === "automatic"
+        && memoryCue?.durationMs === 3500
+        && JSON.stringify(memoryCue.items) === JSON.stringify(["blue-circle", "gold-triangle", "coral-square", "green-diamond", "violet-star"])
+        && memoryCue.ariaLabel === "Blue circle, gold triangle, coral square, green diamond, violet star",
+        "vision/en.json: the visual-memory cue must use five precise CSS shapes with an accessible label.",
+      );
+      fail(JSON.stringify(memoryQuestion?.icons) === JSON.stringify(["violet-star", "coral-square", "blue-circle", "green-diamond"]), "vision/en.json: visual-memory answer imagery must use the approved CSS shapes.");
+      fail(JSON.stringify(halfCircleQuestion?.visual?.items) === JSON.stringify(["left-half", "left-half", "right-half", "left-half"]), "vision/en.json: half-circle comparison must use device-stable CSS geometry.");
+      fail(JSON.stringify(halfCircleQuestion?.answers) === JSON.stringify(["First", "Second", "Third", "Fourth"]) && halfCircleQuestion?.correct === 2, "vision/en.json: half-circle answer positions must run A–D in natural order with Third mapped to C.");
+      fail(
+        JSON.stringify(paperFoldQuestion?.answers) === JSON.stringify(["1", "2", "4", "8"])
+        && paperFoldQuestion?.correct === 2
+        && paperFoldQuestion?.reasoningSteps === 2
+        && paperFoldQuestion?.image?.src === "/quizzes/vision/assets/icons/paper-fold-punch.svg",
+        "vision/en.json: the paper-fold finale must use the illustrated two-fold puzzle with C — 4 mapped correctly.",
+      );
       fail(sourceQuestions.some((question) => question.visual?.ariaLabel === "Simultaneous contrast panels"), "vision/en.json: the genuine simultaneous-contrast interaction is required.");
     }
     if (["nursing", "midwifery"].includes(folder.name)) {

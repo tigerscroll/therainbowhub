@@ -288,6 +288,48 @@
 
 [data-quiz-theme="vision"] .quiz-engine__visual--code > span > strong { color: #183f67; }
 
+/* Rotation puzzle: numbered reading order without competing connector arrows. */
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span {
+  min-width: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong {
+  position: relative;
+  display: grid;
+  min-height: 92px;
+  place-items: center;
+  padding: 22px 14px 14px;
+  font-size: 38px;
+  line-height: 1;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong::before {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border-radius: 50%;
+  background: #dceaf1;
+  color: var(--vision-navy);
+  content: counter(vision-rotation-step);
+  counter-increment: vision-rotation-step;
+  font: 800 12px/1 system-ui, sans-serif;
+  letter-spacing: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+  counter-reset: vision-rotation-step;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span:last-child > strong {
+  border: 2px dashed rgba(49,185,208,.58);
+  background: rgba(223,245,247,.72);
+}
+
 [data-quiz-theme="vision"] .quiz-engine__answer {
   border-color: rgba(16,47,85,.23);
   background: rgba(255,255,255,.91);
@@ -337,6 +379,15 @@
   [data-quiz-theme="vision"] .quiz-engine__landing .quiz-engine__primary { width: min(100%, 350px); min-height: 58px; font-size: 18px; }
   [data-quiz-theme="vision"] .quiz-engine__visual--spatial > span > strong,
   [data-quiz-theme="vision"] .quiz-engine__visual--grid > span > strong { font-size: clamp(24px, 8vw, 35px); }
+  [data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+    gap: 9px;
+    padding: 10px;
+  }
+  [data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong {
+    min-height: 78px;
+    padding-top: 20px;
+    font-size: 32px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -412,4 +463,91 @@
 }
 [data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four close blue swatches with a subtly different bottom-right tile"] > span:nth-child(4) > strong {
   background: #3d69ad;
+}
+
+/* Device-stable half-circle comparison: no font glyph geometry. */
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span > strong {
+  min-height: 76px;
+  color: transparent;
+  font-size: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span > strong::before {
+  justify-self: center;
+  align-self: center;
+  width: 42px;
+  aspect-ratio: 1;
+  border: 3px solid var(--vision-navy);
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--vision-navy) 0 50%, #fffdf7 50% 100%);
+  box-shadow: 0 4px 10px rgba(10,32,57,.1);
+  content: "";
+}
+[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span:nth-child(3) > strong::before {
+  background: linear-gradient(90deg, #fffdf7 0 50%, var(--vision-navy) 50% 100%);
+}
+
+/* Five precise memory shapes shared by the study cue and answer cards. */
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong {
+  min-height: 76px;
+  padding: 7px;
+  color: transparent;
+  font-size: 0;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong::before,
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer-icon::before {
+  display: block;
+  width: 38px;
+  height: 38px;
+  margin: auto;
+  content: "";
+  filter: drop-shadow(0 3px 4px rgba(10,32,57,.14));
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong:nth-child(1)::before,
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer:nth-child(3) .quiz-engine__answer-icon::before {
+  border-radius: 50%;
+  background: #2e79c7;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong:nth-child(2)::before {
+  background: #e0ad31;
+  clip-path: polygon(50% 3%, 97% 94%, 3% 94%);
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong:nth-child(3)::before,
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer:nth-child(2) .quiz-engine__answer-icon::before {
+  border-radius: 5px;
+  background: #dc675d;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong:nth-child(4)::before,
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer:nth-child(4) .quiz-engine__answer-icon::before {
+  background: #3f9b6a;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__study-items strong:nth-child(5)::before,
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer:nth-child(1) .quiz-engine__answer-icon::before {
+  background: #8056b5;
+  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 79% 94%, 50% 71%, 21% 94%, 32% 56%, 2% 35%, 39% 35%);
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answer-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin-inline: auto;
+  place-items: center;
+  border-radius: 0;
+  background: transparent !important;
+  color: transparent;
+  font-size: 0;
+  box-shadow: none;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answers--icons .quiz-engine__answer {
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q5"] .quiz-engine__answers--icons .quiz-engine__answer strong {
+  width: 100%;
+  text-align: center;
 }

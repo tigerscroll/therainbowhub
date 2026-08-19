@@ -199,10 +199,10 @@
           "presentation": "spatial",
           "visual": {
         "items": [
-          "◖",
-          "◖",
-          "◗",
-          "◖"
+          "left-half",
+          "left-half",
+          "right-half",
+          "left-half"
             ],
             "columns": 4,
             "ariaLabel": "Four half-filled circles; the third is filled on the opposite side"
@@ -210,17 +210,17 @@
           "answers": [
             "First",
             "Second",
-            "Fourth",
-            "Third"
+            "Third",
+            "Fourth"
           ],
-          "correct": 3,
+          "correct": 2,
           "category": "detail_detection",
       "explanation": "The third symbol is filled on the right; the other three are filled on the left."
         },
         {
           "id": "vision-r4q3",
-          "question": "Which arrow completes the rotation?",
-          "presentation": "sequence",
+          "question": "Which arrow belongs in step 4?",
+          "presentation": "spatial",
           "visual": {
             "items": [
               "↗",
@@ -228,8 +228,8 @@
               "↙",
               "?"
             ],
-            "separator": "→",
-            "ariaLabel": "Northeast, southeast, southwest, unknown arrow"
+            "columns": 2,
+            "ariaLabel": "Four numbered rotation steps: northeast, southeast, southwest, then unknown"
           },
           "answers": [
             "↖",
@@ -256,10 +256,10 @@
           "answers": [
             "↙",
             "↘",
-            "↖",
-            "↗"
+            "↗",
+            "↖"
           ],
-          "correct": 2,
+          "correct": 3,
           "category": "spatial_orientation",
           "explanation": "A vertical mirror swaps right and left, turning northeast into northwest."
         },
@@ -274,10 +274,10 @@
             "Green diamond"
           ],
           "icons": [
-            "🟣★",
-            "🔴■",
-            "🔵●",
-            "🟢◆"
+            "violet-star",
+            "coral-square",
+            "blue-circle",
+            "green-diamond"
           ],
           "correct": 1,
           "category": "visual_memory",
@@ -285,12 +285,13 @@
             "title": "Memorise the five-tile row",
             "presentation": "icons",
             "items": [
-              "🔵●",
-              "🟡▲",
-              "🔴■",
-              "🟢◆",
-              "🟣★"
+              "blue-circle",
+              "gold-triangle",
+              "coral-square",
+              "green-diamond",
+              "violet-star"
             ],
+            "ariaLabel": "Blue circle, gold triangle, coral square, green diamond, violet star",
             "durationMs": 3500,
             "mode": "automatic"
           },
@@ -343,11 +344,11 @@
         },
         {
           "id": "vision-r8q3",
-          "question": "Start at the red dot and follow only the solid line. Which letter do you reach?",
+          "question": "Start at the red dot and follow its dotted route. Which letter do you reach?",
           "presentation": "text",
           "image": {
             "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg",
-            "alt": "A red starting dot with one solid winding line and several dashed crossing lines leading towards endpoints A, B, C and D"
+            "alt": "A red starting dot with four matching dotted routes crossing repeatedly before reaching endpoints A, B, C and D"
           },
           "answers": [
             "A",
@@ -357,7 +358,7 @@
           ],
           "correct": 2,
           "category": "pattern_tracking",
-          "explanation": "The uninterrupted solid route passes through the dashed crossings and finishes at C."
+          "explanation": "Carefully following the dotted route that begins at the red marker through each crossing leads to C."
         },
         {
           "id": "vision-r10q2",
@@ -385,28 +386,21 @@
         },
         {
           "id": "vision-r10q4",
-          "question": "Fold a square left to right, then top to bottom. Punch away from folded edges. How many holes when unfolded?",
+          "question": "A square is folded twice, then punched once through every layer away from folds. How many holes appear after unfolding?",
       "answers": [
+        "1",
         "2",
         "4",
-        "6",
         "8"
           ],
-          "correct": 1,
+          "correct": 2,
           "category": "spatial_orientation",
           "reasoningSteps": 2,
       "explanation": "Two half-folds create four layers. One punch passes through all four, producing four holes when the square is unfolded.",
-          "presentation": "sequence",
-          "visual": {
-        "items": [
-          "FOLD LEFT → RIGHT",
-          "FOLD TOP → BOTTOM",
-          "PUNCH × 1",
-          "UNFOLD → ?"
-            ],
-            "columns": 4,
-            "separator": "→",
-        "ariaLabel": "Square folded in half from left to right, then top to bottom, punched once and unfolded"
+          "presentation": "text",
+          "image": {
+            "src": "/quizzes/vision/assets/icons/paper-fold-punch.svg",
+            "alt": "Four illustrated steps showing a square folded right, folded down, punched once through the small folded square, then unfolded to an unknown result"
           }
         }
       ]
