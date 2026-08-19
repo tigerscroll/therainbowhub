@@ -764,15 +764,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const consistency = estimate?.consistencyLabels[result.consistency];
     const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
     const scoreInsights = scoreCopy?.insights;
-    const scoreDetails = scoreInsights?.details;
     const estimateInsights = estimate?.insights;
     const resultInsights = scoreInsights ?? estimateInsights;
-    const resultDetails = scoreDetails ?? estimateInsights?.details;
     const career = quiz.career;
     const careerReport = career?.reportUnlock;
-    const resultAds = quiz.engine.resultAds && resultDetails && resultAdIds.length > 0;
-    const targetCorrect = Math.ceil(result.total * (quiz.engine.targetRatio ?? .8));
-    const targetRemaining = Math.max(0, targetCorrect - result.score);
+    const resultAds = Boolean(quiz.engine.resultAds && resultAdIds.length > 0);
     const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
@@ -859,7 +855,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
-        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {resultAds && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
@@ -867,7 +862,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <h3>{reviewUnlockCopy?.title ?? translations.quiz.answersToReview}</h3>
             {reviewUnlockCopy?.copy ? <p>{reviewUnlockCopy.copy}</p> : null}
             <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
               {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.viewResults}
             </button>
             <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
@@ -894,29 +888,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             )}
           </section>
         ) : null}
-        {resultAds && scoreInsights ? (
-          <section className="quiz-engine__result-metrics quiz-engine__result-metrics--estimate">
-            <h3>{scoreInsights.overview}</h3>
-            <div>
-              <article><strong>{result.score}</strong><span>{scoreInsights.correct}</span></article>
-              <article><strong>{result.total - result.score}</strong><span>{scoreInsights.missed}</span></article>
-              <article>
-                <strong>{targetRemaining ? targetRemaining : "✓"}</strong>
-                <span>{targetRemaining ? scoreInsights.targetRemaining ?? scoreInsights.target : scoreInsights.targetReached ?? scoreInsights.target}</span>
-              </article>
-            </div>
-          </section>
-        ) : null}
-        {resultAds && estimateInsights ? (
-          <section className="quiz-engine__result-metrics">
-            <h3>{estimateInsights.overview}</h3>
-            <div>
-              <article><strong>{result.estimatedAge}</strong><span>{estimateInsights.estimate}</span></article>
-              <article><strong>{result.strongestSignal}</strong><span>{estimateInsights.signal}</span></article>
-              <article><strong>{consistency}</strong><span>{estimateInsights.consistency}</span></article>
-            </div>
-          </section>
-        ) : null}
+        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
@@ -941,6 +913,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
+        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.score}/{result.total}</strong>
@@ -969,7 +942,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <h3>{reviewUnlockCopy?.title ?? translations.quiz.answersToReview}</h3>
             {reviewUnlockCopy?.copy ? <p>{reviewUnlockCopy.copy}</p> : null}
             <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
               {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.viewResults}
             </button>
             <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
@@ -1002,18 +974,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
-        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
-        {resultAds ? (
-          <section className="quiz-engine__result-tips">
-            <h3>{resultDetails.tipsTitle}</h3>
-            <p>{resultDetails.tipsIntro}</p>
-            <div>
-              {resultDetails.tips.map((item, index) => (
-                <article key={item.title}><span>{index + 1}</span><div><h4>{item.title}</h4><p>{item.copy}</p></div></article>
-              ))}
-            </div>
-          </section>
-        ) : null}
+        {resultAds && resultAdIds[3] ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
           </>
         )}
       </section>
