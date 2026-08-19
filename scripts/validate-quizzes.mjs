@@ -489,6 +489,7 @@ for (const folder of folders) {
       const memoryCue = sourceQuestions.find((question) => question.id === "vision-r9q5")?.study;
       const memoryQuestion = sourceQuestions.find((question) => question.id === "vision-r9q5");
       const halfCircleQuestion = sourceQuestions.find((question) => question.id === "vision-r3q4");
+      const routeTrackingQuestion = sourceQuestions.find((question) => question.id === "vision-r8q3");
       const paperFoldQuestion = sourceQuestions.find((question) => question.id === "vision-r10q4");
       fail(
         memoryCue?.mode === "automatic"
@@ -500,11 +501,12 @@ for (const folder of folders) {
       fail(JSON.stringify(memoryQuestion?.icons) === JSON.stringify(["violet-star", "coral-square", "blue-circle", "green-diamond"]), "vision/en.json: visual-memory answer imagery must use the approved CSS shapes.");
       fail(JSON.stringify(halfCircleQuestion?.visual?.items) === JSON.stringify(["left-half", "left-half", "right-half", "left-half"]), "vision/en.json: half-circle comparison must use device-stable CSS geometry.");
       fail(JSON.stringify(halfCircleQuestion?.answers) === JSON.stringify(["First", "Second", "Third", "Fourth"]) && halfCircleQuestion?.correct === 2, "vision/en.json: half-circle answer positions must run A–D in natural order with Third mapped to C.");
+      fail(routeTrackingQuestion?.image?.src === "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2", "vision/en.json: the route-tracking SVG must keep the current cache-busting asset version.");
       fail(
         JSON.stringify(paperFoldQuestion?.answers) === JSON.stringify(["1", "2", "4", "8"])
         && paperFoldQuestion?.correct === 2
         && paperFoldQuestion?.reasoningSteps === 2
-        && paperFoldQuestion?.image?.src === "/quizzes/vision/assets/icons/paper-fold-punch.svg",
+        && paperFoldQuestion?.image?.src === "/quizzes/vision/assets/icons/paper-fold-punch.svg?v=20260819-2",
         "vision/en.json: the paper-fold finale must use the illustrated two-fold puzzle with C — 4 mapped correctly.",
       );
       fail(sourceQuestions.some((question) => question.visual?.ariaLabel === "Simultaneous contrast panels"), "vision/en.json: the genuine simultaneous-contrast interaction is required.");
