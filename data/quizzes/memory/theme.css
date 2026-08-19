@@ -500,6 +500,22 @@
   align-items: center;
 }
 
+[data-quiz-theme="memory"] .quiz-engine__answer-review-unlock {
+  border: 3px solid var(--memory-ink);
+  border-radius: 3px;
+  background: var(--memory-paper-light);
+  box-shadow: 7px 7px 0 rgba(25,23,19,.13);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__answer-review-lock {
+  border: 2px solid var(--memory-ink);
+  border-radius: 3px;
+  background: rgba(168,44,50,.1);
+  box-shadow: 4px 4px 0 rgba(25,23,19,.12);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__answer-review-unlock > span { color: var(--memory-red); }
+
 [data-quiz-theme="memory"] .quiz-engine__disclaimer {
   position: relative;
   padding-left: 48px;

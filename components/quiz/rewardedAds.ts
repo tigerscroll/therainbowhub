@@ -32,7 +32,7 @@ type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { BOTTOM_ANCHOR?: unknown; REWARDED?: unknown } };
   pubads?: () => PubAds;
   setConfig?: (config: {
     adExpansion?: { enabled: boolean };
@@ -68,10 +68,12 @@ let servicesEnabled = false;
 
 export function mountDisplayAds({
   adUnitPath,
+  bottomAnchor = false,
   elementIds,
   sizes,
 }: {
   adUnitPath: string;
+  bottomAnchor?: boolean;
   elementIds: string[];
   sizes: Array<[number, number]>;
 }) {
@@ -103,7 +105,7 @@ export function mountDisplayAds({
 
     const mapping = googletag.sizeMapping?.()
       .addSize([0, 0], [[300, 250]])
-      .addSize([360, 0], sizes.map(([width, height]) => [width, height]))
+      .addSize([336, 0], sizes.map(([width, height]) => [width, height]))
       .build();
 
     elementIds.forEach((elementId) => {
@@ -113,6 +115,16 @@ export function mountDisplayAds({
       slotElements.set(slot, elementId);
       slots.push(slot.addService(pubads));
     });
+
+    // GPT-managed anchors create their own out-of-page container. They are
+    // optional by design: unsupported viewports return null and the static
+    // result slots continue normally.
+    let anchorSlot: GptSlot | null = null;
+    const bottomAnchorFormat = googletag.enums?.OutOfPageFormat?.BOTTOM_ANCHOR;
+    if (bottomAnchor && bottomAnchorFormat && googletag.defineOutOfPageSlot) {
+      anchorSlot = googletag.defineOutOfPageSlot(adUnitPath, bottomAnchorFormat);
+      if (anchorSlot) slots.push(anchorSlot.addService(pubads));
+    }
     if (!slots.length || cancelled) return;
     renderListener = (event) => {
       const elementId = slotElements.get(event.slot);
@@ -128,6 +140,7 @@ export function mountDisplayAds({
       servicesEnabled = true;
     }
     elementIds.forEach((elementId) => googletag.display?.(elementId));
+    if (anchorSlot) googletag.display?.(anchorSlot);
   });
 
   return () => {

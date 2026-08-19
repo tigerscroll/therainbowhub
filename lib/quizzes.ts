@@ -18,7 +18,9 @@ export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybri
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
 export type QuizResultAdsConfig = {
   adUnitPath: string;
+  bottomAnchor?: boolean;
   count: number;
+  reviewUnlock?: boolean;
   sizes: Array<[number, number]>;
 };
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
@@ -309,6 +311,12 @@ export type QuizScoreResultCopy = {
   showPercentage?: boolean;
   showBestRound?: boolean;
   retryLabel?: string;
+  reviewUnlock?: {
+    title: string;
+    copy: string;
+    button: string;
+    adNote: string;
+  };
   insights?: {
     overview: string;
     correct: string;
@@ -576,6 +584,8 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const count = Number(rawResultAds.count);
     if (!adUnitPath.startsWith("/")) throw new Error(`${file}: engine.resultAds.adUnitPath must start with a slash.`);
     if (!Number.isInteger(count) || count < 1 || count > 5) throw new Error(`${file}: engine.resultAds.count must be between one and five.`);
+    if (rawResultAds.bottomAnchor !== undefined && typeof rawResultAds.bottomAnchor !== "boolean") throw new Error(`${file}: engine.resultAds.bottomAnchor must be a boolean.`);
+    if (rawResultAds.reviewUnlock !== undefined && typeof rawResultAds.reviewUnlock !== "boolean") throw new Error(`${file}: engine.resultAds.reviewUnlock must be a boolean.`);
     if (!Array.isArray(rawResultAds.sizes) || !rawResultAds.sizes.length) throw new Error(`${file}: engine.resultAds.sizes are required.`);
     const sizes = rawResultAds.sizes.map((size, index) => {
       if (!Array.isArray(size) || size.length !== 2 || !size.every((value) => Number.isInteger(value) && value > 0)) {
@@ -584,7 +594,13 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       if (size[0] > 336 || size[1] > 280) throw new Error(`${file}: result display ads cannot exceed 336x280.`);
       return [size[0], size[1]] as [number, number];
     });
-    resultAds = { adUnitPath, count, sizes };
+    resultAds = {
+      adUnitPath,
+      bottomAnchor: rawResultAds.bottomAnchor as boolean | undefined,
+      count,
+      reviewUnlock: rawResultAds.reviewUnlock as boolean | undefined,
+      sizes,
+    };
   }
   if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
     throw new Error(`${file}: a direct-start quiz cannot also request a rewarded start gate.`);
@@ -972,6 +988,10 @@ function normalizeLocale(
     if (value.results.score.showPercentage !== undefined && typeof value.results.score.showPercentage !== "boolean") throw new Error(`${file}: results.score.showPercentage must be a boolean.`);
     if (value.results.score.showBestRound !== undefined && typeof value.results.score.showBestRound !== "boolean") throw new Error(`${file}: results.score.showBestRound must be a boolean.`);
     if (value.results.score.retryLabel !== undefined) text(value.results.score.retryLabel, "results.score.retryLabel", file);
+    if (value.results.score.reviewUnlock !== undefined) {
+      (["title", "copy", "button", "adNote"] as const)
+        .forEach((key) => text(value.results.score?.reviewUnlock?.[key], `results.score.reviewUnlock.${key}`, file));
+    }
     if (value.results.score.insights !== undefined) {
       (["overview", "correct", "missed", "target", "breakdown", "snapshot"] as const)
         .forEach((key) => text(value.results.score?.insights?.[key], `results.score.insights.${key}`, file));

@@ -29,6 +29,7 @@ type SavedProgress = {
   screen: SavedScreen;
   studiedQuestions?: string[];
   reportUnlocked?: boolean;
+  reviewUnlocked?: boolean;
   updatedAt: string;
 };
 
@@ -296,6 +297,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
   if (!saved.screen || !["question", "checkpoint", "stage-result", "results"].includes(saved.screen)) return null;
   if (saved.reportUnlocked !== undefined && typeof saved.reportUnlocked !== "boolean") return null;
+  if (saved.reviewUnlocked !== undefined && typeof saved.reviewUnlocked !== "boolean") return null;
 
   const answers: QuizAnswers = {};
   if (saved.answers && typeof saved.answers === "object") {
@@ -317,6 +319,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [adBusy, setAdBusy] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [reportUnlocked, setReportUnlocked] = useState(false);
+  const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -331,6 +334,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     if (screen !== "results" || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length || (quiz.career && !reportUnlocked)) return;
     return mountDisplayAds({
       adUnitPath: quiz.engine.resultAds.adUnitPath,
+      bottomAnchor: quiz.engine.resultAds.bottomAnchor,
       elementIds: resultAdIds,
       sizes: quiz.engine.resultAds.sizes,
     });
@@ -397,6 +401,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
         setReportUnlocked(saved.reportUnlocked ?? false);
+        setReviewUnlocked(saved.reviewUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
         window.localStorage.removeItem(storageKey);
@@ -422,10 +427,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       screen,
       studiedQuestions,
       reportUnlocked,
+      reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, screen, storageKey, studiedQuestions]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => () => {
     adRequestGeneration.current += 1;
@@ -437,7 +443,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
 
-  async function runRewardedGate(onComplete: () => void) {
+  async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
     if (adRequestActive.current) return;
     const generation = ++adRequestGeneration.current;
     const controller = new AbortController();
@@ -471,7 +477,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       onComplete();
       setAdBusy(false);
     });
-    scrollToTop();
+    if (scrollAfter) scrollToTop();
   }
 
   function moveForward() {
@@ -549,6 +555,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     void runRewardedGate(() => setReportUnlocked(true));
   }
 
+  function unlockIncorrectAnswers() {
+    void runRewardedGate(() => setReviewUnlocked(true), false);
+  }
+
   function restartQuiz() {
     adRequestGeneration.current += 1;
     adRequestController.current?.abort();
@@ -561,6 +571,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setCompletedStage(0);
     setStudiedQuestions([]);
     setReportUnlocked(false);
+    setReviewUnlocked(false);
     setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();
   }
@@ -771,6 +782,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
+    const reviewUnlockCopy = scoreCopy?.reviewUnlock;
+    const requiresReviewUnlock = Boolean(
+      quiz.engine.resultAds?.reviewUnlock
+      && incorrectQuestions.length
+      && !reviewUnlocked,
+    );
     if (careerReport && !reportUnlocked) {
       const report = careerReport;
       return (
@@ -957,7 +974,19 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {quiz.engine.scoring.type === "correct-answer" ? (
+        {quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
+          <section className="quiz-engine__answer-review-unlock">
+            <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+            <span>{translations.quiz.answersToReview}</span>
+            <h3>{reviewUnlockCopy?.title ?? translations.quiz.answersToReview}</h3>
+            {reviewUnlockCopy?.copy ? <p>{reviewUnlockCopy.copy}</p> : null}
+            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
+              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.viewResults}
+            </button>
+            <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
+          </section>
+        ) : quiz.engine.scoring.type === "correct-answer" ? (
           <section className="quiz-engine__answer-review">
             <h3>{translations.quiz.answersToReview}</h3>
             {incorrectQuestions.length === 0 ? (
@@ -1027,6 +1056,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         )}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      {quiz.engine.resultAds?.bottomAnchor ? <div aria-hidden="true" className="quiz-engine__anchor-safe-space" /> : null}
       </>
     );
   }
