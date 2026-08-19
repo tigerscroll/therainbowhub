@@ -213,6 +213,20 @@ export type QuizResultConfig = {
     consistency: string;
     consistencyLabels: { high: string; medium: string; mixed: string };
     disclaimer: string;
+    reviewUnlock?: {
+      title: string;
+      copy: string;
+      button: string;
+      adNote: string;
+      reviewTitle: string;
+      yourChoice: string;
+      raised: string;
+      lowered: string;
+      neutral: string;
+      raisedCopy: string;
+      loweredCopy: string;
+      neutralCopy: string;
+    };
     insights?: {
       overview: string;
       estimate: string;
@@ -962,6 +976,10 @@ function normalizeLocale(
       .forEach((key) => text(estimate[key], `results.estimate.${key}`, file));
     (["high", "medium", "mixed"] as const)
       .forEach((key) => text(estimate.consistencyLabels?.[key], `results.estimate.consistencyLabels.${key}`, file));
+    if (estimate.reviewUnlock !== undefined) {
+      (["title", "copy", "button", "adNote", "reviewTitle", "yourChoice", "raised", "lowered", "neutral", "raisedCopy", "loweredCopy", "neutralCopy"] as const)
+        .forEach((key) => text(estimate.reviewUnlock?.[key], `results.estimate.reviewUnlock.${key}`, file));
+    }
     if (estimate.insights !== undefined) {
       const insights = estimate.insights;
       (["overview", "estimate", "signal", "consistency", "breakdown", "snapshot"] as const)

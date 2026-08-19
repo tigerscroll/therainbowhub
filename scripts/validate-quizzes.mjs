@@ -161,7 +161,17 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
     fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs the approved start and result rewarded gates.");
-    fail(config.engine?.resultAds === undefined, "years-left: compact result display placements must remain disabled.");
+    fail(
+      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
+      && config.engine.resultAds.count === 4
+      && config.engine.resultAds.bottomAnchor === true
+      && config.engine.resultAds.reviewUnlock === true
+      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
+      "years-left: result ads and rewarded choice-impact unlock must match the approved shared result layout.",
+    );
+    fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
+    fail(source.landing?.cta === "Start", "years-left/en.json: landing CTA must remain Start.");
+    fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: rewarded choice-impact reveal copy is incomplete.");
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
     fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: compact estimate calibration is incorrect.");
     fail(sourceQuestions[1]?.presentation === "icons" && sourceQuestions[1]?.icons?.length === 4, "years-left: snack-table interaction needs four aligned icons.");

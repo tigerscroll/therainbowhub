@@ -773,11 +773,31 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
     const reviewUnlockCopy = scoreCopy?.reviewUnlock;
+    const estimateReviewUnlockCopy = estimate?.reviewUnlock;
     const requiresReviewUnlock = Boolean(
       quiz.engine.resultAds?.reviewUnlock
       && incorrectQuestions.length
       && !reviewUnlocked,
     );
+    const requiresEstimateReviewUnlock = Boolean(
+      quiz.engine.resultAds?.reviewUnlock
+      && quiz.engine.scoring.type === "weighted-profile"
+      && estimateReviewUnlockCopy
+      && !reviewUnlocked,
+    );
+    const estimateChoiceImpacts = quiz.engine.scoring.type === "weighted-profile" && quiz.engine.estimate
+      ? quiz.questions.flatMap((question) => {
+          const choiceIndex = answers[question.id];
+          if (choiceIndex === undefined) return [];
+          const weightedImpact = Object.entries(question.choiceWeights?.[choiceIndex] ?? {}).reduce(
+            (sum, [profileId, weight]) => sum + weight * (quiz.engine.estimate?.profileAdjustments[profileId] ?? 0),
+            0,
+          );
+          const impact = weightedImpact + (question.calibrationValues?.[choiceIndex] ?? 0);
+          const direction = impact > 0.05 ? "raised" : impact < -0.05 ? "lowered" : "neutral";
+          return [{ question, choiceIndex, direction }];
+        })
+      : [];
     if (careerReport && !reportUnlocked) {
       const report = careerReport;
       return (
@@ -887,6 +907,35 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
                 ))}
               </div>
             )}
+          </section>
+        ) : resultAds && quiz.engine.scoring.type === "weighted-profile" && requiresEstimateReviewUnlock ? (
+          <section className="quiz-engine__answer-review-unlock">
+            <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+            <span>{estimateReviewUnlockCopy?.reviewTitle}</span>
+            <h3>{estimateReviewUnlockCopy?.title}</h3>
+            <p>{estimateReviewUnlockCopy?.copy}</p>
+            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+              {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
+            </button>
+            <small>{estimateReviewUnlockCopy?.adNote}</small>
+          </section>
+        ) : resultAds && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
+          <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
+            <h3>{estimateReviewUnlockCopy.reviewTitle}</h3>
+            <div>
+              {estimateChoiceImpacts.map(({ question, choiceIndex, direction }) => {
+                const label = direction === "raised" ? estimateReviewUnlockCopy.raised : direction === "lowered" ? estimateReviewUnlockCopy.lowered : estimateReviewUnlockCopy.neutral;
+                const copy = direction === "raised" ? estimateReviewUnlockCopy.raisedCopy : direction === "lowered" ? estimateReviewUnlockCopy.loweredCopy : estimateReviewUnlockCopy.neutralCopy;
+                return (
+                  <article data-impact={direction} key={question.id}>
+                    <span>{label}</span>
+                    <h4>{question.prompt}</h4>
+                    <dl><div><dt>{estimateReviewUnlockCopy.yourChoice}</dt><dd>{question.choices[choiceIndex]}</dd></div></dl>
+                    <p>{copy}</p>
+                  </article>
+                );
+              })}
+            </div>
           </section>
         ) : null}
         {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}

@@ -445,6 +445,10 @@
 .quiz-engine__answer-review dt { color: var(--quiz-muted); font-size: 12px; font-weight: 800; }
 .quiz-engine__answer-review dd { margin: 0; font-size: 13px; font-weight: 850; }
 .quiz-engine__answer-review article > p { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid color-mix(in srgb, var(--quiz-border) 55%, transparent); color: var(--quiz-muted); font-size: 13px; line-height: 1.5; }
+.quiz-engine__answer-review--impact article { border-left: 5px solid var(--quiz-border); }
+.quiz-engine__answer-review--impact article[data-impact="raised"] { border-left-color: var(--quiz-correct); }
+.quiz-engine__answer-review--impact article[data-impact="lowered"] { border-left-color: var(--quiz-incorrect); }
+.quiz-engine__answer-review--impact article[data-impact="neutral"] { border-left-color: var(--quiz-primary); }
 .quiz-engine__answer-review-unlock {
   display: grid;
   justify-items: center;
