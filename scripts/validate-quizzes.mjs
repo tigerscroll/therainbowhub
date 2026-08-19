@@ -224,6 +224,17 @@ for (const folder of folders) {
     fail(JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: IQ must retain the approved ten-puzzle order.`);
     fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(source.landing?.intro ?? ""), `${folder.name}/en.json: compact IQ landing copy must not promise rounds or an IQ score.`);
     fail(source.results?.name === "YOUR SMART SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Smart Score.`);
+    fail(source.landing?.cta === "Start", `${folder.name}/en.json: landing CTA must remain Start.`);
+    fail(
+      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
+      && config.engine.resultAds.count === 4
+      && config.engine.resultAds.bottomAnchor === true
+      && config.engine.resultAds.reviewUnlock === true
+      && JSON.stringify(config.engine.resultAds.locales) === JSON.stringify(["en"])
+      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
+      `${folder.name}: English Smart Score results must keep the shared four placements, bottom anchor and rewarded answer-review unlock.`,
+    );
+    fail(source.results?.score?.reviewUnlock?.button === "Reveal Incorrect Answers", `${folder.name}/en.json: rewarded incorrect-answer reveal copy is incomplete.`);
     fail(new Set(ids).size === 10, `${folder.name}/en.json: IQ needs ten unique stable question IDs.`);
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact IQ puzzle needs four unique choices.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every compact IQ puzzle needs one valid correct index.`);

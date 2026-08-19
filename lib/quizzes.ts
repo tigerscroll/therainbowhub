@@ -20,6 +20,7 @@ export type QuizResultAdsConfig = {
   adUnitPath: string;
   bottomAnchor?: boolean;
   count: number;
+  locales?: string[];
   reviewUnlock?: boolean;
   sizes: Array<[number, number]>;
 };
@@ -600,6 +601,10 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     if (!Number.isInteger(count) || count < 1 || count > 5) throw new Error(`${file}: engine.resultAds.count must be between one and five.`);
     if (rawResultAds.bottomAnchor !== undefined && typeof rawResultAds.bottomAnchor !== "boolean") throw new Error(`${file}: engine.resultAds.bottomAnchor must be a boolean.`);
     if (rawResultAds.reviewUnlock !== undefined && typeof rawResultAds.reviewUnlock !== "boolean") throw new Error(`${file}: engine.resultAds.reviewUnlock must be a boolean.`);
+    const locales = rawResultAds.locales === undefined ? undefined : strings(rawResultAds.locales, "engine.resultAds.locales", file);
+    if (locales && (new Set(locales).size !== locales.length || locales.some((locale) => !isSupportedLocale(locale)))) {
+      throw new Error(`${file}: engine.resultAds.locales must contain unique supported locale codes.`);
+    }
     if (!Array.isArray(rawResultAds.sizes) || !rawResultAds.sizes.length) throw new Error(`${file}: engine.resultAds.sizes are required.`);
     const sizes = rawResultAds.sizes.map((size, index) => {
       if (!Array.isArray(size) || size.length !== 2 || !size.every((value) => Number.isInteger(value) && value > 0)) {
@@ -612,6 +617,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       adUnitPath,
       bottomAnchor: rawResultAds.bottomAnchor as boolean | undefined,
       count,
+      locales,
       reviewUnlock: rawResultAds.reviewUnlock as boolean | undefined,
       sizes,
     };

@@ -328,17 +328,21 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     () => Array.from({ length: quiz.engine.resultAds?.count ?? 0 }, (_, index) => `quiz-result-ad-${resultAdBaseId}-${index + 1}`),
     [quiz.engine.resultAds?.count, resultAdBaseId],
   );
+  const resultAdsEnabled = Boolean(
+    quiz.engine.resultAds
+    && (!quiz.engine.resultAds.locales || quiz.engine.resultAds.locales.includes(locale)),
+  );
 
   useEffect(() => {
     const hasResultReport = quiz.result.score?.insights?.details || quiz.result.estimate?.insights?.details;
-    if (screen !== "results" || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length || (quiz.career && !reportUnlocked)) return;
+    if (screen !== "results" || !resultAdsEnabled || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length || (quiz.career && !reportUnlocked)) return;
     return mountDisplayAds({
       adUnitPath: quiz.engine.resultAds.adUnitPath,
       bottomAnchor: quiz.engine.resultAds.bottomAnchor,
       elementIds: resultAdIds,
       sizes: quiz.engine.resultAds.sizes,
     });
-  }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, screen]);
+  }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, resultAdsEnabled, screen]);
 
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -768,7 +772,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const resultInsights = scoreInsights ?? estimateInsights;
     const career = quiz.career;
     const careerReport = career?.reportUnlock;
-    const resultAds = Boolean(quiz.engine.resultAds && resultAdIds.length > 0);
+    const resultAds = Boolean(resultAdsEnabled && quiz.engine.resultAds && resultAdIds.length > 0);
     const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
@@ -1035,7 +1039,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         )}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
-      {quiz.engine.resultAds?.bottomAnchor ? <div aria-hidden="true" className="quiz-engine__anchor-safe-space" /> : null}
+      {resultAds && quiz.engine.resultAds?.bottomAnchor ? <div aria-hidden="true" className="quiz-engine__anchor-safe-space" /> : null}
       </>
     );
   }
