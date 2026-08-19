@@ -855,6 +855,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
+        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {resultAds && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
@@ -906,14 +907,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
           </dl>
         ) : null}
-        {scoreCopy ? (
+        {scoreCopy && !resultAds ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
             <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
             {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
-        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.score}/{result.total}</strong>
@@ -925,8 +925,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </div>
         </div> : null}
         {(!estimate || resultAds) && Object.keys(result.dimensionScores).length ? (
-          <div className="quiz-engine__dimensions">
+          <div className={`quiz-engine__dimensions${resultAds && scoreCopy ? " quiz-engine__dimensions--summary" : ""}`}>
             {resultAds && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
+            {resultAds && scoreCopy ? (
+              <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
+                <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
+                <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
+                {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
+              </dl>
+            ) : null}
             {Object.entries(result.dimensionScores).map(([label, value]) => (
               <div className="quiz-engine__dimension" key={label}>
                 <div><span>{label}</span><strong>{value}%</strong></div>

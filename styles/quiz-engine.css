@@ -486,6 +486,8 @@
 .quiz-engine__result-summary strong { font-size: 20px; }
 .quiz-engine__result-summary span { margin-top: 4px; color: var(--quiz-muted); font-size: 12px; }
 .quiz-engine__dimensions { display: grid; gap: 14px; margin: 26px 0; text-align: left; }
+.quiz-engine__dimensions--summary { padding: clamp(18px, 3vw, 26px); border: 1px solid color-mix(in srgb, var(--quiz-border) 68%, transparent); border-radius: var(--quiz-button-radius); background: var(--quiz-surface-raised); }
+.quiz-engine__dimensions--summary .quiz-engine__result-signals { margin: 0 0 6px; }
 .quiz-engine__dimension > div { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 13px; }
 .quiz-engine__dimension i { display: block; height: 7px; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--quiz-border) 23%, transparent); }
 .quiz-engine__dimension b { display: block; height: 100%; border-radius: inherit; background: var(--quiz-primary); }
