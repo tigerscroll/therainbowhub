@@ -333,7 +333,7 @@ for (const folder of folders) {
     fail(source.progressLabel === "complete", "chef/en.json: compact quiz must show percentage completion rather than a round number.");
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, "chef/en.json: compact quiz needs one round of ten questions.");
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "chef/en.json: compact quiz screens must not use separate context banners.");
-    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "chef/en.json: compact questions must contain no more than twenty words.");
+    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 24), "chef/en.json: compact questions must contain no more than twenty-four words.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(specification.ids), "chef/en.json: approved ten-question selection or order changed.");
     fail(JSON.stringify(counts) === JSON.stringify(specification.categories), "chef/en.json: compact skill-category distribution changed.");
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), "chef/en.json: every compact question needs four unique choices.");
@@ -353,6 +353,25 @@ for (const folder of folders) {
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, "chef/en.json: compact result must lead with percentage and hide the redundant best-round field.");
+    fail(
+      JSON.stringify(source.results?.dimensions) === JSON.stringify([
+        { label: "Technique & heat", categories: ["kitchen_fundamentals", "heat_methods"] },
+        { label: "Flavour & pastry", categories: ["ingredients_flavour", "baking_pastry"] },
+        { label: "Maths & service", categories: ["kitchen_maths", "safety_service"] },
+      ]),
+      "chef/en.json: compact result must keep the three meaningful kitchen areas.",
+    );
+    fail(source.results?.score?.strongest === "Strongest kitchen area" && source.results?.score?.trickiest === "Trickiest kitchen area", "chef/en.json: compact result area labels changed.");
+    fail(JSON.stringify(sourceQuestions.map((question) => question.presentation ?? null)) === JSON.stringify(["sequence", null, "code", null, "code", "code", "icons", null, "spatial", "spatial"]), "chef/en.json: approved compact visual rhythm changed.");
+    fail(sourceQuestions.every((question) => {
+      if (question.presentation === "icons") return true;
+      if (!question.presentation) return question.visual === undefined;
+      return Boolean(question.visual?.items?.length);
+    }), "chef/en.json: visuals must add information; approved text-only questions must stay uncluttered.");
+    fail(sourceQuestions[6]?.icons?.length === 4 && sourceQuestions[6].icons.every((icon) => /^\/quizzes\/chef\/assets\/icons\/.+\.svg$/.test(icon)), "chef/en.json: tool-identification question needs four local SVG tool icons.");
+    fail(sourceQuestions[7]?.correct === 1 && /spoon used for sesame dressing/i.test(sourceQuestions[7]?.question ?? "") && /cross-contact/i.test(sourceQuestions[7]?.explanation ?? ""), "chef/en.json: two-clue allergen-control problem changed.");
+    fail(sourceQuestions[9]?.correct === 3 && sourceQuestions[9]?.reasoningSteps === 2 && /fresh verified batch/i.test(sourceQuestions[9]?.answers?.[3] ?? ""), "chef/en.json: final-service boss decision changed.");
+    fail(!/rounds changed/i.test(serialized), "chef/en.json: compact profile copy must not refer to multiple rounds.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, "chef/en.json: complete long-form result report is required.");

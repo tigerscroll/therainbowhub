@@ -21,7 +21,7 @@
       "steps": [
         "Answer ten varied kitchen questions and choose the single option best supported by the clues.",
         "Correct answers stay hidden while you play, so inspect each recipe, ticket and process before the test moves on.",
-        "Finish the challenge to reveal your Chef Score, strongest kitchen skill and complete result report."
+        "Finish the challenge to reveal your Chef Score, strongest kitchen area and complete result report."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This quiz is not a culinary qualification, professional kitchen assessment or food-safety certification. Always follow local food-safety requirements and qualified guidance."
@@ -74,13 +74,13 @@
         "min": 0.6,
         "tier": "60–69%",
         "title": "The Confident Line Cook",
-        "copy": "You have a practical base across flavour, heat, preparation and service. Your strongest skill shows exactly where your kitchen thinking becomes most assured."
+        "copy": "You have a practical base across flavour, heat, preparation and service. Your strongest area shows exactly where your kitchen thinking becomes most assured."
       },
       {
         "min": 0.5,
         "tier": "50–59%",
         "title": "The Promising Prep Cook",
-        "copy": "You recognised a solid share of the kitchen fundamentals and kept adapting as the rounds changed. The review will show which techniques are ready for another look."
+        "copy": "You recognised a solid share of the kitchen fundamentals and kept adapting as the challenge changed gears. The review will show which techniques are ready for another look."
       },
       {
         "min": 0,
@@ -91,38 +91,23 @@
     ],
     "dimensions": [
       {
-        "label": "Kitchen fundamentals",
+        "label": "Technique & heat",
         "categories": [
-          "kitchen_fundamentals"
-        ]
-      },
-      {
-        "label": "Ingredients and flavour",
-        "categories": [
-          "ingredients_flavour"
-        ]
-      },
-      {
-        "label": "Heat and cooking methods",
-        "categories": [
+          "kitchen_fundamentals",
           "heat_methods"
         ]
       },
       {
-        "label": "Baking and pastry",
+        "label": "Flavour & pastry",
         "categories": [
+          "ingredients_flavour",
           "baking_pastry"
         ]
       },
       {
-        "label": "Kitchen maths",
+        "label": "Maths & service",
         "categories": [
-          "kitchen_maths"
-        ]
-      },
-      {
-        "label": "Safety and service",
-        "categories": [
+          "kitchen_maths",
           "safety_service"
         ]
       }
@@ -131,8 +116,8 @@
       "passed": "You passed the chef’s entrance challenge!",
       "finished": "Culinary challenge complete",
       "correctLabel": "correct",
-      "strongest": "Strongest kitchen skill",
-      "trickiest": "Trickiest kitchen skill",
+      "strongest": "Strongest kitchen area",
+      "trickiest": "Trickiest kitchen area",
       "bestRound": "Best round",
       "showPercentage": true,
       "disclaimer": "For entertainment and general learning only. This quiz is not a culinary qualification, professional kitchen assessment or food-safety certification. Always follow local food-safety requirements and qualified guidance.",
@@ -148,7 +133,7 @@
         "correct": "Correct answers",
         "missed": "Questions missed",
         "target": "Correct answers for 80%",
-        "breakdown": "Your kitchen skill breakdown",
+        "breakdown": "Your kitchen area breakdown",
         "snapshot": "What your chef profile suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%",
@@ -159,8 +144,8 @@
           "roadmapIntro": "Your score is the first course. Continue through the report to see which kitchen decisions came most naturally and where another attempt could improve.",
           "roadmapItems": [
             "Score analysis",
-            "Strongest kitchen skill",
-            "Six-skill breakdown",
+            "Strongest kitchen area",
+            "Kitchen area breakdown",
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
@@ -194,7 +179,7 @@
             },
             {
               "title": "Return with fresh eyes",
-              "copy": "Try again later and see whether a different kitchen category becomes your strongest."
+              "copy": "Try again later and see whether a different kitchen area becomes your strongest."
             }
           ],
           "finalTitle": "Your result is ready",
@@ -209,7 +194,7 @@
       "questions": [
         {
           "id": "chef-r2q1",
-          "question": "Which step best completes this preparation sequence?",
+          "question": "Which step best completes this general mise-en-place sequence before cooking begins?",
           "presentation": "sequence",
       "visual": {
         "items": [
@@ -219,58 +204,70 @@
           "🔥 Cook"
         ],
             "separator": "→",
-            "ariaLabel": "Read recipe, gather, unknown step, cook"
+            "ariaLabel": "General mise-en-place sequence: read recipe, gather, unknown step, cook"
           },
-      "answers": [
-        "Serve",
-        "Wash later",
-        "Measure and organise",
-        "Raise the heat"
-      ],
-      "icons": [
-        "🍽️",
-        "🧼",
-        "📏",
-        "🔥"
-      ],
+          "answers": [
+            "Preheat every pan and tray",
+            "Prepare the serving plates",
+            "Measure and organise ingredients",
+            "Begin chopping every ingredient"
+          ],
+          "icons": [
+            "🔥",
+            "🍽️",
+            "📏",
+            "🔪"
+          ],
           "correct": 2,
           "category": "kitchen_fundamentals",
-          "explanation": "Measuring and organising the gathered ingredients creates a reliable bridge between reading and cooking."
+          "explanation": "Measuring and organising the ingredients after gathering them makes the cooking stage smoother and reduces missed steps."
         },
         {
           "id": "chef-r3q1",
           "question": "Vegetables in a crowded hot pan turn pale and wet. What best explains it?",
           "answers": [
-            "The salt disappeared",
-            "The pan created no heat",
-            "The vegetables became frozen",
-            "Trapped moisture produced steam"
+            "The pan was too hot and sealed the moisture inside",
+            "The vegetables absorbed the oil before they could brown",
+            "Turning them too often created the extra moisture",
+            "Released moisture was trapped, so the vegetables steamed"
           ],
           "correct": 3,
           "category": "heat_methods",
-          "explanation": "Crowding traps released moisture and lowers effective surface heat, so food steams instead of browning."
+          "explanation": "Crowding traps released moisture and can reduce effective surface heat, encouraging steaming instead of browning."
         },
         {
           "id": "chef-r4q2",
-          "question": "A sauce is too salty. What is the best fix?",
+          "question": "What is the best correction?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "🍲 SAUCE :: REDUCED",
+              "🧂 TASTE :: TOO SALTY",
+              "🥣 AVAILABLE :: UNSALTED STOCK",
+              "↕ CONSISTENCY :: MAY BE ADJUSTED"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "A reduced sauce tastes too salty; unsalted stock is available and its consistency may be adjusted"
+          },
           "answers": [
-            "Add sugar",
+            "Add a little more concentrated sauce",
             "Reduce it further",
             "Dilute gradually with unsalted stock and retaste",
-            "Add lemon juice"
+            "Add more salted stock"
           ],
           "correct": 2,
           "category": "ingredients_flavour",
-          "explanation": "Unsalted stock dilutes the salt concentration; adding it gradually protects the intended consistency."
+          "explanation": "Unsalted stock reduces the salt concentration, while adding it gradually allows the sauce consistency to be checked and adjusted."
         },
         {
           "id": "chef-r5q2",
           "question": "Why are cold pieces of butter kept distinct in a flaky pastry dough?",
           "answers": [
-            "To make the dough sweeter",
-            "To dissolve the flour",
-            "To stop all browning",
-            "Melting butter creates flaky layers"
+            "Distinct butter pieces make the dough rise before baking",
+            "Distinct butter pieces stop the flour absorbing any water",
+            "Distinct butter pieces prevent the pastry from browning",
+            "Distinct butter pieces melt and help separate flaky layers"
           ],
           "correct": 3,
           "category": "baking_pastry",
@@ -278,16 +275,27 @@
         },
         {
           "id": "chef-r6q1",
-          "question": "A recipe uses 200 g of rice for 4 portions. How much is needed for 10 portions?",
+          "question": "How much rice is needed?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "📋 RECIPE :: 4 PORTIONS",
+              "🍚 RICE :: 300 G",
+              "🎯 TARGET :: 10 PORTIONS"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "A four portion recipe uses 300 grams of rice and must be scaled to ten portions"
+          },
           "answers": [
-            "350 g",
-            "400 g",
-            "500 g",
-            "800 g"
+            "600 g",
+            "700 g",
+            "750 g",
+            "900 g"
           ],
           "correct": 2,
           "category": "kitchen_maths",
-          "explanation": "Each portion uses 50 g, so ten portions require 500 g."
+          "explanation": "300 g ÷ 4 = 75 g per portion; 75 g × 10 = 750 g."
         },
         {
           "id": "chef-r7q2",
@@ -295,12 +303,12 @@
           "presentation": "code",
           "visual": {
             "items": [
-              "DISH A · 4 MIN",
-              "DISH B · 8 MIN"
+              "🍽️ DISH A :: 4 MIN · LOSES QUALITY IF HELD",
+              "🍽️ DISH B :: 8 MIN"
             ],
-            "columns": 2,
+            "columns": 1,
             "separator": "•",
-            "ariaLabel": "Dish A takes four minutes and Dish B takes eight minutes"
+            "ariaLabel": "Dish A takes four minutes and loses quality if held. Dish B takes eight minutes."
           },
           "answers": [
             "Start B, then add A four minutes later",
@@ -315,43 +323,41 @@
         {
           "id": "chef-r9q1",
           "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
+          "presentation": "icons",
           "answers": [
             "Vegetable peeler",
-            "Microplane or fine zester",
+            "Fine zester",
             "Paring knife",
             "Coarse box grater"
           ],
+          "icons": [
+            "/quizzes/chef/assets/icons/peeler.svg",
+            "/quizzes/chef/assets/icons/zester.svg",
+            "/quizzes/chef/assets/icons/paring-knife.svg",
+            "/quizzes/chef/assets/icons/box-grater.svg"
+          ],
           "correct": 1,
           "category": "kitchen_fundamentals",
-          "explanation": "A fine grater or zester removes the coloured outer peel while helping avoid the bitter white pith."
+          "explanation": "A fine zester removes the coloured outer peel in small shreds while helping avoid the bitter white pith."
         },
         {
           "id": "chef-r9q6",
-          "question": "What must change?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "ALLERGY · SESAME",
-              "GARNISH · SESAME SEEDS"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Declared sesame allergy and planned sesame seed garnish"
-          },
+          "question": "A guest has a sesame allergy. The garnish was removed, but a spoon used for sesame dressing touched the dish. What is safest now?",
           "answers": [
-            "Nothing—the garnish is small",
-            "Stop and replace the garnish safely",
-            "Rewrite the ticket only",
-            "Add more garnish"
+            "Wipe the contact point and serve",
+            "Do not serve it; remake it using verified allergen controls",
+            "Add a different garnish and serve",
+            "Tell the guest the garnish was removed"
           ],
           "correct": 1,
           "category": "safety_service",
-          "explanation": "The planned garnish contains the declared allergen, so service must stop while it is safely replaced and cross-contact is prevented."
+          "reasoningSteps": 2,
+          "explanation": "Removing the garnish does not remove possible allergen cross-contact from the spoon, so the dish should not be served and should be remade under verified controls."
         },
         {
           "id": "chef-r10q2",
-          "question": "Which finishing adjustment best answers these clues?",
-          "presentation": "code",
+          "question": "Which finishing adjustment best balances this dish?",
+          "presentation": "spatial",
           "visual": {
             "items": [
               "RICH",
@@ -371,32 +377,33 @@
           "correct": 0,
           "category": "ingredients_flavour",
           "reasoningSteps": 2,
-          "explanation": "A little lemon brightens the richness while fresh herbs answer the missing aroma clue."
+          "explanation": "Lemon adds acidity that brightens the richness, while fresh herbs add the fresh aroma the dish is missing."
         },
         {
           "id": "chef-r10q6",
-          "question": "This rice has no verified holding record. What is the safest decision?",
-          "presentation": "code",
+          "question": "Which decision best protects both food safety and service?",
+          "presentation": "spatial",
           "visual": {
             "items": [
-              "COOKED RICE",
-              "WARM ON BENCH THROUGH SERVICE",
-              "NO VERIFIED TIME OR TEMPERATURE"
+              "🍚 COOKED RICE — WARM ON BENCH THROUGH SERVICE",
+              "🌡 TIME / TEMPERATURE — NOT VERIFIED",
+              "✓ FRESH BATCH — AVAILABLE + VERIFIED",
+              "🔔 SERVICE — WAITING"
             ],
             "columns": 1,
             "separator": "•",
-            "ariaLabel": "Cooked rice remained warm on the bench through service with no verified time or temperature record"
+            "ariaLabel": "Cooked rice was warm on the bench through service without a verified time or temperature record; a fresh verified batch is available and service is waiting"
           },
           "answers": [
-            "Serve it now because it still feels warm",
-            "Cool it beside uncooked ingredients",
-            "Mix it into a freshly prepared batch",
-            "Do not serve it; isolate it and follow the food-safety procedure"
+            "Reheat the unverified rice and serve it first",
+            "Mix the unverified rice into the fresh batch",
+            "Serve the unverified rice because it is already warm",
+            "Isolate the unverified rice and use the fresh verified batch"
           ],
           "correct": 3,
           "category": "safety_service",
           "reasoningSteps": 2,
-          "explanation": "Prolonged uncontrolled warm holding and missing verification mean the rice should not be served; isolate it and follow the kitchen’s food-safety procedure."
+          "explanation": "Without verified time and temperature control, the old rice should not be served. Use the verified batch and follow the kitchen's food-safety procedure for the unverified rice."
         }
       ]
     }
