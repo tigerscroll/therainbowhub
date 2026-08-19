@@ -859,6 +859,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
+        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {resultAds && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
@@ -940,7 +941,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
-        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
           {quiz.engine.scoring.type === "correct-answer" ? <div>
             <strong>{result.score}/{result.total}</strong>
