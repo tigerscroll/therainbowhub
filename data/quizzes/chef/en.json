@@ -187,29 +187,13 @@
       "questions": [
         {
           "id": "chef-r2q1",
-          "question": "What best completes this general prep sequence?",
-          "presentation": "sequence",
-          "visual": {
-            "items": [
-              "📖 Read recipe",
-              "🧺 Gather",
-              "❓ Next step",
-              "🔥 Cook"
-            ],
-            "separator": "→",
-            "ariaLabel": "General mise-en-place sequence: read recipe, gather, unknown step, cook"
-          },
+          "question": "After reading the recipe and gathering items, what general step best prepares you to cook?",
+          "presentation": "text",
           "answers": [
             "Preheat every pan and tray",
             "Prepare the serving plates",
             "Measure and organise ingredients",
             "Begin chopping every ingredient"
-          ],
-          "icons": [
-            "🔥",
-            "🍽️",
-            "📏",
-            "🔪"
           ],
           "correct": 2,
           "category": "kitchen_fundamentals",
@@ -226,13 +210,7 @@
           ],
           "correct": 1,
           "category": "ingredients_flavour",
-          "explanation": "Citric acid gives lemon juice its characteristic sour acidity.",
-          "icons": [
-            "🍬",
-            "🍋",
-            "🧂",
-            "☕"
-          ]
+          "explanation": "Citric acid gives lemon juice its characteristic sour acidity."
         },
         {
           "id": "chef-r3q2",
@@ -359,10 +337,10 @@
           "id": "chef-r2q6",
           "question": "A glass jar breaks beside uncovered prepared food. What should happen?",
           "answers": [
-            "Pick out only visible glass",
-            "Move the food to another plate",
-            "Isolate the area, discard exposed food and clean safely",
-            "Continue service and inspect later"
+            "Remove visible glass and keep the food",
+            "Move the food away and continue service",
+            "Discard exposed food and clean the area safely",
+            "Cover the food and clean after service"
           ],
           "correct": 2,
           "category": "safety_service",
@@ -439,10 +417,10 @@
           "id": "chef-r6q6",
           "question": "A cook develops vomiting during service. What is the responsible first decision?",
           "answers": [
-            "Finish the current task before mentioning it",
+            "Finish the current task, then report it",
             "Put on fresh gloves and continue",
-            "Stop handling food and report the illness promptly",
-            "Move to a different food station and continue"
+            "Stop handling food and report it promptly",
+            "Move stations and continue"
           ],
           "correct": 2,
           "category": "safety_service",
@@ -451,18 +429,12 @@
         {
           "id": "chef-r9q1",
           "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
-          "presentation": "icons",
+          "presentation": "text",
           "answers": [
             "Vegetable peeler",
             "Fine zester",
             "Paring knife",
             "Coarse box grater"
-          ],
-          "icons": [
-            "/quizzes/chef/assets/icons/peeler.svg",
-            "/quizzes/chef/assets/icons/zester.svg",
-            "/quizzes/chef/assets/icons/paring-knife.svg",
-            "/quizzes/chef/assets/icons/box-grater.svg"
           ],
           "correct": 1,
           "category": "kitchen_fundamentals",
@@ -470,23 +442,12 @@
         },
         {
           "id": "chef-r4q2",
-          "question": "What is the best correction?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "🍲 SAUCE :: REDUCED",
-              "🧂 TASTE :: TOO SALTY",
-              "🥣 AVAILABLE :: UNSALTED STOCK",
-              "↕ CONSISTENCY :: MAY BE ADJUSTED"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "A reduced sauce tastes too salty; unsalted stock is available and its consistency may be adjusted"
-          },
+          "question": "A reduced sauce is too salty; unsalted stock is available and its consistency can be adjusted. What is the best correction?",
+          "presentation": "text",
           "answers": [
-            "Add a little more concentrated sauce",
+            "Add more concentrated sauce",
             "Reduce it further",
-            "Dilute gradually with unsalted stock and retaste",
+            "Add unsalted stock gradually and retaste",
             "Add more salted stock"
           ],
           "correct": 2,
@@ -521,18 +482,8 @@
         },
         {
           "id": "chef-r6q1",
-          "question": "How much rice is needed?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "📋 RECIPE :: 4 PORTIONS",
-              "🍚 RICE :: 300 G",
-              "🎯 TARGET :: 10 PORTIONS"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "A four portion recipe uses 300 grams of rice and must be scaled to ten portions"
-          },
+          "question": "A recipe uses 300 g rice for 4 portions. How much is needed for 10 portions?",
+          "presentation": "text",
           "answers": [
             "600 g",
             "700 g",
@@ -545,17 +496,17 @@
         },
         {
           "id": "chef-r9q6",
-          "question": "The sesame garnish is gone, but a sesame-dressing spoon touched the allergy dish. What now?",
+          "question": "A spoon used for sesame dressing touched a dish for a guest with a sesame allergy. What now?",
           "answers": [
-            "Wipe the contact point and serve",
-            "Do not serve it; remake it using verified allergen controls",
-            "Add a different garnish and serve",
-            "Tell the guest the garnish was removed"
+            "Wipe the contact area and serve",
+            "Remake the dish using clean, verified controls",
+            "Change the garnish and serve",
+            "Warn the guest and serve"
           ],
           "correct": 1,
           "category": "safety_service",
           "reasoningSteps": 2,
-          "explanation": "Removing the garnish does not remove possible allergen cross-contact from the spoon, so the dish should not be served and should be remade under verified controls."
+          "explanation": "The spoon may have caused sesame cross-contact, so the dish should not be served and should be remade using clean, verified controls."
         },
         {
           "id": "chef-r10q1",
@@ -574,20 +525,10 @@
         },
         {
           "id": "chef-r10q2",
-          "question": "Which finishing adjustment best balances this dish?",
-          "presentation": "spatial",
-          "visual": {
-            "items": [
-              "RICH",
-              "HEAVY",
-              "NEEDS FRESHNESS"
-            ],
-            "columns": 3,
-            "separator": "·",
-            "ariaLabel": "Rich, heavy and needs freshness"
-          },
+          "question": "A dish tastes rich and heavy but needs freshness. Which finishing adjustment best balances it?",
+          "presentation": "text",
           "answers": [
-            "A little lemon and fresh herbs",
+            "Lemon and fresh herbs",
             "More cream and butter",
             "More flour",
             "More syrup"
@@ -595,21 +536,12 @@
           "correct": 0,
           "category": "ingredients_flavour",
           "reasoningSteps": 2,
-          "explanation": "Lemon adds acidity that brightens the richness, while fresh herbs add the fresh aroma the dish is missing."
+          "explanation": "Lemon adds acidity that cuts through richness, while fresh herbs add freshness and aroma."
         },
         {
           "id": "chef-r7q2",
-          "question": "Both dishes must finish together. What is the best plan?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "🍽️ DISH A :: 4 MIN · LOSES QUALITY IF HELD",
-              "🍽️ DISH B :: 8 MIN"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "Dish A takes four minutes and loses quality if held. Dish B takes eight minutes."
-          },
+          "question": "Dish A needs 4 minutes and loses quality if held; Dish B needs 8 minutes. Both must finish together. What is the best plan?",
+          "presentation": "text",
           "answers": [
             "Start B, then add A four minutes later",
             "Start A, then B four minutes later",
@@ -622,27 +554,18 @@
         },
         {
           "id": "chef-r10q4",
-          "question": "Why did the biscuits spread?",
+          "question": "A biscuit recipe specifies 200 g flour and 100 g butter; 200 g of each was used. Why did the biscuits spread?",
           "answers": [
             "The flour matched the recipe",
             "The ingredients were weighed",
-            "Twice the specified butter was used",
+            "Too much butter was used",
             "The biscuits were baked"
           ],
           "correct": 2,
           "category": "baking_pastry",
           "reasoningSteps": 2,
           "explanation": "The batch used twice the specified butter while the flour stayed unchanged, disrupting the supplied ratio and explaining the excessive spread.",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "RECIPE :: 200 G FLOUR · 100 G BUTTER",
-              "USED :: 200 G FLOUR · 200 G BUTTER"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "The recipe uses 200 grams flour and 100 grams butter, but the cook used 200 grams of each"
-          }
+          "presentation": "text"
         },
         {
           "id": "chef-r6q5",
@@ -659,24 +582,13 @@
         },
         {
           "id": "chef-r10q6",
-          "question": "Which decision best protects both food safety and service?",
-          "presentation": "spatial",
-          "visual": {
-            "items": [
-              "🍚 COOKED RICE — WARM ON BENCH THROUGH SERVICE",
-              "🌡 TIME / TEMPERATURE — NOT VERIFIED",
-              "✓ FRESH BATCH — AVAILABLE + VERIFIED",
-              "🔔 SERVICE — WAITING"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "Cooked rice was warm on the bench through service without a verified time or temperature record; a fresh verified batch is available and service is waiting"
-          },
+          "question": "Rice sat warm through service with unverified time and temperature; a fresh verified batch is available. What is safest?",
+          "presentation": "text",
           "answers": [
-            "Reheat the unverified rice and serve it first",
-            "Mix the unverified rice into the fresh batch",
-            "Serve the unverified rice because it is already warm",
-            "Isolate the unverified rice and use the fresh verified batch"
+            "Reheat the old rice and serve it",
+            "Mix the old rice into the fresh batch",
+            "Serve the old rice because it is warm",
+            "Use the fresh batch and isolate the old rice"
           ],
           "correct": 3,
           "category": "safety_service",

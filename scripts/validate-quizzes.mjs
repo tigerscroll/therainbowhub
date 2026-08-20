@@ -371,14 +371,16 @@ for (const folder of folders) {
       "chef/en.json: compact result must keep the three meaningful kitchen areas.",
     );
     fail(source.results?.score?.strongest === "Strongest kitchen area" && source.results?.score?.trickiest === "Trickiest kitchen area", "chef/en.json: compact result area labels changed.");
-    fail(sourceQuestions.every((question) => {
-      if (question.presentation === "icons") return true;
-      if (!question.presentation || question.presentation === "text") return question.visual === undefined;
-      return Boolean(question.visual?.items?.length);
-    }), "chef/en.json: quick-fire visuals must be complete and text-only questions must stay uncluttered.");
-    fail(sourceQuestions[18]?.icons?.length === 4 && sourceQuestions[18].icons.every((icon) => /^\/quizzes\/chef\/assets\/icons\/.+\.svg$/.test(icon)), "chef/en.json: tool-identification question needs four local SVG tool icons.");
-    fail(sourceQuestions[23]?.correct === 1 && /sesame-dressing spoon touched/i.test(sourceQuestions[23]?.question ?? "") && /cross-contact/i.test(sourceQuestions[23]?.explanation ?? ""), "chef/en.json: two-clue allergen-control problem changed.");
-    fail(sourceQuestions[29]?.correct === 3 && sourceQuestions[29]?.reasoningSteps === 2 && /fresh verified batch/i.test(sourceQuestions[29]?.answers?.[3] ?? ""), "chef/en.json: final-service boss decision changed.");
+    fail(sourceQuestions.every((question) => (
+      (!question.presentation || question.presentation === "text")
+      && question.visual === undefined
+      && question.icons === undefined
+      && question.image === undefined
+      && question.context === undefined
+      && question.contextRequired === undefined
+    )), "chef/en.json: all 30 quick-fire questions must remain text-only with no diagrams, charts, images, icon arrays or separate prompt panels.");
+    fail(sourceQuestions[23]?.correct === 1 && /spoon used for sesame dressing touched/i.test(sourceQuestions[23]?.question ?? "") && /cross-contact/i.test(sourceQuestions[23]?.explanation ?? ""), "chef/en.json: two-clue allergen-control problem changed.");
+    fail(sourceQuestions[29]?.correct === 3 && sourceQuestions[29]?.reasoningSteps === 2 && /fresh batch and isolate the old rice/i.test(sourceQuestions[29]?.answers?.[3] ?? ""), "chef/en.json: final-service boss decision changed.");
     fail(!/rounds changed/i.test(serialized), "chef/en.json: compact profile copy must not refer to multiple rounds.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
     const details = source.results?.score?.insights?.details;
