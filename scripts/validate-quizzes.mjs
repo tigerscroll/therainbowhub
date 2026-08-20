@@ -361,6 +361,7 @@ for (const folder of folders) {
     fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), "chef/en.json: Chef must remain worldwide metric or unit-neutral.");
 
     fail(source.career?.hideJourneyLength === true && source.career?.currentScoreLabel === "CURRENT CHEF SCORE", "chef/en.json: hidden-length career mode and cumulative percentage label are required.");
+    fail(JSON.stringify(source.career?.compactGate) === JSON.stringify({ eyebrow: "RESULT READY", title: "{stage} complete", copy: "Your kitchen score is ready.", button: "See My Result" }), "chef/en.json: intermediate kitchens need the approved compact result-ready gate.");
     fail(source.career?.reportUnlock === undefined, "chef/en.json: the final kitchen reveal must deliver the full result without another report gate.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.difficulty)) === JSON.stringify(expectedDifficulties), "chef/en.json: difficulty progression changed.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.preAdTitle)) === JSON.stringify(expectedGateTitles), "chef/en.json: every kitchen needs its exact Results Are Ready title.");

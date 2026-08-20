@@ -127,6 +127,12 @@ export type QuizCareerStageCopy = {
 export type QuizCareerCopy = {
   hideJourneyLength?: boolean;
   continuousShell?: boolean;
+  compactGate?: {
+    eyebrow: string;
+    title: string;
+    copy: string;
+    button: string;
+  };
   currentScoreLabel?: string;
   levelLabel: string;
   scoreSuffix: string;
@@ -778,6 +784,10 @@ function normalizeLocale(
     const career = value.career;
     if (career.hideJourneyLength !== undefined && typeof career.hideJourneyLength !== "boolean") throw new Error(`${file}: career.hideJourneyLength must be a boolean.`);
     if (career.continuousShell !== undefined && typeof career.continuousShell !== "boolean") throw new Error(`${file}: career.continuousShell must be a boolean.`);
+    if (career.compactGate) {
+      (["eyebrow", "title", "copy", "button"] as const).forEach((key) => text(career.compactGate?.[key], `career.compactGate.${key}`, file));
+      if (!career.compactGate.title.includes("{stage}")) throw new Error(`${file}: career.compactGate.title must include {stage}.`);
+    }
     if (career.currentScoreLabel !== undefined) text(career.currentScoreLabel, "career.currentScoreLabel", file);
     (["levelLabel", "scoreSuffix", "journeyLabel", "kitchensCleared", "currentRank", "unlockEyebrow", "unlockTitle", "unlockCopy", "finalEyebrow", "finalCareerTitle", "strongestLabel"] as const)
       .forEach((key) => text(career[key], `career.${key}`, file));

@@ -663,6 +663,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const checkpointButton = isFinalStage
       ? checkpoint?.finalButton ?? translations.results.viewResults
       : translations.quiz.continue;
+    const compactCareerGate = careerStage && quiz.career?.compactGate && !isFinalStage
+      ? quiz.career.compactGate
+      : undefined;
     const reveal = checkpoint?.reveals[completedStage];
     const revealKey = reveal?.signal === "trend" ? result.trend
       : reveal?.signal === "consistency" ? result.consistency
@@ -676,18 +679,20 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     return (
       <>
-      <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}`} data-round={completedStage + 1}>
-        {!isFinalStage ? (
+      <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}${compactCareerGate ? " quiz-engine__checkpoint--compact-career" : ""}`} data-round={completedStage + 1}>
+        {compactCareerGate ? (
+          <span className="quiz-engine__eyebrow">{compactCareerGate.eyebrow}</span>
+        ) : !isFinalStage ? (
           <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? reveal?.badge ?? translations.results.stageComplete}</span>
         ) : null}
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
-        <h2>{careerStage?.preAdTitle ?? checkpointTitle}</h2>
-        {careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
-        {careerStage ? (
+        <h2>{compactCareerGate ? compactCareerGate.title.replace("{stage}", quiz.stages[completedStage]) : careerStage?.preAdTitle ?? checkpointTitle}</h2>
+        {compactCareerGate ? <p>{compactCareerGate.copy}</p> : careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
+        {careerStage ? (!compactCareerGate ? (
           <ul className="quiz-engine__checklist quiz-engine__career-checklist">
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
-        ) : quiz.engine.checkpoint === "ai" && checkpoint ? (
+        ) : null) : quiz.engine.checkpoint === "ai" && checkpoint ? (
           <div className="quiz-engine__ai-panel">
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
             <p>{revealMessage}</p>
@@ -727,7 +732,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
-          {adBusy ? translations.ad.loading : careerStage?.preAdButton ?? checkpointButton}
+          {adBusy ? translations.ad.loading : compactCareerGate?.button ?? careerStage?.preAdButton ?? checkpointButton}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
       </section>
