@@ -4,7 +4,6 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
-  defineSizeMapping?: (mapping: unknown) => GptSlot;
 };
 
 type RewardedEvent = {
@@ -15,34 +14,18 @@ type RewardedEvent = {
 
 type PubAds = {
   addEventListener(name: string, listener: (event: RewardedEvent) => void): void;
-  collapseEmptyDivs?: (collapseBeforeAdFetch?: boolean) => boolean;
   removeEventListener?: (name: string, listener: (event: RewardedEvent) => void) => void;
   updateCorrelator?: () => void;
 };
 
-type SizeMappingBuilder = {
-  addSize(viewport: number[], sizes: number[][]): SizeMappingBuilder;
-  build(): unknown;
-};
-
 type GoogleTag = {
   cmd: Array<() => void>;
-  defineSlot?: (path: string, sizes: number[][], elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { BOTTOM_ANCHOR?: unknown; REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
-  setConfig?: (config: {
-    adExpansion?: { enabled: boolean };
-    lazyLoad?: {
-      fetchMarginPercent?: number;
-      mobileScaling?: number;
-      renderMarginPercent?: number;
-    };
-  }) => void;
-  sizeMapping?: () => SizeMappingBuilder;
 };
 
 declare global {
@@ -65,92 +48,6 @@ let activeRequest: ActiveRequest | null = null;
 let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
-
-export function mountDisplayAds({
-  adUnitPath,
-  bottomAnchor = false,
-  elementIds,
-  sizes,
-}: {
-  adUnitPath: string;
-  bottomAnchor?: boolean;
-  elementIds: string[];
-  sizes: Array<[number, number]>;
-}) {
-  let cancelled = false;
-  const slots: GptSlot[] = [];
-  const slotElements = new Map<GptSlot, string>();
-  let displayPubAds: PubAds | undefined;
-  let renderListener: ((event: RewardedEvent) => void) | undefined;
-  window.googletag = window.googletag ?? { cmd: [] };
-  window.googletag.cmd.push(() => {
-    if (cancelled) return;
-    const googletag = window.googletag;
-    const pubads = googletag?.pubads?.();
-    if (!googletag?.defineSlot || !googletag.display || !pubads) return;
-    displayPubAds = pubads;
-
-    // Keep the configured sizes as the base inventory request while allowing
-    // eligible Ad Manager/Ad Exchange mobile-web demand to expand toward the
-    // full device width. Server-side format rules still determine eligibility.
-    googletag.setConfig?.({
-      adExpansion: { enabled: true },
-      lazyLoad: {
-        fetchMarginPercent: 200,
-        renderMarginPercent: 100,
-        mobileScaling: 1.5,
-      },
-    });
-    pubads.collapseEmptyDivs?.(true);
-
-    const mapping = googletag.sizeMapping?.()
-      .addSize([0, 0], [[300, 250]])
-      .addSize([336, 0], sizes.map(([width, height]) => [width, height]))
-      .build();
-
-    elementIds.forEach((elementId) => {
-      const slot = googletag.defineSlot?.(adUnitPath, sizes.map(([width, height]) => [width, height]), elementId);
-      if (!slot) return;
-      if (mapping) slot.defineSizeMapping?.(mapping);
-      slotElements.set(slot, elementId);
-      slots.push(slot.addService(pubads));
-    });
-
-    // GPT-managed anchors create their own out-of-page container. They are
-    // optional by design: unsupported viewports return null and the static
-    // result slots continue normally.
-    let anchorSlot: GptSlot | null = null;
-    const bottomAnchorFormat = googletag.enums?.OutOfPageFormat?.BOTTOM_ANCHOR;
-    if (bottomAnchor && bottomAnchorFormat && googletag.defineOutOfPageSlot) {
-      anchorSlot = googletag.defineOutOfPageSlot(adUnitPath, bottomAnchorFormat);
-      if (anchorSlot) slots.push(anchorSlot.addService(pubads));
-    }
-    if (!slots.length || cancelled) return;
-    renderListener = (event) => {
-      const elementId = slotElements.get(event.slot);
-      if (!elementId) return;
-      const row = document.getElementById(elementId)?.closest<HTMLElement>(".quiz-engine__display-ad-row");
-      if (!row) return;
-      if (event.isEmpty) row.dataset.adEmpty = "true";
-      else delete row.dataset.adEmpty;
-    };
-    pubads.addEventListener("slotRenderEnded", renderListener);
-    if (!servicesEnabled) {
-      googletag.enableServices?.();
-      servicesEnabled = true;
-    }
-    elementIds.forEach((elementId) => googletag.display?.(elementId));
-    if (anchorSlot) googletag.display?.(anchorSlot);
-  });
-
-  return () => {
-    cancelled = true;
-    if (displayPubAds && renderListener) displayPubAds.removeEventListener?.("slotRenderEnded", renderListener);
-    if (slots.length) {
-      try { window.googletag?.destroySlots?.(slots); } catch { /* GPT cleanup is best effort. */ }
-    }
-  };
-}
 
 function finish(result: RewardedResult) {
   const request = activeRequest;

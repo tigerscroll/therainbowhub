@@ -113,6 +113,7 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  fail(config.engine?.resultAds === undefined, `${folder.name}: display ads must remain disabled for every quiz.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
@@ -161,14 +162,6 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
     fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs the approved start and result rewarded gates.");
-    fail(
-      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-      && config.engine.resultAds.count === 4
-      && config.engine.resultAds.bottomAnchor === true
-      && config.engine.resultAds.reviewUnlock === true
-      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-      "years-left: result ads and rewarded choice-impact unlock must match the approved shared result layout.",
-    );
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
     fail(source.landing?.cta === "Start", "years-left/en.json: landing CTA must remain Start.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: rewarded choice-impact reveal copy is incomplete.");
@@ -199,14 +192,6 @@ for (const folder of folders) {
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2800), `${folder.name}/en.json: automatic study cues need at least 2800ms.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and two rewarded gates changed.`);
-    fail(
-      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-      && config.engine.resultAds.count === 4
-      && config.engine.resultAds.bottomAnchor === true
-      && config.engine.resultAds.reviewUnlock === true
-      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-      `${folder.name}: Memory must keep one header and three in-content result placements, the bottom anchor and rewarded answer-review unlock.`,
-    );
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: Memory final gate or compact result settings changed.`);
@@ -225,15 +210,6 @@ for (const folder of folders) {
     fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(source.landing?.intro ?? ""), `${folder.name}/en.json: compact IQ landing copy must not promise rounds or an IQ score.`);
     fail(source.results?.name === "YOUR SMART SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Smart Score.`);
     fail(source.landing?.cta === "Start", `${folder.name}/en.json: landing CTA must remain Start.`);
-    fail(
-      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-      && config.engine.resultAds.count === 4
-      && config.engine.resultAds.bottomAnchor === true
-      && config.engine.resultAds.reviewUnlock === true
-      && JSON.stringify(config.engine.resultAds.locales) === JSON.stringify(["en"])
-      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-      `${folder.name}: English Smart Score results must keep the shared four placements, bottom anchor and rewarded answer-review unlock.`,
-    );
     fail(source.results?.score?.reviewUnlock?.button === "Reveal Incorrect Answers", `${folder.name}/en.json: rewarded incorrect-answer reveal copy is incomplete.`);
     fail(new Set(ids).size === 10, `${folder.name}/en.json: IQ needs ten unique stable question IDs.`);
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact IQ puzzle needs four unique choices.`);
@@ -363,14 +339,6 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.delay === undefined), "chef/en.json: compact questions must use the shared 450ms transition.");
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, "chef: compact timing and 80% target changed.");
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.");
-    fail(
-      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-      && config.engine.resultAds.count === 4
-      && config.engine.resultAds.bottomAnchor === true
-      && config.engine.resultAds.reviewUnlock === true
-      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-      "chef: results must keep one header and three in-content placements, the bottom anchor and rewarded answer-review unlock.",
-    );
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === false, "chef/en.json: compact result must lead with percentage and hide the redundant best-round field.");
@@ -472,17 +440,7 @@ for (const folder of folders) {
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, `${folder.name}: compact timing and 80% target changed.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: compact quiz needs exactly its start and result rewarded gates with three genuine unavailable attempts.`);
     if (folder.name === "vision") {
-      fail(
-        config.engine?.resultAds?.adUnitPath === "/22677279144/display"
-        && config.engine.resultAds.count === 4
-        && config.engine.resultAds.bottomAnchor === true
-        && config.engine.resultAds.reviewUnlock === true
-        && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250]]),
-        "vision: results must match Memory and Chef with one header placement, three in-content placements, a bottom anchor and rewarded answer-review unlock.",
-      );
       fail(source.results?.score?.reviewUnlock?.button === "Reveal Incorrect Answers" && /incorrect answers/i.test(source.results?.score?.reviewUnlock?.title ?? ""), "vision/en.json: rewarded incorrect-answer reveal copy is incomplete.");
-    } else {
-      fail(config.engine?.resultAds === undefined, `${folder.name}: compact result display placements must remain disabled.`);
     }
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, `${folder.name}/en.json: compact quiz needs one clean final checkpoint without staged progress.`);
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, `${folder.name}/en.json: final rewarded result gate is incomplete.`);
@@ -792,7 +750,6 @@ for (const folder of folders) {
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Vintage must launch in English only.`);
     fail(config.engine?.flow === "linear" && config.engine?.scoring === "correct-answer", `${folder.name}: Vintage must use the one-round scored flow.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Vintage needs rewarded Start and result gates with three unavailable attempts.`);
-    fail(config.engine?.resultAds === undefined, `${folder.name}: Vintage result display placements must remain disabled.`);
     fail(source.title === "Only 7% Can Name These Vintage Items", `${folder.name}/en.json: Vintage title changed.`);
     fail(source.stages?.length === 1 && sourceQuestions.length === 10, `${folder.name}/en.json: Vintage needs one round of ten questions.`);
     fail(JSON.stringify(sourceQuestions.map((question) => question.id)) === JSON.stringify(expectedIds), `${folder.name}/en.json: Vintage question IDs or order changed.`);
