@@ -570,7 +570,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   function beginQuiz() {
     setScreen("question");
-    trackQuizEvent("QuizStart", quiz, locale);
   }
 
   function startQuiz() {

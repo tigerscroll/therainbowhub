@@ -64,12 +64,12 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
-function sendRewardClosedIfComplete(request: ActiveRequest) {
+function sendQuizStartIfComplete(request: ActiveRequest) {
   if (!request.granted || !request.closed || request.sent || request.rewardClosedAlreadySent) return;
   request.sent = true;
   request.rewardClosedAlreadySent = true;
-  window.fbq?.("trackCustom", "RewardClosed");
-  console.info("[RewardedAd] RewardClosed conditions met; Meta event requested.");
+  window.fbq?.("trackCustom", "QuizStart");
+  console.info("[RewardedAd] QuizStart conditions met; Meta event requested.");
   request.onRewardClosed?.();
 }
 
@@ -203,12 +203,12 @@ function installListeners() {
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
     activeRequest.granted = true;
-    sendRewardClosedIfComplete(activeRequest);
+    sendQuizStartIfComplete(activeRequest);
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
     activeRequest.closed = true;
-    sendRewardClosedIfComplete(activeRequest);
+    sendQuizStartIfComplete(activeRequest);
     finish(activeRequest.granted ? "granted" : "closed");
   });
   pubads.addEventListener("slotRenderEnded", (event) => {

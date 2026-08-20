@@ -70,7 +70,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
     rewardClosedAlreadySent: rewardClosedSent,
   }), "granted");
   assert.equal(requests, 3, "each early close must reopen until the reward is granted");
-  assert.deepEqual(metaEvents, ["RewardClosed"], "only the granted-and-closed attempt emits the Meta event");
+  assert.deepEqual(metaEvents, ["QuizStart"], "only the granted-and-closed attempt emits the Meta event");
   assert.equal(rewardClosedSent, true, "the quiz session is marked after its first completed reward");
 
   outcomes.push("unavailable", "unavailable", "unavailable");
@@ -85,7 +85,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
     rewardClosedAlreadySent: rewardClosedSent,
   }), "granted");
   assert.equal(requests, 7);
-  assert.deepEqual(metaEvents, ["RewardClosed"], "later rewards in the same saved quiz session do not emit again");
+  assert.deepEqual(metaEvents, ["QuizStart"], "later rewards in the same saved quiz session do not emit again");
 
   outcomes.push("ready-only");
   assert.equal(
@@ -102,7 +102,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
     "the watchdog must preserve an earned reward even when GPT loses the close event",
   );
   assert.equal(requests, 9);
-  assert.deepEqual(metaEvents, ["RewardClosed"], "a grant without the close event must not emit RewardClosed");
+  assert.deepEqual(metaEvents, ["QuizStart"], "a grant without the close event must not emit QuizStart");
 
   const controller = new AbortController();
   outcomes.push("pending");
