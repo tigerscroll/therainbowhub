@@ -242,7 +242,7 @@ for (const folder of folders) {
     fail(source.career?.stages?.[4]?.preAdBadge === "FINAL MEMORY CHALLENGE COMPLETE" && source.career?.stages?.[4]?.preAdTitle === "YOUR MEMORY RESULT IS READY" && source.career?.stages?.[4]?.resultIcon === "🧠" && source.career?.stages?.[4]?.preAdCopy === undefined, `${folder.name}/en.json: the final Memory gate hierarchy changed.`);
     fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.tagline)) === JSON.stringify(["Colours. Positions. Changes.", "Digits. Order. Working memory.", "Interference. Similar clues. Older memories.", "Delayed recall. Working memory. Final callbacks."]), `${folder.name}/en.json: Memory next-round taglines must describe the upcoming round.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.copy === undefined), `${folder.name}/en.json: compact Memory teasers must not add a second explanatory line.`);
-    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.button?.startsWith("Start ")), `${folder.name}/en.json: Memory next-round CTAs must use Start.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.button === "Continue"), `${folder.name}/en.json: Memory next-round CTAs must use Continue.`);
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Final Result", `${folder.name}/en.json: Memory needs five rewarded round-result gates.`);
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory answer review must not add a seventh rewarded opportunity.`);
     const details = source.results?.score?.insights?.details;
