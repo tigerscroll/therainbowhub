@@ -33,7 +33,7 @@ type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { BOTTOM_ANCHOR?: unknown; REWARDED?: unknown } };
   pubads?: () => PubAds;
   setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
   sizeMapping?: () => SizeMappingBuilder;
@@ -81,7 +81,6 @@ export function mountDisplayAd({
     if (!googletag?.defineSlot || !googletag.display || !pubads) return;
 
     googletag.setConfig?.({ adExpansion: { enabled: true } });
-    pubads.collapseEmptyDivs?.(true);
     const allSizes = sizes.map(([width, height]) => [width, height]);
     const compactSizes = allSizes.filter(([width]) => width <= 300);
     const mediumSizes = allSizes.filter(([width]) => width <= 320);
@@ -97,7 +96,7 @@ export function mountDisplayAd({
     slot.addService(pubads);
     renderListener = (event) => {
       if (event.slot !== slot) return;
-      const row = document.getElementById(elementId)?.closest<HTMLElement>(".quiz-engine__question-ad");
+      const row = document.getElementById(elementId)?.closest<HTMLElement>("[data-display-ad]");
       if (!row) return;
       row.toggleAttribute("data-ad-empty", Boolean(event.isEmpty));
     };
@@ -118,6 +117,38 @@ export function mountDisplayAd({
     destroy() {
       cancelled = true;
       if (pubads && renderListener) pubads.removeEventListener?.("slotRenderEnded", renderListener);
+      if (slot) {
+        try { window.googletag?.destroySlots?.([slot]); } catch { /* GPT cleanup is best effort. */ }
+      }
+    },
+  };
+}
+
+export function mountStickyDisplayAd({ adUnitPath }: { adUnitPath: string }) {
+  let cancelled = false;
+  let slot: GptSlot | null = null;
+  window.googletag = window.googletag ?? { cmd: [] };
+  window.googletag.cmd.push(() => {
+    if (cancelled) return;
+    const googletag = window.googletag;
+    const pubads = googletag?.pubads?.();
+    const format = googletag?.enums?.OutOfPageFormat?.BOTTOM_ANCHOR;
+    if (!googletag?.defineOutOfPageSlot || !googletag.display || !pubads || format === undefined) return;
+
+    googletag.setConfig?.({ adExpansion: { enabled: true } });
+    slot = googletag.defineOutOfPageSlot(adUnitPath, format);
+    if (!slot) return;
+    slot.addService(pubads);
+    if (!servicesEnabled) {
+      googletag.enableServices?.();
+      servicesEnabled = true;
+    }
+    googletag.display(slot);
+  });
+
+  return {
+    destroy() {
+      cancelled = true;
       if (slot) {
         try { window.googletag?.destroySlots?.([slot]); } catch { /* GPT cleanup is best effort. */ }
       }

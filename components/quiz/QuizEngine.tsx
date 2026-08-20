@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
-import { mountDisplayAd, requestRewardedAd } from "./rewardedAds";
+import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
@@ -45,7 +45,6 @@ type QuestionRendererProps = {
   onStudyComplete: () => void;
   question: QuizQuestion;
   studyComplete: boolean;
-  betweenQuestionAndAnswers?: ReactNode;
 };
 
 function QuestionDisplayAd({ config, questionId }: { config: NonNullable<Quiz["engine"]["questionAd"]>; questionId: string }) {
@@ -74,10 +73,38 @@ function QuestionDisplayAd({ config, questionId }: { config: NonNullable<Quiz["e
   }, [questionId]);
 
   return (
-    <div className="quiz-engine__question-ad">
+    <div className="quiz-engine__question-ad" data-display-ad>
       <div id={elementId} />
     </div>
   );
+}
+
+function ResultDisplayAd({ config, placement }: { config: NonNullable<Quiz["engine"]["resultAds"]>; placement: string }) {
+  const reactId = useId().replaceAll(":", "");
+  const elementId = `quiz-result-ad-${placement}-${reactId}`;
+
+  useEffect(() => {
+    const controller = mountDisplayAd({
+      adUnitPath: config.adUnitPath,
+      elementId,
+      sizes: config.sizes,
+    });
+    return () => controller.destroy();
+  }, [config.adUnitPath, config.sizes, elementId]);
+
+  return (
+    <div className="quiz-engine__result-ad" data-display-ad data-placement={placement}>
+      <div id={elementId} />
+    </div>
+  );
+}
+
+function ResultStickyAd({ adUnitPath }: { adUnitPath: string }) {
+  useEffect(() => {
+    const controller = mountStickyDisplayAd({ adUnitPath });
+    return () => controller.destroy();
+  }, [adUnitPath]);
+  return <span aria-hidden="true" className="quiz-engine__sticky-ad-anchor" />;
 }
 
 function QuestionVisual({ question }: { question: QuizQuestion }) {
@@ -142,7 +169,6 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
 
 function ChoiceQuestion({
   answer,
-  betweenQuestionAndAnswers,
   feedback,
   onAnswer,
   question,
@@ -154,7 +180,6 @@ function ChoiceQuestion({
     <>
     <QuestionImage question={question} />
     <QuestionVisual question={question} />
-    {betweenQuestionAndAnswers}
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
@@ -357,6 +382,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         scoring: quiz.engine.scoring,
         startOnLoad: quiz.engine.startOnLoad,
         questionAd: quiz.engine.questionAd,
+        resultAds: quiz.engine.resultAds,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
@@ -845,6 +871,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     }
     return (
       <>
+      {quiz.engine.resultAds && quiz.engine.resultAds.inlinePlacements > 0
+        ? <ResultDisplayAd config={quiz.engine.resultAds} placement="header" />
+        : null}
       <section
         className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${detailedResults ? " quiz-engine__results--detailed" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
@@ -946,6 +975,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </div>
           </section>
         ) : null}
+        {quiz.engine.resultAds && quiz.engine.resultAds.inlinePlacements > 1
+          ? <ResultDisplayAd config={quiz.engine.resultAds} placement="after-unlock" />
+          : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
@@ -998,6 +1030,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
+        {quiz.engine.resultAds && quiz.engine.resultAds.inlinePlacements > 2
+          ? <ResultDisplayAd config={quiz.engine.resultAds} placement="after-breakdown" />
+          : null}
         {!detailedResults && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
@@ -1037,9 +1072,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
+        {quiz.engine.resultAds && quiz.engine.resultAds.inlinePlacements > 3
+          ? <ResultDisplayAd config={quiz.engine.resultAds} placement="after-summary" />
+          : null}
           </>
         )}
       </section>
+      {quiz.engine.resultAds?.sticky ? <ResultStickyAd adUnitPath={quiz.engine.resultAds.adUnitPath} /> : null}
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
@@ -1068,15 +1107,23 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyComplete={studyComplete}
-          betweenQuestionAndAnswers={quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
-            ? <QuestionDisplayAd config={quiz.engine.questionAd} questionId={currentQuestion.id} />
-            : null}
         />
         {selectedAnswer !== undefined && quiz.engine.flow.feedback === "instant" && currentQuestion.explanation ? (
           <p className="quiz-engine__explanation">{currentQuestion.explanation}</p>
         ) : null}
-        {selectedAnswer !== undefined && quiz.engine.flow.advance === "manual" ? (
-          <button className="quiz-engine__primary" onClick={moveForward} type="button">
+        {quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
+          ? <QuestionDisplayAd config={quiz.engine.questionAd} questionId={currentQuestion.id} />
+          : null}
+        {quiz.engine.flow.advance === "manual" ? (
+          <button
+            aria-hidden={selectedAnswer === undefined || undefined}
+            className="quiz-engine__primary quiz-engine__next-question"
+            data-ready={selectedAnswer !== undefined}
+            disabled={selectedAnswer === undefined}
+            onClick={moveForward}
+            tabIndex={selectedAnswer === undefined ? -1 : undefined}
+            type="button"
+          >
             {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.continue}
           </button>
         ) : null}

@@ -113,7 +113,7 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
-  fail(config.engine?.resultAds === undefined, `${folder.name}: display ads must remain disabled for every quiz.`);
+  fail(folder.name === "chef" || config.engine?.resultAds === undefined, `${folder.name}: result display ads are permitted only for Chef.`);
   fail(folder.name === "chef" || config.engine?.questionAd === undefined, `${folder.name}: in-question display ads are permitted only for Chef.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
@@ -350,6 +350,13 @@ for (const folder of folders) {
       && config.engine.questionAd.fromQuestion === 2
       && JSON.stringify(config.engine.questionAd.sizes) === JSON.stringify([[336, 280], [300, 250], [320, 100], [300, 100], [320, 50], [300, 50]]),
       "chef: responsive question ads must begin on Question 2 with the approved sizes.",
+    );
+    fail(
+      config.engine?.resultAds?.adUnitPath === "/22677279144/display"
+      && config.engine.resultAds.inlinePlacements === 4
+      && config.engine.resultAds.sticky === true
+      && JSON.stringify(config.engine.resultAds.sizes) === JSON.stringify([[336, 280], [300, 250], [320, 100], [300, 100], [320, 50], [300, 50]]),
+      "chef: results need one header, three in-content and one sticky display placement.",
     );
     fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: compact quiz needs one clean final checkpoint without staged progress.");
     fail(source.checkpoint?.finalButton === "See My Results" && /final short ad/i.test(source.checkpoint?.finalCopy ?? "") && source.checkpoint?.finalChecklist?.length === 3, "chef/en.json: final rewarded result gate is incomplete.");

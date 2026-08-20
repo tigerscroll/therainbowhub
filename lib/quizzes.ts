@@ -21,6 +21,12 @@ export type QuizQuestionAdConfig = {
   fromQuestion: number;
   sizes: Array<[number, number]>;
 };
+export type QuizResultAdConfig = {
+  adUnitPath: string;
+  inlinePlacements: number;
+  sizes: Array<[number, number]>;
+  sticky: boolean;
+};
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
 export type QuizDerivedScoreConfig = {
   breakpoints: Array<{ ratio: number; value: number }>;
@@ -78,6 +84,7 @@ export type QuizEngineConfig = {
   localeParity: "strict" | "independent";
   rewarded: QuizRewardedConfig;
   questionAd?: QuizQuestionAdConfig;
+  resultAds?: QuizResultAdConfig;
   advanceDelayMs: number;
   targetRatio?: number;
   estimate?: QuizEstimateConfig;
@@ -397,6 +404,7 @@ type QuizManifest = {
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     questionAd?: QuizQuestionAdConfig;
+    resultAds?: QuizResultAdConfig;
     advanceDelayMs?: number;
     targetRatio?: number;
     estimate?: QuizEstimateConfig;
@@ -609,6 +617,23 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       sizes: sizes as Array<[number, number]>,
     };
   }
+  let resultAds: QuizResultAdConfig | undefined;
+  if (engine.resultAds !== undefined) {
+    const rawResultAds = object(engine.resultAds, "engine.resultAds", file);
+    const sizes = rawResultAds.sizes;
+    if (typeof rawResultAds.adUnitPath !== "string" || !rawResultAds.adUnitPath.startsWith("/")) throw new Error(`${file}: engine.resultAds.adUnitPath must be an absolute ad-unit path.`);
+    if (!Number.isInteger(rawResultAds.inlinePlacements) || Number(rawResultAds.inlinePlacements) < 1 || Number(rawResultAds.inlinePlacements) > 6) throw new Error(`${file}: engine.resultAds.inlinePlacements must be between 1 and 6.`);
+    if (typeof rawResultAds.sticky !== "boolean") throw new Error(`${file}: engine.resultAds.sticky must be a boolean.`);
+    if (!Array.isArray(sizes) || !sizes.length || sizes.some((size) => !Array.isArray(size) || size.length !== 2 || size.some((value) => !Number.isInteger(value) || value <= 0))) {
+      throw new Error(`${file}: engine.resultAds.sizes must contain positive width/height pairs.`);
+    }
+    resultAds = {
+      adUnitPath: rawResultAds.adUnitPath,
+      inlinePlacements: rawResultAds.inlinePlacements as number,
+      sizes: sizes as Array<[number, number]>,
+      sticky: rawResultAds.sticky,
+    };
+  }
   let estimate: QuizEstimateConfig | undefined;
   if (engine.estimate !== undefined) {
     const rawEstimate = object(engine.estimate, "engine.estimate", file);
@@ -643,7 +668,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.scoring !== "hybrid-match" && match) throw new Error(`${file}: engine.match is only supported by hybrid-match scoring.`);
   return {
     slug,
-    engine: { ...engine, questionAd, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
+    engine: { ...engine, questionAd, resultAds, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -1040,6 +1065,7 @@ function normalizeLocale(
         attempts: manifest.engine.rewarded?.attempts ?? 3,
       },
       questionAd: manifest.engine.questionAd,
+      resultAds: manifest.engine.resultAds,
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
       targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { mountDisplayAd, requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
+import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 
 test("rewarded ads reopen after early closes and only count genuine unavailability", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
@@ -140,4 +140,37 @@ test("question ads reuse one GPT slot and refresh it between questions", () => {
   assert.equal(displays, 1, "display should make the initial request only once");
   assert.equal(refreshes, 2, "question transitions should refresh the existing slot");
   assert.equal(destroys, 1, "the slot should be destroyed only when leaving the question flow");
+});
+
+test("results can mount one GPT bottom-anchor slot without affecting page layout", () => {
+  let definitions = 0;
+  let displays = 0;
+  let destroys = 0;
+  const slot = { addService() { return this; } };
+  const googletag = {
+    cmd: { push(command: () => void) { command(); } },
+    defineOutOfPageSlot(path: string, format: string) {
+      assert.equal(path, "/display");
+      assert.equal(format, "bottom-anchor");
+      definitions += 1;
+      return slot;
+    },
+    destroySlots(slots: object[]) { assert.deepEqual(slots, [slot]); destroys += 1; },
+    display(receivedSlot: object) { assert.equal(receivedSlot, slot); displays += 1; },
+    enableServices() {},
+    enums: { OutOfPageFormat: { BOTTOM_ANCHOR: "bottom-anchor" } },
+    pubads() { return { addEventListener() {} }; },
+    setConfig() {},
+  };
+  Object.defineProperty(globalThis, "window", {
+    configurable: true,
+    value: { googletag },
+  });
+
+  const controller = mountStickyDisplayAd({ adUnitPath: "/display" });
+  controller.destroy();
+
+  assert.equal(definitions, 1);
+  assert.equal(displays, 1);
+  assert.equal(destroys, 1);
 });
