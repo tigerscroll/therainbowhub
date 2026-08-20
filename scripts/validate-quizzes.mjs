@@ -231,7 +231,7 @@ for (const folder of folders) {
     const rewardedOpportunityCount = Number(config.engine?.rewarded?.start === true) + (config.engine?.rewarded?.stages === true ? source.stages.length : 0) + Number(Boolean(source.results?.score?.reviewUnlock || source.career?.reportUnlock));
     fail(rewardedOpportunityCount === 6, `${folder.name}: Memory must expose exactly six maximum rewarded opportunities.`);
     fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads must not interrupt the Memory challenge.`);
-    fail(source.landing?.startNote === "Short ad first — then your memory test begins.", `${folder.name}/en.json: the rewarded Start helper copy changed.`);
+    fail(source.landing?.startNote === "Short ad first - Then it begins.", `${folder.name}/en.json: the rewarded Start helper copy changed.`);
     fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showResultProgress === true, `${folder.name}/en.json: Memory needs its hidden journey, persistent shell and demoted intermediate progress.`);
     fail(source.career?.resultProgressLabel === "Memory challenge" && source.career?.resultProgressComplete === "{value}% complete", `${folder.name}/en.json: compact Memory progress copy changed.`);
     fail(source.career?.stages?.length === 5 && JSON.stringify(source.career.stages.map((stage) => stage.difficulty)) === JSON.stringify(["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"]), `${folder.name}/en.json: Memory difficulty progression changed.`);

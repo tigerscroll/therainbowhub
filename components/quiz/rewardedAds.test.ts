@@ -7,6 +7,8 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
   const listeners = new Map<string, Listener>();
   const outcomes: Array<RewardedResult | "granted-without-close" | "ready-only" | "pending"> = [];
+  const metaEvents: string[] = [];
+  let rewardClosedSent = false;
   let requests = 0;
 
   const pubads = {
@@ -50,20 +52,40 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
 
   Object.defineProperty(globalThis, "window", {
     configurable: true,
-    value: { clearTimeout, googletag, setTimeout },
+    value: {
+      clearTimeout,
+      fbq(command: string, name: string) {
+        if (command === "trackCustom") metaEvents.push(name);
+      },
+      googletag,
+      setTimeout,
+    },
   });
 
   outcomes.push("closed", "closed", "granted");
-  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "granted");
+  assert.equal(await requestRewardedAd({
+    adUnitPath: "/test",
+    attempts: 3,
+    onRewardClosed: () => { rewardClosedSent = true; },
+    rewardClosedAlreadySent: rewardClosedSent,
+  }), "granted");
   assert.equal(requests, 3, "each early close must reopen until the reward is granted");
+  assert.deepEqual(metaEvents, ["RewardClosed"], "only the granted-and-closed attempt emits the Meta event");
+  assert.equal(rewardClosedSent, true, "the quiz session is marked after its first completed reward");
 
   outcomes.push("unavailable", "unavailable", "unavailable");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "unavailable");
   assert.equal(requests, 6, "only genuine unavailable responses use the three-attempt fallback");
 
   outcomes.push("granted");
-  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "granted");
+  assert.equal(await requestRewardedAd({
+    adUnitPath: "/test",
+    attempts: 3,
+    onRewardClosed: () => { rewardClosedSent = true; },
+    rewardClosedAlreadySent: rewardClosedSent,
+  }), "granted");
   assert.equal(requests, 7);
+  assert.deepEqual(metaEvents, ["RewardClosed"], "later rewards in the same saved quiz session do not emit again");
 
   outcomes.push("ready-only");
   assert.equal(
@@ -80,6 +102,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
     "the watchdog must preserve an earned reward even when GPT loses the close event",
   );
   assert.equal(requests, 9);
+  assert.deepEqual(metaEvents, ["RewardClosed"], "a grant without the close event must not emit RewardClosed");
 
   const controller = new AbortController();
   outcomes.push("pending");

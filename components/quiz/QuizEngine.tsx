@@ -29,6 +29,7 @@ type SavedProgress = {
   screen: SavedScreen;
   studiedQuestions?: string[];
   reportUnlocked?: boolean;
+  rewardClosedSent?: boolean;
   reviewUnlocked?: boolean;
   updatedAt: string;
 };
@@ -349,6 +350,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
   if (!saved.screen || !["question", "checkpoint", "stage-result", "results"].includes(saved.screen)) return null;
   if (saved.reportUnlocked !== undefined && typeof saved.reportUnlocked !== "boolean") return null;
+  if (saved.rewardClosedSent !== undefined && typeof saved.rewardClosedSent !== "boolean") return null;
   if (saved.reviewUnlocked !== undefined && typeof saved.reviewUnlocked !== "boolean") return null;
 
   const answers: QuizAnswers = {};
@@ -371,6 +373,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [adBusy, setAdBusy] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [reportUnlocked, setReportUnlocked] = useState(false);
+  const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
@@ -442,6 +445,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
         setReportUnlocked(saved.reportUnlocked ?? false);
+        setRewardClosedSent(saved.rewardClosedSent ?? false);
         setReviewUnlocked(saved.reviewUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
@@ -468,11 +472,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       screen,
       studiedQuestions,
       reportUnlocked,
+      rewardClosedSent,
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, reviewUnlocked, screen, storageKey, studiedQuestions]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => () => {
     adRequestGeneration.current += 1;
@@ -496,6 +501,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       outcome = await requestRewardedAd({
         adUnitPath: siteConfig.rewardedAdUnitPath,
         attempts: quiz.engine.rewarded.attempts,
+        onRewardClosed: () => setRewardClosedSent(true),
+        rewardClosedAlreadySent: rewardClosedSent,
         signal: controller.signal,
       });
     } catch {
@@ -612,6 +619,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setCompletedStage(0);
     setStudiedQuestions([]);
     setReportUnlocked(false);
+    setRewardClosedSent(false);
     setReviewUnlocked(false);
     setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();

@@ -46,10 +46,14 @@ declare global {
 }
 
 type ActiveRequest = {
+  closed: boolean;
   cleanup?: () => void;
   granted: boolean;
   id: number;
+  onRewardClosed?: () => void;
+  rewardClosedAlreadySent: boolean;
   resolve: (result: RewardedResult) => void;
+  sent: boolean;
   slot: GptSlot | null;
   timer: number;
   visibleTimeoutMs: number;
@@ -59,6 +63,15 @@ let activeRequest: ActiveRequest | null = null;
 let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
+
+function sendRewardClosedIfComplete(request: ActiveRequest) {
+  if (!request.granted || !request.closed || request.sent || request.rewardClosedAlreadySent) return;
+  request.sent = true;
+  request.rewardClosedAlreadySent = true;
+  window.fbq?.("trackCustom", "RewardClosed");
+  console.info("[RewardedAd] RewardClosed conditions met; Meta event requested.");
+  request.onRewardClosed?.();
+}
 
 export function mountDisplayAd({
   adUnitPath,
@@ -188,10 +201,14 @@ function installListeners() {
     }, request.visibleTimeoutMs);
   });
   pubads.addEventListener("rewardedSlotGranted", (event) => {
-    if (activeRequest && event.slot === activeRequest.slot) activeRequest.granted = true;
+    if (!activeRequest || event.slot !== activeRequest.slot) return;
+    activeRequest.granted = true;
+    sendRewardClosedIfComplete(activeRequest);
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
+    activeRequest.closed = true;
+    sendRewardClosedIfComplete(activeRequest);
     finish(activeRequest.granted ? "granted" : "closed");
   });
   pubads.addEventListener("slotRenderEnded", (event) => {
@@ -200,7 +217,14 @@ function installListeners() {
   listenersInstalled = true;
 }
 
-function requestOnce(adUnitPath: string, timeoutMs: number, visibleTimeoutMs: number, signal?: AbortSignal) {
+function requestOnce(
+  adUnitPath: string,
+  timeoutMs: number,
+  visibleTimeoutMs: number,
+  signal?: AbortSignal,
+  rewardClosedAlreadySent = false,
+  onRewardClosed?: () => void,
+) {
   if (signal?.aborted) return Promise.resolve<RewardedResult>("closed");
   if (activeRequest) return Promise.resolve<RewardedResult>("unavailable");
 
@@ -211,10 +235,14 @@ function requestOnce(adUnitPath: string, timeoutMs: number, visibleTimeoutMs: nu
     };
     window.googletag = window.googletag ?? { cmd: [] };
     activeRequest = {
+      closed: false,
       cleanup: signal ? () => signal.removeEventListener("abort", onAbort) : undefined,
       granted: false,
       id,
+      onRewardClosed,
+      rewardClosedAlreadySent,
       resolve,
+      sent: false,
       slot: null,
       timer: window.setTimeout(() => {
         if (activeRequest?.id === id) finish("unavailable");
@@ -275,6 +303,8 @@ export async function requestRewardedAd({
   adUnitPath,
   attempts,
   onAttempt,
+  onRewardClosed,
+  rewardClosedAlreadySent = false,
   signal,
   timeoutMs = 4000,
   visibleTimeoutMs = 120000,
@@ -282,6 +312,8 @@ export async function requestRewardedAd({
   adUnitPath: string;
   attempts: number;
   onAttempt?: (attempt: number, maximum: number) => void;
+  onRewardClosed?: () => void;
+  rewardClosedAlreadySent?: boolean;
   signal?: AbortSignal;
   timeoutMs?: number;
   visibleTimeoutMs?: number;
@@ -293,7 +325,14 @@ export async function requestRewardedAd({
     if (signal?.aborted) return "closed";
     const attempt = unavailableAttempts + 1;
     onAttempt?.(attempt, maximum);
-    const result = await requestOnce(adUnitPath, timeoutMs, visibleTimeoutMs, signal);
+    const result = await requestOnce(
+      adUnitPath,
+      timeoutMs,
+      visibleTimeoutMs,
+      signal,
+      rewardClosedAlreadySent,
+      onRewardClosed,
+    );
     if (signal?.aborted) return "closed";
     if (result === "granted") return result;
     if (result === "closed") {
