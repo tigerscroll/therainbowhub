@@ -47,9 +47,9 @@ type QuestionRendererProps = {
   studyComplete: boolean;
 };
 
-function QuestionDisplayAd({ config, questionId }: { config: NonNullable<Quiz["engine"]["questionAd"]>; questionId: string }) {
+function QuestionDisplayAd({ config, placement, questionId }: { config: NonNullable<Quiz["engine"]["questionAd"]>; placement: "below-question" | "below-answers"; questionId: string }) {
   const reactId = useId().replaceAll(":", "");
-  const elementId = `quiz-question-ad-${reactId}`;
+  const elementId = `quiz-question-ad-${placement}-${reactId}`;
   const controllerRef = useRef<ReturnType<typeof mountDisplayAd> | null>(null);
   const previousQuestionRef = useRef<string | null>(null);
 
@@ -73,7 +73,7 @@ function QuestionDisplayAd({ config, questionId }: { config: NonNullable<Quiz["e
   }, [questionId]);
 
   return (
-    <div className="quiz-engine__question-ad" data-display-ad>
+    <div className="quiz-engine__question-ad" data-display-ad data-placement={placement}>
       <div id={elementId} />
     </div>
   );
@@ -1100,6 +1100,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
+        {quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
+          ? <QuestionDisplayAd config={quiz.engine.questionAd} placement="below-question" questionId={currentQuestion.id} />
+          : null}
         <QuestionRenderer
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
@@ -1112,7 +1115,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <p className="quiz-engine__explanation">{currentQuestion.explanation}</p>
         ) : null}
         {quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
-          ? <QuestionDisplayAd config={quiz.engine.questionAd} questionId={currentQuestion.id} />
+          ? <QuestionDisplayAd config={quiz.engine.questionAd} placement="below-answers" questionId={currentQuestion.id} />
           : null}
         {quiz.engine.flow.advance === "manual" ? (
           <button

@@ -348,8 +348,9 @@ for (const folder of folders) {
     fail(
       config.engine?.questionAd?.adUnitPath === "/22677279144/display"
       && config.engine.questionAd.fromQuestion === 2
+      && config.engine.questionAd.placements === 2
       && JSON.stringify(config.engine.questionAd.sizes) === JSON.stringify([[336, 280], [300, 250], [320, 100], [300, 100], [320, 50], [300, 50]]),
-      "chef: responsive question ads must begin on Question 2 with the approved sizes.",
+      "chef: two responsive question ads must begin on Question 2 with the approved sizes.",
     );
     fail(
       config.engine?.resultAds?.adUnitPath === "/22677279144/display"

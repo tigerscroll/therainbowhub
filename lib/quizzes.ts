@@ -19,6 +19,7 @@ export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: nu
 export type QuizQuestionAdConfig = {
   adUnitPath: string;
   fromQuestion: number;
+  placements: 2;
   sizes: Array<[number, number]>;
 };
 export type QuizResultAdConfig = {
@@ -608,12 +609,14 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const sizes = rawQuestionAd.sizes;
     if (typeof rawQuestionAd.adUnitPath !== "string" || !rawQuestionAd.adUnitPath.startsWith("/")) throw new Error(`${file}: engine.questionAd.adUnitPath must be an absolute ad-unit path.`);
     if (!Number.isInteger(rawQuestionAd.fromQuestion) || Number(rawQuestionAd.fromQuestion) < 1) throw new Error(`${file}: engine.questionAd.fromQuestion must be a positive integer.`);
+    if (rawQuestionAd.placements !== 2) throw new Error(`${file}: engine.questionAd.placements must be 2.`);
     if (!Array.isArray(sizes) || !sizes.length || sizes.some((size) => !Array.isArray(size) || size.length !== 2 || size.some((value) => !Number.isInteger(value) || value <= 0))) {
       throw new Error(`${file}: engine.questionAd.sizes must contain positive width/height pairs.`);
     }
     questionAd = {
       adUnitPath: rawQuestionAd.adUnitPath,
       fromQuestion: rawQuestionAd.fromQuestion as number,
+      placements: 2,
       sizes: sizes as Array<[number, number]>,
     };
   }
