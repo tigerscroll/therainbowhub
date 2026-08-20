@@ -104,7 +104,7 @@ export type QuizCareerStageCopy = {
   preAdBadge: string;
   preAdTitle: string;
   preAdCopy: string;
-  preAdChecks: string[];
+  preAdChecks?: string[];
   preAdButton: string;
   resultIcon: string;
   resultLabel: string;
@@ -119,7 +119,7 @@ export type QuizCareerStageCopy = {
     title: string;
     difficulty: string;
     tagline: string;
-    copy: string;
+    copy?: string;
     button: string;
   };
 };
@@ -127,6 +127,9 @@ export type QuizCareerStageCopy = {
 export type QuizCareerCopy = {
   hideJourneyLength?: boolean;
   continuousShell?: boolean;
+  showResultProgress?: boolean;
+  resultProgressLabel?: string;
+  resultProgressComplete?: string;
   compactGate?: {
     eyebrow: string;
     title: string;
@@ -784,6 +787,12 @@ function normalizeLocale(
     const career = value.career;
     if (career.hideJourneyLength !== undefined && typeof career.hideJourneyLength !== "boolean") throw new Error(`${file}: career.hideJourneyLength must be a boolean.`);
     if (career.continuousShell !== undefined && typeof career.continuousShell !== "boolean") throw new Error(`${file}: career.continuousShell must be a boolean.`);
+    if (career.showResultProgress !== undefined && typeof career.showResultProgress !== "boolean") throw new Error(`${file}: career.showResultProgress must be a boolean.`);
+    if (career.resultProgressLabel !== undefined) text(career.resultProgressLabel, "career.resultProgressLabel", file);
+    if (career.resultProgressComplete !== undefined) {
+      const progressComplete = text(career.resultProgressComplete, "career.resultProgressComplete", file);
+      if (!progressComplete.includes("{value}")) throw new Error(`${file}: career.resultProgressComplete must include {value}.`);
+    }
     if (career.compactGate) {
       (["eyebrow", "title", "copy", "button"] as const).forEach((key) => text(career.compactGate?.[key], `career.compactGate.${key}`, file));
       if (!career.compactGate.title.includes("{stage}")) throw new Error(`${file}: career.compactGate.title must include {stage}.`);
@@ -800,15 +809,19 @@ function normalizeLocale(
     career.stages.forEach((stage, index) => {
       (["difficulty", "preAdBadge", "preAdTitle", "preAdCopy", "preAdButton", "resultIcon", "resultLabel"] as const)
         .forEach((key) => text(stage[key], `career.stages[${index}].${key}`, file));
-      const checks = strings(stage.preAdChecks, `career.stages[${index}].preAdChecks`, file);
-      if (checks.length < 2 || checks.length > 4) throw new Error(`${file}: career stage ${index + 1} needs two to four checks.`);
+      const checks = stage.preAdChecks === undefined ? [] : strings(stage.preAdChecks, `career.stages[${index}].preAdChecks`, file);
+      if (checks.length > 4) throw new Error(`${file}: career stage ${index + 1} cannot have more than four checks.`);
+      if (index === value.stages.length - 1 && checks.length < 2) throw new Error(`${file}: the final career stage needs at least two checks.`);
       (["high", "medium", "low"] as const).forEach((band) => {
         text(stage.resultBands?.[band]?.title, `career.stages[${index}].resultBands.${band}.title`, file);
         text(stage.resultBands?.[band]?.insight, `career.stages[${index}].resultBands.${band}.insight`, file);
       });
       if (stage.promotion) (["eyebrow", "title", "copy"] as const).forEach((key) => text(stage.promotion?.[key], `career.stages[${index}].promotion.${key}`, file));
       if (index < value.stages.length - 1 && !stage.next) throw new Error(`${file}: career stage ${index + 1} needs a next-stage teaser.`);
-      if (stage.next) (["eyebrow", "title", "difficulty", "tagline", "copy", "button"] as const).forEach((key) => text(stage.next?.[key], `career.stages[${index}].next.${key}`, file));
+      if (stage.next) {
+        (["eyebrow", "title", "difficulty", "tagline", "button"] as const).forEach((key) => text(stage.next?.[key], `career.stages[${index}].next.${key}`, file));
+        if (stage.next.copy !== undefined) text(stage.next.copy, `career.stages[${index}].next.copy`, file);
+      }
     });
     if (career.reportUnlock) {
       (["eyebrow", "title", "copy", "button", "adNote", "reviewTitle", "perfectReview", "yourAnswer", "correctAnswer"] as const).forEach((key) => text(career.reportUnlock?.[key], `career.reportUnlock.${key}`, file));

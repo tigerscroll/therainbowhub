@@ -688,7 +688,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{compactCareerGate ? compactCareerGate.title.replace("{stage}", quiz.stages[completedStage]) : careerStage?.preAdTitle ?? checkpointTitle}</h2>
         {compactCareerGate ? <p>{compactCareerGate.copy}</p> : careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
-        {careerStage ? (!compactCareerGate ? (
+        {careerStage ? (!compactCareerGate && careerStage.preAdChecks?.length ? (
           <ul className="quiz-engine__checklist quiz-engine__career-checklist">
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
@@ -750,6 +750,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const completedSoFar = quiz.questions.filter((question) => question.stage <= completedStage);
     const cumulativeCorrect = completedSoFar.filter((question) => answers[question.id] === question.answerIndex).length;
     const cumulativePercentage = completedSoFar.length ? Math.round((cumulativeCorrect / completedSoFar.length) * 100) : 0;
+    const overallProgress = Math.round((cleared / quiz.stages.length) * 100);
     const currentRank = [...quiz.career.ranks].reverse().find((rank) => cleared >= rank.afterStage)?.label ?? quiz.career.ranks[0].label;
     return (
       <>
@@ -764,6 +765,16 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <section className="quiz-engine__career-current-score" style={{ "--career-score": `${cumulativePercentage}%` } as CSSProperties}>
             <span>{quiz.career.currentScoreLabel ?? "CURRENT SCORE"}</span>
             <strong>{cumulativePercentage}%</strong>
+          </section>
+        ) : null}
+
+        {quiz.career.showResultProgress ? (
+          <section className="quiz-engine__career-result-progress" style={{ "--career-result-progress": `${overallProgress}%` } as CSSProperties}>
+            <div>
+              <span>{quiz.career.resultProgressLabel ?? "CHALLENGE PROGRESS"}</span>
+              <strong>{(quiz.career.resultProgressComplete ?? "{value}% COMPLETE").replace("{value}", String(overallProgress))}</strong>
+            </div>
+            <i aria-hidden="true"><b /></i>
           </section>
         ) : null}
 

@@ -1,7 +1,7 @@
 {
   "slug": "memory",
   "engine": {
-    "flow": "linear",
+    "flow": "staged",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
@@ -12,12 +12,17 @@
       "attempts": 3
     },
     "advanceDelayMs": 450,
-    "targetRatio": 0.8
+    "targetRatio": 0.8,
+    "localeParity": "independent",
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    }
   },
   "listing": {
     "thumbnail": "assets/thumbnail.jpg",
     "published": "2026-08-12",
-    "duration": "3 min",
+    "duration": "8 min",
     "difficulty": "Hard",
     "icon": "🧠"
   },

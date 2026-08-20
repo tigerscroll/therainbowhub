@@ -17,7 +17,7 @@ test("the result recommendation pool contains the approved recent quizzes", () =
   );
 });
 
-test("every promoted result recommendation is a one-stage supported-length quiz", () => {
+test("every promoted result recommendation uses its supported compact journey", () => {
   for (const recommendation of RESULT_RECOMMENDATIONS) {
     const folder = join(process.cwd(), "data", "quizzes", recommendation.slug);
     const config = JSON.parse(readFileSync(join(folder, "quiz.json"), "utf8"));
@@ -28,12 +28,13 @@ test("every promoted result recommendation is a one-stage supported-length quiz"
       true,
       recommendation.slug,
     );
-    assert.equal(locale.stages.length, 1, recommendation.slug);
-    assert.equal(
-      locale.stages[0].questions.length,
-      10,
-      recommendation.slug,
-    );
+    if (recommendation.slug === "memory") {
+      assert.equal(locale.stages.length, 5, recommendation.slug);
+      assert.deepEqual(locale.stages.map((stage: { questions: unknown[] }) => stage.questions.length), [8, 8, 8, 8, 8]);
+    } else {
+      assert.equal(locale.stages.length, 1, recommendation.slug);
+      assert.equal(locale.stages[0].questions.length, 10, recommendation.slug);
+    }
   }
 });
 

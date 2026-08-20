@@ -423,6 +423,12 @@
 .quiz-engine__stage-score strong { font-size: clamp(62px, 13vw, 92px); line-height: .82; letter-spacing: -.07em; }
 .quiz-engine__stage-score span { color: var(--quiz-muted); font-size: 19px; font-weight: 900; }
 .quiz-engine__stage-result > h2 { margin: 8px 0; font-size: clamp(29px, 5vw, 46px); line-height: 1; }
+.quiz-engine__career-result-progress { display: grid; gap: 8px; width: 100%; }
+.quiz-engine__career-result-progress > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.quiz-engine__career-result-progress span,
+.quiz-engine__career-result-progress strong { font-size: 12px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+.quiz-engine__career-result-progress > i { display: block; height: 10px; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--quiz-border) 14%, var(--quiz-surface-raised)); }
+.quiz-engine__career-result-progress > i > b { display: block; width: var(--career-result-progress); height: 100%; border-radius: inherit; background: var(--quiz-primary); }
 .quiz-engine__career-current-score { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 20px 0; padding: 17px 20px; border: 1px solid var(--quiz-border); border-radius: var(--quiz-button-radius); background: var(--quiz-surface-raised); text-align: left; }
 .quiz-engine__career-current-score span { color: var(--quiz-muted); font-size: 12px; font-weight: 950; letter-spacing: .11em; text-transform: uppercase; }
 .quiz-engine__career-current-score strong { color: var(--quiz-primary); font-size: clamp(26px, 5vw, 36px); line-height: 1; }

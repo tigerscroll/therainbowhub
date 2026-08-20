@@ -181,21 +181,40 @@ for (const folder of folders) {
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
-    const approvedIds = ["m-r1q1", "m-r1q2", "m-r1q6", "m-r3q1", "m-r3q2", "m-r1q4", "m-r9q1", "m-r7q1", "m-r9q2", "m-r10q3"];
     const ids = sourceQuestions.map((question) => question.id);
-    fail(config.engine?.flow === "linear" && source.progressLabel === "complete", `${folder.name}: Memory must use its percentage-led single-stage flow.`);
-    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Memory must contain one stage of ten questions.`);
-    fail(JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: Memory must retain the approved ten-question order.`);
+    const expectedStages = ["Quick Recall", "Pictures & Details", "Numbers & Patterns", "The Memory Trap", "Final Memory Challenge"];
+    const expectedCategoryCounts = { word_recall: 7, visual: 7, numbers: 7, working_memory: 7, association: 6, attention: 6 };
+    fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: English Memory must use the staged independent-locale flow.`);
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
+    fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedStages), `${folder.name}/en.json: Memory round order changed.`);
+    fail(ids.length === 40 && new Set(ids).size === 40, `${folder.name}/en.json: Memory needs 40 unique scored questions.`);
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Memory screens must not use separate context banners.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length >= 3 && question.answers?.length <= 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs one valid answer and unique choices.`);
-    fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([3, 2, 2, 3]), `${folder.name}/en.json: Memory correct positions must keep their irregular 3/2/2/3 balance.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length === 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs four unique choices and one valid answer.`);
+    fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory correct positions must be exactly 10/10/10/10.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
+    fail(Object.entries(expectedCategoryCounts).every(([category, count]) => sourceQuestions.filter((question) => question.category === category).length === count), `${folder.name}/en.json: Memory category distribution must remain 7/7/7/7/6/6.`);
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
-    fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || question.study.durationMs >= 2800), `${folder.name}/en.json: automatic study cues need at least 2800ms.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and two rewarded gates changed.`);
+    fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four cards.`);
+    fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || (question.study.durationMs >= 3000 && question.study.durationMs <= 6000)), `${folder.name}/en.json: automatic study cues must remain between 3000ms and 6000ms.`);
+    fail(source.stages.every((stage) => stage.questions.filter((question) => question.study).length >= 2 && stage.questions.filter((question) => question.study).length <= 3), `${folder.name}/en.json: each Memory round needs two or three meaningful study moments.`);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
+    fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads must not interrupt the Memory challenge.`);
+    fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showResultProgress === true, `${folder.name}/en.json: Memory needs its hidden journey, persistent shell and demoted intermediate progress.`);
+    fail(source.career?.resultProgressLabel === "Memory challenge" && source.career?.resultProgressComplete === "{value}% complete", `${folder.name}/en.json: compact Memory progress copy changed.`);
+    fail(source.career?.stages?.length === 5 && JSON.stringify(source.career.stages.map((stage) => stage.difficulty)) === JSON.stringify(["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"]), `${folder.name}/en.json: Memory difficulty progression changed.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next) && source.career?.stages?.[4]?.next === undefined, `${folder.name}/en.json: Memory needs four next-challenge teasers and no final teaser.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final Memory result gate may use checklist rows.`);
+    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.tagline)) === JSON.stringify(["Colours. Positions. Changes.", "Digits. Order. Working memory.", "Interference. Similar clues. Older memories.", "Delayed recall. Working memory. Final callbacks."]), `${folder.name}/en.json: Memory next-round taglines must describe the upcoming round.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.copy === undefined), `${folder.name}/en.json: compact Memory teasers must not add a second explanatory line.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.button?.startsWith("Start ")), `${folder.name}/en.json: Memory next-round CTAs must use Start.`);
+    fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Final Result", `${folder.name}/en.json: Memory needs five rewarded round-result gates.`);
+    fail(source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: Memory answer review must not add a seventh rewarded opportunity.`);
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);
-    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: Memory final gate or compact result settings changed.`);
+    fail(source.results?.score?.showBestRound === true, `${folder.name}/en.json: Memory final result must show the best round.`);
+    fail(sourceQuestions[0]?.study?.items?.includes("PURPLE ELEPHANT") && /elephant/i.test(sourceQuestions[32]?.question) && sourceQuestions[32]?.answers?.[sourceQuestions[32]?.correct] === "Purple", `${folder.name}/en.json: the opening purple-elephant seed and final callback must remain aligned.`);
+    fail(/Sarah/.test(sourceQuestions[11]?.study?.items?.join(" ") ?? "") && sourceQuestions[13]?.answers?.[sourceQuestions[13]?.correct] === "Blue", `${folder.name}/en.json: Sarah's delayed detail seed and callback must remain aligned.`);
+    fail(sourceQuestions[33]?.answers?.[sourceQuestions[33]?.correct] === "Clock" && sourceQuestions[36]?.answers?.[sourceQuestions[36]?.correct] === "65" && sourceQuestions[37]?.answers?.[sourceQuestions[37]?.correct] === "08:40" && sourceQuestions[38]?.answers?.[sourceQuestions[38]?.correct] === "MARKER", `${folder.name}/en.json: final delayed callbacks and working-memory answers are misaligned.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "iq") {
@@ -309,23 +328,23 @@ for (const folder of folders) {
   }
   if (folder.name === "chef") {
     const expectedCategories = {
-      kitchen_fundamentals: 20,
-      ingredients_flavour: 20,
-      heat_methods: 20,
-      baking_pastry: 20,
-      kitchen_maths: 20,
-      safety_service: 20,
+      kitchen_fundamentals: 5,
+      ingredients_flavour: 5,
+      heat_methods: 5,
+      baking_pastry: 5,
+      kitchen_maths: 5,
+      safety_service: 5,
     };
-    const expectedTitles = ["Kitchen Induction", "Prep Bench", "Control the Heat", "Flavour Lab", "Pastry Precision", "Service Rush", "Kitchen Maths", "Spot the Mistake", "Sous Chef Decisions", "Chef’s Table", "Market Basket", "Sauce Station", "Breakfast Rush", "Banquet Scale-Up", "Waste-Smart Kitchen", "Cold Kitchen", "Bread and Dough", "Menu Troubleshooter", "Executive Decisions", "Grand Service"];
-    const expectedDifficulties = ["Foundation", "Developing", "Developing", "Skilled", "Skilled", "Pressure", "Pressure", "Advanced", "Expert", "Mastery", "Mastery", "Mastery", "Expert", "Expert", "Expert", "Elite", "Elite", "Executive", "Executive", "Grand Final"];
-    const expectedGateTitles = expectedTitles.map((title) => `Your ${title} Results Are Ready`);
+    const expectedTitles = ["Kitchen Induction", "Prep Bench", "Kitchen Craft", "Service Rush", "Chef’s Table"];
+    const expectedDifficulties = ["Foundation", "Developing", "Skilled", "Pressure", "Final Assessment"];
+    const expectedGateTitles = ["Your Kitchen Induction Results Are Ready", "Your Prep Bench Results Are Ready", "Your Kitchen Craft Results Are Ready", "Your Service Rush Results Are Ready", "Your Chef Score Is Ready"];
     const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
     const correctPositions = sourceQuestions.reduce((positions, question) => {
       positions[question.correct] = (positions[question.correct] ?? 0) + 1;
       return positions;
     }, Array(4).fill(0));
-    const sprint = source.stages?.[5]?.questions ?? [];
-    const final = source.stages?.[19]?.questions ?? [];
+    const sprint = source.stages?.[3]?.questions ?? [];
+    const final = source.stages?.[4]?.questions ?? [];
     const serialized = JSON.stringify(source);
     const preFinishCopy = JSON.stringify({ landing: source.landing, about: source.about, checkpoint: source.checkpoint });
 
@@ -336,11 +355,12 @@ for (const folder of folders) {
     fail(source.landing?.startPrompt === undefined, "chef/en.json: the landing CTA must begin directly without a pre-ad prompt.");
     fail(source.title === "Only 12% Pass This Chef's Entrance Exam" && source.landing?.cta === "Start Quiz" && source.landing?.socialProof === "81,000+ people played this", "chef/en.json: approved landing copy changed.");
 
-    fail(source.stages?.length === 20 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: staged challenge needs twenty kitchens of six questions.");
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: staged challenge needs five kitchens of six questions.");
     fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedTitles), "chef/en.json: kitchen order or text-only titles changed.");
-    fail(sourceQuestions.length === 120 && new Set(sourceQuestionIds).size === 120, "chef/en.json: needs 120 stable unique questions.");
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), "chef/en.json: every kitchen area needs exactly twenty questions.");
-    fail(JSON.stringify(correctPositions) === JSON.stringify([30, 30, 30, 30]), "chef/en.json: correct positions must remain exactly 30/30/30/30.");
+    fail(sourceQuestions.length === 30 && new Set(sourceQuestionIds).size === 30, "chef/en.json: needs 30 stable unique questions.");
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), "chef/en.json: every kitchen area needs exactly five questions.");
+    fail(source.stages.every((stage) => Object.keys(expectedCategories).every((category) => stage.questions.filter((question) => question.category === category).length === 1)), "chef/en.json: every kitchen needs one question from each kitchen area.");
+    fail(JSON.stringify(correctPositions) === JSON.stringify([8, 8, 7, 7]), "chef/en.json: correct positions must remain balanced at 8/8/7/7.");
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4 && Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), "chef/en.json: every question needs four unique choices and one valid answer.");
     fail(sourceQuestions.every((question) => (
       question.presentation === "text"
@@ -357,7 +377,7 @@ for (const folder of folders) {
     fail(source.stages.every((stage) => stage.questions.every((question, index, questions) => index < 2 || question.interactionStyle !== questions[index - 1].interactionStyle || question.interactionStyle !== questions[index - 2].interactionStyle)), "chef/en.json: one reasoning style cannot appear three times consecutively.");
     fail(sprint.length === 6 && sprint.every((question) => question.delay === 350) && sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, "chef/en.json: Service Rush needs six 350ms questions and at least five short prompts.");
     fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), "chef/en.json: only Service Rush may override the 450ms default.");
-    fail(final.length === 6 && final.every((question) => question.reasoningSteps === 2), "chef/en.json: every Grand Service question needs two-step reasoning.");
+    fail(final.length === 6 && final.every((question) => question.reasoningSteps === 2), "chef/en.json: every Chef’s Table question needs two-step reasoning.");
     fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), "chef/en.json: Chef must remain worldwide metric or unit-neutral.");
 
     fail(source.career?.hideJourneyLength === true && source.career?.currentScoreLabel === "CURRENT CHEF SCORE", "chef/en.json: hidden-length career mode and cumulative percentage label are required.");
@@ -365,10 +385,10 @@ for (const folder of folders) {
     fail(source.career?.reportUnlock === undefined, "chef/en.json: the final kitchen reveal must deliver the full result without another report gate.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.difficulty)) === JSON.stringify(expectedDifficulties), "chef/en.json: difficulty progression changed.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.preAdTitle)) === JSON.stringify(expectedGateTitles), "chef/en.json: every kitchen needs its exact Results Are Ready title.");
-    fail(source.career?.stages?.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && stage.promotion === undefined && (index === 19 || stage.next)), "chef/en.json: every kitchen needs a complete result gate, three score bands and next-kitchen teaser.");
+    fail(source.career?.stages?.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && stage.promotion === undefined && (index === 4 || stage.next)), "chef/en.json: every kitchen needs a complete result gate, three score bands and next-kitchen teaser.");
     fail(source.career?.stages?.every((stage) => !/\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) kitchens? (?:remain|left|away)|\/\s*10/i.test(JSON.stringify(stage.next ?? {}))), "chef/en.json: next-kitchen teasers must never disclose how many kitchens remain.");
     fail(!/\b(?:10|ten) (?:rounds|stages|kitchens)|60 questions|\/\s*10/i.test(preFinishCopy), "chef/en.json: landing, About and result-ready copy must not reveal the journey length.");
-    fail(source.checkpoint?.reveals?.length === 20 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: needs one hidden-length result checkpoint per kitchen and no journey progress meter.");
+    fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: needs one hidden-length result checkpoint per kitchen and no journey progress meter.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.insights?.details, "chef/en.json: final percentage, best kitchen and complete result report are required.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
   }
