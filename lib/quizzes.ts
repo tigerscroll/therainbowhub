@@ -103,7 +103,7 @@ export type QuizCareerStageCopy = {
   difficulty: string;
   preAdBadge: string;
   preAdTitle: string;
-  preAdCopy: string;
+  preAdCopy?: string;
   preAdChecks?: string[];
   preAdButton: string;
   resultIcon: string;
@@ -396,7 +396,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
+  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProof: string; socialAvatars: string[]; startNote?: string; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -441,7 +441,7 @@ type QuizLocaleFile = {
   summary: string;
   progressLabel?: string;
   nextQuestionLabel?: string;
-  landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string; startPrompt?: QuizRewardPrompt };
+  landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string; startNote?: string; startPrompt?: QuizRewardPrompt };
   about?: {
     body: string;
     disclaimer?: string;
@@ -752,6 +752,7 @@ function normalizeLocale(
 ): Quiz {
   const title = text(value.title, "title", file);
   const summary = text(value.summary, "summary", file);
+  if (value.landing?.startNote !== undefined) text(value.landing.startNote, "landing.startNote", file);
   if (value.landing?.startPrompt) {
     if (!manifest.engine.rewarded?.start) throw new Error(`${file}: landing.startPrompt requires a rewarded start gate.`);
     (["eyebrow", "icon", "title", "copy", "button"] as const)
@@ -807,8 +808,9 @@ function normalizeLocale(
     });
     if (!Array.isArray(career.stages) || career.stages.length !== value.stages.length) throw new Error(`${file}: career stages must match quiz stages.`);
     career.stages.forEach((stage, index) => {
-      (["difficulty", "preAdBadge", "preAdTitle", "preAdCopy", "preAdButton", "resultIcon", "resultLabel"] as const)
+      (["difficulty", "preAdBadge", "preAdTitle", "preAdButton", "resultIcon", "resultLabel"] as const)
         .forEach((key) => text(stage[key], `career.stages[${index}].${key}`, file));
+      if (stage.preAdCopy !== undefined) text(stage.preAdCopy, `career.stages[${index}].preAdCopy`, file);
       const checks = stage.preAdChecks === undefined ? [] : strings(stage.preAdChecks, `career.stages[${index}].preAdChecks`, file);
       if (checks.length > 4) throw new Error(`${file}: career stage ${index + 1} cannot have more than four checks.`);
       if (index === value.stages.length - 1 && checks.length < 2) throw new Error(`${file}: the final career stage needs at least two checks.`);
@@ -1129,6 +1131,7 @@ function normalizeLocale(
       infoBadge: value.landing?.badge,
       socialProof: value.landing?.socialProof ?? "",
       ctaLabel: value.landing?.cta,
+      startNote: value.landing?.startNote,
       socialAvatars,
       startPrompt: value.landing?.startPrompt,
     },

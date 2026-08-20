@@ -184,6 +184,35 @@ for (const folder of folders) {
     const ids = sourceQuestions.map((question) => question.id);
     const expectedStages = ["Quick Recall", "Pictures & Details", "Numbers & Patterns", "The Memory Trap", "Final Memory Challenge"];
     const expectedCategoryCounts = { word_recall: 7, visual: 7, numbers: 7, working_memory: 7, association: 6, attention: 6 };
+    const expectedCorrectPositions = [
+      [1, 3, 0, 2, 0, 3, 1, 2],
+      [2, 0, 3, 1, 3, 1, 0, 2],
+      [3, 1, 2, 0, 1, 2, 0, 3],
+      [0, 2, 1, 3, 2, 0, 3, 1],
+      [1, 3, 0, 2, 3, 1, 2, 0],
+    ];
+    const expectedIntermediateBands = [
+      {
+        high: ["Recall Ignited", "You captured the opening details with sharp, confident recall."],
+        medium: ["Memory Warm-Up Complete", "Several opening details stuck, while a few slipped away."],
+        low: ["First Signal Captured", "The opening round found useful clues about what captures your attention."],
+      },
+      {
+        high: ["Detail Detective", "Colours, positions and object order stayed impressively clear."],
+        medium: ["Visual Signals Captured", "Some colours, positions and object order stayed clear, while finer details proved trickier."],
+        low: ["Detail Profile Building", "The visual round exposed the details most likely to slip past unnoticed."],
+      },
+      {
+        high: ["Pattern Keeper", "You held and manipulated number patterns with excellent control."],
+        medium: ["Numbers Held Strong", "You held several number and sequence clues correctly, while the harder manipulations added pressure."],
+        low: ["Working Memory Stretched", "The number round stretched your working memory and added a useful new signal."],
+      },
+      {
+        high: ["Trap Breaker", "You separated similar clues and retrieved older details under interference."],
+        medium: ["Interference Resisted", "You recovered several older details despite the similar clues and interference."],
+        low: ["Recall Under Pressure", "The traps were demanding, but completing them strengthened your overall profile."],
+      },
+    ];
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: English Memory must use the staged independent-locale flow.`);
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
     fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedStages), `${folder.name}/en.json: Memory round order changed.`);
@@ -191,30 +220,44 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Memory screens must not use separate context banners.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length === 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs four unique choices and one valid answer.`);
     fail(JSON.stringify([0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length)) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory correct positions must be exactly 10/10/10/10.`);
+    fail(JSON.stringify(source.stages.map((stage) => stage.questions.map((question) => question.correct))) === JSON.stringify(expectedCorrectPositions), `${folder.name}/en.json: the approved per-round correct-position sequence changed.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
     fail(Object.entries(expectedCategoryCounts).every(([category, count]) => sourceQuestions.filter((question) => question.category === category).length === count), `${folder.name}/en.json: Memory category distribution must remain 7/7/7/7/6/6.`);
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
-    fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four cards.`);
+    fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 6), `${folder.name}/en.json: Memory study cues may never exceed six separate items.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || (question.study.durationMs >= 3000 && question.study.durationMs <= 6000)), `${folder.name}/en.json: automatic study cues must remain between 3000ms and 6000ms.`);
     fail(source.stages.every((stage) => stage.questions.filter((question) => question.study).length >= 2 && stage.questions.filter((question) => question.study).length <= 3), `${folder.name}/en.json: each Memory round needs two or three meaningful study moments.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
+    const rewardedOpportunityCount = Number(config.engine?.rewarded?.start === true) + (config.engine?.rewarded?.stages === true ? source.stages.length : 0) + Number(Boolean(source.results?.score?.reviewUnlock || source.career?.reportUnlock));
+    fail(rewardedOpportunityCount === 6, `${folder.name}: Memory must expose exactly six maximum rewarded opportunities.`);
     fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads must not interrupt the Memory challenge.`);
+    fail(source.landing?.startNote === "Short ad first — then your memory test begins.", `${folder.name}/en.json: the rewarded Start helper copy changed.`);
     fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showResultProgress === true, `${folder.name}/en.json: Memory needs its hidden journey, persistent shell and demoted intermediate progress.`);
     fail(source.career?.resultProgressLabel === "Memory challenge" && source.career?.resultProgressComplete === "{value}% complete", `${folder.name}/en.json: compact Memory progress copy changed.`);
     fail(source.career?.stages?.length === 5 && JSON.stringify(source.career.stages.map((stage) => stage.difficulty)) === JSON.stringify(["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"]), `${folder.name}/en.json: Memory difficulty progression changed.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next) && source.career?.stages?.[4]?.next === undefined, `${folder.name}/en.json: Memory needs four next-challenge teasers and no final teaser.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage, index) => ["high", "medium", "low"].every((band) => stage.resultBands?.[band]?.title === expectedIntermediateBands[index][band][0] && stage.resultBands?.[band]?.insight === expectedIntermediateBands[index][band][1])), `${folder.name}/en.json: approved Memory result-band copy changed.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final Memory result gate may use checklist rows.`);
+    fail(source.career?.stages?.[4]?.preAdBadge === "FINAL MEMORY CHALLENGE COMPLETE" && source.career?.stages?.[4]?.preAdTitle === "YOUR MEMORY RESULT IS READY" && source.career?.stages?.[4]?.resultIcon === "🧠" && source.career?.stages?.[4]?.preAdCopy === undefined, `${folder.name}/en.json: the final Memory gate hierarchy changed.`);
     fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.tagline)) === JSON.stringify(["Colours. Positions. Changes.", "Digits. Order. Working memory.", "Interference. Similar clues. Older memories.", "Delayed recall. Working memory. Final callbacks."]), `${folder.name}/en.json: Memory next-round taglines must describe the upcoming round.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.copy === undefined), `${folder.name}/en.json: compact Memory teasers must not add a second explanatory line.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.button?.startsWith("Start ")), `${folder.name}/en.json: Memory next-round CTAs must use Start.`);
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Final Result", `${folder.name}/en.json: Memory needs five rewarded round-result gates.`);
-    fail(source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: Memory answer review must not add a seventh rewarded opportunity.`);
+    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory answer review must not add a seventh rewarded opportunity.`);
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3 && details?.finalTitle && details?.finalCopy, `${folder.name}/en.json: English Memory needs the full result report.`);
     fail(source.results?.score?.showBestRound === true, `${folder.name}/en.json: Memory final result must show the best round.`);
     fail(sourceQuestions[0]?.study?.items?.includes("PURPLE ELEPHANT") && /elephant/i.test(sourceQuestions[32]?.question) && sourceQuestions[32]?.answers?.[sourceQuestions[32]?.correct] === "Purple", `${folder.name}/en.json: the opening purple-elephant seed and final callback must remain aligned.`);
     fail(/Sarah/.test(sourceQuestions[11]?.study?.items?.join(" ") ?? "") && sourceQuestions[13]?.answers?.[sourceQuestions[13]?.correct] === "Blue", `${folder.name}/en.json: Sarah's delayed detail seed and callback must remain aligned.`);
     fail(sourceQuestions[33]?.answers?.[sourceQuestions[33]?.correct] === "Clock" && sourceQuestions[36]?.answers?.[sourceQuestions[36]?.correct] === "65" && sourceQuestions[37]?.answers?.[sourceQuestions[37]?.correct] === "08:40" && sourceQuestions[38]?.answers?.[sourceQuestions[38]?.correct] === "MARKER", `${folder.name}/en.json: final delayed callbacks and working-memory answers are misaligned.`);
+    fail(JSON.stringify(sourceQuestions[8]?.study?.items) === JSON.stringify(["🧢", "🧁", "📷", "🪁", "🧤", "🔔"]) && sourceQuestions[8]?.study?.durationMs === 5000, `${folder.name}/en.json: Pictures & Details needs six separate ordered objects.`);
+    fail(sourceQuestions[8]?.answers?.[sourceQuestions[8]?.correct] === "Camera" && sourceQuestions[12]?.answers?.[sourceQuestions[12]?.correct] === "Camera" && sourceQuestions[15]?.answers?.[sourceQuestions[15]?.correct] === "Camera and glove", `${folder.name}/en.json: object-order questions no longer match their study cue.`);
+    fail(JSON.stringify(sourceQuestions[24]?.study?.items) === JSON.stringify(["MARKET", "MARKER", "MARBLE", "MARGIN", "MARVEL"]) && sourceQuestions[24]?.study?.durationMs === 4500, `${folder.name}/en.json: the five-word Memory Trap cue changed.`);
+    fail(JSON.stringify(sourceQuestions[25]?.study?.items) === JSON.stringify(["🔔", "🧲", "🪜", "🧩", "🕯️"]) && sourceQuestions[25]?.study?.durationMs === 4500, `${folder.name}/en.json: the five-object Memory Trap cue changed.`);
+    fail(sourceQuestions[26]?.question === "Which code is B7RK with only the final two letters swapped?" && sourceQuestions[26]?.answers?.[sourceQuestions[26]?.correct] === "B7KR", `${folder.name}/en.json: the upgraded Memory Trap attention question changed.`);
+    fail(JSON.stringify(sourceQuestions[34]?.study?.items) === JSON.stringify(["🧭", "🍓", "🎈", "🔔", "🪵", "🎲"]) && sourceQuestions[34]?.study?.durationMs === 5500, `${folder.name}/en.json: the six-object final sequence changed.`);
+    fail(sourceQuestions[35]?.question === "Reverse 2 – 8 – 1 – 5 – 6. What is the second number in the reversed sequence?" && sourceQuestions[35]?.answers?.[sourceQuestions[35]?.correct] === "5", `${folder.name}/en.json: the final reversal task changed.`);
+    fail(sourceQuestions[0]?.question === "Which word appeared in the opening details?" && sourceQuestions[5]?.question === "Which item came immediately after LEMON?" && sourceQuestions[7]?.question === "Which animal appeared in the opening details?" && sourceQuestions[28]?.question === "Which colour appeared in the opening details?", `${folder.name}/en.json: opening-detail wording regressed.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "iq") {

@@ -6,7 +6,7 @@ import { flushSync } from "react-dom";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
-import { getStageCompletionPercentage } from "./engineState";
+import { getCareerResultBand, getStageCompletionPercentage } from "./engineState";
 import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
@@ -429,6 +429,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const stagePositionProgress = stageQuestions.length > 0
     ? Math.round(((stageQuestionIndex + 1) / stageQuestions.length) * 100)
     : 0;
+  const displayedStageProgress = quiz.career?.continuousShell ? progress : stagePositionProgress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
   useLayoutEffect(() => {
@@ -635,7 +636,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
           </button>
-          {quiz.engine.rewarded.start ? <p className="quiz-engine__ad-note"><span>✓</span>{translations.ad.startNote}</p> : null}
+          {quiz.engine.rewarded.start ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
         </div>
         {quiz.theme.artwork?.landing ? (
           <div className="quiz-engine__landing-art" aria-hidden="true">
@@ -687,7 +688,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : null}
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{compactCareerGate ? compactCareerGate.title.replace("{stage}", quiz.stages[completedStage]) : careerStage?.preAdTitle ?? checkpointTitle}</h2>
-        {compactCareerGate ? <p>{compactCareerGate.copy}</p> : careerStage ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
+        {compactCareerGate ? <p>{compactCareerGate.copy}</p> : careerStage?.preAdCopy ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
         {careerStage ? (!compactCareerGate && careerStage.preAdChecks?.length ? (
           <ul className="quiz-engine__checklist quiz-engine__career-checklist">
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
@@ -745,7 +746,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const stageCopy = quiz.career.stages[completedStage];
     const completedQuestions = quiz.questions.filter((question) => question.stage === completedStage);
     const stageCorrect = completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
-    const stageBand = stageCorrect >= 5 ? stageCopy.resultBands.high : stageCorrect >= 3 ? stageCopy.resultBands.medium : stageCopy.resultBands.low;
+    const stageBand = stageCopy.resultBands[getCareerResultBand(stageCorrect, completedQuestions.length)];
     const cleared = completedStage + 1;
     const completedSoFar = quiz.questions.filter((question) => question.stage <= completedStage);
     const cumulativeCorrect = completedSoFar.filter((question) => answers[question.id] === question.answerIndex).length;
@@ -1128,8 +1129,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <strong>{quiz.stages[currentStage]}</strong>
         {quiz.career ? <em>{quiz.career.hideJourneyLength ? `${stageQuestionIndex + 1} of ${stageQuestions.length}` : currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} of ${stageQuestions.length}`}</em> : null}
       </div>
-      <div className="quiz-engine__progress" data-complete={quiz.career && stageQuestionIndex + 1 === stageQuestions.length ? true : undefined}>
-        <i style={{ width: `${quiz.career ? stagePositionProgress : progress}%` }} />
+      <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
+        <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
       </div>
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}

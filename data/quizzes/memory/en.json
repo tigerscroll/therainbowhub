@@ -3,9 +3,10 @@
   "eyebrow": "Memory Challenge",
   "summary": "Words, pictures, numbers, associations and delayed callbacks test your memory across five escalating challenges.",
   "landing": {
-    "intro": "Think your memory is still sharp? Some challenges are easy. Some are designed to catch you out. Can you score 80%?",
+    "intro": "Think your memory is still sharp? Some challenges are easy. Others are designed to catch you out.",
     "socialProof": "81,000+ people played this",
-    "cta": "Start Test"
+    "cta": "Start Test",
+    "startNote": "Short ad first — then your memory test begins."
   },
   "about": {
     "body": "This memory quiz uses short word, picture, number, association and attention challenges to create a playful snapshot of recall. Across five escalating rounds, you will capture details, manipulate short sequences and retrieve information after other tasks have interrupted the original memory.\n\nThe activities touch on everyday skills such as concentration, visual memory, working memory and detail recall. Some cues return much later, so each round rewards careful attention without using speed as part of the score.\n\nYour final score shows how many of the 40 questions were correct and highlights the memory categories that suited you best. Performance can vary with attention, tiredness, stress, familiarity and chance, so treat the result as entertainment rather than a judgement about brain health or long-term memory ability.",
@@ -172,7 +173,7 @@
       "questions": [
         {
           "id": "memory-r1q1",
-          "question": "Which single word appeared in the opening list?",
+          "question": "Which word appeared in the opening details?",
           "answers": [
             "LIME",
             "KEY",
@@ -267,7 +268,7 @@
         },
         {
           "id": "memory-r1q6",
-          "question": "Which word came immediately after LEMON?",
+          "question": "Which item came immediately after LEMON?",
           "answers": [
             "BLUE",
             "KEY",
@@ -291,7 +292,7 @@
         },
         {
           "id": "memory-r1q8",
-          "question": "Which animal appeared in the opening list?",
+          "question": "Which animal appeared in the opening details?",
           "answers": [
             "Giraffe",
             "Tiger",
@@ -325,13 +326,15 @@
           "category": "visual",
           "presentation": "icons",
           "study": {
-            "title": "Study the object order",
+            "title": "Study the six-object order",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
-            "🧢",
-            "🧁 · 📷",
-            "🪁 · 🧤",
-            "🔔"
+              "🧢",
+              "🧁",
+              "📷",
+              "🪁",
+              "🧤",
+              "🔔"
             ],
             "durationMs": 5000,
             "mode": "automatic",
@@ -605,10 +608,11 @@
             "title": "These words are deliberately similar",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
-            "MARKET",
-            "MARKER",
-            "MARBLE",
-            "MARGIN"
+              "MARKET",
+              "MARKER",
+              "MARBLE",
+              "MARGIN",
+              "MARVEL"
             ],
             "durationMs": 4500,
             "mode": "automatic"
@@ -636,23 +640,24 @@
             "title": "Study these five objects",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
-            "🔔",
-            "🧲",
-            "🪜",
-            "🧩"
+              "🔔",
+              "🧲",
+              "🪜",
+              "🧩",
+              "🕯️"
             ],
             "durationMs": 4500,
             "mode": "automatic",
             "presentation": "icons",
-            "ariaLabel": "Bell, magnet, ladder, puzzle piece"
+            "ariaLabel": "Bell, magnet, ladder, puzzle piece, candle"
           }
         },
         {
           "id": "memory-r4q3",
-          "question": "Which code is an exact match for B7RK?",
+          "question": "Which code is B7RK with only the final two letters swapped?",
           "answers": [
+            "B7RX",
             "B7KR",
-            "B7RK",
             "87RK",
             "BTRK"
           ],
@@ -685,7 +690,7 @@
         },
         {
           "id": "memory-r4q5",
-          "question": "Which word appeared in the opening list?",
+          "question": "Which colour appeared in the opening details?",
           "answers": [
             "GOLD",
             "BLACK",
@@ -745,7 +750,7 @@
       "questions": [
         {
           "id": "memory-r5q1",
-          "question": "One last surprise: what colour was the elephant from the beginning?",
+          "question": "Think back to the beginning: what colour was the elephant?",
           "answers": [
             "Silver",
             "Purple",
@@ -789,20 +794,22 @@
             "title": "Study this final object order",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
-            "🧭",
-            "🍓",
-            "🎈",
-            "🔔"
+              "🧭",
+              "🍓",
+              "🎈",
+              "🔔",
+              "🪵",
+              "🎲"
             ],
             "durationMs": 5500,
             "mode": "automatic",
             "presentation": "icons",
-            "ariaLabel": "Compass, strawberry, balloon, bell"
+            "ariaLabel": "Compass, strawberry, balloon, bell, log, die"
           }
         },
         {
           "id": "memory-r5q4",
-          "question": "Reverse 2 – 8 – 5 – 1. What is the second number in the reversed sequence?",
+          "question": "Reverse 2 – 8 – 1 – 5 – 6. What is the second number in the reversed sequence?",
           "answers": [
             "8",
             "2",
@@ -977,7 +984,7 @@
           },
           "medium": {
             "title": "Memory Warm-Up Complete",
-            "insight": "A few opening details stuck — the next challenge gives your memory another angle."
+            "insight": "Several opening details stuck, while a few slipped away."
           },
           "low": {
             "title": "First Signal Captured",
@@ -1007,7 +1014,7 @@
           },
           "medium": {
             "title": "Visual Signals Captured",
-            "insight": "You retained most visual details as the challenge became more demanding."
+            "insight": "Some colours, positions and object order stayed clear, while finer details proved trickier."
           },
           "low": {
             "title": "Detail Profile Building",
@@ -1037,7 +1044,7 @@
           },
           "medium": {
             "title": "Numbers Held Strong",
-            "insight": "Your number and working-memory signals stayed steady through the round."
+            "insight": "You held several number and sequence clues correctly, while the harder manipulations added pressure."
           },
           "low": {
             "title": "Working Memory Stretched",
@@ -1067,7 +1074,7 @@
           },
           "medium": {
             "title": "Interference Resisted",
-            "insight": "You resisted most of the interference and recovered several older memories."
+            "insight": "You recovered several older details despite the similar clues and interference."
           },
           "low": {
             "title": "Recall Under Pressure",
@@ -1085,15 +1092,14 @@
       {
         "difficulty": "Final Assessment",
         "preAdBadge": "FINAL MEMORY CHALLENGE COMPLETE",
-        "preAdTitle": "Your Memory Result Is Ready",
-        "preAdCopy": "Your full Memory Result is ready to reveal.",
+        "preAdTitle": "YOUR MEMORY RESULT IS READY",
         "preAdChecks": [
           "40 answers checked",
           "Delayed recall measured",
           "Memory profile prepared"
         ],
         "preAdButton": "See My Final Result",
-        "resultIcon": "✓",
+        "resultIcon": "🧠",
         "resultLabel": "FINAL MEMORY CHALLENGE COMPLETE",
         "resultBands": {
           "high": {

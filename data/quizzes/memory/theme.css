@@ -179,6 +179,36 @@
 [data-quiz-theme="memory"] .quiz-engine__study-items strong:nth-child(odd) { transform: rotate(-.5deg); }
 [data-quiz-theme="memory"] .quiz-engine__study-timer { color: var(--memory-red); }
 
+/* Ordered icon cues stay as genuinely separate items in one linear row. */
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r2q1"] .quiz-engine__study-items,
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r5q3"] .quiz-engine__study-items {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q2"] .quiz-engine__study-items {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r2q1"] .quiz-engine__study-items strong,
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q2"] .quiz-engine__study-items strong,
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r5q3"] .quiz-engine__study-items strong {
+  min-height: 72px;
+  padding: 5px;
+  font-family: inherit;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 0;
+}
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q1"] .quiz-engine__study-items {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+[data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q1"] .quiz-engine__study-items strong {
+  min-height: 68px;
+  padding-inline: 7px;
+  font-size: clamp(14px, 2.1vw, 18px);
+  letter-spacing: .02em;
+}
+
 /* Checkpoints and score keep the same newspaper/test-sheet hierarchy. */
 [data-quiz-theme="memory"] .quiz-engine__checkpoint,
 [data-quiz-theme="memory"] .quiz-engine__results,
@@ -247,6 +277,25 @@
   [data-quiz-theme="memory"] .quiz-engine__checkpoint,
   [data-quiz-theme="memory"] .quiz-engine__results { box-shadow: 6px 6px 0 rgba(25,23,19,.14); }
   [data-quiz-theme="memory"] .quiz-engine__study-items strong { min-height: 76px; font-size: 16px; }
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r2q1"] .quiz-engine__study-items,
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r5q3"] .quiz-engine__study-items { gap: 5px; }
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q2"] .quiz-engine__study-items { gap: 6px; }
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r2q1"] .quiz-engine__study-items strong,
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q2"] .quiz-engine__study-items strong,
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r5q3"] .quiz-engine__study-items strong {
+    min-height: 58px;
+    padding: 2px;
+    font-size: clamp(25px, 8vw, 32px);
+  }
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q1"] .quiz-engine__study-items {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+  [data-quiz-theme="memory"] .quiz-engine__question[data-question-id="memory-r4q1"] .quiz-engine__study-items strong {
+    min-height: 47px;
+    padding: 7px;
+    font-size: 16px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -652,7 +701,7 @@
 [data-quiz-theme="memory"] .quiz-engine__stage-score { gap: 3px; margin: 0 0 7px; }
 [data-quiz-theme="memory"] .quiz-engine__stage-score span { margin-left: 0; }
 [data-quiz-theme="memory"] .quiz-engine__stage-result > h2 { color: var(--memory-ink); font-weight: 900; }
-[data-quiz-theme="memory"] .quiz-engine__stage-insight { margin-bottom: 16px; color: #5d574d; }
+[data-quiz-theme="memory"] .quiz-engine__stage-insight { margin-bottom: 6px; color: #5d574d; }
 [data-quiz-theme="memory"] .quiz-engine__career-current-score {
   margin: 14px 0 12px;
   padding: 11px 2px;
@@ -694,7 +743,7 @@
 [data-quiz-theme="memory"] .quiz-engine__career-next {
   margin-top: 14px;
   padding: 15px 16px;
-  border: 1px solid rgba(25,23,19,.18);
+  border: 1px solid rgba(25,23,19,.11);
   border-radius: 2px;
   background: rgba(255,250,240,.78);
   box-shadow: none;
@@ -719,11 +768,167 @@
   [data-quiz-theme="memory"] .quiz-engine__stage-result { padding: 19px 15px 18px; box-shadow: 6px 6px 0 rgba(25,23,19,.14); }
   [data-quiz-theme="memory"] .quiz-engine__stage-score strong { font-size: 64px; }
   [data-quiz-theme="memory"] .quiz-engine__stage-result > h2 { margin: 5px 0; font-size: 29px; }
-  [data-quiz-theme="memory"] .quiz-engine__stage-insight { margin-bottom: 12px; line-height: 1.4; }
+  [data-quiz-theme="memory"] .quiz-engine__stage-insight { margin-bottom: 4px; line-height: 1.4; }
   [data-quiz-theme="memory"] .quiz-engine__career-current-score { margin-block: 10px; padding: 9px 2px; }
   [data-quiz-theme="memory"] .quiz-engine__career-result-progress { margin-block: 12px; padding-inline: 2px; }
   [data-quiz-theme="memory"] .quiz-engine__career-next { margin-top: 10px; padding: 12px 13px; }
   [data-quiz-theme="memory"] .quiz-engine__career-next h3 { margin-block: 4px; }
   [data-quiz-theme="memory"] .quiz-engine__career-next p { line-height: 1.35; }
   [data-quiz-theme="memory"] .quiz-engine__career-next-action { min-height: 52px; margin-top: 10px; }
+}
+
+/* Production flow: every active state lives in one stable Memory test sheet.
+   The progress header is part of the same frame as the cue/question, while
+   gates, unlocked round results and the final result reuse its exact geometry. */
+[data-quiz-theme="memory"] .quiz-engine__continuous-shell {
+  --memory-flow-min-height: clamp(590px, 82svh, 860px);
+  box-sizing: border-box;
+  position: relative;
+  width: min(800px, 100%) !important;
+  max-width: 800px !important;
+  min-height: var(--memory-flow-min-height) !important;
+  margin-inline: auto !important;
+  overflow: hidden;
+  border: 3px solid var(--memory-ink) !important;
+  border-radius: 4px !important;
+  background:
+    linear-gradient(rgba(25,23,19,.045) 1px, transparent 1px),
+    var(--memory-paper) !important;
+  background-size: 100% 30px !important;
+  color: var(--memory-ink);
+  box-shadow: 12px 12px 0 rgba(25,23,19,.14), 0 28px 68px rgba(55,43,32,.2) !important;
+}
+
+/* The unified header/progress treatment replaces the old red-and-black paper
+   ticks. Keeping both made every active screen look double-headed. */
+[data-quiz-theme="memory"] .quiz-engine__continuous-shell::before,
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question::before {
+  display: none !important;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress-head {
+  margin: 0;
+  padding: 22px clamp(20px, 4vw, 34px) 10px;
+}
+
+/* Memory uses the header for useful round progress: question position on the
+   left, round name on the right, and the bar showing the same 1-of-8 journey. */
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress-head > span {
+  display: none;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress-head > em {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  margin: 0;
+  padding: 5px 8px;
+  background: var(--memory-ink);
+  color: var(--memory-paper-light);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: .08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress-head > strong {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress {
+  flex: 0 0 auto;
+  margin: 0 clamp(20px, 4vw, 34px);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-top: clamp(30px, 4vw, 40px);
+  padding-inline: clamp(22px, 5vw, 46px);
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint.quiz-engine__continuous-shell,
+[data-quiz-theme="memory"] .quiz-engine__stage-result.quiz-engine__continuous-shell,
+[data-quiz-theme="memory"] .quiz-engine__results.quiz-engine__continuous-shell,
+[data-quiz-theme="memory"] .quiz-engine__career-final.quiz-engine__continuous-shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-inline: clamp(22px, 5vw, 46px);
+}
+
+/* One CTA system across study cues, result-ready gates, round results and the
+   final reveal. Only the wording changes; width, height and rhythm do not. */
+[data-quiz-theme="memory"] .quiz-engine__continuous-shell .quiz-engine__primary {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  padding-inline: 22px;
+  font-size: 17px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__continuous-shell .quiz-engine__study .quiz-engine__primary {
+  max-width: none;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__continuous-shell .quiz-engine__checkpoint-ad-note {
+  margin: 13px 0 0;
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="memory"] .quiz-engine__continuous-shell {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+    margin-inline: calc(50% - 50vw + 8px) !important;
+    box-shadow: 6px 6px 0 rgba(25,23,19,.14) !important;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress-head {
+    padding: 15px 14px 8px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell .quiz-engine__progress {
+    margin: 0 14px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question {
+    padding-top: 25px;
+    padding-inline: 18px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint.quiz-engine__continuous-shell,
+  [data-quiz-theme="memory"] .quiz-engine__stage-result.quiz-engine__continuous-shell,
+  [data-quiz-theme="memory"] .quiz-engine__results.quiz-engine__continuous-shell,
+  [data-quiz-theme="memory"] .quiz-engine__career-final.quiz-engine__continuous-shell {
+    padding-inline: 18px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__continuous-shell .quiz-engine__primary {
+    min-height: 54px;
+    margin-top: 12px;
+    font-size: 16px;
+  }
 }
