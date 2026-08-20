@@ -227,11 +227,12 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 6), `${folder.name}/en.json: Memory study cues may never exceed six separate items.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || (question.study.durationMs >= 3000 && question.study.durationMs <= 6000)), `${folder.name}/en.json: automatic study cues must remain between 3000ms and 6000ms.`);
     fail(source.stages.every((stage) => stage.questions.filter((question) => question.study).length >= 2 && stage.questions.filter((question) => question.study).length <= 3), `${folder.name}/en.json: each Memory round needs two or three meaningful study moments.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === false && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
     const rewardedOpportunityCount = Number(config.engine?.rewarded?.start === true) + (config.engine?.rewarded?.stages === true ? source.stages.length : 0) + Number(Boolean(source.results?.score?.reviewUnlock || source.career?.reportUnlock));
-    fail(rewardedOpportunityCount === 6, `${folder.name}: Memory must expose exactly six maximum rewarded opportunities.`);
+    fail(rewardedOpportunityCount === 5, `${folder.name}: Memory must expose exactly five maximum rewarded opportunities.`);
     fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads must not interrupt the Memory challenge.`);
-    fail(source.landing?.startNote === "Short ad first - Then it begins.", `${folder.name}/en.json: the rewarded Start helper copy changed.`);
+    fail(config.engine?.startOnLoad === true && config.engine?.rewarded?.start === false, `${folder.name}: Memory must start directly without a landing or rewarded Start gate.`);
+    fail(source.landing?.startNote === undefined, `${folder.name}/en.json: direct-start Memory must not promise a rewarded Start ad.`);
     fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showResultProgress === true, `${folder.name}/en.json: Memory needs its hidden journey, persistent shell and demoted intermediate progress.`);
     fail(source.career?.resultProgressLabel === "Memory challenge" && source.career?.resultProgressComplete === "{value}% complete", `${folder.name}/en.json: compact Memory progress copy changed.`);
     fail(source.career?.stages?.length === 5 && JSON.stringify(source.career.stages.map((stage) => stage.difficulty)) === JSON.stringify(["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"]), `${folder.name}/en.json: Memory difficulty progression changed.`);
