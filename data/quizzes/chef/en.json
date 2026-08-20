@@ -1,26 +1,19 @@
 {
   "title": "Only 12% Pass This Chef's Entrance Exam",
   "eyebrow": "THE CULINARY PASS",
-  "summary": "Flavour, heat, pastry, kitchen maths and service decisions come together in one fast culinary challenge.",
+  "summary": "Flavour, heat, pastry, kitchen maths and service decisions build across 30 fast kitchen questions.",
   "landing": {
     "intro": "From flavour and fire to pastry, timing and service pressure, prove you can think like a chef when the kitchen heats up.",
     "socialProof": "81,000+ people played this",
-    "cta": "Start Quiz",
-    "startPrompt": {
-      "eyebrow": "READY FOR SERVICE",
-      "icon": "✓",
-      "title": "The Kitchen Is Ready 🔥",
-      "copy": "Watch a short ad to enter the kitchen.",
-      "button": "OK"
-    }
+    "cta": "Start Quiz"
   },
   "about": {
-    "body": "This worldwide chef quiz condenses practical kitchen knowledge into one focused ten-question challenge. It covers preparation, ingredients and flavour, heat and cooking methods, baking and pastry, kitchen maths, food safety and service judgement.\n\nThe questions are designed for curious home cooks, food enthusiasts and aspiring chefs. Every recipe-dependent problem supplies the temperature, ratio, timing or intended result needed to find one fair answer, while the service cases reward observation, organisation and calm decision-making.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the kitchen skills you recognised most confidently, not a culinary qualification or food-safety certification.",
+    "body": "This worldwide chef quiz condenses practical kitchen knowledge into one focused 30-question challenge. It covers preparation, ingredients and flavour, heat and cooking methods, baking and pastry, kitchen maths, food safety and service judgement.\n\nThe questions are designed for curious home cooks, food enthusiasts and aspiring chefs. Every recipe-dependent problem supplies the temperature, ratio, timing or intended result needed to find one fair answer, while the service cases reward observation, organisation and calm decision-making.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the kitchen skills you recognised most confidently, not a culinary qualification or food-safety certification.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Answer ten varied kitchen questions and choose the single option best supported by the clues.",
-        "Correct answers stay hidden while you play, so inspect each recipe, ticket and process before the test moves on.",
+        "Answer 30 fast kitchen questions and select the single option best supported by each clue.",
+        "Your choice locks in, then you tap Next Question when you are ready to continue.",
         "Finish the challenge to reveal your Chef Score, strongest kitchen area and complete result report."
       ]
     },
@@ -45,7 +38,7 @@
         "icon": "👨‍🍳",
         "title": "Chef score calculated",
         "signal": "fixed",
-        "message": "All ten kitchen answers have been checked."
+        "message": "All 30 kitchen answers have been checked."
       }
     ]
   },
@@ -139,7 +132,7 @@
         "targetRemaining": "More correct answers needed for 80%",
         "details": {
           "analysisTitle": "How to read your chef score",
-          "analysisCopy": "This ten-question result combines technique, flavour, pastry, kitchen maths and safety judgement. Because every answer carries ten percentage points, the skill pattern below can be more revealing than the headline score alone.",
+          "analysisCopy": "This 30-question result combines technique, flavour, pastry, kitchen maths and safety judgement. Because every answer contributes equally, the skill pattern below can be more revealing than the headline score alone.",
           "roadmapTitle": "Inside your full culinary report",
           "roadmapIntro": "Your score is the first course. Continue through the report to see which kitchen decisions came most naturally and where another attempt could improve.",
           "roadmapItems": [
@@ -149,7 +142,7 @@
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is eight correct answers out of ten. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
+          "positionCopy": "The challenge target is 24 correct answers out of 30. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
           "measuredTitle": "What this chef test measured",
           "measuredIntro": "The selected questions span three broad parts of practical kitchen thinking rather than repeating one kind of food trivia.",
           "measuredAreas": [
@@ -190,19 +183,19 @@
   },
   "stages": [
     {
-      "title": "The Culinary Pass",
+      "title": "The Culinary Challenge",
       "questions": [
         {
           "id": "chef-r2q1",
-          "question": "Which step best completes this general mise-en-place sequence before cooking begins?",
+          "question": "What best completes this general prep sequence?",
           "presentation": "sequence",
-      "visual": {
-        "items": [
-          "📖 Read recipe",
-          "🧺 Gather",
-          "❓ Next step",
-          "🔥 Cook"
-        ],
+          "visual": {
+            "items": [
+              "📖 Read recipe",
+              "🧺 Gather",
+              "❓ Next step",
+              "🔥 Cook"
+            ],
             "separator": "→",
             "ariaLabel": "General mise-en-place sequence: read recipe, gather, unknown step, cook"
           },
@@ -223,17 +216,257 @@
           "explanation": "Measuring and organising the ingredients after gathering them makes the cooking stage smoother and reduces missed steps."
         },
         {
-          "id": "chef-r3q1",
-          "question": "Vegetables in a crowded hot pan turn pale and wet. What best explains it?",
+          "id": "chef-r4q3",
+          "question": "Which flavour quality does lemon juice contribute most directly?",
           "answers": [
-            "The pan was too hot and sealed the moisture inside",
-            "The vegetables absorbed the oil before they could brown",
-            "Turning them too often created the extra moisture",
-            "Released moisture was trapped, so the vegetables steamed"
+            "Sweetness",
+            "Acidity",
+            "Saltiness",
+            "Bitterness only"
+          ],
+          "correct": 1,
+          "category": "ingredients_flavour",
+          "explanation": "Citric acid gives lemon juice its characteristic sour acidity.",
+          "icons": [
+            "🍬",
+            "🍋",
+            "🧂",
+            "☕"
+          ]
+        },
+        {
+          "id": "chef-r3q2",
+          "question": "What does a gentle simmer usually look like?",
+          "answers": [
+            "No visible movement",
+            "Occasional small bubbles",
+            "Large rolling bubbles",
+            "Surface smoking"
+          ],
+          "correct": 1,
+          "category": "heat_methods",
+          "explanation": "A gentle simmer shows small bubbles rising intermittently rather than a vigorous rolling boil.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r5q1",
+          "question": "What is baking powder’s main role in a cake mixture?",
+          "answers": [
+            "Release gas that lifts the mixture",
+            "Strengthen the gluten network",
+            "Add moisture to the batter",
+            "Slow surface browning"
+          ],
+          "correct": 0,
+          "category": "baking_pastry",
+          "explanation": "Baking powder releases gas that expands within the mixture and contributes to lift."
+        },
+        {
+          "id": "chef-r6q2",
+          "question": "A 1.5 L soup batch fills 3 equal containers. How much per container?",
+          "answers": [
+            "500 mL",
+            "300 mL",
+            "750 mL",
+            "1 litre"
+          ],
+          "correct": 0,
+          "category": "kitchen_maths",
+          "explanation": "1.5 litres is 1,500 mL; divided by three, that is 500 mL per container."
+        },
+        {
+          "id": "chef-r1q6",
+          "question": "Raw poultry was prepared on a board. Salad needs preparing next. What is safest?",
+          "answers": [
+            "Wipe the used board, then prepare salad on it",
+            "Turn the board over and use the clean-looking side",
+            "Rinse the board quickly with cold water",
+            "Use a cleaned and sanitised board and work surface"
           ],
           "correct": 3,
+          "category": "safety_service",
+          "explanation": "Raw and ready-to-eat foods need separation, with properly cleaned and sanitised equipment to prevent cross-contamination."
+        },
+        {
+          "id": "chef-r2q2",
+          "question": "Which tool is designed to combine a liquid dressing smoothly?",
+          "answers": [
+            "Whisk",
+            "Rolling pin",
+            "Peeler",
+            "Colander"
+          ],
+          "correct": 0,
+          "category": "kitchen_fundamentals",
+          "explanation": "A whisk disperses and combines liquid ingredients efficiently.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r2q5",
+          "question": "Why add chopped parsley after the finished sauce comes off the heat?",
+          "answers": [
+            "Preserve fresh aroma and colour",
+            "Extract more bitterness",
+            "Thicken without reduction",
+            "Reduce the sauce’s acidity"
+          ],
+          "correct": 0,
+          "category": "ingredients_flavour",
+          "explanation": "Adding delicate herbs at the end can preserve more of their fresh aroma and colour."
+        },
+        {
+          "id": "chef-r3q3",
+          "question": "Why preheat a roasting tray before adding the vegetables?",
+          "answers": [
+            "It prevents steam from forming",
+            "It starts surface heating and browning sooner",
+            "It slows cooking so the pieces heat gently",
+            "It keeps oil from touching the food"
+          ],
+          "correct": 1,
           "category": "heat_methods",
-          "explanation": "Crowding traps released moisture and can reduce effective surface heat, encouraging steaming instead of browning."
+          "explanation": "Contact with a hot tray starts surface heating quickly, supporting the recipe’s intended browning.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r5q3",
+          "question": "Why stop mixing muffins once no dry flour remains?",
+          "answers": [
+            "To avoid losing all the raising agent",
+            "Extra mixing can make the crumb tougher",
+            "To keep melted fat from separating",
+            "To stop the tops browning too early"
+          ],
+          "correct": 1,
+          "category": "baking_pastry",
+          "explanation": "Once flour is hydrated, excessive mixing can develop more structure than the tender muffin crumb requires.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q4",
+          "question": "A tray enters at 12:42 for 18 minutes. When is it due?",
+          "answers": [
+            "13:00",
+            "12:50",
+            "13:10",
+            "13:18"
+          ],
+          "correct": 0,
+          "category": "kitchen_maths",
+          "explanation": "Adding 18 minutes to 12:42 gives 13:00."
+        },
+        {
+          "id": "chef-r2q6",
+          "question": "A glass jar breaks beside uncovered prepared food. What should happen?",
+          "answers": [
+            "Pick out only visible glass",
+            "Move the food to another plate",
+            "Isolate the area, discard exposed food and clean safely",
+            "Continue service and inspect later"
+          ],
+          "correct": 2,
+          "category": "safety_service",
+          "explanation": "Glass fragments can travel beyond what is visible, so exposed food must be discarded and the area safely controlled.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r2q3",
+          "question": "Why cut potatoes into similar-sized pieces before roasting?",
+          "answers": [
+            "So they absorb exactly the same amount of oil",
+            "So they never need turning",
+            "So the oven temperature cannot change",
+            "So they cook at a similar rate"
+          ],
+          "correct": 3,
+          "category": "kitchen_fundamentals",
+          "explanation": "Similar-sized pieces cook at a similar rate, reducing the chance that some burn while others remain undercooked."
+        },
+        {
+          "id": "chef-r4q4",
+          "question": "Why might whole spices be warmed briefly before liquid is added?",
+          "answers": [
+            "To soften them completely",
+            "To remove bitterness",
+            "To make them absorb liquid",
+            "To release more aroma"
+          ],
+          "correct": 3,
+          "category": "ingredients_flavour",
+          "explanation": "Gentle heating can release aromatic compounds from whole spices before the wet stage begins."
+        },
+        {
+          "id": "chef-r3q4",
+          "question": "A soup is boiling hard and reducing too quickly. What is the best adjustment?",
+          "answers": [
+            "Lower the heat to a gentle simmer",
+            "Cover the pan tightly and keep the same heat",
+            "Add more liquid but keep it boiling hard",
+            "Increase the heat and shorten the cooking time"
+          ],
+          "correct": 0,
+          "category": "heat_methods",
+          "explanation": "Reducing the heat restores a gentler simmer and slows evaporation."
+        },
+        {
+          "id": "chef-r5q4",
+          "question": "A yeast dough becomes larger during a warm rest. Which process caused it?",
+          "answers": [
+            "Gelatinisation",
+            "Caramelisation",
+            "Fermentation",
+            "Emulsification"
+          ],
+          "correct": 2,
+          "category": "baking_pastry",
+          "explanation": "Yeast fermentation produces carbon dioxide, expanding the dough during the rest.",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q3",
+          "question": "Three tables need 4 plates each, plus 2 replacement plates. How many plates are needed?",
+          "answers": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "correct": 1,
+          "category": "kitchen_maths",
+          "explanation": "Three groups of four make 12 plates; adding 2 replacements gives 14."
+        },
+        {
+          "id": "chef-r6q6",
+          "question": "A cook develops vomiting during service. What is the responsible first decision?",
+          "answers": [
+            "Finish the current task before mentioning it",
+            "Put on fresh gloves and continue",
+            "Stop handling food and report the illness promptly",
+            "Move to a different food station and continue"
+          ],
+          "correct": 2,
+          "category": "safety_service",
+          "explanation": "Stopping food handling and reporting the vomiting promptly protects others and allows the kitchen’s illness procedure to be followed."
+        },
+        {
+          "id": "chef-r9q1",
+          "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
+          "presentation": "icons",
+          "answers": [
+            "Vegetable peeler",
+            "Fine zester",
+            "Paring knife",
+            "Coarse box grater"
+          ],
+          "icons": [
+            "/quizzes/chef/assets/icons/peeler.svg",
+            "/quizzes/chef/assets/icons/zester.svg",
+            "/quizzes/chef/assets/icons/paring-knife.svg",
+            "/quizzes/chef/assets/icons/box-grater.svg"
+          ],
+          "correct": 1,
+          "category": "kitchen_fundamentals",
+          "explanation": "A fine zester removes the coloured outer peel in small shreds while helping avoid the bitter white pith."
         },
         {
           "id": "chef-r4q2",
@@ -259,6 +492,19 @@
           "correct": 2,
           "category": "ingredients_flavour",
           "explanation": "Unsalted stock reduces the salt concentration, while adding it gradually allows the sauce consistency to be checked and adjusted."
+        },
+        {
+          "id": "chef-r3q1",
+          "question": "Vegetables in a crowded hot pan turn pale and wet. What best explains it?",
+          "answers": [
+            "The pan was too hot and sealed the moisture inside",
+            "The vegetables absorbed the oil before they could brown",
+            "Turning them too often created the extra moisture",
+            "Released moisture was trapped, so the vegetables steamed"
+          ],
+          "correct": 3,
+          "category": "heat_methods",
+          "explanation": "Crowding traps released moisture and can reduce effective surface heat, encouraging steaming instead of browning."
         },
         {
           "id": "chef-r5q2",
@@ -298,51 +544,8 @@
           "explanation": "300 g ÷ 4 = 75 g per portion; 75 g × 10 = 750 g."
         },
         {
-          "id": "chef-r7q2",
-          "question": "Both dishes must finish together. What is the best plan?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "🍽️ DISH A :: 4 MIN · LOSES QUALITY IF HELD",
-              "🍽️ DISH B :: 8 MIN"
-            ],
-            "columns": 1,
-            "separator": "•",
-            "ariaLabel": "Dish A takes four minutes and loses quality if held. Dish B takes eight minutes."
-          },
-          "answers": [
-            "Start B, then add A four minutes later",
-            "Start A, then B four minutes later",
-            "Cook A and hold it for eight minutes",
-            "Start both together"
-          ],
-          "correct": 0,
-          "category": "heat_methods",
-          "explanation": "Starting the eight-minute dish first and the four-minute dish halfway through lets both finish together without unnecessary holding."
-        },
-        {
-          "id": "chef-r9q1",
-          "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
-          "presentation": "icons",
-          "answers": [
-            "Vegetable peeler",
-            "Fine zester",
-            "Paring knife",
-            "Coarse box grater"
-          ],
-          "icons": [
-            "/quizzes/chef/assets/icons/peeler.svg",
-            "/quizzes/chef/assets/icons/zester.svg",
-            "/quizzes/chef/assets/icons/paring-knife.svg",
-            "/quizzes/chef/assets/icons/box-grater.svg"
-          ],
-          "correct": 1,
-          "category": "kitchen_fundamentals",
-          "explanation": "A fine zester removes the coloured outer peel in small shreds while helping avoid the bitter white pith."
-        },
-        {
           "id": "chef-r9q6",
-          "question": "A guest has a sesame allergy. The garnish was removed, but a spoon used for sesame dressing touched the dish. What is safest now?",
+          "question": "The sesame garnish is gone, but a sesame-dressing spoon touched the allergy dish. What now?",
           "answers": [
             "Wipe the contact point and serve",
             "Do not serve it; remake it using verified allergen controls",
@@ -353,6 +556,21 @@
           "category": "safety_service",
           "reasoningSteps": 2,
           "explanation": "Removing the garnish does not remove possible allergen cross-contact from the spoon, so the dish should not be served and should be remade under verified controls."
+        },
+        {
+          "id": "chef-r10q1",
+          "question": "Onion cooks first and fresh herbs finish the dish. What is the best setup?",
+          "answers": [
+            "Cook everything at the finish",
+            "Add the herbs at the start",
+            "Leave both ingredients unprepared",
+            "Keep them separate by when they’re used"
+          ],
+          "correct": 3,
+          "category": "kitchen_fundamentals",
+          "reasoningSteps": 2,
+          "explanation": "The onion and herbs enter at different times, so organising them separately follows the recipe order and avoids adding either at the wrong stage.",
+          "presentation": "text"
         },
         {
           "id": "chef-r10q2",
@@ -378,6 +596,66 @@
           "category": "ingredients_flavour",
           "reasoningSteps": 2,
           "explanation": "Lemon adds acidity that brightens the richness, while fresh herbs add the fresh aroma the dish is missing."
+        },
+        {
+          "id": "chef-r7q2",
+          "question": "Both dishes must finish together. What is the best plan?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "🍽️ DISH A :: 4 MIN · LOSES QUALITY IF HELD",
+              "🍽️ DISH B :: 8 MIN"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "Dish A takes four minutes and loses quality if held. Dish B takes eight minutes."
+          },
+          "answers": [
+            "Start B, then add A four minutes later",
+            "Start A, then B four minutes later",
+            "Cook A and hold it for eight minutes",
+            "Start both together"
+          ],
+          "correct": 0,
+          "category": "heat_methods",
+          "explanation": "Starting the eight-minute dish first and the four-minute dish halfway through lets both finish together without unnecessary holding."
+        },
+        {
+          "id": "chef-r10q4",
+          "question": "Why did the biscuits spread?",
+          "answers": [
+            "The flour matched the recipe",
+            "The ingredients were weighed",
+            "Twice the specified butter was used",
+            "The biscuits were baked"
+          ],
+          "correct": 2,
+          "category": "baking_pastry",
+          "reasoningSteps": 2,
+          "explanation": "The batch used twice the specified butter while the flour stayed unchanged, disrupting the supplied ratio and explaining the excessive spread.",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "RECIPE :: 200 G FLOUR · 100 G BUTTER",
+              "USED :: 200 G FLOUR · 200 G BUTTER"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "The recipe uses 200 grams flour and 100 grams butter, but the cook used 200 grams of each"
+          }
+        },
+        {
+          "id": "chef-r6q5",
+          "question": "Flour:sugar = 2:1. With 600 g flour, how much sugar?",
+          "answers": [
+            "200 g",
+            "300 g",
+            "600 g",
+            "1,200 g"
+          ],
+          "correct": 1,
+          "category": "kitchen_maths",
+          "explanation": "At a 2:1 ratio, sugar is half the flour mass, so 600 g flour requires 300 g sugar."
         },
         {
           "id": "chef-r10q6",
@@ -408,5 +686,6 @@
       ]
     }
   ],
-  "progressLabel": "complete"
+  "progressLabel": "complete",
+  "nextQuestionLabel": "Next Question"
 }

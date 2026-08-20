@@ -16,6 +16,11 @@ export type QuizFlow = {
 
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybrid-match" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
+export type QuizQuestionAdConfig = {
+  adUnitPath: string;
+  fromQuestion: number;
+  sizes: Array<[number, number]>;
+};
 export type QuizPresentation = "text" | "icons" | "scale" | "memory-cue" | "sequence" | "grid" | "code" | "spatial";
 export type QuizDerivedScoreConfig = {
   breakpoints: Array<{ ratio: number; value: number }>;
@@ -72,6 +77,7 @@ export type QuizEngineConfig = {
   startOnLoad: boolean;
   localeParity: "strict" | "independent";
   rewarded: QuizRewardedConfig;
+  questionAd?: QuizQuestionAdConfig;
   advanceDelayMs: number;
   targetRatio?: number;
   estimate?: QuizEstimateConfig;
@@ -357,6 +363,7 @@ export type Quiz = {
   eyebrow: string;
   summary: string;
   progressLabel?: string;
+  nextQuestionLabel?: string;
   duration: string;
   publishedAt: string;
   questionCount: number;
@@ -389,6 +396,7 @@ type QuizManifest = {
     startOnLoad?: boolean;
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
+    questionAd?: QuizQuestionAdConfig;
     advanceDelayMs?: number;
     targetRatio?: number;
     estimate?: QuizEstimateConfig;
@@ -411,6 +419,7 @@ type QuizLocaleFile = {
   eyebrow?: string;
   summary: string;
   progressLabel?: string;
+  nextQuestionLabel?: string;
   landing?: { intro?: string; badge?: string; socialProof?: string; cta?: string; startPrompt?: QuizRewardPrompt };
   about?: {
     body: string;
@@ -585,6 +594,21 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
     throw new Error(`${file}: a direct-start quiz cannot also request a rewarded start gate.`);
   }
+  let questionAd: QuizQuestionAdConfig | undefined;
+  if (engine.questionAd !== undefined) {
+    const rawQuestionAd = object(engine.questionAd, "engine.questionAd", file);
+    const sizes = rawQuestionAd.sizes;
+    if (typeof rawQuestionAd.adUnitPath !== "string" || !rawQuestionAd.adUnitPath.startsWith("/")) throw new Error(`${file}: engine.questionAd.adUnitPath must be an absolute ad-unit path.`);
+    if (!Number.isInteger(rawQuestionAd.fromQuestion) || Number(rawQuestionAd.fromQuestion) < 1) throw new Error(`${file}: engine.questionAd.fromQuestion must be a positive integer.`);
+    if (!Array.isArray(sizes) || !sizes.length || sizes.some((size) => !Array.isArray(size) || size.length !== 2 || size.some((value) => !Number.isInteger(value) || value <= 0))) {
+      throw new Error(`${file}: engine.questionAd.sizes must contain positive width/height pairs.`);
+    }
+    questionAd = {
+      adUnitPath: rawQuestionAd.adUnitPath,
+      fromQuestion: rawQuestionAd.fromQuestion as number,
+      sizes: sizes as Array<[number, number]>,
+    };
+  }
   let estimate: QuizEstimateConfig | undefined;
   if (engine.estimate !== undefined) {
     const rawEstimate = object(engine.estimate, "engine.estimate", file);
@@ -619,7 +643,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.scoring !== "hybrid-match" && match) throw new Error(`${file}: engine.match is only supported by hybrid-match scoring.`);
   return {
     slug,
-    engine: { ...engine, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
+    engine: { ...engine, questionAd, advanceDelayMs, targetRatio, estimate, derivedScore, tieBreaks, match } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
       published: text(listing.published, "listing.published", file),
@@ -1015,6 +1039,7 @@ function normalizeLocale(
         stages: manifest.engine.rewarded?.stages ?? false,
         attempts: manifest.engine.rewarded?.attempts ?? 3,
       },
+      questionAd: manifest.engine.questionAd,
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
       targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,
@@ -1028,6 +1053,7 @@ function normalizeLocale(
     eyebrow: value.eyebrow ?? "Quiz",
     summary,
     progressLabel: value.progressLabel === undefined ? undefined : text(value.progressLabel, "progressLabel", file),
+    nextQuestionLabel: value.nextQuestionLabel === undefined ? undefined : text(value.nextQuestionLabel, "nextQuestionLabel", file),
     duration: manifest.listing.duration,
     publishedAt: `${manifest.listing.published}T00:00:00Z`,
     questionCount: questions.length,

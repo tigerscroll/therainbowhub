@@ -4,6 +4,7 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
+  defineSizeMapping?: (mapping: unknown) => GptSlot;
 };
 
 type RewardedEvent = {
@@ -14,18 +15,28 @@ type RewardedEvent = {
 
 type PubAds = {
   addEventListener(name: string, listener: (event: RewardedEvent) => void): void;
+  collapseEmptyDivs?: (collapseBeforeAdFetch?: boolean) => boolean;
   removeEventListener?: (name: string, listener: (event: RewardedEvent) => void) => void;
+  refresh?: (slots: GptSlot[], options?: { changeCorrelator: boolean }) => void;
   updateCorrelator?: () => void;
+};
+
+type SizeMappingBuilder = {
+  addSize(viewport: number[], sizes: number[][]): SizeMappingBuilder;
+  build(): unknown;
 };
 
 type GoogleTag = {
   cmd: Array<() => void>;
+  defineSlot?: (path: string, sizes: number[][], elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
+  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
+  sizeMapping?: () => SizeMappingBuilder;
 };
 
 declare global {
@@ -48,6 +59,71 @@ let activeRequest: ActiveRequest | null = null;
 let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
+
+export function mountDisplayAd({
+  adUnitPath,
+  elementId,
+  sizes,
+}: {
+  adUnitPath: string;
+  elementId: string;
+  sizes: Array<[number, number]>;
+}) {
+  let cancelled = false;
+  let slot: GptSlot | null = null;
+  let pubads: PubAds | undefined;
+  let renderListener: ((event: RewardedEvent) => void) | undefined;
+  window.googletag = window.googletag ?? { cmd: [] };
+  window.googletag.cmd.push(() => {
+    if (cancelled) return;
+    const googletag = window.googletag;
+    pubads = googletag?.pubads?.();
+    if (!googletag?.defineSlot || !googletag.display || !pubads) return;
+
+    googletag.setConfig?.({ adExpansion: { enabled: true } });
+    pubads.collapseEmptyDivs?.(true);
+    const allSizes = sizes.map(([width, height]) => [width, height]);
+    const compactSizes = allSizes.filter(([width]) => width <= 300);
+    const mediumSizes = allSizes.filter(([width]) => width <= 320);
+    const mapping = googletag.sizeMapping?.()
+      .addSize([0, 0], compactSizes.length ? compactSizes : allSizes)
+      .addSize([320, 0], mediumSizes.length ? mediumSizes : allSizes)
+      .addSize([336, 0], allSizes)
+      .build();
+
+    slot = googletag.defineSlot(adUnitPath, allSizes, elementId);
+    if (!slot) return;
+    if (mapping) slot.defineSizeMapping?.(mapping);
+    slot.addService(pubads);
+    renderListener = (event) => {
+      if (event.slot !== slot) return;
+      const row = document.getElementById(elementId)?.closest<HTMLElement>(".quiz-engine__question-ad");
+      if (!row) return;
+      row.toggleAttribute("data-ad-empty", Boolean(event.isEmpty));
+    };
+    pubads.addEventListener("slotRenderEnded", renderListener);
+    if (!servicesEnabled) {
+      googletag.enableServices?.();
+      servicesEnabled = true;
+    }
+    googletag.display(elementId);
+  });
+
+  return {
+    refresh() {
+      window.googletag?.cmd.push(() => {
+        if (!cancelled && slot && pubads?.refresh) pubads.refresh([slot], { changeCorrelator: true });
+      });
+    },
+    destroy() {
+      cancelled = true;
+      if (pubads && renderListener) pubads.removeEventListener?.("slotRenderEnded", renderListener);
+      if (slot) {
+        try { window.googletag?.destroySlots?.([slot]); } catch { /* GPT cleanup is best effort. */ }
+      }
+    },
+  };
+}
 
 function finish(result: RewardedResult) {
   const request = activeRequest;

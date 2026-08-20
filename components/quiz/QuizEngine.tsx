@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
-import { requestRewardedAd } from "./rewardedAds";
+import { mountDisplayAd, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
@@ -45,7 +45,40 @@ type QuestionRendererProps = {
   onStudyComplete: () => void;
   question: QuizQuestion;
   studyComplete: boolean;
+  betweenQuestionAndAnswers?: ReactNode;
 };
+
+function QuestionDisplayAd({ config, questionId }: { config: NonNullable<Quiz["engine"]["questionAd"]>; questionId: string }) {
+  const reactId = useId().replaceAll(":", "");
+  const elementId = `quiz-question-ad-${reactId}`;
+  const controllerRef = useRef<ReturnType<typeof mountDisplayAd> | null>(null);
+  const previousQuestionRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    controllerRef.current = mountDisplayAd({
+      adUnitPath: config.adUnitPath,
+      elementId,
+      sizes: config.sizes,
+    });
+    return () => {
+      controllerRef.current?.destroy();
+      controllerRef.current = null;
+    };
+  }, [config.adUnitPath, config.sizes, elementId]);
+
+  useEffect(() => {
+    if (previousQuestionRef.current !== null && previousQuestionRef.current !== questionId) {
+      controllerRef.current?.refresh();
+    }
+    previousQuestionRef.current = questionId;
+  }, [questionId]);
+
+  return (
+    <div className="quiz-engine__question-ad">
+      <div id={elementId} />
+    </div>
+  );
+}
 
 function QuestionVisual({ question }: { question: QuizQuestion }) {
   const visual = question.visual;
@@ -109,6 +142,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
 
 function ChoiceQuestion({
   answer,
+  betweenQuestionAndAnswers,
   feedback,
   onAnswer,
   question,
@@ -120,6 +154,7 @@ function ChoiceQuestion({
     <>
     <QuestionImage question={question} />
     <QuestionVisual question={question} />
+    {betweenQuestionAndAnswers}
     <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
@@ -321,6 +356,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         flow: quiz.engine.flow,
         scoring: quiz.engine.scoring,
         startOnLoad: quiz.engine.startOnLoad,
+        questionAd: quiz.engine.questionAd,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
@@ -1022,24 +1058,26 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <div className="quiz-engine__progress">
         <i style={{ width: `${progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} key={currentQuestion.id}>
+      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
           answer={selectedAnswer}
           feedback={quiz.engine.flow.feedback}
-          key={currentQuestion.id}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyComplete={studyComplete}
+          betweenQuestionAndAnswers={quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
+            ? <QuestionDisplayAd config={quiz.engine.questionAd} questionId={currentQuestion.id} />
+            : null}
         />
         {selectedAnswer !== undefined && quiz.engine.flow.feedback === "instant" && currentQuestion.explanation ? (
           <p className="quiz-engine__explanation">{currentQuestion.explanation}</p>
         ) : null}
         {selectedAnswer !== undefined && quiz.engine.flow.advance === "manual" ? (
           <button className="quiz-engine__primary" onClick={moveForward} type="button">
-            {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : translations.quiz.continue}
+            {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.continue}
           </button>
         ) : null}
       </article>

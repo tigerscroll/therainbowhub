@@ -300,6 +300,17 @@
   box-shadow: 0 5px 14px rgba(61,49,39,.07);
 }
 [data-quiz-theme="chef"] .quiz-engine__answers { gap: 10px; }
+[data-quiz-theme="chef"] .quiz-engine__question-ad {
+  min-height: 50px;
+  padding: 8px 0;
+  border-block: 1px solid rgba(201,113,66,.22);
+  background: rgba(246,239,228,.46);
+}
+[data-quiz-theme="chef"] .quiz-engine__question { overflow: visible; }
+[data-quiz-theme="chef"] .quiz-engine__question > .quiz-engine__primary {
+  width: 100%;
+  margin-top: 16px;
+}
 @media (hover: hover) and (pointer: fine) {
   [data-quiz-theme="chef"] .quiz-engine__answer:hover:not(:disabled) { border-color: var(--chef-copper); background: #fff8ef; }
 }

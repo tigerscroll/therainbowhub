@@ -19,6 +19,17 @@
 .quiz-theme[data-texture="paper"] { background-image: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), linear-gradient(145deg, var(--quiz-page), var(--quiz-page-alt)); }
 .quiz-theme[data-texture="stars"] { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,.18) 0 1px, transparent 1.5px), linear-gradient(145deg, var(--quiz-page), var(--quiz-page-alt)); background-size: 26px 26px, auto; }
 .quiz-engine__card { width: min(680px, 100%); margin: 0 auto; padding: clamp(24px, 5vw, 46px); border: 1px solid var(--quiz-border); border-radius: var(--quiz-card-radius); background: var(--quiz-surface); }
+.quiz-engine__question-ad {
+  display: grid;
+  width: 100vw;
+  min-height: 50px;
+  margin: clamp(16px, 3vw, 24px) calc(50% - 50vw);
+  place-items: center;
+  overflow: visible;
+}
+.quiz-engine__question-ad[data-ad-empty] { display: none; }
+.quiz-engine__question-ad > div,
+.quiz-engine__question-ad iframe { max-width: none !important; }
 .quiz-theme[data-quiz-theme] .quiz-engine__results--detailed.quiz-engine__card {
   width: 100vw !important;
   max-width: 100vw !important;
