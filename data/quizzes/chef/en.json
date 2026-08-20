@@ -1,44 +1,107 @@
 {
   "title": "Only 12% Pass This Chef's Entrance Exam",
   "eyebrow": "THE CULINARY PASS",
-  "summary": "Flavour, heat, pastry, kitchen maths and service decisions build across 30 fast kitchen questions.",
+  "summary": "Flavour, heat, pastry, kitchen maths and service decisions become more demanding as the kitchen challenge unfolds.",
   "landing": {
     "intro": "From flavour and fire to pastry, timing and service pressure, prove you can think like a chef when the kitchen heats up.",
     "socialProof": "81,000+ people played this",
     "cta": "Start Quiz"
   },
   "about": {
-    "body": "This worldwide chef quiz condenses practical kitchen knowledge into one focused 30-question challenge. It covers preparation, ingredients and flavour, heat and cooking methods, baking and pastry, kitchen maths, food safety and service judgement.\n\nThe questions are designed for curious home cooks, food enthusiasts and aspiring chefs. Every recipe-dependent problem supplies the temperature, ratio, timing or intended result needed to find one fair answer, while the service cases reward observation, organisation and calm decision-making.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the kitchen skills you recognised most confidently, not a culinary qualification or food-safety certification.",
+    "body": "This worldwide chef quiz begins with an accessible kitchen assessment before opening increasingly demanding specialist challenges. It covers preparation, flavour, heat, pastry, practical kitchen maths, food safety and service judgement without revealing how far the journey will go.\n\nThe challenge is designed for curious home cooks, food enthusiasts and aspiring chefs. Every recipe-dependent question supplies the timing, ratio, condition or desired result needed to support one fair answer, while the later kitchens reward observation, organisation and calm decision-making.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the kitchen decisions you recognised most confidently, not a culinary qualification or food-safety certification.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Answer 30 fast kitchen questions and select the single option best supported by each clue.",
-        "Your choice locks in, then you tap Next Question when you are ready to continue.",
-        "Finish the challenge to reveal your Chef Score, strongest kitchen area and complete result report."
+        "Complete each focused kitchen assessment and choose the single answer best supported by the question.",
+        "Correctness stays hidden while you play; each kitchen result reveals your stage score and current Chef Score.",
+        "After every result, decide whether to enter the newly opened kitchen and continue the challenge."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This quiz is not a culinary qualification, professional kitchen assessment or food-safety certification. Always follow local food-safety requirements and qualified guidance."
   },
   "checkpoint": {
-    "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then your chef result unlocks.",
-    "finalBadge": "CULINARY REPORT",
-    "finalIcon": "👨‍🍳",
-    "finalTitle": "Your result is ready",
-    "finalCopy": "One final short ad unlocks your chef score.",
-    "finalButton": "See My Results",
+    "nextPrefix": "NEXT KITCHEN",
+    "adNote": "Short ad first — then this kitchen result unlocks.",
+    "finalBadge": "CHEF’S TABLE COMPLETE",
+    "finalIcon": "✓",
+    "finalTitle": "Your Chef’s Table Results Are Ready",
+    "finalCopy": "Your final kitchen score is ready to reveal.",
+    "finalButton": "See My Chef’s Table Result",
     "finalChecklist": [
-      "Kitchen technique",
-      "Flavour judgement",
-      "Safety and service"
+      "Technique and heat",
+      "Flavour and pastry",
+      "Maths and service"
     ],
     "reveals": [
       {
-        "badge": "CULINARY REPORT READY",
-        "icon": "👨‍🍳",
-        "title": "Chef score calculated",
+        "badge": "KITCHEN INDUCTION COMPLETE",
+        "icon": "✓",
+        "title": "Kitchen Induction assessed",
         "signal": "fixed",
-        "message": "All 30 kitchen answers have been checked."
+        "message": "All six Kitchen Induction decisions have been checked."
+      },
+      {
+        "badge": "PREP BENCH COMPLETE",
+        "icon": "✓",
+        "title": "Prep Bench assessed",
+        "signal": "fixed",
+        "message": "All six Prep Bench decisions have been checked."
+      },
+      {
+        "badge": "CONTROL THE HEAT COMPLETE",
+        "icon": "✓",
+        "title": "Control the Heat assessed",
+        "signal": "fixed",
+        "message": "All six Control the Heat decisions have been checked."
+      },
+      {
+        "badge": "FLAVOUR LAB COMPLETE",
+        "icon": "✓",
+        "title": "Flavour Lab assessed",
+        "signal": "fixed",
+        "message": "All six Flavour Lab decisions have been checked."
+      },
+      {
+        "badge": "PASTRY PRECISION COMPLETE",
+        "icon": "✓",
+        "title": "Pastry Precision assessed",
+        "signal": "fixed",
+        "message": "All six Pastry Precision decisions have been checked."
+      },
+      {
+        "badge": "SERVICE RUSH COMPLETE",
+        "icon": "✓",
+        "title": "Service Rush assessed",
+        "signal": "fixed",
+        "message": "All six Service Rush decisions have been checked."
+      },
+      {
+        "badge": "KITCHEN MATHS COMPLETE",
+        "icon": "✓",
+        "title": "Kitchen Maths assessed",
+        "signal": "fixed",
+        "message": "All six Kitchen Maths decisions have been checked."
+      },
+      {
+        "badge": "SPOT THE MISTAKE COMPLETE",
+        "icon": "✓",
+        "title": "Spot the Mistake assessed",
+        "signal": "fixed",
+        "message": "All six Spot the Mistake decisions have been checked."
+      },
+      {
+        "badge": "SOUS CHEF DECISIONS COMPLETE",
+        "icon": "✓",
+        "title": "Sous Chef Decisions assessed",
+        "signal": "fixed",
+        "message": "All six Sous Chef Decisions decisions have been checked."
+      },
+      {
+        "badge": "CHEF’S TABLE COMPLETE",
+        "icon": "✓",
+        "title": "Chef’s Table assessed",
+        "signal": "fixed",
+        "message": "All six Chef’s Table decisions have been checked."
       }
     ]
   },
@@ -73,7 +136,7 @@
         "min": 0.5,
         "tier": "50–59%",
         "title": "The Promising Prep Cook",
-        "copy": "You recognised a solid share of the kitchen fundamentals and kept adapting as the challenge changed gears. The review will show which techniques are ready for another look."
+        "copy": "You recognised a solid share of the kitchen fundamentals and kept adapting as the challenge changed. The review will show which techniques are ready for another look."
       },
       {
         "min": 0,
@@ -84,23 +147,38 @@
     ],
     "dimensions": [
       {
-        "label": "Technique & heat",
+        "label": "Kitchen fundamentals",
         "categories": [
-          "kitchen_fundamentals",
+          "kitchen_fundamentals"
+        ]
+      },
+      {
+        "label": "Ingredients and flavour",
+        "categories": [
+          "ingredients_flavour"
+        ]
+      },
+      {
+        "label": "Heat and cooking methods",
+        "categories": [
           "heat_methods"
         ]
       },
       {
-        "label": "Flavour & pastry",
+        "label": "Baking and pastry",
         "categories": [
-          "ingredients_flavour",
           "baking_pastry"
         ]
       },
       {
-        "label": "Maths & service",
+        "label": "Kitchen maths",
         "categories": [
-          "kitchen_maths",
+          "kitchen_maths"
+        ]
+      },
+      {
+        "label": "Safety and service",
+        "categories": [
           "safety_service"
         ]
       }
@@ -114,37 +192,31 @@
       "bestRound": "Best round",
       "showPercentage": true,
       "disclaimer": "For entertainment and general learning only. This quiz is not a culinary qualification, professional kitchen assessment or food-safety certification. Always follow local food-safety requirements and qualified guidance.",
-      "showBestRound": false,
-      "reviewUnlock": {
-        "title": "Unlock your incorrect answers",
-        "copy": "See every kitchen question you missed, your answer, the correct answer and a clear explanation.",
-        "button": "Reveal Incorrect Answers",
-        "adNote": "Short ad first — then your answer review unlocks."
-      },
+      "showBestRound": true,
       "insights": {
         "overview": "Your chef score at a glance",
         "correct": "Correct answers",
         "missed": "Questions missed",
         "target": "Correct answers for 80%",
-        "breakdown": "Your kitchen area breakdown",
+        "breakdown": "Your kitchen skill breakdown",
         "snapshot": "What your chef profile suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%",
         "details": {
           "analysisTitle": "How to read your chef score",
-          "analysisCopy": "This 30-question result combines technique, flavour, pastry, kitchen maths and safety judgement. Because every answer contributes equally, the skill pattern below can be more revealing than the headline score alone.",
+          "analysisCopy": "This 60-question result combines technique, flavour, pastry, kitchen maths and safety judgement across ten specialist kitchens. The skill pattern below can be more revealing than the headline score alone.",
           "roadmapTitle": "Inside your full culinary report",
-          "roadmapIntro": "Your score is the first course. Continue through the report to see which kitchen decisions came most naturally and where another attempt could improve.",
+          "roadmapIntro": "Your score is the first course. Continue through the unlocked report to see which kitchen decisions came most naturally and where another attempt could improve.",
           "roadmapItems": [
             "Score analysis",
             "Strongest kitchen area",
-            "Kitchen area breakdown",
+            "Six-area breakdown",
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is 24 correct answers out of 30. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
+          "positionCopy": "The challenge target is 48 correct answers out of 60. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
           "measuredTitle": "What this chef test measured",
-          "measuredIntro": "The selected questions span three broad parts of practical kitchen thinking rather than repeating one kind of food trivia.",
+          "measuredIntro": "The ten kitchens span practical culinary thinking rather than repeating one kind of food trivia.",
           "measuredAreas": [
             {
               "title": "Technique and heat",
@@ -175,15 +247,104 @@
               "copy": "Try again later and see whether a different kitchen area becomes your strongest."
             }
           ],
-          "finalTitle": "Your result is ready",
-          "finalCopy": "You finished with {score} correct answers out of {total}. Your chef profile for this attempt is shown below."
+          "finalTitle": "Your final chef summary",
+          "finalCopy": "You finished all ten kitchens with {score} correct answers out of {total}. Your chef profile for this attempt is {profile}."
         }
       }
     }
   },
   "stages": [
     {
-      "title": "The Culinary Challenge",
+      "title": "Kitchen Induction",
+      "questions": [
+        {
+          "id": "chef-r1q1",
+          "question": "Which tool is best for gripping and turning hot food in a pan?",
+          "answers": [
+            "Whisk",
+            "Tongs",
+            "Peeler",
+            "Ladle"
+          ],
+          "correct": 1,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r1q2",
+          "question": "A sauce tastes rich and heavy but lacks brightness. Which small addition is most likely to rebalance it?",
+          "answers": [
+            "More butter",
+            "More starch",
+            "More cream",
+            "A small amount of acid"
+          ],
+          "correct": 3,
+          "category": "ingredients_flavour",
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r1q3",
+          "question": "Which method cooks food in vapour above simmering water?",
+          "answers": [
+            "Steaming",
+            "Roasting",
+            "Grilling",
+            "Sautéing"
+          ],
+          "correct": 0,
+          "category": "heat_methods",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r1q4",
+          "question": "Which ingredient produces gas that helps a yeast dough rise?",
+          "answers": [
+            "Salt",
+            "Oil",
+            "Yeast",
+            "Cold water"
+          ],
+          "correct": 2,
+          "category": "baking_pastry",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r1q5",
+          "question": "A recipe uses 300 g of flour per batch. How much is needed for two batches?",
+          "answers": [
+            "450 g",
+            "600 g",
+            "750 g",
+            "900 g"
+          ],
+          "correct": 1,
+          "category": "kitchen_maths",
+          "interactionStyle": "calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r1q6",
+          "question": "Raw poultry was prepared on a board. Salad needs preparing next. What is safest?",
+          "answers": [
+            "Wipe the used board, then prepare salad on it",
+            "Turn the board over and use the clean-looking side",
+            "Rinse the board quickly with cold water",
+            "Use a cleaned and sanitised board and work surface"
+          ],
+          "correct": 3,
+          "category": "safety_service",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Prep Bench",
       "questions": [
         {
           "id": "chef-r2q1",
@@ -197,73 +358,7 @@
           ],
           "correct": 2,
           "category": "kitchen_fundamentals",
-          "explanation": "Measuring and organising the ingredients after gathering them makes the cooking stage smoother and reduces missed steps."
-        },
-        {
-          "id": "chef-r4q3",
-          "question": "Which flavour quality does lemon juice contribute most directly?",
-          "answers": [
-            "Sweetness",
-            "Acidity",
-            "Saltiness",
-            "Bitterness only"
-          ],
-          "correct": 1,
-          "category": "ingredients_flavour",
-          "explanation": "Citric acid gives lemon juice its characteristic sour acidity."
-        },
-        {
-          "id": "chef-r3q2",
-          "question": "What does a gentle simmer usually look like?",
-          "answers": [
-            "No visible movement",
-            "Occasional small bubbles",
-            "Large rolling bubbles",
-            "Surface smoking"
-          ],
-          "correct": 1,
-          "category": "heat_methods",
-          "explanation": "A gentle simmer shows small bubbles rising intermittently rather than a vigorous rolling boil.",
-          "presentation": "text"
-        },
-        {
-          "id": "chef-r5q1",
-          "question": "What is baking powder’s main role in a cake mixture?",
-          "answers": [
-            "Release gas that lifts the mixture",
-            "Strengthen the gluten network",
-            "Add moisture to the batter",
-            "Slow surface browning"
-          ],
-          "correct": 0,
-          "category": "baking_pastry",
-          "explanation": "Baking powder releases gas that expands within the mixture and contributes to lift."
-        },
-        {
-          "id": "chef-r6q2",
-          "question": "A 1.5 L soup batch fills 3 equal containers. How much per container?",
-          "answers": [
-            "500 mL",
-            "300 mL",
-            "750 mL",
-            "1 litre"
-          ],
-          "correct": 0,
-          "category": "kitchen_maths",
-          "explanation": "1.5 litres is 1,500 mL; divided by three, that is 500 mL per container."
-        },
-        {
-          "id": "chef-r1q6",
-          "question": "Raw poultry was prepared on a board. Salad needs preparing next. What is safest?",
-          "answers": [
-            "Wipe the used board, then prepare salad on it",
-            "Turn the board over and use the clean-looking side",
-            "Rinse the board quickly with cold water",
-            "Use a cleaned and sanitised board and work surface"
-          ],
-          "correct": 3,
-          "category": "safety_service",
-          "explanation": "Raw and ready-to-eat foods need separation, with properly cleaned and sanitised equipment to prevent cross-contamination."
+          "interactionStyle": "sequence"
         },
         {
           "id": "chef-r2q2",
@@ -276,75 +371,7 @@
           ],
           "correct": 0,
           "category": "kitchen_fundamentals",
-          "explanation": "A whisk disperses and combines liquid ingredients efficiently.",
-          "presentation": "text"
-        },
-        {
-          "id": "chef-r2q5",
-          "question": "Why add chopped parsley after the finished sauce comes off the heat?",
-          "answers": [
-            "Preserve fresh aroma and colour",
-            "Extract more bitterness",
-            "Thicken without reduction",
-            "Reduce the sauce’s acidity"
-          ],
-          "correct": 0,
-          "category": "ingredients_flavour",
-          "explanation": "Adding delicate herbs at the end can preserve more of their fresh aroma and colour."
-        },
-        {
-          "id": "chef-r3q3",
-          "question": "Why preheat a roasting tray before adding the vegetables?",
-          "answers": [
-            "It prevents steam from forming",
-            "It starts surface heating and browning sooner",
-            "It slows cooking so the pieces heat gently",
-            "It keeps oil from touching the food"
-          ],
-          "correct": 1,
-          "category": "heat_methods",
-          "explanation": "Contact with a hot tray starts surface heating quickly, supporting the recipe’s intended browning.",
-          "presentation": "text"
-        },
-        {
-          "id": "chef-r5q3",
-          "question": "Why stop mixing muffins once no dry flour remains?",
-          "answers": [
-            "To avoid losing all the raising agent",
-            "Extra mixing can make the crumb tougher",
-            "To keep melted fat from separating",
-            "To stop the tops browning too early"
-          ],
-          "correct": 1,
-          "category": "baking_pastry",
-          "explanation": "Once flour is hydrated, excessive mixing can develop more structure than the tender muffin crumb requires.",
-          "presentation": "text"
-        },
-        {
-          "id": "chef-r6q4",
-          "question": "A tray enters at 12:42 for 18 minutes. When is it due?",
-          "answers": [
-            "13:00",
-            "12:50",
-            "13:10",
-            "13:18"
-          ],
-          "correct": 0,
-          "category": "kitchen_maths",
-          "explanation": "Adding 18 minutes to 12:42 gives 13:00."
-        },
-        {
-          "id": "chef-r2q6",
-          "question": "A glass jar breaks beside uncovered prepared food. What should happen?",
-          "answers": [
-            "Remove visible glass and keep the food",
-            "Move the food away and continue service",
-            "Discard exposed food and clean the area safely",
-            "Cover the food and clean after service"
-          ],
-          "correct": 2,
-          "category": "safety_service",
-          "explanation": "Glass fragments can travel beyond what is visible, so exposed food must be discarded and the area safely controlled.",
+          "interactionStyle": "visual-identification",
           "presentation": "text"
         },
         {
@@ -358,20 +385,97 @@
           ],
           "correct": 3,
           "category": "kitchen_fundamentals",
-          "explanation": "Similar-sized pieces cook at a similar rate, reducing the chance that some burn while others remain undercooked."
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
         },
         {
-          "id": "chef-r4q4",
-          "question": "Why might whole spices be warmed briefly before liquid is added?",
+          "id": "chef-r2q4",
+          "question": "Which tool gives the most consistent equal dough portions?",
           "answers": [
-            "To soften them completely",
-            "To remove bitterness",
-            "To make them absorb liquid",
-            "To release more aroma"
+            "Wooden spoon",
+            "Kitchen scale",
+            "Serving plate",
+            "Timer"
+          ],
+          "correct": 1,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r2q5",
+          "question": "A recipe says to add chopped parsley after the finished sauce comes off the heat. What is the most likely purpose?",
+          "answers": [
+            "Preserve fresh aroma and colour",
+            "Extract more bitterness",
+            "Thicken without reduction",
+            "Reduce the sauce’s acidity"
+          ],
+          "correct": 0,
+          "category": "ingredients_flavour",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r2q6",
+          "question": "A glass jar breaks beside uncovered prepared food. What should happen?",
+          "answers": [
+            "Remove visible glass and keep the food",
+            "Move the food away and continue service",
+            "Discard exposed food and clean the area safely",
+            "Cover the food and clean after service"
+          ],
+          "correct": 2,
+          "category": "safety_service",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Control the Heat",
+      "questions": [
+        {
+          "id": "chef-r3q1",
+          "question": "Vegetables in a crowded hot pan turn pale and wet. What best explains it?",
+          "answers": [
+            "The pan was too hot and sealed the moisture inside",
+            "The vegetables absorbed the oil before they could brown",
+            "Turning them too often created the extra moisture",
+            "Released moisture was trapped, so the vegetables steamed"
           ],
           "correct": 3,
-          "category": "ingredients_flavour",
-          "explanation": "Gentle heating can release aromatic compounds from whole spices before the wet stage begins."
+          "category": "heat_methods",
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r3q2",
+          "question": "What does a gentle simmer usually look like?",
+          "answers": [
+            "No visible movement",
+            "Occasional small bubbles",
+            "Large rolling bubbles",
+            "Surface smoking"
+          ],
+          "correct": 1,
+          "category": "heat_methods",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r3q3",
+          "question": "A recipe says to preheat the tray before adding vegetables for roasting. Why does the hot tray help?",
+          "answers": [
+            "It prevents steam from forming",
+            "It slows cooking so the pieces heat gently",
+            "It starts surface heating and browning sooner",
+            "It keeps oil from touching the food"
+          ],
+          "correct": 2,
+          "category": "heat_methods",
+          "interactionStyle": "sequence",
+          "presentation": "text"
         },
         {
           "id": "chef-r3q4",
@@ -384,66 +488,59 @@
           ],
           "correct": 0,
           "category": "heat_methods",
-          "explanation": "Reducing the heat restores a gentler simmer and slows evaporation."
-        },
-        {
-          "id": "chef-r5q4",
-          "question": "A yeast dough becomes larger during a warm rest. Which process caused it?",
-          "answers": [
-            "Gelatinisation",
-            "Caramelisation",
-            "Fermentation",
-            "Emulsification"
-          ],
-          "correct": 2,
-          "category": "baking_pastry",
-          "explanation": "Yeast fermentation produces carbon dioxide, expanding the dough during the rest.",
+          "interactionStyle": "applied-scenario",
           "presentation": "text"
         },
         {
-          "id": "chef-r6q3",
-          "question": "Three tables need 4 plates each, plus 2 replacement plates. How many plates are needed?",
+          "id": "chef-r3q5",
+          "question": "What should protect your hands when moving a hot dry tray from the oven?",
           "answers": [
-            "12",
-            "14",
-            "16",
-            "18"
+            "A wet towel",
+            "Bare hands",
+            "Plastic wrap",
+            "Dry heat-resistant oven gloves"
           ],
-          "correct": 1,
-          "category": "kitchen_maths",
-          "explanation": "Three groups of four make 12 plates; adding 2 replacements gives 14."
-        },
-        {
-          "id": "chef-r6q6",
-          "question": "A cook develops vomiting during service. What is the responsible first decision?",
-          "answers": [
-            "Finish the current task, then report it",
-            "Put on fresh gloves and continue",
-            "Stop handling food and report it promptly",
-            "Move stations and continue"
-          ],
-          "correct": 2,
-          "category": "safety_service",
-          "explanation": "Stopping food handling and reporting the vomiting promptly protects others and allows the kitchen’s illness procedure to be followed."
-        },
-        {
-          "id": "chef-r9q1",
-          "question": "Which tool removes fine lemon zest with minimal bitter white pith?",
-          "presentation": "text",
-          "answers": [
-            "Vegetable peeler",
-            "Fine zester",
-            "Paring knife",
-            "Coarse box grater"
-          ],
-          "correct": 1,
+          "correct": 3,
           "category": "kitchen_fundamentals",
-          "explanation": "A fine zester removes the coloured outer peel in small shreds while helping avoid the bitter white pith."
+          "interactionStyle": "trap",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r3q6",
+          "question": "A cooked dish is ready but service is delayed. What is the sound general response?",
+          "answers": [
+            "Leave it at room temperature indefinitely",
+            "Use controlled hot holding according to the kitchen’s safe standard",
+            "Mix in raw ingredients",
+            "Switch between hot and cold repeatedly"
+          ],
+          "correct": 1,
+          "category": "safety_service",
+          "interactionStyle": "synthesis",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Flavour Lab",
+      "questions": [
+        {
+          "id": "chef-r4q1",
+          "question": "A vinaigrette tastes sharply acidic and thin, and only its oil-to-vinegar balance may be adjusted. What should be added gradually?",
+          "answers": [
+            "Oil",
+            "More vinegar",
+            "Flour",
+            "Water only"
+          ],
+          "correct": 0,
+          "category": "ingredients_flavour",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
         },
         {
           "id": "chef-r4q2",
           "question": "A reduced sauce is too salty; unsalted stock is available and its consistency can be adjusted. What is the best correction?",
-          "presentation": "text",
           "answers": [
             "Add more concentrated sauce",
             "Reduce it further",
@@ -452,20 +549,83 @@
           ],
           "correct": 2,
           "category": "ingredients_flavour",
-          "explanation": "Unsalted stock reduces the salt concentration, while adding it gradually allows the sauce consistency to be checked and adjusted."
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
         },
         {
-          "id": "chef-r3q1",
-          "question": "Vegetables in a crowded hot pan turn pale and wet. What best explains it?",
+          "id": "chef-r4q3",
+          "question": "Which flavour quality does lemon juice contribute most directly?",
           "answers": [
-            "The pan was too hot and sealed the moisture inside",
-            "The vegetables absorbed the oil before they could brown",
-            "Turning them too often created the extra moisture",
-            "Released moisture was trapped, so the vegetables steamed"
+            "Sweetness",
+            "Acidity",
+            "Saltiness",
+            "Bitterness only"
+          ],
+          "correct": 1,
+          "category": "ingredients_flavour",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r4q4",
+          "question": "Why might whole spices be warmed briefly before liquid is added?",
+          "answers": [
+            "To soften them completely",
+            "To remove bitterness",
+            "To make them absorb liquid",
+            "To release more aroma"
           ],
           "correct": 3,
+          "category": "ingredients_flavour",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r4q5",
+          "question": "A recipe asks for chocolate to be melted with gentle indirect heat. Which setup follows that instruction?",
+          "answers": [
+            "Chocolate directly over a high flame",
+            "Chocolate in a cold colander",
+            "A bowl above barely simmering water without touching it",
+            "Chocolate mixed with ice"
+          ],
+          "correct": 2,
           "category": "heat_methods",
-          "explanation": "Crowding traps released moisture and can reduce effective surface heat, encouraging steaming instead of browning."
+          "interactionStyle": "sequence",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r4q6",
+          "question": "A guest declares a nut allergy, but an ingredient list is uncertain. What comes first?",
+          "answers": [
+            "Stop and verify before preparing or serving",
+            "Guess from the ingredient’s appearance",
+            "Remove visible nuts only",
+            "Serve a smaller portion"
+          ],
+          "correct": 0,
+          "category": "safety_service",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Pastry Precision",
+      "questions": [
+        {
+          "id": "chef-r5q1",
+          "question": "What is baking powder’s main role in a cake mixture?",
+          "answers": [
+            "Release gas that lifts the mixture",
+            "Strengthen the gluten network",
+            "Add moisture to the batter",
+            "Slow surface browning"
+          ],
+          "correct": 0,
+          "category": "baking_pastry",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
         },
         {
           "id": "chef-r5q2",
@@ -478,12 +638,168 @@
           ],
           "correct": 3,
           "category": "baking_pastry",
-          "explanation": "Distinct pieces of fat melt during baking and help separate the dough into flaky layers."
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
         },
+        {
+          "id": "chef-r5q3",
+          "question": "A muffin recipe says to mix only until no dry flour remains. Why stop at that point?",
+          "answers": [
+            "To avoid losing all the raising agent",
+            "Extra mixing can make the crumb tougher",
+            "To keep melted fat from separating",
+            "To stop the tops browning too early"
+          ],
+          "correct": 1,
+          "category": "baking_pastry",
+          "interactionStyle": "sequence",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r5q4",
+          "question": "A yeast dough becomes larger during a warm rest. Which process caused it?",
+          "answers": [
+            "Gelatinisation",
+            "Caramelisation",
+            "Fermentation",
+            "Emulsification"
+          ],
+          "correct": 2,
+          "category": "baking_pastry",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r5q5",
+          "question": "Which tool most accurately measures 425 g of flour?",
+          "answers": [
+            "Soup ladle",
+            "Timer",
+            "Thermometer",
+            "Kitchen scale"
+          ],
+          "correct": 3,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r5q6",
+          "question": "A tray enters a preheated 180°C oven at 14:10 for 25 minutes. When should it first be checked?",
+          "answers": [
+            "14:35",
+            "14:25",
+            "14:45",
+            "15:10"
+          ],
+          "correct": 0,
+          "category": "kitchen_maths",
+          "interactionStyle": "synthesis",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Service Rush",
+      "questions": [
+        {
+          "id": "chef-r8q1",
+          "question": "Which tool removes lumps from dry flour?",
+          "answers": [
+            "Whisk",
+            "Tongs",
+            "Peeler",
+            "Sieve"
+          ],
+          "correct": 3,
+          "category": "kitchen_fundamentals",
+          "delay": 350,
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r8q2",
+          "question": "Which ingredient deepens savoury umami?",
+          "answers": [
+            "Caster sugar",
+            "Mushrooms",
+            "Whipped cream",
+            "Plain water"
+          ],
+          "correct": 1,
+          "category": "ingredients_flavour",
+          "delay": 350,
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r8q3",
+          "question": "Which method uses dry oven heat?",
+          "answers": [
+            "Poaching",
+            "Steaming",
+            "Roasting",
+            "Blanching"
+          ],
+          "correct": 2,
+          "category": "heat_methods",
+          "delay": 350,
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r8q4",
+          "question": "What sets a baked custard?",
+          "answers": [
+            "Eggs",
+            "Ice",
+            "Flour dust",
+            "Oil alone"
+          ],
+          "correct": 0,
+          "category": "baking_pastry",
+          "delay": 350,
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r8q5",
+          "question": "Three portions each weigh 175 g. What is the total?",
+          "answers": [
+            "350 g",
+            "475 g",
+            "575 g",
+            "525 g"
+          ],
+          "correct": 3,
+          "category": "kitchen_maths",
+          "delay": 350,
+          "interactionStyle": "calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r8q6",
+          "question": "A serving plate is chipped at the rim just before service. What should happen?",
+          "answers": [
+            "Serve on the unchipped side",
+            "Remove it from service",
+            "Use it only for cold food",
+            "Cover the chip before serving"
+          ],
+          "correct": 1,
+          "category": "safety_service",
+          "delay": 350,
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Kitchen Maths",
+      "questions": [
         {
           "id": "chef-r6q1",
           "question": "A recipe uses 300 g rice for 4 portions. How much is needed for 10 portions?",
-          "presentation": "text",
           "answers": [
             "600 g",
             "700 g",
@@ -492,25 +808,266 @@
           ],
           "correct": 2,
           "category": "kitchen_maths",
-          "explanation": "300 g ÷ 4 = 75 g per portion; 75 g × 10 = 750 g."
+          "interactionStyle": "recipe-scaling",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q2",
+          "question": "A 1.5 L soup batch fills 3 equal containers. How much per container?",
+          "answers": [
+            "300 mL",
+            "500 mL",
+            "750 mL",
+            "1 litre"
+          ],
+          "correct": 1,
+          "category": "kitchen_maths",
+          "interactionStyle": "portion-calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q3",
+          "question": "Three tables need 4 plates each, plus 2 replacement plates. How many plates are needed?",
+          "answers": [
+            "12",
+            "16",
+            "18",
+            "14"
+          ],
+          "correct": 3,
+          "category": "kitchen_maths",
+          "interactionStyle": "service-total",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q4",
+          "question": "A tray enters at 12:42 for 18 minutes. When is it due?",
+          "answers": [
+            "13:00",
+            "12:50",
+            "13:10",
+            "13:18"
+          ],
+          "correct": 0,
+          "category": "kitchen_maths",
+          "interactionStyle": "timing",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q5",
+          "question": "Flour and sugar use a 2:1 ratio. If the batch uses 600 g flour, how much sugar preserves the ratio?",
+          "answers": [
+            "200 g",
+            "300 g",
+            "600 g",
+            "1,200 g"
+          ],
+          "correct": 1,
+          "category": "baking_pastry",
+          "interactionStyle": "ratio-calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q6",
+          "question": "A cook develops vomiting during service. What is the responsible first decision?",
+          "answers": [
+            "Finish the current task, then report it",
+            "Put on fresh gloves and continue",
+            "Stop handling food and report it promptly",
+            "Move stations and continue"
+          ],
+          "correct": 2,
+          "category": "safety_service",
+          "interactionStyle": "safety-judgement",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Spot the Mistake",
+      "questions": [
+        {
+          "id": "chef-r9q1",
+          "question": "A cook is using a rolling pin to chop fresh herbs. What is the mistake?",
+          "answers": [
+            "The herbs are fresh",
+            "The rolling pin is the wrong tool",
+            "The herbs are being prepared before service",
+            "The herbs are being chopped"
+          ],
+          "correct": 1,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r9q2",
+          "question": "A simple dressing has greens, oil and seasoning but no sour ingredient. Which flavour component is missing?",
+          "answers": [
+            "More greens",
+            "More oil only",
+            "Acid",
+            "A raising agent"
+          ],
+          "correct": 2,
+          "category": "ingredients_flavour",
+          "interactionStyle": "record-inspection",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r9q3",
+          "question": "Food meant to be gently poached was cooked at a rolling boil and broke apart. Which step caused the problem?",
+          "answers": [
+            "Using enough liquid",
+            "Starting with the correct target",
+            "Watching the food",
+            "Using a rolling boil"
+          ],
+          "correct": 3,
+          "category": "heat_methods",
+          "interactionStyle": "sequence",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r9q4",
+          "question": "Egg whites are in a clean, dry bowl, but the whisk is greasy. What is the mistake?",
+          "answers": [
+            "Fat on the whisk can prevent a stable foam",
+            "The bowl is dry",
+            "Egg whites are used",
+            "A whisk was selected"
+          ],
+          "correct": 0,
+          "category": "baking_pastry",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r9q5",
+          "question": "Three portions should weigh 180 g each, but 360 g was recorded. What should the total be?",
+          "answers": [
+            "360 g",
+            "480 g",
+            "540 g",
+            "720 g"
+          ],
+          "correct": 2,
+          "category": "kitchen_maths",
+          "interactionStyle": "calculation",
+          "presentation": "text"
         },
         {
           "id": "chef-r9q6",
-          "question": "A spoon used for sesame dressing touched a dish for a guest with a sesame allergy. What now?",
+          "question": "A sesame-seed garnish has already been added to a dish for a guest with a sesame allergy. What should happen?",
           "answers": [
-            "Wipe the contact area and serve",
-            "Remake the dish using clean, verified controls",
-            "Change the garnish and serve",
+            "Remove the visible seeds and serve",
+            "Do not serve it; remake it using verified controls",
+            "Change only the garnish and serve",
             "Warn the guest and serve"
           ],
           "correct": 1,
           "category": "safety_service",
-          "reasoningSteps": 2,
-          "explanation": "The spoon may have caused sesame cross-contact, so the dish should not be served and should be remade using clean, verified controls."
+          "interactionStyle": "conflict-detection",
+          "presentation": "text",
+          "reasoningSteps": 2
+        }
+      ]
+    },
+    {
+      "title": "Sous Chef Decisions",
+      "questions": [
+        {
+          "id": "chef-r7q1",
+          "question": "A sauce is rich and flat, the dish is waiting, and lemon is allowed but no more cooking. Which action protects balance and timing?",
+          "answers": [
+            "More cream",
+            "More syrup",
+            "A little lemon",
+            "More butter"
+          ],
+          "correct": 2,
+          "category": "ingredients_flavour",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
         },
         {
+          "id": "chef-r7q2",
+          "question": "Dish A needs 4 minutes and loses quality if held; Dish B needs 8. Both must finish together. What is the best plan?",
+          "answers": [
+            "Start B, then add A four minutes later",
+            "Start A, then B four minutes later",
+            "Cook A and hold it for eight minutes",
+            "Start both together"
+          ],
+          "correct": 0,
+          "category": "heat_methods",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r7q3",
+          "question": "A tart rim is already dark, but the centre needs more time; a foil rim shield is allowed. Which response protects both?",
+          "answers": [
+            "Remove it and serve immediately",
+            "Shield the rim and continue as directed",
+            "Increase the heat sharply",
+            "Add cold filling"
+          ],
+          "correct": 1,
+          "category": "baking_pastry",
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r7q4",
+          "question": "Table 6 needs 3 mains, Table 7 needs 5, and the pass needs 2 replacement plates. How many plates are needed?",
+          "answers": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "correct": 3,
+          "category": "kitchen_maths",
+          "interactionStyle": "service-calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r7q5",
+          "question": "A shared spoon with unverified previous use touched an allergy order. Which concern takes priority?",
+          "answers": [
+            "Stop, reject the dish and remake it under verified controls",
+            "Wipe the spoon mark away",
+            "Serve it with a warning",
+            "Add a garnish over the contact point"
+          ],
+          "correct": 0,
+          "category": "safety_service",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r7q6",
+          "question": "Liquid spills beside a hot line as a cook carrying a hot pan approaches; a garnish is also waiting. What comes first?",
+          "answers": [
+            "Wait until service ends",
+            "Step over the spill silently",
+            "Warn the cook, isolate the hazard and arrange safe clean-up",
+            "Cover it with a towel and continue"
+          ],
+          "correct": 2,
+          "category": "safety_service",
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
+        }
+      ]
+    },
+    {
+      "title": "Chef’s Table",
+      "questions": [
+        {
           "id": "chef-r10q1",
-          "question": "Onion cooks first and fresh herbs finish the dish. What is the best setup?",
+          "question": "Onion cooks first and fresh herbs finish the dish, but both were prepared in one bowl. What setup change follows the recipe?",
           "answers": [
             "Cook everything at the finish",
             "Add the herbs at the start",
@@ -520,13 +1077,12 @@
           "correct": 3,
           "category": "kitchen_fundamentals",
           "reasoningSteps": 2,
-          "explanation": "The onion and herbs enter at different times, so organising them separately follows the recipe order and avoids adding either at the wrong stage.",
+          "interactionStyle": "synthesis",
           "presentation": "text"
         },
         {
           "id": "chef-r10q2",
           "question": "A dish tastes rich and heavy but needs freshness. Which finishing adjustment best balances it?",
-          "presentation": "text",
           "answers": [
             "Lemon and fresh herbs",
             "More cream and butter",
@@ -536,21 +1092,23 @@
           "correct": 0,
           "category": "ingredients_flavour",
           "reasoningSteps": 2,
-          "explanation": "Lemon adds acidity that cuts through richness, while fresh herbs add freshness and aroma."
+          "interactionStyle": "synthesis",
+          "presentation": "text"
         },
         {
-          "id": "chef-r7q2",
-          "question": "Dish A needs 4 minutes and loses quality if held; Dish B needs 8 minutes. Both must finish together. What is the best plan?",
-          "presentation": "text",
+          "id": "chef-r10q3",
+          "question": "A dish is browning quickly outside but remains below its centre target; a lower-oven finish is allowed. What is the best next step?",
           "answers": [
-            "Start B, then add A four minutes later",
-            "Start A, then B four minutes later",
-            "Cook A and hold it for eight minutes",
-            "Start both together"
+            "Increase the oven sharply",
+            "Lower the heat and continue until the stated target is reached",
+            "Serve it immediately",
+            "Cool it and stop cooking"
           ],
-          "correct": 0,
+          "correct": 1,
           "category": "heat_methods",
-          "explanation": "Starting the eight-minute dish first and the four-minute dish halfway through lets both finish together without unnecessary holding."
+          "reasoningSteps": 2,
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
         },
         {
           "id": "chef-r10q4",
@@ -564,26 +1122,27 @@
           "correct": 2,
           "category": "baking_pastry",
           "reasoningSteps": 2,
-          "explanation": "The batch used twice the specified butter while the flour stayed unchanged, disrupting the supplied ratio and explaining the excessive spread.",
+          "interactionStyle": "ratio-analysis",
           "presentation": "text"
         },
         {
-          "id": "chef-r6q5",
-          "question": "Flour:sugar = 2:1. With 600 g flour, how much sugar?",
+          "id": "chef-r10q5",
+          "question": "An order increases from 12 to 18 portions at 150 g each. What total prepared mass is required?",
           "answers": [
-            "200 g",
-            "300 g",
-            "600 g",
-            "1,200 g"
+            "2,700 g",
+            "1,800 g",
+            "2,250 g",
+            "3,000 g"
           ],
-          "correct": 1,
+          "correct": 0,
           "category": "kitchen_maths",
-          "explanation": "At a 2:1 ratio, sugar is half the flour mass, so 600 g flour requires 300 g sugar."
+          "reasoningSteps": 2,
+          "interactionStyle": "calculation",
+          "presentation": "text"
         },
         {
           "id": "chef-r10q6",
           "question": "Rice sat warm through service with unverified time and temperature; a fresh verified batch is available. What is safest?",
-          "presentation": "text",
           "answers": [
             "Reheat the old rice and serve it",
             "Mix the old rice into the fresh batch",
@@ -593,11 +1152,402 @@
           "correct": 3,
           "category": "safety_service",
           "reasoningSteps": 2,
-          "explanation": "Without verified time and temperature control, the old rice should not be served. Use the verified batch and follow the kitchen's food-safety procedure for the unverified rice."
+          "interactionStyle": "prioritisation",
+          "presentation": "text"
         }
       ]
     }
   ],
-  "progressLabel": "complete",
-  "nextQuestionLabel": "Next Question"
+  "career": {
+    "levelLabel": "LEVEL",
+    "scoreSuffix": "correct",
+    "journeyLabel": "CHEF CAREER",
+    "kitchensCleared": "{value} / {total} kitchens cleared",
+    "currentRank": "CURRENT RANK",
+    "ranks": [
+      {
+        "afterStage": 0,
+        "label": "Apprentice"
+      },
+      {
+        "afterStage": 1,
+        "label": "Prep Cook"
+      },
+      {
+        "afterStage": 3,
+        "label": "Line Cook"
+      },
+      {
+        "afterStage": 6,
+        "label": "Sous Chef"
+      },
+      {
+        "afterStage": 10,
+        "label": "Head Chef"
+      }
+    ],
+    "unlockEyebrow": "KITCHEN RESULT",
+    "unlockTitle": "A new kitchen has opened",
+    "unlockCopy": "Your next specialist kitchen is ready.",
+    "finalEyebrow": "YOUR CHEF SCORE",
+    "finalCareerTitle": "CULINARY CHALLENGE COMPLETE",
+    "strongestLabel": "Strongest kitchen skill",
+    "stages": [
+      {
+        "difficulty": "Foundation",
+        "preAdBadge": "KITCHEN INDUCTION COMPLETE",
+        "preAdTitle": "Your Kitchen Induction Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Induction Result",
+        "resultIcon": "✓",
+        "resultLabel": "INDUCTION COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Kitchen Ready",
+            "insight": "You read the kitchen clearly and handled the foundation like a professional."
+          },
+          "medium": {
+            "title": "Kitchen Induction Cleared",
+            "insight": "Your kitchen foundation is sound, with a few details still ready to sharpen."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "The induction found useful gaps, and every one is a clear route into the next kitchen."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Prep Bench",
+          "difficulty": "Developing",
+          "tagline": "Tools. Timing. Organisation.",
+          "copy": "A clean setup separates confident cooks from kitchen chaos.",
+          "button": "Enter Prep Bench"
+        }
+      },
+      {
+        "difficulty": "Developing",
+        "preAdBadge": "PREP BENCH COMPLETE",
+        "preAdTitle": "Your Prep Bench Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Prep Bench Result",
+        "resultIcon": "✓",
+        "resultLabel": "PREP BENCH COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Prep Specialist",
+            "insight": "Your setup, tools and preparation order stayed sharp from start to finish."
+          },
+          "medium": {
+            "title": "Prep Bench Cleared",
+            "insight": "You organised most prep decisions well, though one or two tools caught you out."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "Prep Bench exposed a few organisation gaps, but the next kitchen is ready when you are."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Control the Heat",
+          "difficulty": "Developing",
+          "tagline": "Steam. Sear. Simmer. Roast.",
+          "copy": "One wrong heat decision can change the whole dish.",
+          "button": "Enter Control the Heat"
+        }
+      },
+      {
+        "difficulty": "Developing",
+        "preAdBadge": "CONTROL THE HEAT COMPLETE",
+        "preAdTitle": "Your Control the Heat Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Heat Result",
+        "resultIcon": "✓",
+        "resultLabel": "HEAT TEST COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Heat Controller",
+            "insight": "You controlled cause, timing and temperature with confident instincts."
+          },
+          "medium": {
+            "title": "Control the Heat Cleared",
+            "insight": "Your heat instincts are developing well; the finer cause-and-effect clues raised the pressure."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "Heat control created a challenge, but the next kitchen gives you a fresh way to respond."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Flavour Lab",
+          "difficulty": "Skilled",
+          "tagline": "Acidity. Richness. Aroma. Balance.",
+          "copy": "One wrong ingredient can ruin the plate.",
+          "button": "Enter Flavour Lab"
+        }
+      },
+      {
+        "difficulty": "Skilled",
+        "preAdBadge": "FLAVOUR LAB COMPLETE",
+        "preAdTitle": "Your Flavour Lab Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Flavour Result",
+        "resultIcon": "✓",
+        "resultLabel": "FLAVOUR LAB COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Flavour Builder",
+            "insight": "You balanced richness, freshness and aroma without chasing guesswork."
+          },
+          "medium": {
+            "title": "Flavour Lab Cleared",
+            "insight": "You found the main flavour signals, with a few delicate balances left to refine."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "Flavour Lab found room to grow, especially when more than one clue mattered."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Pastry Precision",
+          "difficulty": "Skilled",
+          "tagline": "Structure. Layers. Ratios. Timing.",
+          "copy": "Pastry rewards precision and exposes every shortcut.",
+          "button": "Enter Pastry Precision"
+        }
+      },
+      {
+        "difficulty": "Skilled",
+        "preAdBadge": "PASTRY PRECISION COMPLETE",
+        "preAdTitle": "Your Pastry Precision Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Pastry Result",
+        "resultIcon": "✓",
+        "resultLabel": "PASTRY BENCH COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Pastry Precision",
+            "insight": "Your pastry judgement combined exactness with a strong grasp of structure."
+          },
+          "medium": {
+            "title": "Pastry Precision Cleared",
+            "insight": "Your pastry base is promising, and the review will expose the precision gaps."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "Pastry Precision was demanding, but the missed details are practical ones to revisit."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Service Rush",
+          "difficulty": "Pressure",
+          "tagline": "Tickets. Timing. Instinct. Safety.",
+          "copy": "The pass is filling and every second matters.",
+          "button": "Enter Service Rush"
+        }
+      },
+      {
+        "difficulty": "Pressure",
+        "preAdBadge": "SERVICE RUSH COMPLETE",
+        "preAdTitle": "Your Service Rush Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Service Result",
+        "resultIcon": "✓",
+        "resultLabel": "SERVICE RUSH COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Service Specialist",
+            "insight": "You made clean decisions even when the pace suddenly tightened."
+          },
+          "medium": {
+            "title": "Service Rush Cleared",
+            "insight": "You kept service moving and recognised most of the urgent decisions."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "The rush applied pressure exactly as intended; you still completed the service."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Kitchen Maths",
+          "difficulty": "Pressure",
+          "tagline": "Portions. Batches. Ovens. Deadlines.",
+          "copy": "Service numbers leave no room for guesswork.",
+          "button": "Enter Kitchen Maths"
+        }
+      },
+      {
+        "difficulty": "Pressure",
+        "preAdBadge": "KITCHEN MATHS COMPLETE",
+        "preAdTitle": "Your Kitchen Maths Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Kitchen Maths Result",
+        "resultIcon": "✓",
+        "resultLabel": "KITCHEN MATHS COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Kitchen Calculator",
+            "insight": "You turned portions, ratios and timings into practical kitchen answers."
+          },
+          "medium": {
+            "title": "Kitchen Maths Cleared",
+            "insight": "Most kitchen calculations landed, with one or two service details still to tighten."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "The numbers were challenging, but the report will break each kitchen calculation down."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Spot the Mistake",
+          "difficulty": "Advanced",
+          "tagline": "Tickets. Records. Stations. Clues.",
+          "copy": "The errors are small; their consequences are not.",
+          "button": "Enter Spot the Mistake"
+        }
+      },
+      {
+        "difficulty": "Advanced",
+        "preAdBadge": "SPOT THE MISTAKE COMPLETE",
+        "preAdTitle": "Your Spot the Mistake Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Inspection Result",
+        "resultIcon": "✓",
+        "resultLabel": "INSPECTION COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Mistake Spotter",
+            "insight": "Tiny record conflicts and process failures rarely escaped your attention."
+          },
+          "medium": {
+            "title": "Spot the Mistake Cleared",
+            "insight": "You spotted the major mistakes, while the smallest record clues kept it interesting."
+          },
+          "low": {
+            "title": "Kitchen Cleared",
+            "insight": "The inspection hid its clues well; finishing it proves you kept looking."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Sous Chef Decisions",
+          "difficulty": "Expert",
+          "tagline": "Quality. Timing. Safety. Leadership.",
+          "copy": "Several problems are competing for your attention.",
+          "button": "Enter Sous Chef Decisions"
+        }
+      },
+      {
+        "difficulty": "Expert",
+        "preAdBadge": "SOUS CHEF DECISIONS COMPLETE",
+        "preAdTitle": "Your Sous Chef Decisions Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Sous Chef Result",
+        "resultIcon": "✓",
+        "resultLabel": "SOUS CHEF ASSESSMENT COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Final Promotion Available",
+            "insight": "You protected safety, quality and timing while several concerns competed."
+          },
+          "medium": {
+            "title": "Sous Chef Ready",
+            "insight": "Your sous-chef judgement is credible, with a few competing priorities left to master."
+          },
+          "low": {
+            "title": "Final Assessment Unlocked",
+            "insight": "The expert decisions were tough, but you reached the final promotion assessment."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Chef’s Table",
+          "difficulty": "Final Assessment",
+          "tagline": "Every skill returns for the final service.",
+          "copy": "The final service is waiting.",
+          "button": "Enter Chef’s Table"
+        }
+      },
+      {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "CHEF’S TABLE COMPLETE",
+        "preAdTitle": "Your Chef’s Table Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": [
+          "Six decisions checked",
+          "Kitchen score calculated",
+          "Next challenge prepared"
+        ],
+        "preAdButton": "See My Chef’s Table Result",
+        "resultIcon": "✓",
+        "resultLabel": "CHEF’S TABLE COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Head Chef",
+            "insight": "You connected every clue and finished the final service with Head Chef judgement."
+          },
+          "medium": {
+            "title": "Final Service Complete",
+            "insight": "You completed the Chef’s Table with a strong cross-kitchen performance."
+          },
+          "low": {
+            "title": "Chef’s Table Complete",
+            "insight": "The final table pushed every skill at once, and completing it still earns a full report."
+          }
+        }
+      }
+    ],
+    "hideJourneyLength": true,
+    "continuousShell": true,
+    "currentScoreLabel": "CURRENT CHEF SCORE"
+  }
 }

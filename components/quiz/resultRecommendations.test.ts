@@ -13,7 +13,7 @@ import {
 test("the result recommendation pool contains the approved recent quizzes", () => {
   assert.deepEqual(
     RESULT_RECOMMENDATIONS.map((quiz) => quiz.slug),
-    ["memory", "chef", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar", "idiom", "iq"],
+    ["memory", "paramedic", "years-left", "vintage", "vision", "nursing", "midwifery", "grammar", "idiom", "iq"],
   );
 });
 
@@ -31,7 +31,7 @@ test("every promoted result recommendation is a one-stage supported-length quiz"
     assert.equal(locale.stages.length, 1, recommendation.slug);
     assert.equal(
       locale.stages[0].questions.length,
-      recommendation.slug === "chef" ? 30 : 10,
+      10,
       recommendation.slug,
     );
   }
@@ -65,5 +65,5 @@ test("the full recommendation section excludes the current and sticky quizzes", 
   assert.equal(recommendations.length, 4);
   assert.equal(recommendations.some((quiz) => quiz.slug === "vision"), false);
   assert.equal(recommendations.some((quiz) => quiz.slug === "midwifery"), false);
-  assert.deepEqual(recommendations.map((quiz) => quiz.slug), ["memory", "chef", "paramedic", "years-left"]);
+  assert.deepEqual(recommendations.map((quiz) => quiz.slug), ["memory", "paramedic", "years-left", "vintage"]);
 });

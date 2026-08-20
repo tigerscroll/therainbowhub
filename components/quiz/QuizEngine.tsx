@@ -426,6 +426,9 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
   const stageQuestionIndex = Math.max(0, stageQuestions.findIndex((question) => question.id === currentQuestion?.id));
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
+  const stagePositionProgress = stageQuestions.length > 0
+    ? Math.round(((stageQuestionIndex + 1) / stageQuestions.length) * 100)
+    : 0;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
   useLayoutEffect(() => {
@@ -673,7 +676,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     return (
       <>
-      <section className="quiz-engine__checkpoint quiz-engine__card" data-round={completedStage + 1}>
+      <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}`} data-round={completedStage + 1}>
         {!isFinalStage ? (
           <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? reveal?.badge ?? translations.results.stageComplete}</span>
         ) : null}
@@ -739,17 +742,27 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const stageCorrect = completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
     const stageBand = stageCorrect >= 5 ? stageCopy.resultBands.high : stageCorrect >= 3 ? stageCopy.resultBands.medium : stageCopy.resultBands.low;
     const cleared = completedStage + 1;
+    const completedSoFar = quiz.questions.filter((question) => question.stage <= completedStage);
+    const cumulativeCorrect = completedSoFar.filter((question) => answers[question.id] === question.answerIndex).length;
+    const cumulativePercentage = completedSoFar.length ? Math.round((cumulativeCorrect / completedSoFar.length) * 100) : 0;
     const currentRank = [...quiz.career.ranks].reverse().find((rank) => cleared >= rank.afterStage)?.label ?? quiz.career.ranks[0].label;
     return (
       <>
-      <section className="quiz-engine__stage-result quiz-engine__card" data-round={cleared}>
-        <span className="quiz-engine__eyebrow">{completedStage === 0 ? quiz.career.unlockEyebrow : stageCopy.resultLabel}</span>
+      <section className={`quiz-engine__stage-result quiz-engine__card${quiz.career.continuousShell ? " quiz-engine__continuous-shell" : ""}`} data-round={cleared}>
+        <span className="quiz-engine__eyebrow">{quiz.career.hideJourneyLength ? stageCopy.resultLabel : completedStage === 0 ? quiz.career.unlockEyebrow : stageCopy.resultLabel}</span>
         <div className="quiz-engine__stage-result-icon" aria-hidden="true">{stageCopy.resultIcon}</div>
         <div className="quiz-engine__stage-score"><strong>{stageCorrect}</strong><span>/ {completedQuestions.length}</span></div>
         <h2>{stageBand.title}</h2>
         <p className="quiz-engine__stage-insight">{stageBand.insight}</p>
 
-        {completedStage === 0 ? (
+        {quiz.career.hideJourneyLength ? (
+          <section className="quiz-engine__career-current-score" style={{ "--career-score": `${cumulativePercentage}%` } as CSSProperties}>
+            <span>{quiz.career.currentScoreLabel ?? "CURRENT SCORE"}</span>
+            <strong>{cumulativePercentage}%</strong>
+          </section>
+        ) : null}
+
+        {completedStage === 0 && !quiz.career.hideJourneyLength ? (
           <section className="quiz-engine__career-unlock">
             <span>{quiz.career.unlockEyebrow}</span>
             <h3>{quiz.career.unlockTitle}</h3>
@@ -757,7 +770,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </section>
         ) : null}
 
-        {stageCopy.promotion ? (
+        {stageCopy.promotion && !quiz.career.hideJourneyLength ? (
           <section className="quiz-engine__career-promotion">
             <span>{stageCopy.promotion.eyebrow}</span>
             <h3>{stageCopy.promotion.title}</h3>
@@ -765,7 +778,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           </section>
         ) : null}
 
-        <section className="quiz-engine__career-progress">
+        {!quiz.career.hideJourneyLength ? <section className="quiz-engine__career-progress">
           <div><span>{quiz.career.journeyLabel}</span><strong>{quiz.career.kitchensCleared.replace("{value}", String(cleared)).replace("{total}", String(quiz.stages.length))}</strong></div>
           <div className="quiz-engine__career-dots" aria-label={`${cleared} of ${quiz.stages.length} complete`} style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}>
             {quiz.stages.map((stage, index) => <i aria-hidden="true" data-complete={index < cleared ? "true" : undefined} key={stage} />)}
@@ -774,16 +787,21 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <div className="quiz-engine__career-ladder" aria-label={quiz.career.ranks.map((rank) => rank.label).join(", ")}>
             {quiz.career.ranks.map((rank, index) => <span data-active={rank.label === currentRank ? "true" : undefined} key={rank.label}>{rank.label}{index < quiz.career!.ranks.length - 1 ? <i>→</i> : null}</span>)}
           </div>
-        </section>
+        </section> : null}
 
         {stageCopy.next ? (
-          <section className="quiz-engine__career-next">
-            <span>{stageCopy.next.eyebrow}</span>
-            <h3>{stageCopy.next.title}</h3>
-            <b>{stageCopy.next.difficulty}</b>
-            <p><strong>{stageCopy.next.tagline}</strong>{stageCopy.next.copy}</p>
-            <button className="quiz-engine__primary" onClick={enterNextCareerStage} type="button">{stageCopy.next.button}</button>
-          </section>
+          <>
+            <section className="quiz-engine__career-next">
+              <span>{stageCopy.next.eyebrow}</span>
+              <h3>{stageCopy.next.title}</h3>
+              <b>{stageCopy.next.difficulty}</b>
+              <p><strong>{stageCopy.next.tagline}</strong>{stageCopy.next.copy}</p>
+              {!quiz.career.hideJourneyLength ? <button className="quiz-engine__primary" onClick={enterNextCareerStage} type="button">{stageCopy.next.button}</button> : null}
+            </section>
+            {quiz.career.hideJourneyLength ? (
+              <button className="quiz-engine__primary quiz-engine__career-next-action" onClick={enterNextCareerStage} type="button">{stageCopy.next.button}</button>
+            ) : null}
+          </>
         ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
@@ -838,7 +856,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       const report = careerReport;
       return (
         <>
-        <section className="quiz-engine__career-final quiz-engine__card" data-round={quiz.stages.length}>
+        <section className={`quiz-engine__career-final quiz-engine__card${career?.continuousShell ? " quiz-engine__continuous-shell" : ""}`} data-round={quiz.stages.length}>
           <span className="quiz-engine__eyebrow">{career!.finalEyebrow}</span>
           <div className="quiz-engine__result-icon" aria-hidden="true">{quiz.theme.artwork?.icon ?? quiz.cardIcon}</div>
           <div className="quiz-engine__result-percentage"><strong>{result.percentage}%</strong></div>
@@ -875,7 +893,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ? <ResultDisplayAd config={quiz.engine.resultAds} placement="header" />
         : null}
       <section
-        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${detailedResults ? " quiz-engine__results--detailed" : ""}`}
+        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${detailedResults ? " quiz-engine__results--detailed" : ""}${career?.continuousShell ? " quiz-engine__continuous-shell" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
       >
         {profileReveal ? (
@@ -1086,16 +1104,16 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
   return (
     <>
-    <section className="quiz-engine__question-shell" data-round={currentStage + 1}>
+    <section className={`quiz-engine__question-shell${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}`} data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
         <span>{quiz.career
-          ? currentStage === 0 ? quiz.career.stages[0].difficulty : `${quiz.career.levelLabel} ${currentStage + 1} / ${quiz.stages.length}`
+          ? quiz.career.hideJourneyLength ? quiz.career.stages[currentStage].difficulty : currentStage === 0 ? quiz.career.stages[0].difficulty : `${quiz.career.levelLabel} ${currentStage + 1} / ${quiz.stages.length}`
           : quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
         <strong>{quiz.stages[currentStage]}</strong>
-        {quiz.career ? <em>{currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} / ${stageQuestions.length}`}</em> : null}
+        {quiz.career ? <em>{quiz.career.hideJourneyLength ? `${stageQuestionIndex + 1} of ${stageQuestions.length}` : currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} of ${stageQuestions.length}`}</em> : null}
       </div>
-      <div className="quiz-engine__progress">
-        <i style={{ width: `${progress}%` }} />
+      <div className="quiz-engine__progress" data-complete={quiz.career && stageQuestionIndex + 1 === stageQuestions.length ? true : undefined}>
+        <i style={{ width: `${quiz.career ? stagePositionProgress : progress}%` }} />
       </div>
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}

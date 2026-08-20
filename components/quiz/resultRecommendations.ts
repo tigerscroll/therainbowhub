@@ -1,5 +1,5 @@
 export type ResultRecommendation = {
-  slug: "memory" | "chef" | "paramedic" | "years-left" | "vintage" | "vision" | "nursing" | "midwifery" | "grammar" | "idiom" | "iq";
+  slug: "memory" | "paramedic" | "years-left" | "vintage" | "vision" | "nursing" | "midwifery" | "grammar" | "idiom" | "iq";
   icon: string;
   title: string;
   shortTitle: string;
@@ -17,15 +17,6 @@ export const RESULT_RECOMMENDATIONS: ResultRecommendation[] = [
     summary: "Words, pictures, numbers and delayed recall put a different part of your mind under pressure.",
     cta: "Take the Memory Test",
     thumbnail: "/quizzes/memory/assets/thumbnail-480.webp",
-  },
-  {
-    slug: "chef",
-    icon: "🧑‍🍳",
-    title: "Only 12% Pass This Chef's Entrance Exam",
-    shortTitle: "Enter the Chef Exam",
-    summary: "Flavour, heat, pastry and service decisions come together in one fast kitchen challenge.",
-    cta: "Take the Chef Exam",
-    thumbnail: "/quizzes/chef/assets/thumbnail-480.webp",
   },
   {
     slug: "paramedic",

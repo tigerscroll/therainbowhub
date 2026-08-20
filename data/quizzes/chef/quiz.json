@@ -1,8 +1,8 @@
 {
   "slug": "chef",
   "engine": {
-    "flow": "linear",
-    "advance": "manual",
+    "flow": "staged",
+    "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
     "checkpoint": "ai",
@@ -11,32 +11,6 @@
       "start": false,
       "stages": true,
       "attempts": 3
-    },
-    "questionAd": {
-      "adUnitPath": "/22677279144/display",
-      "fromQuestion": 2,
-      "placements": 2,
-      "sizes": [
-        [336, 280],
-        [300, 250],
-        [320, 100],
-        [300, 100],
-        [320, 50],
-        [300, 50]
-      ]
-    },
-    "resultAds": {
-      "adUnitPath": "/22677279144/display",
-      "inlinePlacements": 4,
-      "sticky": true,
-      "sizes": [
-        [336, 280],
-        [300, 250],
-        [320, 100],
-        [300, 100],
-        [320, 50],
-        [300, 50]
-      ]
     },
     "advanceDelayMs": 450,
     "targetRatio": 0.8,
