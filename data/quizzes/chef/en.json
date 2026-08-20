@@ -22,11 +22,11 @@
   "checkpoint": {
     "nextPrefix": "NEXT KITCHEN",
     "adNote": "Short ad first — then this kitchen result unlocks.",
-    "finalBadge": "CHEF’S TABLE COMPLETE",
+    "finalBadge": "GRAND SERVICE COMPLETE",
     "finalIcon": "✓",
-    "finalTitle": "Your Chef’s Table Results Are Ready",
+    "finalTitle": "Your Grand Service Results Are Ready",
     "finalCopy": "Your final kitchen score is ready to reveal.",
-    "finalButton": "See My Chef’s Table Result",
+    "finalButton": "See My Grand Service Result",
     "finalChecklist": [
       "Technique and heat",
       "Flavour and pastry",
@@ -102,6 +102,76 @@
         "title": "Chef’s Table assessed",
         "signal": "fixed",
         "message": "All six Chef’s Table decisions have been checked."
+      },
+      {
+        "badge": "MARKET BASKET COMPLETE",
+        "icon": "✓",
+        "title": "Market Basket assessed",
+        "signal": "fixed",
+        "message": "All six Market Basket decisions have been checked."
+      },
+      {
+        "badge": "SAUCE STATION COMPLETE",
+        "icon": "✓",
+        "title": "Sauce Station assessed",
+        "signal": "fixed",
+        "message": "All six Sauce Station decisions have been checked."
+      },
+      {
+        "badge": "BREAKFAST RUSH COMPLETE",
+        "icon": "✓",
+        "title": "Breakfast Rush assessed",
+        "signal": "fixed",
+        "message": "All six Breakfast Rush decisions have been checked."
+      },
+      {
+        "badge": "BANQUET SCALE-UP COMPLETE",
+        "icon": "✓",
+        "title": "Banquet Scale-Up assessed",
+        "signal": "fixed",
+        "message": "All six Banquet Scale-Up decisions have been checked."
+      },
+      {
+        "badge": "WASTE-SMART KITCHEN COMPLETE",
+        "icon": "✓",
+        "title": "Waste-Smart Kitchen assessed",
+        "signal": "fixed",
+        "message": "All six Waste-Smart Kitchen decisions have been checked."
+      },
+      {
+        "badge": "COLD KITCHEN COMPLETE",
+        "icon": "✓",
+        "title": "Cold Kitchen assessed",
+        "signal": "fixed",
+        "message": "All six Cold Kitchen decisions have been checked."
+      },
+      {
+        "badge": "BREAD AND DOUGH COMPLETE",
+        "icon": "✓",
+        "title": "Bread and Dough assessed",
+        "signal": "fixed",
+        "message": "All six Bread and Dough decisions have been checked."
+      },
+      {
+        "badge": "MENU TROUBLESHOOTER COMPLETE",
+        "icon": "✓",
+        "title": "Menu Troubleshooter assessed",
+        "signal": "fixed",
+        "message": "All six Menu Troubleshooter decisions have been checked."
+      },
+      {
+        "badge": "EXECUTIVE DECISIONS COMPLETE",
+        "icon": "✓",
+        "title": "Executive Decisions assessed",
+        "signal": "fixed",
+        "message": "All six Executive Decisions have been checked."
+      },
+      {
+        "badge": "GRAND SERVICE COMPLETE",
+        "icon": "✓",
+        "title": "Grand Service assessed",
+        "signal": "fixed",
+        "message": "All six Grand Service decisions have been checked."
       }
     ]
   },
@@ -204,7 +274,7 @@
         "targetRemaining": "More correct answers needed for 80%",
         "details": {
           "analysisTitle": "How to read your chef score",
-          "analysisCopy": "This 60-question result combines technique, flavour, pastry, kitchen maths and safety judgement across ten specialist kitchens. The skill pattern below can be more revealing than the headline score alone.",
+          "analysisCopy": "This 120-question result combines technique, flavour, pastry, kitchen maths and safety judgement across every specialist kitchen you completed. The skill pattern below can be more revealing than the headline score alone.",
           "roadmapTitle": "Inside your full culinary report",
           "roadmapIntro": "Your score is the first course. Continue through the unlocked report to see which kitchen decisions came most naturally and where another attempt could improve.",
           "roadmapItems": [
@@ -214,9 +284,9 @@
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is 48 correct answers out of 60. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
+          "positionCopy": "The challenge target is 96 correct answers out of 120. Your marker shows how close this attempt came to that line without claiming a professional qualification.",
           "measuredTitle": "What this chef test measured",
-          "measuredIntro": "The ten kitchens span practical culinary thinking rather than repeating one kind of food trivia.",
+          "measuredIntro": "The specialist kitchens span practical culinary thinking rather than repeating one kind of food trivia.",
           "measuredAreas": [
             {
               "title": "Technique and heat",
@@ -248,7 +318,7 @@
             }
           ],
           "finalTitle": "Your final chef summary",
-          "finalCopy": "You finished all ten kitchens with {score} correct answers out of {total}. Your chef profile for this attempt is {profile}."
+          "finalCopy": "You completed the full culinary journey with {score} correct answers out of {total}. Your chef profile for this attempt is {profile}."
         }
       }
     }
@@ -1156,6 +1226,116 @@
           "presentation": "text"
         }
       ]
+    },
+    {
+      "title": "Market Basket",
+      "questions": [
+        { "id": "chef-r11q1", "question": "A recipe needs peeled carrots cut evenly. What should happen before the first cut?", "answers": ["Stabilise the board and choose a suitable sharp knife", "Soak the knife in water", "Balance the carrots on a plate", "Warm the carrots in the oven"], "correct": 0, "category": "kitchen_fundamentals", "interactionStyle": "core-concept", "presentation": "text" },
+        { "id": "chef-r11q2", "question": "Ripe tomatoes taste sweet but flat. Which small addition most directly brings brightness?", "answers": ["More oil", "A little acid", "More starch", "Extra cream"], "correct": 1, "category": "ingredients_flavour", "interactionStyle": "flavour-balance", "presentation": "text" },
+        { "id": "chef-r11q3", "question": "Root vegetables should brown outside and become tender inside. Which method best fits?", "answers": ["Chilling", "Poaching", "Roasting", "Soaking"], "correct": 2, "category": "heat_methods", "interactionStyle": "method-selection", "presentation": "text" },
+        { "id": "chef-r11q4", "question": "Fresh berries release juice in a tart, and the recipe allows starch. What is the most useful step?", "answers": ["Add more butter to the fruit", "Leave the fruit soaking in water", "Bake the empty filling first", "Coat the fruit with the stated starch"], "correct": 3, "category": "baking_pastry", "interactionStyle": "applied-scenario", "presentation": "text" },
+        { "id": "chef-r11q5", "question": "Eight portions each need 120 g of vegetables. What total mass is required?", "answers": ["960 g", "840 g", "1,020 g", "1,200 g"], "correct": 0, "category": "kitchen_maths", "interactionStyle": "calculation", "presentation": "text" },
+        { "id": "chef-r11q6", "question": "A sealed chilled ingredient arrives with its seal broken. What is the safest response?", "answers": ["Taste it before deciding", "Reject or isolate it and follow the approved check", "Reseal it and use it first", "Mix it into a cooked dish"], "correct": 1, "category": "safety_service", "interactionStyle": "safety-judgement", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Sauce Station",
+      "questions": [
+        { "id": "chef-r12q1", "question": "Which tool is most useful for blending oil gradually into vinegar?", "answers": ["Tongs", "Peeler", "Whisk", "Colander"], "correct": 2, "category": "kitchen_fundamentals", "interactionStyle": "tool-selection", "presentation": "text" },
+        { "id": "chef-r12q2", "question": "A cream sauce tastes rich and dull. Which adjustment most directly adds contrast?", "answers": ["More cream", "More butter", "More starch", "A small amount of acid"], "correct": 3, "category": "ingredients_flavour", "interactionStyle": "flavour-balance", "presentation": "text" },
+        { "id": "chef-r12q3", "question": "An emulsified sauce begins separating over strong heat. What is the best immediate response?", "answers": ["Lower or remove the heat and whisk gently", "Boil it harder", "Add dry flour immediately", "Leave it untouched on the heat"], "correct": 0, "category": "heat_methods", "interactionStyle": "troubleshooting", "presentation": "text" },
+        { "id": "chef-r12q4", "question": "An egg-thickened custard turns grainy after rapid heating. What most likely happened?", "answers": ["The sugar dissolved", "The eggs overheated and curdled", "The bowl was too cold", "The vanilla was added late"], "correct": 1, "category": "baking_pastry", "interactionStyle": "cause-effect", "presentation": "text" },
+        { "id": "chef-r12q5", "question": "A sauce batch contains 750 mL. How many 125 mL portions does it provide?", "answers": ["4", "5", "6", "8"], "correct": 2, "category": "kitchen_maths", "interactionStyle": "portion-calculation", "presentation": "text" },
+        { "id": "chef-r12q6", "question": "A tasting spoon has touched a cook’s mouth. What should happen before tasting again?", "answers": ["Rinse it briefly in cold water", "Wipe it on a clean cloth", "Use the same spoon only once more", "Use a fresh clean spoon"], "correct": 3, "category": "safety_service", "interactionStyle": "safe-practice", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Breakfast Rush",
+      "questions": [
+        { "id": "chef-r13q1", "question": "Several breakfast orders share the same garnish. What setup best supports a smooth service?", "answers": ["Prepare and portion the garnish before the rush", "Wait until every plate is ready", "Store it beneath dirty equipment", "Make a different garnish for each plate"], "correct": 0, "category": "kitchen_fundamentals", "interactionStyle": "organisation", "presentation": "text" },
+        { "id": "chef-r13q2", "question": "A fruit compote tastes sweet but one-dimensional, and lemon is allowed. What should be tried first?", "answers": ["More sugar", "A little lemon", "More cream", "Extra starch"], "correct": 1, "category": "ingredients_flavour", "interactionStyle": "flavour-balance", "presentation": "text" },
+        { "id": "chef-r13q3", "question": "An omelette browns quickly while the centre remains unset. What is the most useful change?", "answers": ["Add more oil and keep the heat", "Cover it with ice", "Reduce the heat", "Turn the heat to maximum"], "correct": 2, "category": "heat_methods", "interactionStyle": "heat-control", "presentation": "text" },
+        { "id": "chef-r13q4", "question": "Pancakes become tough after the batter is beaten for a long time. What best explains it?", "answers": ["The pan was round", "The milk was measured", "The batter contained flour", "Overmixing developed too much gluten"], "correct": 3, "category": "baking_pastry", "interactionStyle": "cause-effect", "presentation": "text" },
+        { "id": "chef-r13q5", "question": "Seven tables order two breakfasts each, plus three replacements. How many plates are needed?", "answers": ["17", "14", "16", "21"], "correct": 0, "category": "kitchen_maths", "interactionStyle": "service-calculation", "presentation": "text" },
+        { "id": "chef-r13q6", "question": "Raw egg spills onto ready-to-eat fruit. What is the safest decision?", "answers": ["Rinse the fruit and serve it", "Discard the affected fruit and clean the area safely", "Cover the spill with more fruit", "Serve it immediately"], "correct": 1, "category": "safety_service", "interactionStyle": "safety-judgement", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Banquet Scale-Up",
+      "questions": [
+        { "id": "chef-r14q1", "question": "Several identical trays are prepared for later service. What best prevents mix-ups?", "answers": ["Stack every tray without labels", "Rely on memory alone", "Label and organise each tray clearly", "Move the trays between stations"], "correct": 2, "category": "kitchen_fundamentals", "interactionStyle": "organisation", "presentation": "text" },
+        { "id": "chef-r14q2", "question": "A soup recipe is multiplied for a banquet. How should strong seasoning be adjusted?", "answers": ["Multiply it blindly and never taste", "Leave all seasoning out", "Add the full amount after service", "Add progressively and taste the larger batch"], "correct": 3, "category": "ingredients_flavour", "interactionStyle": "applied-scenario", "presentation": "text" },
+        { "id": "chef-r14q3", "question": "Vegetables packed tightly across one roasting tray are turning wet. What is the best correction?", "answers": ["Spread them across more hot tray space", "Add water to the tray", "Cover the tray tightly", "Lower the oven and crowd them further"], "correct": 0, "category": "heat_methods", "interactionStyle": "heat-control", "presentation": "text" },
+        { "id": "chef-r14q4", "question": "A roll recipe makes 12. Which multiplier is needed for 36 rolls?", "answers": ["Two", "Three", "Four", "Six"], "correct": 1, "category": "baking_pastry", "interactionStyle": "recipe-scaling", "presentation": "text" },
+        { "id": "chef-r14q5", "question": "Eighteen tables each require six side plates. How many side plates are needed?", "answers": ["96", "102", "108", "116"], "correct": 2, "category": "kitchen_maths", "interactionStyle": "calculation", "presentation": "text" },
+        { "id": "chef-r14q6", "question": "One chilled tray has an unverified time outside temperature control. What should happen?", "answers": ["Mix it with a verified tray", "Serve it first", "Guess how long it was out", "Isolate it and verify before any use"], "correct": 3, "category": "safety_service", "interactionStyle": "prioritisation", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Waste-Smart Kitchen",
+      "questions": [
+        { "id": "chef-r15q1", "question": "Clean edible vegetable trimmings are approved for stock. What is the best preparation choice?", "answers": ["Keep them separately and use them promptly as directed", "Mix them with packaging waste", "Leave them uncovered on the floor", "Add spoiled trimmings for stronger flavour"], "correct": 0, "category": "kitchen_fundamentals", "interactionStyle": "organisation", "presentation": "text" },
+        { "id": "chef-r15q2", "question": "Bread is dry but still safe and sound. Which use best turns its texture into an advantage?", "answers": ["A fresh fruit salad", "Croutons", "A clear drink", "Raw pastry cream"], "correct": 1, "category": "ingredients_flavour", "interactionStyle": "ingredient-use", "presentation": "text" },
+        { "id": "chef-r15q3", "question": "A small amount of sauce is reducing too quickly in a wide pan. What is the most useful change?", "answers": ["Increase the heat", "Add dry flour without mixing", "Use gentler heat or a smaller pan", "Spread it across a wider tray"], "correct": 2, "category": "heat_methods", "interactionStyle": "troubleshooting", "presentation": "text" },
+        { "id": "chef-r15q4", "question": "Very ripe bananas are safe but too soft for neat slices. Which bake makes useful use of them?", "answers": ["Plain crackers", "Unfilled pastry shells", "A savoury stock", "Banana bread"], "correct": 3, "category": "baking_pastry", "interactionStyle": "ingredient-use", "presentation": "text" },
+        { "id": "chef-r15q5", "question": "A 12 kg delivery produces 1.5 kg of unavoidable trim. What usable mass remains?", "answers": ["10.5 kg", "9.5 kg", "11.5 kg", "13.5 kg"], "correct": 0, "category": "kitchen_maths", "interactionStyle": "calculation", "presentation": "text" },
+        { "id": "chef-r15q6", "question": "Food has an unusual smell and its safety is uncertain. What is the responsible choice?", "answers": ["Taste a small amount", "Do not taste it; isolate or discard it under the approved procedure", "Mix it with fresh food", "Serve it with extra seasoning"], "correct": 1, "category": "safety_service", "interactionStyle": "safety-judgement", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Cold Kitchen",
+      "questions": [
+        { "id": "chef-r16q1", "question": "A chopping board slides while vegetables are cut. What is the best setup correction?", "answers": ["Hold it with one fingertip", "Cut faster", "Secure it with a suitable non-slip mat or damp cloth", "Balance it on a bowl"], "correct": 2, "category": "kitchen_fundamentals", "interactionStyle": "safe-setup", "presentation": "text" },
+        { "id": "chef-r16q2", "question": "A vinaigrette has separated while standing. What should happen just before dressing the salad?", "answers": ["Add flour", "Freeze it", "Pour off the oil", "Whisk or shake it back together"], "correct": 3, "category": "ingredients_flavour", "interactionStyle": "core-concept", "presentation": "text" },
+        { "id": "chef-r16q3", "question": "Green vegetables are briefly blanched and must stop cooking immediately. What comes next?", "answers": ["Cool them rapidly in ice water", "Leave them in the hot water", "Cover them beside the hob", "Return them to boiling water"], "correct": 0, "category": "heat_methods", "interactionStyle": "sequence", "presentation": "text" },
+        { "id": "chef-r16q4", "question": "Pastry becomes soft and sticky before rolling, and the recipe allows chilling. What is the best response?", "answers": ["Add a large amount of water", "Chill it until manageable", "Bake it in a bowl", "Knead it beside strong heat"], "correct": 1, "category": "baking_pastry", "interactionStyle": "troubleshooting", "presentation": "text" },
+        { "id": "chef-r16q5", "question": "Twenty-four salad portions each need 75 g. What total mass is required?", "answers": ["1,200 g", "1,500 g", "1,800 g", "2,400 g"], "correct": 2, "category": "kitchen_maths", "interactionStyle": "portion-calculation", "presentation": "text" },
+        { "id": "chef-r16q6", "question": "A board used for raw poultry is needed for ready-to-eat salad. What must happen first?", "answers": ["Wipe it with a dry towel", "Turn it over", "Cover it with paper", "Use a separate clean board or fully clean and sanitise it"], "correct": 3, "category": "safety_service", "interactionStyle": "cross-contact", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Bread and Dough",
+      "questions": [
+        { "id": "chef-r17q1", "question": "What does kneading mainly develop in a wheat bread dough?", "answers": ["A structure that can hold gas", "A colder oven", "A sweeter crust", "A lower flour mass"], "correct": 0, "category": "kitchen_fundamentals", "interactionStyle": "core-concept", "presentation": "text" },
+        { "id": "chef-r17q2", "question": "What does salt contribute most directly to a basic bread dough?", "answers": ["Only colour", "Flavour and control of fermentation", "Extra water", "A replacement for flour"], "correct": 1, "category": "ingredients_flavour", "interactionStyle": "ingredient-function", "presentation": "text" },
+        { "id": "chef-r17q3", "question": "A loaf is pale at the stated check time, and a thermometer shows the oven is below the recipe temperature. What follows?", "answers": ["The loaf contains too much salt", "The dough was shaped correctly", "The oven delivered less heat than specified", "The loaf must be fully baked"], "correct": 2, "category": "heat_methods", "interactionStyle": "evidence-reading", "presentation": "text" },
+        { "id": "chef-r17q4", "question": "Active yeast dough barely rises in a cold room. What change best supports the stated proofing step?", "answers": ["Add ice", "Flatten it repeatedly", "Place it in direct intense heat", "Move it to a gently warm, draught-free place"], "correct": 3, "category": "baking_pastry", "interactionStyle": "troubleshooting", "presentation": "text" },
+        { "id": "chef-r17q5", "question": "One loaf uses 600 g of dough. How much dough is needed for five loaves?", "answers": ["3,000 g", "2,400 g", "3,600 g", "4,200 g"], "correct": 0, "category": "kitchen_maths", "interactionStyle": "calculation", "presentation": "text" },
+        { "id": "chef-r17q6", "question": "A bag of flour spills across a busy walkway. What comes first?", "answers": ["Walk through it carefully", "Stop access, mark the hazard and arrange safe clean-up", "Sweep it towards another station", "Ignore it until service ends"], "correct": 1, "category": "safety_service", "interactionStyle": "prioritisation", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Menu Troubleshooter",
+      "questions": [
+        { "id": "chef-r18q1", "question": "A blunt knife crushes herbs instead of cutting cleanly. What is the best correction?", "answers": ["Press harder with the blunt knife", "Use a rolling pin", "Use a suitable properly sharpened knife", "Soak the herbs in oil first"], "correct": 2, "category": "kitchen_fundamentals", "interactionStyle": "tool-selection", "presentation": "text" },
+        { "id": "chef-r18q2", "question": "A soup is too salty, and unsalted base is available. What is the most controlled correction?", "answers": ["Add more salt", "Reduce it further", "Add concentrated stock", "Add unsalted base gradually and retaste"], "correct": 3, "category": "ingredients_flavour", "interactionStyle": "flavour-balance", "presentation": "text" },
+        { "id": "chef-r18q3", "question": "A thick sauce catches on the base while the top stays cool. What is the best response?", "answers": ["Lower the heat and stir more evenly", "Increase the heat and stop stirring", "Add dry flour to the base", "Cover it and leave it untouched"], "correct": 0, "category": "heat_methods", "interactionStyle": "troubleshooting", "presentation": "text" },
+        { "id": "chef-r18q4", "question": "A cake is dense, and the record shows the baking powder was omitted. What is the clearest cause?", "answers": ["The cake tin had sides", "The raising agent was missing", "The flour was weighed", "The oven had a shelf"], "correct": 1, "category": "baking_pastry", "interactionStyle": "record-analysis", "presentation": "text" },
+        { "id": "chef-r18q5", "question": "A batch makes 12 portions. How many full batches are needed for 48 portions?", "answers": ["2", "3", "4", "5"], "correct": 2, "category": "kitchen_maths", "interactionStyle": "calculation", "presentation": "text" },
+        { "id": "chef-r18q6", "question": "A supplier sheet and kitchen label disagree about an allergen. What should happen?", "answers": ["Use whichever list is shorter", "Serve a small portion", "Remove the label", "Stop and verify the ingredient before use"], "correct": 3, "category": "safety_service", "interactionStyle": "safety-judgement", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Executive Decisions",
+      "questions": [
+        { "id": "chef-r19q1", "question": "Two stations need one scale before service. What is the strongest operational plan?", "answers": ["Schedule both weighing tasks and prepare them before the rush", "Let both stations wait until service", "Move the scale without telling either cook", "Estimate every quantity by sight"], "correct": 0, "category": "kitchen_fundamentals", "interactionStyle": "planning", "presentation": "text" },
+        { "id": "chef-r19q2", "question": "A menu already has three rich dishes. Which addition creates the clearest contrast?", "answers": ["Another creamy side", "A fresh, acidic salad", "A butter sauce", "A sweet glaze"], "correct": 1, "category": "ingredients_flavour", "interactionStyle": "menu-balance", "presentation": "text" },
+        { "id": "chef-r19q3", "question": "The first pan batch browned well, but a crowded second batch steamed. What change best restores the result?", "answers": ["Add more food to the pan", "Cover the pan tightly", "Cook smaller batches and let the pan recover heat", "Add cold water between batches"], "correct": 2, "category": "heat_methods", "interactionStyle": "cause-effect", "presentation": "text" },
+        { "id": "chef-r19q4", "question": "One oven fits one pastry tray, and two trays must be ready at different times. What is the best plan?", "answers": ["Bake both at once by stacking them", "Ignore the service times", "Start the later tray first", "Sequence the trays from bake time and required finish time"], "correct": 3, "category": "baking_pastry", "interactionStyle": "scheduling", "presentation": "text" },
+        { "id": "chef-r19q5", "question": "Fifteen portions need 180 g each, plus 10% reserve. What total mass is required?", "answers": ["2,970 g", "2,700 g", "3,150 g", "3,300 g"], "correct": 0, "category": "kitchen_maths", "interactionStyle": "two-step-calculation", "presentation": "text" },
+        { "id": "chef-r19q6", "question": "A garnish is missing while another dish has unresolved allergen information. What takes priority?", "answers": ["Replace the garnish first", "Hold the allergy dish and verify it", "Serve both dishes together", "Hide the missing garnish"], "correct": 1, "category": "safety_service", "interactionStyle": "prioritisation", "presentation": "text" }
+      ]
+    },
+    {
+      "title": "Grand Service",
+      "questions": [
+        { "id": "chef-r20q1", "question": "A recipe uses onions early and herbs at the finish, but both arrive mixed together. What is the best correction?", "answers": ["Cook the mixture only at the finish", "Add everything at the start", "Separate and organise them by when they are used", "Discard both ingredients"], "correct": 2, "category": "kitchen_fundamentals", "reasoningSteps": 2, "interactionStyle": "synthesis", "presentation": "text" },
+        { "id": "chef-r20q2", "question": "A creamy soup is both rich and too salty; unsalted stock and lemon are available. What is the most controlled plan?", "answers": ["Reduce it harder, then add salt", "Add cream and butter", "Add lemon only and do not retaste", "Dilute gradually with unsalted stock, retaste, then adjust brightness"], "correct": 3, "category": "ingredients_flavour", "reasoningSteps": 2, "interactionStyle": "flavour-synthesis", "presentation": "text" },
+        { "id": "chef-r20q3", "question": "One crowded pan is steaming while an empty hot pan is available. The target is browning. What should happen?", "answers": ["Split the food between the hot pans and keep space around it", "Add water to the crowded pan", "Cover the crowded pan", "Turn off both pans"], "correct": 0, "category": "heat_methods", "reasoningSteps": 2, "interactionStyle": "heat-synthesis", "presentation": "text" },
+        { "id": "chef-r20q4", "question": "A biscuit recipe needs 300 g flour and 150 g butter, but 300 g of each was used. Why did the biscuits spread heavily?", "answers": ["The flour was weighed", "The butter proportion was doubled", "The recipe used flour", "The tray was flat"], "correct": 1, "category": "baking_pastry", "reasoningSteps": 2, "interactionStyle": "ratio-analysis", "presentation": "text" },
+        { "id": "chef-r20q5", "question": "Fourteen tables need three rolls each, plus six reserve rolls. How many rolls are required?", "answers": ["42", "44", "48", "54"], "correct": 2, "category": "kitchen_maths", "reasoningSteps": 2, "interactionStyle": "two-step-calculation", "presentation": "text" },
+        { "id": "chef-r20q6", "question": "Glass breaks beside uncovered food, and a fresh verified batch is available. What is the safest service decision?", "answers": ["Pick out visible glass and serve the food", "Cover the exposed food and use it later", "Move the exposed food to another plate", "Discard exposed food, isolate the area and use the fresh batch"], "correct": 3, "category": "safety_service", "reasoningSteps": 2, "interactionStyle": "prioritisation", "presentation": "text" }
+      ]
     }
   ],
   "career": {
@@ -1184,6 +1364,14 @@
       {
         "afterStage": 10,
         "label": "Head Chef"
+      },
+      {
+        "afterStage": 15,
+        "label": "Executive Chef"
+      },
+      {
+        "afterStage": 20,
+        "label": "Culinary Director"
       }
     ],
     "unlockEyebrow": "KITCHEN RESULT",
@@ -1511,14 +1699,14 @@
         "next": {
           "eyebrow": "NEXT KITCHEN",
           "title": "Chef’s Table",
-          "difficulty": "Final Assessment",
-          "tagline": "Every skill returns for the final service.",
-          "copy": "The final service is waiting.",
+          "difficulty": "Mastery",
+          "tagline": "Every skill returns for a full-service test.",
+          "copy": "The Chef’s Table is waiting.",
           "button": "Enter Chef’s Table"
         }
       },
       {
-        "difficulty": "Final Assessment",
+        "difficulty": "Mastery",
         "preAdBadge": "CHEF’S TABLE COMPLETE",
         "preAdTitle": "Your Chef’s Table Results Are Ready",
         "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
@@ -1533,16 +1721,183 @@
         "resultBands": {
           "high": {
             "title": "Head Chef",
-            "insight": "You connected every clue and finished the final service with Head Chef judgement."
+            "insight": "You connected every clue and completed the Chef’s Table with Head Chef judgement."
           },
           "medium": {
-            "title": "Final Service Complete",
+            "title": "Chef’s Table Cleared",
             "insight": "You completed the Chef’s Table with a strong cross-kitchen performance."
           },
           "low": {
             "title": "Chef’s Table Complete",
-            "insight": "The final table pushed every skill at once, and completing it still earns a full report."
+            "insight": "The table pushed every skill at once, and you stayed in service to the end."
           }
+        },
+        "next": {
+          "eyebrow": "NEXT KITCHEN",
+          "title": "Market Basket",
+          "difficulty": "Mastery",
+          "tagline": "Selection. Freshness. Yield. Control.",
+          "copy": "A new basket of decisions has just arrived.",
+          "button": "Enter Market Basket"
+        }
+      },
+      {
+        "difficulty": "Mastery",
+        "preAdBadge": "MARKET BASKET COMPLETE",
+        "preAdTitle": "Your Market Basket Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Market Basket Result",
+        "resultIcon": "✓",
+        "resultLabel": "MARKET BASKET COMPLETE",
+        "resultBands": {
+          "high": { "title": "Market Sharp", "insight": "You selected, balanced and measured ingredients with confident kitchen judgement." },
+          "medium": { "title": "Basket Cleared", "insight": "Your market instincts were strong, with only the finer ingredient clues creating friction." },
+          "low": { "title": "Market Challenge Complete", "insight": "The basket hid some tricky details, but you kept making practical choices." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Sauce Station", "difficulty": "Mastery", "tagline": "Texture. Emulsion. Heat. Balance.", "copy": "The next sauce can split in a second.", "button": "Enter Sauce Station" }
+      },
+      {
+        "difficulty": "Mastery",
+        "preAdBadge": "SAUCE STATION COMPLETE",
+        "preAdTitle": "Your Sauce Station Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Sauce Station Result",
+        "resultIcon": "✓",
+        "resultLabel": "SAUCE STATION COMPLETE",
+        "resultBands": {
+          "high": { "title": "Sauce Controller", "insight": "You read heat, texture and balance before the sauce could turn against you." },
+          "medium": { "title": "Station Cleared", "insight": "You kept the station under control while a few delicate clues tested your timing." },
+          "low": { "title": "Sauce Test Complete", "insight": "The station was demanding, but every decision sharpened your cause-and-effect thinking." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Breakfast Rush", "difficulty": "Expert", "tagline": "Fast starts. Hot pans. Clean timing.", "copy": "Morning service is already building.", "button": "Enter Breakfast Rush" }
+      },
+      {
+        "difficulty": "Expert",
+        "preAdBadge": "BREAKFAST RUSH COMPLETE",
+        "preAdTitle": "Your Breakfast Rush Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Breakfast Result",
+        "resultIcon": "✓",
+        "resultLabel": "BREAKFAST RUSH COMPLETE",
+        "resultBands": {
+          "high": { "title": "Morning Service Pro", "insight": "You kept heat, timing and safety moving before the rush could pile up." },
+          "medium": { "title": "Breakfast Rush Cleared", "insight": "You handled the pressure well, with only a few rapid decisions slowing the pass." },
+          "low": { "title": "Morning Service Complete", "insight": "The rush moved quickly, but you stayed with it and reached the next service." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Banquet Scale-Up", "difficulty": "Expert", "tagline": "Bigger batches. Tighter control.", "copy": "Every small error now multiplies.", "button": "Enter Banquet Scale-Up" }
+      },
+      {
+        "difficulty": "Expert",
+        "preAdBadge": "BANQUET SCALE-UP COMPLETE",
+        "preAdTitle": "Your Banquet Scale-Up Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Banquet Result",
+        "resultIcon": "✓",
+        "resultLabel": "BANQUET SCALE-UP COMPLETE",
+        "resultBands": {
+          "high": { "title": "Banquet Ready", "insight": "You scaled quantities and controlled the bigger service without losing the details." },
+          "medium": { "title": "Banquet Cleared", "insight": "Your large-service thinking held up, with just a few multiplied clues catching you." },
+          "low": { "title": "Scale-Up Complete", "insight": "The banquet exposed useful gaps, and you still brought the service through." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Waste-Smart Kitchen", "difficulty": "Expert", "tagline": "Yield. Reuse. Safety. Value.", "copy": "Good judgement now starts before anything is discarded.", "button": "Enter Waste-Smart Kitchen" }
+      },
+      {
+        "difficulty": "Expert",
+        "preAdBadge": "WASTE-SMART KITCHEN COMPLETE",
+        "preAdTitle": "Your Waste-Smart Kitchen Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Waste-Smart Result",
+        "resultIcon": "✓",
+        "resultLabel": "WASTE-SMART KITCHEN COMPLETE",
+        "resultBands": {
+          "high": { "title": "Yield Guardian", "insight": "You protected value without compromising the safety or quality of the kitchen." },
+          "medium": { "title": "Waste-Smart Cleared", "insight": "You found practical uses and sound limits across most of the kitchen decisions." },
+          "low": { "title": "Waste-Smart Complete", "insight": "The yield decisions were deceptive, but you kept safety ahead of guesswork." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Cold Kitchen", "difficulty": "Elite", "tagline": "Precision without the flame.", "copy": "The temperature drops, but the standards rise.", "button": "Enter Cold Kitchen" }
+      },
+      {
+        "difficulty": "Elite",
+        "preAdBadge": "COLD KITCHEN COMPLETE",
+        "preAdTitle": "Your Cold Kitchen Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Cold Kitchen Result",
+        "resultIcon": "✓",
+        "resultLabel": "COLD KITCHEN COMPLETE",
+        "resultBands": {
+          "high": { "title": "Cold-Side Precision", "insight": "Your organisation, control and cross-contact judgement stayed exceptionally clean." },
+          "medium": { "title": "Cold Kitchen Cleared", "insight": "You handled the cold side confidently while a few precision clues stayed hidden." },
+          "low": { "title": "Cold Kitchen Complete", "insight": "The quiet station demanded close attention, and you kept moving through it." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Bread and Dough", "difficulty": "Elite", "tagline": "Structure. Fermentation. Timing.", "copy": "The next kitchen rewards patience and precision.", "button": "Enter Bread and Dough" }
+      },
+      {
+        "difficulty": "Elite",
+        "preAdBadge": "BREAD AND DOUGH COMPLETE",
+        "preAdTitle": "Your Bread and Dough Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Bread and Dough Result",
+        "resultIcon": "✓",
+        "resultLabel": "BREAD AND DOUGH COMPLETE",
+        "resultBands": {
+          "high": { "title": "Dough Specialist", "insight": "You read structure, fermentation and timing with calm, exact judgement." },
+          "medium": { "title": "Bread Bench Cleared", "insight": "Your dough instincts were dependable, with only the finest process clues resisting." },
+          "low": { "title": "Bread Bench Complete", "insight": "The dough demanded precision, and finishing the bench still moved your profile forward." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Menu Troubleshooter", "difficulty": "Executive", "tagline": "Find the fault. Protect the plate.", "copy": "Every dish arrives with one hidden problem.", "button": "Enter Menu Troubleshooter" }
+      },
+      {
+        "difficulty": "Executive",
+        "preAdBadge": "MENU TROUBLESHOOTER COMPLETE",
+        "preAdTitle": "Your Menu Troubleshooter Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Troubleshooter Result",
+        "resultIcon": "✓",
+        "resultLabel": "MENU TROUBLESHOOTER COMPLETE",
+        "resultBands": {
+          "high": { "title": "Fault Finder", "insight": "You traced symptoms back to their causes before they could reach the pass." },
+          "medium": { "title": "Troubleshooter Cleared", "insight": "You fixed most of the menu faults while a few subtle causes stayed disguised." },
+          "low": { "title": "Troubleshooter Complete", "insight": "The faults were designed to hide, but every one you faced sharpened your judgement." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Executive Decisions", "difficulty": "Executive", "tagline": "Plan. Prioritise. Lead.", "copy": "The next choices affect the whole kitchen.", "button": "Enter Executive Decisions" }
+      },
+      {
+        "difficulty": "Executive",
+        "preAdBadge": "EXECUTIVE DECISIONS COMPLETE",
+        "preAdTitle": "Your Executive Decisions Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Kitchen score calculated", "Next challenge prepared"],
+        "preAdButton": "See My Executive Result",
+        "resultIcon": "✓",
+        "resultLabel": "EXECUTIVE DECISIONS COMPLETE",
+        "resultBands": {
+          "high": { "title": "Executive Ready", "insight": "You balanced people, timing, quantity and risk like the whole kitchen depended on it." },
+          "medium": { "title": "Executive Stage Cleared", "insight": "Your leadership calls were strong, with only a few competing priorities dividing attention." },
+          "low": { "title": "Executive Stage Complete", "insight": "The decisions carried more weight here, and you still reached the grand service." }
+        },
+        "next": { "eyebrow": "NEXT KITCHEN", "title": "Grand Service", "difficulty": "Grand Final", "tagline": "Every decision. One final pass.", "copy": "The entire kitchen is now in motion.", "button": "Enter Grand Service" }
+      },
+      {
+        "difficulty": "Grand Final",
+        "preAdBadge": "GRAND SERVICE COMPLETE",
+        "preAdTitle": "Your Grand Service Results Are Ready",
+        "preAdCopy": "Unlock this kitchen result to see your stage score and final Chef Score.",
+        "preAdChecks": ["Six decisions checked", "Final score calculated", "Chef profile prepared"],
+        "preAdButton": "See My Grand Service Result",
+        "resultIcon": "✓",
+        "resultLabel": "GRAND SERVICE COMPLETE",
+        "resultBands": {
+          "high": { "title": "Culinary Director", "insight": "You controlled the complete service and connected every clue with exceptional judgement." },
+          "medium": { "title": "Grand Service Cleared", "insight": "You completed the full kitchen journey with a strong, balanced final service." },
+          "low": { "title": "Grand Service Complete", "insight": "The last service tested everything at once, and you carried it through to the final result." }
         }
       }
     ],

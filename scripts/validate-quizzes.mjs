@@ -309,15 +309,15 @@ for (const folder of folders) {
   }
   if (folder.name === "chef") {
     const expectedCategories = {
-      kitchen_fundamentals: 10,
-      ingredients_flavour: 10,
-      heat_methods: 10,
-      baking_pastry: 10,
-      kitchen_maths: 10,
-      safety_service: 10,
+      kitchen_fundamentals: 20,
+      ingredients_flavour: 20,
+      heat_methods: 20,
+      baking_pastry: 20,
+      kitchen_maths: 20,
+      safety_service: 20,
     };
-    const expectedTitles = ["Kitchen Induction", "Prep Bench", "Control the Heat", "Flavour Lab", "Pastry Precision", "Service Rush", "Kitchen Maths", "Spot the Mistake", "Sous Chef Decisions", "Chef’s Table"];
-    const expectedDifficulties = ["Foundation", "Developing", "Developing", "Skilled", "Skilled", "Pressure", "Pressure", "Advanced", "Expert", "Final Assessment"];
+    const expectedTitles = ["Kitchen Induction", "Prep Bench", "Control the Heat", "Flavour Lab", "Pastry Precision", "Service Rush", "Kitchen Maths", "Spot the Mistake", "Sous Chef Decisions", "Chef’s Table", "Market Basket", "Sauce Station", "Breakfast Rush", "Banquet Scale-Up", "Waste-Smart Kitchen", "Cold Kitchen", "Bread and Dough", "Menu Troubleshooter", "Executive Decisions", "Grand Service"];
+    const expectedDifficulties = ["Foundation", "Developing", "Developing", "Skilled", "Skilled", "Pressure", "Pressure", "Advanced", "Expert", "Mastery", "Mastery", "Mastery", "Expert", "Expert", "Expert", "Elite", "Elite", "Executive", "Executive", "Grand Final"];
     const expectedGateTitles = expectedTitles.map((title) => `Your ${title} Results Are Ready`);
     const counts = Object.fromEntries(Object.keys(expectedCategories).map((category) => [category, sourceQuestions.filter((question) => question.category === category).length]));
     const correctPositions = sourceQuestions.reduce((positions, question) => {
@@ -325,7 +325,7 @@ for (const folder of folders) {
       return positions;
     }, Array(4).fill(0));
     const sprint = source.stages?.[5]?.questions ?? [];
-    const final = source.stages?.[9]?.questions ?? [];
+    const final = source.stages?.[19]?.questions ?? [];
     const serialized = JSON.stringify(source);
     const preFinishCopy = JSON.stringify({ landing: source.landing, about: source.about, checkpoint: source.checkpoint });
 
@@ -336,11 +336,11 @@ for (const folder of folders) {
     fail(source.landing?.startPrompt === undefined, "chef/en.json: the landing CTA must begin directly without a pre-ad prompt.");
     fail(source.title === "Only 12% Pass This Chef's Entrance Exam" && source.landing?.cta === "Start Quiz" && source.landing?.socialProof === "81,000+ people played this", "chef/en.json: approved landing copy changed.");
 
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: staged challenge needs ten kitchens of six questions.");
+    fail(source.stages?.length === 20 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: staged challenge needs twenty kitchens of six questions.");
     fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedTitles), "chef/en.json: kitchen order or text-only titles changed.");
-    fail(sourceQuestions.length === 60 && new Set(sourceQuestionIds).size === 60, "chef/en.json: needs 60 stable unique questions.");
-    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), "chef/en.json: every kitchen area needs exactly ten questions.");
-    fail(JSON.stringify(correctPositions) === JSON.stringify([15, 15, 15, 15]), "chef/en.json: correct positions must remain exactly 15/15/15/15.");
+    fail(sourceQuestions.length === 120 && new Set(sourceQuestionIds).size === 120, "chef/en.json: needs 120 stable unique questions.");
+    fail(JSON.stringify(counts) === JSON.stringify(expectedCategories), "chef/en.json: every kitchen area needs exactly twenty questions.");
+    fail(JSON.stringify(correctPositions) === JSON.stringify([30, 30, 30, 30]), "chef/en.json: correct positions must remain exactly 30/30/30/30.");
     fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4 && Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), "chef/en.json: every question needs four unique choices and one valid answer.");
     fail(sourceQuestions.every((question) => (
       question.presentation === "text"
@@ -357,17 +357,17 @@ for (const folder of folders) {
     fail(source.stages.every((stage) => stage.questions.every((question, index, questions) => index < 2 || question.interactionStyle !== questions[index - 1].interactionStyle || question.interactionStyle !== questions[index - 2].interactionStyle)), "chef/en.json: one reasoning style cannot appear three times consecutively.");
     fail(sprint.length === 6 && sprint.every((question) => question.delay === 350) && sprint.filter((question) => question.question.trim().split(/\s+/).length <= 10).length >= 5, "chef/en.json: Service Rush needs six 350ms questions and at least five short prompts.");
     fail(sourceQuestions.every((question) => sprint.includes(question) || question.delay === undefined), "chef/en.json: only Service Rush may override the 450ms default.");
-    fail(final.length === 6 && final.every((question) => question.reasoningSteps === 2), "chef/en.json: every Chef’s Table question needs two-step reasoning.");
+    fail(final.length === 6 && final.every((question) => question.reasoningSteps === 2), "chef/en.json: every Grand Service question needs two-step reasoning.");
     fail(!/\b(?:oz|ounce|ounces|lb|lbs|pound|pounds|fahrenheit)\b|°F/i.test(serialized), "chef/en.json: Chef must remain worldwide metric or unit-neutral.");
 
     fail(source.career?.hideJourneyLength === true && source.career?.currentScoreLabel === "CURRENT CHEF SCORE", "chef/en.json: hidden-length career mode and cumulative percentage label are required.");
     fail(source.career?.reportUnlock === undefined, "chef/en.json: the final kitchen reveal must deliver the full result without another report gate.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.difficulty)) === JSON.stringify(expectedDifficulties), "chef/en.json: difficulty progression changed.");
     fail(JSON.stringify(source.career?.stages?.map((stage) => stage.preAdTitle)) === JSON.stringify(expectedGateTitles), "chef/en.json: every kitchen needs its exact Results Are Ready title.");
-    fail(source.career?.stages?.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && stage.promotion === undefined && (index === 9 || stage.next)), "chef/en.json: every kitchen needs a complete result gate, three score bands and next-kitchen teaser.");
+    fail(source.career?.stages?.every((stage, index) => stage.preAdChecks?.length === 3 && stage.resultBands?.high && stage.resultBands?.medium && stage.resultBands?.low && stage.promotion === undefined && (index === 19 || stage.next)), "chef/en.json: every kitchen needs a complete result gate, three score bands and next-kitchen teaser.");
     fail(source.career?.stages?.every((stage) => !/\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) kitchens? (?:remain|left|away)|\/\s*10/i.test(JSON.stringify(stage.next ?? {}))), "chef/en.json: next-kitchen teasers must never disclose how many kitchens remain.");
     fail(!/\b(?:10|ten) (?:rounds|stages|kitchens)|60 questions|\/\s*10/i.test(preFinishCopy), "chef/en.json: landing, About and result-ready copy must not reveal the journey length.");
-    fail(source.checkpoint?.reveals?.length === 10 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: needs one hidden-length result checkpoint per kitchen and no journey progress meter.");
+    fail(source.checkpoint?.reveals?.length === 20 && source.checkpoint?.progressLabel === undefined && source.checkpoint?.progressComplete === undefined, "chef/en.json: needs one hidden-length result checkpoint per kitchen and no journey progress meter.");
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.insights?.details, "chef/en.json: final percentage, best kitchen and complete result report are required.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
   }
