@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
-import { mountDisplayAds, requestRewardedAd } from "./rewardedAds";
+import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
@@ -280,14 +280,6 @@ function QuizAbout({ label, onRestart, quiz, title }: { label?: string; onRestar
   );
 }
 
-function ResultDisplayAd({ elementId }: { elementId: string }) {
-  return (
-    <div className="quiz-engine__display-ad-row">
-      <div className="quiz-engine__display-ad-frame" id={elementId} />
-    </div>
-  );
-}
-
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
@@ -323,27 +315,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
-  const resultAdBaseId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
-  const resultAdIds = useMemo(
-    () => Array.from({ length: quiz.engine.resultAds?.count ?? 0 }, (_, index) => `quiz-result-ad-${resultAdBaseId}-${index + 1}`),
-    [quiz.engine.resultAds?.count, resultAdBaseId],
-  );
-  const resultAdsEnabled = Boolean(
-    quiz.engine.resultAds
-    && (!quiz.engine.resultAds.locales || quiz.engine.resultAds.locales.includes(locale)),
-  );
-
-  useEffect(() => {
-    const hasResultReport = quiz.result.score?.insights?.details || quiz.result.estimate?.insights?.details;
-    if (screen !== "results" || !resultAdsEnabled || !quiz.engine.resultAds || !hasResultReport || !resultAdIds.length || (quiz.career && !reportUnlocked)) return;
-    return mountDisplayAds({
-      adUnitPath: quiz.engine.resultAds.adUnitPath,
-      bottomAnchor: quiz.engine.resultAds.bottomAnchor,
-      elementIds: resultAdIds,
-      sizes: quiz.engine.resultAds.sizes,
-    });
-  }, [quiz.career, quiz.engine.resultAds, quiz.result.score?.insights?.details, quiz.result.estimate?.insights?.details, reportUnlocked, resultAdIds, resultAdsEnabled, screen]);
-
   const progressSignature = useMemo(
     () => JSON.stringify({
       engine: {
@@ -772,20 +743,19 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const resultInsights = scoreInsights ?? estimateInsights;
     const career = quiz.career;
     const careerReport = career?.reportUnlock;
-    const resultAds = Boolean(resultAdsEnabled && quiz.engine.resultAds && resultAdIds.length > 0);
     const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
     const reviewUnlockCopy = scoreCopy?.reviewUnlock;
     const estimateReviewUnlockCopy = estimate?.reviewUnlock;
+    const detailedResults = Boolean(reviewUnlockCopy || estimateReviewUnlockCopy);
     const requiresReviewUnlock = Boolean(
-      quiz.engine.resultAds?.reviewUnlock
+      reviewUnlockCopy
       && incorrectQuestions.length
       && !reviewUnlocked,
     );
     const requiresEstimateReviewUnlock = Boolean(
-      quiz.engine.resultAds?.reviewUnlock
-      && quiz.engine.scoring.type === "weighted-profile"
+      quiz.engine.scoring.type === "weighted-profile"
       && estimateReviewUnlockCopy
       && !reviewUnlocked,
     );
@@ -839,9 +809,8 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     }
     return (
       <>
-      {resultAds ? <ResultDisplayAd elementId={resultAdIds[0]} /> : null}
       <section
-        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${resultAds ? " quiz-engine__results--with-ads" : ""}`}
+        className={`quiz-engine__results quiz-engine__card${profileReveal ? " quiz-engine__profile-reveal" : ""}${detailedResults ? " quiz-engine__results--detailed" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
       >
         {profileReveal ? (
@@ -879,8 +848,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
-        {resultAds && resultAdIds[2] ? <ResultDisplayAd elementId={resultAdIds[2]} /> : null}
-        {resultAds && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
+        {detailedResults && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
             <span>{translations.quiz.answersToReview}</span>
@@ -891,7 +859,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </button>
             <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
           </section>
-        ) : resultAds && quiz.engine.scoring.type === "correct-answer" ? (
+        ) : detailedResults && quiz.engine.scoring.type === "correct-answer" ? (
           <section className="quiz-engine__answer-review">
             <h3>{translations.quiz.answersToReview}</h3>
             {incorrectQuestions.length === 0 ? (
@@ -912,7 +880,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
               </div>
             )}
           </section>
-        ) : resultAds && quiz.engine.scoring.type === "weighted-profile" && requiresEstimateReviewUnlock ? (
+        ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && requiresEstimateReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
             <span>{estimateReviewUnlockCopy?.reviewTitle}</span>
@@ -923,7 +891,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </button>
             <small>{estimateReviewUnlockCopy?.adNote}</small>
           </section>
-        ) : resultAds && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
+        ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
             <h3>{estimateReviewUnlockCopy.reviewTitle}</h3>
             <div>
@@ -942,7 +910,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </div>
           </section>
         ) : null}
-        {resultAds && resultAdIds[1] ? <ResultDisplayAd elementId={resultAdIds[1]} /> : null}
         {estimate ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
@@ -950,7 +917,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <div><dt>{estimate.consistency}</dt><dd>{consistency}</dd></div>
           </dl>
         ) : !scoreCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
-        {!resultAds ? <p className="quiz-engine__result-copy">{result.profile.copy}</p> : null}
+        {!detailedResults ? <p className="quiz-engine__result-copy">{result.profile.copy}</p> : null}
         {matchCopy ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--match">
             <div><dt>{matchCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
@@ -960,7 +927,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
           </dl>
         ) : null}
-        {scoreCopy && !resultAds ? (
+        {scoreCopy && !detailedResults ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
             <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
@@ -977,10 +944,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span>{translations.quiz.profile}</span>
           </div>
         </div> : null}
-        {(!estimate || resultAds) && Object.keys(result.dimensionScores).length ? (
-          <div className={`quiz-engine__dimensions${resultAds && scoreCopy ? " quiz-engine__dimensions--summary" : ""}`}>
-            {resultAds && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
-            {resultAds && scoreCopy ? (
+        {(!estimate || detailedResults) && Object.keys(result.dimensionScores).length ? (
+          <div className={`quiz-engine__dimensions${detailedResults && scoreCopy ? " quiz-engine__dimensions--summary" : ""}`}>
+            {detailedResults && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
+            {detailedResults && scoreCopy ? (
               <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
                 <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
                 <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
@@ -995,7 +962,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             ))}
           </div>
         ) : null}
-        {!resultAds && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
+        {!detailedResults && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
             <span>{translations.quiz.answersToReview}</span>
@@ -1006,7 +973,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             </button>
             <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
           </section>
-        ) : !resultAds && quiz.engine.scoring.type === "correct-answer" ? (
+        ) : !detailedResults && quiz.engine.scoring.type === "correct-answer" ? (
           <section className="quiz-engine__answer-review">
             <h3>{translations.quiz.answersToReview}</h3>
             {incorrectQuestions.length === 0 ? (
@@ -1028,18 +995,16 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             )}
           </section>
         ) : null}
-        {resultAds && resultInsights ? (
+        {detailedResults && resultInsights ? (
           <section className="quiz-engine__result-takeaway">
             <h3>{resultInsights.snapshot}</h3>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
           </section>
         ) : null}
-        {resultAds && resultAdIds[3] ? <ResultDisplayAd elementId={resultAdIds[3]} /> : null}
           </>
         )}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
-      {resultAds && quiz.engine.resultAds?.bottomAnchor ? <div aria-hidden="true" className="quiz-engine__anchor-safe-space" /> : null}
       </>
     );
   }
