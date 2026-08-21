@@ -1291,3 +1291,46 @@
     font-size: 16px;
   }
 }
+
+/* One polished gold-pill CTA system across the complete prediction journey. */
+[data-quiz-theme="years-left"] .quiz-engine__primary,
+[data-quiz-theme="years-left"] .quiz-engine__career-next-action {
+  min-height: 56px !important;
+  border: 2px solid #a86620 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #f2cf7a 0%, #e2ad50 54%, #c98230 100%) !important;
+  color: #17110b !important;
+  font-size: 18px !important;
+  font-weight: 950 !important;
+  line-height: 1.1 !important;
+  box-shadow: 0 8px 0 #75451f, 0 16px 28px rgba(38, 22, 10, .24), inset 0 2px rgba(255, 255, 255, .42) !important;
+  text-shadow: 0 1px rgba(255, 243, 207, .46) !important;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__primary:hover,
+[data-quiz-theme="years-left"] .quiz-engine__career-next-action:hover {
+  border-color: #95581c !important;
+  background: linear-gradient(180deg, #f7d98d 0%, #e8b85e 54%, #cf8936 100%) !important;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__primary:focus-visible,
+[data-quiz-theme="years-left"] .quiz-engine__career-next-action:focus-visible {
+  outline: 3px solid rgba(242, 207, 122, .58) !important;
+  outline-offset: 4px;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__primary:disabled {
+  border-color: #837d73 !important;
+  background: linear-gradient(180deg, #aaa49a, #817b72) !important;
+  color: #eee8dc !important;
+  box-shadow: 0 6px 0 #57524c !important;
+  text-shadow: none !important;
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="years-left"] .quiz-engine__primary,
+  [data-quiz-theme="years-left"] .quiz-engine__career-next-action {
+    min-height: 54px !important;
+    font-size: 17px !important;
+  }
+}

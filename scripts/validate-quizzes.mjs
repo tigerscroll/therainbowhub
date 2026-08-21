@@ -167,7 +167,7 @@ for (const folder of folders) {
     fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs one rewarded result gate after every stage.");
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
     fail(source.landing?.startNote === undefined, "years-left/en.json: rewarded-ad copy must remain inside the confirmation prompt.");
-    fail(source.landing?.startPrompt?.eyebrow === "READY TO CONTINUE" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Your lifespan test is ready" && source.landing?.startPrompt?.copy === "Watch one short ad, then answer the questions." && source.landing?.startPrompt?.button === "Continue →", "years-left/en.json: rewarded Start prompt changed.");
+    fail(source.landing?.startPrompt?.eyebrow === "READY TO CONTINUE" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Your Death Clock test is ready" && source.landing?.startPrompt?.copy === "Watch one short ad, then answer the questions." && source.landing?.startPrompt?.button === "Continue →", "years-left/en.json: rewarded Start prompt changed.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
     fail(source.results?.estimate?.reviewUnlock?.rewarded === false, "years-left/en.json: choice-impact details must be included in the final result without another rewarded gate.");
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
