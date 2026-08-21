@@ -1120,7 +1120,6 @@
 
 [data-quiz-theme="years-left"] .quiz-engine__primary:focus-visible { outline-color: rgba(240, 206, 130, .72); }
 
-[data-quiz-theme="years-left"] .quiz-engine__primary,
 [data-quiz-theme="years-left"] .quiz-engine__career-next-action {
   box-sizing: border-box;
   width: 100% !important;
@@ -1242,10 +1241,16 @@
 [data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__social,
 [data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__primary,
 [data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card > .quiz-engine__primary {
-  width: min(100%, 390px) !important;
-  max-width: 390px !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
+  width: min(100%, 390px);
+  max-width: 390px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__primary,
+[data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card > .quiz-engine__primary {
+  min-height: 56px;
+  font-size: 17px;
 }
 
 @media (min-width: 701px) {
@@ -1278,5 +1283,11 @@
 
   [data-quiz-theme="years-left"] .quiz-engine__checkpoint--progress-career h2 {
     font-size: clamp(28px, 8.5vw, 38px);
+  }
+
+  [data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__primary,
+  [data-quiz-theme="years-left"] .quiz-engine__reward-prompt-card > .quiz-engine__primary {
+    min-height: 54px;
+    font-size: 16px;
   }
 }
