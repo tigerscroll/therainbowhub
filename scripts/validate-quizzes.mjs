@@ -183,8 +183,16 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");
     fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("r10q6")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Estimate", "years-left/en.json: final gate changed.");
-    fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.stageResultMode === "completion", "years-left/en.json: persistent completion-based stage shell is required.");
+    fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showStageResults === false, "years-left/en.json: persistent progress-only stage shell is required.");
     fail(source.career?.showCurrentScore === false && source.career?.showResultProgress === true, "years-left/en.json: results must show macro progress without a misleading correctness score.");
+    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => [stage.preAdTitle, stage.preAdCopy, stage.preAdButton])) === JSON.stringify([
+      ["Daily rhythm captured", "Your routine and everyday habits are now shaping the estimate.", "Continue"],
+      ["Energy patterns captured", "Food, energy and movement choices have sharpened your lifestyle picture.", "Continue"],
+      ["Recovery patterns mapped", "Sleep, stress and recovery signals have now been added.", "Continue"],
+      ["Your estimate is taking shape", "Connection and everyday choices are mapped. Only the final prediction remains.", "Continue"],
+    ]), "years-left/en.json: progress checkpoints must build the estimate without revealing intermediate results.");
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, "years-left/en.json: only the final estimate gate may show checklist rows.");
+    fail(source.checkpoint?.adNote === "Short ad first — then continue." && source.checkpoint?.finalAdNote === "Short ad first — then see your estimate.", "years-left/en.json: rewarded checkpoint helper copy changed.");
     fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next?.button === "Continue"), "years-left/en.json: all intermediate stage CTAs must use Continue.");
     fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
   }
