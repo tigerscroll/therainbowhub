@@ -127,6 +127,7 @@ export type QuizCareerStageCopy = {
 export type QuizCareerCopy = {
   hideJourneyLength?: boolean;
   continuousShell?: boolean;
+  showStageResults?: boolean;
   stageResultMode?: "score" | "completion";
   showCurrentScore?: boolean;
   showResultProgress?: boolean;
@@ -314,6 +315,7 @@ export type QuizCheckpointReveal = {
 export type QuizCheckpointCopy = {
   nextPrefix: string;
   adNote: string;
+  finalAdNote?: string;
   progressLabel?: string;
   progressComplete?: string;
   reveals: QuizCheckpointReveal[];
@@ -781,6 +783,7 @@ function normalizeLocale(
     strings(value.checkpoint.finalChecklist, "checkpoint.finalChecklist", file);
     if (value.checkpoint.finalChecklist.length < 3 || value.checkpoint.finalChecklist.length > 8) throw new Error(`${file}: final checklist needs three to eight items.`);
     ["nextPrefix", "adNote", "finalBadge", "finalTitle", "finalCopy", "finalButton"].forEach((key) => text(value.checkpoint?.[key as keyof QuizCheckpointCopy], `checkpoint.${key}`, file));
+    if (value.checkpoint.finalAdNote !== undefined) text(value.checkpoint.finalAdNote, "checkpoint.finalAdNote", file);
     if (value.checkpoint.buttonIcon !== undefined) text(value.checkpoint.buttonIcon, "checkpoint.buttonIcon", file);
     if (value.checkpoint.progressLabel !== undefined) text(value.checkpoint.progressLabel, "checkpoint.progressLabel", file);
     if (value.checkpoint.progressComplete !== undefined) {
@@ -792,6 +795,7 @@ function normalizeLocale(
     const career = value.career;
     if (career.hideJourneyLength !== undefined && typeof career.hideJourneyLength !== "boolean") throw new Error(`${file}: career.hideJourneyLength must be a boolean.`);
     if (career.continuousShell !== undefined && typeof career.continuousShell !== "boolean") throw new Error(`${file}: career.continuousShell must be a boolean.`);
+    if (career.showStageResults !== undefined && typeof career.showStageResults !== "boolean") throw new Error(`${file}: career.showStageResults must be a boolean.`);
     if (career.stageResultMode !== undefined && !["score", "completion"].includes(career.stageResultMode)) throw new Error(`${file}: career.stageResultMode must be score or completion.`);
     if (career.showCurrentScore !== undefined && typeof career.showCurrentScore !== "boolean") throw new Error(`${file}: career.showCurrentScore must be a boolean.`);
     if (career.showResultProgress !== undefined && typeof career.showResultProgress !== "boolean") throw new Error(`${file}: career.showResultProgress must be a boolean.`);

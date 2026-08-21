@@ -9,8 +9,8 @@
     "startPrompt": {
       "eyebrow": "READY TO START",
       "icon": "✓",
-      "title": "Your memory test is ready",
-      "copy": "Watch one short ad, then the test begins.",
+      "title": "Memory test ready",
+      "copy": "Watch a short ad to begin.",
       "button": "Continue →"
     }
   },
@@ -890,12 +890,13 @@
   ],
   "checkpoint": {
     "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then this round result unlocks.",
+    "adNote": "Short ad first — then continue.",
+    "finalAdNote": "Short ad first — then see your result.",
     "finalBadge": "FINAL MEMORY CHALLENGE COMPLETE",
     "finalIcon": "🧠",
     "finalTitle": "Your Memory Result Is Ready",
-    "finalCopy": "Your full Memory Result is ready to reveal.",
-    "finalButton": "See My Final Result",
+    "finalCopy": "Your complete score and memory profile are ready to reveal.",
+    "finalButton": "See My Result",
     "finalChecklist": [
       "40 answers checked",
       "Delayed recall measured",
@@ -943,15 +944,10 @@
   "career": {
     "hideJourneyLength": true,
     "continuousShell": true,
+    "showStageResults": false,
     "showResultProgress": true,
     "resultProgressLabel": "Memory challenge",
     "resultProgressComplete": "{value}% complete",
-    "compactGate": {
-      "eyebrow": "RESULT READY",
-      "title": "{stage} complete",
-      "copy": "Your round score is ready.",
-      "button": "See My Result"
-    },
     "currentScoreLabel": "CURRENT MEMORY SCORE",
     "levelLabel": "ROUND",
     "scoreSuffix": "correct",
@@ -978,9 +974,9 @@
       {
         "difficulty": "Foundation",
         "preAdBadge": "QUICK RECALL COMPLETE",
-        "preAdTitle": "Quick Recall complete",
-        "preAdCopy": "Your round score is ready.",
-        "preAdButton": "See My Result",
+        "preAdTitle": "Quick Recall captured",
+        "preAdCopy": "Your first recall patterns have been added. Keep going to sharpen the result.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "QUICK RECALL COMPLETE",
         "resultBands": {
@@ -1008,9 +1004,9 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "PICTURES & DETAILS COMPLETE",
-        "preAdTitle": "Pictures & Details complete",
-        "preAdCopy": "Your round score is ready.",
-        "preAdButton": "See My Result",
+        "preAdTitle": "Visual patterns captured",
+        "preAdCopy": "Colours, positions and details are now shaping your memory result.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "PICTURES & DETAILS COMPLETE",
         "resultBands": {
@@ -1038,9 +1034,9 @@
       {
         "difficulty": "Skilled",
         "preAdBadge": "NUMBERS & PATTERNS COMPLETE",
-        "preAdTitle": "Numbers & Patterns complete",
-        "preAdCopy": "Your round score is ready.",
-        "preAdButton": "See My Result",
+        "preAdTitle": "Working memory mapped",
+        "preAdCopy": "Number, order and manipulation patterns have now been added.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "NUMBERS & PATTERNS COMPLETE",
         "resultBands": {
@@ -1068,9 +1064,9 @@
       {
         "difficulty": "Advanced",
         "preAdBadge": "THE MEMORY TRAP COMPLETE",
-        "preAdTitle": "The Memory Trap complete",
-        "preAdCopy": "Your round score is ready.",
-        "preAdButton": "See My Result",
+        "preAdTitle": "Your memory profile is taking shape",
+        "preAdCopy": "Your resistance to interference is now mapped. Only the final challenge remains.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "THE MEMORY TRAP COMPLETE",
         "resultBands": {
@@ -1104,7 +1100,7 @@
           "Delayed recall measured",
           "Memory profile prepared"
         ],
-        "preAdButton": "See My Final Result",
+        "preAdButton": "See My Result",
         "resultIcon": "🧠",
         "resultLabel": "FINAL MEMORY CHALLENGE COMPLETE",
         "resultBands": {

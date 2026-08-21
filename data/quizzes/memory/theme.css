@@ -14,6 +14,64 @@
   background-size: 28px 28px, 28px 28px, auto, auto;
 }
 
+/* Progress-only rewarded checkpoints: one concise state replaces the old
+   score reveal and separate next-round result screen. */
+[data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career {
+  padding-block: clamp(24px, 4vw, 34px);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career .quiz-engine__checkpoint-icon {
+  width: 58px;
+  height: 58px;
+  margin: 9px auto;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career h2 {
+  margin: 7px auto;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career > p {
+  max-width: 560px;
+  margin: 0 auto 4px;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-journey-progress {
+  width: 100%;
+  margin: 15px 0 11px;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-next--career {
+  width: 100%;
+  margin: 10px auto 4px;
+  padding: 12px 14px;
+  border-color: rgba(25, 23, 19, .1);
+  background: rgba(255, 250, 240, .58);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-next--career small {
+  display: block;
+  color: #625b50;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career {
+    padding-block: 21px 24px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career .quiz-engine__checkpoint-icon {
+    width: 52px;
+    height: 52px;
+    margin-block: 7px;
+  }
+
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career h2 {
+    font-size: clamp(28px, 8.5vw, 38px);
+  }
+}
+
 /* Rewarded start confirmation presented as a focused Memory modal. */
 [data-quiz-theme="memory"] .quiz-engine__reward-prompt {
   position: fixed !important;
@@ -125,7 +183,7 @@
 [data-quiz-theme="memory"] .quiz-engine__lede { max-width: 610px; color: #514c43; font-size: 17px; font-weight: 650; line-height: 1.5; }
 [data-quiz-theme="memory"] .quiz-engine__landing-meta span { border: 2px solid var(--memory-ink); border-radius: 2px; background: var(--memory-ink); color: var(--memory-paper-light); letter-spacing: .08em; text-transform: uppercase; }
 [data-quiz-theme="memory"] .quiz-engine__quick-start { max-width: 650px; margin: 8px auto 18px; padding: 0; border: 0; color: #302c26; font-size: 17px; line-height: 1.45; }
-[data-quiz-theme="memory"] .quiz-engine__social { display: flex; width: fit-content; min-width: 0; max-width: 100%; align-items: center; gap: 14px; margin: 0 auto 18px; padding: 9px 14px; border: 2px solid var(--memory-ink); border-radius: 2px; background: var(--memory-paper-light); color: var(--memory-ink); font-size: 14px; line-height: 1.05; box-shadow: 4px 4px 0 rgba(25,23,19,.12); text-align: left; }
+[data-quiz-theme="memory"] .quiz-engine__social { display: flex; width: min(100%, 390px); min-width: 0; max-width: 100%; align-items: center; justify-content: center; gap: 14px; margin: 0 auto 18px; padding: 9px 14px; border: 2px solid var(--memory-ink); border-radius: 2px; background: var(--memory-paper-light); color: var(--memory-ink); font-size: 14px; line-height: 1.05; box-shadow: 4px 4px 0 rgba(25,23,19,.12); text-align: left; }
 [data-quiz-theme="memory"] .quiz-engine__social-text strong { color: var(--memory-red); font-weight: 950; }
 [data-quiz-theme="memory"] .quiz-engine__social-text span { color: var(--memory-ink); font-weight: 750; }
 [data-quiz-theme="memory"] .quiz-engine__avatars { display: flex; flex: 0 0 auto; align-items: center; }
@@ -902,7 +960,9 @@
 }
 
 [data-quiz-theme="memory"] .quiz-engine__continuous-shell .quiz-engine__checkpoint-ad-note {
+  width: 100%;
   margin: 13px 0 0;
+  text-align: center;
 }
 
 @media (max-width: 700px) {
@@ -937,5 +997,18 @@
     min-height: 54px;
     margin-top: 12px;
     font-size: 16px;
+  }
+}
+
+@media (min-width: 701px) {
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career .quiz-engine__checkpoint-journey-progress,
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career .quiz-engine__checkpoint-next--career,
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career > .quiz-engine__primary,
+  [data-quiz-theme="memory"] .quiz-engine__checkpoint--progress-career > .quiz-engine__checkpoint-ad-note {
+    width: min(100%, 520px) !important;
+    max-width: 520px !important;
+    align-self: center;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
 }

@@ -601,7 +601,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   function continueAfterCheckpoint() {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const next = () => {
-      if (quiz.career && !isFinalStage) {
+      if (quiz.career && quiz.career.showStageResults !== false && !isFinalStage) {
         setScreen("stage-result");
       } else if (isFinalStage) {
         setScreen("results");
@@ -714,6 +714,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const compactCareerGate = careerStage && quiz.career?.compactGate && !isFinalStage
       ? quiz.career.compactGate
       : undefined;
+    const progressOnlyCareerGate = Boolean(careerStage && quiz.career?.showStageResults === false);
     const reveal = checkpoint?.reveals[completedStage];
     const revealKey = reveal?.signal === "trend" ? result.trend
       : reveal?.signal === "consistency" ? result.consistency
@@ -727,11 +728,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     return (
       <>
-      <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}${compactCareerGate ? " quiz-engine__checkpoint--compact-career" : ""}`} data-round={completedStage + 1}>
+      <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}${compactCareerGate ? " quiz-engine__checkpoint--compact-career" : ""}${progressOnlyCareerGate ? " quiz-engine__checkpoint--progress-career" : ""}`} data-round={completedStage + 1}>
         {compactCareerGate ? (
           <span className="quiz-engine__eyebrow">{compactCareerGate.eyebrow}</span>
         ) : !isFinalStage ? (
           <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? reveal?.badge ?? translations.results.stageComplete}</span>
+        ) : progressOnlyCareerGate ? (
+          <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? checkpoint?.finalBadge}</span>
         ) : null}
         <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
         <h2>{compactCareerGate ? compactCareerGate.title.replace("{stage}", quiz.stages[completedStage]) : careerStage?.preAdTitle ?? checkpointTitle}</h2>
@@ -745,6 +748,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <div className="quiz-engine__ai-top"><span aria-hidden="true" /><strong>{reveal?.title}</strong></div>
             <p>{revealMessage}</p>
           </div>
+        ) : null}
+        {progressOnlyCareerGate ? (
+          <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%` } as CSSProperties}>
+            <div>
+              <span>{quiz.career?.resultProgressLabel ?? "Challenge progress"}</span>
+              <strong>{(quiz.career?.resultProgressComplete ?? "{value}% complete").replace("{value}", String(checkpointPercent))}</strong>
+            </div>
+            <i aria-hidden="true"><b /></i>
+          </section>
         ) : null}
         {!careerStage && checkpoint?.progressLabel && checkpoint.progressComplete ? (
           <div className="quiz-engine__checkpoint-progress">
@@ -777,12 +789,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span>{checkpoint?.nextPrefix ?? translations.results.nextStage}</span>
             <strong>{quiz.stages[completedStage + 1]}</strong>
           </div>
+        ) : progressOnlyCareerGate && !isFinalStage && careerStage?.next ? (
+          <div className="quiz-engine__checkpoint-next quiz-engine__checkpoint-next--career">
+            <span>{careerStage.next.eyebrow}</span>
+            <strong>{careerStage.next.title}</strong>
+            <small>{careerStage.next.tagline}</small>
+          </div>
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : compactCareerGate?.button ?? careerStage?.preAdButton ?? checkpointButton}
         </button>
-        {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{checkpoint.adNote}</p> : null}
+        {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{isFinalStage ? checkpoint.finalAdNote ?? checkpoint.adNote : checkpoint.adNote}</p> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
