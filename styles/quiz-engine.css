@@ -288,6 +288,8 @@
   background: rgba(10, 12, 18, .72);
   backdrop-filter: blur(7px) saturate(.82);
 }
+html.quiz-reward-prompt-open,
+body.quiz-reward-prompt-open { overflow: hidden !important; overscroll-behavior: none; touch-action: none; }
 .quiz-engine__reward-prompt-card { position: relative; width: min(520px, 100%); max-height: calc(100svh - 36px); overflow-y: auto; text-align: center; }
 .quiz-engine__reward-prompt-icon { display: grid; width: 88px; height: 88px; margin: 12px auto 24px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--quiz-correct) 14%, var(--quiz-surface-raised)); color: var(--quiz-correct); font-size: 42px; font-weight: 950; }
 .quiz-engine__reward-prompt-card h2 { margin: 0 0 14px; font-size: clamp(32px, 6vw, 48px); line-height: 1.05; }

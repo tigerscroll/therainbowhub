@@ -485,6 +485,16 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     adRequestController.current?.abort();
   }, []);
 
+  useEffect(() => {
+    if (!showStartPrompt) return;
+    document.documentElement.classList.add("quiz-reward-prompt-open");
+    document.body.classList.add("quiz-reward-prompt-open");
+    return () => {
+      document.documentElement.classList.remove("quiz-reward-prompt-open");
+      document.body.classList.remove("quiz-reward-prompt-open");
+    };
+  }, [showStartPrompt]);
+
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
@@ -655,7 +665,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
           </button>
-          {quiz.engine.rewarded.start ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
+          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
         </div>
         {quiz.theme.artwork?.landing ? (
           <div className="quiz-engine__landing-art" aria-hidden="true">
