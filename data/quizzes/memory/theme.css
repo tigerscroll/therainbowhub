@@ -35,9 +35,15 @@
 }
 
 [data-quiz-theme="memory"] .quiz-engine__reward-prompt-icon {
+  width: 72px;
+  height: 72px;
+  margin: 9px auto 16px;
   background: color-mix(in srgb, var(--memory-green) 13%, var(--memory-paper-light));
   color: var(--memory-green);
+  font-size: 35px;
 }
+
+[data-quiz-theme="memory"] .quiz-engine__reward-prompt-card h2 { margin-bottom: 12px; }
 
 [data-quiz-theme="memory"] .quiz-engine__reward-prompt-card > .quiz-engine__primary {
   display: inline-flex;

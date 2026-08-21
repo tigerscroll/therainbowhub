@@ -28,7 +28,7 @@ test("every promoted result recommendation uses its supported compact journey", 
       true,
       recommendation.slug,
     );
-    if (recommendation.slug === "memory") {
+    if (recommendation.slug === "memory" || recommendation.slug === "years-left") {
       assert.equal(locale.stages.length, 5, recommendation.slug);
       assert.deepEqual(locale.stages.map((stage: { questions: unknown[] }) => stage.questions.length), [8, 8, 8, 8, 8]);
     } else {

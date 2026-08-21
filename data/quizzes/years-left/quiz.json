@@ -1,13 +1,15 @@
 {
   "slug": "years-left",
   "engine": {
-    "flow": "linear",
+    "flow": "staged",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "weighted-profile",
     "checkpoint": "ai",
+    "startOnLoad": true,
+    "localeParity": "independent",
     "rewarded": {
-      "start": true,
+      "start": false,
       "stages": true,
       "attempts": 3
     },
@@ -35,8 +37,8 @@
   "listing": {
     "thumbnail": "assets/thumbnail.jpg",
     "published": "2026-06-12",
-    "duration": "2 min",
-    "difficulty": "Quick",
+    "duration": "8 min",
+    "difficulty": "Medium",
     "icon": "🪦"
   },
   "theme": {

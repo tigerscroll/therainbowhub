@@ -375,6 +375,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const [reportUnlocked, setReportUnlocked] = useState(false);
   const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
+  const [showStartPrompt, setShowStartPrompt] = useState(false);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -573,8 +574,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   function startQuiz() {
-    if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
+    if (quiz.engine.rewarded.start && quiz.engine.rewarded.confirmStart && quiz.landing.startPrompt) {
+      setShowStartPrompt(true);
+    }
+    else if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
     else beginQuiz();
+  }
+
+  function confirmQuizStart() {
+    void runRewardedGate(() => {
+      setShowStartPrompt(false);
+      beginQuiz();
+    });
   }
 
   function continueAfterCheckpoint() {
@@ -620,6 +631,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     setReportUnlocked(false);
     setRewardClosedSent(false);
     setReviewUnlocked(false);
+    setShowStartPrompt(false);
     setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();
   }
@@ -656,6 +668,24 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         )}
       </section>
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
+      {showStartPrompt && quiz.landing.startPrompt ? (
+        <div className="quiz-engine__reward-prompt">
+          <section
+            aria-labelledby="quiz-start-prompt-title"
+            aria-modal="true"
+            className="quiz-engine__reward-prompt-card quiz-engine__card"
+            role="dialog"
+          >
+            <span className="quiz-engine__eyebrow">{quiz.landing.startPrompt.eyebrow}</span>
+            <div aria-hidden="true" className="quiz-engine__reward-prompt-icon">{quiz.landing.startPrompt.icon}</div>
+            <h2 id="quiz-start-prompt-title">{quiz.landing.startPrompt.title}</h2>
+            <p>{quiz.landing.startPrompt.copy}</p>
+            <button autoFocus className="quiz-engine__primary" disabled={adBusy} onClick={confirmQuizStart} type="button">
+              {adBusy ? "Loading Ad…" : quiz.landing.startPrompt.button}
+            </button>
+          </section>
+        </div>
+      ) : null}
       </>
     );
   }
@@ -752,7 +782,10 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   if (screen === "stage-result" && quiz.career) {
     const stageCopy = quiz.career.stages[completedStage];
     const completedQuestions = quiz.questions.filter((question) => question.stage === completedStage);
-    const stageCorrect = completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
+    const completionBasedResult = quiz.career.stageResultMode === "completion";
+    const stageCorrect = completionBasedResult
+      ? completedQuestions.filter((question) => answers[question.id] !== undefined).length
+      : completedQuestions.filter((question) => answers[question.id] === question.answerIndex).length;
     const stageBand = stageCopy.resultBands[getCareerResultBand(stageCorrect, completedQuestions.length)];
     const cleared = completedStage + 1;
     const completedSoFar = quiz.questions.filter((question) => question.stage <= completedStage);
@@ -769,7 +802,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <h2>{stageBand.title}</h2>
         <p className="quiz-engine__stage-insight">{stageBand.insight}</p>
 
-        {quiz.career.hideJourneyLength ? (
+        {quiz.career.hideJourneyLength && quiz.career.showCurrentScore !== false ? (
           <section className="quiz-engine__career-current-score" style={{ "--career-score": `${cumulativePercentage}%` } as CSSProperties}>
             <span>{quiz.career.currentScoreLabel ?? "CURRENT SCORE"}</span>
             <strong>{cumulativePercentage}%</strong>
@@ -861,6 +894,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const requiresEstimateReviewUnlock = Boolean(
       quiz.engine.scoring.type === "weighted-profile"
       && estimateReviewUnlockCopy
+      && estimateReviewUnlockCopy.rewarded !== false
       && !reviewUnlocked,
     );
     const estimateChoiceImpacts = quiz.engine.scoring.type === "weighted-profile" && quiz.engine.estimate

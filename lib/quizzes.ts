@@ -15,7 +15,7 @@ export type QuizFlow = {
 };
 
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybrid-match" };
-export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number };
+export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number; confirmStart: boolean };
 export type QuizQuestionAdConfig = {
   adUnitPath: string;
   fromQuestion: number;
@@ -127,6 +127,8 @@ export type QuizCareerStageCopy = {
 export type QuizCareerCopy = {
   hideJourneyLength?: boolean;
   continuousShell?: boolean;
+  stageResultMode?: "score" | "completion";
+  showCurrentScore?: boolean;
   showResultProgress?: boolean;
   resultProgressLabel?: string;
   resultProgressComplete?: string;
@@ -232,6 +234,7 @@ export type QuizResultConfig = {
     consistencyLabels: { high: string; medium: string; mixed: string };
     disclaimer: string;
     reviewUnlock?: {
+      rewarded?: boolean;
       title: string;
       copy: string;
       button: string;
@@ -610,6 +613,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const rewarded = object(engine.rewarded, "engine.rewarded", file);
     if (rewarded.start !== undefined && typeof rewarded.start !== "boolean") throw new Error(`${file}: rewarded.start must be a boolean.`);
     if (rewarded.stages !== undefined && typeof rewarded.stages !== "boolean") throw new Error(`${file}: rewarded.stages must be a boolean.`);
+    if (rewarded.confirmStart !== undefined && typeof rewarded.confirmStart !== "boolean") throw new Error(`${file}: rewarded.confirmStart must be a boolean.`);
     if (rewarded.attempts !== undefined && (!Number.isInteger(rewarded.attempts) || Number(rewarded.attempts) < 1 || Number(rewarded.attempts) > 5)) throw new Error(`${file}: rewarded.attempts must be between 1 and 5.`);
   }
   if (engine.startOnLoad === true && (engine.rewarded as { start?: unknown } | undefined)?.start === true) {
@@ -788,6 +792,8 @@ function normalizeLocale(
     const career = value.career;
     if (career.hideJourneyLength !== undefined && typeof career.hideJourneyLength !== "boolean") throw new Error(`${file}: career.hideJourneyLength must be a boolean.`);
     if (career.continuousShell !== undefined && typeof career.continuousShell !== "boolean") throw new Error(`${file}: career.continuousShell must be a boolean.`);
+    if (career.stageResultMode !== undefined && !["score", "completion"].includes(career.stageResultMode)) throw new Error(`${file}: career.stageResultMode must be score or completion.`);
+    if (career.showCurrentScore !== undefined && typeof career.showCurrentScore !== "boolean") throw new Error(`${file}: career.showCurrentScore must be a boolean.`);
     if (career.showResultProgress !== undefined && typeof career.showResultProgress !== "boolean") throw new Error(`${file}: career.showResultProgress must be a boolean.`);
     if (career.resultProgressLabel !== undefined) text(career.resultProgressLabel, "career.resultProgressLabel", file);
     if (career.resultProgressComplete !== undefined) {
@@ -830,7 +836,7 @@ function normalizeLocale(
       const reportChecks = strings(career.reportUnlock.checks, "career.reportUnlock.checks", file);
       if (reportChecks.length < 3 || reportChecks.length > 6) throw new Error(`${file}: career.reportUnlock.checks needs three to six items.`);
     }
-    if (localeFlow !== "staged" || manifest.engine.scoring !== "correct-answer" || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged, scored quiz with rewarded stage results.`);
+    if (localeFlow !== "staged" || (manifest.engine.scoring !== "correct-answer" && career.stageResultMode !== "completion") || !manifest.engine.rewarded?.stages) throw new Error(`${file}: career mode requires a staged scored or completion-based quiz with rewarded stage results.`);
   }
 
   const questions: QuizQuestion[] = [];
@@ -1097,6 +1103,7 @@ function normalizeLocale(
         start: manifest.engine.rewarded?.start ?? false,
         stages: manifest.engine.rewarded?.stages ?? false,
         attempts: manifest.engine.rewarded?.attempts ?? 3,
+        confirmStart: manifest.engine.rewarded?.confirmStart ?? false,
       },
       questionAd: manifest.engine.questionAd,
       resultAds: manifest.engine.resultAds,
