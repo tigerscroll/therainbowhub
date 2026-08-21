@@ -1,2 +1,15 @@
 @import "../styles/site.css";
 @import "../styles/quiz-engine.css";
+
+/* Fallback for close/skip controls rendered in the host document. Google ad
+   controls inside a cross-origin iframe cannot be restyled by site CSS. */
+.close-button,
+.skip-button {
+  width: 50px !important;
+  min-width: 50px !important;
+  max-width: 50px !important;
+  height: 50px !important;
+  min-height: 50px !important;
+  max-height: 50px !important;
+  flex: 0 0 50px !important;
+}
