@@ -904,7 +904,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const requiresEstimateReviewUnlock = Boolean(
       quiz.engine.scoring.type === "weighted-profile"
       && estimateReviewUnlockCopy
-      && estimateReviewUnlockCopy.rewarded !== false
       && !reviewUnlocked,
     );
     const estimateChoiceImpacts = quiz.engine.scoring.type === "weighted-profile" && quiz.engine.estimate
@@ -1037,10 +1036,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span>{estimateReviewUnlockCopy?.reviewTitle}</span>
             <h3>{estimateReviewUnlockCopy?.title}</h3>
             <p>{estimateReviewUnlockCopy?.copy}</p>
-            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+            <button
+              className="quiz-engine__primary"
+              disabled={adBusy}
+              onClick={estimateReviewUnlockCopy?.rewarded === false ? () => setReviewUnlocked(true) : unlockIncorrectAnswers}
+              type="button"
+            >
               {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
             </button>
-            <small>{estimateReviewUnlockCopy?.adNote}</small>
+            {estimateReviewUnlockCopy?.rewarded === false ? null : <small>{estimateReviewUnlockCopy?.adNote}</small>}
           </section>
         ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">

@@ -163,10 +163,11 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
     fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
     fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
-    fail(config.engine?.startOnLoad === true && config.engine?.rewarded?.start === false, "years-left: must open directly on its first question without a start ad.");
+    fail(config.engine?.startOnLoad === false && config.engine?.rewarded?.start === true && config.engine?.rewarded?.confirmStart === true, "years-left: must open on its landing and use the confirmed rewarded Start flow.");
     fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs one rewarded result gate after every stage.");
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
-    fail(source.landing?.startPrompt === undefined, "years-left/en.json: direct-start flow must not retain a pre-ad prompt.");
+    fail(source.landing?.startNote === undefined, "years-left/en.json: rewarded-ad copy must remain inside the confirmation prompt.");
+    fail(source.landing?.startPrompt?.eyebrow === "READY TO CONTINUE" && source.landing?.startPrompt?.icon === "✓" && source.landing?.startPrompt?.title === "Your lifespan estimate is ready to begin" && source.landing?.startPrompt?.copy === "Watch one short ad, then answer the questions." && source.landing?.startPrompt?.button === "Continue", "years-left/en.json: rewarded Start prompt changed.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
     fail(source.results?.estimate?.reviewUnlock?.rewarded === false, "years-left/en.json: choice-impact details must be included in the final result without another rewarded gate.");
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
@@ -175,6 +176,8 @@ for (const folder of folders) {
     fail(byId.get("r3q6")?.presentation === "icons" && JSON.stringify(byId.get("r3q6")?.icons) === JSON.stringify(["🛋️", "🚶", "🚴", "🏃"]), "years-left: movement interaction icons changed.");
     fail(byId.get("r4q3")?.presentation === "scale" && Object.keys(byId.get("r4q3")?.answers ?? {}).length === 5, "years-left: rested interaction must remain a five-stop scale.");
     fail(byId.get("r6q6")?.presentation === "scale" && Object.keys(byId.get("r6q6")?.answers ?? {}).length === 5, "years-left: social connection must remain a five-stop scale.");
+    fail(["r6q1", "r6q2", "r6q3", "r6q4", "r6q5"].every((id) => Object.keys(byId.get(id)?.answers ?? {}).length === 3), "years-left: the first five Connection & Choices interactions must retain three nuanced choices.");
+    fail(byId.get("r1q5")?.question === "When your energy dips halfway through the day, what helps most?", "years-left: Everyday Rhythm must not repeat the earlier free-evening interaction.");
     fail(byId.get("r3q2")?.presentation === "icons" && JSON.stringify(byId.get("r3q2")?.icons) === JSON.stringify(["🚗", "🚌", "🚶", "🚲"]), "years-left: everyday activity icons changed.");
     fail(byId.get("r10q4")?.presentation === "text" && Object.keys(byId.get("r10q4")?.answers ?? {}).length === 4, "years-left: habit consistency must remain a compact four-choice interaction.");
     fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");

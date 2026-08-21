@@ -4,7 +4,14 @@
   "landing": {
     "intro": "Answer these questions and AI will predict how long you have left to live.",
     "socialProof": "82,000+ people tried it this week",
-    "cta": "Start"
+    "cta": "Start",
+    "startPrompt": {
+      "eyebrow": "READY TO CONTINUE",
+      "icon": "✓",
+      "title": "Your lifespan estimate is ready to begin",
+      "copy": "Watch one short ad, then answer the questions.",
+      "button": "Continue"
+    }
   },
   "about": {
     "body": "This five-round quiz uses familiar lifestyle clues—including routine, food, movement, sleep, stress, social connection, daily choices and recovery—to create a playful years-left estimate and personality-style result. Its 40 interactions are deliberately varied, so it feels more like an unfolding AI lifestyle scan than a health questionnaire.\n\nEach round explores a different part of everyday life, then reveals how far the prediction journey has progressed. The final prediction choice provides only a restrained calibration, so it cannot determine the displayed estimate on its own.\n\nThe quiz does not use medical records, clinical research, family history, current age, healthcare data or an individual risk assessment. The displayed estimate is a playful quiz mechanic based only on the choices made during this attempt.",
@@ -256,15 +263,15 @@
           "id": "r1q2"
         },
         {
-          "question": "Which evening sounds most like your reset button?",
+          "question": "When your energy dips halfway through the day, what helps most?",
           "answers": {
-            "A spontaneous plan that turns into a story": {
+            "A change of scene and something spontaneous": {
               "adventure_fuse": 0.846245013
             },
-            "Blanket, snacks, and absolutely no further questions": {
+            "Quiet comfort and no new demands": {
               "comfort_creature": 1.374612798
             },
-            "Cooking something simple and closing the laptop": {
+            "A short pause and one clear next step": {
               "balanced_realist": 0.959222869
             }
           },
@@ -830,6 +837,10 @@
             "Good people, clear timing, and an easy exit": {
               "balanced_realist": 0.959222869
             },
+            "A loose plan with room for everyone to shape it": {
+              "balanced_realist": 0.479611434,
+              "adventure_fuse": 0.423122506
+            },
             "A twist no one saw coming": {
               "adventure_fuse": 0.846245013
             }
@@ -841,6 +852,10 @@
           "answers": {
             "Becoming part of a story that starts with “somehow”": {
               "weekend_chaos": 1.081951257
+            },
+            "Moving between conversations, then taking a quiet breather": {
+              "weekend_chaos": 0.540975629,
+              "centenarian_energy": 0.582540895
             },
             "Helping with snacks because it gives you purpose": {
               "centenarian_energy": 1.165081789
@@ -854,6 +869,10 @@
             "Happy if it turns into gossip": {
               "weekend_chaos": 1.081951257
             },
+            "I ask what they need before deciding how much energy I have": {
+              "weekend_chaos": 0.540975629,
+              "balanced_realist": 0.479611434
+            },
             "Ready, but cautious": {
               "balanced_realist": 0.959222869
             }
@@ -866,6 +885,10 @@
             "Reliable in a refreshingly normal way": {
               "steady_long_game": 0.789882145
             },
+            "Steady when it matters, spontaneous when it helps": {
+              "steady_long_game": 0.394941072,
+              "adventure_fuse": 0.423122506
+            },
             "A lovable source of side quests": {
               "adventure_fuse": 0.846245013
             }
@@ -877,6 +900,10 @@
           "answers": {
             "Another plan if the vibe is good": {
               "adventure_fuse": 0.846245013
+            },
+            "Something low-key with one or two favourite people": {
+              "adventure_fuse": 0.423122506,
+              "reset_needed": 0.570785237
             },
             "A long quiet reset before I feel normal again": {
               "reset_needed": 1.141570473
