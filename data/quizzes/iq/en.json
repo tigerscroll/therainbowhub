@@ -51,13 +51,13 @@
         "min": 0.5,
         "tier": "50–59%",
         "title": "The Curious Analyst",
-        "copy": "You cracked a solid share of the vault and kept experimenting when the rule was not immediately obvious. Your result shows a mixed reasoning profile rather than one dominant style."
+        "copy": "You cracked a solid share of the vault and kept working when the rule was not immediately obvious. Some puzzle styles clicked quickly, while others rewarded a second look."
       },
       {
         "min": 0,
         "tier": "Below 50%",
-        "title": "The Creative Wildcard",
-        "copy": "The vault caught you with some of its more structured rules, but you still found solutions across several challenge types. Your answers produced a lively and unpredictable reasoning pattern."
+        "title": "The Exploratory Solver",
+        "copy": "Some of the vault's rules proved difficult, but you still cracked puzzles across several challenge types. Reviewing the missed clues may reveal a few patterns that become much easier on a second look."
       }
     ],
     "dimensions": [
@@ -534,28 +534,25 @@
         },
         {
           "id": "iq-s3q4",
-          "question": "Which word appears immediately after BLUE?",
-          "presentation": "sequence",
+          "question": "Which copy differs from the reference by exactly one character?",
+          "presentation": "code",
           "visual": {
             "items": [
-              "RED",
-              "BLUE",
-              "GREEN",
-              "YELLOW"
+              "REFERENCE::K7M2-Q9",
+              "TASK::One change only"
             ],
-            "columns": 4,
-            "separator": "→",
-            "ariaLabel": "red, blue, green, yellow"
+            "columns": 1,
+            "ariaLabel": "Reference code K7M2-Q9. Find the option with one character changed."
           },
           "answers": [
-            "RED",
-            "GREEN",
-            "YELLOW",
-            "BLUE"
+            "K7M2-P8",
+            "K7N2-Q9",
+            "K1M2-Q8",
+            "K7N3-Q9"
           ],
           "correct": 1,
           "category": "attention",
-          "explanation": "GREEN appears directly after BLUE in the displayed sequence."
+          "explanation": "K7N2-Q9 changes only M to N. Every other option changes two characters."
         },
         {
           "id": "iq-s3q5",
@@ -582,16 +579,16 @@
         },
         {
           "id": "iq-s3q6",
-          "question": "Which is the only option that is not a colour?",
+          "question": "Which pair has the same relationship as BIRD → FLOCK?",
           "answers": [
-            "Circle",
-            "Blue",
-            "Amber",
-            "Violet"
+            "Fish → School",
+            "Lion → Den",
+            "Bee → Honey",
+            "Horse → Stable"
           ],
           "correct": 0,
           "category": "verbal",
-          "explanation": "Blue, amber and violet are colours; circle is a shape."
+          "explanation": "A flock is a group of birds, just as a school is a group of fish."
         },
         {
           "id": "iq-s3q7",
@@ -687,40 +684,30 @@
         },
         {
           "id": "iq-s4q3",
-          "question": "Which operation belongs in the gap?",
+          "question": "The same rule is used in every row. What replaces the question mark?",
           "presentation": "code",
           "visual": {
-          "items": [
-            "6 ? 3 = 18",
-            "? = OPERATION"
+            "items": [
+              "2 · 3 → 8",
+              "3 · 4 → 15",
+              "4 · 5 → ?"
             ],
             "columns": 1,
-            "ariaLabel": "six unknown operation three equals eighteen"
+            "ariaLabel": "two and three make eight; three and four make fifteen; four and five make an unknown number"
           },
           "answers": [
-            "+",
-            "−",
-            "×",
-            "÷"
+            "20",
+            "24",
+            "25",
+            "28"
           ],
-          "correct": 2,
+          "correct": 1,
           "category": "numerical",
-          "explanation": "Six multiplied by three equals 18, so multiplication belongs in the gap."
+          "explanation": "Multiply the first number by one more than the second: 2 × 4 = 8, 3 × 5 = 15, so 4 × 6 = 24."
         },
         {
           "id": "iq-s4q4",
-          "question": "Start in the centre. Move up, right, right, then down. Where do you finish?",
-          "presentation": "spatial",
-          "visual": {
-            "items": [
-              "↑",
-              "→",
-              "→",
-              "↓"
-            ],
-            "columns": 4,
-            "ariaLabel": "up, right, right, down"
-          },
+          "question": "Start in the centre facing north. Move forward one square, turn right, move two squares, turn right, then move one square. Where do you finish relative to the start?",
           "answers": [
             "Two squares right",
             "One square up",
@@ -729,7 +716,7 @@
           ],
           "correct": 0,
           "category": "spatial",
-          "explanation": "The up and down moves cancel, leaving two moves to the right."
+          "explanation": "The first and final moves cancel vertically, leaving two squares to the right."
         },
         {
           "id": "iq-s4q5",
@@ -746,64 +733,65 @@
         },
         {
           "id": "iq-s4q6",
-          "question": "Which symbol completes the code?",
+          "question": "Two patterns are interwoven. Which symbol comes next?",
           "presentation": "sequence",
           "visual": {
             "items": [
-              "△",
               "○",
               "△",
-              "○",
+              "○○",
+              "△△",
+              "○○○",
               "?"
             ],
-            "columns": 5,
+            "columns": 6,
             "separator": "→",
-            "ariaLabel": "triangle, circle, triangle, circle, unknown"
+            "ariaLabel": "one circle, one triangle, two circles, two triangles, three circles, unknown"
           },
           "answers": [
-            "□",
-            "○",
-            "△",
-            "◇"
+            "△△",
+            "○○○○",
+            "△△△",
+            "○△○"
           ],
           "correct": 2,
           "category": "pattern",
-          "explanation": "The symbols alternate triangle and circle, so the next symbol is a triangle."
+          "explanation": "Circles and triangles form separate growing patterns: one circle, two circles, three circles; one triangle, two triangles, so three triangles come next."
         },
         {
           "id": "iq-s4q7",
           "question": "All glens are quiet. Some parks are glens. What must be true?",
           "answers": [
             "All parks are quiet",
-            "Some parks are quiet",
             "No parks are quiet",
+            "Some parks are quiet",
             "All quiet places are parks"
           ],
-          "correct": 1,
+          "correct": 2,
           "category": "logic",
           "explanation": "The parks that are glens must also be quiet, so some parks are quiet."
         },
         {
           "id": "iq-s4q8",
-        "question": "Which word completes both phrases?",
-        "presentation": "code",
-        "visual": {
-          "items": [
-            "TIME ___",
-            "___ WORK"
+          "question": "Which word completes both phrases?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "HOME ___",
+              "___ SHOP"
+            ],
+            "columns": 1,
+            "ariaLabel": "home blank; blank shop"
+          },
+          "answers": [
+            "WORK",
+            "ROOM",
+            "TIME",
+            "PLAY"
           ],
-          "columns": 1,
-          "ariaLabel": "time blank; blank work"
-        },
-        "answers": [
-          "PIECE",
-          "LINE",
-          "CLOCK",
-          "TEAM"
-        ],
-        "correct": 0,
-        "category": "verbal",
-        "explanation": "PIECE completes both familiar compounds: timepiece and piecework."
+          "correct": 0,
+          "category": "verbal",
+          "explanation": "WORK completes both familiar words: homework and workshop."
         }
       ]
     },
@@ -1003,37 +991,37 @@
       {
         "badge": "QUICK THINK COMPLETE",
         "icon": "✓",
-        "title": "Quick Think mapped",
+        "title": "First challenge complete",
         "signal": "fixed",
-        "message": "Eight new thinking signals have been added to your result."
+        "message": "1 of 5 challenges cleared."
       },
       {
         "badge": "PATTERN DECODER COMPLETE",
         "icon": "✓",
-        "title": "Pattern Decoder mapped",
+        "title": "The vault is getting harder",
         "signal": "fixed",
-        "message": "Eight new thinking signals have been added to your result."
+        "message": "Two of five challenges cleared."
       },
       {
         "badge": "LOGIC UNDER PRESSURE COMPLETE",
         "icon": "✓",
-        "title": "Logic Under Pressure mapped",
+        "title": "More than halfway through",
         "signal": "fixed",
-        "message": "Eight new thinking signals have been added to your result."
+        "message": "Three of five challenges cleared. Advanced puzzles are next."
       },
       {
         "badge": "REASONING TRAPDOORS COMPLETE",
         "icon": "✓",
-        "title": "Reasoning Trapdoors mapped",
+        "title": "The Intelligence Vault is next",
         "signal": "fixed",
-        "message": "Eight new thinking signals have been added to your result."
+        "message": "Four of five challenges cleared. One final challenge remains."
       },
       {
         "badge": "THE INTELLIGENCE VAULT COMPLETE",
         "icon": "🧠",
-        "title": "Intelligence Test calculated",
+        "title": "INTELLIGENCE TEST COMPLETE",
         "signal": "fixed",
-        "message": "Your 40 answers have been combined into the final result."
+        "message": "All 40 answers are in. Your result is ready to reveal."
       }
     ]
   },
@@ -1072,23 +1060,23 @@
       {
         "difficulty": "Foundation",
         "preAdBadge": "QUICK THINK COMPLETE",
-        "preAdTitle": "First thinking signals captured",
-        "preAdCopy": "Your first pattern, word and logic signals are being added to your intelligence-test result.",
+        "preAdTitle": "First challenge complete",
+        "preAdCopy": "1 of 5 challenges cleared.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "QUICK THINK COMPLETE",
         "resultBands": {
           "high": {
-            "title": "First Signals Captured",
-            "insight": "Your opening reasoning signals have been added."
+            "title": "First challenge complete",
+            "insight": "1 of 5 challenges cleared."
           },
           "medium": {
-            "title": "First Signals Captured",
-            "insight": "Your opening reasoning signals have been added."
+            "title": "First challenge complete",
+            "insight": "1 of 5 challenges cleared."
           },
           "low": {
-            "title": "First Signals Captured",
-            "insight": "Your opening reasoning signals have been added."
+            "title": "First challenge complete",
+            "insight": "1 of 5 challenges cleared."
           }
         },
         "next": {
@@ -1102,23 +1090,23 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "PATTERN DECODER COMPLETE",
-        "preAdTitle": "Pattern thinking mapped",
-        "preAdCopy": "Your sequence, code and comparison signals are refining the calculation.",
+        "preAdTitle": "The vault is getting harder",
+        "preAdCopy": "Two of five challenges cleared.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "PATTERN DECODER COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Pattern Route Mapped",
-            "insight": "Your pattern and code signals have been added."
+            "title": "The vault is getting harder",
+            "insight": "Two of five challenges cleared."
           },
           "medium": {
-            "title": "Pattern Route Mapped",
-            "insight": "Your pattern and code signals have been added."
+            "title": "The vault is getting harder",
+            "insight": "Two of five challenges cleared."
           },
           "low": {
-            "title": "Pattern Route Mapped",
-            "insight": "Your pattern and code signals have been added."
+            "title": "The vault is getting harder",
+            "insight": "Two of five challenges cleared."
           }
         },
         "next": {
@@ -1132,23 +1120,23 @@
       {
         "difficulty": "Skilled",
         "preAdBadge": "LOGIC UNDER PRESSURE COMPLETE",
-        "preAdTitle": "Reasoning profile sharpened",
-        "preAdCopy": "Logic, attention and multi-step signals are now shaping your intelligence-test result.",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "Three of five challenges cleared. Advanced puzzles are next.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "LOGIC UNDER PRESSURE COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Reasoning Route Sharpened",
-            "insight": "Your logic and attention signals have been added."
+            "title": "More than halfway through",
+            "insight": "Three of five challenges cleared. Advanced puzzles are next."
           },
           "medium": {
-            "title": "Reasoning Route Sharpened",
-            "insight": "Your logic and attention signals have been added."
+            "title": "More than halfway through",
+            "insight": "Three of five challenges cleared. Advanced puzzles are next."
           },
           "low": {
-            "title": "Reasoning Route Sharpened",
-            "insight": "Your logic and attention signals have been added."
+            "title": "More than halfway through",
+            "insight": "Three of five challenges cleared. Advanced puzzles are next."
           }
         },
         "next": {
@@ -1162,23 +1150,23 @@
       {
         "difficulty": "Advanced",
         "preAdBadge": "REASONING TRAPDOORS COMPLETE",
-        "preAdTitle": "Your result is taking shape",
-        "preAdCopy": "Your resistance to logic traps is mapped. Only the final intelligence challenge remains.",
+        "preAdTitle": "The Intelligence Vault is next",
+        "preAdCopy": "Four of five challenges cleared. One final challenge remains.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "REASONING TRAPDOORS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Trapdoor Signals Captured",
-            "insight": "Your advanced reasoning signals have been added."
+            "title": "The Intelligence Vault is next",
+            "insight": "Four of five challenges cleared. One final challenge remains."
           },
           "medium": {
-            "title": "Trapdoor Signals Captured",
-            "insight": "Your advanced reasoning signals have been added."
+            "title": "The Intelligence Vault is next",
+            "insight": "Four of five challenges cleared. One final challenge remains."
           },
           "low": {
-            "title": "Trapdoor Signals Captured",
-            "insight": "Your advanced reasoning signals have been added."
+            "title": "The Intelligence Vault is next",
+            "insight": "Four of five challenges cleared. One final challenge remains."
           }
         },
         "next": {
@@ -1192,7 +1180,8 @@
       {
         "difficulty": "Final Assessment",
         "preAdBadge": "THE INTELLIGENCE VAULT COMPLETE",
-        "preAdTitle": "YOUR INTELLIGENCE TEST RESULT IS READY",
+        "preAdTitle": "INTELLIGENCE TEST COMPLETE",
+        "preAdCopy": "All 40 answers are in. Your result is ready to reveal.",
         "preAdChecks": [
           "40 answers checked",
           "Six thinking areas compared",
@@ -1203,16 +1192,16 @@
         "resultLabel": "THE INTELLIGENCE VAULT COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Final Intelligence Challenge Complete",
-            "insight": "Every thinking signal has been combined into your final result."
+            "title": "INTELLIGENCE TEST COMPLETE",
+            "insight": "All 40 answers are in. Your result is ready to reveal."
           },
           "medium": {
-            "title": "Final Intelligence Challenge Complete",
-            "insight": "Every thinking signal has been combined into your final result."
+            "title": "INTELLIGENCE TEST COMPLETE",
+            "insight": "All 40 answers are in. Your result is ready to reveal."
           },
           "low": {
-            "title": "Final Intelligence Challenge Complete",
-            "insight": "Every thinking signal has been combined into your final result."
+            "title": "INTELLIGENCE TEST COMPLETE",
+            "insight": "All 40 answers are in. Your result is ready to reveal."
           }
         }
       }

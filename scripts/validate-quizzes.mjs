@@ -288,6 +288,28 @@ for (const folder of folders) {
     const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
     const categoryCounts = sourceQuestions.reduce((counts, question) => ({ ...counts, [question.category]: (counts[question.category] ?? 0) + 1 }), {});
     const supportedPresentations = new Set(["text", "icons", "sequence", "grid", "code", "spatial"]);
+    const expectedChallengeTitles = [
+      "First challenge complete",
+      "The vault is getting harder",
+      "More than halfway through",
+      "The Intelligence Vault is next",
+      "INTELLIGENCE TEST COMPLETE",
+    ];
+    const expectedChallengeCopy = [
+      "1 of 5 challenges cleared.",
+      "Two of five challenges cleared.",
+      "Three of five challenges cleared. Advanced puzzles are next.",
+      "Four of five challenges cleared. One final challenge remains.",
+      "All 40 answers are in. Your result is ready to reveal.",
+    ];
+    const hasExactChallengeProgression = source.career?.stages?.every((stage, index) => (
+      stage.preAdTitle === expectedChallengeTitles[index]
+      && stage.preAdCopy === expectedChallengeCopy[index]
+      && ["high", "medium", "low"].every((band) => (
+        stage.resultBands?.[band]?.title === expectedChallengeTitles[index]
+        && stage.resultBands?.[band]?.insight === expectedChallengeCopy[index]
+      ))
+    ));
     fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: IQ must retain every existing locale.`);
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: compact English IQ must use independent locale flow.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.derivedScore === undefined, `${folder.name}: Intelligence Test must use an 80% percentage target without a derived IQ score.`);
@@ -317,6 +339,8 @@ for (const folder of folders) {
     const details = source.results?.score?.insights?.details;
     fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: Intelligence Test needs the full result report.`);
     fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showStageResults === false && source.career?.showCurrentScore === false && source.career?.showResultProgress === true, `${folder.name}/en.json: progress-only persistent journey settings changed.`);
+    fail(hasExactChallengeProgression, `${folder.name}/en.json: vault-style five-checkpoint progression is incomplete.`);
+    fail(source.checkpoint?.reveals?.every((reveal, index) => reveal.title === expectedChallengeTitles[index] && reveal.message === expectedChallengeCopy[index]), `${folder.name}/en.json: checkpoint reveals must mirror the vault-style progression.`);
     fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && !stage.preAdChecks) && source.career.stages[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: stage-result gates changed.`);
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Result" && source.results?.score?.showBestRound === true, `${folder.name}/en.json: final gate or result settings changed.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: IQ profile thresholds are incorrect.`);
@@ -561,19 +585,19 @@ for (const folder of folders) {
         title: "Only 8% Pass This Paramedic Entrance Exam",
         cta: "Start Test",
         categories: { anatomy_physiology: 7, observation_vitals: 6, numeracy_measurement: 7, scene_safety: 7, communication_handover: 7, reasoning_priorities: 6 },
-        progress: "Rapid-response assessment",
+        label: "Paramedic",
       },
       nursing: {
         title: "Only 7% Pass This Nursing Entrance Exam",
         cta: "Start Quiz",
         categories: { anatomy_physiology: 7, numeracy_measurement: 7, infection_safety: 7, communication_compassion: 6, observation_vitals: 7, reasoning_priorities: 6 },
-        progress: "Nursing challenge",
+        label: "Nursing",
       },
       midwifery: {
         title: "Only 7% Pass This Midwifery Entrance Exam",
         cta: "Start Quiz",
         categories: { pregnancy_physiology: 7, antenatal_wellbeing: 7, communication_priorities: 6, labour_birth: 7, newborn_care: 7, infection_safety: 6 },
-        progress: "Birth-centre challenge",
+        label: "Midwifery",
       },
     };
     const specification = specifications[folder.name];
@@ -584,6 +608,42 @@ for (const folder of folders) {
     const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
     const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|resuscitat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|extricat\w*|reduce a fracture|perform a procedure|911|999|112)\b/i;
     const questionCopy = sourceQuestions.map((question) => [question.question, question.context, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
+    const expectedExamTitles = [
+      "First exam section complete",
+      "40% of the exam complete",
+      "More than halfway through",
+      "Final assessment next",
+      `${specification.label.toUpperCase()} ENTRANCE EXAM COMPLETE`,
+    ];
+    const expectedExamCopy = [
+      "1 of 5 sections complete.",
+      "Two of five sections complete.",
+      "Three of five exam sections complete.",
+      "Four of five sections complete. Only the final assessment remains.",
+      "All five sections are complete. Your result is ready to reveal.",
+    ];
+    const expectedRevealTitles = [
+      ...expectedExamTitles.slice(0, 4),
+      "Entrance exam complete",
+    ];
+    const expectedRevealCopy = [
+      ...expectedExamCopy.slice(0, 4),
+      "All five sections are complete. Your result is ready.",
+    ];
+    const expectedNextEyebrows = [
+      "NEXT EXAM SECTION · DEVELOPING",
+      "NEXT EXAM SECTION · SKILLED",
+      "NEXT EXAM SECTION · ADVANCED",
+      "NEXT EXAM SECTION · FINAL ASSESSMENT",
+    ];
+    const hasExactExamProgression = source.career?.stages?.every((stage, index) => (
+      stage.preAdTitle === expectedExamTitles[index]
+      && stage.preAdCopy === expectedExamCopy[index]
+      && ["high", "medium", "low"].every((band) => (
+        stage.resultBands?.[band]?.title === expectedExamTitles[index]
+        && stage.resultBands?.[band]?.insight === expectedExamCopy[index]
+      ))
+    ));
 
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: five-stage clinical quiz must launch in English only.`);
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent" && config.engine?.scoring === "correct-answer", `${folder.name}: five-stage clinical flow must use independent staged correct-answer scoring.`);
@@ -601,13 +661,48 @@ for (const folder of folders) {
     fail(!prohibitedClinicalCopy.test(questionCopy), `${folder.name}/en.json: content must stay at safe recognition and escalation level.`);
     fail(sourceQuestions.filter((question) => question.reasoningSteps === 2).length >= 6, `${folder.name}/en.json: the expanded clinical challenge needs at least six multi-clue questions.`);
     fail(source.career?.continuousShell === true && source.career?.hideJourneyLength === true && source.career?.showStageResults === false && source.career?.showCurrentScore === false, `${folder.name}/en.json: the persistent hidden-length shell is required.`);
-    fail(source.career?.showResultProgress === true && source.career?.resultProgressLabel === specification.progress && source.career?.stages?.length === 5, `${folder.name}/en.json: five-step profile-building progress is incomplete.`);
+    fail(
+      source.career?.showResultProgress === true
+      && source.career?.resultProgressLabel === `${specification.label} entrance exam`
+      && source.career?.journeyLabel === `${specification.label.toUpperCase()} ENTRANCE EXAM`
+      && source.career?.stages?.length === 5
+      && hasExactExamProgression,
+      `${folder.name}/en.json: explicit five-section entrance-exam progression is incomplete.`,
+    );
+    fail(
+      source.career?.kitchensCleared === "{value} / {total} exam sections complete"
+      && source.career?.currentRank === "EXAM PROGRESS"
+      && JSON.stringify(source.career?.ranks?.map((rank) => rank.label)) === JSON.stringify(["Entrance Exam Started", "Entrance Exam Complete"])
+      && source.career?.unlockEyebrow === `${specification.label.toUpperCase()} ENTRANCE EXAM`
+      && source.career?.unlockTitle === "Your next exam section is ready"
+      && source.career?.unlockCopy === "Continue to the next section of your entrance exam."
+      && source.career?.finalEyebrow === `YOUR ${specification.label.toUpperCase()} ENTRANCE EXAM RESULT`
+      && source.career?.finalCareerTitle === "ENTRANCE EXAM COMPLETE",
+      `${folder.name}/en.json: entrance-exam career labels are incomplete.`,
+    );
+    fail(source.checkpoint?.nextPrefix === "NEXT EXAM SECTION", `${folder.name}/en.json: checkpoint label must say NEXT EXAM SECTION.`);
+    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.eyebrow)) === JSON.stringify(expectedNextEyebrows), `${folder.name}/en.json: next-section difficulty labels changed.`);
+    fail(source.checkpoint?.reveals?.every((reveal, index) => reveal.title === expectedRevealTitles[index] && reveal.message === expectedRevealCopy[index]), `${folder.name}/en.json: checkpoint reveals must mirror the entrance-exam progression.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && stage.preAdChecks === undefined && stage.next?.button === "Continue"), `${folder.name}/en.json: intermediate gates must remain concise and use Continue.`);
     fail(source.career?.stages?.[4]?.preAdButton === "See My Result" && source.career.stages[4].preAdChecks?.length === 3, `${folder.name}/en.json: final rewarded result gate is incomplete.`);
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalChecklist?.length === 3, `${folder.name}/en.json: one checkpoint per stage and a complete final reveal are required.`);
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: final result must include percentage, best stage and free answer review.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result thresholds changed.`);
     fail(source.about?.howToPlay?.steps?.length === 3 && /40 varied questions/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About and How to Play must describe the expanded flow.`);
+    if (folder.name === "paramedic") {
+      const finalIds = source.stages[4].questions.map((question) => question.id);
+      const combinedVolume = sourceQuestions.find((question) => question.id === "paramedic-r3q3");
+      fail(JSON.stringify(finalIds) === JSON.stringify(["paramedic-r10q6", "paramedic-r10q1", "paramedic-r10q3", "paramedic-r10q2", "paramedic-r8q2", "paramedic-r10q4", "paramedic-r9q3", "paramedic-r9q6"]), "paramedic/en.json: Final Response rhythm changed.");
+      fail(combinedVolume?.question === "What is the combined recorded volume in millilitres?" && JSON.stringify(combinedVolume?.visual?.items) === JSON.stringify(["0.3 L", "450 mL", "250 mL", "?"]) && combinedVolume?.correct === 2, "paramedic/en.json: combined-volume question must require litre-to-millilitre conversion.");
+    }
+    if (folder.name === "nursing") {
+      const advancedNumeracy = sourceQuestions.find((question) => question.id === "nurse-r3q1");
+      fail(advancedNumeracy?.question === "A fluid total rises from 600 mL to 900 mL. By what percentage did it increase?" && JSON.stringify(advancedNumeracy?.answers) === JSON.stringify(["25%", "33%", "50%", "75%"]) && advancedNumeracy?.correct === 2, "nursing/en.json: Advanced numeracy replacement changed.");
+    }
+    if (folder.name === "midwifery") {
+      const antenatalChange = sourceQuestions.find((question) => question.id === "mid-r3q5");
+      fail(antenatalChange?.question === "Which change from an earlier antenatal visit is most important to report clearly?" && antenatalChange?.answers?.[3] === "The person was well earlier but is now dizzy and noticeably pale" && antenatalChange?.correct === 3 && antenatalChange?.category === "antenatal_wellbeing", "midwifery/en.json: antenatal-wellbeing replacement changed.");
+    }
   }
   if (folder.name === "idiom") {
     const targetMap = [

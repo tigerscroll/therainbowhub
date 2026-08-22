@@ -230,10 +230,10 @@
           "answers": [
             "Put gloves over them",
             "Wipe them on a dry towel",
-            "Wash with soap and water",
-            "Wait until the next break"
+            "Wait until the next break",
+            "Wash with soap and water"
           ],
-          "correct": 2,
+          "correct": 3,
           "category": "infection_safety",
           "explanation": "Soap and water are appropriate when hands are visibly soiled."
         },
@@ -292,11 +292,11 @@
           },
           "answers": [
             "35 minutes",
-            "45 minutes",
+            "85 minutes",
             "55 minutes",
-            "85 minutes"
+            "45 minutes"
           ],
-          "correct": 1,
+          "correct": 3,
           "category": "numeracy_measurement",
           "explanation": "There are 40 minutes to 10:00, then 5 more minutes to 10:05: 45 minutes total."
         }
@@ -656,41 +656,29 @@
         },
         {
           "id": "nurse-r3q1",
-          "question": "How many millilitres are in 1.5 litres?",
+          "question": "A fluid total rises from 600 mL to 900 mL. By what percentage did it increase?",
           "answers": [
-            "150 mL",
-            "1,050 mL",
-            "1,500 mL",
-            "15,000 mL"
+            "25%",
+            "33%",
+            "50%",
+            "75%"
           ],
           "correct": 2,
           "category": "numeracy_measurement",
-          "explanation": "One litre is 1,000 mL, so 1.5 litres is 1,500 mL."
+          "explanation": "The increase is 300 mL. Since 300 is half of the original 600 mL, the increase is 50%."
         },
         {
           "id": "nurse-r3q3",
-          "question": "A person drinks 300 mL, 250 mL and 200 mL. What is the total?",
-          "presentation": "sequence",
-          "visual": {
-            "items": [
-              "300 mL",
-              "250 mL",
-              "200 mL",
-              "?"
-            ],
-            "columns": 4,
-            "separator": "+",
-            "ariaLabel": "300 plus 250 plus 200 millilitres"
-          },
+          "question": "A fluid record shows 1.2 L intake and 450 mL recorded output. What is the numerical difference?",
           "answers": [
             "650 mL",
-            "700 mL",
+            "750 mL",
             "850 mL",
-            "750 mL"
+            "1,650 mL"
           ],
-          "correct": 3,
+          "correct": 1,
           "category": "numeracy_measurement",
-          "explanation": "300 + 250 + 200 equals 750 mL."
+          "explanation": "1.2 L is 1,200 mL. 1,200 − 450 = 750 mL."
         }
       ]
     },
@@ -747,16 +735,16 @@
         },
         {
           "id": "nurse-r3q4",
-          "question": "What is 25% of 200?",
+          "question": "A 1.5 L record is 40% complete. How many millilitres have been recorded?",
           "answers": [
-            "25",
-            "40",
-            "75",
-            "50"
+            "400 mL",
+            "500 mL",
+            "600 mL",
+            "750 mL"
           ],
-          "correct": 3,
+          "correct": 2,
           "category": "numeracy_measurement",
-          "explanation": "25% is one quarter, and one quarter of 200 is 50."
+          "explanation": "1.5 L is 1,500 mL. Forty per cent of 1,500 mL is 600 mL."
         },
         {
           "id": "nurse-r10q1",
@@ -867,7 +855,7 @@
     }
   ],
   "checkpoint": {
-    "nextPrefix": "NEXT CHALLENGE",
+    "nextPrefix": "NEXT EXAM SECTION",
     "adNote": "Short ad first — then continue.",
     "finalAdNote": "Short ad first — then see your result.",
     "finalBadge": "FINAL HANDOVER COMPLETE",
@@ -884,37 +872,37 @@
       {
         "badge": "WARD BRIEFING COMPLETE",
         "icon": "✓",
-        "title": "First care signals captured",
+        "title": "First exam section complete",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "1 of 5 sections complete."
       },
       {
         "badge": "BODY & OBSERVATIONS COMPLETE",
         "icon": "✓",
-        "title": "Clinical patterns mapped",
+        "title": "40% of the exam complete",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Two of five sections complete."
       },
       {
         "badge": "SAFETY & COMMUNICATION COMPLETE",
         "icon": "✓",
-        "title": "Care judgement sharpened",
+        "title": "More than halfway through",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Three of five exam sections complete."
       },
       {
         "badge": "PRIORITIES UNDER PRESSURE COMPLETE",
         "icon": "✓",
-        "title": "Your nursing profile is taking shape",
+        "title": "Final assessment next",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Four of five sections complete. Only the final assessment remains."
       },
       {
         "badge": "FINAL HANDOVER COMPLETE",
         "icon": "✓",
-        "title": "Final result calculated",
+        "title": "Entrance exam complete",
         "signal": "fixed",
-        "message": "Your 40 answers have been combined into the final result."
+        "message": "All five sections are complete. Your result is ready."
       }
     ]
   },
@@ -925,55 +913,55 @@
     "showStageResults": false,
     "showCurrentScore": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Nursing challenge",
+  "resultProgressLabel": "Nursing entrance exam",
     "resultProgressComplete": "{value}% complete",
     "currentScoreLabel": "CURRENT NURSING SCORE",
     "levelLabel": "ROUND",
     "scoreSuffix": "correct",
-    "journeyLabel": "NURSING CHALLENGE",
-    "kitchensCleared": "{value} / {total} challenges cleared",
-    "currentRank": "CURRENT LEVEL",
+  "journeyLabel": "NURSING ENTRANCE EXAM",
+    "kitchensCleared": "{value} / {total} exam sections complete",
+    "currentRank": "EXAM PROGRESS",
     "ranks": [
       {
         "afterStage": 0,
-        "label": "Challenge Started"
+        "label": "Entrance Exam Started"
       },
       {
         "afterStage": 5,
-        "label": "Challenge Complete"
+        "label": "Entrance Exam Complete"
       }
     ],
-    "unlockEyebrow": "NURSING CHALLENGE",
-    "unlockTitle": "A new challenge is ready",
-    "unlockCopy": "Your next challenge is waiting.",
-    "finalEyebrow": "YOUR NURSING SCORE",
-    "finalCareerTitle": "CHALLENGE COMPLETE",
+    "unlockEyebrow": "NURSING ENTRANCE EXAM",
+    "unlockTitle": "Your next exam section is ready",
+    "unlockCopy": "Continue to the next section of your entrance exam.",
+    "finalEyebrow": "YOUR NURSING ENTRANCE EXAM RESULT",
+    "finalCareerTitle": "ENTRANCE EXAM COMPLETE",
     "strongestLabel": "Strongest entrance area",
     "stages": [
       {
         "difficulty": "Foundation",
         "preAdBadge": "WARD BRIEFING COMPLETE",
-        "preAdTitle": "First care signals captured",
-        "preAdCopy": "Your first knowledge, safety and communication signals are being added to the assessment.",
+      "preAdTitle": "First exam section complete",
+      "preAdCopy": "1 of 5 sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "WARD BRIEFING COMPLETE",
         "resultBands": {
           "high": {
-            "title": "First care signals captured",
-            "insight": "Your first knowledge, safety and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           },
           "medium": {
-            "title": "First care signals captured",
-            "insight": "Your first knowledge, safety and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           },
           "low": {
-            "title": "First care signals captured",
-            "insight": "Your first knowledge, safety and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
           "title": "BODY & OBSERVATIONS",
           "difficulty": "DEVELOPING",
           "tagline": "Systems. Measurements. Meaningful change.",
@@ -983,27 +971,27 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "BODY & OBSERVATIONS COMPLETE",
-        "preAdTitle": "Clinical patterns mapped",
-        "preAdCopy": "Body-system and observation signals are now refining your nursing result.",
+      "preAdTitle": "40% of the exam complete",
+      "preAdCopy": "Two of five sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "BODY & OBSERVATIONS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Clinical patterns mapped",
-            "insight": "Body-system and observation signals are now refining your nursing result."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           },
           "medium": {
-            "title": "Clinical patterns mapped",
-            "insight": "Body-system and observation signals are now refining your nursing result."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           },
           "low": {
-            "title": "Clinical patterns mapped",
-            "insight": "Body-system and observation signals are now refining your nursing result."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "eyebrow": "NEXT EXAM SECTION · SKILLED",
           "title": "SAFETY & COMMUNICATION",
           "difficulty": "SKILLED",
           "tagline": "Infection prevention. Dignity. Clarity.",
@@ -1013,27 +1001,27 @@
       {
         "difficulty": "Skilled",
         "preAdBadge": "SAFETY & COMMUNICATION COMPLETE",
-        "preAdTitle": "Care judgement sharpened",
-        "preAdCopy": "Safety and person-centred communication choices are shaping your final result.",
+      "preAdTitle": "More than halfway through",
+      "preAdCopy": "Three of five exam sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "SAFETY & COMMUNICATION COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Care judgement sharpened",
-            "insight": "Safety and person-centred communication choices are shaping your final result."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           },
           "medium": {
-            "title": "Care judgement sharpened",
-            "insight": "Safety and person-centred communication choices are shaping your final result."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           },
           "low": {
-            "title": "Care judgement sharpened",
-            "insight": "Safety and person-centred communication choices are shaping your final result."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "eyebrow": "NEXT EXAM SECTION · ADVANCED",
           "title": "PRIORITIES UNDER PRESSURE",
           "difficulty": "ADVANCED",
           "tagline": "Competing needs. Calm decisions.",
@@ -1043,27 +1031,27 @@
       {
         "difficulty": "Advanced",
         "preAdBadge": "PRIORITIES UNDER PRESSURE COMPLETE",
-        "preAdTitle": "Your nursing profile is taking shape",
-        "preAdCopy": "Your prioritisation signals are mapped. Only the final handover remains.",
+      "preAdTitle": "Final assessment next",
+      "preAdCopy": "Four of five sections complete. Only the final assessment remains.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "PRIORITIES UNDER PRESSURE COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Your nursing profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final handover remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           },
           "medium": {
-            "title": "Your nursing profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final handover remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           },
           "low": {
-            "title": "Your nursing profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final handover remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
           "title": "FINAL HANDOVER",
           "difficulty": "FINAL ASSESSMENT",
           "tagline": "Trends. Safety. Integrated care judgement.",
@@ -1073,23 +1061,23 @@
       {
         "difficulty": "Final Assessment",
         "preAdBadge": "FINAL HANDOVER COMPLETE",
-        "preAdTitle": "YOUR NURSING RESULT IS READY",
-        "preAdCopy": "Your complete nursing score is ready to reveal.",
+      "preAdTitle": "NURSING ENTRANCE EXAM COMPLETE",
+      "preAdCopy": "All five sections are complete. Your result is ready to reveal.",
         "preAdButton": "See My Result",
         "resultIcon": "✓",
         "resultLabel": "FINAL HANDOVER COMPLETE",
         "resultBands": {
           "high": {
-            "title": "YOUR NURSING RESULT IS READY",
-            "insight": "Your complete nursing score is ready to reveal."
+          "title": "NURSING ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           },
           "medium": {
-            "title": "YOUR NURSING RESULT IS READY",
-            "insight": "Your complete nursing score is ready to reveal."
+          "title": "NURSING ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           },
           "low": {
-            "title": "YOUR NURSING RESULT IS READY",
-            "insight": "Your complete nursing score is ready to reveal."
+          "title": "NURSING ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           }
         },
         "preAdChecks": [

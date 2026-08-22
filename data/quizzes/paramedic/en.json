@@ -23,12 +23,12 @@
             "🦴"
           ],
           "answers": [
-            "Lungs",
             "Heart",
+            "Lungs",
             "Brain",
             "Bones"
           ],
-          "correct": 1,
+          "correct": 0,
           "category": "anatomy_physiology",
           "explanation": "The heart contracts to move blood through the circulation."
         },
@@ -149,11 +149,11 @@
           "question": "Four sealed packs hold five dressings each. How many dressings are there?",
           "answers": [
             "9",
-            "20",
+            "25",
             "15",
-            "25"
+            "20"
           ],
-          "correct": 1,
+          "correct": 3,
           "category": "numeracy_measurement",
           "explanation": "Four groups of five contain 20 items in total."
         }
@@ -191,10 +191,10 @@
           "answers": [
             "Digestive system",
             "Skeletal system",
-            "Nervous system",
-            "Urinary system"
+            "Urinary system",
+            "Nervous system"
           ],
-          "correct": 2,
+          "correct": 3,
           "category": "anatomy_physiology",
           "explanation": "The brain, spinal cord and nerves form the communication network of the nervous system."
         },
@@ -470,17 +470,17 @@
         },
         {
           "id": "paramedic-r7q1",
-          "question": "Who needs attention first?",
-          "context": "Person A has ankle pain, is comfortable and speaks normally. Person B is suddenly confused, breathing rapidly and looks pale.",
+          "question": "Which new information should change the response most?",
+          "context": "The scene was initially reported as safe. A second update says smoke is now entering the room and the nearest exit is becoming difficult to use.",
           "answers": [
-            "Person B, because several new signs suggest sudden deterioration",
-            "Person A, because pain always comes first",
-            "Both can wait until every form is completed",
-            "Whichever person is standing closest"
+            "The original report that the scene was safe",
+            "The developing smoke and threatened exit route",
+            "The time the first report was written",
+            "The number of words in the update"
           ],
-          "correct": 0,
+          "correct": 1,
           "category": "reasoning_priorities",
-          "explanation": "Person B has combined breathing, circulation and mental-status changes that require immediate attention."
+          "explanation": "The new hazard changes the immediate risk picture, so the developing smoke and threatened exit route take priority."
         },
         {
           "id": "paramedic-r7q2",
@@ -507,18 +507,18 @@
         },
         {
           "id": "paramedic-r3q3",
-          "question": "What is the combined recorded volume?",
+          "question": "What is the combined recorded volume in millilitres?",
           "presentation": "sequence",
           "visual": {
             "items": [
-              "300 mL",
+              "0.3 L",
               "450 mL",
               "250 mL",
               "?"
             ],
             "columns": 4,
             "separator": "+",
-            "ariaLabel": "300 plus 450 plus 250 millilitres"
+            "ariaLabel": "0.3 litres plus 450 millilitres plus 250 millilitres"
           },
           "answers": [
             "900 mL",
@@ -528,20 +528,20 @@
           ],
           "correct": 2,
           "category": "numeracy_measurement",
-          "explanation": "300 + 450 + 250 equals 1,000 mL."
+          "explanation": "0.3 L is 300 mL; 300 + 450 + 250 equals 1,000 mL."
         },
         {
           "id": "paramedic-r3q4",
-          "question": "What is 30% of 200?",
+          "question": "A 500 mL record is 70% complete. How many millilitres have been recorded?",
           "answers": [
-            "30",
-            "40",
-            "50",
-            "60"
+            "300 mL",
+            "325 mL",
+            "350 mL",
+            "400 mL"
           ],
-          "correct": 3,
+          "correct": 2,
           "category": "numeracy_measurement",
-          "explanation": "Thirty per cent of 200 is 0.30 × 200, which equals 60."
+          "explanation": "70% of 500 mL is 0.70 × 500 = 350 mL."
         }
       ]
     },
@@ -573,47 +573,6 @@
           "explanation": "Person B has multiple time-sensitive signs across several systems, making them the clear priority."
         },
         {
-          "id": "paramedic-r10q3",
-          "question": "0.65 L + 350 mL = ?",
-          "reasoningSteps": 2,
-          "answers": [
-            "415 mL",
-            "1,000 mL",
-            "650 mL",
-            "3,565 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement",
-          "explanation": "0.65 L is 650 mL; 650 + 350 equals 1,000 mL."
-        },
-        {
-          "id": "paramedic-r8q2",
-          "question": "What is 25% of 80?",
-          "answers": [
-            "10",
-            "15",
-            "25",
-            "20"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement",
-          "explanation": "Twenty-five per cent is one quarter, and one quarter of 80 is 20."
-        },
-        {
-          "id": "paramedic-r9q3",
-          "question": "What total distance belongs in the record?",
-          "context": "INCIDENT RECORD — One access route measures 0.4 km. A second section measures 250 m. Write the combined distance in metres.",
-          "answers": [
-            "650 m",
-            "290 m",
-            "400 m",
-            "4,250 m"
-          ],
-          "correct": 0,
-          "category": "numeracy_measurement",
-          "explanation": "0.4 km is 400 m; adding 250 m gives a combined distance of 650 m."
-        },
-        {
           "id": "paramedic-r10q1",
           "question": "If shallow breathing reduces gas exchange, what downstream effect follows most directly?",
           "presentation": "sequence",
@@ -638,6 +597,20 @@
           "correct": 1,
           "category": "anatomy_physiology",
           "explanation": "Reduced gas exchange means less oxygen enters the blood, so less can reach working tissues."
+        },
+        {
+          "id": "paramedic-r10q3",
+          "question": "0.65 L + 350 mL = ?",
+          "reasoningSteps": 2,
+          "answers": [
+            "415 mL",
+            "1,000 mL",
+            "650 mL",
+            "3,565 mL"
+          ],
+          "correct": 1,
+          "category": "numeracy_measurement",
+          "explanation": "0.65 L is 650 mL; 650 + 350 equals 1,000 mL."
         },
         {
           "id": "paramedic-r10q2",
@@ -666,6 +639,19 @@
           "explanation": "The breathing rate rises across checks while alertness falls, producing a clear worsening pattern."
         },
         {
+          "id": "paramedic-r8q2",
+          "question": "A 1.2 L total is divided equally across four recorded periods. How much belongs to each period?",
+          "answers": [
+            "250 mL",
+            "300 mL",
+            "350 mL",
+            "400 mL"
+          ],
+          "correct": 1,
+          "category": "numeracy_measurement",
+          "explanation": "1.2 L is 1,200 mL. Dividing 1,200 by four gives 300 mL."
+        },
+        {
           "id": "paramedic-r10q4",
           "question": "What is the safest response to the combined hazards?",
           "context": "INCIDENT RECORD — An aggressive person is throwing objects near the entrance. Equipment partly blocks the nearest exit route.",
@@ -679,6 +665,20 @@
           "correct": 0,
           "category": "scene_safety",
           "explanation": "Thrown objects and a blocked exit create immediate danger; increase distance, use a safer route and communicate the hazard."
+        },
+        {
+          "id": "paramedic-r9q3",
+          "question": "What total distance belongs in the record?",
+          "context": "INCIDENT RECORD — One access route measures 0.4 km. A second section measures 250 m. Write the combined distance in metres.",
+          "answers": [
+            "650 m",
+            "290 m",
+            "400 m",
+            "4,250 m"
+          ],
+          "correct": 0,
+          "category": "numeracy_measurement",
+          "explanation": "0.4 km is 400 m; adding 250 m gives a combined distance of 650 m."
         },
         {
           "id": "paramedic-r9q6",
@@ -698,7 +698,7 @@
     }
   ],
   "checkpoint": {
-    "nextPrefix": "NEXT CHALLENGE",
+    "nextPrefix": "NEXT EXAM SECTION",
     "adNote": "Short ad first — then continue.",
     "finalAdNote": "Short ad first — then see your result.",
     "finalBadge": "FINAL RESPONSE COMPLETE",
@@ -715,37 +715,37 @@
       {
         "badge": "DISPATCH BRIEFING COMPLETE",
         "icon": "✓",
-        "title": "First response signals captured",
+        "title": "First exam section complete",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "1 of 5 sections complete."
       },
       {
         "badge": "BODY & SIGNALS COMPLETE",
         "icon": "✓",
-        "title": "Clinical clues mapped",
+        "title": "40% of the exam complete",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Two of five sections complete."
       },
       {
         "badge": "SCENE & COMMUNICATION COMPLETE",
         "icon": "✓",
-        "title": "Scene judgement sharpened",
+        "title": "More than halfway through",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Three of five exam sections complete."
       },
       {
         "badge": "DECISIONS UNDER PRESSURE COMPLETE",
         "icon": "✓",
-        "title": "Your response profile is taking shape",
+        "title": "Final assessment next",
         "signal": "fixed",
-        "message": "Eight new signals have been added to your result."
+        "message": "Four of five sections complete. Only the final assessment remains."
       },
       {
         "badge": "FINAL RESPONSE COMPLETE",
         "icon": "✓",
-        "title": "Final result calculated",
+        "title": "Entrance exam complete",
         "signal": "fixed",
-        "message": "Your 40 answers have been combined into the final result."
+        "message": "All five sections are complete. Your result is ready."
       }
     ]
   },
@@ -916,55 +916,55 @@
     "showStageResults": false,
     "showCurrentScore": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Rapid-response assessment",
+  "resultProgressLabel": "Paramedic entrance exam",
     "resultProgressComplete": "{value}% complete",
     "currentScoreLabel": "CURRENT RESPONSE SCORE",
     "levelLabel": "ROUND",
     "scoreSuffix": "correct",
-    "journeyLabel": "RAPID-RESPONSE ASSESSMENT",
-    "kitchensCleared": "{value} / {total} challenges cleared",
-    "currentRank": "CURRENT LEVEL",
+  "journeyLabel": "PARAMEDIC ENTRANCE EXAM",
+    "kitchensCleared": "{value} / {total} exam sections complete",
+    "currentRank": "EXAM PROGRESS",
     "ranks": [
       {
         "afterStage": 0,
-        "label": "Challenge Started"
+        "label": "Entrance Exam Started"
       },
       {
         "afterStage": 5,
-        "label": "Challenge Complete"
+        "label": "Entrance Exam Complete"
       }
     ],
-    "unlockEyebrow": "RAPID-RESPONSE ASSESSMENT",
-    "unlockTitle": "A new challenge is ready",
-    "unlockCopy": "Your next challenge is waiting.",
-    "finalEyebrow": "YOUR PARAMEDIC SCORE",
-    "finalCareerTitle": "CHALLENGE COMPLETE",
+    "unlockEyebrow": "PARAMEDIC ENTRANCE EXAM",
+    "unlockTitle": "Your next exam section is ready",
+    "unlockCopy": "Continue to the next section of your entrance exam.",
+    "finalEyebrow": "YOUR PARAMEDIC ENTRANCE EXAM RESULT",
+    "finalCareerTitle": "ENTRANCE EXAM COMPLETE",
     "strongestLabel": "Strongest entrance area",
     "stages": [
       {
         "difficulty": "Foundation",
         "preAdBadge": "DISPATCH BRIEFING COMPLETE",
-        "preAdTitle": "First response signals captured",
-        "preAdCopy": "Your first safety, observation and communication signals are being added to the assessment.",
+      "preAdTitle": "First exam section complete",
+      "preAdCopy": "1 of 5 sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "DISPATCH BRIEFING COMPLETE",
         "resultBands": {
           "high": {
-            "title": "First response signals captured",
-            "insight": "Your first safety, observation and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           },
           "medium": {
-            "title": "First response signals captured",
-            "insight": "Your first safety, observation and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           },
           "low": {
-            "title": "First response signals captured",
-            "insight": "Your first safety, observation and communication signals are being added to the assessment."
+          "title": "First exam section complete",
+          "insight": "1 of 5 sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
           "title": "BODY & SIGNALS",
           "difficulty": "DEVELOPING",
           "tagline": "Systems. Trends. Vital clues.",
@@ -974,27 +974,27 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "BODY & SIGNALS COMPLETE",
-        "preAdTitle": "Clinical clues mapped",
-        "preAdCopy": "Body-system and observation signals are now refining your response profile.",
+      "preAdTitle": "40% of the exam complete",
+      "preAdCopy": "Two of five sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "BODY & SIGNALS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Clinical clues mapped",
-            "insight": "Body-system and observation signals are now refining your response profile."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           },
           "medium": {
-            "title": "Clinical clues mapped",
-            "insight": "Body-system and observation signals are now refining your response profile."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           },
           "low": {
-            "title": "Clinical clues mapped",
-            "insight": "Body-system and observation signals are now refining your response profile."
+          "title": "40% of the exam complete",
+          "insight": "Two of five sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "eyebrow": "NEXT EXAM SECTION · SKILLED",
           "title": "SCENE & COMMUNICATION",
           "difficulty": "SKILLED",
           "tagline": "Hazards. Dignity. Clear handover.",
@@ -1004,27 +1004,27 @@
       {
         "difficulty": "Skilled",
         "preAdBadge": "SCENE & COMMUNICATION COMPLETE",
-        "preAdTitle": "Scene judgement sharpened",
-        "preAdCopy": "Safety, privacy and communication choices are shaping your final assessment.",
+      "preAdTitle": "More than halfway through",
+      "preAdCopy": "Three of five exam sections complete.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "SCENE & COMMUNICATION COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Scene judgement sharpened",
-            "insight": "Safety, privacy and communication choices are shaping your final assessment."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           },
           "medium": {
-            "title": "Scene judgement sharpened",
-            "insight": "Safety, privacy and communication choices are shaping your final assessment."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           },
           "low": {
-            "title": "Scene judgement sharpened",
-            "insight": "Safety, privacy and communication choices are shaping your final assessment."
+          "title": "More than halfway through",
+          "insight": "Three of five exam sections complete."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "eyebrow": "NEXT EXAM SECTION · ADVANCED",
           "title": "DECISIONS UNDER PRESSURE",
           "difficulty": "ADVANCED",
           "tagline": "Competing clues. Calm priorities.",
@@ -1034,27 +1034,27 @@
       {
         "difficulty": "Advanced",
         "preAdBadge": "DECISIONS UNDER PRESSURE COMPLETE",
-        "preAdTitle": "Your response profile is taking shape",
-        "preAdCopy": "Your prioritisation signals are mapped. Only the final response challenge remains.",
+      "preAdTitle": "Final assessment next",
+      "preAdCopy": "Four of five sections complete. Only the final assessment remains.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "DECISIONS UNDER PRESSURE COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Your response profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final response challenge remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           },
           "medium": {
-            "title": "Your response profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final response challenge remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           },
           "low": {
-            "title": "Your response profile is taking shape",
-            "insight": "Your prioritisation signals are mapped. Only the final response challenge remains."
+          "title": "Final assessment next",
+          "insight": "Four of five sections complete. Only the final assessment remains."
           }
         },
         "next": {
-          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
           "title": "FINAL RESPONSE",
           "difficulty": "FINAL ASSESSMENT",
           "tagline": "Trends. Safety. Integrated judgement.",
@@ -1064,23 +1064,23 @@
       {
         "difficulty": "Final Assessment",
         "preAdBadge": "FINAL RESPONSE COMPLETE",
-        "preAdTitle": "YOUR PARAMEDIC RESULT IS READY",
-        "preAdCopy": "Your complete response score is ready to reveal.",
+      "preAdTitle": "PARAMEDIC ENTRANCE EXAM COMPLETE",
+      "preAdCopy": "All five sections are complete. Your result is ready to reveal.",
         "preAdButton": "See My Result",
         "resultIcon": "✓",
         "resultLabel": "FINAL RESPONSE COMPLETE",
         "resultBands": {
           "high": {
-            "title": "YOUR PARAMEDIC RESULT IS READY",
-            "insight": "Your complete response score is ready to reveal."
+          "title": "PARAMEDIC ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           },
           "medium": {
-            "title": "YOUR PARAMEDIC RESULT IS READY",
-            "insight": "Your complete response score is ready to reveal."
+          "title": "PARAMEDIC ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           },
           "low": {
-            "title": "YOUR PARAMEDIC RESULT IS READY",
-            "insight": "Your complete response score is ready to reveal."
+          "title": "PARAMEDIC ENTRANCE EXAM COMPLETE",
+          "insight": "All five sections are complete. Your result is ready to reveal."
           }
         },
         "preAdChecks": [

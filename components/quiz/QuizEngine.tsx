@@ -128,6 +128,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
   const isVeryDenseSequence = question.presentation === "sequence" && visual.items.length >= 7;
   const isFourStepSequence = question.presentation === "sequence" && visual.items.length === 4;
+  const isSixStepSequence = question.presentation === "sequence" && visual.items.length === 6;
   const isTextualCode = question.presentation === "code"
     && visual.items.some((item) => /[A-Za-z]/.test(item));
   const codeRows = question.presentation === "code"
@@ -147,7 +148,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isWordSequence ? " quiz-engine__visual--word-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isVeryDenseSequence ? " quiz-engine__visual--very-dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${isTextualCode ? " quiz-engine__visual--textual-code" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}${isObservationBoard ? " quiz-engine__visual--observation-board" : ""}${isKeyValueBoard ? " quiz-engine__visual--key-value-board" : ""}`}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isWordSequence ? " quiz-engine__visual--word-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isVeryDenseSequence ? " quiz-engine__visual--very-dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${isSixStepSequence ? " quiz-engine__visual--six-step-sequence" : ""}${isTextualCode ? " quiz-engine__visual--textual-code" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}${isObservationBoard ? " quiz-engine__visual--observation-board" : ""}${isKeyValueBoard ? " quiz-engine__visual--key-value-board" : ""}`}
       style={visualStyle}
     >
       {visual.items.map((item, index) => (

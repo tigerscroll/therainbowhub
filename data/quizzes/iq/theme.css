@@ -372,6 +372,20 @@
   }
   [data-quiz-theme="iq"] .quiz-engine__visual--very-dense-sequence > span:nth-child(4) > i { display: none; }
 
+  [data-quiz-theme="iq"] .quiz-engine__visual--six-step-sequence.quiz-engine__visual--six-step-sequence {
+    --quiz-visual-gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--quiz-visual-gap);
+    row-gap: 9px;
+  }
+  [data-quiz-theme="iq"] .quiz-engine__visual--six-step-sequence > span > strong {
+    min-height: 44px;
+    padding: 5px 3px;
+    font-size: clamp(.82rem, 4vw, 1rem);
+    white-space: nowrap;
+  }
+  [data-quiz-theme="iq"] .quiz-engine__visual--six-step-sequence > span:nth-child(3) > i { display: none; }
+
   /* Textual code panels favour full-width, readable rows instead of narrow
      cells. Exact strings never split at arbitrary characters. */
   [data-quiz-theme="iq"] .quiz-engine__visual--code.quiz-engine__visual--code {
