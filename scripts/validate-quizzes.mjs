@@ -176,11 +176,16 @@ for (const folder of folders) {
   )), `${folder.name}/en.json: the first four checkpoints must use the shared progress-only Continue flow.`);
   fail(source.career?.stages?.[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final checkpoint may use the three-row result checklist.`);
   fail(source.checkpoint?.reveals?.length === 5, `${folder.name}/en.json: the shared shell requires one checkpoint reveal per stage.`);
+  fail(JSON.stringify(source.checkpoint?.reveals?.map((reveal) => [reveal.title, reveal.message])) === JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])), `${folder.name}/en.json: checkpoint reveals must mirror the visible stage progression.`);
   fail(typeof source.landing?.socialProof === "string" && source.landing.socialProof.trim(), `${folder.name}/en.json: configurable social-proof copy is required.`);
   fail(typeof source.landing?.cta === "string" && source.landing.cta.trim(), `${folder.name}/en.json: configurable landing CTA copy is required.`);
   fail(JSON.stringify(Object.keys(source.landing ?? {}).sort()) === JSON.stringify(["cta", "intro", "socialProof"]), `${folder.name}/en.json: landing content may contain only intro, social proof and CTA copy.`);
   fail(source.landing?.startNote === undefined && source.landing?.startPrompt === undefined, `${folder.name}/en.json: rewarded Start helper copy must come from the shared template.`);
   fail(sourceQuestions.every((question) => question.explanation === undefined), `${folder.name}/en.json: question explanations are no longer supported.`);
+  fail(sourceQuestions.every((question) => (
+    question.visual?.columns === undefined
+      || (Number.isInteger(question.visual.columns) && question.visual.columns >= 1 && question.visual.columns <= 8)
+  )), `${folder.name}/en.json: visual.columns must be an integer from 1 to 8.`);
   fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: incorrect-answer review must be free.`);
   if (config.engine?.scoring === "correct-answer") {
     fail(sourceQuestions.every((question) => (
@@ -197,6 +202,33 @@ for (const folder of folders) {
       return positions;
     }, [0, 0, 0, 0]);
     fail(JSON.stringify(sharedPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: shared 40-question quizzes must balance A/B/C/D at 10 each.`);
+    const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
+    const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
+    fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
+  }
+  const entranceExamLabels = {
+    oxford: "OXFORD",
+    cambridge: "CAMBRIDGE",
+    harvard: "HARVARD",
+    nursing: "NURSING",
+    paramedic: "PARAMEDIC",
+    midwifery: "MIDWIFERY",
+    chef: "CHEF",
+  };
+  if (folder.name in entranceExamLabels) {
+    const label = entranceExamLabels[folder.name];
+    const titles = ["First exam section complete", "Second exam section complete", "More than halfway through", "Final assessment next", `${label} ENTRANCE EXAM COMPLETE`];
+    const copy = ["Good start. The next section is ready.", "The next section raises the difficulty.", "The advanced section is next.", "Only the final section remains.", "Your result is ready to reveal."];
+    const eyebrows = ["NEXT EXAM SECTION · DEVELOPING", "NEXT EXAM SECTION · SKILLED", "NEXT EXAM SECTION · ADVANCED", "NEXT EXAM SECTION · FINAL ASSESSMENT"];
+    fail(source.career?.journeyLabel === `${label} ENTRANCE EXAM` && source.career?.currentRank === "EXAM PROGRESS", `${folder.name}/en.json: entrance-exam journey labels changed.`);
+    fail(JSON.stringify(source.career?.ranks) === JSON.stringify([{ afterStage: 0, label: "Entrance Exam Started" }, { afterStage: 5, label: "Entrance Exam Complete" }]), `${folder.name}/en.json: entrance-exam ranks changed.`);
+    fail(source.career?.unlockTitle === "Your next exam section is ready" && source.career?.unlockCopy === "Continue when you’re ready.", `${folder.name}/en.json: entrance-exam unlock copy changed.`);
+    fail(source.career?.finalCareerTitle === `${label} ENTRANCE EXAM COMPLETE` && source.career?.finalEyebrow === `YOUR ${label} ENTRANCE EXAM RESULT`, `${folder.name}/en.json: final entrance-exam labels changed.`);
+    fail(JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])) === JSON.stringify(titles.map((title, index) => [title, copy[index]])), `${folder.name}/en.json: entrance-exam checkpoint progression changed.`);
+    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.eyebrow)) === JSON.stringify(eyebrows), `${folder.name}/en.json: entrance-exam next-section eyebrows changed.`);
+    fail(source.checkpoint?.nextPrefix === "NEXT EXAM SECTION", `${folder.name}/en.json: entrance-exam nextPrefix changed.`);
+    fail(JSON.stringify(source.checkpoint?.reveals?.map((reveal) => [reveal.title, reveal.message])) === JSON.stringify(titles.map((title, index) => [title, copy[index]])), `${folder.name}/en.json: entrance-exam reveals must mirror the visible checkpoint copy.`);
+    fail(JSON.stringify(source.checkpoint?.finalChecklist) === JSON.stringify(["40 answers checked", "Skill breakdown prepared", "Final score calculated"]), `${folder.name}/en.json: entrance-exam final checklist changed.`);
   }
   if (folder.name === "years-left") {
     const expectedStages = ["Everyday Rhythm", "Fuel & Movement", "Rest & Resilience", "Connection & Choices", "Final Prediction"];
@@ -230,12 +262,13 @@ for (const folder of folders) {
     fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Estimate", "years-left/en.json: final gate changed.");
     fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showStageResults === false, "years-left/en.json: persistent progress-only stage shell is required.");
     fail(source.career?.showCurrentScore === false && source.career?.showResultProgress === true, "years-left/en.json: results must show macro progress without a misleading correctness score.");
-    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => [stage.preAdTitle, stage.preAdCopy, stage.preAdButton])) === JSON.stringify([
-      ["Daily rhythm captured", "Your routine and everyday habits are now shaping the estimate.", "Continue"],
-      ["Energy patterns captured", "Food, energy and movement choices have sharpened your lifestyle picture.", "Continue"],
-      ["Recovery patterns mapped", "Sleep, stress and recovery signals have now been added.", "Continue"],
-      ["Your estimate is taking shape", "Connection and everyday choices are mapped. Only the final prediction remains.", "Continue"],
-    ]), "years-left/en.json: progress checkpoints must build the estimate without revealing intermediate results.");
+    fail(JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])) === JSON.stringify([
+      ["Your daily rhythm is in", "Your everyday habits have started shaping the estimate."],
+      ["Your lifestyle picture is sharpening", "Food and movement are now in the calculation."],
+      ["Recovery patterns added", "Sleep, stress and recovery have shifted the picture."],
+      ["Your estimate is almost ready", "One final prediction round remains."],
+      ["YOUR ESTIMATE IS READY", "Your prediction is complete."],
+    ]), "years-left/en.json: prediction checkpoint progression changed.");
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, "years-left/en.json: only the final estimate gate may show checklist rows.");
     fail(source.checkpoint?.adNote === "Short ad first — then continue." && source.checkpoint?.finalAdNote === "Short ad first — then see your estimate.", "years-left/en.json: rewarded checkpoint helper copy changed.");
     fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next?.button === "Continue"), "years-left/en.json: all intermediate stage CTAs must use Continue.");
@@ -253,27 +286,12 @@ for (const folder of folders) {
       [0, 2, 1, 3, 2, 0, 3, 1],
       [1, 3, 0, 2, 3, 1, 2, 0],
     ];
-    const expectedIntermediateBands = [
-      {
-        high: ["Recall Ignited", "You captured the opening details with sharp, confident recall."],
-        medium: ["Memory Warm-Up Complete", "Several opening details stuck, while a few slipped away."],
-        low: ["First Signal Captured", "The opening round found useful clues about what captures your attention."],
-      },
-      {
-        high: ["Detail Detective", "Colours, positions and object order stayed impressively clear."],
-        medium: ["Visual Signals Captured", "Some colours, positions and object order stayed clear, while finer details proved trickier."],
-        low: ["Detail Profile Building", "The visual round exposed the details most likely to slip past unnoticed."],
-      },
-      {
-        high: ["Pattern Keeper", "You held and manipulated number patterns with excellent control."],
-        medium: ["Numbers Held Strong", "You held several number and sequence clues correctly, while the harder manipulations added pressure."],
-        low: ["Working Memory Stretched", "The number round stretched your working memory and added a useful new signal."],
-      },
-      {
-        high: ["Trap Breaker", "You separated similar clues and retrieved older details under interference."],
-        medium: ["Interference Resisted", "You recovered several older details despite the similar clues and interference."],
-        low: ["Recall Under Pressure", "The traps were demanding, but completing them strengthened your overall profile."],
-      },
+    const expectedMemoryCheckpoints = [
+      ["Quick Recall complete", "The next round adds pictures and detail."],
+      ["Visual recall cleared", "Numbers and working memory are next."],
+      ["More than halfway through", "The Memory Trap is next."],
+      ["Final memory challenge next", "One last round will test what still stuck."],
+      ["MEMORY TEST COMPLETE", "Your memory result is ready to reveal."],
     ];
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: English Memory must use the staged independent-locale flow.`);
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
@@ -299,15 +317,10 @@ for (const folder of folders) {
     fail(source.career?.resultProgressLabel === "Memory challenge" && source.career?.resultProgressComplete === "{value}% complete", `${folder.name}/en.json: compact Memory progress copy changed.`);
     fail(source.career?.stages?.length === 5 && JSON.stringify(source.career.stages.map((stage) => stage.difficulty)) === JSON.stringify(["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"]), `${folder.name}/en.json: Memory difficulty progression changed.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next) && source.career?.stages?.[4]?.next === undefined, `${folder.name}/en.json: Memory needs four next-challenge teasers and no final teaser.`);
-    fail(source.career?.stages?.slice(0, 4).every((stage, index) => ["high", "medium", "low"].every((band) => stage.resultBands?.[band]?.title === expectedIntermediateBands[index][band][0] && stage.resultBands?.[band]?.insight === expectedIntermediateBands[index][band][1])), `${folder.name}/en.json: approved Memory result-band copy changed.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage, index) => ["high", "medium", "low"].every((band) => stage.resultBands?.[band]?.title === expectedMemoryCheckpoints[index][0] && stage.resultBands?.[band]?.insight === expectedMemoryCheckpoints[index][1])), `${folder.name}/en.json: approved Memory checkpoint copy changed.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final Memory result gate may use checklist rows.`);
-    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => [stage.preAdTitle, stage.preAdCopy, stage.preAdButton])) === JSON.stringify([
-      ["Quick Recall captured", "Your first recall patterns have been added. Keep going to sharpen the result.", "Continue"],
-      ["Visual patterns captured", "Colours, positions and details are now shaping your memory result.", "Continue"],
-      ["Working memory mapped", "Number, order and manipulation patterns have now been added.", "Continue"],
-      ["Your memory profile is taking shape", "Your resistance to interference is now mapped. Only the final challenge remains.", "Continue"],
-    ]), `${folder.name}/en.json: Memory checkpoints must build the result without revealing intermediate scores.`);
-    fail(source.career?.stages?.[4]?.preAdBadge === "FINAL MEMORY CHALLENGE COMPLETE" && source.career?.stages?.[4]?.preAdTitle === "YOUR MEMORY RESULT IS READY" && source.career?.stages?.[4]?.resultIcon === "🧠" && source.career?.stages?.[4]?.preAdCopy === undefined, `${folder.name}/en.json: the final Memory gate hierarchy changed.`);
+    fail(JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])) === JSON.stringify(expectedMemoryCheckpoints), `${folder.name}/en.json: Memory checkpoint progression changed.`);
+    fail(source.career?.stages?.[4]?.preAdBadge === "FINAL MEMORY CHALLENGE COMPLETE" && source.career?.stages?.[4]?.preAdTitle === "MEMORY TEST COMPLETE" && source.career?.stages?.[4]?.resultIcon === "🧠" && source.career?.stages?.[4]?.preAdCopy === "Your memory result is ready to reveal.", `${folder.name}/en.json: the final Memory gate hierarchy changed.`);
     fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.tagline)) === JSON.stringify(["Colours. Positions. Changes.", "Digits. Order. Working memory.", "Interference. Similar clues. Older memories.", "Delayed recall. Working memory. Final callbacks."]), `${folder.name}/en.json: Memory next-round taglines must describe the upcoming round.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.copy === undefined), `${folder.name}/en.json: compact Memory teasers must not add a second explanatory line.`);
     fail(source.career?.stages?.slice(0, 4).every((stage) => stage.next?.button === "Continue"), `${folder.name}/en.json: Memory next-round CTAs must use Continue.`);

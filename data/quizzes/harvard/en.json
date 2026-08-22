@@ -108,11 +108,11 @@
     "scoreSuffix": "correct",
     "journeyLabel": "HARVARD ENTRANCE EXAM",
     "kitchensCleared": "{value} sections complete",
-    "currentRank": "CURRENT LEVEL",
+    "currentRank": "EXAM PROGRESS",
     "ranks": [
       {
         "afterStage": 0,
-        "label": "Exam Started"
+        "label": "Entrance Exam Started"
       },
       {
         "afterStage": 5,
@@ -120,9 +120,9 @@
       }
     ],
     "unlockEyebrow": "ENTRANCE EXAM",
-    "unlockTitle": "The next section is ready",
-    "unlockCopy": "Continue when you are ready.",
-    "finalEyebrow": "YOUR ENTRANCE RESULT",
+    "unlockTitle": "Your next exam section is ready",
+    "unlockCopy": "Continue when you’re ready.",
+    "finalEyebrow": "YOUR HARVARD ENTRANCE EXAM RESULT",
     "finalCareerTitle": "HARVARD ENTRANCE EXAM COMPLETE",
     "strongestLabel": "Strongest entrance area",
     "stages": [
@@ -149,7 +149,7 @@
           }
         },
         "next": {
-          "eyebrow": "NEXT SECTION · DEVELOPING",
+          "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
           "title": "Evidence & Analysis",
           "difficulty": "Developing",
           "tagline": "Claims. Comparisons. Strong support.",
@@ -159,27 +159,27 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "EVIDENCE & ANALYSIS COMPLETE",
-        "preAdTitle": "Entrance exam progressing",
+        "preAdTitle": "Second exam section complete",
         "preAdCopy": "The next section raises the difficulty.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "EVIDENCE & ANALYSIS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Entrance exam progressing",
+            "title": "Second exam section complete",
             "insight": "The next section raises the difficulty."
           },
           "medium": {
-            "title": "Entrance exam progressing",
+            "title": "Second exam section complete",
             "insight": "The next section raises the difficulty."
           },
           "low": {
-            "title": "Entrance exam progressing",
+            "title": "Second exam section complete",
             "insight": "The next section raises the difficulty."
           }
         },
         "next": {
-          "eyebrow": "NEXT SECTION · SKILLED",
+          "eyebrow": "NEXT EXAM SECTION · SKILLED",
           "title": "Quantitative Decisions",
           "difficulty": "Skilled",
           "tagline": "Rates. Trade-offs. Resource choices.",
@@ -209,7 +209,7 @@
           }
         },
         "next": {
-          "eyebrow": "NEXT SECTION · ADVANCED",
+          "eyebrow": "NEXT EXAM SECTION · ADVANCED",
           "title": "The Case Room",
           "difficulty": "Advanced",
           "tagline": "Competing priorities. Hidden assumptions.",
@@ -239,7 +239,7 @@
           }
         },
         "next": {
-          "eyebrow": "NEXT SECTION · FINAL ASSESSMENT",
+          "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
           "title": "The Final Committee",
           "difficulty": "Final Assessment",
           "tagline": "Multi-step evidence. Final strategic judgement.",
@@ -250,11 +250,11 @@
         "difficulty": "Final Assessment",
         "preAdBadge": "THE FINAL COMMITTEE COMPLETE",
         "preAdTitle": "HARVARD ENTRANCE EXAM COMPLETE",
-        "preAdCopy": "Your analytical result is ready to reveal.",
+        "preAdCopy": "Your result is ready to reveal.",
         "preAdChecks": [
           "40 answers checked",
-          "Final result calculated",
-          "Personal result ready"
+          "Skill breakdown prepared",
+          "Final score calculated"
         ],
         "preAdButton": "See My Result",
         "resultIcon": "🎓",
@@ -262,22 +262,22 @@
         "resultBands": {
           "high": {
             "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your analytical result is ready to reveal."
+            "insight": "Your result is ready to reveal."
           },
           "medium": {
             "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your analytical result is ready to reveal."
+            "insight": "Your result is ready to reveal."
           },
           "low": {
             "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your analytical result is ready to reveal."
+            "insight": "Your result is ready to reveal."
           }
         }
       }
     ]
   },
   "checkpoint": {
-    "nextPrefix": "NEXT SECTION",
+    "nextPrefix": "NEXT EXAM SECTION",
     "adNote": "Short ad first — then continue.",
     "finalAdNote": "Short ad first — then see your result.",
     "finalBadge": "HARVARD ENTRANCE EXAM COMPLETE",
@@ -287,8 +287,8 @@
     "finalButton": "See My Result",
     "finalChecklist": [
       "40 answers checked",
-      "Final result calculated",
-      "Personal result ready"
+      "Skill breakdown prepared",
+      "Final score calculated"
     ],
     "reveals": [
       {
@@ -301,7 +301,7 @@
       {
         "badge": "EVIDENCE & ANALYSIS COMPLETE",
         "icon": "✓",
-        "title": "Entrance exam progressing",
+        "title": "Second exam section complete",
         "signal": "fixed",
         "message": "The next section raises the difficulty."
       },
@@ -324,7 +324,7 @@
         "icon": "🎓",
         "title": "HARVARD ENTRANCE EXAM COMPLETE",
         "signal": "fixed",
-        "message": "Your analytical result is ready to reveal."
+        "message": "Your result is ready to reveal."
       }
     ]
   },
@@ -414,7 +414,7 @@
             "$50"
           ],
           "correct": 3,
-          "category": "analytical_reasoning"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s1q8",
@@ -426,7 +426,7 @@
             "Can it start tomorrow?"
           ],
           "correct": 1,
-          "category": "quantitative_reasoning"
+          "category": "evidence_judgement"
         }
       ]
     },
@@ -443,7 +443,7 @@
             "Project K succeeded"
           ],
           "correct": 0,
-          "category": "evidence_judgement"
+          "category": "analytical_reasoning"
         },
         {
           "id": "harvard-s2q2",
@@ -455,7 +455,7 @@
             "The survey has answers"
           ],
           "correct": 2,
-          "category": "decision_making"
+          "category": "evidence_judgement"
         },
         {
           "id": "harvard-s2q3",
@@ -467,7 +467,7 @@
             "One attendee's opinion"
           ],
           "correct": 1,
-          "category": "verbal_reasoning"
+          "category": "evidence_judgement"
         },
         {
           "id": "harvard-s2q4",
@@ -479,7 +479,7 @@
             "Demand has fallen steadily for four comparable periods"
           ],
           "correct": 3,
-          "category": "data_interpretation"
+          "category": "evidence_judgement"
         },
         {
           "id": "harvard-s2q5",
@@ -491,7 +491,7 @@
             "80%"
           ],
           "correct": 3,
-          "category": "analytical_reasoning"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s2q6",
@@ -503,7 +503,7 @@
             "The service felt slow"
           ],
           "correct": 1,
-          "category": "quantitative_reasoning"
+          "category": "evidence_judgement"
         },
         {
           "id": "harvard-s2q7",
@@ -527,7 +527,7 @@
             "Unusual"
           ],
           "correct": 0,
-          "category": "decision_making"
+          "category": "verbal_reasoning"
         }
       ]
     },
@@ -544,7 +544,7 @@
             "12"
           ],
           "correct": 1,
-          "category": "verbal_reasoning"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s3q2",
@@ -556,7 +556,7 @@
             "96"
           ],
           "correct": 0,
-          "category": "data_interpretation"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s3q3",
@@ -568,7 +568,7 @@
             "22"
           ],
           "correct": 3,
-          "category": "analytical_reasoning"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s3q4",
@@ -580,7 +580,7 @@
             "There is not enough information"
           ],
           "correct": 2,
-          "category": "quantitative_reasoning"
+          "category": "data_interpretation"
         },
         {
           "id": "harvard-s3q5",
@@ -592,7 +592,7 @@
             "12 days"
           ],
           "correct": 2,
-          "category": "evidence_judgement"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s3q6",
@@ -604,7 +604,7 @@
             "$8,000"
           ],
           "correct": 3,
-          "category": "decision_making"
+          "category": "quantitative_reasoning"
         },
         {
           "id": "harvard-s3q7",
@@ -616,7 +616,7 @@
             "D: 70/100"
           ],
           "correct": 0,
-          "category": "verbal_reasoning"
+          "category": "data_interpretation"
         },
         {
           "id": "harvard-s3q8",
@@ -645,7 +645,7 @@
             "Do neither"
           ],
           "correct": 0,
-          "category": "analytical_reasoning"
+          "category": "decision_making"
         },
         {
           "id": "harvard-s4q2",
@@ -657,7 +657,7 @@
             "Ana and Bo"
           ],
           "correct": 3,
-          "category": "quantitative_reasoning"
+          "category": "analytical_reasoning"
         },
         {
           "id": "harvard-s4q3",
@@ -669,7 +669,7 @@
             "The second wins both"
           ],
           "correct": 1,
-          "category": "evidence_judgement"
+          "category": "decision_making"
         },
         {
           "id": "harvard-s4q4",
@@ -681,7 +681,7 @@
             "The comparison is irrelevant"
           ],
           "correct": 2,
-          "category": "decision_making"
+          "category": "evidence_judgement"
         },
         {
           "id": "harvard-s4q5",
@@ -693,7 +693,7 @@
             "No, because value does not exceed cost"
           ],
           "correct": 3,
-          "category": "verbal_reasoning"
+          "category": "decision_making"
         },
         {
           "id": "harvard-s4q6",
@@ -717,7 +717,7 @@
             "The evidence proves everything"
           ],
           "correct": 0,
-          "category": "analytical_reasoning"
+          "category": "verbal_reasoning"
         },
         {
           "id": "harvard-s4q8",
@@ -729,7 +729,7 @@
             "D: $11k, benefit 10"
           ],
           "correct": 1,
-          "category": "quantitative_reasoning"
+          "category": "decision_making"
         }
       ]
     },
@@ -746,7 +746,7 @@
             "$200"
           ],
           "correct": 1,
-          "category": "evidence_judgement",
+          "category": "quantitative_reasoning",
           "reasoningSteps": 2
         },
         {
@@ -759,7 +759,7 @@
             "No project has an owner"
           ],
           "correct": 2,
-          "category": "decision_making",
+          "category": "analytical_reasoning",
           "reasoningSteps": 2
         },
         {
@@ -772,7 +772,7 @@
             "They tie"
           ],
           "correct": 3,
-          "category": "verbal_reasoning",
+          "category": "quantitative_reasoning",
           "reasoningSteps": 2
         },
         {
@@ -811,7 +811,7 @@
             "They are equal"
           ],
           "correct": 0,
-          "category": "quantitative_reasoning",
+          "category": "data_interpretation",
           "reasoningSteps": 2
         },
         {
@@ -824,7 +824,7 @@
             "They stay at 100"
           ],
           "correct": 1,
-          "category": "evidence_judgement",
+          "category": "data_interpretation",
           "reasoningSteps": 2
         },
         {

@@ -51,14 +51,13 @@
                 "category": { "type": "string", "minLength": 1 },
                 "delay": { "type": "integer", "minimum": 200, "maximum": 600 },
                 "correct": { "type": "integer", "minimum": 0 },
-                "explanation": { "type": "string", "minLength": 1 },
                 "reasoningSteps": { "type": "integer", "minimum": 1, "maximum": 4 },
                 "visual": {
                   "type": "object",
                   "required": ["items", "ariaLabel"],
                   "properties": {
                     "items": { "type": "array", "items": { "type": "string" }, "minItems": 1, "maxItems": 9 },
-                    "columns": { "type": "integer", "minimum": 2, "maximum": 3 },
+                    "columns": { "type": "integer", "minimum": 1, "maximum": 8 },
                     "separator": { "type": "string" },
                     "ariaLabel": { "type": "string", "minLength": 1 }
                   }

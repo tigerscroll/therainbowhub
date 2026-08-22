@@ -7,6 +7,7 @@ type SourceQuestion = {
   id: string;
   context?: string;
   presentation?: string;
+  category?: string;
   answers: string[];
   correct: number;
   explanation?: string;
@@ -49,11 +50,6 @@ test("university challenges keep the approved English-only five-stage contract",
     const manifest = JSON.parse(readFileSync(join(process.cwd(), "data", "quizzes", slug, "quiz.json"), "utf8"));
     const questions = quiz.stages.flatMap((stage) => stage.questions);
     const correctPositionCounts = [0, 1, 2, 3].map((position) => questions.filter((item) => item.correct === position).length);
-    const categories = questions.reduce<Record<string, number>>((counts, item: SourceQuestion & { category?: string }) => {
-      const category = item.category ?? "missing";
-      counts[category] = (counts[category] ?? 0) + 1;
-      return counts;
-    }, {});
 
     assert.equal(quiz.title, `Only 7% Pass This ${slug[0].toUpperCase()}${slug.slice(1)} Entrance Exam`);
     assert.equal(quiz.landing.cta, "Start Test");
@@ -76,19 +72,28 @@ test("university challenges keep the approved English-only five-stage contract",
     assert.ok(questions.every((item) => item.answers.length === 4 && new Set(item.answers).size === 4 && item.explanation === undefined));
     assert.ok(questions.filter((item) => item.visual).every((item) => item.visual!.ariaLabel.trim().length > 4));
     assert.deepEqual(correctPositionCounts, [10, 10, 10, 10]);
-    assert.deepEqual(Object.values(categories), [7, 7, 7, 7, 6, 6]);
+    assert.ok(questions.every((item) => item.category && item.category !== "missing"));
     assert.deepEqual(quiz.results.profiles.map((profile) => profile.min), [0.9, 0.8, 0.7, 0.6, 0.5, 0]);
     assert.ok(quiz.career.continuousShell);
     assert.ok(quiz.career.showResultProgress);
     assert.deepEqual(quiz.career.stages.slice(0, 4).map((stage) => stage.preAdTitle), [
       "First exam section complete",
-      "Entrance exam progressing",
+      "Second exam section complete",
       "More than halfway through",
       "Final assessment next",
     ]);
     assert.ok(quiz.career.stages.slice(0, 4).every((stage) => stage.preAdChecks === undefined));
     assert.equal(quiz.career.stages[4].preAdChecks?.length, 3);
   }
+});
+
+test("university result categories describe the skill each question actually tests", () => {
+  assert.equal(question("oxford", "oxford-s1q6").category, "quantitative_reasoning");
+  assert.equal(question("oxford", "oxford-s1q7").category, "spatial_reasoning");
+  assert.equal(question("harvard", "harvard-s3q1").category, "quantitative_reasoning");
+  assert.equal(question("harvard", "harvard-s3q7").category, "data_interpretation");
+  assert.equal(question("cambridge", "cambridge-s3q1").category, "numerical_reasoning");
+  assert.equal(question("cambridge", "cambridge-s3q5").category, "spatial_reasoning");
 });
 
 test("Oxford information-limit puzzle has multiple valid overlaps", () => {

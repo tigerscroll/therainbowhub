@@ -8,11 +8,11 @@
     "cta": "Start Quiz"
   },
   "about": {
-    "body": "This worldwide grammar quiz condenses practical editing into one focused ten-question challenge. It covers sentence structure, verb forms, punctuation, pronoun clarity, modifier placement and the judgement needed to improve real notices and short documents.\n\nThe challenge tests grammar shared across major standard-English varieties. It avoids spelling differences, optional punctuation styles, dialect traps and constructions where respected authorities accept more than one form, so every scored answer follows from the wording and register shown on screen.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the language patterns you recognised most confidently, not a formal measure of English proficiency, education or professional editing ability.",
+    "body": "This worldwide grammar quiz condenses practical editing into five increasingly difficult rounds and 40 questions. It covers sentence structure, verb forms, punctuation, pronoun clarity, modifier placement and the judgement needed to improve real notices and short documents.\n\nThe challenge tests grammar shared across major standard-English varieties. It avoids spelling differences, optional punctuation styles, dialect traps and constructions where respected authorities accept more than one form, so every scored answer follows from the wording and register shown on screen.\n\nYour final percentage reflects only the answers selected in this entertainment challenge. It is a playful snapshot of the language patterns you recognised most confidently, not a formal measure of English proficiency, education or professional editing ability.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Answer ten varied proofreading questions and choose the single option best supported by the sentence or document shown.",
+        "Answer 40 varied proofreading questions across five increasingly difficult rounds.",
         "Correct answers stay hidden while you play, so inspect every verb, reference and punctuation mark before the test moves on.",
         "Finish the challenge to reveal your Grammar Score, strongest skill and complete result report."
       ]
@@ -21,7 +21,7 @@
   },
   "checkpoint": {
     "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then your grammar result unlocks.",
+    "adNote": "Short ad first — then continue.",
     "finalBadge": "FINAL PROOF",
     "finalIcon": "✍️",
     "finalTitle": "Your result is ready",
@@ -29,46 +29,47 @@
     "finalButton": "See My Results",
     "finalChecklist": [
       "40 answers checked",
-      "Final result calculated",
-      "Personal result ready"
+      "Three grammar areas compared",
+      "Final score calculated"
     ],
     "reveals": [
       {
-        "badge": "FINAL PROOF READY",
+        "badge": "GRAMMAR CHECK-IN COMPLETE",
         "icon": "✍️",
-        "title": "Grammar score calculated",
+        "title": "First proof complete",
         "signal": "fixed",
-        "message": "All ten proofreading answers have been checked."
+        "message": "Good start. The next edit gets tougher."
       },
       {
-        "badge": "FINAL PROOF READY",
+        "badge": "SENTENCE BUILDER COMPLETE",
         "icon": "✍️",
-        "title": "Grammar score calculated",
+        "title": "The errors are getting subtler",
         "signal": "fixed",
-        "message": "All ten proofreading answers have been checked."
+        "message": "Precision Pass is next."
       },
       {
-        "badge": "FINAL PROOF READY",
+        "badge": "PRECISION PASS COMPLETE",
         "icon": "✍️",
-        "title": "Grammar score calculated",
+        "title": "More than halfway through",
         "signal": "fixed",
-        "message": "All ten proofreading answers have been checked."
+        "message": "The Grammar Trapdoors are next."
       },
       {
-        "badge": "FINAL PROOF READY",
+        "badge": "GRAMMAR TRAPDOORS COMPLETE",
         "icon": "✍️",
-        "title": "Grammar score calculated",
+        "title": "Final proof next",
         "signal": "fixed",
-        "message": "All ten proofreading answers have been checked."
+        "message": "One final editing round remains."
       },
       {
-        "badge": "FINAL PROOF READY",
+        "badge": "GRAMMAR CHALLENGE COMPLETE",
         "icon": "✍️",
-        "title": "Grammar score calculated",
+        "title": "GRAMMAR CHALLENGE COMPLETE",
         "signal": "fixed",
-        "message": "All ten proofreading answers have been checked."
+        "message": "Your grammar score is ready to reveal."
       }
-    ]
+    ],
+    "finalAdNote": "Short ad first — then see your result."
   },
   "results": {
     "name": "YOUR GRAMMAR SCORE",
@@ -112,26 +113,27 @@
     ],
     "dimensions": [
       {
-        "label": "Sentence building",
+        "label": "Structure and agreement",
         "categories": [
-          "sentence_building"
-        ]
-      },
-      {
-        "label": "Verbs and pronouns",
-        "categories": [
+          "sentence_structure",
+          "sentence_building",
+          "verbs_agreement",
           "verbs_pronouns"
         ]
       },
       {
-        "label": "Punctuation",
+        "label": "Punctuation and reference",
         "categories": [
-          "punctuation"
+          "punctuation",
+          "punctuation_apostrophes",
+          "pronouns_reference"
         ]
       },
       {
-        "label": "Precision",
+        "label": "Editing for meaning",
         "categories": [
+          "modifiers_word_choice",
+          "editing_context",
           "precision"
         ]
       }
@@ -157,17 +159,17 @@
         "targetRemaining": "More correct answers needed for 80%",
         "details": {
           "analysisTitle": "How to read your grammar score",
-          "analysisCopy": "This ten-question result combines sentence structure, agreement, punctuation, reference, modifier placement and editing judgement. Each answer moves the percentage by 2.5 points, so the skill pattern below adds useful context to the headline score.",
+          "analysisCopy": "This 40-question result combines sentence structure, agreement, punctuation, reference, modifier placement and editing judgement. Each answer moves the percentage by 2.5 points, so the skill pattern below adds useful context to the headline score.",
           "roadmapTitle": "Inside your full grammar report",
           "roadmapIntro": "Your score is only the opening line. Continue through the report to see which language patterns held strongest and which details created the hardest traps.",
           "roadmapItems": [
             "Score analysis",
             "Strongest grammar skill",
-            "Four-skill breakdown",
+            "Three-part breakdown",
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is eight correct answers out of ten. Your marker shows how close this attempt came to that entertainment-only pass line.",
+          "positionCopy": "The challenge target is 32 correct answers out of 40. Your marker shows how close this attempt came to that entertainment-only pass line.",
           "measuredTitle": "What this grammar test measured",
           "measuredIntro": "The questions deliberately mix three broad forms of language judgement instead of repeating a single textbook rule.",
           "measuredAreas": [
@@ -803,23 +805,23 @@
       {
         "difficulty": "Foundation",
         "preAdBadge": "GRAMMAR CHECK-IN COMPLETE",
-        "preAdTitle": "First section complete",
-        "preAdCopy": "Good start. The next section is ready.",
+        "preAdTitle": "First proof complete",
+        "preAdCopy": "Good start. The next edit gets tougher.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "GRAMMAR CHECK-IN COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Grammar Check-In Standout",
-            "insight": "A sharp performance added a strong signal to your result."
+            "title": "First proof complete",
+            "insight": "Good start. The next edit gets tougher."
           },
           "medium": {
-            "title": "Grammar Check-In Complete",
-            "insight": "A balanced performance moved your challenge forward."
+            "title": "First proof complete",
+            "insight": "Good start. The next edit gets tougher."
           },
           "low": {
-            "title": "Grammar Check-In Captured",
-            "insight": "This section exposed useful areas to build on."
+            "title": "First proof complete",
+            "insight": "Good start. The next edit gets tougher."
           }
         },
         "next": {
@@ -833,23 +835,23 @@
       {
         "difficulty": "Developing",
         "preAdBadge": "SENTENCE BUILDER COMPLETE",
-        "preAdTitle": "Challenge progressing",
-        "preAdCopy": "The next section raises the difficulty.",
+        "preAdTitle": "The errors are getting subtler",
+        "preAdCopy": "Precision Pass is next.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "SENTENCE BUILDER COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Sentence Builder Standout",
-            "insight": "A sharp performance added a strong signal to your result."
+            "title": "The errors are getting subtler",
+            "insight": "Precision Pass is next."
           },
           "medium": {
-            "title": "Sentence Builder Complete",
-            "insight": "A balanced performance moved your challenge forward."
+            "title": "The errors are getting subtler",
+            "insight": "Precision Pass is next."
           },
           "low": {
-            "title": "Sentence Builder Captured",
-            "insight": "This section exposed useful areas to build on."
+            "title": "The errors are getting subtler",
+            "insight": "Precision Pass is next."
           }
         },
         "next": {
@@ -864,22 +866,22 @@
         "difficulty": "Skilled",
         "preAdBadge": "PRECISION PASS COMPLETE",
         "preAdTitle": "More than halfway through",
-        "preAdCopy": "The advanced section is next.",
+        "preAdCopy": "The Grammar Trapdoors are next.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "PRECISION PASS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Precision Pass Standout",
-            "insight": "A sharp performance added a strong signal to your result."
+            "title": "More than halfway through",
+            "insight": "The Grammar Trapdoors are next."
           },
           "medium": {
-            "title": "Precision Pass Complete",
-            "insight": "A balanced performance moved your challenge forward."
+            "title": "More than halfway through",
+            "insight": "The Grammar Trapdoors are next."
           },
           "low": {
-            "title": "Precision Pass Captured",
-            "insight": "This section exposed useful areas to build on."
+            "title": "More than halfway through",
+            "insight": "The Grammar Trapdoors are next."
           }
         },
         "next": {
@@ -893,23 +895,23 @@
       {
         "difficulty": "Advanced",
         "preAdBadge": "GRAMMAR TRAPDOORS COMPLETE",
-        "preAdTitle": "Final assessment next",
-        "preAdCopy": "Only the final section remains.",
+        "preAdTitle": "Final proof next",
+        "preAdCopy": "One final editing round remains.",
         "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "GRAMMAR TRAPDOORS COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Grammar Trapdoors Standout",
-            "insight": "A sharp performance added a strong signal to your result."
+            "title": "Final proof next",
+            "insight": "One final editing round remains."
           },
           "medium": {
-            "title": "Grammar Trapdoors Complete",
-            "insight": "A balanced performance moved your challenge forward."
+            "title": "Final proof next",
+            "insight": "One final editing round remains."
           },
           "low": {
-            "title": "Grammar Trapdoors Captured",
-            "insight": "This section exposed useful areas to build on."
+            "title": "Final proof next",
+            "insight": "One final editing round remains."
           }
         },
         "next": {
@@ -926,26 +928,27 @@
         "preAdTitle": "GRAMMAR CHALLENGE COMPLETE",
         "preAdChecks": [
           "40 answers checked",
-          "Final result calculated",
-          "Personal result ready"
+          "Three grammar areas compared",
+          "Final score calculated"
         ],
         "preAdButton": "See My Result",
         "resultIcon": "✓",
         "resultLabel": "FINAL PROOF COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Final Proof Standout",
-            "insight": "A sharp performance added a strong signal to your result."
+            "title": "GRAMMAR CHALLENGE COMPLETE",
+            "insight": "Your grammar score is ready to reveal."
           },
           "medium": {
-            "title": "Final Proof Complete",
-            "insight": "A balanced performance moved your challenge forward."
+            "title": "GRAMMAR CHALLENGE COMPLETE",
+            "insight": "Your grammar score is ready to reveal."
           },
           "low": {
-            "title": "Final Proof Captured",
-            "insight": "This section exposed useful areas to build on."
+            "title": "GRAMMAR CHALLENGE COMPLETE",
+            "insight": "Your grammar score is ready to reveal."
           }
-        }
+        },
+        "preAdCopy": "Your grammar score is ready to reveal."
       }
     ]
   }

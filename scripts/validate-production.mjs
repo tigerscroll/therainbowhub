@@ -168,6 +168,10 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 }
 
 const quizRoot = path.join(rootDir, "data", "quizzes");
+const existingThemeGeometrySlugs = new Set([
+  "cambridge", "chef", "grammar", "harvard", "iq", "mechanic", "memory",
+  "midwifery", "nursing", "oxford", "paramedic", "vision", "years-left",
+]);
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
   const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
@@ -254,6 +258,13 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
 
     if (targetsProtectedContainer && forcesProtectedGeometry) {
       addError(`Quiz themes cannot force landing/About width or alignment outside the shared site rule: ${themeRelativePath}`);
+      break;
+    }
+
+    const targetsSharedFlow = /\.quiz-engine__(?:continuous-shell|question-shell|progress-head|progress|checkpoint|stage-result|results|career-final|primary|social)(?![-\w])/.test(selector);
+    const declaresSharedGeometry = /(?:^|;)\s*(?:display|position|inset|width|min-width|max-width|height|min-height|max-height|margin(?:-[\w-]+)?|padding(?:-[\w-]+)?|gap|row-gap|column-gap|grid-template(?:-[\w-]+)?|flex(?:-[\w-]+)?|align-(?:items|content|self)|justify-(?:items|content|self)|border-radius|overflow(?:-[xy])?)\s*:/i.test(declarations);
+    if (!existingThemeGeometrySlugs.has(entry.name) && targetsSharedFlow && declaresSharedGeometry) {
+      addError(`New quiz themes may style the shared flow visually but cannot redefine its geometry: ${themeRelativePath}`);
       break;
     }
   }
