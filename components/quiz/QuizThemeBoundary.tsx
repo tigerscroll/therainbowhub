@@ -1,14 +1,16 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import type { QuizTheme } from "@/lib/quizzes";
+import { quizShellContractCss } from "@/components/quiz/quizShellContract";
 
 type QuizThemeBoundaryProps = {
   children: ReactNode;
+  continuousShell?: boolean;
   customCss?: string;
   theme: QuizTheme;
 };
 
-export function QuizThemeBoundary({ children, customCss, theme }: QuizThemeBoundaryProps) {
+export function QuizThemeBoundary({ children, continuousShell = false, customCss, theme }: QuizThemeBoundaryProps) {
   const variables = {
     "--quiz-page": theme.colors.page,
     "--quiz-page-alt": theme.colors.pageAlt,
@@ -28,11 +30,13 @@ export function QuizThemeBoundary({ children, customCss, theme }: QuizThemeBound
   return (
     <>
       {customCss ? <style data-quiz-css={theme.id}>{customCss}</style> : null}
+      {continuousShell ? <style data-quiz-shell-contract>{quizShellContractCss}</style> : null}
       <div
         className="quiz-theme"
         data-heading={theme.typography.heading}
         data-landing-layout={theme.layout.landing}
         data-question-layout={theme.layout.questions}
+        data-quiz-flow={continuousShell ? "continuous" : "standard"}
         data-quiz-theme={theme.id}
         data-result-layout={theme.layout.results}
         data-shadow={theme.effects.shadow}

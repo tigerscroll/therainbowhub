@@ -1091,6 +1091,9 @@
 /* Palette lock — kept last so the brighter graphite and gold controls win over
    the legacy visual layers above. */
 [data-quiz-theme="years-left"] {
+  --quiz-flow-background: radial-gradient(circle at 50% -8%, rgba(221, 174, 93, .2), transparent 38%), linear-gradient(180deg, rgba(57, 53, 63, .99), rgba(38, 35, 44, .995));
+  --quiz-flow-next-background: rgba(255, 247, 226, .075);
+  --quiz-flow-next-border: rgba(255, 239, 204, .15);
   background:
     radial-gradient(ellipse at 50% 3%, rgba(218, 173, 96, .2), transparent 35%),
     radial-gradient(ellipse at 10% 68%, rgba(111, 149, 118, .15), transparent 32%),

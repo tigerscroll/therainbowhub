@@ -9,20 +9,24 @@ type SourceQuestion = {
   presentation?: string;
   answers: string[];
   correct: number;
-  explanation: string;
+  explanation?: string;
   visual?: { items: string[]; columns?: number; ariaLabel: string };
 };
 
 type SourceQuiz = {
   title: string;
-  landing: { cta: string };
+  landing: { cta: string; startNote?: string };
   about: { disclaimer: string };
   results: { profiles: Array<{ min: number }>; score: { disclaimer: string } };
-  stages: Array<{ questions: SourceQuestion[] }>;
+  career: {
+    continuousShell: boolean;
+    showResultProgress: boolean;
+    stages: Array<{ preAdTitle: string; preAdChecks?: string[] }>;
+  };
+  stages: Array<{ title: string; questions: SourceQuestion[] }>;
 };
 
 const slugs = ["oxford", "cambridge", "harvard"] as const;
-const disclaimer = "Independent entertainment challenge inspired by admissions-style reasoning. Not an official university admissions test and not affiliated with Oxford, Cambridge or Harvard.";
 
 function source(slug: typeof slugs[number]) {
   return JSON.parse(readFileSync(join(process.cwd(), "data", "quizzes", slug, "en.json"), "utf8")) as SourceQuiz;
@@ -34,77 +38,96 @@ function question(slug: typeof slugs[number], id: string) {
   return found;
 }
 
-test("university challenges keep the approved English-only ten-question contract", () => {
+test("university challenges keep the approved English-only five-stage contract", () => {
+  const expectedStages = {
+    oxford: ["Tutorial Foundations", "Evidence & Argument", "Logic at the Board", "Interview Trapdoors", "The Final Tutorial"],
+    cambridge: ["College Foundations", "Patterns & Proof", "Scientific Reasoning", "Supervision Challenge", "The Final Assessment"],
+    harvard: ["Admissions Briefing", "Evidence & Analysis", "Quantitative Decisions", "The Case Room", "The Final Committee"],
+  };
   for (const slug of slugs) {
     const quiz = source(slug);
     const manifest = JSON.parse(readFileSync(join(process.cwd(), "data", "quizzes", slug, "quiz.json"), "utf8"));
     const questions = quiz.stages.flatMap((stage) => stage.questions);
-    const presentations = questions.map((item) => item.presentation ?? "text");
     const correctPositionCounts = [0, 1, 2, 3].map((position) => questions.filter((item) => item.correct === position).length);
+    const categories = questions.reduce<Record<string, number>>((counts, item: SourceQuestion & { category?: string }) => {
+      const category = item.category ?? "missing";
+      counts[category] = (counts[category] ?? 0) + 1;
+      return counts;
+    }, {});
 
     assert.equal(quiz.title, `Only 7% Pass This ${slug[0].toUpperCase()}${slug.slice(1)} Entrance Exam`);
     assert.equal(quiz.landing.cta, "Start Test");
-    assert.equal(quiz.about.disclaimer, disclaimer);
-    assert.equal(quiz.results.score.disclaimer, disclaimer);
-    assert.equal(manifest.engine.flow, "linear");
+    assert.equal(quiz.landing.startNote, undefined);
+    assert.match(quiz.about.disclaimer, new RegExp(`Not an official ${slug}`, "i"));
+    assert.equal(quiz.results.score.disclaimer, quiz.about.disclaimer);
+    assert.equal(manifest.engine.flow, "staged");
     assert.equal(manifest.engine.localeParity, "independent");
     assert.equal(manifest.engine.targetRatio, 0.8);
-    assert.equal(quiz.stages.length, 1);
-    assert.equal(questions.length, 10);
-    assert.equal(new Set(questions.map((item) => item.id)).size, 10);
-    assert.ok(questions.every((item) => item.answers.length === 4 && item.explanation.trim().length > 30));
-    assert.ok(questions.filter((item) => item.visual).every((item) => item.visual!.ariaLabel.trim().length > 20));
-    assert.ok(new Set(presentations).size >= 4);
-    assert.ok(presentations.every((value, index) => index < 2 || value !== presentations[index - 1] || value !== presentations[index - 2]));
-    assert.equal(new Set(presentations.slice(7)).size, 3);
-    assert.deepEqual(correctPositionCounts, [3, 3, 2, 2]);
+    assert.equal(manifest.engine.rewarded.start, true);
+    assert.equal(manifest.engine.rewarded.stages, true);
+    assert.equal(manifest.engine.rewarded.confirmStart, false);
+    assert.deepEqual(manifest.theme.layout, { landing: "split", questions: "card", results: "immersive" });
+    assert.equal(manifest.theme.artwork.landing, undefined);
+    assert.equal(quiz.stages.length, 5);
+    assert.deepEqual(quiz.stages.map((stage) => stage.title), expectedStages[slug]);
+    assert.ok(quiz.stages.every((stage) => stage.questions.length === 8));
+    assert.equal(questions.length, 40);
+    assert.equal(new Set(questions.map((item) => item.id)).size, 40);
+    assert.ok(questions.every((item) => item.answers.length === 4 && new Set(item.answers).size === 4 && item.explanation === undefined));
+    assert.ok(questions.filter((item) => item.visual).every((item) => item.visual!.ariaLabel.trim().length > 4));
+    assert.deepEqual(correctPositionCounts, [10, 10, 10, 10]);
+    assert.deepEqual(Object.values(categories), [7, 7, 7, 7, 6, 6]);
     assert.deepEqual(quiz.results.profiles.map((profile) => profile.min), [0.9, 0.8, 0.7, 0.6, 0.5, 0]);
-    assert.match(questions[7].context ?? "", /^Q8 — ADMISSIONS LEVEL/);
-    assert.match(questions[8].context ?? "", /^Q9 — FINAL SHORTLIST/);
-    assert.match(questions[9].context ?? "", /^Q10 — FINAL ASSESSMENT/);
+    assert.ok(quiz.career.continuousShell);
+    assert.ok(quiz.career.showResultProgress);
+    assert.deepEqual(quiz.career.stages.slice(0, 4).map((stage) => stage.preAdTitle), [
+      "First exam section complete",
+      "Entrance exam progressing",
+      "More than halfway through",
+      "Final assessment next",
+    ]);
+    assert.ok(quiz.career.stages.slice(0, 4).every((stage) => stage.preAdChecks === undefined));
+    assert.equal(quiz.career.stages[4].preAdChecks?.length, 3);
   }
 });
 
 test("Oxford information-limit puzzle has multiple valid overlaps", () => {
-  const q5 = question("oxford", "oxford-q5");
-  const minimumOverlap = Math.max(0, 60 + 55 - 100);
-  const maximumOverlap = Math.min(60, 55);
-  assert.equal(minimumOverlap, 15);
-  assert.equal(maximumOverlap, 55);
+  const q5 = question("oxford", "oxford-s2q2");
+  const minimumOverlap = Math.max(0, 70 + 50 - 100);
+  const maximumOverlap = Math.min(70, 50);
+  assert.equal(minimumOverlap, 20);
+  assert.equal(maximumOverlap, 50);
   assert.ok(maximumOverlap > minimumOverlap);
   assert.equal(q5.answers[q5.correct], "It cannot be determined");
 });
 
-test("Cambridge spatial shift rotates around the 3x3 centre before moving down", () => {
-  const q7 = question("cambridge", "cambridge-q7");
-  const start = { row: -1, column: 0 };
-  const rotated = { row: start.column, column: -start.row };
-  const moved = { row: rotated.row + 1, column: rotated.column };
-  assert.deepEqual(rotated, { row: 0, column: 1 });
-  assert.deepEqual(moved, { row: 1, column: 1 });
-  assert.equal(q7.visual?.items.length, 9);
-  assert.equal(q7.visual?.columns, 3);
-  assert.equal(q7.answers[q7.correct], "Bottom-right");
+test("Cambridge final movement cancels the vertical displacement", () => {
+  const q5 = question("cambridge", "cambridge-s5q5");
+  const start = { north: 0, east: 0 };
+  const finish = { north: start.north + 2 - 2, east: start.east + 3 };
+  assert.deepEqual(finish, { north: 0, east: 3 });
+  assert.equal(q5.answers[q5.correct], "Three east");
 });
 
 test("Cambridge instrument finale applies the raw rule and calibration separately", () => {
-  const q10 = question("cambridge", "cambridge-q10");
-  const nextRaw = 46 * 2 + 2;
-  const display = (nextRaw - 14) / 4;
-  assert.equal(nextRaw, 94);
-  assert.equal(display, 20);
-  assert.equal(q10.answers[q10.correct], "20");
+  const q7 = question("cambridge", "cambridge-s5q7");
+  const originalTrue = 26 - 2;
+  const nextTrue = originalTrue - 5;
+  const nextDisplay = nextTrue + 2;
+  assert.equal(originalTrue, 24);
+  assert.equal(nextDisplay, 21);
+  assert.equal(q7.answers[q7.correct], "21");
 });
 
-test("Harvard committee finale resolves the intentional tie with evidence", () => {
-  const q10 = question("harvard", "harvard-q10");
+test("Harvard committee finale applies threshold before cost", () => {
+  const q8 = question("harvard", "harvard-s5q8");
   const proposals = [
-    { id: "A", impact: 9, feasibility: 6, evidence: 8 },
-    { id: "B", impact: 8, feasibility: 8, evidence: 7 },
-    { id: "C", impact: 7, feasibility: 9, evidence: 9 },
-  ].map((proposal) => ({ ...proposal, score: 2 * proposal.impact + proposal.feasibility + proposal.evidence }));
-  const winner = proposals.toSorted((a, b) => b.score - a.score || b.evidence - a.evidence)[0];
-  assert.deepEqual(proposals.map(({ id, score }) => [id, score]), [["A", 32], ["B", 31], ["C", 32]]);
+    { id: "A", cost: 9, score: 14 },
+    { id: "B", cost: 12, score: 16 },
+    { id: "C", cost: 10, score: 15 },
+    { id: "D", cost: 8, score: 13 },
+  ];
+  const winner = proposals.filter((proposal) => proposal.score >= 15).toSorted((a, b) => a.cost - b.cost)[0];
   assert.equal(winner.id, "C");
-  assert.equal(q10.answers[q10.correct], "Proposal C");
+  assert.equal(q8.answers[q8.correct], "C");
 });

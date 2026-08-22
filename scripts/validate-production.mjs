@@ -77,6 +77,10 @@ requireFile("app/not-found.tsx");
 requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
 requireFile("scripts/prepare-quiz-assets.mjs");
+requireFile("docs/shared-quiz-contract.md");
+for (let index = 1; index <= 50; index += 1) {
+  requireFile(`public/social-proof/avatars/${String(index).padStart(2, "0")}.webp`);
+}
 
 const quizEngineCssPath = path.join(rootDir, "styles", "quiz-engine.css");
 const quizEngineCss = fs.readFileSync(quizEngineCssPath, "utf8");
@@ -112,6 +116,38 @@ const rewardedStartContract = [
 for (const declaration of rewardedStartContract) {
   if (!quizEngineText.includes(declaration)) addError(`Direct rewarded-start contract is missing: ${declaration}`);
 }
+if (/quiz\.slug\s*={2,3}|quiz\.slug\s*!={1,2}/.test(quizEngineText)) {
+  addError("QuizEngine cannot contain slug-specific runtime branches; quiz differences must remain data/theme driven.");
+}
+
+const packageJson = JSON.parse(fs.readFileSync(path.join(rootDir, "package.json"), "utf8"));
+for (const command of ["node scripts/validate-quizzes.mjs", "node scripts/validate-production.mjs"]) {
+  if (!packageJson.scripts?.build?.includes(command)) {
+    addError(`Production build must run the shared quiz contract validator: ${command}`);
+  }
+}
+
+const quizTemplateText = fs.readFileSync(path.join(rootDir, "components", "QuizTemplate.tsx"), "utf8");
+const quizThemeBoundaryText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizThemeBoundary.tsx"), "utf8");
+const quizShellContractText = fs.readFileSync(path.join(rootDir, "components", "quiz", "quizShellContract.ts"), "utf8");
+const requiredContinuousShellContract = [
+  "continuousShell={quiz.career?.continuousShell === true}",
+  "data-quiz-flow={continuousShell ? \"continuous\" : \"standard\"}",
+  "<style data-quiz-shell-contract>{quizShellContractCss}</style>",
+  "--quiz-flow-width: 800px;",
+  "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
+  "width: min(100%, 520px) !important;",
+  "min-height: 56px !important;",
+  "border-radius: 999px !important;",
+  "width: calc(100vw - 16px) !important;",
+  "quiz-engine__primary-arrow",
+];
+const continuousShellSources = `${quizTemplateText}\n${quizThemeBoundaryText}\n${quizShellContractText}`;
+for (const declaration of requiredContinuousShellContract) {
+  if (!continuousShellSources.includes(declaration)) {
+    addError(`Shared continuous-shell contract is missing \`${declaration}\`.`);
+  }
+}
 
 const infoRoot = path.join(rootDir, "data", "info-pages");
 const referenceInfo = JSON.parse(fs.readFileSync(path.join(infoRoot, "en.json"), "utf8"));
@@ -134,6 +170,67 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 const quizRoot = path.join(rootDir, "data", "quizzes");
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
+  const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
+    .filter((file) => file.endsWith(".json") && file !== "quiz.json");
+  if (JSON.stringify(localeFiles.sort()) !== JSON.stringify(["en.json"])) {
+    addError(`Quiz content must be English-only: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
+  }
+  const englishContentPath = path.join(quizRoot, entry.name, "en.json");
+  const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
+  const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
+  if (JSON.stringify(quizConfig.theme?.layout) !== JSON.stringify({ landing: "split", questions: "card", results: "immersive" })) {
+    addError(`Quiz layout must use the shared landing/question/result template: data/quizzes/${entry.name}/quiz.json`);
+  }
+  if (quizConfig.theme?.artwork?.landing !== undefined) {
+    addError(`Landing artwork panels are not supported by the shared template: data/quizzes/${entry.name}/quiz.json`);
+  }
+  if (
+    quizConfig.engine?.flow !== "staged"
+    || quizConfig.engine?.startOnLoad !== false
+    || quizConfig.engine?.checkpoint !== "ai"
+    || quizConfig.engine?.advance !== "automatic"
+    || quizConfig.engine?.feedback !== "selection-only"
+    || quizConfig.engine?.advanceDelayMs !== 450
+    || quizConfig.engine?.rewarded?.start !== true
+    || quizConfig.engine?.rewarded?.stages !== true
+    || quizConfig.engine?.rewarded?.attempts !== 3
+    || quizConfig.engine?.rewarded?.confirmStart !== false
+  ) {
+    addError(`Quiz engine must use the shared five-stage rewarded flow: data/quizzes/${entry.name}/quiz.json`);
+  }
+  if (fs.existsSync(englishContentPath)) {
+    const englishContent = JSON.parse(fs.readFileSync(englishContentPath, "utf8"));
+    if (englishContent.stages?.length !== 5 || englishContent.stages.some((stage) => stage.questions?.length !== 8)) {
+      addError(`Every quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/en.json`);
+    }
+    if (
+      englishContent.career?.continuousShell !== true
+      || englishContent.career?.hideJourneyLength !== true
+      || englishContent.career?.showStageResults !== false
+      || englishContent.career?.showResultProgress !== true
+      || englishContent.career?.compactGate !== undefined
+    ) {
+      addError(`Every quiz must use the shared continuous progress-only shell: data/quizzes/${entry.name}/en.json`);
+    }
+    if (!englishContent.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && stage.preAdChecks === undefined && stage.next?.button === "Continue")) {
+      addError(`Every quiz must use the shared intermediate Continue checkpoint: data/quizzes/${entry.name}/en.json`);
+    }
+    if (englishContent.career?.stages?.[4]?.preAdChecks?.length !== 3) {
+      addError(`Every quiz must reserve its three-row result checklist for the final checkpoint: data/quizzes/${entry.name}/en.json`);
+    }
+    if (englishContent.stages?.flatMap((stage) => stage.questions ?? []).some((question) => question.explanation !== undefined)) {
+      addError(`Question explanations are forbidden by the shared quiz contract: data/quizzes/${entry.name}/en.json`);
+    }
+    if (!(typeof englishContent.landing?.cta === "string" && englishContent.landing.cta.trim())) {
+      addError(`Landing CTA copy must remain configurable and non-empty: data/quizzes/${entry.name}/en.json`);
+    }
+    if (!(typeof englishContent.landing?.socialProof === "string" && englishContent.landing.socialProof.trim())) {
+      addError(`Landing social proof must remain configurable and non-empty: data/quizzes/${entry.name}/en.json`);
+    }
+    if (JSON.stringify(Object.keys(englishContent.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro", "socialProof"])) {
+      addError(`Landing content may contain only intro, social proof and CTA copy: data/quizzes/${entry.name}/en.json`);
+    }
+  }
   const themeRelativePath = `data/quizzes/${entry.name}/theme.css`;
   const themePath = path.join(rootDir, themeRelativePath);
   requireFile(themeRelativePath);

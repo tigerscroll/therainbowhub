@@ -1,7 +1,7 @@
 {
   "title": "Only 7% Pass This Car Mechanic Quiz",
   "eyebrow": "PRECISION SERVICE BAY",
-  "summary": "Warning lights, engine faults, brakes, fluids and road symptoms get harder across 10 workshop rounds.",
+  "summary": "Warning lights, hidden faults and strange road symptoms test whether you can diagnose trouble before it gets expensive.",
   "landing": {
     "intro": "From warning lights to strange noises, prove you can find the fault before the repair bill arrives.",
     "socialProof": "81,000+ people played this",
@@ -27,43 +27,115 @@
     "finalCopy": "Every symptom and workshop answer has been checked. One final reveal remains.",
     "finalButton": "Reveal My Score",
     "finalChecklist": [
-      "Engine and fuel",
-      "Brakes and grip",
-      "Electrical systems",
-      "Cooling and fluids",
-      "Drivetrain and steering",
-      "Diagnosis and safety"
+      "40 answers checked",
+      "Final result calculated",
+      "Personal result ready"
     ],
     "reveals": [
-      { "title": "Dashboard decoded", "signal": "fixed", "message": "Your first vehicle-system signals are logged." },
-      { "title": "Engine bay mapped", "signal": "fixed", "message": "The way you identify components is now in the report." },
-      { "title": "Fluid checks logged", "signal": "fixed", "message": "Cooling, lubrication and hydraulic clues have been added." },
-      { "title": "Grip and braking assessed", "signal": "fixed", "message": "Your braking and tyre knowledge has been inspected." },
-      { "title": "Combustion sequence mapped", "signal": "strongest-dimension", "template": "Strongest workshop area so far: {value}." },
-      { "title": "Electrical circuit traced", "signal": "fixed", "message": "Starting, charging and circuit clues are now connected." },
-      { "title": "Road-feel diagnosis captured", "signal": "strongest-dimension", "template": "Current strongest system: {value}." },
-      { "title": "Pit stop complete", "signal": "fixed", "message": "Fast questions, same scoring. The safety checks are logged." },
-      { "title": "Customer symptoms narrowed", "signal": "fixed", "message": "Six final workshop diagnoses remain." },
-      { "title": "Workshop report ready", "signal": "fixed", "message": "All sixty answers have been processed." }
+      {
+        "title": "Dashboard decoded",
+        "signal": "fixed",
+        "message": "Your first vehicle-system signals are logged."
+      },
+      {
+        "title": "Engine bay mapped",
+        "signal": "fixed",
+        "message": "The way you identify components is now in the report."
+      },
+      {
+        "title": "Fluid checks logged",
+        "signal": "fixed",
+        "message": "Cooling, lubrication and hydraulic clues have been added."
+      },
+      {
+        "title": "Grip and braking assessed",
+        "signal": "fixed",
+        "message": "Your braking and tyre knowledge has been inspected."
+      },
+      {
+        "title": "Combustion sequence mapped",
+        "signal": "strongest-dimension",
+        "template": "Strongest workshop area so far: {value}."
+      }
     ]
   },
   "results": {
     "name": "YOUR MECHANIC SCORE",
     "profiles": [
-      { "min": 0.9, "tier": "90–100%", "title": "The Master Diagnostician", "copy": "You connected symptoms, systems and safety decisions with exceptional precision. Even the final multi-step faults rarely sent you down the wrong diagnostic path." },
-      { "min": 0.8, "tier": "80–89%", "title": "The Workshop Natural", "copy": "You read warning signs confidently and understood how the major vehicle systems work together. Your diagnostic instincts stayed reliable as the jobs became more demanding." },
-      { "min": 0.7, "tier": "70–79%", "title": "The Skilled Fault Finder", "copy": "You found most of the Service Bay’s important clues and handled a broad mix of systems well. A few specialist faults kept the workshop interesting." },
-      { "min": 0.6, "tier": "60–69%", "title": "The Practical Problem-Solver", "copy": "You have a useful map of everyday vehicle systems and a sensible approach to diagnosis. Your strongest rounds show where your hands-on knowledge really clicks." },
-      { "min": 0.5, "tier": "50–59%", "title": "The Hands-On Learner", "copy": "You identified a solid share of the workshop faults across very different systems. Some clues were familiar immediately, while others are ready for another look." },
-      { "min": 0, "tier": "Below 50%", "title": "The Curious Car Owner", "copy": "The Service Bay uncovered some knowledge gaps, but it also showed where your automotive instincts are strongest. Every missed fault is another useful clue to learn." }
+      {
+        "min": 0.9,
+        "tier": "90–100%",
+        "title": "The Master Diagnostician",
+        "copy": "You connected symptoms, systems and safety decisions with exceptional precision. Even the final multi-step faults rarely sent you down the wrong diagnostic path."
+      },
+      {
+        "min": 0.8,
+        "tier": "80–89%",
+        "title": "The Workshop Natural",
+        "copy": "You read warning signs confidently and understood how the major vehicle systems work together. Your diagnostic instincts stayed reliable as the jobs became more demanding."
+      },
+      {
+        "min": 0.7,
+        "tier": "70–79%",
+        "title": "The Skilled Fault Finder",
+        "copy": "You found most of the Service Bay’s important clues and handled a broad mix of systems well. A few specialist faults kept the workshop interesting."
+      },
+      {
+        "min": 0.6,
+        "tier": "60–69%",
+        "title": "The Practical Problem-Solver",
+        "copy": "You have a useful map of everyday vehicle systems and a sensible approach to diagnosis. Your strongest rounds show where your hands-on knowledge really clicks."
+      },
+      {
+        "min": 0.5,
+        "tier": "50–59%",
+        "title": "The Hands-On Learner",
+        "copy": "You identified a solid share of the workshop faults across very different systems. Some clues were familiar immediately, while others are ready for another look."
+      },
+      {
+        "min": 0,
+        "tier": "Below 50%",
+        "title": "The Curious Car Owner",
+        "copy": "The Service Bay uncovered some knowledge gaps, but it also showed where your automotive instincts are strongest. Every missed fault is another useful clue to learn."
+      }
     ],
     "dimensions": [
-      { "label": "Engine and fuel", "categories": ["engine_fuel"] },
-      { "label": "Brakes and grip", "categories": ["brakes_grip"] },
-      { "label": "Electrical systems", "categories": ["electrical"] },
-      { "label": "Cooling and fluids", "categories": ["cooling_fluids"] },
-      { "label": "Drivetrain and steering", "categories": ["drivetrain_steering"] },
-      { "label": "Diagnosis and safety", "categories": ["diagnosis_safety"] }
+      {
+        "label": "Engine and fuel",
+        "categories": [
+          "engine_fuel"
+        ]
+      },
+      {
+        "label": "Brakes and grip",
+        "categories": [
+          "brakes_grip"
+        ]
+      },
+      {
+        "label": "Electrical systems",
+        "categories": [
+          "electrical"
+        ]
+      },
+      {
+        "label": "Cooling and fluids",
+        "categories": [
+          "cooling_fluids"
+        ]
+      },
+      {
+        "label": "Drivetrain and steering",
+        "categories": [
+          "drivetrain_steering"
+        ]
+      },
+      {
+        "label": "Diagnosis and safety",
+        "categories": [
+          "diagnosis_safety"
+        ]
+      }
     ],
     "score": {
       "passed": "You passed the mechanic challenge!",
@@ -78,114 +150,775 @@
   },
   "stages": [
     {
-      "title": "Dashboard Decoded",
+      "title": "Dashboard & Engine Bay",
       "questions": [
-        { "id": "mech-r1q1", "question": "Which warning symbol most directly relates to engine oil pressure?", "presentation": "icons", "answers": ["Oil can", "Battery", "Thermometer", "Steering wheel"], "icons": ["/quizzes/mechanic/assets/icons/oil-pressure.svg", "/quizzes/mechanic/assets/icons/battery-warning.svg", "/quizzes/mechanic/assets/icons/coolant-warning.svg", "/quizzes/mechanic/assets/icons/steering-wheel.svg"], "correct": 0, "category": "engine_fuel", "explanation": "The oil-can symbol warns of an engine oil-pressure problem, which can quickly damage the engine." },
-        { "id": "mech-r1q2", "question": "A red brake warning stays on after the parking brake is released. What is the safest response?", "answers": ["Drive faster to test it", "Stop safely and have the brake system checked", "Pump the tyres harder", "Ignore it until the next service"], "correct": 1, "category": "brakes_grip", "explanation": "A persistent red brake warning may indicate a serious hydraulic or braking fault and should be checked before continuing." },
-        { "id": "mech-r1q3", "question": "The starter produces one solid click but does not turn the engine. Which is the most useful first check?", "answers": ["Engine coolant colour", "Tyre tread depth", "Battery charge and terminal connections", "Cabin air filter"], "correct": 2, "category": "electrical", "explanation": "A weak battery or poor terminal connection commonly causes a click without enough current to crank the engine." },
-        { "id": "mech-r1q4", "question": "The temperature warning turns red while driving. What should you do?", "answers": ["Open the coolant cap immediately", "Keep driving until power falls", "Pour cold water on the engine", "Stop safely, switch off and let the system cool"], "correct": 3, "category": "cooling_fluids", "explanation": "Stopping and allowing the system to cool reduces damage and burn risk; a hot pressurised cap must not be opened." },
-        { "id": "mech-r1q5", "question": "Which control changes the direction of the front wheels?", "presentation": "icons", "answers": ["Accelerator", "Parking brake", "Steering wheel", "Clutch pedal"], "icons": ["/quizzes/mechanic/assets/icons/accelerator-pedal.svg", "/quizzes/mechanic/assets/icons/parking-brake.svg", "/quizzes/mechanic/assets/icons/steering-wheel.svg", "/quizzes/mechanic/assets/icons/clutch-pedal.svg"], "correct": 2, "category": "drivetrain_steering", "explanation": "The steering wheel operates the steering system, which changes the angle of the road wheels." },
-        { "id": "mech-r1q6", "question": "Before inspecting any unfamiliar fault, what should come first?", "answers": ["Buying replacement parts", "Resetting every warning", "Running the engine harder", "Making the vehicle and work area safe"], "correct": 3, "category": "diagnosis_safety", "explanation": "Securing the vehicle and identifying hazards must come before diagnosis or repair." }
+        {
+          "id": "mech-r1q1",
+          "question": "Which warning symbol most directly relates to engine oil pressure?",
+          "presentation": "icons",
+          "answers": [
+            "Oil can",
+            "Battery",
+            "Thermometer",
+            "Steering wheel"
+          ],
+          "icons": [
+            "/quizzes/mechanic/assets/icons/oil-pressure.svg",
+            "/quizzes/mechanic/assets/icons/battery-warning.svg",
+            "/quizzes/mechanic/assets/icons/coolant-warning.svg",
+            "/quizzes/mechanic/assets/icons/steering-wheel.svg"
+          ],
+          "correct": 0,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r1q2",
+          "question": "A red brake warning stays on after the parking brake is released. What is the safest response?",
+          "answers": [
+            "Drive faster to test it",
+            "Stop safely and have the brake system checked",
+            "Pump the tyres harder",
+            "Ignore it until the next service"
+          ],
+          "correct": 1,
+          "category": "brakes_grip"
+        },
+        {
+          "id": "mech-r1q3",
+          "question": "The starter produces one solid click but does not turn the engine. Which is the most useful first check?",
+          "answers": [
+            "Engine coolant colour",
+            "Tyre tread depth",
+            "Battery charge and terminal connections",
+            "Cabin air filter"
+          ],
+          "correct": 2,
+          "category": "electrical"
+        },
+        {
+          "id": "mech-r1q4",
+          "question": "The temperature warning turns red while driving. What should you do?",
+          "answers": [
+            "Open the coolant cap immediately",
+            "Keep driving until power falls",
+            "Pour cold water on the engine",
+            "Stop safely, switch off and let the system cool"
+          ],
+          "correct": 3,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r1q5",
+          "question": "Which control changes the direction of the front wheels?",
+          "presentation": "icons",
+          "answers": [
+            "Accelerator",
+            "Parking brake",
+            "Steering wheel",
+            "Clutch pedal"
+          ],
+          "icons": [
+            "/quizzes/mechanic/assets/icons/accelerator-pedal.svg",
+            "/quizzes/mechanic/assets/icons/parking-brake.svg",
+            "/quizzes/mechanic/assets/icons/steering-wheel.svg",
+            "/quizzes/mechanic/assets/icons/clutch-pedal.svg"
+          ],
+          "correct": 2,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r1q6",
+          "question": "Before inspecting any unfamiliar fault, what should come first?",
+          "answers": [
+            "Buying replacement parts",
+            "Resetting every warning",
+            "Running the engine harder",
+            "Making the vehicle and work area safe"
+          ],
+          "correct": 3,
+          "category": "diagnosis_safety"
+        },
+        {
+          "id": "mech-r2q1",
+          "question": "Which sequence correctly describes air entering a typical combustion engine?",
+          "presentation": "sequence",
+          "visual": {
+            "items": [
+              "Air inlet",
+              "Filter",
+              "Intake system",
+              "Engine"
+            ],
+            "separator": "→",
+            "ariaLabel": "Air inlet, filter, intake system, engine"
+          },
+          "answers": [
+            "Filter → inlet → engine",
+            "Engine → filter → intake system",
+            "Inlet → filter → intake system → engine",
+            "Intake system → engine → filter"
+          ],
+          "correct": 2,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r2q2",
+          "question": "Which part cleans dust from the air before it reaches the engine?",
+          "answers": [
+            "Fuel injector",
+            "Radiator",
+            "Alternator",
+            "Air filter"
+          ],
+          "correct": 3,
+          "category": "engine_fuel"
+        }
       ]
     },
     {
-      "title": "Engine Bay Map",
+      "title": "Fluids, Brakes & Grip",
       "questions": [
-        { "id": "mech-r2q1", "question": "Which sequence correctly describes air entering a typical combustion engine?", "presentation": "sequence", "visual": { "items": ["Air inlet", "Filter", "Intake system", "Engine"], "separator": "→", "ariaLabel": "Air inlet, filter, intake system, engine" }, "answers": ["Filter → inlet → engine", "Engine → filter → intake system", "Inlet → filter → intake system → engine", "Intake system → engine → filter"], "correct": 2, "category": "engine_fuel", "explanation": "Incoming air normally travels through the inlet and filter, through the intake system and into the engine." },
-        { "id": "mech-r2q2", "question": "Which part cleans dust from the air before it reaches the engine?", "answers": ["Fuel injector", "Radiator", "Alternator", "Air filter"], "correct": 3, "category": "engine_fuel", "explanation": "The air filter traps dust and debris before intake air enters the engine." },
-        { "id": "mech-r2q3", "question": "Which component produces electrical power while a conventional engine is running?", "presentation": "icons", "answers": ["Alternator", "Starter motor", "Fuse", "Ignition key"], "icons": ["/quizzes/mechanic/assets/icons/alternator.svg", "/quizzes/mechanic/assets/icons/starter-motor.svg", "/quizzes/mechanic/assets/icons/fuse.svg", "🔑"], "correct": 0, "category": "electrical", "explanation": "The alternator supplies electrical power and recharges the 12-volt battery while the engine runs." },
-        { "id": "mech-r2q4", "question": "Where is engine coolant normally checked when the engine is cold?", "answers": ["Brake-fluid reservoir", "Coolant expansion reservoir", "Fuel tank", "Washer bottle"], "correct": 1, "category": "cooling_fluids", "explanation": "The marked coolant expansion reservoir provides a safe level check when the system is cold." },
-        { "id": "mech-r2q5", "question": "What is the radiator’s main job?", "answers": ["Lubricate the crankshaft", "Store brake fluid", "Transfer heat from coolant to the air", "Charge the battery"], "correct": 2, "category": "cooling_fluids", "explanation": "The radiator removes heat from circulating coolant by transferring it to passing air." },
-        { "id": "mech-r2q6", "question": "You find an unidentified puddle under a parked car. What is the best first step?", "answers": ["Taste the fluid", "Start replacing seals", "Drive until the level warning appears", "Note its location and colour without touching it"], "correct": 3, "category": "diagnosis_safety", "explanation": "Location and appearance provide useful clues without the danger of tasting or directly handling an unknown automotive fluid." }
+        {
+          "id": "mech-r3q1",
+          "question": "Which fluid primarily lubricates moving parts inside the engine?",
+          "answers": [
+            "Engine oil",
+            "Coolant",
+            "Brake fluid",
+            "Washer fluid"
+          ],
+          "correct": 0,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r3q2",
+          "question": "Why must a hot pressurised cooling-system cap remain closed?",
+          "answers": [
+            "It will erase fault codes",
+            "Escaping hot coolant and steam can cause severe burns",
+            "It drains the battery",
+            "It changes tyre pressure"
+          ],
+          "correct": 1,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r3q3",
+          "question": "The coolant level keeps falling but no puddle is visible. What does that suggest?",
+          "answers": [
+            "The tyres are underinflated",
+            "The alternator is overcharging",
+            "A leak may occur only when hot or internally",
+            "The air filter is blocked"
+          ],
+          "correct": 2,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r3q4",
+          "question": "Brake fluid has dropped below its marked minimum. What is the correct response?",
+          "answers": [
+            "Add engine oil",
+            "Dilute it with water",
+            "Ignore it if braking feels normal",
+            "Have the braking system inspected for wear or leakage"
+          ],
+          "correct": 3,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r3q5",
+          "question": "Thick black smoke from a combustion engine usually suggests what?",
+          "answers": [
+            "Too much fuel or too little air",
+            "Low washer fluid",
+            "A flat battery",
+            "A wheel-alignment fault"
+          ],
+          "correct": 0,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r3q6",
+          "question": "Brake fluid can damage paint. What should happen after a spill?",
+          "answers": [
+            "Leave it to evaporate",
+            "Follow the manufacturer’s safe clean-up guidance immediately",
+            "Spread it with a cloth",
+            "Warm the panel"
+          ],
+          "correct": 1,
+          "category": "brakes_grip"
+        },
+        {
+          "id": "mech-r4q5",
+          "question": "A rhythmic clicking becomes faster on tight turns. Which part is a likely cause?",
+          "answers": [
+            "Thermostat",
+            "Fuel pump",
+            "Outer constant-velocity joint",
+            "Cabin fan"
+          ],
+          "correct": 2,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r4q6",
+          "question": "One tyre has a deep sidewall bulge. What should you do?",
+          "answers": [
+            "Reduce the pressure and continue",
+            "Push the bulge flat",
+            "Move it to another wheel",
+            "Stop using the tyre and arrange replacement"
+          ],
+          "correct": 3,
+          "category": "diagnosis_safety"
+        }
       ]
     },
     {
-      "title": "Fluids Under Pressure",
+      "title": "Air, Fuel & Spark",
       "questions": [
-        { "id": "mech-r3q1", "question": "Which fluid primarily lubricates moving parts inside the engine?", "answers": ["Engine oil", "Coolant", "Brake fluid", "Washer fluid"], "correct": 0, "category": "cooling_fluids", "explanation": "Engine oil forms a lubricating film between moving internal components and also helps carry away heat." },
-        { "id": "mech-r3q2", "question": "Why must a hot pressurised cooling-system cap remain closed?", "answers": ["It will erase fault codes", "Escaping hot coolant and steam can cause severe burns", "It drains the battery", "It changes tyre pressure"], "correct": 1, "category": "cooling_fluids", "explanation": "Releasing a hot pressurised cooling system can suddenly eject boiling coolant and steam." },
-        { "id": "mech-r3q3", "question": "The coolant level keeps falling but no puddle is visible. What does that suggest?", "answers": ["The tyres are underinflated", "The alternator is overcharging", "A leak may occur only when hot or internally", "The air filter is blocked"], "correct": 2, "category": "cooling_fluids", "explanation": "Some leaks appear only under heat and pressure, while internal leaks may leave no external puddle." },
-        { "id": "mech-r3q4", "question": "Brake fluid has dropped below its marked minimum. What is the correct response?", "answers": ["Add engine oil", "Dilute it with water", "Ignore it if braking feels normal", "Have the braking system inspected for wear or leakage"], "correct": 3, "category": "cooling_fluids", "explanation": "A low brake-fluid level can reflect worn pads or a hydraulic leak and needs proper inspection." },
-        { "id": "mech-r3q5", "question": "Thick black smoke from a combustion engine usually suggests what?", "answers": ["Too much fuel or too little air", "Low washer fluid", "A flat battery", "A wheel-alignment fault"], "correct": 0, "category": "engine_fuel", "explanation": "Black exhaust smoke commonly indicates an overly rich mixture caused by excess fuel or restricted air." },
-        { "id": "mech-r3q6", "question": "Brake fluid can damage paint. What should happen after a spill?", "answers": ["Leave it to evaporate", "Follow the manufacturer’s safe clean-up guidance immediately", "Spread it with a cloth", "Warm the panel"], "correct": 1, "category": "brakes_grip", "explanation": "Brake fluid can attack painted surfaces, so prompt, appropriate clean-up is important." }
+        {
+          "id": "mech-r5q1",
+          "question": "A combustion engine needs which basic combination to run?",
+          "presentation": "sequence",
+          "visual": {
+            "items": [
+              "Air",
+              "Fuel",
+              "Ignition",
+              "Compression"
+            ],
+            "separator": "+",
+            "ariaLabel": "Air plus fuel plus ignition plus compression"
+          },
+          "answers": [
+            "Air, fuel, compression and correctly timed ignition",
+            "Coolant, brake fluid and electricity",
+            "Oil, steering angle and tyre pressure",
+            "Fuel alone"
+          ],
+          "correct": 0,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r5q2",
+          "question": "A blocked air filter is most likely to cause what?",
+          "answers": [
+            "A firmer brake pedal",
+            "Restricted airflow and reduced engine performance",
+            "Higher battery capacity",
+            "More tyre tread"
+          ],
+          "correct": 1,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r5q3",
+          "question": "One cylinder misfires and its spark plug is badly worn. What is the most direct link?",
+          "answers": [
+            "The radiator cannot cool",
+            "The steering loses alignment",
+            "The plug may fail to ignite the mixture reliably",
+            "The brake fluid absorbs water"
+          ],
+          "correct": 2,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r5q4",
+          "question": "A fuel injector’s basic job is to do what?",
+          "answers": [
+            "Turn the road wheels",
+            "Cool the brake discs",
+            "Recharge the battery",
+            "Meter fuel into the engine"
+          ],
+          "correct": 3,
+          "category": "engine_fuel"
+        },
+        {
+          "id": "mech-r5q5",
+          "question": "The engine overheats in traffic but cools at road speed. Which component deserves an early check?",
+          "answers": [
+            "Radiator fan",
+            "Seat belt",
+            "Fuel cap",
+            "Wheel bearing"
+          ],
+          "correct": 0,
+          "category": "cooling_fluids"
+        },
+        {
+          "id": "mech-r5q6",
+          "question": "Which sensor commonly tells the engine computer how much air is entering?",
+          "answers": [
+            "Wheel-speed sensor",
+            "Airflow sensor",
+            "Brake-light switch",
+            "Coolant cap"
+          ],
+          "correct": 1,
+          "category": "electrical"
+        },
+        {
+          "id": "mech-r6q1",
+          "question": "A healthy 12-volt battery reads about 12.6 V at rest. This one reads 10.5 V. What does that suggest?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "Expected: 12.6 V",
+              "Measured: 10.5 V"
+            ],
+            "ariaLabel": "Expected battery voltage 12.6 volts, measured 10.5 volts"
+          },
+          "answers": [
+            "The tyres are worn",
+            "The coolant is too strong",
+            "The battery is deeply discharged or has a failed cell",
+            "The alternator belt is new"
+          ],
+          "correct": 2,
+          "category": "electrical"
+        },
+        {
+          "id": "mech-r6q6",
+          "question": "Before probing an unfamiliar electrical connector, what is safest?",
+          "answers": [
+            "Short two pins together",
+            "Use any available wire",
+            "Spray it with water",
+            "Consult correct service information and use suitable test equipment"
+          ],
+          "correct": 3,
+          "category": "diagnosis_safety"
+        }
       ]
     },
     {
-      "title": "Wheels, Brakes & Grip",
+      "title": "Electrical Fault Finder",
       "questions": [
-        { "id": "mech-r4q1", "question": "A high-pitched squeal appears whenever the brakes are applied. What is the most likely first area to inspect?", "answers": ["Fuel cap", "Engine mounts", "Brake pads and wear indicators", "Coolant hoses"], "correct": 2, "category": "brakes_grip", "explanation": "Brake-pad wear indicators or pad vibration commonly produce a repeatable squeal during braking." },
-        { "id": "mech-r4q2", "question": "The brake pedal feels soft and sinks unusually far. What should you suspect?", "answers": ["A blocked air filter", "An overfilled fuel tank", "A worn wiper blade", "Air or a leak in the hydraulic brake system"], "correct": 3, "category": "brakes_grip", "explanation": "A soft or sinking pedal points toward hydraulic pressure loss, often from air or leakage." },
-        { "id": "mech-r4q3", "question": "What does ABS help a driver retain during hard braking?", "answers": ["Steering control", "Engine power", "Fuel pressure", "Cabin heating"], "correct": 0, "category": "brakes_grip", "explanation": "ABS limits sustained wheel lock so the tyres can retain more steering ability under hard braking." },
-        { "id": "mech-r4q4", "question": "Why is correct tyre pressure important?", "answers": ["It changes the battery voltage", "It supports grip, stability and even tyre wear", "It cleans the injectors", "It cools brake fluid"], "correct": 1, "category": "brakes_grip", "explanation": "Correct pressure helps the tyre maintain its intended contact patch, handling and wear pattern." },
-        { "id": "mech-r4q5", "question": "A rhythmic clicking becomes faster on tight turns. Which part is a likely cause?", "answers": ["Thermostat", "Fuel pump", "Outer constant-velocity joint", "Cabin fan"], "correct": 2, "category": "drivetrain_steering", "explanation": "A worn outer constant-velocity joint commonly clicks in rhythm with wheel speed on turns." },
-        { "id": "mech-r4q6", "question": "One tyre has a deep sidewall bulge. What should you do?", "answers": ["Reduce the pressure and continue", "Push the bulge flat", "Move it to another wheel", "Stop using the tyre and arrange replacement"], "correct": 3, "category": "diagnosis_safety", "explanation": "A sidewall bulge indicates structural damage and a risk of sudden tyre failure." }
+        {
+          "id": "mech-r7q1",
+          "question": "The steering wheel vibrates mainly at one road-speed range. What is a likely first suspect?",
+          "answers": [
+            "Wheel imbalance",
+            "Fuel quality",
+            "Cabin filter",
+            "Coolant colour"
+          ],
+          "correct": 0,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r7q2",
+          "question": "The car pulls to one side on a level road. Which area should be checked?",
+          "answers": [
+            "Audio settings",
+            "Tyre pressures and wheel alignment",
+            "Fuel filler",
+            "Wiper motor"
+          ],
+          "correct": 1,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r7q3",
+          "question": "Engine speed rises sharply but road speed barely increases. What is likely slipping?",
+          "answers": [
+            "Radiator fan",
+            "Wheel bearing",
+            "Clutch or transmission drive",
+            "Brake-light switch"
+          ],
+          "correct": 2,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r7q4",
+          "question": "A low humming grows louder with road speed, even in neutral. Which component is a likely source?",
+          "answers": [
+            "Spark plug",
+            "Fuel injector",
+            "Thermostat",
+            "Wheel bearing"
+          ],
+          "correct": 3,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r7q5",
+          "question": "The whole car shakes only when braking from higher speed. What is a common cause?",
+          "answers": [
+            "Brake-disc thickness variation or distortion",
+            "Low washer fluid",
+            "A loose fuel cap",
+            "A weak horn"
+          ],
+          "correct": 0,
+          "category": "brakes_grip"
+        },
+        {
+          "id": "mech-r7q6",
+          "question": "A new severe vibration appears after striking a road hazard. What should you do?",
+          "answers": [
+            "Increase speed to smooth it out",
+            "Stop safely and inspect the wheel and tyre before continuing",
+            "Lower every tyre pressure",
+            "Ignore it if no warning appears"
+          ],
+          "correct": 1,
+          "category": "diagnosis_safety"
+        },
+        {
+          "id": "mech-r8q3",
+          "question": "What recharges the 12-volt battery while driving?",
+          "answers": [
+            "Charging system",
+            "Starter switch",
+            "Brake servo",
+            "Air filter"
+          ],
+          "correct": 0,
+          "category": "electrical",
+          "delay": 350
+        },
+        {
+          "id": "mech-r8q4",
+          "question": "Which fluid prevents freezing and carries engine heat?",
+          "answers": [
+            "Brake fluid",
+            "Coolant",
+            "Engine oil",
+            "Washer fluid"
+          ],
+          "correct": 1,
+          "category": "cooling_fluids",
+          "delay": 350
+        }
       ]
     },
     {
-      "title": "Air, Fuel, Spark",
+      "title": "Final Workshop Diagnosis",
       "questions": [
-        { "id": "mech-r5q1", "question": "A combustion engine needs which basic combination to run?", "presentation": "sequence", "visual": { "items": ["Air", "Fuel", "Ignition", "Compression"], "separator": "+", "ariaLabel": "Air plus fuel plus ignition plus compression" }, "answers": ["Air, fuel, compression and correctly timed ignition", "Coolant, brake fluid and electricity", "Oil, steering angle and tyre pressure", "Fuel alone"], "correct": 0, "category": "engine_fuel", "explanation": "A combustion engine needs the correct air-fuel mixture, compression and a correctly timed ignition event." },
-        { "id": "mech-r5q2", "question": "A blocked air filter is most likely to cause what?", "answers": ["A firmer brake pedal", "Restricted airflow and reduced engine performance", "Higher battery capacity", "More tyre tread"], "correct": 1, "category": "engine_fuel", "explanation": "A clogged filter restricts intake airflow, which can reduce performance and disturb the fuel mixture." },
-        { "id": "mech-r5q3", "question": "One cylinder misfires and its spark plug is badly worn. What is the most direct link?", "answers": ["The radiator cannot cool", "The steering loses alignment", "The plug may fail to ignite the mixture reliably", "The brake fluid absorbs water"], "correct": 2, "category": "engine_fuel", "explanation": "A worn spark plug may produce a weak or inconsistent spark, causing that cylinder to misfire." },
-        { "id": "mech-r5q4", "question": "A fuel injector’s basic job is to do what?", "answers": ["Turn the road wheels", "Cool the brake discs", "Recharge the battery", "Meter fuel into the engine"], "correct": 3, "category": "engine_fuel", "explanation": "An injector precisely meters fuel into the intake or combustion chamber." },
-        { "id": "mech-r5q5", "question": "The engine overheats in traffic but cools at road speed. Which component deserves an early check?", "answers": ["Radiator fan", "Seat belt", "Fuel cap", "Wheel bearing"], "correct": 0, "category": "cooling_fluids", "explanation": "Road speed forces air through the radiator; overheating only at low speed strongly points toward missing fan airflow." },
-        { "id": "mech-r5q6", "question": "Which sensor commonly tells the engine computer how much air is entering?", "answers": ["Wheel-speed sensor", "Airflow sensor", "Brake-light switch", "Coolant cap"], "correct": 1, "category": "electrical", "explanation": "An airflow sensor measures incoming air so the engine computer can calculate appropriate fuelling." }
-      ]
-    },
-    {
-      "title": "Electrical Fault Finder ⚡",
-      "questions": [
-        { "id": "mech-r6q1", "question": "A healthy 12-volt battery reads about 12.6 V at rest. This one reads 10.5 V. What does that suggest?", "presentation": "code", "visual": { "items": ["Expected: 12.6 V", "Measured: 10.5 V"], "ariaLabel": "Expected battery voltage 12.6 volts, measured 10.5 volts" }, "answers": ["The tyres are worn", "The coolant is too strong", "The battery is deeply discharged or has a failed cell", "The alternator belt is new"], "correct": 2, "category": "electrical", "explanation": "A resting voltage near 10.5 V often indicates a severely discharged battery or one failed internal cell." },
-        { "id": "mech-r6q2", "question": "A fuse blows again immediately after replacement. What should happen next?", "answers": ["Install a larger fuse", "Bridge it with metal", "Keep replacing it", "Find the short or overload before using the circuit"], "correct": 3, "category": "electrical", "explanation": "Repeated fuse failure means the protected circuit still has an overload or short that must be diagnosed." },
-        { "id": "mech-r6q3", "question": "The lights brighten when the engine starts. Why?", "answers": ["The charging system raises system voltage", "The fuel becomes cooler", "The tyres rotate", "The brake pads release"], "correct": 0, "category": "electrical", "explanation": "Once running, the charging system normally raises voltage above the battery’s resting level." },
-        { "id": "mech-r6q4", "question": "Which component protects a wire from excessive current?", "presentation": "icons", "answers": ["Relay", "Fuse", "Starter", "Sensor"], "icons": ["/quizzes/mechanic/assets/icons/relay.svg", "/quizzes/mechanic/assets/icons/fuse.svg", "/quizzes/mechanic/assets/icons/starter-motor.svg", "/quizzes/mechanic/assets/icons/sensor.svg"], "correct": 1, "category": "electrical", "explanation": "A correctly rated fuse opens the circuit when current exceeds a safe level." },
-        { "id": "mech-r6q5", "question": "The engine cranks normally but will not start. Which clue makes a starter-motor fault least likely?", "answers": ["The oil is dark", "The tank is half full", "The engine is already turning at normal cranking speed", "The tyres are cold"], "correct": 2, "category": "engine_fuel", "explanation": "If the starter is already cranking the engine normally, the no-start fault lies elsewhere in fuel, ignition, control or compression." },
-        { "id": "mech-r6q6", "question": "Before probing an unfamiliar electrical connector, what is safest?", "answers": ["Short two pins together", "Use any available wire", "Spray it with water", "Consult correct service information and use suitable test equipment"], "correct": 3, "category": "diagnosis_safety", "explanation": "Incorrect probing can damage electronics or trigger safety systems, so correct information and equipment are essential." }
-      ]
-    },
-    {
-      "title": "Feel the Fault",
-      "questions": [
-        { "id": "mech-r7q1", "question": "The steering wheel vibrates mainly at one road-speed range. What is a likely first suspect?", "answers": ["Wheel imbalance", "Fuel quality", "Cabin filter", "Coolant colour"], "correct": 0, "category": "drivetrain_steering", "explanation": "Wheel imbalance commonly creates a speed-dependent vibration felt through the steering wheel." },
-        { "id": "mech-r7q2", "question": "The car pulls to one side on a level road. Which area should be checked?", "answers": ["Audio settings", "Tyre pressures and wheel alignment", "Fuel filler", "Wiper motor"], "correct": 1, "category": "drivetrain_steering", "explanation": "Unequal tyre pressure, alignment faults and related steering issues can cause a steady pull." },
-        { "id": "mech-r7q3", "question": "Engine speed rises sharply but road speed barely increases. What is likely slipping?", "answers": ["Radiator fan", "Wheel bearing", "Clutch or transmission drive", "Brake-light switch"], "correct": 2, "category": "drivetrain_steering", "explanation": "Rising engine speed without matching acceleration indicates power is not being transmitted effectively." },
-        { "id": "mech-r7q4", "question": "A low humming grows louder with road speed, even in neutral. Which component is a likely source?", "answers": ["Spark plug", "Fuel injector", "Thermostat", "Wheel bearing"], "correct": 3, "category": "drivetrain_steering", "explanation": "A worn wheel bearing often produces a hum or growl tied to road speed rather than engine speed." },
-        { "id": "mech-r7q5", "question": "The whole car shakes only when braking from higher speed. What is a common cause?", "answers": ["Brake-disc thickness variation or distortion", "Low washer fluid", "A loose fuel cap", "A weak horn"], "correct": 0, "category": "brakes_grip", "explanation": "Uneven brake-disc surfaces can create a repeating brake-force variation and vibration under braking." },
-        { "id": "mech-r7q6", "question": "A new severe vibration appears after striking a road hazard. What should you do?", "answers": ["Increase speed to smooth it out", "Stop safely and inspect the wheel and tyre before continuing", "Lower every tyre pressure", "Ignore it if no warning appears"], "correct": 1, "category": "diagnosis_safety", "explanation": "A sudden vibration after impact may indicate dangerous wheel, tyre or suspension damage." }
-      ]
-    },
-    {
-      "title": "Pit-Stop Sprint ⚡",
-      "questions": [
-        { "id": "mech-r8q1", "question": "An orange high-voltage cable is damaged. What should you do?", "answers": ["Tape it temporarily", "Disconnect it yourself", "Avoid touching it and get qualified help", "Pour water over it"], "correct": 2, "category": "diagnosis_safety", "delay": 350, "explanation": "Orange cabling commonly identifies a high-voltage vehicle system and must only be handled by appropriately trained professionals." },
-        { "id": "mech-r8q2", "question": "Which part grips a brake disc?", "answers": ["Radiator", "Alternator", "Fuel pump", "Brake pads"], "correct": 3, "category": "brakes_grip", "delay": 350, "explanation": "Brake pads clamp against the rotating brake disc to create friction." },
-        { "id": "mech-r8q3", "question": "What recharges the 12-volt battery while driving?", "answers": ["Charging system", "Starter switch", "Brake servo", "Air filter"], "correct": 0, "category": "electrical", "delay": 350, "explanation": "The vehicle’s charging system supplies electrical energy and maintains the 12-volt battery." },
-        { "id": "mech-r8q4", "question": "Which fluid prevents freezing and carries engine heat?", "answers": ["Brake fluid", "Coolant", "Engine oil", "Washer fluid"], "correct": 1, "category": "cooling_fluids", "delay": 350, "explanation": "Correct coolant provides freeze protection and transports heat through the cooling system." },
-        { "id": "mech-r8q5", "question": "Which joint transmits drive while a wheel steers?", "answers": ["Thermostat", "Brake caliper", "Constant-velocity joint", "Fuse"], "correct": 2, "category": "drivetrain_steering", "delay": 350, "explanation": "A constant-velocity joint transmits drive while accommodating steering and suspension movement." },
-        { "id": "mech-r8q6", "question": "You smell fuel. What comes first?", "answers": ["Test it with a flame", "Keep the engine running", "Use electrical switches nearby", "Stop safely, avoid ignition sources and get help"], "correct": 3, "category": "diagnosis_safety", "delay": 350, "explanation": "Fuel vapour can ignite, so stop safely, remove ignition risks and seek qualified assistance." }
-      ]
-    },
-    {
-      "title": "Customer Says…",
-      "questions": [
-        { "id": "mech-r9q1", "context": "CUSTOMER SAYS", "question": "“The car pulls left only while braking, and the left front wheel becomes unusually hot.” What is most likely?", "answers": ["A sticking left brake caliper", "A weak battery", "A blocked air filter", "Low coolant"], "correct": 0, "category": "brakes_grip", "reasoningSteps": 2, "explanation": "Pulling during braking plus one hot wheel both point to a brake on that corner failing to release." },
-        { "id": "mech-r9q2", "context": "CUSTOMER SAYS", "question": "“The battery is new, but it repeatedly goes flat and the charging warning appears while driving.” What should be tested?", "answers": ["Tyre alignment", "The charging system and its connections", "Brake-pad thickness", "Coolant concentration"], "correct": 1, "category": "electrical", "reasoningSteps": 2, "explanation": "A new battery going flat with a charging warning suggests it is not being recharged correctly." },
-        { "id": "mech-r9q3", "context": "CUSTOMER SAYS", "question": "“The vibration follows road speed, not engine speed, and remains when coasting.” Which area fits best?", "answers": ["Ignition timing", "Fuel mixture", "Wheels, tyres or driveline", "Cooling fan"], "correct": 2, "category": "drivetrain_steering", "reasoningSteps": 2, "explanation": "A vibration tied to road speed and present while coasting points away from engine combustion and toward rotating road-speed components." },
-        { "id": "mech-r9q4", "context": "CUSTOMER SAYS", "question": "“There is a clunk when changing from acceleration to deceleration.” What is a sensible first area to inspect?", "answers": ["Washer jets", "Cabin filter", "Radiator cap", "Drivetrain mounts and joints"], "correct": 3, "category": "drivetrain_steering", "explanation": "Load reversal can expose free play in drivetrain mounts, joints or related components." },
-        { "id": "mech-r9q5", "context": "CUSTOMER SAYS", "question": "“An engine/emissions warning appeared soon after refuelling, but the car drives normally.” What simple item is worth checking first?", "answers": ["The fuel-filler cap or seal is correctly secured", "The brake discs are wet", "The wheel nuts are warm", "The coolant is frozen"], "correct": 0, "category": "diagnosis_safety", "explanation": "A loose or incorrectly sealed fuel-filler cap can trigger an emissions-system warning on many vehicles." },
-        { "id": "mech-r9q6", "context": "CUSTOMER SAYS", "question": "“A grinding noise began suddenly from one wheel.” What is the safest response?", "answers": ["Turn up the audio", "Stop driving and arrange inspection", "Accelerate to clear debris", "Apply lubricant through the wheel"], "correct": 1, "category": "diagnosis_safety", "explanation": "Sudden wheel-area grinding can indicate a serious brake, bearing or contact fault and should not be ignored." }
-      ]
-    },
-    {
-      "title": "Final Workshop Diagnosis 🔧",
-      "questions": [
-        { "id": "mech-r10q1", "question": "An engine cranks, has fuel pressure, but has no spark on any cylinder. Which system should be investigated next?", "presentation": "code", "visual": { "items": ["Cranking: YES", "Fuel pressure: YES", "Spark: NONE"], "ariaLabel": "Engine cranks, fuel pressure present, no spark" }, "answers": ["Ignition control and its power or timing inputs", "Tyre-pressure monitoring", "Brake hydraulics", "Wheel alignment"], "correct": 0, "category": "engine_fuel", "reasoningSteps": 2, "explanation": "Cranking and fuel pressure remove two basic causes; no spark across all cylinders directs diagnosis toward shared ignition control or inputs." },
-        { "id": "mech-r10q2", "question": "The car pulls right while braking, and the right front wheel is much hotter than the left. What best explains both clues?", "presentation": "code", "visual": { "items": ["Braking: pulls right", "Right wheel: very hot", "Left wheel: normal"], "ariaLabel": "Car pulls right while braking and right front wheel is very hot" }, "answers": ["A discharged battery", "A sticking right front brake", "A blocked engine air filter", "A loose fuel cap"], "correct": 1, "category": "brakes_grip", "reasoningSteps": 2, "explanation": "A dragging right brake creates excess heat and stronger braking force on that side, explaining both symptoms." },
-        { "id": "mech-r10q3", "question": "On a conventional 12-volt charging system, battery voltage is 12.5 V with the engine off and 12.0 V while running with the lights on. What is the best diagnosis?", "presentation": "grid", "visual": { "items": ["Engine OFF", "12.5 V", "Engine ON + lights", "12.0 V"], "columns": 2, "ariaLabel": "Conventional 12-volt charging system: engine off 12.5 volts, engine running with lights 12.0 volts" }, "answers": ["The battery is certainly overcharged", "The brakes are dragging", "The charging system is not supplying enough voltage", "The coolant is too cold"], "correct": 2, "category": "electrical", "reasoningSteps": 2, "explanation": "On a conventional 12-volt system, charging voltage should rise while the engine runs; a fall under load shows inadequate charging output or connection loss." },
-        { "id": "mech-r10q4", "question": "The engine overheats only at idle, the radiator is unobstructed and the cooling fan never runs. What should be diagnosed first?", "presentation": "code", "visual": { "items": ["Road speed: COOL", "Idle: HOT", "Fan command: expected", "Fan movement: none"], "ariaLabel": "Engine cools at road speed, overheats at idle, cooling fan does not run" }, "answers": ["Wheel alignment", "Fuel cap seal", "Brake-pad wear", "The fan circuit, motor and control command"], "correct": 3, "category": "cooling_fluids", "reasoningSteps": 2, "explanation": "Road airflow controls temperature, but idle overheating and a stationary commanded fan identify the fan circuit as the first diagnostic path." },
-        { "id": "mech-r10q5", "question": "A vibration rises with road speed, remains while coasting and does not change when engine speed is raised in neutral. What is the best focus?", "presentation": "sequence", "visual": { "items": ["Road speed ↑", "Vibration ↑", "Coasting: remains", "Engine rev: no change"], "separator": "→", "ariaLabel": "Vibration follows road speed, remains while coasting, unchanged by engine speed" }, "answers": ["Wheels, tyres, bearings and driveline components", "Spark plugs only", "Fuel injectors only", "Cooling thermostat"], "correct": 0, "category": "drivetrain_steering", "reasoningSteps": 2, "explanation": "All clues tie the vibration to road-speed components rather than the engine’s rotating or combustion speed." },
-        { "id": "mech-r10q6", "question": "A vehicle is supported only by a lifting jack, and work is needed underneath. What is the correct response?", "answers": ["Work quickly before it moves", "Lower it and use correctly rated supports at specified points", "Place loose blocks under one wheel", "Ask someone to hold the jack"], "correct": 1, "category": "diagnosis_safety", "reasoningSteps": 2, "explanation": "A lifting jack alone is not a safe support for work underneath; correctly rated supports must be used at the vehicle’s specified points." }
+        {
+          "id": "mech-r9q1",
+          "context": "CUSTOMER SAYS",
+          "question": "“The car pulls left only while braking, and the left front wheel becomes unusually hot.” What is most likely?",
+          "answers": [
+            "A sticking left brake caliper",
+            "A weak battery",
+            "A blocked air filter",
+            "Low coolant"
+          ],
+          "correct": 0,
+          "category": "brakes_grip",
+          "reasoningSteps": 2
+        },
+        {
+          "id": "mech-r9q2",
+          "context": "CUSTOMER SAYS",
+          "question": "“The battery is new, but it repeatedly goes flat and the charging warning appears while driving.” What should be tested?",
+          "answers": [
+            "Tyre alignment",
+            "The charging system and its connections",
+            "Brake-pad thickness",
+            "Coolant concentration"
+          ],
+          "correct": 1,
+          "category": "electrical",
+          "reasoningSteps": 2
+        },
+        {
+          "id": "mech-r9q3",
+          "context": "CUSTOMER SAYS",
+          "question": "“The vibration follows road speed, not engine speed, and remains when coasting.” Which area fits best?",
+          "answers": [
+            "Ignition timing",
+            "Fuel mixture",
+            "Wheels, tyres or driveline",
+            "Cooling fan"
+          ],
+          "correct": 2,
+          "category": "drivetrain_steering",
+          "reasoningSteps": 2
+        },
+        {
+          "id": "mech-r9q4",
+          "context": "CUSTOMER SAYS",
+          "question": "“There is a clunk when changing from acceleration to deceleration.” What is a sensible first area to inspect?",
+          "answers": [
+            "Washer jets",
+            "Cabin filter",
+            "Radiator cap",
+            "Drivetrain mounts and joints"
+          ],
+          "correct": 3,
+          "category": "drivetrain_steering"
+        },
+        {
+          "id": "mech-r9q6",
+          "context": "CUSTOMER SAYS",
+          "question": "“A grinding noise began suddenly from one wheel.” What is the safest response?",
+          "answers": [
+            "Turn up the audio",
+            "Stop driving and arrange inspection",
+            "Accelerate to clear debris",
+            "Apply lubricant through the wheel"
+          ],
+          "correct": 1,
+          "category": "diagnosis_safety"
+        },
+        {
+          "id": "mech-r10q1",
+          "question": "An engine cranks, has fuel pressure, but has no spark on any cylinder. Which system should be investigated next?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "Cranking: YES",
+              "Fuel pressure: YES",
+              "Spark: NONE"
+            ],
+            "ariaLabel": "Engine cranks, fuel pressure present, no spark"
+          },
+          "answers": [
+            "Ignition control and its power or timing inputs",
+            "Tyre-pressure monitoring",
+            "Brake hydraulics",
+            "Wheel alignment"
+          ],
+          "correct": 0,
+          "category": "engine_fuel",
+          "reasoningSteps": 2
+        },
+        {
+          "id": "mech-r10q3",
+          "question": "On a conventional 12-volt charging system, battery voltage is 12.5 V with the engine off and 12.0 V while running with the lights on. What is the best diagnosis?",
+          "presentation": "grid",
+          "visual": {
+            "items": [
+              "Engine OFF",
+              "12.5 V",
+              "Engine ON + lights",
+              "12.0 V"
+            ],
+            "columns": 2,
+            "ariaLabel": "Conventional 12-volt charging system: engine off 12.5 volts, engine running with lights 12.0 volts"
+          },
+          "answers": [
+            "The battery is certainly overcharged",
+            "The brakes are dragging",
+            "The charging system is not supplying enough voltage",
+            "The coolant is too cold"
+          ],
+          "correct": 2,
+          "category": "electrical",
+          "reasoningSteps": 2
+        },
+        {
+          "id": "mech-r10q4",
+          "question": "The engine overheats only at idle, the radiator is unobstructed and the cooling fan never runs. What should be diagnosed first?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "Road speed: COOL",
+              "Idle: HOT",
+              "Fan command: expected",
+              "Fan movement: none"
+            ],
+            "ariaLabel": "Engine cools at road speed, overheats at idle, cooling fan does not run"
+          },
+          "answers": [
+            "Wheel alignment",
+            "Fuel cap seal",
+            "Brake-pad wear",
+            "The fan circuit, motor and control command"
+          ],
+          "correct": 3,
+          "category": "cooling_fluids",
+          "reasoningSteps": 2
+        }
       ]
     }
-  ]
+  ],
+  "career": {
+    "hideJourneyLength": true,
+    "continuousShell": true,
+    "showStageResults": false,
+    "showResultProgress": true,
+    "resultProgressLabel": "Mechanic challenge",
+    "resultProgressComplete": "{value}% complete",
+    "currentScoreLabel": "CURRENT MECHANIC SCORE",
+    "levelLabel": "ROUND",
+    "scoreSuffix": "correct",
+    "journeyLabel": "MECHANIC CHALLENGE",
+    "kitchensCleared": "{value} / {total} challenges cleared",
+    "currentRank": "CURRENT LEVEL",
+    "ranks": [
+      {
+        "afterStage": 0,
+        "label": "Challenger"
+      },
+      {
+        "afterStage": 5,
+        "label": "Challenge Complete"
+      }
+    ],
+    "unlockEyebrow": "RESULT UPDATE",
+    "unlockTitle": "A new challenge is ready",
+    "unlockCopy": "Your next challenge is waiting.",
+    "finalEyebrow": "YOUR RESULT",
+    "finalCareerTitle": "MECHANIC CHALLENGE COMPLETE",
+    "strongestLabel": "Strongest mechanic area",
+    "stages": [
+      {
+        "difficulty": "Foundation",
+        "preAdBadge": "DASHBOARD & ENGINE BAY COMPLETE",
+        "preAdTitle": "First section complete",
+        "preAdCopy": "Good start. The next section is ready.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "DASHBOARD & ENGINE BAY COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Dashboard & Engine Bay Standout",
+            "insight": "A sharp performance added a strong signal to your result."
+          },
+          "medium": {
+            "title": "Dashboard & Engine Bay Complete",
+            "insight": "A balanced performance moved your challenge forward."
+          },
+          "low": {
+            "title": "Dashboard & Engine Bay Captured",
+            "insight": "This section exposed useful areas to build on."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "title": "Fluids, Brakes & Grip",
+          "difficulty": "Developing",
+          "tagline": "Pressure. Safety. Road contact.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Developing",
+        "preAdBadge": "FLUIDS, BRAKES & GRIP COMPLETE",
+        "preAdTitle": "Challenge progressing",
+        "preAdCopy": "The next section raises the difficulty.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "FLUIDS, BRAKES & GRIP COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Fluids, Brakes & Grip Standout",
+            "insight": "A sharp performance added a strong signal to your result."
+          },
+          "medium": {
+            "title": "Fluids, Brakes & Grip Complete",
+            "insight": "A balanced performance moved your challenge forward."
+          },
+          "low": {
+            "title": "Fluids, Brakes & Grip Captured",
+            "insight": "This section exposed useful areas to build on."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "title": "Air, Fuel & Spark",
+          "difficulty": "Skilled",
+          "tagline": "Combustion. Power. Cause and effect.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Skilled",
+        "preAdBadge": "AIR, FUEL & SPARK COMPLETE",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "The advanced section is next.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "AIR, FUEL & SPARK COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Air, Fuel & Spark Standout",
+            "insight": "A sharp performance added a strong signal to your result."
+          },
+          "medium": {
+            "title": "Air, Fuel & Spark Complete",
+            "insight": "A balanced performance moved your challenge forward."
+          },
+          "low": {
+            "title": "Air, Fuel & Spark Captured",
+            "insight": "This section exposed useful areas to build on."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "title": "Electrical Fault Finder",
+          "difficulty": "Advanced",
+          "tagline": "Circuits. Symptoms. Diagnosis.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Advanced",
+        "preAdBadge": "ELECTRICAL FAULT FINDER COMPLETE",
+        "preAdTitle": "Final assessment next",
+        "preAdCopy": "Only the final section remains.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "ELECTRICAL FAULT FINDER COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Electrical Fault Finder Standout",
+            "insight": "A sharp performance added a strong signal to your result."
+          },
+          "medium": {
+            "title": "Electrical Fault Finder Complete",
+            "insight": "A balanced performance moved your challenge forward."
+          },
+          "low": {
+            "title": "Electrical Fault Finder Captured",
+            "insight": "This section exposed useful areas to build on."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "title": "Final Workshop Diagnosis",
+          "difficulty": "Final Assessment",
+          "tagline": "Customer clues. Final decisions.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "MECHANIC CHALLENGE COMPLETE",
+        "preAdTitle": "MECHANIC CHALLENGE COMPLETE",
+        "preAdChecks": [
+          "40 answers checked",
+          "Final result calculated",
+          "Personal result ready"
+        ],
+        "preAdButton": "See My Result",
+        "resultIcon": "✓",
+        "resultLabel": "FINAL WORKSHOP DIAGNOSIS COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Final Workshop Diagnosis Standout",
+            "insight": "A sharp performance added a strong signal to your result."
+          },
+          "medium": {
+            "title": "Final Workshop Diagnosis Complete",
+            "insight": "A balanced performance moved your challenge forward."
+          },
+          "low": {
+            "title": "Final Workshop Diagnosis Captured",
+            "insight": "This section exposed useful areas to build on."
+          }
+        }
+      }
+    ]
+  }
 }

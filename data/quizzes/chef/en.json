@@ -1,7 +1,7 @@
 {
   "title": "Only 12% Pass This Chef's Entrance Exam",
   "eyebrow": "THE CULINARY PASS",
-  "summary": "Flavour, heat, pastry, kitchen maths and service decisions become more demanding as the kitchen challenge unfolds.",
+  "summary": "Flavour, fire, pastry and service pressure test whether you can keep thinking when the kitchen heats up.",
   "landing": {
     "intro": "From flavour and fire to pastry, timing and service pressure, prove you can think like a chef when the kitchen heats up.",
     "socialProof": "81,000+ people played this",
@@ -13,24 +13,24 @@
       "title": "How to Play",
       "steps": [
         "Complete each focused kitchen assessment and choose the single answer best supported by the question.",
-        "Correctness stays hidden while you play; each kitchen result reveals your stage score and current Chef Score.",
-        "After every result, decide whether to enter the newly opened kitchen and continue the challenge."
+        "Correctness stays hidden while each checkpoint shows your overall progress through the kitchen challenge.",
+        "Continue through the specialist kitchens, then reveal your complete Chef Score and answer review at the end."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This quiz is not a culinary qualification, professional kitchen assessment or food-safety certification. Always follow local food-safety requirements and qualified guidance."
   },
   "checkpoint": {
     "nextPrefix": "NEXT KITCHEN",
-    "adNote": "Short ad first — then this kitchen result unlocks.",
+    "adNote": "Short ad first — then continue.",
     "finalBadge": "CHEF’S TABLE COMPLETE",
     "finalIcon": "✓",
     "finalTitle": "Your Chef Score Is Ready",
     "finalCopy": "Your full Chef report is ready to reveal.",
     "finalButton": "See My Final Result",
     "finalChecklist": [
-      "30 decisions checked",
-      "Final score calculated",
-      "Chef profile ready"
+      "40 answers checked",
+      "Final result calculated",
+      "Personal result ready"
     ],
     "reveals": [
       {
@@ -38,37 +38,38 @@
         "icon": "✓",
         "title": "Kitchen Induction assessed",
         "signal": "fixed",
-        "message": "All six Kitchen Induction decisions have been checked."
+        "message": "All eight Kitchen Induction decisions have been checked."
       },
       {
         "badge": "PREP BENCH COMPLETE",
         "icon": "✓",
         "title": "Prep Bench assessed",
         "signal": "fixed",
-        "message": "All six Prep Bench decisions have been checked."
+        "message": "All eight Prep Bench decisions have been checked."
       },
       {
         "badge": "KITCHEN CRAFT COMPLETE",
         "icon": "✓",
         "title": "Kitchen Craft assessed",
         "signal": "fixed",
-        "message": "All six Kitchen Craft decisions have been checked."
+        "message": "All eight Kitchen Craft decisions have been checked."
       },
       {
         "badge": "SERVICE RUSH COMPLETE",
         "icon": "✓",
         "title": "Service Rush assessed",
         "signal": "fixed",
-        "message": "All six Service Rush decisions have been checked."
+        "message": "All eight Service Rush decisions have been checked."
       },
       {
         "badge": "CHEF’S TABLE COMPLETE",
         "icon": "✓",
         "title": "Chef’s Table assessed",
         "signal": "fixed",
-        "message": "All six Chef’s Table decisions have been checked."
+        "message": "All eight Chef’s Table decisions have been checked."
       }
-    ]
+    ],
+    "finalAdNote": "Short ad first — then see your result."
   },
   "results": {
     "name": "YOUR CHEF SCORE",
@@ -305,6 +306,34 @@
           "category": "safety_service",
           "interactionStyle": "prioritisation",
           "presentation": "text"
+        },
+        {
+          "id": "chef-r2q1",
+          "question": "After reading the recipe and gathering items, what general step best prepares you to cook?",
+          "presentation": "text",
+          "answers": [
+            "Preheat every pan and tray",
+            "Prepare the serving plates",
+            "Measure and organise ingredients",
+            "Begin chopping every ingredient"
+          ],
+          "correct": 2,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "sequence"
+        },
+        {
+          "id": "chef-r3q3",
+          "question": "A recipe says to preheat the tray before adding vegetables for roasting. Why does the hot tray help?",
+          "answers": [
+            "It prevents steam from forming",
+            "It slows cooking so the pieces heat gently",
+            "It starts surface heating and browning sooner",
+            "It keeps oil from touching the food"
+          ],
+          "correct": 2,
+          "category": "heat_methods",
+          "interactionStyle": "sequence",
+          "presentation": "text"
         }
       ]
     },
@@ -394,6 +423,34 @@
           "category": "safety_service",
           "interactionStyle": "prioritisation",
           "presentation": "text"
+        },
+        {
+          "id": "chef-r5q4",
+          "question": "A yeast dough becomes larger during a warm rest. Which process caused it?",
+          "answers": [
+            "Gelatinisation",
+            "Caramelisation",
+            "Fermentation",
+            "Emulsification"
+          ],
+          "correct": 2,
+          "category": "baking_pastry",
+          "interactionStyle": "visual-identification",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r3q4",
+          "question": "A soup is boiling hard and reducing too quickly. What is the best adjustment?",
+          "answers": [
+            "Lower the heat to a gentle simmer",
+            "Cover the pan tightly and keep the same heat",
+            "Add more liquid but keep it boiling hard",
+            "Increase the heat and shorten the cooking time"
+          ],
+          "correct": 0,
+          "category": "heat_methods",
+          "interactionStyle": "applied-scenario",
+          "presentation": "text"
         }
       ]
     },
@@ -482,6 +539,34 @@
           "correct": 1,
           "category": "safety_service",
           "interactionStyle": "safety-judgement",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r4q1",
+          "question": "A vinaigrette tastes sharply acidic and thin, and only its oil-to-vinegar balance may be adjusted. What should be added gradually?",
+          "answers": [
+            "Oil",
+            "More vinegar",
+            "Flour",
+            "Water only"
+          ],
+          "correct": 0,
+          "category": "ingredients_flavour",
+          "interactionStyle": "core-concept",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r3q5",
+          "question": "What should protect your hands when moving a hot dry tray from the oven?",
+          "answers": [
+            "A wet towel",
+            "Bare hands",
+            "Plastic wrap",
+            "Dry heat-resistant oven gloves"
+          ],
+          "correct": 3,
+          "category": "kitchen_fundamentals",
+          "interactionStyle": "trap",
           "presentation": "text"
         }
       ]
@@ -578,6 +663,34 @@
           "delay": 350,
           "interactionStyle": "prioritisation",
           "presentation": "text"
+        },
+        {
+          "id": "chef-r6q2",
+          "question": "A 1.5 L soup batch fills 3 equal containers. How much per container?",
+          "answers": [
+            "300 mL",
+            "500 mL",
+            "750 mL",
+            "1 litre"
+          ],
+          "correct": 1,
+          "category": "kitchen_maths",
+          "interactionStyle": "portion-calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r6q5",
+          "question": "Flour and sugar use a 2:1 ratio. If the batch uses 600 g flour, how much sugar preserves the ratio?",
+          "answers": [
+            "200 g",
+            "300 g",
+            "600 g",
+            "1,200 g"
+          ],
+          "correct": 1,
+          "category": "baking_pastry",
+          "interactionStyle": "ratio-calculation",
+          "presentation": "text"
         }
       ]
     },
@@ -673,6 +786,34 @@
           "reasoningSteps": 2,
           "interactionStyle": "prioritisation",
           "presentation": "text"
+        },
+        {
+          "id": "chef-r7q4",
+          "question": "Table 6 needs 3 mains, Table 7 needs 5, and the pass needs 2 replacement plates. How many plates are needed?",
+          "answers": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "correct": 3,
+          "category": "kitchen_maths",
+          "interactionStyle": "service-calculation",
+          "presentation": "text"
+        },
+        {
+          "id": "chef-r9q3",
+          "question": "Food meant to be gently poached was cooked at a rolling boil and broke apart. Which step caused the problem?",
+          "answers": [
+            "Using enough liquid",
+            "Starting with the correct target",
+            "Watching the food",
+            "Using a rolling boil"
+          ],
+          "correct": 3,
+          "category": "heat_methods",
+          "interactionStyle": "sequence",
+          "presentation": "text"
         }
       ]
     }
@@ -703,28 +844,23 @@
       {
         "difficulty": "Foundation",
         "preAdBadge": "KITCHEN INDUCTION COMPLETE",
-        "preAdTitle": "Your Kitchen Induction Results Are Ready",
-        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
-        "preAdChecks": [
-          "Six decisions checked",
-          "Kitchen score calculated",
-          "Next challenge prepared"
-        ],
-        "preAdButton": "See My Result",
+        "preAdTitle": "First kitchen section complete",
+        "preAdCopy": "Good start. The next kitchen is ready.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "INDUCTION COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Kitchen Ready",
-            "insight": "You handled the foundation confidently and entered the kitchen with sharp instincts."
+            "title": "First kitchen section complete",
+            "insight": "Good start. The next kitchen is ready."
           },
           "medium": {
-            "title": "Induction Cleared",
-            "insight": "Your kitchen foundation is sound, with a couple of details ready to sharpen."
+            "title": "First kitchen section complete",
+            "insight": "Good start. The next kitchen is ready."
           },
           "low": {
-            "title": "Foundation Started",
-            "insight": "The induction exposed useful gaps and opened a clear route into the next kitchen."
+            "title": "First kitchen section complete",
+            "insight": "Good start. The next kitchen is ready."
           }
         },
         "next": {
@@ -733,34 +869,30 @@
           "difficulty": "Developing",
           "tagline": "Tools. Timing. Organisation.",
           "copy": "A clean setup separates confident cooks from kitchen chaos.",
-          "button": "Enter Prep Bench"
-        }
+          "button": "Continue"
+        },
+        "preAdEyebrow": "KITCHEN INDUCTION COMPLETE"
       },
       {
         "difficulty": "Developing",
         "preAdBadge": "PREP BENCH COMPLETE",
-        "preAdTitle": "Your Prep Bench Results Are Ready",
-        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
-        "preAdChecks": [
-          "Six decisions checked",
-          "Kitchen score calculated",
-          "Next challenge prepared"
-        ],
-        "preAdButton": "See My Result",
+        "preAdTitle": "Kitchen challenge progressing",
+        "preAdCopy": "The next kitchen raises the difficulty.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "PREP BENCH COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Prep Specialist",
-            "insight": "Your tools, timing and preparation decisions stayed organised from start to finish."
+            "title": "Kitchen challenge progressing",
+            "insight": "The next kitchen raises the difficulty."
           },
           "medium": {
-            "title": "Prep Bench Cleared",
-            "insight": "You organised most prep decisions well, with a few finer details still to sharpen."
+            "title": "Kitchen challenge progressing",
+            "insight": "The next kitchen raises the difficulty."
           },
           "low": {
-            "title": "Prep Progress Logged",
-            "insight": "The bench found some practical gaps, but every one is ready to improve."
+            "title": "Kitchen challenge progressing",
+            "insight": "The next kitchen raises the difficulty."
           }
         },
         "next": {
@@ -769,34 +901,30 @@
           "difficulty": "Skilled",
           "tagline": "Heat. Flavour. Pastry. Control.",
           "copy": "Now the challenge shifts from knowing what to do to understanding why it works.",
-          "button": "Enter Kitchen Craft"
-        }
+          "button": "Continue"
+        },
+        "preAdEyebrow": "PREP PROGRESS CAPTURED"
       },
       {
         "difficulty": "Skilled",
         "preAdBadge": "KITCHEN CRAFT COMPLETE",
-        "preAdTitle": "Your Kitchen Craft Results Are Ready",
-        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
-        "preAdChecks": [
-          "Six decisions checked",
-          "Kitchen score calculated",
-          "Next challenge prepared"
-        ],
-        "preAdButton": "See My Result",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "Advanced service decisions are next.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "KITCHEN CRAFT COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Craft Controller",
-            "insight": "You connected cause and effect across heat, flavour, pastry and practical kitchen decisions."
+            "title": "More than halfway through",
+            "insight": "Advanced service decisions are next."
           },
           "medium": {
-            "title": "Kitchen Craft Cleared",
-            "insight": "Your kitchen reasoning held up well as the clues became more applied."
+            "title": "More than halfway through",
+            "insight": "Advanced service decisions are next."
           },
           "low": {
-            "title": "Craft Skills Building",
-            "insight": "The skilled kitchen raised the difficulty, and completing it still moved your Chef Score forward."
+            "title": "More than halfway through",
+            "insight": "Advanced service decisions are next."
           }
         },
         "next": {
@@ -805,34 +933,30 @@
           "difficulty": "Pressure",
           "tagline": "Tickets. Timing. Safety. Priorities.",
           "copy": "The pace is about to rise and every decision must stay clean.",
-          "button": "Enter Service Rush"
-        }
+          "button": "Continue"
+        },
+        "preAdEyebrow": "KITCHEN CRAFT MAPPED"
       },
       {
         "difficulty": "Pressure",
         "preAdBadge": "SERVICE RUSH COMPLETE",
-        "preAdTitle": "Your Service Rush Results Are Ready",
-        "preAdCopy": "Unlock this kitchen result to see your stage score and current Chef Score.",
-        "preAdChecks": [
-          "Six decisions checked",
-          "Kitchen score calculated",
-          "Final challenge prepared"
-        ],
-        "preAdButton": "See My Result",
+        "preAdTitle": "Final assessment next",
+        "preAdCopy": "Only the Chef’s Table remains.",
+        "preAdButton": "Continue",
         "resultIcon": "✓",
         "resultLabel": "SERVICE RUSH COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Service Specialist",
-            "insight": "You kept timing, safety and practical judgement under control as the pace tightened."
+            "title": "Final assessment next",
+            "insight": "Only the Chef’s Table remains."
           },
           "medium": {
-            "title": "Service Rush Cleared",
-            "insight": "You kept service moving and recognised most of the decisions that mattered."
+            "title": "Final assessment next",
+            "insight": "Only the Chef’s Table remains."
           },
           "low": {
-            "title": "Service Completed",
-            "insight": "The rush applied real pressure, and you stayed in the kitchen through every decision."
+            "title": "Final assessment next",
+            "insight": "Only the Chef’s Table remains."
           }
         },
         "next": {
@@ -841,46 +965,45 @@
           "difficulty": "Final Assessment",
           "tagline": "Every kitchen skill returns.",
           "copy": "Six multi-clue decisions now stand between you and your full Chef report.",
-          "button": "Enter Chef’s Table"
-        }
+          "button": "Continue"
+        },
+        "preAdEyebrow": "SERVICE RUSH COMPLETE"
       },
       {
         "difficulty": "Final Assessment",
         "preAdBadge": "CHEF’S TABLE COMPLETE",
-        "preAdTitle": "Your Chef Score Is Ready",
-        "preAdCopy": "Your full Chef report is ready to reveal.",
+        "preAdTitle": "CHEF CHALLENGE COMPLETE",
+        "preAdCopy": "Your final Chef result is ready to reveal.",
         "preAdChecks": [
-          "30 decisions checked",
-          "Final score calculated",
-          "Chef profile ready"
+          "40 answers checked",
+          "Final result calculated",
+          "Personal result ready"
         ],
-        "preAdButton": "See My Final Result",
+        "preAdButton": "See My Result",
         "resultIcon": "✓",
         "resultLabel": "CHEF’S TABLE COMPLETE",
         "resultBands": {
           "high": {
-            "title": "Chef’s Table Standout",
-            "insight": "You connected every clue and finished with confident all-round kitchen judgement."
+            "title": "CHEF CHALLENGE COMPLETE",
+            "insight": "Your final Chef result is ready to reveal."
           },
           "medium": {
-            "title": "Final Table Cleared",
-            "insight": "You completed the final assessment with a strong, balanced kitchen performance."
+            "title": "CHEF CHALLENGE COMPLETE",
+            "insight": "Your final Chef result is ready to reveal."
           },
           "low": {
-            "title": "Chef’s Table Complete",
-            "insight": "The final table tested every area at once, and you carried the challenge through to the result."
+            "title": "CHEF CHALLENGE COMPLETE",
+            "insight": "Your final Chef result is ready to reveal."
           }
-        }
+        },
+        "preAdEyebrow": "CHEF CHALLENGE COMPLETE"
       }
     ],
     "hideJourneyLength": true,
     "continuousShell": true,
-    "compactGate": {
-      "eyebrow": "RESULT READY",
-      "title": "{stage} complete",
-      "copy": "Your kitchen score is ready.",
-      "button": "See My Result"
-    },
-    "currentScoreLabel": "CURRENT CHEF SCORE"
+    "currentScoreLabel": "CURRENT CHEF SCORE",
+    "showStageResults": false,
+    "showResultProgress": true,
+    "showCurrentScore": false
   }
 }

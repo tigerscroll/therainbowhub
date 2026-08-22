@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/prepare-quiz-assets.mjs && next build",
+    "build": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs && next build",
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
     "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-production.mjs",

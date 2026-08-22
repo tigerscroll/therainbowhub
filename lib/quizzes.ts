@@ -185,7 +185,6 @@ export type QuizQuestion = {
   answerIndex?: number;
   choiceProfileIds?: string[];
   choiceWeights?: Record<string, number>[];
-  explanation?: string;
   category?: string;
   reasoningSteps?: number;
   interactionStyle?: string;
@@ -500,7 +499,6 @@ type QuizLocaleFile = {
       calibration?: number[];
       delay?: number;
       correct?: number;
-      explanation?: string;
       category?: string;
       reasoningSteps?: number;
       interactionStyle?: string;
@@ -514,6 +512,7 @@ const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const RESERVED_SLUGS = new Set([...getSupportedLocales(), "info", "api", "_next"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
+const SOCIAL_AVATAR_POOL = Array.from({ length: 50 }, (_, index) => `/social-proof/avatars/${String(index + 1).padStart(2, "0")}.webp`);
 
 function json<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
@@ -531,6 +530,19 @@ function quizAsset(slug: string, value?: string) {
     throw new Error(`${slug}: missing public asset ${publicValue}.`);
   }
   return `/quizzes/${slug}/${publicValue}`;
+}
+
+function socialAvatarsFor(slug: string) {
+  let state = [...slug].reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619) >>> 0, 2166136261);
+  const pool = [...SOCIAL_AVATAR_POOL];
+  for (let index = pool.length - 1; index > 0; index -= 1) {
+    state ^= state << 13;
+    state ^= state >>> 17;
+    state ^= state << 5;
+    const swapIndex = (state >>> 0) % (index + 1);
+    [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
+  }
+  return pool.slice(0, 4);
 }
 
 function object(value: unknown, name: string, file: string): Record<string, unknown> {
@@ -964,7 +976,6 @@ function normalizeLocale(
         answerIndex: rawQuestion.correct,
         choiceProfileIds: profileIds.some(Boolean) ? profileIds : undefined,
         choiceWeights: weights.some((item) => Object.keys(item).length) ? weights : undefined,
-        explanation: rawQuestion.explanation,
         category: rawQuestion.category,
         reasoningSteps: rawQuestion.reasoningSteps,
         interactionStyle: rawQuestion.interactionStyle,
@@ -1189,14 +1200,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   }
   const cssFile = path.join(directory(slug), "theme.css");
   const customCss = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf8") : undefined;
-  const avatarDirectory = path.join(directory(slug), "assets", "avatars");
-  const socialAvatars = fs.existsSync(avatarDirectory)
-    ? fs.readdirSync(avatarDirectory)
-      .filter((file) => /\.(?:jpe?g|png|webp)$/i.test(file))
-      .sort()
-      .slice(0, 4)
-      .map((file) => quizAsset(slug, `assets/avatars/${file}`)!)
-    : [];
+  const socialAvatars = socialAvatarsFor(slug);
   return normalizeLocale(json(path.join(directory(slug), `${locale}.json`)), manifest, manifest.theme, customCss, socialAvatars, `${slug}/${locale}.json`);
 }
 

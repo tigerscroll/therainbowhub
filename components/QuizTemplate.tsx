@@ -45,7 +45,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
           __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=window.localStorage.getItem(k);if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS}){document.documentElement.classList.add("quiz-resuming")}else{window.localStorage.removeItem(k)}}}catch(e){try{window.localStorage.removeItem(${JSON.stringify(storageKey)})}catch(x){}}})();`,
         }}
       />
-      <QuizThemeBoundary customCss={quiz.customCss} theme={quiz.theme}>
+      <QuizThemeBoundary continuousShell={quiz.career?.continuousShell === true} customCss={quiz.customCss} theme={quiz.theme}>
         <QuizEngine locale={locale} quiz={quiz} translations={translations} />
       </QuizThemeBoundary>
     </>

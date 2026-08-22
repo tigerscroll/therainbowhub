@@ -1,7 +1,7 @@
 {
   "slug": "grammar",
   "engine": {
-    "flow": "linear",
+    "flow": "staged",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
@@ -9,14 +9,16 @@
     "rewarded": {
       "start": true,
       "stages": true,
-      "attempts": 3
+      "attempts": 3,
+      "confirmStart": false
     },
     "advanceDelayMs": 450,
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    }
+    },
+    "startOnLoad": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",

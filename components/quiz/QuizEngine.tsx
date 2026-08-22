@@ -808,6 +808,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : compactCareerGate?.button ?? careerStage?.preAdButton ?? checkpointButton}
+          {!isFinalStage && !adBusy ? <span aria-hidden="true" className="quiz-engine__primary-arrow">→</span> : null}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{isFinalStage ? checkpoint.finalAdNote ?? checkpoint.adNote : checkpoint.adNote}</p> : null}
       </section>
@@ -1051,7 +1052,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
                       <div><dt>{translations.quiz.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
                       <div><dt>{translations.quiz.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
                     </dl>
-                    {question.explanation ? <p>{question.explanation}</p> : null}
                   </article>
                 ))}
               </div>
@@ -1176,7 +1176,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
                       <div><dt>{translations.quiz.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
                       <div><dt>{translations.quiz.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
                     </dl>
-                    {question.explanation ? <p>{question.explanation}</p> : null}
                   </article>
                 ))}
               </div>
@@ -1228,9 +1227,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           question={currentQuestion}
           studyComplete={studyComplete}
         />
-        {selectedAnswer !== undefined && quiz.engine.flow.feedback === "instant" && currentQuestion.explanation ? (
-          <p className="quiz-engine__explanation">{currentQuestion.explanation}</p>
-        ) : null}
         {quiz.engine.questionAd && questionIndex + 1 >= quiz.engine.questionAd.fromQuestion
           ? <QuestionDisplayAd config={quiz.engine.questionAd} placement="below-answers" questionId={currentQuestion.id} />
           : null}
