@@ -6,22 +6,16 @@
     "intro": "Pregnancy, birth, newborn care and calm judgement—how much would you remember when every detail matters?",
     "socialProof": "81,000+ people played this",
     "cta": "Start Quiz",
-    "startPrompt": {
-      "eyebrow": "BIRTH CENTRE READY",
-      "icon": "✓",
-      "title": "Entrance Test Ready 👶",
-      "copy": "Watch a short ad to start the test.",
-      "button": "OK"
-    }
+    "startNote": "Short ad first - then it begins."
   },
   "about": {
-    "body": "This Calm Birth Centre challenge condenses entrance-level midwifery knowledge into one varied ten-question assessment. It covers pregnancy physiology, antenatal wellbeing, labour, newborn care, infection prevention and respectful communication.\n\nThe challenge is designed for curious adults, prospective midwifery students and maternity-care learners worldwide. It focuses on recognition, trends, dignity, safety and appropriate escalation rather than diagnosis, treatment or country-specific professional rules.\n\nYour final percentage reflects only the answers given in this entertainment quiz. It highlights the entrance areas that felt strongest and the details that proved more challenging; it is not a judgement of clinical competence or suitability for midwifery.",
+    "body": "This worldwide entertainment challenge explores entrance-level midwifery knowledge across 40 varied questions. It covers pregnancy physiology, antenatal wellbeing, labour, newborn care, infection prevention and respectful communication.\n\nThe five challenges become progressively more applied, moving from a first appointment into pregnancy and birth foundations, respectful safety, labour and newborn decisions, and a final integrated birth-centre assessment. Questions stay at recognition and judgement level rather than teaching diagnosis or treatment.\n\nYour final percentage reflects only the answers given in this entertainment quiz. It is a playful snapshot of the maternity-care areas that felt strongest and the topics that proved more challenging, not a judgement of clinical competence or suitability for midwifery practice.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Complete ten varied birth-centre questions and choose the response best supported by the visible information.",
-        "Correct answers stay hidden while you play, so inspect every sequence, care clue and change from baseline carefully.",
-        "Finish the assessment to reveal your Midwifery Score, strongest entrance area and complete result report."
+        "Work through each maternity-care challenge at your own pace—there is no timer or speed bonus.",
+        "Choose the single option best supported by the visible information. Correctness stays hidden until the final reveal.",
+        "Keep going as the scenarios become harder, then reveal your score and complete answer review."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This is not an accredited midwifery entrance examination, clinical assessment, professional qualification or medical advice. Maternity-care procedures and responsibilities vary; always follow local policy and qualified clinical guidance."
@@ -98,7 +92,7 @@
       "bestRound": "Best challenge",
       "showPercentage": true,
       "disclaimer": "For entertainment and general learning only. This is not an accredited midwifery entrance examination, clinical assessment, professional qualification or medical advice. Maternity-care procedures and responsibilities vary; always follow local policy and qualified clinical guidance.",
-      "showBestRound": false,
+      "showBestRound": true,
       "insights": {
         "overview": "Your midwifery score at a glance",
         "correct": "Correct answers",
@@ -110,7 +104,7 @@
         "targetRemaining": "More correct answers needed for 80%",
         "details": {
           "analysisTitle": "How to read your midwifery score",
-          "analysisCopy": "This ten-question result combines pregnancy physiology, antenatal wellbeing, labour, newborn care, infection prevention and respectful communication. Each answer moves the percentage by ten points, so the grouped skill pattern below adds important context to the headline score.",
+          "analysisCopy": "This 40-question result combines pregnancy physiology, antenatal wellbeing, labour, newborn care, infection prevention and respectful communication. Each correct answer adds 2.5 percentage points.",
           "roadmapTitle": "Inside your full midwifery report",
           "roadmapIntro": "Your score is only the first signal. Continue through the report to see which entrance areas held strongest and how your judgement changed across different birth-centre scenarios.",
           "roadmapItems": [
@@ -120,7 +114,7 @@
             "Practical next steps"
           ],
           "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The entertainment challenge target is eight correct answers out of ten. Your marker shows how close this attempt came without assessing clinical competence.",
+          "positionCopy": "The entertainment challenge target is 32 correct answers out of 40. Your marker shows how close this attempt came without assessing clinical competence.",
           "measuredTitle": "What this midwifery test measured",
           "measuredIntro": "The selected questions span three broad parts of entrance-level maternity-care thinking without teaching diagnosis or treatment.",
           "measuredAreas": [
@@ -154,14 +148,14 @@
             }
           ],
           "finalTitle": "Your result is ready",
-          "finalCopy": "You finished with {score} correct answers out of {total}. Your candidate profile for this attempt is shown below."
+          "finalCopy": "You finished with {score} correct answers out of {total}. Your profile for this attempt is shown below."
         }
       }
     }
   },
   "stages": [
     {
-      "title": "Birth Centre Challenge",
+      "title": "First Appointment",
       "questions": [
         {
           "id": "mid-r1q1",
@@ -169,32 +163,167 @@
           "presentation": "icons",
           "icons": [
             "/quizzes/midwifery/assets/icons/bladder.svg",
-            "/quizzes/midwifery/assets/icons/pancreas.svg",
             "/quizzes/midwifery/assets/icons/placenta.svg",
+            "/quizzes/midwifery/assets/icons/pancreas.svg",
             "/quizzes/midwifery/assets/icons/appendix.svg"
           ],
           "answers": [
             "Bladder",
-            "Pancreas",
             "Placenta",
+            "Pancreas",
             "Appendix"
           ],
-          "correct": 2,
+          "correct": 1,
           "category": "pregnancy_physiology",
           "explanation": "The placenta supports exchange of oxygen, nutrients and waste products between the maternal and fetal circulations."
+        },
+        {
+          "id": "mid-r1q2",
+          "question": "Why are observations recorded at more than one appointment?",
+          "answers": [
+            "To make every value identical",
+            "To replace conversation",
+            "To predict an exact birth time",
+            "To notice changes and trends over time"
+          ],
+          "correct": 3,
+          "category": "antenatal_wellbeing",
+          "explanation": "Repeated observations help reveal meaningful changes rather than relying on one isolated value."
+        },
+        {
+          "id": "mid-r1q3",
+          "question": "What does the cervix do during labour?",
+          "answers": [
+            "It gradually opens as labour progresses",
+            "It pumps blood",
+            "It produces milk",
+            "It becomes the placenta"
+          ],
+          "correct": 0,
+          "category": "labour_birth",
+          "explanation": "The cervix softens, thins and opens during labour to allow birth."
+        },
+        {
+          "id": "mid-r1q4",
+          "question": "What helps a stable newborn conserve warmth soon after birth?",
+          "answers": [
+            "A cold bath",
+            "Leaving wet blankets in place",
+            "Drying and skin-to-skin contact",
+            "Separating parent and baby routinely"
+          ],
+          "correct": 2,
+          "category": "newborn_care",
+          "explanation": "Drying and skin-to-skin contact help reduce heat loss and support early bonding."
+        },
+        {
+          "id": "mid-r1q5",
+          "question": "When should hands be cleaned around maternity care?",
+          "answers": [
+            "Only at the end of a shift",
+            "Only when gloves tear",
+            "Before clean contact and after exposure risk",
+            "Only when visibly stained"
+          ],
+          "correct": 2,
+          "category": "infection_safety",
+          "explanation": "Hand hygiene is needed at appropriate moments even when gloves are also used."
+        },
+        {
+          "id": "mid-r1q6",
+          "question": "A woman says, “I’m worried about what happens next.” What is the best first response?",
+          "answers": [
+            "Acknowledge the worry and invite her questions",
+            "Say there is nothing to worry about",
+            "Change the subject",
+            "Use technical terms immediately"
+          ],
+          "correct": 0,
+          "category": "communication_priorities",
+          "explanation": "Acknowledging emotion and listening first creates space for clear, respectful communication."
+        },
+        {
+          "id": "mid-r2q2",
+          "question": "What is one main role of amniotic fluid?",
+          "answers": [
+            "It replaces the placenta",
+            "It digests nutrients",
+            "It forms adult teeth",
+            "It cushions the developing baby"
+          ],
+          "correct": 3,
+          "category": "pregnancy_physiology",
+          "explanation": "Amniotic fluid surrounds and cushions the developing baby."
         },
         {
           "id": "mid-r2q5",
           "question": "A baby’s movement pattern clearly changes from usual. What matters most?",
           "answers": [
-            "Take the change from normal seriously",
             "Every baby must move at identical times",
+            "Take the change from normal seriously",
             "One universal count decides everything",
             "Movement never varies"
           ],
-          "correct": 0,
+          "correct": 1,
           "category": "antenatal_wellbeing",
           "explanation": "A noticeable change from the baby’s usual movement pattern warrants prompt qualified advice rather than comparison with another pregnancy."
+        }
+      ]
+    },
+    {
+      "title": "Pregnancy & Birth",
+      "questions": [
+        {
+          "id": "mid-r2q1",
+          "question": "Where does a baby normally develop during pregnancy?",
+          "presentation": "text",
+          "answers": [
+            "Inside the uterus",
+            "Inside the stomach",
+            "Inside the bladder",
+            "Inside the lung"
+          ],
+          "correct": 0,
+          "category": "pregnancy_physiology",
+          "explanation": "The uterus expands to support the developing baby throughout pregnancy."
+        },
+        {
+          "id": "mid-r2q3",
+          "question": "What connects the baby to the placenta?",
+          "answers": [
+            "The cervix",
+            "The diaphragm",
+            "The umbilical cord",
+            "The ureter"
+          ],
+          "correct": 2,
+          "category": "pregnancy_physiology",
+          "explanation": "The umbilical cord contains vessels connecting the baby with the placenta."
+        },
+        {
+          "id": "mid-r2q4",
+          "question": "Which sequence best represents oxygen reaching the baby?",
+          "presentation": "sequence",
+          "visual": {
+            "items": [
+              "MATERNAL BLOOD",
+              "PLACENTA",
+              "CORD",
+              "BABY"
+            ],
+            "columns": 4,
+            "separator": "→",
+            "ariaLabel": "Maternal blood to placenta to cord to baby"
+          },
+          "answers": [
+            "Baby → stomach → placenta → lung",
+            "Maternal blood → placenta → cord → baby",
+            "Placenta → bladder → cord → baby",
+            "Maternal blood → kidney → cervix → baby"
+          ],
+          "correct": 1,
+          "category": "pregnancy_physiology",
+          "explanation": "Oxygen from maternal blood crosses the placenta and is carried through the umbilical cord to the baby."
         },
         {
           "id": "mid-r3q2",
@@ -210,6 +339,75 @@
           "explanation": "A new severe headache with visual changes is a concerning change that warrants prompt qualified assessment."
         },
         {
+          "id": "mid-r3q4",
+          "question": "A chart records 70, 74 and 78 at three visits. What does it show?",
+          "presentation": "code",
+          "visual": {
+            "items": [
+              "VISIT 1: 70",
+              "VISIT 2: 74",
+              "VISIT 3: 78"
+            ],
+            "columns": 1,
+            "separator": "•",
+            "ariaLabel": "Values 70, 74 and 78 across three visits"
+          },
+          "answers": [
+            "No change",
+            "A steady downward trend",
+            "A missing measurement",
+            "A steady upward trend"
+          ],
+          "correct": 3,
+          "category": "antenatal_wellbeing",
+          "explanation": "Each recorded value is higher than the previous one."
+        },
+        {
+          "id": "mid-r3q5",
+          "question": "A bottle holds 1.5 L. How many millilitres is that?",
+          "answers": [
+            "150 mL",
+            "1,500 mL",
+            "500 mL",
+            "15,000 mL"
+          ],
+          "correct": 1,
+          "category": "antenatal_wellbeing",
+          "explanation": "One litre is 1,000 mL, so 1.5 litres is 1,500 mL."
+        },
+        {
+          "id": "mid-r5q1",
+          "question": "Which organ provides the muscular contractions of labour?",
+          "answers": [
+            "The bladder",
+            "The liver",
+            "The uterus",
+            "The pancreas"
+          ],
+          "correct": 2,
+          "category": "pregnancy_physiology",
+          "explanation": "The muscular wall of the uterus contracts during labour."
+        },
+        {
+          "id": "mid-r5q4",
+          "question": "The baby is born but the placenta is not yet delivered. Which labour stage is this?",
+          "presentation": "text",
+          "answers": [
+            "The third stage",
+            "The first stage",
+            "The second stage",
+            "A new pregnancy stage"
+          ],
+          "correct": 0,
+          "category": "labour_birth",
+          "explanation": "The third stage begins after the baby is born and continues until the placenta is delivered."
+        }
+      ]
+    },
+    {
+      "title": "Respect & Safety",
+      "questions": [
+        {
           "id": "mid-r4q4",
           "question": "A woman becomes tearful and says she feels overwhelmed. What should happen first?",
           "answers": [
@@ -223,29 +421,101 @@
           "explanation": "Acknowledging emotion and listening is more supportive than dismissal, comparison or unsupported reassurance."
         },
         {
-          "id": "mid-r5q4",
-          "question": "The baby is born but the placenta is not yet delivered. Which labour stage is this?",
-          "presentation": "sequence",
-          "visual": {
-            "items": [
-              "BABY BORN",
-              "PLACENTA NOT YET DELIVERED",
-              "?"
-            ],
-            "columns": 3,
-            "separator": "→",
-            "ariaLabel": "Baby has been born, placenta has not yet been delivered, identify the labour stage"
-          },
+          "id": "mid-r5q6",
+          "question": "Equipment’s sterile wrapper is torn before use. What is the safest response?",
           "answers": [
-            "The third stage",
-            "The first stage",
-            "The second stage",
-            "A new pregnancy stage"
+            "Do not treat it as sterile; replace or escalate appropriately",
+            "Tape the wrapper and proceed",
+            "Hide the tear",
+            "Touch the contents to test them"
           ],
           "correct": 0,
-          "category": "labour_birth",
-          "explanation": "The third stage begins after the baby is born and continues until the placenta is delivered."
+          "category": "infection_safety",
+          "explanation": "A damaged sterile barrier cannot be relied upon and should not be used as though intact."
         },
+        {
+          "id": "mid-r4q1",
+          "question": "A clean procedure is about to begin. What is essential immediately beforehand?",
+          "answers": [
+            "Touch several shared surfaces",
+            "Keep the same used gloves",
+            "Skip cleaning if hands look clean",
+            "Perform appropriate hand hygiene"
+          ],
+          "correct": 3,
+          "category": "infection_safety",
+          "explanation": "Hand hygiene immediately before a clean or aseptic task helps prevent harmful germs entering the body."
+        },
+        {
+          "id": "mid-r4q2",
+          "question": "A task may splash body fluid towards the eyes. What is the safest preparation?",
+          "answers": [
+            "Turn the face away only",
+            "Wear ordinary glasses as the only protection",
+            "Use appropriate eye or face protection",
+            "Ignore the stated splash risk"
+          ],
+          "correct": 2,
+          "category": "infection_safety",
+          "explanation": "Protection should match the stated exposure risk, including eye or face protection when splashing is possible."
+        },
+        {
+          "id": "mid-r4q3",
+          "question": "A woman says she does not want students present. What is the best response?",
+          "answers": [
+            "Tell her attendance removes that choice",
+            "Discuss her refusal in the corridor",
+            "Respect her decision and protect her privacy",
+            "Continue without acknowledging it"
+          ],
+          "correct": 2,
+          "category": "communication_priorities",
+          "explanation": "The person receiving care can decline additional observers and should have privacy protected."
+        },
+        {
+          "id": "mid-r4q6",
+          "question": "A woman asks to consider her options before deciding. What is the respectful response?",
+          "answers": [
+            "Pressure her into the quickest option",
+            "Withhold the alternatives",
+            "Treat questions as refusal of care",
+            "Give clear information, answer questions and allow appropriate time"
+          ],
+          "correct": 3,
+          "category": "communication_priorities",
+          "explanation": "Informed choice requires understandable information and freedom from pressure."
+        },
+        {
+          "id": "mid-r2q6",
+          "question": "Before an examination, what should happen first?",
+          "answers": [
+            "Explain it clearly and obtain informed agreement",
+            "Assume agreement from attendance",
+            "Discuss it publicly",
+            "Proceed before questions are answered"
+          ],
+          "correct": 0,
+          "category": "communication_priorities",
+          "explanation": "Respectful care requires clear information, opportunity for questions and informed consent."
+        },
+        {
+          "id": "mid-r7q6",
+          "question": "Before touching a newborn after handling shared equipment, what is required?",
+          "answers": [
+            "Only changing the room light",
+            "Appropriate hand hygiene",
+            "Touching another surface first",
+            "Waiting until the end of the day"
+          ],
+          "correct": 1,
+          "category": "infection_safety",
+          "explanation": "Clean hands help reduce transmission of harmful germs to newborns."
+        }
+      ]
+    },
+    {
+      "title": "Labour & Newborn Decisions",
+      "questions": [
         {
           "id": "mid-r6q3",
           "question": "Which change matters most?",
@@ -253,10 +523,10 @@
           "answers": [
             "The time printed on the chart",
             "The fact that labour began earlier",
-            "The combined feverish feeling, shaking and marked change from earlier",
-            "The colour of the blanket"
+            "The colour of the blanket",
+            "The combined feverish feeling, shaking and marked change from earlier"
           ],
-          "correct": 2,
+          "correct": 3,
           "category": "labour_birth",
           "explanation": "A major change with feeling feverish and shaking requires prompt qualified assessment rather than routine delay.",
           "presentation": "code",
@@ -276,17 +546,17 @@
           "presentation": "icons",
           "icons": [
             "💤",
-            "👶↔️",
             "🤐",
+            "👶↔️",
             "🙈"
           ],
           "answers": [
             "Sleeping without movement",
-            "Turning the head and opening the mouth",
             "Keeping the mouth tightly closed",
+            "Turning the head and opening the mouth",
             "Ignoring touch"
           ],
-          "correct": 1,
+          "correct": 2,
           "category": "newborn_care",
           "explanation": "Rooting, mouth opening and hand-to-mouth movements can signal readiness to feed."
         },
@@ -295,38 +565,95 @@
           "question": "What is the basic aim of skin-to-skin contact for a stable newborn?",
           "answers": [
             "Cool the baby quickly",
+            "Support warmth, calm contact and early feeding",
             "Keep parent and baby apart",
-            "Replace every clinical observation",
-            "Support warmth, calm contact and early feeding"
+            "Replace every clinical observation"
           ],
-          "correct": 3,
+          "correct": 1,
           "category": "newborn_care",
           "explanation": "Skin-to-skin contact supports thermal care, bonding and early feeding while appropriate observation continues."
         },
         {
-          "id": "mid-r5q6",
-          "question": "Equipment’s sterile wrapper is torn before use. What is the safest response?",
+          "id": "mid-r5q2",
+          "question": "Which visible pattern is most useful when describing contractions?",
           "answers": [
-            "Tape the wrapper and proceed",
-            "Do not treat it as sterile; replace or escalate appropriately",
-            "Hide the tear",
-            "Touch the contents to test them"
+            "Their frequency, duration and change over time",
+            "The room temperature alone",
+            "The clock colour",
+            "The number of people present"
+          ],
+          "correct": 0,
+          "category": "labour_birth",
+          "explanation": "Frequency, duration and how the pattern changes give useful descriptive information."
+        },
+        {
+          "id": "mid-r5q3",
+          "question": "What normally happens to the cervix as labour progresses?",
+          "answers": [
+            "It becomes thinner and opens",
+            "It becomes the umbilical cord",
+            "It moves into the chest",
+            "It produces amniotic fluid"
+          ],
+          "correct": 0,
+          "category": "labour_birth",
+          "explanation": "During labour the cervix effaces and dilates."
+        },
+        {
+          "id": "mid-r5q5",
+          "question": "Why can changing position during labour be helpful when safe and comfortable?",
+          "answers": [
+            "It guarantees an exact birth time",
+            "It can support comfort and individual coping",
+            "It removes the need for observation",
+            "One position suits everyone"
           ],
           "correct": 1,
-          "category": "infection_safety",
-          "explanation": "A damaged sterile barrier cannot be relied upon and should not be used as though intact."
+          "category": "labour_birth",
+          "explanation": "Movement and position choice may support comfort, but individual needs and circumstances vary."
         },
+        {
+          "id": "mid-r7q1",
+          "question": "Why is a stable newborn dried soon after birth?",
+          "answers": [
+            "To delay breathing",
+            "To remove the need for contact",
+            "To reduce heat loss",
+            "To test hearing"
+          ],
+          "correct": 2,
+          "category": "newborn_care",
+          "explanation": "Drying removes moisture that would otherwise increase heat loss."
+        },
+        {
+          "id": "mid-r7q3",
+          "question": "A newborn is not feeding as usual and is breathing noticeably faster. What is safest?",
+          "answers": [
+            "Wait several days without telling anyone",
+            "Choose a diagnosis at home",
+            "Give an unprescribed treatment",
+            "Recognise the change and seek prompt qualified assessment"
+          ],
+          "correct": 3,
+          "category": "newborn_care",
+          "explanation": "Poor feeding with a breathing change is concerning and needs qualified assessment, not self-treatment."
+        }
+      ]
+    },
+    {
+      "title": "Final Birth Centre",
+      "questions": [
         {
           "id": "mid-r10q6",
           "question": "Who needs immediate attention?",
           "reasoningSteps": 2,
           "answers": [
-            "Person B, because sudden bleeding, pallor and dizziness show deterioration",
             "Person A, because routine questions are quicker",
             "Both can wait for the next handover",
+            "Person B, because sudden bleeding, pallor and dizziness show deterioration",
             "Choose only by arrival time"
           ],
-          "correct": 0,
+          "correct": 2,
           "category": "communication_priorities",
           "explanation": "The combined sudden changes for Person B outweigh Person A’s stable routine need.",
           "presentation": "code",
@@ -339,32 +666,344 @@
             "separator": "•",
             "ariaLabel": "Person A is comfortable and alert with a routine feeding question. Person B has new heavy bleeding and is pale and dizzy."
           }
+        },
+        {
+          "id": "mid-r7q5",
+          "question": "How should a clean, dry umbilical cord stump generally be treated?",
+          "answers": [
+            "Cover it with unprescribed substances",
+            "Keep it clean and dry and seek advice if concerning changes appear",
+            "Pull it to make it detach",
+            "Keep it continuously wet"
+          ],
+          "correct": 1,
+          "category": "newborn_care",
+          "explanation": "Basic cord care focuses on cleanliness and dryness, with qualified review for concerning change."
+        },
+        {
+          "id": "mid-r9q1",
+          "question": "Which observation changed?",
+          "context": "Handover note — 14:00: comfortable breathing. 15:00: breathing noticeably faster; other recorded details unchanged.",
+          "answers": [
+            "The appointment date",
+            "The person’s name",
+            "The room number",
+            "Breathing changed from comfortable to noticeably faster"
+          ],
+          "correct": 3,
+          "category": "antenatal_wellbeing",
+          "explanation": "The handover shows a clear change in breathing between the two observations."
+        },
+        {
+          "id": "mid-r10q1",
+          "question": "Which explanation best links both observations?",
+          "context": "The placenta is the exchange organ. A diagram now shows reduced transfer across it and less oxygen in the cord.",
+          "reasoningSteps": 2,
+          "answers": [
+            "Reduced placental exchange can mean less oxygen reaches the baby",
+            "The bladder controls placental exchange",
+            "The cervix produces oxygen",
+            "The stomach supplies the cord directly"
+          ],
+          "correct": 0,
+          "category": "pregnancy_physiology",
+          "explanation": "The placenta supports exchange; reduced exchange can reduce oxygen transfer to the baby."
+        },
+        {
+          "id": "mid-r10q2",
+          "question": "What total and trend should be handed over?",
+          "context": "Fluid chart: 650 mL + 450 mL. Observation chart: earlier 74, latest 82.",
+          "reasoningSteps": 2,
+          "answers": [
+            "650 mL total with no change",
+            "1,100 mL total, with the latest observation higher than the first",
+            "1,650 mL total with a falling trend",
+            "450 mL total with no trend"
+          ],
+          "correct": 1,
+          "category": "antenatal_wellbeing",
+          "explanation": "650 mL plus 450 mL is 1,100 mL, and 82 is higher than 74."
+        },
+        {
+          "id": "mid-r10q3",
+          "question": "What is the safest conclusion?",
+          "context": "Earlier: regular contractions with comfortable pauses. Now: constant severe pain, pallor and faintness.",
+          "reasoningSteps": 2,
+          "answers": [
+            "The regular pattern means every later change is normal",
+            "Wait until the next planned check",
+            "Choose a named diagnosis before reporting",
+            "The sudden multi-clue change needs urgent qualified assessment"
+          ],
+          "correct": 3,
+          "category": "labour_birth",
+          "explanation": "A sudden change from regular contractions to constant severe pain with faintness requires urgent assessment."
+        },
+        {
+          "id": "mid-r10q4",
+          "question": "Which response addresses both risks?",
+          "context": "A newborn remains wet and feels cool. Breathing has also become irregular.",
+          "reasoningSteps": 2,
+          "answers": [
+            "Dry the newborn, support skin-to-skin warmth and obtain prompt qualified assessment for the breathing change",
+            "Leave wet coverings in place and wait",
+            "Give an unprescribed treatment",
+            "Separate routinely and ignore breathing"
+          ],
+          "correct": 0,
+          "category": "newborn_care",
+          "explanation": "Wet coverings increase heat loss, while irregular breathing is a concerning change requiring qualified assessment."
+        },
+        {
+          "id": "mid-r10q5",
+          "question": "What should happen before the clean task?",
+          "context": "The same gloves handled waste and are now reaching towards a clean cord-care pack.",
+          "reasoningSteps": 2,
+          "answers": [
+            "Keep the same gloves because they are intact",
+            "Touch the clean pack to test it",
+            "Remove contaminated gloves, perform hand hygiene and use appropriate clean equipment",
+            "Skip hand hygiene after removing gloves"
+          ],
+          "correct": 2,
+          "category": "infection_safety",
+          "explanation": "Waste-contaminated gloves must not move directly to a clean task; glove removal and hand hygiene address both risks."
         }
       ]
     }
   ],
   "checkpoint": {
     "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then your midwifery result unlocks.",
-    "finalBadge": "ADMISSIONS REVIEW",
-    "finalIcon": "👶",
-    "finalTitle": "Your result is ready",
-    "finalCopy": "One final short ad unlocks your midwifery score.",
-    "finalButton": "See My Results",
+    "adNote": "Short ad first — then continue.",
+    "finalAdNote": "Short ad first — then see your result.",
+    "finalBadge": "FINAL BIRTH CENTRE COMPLETE",
+    "finalIcon": "✓",
+    "finalTitle": "YOUR MIDWIFERY RESULT IS READY",
+    "finalCopy": "Your complete score and profile are ready to reveal.",
+    "finalButton": "See My Result",
     "finalChecklist": [
-      "Pregnancy and antenatal care",
-      "Labour and newborn care",
-      "Safety and communication"
+      "40 answers checked",
+      "Six maternity-care areas compared",
+      "Final score calculated"
     ],
     "reveals": [
       {
-        "badge": "ENTRANCE RESULT READY",
-        "icon": "👶",
-        "title": "Midwifery score calculated",
+        "badge": "FIRST APPOINTMENT COMPLETE",
+        "icon": "✓",
+        "title": "First care signals captured",
         "signal": "fixed",
-        "message": "All ten birth-centre answers have been checked."
+        "message": "Eight new signals have been added to your result."
+      },
+      {
+        "badge": "PREGNANCY & BIRTH COMPLETE",
+        "icon": "✓",
+        "title": "Maternity patterns mapped",
+        "signal": "fixed",
+        "message": "Eight new signals have been added to your result."
+      },
+      {
+        "badge": "RESPECT & SAFETY COMPLETE",
+        "icon": "✓",
+        "title": "Care judgement sharpened",
+        "signal": "fixed",
+        "message": "Eight new signals have been added to your result."
+      },
+      {
+        "badge": "LABOUR & NEWBORN DECISIONS COMPLETE",
+        "icon": "✓",
+        "title": "Your midwifery profile is taking shape",
+        "signal": "fixed",
+        "message": "Eight new signals have been added to your result."
+      },
+      {
+        "badge": "FINAL BIRTH CENTRE COMPLETE",
+        "icon": "✓",
+        "title": "Final result calculated",
+        "signal": "fixed",
+        "message": "Your 40 answers have been combined into the final result."
       }
     ]
   },
-  "progressLabel": "complete"
+  "progressLabel": "complete",
+  "career": {
+    "hideJourneyLength": true,
+    "continuousShell": true,
+    "showStageResults": false,
+    "showCurrentScore": false,
+    "showResultProgress": true,
+    "resultProgressLabel": "Birth-centre challenge",
+    "resultProgressComplete": "{value}% complete",
+    "currentScoreLabel": "CURRENT MIDWIFERY SCORE",
+    "levelLabel": "ROUND",
+    "scoreSuffix": "correct",
+    "journeyLabel": "BIRTH-CENTRE CHALLENGE",
+    "kitchensCleared": "{value} / {total} challenges cleared",
+    "currentRank": "CURRENT LEVEL",
+    "ranks": [
+      {
+        "afterStage": 0,
+        "label": "Challenge Started"
+      },
+      {
+        "afterStage": 5,
+        "label": "Challenge Complete"
+      }
+    ],
+    "unlockEyebrow": "BIRTH-CENTRE CHALLENGE",
+    "unlockTitle": "A new challenge is ready",
+    "unlockCopy": "Your next challenge is waiting.",
+    "finalEyebrow": "YOUR MIDWIFERY SCORE",
+    "finalCareerTitle": "CHALLENGE COMPLETE",
+    "strongestLabel": "Strongest entrance area",
+    "stages": [
+      {
+        "difficulty": "Foundation",
+        "preAdBadge": "FIRST APPOINTMENT COMPLETE",
+        "preAdTitle": "First care signals captured",
+        "preAdCopy": "Your first pregnancy, safety and communication signals are being added to the assessment.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "FIRST APPOINTMENT COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "First care signals captured",
+            "insight": "Your first pregnancy, safety and communication signals are being added to the assessment."
+          },
+          "medium": {
+            "title": "First care signals captured",
+            "insight": "Your first pregnancy, safety and communication signals are being added to the assessment."
+          },
+          "low": {
+            "title": "First care signals captured",
+            "insight": "Your first pregnancy, safety and communication signals are being added to the assessment."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "title": "PREGNANCY & BIRTH",
+          "difficulty": "DEVELOPING",
+          "tagline": "Physiology. Wellbeing. Birth foundations.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Developing",
+        "preAdBadge": "PREGNANCY & BIRTH COMPLETE",
+        "preAdTitle": "Maternity patterns mapped",
+        "preAdCopy": "Pregnancy, observation and birth signals are now refining your result.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "PREGNANCY & BIRTH COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Maternity patterns mapped",
+            "insight": "Pregnancy, observation and birth signals are now refining your result."
+          },
+          "medium": {
+            "title": "Maternity patterns mapped",
+            "insight": "Pregnancy, observation and birth signals are now refining your result."
+          },
+          "low": {
+            "title": "Maternity patterns mapped",
+            "insight": "Pregnancy, observation and birth signals are now refining your result."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "title": "RESPECT & SAFETY",
+          "difficulty": "SKILLED",
+          "tagline": "Consent. Infection prevention. Calm support.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Skilled",
+        "preAdBadge": "RESPECT & SAFETY COMPLETE",
+        "preAdTitle": "Care judgement sharpened",
+        "preAdCopy": "Safety, dignity and communication choices are shaping your final result.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "RESPECT & SAFETY COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Care judgement sharpened",
+            "insight": "Safety, dignity and communication choices are shaping your final result."
+          },
+          "medium": {
+            "title": "Care judgement sharpened",
+            "insight": "Safety, dignity and communication choices are shaping your final result."
+          },
+          "low": {
+            "title": "Care judgement sharpened",
+            "insight": "Safety, dignity and communication choices are shaping your final result."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "title": "LABOUR & NEWBORN DECISIONS",
+          "difficulty": "ADVANCED",
+          "tagline": "Changing patterns. Early care. Priorities.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Advanced",
+        "preAdBadge": "LABOUR & NEWBORN DECISIONS COMPLETE",
+        "preAdTitle": "Your midwifery profile is taking shape",
+        "preAdCopy": "Your labour and newborn-care signals are mapped. Only the final birth-centre challenge remains.",
+        "preAdButton": "Continue",
+        "resultIcon": "✓",
+        "resultLabel": "LABOUR & NEWBORN DECISIONS COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "Your midwifery profile is taking shape",
+            "insight": "Your labour and newborn-care signals are mapped. Only the final birth-centre challenge remains."
+          },
+          "medium": {
+            "title": "Your midwifery profile is taking shape",
+            "insight": "Your labour and newborn-care signals are mapped. Only the final birth-centre challenge remains."
+          },
+          "low": {
+            "title": "Your midwifery profile is taking shape",
+            "insight": "Your labour and newborn-care signals are mapped. Only the final birth-centre challenge remains."
+          }
+        },
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "title": "FINAL BIRTH CENTRE",
+          "difficulty": "FINAL ASSESSMENT",
+          "tagline": "Multiple clues. Safe escalation. Final judgement.",
+          "button": "Continue"
+        }
+      },
+      {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "FINAL BIRTH CENTRE COMPLETE",
+        "preAdTitle": "YOUR MIDWIFERY RESULT IS READY",
+        "preAdCopy": "Your complete midwifery score is ready to reveal.",
+        "preAdButton": "See My Result",
+        "resultIcon": "✓",
+        "resultLabel": "FINAL BIRTH CENTRE COMPLETE",
+        "resultBands": {
+          "high": {
+            "title": "YOUR MIDWIFERY RESULT IS READY",
+            "insight": "Your complete midwifery score is ready to reveal."
+          },
+          "medium": {
+            "title": "YOUR MIDWIFERY RESULT IS READY",
+            "insight": "Your complete midwifery score is ready to reveal."
+          },
+          "low": {
+            "title": "YOUR MIDWIFERY RESULT IS READY",
+            "insight": "Your complete midwifery score is ready to reveal."
+          }
+        },
+        "preAdChecks": [
+          "40 answers checked",
+          "Six maternity-care areas compared",
+          "Final score calculated"
+        ]
+      }
+    ]
+  }
 }

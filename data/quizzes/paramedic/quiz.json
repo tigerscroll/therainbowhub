@@ -1,7 +1,8 @@
 {
   "slug": "paramedic",
   "engine": {
-    "flow": "linear",
+    "flow": "staged",
+    "localeParity": "independent",
     "advance": "automatic",
     "feedback": "selection-only",
     "scoring": "correct-answer",
@@ -9,7 +10,8 @@
     "rewarded": {
       "start": true,
       "stages": true,
-      "attempts": 3
+      "attempts": 3,
+      "confirmStart": false
     },
     "advanceDelayMs": 450,
     "targetRatio": 0.8,

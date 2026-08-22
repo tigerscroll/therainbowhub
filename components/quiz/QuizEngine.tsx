@@ -122,9 +122,14 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
     );
   const isCompactSequence = question.presentation === "sequence"
     && visual.items.every((item) => item.length <= 7);
+  const isWordSequence = question.presentation === "sequence"
+    && visual.items.some((item) => /[A-Za-z]{8,}/.test(item));
   const isMathSequence = question.presentation === "sequence" && visual.separator === "+";
   const isDenseSequence = question.presentation === "sequence" && visual.items.length >= 4;
+  const isVeryDenseSequence = question.presentation === "sequence" && visual.items.length >= 7;
   const isFourStepSequence = question.presentation === "sequence" && visual.items.length === 4;
+  const isTextualCode = question.presentation === "code"
+    && visual.items.some((item) => /[A-Za-z]/.test(item));
   const codeRows = question.presentation === "code"
     ? visual.items.map((item) => item.split("::").map((part) => part.trim()))
     : [];
@@ -142,7 +147,7 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
   return (
     <div
       aria-label={visual.ariaLabel}
-      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}${isObservationBoard ? " quiz-engine__visual--observation-board" : ""}${isKeyValueBoard ? " quiz-engine__visual--key-value-board" : ""}`}
+      className={`quiz-engine__visual quiz-engine__visual--${question.presentation}${isVerboseSequence ? " quiz-engine__visual--verbose-sequence" : ""}${isCompactSequence ? " quiz-engine__visual--compact-sequence" : ""}${isWordSequence ? " quiz-engine__visual--word-sequence" : ""}${isMathSequence ? " quiz-engine__visual--math-sequence" : ""}${isDenseSequence ? " quiz-engine__visual--dense-sequence" : ""}${isVeryDenseSequence ? " quiz-engine__visual--very-dense-sequence" : ""}${isFourStepSequence ? " quiz-engine__visual--four-step-sequence" : ""}${isTextualCode ? " quiz-engine__visual--textual-code" : ""}${needsMobileTwoColumns ? " quiz-engine__visual--mobile-two-columns" : ""}${hasUnbalancedLastTile ? " quiz-engine__visual--balanced-last-tile" : ""}${isObservationBoard ? " quiz-engine__visual--observation-board" : ""}${isKeyValueBoard ? " quiz-engine__visual--key-value-board" : ""}`}
       style={visualStyle}
     >
       {visual.items.map((item, index) => (
@@ -177,11 +182,14 @@ function ChoiceQuestion({
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4
     && question.choices.every((choice) => choice.length <= 22);
+  const hasLongUnbrokenChoice = question.choices.some((choice) =>
+    choice.split(/\s+/).some((word) => word.length > 8)
+  );
   return (
     <>
     <QuestionImage question={question} />
     <QuestionVisual question={question} />
-    <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
+    <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}${hasLongUnbrokenChoice ? " quiz-engine__answers--long-word" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
       {question.choices.map((choice, index) => {
         const selected = answer === index;
         const icon = question.icons?.[index];

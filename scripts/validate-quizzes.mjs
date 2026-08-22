@@ -284,26 +284,27 @@ for (const folder of folders) {
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result profile thresholds must match the launch specification.`);
   }
   if (folder.name === "iq") {
-    const approvedIds = ["iq-r1q2", "iq-r6q2", "iq-r4q3", "iq-r5q3", "iq-r6q3", "iq-r7q5", "iq-r2q5", "iq-r9q3", "iq-r10q1", "iq-r10q5"];
     const ids = sourceQuestions.map((question) => question.id);
     const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
+    const categoryCounts = sourceQuestions.reduce((counts, question) => ({ ...counts, [question.category]: (counts[question.category] ?? 0) + 1 }), {});
     const supportedPresentations = new Set(["text", "icons", "sequence", "grid", "code", "spatial"]);
     fail(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"].every((file) => localeFiles.includes(file)), `${folder.name}: IQ must retain every existing locale.`);
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: compact English IQ must use independent locale flow.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.derivedScore === undefined, `${folder.name}: IQ must use an 80% Smart Score without a derived IQ score.`);
-    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: IQ must contain one stage of ten puzzles.`);
-    fail(JSON.stringify(ids) === JSON.stringify(approvedIds), `${folder.name}/en.json: IQ must retain the approved ten-puzzle order.`);
-    fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(source.landing?.intro ?? ""), `${folder.name}/en.json: compact IQ landing copy must not promise rounds or an IQ score.`);
-    fail(source.results?.name === "YOUR SMART SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Smart Score.`);
-    fail(source.landing?.cta === "Start", `${folder.name}/en.json: landing CTA must remain Start.`);
-    fail(source.results?.score?.reviewUnlock?.button === "Reveal Incorrect Answers", `${folder.name}/en.json: rewarded incorrect-answer reveal copy is incomplete.`);
-    fail(new Set(ids).size === 10, `${folder.name}/en.json: IQ needs ten unique stable question IDs.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every compact IQ puzzle needs four unique choices.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every compact IQ puzzle needs one valid correct index.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([3, 3, 2, 2]), `${folder.name}/en.json: compact IQ correct positions must keep their irregular 3/3/2/2 balance.`);
-    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every compact IQ puzzle needs a result explanation.`);
-    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact IQ screens must not use separate context banners.`);
-    fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported compact IQ presentation.`);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.derivedScore === undefined, `${folder.name}: Intelligence Test must use an 80% percentage target without a derived IQ score.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.rewarded?.confirmStart === false, `${folder.name}: Intelligence Test rewarded flow must match Memory and Years Left.`);
+    fail(source.title === "Only 7% Pass This Intelligence Test", `${folder.name}/en.json: title changed.`);
+    fail(source.landing?.cta === "Start Test" && source.landing?.startNote === "Short ad first - then it begins." && source.landing?.startPrompt === undefined, `${folder.name}/en.json: direct rewarded landing flow changed.`);
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Intelligence Test must contain five stages of eight puzzles.`);
+    fail(new Set(ids).size === 40, `${folder.name}/en.json: Intelligence Test needs 40 unique stable question IDs.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: correct positions must remain perfectly balanced 10/10/10/10.`);
+    fail(JSON.stringify(categoryCounts) === JSON.stringify({ pattern: 7, numerical: 7, verbal: 6, spatial: 7, attention: 6, logic: 7 }), `${folder.name}/en.json: thinking-area balance changed.`);
+    fail(source.results?.name === "YOUR INTELLIGENCE TEST SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Intelligence Test Score.`);
+    fail(source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: final answer review must be free.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every Intelligence Test puzzle needs four unique choices.`);
+    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Intelligence Test puzzle needs one valid correct index.`);
+    fail(sourceQuestions.every((question) => typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every Intelligence Test puzzle needs a result explanation.`);
+    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: question screens must not use separate context banners.`);
+    fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported Intelligence Test presentation.`);
     for (const [index, question] of sourceQuestions.entries()) {
       const location = `${folder.name}/en.json: question ${index + 1}`;
       if (["sequence", "grid", "code", "spatial"].includes(question.presentation)) {
@@ -311,11 +312,13 @@ for (const folder of folders) {
         fail(typeof question.visual?.ariaLabel === "string" && question.visual.ariaLabel.trim(), `${location} visual needs an accessible label.`);
       }
     }
-    fail(sourceQuestions.find((question) => question.id === "iq-r2q5")?.visual?.items?.[3] === "H → J  |  5 → 10", `${folder.name}/en.json: the two-rule attention trap is required.`);
-    fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2), `${folder.name}/en.json: the final three IQ puzzles must require multi-step reasoning.`);
+    fail(sourceQuestions.find((question) => question.id === "iq-s4q2")?.visual?.items?.[3] === "H → J  |  5 → 10", `${folder.name}/en.json: the two-rule attention trap is required.`);
+    fail(source.stages[4].questions.every((question) => question.reasoningSteps === 2), `${folder.name}/en.json: all eight final Intelligence Vault puzzles must require multi-step reasoning.`);
     const details = source.results?.score?.insights?.details;
-    fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: compact IQ needs the full Smart Score report.`);
-    fail(source.checkpoint?.reveals?.length === 1 && source.checkpoint?.finalButton === "See My Results" && source.results?.score?.showBestRound === false, `${folder.name}/en.json: compact IQ final gate settings changed.`);
+    fail(details?.roadmapItems?.length === 4 && details?.measuredAreas?.length === 3 && details?.tips?.length === 3, `${folder.name}/en.json: Intelligence Test needs the full result report.`);
+    fail(source.career?.hideJourneyLength === true && source.career?.continuousShell === true && source.career?.showStageResults === false && source.career?.showCurrentScore === false && source.career?.showResultProgress === true, `${folder.name}/en.json: progress-only persistent journey settings changed.`);
+    fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && !stage.preAdChecks) && source.career.stages[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: stage-result gates changed.`);
+    fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalButton === "See My Result" && source.results?.score?.showBestRound === true, `${folder.name}/en.json: final gate or result settings changed.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: IQ profile thresholds are incorrect.`);
   }
   if (folder.name === "biology") {
@@ -458,20 +461,13 @@ for (const folder of folders) {
     fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.insights?.details, "chef/en.json: final percentage, best kitchen and complete result report are required.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), "chef/en.json: result profile thresholds changed.");
   }
-  if (["grammar", "paramedic", "vision", "nursing", "midwifery"].includes(folder.name)) {
+  if (["grammar", "vision"].includes(folder.name)) {
     const specifications = {
       grammar: {
         title: "Only 10% Can Pass This Grammar Quiz",
         cta: "Start Quiz",
         ids: ["grammar-r2q3", "grammar-r10q1", "grammar-r3q1", "grammar-r4q3", "grammar-r5q4", "grammar-r10q4", "grammar-r10q5", "grammar-r9q5", "grammar-r7q2", "grammar-r10q6"],
         categories: { sentence_building: 2, verbs_pronouns: 3, punctuation: 3, precision: 2 },
-        positions: [2, 3, 2, 3],
-      },
-      paramedic: {
-        title: "Only 8% Pass This Paramedic Entrance Exam",
-        cta: "Start Test",
-        ids: ["paramedic-r2q1", "paramedic-r3q2", "paramedic-r4q3", "paramedic-r5q2", "paramedic-r6q2", "paramedic-r7q2", "paramedic-r8q1", "paramedic-r9q4", "paramedic-r10q3", "paramedic-r10q6"],
-        categories: { anatomy_physiology: 1, observation_vitals: 2, numeracy_measurement: 2, scene_safety: 2, communication_handover: 1, reasoning_priorities: 2 },
         positions: [2, 3, 2, 3],
       },
       vision: {
@@ -482,24 +478,6 @@ for (const folder of folders) {
         positions: [3, 2, 3, 2],
         dimensionLabels: ["Colour and memory", "Detail and attention", "Patterns and space"],
         presentations: 5,
-      },
-      nursing: {
-        title: "Only 7% Pass This Nursing Entrance Exam",
-        cta: "Start Quiz",
-        ids: ["nurse-r1q1", "nurse-r3q2", "nurse-r4q3", "nurse-r6q3", "nurse-r5q2", "nurse-r2q1", "nurse-r3q5", "nurse-r7q2", "nurse-r10q3", "nurse-r10q6"],
-        categories: { anatomy_physiology: 2, numeracy_measurement: 2, infection_safety: 1, communication_compassion: 1, observation_vitals: 2, reasoning_priorities: 2 },
-        positions: [3, 3, 2, 2],
-        dimensionLabels: ["Clinical foundations", "Observation and priorities", "Safety and communication"],
-        presentations: 4,
-      },
-      midwifery: {
-        title: "Only 7% Pass This Midwifery Entrance Exam",
-        cta: "Start Quiz",
-        ids: ["mid-r1q1", "mid-r2q5", "mid-r3q2", "mid-r4q4", "mid-r5q4", "mid-r6q3", "mid-r7q2", "mid-r7q4", "mid-r5q6", "mid-r10q6"],
-        categories: { pregnancy_physiology: 1, antenatal_wellbeing: 2, communication_priorities: 2, labour_birth: 2, newborn_care: 2, infection_safety: 1 },
-        positions: [3, 3, 2, 2],
-        dimensionLabels: ["Pregnancy and antenatal care", "Labour and newborn care", "Safety and communication"],
-        presentations: 4,
       },
     };
     const specification = specifications[folder.name];
@@ -550,11 +528,6 @@ for (const folder of folders) {
       fail(JSON.stringify(source.results?.dimensions?.map((dimension) => dimension.label)) === JSON.stringify(["Sentence building", "Verbs and pronouns", "Punctuation", "Precision"]), "grammar/en.json: compact Grammar needs its four meaningful result dimensions.");
       fail(!/\bwhom\b/i.test(questionCopy) && !/\bJames(?:['’]s|['’])\b/.test(questionCopy), "grammar/en.json: disputed worldwide-English variants are not allowed.");
     }
-    if (folder.name === "paramedic") {
-      const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|extricat\w*|reduce a fracture|perform a procedure|911|999|112)\b/i;
-      const questionCopy = sourceQuestions.map((question) => [question.question, question.context, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
-      fail(!prohibitedClinicalCopy.test(questionCopy), "paramedic/en.json: questions must not teach treatment procedures, medication, emergency numbers or local protocol.");
-    }
     if (folder.name === "vision") {
       const memoryCue = sourceQuestions.find((question) => question.id === "vision-r9q5")?.study;
       const memoryQuestion = sourceQuestions.find((question) => question.id === "vision-r9q5");
@@ -581,12 +554,60 @@ for (const folder of folders) {
       );
       fail(sourceQuestions.some((question) => question.visual?.ariaLabel === "Simultaneous contrast panels"), "vision/en.json: the genuine simultaneous-contrast interaction is required.");
     }
-    if (["nursing", "midwifery"].includes(folder.name)) {
-      const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|resuscitat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|perform a procedure|911|999|112)\b/i;
-      const questionCopy = sourceQuestions.map((question) => [question.question, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
-      fail(!prohibitedClinicalCopy.test(questionCopy), `${folder.name}/en.json: compact clinical content must stay at safe recognition and escalation level.`);
-      fail(sourceQuestions.filter((question) => question.reasoningSteps === 2).length >= 2, `${folder.name}/en.json: compact clinical challenge needs at least two multi-clue questions.`);
-    }
+  }
+  if (["paramedic", "nursing", "midwifery"].includes(folder.name)) {
+    const specifications = {
+      paramedic: {
+        title: "Only 8% Pass This Paramedic Entrance Exam",
+        cta: "Start Test",
+        categories: { anatomy_physiology: 7, observation_vitals: 6, numeracy_measurement: 7, scene_safety: 7, communication_handover: 7, reasoning_priorities: 6 },
+        progress: "Rapid-response assessment",
+      },
+      nursing: {
+        title: "Only 7% Pass This Nursing Entrance Exam",
+        cta: "Start Quiz",
+        categories: { anatomy_physiology: 7, numeracy_measurement: 7, infection_safety: 7, communication_compassion: 6, observation_vitals: 7, reasoning_priorities: 6 },
+        progress: "Nursing challenge",
+      },
+      midwifery: {
+        title: "Only 7% Pass This Midwifery Entrance Exam",
+        cta: "Start Quiz",
+        categories: { pregnancy_physiology: 7, antenatal_wellbeing: 7, communication_priorities: 6, labour_birth: 7, newborn_care: 7, infection_safety: 6 },
+        progress: "Birth-centre challenge",
+      },
+    };
+    const specification = specifications[folder.name];
+    const counts = Object.fromEntries(Object.keys(specification.categories).map((category) => [
+      category,
+      sourceQuestions.filter((question) => question.category === category).length,
+    ]));
+    const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
+    const prohibitedClinicalCopy = /\b(?:administer\w*|prescrib\w*|medication dose|dosage|intubat\w*|resuscitat\w*|defibrillat\w*|CPR ratio|oxygen (?:flow|setting)|extricat\w*|reduce a fracture|perform a procedure|911|999|112)\b/i;
+    const questionCopy = sourceQuestions.map((question) => [question.question, question.context, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
+
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: five-stage clinical quiz must launch in English only.`);
+    fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent" && config.engine?.scoring === "correct-answer", `${folder.name}: five-stage clinical flow must use independent staged correct-answer scoring.`);
+    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.rewarded?.confirmStart === false, `${folder.name}: direct rewarded Start and five result gates are required.`);
+    fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, `${folder.name}: timing or 80% target changed.`);
+    fail(source.title === specification.title && source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === specification.cta, `${folder.name}/en.json: approved landing copy changed.`);
+    fail(source.landing?.startPrompt === undefined && /short ad first/i.test(source.landing?.startNote ?? ""), `${folder.name}/en.json: landing must trigger the rewarded ad directly without a confirmation prompt.`);
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: needs five stages of eight questions.`);
+    fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, `${folder.name}/en.json: needs 40 unique stable question IDs.`);
+    fail(JSON.stringify(counts) === JSON.stringify(specification.categories), `${folder.name}/en.json: balanced clinical category distribution changed.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: correct positions must remain perfectly balanced.`);
+    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), `${folder.name}/en.json: question stems must stay mobile-friendly.`);
+    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4 && Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4 && typeof question.explanation === "string" && question.explanation.trim()), `${folder.name}/en.json: every question needs four unique choices, one valid answer and an explanation.`);
+    fail(sourceQuestions.every((question) => question.delay === undefined), `${folder.name}/en.json: all questions must use the shared 450ms transition.`);
+    fail(!prohibitedClinicalCopy.test(questionCopy), `${folder.name}/en.json: content must stay at safe recognition and escalation level.`);
+    fail(sourceQuestions.filter((question) => question.reasoningSteps === 2).length >= 6, `${folder.name}/en.json: the expanded clinical challenge needs at least six multi-clue questions.`);
+    fail(source.career?.continuousShell === true && source.career?.hideJourneyLength === true && source.career?.showStageResults === false && source.career?.showCurrentScore === false, `${folder.name}/en.json: the persistent hidden-length shell is required.`);
+    fail(source.career?.showResultProgress === true && source.career?.resultProgressLabel === specification.progress && source.career?.stages?.length === 5, `${folder.name}/en.json: five-step profile-building progress is incomplete.`);
+    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && stage.preAdChecks === undefined && stage.next?.button === "Continue"), `${folder.name}/en.json: intermediate gates must remain concise and use Continue.`);
+    fail(source.career?.stages?.[4]?.preAdButton === "See My Result" && source.career.stages[4].preAdChecks?.length === 3, `${folder.name}/en.json: final rewarded result gate is incomplete.`);
+    fail(source.checkpoint?.reveals?.length === 5 && source.checkpoint?.finalChecklist?.length === 3, `${folder.name}/en.json: one checkpoint per stage and a complete final reveal are required.`);
+    fail(source.results?.score?.showPercentage === true && source.results?.score?.showBestRound === true && source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: final result must include percentage, best stage and free answer review.`);
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: result thresholds changed.`);
+    fail(source.about?.howToPlay?.steps?.length === 3 && /40 varied questions/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About and How to Play must describe the expanded flow.`);
   }
   if (folder.name === "idiom") {
     const targetMap = [
@@ -915,17 +936,24 @@ for (const folder of folders) {
     if (folder.name === "iq") {
       if (localeFile === "en.json") {
         fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: compact Smart Score intro contains obsolete IQ or round copy.`);
+        const mirror = questions.find((question) => question.id === "iq-s1q4");
+        fail(mirror?.presentation === "spatial" && mirror?.correct === 2 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect up-right to up-left.`);
+        const letterCode = questions.find((question) => question.id === "iq-s2q2");
+        const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
+        fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
+        const linking = questions.find((question) => question.id === "iq-s1q3");
+        fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: linking-word puzzle changed.`);
       } else {
         fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: legacy localized IQ landing intro must use numeral 10.`);
-      }
-      const mirror = questions.find((question) => question.id === "iq-r5q3");
-      fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
-      const letterCode = questions.find((question) => question.id === "iq-r6q3");
-      const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
-      fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-      for (const id of localeFile === "en.json" ? ["iq-r4q3"] : ["iq-r4q3", "iq-r10q3"]) {
-        const linking = questions.find((question) => question.id === id);
-        fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
+        const mirror = questions.find((question) => question.id === "iq-r5q3");
+        fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
+        const letterCode = questions.find((question) => question.id === "iq-r6q3");
+        const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
+        fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
+        for (const id of ["iq-r4q3", "iq-r10q3"]) {
+          const linking = questions.find((question) => question.id === id);
+          fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
+        }
       }
     }
     if (folder.name === "biology") {
