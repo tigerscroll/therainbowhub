@@ -808,7 +808,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : compactCareerGate?.button ?? careerStage?.preAdButton ?? checkpointButton}
-          {!isFinalStage && !adBusy ? <span aria-hidden="true" className="quiz-engine__primary-arrow">→</span> : null}
+          {!isFinalStage && !adBusy ? (
+            <span aria-hidden="true" className="quiz-engine__primary-arrow">
+              <svg focusable="false" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          ) : null}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{isFinalStage ? checkpoint.finalAdNote ?? checkpoint.adNote : checkpoint.adNote}</p> : null}
       </section>
