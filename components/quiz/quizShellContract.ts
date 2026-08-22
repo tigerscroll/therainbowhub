@@ -268,13 +268,19 @@ export const quizShellContractCss = String.raw`
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__primary > .quiz-engine__primary-arrow {
   display: inline-flex;
-  flex: 0 0 auto;
+  width: 1.08em;
+  height: 1.08em;
+  flex: 0 0 1.08em;
   align-items: center;
   justify-content: center;
   margin-inline: 0 !important;
-  font-size: 1.15em;
-  font-weight: 950;
-  line-height: 1;
+  line-height: 0;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__primary > .quiz-engine__primary-arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Every landing uses the same start affordance, regardless of legacy theme rules. */
