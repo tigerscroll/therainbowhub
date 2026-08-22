@@ -296,11 +296,11 @@ for (const folder of folders) {
       "INTELLIGENCE TEST COMPLETE",
     ];
     const expectedChallengeCopy = [
-      "1 of 5 challenges cleared.",
-      "Two of five challenges cleared.",
-      "Three of five challenges cleared. Advanced puzzles are next.",
-      "Four of five challenges cleared. One final challenge remains.",
-      "All 40 answers are in. Your result is ready to reveal.",
+      "The vault gets harder from here.",
+      "The next puzzles demand sharper reasoning.",
+      "Advanced puzzles are next.",
+      "One final challenge remains.",
+      "Your result is ready to reveal.",
     ];
     const hasExactChallengeProgression = source.career?.stages?.every((stage, index) => (
       stage.preAdTitle === expectedChallengeTitles[index]
@@ -610,26 +610,23 @@ for (const folder of folders) {
     const questionCopy = sourceQuestions.map((question) => [question.question, question.context, question.answers?.[question.correct], question.explanation, ...(question.visual?.items ?? [])].filter(Boolean).join(" ")).join("\n");
     const expectedExamTitles = [
       "First exam section complete",
-      "40% of the exam complete",
+      "Entrance exam progressing",
       "More than halfway through",
       "Final assessment next",
       `${specification.label.toUpperCase()} ENTRANCE EXAM COMPLETE`,
     ];
     const expectedExamCopy = [
-      "1 of 5 sections complete.",
-      "Two of five sections complete.",
-      "Three of five exam sections complete.",
-      "Four of five sections complete. Only the final assessment remains.",
-      "All five sections are complete. Your result is ready to reveal.",
+      "Good start. The next section is ready.",
+      "The next section raises the difficulty.",
+      "The advanced section is next.",
+      "Only the final section remains.",
+      "Your result is ready to reveal.",
     ];
     const expectedRevealTitles = [
       ...expectedExamTitles.slice(0, 4),
-      "Entrance exam complete",
+      "ENTRANCE EXAM COMPLETE",
     ];
-    const expectedRevealCopy = [
-      ...expectedExamCopy.slice(0, 4),
-      "All five sections are complete. Your result is ready.",
-    ];
+    const expectedRevealCopy = expectedExamCopy;
     const expectedNextEyebrows = [
       "NEXT EXAM SECTION · DEVELOPING",
       "NEXT EXAM SECTION · SKILLED",
@@ -693,7 +690,7 @@ for (const folder of folders) {
       const finalIds = source.stages[4].questions.map((question) => question.id);
       const combinedVolume = sourceQuestions.find((question) => question.id === "paramedic-r3q3");
       fail(JSON.stringify(finalIds) === JSON.stringify(["paramedic-r10q6", "paramedic-r10q1", "paramedic-r10q3", "paramedic-r10q2", "paramedic-r8q2", "paramedic-r10q4", "paramedic-r9q3", "paramedic-r9q6"]), "paramedic/en.json: Final Response rhythm changed.");
-      fail(combinedVolume?.question === "What is the combined recorded volume in millilitres?" && JSON.stringify(combinedVolume?.visual?.items) === JSON.stringify(["0.3 L", "450 mL", "250 mL", "?"]) && combinedVolume?.correct === 2, "paramedic/en.json: combined-volume question must require litre-to-millilitre conversion.");
+      fail(combinedVolume?.question === "What is the combined recorded volume in millilitres?" && combinedVolume?.presentation === "spatial" && JSON.stringify(combinedVolume?.visual?.items) === JSON.stringify(["0.3 L + 450 mL + 250 mL = ?"]) && combinedVolume?.correct === 2, "paramedic/en.json: combined-volume question must use a clean, single-line litre-to-millilitre equation.");
     }
     if (folder.name === "nursing") {
       const advancedNumeracy = sourceQuestions.find((question) => question.id === "nurse-r3q1");
