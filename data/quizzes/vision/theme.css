@@ -289,15 +289,15 @@
 [data-quiz-theme="vision"] .quiz-engine__visual--code > span > strong { color: #183f67; }
 
 /* Rotation puzzle: numbered reading order without competing connector arrows. */
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   padding: 14px;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual > span {
   min-width: 0;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual > span > strong {
   position: relative;
   display: grid;
   min-height: 92px;
@@ -306,7 +306,7 @@
   font-size: 38px;
   line-height: 1;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong::before {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual > span > strong::before {
   position: absolute;
   top: 9px;
   left: 10px;
@@ -322,10 +322,10 @@
   font: 800 12px/1 system-ui, sans-serif;
   letter-spacing: 0;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual {
   counter-reset: vision-rotation-step;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span:last-child > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual > span:last-child > strong {
   border: 2px dashed rgba(49,185,208,.58);
   background: rgba(223,245,247,.72);
 }
@@ -379,11 +379,11 @@
   [data-quiz-theme="vision"] .quiz-engine__landing .quiz-engine__primary { width: min(100%, 350px); min-height: 58px; font-size: 18px; }
   [data-quiz-theme="vision"] .quiz-engine__visual--spatial > span > strong,
   [data-quiz-theme="vision"] .quiz-engine__visual--grid > span > strong { font-size: clamp(24px, 8vw, 35px); }
-  [data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] {
+  [data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual {
     gap: 9px;
     padding: 10px;
   }
-  [data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four numbered rotation steps: northeast, southeast, southwest, then unknown"] > span > strong {
+  [data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r4q3"] .quiz-engine__visual > span > strong {
     min-height: 78px;
     padding-top: 20px;
     font-size: 32px;
@@ -397,31 +397,12 @@
 }
 
 
-/* Fixed Vision perception panels. */
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span > strong {
-  display: grid;
-  min-width: 46px;
-  min-height: 54px;
-  place-items: center;
-  font-size: 0;
-}
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(-n+5) > strong::after {
-  width: 12px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--vision-indigo);
-  content: "";
-}
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(2) > strong::after,
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(4) > strong::after { width: 23px; }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:nth-child(3) > strong::after { width: 35px; }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Explicit circle-size sequence"] > span:last-child > strong { font-size: 29px; }
-
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] {
+/* Fixed Vision perception panels. Stable question IDs keep them working in every locale. */
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q1"] .quiz-engine__visual {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q1"] .quiz-engine__visual > span > strong {
   position: relative;
   display: grid;
   min-height: 126px;
@@ -433,8 +414,8 @@
   color: transparent;
   font-size: 0;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span:nth-child(2) > strong { background: #17253a; }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Simultaneous contrast panels"] > span > strong::after {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q1"] .quiz-engine__visual > span:nth-child(2) > strong { background: #17253a; }
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r9q1"] .quiz-engine__visual > span > strong::after {
   width: 48px;
   aspect-ratio: 1;
   border-radius: 5px;
@@ -443,16 +424,16 @@
   content: "";
 }
 
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Nine fixed blue swatches with one teal shift"] > span > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r8q1"] .quiz-engine__visual > span > strong {
   min-height: 55px;
   border: 0;
   background: #346fb0;
   color: transparent;
   font-size: 0;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Nine fixed blue swatches with one teal shift"] > span:nth-child(8) > strong { background: #258e9b; }
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r8q1"] .quiz-engine__visual > span:nth-child(8) > strong { background: #258e9b; }
 
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four close blue swatches with a subtly different bottom-right tile"] > span > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r1q1"] .quiz-engine__visual > span > strong {
   min-height: 72px;
   border: 0;
   border-radius: 14px;
@@ -461,17 +442,17 @@
   font-size: 0;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four close blue swatches with a subtly different bottom-right tile"] > span:nth-child(4) > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r1q1"] .quiz-engine__visual > span:nth-child(4) > strong {
   background: #3d69ad;
 }
 
 /* Device-stable half-circle comparison: no font glyph geometry. */
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span > strong {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r3q4"] .quiz-engine__visual > span > strong {
   min-height: 76px;
   color: transparent;
   font-size: 0;
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span > strong::before {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r3q4"] .quiz-engine__visual > span > strong::before {
   justify-self: center;
   align-self: center;
   width: 42px;
@@ -482,7 +463,7 @@
   box-shadow: 0 4px 10px rgba(10,32,57,.1);
   content: "";
 }
-[data-quiz-theme="vision"] .quiz-engine__visual[aria-label="Four half-filled circles; the third is filled on the opposite side"] > span:nth-child(3) > strong::before {
+[data-quiz-theme="vision"] .quiz-engine__question[data-question-id="vision-r3q4"] .quiz-engine__visual > span:nth-child(3) > strong::before {
   background: linear-gradient(90deg, #fffdf7 0 50%, var(--vision-navy) 50% 100%);
 }
 

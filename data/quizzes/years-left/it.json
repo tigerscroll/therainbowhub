@@ -1,0 +1,1377 @@
+{
+  "title": "Quanto ti resta da vivere?",
+  "summary": "Ritmo quotidiano, sonno, stress e abitudini alimentano una previsione sorprendente.",
+  "landing": {
+    "intro": "Racconta all’IA come vivi davvero e calcolerà quanto tempo ti resta.",
+    "cta": "Inizia"
+  },
+  "about": {
+    "body": "Questo quiz giocoso esplora routine, alimentazione, movimento, sonno, stress, relazioni e recupero per produrre una stima immaginaria e un profilo dello stile di vita.\n\nOgni fase affina la stima in base alle risposte. L’ultima scelta applica soltanto una piccola regolazione e non può determinare da sola il risultato.\n\nIl quiz non usa cartelle cliniche, età reale, precedenti familiari o valutazioni individuali del rischio. Il numero mostrato è esclusivamente un meccanismo di intrattenimento.",
+    "howToPlay": {
+      "title": "Come si gioca",
+      "steps": [
+        "Scegli senza pensarci troppo la risposta che ti rappresenta meglio.",
+        "Completa ogni fase per affinare gradualmente la stima.",
+        "Termina la calibrazione finale per scoprire la stima giocosa e il profilo."
+      ]
+    },
+    "disclaimer": "Solo per divertimento e riflessione personale. Questo quiz non prevede durata della vita, salute o futuro. Per dubbi sulla salute, rivolgiti a un professionista qualificato."
+  },
+  "results": {
+    "name": "PROFILO DI STILE DI VITA",
+    "profiles": [
+      {
+        "id": "centenarian_energy",
+        "tier": "Energia da centenario",
+        "title": "Energia da centenario",
+        "copy": "Le risposte indicano abitudini abbastanza regolari, un po’ di movimento e una buona capacità di recupero. La stima prende la direzione più serena del test."
+      },
+      {
+        "id": "steady_long_game",
+        "tier": "Lunga distanza",
+        "title": "Lunga distanza",
+        "copy": "Il tuo stile di vita sembra pensato per la lunga distanza: scelte abbastanza stabili, un ritmo sensato e spazio per il piacere."
+      },
+      {
+        "id": "balanced_realist",
+        "tier": "Realista equilibrato",
+        "title": "Realista equilibrato",
+        "copy": "Unisci prudenza e spontaneità senza sbilanciarti del tutto. Questo mix produce una stima equilibrata."
+      },
+      {
+        "id": "weekend_chaos",
+        "tier": "Caos del fine settimana",
+        "title": "Caos del fine settimana",
+        "copy": "Le risposte trasmettono energia vivace, imprevedibile e piena di storie. La costanza non è sempre presente, ma lo slancio sì."
+      },
+      {
+        "id": "stress_sprinter",
+        "tier": "Velocista dello stress",
+        "title": "Velocista dello stress",
+        "copy": "Sai accelerare sotto pressione, a volte sacrificando il recupero. Più pause reali cambierebbero soprattutto questo aspetto della stima."
+      },
+      {
+        "id": "comfort_creature",
+        "tier": "Amante della comodità",
+        "title": "Amante della comodità",
+        "copy": "Preferisci ciò che è familiare, tranquillo e piacevole. Questa stabilità protegge il tuo ritmo, anche se un po’ più di movimento potrebbe rafforzarlo."
+      },
+      {
+        "id": "adventure_fuse",
+        "tier": "Spirito d’avventura",
+        "title": "Spirito d’avventura",
+        "copy": "La novità ti attira e stare fermo ti pesa. La stima riflette sia questa curiosità sia il bisogno di recuperare."
+      },
+      {
+        "id": "reset_needed",
+        "tier": "Serve una pausa",
+        "title": "Serve una pausa",
+        "copy": "Le risposte suggeriscono che la tua routine chiede meno pressione e più recupero. Piccoli cambiamenti potrebbero modificare molto il quadro."
+      }
+    ],
+    "dimensions": [
+      {
+        "label": "Energia costante",
+        "profiles": [
+          "centenarian_energy",
+          "steady_long_game"
+        ]
+      },
+      {
+        "label": "Equilibrio e recupero",
+        "profiles": [
+          "balanced_realist",
+          "comfort_creature",
+          "reset_needed"
+        ]
+      },
+      {
+        "label": "Slancio e avventura",
+        "profiles": [
+          "weekend_chaos",
+          "adventure_fuse"
+        ]
+      },
+      {
+        "label": "Pressione e ritmo",
+        "profiles": [
+          "stress_sprinter"
+        ]
+      }
+    ],
+    "estimate": {
+      "eyebrow": "LA TUA STIMA",
+      "ageSuffix": "ANNI",
+      "strongestSignal": "Segnale principale",
+      "wildcard": "Fattore imprevedibile",
+      "consistency": "Coerenza delle risposte",
+      "consistencyLabels": {
+        "high": "Alta",
+        "medium": "Media",
+        "mixed": "Mista"
+      },
+      "reviewUnlock": {
+        "rewarded": false,
+        "title": "Scopri cosa ha influenzato il risultato",
+        "copy": "Guarda quali scelte hanno alzato, abbassato o lasciato invariata la stima.",
+        "button": "Vedi i fattori",
+        "adNote": "Un breve annuncio, poi apparirà l’analisi di ogni scelta.",
+        "reviewTitle": "Cosa ha influenzato la stima",
+        "yourChoice": "La tua scelta",
+        "raised": "Stima aumentata",
+        "lowered": "Stima ridotta",
+        "neutral": "Segnale neutro",
+        "raisedCopy": "Questa scelta ha aggiunto un segnale favorevole alla stima.",
+        "loweredCopy": "Questa scelta ha aggiunto un segnale sfavorevole alla stima.",
+        "neutralCopy": "Questa scelta ha aggiunto contesto senza modificare in modo rilevante la stima."
+      },
+      "insights": {
+        "overview": "La stima in breve",
+        "estimate": "La tua stima",
+        "signal": "Segnale di stile di vita principale",
+        "consistency": "Coerenza delle risposte",
+        "breakdown": "Combinazione dei segnali",
+        "snapshot": "Cosa dice il profilo",
+        "details": {
+          "analysisTitle": "Come è stata costruita la stima",
+          "analysisCopy": "Le risposte sono state confrontate per routine, alimentazione, movimento, riposo, stress, relazioni e recupero. L’ultima scelta applica solo una piccola regolazione.",
+          "roadmapTitle": "La tua analisi dello stile di vita",
+          "roadmapIntro": "La stima è stata costruita in quattro passaggi:",
+          "roadmapItems": [
+            "Le abitudini quotidiane sono state raccolte in segnali.",
+            "Riposo, pressione e recupero sono stati confrontati.",
+            "Attività e relazioni hanno contribuito al profilo.",
+            "È stata applicata una calibrazione finale limitata."
+          ],
+          "positionTitle": "Dove si colloca la stima",
+          "positionCopy": "L’indicatore mostra il risultato nella fascia immaginaria del quiz, da 73 a 95 anni. Non è una previsione di salute o longevità.",
+          "measuredTitle": "Cosa ha influenzato il risultato",
+          "measuredIntro": "Più temi quotidiani vengono combinati perché nessuna risposta domini da sola.",
+          "measuredAreas": [
+            {
+              "title": "Energia costante",
+              "copy": "Routine, alimentazione e movimento descrivono ritmo e regolarità."
+            },
+            {
+              "title": "Equilibrio e recupero",
+              "copy": "Attività e scelte sociali aggiungono slancio e piacere."
+            },
+            {
+              "title": "Slancio e avventura",
+              "copy": "Sonno, stress e recupero indicano la capacità di ritrovare l’equilibrio."
+            }
+          ],
+          "tipsTitle": "Tre spunti di riflessione",
+          "tipsIntro": "Non sono consigli medici, ma semplici idee legate al profilo mostrato.",
+          "tips": [
+            {
+              "title": "Mantieni ciò che funziona",
+              "copy": "Individua le scelte positive già facili da ripetere."
+            },
+            {
+              "title": "Rendi realistico il recupero",
+              "copy": "Pensa al cambiamento più piccolo che renderebbe il riposo meno caotico."
+            },
+            {
+              "title": "Lascia spazio al piacere",
+              "copy": "Un ritmo sostenibile può includere comfort, novità e divertimento."
+            }
+          ],
+          "finalTitle": "La stima è pronta",
+          "finalCopy": "Questo tentativo produce la stima immaginaria di {age} anni e il profilo «{profile}». Il valore riflette solo le risposte selezionate e non è un’informazione sanitaria."
+        }
+      },
+      "disclaimer": "Solo per divertimento e riflessione — questo risultato non è una previsione medica."
+    }
+  },
+  "stages": [
+    {
+      "title": "Ritmo quotidiano",
+      "questions": [
+        {
+          "question": "Si libera una serata. Quale programma ti somiglia di più?",
+          "answers": {
+            "Scegliere qualcosa di spontaneo e vedere dove porta": {
+              "centenarian_energy": 0.000116728,
+              "steady_long_game": 0.000111585,
+              "balanced_realist": 0.000050101,
+              "weekend_chaos": 0.003318306,
+              "stress_sprinter": 0.002354788,
+              "comfort_creature": 0.000125996,
+              "adventure_fuse": 0.899303578,
+              "reset_needed": 0.002192038
+            },
+            "Cucinare qualcosa di buono, fare una passeggiata e rallentare": {
+              "centenarian_energy": 0.927084651,
+              "steady_long_game": 0.001676413,
+              "balanced_realist": 0.000759863,
+              "weekend_chaos": 0.049884715,
+              "stress_sprinter": 0.035410831,
+              "comfort_creature": 0.001897495,
+              "adventure_fuse": 0.028922895,
+              "reset_needed": 0.032951227
+            },
+            "Incastrare lavoro, amici e qualsiasi altra cosa capiti": {
+              "centenarian_energy": 0.000060567,
+              "steady_long_game": 0.000057989,
+              "balanced_realist": 0.000026094,
+              "weekend_chaos": 0.962437182,
+              "stress_sprinter": 0.001217854,
+              "comfort_creature": 0.000065518,
+              "adventure_fuse": 0.000994995,
+              "reset_needed": 0.001132274
+            }
+          },
+          "id": "r1q3"
+        },
+        {
+          "question": "Il tuo sabato mattina ideale comincia con…",
+          "answers": {
+            "Una colazione tranquilla e un programma davvero fattibile": {
+              "steady_long_game": 0.789882145
+            },
+            "Cinque sveglie, tre commissioni e una quantità eroica di caffè": {
+              "stress_sprinter": 1.157163826
+            },
+            "Nessun programma: vedo dove mi porta la giornata": {
+              "adventure_fuse": 0.846245013
+            }
+          },
+          "id": "r1q1"
+        },
+        {
+          "question": "Quando la settimana si riempie troppo, cosa ti salva di solito?",
+          "answers": {
+            "Spingere ancora più forte finché la pressione non cede": {
+              "stress_sprinter": 1.157163826
+            },
+            "Annullare tutto e scegliere il divano in santa pace": {
+              "comfort_creature": 1.374612798
+            },
+            "Una lista semplice e una cosa alla volta": {
+              "balanced_realist": 0.959222869
+            }
+          },
+          "id": "r1q2"
+        },
+        {
+          "question": "Quando l’energia cala a metà giornata, cosa aiuta di più?",
+          "answers": {
+            "Cambiare aria e fare qualcosa di spontaneo": {
+              "adventure_fuse": 0.846245013
+            },
+            "Un po’ di tranquillità, senza nuove richieste": {
+              "comfort_creature": 1.374612798
+            },
+            "Una breve pausa e un prossimo passo chiaro": {
+              "balanced_realist": 0.959222869
+            }
+          },
+          "id": "r1q5"
+        },
+        {
+          "question": "Quanto spesso ti complichi la vita più del necessario?",
+          "answers": {
+            "Lo sto facendo proprio adesso": {
+              "reset_needed": 1.141570473
+            },
+            "Solo quando ignoro la soluzione ovvia": {
+              "balanced_realist": 0.959222869
+            },
+            "Regolarmente, ma almeno rende tutto interessante": {
+              "weekend_chaos": 1.081951257
+            }
+          },
+          "id": "r1q6"
+        },
+        {
+          "question": "Il tuo rapporto con la sveglia è…",
+          "answers": {
+            "Quasi immaginario, perché mi sveglio prima": {
+              "centenarian_energy": 1.165081789
+            },
+            "Rispettoso, ma non romantico": {
+              "balanced_realist": 0.959222869
+            },
+            "Una battaglia quotidiana": {
+              "stress_sprinter": 1.157163826
+            }
+          },
+          "id": "r4q4"
+        },
+        {
+          "question": "Quando la vita si fa intensa, casa tua diventa…",
+          "answers": {
+            "Un rifugio comodo con qualche spuntino vicino": {
+              "comfort_creature": 1.374612798
+            },
+            "Un po’ disordinata, ma recuperabile": {
+              "balanced_realist": 0.959222869
+            },
+            "La prova che è iniziata una missione secondaria": {
+              "adventure_fuse": 0.846245013
+            }
+          },
+          "id": "r9q3"
+        },
+        {
+          "question": "Compare una bolletta, un modulo o un promemoria. Tu…",
+          "answers": {
+            "Lo metti in un posto sicuro e poi dimentichi dov’è": {
+              "weekend_chaos": 1.081951257
+            },
+            "Imposti tre promemoria e resti comunque diffidente": {
+              "stress_sprinter": 1.157163826
+            },
+            "Te ne occupi finché è ancora una piccola cosa": {
+              "balanced_realist": 0.959222869
+            }
+          },
+          "id": "r9q2"
+        }
+      ]
+    },
+    {
+      "title": "Alimentazione e movimento",
+      "questions": [
+        {
+          "question": "Verso quale tavolo degli spuntini ti dirigi?",
+          "answers": {
+            "Fette di mela, frutta secca e un po’ di cioccolato fondente": {
+              "centenarian_energy": 0.927084651,
+              "steady_long_game": 0.001676413,
+              "balanced_realist": 0.000759863,
+              "weekend_chaos": 0.049884715,
+              "stress_sprinter": 0.035410831,
+              "comfort_creature": 0.001897495,
+              "adventure_fuse": 0.028922895,
+              "reset_needed": 0.032951227
+            },
+            "Una bella fetta di torta": {
+              "centenarian_energy": 0.000060567,
+              "steady_long_game": 0.000057989,
+              "balanced_realist": 0.000026094,
+              "weekend_chaos": 0.962437182,
+              "stress_sprinter": 0.001217854,
+              "comfort_creature": 0.000065518,
+              "adventure_fuse": 0.000994995,
+              "reset_needed": 0.001132274
+            },
+            "Hummus, olive e verdure croccanti": {
+              "centenarian_energy": 0.003540395,
+              "steady_long_game": 0.003393242,
+              "balanced_realist": 0.707926309,
+              "weekend_chaos": 0.100958611,
+              "stress_sprinter": 0.07166526,
+              "comfort_creature": 0.003840348,
+              "adventure_fuse": 0.058534214,
+              "reset_needed": 0.06669077
+            },
+            "Qualsiasi snack confezionato sia più vicino": {
+              "centenarian_energy": 0.001782861,
+              "steady_long_game": 0.001708922,
+              "balanced_realist": 0.000774476,
+              "weekend_chaos": 0.050837219,
+              "stress_sprinter": 0.036086518,
+              "comfort_creature": 1.056817691,
+              "adventure_fuse": 0.02947436,
+              "reset_needed": 0.033581508
+            }
+          },
+          "id": "r2q1",
+          "presentation": "icons",
+          "icons": [
+            "🍎",
+            "🍰",
+            "🫒",
+            "🍪"
+          ]
+        },
+        {
+          "question": "A colazione sei più tipo da…",
+          "answers": {
+            "Un caffè con decisamente troppa sicurezza": {
+              "stress_sprinter": 1.157163826
+            },
+            "Colazione? Preferisco un ingresso trionfale a pranzo": {
+              "weekend_chaos": 1.081951257
+            },
+            "Qualcosa di abbastanza affidabile da evitare il calo mattutino": {
+              "steady_long_game": 0.789882145
+            }
+          },
+          "id": "r2q2"
+        },
+        {
+          "question": "Al ristorante di solito scegli…",
+          "answers": {
+            "Qualcosa di nuovo, perché la curiosità supera la cautela": {
+              "adventure_fuse": 0.846245013
+            },
+            "Ciò che sai ti farà stare bene": {
+              "balanced_realist": 0.959222869
+            },
+            "La specialità della casa, dopo una domanda sensata": {
+              "steady_long_game": 0.789882145
+            },
+            "La cosa più ricca del menù, perché la vita è breve": {
+              "comfort_creature": 1.374612798
+            }
+          },
+          "id": "r2q3"
+        },
+        {
+          "question": "La tua borraccia probabilmente è…",
+          "answers": {
+            "Vicino e usata davvero": {
+              "centenarian_energy": 1.165081789
+            },
+            "Da qualche parte in casa, tecnicamente": {
+              "reset_needed": 1.141570473
+            },
+            "Sostituita dal caffè fino a nuovo avviso": {
+              "stress_sprinter": 1.157163826
+            }
+          },
+          "id": "r2q4"
+        },
+        {
+          "question": "Quale motto sul cibo ti rappresenta di più?",
+          "answers": {
+            "Il mio io futuro potrà lamentarsi": {
+              "weekend_chaos": 1.081951257
+            },
+            "Perlopiù sensato, a volte celebrativo": {
+              "steady_long_game": 0.789882145
+            },
+            "Se porta gioia, merita un posto a tavola": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "id": "r2q6"
+        },
+        {
+          "id": "r3q2",
+          "question": "C’è una commissione da fare qui vicino. Come ci vai di solito?",
+          "presentation": "icons",
+          "icons": [
+            "🚗",
+            "🚌",
+            "🚶",
+            "🚲"
+          ],
+          "answers": {
+            "In auto": {
+              "centenarian_energy": 0.00214516,
+              "steady_long_game": 0.002055978,
+              "balanced_realist": 0.117369634,
+              "weekend_chaos": 0.061174683,
+              "stress_sprinter": 0.043425,
+              "comfort_creature": 0.874956796,
+              "adventure_fuse": 0.035467915,
+              "reset_needed": 0.04040955
+            },
+            "Con i mezzi pubblici": {
+              "centenarian_energy": 0.002606568,
+              "steady_long_game": 0.314786047,
+              "balanced_realist": 0.425537985,
+              "weekend_chaos": 0.074325221,
+              "stress_sprinter": 0.052760197,
+              "comfort_creature": 0.002827343,
+              "adventure_fuse": 0.043093191,
+              "reset_needed": 0.049095897
+            },
+            "A piedi": {
+              "centenarian_energy": 0.205229487,
+              "steady_long_game": 0.587070459,
+              "balanced_realist": 0.000707675,
+              "weekend_chaos": 0.046450486,
+              "stress_sprinter": 0.0329731,
+              "comfort_creature": 0.001766459,
+              "adventure_fuse": 0.026931997,
+              "reset_needed": 0.03068389
+            },
+            "In bicicletta": {
+              "centenarian_energy": 0.017895788,
+              "steady_long_game": 0.000136187,
+              "balanced_realist": 0.000061582,
+              "weekend_chaos": 0.004050555,
+              "stress_sprinter": 0.002874702,
+              "comfort_creature": 0.000153715,
+              "adventure_fuse": 0.882979122,
+              "reset_needed": 0.00267544
+            }
+          }
+        },
+        {
+          "id": "r3q6",
+          "question": "È domenica. Scegli il tuo livello di movimento.",
+          "answers": {
+            "Modalità divano": {
+              "centenarian_energy": 0.001782861,
+              "steady_long_game": 0.001708922,
+              "balanced_realist": 0.000774476,
+              "weekend_chaos": 0.050837219,
+              "stress_sprinter": 0.036086518,
+              "comfort_creature": 1.056817691,
+              "adventure_fuse": 0.02947436,
+              "reset_needed": 0.033581508
+            },
+            "Una passeggiata tranquilla": {
+              "centenarian_energy": 0.001718991,
+              "steady_long_game": 0.742364452,
+              "balanced_realist": 0.000746294,
+              "weekend_chaos": 0.04902495,
+              "stress_sprinter": 0.034799881,
+              "comfort_creature": 0.001864736,
+              "adventure_fuse": 0.028424037,
+              "reset_needed": 0.032383231
+            },
+            "Un giro in bicicletta": {
+              "centenarian_energy": 0.000116728,
+              "steady_long_game": 0.000111585,
+              "balanced_realist": 0.000050101,
+              "weekend_chaos": 0.003318306,
+              "stress_sprinter": 0.002354788,
+              "comfort_creature": 0.000125996,
+              "adventure_fuse": 0.899303578,
+              "reset_needed": 0.002192038
+            },
+            "Una vera corsa": {
+              "centenarian_energy": 0.927084651,
+              "steady_long_game": 0.001676413,
+              "balanced_realist": 0.000759863,
+              "weekend_chaos": 0.049884715,
+              "stress_sprinter": 0.035410831,
+              "comfort_creature": 0.001897495,
+              "adventure_fuse": 0.028922895,
+              "reset_needed": 0.032951227
+            }
+          },
+          "presentation": "icons",
+          "icons": [
+            "🛋️",
+            "🚶",
+            "🚴",
+            "🏃"
+          ]
+        },
+        {
+          "question": "Quale programma di movimento riusciresti davvero a mantenere?",
+          "answers": {
+            "Una passeggiata che non richieda una nuova personalità": {
+              "steady_long_game": 0.789882145
+            },
+            "Un’epica fase fitness di due settimane": {
+              "stress_sprinter": 1.157163826
+            },
+            "Ballare mentre pulisco e chiamarlo cardio": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "id": "r3q1",
+          "presentation": "icons",
+          "icons": [
+            "🚶",
+            "⚡",
+            "💃"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Riposo e resilienza",
+      "questions": [
+        {
+          "question": "La tua routine serale assomiglia di più a…",
+          "answers": {
+            "Un buon rallentamento che funziona quasi sempre": {
+              "steady_long_game": 0.789882145
+            },
+            "Ancora una cosa, poi un’altra… e ops": {
+              "stress_sprinter": 1.157163826
+            },
+            "Addormentarmi dove mi lascia la giornata": {
+              "reset_needed": 1.141570473
+            }
+          },
+          "id": "r4q1"
+        },
+        {
+          "question": "Quando lo stress entra nella stanza, di solito…",
+          "answers": {
+            "Cominci a risolvere sei cose insieme": {
+              "centenarian_energy": 0.000086996,
+              "steady_long_game": 0.000083469,
+              "balanced_realist": 0.000037576,
+              "weekend_chaos": 0.002471099,
+              "stress_sprinter": 1.005257752,
+              "comfort_creature": 0.000094497,
+              "adventure_fuse": 0.001433084,
+              "reset_needed": 0.001631479
+            },
+            "Eviti il contatto visivo sperando che se ne vada": {
+              "centenarian_energy": 0.001782861,
+              "steady_long_game": 0.001708922,
+              "balanced_realist": 0.000774476,
+              "weekend_chaos": 0.050837219,
+              "stress_sprinter": 0.036086518,
+              "comfort_creature": 1.056817691,
+              "adventure_fuse": 0.02947436,
+              "reset_needed": 0.033581508
+            },
+            "Riduci il problema al prossimo passo chiaro": {
+              "centenarian_energy": 0.003540395,
+              "steady_long_game": 0.003393242,
+              "balanced_realist": 0.707926309,
+              "weekend_chaos": 0.100958611,
+              "stress_sprinter": 0.07166526,
+              "comfort_creature": 0.003840348,
+              "adventure_fuse": 0.058534214,
+              "reset_needed": 0.06669077
+            }
+          },
+          "id": "r4q2"
+        },
+        {
+          "id": "r4q3",
+          "question": "Quanto ti senti riposato al risveglio?",
+          "presentation": "scale",
+          "answers": {
+            "Per niente": {
+              "centenarian_energy": 0.000079287,
+              "steady_long_game": 0.00007644,
+              "balanced_realist": 0.000034444,
+              "weekend_chaos": 0.002274996,
+              "stress_sprinter": 0.001615376,
+              "comfort_creature": 0.000086937,
+              "adventure_fuse": 0.0013188,
+              "reset_needed": 0.924349506
+            },
+            "Poco": {
+              "centenarian_energy": 0.000086996,
+              "steady_long_game": 0.000083469,
+              "balanced_realist": 0.000037576,
+              "weekend_chaos": 0.002471099,
+              "stress_sprinter": 1.005257752,
+              "comfort_creature": 0.000094497,
+              "adventure_fuse": 0.001433084,
+              "reset_needed": 0.001631479
+            },
+            "Abbastanza": {
+              "centenarian_energy": 0.003540395,
+              "steady_long_game": 0.003393242,
+              "balanced_realist": 0.707926309,
+              "weekend_chaos": 0.100958611,
+              "stress_sprinter": 0.07166526,
+              "comfort_creature": 0.003840348,
+              "adventure_fuse": 0.058534214,
+              "reset_needed": 0.06669077
+            },
+            "Quasi del tutto": {
+              "centenarian_energy": 0.001718991,
+              "steady_long_game": 0.742364452,
+              "balanced_realist": 0.000746294,
+              "weekend_chaos": 0.04902495,
+              "stress_sprinter": 0.034799881,
+              "comfort_creature": 0.001864736,
+              "adventure_fuse": 0.028424037,
+              "reset_needed": 0.032383231
+            },
+            "Completamente": {
+              "centenarian_energy": 0.927084651,
+              "steady_long_game": 0.001676413,
+              "balanced_realist": 0.000759863,
+              "weekend_chaos": 0.049884715,
+              "stress_sprinter": 0.035410831,
+              "comfort_creature": 0.001897495,
+              "adventure_fuse": 0.028922895,
+              "reset_needed": 0.032951227
+            }
+          }
+        },
+        {
+          "question": "Compare un piccolo inconveniente. Tu…",
+          "answers": {
+            "Lo risolvi prima che diventi una saga": {
+              "steady_long_game": 0.789882145
+            },
+            "Lo trasformi in una saga raccontata benissimo": {
+              "stress_sprinter": 1.157163826
+            },
+            "Lo rimandi sperando che si sistemi da solo": {
+              "reset_needed": 1.141570473
+            }
+          },
+          "id": "r4q5"
+        },
+        {
+          "question": "Cosa ti aiuta di più a dormire?",
+          "answers": {
+            "Essere completamente esausto per un’avventura": {
+              "adventure_fuse": 0.846245013
+            },
+            "Un rumore di fondo e una dolce fuga dalla realtà": {
+              "comfort_creature": 1.374612798
+            },
+            "Una stanza tranquilla e una mente ancora più tranquilla": {
+              "steady_long_game": 0.789882145
+            }
+          },
+          "id": "r4q6"
+        },
+        {
+          "id": "r10q3",
+          "question": "Dopo una settimana caotica, il lunedì di solito sono…",
+          "answers": {
+            "Di nuovo su un programma semplice": {
+              "centenarian_energy": 0.003540395,
+              "steady_long_game": 0.003393242,
+              "balanced_realist": 0.707926309,
+              "weekend_chaos": 0.100958611,
+              "stress_sprinter": 0.07166526,
+              "comfort_creature": 0.003840348,
+              "adventure_fuse": 0.058534214,
+              "reset_needed": 0.06669077
+            },
+            "Ripartito con una piccola abitudine rassicurante": {
+              "centenarian_energy": 0.001782861,
+              "steady_long_game": 0.001708922,
+              "balanced_realist": 0.000774476,
+              "weekend_chaos": 0.050837219,
+              "stress_sprinter": 0.036086518,
+              "comfort_creature": 1.056817691,
+              "adventure_fuse": 0.02947436,
+              "reset_needed": 0.033581508
+            },
+            "Ancora in fase di recupero": {
+              "centenarian_energy": 0.000079287,
+              "steady_long_game": 0.00007644,
+              "balanced_realist": 0.000034444,
+              "weekend_chaos": 0.002274996,
+              "stress_sprinter": 0.001615376,
+              "comfort_creature": 0.000086937,
+              "adventure_fuse": 0.0013188,
+              "reset_needed": 0.924349506
+            }
+          }
+        },
+        {
+          "id": "r10q4",
+          "question": "Per me le abitudini sane sono…",
+          "presentation": "text",
+          "answers": {
+            "Automatiche": {
+              "centenarian_energy": 0.205229487,
+              "steady_long_game": 0.587070459,
+              "balanced_realist": 0.000707675,
+              "weekend_chaos": 0.046450486,
+              "stress_sprinter": 0.0329731,
+              "comfort_creature": 0.001766459,
+              "adventure_fuse": 0.026931997,
+              "reset_needed": 0.03068389
+            },
+            "Quasi sempre costanti": {
+              "centenarian_energy": 0.002606568,
+              "steady_long_game": 0.314786047,
+              "balanced_realist": 0.425537985,
+              "weekend_chaos": 0.074325221,
+              "stress_sprinter": 0.052760197,
+              "comfort_creature": 0.002827343,
+              "adventure_fuse": 0.043093191,
+              "reset_needed": 0.049095897
+            },
+            "A intermittenza": {
+              "centenarian_energy": 0.000089198,
+              "steady_long_game": 0.000085226,
+              "balanced_realist": 0.000038619,
+              "weekend_chaos": 0.951506576,
+              "stress_sprinter": 0.001796436,
+              "comfort_creature": 0.012128344,
+              "adventure_fuse": 0.00146755,
+              "reset_needed": 0.001670523
+            },
+            "Più intenzione che routine": {
+              "centenarian_energy": 0.000099109,
+              "steady_long_game": 0.000094891,
+              "balanced_realist": 0.000042794,
+              "weekend_chaos": 0.002815005,
+              "stress_sprinter": 0.751441352,
+              "comfort_creature": 0.000107096,
+              "adventure_fuse": 0.001632627,
+              "reset_needed": 0.234327791
+            }
+          }
+        },
+        {
+          "question": "Quale regola personale ti aiuterebbe di più?",
+          "answers": {
+            "Fare subito il compito da due minuti": {
+              "steady_long_game": 0.789882145
+            },
+            "Lasciare spazio alle sorprese": {
+              "adventure_fuse": 0.846245013
+            },
+            "Riposare prima che tutto diventi drammatico": {
+              "reset_needed": 1.141570473
+            }
+          },
+          "id": "r9q4"
+        }
+      ]
+    },
+    {
+      "title": "Relazioni e scelte",
+      "questions": [
+        {
+          "question": "Il tuo programma di gruppo perfetto comprende…",
+          "answers": {
+            "Belle persone, orari chiari e un’uscita facile": {
+              "balanced_realist": 0.959222869
+            },
+            "Un programma flessibile che tutti possono plasmare": {
+              "balanced_realist": 0.479611434,
+              "adventure_fuse": 0.423122506
+            },
+            "Un colpo di scena che nessuno si aspetta": {
+              "adventure_fuse": 0.846245013
+            }
+          },
+          "id": "r6q1"
+        },
+        {
+          "question": "A una festa è più probabile che tu…",
+          "answers": {
+            "Finisca in una storia che comincia con «non si sa come»": {
+              "weekend_chaos": 1.081951257
+            },
+            "Passi da una conversazione all’altra, poi faccia una pausa tranquilla": {
+              "weekend_chaos": 0.540975629,
+              "centenarian_energy": 0.582540895
+            },
+            "Dia una mano con gli spuntini, così hai uno scopo": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "id": "r6q2"
+        },
+        {
+          "question": "Quando qualcuno scrive «domanda veloce», tu…",
+          "answers": {
+            "Se diventa pettegolezzo, ben venga": {
+              "weekend_chaos": 1.081951257
+            },
+            "Chiedo cosa serve prima di decidere quanta energia ho": {
+              "weekend_chaos": 0.540975629,
+              "balanced_realist": 0.479611434
+            },
+            "Rispondo, ma con prudenza": {
+              "balanced_realist": 0.959222869
+            }
+          },
+          "id": "r6q3"
+        },
+        {
+          "question": "I tuoi amici probabilmente ti definirebbero…",
+          "answers": {
+            "Affidabile in modo piacevolmente normale": {
+              "steady_long_game": 0.789882145
+            },
+            "Stabile quando conta, spontaneo quando serve": {
+              "steady_long_game": 0.394941072,
+              "adventure_fuse": 0.423122506
+            },
+            "Un’adorabile fonte di missioni secondarie": {
+              "adventure_fuse": 0.846245013
+            }
+          },
+          "id": "r6q4"
+        },
+        {
+          "question": "Dopo una giornata molto sociale, hai bisogno di…",
+          "answers": {
+            "Un altro programma, se l’atmosfera è giusta": {
+              "adventure_fuse": 0.846245013
+            },
+            "Qualcosa di tranquillo con una o due persone del cuore": {
+              "adventure_fuse": 0.423122506,
+              "reset_needed": 0.570785237
+            },
+            "Un lungo riposo in silenzio prima di tornare normale": {
+              "reset_needed": 1.141570473
+            }
+          },
+          "id": "r6q5"
+        },
+        {
+          "id": "r6q6",
+          "question": "Quanto spesso trovi tempo per le persone che ti piace davvero frequentare?",
+          "presentation": "scale",
+          "answers": {
+            "Quasi mai": {
+              "centenarian_energy": 0.000127741,
+              "steady_long_game": 0.000123007,
+              "balanced_realist": 0.00005532,
+              "weekend_chaos": 0.003657382,
+              "stress_sprinter": 0.002595527,
+              "comfort_creature": 0.017528518,
+              "adventure_fuse": 0.002120601,
+              "reset_needed": 0.908319179
+            },
+            "Raramente": {
+              "centenarian_energy": 0.000339173,
+              "steady_long_game": 0.000325091,
+              "balanced_realist": 0.000147171,
+              "weekend_chaos": 0.009676702,
+              "stress_sprinter": 0.006869143,
+              "comfort_creature": 0.138397428,
+              "adventure_fuse": 0.005609888,
+              "reset_needed": 0.805369602
+            },
+            "A volte": {
+              "centenarian_energy": 0.002816899,
+              "steady_long_game": 0.002700887,
+              "balanced_realist": 0.460010514,
+              "weekend_chaos": 0.080346473,
+              "stress_sprinter": 0.057033813,
+              "comfort_creature": 0.385091917,
+              "adventure_fuse": 0.046583384,
+              "reset_needed": 0.053073731
+            },
+            "Spesso": {
+              "centenarian_energy": 0.205229487,
+              "steady_long_game": 0.587070459,
+              "balanced_realist": 0.000707675,
+              "weekend_chaos": 0.046450486,
+              "stress_sprinter": 0.0329731,
+              "comfort_creature": 0.001766459,
+              "adventure_fuse": 0.026931997,
+              "reset_needed": 0.03068389
+            },
+            "Molto spesso": {
+              "centenarian_energy": 0.138717413,
+              "steady_long_game": 0.000354085,
+              "balanced_realist": 0.000159697,
+              "weekend_chaos": 0.01052101,
+              "stress_sprinter": 0.007468967,
+              "comfort_creature": 0.000400666,
+              "adventure_fuse": 0.768610877,
+              "reset_needed": 0.006949822
+            }
+          }
+        },
+        {
+          "question": "Quando un programma cambia all’ultimo minuto, tu…",
+          "answers": {
+            "Ti adatti e trovi il nuovo percorso sensato": {
+              "balanced_realist": 0.959222869
+            },
+            "Fingi che fosse quello il programma da sempre": {
+              "adventure_fuse": 0.846245013
+            },
+            "Hai bisogno di un minuto per riavviarti": {
+              "reset_needed": 1.141570473
+            }
+          },
+          "id": "r7q4"
+        },
+        {
+          "question": "Quale abitudine migliorerebbe di più la tua vita?",
+          "answers": {
+            "Un tasto pausa per il cervello": {
+              "reset_needed": 1.141570473
+            },
+            "Un semplice riassetto settimanale": {
+              "steady_long_game": 0.789882145
+            },
+            "Più gioco nelle giornate normali": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "id": "r7q6"
+        }
+      ]
+    },
+    {
+      "title": "Previsione finale",
+      "questions": [
+        {
+          "question": "Compare un volo economico per domani. Tu…",
+          "answers": {
+            "Controlli i dettagli prima che l’immaginazione prenda il sopravvento": {
+              "steady_long_game": 0.789882145
+            },
+            "Cominci già a fare la valigia con la mente": {
+              "adventure_fuse": 0.846245013
+            },
+            "Chiudi la scheda: domani è decisamente troppo presto": {
+              "comfort_creature": 1.374612798
+            }
+          },
+          "id": "r7q1"
+        },
+        {
+          "question": "Quale rischio ti rappresenta di più?",
+          "answers": {
+            "Dire sì prima di leggere tutto il programma": {
+              "weekend_chaos": 1.081951257
+            },
+            "Ordinare qualcosa di nuovo e sperare bene": {
+              "adventure_fuse": 0.846245013
+            },
+            "Provare una nuova abitudine senza renderla drammatica": {
+              "steady_long_game": 0.789882145
+            }
+          },
+          "id": "r7q2"
+        },
+        {
+          "question": "Il tuo calendario di solito è…",
+          "answers": {
+            "Pieno di cose che avevo dimenticato di aver accettato": {
+              "stress_sprinter": 1.157163826
+            },
+            "Abbastanza utile da evitare disastri": {
+              "steady_long_game": 0.789882145
+            },
+            "Decorativo, in teoria": {
+              "weekend_chaos": 1.081951257
+            }
+          },
+          "id": "r7q3"
+        },
+        {
+          "question": "Quale piccola gioia funziona sempre?",
+          "answers": {
+            "Aria fresca e una commissione piacevole": {
+              "centenarian_energy": 1.165081789
+            },
+            "Ridere finché il programma non cambia": {
+              "weekend_chaos": 1.081951257
+            },
+            "Un angolo tranquillo e qualcosa di confortante": {
+              "comfort_creature": 1.374612798
+            }
+          },
+          "id": "r8q1",
+          "presentation": "icons",
+          "icons": [
+            "🌿",
+            "😂",
+            "🛋️"
+          ]
+        },
+        {
+          "question": "Il tuo momento «mi sento vivo» di solito è…",
+          "answers": {
+            "Una storia assurda che si svolge in tempo reale": {
+              "weekend_chaos": 1.081951257
+            },
+            "Ricordarmi che posso dire no e restare a casa": {
+              "comfort_creature": 1.374612798
+            },
+            "Sole, movimento e mente lucida": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "id": "r8q5",
+          "presentation": "icons",
+          "icons": [
+            "🎉",
+            "🏠",
+            "☀️"
+          ]
+        },
+        {
+          "question": "Il tuo io futuro ti ringrazierebbe per…",
+          "answers": {
+            "Aver creato un ricordo indimenticabile": {
+              "adventure_fuse": 0.846245013
+            },
+            "Aver fatto una vera pausa prima del crollo": {
+              "reset_needed": 1.141570473
+            },
+            "Aver reso più semplice una cosa noiosa": {
+              "balanced_realist": 0.959222869
+            }
+          },
+          "id": "r9q5"
+        },
+        {
+          "id": "r10q2",
+          "question": "Rispetto a cinque anni fa, la mia energia è…",
+          "answers": {
+            "Migliore": {
+              "centenarian_energy": 1.165081789
+            },
+            "Simile": {
+              "steady_long_game": 0.789882145
+            },
+            "Più bassa": {
+              "reset_needed": 1.141570473
+            }
+          }
+        },
+        {
+          "id": "r10q6",
+          "question": "Fino a che età ti immagini di vivere?",
+          "answers": {
+            "Tra 70 e 79 anni": {
+              "stress_sprinter": 1.157163826
+            },
+            "Tra 80 e 89 anni": {
+              "balanced_realist": 0.959222869
+            },
+            "Tra 90 e 99 anni": {
+              "steady_long_game": 0.789882145
+            },
+            "100 anni o più": {
+              "centenarian_energy": 1.165081789
+            }
+          },
+          "calibration": [
+            -1,
+            -0.25,
+            0.5,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "checkpoint": {
+    "nextPrefix": "PROSSIMA SFIDA",
+    "adNote": "Un breve annuncio, poi si continua.",
+    "finalAdNote": "Un breve annuncio, poi vedrai il risultato.",
+    "finalBadge": "LA STIMA È PRONTA",
+    "finalIcon": "⚰️",
+    "finalTitle": "LA STIMA È PRONTA",
+    "finalCopy": "La previsione è completa.",
+    "finalButton": "Vedi il mio risultato",
+    "finalChecklist": [
+      "40 risposte di stile di vita analizzate",
+      "Modelli di stile di vita combinati",
+      "Stime calcolate"
+    ],
+    "reveals": [
+      {
+        "badge": "FASE COMPLETATA",
+        "icon": "✓",
+        "title": "Il ritmo quotidiano è acquisito",
+        "signal": "fixed",
+        "message": "Le abitudini quotidiane stanno iniziando a formare la stima."
+      },
+      {
+        "badge": "FASE COMPLETATA",
+        "icon": "✓",
+        "title": "Il quadro dello stile di vita si precisa",
+        "signal": "fixed",
+        "message": "Alimentazione e movimento fanno ora parte del calcolo."
+      },
+      {
+        "badge": "FASE COMPLETATA",
+        "icon": "✓",
+        "title": "Schemi di recupero aggiunti",
+        "signal": "fixed",
+        "message": "Sonno, stress e recupero hanno affinato la previsione."
+      },
+      {
+        "badge": "FASE COMPLETATA",
+        "icon": "✓",
+        "title": "La stima è quasi pronta",
+        "signal": "fixed",
+        "message": "Resta una sola fase di calcolo."
+      },
+      {
+        "badge": "LA STIMA È PRONTA",
+        "icon": "⚰️",
+        "title": "LA STIMA È PRONTA",
+        "signal": "fixed",
+        "message": "La previsione è completa."
+      }
+    ]
+  },
+  "progressLabel": "completato",
+  "career": {
+    "hideJourneyLength": true,
+    "continuousShell": true,
+    "stageResultMode": "completion",
+    "showStageResults": false,
+    "showCurrentScore": false,
+    "showResultProgress": true,
+    "resultProgressLabel": "Avanzamento",
+    "resultProgressComplete": "{value}% completato",
+    "currentScoreLabel": "AVANZAMENTO",
+    "levelLabel": "FASE",
+    "scoreSuffix": "avanzamento",
+    "journeyLabel": "PERCORSO DEL QUIZ",
+    "kitchensCleared": "{value} / {total} fasi completate",
+    "currentRank": "AVANZAMENTO ATTUALE",
+    "ranks": [
+      {
+        "afterStage": 0,
+        "label": "Stima avviata"
+      },
+      {
+        "afterStage": 5,
+        "label": "Stima completata"
+      }
+    ],
+    "unlockEyebrow": "AGGIORNAMENTO DEL RISULTATO",
+    "unlockTitle": "La fase successiva è pronta",
+    "unlockCopy": "Continua quando vuoi.",
+    "finalEyebrow": "IL TUO RISULTATO",
+    "finalCareerTitle": "LA STIMA È PRONTA",
+    "strongestLabel": "Area migliore",
+    "stages": [
+      {
+        "difficulty": "Fondamenti",
+        "preAdBadge": "FASE COMPLETATA",
+        "preAdTitle": "Il ritmo quotidiano è acquisito",
+        "preAdCopy": "Le abitudini quotidiane stanno iniziando a formare la stima.",
+        "preAdButton": "Continua",
+        "resultIcon": "✓",
+        "resultLabel": "FASE COMPLETATA",
+        "resultBands": {
+          "high": {
+            "title": "Il ritmo quotidiano è acquisito",
+            "insight": "Le abitudini quotidiane stanno iniziando a formare la stima."
+          },
+          "medium": {
+            "title": "Il ritmo quotidiano è acquisito",
+            "insight": "Le abitudini quotidiane stanno iniziando a formare la stima."
+          },
+          "low": {
+            "title": "Il ritmo quotidiano è acquisito",
+            "insight": "Le abitudini quotidiane stanno iniziando a formare la stima."
+          }
+        },
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
+          "title": "Alimentazione e movimento",
+          "difficulty": "Intermedio",
+          "tagline": "Alimentazione. Energia. Movimento quotidiano.",
+          "button": "Continua"
+        }
+      },
+      {
+        "difficulty": "Intermedio",
+        "preAdBadge": "FASE COMPLETATA",
+        "preAdTitle": "Il quadro dello stile di vita si precisa",
+        "preAdCopy": "Alimentazione e movimento fanno ora parte del calcolo.",
+        "preAdButton": "Continua",
+        "resultIcon": "✓",
+        "resultLabel": "FASE COMPLETATA",
+        "resultBands": {
+          "high": {
+            "title": "Il quadro dello stile di vita si precisa",
+            "insight": "Alimentazione e movimento fanno ora parte del calcolo."
+          },
+          "medium": {
+            "title": "Il quadro dello stile di vita si precisa",
+            "insight": "Alimentazione e movimento fanno ora parte del calcolo."
+          },
+          "low": {
+            "title": "Il quadro dello stile di vita si precisa",
+            "insight": "Alimentazione e movimento fanno ora parte del calcolo."
+          }
+        },
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
+          "title": "Riposo e resilienza",
+          "difficulty": "Competente",
+          "tagline": "Sonno. Stress. Recupero.",
+          "button": "Continua"
+        }
+      },
+      {
+        "difficulty": "Competente",
+        "preAdBadge": "FASE COMPLETATA",
+        "preAdTitle": "Schemi di recupero aggiunti",
+        "preAdCopy": "Sonno, stress e recupero hanno affinato la previsione.",
+        "preAdButton": "Continua",
+        "resultIcon": "✓",
+        "resultLabel": "FASE COMPLETATA",
+        "resultBands": {
+          "high": {
+            "title": "Schemi di recupero aggiunti",
+            "insight": "Sonno, stress e recupero hanno affinato la previsione."
+          },
+          "medium": {
+            "title": "Schemi di recupero aggiunti",
+            "insight": "Sonno, stress e recupero hanno affinato la previsione."
+          },
+          "low": {
+            "title": "Schemi di recupero aggiunti",
+            "insight": "Sonno, stress e recupero hanno affinato la previsione."
+          }
+        },
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
+          "title": "Relazioni e scelte",
+          "difficulty": "Avanzato",
+          "tagline": "Relazioni. Progetti. Scelte quotidiane.",
+          "button": "Continua"
+        }
+      },
+      {
+        "difficulty": "Avanzato",
+        "preAdBadge": "FASE COMPLETATA",
+        "preAdTitle": "La stima è quasi pronta",
+        "preAdCopy": "Resta una sola fase di calcolo.",
+        "preAdButton": "Continua",
+        "resultIcon": "✓",
+        "resultLabel": "FASE COMPLETATA",
+        "resultBands": {
+          "high": {
+            "title": "La stima è quasi pronta",
+            "insight": "Resta una sola fase di calcolo."
+          },
+          "medium": {
+            "title": "La stima è quasi pronta",
+            "insight": "Resta una sola fase di calcolo."
+          },
+          "low": {
+            "title": "La stima è quasi pronta",
+            "insight": "Resta una sola fase di calcolo."
+          }
+        },
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
+          "title": "Previsione finale",
+          "difficulty": "Prova finale",
+          "tagline": "Prospettiva. Priorità. Calibrazione finale.",
+          "button": "Continua"
+        }
+      },
+      {
+        "difficulty": "Prova finale",
+        "preAdBadge": "LA STIMA È PRONTA",
+        "preAdTitle": "LA STIMA È PRONTA",
+        "preAdChecks": [
+          "40 risposte di stile di vita analizzate",
+          "Modelli di stile di vita combinati",
+          "Stime calcolate"
+        ],
+        "preAdButton": "Vedi il mio risultato",
+        "resultIcon": "⚰️",
+        "resultLabel": "LA STIMA È PRONTA",
+        "resultBands": {
+          "high": {
+            "title": "LA STIMA È PRONTA",
+            "insight": "La previsione è completa."
+          },
+          "medium": {
+            "title": "LA STIMA È PRONTA",
+            "insight": "La previsione è completa."
+          },
+          "low": {
+            "title": "LA STIMA È PRONTA",
+            "insight": "La previsione è completa."
+          }
+        },
+        "preAdCopy": "La previsione è completa."
+      }
+    ]
+  }
+}

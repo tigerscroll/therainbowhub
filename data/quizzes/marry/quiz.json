@@ -1,0 +1,137 @@
+{
+  "slug": "marry",
+  "engine": {
+    "flow": "staged",
+    "advance": "automatic",
+    "feedback": "selection-only",
+    "scoring": "weighted-profile",
+    "checkpoint": "ai",
+    "startOnLoad": false,
+    "localeParity": "independent",
+    "rewarded": {
+      "start": true,
+      "stages": true,
+      "attempts": 3,
+      "confirmStart": false
+    },
+    "advanceDelayMs": 450,
+    "profileArtworkSelector": {
+      "questionId": "marry-r1q1",
+      "fixedVariants": {
+        "0": "masculine",
+        "1": "feminine",
+        "2": "androgynous"
+      },
+      "fallback": "stable-answer-hash"
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.png",
+    "published": "2026-08-23",
+    "duration": "7 min",
+    "difficulty": "Quick",
+    "icon": "✏️",
+    "socialProofCount": 184000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#d8c9bd",
+      "pageAlt": "#b99a8b",
+      "surface": "#f8f0e3",
+      "surfaceRaised": "#fffaf2",
+      "text": "#26201e",
+      "muted": "#756761",
+      "primary": "#7f3446",
+      "primaryText": "#fffaf2",
+      "border": "#4b403b",
+      "correct": "#55725f",
+      "incorrect": "#9a4050"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "999px"
+    },
+    "effects": {
+      "shadow": "soft",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #2d2725, #51313a)",
+      "text": "#fff8ed",
+      "border": "#b97862",
+      "shadow": "0 8px 24px rgba(43, 30, 27, 0.22)"
+    },
+    "artwork": {
+      "icon": "✏️",
+      "profiles": {
+        "warm_anchor": "assets/results/warm-anchor-androgynous.webp",
+        "playful_spark": "assets/results/playful-spark-androgynous.webp",
+        "quiet_creative": "assets/results/quiet-creative-androgynous.webp",
+        "grounded_builder": "assets/results/grounded-builder-androgynous.webp",
+        "magnetic_connector": "assets/results/magnetic-connector-androgynous.webp",
+        "curious_explorer": "assets/results/curious-explorer-androgynous.webp",
+        "thoughtful_dreamer": "assets/results/thoughtful-dreamer-androgynous.webp",
+        "ambitious_teammate": "assets/results/ambitious-teammate-androgynous.webp"
+      },
+      "profileVariants": {
+        "warm_anchor": {
+          "masculine": "assets/results/warm-anchor-masculine.webp",
+          "feminine": "assets/results/warm-anchor-feminine.webp",
+          "androgynous": "assets/results/warm-anchor-androgynous.webp"
+        },
+        "playful_spark": {
+          "masculine": "assets/results/playful-spark-masculine.webp",
+          "feminine": "assets/results/playful-spark-feminine.webp",
+          "androgynous": "assets/results/playful-spark-androgynous.webp"
+        },
+        "quiet_creative": {
+          "masculine": "assets/results/quiet-creative-masculine.webp",
+          "feminine": "assets/results/quiet-creative-feminine.webp",
+          "androgynous": "assets/results/quiet-creative-androgynous.webp"
+        },
+        "grounded_builder": {
+          "masculine": "assets/results/grounded-builder-masculine.webp",
+          "feminine": "assets/results/grounded-builder-feminine.webp",
+          "androgynous": "assets/results/grounded-builder-androgynous.webp"
+        },
+        "magnetic_connector": {
+          "masculine": "assets/results/magnetic-connector-masculine.webp",
+          "feminine": "assets/results/magnetic-connector-feminine.webp",
+          "androgynous": "assets/results/magnetic-connector-androgynous.webp"
+        },
+        "curious_explorer": {
+          "masculine": "assets/results/curious-explorer-masculine.webp",
+          "feminine": "assets/results/curious-explorer-feminine.webp",
+          "androgynous": "assets/results/curious-explorer-androgynous.webp"
+        },
+        "thoughtful_dreamer": {
+          "masculine": "assets/results/thoughtful-dreamer-masculine.webp",
+          "feminine": "assets/results/thoughtful-dreamer-feminine.webp",
+          "androgynous": "assets/results/thoughtful-dreamer-androgynous.webp"
+        },
+        "ambitious_teammate": {
+          "masculine": "assets/results/ambitious-teammate-masculine.webp",
+          "feminine": "assets/results/ambitious-teammate-feminine.webp",
+          "androgynous": "assets/results/ambitious-teammate-androgynous.webp"
+        }
+      },
+      "checkpoints": [
+        "assets/checkpoints/portrait-20.webp",
+        "assets/checkpoints/portrait-40.webp",
+        "assets/checkpoints/portrait-60.webp",
+        "assets/checkpoints/portrait-80.webp",
+        "assets/checkpoints/portrait-100.webp"
+      ]
+    }
+  }
+}

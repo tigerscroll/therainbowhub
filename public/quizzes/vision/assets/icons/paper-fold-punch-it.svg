@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" role="img" aria-labelledby="title desc">
+  <title id="title">Due pieghe e un foro</title>
+  <desc id="desc">Un quadrato viene piegato da sinistra a destra e poi dall’alto verso il basso. Si pratica un foro nel quadrato piegato; il risultato dopo la riapertura è da determinare.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#315fa1"/>
+    </marker>
+  </defs>
+  <rect width="720" height="405" rx="28" fill="#f5fafc"/>
+  <g font-family="Arial, sans-serif" fill="#102f55">
+    <g transform="translate(15 15)">
+      <rect width="337" height="180" rx="22" fill="#fff" stroke="#c9d7e3" stroke-width="3"/>
+      <circle cx="30" cy="30" r="18" fill="#dceaf1"/><text x="30" y="37" font-size="20" font-weight="800" text-anchor="middle">1</text>
+      <rect x="113" y="30" width="112" height="112" rx="4" fill="#edf7f9" stroke="#315fa1" stroke-width="4"/>
+      <path d="M169 30V142" stroke="#8da6b7" stroke-width="3" stroke-dasharray="7 7"/>
+      <path d="M130 70C147 52 189 52 207 70" fill="none" stroke="#315fa1" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+      <text x="169" y="166" font-size="15" font-weight="800" text-anchor="middle">PIEGA DA SINISTRA A DESTRA</text>
+    </g>
+    <g transform="translate(368 15)">
+      <rect width="337" height="180" rx="22" fill="#fff" stroke="#c9d7e3" stroke-width="3"/>
+      <circle cx="30" cy="30" r="18" fill="#dceaf1"/><text x="30" y="37" font-size="20" font-weight="800" text-anchor="middle">2</text>
+      <rect x="142" y="27" width="56" height="116" rx="4" fill="#e8f3f7" stroke="#315fa1" stroke-width="4"/>
+      <path d="M142 85H198" stroke="#8da6b7" stroke-width="3" stroke-dasharray="7 7"/>
+      <path d="M169 46V121" fill="none" stroke="#315fa1" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+      <text x="169" y="166" font-size="15" font-weight="800" text-anchor="middle">PIEGA DALL'ALTO VERSO IL BASSO</text>
+    </g>
+    <g transform="translate(15 210)">
+      <rect width="337" height="180" rx="22" fill="#fff" stroke="#c9d7e3" stroke-width="3"/>
+      <circle cx="30" cy="30" r="18" fill="#dceaf1"/><text x="30" y="37" font-size="20" font-weight="800" text-anchor="middle">3</text>
+      <rect x="126" y="30" width="88" height="88" rx="5" fill="#dff2f4" stroke="#315fa1" stroke-width="4"/>
+      <path d="M133 37V111M133 37H207" stroke="#d4a338" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 6"/>
+      <circle cx="177" cy="81" r="10" fill="#e15361" stroke="#fff" stroke-width="4"/>
+      <text x="169" y="151" font-size="16" font-weight="800" text-anchor="middle">FORA UNA VOLTA</text>
+    </g>
+    <g transform="translate(368 210)">
+      <rect width="337" height="180" rx="22" fill="#eaf7f8" stroke="#78cddd" stroke-width="4"/>
+      <circle cx="30" cy="30" r="18" fill="#dceaf1"/><text x="30" y="37" font-size="20" font-weight="800" text-anchor="middle">4</text>
+      <rect x="113" y="25" width="112" height="112" rx="4" fill="#fff" stroke="#315fa1" stroke-width="4" stroke-dasharray="8 7"/>
+      <text x="169" y="99" font-size="52" font-weight="800" text-anchor="middle">?</text>
+      <text x="169" y="160" font-size="16" font-weight="800" text-anchor="middle">RIAPRI</text>
+    </g>
+  </g>
+</svg>

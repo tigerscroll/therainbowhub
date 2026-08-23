@@ -1,13 +1,24 @@
 import fs from "node:fs";
 import path from "node:path";
+import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
 const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.replace(/\.json$/, "")));
+const requiredQuizLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const errors = [];
 const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
+
+fail(
+  new Set(Object.values(SOCIAL_PROOF_COUNTS)).size === Object.values(SOCIAL_PROOF_COUNTS).length,
+  "Every quiz must have a different stable social-proof count.",
+);
+fail(
+  folders.every((folder) => Number.isInteger(SOCIAL_PROOF_COUNTS[folder.name])),
+  "Every active quiz must have a stable social-proof count in scripts/social-proof.mjs.",
+);
 
 function read(file) {
   try { return JSON.parse(fs.readFileSync(file, "utf8")); }
@@ -113,6 +124,7 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  fail(config.listing?.socialProofCount === SOCIAL_PROOF_COUNTS[folder.name], `${folder.name}/quiz.json: listing.socialProofCount must use the shared stable quiz count.`);
   fail(folder.name === "chef" || config.engine?.resultAds === undefined, `${folder.name}: result display ads are permitted only for Chef.`);
   fail(folder.name === "chef" || config.engine?.questionAd === undefined, `${folder.name}: in-question display ads are permitted only for Chef.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
@@ -139,7 +151,12 @@ for (const folder of folders) {
   const invalid = localeFiles.filter((file) => !supportedLocales.has(file.replace(/\.json$/, "")));
   fail(!invalid.length, `${folder.name}: unsupported locale files: ${invalid.join(", ")}.`);
   fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
-  fail(JSON.stringify([...localeFiles].sort()) === JSON.stringify(["en.json"]), `${folder.name}: quiz content must be English only.`);
+  const sortedLocaleFiles = [...localeFiles].sort();
+  fail(
+    JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"])
+      || JSON.stringify(sortedLocaleFiles) === JSON.stringify(requiredQuizLocaleFiles),
+    `${folder.name}: quiz content must be English-only or support the complete seven-locale set.`,
+  );
 
   const source = read(path.join(directory, "en.json"));
   if (!source) continue;
@@ -177,9 +194,8 @@ for (const folder of folders) {
   fail(source.career?.stages?.[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final checkpoint may use the three-row result checklist.`);
   fail(source.checkpoint?.reveals?.length === 5, `${folder.name}/en.json: the shared shell requires one checkpoint reveal per stage.`);
   fail(JSON.stringify(source.checkpoint?.reveals?.map((reveal) => [reveal.title, reveal.message])) === JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])), `${folder.name}/en.json: checkpoint reveals must mirror the visible stage progression.`);
-  fail(typeof source.landing?.socialProof === "string" && source.landing.socialProof.trim(), `${folder.name}/en.json: configurable social-proof copy is required.`);
   fail(typeof source.landing?.cta === "string" && source.landing.cta.trim(), `${folder.name}/en.json: configurable landing CTA copy is required.`);
-  fail(JSON.stringify(Object.keys(source.landing ?? {}).sort()) === JSON.stringify(["cta", "intro", "socialProof"]), `${folder.name}/en.json: landing content may contain only intro, social proof and CTA copy.`);
+  fail(JSON.stringify(Object.keys(source.landing ?? {}).sort()) === JSON.stringify(["cta", "intro"]), `${folder.name}/en.json: landing content may contain only intro and CTA copy; social proof is shared i18n.`);
   fail(source.landing?.startNote === undefined && source.landing?.startPrompt === undefined, `${folder.name}/en.json: rewarded Start helper copy must come from the shared template.`);
   fail(sourceQuestions.every((question) => question.explanation === undefined), `${folder.name}/en.json: question explanations are no longer supported.`);
   fail(sourceQuestions.every((question) => (
@@ -205,6 +221,104 @@ for (const folder of folders) {
     const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
     const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
+  }
+  if (folder.name === "marry") {
+    const expectedProfiles = ["warm_anchor", "playful_spark", "quiet_creative", "grounded_builder", "magnetic_connector", "curious_explorer", "thoughtful_dreamer", "ambitious_teammate"];
+    const selector = config.engine?.profileArtworkSelector;
+    const selectorQuestion = sourceQuestions[0];
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), "marry: launch must be English-only.");
+    fail(config.slug === "marry" && source.title === "AI Will Draw The Person You’ll Marry", "marry: slug and title must match the approved launch copy.");
+    fail(source.landing?.intro === "Follow your instincts through attraction, personality, lifestyle and chemistry, then reveal the pencil portrait AI matched to your future.", "marry: landing intro changed.");
+    fail(source.landing?.cta === "Start" && config.listing?.socialProofCount === 184000, "marry: CTA and social proof must match the approved launch copy.");
+    fail(source.summary === "Attraction, personality, lifestyle and chemistry clues shape the portrait of the person you could marry.", "marry: homepage summary changed.");
+    fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, "marry: weighted scoring and 450ms advancement are required.");
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(expectedProfiles), "marry: archetype set or fixed tie order changed.");
+    fail(selector?.questionId === "marry-r1q1" && selector?.fallback === "stable-answer-hash", "marry: profile artwork selector is missing or invalid.");
+    fail(JSON.stringify(selector?.fixedVariants) === JSON.stringify({ 0: "masculine", 1: "feminine", 2: "androgynous" }), "marry: fixed presentation mappings changed.");
+    fail(selectorQuestion?.question === "Who should we draw as your future partner?", "marry: Q1 prompt changed.");
+    fail(JSON.stringify(selectorQuestion?.answers) === JSON.stringify(["A masculine person", "A feminine person", "An androgynous person", "Surprise me"]), "marry: Q1 choices changed.");
+    fail(JSON.stringify(selectorQuestion?.calibration) === JSON.stringify([0, 0, 0, 0]) && selectorQuestion?.correct === undefined, "marry: Q1 must be the only unscored selector.");
+    fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: scored questions must not use answer keys or calibration.");
+    const rawOpportunity = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
+    const randomExpectation = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
+    sourceQuestions.slice(1).forEach((question) => {
+      const answers = question.answers && !Array.isArray(question.answers) ? Object.values(question.answers) : [];
+      fail(answers.length === 4, `marry/en.json: ${question.id} must have four choices.`);
+      const seen = new Set();
+      answers.forEach((weights, answerIndex) => {
+        const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
+        fail(entries.length === 2 && entries.every(([, weight]) => weight === 0.5), `marry/en.json: ${question.id} answer ${answerIndex + 1} must split 0.5 / 0.5.`);
+        entries.forEach(([profile, weight]) => {
+          fail(expectedProfiles.includes(profile), `marry/en.json: ${question.id} references unknown archetype ${profile}.`);
+          fail(!seen.has(profile), `marry/en.json: ${question.id} must partition every archetype exactly once.`);
+          seen.add(profile);
+          rawOpportunity[profile] += weight;
+          randomExpectation[profile] += weight / 4;
+        });
+      });
+      fail(seen.size === 8, `marry/en.json: ${question.id} must cover all eight archetypes exactly once.`);
+    });
+    expectedProfiles.forEach((profile) => {
+      fail(Math.abs(rawOpportunity[profile] - 19.5) < 0.000001, `marry: ${profile} raw opportunity must equal 19.5.`);
+      fail(Math.abs(randomExpectation[profile] - 4.875) < 0.000001, `marry: ${profile} random expectation must equal 4.875.`);
+      fail(Object.keys(config.theme?.artwork?.profileVariants?.[profile] ?? {}).sort().join(",") === "androgynous,feminine,masculine", `marry: ${profile} must have all three portrait variants.`);
+      fail(typeof source.results?.profiles?.find((item) => item.id === profile)?.firstFeature === "string", `marry: ${profile} needs a first-feature result line.`);
+    });
+
+    const scoredQuestions = sourceQuestions.slice(1);
+    const rankWeights = (weights) => expectedProfiles
+      .map((id, order) => ({ id, order, value: weights[id] ?? 0 }))
+      .sort((left, right) => right.value - left.value || left.order - right.order);
+    const bandFromWeights = (weights) => {
+      const ranked = rankWeights(weights);
+      const gap = ((ranked[0]?.value ?? 0) - (ranked[1]?.value ?? 0)) / 39 * 100;
+      return gap >= 12 ? "high" : gap >= 6 ? "medium" : "mixed";
+    };
+
+    expectedProfiles.forEach((target) => {
+      const weights = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
+      scoredQuestions.forEach((question) => {
+        const answer = Object.values(question.answers).find((choice) => choice[target] === 0.5);
+        Object.entries(answer ?? {}).forEach(([profile, weight]) => { weights[profile] += weight; });
+      });
+      fail(rankWeights(weights)[0]?.id === target, `marry: ${target} is not reachable through a coherent strongest-answer path.`);
+      fail(bandFromWeights(weights) === "high", `marry: ${target} needs a reachable high-chemistry path.`);
+    });
+
+    let randomState = 0x9e3779b9;
+    const seededRandom = () => {
+      randomState ^= randomState << 13;
+      randomState ^= randomState >>> 17;
+      randomState ^= randomState << 5;
+      return (randomState >>> 0) / 4294967296;
+    };
+    const simulationCount = 100000;
+    const scoreSums = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
+    const reachableBands = Object.fromEntries(expectedProfiles.map((profile) => [profile, new Set()]));
+    for (let simulation = 0; simulation < simulationCount; simulation += 1) {
+      const weights = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
+      scoredQuestions.forEach((question) => {
+        const answers = Object.values(question.answers);
+        const answer = answers[Math.floor(seededRandom() * answers.length)];
+        Object.entries(answer).forEach(([profile, weight]) => { weights[profile] += weight; });
+      });
+      expectedProfiles.forEach((profile) => { scoreSums[profile] += weights[profile]; });
+      const winner = rankWeights(weights)[0]?.id;
+      if (winner) reachableBands[winner].add(bandFromWeights(weights));
+    }
+    expectedProfiles.forEach((profile) => {
+      const simulatedAverage = scoreSums[profile] / simulationCount;
+      fail(Math.abs(simulatedAverage - 4.875) < 0.02, `marry: seeded random simulation shows structural score bias for ${profile} (${simulatedAverage.toFixed(4)}).`);
+      fail(["high", "medium", "mixed"].every((band) => reachableBands[profile].has(band)), `marry: ${profile} must remain reachable with high, balanced and varied chemistry paths.`);
+    });
+
+    fail(config.theme?.artwork?.checkpoints?.length === 5, "marry: five checkpoint progress artworks are required.");
+    fail(sourceQuestions.filter((question) => question.presentation === "icons").length === 7, "marry: exactly seven four-image questions are required.");
+    fail(sourceQuestions.filter((question) => question.presentation === "icons").every((question) => question.icons?.length === 4), "marry: every visual choice needs four images.");
+    fail(source.checkpoint?.finalTitle === "YOUR FUTURE PARTNER HAS BEEN MATCHED" && source.checkpoint?.finalButton === "Reveal Their Face", "marry: final reveal promise changed.");
+    fail(JSON.stringify(source.checkpoint?.finalChecklist) === JSON.stringify(["Attraction pattern analysed", "Personality and chemistry matched", "Future clues combined"]), "marry: final checklist changed.");
+    const allCopy = JSON.stringify(source);
+    fail(!/you will marry|is destined to|we identified (?:a )?real person|guarantees (?:a )?future/i.test(allCopy), "marry: copy must not imply certainty, destiny or real-person identification.");
   }
   const entranceExamLabels = {
     oxford: "OXFORD",
@@ -539,7 +653,7 @@ for (const folder of folders) {
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "chef: must use the shared rewarded Start and stage flow.");
     fail(config.engine?.questionAd === undefined && config.engine?.resultAds === undefined, "chef: all display advertising must remain disabled.");
     fail(source.landing?.startPrompt === undefined, "chef/en.json: the landing CTA must begin directly without a pre-ad prompt.");
-    fail(source.title === "Only 12% Pass This Chef's Entrance Exam" && source.landing?.cta === "Start Quiz" && source.landing?.socialProof === "81,000+ people played this", "chef/en.json: approved landing copy changed.");
+    fail(source.title === "Only 12% Pass This Chef's Entrance Exam" && source.landing?.cta === "Start Quiz", "chef/en.json: approved landing copy changed.");
 
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 6), "chef/en.json: staged challenge needs five kitchens of six questions.");
     fail(JSON.stringify(source.stages.map((stage) => stage.title)) === JSON.stringify(expectedTitles), "chef/en.json: kitchen order or text-only titles changed.");
@@ -611,7 +725,7 @@ for (const folder of folders) {
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: compact quiz must launch in English only.`);
     fail(config.engine?.scoring === "correct-answer" && config.engine?.flow === "linear", `${folder.name}: compact quiz must use linear correct-answer scoring.`);
     fail(source.title === specification.title, `${folder.name}/en.json: approved headline changed.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === specification.cta, `${folder.name}/en.json: landing social proof or CTA changed.`);
+    fail(source.landing?.cta === specification.cta, `${folder.name}/en.json: landing CTA changed.`);
     fail(source.landing?.startPrompt?.button === "OK" && /short ad/i.test(source.landing?.startPrompt?.copy ?? ""), `${folder.name}/en.json: a clean pre-start rewarded prompt is required.`);
     fail(source.progressLabel === "complete", `${folder.name}/en.json: compact quiz must show percentage completion rather than a round number.`);
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: compact quiz needs one round of ten questions.`);
@@ -739,7 +853,7 @@ for (const folder of folders) {
     fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent" && config.engine?.scoring === "correct-answer", `${folder.name}: five-stage clinical flow must use independent staged correct-answer scoring.`);
     fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.rewarded?.confirmStart === false, `${folder.name}: direct rewarded Start and five result gates are required.`);
     fail(config.engine?.advanceDelayMs === 450 && config.engine?.targetRatio === 0.8, `${folder.name}: timing or 80% target changed.`);
-    fail(source.title === specification.title && source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === specification.cta, `${folder.name}/en.json: approved landing copy changed.`);
+    fail(source.title === specification.title && source.landing?.cta === specification.cta, `${folder.name}/en.json: approved landing copy changed.`);
     fail(source.landing?.startPrompt === undefined && /short ad first/i.test(source.landing?.startNote ?? ""), `${folder.name}/en.json: landing must trigger the rewarded ad directly without a confirmation prompt.`);
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: needs five stages of eight questions.`);
     fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, `${folder.name}/en.json: needs 40 unique stable question IDs.`);
@@ -825,7 +939,7 @@ for (const folder of folders) {
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Idiom must launch in English only.`);
     fail(config.engine?.flow === "linear" && config.engine?.scoring === "correct-answer" && config.engine?.targetRatio === .8, `${folder.name}: compact Idiom must use linear correct-answer scoring and the 80% threshold.`);
     fail(source.title === "Only 5% Of Adults Can Ace This Idiom Quiz", `${folder.name}/en.json: Idiom title must match the approved headline.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Idiom landing social proof or CTA changed.`);
+    fail(source.landing?.cta === "Start Quiz", `${folder.name}/en.json: Idiom landing CTA changed.`);
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Idiom needs one stage of ten questions.`);
     fail(JSON.stringify(sourceQuestions.map((question) => question.id)) === JSON.stringify(approvedIds), `${folder.name}/en.json: Idiom must retain the approved compact question order.`);
     fail(JSON.stringify(sourceQuestions.map((question) => question.targetIdiom)) === JSON.stringify(targetMap.map(([id]) => id)), `${folder.name}/en.json: compact targetIdiom order changed.`);
@@ -874,7 +988,7 @@ for (const folder of folders) {
     fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), `${folder.name}: Aura must launch in English only.`);
     fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, `${folder.name}: Aura needs weighted-profile scoring and 450ms default advancement.`);
     fail(source.title === "What’s Your Animal Aura Based On Your Personality?", `${folder.name}/en.json: Aura title must match the approved headline.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Reveal My Aura", `${folder.name}/en.json: Aura landing social proof or CTA changed.`);
+    fail(source.landing?.cta === "Reveal My Aura", `${folder.name}/en.json: Aura landing CTA changed.`);
     fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Aura needs ten rounds of six interactions.`);
     fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Aura needs 60 uniquely identified interactions.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(profileOrder), `${folder.name}/en.json: Aura profile IDs or fixed tie order changed.`);
@@ -945,7 +1059,7 @@ for (const folder of folders) {
     fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, `${folder.name}: Spectrum needs weighted-profile scoring and 450ms default advancement.`);
     fail(source.title === "What Side Of The Intelligence Spectrum Are You On?", `${folder.name}/en.json: Spectrum title must match the approved headline.`);
     fail(source.landing?.intro === "Words, patterns, people, rhythm, movement or the natural world—follow your instincts to reveal how your mind connects best.", `${folder.name}/en.json: Spectrum landing intro changed.`);
-    fail(source.landing?.socialProof === "81,000+ people played this" && source.landing?.cta === "Reveal My Spectrum", `${folder.name}/en.json: Spectrum social proof or CTA changed.`);
+    fail(source.landing?.cta === "Reveal My Spectrum", `${folder.name}/en.json: Spectrum landing CTA changed.`);
     fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 6), `${folder.name}/en.json: Spectrum needs ten rounds of six interactions.`);
     fail(sourceQuestions.length === 60 && new Set(sourceQuestions.map((question) => question.id)).size === 60, `${folder.name}/en.json: Spectrum needs 60 uniquely identified interactions.`);
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(profileOrder), `${folder.name}/en.json: Spectrum profile IDs or tie order changed.`);
@@ -1119,27 +1233,14 @@ for (const folder of folders) {
     fail(JSON.stringify(localizedProfileStructure) === JSON.stringify(sourceProfileStructure), `${folder.name}/${localeFile}: result profile ids and thresholds differ from English.`);
     if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(localized, `${folder.name}/${localeFile}`);
     if (folder.name === "iq") {
-      if (localeFile === "en.json") {
-        fail(!/10\s+(?:round|level)|IQ score|IQ Challenge Score/i.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: compact Smart Score intro contains obsolete IQ or round copy.`);
-        const mirror = questions.find((question) => question.id === "iq-s1q4");
-        fail(mirror?.presentation === "spatial" && mirror?.correct === 2 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect up-right to up-left.`);
-        const letterCode = questions.find((question) => question.id === "iq-s2q2");
-        const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
-        fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-        const linking = questions.find((question) => question.id === "iq-s1q3");
-        fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: linking-word puzzle changed.`);
-      } else {
-        fail(/\b10\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: legacy localized IQ landing intro must use numeral 10.`);
-        const mirror = questions.find((question) => question.id === "iq-r5q3");
-        fail(mirror?.presentation === "spatial" && mirror?.correct === 0 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must reflect the arrow horizontally to answer index zero.`);
-        const letterCode = questions.find((question) => question.id === "iq-r6q3");
-        const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
-        fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-        for (const id of ["iq-r4q3", "iq-r10q3"]) {
-          const linking = questions.find((question) => question.id === id);
-          fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: ${id} must remain a two-sided linking-word puzzle.`);
-        }
-      }
+      fail(!/\b(?:5|10|40)\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: landing intro must describe the challenge without exposing its stage or question count.`);
+      const mirror = questions.find((question) => question.id === "iq-s1q4");
+      fail(mirror?.presentation === "spatial" && mirror?.correct === 2 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must preserve the reflected direction and answer index.`);
+      const letterCode = questions.find((question) => question.id === "iq-s2q2");
+      const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
+      fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
+      const linking = questions.find((question) => question.id === "iq-s1q3");
+      fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: native linking-word puzzle must retain its two-sided structure.`);
     }
     if (folder.name === "biology") {
       const locale = localeFile.replace(/\.json$/, "");
@@ -1159,21 +1260,47 @@ for (const folder of folders) {
       fail(localized.checkpoint?.reveals?.length === localized.stages?.length, `${folder.name}/${localeFile}: checkpoint reveals must match stage count.`);
       fail(localized.checkpoint?.finalChecklist?.length >= 3 && localized.checkpoint.finalChecklist.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
     }
-    if (config.engine?.localeParity !== "independent") {
-      fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
-      fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
-      fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
+    fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
+    fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
+    fail(
+      JSON.stringify((localized.stages ?? []).map((stage) => stage.questions?.length ?? 0))
+        === JSON.stringify((source.stages ?? []).map((stage) => stage.questions?.length ?? 0)),
+      `${folder.name}/${localeFile}: per-stage question counts differ from English.`,
+    );
+    fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
+    fail(questions.every((question) => question.explanation === undefined), `${folder.name}/${localeFile}: question explanations are no longer supported.`);
+    if (config.engine?.scoring === "correct-answer") {
+      fail(questions.every((question) => (
+        Array.isArray(question.answers)
+          && question.answers.length === 4
+          && question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim()))
+          && new Set(question.answers).size === 4
+          && Number.isInteger(question.correct)
+          && question.correct >= 0
+          && question.correct < 4
+      )), `${folder.name}/${localeFile}: every localized scored question needs four unique choices and one valid answer.`);
+      const localizedPositions = questions.reduce((positions, question) => {
+        positions[question.correct] += 1;
+        return positions;
+      }, [0, 0, 0, 0]);
+      const sourcePositions = sourceQuestions.reduce((positions, question) => {
+        positions[question.correct] += 1;
+        return positions;
+      }, [0, 0, 0, 0]);
+      fail(JSON.stringify(localizedPositions) === JSON.stringify(sourcePositions), `${folder.name}/${localeFile}: correct-answer position balance differs from English.`);
     }
-    if (config.engine?.localeParity !== "independent") questions.forEach((question, index) => {
+    questions.forEach((question, index) => {
       const sourceQuestion = sourceQuestions[index];
       const answers = Array.isArray(question.answers) ? question.answers : Object.keys(question.answers ?? {});
       const sourceAnswers = Array.isArray(sourceQuestion?.answers) ? sourceQuestion.answers : Object.keys(sourceQuestion?.answers ?? {});
       validateStudy(question.study, `${folder.name}/${localeFile}: question ${index + 1}`);
+      fail(question.id === sourceQuestion?.id, `${folder.name}/${localeFile}: question ${index + 1} id or order differs from English.`);
       fail(answers.length === sourceAnswers.length, `${folder.name}/${localeFile}: question ${index + 1} answer count differs from English.`);
       fail((question.presentation ?? "text") === (sourceQuestion?.presentation ?? "text"), `${folder.name}/${localeFile}: question ${index + 1} presentation differs from English.`);
       fail(question.correct === sourceQuestion?.correct, `${folder.name}/${localeFile}: question ${index + 1} correct answer differs from English.`);
       fail(Boolean(question.context) === Boolean(sourceQuestion?.context), "Question context structure differs from English.");
       fail(question.category === sourceQuestion?.category, `${folder.name}/${localeFile}: question ${index + 1} category differs from English.`);
+      fail(question.interactionStyle === sourceQuestion?.interactionStyle, `${folder.name}/${localeFile}: question ${index + 1} interaction style differs from English.`);
       fail(JSON.stringify(question.calibration) === JSON.stringify(sourceQuestion?.calibration), `${folder.name}/${localeFile}: question ${index + 1} calibration differs from English.`);
       fail(JSON.stringify(question.icons) === JSON.stringify(sourceQuestion?.icons), `${folder.name}/${localeFile}: question ${index + 1} icons differ from English.`);
       fail(JSON.stringify(question.visual ? {
@@ -1185,13 +1312,18 @@ for (const folder of folders) {
         columns: sourceQuestion.visual.columns,
         separator: sourceQuestion.visual.separator,
       } : undefined), `${folder.name}/${localeFile}: question ${index + 1} visual structure differs from English.`);
-      fail(JSON.stringify(question.image ? {
+      const imageStructureMatches = JSON.stringify(question.image ? {
         src: question.image.src,
         alt: Boolean(question.image.alt),
       } : undefined) === JSON.stringify(sourceQuestion?.image ? {
         src: sourceQuestion.image.src,
         alt: Boolean(sourceQuestion.image.alt),
-      } : undefined), `${folder.name}/${localeFile}: question ${index + 1} image structure differs from English.`);
+      } : undefined);
+      const localizedVisionFoldAsset = folder.name === "vision"
+        && question.id === "vision-r10q4"
+        && Boolean(question.image?.alt)
+        && new RegExp(`paper-fold-punch-${localeFile.replace(".json", "")}\\.svg(?:\\?|$)`).test(question.image?.src ?? "");
+      fail(imageStructureMatches || localizedVisionFoldAsset, `${folder.name}/${localeFile}: question ${index + 1} image structure differs from English.`);
       fail(question.delay === sourceQuestion?.delay, `${folder.name}/${localeFile}: question ${index + 1} delay differs from English.`);
       fail(question.reasoningSteps === sourceQuestion?.reasoningSteps, `${folder.name}/${localeFile}: question ${index + 1} reasoning-step structure differs from English.`);
       fail(question.targetIdiom === sourceQuestion?.targetIdiom, `${folder.name}/${localeFile}: question ${index + 1} targetIdiom differs from English.`);

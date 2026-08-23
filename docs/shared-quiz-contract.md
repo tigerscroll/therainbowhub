@@ -17,7 +17,7 @@ structure below.
 - Free incorrect-answer review and no question explanations.
 - No display-ad flow variants.
 - Standard split landing, card questions and immersive results.
-- Standard landing content: intro, social proof and configurable CTA only.
+- Standard landing content: intro and configurable CTA only. Each quiz stores one stable `listing.socialProofCount`; the locale-specific social-proof sentence comes exclusively from `data/i18n/{locale}.json` via `quiz.socialProofTaken`.
 - No landing artwork panel.
 
 ## Theme-owned presentation

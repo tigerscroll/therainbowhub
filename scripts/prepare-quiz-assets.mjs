@@ -58,13 +58,22 @@ async function prepareQuiz(slug) {
   const items = path.join(source, "assets", "items");
   try {
     const files = await fs.readdir(items);
+    const fileSet = new Set(files);
     await Promise.all(files
       .filter((file) => /\.(?:jpe?g|png|webp|avif)$/i.test(file))
+      .filter((file) => !/\.(?:jpe?g|png)$/i.test(file) || !fileSet.has(file.replace(/\.(?:jpe?g|png)$/i, ".webp")))
       .map((file) => copyIfPresent(path.join(items, file), path.join(destination, "assets", "items", file))));
   } catch { /* Question imagery is optional. */ }
 
   const artwork = manifest.theme?.artwork ?? {};
-  await Promise.all([artwork.landing, artwork.result, ...Object.values(artwork.profiles ?? {})]
+  const variantArtwork = Object.values(artwork.profileVariants ?? {}).flatMap((variants) => Object.values(variants ?? {}));
+  await Promise.all([
+    artwork.landing,
+    artwork.result,
+    ...Object.values(artwork.profiles ?? {}),
+    ...variantArtwork,
+    ...(artwork.checkpoints ?? []),
+  ]
     .filter((value, index, values) => typeof value === "string" && !value.startsWith("/") && values.indexOf(value) === index)
     .map((value) => copyIfPresent(path.join(source, value), path.join(destination, value))));
 }

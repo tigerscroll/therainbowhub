@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
 const rootDir = process.cwd();
 const errors = [];
@@ -73,6 +74,7 @@ requireFile("public/_redirects");
 requireFile("public/og-default.svg");
 requireFile("app/robots.ts");
 requireFile("app/sitemap.ts");
+requireFile("app/[locale]/[quiz]/page.tsx");
 requireFile("app/not-found.tsx");
 requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
@@ -121,7 +123,7 @@ if (/quiz\.slug\s*={2,3}|quiz\.slug\s*!={1,2}/.test(quizEngineText)) {
 }
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(rootDir, "package.json"), "utf8"));
-for (const command of ["node scripts/validate-quizzes.mjs", "node scripts/validate-production.mjs"]) {
+for (const command of ["node scripts/validate-quizzes.mjs", "node scripts/validate-localizations.mjs", "node scripts/validate-production.mjs"]) {
   if (!packageJson.scripts?.build?.includes(command)) {
     addError(`Production build must run the shared quiz contract validator: ${command}`);
   }
@@ -168,20 +170,30 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 }
 
 const quizRoot = path.join(rootDir, "data", "quizzes");
+const requiredQuizLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const existingThemeGeometrySlugs = new Set([
   "cambridge", "chef", "grammar", "harvard", "iq", "mechanic", "memory",
   "midwifery", "nursing", "oxford", "paramedic", "vision", "years-left",
 ]);
+if (new Set(Object.values(SOCIAL_PROOF_COUNTS)).size !== Object.values(SOCIAL_PROOF_COUNTS).length) {
+  addError("Every quiz must have a different stable social-proof count.");
+}
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
   const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
-  if (JSON.stringify(localeFiles.sort()) !== JSON.stringify(["en.json"])) {
-    addError(`Quiz content must be English-only: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
+  const sortedLocaleFiles = localeFiles.sort();
+  const isEnglishOnly = JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]);
+  const hasFullLocaleSet = JSON.stringify(sortedLocaleFiles) === JSON.stringify(requiredQuizLocaleFiles);
+  if (!isEnglishOnly && !hasFullLocaleSet) {
+    addError(`Quiz content must launch either English-only or with the complete en, fr, de, it, nl, es and pt set: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
   }
   const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
   const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
+  if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {
+    addError(`Quiz manifest must use its shared stable social-proof count: data/quizzes/${entry.name}/quiz.json`);
+  }
   if (JSON.stringify(quizConfig.theme?.layout) !== JSON.stringify({ landing: "split", questions: "card", results: "immersive" })) {
     addError(`Quiz layout must use the shared landing/question/result template: data/quizzes/${entry.name}/quiz.json`);
   }
@@ -228,11 +240,32 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (!(typeof englishContent.landing?.cta === "string" && englishContent.landing.cta.trim())) {
       addError(`Landing CTA copy must remain configurable and non-empty: data/quizzes/${entry.name}/en.json`);
     }
-    if (!(typeof englishContent.landing?.socialProof === "string" && englishContent.landing.socialProof.trim())) {
-      addError(`Landing social proof must remain configurable and non-empty: data/quizzes/${entry.name}/en.json`);
+    if (englishContent.landing?.socialProof !== undefined) {
+      addError(`Landing social-proof wording must come from shared i18n: data/quizzes/${entry.name}/en.json`);
     }
-    if (JSON.stringify(Object.keys(englishContent.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro", "socialProof"])) {
-      addError(`Landing content may contain only intro, social proof and CTA copy: data/quizzes/${entry.name}/en.json`);
+    if (JSON.stringify(Object.keys(englishContent.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro"])) {
+      addError(`Landing content may contain only intro and CTA copy: data/quizzes/${entry.name}/en.json`);
+    }
+
+    for (const localeFile of requiredQuizLocaleFiles.filter((file) => file !== "en.json")) {
+      const localizedPath = path.join(quizRoot, entry.name, localeFile);
+      if (!fs.existsSync(localizedPath)) continue;
+      const localized = JSON.parse(fs.readFileSync(localizedPath, "utf8"));
+      if (localized.stages?.length !== 5 || localized.stages.some((stage) => stage.questions?.length !== 8)) {
+        addError(`Every localized quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/${localeFile}`);
+      }
+      if (localized.stages?.flatMap((stage) => stage.questions ?? []).some((question) => question.explanation !== undefined)) {
+        addError(`Question explanations are forbidden by the shared quiz contract: data/quizzes/${entry.name}/${localeFile}`);
+      }
+      if (!(typeof localized.landing?.cta === "string" && localized.landing.cta.trim())) {
+        addError(`Localized landing CTA copy must be non-empty: data/quizzes/${entry.name}/${localeFile}`);
+      }
+      if (localized.landing?.socialProof !== undefined) {
+        addError(`Localized social-proof wording must come from shared i18n: data/quizzes/${entry.name}/${localeFile}`);
+      }
+      if (JSON.stringify(Object.keys(localized.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro"])) {
+        addError(`Localized landing content may contain only intro and CTA copy: data/quizzes/${entry.name}/${localeFile}`);
+      }
     }
   }
   const themeRelativePath = `data/quizzes/${entry.name}/theme.css`;

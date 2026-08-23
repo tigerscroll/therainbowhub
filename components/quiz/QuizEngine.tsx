@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import { getCareerResultBand, getStageCompletionPercentage } from "./engineState";
 import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
+import { resolveProfileArtwork } from "./profileArtwork";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
 type QuizEngineProps = {
@@ -37,6 +38,10 @@ type SavedProgress = {
 function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
   if (typeof window === "undefined") return;
   window.fbq?.("trackCustom", name, { quiz_slug: quiz.slug, locale });
+}
+
+function formatSocialProof(template: string, count: number, locale: SupportedLocale) {
+  return template.replace("{count}", new Intl.NumberFormat(locale).format(count));
 }
 
 type QuestionRendererProps = {
@@ -388,6 +393,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
+  const preloadedArtwork = useRef(new Set<string>());
   const progressSignature = useMemo(
     () => JSON.stringify({
       engine: {
@@ -488,6 +494,31 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     };
     try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
   }, [answers, completedStage, hydrated, progressSignature, questionIndex, reportUnlocked, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
+
+  useEffect(() => {
+    // Portrait-library quizzes use image-led choices. Warm the browser cache for
+    // the active (or immediately upcoming) stage so each sketch is already
+    // decoded by the time its answer card appears, without fetching unreached
+    // result portraits.
+    if (!quiz.theme.artwork?.profileVariants) return;
+    const targetStage = screen === "checkpoint" || screen === "stage-result"
+      ? Math.min(completedStage + 1, quiz.stages.length - 1)
+      : currentStage;
+    const sources = quiz.questions
+      .filter((question) => question.stage === targetStage)
+      .flatMap((question) => [question.image?.src, ...(question.icons ?? [])])
+      .filter((source): source is string => typeof source === "string" && source.startsWith("/quizzes/"));
+    const checkpoint = quiz.theme.artwork.checkpoints?.[currentStage];
+    if (screen === "question" && checkpoint) sources.push(checkpoint);
+
+    sources.forEach((source) => {
+      if (preloadedArtwork.current.has(source)) return;
+      preloadedArtwork.current.add(source);
+      const image = new window.Image();
+      image.decoding = "async";
+      image.src = source;
+    });
+  }, [completedStage, currentStage, quiz.questions, quiz.stages.length, quiz.theme.artwork, screen]);
 
   useEffect(() => () => {
     adRequestGeneration.current += 1;
@@ -663,28 +694,17 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{quiz.cardIcon}</span></div>
           <span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>
           <h1>{quiz.title}</h1>
-          <p className="quiz-engine__lede">{quiz.summary}</p>
-          {quiz.landing.infoBadge ? <p className="quiz-engine__info-badge">{quiz.landing.infoBadge}</p> : null}
-          <div className="quiz-engine__landing-meta">
-            <span>{quiz.duration}</span>
-          </div>
           <p className="quiz-engine__quick-start">{quiz.landing.quickStartText}</p>
-          {quiz.landing.socialProof ? <SocialProof avatars={quiz.landing.socialAvatars} text={quiz.landing.socialProof} /> : null}
+          <SocialProof
+            avatars={quiz.landing.socialAvatars}
+            text={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
+          />
           <button className="quiz-engine__primary" disabled={adBusy} onClick={startQuiz} type="button">
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
           </button>
           {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
         </div>
-        {quiz.theme.artwork?.landing ? (
-          <div className="quiz-engine__landing-art" aria-hidden="true">
-            <img alt="" src={quiz.theme.artwork.landing} />
-          </div>
-        ) : (
-          <div className="quiz-engine__landing-symbol" aria-hidden="true">
-            {quiz.theme.artwork?.icon ?? quiz.cardIcon}
-          </div>
-        )}
       </section>
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
       {showStartPrompt && quiz.landing.startPrompt ? (
@@ -735,6 +755,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         : reveal?.variants?.[revealKey];
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
+    const checkpointArtwork = quiz.theme.artwork?.checkpoints?.[completedStage];
     return (
       <>
       <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}${compactCareerGate ? " quiz-engine__checkpoint--compact-career" : ""}${progressOnlyCareerGate ? " quiz-engine__checkpoint--progress-career" : ""}`} data-round={completedStage + 1}>
@@ -745,7 +766,13 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         ) : progressOnlyCareerGate ? (
           <span className="quiz-engine__eyebrow">{careerStage?.preAdBadge ?? checkpoint?.finalBadge}</span>
         ) : null}
-        <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
+        {checkpointArtwork ? (
+          <div className="quiz-engine__checkpoint-artwork" aria-hidden="true">
+            <img alt="" decoding="async" src={checkpointArtwork} />
+          </div>
+        ) : (
+          <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{careerStage ? careerStage.resultIcon : isFinalStage ? checkpoint?.finalIcon ?? "✦" : reveal?.icon ?? "✓"}</div>
+        )}
         <h2>{compactCareerGate ? compactCareerGate.title.replace("{stage}", quiz.stages[completedStage]) : careerStage?.preAdTitle ?? checkpointTitle}</h2>
         {compactCareerGate ? <p>{compactCareerGate.copy}</p> : careerStage?.preAdCopy ? <p>{careerStage.preAdCopy}</p> : checkpointCopy ? <p>{checkpointCopy}</p> : null}
         {careerStage ? (!compactCareerGate && careerStage.preAdChecks?.length ? (
@@ -774,7 +801,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
               <span>{checkpoint.progressComplete.replace("{value}", String(checkpointPercent))}</span>
             </div>
             <div
-              aria-label={`${completedStageCount} of ${quiz.stages.length} complete`}
+              aria-label={`${completedStageCount} ${translations.quiz.of} ${quiz.stages.length} ${translations.results.complete}`}
               className="quiz-engine__checkpoint-progress-track"
               role="progressbar"
               aria-valuemax={quiz.stages.length}
@@ -881,7 +908,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
 
         {!quiz.career.hideJourneyLength ? <section className="quiz-engine__career-progress">
           <div><span>{quiz.career.journeyLabel}</span><strong>{quiz.career.kitchensCleared.replace("{value}", String(cleared)).replace("{total}", String(quiz.stages.length))}</strong></div>
-          <div className="quiz-engine__career-dots" aria-label={`${cleared} of ${quiz.stages.length} complete`} style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}>
+          <div className="quiz-engine__career-dots" aria-label={`${cleared} ${translations.quiz.of} ${quiz.stages.length} ${translations.results.complete}`} style={{ gridTemplateColumns: `repeat(${quiz.stages.length}, minmax(0, 1fr))` }}>
             {quiz.stages.map((stage, index) => <i aria-hidden="true" data-complete={index < cleared ? "true" : undefined} key={stage} />)}
           </div>
           <p><span>{quiz.career.currentRank}</span><strong>{currentRank}</strong></p>
@@ -915,7 +942,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
     const scoreCopy = quiz.result.score;
     const matchCopy = quiz.result.match;
     const profileReveal = quiz.result.profileReveal;
-    const profileArtwork = result.profile.id ? quiz.theme.artwork?.profiles?.[result.profile.id] : undefined;
+    const profileArtwork = resolveProfileArtwork(quiz, answers, result.profile.id);
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
     const revealConsistency = profileReveal?.consistencyLabels[result.consistency];
@@ -1000,7 +1027,15 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         {profileReveal ? (
           <>
             <span className="quiz-engine__eyebrow">{profileReveal.eyebrow}</span>
-            {profileArtwork ? <div className="quiz-engine__profile-portrait"><img alt="" src={profileArtwork} /></div> : null}
+            {profileArtwork ? (
+              <div className="quiz-engine__profile-portrait">
+                <img
+                  alt={(profileReveal.portraitAlt ?? "{profile}").replace("{profile}", result.profile.title)}
+                  decoding="async"
+                  src={profileArtwork}
+                />
+              </div>
+            ) : null}
             <div className="quiz-engine__profile-animal">{result.profile.tier}</div>
             <h2 className="quiz-engine__profile-title">{result.profile.title}</h2>
             <p className="quiz-engine__profile-aura">
@@ -1010,13 +1045,18 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
                 <><span>{result.profile.aura}</span><span>{profileReveal.auraLabel}</span></>
               )}
             </p>
-            <p className="quiz-engine__profile-traits">{result.profile.traits?.join(" · ")}</p>
+            <p className="quiz-engine__profile-chemistry"><span>{profileReveal.consistency}</span><strong>{revealConsistency}</strong></p>
+            <p className="quiz-engine__profile-traits" aria-label={profileReveal.traitsLabel}>
+              {result.profile.traits?.map((trait) => <span key={trait}>{trait}</span>)}
+            </p>
             <dl className="quiz-engine__result-signals">
               <div><dt>{profileReveal.strongestEnergy}</dt><dd>{result.strongestSignal}</dd></div>
               <div><dt>{profileReveal.hiddenEnergy}</dt><dd>{result.hiddenSignal}</dd></div>
-              <div><dt>{profileReveal.consistency}</dt><dd>{revealConsistency}</dd></div>
             </dl>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+            {profileReveal.firstFeatureLabel && result.profile.firstFeature ? (
+              <p className="quiz-engine__profile-first-feature"><strong>{profileReveal.firstFeatureLabel}</strong> {result.profile.firstFeature}</p>
+            ) : null}
             <p className="quiz-engine__disclaimer">{profileReveal.disclaimer}</p>
           </>
         ) : (
@@ -1214,7 +1254,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
           ? quiz.career.hideJourneyLength ? quiz.career.stages[currentStage].difficulty : currentStage === 0 ? quiz.career.stages[0].difficulty : `${quiz.career.levelLabel} ${currentStage + 1} / ${quiz.stages.length}`
           : quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
         <strong>{quiz.stages[currentStage]}</strong>
-        {quiz.career ? <em>{quiz.career.hideJourneyLength ? `${stageQuestionIndex + 1} of ${stageQuestions.length}` : currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} of ${stageQuestions.length}`}</em> : null}
+        {quiz.career ? <em>{quiz.career.hideJourneyLength ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}` : currentStage > 0 ? quiz.career.stages[currentStage].difficulty : `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`}</em> : null}
       </div>
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
         <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />

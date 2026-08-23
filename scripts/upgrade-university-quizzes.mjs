@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { socialProofCountFor } from "./social-proof.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 
@@ -383,6 +384,7 @@ for (const [slug, pack] of Object.entries(packs)) {
     targetRatio: 0.8,
   };
   quiz.listing = { ...quiz.listing, duration: "5 min", difficulty: "Expert" };
+  quiz.listing.socialProofCount = socialProofCountFor(slug);
 
   const questions = makeQuestions(slug, pack.questions, pack.categories);
   const content = {
@@ -392,7 +394,6 @@ for (const [slug, pack] of Object.entries(packs)) {
     progressLabel: "COMPLETE",
     landing: {
       intro: pack.intro,
-      socialProof: "81,000+ people played this",
       cta: "Start Test",
       startNote: "Short ad first - then it begins.",
     },

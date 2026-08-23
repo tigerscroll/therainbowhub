@@ -4,6 +4,23 @@ export const quizShellContractCss = String.raw`
  * This style is deliberately mounted after folder theme CSS so themes may keep
  * their colour, type and texture without changing the shared experience.
  */
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy {
+  grid-template-columns: minmax(0, 1fr) !important;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy > h1,
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy > .quiz-engine__quick-start {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell {
   --quiz-flow-width: 800px;
   --quiz-flow-min-height: clamp(590px, 82svh, 860px);
@@ -370,7 +387,7 @@ export const quizShellContractCss = String.raw`
   }
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__social {
-    width: 100% !important;
+    width: 82% !important;
     max-width: 416px !important;
     gap: 9px;
     padding: 5px 10px !important;
@@ -380,6 +397,44 @@ export const quizShellContractCss = String.raw`
     width: 28px !important;
     height: 28px !important;
     margin-left: -8px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing {
+    padding: 22px 14px 20px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-badge {
+    width: 58px !important;
+    height: 58px !important;
+    margin-block: 2px 8px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing h1 {
+    margin: 8px auto 14px !important;
+    font-size: 34px !important;
+    line-height: .98 !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__quick-start {
+    margin-bottom: 14px !important;
+    font-size: 14.5px !important;
+    line-height: 1.38 !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__social {
+    margin-bottom: 14px !important;
+    font-size: 13px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary {
+    min-height: 52px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__ad-note {
+    margin-top: 10px !important;
+    font-size: 12px !important;
   }
 }
 `;

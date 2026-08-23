@@ -335,7 +335,7 @@ img { display: block; max-width: 100%; }
 .site-footer__bottom p { margin: 0; }
 
 .legal-page { width: min(820px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 80px; }
-.legal-page h1 { font-size: clamp(36px, 7vw, 58px); letter-spacing: -.045em; }
+.legal-page h1 { max-width: 100%; font-size: clamp(36px, 7vw, 58px); line-height: 1.02; letter-spacing: -.045em; overflow-wrap: normal; hyphens: auto; }
 .legal-page h2 { margin-top: 38px; }
 .legal-page p, .legal-page li { color: #526163; line-height: 1.75; }
 .legal-updated { font-size: 13px; }
@@ -451,6 +451,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 760px) {
   :root { --site-header-height: 40px; }
+  .legal-page h1 { font-size: clamp(32px, 9vw, 42px); }
   .hub-header { height: 40px; min-height: 40px; max-height: 40px; }
   .hub-header__inner, .hub-main, .site-footer__inner { width: calc(100% - 24px); }
   .hub-brand { gap: 7px; font-size: 15px; }
