@@ -131,15 +131,15 @@
           "measuredIntro": "Les questions couvrent trois dimensions complémentaires propres au test de mémoire.",
           "measuredAreas": [
             {
-              "title": "📝 Mémoire des mots",
+              "title": "Encodage et rappel",
               "copy": "Retenir mots, images et nombres assez longtemps pour les reconnaître ou les retrouver peu après."
             },
             {
-              "title": "👀 Mémoire visuelle",
+              "title": "Récupération différée",
               "copy": "Rappeler des détails antérieurs après qu’une autre tâche a interrompu le souvenir initial."
             },
             {
-              "title": "🔢 Mémoire des nombres",
+              "title": "Attention aux détails",
               "copy": "Remarquer couleurs, formes, positions et petits changements avant leur disparition."
             }
           ],
@@ -160,7 +160,7 @@
             }
           ],
           "finalTitle": "Votre résultat au test de mémoire",
-          "finalCopy": "Vous avez obtenu {score} bonnes réponses sur {total}. Votre profil pour cette tentative apparaît ci-dessous."
+          "finalCopy": "Vous avez terminé avec {score} bonnes réponses sur {total}. Votre profil et le bilan complet de vos aptitudes de mémoire apparaissent ci-dessous."
         }
       }
     }
@@ -896,35 +896,35 @@
     ],
     "reveals": [
       {
-        "badge": "ÉTAPE TERMINÉE",
+        "badge": "MÉMOIRE IMMÉDIATE TERMINÉE",
         "icon": "✓",
         "title": "Mémoire immédiate terminée",
         "signal": "fixed",
         "message": "La manche suivante ajoute des images et des détails."
       },
       {
-        "badge": "ÉTAPE TERMINÉE",
+        "badge": "IMAGES ET DÉTAILS TERMINÉS",
         "icon": "✓",
         "title": "Mémoire visuelle réussie",
         "signal": "fixed",
         "message": "Les nombres et la mémoire de travail viennent ensuite."
       },
       {
-        "badge": "ÉTAPE TERMINÉE",
+        "badge": "NOMBRES ET MOTIFS TERMINÉS",
         "icon": "✓",
         "title": "Vous avez dépassé la moitié",
         "signal": "fixed",
         "message": "Le piège de la mémoire vient ensuite."
       },
       {
-        "badge": "ÉTAPE TERMINÉE",
+        "badge": "PIÈGE DE LA MÉMOIRE TERMINÉ",
         "icon": "✓",
         "title": "Dernier défi mémoire à suivre",
         "signal": "fixed",
         "message": "Une dernière manche va tester ce qui est resté en mémoire."
       },
       {
-        "badge": "TEST DE MÉMOIRE TERMINÉ",
+        "badge": "DÉFI MÉMOIRE FINAL TERMINÉ",
         "icon": "✓",
         "title": "TEST DE MÉMOIRE TERMINÉ",
         "signal": "fixed",
@@ -938,13 +938,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Progression",
+    "resultProgressLabel": "Défi de mémoire",
     "resultProgressComplete": "{value} % terminé",
-    "currentScoreLabel": "SCORE ACTUEL",
+    "currentScoreLabel": "SCORE DE MÉMOIRE ACTUEL",
     "levelLabel": "ÉTAPE",
     "scoreSuffix": "bonnes réponses",
-    "journeyLabel": "PARCOURS DU QUIZ",
-    "kitchensCleared": "{value} / {total} étapes terminées",
+    "journeyLabel": "DÉFI DE MÉMOIRE",
+    "kitchensCleared": "{value} / {total} défis terminés",
     "currentRank": "NIVEAU ACTUEL · MÉMOIRE",
     "ranks": [
       {
@@ -965,12 +965,12 @@
     "stages": [
       {
         "difficulty": "Fondamentaux",
-        "preAdBadge": "ÉTAPE TERMINÉE",
+        "preAdBadge": "MÉMOIRE IMMÉDIATE TERMINÉE",
         "preAdTitle": "Mémoire immédiate terminée",
         "preAdCopy": "La manche suivante ajoute des images et des détails.",
         "preAdButton": "Continuer",
         "resultIcon": "✓",
-        "resultLabel": "ÉTAPE TERMINÉE",
+        "resultLabel": "MÉMOIRE IMMÉDIATE TERMINÉE",
         "resultBands": {
           "high": {
             "title": "Mémoire immédiate terminée",
@@ -988,19 +988,19 @@
         "next": {
           "eyebrow": "PROCHAIN DÉFI · INTERMÉDIAIRE",
           "title": "Images et détails",
-          "difficulty": "En progression",
+          "difficulty": "Intermédiaire",
           "tagline": "Couleurs. Positions. Changements.",
           "button": "Continuer"
         }
       },
       {
         "difficulty": "Intermédiaire",
-        "preAdBadge": "ÉTAPE TERMINÉE",
+        "preAdBadge": "IMAGES ET DÉTAILS TERMINÉS",
         "preAdTitle": "Mémoire visuelle réussie",
         "preAdCopy": "Les nombres et la mémoire de travail viennent ensuite.",
         "preAdButton": "Continuer",
         "resultIcon": "✓",
-        "resultLabel": "ÉTAPE TERMINÉE",
+        "resultLabel": "IMAGES ET DÉTAILS TERMINÉS",
         "resultBands": {
           "high": {
             "title": "Mémoire visuelle réussie",
@@ -1025,12 +1025,12 @@
       },
       {
         "difficulty": "Confirmé",
-        "preAdBadge": "ÉTAPE TERMINÉE",
+        "preAdBadge": "NOMBRES ET MOTIFS TERMINÉS",
         "preAdTitle": "Vous avez dépassé la moitié",
         "preAdCopy": "Le piège de la mémoire vient ensuite.",
         "preAdButton": "Continuer",
         "resultIcon": "✓",
-        "resultLabel": "ÉTAPE TERMINÉE",
+        "resultLabel": "NOMBRES ET MOTIFS TERMINÉS",
         "resultBands": {
           "high": {
             "title": "Vous avez dépassé la moitié",
@@ -1055,12 +1055,12 @@
       },
       {
         "difficulty": "Avancé",
-        "preAdBadge": "ÉTAPE TERMINÉE",
+        "preAdBadge": "PIÈGE DE LA MÉMOIRE TERMINÉ",
         "preAdTitle": "Dernier défi mémoire à suivre",
         "preAdCopy": "Une dernière manche va tester ce qui est resté en mémoire.",
         "preAdButton": "Continuer",
         "resultIcon": "✓",
-        "resultLabel": "ÉTAPE TERMINÉE",
+        "resultLabel": "PIÈGE DE LA MÉMOIRE TERMINÉ",
         "resultBands": {
           "high": {
             "title": "Dernier défi mémoire à suivre",
@@ -1085,7 +1085,7 @@
       },
       {
         "difficulty": "Évaluation finale",
-        "preAdBadge": "TEST DE MÉMOIRE TERMINÉ",
+        "preAdBadge": "DÉFI MÉMOIRE FINAL TERMINÉ",
         "preAdTitle": "TEST DE MÉMOIRE TERMINÉ",
         "preAdChecks": [
           "40 réponses vérifiées",
@@ -1094,7 +1094,7 @@
         ],
         "preAdButton": "Voir mon résultat",
         "resultIcon": "🧠",
-        "resultLabel": "TEST DE MÉMOIRE TERMINÉ",
+        "resultLabel": "DÉFI MÉMOIRE FINAL TERMINÉ",
         "resultBands": {
           "high": {
             "title": "TEST DE MÉMOIRE TERMINÉ",

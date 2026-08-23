@@ -102,7 +102,7 @@
       "correctLabel": "corrette",
       "strongest": "Area più forte di memoria",
       "trickiest": "Area più difficile di memoria",
-      "bestRound": "Miglior risultato · round",
+      "bestRound": "Miglior round",
       "disclaimer": "Solo per intrattenimento e cultura generale. Questo test di memoria non è un esame ufficiale, una qualifica o un parere professionale.",
       "showBestRound": true,
       "insights": {
@@ -118,7 +118,7 @@
           "analysisTitle": "Come leggere il risultato di memoria",
           "analysisCopy": "Questo risultato riunisce 40 domande in diversi ambiti: parole, immagini, numeri, associazioni, attenzione e ricordo differito. La distribuzione seguente mostra le aree più solide di questo tentativo.",
           "roadmapTitle": "Nel rapporto completo del test di memoria",
-          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra il tuo area più forte di memoria, il dettaglio per area e le risposte sbagliate nel test di memoria.",
+          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra la tua area di memoria più forte, il dettaglio per area e le risposte sbagliate nel test di memoria.",
           "roadmapItems": [
             "Analisi del punteggio",
             "Area più forte di memoria",
@@ -131,15 +131,15 @@
           "measuredIntro": "Le domande coprono tre aspetti complementari specifici del test di memoria.",
           "measuredAreas": [
             {
-              "title": "📝 Memoria delle parole",
+              "title": "Acquisizione e richiamo",
               "copy": "Trattenere parole, immagini e numeri abbastanza a lungo da riconoscerli o recuperarli poco dopo."
             },
             {
-              "title": "👀 Memoria visiva",
+              "title": "Recupero differito",
               "copy": "Richiamare dettagli precedenti dopo che un altro compito ha interrotto il ricordo iniziale."
             },
             {
-              "title": "🔢 Memoria dei numeri",
+              "title": "Attenzione ai dettagli",
               "copy": "Notare colori, forme, posizioni e piccoli cambiamenti prima che scompaiano."
             }
           ],
@@ -160,7 +160,7 @@
             }
           ],
           "finalTitle": "Il tuo risultato nel test di memoria",
-          "finalCopy": "Hai risposto correttamente a {score} domande su {total}. Il profilo di questo tentativo è riportato qui sotto."
+          "finalCopy": "Hai concluso con {score} risposte corrette su {total}. Il profilo del risultato e l’analisi completa delle tue capacità di memoria sono riportati qui sotto."
         }
       }
     }
@@ -896,35 +896,35 @@
     ],
     "reveals": [
       {
-        "badge": "FASE COMPLETATA",
+        "badge": "MEMORIA IMMEDIATA COMPLETATA",
         "icon": "✓",
         "title": "Memoria immediata completata",
         "signal": "fixed",
         "message": "Il prossimo round aggiunge immagini e dettagli."
       },
       {
-        "badge": "FASE COMPLETATA",
+        "badge": "IMMAGINI E DETTAGLI COMPLETATI",
         "icon": "✓",
         "title": "Memoria visiva superata",
         "signal": "fixed",
         "message": "Ora arrivano numeri e memoria di lavoro."
       },
       {
-        "badge": "FASE COMPLETATA",
+        "badge": "NUMERI E SCHEMI COMPLETATI",
         "icon": "✓",
         "title": "Hai superato la metà",
         "signal": "fixed",
         "message": "Ora arriva la trappola della memoria."
       },
       {
-        "badge": "FASE COMPLETATA",
+        "badge": "TRAPPOLA DELLA MEMORIA COMPLETATA",
         "icon": "✓",
         "title": "Ora arriva la sfida finale di memoria",
         "signal": "fixed",
         "message": "Un ultimo round verificherà che cosa è rimasto impresso."
       },
       {
-        "badge": "TEST DI MEMORIA COMPLETATO",
+        "badge": "SFIDA FINALE DI MEMORIA COMPLETATA",
         "icon": "✓",
         "title": "TEST DI MEMORIA COMPLETATO",
         "signal": "fixed",
@@ -938,13 +938,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Avanzamento",
+    "resultProgressLabel": "Sfida di memoria",
     "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "PUNTEGGIO ATTUALE",
+    "currentScoreLabel": "PUNTEGGIO DI MEMORIA ATTUALE",
     "levelLabel": "FASE",
     "scoreSuffix": "corrette",
-    "journeyLabel": "PERCORSO DEL QUIZ",
-    "kitchensCleared": "{value} / {total} fasi completate",
+    "journeyLabel": "SFIDA DI MEMORIA",
+    "kitchensCleared": "{value} / {total} sfide completate",
     "currentRank": "LIVELLO ATTUALE · MEMORIA",
     "ranks": [
       {
@@ -965,12 +965,12 @@
     "stages": [
       {
         "difficulty": "Fondamenti",
-        "preAdBadge": "FASE COMPLETATA",
+        "preAdBadge": "MEMORIA IMMEDIATA COMPLETATA",
         "preAdTitle": "Memoria immediata completata",
         "preAdCopy": "Il prossimo round aggiunge immagini e dettagli.",
         "preAdButton": "Continua",
         "resultIcon": "✓",
-        "resultLabel": "FASE COMPLETATA",
+        "resultLabel": "MEMORIA IMMEDIATA COMPLETATA",
         "resultBands": {
           "high": {
             "title": "Memoria immediata completata",
@@ -988,19 +988,19 @@
         "next": {
           "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
           "title": "Immagini e dettagli",
-          "difficulty": "In crescita",
+          "difficulty": "Intermedio",
           "tagline": "Colori. Posizioni. Cambiamenti.",
           "button": "Continua"
         }
       },
       {
         "difficulty": "Intermedio",
-        "preAdBadge": "FASE COMPLETATA",
+        "preAdBadge": "IMMAGINI E DETTAGLI COMPLETATI",
         "preAdTitle": "Memoria visiva superata",
         "preAdCopy": "Ora arrivano numeri e memoria di lavoro.",
         "preAdButton": "Continua",
         "resultIcon": "✓",
-        "resultLabel": "FASE COMPLETATA",
+        "resultLabel": "IMMAGINI E DETTAGLI COMPLETATI",
         "resultBands": {
           "high": {
             "title": "Memoria visiva superata",
@@ -1018,19 +1018,19 @@
         "next": {
           "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
           "title": "Numeri e schemi",
-          "difficulty": "Esperto",
+          "difficulty": "Competente",
           "tagline": "Cifre. Ordine. Memoria di lavoro.",
           "button": "Continua"
         }
       },
       {
         "difficulty": "Competente",
-        "preAdBadge": "FASE COMPLETATA",
+        "preAdBadge": "NUMERI E SCHEMI COMPLETATI",
         "preAdTitle": "Hai superato la metà",
         "preAdCopy": "Ora arriva la trappola della memoria.",
         "preAdButton": "Continua",
         "resultIcon": "✓",
-        "resultLabel": "FASE COMPLETATA",
+        "resultLabel": "NUMERI E SCHEMI COMPLETATI",
         "resultBands": {
           "high": {
             "title": "Hai superato la metà",
@@ -1055,12 +1055,12 @@
       },
       {
         "difficulty": "Avanzato",
-        "preAdBadge": "FASE COMPLETATA",
+        "preAdBadge": "TRAPPOLA DELLA MEMORIA COMPLETATA",
         "preAdTitle": "Ora arriva la sfida finale di memoria",
         "preAdCopy": "Un ultimo round verificherà che cosa è rimasto impresso.",
         "preAdButton": "Continua",
         "resultIcon": "✓",
-        "resultLabel": "FASE COMPLETATA",
+        "resultLabel": "TRAPPOLA DELLA MEMORIA COMPLETATA",
         "resultBands": {
           "high": {
             "title": "Ora arriva la sfida finale di memoria",
@@ -1085,7 +1085,7 @@
       },
       {
         "difficulty": "Prova finale",
-        "preAdBadge": "TEST DI MEMORIA COMPLETATO",
+        "preAdBadge": "SFIDA FINALE DI MEMORIA COMPLETATA",
         "preAdTitle": "TEST DI MEMORIA COMPLETATO",
         "preAdChecks": [
           "40 risposte verificate",
@@ -1094,7 +1094,7 @@
         ],
         "preAdButton": "Vedi il mio risultato",
         "resultIcon": "🧠",
-        "resultLabel": "TEST DI MEMORIA COMPLETATO",
+        "resultLabel": "SFIDA FINALE DI MEMORIA COMPLETATA",
         "resultBands": {
           "high": {
             "title": "TEST DI MEMORIA COMPLETATO",

@@ -226,9 +226,9 @@ for (const folder of folders) {
     const expectedProfiles = ["warm_anchor", "playful_spark", "quiet_creative", "grounded_builder", "magnetic_connector", "curious_explorer", "thoughtful_dreamer", "ambitious_teammate"];
     const selector = config.engine?.profileArtworkSelector;
     const selectorQuestion = sourceQuestions[0];
-    fail(JSON.stringify(localeFiles) === JSON.stringify(["en.json"]), "marry: launch must be English-only.");
+    fail(JSON.stringify(localeFiles) === JSON.stringify(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"]), "marry: locale set must include English plus fr, de, it, nl, es and pt.");
     fail(config.slug === "marry" && source.title === "AI Will Draw The Person You’ll Marry", "marry: slug and title must match the approved launch copy.");
-    fail(source.landing?.intro === "Follow your instincts through attraction, personality, lifestyle and chemistry, then reveal the pencil portrait AI matched to your future.", "marry: landing intro changed.");
+    fail(source.landing?.intro === "Follow your instincts through attraction, personality, lifestyle and chemistry, then reveal the pencil portrait matched to your answers.", "marry: landing intro changed.");
     fail(source.landing?.cta === "Start" && config.listing?.socialProofCount === 184000, "marry: CTA and social proof must match the approved launch copy.");
     fail(source.summary === "Attraction, personality, lifestyle and chemistry clues shape the portrait of the person you could marry.", "marry: homepage summary changed.");
     fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, "marry: weighted scoring and 450ms advancement are required.");
@@ -239,6 +239,13 @@ for (const folder of folders) {
     fail(JSON.stringify(selectorQuestion?.answers) === JSON.stringify(["A masculine person", "A feminine person", "An androgynous person", "Surprise me"]), "marry: Q1 choices changed.");
     fail(JSON.stringify(selectorQuestion?.calibration) === JSON.stringify([0, 0, 0, 0]) && selectorQuestion?.correct === undefined, "marry: Q1 must be the only unscored selector.");
     fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: scored questions must not use answer keys or calibration.");
+    fail(source.about?.body?.includes("after choosing the portrait presentation, each remaining selection adds two relationship-style signals"), "marry: About copy must distinguish the unscored portrait selector from the 39 scored choices.");
+    fail(source.about?.howToPlay?.steps?.[1] === "Complete eight quick questions in each chapter as the portrait takes shape.", "marry: How to Play must describe eight questions, not eight choices.");
+    fail(source.results?.profiles?.find((profile) => profile.id === "curious_explorer")?.firstFeature === "their curious, adventurous gaze.", "marry: Curious Explorer feature copy must match all three portraits.");
+    fail(config.listing?.thumbnail === "assets/thumbnail.webp", "marry: listing must use the optimized WebP thumbnail.");
+    const marryPngAssets = fs.readdirSync(path.join(root, "marry", "assets"), { recursive: true })
+      .filter((asset) => String(asset).toLowerCase().endsWith(".png"));
+    fail(marryPngAssets.length === 0, `marry: unused PNG duplicates remain: ${marryPngAssets.join(", ")}.`);
     const rawOpportunity = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
     const randomExpectation = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
     sourceQuestions.slice(1).forEach((question) => {
@@ -313,11 +320,21 @@ for (const folder of folders) {
     });
 
     fail(config.theme?.artwork?.checkpoints?.length === 5, "marry: five checkpoint progress artworks are required.");
+    fail(JSON.stringify(Object.keys(config.theme?.artwork?.checkpointVariants ?? {}).sort()) === JSON.stringify(["androgynous", "feminine", "masculine"]), "marry: checkpoint artwork must support all three portrait presentations.");
+    fail(Object.values(config.theme?.artwork?.checkpointVariants ?? {}).every((assets) => Array.isArray(assets) && assets.length === 5), "marry: every presentation needs five checkpoint artworks.");
+    fail(JSON.stringify(config.theme?.artwork?.checkpointVariants?.feminine) === JSON.stringify([
+      "assets/checkpoints/portrait-20.webp",
+      "assets/checkpoints/portrait-40-feminine.webp",
+      "assets/checkpoints/portrait-60-feminine.webp",
+      "assets/checkpoints/portrait-80-feminine.webp",
+      "assets/checkpoints/portrait-100-feminine.webp",
+    ]), "marry: feminine checkpoint progression changed or is incomplete.");
     fail(sourceQuestions.filter((question) => question.presentation === "icons").length === 7, "marry: exactly seven four-image questions are required.");
     fail(sourceQuestions.filter((question) => question.presentation === "icons").every((question) => question.icons?.length === 4), "marry: every visual choice needs four images.");
     fail(source.checkpoint?.finalTitle === "YOUR FUTURE PARTNER HAS BEEN MATCHED" && source.checkpoint?.finalButton === "Reveal Their Face", "marry: final reveal promise changed.");
     fail(JSON.stringify(source.checkpoint?.finalChecklist) === JSON.stringify(["Attraction pattern analysed", "Personality and chemistry matched", "Future clues combined"]), "marry: final checklist changed.");
     const allCopy = JSON.stringify(source);
+    fail(!allCopy.includes("Takeaway, laughter and talking it out"), "marry: worldwide-English copy must use Comfort food, not Takeaway.");
     fail(!/you will marry|is destined to|we identified (?:a )?real person|guarantees (?:a )?future/i.test(allCopy), "marry: copy must not imply certainty, destiny or real-person identification.");
   }
   const entranceExamLabels = {

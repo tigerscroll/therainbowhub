@@ -192,7 +192,11 @@ function validateQuestions(content, location) {
         && new Set(semanticallyNormalizedAnswers).size !== semanticallyNormalizedAnswers.length) {
         addError(`${location}#${question.id}: localized answers collapse to the same wording after semantic normalization.`);
       }
-      if (!Number.isInteger(question.correct) || question.correct < 0 || question.correct >= question.answers.length) {
+      const isUnscoredSelector = question.correct === undefined
+        && Array.isArray(question.calibration)
+        && question.calibration.length === question.answers.length
+        && question.calibration.every((value) => value === 0);
+      if (!isUnscoredSelector && (!Number.isInteger(question.correct) || question.correct < 0 || question.correct >= question.answers.length)) {
         addError(`${location}#${question.id}: localized correct index is invalid.`);
       }
     }
@@ -357,6 +361,64 @@ function validateIqSemantics(content, locale, location) {
   }
 }
 
+function validateGermanRegisterCorrections(quiz, content, location) {
+  const q = (id) => questionById(content, id, location);
+  const expectedQuestions = {
+    grammar: {
+      "grammar-r8q1": "Wähle die korrekte Verbindung.",
+    },
+    iq: {
+      "iq-s2q3": "Du blickst nach Norden und drehst dich zweimal nach rechts. In welche Richtung blickst du nun?",
+      "iq-s3q5": "Wende dieselbe Drehung an: Wenn ↑ zu ↘ wird, was wird aus ←?",
+      "iq-s4q4": "Starte in der Mitte mit Blick nach Norden. Gehe ein Feld vor, drehe dich nach rechts, gehe zwei Felder, drehe dich wieder nach rechts und gehe ein Feld. Wo landest du?",
+      "iq-s5q2": "Verdopple in jeder Zeile die erste Zahl und addiere die zweite. Welche Zahl fehlt?",
+      "iq-s5q4": "Starte in der Mitte. Gehe zweimal nach oben, einmal nach rechts, einmal nach unten und zweimal nach links. Wo landest du?",
+      "iq-s5q5": "Vertausche nur das erste und das letzte Zeichen. Welcher Code entsteht?",
+      "iq-s5q8": "Ein Pfeil zeigt nach oben. Drehe ihn um 90° im Uhrzeigersinn und spiegle ihn anschließend an einer senkrechten Achse. Wohin zeigt er?",
+    },
+    nursing: {
+      "nurse-r3q5": "Du zählst 9 Atemzüge in 30 Sekunden. Wie hoch ist die Atemfrequenz pro Minute?",
+    },
+    vision: {
+      "vision-r8q3": "Starte am roten Punkt und folge seiner gepunkteten Linie. Welchen Buchstaben erreichst du?",
+      "vision-r8q4": "Drehe ↘ zweimal um 90 Grad nach rechts.",
+    },
+  };
+  for (const [id, expected] of Object.entries(expectedQuestions[quiz] ?? {})) {
+    if (q(id)?.question !== expected) addError(`${location}#${id}.question: approved German direct-address wording changed.`);
+  }
+
+  if (quiz === "paramedic" && q("paramedic-r9q3")?.context !== "EINSATZBERICHT — Ein Zufahrtsweg ist 0,4 km lang. Ein zweiter Abschnitt misst 250 m. Trage die Gesamtstrecke in Metern ein.") {
+    addError(`${location}#paramedic-r9q3.context: approved German direct-address wording changed.`);
+  }
+  if (quiz === "vision") {
+    if (q("vision-r9q4")?.context !== "Drehe den Pfeil zunächst um 90 Grad im Uhrzeigersinn. Spiegle das Ergebnis anschließend an einer senkrechten Achse.") addError(`${location}#vision-r9q4.context: approved German direct-address wording changed.`);
+    if (q("vision-r10q3")?.context !== "Verfolge den Formen- und den Füllzyklus getrennt.") addError(`${location}#vision-r10q3.context: approved German direct-address wording changed.`);
+  }
+  if (quiz === "years-left") {
+    if (content.checkpoint?.finalAdNote !== "Erst eine kurze Werbung, dann sehen Sie Ihre Einschätzung.") addError(`${location}#checkpoint.finalAdNote: Years Left must retain formal German address.`);
+    if (content.career?.unlockCopy !== "Die nächste Prognoseetappe wartet auf Sie.") addError(`${location}#career.unlockCopy: Years Left must retain formal German address.`);
+    if (content.career?.finalEyebrow !== "IHRE EINSCHÄTZUNG") addError(`${location}#career.finalEyebrow: Years Left must retain formal German address.`);
+  }
+  if (quiz === "grammar" && content.results?.score?.insights?.details?.analysisCopy !== "Dieses Ergebnis fasst 40 Fragen zu Satzbau, Kongruenz, Verben, Zeichensetzung, Bezügen und Überarbeitung zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.") {
+    addError(`${location}#results.score.insights.details.analysisCopy: approved German case correction changed.`);
+  }
+  if (quiz === "memory") {
+    if (content.results?.score?.insights?.details?.analysisCopy !== "Dieses Ergebnis fasst 40 Fragen zu Wörtern, Bildern, Zahlen, Verknüpfungen, Aufmerksamkeit und verzögertem Erinnern zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.") addError(`${location}#results.score.insights.details.analysisCopy: approved German case correction changed.`);
+    const protectedThirdPersonCopy = new Set([
+      "Sie können später wieder auftauchen.",
+      "Sie reiste nach PARIS.",
+      "Ihr Zug fuhr um 08:40 Uhr ab.",
+    ]);
+    const formalAddress = /\b(?:Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u;
+    for (const { value, pathParts } of collectStrings(content.stages ?? [])) {
+      if (formalAddress.test(value) && !protectedThirdPersonCopy.has(value)) {
+        addError(`${location}#stages.${pathParts.join(".")}: Memory player instructions must use du/dein, not formal address.`);
+      }
+    }
+  }
+}
+
 function validateSemanticContracts(quiz, content, locale, location) {
   if (quiz === "memory") validateMemorySemantics(content, location);
   if (quiz === "vision") {
@@ -364,6 +426,7 @@ function validateSemanticContracts(quiz, content, locale, location) {
     validateLocalizedFoldAsset(content, locale, location);
   }
   if (quiz === "iq") validateIqSemantics(content, locale, location);
+  if (locale === "de") validateGermanRegisterCorrections(quiz, content, location);
 }
 
 function collectStrings(value, pathParts = [], output = []) {
@@ -377,12 +440,226 @@ function collectStrings(value, pathParts = [], output = []) {
 }
 
 const portugueseVariantTerms = /\b(?:você|vocês|equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|tela|telas|registo|registos|registro|registros|secção|secções|seção|seções|prémio|prémios|prêmio|prêmios|comboio|comboios|trem|trens|íman|ímans|ímã|ímãs|câmara|câmaras|câmera|câmeras|telemóvel|telemóveis|celular|celulares|autocarro|autocarros|ônibus|ónibus|facto|factos|fato|fatos|contato|contatos|contacto|contactos|bebé|bebés|bebê|bebês|planeado|planeada|planeados|planeadas|planejado|planejada|planejados|planejadas|planeamento|planejamento|partilhado|partilhada|partilhados|partilhadas|compartilhado|compartilhada|compartilhados|compartilhadas|oxigénio|oxigênio|húmido|húmida|húmidos|húmidas|úmido|úmida|úmidos|úmidas|pequeno-almoço|fiável|fiáveis|confiável|confiáveis|eletrónico|eletrónica|eletrônicos|eletrônicas|eletrônico|eletrônica|académico|académica|acadêmico|acadêmica|económico|económica|econômico|econômica|fenómeno|fenómenos|fenômeno|fenômenos|género|géneros|gênero|gêneros|génio|gênio|travão|travões|travagem|freio|freios|frenagem|autónomo|autónoma|autônomo|autônoma|cronómetro|cronómetros|cronômetro|cronômetros|vómito|vómitos|vômito|vômitos|incómodo|incómoda|incômodo|incômoda|detetar|detetado|detetada|detetar-se|detectar|detectado|detectada|perceção|percepção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|decodificar|automóvel|automóveis|automotivo|automotiva|automotivos|automotivas|aspeto|aspetos|subtil|subtis)\b/iu;
-const portugueseInclusivePairs = /\b(?:travagem\/frenagem|travão\/freio)\b/giu;
 
 function findPortugueseVariantTerm(value) {
-  // A paired Portugal/Brazil expression is deliberately inclusive. Continue
-  // rejecting either regional form when it appears by itself.
-  return value.replace(portugueseInclusivePairs, "").match(portugueseVariantTerms);
+  return value.match(portugueseVariantTerms);
+}
+
+const recurringNativeCopyDefects = {
+  fr: [
+    { pattern: /\bce examen\b/iu, message: 'use "cet examen" before a vowel sound' },
+    { pattern: /\b(?:le|au|du) examen\b/iu, message: "elision is required before examen" },
+    { pattern: /\bMeilleure (?:défi|atelier)\b/iu, message: "masculine superlative agreement is required" },
+    { pattern: /\bPoint (?:fort|le plus difficile) visuelle\b/iu, quiz: "vision", message: "visual-skill label has incorrect agreement and word order" },
+    { pattern: /\bEn progression\b/iu, message: "stale Developing difficulty label remains" },
+  ],
+  de: [
+    { pattern: /\bdeinen stärkster bereich\b/iu, message: "adjective and noun case agreement is incorrect" },
+    { pattern: /\bdes (?:Küchentest|Grammatiktest|Intelligenztest|Gedächtnistest|Hebammen-Aufnahmetest|Pflege-Aufnahmetest|Rettungsdienst-Aufnahmetest)\b/iu, message: "the German genitive requires an -s suffix" },
+    { pattern: /\bSehtest\b/iu, quiz: "vision", message: 'use "visueller Test" or "visuelle Herausforderung"' },
+  ],
+  it: [
+    { pattern: /\bil tuo area\b/iu, message: 'use feminine "la tua area"' },
+    { pattern: /\bArea più (?:forte|difficile) visiva\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
+    { pattern: /\bMiglior risultato\s*·/iu, message: "stale literal best-round label remains" },
+  ],
+  es: [
+    { pattern: /\bÁrea más (?:fuerte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
+  ],
+  nl: [
+    { pattern: /\bpang edrag\b/iu, quiz: "chef", message: 'use the compound noun "pangedrag"' },
+  ],
+  pt: [
+    { pattern: /\bÁrea mais (?:forte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
+    { pattern: /\bComo interpretar a resultado de memória\b/iu, quiz: "memory", message: "article agreement is incorrect" },
+    { pattern: /\bMelhor ronda\b/iu, message: "shared Portuguese uses etapa here" },
+    { pattern: /\b(?:travagem\/frenagem|travão\/freio)\b/iu, message: "visible Portugal/Brazil slash alternatives are forbidden" },
+  ],
+};
+
+const themedFinalCopyTerms = {
+  iq: {
+    fr: /raisonnement/iu, de: /Denkprofil/iu, it: /ragionamento/iu,
+    nl: /denkprofiel/iu, es: /razonamiento/iu, pt: /raciocínio/iu,
+  },
+  vision: {
+    fr: /visuelle/iu, de: /visuelle Rätsel/iu, it: /rompicapi visivi/iu,
+    nl: /visuele puzzels/iu, es: /resolución visual/iu, pt: /resolução visual/iu,
+  },
+  grammar: {
+    fr: /grammatical/iu, de: /Grammatikprofil/iu, it: /grammaticale/iu,
+    nl: /grammaticaprofiel/iu, es: /gramatical/iu, pt: /gramatical/iu,
+  },
+  memory: {
+    fr: /bilan complet.+mémoire/iu, de: /vollständige Auswertung.+Gedächtnis/iu, it: /analisi completa.+memoria/iu,
+    nl: /volledige uitsplitsing.+geheugen/iu, es: /desglose completo.+memoria/iu, pt: /análise completa.+memória/iu,
+  },
+};
+
+const yearsLeftThemeTerms = {
+  fr: { estimate: /estimation/iu, signals: /indices/iu, prediction: /prédiction/iu, lifestyle: /mode de vie/iu },
+  de: { estimate: /Einschätzung/iu, signals: /Signale/iu, prediction: /Prognose/iu, lifestyle: /Lebensstil/iu },
+  it: { estimate: /stima/iu, signals: /segnali/iu, prediction: /previsione/iu, lifestyle: /stile di vita/iu },
+  nl: { estimate: /schatting/iu, signals: /signalen/iu, prediction: /voorspelling/iu, lifestyle: /leefstijl/iu },
+  es: { estimate: /estimación/iu, signals: /señales/iu, prediction: /predicción/iu, lifestyle: /estilo de vida/iu },
+  pt: { estimate: /estimativa/iu, signals: /sinais/iu, prediction: /previsão/iu, lifestyle: /estilo de vida/iu },
+};
+
+const nonEntranceQuizzes = new Set(["memory", "vision", "mechanic", "iq", "grammar", "years-left"]);
+const genericShellValues = {
+  fr: new Set(["Progression", "SCORE ACTUEL", "PARCOURS DU QUIZ", "{value} / {total} étapes terminées", "ÉTAPE TERMINÉE"]),
+  de: new Set(["Fortschritt", "AKTUELLER PUNKTSTAND", "QUIZVERLAUF", "{value} / {total} Runden abgeschlossen", "RUNDE ABGESCHLOSSEN"]),
+  it: new Set(["Avanzamento", "PUNTEGGIO ATTUALE", "PERCORSO DEL QUIZ", "{value} / {total} fasi completate", "FASE COMPLETATA"]),
+  nl: new Set(["Voortgang", "HUIDIGE SCORE", "QUIZTRAJECT", "{value} / {total} rondes voltooid", "RONDE VOLTOOID"]),
+  es: new Set(["Progreso", "PUNTUACIÓN ACTUAL", "RECORRIDO DEL QUIZ", "{value} / {total} etapas completadas", "ETAPA COMPLETADA"]),
+  pt: new Set(["Progresso", "RESULTADO ATUAL", "PERCURSO DO TESTE", "{value} / {total} etapas concluídas", "ETAPA CONCLUÍDA"]),
+};
+
+function validateNativeCopyPatterns(quiz, content, locale, location) {
+  for (const { value, pathParts } of collectStrings(content)) {
+    for (const defect of recurringNativeCopyDefects[locale] ?? []) {
+      if ((!defect.quiz || defect.quiz === quiz) && defect.pattern.test(value)) {
+        addError(`${location}#${pathParts.join(".")}: ${defect.message}: ${JSON.stringify(value)}.`);
+      }
+    }
+  }
+
+  const finalCopyPattern = themedFinalCopyTerms[quiz]?.[locale];
+  if (finalCopyPattern && !finalCopyPattern.test(content.results?.score?.insights?.details?.finalCopy ?? "")) {
+    addError(`${location}#results.score.insights.details.finalCopy: final result copy lost its quiz-specific theme.`);
+  }
+
+  if (quiz === "years-left") {
+    const terms = yearsLeftThemeTerms[locale];
+    const themedFields = [
+      ["checkpoint.finalAdNote", content.checkpoint?.finalAdNote, terms?.estimate],
+      ["checkpoint.finalButton", content.checkpoint?.finalButton, terms?.estimate],
+      ["career.scoreSuffix", content.career?.scoreSuffix, terms?.signals],
+      ["career.currentRank", content.career?.currentRank, terms?.prediction],
+      ["career.unlockEyebrow", content.career?.unlockEyebrow, terms?.prediction],
+      ["career.unlockTitle", content.career?.unlockTitle, terms?.lifestyle],
+      ["career.unlockCopy", content.career?.unlockCopy, terms?.prediction],
+      ["career.finalEyebrow", content.career?.finalEyebrow, terms?.estimate],
+      ["career.strongestLabel", content.career?.strongestLabel, terms?.lifestyle],
+    ];
+    for (const [pathLabel, value, pattern] of themedFields) {
+      if (!pattern?.test(value ?? "")) {
+        addError(`${location}#${pathLabel}: Years Left shell copy lost its estimate, prediction or lifestyle framing.`);
+      }
+    }
+  }
+
+  if (locale === "de" && quiz !== "years-left") {
+    const formalAddress = /\b(?:Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u;
+    for (const { value, pathParts } of collectStrings(content)) {
+      if (pathParts[0] !== "stages" && formalAddress.test(value)) {
+        addError(`${location}#${pathParts.join(".")}: direct-player UI must consistently use du/dein, not formal address.`);
+      }
+    }
+  }
+
+  const stages = content.career?.stages ?? [];
+  for (let index = 0; index < stages.length - 1; index += 1) {
+    const next = stages[index]?.next;
+    const canonicalDifficulty = stages[index + 1]?.difficulty;
+    if (next?.difficulty !== canonicalDifficulty) {
+      addError(`${location}#career.stages.${index}.next.difficulty: must exactly match the following stage difficulty ${JSON.stringify(canonicalDifficulty)}.`);
+    }
+    if (next?.eyebrow && canonicalDifficulty
+      && !normalizedText(next.eyebrow).endsWith(normalizedText(canonicalDifficulty))) {
+      addError(`${location}#career.stages.${index}.next.eyebrow: must end with the following stage's canonical difficulty label.`);
+    }
+  }
+
+  if (nonEntranceQuizzes.has(quiz)) {
+    const genericValues = genericShellValues[locale] ?? new Set();
+    const shellEntries = [
+      ["career.resultProgressLabel", content.career?.resultProgressLabel],
+      ["career.currentScoreLabel", content.career?.currentScoreLabel],
+      ["career.journeyLabel", content.career?.journeyLabel],
+      ["career.kitchensCleared", content.career?.kitchensCleared],
+      ...((content.checkpoint?.reveals ?? []).map((reveal, index) => [`checkpoint.reveals.${index}.badge`, reveal.badge])),
+      ...(stages.flatMap((stage, index) => [
+        [`career.stages.${index}.preAdBadge`, stage.preAdBadge],
+        [`career.stages.${index}.resultLabel`, stage.resultLabel],
+      ])),
+    ];
+    for (const [pathLabel, value] of shellEntries) {
+      if (typeof value === "string" && genericValues.has(value)) {
+        addError(`${location}#${pathLabel}: non-entrance quiz must use quiz-specific shell terminology, not ${JSON.stringify(value)}.`);
+      }
+    }
+  }
+}
+
+function validateMarryLocalization(english, localized, locale, location) {
+  const expectedProfiles = ["warm_anchor", "playful_spark", "quiet_creative", "grounded_builder", "magnetic_connector", "curious_explorer", "thoughtful_dreamer", "ambitious_teammate"];
+  const sourceQuestions = quizQuestions(english);
+  const localizedQuestions = quizQuestions(localized);
+  const sourceIds = sourceQuestions.map((question) => question.id);
+  const localizedIds = localizedQuestions.map((question) => question.id);
+  if (JSON.stringify(localizedIds) !== JSON.stringify(sourceIds)) {
+    addError(`${location}: question IDs or order differ from the English /marry source.`);
+    return;
+  }
+
+  const selector = localizedQuestions[0];
+  if (selector.id !== "marry-r1q1"
+    || selector.correct !== undefined
+    || JSON.stringify(selector.calibration) !== JSON.stringify([0, 0, 0, 0])) {
+    addError(`${location}#marry-r1q1: Q1 must remain the only unscored portrait selector.`);
+  }
+  if (localizedQuestions.slice(1).some((question) => question.correct !== undefined || question.calibration !== undefined)) {
+    addError(`${location}: only marry-r1q1 may contain selector calibration; the other 39 questions must remain weighted choices.`);
+  }
+
+  for (let questionIndex = 1; questionIndex < sourceQuestions.length; questionIndex += 1) {
+    const sourceAnswers = Object.values(sourceQuestions[questionIndex].answers ?? {});
+    const localizedAnswers = Object.values(localizedQuestions[questionIndex].answers ?? {});
+    if (JSON.stringify(localizedAnswers) !== JSON.stringify(sourceAnswers)) {
+      addError(`${location}#${sourceQuestions[questionIndex].id}: answer scoring vectors or order differ from English.`);
+    }
+  }
+
+  if (JSON.stringify(localized.results?.profiles?.map((profile) => profile.id)) !== JSON.stringify(expectedProfiles)) {
+    addError(`${location}#results.profiles: archetype IDs or fixed tie order differ from English.`);
+  }
+  for (const profile of localized.results?.profiles ?? []) {
+    if (!Array.isArray(profile.traits) || profile.traits.length !== 3) {
+      addError(`${location}#results.profiles.${profile.id}: exactly three translated trait chips are required.`);
+    }
+  }
+  const chemistry = localized.results?.profileReveal?.consistencyLabels ?? {};
+  if (!String(chemistry.high ?? "").includes("96")
+    || !String(chemistry.medium ?? "").includes("91")
+    || !String(chemistry.mixed ?? "").includes("86")) {
+    addError(`${location}#results.profileReveal.consistencyLabels: chemistry percentages must remain 96 / 91 / 86.`);
+  }
+
+  const directCopy = collectStrings(localized)
+    .filter(({ pathParts }) => !isExactTechnicalString("", pathParts));
+  for (const { value, pathParts } of directCopy) {
+    if (/\[\[M\d+\*?\]\]/u.test(value)) {
+      addError(`${location}#${pathParts.join(".")}: translation marker residue remains.`);
+    }
+    if (/(?:\([aeo]\)|\b(?:il\/elle|lui\/lei|él\/ella|ele\/ela)\b)/iu.test(value)) {
+      addError(`${location}#${pathParts.join(".")}: mechanical gender workaround remains: ${JSON.stringify(value)}.`);
+    }
+  }
+  if (locale === "de") {
+    for (const { value, pathParts } of directCopy) {
+      if (/\b(?:Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u.test(value)) {
+        addError(`${location}#${pathParts.join(".")}: /marry must consistently use informal German address.`);
+      }
+    }
+  }
+  if (locale === "es") {
+    for (const { value, pathParts } of directCopy) {
+      if (/\b(?:vosotros|vosotras|vuestro|vuestra|vuestros|vuestras)\b/iu.test(value)) {
+        addError(`${location}#${pathParts.join(".")}: /marry Spanish must use international-neutral address, not vosotros forms.`);
+      }
+    }
+  }
 }
 
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
@@ -411,7 +688,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
     compareStructure(english, localized, [], location);
     validateQuestions(localized, location);
+    if (entry.name === "marry") validateMarryLocalization(english, localized, locale, location);
     validateSemanticContracts(entry.name, localized, locale, location);
+    validateNativeCopyPatterns(entry.name, localized, locale, location);
     const residue = collectStringPairs(english, localized).filter(looksLikeUntranslatedSentence);
     residue.slice(0, 20).forEach(({ source, pathParts }) => {
       addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);

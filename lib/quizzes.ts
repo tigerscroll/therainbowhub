@@ -315,6 +315,7 @@ export type QuizTheme = {
     profiles?: Record<string, string>;
     profileVariants?: Record<string, Record<string, string>>;
     checkpoints?: string[];
+    checkpointVariants?: Record<string, string[]>;
   };
 };
 
@@ -808,6 +809,12 @@ function validateTheme(value: unknown, file: string): QuizTheme {
       checkpoints: artwork.checkpoints === undefined
         ? undefined
         : strings(artwork.checkpoints, "artwork.checkpoints", file),
+      checkpointVariants: artwork.checkpointVariants === undefined
+        ? undefined
+        : Object.fromEntries(Object.entries(object(artwork.checkpointVariants, "artwork.checkpointVariants", file)).map(([variantId, rawAssets]) => [
+          variantId,
+          strings(rawAssets, `artwork.checkpointVariants.${variantId}`, file),
+        ])),
     } : undefined,
   };
 }
@@ -1116,6 +1123,9 @@ function normalizeLocale(
     if (theme.artwork?.checkpoints && theme.artwork.checkpoints.length !== value.stages.length) {
       throw new Error(`${file}: checkpoint artwork must match the stage count.`);
     }
+    for (const [variantId, assets] of Object.entries(theme.artwork?.checkpointVariants ?? {})) {
+      if (assets.length !== value.stages.length) throw new Error(`${file}: checkpoint artwork variant ${variantId} must match the stage count.`);
+    }
   }
   if (manifest.engine.scoring === "hybrid-match") {
     const candidateIds = manifest.engine.match?.candidates.map((candidate) => candidate.id) ?? [];
@@ -1292,6 +1302,10 @@ function readQuiz(slug: string, locale: SupportedLocale) {
     }
     if (manifest.theme.artwork.checkpoints) {
       manifest.theme.artwork.checkpoints = manifest.theme.artwork.checkpoints.map((value) => quizAsset(slug, value)!);
+    }
+    if (manifest.theme.artwork.checkpointVariants) {
+      manifest.theme.artwork.checkpointVariants = Object.fromEntries(Object.entries(manifest.theme.artwork.checkpointVariants)
+        .map(([variantId, assets]) => [variantId, assets.map((value) => quizAsset(slug, value)!)]));
     }
   }
   const cssFile = path.join(directory(slug), "theme.css");

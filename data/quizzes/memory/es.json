@@ -131,15 +131,15 @@
           "measuredIntro": "Las preguntas abarcan tres dimensiones complementarias propias del test de memoria.",
           "measuredAreas": [
             {
-              "title": "📝 Memoria verbal",
+              "title": "Captación y recuerdo",
               "copy": "Retener palabras, imágenes y números el tiempo suficiente para reconocerlos o recuperarlos poco después."
             },
             {
-              "title": "👀 Memoria visual",
+              "title": "Recuperación diferida",
               "copy": "Recordar detalles anteriores después de que otra tarea haya interrumpido el recuerdo inicial."
             },
             {
-              "title": "🔢 Memoria numérica",
+              "title": "Atención al detalle",
               "copy": "Detectar colores, formas, posiciones y pequeños cambios antes de que desaparezcan."
             }
           ],
@@ -160,7 +160,7 @@
             }
           ],
           "finalTitle": "Tu resultado en el test de memoria",
-          "finalCopy": "Acertaste {score} de {total} preguntas. A continuación aparece el perfil de este intento."
+          "finalCopy": "Terminaste con {score} respuestas correctas de {total}. A continuación aparecen tu perfil de resultado y el desglose completo de tus habilidades de memoria."
         }
       }
     }
@@ -896,35 +896,35 @@
     ],
     "reveals": [
       {
-        "badge": "ETAPA COMPLETADA",
+        "badge": "RECUERDO INMEDIATO COMPLETADO",
         "icon": "✓",
         "title": "Recuerdo inmediato completado",
         "signal": "fixed",
         "message": "La siguiente ronda añade imágenes y detalles."
       },
       {
-        "badge": "ETAPA COMPLETADA",
+        "badge": "IMÁGENES Y DETALLES COMPLETADOS",
         "icon": "✓",
         "title": "Recuerdo visual superado",
         "signal": "fixed",
         "message": "Ahora vienen los números y la memoria de trabajo."
       },
       {
-        "badge": "ETAPA COMPLETADA",
+        "badge": "NÚMEROS Y PATRONES COMPLETADOS",
         "icon": "✓",
         "title": "Ya has superado la mitad",
         "signal": "fixed",
         "message": "Ahora viene la trampa de la memoria."
       },
       {
-        "badge": "ETAPA COMPLETADA",
+        "badge": "TRAMPA DE LA MEMORIA COMPLETADA",
         "icon": "✓",
         "title": "El desafío final de memoria viene a continuación",
         "signal": "fixed",
         "message": "Una última ronda pondrá a prueba lo que aún recuerdas."
       },
       {
-        "badge": "PRUEBA DE MEMORIA COMPLETADA",
+        "badge": "DESAFÍO FINAL DE MEMORIA COMPLETADO",
         "icon": "✓",
         "title": "PRUEBA DE MEMORIA COMPLETADA",
         "signal": "fixed",
@@ -938,13 +938,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Progreso",
+    "resultProgressLabel": "Desafío de memoria",
     "resultProgressComplete": "{value}% completado",
-    "currentScoreLabel": "PUNTUACIÓN ACTUAL",
+    "currentScoreLabel": "PUNTUACIÓN DE MEMORIA ACTUAL",
     "levelLabel": "ETAPA",
     "scoreSuffix": "correctas",
-    "journeyLabel": "RECORRIDO DEL QUIZ",
-    "kitchensCleared": "{value} / {total} etapas completadas",
+    "journeyLabel": "DESAFÍO DE MEMORIA",
+    "kitchensCleared": "{value} / {total} desafíos completados",
     "currentRank": "NIVEL ACTUAL · MEMORIA",
     "ranks": [
       {
@@ -965,12 +965,12 @@
     "stages": [
       {
         "difficulty": "Fundamentos",
-        "preAdBadge": "ETAPA COMPLETADA",
+        "preAdBadge": "RECUERDO INMEDIATO COMPLETADO",
         "preAdTitle": "Recuerdo inmediato completado",
         "preAdCopy": "La siguiente ronda añade imágenes y detalles.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA COMPLETADA",
+        "resultLabel": "RECUERDO INMEDIATO COMPLETADO",
         "resultBands": {
           "high": {
             "title": "Recuerdo inmediato completado",
@@ -995,12 +995,12 @@
       },
       {
         "difficulty": "En desarrollo",
-        "preAdBadge": "ETAPA COMPLETADA",
+        "preAdBadge": "IMÁGENES Y DETALLES COMPLETADOS",
         "preAdTitle": "Recuerdo visual superado",
         "preAdCopy": "Ahora vienen los números y la memoria de trabajo.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA COMPLETADA",
+        "resultLabel": "IMÁGENES Y DETALLES COMPLETADOS",
         "resultBands": {
           "high": {
             "title": "Recuerdo visual superado",
@@ -1025,12 +1025,12 @@
       },
       {
         "difficulty": "Competente",
-        "preAdBadge": "ETAPA COMPLETADA",
+        "preAdBadge": "NÚMEROS Y PATRONES COMPLETADOS",
         "preAdTitle": "Ya has superado la mitad",
         "preAdCopy": "Ahora viene la trampa de la memoria.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA COMPLETADA",
+        "resultLabel": "NÚMEROS Y PATRONES COMPLETADOS",
         "resultBands": {
           "high": {
             "title": "Ya has superado la mitad",
@@ -1055,12 +1055,12 @@
       },
       {
         "difficulty": "Avanzado",
-        "preAdBadge": "ETAPA COMPLETADA",
+        "preAdBadge": "TRAMPA DE LA MEMORIA COMPLETADA",
         "preAdTitle": "El desafío final de memoria viene a continuación",
         "preAdCopy": "Una última ronda pondrá a prueba lo que aún recuerdas.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA COMPLETADA",
+        "resultLabel": "TRAMPA DE LA MEMORIA COMPLETADA",
         "resultBands": {
           "high": {
             "title": "El desafío final de memoria viene a continuación",
@@ -1085,7 +1085,7 @@
       },
       {
         "difficulty": "Evaluación final",
-        "preAdBadge": "PRUEBA DE MEMORIA COMPLETADA",
+        "preAdBadge": "DESAFÍO FINAL DE MEMORIA COMPLETADO",
         "preAdTitle": "PRUEBA DE MEMORIA COMPLETADA",
         "preAdChecks": [
           "40 respuestas comprobadas",
@@ -1094,7 +1094,7 @@
         ],
         "preAdButton": "Ver mi resultado",
         "resultIcon": "🧠",
-        "resultLabel": "PRUEBA DE MEMORIA COMPLETADA",
+        "resultLabel": "DESAFÍO FINAL DE MEMORIA COMPLETADO",
         "resultBands": {
           "high": {
             "title": "PRUEBA DE MEMORIA COMPLETADA",

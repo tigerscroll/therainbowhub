@@ -146,7 +146,7 @@
             }
           ],
           "finalTitle": "Je resultaat in de visuele uitdaging",
-          "finalCopy": "Je beantwoordde {score} van de {total} vragen goed. Hieronder staat je profiel voor deze poging."
+          "finalCopy": "Je eindigde met {score} goede antwoorden van de {total}. Hieronder staat je profiel voor visuele puzzels in deze poging."
         }
       }
     }
@@ -1032,35 +1032,35 @@
     ],
     "reveals": [
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "EERSTE BLIK VOLTOOID",
         "icon": "👁️",
         "title": "Eerste blik voltooid",
         "signal": "fixed",
         "message": "Goede start. De volgende verschillen worden subtieler."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "VORMEN EN DETAILS VOLTOOID",
         "icon": "👁️",
         "title": "Visuele details vastgelegd",
         "signal": "fixed",
         "message": "Vormen, posities en verschillen komen nu samen."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "PATRONEN VOLGEN VOLTOOID",
         "icon": "👁️",
         "title": "Je bent over de helft",
         "signal": "fixed",
         "message": "Optische vallen volgen hierna."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "OPTISCHE VALLEN VOLTOOID",
         "icon": "👁️",
         "title": "Hierna volgt de laatste focus",
         "signal": "fixed",
         "message": "Er resteert nog één visuele uitdaging."
       },
       {
-        "badge": "VISUELE TEST VOLTOOID",
+        "badge": "VISUELE UITDAGING VOLTOOID",
         "icon": "👁️",
         "title": "VISUELE TEST VOLTOOID",
         "signal": "fixed",
@@ -1075,13 +1075,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Voortgang",
+    "resultProgressLabel": "Visuele uitdaging",
     "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE SCORE",
+    "currentScoreLabel": "HUIDIGE VISUELE SCORE",
     "levelLabel": "RONDE",
     "scoreSuffix": "goed",
-    "journeyLabel": "QUIZTRAJECT",
-    "kitchensCleared": "{value} / {total} rondes voltooid",
+    "journeyLabel": "VISUELE UITDAGING",
+    "kitchensCleared": "{value} / {total} uitdagingen voltooid",
     "currentRank": "HUIDIG NIVEAU · VISUELE UITDAGING",
     "ranks": [
       {
@@ -1102,12 +1102,12 @@
     "stages": [
       {
         "difficulty": "Basis",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "EERSTE BLIK VOLTOOID",
         "preAdTitle": "Eerste blik voltooid",
         "preAdCopy": "Goede start. De volgende verschillen worden subtieler.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "EERSTE BLIK VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Eerste blik voltooid",
@@ -1132,12 +1132,12 @@
       },
       {
         "difficulty": "In ontwikkeling",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "VORMEN EN DETAILS VOLTOOID",
         "preAdTitle": "Visuele details vastgelegd",
         "preAdCopy": "Vormen, posities en verschillen komen nu samen.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "VORMEN EN DETAILS VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Visuele details vastgelegd",
@@ -1155,19 +1155,19 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
           "title": "Patronen volgen",
-          "difficulty": "Ervaren",
+          "difficulty": "Gevorderd",
           "tagline": "Reeksen. Rotatie. Richting.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Gevorderd",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "PATRONEN VOLGEN VOLTOOID",
         "preAdTitle": "Je bent over de helft",
         "preAdCopy": "Optische vallen volgen hierna.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "PATRONEN VOLGEN VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Je bent over de helft",
@@ -1185,19 +1185,19 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
           "title": "Optische vallen",
-          "difficulty": "Gevorderd",
+          "difficulty": "Uitdagend",
           "tagline": "Afleiding. Volgen. Kleine veranderingen.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Uitdagend",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "OPTISCHE VALLEN VOLTOOID",
         "preAdTitle": "Hierna volgt de laatste focus",
         "preAdCopy": "Er resteert nog één visuele uitdaging.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "OPTISCHE VALLEN VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Hierna volgt de laatste focus",
@@ -1215,14 +1215,14 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
           "title": "Laatste focus",
-          "difficulty": "Eindbeoordeling",
+          "difficulty": "Eindtoets",
           "tagline": "Gemengde aanwijzingen. Laatste focus.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Eindtoets",
-        "preAdBadge": "VISUELE TEST VOLTOOID",
+        "preAdBadge": "VISUELE UITDAGING VOLTOOID",
         "preAdTitle": "VISUELE TEST VOLTOOID",
         "preAdChecks": [
           "40 antwoorden gecontroleerd",
@@ -1231,7 +1231,7 @@
         ],
         "preAdButton": "Bekijk mijn resultaat",
         "resultIcon": "✓",
-        "resultLabel": "VISUELE TEST VOLTOOID",
+        "resultLabel": "LAATSTE FOCUS VOLTOOID",
         "resultBands": {
           "high": {
             "title": "VISUELE TEST VOLTOOID",

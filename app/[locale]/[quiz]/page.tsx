@@ -70,7 +70,9 @@ export default async function LocalizedQuizPage({ params }: LocalizedQuizPagePro
     notFound();
   }
 
-  const currentPath = getQuizPath(segment, quiz.slug);
+  // SiteShell expects a locale-neutral path so its language switcher can
+  // replace the locale rather than prefixing a second one.
+  const currentPath = getQuizPath(getDefaultLocale(), quiz.slug);
 
   return (
     <SiteShell currentPath={currentPath} locale={segment} quizTheme={quiz.theme} translations={translations}>

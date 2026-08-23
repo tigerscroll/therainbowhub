@@ -287,7 +287,9 @@
 .quiz-theme[data-quiz-theme] .quiz-engine__landing-copy p {
   max-width: 100%;
   overflow-wrap: normal;
-  hyphens: auto;
+  word-break: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 .quiz-theme[data-landing-layout="card"] .quiz-engine__landing { grid-template-columns: 1fr; max-width: 720px; }
 .quiz-theme[data-landing-layout="immersive"] .quiz-engine__landing { border-color: transparent; background: transparent; box-shadow: none; color: var(--quiz-primary-text); }

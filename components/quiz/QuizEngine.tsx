@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import { getCareerResultBand, getStageCompletionPercentage } from "./engineState";
 import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
-import { resolveProfileArtwork } from "./profileArtwork";
+import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
 type QuizEngineProps = {
@@ -508,7 +508,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       .filter((question) => question.stage === targetStage)
       .flatMap((question) => [question.image?.src, ...(question.icons ?? [])])
       .filter((source): source is string => typeof source === "string" && source.startsWith("/quizzes/"));
-    const checkpoint = quiz.theme.artwork.checkpoints?.[currentStage];
+    const checkpointVariantAssets = quiz.theme.artwork.checkpointVariants;
+    const checkpointVariant = checkpointVariantAssets
+      ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
+      : undefined;
+    const checkpoint = (checkpointVariant ? checkpointVariantAssets?.[checkpointVariant]?.[currentStage] : undefined)
+      ?? quiz.theme.artwork.checkpoints?.[currentStage];
     if (screen === "question" && checkpoint) sources.push(checkpoint);
 
     sources.forEach((source) => {
@@ -755,7 +760,12 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
         : reveal?.variants?.[revealKey];
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
-    const checkpointArtwork = quiz.theme.artwork?.checkpoints?.[completedStage];
+    const checkpointVariantAssets = quiz.theme.artwork?.checkpointVariants;
+    const checkpointVariant = checkpointVariantAssets
+      ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
+      : undefined;
+    const checkpointArtwork = (checkpointVariant ? checkpointVariantAssets?.[checkpointVariant]?.[completedStage] : undefined)
+      ?? quiz.theme.artwork?.checkpoints?.[completedStage];
     return (
       <>
       <section className={`quiz-engine__checkpoint quiz-engine__card${quiz.career?.continuousShell ? " quiz-engine__continuous-shell" : ""}${compactCareerGate ? " quiz-engine__checkpoint--compact-career" : ""}${progressOnlyCareerGate ? " quiz-engine__checkpoint--progress-career" : ""}`} data-round={completedStage + 1}>

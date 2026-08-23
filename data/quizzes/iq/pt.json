@@ -145,7 +145,7 @@
             }
           ],
           "finalTitle": "O seu resultado no teste de inteligência",
-          "finalCopy": "Foram acertadas {score} de {total} perguntas. O perfil desta tentativa aparece abaixo."
+          "finalCopy": "Foram resolvidos {score} desafios de um total de {total}. O perfil lúdico de raciocínio desta tentativa aparece abaixo."
         }
       },
       "disclaimer": "Apenas para entretenimento e cultura geral. Este teste de inteligência não é um exame oficial, uma qualificação ou aconselhamento profissional."
@@ -947,35 +947,35 @@
     ],
     "reveals": [
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "RACIOCÍNIO RÁPIDO CONCLUÍDO",
         "icon": "✓",
         "title": "Primeiro desafio concluído",
         "signal": "fixed",
         "message": "A dificuldade aumenta a partir daqui."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "PADRÕES INTERPRETADOS",
         "icon": "✓",
         "title": "O cofre fica mais difícil",
         "signal": "fixed",
         "message": "Os próximos enigmas exigem um raciocínio mais apurado."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "LÓGICA SOB PRESSÃO CONCLUÍDA",
         "icon": "✓",
         "title": "Mais de metade concluída",
         "signal": "fixed",
         "message": "Os enigmas avançados vêm a seguir."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "ARMADILHAS DE RACIOCÍNIO CONCLUÍDAS",
         "icon": "✓",
         "title": "O cofre final vem a seguir",
         "signal": "fixed",
         "message": "Falta apenas um desafio."
       },
       {
-        "badge": "TESTE DE INTELIGÊNCIA CONCLUÍDO",
+        "badge": "COFRE DA INTELIGÊNCIA CONCLUÍDO",
         "icon": "🧠",
         "title": "TESTE DE INTELIGÊNCIA CONCLUÍDO",
         "signal": "fixed",
@@ -990,13 +990,13 @@
     "showStageResults": false,
     "showCurrentScore": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Progresso",
+    "resultProgressLabel": "Desafio de inteligência",
     "resultProgressComplete": "{value}% concluído",
-    "currentScoreLabel": "RESULTADO ATUAL",
+    "currentScoreLabel": "PONTUAÇÃO ATUAL DO TESTE",
     "levelLabel": "ETAPA",
     "scoreSuffix": "certas",
-    "journeyLabel": "PERCURSO DO TESTE",
-    "kitchensCleared": "{value} / {total} etapas concluídas",
+    "journeyLabel": "DESAFIO DE INTELIGÊNCIA",
+    "kitchensCleared": "{value} / {total} desafios concluídos",
     "currentRank": "NÍVEL ATUAL · RACIOCÍNIO",
     "ranks": [
       {
@@ -1017,12 +1017,12 @@
     "stages": [
       {
         "difficulty": "Fundamentos",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "RACIOCÍNIO RÁPIDO CONCLUÍDO",
         "preAdTitle": "Primeiro desafio concluído",
         "preAdCopy": "A dificuldade aumenta a partir daqui.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "RACIOCÍNIO RÁPIDO CONCLUÍDO",
         "resultBands": {
           "high": {
             "title": "Primeiro desafio concluído",
@@ -1038,7 +1038,7 @@
           }
         },
         "next": {
-          "eyebrow": "PRÓXIMO DESAFIO · EM PROGRESSÃO",
+          "eyebrow": "PRÓXIMO DESAFIO · EM DESENVOLVIMENTO",
           "title": "Interpretar padrões",
           "difficulty": "Em desenvolvimento",
           "tagline": "Sequências. Códigos. Regras escondidas.",
@@ -1046,13 +1046,13 @@
         }
       },
       {
-        "difficulty": "Em progressão",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "difficulty": "Em desenvolvimento",
+        "preAdBadge": "PADRÕES INTERPRETADOS",
         "preAdTitle": "O cofre fica mais difícil",
         "preAdCopy": "Os próximos enigmas exigem um raciocínio mais apurado.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "PADRÕES INTERPRETADOS",
         "resultBands": {
           "high": {
             "title": "O cofre fica mais difícil",
@@ -1077,12 +1077,12 @@
       },
       {
         "difficulty": "Experiente",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "LÓGICA SOB PRESSÃO CONCLUÍDA",
         "preAdTitle": "Mais de metade concluída",
         "preAdCopy": "Os enigmas avançados vêm a seguir.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "LÓGICA SOB PRESSÃO CONCLUÍDA",
         "resultBands": {
           "high": {
             "title": "Mais de metade concluída",
@@ -1107,12 +1107,12 @@
       },
       {
         "difficulty": "Avançado",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "ARMADILHAS DE RACIOCÍNIO CONCLUÍDAS",
         "preAdTitle": "O cofre final vem a seguir",
         "preAdCopy": "Falta apenas um desafio.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "ARMADILHAS DE RACIOCÍNIO CONCLUÍDAS",
         "resultBands": {
           "high": {
             "title": "O cofre final vem a seguir",
@@ -1137,7 +1137,7 @@
       },
       {
         "difficulty": "Avaliação final",
-        "preAdBadge": "TESTE DE INTELIGÊNCIA CONCLUÍDO",
+        "preAdBadge": "COFRE DA INTELIGÊNCIA CONCLUÍDO",
         "preAdTitle": "TESTE DE INTELIGÊNCIA CONCLUÍDO",
         "preAdCopy": "O resultado está pronto.",
         "preAdChecks": [
@@ -1147,7 +1147,7 @@
         ],
         "preAdButton": "Ver o resultado",
         "resultIcon": "🧠",
-        "resultLabel": "TESTE DE INTELIGÊNCIA CONCLUÍDO",
+        "resultLabel": "COFRE DA INTELIGÊNCIA CONCLUÍDO",
         "resultBands": {
           "high": {
             "title": "TESTE DE INTELIGÊNCIA CONCLUÍDO",

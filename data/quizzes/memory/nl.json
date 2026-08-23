@@ -131,15 +131,15 @@
           "measuredIntro": "De vragen bestrijken drie aanvullende onderdelen van de geheugentest.",
           "measuredAreas": [
             {
-              "title": "📝 Woordgeheugen",
+              "title": "Opslaan en herinneren",
               "copy": "Woorden, beelden en getallen lang genoeg vasthouden om ze even later te herkennen of terug te halen."
             },
             {
-              "title": "👀 Visueel geheugen",
+              "title": "Uitgesteld ophalen",
               "copy": "Eerdere details terughalen nadat een andere taak de oorspronkelijke herinnering heeft onderbroken."
             },
             {
-              "title": "🔢 Getallengeheugen",
+              "title": "Aandacht voor detail",
               "copy": "Kleuren, vormen, posities en kleine veranderingen opmerken voordat ze verdwijnen."
             }
           ],
@@ -160,7 +160,7 @@
             }
           ],
           "finalTitle": "Je resultaat in de geheugentest",
-          "finalCopy": "Je beantwoordde {score} van de {total} vragen goed. Hieronder staat je profiel voor deze poging."
+          "finalCopy": "Je eindigde met {score} goede antwoorden van de {total}. Hieronder staan je resultaatprofiel en de volledige uitsplitsing van je geheugenvaardigheden."
         }
       }
     }
@@ -896,35 +896,35 @@
     ],
     "reveals": [
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "SNELLE HERINNERING VOLTOOID",
         "icon": "✓",
         "title": "Snelle herinnering voltooid",
         "signal": "fixed",
         "message": "De volgende ronde voegt beelden en details toe."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "BEELDEN EN DETAILS VOLTOOID",
         "icon": "✓",
         "title": "Visuele herinnering gehaald",
         "signal": "fixed",
         "message": "Hierna volgen getallen en werkgeheugen."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "GETALLEN EN PATRONEN VOLTOOID",
         "icon": "✓",
         "title": "Je bent over de helft",
         "signal": "fixed",
         "message": "De geheugenval komt hierna."
       },
       {
-        "badge": "RONDE VOLTOOID",
+        "badge": "GEHEUGENVAL VOLTOOID",
         "icon": "✓",
         "title": "Hierna volgt de laatste geheugenuitdaging",
         "signal": "fixed",
         "message": "Nog één ronde test wat is blijven hangen."
       },
       {
-        "badge": "GEHEUGENTEST VOLTOOID",
+        "badge": "LAATSTE GEHEUGENUITDAGING VOLTOOID",
         "icon": "✓",
         "title": "GEHEUGENTEST VOLTOOID",
         "signal": "fixed",
@@ -938,13 +938,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Voortgang",
+    "resultProgressLabel": "Geheugenuitdaging",
     "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE SCORE",
+    "currentScoreLabel": "HUIDIGE GEHEUGENSCORE",
     "levelLabel": "RONDE",
     "scoreSuffix": "goed",
-    "journeyLabel": "QUIZTRAJECT",
-    "kitchensCleared": "{value} / {total} rondes voltooid",
+    "journeyLabel": "GEHEUGENUITDAGING",
+    "kitchensCleared": "{value} / {total} uitdagingen voltooid",
     "currentRank": "HUIDIG NIVEAU · GEHEUGEN",
     "ranks": [
       {
@@ -965,12 +965,12 @@
     "stages": [
       {
         "difficulty": "Basis",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "SNELLE HERINNERING VOLTOOID",
         "preAdTitle": "Snelle herinnering voltooid",
         "preAdCopy": "De volgende ronde voegt beelden en details toe.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "SNELLE HERINNERING VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Snelle herinnering voltooid",
@@ -995,12 +995,12 @@
       },
       {
         "difficulty": "In ontwikkeling",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "BEELDEN EN DETAILS VOLTOOID",
         "preAdTitle": "Visuele herinnering gehaald",
         "preAdCopy": "Hierna volgen getallen en werkgeheugen.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "BEELDEN EN DETAILS VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Visuele herinnering gehaald",
@@ -1018,19 +1018,19 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
           "title": "Getallen en patronen",
-          "difficulty": "Ervaren",
+          "difficulty": "Gevorderd",
           "tagline": "Cijfers. Volgorde. Werkgeheugen.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Gevorderd",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "GETALLEN EN PATRONEN VOLTOOID",
         "preAdTitle": "Je bent over de helft",
         "preAdCopy": "De geheugenval komt hierna.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "GETALLEN EN PATRONEN VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Je bent over de helft",
@@ -1048,19 +1048,19 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
           "title": "De geheugenval",
-          "difficulty": "Gevorderd",
+          "difficulty": "Uitdagend",
           "tagline": "Afleiding. Vergelijkbare aanwijzingen. Oudere herinneringen.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Uitdagend",
-        "preAdBadge": "RONDE VOLTOOID",
+        "preAdBadge": "GEHEUGENVAL VOLTOOID",
         "preAdTitle": "Hierna volgt de laatste geheugenuitdaging",
         "preAdCopy": "Nog één ronde test wat is blijven hangen.",
         "preAdButton": "Verder",
         "resultIcon": "✓",
-        "resultLabel": "RONDE VOLTOOID",
+        "resultLabel": "GEHEUGENVAL VOLTOOID",
         "resultBands": {
           "high": {
             "title": "Hierna volgt de laatste geheugenuitdaging",
@@ -1078,14 +1078,14 @@
         "next": {
           "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
           "title": "Laatste geheugenuitdaging",
-          "difficulty": "Eindbeoordeling",
+          "difficulty": "Eindtoets",
           "tagline": "Uitgestelde herinnering. Bewerking. Laatste terugblik.",
           "button": "Verder"
         }
       },
       {
         "difficulty": "Eindtoets",
-        "preAdBadge": "GEHEUGENTEST VOLTOOID",
+        "preAdBadge": "LAATSTE GEHEUGENUITDAGING VOLTOOID",
         "preAdTitle": "GEHEUGENTEST VOLTOOID",
         "preAdChecks": [
           "40 antwoorden gecontroleerd",
@@ -1094,7 +1094,7 @@
         ],
         "preAdButton": "Bekijk mijn resultaat",
         "resultIcon": "🧠",
-        "resultLabel": "GEHEUGENTEST VOLTOOID",
+        "resultLabel": "LAATSTE GEHEUGENUITDAGING VOLTOOID",
         "resultBands": {
           "high": {
             "title": "GEHEUGENTEST VOLTOOID",

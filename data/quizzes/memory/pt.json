@@ -102,7 +102,7 @@
       "correctLabel": "certas",
       "strongest": "Área mais forte de memória",
       "trickiest": "Área mais difícil de memória",
-      "bestRound": "Melhor ronda",
+      "bestRound": "Melhor etapa",
       "disclaimer": "Apenas para entretenimento e cultura geral. Este teste de memória não é um exame oficial, uma qualificação ou aconselhamento profissional.",
       "showBestRound": true,
       "insights": {
@@ -115,7 +115,7 @@
         "targetReached": "Objetivo de 80% atingido",
         "targetRemaining": "Respostas certas que ainda faltam para chegar aos 80%",
         "details": {
-          "analysisTitle": "Como interpretar a resultado de memória",
+          "analysisTitle": "Como interpretar o resultado de memória",
           "analysisCopy": "Este resultado reúne 40 perguntas sobre palavras, imagens, números, associações, atenção e recordação diferida. A distribuição abaixo mostra as áreas mais fortes desta tentativa.",
           "roadmapTitle": "No relatório completo do teste de memória",
           "roadmapIntro": "A pontuação é apenas a primeira pista. O relatório mostra a área mais forte de memória, o desempenho por área e as respostas incorretas no teste de memória.",
@@ -131,15 +131,15 @@
           "measuredIntro": "As perguntas abrangem três dimensões complementares próprias do teste de memória.",
           "measuredAreas": [
             {
-              "title": "📝 Memória de palavras",
+              "title": "Memorização e recordação",
               "copy": "Reter palavras, imagens e números tempo suficiente para os reconhecer ou recuperar pouco depois."
             },
             {
-              "title": "👀 Memória visual",
+              "title": "Recuperação diferida",
               "copy": "Recordar detalhes anteriores depois de outra tarefa ter interrompido a memória inicial."
             },
             {
-              "title": "🔢 Memória de números",
+              "title": "Atenção aos detalhes",
               "copy": "Reparar em cores, formas, posições e pequenas alterações antes de desaparecerem."
             }
           ],
@@ -160,7 +160,7 @@
             }
           ],
           "finalTitle": "O seu resultado no teste de memória",
-          "finalCopy": "Foram acertadas {score} de {total} perguntas. O perfil desta tentativa aparece abaixo."
+          "finalCopy": "Foram dadas {score} respostas corretas de um total de {total}. O perfil do resultado e a análise completa das capacidades de memória aparecem abaixo."
         }
       }
     }
@@ -896,35 +896,35 @@
     ],
     "reveals": [
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "MEMÓRIA IMEDIATA CONCLUÍDA",
         "icon": "✓",
         "title": "Memória imediata concluída",
         "signal": "fixed",
         "message": "A próxima etapa acrescenta imagens e detalhes."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "IMAGENS E DETALHES CONCLUÍDOS",
         "icon": "✓",
         "title": "Memória visual concluída",
         "signal": "fixed",
         "message": "Números e memória de trabalho vêm a seguir."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "NÚMEROS E PADRÕES CONCLUÍDOS",
         "icon": "✓",
         "title": "Mais de metade concluída",
         "signal": "fixed",
         "message": "A armadilha da memória vem a seguir."
       },
       {
-        "badge": "ETAPA CONCLUÍDA",
+        "badge": "ARMADILHA DA MEMÓRIA CONCLUÍDA",
         "icon": "✓",
         "title": "O desafio final de memória vem a seguir",
         "signal": "fixed",
         "message": "Uma última etapa vai testar o que ainda ficou na memória."
       },
       {
-        "badge": "TESTE DE MEMÓRIA CONCLUÍDO",
+        "badge": "DESAFIO FINAL DE MEMÓRIA CONCLUÍDO",
         "icon": "✓",
         "title": "TESTE DE MEMÓRIA CONCLUÍDO",
         "signal": "fixed",
@@ -938,13 +938,13 @@
     "continuousShell": true,
     "showStageResults": false,
     "showResultProgress": true,
-    "resultProgressLabel": "Progresso",
+    "resultProgressLabel": "Desafio de memória",
     "resultProgressComplete": "{value}% concluído",
-    "currentScoreLabel": "RESULTADO ATUAL",
+    "currentScoreLabel": "PONTUAÇÃO ATUAL DE MEMÓRIA",
     "levelLabel": "ETAPA",
     "scoreSuffix": "certas",
-    "journeyLabel": "PERCURSO DO TESTE",
-    "kitchensCleared": "{value} / {total} etapas concluídas",
+    "journeyLabel": "DESAFIO DE MEMÓRIA",
+    "kitchensCleared": "{value} / {total} desafios concluídos",
     "currentRank": "NÍVEL ATUAL · MEMÓRIA",
     "ranks": [
       {
@@ -965,12 +965,12 @@
     "stages": [
       {
         "difficulty": "Fundamentos",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "MEMÓRIA IMEDIATA CONCLUÍDA",
         "preAdTitle": "Memória imediata concluída",
         "preAdCopy": "A próxima etapa acrescenta imagens e detalhes.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "MEMÓRIA IMEDIATA CONCLUÍDA",
         "resultBands": {
           "high": {
             "title": "Memória imediata concluída",
@@ -986,7 +986,7 @@
           }
         },
         "next": {
-          "eyebrow": "PRÓXIMO DESAFIO · EM PROGRESSÃO",
+          "eyebrow": "PRÓXIMO DESAFIO · EM DESENVOLVIMENTO",
           "title": "Imagens e detalhes",
           "difficulty": "Em desenvolvimento",
           "tagline": "Cores. Posições. Mudanças.",
@@ -994,13 +994,13 @@
         }
       },
       {
-        "difficulty": "Em progressão",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "difficulty": "Em desenvolvimento",
+        "preAdBadge": "IMAGENS E DETALHES CONCLUÍDOS",
         "preAdTitle": "Memória visual concluída",
         "preAdCopy": "Números e memória de trabalho vêm a seguir.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "IMAGENS E DETALHES CONCLUÍDOS",
         "resultBands": {
           "high": {
             "title": "Memória visual concluída",
@@ -1025,12 +1025,12 @@
       },
       {
         "difficulty": "Experiente",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "NÚMEROS E PADRÕES CONCLUÍDOS",
         "preAdTitle": "Mais de metade concluída",
         "preAdCopy": "A armadilha da memória vem a seguir.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "NÚMEROS E PADRÕES CONCLUÍDOS",
         "resultBands": {
           "high": {
             "title": "Mais de metade concluída",
@@ -1055,12 +1055,12 @@
       },
       {
         "difficulty": "Avançado",
-        "preAdBadge": "ETAPA CONCLUÍDA",
+        "preAdBadge": "ARMADILHA DA MEMÓRIA CONCLUÍDA",
         "preAdTitle": "O desafio final de memória vem a seguir",
         "preAdCopy": "Uma última etapa vai testar o que ainda ficou na memória.",
         "preAdButton": "Continuar",
         "resultIcon": "✓",
-        "resultLabel": "ETAPA CONCLUÍDA",
+        "resultLabel": "ARMADILHA DA MEMÓRIA CONCLUÍDA",
         "resultBands": {
           "high": {
             "title": "O desafio final de memória vem a seguir",
@@ -1085,7 +1085,7 @@
       },
       {
         "difficulty": "Avaliação final",
-        "preAdBadge": "TESTE DE MEMÓRIA CONCLUÍDO",
+        "preAdBadge": "DESAFIO FINAL DE MEMÓRIA CONCLUÍDO",
         "preAdTitle": "TESTE DE MEMÓRIA CONCLUÍDO",
         "preAdChecks": [
           "40 respostas verificadas",
@@ -1094,7 +1094,7 @@
         ],
         "preAdButton": "Ver o resultado",
         "resultIcon": "🧠",
-        "resultLabel": "TESTE DE MEMÓRIA CONCLUÍDO",
+        "resultLabel": "DESAFIO FINAL DE MEMÓRIA CONCLUÍDO",
         "resultBands": {
           "high": {
             "title": "TESTE DE MEMÓRIA CONCLUÍDO",

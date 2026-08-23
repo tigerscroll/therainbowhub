@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import en from "@/data/i18n/en.json";
+import { localizeInternalPath } from "@/lib/localePath";
 
 export type Translations = typeof en;
 export const localeOptions = [
@@ -49,11 +50,6 @@ export function getTranslations(locale: string): Translations {
 }
 
 export function getLocalePath(locale: string, href: string) {
-  const normalizedHref = href.startsWith("/") ? href : `/${href}`;
-
-  if (!isSupportedLocale(locale) || locale === defaultLocale) {
-    return normalizedHref;
-  }
-
-  return `/${locale}${normalizedHref === "/" ? "" : normalizedHref}`;
+  const safeLocale = isSupportedLocale(locale) ? locale : defaultLocale;
+  return localizeInternalPath(safeLocale, href, supportedLocales, defaultLocale);
 }
