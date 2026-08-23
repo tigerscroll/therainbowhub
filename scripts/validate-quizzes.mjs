@@ -160,6 +160,7 @@ for (const folder of folders) {
 
   const source = read(path.join(directory, "en.json"));
   if (!source) continue;
+  fail(!source.landing?.intro?.includes("—"), `${folder.name}/en.json: landing subtitles must not use em dashes.`);
   const sourceQuestions = (source.stages ?? []).flatMap((stage) => stage.questions ?? []);
   const sourceQuestionIds = sourceQuestions.map((question) => question.id);
   fail(sourceQuestionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/en.json: every question needs a stable id.`);

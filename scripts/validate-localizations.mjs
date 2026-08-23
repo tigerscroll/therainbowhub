@@ -679,12 +679,14 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     continue;
   }
   const english = JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8"));
+  if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
   for (const localeFile of isEnglishOnly ? [] : translatedLocaleFiles) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
     const localized = JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8"));
+    if (localized.landing?.intro?.includes("—")) addError(`${location}#landing.intro: landing subtitles must not use em dashes.`);
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
     compareStructure(english, localized, [], location);
     validateQuestions(localized, location);
