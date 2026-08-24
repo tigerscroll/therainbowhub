@@ -334,11 +334,99 @@ img { display: block; max-width: 100%; }
 .site-footer__bottom { margin-top: 36px; padding-top: 17px; border-top: 1px solid color-mix(in srgb, var(--site-footer-text, #e5f0ef) 22%, transparent); color: color-mix(in srgb, var(--site-footer-text, #e5f0ef) 68%, transparent); font-size: 12px; }
 .site-footer__bottom p { margin: 0; }
 
-.legal-page { width: min(820px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 80px; }
-.legal-page h1 { max-width: 100%; font-size: clamp(36px, 7vw, 58px); line-height: 1.02; letter-spacing: -.045em; overflow-wrap: normal; hyphens: auto; }
-.legal-page h2 { margin-top: 38px; }
-.legal-page p, .legal-page li { color: #526163; line-height: 1.75; }
-.legal-updated { font-size: 13px; }
+.legal-page {
+  position: relative;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  margin-block: 42px 80px;
+  overflow: hidden;
+  border: 1px solid #cddfdd;
+  border-radius: 26px;
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 22px 56px rgba(28,70,69,.1);
+}
+
+.info-page::before { display: none; }
+
+.info-page__hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 46px);
+  overflow: hidden;
+  border-bottom: 1px solid #d8e5e3;
+  background:
+    linear-gradient(112deg, rgba(255,255,255,.99) 0%, rgba(251,253,252,.98) 66%, rgba(235,247,245,.98) 100%);
+}
+
+.info-page__hero::after {
+  position: absolute;
+  right: -68px;
+  bottom: -116px;
+  width: 260px;
+  height: 260px;
+  border: 42px solid rgba(25,120,121,.045);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.info-page__mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  border: 1px solid #c2dad7;
+  border-radius: 21px;
+  background: linear-gradient(145deg, #fff, #e8f4f2);
+  color: var(--brand-teal-deep);
+  box-shadow: 0 11px 24px rgba(23,111,112,.12), inset 0 1px 0 #fff;
+}
+
+.info-page__mark svg { width: 36px; height: 36px; }
+.info-page__hero-copy { position: relative; z-index: 1; min-width: 0; }
+.info-page__kicker { margin: 0 0 8px; color: var(--brand-teal-rich); font-size: 11px; font-weight: 900; letter-spacing: .16em; line-height: 1.2; text-transform: uppercase; }
+.legal-page h1 { max-width: 850px; margin: 0; color: #172033; font-size: clamp(40px, 5.6vw, 64px); line-height: .98; letter-spacing: -.05em; overflow-wrap: normal; hyphens: none; text-wrap: balance; }
+.info-page__lead { max-width: 760px; margin: 16px 0 0; color: #536665; font-size: clamp(15px, 1.6vw, 18px); line-height: 1.58; text-wrap: pretty; }
+.legal-updated { display: inline-flex; align-items: center; min-height: 28px; margin: 18px 0 0; padding: 5px 10px; border: 1px solid #d5e4e2; border-radius: 999px; background: rgba(255,255,255,.75); color: #687a79; font-size: 11px; font-weight: 750; line-height: 1.25; }
+
+.info-page__layout {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 100%);
+  margin-inline: auto;
+  padding-top: 8px;
+}
+
+.info-page__sections { min-width: 0; }
+.info-page__sections > section { padding: clamp(24px, 3.2vw, 34px) 0; border-bottom: 1px solid #e0e9e8; }
+.info-page__section-heading { margin-bottom: 14px; }
+.legal-page h2 { margin: 0; color: #1d3032; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.15; letter-spacing: -.026em; text-wrap: balance; }
+.legal-page p, .legal-page li { color: #526463; font-size: 15px; line-height: 1.72; }
+.legal-page section > p { margin: 12px 0 0; }
+.legal-page section > p:first-of-type { margin-top: 0; }
+.legal-page ul { display: grid; gap: 10px; padding: 0; margin: 16px 0 0; list-style: none; }
+.legal-page li { position: relative; padding: 2px 0 2px 25px; }
+.legal-page li::before { position: absolute; top: 10px; left: 4px; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-teal-rich); box-shadow: 0 0 0 4px rgba(25,120,121,.09); content: ""; }
+.obfuscated-email { margin-top: 18px !important; }
+.obfuscated-email a { display: inline-flex; min-height: 48px; align-items: center; padding: 0 17px; border: 1px solid var(--brand-teal-deep); border-radius: 12px; background: linear-gradient(100deg, var(--brand-teal-deep), var(--brand-teal-rich)); color: white; font-size: 14px; font-weight: 850; box-shadow: 0 5px 0 #0f5556, 0 12px 24px rgba(23,111,112,.16); }
+.obfuscated-email a:focus-visible { outline: 3px solid var(--brand-yellow); outline-offset: 4px; }
+
+.info-page__related { position: relative; z-index: 1; width: min(880px, 100%); margin-inline: auto; padding: 26px 0 38px; }
+.info-page__related > strong { display: block; margin-bottom: 13px; color: #617473; font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.info-page__related > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.info-page__related a { position: relative; display: grid; min-height: 76px; align-content: center; padding: 13px 45px 13px 0; border-top: 1px solid #dce7e5; transition: color .16s ease; }
+.info-page__related a:last-child { border-bottom: 1px solid #dce7e5; }
+.info-page__related a:hover { color: var(--brand-teal-deep); }
+.info-page__related a:focus-visible { outline: 3px solid var(--brand-yellow); outline-offset: 3px; }
+.info-page__related a span { color: #71817f; font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.info-page__related a b { margin-top: 5px; color: #213638; font-size: 16px; line-height: 1.15; }
+.info-page__related a i { position: absolute; right: 4px; display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: var(--brand-teal-deep); color: white; font-size: 16px; font-style: normal; }
 
 .not-found-page {
   display: grid;
@@ -451,7 +539,30 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 760px) {
   :root { --site-header-height: 40px; }
-  .legal-page h1 { font-size: clamp(32px, 9vw, 42px); }
+  .legal-page { width: calc(100% - 24px); margin-block: 20px 54px; border-radius: 20px; }
+  .info-page__hero { grid-template-columns: 54px minmax(0, 1fr); gap: 15px; padding: 22px 18px; }
+  .info-page__hero::after { right: -110px; bottom: -150px; }
+  .info-page__mark { width: 52px; height: 52px; border-radius: 15px; }
+  .info-page__mark svg { width: 27px; height: 27px; }
+  .info-page__kicker { margin-bottom: 6px; font-size: 9px; }
+  .legal-page h1 { font-size: clamp(31px, 9.3vw, 42px); }
+  .info-page__lead { grid-column: 1 / -1; margin-top: 16px; font-size: 14px; line-height: 1.55; }
+  .legal-updated { grid-column: 1 / -1; width: fit-content; margin-top: 13px; font-size: 10px; }
+  .info-page__hero-copy { display: contents; }
+  .info-page__hero-copy > .info-page__kicker,
+  .info-page__hero-copy > h1 { grid-column: 2; }
+  .info-page__layout { width: auto; margin-inline: 18px; padding-top: 4px; }
+  .info-page__sections > section { padding: 22px 0; }
+  .info-page__section-heading { margin-bottom: 12px; }
+  .legal-page h2 { font-size: 20px; }
+  .legal-page p, .legal-page li { font-size: 14px; line-height: 1.65; }
+  .legal-page ul { gap: 8px; margin-top: 13px; }
+  .legal-page li { padding: 2px 0 2px 23px; }
+  .legal-page li::before { top: 9px; left: 3px; width: 7px; height: 7px; }
+  .obfuscated-email a { width: 100%; justify-content: center; }
+  .info-page__related { width: auto; margin-inline: 18px; padding: 22px 0 28px; }
+  .info-page__related > div { grid-template-columns: 1fr; gap: 8px; }
+  .info-page__related a { min-height: 70px; padding: 12px 44px 12px 0; }
   .hub-header { height: 40px; min-height: 40px; max-height: 40px; }
   .hub-header__inner, .hub-main, .site-footer__inner { width: calc(100% - 24px); }
   .hub-brand { gap: 7px; font-size: 15px; }
@@ -496,6 +607,9 @@ img { display: block; max-width: 100%; }
 
 @media (min-width: 761px) and (max-width: 1024px) {
   :root { --site-header-height: 40px; }
+  .legal-page { width: calc(100% - 36px); margin-top: 30px; }
+  .info-page__layout,
+  .info-page__related { width: calc(100% - 64px); }
   .hub-header { height: 40px; min-height: 40px; max-height: 40px; }
   .hub-brand { font-size: 15px; }
   .hub-brand__mark { width: 25px; height: 25px; font-size: 14px; }
