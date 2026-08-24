@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import process from "node:process";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
@@ -47,6 +48,28 @@ function dataShape(value) {
   return typeof value;
 }
 
+function lastSelectorCompound(selector) {
+  let boundary = -1;
+  let round = 0;
+  let square = 0;
+  for (let index = 0; index < selector.length; index += 1) {
+    const character = selector[index];
+    if (character === "(") round += 1;
+    else if (character === ")") round -= 1;
+    else if (character === "[") square += 1;
+    else if (character === "]") square -= 1;
+    else if (round === 0 && square === 0 && (/\s/.test(character) || character === ">" || character === "+" || character === "~")) boundary = index;
+  }
+  return selector.slice(boundary + 1).trim();
+}
+
+function targetsSharedFlowRoot(selectorList) {
+  return selectorList.split(",").some((selector) => {
+    const compound = lastSelectorCompound(selector);
+    return !compound.includes("::") && /\.quiz-engine__(?:continuous-shell|question-shell|progress-head|progress|checkpoint|results|primary|social)(?![-\w])/.test(compound);
+  });
+}
+
 const files = walk(rootDir);
 
 for (const filePath of files) {
@@ -79,7 +102,12 @@ requireFile("app/not-found.tsx");
 requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
 requireFile("scripts/prepare-quiz-assets.mjs");
+requireFile("scripts/create-quiz.mjs");
+requireFile("scripts/visual-regression.mjs");
 requireFile("docs/shared-quiz-contract.md");
+if (fs.existsSync(path.join(rootDir, "data", "quizzes", "schema.json"))) {
+  addError("Remove the obsolete pre-v2 locale schema; executable validators own the schema-v2 contract.");
+}
 for (let index = 1; index <= 50; index += 1) {
   requireFile(`public/social-proof/avatars/${String(index).padStart(2, "0")}.webp`);
 }
@@ -131,20 +159,26 @@ for (const command of ["node scripts/validate-quizzes.mjs", "node scripts/valida
 
 const quizTemplateText = fs.readFileSync(path.join(rootDir, "components", "QuizTemplate.tsx"), "utf8");
 const quizThemeBoundaryText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizThemeBoundary.tsx"), "utf8");
-const quizShellContractText = fs.readFileSync(path.join(rootDir, "components", "quiz", "quizShellContract.ts"), "utf8");
+const quizLoaderText = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
+const quizShellContractText = fs.readFileSync(path.join(rootDir, "styles", "quiz-shell-contract.css"), "utf8");
 const requiredContinuousShellContract = [
-  "continuousShell={quiz.career?.continuousShell === true}",
-  "data-quiz-flow={continuousShell ? \"continuous\" : \"standard\"}",
-  "<style data-quiz-shell-contract>{quizShellContractCss}</style>",
+  'data-quiz-flow="continuous"',
+  "shellCssHref={quiz.shellCssHref}",
+  "href={shellCssHref}",
+  "data-quiz-shell-contract",
+  "quiz-shell-contract.${",
   "--quiz-flow-width: 800px;",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
-  "width: min(100%, 520px) !important;",
-  "min-height: 56px !important;",
+  "--quiz-shell-action-width: 520px;",
+  "--quiz-shell-action-height: 56px;",
+  "--quiz-shell-proof-width: 416px;",
+  "width: min(100%, var(--quiz-shell-action-width)) !important;",
+  "min-height: var(--quiz-shell-action-height) !important;",
   "border-radius: 999px !important;",
   "width: calc(100vw - 16px) !important;",
   "quiz-engine__primary-arrow",
 ];
-const continuousShellSources = `${quizTemplateText}\n${quizThemeBoundaryText}\n${quizShellContractText}`;
+const continuousShellSources = `${quizTemplateText}\n${quizThemeBoundaryText}\n${quizLoaderText}\n${quizShellContractText}`;
 for (const declaration of requiredContinuousShellContract) {
   if (!continuousShellSources.includes(declaration)) {
     addError(`Shared continuous-shell contract is missing \`${declaration}\`.`);
@@ -171,10 +205,6 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 
 const quizRoot = path.join(rootDir, "data", "quizzes");
 const requiredQuizLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
-const existingThemeGeometrySlugs = new Set([
-  "cambridge", "chef", "grammar", "harvard", "iq", "mechanic", "memory",
-  "midwifery", "nursing", "oxford", "paramedic", "vision", "years-left",
-]);
 if (new Set(Object.values(SOCIAL_PROOF_COUNTS)).size !== Object.values(SOCIAL_PROOF_COUNTS).length) {
   addError("Every quiz must have a different stable social-proof count.");
 }
@@ -200,35 +230,22 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (quizConfig.theme?.artwork?.landing !== undefined) {
     addError(`Landing artwork panels are not supported by the shared template: data/quizzes/${entry.name}/quiz.json`);
   }
-  if (
-    quizConfig.engine?.flow !== "staged"
-    || quizConfig.engine?.startOnLoad !== false
-    || quizConfig.engine?.checkpoint !== "ai"
-    || quizConfig.engine?.advance !== "automatic"
-    || quizConfig.engine?.feedback !== "selection-only"
-    || quizConfig.engine?.advanceDelayMs !== 450
-    || quizConfig.engine?.rewarded?.start !== true
-    || quizConfig.engine?.rewarded?.stages !== true
-    || quizConfig.engine?.rewarded?.attempts !== 3
-    || quizConfig.engine?.rewarded?.confirmStart !== false
-  ) {
-    addError(`Quiz engine must use the shared five-stage rewarded flow: data/quizzes/${entry.name}/quiz.json`);
+  if (quizConfig.template !== "five-stage-rewarded-v1") {
+    addError(`Quiz manifest must declare the shared five-stage-rewarded-v1 template: data/quizzes/${entry.name}/quiz.json`);
+  }
+  if (!["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"].every((key) => quizConfig.engine?.[key] === undefined)) {
+    addError(`Shared engine settings cannot be overridden by an individual manifest: data/quizzes/${entry.name}/quiz.json`);
   }
   if (fs.existsSync(englishContentPath)) {
-    const englishContent = JSON.parse(fs.readFileSync(englishContentPath, "utf8"));
+    const englishContent = expandQuizLocale(quizConfig, JSON.parse(fs.readFileSync(englishContentPath, "utf8")), "en");
     if (englishContent.stages?.length !== 5 || englishContent.stages.some((stage) => stage.questions?.length !== 8)) {
       addError(`Every quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/en.json`);
     }
-    if (
-      englishContent.career?.continuousShell !== true
-      || englishContent.career?.hideJourneyLength !== true
-      || englishContent.career?.showStageResults !== false
-      || englishContent.career?.showResultProgress !== true
-      || englishContent.career?.compactGate !== undefined
-    ) {
-      addError(`Every quiz must use the shared continuous progress-only shell: data/quizzes/${entry.name}/en.json`);
+    const obsoleteCareerKeys = ["hideJourneyLength", "continuousShell", "showStageResults", "stageResultMode", "showCurrentScore", "showResultProgress", "compactGate"];
+    if (!englishContent.career || obsoleteCareerKeys.some((key) => englishContent.career[key] !== undefined)) {
+      addError(`Shared shell behavior must not be duplicated in locale content: data/quizzes/${entry.name}/en.json`);
     }
-    if (!englishContent.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === "Continue" && stage.preAdChecks === undefined && stage.next?.button === "Continue")) {
+    if (!englishContent.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === undefined && stage.preAdChecks === undefined && stage.next?.button === undefined)) {
       addError(`Every quiz must use the shared intermediate Continue checkpoint: data/quizzes/${entry.name}/en.json`);
     }
     if (englishContent.career?.stages?.[4]?.preAdChecks?.length !== 3) {
@@ -250,7 +267,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     for (const localeFile of requiredQuizLocaleFiles.filter((file) => file !== "en.json")) {
       const localizedPath = path.join(quizRoot, entry.name, localeFile);
       if (!fs.existsSync(localizedPath)) continue;
-      const localized = JSON.parse(fs.readFileSync(localizedPath, "utf8"));
+      const localized = expandQuizLocale(quizConfig, JSON.parse(fs.readFileSync(localizedPath, "utf8")), path.basename(localeFile, ".json"));
       if (localized.stages?.length !== 5 || localized.stages.some((stage) => stage.questions?.length !== 8)) {
         addError(`Every localized quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/${localeFile}`);
       }
@@ -277,8 +294,24 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!fs.existsSync(themePath)) continue;
   const themeCss = fs.readFileSync(themePath, "utf8");
 
+  const manifestPaletteValues = [
+    ...Object.values(quizConfig.theme?.colors ?? {}),
+    ...Object.values(quizConfig.theme?.header ?? {}),
+  ].filter((value) => typeof value === "string" && value.trim());
+  for (const value of manifestPaletteValues) {
+    if (themeCss.toLocaleLowerCase().includes(value.toLocaleLowerCase())) {
+      addError(`Manifest palette value ${JSON.stringify(value)} is duplicated in ${themeRelativePath}; use the shared --quiz-* token instead.`);
+    }
+  }
+
   if (themeCss.includes("--quiz-shell-")) {
     addError(`Quiz themes cannot redefine reserved shared geometry variables: ${themeRelativePath}`);
+  }
+  if (/\[data-round=["'](?:6|7|8|9|10)["']\]/.test(themeCss)) {
+    addError(`Five-stage quiz themes cannot contain selectors for removed rounds 6–10: ${themeRelativePath}`);
+  }
+  if (/\.quiz-engine__(?:stage-result(?:-icon)?|stage-score|stage-insight|career-current-score|career-next-action|career-final)\b/.test(themeCss)) {
+    addError(`Quiz theme references a component removed from the shared shell: ${themeRelativePath}`);
   }
 
   const blockPattern = /([^{}]+)\{([^{}]*)\}/g;
@@ -294,10 +327,10 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
       break;
     }
 
-    const targetsSharedFlow = /\.quiz-engine__(?:continuous-shell|question-shell|progress-head|progress|checkpoint|stage-result|results|career-final|primary|social)(?![-\w])/.test(selector);
+    const targetsSharedFlow = targetsSharedFlowRoot(selector);
     const declaresSharedGeometry = /(?:^|;)\s*(?:display|position|inset|width|min-width|max-width|height|min-height|max-height|margin(?:-[\w-]+)?|padding(?:-[\w-]+)?|gap|row-gap|column-gap|grid-template(?:-[\w-]+)?|flex(?:-[\w-]+)?|align-(?:items|content|self)|justify-(?:items|content|self)|border-radius|overflow(?:-[xy])?)\s*:/i.test(declarations);
-    if (!existingThemeGeometrySlugs.has(entry.name) && targetsSharedFlow && declaresSharedGeometry) {
-      addError(`New quiz themes may style the shared flow visually but cannot redefine its geometry: ${themeRelativePath}`);
+    if (targetsSharedFlow && declaresSharedGeometry) {
+      addError(`Quiz themes may style the shared flow visually but cannot redefine its shared geometry: ${themeRelativePath}`);
       break;
     }
   }

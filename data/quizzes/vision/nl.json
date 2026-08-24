@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Slechts 7% slaagt voor deze visuele test",
   "eyebrow": "LAB VOOR VISUELE FOCUS",
   "summary": "Minuscule verschillen, veranderende patronen en optische vallen testen je blik.",
+  "progressLabel": "voltooid",
   "landing": {
     "intro": "Hoe scherp kijk jij echt? Vind de kleinste verschillen, volg de patronen en doorzie de visuele vallen.",
     "cta": "Start de test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Alleen voor entertainment en algemene kennis. Deze visuele test is geen officieel examen, kwalificatie of professioneel advies."
   },
+  "checkpoint": {
+    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat."
+  },
+  "career": {
+    "resultProgressLabel": "Visuele uitdaging",
+    "resultProgressComplete": "{value}% voltooid",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Basis",
+        "preAdBadge": "EERSTE BLIK VOLTOOID",
+        "preAdTitle": "Eerste blik voltooid",
+        "preAdCopy": "Goede start. De volgende verschillen worden subtieler.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · IN ONTWIKKELING",
+          "tagline": "Vormen. Verschillen. Visuele volgorde."
+        }
+      },
+      "stage-2": {
+        "difficulty": "In ontwikkeling",
+        "preAdBadge": "VORMEN EN DETAILS VOLTOOID",
+        "preAdTitle": "Visuele details vastgelegd",
+        "preAdCopy": "Vormen, posities en verschillen komen nu samen.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
+          "tagline": "Reeksen. Rotatie. Richting."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Gevorderd",
+        "preAdBadge": "PATRONEN VOLGEN VOLTOOID",
+        "preAdTitle": "Je bent over de helft",
+        "preAdCopy": "Optische vallen volgen hierna.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
+          "tagline": "Afleiding. Volgen. Kleine veranderingen."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Uitdagend",
+        "preAdBadge": "OPTISCHE VALLEN VOLTOOID",
+        "preAdTitle": "Hierna volgt de laatste focus",
+        "preAdCopy": "Er resteert nog één visuele uitdaging.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
+          "tagline": "Gemengde aanwijzingen. Laatste focus."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Eindtoets",
+        "preAdBadge": "VISUELE UITDAGING VOLTOOID",
+        "preAdTitle": "VISUELE TEST VOLTOOID",
+        "preAdCopy": "Je visuele resultaat staat klaar.",
+        "preAdChecks": [
+          "40 antwoorden gecontroleerd",
+          "Zes visuele vaardigheden vergeleken",
+          "Eindscore berekend"
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
+      }
+    }
+  },
   "results": {
     "name": "JOUW VISUELE SCORE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Adelaarsoog",
         "copy": "Je beheerste kleur, details, patronen en ruimte met opvallende precisie. Zelfs de lastigste vragen brachten je nauwelijks uit balans."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Visueel virtuoos",
         "copy": "Je resultaat toont een zeer sterke beheersing van kleur, details, patronen en ruimte. Ook bij subtiele valkuilen bleef je redenering betrouwbaar."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Patroonzoeker",
         "copy": "Je behaalde een solide resultaat bij kleur, details, patronen en ruimte. Enkele lastige details kostten punten, maar het totaalbeeld blijft sterk."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Detaildetective",
         "copy": "Je hebt een goede basis in kleur, details, patronen en ruimte. Als je de lastigste onderdelen aanscherpt, kan je volgende resultaat flink stijgen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Blik in ontwikkeling",
         "copy": "Je herkende meerdere belangrijke aspecten van kleur, details, patronen en ruimte. De gemiste vragen laten duidelijk zien wat je nog kunt versterken."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Onder 50%",
         "title": "Nieuwsgierige waarnemer",
         "copy": "Deze uitdaging liet groeikansen zien bij kleur, details, patronen en ruimte. Je nieuwsgierigheid en de opgeloste vragen vormen een uitstekend vertrekpunt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Kleur en geheugen",
-        "categories": [
-          "colour_contrast",
-          "visual_memory"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Kleur en geheugen"
       },
-      {
-        "label": "Details en aandacht",
-        "categories": [
-          "detail_detection",
-          "attention_control"
-        ]
+      "dimension-2": {
+        "label": "Details en aandacht"
       },
-      {
-        "label": "Patronen en ruimte",
-        "categories": [
-          "pattern_tracking",
-          "spatial_orientation"
-        ]
+      "dimension-3": {
+        "label": "Patronen en ruimte"
       }
-    ],
+    },
     "score": {
       "passed": "Geslaagd voor de visuele uitdaging!",
       "finished": "visuele uitdaging voltooid",
@@ -88,9 +133,6 @@
       "strongest": "Sterkste onderdeel voor visuele vaardigheden",
       "trickiest": "Moeilijkste onderdeel voor visuele vaardigheden",
       "bestRound": "Beste uitdaging",
-      "showPercentage": true,
-      "disclaimer": "Alleen voor entertainment en algemene kennis. Deze visuele test is geen officieel examen, kwalificatie of professioneel advies.",
-      "showBestRound": false,
       "insights": {
         "overview": "visuele score in één oogopslag",
         "correct": "goed",
@@ -99,66 +141,15 @@
         "breakdown": "Overzicht van je vaardigheden voor visuele vaardigheden",
         "snapshot": "Wat je profiel in de visuele uitdaging suggereert",
         "targetReached": "Doel van 80% gehaald",
-        "targetRemaining": "Nog nodige juiste antwoorden voor 80%",
-        "details": {
-          "analysisTitle": "Zo lees je je visuele score",
-          "analysisCopy": "Dit resultaat bundelt 40 vragen over kleur, details, visueel geheugen, patronen en ruimte. De verdeling hieronder laat zien welke onderdelen in deze poging het sterkst waren.",
-          "roadmapTitle": "In je volledige rapport van de visuele uitdaging",
-          "roadmapIntro": "De score is slechts de eerste aanwijzing. Het rapport toont je sterkste onderdeel voor visuele vaardigheden, de uitsplitsing per onderdeel en de gemiste vragen in de visuele uitdaging.",
-          "roadmapItems": [
-            "Scoreanalyse",
-            "Sterkste onderdeel voor visuele vaardigheden",
-            "Overzicht van je vaardigheden voor visuele vaardigheden",
-            "Tips voor visuele focus"
-          ],
-          "positionTitle": "Je route naar 80%",
-          "positionCopy": "Het recreatieve doel is 32 goede antwoorden van de 40. De markering toont hoe dichtbij deze poging in de visuele uitdaging kwam, zonder vergelijking of professionele beoordeling.",
-          "measuredTitle": "Wat de visuele uitdaging onderzocht",
-          "measuredIntro": "De vragen bestrijken drie aanvullende onderdelen van de visuele uitdaging.",
-          "measuredAreas": [
-            {
-              "title": "Kleur en geheugen",
-              "copy": "Contrast vergelijken en visuele rangschikkingen kort onthouden."
-            },
-            {
-              "title": "Details en aandacht",
-              "copy": "Exacte veranderingen, herhaalde codes en kleine verschillen vinden zonder de focus te verliezen."
-            },
-            {
-              "title": "Patronen en ruimte",
-              "copy": "Afwisselende regels, spiegelrichtingen en rotaties in meerdere stappen volgen."
-            }
-          ],
-          "tipsTitle": "Drie manieren om je aanpak voor visuele vaardigheden aan te scherpen",
-          "tipsIntro": "Eenvoudige strategieën voor een volgende poging in de visuele uitdaging, niet als professionele beoordeling.",
-          "tips": [
-            {
-              "title": "Scan in een vaste volgorde",
-              "copy": "Ga methodisch door een raster in plaats van je blik door het opvallendste element te laten sturen."
-            },
-            {
-              "title": "Houd regels apart",
-              "copy": "Volg bij overlappende patronen vorm, kleur, vulling of richting één voor één."
-            },
-            {
-              "title": "Vergelijk eerst de ankers",
-              "copy": "Controleer bij bijna gelijke gegevens vaste groepen en eindpunten voordat je elk teken bekijkt."
-            }
-          ],
-          "finalTitle": "Je resultaat in de visuele uitdaging",
-          "finalCopy": "Je eindigde met {score} goede antwoorden van de {total}. Hieronder staat je profiel voor visuele puzzels in deze poging."
-        }
+        "targetRemaining": "Nog nodige juiste antwoorden voor 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Eerste blik",
-      "questions": [
-        {
-          "id": "vision-r1q1",
-          "question": "Welk vak heeft een andere kleur?",
-          "presentation": "grid",
+      "questions": {
+        "vision-r1q1": {
           "visual": {
             "items": [
               "TILE",
@@ -166,22 +157,17 @@
               "TILE",
               "TILE"
             ],
-            "columns": 2,
             "ariaLabel": "Vier bijna gelijke blauwe kleurvlakken; rechtsonder wijkt subtiel af"
           },
+          "question": "Welk vak heeft een andere kleur?",
           "answers": [
             "Linksboven",
             "Rechtsonder",
             "Rechtsboven",
             "Linksonder"
-          ],
-          "correct": 1,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r3q4",
-          "question": "Op welke positie staat het afwijkende symbool?",
-          "presentation": "spatial",
+        "vision-r3q4": {
           "visual": {
             "items": [
               "left-half",
@@ -189,23 +175,18 @@
               "right-half",
               "left-half"
             ],
-            "columns": 4,
             "ariaLabel": "Vier halfgevulde cirkels; de derde is aan de andere kant gevuld"
           },
+          "question": "Op welke positie staat het afwijkende symbool?",
           "answers": [
             "Eerste",
             "Tweede",
             "Derde",
             "Vierde"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q2",
+        "vision-r1q2": {
           "context": "VOORBEELD: M7K2P9",
-          "question": "Welke code komt exact overeen met het voorbeeld?",
-          "presentation": "code",
           "visual": {
             "items": [
               "VOORBEELD",
@@ -213,19 +194,15 @@
             ],
             "ariaLabel": "Voorbeeldcode M 7 K 2 P 9"
           },
+          "question": "Welke code komt exact overeen met het voorbeeld?",
           "answers": [
             "M7K2P9",
             "M7K2R9",
             "M7KZP9",
             "N7K2P9"
-          ],
-          "correct": 0,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q3",
-          "question": "Welke vorm komt hierna?",
-          "presentation": "sequence",
+        "vision-r1q3": {
           "visual": {
             "items": [
               "▲",
@@ -234,22 +211,17 @@
               "●",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Driehoek, cirkel, driehoek, cirkel, vraagteken"
           },
+          "question": "Welke vorm komt hierna?",
           "answers": [
             "■",
             "●",
             "◆",
             "▲"
-          ],
-          "correct": 3,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r1q4",
-          "question": "De pijl draait elke stap een kwartslag naar rechts. Wat komt hierna?",
-          "presentation": "sequence",
+        "vision-r1q4": {
           "visual": {
             "items": [
               "↑",
@@ -257,20 +229,17 @@
               "↓",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Pijl omhoog, naar rechts, omlaag, vraagteken"
           },
+          "question": "De pijl draait elke stap een kwartslag naar rechts. Wat komt hierna?",
           "answers": [
             "↑",
             "→",
             "↓",
             "←"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r1q5",
+        "vision-r1q5": {
           "question": "Welk symbool verscheen als eerste?",
           "answers": [
             "Ster",
@@ -278,44 +247,32 @@
             "Paraplu",
             "Citroen"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Onthoud de volgorde",
-            "presentation": "icons",
             "items": [
               "⭐",
               "🍋",
               "🔑",
               "☂️"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r1q6",
-          "question": "Hoeveel gevulde cirkels zie je?",
-          "presentation": "spatial",
+        "vision-r1q6": {
           "visual": {
             "items": [
               "● ● ○ ● ○ ●"
             ],
             "ariaLabel": "Vier gevulde en twee lege cirkels"
           },
+          "question": "Hoeveel gevulde cirkels zie je?",
           "answers": [
             "3",
             "6",
             "5",
             "4"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r2q1",
-          "question": "Waar staat het paarse vak?",
-          "presentation": "grid",
+        "vision-r2q1": {
           "visual": {
             "items": [
               "🔵",
@@ -328,27 +285,22 @@
               "🔵",
               "🔵"
             ],
-            "columns": 3,
             "ariaLabel": "Een raster van drie bij drie met paars in het midden en blauw eromheen"
           },
+          "question": "Waar staat het paarse vak?",
           "answers": [
             "In het midden",
             "Rechtsonder",
             "Linksboven",
             "Rechtsboven"
-          ],
-          "correct": 0,
-          "category": "colour_contrast"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Vormen en details",
-      "questions": [
-        {
-          "id": "vision-r4q3",
-          "question": "Welke pijl hoort bij stap 4?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r4q3": {
           "visual": {
             "items": [
               "↗",
@@ -356,22 +308,17 @@
               "↙",
               "?"
             ],
-            "columns": 2,
             "ariaLabel": "Vier genummerde stappen: noordoost, zuidoost, zuidwest, vraagteken"
           },
+          "question": "Welke pijl hoort bij stap 4?",
           "answers": [
             "↖",
             "↘",
             "↗",
             "↓"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q1",
-          "question": "Welke pijl is het spiegelbeeld van ↗ in een verticale spiegel?",
-          "presentation": "spatial",
+        "vision-r5q1": {
           "visual": {
             "items": [
               "↗",
@@ -380,53 +327,42 @@
             ],
             "ariaLabel": "Noordoostelijke pijl gespiegeld in een verticale spiegel"
           },
+          "question": "Welke pijl is het spiegelbeeld van ↗ in een verticale spiegel?",
           "answers": [
             "↙",
             "↘",
             "↗",
             "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q1",
+        "vision-r3q1": {
           "question": "Welk paar is volledig identiek?",
           "answers": [
             "R7Q3B6 / R7O3B6",
             "K4M8P2 / K4M8P2",
             "T9L2C5 / T9LZC5",
             "A6D4N8 / A6D4M8"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q2",
+        "vision-r3q2": {
           "question": "Welke rij bevat precies zeven punten?",
           "answers": [
             "••••••",
             "•••••",
             "••••••••",
             "•••••••"
-          ],
-          "correct": 3,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q5",
+        "vision-r3q5": {
           "question": "Welk symbool blijft hetzelfde na een halve draai?",
           "answers": [
             "L",
             "↑",
             "●",
             "↗"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q6",
+        "vision-r3q6": {
           "context": "Fenna fotografeert vijf frisse bloemen voor het familiefotoalbum.",
           "question": "Hoeveel letters F zie je?",
           "answers": [
@@ -434,14 +370,9 @@
             "7",
             "8",
             "9"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r5q5",
-          "question": "Welk vak komt hierna?",
-          "presentation": "sequence",
+        "vision-r5q5": {
           "visual": {
             "items": [
               "■",
@@ -452,20 +383,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Gevuld vierkant, twee lege vierkanten, gevuld vierkant, twee lege vierkanten, vraagteken"
           },
+          "question": "Welk vak komt hierna?",
           "answers": [
             "●",
             "□",
             "■",
             "◇"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q6",
+        "vision-r5q6": {
           "question": "Welk voorwerp stond linksonder?",
           "answers": [
             "Sleutel",
@@ -473,8 +401,6 @@
             "Maan",
             "Ster"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Onthoud de vier posities",
             "items": [
@@ -482,37 +408,24 @@
               "RECHTSBOVEN — MAAN",
               "LINKSONDER — SLEUTEL",
               "RECHTSONDER — BLAD"
-            ],
-            "durationMs": 2200,
-            "mode": "automatic"
+            ]
           }
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Patronen volgen",
-      "questions": [
-        {
-          "id": "vision-r9q5",
+      "questions": {
+        "vision-r9q5": {
           "question": "Welke vorm stond direct rechts van de gouden driehoek?",
-          "presentation": "icons",
           "answers": [
             "Paarse ster",
             "Koraalkleurig vierkant",
             "Blauwe cirkel",
             "Groene ruit"
           ],
-          "icons": [
-            "violet-star",
-            "coral-square",
-            "blue-circle",
-            "green-diamond"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Onthoud de vijf vormen",
-            "presentation": "icons",
             "items": [
               "blue-circle",
               "gold-triangle",
@@ -520,15 +433,10 @@
               "green-diamond",
               "violet-star"
             ],
-            "ariaLabel": "Blauwe cirkel, gouden driehoek, koraalkleurig vierkant, groene ruit, paarse ster",
-            "durationMs": 3500,
-            "mode": "automatic"
+            "ariaLabel": "Blauwe cirkel, gouden driehoek, koraalkleurig vierkant, groene ruit, paarse ster"
           }
         },
-        {
-          "id": "vision-r7q2",
-          "question": "Welke code komt twee keer voor?",
-          "presentation": "grid",
+        "vision-r7q2": {
           "visual": {
             "items": [
               "A7Q",
@@ -536,22 +444,17 @@
               "C2R",
               "B4M"
             ],
-            "columns": 2,
             "ariaLabel": "Codes A7Q, B4M, C2R en B4M"
           },
+          "question": "Welke code komt twee keer voor?",
           "answers": [
             "B4M",
             "A7Q",
             "C2R",
             "Geen"
-          ],
-          "correct": 0,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r4q1",
-          "question": "Welke vorm zet het oplopende aantal zijden voort?",
-          "presentation": "sequence",
+        "vision-r4q1": {
           "visual": {
             "items": [
               "▲",
@@ -559,22 +462,17 @@
               "⬟",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Driehoek, vierkant, vijfhoek, vraagteken"
           },
+          "question": "Welke vorm zet het oplopende aantal zijden voort?",
           "answers": [
             "Cirkel",
             "Zeshoek",
             "Driehoek",
             "Vierkant"
-          ],
-          "correct": 1,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q2",
-          "question": "Welk element maakt het afwisselende patroon af?",
-          "presentation": "sequence",
+        "vision-r4q2": {
           "visual": {
             "items": [
               "X",
@@ -584,39 +482,26 @@
               "X",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "X, O, X, O, X, vraagteken"
           },
+          "question": "Welk element maakt het afwisselende patroon af?",
           "answers": [
             "O",
             "XX",
             "OO",
             "X"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q5",
+        "vision-r4q5": {
           "question": "Welke kleur valt het meest op tegen donker marineblauw?",
-          "presentation": "icons",
           "answers": [
             "Kleurvlak A",
             "Kleurvlak B",
             "Kleurvlak D",
             "Kleurvlak C"
-          ],
-          "icons": [
-            "🟣",
-            "🔵",
-            "🟢",
-            "🟡"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r4q6",
+        "vision-r4q6": {
           "context": "VOORBEELD: ◇ ● ▲ ■",
           "question": "Welke rij komt exact overeen met het voorbeeld?",
           "answers": [
@@ -624,12 +509,9 @@
             "◇ ● ▲ ■",
             "◇ ○ ▲ ■",
             "● ◇ ▲ ■"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r6q1",
+        "vision-r6q1": {
           "question": "Welk getal hoorde bij blauw?",
           "answers": [
             "2",
@@ -637,21 +519,16 @@
             "4",
             "9"
           ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Onthoud de kleur-getalparen",
             "items": [
               "ROOD — 4",
               "BLAUW — 7",
               "GOUD — 2"
-            ],
-            "durationMs": 1900,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r6q6",
+        "vision-r6q6": {
           "context": "VOORBEELD: R3M8K2",
           "question": "Welke code is niet veranderd?",
           "answers": [
@@ -659,19 +536,14 @@
             "R3M8K2",
             "P3M8K2",
             "R3M8KZ"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Optische vallen",
-      "questions": [
-        {
-          "id": "vision-r9q1",
-          "question": "De middelste vierkanten zijn identiek. Waarom kunnen ze toch verschillend lijken?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r9q1": {
           "visual": {
             "items": [
               "light panel",
@@ -679,34 +551,27 @@
             ],
             "ariaLabel": "Twee identieke middelste vierkanten tegen contrasterende achtergronden"
           },
+          "question": "De middelste vierkanten zijn identiek. Waarom kunnen ze toch verschillend lijken?",
           "answers": [
             "Eén ervan moet stiekem lichter zijn",
             "De kleur verandert met de kijkafstand",
             "Identieke kleuren zien er altijd hetzelfde uit",
             "Het contrast eromheen verandert hun uiterlijk"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r8q3",
-          "question": "Begin bij de rode stip en volg de bijbehorende stippellijn. Welke letter bereik je?",
-          "presentation": "text",
+        "vision-r8q3": {
           "image": {
-            "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2",
             "alt": "Een rode startstip met vier gelijksoortige stippellijnen die elkaar kruisen en eindigen bij A, B, C en D"
           },
+          "question": "Begin bij de rode stip en volg de bijbehorende stippellijn. Welke letter bereik je?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r7q1",
+        "vision-r7q1": {
           "context": "BLAUW LICHT, LUCHT BLAUW, BLAUW.",
           "question": "Hoe vaak staat BLAUW als los woord?",
           "answers": [
@@ -714,33 +579,24 @@
             "4",
             "3",
             "6"
-          ],
-          "correct": 2,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q3",
-          "question": "Op welke positie staat de cirkel met een stip erin?",
-          "presentation": "spatial",
+        "vision-r7q3": {
           "visual": {
             "items": [
               "○  ○  ⊙  ○"
             ],
             "ariaLabel": "Vier cirkels; de derde bevat een stip"
           },
+          "question": "Op welke positie staat de cirkel met een stip erin?",
           "answers": [
             "Eerste",
             "Tweede",
             "Vierde",
             "Derde"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q5",
-          "question": "Welk middelste vak valt het meest op in de donkere groep?",
-          "presentation": "grid",
+        "vision-r7q5": {
           "visual": {
             "items": [
               "⚫🟡⚫",
@@ -748,20 +604,17 @@
               "⚫🔵⚫",
               "⚫🟢⚫"
             ],
-            "columns": 2,
             "ariaLabel": "Vier donkere groepen met een geel, paars, blauw of groen middenvlak"
           },
+          "question": "Welk middelste vak valt het meest op in de donkere groep?",
           "answers": [
             "Linksonder",
             "Rechtsboven",
             "Linksboven",
             "Rechtsonder"
-          ],
-          "correct": 2,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r9q2",
+        "vision-r9q2": {
           "context": "VERSIE A: FOCUS-M7Q2-2026\nVERSIE B: F0CUS-M7Q2-2026",
           "question": "Welke precieze positie veranderde in versie B?",
           "answers": [
@@ -769,15 +622,10 @@
             "De Q",
             "Het tweede teken",
             "Het laatste cijfer"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r9q4",
+        "vision-r9q4": {
           "context": "Draai de pijl eerst 90° met de klok mee. Spiegel het resultaat daarna in een verticale as.",
-          "question": "Waarheen wijst de pijl uiteindelijk?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "↗",
@@ -785,30 +633,17 @@
               "│",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Noordoostelijke pijl, kwartslag met de klok mee, verticale spiegeling"
           },
+          "question": "Waarheen wijst de pijl uiteindelijk?",
           "answers": [
             "↗",
             "↘",
             "↙",
             "↖"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r9q6",
-          "question": "Welk label past niet bij de kleur van het vak?",
-          "answers": [
-            "Eerste",
-            "Tweede",
-            "Derde",
-            "Vierde"
-          ],
-          "correct": 2,
-          "category": "attention_control",
-          "presentation": "grid",
+        "vision-r9q6": {
           "visual": {
             "items": [
               "BLAUW 🟦",
@@ -816,60 +651,50 @@
               "ROOD 🟦",
               "GOUD 🟨"
             ],
-            "columns": 2,
             "ariaLabel": "Vier kleurlabels; het derde past niet bij zijn vak"
-          }
+          },
+          "question": "Welk label past niet bij de kleur van het vak?",
+          "answers": [
+            "Eerste",
+            "Tweede",
+            "Derde",
+            "Vierde"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Laatste focus",
-      "questions": [
-        {
-          "id": "vision-r10q2",
+      "questions": {
+        "vision-r10q2": {
+          "visual": {
+            "items": [
+              "BASIS::M8Q2-K7P4-R6N3",
+              "KOPIE::M8Q2-K1P4-R6M3"
+            ],
+            "ariaLabel": "Origineel M8Q2 K7P4 R6N3 en kopie M8Q2 K1P4 R6M3"
+          },
           "question": "Welke twee tekens zijn veranderd?",
           "answers": [
             "7 en N",
             "8 en 6",
             "Q en P",
             "K en R"
-          ],
-          "correct": 0,
-          "category": "detail_detection",
-          "reasoningSteps": 2,
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "BASIS::M8Q2-K7P4-R6N3",
-              "KOPIE::M8Q2-K1P4-R6M3"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Origineel M8Q2 K7P4 R6N3 en kopie M8Q2 K1P4 R6M3"
-          }
+          ]
         },
-        {
-          "id": "vision-r10q4",
+        "vision-r10q4": {
+          "image": {
+            "alt": "Vier geïllustreerde stappen: een vierkant naar rechts en omlaag vouwen, eenmaal perforeren en weer openvouwen"
+          },
           "question": "Een vierkant wordt twee keer gevouwen en daarna één keer door alle lagen geperforeerd, weg van de vouwen. Hoeveel gaten zie je na het openvouwen?",
           "answers": [
             "1",
             "2",
             "4",
             "8"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation",
-          "reasoningSteps": 2,
-          "presentation": "text",
-          "image": {
-            "src": "/quizzes/vision/assets/icons/paper-fold-punch-nl.svg?v=20260823-1",
-            "alt": "Vier geïllustreerde stappen: een vierkant naar rechts en omlaag vouwen, eenmaal perforeren en weer openvouwen"
-          }
+          ]
         },
-        {
-          "id": "vision-r8q1",
-          "question": "Welk vak heeft een lichte groene tint?",
-          "presentation": "grid",
+        "vision-r8q1": {
           "visual": {
             "items": [
               "1",
@@ -882,21 +707,17 @@
               "8",
               "9"
             ],
-            "columns": 3,
             "ariaLabel": "Negen vaste blauwe tinten; één tint neigt naar groen"
           },
+          "question": "Welk vak heeft een lichte groene tint?",
           "answers": [
             "Linksboven",
             "In het midden",
             "Rechtsonder",
             "Middenonder"
-          ],
-          "correct": 3,
-          "category": "colour_contrast",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q2",
+        "vision-r8q2": {
           "context": "VERGELIJK: V6K9-M2Q8",
           "question": "Welke code komt exact overeen met het voorbeeld?",
           "answers": [
@@ -904,24 +725,9 @@
             "V6K9-M2Q8",
             "V6K9-M2O8",
             "V6K9-N2Q8"
-          ],
-          "correct": 1,
-          "category": "detail_detection",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q4",
-          "question": "Draai ↘ twee keer een kwartslag naar rechts.",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation",
-          "delay": 350,
-          "presentation": "sequence",
+        "vision-r8q4": {
           "visual": {
             "items": [
               "↘",
@@ -929,68 +735,52 @@
               "↻ 90°",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Zuidoostelijke pijl gevolgd door twee kwartslagen met de klok mee"
-          }
+          },
+          "question": "Draai ↘ twee keer een kwartslag naar rechts.",
+          "answers": [
+            "↙",
+            "↘",
+            "↗",
+            "↖"
+          ]
         },
-        {
-          "id": "vision-r8q5",
+        "vision-r8q5": {
           "question": "Welk symbool verscheen als vierde?",
-          "presentation": "icons",
           "answers": [
             "Maan",
             "Anker",
             "Zon",
             "Ster"
           ],
-          "icons": [
-            "🌙",
-            "⚓",
-            "☀️",
-            "⭐"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
-          "delay": 350,
           "study": {
             "title": "Snelle blik",
-            "presentation": "icons",
             "items": [
               "☀️",
               "🔑",
               "🌙",
               "⚓",
               "🪶"
-            ],
-            "durationMs": 1400,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r8q6",
-          "question": "Hoeveel gevulde sterren zie je?",
-          "presentation": "spatial",
+        "vision-r8q6": {
           "visual": {
             "items": [
               "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
             ],
             "ariaLabel": "Vijf gevulde sterren tussen zeven lege of geometrische vormen"
           },
+          "question": "Hoeveel gevulde sterren zie je?",
           "answers": [
             "5",
             "3",
             "4",
             "2"
-          ],
-          "correct": 0,
-          "category": "attention_control",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r10q3",
+        "vision-r10q3": {
           "context": "Volg de vormcyclus en de vulcyclus afzonderlijk.",
-          "question": "Welk element volgt op de zes getoonde vormen?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "●",
@@ -1001,253 +791,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Zes vormen met een afwisselend cirkel-vierkantpatroon en een driedelige vulcyclus"
           },
+          "question": "Welk element volgt op de zes getoonde vormen?",
           "answers": [
             "●",
             "■",
             "○",
             "□"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "VOLGENDE UITDAGING",
-    "adNote": "Eerst een korte advertentie, daarna ga je verder.",
-    "finalBadge": "VISUELE TEST VOLTOOID",
-    "finalIcon": "👁️",
-    "finalTitle": "VISUELE TEST VOLTOOID",
-    "finalCopy": "Je visuele resultaat staat klaar.",
-    "finalButton": "Bekijk mijn resultaat",
-    "finalChecklist": [
-      "40 antwoorden gecontroleerd",
-      "Zes visuele vaardigheden vergeleken",
-      "Eindscore berekend"
-    ],
-    "reveals": [
-      {
-        "badge": "EERSTE BLIK VOLTOOID",
-        "icon": "👁️",
-        "title": "Eerste blik voltooid",
-        "signal": "fixed",
-        "message": "Goede start. De volgende verschillen worden subtieler."
-      },
-      {
-        "badge": "VORMEN EN DETAILS VOLTOOID",
-        "icon": "👁️",
-        "title": "Visuele details vastgelegd",
-        "signal": "fixed",
-        "message": "Vormen, posities en verschillen komen nu samen."
-      },
-      {
-        "badge": "PATRONEN VOLGEN VOLTOOID",
-        "icon": "👁️",
-        "title": "Je bent over de helft",
-        "signal": "fixed",
-        "message": "Optische vallen volgen hierna."
-      },
-      {
-        "badge": "OPTISCHE VALLEN VOLTOOID",
-        "icon": "👁️",
-        "title": "Hierna volgt de laatste focus",
-        "signal": "fixed",
-        "message": "Er resteert nog één visuele uitdaging."
-      },
-      {
-        "badge": "VISUELE UITDAGING VOLTOOID",
-        "icon": "👁️",
-        "title": "VISUELE TEST VOLTOOID",
-        "signal": "fixed",
-        "message": "Je visuele resultaat staat klaar."
-      }
-    ],
-    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat."
-  },
-  "progressLabel": "voltooid",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Visuele uitdaging",
-    "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE VISUELE SCORE",
-    "levelLabel": "RONDE",
-    "scoreSuffix": "goed",
-    "journeyLabel": "VISUELE UITDAGING",
-    "kitchensCleared": "{value} / {total} uitdagingen voltooid",
-    "currentRank": "HUIDIG NIVEAU · VISUELE UITDAGING",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Visuele uitdaging gestart"
-      },
-      {
-        "afterStage": 5,
-        "label": "Visuele uitdaging voltooid"
-      }
-    ],
-    "unlockEyebrow": "RESULTAATUPDATE · VISUELE UITDAGING",
-    "unlockTitle": "Er staat een nieuwe uitdaging klaar: visuele uitdaging",
-    "unlockCopy": "Volgende onderdeel: visuele uitdaging.",
-    "finalEyebrow": "JOUW VISUELE SCORE",
-    "finalCareerTitle": "VISUELE TEST VOLTOOID",
-    "strongestLabel": "Sterkste onderdeel voor visuele vaardigheden",
-    "stages": [
-      {
-        "difficulty": "Basis",
-        "preAdBadge": "EERSTE BLIK VOLTOOID",
-        "preAdTitle": "Eerste blik voltooid",
-        "preAdCopy": "Goede start. De volgende verschillen worden subtieler.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EERSTE BLIK VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Eerste blik voltooid",
-            "insight": "Goede start. De volgende verschillen worden subtieler."
-          },
-          "medium": {
-            "title": "Eerste blik voltooid",
-            "insight": "Goede start. De volgende verschillen worden subtieler."
-          },
-          "low": {
-            "title": "Eerste blik voltooid",
-            "insight": "Goede start. De volgende verschillen worden subtieler."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · IN ONTWIKKELING",
-          "title": "Vormen en details",
-          "difficulty": "In ontwikkeling",
-          "tagline": "Vormen. Verschillen. Visuele volgorde.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "In ontwikkeling",
-        "preAdBadge": "VORMEN EN DETAILS VOLTOOID",
-        "preAdTitle": "Visuele details vastgelegd",
-        "preAdCopy": "Vormen, posities en verschillen komen nu samen.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "VORMEN EN DETAILS VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Visuele details vastgelegd",
-            "insight": "Vormen, posities en verschillen komen nu samen."
-          },
-          "medium": {
-            "title": "Visuele details vastgelegd",
-            "insight": "Vormen, posities en verschillen komen nu samen."
-          },
-          "low": {
-            "title": "Visuele details vastgelegd",
-            "insight": "Vormen, posities en verschillen komen nu samen."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
-          "title": "Patronen volgen",
-          "difficulty": "Gevorderd",
-          "tagline": "Reeksen. Rotatie. Richting.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Gevorderd",
-        "preAdBadge": "PATRONEN VOLGEN VOLTOOID",
-        "preAdTitle": "Je bent over de helft",
-        "preAdCopy": "Optische vallen volgen hierna.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "PATRONEN VOLGEN VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je bent over de helft",
-            "insight": "Optische vallen volgen hierna."
-          },
-          "medium": {
-            "title": "Je bent over de helft",
-            "insight": "Optische vallen volgen hierna."
-          },
-          "low": {
-            "title": "Je bent over de helft",
-            "insight": "Optische vallen volgen hierna."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
-          "title": "Optische vallen",
-          "difficulty": "Uitdagend",
-          "tagline": "Afleiding. Volgen. Kleine veranderingen.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Uitdagend",
-        "preAdBadge": "OPTISCHE VALLEN VOLTOOID",
-        "preAdTitle": "Hierna volgt de laatste focus",
-        "preAdCopy": "Er resteert nog één visuele uitdaging.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "OPTISCHE VALLEN VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Hierna volgt de laatste focus",
-            "insight": "Er resteert nog één visuele uitdaging."
-          },
-          "medium": {
-            "title": "Hierna volgt de laatste focus",
-            "insight": "Er resteert nog één visuele uitdaging."
-          },
-          "low": {
-            "title": "Hierna volgt de laatste focus",
-            "insight": "Er resteert nog één visuele uitdaging."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
-          "title": "Laatste focus",
-          "difficulty": "Eindtoets",
-          "tagline": "Gemengde aanwijzingen. Laatste focus.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Eindtoets",
-        "preAdBadge": "VISUELE UITDAGING VOLTOOID",
-        "preAdTitle": "VISUELE TEST VOLTOOID",
-        "preAdChecks": [
-          "40 antwoorden gecontroleerd",
-          "Zes visuele vaardigheden vergeleken",
-          "Eindscore berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaat",
-        "resultIcon": "✓",
-        "resultLabel": "LAATSTE FOCUS VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "VISUELE TEST VOLTOOID",
-            "insight": "Je visuele resultaat staat klaar."
-          },
-          "medium": {
-            "title": "VISUELE TEST VOLTOOID",
-            "insight": "Je visuele resultaat staat klaar."
-          },
-          "low": {
-            "title": "VISUELE TEST VOLTOOID",
-            "insight": "Je visuele resultaat staat klaar."
-          }
-        },
-        "preAdCopy": "Je visuele resultaat staat klaar."
-      }
-    ]
   }
 }

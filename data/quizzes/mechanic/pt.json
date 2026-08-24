@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "title": "Apenas 7% passam neste teste de mecânica de veículos",
   "eyebrow": "A OFICINA DE DIAGNÓSTICO",
   "summary": "Luzes de alerta, falhas escondidas e sintomas estranhos põem o diagnóstico à prova.",
@@ -19,229 +20,188 @@
     "disclaimer": "Apenas para entretenimento e cultura geral. Este desafio de mecânica não é um exame oficial, uma qualificação ou aconselhamento profissional."
   },
   "checkpoint": {
-    "nextPrefix": "PRÓXIMO SERVIÇO",
-    "adNote": "Primeiro, um anúncio breve; depois, continue.",
-    "finalBadge": "DESAFIO MECÂNICO CONCLUÍDO",
-    "finalTitle": "DESAFIO MECÂNICO CONCLUÍDO",
-    "finalCopy": "O resultado da oficina está pronto.",
-    "finalButton": "Revelar a minha pontuação",
-    "finalChecklist": [
-      "40 respostas verificadas",
-      "Seis sistemas de veículos comparados",
-      "Pontuação final calculada"
-    ],
-    "reveals": [
-      {
-        "title": "Primeiro diagnóstico concluído",
-        "signal": "fixed",
-        "message": "Bom começo. O próximo problema será mais difícil de isolar."
-      },
-      {
-        "title": "A oficina fica mais exigente",
-        "signal": "fixed",
-        "message": "Agora entram em jogo ar, combustível e ignição."
-      },
-      {
-        "title": "Mais de metade concluída",
-        "signal": "fixed",
-        "message": "O diagnóstico torna-se mais exigente."
-      },
-      {
-        "title": "O diagnóstico final vem a seguir",
-        "signal": "fixed",
-        "message": "Falta apenas uma prova de oficina."
-      },
-      {
-        "title": "DESAFIO MECÂNICO CONCLUÍDO",
-        "signal": "fixed",
-        "message": "O resultado da oficina está pronto."
-      }
-    ],
     "finalAdNote": "Primeiro, um anúncio breve; depois, veja o resultado."
+  },
+  "career": {
+    "resultProgressLabel": "Desafio de mecânica",
+    "resultProgressComplete": "{value}% concluído",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fundamentos",
+        "preAdBadge": "PAINEL E MOTOR CONCLUÍDOS",
+        "preAdTitle": "Primeiro diagnóstico concluído",
+        "preAdCopy": "Bom começo. O próximo problema será mais difícil de isolar.",
+        "next": {
+          "eyebrow": "PRÓXIMO SERVIÇO · EM DESENVOLVIMENTO",
+          "tagline": "Pressão. Segurança. Aderência."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Em desenvolvimento",
+        "preAdBadge": "FLUIDOS, CONTROLO E ADERÊNCIA CONCLUÍDOS",
+        "preAdTitle": "A oficina fica mais exigente",
+        "preAdCopy": "Agora entram em jogo ar, combustível e ignição.",
+        "next": {
+          "eyebrow": "PRÓXIMO SERVIÇO · EXPERIENTE",
+          "tagline": "Combustão. Potência. Causa e efeito."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Experiente",
+        "preAdBadge": "AR, COMBUSTÍVEL E IGNIÇÃO CONCLUÍDOS",
+        "preAdTitle": "Mais de metade concluída",
+        "preAdCopy": "O diagnóstico torna-se mais exigente.",
+        "next": {
+          "eyebrow": "PRÓXIMO SERVIÇO · AVANÇADO",
+          "tagline": "Vibração. Direção. Controlo. Sistemas."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avançado",
+        "preAdBadge": "DIAGNÓSTICO NA OFICINA CONCLUÍDO",
+        "preAdTitle": "O diagnóstico final vem a seguir",
+        "preAdCopy": "Falta apenas uma prova de oficina.",
+        "next": {
+          "eyebrow": "PRÓXIMO SERVIÇO · AVALIAÇÃO FINAL",
+          "tagline": "Pistas ao volante. Decisões finais."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Avaliação final",
+        "preAdBadge": "DESAFIO DE MECÂNICA CONCLUÍDO",
+        "preAdTitle": "DESAFIO MECÂNICO CONCLUÍDO",
+        "preAdCopy": "O resultado da oficina está pronto.",
+        "preAdChecks": [
+          "40 respostas verificadas",
+          "Seis sistemas de veículos comparados",
+          "Pontuação final calculada"
+        ],
+        "preAdButton": "Ver o resultado"
+      }
+    }
   },
   "results": {
     "name": "A SUA PONTUAÇÃO DE MECÂNICA",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Mestre do diagnóstico",
         "copy": "O resultado revela um domínio notável de sistemas do veículo, diagnóstico e segurança. Até as questões mais exigentes foram resolvidas com segurança."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Talento natural na oficina",
         "copy": "O resultado demonstra um excelente domínio de sistemas do veículo, diagnóstico e segurança. O raciocínio manteve-se seguro mesmo diante das armadilhas mais difíceis de perceber."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Especialista em avarias",
         "copy": "Foi alcançado um resultado sólido em sistemas do veículo, diagnóstico e segurança. Alguns detalhes difíceis reduziram a pontuação, mas o desempenho geral continua convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Mente prática",
         "copy": "Existe uma boa base em sistemas do veículo, diagnóstico e segurança. Ao reforçar os pontos mais delicados, o próximo resultado poderá melhorar bastante."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Aprendiz de oficina",
         "copy": "Foram reconhecidos vários pontos essenciais de sistemas do veículo, diagnóstico e segurança. As respostas incorretas mostram com clareza o que ainda pode ser reforçado."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Menos de 50%",
         "title": "Curiosidade pela mecânica",
         "copy": "Este desafio revelou oportunidades de evolução em sistemas do veículo, diagnóstico e segurança. A curiosidade e as respostas certas são um excelente ponto de partida."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Motor e combustível",
-        "categories": [
-          "engine_fuel"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Motor e combustível"
       },
-      {
-        "label": "Controlo e aderência",
-        "categories": [
-          "brakes_grip"
-        ]
+      "dimension-2": {
+        "label": "Controlo e aderência"
       },
-      {
-        "label": "Sistemas elétricos",
-        "categories": [
-          "electrical"
-        ]
+      "dimension-3": {
+        "label": "Sistemas elétricos"
       },
-      {
-        "label": "Refrigeração e fluidos",
-        "categories": [
-          "cooling_fluids"
-        ]
+      "dimension-4": {
+        "label": "Refrigeração e fluidos"
       },
-      {
-        "label": "Transmissão e direção",
-        "categories": [
-          "drivetrain_steering"
-        ]
+      "dimension-5": {
+        "label": "Transmissão e direção"
       },
-      {
-        "label": "Diagnóstico e segurança",
-        "categories": [
-          "diagnosis_safety"
-        ]
+      "dimension-6": {
+        "label": "Diagnóstico e segurança"
       }
-    ],
+    },
     "score": {
       "passed": "Desafio superado: desafio de mecânica!",
       "finished": "Desafio concluído: desafio de mecânica",
       "correctLabel": "certas",
       "strongest": "Área mais forte do veículo",
       "trickiest": "Área mais difícil do veículo",
-      "bestRound": "Melhor oficina",
-      "showPercentage": true,
-      "disclaimer": "Apenas para entretenimento e cultura geral. Este desafio de mecânica não é um exame oficial, uma qualificação ou aconselhamento profissional."
+      "bestRound": "Melhor oficina"
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Painel e motor",
-      "questions": [
-        {
-          "id": "mech-r1q1",
+      "questions": {
+        "mech-r1q1": {
           "question": "Que símbolo de aviso está mais diretamente ligado à pressão do óleo do motor?",
-          "presentation": "icons",
           "answers": [
             "Símbolo do óleo",
             "Bateria",
             "Termómetro",
             "Volante"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/oil-pressure.svg",
-            "/quizzes/mechanic/assets/icons/battery-warning.svg",
-            "/quizzes/mechanic/assets/icons/coolant-warning.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r1q2",
+        "mech-r1q2": {
           "question": "Uma luz vermelha de aviso permanece acesa depois de desativar o bloqueio de estacionamento. Qual é a opção mais segura?",
           "answers": [
             "Continuar normalmente se o pedal parecer firme",
             "Parar em segurança e mandar verificar o sistema",
             "Desligar apenas as luzes do veículo",
             "Aumentar a pressão dos pneus"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r1q3",
+        "mech-r1q3": {
           "question": "Ao tentar ligar o motor, ouve-se um clique forte, mas o motor não gira. Qual é a primeira verificação mais útil?",
           "answers": [
             "Cor do líquido de refrigeração",
             "Profundidade dos sulcos dos pneus",
             "Carga da bateria e ligações dos terminais",
             "Filtro do ar interior"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r1q4",
+        "mech-r1q4": {
           "question": "O aviso de temperatura fica vermelho durante a condução. O que deve ser feito?",
           "answers": [
             "Abrir imediatamente a tampa do sistema de refrigeração",
             "Continuar até perder potência",
             "Verter água fria sobre o motor",
             "Parar em segurança, desligar e deixar a temperatura do sistema baixar"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r1q5",
+        "mech-r1q5": {
           "question": "Que comando altera a direção das rodas dianteiras?",
-          "presentation": "icons",
           "answers": [
             "Acelerador",
             "Comando de estacionamento",
             "Volante",
             "Pedal que liga o motor à transmissão"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/accelerator-pedal.svg",
-            "/quizzes/mechanic/assets/icons/parking-brake.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg",
-            "/quizzes/mechanic/assets/icons/clutch-pedal.svg"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r1q6",
+        "mech-r1q6": {
           "question": "Antes de investigar uma avaria desconhecida, o que deve vir primeiro?",
           "answers": [
             "Comprar peças",
             "Apagar todos os avisos",
             "Forçar mais o motor",
             "Tornar o veículo e a área de trabalho seguros"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r2q1",
-          "question": "Que sequência descreve corretamente a entrada de ar num motor de combustão típico?",
-          "presentation": "sequence",
+        "mech-r2q1": {
           "visual": {
             "items": [
               "Entrada de ar",
@@ -249,140 +209,108 @@
               "Sistema de admissão",
               "Motor"
             ],
-            "separator": "→",
             "ariaLabel": "Entrada de ar, filtro, sistema de admissão, motor"
           },
+          "question": "Que sequência descreve corretamente a entrada de ar num motor de combustão típico?",
           "answers": [
             "Filtro → entrada → motor",
             "Motor → filtro → admissão",
             "Entrada de ar → filtro → sistema de admissão → motor",
             "Admissão → motor → filtro"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r2q2",
+        "mech-r2q2": {
           "question": "Que componente retira o pó do ar antes de este chegar ao motor?",
           "answers": [
             "Injetor",
             "Radiador",
             "Alternador",
             "Filtro de ar"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Fluidos, controlo e aderência",
-      "questions": [
-        {
-          "id": "mech-r3q1",
+      "questions": {
+        "mech-r3q1": {
           "question": "Que fluido lubrifica principalmente as peças móveis dentro do motor?",
           "answers": [
             "Óleo do motor",
             "Líquido de refrigeração",
             "Combustível",
             "Fluido de lavagem dos vidros"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q2",
+        "mech-r3q2": {
           "question": "Porque deve ficar fechada a tampa de um sistema de refrigeração quente e pressurizado?",
           "answers": [
             "Apagaria os códigos de avaria",
             "Líquido quente e vapor podem escapar e causar queimaduras graves",
             "Descarrega a bateria",
             "Altera a pressão dos pneus"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q3",
+        "mech-r3q3": {
           "question": "O nível do líquido de refrigeração continua a baixar, mas não há poça visível. O que pode indicar?",
           "answers": [
             "Pneus com pressão baixa",
             "Alternador em sobrecarga",
             "Uma perda interna ou que só aparece com o motor quente",
             "Filtro de ar entupido"
-          ],
-          "correct": 2,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q4",
+        "mech-r3q4": {
           "question": "O nível do fluido do sistema está abaixo da marca mínima. Qual é a resposta correta?",
           "answers": [
             "Adicionar água até à marca máxima",
             "Ignorar se o pedal ainda parece normal",
             "Encher acima da marca máxima",
             "Mandar verificar o sistema por desgaste ou fugas"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q5",
+        "mech-r3q5": {
           "question": "O que indicam normalmente emissões negras e espessas no escape de um motor de combustão?",
           "answers": [
             "Combustível em excesso ou ar insuficiente",
             "Pouco fluido de lavagem dos vidros",
             "Bateria descarregada",
             "Falha de alinhamento"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r3q6",
+        "mech-r3q6": {
           "question": "Este fluido pode danificar a pintura. O que deve ser feito depois de um derrame?",
           "answers": [
             "Deixar secar ao ar",
             "Seguir imediatamente as instruções seguras de limpeza do fabricante",
             "Espalhar com um pano seco",
             "Aquecer a superfície"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r4q5",
+        "mech-r4q5": {
           "question": "Um clique ritmado acelera em curvas apertadas. Que componente pode estar na origem?",
           "answers": [
             "Regulador térmico do motor",
             "Bomba de combustível",
             "Junta homocinética exterior",
             "Ventilador do interior"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r4q6",
+        "mech-r4q6": {
           "question": "Um pneu apresenta uma saliência profunda na lateral. O que fazer?",
           "answers": [
             "Reduzir a pressão e continuar",
             "Achatar a saliência",
             "Passar o pneu para outra roda",
             "Deixar de usar o pneu e providenciar a substituição"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Ar, combustível e ignição",
-      "questions": [
-        {
-          "id": "mech-r5q1",
-          "question": "De que combinação básica precisa um motor de combustão para funcionar?",
-          "presentation": "sequence",
+      "questions": {
+        "mech-r5q1": {
           "visual": {
             "items": [
               "Ar",
@@ -390,82 +318,62 @@
               "Ignição",
               "Compressão"
             ],
-            "separator": "+",
             "ariaLabel": "Ar mais combustível mais ignição mais compressão"
           },
+          "question": "De que combinação básica precisa um motor de combustão para funcionar?",
           "answers": [
             "Ar, combustível, compressão e ignição no momento certo",
             "Líquido de refrigeração, água e eletricidade",
             "Óleo, ângulo de direção e pressão dos pneus",
             "Apenas combustível"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q2",
+        "mech-r5q2": {
           "question": "Qual é o efeito mais provável de um filtro de ar obstruído?",
           "answers": [
             "Volante mais firme",
             "Fluxo de ar limitado e menor desempenho do motor",
             "Maior capacidade da bateria",
             "Sulcos mais profundos nos pneus"
-          ],
-          "correct": 1,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q3",
+        "mech-r5q3": {
           "question": "Um cilindro falha e a vela está muito gasta. Qual é a ligação mais direta?",
           "answers": [
             "O radiador não consegue reduzir a temperatura",
             "A direção perde alinhamento",
             "A vela pode não inflamar a mistura com consistência",
             "O depósito de combustível aumenta de volume"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q4",
+        "mech-r5q4": {
           "question": "Qual é a função básica de um injetor de combustível?",
           "answers": [
             "Fazer rodar as rodas",
             "Reduzir a temperatura dos discos",
             "Recarregar a bateria",
             "Dosear combustível para o motor"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q5",
+        "mech-r5q5": {
           "question": "O motor sobreaquece no trânsito, mas a temperatura baixa à velocidade de estrada. Que componente merece uma verificação inicial?",
           "answers": [
             "Ventilador do radiador",
             "Cinto de segurança",
             "Tampa do combustível",
             "Rolamento da roda"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r5q6",
+        "mech-r5q6": {
           "question": "Que sensor informa normalmente o módulo de gestão do motor sobre a quantidade de ar que entra?",
           "answers": [
             "Sensor de velocidade da roda",
             "Medidor de massa de ar",
             "Interruptor das luzes traseiras",
             "Tampa do líquido de refrigeração"
-          ],
-          "correct": 1,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q1",
-          "question": "Uma bateria saudável de 12 V mede cerca de 12,6 V em repouso. Esta mede 10,5 V. O que sugere?",
-          "presentation": "code",
+        "mech-r6q1": {
           "visual": {
             "items": [
               "Esperado: 12,6 V",
@@ -473,137 +381,106 @@
             ],
             "ariaLabel": "Tensão esperada 12,6 volts, medida 10,5 volts"
           },
+          "question": "Uma bateria saudável de 12 V mede cerca de 12,6 V em repouso. Esta mede 10,5 V. O que sugere?",
           "answers": [
             "Pneus gastos",
             "Líquido de refrigeração demasiado concentrado",
             "Bateria muito descarregada ou com uma célula avariada",
             "Correia do alternador nova"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q6",
+        "mech-r6q6": {
           "question": "Antes de medir um conector elétrico desconhecido, qual é a opção mais segura?",
           "answers": [
             "Ligar dois pinos em curto-circuito",
             "Usar qualquer fio",
             "Pulverizar com água",
             "Consultar a informação técnica correta e usar equipamento adequado"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Diagnóstico na oficina",
-      "questions": [
-        {
-          "id": "mech-r7q1",
+      "questions": {
+        "mech-r7q1": {
           "question": "O volante vibra sobretudo num certo intervalo de velocidade. Qual é uma primeira causa provável?",
           "answers": [
             "Desequilíbrio de uma roda",
             "Qualidade do combustível",
             "Filtro do ar interior",
             "Cor do líquido de refrigeração"
-          ],
-          "correct": 0,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q2",
+        "mech-r7q2": {
           "question": "O veículo puxa para um lado numa estrada plana. O que deve ser verificado?",
           "answers": [
             "Definições do som",
             "Pressão dos pneus e alinhamento das rodas",
             "Bocal de combustível",
             "Motor do sistema de lavagem dos vidros"
-          ],
-          "correct": 1,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q3",
+        "mech-r7q3": {
           "question": "A rotação do motor sobe muito, mas a velocidade quase não aumenta. O que está provavelmente a patinar?",
           "answers": [
             "Ventilador do radiador",
             "Rolamento da roda",
             "O conjunto que liga o motor à transmissão",
             "Interruptor das luzes traseiras"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q4",
+        "mech-r7q4": {
           "question": "Um zumbido grave aumenta com a velocidade do veículo, mesmo com a transmissão em posição neutra. Que componente pode ser a fonte?",
           "answers": [
             "Vela",
             "Injetor",
             "Regulador térmico do motor",
             "Rolamento da roda"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q5",
+        "mech-r7q5": {
           "question": "Todo o veículo treme apenas ao reduzir rapidamente a velocidade a partir de uma velocidade elevada. Qual é uma causa comum?",
           "answers": [
             "Variação de espessura ou deformação dos discos",
             "Pouco fluido de lavagem dos vidros",
             "Tampa do combustível solta",
             "Buzina fraca"
-          ],
-          "correct": 0,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r7q6",
+        "mech-r7q6": {
           "question": "Surge uma vibração forte depois de atingir um obstáculo na estrada. O que fazer?",
           "answers": [
             "Acelerar para a suavizar",
             "Parar em segurança e verificar a roda e o pneu antes de continuar",
             "Baixar a pressão de todos os pneus",
             "Ignorar se não aparecer nenhum aviso"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r8q3",
+        "mech-r8q3": {
           "question": "O que recarrega a bateria de 12 V durante a condução?",
           "answers": [
             "Sistema de carregamento",
             "Interruptor de ignição",
             "Filtro de combustível",
             "Filtro de ar"
-          ],
-          "correct": 0,
-          "category": "electrical",
-          "delay": 350
+          ]
         },
-        {
-          "id": "mech-r8q4",
+        "mech-r8q4": {
           "question": "Que fluido evita o congelamento e transporta o calor do motor?",
           "answers": [
             "Óleo da transmissão",
             "Líquido de refrigeração",
             "Óleo do motor",
             "Fluido de lavagem dos vidros"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids",
-          "delay": 350
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Diagnóstico final",
-      "questions": [
-        {
-          "id": "mech-r9q1",
+      "questions": {
+        "mech-r9q1": {
           "context": "O CLIENTE RELATA",
           "question": "O veículo puxa para a esquerda apenas ao reduzir a velocidade, e a roda dianteira esquerda fica anormalmente quente. Qual é a causa mais provável?",
           "answers": [
@@ -611,13 +488,9 @@
             "Bateria fraca",
             "Filtro de ar entupido",
             "Pouco líquido de refrigeração"
-          ],
-          "correct": 0,
-          "category": "brakes_grip",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q2",
+        "mech-r9q2": {
           "context": "O CLIENTE RELATA",
           "question": "«A bateria é nova, mas fica repetidamente descarregada e o aviso de carga aparece durante a condução.» O que deve ser testado?",
           "answers": [
@@ -625,13 +498,9 @@
             "Sistema de carregamento e ligações",
             "Espessura das pastilhas",
             "Concentração do líquido de refrigeração"
-          ],
-          "correct": 1,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q3",
+        "mech-r9q3": {
           "context": "O CLIENTE RELATA",
           "question": "«A vibração acompanha a velocidade do veículo, não a rotação do motor, e mantém-se em desaceleração.» Que área se enquadra melhor?",
           "answers": [
@@ -639,13 +508,9 @@
             "Mistura de combustível",
             "Rodas, pneus ou transmissão",
             "Ventilador de refrigeração"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q4",
+        "mech-r9q4": {
           "context": "O CLIENTE RELATA",
           "question": "«Ouve-se um estalo ao passar da aceleração para a desaceleração.» Que área faz sentido inspecionar primeiro?",
           "answers": [
@@ -653,12 +518,9 @@
             "Filtro do ar interior",
             "Tampa do radiador",
             "Apoios e juntas da transmissão"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r9q6",
+        "mech-r9q6": {
           "context": "O CLIENTE RELATA",
           "question": "«Começou de repente um ruído de raspagem numa roda.» Qual é a resposta mais segura?",
           "answers": [
@@ -666,14 +528,9 @@
             "Parar de conduzir e pedir uma inspeção",
             "Acelerar para soltar detritos",
             "Aplicar lubrificante através da roda"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r10q1",
-          "question": "O motor gira e tem pressão de combustível, mas nenhum cilindro produz faísca. Que sistema deve ser investigado agora?",
-          "presentation": "code",
+        "mech-r10q1": {
           "visual": {
             "items": [
               "Motor gira: SIM",
@@ -682,20 +539,15 @@
             ],
             "ariaLabel": "Motor gira, pressão de combustível presente, sem faísca"
           },
+          "question": "O motor gira e tem pressão de combustível, mas nenhum cilindro produz faísca. Que sistema deve ser investigado agora?",
           "answers": [
             "Sistema de ignição, alimentação e sinais de sincronização",
             "Monitorização da pressão dos pneus",
             "Sistema de direção",
             "Alinhamento"
-          ],
-          "correct": 0,
-          "category": "engine_fuel",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q3",
-          "question": "Num sistema convencional de 12 V, a bateria mede 12,5 V com o motor desligado e 12,0 V com o motor ligado e as luzes acesas. Qual é o melhor diagnóstico?",
-          "presentation": "grid",
+        "mech-r10q3": {
           "visual": {
             "items": [
               "Motor DESLIGADO",
@@ -703,23 +555,17 @@
               "Motor LIGADO + luzes",
               "12,0 V"
             ],
-            "columns": 2,
             "ariaLabel": "Sistema de 12 volts: motor desligado 12,5 volts, ligado com luzes 12,0 volts"
           },
+          "question": "Num sistema convencional de 12 V, a bateria mede 12,5 V com o motor desligado e 12,0 V com o motor ligado e as luzes acesas. Qual é o melhor diagnóstico?",
           "answers": [
             "A bateria está certamente sobrecarregada",
             "O sistema de direção está preso",
             "O sistema de carregamento não fornece tensão suficiente",
             "O líquido de refrigeração está demasiado frio"
-          ],
-          "correct": 2,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q4",
-          "question": "O motor sobreaquece apenas quando o veículo está parado com o motor ligado, o radiador está desobstruído e o ventilador nunca funciona. O que deve ser diagnosticado primeiro?",
-          "presentation": "code",
+        "mech-r10q4": {
           "visual": {
             "items": [
               "Em andamento: FRIO",
@@ -729,197 +575,15 @@
             ],
             "ariaLabel": "Temperatura do motor baixa em andamento, sobreaquece quando o veículo está parado com o motor ligado e o ventilador não funciona"
           },
+          "question": "O motor sobreaquece apenas quando o veículo está parado com o motor ligado, o radiador está desobstruído e o ventilador nunca funciona. O que deve ser diagnosticado primeiro?",
           "answers": [
             "Alinhamento",
             "Vedação da tampa de combustível",
             "Desgaste das pastilhas",
             "Circuito, motor e comando do ventilador"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Desafio de mecânica",
-    "resultProgressComplete": "{value}% concluído",
-    "currentScoreLabel": "PONTUAÇÃO ATUAL DE MECÂNICA",
-    "levelLabel": "ETAPA",
-    "scoreSuffix": "certas",
-    "journeyLabel": "DESAFIO DE MECÂNICA",
-    "kitchensCleared": "{value} / {total} desafios concluídos",
-    "currentRank": "NÍVEL ATUAL · OFICINA",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Desafio de mecânica iniciado"
-      },
-      {
-        "afterStage": 5,
-        "label": "Desafio de mecânica concluído"
-      }
-    ],
-    "unlockEyebrow": "ATUALIZAÇÃO DO RESULTADO · DESAFIO DE MECÂNICA",
-    "unlockTitle": "Há um novo desafio pronto: desafio de mecânica",
-    "unlockCopy": "Próxima etapa: desafio de mecânica.",
-    "finalEyebrow": "A SUA PONTUAÇÃO DE MECÂNICA",
-    "finalCareerTitle": "DESAFIO MECÂNICO CONCLUÍDO",
-    "strongestLabel": "Área mais forte do veículo",
-    "stages": [
-      {
-        "difficulty": "Fundamentos",
-        "preAdBadge": "PAINEL E MOTOR CONCLUÍDOS",
-        "preAdTitle": "Primeiro diagnóstico concluído",
-        "preAdCopy": "Bom começo. O próximo problema será mais difícil de isolar.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "PAINEL E MOTOR CONCLUÍDOS",
-        "resultBands": {
-          "high": {
-            "title": "Primeiro diagnóstico concluído",
-            "insight": "Bom começo. O próximo problema será mais difícil de isolar."
-          },
-          "medium": {
-            "title": "Primeiro diagnóstico concluído",
-            "insight": "Bom começo. O próximo problema será mais difícil de isolar."
-          },
-          "low": {
-            "title": "Primeiro diagnóstico concluído",
-            "insight": "Bom começo. O próximo problema será mais difícil de isolar."
-          }
-        },
-        "next": {
-          "eyebrow": "PRÓXIMO SERVIÇO · EM DESENVOLVIMENTO",
-          "title": "Fluidos, controlo e aderência",
-          "difficulty": "Em desenvolvimento",
-          "tagline": "Pressão. Segurança. Aderência.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Em desenvolvimento",
-        "preAdBadge": "FLUIDOS, CONTROLO E ADERÊNCIA CONCLUÍDOS",
-        "preAdTitle": "A oficina fica mais exigente",
-        "preAdCopy": "Agora entram em jogo ar, combustível e ignição.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "FLUIDOS, CONTROLO E ADERÊNCIA CONCLUÍDOS",
-        "resultBands": {
-          "high": {
-            "title": "A oficina fica mais exigente",
-            "insight": "Agora entram em jogo ar, combustível e ignição."
-          },
-          "medium": {
-            "title": "A oficina fica mais exigente",
-            "insight": "Agora entram em jogo ar, combustível e ignição."
-          },
-          "low": {
-            "title": "A oficina fica mais exigente",
-            "insight": "Agora entram em jogo ar, combustível e ignição."
-          }
-        },
-        "next": {
-          "eyebrow": "PRÓXIMO SERVIÇO · EXPERIENTE",
-          "title": "Ar, combustível e ignição",
-          "difficulty": "Experiente",
-          "tagline": "Combustão. Potência. Causa e efeito.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Experiente",
-        "preAdBadge": "AR, COMBUSTÍVEL E IGNIÇÃO CONCLUÍDOS",
-        "preAdTitle": "Mais de metade concluída",
-        "preAdCopy": "O diagnóstico torna-se mais exigente.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "AR, COMBUSTÍVEL E IGNIÇÃO CONCLUÍDOS",
-        "resultBands": {
-          "high": {
-            "title": "Mais de metade concluída",
-            "insight": "O diagnóstico torna-se mais exigente."
-          },
-          "medium": {
-            "title": "Mais de metade concluída",
-            "insight": "O diagnóstico torna-se mais exigente."
-          },
-          "low": {
-            "title": "Mais de metade concluída",
-            "insight": "O diagnóstico torna-se mais exigente."
-          }
-        },
-        "next": {
-          "eyebrow": "PRÓXIMO SERVIÇO · AVANÇADO",
-          "title": "Diagnóstico na oficina",
-          "difficulty": "Avançado",
-          "tagline": "Vibração. Direção. Controlo. Sistemas.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Avançado",
-        "preAdBadge": "DIAGNÓSTICO NA OFICINA CONCLUÍDO",
-        "preAdTitle": "O diagnóstico final vem a seguir",
-        "preAdCopy": "Falta apenas uma prova de oficina.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "DIAGNÓSTICO NA OFICINA CONCLUÍDO",
-        "resultBands": {
-          "high": {
-            "title": "O diagnóstico final vem a seguir",
-            "insight": "Falta apenas uma prova de oficina."
-          },
-          "medium": {
-            "title": "O diagnóstico final vem a seguir",
-            "insight": "Falta apenas uma prova de oficina."
-          },
-          "low": {
-            "title": "O diagnóstico final vem a seguir",
-            "insight": "Falta apenas uma prova de oficina."
-          }
-        },
-        "next": {
-          "eyebrow": "PRÓXIMO SERVIÇO · AVALIAÇÃO FINAL",
-          "title": "Diagnóstico final",
-          "difficulty": "Avaliação final",
-          "tagline": "Pistas ao volante. Decisões finais.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Avaliação final",
-        "preAdBadge": "DESAFIO DE MECÂNICA CONCLUÍDO",
-        "preAdTitle": "DESAFIO MECÂNICO CONCLUÍDO",
-        "preAdChecks": [
-          "40 respostas verificadas",
-          "Seis sistemas de veículos comparados",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver o resultado",
-        "resultIcon": "✓",
-        "resultLabel": "DIAGNÓSTICO FINAL CONCLUÍDO",
-        "resultBands": {
-          "high": {
-            "title": "DESAFIO MECÂNICO CONCLUÍDO",
-            "insight": "O resultado da oficina está pronto."
-          },
-          "medium": {
-            "title": "DESAFIO MECÂNICO CONCLUÍDO",
-            "insight": "O resultado da oficina está pronto."
-          },
-          "low": {
-            "title": "DESAFIO MECÂNICO CONCLUÍDO",
-            "insight": "O resultado da oficina está pronto."
-          }
-        },
-        "preAdCopy": "O resultado da oficina está pronto."
-      }
-    ]
   }
 }

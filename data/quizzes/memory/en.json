@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Most Adults Can’t Score 80% On This Memory Test",
   "eyebrow": "Memory Challenge",
   "summary": "Words, pictures, numbers and delayed surprises test what your memory keeps—and what quietly slips away.",
+  "progressLabel": "complete",
   "landing": {
     "intro": "Think your memory is still sharp? Some challenges are easy. Others are designed to catch you out.",
     "cta": "Start Test"
@@ -18,84 +20,121 @@
     },
     "disclaimer": "For entertainment and self-reflection only. This quiz is not a medical, neurological or cognitive assessment and cannot diagnose memory problems. If you are concerned about your memory or health, speak to a qualified healthcare professional."
   },
+  "checkpoint": {
+    "finalAdNote": "Short ad first — then see your result."
+  },
+  "career": {
+    "resultProgressLabel": "Memory challenge",
+    "resultProgressComplete": "{value}% complete",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Foundation",
+        "preAdBadge": "QUICK RECALL COMPLETE",
+        "preAdTitle": "Quick Recall complete",
+        "preAdCopy": "The next round adds pictures and detail.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "tagline": "Colours. Positions. Changes."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Developing",
+        "preAdBadge": "PICTURES & DETAILS COMPLETE",
+        "preAdTitle": "Visual recall cleared",
+        "preAdCopy": "Numbers and working memory are next.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "tagline": "Digits. Order. Working memory."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Skilled",
+        "preAdBadge": "NUMBERS & PATTERNS COMPLETE",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "The Memory Trap is next.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "tagline": "Interference. Similar clues. Older memories."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Advanced",
+        "preAdBadge": "THE MEMORY TRAP COMPLETE",
+        "preAdTitle": "Final memory challenge next",
+        "preAdCopy": "One last round will test what still stuck.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "tagline": "Delayed recall. Working memory. Final callbacks."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "FINAL MEMORY CHALLENGE COMPLETE",
+        "preAdTitle": "MEMORY TEST COMPLETE",
+        "preAdCopy": "Your memory result is ready to reveal.",
+        "preAdChecks": [
+          "40 answers checked",
+          "Six memory skills compared",
+          "Final score calculated"
+        ],
+        "preAdButton": "See My Result"
+      }
+    }
+  },
   "results": {
     "name": "YOUR MEMORY RESULT",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Memory Mastermind",
         "copy": "You held onto words, details and sequences with remarkable precision. Even the traps struggled to shake your focus."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Razor-Sharp Recall",
         "copy": "You cleared the 80% line with a sharp mix of attention and recall. The details stayed with you when they mattered."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Almost Unforgettable",
         "copy": "Your memory caught most of what the test threw at it. A handful of carefully placed traps kept the finish interesting."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Selective Genius",
         "copy": "Your memory knows what it wants to keep. When a detail felt meaningful, it tended to stick."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Memory With Opinions",
         "copy": "Your recall made some strong choices about what deserved storage. The memorable bits survived; the rest took a creative detour."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Below 50%",
         "title": "Beautifully Distracted",
         "copy": "The test found plenty of ways to steal your attention. You still collected some excellent details along the way."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "📝 Word recall",
-        "categories": [
-          "word_recall"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "📝 Word recall"
       },
-      {
-        "label": "👀 Visual memory",
-        "categories": [
-          "visual"
-        ]
+      "dimension-2": {
+        "label": "👀 Visual memory"
       },
-      {
-        "label": "🔢 Number recall",
-        "categories": [
-          "numbers"
-        ]
+      "dimension-3": {
+        "label": "🔢 Number recall"
       },
-      {
-        "label": "🧠 Working memory",
-        "categories": [
-          "working_memory"
-        ]
+      "dimension-4": {
+        "label": "🧠 Working memory"
       },
-      {
-        "label": "🔗 Association",
-        "categories": [
-          "association"
-        ]
+      "dimension-5": {
+        "label": "🔗 Association"
       },
-      {
-        "label": "🔍 Attention",
-        "categories": [
-          "attention"
-        ]
+      "dimension-6": {
+        "label": "🔍 Attention"
       }
-    ],
+    },
     "score": {
       "passed": "You beat the 80% challenge! 🧠",
       "finished": "You finished the memory challenge",
@@ -104,7 +143,6 @@
       "trickiest": "Your trickiest area",
       "bestRound": "Best round",
       "disclaimer": "For entertainment only. This quiz isn’t a medical or cognitive assessment.",
-      "showBestRound": true,
       "insights": {
         "overview": "Your score at a glance",
         "correct": "Correct answers",
@@ -113,64 +151,15 @@
         "breakdown": "Your memory skill breakdown",
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
-        "targetRemaining": "More correct answers needed for 80%",
-        "details": {
-          "analysisTitle": "How to read your score",
-          "analysisCopy": "This result combines immediate recall, delayed retrieval, number memory, visual attention and association across 40 questions. The skill pattern below shows which kinds of information held most reliably as the challenge became harder.",
-          "roadmapTitle": "Inside your full memory report",
-          "roadmapIntro": "Your score is the first clue. Continue through the report to see where recall held strongest, how every memory skill performed and which answers were missed.",
-          "roadmapItems": [
-            "Score analysis",
-            "Strongest memory",
-            "Six-skill breakdown",
-            "Answers missed"
-          ],
-          "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is 32 correct answers out of 40. Your marker shows how close this attempt came to the 80% line without comparing you with other players.",
-          "measuredTitle": "What this memory test measured",
-          "measuredIntro": "The questions were varied deliberately. Together they tested three broad parts of everyday recall rather than repeating one type of puzzle.",
-          "measuredAreas": [
-            {
-              "title": "Capture and recall",
-              "copy": "Holding words, pictures and numbers long enough to recognise or retrieve them moments later."
-            },
-            {
-              "title": "Delayed retrieval",
-              "copy": "Bringing back earlier details after another task has interrupted the original memory."
-            },
-            {
-              "title": "Attention to detail",
-              "copy": "Noticing colours, shapes, positions and small changes before they disappear from view."
-            }
-          ],
-          "tipsTitle": "Three ways to challenge your recall",
-          "tipsIntro": "These are simple game strategies for a future attempt—not medical advice or a judgement about your memory.",
-          "tips": [
-            {
-              "title": "Build a quick story",
-              "copy": "Link unrelated words or objects into one unusual mental scene instead of memorising each item separately."
-            },
-            {
-              "title": "Group the details",
-              "copy": "Break longer sequences into two or three smaller chunks so there is less to hold at once."
-            },
-            {
-              "title": "Return with fresh focus",
-              "copy": "Try again when distractions are lower and see whether a different category becomes your strongest."
-            }
-          ],
-          "finalTitle": "Your result is ready",
-          "finalCopy": "You finished with {score} correct answers out of {total}. Your result profile and complete memory-skill breakdown are shown below."
-        }
+        "targetRemaining": "More correct answers needed for 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Quick Recall",
-      "questions": [
-        {
-          "id": "memory-r1q1",
+      "questions": {
+        "memory-r1q1": {
           "question": "Which word appeared in the opening details?",
           "answers": [
             "LIME",
@@ -178,8 +167,6 @@
             "GREEN",
             "PLANE"
           ],
-          "correct": 1,
-          "category": "word_recall",
           "study": {
             "title": "Remember these details",
             "instruction": "They may return later in the challenge.",
@@ -189,13 +176,10 @@
               "BLUE KEY",
               "PURPLE ELEPHANT"
             ],
-            "durationMs": 5000,
-            "mode": "manual",
             "continueLabel": "I’m ready"
           }
         },
-        {
-          "id": "memory-r1q2",
+        "memory-r1q2": {
           "question": "Which shape appeared third?",
           "answers": [
             "Circle",
@@ -203,8 +187,6 @@
             "Triangle",
             "Square"
           ],
-          "correct": 3,
-          "category": "visual",
           "study": {
             "title": "Remember the colour and shape order",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -213,13 +195,10 @@
               "GOLD TRIANGLE",
               "CORAL SQUARE",
               "GREEN DIAMOND"
-            ],
-            "durationMs": 3500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q3",
+        "memory-r1q3": {
           "question": "Which number did you see?",
           "answers": [
             "5837",
@@ -227,86 +206,66 @@
             "5387",
             "5738"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Remember this number",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
               "5837",
               "HOLD IT"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q4",
+        "memory-r1q4": {
           "question": "Which shape was gold?",
           "answers": [
             "Circle",
             "Diamond",
             "Triangle",
             "Square"
-          ],
-          "correct": 2,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r1q5",
+        "memory-r1q5": {
           "question": "Which code is an exact match for K7M2Q?",
           "answers": [
             "K7M2Q",
             "K7N2Q",
             "K7MZQ",
             "KTM2Q"
-          ],
-          "correct": 0,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r1q6",
+        "memory-r1q6": {
           "question": "Which item came immediately after LEMON?",
           "answers": [
             "BLUE",
             "KEY",
             "LEMON",
             "TRAIN"
-          ],
-          "correct": 3,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r1q7",
+        "memory-r1q7": {
           "question": "What is 4 – 9 – 2 backwards?",
           "answers": [
             "2 – 4 – 9",
             "2 – 9 – 4",
             "9 – 2 – 4",
             "4 – 2 – 9"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r1q8",
+        "memory-r1q8": {
           "question": "Which animal appeared in the opening details?",
           "answers": [
             "Giraffe",
             "Tiger",
             "Elephant",
             "Rabbit"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Pictures & Details",
-      "questions": [
-        {
-          "id": "memory-r2q1",
+      "questions": {
+        "memory-r2q1": {
           "question": "Which object appeared third?",
           "answers": [
             "Kite",
@@ -314,15 +273,6 @@
             "Camera",
             "Cupcake"
           ],
-          "icons": [
-            "🪁",
-            "🧤",
-            "📷",
-            "🧁"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Study the six-object order",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -334,14 +284,10 @@
               "🧤",
               "🔔"
             ],
-            "durationMs": 5000,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Cap, cupcake, camera, kite, glove, bell"
           }
         },
-        {
-          "id": "memory-r2q2",
+        "memory-r2q2": {
           "question": "What was in the top-right position?",
           "answers": [
             "Blue cup",
@@ -349,8 +295,6 @@
             "Gold key",
             "Red book"
           ],
-          "correct": 0,
-          "category": "visual",
           "study": {
             "title": "Remember each object’s position",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -359,25 +303,19 @@
               "TOP RIGHT · BLUE CUP",
               "BOTTOM LEFT · GOLD KEY",
               "BOTTOM RIGHT · GREEN HAT"
-            ],
-            "durationMs": 5000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q3",
+        "memory-r2q3": {
           "question": "Which copy contains a zero instead of the letter O?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "answers": [
             "First",
             "Second",
             "Fourth",
             "Third"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r2q4",
+        "memory-r2q4": {
           "question": "Where was Sarah travelling?",
           "answers": [
             "Rome",
@@ -385,8 +323,6 @@
             "Madrid",
             "Dublin"
           ],
-          "correct": 1,
-          "category": "association",
           "study": {
             "title": "Read these details once",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -394,73 +330,51 @@
               "Sarah packed a BLUE suitcase.",
               "She was travelling to PARIS.",
               "Her train left at 08:40."
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q5",
+        "memory-r2q5": {
           "question": "Which object came immediately before the kite?",
           "answers": [
             "Bell",
             "Cupcake",
             "Glove",
             "Camera"
-          ],
-          "icons": [
-            "🔔",
-            "🧁",
-            "🧤",
-            "📷"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r2q6",
+        "memory-r2q6": {
           "question": "What colour was Sarah’s suitcase?",
           "answers": [
             "Green",
             "Blue",
             "Black",
             "Red"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r2q7",
+        "memory-r2q7": {
           "question": "A kite is left, a camera is centre and a glove is right. If left and right swap, what ends on the left?",
           "answers": [
             "Glove",
             "Camera",
             "Kite",
             "Bell"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r2q8",
+        "memory-r2q8": {
           "question": "Which two objects surrounded the kite?",
           "answers": [
             "Cupcake and camera",
             "Glove and bell",
             "Camera and glove",
             "Cap and cupcake"
-          ],
-          "correct": 2,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Numbers & Patterns",
-      "questions": [
-        {
-          "id": "memory-r3q1",
+      "questions": {
+        "memory-r3q1": {
           "question": "Which number did you see?",
           "answers": [
             "6814",
@@ -468,45 +382,34 @@
             "6481",
             "6184"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Hold this number",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
               "6184",
               "HOLD IT"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q2",
+        "memory-r3q2": {
           "question": "What is 3 – 7 – 1 – 5 backwards?",
           "answers": [
             "5 – 7 – 1 – 3",
             "5 – 1 – 7 – 3",
             "3 – 1 – 7 – 5",
             "1 – 5 – 7 – 3"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q3",
+        "memory-r3q3": {
           "question": "Start with 12. Add 7, then subtract 4. Where do you finish?",
           "answers": [
             "17",
             "13",
             "15",
             "23"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q4",
+        "memory-r3q4": {
           "question": "Which number was paired with TABLE?",
           "answers": [
             "27",
@@ -514,8 +417,6 @@
             "39",
             "24"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Remember each number and location",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -523,13 +424,10 @@
               "DOOR · 14",
               "TABLE · 27",
               "CLOCK · 39"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q5",
+        "memory-r3q5": {
           "question": "What was the fourth digit?",
           "answers": [
             "6",
@@ -537,62 +435,48 @@
             "3",
             "9"
           ],
-          "correct": 1,
-          "category": "numbers",
           "study": {
             "title": "Remember all five digits",
             "instruction": "Memorise this carefully. It will disappear automatically.",
             "items": [
               "8  3  6  1  9",
               "ORDER MATTERS"
-            ],
-            "durationMs": 4000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q6",
+        "memory-r3q6": {
           "question": "Hold 24 in mind. Double it, then subtract 6. What remains?",
           "answers": [
             "36",
             "54",
             "42",
             "30"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q7",
+        "memory-r3q7": {
           "question": "What was the second digit of the earlier four-digit number?",
           "answers": [
             "1",
             "6",
             "8",
             "4"
-          ],
-          "correct": 0,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r3q8",
+        "memory-r3q8": {
           "question": "Which number differs?  1 684219 · 2 684219 · 3 684291 · 4 684219",
           "answers": [
             "First",
             "Second",
             "Fourth",
             "Third"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "The Memory Trap",
-      "questions": [
-        {
-          "id": "memory-r4q1",
+      "questions": {
+        "memory-r4q1": {
           "question": "Which word appeared third?",
           "answers": [
             "MARBLE",
@@ -600,8 +484,6 @@
             "MARGIN",
             "MARVEL"
           ],
-          "correct": 0,
-          "category": "word_recall",
           "study": {
             "title": "These words are deliberately similar",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -611,13 +493,10 @@
               "MARBLE",
               "MARGIN",
               "MARVEL"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q2",
+        "memory-r4q2": {
           "question": "Which object was NOT shown?",
           "answers": [
             "Bell",
@@ -625,15 +504,6 @@
             "Anchor",
             "Magnet"
           ],
-          "icons": [
-            "🔔",
-            "🧩",
-            "⚓",
-            "🧲"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Study these five objects",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -644,26 +514,19 @@
               "🧩",
               "🕯️"
             ],
-            "durationMs": 4500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Bell, magnet, ladder, puzzle piece, candle"
           }
         },
-        {
-          "id": "memory-r4q3",
+        "memory-r4q3": {
           "question": "Which code is B7RK with only the final two letters swapped?",
           "answers": [
             "B7RX",
             "B7KR",
             "87RK",
             "BTRK"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r4q4",
+        "memory-r4q4": {
           "question": "Which item belonged to Omar?",
           "answers": [
             "Violin",
@@ -671,8 +534,6 @@
             "Scarf",
             "Teapot"
           ],
-          "correct": 3,
-          "category": "association",
           "study": {
             "title": "Remember each person and object",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -681,97 +542,69 @@
               "OMAR · TEAPOT",
               "LENA · COMPASS",
               "NOAH · SCARF"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q5",
+        "memory-r4q5": {
           "question": "Which colour appeared in the opening details?",
           "answers": [
             "GOLD",
             "BLACK",
             "BLUE",
             "WHITE"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r4q6",
+        "memory-r4q6": {
           "question": "Start with 8. Add 6, then subtract 3. What is left?",
           "answers": [
             "11",
             "17",
             "5",
             "14"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r4q7",
+        "memory-r4q7": {
           "question": "Which object appeared between the magnet and puzzle piece?",
           "answers": [
             "Bell",
             "Candle",
             "Magnet",
             "Ladder"
-          ],
-          "icons": [
-            "🔔",
-            "🕯️",
-            "🧲",
-            "🪜"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r4q8",
+        "memory-r4q8": {
           "question": "Who was paired with the compass?",
           "answers": [
             "Mia",
             "Lena",
             "Noah",
             "Omar"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Final Memory Challenge",
-      "questions": [
-        {
-          "id": "memory-r5q1",
+      "questions": {
+        "memory-r5q1": {
           "question": "Think back to the beginning: what colour was the elephant?",
           "answers": [
             "Silver",
             "Purple",
             "Blue",
             "Gold"
-          ],
-          "correct": 1,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q2",
+        "memory-r5q2": {
           "question": "Which location was paired with 39?",
           "answers": [
             "Door",
             "Table",
             "Window",
             "Clock"
-          ],
-          "correct": 3,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r5q3",
+        "memory-r5q3": {
           "question": "Which object came immediately after the balloon?",
           "answers": [
             "Bell",
@@ -779,15 +612,6 @@
             "Die",
             "Strawberry"
           ],
-          "icons": [
-            "🔔",
-            "🧭",
-            "🎲",
-            "🍓"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Study this final object order",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -799,26 +623,19 @@
               "🪵",
               "🎲"
             ],
-            "durationMs": 5500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Compass, strawberry, balloon, bell, log, die"
           }
         },
-        {
-          "id": "memory-r5q4",
+        "memory-r5q4": {
           "question": "Reverse 2 – 8 – 1 – 5 – 6. What is the second number in the reversed sequence?",
           "answers": [
             "8",
             "2",
             "5",
             "1"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r5q5",
+        "memory-r5q5": {
           "question": "Take the number paired with WEST and subtract the number paired with SOUTH. What remains?",
           "answers": [
             "55",
@@ -826,8 +643,6 @@
             "75",
             "65"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Remember each direction and number",
             "instruction": "Memorise this carefully. It will disappear automatically.",
@@ -836,281 +651,37 @@
               "EAST · 71",
               "SOUTH · 28",
               "WEST · 93"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r5q6",
+        "memory-r5q6": {
           "question": "What time did Sarah’s train leave?",
           "answers": [
             "08:14",
             "08:40",
             "09:40",
             "18:40"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r5q7",
+        "memory-r5q7": {
           "question": "Which word came immediately before MARBLE in the earlier list?",
           "answers": [
             "MARKET",
             "MARGIN",
             "MARKER",
             "MARVEL"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q8",
+        "memory-r5q8": {
           "question": "Who was paired with the violin?",
           "answers": [
             "Mia",
             "Omar",
             "Lena",
             "Noah"
-          ],
-          "correct": 0,
-          "category": "association"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then continue.",
-    "finalAdNote": "Short ad first — then see your result.",
-    "finalBadge": "FINAL MEMORY CHALLENGE COMPLETE",
-    "finalIcon": "🧠",
-    "finalTitle": "Your Memory Result Is Ready",
-    "finalCopy": "Your complete score and memory profile are ready to reveal.",
-    "finalButton": "See My Result",
-    "finalChecklist": [
-      "40 answers checked",
-      "Six memory skills compared",
-      "Final score calculated"
-    ],
-    "reveals": [
-      {
-        "badge": "QUICK RECALL COMPLETE",
-        "icon": "✓",
-        "title": "Quick Recall complete",
-        "signal": "fixed",
-        "message": "The next round adds pictures and detail."
-      },
-      {
-        "badge": "PICTURES & DETAILS COMPLETE",
-        "icon": "✓",
-        "title": "Visual recall cleared",
-        "signal": "fixed",
-        "message": "Numbers and working memory are next."
-      },
-      {
-        "badge": "NUMBERS & PATTERNS COMPLETE",
-        "icon": "✓",
-        "title": "More than halfway through",
-        "signal": "fixed",
-        "message": "The Memory Trap is next."
-      },
-      {
-        "badge": "THE MEMORY TRAP COMPLETE",
-        "icon": "✓",
-        "title": "Final memory challenge next",
-        "signal": "fixed",
-        "message": "One last round will test what still stuck."
-      },
-      {
-        "badge": "FINAL MEMORY CHALLENGE COMPLETE",
-        "icon": "✓",
-        "title": "MEMORY TEST COMPLETE",
-        "signal": "fixed",
-        "message": "Your memory result is ready to reveal."
-      }
-    ]
-  },
-  "progressLabel": "complete",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Memory challenge",
-    "resultProgressComplete": "{value}% complete",
-    "currentScoreLabel": "CURRENT MEMORY SCORE",
-    "levelLabel": "ROUND",
-    "scoreSuffix": "correct",
-    "journeyLabel": "MEMORY CHALLENGE",
-    "kitchensCleared": "{value} / {total} challenges cleared",
-    "currentRank": "CURRENT MEMORY LEVEL",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Memory Challenger"
-      },
-      {
-        "afterStage": 5,
-        "label": "Memory Challenge Complete"
-      }
-    ],
-    "unlockEyebrow": "MEMORY RESULT",
-    "unlockTitle": "A new challenge is ready",
-    "unlockCopy": "Your next memory challenge is waiting.",
-    "finalEyebrow": "YOUR MEMORY RESULT",
-    "finalCareerTitle": "MEMORY TEST COMPLETE",
-    "strongestLabel": "Strongest memory skill",
-    "stages": [
-      {
-        "difficulty": "Foundation",
-        "preAdBadge": "QUICK RECALL COMPLETE",
-        "preAdTitle": "Quick Recall complete",
-        "preAdCopy": "The next round adds pictures and detail.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "QUICK RECALL COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Quick Recall complete",
-            "insight": "The next round adds pictures and detail."
-          },
-          "medium": {
-            "title": "Quick Recall complete",
-            "insight": "The next round adds pictures and detail."
-          },
-          "low": {
-            "title": "Quick Recall complete",
-            "insight": "The next round adds pictures and detail."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
-          "title": "Pictures & Details",
-          "difficulty": "Developing",
-          "tagline": "Colours. Positions. Changes.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Developing",
-        "preAdBadge": "PICTURES & DETAILS COMPLETE",
-        "preAdTitle": "Visual recall cleared",
-        "preAdCopy": "Numbers and working memory are next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "PICTURES & DETAILS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Visual recall cleared",
-            "insight": "Numbers and working memory are next."
-          },
-          "medium": {
-            "title": "Visual recall cleared",
-            "insight": "Numbers and working memory are next."
-          },
-          "low": {
-            "title": "Visual recall cleared",
-            "insight": "Numbers and working memory are next."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · SKILLED",
-          "title": "Numbers & Patterns",
-          "difficulty": "Skilled",
-          "tagline": "Digits. Order. Working memory.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Skilled",
-        "preAdBadge": "NUMBERS & PATTERNS COMPLETE",
-        "preAdTitle": "More than halfway through",
-        "preAdCopy": "The Memory Trap is next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "NUMBERS & PATTERNS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "More than halfway through",
-            "insight": "The Memory Trap is next."
-          },
-          "medium": {
-            "title": "More than halfway through",
-            "insight": "The Memory Trap is next."
-          },
-          "low": {
-            "title": "More than halfway through",
-            "insight": "The Memory Trap is next."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · ADVANCED",
-          "title": "The Memory Trap",
-          "difficulty": "Advanced",
-          "tagline": "Interference. Similar clues. Older memories.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Advanced",
-        "preAdBadge": "THE MEMORY TRAP COMPLETE",
-        "preAdTitle": "Final memory challenge next",
-        "preAdCopy": "One last round will test what still stuck.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "THE MEMORY TRAP COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Final memory challenge next",
-            "insight": "One last round will test what still stuck."
-          },
-          "medium": {
-            "title": "Final memory challenge next",
-            "insight": "One last round will test what still stuck."
-          },
-          "low": {
-            "title": "Final memory challenge next",
-            "insight": "One last round will test what still stuck."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
-          "title": "Final Memory Challenge",
-          "difficulty": "Final Assessment",
-          "tagline": "Delayed recall. Working memory. Final callbacks.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Final Assessment",
-        "preAdBadge": "FINAL MEMORY CHALLENGE COMPLETE",
-        "preAdTitle": "MEMORY TEST COMPLETE",
-        "preAdChecks": [
-          "40 answers checked",
-          "Six memory skills compared",
-          "Final score calculated"
-        ],
-        "preAdButton": "See My Result",
-        "resultIcon": "🧠",
-        "resultLabel": "FINAL MEMORY CHALLENGE COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "MEMORY TEST COMPLETE",
-            "insight": "Your memory result is ready to reveal."
-          },
-          "medium": {
-            "title": "MEMORY TEST COMPLETE",
-            "insight": "Your memory result is ready to reveal."
-          },
-          "low": {
-            "title": "MEMORY TEST COMPLETE",
-            "insight": "Your memory result is ready to reveal."
-          }
-        },
-        "preAdCopy": "Your memory result is ready to reveal."
-      }
-    ]
   }
 }

@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { createHash } from "node:crypto";
 
 import sharp from "sharp";
 
@@ -22,11 +23,19 @@ async function copyIfPresent(source, destination) {
   await fs.copyFile(source, destination);
 }
 
+async function copyRequired(source, destination, label) {
+  if (!(await exists(source))) throw new Error(`${label}: missing declared asset ${path.relative(sourceRoot, source)}.`);
+  await fs.mkdir(path.dirname(destination), { recursive: true });
+  await fs.copyFile(source, destination);
+}
+
 async function prepareQuiz(slug) {
   const source = path.join(sourceRoot, slug);
   const destination = path.join(publicRoot, slug);
   const manifest = JSON.parse(await fs.readFile(path.join(source, "quiz.json"), "utf8"));
   const thumbnail = manifest.listing?.thumbnail;
+
+  await copyIfPresent(path.join(source, "theme.css"), path.join(destination, "theme.css"));
 
   if (typeof thumbnail === "string" && !thumbnail.startsWith("/")) {
     const thumbnailFile = path.join(source, thumbnail);
@@ -38,14 +47,6 @@ async function prepareQuiz(slug) {
       .webp({ quality: width === 480 ? 76 : 80, effort: 5 })
       .toFile(path.join(destination, "assets", `thumbnail-${width}.webp`))));
   }
-
-  const avatars = path.join(source, "assets", "avatars");
-  try {
-    const files = await fs.readdir(avatars);
-    await Promise.all(files
-      .filter((file) => /\.(?:jpe?g|png|webp)$/i.test(file))
-      .map((file) => copyIfPresent(path.join(avatars, file), path.join(destination, "assets", "avatars", file))));
-  } catch { /* Avatars are optional. */ }
 
   const icons = path.join(source, "assets", "icons");
   try {
@@ -67,15 +68,17 @@ async function prepareQuiz(slug) {
 
   const artwork = manifest.theme?.artwork ?? {};
   const variantArtwork = Object.values(artwork.profileVariants ?? {}).flatMap((variants) => Object.values(variants ?? {}));
+  const checkpointVariantArtwork = Object.values(artwork.checkpointVariants ?? {}).flatMap((variants) => variants ?? []);
   await Promise.all([
     artwork.landing,
     artwork.result,
     ...Object.values(artwork.profiles ?? {}),
     ...variantArtwork,
     ...(artwork.checkpoints ?? []),
+    ...checkpointVariantArtwork,
   ]
     .filter((value, index, values) => typeof value === "string" && !value.startsWith("/") && values.indexOf(value) === index)
-    .map((value) => copyIfPresent(path.join(source, value), path.join(destination, value))));
+    .map((value) => copyRequired(path.join(source, value), path.join(destination, value), slug)));
 }
 
 const entries = await fs.readdir(sourceRoot, { withFileTypes: true });
@@ -84,6 +87,17 @@ for (const entry of entries) {
   if (entry.isDirectory() && await exists(path.join(sourceRoot, entry.name, "quiz.json"))) slugs.push(entry.name);
 }
 
+await fs.rm(publicRoot, { recursive: true, force: true });
 await fs.mkdir(publicRoot, { recursive: true });
 await Promise.all(slugs.map(prepareQuiz));
+const sharedStylesRoot = path.join(process.cwd(), "public", "styles");
+const sharedShellSource = path.join(process.cwd(), "styles", "quiz-shell-contract.css");
+const sharedShellCss = await fs.readFile(sharedShellSource, "utf8");
+const sharedShellHash = createHash("sha256").update(sharedShellCss).digest("hex").slice(0, 12);
+await fs.rm(sharedStylesRoot, { recursive: true, force: true });
+await fs.mkdir(sharedStylesRoot, { recursive: true });
+await fs.copyFile(
+  sharedShellSource,
+  path.join(sharedStylesRoot, `quiz-shell-contract.${sharedShellHash}.css`),
+);
 console.log(`Prepared responsive assets for ${slugs.length} quiz folder(s).`);

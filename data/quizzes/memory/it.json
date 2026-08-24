@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "La maggior parte degli adulti non raggiunge l’80% in questo test di memoria",
   "eyebrow": "SFIDA DI MEMORIA",
   "summary": "Parole, immagini, numeri e richiami a distanza rivelano ciò che la memoria trattiene.",
+  "progressLabel": "completato",
   "landing": {
     "intro": "Pensi che la tua memoria sia ancora infallibile? Alcune sfide sono facili. Altre sono pensate per trarti in inganno.",
     "cta": "Inizia il test"
@@ -18,84 +20,121 @@
     },
     "disclaimer": "Solo per intrattenimento e cultura generale. Questo test di memoria non è un esame ufficiale, una qualifica o un parere professionale."
   },
+  "checkpoint": {
+    "finalAdNote": "Un breve annuncio, poi vedrai il risultato."
+  },
+  "career": {
+    "resultProgressLabel": "Sfida di memoria",
+    "resultProgressComplete": "{value}% completato",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamenti",
+        "preAdBadge": "MEMORIA IMMEDIATA COMPLETATA",
+        "preAdTitle": "Memoria immediata completata",
+        "preAdCopy": "Il prossimo round aggiunge immagini e dettagli.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
+          "tagline": "Colori. Posizioni. Cambiamenti."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermedio",
+        "preAdBadge": "IMMAGINI E DETTAGLI COMPLETATI",
+        "preAdTitle": "Memoria visiva superata",
+        "preAdCopy": "Ora arrivano numeri e memoria di lavoro.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
+          "tagline": "Cifre. Ordine. Memoria di lavoro."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Competente",
+        "preAdBadge": "NUMERI E SCHEMI COMPLETATI",
+        "preAdTitle": "Hai superato la metà",
+        "preAdCopy": "Ora arriva la trappola della memoria.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
+          "tagline": "Interferenze. Indizi simili. Ricordi lontani."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzato",
+        "preAdBadge": "TRAPPOLA DELLA MEMORIA COMPLETATA",
+        "preAdTitle": "Ora arriva la sfida finale di memoria",
+        "preAdCopy": "Un ultimo round verificherà che cosa è rimasto impresso.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
+          "tagline": "Richiamo differito. Manipolazione. Ultimi richiami."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Prova finale",
+        "preAdBadge": "SFIDA FINALE DI MEMORIA COMPLETATA",
+        "preAdTitle": "TEST DI MEMORIA COMPLETATO",
+        "preAdCopy": "Il risultato di memoria è pronto per essere svelato.",
+        "preAdChecks": [
+          "40 risposte verificate",
+          "Sei abilità di memoria rispetto a",
+          "Punteggio finale calcolato"
+        ],
+        "preAdButton": "Vedi il mio risultato"
+      }
+    }
+  },
   "results": {
     "name": "IL TUO RISULTATO DI MEMORIA",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Genio della memoria",
         "copy": "Hai dimostrato una padronanza notevole di parole, immagini, numeri e ricordi differiti. Persino le domande più impegnative ti hanno messo raramente in difficoltà."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Memoria affilatissima",
         "copy": "Il risultato mostra un’ottima padronanza di parole, immagini, numeri e ricordi differiti. Il tuo ragionamento è rimasto sicuro anche davanti alle trappole più sottili."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Quasi indimenticabile",
         "copy": "Hai ottenuto un risultato solido in parole, immagini, numeri e ricordi differiti. Qualche dettaglio difficile ti ha rallentato, ma il quadro complessivo è convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Genio selettivo",
         "copy": "Hai buone basi in parole, immagini, numeri e ricordi differiti. Rafforzando i punti più delicati, il prossimo risultato può migliorare nettamente."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Memoria esigente",
         "copy": "Hai riconosciuto diversi elementi chiave di parole, immagini, numeri e ricordi differiti. Le domande mancate indicano con chiarezza gli aspetti da consolidare."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Meno del 50%",
         "title": "Splendidamente distratto",
         "copy": "Questa sfida ha mostrato alcuni margini di crescita in parole, immagini, numeri e ricordi differiti. La curiosità e le risposte corrette sono un ottimo punto di partenza."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "📝 Memoria delle parole",
-        "categories": [
-          "word_recall"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "📝 Memoria delle parole"
       },
-      {
-        "label": "👀 Memoria visiva",
-        "categories": [
-          "visual"
-        ]
+      "dimension-2": {
+        "label": "👀 Memoria visiva"
       },
-      {
-        "label": "🔢 Memoria dei numeri",
-        "categories": [
-          "numbers"
-        ]
+      "dimension-3": {
+        "label": "🔢 Memoria dei numeri"
       },
-      {
-        "label": "🧠 Memoria di lavoro",
-        "categories": [
-          "working_memory"
-        ]
+      "dimension-4": {
+        "label": "🧠 Memoria di lavoro"
       },
-      {
-        "label": "🔗 Associazioni",
-        "categories": [
-          "association"
-        ]
+      "dimension-5": {
+        "label": "🔗 Associazioni"
       },
-      {
-        "label": "🔍 Attenzione",
-        "categories": [
-          "attention"
-        ]
+      "dimension-6": {
+        "label": "🔍 Attenzione"
       }
-    ],
+    },
     "score": {
       "passed": "Sfida superata: test di memoria!",
       "finished": "Sfida completata: test di memoria",
@@ -103,8 +142,6 @@
       "strongest": "Area più forte di memoria",
       "trickiest": "Area più difficile di memoria",
       "bestRound": "Miglior round",
-      "disclaimer": "Solo per intrattenimento e cultura generale. Questo test di memoria non è un esame ufficiale, una qualifica o un parere professionale.",
-      "showBestRound": true,
       "insights": {
         "overview": "risultato di memoria in sintesi",
         "correct": "corrette",
@@ -113,64 +150,15 @@
         "breakdown": "Analisi delle competenze di memoria",
         "snapshot": "Cosa suggerisce il profilo nel test di memoria",
         "targetReached": "Obiettivo dell’80% raggiunto",
-        "targetRemaining": "Risposte corrette ancora necessarie per l’80%",
-        "details": {
-          "analysisTitle": "Come leggere il risultato di memoria",
-          "analysisCopy": "Questo risultato riunisce 40 domande in diversi ambiti: parole, immagini, numeri, associazioni, attenzione e ricordo differito. La distribuzione seguente mostra le aree più solide di questo tentativo.",
-          "roadmapTitle": "Nel rapporto completo del test di memoria",
-          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra la tua area di memoria più forte, il dettaglio per area e le risposte sbagliate nel test di memoria.",
-          "roadmapItems": [
-            "Analisi del punteggio",
-            "Area più forte di memoria",
-            "Analisi delle competenze di memoria",
-            "Risposte sbagliate"
-          ],
-          "positionTitle": "Il percorso verso l’80%",
-          "positionCopy": "L’obiettivo ricreativo è 32 risposte corrette su 40. L’indicatore mostra quanto si è avvicinato questo tentativo nel test di memoria, senza confronti o valutazioni professionali.",
-          "measuredTitle": "Che cosa ha esplorato il test di memoria",
-          "measuredIntro": "Le domande coprono tre aspetti complementari specifici del test di memoria.",
-          "measuredAreas": [
-            {
-              "title": "Acquisizione e richiamo",
-              "copy": "Trattenere parole, immagini e numeri abbastanza a lungo da riconoscerli o recuperarli poco dopo."
-            },
-            {
-              "title": "Recupero differito",
-              "copy": "Richiamare dettagli precedenti dopo che un altro compito ha interrotto il ricordo iniziale."
-            },
-            {
-              "title": "Attenzione ai dettagli",
-              "copy": "Notare colori, forme, posizioni e piccoli cambiamenti prima che scompaiano."
-            }
-          ],
-          "tipsTitle": "Tre modi per affinare l’approccio di memoria",
-          "tipsIntro": "Strategie semplici per un altro tentativo nel test di memoria, non una valutazione professionale.",
-          "tips": [
-            {
-              "title": "Crea una storia rapida",
-              "copy": "Collega parole o oggetti non correlati in una scena mentale insolita invece di memorizzarli separatamente."
-            },
-            {
-              "title": "Raggruppa i dettagli",
-              "copy": "Dividi le sequenze lunghe in due o tre blocchi più piccoli per ridurre ciò che devi trattenere."
-            },
-            {
-              "title": "Torna con nuova concentrazione",
-              "copy": "Riprova con meno distrazioni e verifica se un’altra categoria diventa il tuo punto forte."
-            }
-          ],
-          "finalTitle": "Il tuo risultato nel test di memoria",
-          "finalCopy": "Hai concluso con {score} risposte corrette su {total}. Il profilo del risultato e l’analisi completa delle tue capacità di memoria sono riportati qui sotto."
-        }
+        "targetRemaining": "Risposte corrette ancora necessarie per l’80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Memoria immediata",
-      "questions": [
-        {
-          "id": "memory-r1q1",
+      "questions": {
+        "memory-r1q1": {
           "question": "Quale parola compariva nei dettagli iniziali?",
           "answers": [
             "LIME",
@@ -178,8 +166,6 @@
             "VERDE",
             "AEREO"
           ],
-          "correct": 1,
-          "category": "word_recall",
           "study": {
             "title": "Ricorda questi dettagli",
             "instruction": "Potrebbero tornare più avanti.",
@@ -189,13 +175,10 @@
               "CHIAVE BLU",
               "ELEFANTE VIOLA"
             ],
-            "durationMs": 5000,
-            "mode": "manual",
             "continueLabel": "Ho memorizzato"
           }
         },
-        {
-          "id": "memory-r1q2",
+        "memory-r1q2": {
           "question": "Quale forma appariva per terza?",
           "answers": [
             "Cerchio",
@@ -203,8 +186,6 @@
             "Triangolo",
             "Quadrato"
           ],
-          "correct": 3,
-          "category": "visual",
           "study": {
             "title": "Ricorda l’ordine di colori e forme",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -213,13 +194,10 @@
               "TRIANGOLO DORATO",
               "QUADRATO CORALLO",
               "ROMBO VERDE"
-            ],
-            "durationMs": 3500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q3",
+        "memory-r1q3": {
           "question": "Quale numero hai visto?",
           "answers": [
             "5837",
@@ -227,86 +205,66 @@
             "5387",
             "5738"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Ricorda questo numero",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
             "items": [
               "5837",
               "RICORDALO"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q4",
+        "memory-r1q4": {
           "question": "Quale forma era dorata?",
           "answers": [
             "Cerchio",
             "Rombo",
             "Triangolo",
             "Quadrato"
-          ],
-          "correct": 2,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r1q5",
+        "memory-r1q5": {
           "question": "Quale codice corrisponde esattamente a K7M2Q?",
           "answers": [
             "K7M2Q",
             "K7N2Q",
             "K7MZQ",
             "KTM2Q"
-          ],
-          "correct": 0,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r1q6",
+        "memory-r1q6": {
           "question": "Quale elemento veniva subito dopo LIMONE?",
           "answers": [
             "BLU",
             "CHIAVE",
             "LIMONE",
             "TRENO"
-          ],
-          "correct": 3,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r1q7",
+        "memory-r1q7": {
           "question": "Qual è l’ordine inverso di 4 – 9 – 2?",
           "answers": [
             "2 – 4 – 9",
             "2 – 9 – 4",
             "9 – 2 – 4",
             "4 – 2 – 9"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r1q8",
+        "memory-r1q8": {
           "question": "Quale animale compariva nei dettagli iniziali?",
           "answers": [
             "Giraffa",
             "Tigre",
             "Elefante",
             "Coniglio"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Immagini e dettagli",
-      "questions": [
-        {
-          "id": "memory-r2q1",
+      "questions": {
+        "memory-r2q1": {
           "question": "Quale oggetto appariva per terzo?",
           "answers": [
             "Aquilone",
@@ -314,15 +272,6 @@
             "Fotocamera",
             "Dolcetto"
           ],
-          "icons": [
-            "🪁",
-            "🧤",
-            "📷",
-            "🧁"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Memorizza l’ordine dei sei oggetti",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -334,14 +283,10 @@
               "🧤",
               "🔔"
             ],
-            "durationMs": 5000,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Berretto, dolcetto, fotocamera, aquilone, guanto, campanella"
           }
         },
-        {
-          "id": "memory-r2q2",
+        "memory-r2q2": {
           "question": "Che cosa si trovava in alto a destra?",
           "answers": [
             "Tazza blu",
@@ -349,8 +294,6 @@
             "Chiave dorata",
             "Libro rosso"
           ],
-          "correct": 0,
-          "category": "visual",
           "study": {
             "title": "Ricorda la posizione di ogni oggetto",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -359,25 +302,19 @@
               "IN ALTO A DESTRA · TAZZA BLU",
               "IN BASSO A SINISTRA · CHIAVE DORATA",
               "IN BASSO A DESTRA · CAPPELLO VERDE"
-            ],
-            "durationMs": 5000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q3",
+        "memory-r2q3": {
           "question": "Quale copia contiene uno zero al posto della lettera O?  1 PORTA · 2 PORTA · 3 P0RTA · 4 PORTA",
           "answers": [
             "Primo",
             "Secondo",
             "Quarto",
             "Terzo"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r2q4",
+        "memory-r2q4": {
           "question": "Dove era diretta Sarah?",
           "answers": [
             "Roma",
@@ -385,8 +322,6 @@
             "Madrid",
             "Dublino"
           ],
-          "correct": 1,
-          "category": "association",
           "study": {
             "title": "Leggi questi dettagli una sola volta",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -394,73 +329,51 @@
               "Sarah preparò una valigia BLU.",
               "Era diretta a PARIGI.",
               "Il treno partiva alle 08:40."
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q5",
+        "memory-r2q5": {
           "question": "Quale oggetto veniva subito prima dell’aquilone?",
           "answers": [
             "Campanella",
             "Dolcetto",
             "Guanto",
             "Fotocamera"
-          ],
-          "icons": [
-            "🔔",
-            "🧁",
-            "🧤",
-            "📷"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r2q6",
+        "memory-r2q6": {
           "question": "Di che colore era la valigia di Sarah?",
           "answers": [
             "Verde",
             "Blu",
             "Nero",
             "Rosso"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r2q7",
+        "memory-r2q7": {
           "question": "Un aquilone è a sinistra, una fotocamera al centro e un guanto a destra. Se sinistra e destra si scambiano, che cosa finisce a sinistra?",
           "answers": [
             "Guanto",
             "Fotocamera",
             "Aquilone",
             "Campanella"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r2q8",
+        "memory-r2q8": {
           "question": "Quali due oggetti circondavano l’aquilone?",
           "answers": [
             "Dolcetto e fotocamera",
             "Guanto e campanella",
             "Fotocamera e guanto",
             "Berretto e dolcetto"
-          ],
-          "correct": 2,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Numeri e schemi",
-      "questions": [
-        {
-          "id": "memory-r3q1",
+      "questions": {
+        "memory-r3q1": {
           "question": "Quale numero hai visto?",
           "answers": [
             "6814",
@@ -468,45 +381,34 @@
             "6481",
             "6184"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Tieni a mente questo numero",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
             "items": [
               "6184",
               "RICORDALO"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q2",
+        "memory-r3q2": {
           "question": "Qual è l’ordine inverso di 3 – 7 – 1 – 5?",
           "answers": [
             "5 – 7 – 1 – 3",
             "5 – 1 – 7 – 3",
             "3 – 1 – 7 – 5",
             "1 – 5 – 7 – 3"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q3",
+        "memory-r3q3": {
           "question": "Parti da 12. Aggiungi 7, poi sottrai 4. Qual è il risultato?",
           "answers": [
             "17",
             "13",
             "15",
             "23"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q4",
+        "memory-r3q4": {
           "question": "Quale numero era associato a TAVOLO?",
           "answers": [
             "27",
@@ -514,8 +416,6 @@
             "39",
             "24"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Ricorda ogni numero e luogo",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -523,13 +423,10 @@
               "PORTA · 14",
               "TAVOLO · 27",
               "OROLOGIO · 39"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q5",
+        "memory-r3q5": {
           "question": "Qual era la quarta cifra?",
           "answers": [
             "6",
@@ -537,62 +434,48 @@
             "3",
             "9"
           ],
-          "correct": 1,
-          "category": "numbers",
           "study": {
             "title": "Ricorda tutte e cinque le cifre",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
             "items": [
               "8  3  6  1  9",
               "L’ORDINE CONTA"
-            ],
-            "durationMs": 4000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q6",
+        "memory-r3q6": {
           "question": "Tieni a mente 24. Raddoppialo, poi sottrai 6. Che cosa resta?",
           "answers": [
             "36",
             "54",
             "42",
             "30"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q7",
+        "memory-r3q7": {
           "question": "Qual era la seconda cifra del numero di quattro cifre visto prima?",
           "answers": [
             "1",
             "6",
             "8",
             "4"
-          ],
-          "correct": 0,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r3q8",
+        "memory-r3q8": {
           "question": "Quale numero è diverso?  1 684219 · 2 684219 · 3 684291 · 4 684219",
           "answers": [
             "Primo",
             "Secondo",
             "Quarto",
             "Terzo"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "La trappola della memoria",
-      "questions": [
-        {
-          "id": "memory-r4q1",
+      "questions": {
+        "memory-r4q1": {
           "question": "Quale parola appariva per terza?",
           "answers": [
             "MARMO",
@@ -600,8 +483,6 @@
             "MARGINE",
             "MARTE"
           ],
-          "correct": 0,
-          "category": "word_recall",
           "study": {
             "title": "Queste parole sono volutamente simili",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -611,13 +492,10 @@
               "MARMO",
               "MARGINE",
               "MARTE"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q2",
+        "memory-r4q2": {
           "question": "Quale oggetto NON era mostrato?",
           "answers": [
             "Campanella",
@@ -625,15 +503,6 @@
             "Ancora",
             "Magnete"
           ],
-          "icons": [
-            "🔔",
-            "🧩",
-            "⚓",
-            "🧲"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Memorizza questi cinque oggetti",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -644,26 +513,19 @@
               "🧩",
               "🕯️"
             ],
-            "durationMs": 4500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Campanella, magnete, scala, tessera di puzzle, candela"
           }
         },
-        {
-          "id": "memory-r4q3",
+        "memory-r4q3": {
           "question": "Quale codice si ottiene scambiando soltanto le ultime due lettere di B7RK?",
           "answers": [
             "B7RX",
             "B7KR",
             "87RK",
             "BTRK"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r4q4",
+        "memory-r4q4": {
           "question": "Quale oggetto apparteneva a Omar?",
           "answers": [
             "Violino",
@@ -671,8 +533,6 @@
             "Sciarpa",
             "Teiera"
           ],
-          "correct": 3,
-          "category": "association",
           "study": {
             "title": "Ricorda ogni persona e il suo oggetto",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -681,97 +541,69 @@
               "OMAR · TEIERA",
               "LENA · BUSSOLA",
               "NOAH · SCIARPA"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q5",
+        "memory-r4q5": {
           "question": "Quale colore compariva nei dettagli iniziali?",
           "answers": [
             "ORO",
             "NERO",
             "BLU",
             "BIANCO"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r4q6",
+        "memory-r4q6": {
           "question": "Parti da 8. Aggiungi 6, poi sottrai 3. Che cosa resta?",
           "answers": [
             "11",
             "17",
             "5",
             "14"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r4q7",
+        "memory-r4q7": {
           "question": "Quale oggetto si trovava tra il magnete e la tessera del puzzle?",
           "answers": [
             "Campanella",
             "Candela",
             "Magnete",
             "Scala"
-          ],
-          "icons": [
-            "🔔",
-            "🕯️",
-            "🧲",
-            "🪜"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r4q8",
+        "memory-r4q8": {
           "question": "Chi era associato alla bussola?",
           "answers": [
             "Mia",
             "Lena",
             "Noah",
             "Omar"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Sfida finale di memoria",
-      "questions": [
-        {
-          "id": "memory-r5q1",
+      "questions": {
+        "memory-r5q1": {
           "question": "Torna all’inizio: di che colore era l’elefante?",
           "answers": [
             "Argento",
             "Viola",
             "Blu",
             "Oro"
-          ],
-          "correct": 1,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q2",
+        "memory-r5q2": {
           "question": "Quale luogo era associato a 39?",
           "answers": [
             "Porta",
             "Tavolo",
             "Finestra",
             "Orologio"
-          ],
-          "correct": 3,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r5q3",
+        "memory-r5q3": {
           "question": "Quale oggetto veniva subito dopo il palloncino?",
           "answers": [
             "Campanella",
@@ -779,15 +611,6 @@
             "Dado",
             "Fragola"
           ],
-          "icons": [
-            "🔔",
-            "🧭",
-            "🎲",
-            "🍓"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Memorizza l’ordine finale degli oggetti",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -799,26 +622,19 @@
               "🪵",
               "🎲"
             ],
-            "durationMs": 5500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Bussola, fragola, palloncino, campanella, pezzo di legno, dado"
           }
         },
-        {
-          "id": "memory-r5q4",
+        "memory-r5q4": {
           "question": "Inverti 2 – 8 – 1 – 5 – 6. Qual è il secondo numero della sequenza inversa?",
           "answers": [
             "8",
             "2",
             "5",
             "1"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r5q5",
+        "memory-r5q5": {
           "question": "Sottrai il numero associato a SUD da quello associato a OVEST. Che cosa resta?",
           "answers": [
             "55",
@@ -826,8 +642,6 @@
             "75",
             "65"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Ricorda ogni direzione e numero",
             "instruction": "Memorizza tutto con attenzione. La scheda scomparirà automaticamente.",
@@ -836,281 +650,37 @@
               "EST · 71",
               "SUD · 28",
               "OVEST · 93"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r5q6",
+        "memory-r5q6": {
           "question": "A che ora partiva il treno di Sarah?",
           "answers": [
             "08:14",
             "08:40",
             "09:40",
             "18:40"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r5q7",
+        "memory-r5q7": {
           "question": "Quale parola veniva subito prima di MARMO nell’elenco precedente?",
           "answers": [
             "MARCIA",
             "MARGINE",
             "MARCA",
             "MARTE"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q8",
+        "memory-r5q8": {
           "question": "Chi era associato al violino?",
           "answers": [
             "Mia",
             "Omar",
             "Lena",
             "Noah"
-          ],
-          "correct": 0,
-          "category": "association"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "PROSSIMA SFIDA",
-    "adNote": "Un breve annuncio, poi si continua.",
-    "finalAdNote": "Un breve annuncio, poi vedrai il risultato.",
-    "finalBadge": "TEST DI MEMORIA COMPLETATO",
-    "finalIcon": "🧠",
-    "finalTitle": "TEST DI MEMORIA COMPLETATO",
-    "finalCopy": "Il risultato di memoria è pronto per essere svelato.",
-    "finalButton": "Vedi il mio risultato",
-    "finalChecklist": [
-      "40 risposte verificate",
-      "Sei abilità di memoria rispetto a",
-      "Punteggio finale calcolato"
-    ],
-    "reveals": [
-      {
-        "badge": "MEMORIA IMMEDIATA COMPLETATA",
-        "icon": "✓",
-        "title": "Memoria immediata completata",
-        "signal": "fixed",
-        "message": "Il prossimo round aggiunge immagini e dettagli."
-      },
-      {
-        "badge": "IMMAGINI E DETTAGLI COMPLETATI",
-        "icon": "✓",
-        "title": "Memoria visiva superata",
-        "signal": "fixed",
-        "message": "Ora arrivano numeri e memoria di lavoro."
-      },
-      {
-        "badge": "NUMERI E SCHEMI COMPLETATI",
-        "icon": "✓",
-        "title": "Hai superato la metà",
-        "signal": "fixed",
-        "message": "Ora arriva la trappola della memoria."
-      },
-      {
-        "badge": "TRAPPOLA DELLA MEMORIA COMPLETATA",
-        "icon": "✓",
-        "title": "Ora arriva la sfida finale di memoria",
-        "signal": "fixed",
-        "message": "Un ultimo round verificherà che cosa è rimasto impresso."
-      },
-      {
-        "badge": "SFIDA FINALE DI MEMORIA COMPLETATA",
-        "icon": "✓",
-        "title": "TEST DI MEMORIA COMPLETATO",
-        "signal": "fixed",
-        "message": "Il risultato di memoria è pronto per essere svelato."
-      }
-    ]
-  },
-  "progressLabel": "completato",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Sfida di memoria",
-    "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "PUNTEGGIO DI MEMORIA ATTUALE",
-    "levelLabel": "FASE",
-    "scoreSuffix": "corrette",
-    "journeyLabel": "SFIDA DI MEMORIA",
-    "kitchensCleared": "{value} / {total} sfide completate",
-    "currentRank": "LIVELLO ATTUALE · MEMORIA",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Sfida di memoria iniziata"
-      },
-      {
-        "afterStage": 5,
-        "label": "Sfida di memoria completata"
-      }
-    ],
-    "unlockEyebrow": "AGGIORNAMENTO RISULTATO · TEST DI MEMORIA",
-    "unlockTitle": "È pronta una nuova sfida: test di memoria",
-    "unlockCopy": "Prossima tappa: test di memoria.",
-    "finalEyebrow": "IL TUO RISULTATO DI MEMORIA",
-    "finalCareerTitle": "TEST DI MEMORIA COMPLETATO",
-    "strongestLabel": "Area più forte di memoria",
-    "stages": [
-      {
-        "difficulty": "Fondamenti",
-        "preAdBadge": "MEMORIA IMMEDIATA COMPLETATA",
-        "preAdTitle": "Memoria immediata completata",
-        "preAdCopy": "Il prossimo round aggiunge immagini e dettagli.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "MEMORIA IMMEDIATA COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "Memoria immediata completata",
-            "insight": "Il prossimo round aggiunge immagini e dettagli."
-          },
-          "medium": {
-            "title": "Memoria immediata completata",
-            "insight": "Il prossimo round aggiunge immagini e dettagli."
-          },
-          "low": {
-            "title": "Memoria immediata completata",
-            "insight": "Il prossimo round aggiunge immagini e dettagli."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
-          "title": "Immagini e dettagli",
-          "difficulty": "Intermedio",
-          "tagline": "Colori. Posizioni. Cambiamenti.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Intermedio",
-        "preAdBadge": "IMMAGINI E DETTAGLI COMPLETATI",
-        "preAdTitle": "Memoria visiva superata",
-        "preAdCopy": "Ora arrivano numeri e memoria di lavoro.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "IMMAGINI E DETTAGLI COMPLETATI",
-        "resultBands": {
-          "high": {
-            "title": "Memoria visiva superata",
-            "insight": "Ora arrivano numeri e memoria di lavoro."
-          },
-          "medium": {
-            "title": "Memoria visiva superata",
-            "insight": "Ora arrivano numeri e memoria di lavoro."
-          },
-          "low": {
-            "title": "Memoria visiva superata",
-            "insight": "Ora arrivano numeri e memoria di lavoro."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
-          "title": "Numeri e schemi",
-          "difficulty": "Competente",
-          "tagline": "Cifre. Ordine. Memoria di lavoro.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Competente",
-        "preAdBadge": "NUMERI E SCHEMI COMPLETATI",
-        "preAdTitle": "Hai superato la metà",
-        "preAdCopy": "Ora arriva la trappola della memoria.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "NUMERI E SCHEMI COMPLETATI",
-        "resultBands": {
-          "high": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arriva la trappola della memoria."
-          },
-          "medium": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arriva la trappola della memoria."
-          },
-          "low": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arriva la trappola della memoria."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
-          "title": "La trappola della memoria",
-          "difficulty": "Avanzato",
-          "tagline": "Interferenze. Indizi simili. Ricordi lontani.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Avanzato",
-        "preAdBadge": "TRAPPOLA DELLA MEMORIA COMPLETATA",
-        "preAdTitle": "Ora arriva la sfida finale di memoria",
-        "preAdCopy": "Un ultimo round verificherà che cosa è rimasto impresso.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "TRAPPOLA DELLA MEMORIA COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "Ora arriva la sfida finale di memoria",
-            "insight": "Un ultimo round verificherà che cosa è rimasto impresso."
-          },
-          "medium": {
-            "title": "Ora arriva la sfida finale di memoria",
-            "insight": "Un ultimo round verificherà che cosa è rimasto impresso."
-          },
-          "low": {
-            "title": "Ora arriva la sfida finale di memoria",
-            "insight": "Un ultimo round verificherà che cosa è rimasto impresso."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
-          "title": "Sfida finale di memoria",
-          "difficulty": "Prova finale",
-          "tagline": "Richiamo differito. Manipolazione. Ultimi richiami.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Prova finale",
-        "preAdBadge": "SFIDA FINALE DI MEMORIA COMPLETATA",
-        "preAdTitle": "TEST DI MEMORIA COMPLETATO",
-        "preAdChecks": [
-          "40 risposte verificate",
-          "Sei abilità di memoria rispetto a",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Vedi il mio risultato",
-        "resultIcon": "🧠",
-        "resultLabel": "SFIDA FINALE DI MEMORIA COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "TEST DI MEMORIA COMPLETATO",
-            "insight": "Il risultato di memoria è pronto per essere svelato."
-          },
-          "medium": {
-            "title": "TEST DI MEMORIA COMPLETATO",
-            "insight": "Il risultato di memoria è pronto per essere svelato."
-          },
-          "low": {
-            "title": "TEST DI MEMORIA COMPLETATO",
-            "insight": "Il risultato di memoria è pronto per essere svelato."
-          }
-        },
-        "preAdCopy": "Il risultato di memoria è pronto per essere svelato."
-      }
-    ]
   }
 }

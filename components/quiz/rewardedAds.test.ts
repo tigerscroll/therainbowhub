@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { mountDisplayAd, mountStickyDisplayAd, requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
+import { requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 
 test("rewarded ads reopen after early closes and only count genuine unavailability", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
@@ -110,90 +110,4 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   controller.abort();
   assert.equal(await cancelled, "closed", "aborting a gate must stop it without consuming unavailable attempts");
   assert.equal(requests, 10);
-});
-
-test("question ads reuse one GPT slot and refresh it between questions", () => {
-  let definitions = 0;
-  let displays = 0;
-  let refreshes = 0;
-  let destroys = 0;
-  const slot = {
-    addService() { return this; },
-    defineSizeMapping() { return this; },
-  };
-  const pubads = {
-    addEventListener() {},
-    collapseEmptyDivs() { return true; },
-    refresh(slots: object[]) {
-      assert.deepEqual(slots, [slot]);
-      refreshes += 1;
-    },
-    removeEventListener() {},
-  };
-  const googletag = {
-    cmd: { push(command: () => void) { command(); } },
-    defineSlot() { definitions += 1; return slot; },
-    destroySlots(slots: object[]) { assert.deepEqual(slots, [slot]); destroys += 1; },
-    display(elementId: string) { assert.equal(elementId, "chef-question-ad"); displays += 1; },
-    enableServices() {},
-    pubads() { return pubads; },
-    setConfig() {},
-    sizeMapping() {
-      return {
-        addSize() { return this; },
-        build() { return []; },
-      };
-    },
-  };
-  Object.defineProperty(globalThis, "window", {
-    configurable: true,
-    value: { googletag },
-  });
-
-  const controller = mountDisplayAd({
-    adUnitPath: "/display",
-    elementId: "chef-question-ad",
-    sizes: [[336, 280], [300, 250], [300, 50]],
-  });
-  controller.refresh();
-  controller.refresh();
-  controller.destroy();
-
-  assert.equal(definitions, 1, "the ad slot should be defined only once");
-  assert.equal(displays, 1, "display should make the initial request only once");
-  assert.equal(refreshes, 2, "question transitions should refresh the existing slot");
-  assert.equal(destroys, 1, "the slot should be destroyed only when leaving the question flow");
-});
-
-test("results can mount one GPT bottom-anchor slot without affecting page layout", () => {
-  let definitions = 0;
-  let displays = 0;
-  let destroys = 0;
-  const slot = { addService() { return this; } };
-  const googletag = {
-    cmd: { push(command: () => void) { command(); } },
-    defineOutOfPageSlot(path: string, format: string) {
-      assert.equal(path, "/display");
-      assert.equal(format, "bottom-anchor");
-      definitions += 1;
-      return slot;
-    },
-    destroySlots(slots: object[]) { assert.deepEqual(slots, [slot]); destroys += 1; },
-    display(receivedSlot: object) { assert.equal(receivedSlot, slot); displays += 1; },
-    enableServices() {},
-    enums: { OutOfPageFormat: { BOTTOM_ANCHOR: "bottom-anchor" } },
-    pubads() { return { addEventListener() {} }; },
-    setConfig() {},
-  };
-  Object.defineProperty(globalThis, "window", {
-    configurable: true,
-    value: { googletag },
-  });
-
-  const controller = mountStickyDisplayAd({ adUnitPath: "/display" });
-  controller.destroy();
-
-  assert.equal(definitions, 1);
-  assert.equal(displays, 1);
-  assert.equal(destroys, 1);
 });

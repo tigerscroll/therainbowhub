@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "title": "L'IA disegnerà la persona che sposerai",
   "summary": "Indizi legati ad attrazione, personalità, stile di vita e chimica di coppia delineano il ritratto della persona che potresti sposare.",
   "landing": {
@@ -17,11 +18,71 @@
     },
     "disclaimer": "Solo a scopo di intrattenimento e riflessione personale. Questo quiz associa le tue preferenze a un ritratto immaginario originale e a un archetipo relazionale. Non identifica una persona reale né prevede una relazione o un matrimonio effettivi."
   },
+  "checkpoint": {
+    "finalAdNote": "Una breve pubblicità, poi scopri il ritratto."
+  },
+  "career": {
+    "resultProgressLabel": "Abbinamento del ritratto",
+    "resultProgressComplete": "{value}% completato",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Base",
+        "preAdBadge": "CODICE DELL’ATTRAZIONE COMPLETO",
+        "preAdTitle": "Il tuo schema di attrazione prende forma",
+        "preAdCopy": "Le prime linee del ritratto stanno emergendo.",
+        "next": {
+          "eyebrow": "AVANTI · IN EVOLUZIONE",
+          "tagline": "Chi senti davvero al tuo fianco?"
+        }
+      },
+      "stage-2": {
+        "difficulty": "In evoluzione",
+        "preAdBadge": "PERSONALITÀ ABBINATA",
+        "preAdTitle": "La personalità si fa più chiara",
+        "preAdCopy": "L’affinità emotiva ora ha contorni più nitidi.",
+        "next": {
+          "eyebrow": "AVANTI · IMPEGNATIVO",
+          "tagline": "Quale futuro si adatta a entrambi?"
+        }
+      },
+      "stage-3": {
+        "difficulty": "Impegnativo",
+        "preAdBadge": "VITA INSIEME ANALIZZATA",
+        "preAdTitle": "Il vostro futuro insieme si delinea",
+        "preAdCopy": "Le scelte di vita aggiungono profondità al ritratto.",
+        "next": {
+          "eyebrow": "AVANTI · AVANZATO",
+          "tagline": "Che sensazione dovrebbe dare il legame?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzato",
+        "preAdBadge": "PROVA D’INTESA COMPLETATA",
+        "preAdTitle": "L’abbinamento è quasi completo",
+        "preAdCopy": "Manca solo un’ultima scelta istintiva.",
+        "next": {
+          "eyebrow": "AVANTI · ABBINAMENTO FINALE",
+          "tagline": "Un’ultima scelta istintiva prima della rivelazione."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Abbinamento finale",
+        "preAdBadge": "INDIZI SUL FUTURO COMBINATI",
+        "preAdTitle": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
+        "preAdCopy": "Il ritratto è pronto per essere svelato.",
+        "preAdChecks": [
+          "Schema di attrazione analizzato",
+          "Personalità e intesa abbinate",
+          "Indizi sul futuro combinati"
+        ],
+        "preAdButton": "Scopri il ritratto"
+      }
+    }
+  },
   "results": {
     "name": "LA TUA AFFINITÀ FUTURA",
-    "profiles": [
-      {
-        "id": "warm_anchor",
+    "profiles": {
+      "warm_anchor": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "Il Porto Sicuro",
         "copy": "Questa persona offre una stabilità che rassicura senza diventare monotona. Il legame lascia spazio all’onestà, porta calore nella quotidianità e crea la sicurezza necessaria per crescere insieme.",
@@ -34,8 +95,7 @@
         ],
         "firstFeature": "uno sguardo espressivo e rassicurante."
       },
-      {
-        "id": "playful_spark",
+      "playful_spark": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "La Scintilla Giocosa",
         "copy": "Questa persona porta leggerezza senza evitare le cose serie. L’intesa cresce attraverso battute condivise, programmi spontanei e la sensazione che anche una serata qualunque possa diventare un ricordo prezioso.",
@@ -48,8 +108,7 @@
         ],
         "firstFeature": "un sorriso impossibile da ignorare."
       },
-      {
-        "id": "quiet_creative",
+      "quiet_creative": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "L’Anima Creativa",
         "copy": "Questa persona nota ciò che agli altri sfugge. Immaginazione, originalità pacata e sicurezza discreta creano un legame che si approfondisce lentamente e continua a rivelare nuove sfumature.",
@@ -62,8 +121,7 @@
         ],
         "firstFeature": "uno stile inconfondibile e naturale."
       },
-      {
-        "id": "grounded_builder",
+      "grounded_builder": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "La Forza Concreta",
         "copy": "Questa persona trasforma la premura in gesti concreti. Pazienza, affidabilità e ottimismo pratico danno vita a un rapporto in cui i progetti diventano reali senza perdere calore.",
@@ -76,8 +134,7 @@
         ],
         "firstFeature": "una presenza calma e sicura."
       },
-      {
-        "id": "magnetic_connector",
+      "magnetic_connector": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "Il Legame Magnetico",
         "copy": "Questa persona sa far sentire gli altri davvero considerati. Alla sicurezza sociale unisce una profonda sensibilità emotiva: l’attrazione resta intensa e il rapporto conserva generosità e profondità.",
@@ -90,8 +147,7 @@
         ],
         "firstFeature": "uno sguardo vivace e subito coinvolgente."
       },
-      {
-        "id": "curious_explorer",
+      "curious_explorer": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "Lo Spirito Esploratore",
         "copy": "Questa persona vede la vita come una scoperta da condividere. Energia, indipendenza e curiosità autentica lasciano spazio all’avventura e, allo stesso tempo, creano la vicinanza di casa.",
@@ -104,8 +160,7 @@
         ],
         "firstFeature": "uno sguardo curioso e avventuroso."
       },
-      {
-        "id": "thoughtful_dreamer",
+      "thoughtful_dreamer": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "L’Anima Sognatrice",
         "copy": "Questa persona porta tenerezza e immaginazione nel rapporto. Sa ascoltare, ricorda i piccoli dettagli e rende le speranze condivise emotivamente ricche senza farle sembrare irrealistiche.",
@@ -118,8 +173,7 @@
         ],
         "firstFeature": "un’espressione dolce e pensierosa."
       },
-      {
-        "id": "ambitious_teammate",
+      "ambitious_teammate": {
         "tier": "ARCHETIPO RELAZIONALE",
         "title": "La Spinta Ambiziosa",
         "copy": "Questa persona desidera un rapporto che proceda insieme. La determinazione si unisce a lealtà e incoraggiamento, trasformando due ambizioni personali nella sensazione di essere una vera squadra.",
@@ -132,41 +186,24 @@
         ],
         "firstFeature": "una postura sicura e uno sguardo diretto."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Devozione costante",
-        "profiles": [
-          "warm_anchor",
-          "grounded_builder"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Devozione costante"
       },
-      {
-        "label": "Intesa giocosa",
-        "profiles": [
-          "playful_spark",
-          "magnetic_connector"
-        ]
+      "dimension-2": {
+        "label": "Intesa giocosa"
       },
-      {
-        "label": "Profondità creativa",
-        "profiles": [
-          "quiet_creative",
-          "thoughtful_dreamer"
-        ]
+      "dimension-3": {
+        "label": "Profondità creativa"
       },
-      {
-        "label": "Slancio condiviso",
-        "profiles": [
-          "curious_explorer",
-          "ambitious_teammate"
-        ]
+      "dimension-4": {
+        "label": "Slancio condiviso"
       }
-    ],
+    },
     "profileReveal": {
       "eyebrow": "LA PERSONA DEL TUO FUTURO",
       "auraLabel": "LA SUA ENERGIA",
-      "auraLabelFirst": true,
       "traitsLabel": "TRE TRATTI",
       "strongestEnergy": "Ciò che vi avvicina",
       "hiddenEnergy": "Dove nascerà l’intesa",
@@ -177,1193 +214,394 @@
         "mixed": "86% · Chimica variegata"
       },
       "firstFeatureLabel": "Il tratto che noterai per primo:",
-      "portraitAlt": "Ritratto a matita: {profile}",
-      "disclaimer": "Solo a scopo di intrattenimento e riflessione personale. Questo quiz associa le tue preferenze a un ritratto immaginario originale e a un archetipo relazionale. Non identifica una persona reale né prevede una relazione o un matrimonio effettivi."
+      "portraitAlt": "Ritratto a matita: {profile}"
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Il codice dell’attrazione ✨",
-      "questions": [
-        {
-          "id": "marry-r1q1",
+      "questions": {
+        "marry-r1q1": {
           "question": "Che aspetto dovrebbe avere la persona del tuo futuro ritratto?",
           "answers": [
             "Aspetto maschile",
             "Aspetto femminile",
             "Aspetto androgino",
             "Sorprendimi"
-          ],
-          "calibration": [
-            0,
-            0,
-            0,
-            0
           ]
         },
-        {
-          "id": "marry-r1q2",
+        "marry-r1q2": {
           "question": "Quale sorriso ti colpisce per primo?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/smile-a.webp",
-            "/quizzes/marry/assets/items/smile-b.webp",
-            "/quizzes/marry/assets/items/smile-c.webp",
-            "/quizzes/marry/assets/items/smile-d.webp"
-          ],
-          "answers": {
-            "Caldo e sicuro di sé": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Dolcemente malizioso": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Sottile e insolito": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Aperto e spontaneo": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "Caldo e sicuro di sé",
+            "Dolcemente malizioso",
+            "Sottile e insolito",
+            "Aperto e spontaneo"
+          ]
         },
-        {
-          "id": "marry-r1q3",
+        "marry-r1q3": {
           "question": "Quale sguardo catturerebbe la tua attenzione?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/eyes-a.webp",
-            "/quizzes/marry/assets/items/eyes-b.webp",
-            "/quizzes/marry/assets/items/eyes-c.webp",
-            "/quizzes/marry/assets/items/eyes-d.webp"
-          ],
-          "answers": {
-            "Gentile e attento": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Audace e curioso": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Vivace ed espressivo": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Calmo e concentrato": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Gentile e attento",
+            "Audace e curioso",
+            "Vivace ed espressivo",
+            "Calmo e concentrato"
+          ]
         },
-        {
-          "id": "marry-r1q4",
+        "marry-r1q4": {
           "question": "Quale stile personale trovi più attraente?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/style-a.webp",
-            "/quizzes/marry/assets/items/style-b.webp",
-            "/quizzes/marry/assets/items/style-c.webp",
-            "/quizzes/marry/assets/items/style-d.webp"
-          ],
-          "answers": {
-            "Rilassato con dettagli avventurosi": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Artistico con un elemento distintivo": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Curato e pratico": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Giocoso e creativo": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "Rilassato con dettagli avventurosi",
+            "Artistico con un elemento distintivo",
+            "Curato e pratico",
+            "Giocoso e creativo"
+          ]
         },
-        {
-          "id": "marry-r1q5",
+        "marry-r1q5": {
           "question": "Quale prima impressione ti attrae di più?",
-          "answers": {
-            "Rassicurante, calorosa e carismatica": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Indipendente e capace": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Gentile e intrigante": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Energica e determinata": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Rassicurante, calorosa e carismatica",
+            "Indipendente e capace",
+            "Gentile e intrigante",
+            "Energica e determinata"
+          ]
         },
-        {
-          "id": "marry-r1q6",
+        "marry-r1q6": {
           "question": "Scegli il look per un appuntamento che noti per primo.",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/date-look-a.webp",
-            "/quizzes/marry/assets/items/date-look-b.webp",
-            "/quizzes/marry/assets/items/date-look-c.webp",
-            "/quizzes/marry/assets/items/date-look-d.webp"
-          ],
-          "answers": {
-            "Senza tempo e sobrio": {
-              "warm_anchor": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Espressivo e creativo": {
-              "magnetic_connector": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Colorato e spensierato": {
-              "curious_explorer": 0.5,
-              "playful_spark": 0.5
-            },
-            "Premuroso e curato": {
-              "thoughtful_dreamer": 0.5,
-              "ambitious_teammate": 0.5
-            }
-          }
+          "answers": [
+            "Senza tempo e sobrio",
+            "Espressivo e creativo",
+            "Colorato e spensierato",
+            "Premuroso e curato"
+          ]
         },
-        {
-          "id": "marry-r1q7",
+        "marry-r1q7": {
           "question": "Che tipo di voce vorresti continuare ad ascoltare?",
-          "answers": {
-            "Profonda, calma e pacata": {
-              "warm_anchor": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Calda, vivace e scherzosa": {
-              "grounded_builder": 0.5,
-              "playful_spark": 0.5
-            },
-            "Sicura di sé e animata": {
-              "magnetic_connector": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Curiosa e sognante": {
-              "curious_explorer": 0.5,
-              "thoughtful_dreamer": 0.5
-            }
-          }
+          "answers": [
+            "Profonda, calma e pacata",
+            "Calda, vivace e scherzosa",
+            "Sicura di sé e animata",
+            "Curiosa e sognante"
+          ]
         },
-        {
-          "id": "marry-r1q8",
+        "marry-r1q8": {
           "question": "Cosa noti solitamente per primo?",
-          "answers": {
-            "Un sorriso caloroso": {
-              "warm_anchor": 0.5,
-              "playful_spark": 0.5
-            },
-            "Lo stile e la postura": {
-              "quiet_creative": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Occhi calmi e profondi": {
-              "grounded_builder": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "L'energia espressiva": {
-              "magnetic_connector": 0.5,
-              "curious_explorer": 0.5
-            }
-          }
+          "answers": [
+            "Un sorriso caloroso",
+            "Lo stile e la postura",
+            "Occhi calmi e profondi",
+            "L'energia espressiva"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "L’affinità caratteriale ❤️",
-      "questions": [
-        {
-          "id": "marry-r2q1",
+      "questions": {
+        "marry-r2q1": {
           "question": "Quale presenza ti fa sentire a tuo agio al tuo fianco?",
-          "answers": {
-            "Rassicurante, con una determinazione tranquilla": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Divertente, con autentica sensibilità": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Originale e di mentalità aperta": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Stabile e a proprio agio nelle relazioni sociali": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "Rassicurante, con una determinazione tranquilla",
+            "Divertente, con autentica sensibilità",
+            "Originale e di mentalità aperta",
+            "Stabile e a proprio agio nelle relazioni sociali"
+          ]
         },
-        {
-          "id": "marry-r2q2",
+        "marry-r2q2": {
           "question": "Cosa fa crescere più velocemente la fiducia in te?",
-          "answers": {
-            "Ascoltare con attenzione e ricordare": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Rispettare la libertà e fare il tifo per te": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Risate sincere e conversazioni aperte": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Costanza discreta e coerenza nelle azioni": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Ascoltare con attenzione e ricordare",
+            "Rispettare la libertà e fare il tifo per te",
+            "Risate sincere e conversazioni aperte",
+            "Costanza discreta e coerenza nelle azioni"
+          ]
         },
-        {
-          "id": "marry-r2q3",
+        "marry-r2q3": {
           "question": "Quale qualità a lungo termine conta di più?",
-          "answers": {
-            "Un caloroso spirito d'avventura": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Profondità emotiva e abilità relazionali": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Ambizione condivisa e affidabilità": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Spirito giocoso e immaginazione": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "Un caloroso spirito d'avventura",
+            "Profondità emotiva e abilità relazionali",
+            "Ambizione condivisa e affidabilità",
+            "Spirito giocoso e immaginazione"
+          ]
         },
-        {
-          "id": "marry-r2q4",
+        "marry-r2q4": {
           "question": "Che tipo di umorismo ti conquista?",
-          "answers": {
-            "Storie accoglienti che coinvolgono tutti": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Osservazioni ironiche e asciutte durante un'avventura": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Battute argute e discrete, solo per te": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Prese in giro audaci con il tempismo perfetto": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Storie accoglienti che coinvolgono tutti",
+            "Osservazioni ironiche e asciutte durante un'avventura",
+            "Battute argute e discrete, solo per te",
+            "Prese in giro audaci con il tempismo perfetto"
+          ]
         },
-        {
-          "id": "marry-r2q5",
+        "marry-r2q5": {
           "question": "Quando tutto ti sembra troppo, quale tipo di supporto preferisci?",
-          "answers": {
-            "Aiuto concreto e una presenza costante": {
-              "warm_anchor": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Una conversazione profonda che cambia prospettiva": {
-              "magnetic_connector": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Un cambio d'aria e un motivo per ridere": {
-              "curious_explorer": 0.5,
-              "playful_spark": 0.5
-            },
-            "Rassicurazioni gentili e un piano chiaro": {
-              "thoughtful_dreamer": 0.5,
-              "ambitious_teammate": 0.5
-            }
-          }
+          "answers": [
+            "Aiuto concreto e una presenza costante",
+            "Una conversazione profonda che cambia prospettiva",
+            "Un cambio d'aria e un motivo per ridere",
+            "Rassicurazioni gentili e un piano chiaro"
+          ]
         },
-        {
-          "id": "marry-r2q6",
+        "marry-r2q6": {
           "question": "Cosa rende qualcuno indimenticabile?",
-          "answers": {
-            "Calore discreto e originalità": {
-              "warm_anchor": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Sicurezza di sé e un lato giocoso": {
-              "grounded_builder": 0.5,
-              "playful_spark": 0.5
-            },
-            "Concentrazione magnetica ed energia travolgente": {
-              "magnetic_connector": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Curiosità e profondità emotiva": {
-              "curious_explorer": 0.5,
-              "thoughtful_dreamer": 0.5
-            }
-          }
+          "answers": [
+            "Calore discreto e originalità",
+            "Sicurezza di sé e un lato giocoso",
+            "Concentrazione magnetica ed energia travolgente",
+            "Curiosità e profondità emotiva"
+          ]
         },
-        {
-          "id": "marry-r2q7",
+        "marry-r2q7": {
           "question": "Con quale difetto innocuo potresti convivere?",
-          "answers": {
-            "Trasforma i momenti seri in battute": {
-              "warm_anchor": 0.5,
-              "playful_spark": 0.5
-            },
-            "Si perde completamente in un nuovo progetto": {
-              "quiet_creative": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Analizza eccessivamente anche i minimi dettagli": {
-              "grounded_builder": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Dice di sì prima di controllare il programma": {
-              "magnetic_connector": 0.5,
-              "curious_explorer": 0.5
-            }
-          }
+          "answers": [
+            "Trasforma i momenti seri in battute",
+            "Si perde completamente in un nuovo progetto",
+            "Analizza eccessivamente anche i minimi dettagli",
+            "Dice di sì prima di controllare il programma"
+          ]
         },
-        {
-          "id": "marry-r2q8",
+        "marry-r2q8": {
           "question": "Alle due di notte, chi vorresti accanto a te?",
-          "answers": {
-            "Una persona calma e risolutiva che resta al tuo fianco": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Una persona gentile e divertente che ti capisce al volo": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Una persona riservata con un’idea folle": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Una persona pratica che conosce tutti": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "Una persona calma e risolutiva che resta al tuo fianco",
+            "Una persona gentile e divertente che ti capisce al volo",
+            "Una persona riservata con un’idea folle",
+            "Una persona pratica che conosce tutti"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "La vita insieme 🏡",
-      "questions": [
-        {
-          "id": "marry-r3q1",
+      "questions": {
+        "marry-r3q1": {
           "question": "Il vostro sabato ideale insieme inizia con...",
-          "answers": {
-            "Caffè, una conversazione vera e nessuna fretta": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Un programma che si trasforma in un'avventura": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Amici, risate e una prenotazione all'ultimo minuto": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Un progetto condiviso e una bella playlist": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Caffè, una conversazione vera e nessuna fretta",
+            "Un programma che si trasforma in un'avventura",
+            "Amici, risate e una prenotazione all'ultimo minuto",
+            "Un progetto condiviso e una bella playlist"
+          ]
         },
-        {
-          "id": "marry-r3q2",
+        "marry-r3q2": {
           "question": "Quale casa senti più vicina al tuo futuro?",
-          "answers": {
-            "Un rifugio accogliente vicino a spazi aperti": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Una bella casa piena di vita": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Un luogo ben progettato, pensato per crescere": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Un angolo colorato e ricco di idee": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "Un rifugio accogliente vicino a spazi aperti",
+            "Una bella casa piena di vita",
+            "Un luogo ben progettato, pensato per crescere",
+            "Un angolo colorato e ricco di idee"
+          ]
         },
-        {
-          "id": "marry-r3q3",
+        "marry-r3q3": {
           "question": "Che sensazione dovrebbero dare le decisioni economiche?",
-          "answers": {
-            "Aperte, cordiali e facili da affrontare": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Pratiche, con spazio per fare esperienze": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Ragionate e in linea con i tuoi valori": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Orientate agli obiettivi, ma con un budget per il divertimento": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Aperte, cordiali e facili da affrontare",
+            "Pratiche, con spazio per fare esperienze",
+            "Ragionate e in linea con i tuoi valori",
+            "Orientate agli obiettivi, ma con un budget per il divertimento"
+          ]
         },
-        {
-          "id": "marry-r3q4",
+        "marry-r3q4": {
           "question": "Scegli il ritmo dei vostri viaggi insieme.",
-          "answers": {
-            "Confortevole, tranquillo e ben organizzato": {
-              "warm_anchor": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Cultura, conversazioni e angoli nascosti": {
-              "magnetic_connector": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Programma flessibile, deviazioni audaci, grandi storie": {
-              "curious_explorer": 0.5,
-              "playful_spark": 0.5
-            },
-            "Luoghi significativi e un itinerario da sogno": {
-              "thoughtful_dreamer": 0.5,
-              "ambitious_teammate": 0.5
-            }
-          }
+          "answers": [
+            "Confortevole, tranquillo e ben organizzato",
+            "Cultura, conversazioni e angoli nascosti",
+            "Programma flessibile, deviazioni audaci, grandi storie",
+            "Luoghi significativi e un itinerario da sogno"
+          ]
         },
-        {
-          "id": "marry-r3q5",
+        "marry-r3q5": {
           "question": "Come dovrebbe essere la tua vita sociale?",
-          "answers": {
-            "Una cerchia ristretta e serate creative": {
-              "warm_anchor": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Programmi affidabili e tante risate": {
-              "grounded_builder": 0.5,
-              "playful_spark": 0.5
-            },
-            "Una rete vivace con obiettivi comuni": {
-              "magnetic_connector": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Volti nuovi e momenti intimi a due": {
-              "curious_explorer": 0.5,
-              "thoughtful_dreamer": 0.5
-            }
-          }
+          "answers": [
+            "Una cerchia ristretta e serate creative",
+            "Programmi affidabili e tante risate",
+            "Una rete vivace con obiettivi comuni",
+            "Volti nuovi e momenti intimi a due"
+          ]
         },
-        {
-          "id": "marry-r3q6",
+        "marry-r3q6": {
           "question": "Quale ritmo quotidiano sembra più felice?",
-          "answers": {
-            "Routine affettuose e sorprese giocose": {
-              "warm_anchor": 0.5,
-              "playful_spark": 0.5
-            },
-            "Concentrazione individuale, poi ambizioni condivise": {
-              "quiet_creative": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Collaborazione utile e conversazioni serali tranquille": {
-              "grounded_builder": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Relazione dinamica con fughe spontanee": {
-              "magnetic_connector": 0.5,
-              "curious_explorer": 0.5
-            }
-          }
+          "answers": [
+            "Routine affettuose e sorprese giocose",
+            "Concentrazione individuale, poi ambizioni condivise",
+            "Collaborazione utile e conversazioni serali tranquille",
+            "Relazione dinamica con fughe spontanee"
+          ]
         },
-        {
-          "id": "marry-r3q7",
+        "marry-r3q7": {
           "question": "Arriva un animale domestico. Cosa succede?",
-          "answers": {
-            "Create insieme una routine amorevole": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Riceve un nome buffo e attenzioni infinite": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Partecipa a weekend creativi e viaggi in auto": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Diventa il centro di calma di ogni ritrovo": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "Create insieme una routine amorevole",
+            "Riceve un nome buffo e attenzioni infinite",
+            "Partecipa a weekend creativi e viaggi in auto",
+            "Diventa il centro di calma di ogni ritrovo"
+          ]
         },
-        {
-          "id": "marry-r3q8",
+        "marry-r3q8": {
           "question": "Quale futuro condiviso sembra più felice?",
-          "answers": {
-            "Comprensione profonda e sicurezza emotiva": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Crescere, viaggiare e sostenersi a vicenda": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Pieno di amici, risate e connessione": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Creatività tranquilla, stabilità e basi solide": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Comprensione profonda e sicurezza emotiva",
+            "Crescere, viaggiare e sostenersi a vicenda",
+            "Pieno di amici, risate e connessione",
+            "Creatività tranquilla, stabilità e basi solide"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "La prova d’intesa 🔥",
-      "questions": [
-        {
-          "id": "marry-r4q1",
+      "questions": {
+        "marry-r4q1": {
           "question": "Inizia una conversazione difficile. Cosa sembra giusto?",
-          "answers": {
-            "Uscire, respirare e parlare con sincerità": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Dare un nome all'emozione e mantenere il calore": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Definire il problema e risolverlo insieme": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Usare l'ironia con delicatezza, poi approfondire": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "Uscire, respirare e parlare con sincerità",
+            "Dare un nome all'emozione e mantenere il calore",
+            "Definire il problema e risolverlo insieme",
+            "Usare l'ironia con delicatezza, poi approfondire"
+          ]
         },
-        {
-          "id": "marry-r4q2",
+        "marry-r4q2": {
           "question": "Dopo un disaccordo, cosa conta di più?",
-          "answers": {
-            "Un riavvicinamento affettuoso e una connessione autentica": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Spazio per ripartire, poi una conversazione pratica": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Scuse sincere che dimostrano comprensione": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Un passo successivo chiaro e una risata condivisa": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Un riavvicinamento affettuoso e una connessione autentica",
+            "Spazio per ripartire, poi una conversazione pratica",
+            "Scuse sincere che dimostrano comprensione",
+            "Un passo successivo chiaro e una risata condivisa"
+          ]
         },
-        {
-          "id": "marry-r4q3",
+        "marry-r4q3": {
           "question": "Quale gesto avrebbe più significato?",
-          "answers": {
-            "Occuparsi discretamente di qualcosa di difficile": {
-              "warm_anchor": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Organizzare qualcosa di personale, pensato nei minimi dettagli": {
-              "magnetic_connector": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Trasformare una giornata normale in un'avventura": {
-              "curious_explorer": 0.5,
-              "playful_spark": 0.5
-            },
-            "Ricordare un sogno e contribuire a realizzarlo": {
-              "thoughtful_dreamer": 0.5,
-              "ambitious_teammate": 0.5
-            }
-          }
+          "answers": [
+            "Occuparsi discretamente di qualcosa di difficile",
+            "Organizzare qualcosa di personale, pensato nei minimi dettagli",
+            "Trasformare una giornata normale in un'avventura",
+            "Ricordare un sogno e contribuire a realizzarlo"
+          ]
         },
-        {
-          "id": "marry-r4q4",
+        "marry-r4q4": {
           "question": "Chi dovrebbe fare la prima mossa?",
-          "answers": {
-            "Chiunque crei un momento di calma e autenticità": {
-              "warm_anchor": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Chiunque riesca a rendere il tutto naturale e divertente": {
-              "grounded_builder": 0.5,
-              "playful_spark": 0.5
-            },
-            "Chi ha abbastanza sicurezza in sé da essere chiaro": {
-              "magnetic_connector": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Chiunque segua la scintilla della curiosità": {
-              "curious_explorer": 0.5,
-              "thoughtful_dreamer": 0.5
-            }
-          }
+          "answers": [
+            "Chiunque crei un momento di calma e autenticità",
+            "Chiunque riesca a rendere il tutto naturale e divertente",
+            "Chi ha abbastanza sicurezza in sé da essere chiaro",
+            "Chiunque segua la scintilla della curiosità"
+          ]
         },
-        {
-          "id": "marry-r4q5",
+        "marry-r4q5": {
           "question": "Quale tipo di affetto risulta più naturale?",
-          "answers": {
-            "Contatto affettuoso e battute condivise in privato": {
-              "warm_anchor": 0.5,
-              "playful_spark": 0.5
-            },
-            "Vicinanza silenziosa mentre si costruisce qualcosa insieme": {
-              "quiet_creative": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Premura costante e parole gentili": {
-              "grounded_builder": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Grande energia e inviti spontanei": {
-              "magnetic_connector": 0.5,
-              "curious_explorer": 0.5
-            }
-          }
+          "answers": [
+            "Contatto affettuoso e battute condivise in privato",
+            "Vicinanza silenziosa mentre si costruisce qualcosa insieme",
+            "Premura costante e parole gentili",
+            "Grande energia e inviti spontanei"
+          ]
         },
-        {
-          "id": "marry-r4q6",
+        "marry-r4q6": {
           "question": "La persona al tuo fianco organizza una sorpresa. Scegli l’atmosfera.",
-          "answers": {
-            "Intima, premurosa e organizzata con sicurezza": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Divertente, tenera e ricca di piccoli dettagli": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Insolita, creativa e in un luogo nuovo": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Spontanea, accogliente e organizzata alla perfezione": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "Intima, premurosa e organizzata con sicurezza",
+            "Divertente, tenera e ricca di piccoli dettagli",
+            "Insolita, creativa e in un luogo nuovo",
+            "Spontanea, accogliente e organizzata alla perfezione"
+          ]
         },
-        {
-          "id": "marry-r4q7",
+        "marry-r4q7": {
           "question": "Siete entrambi esausti. Cosa ripristina la connessione?",
-          "answers": {
-            "Un confronto tranquillo e attenzioni sincere": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Una passeggiata, un piano e un cambio di scenario": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Cibo confortante, risate e una bella chiacchierata": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Silenzio sereno mentre si fa qualcosa di utile": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Un confronto tranquillo e attenzioni sincere",
+            "Una passeggiata, un piano e un cambio di scenario",
+            "Cibo confortante, risate e una bella chiacchierata",
+            "Silenzio sereno mentre si fa qualcosa di utile"
+          ]
         },
-        {
-          "id": "marry-r4q8",
+        "marry-r4q8": {
           "question": "Quale dinamica di coppia risulta più magnetica?",
-          "answers": {
-            "Un porto sicuro dove tornare, un mondo audace da esplorare": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Profonda intesa unita a un'energia sociale elettrizzante": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Due persone capaci che costruiscono il prossimo capitolo": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Complici creativi che mantengono viva la voglia di giocare": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "Un porto sicuro dove tornare, un mondo audace da esplorare",
+            "Profonda intesa unita a un'energia sociale elettrizzante",
+            "Due persone capaci che costruiscono il prossimo capitolo",
+            "Complici creativi che mantengono viva la voglia di giocare"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Gli indizi sul futuro 🔮",
-      "questions": [
-        {
-          "id": "marry-r5q1",
+      "questions": {
+        "marry-r5q1": {
           "question": "Quale luogo sembra un indizio?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/place-a.webp",
-            "/quizzes/marry/assets/items/place-b.webp",
-            "/quizzes/marry/assets/items/place-c.webp",
-            "/quizzes/marry/assets/items/place-d.webp"
-          ],
-          "answers": {
-            "Un accogliente cortile cittadino": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Una baita tranquilla fuori dai sentieri battuti": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Uno studio nascosto al crepuscolo": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Un tetto che risplende dopo la pioggia": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Un accogliente cortile cittadino",
+            "Una baita tranquilla fuori dai sentieri battuti",
+            "Uno studio nascosto al crepuscolo",
+            "Un tetto che risplende dopo la pioggia"
+          ]
         },
-        {
-          "id": "marry-r5q2",
+        "marry-r5q2": {
           "question": "Scegli la stagione che ti sembra più romantica.",
-          "answers": {
-            "Autunno dorato": {
-              "warm_anchor": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Inizio primavera": {
-              "magnetic_connector": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Piena estate": {
-              "curious_explorer": 0.5,
-              "playful_spark": 0.5
-            },
-            "Inverno limpido": {
-              "thoughtful_dreamer": 0.5,
-              "ambitious_teammate": 0.5
-            }
-          }
+          "answers": [
+            "Autunno dorato",
+            "Inizio primavera",
+            "Piena estate",
+            "Inverno limpido"
+          ]
         },
-        {
-          "id": "marry-r5q3",
+        "marry-r5q3": {
           "question": "Quale combinazione di colori ti attira?",
-          "answers": {
-            "Avorio e grigio carbone": {
-              "warm_anchor": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Rame e corallo": {
-              "grounded_builder": 0.5,
-              "playful_spark": 0.5
-            },
-            "Bordeaux e blu notte": {
-              "magnetic_connector": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Verde salvia e grigio tempesta": {
-              "curious_explorer": 0.5,
-              "thoughtful_dreamer": 0.5
-            }
-          }
+          "answers": [
+            "Avorio e grigio carbone",
+            "Rame e corallo",
+            "Bordeaux e blu notte",
+            "Verde salvia e grigio tempesta"
+          ]
         },
-        {
-          "id": "marry-r5q4",
+        "marry-r5q4": {
           "question": "Scegli un simbolo senza pensarci troppo.",
-          "answers": {
-            "Una piccola fiamma": {
-              "warm_anchor": 0.5,
-              "playful_spark": 0.5
-            },
-            "Una finestra aperta": {
-              "quiet_creative": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "Una bussola": {
-              "grounded_builder": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Una stella cadente": {
-              "magnetic_connector": 0.5,
-              "curious_explorer": 0.5
-            }
-          }
+          "answers": [
+            "Una piccola fiamma",
+            "Una finestra aperta",
+            "Una bussola",
+            "Una stella cadente"
+          ]
         },
-        {
-          "id": "marry-r5q5",
+        "marry-r5q5": {
           "question": "Quale porta sceglieresti di aprire?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/doorway-a.webp",
-            "/quizzes/marry/assets/items/doorway-b.webp",
-            "/quizzes/marry/assets/items/doorway-c.webp",
-            "/quizzes/marry/assets/items/doorway-d.webp"
-          ],
-          "answers": {
-            "La porta illuminata da una luce calda": {
-              "warm_anchor": 0.5,
-              "ambitious_teammate": 0.5
-            },
-            "La porta ricoperta di rampicanti": {
-              "playful_spark": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "La porta intagliata di uno studio": {
-              "quiet_creative": 0.5,
-              "curious_explorer": 0.5
-            },
-            "L'imponente porta spalancata": {
-              "grounded_builder": 0.5,
-              "magnetic_connector": 0.5
-            }
-          }
+          "answers": [
+            "La porta illuminata da una luce calda",
+            "La porta ricoperta di rampicanti",
+            "La porta intagliata di uno studio",
+            "L'imponente porta spalancata"
+          ]
         },
-        {
-          "id": "marry-r5q6",
+        "marry-r5q6": {
           "question": "Quale viaggio senti più tuo?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/marry/assets/items/journey-a.webp",
-            "/quizzes/marry/assets/items/journey-b.webp",
-            "/quizzes/marry/assets/items/journey-c.webp",
-            "/quizzes/marry/assets/items/journey-d.webp"
-          ],
-          "answers": {
-            "Un treno silenzioso tra le colline": {
-              "warm_anchor": 0.5,
-              "thoughtful_dreamer": 0.5
-            },
-            "Una strada verso l'ignoto all'alba": {
-              "ambitious_teammate": 0.5,
-              "curious_explorer": 0.5
-            },
-            "Un traghetto in arrivo in un porto vivace": {
-              "playful_spark": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Un sentiero illuminato da lanterne in un borgo antico": {
-              "quiet_creative": 0.5,
-              "grounded_builder": 0.5
-            }
-          }
+          "answers": [
+            "Un treno silenzioso tra le colline",
+            "Una strada verso l'ignoto all'alba",
+            "Un traghetto in arrivo in un porto vivace",
+            "Un sentiero illuminato da lanterne in un borgo antico"
+          ]
         },
-        {
-          "id": "marry-r5q7",
+        "marry-r5q7": {
           "question": "Dove potrebbe avvenire un incontro fortuito?",
-          "answers": {
-            "In un punto panoramico tranquillo dopo una lunga passeggiata": {
-              "warm_anchor": 0.5,
-              "curious_explorer": 0.5
-            },
-            "All'inaugurazione di una mostra con amici comuni": {
-              "thoughtful_dreamer": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Mentre si lavora per raggiungere lo stesso obiettivo": {
-              "ambitious_teammate": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Durante una deviazione divertente e un po' caotica": {
-              "playful_spark": 0.5,
-              "quiet_creative": 0.5
-            }
-          }
+          "answers": [
+            "In un punto panoramico tranquillo dopo una lunga passeggiata",
+            "All'inaugurazione di una mostra con amici comuni",
+            "Mentre si lavora per raggiungere lo stesso obiettivo",
+            "Durante una deviazione divertente e un po' caotica"
+          ]
         },
-        {
-          "id": "marry-r5q8",
+        "marry-r5q8": {
           "question": "Istinto finale: quale sensazione scegli?",
-          "answers": {
-            "Familiarità e accoglienza": {
-              "warm_anchor": 0.5,
-              "magnetic_connector": 0.5
-            },
-            "Libertà e sicurezza": {
-              "curious_explorer": 0.5,
-              "grounded_builder": 0.5
-            },
-            "Comprensione e ispirazione": {
-              "thoughtful_dreamer": 0.5,
-              "quiet_creative": 0.5
-            },
-            "Energia e slancio": {
-              "ambitious_teammate": 0.5,
-              "playful_spark": 0.5
-            }
-          }
+          "answers": [
+            "Familiarità e accoglienza",
+            "Libertà e sicurezza",
+            "Comprensione e ispirazione",
+            "Energia e slancio"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "AVANTI",
-    "adNote": "Una breve pubblicità, poi si continua.",
-    "finalAdNote": "Una breve pubblicità, poi scopri il ritratto.",
-    "progressLabel": "Abbinamento del ritratto",
-    "progressComplete": "{value}% completato",
-    "finalBadge": "ABBINAMENTO FINALE COMPLETO",
-    "finalIcon": "✦",
-    "finalTitle": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-    "finalCopy": "Il ritratto è pronto per essere svelato.",
-    "finalButton": "Scopri il ritratto",
-    "finalChecklist": [
-      "Schema di attrazione analizzato",
-      "Personalità e intesa abbinate",
-      "Indizi sul futuro combinati"
-    ],
-    "reveals": [
-      {
-        "badge": "CODICE DELL’ATTRAZIONE COMPLETO",
-        "icon": "✓",
-        "title": "Il tuo schema di attrazione prende forma",
-        "signal": "fixed",
-        "message": "Le prime linee del ritratto stanno emergendo."
-      },
-      {
-        "badge": "PERSONALITÀ ABBINATA",
-        "icon": "✓",
-        "title": "La personalità si fa più chiara",
-        "signal": "fixed",
-        "message": "L’affinità emotiva ora ha contorni più nitidi."
-      },
-      {
-        "badge": "VITA INSIEME ANALIZZATA",
-        "icon": "✓",
-        "title": "Il vostro futuro insieme si delinea",
-        "signal": "fixed",
-        "message": "Le scelte di vita aggiungono profondità al ritratto."
-      },
-      {
-        "badge": "PROVA D’INTESA COMPLETATA",
-        "icon": "✓",
-        "title": "L’abbinamento è quasi completo",
-        "signal": "fixed",
-        "message": "Manca solo un’ultima scelta istintiva."
-      },
-      {
-        "badge": "INDIZI SUL FUTURO COMBINATI",
-        "icon": "✦",
-        "title": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-        "signal": "fixed",
-        "message": "Il ritratto è pronto per essere svelato."
-      }
-    ]
-  },
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "stageResultMode": "completion",
-    "showResultProgress": true,
-    "resultProgressLabel": "Abbinamento del ritratto",
-    "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "SEGNALE DI AFFINITÀ",
-    "levelLabel": "CAPITOLO",
-    "scoreSuffix": "di affinità",
-    "journeyLabel": "ABBINAMENTO DEL RITRATTO",
-    "kitchensCleared": "{value} / {total} indizi combinati",
-    "currentRank": "AFFINITÀ ATTUALE",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Ritratto in formazione"
-      },
-      {
-        "afterStage": 5,
-        "label": "Ritratto abbinato"
-      }
-    ],
-    "unlockEyebrow": "PROGRESSO DELL’ABBINAMENTO",
-    "unlockTitle": "Un nuovo indizio è pronto",
-    "unlockCopy": "Il ritratto continua a prendere forma.",
-    "finalEyebrow": "LA PERSONA DEL TUO FUTURO",
-    "finalCareerTitle": "RITRATTO ABBINATO",
-    "strongestLabel": "Segnale di affinità dominante",
-    "stages": [
-      {
-        "difficulty": "Base",
-        "preAdBadge": "CODICE DELL’ATTRAZIONE COMPLETO",
-        "preAdTitle": "Il tuo schema di attrazione prende forma",
-        "preAdCopy": "Le prime linee del ritratto stanno emergendo.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "CODICE DELL’ATTRAZIONE COMPLETO",
-        "resultBands": {
-          "high": {
-            "title": "Il tuo schema di attrazione prende forma",
-            "insight": "Le prime linee del ritratto stanno emergendo."
-          },
-          "medium": {
-            "title": "Il tuo schema di attrazione prende forma",
-            "insight": "Le prime linee del ritratto stanno emergendo."
-          },
-          "low": {
-            "title": "Il tuo schema di attrazione prende forma",
-            "insight": "Le prime linee del ritratto stanno emergendo."
-          }
-        },
-        "next": {
-          "eyebrow": "AVANTI · IN EVOLUZIONE",
-          "title": "L’affinità caratteriale ❤️",
-          "difficulty": "In evoluzione",
-          "tagline": "Chi senti davvero al tuo fianco?",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "In evoluzione",
-        "preAdBadge": "PERSONALITÀ ABBINATA",
-        "preAdTitle": "La personalità si fa più chiara",
-        "preAdCopy": "L’affinità emotiva ora ha contorni più nitidi.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "PERSONALITÀ ABBINATA",
-        "resultBands": {
-          "high": {
-            "title": "La personalità si fa più chiara",
-            "insight": "L’affinità emotiva ora ha contorni più nitidi."
-          },
-          "medium": {
-            "title": "La personalità si fa più chiara",
-            "insight": "L’affinità emotiva ora ha contorni più nitidi."
-          },
-          "low": {
-            "title": "La personalità si fa più chiara",
-            "insight": "L’affinità emotiva ora ha contorni più nitidi."
-          }
-        },
-        "next": {
-          "eyebrow": "AVANTI · IMPEGNATIVO",
-          "title": "La vita insieme 🏡",
-          "difficulty": "Impegnativo",
-          "tagline": "Quale futuro si adatta a entrambi?",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Impegnativo",
-        "preAdBadge": "VITA INSIEME ANALIZZATA",
-        "preAdTitle": "Il vostro futuro insieme si delinea",
-        "preAdCopy": "Le scelte di vita aggiungono profondità al ritratto.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "VITA INSIEME ANALIZZATA",
-        "resultBands": {
-          "high": {
-            "title": "Il vostro futuro insieme si delinea",
-            "insight": "Le scelte di vita aggiungono profondità al ritratto."
-          },
-          "medium": {
-            "title": "Il vostro futuro insieme si delinea",
-            "insight": "Le scelte di vita aggiungono profondità al ritratto."
-          },
-          "low": {
-            "title": "Il vostro futuro insieme si delinea",
-            "insight": "Le scelte di vita aggiungono profondità al ritratto."
-          }
-        },
-        "next": {
-          "eyebrow": "AVANTI · AVANZATO",
-          "title": "La prova d’intesa 🔥",
-          "difficulty": "Avanzato",
-          "tagline": "Che sensazione dovrebbe dare il legame?",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Avanzato",
-        "preAdBadge": "PROVA D’INTESA COMPLETATA",
-        "preAdTitle": "L’abbinamento è quasi completo",
-        "preAdCopy": "Manca solo un’ultima scelta istintiva.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "PROVA D’INTESA COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "L’abbinamento è quasi completo",
-            "insight": "Manca solo un’ultima scelta istintiva."
-          },
-          "medium": {
-            "title": "L’abbinamento è quasi completo",
-            "insight": "Manca solo un’ultima scelta istintiva."
-          },
-          "low": {
-            "title": "L’abbinamento è quasi completo",
-            "insight": "Manca solo un’ultima scelta istintiva."
-          }
-        },
-        "next": {
-          "eyebrow": "AVANTI · ABBINAMENTO FINALE",
-          "title": "Gli indizi sul futuro 🔮",
-          "difficulty": "Abbinamento finale",
-          "tagline": "Un’ultima scelta istintiva prima della rivelazione.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Abbinamento finale",
-        "preAdBadge": "INDIZI SUL FUTURO COMBINATI",
-        "preAdTitle": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-        "preAdCopy": "Il ritratto è pronto per essere svelato.",
-        "preAdChecks": [
-          "Schema di attrazione analizzato",
-          "Personalità e intesa abbinate",
-          "Indizi sul futuro combinati"
-        ],
-        "preAdButton": "Scopri il ritratto",
-        "resultIcon": "✦",
-        "resultLabel": "INDIZI SUL FUTURO COMBINATI",
-        "resultBands": {
-          "high": {
-            "title": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-            "insight": "Il ritratto è pronto per essere svelato."
-          },
-          "medium": {
-            "title": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-            "insight": "Il ritratto è pronto per essere svelato."
-          },
-          "low": {
-            "title": "LA PERSONA DEL TUO FUTURO È STATA TROVATA",
-            "insight": "Il ritratto è pronto per essere svelato."
-          }
-        }
-      }
-    ]
   }
 }

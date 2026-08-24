@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Solo il 7% supera questo test d’intelligenza",
   "eyebrow": "LA CASSAFORTE DELL’INTELLIGENZA",
   "summary": "Schemi, regole numeriche, legami tra parole e trappole spaziali sfidano il tuo ragionamento.",
+  "progressLabel": "completato",
   "landing": {
     "intro": "Schemi, codici, legami tra parole e trappole logiche si susseguono: per quanto riuscirai a restare un passo avanti?",
     "cta": "Inizia il test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Solo per intrattenimento e cultura generale. Questo test d’intelligenza non è un esame ufficiale, una qualifica o un parere professionale."
   },
+  "checkpoint": {
+    "finalAdNote": "Un breve annuncio, poi vedrai il risultato."
+  },
+  "career": {
+    "resultProgressLabel": "Sfida d’intelligenza",
+    "resultProgressComplete": "{value}% completato",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamenti",
+        "preAdBadge": "SCATTO MENTALE COMPLETATO",
+        "preAdTitle": "Prima sfida completata",
+        "preAdCopy": "Da qui la difficoltà aumenta.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
+          "tagline": "Sequenze. Codici. Regole nascoste."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermedio",
+        "preAdBadge": "DECODIFICA DEGLI SCHEMI COMPLETATA",
+        "preAdTitle": "La cassaforte si complica",
+        "preAdCopy": "I prossimi enigmi richiedono un ragionamento più acuto.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
+          "tagline": "Relazioni. Deduzioni. Logica rapida."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Competente",
+        "preAdBadge": "LOGICA SOTTO PRESSIONE COMPLETATA",
+        "preAdTitle": "Hai superato la metà",
+        "preAdCopy": "Ora arrivano gli enigmi avanzati.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
+          "tagline": "Risposte plausibili. Indizi minimi."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzato",
+        "preAdBadge": "TRAPPOLE DI RAGIONAMENTO COMPLETATE",
+        "preAdTitle": "La cassaforte finale ti aspetta",
+        "preAdCopy": "Resta una sola sfida.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
+          "tagline": "Più passaggi. Precisione. Deduzioni finali."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Prova finale",
+        "preAdBadge": "CASSAFORTE DELL’INTELLIGENZA COMPLETATA",
+        "preAdTitle": "TEST D’INTELLIGENZA COMPLETATO",
+        "preAdCopy": "Il risultato è pronto per essere svelato.",
+        "preAdChecks": [
+          "40 risposte verificate",
+          "Sei aree di pensiero confrontate",
+          "Punteggio finale calcolato"
+        ],
+        "preAdButton": "Vedi il mio risultato"
+      }
+    }
+  },
   "results": {
     "name": "IL TUO PUNTEGGIO DEL TEST D’INTELLIGENZA",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Stratega dei sistemi",
         "copy": "Hai dimostrato una padronanza notevole di schemi, numeri, parole e logica spaziale. Persino le domande più impegnative ti hanno messo raramente in difficoltà."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Pensatore di precisione",
         "copy": "Il risultato mostra un’ottima padronanza di schemi, numeri, parole e logica spaziale. Il tuo ragionamento è rimasto sicuro anche davanti alle trappole più sottili."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Navigatore di schemi",
         "copy": "Hai ottenuto un risultato solido in schemi, numeri, parole e logica spaziale. Qualche dettaglio difficile ti ha rallentato, ma il quadro complessivo è convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Risolutore versatile",
         "copy": "Hai buone basi in schemi, numeri, parole e logica spaziale. Rafforzando i punti più delicati, il prossimo risultato può migliorare nettamente."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Analista curioso",
         "copy": "Hai riconosciuto diversi elementi chiave di schemi, numeri, parole e logica spaziale. Le domande mancate indicano con chiarezza gli aspetti da consolidare."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Meno del 50%",
         "title": "Esploratore di soluzioni",
         "copy": "Questa sfida ha mostrato alcuni margini di crescita in schemi, numeri, parole e logica spaziale. La curiosità e le risposte corrette sono un ottimo punto di partenza."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Schemi e codici",
-        "categories": [
-          "pattern",
-          "attention"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Schemi e codici"
       },
-      {
-        "label": "Parole e numeri",
-        "categories": [
-          "verbal",
-          "numerical"
-        ]
+      "dimension-2": {
+        "label": "Parole e numeri"
       },
-      {
-        "label": "Logica e spazio",
-        "categories": [
-          "logic",
-          "spatial"
-        ]
+      "dimension-3": {
+        "label": "Logica e spazio"
       }
-    ],
+    },
     "score": {
       "passed": "Sfida superata: test d’intelligenza!",
       "finished": "Sfida completata: test d’intelligenza",
@@ -88,8 +133,6 @@
       "strongest": "Area più forte di ragionamento",
       "trickiest": "Area più difficile di ragionamento",
       "bestRound": "Sfida migliore",
-      "showPercentage": true,
-      "showBestRound": true,
       "insights": {
         "overview": "punteggio del test d’intelligenza in sintesi",
         "correct": "corrette",
@@ -98,67 +141,15 @@
         "breakdown": "Analisi delle competenze di ragionamento",
         "snapshot": "Cosa suggerisce il profilo nel test d’intelligenza",
         "targetReached": "Obiettivo dell’80% raggiunto",
-        "targetRemaining": "Risposte corrette ancora necessarie per l’80%",
-        "details": {
-          "analysisTitle": "Come leggere il punteggio del test d’intelligenza",
-          "analysisCopy": "Questo risultato riunisce 40 domande in diversi ambiti: schemi, codici, parole, numeri, logica e spazio. La distribuzione seguente mostra le aree più solide di questo tentativo.",
-          "roadmapTitle": "Nel rapporto completo del test d’intelligenza",
-          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra la tua area di ragionamento più forte, il dettaglio per area e le risposte sbagliate nel test d’intelligenza.",
-          "roadmapItems": [
-            "Analisi del punteggio",
-            "Area più forte di ragionamento",
-            "Analisi delle competenze di ragionamento",
-            "Revisione completa delle risposte"
-          ],
-          "positionTitle": "Il percorso verso l’80%",
-          "positionCopy": "L’obiettivo ricreativo è 32 risposte corrette su 40. L’indicatore mostra quanto si è avvicinato questo tentativo nel test d’intelligenza, senza confronti o valutazioni professionali.",
-          "measuredTitle": "Che cosa ha esplorato il test d’intelligenza",
-          "measuredIntro": "Le domande coprono tre aspetti complementari specifici del test d’intelligenza.",
-          "measuredAreas": [
-            {
-              "title": "Schemi e codici",
-              "copy": "Individuare sequenze, incongruenze e la regola nascosta in informazioni visive compatte."
-            },
-            {
-              "title": "Parole e numeri",
-              "copy": "Collegare indizi linguistici e applicare con precisione le relazioni numeriche visibili."
-            },
-            {
-              "title": "Logica e spazio",
-              "copy": "Combinare vincoli, rotazioni e trasformazioni per arrivare a un’unica conclusione fondata."
-            }
-          ],
-          "tipsTitle": "Tre modi per affinare l’approccio di ragionamento",
-          "tipsIntro": "Strategie semplici per un altro tentativo nel test d’intelligenza, non una valutazione professionale.",
-          "tips": [
-            {
-              "title": "Dai un nome alla regola",
-              "copy": "Prima di scegliere, esprimi lo schema o il vincolo in una frase breve."
-            },
-            {
-              "title": "Controlla ogni indizio",
-              "copy": "Nei problemi logici, una negazione o una condizione minima spesso elimina la risposta più invitante."
-            },
-            {
-              "title": "Trasforma un passo alla volta",
-              "copy": "Per rotazioni, specchi e codici, applica ogni operazione separatamente."
-            }
-          ],
-          "finalTitle": "Il tuo risultato nel test d’intelligenza",
-          "finalCopy": "Hai risolto {score} rompicapi su {total}. Il tuo profilo di ragionamento ludico per questo tentativo è riportato qui sotto."
-        }
-      },
-      "disclaimer": "Solo per intrattenimento e cultura generale. Questo test d’intelligenza non è un esame ufficiale, una qualifica o un parere professionale."
+        "targetRemaining": "Risposte corrette ancora necessarie per l’80%"
+      }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Scatto mentale",
-      "questions": [
-        {
-          "id": "iq-s1q1",
-          "question": "Quale simbolo viene dopo?",
-          "presentation": "sequence",
+      "questions": {
+        "iq-s1q1": {
           "visual": {
             "items": [
               "○",
@@ -167,86 +158,65 @@
               "△",
               "?"
             ],
-            "columns": 5,
-            "separator": "→",
             "ariaLabel": "cerchio, triangolo, cerchio, triangolo, punto interrogativo"
           },
+          "question": "Quale simbolo viene dopo?",
           "answers": [
             "□",
             "○",
             "△",
             "●"
-          ],
-          "correct": 1,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s1q2",
-          "question": "Un quadrato vale 5 e un triangolo vale 3. Quanto fa triangolo × quadrato?",
-          "presentation": "code",
+        "iq-s1q2": {
           "visual": {
             "items": [
               "□ + □ = 10",
               "△ + □ = 8"
             ],
-            "columns": 1,
             "ariaLabel": "due quadrati valgono dieci; un triangolo più un quadrato vale otto"
           },
+          "question": "Un quadrato vale 5 e un triangolo vale 3. Quanto fa triangolo × quadrato?",
           "answers": [
             "12",
             "18",
             "20",
             "15"
-          ],
-          "correct": 3,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s1q3",
-          "question": "Quale parola completa entrambe le espressioni?",
-          "presentation": "code",
+        "iq-s1q3": {
           "visual": {
             "items": [
               "PALLA DA ___",
               "___ DA TAVOLO"
             ],
-            "columns": 1,
             "ariaLabel": "palla da, spazio vuoto; spazio vuoto, da tavolo"
           },
+          "question": "Quale parola completa entrambe le espressioni?",
           "answers": [
             "TENNIS",
             "GIOCO",
             "CALCIO",
             "CARTA"
-          ],
-          "correct": 0,
-          "category": "verbal"
+          ]
         },
-        {
-          "id": "iq-s1q4",
-          "question": "Quale freccia si ottiene riflettendo questa figura in uno specchio verticale?",
-          "presentation": "spatial",
+        "iq-s1q4": {
           "visual": {
             "items": [
               "↗",
               "│ SPECCHIO"
             ],
-            "columns": 2,
             "ariaLabel": "freccia verso l’alto a destra accanto a uno specchio verticale"
           },
+          "question": "Quale freccia si ottiene riflettendo questa figura in uno specchio verticale?",
           "answers": [
             "↘",
             "↗",
             "↖",
             "↙"
-          ],
-          "correct": 2,
-          "category": "spatial"
+          ]
         },
-        {
-          "id": "iq-s1q5",
-          "question": "Quale copia contiene uno zero al posto della lettera O?",
-          "presentation": "code",
+        "iq-s1q5": {
           "visual": {
             "items": [
               "PORTA",
@@ -254,34 +224,26 @@
               "P0RTA",
               "PORTA"
             ],
-            "columns": 4,
             "ariaLabel": "quattro copie della parola PORTA; la terza contiene uno zero"
           },
+          "question": "Quale copia contiene uno zero al posto della lettera O?",
           "answers": [
             "Prima",
             "Seconda",
             "Terza",
             "Quarta"
-          ],
-          "correct": 2,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "iq-s1q6",
+        "iq-s1q6": {
           "question": "Tutte le chiavi blu aprono il cancello A. Questa chiave è blu. Quale affermazione deve essere vera?",
           "answers": [
             "Apre il cancello A",
             "Apre tutti i cancelli",
             "Non può aprire il cancello A",
             "Il suo colore è sconosciuto"
-          ],
-          "correct": 0,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s1q7",
-          "question": "Quale numero viene dopo?",
-          "presentation": "sequence",
+        "iq-s1q7": {
           "visual": {
             "items": [
               "2",
@@ -290,40 +252,31 @@
               "11",
               "?"
             ],
-            "columns": 5,
-            "separator": "→",
             "ariaLabel": "due, cinque, otto, undici, punto interrogativo"
           },
+          "question": "Quale numero viene dopo?",
           "answers": [
             "12",
             "13",
             "15",
             "14"
-          ],
-          "correct": 3,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s1q8",
+        "iq-s1q8": {
           "question": "Tre scatole contengono in tutto 24 oggetti. A ne contiene 6 e B il doppio di A. Quanti ne contiene C?",
           "answers": [
             "4",
             "6",
             "8",
             "12"
-          ],
-          "correct": 1,
-          "category": "numerical"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Decodifica degli schemi",
-      "questions": [
-        {
-          "id": "iq-s2q1",
-          "question": "Le forme acquistano un lato a ogni passaggio. Quale viene dopo?",
-          "presentation": "sequence",
+      "questions": {
+        "iq-s2q1": {
           "visual": {
             "items": [
               "TRIANGOLO",
@@ -331,56 +284,42 @@
               "PENTAGONO",
               "?"
             ],
-            "columns": 4,
-            "separator": "→",
             "ariaLabel": "triangolo, quadrato, pentagono, punto interrogativo"
           },
+          "question": "Le forme acquistano un lato a ogni passaggio. Quale viene dopo?",
           "answers": [
             "Triangolo",
             "Esagono",
             "Quadrato",
             "Ottagono"
-          ],
-          "correct": 1,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s2q2",
-          "question": "Gli spostamenti delle lettere seguono +1, +2, +1. Come si codifica EMU?",
-          "presentation": "code",
+        "iq-s2q2": {
           "visual": {
             "items": [
               "REGOLA: +1, +2, +1",
               "APE → BRF"
             ],
-            "columns": 1,
             "ariaLabel": "regola: più uno, più due, più uno; APE diventa BRF"
           },
+          "question": "Gli spostamenti delle lettere seguono +1, +2, +1. Come si codifica EMU?",
           "answers": [
             "FOV",
             "FNV",
             "GOV",
             "FPW"
-          ],
-          "correct": 0,
-          "category": "verbal"
+          ]
         },
-        {
-          "id": "iq-s2q3",
+        "iq-s2q3": {
           "question": "Sei rivolto a nord e giri due volte a destra. In quale direzione guardi?",
           "answers": [
             "Nord",
             "Est",
             "Ovest",
             "Sud"
-          ],
-          "correct": 3,
-          "category": "spatial"
+          ]
         },
-        {
-          "id": "iq-s2q4",
-          "question": "Quale associazione non rispetta la regola mostrata?",
-          "presentation": "code",
+        "iq-s2q4": {
           "visual": {
             "items": [
               "REGOLA: ingresso × 2 + 1",
@@ -389,109 +328,84 @@
               "4 → 8",
               "5 → 11"
             ],
-            "columns": 1,
             "ariaLabel": "regola: moltiplica il numero per due e aggiungi uno; due dà cinque, tre dà sette, quattro dà otto, cinque dà undici"
           },
+          "question": "Quale associazione non rispetta la regola mostrata?",
           "answers": [
             "2 → 5",
             "3 → 7",
             "4 → 8",
             "5 → 11"
-          ],
-          "correct": 2,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "iq-s2q5",
+        "iq-s2q5": {
           "question": "Tutti i NIM sono TOV. Nessun TOV è RAK. Un NIM può essere RAK?",
           "answers": [
             "Sì",
             "No",
             "Solo uno",
             "Non ci sono abbastanza informazioni"
-          ],
-          "correct": 1,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s2q6",
-          "question": "Ogni casella è la somma delle due immediatamente sotto. Quale numero va in cima?",
-          "presentation": "code",
+        "iq-s2q6": {
           "visual": {
             "items": [
               "CIMA · ?",
               "CENTRO · 8 · 9",
               "BASE · 3 · 5 · 4"
             ],
-            "columns": 1,
             "ariaLabel": "piramide numerica con tre, cinque, quattro alla base e otto, nove al centro"
           },
+          "question": "Ogni casella è la somma delle due immediatamente sotto. Quale numero va in cima?",
           "answers": [
             "15",
             "16",
             "17",
             "18"
-          ],
-          "correct": 2,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s2q7",
+        "iq-s2q7": {
           "question": "Uccello sta a nido come ape sta a…",
           "answers": [
             "Alveare",
             "Ragnatela",
             "Tana",
             "Conchiglia"
-          ],
-          "correct": 0,
-          "category": "verbal"
+          ]
         },
-        {
-          "id": "iq-s2q8",
+        "iq-s2q8": {
           "question": "Quale coppia non rappresenta una rotazione di mezzo giro?",
           "answers": [
             "↑ ↓",
             "← →",
             "↗ ↙",
             "↑ →"
-          ],
-          "correct": 3,
-          "category": "spatial"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Logica sotto pressione",
-      "questions": [
-        {
-          "id": "iq-s3q1",
+      "questions": {
+        "iq-s3q1": {
           "question": "Mara è davanti a Leo e Leo è davanti a Nia. Quale ordine è possibile?",
           "answers": [
             "Leo — Mara — Nia",
             "Mara — Nia — Leo",
             "Mara — Leo — Nia",
             "Nia — Leo — Mara"
-          ],
-          "correct": 2,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s3q2",
+        "iq-s3q2": {
           "question": "Una macchina raddoppia un numero e poi aggiunge 3. Quale ingresso produce 17?",
           "answers": [
             "5",
             "6",
             "8",
             "7"
-          ],
-          "correct": 3,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s3q3",
-          "question": "La prima cifra indica il colore e la seconda la forma. Quale codice indica un quadrato blu?",
-          "presentation": "code",
+        "iq-s3q3": {
           "visual": {
             "items": [
               "ROSSO = 1",
@@ -499,77 +413,58 @@
               "TRIANGOLO = 3",
               "QUADRATO = 4"
             ],
-            "columns": 1,
             "ariaLabel": "rosso vale uno, blu vale due, triangolo vale tre, quadrato vale quattro"
           },
+          "question": "La prima cifra indica il colore e la seconda la forma. Quale codice indica un quadrato blu?",
           "answers": [
             "24",
             "23",
             "42",
             "12"
-          ],
-          "correct": 0,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s3q4",
-          "question": "Quale copia differisce dal riferimento per un solo carattere?",
-          "presentation": "code",
+        "iq-s3q4": {
           "visual": {
             "items": [
               "RIFERIMENTO: K7M2-Q9",
               "COMPITO: una sola modifica"
             ],
-            "columns": 1,
             "ariaLabel": "codice di riferimento K7M2-Q9; trovare l’opzione con un solo carattere diverso"
           },
+          "question": "Quale copia differisce dal riferimento per un solo carattere?",
           "answers": [
             "K7M2-P8",
             "K7N2-Q9",
             "K1M2-Q8",
             "K7N3-Q9"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "iq-s3q5",
-          "question": "Applica la stessa rotazione: se ↑ diventa ↘, che cosa diventa ←?",
-          "presentation": "spatial",
+        "iq-s3q5": {
           "visual": {
             "items": [
               "↑ → ↘",
               "← → ?"
             ],
-            "columns": 2,
             "ariaLabel": "la freccia verso l’alto diventa una freccia verso il basso a destra; applicare la stessa rotazione alla freccia verso sinistra"
           },
-          "reasoningSteps": 2,
+          "question": "Applica la stessa rotazione: se ↑ diventa ↘, che cosa diventa ←?",
           "answers": [
             "↓",
             "↙",
             "↗",
             "→"
-          ],
-          "correct": 2,
-          "category": "spatial"
+          ]
         },
-        {
-          "id": "iq-s3q6",
+        "iq-s3q6": {
           "question": "Quale coppia ha la stessa relazione di UCCELLO → STORMO?",
           "answers": [
             "Pesce → Banco",
             "Leone → Tana",
             "Ape → Miele",
             "Cavallo → Stalla"
-          ],
-          "correct": 0,
-          "category": "verbal"
+          ]
         },
-        {
-          "id": "iq-s3q7",
-          "question": "Quale numero viene dopo?",
-          "presentation": "sequence",
+        "iq-s3q7": {
           "visual": {
             "items": [
               "2",
@@ -579,62 +474,47 @@
               "17",
               "?"
             ],
-            "columns": 6,
-            "separator": "→",
             "ariaLabel": "due, tre, cinque, nove, diciassette, punto interrogativo"
           },
-          "reasoningSteps": 2,
+          "question": "Quale numero viene dopo?",
           "answers": [
             "25",
             "31",
             "34",
             "33"
-          ],
-          "correct": 3,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s3q8",
-          "question": "Quali due lettere si sono scambiate di posto?",
-          "presentation": "code",
+        "iq-s3q8": {
           "visual": {
             "items": [
               "A B C D",
               "A C B D"
             ],
-            "columns": 1,
             "ariaLabel": "prima sequenza A B C D; seconda sequenza A C B D"
           },
+          "question": "Quali due lettere si sono scambiate di posto?",
           "answers": [
             "A e B",
             "B e C",
             "C e D",
             "A e D"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Trappole di ragionamento",
-      "questions": [
-        {
-          "id": "iq-s4q1",
+      "questions": {
+        "iq-s4q1": {
           "question": "Una sola persona dice la verità. A dice: «B mente». B dice: «C mente». C dice: «A e B mentono entrambi». Chi dice la verità?",
           "answers": [
             "A",
             "B",
             "C",
             "Nessuno"
-          ],
-          "correct": 1,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s4q2",
-          "question": "Quale riga non rispetta la doppia regola?",
-          "presentation": "code",
+        "iq-s4q2": {
           "visual": {
             "items": [
               "A → B  |  2 → 4",
@@ -642,68 +522,52 @@
               "F → G  |  4 → 8",
               "H → J  |  5 → 10"
             ],
-            "columns": 1,
             "ariaLabel": "quattro righe associano una lettera alla successiva e un numero al suo doppio; la quarta salta una lettera"
           },
+          "question": "Quale riga non rispetta la doppia regola?",
           "answers": [
             "Prima",
             "Seconda",
             "Terza",
             "Quarta"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "iq-s4q3",
-          "question": "In ogni riga si applica la stessa regola. Quale numero sostituisce il punto interrogativo?",
-          "presentation": "code",
+        "iq-s4q3": {
           "visual": {
             "items": [
               "2 · 3 → 8",
               "3 · 4 → 15",
               "4 · 5 → ?"
             ],
-            "columns": 1,
             "ariaLabel": "due e tre danno otto; tre e quattro danno quindici; quattro e cinque danno un numero sconosciuto"
           },
+          "question": "In ogni riga si applica la stessa regola. Quale numero sostituisce il punto interrogativo?",
           "answers": [
             "20",
             "24",
             "25",
             "28"
-          ],
-          "correct": 1,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s4q4",
+        "iq-s4q4": {
           "question": "Parti dal centro rivolto a nord. Avanza di una casella, gira a destra, avanza di due caselle, gira ancora a destra e avanza di una casella. Dove arrivi?",
           "answers": [
             "Due caselle a destra",
             "Una casella in alto",
             "Due caselle a sinistra",
             "Di nuovo al centro"
-          ],
-          "correct": 0,
-          "category": "spatial"
+          ]
         },
-        {
-          "id": "iq-s4q5",
+        "iq-s4q5": {
           "question": "Quale espressione con «del sole» non è comune?",
           "answers": [
             "Luce",
             "Sorgere",
             "Tramonto",
             "Luna"
-          ],
-          "correct": 3,
-          "category": "verbal"
+          ]
         },
-        {
-          "id": "iq-s4q6",
-          "question": "Due schemi sono intrecciati. Quale simbolo viene dopo?",
-          "presentation": "sequence",
+        "iq-s4q6": {
           "visual": {
             "items": [
               "○",
@@ -713,97 +577,73 @@
               "○○○",
               "?"
             ],
-            "columns": 6,
-            "separator": "→",
             "ariaLabel": "un cerchio, un triangolo, due cerchi, due triangoli, tre cerchi, punto interrogativo"
           },
+          "question": "Due schemi sono intrecciati. Quale simbolo viene dopo?",
           "answers": [
             "△△",
             "○○○○",
             "△△△",
             "○△○"
-          ],
-          "correct": 2,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s4q7",
+        "iq-s4q7": {
           "question": "Tutti i GLEN sono tranquilli. Alcuni parchi sono GLEN. Quale affermazione deve essere vera?",
           "answers": [
             "Tutti i parchi sono tranquilli",
             "Nessun parco è tranquillo",
             "Alcuni parchi sono tranquilli",
             "Tutti i luoghi tranquilli sono parchi"
-          ],
-          "correct": 2,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s4q8",
-          "question": "Quale parola completa entrambe le espressioni?",
-          "presentation": "code",
+        "iq-s4q8": {
           "visual": {
             "items": [
               "POSTO DI ___",
               "___ DI GRUPPO"
             ],
-            "columns": 1,
             "ariaLabel": "posto di, spazio vuoto; spazio vuoto, di gruppo"
           },
+          "question": "Quale parola completa entrambe le espressioni?",
           "answers": [
             "LAVORO",
             "GIOCO",
             "POSTO",
             "TEMPO"
-          ],
-          "correct": 0,
-          "category": "verbal"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "La cassaforte dell’intelligenza",
-      "questions": [
-        {
-          "id": "iq-s5q1",
+      "questions": {
+        "iq-s5q1": {
           "question": "Quattro casseforti sono indicate con W, X, Y e Z. Non è né W né Z. Se fosse X, l’allarme sarebbe acceso. L’allarme è spento. Quale cassaforte resta?",
-          "reasoningSteps": 2,
           "answers": [
             "W",
             "X",
             "Y",
             "Z"
-          ],
-          "correct": 2,
-          "category": "logic"
+          ]
         },
-        {
-          "id": "iq-s5q2",
-          "question": "In ogni riga raddoppia il primo numero e aggiungi il secondo. Quale numero manca?",
-          "presentation": "code",
+        "iq-s5q2": {
           "visual": {
             "items": [
               "3 · 4 · 10",
               "5 · 2 · 12",
               "7 · 3 · ?"
             ],
-            "columns": 1,
             "ariaLabel": "righe tre, quattro, dieci; cinque, due, dodici; sette, tre, numero sconosciuto"
           },
-          "reasoningSteps": 2,
+          "question": "In ogni riga raddoppia il primo numero e aggiungi il secondo. Quale numero manca?",
           "answers": [
             "17",
             "15",
             "16",
             "20"
-          ],
-          "correct": 0,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s5q3",
-          "question": "Due sequenze numeriche sono intrecciate. Quale numero manca?",
-          "presentation": "sequence",
+        "iq-s5q3": {
           "visual": {
             "items": [
               "2",
@@ -815,24 +655,17 @@
               "5",
               "?"
             ],
-            "columns": 8,
-            "separator": "→",
             "ariaLabel": "due, otto, tre, dodici, quattro, sedici, cinque, punto interrogativo"
           },
-          "reasoningSteps": 2,
+          "question": "Due sequenze numeriche sono intrecciate. Quale numero manca?",
           "answers": [
             "18",
             "22",
             "24",
             "20"
-          ],
-          "correct": 3,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s5q4",
-          "question": "Parti dal centro. Sali due volte, vai una volta a destra, una volta in basso e due volte a sinistra. Dove arrivi?",
-          "presentation": "spatial",
+        "iq-s5q4": {
           "visual": {
             "items": [
               "↑",
@@ -842,58 +675,42 @@
               "←",
               "←"
             ],
-            "columns": 6,
             "ariaLabel": "su, su, destra, giù, sinistra, sinistra"
           },
-          "reasoningSteps": 2,
+          "question": "Parti dal centro. Sali due volte, vai una volta a destra, una volta in basso e due volte a sinistra. Dove arrivi?",
           "answers": [
             "Una casella a sinistra e una in alto",
             "Una casella a destra e una in alto",
             "Due caselle a sinistra",
             "Di nuovo al centro"
-          ],
-          "correct": 0,
-          "category": "spatial"
+          ]
         },
-        {
-          "id": "iq-s5q5",
-          "question": "Scambia soltanto il primo e l’ultimo carattere. Quale codice ottieni?",
-          "presentation": "code",
+        "iq-s5q5": {
           "visual": {
             "items": [
               "INIZIO · B7Q-4M2-K9",
               "SCAMBIA · PRIMO ↔ ULTIMO"
             ],
-            "columns": 1,
             "ariaLabel": "codice B7Q trattino 4M2 trattino K9; scambiare il primo e l’ultimo carattere"
           },
-          "reasoningSteps": 2,
+          "question": "Scambia soltanto il primo e l’ultimo carattere. Quale codice ottieni?",
           "answers": [
             "97Q-4M2-BK",
             "97Q-4M2-KB",
             "B7Q-4M2-K9",
             "K7Q-4M2-9B"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "iq-s5q6",
+        "iq-s5q6": {
           "question": "Una macchina funziona ogni tre giorni a partire dal giorno 2. In quale giorno avviene il quarto ciclo?",
-          "reasoningSteps": 2,
           "answers": [
             "Giorno 8",
             "Giorno 9",
             "Giorno 11",
             "Giorno 12"
-          ],
-          "correct": 2,
-          "category": "numerical"
+          ]
         },
-        {
-          "id": "iq-s5q7",
-          "question": "Entrambe le lettere si spostano di una posizione a ogni passaggio. Quale coppia viene dopo?",
-          "presentation": "sequence",
+        "iq-s5q7": {
           "visual": {
             "items": [
               "AZ",
@@ -901,268 +718,26 @@
               "CX",
               "?"
             ],
-            "columns": 4,
-            "separator": "→",
             "ariaLabel": "A Z, B Y, C X, punto interrogativo"
           },
-          "reasoningSteps": 2,
+          "question": "Entrambe le lettere si spostano di una posizione a ogni passaggio. Quale coppia viene dopo?",
           "answers": [
             "EV",
             "DW",
             "DX",
             "CV"
-          ],
-          "correct": 1,
-          "category": "pattern"
+          ]
         },
-        {
-          "id": "iq-s5q8",
+        "iq-s5q8": {
           "question": "Una freccia punta verso l’alto. Ruotala di 90° in senso orario, poi riflettila in uno specchio verticale. Dove punta?",
-          "reasoningSteps": 2,
           "answers": [
             "Alto",
             "Destra",
             "Basso",
             "Sinistra"
-          ],
-          "correct": 3,
-          "category": "spatial"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "PROSSIMA SFIDA",
-    "adNote": "Un breve annuncio, poi si continua.",
-    "finalAdNote": "Un breve annuncio, poi vedrai il risultato.",
-    "finalBadge": "TEST D’INTELLIGENZA COMPLETATO",
-    "finalIcon": "🧠",
-    "finalTitle": "TEST D’INTELLIGENZA COMPLETATO",
-    "finalCopy": "Il risultato è pronto per essere svelato.",
-    "finalButton": "Vedi il mio risultato",
-    "finalChecklist": [
-      "40 risposte verificate",
-      "Sei aree di pensiero confrontate",
-      "Punteggio finale calcolato"
-    ],
-    "reveals": [
-      {
-        "badge": "SCATTO MENTALE COMPLETATO",
-        "icon": "✓",
-        "title": "Prima sfida completata",
-        "signal": "fixed",
-        "message": "Da qui la difficoltà aumenta."
-      },
-      {
-        "badge": "DECODIFICA DEGLI SCHEMI COMPLETATA",
-        "icon": "✓",
-        "title": "La cassaforte si complica",
-        "signal": "fixed",
-        "message": "I prossimi enigmi richiedono un ragionamento più acuto."
-      },
-      {
-        "badge": "LOGICA SOTTO PRESSIONE COMPLETATA",
-        "icon": "✓",
-        "title": "Hai superato la metà",
-        "signal": "fixed",
-        "message": "Ora arrivano gli enigmi avanzati."
-      },
-      {
-        "badge": "TRAPPOLE DI RAGIONAMENTO COMPLETATE",
-        "icon": "✓",
-        "title": "La cassaforte finale ti aspetta",
-        "signal": "fixed",
-        "message": "Resta una sola sfida."
-      },
-      {
-        "badge": "CASSAFORTE DELL’INTELLIGENZA COMPLETATA",
-        "icon": "🧠",
-        "title": "TEST D’INTELLIGENZA COMPLETATO",
-        "signal": "fixed",
-        "message": "Il risultato è pronto per essere svelato."
-      }
-    ]
-  },
-  "progressLabel": "completato",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Sfida d’intelligenza",
-    "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "PUNTEGGIO ATTUALE DEL TEST",
-    "levelLabel": "FASE",
-    "scoreSuffix": "corrette",
-    "journeyLabel": "SFIDA D’INTELLIGENZA",
-    "kitchensCleared": "{value} / {total} sfide completate",
-    "currentRank": "LIVELLO ATTUALE · RAGIONAMENTO",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Sfida di intelligenza iniziata"
-      },
-      {
-        "afterStage": 5,
-        "label": "Sfida di intelligenza completata"
-      }
-    ],
-    "unlockEyebrow": "AGGIORNAMENTO RISULTATO · TEST D’INTELLIGENZA",
-    "unlockTitle": "È pronta una nuova sfida: test d’intelligenza",
-    "unlockCopy": "Prossima tappa: test d’intelligenza.",
-    "finalEyebrow": "IL TUO PUNTEGGIO DEL TEST D’INTELLIGENZA",
-    "finalCareerTitle": "TEST D’INTELLIGENZA COMPLETATO",
-    "strongestLabel": "Area più forte di ragionamento",
-    "stages": [
-      {
-        "difficulty": "Fondamenti",
-        "preAdBadge": "SCATTO MENTALE COMPLETATO",
-        "preAdTitle": "Prima sfida completata",
-        "preAdCopy": "Da qui la difficoltà aumenta.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "SCATTO MENTALE COMPLETATO",
-        "resultBands": {
-          "high": {
-            "title": "Prima sfida completata",
-            "insight": "Da qui la difficoltà aumenta."
-          },
-          "medium": {
-            "title": "Prima sfida completata",
-            "insight": "Da qui la difficoltà aumenta."
-          },
-          "low": {
-            "title": "Prima sfida completata",
-            "insight": "Da qui la difficoltà aumenta."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
-          "title": "Decodifica degli schemi",
-          "difficulty": "Intermedio",
-          "tagline": "Sequenze. Codici. Regole nascoste.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Intermedio",
-        "preAdBadge": "DECODIFICA DEGLI SCHEMI COMPLETATA",
-        "preAdTitle": "La cassaforte si complica",
-        "preAdCopy": "I prossimi enigmi richiedono un ragionamento più acuto.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "DECODIFICA DEGLI SCHEMI COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "La cassaforte si complica",
-            "insight": "I prossimi enigmi richiedono un ragionamento più acuto."
-          },
-          "medium": {
-            "title": "La cassaforte si complica",
-            "insight": "I prossimi enigmi richiedono un ragionamento più acuto."
-          },
-          "low": {
-            "title": "La cassaforte si complica",
-            "insight": "I prossimi enigmi richiedono un ragionamento più acuto."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
-          "title": "Logica sotto pressione",
-          "difficulty": "Competente",
-          "tagline": "Relazioni. Deduzioni. Logica rapida.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Competente",
-        "preAdBadge": "LOGICA SOTTO PRESSIONE COMPLETATA",
-        "preAdTitle": "Hai superato la metà",
-        "preAdCopy": "Ora arrivano gli enigmi avanzati.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "LOGICA SOTTO PRESSIONE COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arrivano gli enigmi avanzati."
-          },
-          "medium": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arrivano gli enigmi avanzati."
-          },
-          "low": {
-            "title": "Hai superato la metà",
-            "insight": "Ora arrivano gli enigmi avanzati."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
-          "title": "Trappole di ragionamento",
-          "difficulty": "Avanzato",
-          "tagline": "Risposte plausibili. Indizi minimi.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Avanzato",
-        "preAdBadge": "TRAPPOLE DI RAGIONAMENTO COMPLETATE",
-        "preAdTitle": "La cassaforte finale ti aspetta",
-        "preAdCopy": "Resta una sola sfida.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "TRAPPOLE DI RAGIONAMENTO COMPLETATE",
-        "resultBands": {
-          "high": {
-            "title": "La cassaforte finale ti aspetta",
-            "insight": "Resta una sola sfida."
-          },
-          "medium": {
-            "title": "La cassaforte finale ti aspetta",
-            "insight": "Resta una sola sfida."
-          },
-          "low": {
-            "title": "La cassaforte finale ti aspetta",
-            "insight": "Resta una sola sfida."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
-          "title": "La cassaforte dell’intelligenza",
-          "difficulty": "Prova finale",
-          "tagline": "Più passaggi. Precisione. Deduzioni finali.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Prova finale",
-        "preAdBadge": "CASSAFORTE DELL’INTELLIGENZA COMPLETATA",
-        "preAdTitle": "TEST D’INTELLIGENZA COMPLETATO",
-        "preAdCopy": "Il risultato è pronto per essere svelato.",
-        "preAdChecks": [
-          "40 risposte verificate",
-          "Sei aree di pensiero confrontate",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Vedi il mio risultato",
-        "resultIcon": "🧠",
-        "resultLabel": "CASSAFORTE DELL’INTELLIGENZA COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "TEST D’INTELLIGENZA COMPLETATO",
-            "insight": "Il risultato è pronto per essere svelato."
-          },
-          "medium": {
-            "title": "TEST D’INTELLIGENZA COMPLETATO",
-            "insight": "Il risultato è pronto per essere svelato."
-          },
-          "low": {
-            "title": "TEST D’INTELLIGENZA COMPLETATO",
-            "insight": "Il risultato è pronto per essere svelato."
-          }
-        }
-      }
-    ]
   }
 }

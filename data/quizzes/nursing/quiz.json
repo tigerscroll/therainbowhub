@@ -1,30 +1,18 @@
 {
+  "schemaVersion": 2,
   "slug": "nursing",
   "engine": {
-    "flow": "staged",
     "localeParity": "independent",
-    "advance": "automatic",
-    "feedback": "selection-only",
     "scoring": "correct-answer",
-    "checkpoint": "ai",
-    "rewarded": {
-      "start": true,
-      "stages": true,
-      "attempts": 3,
-      "confirmStart": false
-    },
-    "advanceDelayMs": 450,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "targetRatio": 0.8,
-    "startOnLoad": false
+    "targetRatio": 0.8
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
-    "duration": "3 min",
     "difficulty": "Hard",
     "icon": "🩺",
     "socialProofCount": 138000
@@ -70,6 +58,431 @@
     },
     "artwork": {
       "icon": "🩺"
+    }
+  },
+  "template": "five-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "nurse-r1q1",
+          "nurse-r1q2",
+          "nurse-r1q3",
+          "nurse-r1q4",
+          "nurse-r1q5",
+          "nurse-r1q6",
+          "nurse-r2q2",
+          "nurse-r3q2"
+        ],
+        "uppercaseNextForLocales": [
+          "en"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "nurse-r2q3",
+          "nurse-r2q4",
+          "nurse-r2q5",
+          "nurse-r5q3",
+          "nurse-r5q4",
+          "nurse-r5q5",
+          "nurse-r5q2",
+          "nurse-r3q5"
+        ],
+        "uppercaseNextForLocales": [
+          "en"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "nurse-r4q3",
+          "nurse-r6q3",
+          "nurse-r4q1",
+          "nurse-r4q2",
+          "nurse-r4q4",
+          "nurse-r4q5",
+          "nurse-r6q2",
+          "nurse-r6q5"
+        ],
+        "uppercaseNextForLocales": [
+          "en"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "nurse-r7q2",
+          "nurse-r2q6",
+          "nurse-r4q6",
+          "nurse-r7q1",
+          "nurse-r7q5",
+          "nurse-r6q1",
+          "nurse-r3q1",
+          "nurse-r3q3"
+        ],
+        "uppercaseNextForLocales": [
+          "en"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "nurse-r10q6",
+          "nurse-r10q3",
+          "nurse-r3q4",
+          "nurse-r10q1",
+          "nurse-r10q2",
+          "nurse-r10q4",
+          "nurse-r10q5",
+          "nurse-r2q1"
+        ]
+      }
+    ],
+    "questions": {
+      "nurse-r1q1": {
+        "presentation": "icons",
+        "icons": [
+          "N₂",
+          "O₂",
+          "CO₂",
+          "H₂"
+        ],
+        "correct": 1,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      },
+      "nurse-r1q2": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 1
+        },
+        "correct": 3,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r1q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 0,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r1q4": {
+        "correct": 3,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r1q5": {
+        "correct": 2,
+        "category": "communication_compassion",
+        "choiceCount": 4
+      },
+      "nurse-r1q6": {
+        "correct": 0,
+        "category": "reasoning_priorities",
+        "choiceCount": 4
+      },
+      "nurse-r2q2": {
+        "correct": 3,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      },
+      "nurse-r3q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 3,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r2q3": {
+        "presentation": "icons",
+        "icons": [
+          "⚡",
+          "/quizzes/nursing/assets/icons/stomach.svg",
+          "🦴",
+          "/quizzes/nursing/assets/icons/kidneys.svg"
+        ],
+        "correct": 0,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      },
+      "nurse-r2q4": {
+        "correct": 2,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      },
+      "nurse-r2q5": {
+        "correct": 1,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r5q3": {
+        "correct": 3,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r5q4": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 3,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r5q5": {
+        "correct": 1,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      },
+      "nurse-r5q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 2,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r3q5": {
+        "correct": 0,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r4q3": {
+        "presentation": "icons",
+        "icons": [
+          "🧢",
+          "🥽",
+          "👟",
+          "🚫"
+        ],
+        "correct": 1,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r6q3": {
+        "correct": 0,
+        "category": "communication_compassion",
+        "choiceCount": 4
+      },
+      "nurse-r4q1": {
+        "correct": 3,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r4q2": {
+        "correct": 2,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r4q4": {
+        "correct": 2,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r4q5": {
+        "correct": 3,
+        "category": "communication_compassion",
+        "choiceCount": 4
+      },
+      "nurse-r6q2": {
+        "correct": 0,
+        "category": "communication_compassion",
+        "choiceCount": 4
+      },
+      "nurse-r6q5": {
+        "correct": 1,
+        "category": "infection_safety",
+        "choiceCount": 4
+      },
+      "nurse-r7q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 3,
+        "category": "reasoning_priorities",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r2q6": {
+        "correct": 2,
+        "category": "reasoning_priorities",
+        "choiceCount": 4
+      },
+      "nurse-r4q6": {
+        "correct": 1,
+        "category": "reasoning_priorities",
+        "choiceCount": 4
+      },
+      "nurse-r7q1": {
+        "correct": 0,
+        "category": "reasoning_priorities",
+        "choiceCount": 4
+      },
+      "nurse-r7q5": {
+        "correct": 0,
+        "category": "observation_vitals",
+        "choiceCount": 4
+      },
+      "nurse-r6q1": {
+        "correct": 1,
+        "category": "communication_compassion",
+        "choiceCount": 4
+      },
+      "nurse-r3q1": {
+        "correct": 2,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r3q3": {
+        "correct": 1,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r10q6": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 2,
+        "category": "reasoning_priorities",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r10q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 1,
+        "category": "observation_vitals",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r3q4": {
+        "correct": 2,
+        "category": "numeracy_measurement",
+        "choiceCount": 4
+      },
+      "nurse-r10q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "correct": 0,
+        "category": "anatomy_physiology",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r10q2": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 1
+        },
+        "correct": 1,
+        "category": "numeracy_measurement",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r10q4": {
+        "correct": 3,
+        "category": "infection_safety",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r10q5": {
+        "correct": 0,
+        "category": "communication_compassion",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "nurse-r2q1": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 3,
+          "separator": "→"
+        },
+        "correct": 2,
+        "category": "anatomy_physiology",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✓"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.7
+        },
+        {
+          "key": "profile-4",
+          "min": 0.6
+        },
+        {
+          "key": "profile-5",
+          "min": 0.5
+        },
+        {
+          "key": "profile-6",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "anatomy_physiology",
+            "numeracy_measurement"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "observation_vitals",
+            "reasoning_priorities"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "infection_safety",
+            "communication_compassion"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": true
+      }
     }
   }
 }

@@ -1,850 +1,12 @@
 {
-  "eyebrow": "TOELATINGSPROEF AMBULANCEZORG",
+  "schemaVersion": 2,
   "title": "Slechts 8% slaagt voor deze toelatingstest ambulancezorg",
+  "eyebrow": "TOELATINGSPROEF AMBULANCEZORG",
   "summary": "Gevaren ter plaatse, vitale waarden en snelle beslissingen testen je helderheid onder druk.",
+  "progressLabel": "voltooid",
   "landing": {
     "intro": "Veiligheid ter plaatse, vitale waarden, spoedrekenen en kalm oordeel: denk jij helder wanneer elke aanwijzing telt?",
     "cta": "Start de test"
-  },
-  "stages": [
-    {
-      "title": "Inzetbriefing",
-      "questions": [
-        {
-          "id": "paramedic-r1q1",
-          "question": "Welk orgaan pompt bloed door het lichaam?",
-          "presentation": "icons",
-          "icons": [
-            "🫁",
-            "🫀",
-            "🧠",
-            "🦴"
-          ],
-          "answers": [
-            "Het hart",
-            "De longen",
-            "De hersenen",
-            "De botten"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r3q2",
-          "question": "Een melding wordt om 14.35 uur geregistreerd. Het team bereikt de bestemming om 15.12 uur. Hoeveel tijd is verstreken?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "MELDING::14.35 uur",
-              "AANKOMST::15.12 uur"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Melding om 14.35 uur en aankomst om 15.12 uur"
-          },
-          "answers": [
-            "27 minuten",
-            "47 minuten",
-            "57 minuten",
-            "37 minuten"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
-        },
-        {
-          "id": "paramedic-r4q3",
-          "question": "Hoe moet het gevaar op de vloer als eerste worden aangepakt?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "GEBRUIKT SCHERP VOORWERP::Op de vloer",
-              "GEBROKEN GLAS::Ernaast",
-              "UITGANG::Vrij"
-            ],
-            "columns": 3,
-            "separator": "•",
-            "ariaLabel": "Gebruikt scherp voorwerp en gebroken glas op de vloer, met een vrije uitgang"
-          },
-          "answers": [
-            "Zet het gevaar af en meld het",
-            "Verplaats het voorzichtig met een gehandschoende hand",
-            "Schuif het met je schoen uit de looproute",
-            "Laat het liggen tot het rustiger is"
-          ],
-          "correct": 0,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r5q2",
-          "question": "Welke meting is veranderd?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "POLS::82::82",
-              "ADEMHALING::16::25",
-              "ALERT::JA::JA",
-              "HUID::WARM::WARM"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Pols onveranderd, ademhaling toegenomen, alertheid onveranderd en huid nog warm"
-          },
-          "answers": [
-            "Pols",
-            "Alertheid",
-            "Ademhaling",
-            "Huidtemperatuur"
-          ],
-          "correct": 2,
-          "category": "observation_vitals"
-        },
-        {
-          "id": "paramedic-r1q5",
-          "question": "Welke opening maakt de overdracht het duidelijkst?",
-          "answers": [
-            "Er is eerder waarschijnlijk iets veranderd",
-            "Hier zijn alle kleine details in willekeurige volgorde",
-            "Om 14.20 uur werd de ademhaling sneller en nam de alertheid af",
-            "Ik weet al precies wat de oorzaak was"
-          ],
-          "correct": 2,
-          "category": "communication_handover"
-        },
-        {
-          "id": "paramedic-r1q6",
-          "question": "Wat heeft voorrang?",
-          "context": "Een routinematige controlelijst voor de apparatuur moet bijna worden afgerond. Tegelijkertijd wordt iemand die zich goed voelde bleek en duizelig en reageert die minder goed.",
-          "answers": [
-            "Geef voorrang aan de plotselinge achteruitgang en schakel gekwalificeerde hulp in",
-            "Werk eerst de routinechecklist af",
-            "Wacht tot de deadline voor de checklist is verstreken",
-            "Kies de taak die fysiek het dichtst bij is"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r2q2",
-          "question": "Welke bloedvaten voeren bloed van het hart weg?",
-          "answers": [
-            "Aders",
-            "Haarvaten",
-            "Luchtwegen",
-            "Slagaders"
-          ],
-          "correct": 3,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r1q3",
-          "question": "Vier verzegelde verpakkingen bevatten elk vijf verbandkompressen. Hoeveel kompressen zijn er in totaal?",
-          "answers": [
-            "9",
-            "25",
-            "15",
-            "20"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
-        }
-      ]
-    },
-    {
-      "title": "Lichaam en signalen",
-      "questions": [
-        {
-          "id": "paramedic-r2q1",
-          "question": "Welke hartkamer ontvangt zuurstofrijk bloed dat uit de longen terugkeert?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "VAN::Longen",
-              "DAARNA::?",
-              "VERVOLGENS::Linkerkamer"
-            ],
-            "columns": 1,
-            "ariaLabel": "Zuurstofrijk bloed gaat vanuit de longen door een onbekende hartkamer naar de linkerkamer"
-          },
-          "answers": [
-            "De linkerboezem",
-            "De rechterboezem",
-            "De rechterkamer",
-            "De linkerkamer"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r2q3",
-          "question": "Welk lichaamssysteem stuurt signalen tussen de hersenen en de rest van het lichaam?",
-          "answers": [
-            "Het spijsverteringsstelsel",
-            "Het skeletstelsel",
-            "Het urinestelsel",
-            "Het zenuwstelsel"
-          ],
-          "correct": 3,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r2q4",
-          "question": "Welke uitspraak beschrijft de nieren het best?",
-          "answers": [
-            "Ze wisselen zuurstof en koolstofdioxide uit",
-            "Ze verwijderen afvalstoffen uit het bloed en helpen de vochtbalans te regelen",
-            "Ze pompen bloed door de slagaders",
-            "Ze regelen elke bewuste beweging"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r2q5",
-          "question": "Welk onderdeel van de lichaamsfunctie is veranderd?",
-          "context": "Eerder was de knijpkracht in beide handen gelijk. Nu is de kracht rechts hetzelfde, maar links zwakker dan voorheen.",
-          "answers": [
-            "De knijpkracht rechts is afgenomen",
-            "De knijpkracht in beide handen is toegenomen",
-            "Er is niets veranderd",
-            "De knijpkracht links is afgenomen"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
-        },
-        {
-          "id": "paramedic-r5q3",
-          "question": "Welke nieuw genoteerde verandering is het belangrijkst?",
-          "context": "Eerder was de persoon alert en antwoordde die direct. Nu is de persoon slaperig en reageert die veel langzamer.",
-          "answers": [
-            "De eerdere notitie dat de persoon alert was",
-            "De tijd die op de kaart staat",
-            "Dat de kaart twee zinnen bevat",
-            "De persoon reageert minder goed"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
-        },
-        {
-          "id": "paramedic-r5q4",
-          "question": "Wat is de beste interpretatie van dit patroon?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "POLS::80 → 92 → 108",
-              "NIEUWE VERANDERING::Bleek + duizelig"
-            ],
-            "columns": 1,
-            "ariaLabel": "Pols 80, daarna 92, daarna 108, met bleekheid en duizeligheid"
-          },
-          "answers": [
-            "De gegevens zijn niet veranderd",
-            "De gezamenlijke trend wijst op achteruitgang die snel deskundig moet worden beoordeeld",
-            "Alleen het eerste getal is belangrijk",
-            "De symptomen kunnen worden genegeerd omdat er geen diagnose staat"
-          ],
-          "correct": 1,
-          "category": "observation_vitals"
-        },
-        {
-          "id": "paramedic-r5q5",
-          "question": "Waarom kan minder goede ademhaling de werkende weefsels beïnvloeden?",
-          "answers": [
-            "De maag stopt onmiddellijk met verteren",
-            "De botten stoppen met het ondersteunen van het lichaam",
-            "Er kan minder zuurstof in het bloed en bij de weefsels komen",
-            "De nieren ontvangen geen zenuwsignalen meer"
-          ],
-          "correct": 2,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r8q1",
-          "question": "Welke verandering is het sterkste waarschuwingssignaal voor achteruitgang?",
-          "answers": [
-            "Alert → plotseling verward",
-            "Pols 78 → 80",
-            "Temperatuur 36,8 → 36,9",
-            "Pijn 4/10 → 4/10"
-          ],
-          "correct": 0,
-          "category": "observation_vitals"
-        }
-      ]
-    },
-    {
-      "title": "Veiligheid en communicatie",
-      "questions": [
-        {
-          "id": "paramedic-r1q4",
-          "question": "Een stroomkabel ligt over de enige deuropening. Wat moet eerst gebeuren?",
-          "answers": [
-            "Stap er voorzichtig overheen",
-            "Houd iedereen uit de buurt en laat gekwalificeerde hulp de situatie veilig maken",
-            "Verplaats de kabel met een droog voorwerp",
-            "Vraag een omstander erop te letten"
-          ],
-          "correct": 1,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r4q1",
-          "question": "Iemand bevindt zich naast rijdend verkeer zonder beschermde werkzone. Wat is het veiligst?",
-          "answers": [
-            "Blijf uit de buurt, herken het gevaar en vraag passende ondersteuning ter plaatse",
-            "Loop het verkeer in en wenk voertuigen eromheen",
-            "Vraag de persoon onmiddellijk de weg over te steken",
-            "Zet apparatuur op de weg om voertuigen af te remmen"
-          ],
-          "correct": 0,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r4q4",
-          "question": "Bij een taak kunnen gezicht en handen aan spattend lichaamsvocht worden blootgesteld. Waarop moet de keuze van beschermingsmiddelen berusten?",
-          "answers": [
-            "De kleur van de materiaaltas",
-            "Of de persoon er ziek uitziet",
-            "Het tijdstip van de dag",
-            "Het beoordeelde blootstellingsrisico, inclusief bescherming van handen, ogen of gezicht"
-          ],
-          "correct": 3,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r6q5",
-          "question": "Een hoestende persoon zit met anderen in een kleine wachtruimte. Welke algemene veiligheidsmaatregel past bij het zichtbare risico?",
-          "answers": [
-            "Laat mensen gebruikte zakdoekjes delen",
-            "Schakel zonder beoordeling alle ventilatie uit",
-            "Stimuleer ademhalings- en handhygiëne en volg voorzorgsmaatregelen op basis van het risico",
-            "Negeer luchtwegafscheiding"
-          ],
-          "correct": 2,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r9q4",
-          "question": "Welk detail moet het dringendst worden overgedragen?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "VOERTUIG::Staat stil",
-              "PERSONEN::Twee",
-              "GEVAAR::Sterke brandstoflucht"
-            ],
-            "columns": 3,
-            "separator": "•",
-            "ariaLabel": "Stilstaand voertuig, twee personen en een sterke brandstoflucht"
-          },
-          "answers": [
-            "De kleur van het voertuig",
-            "Het aantal ramen",
-            "De sterke brandstoflucht en het mogelijke ontstekingsgevaar",
-            "Het weer eerder die ochtend"
-          ],
-          "correct": 2,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r6q2",
-          "question": "Iemand blijft knikken, maar heeft de uitleg niet begrepen. Wat moet er nu gebeuren?",
-          "answers": [
-            "Herhaal dezelfde uitleg langzamer",
-            "Vraag ‘Begrijpt u het?’ en ga door als het antwoord ja is",
-            "Maak de uitleg korter maar houd dezelfde vaktermen",
-            "Gebruik gewone woorden en controleer wat de persoon heeft begrepen"
-          ],
-          "correct": 3,
-          "category": "communication_handover"
-        },
-        {
-          "id": "paramedic-r4q5",
-          "question": "Een omstander bespreekt persoonlijke gegevens waar anderen kunnen meeluisteren. Wat is het best?",
-          "answers": [
-            "Verplaats het gesprek naar een besloten plek en deel alleen noodzakelijke informatie",
-            "Nodig meer mensen uit om te luisteren",
-            "Herhaal de details zodat iedereen ze begrijpt",
-            "Hang de informatie openbaar op"
-          ],
-          "correct": 0,
-          "category": "communication_handover"
-        },
-        {
-          "id": "paramedic-r6q3",
-          "question": "Iemand wil een gevoelig gezondheidsprobleem bespreken. Wat beschermt diens waardigheid?",
-          "answers": [
-            "Vraag om uitleg waar iedereen bij is",
-            "Zoek een besloten plek en luister zonder aannames",
-            "Vertel eerst de mensen in de buurt over het probleem",
-            "Doe het probleem af als gênant"
-          ],
-          "correct": 1,
-          "category": "communication_handover"
-        }
-      ]
-    },
-    {
-      "title": "Beslissingen onder druk",
-      "questions": [
-        {
-          "id": "paramedic-r6q1",
-          "question": "Iemand zegt: ‘Ik ben doodsbang.’ Welke reactie is het best?",
-          "answers": [
-            "Er is niets om bang voor te zijn",
-            "Probeer er niet aan te denken",
-            "Ik garandeer dat alles goed komt",
-            "Ik zie dat dit beangstigend is. Vertel wat u het meest zorgen baart"
-          ],
-          "correct": 3,
-          "category": "communication_handover"
-        },
-        {
-          "id": "paramedic-r10q5",
-          "question": "Welke reactie beschermt de privacy en controleert of de uitleg is begrepen?",
-          "context": "De persoon zegt: ‘Ik wil niet dat dit wordt besproken waar anderen het kunnen horen, en ik begrijp nog steeds niet waarom u dit vraagt.’",
-          "reasoningSteps": 2,
-          "answers": [
-            "Ga door met het gesprek waar iedereen kan meeluisteren",
-            "Leg niets uit en stel dezelfde vragen opnieuw",
-            "Ga naar een geschikte besloten plek, leg het eenvoudig uit en controleer het begrip",
-            "Vraag een omstander het namens jou uit te leggen"
-          ],
-          "correct": 2,
-          "category": "communication_handover"
-        },
-        {
-          "id": "paramedic-r2q6",
-          "question": "Welk probleem heeft de hoogste prioriteit?",
-          "context": "De borstkas beweegt, maar er is nauwelijks luchtverplaatsing waarneembaar en de persoon kan niet normaal spreken.",
-          "answers": [
-            "Een mogelijk spijsverteringsprobleem",
-            "Een mogelijk luchtweg- of ademhalingsprobleem dat direct deskundig moet worden beoordeeld",
-            "Een lichte spierverrekking",
-            "Een routinematige controle van de vochtinname"
-          ],
-          "correct": 1,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r5q6",
-          "question": "Wie heeft als eerste aandacht nodig?",
-          "context": "Persoon A voelt zich goed en de observaties blijven stabiel. Persoon B is plotseling klam en duizelig en de pols is bij drie controles gestegen.",
-          "answers": [
-            "Persoon B, omdat meerdere veranderingen op achteruitgang wijzen",
-            "Persoon A, omdat de observaties van die persoon het eerst zijn genoteerd",
-            "Beiden kunnen wachten omdat er geen diagnose is genoemd",
-            "De persoon met de kortste naam"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r7q1",
-          "question": "Welke nieuwe informatie moet de reactie het sterkst veranderen?",
-          "context": "De locatie werd aanvankelijk als veilig gemeld. Een tweede bericht zegt dat er nu rook de kamer in komt en dat de dichtstbijzijnde uitgang steeds moeilijker te gebruiken is.",
-          "answers": [
-            "Het eerste bericht dat de locatie veilig was",
-            "De toenemende rook en de bedreigde vluchtroute",
-            "Het tijdstip waarop het eerste bericht werd geschreven",
-            "Het aantal woorden in de update"
-          ],
-          "correct": 1,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r7q2",
-          "question": "Welk eerste radiobericht geeft hulpverleners meteen het duidelijkste beeld?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "EERST ÉÉN DRINGEND BERICHT",
-              "RADIOTIJD IS BEPERKT"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Er kan maar één dringend bericht als eerste worden verzonden en de radiotijd is beperkt"
-          },
-          "answers": [
-            "We hebben ergens bij de weg hulp nodig",
-            "River Gate: twee personen, rook aanwezig, toegang geblokkeerd",
-            "De situatie is lastig; meer informatie volgt",
-            "Kom snel; mogelijk is er materiaal nodig"
-          ],
-          "correct": 1,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r3q3",
-          "question": "Wat is het totale vastgelegde volume in milliliter?",
-          "presentation": "spatial",
-          "visual": {
-            "items": [
-              "0,3 L + 450 mL + 250 mL = ?"
-            ],
-            "columns": 1,
-            "ariaLabel": "Nul komma drie liter plus 450 milliliter plus 250 milliliter is welk totaal"
-          },
-          "answers": [
-            "900 mL",
-            "950 mL",
-            "1.000 mL",
-            "1.100 mL"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
-        },
-        {
-          "id": "paramedic-r3q4",
-          "question": "Een registratie van 500 mL is voor 70% voltooid. Hoeveel milliliter is vastgelegd?",
-          "answers": [
-            "300 mL",
-            "325 mL",
-            "350 mL",
-            "400 mL"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
-        }
-      ]
-    },
-    {
-      "title": "Eindinzet",
-      "questions": [
-        {
-          "id": "paramedic-r10q6",
-          "question": "Wie heeft als eerste aandacht nodig?",
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "PERSOON A::Pijnlijke pols · normale spraak · stabiele observaties",
-              "PERSOON B::Ingestort · bleek · snelle ademhaling · nieuwe verwarring"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Persoon A heeft een pijnlijke pols, spreekt normaal en heeft stabiele observaties. Persoon B is ingestort, is bleek, ademt snel en is nieuw verward."
-          },
-          "reasoningSteps": 2,
-          "answers": [
-            "Persoon A — zichtbare pijn aan de pols",
-            "Dezelfde prioriteit",
-            "Persoon B — meerdere tekenen van achteruitgang",
-            "Wacht op een diagnose"
-          ],
-          "correct": 2,
-          "category": "reasoning_priorities"
-        },
-        {
-          "id": "paramedic-r10q1",
-          "question": "Als oppervlakkige ademhaling de gaswisseling vermindert, welk gevolg treedt dan het meest direct op?",
-          "presentation": "spatial",
-          "visual": {
-            "items": [
-              "OPPERVLAKKIGE ADEMHALING → MINDER GASWISSELING → ? → MINDER ZUURSTOF NAAR WEEFSELS"
-            ],
-            "ariaLabel": "Oppervlakkige ademhaling, minder gaswisseling, onbekende stap, minder zuurstof naar de weefsels"
-          },
-          "reasoningSteps": 2,
-          "answers": [
-            "Er komt meer voedsel in de maag",
-            "Er komt minder zuurstof in het bloed",
-            "De botten produceren extra beweging",
-            "De nieren maken meer lucht"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
-        },
-        {
-          "id": "paramedic-r10q3",
-          "question": "0,65 L + 350 mL = ?",
-          "reasoningSteps": 2,
-          "answers": [
-            "415 mL",
-            "1.000 mL",
-            "650 mL",
-            "3.565 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
-        },
-        {
-          "id": "paramedic-r10q2",
-          "question": "Wat is de beste interpretatie van de volledige trend?",
-          "presentation": "grid",
-          "visual": {
-            "items": [
-              "16 — ALERT",
-              "22 — ANGSTIG",
-              "28 — SLAPERIG",
-              "TREND — ?"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Ademhaling 16 en alert, daarna 22 en angstig, daarna 28 en slaperig"
-          },
-          "reasoningSteps": 2,
-          "answers": [
-            "De persoon gaat gestaag vooruit",
-            "Alleen de middelste controle is belangrijk",
-            "De waarden kunnen worden genegeerd omdat er geen diagnose staat",
-            "De ademhaling verslechtert terwijl de persoon minder goed reageert"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
-        },
-        {
-          "id": "paramedic-r8q2",
-          "question": "Een totaal van 1,2 L wordt gelijk verdeeld over vier vastgelegde perioden. Hoeveel hoort bij elke periode?",
-          "answers": [
-            "250 mL",
-            "300 mL",
-            "350 mL",
-            "400 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
-        },
-        {
-          "id": "paramedic-r10q4",
-          "question": "Wat is de veiligste reactie op de gecombineerde gevaren?",
-          "context": "INCIDENTVERSLAG — Een agressieve persoon gooit voorwerpen bij de ingang. Apparatuur blokkeert de dichtstbijzijnde vluchtroute gedeeltelijk.",
-          "reasoningSteps": 2,
-          "answers": [
-            "Blijf uit de buurt, leid anderen naar een veiligere route en waarschuw passende hulp",
-            "Ga dichterbij en discussieer tot de persoon stopt",
-            "Haal de apparatuur naast de persoon op voordat je weggaat",
-            "Vraag een ongetrainde omstander de gegooide voorwerpen tegen te houden"
-          ],
-          "correct": 0,
-          "category": "scene_safety"
-        },
-        {
-          "id": "paramedic-r9q3",
-          "question": "Welke totale afstand hoort in het verslag?",
-          "context": "INCIDENTVERSLAG — Eén toegangsroute is 0,4 km lang. Een tweede gedeelte is 250 m. Noteer de totale afstand in meters.",
-          "answers": [
-            "650 m",
-            "290 m",
-            "400 m",
-            "4.250 m"
-          ],
-          "correct": 0,
-          "category": "numeracy_measurement"
-        },
-        {
-          "id": "paramedic-r9q6",
-          "question": "Welke zin is de duidelijkste beknopte overdracht?",
-          "context": "DETAIL VOOR DE OVERDRACHT — Om 10.20 uur werd de ademhaling sneller en raakte de persoon voor het eerst verward. Beide veranderingen zijn nieuw.",
-          "answers": [
-            "Op een bepaald moment veranderde er iets en waren er verschillende details",
-            "De kamer was rustig voordat er iets gebeurde",
-            "Om 10.20 uur werd de ademhaling sneller en raakte de persoon voor het eerst verward",
-            "Er zijn veel normale details te bespreken vóór de nieuwe veranderingen"
-          ],
-          "correct": 2,
-          "category": "communication_handover"
-        }
-      ]
-    }
-  ],
-  "checkpoint": {
-    "nextPrefix": "TOELATINGSTEST",
-    "adNote": "Eerst een korte advertentie, daarna ga je verder.",
-    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat.",
-    "finalBadge": "TOELATINGSTEST VOLTOOID",
-    "finalIcon": "✓",
-    "finalTitle": "TOELATINGSTEST VOLTOOID",
-    "finalCopy": "Je resultaat staat klaar om te bekijken.",
-    "finalButton": "Bekijk mijn resultaat",
-    "finalChecklist": [
-      "40 antwoorden gecontroleerd",
-      "Overzicht per onderdeel gereed",
-      "Eindscore berekend"
-    ],
-    "reveals": [
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Eerste examenonderdeel voltooid",
-        "signal": "fixed",
-        "message": "Goede start. Het volgende onderdeel staat klaar."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Tweede examenonderdeel voltooid",
-        "signal": "fixed",
-        "message": "Het volgende onderdeel wordt moeilijker."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Je bent over de helft",
-        "signal": "fixed",
-        "message": "Het gevorderde onderdeel komt eraan."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Hierna volgt de eindtoets",
-        "signal": "fixed",
-        "message": "Alleen de eindtoets resteert nog."
-      },
-      {
-        "badge": "TOELATINGSTEST VOLTOOID",
-        "icon": "✓",
-        "title": "TOELATINGSTEST VOLTOOID",
-        "signal": "fixed",
-        "message": "Je resultaat staat klaar om te bekijken."
-      }
-    ]
-  },
-  "results": {
-    "name": "JOUW SCORE VOOR AMBULANCEZORG",
-    "profiles": [
-      {
-        "min": 0.9,
-        "tier": "90–100%",
-        "title": "Noodhulptalent",
-        "copy": "Je beheerste anatomie, observatie, veiligheid en spoedprioriteiten met opvallende precisie. Zelfs de lastigste vragen brachten je nauwelijks uit balans."
-      },
-      {
-        "min": 0.8,
-        "tier": "80–89%",
-        "title": "Natuurtalent in de hulpverlening",
-        "copy": "Je resultaat toont een zeer sterke beheersing van anatomie, observatie, veiligheid en spoedprioriteiten. Ook bij subtiele valkuilen bleef je redenering betrouwbaar."
-      },
-      {
-        "min": 0.7,
-        "tier": "70–79%",
-        "title": "Kalm onder druk",
-        "copy": "Je behaalde een solide resultaat bij anatomie, observatie, veiligheid en spoedprioriteiten. Enkele lastige details kostten punten, maar het totaalbeeld blijft sterk."
-      },
-      {
-        "min": 0.6,
-        "tier": "60–69%",
-        "title": "Betrouwbare beslisser",
-        "copy": "Je hebt een goede basis in anatomie, observatie, veiligheid en spoedprioriteiten. Als je de lastigste onderdelen aanscherpt, kan je volgende resultaat flink stijgen."
-      },
-      {
-        "min": 0.5,
-        "tier": "50–59%",
-        "title": "Veelbelovende kandidaat",
-        "copy": "Je herkende meerdere belangrijke aspecten van anatomie, observatie, veiligheid en spoedprioriteiten. De gemiste vragen laten duidelijk zien wat je nog kunt versterken."
-      },
-      {
-        "min": 0,
-        "tier": "Onder 50%",
-        "title": "Ontdekker van eerste hulp",
-        "copy": "Deze uitdaging liet groeikansen zien bij anatomie, observatie, veiligheid en spoedprioriteiten. Je nieuwsgierigheid en de opgeloste vragen vormen een uitstekend vertrekpunt."
-      }
-    ],
-    "dimensions": [
-      {
-        "label": "Anatomie en fysiologie",
-        "categories": [
-          "anatomy_physiology"
-        ]
-      },
-      {
-        "label": "Observaties en vitale waarden",
-        "categories": [
-          "observation_vitals"
-        ]
-      },
-      {
-        "label": "Rekenen en meten",
-        "categories": [
-          "numeracy_measurement"
-        ]
-      },
-      {
-        "label": "Veiligheid en infectiepreventie",
-        "categories": [
-          "scene_safety"
-        ]
-      },
-      {
-        "label": "Communicatie en overdracht",
-        "categories": [
-          "communication_handover"
-        ]
-      },
-      {
-        "label": "Spoedredenering en prioriteiten",
-        "categories": [
-          "reasoning_priorities"
-        ]
-      }
-    ],
-    "score": {
-      "passed": "Geslaagd voor de toelatingstest ambulancezorg!",
-      "finished": "toelatingstest ambulancezorg voltooid",
-      "correctLabel": "goed",
-      "strongest": "Sterkste onderdeel voor hulpverlening",
-      "trickiest": "Moeilijkste onderdeel voor hulpverlening",
-      "bestRound": "Beste onderdeel",
-      "showPercentage": true,
-      "disclaimer": "Alleen voor entertainment en algemene kennis. Deze toelatingstest ambulancezorg is geen officieel examen, kwalificatie of professioneel advies.",
-      "showBestRound": true,
-      "insights": {
-        "overview": "score voor ambulancezorg in één oogopslag",
-        "correct": "goed",
-        "missed": "Gemiste vragen in de toelatingstest ambulancezorg",
-        "target": "Juiste antwoorden voor 80%",
-        "breakdown": "Overzicht van je vaardigheden voor hulpverlening",
-        "snapshot": "Wat je profiel in de toelatingstest ambulancezorg suggereert",
-        "targetReached": "Doel van 80% gehaald",
-        "targetRemaining": "Nog nodige juiste antwoorden voor 80%",
-        "details": {
-          "analysisTitle": "Zo lees je je score voor ambulancezorg",
-          "analysisCopy": "Dit resultaat bundelt 40 vragen over anatomie, observatie, rekenen, veiligheid, communicatie en spoedprioriteiten. De verdeling hieronder laat zien welke onderdelen in deze poging het sterkst waren.",
-          "roadmapTitle": "In je volledige rapport van de toelatingstest ambulancezorg",
-          "roadmapIntro": "De score is slechts de eerste aanwijzing. Het rapport toont je sterkste onderdeel voor hulpverlening, de uitsplitsing per onderdeel en de gemiste vragen in de toelatingstest ambulancezorg.",
-          "roadmapItems": [
-            "Scoreanalyse",
-            "Sterkste onderdeel voor hulpverlening",
-            "Overzicht van je vaardigheden voor hulpverlening",
-            "Praktische vervolgstappen"
-          ],
-          "positionTitle": "Je route naar 80%",
-          "positionCopy": "Het recreatieve doel is 32 goede antwoorden van de 40. De markering toont hoe dichtbij deze poging in de toelatingstest ambulancezorg kwam, zonder vergelijking of professionele beoordeling.",
-          "measuredTitle": "Wat de toelatingstest ambulancezorg onderzocht",
-          "measuredIntro": "De vragen bestrijken drie aanvullende onderdelen van de toelatingstest ambulancezorg.",
-          "measuredAreas": [
-            {
-              "title": "Lichaam en observaties",
-              "copy": "Basisfysiologie volgen en betekenisvolle veranderingen in eenvoudige registraties en trends opmerken."
-            },
-            {
-              "title": "Meten en overdracht",
-              "copy": "Tijden of eenheden met elkaar in overeenstemming brengen en heldere informatie voor veilige overdracht kiezen."
-            },
-            {
-              "title": "Veiligheid en prioriteiten",
-              "copy": "Zichtbare gevaren herkennen en meerdere aanwijzingen gebruiken om de eerste prioriteit te bepalen."
-            }
-          ],
-          "tipsTitle": "Drie manieren om je aanpak voor hulpverlening aan te scherpen",
-          "tipsIntro": "Eenvoudige strategieën voor een volgende poging in de toelatingstest ambulancezorg, niet als professionele beoordeling.",
-          "tips": [
-            {
-              "title": "Scan op direct gevaar",
-              "copy": "Let vóór de details op gevaar, plotselinge achteruitgang en problemen met luchtweg of ademhaling."
-            },
-            {
-              "title": "Vergelijk met de uitgangssituatie",
-              "copy": "Een verandering ten opzichte van eerder kan belangrijker zijn dan één losse waarde."
-            },
-            {
-              "title": "Gebruik alle zichtbare aanwijzingen",
-              "copy": "Baseer het antwoord op de hele situatie, niet op één opvallend detail."
-            }
-          ],
-          "finalTitle": "Je resultaat in de toelatingstest ambulancezorg",
-          "finalCopy": "Je beantwoordde {score} van de {total} vragen goed. Hieronder staat je profiel voor deze poging."
-        }
-      }
-    }
   },
   "about": {
     "body": "Deze onafhankelijke toelatingstest ambulancezorg bestaat uit vijf steeds moeilijkere onderdelen over anatomie, observatie, rekenen, veiligheid, communicatie en spoedprioriteiten. De quiz is bedoeld als entertainment en bootst geen officieel examen na.\n\nElke vraag heeft precies één antwoord dat uit de getoonde informatie volgt. Lees alle aanwijzingen rustig: snelheid beïnvloedt de score nooit en de moeilijkheid zit in het redeneren, niet in specialistische kennis.\n\nHet eindpercentage is het aantal juiste antwoorden op 40 vragen. Het beschrijft alleen deze poging en is geen kwalificatie, diagnose of voorspelling van succes.",
@@ -858,186 +20,617 @@
     },
     "disclaimer": "Alleen voor entertainment en algemene kennis. Deze toelatingstest ambulancezorg is geen officieel examen, kwalificatie of professioneel advies."
   },
-  "progressLabel": "voltooid",
+  "checkpoint": {
+    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat."
+  },
   "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
     "resultProgressLabel": "TOELATINGSTEST",
     "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE EXAMENSCORE",
-    "levelLabel": "ONDERDEEL",
-    "scoreSuffix": "goed",
-    "journeyLabel": "TOELATINGSTEST",
-    "kitchensCleared": "{value} / {total} examenonderdelen voltooid",
-    "currentRank": "HUIDIG NIVEAU · TOELATINGSTEST AMBULANCEZORG",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Toelatingstest gestart"
-      },
-      {
-        "afterStage": 5,
-        "label": "Toelatingstest voltooid"
-      }
-    ],
-    "unlockEyebrow": "RESULTAATUPDATE · TOELATINGSTEST AMBULANCEZORG",
-    "unlockTitle": "Er staat een nieuwe uitdaging klaar: toelatingstest ambulancezorg",
-    "unlockCopy": "Volgende onderdeel: toelatingstest ambulancezorg.",
-    "finalEyebrow": "JOUW SCORE VOOR AMBULANCEZORG",
-    "finalCareerTitle": "TOELATINGSTEST VOLTOOID",
-    "strongestLabel": "Sterkste onderdeel voor hulpverlening",
-    "stages": [
-      {
+    "stages": {
+      "stage-1": {
         "difficulty": "Basis",
         "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
         "preAdTitle": "Eerste examenonderdeel voltooid",
         "preAdCopy": "Goede start. Het volgende onderdeel staat klaar.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          },
-          "medium": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          },
-          "low": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          }
-        },
         "next": {
           "eyebrow": "VOLGEND EXAMENONDERDEEL · IN ONTWIKKELING",
-          "title": "Lichaam en signalen",
-          "difficulty": "In ontwikkeling",
-          "tagline": "Lichaamssystemen. Trends. Vitale functies.",
-          "button": "Verder"
+          "tagline": "Lichaamssystemen. Trends. Vitale functies."
         }
       },
-      {
+      "stage-2": {
         "difficulty": "In ontwikkeling",
         "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
         "preAdTitle": "Tweede examenonderdeel voltooid",
         "preAdCopy": "Het volgende onderdeel wordt moeilijker.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          },
-          "medium": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          },
-          "low": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          }
-        },
         "next": {
           "eyebrow": "VOLGEND EXAMENONDERDEEL · GEVORDERD",
-          "title": "Veiligheid en communicatie",
-          "difficulty": "Gevorderd",
-          "tagline": "Gevaren. Waardigheid. Heldere communicatie.",
-          "button": "Verder"
+          "tagline": "Gevaren. Waardigheid. Heldere communicatie."
         }
       },
-      {
+      "stage-3": {
         "difficulty": "Gevorderd",
         "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
         "preAdTitle": "Je bent over de helft",
         "preAdCopy": "Het gevorderde onderdeel komt eraan.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          },
-          "medium": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          },
-          "low": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          }
-        },
         "next": {
           "eyebrow": "VOLGEND EXAMENONDERDEEL · UITDAGEND",
-          "title": "Beslissingen onder druk",
-          "difficulty": "Uitdagend",
-          "tagline": "Botsende aanwijzingen. Rustig prioriteren.",
-          "button": "Verder"
+          "tagline": "Botsende aanwijzingen. Rustig prioriteren."
         }
       },
-      {
+      "stage-4": {
         "difficulty": "Uitdagend",
         "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
         "preAdTitle": "Hierna volgt de eindtoets",
         "preAdCopy": "Alleen de eindtoets resteert nog.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          },
-          "medium": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          },
-          "low": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          }
-        },
         "next": {
           "eyebrow": "VOLGEND EXAMENONDERDEEL · EINDTOETS",
-          "title": "Eindinzet",
-          "difficulty": "Eindtoets",
-          "tagline": "Trends. Veiligheid. Geïntegreerd oordeel.",
-          "button": "Verder"
+          "tagline": "Trends. Veiligheid. Geïntegreerd oordeel."
         }
       },
-      {
+      "stage-5": {
         "difficulty": "Eindtoets",
         "preAdBadge": "TOELATINGSTEST VOLTOOID",
         "preAdTitle": "TOELATINGSTEST VOLTOOID",
         "preAdCopy": "Je resultaat staat klaar om te bekijken.",
-        "preAdButton": "Bekijk mijn resultaat",
-        "resultIcon": "✓",
-        "resultLabel": "TOELATINGSTEST VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          },
-          "medium": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          },
-          "low": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          }
-        },
         "preAdChecks": [
           "40 antwoorden gecontroleerd",
           "Overzicht per onderdeel gereed",
           "Eindscore berekend"
-        ]
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
       }
-    ]
+    }
+  },
+  "results": {
+    "name": "JOUW SCORE VOOR AMBULANCEZORG",
+    "profiles": {
+      "profile-1": {
+        "tier": "90–100%",
+        "title": "Noodhulptalent",
+        "copy": "Je beheerste anatomie, observatie, veiligheid en spoedprioriteiten met opvallende precisie. Zelfs de lastigste vragen brachten je nauwelijks uit balans."
+      },
+      "profile-2": {
+        "tier": "80–89%",
+        "title": "Natuurtalent in de hulpverlening",
+        "copy": "Je resultaat toont een zeer sterke beheersing van anatomie, observatie, veiligheid en spoedprioriteiten. Ook bij subtiele valkuilen bleef je redenering betrouwbaar."
+      },
+      "profile-3": {
+        "tier": "70–79%",
+        "title": "Kalm onder druk",
+        "copy": "Je behaalde een solide resultaat bij anatomie, observatie, veiligheid en spoedprioriteiten. Enkele lastige details kostten punten, maar het totaalbeeld blijft sterk."
+      },
+      "profile-4": {
+        "tier": "60–69%",
+        "title": "Betrouwbare beslisser",
+        "copy": "Je hebt een goede basis in anatomie, observatie, veiligheid en spoedprioriteiten. Als je de lastigste onderdelen aanscherpt, kan je volgende resultaat flink stijgen."
+      },
+      "profile-5": {
+        "tier": "50–59%",
+        "title": "Veelbelovende kandidaat",
+        "copy": "Je herkende meerdere belangrijke aspecten van anatomie, observatie, veiligheid en spoedprioriteiten. De gemiste vragen laten duidelijk zien wat je nog kunt versterken."
+      },
+      "profile-6": {
+        "tier": "Onder 50%",
+        "title": "Ontdekker van eerste hulp",
+        "copy": "Deze uitdaging liet groeikansen zien bij anatomie, observatie, veiligheid en spoedprioriteiten. Je nieuwsgierigheid en de opgeloste vragen vormen een uitstekend vertrekpunt."
+      }
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Anatomie en fysiologie"
+      },
+      "dimension-2": {
+        "label": "Observaties en vitale waarden"
+      },
+      "dimension-3": {
+        "label": "Rekenen en meten"
+      },
+      "dimension-4": {
+        "label": "Veiligheid en infectiepreventie"
+      },
+      "dimension-5": {
+        "label": "Communicatie en overdracht"
+      },
+      "dimension-6": {
+        "label": "Spoedredenering en prioriteiten"
+      }
+    },
+    "score": {
+      "passed": "Geslaagd voor de toelatingstest ambulancezorg!",
+      "finished": "toelatingstest ambulancezorg voltooid",
+      "correctLabel": "goed",
+      "strongest": "Sterkste onderdeel voor hulpverlening",
+      "trickiest": "Moeilijkste onderdeel voor hulpverlening",
+      "bestRound": "Beste onderdeel",
+      "insights": {
+        "overview": "score voor ambulancezorg in één oogopslag",
+        "correct": "goed",
+        "missed": "Gemiste vragen in de toelatingstest ambulancezorg",
+        "target": "Juiste antwoorden voor 80%",
+        "breakdown": "Overzicht van je vaardigheden voor hulpverlening",
+        "snapshot": "Wat je profiel in de toelatingstest ambulancezorg suggereert",
+        "targetReached": "Doel van 80% gehaald",
+        "targetRemaining": "Nog nodige juiste antwoorden voor 80%"
+      }
+    }
+  },
+  "stages": {
+    "stage-1": {
+      "title": "Inzetbriefing",
+      "questions": {
+        "paramedic-r1q1": {
+          "question": "Welk orgaan pompt bloed door het lichaam?",
+          "answers": [
+            "Het hart",
+            "De longen",
+            "De hersenen",
+            "De botten"
+          ]
+        },
+        "paramedic-r3q2": {
+          "visual": {
+            "items": [
+              "MELDING::14.35 uur",
+              "AANKOMST::15.12 uur"
+            ],
+            "ariaLabel": "Melding om 14.35 uur en aankomst om 15.12 uur"
+          },
+          "question": "Een melding wordt om 14.35 uur geregistreerd. Het team bereikt de bestemming om 15.12 uur. Hoeveel tijd is verstreken?",
+          "answers": [
+            "27 minuten",
+            "47 minuten",
+            "57 minuten",
+            "37 minuten"
+          ]
+        },
+        "paramedic-r4q3": {
+          "visual": {
+            "items": [
+              "GEBRUIKT SCHERP VOORWERP::Op de vloer",
+              "GEBROKEN GLAS::Ernaast",
+              "UITGANG::Vrij"
+            ],
+            "ariaLabel": "Gebruikt scherp voorwerp en gebroken glas op de vloer, met een vrije uitgang"
+          },
+          "question": "Hoe moet het gevaar op de vloer als eerste worden aangepakt?",
+          "answers": [
+            "Zet het gevaar af en meld het",
+            "Verplaats het voorzichtig met een gehandschoende hand",
+            "Schuif het met je schoen uit de looproute",
+            "Laat het liggen tot het rustiger is"
+          ]
+        },
+        "paramedic-r5q2": {
+          "visual": {
+            "items": [
+              "POLS::82::82",
+              "ADEMHALING::16::25",
+              "ALERT::JA::JA",
+              "HUID::WARM::WARM"
+            ],
+            "ariaLabel": "Pols onveranderd, ademhaling toegenomen, alertheid onveranderd en huid nog warm"
+          },
+          "question": "Welke meting is veranderd?",
+          "answers": [
+            "Pols",
+            "Alertheid",
+            "Ademhaling",
+            "Huidtemperatuur"
+          ]
+        },
+        "paramedic-r1q5": {
+          "question": "Welke opening maakt de overdracht het duidelijkst?",
+          "answers": [
+            "Er is eerder waarschijnlijk iets veranderd",
+            "Hier zijn alle kleine details in willekeurige volgorde",
+            "Om 14.20 uur werd de ademhaling sneller en nam de alertheid af",
+            "Ik weet al precies wat de oorzaak was"
+          ]
+        },
+        "paramedic-r1q6": {
+          "context": "Een routinematige controlelijst voor de apparatuur moet bijna worden afgerond. Tegelijkertijd wordt iemand die zich goed voelde bleek en duizelig en reageert die minder goed.",
+          "question": "Wat heeft voorrang?",
+          "answers": [
+            "Geef voorrang aan de plotselinge achteruitgang en schakel gekwalificeerde hulp in",
+            "Werk eerst de routinechecklist af",
+            "Wacht tot de deadline voor de checklist is verstreken",
+            "Kies de taak die fysiek het dichtst bij is"
+          ]
+        },
+        "paramedic-r2q2": {
+          "question": "Welke bloedvaten voeren bloed van het hart weg?",
+          "answers": [
+            "Aders",
+            "Haarvaten",
+            "Luchtwegen",
+            "Slagaders"
+          ]
+        },
+        "paramedic-r1q3": {
+          "question": "Vier verzegelde verpakkingen bevatten elk vijf verbandkompressen. Hoeveel kompressen zijn er in totaal?",
+          "answers": [
+            "9",
+            "25",
+            "15",
+            "20"
+          ]
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Lichaam en signalen",
+      "questions": {
+        "paramedic-r2q1": {
+          "visual": {
+            "items": [
+              "VAN::Longen",
+              "DAARNA::?",
+              "VERVOLGENS::Linkerkamer"
+            ],
+            "ariaLabel": "Zuurstofrijk bloed gaat vanuit de longen door een onbekende hartkamer naar de linkerkamer"
+          },
+          "question": "Welke hartkamer ontvangt zuurstofrijk bloed dat uit de longen terugkeert?",
+          "answers": [
+            "De linkerboezem",
+            "De rechterboezem",
+            "De rechterkamer",
+            "De linkerkamer"
+          ]
+        },
+        "paramedic-r2q3": {
+          "question": "Welk lichaamssysteem stuurt signalen tussen de hersenen en de rest van het lichaam?",
+          "answers": [
+            "Het spijsverteringsstelsel",
+            "Het skeletstelsel",
+            "Het urinestelsel",
+            "Het zenuwstelsel"
+          ]
+        },
+        "paramedic-r2q4": {
+          "question": "Welke uitspraak beschrijft de nieren het best?",
+          "answers": [
+            "Ze wisselen zuurstof en koolstofdioxide uit",
+            "Ze verwijderen afvalstoffen uit het bloed en helpen de vochtbalans te regelen",
+            "Ze pompen bloed door de slagaders",
+            "Ze regelen elke bewuste beweging"
+          ]
+        },
+        "paramedic-r2q5": {
+          "context": "Eerder was de knijpkracht in beide handen gelijk. Nu is de kracht rechts hetzelfde, maar links zwakker dan voorheen.",
+          "question": "Welk onderdeel van de lichaamsfunctie is veranderd?",
+          "answers": [
+            "De knijpkracht rechts is afgenomen",
+            "De knijpkracht in beide handen is toegenomen",
+            "Er is niets veranderd",
+            "De knijpkracht links is afgenomen"
+          ]
+        },
+        "paramedic-r5q3": {
+          "context": "Eerder was de persoon alert en antwoordde die direct. Nu is de persoon slaperig en reageert die veel langzamer.",
+          "question": "Welke nieuw genoteerde verandering is het belangrijkst?",
+          "answers": [
+            "De eerdere notitie dat de persoon alert was",
+            "De tijd die op de kaart staat",
+            "Dat de kaart twee zinnen bevat",
+            "De persoon reageert minder goed"
+          ]
+        },
+        "paramedic-r5q4": {
+          "visual": {
+            "items": [
+              "POLS::80 → 92 → 108",
+              "NIEUWE VERANDERING::Bleek + duizelig"
+            ],
+            "ariaLabel": "Pols 80, daarna 92, daarna 108, met bleekheid en duizeligheid"
+          },
+          "question": "Wat is de beste interpretatie van dit patroon?",
+          "answers": [
+            "De gegevens zijn niet veranderd",
+            "De gezamenlijke trend wijst op achteruitgang die snel deskundig moet worden beoordeeld",
+            "Alleen het eerste getal is belangrijk",
+            "De symptomen kunnen worden genegeerd omdat er geen diagnose staat"
+          ]
+        },
+        "paramedic-r5q5": {
+          "question": "Waarom kan minder goede ademhaling de werkende weefsels beïnvloeden?",
+          "answers": [
+            "De maag stopt onmiddellijk met verteren",
+            "De botten stoppen met het ondersteunen van het lichaam",
+            "Er kan minder zuurstof in het bloed en bij de weefsels komen",
+            "De nieren ontvangen geen zenuwsignalen meer"
+          ]
+        },
+        "paramedic-r8q1": {
+          "question": "Welke verandering is het sterkste waarschuwingssignaal voor achteruitgang?",
+          "answers": [
+            "Alert → plotseling verward",
+            "Pols 78 → 80",
+            "Temperatuur 36,8 → 36,9",
+            "Pijn 4/10 → 4/10"
+          ]
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Veiligheid en communicatie",
+      "questions": {
+        "paramedic-r1q4": {
+          "question": "Een stroomkabel ligt over de enige deuropening. Wat moet eerst gebeuren?",
+          "answers": [
+            "Stap er voorzichtig overheen",
+            "Houd iedereen uit de buurt en laat gekwalificeerde hulp de situatie veilig maken",
+            "Verplaats de kabel met een droog voorwerp",
+            "Vraag een omstander erop te letten"
+          ]
+        },
+        "paramedic-r4q1": {
+          "question": "Iemand bevindt zich naast rijdend verkeer zonder beschermde werkzone. Wat is het veiligst?",
+          "answers": [
+            "Blijf uit de buurt, herken het gevaar en vraag passende ondersteuning ter plaatse",
+            "Loop het verkeer in en wenk voertuigen eromheen",
+            "Vraag de persoon onmiddellijk de weg over te steken",
+            "Zet apparatuur op de weg om voertuigen af te remmen"
+          ]
+        },
+        "paramedic-r4q4": {
+          "question": "Bij een taak kunnen gezicht en handen aan spattend lichaamsvocht worden blootgesteld. Waarop moet de keuze van beschermingsmiddelen berusten?",
+          "answers": [
+            "De kleur van de materiaaltas",
+            "Of de persoon er ziek uitziet",
+            "Het tijdstip van de dag",
+            "Het beoordeelde blootstellingsrisico, inclusief bescherming van handen, ogen of gezicht"
+          ]
+        },
+        "paramedic-r6q5": {
+          "question": "Een hoestende persoon zit met anderen in een kleine wachtruimte. Welke algemene veiligheidsmaatregel past bij het zichtbare risico?",
+          "answers": [
+            "Laat mensen gebruikte zakdoekjes delen",
+            "Schakel zonder beoordeling alle ventilatie uit",
+            "Stimuleer ademhalings- en handhygiëne en volg voorzorgsmaatregelen op basis van het risico",
+            "Negeer luchtwegafscheiding"
+          ]
+        },
+        "paramedic-r9q4": {
+          "visual": {
+            "items": [
+              "VOERTUIG::Staat stil",
+              "PERSONEN::Twee",
+              "GEVAAR::Sterke brandstoflucht"
+            ],
+            "ariaLabel": "Stilstaand voertuig, twee personen en een sterke brandstoflucht"
+          },
+          "question": "Welk detail moet het dringendst worden overgedragen?",
+          "answers": [
+            "De kleur van het voertuig",
+            "Het aantal ramen",
+            "De sterke brandstoflucht en het mogelijke ontstekingsgevaar",
+            "Het weer eerder die ochtend"
+          ]
+        },
+        "paramedic-r6q2": {
+          "question": "Iemand blijft knikken, maar heeft de uitleg niet begrepen. Wat moet er nu gebeuren?",
+          "answers": [
+            "Herhaal dezelfde uitleg langzamer",
+            "Vraag ‘Begrijpt u het?’ en ga door als het antwoord ja is",
+            "Maak de uitleg korter maar houd dezelfde vaktermen",
+            "Gebruik gewone woorden en controleer wat de persoon heeft begrepen"
+          ]
+        },
+        "paramedic-r4q5": {
+          "question": "Een omstander bespreekt persoonlijke gegevens waar anderen kunnen meeluisteren. Wat is het best?",
+          "answers": [
+            "Verplaats het gesprek naar een besloten plek en deel alleen noodzakelijke informatie",
+            "Nodig meer mensen uit om te luisteren",
+            "Herhaal de details zodat iedereen ze begrijpt",
+            "Hang de informatie openbaar op"
+          ]
+        },
+        "paramedic-r6q3": {
+          "question": "Iemand wil een gevoelig gezondheidsprobleem bespreken. Wat beschermt diens waardigheid?",
+          "answers": [
+            "Vraag om uitleg waar iedereen bij is",
+            "Zoek een besloten plek en luister zonder aannames",
+            "Vertel eerst de mensen in de buurt over het probleem",
+            "Doe het probleem af als gênant"
+          ]
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Beslissingen onder druk",
+      "questions": {
+        "paramedic-r6q1": {
+          "question": "Iemand zegt: ‘Ik ben doodsbang.’ Welke reactie is het best?",
+          "answers": [
+            "Er is niets om bang voor te zijn",
+            "Probeer er niet aan te denken",
+            "Ik garandeer dat alles goed komt",
+            "Ik zie dat dit beangstigend is. Vertel wat u het meest zorgen baart"
+          ]
+        },
+        "paramedic-r10q5": {
+          "context": "De persoon zegt: ‘Ik wil niet dat dit wordt besproken waar anderen het kunnen horen, en ik begrijp nog steeds niet waarom u dit vraagt.’",
+          "question": "Welke reactie beschermt de privacy en controleert of de uitleg is begrepen?",
+          "answers": [
+            "Ga door met het gesprek waar iedereen kan meeluisteren",
+            "Leg niets uit en stel dezelfde vragen opnieuw",
+            "Ga naar een geschikte besloten plek, leg het eenvoudig uit en controleer het begrip",
+            "Vraag een omstander het namens jou uit te leggen"
+          ]
+        },
+        "paramedic-r2q6": {
+          "context": "De borstkas beweegt, maar er is nauwelijks luchtverplaatsing waarneembaar en de persoon kan niet normaal spreken.",
+          "question": "Welk probleem heeft de hoogste prioriteit?",
+          "answers": [
+            "Een mogelijk spijsverteringsprobleem",
+            "Een mogelijk luchtweg- of ademhalingsprobleem dat direct deskundig moet worden beoordeeld",
+            "Een lichte spierverrekking",
+            "Een routinematige controle van de vochtinname"
+          ]
+        },
+        "paramedic-r5q6": {
+          "context": "Persoon A voelt zich goed en de observaties blijven stabiel. Persoon B is plotseling klam en duizelig en de pols is bij drie controles gestegen.",
+          "question": "Wie heeft als eerste aandacht nodig?",
+          "answers": [
+            "Persoon B, omdat meerdere veranderingen op achteruitgang wijzen",
+            "Persoon A, omdat de observaties van die persoon het eerst zijn genoteerd",
+            "Beiden kunnen wachten omdat er geen diagnose is genoemd",
+            "De persoon met de kortste naam"
+          ]
+        },
+        "paramedic-r7q1": {
+          "context": "De locatie werd aanvankelijk als veilig gemeld. Een tweede bericht zegt dat er nu rook de kamer in komt en dat de dichtstbijzijnde uitgang steeds moeilijker te gebruiken is.",
+          "question": "Welke nieuwe informatie moet de reactie het sterkst veranderen?",
+          "answers": [
+            "Het eerste bericht dat de locatie veilig was",
+            "De toenemende rook en de bedreigde vluchtroute",
+            "Het tijdstip waarop het eerste bericht werd geschreven",
+            "Het aantal woorden in de update"
+          ]
+        },
+        "paramedic-r7q2": {
+          "visual": {
+            "items": [
+              "EERST ÉÉN DRINGEND BERICHT",
+              "RADIOTIJD IS BEPERKT"
+            ],
+            "ariaLabel": "Er kan maar één dringend bericht als eerste worden verzonden en de radiotijd is beperkt"
+          },
+          "question": "Welk eerste radiobericht geeft hulpverleners meteen het duidelijkste beeld?",
+          "answers": [
+            "We hebben ergens bij de weg hulp nodig",
+            "River Gate: twee personen, rook aanwezig, toegang geblokkeerd",
+            "De situatie is lastig; meer informatie volgt",
+            "Kom snel; mogelijk is er materiaal nodig"
+          ]
+        },
+        "paramedic-r3q3": {
+          "visual": {
+            "items": [
+              "0,3 L + 450 mL + 250 mL = ?"
+            ],
+            "ariaLabel": "Nul komma drie liter plus 450 milliliter plus 250 milliliter is welk totaal"
+          },
+          "question": "Wat is het totale vastgelegde volume in milliliter?",
+          "answers": [
+            "900 mL",
+            "950 mL",
+            "1.000 mL",
+            "1.100 mL"
+          ]
+        },
+        "paramedic-r3q4": {
+          "question": "Een registratie van 500 mL is voor 70% voltooid. Hoeveel milliliter is vastgelegd?",
+          "answers": [
+            "300 mL",
+            "325 mL",
+            "350 mL",
+            "400 mL"
+          ]
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Eindinzet",
+      "questions": {
+        "paramedic-r10q6": {
+          "visual": {
+            "items": [
+              "PERSOON A::Pijnlijke pols · normale spraak · stabiele observaties",
+              "PERSOON B::Ingestort · bleek · snelle ademhaling · nieuwe verwarring"
+            ],
+            "ariaLabel": "Persoon A heeft een pijnlijke pols, spreekt normaal en heeft stabiele observaties. Persoon B is ingestort, is bleek, ademt snel en is nieuw verward."
+          },
+          "question": "Wie heeft als eerste aandacht nodig?",
+          "answers": [
+            "Persoon A — zichtbare pijn aan de pols",
+            "Dezelfde prioriteit",
+            "Persoon B — meerdere tekenen van achteruitgang",
+            "Wacht op een diagnose"
+          ]
+        },
+        "paramedic-r10q1": {
+          "visual": {
+            "items": [
+              "OPPERVLAKKIGE ADEMHALING → MINDER GASWISSELING → ? → MINDER ZUURSTOF NAAR WEEFSELS"
+            ],
+            "ariaLabel": "Oppervlakkige ademhaling, minder gaswisseling, onbekende stap, minder zuurstof naar de weefsels"
+          },
+          "question": "Als oppervlakkige ademhaling de gaswisseling vermindert, welk gevolg treedt dan het meest direct op?",
+          "answers": [
+            "Er komt meer voedsel in de maag",
+            "Er komt minder zuurstof in het bloed",
+            "De botten produceren extra beweging",
+            "De nieren maken meer lucht"
+          ]
+        },
+        "paramedic-r10q3": {
+          "question": "0,65 L + 350 mL = ?",
+          "answers": [
+            "415 mL",
+            "1.000 mL",
+            "650 mL",
+            "3.565 mL"
+          ]
+        },
+        "paramedic-r10q2": {
+          "visual": {
+            "items": [
+              "16 — ALERT",
+              "22 — ANGSTIG",
+              "28 — SLAPERIG",
+              "TREND — ?"
+            ],
+            "ariaLabel": "Ademhaling 16 en alert, daarna 22 en angstig, daarna 28 en slaperig"
+          },
+          "question": "Wat is de beste interpretatie van de volledige trend?",
+          "answers": [
+            "De persoon gaat gestaag vooruit",
+            "Alleen de middelste controle is belangrijk",
+            "De waarden kunnen worden genegeerd omdat er geen diagnose staat",
+            "De ademhaling verslechtert terwijl de persoon minder goed reageert"
+          ]
+        },
+        "paramedic-r8q2": {
+          "question": "Een totaal van 1,2 L wordt gelijk verdeeld over vier vastgelegde perioden. Hoeveel hoort bij elke periode?",
+          "answers": [
+            "250 mL",
+            "300 mL",
+            "350 mL",
+            "400 mL"
+          ]
+        },
+        "paramedic-r10q4": {
+          "context": "INCIDENTVERSLAG — Een agressieve persoon gooit voorwerpen bij de ingang. Apparatuur blokkeert de dichtstbijzijnde vluchtroute gedeeltelijk.",
+          "question": "Wat is de veiligste reactie op de gecombineerde gevaren?",
+          "answers": [
+            "Blijf uit de buurt, leid anderen naar een veiligere route en waarschuw passende hulp",
+            "Ga dichterbij en discussieer tot de persoon stopt",
+            "Haal de apparatuur naast de persoon op voordat je weggaat",
+            "Vraag een ongetrainde omstander de gegooide voorwerpen tegen te houden"
+          ]
+        },
+        "paramedic-r9q3": {
+          "context": "INCIDENTVERSLAG — Eén toegangsroute is 0,4 km lang. Een tweede gedeelte is 250 m. Noteer de totale afstand in meters.",
+          "question": "Welke totale afstand hoort in het verslag?",
+          "answers": [
+            "650 m",
+            "290 m",
+            "400 m",
+            "4.250 m"
+          ]
+        },
+        "paramedic-r9q6": {
+          "context": "DETAIL VOOR DE OVERDRACHT — Om 10.20 uur werd de ademhaling sneller en raakte de persoon voor het eerst verward. Beide veranderingen zijn nieuw.",
+          "question": "Welke zin is de duidelijkste beknopte overdracht?",
+          "answers": [
+            "Op een bepaald moment veranderde er iets en waren er verschillende details",
+            "De kamer was rustig voordat er iets gebeurde",
+            "Om 10.20 uur werd de ademhaling sneller en raakte de persoon voor het eerst verward",
+            "Er zijn veel normale details te bespreken vóór de nieuwe veranderingen"
+          ]
+        }
+      }
+    }
   }
 }

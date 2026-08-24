@@ -14,8 +14,3 @@ export const SOCIAL_PROOF_COUNTS = Object.freeze({
   vision: 203000,
   "years-left": 267000,
 });
-export function socialProofCountFor(slug) {
-  const count = SOCIAL_PROOF_COUNTS[slug];
-  if (!Number.isInteger(count)) throw new Error(`Missing stable social-proof count for ${slug}`);
-  return count;
-}

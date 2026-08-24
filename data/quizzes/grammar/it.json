@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Solo il 10% supera questo quiz di grammatica",
   "eyebrow": "LA SFIDA DI REVISIONE",
   "summary": "Frasi traballanti, trappole di punteggiatura e formule quasi corrette sfidano il tuo occhio.",
+  "progressLabel": "completato",
   "landing": {
     "intro": "La tua grammatica è davvero impeccabile? Ripara le frasi, evita le trappole di punteggiatura e trova l’errore prima che sfugga.",
     "cta": "Inizia il quiz"
@@ -19,124 +21,111 @@
     "disclaimer": "Solo per intrattenimento e cultura generale. Questo quiz di grammatica non è un esame ufficiale, una qualifica o un parere professionale."
   },
   "checkpoint": {
-    "nextPrefix": "PROSSIMA SFIDA",
-    "adNote": "Un breve annuncio, poi si continua.",
-    "finalBadge": "QUIZ DI GRAMMATICA COMPLETATO",
-    "finalIcon": "✍️",
-    "finalTitle": "QUIZ DI GRAMMATICA COMPLETATO",
-    "finalCopy": "Il risultato di grammatica è pronto per essere svelato.",
-    "finalButton": "Vedi il mio risultato",
-    "finalChecklist": [
-      "40 risposte verificate",
-      "Tre aree grammaticali confrontate",
-      "Punteggio finale calcolato"
-    ],
-    "reveals": [
-      {
-        "badge": "CONTROLLO INIZIALE COMPLETATO",
-        "icon": "✍️",
-        "title": "Prima revisione completata",
-        "signal": "fixed",
-        "message": "Le prime frasi sono corrette. Ora serve più precisione."
-      },
-      {
-        "badge": "COSTRUZIONE DELLA FRASE COMPLETATA",
-        "icon": "✍️",
-        "title": "Costruzione padroneggiata",
-        "signal": "fixed",
-        "message": "Entrano in gioco concordanze, verbi e punteggiatura."
-      },
-      {
-        "badge": "PROVA DI PRECISIONE COMPLETATA",
-        "icon": "✍️",
-        "title": "Hai superato la metà",
-        "signal": "fixed",
-        "message": "Le trappole linguistiche più sottili sono le prossime."
-      },
-      {
-        "badge": "TRAPPOLE GRAMMATICALI COMPLETATE",
-        "icon": "✍️",
-        "title": "Ora manca la revisione finale",
-        "signal": "fixed",
-        "message": "Resta soltanto la revisione finale."
-      },
-      {
-        "badge": "SFIDA GRAMMATICALE COMPLETATA",
-        "icon": "✍️",
-        "title": "QUIZ DI GRAMMATICA COMPLETATO",
-        "signal": "fixed",
-        "message": "Il risultato di grammatica è pronto per essere svelato."
-      }
-    ],
     "finalAdNote": "Un breve annuncio, poi vedrai il risultato."
+  },
+  "career": {
+    "resultProgressLabel": "Sfida grammaticale",
+    "resultProgressComplete": "{value}% completato",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamenti",
+        "preAdBadge": "CONTROLLO INIZIALE COMPLETATO",
+        "preAdTitle": "Prima revisione completata",
+        "preAdCopy": "Le prime frasi sono corrette. Ora serve più precisione.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
+          "tagline": "Proposizioni. Concordanze. Chiarezza."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermedio",
+        "preAdBadge": "COSTRUZIONE DELLA FRASE COMPLETATA",
+        "preAdTitle": "Costruzione padroneggiata",
+        "preAdCopy": "Entrano in gioco concordanze, verbi e punteggiatura.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
+          "tagline": "Verbi. Punteggiatura. Precisione."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Competente",
+        "preAdBadge": "PROVA DI PRECISIONE COMPLETATA",
+        "preAdTitle": "Hai superato la metà",
+        "preAdCopy": "Le trappole linguistiche più sottili sono le prossime.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
+          "tagline": "Errori plausibili. Indizi minimi."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzato",
+        "preAdBadge": "TRAPPOLE GRAMMATICALI COMPLETATE",
+        "preAdTitle": "Ora manca la revisione finale",
+        "preAdCopy": "Resta soltanto la revisione finale.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
+          "tagline": "Revisione completa. Giudizio finale."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Prova finale",
+        "preAdBadge": "SFIDA GRAMMATICALE COMPLETATA",
+        "preAdTitle": "QUIZ DI GRAMMATICA COMPLETATO",
+        "preAdCopy": "Il risultato di grammatica è pronto per essere svelato.",
+        "preAdChecks": [
+          "40 risposte verificate",
+          "Tre aree grammaticali confrontate",
+          "Punteggio finale calcolato"
+        ],
+        "preAdButton": "Vedi il mio risultato"
+      }
+    }
   },
   "results": {
     "name": "IL TUO PUNTEGGIO DI GRAMMATICA",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Maestro della revisione",
         "copy": "Hai dimostrato una padronanza notevole di struttura, concordanza, punteggiatura e chiarezza. Persino le domande più impegnative ti hanno messo raramente in difficoltà."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Talento naturale per la grammatica",
         "copy": "Il risultato mostra un’ottima padronanza di struttura, concordanza, punteggiatura e chiarezza. Il tuo ragionamento è rimasto sicuro anche davanti alle trappole più sottili."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Specialista della frase",
         "copy": "Hai ottenuto un risultato solido in struttura, concordanza, punteggiatura e chiarezza. Qualche dettaglio difficile ti ha rallentato, ma il quadro complessivo è convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Comunicatore attento",
         "copy": "Hai buone basi in struttura, concordanza, punteggiatura e chiarezza. Rafforzando i punti più delicati, il prossimo risultato può migliorare nettamente."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Comunicatore in crescita",
         "copy": "Hai riconosciuto diversi elementi chiave di struttura, concordanza, punteggiatura e chiarezza. Le domande mancate indicano con chiarezza gli aspetti da consolidare."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Meno del 50%",
         "title": "Detective della grammatica",
         "copy": "Questa sfida ha mostrato alcuni margini di crescita in struttura, concordanza, punteggiatura e chiarezza. La curiosità e le risposte corrette sono un ottimo punto di partenza."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Struttura e concordanza",
-        "categories": [
-          "sentence_structure",
-          "sentence_building",
-          "verbs_agreement",
-          "verbs_pronouns"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Struttura e concordanza"
       },
-      {
-        "label": "Punteggiatura e riferimenti",
-        "categories": [
-          "punctuation",
-          "punctuation_apostrophes",
-          "pronouns_reference"
-        ]
+      "dimension-2": {
+        "label": "Punteggiatura e riferimenti"
       },
-      {
-        "label": "Revisione del significato",
-        "categories": [
-          "modifiers_word_choice",
-          "editing_context",
-          "precision"
-        ]
+      "dimension-3": {
+        "label": "Revisione del significato"
       }
-    ],
+    },
     "score": {
       "passed": "Sfida superata: test di grammatica!",
       "finished": "Sfida completata: test di grammatica",
@@ -144,9 +133,6 @@
       "strongest": "Area più forte di grammatica",
       "trickiest": "Area più difficile di grammatica",
       "bestRound": "Miglior round",
-      "showPercentage": true,
-      "disclaimer": "Solo per intrattenimento e cultura generale. Questo quiz di grammatica non è un esame ufficiale, una qualifica o un parere professionale.",
-      "showBestRound": false,
       "insights": {
         "overview": "punteggio di grammatica in sintesi",
         "correct": "corrette",
@@ -155,100 +141,42 @@
         "breakdown": "Analisi delle competenze di grammatica",
         "snapshot": "Cosa suggerisce il profilo nel test di grammatica",
         "targetReached": "Obiettivo dell’80% raggiunto",
-        "targetRemaining": "Risposte corrette ancora necessarie per l’80%",
-        "details": {
-          "analysisTitle": "Come leggere il punteggio di grammatica",
-          "analysisCopy": "Questo risultato riunisce 40 domande in diversi ambiti: struttura, concordanza, verbi, punteggiatura, riferimenti e revisione. La distribuzione seguente mostra le aree più solide di questo tentativo.",
-          "roadmapTitle": "Nel rapporto completo del test di grammatica",
-          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra la tua area grammaticale più forte, il dettaglio per area e le risposte sbagliate nel test di grammatica.",
-          "roadmapItems": [
-            "Analisi del punteggio",
-            "Area più forte di grammatica",
-            "Analisi delle competenze di grammatica",
-            "Prossimi passi pratici"
-          ],
-          "positionTitle": "Il percorso verso l’80%",
-          "positionCopy": "L’obiettivo ricreativo è 32 risposte corrette su 40. L’indicatore mostra quanto si è avvicinato questo tentativo nel test di grammatica, senza confronti o valutazioni professionali.",
-          "measuredTitle": "Che cosa ha esplorato il test di grammatica",
-          "measuredIntro": "Le domande coprono tre aspetti complementari specifici del test di grammatica.",
-          "measuredAreas": [
-            {
-              "title": "Struttura e concordanza",
-              "copy": "Collegare chiaramente le proposizioni e mantenere i verbi coerenti con significato e sequenza temporale."
-            },
-            {
-              "title": "Punteggiatura e riferimenti",
-              "copy": "Usare punteggiatura e pronomi per rendere precisi i rapporti senza dipendere da scelte stilistiche facoltative."
-            },
-            {
-              "title": "Revisione del significato",
-              "copy": "Conservare portata, enfasi e registro mentre si correggono testi realistici."
-            }
-          ],
-          "tipsTitle": "Tre modi per affinare l’approccio di grammatica",
-          "tipsIntro": "Strategie semplici per un altro tentativo nel test di grammatica, non una valutazione professionale.",
-          "tips": [
-            {
-              "title": "Leggi prima il significato",
-              "copy": "Stabilisci che cosa deve comunicare la frase prima di confrontare punteggiatura o ordine delle parole."
-            },
-            {
-              "title": "Trova il nucleo della frase",
-              "copy": "Individua soggetto e verbo principali, poi controlla a cosa si collega ogni aggiunta."
-            },
-            {
-              "title": "Rivedi le quasi corrette",
-              "copy": "Esamina perché un’opzione plausibile cambia enfasi, riferimento o concordanza."
-            }
-          ],
-          "finalTitle": "Il tuo risultato nel test di grammatica",
-          "finalCopy": "Hai concluso con {score} risposte corrette su {total}. Il tuo profilo grammaticale per questo tentativo è riportato qui sotto."
-        }
+        "targetRemaining": "Risposte corrette ancora necessarie per l’80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Controllo iniziale",
-      "questions": [
-        {
-          "id": "grammar-r2q3",
+      "questions": {
+        "grammar-r2q3": {
           "question": "Sebbene la pioggia fosse cessata ___ il sentiero restava scivoloso. Quale segno manca?",
           "answers": [
             ";",
             ":",
             ".",
             ","
-          ],
-          "correct": 3,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r10q1",
+        "grammar-r10q1": {
           "question": "Quale frase presenta il corretto accordo tra soggetto e verbo?",
           "answers": [
             "L’elenco degli ingredienti sono sul tavolo.",
             "L’elenco degli ingredienti è sul tavolo.",
             "L’elenco degli ingredienti erano sul tavolo.",
             "L’elenco degli ingredienti stanno sul tavolo."
-          ],
-          "correct": 1,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r1q1",
+        "grammar-r1q1": {
           "question": "Quale opzione è una frase completa?",
           "answers": [
             "Dopo l’ultimo paragrafo",
             "La redattrice controllò l’ultimo paragrafo.",
             "Perché la scadenza era cambiata",
             "Mentre tutti aspettavano"
-          ],
-          "correct": 1,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r1q3",
+        "grammar-r1q3": {
           "context": "La frase parla di una sola amica.",
           "question": "Quale frase usa correttamente l’apostrofo?",
           "answers": [
@@ -256,12 +184,9 @@
             "Un amica è arrivata presto.",
             "Un’ amica è arrivata presto.",
             "Una’amica è arrivata presto."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r1q4",
+        "grammar-r1q4": {
           "context": "Nora ringraziò Priya dopo che Priya ebbe corretto la didascalia.",
           "question": "Quale riscrittura rende il riferimento inequivocabile?",
           "answers": [
@@ -269,24 +194,18 @@
             "Lei ringraziò Priya dopo averlo corretto.",
             "Nora ringraziò Priya per aver corretto la didascalia.",
             "Dopo la correzione, lei la ringraziò."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r1q5",
+        "grammar-r1q5": {
           "question": "Quale formulazione è più chiara e concisa?",
           "answers": [
             "La relazione è concisa in una maniera chiara.",
             "La relazione è chiara e concisa.",
             "La relazione possiede chiarezza ed è concisa per natura.",
             "La relazione è di un tipo che risulta chiaro e conciso."
-          ],
-          "correct": 1,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r1q6",
+        "grammar-r1q6": {
           "context": "AVVISO FORMALE\nPrima di entrare nello studio, i visitatori devono presentarsi alla reception.",
           "question": "Quale versione è adatta a un avviso formale?",
           "answers": [
@@ -294,12 +213,9 @@
             "I visitatori potrebbero ricordarsi di passare alla reception.",
             "Ci farebbe piacere se tutti passassero prima alla reception.",
             "Prima di entrare nello studio, i visitatori devono presentarsi alla reception."
-          ],
-          "correct": 3,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r2q5",
+        "grammar-r2q5": {
           "context": "La frase descrive due azioni concluse ieri.",
           "question": "Quale frase mantiene coerenti i tempi verbali?",
           "answers": [
@@ -307,41 +223,32 @@
             "Mina aveva aperto il file e controlla i dati.",
             "Mina aprì il file e controllò i dati.",
             "Mina aprendo il file e controllò i dati."
-          ],
-          "correct": 2,
-          "category": "verbs_agreement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Costruzione della frase",
-      "questions": [
-        {
-          "id": "grammar-r3q1",
+      "questions": {
+        "grammar-r3q1": {
           "question": "La riunione iniziò alle 9:00. Leo finì il grafico alle 8:30. Quale frase è corretta?",
           "answers": [
             "Leo finì il grafico dopo l’inizio della riunione.",
             "Leo aveva finito il grafico dopo l’inizio della riunione.",
             "Leo ha finito il grafico prima che la riunione inizia.",
             "Leo aveva finito il grafico prima che la riunione iniziasse."
-          ],
-          "correct": 3,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r4q3",
+        "grammar-r4q3": {
           "question": "Quale frase usa correttamente il punto e virgola?",
           "answers": [
             "Il file era pesante; perché si caricava lentamente.",
             "Il file era pesante; si caricava lentamente.",
             "Il file era pesante, si caricava lentamente.",
             "Il file era pesante; sebbene si caricasse lentamente."
-          ],
-          "correct": 1,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r3q2",
+        "grammar-r3q2": {
           "context": "Asha ha iniziato a lavorare in biblioteca lunedì e ci lavora tuttora.",
           "question": "Quale frase descrive un’attività iniziata lunedì e ancora in corso?",
           "answers": [
@@ -349,12 +256,9 @@
             "Asha lavora in biblioteca da lunedì.",
             "Asha aveva lavorato in biblioteca da lunedì, ma non ci lavora più.",
             "Asha lavorare in biblioteca da lunedì."
-          ],
-          "correct": 1,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r3q5",
+        "grammar-r3q5": {
           "context": "Hai lavorato insieme a una collega e vuoi presentarla senza ripetizioni.",
           "question": "Quale frase usa correttamente il pronome relativo?",
           "answers": [
@@ -362,36 +266,27 @@
             "Questa è la collega cui ho lavorato con.",
             "Questa è la collega con che ho lavorato.",
             "Questa è la collega con cui ho lavorato."
-          ],
-          "correct": 3,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r3q6",
+        "grammar-r3q6": {
           "question": "Quale frase usa correttamente una forma intensiva?",
           "answers": [
             "I tecnici stesso hanno eseguito la verifica.",
             "I tecnici stessi hanno eseguito la verifica.",
             "I tecnici stesse hanno eseguito la verifica.",
             "Il tecnico stessi ha eseguito la verifica."
-          ],
-          "correct": 1,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r4q1",
+        "grammar-r4q1": {
           "question": "Quale frase introduce correttamente l’elenco?",
           "answers": [
             "Porta tre cose: un taccuino, una penna e un documento.",
             "Porta: tre cose un taccuino, una penna e un documento.",
             "Porta tre: cose, un taccuino una penna e un documento.",
             "Porta tre cose; un taccuino, una penna e un documento."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r4q5",
+        "grammar-r4q5": {
           "context": "Maya stava entrando nella stanza quando notò la finestra aperta.",
           "question": "Quale frase collega chiaramente l’espressione iniziale a Maya?",
           "answers": [
@@ -399,12 +294,9 @@
             "Entrando nella stanza, la finestra aperta sbatté all’improvviso.",
             "Entrando nella stanza, una corrente d’aria colpì Maya.",
             "Entrando nella stanza, la porta si chiuse dietro Maya."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r4q6",
+        "grammar-r4q6": {
           "context": "AVVISO\nSaluta la persona che ti accoglie, firma il registro e ritira un pass.",
           "question": "Quale istruzione è punteggiata correttamente?",
           "answers": [
@@ -412,42 +304,33 @@
             "Saluta l’ospite, firma, il registro e ritira un pass.",
             "Saluta l’ospite, firma il registro e ritira un pass.",
             "Saluta; l’ospite, firma il registro e ritira un pass."
-          ],
-          "correct": 2,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Prova di precisione",
-      "questions": [
-        {
-          "id": "grammar-r5q4",
+      "questions": {
+        "grammar-r5q4": {
+          "context": "Tra Lina e ___, questa decisione deve restare riservata.",
           "question": "Quale pronome completa correttamente la frase?",
           "answers": [
             "me",
             "io",
             "mi",
             "mio"
-          ],
-          "correct": 0,
-          "category": "verbs_pronouns",
-          "context": "Tra Lina e ___, questa decisione deve restare riservata."
+          ]
         },
-        {
-          "id": "grammar-r10q4",
+        "grammar-r10q4": {
           "question": "Diversi cuochi usano questi armadietti. Quale cartello è corretto?",
           "answers": [
             "I armadietti dei cuochi",
             "L’armadietti del cuoco",
             "Gli armadietti dei cuochi",
             "Gli armadietti dei cuoco"
-          ],
-          "correct": 2,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r5q1",
+        "grammar-r5q1": {
           "context": "Il regolamento ha due sezioni. La seconda contiene la scadenza.",
           "question": "Quale riscrittura indica la scadenza senza riferimenti incerti?",
           "answers": [
@@ -455,36 +338,27 @@
             "Il regolamento ha due sezioni e lì compare.",
             "La scadenza compare nella seconda sezione del regolamento.",
             "La seconda sezione ce l’ha dentro al regolamento."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r5q5",
+        "grammar-r5q5": {
           "question": "Quale opzione è una frase completa?",
           "answers": [
             "Perché mancavano le etichette.",
             "I pacchi con le etichette mancanti.",
             "I pacchi subirono un ritardo perché mancavano le etichette.",
             "Dopo che i pacchi arrivarono senza etichette."
-          ],
-          "correct": 2,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r5q6",
+        "grammar-r5q6": {
           "question": "Quale frase punteggia correttamente il vocativo?",
           "answers": [
             "Ravi per favore, controlla l’ultima riga.",
             "Ravi, per favore, controlla l’ultima riga.",
             "Ravi per favore controlla, l’ultima riga.",
             "Ravi; per favore, controlla l’ultima riga."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r6q1",
+        "grammar-r6q1": {
           "context": "La frase descrive un lavoro già concluso da Marco.",
           "question": "Quale frase distingue correttamente «a» da «ha»?",
           "answers": [
@@ -492,24 +366,18 @@
             "Marco à terminato il lavoro.",
             "Marco ha terminato a il lavoro.",
             "Marco ha terminato il lavoro."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r6q5",
+        "grammar-r6q5": {
           "question": "Quale frase presenta l’accordo corretto?",
           "answers": [
             "L’insieme delle istruzioni sono facile da seguire.",
             "L’insieme delle istruzioni erano facile da seguire.",
             "L’insieme delle istruzioni essere facile da seguire.",
             "L’insieme delle istruzioni è facile da seguire."
-          ],
-          "correct": 3,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r6q6",
+        "grammar-r6q6": {
           "context": "OBIETTIVO DELL’E-MAIL\nChiedere al gruppo di inviare un unico file definitivo entro le 17:00.",
           "question": "Quale richiesta esprime con precisione l’obiettivo dell’e-mail?",
           "answers": [
@@ -517,29 +385,23 @@
             "Invia un file nel pomeriggio.",
             "Invia tutte le versioni disponibili entro fine giornata.",
             "Conferma entro le 17:00 quando il file sarà pronto."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Trappole grammaticali",
-      "questions": [
-        {
-          "id": "grammar-r10q5",
+      "questions": {
+        "grammar-r10q5": {
           "question": "Quale istruzione mantiene una struttura parallela?",
           "answers": [
             "I visitatori devono registrarsi, indossare un pass e la sua restituzione prima di uscire.",
             "I visitatori devono registrarsi, indossare un pass e restituirlo prima di uscire.",
             "I visitatori devono registrarsi, l’uso di un pass e restituirlo prima di uscire.",
             "I visitatori devono registrarsi, indossando un pass e restituirlo prima di uscire."
-          ],
-          "correct": 1,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r9q5",
+        "grammar-r9q5": {
           "question": "È stata revisionata soltanto la prima relazione. Quale frase lo dice senza ambiguità?",
           "answers": [
             "Soltanto il redattore ha revisionato la prima relazione.",
@@ -547,8 +409,6 @@
             "Il redattore ha revisionato la prima relazione soltanto ieri.",
             "Il redattore ha revisionato soltanto la prima relazione."
           ],
-          "correct": 3,
-          "category": "precision",
           "trapdoorErrors": [
             "solo i cambiamenti che hanno eseguito l'azione",
             "la frase di scopo cambia perché la relazione è stata riveduta",
@@ -556,8 +416,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r7q3",
+        "grammar-r7q3": {
           "context": "PARAGRAFO\nLa sala era pronta. Tranne per le sedie mancanti. Gli ospiti arrivarono a mezzogiorno.",
           "question": "Quale modifica elimina il frammento senza cambiare il significato?",
           "answers": [
@@ -565,12 +424,9 @@
             "La sala era pronta. Tranne per le sedie che mancavano ancora.",
             "Tranne per le sedie mancanti. Gli ospiti arrivarono a mezzogiorno.",
             "La sala era pronta e gli ospiti, tranne le sedie, arrivarono a mezzogiorno."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r7q4",
+        "grammar-r7q4": {
           "context": "Il significato richiesto è che l’oratrice ha risposto a quasi tutte le domande.",
           "question": "L’oratrice ha risposto a quasi tutte le domande. Quale frase mantiene il significato?",
           "answers": [
@@ -578,12 +434,9 @@
             "Quasi l’oratrice ha risposto a tutte le domande.",
             "L’oratrice ha quasi risposto a tutte le domande.",
             "L’oratrice ha risposto a quasi tutte le domande."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r7q5",
+        "grammar-r7q5": {
           "context": "La seconda proposizione spiega la prima.",
           "question": "Quale punteggiatura è corretta?",
           "answers": [
@@ -591,12 +444,9 @@
             "La scadenza è cambiata: il cliente aveva chiesto più tempo.",
             "La scadenza: è cambiata il cliente voleva più tempo.",
             "La scadenza è cambiata, il cliente voleva più tempo."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r7q6",
+        "grammar-r7q6": {
           "context": "Una relazione contiene un riepilogo e un’appendice. L’appendice viene aggiornata ogni mese.",
           "question": "Quale riscrittura chiarisce che l’appendice viene aggiornata ogni mese?",
           "answers": [
@@ -604,12 +454,9 @@
             "Contiene un riepilogo e un’appendice che viene aggiornata da essa.",
             "La relazione contiene un riepilogo e un’appendice; l’appendice viene aggiornata ogni mese.",
             "La relazione, aggiornata ogni mese, contiene un riepilogo e la sua appendice."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r9q1",
+        "grammar-r9q1": {
           "question": "Quale frase esprime correttamente il contrasto?",
           "answers": [
             "Sebbene il temporale fosse finito, ma le strade restavano allagate.",
@@ -617,8 +464,6 @@
             "Sebbene il temporale fosse finito; le strade restavano allagate.",
             "Sebbene il temporale fosse finito, le strade restavano allagate."
           ],
-          "correct": 3,
-          "category": "sentence_structure",
           "trapdoorErrors": [
             "semicolon separa in modo errato una clausola principale da una clausola dipendente",
             "congiunti adverbo manca la puntuazione di confine richiesta",
@@ -626,8 +471,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r9q2",
+        "grammar-r9q2": {
           "context": "STATO\nPiù bozze sono state corrette e ora possono essere consegnate.",
           "question": "Quale frase presenta tutti gli accordi corretti?",
           "answers": [
@@ -636,8 +480,6 @@
             "Le bozze corrette sono pronte.",
             "Le bozza corrette sono pronto."
           ],
-          "correct": 2,
-          "category": "verbs_agreement",
           "trapdoorErrors": [
             "verbo singolare non concorda con il soggetto plurale",
             "la forma di base non può stare da sola come il verbo finito",
@@ -645,15 +487,12 @@
             "forma non finita lascia la frase incompleta"
           ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Revisione finale",
-      "questions": [
-        {
-          "id": "grammar-r7q2",
-          "question": "Quale parte contrassegnata contiene l’errore?",
-          "presentation": "code",
+      "questions": {
+        "grammar-r7q2": {
           "visual": {
             "items": [
               "A · Le relazioni definitive",
@@ -661,47 +500,35 @@
               "C · prima che il responsabile le approva",
               "D · per la stampa"
             ],
-            "columns": 1,
-            "separator": "•",
             "ariaLabel": "Le relazioni definitive sono state controllate prima che il responsabile le approva per la stampa"
           },
+          "question": "Quale parte contrassegnata contiene l’errore?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r10q6",
+        "grammar-r10q6": {
           "question": "Quale frase è completamente corretta?",
           "answers": [
             "Dopo aver controllato i dati, Maya confermò che ogni totale era esatto.",
             "Dopo aver controllato i dati, ogni totale confermò Maya.",
             "Dopo aver controllato i dati Maya, confermò che ogni totale era esatto.",
             "Dopo aver controllato i dati, Maya confermò che ogni totali erano esatti."
-          ],
-          "correct": 0,
-          "category": "precision",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "grammar-r8q1",
+        "grammar-r8q1": {
           "question": "Scegli la coordinazione corretta.",
           "answers": [
             "Le porte si aprirono, ma nessuno entrò.",
             "Le porte si aprirono, ma nessuno entrarono.",
             "Sebbene le porte si aprissero, ma nessuno entrò.",
             "Le porte si aprirono ma. Nessuno entrò."
-          ],
-          "correct": 0,
-          "category": "sentence_structure",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q3",
+        "grammar-r8q3": {
           "context": "Scegli l’unica grafia corretta nell’italiano standard.",
           "question": "Quale grafia è corretta?",
           "answers": [
@@ -709,26 +536,18 @@
             "qual é il risultato",
             "qual è il risultato",
             "qual’è il risultatto"
-          ],
-          "correct": 2,
-          "category": "punctuation_apostrophes",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q4",
+        "grammar-r8q4": {
           "question": "Quale frase scrive correttamente l’espressione?",
           "answers": [
             "C’è ne ancora uno.",
             "Ce n’è ancora uno.",
             "Ce ne’è ancora uno.",
             "Ce nè ancora uno."
-          ],
-          "correct": 1,
-          "category": "pronouns_reference",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q5",
+        "grammar-r8q5": {
           "context": "Il numero è aumentato senza raggiungere esattamente il doppio del valore iniziale.",
           "question": "Quale frase significa che il numero è quasi raddoppiato?",
           "answers": [
@@ -736,26 +555,18 @@
             "L’aggiornamento ha raddoppiato quasi il numero.",
             "Quasi l’aggiornamento ha raddoppiato il numero.",
             "L’aggiornamento ha raddoppiato il quasi numero."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q6",
+        "grammar-r8q6": {
           "question": "Quale formulazione è adatta a un messaggio formale?",
           "answers": [
             "Mandami il file appena riesci.",
             "Ricordati del file prima o poi.",
             "Il file dovrebbe arrivare in mattinata.",
             "Si prega di inviare il file entro mezzogiorno."
-          ],
-          "correct": 3,
-          "category": "editing_context",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r10q2",
+        "grammar-r10q2": {
           "context": "CRONOLOGIA\n10:00 — il gruppo ha completato i controlli.\n10:30 — le porte si sono aperte.\nIl resoconto viene scritto alle 11:00.",
           "question": "Quale frase presenta correttamente l’ordine delle azioni?",
           "answers": [
@@ -763,193 +574,9 @@
             "Il gruppo completò i controlli dopo l’apertura delle porte alle 10:30.",
             "Il gruppo completò i controlli mentre le porte erano già state aperte.",
             "Il gruppo completerà i controlli prima che le porte si erano aperte."
-          ],
-          "correct": 0,
-          "category": "verbs_agreement",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "progressLabel": "completato",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Sfida grammaticale",
-    "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "PUNTEGGIO GRAMMATICALE ATTUALE",
-    "levelLabel": "FASE",
-    "scoreSuffix": "corrette",
-    "journeyLabel": "SFIDA GRAMMATICALE",
-    "kitchensCleared": "{value} / {total} sfide completate",
-    "currentRank": "LIVELLO ATTUALE · TEST DI GRAMMATICA",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Sfida iniziata"
-      },
-      {
-        "afterStage": 5,
-        "label": "Sfida completata"
-      }
-    ],
-    "unlockEyebrow": "AGGIORNAMENTO RISULTATO · TEST DI GRAMMATICA",
-    "unlockTitle": "È pronta una nuova sfida: test di grammatica",
-    "unlockCopy": "Prossima tappa: test di grammatica.",
-    "finalEyebrow": "IL TUO PUNTEGGIO DI GRAMMATICA",
-    "finalCareerTitle": "QUIZ DI GRAMMATICA COMPLETATO",
-    "strongestLabel": "Area più forte di grammatica",
-    "stages": [
-      {
-        "difficulty": "Fondamenti",
-        "preAdBadge": "CONTROLLO INIZIALE COMPLETATO",
-        "preAdTitle": "Prima revisione completata",
-        "preAdCopy": "Le prime frasi sono corrette. Ora serve più precisione.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "CONTROLLO INIZIALE COMPLETATO",
-        "resultBands": {
-          "high": {
-            "title": "Prima revisione completata",
-            "insight": "Le prime frasi sono corrette. Ora serve più precisione."
-          },
-          "medium": {
-            "title": "Prima revisione completata",
-            "insight": "Le prime frasi sono corrette. Ora serve più precisione."
-          },
-          "low": {
-            "title": "Prima revisione completata",
-            "insight": "Le prime frasi sono corrette. Ora serve più precisione."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
-          "title": "Costruzione della frase",
-          "difficulty": "Intermedio",
-          "tagline": "Proposizioni. Concordanze. Chiarezza.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Intermedio",
-        "preAdBadge": "COSTRUZIONE DELLA FRASE COMPLETATA",
-        "preAdTitle": "Costruzione padroneggiata",
-        "preAdCopy": "Entrano in gioco concordanze, verbi e punteggiatura.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "COSTRUZIONE DELLA FRASE COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "Costruzione padroneggiata",
-            "insight": "Entrano in gioco concordanze, verbi e punteggiatura."
-          },
-          "medium": {
-            "title": "Costruzione padroneggiata",
-            "insight": "Entrano in gioco concordanze, verbi e punteggiatura."
-          },
-          "low": {
-            "title": "Costruzione padroneggiata",
-            "insight": "Entrano in gioco concordanze, verbi e punteggiatura."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
-          "title": "Prova di precisione",
-          "difficulty": "Competente",
-          "tagline": "Verbi. Punteggiatura. Precisione.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Competente",
-        "preAdBadge": "PROVA DI PRECISIONE COMPLETATA",
-        "preAdTitle": "Hai superato la metà",
-        "preAdCopy": "Le trappole linguistiche più sottili sono le prossime.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "PROVA DI PRECISIONE COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole linguistiche più sottili sono le prossime."
-          },
-          "medium": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole linguistiche più sottili sono le prossime."
-          },
-          "low": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole linguistiche più sottili sono le prossime."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
-          "title": "Trappole grammaticali",
-          "difficulty": "Avanzato",
-          "tagline": "Errori plausibili. Indizi minimi.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Avanzato",
-        "preAdBadge": "TRAPPOLE GRAMMATICALI COMPLETATE",
-        "preAdTitle": "Ora manca la revisione finale",
-        "preAdCopy": "Resta soltanto la revisione finale.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "TRAPPOLE GRAMMATICALI COMPLETATE",
-        "resultBands": {
-          "high": {
-            "title": "Ora manca la revisione finale",
-            "insight": "Resta soltanto la revisione finale."
-          },
-          "medium": {
-            "title": "Ora manca la revisione finale",
-            "insight": "Resta soltanto la revisione finale."
-          },
-          "low": {
-            "title": "Ora manca la revisione finale",
-            "insight": "Resta soltanto la revisione finale."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
-          "title": "Revisione finale",
-          "difficulty": "Prova finale",
-          "tagline": "Revisione completa. Giudizio finale.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Prova finale",
-        "preAdBadge": "SFIDA GRAMMATICALE COMPLETATA",
-        "preAdTitle": "QUIZ DI GRAMMATICA COMPLETATO",
-        "preAdChecks": [
-          "40 risposte verificate",
-          "Tre aree grammaticali confrontate",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Vedi il mio risultato",
-        "resultIcon": "✓",
-        "resultLabel": "REVISIONE FINALE COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "QUIZ DI GRAMMATICA COMPLETATO",
-            "insight": "Il risultato di grammatica è pronto per essere svelato."
-          },
-          "medium": {
-            "title": "QUIZ DI GRAMMATICA COMPLETATO",
-            "insight": "Il risultato di grammatica è pronto per essere svelato."
-          },
-          "low": {
-            "title": "QUIZ DI GRAMMATICA COMPLETATO",
-            "insight": "Il risultato di grammatica è pronto per essere svelato."
-          }
-        },
-        "preAdCopy": "Il risultato di grammatica è pronto per essere svelato."
-      }
-    ]
   }
 }

@@ -1,29 +1,17 @@
 {
+  "schemaVersion": 2,
   "slug": "vision",
   "engine": {
-    "flow": "staged",
-    "advance": "automatic",
-    "feedback": "selection-only",
     "scoring": "correct-answer",
-    "checkpoint": "ai",
-    "rewarded": {
-      "start": true,
-      "stages": true,
-      "attempts": 3,
-      "confirmStart": false
-    },
-    "advanceDelayMs": 450,
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    },
-    "startOnLoad": false
+    }
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-15",
-    "duration": "3 min",
     "difficulty": "Hard",
     "icon": "👁️",
     "socialProofCount": 203000
@@ -68,6 +56,494 @@
     },
     "artwork": {
       "icon": "👁️"
+    }
+  },
+  "template": "five-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "vision-r1q1",
+          "vision-r3q4",
+          "vision-r1q2",
+          "vision-r1q3",
+          "vision-r1q4",
+          "vision-r1q5",
+          "vision-r1q6",
+          "vision-r2q1"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "vision-r4q3",
+          "vision-r5q1",
+          "vision-r3q1",
+          "vision-r3q2",
+          "vision-r3q5",
+          "vision-r3q6",
+          "vision-r5q5",
+          "vision-r5q6"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "vision-r9q5",
+          "vision-r7q2",
+          "vision-r4q1",
+          "vision-r4q2",
+          "vision-r4q5",
+          "vision-r4q6",
+          "vision-r6q1",
+          "vision-r6q6"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "vision-r9q1",
+          "vision-r8q3",
+          "vision-r7q1",
+          "vision-r7q3",
+          "vision-r7q5",
+          "vision-r9q2",
+          "vision-r9q4",
+          "vision-r9q6"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "vision-r10q2",
+          "vision-r10q4",
+          "vision-r8q1",
+          "vision-r8q2",
+          "vision-r8q4",
+          "vision-r8q5",
+          "vision-r8q6",
+          "vision-r10q3"
+        ]
+      }
+    ],
+    "questions": {
+      "vision-r1q1": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "correct": 1,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r3q4": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 4
+        },
+        "correct": 2,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r1q2": {
+        "presentation": "code",
+        "visual": {},
+        "correct": 0,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r1q3": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "correct": 3,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r1q4": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "correct": 3,
+        "category": "spatial_orientation",
+        "choiceCount": 4
+      },
+      "vision-r1q5": {
+        "study": {
+          "presentation": "icons",
+          "durationMs": 1800,
+          "mode": "automatic"
+        },
+        "correct": 0,
+        "category": "visual_memory",
+        "choiceCount": 4
+      },
+      "vision-r1q6": {
+        "presentation": "spatial",
+        "visual": {},
+        "correct": 3,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r2q1": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 3
+        },
+        "correct": 0,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r4q3": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 2
+        },
+        "correct": 0,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r5q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "correct": 3,
+        "category": "spatial_orientation",
+        "choiceCount": 4
+      },
+      "vision-r3q1": {
+        "correct": 1,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r3q2": {
+        "correct": 3,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r3q5": {
+        "correct": 2,
+        "category": "spatial_orientation",
+        "choiceCount": 4
+      },
+      "vision-r3q6": {
+        "correct": 1,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r5q5": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "·"
+        },
+        "correct": 2,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r5q6": {
+        "study": {
+          "durationMs": 2200,
+          "mode": "automatic"
+        },
+        "correct": 0,
+        "category": "visual_memory",
+        "choiceCount": 4
+      },
+      "vision-r9q5": {
+        "presentation": "icons",
+        "icons": [
+          "violet-star",
+          "coral-square",
+          "blue-circle",
+          "green-diamond"
+        ],
+        "study": {
+          "presentation": "icons",
+          "durationMs": 3500,
+          "mode": "automatic"
+        },
+        "correct": 1,
+        "category": "visual_memory",
+        "choiceCount": 4
+      },
+      "vision-r7q2": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "correct": 0,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r4q1": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "correct": 1,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r4q2": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "·"
+        },
+        "correct": 0,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r4q5": {
+        "presentation": "icons",
+        "icons": [
+          "🟣",
+          "🔵",
+          "🟢",
+          "🟡"
+        ],
+        "correct": 3,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r4q6": {
+        "correct": 1,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r6q1": {
+        "study": {
+          "durationMs": 1900,
+          "mode": "automatic"
+        },
+        "correct": 1,
+        "category": "visual_memory",
+        "choiceCount": 4
+      },
+      "vision-r6q6": {
+        "correct": 1,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r9q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "correct": 3,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r8q3": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2"
+        },
+        "correct": 2,
+        "category": "pattern_tracking",
+        "choiceCount": 4
+      },
+      "vision-r7q1": {
+        "correct": 2,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r7q3": {
+        "presentation": "spatial",
+        "visual": {},
+        "correct": 3,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r7q5": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "correct": 2,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r9q2": {
+        "correct": 2,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r9q4": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "correct": 2,
+        "category": "spatial_orientation",
+        "choiceCount": 4
+      },
+      "vision-r9q6": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "correct": 2,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r10q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "correct": 0,
+        "category": "detail_detection",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "vision-r10q4": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/vision/assets/icons/paper-fold-punch.svg?v=20260819-2",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/paper-fold-punch-fr.svg?v=20260823-1",
+            "de": "/quizzes/vision/assets/icons/paper-fold-punch-de.svg?v=20260823-1",
+            "it": "/quizzes/vision/assets/icons/paper-fold-punch-it.svg?v=20260823-1",
+            "nl": "/quizzes/vision/assets/icons/paper-fold-punch-nl.svg?v=20260823-1",
+            "es": "/quizzes/vision/assets/icons/paper-fold-punch-es.svg?v=20260823-1",
+            "pt": "/quizzes/vision/assets/icons/paper-fold-punch-pt.svg?v=20260823-1"
+          }
+        },
+        "correct": 2,
+        "category": "spatial_orientation",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "vision-r8q1": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 3
+        },
+        "delay": 350,
+        "correct": 3,
+        "category": "colour_contrast",
+        "choiceCount": 4
+      },
+      "vision-r8q2": {
+        "delay": 350,
+        "correct": 1,
+        "category": "detail_detection",
+        "choiceCount": 4
+      },
+      "vision-r8q4": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "delay": 350,
+        "correct": 3,
+        "category": "spatial_orientation",
+        "choiceCount": 4
+      },
+      "vision-r8q5": {
+        "presentation": "icons",
+        "icons": [
+          "🌙",
+          "⚓",
+          "☀️",
+          "⭐"
+        ],
+        "study": {
+          "presentation": "icons",
+          "durationMs": 1400,
+          "mode": "automatic"
+        },
+        "delay": 350,
+        "correct": 1,
+        "category": "visual_memory",
+        "choiceCount": 4
+      },
+      "vision-r8q6": {
+        "presentation": "spatial",
+        "visual": {},
+        "delay": 350,
+        "correct": 0,
+        "category": "attention_control",
+        "choiceCount": 4
+      },
+      "vision-r10q3": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "·"
+        },
+        "correct": 0,
+        "category": "pattern_tracking",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "👁️"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.7
+        },
+        {
+          "key": "profile-4",
+          "min": 0.6
+        },
+        {
+          "key": "profile-5",
+          "min": 0.5
+        },
+        {
+          "key": "profile-6",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "colour_contrast",
+            "visual_memory"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "detail_detection",
+            "attention_control"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "pattern_tracking",
+            "spatial_orientation"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
     }
   }
 }

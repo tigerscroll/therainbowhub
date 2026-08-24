@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "title": "Seuls 7 % réussissent ce quiz de mécanique automobile",
   "eyebrow": "L’ATELIER DE DIAGNOSTIC",
   "summary": "Voyants, pannes cachées et symptômes étranges testent votre diagnostic.",
@@ -19,229 +20,188 @@
     "disclaimer": "Pour le divertissement et la culture générale uniquement. Ce défi de mécanique n’est ni une évaluation officielle, ni une qualification, ni un avis professionnel."
   },
   "checkpoint": {
-    "nextPrefix": "PROCHAINE MISSION",
-    "adNote": "Une courte publicité, puis continuez.",
-    "finalBadge": "DÉFI MÉCANIQUE TERMINÉ",
-    "finalTitle": "DÉFI MÉCANIQUE TERMINÉ",
-    "finalCopy": "Votre résultat d’atelier est prêt à être dévoilé.",
-    "finalButton": "Révéler mon score",
-    "finalChecklist": [
-      "40 réponses vérifiées",
-      "Six systèmes de véhicules comparés",
-      "Note finale calculée"
-    ],
-    "reveals": [
-      {
-        "title": "Premier diagnostic terminé",
-        "signal": "fixed",
-        "message": "Bon départ. La prochaine panne sera plus difficile à isoler."
-      },
-      {
-        "title": "L’atelier se complique",
-        "signal": "fixed",
-        "message": "Air, carburant et allumage entrent maintenant en jeu."
-      },
-      {
-        "title": "Vous avez dépassé la moitié",
-        "signal": "fixed",
-        "message": "Le diagnostic devient plus exigeant."
-      },
-      {
-        "title": "Diagnostic final en vue",
-        "signal": "fixed",
-        "message": "Il ne reste plus qu’un dernier passage à l’atelier."
-      },
-      {
-        "title": "DÉFI MÉCANIQUE TERMINÉ",
-        "signal": "fixed",
-        "message": "Votre résultat d’atelier est prêt à être dévoilé."
-      }
-    ],
     "finalAdNote": "Une courte publicité, puis découvrez votre résultat."
+  },
+  "career": {
+    "resultProgressLabel": "Défi mécanique",
+    "resultProgressComplete": "{value} % terminé",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamentaux",
+        "preAdBadge": "TABLEAU DE BORD ET MOTEUR TERMINÉS",
+        "preAdTitle": "Premier diagnostic terminé",
+        "preAdCopy": "Bon départ. La prochaine panne sera plus difficile à isoler.",
+        "next": {
+          "eyebrow": "PROCHAINE MISSION · INTERMÉDIAIRE",
+          "tagline": "Pression. Sécurité. Adhérence."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermédiaire",
+        "preAdBadge": "FLUIDES, FREINS ET ADHÉRENCE TERMINÉS",
+        "preAdTitle": "L’atelier se complique",
+        "preAdCopy": "Air, carburant et allumage entrent maintenant en jeu.",
+        "next": {
+          "eyebrow": "PROCHAINE MISSION · CONFIRMÉ",
+          "tagline": "Combustion. Puissance. Cause et effet."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Confirmé",
+        "preAdBadge": "AIR, CARBURANT ET ALLUMAGE TERMINÉS",
+        "preAdTitle": "Vous avez dépassé la moitié",
+        "preAdCopy": "Le diagnostic devient plus exigeant.",
+        "next": {
+          "eyebrow": "PROCHAINE MISSION · AVANCÉ",
+          "tagline": "Vibrations. Direction. Freinage. Systèmes."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avancé",
+        "preAdBadge": "DIAGNOSTIC D’ATELIER TERMINÉ",
+        "preAdTitle": "Diagnostic final en vue",
+        "preAdCopy": "Il ne reste plus qu’un dernier passage à l’atelier.",
+        "next": {
+          "eyebrow": "PROCHAINE MISSION · ÉVALUATION FINALE",
+          "tagline": "Indices du conducteur. Décisions finales."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Évaluation finale",
+        "preAdBadge": "DÉFI MÉCANIQUE TERMINÉ",
+        "preAdTitle": "DÉFI MÉCANIQUE TERMINÉ",
+        "preAdCopy": "Votre résultat d’atelier est prêt à être dévoilé.",
+        "preAdChecks": [
+          "40 réponses vérifiées",
+          "Six systèmes de véhicules comparés",
+          "Note finale calculée"
+        ],
+        "preAdButton": "Voir mon résultat"
+      }
+    }
   },
   "results": {
     "name": "VOTRE SCORE DE MÉCANIQUE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100 %",
         "title": "Maître du diagnostic",
         "copy": "Vous avez fait preuve d’une précision remarquable dans les domaines suivants : les systèmes automobiles, le diagnostic et la sécurité. Même les questions les plus exigeantes vous ont rarement échappé."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89 %",
         "title": "Talent naturel en atelier",
         "copy": "Votre résultat révèle une excellente maîtrise dans plusieurs domaines : les systèmes automobiles, le diagnostic et la sécurité. Vous avez gardé un raisonnement sûr jusque dans les pièges les plus subtils."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79 %",
         "title": "Détecteur de pannes confirmé",
         "copy": "Votre résultat est solide sur l’ensemble des domaines évalués : les systèmes automobiles, le diagnostic et la sécurité. Quelques détails difficiles vous ont freiné, mais l’ensemble reste convaincant."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69 %",
         "title": "Résolveur pragmatique",
         "copy": "Vous disposez de bonnes bases dans les domaines évalués : les systèmes automobiles, le diagnostic et la sécurité. En affinant les points les plus délicats, votre prochain résultat pourrait nettement progresser."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59 %",
         "title": "Apprenti de terrain",
         "copy": "Vous avez reconnu plusieurs éléments clés parmi les domaines évalués : les systèmes automobiles, le diagnostic et la sécurité. Les questions manquées indiquent clairement les points à consolider."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Moins de 50 %",
         "title": "Automobiliste curieux",
         "copy": "Ce défi a révélé des pistes de progression dans plusieurs domaines : les systèmes automobiles, le diagnostic et la sécurité. Votre curiosité et les bonnes réponses obtenues constituent un excellent point de départ."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Moteur et carburant",
-        "categories": [
-          "engine_fuel"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Moteur et carburant"
       },
-      {
-        "label": "Freins et adhérence",
-        "categories": [
-          "brakes_grip"
-        ]
+      "dimension-2": {
+        "label": "Freins et adhérence"
       },
-      {
-        "label": "Systèmes électriques",
-        "categories": [
-          "electrical"
-        ]
+      "dimension-3": {
+        "label": "Systèmes électriques"
       },
-      {
-        "label": "Refroidissement et fluides",
-        "categories": [
-          "cooling_fluids"
-        ]
+      "dimension-4": {
+        "label": "Refroidissement et fluides"
       },
-      {
-        "label": "Transmission et direction",
-        "categories": [
-          "drivetrain_steering"
-        ]
+      "dimension-5": {
+        "label": "Transmission et direction"
       },
-      {
-        "label": "Diagnostic et sécurité",
-        "categories": [
-          "diagnosis_safety"
-        ]
+      "dimension-6": {
+        "label": "Diagnostic et sécurité"
       }
-    ],
+    },
     "score": {
       "passed": "Défi réussi : défi de mécanique !",
       "finished": "Défi terminé : défi de mécanique",
       "correctLabel": "bonnes réponses",
       "strongest": "Point fort du véhicule",
       "trickiest": "Point le plus difficile du véhicule",
-      "bestRound": "Meilleur atelier",
-      "showPercentage": true,
-      "disclaimer": "Pour le divertissement et la culture générale uniquement. Ce défi de mécanique n’est ni une évaluation officielle, ni une qualification, ni un avis professionnel."
+      "bestRound": "Meilleur atelier"
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Tableau de bord et moteur",
-      "questions": [
-        {
-          "id": "mech-r1q1",
+      "questions": {
+        "mech-r1q1": {
           "question": "Quel témoin correspond le plus directement à la pression d’huile moteur ?",
-          "presentation": "icons",
           "answers": [
             "Le bidon d’huile",
             "La batterie",
             "Le thermomètre",
             "Le volant"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/oil-pressure.svg",
-            "/quizzes/mechanic/assets/icons/battery-warning.svg",
-            "/quizzes/mechanic/assets/icons/coolant-warning.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r1q2",
+        "mech-r1q2": {
           "question": "Le témoin rouge des freins reste allumé après avoir desserré le frein de stationnement. Quelle est la réaction la plus sûre ?",
           "answers": [
             "Accélérer pour tester",
             "S’arrêter en sécurité et faire contrôler le système de freinage",
             "Gonfler davantage les pneus",
             "L’ignorer jusqu’au prochain entretien"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r1q3",
+        "mech-r1q3": {
           "question": "Le démarreur produit un clic franc, mais ne lance pas le moteur. Quelle première vérification est la plus utile ?",
           "answers": [
             "La couleur du liquide de refroidissement",
             "La profondeur des sculptures des pneus",
             "La charge de la batterie et les connexions aux bornes",
             "Le filtre d’habitacle"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r1q4",
+        "mech-r1q4": {
           "question": "Le témoin de température devient rouge en roulant. Que faut-il faire ?",
           "answers": [
             "Ouvrir immédiatement le bouchon du circuit de refroidissement",
             "Continuer jusqu’à une perte de puissance",
             "Verser de l’eau froide sur le moteur",
             "S’arrêter en sécurité, couper le moteur et laisser refroidir le circuit"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r1q5",
+        "mech-r1q5": {
           "question": "Quelle commande modifie la direction des roues avant ?",
-          "presentation": "icons",
           "answers": [
             "L’accélérateur",
             "Le frein de stationnement",
             "Le volant",
             "La pédale d’embrayage"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/accelerator-pedal.svg",
-            "/quizzes/mechanic/assets/icons/parking-brake.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg",
-            "/quizzes/mechanic/assets/icons/clutch-pedal.svg"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r1q6",
+        "mech-r1q6": {
           "question": "Avant d’examiner une panne inconnue, quelle doit être la priorité ?",
           "answers": [
             "Acheter des pièces de rechange",
             "Réinitialiser tous les témoins",
             "Faire tourner le moteur plus fort",
             "Sécuriser le véhicule et la zone de travail"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r2q1",
-          "question": "Quel ordre décrit correctement l’entrée de l’air dans un moteur à combustion classique ?",
-          "presentation": "sequence",
+        "mech-r2q1": {
           "visual": {
             "items": [
               "Entrée d’air",
@@ -249,140 +209,108 @@
               "Système d’admission",
               "Moteur"
             ],
-            "separator": "→",
             "ariaLabel": "Entrée d’air, filtre, système d’admission, moteur"
           },
+          "question": "Quel ordre décrit correctement l’entrée de l’air dans un moteur à combustion classique ?",
           "answers": [
             "Filtre → entrée → moteur",
             "Moteur → filtre → admission",
             "Entrée d’air → filtre → système d’admission → moteur",
             "Admission → moteur → filtre"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r2q2",
+        "mech-r2q2": {
           "question": "Quelle pièce retient la poussière avant que l’air n’atteigne le moteur ?",
           "answers": [
             "L’injecteur",
             "Le radiateur",
             "L’alternateur",
             "Le filtre à air"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Fluides, freins et adhérence",
-      "questions": [
-        {
-          "id": "mech-r3q1",
+      "questions": {
+        "mech-r3q1": {
           "question": "Quel fluide lubrifie principalement les pièces mobiles dans le moteur ?",
           "answers": [
             "L’huile moteur",
             "Le liquide de refroidissement",
             "Le liquide de frein",
             "Le liquide lave-glace"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q2",
+        "mech-r3q2": {
           "question": "Pourquoi le bouchon d’un circuit de refroidissement chaud et sous pression doit-il rester fermé ?",
           "answers": [
             "Il effacerait les codes défaut",
             "Du liquide brûlant et de la vapeur peuvent s’échapper et causer de graves brûlures",
             "Cela décharge la batterie",
             "Cela modifie la pression des pneus"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q3",
+        "mech-r3q3": {
           "question": "Le niveau de liquide de refroidissement baisse sans qu’aucune flaque ne soit visible. Qu’est-ce que cela peut indiquer ?",
           "answers": [
             "Des pneus sous-gonflés",
             "Un alternateur en surcharge",
             "Une fuite uniquement à chaud ou une fuite interne",
             "Un filtre à air colmaté"
-          ],
-          "correct": 2,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q4",
+        "mech-r3q4": {
           "question": "Le liquide de frein est passé sous le repère minimum. Quelle est la bonne réaction ?",
           "answers": [
             "Ajouter de l’huile moteur",
             "Le diluer avec de l’eau",
             "L’ignorer si le freinage semble normal",
             "Faire contrôler le freinage pour rechercher usure ou fuite"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q5",
+        "mech-r3q5": {
           "question": "Une fumée noire épaisse provenant d’un moteur à combustion indique généralement quoi ?",
           "answers": [
             "Trop de carburant ou pas assez d’air",
             "Un manque de liquide lave-glace",
             "Une batterie déchargée",
             "Un défaut de géométrie"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r3q6",
+        "mech-r3q6": {
           "question": "Le liquide de frein peut abîmer la peinture. Que faire après une projection ?",
           "answers": [
             "Le laisser s’évaporer",
             "Suivre immédiatement les consignes de nettoyage sûres du constructeur",
             "L’étaler avec un chiffon",
             "Chauffer la carrosserie"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r4q5",
+        "mech-r4q5": {
           "question": "Un cliquetis rythmé s’accélère dans les virages serrés. Quelle pièce peut être en cause ?",
           "answers": [
             "Le thermostat",
             "La pompe à carburant",
             "Le joint homocinétique extérieur",
             "Le ventilateur d’habitacle"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r4q6",
+        "mech-r4q6": {
           "question": "Un pneu présente une forte hernie sur le flanc. Que faut-il faire ?",
           "answers": [
             "Baisser la pression et continuer",
             "Aplatir la hernie",
             "Monter le pneu sur une autre roue",
             "Ne plus utiliser le pneu et organiser son remplacement"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Air, carburant et allumage",
-      "questions": [
-        {
-          "id": "mech-r5q1",
-          "question": "De quelle combinaison de base un moteur à combustion a-t-il besoin pour fonctionner ?",
-          "presentation": "sequence",
+      "questions": {
+        "mech-r5q1": {
           "visual": {
             "items": [
               "Air",
@@ -390,82 +318,62 @@
               "Allumage",
               "Compression"
             ],
-            "separator": "+",
             "ariaLabel": "Air plus carburant plus allumage plus compression"
           },
+          "question": "De quelle combinaison de base un moteur à combustion a-t-il besoin pour fonctionner ?",
           "answers": [
             "Air, carburant, compression et allumage au bon moment",
             "Liquide de refroidissement, liquide de frein et électricité",
             "Huile, angle de braquage et pression des pneus",
             "Carburant uniquement"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q2",
+        "mech-r5q2": {
           "question": "Que risque de provoquer un filtre à air colmaté ?",
           "answers": [
             "Une pédale de frein plus ferme",
             "Un débit d’air limité et une baisse des performances moteur",
             "Une capacité de batterie plus élevée",
             "Davantage de sculpture sur les pneus"
-          ],
-          "correct": 1,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q3",
+        "mech-r5q3": {
           "question": "Un cylindre a des ratés et sa bougie est très usée. Quel est le lien le plus direct ?",
           "answers": [
             "Le radiateur ne peut plus refroidir",
             "La direction perd son parallélisme",
             "La bougie peut ne plus enflammer le mélange de façon fiable",
             "Le liquide de frein absorbe de l’eau"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q4",
+        "mech-r5q4": {
           "question": "Quel est le rôle fondamental d’un injecteur ?",
           "answers": [
             "Faire tourner les roues",
             "Refroidir les disques de frein",
             "Recharger la batterie",
             "Doser le carburant envoyé au moteur"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q5",
+        "mech-r5q5": {
           "question": "Le moteur surchauffe dans les bouchons, mais refroidit à vitesse normale. Quel élément faut-il contrôler rapidement ?",
           "answers": [
             "Le ventilateur du radiateur",
             "La ceinture de sécurité",
             "Le bouchon de carburant",
             "Le roulement de roue"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r5q6",
+        "mech-r5q6": {
           "question": "Quel capteur indique couramment au calculateur la quantité d’air admise ?",
           "answers": [
             "Le capteur de vitesse de roue",
             "Le débitmètre d’air",
             "Le contacteur de feux stop",
             "Le bouchon du circuit de refroidissement"
-          ],
-          "correct": 1,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q1",
-          "question": "Une batterie 12 V en bon état indique environ 12,6 V au repos. Celle-ci indique 10,5 V. Qu’est-ce que cela suggère ?",
-          "presentation": "code",
+        "mech-r6q1": {
           "visual": {
             "items": [
               "Valeur attendue : 12,6 V",
@@ -473,137 +381,106 @@
             ],
             "ariaLabel": "Tension attendue de 12,6 volts, tension mesurée de 10,5 volts"
           },
+          "question": "Une batterie 12 V en bon état indique environ 12,6 V au repos. Celle-ci indique 10,5 V. Qu’est-ce que cela suggère ?",
           "answers": [
             "Les pneus sont usés",
             "Le liquide de refroidissement est trop concentré",
             "La batterie est fortement déchargée ou un élément est défectueux",
             "La courroie d’alternateur est neuve"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q6",
+        "mech-r6q6": {
           "question": "Avant de sonder un connecteur électrique inconnu, quelle est l’approche la plus sûre ?",
           "answers": [
             "Mettre deux broches en court-circuit",
             "Utiliser n’importe quel fil",
             "Pulvériser de l’eau",
             "Consulter la documentation appropriée et utiliser un matériel de mesure adapté"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Diagnostic d’atelier",
-      "questions": [
-        {
-          "id": "mech-r7q1",
+      "questions": {
+        "mech-r7q1": {
           "question": "Le volant vibre principalement dans une certaine plage de vitesse. Quelle est une première piste probable ?",
           "answers": [
             "Un déséquilibre de roue",
             "La qualité du carburant",
             "Le filtre d’habitacle",
             "La couleur du liquide de refroidissement"
-          ],
-          "correct": 0,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q2",
+        "mech-r7q2": {
           "question": "La voiture tire d’un côté sur une route plane. Que faut-il contrôler ?",
           "answers": [
             "Les réglages audio",
             "La pression des pneus et la géométrie",
             "La goulotte de carburant",
             "Le moteur d’essuie-glace"
-          ],
-          "correct": 1,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q3",
+        "mech-r7q3": {
           "question": "Le régime moteur monte fortement, mais la vitesse du véhicule augmente à peine. Qu’est-ce qui patine probablement ?",
           "answers": [
             "Le ventilateur du radiateur",
             "Un roulement de roue",
             "L’embrayage ou la transmission",
             "Le contacteur de feux stop"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q4",
+        "mech-r7q4": {
           "question": "Un grondement sourd augmente avec la vitesse du véhicule, même au point mort. Quelle pièce peut en être la source ?",
           "answers": [
             "Une bougie",
             "Un injecteur",
             "Le thermostat",
             "Un roulement de roue"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q5",
+        "mech-r7q5": {
           "question": "Toute la voiture tremble uniquement lors d’un freinage à vitesse élevée. Quelle cause est courante ?",
           "answers": [
             "Une variation d’épaisseur ou une déformation des disques de frein",
             "Un manque de lave-glace",
             "Un bouchon de carburant desserré",
             "Un avertisseur faible"
-          ],
-          "correct": 0,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r7q6",
+        "mech-r7q6": {
           "question": "Une forte vibration apparaît après avoir heurté un obstacle sur la route. Que faut-il faire ?",
           "answers": [
             "Accélérer pour la faire disparaître",
             "S’arrêter en sécurité et inspecter la roue et le pneu avant de repartir",
             "Baisser la pression de tous les pneus",
             "L’ignorer si aucun témoin ne s’allume"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r8q3",
+        "mech-r8q3": {
           "question": "Qu’est-ce qui recharge la batterie 12 V pendant la conduite ?",
           "answers": [
             "Le système de charge",
             "Le contacteur de démarrage",
             "Le servofrein",
             "Le filtre à air"
-          ],
-          "correct": 0,
-          "category": "electrical",
-          "delay": 350
+          ]
         },
-        {
-          "id": "mech-r8q4",
+        "mech-r8q4": {
           "question": "Quel fluide empêche le gel et transporte la chaleur du moteur ?",
           "answers": [
             "Le liquide de frein",
             "Le liquide de refroidissement",
             "L’huile moteur",
             "Le liquide lave-glace"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids",
-          "delay": 350
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Diagnostic final",
-      "questions": [
-        {
-          "id": "mech-r9q1",
+      "questions": {
+        "mech-r9q1": {
           "context": "LE CLIENT SIGNALE",
           "question": "« La voiture tire à gauche uniquement au freinage et la roue avant gauche devient anormalement chaude. » Quelle est la cause la plus probable ?",
           "answers": [
@@ -611,13 +488,9 @@
             "Une batterie faible",
             "Un filtre à air colmaté",
             "Un niveau de liquide de refroidissement bas"
-          ],
-          "correct": 0,
-          "category": "brakes_grip",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q2",
+        "mech-r9q2": {
           "context": "LE CLIENT SIGNALE",
           "question": "« La batterie est neuve, mais elle se décharge régulièrement et le témoin de charge apparaît en roulant. » Que faut-il tester ?",
           "answers": [
@@ -625,13 +498,9 @@
             "Le système de charge et ses connexions",
             "L’épaisseur des plaquettes",
             "La concentration du liquide de refroidissement"
-          ],
-          "correct": 1,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q3",
+        "mech-r9q3": {
           "context": "LE CLIENT SIGNALE",
           "question": "« La vibration suit la vitesse du véhicule, pas le régime moteur, et persiste en roue libre. » Quelle zone correspond le mieux ?",
           "answers": [
@@ -639,13 +508,9 @@
             "Le mélange air-carburant",
             "Les roues, les pneus ou la transmission",
             "Le ventilateur de refroidissement"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q4",
+        "mech-r9q4": {
           "context": "LE CLIENT SIGNALE",
           "question": "« Un claquement se produit au passage de l’accélération à la décélération. » Quelle zone faut-il inspecter en premier ?",
           "answers": [
@@ -653,12 +518,9 @@
             "Le filtre d’habitacle",
             "Le bouchon du radiateur",
             "Les supports et articulations de transmission"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r9q6",
+        "mech-r9q6": {
           "context": "LE CLIENT SIGNALE",
           "question": "« Un grincement métallique soudain provient d’une roue. » Quelle est la réaction la plus sûre ?",
           "answers": [
@@ -666,14 +528,9 @@
             "Arrêter de rouler et faire inspecter le véhicule",
             "Accélérer pour évacuer un débris",
             "Injecter du lubrifiant à travers la roue"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r10q1",
-          "question": "Le moteur est entraîné par le démarreur et la pression de carburant est présente, mais aucune bougie ne produit d’étincelle. Quel système faut-il examiner ensuite ?",
-          "presentation": "code",
+        "mech-r10q1": {
           "visual": {
             "items": [
               "Démarreur : OUI",
@@ -682,20 +539,15 @@
             ],
             "ariaLabel": "Le moteur est entraîné, la pression de carburant est présente, aucune étincelle"
           },
+          "question": "Le moteur est entraîné par le démarreur et la pression de carburant est présente, mais aucune bougie ne produit d’étincelle. Quel système faut-il examiner ensuite ?",
           "answers": [
             "La commande d’allumage, son alimentation et ses signaux de calage",
             "La surveillance de pression des pneus",
             "L’hydraulique de freinage",
             "La géométrie"
-          ],
-          "correct": 0,
-          "category": "engine_fuel",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q3",
-          "question": "Sur un circuit de charge 12 V classique, la batterie indique 12,5 V moteur arrêté et 12,0 V moteur tournant avec les feux allumés. Quel diagnostic convient le mieux ?",
-          "presentation": "grid",
+        "mech-r10q3": {
           "visual": {
             "items": [
               "Moteur ARRÊTÉ",
@@ -703,23 +555,17 @@
               "Moteur EN MARCHE + feux",
               "12,0 V"
             ],
-            "columns": 2,
             "ariaLabel": "Circuit 12 volts : moteur arrêté 12,5 volts, moteur en marche avec feux 12,0 volts"
           },
+          "question": "Sur un circuit de charge 12 V classique, la batterie indique 12,5 V moteur arrêté et 12,0 V moteur tournant avec les feux allumés. Quel diagnostic convient le mieux ?",
           "answers": [
             "La batterie est certainement surchargée",
             "Les freins restent serrés",
             "Le système de charge ne fournit pas assez de tension",
             "Le liquide de refroidissement est trop froid"
-          ],
-          "correct": 2,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q4",
-          "question": "Le moteur surchauffe uniquement au ralenti, le radiateur n’est pas obstrué et le ventilateur ne tourne jamais. Que faut-il diagnostiquer en premier ?",
-          "presentation": "code",
+        "mech-r10q4": {
           "visual": {
             "items": [
               "En roulant : FROID",
@@ -729,197 +575,15 @@
             ],
             "ariaLabel": "Le moteur refroidit en roulant, surchauffe au ralenti et le ventilateur ne tourne pas"
           },
+          "question": "Le moteur surchauffe uniquement au ralenti, le radiateur n’est pas obstrué et le ventilateur ne tourne jamais. Que faut-il diagnostiquer en premier ?",
           "answers": [
             "La géométrie",
             "L’étanchéité du bouchon de carburant",
             "L’usure des plaquettes",
             "Le circuit du ventilateur, son moteur et sa commande"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Défi mécanique",
-    "resultProgressComplete": "{value} % terminé",
-    "currentScoreLabel": "SCORE MÉCANIQUE ACTUEL",
-    "levelLabel": "ÉTAPE",
-    "scoreSuffix": "bonnes réponses",
-    "journeyLabel": "DÉFI MÉCANIQUE",
-    "kitchensCleared": "{value} / {total} défis terminés",
-    "currentRank": "NIVEAU ACTUEL · ATELIER",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Défi mécanique lancé"
-      },
-      {
-        "afterStage": 5,
-        "label": "Défi mécanique terminé"
-      }
-    ],
-    "unlockEyebrow": "MISE À JOUR · DÉFI DE MÉCANIQUE",
-    "unlockTitle": "Un nouveau défi est prêt: défi de mécanique",
-    "unlockCopy": "La prochaine étape vous attend dans le défi de mécanique.",
-    "finalEyebrow": "VOTRE SCORE DE MÉCANIQUE",
-    "finalCareerTitle": "DÉFI MÉCANIQUE TERMINÉ",
-    "strongestLabel": "Point fort du véhicule",
-    "stages": [
-      {
-        "difficulty": "Fondamentaux",
-        "preAdBadge": "TABLEAU DE BORD ET MOTEUR TERMINÉS",
-        "preAdTitle": "Premier diagnostic terminé",
-        "preAdCopy": "Bon départ. La prochaine panne sera plus difficile à isoler.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "TABLEAU DE BORD ET MOTEUR TERMINÉS",
-        "resultBands": {
-          "high": {
-            "title": "Premier diagnostic terminé",
-            "insight": "Bon départ. La prochaine panne sera plus difficile à isoler."
-          },
-          "medium": {
-            "title": "Premier diagnostic terminé",
-            "insight": "Bon départ. La prochaine panne sera plus difficile à isoler."
-          },
-          "low": {
-            "title": "Premier diagnostic terminé",
-            "insight": "Bon départ. La prochaine panne sera plus difficile à isoler."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE MISSION · INTERMÉDIAIRE",
-          "title": "Fluides, freins et adhérence",
-          "difficulty": "Intermédiaire",
-          "tagline": "Pression. Sécurité. Adhérence.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Intermédiaire",
-        "preAdBadge": "FLUIDES, FREINS ET ADHÉRENCE TERMINÉS",
-        "preAdTitle": "L’atelier se complique",
-        "preAdCopy": "Air, carburant et allumage entrent maintenant en jeu.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "FLUIDES, FREINS ET ADHÉRENCE TERMINÉS",
-        "resultBands": {
-          "high": {
-            "title": "L’atelier se complique",
-            "insight": "Air, carburant et allumage entrent maintenant en jeu."
-          },
-          "medium": {
-            "title": "L’atelier se complique",
-            "insight": "Air, carburant et allumage entrent maintenant en jeu."
-          },
-          "low": {
-            "title": "L’atelier se complique",
-            "insight": "Air, carburant et allumage entrent maintenant en jeu."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE MISSION · CONFIRMÉ",
-          "title": "Air, carburant et allumage",
-          "difficulty": "Confirmé",
-          "tagline": "Combustion. Puissance. Cause et effet.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Confirmé",
-        "preAdBadge": "AIR, CARBURANT ET ALLUMAGE TERMINÉS",
-        "preAdTitle": "Vous avez dépassé la moitié",
-        "preAdCopy": "Le diagnostic devient plus exigeant.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "AIR, CARBURANT ET ALLUMAGE TERMINÉS",
-        "resultBands": {
-          "high": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "Le diagnostic devient plus exigeant."
-          },
-          "medium": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "Le diagnostic devient plus exigeant."
-          },
-          "low": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "Le diagnostic devient plus exigeant."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE MISSION · AVANCÉ",
-          "title": "Diagnostic d’atelier",
-          "difficulty": "Avancé",
-          "tagline": "Vibrations. Direction. Freinage. Systèmes.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Avancé",
-        "preAdBadge": "DIAGNOSTIC D’ATELIER TERMINÉ",
-        "preAdTitle": "Diagnostic final en vue",
-        "preAdCopy": "Il ne reste plus qu’un dernier passage à l’atelier.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "DIAGNOSTIC D’ATELIER TERMINÉ",
-        "resultBands": {
-          "high": {
-            "title": "Diagnostic final en vue",
-            "insight": "Il ne reste plus qu’un dernier passage à l’atelier."
-          },
-          "medium": {
-            "title": "Diagnostic final en vue",
-            "insight": "Il ne reste plus qu’un dernier passage à l’atelier."
-          },
-          "low": {
-            "title": "Diagnostic final en vue",
-            "insight": "Il ne reste plus qu’un dernier passage à l’atelier."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE MISSION · ÉVALUATION FINALE",
-          "title": "Diagnostic final",
-          "difficulty": "Évaluation finale",
-          "tagline": "Indices du conducteur. Décisions finales.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Évaluation finale",
-        "preAdBadge": "DÉFI MÉCANIQUE TERMINÉ",
-        "preAdTitle": "DÉFI MÉCANIQUE TERMINÉ",
-        "preAdChecks": [
-          "40 réponses vérifiées",
-          "Six systèmes de véhicules comparés",
-          "Note finale calculée"
-        ],
-        "preAdButton": "Voir mon résultat",
-        "resultIcon": "✓",
-        "resultLabel": "DIAGNOSTIC FINAL TERMINÉ",
-        "resultBands": {
-          "high": {
-            "title": "DÉFI MÉCANIQUE TERMINÉ",
-            "insight": "Votre résultat d’atelier est prêt à être dévoilé."
-          },
-          "medium": {
-            "title": "DÉFI MÉCANIQUE TERMINÉ",
-            "insight": "Votre résultat d’atelier est prêt à être dévoilé."
-          },
-          "low": {
-            "title": "DÉFI MÉCANIQUE TERMINÉ",
-            "insight": "Votre résultat d’atelier est prêt à être dévoilé."
-          }
-        },
-        "preAdCopy": "Votre résultat d’atelier est prêt à être dévoilé."
-      }
-    ]
   }
 }

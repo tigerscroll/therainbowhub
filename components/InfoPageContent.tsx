@@ -1,7 +1,6 @@
 import {
   getInfoPage,
   getInfoPageMetadata,
-  infoPageMetadata,
   infoPageSlugs,
   isInfoPageSlug,
   type InfoPageSlug,
@@ -9,7 +8,7 @@ import {
 import type { SupportedLocale } from "@/lib/i18n";
 import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
-export { getInfoPageMetadata, infoPageMetadata, infoPageSlugs, isInfoPageSlug };
+export { getInfoPageMetadata, infoPageSlugs, isInfoPageSlug };
 
 type InfoPageContentProps = {
   locale: SupportedLocale;

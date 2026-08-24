@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const defaultLocale = getDefaultLocale();
 
-export const siteBaseUrl = siteConfig.siteUrl.replace(/\/+$/, "");
+const siteBaseUrl = siteConfig.siteUrl.replace(/\/+$/, "");
 
 export function absoluteUrl(pathname: string) {
   const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
@@ -85,14 +85,14 @@ export function infoAlternates(locale: SupportedLocale, slug: InfoPageSlug) {
   };
 }
 
-export function withSiteName(title: string) {
+function withSiteName(title: string) {
   const normalizedTitle = title.trim();
   return normalizedTitle.toLocaleLowerCase().includes(siteConfig.name.toLocaleLowerCase())
     ? normalizedTitle
     : `${normalizedTitle} - ${siteConfig.name}`;
 }
 
-export function clampMetaDescription(description: string, maxLength = 160) {
+function clampMetaDescription(description: string, maxLength = 160) {
   const normalizedDescription = description.replace(/\s+/g, " ").trim();
   if (normalizedDescription.length <= maxLength) return normalizedDescription;
 

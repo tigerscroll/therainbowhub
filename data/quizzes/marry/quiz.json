@@ -1,20 +1,9 @@
 {
+  "schemaVersion": 2,
   "slug": "marry",
   "engine": {
-    "flow": "staged",
-    "advance": "automatic",
-    "feedback": "selection-only",
     "scoring": "weighted-profile",
-    "checkpoint": "ai",
-    "startOnLoad": false,
     "localeParity": "independent",
-    "rewarded": {
-      "start": true,
-      "stages": true,
-      "attempts": 3,
-      "confirmStart": false
-    },
-    "advanceDelayMs": 450,
     "profileArtworkSelector": {
       "questionId": "marry-r1q1",
       "fixedVariants": {
@@ -28,7 +17,6 @@
   "listing": {
     "thumbnail": "assets/thumbnail.webp",
     "published": "2026-08-23",
-    "duration": "7 min",
     "difficulty": "Quick",
     "icon": "✏️",
     "socialProofCount": 184000
@@ -140,13 +128,13 @@
           "assets/checkpoints/portrait-80.webp",
           "assets/checkpoints/portrait-100.webp"
         ],
-      "feminine": [
-        "assets/checkpoints/portrait-20.webp",
-        "assets/checkpoints/portrait-40-feminine.webp",
-        "assets/checkpoints/portrait-60-feminine.webp",
-        "assets/checkpoints/portrait-80-feminine.webp",
-        "assets/checkpoints/portrait-100-feminine.webp"
-      ],
+        "feminine": [
+          "assets/checkpoints/portrait-20.webp",
+          "assets/checkpoints/portrait-40-feminine.webp",
+          "assets/checkpoints/portrait-60-feminine.webp",
+          "assets/checkpoints/portrait-80-feminine.webp",
+          "assets/checkpoints/portrait-100-feminine.webp"
+        ],
         "androgynous": [
           "assets/checkpoints/portrait-20.webp",
           "assets/checkpoints/portrait-40.webp",
@@ -154,6 +142,1036 @@
           "assets/checkpoints/portrait-80.webp",
           "assets/checkpoints/portrait-100.webp"
         ]
+      }
+    }
+  },
+  "template": "five-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "marry-r1q1",
+          "marry-r1q2",
+          "marry-r1q3",
+          "marry-r1q4",
+          "marry-r1q5",
+          "marry-r1q6",
+          "marry-r1q7",
+          "marry-r1q8"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "marry-r2q1",
+          "marry-r2q2",
+          "marry-r2q3",
+          "marry-r2q4",
+          "marry-r2q5",
+          "marry-r2q6",
+          "marry-r2q7",
+          "marry-r2q8"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "marry-r3q1",
+          "marry-r3q2",
+          "marry-r3q3",
+          "marry-r3q4",
+          "marry-r3q5",
+          "marry-r3q6",
+          "marry-r3q7",
+          "marry-r3q8"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "marry-r4q1",
+          "marry-r4q2",
+          "marry-r4q3",
+          "marry-r4q4",
+          "marry-r4q5",
+          "marry-r4q6",
+          "marry-r4q7",
+          "marry-r4q8"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "marry-r5q1",
+          "marry-r5q2",
+          "marry-r5q3",
+          "marry-r5q4",
+          "marry-r5q5",
+          "marry-r5q6",
+          "marry-r5q7",
+          "marry-r5q8"
+        ]
+      }
+    ],
+    "questions": {
+      "marry-r1q1": {
+        "calibration": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "choiceCount": 4
+      },
+      "marry-r1q2": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/smile-a.webp",
+          "/quizzes/marry/assets/items/smile-b.webp",
+          "/quizzes/marry/assets/items/smile-c.webp",
+          "/quizzes/marry/assets/items/smile-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r1q3": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/eyes-a.webp",
+          "/quizzes/marry/assets/items/eyes-b.webp",
+          "/quizzes/marry/assets/items/eyes-c.webp",
+          "/quizzes/marry/assets/items/eyes-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r1q4": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/style-a.webp",
+          "/quizzes/marry/assets/items/style-b.webp",
+          "/quizzes/marry/assets/items/style-c.webp",
+          "/quizzes/marry/assets/items/style-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r1q5": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      },
+      "marry-r1q6": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/date-look-a.webp",
+          "/quizzes/marry/assets/items/date-look-b.webp",
+          "/quizzes/marry/assets/items/date-look-c.webp",
+          "/quizzes/marry/assets/items/date-look-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "ambitious_teammate": 0.5
+          }
+        ]
+      },
+      "marry-r1q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "thoughtful_dreamer": 0.5
+          }
+        ]
+      },
+      "marry-r1q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "curious_explorer": 0.5
+          }
+        ]
+      },
+      "marry-r2q1": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r2q2": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r2q3": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r2q4": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      },
+      "marry-r2q5": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "ambitious_teammate": 0.5
+          }
+        ]
+      },
+      "marry-r2q6": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "thoughtful_dreamer": 0.5
+          }
+        ]
+      },
+      "marry-r2q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "curious_explorer": 0.5
+          }
+        ]
+      },
+      "marry-r2q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r3q1": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r3q2": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r3q3": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      },
+      "marry-r3q4": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "ambitious_teammate": 0.5
+          }
+        ]
+      },
+      "marry-r3q5": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "thoughtful_dreamer": 0.5
+          }
+        ]
+      },
+      "marry-r3q6": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "curious_explorer": 0.5
+          }
+        ]
+      },
+      "marry-r3q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r3q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r4q1": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r4q2": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      },
+      "marry-r4q3": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "ambitious_teammate": 0.5
+          }
+        ]
+      },
+      "marry-r4q4": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "thoughtful_dreamer": 0.5
+          }
+        ]
+      },
+      "marry-r4q5": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "curious_explorer": 0.5
+          }
+        ]
+      },
+      "marry-r4q6": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r4q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r4q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r5q1": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/place-a.webp",
+          "/quizzes/marry/assets/items/place-b.webp",
+          "/quizzes/marry/assets/items/place-c.webp",
+          "/quizzes/marry/assets/items/place-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      },
+      "marry-r5q2": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "ambitious_teammate": 0.5
+          }
+        ]
+      },
+      "marry-r5q3": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "thoughtful_dreamer": 0.5
+          }
+        ]
+      },
+      "marry-r5q4": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "playful_spark": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "magnetic_connector": 0.5,
+            "curious_explorer": 0.5
+          }
+        ]
+      },
+      "marry-r5q5": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/doorway-a.webp",
+          "/quizzes/marry/assets/items/doorway-b.webp",
+          "/quizzes/marry/assets/items/doorway-c.webp",
+          "/quizzes/marry/assets/items/doorway-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "ambitious_teammate": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "grounded_builder": 0.5,
+            "magnetic_connector": 0.5
+          }
+        ]
+      },
+      "marry-r5q6": {
+        "presentation": "icons",
+        "icons": [
+          "/quizzes/marry/assets/items/journey-a.webp",
+          "/quizzes/marry/assets/items/journey-b.webp",
+          "/quizzes/marry/assets/items/journey-c.webp",
+          "/quizzes/marry/assets/items/journey-d.webp"
+        ],
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "thoughtful_dreamer": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "quiet_creative": 0.5,
+            "grounded_builder": 0.5
+          }
+        ]
+      },
+      "marry-r5q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "curious_explorer": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "playful_spark": 0.5,
+            "quiet_creative": 0.5
+          }
+        ]
+      },
+      "marry-r5q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          {
+            "warm_anchor": 0.5,
+            "magnetic_connector": 0.5
+          },
+          {
+            "curious_explorer": 0.5,
+            "grounded_builder": 0.5
+          },
+          {
+            "thoughtful_dreamer": 0.5,
+            "quiet_creative": 0.5
+          },
+          {
+            "ambitious_teammate": 0.5,
+            "playful_spark": 0.5
+          }
+        ]
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✦"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "warm_anchor",
+          "id": "warm_anchor"
+        },
+        {
+          "key": "playful_spark",
+          "id": "playful_spark"
+        },
+        {
+          "key": "quiet_creative",
+          "id": "quiet_creative"
+        },
+        {
+          "key": "grounded_builder",
+          "id": "grounded_builder"
+        },
+        {
+          "key": "magnetic_connector",
+          "id": "magnetic_connector"
+        },
+        {
+          "key": "curious_explorer",
+          "id": "curious_explorer"
+        },
+        {
+          "key": "thoughtful_dreamer",
+          "id": "thoughtful_dreamer"
+        },
+        {
+          "key": "ambitious_teammate",
+          "id": "ambitious_teammate"
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "profiles": [
+            "warm_anchor",
+            "grounded_builder"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "profiles": [
+            "playful_spark",
+            "magnetic_connector"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "profiles": [
+            "quiet_creative",
+            "thoughtful_dreamer"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "profiles": [
+            "curious_explorer",
+            "ambitious_teammate"
+          ]
+        }
+      ],
+      "profileReveal": {
+        "auraLabelFirst": true
       }
     }
   }

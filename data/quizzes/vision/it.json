@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Solo il 7% supera questo test visivo",
   "eyebrow": "LABORATORIO DI OSSERVAZIONE",
   "summary": "Differenze minuscole, schemi mutevoli e illusioni mettono alla prova il tuo sguardo.",
+  "progressLabel": "completato",
   "landing": {
     "intro": "Quanto è davvero allenato il tuo occhio? Trova le differenze minime, segui gli schemi e supera le trappole visive.",
     "cta": "Inizia il test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Solo per intrattenimento e cultura generale. Questo test visivo non è un esame ufficiale, una qualifica o un parere professionale."
   },
+  "checkpoint": {
+    "finalAdNote": "Un breve annuncio, poi vedrai il risultato."
+  },
+  "career": {
+    "resultProgressLabel": "Sfida visiva",
+    "resultProgressComplete": "{value}% completato",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamenti",
+        "preAdBadge": "PRIMO SGUARDO COMPLETATO",
+        "preAdTitle": "Primo sguardo superato",
+        "preAdCopy": "Buon inizio. Le prossime differenze saranno più sottili.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
+          "tagline": "Forme. Differenze. Ordine visivo."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermedio",
+        "preAdBadge": "FORME E DETTAGLI COMPLETATI",
+        "preAdTitle": "Dettagli visivi acquisiti",
+        "preAdCopy": "Ora entrano in gioco forme, posizioni e differenze.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
+          "tagline": "Sequenze. Rotazione. Direzione."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Competente",
+        "preAdBadge": "SCHEMI TRACCIATI",
+        "preAdTitle": "Hai superato la metà",
+        "preAdCopy": "Le trappole ottiche sono le prossime.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
+          "tagline": "Interferenze. Tracciamento. Piccoli cambiamenti."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzato",
+        "preAdBadge": "TRAPPOLE OTTICHE COMPLETATE",
+        "preAdTitle": "Ora manca la messa a fuoco finale",
+        "preAdCopy": "Resta una sola sfida visiva.",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
+          "tagline": "Indizi combinati. Ultima messa a fuoco."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Prova finale",
+        "preAdBadge": "SFIDA VISIVA COMPLETATA",
+        "preAdTitle": "TEST VISIVO COMPLETATO",
+        "preAdCopy": "Il risultato visivo è pronto per essere svelato.",
+        "preAdChecks": [
+          "40 risposte verificate",
+          "Sei abilità visive rispetto a",
+          "Punteggio finale calcolato"
+        ],
+        "preAdButton": "Vedi il mio risultato"
+      }
+    }
+  },
   "results": {
     "name": "IL TUO PUNTEGGIO VISIVO",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Occhio d’aquila",
         "copy": "Hai dimostrato una padronanza notevole di colori, dettagli, schemi e spazio. Persino le domande più impegnative ti hanno messo raramente in difficoltà."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Virtuoso visivo",
         "copy": "Il risultato mostra un’ottima padronanza di colori, dettagli, schemi e spazio. Il tuo ragionamento è rimasto sicuro anche davanti alle trappole più sottili."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Cacciatore di schemi",
         "copy": "Hai ottenuto un risultato solido in colori, dettagli, schemi e spazio. Qualche dettaglio difficile ti ha rallentato, ma il quadro complessivo è convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Detective dei dettagli",
         "copy": "Hai buone basi in colori, dettagli, schemi e spazio. Rafforzando i punti più delicati, il prossimo risultato può migliorare nettamente."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Occhio in allenamento",
         "copy": "Hai riconosciuto diversi elementi chiave di colori, dettagli, schemi e spazio. Le domande mancate indicano con chiarezza gli aspetti da consolidare."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Meno del 50%",
         "title": "Osservatore curioso",
         "copy": "Questa sfida ha mostrato alcuni margini di crescita in colori, dettagli, schemi e spazio. La curiosità e le risposte corrette sono un ottimo punto di partenza."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Colore e memoria",
-        "categories": [
-          "colour_contrast",
-          "visual_memory"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Colore e memoria"
       },
-      {
-        "label": "Dettagli e attenzione",
-        "categories": [
-          "detail_detection",
-          "attention_control"
-        ]
+      "dimension-2": {
+        "label": "Dettagli e attenzione"
       },
-      {
-        "label": "Schemi e spazio",
-        "categories": [
-          "pattern_tracking",
-          "spatial_orientation"
-        ]
+      "dimension-3": {
+        "label": "Schemi e spazio"
       }
-    ],
+    },
     "score": {
       "passed": "Sfida superata: test visivo!",
       "finished": "Sfida completata: test visivo",
@@ -88,9 +133,6 @@
       "strongest": "Area visiva più forte",
       "trickiest": "Area visiva più difficile",
       "bestRound": "Sfida migliore",
-      "showPercentage": true,
-      "disclaimer": "Solo per intrattenimento e cultura generale. Questo test visivo non è un esame ufficiale, una qualifica o un parere professionale.",
-      "showBestRound": false,
       "insights": {
         "overview": "punteggio visivo in sintesi",
         "correct": "corrette",
@@ -99,66 +141,15 @@
         "breakdown": "Analisi delle competenze visiva",
         "snapshot": "Cosa suggerisce il profilo nel test visivo",
         "targetReached": "Obiettivo dell’80% raggiunto",
-        "targetRemaining": "Risposte corrette ancora necessarie per l’80%",
-        "details": {
-          "analysisTitle": "Come leggere il punteggio visivo",
-          "analysisCopy": "Questo risultato riunisce 40 domande in diversi ambiti: colori, dettagli, memoria visiva, schemi e spazio. La distribuzione seguente mostra le aree più solide di questo tentativo.",
-          "roadmapTitle": "Nel rapporto completo del test visivo",
-          "roadmapIntro": "Il punteggio è solo il primo indizio. Il rapporto mostra la tua area visiva più forte, il dettaglio per area e le risposte sbagliate nel test visivo.",
-          "roadmapItems": [
-            "Analisi del punteggio",
-            "Area visiva più forte",
-            "Analisi delle competenze visiva",
-            "Consigli per la concentrazione visiva"
-          ],
-          "positionTitle": "Il percorso verso l’80%",
-          "positionCopy": "L’obiettivo ricreativo è 32 risposte corrette su 40. L’indicatore mostra quanto si è avvicinato questo tentativo nel test visivo, senza confronti o valutazioni professionali.",
-          "measuredTitle": "Che cosa ha esplorato il test visivo",
-          "measuredIntro": "Le domande coprono tre aspetti complementari specifici del test visivo.",
-          "measuredAreas": [
-            {
-              "title": "Colore e memoria",
-              "copy": "Confrontare il contrasto e trattenere brevemente disposizioni visive."
-            },
-            {
-              "title": "Dettagli e attenzione",
-              "copy": "Trovare cambiamenti esatti, codici ripetuti e piccole differenze senza perdere la concentrazione."
-            },
-            {
-              "title": "Schemi e spazio",
-              "copy": "Seguire regole alternate, direzioni speculari e rotazioni in più passaggi."
-            }
-          ],
-          "tipsTitle": "Tre modi per affinare l’approccio visiva",
-          "tipsIntro": "Strategie semplici per un altro tentativo nel test visivo, non una valutazione professionale.",
-          "tips": [
-            {
-              "title": "Scansiona in un ordine fisso",
-              "copy": "Esamina una griglia con metodo invece di lasciare che l’elemento più evidente sposti lo sguardo."
-            },
-            {
-              "title": "Separa le regole",
-              "copy": "Quando due schemi si sovrappongono, segui una caratteristica alla volta: forma, colore, riempimento o direzione."
-            },
-            {
-              "title": "Confronta prima i riferimenti",
-              "copy": "Nei dati quasi identici, controlla gruppi fissi e estremità prima di ogni carattere."
-            }
-          ],
-          "finalTitle": "Il tuo risultato nel test visivo",
-          "finalCopy": "Hai concluso con {score} risposte corrette su {total}. Il tuo profilo nei rompicapi visivi per questo tentativo è riportato qui sotto."
-        }
+        "targetRemaining": "Risposte corrette ancora necessarie per l’80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Primo sguardo",
-      "questions": [
-        {
-          "id": "vision-r1q1",
-          "question": "Quale riquadro ha un colore diverso?",
-          "presentation": "grid",
+      "questions": {
+        "vision-r1q1": {
           "visual": {
             "items": [
               "TILE",
@@ -166,22 +157,17 @@
               "TILE",
               "TILE"
             ],
-            "columns": 2,
             "ariaLabel": "Quattro tonalità di blu molto simili; il riquadro in basso a destra è leggermente diverso"
           },
+          "question": "Quale riquadro ha un colore diverso?",
           "answers": [
             "In alto a sinistra",
             "In basso a destra",
             "In alto a destra",
             "In basso a sinistra"
-          ],
-          "correct": 1,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r3q4",
-          "question": "In quale posizione si trova il simbolo diverso?",
-          "presentation": "spatial",
+        "vision-r3q4": {
           "visual": {
             "items": [
               "left-half",
@@ -189,23 +175,18 @@
               "right-half",
               "left-half"
             ],
-            "columns": 4,
             "ariaLabel": "Quattro semicerchi pieni; nel terzo il riempimento è sul lato opposto"
           },
+          "question": "In quale posizione si trova il simbolo diverso?",
           "answers": [
             "Prima",
             "Seconda",
             "Terza",
             "Quarta"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q2",
+        "vision-r1q2": {
           "context": "REFERENZA: M7K2P9",
-          "question": "Quale codice corrisponde esattamente al modello?",
-          "presentation": "code",
           "visual": {
             "items": [
               "MODELLO",
@@ -213,19 +194,15 @@
             ],
             "ariaLabel": "Codice modello M 7 K 2 P 9"
           },
+          "question": "Quale codice corrisponde esattamente al modello?",
           "answers": [
             "M7K2P9",
             "M7K2R9",
             "M7KZP9",
             "N7K2P9"
-          ],
-          "correct": 0,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q3",
-          "question": "Quale forma viene dopo?",
-          "presentation": "sequence",
+        "vision-r1q3": {
           "visual": {
             "items": [
               "▲",
@@ -234,22 +211,17 @@
               "●",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Triangolo, cerchio, triangolo, cerchio, punto interrogativo"
           },
+          "question": "Quale forma viene dopo?",
           "answers": [
             "■",
             "●",
             "◆",
             "▲"
-          ],
-          "correct": 3,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r1q4",
-          "question": "La freccia ruota ogni volta di 90 gradi verso destra. Qual è la successiva?",
-          "presentation": "sequence",
+        "vision-r1q4": {
           "visual": {
             "items": [
               "↑",
@@ -257,20 +229,17 @@
               "↓",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Freccia in alto, a destra, in basso, punto interrogativo"
           },
+          "question": "La freccia ruota ogni volta di 90 gradi verso destra. Qual è la successiva?",
           "answers": [
             "↑",
             "→",
             "↓",
             "←"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r1q5",
+        "vision-r1q5": {
           "question": "Quale simbolo è apparso per primo?",
           "answers": [
             "Stella",
@@ -278,44 +247,32 @@
             "Ombrello",
             "Limone"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Ricorda l’ordine",
-            "presentation": "icons",
             "items": [
               "⭐",
               "🍋",
               "🔑",
               "☂️"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r1q6",
-          "question": "Quanti cerchi pieni sono mostrati?",
-          "presentation": "spatial",
+        "vision-r1q6": {
           "visual": {
             "items": [
               "● ● ○ ● ○ ●"
             ],
             "ariaLabel": "Quattro cerchi pieni e due vuoti"
           },
+          "question": "Quanti cerchi pieni sono mostrati?",
           "answers": [
             "3",
             "6",
             "5",
             "4"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r2q1",
-          "question": "Dove si trova il riquadro viola?",
-          "presentation": "grid",
+        "vision-r2q1": {
           "visual": {
             "items": [
               "🔵",
@@ -328,27 +285,22 @@
               "🔵",
               "🔵"
             ],
-            "columns": 3,
             "ariaLabel": "Griglia tre per tre con il viola al centro e il blu nelle altre caselle"
           },
+          "question": "Dove si trova il riquadro viola?",
           "answers": [
             "Al centro",
             "In basso a destra",
             "In alto a sinistra",
             "In alto a destra"
-          ],
-          "correct": 0,
-          "category": "colour_contrast"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Forme e dettagli",
-      "questions": [
-        {
-          "id": "vision-r4q3",
-          "question": "Quale freccia va inserita al passaggio 4?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r4q3": {
           "visual": {
             "items": [
               "↗",
@@ -356,22 +308,17 @@
               "↙",
               "?"
             ],
-            "columns": 2,
             "ariaLabel": "Quattro passaggi numerati: nord-est, sud-est, sud-ovest, punto interrogativo"
           },
+          "question": "Quale freccia va inserita al passaggio 4?",
           "answers": [
             "↖",
             "↘",
             "↗",
             "↓"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q1",
-          "question": "Quale freccia è l’immagine speculare verticale di ↗?",
-          "presentation": "spatial",
+        "vision-r5q1": {
           "visual": {
             "items": [
               "↗",
@@ -380,53 +327,42 @@
             ],
             "ariaLabel": "Freccia verso nord-est riflessa su un asse verticale"
           },
+          "question": "Quale freccia è l’immagine speculare verticale di ↗?",
           "answers": [
             "↙",
             "↘",
             "↗",
             "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q1",
+        "vision-r3q1": {
           "question": "Quale coppia è perfettamente identica?",
           "answers": [
             "R7Q3B6 / R7O3B6",
             "K4M8P2 / K4M8P2",
             "T9L2C5 / T9LZC5",
             "A6D4N8 / A6D4M8"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q2",
+        "vision-r3q2": {
           "question": "Quale riga contiene esattamente sette punti?",
           "answers": [
             "••••••",
             "•••••",
             "••••••••",
             "•••••••"
-          ],
-          "correct": 3,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q5",
+        "vision-r3q5": {
           "question": "Quale simbolo resta invariato dopo una rotazione di 180 gradi?",
           "answers": [
             "L",
             "↑",
             "●",
             "↗"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q6",
+        "vision-r3q6": {
           "context": "Fabio fotografa cinque fogli, ma finisce fuori fuoco.",
           "question": "Quante lettere F sono mostrate?",
           "answers": [
@@ -434,14 +370,9 @@
             "7",
             "8",
             "9"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r5q5",
-          "question": "Quale riquadro viene dopo?",
-          "presentation": "sequence",
+        "vision-r5q5": {
           "visual": {
             "items": [
               "■",
@@ -452,20 +383,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Quadrato pieno, due quadrati vuoti, quadrato pieno, due quadrati vuoti, punto interrogativo"
           },
+          "question": "Quale riquadro viene dopo?",
           "answers": [
             "●",
             "□",
             "■",
             "◇"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q6",
+        "vision-r5q6": {
           "question": "Quale oggetto occupava la posizione in basso a sinistra?",
           "answers": [
             "Chiave",
@@ -473,8 +401,6 @@
             "Luna",
             "Stella"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Ricorda le quattro posizioni",
             "items": [
@@ -482,37 +408,24 @@
               "IN ALTO A DESTRA — LUNA",
               "IN BASSO A SINISTRA — CHIAVE",
               "IN BASSO A DESTRA — FOGLIA"
-            ],
-            "durationMs": 2200,
-            "mode": "automatic"
+            ]
           }
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Segui lo schema",
-      "questions": [
-        {
-          "id": "vision-r9q5",
+      "questions": {
+        "vision-r9q5": {
           "question": "Quale forma si trovava subito a destra del triangolo dorato?",
-          "presentation": "icons",
           "answers": [
             "Stella viola",
             "Quadrato corallo",
             "Cerchio blu",
             "Rombo verde"
           ],
-          "icons": [
-            "violet-star",
-            "coral-square",
-            "blue-circle",
-            "green-diamond"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Memorizza le cinque forme",
-            "presentation": "icons",
             "items": [
               "blue-circle",
               "gold-triangle",
@@ -520,15 +433,10 @@
               "green-diamond",
               "violet-star"
             ],
-            "ariaLabel": "Cerchio blu, triangolo dorato, quadrato corallo, rombo verde, stella viola",
-            "durationMs": 3500,
-            "mode": "automatic"
+            "ariaLabel": "Cerchio blu, triangolo dorato, quadrato corallo, rombo verde, stella viola"
           }
         },
-        {
-          "id": "vision-r7q2",
-          "question": "Quale codice compare due volte?",
-          "presentation": "grid",
+        "vision-r7q2": {
           "visual": {
             "items": [
               "A7Q",
@@ -536,22 +444,17 @@
               "C2R",
               "B4M"
             ],
-            "columns": 2,
             "ariaLabel": "Codici A7Q, B4M, C2R e B4M"
           },
+          "question": "Quale codice compare due volte?",
           "answers": [
             "B4M",
             "A7Q",
             "C2R",
             "Nessuno"
-          ],
-          "correct": 0,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r4q1",
-          "question": "Quale forma continua l’aumento del numero di lati?",
-          "presentation": "sequence",
+        "vision-r4q1": {
           "visual": {
             "items": [
               "▲",
@@ -559,22 +462,17 @@
               "⬟",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Triangolo, quadrato, pentagono, punto interrogativo"
           },
+          "question": "Quale forma continua l’aumento del numero di lati?",
           "answers": [
             "Cerchio",
             "Esagono",
             "Triangolo",
             "Quadrato"
-          ],
-          "correct": 1,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q2",
-          "question": "Quale elemento completa la sequenza alternata?",
-          "presentation": "sequence",
+        "vision-r4q2": {
           "visual": {
             "items": [
               "X",
@@ -584,39 +482,26 @@
               "X",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "X, O, X, O, X, punto interrogativo"
           },
+          "question": "Quale elemento completa la sequenza alternata?",
           "answers": [
             "O",
             "XX",
             "OO",
             "X"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q5",
+        "vision-r4q5": {
           "question": "Quale colore risalta di più sul blu navy scuro?",
-          "presentation": "icons",
           "answers": [
             "Campione A",
             "Campione B",
             "Campione D",
             "Campione C"
-          ],
-          "icons": [
-            "🟣",
-            "🔵",
-            "🟢",
-            "🟡"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r4q6",
+        "vision-r4q6": {
           "context": "MODELLO: ◇ ● ▲ ■",
           "question": "Quale riga riproduce esattamente il modello?",
           "answers": [
@@ -624,12 +509,9 @@
             "◇ ● ▲ ■",
             "◇ ○ ▲ ■",
             "● ◇ ▲ ■"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r6q1",
+        "vision-r6q1": {
           "question": "Quale numero era abbinato al blu?",
           "answers": [
             "2",
@@ -637,21 +519,16 @@
             "4",
             "9"
           ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Ricorda gli abbinamenti colore-numero",
             "items": [
               "ROSSO — 4",
               "BLU — 7",
               "ORO — 2"
-            ],
-            "durationMs": 1900,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r6q6",
+        "vision-r6q6": {
           "context": "REFERENZA: R3M8K2",
           "question": "Quale codice è rimasto invariato?",
           "answers": [
@@ -659,19 +536,14 @@
             "R3M8K2",
             "P3M8K2",
             "R3M8KZ"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Trappole ottiche",
-      "questions": [
-        {
-          "id": "vision-r9q1",
-          "question": "I quadrati centrali sono identici. Perché possono comunque sembrare diversi?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r9q1": {
           "visual": {
             "items": [
               "light panel",
@@ -679,34 +551,27 @@
             ],
             "ariaLabel": "Due quadrati centrali identici su sfondi con contrasto diverso"
           },
+          "question": "I quadrati centrali sono identici. Perché possono comunque sembrare diversi?",
           "answers": [
             "Uno deve essere in realtà più chiaro",
             "Il colore cambia con la distanza",
             "Colori identici appaiono sempre identici",
             "Il contrasto circostante ne cambia l’aspetto"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r8q3",
-          "question": "Parti dal punto rosso e segui il suo percorso tratteggiato. Quale lettera raggiungi?",
-          "presentation": "text",
+        "vision-r8q3": {
           "image": {
-            "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2",
             "alt": "Un punto di partenza rosso e quattro percorsi tratteggiati simili che si incrociano prima di raggiungere A, B, C e D"
           },
+          "question": "Parti dal punto rosso e segui il suo percorso tratteggiato. Quale lettera raggiungi?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r7q1",
+        "vision-r7q1": {
           "context": "BLU CHIARO, CIELO BLU, BLU.",
           "question": "Quante volte compare BLU come parola isolata?",
           "answers": [
@@ -714,33 +579,24 @@
             "4",
             "3",
             "6"
-          ],
-          "correct": 2,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q3",
-          "question": "In quale posizione si trova il cerchio con un punto al centro?",
-          "presentation": "spatial",
+        "vision-r7q3": {
           "visual": {
             "items": [
               "○  ○  ⊙  ○"
             ],
             "ariaLabel": "Quattro cerchi; il terzo contiene un punto"
           },
+          "question": "In quale posizione si trova il cerchio con un punto al centro?",
           "answers": [
             "Prima",
             "Seconda",
             "Quarta",
             "Terza"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q5",
-          "question": "Quale riquadro centrale risalta di più nel gruppo scuro?",
-          "presentation": "grid",
+        "vision-r7q5": {
           "visual": {
             "items": [
               "⚫🟡⚫",
@@ -748,20 +604,17 @@
               "⚫🔵⚫",
               "⚫🟢⚫"
             ],
-            "columns": 2,
             "ariaLabel": "Quattro gruppi scuri con un riquadro centrale giallo, viola, blu o verde"
           },
+          "question": "Quale riquadro centrale risalta di più nel gruppo scuro?",
           "answers": [
             "In basso a sinistra",
             "In alto a destra",
             "In alto a sinistra",
             "In basso a destra"
-          ],
-          "correct": 2,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r9q2",
+        "vision-r9q2": {
           "context": "VERSIONE A: FOCUS-M7Q2-2026\nVERSIONE B: F0CUS-M7Q2-2026",
           "question": "Quale posizione precisa è cambiata nella versione B?",
           "answers": [
@@ -769,15 +622,10 @@
             "La Q",
             "Il secondo carattere",
             "L’ultima cifra"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r9q4",
+        "vision-r9q4": {
           "context": "Ruota prima la freccia di 90° in senso orario. Poi rifletti il risultato rispetto a un asse verticale.",
-          "question": "In quale direzione punta infine la freccia?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "↗",
@@ -785,30 +633,17 @@
               "│",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Freccia verso nord-est, quarto di giro in senso orario, specchio verticale"
           },
+          "question": "In quale direzione punta infine la freccia?",
           "answers": [
             "↗",
             "↘",
             "↙",
             "↖"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r9q6",
-          "question": "Quale etichetta non corrisponde al colore del riquadro?",
-          "answers": [
-            "Prima",
-            "Seconda",
-            "Terza",
-            "Quarta"
-          ],
-          "correct": 2,
-          "category": "attention_control",
-          "presentation": "grid",
+        "vision-r9q6": {
           "visual": {
             "items": [
               "BLU 🟦",
@@ -816,60 +651,50 @@
               "ROSSO 🟦",
               "ORO 🟨"
             ],
-            "columns": 2,
             "ariaLabel": "Quattro etichette di colore; la terza non corrisponde al riquadro"
-          }
+          },
+          "question": "Quale etichetta non corrisponde al colore del riquadro?",
+          "answers": [
+            "Prima",
+            "Seconda",
+            "Terza",
+            "Quarta"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Messa a fuoco finale",
-      "questions": [
-        {
-          "id": "vision-r10q2",
+      "questions": {
+        "vision-r10q2": {
+          "visual": {
+            "items": [
+              "ORIGINALE::M8Q2-K7P4-R6N3",
+              "COPIA::M8Q2-K1P4-R6M3"
+            ],
+            "ariaLabel": "Originale M8Q2 K7P4 R6N3 e copia M8Q2 K1P4 R6M3"
+          },
           "question": "Quali due caratteri sono cambiati?",
           "answers": [
             "7 e N",
             "8 e 6",
             "Q e P",
             "K e R"
-          ],
-          "correct": 0,
-          "category": "detail_detection",
-          "reasoningSteps": 2,
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "ORIGINALE::M8Q2-K7P4-R6N3",
-              "COPIA::M8Q2-K1P4-R6M3"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Originale M8Q2 K7P4 R6N3 e copia M8Q2 K1P4 R6M3"
-          }
+          ]
         },
-        {
-          "id": "vision-r10q4",
+        "vision-r10q4": {
+          "image": {
+            "alt": "Quattro passaggi illustrati: un quadrato piegato verso destra, poi verso il basso, forato una volta e infine riaperto"
+          },
           "question": "Un quadrato viene piegato due volte e poi forato una volta attraverso tutti gli strati, lontano dalle pieghe. Quanti fori si vedono quando viene riaperto?",
           "answers": [
             "1",
             "2",
             "4",
             "8"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation",
-          "reasoningSteps": 2,
-          "presentation": "text",
-          "image": {
-            "src": "/quizzes/vision/assets/icons/paper-fold-punch-it.svg?v=20260823-1",
-            "alt": "Quattro passaggi illustrati: un quadrato piegato verso destra, poi verso il basso, forato una volta e infine riaperto"
-          }
+          ]
         },
-        {
-          "id": "vision-r8q1",
-          "question": "Quale riquadro tende leggermente al verde?",
-          "presentation": "grid",
+        "vision-r8q1": {
           "visual": {
             "items": [
               "1",
@@ -882,21 +707,17 @@
               "8",
               "9"
             ],
-            "columns": 3,
             "ariaLabel": "Nove tonalità di blu fisse, di cui una tende al verde"
           },
+          "question": "Quale riquadro tende leggermente al verde?",
           "answers": [
             "In alto a sinistra",
             "Al centro",
             "In basso a destra",
             "Al centro in basso"
-          ],
-          "correct": 3,
-          "category": "colour_contrast",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q2",
+        "vision-r8q2": {
           "context": "CONFRONTO: V6K9-M2Q8",
           "question": "Quale codice corrisponde esattamente al modello?",
           "answers": [
@@ -904,24 +725,9 @@
             "V6K9-M2Q8",
             "V6K9-M2O8",
             "V6K9-N2Q8"
-          ],
-          "correct": 1,
-          "category": "detail_detection",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q4",
-          "question": "Ruota ↘ due volte di 90 gradi verso destra.",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation",
-          "delay": 350,
-          "presentation": "sequence",
+        "vision-r8q4": {
           "visual": {
             "items": [
               "↘",
@@ -929,68 +735,52 @@
               "↻ 90°",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Freccia verso sud-est seguita da due quarti di giro in senso orario"
-          }
+          },
+          "question": "Ruota ↘ due volte di 90 gradi verso destra.",
+          "answers": [
+            "↙",
+            "↘",
+            "↗",
+            "↖"
+          ]
         },
-        {
-          "id": "vision-r8q5",
+        "vision-r8q5": {
           "question": "Quale simbolo è apparso in quarta posizione?",
-          "presentation": "icons",
           "answers": [
             "Luna",
             "Ancora",
             "Sole",
             "Stella"
           ],
-          "icons": [
-            "🌙",
-            "⚓",
-            "☀️",
-            "⭐"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
-          "delay": 350,
           "study": {
             "title": "Occhiata rapida",
-            "presentation": "icons",
             "items": [
               "☀️",
               "🔑",
               "🌙",
               "⚓",
               "🪶"
-            ],
-            "durationMs": 1400,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r8q6",
-          "question": "Quante stelle piene sono mostrate?",
-          "presentation": "spatial",
+        "vision-r8q6": {
           "visual": {
             "items": [
               "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
             ],
             "ariaLabel": "Cinque stelle piene tra sette forme vuote o geometriche"
           },
+          "question": "Quante stelle piene sono mostrate?",
           "answers": [
             "5",
             "3",
             "4",
             "2"
-          ],
-          "correct": 0,
-          "category": "attention_control",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r10q3",
+        "vision-r10q3": {
           "context": "Segui separatamente il ciclo delle forme e quello del riempimento.",
-          "question": "Quale elemento segue le sei forme mostrate?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "●",
@@ -1001,253 +791,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Sei forme che combinano un’alternanza cerchio-quadrato e un ciclo di riempimento in tre passaggi"
           },
+          "question": "Quale elemento segue le sei forme mostrate?",
           "answers": [
             "●",
             "■",
             "○",
             "□"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "PROSSIMA SFIDA",
-    "adNote": "Un breve annuncio, poi si continua.",
-    "finalBadge": "TEST VISIVO COMPLETATO",
-    "finalIcon": "👁️",
-    "finalTitle": "TEST VISIVO COMPLETATO",
-    "finalCopy": "Il risultato visivo è pronto per essere svelato.",
-    "finalButton": "Vedi il mio risultato",
-    "finalChecklist": [
-      "40 risposte verificate",
-      "Sei abilità visive rispetto a",
-      "Punteggio finale calcolato"
-    ],
-    "reveals": [
-      {
-        "badge": "PRIMO SGUARDO COMPLETATO",
-        "icon": "👁️",
-        "title": "Primo sguardo superato",
-        "signal": "fixed",
-        "message": "Buon inizio. Le prossime differenze saranno più sottili."
-      },
-      {
-        "badge": "FORME E DETTAGLI COMPLETATI",
-        "icon": "👁️",
-        "title": "Dettagli visivi acquisiti",
-        "signal": "fixed",
-        "message": "Ora entrano in gioco forme, posizioni e differenze."
-      },
-      {
-        "badge": "SCHEMI TRACCIATI",
-        "icon": "👁️",
-        "title": "Hai superato la metà",
-        "signal": "fixed",
-        "message": "Le trappole ottiche sono le prossime."
-      },
-      {
-        "badge": "TRAPPOLE OTTICHE COMPLETATE",
-        "icon": "👁️",
-        "title": "Ora manca la messa a fuoco finale",
-        "signal": "fixed",
-        "message": "Resta una sola sfida visiva."
-      },
-      {
-        "badge": "SFIDA VISIVA COMPLETATA",
-        "icon": "👁️",
-        "title": "TEST VISIVO COMPLETATO",
-        "signal": "fixed",
-        "message": "Il risultato visivo è pronto per essere svelato."
-      }
-    ],
-    "finalAdNote": "Un breve annuncio, poi vedrai il risultato."
-  },
-  "progressLabel": "completato",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Sfida visiva",
-    "resultProgressComplete": "{value}% completato",
-    "currentScoreLabel": "PUNTEGGIO VISIVO ATTUALE",
-    "levelLabel": "FASE",
-    "scoreSuffix": "corrette",
-    "journeyLabel": "SFIDA VISIVA",
-    "kitchensCleared": "{value} / {total} sfide completate",
-    "currentRank": "LIVELLO ATTUALE · TEST VISIVO",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Sfida visiva iniziata"
-      },
-      {
-        "afterStage": 5,
-        "label": "Sfida visiva completata"
-      }
-    ],
-    "unlockEyebrow": "AGGIORNAMENTO RISULTATO · TEST VISIVO",
-    "unlockTitle": "È pronta una nuova sfida: test visivo",
-    "unlockCopy": "Prossima tappa: test visivo.",
-    "finalEyebrow": "IL TUO PUNTEGGIO VISIVO",
-    "finalCareerTitle": "TEST VISIVO COMPLETATO",
-    "strongestLabel": "Area visiva più forte",
-    "stages": [
-      {
-        "difficulty": "Fondamenti",
-        "preAdBadge": "PRIMO SGUARDO COMPLETATO",
-        "preAdTitle": "Primo sguardo superato",
-        "preAdCopy": "Buon inizio. Le prossime differenze saranno più sottili.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "PRIMO SGUARDO COMPLETATO",
-        "resultBands": {
-          "high": {
-            "title": "Primo sguardo superato",
-            "insight": "Buon inizio. Le prossime differenze saranno più sottili."
-          },
-          "medium": {
-            "title": "Primo sguardo superato",
-            "insight": "Buon inizio. Le prossime differenze saranno più sottili."
-          },
-          "low": {
-            "title": "Primo sguardo superato",
-            "insight": "Buon inizio. Le prossime differenze saranno più sottili."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · INTERMEDIO",
-          "title": "Forme e dettagli",
-          "difficulty": "Intermedio",
-          "tagline": "Forme. Differenze. Ordine visivo.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Intermedio",
-        "preAdBadge": "FORME E DETTAGLI COMPLETATI",
-        "preAdTitle": "Dettagli visivi acquisiti",
-        "preAdCopy": "Ora entrano in gioco forme, posizioni e differenze.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "FORME E DETTAGLI COMPLETATI",
-        "resultBands": {
-          "high": {
-            "title": "Dettagli visivi acquisiti",
-            "insight": "Ora entrano in gioco forme, posizioni e differenze."
-          },
-          "medium": {
-            "title": "Dettagli visivi acquisiti",
-            "insight": "Ora entrano in gioco forme, posizioni e differenze."
-          },
-          "low": {
-            "title": "Dettagli visivi acquisiti",
-            "insight": "Ora entrano in gioco forme, posizioni e differenze."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · COMPETENTE",
-          "title": "Segui lo schema",
-          "difficulty": "Competente",
-          "tagline": "Sequenze. Rotazione. Direzione.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Competente",
-        "preAdBadge": "SCHEMI TRACCIATI",
-        "preAdTitle": "Hai superato la metà",
-        "preAdCopy": "Le trappole ottiche sono le prossime.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "SCHEMI TRACCIATI",
-        "resultBands": {
-          "high": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole ottiche sono le prossime."
-          },
-          "medium": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole ottiche sono le prossime."
-          },
-          "low": {
-            "title": "Hai superato la metà",
-            "insight": "Le trappole ottiche sono le prossime."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · AVANZATO",
-          "title": "Trappole ottiche",
-          "difficulty": "Avanzato",
-          "tagline": "Interferenze. Tracciamento. Piccoli cambiamenti.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Avanzato",
-        "preAdBadge": "TRAPPOLE OTTICHE COMPLETATE",
-        "preAdTitle": "Ora manca la messa a fuoco finale",
-        "preAdCopy": "Resta una sola sfida visiva.",
-        "preAdButton": "Continua",
-        "resultIcon": "✓",
-        "resultLabel": "TRAPPOLE OTTICHE COMPLETATE",
-        "resultBands": {
-          "high": {
-            "title": "Ora manca la messa a fuoco finale",
-            "insight": "Resta una sola sfida visiva."
-          },
-          "medium": {
-            "title": "Ora manca la messa a fuoco finale",
-            "insight": "Resta una sola sfida visiva."
-          },
-          "low": {
-            "title": "Ora manca la messa a fuoco finale",
-            "insight": "Resta una sola sfida visiva."
-          }
-        },
-        "next": {
-          "eyebrow": "PROSSIMA SFIDA · PROVA FINALE",
-          "title": "Messa a fuoco finale",
-          "difficulty": "Prova finale",
-          "tagline": "Indizi combinati. Ultima messa a fuoco.",
-          "button": "Continua"
-        }
-      },
-      {
-        "difficulty": "Prova finale",
-        "preAdBadge": "SFIDA VISIVA COMPLETATA",
-        "preAdTitle": "TEST VISIVO COMPLETATO",
-        "preAdChecks": [
-          "40 risposte verificate",
-          "Sei abilità visive rispetto a",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Vedi il mio risultato",
-        "resultIcon": "✓",
-        "resultLabel": "MESSA A FUOCO FINALE COMPLETATA",
-        "resultBands": {
-          "high": {
-            "title": "TEST VISIVO COMPLETATO",
-            "insight": "Il risultato visivo è pronto per essere svelato."
-          },
-          "medium": {
-            "title": "TEST VISIVO COMPLETATO",
-            "insight": "Il risultato visivo è pronto per essere svelato."
-          },
-          "low": {
-            "title": "TEST VISIVO COMPLETATO",
-            "insight": "Il risultato visivo è pronto per essere svelato."
-          }
-        },
-        "preAdCopy": "Il risultato visivo è pronto per essere svelato."
-      }
-    ]
   }
 }

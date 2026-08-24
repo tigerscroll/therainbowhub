@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
+import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 
 const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
@@ -397,14 +398,8 @@ function validateGermanRegisterCorrections(quiz, content, location) {
   }
   if (quiz === "years-left") {
     if (content.checkpoint?.finalAdNote !== "Erst eine kurze Werbung, dann sehen Sie Ihre Einschätzung.") addError(`${location}#checkpoint.finalAdNote: Years Left must retain formal German address.`);
-    if (content.career?.unlockCopy !== "Die nächste Prognoseetappe wartet auf Sie.") addError(`${location}#career.unlockCopy: Years Left must retain formal German address.`);
-    if (content.career?.finalEyebrow !== "IHRE EINSCHÄTZUNG") addError(`${location}#career.finalEyebrow: Years Left must retain formal German address.`);
-  }
-  if (quiz === "grammar" && content.results?.score?.insights?.details?.analysisCopy !== "Dieses Ergebnis fasst 40 Fragen zu Satzbau, Kongruenz, Verben, Zeichensetzung, Bezügen und Überarbeitung zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.") {
-    addError(`${location}#results.score.insights.details.analysisCopy: approved German case correction changed.`);
   }
   if (quiz === "memory") {
-    if (content.results?.score?.insights?.details?.analysisCopy !== "Dieses Ergebnis fasst 40 Fragen zu Wörtern, Bildern, Zahlen, Verknüpfungen, Aufmerksamkeit und verzögertem Erinnern zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.") addError(`${location}#results.score.insights.details.analysisCopy: approved German case correction changed.`);
     const protectedThirdPersonCopy = new Set([
       "Sie können später wieder auftauchen.",
       "Sie reiste nach PARIS.",
@@ -477,25 +472,6 @@ const recurringNativeCopyDefects = {
   ],
 };
 
-const themedFinalCopyTerms = {
-  iq: {
-    fr: /raisonnement/iu, de: /Denkprofil/iu, it: /ragionamento/iu,
-    nl: /denkprofiel/iu, es: /razonamiento/iu, pt: /raciocínio/iu,
-  },
-  vision: {
-    fr: /visuelle/iu, de: /visuelle Rätsel/iu, it: /rompicapi visivi/iu,
-    nl: /visuele puzzels/iu, es: /resolución visual/iu, pt: /resolução visual/iu,
-  },
-  grammar: {
-    fr: /grammatical/iu, de: /Grammatikprofil/iu, it: /grammaticale/iu,
-    nl: /grammaticaprofiel/iu, es: /gramatical/iu, pt: /gramatical/iu,
-  },
-  memory: {
-    fr: /bilan complet.+mémoire/iu, de: /vollständige Auswertung.+Gedächtnis/iu, it: /analisi completa.+memoria/iu,
-    nl: /volledige uitsplitsing.+geheugen/iu, es: /desglose completo.+memoria/iu, pt: /análise completa.+memória/iu,
-  },
-};
-
 const yearsLeftThemeTerms = {
   fr: { estimate: /estimation/iu, signals: /indices/iu, prediction: /prédiction/iu, lifestyle: /mode de vie/iu },
   de: { estimate: /Einschätzung/iu, signals: /Signale/iu, prediction: /Prognose/iu, lifestyle: /Lebensstil/iu },
@@ -524,23 +500,13 @@ function validateNativeCopyPatterns(quiz, content, locale, location) {
     }
   }
 
-  const finalCopyPattern = themedFinalCopyTerms[quiz]?.[locale];
-  if (finalCopyPattern && !finalCopyPattern.test(content.results?.score?.insights?.details?.finalCopy ?? "")) {
-    addError(`${location}#results.score.insights.details.finalCopy: final result copy lost its quiz-specific theme.`);
-  }
-
   if (quiz === "years-left") {
     const terms = yearsLeftThemeTerms[locale];
     const themedFields = [
       ["checkpoint.finalAdNote", content.checkpoint?.finalAdNote, terms?.estimate],
-      ["checkpoint.finalButton", content.checkpoint?.finalButton, terms?.estimate],
-      ["career.scoreSuffix", content.career?.scoreSuffix, terms?.signals],
-      ["career.currentRank", content.career?.currentRank, terms?.prediction],
-      ["career.unlockEyebrow", content.career?.unlockEyebrow, terms?.prediction],
-      ["career.unlockTitle", content.career?.unlockTitle, terms?.lifestyle],
-      ["career.unlockCopy", content.career?.unlockCopy, terms?.prediction],
-      ["career.finalEyebrow", content.career?.finalEyebrow, terms?.estimate],
-      ["career.strongestLabel", content.career?.strongestLabel, terms?.lifestyle],
+      ["career.resultProgressLabel", content.career?.resultProgressLabel, terms?.prediction],
+      ["career.stages", JSON.stringify(content.career?.stages ?? []), terms?.lifestyle],
+      ["career.stages.final", JSON.stringify(content.career?.stages?.at(-1) ?? {}), terms?.prediction],
     ];
     for (const [pathLabel, value, pattern] of themedFields) {
       if (!pattern?.test(value ?? "")) {
@@ -665,6 +631,7 @@ function validateMarryLocalization(english, localized, locale, location) {
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
   const directory = path.join(quizRoot, entry.name);
+  const manifest = JSON.parse(fs.readFileSync(path.join(directory, "quiz.json"), "utf8"));
   const themeFile = path.join(directory, "theme.css");
   if (fs.existsSync(themeFile) && /\[aria-label\s*=/.test(fs.readFileSync(themeFile, "utf8"))) {
     addError(`data/quizzes/${entry.name}/theme.css: visual styling must use stable question IDs, not localized aria-label text.`);
@@ -678,14 +645,14 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     addError(`data/quizzes/${entry.name}: locale set must be English-only or exactly ${localeFiles.join(", ")}.`);
     continue;
   }
-  const english = JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8"));
+  const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
   for (const localeFile of isEnglishOnly ? [] : translatedLocaleFiles) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
-    const localized = JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8"));
+    const localized = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8")), locale);
     if (localized.landing?.intro?.includes("—")) addError(`${location}#landing.intro: landing subtitles must not use em dashes.`);
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
     compareStructure(english, localized, [], location);

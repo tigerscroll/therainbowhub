@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Only 7% Pass This Nursing Entrance Exam",
   "eyebrow": "CLINICAL ADMISSIONS LAB",
   "summary": "Anatomy, vital signs and patient-care decisions test whether your judgement stays sharp under pressure.",
+  "progressLabel": "complete",
   "landing": {
     "intro": "Body systems, vital signs and patient care. Can you spot what matters and make the safest call?",
     "cta": "Start Quiz"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "For entertainment and general learning only. This is not an accredited nursing entrance examination, clinical assessment, professional qualification or medical advice. Healthcare procedures and responsibilities vary; always follow local policy and qualified clinical guidance."
   },
+  "checkpoint": {
+    "finalAdNote": "Short ad first — then see your result."
+  },
+  "career": {
+    "resultProgressLabel": "Nursing entrance exam",
+    "resultProgressComplete": "{value}% complete",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Foundation",
+        "preAdBadge": "WARD BRIEFING COMPLETE",
+        "preAdTitle": "First exam section complete",
+        "preAdCopy": "Good start. The next section is ready.",
+        "next": {
+          "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
+          "tagline": "Systems. Measurements. Meaningful change."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Developing",
+        "preAdBadge": "BODY & OBSERVATIONS COMPLETE",
+        "preAdTitle": "Second exam section complete",
+        "preAdCopy": "The next section raises the difficulty.",
+        "next": {
+          "eyebrow": "NEXT EXAM SECTION · SKILLED",
+          "tagline": "Infection prevention. Dignity. Clarity."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Skilled",
+        "preAdBadge": "SAFETY & COMMUNICATION COMPLETE",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "The advanced section is next.",
+        "next": {
+          "eyebrow": "NEXT EXAM SECTION · ADVANCED",
+          "tagline": "Competing needs. Calm decisions."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Advanced",
+        "preAdBadge": "PRIORITIES UNDER PRESSURE COMPLETE",
+        "preAdTitle": "Final assessment next",
+        "preAdCopy": "Only the final section remains.",
+        "next": {
+          "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
+          "tagline": "Trends. Safety. Integrated care judgement."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "FINAL HANDOVER COMPLETE",
+        "preAdTitle": "NURSING ENTRANCE EXAM COMPLETE",
+        "preAdCopy": "Your result is ready to reveal.",
+        "preAdChecks": [
+          "40 answers checked",
+          "Skill breakdown prepared",
+          "Final score calculated"
+        ],
+        "preAdButton": "See My Result"
+      }
+    }
+  },
   "results": {
     "name": "YOUR NURSING SCORE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "The Admissions Standout",
         "copy": "You combined strong foundational knowledge with calm, careful judgement across the entire admissions lab. Details, trends and patient-centred decisions stayed clear even when the cases became more demanding."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "The Nursing Natural",
         "copy": "You showed an excellent feel for the knowledge and judgement behind safe, compassionate care. Most of the lab’s numerical, observational and communication traps did not pull you off course."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "The Calm Candidate",
         "copy": "You handled a broad mix of body knowledge, safety decisions and patient scenarios with steady reasoning. A few finer details kept the entrance challenge interesting."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "The Careful Problem-Solver",
         "copy": "You built a solid result by following the evidence and treating patient safety seriously. Your strongest stage shows where your clinical-learning instincts are already taking shape."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "The Promising Applicant",
         "copy": "You solved a good share of the admissions lab and showed useful instincts across several care areas. The answer review will reveal which concepts are ready for another look."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Below 50%",
         "title": "The Compassionate Explorer",
         "copy": "The lab uncovered some knowledge gaps, but it also found moments of thoughtful, patient-centred judgement. Every reviewed answer is a fresh chance to strengthen the foundations behind safe care."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Clinical foundations",
-        "categories": [
-          "anatomy_physiology",
-          "numeracy_measurement"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Clinical foundations"
       },
-      {
-        "label": "Observation and priorities",
-        "categories": [
-          "observation_vitals",
-          "reasoning_priorities"
-        ]
+      "dimension-2": {
+        "label": "Observation and priorities"
       },
-      {
-        "label": "Safety and communication",
-        "categories": [
-          "infection_safety",
-          "communication_compassion"
-        ]
+      "dimension-3": {
+        "label": "Safety and communication"
       }
-    ],
+    },
     "score": {
       "passed": "You passed the nursing challenge!",
       "finished": "Nursing challenge complete",
@@ -88,9 +133,6 @@
       "strongest": "Strongest entrance area",
       "trickiest": "Trickiest entrance area",
       "bestRound": "Best challenge",
-      "showPercentage": true,
-      "disclaimer": "For entertainment and general learning only. This is not an accredited nursing entrance examination, clinical assessment, professional qualification or medical advice. Healthcare procedures and responsibilities vary; always follow local policy and qualified clinical guidance.",
-      "showBestRound": true,
       "insights": {
         "overview": "Your nursing score at a glance",
         "correct": "Correct answers",
@@ -99,294 +141,176 @@
         "breakdown": "Your entrance skill breakdown",
         "snapshot": "What your candidate profile suggests",
         "targetReached": "80% challenge reached",
-        "targetRemaining": "More correct answers needed for 80%",
-        "details": {
-          "analysisTitle": "How to read your nursing score",
-          "analysisCopy": "This 40-question result combines body knowledge, healthcare numeracy, observation trends, infection prevention, communication and calm prioritisation. Each correct answer adds 2.5 percentage points.",
-          "roadmapTitle": "Inside your full nursing report",
-          "roadmapIntro": "Your score is only the first signal. Continue through the report to see which entrance areas held strongest and how your judgement changed across different care scenarios.",
-          "roadmapItems": [
-            "Score analysis",
-            "Strongest entrance area",
-            "Three-part breakdown",
-            "Practical next steps"
-          ],
-          "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The entertainment challenge target is 32 correct answers out of 40. Your marker shows how close this attempt came without assessing clinical competence.",
-          "measuredTitle": "What this nursing test measured",
-          "measuredIntro": "The selected questions span three broad parts of entrance-level nursing thinking without teaching diagnosis or treatment.",
-          "measuredAreas": [
-            {
-              "title": "Clinical foundations",
-              "copy": "Following basic physiology and solving simple time, rate and measurement questions."
-            },
-            {
-              "title": "Observation and priorities",
-              "copy": "Noticing meaningful change and using several visible clues to decide what matters first."
-            },
-            {
-              "title": "Safety and communication",
-              "copy": "Reducing infection risk while protecting privacy, dignity and understanding."
-            }
-          ],
-          "tipsTitle": "Three ways to sharpen clinical reasoning",
-          "tipsIntro": "These are general quiz strategies—not clinical instruction, medical advice or a professional assessment.",
-          "tips": [
-            {
-              "title": "Compare with the baseline",
-              "copy": "A new change from the earlier condition can matter more than one isolated measurement."
-            },
-            {
-              "title": "Look for immediate danger",
-              "copy": "Airway, breathing, circulation and sudden changes in consciousness take priority over routine comfort needs."
-            },
-            {
-              "title": "Choose the concrete response",
-              "copy": "In communication questions, prefer the option that listens, protects dignity or checks understanding."
-            }
-          ],
-          "finalTitle": "Your result is ready",
-          "finalCopy": "You finished with {score} correct answers out of {total}. Your profile for this attempt is shown below."
-        }
+        "targetRemaining": "More correct answers needed for 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Ward Briefing",
-      "questions": [
-        {
-          "id": "nurse-r1q1",
+      "questions": {
+        "nurse-r1q1": {
           "question": "Which gas has blood picked up as it returns from the lungs?",
-          "presentation": "icons",
-          "icons": [
-            "N₂",
-            "O₂",
-            "CO₂",
-            "H₂"
-          ],
           "answers": [
             "Nitrogen",
             "Oxygen",
             "Carbon dioxide",
             "Hydrogen"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r1q2",
-          "question": "A jug contains 750 mL. Another 250 mL is added. What is the total?",
-          "presentation": "spatial",
+        "nurse-r1q2": {
           "visual": {
             "items": [
               "750 mL + 250 mL = ?"
             ],
-            "columns": 1,
             "ariaLabel": "750 millilitres plus 250 millilitres equals what total"
           },
+          "question": "A jug contains 750 mL. Another 250 mL is added. What is the total?",
           "answers": [
             "900 mL",
             "1,100 mL",
             "1,250 mL",
             "1,000 mL"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r1q3",
-          "question": "A pulse changes from 72 to 88 beats per minute. What does the chart show?",
-          "presentation": "code",
+        "nurse-r1q3": {
           "visual": {
             "items": [
               "EARLIER: 72",
               "NOW: 88"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Pulse was 72 and is now 88 beats per minute"
           },
+          "question": "A pulse changes from 72 to 88 beats per minute. What does the chart show?",
           "answers": [
             "It increased",
             "It stayed the same",
             "It decreased",
             "It was not measured"
-          ],
-          "correct": 0,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r1q4",
+        "nurse-r1q4": {
           "question": "Your hands are visibly dirty. What is the appropriate cleaning method?",
           "answers": [
             "Put gloves over them",
             "Wipe them on a dry towel",
             "Wait until the next break",
             "Wash with soap and water"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r1q5",
+        "nurse-r1q5": {
           "question": "A person says, “I’m worried about what happens next.” What is the best first response?",
           "answers": [
             "Say there is nothing to worry about",
             "Change the subject to distract them",
             "Acknowledge the worry and ask what concerns them most",
             "Use technical terms to sound reassuring"
-          ],
-          "correct": 2,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r1q6",
-          "question": "Who needs attention first?",
+        "nurse-r1q6": {
           "context": "Person A is comfortable and asks for water. Person B has suddenly become pale and is struggling to breathe.",
+          "question": "Who needs attention first?",
           "answers": [
             "Person B, because the sudden breathing problem may be an immediate danger",
             "Person A, because they asked first",
             "Both can wait until the next routine check",
             "Choose whichever person is closest"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r2q2",
+        "nurse-r2q2": {
           "question": "What is a main function of the kidneys?",
           "answers": [
             "Pump blood",
             "Exchange gases",
             "Digest food",
             "Filter blood and form urine"
-          ],
-          "correct": 3,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r3q2",
-          "question": "How much time passes from 09:20 to 10:05?",
-          "presentation": "code",
+        "nurse-r3q2": {
           "visual": {
             "items": [
               "START::09:20",
               "END::10:05"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Start 09:20 and end 10:05"
           },
+          "question": "How much time passes from 09:20 to 10:05?",
           "answers": [
             "35 minutes",
             "85 minutes",
             "55 minutes",
             "45 minutes"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Body & Observations",
-      "questions": [
-        {
-          "id": "nurse-r2q3",
+      "questions": {
+        "nurse-r2q3": {
           "question": "Which body system carries rapid electrical signals?",
-          "presentation": "icons",
-          "icons": [
-            "⚡",
-            "/quizzes/nursing/assets/icons/stomach.svg",
-            "🦴",
-            "/quizzes/nursing/assets/icons/kidneys.svg"
-          ],
           "answers": [
             "Nervous system",
             "Digestive system",
             "Skeletal system",
             "Urinary system"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r2q4",
+        "nurse-r2q4": {
           "question": "Where are most digested nutrients absorbed into the body?",
           "answers": [
             "Large intestine",
             "Oesophagus",
             "Small intestine",
             "Gallbladder"
-          ],
-          "correct": 2,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r2q5",
-          "question": "Which change in this observation note matters most?",
+        "nurse-r2q5": {
           "context": "Earlier: breathing comfortably and speaking normally. Now: breathing faster and pausing between short phrases.",
+          "question": "Which change in this observation note matters most?",
           "answers": [
             "The note contains two time points",
             "The breathing pattern has worsened",
             "The person is still speaking",
             "The earlier note was shorter"
-          ],
-          "correct": 1,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q3",
-          "question": "Which detail describes a new change?",
+        "nurse-r5q3": {
           "context": "Earlier: walking steadily and feeling well. Now: dizzy on standing and noticeably pale.",
+          "question": "Which detail describes a new change?",
           "answers": [
             "The earlier walk",
             "That two notes were written",
             "The person stood up at some point",
             "New dizziness with pallor"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q4",
-          "question": "What mismatch should be clarified?",
-          "presentation": "code",
+        "nurse-r5q4": {
           "visual": {
             "items": [
               "HANDOVER: LEFT ARM",
               "CHART: RIGHT ARM"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Handover says left arm, chart says right arm"
           },
+          "question": "What mismatch should be clarified?",
           "answers": [
             "The use of capital letters",
             "The number of words",
             "The chart has a border",
             "The recorded side is different"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q5",
+        "nurse-r5q5": {
           "question": "Which system allows pupils to respond rapidly to light?",
           "answers": [
             "Digestive system",
             "Nervous system",
             "Urinary system",
             "Skeletal system"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r5q2",
-          "question": "Which measurement changed?",
-          "presentation": "code",
+        "nurse-r5q2": {
           "visual": {
             "items": [
               "PULSE::78::78",
@@ -394,645 +318,304 @@
               "TEMPERATURE::37::37",
               "ALERT::YES::YES"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Pulse unchanged, breathing increased, temperature unchanged and alertness unchanged"
           },
+          "question": "Which measurement changed?",
           "answers": [
             "Pulse",
             "Temperature",
             "Breathing",
             "Alertness"
-          ],
-          "correct": 2,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r3q5",
+        "nurse-r3q5": {
           "question": "You count 9 breaths in 30 seconds. What is the rate per minute?",
           "answers": [
             "18 breaths per minute",
             "9 breaths per minute",
             "27 breaths per minute",
             "30 breaths per minute"
-          ],
-          "correct": 0,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Safety & Communication",
-      "questions": [
-        {
-          "id": "nurse-r4q3",
+      "questions": {
+        "nurse-r4q3": {
           "question": "A task may splash body fluid towards the face. Which protection addresses that stated risk?",
           "answers": [
             "A fabric hat",
             "Appropriate eye or face protection",
             "Shoe covers only",
             "No protection if the task is brief"
-          ],
-          "correct": 1,
-          "category": "infection_safety",
-          "presentation": "icons",
-          "icons": [
-            "🧢",
-            "🥽",
-            "👟",
-            "🚫"
           ]
         },
-        {
-          "id": "nurse-r6q3",
+        "nurse-r6q3": {
           "question": "Someone asks a sensitive question in a busy public area. What should you do?",
           "answers": [
             "Offer to continue the conversation somewhere private",
             "Answer briefly and quietly where you are",
             "Ask nearby people to give you some space",
             "Give only the non-sensitive part of the answer"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r4q1",
+        "nurse-r4q1": {
           "question": "What should happen after protective gloves are removed?",
           "answers": [
             "Touch clean equipment first",
             "Keep the gloves for later",
             "Only clean hands if the gloves tore",
             "Perform hand hygiene"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q2",
+        "nurse-r4q2": {
           "question": "Where should a used sharp item be placed?",
           "answers": [
             "In an ordinary waste bag",
             "On a tray for later",
             "Directly into an approved puncture-resistant sharps container",
             "Back inside its original cover"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q4",
+        "nurse-r4q4": {
           "question": "Shared observation equipment has just been used. What is the safest next step?",
           "answers": [
             "Put it straight back without checking",
             "Cover it with paper and reuse it",
             "Clean it appropriately before the next person",
             "Only clean it at the end of the week"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q5",
+        "nurse-r4q5": {
           "question": "A coughing person seems embarrassed. What is the best response?",
           "answers": [
             "Tell them off in front of everyone",
             "Ignore the cough completely",
             "Discuss their symptoms loudly across the room",
             "Offer practical respiratory-hygiene support respectfully and protect their dignity"
-          ],
-          "correct": 3,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r6q2",
+        "nurse-r6q2": {
           "question": "A person says they did not understand an explanation. What is best?",
           "answers": [
             "Rephrase it plainly, then ask them to explain it back in their own words",
             "Repeat the same jargon more loudly",
             "Tell them to search online later",
             "Pretend the explanation was understood"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r6q5",
+        "nurse-r6q5": {
           "question": "A shared communication device has been handled during care. What should happen before another person uses it?",
           "answers": [
             "Put it away without checking",
             "Clean it appropriately according to the stated infection-control process",
             "Wrap it in dry paper",
             "Only clean the screen if it looks dusty"
-          ],
-          "correct": 1,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Priorities Under Pressure",
-      "questions": [
-        {
-          "id": "nurse-r7q2",
+      "questions": {
+        "nurse-r7q2": {
+          "visual": {
+            "items": [
+              "INTAKE::800 mL recorded",
+              "OUTPUT::Blank · urine reported twice"
+            ],
+            "ariaLabel": "Fluid chart records 800 millilitres of intake; output is blank although urine was reported twice"
+          },
           "question": "What is the main problem with this fluid record?",
           "answers": [
             "The intake is automatically too high",
             "The reported output proves the total was normal",
             "The entire chart should be ignored",
             "The output record is incomplete"
-          ],
-          "correct": 3,
-          "category": "reasoning_priorities",
-          "reasoningSteps": 2,
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "INTAKE::800 mL recorded",
-              "OUTPUT::Blank · urine reported twice"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Fluid chart records 800 millilitres of intake; output is blank although urine was reported twice"
-          }
+          ]
         },
-        {
-          "id": "nurse-r2q6",
-          "question": "Which person needs attention first?",
+        "nurse-r2q6": {
           "context": "Person A is comfortable with a routine question. Person B has new chest discomfort, looks clammy and says they feel faint.",
+          "question": "Which person needs attention first?",
           "answers": [
             "Person A, because routine questions are quick",
             "Both should wait for the next planned round",
             "Person B, because several new signs suggest sudden deterioration",
             "Whichever person is younger"
-          ],
-          "correct": 2,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r4q6",
-          "question": "Which task comes first?",
+        "nurse-r4q6": {
           "context": "A body-fluid spill is creating a slip and exposure hazard in a walkway. A storage shelf also needs routine restocking.",
+          "question": "Which task comes first?",
           "answers": [
             "Restock the shelf because it was planned",
             "Secure the immediate hazard and arrange appropriate cleaning",
             "Leave both jobs for the next shift",
             "Walk around the spill without warning anyone"
-          ],
-          "correct": 1,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r7q1",
-          "question": "Who needs attention first?",
+        "nurse-r7q1": {
           "context": "Person A is comfortable with a mildly faster pulse after walking. Person B is suddenly confused, breathing rapidly and looks pale.",
+          "question": "Who needs attention first?",
           "answers": [
             "Person B, because several new signs suggest sudden deterioration",
             "Person A, because their pulse changed",
             "Both can wait for routine observations",
             "The person who arrived first"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r7q5",
-          "question": "Which change needs prompt attention?",
+        "nurse-r7q5": {
           "context": "Person A’s observations are unchanged and they are chatting normally. Person B was alert earlier but is now drowsy, clammy and difficult to engage.",
+          "question": "Which change needs prompt attention?",
           "answers": [
             "Person B’s new change from alert to drowsy and clammy",
             "Person A’s unchanged observations",
             "The fact that both people were observed",
             "Neither, because exact numbers are not shown"
-          ],
-          "correct": 0,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r6q1",
+        "nurse-r6q1": {
           "question": "A person says, “I’m scared about the test.” What is the best response?",
           "answers": [
             "Everyone has tests, so try not to think about it",
             "I can see this is worrying you. What concerns you most?",
             "I promise the result will be fine",
             "Use a long technical explanation immediately"
-          ],
-          "correct": 1,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r3q1",
+        "nurse-r3q1": {
           "question": "A fluid total rises from 600 mL to 900 mL. By what percentage did it increase?",
           "answers": [
             "25%",
             "33%",
             "50%",
             "75%"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r3q3",
+        "nurse-r3q3": {
           "question": "A fluid record shows 1.2 L intake and 450 mL recorded output. What is the numerical difference?",
           "answers": [
             "650 mL",
             "750 mL",
             "850 mL",
             "1,650 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Final Handover",
-      "questions": [
-        {
-          "id": "nurse-r10q6",
-          "question": "Who has immediate priority?",
-          "reasoningSteps": 2,
-          "answers": [
-            "Person A, because discomfort always comes first",
-            "Both can wait for a routine check",
-            "Person B, because consciousness and breathing have suddenly changed",
-            "Choose based on who arrived first"
-          ],
-          "correct": 2,
-          "category": "reasoning_priorities",
-          "presentation": "code",
+      "questions": {
+        "nurse-r10q6": {
           "visual": {
             "items": [
               "PERSON A::Alert · mild stable discomfort · normal speech",
               "PERSON B::Pale · difficult to wake · irregular breathing"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Person A is alert with mild stable discomfort and normal speech. Person B is pale, difficult to wake and breathing irregularly."
-          }
-        },
-        {
-          "id": "nurse-r10q3",
-          "question": "What is the safest conclusion?",
-          "reasoningSteps": 2,
+          },
+          "question": "Who has immediate priority?",
           "answers": [
-            "The trend is reassuring because no exact diagnosis is given",
-            "There is clear deterioration requiring prompt qualified assessment",
-            "Only the colour change matters",
-            "Wait for another shift before reporting it"
-          ],
-          "correct": 1,
-          "category": "observation_vitals",
-          "presentation": "code",
+            "Person A, because discomfort always comes first",
+            "Both can wait for a routine check",
+            "Person B, because consciousness and breathing have suddenly changed",
+            "Choose based on who arrived first"
+          ]
+        },
+        "nurse-r10q3": {
           "visual": {
             "items": [
               "EARLIER::Alert · normal colour · breathing comfortably",
               "NOW::Confused · pale · breathing faster"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Earlier alert with normal colour and comfortable breathing. Now confused, pale and breathing faster."
-          }
+          },
+          "question": "What is the safest conclusion?",
+          "answers": [
+            "The trend is reassuring because no exact diagnosis is given",
+            "There is clear deterioration requiring prompt qualified assessment",
+            "Only the colour change matters",
+            "Wait for another shift before reporting it"
+          ]
         },
-        {
-          "id": "nurse-r3q4",
+        "nurse-r3q4": {
           "question": "A 1.5 L record is 40% complete. How many millilitres have been recorded?",
           "answers": [
             "400 mL",
             "500 mL",
             "600 mL",
             "750 mL"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r10q1",
-          "question": "An airway blockage prevents air reaching the lungs. What downstream effect follows most directly?",
-          "presentation": "spatial",
+        "nurse-r10q1": {
           "visual": {
             "items": [
               "AIRWAY BLOCKED → LESS AIR TO LUNGS → ? → LESS OXYGEN TO TISSUES"
             ],
             "ariaLabel": "Airway blocked, less air to lungs, unknown, less oxygen to tissues"
           },
-          "reasoningSteps": 2,
+          "question": "An airway blockage prevents air reaching the lungs. What downstream effect follows most directly?",
           "answers": [
             "Less oxygen enters the blood",
             "More nutrients enter the stomach",
             "The kidneys immediately form more urine",
             "Bones produce more movement"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r10q2",
-          "question": "A person drinks 0.75 L, then 425 mL. What total should be recorded in mL?",
-          "presentation": "spatial",
+        "nurse-r10q2": {
           "visual": {
             "items": [
               "0.75 L + 425 mL = ?"
             ],
-            "columns": 1,
             "ariaLabel": "0.75 litres plus 425 millilitres equals what total in millilitres"
           },
-          "reasoningSteps": 2,
+          "question": "A person drinks 0.75 L, then 425 mL. What total should be recorded in mL?",
           "answers": [
             "500 mL",
             "1,175 mL",
             "1,000 mL",
             "4,325 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r10q4",
-          "question": "Which response best addresses both stated risks?",
+        "nurse-r10q4": {
           "context": "A task may splash body fluid towards the eyes. Shared equipment will then be used by another person.",
-          "reasoningSteps": 2,
+          "question": "Which response best addresses both stated risks?",
           "answers": [
             "Wear ordinary clothing and skip equipment cleaning",
             "Only wear gloves and leave the equipment for the next person",
             "Avoid hand hygiene because eye protection was used",
             "Use appropriate eye or face protection, then clean shared equipment appropriately"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r10q5",
-          "question": "Which response meets both communication needs?",
+        "nurse-r10q5": {
           "context": "A person says, “I’m frightened, and I didn’t understand what was explained.”",
-          "reasoningSteps": 2,
+          "question": "Which response meets both communication needs?",
           "answers": [
             "Acknowledge the fear, explain plainly and check their understanding",
             "Tell them the information was already given",
             "Promise that nothing bad can happen",
             "Ask someone else to answer without the person present"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r2q1",
-          "question": "Which vessels carry oxygen-rich blood from the lungs toward the heart?",
-          "presentation": "sequence",
+        "nurse-r2q1": {
           "visual": {
             "items": [
               "LUNGS",
               "?",
               "HEART"
             ],
-            "columns": 3,
-            "separator": "→",
             "ariaLabel": "Lungs through unknown vessels toward the heart"
           },
+          "question": "Which vessels carry oxygen-rich blood from the lungs toward the heart?",
           "answers": [
             "Pulmonary arteries",
             "Airways",
             "Pulmonary veins",
             "Lymph vessels"
-          ],
-          "correct": 2,
-          "category": "anatomy_physiology"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "NEXT EXAM SECTION",
-    "adNote": "Short ad first — then continue.",
-    "finalAdNote": "Short ad first — then see your result.",
-    "finalBadge": "FINAL HANDOVER COMPLETE",
-    "finalIcon": "✓",
-    "finalTitle": "YOUR NURSING RESULT IS READY",
-    "finalCopy": "Your complete score and profile are ready to reveal.",
-    "finalButton": "See My Result",
-    "finalChecklist": [
-      "40 answers checked",
-      "Skill breakdown prepared",
-      "Final score calculated"
-    ],
-    "reveals": [
-      {
-        "badge": "WARD BRIEFING COMPLETE",
-        "icon": "✓",
-        "title": "First exam section complete",
-        "signal": "fixed",
-        "message": "Good start. The next section is ready."
-      },
-      {
-        "badge": "BODY & OBSERVATIONS COMPLETE",
-        "icon": "✓",
-        "title": "Second exam section complete",
-        "signal": "fixed",
-        "message": "The next section raises the difficulty."
-      },
-      {
-        "badge": "SAFETY & COMMUNICATION COMPLETE",
-        "icon": "✓",
-        "title": "More than halfway through",
-        "signal": "fixed",
-        "message": "The advanced section is next."
-      },
-      {
-        "badge": "PRIORITIES UNDER PRESSURE COMPLETE",
-        "icon": "✓",
-        "title": "Final assessment next",
-        "signal": "fixed",
-        "message": "Only the final section remains."
-      },
-      {
-        "badge": "FINAL HANDOVER COMPLETE",
-        "icon": "✓",
-        "title": "NURSING ENTRANCE EXAM COMPLETE",
-        "signal": "fixed",
-        "message": "Your result is ready to reveal."
-      }
-    ]
-  },
-  "progressLabel": "complete",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Nursing entrance exam",
-    "resultProgressComplete": "{value}% complete",
-    "currentScoreLabel": "CURRENT NURSING SCORE",
-    "levelLabel": "ROUND",
-    "scoreSuffix": "correct",
-    "journeyLabel": "NURSING ENTRANCE EXAM",
-    "kitchensCleared": "{value} / {total} exam sections complete",
-    "currentRank": "EXAM PROGRESS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Entrance Exam Started"
-      },
-      {
-        "afterStage": 5,
-        "label": "Entrance Exam Complete"
-      }
-    ],
-    "unlockEyebrow": "NURSING ENTRANCE EXAM",
-    "unlockTitle": "Your next exam section is ready",
-    "unlockCopy": "Continue when you’re ready.",
-    "finalEyebrow": "YOUR NURSING ENTRANCE EXAM RESULT",
-    "finalCareerTitle": "NURSING ENTRANCE EXAM COMPLETE",
-    "strongestLabel": "Strongest entrance area",
-    "stages": [
-      {
-        "difficulty": "Foundation",
-        "preAdBadge": "WARD BRIEFING COMPLETE",
-        "preAdTitle": "First exam section complete",
-        "preAdCopy": "Good start. The next section is ready.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "WARD BRIEFING COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          },
-          "medium": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          },
-          "low": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
-          "title": "BODY & OBSERVATIONS",
-          "difficulty": "DEVELOPING",
-          "tagline": "Systems. Measurements. Meaningful change.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Developing",
-        "preAdBadge": "BODY & OBSERVATIONS COMPLETE",
-        "preAdTitle": "Second exam section complete",
-        "preAdCopy": "The next section raises the difficulty.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "BODY & OBSERVATIONS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          },
-          "medium": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          },
-          "low": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT EXAM SECTION · SKILLED",
-          "title": "SAFETY & COMMUNICATION",
-          "difficulty": "SKILLED",
-          "tagline": "Infection prevention. Dignity. Clarity.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Skilled",
-        "preAdBadge": "SAFETY & COMMUNICATION COMPLETE",
-        "preAdTitle": "More than halfway through",
-        "preAdCopy": "The advanced section is next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "SAFETY & COMMUNICATION COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          },
-          "medium": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          },
-          "low": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT EXAM SECTION · ADVANCED",
-          "title": "PRIORITIES UNDER PRESSURE",
-          "difficulty": "ADVANCED",
-          "tagline": "Competing needs. Calm decisions.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Advanced",
-        "preAdBadge": "PRIORITIES UNDER PRESSURE COMPLETE",
-        "preAdTitle": "Final assessment next",
-        "preAdCopy": "Only the final section remains.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "PRIORITIES UNDER PRESSURE COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          },
-          "medium": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          },
-          "low": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
-          "title": "FINAL HANDOVER",
-          "difficulty": "FINAL ASSESSMENT",
-          "tagline": "Trends. Safety. Integrated care judgement.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Final Assessment",
-        "preAdBadge": "FINAL HANDOVER COMPLETE",
-        "preAdTitle": "NURSING ENTRANCE EXAM COMPLETE",
-        "preAdCopy": "Your result is ready to reveal.",
-        "preAdButton": "See My Result",
-        "resultIcon": "✓",
-        "resultLabel": "FINAL HANDOVER COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "NURSING ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          },
-          "medium": {
-            "title": "NURSING ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          },
-          "low": {
-            "title": "NURSING ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          }
-        },
-        "preAdChecks": [
-          "40 answers checked",
-          "Skill breakdown prepared",
-          "Final score calculated"
-        ]
-      }
-    ]
   }
 }

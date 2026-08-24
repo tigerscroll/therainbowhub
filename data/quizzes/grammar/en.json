@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Only 10% Can Pass This Grammar Quiz",
   "eyebrow": "THE PROOFREADING CHALLENGE",
   "summary": "Broken sentences, punctuation traps and almost-correct wording test whether any mistake can slip past you.",
+  "progressLabel": "complete",
   "landing": {
     "intro": "Think your grammar is flawless? Repair broken sentences, catch tiny punctuation traps and prove you can spot the mistake before it catches you.",
     "cta": "Start Quiz"
@@ -19,124 +21,111 @@
     "disclaimer": "For entertainment and general learning only. This quiz is not a formal English-language assessment, academic qualification or proof of language proficiency."
   },
   "checkpoint": {
-    "nextPrefix": "NEXT CHALLENGE",
-    "adNote": "Short ad first — then continue.",
-    "finalBadge": "FINAL PROOF",
-    "finalIcon": "✍️",
-    "finalTitle": "Your result is ready",
-    "finalCopy": "Your complete grammar score and three-area breakdown are ready to reveal.",
-    "finalButton": "See My Results",
-    "finalChecklist": [
-      "40 answers checked",
-      "Three grammar areas compared",
-      "Final score calculated"
-    ],
-    "reveals": [
-      {
-        "badge": "GRAMMAR CHECK-IN COMPLETE",
-        "icon": "✍️",
-        "title": "First proof complete",
-        "signal": "fixed",
-        "message": "Good start. The next edit gets tougher."
-      },
-      {
-        "badge": "SENTENCE BUILDER COMPLETE",
-        "icon": "✍️",
-        "title": "The errors are getting subtler",
-        "signal": "fixed",
-        "message": "Precision Pass is next."
-      },
-      {
-        "badge": "PRECISION PASS COMPLETE",
-        "icon": "✍️",
-        "title": "More than halfway through",
-        "signal": "fixed",
-        "message": "The Grammar Trapdoors are next."
-      },
-      {
-        "badge": "GRAMMAR TRAPDOORS COMPLETE",
-        "icon": "✍️",
-        "title": "Final proof next",
-        "signal": "fixed",
-        "message": "One final editing round remains."
-      },
-      {
-        "badge": "GRAMMAR CHALLENGE COMPLETE",
-        "icon": "✍️",
-        "title": "GRAMMAR CHALLENGE COMPLETE",
-        "signal": "fixed",
-        "message": "Your grammar score is ready to reveal."
-      }
-    ],
     "finalAdNote": "Short ad first — then see your result."
+  },
+  "career": {
+    "resultProgressLabel": "Grammar challenge",
+    "resultProgressComplete": "{value}% complete",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Foundation",
+        "preAdBadge": "GRAMMAR CHECK-IN COMPLETE",
+        "preAdTitle": "First proof complete",
+        "preAdCopy": "Good start. The next edit gets tougher.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
+          "tagline": "Structure. Clauses. Agreement."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Developing",
+        "preAdBadge": "SENTENCE BUILDER COMPLETE",
+        "preAdTitle": "The errors are getting subtler",
+        "preAdCopy": "Precision Pass is next.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · SKILLED",
+          "tagline": "Punctuation. Pronouns. Placement."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Skilled",
+        "preAdBadge": "PRECISION PASS COMPLETE",
+        "preAdTitle": "More than halfway through",
+        "preAdCopy": "The Grammar Trapdoors are next.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · ADVANCED",
+          "tagline": "Plausible errors. Fine distinctions."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Advanced",
+        "preAdBadge": "GRAMMAR TRAPDOORS COMPLETE",
+        "preAdTitle": "Final proof next",
+        "preAdCopy": "One final editing round remains.",
+        "next": {
+          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
+          "tagline": "Integrated editing. Final decisions."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Final Assessment",
+        "preAdBadge": "GRAMMAR CHALLENGE COMPLETE",
+        "preAdTitle": "GRAMMAR CHALLENGE COMPLETE",
+        "preAdCopy": "Your grammar score is ready to reveal.",
+        "preAdChecks": [
+          "40 answers checked",
+          "Three grammar areas compared",
+          "Final score calculated"
+        ],
+        "preAdButton": "See My Result"
+      }
+    }
   },
   "results": {
     "name": "YOUR GRAMMAR SCORE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "The Master Editor",
         "copy": "You handled structure, reference and tiny punctuation details with exceptional control. Even the final multi-clue edits rarely disturbed your command of the page."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "The Natural Grammarian",
         "copy": "You recognised how sentences fit together and caught most of the challenge’s nearly invisible errors. Your judgement stayed reliable as the material moved from isolated lines to real editing contexts."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "The Sentence Specialist",
         "copy": "You solved a strong majority of the proofreading problems and adapted well when the format changed. A few fine distinctions kept the final result interesting."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "The Careful Communicator",
         "copy": "You have a dependable grasp of everyday grammar and a clear eye for several important editing patterns. Your strongest skill shows where that language instinct becomes most confident."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "The Language Improver",
         "copy": "You caught a solid share of the errors and kept adjusting as the challenge became more demanding. The review will show which patterns are ready to become second nature."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Below 50%",
         "title": "The Grammar Detective",
         "copy": "The challenge found some well-hidden traps, but it also revealed the language clues you already notice naturally. Every missed answer is a useful pattern to recognise next time."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Structure and agreement",
-        "categories": [
-          "sentence_structure",
-          "sentence_building",
-          "verbs_agreement",
-          "verbs_pronouns"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Structure and agreement"
       },
-      {
-        "label": "Punctuation and reference",
-        "categories": [
-          "punctuation",
-          "punctuation_apostrophes",
-          "pronouns_reference"
-        ]
+      "dimension-2": {
+        "label": "Punctuation and reference"
       },
-      {
-        "label": "Editing for meaning",
-        "categories": [
-          "modifiers_word_choice",
-          "editing_context",
-          "precision"
-        ]
+      "dimension-3": {
+        "label": "Editing for meaning"
       }
-    ],
+    },
     "score": {
       "passed": "You passed the grammar challenge!",
       "finished": "Grammar challenge complete",
@@ -144,9 +133,6 @@
       "strongest": "Strongest grammar skill",
       "trickiest": "Trickiest grammar skill",
       "bestRound": "Best round",
-      "showPercentage": true,
-      "disclaimer": "For entertainment and general learning only. This quiz is not a formal English-language assessment, academic qualification or proof of language proficiency.",
-      "showBestRound": false,
       "insights": {
         "overview": "Your grammar score at a glance",
         "correct": "Correct answers",
@@ -155,100 +141,42 @@
         "breakdown": "Your grammar skill breakdown",
         "snapshot": "What your grammar profile suggests",
         "targetReached": "80% challenge reached",
-        "targetRemaining": "More correct answers needed for 80%",
-        "details": {
-          "analysisTitle": "How to read your grammar score",
-          "analysisCopy": "This 40-question result combines sentence structure, agreement, punctuation, reference, modifier placement and editing judgement. Each answer moves the percentage by 2.5 points, so the skill pattern below adds useful context to the headline score.",
-          "roadmapTitle": "Inside your full grammar report",
-          "roadmapIntro": "Your score is only the opening line. Continue through the report to see which language patterns held strongest and which details created the hardest traps.",
-          "roadmapItems": [
-            "Score analysis",
-            "Strongest grammar skill",
-            "Three-part breakdown",
-            "Practical next steps"
-          ],
-          "positionTitle": "Your route to the 80% line",
-          "positionCopy": "The challenge target is 32 correct answers out of 40. Your marker shows how close this attempt came to that entertainment-only pass line.",
-          "measuredTitle": "What this grammar test measured",
-          "measuredIntro": "The questions deliberately mix three broad forms of language judgement instead of repeating a single textbook rule.",
-          "measuredAreas": [
-            {
-              "title": "Structure and agreement",
-              "copy": "Connecting clauses clearly and keeping verb forms aligned with the meaning and timeline shown."
-            },
-            {
-              "title": "Punctuation and reference",
-              "copy": "Using marks and pronouns to make relationships precise without relying on optional house style."
-            },
-            {
-              "title": "Editing for meaning",
-              "copy": "Preserving the intended scope, emphasis and register while repairing realistic documents."
-            }
-          ],
-          "tipsTitle": "Three ways to sharpen your editing eye",
-          "tipsIntro": "These are simple practice ideas for a future attempt—not a formal language assessment.",
-          "tips": [
-            {
-              "title": "Read for meaning first",
-              "copy": "Decide exactly what the sentence must communicate before comparing its punctuation or word order."
-            },
-            {
-              "title": "Find the sentence core",
-              "copy": "Identify the main subject and verb, then check whether every added phrase attaches clearly."
-            },
-            {
-              "title": "Return to the near misses",
-              "copy": "Review why a plausible distractor changes emphasis, reference or agreement before trying again."
-            }
-          ],
-          "finalTitle": "Your result is ready",
-          "finalCopy": "You finished with {score} correct answers out of {total}. Your grammar profile for this attempt is shown below."
-        }
+        "targetRemaining": "More correct answers needed for 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Grammar Check-In",
-      "questions": [
-        {
-          "id": "grammar-r2q3",
+      "questions": {
+        "grammar-r2q3": {
           "question": "Although the rain stopped ___ the path remained slippery. What belongs in the gap?",
           "answers": [
             ";",
             ":",
             ".",
             ","
-          ],
-          "correct": 3,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r10q1",
+        "grammar-r10q1": {
           "question": "Which sentence has correct subject–verb agreement?",
           "answers": [
             "The list of ingredients are on the counter.",
             "The list of ingredients is on the counter.",
             "The list of ingredients have been placed on the counter.",
             "The list of ingredients were left beside the sink."
-          ],
-          "correct": 1,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r1q1",
+        "grammar-r1q1": {
           "question": "Which option is a complete sentence?",
           "answers": [
             "After the final paragraph",
             "The editor checked the final paragraph.",
             "Because the deadline changed",
             "While everyone was waiting"
-          ],
-          "correct": 1,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r1q3",
+        "grammar-r1q3": {
           "context": "The notes belong to several students.",
           "question": "Which sentence uses the apostrophe correctly?",
           "answers": [
@@ -256,12 +184,9 @@
             "The student’s notes were organised.",
             "The students notes’ were organised.",
             "The students note’s were organised."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r1q4",
+        "grammar-r1q4": {
           "context": "Nora thanked Priya after Priya corrected the caption.",
           "question": "Which revision makes the reference clearest?",
           "answers": [
@@ -269,24 +194,18 @@
             "She thanked Priya after she corrected it.",
             "Nora thanked Priya for correcting the caption.",
             "Nora thanked Priya after it was corrected by her."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r1q5",
+        "grammar-r1q5": {
           "question": "Which wording is the clearest and most concise?",
           "answers": [
             "The report is concise in a clear manner.",
             "The report is concise and clear.",
             "The report has clarity and is concise in nature.",
             "The report is being of a concise and clear kind."
-          ],
-          "correct": 1,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r1q6",
+        "grammar-r1q6": {
           "context": "FORMAL NOTICE: Visitors must report to reception before entering the studio.",
           "question": "Which version is clearest for the notice?",
           "answers": [
@@ -294,12 +213,9 @@
             "Before entering it, reception is where visitors report.",
             "Visitors report, to reception before entering the studio.",
             "Before entering the studio, visitors must report to reception."
-          ],
-          "correct": 3,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r2q5",
+        "grammar-r2q5": {
           "context": "The sentence describes two actions completed yesterday.",
           "question": "Which sentence keeps the verb forms consistent?",
           "answers": [
@@ -307,41 +223,32 @@
             "Mina had opened the file and checks the figures.",
             "Mina opened the file and checked the figures.",
             "Mina opening the file and checked the figures."
-          ],
-          "correct": 2,
-          "category": "verbs_agreement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Sentence Builder",
-      "questions": [
-        {
-          "id": "grammar-r3q1",
+      "questions": {
+        "grammar-r3q1": {
           "question": "The meeting began at 09:00. Leo finished the chart at 08:30. Which sentence is correct?",
           "answers": [
             "Leo completed the chart after the meeting began.",
             "Leo had completed the chart after the meeting began.",
             "Leo has completed the chart before the meeting began.",
             "Leo had completed the chart before the meeting began."
-          ],
-          "correct": 3,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r4q3",
+        "grammar-r4q3": {
           "question": "Which sentence uses a semicolon correctly?",
           "answers": [
             "The file was large; because it loaded slowly.",
             "The file was large; it loaded slowly.",
             "The file was large, it loaded slowly.",
             "The file was large; although it loaded slowly."
-          ],
-          "correct": 1,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r3q2",
+        "grammar-r3q2": {
           "context": "Asha started at the library on Monday and still works there now.",
           "question": "Which sentence matches the timeline?",
           "answers": [
@@ -349,12 +256,9 @@
             "Asha has worked at the library since Monday.",
             "Asha had worked at the library since Monday, but still does.",
             "Asha is work at the library since Monday."
-          ],
-          "correct": 1,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r3q5",
+        "grammar-r3q5": {
           "context": "The clause “which won the award” must describe the documentary, not the director.",
           "question": "Which sentence attaches the clause clearly?",
           "answers": [
@@ -362,36 +266,27 @@
             "The director introduced, which won the award, the documentary.",
             "Which won the award, the director introduced the documentary.",
             "The director introduced the documentary, which won the award."
-          ],
-          "correct": 3,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r3q6",
+        "grammar-r3q6": {
           "question": "Which sentence uses a reflexive pronoun correctly?",
           "answers": [
             "The technicians completed the review by theirselves.",
             "The technicians completed the review by themselves.",
             "The technicians completed the review by themself.",
             "The technicians completed themselves the review."
-          ],
-          "correct": 1,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r4q1",
+        "grammar-r4q1": {
           "question": "Which sentence introduces the list correctly?",
           "answers": [
             "Bring three items: a notebook, a pen and identification.",
             "Bring: three items a notebook, a pen and identification.",
             "Bring three: items, a notebook a pen and identification.",
             "Bring three items; a notebook, a pen and identification."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r4q5",
+        "grammar-r4q5": {
           "context": "Maya was walking into the room when she noticed the open window.",
           "question": "Which sentence places the opening modifier clearly?",
           "answers": [
@@ -399,12 +294,9 @@
             "Walking into the room, the open window caught Maya’s attention.",
             "Maya noticed, walking into the room, the open window.",
             "The room walking in, Maya noticed the window."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r4q6",
+        "grammar-r4q6": {
           "context": "NOTICE\nFor a clear formal notice, greet the host, sign the register and collect a badge.",
           "question": "Which version is punctuated correctly?",
           "answers": [
@@ -412,42 +304,33 @@
             "Greet, the host, sign the register and collect a badge.",
             "Greet the host, sign the register and collect a badge.",
             "Greet the host; sign the register, and collect a badge because."
-          ],
-          "correct": 2,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Precision Pass",
-      "questions": [
-        {
-          "id": "grammar-r5q4",
+      "questions": {
+        "grammar-r5q4": {
+          "context": "Between Lina and ___, this decision must remain confidential.",
           "question": "Which pronoun correctly completes the sentence?",
           "answers": [
             "me",
             "I",
             "my",
             "mine"
-          ],
-          "correct": 0,
-          "category": "verbs_pronouns",
-          "context": "Between Lina and ___, this decision must remain confidential."
+          ]
         },
-        {
-          "id": "grammar-r10q4",
+        "grammar-r10q4": {
           "question": "Several chefs share these lockers. Which sign is written correctly?",
           "answers": [
             "The chefs lockers",
             "The chef's lockers",
             "The chefs' lockers",
             "The chefs's lockers"
-          ],
-          "correct": 2,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r5q1",
+        "grammar-r5q1": {
           "context": "The policy has two sections. The second section contains the deadline.",
           "question": "Which revision refers to the deadline most clearly?",
           "answers": [
@@ -455,36 +338,27 @@
             "The policy has two sections, and it contains the deadline.",
             "The deadline appears in the policy’s second section.",
             "The second has it, which is in the policy."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r5q5",
+        "grammar-r5q5": {
           "question": "Which option is a complete, correctly ordered sentence?",
           "answers": [
             "Because the labels were missing.",
             "The labels, because missing, the boxes.",
             "The boxes were delayed because the labels were missing.",
             "The boxes because the labels were missing delayed."
-          ],
-          "correct": 2,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r5q6",
+        "grammar-r5q6": {
           "question": "Which sentence correctly punctuates a direct address?",
           "answers": [
             "Ravi please, check the final line.",
             "Ravi, please check the final line.",
             "Ravi please check, the final line.",
             "Ravi; please, check the final line."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r6q1",
+        "grammar-r6q1": {
           "context": "Only the blue folders were archived; the other folders remained active.",
           "question": "Which sentence preserves that restriction?",
           "answers": [
@@ -492,24 +366,18 @@
             "Only the folders were archived in blue.",
             "The folders only were archived blue.",
             "Only the blue folders were archived."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r6q5",
+        "grammar-r6q5": {
           "question": "Which sentence has correct agreement?",
           "answers": [
             "The set of instructions are easy to follow.",
             "The set of instructions were easy to follow now.",
             "The set of instructions be easy to follow.",
             "The set of instructions is easy to follow."
-          ],
-          "correct": 3,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r6q6",
+        "grammar-r6q6": {
           "context": "EMAIL GOAL: Ask the team to submit one final file by 17:00.",
           "question": "Which sentence is clearest?",
           "answers": [
@@ -517,29 +385,23 @@
             "Please, submit finally the file somewhere around 17:00 maybe.",
             "The final file should have submission by the team in a final way.",
             "By 17:00, a file final the team submits please."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Grammar Trapdoors",
-      "questions": [
-        {
-          "id": "grammar-r10q5",
+      "questions": {
+        "grammar-r10q5": {
           "question": "Which notice is grammatically correct?",
           "answers": [
             "Visitors must sign in, wearing a badge and return it before leaving.",
             "Visitors must sign in, wear a badge and return it before leaving.",
             "Visitors must sign in, wear a badge and returning it before leaving.",
             "Visitors must sign in, to wear a badge and return it before leaving."
-          ],
-          "correct": 1,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r9q5",
+        "grammar-r9q5": {
           "question": "Only the first report was revised. Which sentence makes that meaning unambiguous?",
           "answers": [
             "Only the editor revised the first report.",
@@ -547,8 +409,6 @@
             "The editor revised the first report only yesterday.",
             "The editor revised only the first report."
           ],
-          "correct": 3,
-          "category": "precision",
           "trapdoorErrors": [
             "only changes who performed the action",
             "the purpose phrase changes why the report was revised",
@@ -556,8 +416,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r7q3",
+        "grammar-r7q3": {
           "context": "PARAGRAPH\nThe room was ready. Except for the missing chairs. The guests arrived at noon.",
           "question": "Which edit removes the fragment?",
           "answers": [
@@ -565,12 +424,9 @@
             "The room was ready. Except the missing chairs were. The guests arrived.",
             "The room. Was ready except for missing chairs, guests arrived.",
             "Except for the missing chairs. The room was ready and at noon."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r7q4",
+        "grammar-r7q4": {
           "context": "The intended meaning is that the speaker answered nearly every question.",
           "question": "Which wording expresses that meaning?",
           "answers": [
@@ -578,12 +434,9 @@
             "Nearly the speaker answered every question.",
             "The speaker nearly answered every question.",
             "The speaker answered nearly every question."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r7q5",
+        "grammar-r7q5": {
           "context": "The second clause explains the first.",
           "question": "Which punctuation is correct?",
           "answers": [
@@ -591,12 +444,9 @@
             "The deadline moved: the client requested more time.",
             "The deadline: moved the client requested more time.",
             "The deadline moved, the client requested more time."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r7q6",
+        "grammar-r7q6": {
           "context": "A report contains a summary and an appendix. The appendix is updated monthly.",
           "question": "Which edit makes the monthly update refer to the appendix?",
           "answers": [
@@ -604,12 +454,9 @@
             "It contains a summary and an appendix that is updated monthly by it.",
             "The report contains a summary and an appendix; the appendix is updated monthly.",
             "The report, updated monthly, contains a summary and its appendix."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r9q1",
+        "grammar-r9q1": {
           "question": "Which sentence handles the contrast correctly?",
           "answers": [
             "The storm ended; although the streets remained flooded.",
@@ -617,8 +464,6 @@
             "Although the storm ended; the streets remained flooded.",
             "Although the storm ended, the streets remained flooded."
           ],
-          "correct": 3,
-          "category": "sentence_structure",
           "trapdoorErrors": [
             "semicolon incorrectly separates a main clause from a dependent clause",
             "conjunctive adverb lacks the required boundary punctuation",
@@ -626,8 +471,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r9q2",
+        "grammar-r9q2": {
           "context": "STATUS\nOne final title is ready. Three revised captions are also ready.",
           "question": "Which sentence has correct agreement?",
           "answers": [
@@ -636,8 +480,6 @@
             "Three revised captions, as well as the final title, are ready.",
             "Three revised captions, as well as the final title, being ready."
           ],
-          "correct": 2,
-          "category": "verbs_agreement",
           "trapdoorErrors": [
             "singular verb does not agree with the plural subject",
             "base form cannot stand alone as the finite verb",
@@ -645,15 +487,12 @@
             "non-finite form leaves the sentence incomplete"
           ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Final Proof",
-      "questions": [
-        {
-          "id": "grammar-r7q2",
-          "question": "Which numbered part contains the error?",
-          "presentation": "code",
+      "questions": {
+        "grammar-r7q2": {
           "visual": {
             "items": [
               "A · The final reports",
@@ -661,47 +500,35 @@
               "C · before the editor approve",
               "D · them"
             ],
-            "columns": 1,
-            "separator": "•",
             "ariaLabel": "The final reports were checked before the editor approve them"
           },
+          "question": "Which numbered part contains the error?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r10q6",
+        "grammar-r10q6": {
           "question": "Which sentence is completely correct?",
           "answers": [
             "After reviewing the figures, Maya confirmed that each total was accurate.",
             "After reviewing the figures, each total was confirmed by Maya.",
             "After reviewing the figures Maya confirmed that each total was accurate.",
             "After reviewing the figures, Maya confirmed that each of the totals were accurate."
-          ],
-          "correct": 0,
-          "category": "precision",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "grammar-r8q1",
+        "grammar-r8q1": {
           "question": "Choose the correct coordination.",
           "answers": [
             "The doors opened, but nobody entered.",
             "The doors opened, nobody entered.",
             "Although the doors opened, but nobody entered.",
             "The doors opened but. Nobody entered."
-          ],
-          "correct": 0,
-          "category": "sentence_structure",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q3",
+        "grammar-r8q3": {
           "context": "The handle belongs to one door.",
           "question": "Choose the correct apostrophe.",
           "answers": [
@@ -709,26 +536,18 @@
             "the doors’ handle",
             "the door’s handle",
             "the door’ handle"
-          ],
-          "correct": 2,
-          "category": "punctuation_apostrophes",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q4",
+        "grammar-r8q4": {
           "question": "Choose the reflexive pronoun.",
           "answers": [
             "The designers prepared the display by theirselves.",
             "The designers prepared the display by themselves.",
             "The designers prepared the display by themself.",
             "The designers prepared the display by theirs."
-          ],
-          "correct": 1,
-          "category": "pronouns_reference",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q5",
+        "grammar-r8q5": {
           "context": "The number almost doubled but did not quite reach twice its original size.",
           "question": "Which wording matches?",
           "answers": [
@@ -736,26 +555,18 @@
             "The update doubled nearly the number.",
             "Nearly the update doubled the number.",
             "The update doubled the nearly number."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q6",
+        "grammar-r8q6": {
           "question": "Which formal edit works?",
           "answers": [
             "Send it soon-ish.",
             "The file, send whenever.",
             "Sending of file is wanted.",
             "Please send the file by noon."
-          ],
-          "correct": 3,
-          "category": "editing_context",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r10q2",
+        "grammar-r10q2": {
           "context": "TIMELINE\n10:00 — the team completed the checks.\n10:30 — the doors opened.\nThe account is written from 11:00.",
           "question": "Which sentence reports the order correctly?",
           "answers": [
@@ -763,193 +574,9 @@
             "The team completes the checks after the doors opened.",
             "The team has complete the checks before the doors open yesterday.",
             "The team were completed the checks after opening."
-          ],
-          "correct": 0,
-          "category": "verbs_agreement",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "progressLabel": "complete",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Grammar challenge",
-    "resultProgressComplete": "{value}% complete",
-    "currentScoreLabel": "CURRENT GRAMMAR SCORE",
-    "levelLabel": "ROUND",
-    "scoreSuffix": "correct",
-    "journeyLabel": "GRAMMAR CHALLENGE",
-    "kitchensCleared": "{value} / {total} challenges cleared",
-    "currentRank": "CURRENT LEVEL",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Challenger"
-      },
-      {
-        "afterStage": 5,
-        "label": "Challenge Complete"
-      }
-    ],
-    "unlockEyebrow": "RESULT UPDATE",
-    "unlockTitle": "A new challenge is ready",
-    "unlockCopy": "Your next challenge is waiting.",
-    "finalEyebrow": "YOUR RESULT",
-    "finalCareerTitle": "GRAMMAR CHALLENGE COMPLETE",
-    "strongestLabel": "Strongest grammar area",
-    "stages": [
-      {
-        "difficulty": "Foundation",
-        "preAdBadge": "GRAMMAR CHECK-IN COMPLETE",
-        "preAdTitle": "First proof complete",
-        "preAdCopy": "Good start. The next edit gets tougher.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "GRAMMAR CHECK-IN COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "First proof complete",
-            "insight": "Good start. The next edit gets tougher."
-          },
-          "medium": {
-            "title": "First proof complete",
-            "insight": "Good start. The next edit gets tougher."
-          },
-          "low": {
-            "title": "First proof complete",
-            "insight": "Good start. The next edit gets tougher."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
-          "title": "Sentence Builder",
-          "difficulty": "Developing",
-          "tagline": "Structure. Clauses. Agreement.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Developing",
-        "preAdBadge": "SENTENCE BUILDER COMPLETE",
-        "preAdTitle": "The errors are getting subtler",
-        "preAdCopy": "Precision Pass is next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "SENTENCE BUILDER COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "The errors are getting subtler",
-            "insight": "Precision Pass is next."
-          },
-          "medium": {
-            "title": "The errors are getting subtler",
-            "insight": "Precision Pass is next."
-          },
-          "low": {
-            "title": "The errors are getting subtler",
-            "insight": "Precision Pass is next."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · SKILLED",
-          "title": "Precision Pass",
-          "difficulty": "Skilled",
-          "tagline": "Punctuation. Pronouns. Placement.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Skilled",
-        "preAdBadge": "PRECISION PASS COMPLETE",
-        "preAdTitle": "More than halfway through",
-        "preAdCopy": "The Grammar Trapdoors are next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "PRECISION PASS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "More than halfway through",
-            "insight": "The Grammar Trapdoors are next."
-          },
-          "medium": {
-            "title": "More than halfway through",
-            "insight": "The Grammar Trapdoors are next."
-          },
-          "low": {
-            "title": "More than halfway through",
-            "insight": "The Grammar Trapdoors are next."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · ADVANCED",
-          "title": "Grammar Trapdoors",
-          "difficulty": "Advanced",
-          "tagline": "Plausible errors. Fine distinctions.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Advanced",
-        "preAdBadge": "GRAMMAR TRAPDOORS COMPLETE",
-        "preAdTitle": "Final proof next",
-        "preAdCopy": "One final editing round remains.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "GRAMMAR TRAPDOORS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Final proof next",
-            "insight": "One final editing round remains."
-          },
-          "medium": {
-            "title": "Final proof next",
-            "insight": "One final editing round remains."
-          },
-          "low": {
-            "title": "Final proof next",
-            "insight": "One final editing round remains."
-          }
-        },
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
-          "title": "Final Proof",
-          "difficulty": "Final Assessment",
-          "tagline": "Integrated editing. Final decisions.",
-          "button": "Continue"
-        }
-      },
-      {
-        "difficulty": "Final Assessment",
-        "preAdBadge": "GRAMMAR CHALLENGE COMPLETE",
-        "preAdTitle": "GRAMMAR CHALLENGE COMPLETE",
-        "preAdChecks": [
-          "40 answers checked",
-          "Three grammar areas compared",
-          "Final score calculated"
-        ],
-        "preAdButton": "See My Result",
-        "resultIcon": "✓",
-        "resultLabel": "FINAL PROOF COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "GRAMMAR CHALLENGE COMPLETE",
-            "insight": "Your grammar score is ready to reveal."
-          },
-          "medium": {
-            "title": "GRAMMAR CHALLENGE COMPLETE",
-            "insight": "Your grammar score is ready to reveal."
-          },
-          "low": {
-            "title": "GRAMMAR CHALLENGE COMPLETE",
-            "insight": "Your grammar score is ready to reveal."
-          }
-        },
-        "preAdCopy": "Your grammar score is ready to reveal."
-      }
-    ]
   }
 }

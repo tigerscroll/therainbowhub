@@ -5,7 +5,7 @@ import en from "@/data/i18n/en.json";
 import { localizeInternalPath } from "@/lib/localePath";
 
 export type Translations = typeof en;
-export const localeOptions = [
+const localeOptions = [
   { code: "en", name: "English", flag: "🇬🇧" },
   { code: "fr", name: "Français", flag: "🇫🇷" },
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
@@ -16,7 +16,6 @@ export const localeOptions = [
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];
-export type LocaleOption = (typeof localeOptions)[number];
 
 const defaultLocale: SupportedLocale = "en";
 const supportedLocales: SupportedLocale[] = localeOptions.map((locale) => locale.code);

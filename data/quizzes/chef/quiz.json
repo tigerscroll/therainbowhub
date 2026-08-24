@@ -1,19 +1,8 @@
 {
+  "schemaVersion": 2,
   "slug": "chef",
   "engine": {
-    "flow": "staged",
-    "advance": "automatic",
-    "feedback": "selection-only",
     "scoring": "correct-answer",
-    "checkpoint": "ai",
-    "startOnLoad": false,
-    "rewarded": {
-      "start": true,
-      "stages": true,
-      "attempts": 3,
-      "confirmStart": false
-    },
-    "advanceDelayMs": 450,
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
@@ -23,7 +12,6 @@
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
-    "duration": "4 min",
     "difficulty": "Hard",
     "icon": "🧑‍🍳",
     "socialProofCount": 123000
@@ -69,6 +57,452 @@
     },
     "artwork": {
       "icon": "🧑‍🍳"
+    }
+  },
+  "template": "five-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "chef-r1q1",
+          "chef-r1q2",
+          "chef-r1q3",
+          "chef-r1q4",
+          "chef-r1q5",
+          "chef-r1q6",
+          "chef-r2q1",
+          "chef-r3q3"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "chef-r2q2",
+          "chef-r2q5",
+          "chef-r3q2",
+          "chef-r5q3",
+          "chef-r5q6",
+          "chef-r2q6",
+          "chef-r5q4",
+          "chef-r3q4"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "chef-r2q3",
+          "chef-r4q2",
+          "chef-r3q1",
+          "chef-r5q2",
+          "chef-r6q1",
+          "chef-r6q6",
+          "chef-r4q1",
+          "chef-r3q5"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "chef-r8q1",
+          "chef-r8q2",
+          "chef-r8q3",
+          "chef-r8q4",
+          "chef-r8q5",
+          "chef-r8q6",
+          "chef-r6q2",
+          "chef-r6q5"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "chef-r10q1",
+          "chef-r10q2",
+          "chef-r10q3",
+          "chef-r10q4",
+          "chef-r10q5",
+          "chef-r10q6",
+          "chef-r7q4",
+          "chef-r9q3"
+        ]
+      }
+    ],
+    "questions": {
+      "chef-r1q1": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r1q2": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "ingredients_flavour",
+        "interactionStyle": "cause-and-effect",
+        "choiceCount": 4
+      },
+      "chef-r1q3": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "heat_methods",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r1q4": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "baking_pastry",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r1q5": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "kitchen_maths",
+        "interactionStyle": "calculation",
+        "choiceCount": 4
+      },
+      "chef-r1q6": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "safety_service",
+        "interactionStyle": "prioritisation",
+        "choiceCount": 4
+      },
+      "chef-r2q1": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "sequence",
+        "choiceCount": 4
+      },
+      "chef-r3q3": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "heat_methods",
+        "interactionStyle": "sequence",
+        "choiceCount": 4
+      },
+      "chef-r2q2": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r2q5": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "ingredients_flavour",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r3q2": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "heat_methods",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r5q3": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "baking_pastry",
+        "interactionStyle": "sequence",
+        "choiceCount": 4
+      },
+      "chef-r5q6": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "kitchen_maths",
+        "interactionStyle": "synthesis",
+        "choiceCount": 4
+      },
+      "chef-r2q6": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "safety_service",
+        "interactionStyle": "prioritisation",
+        "choiceCount": 4
+      },
+      "chef-r5q4": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "baking_pastry",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r3q4": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "heat_methods",
+        "interactionStyle": "applied-scenario",
+        "choiceCount": 4
+      },
+      "chef-r2q3": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "cause-and-effect",
+        "choiceCount": 4
+      },
+      "chef-r4q2": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "ingredients_flavour",
+        "interactionStyle": "flavour-correction",
+        "choiceCount": 4
+      },
+      "chef-r3q1": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "heat_methods",
+        "interactionStyle": "heat-diagnosis",
+        "choiceCount": 4
+      },
+      "chef-r5q2": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "baking_pastry",
+        "interactionStyle": "ingredient-function",
+        "choiceCount": 4
+      },
+      "chef-r6q1": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "kitchen_maths",
+        "interactionStyle": "recipe-scaling",
+        "choiceCount": 4
+      },
+      "chef-r6q6": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "safety_service",
+        "interactionStyle": "safety-judgement",
+        "choiceCount": 4
+      },
+      "chef-r4q1": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "ingredients_flavour",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r3q5": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "trap",
+        "choiceCount": 4
+      },
+      "chef-r8q1": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 2,
+        "category": "kitchen_fundamentals",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r8q2": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 3,
+        "category": "ingredients_flavour",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r8q3": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 1,
+        "category": "heat_methods",
+        "interactionStyle": "visual-identification",
+        "choiceCount": 4
+      },
+      "chef-r8q4": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 0,
+        "category": "baking_pastry",
+        "interactionStyle": "core-concept",
+        "choiceCount": 4
+      },
+      "chef-r8q5": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 2,
+        "category": "kitchen_maths",
+        "interactionStyle": "calculation",
+        "choiceCount": 4
+      },
+      "chef-r8q6": {
+        "presentation": "text",
+        "delay": 350,
+        "correct": 3,
+        "category": "safety_service",
+        "interactionStyle": "prioritisation",
+        "choiceCount": 4
+      },
+      "chef-r6q2": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "kitchen_maths",
+        "interactionStyle": "portion-calculation",
+        "choiceCount": 4
+      },
+      "chef-r6q5": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "baking_pastry",
+        "interactionStyle": "ratio-calculation",
+        "choiceCount": 4
+      },
+      "chef-r10q1": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "kitchen_fundamentals",
+        "reasoningSteps": 2,
+        "interactionStyle": "synthesis",
+        "choiceCount": 4
+      },
+      "chef-r10q2": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "ingredients_flavour",
+        "reasoningSteps": 2,
+        "interactionStyle": "synthesis",
+        "choiceCount": 4
+      },
+      "chef-r10q3": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "heat_methods",
+        "reasoningSteps": 2,
+        "interactionStyle": "applied-scenario",
+        "choiceCount": 4
+      },
+      "chef-r10q4": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "baking_pastry",
+        "reasoningSteps": 2,
+        "interactionStyle": "ratio-analysis",
+        "choiceCount": 4
+      },
+      "chef-r10q5": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "kitchen_maths",
+        "reasoningSteps": 2,
+        "interactionStyle": "calculation",
+        "choiceCount": 4
+      },
+      "chef-r10q6": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "safety_service",
+        "reasoningSteps": 2,
+        "interactionStyle": "prioritisation",
+        "choiceCount": 4
+      },
+      "chef-r7q4": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "kitchen_maths",
+        "interactionStyle": "service-calculation",
+        "choiceCount": 4
+      },
+      "chef-r9q3": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "heat_methods",
+        "interactionStyle": "sequence",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✓"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.7
+        },
+        {
+          "key": "profile-4",
+          "min": 0.6
+        },
+        {
+          "key": "profile-5",
+          "min": 0.5
+        },
+        {
+          "key": "profile-6",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "kitchen_fundamentals"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "ingredients_flavour"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "heat_methods"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "categories": [
+            "baking_pastry"
+          ]
+        },
+        {
+          "key": "dimension-5",
+          "categories": [
+            "kitchen_maths"
+          ]
+        },
+        {
+          "key": "dimension-6",
+          "categories": [
+            "safety_service"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": true
+      }
     }
   }
 }

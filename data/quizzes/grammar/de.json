@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Nur 10 % bestehen dieses Grammatikquiz",
   "eyebrow": "DIE KORREKTURAUFGABE",
   "summary": "Fehlerhafte Sätze, Zeichensetzungsfallen und fast richtige Formulierungen testen deinen Blick fürs Detail.",
+  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Ist deine Grammatik wirklich fehlerfrei? Repariere Sätze, erkenne winzige Zeichensetzungsfallen und finde den Fehler, bevor er dir entgeht.",
     "cta": "Quiz starten"
@@ -19,124 +21,111 @@
     "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser Grammatiktest ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung."
   },
   "checkpoint": {
-    "nextPrefix": "NÄCHSTE HERAUSFORDERUNG",
-    "adNote": "Kurze Werbung, dann geht es weiter.",
-    "finalBadge": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-    "finalIcon": "✍️",
-    "finalTitle": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-    "finalCopy": "Dein Grammatikergebnis kann jetzt angezeigt werden.",
-    "finalButton": "Mein Ergebnis ansehen",
-    "finalChecklist": [
-      "40 Antworten geprüft",
-      "Drei Grammatikbereiche im Vergleich",
-      "Endergebnis berechnet"
-    ],
-    "reveals": [
-      {
-        "badge": "GRAMMATIK-CHECK ABGESCHLOSSEN",
-        "icon": "✍️",
-        "title": "Erste Korrektur abgeschlossen",
-        "signal": "fixed",
-        "message": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer."
-      },
-      {
-        "badge": "SATZBAU ABGESCHLOSSEN",
-        "icon": "✍️",
-        "title": "Satzbau gemeistert",
-        "signal": "fixed",
-        "message": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu."
-      },
-      {
-        "badge": "PRÄZISIONSRUNDE ABGESCHLOSSEN",
-        "icon": "✍️",
-        "title": "Mehr als die Hälfte geschafft",
-        "signal": "fixed",
-        "message": "Die feinsten Sprachfallen warten als Nächstes."
-      },
-      {
-        "badge": "GRAMMATIKFALLEN ABGESCHLOSSEN",
-        "icon": "✍️",
-        "title": "Als Nächstes: die Endkorrektur",
-        "signal": "fixed",
-        "message": "Nur die Endkorrektur steht noch aus."
-      },
-      {
-        "badge": "GRAMMATIK-HERAUSFORDERUNG ABGESCHLOSSEN",
-        "icon": "✍️",
-        "title": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-        "signal": "fixed",
-        "message": "Dein Grammatikergebnis kann jetzt angezeigt werden."
-      }
-    ],
     "finalAdNote": "Kurze Werbung, dann siehst du dein Ergebnis."
+  },
+  "career": {
+    "resultProgressLabel": "Grammatik-Herausforderung",
+    "resultProgressComplete": "{value} % abgeschlossen",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Grundlagen",
+        "preAdBadge": "GRAMMATIK-CHECK ABGESCHLOSSEN",
+        "preAdTitle": "Erste Korrektur abgeschlossen",
+        "preAdCopy": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
+          "tagline": "Satzteile. Kongruenz. Klarheit."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Aufbau",
+        "preAdBadge": "SATZBAU ABGESCHLOSSEN",
+        "preAdTitle": "Satzbau gemeistert",
+        "preAdCopy": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
+          "tagline": "Verben. Zeichensetzung. Präzision."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Fortgeschritten",
+        "preAdBadge": "PRÄZISIONSRUNDE ABGESCHLOSSEN",
+        "preAdTitle": "Mehr als die Hälfte geschafft",
+        "preAdCopy": "Die feinsten Sprachfallen warten als Nächstes.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
+          "tagline": "Plausible Fehler. Winzige Hinweise."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Anspruchsvoll",
+        "preAdBadge": "GRAMMATIKFALLEN ABGESCHLOSSEN",
+        "preAdTitle": "Als Nächstes: die Endkorrektur",
+        "preAdCopy": "Nur die Endkorrektur steht noch aus.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
+          "tagline": "Gesamtkorrektur. Letztes Urteil."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Abschlussprüfung",
+        "preAdBadge": "GRAMMATIK-HERAUSFORDERUNG ABGESCHLOSSEN",
+        "preAdTitle": "GRAMMATIKQUIZ ABGESCHLOSSEN",
+        "preAdCopy": "Dein Grammatikergebnis kann jetzt angezeigt werden.",
+        "preAdChecks": [
+          "40 Antworten geprüft",
+          "Drei Grammatikbereiche im Vergleich",
+          "Endergebnis berechnet"
+        ],
+        "preAdButton": "Mein Ergebnis ansehen"
+      }
+    }
   },
   "results": {
     "name": "DEIN GRAMMATIKERGEBNIS",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100 %",
         "title": "Meisterredakteur",
         "copy": "Deine Schwerpunkte: Satzbau, Kongruenz, Zeichensetzung und Klarheit. Dabei hast du bemerkenswerte Präzision gezeigt, und selbst die anspruchsvollsten Aufgaben konnten dich kaum aus dem Konzept bringen."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89 %",
         "title": "Grammatik-Naturtalent",
         "copy": "Dieses Ergebnis ist sehr stark: Satzbau, Kongruenz, Zeichensetzung und Klarheit. Auch bei subtilen Fallen blieb dein Denken zuverlässig."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79 %",
         "title": "Satzspezialist",
         "copy": "Insgesamt ist dein Ergebnis solide. Die Aufgaben verbanden Satzbau, Kongruenz, Zeichensetzung und Klarheit; nur einige schwierige Details kosteten Punkte."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69 %",
         "title": "Sorgfältiger Sprachprofi",
         "copy": "Du hast eine gute Grundlage. Im Mittelpunkt standen Satzbau, Kongruenz, Zeichensetzung und Klarheit; mit etwas Feinschliff kann das nächste Ergebnis deutlich steigen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59 %",
         "title": "Sprachtalent im Aufbau",
         "copy": "Du hast mehrere wichtige Zusammenhänge erkannt. Getestet wurden Satzbau, Kongruenz, Zeichensetzung und Klarheit, und die falsch beantworteten Fragen zeigen klar, was sich noch festigen lässt."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Unter 50 %",
         "title": "Grammatikdetektiv",
         "copy": "Diese Herausforderung hat Entwicklungsmöglichkeiten gezeigt. Gefragt waren Satzbau, Kongruenz, Zeichensetzung und Klarheit; Deine Neugier und die gelösten Aufgaben sind ein guter Ausgangspunkt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Satzbau und Kongruenz",
-        "categories": [
-          "sentence_structure",
-          "sentence_building",
-          "verbs_agreement",
-          "verbs_pronouns"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Satzbau und Kongruenz"
       },
-      {
-        "label": "Zeichensetzung und Bezüge",
-        "categories": [
-          "punctuation",
-          "punctuation_apostrophes",
-          "pronouns_reference"
-        ]
+      "dimension-2": {
+        "label": "Zeichensetzung und Bezüge"
       },
-      {
-        "label": "Überarbeitung und Bedeutung",
-        "categories": [
-          "modifiers_word_choice",
-          "editing_context",
-          "precision"
-        ]
+      "dimension-3": {
+        "label": "Überarbeitung und Bedeutung"
       }
-    ],
+    },
     "score": {
       "passed": "Bestanden: Grammatiktest!",
       "finished": "Grammatiktest abgeschlossen",
@@ -144,9 +133,6 @@
       "strongest": "Stärkster Bereich in Grammatik",
       "trickiest": "Schwierigster Bereich in Grammatik",
       "bestRound": "Bestes Rundenergebnis · Grammatiktest",
-      "showPercentage": true,
-      "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser Grammatiktest ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung.",
-      "showBestRound": false,
       "insights": {
         "overview": "Grammatikergebnis im Überblick",
         "correct": "richtig",
@@ -155,100 +141,42 @@
         "breakdown": "Deine Auswertung in Grammatik",
         "snapshot": "Was dein Profil im Grammatiktest erkennen lässt",
         "targetReached": "80-%-Ziel erreicht",
-        "targetRemaining": "Noch nötige richtige Antworten für 80 %",
-        "details": {
-          "analysisTitle": "So liest du dein Grammatikergebnis",
-          "analysisCopy": "Dieses Ergebnis fasst 40 Fragen zu Satzbau, Kongruenz, Verben, Zeichensetzung, Bezügen und Überarbeitung zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.",
-          "roadmapTitle": "Dein vollständiger Bericht zum Grammatiktest",
-          "roadmapIntro": "Das Ergebnis ist nur der erste Hinweis. Der Bericht zeigt deinen stärksten Grammatikbereich, die Auswertung nach Bereichen und die nicht gelösten Aufgaben im Grammatiktest.",
-          "roadmapItems": [
-            "Ergebnisanalyse",
-            "Stärkster Bereich in Grammatik",
-            "Deine Auswertung in Grammatik",
-            "Praktische nächste Schritte"
-          ],
-          "positionTitle": "Dein Weg zur 80-%-Marke",
-          "positionCopy": "Das spielerische Ziel sind 32 richtige Antworten von 40. Die Markierung zeigt, wie nah dieser Versuch im Grammatiktest kam, ohne Vergleich mit anderen oder berufliche Bewertung.",
-          "measuredTitle": "Was der Grammatiktest untersucht hat",
-          "measuredIntro": "Die Aufgaben decken drei ergänzende Bereiche des Grammatiktests ab.",
-          "measuredAreas": [
-            {
-              "title": "Satzbau und Kongruenz",
-              "copy": "Satzteile klar verbinden und Verbformen an Bedeutung und Zeitverlauf anpassen."
-            },
-            {
-              "title": "Zeichensetzung und Bezüge",
-              "copy": "Satzzeichen und Pronomen präzise einsetzen, ohne von optionalen Stilregeln abhängig zu sein."
-            },
-            {
-              "title": "Überarbeitung und Bedeutung",
-              "copy": "Bedeutungsumfang, Betonung und Register beim Überarbeiten realistischer Texte bewahren."
-            }
-          ],
-          "tipsTitle": "Drei Wege, deine Herangehensweise in Grammatik zu schärfen",
-          "tipsIntro": "Einfache Strategien für einen weiteren Versuch im Grammatiktest, nicht als fachliche Beurteilung.",
-          "tips": [
-            {
-              "title": "Zuerst die Bedeutung lesen",
-              "copy": "Kläre die gewünschte Aussage, bevor du Zeichensetzung oder Wortstellung vergleichst."
-            },
-            {
-              "title": "Den Satzkern finden",
-              "copy": "Bestimme Hauptsubjekt und Prädikat und prüfe dann, worauf sich jeder Zusatz bezieht."
-            },
-            {
-              "title": "Beinahe richtige Antworten prüfen",
-              "copy": "Sieh nach, wie ein plausibler Distraktor Betonung, Bezug oder Kongruenz verändert."
-            }
-          ],
-          "finalTitle": "Dein Ergebnis im Grammatiktest",
-          "finalCopy": "Du hast {score} von {total} Aufgaben richtig beantwortet. Dein Grammatikprofil für diesen Versuch siehst du unten."
-        }
+        "targetRemaining": "Noch nötige richtige Antworten für 80 %"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Grammatik-Check",
-      "questions": [
-        {
-          "id": "grammar-r2q3",
+      "questions": {
+        "grammar-r2q3": {
           "question": "Obwohl der Regen aufgehört hatte ___ blieb der Weg rutschig. Welches Zeichen fehlt?",
           "answers": [
             ";",
             ":",
             ".",
             ","
-          ],
-          "correct": 3,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r10q1",
+        "grammar-r10q1": {
           "question": "Welcher Satz stimmt in Subjekt und Verb überein?",
           "answers": [
             "Die Liste der Zutaten liegen auf dem Tisch.",
             "Die Liste der Zutaten liegt auf dem Tisch.",
             "Die Liste der Zutaten haben auf dem Tisch gelegen.",
             "Die Liste der Zutaten wurden auf den Tisch gelegt."
-          ],
-          "correct": 1,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r1q1",
+        "grammar-r1q1": {
           "question": "Welche Option ist ein vollständiger Satz?",
           "answers": [
             "Nach dem letzten Absatz",
             "Die Redakteurin prüfte den letzten Absatz.",
             "Weil sich die Frist änderte",
             "Während alle warteten"
-          ],
-          "correct": 1,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r1q3",
+        "grammar-r1q3": {
           "context": "Die Notizen gehören Maria.",
           "question": "Welche Schreibweise ist korrekt?",
           "answers": [
@@ -256,12 +184,9 @@
             "Maria's Notizen waren geordnet.",
             "Marias Notizen waren geordnet'.",
             "Maria s Notizen waren geordnet."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r1q4",
+        "grammar-r1q4": {
           "context": "Nora dankte Priya, nachdem Priya die Bildunterschrift korrigiert hatte.",
           "question": "Welche Fassung macht den Bezug eindeutig?",
           "answers": [
@@ -269,24 +194,18 @@
             "Sie dankte Priya, nachdem sie es verbessert hatte.",
             "Nora dankte Priya für die Korrektur der Bildunterschrift.",
             "Nach ihrer Korrektur dankte sie ihr dafür."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r1q5",
+        "grammar-r1q5": {
           "question": "Welche Formulierung ist am klarsten und kürzesten?",
           "answers": [
             "Der Bericht ist auf eine klare Art prägnant.",
             "Der Bericht ist klar und prägnant.",
             "Der Bericht besitzt Klarheit und ist von prägnanter Natur.",
             "Der Bericht ist von einer klaren und prägnanten Art beschaffen."
-          ],
-          "correct": 1,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r1q6",
+        "grammar-r1q6": {
           "context": "FORMELLER HINWEIS\nBesucher müssen sich vor dem Betreten des Studios am Empfang melden.",
           "question": "Welche Fassung eignet sich für einen formellen Hinweis?",
           "answers": [
@@ -294,12 +213,9 @@
             "Besucher könnten sich vor dem Eintritt am Empfang melden.",
             "Wir fänden es gut, wenn alle zuerst zum Empfang kämen.",
             "Vor dem Betreten des Studios müssen sich Besucher am Empfang melden."
-          ],
-          "correct": 3,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r2q5",
+        "grammar-r2q5": {
           "context": "Der Satz beschreibt zwei Handlungen, die gestern abgeschlossen wurden.",
           "question": "Welcher Satz verwendet die Verbformen einheitlich?",
           "answers": [
@@ -307,41 +223,32 @@
             "Mina hatte die Datei geöffnet und prüft die Zahlen.",
             "Mina öffnete die Datei und prüfte die Zahlen.",
             "Mina die Datei öffnend und prüfte die Zahlen."
-          ],
-          "correct": 2,
-          "category": "verbs_agreement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Satzbau",
-      "questions": [
-        {
-          "id": "grammar-r3q1",
+      "questions": {
+        "grammar-r3q1": {
           "question": "Die Besprechung begann um 9 Uhr. Leo hatte die Grafik um 8:30 Uhr fertig. Welcher Satz ist korrekt?",
           "answers": [
             "Leo stellte die Grafik fertig, nachdem die Besprechung begonnen hatte.",
             "Leo hatte die Grafik nach Beginn der Besprechung fertiggestellt.",
             "Leo hat die Grafik fertiggestellt, bevor die Besprechung gestern beginnt.",
             "Leo hatte die Grafik fertiggestellt, bevor die Besprechung begann."
-          ],
-          "correct": 3,
-          "category": "verbs_pronouns"
+          ]
         },
-        {
-          "id": "grammar-r4q3",
+        "grammar-r4q3": {
           "question": "Welcher Satz verwendet das Semikolon korrekt?",
           "answers": [
             "Die Datei war groß; weil sie langsam lud.",
             "Die Datei war groß; sie lud langsam.",
             "Die Datei war groß, sie lud langsam.",
             "Die Datei war groß; obwohl sie langsam lud."
-          ],
-          "correct": 1,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r3q2",
+        "grammar-r3q2": {
           "context": "Asha begann am Montag in der Bibliothek zu arbeiten und arbeitet noch immer dort.",
           "question": "Welcher Satz beschreibt eine seit Montag andauernde Tätigkeit?",
           "answers": [
@@ -349,12 +256,9 @@
             "Asha arbeitet seit Montag in der Bibliothek.",
             "Asha hatte seit Montag in der Bibliothek gearbeitet, arbeitet dort aber nicht mehr.",
             "Asha arbeiten seit Montag in der Bibliothek."
-          ],
-          "correct": 1,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r3q5",
+        "grammar-r3q5": {
           "context": "Das überraschende Ende gehört zu dem Roman, nicht zu der Autorin.",
           "question": "Welcher Satz verwendet das passende Relativpronomen?",
           "answers": [
@@ -362,36 +266,27 @@
             "Die Autorin lobt den Roman, dem Ende sie überraschend findet.",
             "Die Autorin lobt den Roman, dessen Ende findet sie überraschend.",
             "Die Autorin lobt den Roman, dessen Ende sie überraschend findet."
-          ],
-          "correct": 3,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r3q6",
+        "grammar-r3q6": {
           "question": "Welcher Satz verwendet die Verstärkungsform korrekt?",
           "answers": [
             "Die Techniker führte die Prüfung selbst durch.",
             "Die Techniker führten die Prüfung selbst durch.",
             "Der Techniker führten die Prüfung selbst durch.",
             "Die Techniker selbst führt die Prüfung durch."
-          ],
-          "correct": 1,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r4q1",
+        "grammar-r4q1": {
           "question": "Welcher Satz leitet die Aufzählung korrekt ein?",
           "answers": [
             "Bringen Sie drei Dinge mit: ein Notizbuch, einen Stift und einen Ausweis.",
             "Bringen Sie mit: drei Dinge ein Notizbuch, einen Stift und einen Ausweis.",
             "Bringen Sie drei: Dinge, ein Notizbuch einen Stift und einen Ausweis.",
             "Bringen Sie drei Dinge mit; ein Notizbuch, einen Stift und einen Ausweis."
-          ],
-          "correct": 0,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r4q5",
+        "grammar-r4q5": {
           "context": "Maya betrat den Raum und bemerkte dabei das offene Fenster.",
           "question": "Welcher Satz bezieht die einleitende Wortgruppe eindeutig auf Maya?",
           "answers": [
@@ -399,12 +294,9 @@
             "Beim Betreten des Raums wurde das offene Fenster bemerkt.",
             "Beim Betreten des Raums schlug das offene Fenster zu.",
             "Beim Betreten des Raums wehte ein kalter Luftzug durch die Tür."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r4q6",
+        "grammar-r4q6": {
           "context": "HINWEIS\nBegrüßen Sie den Gastgeber, tragen Sie sich ein und holen Sie ein Namensschild.",
           "question": "Welche Anweisung ist korrekt gesetzt?",
           "answers": [
@@ -412,42 +304,33 @@
             "Begrüßen Sie den Gastgeber, tragen, Sie sich ein und holen Sie ein Namensschild.",
             "Begrüßen Sie den Gastgeber, tragen Sie sich ein und holen Sie ein Namensschild.",
             "Begrüßen Sie; den Gastgeber, tragen Sie sich ein und holen Sie ein Namensschild."
-          ],
-          "correct": 2,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Präzisionsrunde",
-      "questions": [
-        {
-          "id": "grammar-r5q4",
+      "questions": {
+        "grammar-r5q4": {
+          "context": "Zwischen Lina und ___ bleibt diese Entscheidung vertraulich.",
           "question": "Welches Pronomen ergänzt den Satz korrekt?",
           "answers": [
             "mir",
             "ich",
             "mich",
             "mein"
-          ],
-          "correct": 0,
-          "category": "verbs_pronouns",
-          "context": "Zwischen Lina und ___ bleibt diese Entscheidung vertraulich."
+          ]
         },
-        {
-          "id": "grammar-r10q4",
+        "grammar-r10q4": {
           "question": "Mehrere Köche benutzen diese Schränke. Welches Schild ist korrekt?",
           "answers": [
             "Die Schränke der Köchen",
             "Der Schränke des Koch",
             "Die Schränke der Köche",
             "Die Schränke den Köche"
-          ],
-          "correct": 2,
-          "category": "punctuation"
+          ]
         },
-        {
-          "id": "grammar-r5q1",
+        "grammar-r5q1": {
           "context": "Die Richtlinie besteht aus zwei Teilen. Im zweiten steht die Frist.",
           "question": "Welche Fassung nennt die Frist ohne unklaren Bezug?",
           "answers": [
@@ -455,36 +338,27 @@
             "Die Richtlinie hat zwei Teile, und dort steht sie.",
             "Die Frist steht im zweiten Abschnitt der Richtlinie.",
             "Im zweiten Abschnitt steht sie in der Richtlinie darin."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r5q5",
+        "grammar-r5q5": {
           "question": "Welche Option ist ein vollständiger Satz?",
           "answers": [
             "Weil die Etiketten fehlten.",
             "Die Pakete mit den fehlenden Etiketten.",
             "Die Pakete trafen verspätet ein, weil die Etiketten fehlten.",
             "Nachdem die Pakete ohne Etiketten angekommen waren."
-          ],
-          "correct": 2,
-          "category": "sentence_structure"
+          ]
         },
-        {
-          "id": "grammar-r5q6",
+        "grammar-r5q6": {
           "question": "Welcher Satz setzt die Anrede korrekt?",
           "answers": [
             "Ravi bitte, prüfe die letzte Zeile.",
             "Ravi, bitte prüfe die letzte Zeile.",
             "Ravi bitte prüfe, die letzte Zeile.",
             "Ravi; bitte, prüfe die letzte Zeile."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r6q1",
+        "grammar-r6q1": {
           "context": "Nach „wissen“ folgt hier ein Nebensatz mit der Konjunktion „dass“.",
           "question": "Welche Schreibweise ist korrekt?",
           "answers": [
@@ -492,24 +366,18 @@
             "Ich weiß dass, der Termin morgen ist.",
             "Ich weiß, dass der Termin morgen ist, das.",
             "Ich weiß, dass der Termin morgen ist."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r6q5",
+        "grammar-r6q5": {
           "question": "Welcher Satz weist die richtige Übereinstimmung auf?",
           "answers": [
             "Die Reihe von Anweisungen sind leicht zu befolgen.",
             "Die Reihe von Anweisungen waren leicht zu befolgen.",
             "Die Reihe von Anweisungen sein leicht zu befolgen.",
             "Die Reihe von Anweisungen ist leicht zu befolgen."
-          ],
-          "correct": 3,
-          "category": "verbs_agreement"
+          ]
         },
-        {
-          "id": "grammar-r6q6",
+        "grammar-r6q6": {
           "context": "ZIEL DER E-MAIL\nDas Team soll bis 17 Uhr eine endgültige Datei einreichen.",
           "question": "Welche Bitte gibt das Ziel der Nachricht genau wieder?",
           "answers": [
@@ -517,29 +385,23 @@
             "Bitte reichen Sie am Nachmittag eine Datei ein.",
             "Bitte senden Sie bis Tagesende alle bisherigen Fassungen.",
             "Bitte bestätigen Sie bis 17 Uhr, wann die Datei fertig sein wird."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Grammatikfallen",
-      "questions": [
-        {
-          "id": "grammar-r10q5",
+      "questions": {
+        "grammar-r10q5": {
           "question": "Welche Anweisung ist parallel aufgebaut?",
           "answers": [
             "Besucher müssen sich anmelden, einen Ausweis tragen und dessen Rückgabe vornehmen.",
             "Besucher müssen sich anmelden, einen Ausweis tragen und ihn vor dem Gehen zurückgeben.",
             "Besucher müssen sich anmelden, das Tragen eines Ausweises und ihn zurückgeben.",
             "Besucher müssen sich anmelden, einen Ausweis tragend und ihn zurückgeben."
-          ],
-          "correct": 1,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r9q5",
+        "grammar-r9q5": {
           "question": "Nur der erste Bericht wurde überarbeitet. Welcher Satz drückt das eindeutig aus?",
           "answers": [
             "Nur der Redakteur überarbeitete den ersten Bericht.",
@@ -547,8 +409,6 @@
             "Der Redakteur überarbeitete den ersten Bericht erst gestern.",
             "Der Redakteur überarbeitete nur den ersten Bericht."
           ],
-          "correct": 3,
-          "category": "precision",
           "trapdoorErrors": [
             "nur ändert, wer die Aktion durchgeführt hat",
             "Der Zwecksatz ändert, warum der Bericht überarbeitet wurde",
@@ -556,8 +416,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r7q3",
+        "grammar-r7q3": {
           "context": "ABSATZ\nDer Raum war bereit. Bis auf die fehlenden Stühle. Die Gäste kamen mittags.",
           "question": "Welche Fassung beseitigt den Satzbruch, ohne die Aussage zu verändern?",
           "answers": [
@@ -565,12 +424,9 @@
             "Der Raum war bereit. Bis auf die Stühle, die noch fehlten.",
             "Bis auf die fehlenden Stühle. Die Gäste kamen mittags.",
             "Der Raum war bereit, und die Gäste kamen bis auf die fehlenden Stühle mittags."
-          ],
-          "correct": 0,
-          "category": "editing_context"
+          ]
         },
-        {
-          "id": "grammar-r7q4",
+        "grammar-r7q4": {
           "context": "Gemeint ist, dass die Sprecherin fast jede Frage beantwortet hat.",
           "question": "Die Sprecherin beantwortete fast jede Frage. Welche Formulierung hat dieselbe Bedeutung?",
           "answers": [
@@ -578,12 +434,9 @@
             "Fast die Sprecherin beantwortete jede Frage.",
             "Die Sprecherin beantwortete jede Frage fast.",
             "Die Sprecherin beantwortete fast jede Frage."
-          ],
-          "correct": 3,
-          "category": "modifiers_word_choice"
+          ]
         },
-        {
-          "id": "grammar-r7q5",
+        "grammar-r7q5": {
           "context": "Der zweite Satzteil erklärt den ersten.",
           "question": "Welche Zeichensetzung ist korrekt?",
           "answers": [
@@ -591,12 +444,9 @@
             "Die Frist wurde verlängert: Der Kunde brauchte mehr Zeit.",
             "Die Frist: wurde verlängert der Kunde brauchte mehr Zeit.",
             "Die Frist wurde verlängert, der Kunde brauchte mehr Zeit."
-          ],
-          "correct": 1,
-          "category": "punctuation_apostrophes"
+          ]
         },
-        {
-          "id": "grammar-r7q6",
+        "grammar-r7q6": {
           "context": "Ein Bericht enthält eine Zusammenfassung und einen Anhang. Der Anhang wird jeden Monat aktualisiert.",
           "question": "Welche Fassung macht deutlich, dass der Anhang monatlich aktualisiert wird?",
           "answers": [
@@ -604,12 +454,9 @@
             "Er enthält eine Zusammenfassung und einen Anhang, der durch ihn monatlich aktualisiert wird.",
             "Der Bericht enthält eine Zusammenfassung und einen Anhang; der Anhang wird monatlich aktualisiert.",
             "Der monatlich aktualisierte Bericht enthält eine Zusammenfassung und seinen Anhang."
-          ],
-          "correct": 2,
-          "category": "pronouns_reference"
+          ]
         },
-        {
-          "id": "grammar-r9q1",
+        "grammar-r9q1": {
           "question": "Welcher Satz drückt den Gegensatz korrekt aus?",
           "answers": [
             "Der Sturm endete; obwohl die Straßen überflutet blieben.",
@@ -617,8 +464,6 @@
             "Obwohl der Sturm endete; blieben die Straßen überflutet.",
             "Obwohl der Sturm endete, blieben die Straßen überflutet."
           ],
-          "correct": 3,
-          "category": "sentence_structure",
           "trapdoorErrors": [
             "Semikolon trennt eine Hauptklausel falsch von einer abhängigen Klausel",
             "Konjunktivadverb fehlt die erforderliche Border Interpunktion",
@@ -626,8 +471,7 @@
             null
           ]
         },
-        {
-          "id": "grammar-r9q2",
+        "grammar-r9q2": {
           "context": "STATUS\nMehrere überarbeitete Fassungen können nun freigegeben werden.",
           "question": "Welcher Satz verwendet die richtigen Endungen?",
           "answers": [
@@ -636,8 +480,6 @@
             "Die überarbeiteten Fassungen sind freigegeben.",
             "Die überarbeitet Fassungen sind freigegebene."
           ],
-          "correct": 2,
-          "category": "verbs_agreement",
           "trapdoorErrors": [
             "Singularverb stimmt nicht mit dem Pluralthema überein",
             "Die Basisform kann nicht allein stehen, da das endliche Verb",
@@ -645,15 +487,12 @@
             "Nicht-endliche Form lässt den Satz unvollständig"
           ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Endkorrektur",
-      "questions": [
-        {
-          "id": "grammar-r7q2",
-          "question": "Welcher markierte Teil enthält den Fehler?",
-          "presentation": "code",
+      "questions": {
+        "grammar-r7q2": {
           "visual": {
             "items": [
               "A · Die endgültigen Berichte",
@@ -661,47 +500,35 @@
               "C · bevor die Redakteure sie freigab",
               "D · für die Veröffentlichung"
             ],
-            "columns": 1,
-            "separator": "•",
             "ariaLabel": "Die endgültigen Berichte wurden geprüft, bevor die Redakteure sie freigab, für die Veröffentlichung"
           },
+          "question": "Welcher markierte Teil enthält den Fehler?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "sentence_building"
+          ]
         },
-        {
-          "id": "grammar-r10q6",
+        "grammar-r10q6": {
           "question": "Welcher Satz ist vollständig korrekt?",
           "answers": [
             "Nach der Prüfung der Zahlen bestätigte Maya, dass jede Summe stimmte.",
             "Nach der Prüfung der Zahlen bestätigte jede Summe Maya.",
             "Nach der Prüfung der Zahlen Maya, bestätigte, dass jede Summe stimmte.",
             "Nach der Prüfung der Zahlen bestätigte Maya, dass jede Summen stimmten."
-          ],
-          "correct": 0,
-          "category": "precision",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "grammar-r8q1",
+        "grammar-r8q1": {
           "question": "Wähle die korrekte Verbindung.",
           "answers": [
             "Die Türen öffneten sich, aber niemand trat ein.",
             "Die Türen öffneten sich, aber niemand traten ein.",
             "Obwohl sich die Türen öffneten, aber niemand trat ein.",
             "Die Türen öffneten sich aber. Niemand trat ein."
-          ],
-          "correct": 0,
-          "category": "sentence_structure",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q3",
+        "grammar-r8q3": {
           "context": "Gesucht ist die korrekte Zusammenschreibung.",
           "question": "Welche Schreibweise ist korrekt?",
           "answers": [
@@ -709,26 +536,18 @@
             "der Türegriff",
             "der Türgriff",
             "der Tür-Griffes"
-          ],
-          "correct": 2,
-          "category": "punctuation_apostrophes",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q4",
+        "grammar-r8q4": {
           "question": "Welche Form des Verbs „sein“ ist richtig?",
           "answers": [
             "Seit ihr bereit für die nächste Aufgabe?",
             "Seid ihr bereit für die nächste Aufgabe?",
             "Seidt ihr bereit für die nächste Aufgabe?",
             "Seid Ihr bereit für die nächste Aufgabe seid?"
-          ],
-          "correct": 1,
-          "category": "pronouns_reference",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q5",
+        "grammar-r8q5": {
           "context": "Die Zahl stieg, erreichte aber nicht ganz das Doppelte ihres ursprünglichen Werts.",
           "question": "Welche Fassung bedeutet, dass sich die Zahl beinahe verdoppelte?",
           "answers": [
@@ -736,26 +555,18 @@
             "Durch die Änderung beinahe sich verdoppelte die Zahl.",
             "Beinahe durch die Änderung verdoppelte sich die Zahl.",
             "Durch die Änderung verdoppelte sich die beinahe Zahl."
-          ],
-          "correct": 0,
-          "category": "modifiers_word_choice",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r8q6",
+        "grammar-r8q6": {
           "question": "Welche Formulierung passt in eine formelle Nachricht?",
           "answers": [
             "Schick mir die Datei möglichst bald.",
             "Denk bitte irgendwann an die Datei.",
             "Die Datei könnte noch vor Mittag kommen.",
             "Bitte senden Sie die Datei bis Mittag."
-          ],
-          "correct": 3,
-          "category": "editing_context",
-          "delay": 350
+          ]
         },
-        {
-          "id": "grammar-r10q2",
+        "grammar-r10q2": {
           "context": "ZEITABLAUF\n10:00 Uhr — das Team schloss die Prüfungen ab.\n10:30 Uhr — die Türen öffneten sich.\nDer Bericht wird um 11:00 Uhr verfasst.",
           "question": "Welcher Satz gibt die Reihenfolge korrekt wieder?",
           "answers": [
@@ -763,193 +574,9 @@
             "Das Team schloss die Prüfungen nach der Türöffnung um 10:30 Uhr ab.",
             "Das Team beendete die Prüfungen, während die Türen bereits geöffnet worden waren.",
             "Das Team wird die Prüfungen abschließen, bevor die Türen geöffnet wurden."
-          ],
-          "correct": 0,
-          "category": "verbs_agreement",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "progressLabel": "abgeschlossen",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Grammatik-Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
-    "currentScoreLabel": "AKTUELLER GRAMMATIK-PUNKTSTAND",
-    "levelLabel": "RUNDE",
-    "scoreSuffix": "richtig",
-    "journeyLabel": "GRAMMATIK-HERAUSFORDERUNG",
-    "kitchensCleared": "{value} / {total} Herausforderungen abgeschlossen",
-    "currentRank": "AKTUELLER STAND · GRAMMATIKTEST",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Herausforderung gestartet"
-      },
-      {
-        "afterStage": 5,
-        "label": "Herausforderung abgeschlossen"
-      }
-    ],
-    "unlockEyebrow": "ERGEBNIS-UPDATE · GRAMMATIKTEST",
-    "unlockTitle": "Eine neue Herausforderung ist bereit: Grammatiktest",
-    "unlockCopy": "Weiter geht es mit dem Grammatiktest.",
-    "finalEyebrow": "DEIN GRAMMATIKERGEBNIS",
-    "finalCareerTitle": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-    "strongestLabel": "Stärkster Bereich in Grammatik",
-    "stages": [
-      {
-        "difficulty": "Grundlagen",
-        "preAdBadge": "GRAMMATIK-CHECK ABGESCHLOSSEN",
-        "preAdTitle": "Erste Korrektur abgeschlossen",
-        "preAdCopy": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "GRAMMATIK-CHECK ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Erste Korrektur abgeschlossen",
-            "insight": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer."
-          },
-          "medium": {
-            "title": "Erste Korrektur abgeschlossen",
-            "insight": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer."
-          },
-          "low": {
-            "title": "Erste Korrektur abgeschlossen",
-            "insight": "Die ersten Sätze sind korrigiert. Jetzt wird es genauer."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
-          "title": "Satzbau",
-          "difficulty": "Aufbau",
-          "tagline": "Satzteile. Kongruenz. Klarheit.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Aufbau",
-        "preAdBadge": "SATZBAU ABGESCHLOSSEN",
-        "preAdTitle": "Satzbau gemeistert",
-        "preAdCopy": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "SATZBAU ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Satzbau gemeistert",
-            "insight": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu."
-          },
-          "medium": {
-            "title": "Satzbau gemeistert",
-            "insight": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu."
-          },
-          "low": {
-            "title": "Satzbau gemeistert",
-            "insight": "Nun kommen Kongruenz, Verbformen und Zeichensetzung hinzu."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
-          "title": "Präzisionsrunde",
-          "difficulty": "Fortgeschritten",
-          "tagline": "Verben. Zeichensetzung. Präzision.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Fortgeschritten",
-        "preAdBadge": "PRÄZISIONSRUNDE ABGESCHLOSSEN",
-        "preAdTitle": "Mehr als die Hälfte geschafft",
-        "preAdCopy": "Die feinsten Sprachfallen warten als Nächstes.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "PRÄZISIONSRUNDE ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Die feinsten Sprachfallen warten als Nächstes."
-          },
-          "medium": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Die feinsten Sprachfallen warten als Nächstes."
-          },
-          "low": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Die feinsten Sprachfallen warten als Nächstes."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
-          "title": "Grammatikfallen",
-          "difficulty": "Anspruchsvoll",
-          "tagline": "Plausible Fehler. Winzige Hinweise.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Anspruchsvoll",
-        "preAdBadge": "GRAMMATIKFALLEN ABGESCHLOSSEN",
-        "preAdTitle": "Als Nächstes: die Endkorrektur",
-        "preAdCopy": "Nur die Endkorrektur steht noch aus.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "GRAMMATIKFALLEN ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Als Nächstes: die Endkorrektur",
-            "insight": "Nur die Endkorrektur steht noch aus."
-          },
-          "medium": {
-            "title": "Als Nächstes: die Endkorrektur",
-            "insight": "Nur die Endkorrektur steht noch aus."
-          },
-          "low": {
-            "title": "Als Nächstes: die Endkorrektur",
-            "insight": "Nur die Endkorrektur steht noch aus."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
-          "title": "Endkorrektur",
-          "difficulty": "Abschlussprüfung",
-          "tagline": "Gesamtkorrektur. Letztes Urteil.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Abschlussprüfung",
-        "preAdBadge": "GRAMMATIK-HERAUSFORDERUNG ABGESCHLOSSEN",
-        "preAdTitle": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-        "preAdChecks": [
-          "40 Antworten geprüft",
-          "Drei Grammatikbereiche im Vergleich",
-          "Endergebnis berechnet"
-        ],
-        "preAdButton": "Mein Ergebnis ansehen",
-        "resultIcon": "✓",
-        "resultLabel": "ENDKORREKTUR ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-            "insight": "Dein Grammatikergebnis kann jetzt angezeigt werden."
-          },
-          "medium": {
-            "title": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-            "insight": "Dein Grammatikergebnis kann jetzt angezeigt werden."
-          },
-          "low": {
-            "title": "GRAMMATIKQUIZ ABGESCHLOSSEN",
-            "insight": "Dein Grammatikergebnis kann jetzt angezeigt werden."
-          }
-        },
-        "preAdCopy": "Dein Grammatikergebnis kann jetzt angezeigt werden."
-      }
-    ]
   }
 }

@@ -37,7 +37,7 @@ export const infoPageSlugs: InfoPageSlug[] = [
   "disclaimer",
 ];
 
-export const infoPageMetadata: Record<InfoPageSlug, { title: string; description: string }> = {
+const infoPageMetadata: Record<InfoPageSlug, { title: string; description: string }> = {
   about: {
     title: "About",
     description: "Learn about The Rainbow Hub, its quizzes, scoring philosophy, and site standards.",

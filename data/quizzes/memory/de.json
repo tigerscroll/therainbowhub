@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Die meisten Erwachsenen erreichen bei diesem Gedächtnistest keine 80 %",
   "eyebrow": "GEDÄCHTNISAUFGABE",
   "summary": "Wörter, Bilder, Zahlen und spätere Erinnerungen zeigen, was dein Gedächtnis behält.",
+  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Hältst du dein Gedächtnis noch für messerscharf? Manche Aufgaben sind leicht. Andere wollen dich bewusst täuschen.",
     "cta": "Test starten"
@@ -18,84 +20,121 @@
     },
     "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser Gedächtnistest ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung."
   },
+  "checkpoint": {
+    "finalAdNote": "Kurze Werbung, dann siehst du dein Ergebnis."
+  },
+  "career": {
+    "resultProgressLabel": "Gedächtnis-Herausforderung",
+    "resultProgressComplete": "{value} % abgeschlossen",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Grundlagen",
+        "preAdBadge": "SOFORTIGES ERINNERN ABGESCHLOSSEN",
+        "preAdTitle": "Sofortiges Erinnern abgeschlossen",
+        "preAdCopy": "In der nächsten Runde kommen Bilder und Details hinzu.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
+          "tagline": "Farben. Positionen. Veränderungen."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Aufbau",
+        "preAdBadge": "BILDER UND DETAILS ABGESCHLOSSEN",
+        "preAdTitle": "Visuelles Erinnern geschafft",
+        "preAdCopy": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
+          "tagline": "Ziffern. Reihenfolge. Arbeitsgedächtnis."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Fortgeschritten",
+        "preAdBadge": "ZAHLEN UND MUSTER ABGESCHLOSSEN",
+        "preAdTitle": "Mehr als die Hälfte geschafft",
+        "preAdCopy": "Als Nächstes kommt die Gedächtnisfalle.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
+          "tagline": "Ablenkung. Ähnliche Hinweise. Ältere Erinnerungen."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Anspruchsvoll",
+        "preAdBadge": "GEDÄCHTNISFALLE ABGESCHLOSSEN",
+        "preAdTitle": "Finale Gedächtnisaufgabe als Nächstes",
+        "preAdCopy": "Eine letzte Runde prüft, was noch hängen geblieben ist.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
+          "tagline": "Verzögerter Abruf. Verarbeitung. Letzte Erinnerungen."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Abschlussprüfung",
+        "preAdBadge": "FINALE GEDÄCHTNISAUFGABE ABGESCHLOSSEN",
+        "preAdTitle": "GEDÄCHTNISTEST ABGESCHLOSSEN",
+        "preAdCopy": "Dein Gedächtnisergebnis kann jetzt angezeigt werden.",
+        "preAdChecks": [
+          "40 Antworten geprüft",
+          "Sechs Gedächtnisfähigkeiten im Vergleich",
+          "Endergebnis berechnet"
+        ],
+        "preAdButton": "Mein Ergebnis ansehen"
+      }
+    }
+  },
   "results": {
     "name": "DEIN GEDÄCHTNISERGEBNIS",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100 %",
         "title": "Gedächtnisgenie",
         "copy": "Deine Schwerpunkte: Wörter, Bilder, Zahlen und verzögertes Erinnern. Dabei hast du bemerkenswerte Präzision gezeigt, und selbst die anspruchsvollsten Aufgaben konnten dich kaum aus dem Konzept bringen."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89 %",
         "title": "Messerscharfe Erinnerung",
         "copy": "Dieses Ergebnis ist sehr stark: Wörter, Bilder, Zahlen und verzögertes Erinnern. Auch bei subtilen Fallen blieb dein Denken zuverlässig."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79 %",
         "title": "Fast unvergesslich",
         "copy": "Insgesamt ist dein Ergebnis solide. Die Aufgaben verbanden Wörter, Bilder, Zahlen und verzögertes Erinnern; nur einige schwierige Details kosteten Punkte."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69 %",
         "title": "Selektives Genie",
         "copy": "Du hast eine gute Grundlage. Im Mittelpunkt standen Wörter, Bilder, Zahlen und verzögertes Erinnern; mit etwas Feinschliff kann das nächste Ergebnis deutlich steigen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59 %",
         "title": "Eigenwilliges Gedächtnis",
         "copy": "Du hast mehrere wichtige Zusammenhänge erkannt. Getestet wurden Wörter, Bilder, Zahlen und verzögertes Erinnern, und die falsch beantworteten Fragen zeigen klar, was sich noch festigen lässt."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Unter 50 %",
         "title": "Charmant zerstreut",
         "copy": "Diese Herausforderung hat Entwicklungsmöglichkeiten gezeigt. Gefragt waren Wörter, Bilder, Zahlen und verzögertes Erinnern; Deine Neugier und die gelösten Aufgaben sind ein guter Ausgangspunkt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "📝 Wortgedächtnis",
-        "categories": [
-          "word_recall"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "📝 Wortgedächtnis"
       },
-      {
-        "label": "👀 Visuelles Gedächtnis",
-        "categories": [
-          "visual"
-        ]
+      "dimension-2": {
+        "label": "👀 Visuelles Gedächtnis"
       },
-      {
-        "label": "🔢 Zahlengedächtnis",
-        "categories": [
-          "numbers"
-        ]
+      "dimension-3": {
+        "label": "🔢 Zahlengedächtnis"
       },
-      {
-        "label": "🧠 Arbeitsgedächtnis",
-        "categories": [
-          "working_memory"
-        ]
+      "dimension-4": {
+        "label": "🧠 Arbeitsgedächtnis"
       },
-      {
-        "label": "🔗 Verknüpfungen",
-        "categories": [
-          "association"
-        ]
+      "dimension-5": {
+        "label": "🔗 Verknüpfungen"
       },
-      {
-        "label": "🔍 Aufmerksamkeit",
-        "categories": [
-          "attention"
-        ]
+      "dimension-6": {
+        "label": "🔍 Aufmerksamkeit"
       }
-    ],
+    },
     "score": {
       "passed": "Bestanden: Gedächtnistest!",
       "finished": "Gedächtnistest abgeschlossen",
@@ -103,8 +142,6 @@
       "strongest": "Stärkster Bereich im Gedächtnis",
       "trickiest": "Schwierigster Bereich im Gedächtnis",
       "bestRound": "Bestes Rundenergebnis · Gedächtnistest",
-      "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser Gedächtnistest ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung.",
-      "showBestRound": true,
       "insights": {
         "overview": "Gedächtnisergebnis im Überblick",
         "correct": "richtig",
@@ -113,64 +150,15 @@
         "breakdown": "Deine Auswertung im Gedächtnis",
         "snapshot": "Was dein Profil im Gedächtnistest erkennen lässt",
         "targetReached": "80-%-Ziel erreicht",
-        "targetRemaining": "Noch nötige richtige Antworten für 80 %",
-        "details": {
-          "analysisTitle": "So liest du dein Gedächtnisergebnis",
-          "analysisCopy": "Dieses Ergebnis fasst 40 Fragen zu Wörtern, Bildern, Zahlen, Verknüpfungen, Aufmerksamkeit und verzögertem Erinnern zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.",
-          "roadmapTitle": "Dein vollständiger Bericht zum Gedächtnistest",
-          "roadmapIntro": "Das Ergebnis ist nur der erste Hinweis. Der Bericht zeigt deinen stärksten Gedächtnisbereich, die Auswertung nach Bereichen und die nicht gelösten Aufgaben im Gedächtnistest.",
-          "roadmapItems": [
-            "Ergebnisanalyse",
-            "Stärkster Bereich im Gedächtnis",
-            "Deine Auswertung im Gedächtnis",
-            "Nicht gelöste Aufgaben"
-          ],
-          "positionTitle": "Dein Weg zur 80-%-Marke",
-          "positionCopy": "Das spielerische Ziel sind 32 richtige Antworten von 40. Die Markierung zeigt, wie nah dieser Versuch im Gedächtnistest kam, ohne Vergleich mit anderen oder berufliche Bewertung.",
-          "measuredTitle": "Was der Gedächtnistest untersucht hat",
-          "measuredIntro": "Die Aufgaben decken drei ergänzende Bereiche des Gedächtnistests ab.",
-          "measuredAreas": [
-            {
-              "title": "Erfassen und Erinnern",
-              "copy": "Wörter, Bilder und Zahlen kurz genug behalten, um sie wenig später wiederzuerkennen oder abzurufen."
-            },
-            {
-              "title": "Verzögerter Abruf",
-              "copy": "Frühere Details abrufen, nachdem eine andere Aufgabe die ursprüngliche Erinnerung unterbrochen hat."
-            },
-            {
-              "title": "Aufmerksamkeit fürs Detail",
-              "copy": "Farben, Formen, Positionen und kleine Änderungen bemerken, bevor sie verschwinden."
-            }
-          ],
-          "tipsTitle": "Drei Wege, deine Herangehensweise im Gedächtnis zu schärfen",
-          "tipsIntro": "Einfache Strategien für einen weiteren Versuch im Gedächtnistest, nicht als fachliche Beurteilung.",
-          "tips": [
-            {
-              "title": "Eine kurze Geschichte bauen",
-              "copy": "Verbinde unzusammenhängende Wörter oder Dinge zu einer ungewöhnlichen Szene."
-            },
-            {
-              "title": "Details gruppieren",
-              "copy": "Teile längere Folgen in zwei oder drei kleinere Blöcke, damit weniger gleichzeitig gehalten werden muss."
-            },
-            {
-              "title": "Mit neuer Konzentration zurückkehren",
-              "copy": "Versuche es bei weniger Ablenkung erneut und prüfe, ob ein anderer Bereich stärker wird."
-            }
-          ],
-          "finalTitle": "Dein Ergebnis im Gedächtnistest",
-          "finalCopy": "Du hast {score} von {total} Aufgaben richtig beantwortet. Dein Ergebnisprofil und die vollständige Auswertung deiner Gedächtnisfähigkeiten siehst du unten."
-        }
+        "targetRemaining": "Noch nötige richtige Antworten für 80 %"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Sofortiges Erinnern",
-      "questions": [
-        {
-          "id": "memory-r1q1",
+      "questions": {
+        "memory-r1q1": {
           "question": "Welches Wort stand in den ersten Angaben?",
           "answers": [
             "LIMETTE",
@@ -178,8 +166,6 @@
             "GRÜN",
             "FLUGZEUG"
           ],
-          "correct": 1,
-          "category": "word_recall",
           "study": {
             "title": "Merke dir diese Angaben",
             "instruction": "Sie können später wieder auftauchen.",
@@ -189,13 +175,10 @@
               "BLAUER SCHLÜSSEL",
               "VIOLETTER ELEFANT"
             ],
-            "durationMs": 5000,
-            "mode": "manual",
             "continueLabel": "Ich habe es mir gemerkt"
           }
         },
-        {
-          "id": "memory-r1q2",
+        "memory-r1q2": {
           "question": "Welche Form kam an dritter Stelle?",
           "answers": [
             "Kreis",
@@ -203,8 +186,6 @@
             "Dreieck",
             "Quadrat"
           ],
-          "correct": 3,
-          "category": "visual",
           "study": {
             "title": "Merke dir die Reihenfolge von Farben und Formen",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -213,13 +194,10 @@
               "GOLDENES DREIECK",
               "KORALLFARBENES QUADRAT",
               "GRÜNE RAUTE"
-            ],
-            "durationMs": 3500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q3",
+        "memory-r1q3": {
           "question": "Welche Zahl hast du gesehen?",
           "answers": [
             "5837",
@@ -227,86 +205,66 @@
             "5387",
             "5738"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Merke dir diese Zahl",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
             "items": [
               "5837",
               "MERKEN"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r1q4",
+        "memory-r1q4": {
           "question": "Welche Form war golden?",
           "answers": [
             "Kreis",
             "Raute",
             "Dreieck",
             "Quadrat"
-          ],
-          "correct": 2,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r1q5",
+        "memory-r1q5": {
           "question": "Welcher Code stimmt exakt mit K7M2Q überein?",
           "answers": [
             "K7M2Q",
             "K7N2Q",
             "K7MZQ",
             "KTM2Q"
-          ],
-          "correct": 0,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r1q6",
+        "memory-r1q6": {
           "question": "Welches Element kam direkt nach ZITRONE?",
           "answers": [
             "BLAU",
             "SCHLÜSSEL",
             "ZITRONE",
             "ZUG"
-          ],
-          "correct": 3,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r1q7",
+        "memory-r1q7": {
           "question": "Wie lautet 4 – 9 – 2 rückwärts?",
           "answers": [
             "2 – 4 – 9",
             "2 – 9 – 4",
             "9 – 2 – 4",
             "4 – 2 – 9"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r1q8",
+        "memory-r1q8": {
           "question": "Welches Tier stand in den ersten Angaben?",
           "answers": [
             "Giraffe",
             "Tiger",
             "Elefant",
             "Kaninchen"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Bilder und Details",
-      "questions": [
-        {
-          "id": "memory-r2q1",
+      "questions": {
+        "memory-r2q1": {
           "question": "Welcher Gegenstand kam an dritter Stelle?",
           "answers": [
             "Drachen",
@@ -314,15 +272,6 @@
             "Kamera",
             "Küchlein"
           ],
-          "icons": [
-            "🪁",
-            "🧤",
-            "📷",
-            "🧁"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Merke dir die Reihenfolge der sechs Gegenstände",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -334,14 +283,10 @@
               "🧤",
               "🔔"
             ],
-            "durationMs": 5000,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Kappe, Küchlein, Kamera, Drachen, Handschuh, Glocke"
           }
         },
-        {
-          "id": "memory-r2q2",
+        "memory-r2q2": {
           "question": "Was lag oben rechts?",
           "answers": [
             "Blaue Tasse",
@@ -349,8 +294,6 @@
             "Goldener Schlüssel",
             "Rotes Buch"
           ],
-          "correct": 0,
-          "category": "visual",
           "study": {
             "title": "Merke dir die Position jedes Gegenstands",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -359,25 +302,19 @@
               "OBEN RECHTS · BLAUE TASSE",
               "UNTEN LINKS · GOLDENER SCHLÜSSEL",
               "UNTEN RECHTS · GRÜNER HUT"
-            ],
-            "durationMs": 5000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q3",
+        "memory-r2q3": {
           "question": "Welche Kopie enthält eine Null statt des Buchstabens O?  1 WORT · 2 WORT · 3 W0RT · 4 WORT",
           "answers": [
             "Erste",
             "Zweite",
             "Vierte",
             "Dritte"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r2q4",
+        "memory-r2q4": {
           "question": "Wohin reiste Sarah?",
           "answers": [
             "Rom",
@@ -385,8 +322,6 @@
             "Madrid",
             "Dublin"
           ],
-          "correct": 1,
-          "category": "association",
           "study": {
             "title": "Lies diese Angaben einmal",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -394,73 +329,51 @@
               "Sarah packte einen BLAUEN Koffer.",
               "Sie reiste nach PARIS.",
               "Ihr Zug fuhr um 08:40 Uhr ab."
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r2q5",
+        "memory-r2q5": {
           "question": "Welcher Gegenstand kam direkt vor dem Drachen?",
           "answers": [
             "Glocke",
             "Küchlein",
             "Handschuh",
             "Kamera"
-          ],
-          "icons": [
-            "🔔",
-            "🧁",
-            "🧤",
-            "📷"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r2q6",
+        "memory-r2q6": {
           "question": "Welche Farbe hatte Sarahs Koffer?",
           "answers": [
             "Grün",
             "Blau",
             "Schwarz",
             "Rot"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         },
-        {
-          "id": "memory-r2q7",
+        "memory-r2q7": {
           "question": "Ein Drachen liegt links, eine Kamera in der Mitte und ein Handschuh rechts. Links und rechts tauschen die Plätze. Was liegt danach links?",
           "answers": [
             "Handschuh",
             "Kamera",
             "Drachen",
             "Glocke"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r2q8",
+        "memory-r2q8": {
           "question": "Welche beiden Gegenstände lagen neben dem Drachen?",
           "answers": [
             "Küchlein und Kamera",
             "Handschuh und Glocke",
             "Kamera und Handschuh",
             "Kappe und Küchlein"
-          ],
-          "correct": 2,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Zahlen und Muster",
-      "questions": [
-        {
-          "id": "memory-r3q1",
+      "questions": {
+        "memory-r3q1": {
           "question": "Welche Zahl hast du gesehen?",
           "answers": [
             "6814",
@@ -468,45 +381,34 @@
             "6481",
             "6184"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Behalte diese Zahl im Kopf",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
             "items": [
               "6184",
               "MERKEN"
-            ],
-            "durationMs": 3000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q2",
+        "memory-r3q2": {
           "question": "Wie lautet 3 – 7 – 1 – 5 rückwärts?",
           "answers": [
             "5 – 7 – 1 – 3",
             "5 – 1 – 7 – 3",
             "3 – 1 – 7 – 5",
             "1 – 5 – 7 – 3"
-          ],
-          "correct": 1,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q3",
+        "memory-r3q3": {
           "question": "Beginne mit 12. Addiere 7 und ziehe dann 4 ab. Wo landest du?",
           "answers": [
             "17",
             "13",
             "15",
             "23"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q4",
+        "memory-r3q4": {
           "question": "Welche Zahl gehörte zu TISCH?",
           "answers": [
             "27",
@@ -514,8 +416,6 @@
             "39",
             "24"
           ],
-          "correct": 0,
-          "category": "numbers",
           "study": {
             "title": "Merke dir jede Zahl und jeden Ort",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -523,13 +423,10 @@
               "TÜR · 14",
               "TISCH · 27",
               "UHR · 39"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q5",
+        "memory-r3q5": {
           "question": "Wie lautete die vierte Ziffer?",
           "answers": [
             "6",
@@ -537,62 +434,48 @@
             "3",
             "9"
           ],
-          "correct": 1,
-          "category": "numbers",
           "study": {
             "title": "Merke dir alle fünf Ziffern",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
             "items": [
               "8  3  6  1  9",
               "DIE REIHENFOLGE ZÄHLT"
-            ],
-            "durationMs": 4000,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r3q6",
+        "memory-r3q6": {
           "question": "Merke dir 24. Verdopple die Zahl und ziehe 6 ab. Was bleibt?",
           "answers": [
             "36",
             "54",
             "42",
             "30"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r3q7",
+        "memory-r3q7": {
           "question": "Wie lautete die zweite Ziffer der früheren vierstelligen Zahl?",
           "answers": [
             "1",
             "6",
             "8",
             "4"
-          ],
-          "correct": 0,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r3q8",
+        "memory-r3q8": {
           "question": "Welche Zahl weicht ab?  1 684219 · 2 684219 · 3 684291 · 4 684219",
           "answers": [
             "Erste",
             "Zweite",
             "Vierte",
             "Dritte"
-          ],
-          "correct": 3,
-          "category": "attention"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Die Gedächtnisfalle",
-      "questions": [
-        {
-          "id": "memory-r4q1",
+      "questions": {
+        "memory-r4q1": {
           "question": "Welches Wort stand an dritter Stelle?",
           "answers": [
             "MARMOR",
@@ -600,8 +483,6 @@
             "MARGE",
             "MARSCH"
           ],
-          "correct": 0,
-          "category": "word_recall",
           "study": {
             "title": "Diese Wörter sind absichtlich ähnlich",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -611,13 +492,10 @@
               "MARMOR",
               "MARGE",
               "MARSCH"
-            ],
-            "durationMs": 4500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q2",
+        "memory-r4q2": {
           "question": "Welcher Gegenstand wurde NICHT gezeigt?",
           "answers": [
             "Glocke",
@@ -625,15 +503,6 @@
             "Anker",
             "Magnet"
           ],
-          "icons": [
-            "🔔",
-            "🧩",
-            "⚓",
-            "🧲"
-          ],
-          "correct": 2,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Merke dir diese fünf Gegenstände",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -644,26 +513,19 @@
               "🧩",
               "🕯️"
             ],
-            "durationMs": 4500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Glocke, Magnet, Leiter, Puzzleteil, Kerze"
           }
         },
-        {
-          "id": "memory-r4q3",
+        "memory-r4q3": {
           "question": "Welcher Code entsteht, wenn bei B7RK nur die letzten beiden Buchstaben vertauscht werden?",
           "answers": [
             "B7RX",
             "B7KR",
             "87RK",
             "BTRK"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r4q4",
+        "memory-r4q4": {
           "question": "Welcher Gegenstand gehörte Omar?",
           "answers": [
             "Geige",
@@ -671,8 +533,6 @@
             "Schal",
             "Teekanne"
           ],
-          "correct": 3,
-          "category": "association",
           "study": {
             "title": "Merke dir jede Person und ihren Gegenstand",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -681,97 +541,69 @@
               "OMAR · TEEKANNE",
               "LENA · KOMPASS",
               "NOAH · SCHAL"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r4q5",
+        "memory-r4q5": {
           "question": "Welche Farbe stand in den ersten Angaben?",
           "answers": [
             "GOLD",
             "SCHWARZ",
             "BLAU",
             "WEISS"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r4q6",
+        "memory-r4q6": {
           "question": "Beginne mit 8. Addiere 6 und ziehe 3 ab. Was bleibt?",
           "answers": [
             "11",
             "17",
             "5",
             "14"
-          ],
-          "correct": 0,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r4q7",
+        "memory-r4q7": {
           "question": "Welcher Gegenstand stand zwischen dem Magneten und dem Puzzleteil?",
           "answers": [
             "Glocke",
             "Kerze",
             "Magnet",
             "Leiter"
-          ],
-          "icons": [
-            "🔔",
-            "🕯️",
-            "🧲",
-            "🪜"
-          ],
-          "correct": 3,
-          "category": "visual",
-          "presentation": "icons"
+          ]
         },
-        {
-          "id": "memory-r4q8",
+        "memory-r4q8": {
           "question": "Wer war dem Kompass zugeordnet?",
           "answers": [
             "Mia",
             "Lena",
             "Noah",
             "Omar"
-          ],
-          "correct": 1,
-          "category": "association"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Finale Gedächtnisaufgabe",
-      "questions": [
-        {
-          "id": "memory-r5q1",
+      "questions": {
+        "memory-r5q1": {
           "question": "Denk an den Anfang: Welche Farbe hatte der Elefant?",
           "answers": [
             "Silbern",
             "Violett",
             "Blau",
             "Gold"
-          ],
-          "correct": 1,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q2",
+        "memory-r5q2": {
           "question": "Welcher Ort war der Zahl 39 zugeordnet?",
           "answers": [
             "Tür",
             "Tisch",
             "Fenster",
             "Uhr"
-          ],
-          "correct": 3,
-          "category": "numbers"
+          ]
         },
-        {
-          "id": "memory-r5q3",
+        "memory-r5q3": {
           "question": "Welcher Gegenstand kam direkt nach dem Ballon?",
           "answers": [
             "Glocke",
@@ -779,15 +611,6 @@
             "Würfel",
             "Erdbeere"
           ],
-          "icons": [
-            "🔔",
-            "🧭",
-            "🎲",
-            "🍓"
-          ],
-          "correct": 0,
-          "category": "visual",
-          "presentation": "icons",
           "study": {
             "title": "Merke dir die letzte Gegenstandsfolge",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -799,26 +622,19 @@
               "🪵",
               "🎲"
             ],
-            "durationMs": 5500,
-            "mode": "automatic",
-            "presentation": "icons",
             "ariaLabel": "Kompass, Erdbeere, Ballon, Glocke, Holzstück, Würfel"
           }
         },
-        {
-          "id": "memory-r5q4",
+        "memory-r5q4": {
           "question": "Drehe 2 – 8 – 1 – 5 – 6 um. Welche Zahl steht in der umgekehrten Folge an zweiter Stelle?",
           "answers": [
             "8",
             "2",
             "5",
             "1"
-          ],
-          "correct": 2,
-          "category": "working_memory"
+          ]
         },
-        {
-          "id": "memory-r5q5",
+        "memory-r5q5": {
           "question": "Ziehe die Zahl bei SÜD von der Zahl bei WEST ab. Was bleibt?",
           "answers": [
             "55",
@@ -826,8 +642,6 @@
             "75",
             "65"
           ],
-          "correct": 3,
-          "category": "numbers",
           "study": {
             "title": "Merke dir jede Richtung und Zahl",
             "instruction": "Präge dir alles gut ein. Die Karte verschwindet automatisch.",
@@ -836,281 +650,37 @@
               "OST · 71",
               "SÜD · 28",
               "WEST · 93"
-            ],
-            "durationMs": 5500,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "memory-r5q6",
+        "memory-r5q6": {
           "question": "Wann fuhr Sarahs Zug ab?",
           "answers": [
             "08:14",
             "08:40",
             "09:40",
             "18:40"
-          ],
-          "correct": 1,
-          "category": "attention"
+          ]
         },
-        {
-          "id": "memory-r5q7",
+        "memory-r5q7": {
           "question": "Welches Wort stand in der früheren Liste direkt vor MARMOR?",
           "answers": [
             "MARKT",
             "MARGE",
             "MARKE",
             "MARSCH"
-          ],
-          "correct": 2,
-          "category": "word_recall"
+          ]
         },
-        {
-          "id": "memory-r5q8",
+        "memory-r5q8": {
           "question": "Wer war der Geige zugeordnet?",
           "answers": [
             "Mia",
             "Omar",
             "Lena",
             "Noah"
-          ],
-          "correct": 0,
-          "category": "association"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "NÄCHSTE HERAUSFORDERUNG",
-    "adNote": "Kurze Werbung, dann geht es weiter.",
-    "finalAdNote": "Kurze Werbung, dann siehst du dein Ergebnis.",
-    "finalBadge": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-    "finalIcon": "🧠",
-    "finalTitle": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-    "finalCopy": "Dein Gedächtnisergebnis kann jetzt angezeigt werden.",
-    "finalButton": "Mein Ergebnis ansehen",
-    "finalChecklist": [
-      "40 Antworten geprüft",
-      "Sechs Gedächtnisfähigkeiten im Vergleich",
-      "Endergebnis berechnet"
-    ],
-    "reveals": [
-      {
-        "badge": "SOFORTIGES ERINNERN ABGESCHLOSSEN",
-        "icon": "✓",
-        "title": "Sofortiges Erinnern abgeschlossen",
-        "signal": "fixed",
-        "message": "In der nächsten Runde kommen Bilder und Details hinzu."
-      },
-      {
-        "badge": "BILDER UND DETAILS ABGESCHLOSSEN",
-        "icon": "✓",
-        "title": "Visuelles Erinnern geschafft",
-        "signal": "fixed",
-        "message": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis."
-      },
-      {
-        "badge": "ZAHLEN UND MUSTER ABGESCHLOSSEN",
-        "icon": "✓",
-        "title": "Mehr als die Hälfte geschafft",
-        "signal": "fixed",
-        "message": "Als Nächstes kommt die Gedächtnisfalle."
-      },
-      {
-        "badge": "GEDÄCHTNISFALLE ABGESCHLOSSEN",
-        "icon": "✓",
-        "title": "Finale Gedächtnisaufgabe als Nächstes",
-        "signal": "fixed",
-        "message": "Eine letzte Runde prüft, was noch hängen geblieben ist."
-      },
-      {
-        "badge": "FINALE GEDÄCHTNISAUFGABE ABGESCHLOSSEN",
-        "icon": "✓",
-        "title": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-        "signal": "fixed",
-        "message": "Dein Gedächtnisergebnis kann jetzt angezeigt werden."
-      }
-    ]
-  },
-  "progressLabel": "abgeschlossen",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Gedächtnis-Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
-    "currentScoreLabel": "AKTUELLER GEDÄCHTNISPUNKTSTAND",
-    "levelLabel": "RUNDE",
-    "scoreSuffix": "richtig",
-    "journeyLabel": "GEDÄCHTNIS-HERAUSFORDERUNG",
-    "kitchensCleared": "{value} / {total} Herausforderungen abgeschlossen",
-    "currentRank": "AKTUELLER STAND · GEDÄCHTNIS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Gedächtnistest gestartet"
-      },
-      {
-        "afterStage": 5,
-        "label": "Gedächtnistest abgeschlossen"
-      }
-    ],
-    "unlockEyebrow": "ERGEBNIS-UPDATE · GEDÄCHTNISTEST",
-    "unlockTitle": "Eine neue Herausforderung ist bereit: Gedächtnistest",
-    "unlockCopy": "Weiter geht es mit dem Gedächtnistest.",
-    "finalEyebrow": "DEIN GEDÄCHTNISERGEBNIS",
-    "finalCareerTitle": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-    "strongestLabel": "Stärkster Bereich im Gedächtnis",
-    "stages": [
-      {
-        "difficulty": "Grundlagen",
-        "preAdBadge": "SOFORTIGES ERINNERN ABGESCHLOSSEN",
-        "preAdTitle": "Sofortiges Erinnern abgeschlossen",
-        "preAdCopy": "In der nächsten Runde kommen Bilder und Details hinzu.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "SOFORTIGES ERINNERN ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Sofortiges Erinnern abgeschlossen",
-            "insight": "In der nächsten Runde kommen Bilder und Details hinzu."
-          },
-          "medium": {
-            "title": "Sofortiges Erinnern abgeschlossen",
-            "insight": "In der nächsten Runde kommen Bilder und Details hinzu."
-          },
-          "low": {
-            "title": "Sofortiges Erinnern abgeschlossen",
-            "insight": "In der nächsten Runde kommen Bilder und Details hinzu."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
-          "title": "Bilder und Details",
-          "difficulty": "Aufbau",
-          "tagline": "Farben. Positionen. Veränderungen.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Aufbau",
-        "preAdBadge": "BILDER UND DETAILS ABGESCHLOSSEN",
-        "preAdTitle": "Visuelles Erinnern geschafft",
-        "preAdCopy": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "BILDER UND DETAILS ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Visuelles Erinnern geschafft",
-            "insight": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis."
-          },
-          "medium": {
-            "title": "Visuelles Erinnern geschafft",
-            "insight": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis."
-          },
-          "low": {
-            "title": "Visuelles Erinnern geschafft",
-            "insight": "Als Nächstes folgen Zahlen und Arbeitsgedächtnis."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
-          "title": "Zahlen und Muster",
-          "difficulty": "Fortgeschritten",
-          "tagline": "Ziffern. Reihenfolge. Arbeitsgedächtnis.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Fortgeschritten",
-        "preAdBadge": "ZAHLEN UND MUSTER ABGESCHLOSSEN",
-        "preAdTitle": "Mehr als die Hälfte geschafft",
-        "preAdCopy": "Als Nächstes kommt die Gedächtnisfalle.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "ZAHLEN UND MUSTER ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes kommt die Gedächtnisfalle."
-          },
-          "medium": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes kommt die Gedächtnisfalle."
-          },
-          "low": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes kommt die Gedächtnisfalle."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
-          "title": "Die Gedächtnisfalle",
-          "difficulty": "Anspruchsvoll",
-          "tagline": "Ablenkung. Ähnliche Hinweise. Ältere Erinnerungen.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Anspruchsvoll",
-        "preAdBadge": "GEDÄCHTNISFALLE ABGESCHLOSSEN",
-        "preAdTitle": "Finale Gedächtnisaufgabe als Nächstes",
-        "preAdCopy": "Eine letzte Runde prüft, was noch hängen geblieben ist.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "GEDÄCHTNISFALLE ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Finale Gedächtnisaufgabe als Nächstes",
-            "insight": "Eine letzte Runde prüft, was noch hängen geblieben ist."
-          },
-          "medium": {
-            "title": "Finale Gedächtnisaufgabe als Nächstes",
-            "insight": "Eine letzte Runde prüft, was noch hängen geblieben ist."
-          },
-          "low": {
-            "title": "Finale Gedächtnisaufgabe als Nächstes",
-            "insight": "Eine letzte Runde prüft, was noch hängen geblieben ist."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
-          "title": "Finale Gedächtnisaufgabe",
-          "difficulty": "Abschlussprüfung",
-          "tagline": "Verzögerter Abruf. Verarbeitung. Letzte Erinnerungen.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Abschlussprüfung",
-        "preAdBadge": "FINALE GEDÄCHTNISAUFGABE ABGESCHLOSSEN",
-        "preAdTitle": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-        "preAdChecks": [
-          "40 Antworten geprüft",
-          "Sechs Gedächtnisfähigkeiten im Vergleich",
-          "Endergebnis berechnet"
-        ],
-        "preAdButton": "Mein Ergebnis ansehen",
-        "resultIcon": "🧠",
-        "resultLabel": "FINALE GEDÄCHTNISAUFGABE ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-            "insight": "Dein Gedächtnisergebnis kann jetzt angezeigt werden."
-          },
-          "medium": {
-            "title": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-            "insight": "Dein Gedächtnisergebnis kann jetzt angezeigt werden."
-          },
-          "low": {
-            "title": "GEDÄCHTNISTEST ABGESCHLOSSEN",
-            "insight": "Dein Gedächtnisergebnis kann jetzt angezeigt werden."
-          }
-        },
-        "preAdCopy": "Dein Gedächtnisergebnis kann jetzt angezeigt werden."
-      }
-    ]
   }
 }

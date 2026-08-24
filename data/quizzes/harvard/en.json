@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "title": "Only 7% Pass This Harvard Entrance Exam",
   "eyebrow": "THE CASE ROOM CHALLENGE",
   "summary": "Evidence, numbers, priorities and strategic trade-offs test whether your strongest decision survives scrutiny.",
@@ -19,233 +20,54 @@
     },
     "disclaimer": "Independent entertainment challenge. Not an official Harvard admissions test and not affiliated with any university."
   },
-  "results": {
-    "name": "YOUR HARVARD ENTRANCE SCORE",
-    "profiles": [
-      {
-        "min": 0.9,
-        "tier": "90–100%",
-        "title": "The Case Room Standout",
-        "copy": "You balanced evidence, numbers and trade-offs with exceptional consistency."
-      },
-      {
-        "min": 0.8,
-        "tier": "80–89%",
-        "title": "The Harvard Natural",
-        "copy": "You crossed the challenge line by making clear, evidence-led decisions across very different cases."
-      },
-      {
-        "min": 0.7,
-        "tier": "70–79%",
-        "title": "The Strategic Analyst",
-        "copy": "You handled most data and judgement problems strongly, with only a few close calls."
-      },
-      {
-        "min": 0.6,
-        "tier": "60–69%",
-        "title": "The Deliberate Thinker",
-        "copy": "You found sound decisions in many cases and built a strong base for another attempt."
-      },
-      {
-        "min": 0.5,
-        "tier": "50–59%",
-        "title": "The Promising Applicant",
-        "copy": "Several analytical styles clicked, while the review highlights where one extra comparison mattered."
-      },
-      {
-        "min": 0,
-        "tier": "Below 50%",
-        "title": "The Curious Decision-Maker",
-        "copy": "Some cases proved difficult, but each missed constraint offers a useful lesson for the next decision."
-      }
-    ],
-    "dimensions": [
-      {
-        "label": "Analysis and decisions",
-        "categories": [
-          "analytical_reasoning",
-          "decision_making"
-        ]
-      },
-      {
-        "label": "Numbers and data",
-        "categories": [
-          "quantitative_reasoning",
-          "data_interpretation"
-        ]
-      },
-      {
-        "label": "Evidence and language",
-        "categories": [
-          "evidence_judgement",
-          "verbal_reasoning"
-        ]
-      }
-    ],
-    "score": {
-      "passed": "You passed the Harvard entrance challenge!",
-      "finished": "Harvard entrance challenge complete",
-      "correctLabel": "correct",
-      "strongest": "Strongest entrance area",
-      "trickiest": "Trickiest entrance area",
-      "bestRound": "Best section",
-      "showPercentage": true,
-      "showBestRound": true,
-      "disclaimer": "Independent entertainment challenge. Not an official Harvard admissions test and not affiliated with any university."
-    }
+  "checkpoint": {
+    "finalAdNote": "Short ad first — then see your result."
   },
   "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
     "resultProgressLabel": "Harvard entrance exam",
     "resultProgressComplete": "{value}% complete",
-    "currentScoreLabel": "CURRENT ENTRANCE SCORE",
-    "levelLabel": "SECTION",
-    "scoreSuffix": "correct",
-    "journeyLabel": "HARVARD ENTRANCE EXAM",
-    "kitchensCleared": "{value} sections complete",
-    "currentRank": "EXAM PROGRESS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Entrance Exam Started"
-      },
-      {
-        "afterStage": 5,
-        "label": "Entrance Exam Complete"
-      }
-    ],
-    "unlockEyebrow": "ENTRANCE EXAM",
-    "unlockTitle": "Your next exam section is ready",
-    "unlockCopy": "Continue when you’re ready.",
-    "finalEyebrow": "YOUR HARVARD ENTRANCE EXAM RESULT",
-    "finalCareerTitle": "HARVARD ENTRANCE EXAM COMPLETE",
-    "strongestLabel": "Strongest entrance area",
-    "stages": [
-      {
+    "stages": {
+      "stage-1": {
         "difficulty": "Foundation",
         "preAdBadge": "ADMISSIONS BRIEFING COMPLETE",
         "preAdTitle": "First exam section complete",
         "preAdCopy": "Good start. The next section is ready.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "ADMISSIONS BRIEFING COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          },
-          "medium": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          },
-          "low": {
-            "title": "First exam section complete",
-            "insight": "Good start. The next section is ready."
-          }
-        },
         "next": {
           "eyebrow": "NEXT EXAM SECTION · DEVELOPING",
-          "title": "Evidence & Analysis",
-          "difficulty": "Developing",
-          "tagline": "Claims. Comparisons. Strong support.",
-          "button": "Continue"
+          "tagline": "Claims. Comparisons. Strong support."
         }
       },
-      {
+      "stage-2": {
         "difficulty": "Developing",
         "preAdBadge": "EVIDENCE & ANALYSIS COMPLETE",
         "preAdTitle": "Second exam section complete",
         "preAdCopy": "The next section raises the difficulty.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "EVIDENCE & ANALYSIS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          },
-          "medium": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          },
-          "low": {
-            "title": "Second exam section complete",
-            "insight": "The next section raises the difficulty."
-          }
-        },
         "next": {
           "eyebrow": "NEXT EXAM SECTION · SKILLED",
-          "title": "Quantitative Decisions",
-          "difficulty": "Skilled",
-          "tagline": "Rates. Trade-offs. Resource choices.",
-          "button": "Continue"
+          "tagline": "Rates. Trade-offs. Resource choices."
         }
       },
-      {
+      "stage-3": {
         "difficulty": "Skilled",
         "preAdBadge": "QUANTITATIVE DECISIONS COMPLETE",
         "preAdTitle": "More than halfway through",
         "preAdCopy": "The advanced section is next.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "QUANTITATIVE DECISIONS COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          },
-          "medium": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          },
-          "low": {
-            "title": "More than halfway through",
-            "insight": "The advanced section is next."
-          }
-        },
         "next": {
           "eyebrow": "NEXT EXAM SECTION · ADVANCED",
-          "title": "The Case Room",
-          "difficulty": "Advanced",
-          "tagline": "Competing priorities. Hidden assumptions.",
-          "button": "Continue"
+          "tagline": "Competing priorities. Hidden assumptions."
         }
       },
-      {
+      "stage-4": {
         "difficulty": "Advanced",
         "preAdBadge": "THE CASE ROOM COMPLETE",
         "preAdTitle": "Final assessment next",
         "preAdCopy": "Only the final section remains.",
-        "preAdButton": "Continue",
-        "resultIcon": "✓",
-        "resultLabel": "THE CASE ROOM COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          },
-          "medium": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          },
-          "low": {
-            "title": "Final assessment next",
-            "insight": "Only the final section remains."
-          }
-        },
         "next": {
           "eyebrow": "NEXT EXAM SECTION · FINAL ASSESSMENT",
-          "title": "The Final Committee",
-          "difficulty": "Final Assessment",
-          "tagline": "Multi-step evidence. Final strategic judgement.",
-          "button": "Continue"
+          "tagline": "Multi-step evidence. Final strategic judgement."
         }
       },
-      {
+      "stage-5": {
         "difficulty": "Final Assessment",
         "preAdBadge": "THE FINAL COMMITTEE COMPLETE",
         "preAdTitle": "HARVARD ENTRANCE EXAM COMPLETE",
@@ -255,591 +77,449 @@
           "Skill breakdown prepared",
           "Final score calculated"
         ],
-        "preAdButton": "See My Result",
-        "resultIcon": "🎓",
-        "resultLabel": "THE FINAL COMMITTEE COMPLETE",
-        "resultBands": {
-          "high": {
-            "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          },
-          "medium": {
-            "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          },
-          "low": {
-            "title": "HARVARD ENTRANCE EXAM COMPLETE",
-            "insight": "Your result is ready to reveal."
-          }
-        }
+        "preAdButton": "See My Result"
       }
-    ]
+    }
   },
-  "checkpoint": {
-    "nextPrefix": "NEXT EXAM SECTION",
-    "adNote": "Short ad first — then continue.",
-    "finalAdNote": "Short ad first — then see your result.",
-    "finalBadge": "HARVARD ENTRANCE EXAM COMPLETE",
-    "finalIcon": "🎓",
-    "finalTitle": "Your Entrance Result Is Ready",
-    "finalCopy": "Your analytical result is ready to reveal.",
-    "finalButton": "See My Result",
-    "finalChecklist": [
-      "40 answers checked",
-      "Skill breakdown prepared",
-      "Final score calculated"
-    ],
-    "reveals": [
-      {
-        "badge": "ADMISSIONS BRIEFING COMPLETE",
-        "icon": "✓",
-        "title": "First exam section complete",
-        "signal": "fixed",
-        "message": "Good start. The next section is ready."
+  "results": {
+    "name": "YOUR HARVARD ENTRANCE SCORE",
+    "profiles": {
+      "profile-1": {
+        "tier": "90–100%",
+        "title": "The Case Room Standout",
+        "copy": "You balanced evidence, numbers and trade-offs with exceptional consistency."
       },
-      {
-        "badge": "EVIDENCE & ANALYSIS COMPLETE",
-        "icon": "✓",
-        "title": "Second exam section complete",
-        "signal": "fixed",
-        "message": "The next section raises the difficulty."
+      "profile-2": {
+        "tier": "80–89%",
+        "title": "The Harvard Natural",
+        "copy": "You crossed the challenge line by making clear, evidence-led decisions across very different cases."
       },
-      {
-        "badge": "QUANTITATIVE DECISIONS COMPLETE",
-        "icon": "✓",
-        "title": "More than halfway through",
-        "signal": "fixed",
-        "message": "The advanced section is next."
+      "profile-3": {
+        "tier": "70–79%",
+        "title": "The Strategic Analyst",
+        "copy": "You handled most data and judgement problems strongly, with only a few close calls."
       },
-      {
-        "badge": "THE CASE ROOM COMPLETE",
-        "icon": "✓",
-        "title": "Final assessment next",
-        "signal": "fixed",
-        "message": "Only the final section remains."
+      "profile-4": {
+        "tier": "60–69%",
+        "title": "The Deliberate Thinker",
+        "copy": "You found sound decisions in many cases and built a strong base for another attempt."
       },
-      {
-        "badge": "THE FINAL COMMITTEE COMPLETE",
-        "icon": "🎓",
-        "title": "HARVARD ENTRANCE EXAM COMPLETE",
-        "signal": "fixed",
-        "message": "Your result is ready to reveal."
+      "profile-5": {
+        "tier": "50–59%",
+        "title": "The Promising Applicant",
+        "copy": "Several analytical styles clicked, while the review highlights where one extra comparison mattered."
+      },
+      "profile-6": {
+        "tier": "Below 50%",
+        "title": "The Curious Decision-Maker",
+        "copy": "Some cases proved difficult, but each missed constraint offers a useful lesson for the next decision."
       }
-    ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Analysis and decisions"
+      },
+      "dimension-2": {
+        "label": "Numbers and data"
+      },
+      "dimension-3": {
+        "label": "Evidence and language"
+      }
+    },
+    "score": {
+      "passed": "You passed the Harvard entrance challenge!",
+      "finished": "Harvard entrance challenge complete",
+      "correctLabel": "correct",
+      "strongest": "Strongest entrance area",
+      "trickiest": "Trickiest entrance area",
+      "bestRound": "Best section"
+    }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Admissions Briefing",
-      "questions": [
-        {
-          "id": "harvard-s1q1",
+      "questions": {
+        "harvard-s1q1": {
           "question": "A team needs writing, numbers and presentation skills. Which option covers all three with the fewest people?",
           "answers": [
             "Three writers",
             "One writer and one analyst who presents",
             "One presenter",
             "Two analysts"
-          ],
-          "correct": 1,
-          "category": "analytical_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s1q2",
+        "harvard-s1q2": {
           "question": "A $250 budget spends 36%. How much remains?",
           "answers": [
             "$80",
             "$90",
             "$150",
             "$160"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s1q3",
+        "harvard-s1q3": {
           "question": "Which evidence most directly supports a need for later library hours?",
           "answers": [
             "Entry records show repeated turnaways at closing time",
             "A poster requests longer hours",
             "One student likes studying late",
             "The library has old chairs"
-          ],
-          "correct": 0,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s1q4",
+        "harvard-s1q4": {
           "question": "Two projects have equal benefit. One costs less and finishes sooner. Which should be preferred under those criteria?",
           "answers": [
             "The more expensive project",
             "Neither can be compared",
             "The cheaper, faster project",
             "Choose randomly"
-          ],
-          "correct": 2,
-          "category": "decision_making"
+          ]
         },
-        {
-          "id": "harvard-s1q5",
+        "harvard-s1q5": {
           "question": "Which sentence is most precise?",
           "answers": [
             "Engagement was kind of good",
             "People seemed happier",
             "Attendance rose from 120 to 156",
             "The event did better"
-          ],
-          "correct": 2,
-          "category": "verbal_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s1q6",
+        "harvard-s1q6": {
           "question": "Applications rise from 400 to 500. What is the percentage increase?",
           "answers": [
             "25%",
             "20%",
             "100%",
             "125%"
-          ],
-          "correct": 0,
-          "category": "data_interpretation"
+          ]
         },
-        {
-          "id": "harvard-s1q7",
+        "harvard-s1q7": {
           "question": "A policy benefits 80 people at $4,000. What is its cost per beneficiary?",
           "answers": [
             "$20",
             "$40",
             "$80",
             "$50"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s1q8",
+        "harvard-s1q8": {
           "question": "A proposal promises higher participation but gives no mechanism. What is the best first question?",
           "answers": [
             "Who designed the logo?",
             "How is the proposal expected to change participation?",
             "Is the title memorable?",
             "Can it start tomorrow?"
-          ],
-          "correct": 1,
-          "category": "evidence_judgement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Evidence & Analysis",
-      "questions": [
-        {
-          "id": "harvard-s2q1",
+      "questions": {
+        "harvard-s2q1": {
           "question": "Which conclusion follows? All funded pilots were reviewed. Project K was funded.",
           "answers": [
             "Project K was reviewed",
             "Only Project K was reviewed",
             "Every reviewed project was funded",
             "Project K succeeded"
-          ],
-          "correct": 0,
-          "category": "analytical_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s2q2",
+        "harvard-s2q2": {
           "question": "A survey of volunteers finds 90% support. What is the biggest limitation?",
           "answers": [
             "Percentages cannot be used",
             "Support must be zero",
             "Volunteers may not represent the whole population",
             "The survey has answers"
-          ],
-          "correct": 2,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s2q3",
+        "harvard-s2q3": {
           "question": "Which comparison best tests whether a new reminder increased attendance?",
           "answers": [
             "Attendance after the reminder only",
             "Similar groups with and without the reminder",
             "The reminder's colour",
             "One attendee's opinion"
-          ],
-          "correct": 1,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s2q4",
+        "harvard-s2q4": {
           "question": "A plan assumes demand will grow. Which evidence most weakens it?",
           "answers": [
             "The plan has three pages",
             "The team likes the idea",
             "The launch date is Monday",
             "Demand has fallen steadily for four comparable periods"
-          ],
-          "correct": 3,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s2q5",
+        "harvard-s2q5": {
           "question": "A programme serves 60 of 75 applicants. What percentage is served?",
           "answers": [
             "60%",
             "70%",
             "75%",
             "80%"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s2q6",
+        "harvard-s2q6": {
           "question": "Which option is an observation rather than an interpretation?",
           "answers": [
             "The queue was badly managed",
             "Average wait time was 18 minutes",
             "Visitors were impatient",
             "The service felt slow"
-          ],
-          "correct": 1,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s2q7",
+        "harvard-s2q7": {
           "question": "A report uses one success story to claim the programme works for everyone. What is the flaw?",
           "answers": [
             "The story is too positive",
             "The programme has a name",
             "One case cannot establish a universal result",
             "Success is impossible"
-          ],
-          "correct": 2,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s2q8",
+        "harvard-s2q8": {
           "question": "IMPARTIAL is closest in meaning to…",
           "answers": [
             "Unbiased",
             "Uncertain",
             "Unprepared",
             "Unusual"
-          ],
-          "correct": 0,
-          "category": "verbal_reasoning"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Quantitative Decisions",
-      "questions": [
-        {
-          "id": "harvard-s3q1",
+      "questions": {
+        "harvard-s3q1": {
           "question": "A project costs $18,000 and saves $3,000 per month. After how many months are costs recovered?",
           "answers": [
             "3",
             "6",
             "9",
             "12"
-          ],
-          "correct": 1,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s3q2",
+        "harvard-s3q2": {
           "question": "Three teams process 24 cases each. How many cases in total?",
           "answers": [
             "72",
             "48",
             "64",
             "96"
-          ],
-          "correct": 0,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s3q3",
+        "harvard-s3q3": {
           "question": "A score weights impact twice and feasibility once. Proposal X has impact 8, feasibility 6. What is its total?",
           "answers": [
             "16",
             "18",
             "24",
             "22"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s3q4",
+        "harvard-s3q4": {
           "question": "Project A reaches 120 people for $6,000. Project B reaches 150 for $9,000. Which has lower cost per person?",
           "answers": [
             "They are equal",
             "Project B",
             "Project A",
             "There is not enough information"
-          ],
-          "correct": 2,
-          "category": "data_interpretation"
+          ]
         },
-        {
-          "id": "harvard-s3q5",
+        "harvard-s3q5": {
           "question": "A deadline is fixed. Task X takes 4 days; Y takes 3 and starts after X. Minimum total time?",
           "answers": [
             "3 days",
             "4 days",
             "7 days",
             "12 days"
-          ],
-          "correct": 2,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s3q6",
+        "harvard-s3q6": {
           "question": "A fund of $12,000 is split 2:1 between programmes A and B. How much goes to A?",
           "answers": [
             "$4,000",
             "$6,000",
             "$9,000",
             "$8,000"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s3q7",
+        "harvard-s3q7": {
           "question": "Which region has the highest success rate?",
           "answers": [
             "A: 40/50",
             "B: 45/60",
             "C: 54/75",
             "D: 70/100"
-          ],
-          "correct": 0,
-          "category": "data_interpretation"
+          ]
         },
-        {
-          "id": "harvard-s3q8",
+        "harvard-s3q8": {
           "question": "A dashboard shows reach stable, clicks stable, but completed forms fall. Where is the likely problem?",
           "answers": [
             "Before the ad is shown",
             "During form completion",
             "At the reach stage",
             "The data prove no problem"
-          ],
-          "correct": 1,
-          "category": "data_interpretation"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "The Case Room",
-      "questions": [
-        {
-          "id": "harvard-s4q1",
+      "questions": {
+        "harvard-s4q1": {
           "question": "Two urgent tasks remain: one prevents immediate harm; the other improves next month's report. Which comes first?",
           "answers": [
             "The harm-prevention task",
             "The report",
             "Whichever is easier",
             "Do neither"
-          ],
-          "correct": 0,
-          "category": "decision_making"
+          ]
         },
-        {
-          "id": "harvard-s4q2",
+        "harvard-s4q2": {
           "question": "A committee must include Finance and Community skills. Ana has Finance; Bo has Community; Cy has both but is unavailable. Smallest available team?",
           "answers": [
             "Ana only",
             "Bo only",
             "No team is possible",
             "Ana and Bo"
-          ],
-          "correct": 3,
-          "category": "analytical_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s4q3",
+        "harvard-s4q3": {
           "question": "A proposal scores impact 7 and cost 4. Another scores impact 8 and cost 8. If higher impact and lower cost are preferred, what is true?",
           "answers": [
             "The first wins both",
             "Neither dominates the other",
             "They are identical",
             "The second wins both"
-          ],
-          "correct": 1,
-          "category": "decision_making"
+          ]
         },
-        {
-          "id": "harvard-s4q4",
+        "harvard-s4q4": {
           "question": "A claim says a pilot caused a 10% rise, but the comparison group rose 9%. What is the cautious conclusion?",
           "answers": [
             "The pilot caused the full 10%",
             "The pilot had no possible effect",
             "The net difference is small and needs further evidence",
             "The comparison is irrelevant"
-          ],
-          "correct": 2,
-          "category": "evidence_judgement"
+          ]
         },
-        {
-          "id": "harvard-s4q5",
+        "harvard-s4q5": {
           "question": "A project is approved only if value exceeds cost. Value is $45k and cost is $45k. Is it approved?",
           "answers": [
             "Yes, because they are equal",
             "Yes, because cost is known",
             "It depends on the project name",
             "No, because value does not exceed cost"
-          ],
-          "correct": 3,
-          "category": "decision_making"
+          ]
         },
-        {
-          "id": "harvard-s4q6",
+        "harvard-s4q6": {
           "question": "Attendance is 200 Monday and 260 Tuesday. What share of the two-day total occurred Tuesday?",
           "answers": [
             "50%",
             "52%",
             "56.5%",
             "60%"
-          ],
-          "correct": 2,
-          "category": "data_interpretation"
+          ]
         },
-        {
-          "id": "harvard-s4q7",
+        "harvard-s4q7": {
           "question": "Which response best acknowledges uncertainty?",
           "answers": [
             "The evidence suggests an effect, but the sample is small",
             "The result is useless",
             "The conclusion is certain",
             "The evidence proves everything"
-          ],
-          "correct": 0,
-          "category": "verbal_reasoning"
+          ]
         },
-        {
-          "id": "harvard-s4q8",
+        "harvard-s4q8": {
           "question": "A decision rule says choose the highest benefit among options under $10k. Which wins?",
           "answers": [
             "A: $8k, benefit 6",
             "C: $9k, benefit 8",
             "B: $10k, benefit 9",
             "D: $11k, benefit 10"
-          ],
-          "correct": 1,
-          "category": "decision_making"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "The Final Committee",
-      "questions": [
-        {
-          "id": "harvard-s5q1",
+      "questions": {
+        "harvard-s5q1": {
           "question": "A programme costs $20k, reaches 500 people and achieves 40% completion. What is cost per completion?",
           "answers": [
             "$40",
             "$100",
             "$80",
             "$200"
-          ],
-          "correct": 1,
-          "category": "quantitative_reasoning",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q2",
+        "harvard-s5q2": {
           "question": "Every priority project has an owner. Project L has no owner. What follows?",
           "answers": [
             "L is complete",
             "L has two owners",
             "L is not a priority project",
             "No project has an owner"
-          ],
-          "correct": 2,
-          "category": "analytical_reasoning",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q3",
+        "harvard-s5q3": {
           "question": "Proposal A: impact 9, feasibility 5. B: impact 7, feasibility 9. Score = impact + feasibility. Which wins?",
           "answers": [
             "A",
             "B",
             "Neither was scored",
             "They tie"
-          ],
-          "correct": 3,
-          "category": "quantitative_reasoning",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q4",
+        "harvard-s5q4": {
           "question": "A survey reports 72% support with a ±4-point margin. Which range matches that uncertainty?",
           "answers": [
             "68% to 76%",
             "72% to 76%",
             "64% to 72%",
             "70% to 74%"
-          ],
-          "correct": 0,
-          "category": "data_interpretation",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q5",
+        "harvard-s5q5": {
           "question": "A project must be urgent and feasible. X is urgent but not feasible; Y is feasible but not urgent; Z is both. Which qualifies?",
           "answers": [
             "X",
             "Y",
             "Z",
             "X and Y"
-          ],
-          "correct": 2,
-          "category": "analytical_reasoning",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q6",
+        "harvard-s5q6": {
           "question": "Region A has 80 successes from 100; B has 117 from 150. Which has the higher rate, and by how much?",
           "answers": [
             "A by 2 percentage points",
             "B by 2 points",
             "A by 20 points",
             "They are equal"
-          ],
-          "correct": 0,
-          "category": "data_interpretation",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q7",
+        "harvard-s5q7": {
           "question": "A pilot's reach rises 20%, but conversion falls from 10% to 8%. Starting from 1,000 people, how do completions change?",
           "answers": [
             "They rise from 100 to 120",
             "They fall from 100 to 96",
             "They fall from 100 to 80",
             "They stay at 100"
-          ],
-          "correct": 1,
-          "category": "data_interpretation",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "harvard-s5q8",
+        "harvard-s5q8": {
           "question": "The final rule selects the lowest-cost proposal scoring at least 15. A: cost 9, score 14. B: cost 12, score 16. C: cost 10, score 15. D: cost 8, score 13. Which is selected?",
           "answers": [
             "A",
             "B",
             "D",
             "C"
-          ],
-          "correct": 3,
-          "category": "decision_making",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ]
+  }
 }

@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Slechts 7% slaagt voor deze toelatingstest verloskunde",
   "eyebrow": "RUSTIG GEBOORTECENTRUM",
   "summary": "Zwangerschap, geboorte, zorg voor de pasgeborene en kalm oordelen testen je aandacht.",
+  "progressLabel": "voltooid",
   "landing": {
     "intro": "Zwangerschap, bevalling en zorg voor de pasgeborene: blijf jij rustig en zie je het detail dat ertoe doet?",
     "cta": "Start de test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Alleen voor entertainment en algemene kennis. Deze toelatingstest verloskunde is geen officieel examen, kwalificatie of professioneel advies."
   },
+  "checkpoint": {
+    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat."
+  },
+  "career": {
+    "resultProgressLabel": "TOELATINGSTEST",
+    "resultProgressComplete": "{value}% voltooid",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Basis",
+        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
+        "preAdTitle": "Eerste examenonderdeel voltooid",
+        "preAdCopy": "Goede start. Het volgende onderdeel staat klaar.",
+        "next": {
+          "eyebrow": "VOLGEND EXAMENONDERDEEL · IN ONTWIKKELING",
+          "tagline": "Fysiologie. Welzijn. Basis van de geboorte."
+        }
+      },
+      "stage-2": {
+        "difficulty": "In ontwikkeling",
+        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
+        "preAdTitle": "Tweede examenonderdeel voltooid",
+        "preAdCopy": "Het volgende onderdeel wordt moeilijker.",
+        "next": {
+          "eyebrow": "VOLGEND EXAMENONDERDEEL · GEVORDERD",
+          "tagline": "Toestemming. Infectiepreventie. Ondersteuning."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Gevorderd",
+        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
+        "preAdTitle": "Je bent over de helft",
+        "preAdCopy": "Het gevorderde onderdeel komt eraan.",
+        "next": {
+          "eyebrow": "VOLGEND EXAMENONDERDEEL · UITDAGEND",
+          "tagline": "Veranderingen. Eerste zorg. Prioriteiten."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Uitdagend",
+        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
+        "preAdTitle": "Hierna volgt de eindtoets",
+        "preAdCopy": "Alleen de eindtoets resteert nog.",
+        "next": {
+          "eyebrow": "VOLGEND EXAMENONDERDEEL · EINDTOETS",
+          "tagline": "Meerdere aanwijzingen. Veilige opschaling. Eindoordeel."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Eindtoets",
+        "preAdBadge": "TOELATINGSTEST VOLTOOID",
+        "preAdTitle": "TOELATINGSTEST VOLTOOID",
+        "preAdCopy": "Je resultaat staat klaar om te bekijken.",
+        "preAdChecks": [
+          "40 antwoorden gecontroleerd",
+          "Overzicht per onderdeel gereed",
+          "Eindscore berekend"
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
+      }
+    }
+  },
   "results": {
     "name": "JOUW SCORE VOOR VERLOSKUNDE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Talent voor geboortezorg",
         "copy": "Je beheerste zwangerschap, geboorte, veiligheid en communicatie met opvallende precisie. Zelfs de lastigste vragen brachten je nauwelijks uit balans."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Verloskundig natuurtalent",
         "copy": "Je resultaat toont een zeer sterke beheersing van zwangerschap, geboorte, veiligheid en communicatie. Ook bij subtiele valkuilen bleef je redenering betrouwbaar."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Rustige kandidaat",
         "copy": "Je behaalde een solide resultaat bij zwangerschap, geboorte, veiligheid en communicatie. Enkele lastige details kostten punten, maar het totaalbeeld blijft sterk."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Aandachtige observator",
         "copy": "Je hebt een goede basis in zwangerschap, geboorte, veiligheid en communicatie. Als je de lastigste onderdelen aanscherpt, kan je volgende resultaat flink stijgen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Veelbelovende kandidaat",
         "copy": "Je herkende meerdere belangrijke aspecten van zwangerschap, geboorte, veiligheid en communicatie. De gemiste vragen laten duidelijk zien wat je nog kunt versterken."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Onder 50%",
         "title": "Nieuwsgierige zorgdenker",
         "copy": "Deze uitdaging liet groeikansen zien bij zwangerschap, geboorte, veiligheid en communicatie. Je nieuwsgierigheid en de opgeloste vragen vormen een uitstekend vertrekpunt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Zwangerschap en prenatale zorg",
-        "categories": [
-          "pregnancy_physiology",
-          "antenatal_wellbeing"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Zwangerschap en prenatale zorg"
       },
-      {
-        "label": "Bevalling en pasgeborenenzorg",
-        "categories": [
-          "labour_birth",
-          "newborn_care"
-        ]
+      "dimension-2": {
+        "label": "Bevalling en pasgeborenenzorg"
       },
-      {
-        "label": "Veiligheid en communicatie",
-        "categories": [
-          "infection_safety",
-          "communication_priorities"
-        ]
+      "dimension-3": {
+        "label": "Veiligheid en communicatie"
       }
-    ],
+    },
     "score": {
       "passed": "Geslaagd voor de toelatingstest verloskunde!",
       "finished": "toelatingstest verloskunde voltooid",
@@ -88,9 +133,6 @@
       "strongest": "Sterkste onderdeel voor toelating",
       "trickiest": "Moeilijkste onderdeel voor toelating",
       "bestRound": "Beste uitdaging",
-      "showPercentage": true,
-      "disclaimer": "Alleen voor entertainment en algemene kennis. Deze toelatingstest verloskunde is geen officieel examen, kwalificatie of professioneel advies.",
-      "showBestRound": true,
       "insights": {
         "overview": "score voor verloskunde in één oogopslag",
         "correct": "goed",
@@ -99,857 +141,429 @@
         "breakdown": "Overzicht van je vaardigheden voor toelating",
         "snapshot": "Wat je profiel in de toelatingstest verloskunde suggereert",
         "targetReached": "Doel van 80% gehaald",
-        "targetRemaining": "Nog nodige juiste antwoorden voor 80%",
-        "details": {
-          "analysisTitle": "Zo lees je je score voor verloskunde",
-          "analysisCopy": "Dit resultaat bundelt 40 vragen over zwangerschap, geboorte, pasgeborenenzorg, veiligheid en communicatie. De verdeling hieronder laat zien welke onderdelen in deze poging het sterkst waren.",
-          "roadmapTitle": "In je volledige rapport van de toelatingstest verloskunde",
-          "roadmapIntro": "De score is slechts de eerste aanwijzing. Het rapport toont je sterkste onderdeel voor toelating, de uitsplitsing per onderdeel en de gemiste vragen in de toelatingstest verloskunde.",
-          "roadmapItems": [
-            "Scoreanalyse",
-            "Sterkste onderdeel voor toelating",
-            "Overzicht van je vaardigheden voor toelating",
-            "Praktische vervolgstappen"
-          ],
-          "positionTitle": "Je route naar 80%",
-          "positionCopy": "Het recreatieve doel is 32 goede antwoorden van de 40. De markering toont hoe dichtbij deze poging in de toelatingstest verloskunde kwam, zonder vergelijking of professionele beoordeling.",
-          "measuredTitle": "Wat de toelatingstest verloskunde onderzocht",
-          "measuredIntro": "De vragen bestrijken drie aanvullende onderdelen van de toelatingstest verloskunde.",
-          "measuredAreas": [
-            {
-              "title": "Zwangerschap en prenatale zorg",
-              "copy": "Basisfysiologie, betekenisvolle veranderingen en eenvoudige tijdsinformatie herkennen."
-            },
-            {
-              "title": "Bevalling en pasgeborenenzorg",
-              "copy": "Basale geboorteprocessen volgen en ondersteunende principes van pasgeborenenzorg herkennen."
-            },
-            {
-              "title": "Veiligheid en communicatie",
-              "copy": "Infectieveiligheid, waardigheid en meelevende communicatie beschermen en achteruitgang herkennen."
-            }
-          ],
-          "tipsTitle": "Drie manieren om je aanpak voor toelating aan te scherpen",
-          "tipsIntro": "Eenvoudige strategieën voor een volgende poging in de toelatingstest verloskunde, niet als professionele beoordeling.",
-          "tips": [
-            {
-              "title": "Let op verandering van normaal",
-              "copy": "Een duidelijke afwijking van het gebruikelijke patroon kan belangrijker zijn dan vergelijking met iemand anders."
-            },
-            {
-              "title": "Combineer de aanwijzingen",
-              "copy": "Plotseling bloedverlies, bleekheid, duizeligheid of grote welzijnsverandering wegen samen zwaarder."
-            },
-            {
-              "title": "Bescherm eerst de waardigheid",
-              "copy": "Sterke communicatie erkent emotie, luistert en bewaakt privacy zonder ongefundeerde beloften."
-            }
-          ],
-          "finalTitle": "Je resultaat in de toelatingstest verloskunde",
-          "finalCopy": "Je beantwoordde {score} van de {total} vragen goed. Hieronder staat je profiel voor deze poging."
-        }
+        "targetRemaining": "Nog nodige juiste antwoorden voor 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Eerste afspraak",
-      "questions": [
-        {
-          "id": "mid-r1q1",
+      "questions": {
+        "mid-r1q1": {
           "question": "Welk orgaan ondersteunt de uitwisseling tijdens de zwangerschap?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/midwifery/assets/icons/bladder.svg",
-            "/quizzes/midwifery/assets/icons/placenta.svg",
-            "/quizzes/midwifery/assets/icons/pancreas.svg",
-            "/quizzes/midwifery/assets/icons/appendix.svg"
-          ],
           "answers": [
             "Blaas",
             "Placenta",
             "Alvleesklier",
             "Blinde darm"
-          ],
-          "correct": 1,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r1q2",
+        "mid-r1q2": {
           "question": "Waarom worden observaties bij meer dan één afspraak vastgelegd?",
           "answers": [
             "Om elke waarde gelijk te maken",
             "Om gesprekken te vervangen",
             "Om een exact geboortetijdstip te voorspellen",
             "Om veranderingen en trends door de tijd te zien"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r1q3",
+        "mid-r1q3": {
           "question": "Wat doet de baarmoederhals tijdens de bevalling?",
           "answers": [
             "De baarmoederhals opent geleidelijk naarmate de bevalling vordert",
             "Hij pompt bloed",
             "Hij maakt melk",
             "Hij wordt de placenta"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r1q4",
+        "mid-r1q4": {
           "question": "Wat helpt een stabiele pasgeborene kort na de geboorte warmte vast te houden?",
           "answers": [
             "Een koud bad",
             "Natte dekens laten liggen",
             "Afdrogen en huid-op-huidcontact",
             "Ouder en baby routinematig scheiden"
-          ],
-          "correct": 2,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r1q5",
+        "mid-r1q5": {
           "question": "Wanneer is handhygiëne nodig bij zorg rond zwangerschap en geboorte?",
           "answers": [
             "Alleen aan het eind van een dienst",
             "Alleen als handschoenen scheuren",
             "Voor schoon contact en na blootstellingsrisico",
             "Alleen bij zichtbare vlekken"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r1q6",
+        "mid-r1q6": {
           "question": "Een vrouw zegt: ‘Ik maak me zorgen over wat er gaat gebeuren.’ Wat is de beste eerste reactie?",
           "answers": [
             "De zorg erkennen en uitnodigen tot vragen",
             "Zeggen dat er niets is om je zorgen over te maken",
             "Van onderwerp veranderen",
             "Meteen technische termen gebruiken"
-          ],
-          "correct": 0,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r2q2",
+        "mid-r2q2": {
           "question": "Wat is een belangrijke functie van vruchtwater?",
           "answers": [
             "De placenta vervangen",
             "Voedingsstoffen verteren",
             "Volwassen tanden vormen",
             "De zich ontwikkelende baby beschermen en dempen"
-          ],
-          "correct": 3,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q5",
+        "mid-r2q5": {
           "question": "Het gebruikelijke bewegingspatroon van de baby verandert duidelijk. Wat is het belangrijkst?",
           "answers": [
             "Elke baby moet op dezelfde momenten bewegen",
             "Eén universeel aantal beslist alles",
             "De verandering ten opzichte van normaal serieus nemen",
             "Beweging verandert nooit"
-          ],
-          "correct": 2,
-          "category": "antenatal_wellbeing"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Zwangerschap en geboorte",
-      "questions": [
-        {
-          "id": "mid-r2q1",
+      "questions": {
+        "mid-r2q1": {
           "question": "Waar ontwikkelt een baby zich normaal tijdens de zwangerschap?",
-          "presentation": "text",
           "answers": [
             "In de blaas",
             "In de maag",
             "In de baarmoeder",
             "In een long"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q3",
+        "mid-r2q3": {
           "question": "Wat verbindt de baby met de placenta?",
           "answers": [
             "Baarmoederhals",
             "Middenrif",
             "Navelstreng",
             "Urineleider"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q4",
-          "question": "Welke volgorde geeft het best weer hoe zuurstof de baby bereikt?",
-          "presentation": "spatial",
+        "mid-r2q4": {
           "visual": {
             "items": [
               "BLOED VAN DE MOEDER → PLACENTA → NAVELSTRENG → BABY"
             ],
             "ariaLabel": "Van het bloed van de moeder via de placenta en navelstreng naar de baby"
           },
+          "question": "Welke volgorde geeft het best weer hoe zuurstof de baby bereikt?",
           "answers": [
             "Baby → maag → placenta → long",
             "Bloed van de moeder → placenta → navelstreng → baby",
             "Placenta → blaas → navelstreng → baby",
             "Bloed van de moeder → nier → baarmoederhals → baby"
-          ],
-          "correct": 1,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r3q2",
+        "mid-r3q2": {
           "question": "Tijdens de zwangerschap ontstaat plotseling hevige hoofdpijn met veranderingen in het zien. Wat is het veiligst?",
           "answers": [
             "Rusten en na een uur opnieuw beoordelen",
             "Wachten tot de volgende routineafspraak",
             "Thuis iemand de klachten laten volgen",
             "Snel deskundige beoordeling zoeken"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r3q4",
-          "question": "Een grafiek toont bij drie afspraken 70, 74 en 78. Wat laat die zien?",
-          "presentation": "code",
+        "mid-r3q4": {
           "visual": {
             "items": [
               "AFSPRAAK 1: 70",
               "AFSPRAAK 2: 74",
               "AFSPRAAK 3: 78"
             ],
-            "columns": 1,
-            "separator": "•",
             "ariaLabel": "Waarden 70, 74 en 78 bij drie afspraken"
           },
+          "question": "Een grafiek toont bij drie afspraken 70, 74 en 78. Wat laat die zien?",
           "answers": [
             "Geen verandering",
             "Een gestage daling",
             "Een ontbrekende meting",
             "Een gestage stijging"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r3q5",
+        "mid-r3q5": {
           "question": "Welke verandering sinds een eerdere zwangerschapscontrole moet het duidelijkst worden gemeld?",
           "answers": [
             "De afspraak was in een andere kamer",
             "De notitie is iets langer",
             "De afspraak was later op de dag",
             "Eerder voelde de persoon zich goed, maar nu is die duizelig en opvallend bleek"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r5q1",
+        "mid-r5q1": {
           "question": "Welk orgaan zorgt voor de spiercontracties tijdens de bevalling?",
           "answers": [
             "Blaas",
             "Lever",
             "Baarmoeder",
             "Alvleesklier"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r5q4",
+        "mid-r5q4": {
           "question": "De baby is geboren, maar de placenta nog niet. Welke fase is dit?",
-          "presentation": "text",
           "answers": [
             "De nageboortefase",
             "De ontsluitingsfase",
             "De uitdrijvingsfase",
             "Een nieuwe zwangerschapsfase"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Respect en veiligheid",
-      "questions": [
-        {
-          "id": "mid-r4q4",
+      "questions": {
+        "mid-r4q4": {
           "question": "Een vrouw begint te huilen en zegt dat het haar te veel wordt. Wat moet eerst gebeuren?",
           "answers": [
             "Meteen praktisch advies geven",
             "Pauzeren, erkennen hoe ze zich voelt en luisteren",
             "Zeggen dat dit gevoel vaak voorkomt",
             "Haar afleiden van wat haar raakt"
-          ],
-          "correct": 1,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r5q6",
+        "mid-r5q6": {
           "question": "De steriele verpakking van materiaal is vóór gebruik gescheurd. Wat is het veiligst?",
           "answers": [
             "Niet als steriel beschouwen; vervangen of passende hulp inschakelen",
             "Dichtplakken en doorgaan",
             "De scheur verbergen",
             "De inhoud aanraken om te testen"
-          ],
-          "correct": 0,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q1",
+        "mid-r4q1": {
           "question": "Een schone handeling gaat beginnen. Wat is direct daarvoor essentieel?",
           "answers": [
             "Verschillende gedeelde oppervlakken aanraken",
             "Dezelfde gebruikte handschoenen houden",
             "Reiniging overslaan als handen schoon lijken",
             "Passende handhygiëne uitvoeren"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q2",
+        "mid-r4q2": {
           "question": "Bij een taak kan lichaamsvloeistof naar de ogen spatten. Wat is de veiligste voorbereiding?",
           "answers": [
             "Alleen het gezicht wegdraaien",
             "Alleen een gewone bril dragen",
             "Passende oog- of gezichtsbescherming gebruiken",
             "Het genoemde risico negeren"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q3",
+        "mid-r4q3": {
           "question": "Een vrouw zegt geen studenten erbij te willen. Wat is de beste reactie?",
           "answers": [
             "Zeggen dat aanwezigheid die keuze wegneemt",
             "Haar weigering op de gang bespreken",
             "Haar keuze respecteren en privacy beschermen",
             "Doorgaan zonder erop in te gaan"
-          ],
-          "correct": 2,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r4q6",
+        "mid-r4q6": {
           "question": "Een vrouw wil haar opties overwegen voor ze beslist. Wat is respectvol?",
           "answers": [
             "Haar naar de snelste optie duwen",
             "Alternatieven achterhouden",
             "Vragen als weigering van zorg zien",
             "Duidelijk informeren, vragen beantwoorden en passende tijd geven"
-          ],
-          "correct": 3,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r2q6",
+        "mid-r2q6": {
           "question": "Wat moet vóór een onderzoek eerst gebeuren?",
           "answers": [
             "Duidelijk uitleggen en geïnformeerde toestemming verkrijgen",
             "Aanwezigheid als toestemming zien",
             "Openbaar bespreken",
             "Beginnen voor vragen zijn beantwoord"
-          ],
-          "correct": 0,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r7q6",
+        "mid-r7q6": {
           "question": "Wat is nodig voordat je na gedeelde apparatuur een pasgeborene aanraakt?",
           "answers": [
             "Alleen het licht aanpassen",
             "Passende handhygiëne",
             "Eerst een ander oppervlak aanraken",
             "Tot het einde van de dag wachten"
-          ],
-          "correct": 1,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Beslissingen rond bevalling en kraamzorg",
-      "questions": [
-        {
-          "id": "mid-r6q3",
-          "question": "Welke verandering is het belangrijkst?",
-          "reasoningSteps": 2,
-          "answers": [
-            "De tijd op de grafiek",
-            "Dat de bevalling eerder begon",
-            "De kleur van de deken",
-            "Koortsig gevoel, rillen en duidelijke verslechtering ten opzichte van eerder"
-          ],
-          "correct": 3,
-          "category": "labour_birth",
-          "presentation": "code",
+      "questions": {
+        "mid-r6q3": {
           "visual": {
             "items": [
               "EERDER::Voelt zich goed · alert",
               "NU::Koortsig gevoel · rillen · plotseling veel slechter"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Eerder voelde de persoon zich goed en was die alert. Nu voelt die zich koortsig, rilt en is plotseling veel zieker."
-          }
+          },
+          "question": "Welke verandering is het belangrijkst?",
+          "answers": [
+            "De tijd op de grafiek",
+            "Dat de bevalling eerder begon",
+            "De kleur van de deken",
+            "Koortsig gevoel, rillen en duidelijke verslechtering ten opzichte van eerder"
+          ]
         },
-        {
-          "id": "mid-r7q2",
+        "mid-r7q2": {
           "question": "Welk patroon suggereert het sterkst dat een stabiele pasgeborene klaar is om te drinken?",
           "answers": [
             "Naar aanraking draaien, mond openen en alerter worden",
             "Diep blijven slapen zonder beweging",
             "Aanhoudend onregelmatig ademen en slecht reageren",
             "Steeds kouder en minder actief worden"
-          ],
-          "correct": 0,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r7q4",
+        "mid-r7q4": {
           "question": "Wat is het basisdoel van huid-op-huidcontact bij een stabiele pasgeborene?",
           "answers": [
             "Snel afkoelen",
             "Warmte, rustig contact en vroege voeding ondersteunen",
             "Ouder en baby apart houden",
             "Elke klinische observatie vervangen"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r5q2",
+        "mid-r5q2": {
           "question": "Welk zichtbaar patroon is het nuttigst om weeën te beschrijven?",
           "answers": [
             "Frequentie, duur en verandering door de tijd",
             "Alleen de kamertemperatuur",
             "De kleur van de klok",
             "Het aantal aanwezigen"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r5q3",
+        "mid-r5q3": {
           "question": "Welke verandering past het best bij een bevalling die verder doorzet?",
           "answers": [
             "Weeën worden doorgaans sterker, langer en regelmatiger",
             "Weeën stoppen voorgoed",
             "De placenta komt altijd vóór de baby",
             "De baarmoederhals keert terug naar vóór de zwangerschap"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r5q5",
+        "mid-r5q5": {
           "question": "Waarom kan van houding veranderen tijdens de weeën helpen als het veilig en prettig is?",
           "answers": [
             "Het garandeert een exact geboortetijdstip",
             "Het kan comfort bieden en helpen om met de weeën om te gaan",
             "Observatie is dan niet meer nodig",
             "Eén houding past iedereen"
-          ],
-          "correct": 1,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r7q1",
+        "mid-r7q1": {
           "question": "Een stabiele pasgeborene is afgedroogd, maar de kamer is koel. Wat ondersteunt warmte het best?",
           "answers": [
             "Onbedekt laten voor observatie",
             "Huid-op-huidcontact met passende warme bedekking",
             "Koude natte doeken aanbrengen",
             "Altijd scheiden, ongeacht de situatie"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r7q3",
+        "mid-r7q3": {
           "question": "Een pasgeborene drinkt anders dan normaal en ademt duidelijk sneller. Wat is het veiligst?",
           "answers": [
             "Dagen wachten zonder iets te melden",
             "Thuis een diagnose kiezen",
             "Een niet-voorgeschreven middel geven",
             "De verandering herkennen en snel deskundige beoordeling zoeken"
-          ],
-          "correct": 3,
-          "category": "newborn_care"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Eindtoets verloskunde",
-      "questions": [
-        {
-          "id": "mid-r10q6",
-          "question": "Wie heeft direct aandacht nodig?",
-          "reasoningSteps": 2,
-          "answers": [
-            "Persoon A, omdat routinevragen sneller gaan",
-            "Beiden kunnen wachten tot de volgende overdracht",
-            "Persoon B, omdat plotseling bloedverlies, bleekheid en duizeligheid verslechtering tonen",
-            "Alleen op aankomsttijd kiezen"
-          ],
-          "correct": 2,
-          "category": "communication_priorities",
-          "presentation": "code",
+      "questions": {
+        "mid-r10q6": {
           "visual": {
             "items": [
               "PERSOON A::Voelt zich goed · alert · routinevraag over voeding",
               "PERSOON B::Nieuwe hevige bloeding · bleek · duizelig"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Persoon A voelt zich goed, is alert en heeft een routinevraag over voeding. Persoon B heeft een nieuwe hevige bloeding en is bleek en duizelig."
-          }
+          },
+          "question": "Wie heeft direct aandacht nodig?",
+          "answers": [
+            "Persoon A, omdat routinevragen sneller gaan",
+            "Beiden kunnen wachten tot de volgende overdracht",
+            "Persoon B, omdat plotseling bloedverlies, bleekheid en duizeligheid verslechtering tonen",
+            "Alleen op aankomsttijd kiezen"
+          ]
         },
-        {
-          "id": "mid-r7q5",
+        "mid-r7q5": {
           "question": "Hoe verzorg je een schone, droge navelstomp in het algemeen?",
           "answers": [
             "Met niet-voorgeschreven middelen bedekken",
             "Schoon en droog houden en advies vragen bij zorgwekkende veranderingen",
             "Eraan trekken om los te maken",
             "Voortdurend nat houden"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r9q1",
-          "question": "Welke verandering in de overdracht verdient de meeste aandacht?",
+        "mid-r9q1": {
           "context": "14.00 uur: voelt zich goed, normale kleur, spreekt normaal. 15.00 uur: ademt sneller, is bleek en wordt steeds moeilijker aanspreekbaar.",
+          "question": "Welke verandering in de overdracht verdient de meeste aandacht?",
           "answers": [
             "De observatie is een uur later vastgelegd",
             "Meerdere nieuwe tekenen tonen verslechtering ten opzichte van de uitgangssituatie",
             "Het eerste verslag bevat minder woorden",
             "De toestand is gelijk gebleven"
-          ],
-          "correct": 1,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r10q1",
-          "question": "Welke uitleg verbindt beide observaties het best?",
+        "mid-r10q1": {
           "context": "De placenta is het uitwisselingsorgaan. Een diagram toont nu minder uitwisseling en minder zuurstof in de navelstreng.",
-          "reasoningSteps": 2,
+          "question": "Welke uitleg verbindt beide observaties het best?",
           "answers": [
             "Minder uitwisseling via de placenta kan betekenen dat minder zuurstof de baby bereikt",
             "De blaas regelt de placenta-uitwisseling",
             "De baarmoederhals maakt zuurstof",
             "De maag voedt de navelstreng direct"
-          ],
-          "correct": 0,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r10q2",
-          "question": "Welk totaal en welke trend moeten worden overgedragen?",
+        "mid-r10q2": {
           "context": "Vochtbalans: 650 mL + 450 mL. Observatiegrafiek: eerder 74, laatst 82.",
-          "reasoningSteps": 2,
+          "question": "Welk totaal en welke trend moeten worden overgedragen?",
           "answers": [
             "650 mL totaal zonder verandering",
             "1.100 mL totaal, met de laatste observatie hoger dan de eerste",
             "1.650 mL totaal met dalende trend",
             "450 mL totaal zonder trend"
-          ],
-          "correct": 1,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r10q3",
-          "question": "Wat is de veiligste conclusie?",
+        "mid-r10q3": {
           "context": "Eerder: regelmatige weeën met comfortabele pauzes. Nu: aanhoudende hevige pijn, bleekheid en een gevoel van flauwvallen.",
-          "reasoningSteps": 2,
+          "question": "Wat is de veiligste conclusie?",
           "answers": [
             "Een eerder regelmatig patroon maakt elke latere verandering normaal",
             "Wachten op de volgende geplande controle",
             "Eerst een specifieke diagnose kiezen",
             "De plotselinge verandering met meerdere aanwijzingen vraagt dringend deskundige beoordeling"
-          ],
-          "correct": 3,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r10q4",
-          "question": "Welke reactie pakt beide risico’s aan?",
+        "mid-r10q4": {
           "context": "Een pasgeborene is nog nat en voelt koel aan. De ademhaling is ook onregelmatig geworden.",
-          "reasoningSteps": 2,
+          "question": "Welke reactie pakt beide risico’s aan?",
           "answers": [
             "De pasgeborene afdrogen, warmte via huidcontact ondersteunen en snel deskundige beoordeling van de ademhaling krijgen",
             "Natte bedekking laten liggen en wachten",
             "Een niet-voorgeschreven middel geven",
             "Routinematig scheiden en de ademhaling negeren"
-          ],
-          "correct": 0,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r10q5",
-          "question": "Wat moet vóór de schone taak gebeuren?",
+        "mid-r10q5": {
           "context": "Dezelfde handschoenen hebben afval aangeraakt en reiken nu naar een schone set voor navelstrengzorg.",
-          "reasoningSteps": 2,
+          "question": "Wat moet vóór de schone taak gebeuren?",
           "answers": [
             "Dezelfde handschoenen houden omdat ze intact zijn",
             "De schone verpakking aanraken om te testen",
             "Verontreinigde handschoenen uitdoen, handhygiëne uitvoeren en passend schoon materiaal gebruiken",
             "Handhygiëne overslaan na het uittrekken"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "TOELATINGSTEST",
-    "adNote": "Eerst een korte advertentie, daarna ga je verder.",
-    "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat.",
-    "finalBadge": "TOELATINGSTEST VOLTOOID",
-    "finalIcon": "✓",
-    "finalTitle": "TOELATINGSTEST VOLTOOID",
-    "finalCopy": "Je resultaat staat klaar om te bekijken.",
-    "finalButton": "Bekijk mijn resultaat",
-    "finalChecklist": [
-      "40 antwoorden gecontroleerd",
-      "Overzicht per onderdeel gereed",
-      "Eindscore berekend"
-    ],
-    "reveals": [
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Eerste examenonderdeel voltooid",
-        "signal": "fixed",
-        "message": "Goede start. Het volgende onderdeel staat klaar."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Tweede examenonderdeel voltooid",
-        "signal": "fixed",
-        "message": "Het volgende onderdeel wordt moeilijker."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Je bent over de helft",
-        "signal": "fixed",
-        "message": "Het gevorderde onderdeel komt eraan."
-      },
-      {
-        "badge": "EXAMENONDERDEEL VOLTOOID",
-        "icon": "✓",
-        "title": "Hierna volgt de eindtoets",
-        "signal": "fixed",
-        "message": "Alleen de eindtoets resteert nog."
-      },
-      {
-        "badge": "TOELATINGSTEST VOLTOOID",
-        "icon": "✓",
-        "title": "TOELATINGSTEST VOLTOOID",
-        "signal": "fixed",
-        "message": "Je resultaat staat klaar om te bekijken."
-      }
-    ]
-  },
-  "progressLabel": "voltooid",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "TOELATINGSTEST",
-    "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE EXAMENSCORE",
-    "levelLabel": "ONDERDEEL",
-    "scoreSuffix": "goed",
-    "journeyLabel": "TOELATINGSTEST",
-    "kitchensCleared": "{value} / {total} examenonderdelen voltooid",
-    "currentRank": "HUIDIG NIVEAU · TOELATINGSTEST VERLOSKUNDE",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Toelatingstest gestart"
-      },
-      {
-        "afterStage": 5,
-        "label": "Toelatingstest voltooid"
-      }
-    ],
-    "unlockEyebrow": "RESULTAATUPDATE · TOELATINGSTEST VERLOSKUNDE",
-    "unlockTitle": "Er staat een nieuwe uitdaging klaar: toelatingstest verloskunde",
-    "unlockCopy": "Volgende onderdeel: toelatingstest verloskunde.",
-    "finalEyebrow": "JOUW SCORE VOOR VERLOSKUNDE",
-    "finalCareerTitle": "TOELATINGSTEST VOLTOOID",
-    "strongestLabel": "Sterkste onderdeel voor toelating",
-    "stages": [
-      {
-        "difficulty": "Basis",
-        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
-        "preAdTitle": "Eerste examenonderdeel voltooid",
-        "preAdCopy": "Goede start. Het volgende onderdeel staat klaar.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          },
-          "medium": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          },
-          "low": {
-            "title": "Eerste examenonderdeel voltooid",
-            "insight": "Goede start. Het volgende onderdeel staat klaar."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGEND EXAMENONDERDEEL · IN ONTWIKKELING",
-          "title": "Zwangerschap en geboorte",
-          "difficulty": "In ontwikkeling",
-          "tagline": "Fysiologie. Welzijn. Basis van de geboorte.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "In ontwikkeling",
-        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
-        "preAdTitle": "Tweede examenonderdeel voltooid",
-        "preAdCopy": "Het volgende onderdeel wordt moeilijker.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          },
-          "medium": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          },
-          "low": {
-            "title": "Tweede examenonderdeel voltooid",
-            "insight": "Het volgende onderdeel wordt moeilijker."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGEND EXAMENONDERDEEL · GEVORDERD",
-          "title": "Respect en veiligheid",
-          "difficulty": "Gevorderd",
-          "tagline": "Toestemming. Infectiepreventie. Ondersteuning.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Gevorderd",
-        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
-        "preAdTitle": "Je bent over de helft",
-        "preAdCopy": "Het gevorderde onderdeel komt eraan.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          },
-          "medium": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          },
-          "low": {
-            "title": "Je bent over de helft",
-            "insight": "Het gevorderde onderdeel komt eraan."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGEND EXAMENONDERDEEL · UITDAGEND",
-          "title": "Beslissingen rond bevalling en kraamzorg",
-          "difficulty": "Uitdagend",
-          "tagline": "Veranderingen. Eerste zorg. Prioriteiten.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Uitdagend",
-        "preAdBadge": "EXAMENONDERDEEL VOLTOOID",
-        "preAdTitle": "Hierna volgt de eindtoets",
-        "preAdCopy": "Alleen de eindtoets resteert nog.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "EXAMENONDERDEEL VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          },
-          "medium": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          },
-          "low": {
-            "title": "Hierna volgt de eindtoets",
-            "insight": "Alleen de eindtoets resteert nog."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGEND EXAMENONDERDEEL · EINDTOETS",
-          "title": "Eindtoets verloskunde",
-          "difficulty": "Eindtoets",
-          "tagline": "Meerdere aanwijzingen. Veilige opschaling. Eindoordeel.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Eindtoets",
-        "preAdBadge": "TOELATINGSTEST VOLTOOID",
-        "preAdTitle": "TOELATINGSTEST VOLTOOID",
-        "preAdCopy": "Je resultaat staat klaar om te bekijken.",
-        "preAdButton": "Bekijk mijn resultaat",
-        "resultIcon": "✓",
-        "resultLabel": "TOELATINGSTEST VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          },
-          "medium": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          },
-          "low": {
-            "title": "TOELATINGSTEST VOLTOOID",
-            "insight": "Je resultaat staat klaar om te bekijken."
-          }
-        },
-        "preAdChecks": [
-          "40 antwoorden gecontroleerd",
-          "Overzicht per onderdeel gereed",
-          "Eindscore berekend"
-        ]
-      }
-    ]
   }
 }

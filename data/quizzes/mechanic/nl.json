@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "title": "Slechts 7% slaagt voor deze automonteursquiz",
   "eyebrow": "DE DIAGNOSEWERKPLAATS",
   "summary": "Waarschuwingslampjes, verborgen storingen en vreemde symptomen testen je diagnose.",
@@ -19,229 +20,188 @@
     "disclaimer": "Alleen voor entertainment en algemene kennis. Deze monteursuitdaging is geen officieel examen, kwalificatie of professioneel advies."
   },
   "checkpoint": {
-    "nextPrefix": "VOLGENDE OPDRACHT",
-    "adNote": "Eerst een korte advertentie, daarna ga je verder.",
-    "finalBadge": "MONTEURSUITDAGING VOLTOOID",
-    "finalTitle": "MONTEURSUITDAGING VOLTOOID",
-    "finalCopy": "Je werkplaatsresultaat staat klaar.",
-    "finalButton": "Onthul mijn score",
-    "finalChecklist": [
-      "40 antwoorden gecontroleerd",
-      "Zes voertuigsystemen vergeleken",
-      "Eindscore berekend"
-    ],
-    "reveals": [
-      {
-        "title": "Eerste diagnose voltooid",
-        "signal": "fixed",
-        "message": "Goede start. De volgende storing is moeilijker te isoleren."
-      },
-      {
-        "title": "De werkplaats wordt lastiger",
-        "signal": "fixed",
-        "message": "Nu komen lucht, brandstof en ontsteking erbij."
-      },
-      {
-        "title": "Je bent over de helft",
-        "signal": "fixed",
-        "message": "De foutopsporing wordt vanaf hier serieus."
-      },
-      {
-        "title": "Hierna volgt de einddiagnose",
-        "signal": "fixed",
-        "message": "Er resteert nog één werkplaatsopdracht."
-      },
-      {
-        "title": "MONTEURSUITDAGING VOLTOOID",
-        "signal": "fixed",
-        "message": "Je werkplaatsresultaat staat klaar."
-      }
-    ],
     "finalAdNote": "Eerst een korte advertentie, daarna zie je je resultaat."
+  },
+  "career": {
+    "resultProgressLabel": "Monteursuitdaging",
+    "resultProgressComplete": "{value}% voltooid",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Basis",
+        "preAdBadge": "DASHBOARD EN MOTOR VOLTOOID",
+        "preAdTitle": "Eerste diagnose voltooid",
+        "preAdCopy": "Goede start. De volgende storing is moeilijker te isoleren.",
+        "next": {
+          "eyebrow": "VOLGENDE OPDRACHT · IN ONTWIKKELING",
+          "tagline": "Druk. Veiligheid. Wegcontact."
+        }
+      },
+      "stage-2": {
+        "difficulty": "In ontwikkeling",
+        "preAdBadge": "VLOEISTOFFEN, REMMEN EN GRIP VOLTOOID",
+        "preAdTitle": "De werkplaats wordt lastiger",
+        "preAdCopy": "Nu komen lucht, brandstof en ontsteking erbij.",
+        "next": {
+          "eyebrow": "VOLGENDE OPDRACHT · GEVORDERD",
+          "tagline": "Verbranding. Vermogen. Oorzaak en gevolg."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Gevorderd",
+        "preAdBadge": "LUCHT, BRANDSTOF EN ONTSTEKING VOLTOOID",
+        "preAdTitle": "Je bent over de helft",
+        "preAdCopy": "De foutopsporing wordt vanaf hier serieus.",
+        "next": {
+          "eyebrow": "VOLGENDE OPDRACHT · UITDAGEND",
+          "tagline": "Trillingen. Sturen. Remmen. Systemen."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Uitdagend",
+        "preAdBadge": "WERKPLAATSDIAGNOSE VOLTOOID",
+        "preAdTitle": "Hierna volgt de einddiagnose",
+        "preAdCopy": "Er resteert nog één werkplaatsopdracht.",
+        "next": {
+          "eyebrow": "VOLGENDE OPDRACHT · EINDTOETS",
+          "tagline": "Bestuurderssignalen. Laatste beslissingen."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Eindtoets",
+        "preAdBadge": "MONTEURSUITDAGING VOLTOOID",
+        "preAdTitle": "MONTEURSUITDAGING VOLTOOID",
+        "preAdCopy": "Je werkplaatsresultaat staat klaar.",
+        "preAdChecks": [
+          "40 antwoorden gecontroleerd",
+          "Zes voertuigsystemen vergeleken",
+          "Eindscore berekend"
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
+      }
+    }
   },
   "results": {
     "name": "JOUW MONTEURSSCORE",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Meesterdiagnosticus",
         "copy": "Je beheerste voertuigsystemen, diagnose en veiligheid met opvallende precisie. Zelfs de lastigste vragen brachten je nauwelijks uit balans."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Werkplaatsnatuurtalent",
         "copy": "Je resultaat toont een zeer sterke beheersing van voertuigsystemen, diagnose en veiligheid. Ook bij subtiele valkuilen bleef je redenering betrouwbaar."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Ervaren storingszoeker",
         "copy": "Je behaalde een solide resultaat bij voertuigsystemen, diagnose en veiligheid. Enkele lastige details kostten punten, maar het totaalbeeld blijft sterk."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Praktische probleemoplosser",
         "copy": "Je hebt een goede basis in voertuigsystemen, diagnose en veiligheid. Als je de lastigste onderdelen aanscherpt, kan je volgende resultaat flink stijgen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Handige leerling",
         "copy": "Je herkende meerdere belangrijke aspecten van voertuigsystemen, diagnose en veiligheid. De gemiste vragen laten duidelijk zien wat je nog kunt versterken."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Onder 50%",
         "title": "Nieuwsgierige autobezitter",
         "copy": "Deze uitdaging liet groeikansen zien bij voertuigsystemen, diagnose en veiligheid. Je nieuwsgierigheid en de opgeloste vragen vormen een uitstekend vertrekpunt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Motor en brandstof",
-        "categories": [
-          "engine_fuel"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Motor en brandstof"
       },
-      {
-        "label": "Remmen en grip",
-        "categories": [
-          "brakes_grip"
-        ]
+      "dimension-2": {
+        "label": "Remmen en grip"
       },
-      {
-        "label": "Elektrische systemen",
-        "categories": [
-          "electrical"
-        ]
+      "dimension-3": {
+        "label": "Elektrische systemen"
       },
-      {
-        "label": "Koeling en vloeistoffen",
-        "categories": [
-          "cooling_fluids"
-        ]
+      "dimension-4": {
+        "label": "Koeling en vloeistoffen"
       },
-      {
-        "label": "Aandrijving en besturing",
-        "categories": [
-          "drivetrain_steering"
-        ]
+      "dimension-5": {
+        "label": "Aandrijving en besturing"
       },
-      {
-        "label": "Diagnose en veiligheid",
-        "categories": [
-          "diagnosis_safety"
-        ]
+      "dimension-6": {
+        "label": "Diagnose en veiligheid"
       }
-    ],
+    },
     "score": {
       "passed": "Geslaagd voor de monteursuitdaging!",
       "finished": "monteursuitdaging voltooid",
       "correctLabel": "goed",
       "strongest": "Sterkste onderdeel van het voertuig",
       "trickiest": "Moeilijkste onderdeel van het voertuig",
-      "bestRound": "Beste werkplaatsronde",
-      "showPercentage": true,
-      "disclaimer": "Alleen voor entertainment en algemene kennis. Deze monteursuitdaging is geen officieel examen, kwalificatie of professioneel advies."
+      "bestRound": "Beste werkplaatsronde"
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Dashboard en motor",
-      "questions": [
-        {
-          "id": "mech-r1q1",
+      "questions": {
+        "mech-r1q1": {
           "question": "Welk waarschuwingssymbool hoort het duidelijkst bij de motoroliedruk?",
-          "presentation": "icons",
           "answers": [
             "Oliekan",
             "Accu",
             "Thermometer",
             "Stuur"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/oil-pressure.svg",
-            "/quizzes/mechanic/assets/icons/battery-warning.svg",
-            "/quizzes/mechanic/assets/icons/coolant-warning.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r1q2",
+        "mech-r1q2": {
           "question": "Het rode remwaarschuwingslampje blijft branden nadat de parkeerrem is losgezet. Wat is het veiligst?",
           "answers": [
             "Sneller rijden om te testen",
             "Veilig stoppen en het remsysteem laten controleren",
             "De banden harder oppompen",
             "Negeren tot de volgende onderhoudsbeurt"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r1q3",
+        "mech-r1q3": {
           "question": "De startmotor geeft één duidelijke klik, maar laat de motor niet draaien. Welke eerste controle is het nuttigst?",
           "answers": [
             "Kleur van de koelvloeistof",
             "Profieldiepte",
             "Acculading en aansluitingen op de polen",
             "Interieurfilter"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r1q4",
+        "mech-r1q4": {
           "question": "Tijdens het rijden wordt de temperatuurwaarschuwing rood. Wat moet je doen?",
           "answers": [
             "De dop van het koelsysteem meteen openen",
             "Doorrijden tot het vermogen afneemt",
             "Koud water over de motor gieten",
             "Veilig stoppen, motor uitzetten en het systeem laten afkoelen"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r1q5",
+        "mech-r1q5": {
           "question": "Welk bedieningsmiddel verandert de richting van de voorwielen?",
-          "presentation": "icons",
           "answers": [
             "Gaspedaal",
             "Parkeerrem",
             "Stuur",
             "Koppelingspedaal"
-          ],
-          "icons": [
-            "/quizzes/mechanic/assets/icons/accelerator-pedal.svg",
-            "/quizzes/mechanic/assets/icons/parking-brake.svg",
-            "/quizzes/mechanic/assets/icons/steering-wheel.svg",
-            "/quizzes/mechanic/assets/icons/clutch-pedal.svg"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r1q6",
+        "mech-r1q6": {
           "question": "Wat komt vóór het onderzoeken van een onbekend defect?",
           "answers": [
             "Onderdelen kopen",
             "Alle waarschuwingen wissen",
             "De motor harder laten werken",
             "Voertuig en werkplek veilig maken"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r2q1",
-          "question": "Welke volgorde beschrijft de luchttoevoer naar een gewone verbrandingsmotor correct?",
-          "presentation": "sequence",
+        "mech-r2q1": {
           "visual": {
             "items": [
               "Luchtinlaat",
@@ -249,140 +209,108 @@
               "Inlaatsysteem",
               "Motor"
             ],
-            "separator": "→",
             "ariaLabel": "Luchtinlaat, filter, inlaatsysteem, motor"
           },
+          "question": "Welke volgorde beschrijft de luchttoevoer naar een gewone verbrandingsmotor correct?",
           "answers": [
             "Filter → inlaat → motor",
             "Motor → filter → inlaatsysteem",
             "Luchtinlaat → filter → inlaatsysteem → motor",
             "Inlaatsysteem → motor → filter"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r2q2",
+        "mech-r2q2": {
           "question": "Welk onderdeel haalt stof uit de lucht voordat die de motor bereikt?",
           "answers": [
             "Brandstofinjector",
             "Radiateur",
             "Dynamo",
             "Luchtfilter"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Vloeistoffen, remmen en grip",
-      "questions": [
-        {
-          "id": "mech-r3q1",
+      "questions": {
+        "mech-r3q1": {
           "question": "Welke vloeistof smeert vooral de bewegende delen in de motor?",
           "answers": [
             "Motorolie",
             "Koelvloeistof",
             "Remvloeistof",
             "Ruitensproeiervloeistof"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q2",
+        "mech-r3q2": {
           "question": "Waarom moet de dop van een heet koelsysteem onder druk dicht blijven?",
           "answers": [
             "Anders worden foutcodes gewist",
             "Ontsnappende hete koelvloeistof en stoom kunnen ernstige brandwonden veroorzaken",
             "Anders loopt de accu leeg",
             "Anders verandert de bandenspanning"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q3",
+        "mech-r3q3": {
           "question": "Het koelvloeistofpeil blijft dalen, maar er is geen plas zichtbaar. Wat kan dat betekenen?",
           "answers": [
             "De banden zijn te zacht",
             "De dynamo laadt te sterk",
             "Er is alleen bij warmte of intern een lek",
             "Het luchtfilter zit verstopt"
-          ],
-          "correct": 2,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q4",
+        "mech-r3q4": {
           "question": "De remvloeistof staat onder de minimummarkering. Wat is de juiste reactie?",
           "answers": [
             "Motorolie bijvullen",
             "Met water verdunnen",
             "Negeren als het remmen normaal voelt",
             "Het remsysteem laten controleren op slijtage of lekkage"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r3q5",
+        "mech-r3q5": {
           "question": "Waar duidt dikke zwarte rook uit een verbrandingsmotor meestal op?",
           "answers": [
             "Te veel brandstof of te weinig lucht",
             "Te weinig ruitensproeiervloeistof",
             "Een lege accu",
             "Een fout in de wieluitlijning"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r3q6",
+        "mech-r3q6": {
           "question": "Remvloeistof kan lak beschadigen. Wat moet na morsen gebeuren?",
           "answers": [
             "Laten verdampen",
             "Meteen de veilige reinigingsinstructies van de fabrikant volgen",
             "Met een doek uitsmeren",
             "Het paneel verwarmen"
-          ],
-          "correct": 1,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r4q5",
+        "mech-r4q5": {
           "question": "Een ritmisch getik gaat sneller in scherpe bochten. Welk onderdeel kan de oorzaak zijn?",
           "answers": [
             "Thermostaat",
             "Brandstofpomp",
             "Buitenste homokineet",
             "Interieurventilator"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r4q6",
+        "mech-r4q6": {
           "question": "Een band heeft een grote bult in de zijwand. Wat moet je doen?",
           "answers": [
             "Spanning verlagen en doorrijden",
             "De bult platduwen",
             "De band naar een ander wiel verplaatsen",
             "De band niet meer gebruiken en laten vervangen"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Lucht, brandstof en ontsteking",
-      "questions": [
-        {
-          "id": "mech-r5q1",
-          "question": "Welke basiscombinatie heeft een verbrandingsmotor nodig om te draaien?",
-          "presentation": "sequence",
+      "questions": {
+        "mech-r5q1": {
           "visual": {
             "items": [
               "Lucht",
@@ -390,82 +318,62 @@
               "Ontsteking",
               "Compressie"
             ],
-            "separator": "+",
             "ariaLabel": "Lucht plus brandstof plus ontsteking plus compressie"
           },
+          "question": "Welke basiscombinatie heeft een verbrandingsmotor nodig om te draaien?",
           "answers": [
             "Lucht, brandstof, compressie en ontsteking op het juiste moment",
             "Koelvloeistof, remvloeistof en elektriciteit",
             "Olie, stuurhoek en bandenspanning",
             "Alleen brandstof"
-          ],
-          "correct": 0,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q2",
+        "mech-r5q2": {
           "question": "Wat veroorzaakt een verstopt luchtfilter waarschijnlijk?",
           "answers": [
             "Een steviger rempedaal",
             "Beperkte luchttoevoer en minder motorvermogen",
             "Een grotere accucapaciteit",
             "Meer bandenprofiel"
-          ],
-          "correct": 1,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q3",
+        "mech-r5q3": {
           "question": "Eén cilinder slaat over en de bougie is sterk versleten. Wat is het directe verband?",
           "answers": [
             "De radiateur kan niet koelen",
             "De wieluitlijning raakt verstoord",
             "De bougie ontsteekt het mengsel mogelijk niet betrouwbaar",
             "De remvloeistof neemt water op"
-          ],
-          "correct": 2,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q4",
+        "mech-r5q4": {
           "question": "Wat is de basistaak van een brandstofinjector?",
           "answers": [
             "De wielen aandrijven",
             "De remschijven koelen",
             "De accu opladen",
             "Brandstof gedoseerd in de motor brengen"
-          ],
-          "correct": 3,
-          "category": "engine_fuel"
+          ]
         },
-        {
-          "id": "mech-r5q5",
+        "mech-r5q5": {
           "question": "De motor wordt heet in stilstaand verkeer, maar koelt bij rijsnelheid. Welk onderdeel verdient een vroege controle?",
           "answers": [
             "Radiateurventilator",
             "Veiligheidsgordel",
             "Tankdop",
             "Wiellager"
-          ],
-          "correct": 0,
-          "category": "cooling_fluids"
+          ]
         },
-        {
-          "id": "mech-r5q6",
+        "mech-r5q6": {
           "question": "Welke sensor vertelt de motorcomputer vaak hoeveel lucht er binnenkomt?",
           "answers": [
             "Wielsnelheidssensor",
             "Luchtmassameter",
             "Remlichtschakelaar",
             "Koelvloeistofdop"
-          ],
-          "correct": 1,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q1",
-          "question": "Een gezonde 12V-accu meet in rust ongeveer 12,6 V. Deze meet 10,5 V. Wat wijst dat aan?",
-          "presentation": "code",
+        "mech-r6q1": {
           "visual": {
             "items": [
               "Verwacht: 12,6 V",
@@ -473,137 +381,106 @@
             ],
             "ariaLabel": "Verwachte accuspanning 12,6 volt, gemeten 10,5 volt"
           },
+          "question": "Een gezonde 12V-accu meet in rust ongeveer 12,6 V. Deze meet 10,5 V. Wat wijst dat aan?",
           "answers": [
             "De banden zijn versleten",
             "De koelvloeistof is te sterk",
             "De accu is diep ontladen of heeft een defecte cel",
             "De dynamoriem is nieuw"
-          ],
-          "correct": 2,
-          "category": "electrical"
+          ]
         },
-        {
-          "id": "mech-r6q6",
+        "mech-r6q6": {
           "question": "Wat is het veiligst voordat je een onbekende elektrische stekker doormeet?",
           "answers": [
             "Twee pennen kortsluiten",
             "Een willekeurige draad gebruiken",
             "Met water besproeien",
             "De juiste service-informatie raadplegen en geschikte meetapparatuur gebruiken"
-          ],
-          "correct": 3,
-          "category": "diagnosis_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Werkplaatsdiagnose",
-      "questions": [
-        {
-          "id": "mech-r7q1",
+      "questions": {
+        "mech-r7q1": {
           "question": "Het stuur trilt vooral binnen één snelheidsbereik. Wat is een waarschijnlijke eerste verdachte?",
           "answers": [
             "Wielonbalans",
             "Brandstofkwaliteit",
             "Interieurfilter",
             "Kleur koelvloeistof"
-          ],
-          "correct": 0,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q2",
+        "mech-r7q2": {
           "question": "De auto trekt op een vlakke weg naar één kant. Wat moet worden gecontroleerd?",
           "answers": [
             "Audio-instellingen",
             "Bandenspanning en wieluitlijning",
             "Brandstofvulopening",
             "Ruitenwissermotor"
-          ],
-          "correct": 1,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q3",
+        "mech-r7q3": {
           "question": "Het motortoerental stijgt sterk, maar de rijsnelheid nauwelijks. Wat slipt waarschijnlijk?",
           "answers": [
             "Radiateurventilator",
             "Wiellager",
             "Koppeling of aandrijving",
             "Remlichtschakelaar"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q4",
+        "mech-r7q4": {
           "question": "Een laag zoemend geluid wordt harder met de rijsnelheid, ook in neutraal. Welk onderdeel kan de bron zijn?",
           "answers": [
             "Bougie",
             "Brandstofinjector",
             "Thermostaat",
             "Wiellager"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r7q5",
+        "mech-r7q5": {
           "question": "De hele auto trilt alleen bij remmen vanaf hogere snelheid. Wat is een veelvoorkomende oorzaak?",
           "answers": [
             "Variatie in dikte of vervorming van de remschijven",
             "Te weinig ruitensproeiervloeistof",
             "Losse tankdop",
             "Zwakke claxon"
-          ],
-          "correct": 0,
-          "category": "brakes_grip"
+          ]
         },
-        {
-          "id": "mech-r7q6",
+        "mech-r7q6": {
           "question": "Na het raken van een obstakel ontstaat een sterke nieuwe trilling. Wat moet je doen?",
           "answers": [
             "Versnellen om hem glad te trekken",
             "Veilig stoppen en wiel en band controleren voor je verder rijdt",
             "Alle banden zachter maken",
             "Negeren als er geen waarschuwing brandt"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r8q3",
+        "mech-r8q3": {
           "question": "Wat laadt tijdens het rijden de 12V-accu op?",
           "answers": [
             "Laadsysteem",
             "Startschakelaar",
             "Rembekrachtiger",
             "Luchtfilter"
-          ],
-          "correct": 0,
-          "category": "electrical",
-          "delay": 350
+          ]
         },
-        {
-          "id": "mech-r8q4",
+        "mech-r8q4": {
           "question": "Welke vloeistof voorkomt bevriezing en voert motorwarmte af?",
           "answers": [
             "Remvloeistof",
             "Koelvloeistof",
             "Motorolie",
             "Ruitensproeiervloeistof"
-          ],
-          "correct": 1,
-          "category": "cooling_fluids",
-          "delay": 350
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Einddiagnose",
-      "questions": [
-        {
-          "id": "mech-r9q1",
+      "questions": {
+        "mech-r9q1": {
           "context": "KLANT MELDT",
           "question": "De auto trekt alleen tijdens het remmen naar links en het linker voorwiel is opvallend heet. Wat is de waarschijnlijkste oorzaak?",
           "answers": [
@@ -611,13 +488,9 @@
             "Een zwakke accu",
             "Een verstopt luchtfilter",
             "Een laag koelvloeistofpeil"
-          ],
-          "correct": 0,
-          "category": "brakes_grip",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q2",
+        "mech-r9q2": {
           "context": "KLANT MELDT",
           "question": "Een nieuwe accu raakt opnieuw leeg en het laadwaarschuwingslampje brandt. Wat moet als eerste worden gecontroleerd?",
           "answers": [
@@ -625,13 +498,9 @@
             "Het laadsysteem en de aansluitingen",
             "De dikte van de remblokken",
             "De koelvloeistofconcentratie"
-          ],
-          "correct": 1,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q3",
+        "mech-r9q3": {
           "context": "KLANT MELDT",
           "question": "Een trilling volgt de rijsnelheid, niet het motortoerental, en blijft tijdens uitrollen bestaan. Waar zoek je eerst?",
           "answers": [
@@ -639,13 +508,9 @@
             "Het brandstofmengsel",
             "De wielen, banden of aandrijflijn",
             "De koelventilator"
-          ],
-          "correct": 2,
-          "category": "drivetrain_steering",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r9q4",
+        "mech-r9q4": {
           "context": "KLANT MELDT",
           "question": "Bij de overgang van optrekken naar afremmen op de motor klinkt één harde klonk. Welke onderdelen verdienen als eerste aandacht?",
           "answers": [
@@ -653,12 +518,9 @@
             "Het interieurfilter",
             "De radiateurdop",
             "De motorsteunen en aandrijfkoppelingen"
-          ],
-          "correct": 3,
-          "category": "drivetrain_steering"
+          ]
         },
-        {
-          "id": "mech-r9q6",
+        "mech-r9q6": {
           "context": "KLANT MELDT",
           "question": "Bij één wiel ontstaat plots een hard schurend geluid. Wat is de veiligste eerste beslissing?",
           "answers": [
@@ -666,14 +528,9 @@
             "Stoppen met rijden en het voertuig laten controleren",
             "Versnellen om eventueel vuil los te maken",
             "Smeermiddel op het wiel aanbrengen"
-          ],
-          "correct": 1,
-          "category": "diagnosis_safety"
+          ]
         },
-        {
-          "id": "mech-r10q1",
-          "question": "De startmotor draait en er is brandstofdruk, maar geen enkele cilinder krijgt een vonk. Welk systeem moet nu worden onderzocht?",
-          "presentation": "code",
+        "mech-r10q1": {
           "visual": {
             "items": [
               "Startmotor: JA",
@@ -682,20 +539,15 @@
             ],
             "ariaLabel": "Motor draait, brandstofdruk aanwezig, geen vonk"
           },
+          "question": "De startmotor draait en er is brandstofdruk, maar geen enkele cilinder krijgt een vonk. Welk systeem moet nu worden onderzocht?",
           "answers": [
             "De ontstekingsregeling en de voedings- of timingsignalen",
             "De bandenspanningscontrole",
             "Het hydraulische remsysteem",
             "De wieluitlijning"
-          ],
-          "correct": 0,
-          "category": "engine_fuel",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q3",
-          "question": "Bij een conventioneel 12V-laadsysteem meet de accu 12,5 V met de motor uit en 12,0 V met draaiende motor en verlichting aan. Wat is de beste conclusie?",
-          "presentation": "grid",
+        "mech-r10q3": {
           "visual": {
             "items": [
               "Motor UIT",
@@ -703,23 +555,17 @@
               "Motor AAN + licht",
               "12,0 V"
             ],
-            "columns": 2,
             "ariaLabel": "12-voltsysteem: motor uit 12,5 volt, motor aan met licht 12,0 volt"
           },
+          "question": "Bij een conventioneel 12V-laadsysteem meet de accu 12,5 V met de motor uit en 12,0 V met draaiende motor en verlichting aan. Wat is de beste conclusie?",
           "answers": [
             "De accu wordt zeker overladen",
             "De remmen lopen aan",
             "Het laadsysteem levert onvoldoende spanning",
             "De koelvloeistof is te koud"
-          ],
-          "correct": 2,
-          "category": "electrical",
-          "reasoningSteps": 2
+          ]
         },
-        {
-          "id": "mech-r10q4",
-          "question": "De motor wordt alleen stationair te heet, de radiateur is vrij en de koelventilator draait nooit. Wat moet als eerste worden onderzocht?",
-          "presentation": "code",
+        "mech-r10q4": {
           "visual": {
             "items": [
               "Rijsnelheid: KOEL",
@@ -729,197 +575,15 @@
             ],
             "ariaLabel": "Motor koelt tijdens rijden, wordt heet stationair, ventilator draait niet"
           },
+          "question": "De motor wordt alleen stationair te heet, de radiateur is vrij en de koelventilator draait nooit. Wat moet als eerste worden onderzocht?",
           "answers": [
             "De wieluitlijning",
             "De afdichting van de tankdop",
             "De slijtplaat van de remblokken",
             "Het ventilatorcircuit, de motor en de aansturing"
-          ],
-          "correct": 3,
-          "category": "cooling_fluids",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Monteursuitdaging",
-    "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "HUIDIGE MONTEURSSCORE",
-    "levelLabel": "RONDE",
-    "scoreSuffix": "goed",
-    "journeyLabel": "MONTEURSUITDAGING",
-    "kitchensCleared": "{value} / {total} uitdagingen voltooid",
-    "currentRank": "HUIDIG NIVEAU · WERKPLAATS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Werkplaatstest gestart"
-      },
-      {
-        "afterStage": 5,
-        "label": "Werkplaatstest voltooid"
-      }
-    ],
-    "unlockEyebrow": "RESULTAATUPDATE · MONTEURSUITDAGING",
-    "unlockTitle": "Er staat een nieuwe uitdaging klaar: monteursuitdaging",
-    "unlockCopy": "Volgende onderdeel: monteursuitdaging.",
-    "finalEyebrow": "JOUW MONTEURSSCORE",
-    "finalCareerTitle": "MONTEURSUITDAGING VOLTOOID",
-    "strongestLabel": "Sterkste onderdeel van het voertuig",
-    "stages": [
-      {
-        "difficulty": "Basis",
-        "preAdBadge": "DASHBOARD EN MOTOR VOLTOOID",
-        "preAdTitle": "Eerste diagnose voltooid",
-        "preAdCopy": "Goede start. De volgende storing is moeilijker te isoleren.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "DASHBOARD EN MOTOR VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Eerste diagnose voltooid",
-            "insight": "Goede start. De volgende storing is moeilijker te isoleren."
-          },
-          "medium": {
-            "title": "Eerste diagnose voltooid",
-            "insight": "Goede start. De volgende storing is moeilijker te isoleren."
-          },
-          "low": {
-            "title": "Eerste diagnose voltooid",
-            "insight": "Goede start. De volgende storing is moeilijker te isoleren."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE OPDRACHT · IN ONTWIKKELING",
-          "title": "Vloeistoffen, remmen en grip",
-          "difficulty": "In ontwikkeling",
-          "tagline": "Druk. Veiligheid. Wegcontact.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "In ontwikkeling",
-        "preAdBadge": "VLOEISTOFFEN, REMMEN EN GRIP VOLTOOID",
-        "preAdTitle": "De werkplaats wordt lastiger",
-        "preAdCopy": "Nu komen lucht, brandstof en ontsteking erbij.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "VLOEISTOFFEN, REMMEN EN GRIP VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "De werkplaats wordt lastiger",
-            "insight": "Nu komen lucht, brandstof en ontsteking erbij."
-          },
-          "medium": {
-            "title": "De werkplaats wordt lastiger",
-            "insight": "Nu komen lucht, brandstof en ontsteking erbij."
-          },
-          "low": {
-            "title": "De werkplaats wordt lastiger",
-            "insight": "Nu komen lucht, brandstof en ontsteking erbij."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE OPDRACHT · GEVORDERD",
-          "title": "Lucht, brandstof en ontsteking",
-          "difficulty": "Gevorderd",
-          "tagline": "Verbranding. Vermogen. Oorzaak en gevolg.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Gevorderd",
-        "preAdBadge": "LUCHT, BRANDSTOF EN ONTSTEKING VOLTOOID",
-        "preAdTitle": "Je bent over de helft",
-        "preAdCopy": "De foutopsporing wordt vanaf hier serieus.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "LUCHT, BRANDSTOF EN ONTSTEKING VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je bent over de helft",
-            "insight": "De foutopsporing wordt vanaf hier serieus."
-          },
-          "medium": {
-            "title": "Je bent over de helft",
-            "insight": "De foutopsporing wordt vanaf hier serieus."
-          },
-          "low": {
-            "title": "Je bent over de helft",
-            "insight": "De foutopsporing wordt vanaf hier serieus."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE OPDRACHT · UITDAGEND",
-          "title": "Werkplaatsdiagnose",
-          "difficulty": "Uitdagend",
-          "tagline": "Trillingen. Sturen. Remmen. Systemen.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Uitdagend",
-        "preAdBadge": "WERKPLAATSDIAGNOSE VOLTOOID",
-        "preAdTitle": "Hierna volgt de einddiagnose",
-        "preAdCopy": "Er resteert nog één werkplaatsopdracht.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "WERKPLAATSDIAGNOSE VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Hierna volgt de einddiagnose",
-            "insight": "Er resteert nog één werkplaatsopdracht."
-          },
-          "medium": {
-            "title": "Hierna volgt de einddiagnose",
-            "insight": "Er resteert nog één werkplaatsopdracht."
-          },
-          "low": {
-            "title": "Hierna volgt de einddiagnose",
-            "insight": "Er resteert nog één werkplaatsopdracht."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE OPDRACHT · EINDTOETS",
-          "title": "Einddiagnose",
-          "difficulty": "Eindtoets",
-          "tagline": "Bestuurderssignalen. Laatste beslissingen.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Eindtoets",
-        "preAdBadge": "MONTEURSUITDAGING VOLTOOID",
-        "preAdTitle": "MONTEURSUITDAGING VOLTOOID",
-        "preAdChecks": [
-          "40 antwoorden gecontroleerd",
-          "Zes voertuigsystemen vergeleken",
-          "Eindscore berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaat",
-        "resultIcon": "✓",
-        "resultLabel": "EINDDIAGNOSE VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "MONTEURSUITDAGING VOLTOOID",
-            "insight": "Je werkplaatsresultaat staat klaar."
-          },
-          "medium": {
-            "title": "MONTEURSUITDAGING VOLTOOID",
-            "insight": "Je werkplaatsresultaat staat klaar."
-          },
-          "low": {
-            "title": "MONTEURSUITDAGING VOLTOOID",
-            "insight": "Je werkplaatsresultaat staat klaar."
-          }
-        },
-        "preAdCopy": "Je werkplaatsresultaat staat klaar."
-      }
-    ]
   }
 }

@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 
+import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
+
 type SourceQuestion = {
   id: string;
   context?: string;
@@ -20,8 +22,6 @@ type SourceQuiz = {
   about: { disclaimer: string };
   results: { profiles: Array<{ min: number }>; score: { disclaimer: string } };
   career: {
-    continuousShell: boolean;
-    showResultProgress: boolean;
     stages: Array<{ preAdTitle: string; preAdChecks?: string[] }>;
   };
   stages: Array<{ title: string; questions: SourceQuestion[] }>;
@@ -30,7 +30,10 @@ type SourceQuiz = {
 const slugs = ["oxford", "cambridge", "harvard"] as const;
 
 function source(slug: typeof slugs[number]) {
-  return JSON.parse(readFileSync(join(process.cwd(), "data", "quizzes", slug, "en.json"), "utf8")) as SourceQuiz;
+  const directory = join(process.cwd(), "data", "quizzes", slug);
+  const manifest = JSON.parse(readFileSync(join(directory, "quiz.json"), "utf8"));
+  const locale = JSON.parse(readFileSync(join(directory, "en.json"), "utf8"));
+  return expandQuizLocale(manifest, locale, "en") as SourceQuiz;
 }
 
 function question(slug: typeof slugs[number], id: string) {
@@ -56,12 +59,11 @@ test("university challenges keep the approved English-only five-stage contract",
     assert.equal(quiz.landing.startNote, undefined);
     assert.match(quiz.about.disclaimer, new RegExp(`Not an official ${slug}`, "i"));
     assert.equal(quiz.results.score.disclaimer, quiz.about.disclaimer);
-    assert.equal(manifest.engine.flow, "staged");
+    assert.equal(manifest.template, "five-stage-rewarded-v1");
+    assert.equal(manifest.engine.flow, undefined);
     assert.equal(manifest.engine.localeParity, "independent");
     assert.equal(manifest.engine.targetRatio, 0.8);
-    assert.equal(manifest.engine.rewarded.start, true);
-    assert.equal(manifest.engine.rewarded.stages, true);
-    assert.equal(manifest.engine.rewarded.confirmStart, false);
+    assert.equal(manifest.engine.rewarded, undefined);
     assert.deepEqual(manifest.theme.layout, { landing: "split", questions: "card", results: "immersive" });
     assert.equal(manifest.theme.artwork.landing, undefined);
     assert.equal(quiz.stages.length, 5);
@@ -74,8 +76,6 @@ test("university challenges keep the approved English-only five-stage contract",
     assert.deepEqual(correctPositionCounts, [10, 10, 10, 10]);
     assert.ok(questions.every((item) => item.category && item.category !== "missing"));
     assert.deepEqual(quiz.results.profiles.map((profile) => profile.min), [0.9, 0.8, 0.7, 0.6, 0.5, 0]);
-    assert.ok(quiz.career.continuousShell);
-    assert.ok(quiz.career.showResultProgress);
     assert.deepEqual(quiz.career.stages.slice(0, 4).map((stage) => stage.preAdTitle), [
       "First exam section complete",
       "Second exam section complete",

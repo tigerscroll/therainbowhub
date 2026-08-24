@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Seuls 7 % réussissent ce test d’entrée en soins infirmiers",
   "eyebrow": "DÉFI D’ENTRÉE EN SOINS",
   "summary": "Anatomie, signes vitaux et décisions de soins testent votre jugement sous pression.",
+  "progressLabel": "terminé",
   "landing": {
     "intro": "Systèmes du corps, signes vitaux et soins : saurez-vous repérer l’essentiel et prendre la décision la plus sûre ?",
     "cta": "Commencer le test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Pour le divertissement et la culture générale uniquement. Ce test d’entrée en soins infirmiers n’est ni une évaluation officielle, ni une qualification, ni un avis professionnel."
   },
+  "checkpoint": {
+    "finalAdNote": "Une courte publicité, puis découvrez votre résultat."
+  },
+  "career": {
+    "resultProgressLabel": "TEST D’ENTRÉE",
+    "resultProgressComplete": "{value} % terminé",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fondamentaux",
+        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
+        "preAdTitle": "Première épreuve terminée",
+        "preAdCopy": "Bon départ. L’épreuve suivante est prête.",
+        "next": {
+          "eyebrow": "PROCHAINE ÉPREUVE · INTERMÉDIAIRE",
+          "tagline": "Systèmes. Mesures. Changements importants."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Intermédiaire",
+        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
+        "preAdTitle": "Deuxième épreuve terminée",
+        "preAdCopy": "La difficulté augmente à l’épreuve suivante.",
+        "next": {
+          "eyebrow": "PROCHAINE ÉPREUVE · CONFIRMÉ",
+          "tagline": "Prévention des infections. Dignité. Clarté."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Confirmé",
+        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
+        "preAdTitle": "Vous avez dépassé la moitié",
+        "preAdCopy": "L’épreuve avancée vous attend.",
+        "next": {
+          "eyebrow": "PROCHAINE ÉPREUVE · AVANCÉ",
+          "tagline": "Priorités concurrentes. Décisions réfléchies."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avancé",
+        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
+        "preAdTitle": "Évaluation finale en vue",
+        "preAdCopy": "Il ne reste plus que l’évaluation finale.",
+        "next": {
+          "eyebrow": "PROCHAINE ÉPREUVE · ÉVALUATION FINALE",
+          "tagline": "Tendances. Sécurité. Jugement clinique intégré."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Évaluation finale",
+        "preAdBadge": "TEST D’ENTRÉE TERMINÉ",
+        "preAdTitle": "TEST D’ENTRÉE TERMINÉ",
+        "preAdCopy": "Votre résultat est prêt à être dévoilé.",
+        "preAdChecks": [
+          "40 réponses vérifiées",
+          "Répartition des compétences",
+          "Note finale calculée"
+        ],
+        "preAdButton": "Voir mon résultat"
+      }
+    }
+  },
   "results": {
     "name": "VOTRE SCORE DE SOINS INFIRMIERS",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100 %",
         "title": "Talent d’exception pour les soins",
         "copy": "Vous avez fait preuve d’une précision remarquable dans les domaines suivants : les bases cliniques, l’observation et les priorités de soins. Même les questions les plus exigeantes vous ont rarement échappé."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89 %",
         "title": "Talent naturel pour les soins",
         "copy": "Votre résultat révèle une excellente maîtrise dans plusieurs domaines : les bases cliniques, l’observation et les priorités de soins. Vous avez gardé un raisonnement sûr jusque dans les pièges les plus subtils."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79 %",
         "title": "Candidat serein",
         "copy": "Votre résultat est solide sur l’ensemble des domaines évalués : les bases cliniques, l’observation et les priorités de soins. Quelques détails difficiles vous ont freiné, mais l’ensemble reste convaincant."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69 %",
         "title": "Résolveur prudent",
         "copy": "Vous disposez de bonnes bases dans les domaines évalués : les bases cliniques, l’observation et les priorités de soins. En affinant les points les plus délicats, votre prochain résultat pourrait nettement progresser."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59 %",
         "title": "Candidat prometteur",
         "copy": "Vous avez reconnu plusieurs éléments clés parmi les domaines évalués : les bases cliniques, l’observation et les priorités de soins. Les questions manquées indiquent clairement les points à consolider."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Moins de 50 %",
         "title": "Explorateur bienveillant",
         "copy": "Ce défi a révélé des pistes de progression dans plusieurs domaines : les bases cliniques, l’observation et les priorités de soins. Votre curiosité et les bonnes réponses obtenues constituent un excellent point de départ."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Bases cliniques",
-        "categories": [
-          "anatomy_physiology",
-          "numeracy_measurement"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Bases cliniques"
       },
-      {
-        "label": "Observation et priorités",
-        "categories": [
-          "observation_vitals",
-          "reasoning_priorities"
-        ]
+      "dimension-2": {
+        "label": "Observation et priorités"
       },
-      {
-        "label": "Sécurité et communication",
-        "categories": [
-          "infection_safety",
-          "communication_compassion"
-        ]
+      "dimension-3": {
+        "label": "Sécurité et communication"
       }
-    ],
+    },
     "score": {
       "passed": "Défi réussi : examen d’entrée en soins infirmiers !",
       "finished": "Défi terminé : examen d’entrée en soins infirmiers",
@@ -88,9 +133,6 @@
       "strongest": "Point fort d’admission",
       "trickiest": "Point le plus difficile d’admission",
       "bestRound": "Meilleur défi",
-      "showPercentage": true,
-      "disclaimer": "Pour le divertissement et la culture générale uniquement. Ce test d’entrée en soins infirmiers n’est ni une évaluation officielle, ni une qualification, ni un avis professionnel.",
-      "showBestRound": true,
       "insights": {
         "overview": "score de soins infirmiers en un coup d’œil",
         "correct": "bonnes réponses",
@@ -99,294 +141,176 @@
         "breakdown": "Répartition de vos compétences d’admission",
         "snapshot": "Ce que suggère votre profil à l’examen d’entrée en soins infirmiers",
         "targetReached": "Objectif de 80 % atteint",
-        "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %",
-        "details": {
-          "analysisTitle": "Comment lire votre score de soins infirmiers",
-          "analysisCopy": "Ce résultat rassemble 40 questions dans plusieurs domaines : anatomie, observations, sécurité, communication et priorités de soins. La répartition ci-dessous montre les domaines les plus solides de cette tentative.",
-          "roadmapTitle": "Dans votre rapport complet de l’examen d’entrée en soins infirmiers",
-          "roadmapIntro": "Le score n’est que le premier indice. Le rapport montre votre point fort d’admission, le détail par compétence et les réponses manquées dans cet examen d’entrée en soins infirmiers.",
-          "roadmapItems": [
-            "Analyse du score",
-            "Point fort d’admission",
-            "Répartition de vos compétences d’admission",
-            "Prochaines étapes pratiques"
-          ],
-          "positionTitle": "Votre progression vers 80 %",
-          "positionCopy": "L’objectif ludique est de 32 bonnes réponses sur 40. Le repère indique la distance parcourue dans cet examen d’entrée en soins infirmiers, sans comparaison avec d’autres joueurs ni évaluation professionnelle.",
-          "measuredTitle": "Ce que cet examen d’entrée en soins infirmiers a exploré",
-          "measuredIntro": "Les questions couvrent trois dimensions complémentaires propres à l’examen d’entrée en soins infirmiers.",
-          "measuredAreas": [
-            {
-              "title": "Bases cliniques",
-              "copy": "Suivre la physiologie de base et résoudre de simples questions de temps, de débit et de mesure."
-            },
-            {
-              "title": "Observation et priorités",
-              "copy": "Repérer une évolution importante et combiner plusieurs indices visibles pour décider de la priorité."
-            },
-            {
-              "title": "Sécurité et communication",
-              "copy": "Réduire le risque infectieux tout en protégeant l’intimité, la dignité et la compréhension."
-            }
-          ],
-          "tipsTitle": "Trois façons d’affiner votre approche d’admission",
-          "tipsIntro": "Des stratégies simples pour une prochaine tentative à l’examen d’entrée en soins infirmiers, sans valeur d’évaluation professionnelle.",
-          "tips": [
-            {
-              "title": "Comparez au point de départ",
-              "copy": "Un nouveau changement peut compter davantage qu’une mesure isolée."
-            },
-            {
-              "title": "Cherchez le danger immédiat",
-              "copy": "Voies aériennes, respiration, circulation et changement soudain de conscience passent avant le confort courant."
-            },
-            {
-              "title": "Choisissez l’action concrète",
-              "copy": "En communication, préférez l’option qui écoute, protège la dignité ou vérifie la compréhension."
-            }
-          ],
-          "finalTitle": "Votre résultat à l’examen d’entrée en soins infirmiers",
-          "finalCopy": "Vous avez obtenu {score} bonnes réponses sur {total}. Votre profil pour cette tentative apparaît ci-dessous."
-        }
+        "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Briefing dans le service",
-      "questions": [
-        {
-          "id": "nurse-r1q1",
+      "questions": {
+        "nurse-r1q1": {
           "question": "De quel gaz le sang s’est-il chargé lorsqu’il revient des poumons ?",
-          "presentation": "icons",
-          "icons": [
-            "N₂",
-            "O₂",
-            "CO₂",
-            "H₂"
-          ],
           "answers": [
             "Azote",
             "Oxygène",
             "Dioxyde de carbone",
             "Hydrogène"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r1q2",
-          "question": "Une carafe contient 750 mL. On ajoute 250 mL. Quel est le total ?",
-          "presentation": "spatial",
+        "nurse-r1q2": {
           "visual": {
             "items": [
               "750 mL + 250 mL = ?"
             ],
-            "columns": 1,
             "ariaLabel": "Sept cent cinquante millilitres plus deux cent cinquante millilitres : quel total ?"
           },
+          "question": "Une carafe contient 750 mL. On ajoute 250 mL. Quel est le total ?",
           "answers": [
             "900 mL",
             "1 100 mL",
             "1 250 mL",
             "1 000 mL"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r1q3",
-          "question": "Le pouls passe de 72 à 88 battements par minute. Que montre le relevé ?",
-          "presentation": "code",
+        "nurse-r1q3": {
           "visual": {
             "items": [
               "AVANT : 72",
               "MAINTENANT : 88"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Le pouls était de 72 et il est maintenant de 88 battements par minute"
           },
+          "question": "Le pouls passe de 72 à 88 battements par minute. Que montre le relevé ?",
           "answers": [
             "Il a augmenté",
             "Il est resté stable",
             "Il a diminué",
             "Il n’a pas été mesuré"
-          ],
-          "correct": 0,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r1q4",
+        "nurse-r1q4": {
           "question": "Vos mains sont visiblement sales. Quelle méthode convient ?",
           "answers": [
             "Mettre des gants par-dessus",
             "Les essuyer avec une serviette sèche",
             "Attendre la prochaine pause",
             "Les laver à l’eau et au savon"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r1q5",
+        "nurse-r1q5": {
           "question": "Une personne dit : « Je m’inquiète de ce qui va se passer. » Quelle est la meilleure première réponse ?",
           "answers": [
             "Dire qu’il n’y a aucune raison de s’inquiéter",
             "Changer de sujet pour la distraire",
             "Reconnaître son inquiétude et demander ce qui la préoccupe le plus",
             "Employer des termes techniques pour la rassurer"
-          ],
-          "correct": 2,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r1q6",
-          "question": "Qui doit être pris en charge en premier ?",
+        "nurse-r1q6": {
           "context": "La personne A est à l’aise et demande de l’eau. La personne B est soudain devenue pâle et a du mal à respirer.",
+          "question": "Qui doit être pris en charge en premier ?",
           "answers": [
             "La personne B, car cette difficulté respiratoire soudaine peut constituer un danger immédiat",
             "La personne A, car elle a demandé la première",
             "Les deux peuvent attendre la prochaine vérification de routine",
             "La personne la plus proche"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r2q2",
+        "nurse-r2q2": {
           "question": "Quelle est une fonction essentielle des reins ?",
           "answers": [
             "Pomper le sang",
             "Échanger les gaz",
             "Digérer les aliments",
             "Filtrer le sang et produire l’urine"
-          ],
-          "correct": 3,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r3q2",
-          "question": "Combien de temps s’écoule entre 9 h 20 et 10 h 05 ?",
-          "presentation": "code",
+        "nurse-r3q2": {
           "visual": {
             "items": [
               "DÉBUT::09:20",
               "FIN::10:05"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Début à 9 h 20 et fin à 10 h 05"
           },
+          "question": "Combien de temps s’écoule entre 9 h 20 et 10 h 05 ?",
           "answers": [
             "35 minutes",
             "85 minutes",
             "55 minutes",
             "45 minutes"
-          ],
-          "correct": 3,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Corps et observations",
-      "questions": [
-        {
-          "id": "nurse-r2q3",
+      "questions": {
+        "nurse-r2q3": {
           "question": "Quel système transporte rapidement des signaux électriques dans le corps ?",
-          "presentation": "icons",
-          "icons": [
-            "⚡",
-            "/quizzes/nursing/assets/icons/stomach.svg",
-            "🦴",
-            "/quizzes/nursing/assets/icons/kidneys.svg"
-          ],
           "answers": [
             "Le système nerveux",
             "Le système digestif",
             "Le système squelettique",
             "Le système urinaire"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r2q4",
+        "nurse-r2q4": {
           "question": "Où la plupart des nutriments issus de la digestion sont-ils absorbés ?",
           "answers": [
             "Le gros intestin",
             "L’œsophage",
             "L’intestin grêle",
             "La vésicule biliaire"
-          ],
-          "correct": 2,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r2q5",
-          "question": "Quel changement dans cette note d’observation est le plus important ?",
+        "nurse-r2q5": {
           "context": "Avant : respiration confortable et parole normale. Maintenant : respiration plus rapide avec des pauses entre de courtes phrases.",
+          "question": "Quel changement dans cette note d’observation est le plus important ?",
           "answers": [
             "La note comporte deux horaires",
             "La respiration s’est aggravée",
             "La personne parle encore",
             "La première note était plus courte"
-          ],
-          "correct": 1,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q3",
-          "question": "Quel élément décrit un changement nouveau ?",
+        "nurse-r5q3": {
           "context": "Avant : marche stable et bon état général. Maintenant : vertiges au lever et pâleur nette.",
+          "question": "Quel élément décrit un changement nouveau ?",
           "answers": [
             "La marche précédente",
             "Le fait que deux notes aient été rédigées",
             "Le fait que la personne se soit levée",
             "De nouveaux vertiges accompagnés de pâleur"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q4",
-          "question": "Quelle incohérence faut-il clarifier ?",
-          "presentation": "code",
+        "nurse-r5q4": {
           "visual": {
             "items": [
               "TRANSMISSION : BRAS GAUCHE",
               "RELEVÉ : BRAS DROIT"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "La transmission indique le bras gauche et le relevé le bras droit"
           },
+          "question": "Quelle incohérence faut-il clarifier ?",
           "answers": [
             "L’emploi de majuscules",
             "Le nombre de mots",
             "La bordure du relevé",
             "Le côté indiqué n’est pas le même"
-          ],
-          "correct": 3,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r5q5",
+        "nurse-r5q5": {
           "question": "Quel système permet aux pupilles de réagir rapidement à la lumière ?",
           "answers": [
             "Le système digestif",
             "Le système nerveux",
             "Le système urinaire",
             "Le système squelettique"
-          ],
-          "correct": 1,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r5q2",
-          "question": "Quelle mesure a changé ?",
-          "presentation": "code",
+        "nurse-r5q2": {
           "visual": {
             "items": [
               "POULS::78::78",
@@ -394,645 +318,304 @@
               "TEMPÉRATURE::37::37",
               "ÉVEIL::OUI::OUI"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Pouls inchangé, respiration plus rapide, température et état d’éveil inchangés"
           },
+          "question": "Quelle mesure a changé ?",
           "answers": [
             "Le pouls",
             "La température",
             "La respiration",
             "L’état d’éveil"
-          ],
-          "correct": 2,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r3q5",
+        "nurse-r3q5": {
           "question": "Vous comptez 9 respirations en 30 secondes. Quel est le rythme par minute ?",
           "answers": [
             "18 respirations par minute",
             "9 respirations par minute",
             "27 respirations par minute",
             "30 respirations par minute"
-          ],
-          "correct": 0,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Sécurité et communication",
-      "questions": [
-        {
-          "id": "nurse-r4q3",
+      "questions": {
+        "nurse-r4q3": {
           "question": "Une tâche risque de projeter un liquide biologique vers le visage. Quelle protection répond à ce risque ?",
           "answers": [
             "Un bonnet en tissu",
             "Une protection adaptée des yeux ou du visage",
             "Des couvre-chaussures uniquement",
             "Aucune protection si la tâche est brève"
-          ],
-          "correct": 1,
-          "category": "infection_safety",
-          "presentation": "icons",
-          "icons": [
-            "🧢",
-            "🥽",
-            "👟",
-            "🚫"
           ]
         },
-        {
-          "id": "nurse-r6q3",
+        "nurse-r6q3": {
           "question": "Une personne pose une question sensible dans un lieu public très fréquenté. Que faire ?",
           "answers": [
             "Proposer de poursuivre la conversation dans un endroit privé",
             "Répondre brièvement et à voix basse sur place",
             "Demander aux personnes proches de s’éloigner un peu",
             "Ne répondre qu’à la partie non sensible"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r4q1",
+        "nurse-r4q1": {
           "question": "Que faut-il faire après avoir retiré des gants de protection ?",
           "answers": [
             "Toucher d’abord du matériel propre",
             "Garder les gants pour plus tard",
             "Se nettoyer les mains uniquement si les gants se sont déchirés",
             "Pratiquer l’hygiène des mains"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q2",
+        "nurse-r4q2": {
           "question": "Où faut-il jeter un objet piquant ou tranchant usagé ?",
           "answers": [
             "Dans un sac de déchets ordinaire",
             "Sur un plateau pour plus tard",
             "Directement dans un collecteur homologué résistant à la perforation",
             "Dans son emballage d’origine"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q4",
+        "nurse-r4q4": {
           "question": "Un matériel d’observation partagé vient d’être utilisé. Quelle est l’étape suivante la plus sûre ?",
           "answers": [
             "Le ranger immédiatement sans le vérifier",
             "Le couvrir de papier et le réutiliser",
             "Le nettoyer correctement avant la personne suivante",
             "Le nettoyer seulement en fin de semaine"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r4q5",
+        "nurse-r4q5": {
           "question": "Une personne qui tousse paraît gênée. Quelle est la meilleure réponse ?",
           "answers": [
             "La réprimander devant tout le monde",
             "Ignorer complètement la toux",
             "Parler de ses symptômes à voix haute dans la pièce",
             "Proposer avec respect des mesures d’hygiène respiratoire et préserver sa dignité"
-          ],
-          "correct": 3,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r6q2",
+        "nurse-r6q2": {
           "question": "Une personne dit ne pas avoir compris une explication. Que vaut-il mieux faire ?",
           "answers": [
             "Reformuler simplement puis lui demander de l’expliquer avec ses propres mots",
             "Répéter le même jargon plus fort",
             "Lui dire de chercher sur Internet plus tard",
             "Faire comme si elle avait compris"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r6q5",
+        "nurse-r6q5": {
           "question": "Un appareil de communication partagé a été manipulé pendant les soins. Que faut-il faire avant qu’une autre personne l’utilise ?",
           "answers": [
             "Le ranger sans vérification",
             "Le nettoyer selon le processus de prévention des infections indiqué",
             "L’envelopper dans du papier sec",
             "Nettoyer uniquement l’écran s’il paraît poussiéreux"
-          ],
-          "correct": 1,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Priorités sous pression",
-      "questions": [
-        {
-          "id": "nurse-r7q2",
+      "questions": {
+        "nurse-r7q2": {
+          "visual": {
+            "items": [
+              "APPORTS::800 mL notés",
+              "SORTIES::Vide · urines signalées deux fois"
+            ],
+            "ariaLabel": "Huit cents millilitres d’apports sont notés ; les sorties sont vides malgré deux urines signalées"
+          },
           "question": "Quel est le principal problème de ce relevé hydrique ?",
           "answers": [
             "Les apports sont forcément trop élevés",
             "Les sorties signalées prouvent que le total était normal",
             "Il faut ignorer tout le relevé",
             "Les sorties n’ont pas été enregistrées complètement"
-          ],
-          "correct": 3,
-          "category": "reasoning_priorities",
-          "reasoningSteps": 2,
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "APPORTS::800 mL notés",
-              "SORTIES::Vide · urines signalées deux fois"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Huit cents millilitres d’apports sont notés ; les sorties sont vides malgré deux urines signalées"
-          }
+          ]
         },
-        {
-          "id": "nurse-r2q6",
-          "question": "Qui doit être pris en charge en premier ?",
+        "nurse-r2q6": {
           "context": "La personne A est à l’aise et pose une question de routine. La personne B ressent une nouvelle gêne thoracique, paraît moite et dit se sentir faible.",
+          "question": "Qui doit être pris en charge en premier ?",
           "answers": [
             "La personne A, car sa question est rapide",
             "Les deux doivent attendre le prochain passage prévu",
             "La personne B, car plusieurs signes nouveaux évoquent une détérioration soudaine",
             "La personne la plus jeune"
-          ],
-          "correct": 2,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r4q6",
-          "question": "Quelle tâche passe en premier ?",
+        "nurse-r4q6": {
           "context": "Un liquide biologique renversé crée un risque de glissade et d’exposition dans un passage. Une étagère doit aussi être réapprovisionnée.",
+          "question": "Quelle tâche passe en premier ?",
           "answers": [
             "Réapprovisionner l’étagère comme prévu",
             "Sécuriser le danger immédiat et organiser le nettoyage adapté",
             "Laisser les deux tâches à l’équipe suivante",
             "Contourner la flaque sans prévenir personne"
-          ],
-          "correct": 1,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r7q1",
-          "question": "Qui doit être pris en charge en premier ?",
+        "nurse-r7q1": {
           "context": "La personne A est à l’aise avec un pouls légèrement accéléré après avoir marché. La personne B est soudain confuse, respire rapidement et paraît pâle.",
+          "question": "Qui doit être pris en charge en premier ?",
           "answers": [
             "La personne B, car plusieurs signes nouveaux évoquent une détérioration soudaine",
             "La personne A, car son pouls a changé",
             "Les deux peuvent attendre les observations de routine",
             "La personne arrivée la première"
-          ],
-          "correct": 0,
-          "category": "reasoning_priorities"
+          ]
         },
-        {
-          "id": "nurse-r7q5",
-          "question": "Quel changement exige une attention rapide ?",
+        "nurse-r7q5": {
           "context": "Les observations de la personne A sont inchangées et elle parle normalement. La personne B était éveillée auparavant, mais elle est maintenant somnolente, moite et difficile à mobiliser.",
+          "question": "Quel changement exige une attention rapide ?",
           "answers": [
             "Le passage récent de la personne B d’un état éveillé à un état somnolent et moite",
             "Les observations inchangées de la personne A",
             "Le fait que les deux personnes aient été observées",
             "Aucun, car aucun chiffre précis n’est indiqué"
-          ],
-          "correct": 0,
-          "category": "observation_vitals"
+          ]
         },
-        {
-          "id": "nurse-r6q1",
+        "nurse-r6q1": {
           "question": "Une personne dit : « J’ai peur de l’examen. » Quelle est la meilleure réponse ?",
           "answers": [
             "Tout le monde passe des examens, essayez de ne pas y penser",
             "Je vois que cela vous inquiète. Qu’est-ce qui vous préoccupe le plus ?",
             "Je vous promets que le résultat sera bon",
             "Donner immédiatement une longue explication technique"
-          ],
-          "correct": 1,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r3q1",
+        "nurse-r3q1": {
           "question": "Un volume passe de 600 mL à 900 mL. De quel pourcentage a-t-il augmenté ?",
           "answers": [
             "25 %",
             "33 %",
             "50 %",
             "75 %"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r3q3",
+        "nurse-r3q3": {
           "question": "Un relevé indique 1,2 L d’apports et 450 mL de sorties. Quelle est la différence numérique ?",
           "answers": [
             "650 mL",
             "750 mL",
             "850 mL",
             "1 650 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Transmission finale",
-      "questions": [
-        {
-          "id": "nurse-r10q6",
-          "question": "Qui est prioritaire immédiatement ?",
-          "reasoningSteps": 2,
-          "answers": [
-            "La personne A, car l’inconfort passe toujours en premier",
-            "Les deux peuvent attendre une vérification de routine",
-            "La personne B, car l’état de conscience et la respiration ont soudainement changé",
-            "Choisir selon l’ordre d’arrivée"
-          ],
-          "correct": 2,
-          "category": "reasoning_priorities",
-          "presentation": "code",
+      "questions": {
+        "nurse-r10q6": {
           "visual": {
             "items": [
               "PERSONNE A::Éveillée · gêne légère stable · parole normale",
               "PERSONNE B::Pâle · difficile à réveiller · respiration irrégulière"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "La personne A est éveillée avec une gêne légère stable et une parole normale. La personne B est pâle, difficile à réveiller et respire de façon irrégulière."
-          }
-        },
-        {
-          "id": "nurse-r10q3",
-          "question": "Quelle est la conclusion la plus sûre ?",
-          "reasoningSteps": 2,
+          },
+          "question": "Qui est prioritaire immédiatement ?",
           "answers": [
-            "La tendance est rassurante puisqu’aucun diagnostic précis n’est donné",
-            "Une détérioration nette exige une évaluation qualifiée rapide",
-            "Seul le changement de couleur compte",
-            "Attendre l’équipe suivante avant de le signaler"
-          ],
-          "correct": 1,
-          "category": "observation_vitals",
-          "presentation": "code",
+            "La personne A, car l’inconfort passe toujours en premier",
+            "Les deux peuvent attendre une vérification de routine",
+            "La personne B, car l’état de conscience et la respiration ont soudainement changé",
+            "Choisir selon l’ordre d’arrivée"
+          ]
+        },
+        "nurse-r10q3": {
           "visual": {
             "items": [
               "AVANT::Éveillée · couleur normale · respiration confortable",
               "MAINTENANT::Confuse · pâle · respiration plus rapide"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Avant, la personne était éveillée, de couleur normale et respirait confortablement. Maintenant, elle est confuse, pâle et respire plus vite."
-          }
+          },
+          "question": "Quelle est la conclusion la plus sûre ?",
+          "answers": [
+            "La tendance est rassurante puisqu’aucun diagnostic précis n’est donné",
+            "Une détérioration nette exige une évaluation qualifiée rapide",
+            "Seul le changement de couleur compte",
+            "Attendre l’équipe suivante avant de le signaler"
+          ]
         },
-        {
-          "id": "nurse-r3q4",
+        "nurse-r3q4": {
           "question": "Un relevé de 1,5 L est rempli à 40 %. Quel volume a été enregistré ?",
           "answers": [
             "400 mL",
             "500 mL",
             "600 mL",
             "750 mL"
-          ],
-          "correct": 2,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r10q1",
-          "question": "Une obstruction des voies aériennes empêche l’air d’atteindre les poumons. Quelle conséquence survient le plus directement ?",
-          "presentation": "spatial",
+        "nurse-r10q1": {
           "visual": {
             "items": [
               "VOIES AÉRIENNES BLOQUÉES → MOINS D’AIR AUX POUMONS → ? → MOINS D’OXYGÈNE AUX TISSUS"
             ],
             "ariaLabel": "Voies aériennes bloquées, moins d’air aux poumons, élément inconnu, moins d’oxygène aux tissus"
           },
-          "reasoningSteps": 2,
+          "question": "Une obstruction des voies aériennes empêche l’air d’atteindre les poumons. Quelle conséquence survient le plus directement ?",
           "answers": [
             "Moins d’oxygène passe dans le sang",
             "Davantage de nutriments entrent dans l’estomac",
             "Les reins produisent immédiatement davantage d’urine",
             "Les os génèrent davantage de mouvement"
-          ],
-          "correct": 0,
-          "category": "anatomy_physiology"
+          ]
         },
-        {
-          "id": "nurse-r10q2",
-          "question": "Une personne boit 0,75 L puis 425 mL. Quel total faut-il noter en millilitres ?",
-          "presentation": "spatial",
+        "nurse-r10q2": {
           "visual": {
             "items": [
               "0,75 L + 425 mL = ?"
             ],
-            "columns": 1,
             "ariaLabel": "Zéro virgule soixante-quinze litre plus quatre cent vingt-cinq millilitres : quel total en millilitres ?"
           },
-          "reasoningSteps": 2,
+          "question": "Une personne boit 0,75 L puis 425 mL. Quel total faut-il noter en millilitres ?",
           "answers": [
             "500 mL",
             "1 175 mL",
             "1 000 mL",
             "4 325 mL"
-          ],
-          "correct": 1,
-          "category": "numeracy_measurement"
+          ]
         },
-        {
-          "id": "nurse-r10q4",
-          "question": "Quelle réponse traite les deux risques indiqués ?",
+        "nurse-r10q4": {
           "context": "Une tâche risque de projeter un liquide biologique vers les yeux. Un matériel partagé sera ensuite utilisé par une autre personne.",
-          "reasoningSteps": 2,
+          "question": "Quelle réponse traite les deux risques indiqués ?",
           "answers": [
             "Porter des vêtements ordinaires et ne pas nettoyer le matériel",
             "Porter uniquement des gants et laisser le matériel à la personne suivante",
             "Éviter l’hygiène des mains parce qu’une protection oculaire a été utilisée",
             "Utiliser une protection adaptée des yeux ou du visage, puis nettoyer correctement le matériel partagé"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "nurse-r10q5",
-          "question": "Quelle réponse satisfait les deux besoins de communication ?",
+        "nurse-r10q5": {
           "context": "Une personne dit : « J’ai peur et je n’ai pas compris l’explication. »",
-          "reasoningSteps": 2,
+          "question": "Quelle réponse satisfait les deux besoins de communication ?",
           "answers": [
             "Reconnaître la peur, expliquer simplement et vérifier la compréhension",
             "Dire que l’information a déjà été donnée",
             "Promettre que rien de grave ne peut arriver",
             "Demander à quelqu’un d’autre de répondre en l’absence de la personne"
-          ],
-          "correct": 0,
-          "category": "communication_compassion"
+          ]
         },
-        {
-          "id": "nurse-r2q1",
-          "question": "Quels vaisseaux transportent le sang riche en oxygène des poumons vers le cœur ?",
-          "presentation": "sequence",
+        "nurse-r2q1": {
           "visual": {
             "items": [
               "POUMONS",
               "?",
               "CŒUR"
             ],
-            "columns": 3,
-            "separator": "→",
             "ariaLabel": "Des poumons vers le cœur par des vaisseaux inconnus"
           },
+          "question": "Quels vaisseaux transportent le sang riche en oxygène des poumons vers le cœur ?",
           "answers": [
             "Les artères pulmonaires",
             "Les voies aériennes",
             "Les veines pulmonaires",
             "Les vaisseaux lymphatiques"
-          ],
-          "correct": 2,
-          "category": "anatomy_physiology"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "TEST D’ENTRÉE",
-    "adNote": "Une courte publicité, puis continuez.",
-    "finalAdNote": "Une courte publicité, puis découvrez votre résultat.",
-    "finalBadge": "TEST D’ENTRÉE TERMINÉ",
-    "finalIcon": "✓",
-    "finalTitle": "TEST D’ENTRÉE TERMINÉ",
-    "finalCopy": "Votre résultat est prêt à être dévoilé.",
-    "finalButton": "Voir mon résultat",
-    "finalChecklist": [
-      "40 réponses vérifiées",
-      "Répartition des compétences",
-      "Note finale calculée"
-    ],
-    "reveals": [
-      {
-        "badge": "SECTION D’EXAMEN TERMINÉE",
-        "icon": "✓",
-        "title": "Première épreuve terminée",
-        "signal": "fixed",
-        "message": "Bon départ. L’épreuve suivante est prête."
-      },
-      {
-        "badge": "SECTION D’EXAMEN TERMINÉE",
-        "icon": "✓",
-        "title": "Deuxième épreuve terminée",
-        "signal": "fixed",
-        "message": "La difficulté augmente à l’épreuve suivante."
-      },
-      {
-        "badge": "SECTION D’EXAMEN TERMINÉE",
-        "icon": "✓",
-        "title": "Vous avez dépassé la moitié",
-        "signal": "fixed",
-        "message": "L’épreuve avancée vous attend."
-      },
-      {
-        "badge": "SECTION D’EXAMEN TERMINÉE",
-        "icon": "✓",
-        "title": "Évaluation finale en vue",
-        "signal": "fixed",
-        "message": "Il ne reste plus que l’évaluation finale."
-      },
-      {
-        "badge": "TEST D’ENTRÉE TERMINÉ",
-        "icon": "✓",
-        "title": "TEST D’ENTRÉE TERMINÉ",
-        "signal": "fixed",
-        "message": "Votre résultat est prêt à être dévoilé."
-      }
-    ]
-  },
-  "progressLabel": "terminé",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "TEST D’ENTRÉE",
-    "resultProgressComplete": "{value} % terminé",
-    "currentScoreLabel": "SCORE ACTUEL À L’EXAMEN",
-    "levelLabel": "SECTION",
-    "scoreSuffix": "bonnes réponses",
-    "journeyLabel": "TEST D’ENTRÉE",
-    "kitchensCleared": "{value} / {total} sections d’examen terminées",
-    "currentRank": "NIVEAU ACTUEL · EXAMEN D’ENTRÉE EN SOINS INFIRMIERS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Test d’entrée commencé"
-      },
-      {
-        "afterStage": 5,
-        "label": "Test d’entrée terminé"
-      }
-    ],
-    "unlockEyebrow": "MISE À JOUR · EXAMEN D’ENTRÉE EN SOINS INFIRMIERS",
-    "unlockTitle": "Un nouveau défi est prêt: examen d’entrée en soins infirmiers",
-    "unlockCopy": "La prochaine étape vous attend dans l’examen d’entrée en soins infirmiers.",
-    "finalEyebrow": "VOTRE SCORE DE SOINS INFIRMIERS",
-    "finalCareerTitle": "TEST D’ENTRÉE TERMINÉ",
-    "strongestLabel": "Point fort d’admission",
-    "stages": [
-      {
-        "difficulty": "Fondamentaux",
-        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
-        "preAdTitle": "Première épreuve terminée",
-        "preAdCopy": "Bon départ. L’épreuve suivante est prête.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "SECTION D’EXAMEN TERMINÉE",
-        "resultBands": {
-          "high": {
-            "title": "Première épreuve terminée",
-            "insight": "Bon départ. L’épreuve suivante est prête."
-          },
-          "medium": {
-            "title": "Première épreuve terminée",
-            "insight": "Bon départ. L’épreuve suivante est prête."
-          },
-          "low": {
-            "title": "Première épreuve terminée",
-            "insight": "Bon départ. L’épreuve suivante est prête."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE ÉPREUVE · INTERMÉDIAIRE",
-          "title": "Corps et observations",
-          "difficulty": "Intermédiaire",
-          "tagline": "Systèmes. Mesures. Changements importants.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Intermédiaire",
-        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
-        "preAdTitle": "Deuxième épreuve terminée",
-        "preAdCopy": "La difficulté augmente à l’épreuve suivante.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "SECTION D’EXAMEN TERMINÉE",
-        "resultBands": {
-          "high": {
-            "title": "Deuxième épreuve terminée",
-            "insight": "La difficulté augmente à l’épreuve suivante."
-          },
-          "medium": {
-            "title": "Deuxième épreuve terminée",
-            "insight": "La difficulté augmente à l’épreuve suivante."
-          },
-          "low": {
-            "title": "Deuxième épreuve terminée",
-            "insight": "La difficulté augmente à l’épreuve suivante."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE ÉPREUVE · CONFIRMÉ",
-          "title": "Sécurité et communication",
-          "difficulty": "Confirmé",
-          "tagline": "Prévention des infections. Dignité. Clarté.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Confirmé",
-        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
-        "preAdTitle": "Vous avez dépassé la moitié",
-        "preAdCopy": "L’épreuve avancée vous attend.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "SECTION D’EXAMEN TERMINÉE",
-        "resultBands": {
-          "high": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "L’épreuve avancée vous attend."
-          },
-          "medium": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "L’épreuve avancée vous attend."
-          },
-          "low": {
-            "title": "Vous avez dépassé la moitié",
-            "insight": "L’épreuve avancée vous attend."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE ÉPREUVE · AVANCÉ",
-          "title": "Priorités sous pression",
-          "difficulty": "Avancé",
-          "tagline": "Priorités concurrentes. Décisions réfléchies.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Avancé",
-        "preAdBadge": "SECTION D’EXAMEN TERMINÉE",
-        "preAdTitle": "Évaluation finale en vue",
-        "preAdCopy": "Il ne reste plus que l’évaluation finale.",
-        "preAdButton": "Continuer",
-        "resultIcon": "✓",
-        "resultLabel": "SECTION D’EXAMEN TERMINÉE",
-        "resultBands": {
-          "high": {
-            "title": "Évaluation finale en vue",
-            "insight": "Il ne reste plus que l’évaluation finale."
-          },
-          "medium": {
-            "title": "Évaluation finale en vue",
-            "insight": "Il ne reste plus que l’évaluation finale."
-          },
-          "low": {
-            "title": "Évaluation finale en vue",
-            "insight": "Il ne reste plus que l’évaluation finale."
-          }
-        },
-        "next": {
-          "eyebrow": "PROCHAINE ÉPREUVE · ÉVALUATION FINALE",
-          "title": "Transmission finale",
-          "difficulty": "Évaluation finale",
-          "tagline": "Tendances. Sécurité. Jugement clinique intégré.",
-          "button": "Continuer"
-        }
-      },
-      {
-        "difficulty": "Évaluation finale",
-        "preAdBadge": "TEST D’ENTRÉE TERMINÉ",
-        "preAdTitle": "TEST D’ENTRÉE TERMINÉ",
-        "preAdCopy": "Votre résultat est prêt à être dévoilé.",
-        "preAdButton": "Voir mon résultat",
-        "resultIcon": "✓",
-        "resultLabel": "TEST D’ENTRÉE TERMINÉ",
-        "resultBands": {
-          "high": {
-            "title": "TEST D’ENTRÉE TERMINÉ",
-            "insight": "Votre résultat est prêt à être dévoilé."
-          },
-          "medium": {
-            "title": "TEST D’ENTRÉE TERMINÉ",
-            "insight": "Votre résultat est prêt à être dévoilé."
-          },
-          "low": {
-            "title": "TEST D’ENTRÉE TERMINÉ",
-            "insight": "Votre résultat est prêt à être dévoilé."
-          }
-        },
-        "preAdChecks": [
-          "40 réponses vérifiées",
-          "Répartition des compétences",
-          "Note finale calculée"
-        ]
-      }
-    ]
   }
 }

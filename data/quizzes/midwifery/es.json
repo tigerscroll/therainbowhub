@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Solo el 7% supera esta prueba de ingreso en obstetricia",
   "eyebrow": "CENTRO DE NACIMIENTO",
   "summary": "Embarazo, nacimiento, cuidado del recién nacido y criterio sereno ponen a prueba tu atención.",
+  "progressLabel": "completado",
   "landing": {
     "intro": "Embarazo, parto y cuidado del recién nacido: ¿mantendrás la calma y detectarás el detalle esencial?",
     "cta": "Empezar el test"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Solo para entretenimiento y cultura general. Este test de ingreso en obstetricia no es un examen oficial, una titulación ni asesoramiento profesional."
   },
+  "checkpoint": {
+    "finalAdNote": "Primero, un anuncio breve; después, verás tu resultado."
+  },
+  "career": {
+    "resultProgressLabel": "PRUEBA DE INGRESO",
+    "resultProgressComplete": "{value}% completado",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Fundamentos",
+        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
+        "preAdTitle": "Primera sección completada",
+        "preAdCopy": "Buen comienzo. La siguiente sección está lista.",
+        "next": {
+          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · EN DESARROLLO",
+          "tagline": "Fisiología. Bienestar. Fundamentos del nacimiento."
+        }
+      },
+      "stage-2": {
+        "difficulty": "En desarrollo",
+        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
+        "preAdTitle": "Segunda sección completada",
+        "preAdCopy": "La próxima sección aumenta la dificultad.",
+        "next": {
+          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · COMPETENTE",
+          "tagline": "Consentimiento. Prevención de infecciones. Apoyo."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Competente",
+        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
+        "preAdTitle": "Ya has superado la mitad",
+        "preAdCopy": "La sección avanzada viene a continuación.",
+        "next": {
+          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · AVANZADO",
+          "tagline": "Cambios. Primeros cuidados. Prioridades."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Avanzado",
+        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
+        "preAdTitle": "La evaluación final es la siguiente",
+        "preAdCopy": "Solo queda la evaluación final.",
+        "next": {
+          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · EVALUACIÓN FINAL",
+          "tagline": "Varias pistas. Aviso al equipo adecuado. Decisión final."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Evaluación final",
+        "preAdBadge": "PRUEBA DE INGRESO COMPLETADA",
+        "preAdTitle": "PRUEBA DE INGRESO COMPLETADA",
+        "preAdCopy": "Tu resultado está listo para descubrirlo.",
+        "preAdChecks": [
+          "40 respuestas comprobadas",
+          "Desglose por áreas preparado",
+          "Puntaje final calculado"
+        ],
+        "preAdButton": "Ver mi resultado"
+      }
+    }
+  },
   "results": {
     "name": "TU PUNTUACIÓN DE OBSTETRICIA",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100%",
         "title": "Talento para la atención materna",
         "copy": "Has dominado embarazo, parto, seguridad y comunicación con una precisión notable. Incluso las preguntas más exigentes apenas lograron frenarte."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89%",
         "title": "Vocación por el cuidado materno",
         "copy": "El resultado demuestra un gran dominio de embarazo, parto, seguridad y comunicación. Tu razonamiento se mantuvo firme incluso ante las trampas más sutiles."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79%",
         "title": "Candidato sereno",
         "copy": "Has conseguido un resultado sólido en embarazo, parto, seguridad y comunicación. Algunos detalles difíciles restaron puntos, pero el conjunto sigue siendo convincente."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69%",
         "title": "Observador atento",
         "copy": "Tienes una buena base en embarazo, parto, seguridad y comunicación. Si refuerzas los puntos más delicados, tu próximo resultado puede mejorar mucho."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59%",
         "title": "Candidato prometedor",
         "copy": "Has reconocido varios aspectos clave de embarazo, parto, seguridad y comunicación. Las preguntas falladas señalan con claridad qué conviene reforzar."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Menos del 50%",
         "title": "Defensor atento del cuidado",
         "copy": "Este desafío ha revelado oportunidades de mejora en embarazo, parto, seguridad y comunicación. Tu curiosidad y los aciertos logrados son un excelente punto de partida."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Embarazo y atención prenatal",
-        "categories": [
-          "pregnancy_physiology",
-          "antenatal_wellbeing"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Embarazo y atención prenatal"
       },
-      {
-        "label": "Parto y cuidados del recién nacido",
-        "categories": [
-          "labour_birth",
-          "newborn_care"
-        ]
+      "dimension-2": {
+        "label": "Parto y cuidados del recién nacido"
       },
-      {
-        "label": "Seguridad y comunicación",
-        "categories": [
-          "infection_safety",
-          "communication_priorities"
-        ]
+      "dimension-3": {
+        "label": "Seguridad y comunicación"
       }
-    ],
+    },
     "score": {
       "passed": "¡Has superado el examen de acceso a obstetricia!",
       "finished": "Desafío completado: examen de acceso a obstetricia",
@@ -88,9 +133,6 @@
       "strongest": "Área más fuerte de acceso",
       "trickiest": "Área más difícil de acceso",
       "bestRound": "Mejor desafío",
-      "showPercentage": true,
-      "disclaimer": "Solo para entretenimiento y cultura general. Este test de ingreso en obstetricia no es un examen oficial, una titulación ni asesoramiento profesional.",
-      "showBestRound": true,
       "insights": {
         "overview": "puntuación de obstetricia de un vistazo",
         "correct": "correctas",
@@ -99,857 +141,429 @@
         "breakdown": "Desglose de tus habilidades de acceso",
         "snapshot": "Lo que sugiere tu perfil en el examen de acceso a obstetricia",
         "targetReached": "Objetivo del 80% alcanzado",
-        "targetRemaining": "Aciertos que faltan para el 80%",
-        "details": {
-          "analysisTitle": "Cómo interpretar tu puntuación de obstetricia",
-          "analysisCopy": "Este resultado reúne 40 preguntas sobre embarazo, parto, cuidado neonatal, seguridad y comunicación. El desglose muestra qué áreas fueron más sólidas en este intento.",
-          "roadmapTitle": "En tu informe completo del examen de acceso a obstetricia",
-          "roadmapIntro": "La puntuación es solo la primera pista. El informe muestra tu área más fuerte de acceso, el desglose por áreas y las respuestas falladas en el examen de acceso a obstetricia.",
-          "roadmapItems": [
-            "Análisis de puntuación",
-            "Área más fuerte de acceso",
-            "Desglose de tus habilidades de acceso",
-            "Próximos pasos prácticos"
-          ],
-          "positionTitle": "Tu camino hacia el 80%",
-          "positionCopy": "El objetivo lúdico es acertar 32 de 40 preguntas. El marcador muestra cuánto se acercó este intento en el examen de acceso a obstetricia, sin comparaciones ni evaluación profesional.",
-          "measuredTitle": "Qué ha explorado este examen de acceso a obstetricia",
-          "measuredIntro": "Las preguntas abarcan tres dimensiones complementarias propias del examen de acceso a obstetricia.",
-          "measuredAreas": [
-            {
-              "title": "Embarazo y atención prenatal",
-              "copy": "Reconocer fisiología básica, cambios significativos e información temporal sencilla."
-            },
-            {
-              "title": "Parto y cuidados del recién nacido",
-              "copy": "Seguir procesos básicos del nacimiento e identificar principios de apoyo al recién nacido."
-            },
-            {
-              "title": "Seguridad y comunicación",
-              "copy": "Proteger la seguridad frente a infecciones, la dignidad y la comunicación compasiva al detectar un deterioro."
-            }
-          ],
-          "tipsTitle": "Tres formas de afinar tu enfoque de acceso",
-          "tipsIntro": "Estrategias sencillas para otro intento en el examen de acceso a obstetricia, no una evaluación profesional.",
-          "tips": [
-            {
-              "title": "Detecta cambios respecto a lo normal",
-              "copy": "Una diferencia clara frente al patrón habitual puede importar más que compararla con otra persona."
-            },
-            {
-              "title": "Combina las pistas",
-              "copy": "Sangrado repentino, palidez, mareo o un gran cambio de bienestar pesan más juntos que por separado."
-            },
-            {
-              "title": "Protege primero la dignidad",
-              "copy": "Una buena comunicación reconoce la emoción, escucha y preserva la intimidad sin promesas infundadas."
-            }
-          ],
-          "finalTitle": "Tu resultado en el examen de acceso a obstetricia",
-          "finalCopy": "Acertaste {score} de {total} preguntas. A continuación aparece el perfil de este intento."
-        }
+        "targetRemaining": "Aciertos que faltan para el 80%"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Primera cita",
-      "questions": [
-        {
-          "id": "mid-r1q1",
+      "questions": {
+        "mid-r1q1": {
           "question": "¿Qué órgano permite el intercambio de sustancias durante el embarazo?",
-          "presentation": "icons",
-          "icons": [
-            "/quizzes/midwifery/assets/icons/bladder.svg",
-            "/quizzes/midwifery/assets/icons/placenta.svg",
-            "/quizzes/midwifery/assets/icons/pancreas.svg",
-            "/quizzes/midwifery/assets/icons/appendix.svg"
-          ],
           "answers": [
             "La vejiga",
             "La placenta",
             "El páncreas",
             "El apéndice"
-          ],
-          "correct": 1,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r1q2",
+        "mid-r1q2": {
           "question": "¿Por qué se registran las observaciones en varias consultas?",
           "answers": [
             "Para que todos los valores sean iguales",
             "Para sustituir la conversación",
             "Para predecir la hora exacta del nacimiento",
             "Para detectar cambios y tendencias con el tiempo"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r1q3",
+        "mid-r1q3": {
           "question": "¿Qué hace el cuello uterino durante el parto?",
           "answers": [
             "Se abre gradualmente a medida que avanza el parto",
             "Bombea sangre",
             "Produce leche",
             "Se convierte en la placenta"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r1q4",
+        "mid-r1q4": {
           "question": "¿Qué ayuda a un recién nacido estable a conservar el calor poco después del nacimiento?",
           "answers": [
             "Un baño frío",
             "Dejarle las mantas húmedas",
             "Secarlo y favorecer el contacto piel con piel",
             "Separarlo de la persona que lo ha dado a luz de forma rutinaria"
-          ],
-          "correct": 2,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r1q5",
+        "mid-r1q5": {
           "question": "¿Cuándo debe realizarse la higiene de manos en la atención materna?",
           "answers": [
             "Solo al final del turno",
             "Solo si se rompen los guantes",
             "Antes de un contacto limpio y después de un riesgo de exposición",
             "Solo cuando las manos tienen manchas visibles"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r1q6",
+        "mid-r1q6": {
           "question": "Una mujer dice: «Me preocupa lo que va a pasar». ¿Cuál es la mejor primera respuesta?",
           "answers": [
             "Reconocer su preocupación e invitarla a hacer preguntas",
             "Decirle que no hay nada de qué preocuparse",
             "Cambiar de tema",
             "Usar términos técnicos de inmediato"
-          ],
-          "correct": 0,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r2q2",
+        "mid-r2q2": {
           "question": "¿Cuál es una de las funciones principales del líquido amniótico?",
           "answers": [
             "Sustituir la placenta",
             "Digerir nutrientes",
             "Formar los dientes definitivos",
             "Amortiguar y proteger al bebé en desarrollo"
-          ],
-          "correct": 3,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q5",
+        "mid-r2q5": {
           "question": "El patrón habitual de movimientos del bebé cambia claramente. ¿Qué es lo más importante?",
           "answers": [
             "Todos los bebés deben moverse a las mismas horas",
             "Una cifra universal lo determina todo",
             "Tomarse en serio el cambio respecto a su patrón habitual",
             "Los movimientos nunca varían"
-          ],
-          "correct": 2,
-          "category": "antenatal_wellbeing"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Embarazo y nacimiento",
-      "questions": [
-        {
-          "id": "mid-r2q1",
+      "questions": {
+        "mid-r2q1": {
           "question": "¿Dónde se desarrolla normalmente un bebé durante el embarazo?",
-          "presentation": "text",
           "answers": [
             "En la vejiga",
             "En el estómago",
             "En el útero",
             "En un pulmón"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q3",
+        "mid-r2q3": {
           "question": "¿Qué conecta al bebé con la placenta?",
           "answers": [
             "El cuello uterino",
             "El diafragma",
             "El cordón umbilical",
             "El uréter"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r2q4",
-          "question": "¿Qué secuencia representa mejor cómo llega el oxígeno al bebé?",
-          "presentation": "spatial",
+        "mid-r2q4": {
           "visual": {
             "items": [
               "SANGRE MATERNA → PLACENTA → CORDÓN UMBILICAL → BEBÉ"
             ],
             "ariaLabel": "De la sangre materna a la placenta, después al cordón umbilical y al bebé"
           },
+          "question": "¿Qué secuencia representa mejor cómo llega el oxígeno al bebé?",
           "answers": [
             "Bebé → estómago → placenta → pulmón",
             "Sangre materna → placenta → cordón umbilical → bebé",
             "Placenta → vejiga → cordón umbilical → bebé",
             "Sangre materna → riñón → cuello uterino → bebé"
-          ],
-          "correct": 1,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r3q2",
+        "mid-r3q2": {
           "question": "Durante el embarazo aparece de repente un dolor de cabeza intenso con alteraciones visuales. ¿Cuál es la respuesta más segura?",
           "answers": [
             "Descansar y volver a valorar la situación al cabo de una hora",
             "Esperar hasta la próxima consulta rutinaria",
             "Pedir a alguien en casa que vigile los síntomas",
             "Solicitar cuanto antes una valoración de un profesional cualificado de atención materna"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r3q4",
-          "question": "Un gráfico muestra 70, 74 y 78 en tres consultas. ¿Qué indica?",
-          "presentation": "code",
+        "mid-r3q4": {
           "visual": {
             "items": [
               "CONSULTA 1: 70",
               "CONSULTA 2: 74",
               "CONSULTA 3: 78"
             ],
-            "columns": 1,
-            "separator": "•",
             "ariaLabel": "Valores 70, 74 y 78 en tres consultas"
           },
+          "question": "Un gráfico muestra 70, 74 y 78 en tres consultas. ¿Qué indica?",
           "answers": [
             "Ningún cambio",
             "Una tendencia descendente constante",
             "Falta una medición",
             "Una tendencia ascendente constante"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r3q5",
+        "mid-r3q5": {
           "question": "¿Qué cambio desde una consulta prenatal anterior es más importante comunicar con claridad?",
           "answers": [
             "La consulta se realizó en otra sala",
             "La nota escrita es algo más larga",
             "La consulta tuvo lugar más tarde",
             "Antes la persona se encontraba bien, pero ahora está mareada y claramente pálida"
-          ],
-          "correct": 3,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r5q1",
+        "mid-r5q1": {
           "question": "¿Qué órgano produce las contracciones musculares del parto?",
           "answers": [
             "La vejiga",
             "El hígado",
             "El útero",
             "El páncreas"
-          ],
-          "correct": 2,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r5q4",
+        "mid-r5q4": {
           "question": "El bebé ya ha nacido, pero la placenta aún no ha sido expulsada. ¿En qué fase del parto se encuentra?",
-          "presentation": "text",
           "answers": [
             "En la tercera fase",
             "En la primera fase",
             "En la segunda fase",
             "En una nueva fase del embarazo"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Respeto y seguridad",
-      "questions": [
-        {
-          "id": "mid-r4q4",
+      "questions": {
+        "mid-r4q4": {
           "question": "Una mujer empieza a llorar y dice que se siente desbordada. ¿Qué debe hacerse primero?",
           "answers": [
             "Pasar directamente a darle consejos prácticos",
             "Detenerse, reconocer cómo se siente y escucharla",
             "Decirle que es habitual sentirse desbordada",
             "Intentar distraerla de lo que la angustia"
-          ],
-          "correct": 1,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r5q6",
+        "mid-r5q6": {
           "question": "El envoltorio estéril de un material está rasgado antes de usarlo. ¿Cuál es la respuesta más segura?",
           "answers": [
             "No considerarlo estéril; sustituirlo o pedir la ayuda adecuada",
             "Cerrar el desgarro con cinta y continuar",
             "Ocultar el desgarro",
             "Tocar el contenido para comprobarlo"
-          ],
-          "correct": 0,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q1",
+        "mid-r4q1": {
           "question": "Está a punto de comenzar un procedimiento limpio. ¿Qué es imprescindible justo antes?",
           "answers": [
             "Tocar varias superficies compartidas",
             "Mantener los mismos guantes usados",
             "Omitir la limpieza si las manos parecen limpias",
             "Realizar una higiene de manos adecuada"
-          ],
-          "correct": 3,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q2",
+        "mid-r4q2": {
           "question": "Una tarea puede salpicar líquido corporal hacia los ojos. ¿Cuál es la preparación más segura?",
           "answers": [
             "Limitarse a apartar la cara",
             "Usar gafas normales como única protección",
             "Utilizar una protección adecuada para los ojos o la cara",
             "Ignorar el riesgo de salpicadura indicado"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         },
-        {
-          "id": "mid-r4q3",
+        "mid-r4q3": {
           "question": "Una mujer dice que no quiere que haya estudiantes presentes. ¿Cuál es la mejor respuesta?",
           "answers": [
             "Decirle que al acudir pierde esa posibilidad de elegir",
             "Comentar su negativa en el pasillo",
             "Respetar su decisión y proteger su privacidad",
             "Continuar sin tenerla en cuenta"
-          ],
-          "correct": 2,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r4q6",
+        "mid-r4q6": {
           "question": "Una mujer quiere valorar sus opciones antes de decidir. ¿Cuál es la respuesta respetuosa?",
           "answers": [
             "Presionarla para que elija la opción más rápida",
             "Ocultarle las alternativas",
             "Interpretar sus preguntas como un rechazo de la atención",
             "Ofrecer información clara, responder sus preguntas y darle un tiempo adecuado"
-          ],
-          "correct": 3,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r2q6",
+        "mid-r2q6": {
           "question": "Antes de una exploración, ¿qué debe hacerse primero?",
           "answers": [
             "Explicarla con claridad y obtener un consentimiento informado",
             "Dar por supuesto el consentimiento porque la persona ha acudido",
             "Hablar de ella en público",
             "Empezar antes de responder las preguntas"
-          ],
-          "correct": 0,
-          "category": "communication_priorities"
+          ]
         },
-        {
-          "id": "mid-r7q6",
+        "mid-r7q6": {
           "question": "Después de manipular material compartido, ¿qué se necesita antes de tocar a un recién nacido?",
           "answers": [
             "Cambiar únicamente la iluminación de la sala",
             "Realizar una higiene de manos adecuada",
             "Tocar antes otra superficie",
             "Esperar hasta el final del día"
-          ],
-          "correct": 1,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Decisiones durante el parto y el posparto",
-      "questions": [
-        {
-          "id": "mid-r6q3",
-          "question": "¿Qué cambio es el más importante?",
-          "reasoningSteps": 2,
-          "answers": [
-            "La hora impresa en el gráfico",
-            "Que el parto haya comenzado antes",
-            "El color de la manta",
-            "La combinación de sensación febril, temblores y un claro empeoramiento respecto a antes"
-          ],
-          "correct": 3,
-          "category": "labour_birth",
-          "presentation": "code",
+      "questions": {
+        "mid-r6q3": {
           "visual": {
             "items": [
               "ANTES::Se encontraba bien · alerta",
               "AHORA::Sensación febril · temblores · empeoramiento repentino"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "Antes la persona se encontraba bien y alerta. Ahora tiene sensación febril, tiembla y ha empeorado de forma repentina."
-          }
+          },
+          "question": "¿Qué cambio es el más importante?",
+          "answers": [
+            "La hora impresa en el gráfico",
+            "Que el parto haya comenzado antes",
+            "El color de la manta",
+            "La combinación de sensación febril, temblores y un claro empeoramiento respecto a antes"
+          ]
         },
-        {
-          "id": "mid-r7q2",
+        "mid-r7q2": {
           "question": "¿Qué patrón sugiere con mayor fuerza que un recién nacido estable puede estar listo para alimentarse?",
           "answers": [
             "Se gira hacia el contacto, abre la boca y está cada vez más alerta",
             "Permanece profundamente dormido y sin moverse",
             "Presenta respiración irregular persistente y responde poco",
             "Está cada vez más frío y menos activo"
-          ],
-          "correct": 0,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r7q4",
+        "mid-r7q4": {
           "question": "¿Cuál es el objetivo básico del contacto piel con piel para un recién nacido estable?",
           "answers": [
             "Enfriarlo rápidamente",
             "Favorecer el calor, el contacto tranquilizador y la alimentación temprana",
             "Mantener separados al bebé y a la persona que lo ha dado a luz",
             "Sustituir todas las observaciones clínicas"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r5q2",
+        "mid-r5q2": {
           "question": "¿Qué patrón visible resulta más útil al describir las contracciones?",
           "answers": [
             "Su frecuencia, duración y evolución con el tiempo",
             "Solo la temperatura de la sala",
             "El color del reloj",
             "El número de personas presentes"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r5q3",
+        "mid-r5q3": {
           "question": "¿Qué cambio describe mejor un parto que está avanzando?",
           "answers": [
             "Las contracciones suelen hacerse más fuertes, largas y regulares",
             "Las contracciones se detienen para siempre",
             "La placenta siempre sale antes que el bebé",
             "El cuello uterino vuelve a su estado previo al embarazo"
-          ],
-          "correct": 0,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r5q5",
+        "mid-r5q5": {
           "question": "¿Por qué puede ayudar cambiar de postura durante el parto si resulta seguro y cómodo?",
           "answers": [
             "Garantiza una hora exacta de nacimiento",
             "Puede mejorar la comodidad y ayudar a afrontar el proceso de forma individual",
             "Elimina la necesidad de observación",
             "Una sola postura sirve para todo el mundo"
-          ],
-          "correct": 1,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r7q1",
+        "mid-r7q1": {
           "question": "Un recién nacido estable acaba de ser secado, pero la sala está fresca. ¿Qué opción ayuda mejor a mantener su calor?",
           "answers": [
             "Dejarlo descubierto para observarlo",
             "Favorecer el contacto piel con piel con una cobertura cálida adecuada",
             "Aplicar paños fríos y húmedos",
             "Separarlo de forma rutinaria, sean cuales sean las circunstancias"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r7q3",
+        "mid-r7q3": {
           "question": "Un recién nacido no se alimenta como de costumbre y respira claramente más rápido. ¿Qué es lo más seguro?",
           "answers": [
             "Esperar varios días sin comunicárselo a nadie",
             "Elegir un diagnóstico en casa",
             "Administrar un tratamiento no prescrito",
             "Reconocer el cambio y solicitar cuanto antes una valoración cualificada"
-          ],
-          "correct": 3,
-          "category": "newborn_care"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Evaluación final de obstetricia",
-      "questions": [
-        {
-          "id": "mid-r10q6",
-          "question": "¿Quién necesita atención inmediata?",
-          "reasoningSteps": 2,
-          "answers": [
-            "La persona A, porque sus preguntas rutinarias se resuelven más rápido",
-            "Ambas pueden esperar hasta el próximo relevo",
-            "La persona B, porque el sangrado repentino, la palidez y el mareo indican deterioro",
-            "Elegir únicamente por orden de llegada"
-          ],
-          "correct": 2,
-          "category": "communication_priorities",
-          "presentation": "code",
+      "questions": {
+        "mid-r10q6": {
           "visual": {
             "items": [
               "PERSONA A::Se encuentra bien · alerta · pregunta rutinaria sobre alimentación",
               "PERSONA B::Nuevo sangrado abundante · pálida · mareada"
             ],
-            "columns": 2,
-            "separator": "•",
             "ariaLabel": "La persona A se encuentra bien y alerta y tiene una pregunta rutinaria sobre alimentación. La persona B presenta un nuevo sangrado abundante y está pálida y mareada."
-          }
+          },
+          "question": "¿Quién necesita atención inmediata?",
+          "answers": [
+            "La persona A, porque sus preguntas rutinarias se resuelven más rápido",
+            "Ambas pueden esperar hasta el próximo relevo",
+            "La persona B, porque el sangrado repentino, la palidez y el mareo indican deterioro",
+            "Elegir únicamente por orden de llegada"
+          ]
         },
-        {
-          "id": "mid-r7q5",
+        "mid-r7q5": {
           "question": "¿Cómo debe cuidarse en general un muñón umbilical limpio y seco?",
           "answers": [
             "Cubrirlo con sustancias no prescritas",
             "Mantenerlo limpio y seco y pedir consejo si aparecen cambios preocupantes",
             "Tirar de él para que se desprenda",
             "Mantenerlo húmedo en todo momento"
-          ],
-          "correct": 1,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r9q1",
-          "question": "¿Qué cambio comunicado en el relevo merece mayor atención?",
+        "mid-r9q1": {
           "context": "14:00: se encuentra bien, tiene un color normal y habla con normalidad. 15:00: respira más rápido, está pálida y cada vez resulta más difícil obtener respuesta.",
+          "question": "¿Qué cambio comunicado en el relevo merece mayor atención?",
           "answers": [
             "La observación se registró una hora más tarde",
             "Varios signos nuevos indican deterioro respecto al estado inicial",
             "La primera anotación contiene menos palabras",
             "El estado de la persona no ha cambiado"
-          ],
-          "correct": 1,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r10q1",
-          "question": "¿Qué explicación relaciona mejor ambas observaciones?",
+        "mid-r10q1": {
           "context": "La placenta es el órgano de intercambio. Un diagrama muestra ahora una transferencia reducida y menos oxígeno en el cordón umbilical.",
-          "reasoningSteps": 2,
+          "question": "¿Qué explicación relaciona mejor ambas observaciones?",
           "answers": [
             "Un menor intercambio a través de la placenta puede hacer que llegue menos oxígeno al bebé",
             "La vejiga controla el intercambio placentario",
             "El cuello uterino produce oxígeno",
             "El estómago abastece directamente al cordón umbilical"
-          ],
-          "correct": 0,
-          "category": "pregnancy_physiology"
+          ]
         },
-        {
-          "id": "mid-r10q2",
-          "question": "¿Qué total y qué tendencia deben comunicarse en el relevo?",
+        "mid-r10q2": {
           "context": "Registro de líquidos: 650 mL + 450 mL. Gráfico de observaciones: antes 74, ahora 82.",
-          "reasoningSteps": 2,
+          "question": "¿Qué total y qué tendencia deben comunicarse en el relevo?",
           "answers": [
             "650 mL en total, sin cambios",
             "1100 mL en total, con la última observación por encima de la primera",
             "1650 mL en total, con una tendencia descendente",
             "450 mL en total, sin tendencia"
-          ],
-          "correct": 1,
-          "category": "antenatal_wellbeing"
+          ]
         },
-        {
-          "id": "mid-r10q3",
-          "question": "¿Cuál es la conclusión más segura?",
+        "mid-r10q3": {
           "context": "Antes: contracciones regulares con pausas cómodas. Ahora: dolor intenso y constante, palidez y sensación de desmayo.",
-          "reasoningSteps": 2,
+          "question": "¿Cuál es la conclusión más segura?",
           "answers": [
             "El patrón regular anterior hace que cualquier cambio posterior sea normal",
             "Esperar hasta el siguiente control previsto",
             "Elegir un diagnóstico concreto antes de informar",
             "El cambio repentino con varios indicios requiere una valoración cualificada urgente"
-          ],
-          "correct": 3,
-          "category": "labour_birth"
+          ]
         },
-        {
-          "id": "mid-r10q4",
-          "question": "¿Qué respuesta aborda ambos riesgos?",
+        "mid-r10q4": {
           "context": "Un recién nacido sigue mojado y está frío al tacto. Su respiración también se ha vuelto irregular.",
-          "reasoningSteps": 2,
+          "question": "¿Qué respuesta aborda ambos riesgos?",
           "answers": [
             "Secar al recién nacido, favorecer el calor mediante el contacto piel con piel y solicitar cuanto antes una valoración cualificada del cambio respiratorio",
             "Dejar las coberturas húmedas y esperar",
             "Administrar un tratamiento no prescrito",
             "Separarlo de forma rutinaria e ignorar la respiración"
-          ],
-          "correct": 0,
-          "category": "newborn_care"
+          ]
         },
-        {
-          "id": "mid-r10q5",
-          "question": "¿Qué debe hacerse antes de la tarea limpia?",
+        "mid-r10q5": {
           "context": "Los mismos guantes han manipulado residuos y ahora se acercan a un paquete limpio para el cuidado del cordón umbilical.",
-          "reasoningSteps": 2,
+          "question": "¿Qué debe hacerse antes de la tarea limpia?",
           "answers": [
             "Mantener los mismos guantes porque están intactos",
             "Tocar el paquete limpio para comprobarlo",
             "Retirar los guantes contaminados, realizar la higiene de manos y utilizar material limpio adecuado",
             "Omitir la higiene de manos después de quitarse los guantes"
-          ],
-          "correct": 2,
-          "category": "infection_safety"
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "PRUEBA DE INGRESO",
-    "adNote": "Primero, un anuncio breve; después, continúa.",
-    "finalAdNote": "Primero, un anuncio breve; después, verás tu resultado.",
-    "finalBadge": "PRUEBA DE INGRESO COMPLETADA",
-    "finalIcon": "✓",
-    "finalTitle": "PRUEBA DE INGRESO COMPLETADA",
-    "finalCopy": "Tu resultado está listo para descubrirlo.",
-    "finalButton": "Ver mi resultado",
-    "finalChecklist": [
-      "40 respuestas comprobadas",
-      "Desglose por áreas preparado",
-      "Puntaje final calculado"
-    ],
-    "reveals": [
-      {
-        "badge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "icon": "✓",
-        "title": "Primera sección completada",
-        "signal": "fixed",
-        "message": "Buen comienzo. La siguiente sección está lista."
-      },
-      {
-        "badge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "icon": "✓",
-        "title": "Segunda sección completada",
-        "signal": "fixed",
-        "message": "La próxima sección aumenta la dificultad."
-      },
-      {
-        "badge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "icon": "✓",
-        "title": "Ya has superado la mitad",
-        "signal": "fixed",
-        "message": "La sección avanzada viene a continuación."
-      },
-      {
-        "badge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "icon": "✓",
-        "title": "La evaluación final es la siguiente",
-        "signal": "fixed",
-        "message": "Solo queda la evaluación final."
-      },
-      {
-        "badge": "PRUEBA DE INGRESO COMPLETADA",
-        "icon": "✓",
-        "title": "PRUEBA DE INGRESO COMPLETADA",
-        "signal": "fixed",
-        "message": "Tu resultado está listo para descubrirlo."
-      }
-    ]
-  },
-  "progressLabel": "completado",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "PRUEBA DE INGRESO",
-    "resultProgressComplete": "{value}% completado",
-    "currentScoreLabel": "PUNTUACIÓN ACTUAL DEL EXAMEN",
-    "levelLabel": "SECCIÓN",
-    "scoreSuffix": "correctas",
-    "journeyLabel": "PRUEBA DE INGRESO",
-    "kitchensCleared": "{value} / {total} secciones del examen completadas",
-    "currentRank": "NIVEL ACTUAL · EXAMEN DE ACCESO A OBSTETRICIA",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Prueba de ingreso iniciada"
-      },
-      {
-        "afterStage": 5,
-        "label": "Prueba de ingreso completada"
-      }
-    ],
-    "unlockEyebrow": "ACTUALIZACIÓN DEL RESULTADO · EXAMEN DE ACCESO A OBSTETRICIA",
-    "unlockTitle": "Hay un nuevo desafío preparado: examen de acceso a obstetricia",
-    "unlockCopy": "Siguiente etapa: examen de acceso a obstetricia.",
-    "finalEyebrow": "TU PUNTUACIÓN DE OBSTETRICIA",
-    "finalCareerTitle": "PRUEBA DE INGRESO COMPLETADA",
-    "strongestLabel": "Área más fuerte de acceso",
-    "stages": [
-      {
-        "difficulty": "Fundamentos",
-        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "preAdTitle": "Primera sección completada",
-        "preAdCopy": "Buen comienzo. La siguiente sección está lista.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "resultBands": {
-          "high": {
-            "title": "Primera sección completada",
-            "insight": "Buen comienzo. La siguiente sección está lista."
-          },
-          "medium": {
-            "title": "Primera sección completada",
-            "insight": "Buen comienzo. La siguiente sección está lista."
-          },
-          "low": {
-            "title": "Primera sección completada",
-            "insight": "Buen comienzo. La siguiente sección está lista."
-          }
-        },
-        "next": {
-          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · EN DESARROLLO",
-          "title": "Embarazo y nacimiento",
-          "difficulty": "En desarrollo",
-          "tagline": "Fisiología. Bienestar. Fundamentos del nacimiento.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "En desarrollo",
-        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "preAdTitle": "Segunda sección completada",
-        "preAdCopy": "La próxima sección aumenta la dificultad.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "resultBands": {
-          "high": {
-            "title": "Segunda sección completada",
-            "insight": "La próxima sección aumenta la dificultad."
-          },
-          "medium": {
-            "title": "Segunda sección completada",
-            "insight": "La próxima sección aumenta la dificultad."
-          },
-          "low": {
-            "title": "Segunda sección completada",
-            "insight": "La próxima sección aumenta la dificultad."
-          }
-        },
-        "next": {
-          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · COMPETENTE",
-          "title": "Respeto y seguridad",
-          "difficulty": "Competente",
-          "tagline": "Consentimiento. Prevención de infecciones. Apoyo.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Competente",
-        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "preAdTitle": "Ya has superado la mitad",
-        "preAdCopy": "La sección avanzada viene a continuación.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "resultBands": {
-          "high": {
-            "title": "Ya has superado la mitad",
-            "insight": "La sección avanzada viene a continuación."
-          },
-          "medium": {
-            "title": "Ya has superado la mitad",
-            "insight": "La sección avanzada viene a continuación."
-          },
-          "low": {
-            "title": "Ya has superado la mitad",
-            "insight": "La sección avanzada viene a continuación."
-          }
-        },
-        "next": {
-          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · AVANZADO",
-          "title": "Decisiones durante el parto y el posparto",
-          "difficulty": "Avanzado",
-          "tagline": "Cambios. Primeros cuidados. Prioridades.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Avanzado",
-        "preAdBadge": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "preAdTitle": "La evaluación final es la siguiente",
-        "preAdCopy": "Solo queda la evaluación final.",
-        "preAdButton": "Continuar",
-        "resultIcon": "✓",
-        "resultLabel": "SECCIÓN DEL EXAMEN COMPLETADA",
-        "resultBands": {
-          "high": {
-            "title": "La evaluación final es la siguiente",
-            "insight": "Solo queda la evaluación final."
-          },
-          "medium": {
-            "title": "La evaluación final es la siguiente",
-            "insight": "Solo queda la evaluación final."
-          },
-          "low": {
-            "title": "La evaluación final es la siguiente",
-            "insight": "Solo queda la evaluación final."
-          }
-        },
-        "next": {
-          "eyebrow": "SIGUIENTE SECCIÓN DEL EXAMEN · EVALUACIÓN FINAL",
-          "title": "Evaluación final de obstetricia",
-          "difficulty": "Evaluación final",
-          "tagline": "Varias pistas. Aviso al equipo adecuado. Decisión final.",
-          "button": "Continuar"
-        }
-      },
-      {
-        "difficulty": "Evaluación final",
-        "preAdBadge": "PRUEBA DE INGRESO COMPLETADA",
-        "preAdTitle": "PRUEBA DE INGRESO COMPLETADA",
-        "preAdCopy": "Tu resultado está listo para descubrirlo.",
-        "preAdButton": "Ver mi resultado",
-        "resultIcon": "✓",
-        "resultLabel": "PRUEBA DE INGRESO COMPLETADA",
-        "resultBands": {
-          "high": {
-            "title": "PRUEBA DE INGRESO COMPLETADA",
-            "insight": "Tu resultado está listo para descubrirlo."
-          },
-          "medium": {
-            "title": "PRUEBA DE INGRESO COMPLETADA",
-            "insight": "Tu resultado está listo para descubrirlo."
-          },
-          "low": {
-            "title": "PRUEBA DE INGRESO COMPLETADA",
-            "insight": "Tu resultado está listo para descubrirlo."
-          }
-        },
-        "preAdChecks": [
-          "40 respuestas comprobadas",
-          "Desglose por áreas preparado",
-          "Puntaje final calculado"
-        ]
-      }
-    ]
   }
 }

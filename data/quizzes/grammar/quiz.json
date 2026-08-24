@@ -1,29 +1,17 @@
 {
+  "schemaVersion": 2,
   "slug": "grammar",
   "engine": {
-    "flow": "staged",
-    "advance": "automatic",
-    "feedback": "selection-only",
     "scoring": "correct-answer",
-    "checkpoint": "ai",
-    "rewarded": {
-      "start": true,
-      "stages": true,
-      "attempts": 3,
-      "confirmStart": false
-    },
-    "advanceDelayMs": 450,
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    },
-    "startOnLoad": false
+    }
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
-    "duration": "8 min",
     "difficulty": "Hard",
     "icon": "✍️",
     "socialProofCount": 176000
@@ -69,6 +57,361 @@
     },
     "artwork": {
       "icon": "✍️"
+    }
+  },
+  "template": "five-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "grammar-r2q3",
+          "grammar-r10q1",
+          "grammar-r1q1",
+          "grammar-r1q3",
+          "grammar-r1q4",
+          "grammar-r1q5",
+          "grammar-r1q6",
+          "grammar-r2q5"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "grammar-r3q1",
+          "grammar-r4q3",
+          "grammar-r3q2",
+          "grammar-r3q5",
+          "grammar-r3q6",
+          "grammar-r4q1",
+          "grammar-r4q5",
+          "grammar-r4q6"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "grammar-r5q4",
+          "grammar-r10q4",
+          "grammar-r5q1",
+          "grammar-r5q5",
+          "grammar-r5q6",
+          "grammar-r6q1",
+          "grammar-r6q5",
+          "grammar-r6q6"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "grammar-r10q5",
+          "grammar-r9q5",
+          "grammar-r7q3",
+          "grammar-r7q4",
+          "grammar-r7q5",
+          "grammar-r7q6",
+          "grammar-r9q1",
+          "grammar-r9q2"
+        ],
+        "uppercaseNextForLocales": []
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "grammar-r7q2",
+          "grammar-r10q6",
+          "grammar-r8q1",
+          "grammar-r8q3",
+          "grammar-r8q4",
+          "grammar-r8q5",
+          "grammar-r8q6",
+          "grammar-r10q2"
+        ]
+      }
+    ],
+    "questions": {
+      "grammar-r2q3": {
+        "correct": 3,
+        "category": "punctuation",
+        "choiceCount": 4
+      },
+      "grammar-r10q1": {
+        "correct": 1,
+        "category": "verbs_pronouns",
+        "choiceCount": 4
+      },
+      "grammar-r1q1": {
+        "correct": 1,
+        "category": "sentence_structure",
+        "choiceCount": 4
+      },
+      "grammar-r1q3": {
+        "correct": 0,
+        "category": "punctuation_apostrophes",
+        "choiceCount": 4
+      },
+      "grammar-r1q4": {
+        "correct": 2,
+        "category": "pronouns_reference",
+        "choiceCount": 4
+      },
+      "grammar-r1q5": {
+        "correct": 1,
+        "category": "modifiers_word_choice",
+        "choiceCount": 4
+      },
+      "grammar-r1q6": {
+        "correct": 3,
+        "category": "editing_context",
+        "choiceCount": 4
+      },
+      "grammar-r2q5": {
+        "correct": 2,
+        "category": "verbs_agreement",
+        "choiceCount": 4
+      },
+      "grammar-r3q1": {
+        "correct": 3,
+        "category": "verbs_pronouns",
+        "choiceCount": 4
+      },
+      "grammar-r4q3": {
+        "correct": 1,
+        "category": "punctuation",
+        "choiceCount": 4
+      },
+      "grammar-r3q2": {
+        "correct": 1,
+        "category": "verbs_agreement",
+        "choiceCount": 4
+      },
+      "grammar-r3q5": {
+        "correct": 3,
+        "category": "sentence_structure",
+        "choiceCount": 4
+      },
+      "grammar-r3q6": {
+        "correct": 1,
+        "category": "pronouns_reference",
+        "choiceCount": 4
+      },
+      "grammar-r4q1": {
+        "correct": 0,
+        "category": "punctuation_apostrophes",
+        "choiceCount": 4
+      },
+      "grammar-r4q5": {
+        "correct": 0,
+        "category": "modifiers_word_choice",
+        "choiceCount": 4
+      },
+      "grammar-r4q6": {
+        "correct": 2,
+        "category": "editing_context",
+        "choiceCount": 4
+      },
+      "grammar-r5q4": {
+        "correct": 0,
+        "category": "verbs_pronouns",
+        "choiceCount": 4
+      },
+      "grammar-r10q4": {
+        "correct": 2,
+        "category": "punctuation",
+        "choiceCount": 4
+      },
+      "grammar-r5q1": {
+        "correct": 2,
+        "category": "pronouns_reference",
+        "choiceCount": 4
+      },
+      "grammar-r5q5": {
+        "correct": 2,
+        "category": "sentence_structure",
+        "choiceCount": 4
+      },
+      "grammar-r5q6": {
+        "correct": 1,
+        "category": "punctuation_apostrophes",
+        "choiceCount": 4
+      },
+      "grammar-r6q1": {
+        "correct": 3,
+        "category": "modifiers_word_choice",
+        "choiceCount": 4
+      },
+      "grammar-r6q5": {
+        "correct": 3,
+        "category": "verbs_agreement",
+        "choiceCount": 4
+      },
+      "grammar-r6q6": {
+        "correct": 0,
+        "category": "editing_context",
+        "choiceCount": 4
+      },
+      "grammar-r10q5": {
+        "correct": 1,
+        "category": "sentence_building",
+        "choiceCount": 4
+      },
+      "grammar-r9q5": {
+        "correct": 3,
+        "category": "precision",
+        "choiceCount": 4
+      },
+      "grammar-r7q3": {
+        "correct": 0,
+        "category": "editing_context",
+        "choiceCount": 4
+      },
+      "grammar-r7q4": {
+        "correct": 3,
+        "category": "modifiers_word_choice",
+        "choiceCount": 4
+      },
+      "grammar-r7q5": {
+        "correct": 1,
+        "category": "punctuation_apostrophes",
+        "choiceCount": 4
+      },
+      "grammar-r7q6": {
+        "correct": 2,
+        "category": "pronouns_reference",
+        "choiceCount": 4
+      },
+      "grammar-r9q1": {
+        "correct": 3,
+        "category": "sentence_structure",
+        "choiceCount": 4
+      },
+      "grammar-r9q2": {
+        "correct": 2,
+        "category": "verbs_agreement",
+        "choiceCount": 4
+      },
+      "grammar-r7q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1,
+          "separator": "•"
+        },
+        "correct": 2,
+        "category": "sentence_building",
+        "choiceCount": 4
+      },
+      "grammar-r10q6": {
+        "correct": 0,
+        "category": "precision",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      },
+      "grammar-r8q1": {
+        "delay": 350,
+        "correct": 0,
+        "category": "sentence_structure",
+        "choiceCount": 4
+      },
+      "grammar-r8q3": {
+        "delay": 350,
+        "correct": 2,
+        "category": "punctuation_apostrophes",
+        "choiceCount": 4
+      },
+      "grammar-r8q4": {
+        "delay": 350,
+        "correct": 1,
+        "category": "pronouns_reference",
+        "choiceCount": 4
+      },
+      "grammar-r8q5": {
+        "delay": 350,
+        "correct": 0,
+        "category": "modifiers_word_choice",
+        "choiceCount": 4
+      },
+      "grammar-r8q6": {
+        "delay": 350,
+        "correct": 3,
+        "category": "editing_context",
+        "choiceCount": 4
+      },
+      "grammar-r10q2": {
+        "correct": 0,
+        "category": "verbs_agreement",
+        "reasoningSteps": 2,
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✍️"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.7
+        },
+        {
+          "key": "profile-4",
+          "min": 0.6
+        },
+        {
+          "key": "profile-5",
+          "min": 0.5
+        },
+        {
+          "key": "profile-6",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "sentence_structure",
+            "sentence_building",
+            "verbs_agreement",
+            "verbs_pronouns"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "punctuation",
+            "punctuation_apostrophes",
+            "pronouns_reference"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "modifiers_word_choice",
+            "editing_context",
+            "precision"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
     }
   }
 }

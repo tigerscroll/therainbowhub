@@ -162,25 +162,6 @@ test("Memory result profiles switch at every exact score boundary", () => {
   }
 });
 
-test("Biology result profiles switch at every exact score boundary", () => {
-  const quiz = memoryQuiz();
-  quiz.result.profiles = [
-    { minRatio: 0.9, title: "The Living Encyclopedia" },
-    { minRatio: 0.8, title: "The Natural Scientist" },
-    { minRatio: 0.7, title: "The Field Researcher" },
-    { minRatio: 0.6, title: "The Curious Biologist" },
-    { minRatio: 0.5, title: "The Life Explorer" },
-    { minRatio: 0, title: "The Nature Detective" },
-  ];
-  const cases = [
-    [29, "The Nature Detective"], [30, "The Life Explorer"], [35, "The Life Explorer"],
-    [36, "The Curious Biologist"], [41, "The Curious Biologist"], [42, "The Field Researcher"],
-    [47, "The Field Researcher"], [48, "The Natural Scientist"], [53, "The Natural Scientist"],
-    [54, "The Living Encyclopedia"], [60, "The Living Encyclopedia"],
-  ] as const;
-  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
-});
-
 test("Mechanic result profiles switch at every exact score boundary", () => {
   const quiz = memoryQuiz();
   quiz.result.profiles = [
@@ -279,27 +260,6 @@ test("Midwifery result profiles switch at every exact score boundary", () => {
     [54, "The Birth Centre Standout"], [60, "The Birth Centre Standout"],
   ] as const;
   for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
-});
-
-test("Idiom result profiles and ace threshold switch at every exact score boundary", () => {
-  const quiz = memoryQuiz();
-  quiz.result.profiles = [
-    { minRatio: 0.9, title: "The Phrase Master" },
-    { minRatio: 0.8, title: "The Natural Wordsmith" },
-    { minRatio: 0.7, title: "The Idiom Insider" },
-    { minRatio: 0.6, title: "The Context Catcher" },
-    { minRatio: 0.5, title: "The Phrase Explorer" },
-    { minRatio: 0, title: "The Literal Wildcard" },
-  ];
-  const cases = [
-    [29, "The Literal Wildcard"], [30, "The Phrase Explorer"], [35, "The Phrase Explorer"],
-    [36, "The Context Catcher"], [41, "The Context Catcher"], [42, "The Idiom Insider"],
-    [47, "The Idiom Insider"], [48, "The Natural Wordsmith"], [53, "The Natural Wordsmith"],
-    [54, "The Phrase Master"], [60, "The Phrase Master"],
-  ] as const;
-  for (const [correct, profile] of cases) assert.equal(scoreQuiz(quiz, answersWithCorrectCount(correct)).profile.title, profile);
-  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(47)).targetStatus, "unreachable");
-  assert.equal(scoreQuiz(quiz, answersWithCorrectCount(48)).targetStatus, "achieved");
 });
 
 test("Grammar result profiles and pass threshold switch at every exact score boundary", () => {

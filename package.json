@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs && next build",
+    "build": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs && next build && node scripts/validate-export.mjs",
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
     "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",
@@ -13,19 +13,23 @@
     "validate": "node scripts/validate-quizzes.mjs",
     "validate:quizzes": "node scripts/validate-quizzes.mjs",
     "validate:production": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",
-    "validate:localizations": "node scripts/validate-localizations.mjs"
+    "validate:export": "node scripts/validate-export.mjs",
+    "validate:localizations": "node scripts/validate-localizations.mjs",
+    "visual:test": "node scripts/visual-regression.mjs",
+    "visual:update": "node scripts/visual-regression.mjs --update",
+    "create:quiz": "node scripts/create-quiz.mjs"
   },
   "dependencies": {
-    "next": "15.5.18",
+    "next": "16.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@next/swc-wasm-nodejs": "15.5.18",
     "@types/node": "^22.15.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "sharp": "^0.34.5",
+    "playwright-core": "^1.55.0",
+    "sharp": "0.35.3",
     "typescript": "^5.8.3"
   }
 }

@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 2,
   "title": "Nur 7 % bestehen diesen visuellen Test",
   "eyebrow": "LABOR FÜR VISUELLE WAHRNEHMUNG",
   "summary": "Winzige Unterschiede, wechselnde Muster und optische Fallen testen deinen Blick.",
+  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Wie scharf ist dein Blick? Erkennst du kleinste Unterschiede, verfolgst wechselnde Muster und entlarvst optische Fallen.",
     "cta": "Test starten"
@@ -18,69 +20,112 @@
     },
     "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser visuelle Test ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung."
   },
+  "checkpoint": {
+    "finalAdNote": "Kurze Werbung, dann siehst du dein Ergebnis."
+  },
+  "career": {
+    "resultProgressLabel": "Visuelle Herausforderung",
+    "resultProgressComplete": "{value} % abgeschlossen",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Grundlagen",
+        "preAdBadge": "ERSTER FOKUS ABGESCHLOSSEN",
+        "preAdTitle": "Erster Fokus geschafft",
+        "preAdCopy": "Guter Start. Die nächsten Unterschiede werden feiner.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
+          "tagline": "Formen. Unterschiede. Visuelle Ordnung."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Aufbau",
+        "preAdBadge": "FORMEN UND DETAILS ABGESCHLOSSEN",
+        "preAdTitle": "Visuelle Details erfasst",
+        "preAdCopy": "Formen, Positionen und Unterschiede kommen jetzt hinzu.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
+          "tagline": "Folgen. Drehung. Richtung."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Fortgeschritten",
+        "preAdBadge": "MUSTERVERFOLGUNG ABGESCHLOSSEN",
+        "preAdTitle": "Mehr als die Hälfte geschafft",
+        "preAdCopy": "Als Nächstes warten optische Fallen.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
+          "tagline": "Ablenkung. Verfolgen. Kleine Änderungen."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Anspruchsvoll",
+        "preAdBadge": "OPTISCHE FALLEN ABGESCHLOSSEN",
+        "preAdTitle": "Als Nächstes: der finale Fokus",
+        "preAdCopy": "Nur eine letzte visuelle Aufgabe bleibt.",
+        "next": {
+          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
+          "tagline": "Gemischte Hinweise. Letzte Fokusprüfung."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Abschlussprüfung",
+        "preAdBadge": "VISUELLE HERAUSFORDERUNG ABGESCHLOSSEN",
+        "preAdTitle": "VISUELLER TEST ABGESCHLOSSEN",
+        "preAdCopy": "Dein visuelles Ergebnis kann jetzt angezeigt werden.",
+        "preAdChecks": [
+          "40 Antworten geprüft",
+          "Sechs visuelle Fähigkeiten im Vergleich",
+          "Endergebnis berechnet"
+        ],
+        "preAdButton": "Mein Ergebnis ansehen"
+      }
+    }
+  },
   "results": {
     "name": "DEIN VISUELLES ERGEBNIS",
-    "profiles": [
-      {
-        "min": 0.9,
+    "profiles": {
+      "profile-1": {
         "tier": "90–100 %",
         "title": "Adlerauge",
         "copy": "Deine Schwerpunkte: Farben, Details, Muster und Raum. Dabei hast du bemerkenswerte Präzision gezeigt, und selbst die anspruchsvollsten Aufgaben konnten dich kaum aus dem Konzept bringen."
       },
-      {
-        "min": 0.8,
+      "profile-2": {
         "tier": "80–89 %",
         "title": "Visueller Virtuose",
         "copy": "Dieses Ergebnis ist sehr stark: Farben, Details, Muster und Raum. Auch bei subtilen Fallen blieb dein Denken zuverlässig."
       },
-      {
-        "min": 0.7,
+      "profile-3": {
         "tier": "70–79 %",
         "title": "Mustersucher",
         "copy": "Insgesamt ist dein Ergebnis solide. Die Aufgaben verbanden Farben, Details, Muster und Raum; nur einige schwierige Details kosteten Punkte."
       },
-      {
-        "min": 0.6,
+      "profile-4": {
         "tier": "60–69 %",
         "title": "Detaildetektiv",
         "copy": "Du hast eine gute Grundlage. Im Mittelpunkt standen Farben, Details, Muster und Raum; mit etwas Feinschliff kann das nächste Ergebnis deutlich steigen."
       },
-      {
-        "min": 0.5,
+      "profile-5": {
         "tier": "50–59 %",
         "title": "Aufmerksamer Blick",
         "copy": "Du hast mehrere wichtige Zusammenhänge erkannt. Getestet wurden Farben, Details, Muster und Raum, und die falsch beantworteten Fragen zeigen klar, was sich noch festigen lässt."
       },
-      {
-        "min": 0,
+      "profile-6": {
         "tier": "Unter 50 %",
         "title": "Neugieriger Beobachter",
         "copy": "Diese Herausforderung hat Entwicklungsmöglichkeiten gezeigt. Gefragt waren Farben, Details, Muster und Raum; Deine Neugier und die gelösten Aufgaben sind ein guter Ausgangspunkt."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Farbe und Gedächtnis",
-        "categories": [
-          "colour_contrast",
-          "visual_memory"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Farbe und Gedächtnis"
       },
-      {
-        "label": "Details und Aufmerksamkeit",
-        "categories": [
-          "detail_detection",
-          "attention_control"
-        ]
+      "dimension-2": {
+        "label": "Details und Aufmerksamkeit"
       },
-      {
-        "label": "Muster und Raum",
-        "categories": [
-          "pattern_tracking",
-          "spatial_orientation"
-        ]
+      "dimension-3": {
+        "label": "Muster und Raum"
       }
-    ],
+    },
     "score": {
       "passed": "Visuellen Test bestanden!",
       "finished": "Visueller Test abgeschlossen",
@@ -88,9 +133,6 @@
       "strongest": "Stärkster Bereich im visuellen Denken",
       "trickiest": "Schwierigster Bereich im visuellen Denken",
       "bestRound": "Beste visuelle Herausforderung",
-      "showPercentage": true,
-      "disclaimer": "Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dieser visuelle Test ist weder eine offizielle Prüfung noch eine Qualifikation oder fachliche Beratung.",
-      "showBestRound": false,
       "insights": {
         "overview": "visuelles Ergebnis im Überblick",
         "correct": "richtig",
@@ -99,66 +141,15 @@
         "breakdown": "Deine Auswertung im visuellen Denken",
         "snapshot": "Was dein Profil im visuellen Test erkennen lässt",
         "targetReached": "80-%-Ziel erreicht",
-        "targetRemaining": "Noch nötige richtige Antworten für 80 %",
-        "details": {
-          "analysisTitle": "So liest du dein visuelles Ergebnis",
-          "analysisCopy": "Dieses Ergebnis fasst 40 Aufgaben zu Farben, Details, visuellem Gedächtnis, Mustern und Raum zusammen. Die folgende Verteilung zeigt, welche Bereiche in diesem Versuch am sichersten waren.",
-          "roadmapTitle": "Dein vollständiger Bericht zum visuellen Test",
-          "roadmapIntro": "Das Ergebnis ist nur der erste Hinweis. Der Bericht zeigt deinen stärksten Bereich im visuellen Denken, die Auswertung nach Bereichen und die nicht gelösten Aufgaben im visuellen Test.",
-          "roadmapItems": [
-            "Ergebnisanalyse",
-            "Stärkster Bereich im visuellen Denken",
-            "Deine Auswertung im visuellen Denken",
-            "Tipps für visuelle Konzentration"
-          ],
-          "positionTitle": "Dein Weg zur 80-%-Marke",
-          "positionCopy": "Das spielerische Ziel sind 32 richtige Antworten von 40. Die Markierung zeigt, wie nah dieser Versuch im visuellen Test kam, ohne Vergleich mit anderen oder berufliche Bewertung.",
-          "measuredTitle": "Was der visuelle Test untersucht hat",
-          "measuredIntro": "Die Aufgaben decken drei ergänzende Bereiche des visuellen Tests ab.",
-          "measuredAreas": [
-            {
-              "title": "Farbe und Gedächtnis",
-              "copy": "Kontraste vergleichen und visuelle Anordnungen kurz im Gedächtnis behalten."
-            },
-            {
-              "title": "Details und Aufmerksamkeit",
-              "copy": "Exakte Änderungen, wiederholte Codes und kleine Unterschiede konzentriert finden."
-            },
-            {
-              "title": "Muster und Raum",
-              "copy": "Wechselregeln, Spiegelrichtungen und mehrstufige Drehungen verfolgen."
-            }
-          ],
-          "tipsTitle": "Drei Wege, deine Herangehensweise im visuellen Denken zu schärfen",
-          "tipsIntro": "Einfache Strategien für einen weiteren visuellen Test, nicht als fachliche Beurteilung.",
-          "tips": [
-            {
-              "title": "In fester Reihenfolge suchen",
-              "copy": "Gehe ein Raster systematisch ab, statt den Blick vom auffälligsten Element lenken zu lassen."
-            },
-            {
-              "title": "Regeln trennen",
-              "copy": "Verfolge bei überlagerten Mustern Form, Farbe, Füllung oder Richtung jeweils einzeln."
-            },
-            {
-              "title": "Zuerst Anker vergleichen",
-              "copy": "Prüfe bei fast gleichen Angaben feste Gruppen und Endpunkte vor jedem einzelnen Zeichen."
-            }
-          ],
-          "finalTitle": "Dein Ergebnis im visuellen Test",
-          "finalCopy": "Du hast {score} von {total} Aufgaben richtig beantwortet. Dein Profil für visuelle Rätsel in diesem Versuch siehst du unten."
-        }
+        "targetRemaining": "Noch nötige richtige Antworten für 80 %"
       }
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Erster Fokus",
-      "questions": [
-        {
-          "id": "vision-r1q1",
-          "question": "Welche Kachel hat eine andere Farbe?",
-          "presentation": "grid",
+      "questions": {
+        "vision-r1q1": {
           "visual": {
             "items": [
               "TILE",
@@ -166,22 +157,17 @@
               "TILE",
               "TILE"
             ],
-            "columns": 2,
             "ariaLabel": "Vier ähnliche Blautöne; die Kachel unten rechts weicht leicht ab"
           },
+          "question": "Welche Kachel hat eine andere Farbe?",
           "answers": [
             "Oben links",
             "Unten rechts",
             "Oben rechts",
             "Unten links"
-          ],
-          "correct": 1,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r3q4",
-          "question": "An welcher Position steht das abweichende Symbol?",
-          "presentation": "spatial",
+        "vision-r3q4": {
           "visual": {
             "items": [
               "left-half",
@@ -189,23 +175,18 @@
               "right-half",
               "left-half"
             ],
-            "columns": 4,
             "ariaLabel": "Vier halb gefüllte Kreise; beim dritten liegt die Füllung auf der anderen Seite"
           },
+          "question": "An welcher Position steht das abweichende Symbol?",
           "answers": [
             "Erste",
             "Zweite",
             "Dritte",
             "Vierte"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q2",
+        "vision-r1q2": {
           "context": "VORLAGE: M7K2P9",
-          "question": "Welcher Code stimmt exakt mit der Vorlage überein?",
-          "presentation": "code",
           "visual": {
             "items": [
               "VORLAGE",
@@ -213,19 +194,15 @@
             ],
             "ariaLabel": "Vorlagencode M 7 K 2 P 9"
           },
+          "question": "Welcher Code stimmt exakt mit der Vorlage überein?",
           "answers": [
             "M7K2P9",
             "M7K2R9",
             "M7KZP9",
             "N7K2P9"
-          ],
-          "correct": 0,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r1q3",
-          "question": "Welche Form kommt als Nächstes?",
-          "presentation": "sequence",
+        "vision-r1q3": {
           "visual": {
             "items": [
               "▲",
@@ -234,22 +211,17 @@
               "●",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Dreieck, Kreis, Dreieck, Kreis, Fragezeichen"
           },
+          "question": "Welche Form kommt als Nächstes?",
           "answers": [
             "■",
             "●",
             "◆",
             "▲"
-          ],
-          "correct": 3,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r1q4",
-          "question": "Der Pfeil dreht sich jedes Mal um 90 Grad nach rechts. Was kommt als Nächstes?",
-          "presentation": "sequence",
+        "vision-r1q4": {
           "visual": {
             "items": [
               "↑",
@@ -257,20 +229,17 @@
               "↓",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Pfeil nach oben, rechts, unten, Fragezeichen"
           },
+          "question": "Der Pfeil dreht sich jedes Mal um 90 Grad nach rechts. Was kommt als Nächstes?",
           "answers": [
             "↑",
             "→",
             "↓",
             "←"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r1q5",
+        "vision-r1q5": {
           "question": "Welches Symbol erschien zuerst?",
           "answers": [
             "Stern",
@@ -278,44 +247,32 @@
             "Regenschirm",
             "Zitrone"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Reihenfolge merken",
-            "presentation": "icons",
             "items": [
               "⭐",
               "🍋",
               "🔑",
               "☂️"
-            ],
-            "durationMs": 1800,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r1q6",
-          "question": "Wie viele ausgefüllte Kreise sind zu sehen?",
-          "presentation": "spatial",
+        "vision-r1q6": {
           "visual": {
             "items": [
               "● ● ○ ● ○ ●"
             ],
             "ariaLabel": "Vier ausgefüllte und zwei leere Kreise"
           },
+          "question": "Wie viele ausgefüllte Kreise sind zu sehen?",
           "answers": [
             "3",
             "6",
             "5",
             "4"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r2q1",
-          "question": "Wo befindet sich die violette Kachel?",
-          "presentation": "grid",
+        "vision-r2q1": {
           "visual": {
             "items": [
               "🔵",
@@ -328,27 +285,22 @@
               "🔵",
               "🔵"
             ],
-            "columns": 3,
             "ariaLabel": "Drei-mal-drei-Raster mit Violett in der Mitte und Blau rundherum"
           },
+          "question": "Wo befindet sich die violette Kachel?",
           "answers": [
             "In der Mitte",
             "Unten rechts",
             "Oben links",
             "Oben rechts"
-          ],
-          "correct": 0,
-          "category": "colour_contrast"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Formen und Details",
-      "questions": [
-        {
-          "id": "vision-r4q3",
-          "question": "Welcher Pfeil gehört an Position 4?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r4q3": {
           "visual": {
             "items": [
               "↗",
@@ -356,22 +308,17 @@
               "↙",
               "?"
             ],
-            "columns": 2,
             "ariaLabel": "Vier nummerierte Schritte: Nordost, Südost, Südwest, Fragezeichen"
           },
+          "question": "Welcher Pfeil gehört an Position 4?",
           "answers": [
             "↖",
             "↘",
             "↗",
             "↓"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q1",
-          "question": "Welcher Pfeil ist das Spiegelbild von ↗ an einer senkrechten Achse?",
-          "presentation": "spatial",
+        "vision-r5q1": {
           "visual": {
             "items": [
               "↗",
@@ -380,53 +327,42 @@
             ],
             "ariaLabel": "Nordostpfeil an einer senkrechten Spiegelachse"
           },
+          "question": "Welcher Pfeil ist das Spiegelbild von ↗ an einer senkrechten Achse?",
           "answers": [
             "↙",
             "↘",
             "↗",
             "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q1",
+        "vision-r3q1": {
           "question": "Welches Paar ist vollkommen identisch?",
           "answers": [
             "R7Q3B6 / R7O3B6",
             "K4M8P2 / K4M8P2",
             "T9L2C5 / T9LZC5",
             "A6D4N8 / A6D4M8"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q2",
+        "vision-r3q2": {
           "question": "Welche Reihe enthält genau sieben Punkte?",
           "answers": [
             "••••••",
             "•••••",
             "••••••••",
             "•••••••"
-          ],
-          "correct": 3,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r3q5",
+        "vision-r3q5": {
           "question": "Welches Symbol sieht nach einer halben Drehung unverändert aus?",
           "answers": [
             "L",
             "↑",
             "●",
             "↗"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r3q6",
+        "vision-r3q6": {
           "context": "Felix findet sofort fünf Fehler im Formular.",
           "question": "Wie viele Buchstaben F sind zu sehen?",
           "answers": [
@@ -434,14 +370,9 @@
             "7",
             "8",
             "9"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r5q5",
-          "question": "Welche Kachel kommt als Nächstes?",
-          "presentation": "sequence",
+        "vision-r5q5": {
           "visual": {
             "items": [
               "■",
@@ -452,20 +383,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Ausgefülltes Quadrat, zwei leere Quadrate, ausgefülltes Quadrat, zwei leere Quadrate, Fragezeichen"
           },
+          "question": "Welche Kachel kommt als Nächstes?",
           "answers": [
             "●",
             "□",
             "■",
             "◇"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r5q6",
+        "vision-r5q6": {
           "question": "Welcher Gegenstand lag unten links?",
           "answers": [
             "Schlüssel",
@@ -473,8 +401,6 @@
             "Mond",
             "Stern"
           ],
-          "correct": 0,
-          "category": "visual_memory",
           "study": {
             "title": "Vier Positionen merken",
             "items": [
@@ -482,37 +408,24 @@
               "OBEN RECHTS — MOND",
               "UNTEN LINKS — SCHLÜSSEL",
               "UNTEN RECHTS — BLATT"
-            ],
-            "durationMs": 2200,
-            "mode": "automatic"
+            ]
           }
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Muster verfolgen",
-      "questions": [
-        {
-          "id": "vision-r9q5",
+      "questions": {
+        "vision-r9q5": {
           "question": "Welche Form lag direkt rechts neben dem goldenen Dreieck?",
-          "presentation": "icons",
           "answers": [
             "Violetter Stern",
             "Korallfarbenes Quadrat",
             "Blauer Kreis",
             "Grüne Raute"
           ],
-          "icons": [
-            "violet-star",
-            "coral-square",
-            "blue-circle",
-            "green-diamond"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Fünf Formen merken",
-            "presentation": "icons",
             "items": [
               "blue-circle",
               "gold-triangle",
@@ -520,15 +433,10 @@
               "green-diamond",
               "violet-star"
             ],
-            "ariaLabel": "Blauer Kreis, goldenes Dreieck, korallfarbenes Quadrat, grüne Raute, violetter Stern",
-            "durationMs": 3500,
-            "mode": "automatic"
+            "ariaLabel": "Blauer Kreis, goldenes Dreieck, korallfarbenes Quadrat, grüne Raute, violetter Stern"
           }
         },
-        {
-          "id": "vision-r7q2",
-          "question": "Welcher Code kommt zweimal vor?",
-          "presentation": "grid",
+        "vision-r7q2": {
           "visual": {
             "items": [
               "A7Q",
@@ -536,22 +444,17 @@
               "C2R",
               "B4M"
             ],
-            "columns": 2,
             "ariaLabel": "Codes A7Q, B4M, C2R und B4M"
           },
+          "question": "Welcher Code kommt zweimal vor?",
           "answers": [
             "B4M",
             "A7Q",
             "C2R",
             "Keiner"
-          ],
-          "correct": 0,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r4q1",
-          "question": "Welche Form setzt die steigende Anzahl der Seiten fort?",
-          "presentation": "sequence",
+        "vision-r4q1": {
           "visual": {
             "items": [
               "▲",
@@ -559,22 +462,17 @@
               "⬟",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Dreieck, Quadrat, Fünfeck, Fragezeichen"
           },
+          "question": "Welche Form setzt die steigende Anzahl der Seiten fort?",
           "answers": [
             "Kreis",
             "Sechseck",
             "Dreieck",
             "Quadrat"
-          ],
-          "correct": 1,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q2",
-          "question": "Welche Kachel vervollständigt die abwechselnde Reihe?",
-          "presentation": "sequence",
+        "vision-r4q2": {
           "visual": {
             "items": [
               "X",
@@ -584,39 +482,26 @@
               "X",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "X, O, X, O, X, Fragezeichen"
           },
+          "question": "Welche Kachel vervollständigt die abwechselnde Reihe?",
           "answers": [
             "O",
             "XX",
             "OO",
             "X"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r4q5",
+        "vision-r4q5": {
           "question": "Welche Farbe hebt sich am stärksten von dunklem Marineblau ab?",
-          "presentation": "icons",
           "answers": [
             "Feld A",
             "Feld B",
             "Feld D",
             "Feld C"
-          ],
-          "icons": [
-            "🟣",
-            "🔵",
-            "🟢",
-            "🟡"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r4q6",
+        "vision-r4q6": {
           "context": "VORLAGE: ◇ ● ▲ ■",
           "question": "Welche Reihe entspricht exakt der Vorlage?",
           "answers": [
@@ -624,12 +509,9 @@
             "◇ ● ▲ ■",
             "◇ ○ ▲ ■",
             "● ◇ ▲ ■"
-          ],
-          "correct": 1,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r6q1",
+        "vision-r6q1": {
           "question": "Welche Zahl war Blau zugeordnet?",
           "answers": [
             "2",
@@ -637,21 +519,16 @@
             "4",
             "9"
           ],
-          "correct": 1,
-          "category": "visual_memory",
           "study": {
             "title": "Farb-Zahl-Paare merken",
             "items": [
               "ROT — 4",
               "BLAU — 7",
               "GOLD — 2"
-            ],
-            "durationMs": 1900,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r6q6",
+        "vision-r6q6": {
           "context": "VORLAGE: R3M8K2",
           "question": "Welcher Code ist unverändert?",
           "answers": [
@@ -659,19 +536,14 @@
             "R3M8K2",
             "P3M8K2",
             "R3M8KZ"
-          ],
-          "correct": 1,
-          "category": "detail_detection"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Optische Fallen",
-      "questions": [
-        {
-          "id": "vision-r9q1",
-          "question": "Die mittleren Quadrate sind identisch. Warum können sie trotzdem unterschiedlich wirken?",
-          "presentation": "spatial",
+      "questions": {
+        "vision-r9q1": {
           "visual": {
             "items": [
               "light panel",
@@ -679,34 +551,27 @@
             ],
             "ariaLabel": "Zwei identische mittlere Quadrate auf unterschiedlich kontrastierenden Flächen"
           },
+          "question": "Die mittleren Quadrate sind identisch. Warum können sie trotzdem unterschiedlich wirken?",
           "answers": [
             "Eines muss heimlich heller sein",
             "Die Farbe verändert sich mit dem Abstand",
             "Identische Farben sehen immer gleich aus",
             "Der umgebende Kontrast verändert ihre Wirkung"
-          ],
-          "correct": 3,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r8q3",
-          "question": "Starte am roten Punkt und folge seiner gepunkteten Linie. Welchen Buchstaben erreichst du?",
-          "presentation": "text",
+        "vision-r8q3": {
           "image": {
-            "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2",
             "alt": "Ein roter Startpunkt und vier gleichartige gepunktete Linien, die sich mehrfach kreuzen und zu A, B, C und D führen"
           },
+          "question": "Starte am roten Punkt und folge seiner gepunkteten Linie. Welchen Buchstaben erreichst du?",
           "answers": [
             "A",
             "B",
             "C",
             "D"
-          ],
-          "correct": 2,
-          "category": "pattern_tracking"
+          ]
         },
-        {
-          "id": "vision-r7q1",
+        "vision-r7q1": {
           "context": "BLAU LEUCHTET, HIMMEL BLAU, BLAU.",
           "question": "Wie oft steht BLAU als eigenständiges Wort?",
           "answers": [
@@ -714,33 +579,24 @@
             "4",
             "3",
             "6"
-          ],
-          "correct": 2,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q3",
-          "question": "An welcher Position befindet sich der Kreis mit einem Punkt?",
-          "presentation": "spatial",
+        "vision-r7q3": {
           "visual": {
             "items": [
               "○  ○  ⊙  ○"
             ],
             "ariaLabel": "Vier Kreise; im dritten befindet sich ein Punkt"
           },
+          "question": "An welcher Position befindet sich der Kreis mit einem Punkt?",
           "answers": [
             "Erste",
             "Zweite",
             "Vierte",
             "Dritte"
-          ],
-          "correct": 3,
-          "category": "attention_control"
+          ]
         },
-        {
-          "id": "vision-r7q5",
-          "question": "Welche mittlere Kachel fällt in der dunklen Gruppe am stärksten auf?",
-          "presentation": "grid",
+        "vision-r7q5": {
           "visual": {
             "items": [
               "⚫🟡⚫",
@@ -748,20 +604,17 @@
               "⚫🔵⚫",
               "⚫🟢⚫"
             ],
-            "columns": 2,
             "ariaLabel": "Vier dunkle Gruppen mit einer gelben, violetten, blauen oder grünen Kachel in der Mitte"
           },
+          "question": "Welche mittlere Kachel fällt in der dunklen Gruppe am stärksten auf?",
           "answers": [
             "Unten links",
             "Oben rechts",
             "Oben links",
             "Unten rechts"
-          ],
-          "correct": 2,
-          "category": "colour_contrast"
+          ]
         },
-        {
-          "id": "vision-r9q2",
+        "vision-r9q2": {
           "context": "VERSION A: FOKUS-M7Q2-2026\nVERSION B: F0KUS-M7Q2-2026",
           "question": "Welche genaue Position hat sich in Version B verändert?",
           "answers": [
@@ -769,15 +622,10 @@
             "Das Q",
             "Das zweite Zeichen",
             "Die letzte Ziffer"
-          ],
-          "correct": 2,
-          "category": "detail_detection"
+          ]
         },
-        {
-          "id": "vision-r9q4",
+        "vision-r9q4": {
           "context": "Drehe den Pfeil zunächst um 90 Grad im Uhrzeigersinn. Spiegle das Ergebnis anschließend an einer senkrechten Achse.",
-          "question": "In welche Richtung zeigt der Pfeil am Ende?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "↗",
@@ -785,30 +633,17 @@
               "│",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Nordostpfeil, Vierteldrehung im Uhrzeigersinn, senkrechte Spiegelung"
           },
+          "question": "In welche Richtung zeigt der Pfeil am Ende?",
           "answers": [
             "↗",
             "↘",
             "↙",
             "↖"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation"
+          ]
         },
-        {
-          "id": "vision-r9q6",
-          "question": "Welche Beschriftung passt nicht zur Farbe ihrer Kachel?",
-          "answers": [
-            "Erste",
-            "Zweite",
-            "Dritte",
-            "Vierte"
-          ],
-          "correct": 2,
-          "category": "attention_control",
-          "presentation": "grid",
+        "vision-r9q6": {
           "visual": {
             "items": [
               "BLAU 🟦",
@@ -816,60 +651,50 @@
               "ROT 🟦",
               "GOLD 🟨"
             ],
-            "columns": 2,
             "ariaLabel": "Vier Farbbeschriftungen; die dritte passt nicht zur Kachel"
-          }
+          },
+          "question": "Welche Beschriftung passt nicht zur Farbe ihrer Kachel?",
+          "answers": [
+            "Erste",
+            "Zweite",
+            "Dritte",
+            "Vierte"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Finaler Fokus",
-      "questions": [
-        {
-          "id": "vision-r10q2",
+      "questions": {
+        "vision-r10q2": {
+          "visual": {
+            "items": [
+              "VORLAGE::M8Q2-K7P4-R6N3",
+              "KOPIE::M8Q2-K1P4-R6M3"
+            ],
+            "ariaLabel": "Original M8Q2 K7P4 R6N3 und Kopie M8Q2 K1P4 R6M3"
+          },
           "question": "Welche beiden Zeichen haben sich verändert?",
           "answers": [
             "7 und N",
             "8 und 6",
             "Q und P",
             "K und R"
-          ],
-          "correct": 0,
-          "category": "detail_detection",
-          "reasoningSteps": 2,
-          "presentation": "code",
-          "visual": {
-            "items": [
-              "VORLAGE::M8Q2-K7P4-R6N3",
-              "KOPIE::M8Q2-K1P4-R6M3"
-            ],
-            "columns": 2,
-            "separator": "•",
-            "ariaLabel": "Original M8Q2 K7P4 R6N3 und Kopie M8Q2 K1P4 R6M3"
-          }
+          ]
         },
-        {
-          "id": "vision-r10q4",
+        "vision-r10q4": {
+          "image": {
+            "alt": "Vier Schritte: ein Quadrat nach rechts und nach unten falten, einmal lochen und wieder auffalten"
+          },
           "question": "Ein Quadrat wird zweimal gefaltet und dann abseits der Faltkanten einmal durch alle Lagen gelocht. Wie viele Löcher sieht man nach dem Auffalten?",
           "answers": [
             "1",
             "2",
             "4",
             "8"
-          ],
-          "correct": 2,
-          "category": "spatial_orientation",
-          "reasoningSteps": 2,
-          "presentation": "text",
-          "image": {
-            "src": "/quizzes/vision/assets/icons/paper-fold-punch-de.svg?v=20260823-1",
-            "alt": "Vier Schritte: ein Quadrat nach rechts und nach unten falten, einmal lochen und wieder auffalten"
-          }
+          ]
         },
-        {
-          "id": "vision-r8q1",
-          "question": "Welche Kachel hat einen leichten Grünstich?",
-          "presentation": "grid",
+        "vision-r8q1": {
           "visual": {
             "items": [
               "1",
@@ -882,21 +707,17 @@
               "8",
               "9"
             ],
-            "columns": 3,
             "ariaLabel": "Neun feste Blautöne; einer hat einen Grünstich"
           },
+          "question": "Welche Kachel hat einen leichten Grünstich?",
           "answers": [
             "Oben links",
             "In der Mitte",
             "Unten rechts",
             "Unten in der Mitte"
-          ],
-          "correct": 3,
-          "category": "colour_contrast",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q2",
+        "vision-r8q2": {
           "context": "VERGLEICH: V6K9-M2Q8",
           "question": "Welcher Code stimmt exakt mit der Vorlage überein?",
           "answers": [
@@ -904,24 +725,9 @@
             "V6K9-M2Q8",
             "V6K9-M2O8",
             "V6K9-N2Q8"
-          ],
-          "correct": 1,
-          "category": "detail_detection",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r8q4",
-          "question": "Drehe ↘ zweimal um 90 Grad nach rechts.",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
-          "correct": 3,
-          "category": "spatial_orientation",
-          "delay": 350,
-          "presentation": "sequence",
+        "vision-r8q4": {
           "visual": {
             "items": [
               "↘",
@@ -929,68 +735,52 @@
               "↻ 90°",
               "?"
             ],
-            "separator": "→",
             "ariaLabel": "Südostpfeil mit zwei Vierteldrehungen im Uhrzeigersinn"
-          }
+          },
+          "question": "Drehe ↘ zweimal um 90 Grad nach rechts.",
+          "answers": [
+            "↙",
+            "↘",
+            "↗",
+            "↖"
+          ]
         },
-        {
-          "id": "vision-r8q5",
+        "vision-r8q5": {
           "question": "Welches Symbol erschien an vierter Stelle?",
-          "presentation": "icons",
           "answers": [
             "Mond",
             "Anker",
             "Sonne",
             "Stern"
           ],
-          "icons": [
-            "🌙",
-            "⚓",
-            "☀️",
-            "⭐"
-          ],
-          "correct": 1,
-          "category": "visual_memory",
-          "delay": 350,
           "study": {
             "title": "Kurzer Blick",
-            "presentation": "icons",
             "items": [
               "☀️",
               "🔑",
               "🌙",
               "⚓",
               "🪶"
-            ],
-            "durationMs": 1400,
-            "mode": "automatic"
+            ]
           }
         },
-        {
-          "id": "vision-r8q6",
-          "question": "Wie viele ausgefüllte Sterne sind zu sehen?",
-          "presentation": "spatial",
+        "vision-r8q6": {
           "visual": {
             "items": [
               "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
             ],
             "ariaLabel": "Fünf ausgefüllte Sterne zwischen sieben leeren oder geometrischen Formen"
           },
+          "question": "Wie viele ausgefüllte Sterne sind zu sehen?",
           "answers": [
             "5",
             "3",
             "4",
             "2"
-          ],
-          "correct": 0,
-          "category": "attention_control",
-          "delay": 350
+          ]
         },
-        {
-          "id": "vision-r10q3",
+        "vision-r10q3": {
           "context": "Verfolge den Formen- und den Füllzyklus getrennt.",
-          "question": "Welches Element folgt auf die sechs gezeigten Formen?",
-          "presentation": "sequence",
           "visual": {
             "items": [
               "●",
@@ -1001,253 +791,17 @@
               "□",
               "?"
             ],
-            "separator": "·",
             "ariaLabel": "Sechs Formen mit einem Kreis-Quadrat-Wechsel und einem dreistufigen Füllmuster"
           },
+          "question": "Welches Element folgt auf die sechs gezeigten Formen?",
           "answers": [
             "●",
             "■",
             "○",
             "□"
-          ],
-          "correct": 0,
-          "category": "pattern_tracking",
-          "reasoningSteps": 2
+          ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "NÄCHSTE HERAUSFORDERUNG",
-    "adNote": "Kurze Werbung, dann geht es weiter.",
-    "finalBadge": "VISUELLER TEST ABGESCHLOSSEN",
-    "finalIcon": "👁️",
-    "finalTitle": "VISUELLER TEST ABGESCHLOSSEN",
-    "finalCopy": "Dein visuelles Ergebnis kann jetzt angezeigt werden.",
-    "finalButton": "Mein Ergebnis ansehen",
-    "finalChecklist": [
-      "40 Antworten geprüft",
-      "Sechs visuelle Fähigkeiten im Vergleich",
-      "Endergebnis berechnet"
-    ],
-    "reveals": [
-      {
-        "badge": "ERSTER FOKUS ABGESCHLOSSEN",
-        "icon": "👁️",
-        "title": "Erster Fokus geschafft",
-        "signal": "fixed",
-        "message": "Guter Start. Die nächsten Unterschiede werden feiner."
-      },
-      {
-        "badge": "FORMEN UND DETAILS ABGESCHLOSSEN",
-        "icon": "👁️",
-        "title": "Visuelle Details erfasst",
-        "signal": "fixed",
-        "message": "Formen, Positionen und Unterschiede kommen jetzt hinzu."
-      },
-      {
-        "badge": "MUSTERVERFOLGUNG ABGESCHLOSSEN",
-        "icon": "👁️",
-        "title": "Mehr als die Hälfte geschafft",
-        "signal": "fixed",
-        "message": "Als Nächstes warten optische Fallen."
-      },
-      {
-        "badge": "OPTISCHE FALLEN ABGESCHLOSSEN",
-        "icon": "👁️",
-        "title": "Als Nächstes: der finale Fokus",
-        "signal": "fixed",
-        "message": "Nur eine letzte visuelle Aufgabe bleibt."
-      },
-      {
-        "badge": "VISUELLE HERAUSFORDERUNG ABGESCHLOSSEN",
-        "icon": "👁️",
-        "title": "VISUELLER TEST ABGESCHLOSSEN",
-        "signal": "fixed",
-        "message": "Dein visuelles Ergebnis kann jetzt angezeigt werden."
-      }
-    ],
-    "finalAdNote": "Kurze Werbung, dann siehst du dein Ergebnis."
-  },
-  "progressLabel": "abgeschlossen",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "showStageResults": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Visuelle Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
-    "currentScoreLabel": "AKTUELLER VISUELLER PUNKTSTAND",
-    "levelLabel": "RUNDE",
-    "scoreSuffix": "richtig",
-    "journeyLabel": "VISUELLE HERAUSFORDERUNG",
-    "kitchensCleared": "{value} / {total} Herausforderungen abgeschlossen",
-    "currentRank": "AKTUELLER STAND · VISUELLER TEST",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Visueller Test gestartet"
-      },
-      {
-        "afterStage": 5,
-        "label": "Visueller Test abgeschlossen"
-      }
-    ],
-    "unlockEyebrow": "ERGEBNIS-UPDATE · VISUELLER TEST",
-    "unlockTitle": "Eine neue visuelle Herausforderung ist bereit",
-    "unlockCopy": "Weiter geht es mit dem visuellen Test.",
-    "finalEyebrow": "DEIN VISUELLES ERGEBNIS",
-    "finalCareerTitle": "VISUELLER TEST ABGESCHLOSSEN",
-    "strongestLabel": "Stärkster Bereich im visuellen Denken",
-    "stages": [
-      {
-        "difficulty": "Grundlagen",
-        "preAdBadge": "ERSTER FOKUS ABGESCHLOSSEN",
-        "preAdTitle": "Erster Fokus geschafft",
-        "preAdCopy": "Guter Start. Die nächsten Unterschiede werden feiner.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "ERSTER FOKUS ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Erster Fokus geschafft",
-            "insight": "Guter Start. Die nächsten Unterschiede werden feiner."
-          },
-          "medium": {
-            "title": "Erster Fokus geschafft",
-            "insight": "Guter Start. Die nächsten Unterschiede werden feiner."
-          },
-          "low": {
-            "title": "Erster Fokus geschafft",
-            "insight": "Guter Start. Die nächsten Unterschiede werden feiner."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · AUFBAU",
-          "title": "Formen und Details",
-          "difficulty": "Aufbau",
-          "tagline": "Formen. Unterschiede. Visuelle Ordnung.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Aufbau",
-        "preAdBadge": "FORMEN UND DETAILS ABGESCHLOSSEN",
-        "preAdTitle": "Visuelle Details erfasst",
-        "preAdCopy": "Formen, Positionen und Unterschiede kommen jetzt hinzu.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "FORMEN UND DETAILS ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Visuelle Details erfasst",
-            "insight": "Formen, Positionen und Unterschiede kommen jetzt hinzu."
-          },
-          "medium": {
-            "title": "Visuelle Details erfasst",
-            "insight": "Formen, Positionen und Unterschiede kommen jetzt hinzu."
-          },
-          "low": {
-            "title": "Visuelle Details erfasst",
-            "insight": "Formen, Positionen und Unterschiede kommen jetzt hinzu."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · FORTGESCHRITTEN",
-          "title": "Muster verfolgen",
-          "difficulty": "Fortgeschritten",
-          "tagline": "Folgen. Drehung. Richtung.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Fortgeschritten",
-        "preAdBadge": "MUSTERVERFOLGUNG ABGESCHLOSSEN",
-        "preAdTitle": "Mehr als die Hälfte geschafft",
-        "preAdCopy": "Als Nächstes warten optische Fallen.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "MUSTERVERFOLGUNG ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes warten optische Fallen."
-          },
-          "medium": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes warten optische Fallen."
-          },
-          "low": {
-            "title": "Mehr als die Hälfte geschafft",
-            "insight": "Als Nächstes warten optische Fallen."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ANSPRUCHSVOLL",
-          "title": "Optische Fallen",
-          "difficulty": "Anspruchsvoll",
-          "tagline": "Ablenkung. Verfolgen. Kleine Änderungen.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Anspruchsvoll",
-        "preAdBadge": "OPTISCHE FALLEN ABGESCHLOSSEN",
-        "preAdTitle": "Als Nächstes: der finale Fokus",
-        "preAdCopy": "Nur eine letzte visuelle Aufgabe bleibt.",
-        "preAdButton": "Weiter",
-        "resultIcon": "✓",
-        "resultLabel": "OPTISCHE FALLEN ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "Als Nächstes: der finale Fokus",
-            "insight": "Nur eine letzte visuelle Aufgabe bleibt."
-          },
-          "medium": {
-            "title": "Als Nächstes: der finale Fokus",
-            "insight": "Nur eine letzte visuelle Aufgabe bleibt."
-          },
-          "low": {
-            "title": "Als Nächstes: der finale Fokus",
-            "insight": "Nur eine letzte visuelle Aufgabe bleibt."
-          }
-        },
-        "next": {
-          "eyebrow": "NÄCHSTE HERAUSFORDERUNG · ABSCHLUSSPRÜFUNG",
-          "title": "Finaler Fokus",
-          "difficulty": "Abschlussprüfung",
-          "tagline": "Gemischte Hinweise. Letzte Fokusprüfung.",
-          "button": "Weiter"
-        }
-      },
-      {
-        "difficulty": "Abschlussprüfung",
-        "preAdBadge": "VISUELLE HERAUSFORDERUNG ABGESCHLOSSEN",
-        "preAdTitle": "VISUELLER TEST ABGESCHLOSSEN",
-        "preAdChecks": [
-          "40 Antworten geprüft",
-          "Sechs visuelle Fähigkeiten im Vergleich",
-          "Endergebnis berechnet"
-        ],
-        "preAdButton": "Mein Ergebnis ansehen",
-        "resultIcon": "✓",
-        "resultLabel": "FINALER FOKUS ABGESCHLOSSEN",
-        "resultBands": {
-          "high": {
-            "title": "VISUELLER TEST ABGESCHLOSSEN",
-            "insight": "Dein visuelles Ergebnis kann jetzt angezeigt werden."
-          },
-          "medium": {
-            "title": "VISUELLER TEST ABGESCHLOSSEN",
-            "insight": "Dein visuelles Ergebnis kann jetzt angezeigt werden."
-          },
-          "low": {
-            "title": "VISUELLER TEST ABGESCHLOSSEN",
-            "insight": "Dein visuelles Ergebnis kann jetzt angezeigt werden."
-          }
-        },
-        "preAdCopy": "Dein visuelles Ergebnis kann jetzt angezeigt werden."
-      }
-    ]
   }
 }

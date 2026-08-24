@@ -1,6 +1,8 @@
 {
+  "schemaVersion": 2,
   "title": "Hoelang heb je nog te leven?",
   "summary": "Dagritme, slaap, stress en gewoonten voeden een verrassende voorspelling.",
+  "progressLabel": "voltooid",
   "landing": {
     "intro": "Vertel AI hoe je echt leeft en laat berekenen hoelang je nog te leven hebt.",
     "cta": "Start"
@@ -17,88 +19,125 @@
     },
     "disclaimer": "Alleen voor plezier en zelfreflectie. Deze quiz voorspelt geen levensduur, gezondheid of toekomst. Bespreek zorgen over je gezondheid met een gekwalificeerde zorgverlener."
   },
+  "checkpoint": {
+    "finalAdNote": "Eerst een korte advertentie, daarna zie je je schatting."
+  },
+  "career": {
+    "resultProgressLabel": "Voorspellingsroute",
+    "resultProgressComplete": "{value}% voltooid",
+    "stages": {
+      "stage-1": {
+        "difficulty": "Basis",
+        "preAdBadge": "DAGELIJKS RITME VOLTOOID",
+        "preAdTitle": "Je dagritme is vastgelegd",
+        "preAdCopy": "Je dagelijkse gewoonten beginnen de schatting te vormen.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · IN ONTWIKKELING",
+          "tagline": "Voeding. Energie. Dagelijkse beweging."
+        }
+      },
+      "stage-2": {
+        "difficulty": "In ontwikkeling",
+        "preAdBadge": "VOEDING EN BEWEGING VOLTOOID",
+        "preAdTitle": "Je leefstijl wordt duidelijker",
+        "preAdCopy": "Voeding en beweging tellen nu mee in de berekening.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
+          "tagline": "Slaap. Stress. Herstel."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Gevorderd",
+        "preAdBadge": "HERSTEL EN VEERKRACHT VOLTOOID",
+        "preAdTitle": "Herstelpatronen toegevoegd",
+        "preAdCopy": "Slaap, stress en herstel hebben de voorspelling verfijnd.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
+          "tagline": "Contact. Plannen. Dagelijkse keuzes."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Uitdagend",
+        "preAdBadge": "CONTACT EN KEUZES VOLTOOID",
+        "preAdTitle": "Je schatting is bijna klaar",
+        "preAdCopy": "Er resteert nog één berekeningsfase.",
+        "next": {
+          "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
+          "tagline": "Vooruitblik. Prioriteiten. Laatste ijking."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Eindtoets",
+        "preAdBadge": "EINDVOORSPELLING VOLTOOID",
+        "preAdTitle": "JE SCHATTING STAAT KLAAR",
+        "preAdCopy": "Je voorspelling is voltooid.",
+        "preAdChecks": [
+          "40 antwoorden op levensstijl geanalyseerd",
+          "Levensstijlpatronen gecombineerd",
+          "Schatting berekend"
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
+      }
+    }
+  },
   "results": {
     "name": "LEEFSTIJLPROFIEL",
-    "profiles": [
-      {
-        "id": "centenarian_energy",
+    "profiles": {
+      "centenarian_energy": {
         "tier": "Energie voor honderd",
         "title": "Energie voor honderd",
         "copy": "Je antwoorden wijzen op redelijk vaste gewoonten, wat beweging en goed herstel. De schatting gaat de rustigste kant van de test op."
       },
-      {
-        "id": "steady_long_game",
+      "steady_long_game": {
         "tier": "De lange adem",
         "title": "De lange adem",
         "copy": "Je leefstijl lijkt gebouwd voor de lange termijn: vrij stabiele keuzes, een verstandig tempo en genoeg ruimte voor plezier."
       },
-      {
-        "id": "balanced_realist",
+      "balanced_realist": {
         "tier": "Evenwichtige realist",
         "title": "Evenwichtige realist",
         "copy": "Je combineert verstandige keuzes met spontaniteit zonder volledig naar één kant door te slaan. Dat levert een evenwichtige schatting op."
       },
-      {
-        "id": "weekend_chaos",
+      "weekend_chaos": {
         "tier": "Weekendchaos",
         "title": "Weekendchaos",
         "copy": "Je antwoorden bruisen van levendige, onvoorspelbare energie en sterke verhalen. Regelmaat ontbreekt soms, maar vaart is er genoeg."
       },
-      {
-        "id": "stress_sprinter",
+      "stress_sprinter": {
         "tier": "Stresssprinter",
         "title": "Stresssprinter",
         "copy": "Je kunt onder druk flink versnellen, soms ten koste van herstel. Meer echte rust zou dit deel van de schatting het sterkst veranderen."
       },
-      {
-        "id": "comfort_creature",
+      "comfort_creature": {
         "tier": "Comfortmens",
         "title": "Comfortmens",
         "copy": "Je kiest graag voor vertrouwd, rustig en aangenaam. Die stabiliteit beschermt je ritme, al kan iets meer beweging het verder versterken."
       },
-      {
-        "id": "adventure_fuse",
+      "adventure_fuse": {
         "tier": "Avontuurlijke geest",
         "title": "Avontuurlijke geest",
         "copy": "Nieuwe ervaringen trekken je aan en stilstand past niet bij je. De schatting weerspiegelt zowel die nieuwsgierigheid als je behoefte aan herstel."
       },
-      {
-        "id": "reset_needed",
+      "reset_needed": {
         "tier": "Tijd voor een reset",
         "title": "Tijd voor een reset",
         "copy": "Je antwoorden suggereren dat je dagelijks leven minder druk en meer herstel nodig heeft. Kleine veranderingen kunnen het totaalbeeld sterk verschuiven."
       }
-    ],
-    "dimensions": [
-      {
-        "label": "Rustige, duurzame energie",
-        "profiles": [
-          "centenarian_energy",
-          "steady_long_game"
-        ]
+    },
+    "dimensions": {
+      "dimension-1": {
+        "label": "Rustige, duurzame energie"
       },
-      {
-        "label": "Balans en herstel",
-        "profiles": [
-          "balanced_realist",
-          "comfort_creature",
-          "reset_needed"
-        ]
+      "dimension-2": {
+        "label": "Balans en herstel"
       },
-      {
-        "label": "Pit en avontuur",
-        "profiles": [
-          "weekend_chaos",
-          "adventure_fuse"
-        ]
+      "dimension-3": {
+        "label": "Pit en avontuur"
       },
-      {
-        "label": "Druk en tempo",
-        "profiles": [
-          "stress_sprinter"
-        ]
+      "dimension-4": {
+        "label": "Druk en tempo"
       }
-    ],
+    },
     "estimate": {
       "eyebrow": "JOUW SCHATTING",
       "ageSuffix": "JAAR",
@@ -111,7 +150,6 @@
         "mixed": "Gemengd"
       },
       "reviewUnlock": {
-        "rewarded": false,
         "title": "Ontdek wat je resultaat vormde",
         "copy": "Bekijk welke keuzes de schatting verhoogden, verlaagden of neutraal hielden.",
         "button": "Bekijk de factoren",
@@ -131,1247 +169,366 @@
         "signal": "Belangrijkste leefstijlsignaal",
         "consistency": "Samenhang van antwoorden",
         "breakdown": "Mix van leefstijlsignalen",
-        "snapshot": "Wat je profiel zegt",
-        "details": {
-          "analysisTitle": "Zo werd de schatting samengesteld",
-          "analysisCopy": "Je keuzes zijn vergeleken op ritme, voeding, beweging, rust, stress, contact en herstel. Het laatste antwoord zorgt slechts voor een kleine bijstelling.",
-          "roadmapTitle": "Je leefstijlanalyse",
-          "roadmapIntro": "De schatting is in vier stappen opgebouwd:",
-          "roadmapItems": [
-            "Dagelijkse gewoonten zijn gebundeld tot signalen.",
-            "Rust, druk en herstel zijn vergeleken.",
-            "Activiteit en sociaal contact vormden het profiel.",
-            "Een beperkte laatste bijstelling is toegepast."
-          ],
-          "positionTitle": "Waar je schatting uitkwam",
-          "positionCopy": "De markering toont de uitkomst binnen het fictieve quizbereik van 73 tot 95 jaar. Het is geen voorspelling van gezondheid of levensduur.",
-          "measuredTitle": "Wat het resultaat vormde",
-          "measuredIntro": "Meerdere dagelijkse thema’s worden gecombineerd zodat één antwoord niet kan overheersen.",
-          "measuredAreas": [
-            {
-              "title": "Duurzame energie",
-              "copy": "Ritme, voeding en beweging beschrijven tempo en regelmaat."
-            },
-            {
-              "title": "Balans en herstel",
-              "copy": "Activiteit en sociale keuzes voegen energie en plezier toe."
-            },
-            {
-              "title": "Pit en avontuur",
-              "copy": "Slaap, stress en herstel laten zien hoe je weer in balans komt."
-            }
-          ],
-          "tipsTitle": "Drie vragen om over na te denken",
-          "tipsIntro": "Geen medisch advies, maar eenvoudige gedachten bij het getoonde profiel.",
-          "tips": [
-            {
-              "title": "Behoud wat werkt",
-              "copy": "Kijk welke positieve keuzes al gemakkelijk te herhalen zijn."
-            },
-            {
-              "title": "Maak herstel haalbaar",
-              "copy": "Bedenk de kleinste verandering die rust minder chaotisch maakt."
-            },
-            {
-              "title": "Laat ruimte voor plezier",
-              "copy": "Een duurzaam ritme mag comfort, afwisseling en plezier bevatten."
-            }
-          ],
-          "finalTitle": "Je schatting staat klaar",
-          "finalCopy": "Deze poging levert de fictieve schatting {age} jaar en het profiel ‘{profile}’ op. De waarde weerspiegelt alleen de gekozen antwoorden en is geen gezondheidsinformatie."
-        }
+        "snapshot": "Wat je profiel zegt"
       },
       "disclaimer": "Alleen voor plezier en zelfreflectie — dit resultaat is geen medische voorspelling."
     }
   },
-  "stages": [
-    {
+  "stages": {
+    "stage-1": {
       "title": "Dagelijks ritme",
-      "questions": [
-        {
+      "questions": {
+        "r1q3": {
           "question": "Er komt onverwacht een avond vrij. Welk plan past het best bij jou?",
-          "answers": {
-            "Iets spontaan kiezen en zien waar het toe leidt": {
-              "centenarian_energy": 0.000116728,
-              "steady_long_game": 0.000111585,
-              "balanced_realist": 5.0101e-05,
-              "weekend_chaos": 0.003318306,
-              "stress_sprinter": 0.002354788,
-              "comfort_creature": 0.000125996,
-              "adventure_fuse": 0.899303578,
-              "reset_needed": 0.002192038
-            },
-            "Iets fatsoenlijks koken, wandelen en rustig afronden": {
-              "centenarian_energy": 0.927084651,
-              "steady_long_game": 0.001676413,
-              "balanced_realist": 0.000759863,
-              "weekend_chaos": 0.049884715,
-              "stress_sprinter": 0.035410831,
-              "comfort_creature": 0.001897495,
-              "adventure_fuse": 0.028922895,
-              "reset_needed": 0.032951227
-            },
-            "Werk, vrienden en alles wat nog langskomt erin proppen": {
-              "centenarian_energy": 6.0567e-05,
-              "steady_long_game": 5.7989e-05,
-              "balanced_realist": 2.6094e-05,
-              "weekend_chaos": 0.962437182,
-              "stress_sprinter": 0.001217854,
-              "comfort_creature": 6.5518e-05,
-              "adventure_fuse": 0.000994995,
-              "reset_needed": 0.001132274
-            }
-          },
-          "id": "r1q3"
+          "answers": [
+            "Iets spontaan kiezen en zien waar het toe leidt",
+            "Iets fatsoenlijks koken, wandelen en rustig afronden",
+            "Werk, vrienden en alles wat nog langskomt erin proppen"
+          ]
         },
-        {
+        "r1q1": {
           "question": "Jouw ideale zaterdagochtend begint met…",
-          "answers": {
-            "Een rustig ontbijt en een plan dat echt haalbaar voelt": {
-              "steady_long_game": 0.789882145
-            },
-            "Vijf wekkers, drie boodschappen en een heldhaftige hoeveelheid koffie": {
-              "stress_sprinter": 1.157163826
-            },
-            "Helemaal geen plan: gewoon zien waar de dag je brengt": {
-              "adventure_fuse": 0.846245013
-            }
-          },
-          "id": "r1q1"
+          "answers": [
+            "Een rustig ontbijt en een plan dat echt haalbaar voelt",
+            "Vijf wekkers, drie boodschappen en een heldhaftige hoeveelheid koffie",
+            "Helemaal geen plan: gewoon zien waar de dag je brengt"
+          ]
         },
-        {
+        "r1q2": {
           "question": "Als je week overvol raakt, wat redt je meestal?",
-          "answers": {
-            "Nog harder doorgaan tot de druk eindelijk afneemt": {
-              "stress_sprinter": 1.157163826
-            },
-            "Alles afzeggen en in alle rust voor de bank kiezen": {
-              "comfort_creature": 1.374612798
-            },
-            "Een eenvoudig lijstje en één ding tegelijk": {
-              "balanced_realist": 0.959222869
-            }
-          },
-          "id": "r1q2"
+          "answers": [
+            "Nog harder doorgaan tot de druk eindelijk afneemt",
+            "Alles afzeggen en in alle rust voor de bank kiezen",
+            "Een eenvoudig lijstje en één ding tegelijk"
+          ]
         },
-        {
+        "r1q5": {
           "question": "Als je energie halverwege de dag inzakt, wat helpt het meest?",
-          "answers": {
-            "Een andere omgeving en iets spontaans": {
-              "adventure_fuse": 0.846245013
-            },
-            "Rust, comfort en geen nieuwe verwachtingen": {
-              "comfort_creature": 1.374612798
-            },
-            "Een korte pauze en één duidelijke volgende stap": {
-              "balanced_realist": 0.959222869
-            }
-          },
-          "id": "r1q5"
+          "answers": [
+            "Een andere omgeving en iets spontaans",
+            "Rust, comfort en geen nieuwe verwachtingen",
+            "Een korte pauze en één duidelijke volgende stap"
+          ]
         },
-        {
+        "r1q6": {
           "question": "Hoe vaak maak je het leven moeilijker dan nodig?",
-          "answers": {
-            "Daar ben ik op dit moment mee bezig": {
-              "reset_needed": 1.141570473
-            },
-            "Alleen als ik de voor de hand liggende oplossing negeer": {
-              "balanced_realist": 0.959222869
-            },
-            "Regelmatig, maar zo blijft het tenminste interessant": {
-              "weekend_chaos": 1.081951257
-            }
-          },
-          "id": "r1q6"
+          "answers": [
+            "Daar ben ik op dit moment mee bezig",
+            "Alleen als ik de voor de hand liggende oplossing negeer",
+            "Regelmatig, maar zo blijft het tenminste interessant"
+          ]
         },
-        {
+        "r4q4": {
           "question": "Jouw relatie met de wekker is…",
-          "answers": {
-            "Vooral denkbeeldig, want ik word ervoor wakker": {
-              "centenarian_energy": 1.165081789
-            },
-            "Respectvol, maar niet romantisch": {
-              "balanced_realist": 0.959222869
-            },
-            "Een dagelijks klein gevecht": {
-              "stress_sprinter": 1.157163826
-            }
-          },
-          "id": "r4q4"
+          "answers": [
+            "Vooral denkbeeldig, want ik word ervoor wakker",
+            "Respectvol, maar niet romantisch",
+            "Een dagelijks klein gevecht"
+          ]
         },
-        {
+        "r9q3": {
           "question": "Als het leven druk wordt, is jouw huis…",
-          "answers": {
-            "Een comfortabele grot met snacks binnen handbereik": {
-              "comfort_creature": 1.374612798
-            },
-            "Een beetje rommelig, maar nog te redden": {
-              "balanced_realist": 0.959222869
-            },
-            "Bewijs dat er een zijmissie heeft plaatsgevonden": {
-              "adventure_fuse": 0.846245013
-            }
-          },
-          "id": "r9q3"
+          "answers": [
+            "Een comfortabele grot met snacks binnen handbereik",
+            "Een beetje rommelig, maar nog te redden",
+            "Bewijs dat er een zijmissie heeft plaatsgevonden"
+          ]
         },
-        {
+        "r9q2": {
           "question": "Er verschijnt een rekening, formulier of afspraakherinnering. Jij…",
-          "answers": {
-            "Legt het veilig weg en vergeet vervolgens waar het ligt": {
-              "weekend_chaos": 1.081951257
-            },
-            "Stelt drie herinneringen in en blijft toch achterdochtig": {
-              "stress_sprinter": 1.157163826
-            },
-            "Regelt het zolang het nog klein is": {
-              "balanced_realist": 0.959222869
-            }
-          },
-          "id": "r9q2"
+          "answers": [
+            "Legt het veilig weg en vergeet vervolgens waar het ligt",
+            "Stelt drie herinneringen in en blijft toch achterdochtig",
+            "Regelt het zolang het nog klein is"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-2": {
       "title": "Voeding en beweging",
-      "questions": [
-        {
+      "questions": {
+        "r2q1": {
           "question": "Naar welke snacktafel loop je toe?",
-          "answers": {
-            "Appelschijfjes, noten en een beetje pure chocolade": {
-              "centenarian_energy": 0.927084651,
-              "steady_long_game": 0.001676413,
-              "balanced_realist": 0.000759863,
-              "weekend_chaos": 0.049884715,
-              "stress_sprinter": 0.035410831,
-              "comfort_creature": 0.001897495,
-              "adventure_fuse": 0.028922895,
-              "reset_needed": 0.032951227
-            },
-            "Een flinke punt taart": {
-              "centenarian_energy": 6.0567e-05,
-              "steady_long_game": 5.7989e-05,
-              "balanced_realist": 2.6094e-05,
-              "weekend_chaos": 0.962437182,
-              "stress_sprinter": 0.001217854,
-              "comfort_creature": 6.5518e-05,
-              "adventure_fuse": 0.000994995,
-              "reset_needed": 0.001132274
-            },
-            "Hummus, olijven en knapperige groenten": {
-              "centenarian_energy": 0.003540395,
-              "steady_long_game": 0.003393242,
-              "balanced_realist": 0.707926309,
-              "weekend_chaos": 0.100958611,
-              "stress_sprinter": 0.07166526,
-              "comfort_creature": 0.003840348,
-              "adventure_fuse": 0.058534214,
-              "reset_needed": 0.06669077
-            },
-            "Welke verpakte snack maar het dichtst bij ligt": {
-              "centenarian_energy": 0.001782861,
-              "steady_long_game": 0.001708922,
-              "balanced_realist": 0.000774476,
-              "weekend_chaos": 0.050837219,
-              "stress_sprinter": 0.036086518,
-              "comfort_creature": 1.056817691,
-              "adventure_fuse": 0.02947436,
-              "reset_needed": 0.033581508
-            }
-          },
-          "id": "r2q1",
-          "presentation": "icons",
-          "icons": [
-            "🍎",
-            "🍰",
-            "🫒",
-            "🍪"
+          "answers": [
+            "Appelschijfjes, noten en een beetje pure chocolade",
+            "Een flinke punt taart",
+            "Hummus, olijven en knapperige groenten",
+            "Welke verpakte snack maar het dichtst bij ligt"
           ]
         },
-        {
+        "r2q2": {
           "question": "Jouw ontbijtpersoonlijkheid is…",
-          "answers": {
-            "Koffie met veel te veel zelfvertrouwen": {
-              "stress_sprinter": 1.157163826
-            },
-            "Ontbijt? Ik maak liever een dramatische entree bij de lunch": {
-              "weekend_chaos": 1.081951257
-            },
-            "Betrouwbaar genoeg om een ochtenddip te voorkomen": {
-              "steady_long_game": 0.789882145
-            }
-          },
-          "id": "r2q2"
+          "answers": [
+            "Koffie met veel te veel zelfvertrouwen",
+            "Ontbijt? Ik maak liever een dramatische entree bij de lunch",
+            "Betrouwbaar genoeg om een ochtenddip te voorkomen"
+          ]
         },
-        {
+        "r2q3": {
           "question": "In een restaurant kies je meestal…",
-          "answers": {
-            "Iets nieuws, omdat nieuwsgierigheid harder roept dan voorzichtigheid": {
-              "adventure_fuse": 0.846245013
-            },
-            "Iets waarvan je weet dat je je er goed bij voelt": {
-              "balanced_realist": 0.959222869
-            },
-            "De specialiteit van het huis, na één verstandige vraag": {
-              "steady_long_game": 0.789882145
-            },
-            "Het rijkste gerecht op de kaart, want het leven is kort": {
-              "comfort_creature": 1.374612798
-            }
-          },
-          "id": "r2q3"
+          "answers": [
+            "Iets nieuws, omdat nieuwsgierigheid harder roept dan voorzichtigheid",
+            "Iets waarvan je weet dat je je er goed bij voelt",
+            "De specialiteit van het huis, na één verstandige vraag",
+            "Het rijkste gerecht op de kaart, want het leven is kort"
+          ]
         },
-        {
+        "r2q4": {
           "question": "Jouw drinkfles staat waarschijnlijk…",
-          "answers": {
-            "Dichtbij en wordt echt gebruikt": {
-              "centenarian_energy": 1.165081789
-            },
-            "Ergens in huis, technisch gezien": {
-              "reset_needed": 1.141570473
-            },
-            "Tot nader order vervangen door koffie": {
-              "stress_sprinter": 1.157163826
-            }
-          },
-          "id": "r2q4"
+          "answers": [
+            "Dichtbij en wordt echt gebruikt",
+            "Ergens in huis, technisch gezien",
+            "Tot nader order vervangen door koffie"
+          ]
         },
-        {
+        "r2q6": {
           "question": "Welk eetmotto past het best bij jou?",
-          "answers": {
-            "Mijn toekomstige ik kan een klacht indienen": {
-              "weekend_chaos": 1.081951257
-            },
-            "Meestal verstandig, soms feestelijk": {
-              "steady_long_game": 0.789882145
-            },
-            "Als het vreugde brengt, krijgt het een plek aan tafel": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "id": "r2q6"
+          "answers": [
+            "Mijn toekomstige ik kan een klacht indienen",
+            "Meestal verstandig, soms feestelijk",
+            "Als het vreugde brengt, krijgt het een plek aan tafel"
+          ]
         },
-        {
-          "id": "r3q2",
+        "r3q2": {
           "question": "Je moet iets vlakbij regelen. Hoe ga je er meestal heen?",
-          "presentation": "icons",
-          "icons": [
-            "🚗",
-            "🚌",
-            "🚶",
-            "🚲"
-          ],
-          "answers": {
-            "Met de auto": {
-              "centenarian_energy": 0.00214516,
-              "steady_long_game": 0.002055978,
-              "balanced_realist": 0.117369634,
-              "weekend_chaos": 0.061174683,
-              "stress_sprinter": 0.043425,
-              "comfort_creature": 0.874956796,
-              "adventure_fuse": 0.035467915,
-              "reset_needed": 0.04040955
-            },
-            "Met het openbaar vervoer": {
-              "centenarian_energy": 0.002606568,
-              "steady_long_game": 0.314786047,
-              "balanced_realist": 0.425537985,
-              "weekend_chaos": 0.074325221,
-              "stress_sprinter": 0.052760197,
-              "comfort_creature": 0.002827343,
-              "adventure_fuse": 0.043093191,
-              "reset_needed": 0.049095897
-            },
-            "Lopend": {
-              "centenarian_energy": 0.205229487,
-              "steady_long_game": 0.587070459,
-              "balanced_realist": 0.000707675,
-              "weekend_chaos": 0.046450486,
-              "stress_sprinter": 0.0329731,
-              "comfort_creature": 0.001766459,
-              "adventure_fuse": 0.026931997,
-              "reset_needed": 0.03068389
-            },
-            "Met de fiets": {
-              "centenarian_energy": 0.017895788,
-              "steady_long_game": 0.000136187,
-              "balanced_realist": 6.1582e-05,
-              "weekend_chaos": 0.004050555,
-              "stress_sprinter": 0.002874702,
-              "comfort_creature": 0.000153715,
-              "adventure_fuse": 0.882979122,
-              "reset_needed": 0.00267544
-            }
-          }
+          "answers": [
+            "Met de auto",
+            "Met het openbaar vervoer",
+            "Lopend",
+            "Met de fiets"
+          ]
         },
-        {
-          "id": "r3q6",
+        "r3q6": {
           "question": "Het is zondag. Kies je bewegingsniveau.",
-          "answers": {
-            "Bankstand": {
-              "centenarian_energy": 0.001782861,
-              "steady_long_game": 0.001708922,
-              "balanced_realist": 0.000774476,
-              "weekend_chaos": 0.050837219,
-              "stress_sprinter": 0.036086518,
-              "comfort_creature": 1.056817691,
-              "adventure_fuse": 0.02947436,
-              "reset_needed": 0.033581508
-            },
-            "Een rustige wandeling": {
-              "centenarian_energy": 0.001718991,
-              "steady_long_game": 0.742364452,
-              "balanced_realist": 0.000746294,
-              "weekend_chaos": 0.04902495,
-              "stress_sprinter": 0.034799881,
-              "comfort_creature": 0.001864736,
-              "adventure_fuse": 0.028424037,
-              "reset_needed": 0.032383231
-            },
-            "Een fietstocht": {
-              "centenarian_energy": 0.000116728,
-              "steady_long_game": 0.000111585,
-              "balanced_realist": 5.0101e-05,
-              "weekend_chaos": 0.003318306,
-              "stress_sprinter": 0.002354788,
-              "comfort_creature": 0.000125996,
-              "adventure_fuse": 0.899303578,
-              "reset_needed": 0.002192038
-            },
-            "Een stevige hardloopronde": {
-              "centenarian_energy": 0.927084651,
-              "steady_long_game": 0.001676413,
-              "balanced_realist": 0.000759863,
-              "weekend_chaos": 0.049884715,
-              "stress_sprinter": 0.035410831,
-              "comfort_creature": 0.001897495,
-              "adventure_fuse": 0.028922895,
-              "reset_needed": 0.032951227
-            }
-          },
-          "presentation": "icons",
-          "icons": [
-            "🛋️",
-            "🚶",
-            "🚴",
-            "🏃"
+          "answers": [
+            "Bankstand",
+            "Een rustige wandeling",
+            "Een fietstocht",
+            "Een stevige hardloopronde"
           ]
         },
-        {
+        "r3q1": {
           "question": "Welk bewegingsplan zou je echt volhouden?",
-          "answers": {
-            "Een wandeling waarvoor ik geen nieuwe persoonlijkheid nodig heb": {
-              "steady_long_game": 0.789882145
-            },
-            "Een dramatische fitnessperiode van twee weken": {
-              "stress_sprinter": 1.157163826
-            },
-            "Dansen tijdens het schoonmaken en dat cardio noemen": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "id": "r3q1",
-          "presentation": "icons",
-          "icons": [
-            "🚶",
-            "⚡",
-            "💃"
+          "answers": [
+            "Een wandeling waarvoor ik geen nieuwe persoonlijkheid nodig heb",
+            "Een dramatische fitnessperiode van twee weken",
+            "Dansen tijdens het schoonmaken en dat cardio noemen"
           ]
         }
-      ]
+      }
     },
-    {
+    "stage-3": {
       "title": "Herstel en veerkracht",
-      "questions": [
-        {
+      "questions": {
+        "r4q1": {
           "question": "Jouw bedtijdroutine lijkt het meest op…",
-          "answers": {
-            "Een rustige afsluiting van de dag die meestal werkt": {
-              "steady_long_game": 0.789882145
-            },
-            "Nog één ding, en nog één, en oeps": {
-              "stress_sprinter": 1.157163826
-            },
-            "In slaap vallen waar de dag me neerzet": {
-              "reset_needed": 1.141570473
-            }
-          },
-          "id": "r4q1"
+          "answers": [
+            "Een rustige afsluiting van de dag die meestal werkt",
+            "Nog één ding, en nog één, en oeps",
+            "In slaap vallen waar de dag me neerzet"
+          ]
         },
-        {
+        "r4q2": {
           "question": "Als stress de kamer binnenloopt, dan…",
-          "answers": {
-            "Probeer je zes dingen tegelijk op te lossen": {
-              "centenarian_energy": 8.6996e-05,
-              "steady_long_game": 8.3469e-05,
-              "balanced_realist": 3.7576e-05,
-              "weekend_chaos": 0.002471099,
-              "stress_sprinter": 1.005257752,
-              "comfort_creature": 9.4497e-05,
-              "adventure_fuse": 0.001433084,
-              "reset_needed": 0.001631479
-            },
-            "Vermijd je oogcontact en hoop je dat het vertrekt": {
-              "centenarian_energy": 0.001782861,
-              "steady_long_game": 0.001708922,
-              "balanced_realist": 0.000774476,
-              "weekend_chaos": 0.050837219,
-              "stress_sprinter": 0.036086518,
-              "comfort_creature": 1.056817691,
-              "adventure_fuse": 0.02947436,
-              "reset_needed": 0.033581508
-            },
-            "Maak je het probleem kleiner tot één duidelijke volgende stap": {
-              "centenarian_energy": 0.003540395,
-              "steady_long_game": 0.003393242,
-              "balanced_realist": 0.707926309,
-              "weekend_chaos": 0.100958611,
-              "stress_sprinter": 0.07166526,
-              "comfort_creature": 0.003840348,
-              "adventure_fuse": 0.058534214,
-              "reset_needed": 0.06669077
-            }
-          },
-          "id": "r4q2"
+          "answers": [
+            "Probeer je zes dingen tegelijk op te lossen",
+            "Vermijd je oogcontact en hoop je dat het vertrekt",
+            "Maak je het probleem kleiner tot één duidelijke volgende stap"
+          ]
         },
-        {
-          "id": "r4q3",
+        "r4q3": {
           "question": "Hoe uitgerust voel je je meestal als je wakker wordt?",
-          "presentation": "scale",
-          "answers": {
-            "Helemaal niet": {
-              "centenarian_energy": 7.9287e-05,
-              "steady_long_game": 7.644e-05,
-              "balanced_realist": 3.4444e-05,
-              "weekend_chaos": 0.002274996,
-              "stress_sprinter": 0.001615376,
-              "comfort_creature": 8.6937e-05,
-              "adventure_fuse": 0.0013188,
-              "reset_needed": 0.924349506
-            },
-            "Een beetje": {
-              "centenarian_energy": 8.6996e-05,
-              "steady_long_game": 8.3469e-05,
-              "balanced_realist": 3.7576e-05,
-              "weekend_chaos": 0.002471099,
-              "stress_sprinter": 1.005257752,
-              "comfort_creature": 9.4497e-05,
-              "adventure_fuse": 0.001433084,
-              "reset_needed": 0.001631479
-            },
-            "Redelijk": {
-              "centenarian_energy": 0.003540395,
-              "steady_long_game": 0.003393242,
-              "balanced_realist": 0.707926309,
-              "weekend_chaos": 0.100958611,
-              "stress_sprinter": 0.07166526,
-              "comfort_creature": 0.003840348,
-              "adventure_fuse": 0.058534214,
-              "reset_needed": 0.06669077
-            },
-            "Grotendeels": {
-              "centenarian_energy": 0.001718991,
-              "steady_long_game": 0.742364452,
-              "balanced_realist": 0.000746294,
-              "weekend_chaos": 0.04902495,
-              "stress_sprinter": 0.034799881,
-              "comfort_creature": 0.001864736,
-              "adventure_fuse": 0.028424037,
-              "reset_needed": 0.032383231
-            },
-            "Volledig": {
-              "centenarian_energy": 0.927084651,
-              "steady_long_game": 0.001676413,
-              "balanced_realist": 0.000759863,
-              "weekend_chaos": 0.049884715,
-              "stress_sprinter": 0.035410831,
-              "comfort_creature": 0.001897495,
-              "adventure_fuse": 0.028922895,
-              "reset_needed": 0.032951227
-            }
-          }
+          "answers": [
+            "Helemaal niet",
+            "Een beetje",
+            "Redelijk",
+            "Grotendeels",
+            "Volledig"
+          ]
         },
-        {
+        "r4q5": {
           "question": "Er verschijnt een klein ongemak. Jij…",
-          "answers": {
-            "Regelt het voordat het een heel verhaal wordt": {
-              "steady_long_game": 0.789882145
-            },
-            "Maakt er een geweldig verteld drama van": {
-              "stress_sprinter": 1.157163826
-            },
-            "Laat het liggen en hoopt dat het goedkomt": {
-              "reset_needed": 1.141570473
-            }
-          },
-          "id": "r4q5"
+          "answers": [
+            "Regelt het voordat het een heel verhaal wordt",
+            "Maakt er een geweldig verteld drama van",
+            "Laat het liggen en hoopt dat het goedkomt"
+          ]
         },
-        {
+        "r4q6": {
           "question": "Wat helpt je het best om te slapen?",
-          "answers": {
-            "Volledig uitgeput zijn door avontuur": {
-              "adventure_fuse": 0.846245013
-            },
-            "Achtergrondgeluid en een zachte ontsnapping aan de werkelijkheid": {
-              "comfort_creature": 1.374612798
-            },
-            "Een rustige kamer en een nog rustiger hoofd": {
-              "steady_long_game": 0.789882145
-            }
-          },
-          "id": "r4q6"
+          "answers": [
+            "Volledig uitgeput zijn door avontuur",
+            "Achtergrondgeluid en een zachte ontsnapping aan de werkelijkheid",
+            "Een rustige kamer en een nog rustiger hoofd"
+          ]
         },
-        {
-          "id": "r10q3",
+        "r10q3": {
           "question": "Na een chaotische week ben ik op maandag meestal…",
-          "answers": {
-            "Terug bij een eenvoudig plan": {
-              "centenarian_energy": 0.003540395,
-              "steady_long_game": 0.003393242,
-              "balanced_realist": 0.707926309,
-              "weekend_chaos": 0.100958611,
-              "stress_sprinter": 0.07166526,
-              "comfort_creature": 0.003840348,
-              "adventure_fuse": 0.058534214,
-              "reset_needed": 0.06669077
-            },
-            "Opnieuw begonnen met één geruststellende routine": {
-              "centenarian_energy": 0.001782861,
-              "steady_long_game": 0.001708922,
-              "balanced_realist": 0.000774476,
-              "weekend_chaos": 0.050837219,
-              "stress_sprinter": 0.036086518,
-              "comfort_creature": 1.056817691,
-              "adventure_fuse": 0.02947436,
-              "reset_needed": 0.033581508
-            },
-            "Nog bezig om op adem te komen": {
-              "centenarian_energy": 7.9287e-05,
-              "steady_long_game": 7.644e-05,
-              "balanced_realist": 3.4444e-05,
-              "weekend_chaos": 0.002274996,
-              "stress_sprinter": 0.001615376,
-              "comfort_creature": 8.6937e-05,
-              "adventure_fuse": 0.0013188,
-              "reset_needed": 0.924349506
-            }
-          }
+          "answers": [
+            "Terug bij een eenvoudig plan",
+            "Opnieuw begonnen met één geruststellende routine",
+            "Nog bezig om op adem te komen"
+          ]
         },
-        {
-          "id": "r10q4",
+        "r10q4": {
           "question": "Gezonde gewoonten zijn voor mij…",
-          "presentation": "text",
-          "answers": {
-            "Automatisch": {
-              "centenarian_energy": 0.205229487,
-              "steady_long_game": 0.587070459,
-              "balanced_realist": 0.000707675,
-              "weekend_chaos": 0.046450486,
-              "stress_sprinter": 0.0329731,
-              "comfort_creature": 0.001766459,
-              "adventure_fuse": 0.026931997,
-              "reset_needed": 0.03068389
-            },
-            "Meestal consequent": {
-              "centenarian_energy": 0.002606568,
-              "steady_long_game": 0.314786047,
-              "balanced_realist": 0.425537985,
-              "weekend_chaos": 0.074325221,
-              "stress_sprinter": 0.052760197,
-              "comfort_creature": 0.002827343,
-              "adventure_fuse": 0.043093191,
-              "reset_needed": 0.049095897
-            },
-            "Met vlagen": {
-              "centenarian_energy": 8.9198e-05,
-              "steady_long_game": 8.5226e-05,
-              "balanced_realist": 3.8619e-05,
-              "weekend_chaos": 0.951506576,
-              "stress_sprinter": 0.001796436,
-              "comfort_creature": 0.012128344,
-              "adventure_fuse": 0.00146755,
-              "reset_needed": 0.001670523
-            },
-            "Meer een voornemen dan een routine": {
-              "centenarian_energy": 9.9109e-05,
-              "steady_long_game": 9.4891e-05,
-              "balanced_realist": 4.2794e-05,
-              "weekend_chaos": 0.002815005,
-              "stress_sprinter": 0.751441352,
-              "comfort_creature": 0.000107096,
-              "adventure_fuse": 0.001632627,
-              "reset_needed": 0.234327791
-            }
-          }
+          "answers": [
+            "Automatisch",
+            "Meestal consequent",
+            "Met vlagen",
+            "Meer een voornemen dan een routine"
+          ]
         },
-        {
+        "r9q4": {
           "question": "Welke persoonlijke regel zou jou het meest helpen?",
-          "answers": {
-            "De taak van twee minuten nu doen": {
-              "steady_long_game": 0.789882145
-            },
-            "Ruimte laten voor verrassing": {
-              "adventure_fuse": 0.846245013
-            },
-            "Rust nemen voordat alles dramatisch wordt": {
-              "reset_needed": 1.141570473
-            }
-          },
-          "id": "r9q4"
+          "answers": [
+            "De taak van twee minuten nu doen",
+            "Ruimte laten voor verrassing",
+            "Rust nemen voordat alles dramatisch wordt"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-4": {
       "title": "Contact en keuzes",
-      "questions": [
-        {
+      "questions": {
+        "r6q1": {
           "question": "Jouw perfecte groepsplan heeft…",
-          "answers": {
-            "Leuke mensen, duidelijke tijden en een makkelijke uitweg": {
-              "balanced_realist": 0.959222869
-            },
-            "Een los plan waaraan iedereen kan meebouwen": {
-              "balanced_realist": 0.479611434,
-              "adventure_fuse": 0.423122506
-            },
-            "Een wending die niemand zag aankomen": {
-              "adventure_fuse": 0.846245013
-            }
-          },
-          "id": "r6q1"
+          "answers": [
+            "Leuke mensen, duidelijke tijden en een makkelijke uitweg",
+            "Een los plan waaraan iedereen kan meebouwen",
+            "Een wending die niemand zag aankomen"
+          ]
         },
-        {
+        "r6q2": {
           "question": "Op een feestje ben je waarschijnlijk…",
-          "answers": {
-            "Onderdeel van een verhaal dat begint met ‘op de een of andere manier’": {
-              "weekend_chaos": 1.081951257
-            },
-            "Tussen gesprekken aan het bewegen en daarna even rustig aan het opladen": {
-              "weekend_chaos": 0.540975629,
-              "centenarian_energy": 0.582540895
-            },
-            "Aan het helpen met snacks, omdat dat je een doel geeft": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "id": "r6q2"
+          "answers": [
+            "Onderdeel van een verhaal dat begint met ‘op de een of andere manier’",
+            "Tussen gesprekken aan het bewegen en daarna even rustig aan het opladen",
+            "Aan het helpen met snacks, omdat dat je een doel geeft"
+          ]
         },
-        {
+        "r6q3": {
           "question": "Als iemand ‘kort vraagje’ appt, voel je…",
-          "answers": {
-            "Blij als het roddels worden": {
-              "weekend_chaos": 1.081951257
-            },
-            "Ik vraag wat er nodig is voordat ik bepaal hoeveel energie ik heb": {
-              "weekend_chaos": 0.540975629,
-              "balanced_realist": 0.479611434
-            },
-            "Ik reageer, maar met enige voorzichtigheid": {
-              "balanced_realist": 0.959222869
-            }
-          },
-          "id": "r6q3"
+          "answers": [
+            "Blij als het roddels worden",
+            "Ik vraag wat er nodig is voordat ik bepaal hoeveel energie ik heb",
+            "Ik reageer, maar met enige voorzichtigheid"
+          ]
         },
-        {
+        "r6q4": {
           "question": "Zo zouden je vrienden je waarschijnlijk omschrijven…",
-          "answers": {
-            "Betrouwbaar op een verfrissend normale manier": {
-              "steady_long_game": 0.789882145
-            },
-            "Standvastig als het telt, spontaan als het helpt": {
-              "steady_long_game": 0.394941072,
-              "adventure_fuse": 0.423122506
-            },
-            "Een sympathieke bron van zijmissies": {
-              "adventure_fuse": 0.846245013
-            }
-          },
-          "id": "r6q4"
+          "answers": [
+            "Betrouwbaar op een verfrissend normale manier",
+            "Standvastig als het telt, spontaan als het helpt",
+            "Een sympathieke bron van zijmissies"
+          ]
         },
-        {
+        "r6q5": {
           "question": "Na een heel sociale dag heb je behoefte aan…",
-          "answers": {
-            "Nog een plan als de sfeer goed is": {
-              "adventure_fuse": 0.846245013
-            },
-            "Iets rustigs met één of twee favoriete mensen": {
-              "adventure_fuse": 0.423122506,
-              "reset_needed": 0.570785237
-            },
-            "Een lange stille reset voor ik me weer normaal voel": {
-              "reset_needed": 1.141570473
-            }
-          },
-          "id": "r6q5"
+          "answers": [
+            "Nog een plan als de sfeer goed is",
+            "Iets rustigs met één of twee favoriete mensen",
+            "Een lange stille reset voor ik me weer normaal voel"
+          ]
         },
-        {
-          "id": "r6q6",
+        "r6q6": {
           "question": "Hoe vaak maak je tijd voor mensen met wie je echt graag bent?",
-          "presentation": "scale",
-          "answers": {
-            "Bijna nooit": {
-              "centenarian_energy": 0.000127741,
-              "steady_long_game": 0.000123007,
-              "balanced_realist": 5.532e-05,
-              "weekend_chaos": 0.003657382,
-              "stress_sprinter": 0.002595527,
-              "comfort_creature": 0.017528518,
-              "adventure_fuse": 0.002120601,
-              "reset_needed": 0.908319179
-            },
-            "Zelden": {
-              "centenarian_energy": 0.000339173,
-              "steady_long_game": 0.000325091,
-              "balanced_realist": 0.000147171,
-              "weekend_chaos": 0.009676702,
-              "stress_sprinter": 0.006869143,
-              "comfort_creature": 0.138397428,
-              "adventure_fuse": 0.005609888,
-              "reset_needed": 0.805369602
-            },
-            "Soms": {
-              "centenarian_energy": 0.002816899,
-              "steady_long_game": 0.002700887,
-              "balanced_realist": 0.460010514,
-              "weekend_chaos": 0.080346473,
-              "stress_sprinter": 0.057033813,
-              "comfort_creature": 0.385091917,
-              "adventure_fuse": 0.046583384,
-              "reset_needed": 0.053073731
-            },
-            "Vaak": {
-              "centenarian_energy": 0.205229487,
-              "steady_long_game": 0.587070459,
-              "balanced_realist": 0.000707675,
-              "weekend_chaos": 0.046450486,
-              "stress_sprinter": 0.0329731,
-              "comfort_creature": 0.001766459,
-              "adventure_fuse": 0.026931997,
-              "reset_needed": 0.03068389
-            },
-            "Heel vaak": {
-              "centenarian_energy": 0.138717413,
-              "steady_long_game": 0.000354085,
-              "balanced_realist": 0.000159697,
-              "weekend_chaos": 0.01052101,
-              "stress_sprinter": 0.007468967,
-              "comfort_creature": 0.000400666,
-              "adventure_fuse": 0.768610877,
-              "reset_needed": 0.006949822
-            }
-          }
+          "answers": [
+            "Bijna nooit",
+            "Zelden",
+            "Soms",
+            "Vaak",
+            "Heel vaak"
+          ]
         },
-        {
+        "r7q4": {
           "question": "Als een plan op het laatste moment verandert, dan…",
-          "answers": {
-            "Pas je je aan en zoek je de nieuwe verstandige route": {
-              "balanced_realist": 0.959222869
-            },
-            "Doe je alsof dit altijd al het plan was": {
-              "adventure_fuse": 0.846245013
-            },
-            "Heb je een minuut nodig om opnieuw op te starten": {
-              "reset_needed": 1.141570473
-            }
-          },
-          "id": "r7q4"
+          "answers": [
+            "Pas je je aan en zoek je de nieuwe verstandige route",
+            "Doe je alsof dit altijd al het plan was",
+            "Heb je een minuut nodig om opnieuw op te starten"
+          ]
         },
-        {
+        "r7q6": {
           "question": "Welke routine zou jouw leven het meest verbeteren?",
-          "answers": {
-            "Een pauzeknop voor mijn hoofd": {
-              "reset_needed": 1.141570473
-            },
-            "Een eenvoudige wekelijkse reset": {
-              "steady_long_game": 0.789882145
-            },
-            "Meer speelsheid in gewone dagen": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "id": "r7q6"
+          "answers": [
+            "Een pauzeknop voor mijn hoofd",
+            "Een eenvoudige wekelijkse reset",
+            "Meer speelsheid in gewone dagen"
+          ]
         }
-      ]
+      }
     },
-    {
+    "stage-5": {
       "title": "Eindvoorspelling",
-      "questions": [
-        {
+      "questions": {
+        "r7q1": {
           "question": "Er verschijnt een goedkope vlucht voor morgen. Jij…",
-          "answers": {
-            "Controleert de details voordat je fantasie op hol slaat": {
-              "steady_long_game": 0.789882145
-            },
-            "Begint in gedachten al in te pakken": {
-              "adventure_fuse": 0.846245013
-            },
-            "Sluit het tabblad, want morgen is echt te snel": {
-              "comfort_creature": 1.374612798
-            }
-          },
-          "id": "r7q1"
+          "answers": [
+            "Controleert de details voordat je fantasie op hol slaat",
+            "Begint in gedachten al in te pakken",
+            "Sluit het tabblad, want morgen is echt te snel"
+          ]
         },
-        {
+        "r7q2": {
           "question": "Welk risico past het best bij jou?",
-          "answers": {
-            "Ja zeggen voordat ik het hele plan heb gelezen": {
-              "weekend_chaos": 1.081951257
-            },
-            "Iets nieuws bestellen en op het beste hopen": {
-              "adventure_fuse": 0.846245013
-            },
-            "Een nieuwe gewoonte proberen zonder er een drama van te maken": {
-              "steady_long_game": 0.789882145
-            }
-          },
-          "id": "r7q2"
+          "answers": [
+            "Ja zeggen voordat ik het hele plan heb gelezen",
+            "Iets nieuws bestellen en op het beste hopen",
+            "Een nieuwe gewoonte proberen zonder er een drama van te maken"
+          ]
         },
-        {
+        "r7q3": {
           "question": "Jouw agenda staat meestal…",
-          "answers": {
-            "Vol dingen waarvan ik vergeten was dat ik ermee had ingestemd": {
-              "stress_sprinter": 1.157163826
-            },
-            "Nuttig genoeg om rampen te voorkomen": {
-              "steady_long_game": 0.789882145
-            },
-            "Vooral voor de sier": {
-              "weekend_chaos": 1.081951257
-            }
-          },
-          "id": "r7q3"
+          "answers": [
+            "Vol dingen waarvan ik vergeten was dat ik ermee had ingestemd",
+            "Nuttig genoeg om rampen te voorkomen",
+            "Vooral voor de sier"
+          ]
         },
-        {
+        "r8q1": {
           "question": "Welk klein gelukje werkt altijd?",
-          "answers": {
-            "Frisse lucht en een prettige kleine boodschap": {
-              "centenarian_energy": 1.165081789
-            },
-            "Lachen tot het plan verandert": {
-              "weekend_chaos": 1.081951257
-            },
-            "Een rustig hoekje en iets troostends": {
-              "comfort_creature": 1.374612798
-            }
-          },
-          "id": "r8q1",
-          "presentation": "icons",
-          "icons": [
-            "🌿",
-            "😂",
-            "🛋️"
+          "answers": [
+            "Frisse lucht en een prettige kleine boodschap",
+            "Lachen tot het plan verandert",
+            "Een rustig hoekje en iets troostends"
           ]
         },
-        {
+        "r8q5": {
           "question": "Jouw ‘ik leef’-moment is meestal…",
-          "answers": {
-            "Een belachelijk verhaal dat zich ter plekke ontvouwt": {
-              "weekend_chaos": 1.081951257
-            },
-            "Beseffen dat ik nee kan zeggen en thuis kan blijven": {
-              "comfort_creature": 1.374612798
-            },
-            "Zonlicht, beweging en een helder hoofd": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "id": "r8q5",
-          "presentation": "icons",
-          "icons": [
-            "🎉",
-            "🏠",
-            "☀️"
+          "answers": [
+            "Een belachelijk verhaal dat zich ter plekke ontvouwt",
+            "Beseffen dat ik nee kan zeggen en thuis kan blijven",
+            "Zonlicht, beweging en een helder hoofd"
           ]
         },
-        {
+        "r9q5": {
           "question": "Jouw toekomstige ik zou je bedanken voor…",
-          "answers": {
-            "Eén onvergetelijke herinnering": {
-              "adventure_fuse": 0.846245013
-            },
-            "Een echte pauze voordat je instort": {
-              "reset_needed": 1.141570473
-            },
-            "Eén saai ding makkelijker maken": {
-              "balanced_realist": 0.959222869
-            }
-          },
-          "id": "r9q5"
+          "answers": [
+            "Eén onvergetelijke herinnering",
+            "Een echte pauze voordat je instort",
+            "Eén saai ding makkelijker maken"
+          ]
         },
-        {
-          "id": "r10q2",
+        "r10q2": {
           "question": "Vergeleken met vijf jaar geleden is mijn energie…",
-          "answers": {
-            "Beter": {
-              "centenarian_energy": 1.165081789
-            },
-            "Ongeveer hetzelfde": {
-              "steady_long_game": 0.789882145
-            },
-            "Lager": {
-              "reset_needed": 1.141570473
-            }
-          }
+          "answers": [
+            "Beter",
+            "Ongeveer hetzelfde",
+            "Lager"
+          ]
         },
-        {
-          "id": "r10q6",
+        "r10q6": {
           "question": "Hoe oud denk je te worden?",
-          "answers": {
-            "Tussen 70 en 79 jaar": {
-              "stress_sprinter": 1.157163826
-            },
-            "Tussen 80 en 89 jaar": {
-              "balanced_realist": 0.959222869
-            },
-            "Tussen 90 en 99 jaar": {
-              "steady_long_game": 0.789882145
-            },
-            "100 jaar of ouder": {
-              "centenarian_energy": 1.165081789
-            }
-          },
-          "calibration": [
-            -1,
-            -0.25,
-            0.5,
-            1
+          "answers": [
+            "Tussen 70 en 79 jaar",
+            "Tussen 80 en 89 jaar",
+            "Tussen 90 en 99 jaar",
+            "100 jaar of ouder"
           ]
         }
-      ]
+      }
     }
-  ],
-  "checkpoint": {
-    "nextPrefix": "VOLGENDE UITDAGING",
-    "adNote": "Eerst een korte advertentie, daarna ga je verder.",
-    "finalAdNote": "Eerst een korte advertentie, daarna zie je je schatting.",
-    "finalBadge": "JE SCHATTING STAAT KLAAR",
-    "finalIcon": "⚰️",
-    "finalTitle": "JE SCHATTING STAAT KLAAR",
-    "finalCopy": "Je voorspelling is voltooid.",
-    "finalButton": "Bekijk mijn schatting",
-    "finalChecklist": [
-      "40 antwoorden op levensstijl geanalyseerd",
-      "Levensstijlpatronen gecombineerd",
-      "Schatting berekend"
-    ],
-    "reveals": [
-      {
-        "badge": "DAGELIJKS RITME VOLTOOID",
-        "icon": "✓",
-        "title": "Je dagritme is vastgelegd",
-        "signal": "fixed",
-        "message": "Je dagelijkse gewoonten beginnen de schatting te vormen."
-      },
-      {
-        "badge": "VOEDING EN BEWEGING VOLTOOID",
-        "icon": "✓",
-        "title": "Je leefstijl wordt duidelijker",
-        "signal": "fixed",
-        "message": "Voeding en beweging tellen nu mee in de berekening."
-      },
-      {
-        "badge": "HERSTEL EN VEERKRACHT VOLTOOID",
-        "icon": "✓",
-        "title": "Herstelpatronen toegevoegd",
-        "signal": "fixed",
-        "message": "Slaap, stress en herstel hebben de voorspelling verfijnd."
-      },
-      {
-        "badge": "CONTACT EN KEUZES VOLTOOID",
-        "icon": "✓",
-        "title": "Je schatting is bijna klaar",
-        "signal": "fixed",
-        "message": "Er resteert nog één berekeningsfase."
-      },
-      {
-        "badge": "EINDVOORSPELLING VOLTOOID",
-        "icon": "⚰️",
-        "title": "JE SCHATTING STAAT KLAAR",
-        "signal": "fixed",
-        "message": "Je voorspelling is voltooid."
-      }
-    ]
-  },
-  "progressLabel": "voltooid",
-  "career": {
-    "hideJourneyLength": true,
-    "continuousShell": true,
-    "stageResultMode": "completion",
-    "showStageResults": false,
-    "showCurrentScore": false,
-    "showResultProgress": true,
-    "resultProgressLabel": "Voorspellingsroute",
-    "resultProgressComplete": "{value}% voltooid",
-    "currentScoreLabel": "LEEFSTIJLSIGNALEN",
-    "levelLabel": "RONDE",
-    "scoreSuffix": "signalen verzameld",
-    "journeyLabel": "VOORSPELLINGSROUTE",
-    "kitchensCleared": "{value} / {total} stappen voltooid",
-    "currentRank": "HUIDIGE VOORSPELLINGSSTATUS",
-    "ranks": [
-      {
-        "afterStage": 0,
-        "label": "Schatting gestart"
-      },
-      {
-        "afterStage": 5,
-        "label": "Schatting voltooid"
-      }
-    ],
-    "unlockEyebrow": "VOORSPELLINGSUPDATE",
-    "unlockTitle": "Een nieuw leefstijlsignaal staat klaar",
-    "unlockCopy": "De volgende voorspellingsfase staat voor je klaar.",
-    "finalEyebrow": "JOUW SCHATTING",
-    "finalCareerTitle": "JE SCHATTING STAAT KLAAR",
-    "strongestLabel": "Sterkste leefstijlsignaal",
-    "stages": [
-      {
-        "difficulty": "Basis",
-        "preAdBadge": "DAGELIJKS RITME VOLTOOID",
-        "preAdTitle": "Je dagritme is vastgelegd",
-        "preAdCopy": "Je dagelijkse gewoonten beginnen de schatting te vormen.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "DAGELIJKS RITME VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je dagritme is vastgelegd",
-            "insight": "Je dagelijkse gewoonten beginnen de schatting te vormen."
-          },
-          "medium": {
-            "title": "Je dagritme is vastgelegd",
-            "insight": "Je dagelijkse gewoonten beginnen de schatting te vormen."
-          },
-          "low": {
-            "title": "Je dagritme is vastgelegd",
-            "insight": "Je dagelijkse gewoonten beginnen de schatting te vormen."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · IN ONTWIKKELING",
-          "title": "Voeding en beweging",
-          "difficulty": "In ontwikkeling",
-          "tagline": "Voeding. Energie. Dagelijkse beweging.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "In ontwikkeling",
-        "preAdBadge": "VOEDING EN BEWEGING VOLTOOID",
-        "preAdTitle": "Je leefstijl wordt duidelijker",
-        "preAdCopy": "Voeding en beweging tellen nu mee in de berekening.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "VOEDING EN BEWEGING VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je leefstijl wordt duidelijker",
-            "insight": "Voeding en beweging tellen nu mee in de berekening."
-          },
-          "medium": {
-            "title": "Je leefstijl wordt duidelijker",
-            "insight": "Voeding en beweging tellen nu mee in de berekening."
-          },
-          "low": {
-            "title": "Je leefstijl wordt duidelijker",
-            "insight": "Voeding en beweging tellen nu mee in de berekening."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · GEVORDERD",
-          "title": "Herstel en veerkracht",
-          "difficulty": "Gevorderd",
-          "tagline": "Slaap. Stress. Herstel.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Gevorderd",
-        "preAdBadge": "HERSTEL EN VEERKRACHT VOLTOOID",
-        "preAdTitle": "Herstelpatronen toegevoegd",
-        "preAdCopy": "Slaap, stress en herstel hebben de voorspelling verfijnd.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "HERSTEL EN VEERKRACHT VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Herstelpatronen toegevoegd",
-            "insight": "Slaap, stress en herstel hebben de voorspelling verfijnd."
-          },
-          "medium": {
-            "title": "Herstelpatronen toegevoegd",
-            "insight": "Slaap, stress en herstel hebben de voorspelling verfijnd."
-          },
-          "low": {
-            "title": "Herstelpatronen toegevoegd",
-            "insight": "Slaap, stress en herstel hebben de voorspelling verfijnd."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · UITDAGEND",
-          "title": "Contact en keuzes",
-          "difficulty": "Uitdagend",
-          "tagline": "Contact. Plannen. Dagelijkse keuzes.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Uitdagend",
-        "preAdBadge": "CONTACT EN KEUZES VOLTOOID",
-        "preAdTitle": "Je schatting is bijna klaar",
-        "preAdCopy": "Er resteert nog één berekeningsfase.",
-        "preAdButton": "Verder",
-        "resultIcon": "✓",
-        "resultLabel": "CONTACT EN KEUZES VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "Je schatting is bijna klaar",
-            "insight": "Er resteert nog één berekeningsfase."
-          },
-          "medium": {
-            "title": "Je schatting is bijna klaar",
-            "insight": "Er resteert nog één berekeningsfase."
-          },
-          "low": {
-            "title": "Je schatting is bijna klaar",
-            "insight": "Er resteert nog één berekeningsfase."
-          }
-        },
-        "next": {
-          "eyebrow": "VOLGENDE UITDAGING · EINDTOETS",
-          "title": "Eindvoorspelling",
-          "difficulty": "Eindtoets",
-          "tagline": "Vooruitblik. Prioriteiten. Laatste ijking.",
-          "button": "Verder"
-        }
-      },
-      {
-        "difficulty": "Eindtoets",
-        "preAdBadge": "EINDVOORSPELLING VOLTOOID",
-        "preAdTitle": "JE SCHATTING STAAT KLAAR",
-        "preAdChecks": [
-          "40 antwoorden op levensstijl geanalyseerd",
-          "Levensstijlpatronen gecombineerd",
-          "Schatting berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaat",
-        "resultIcon": "⚰️",
-        "resultLabel": "EINDVOORSPELLING VOLTOOID",
-        "resultBands": {
-          "high": {
-            "title": "JE SCHATTING STAAT KLAAR",
-            "insight": "Je voorspelling is voltooid."
-          },
-          "medium": {
-            "title": "JE SCHATTING STAAT KLAAR",
-            "insight": "Je voorspelling is voltooid."
-          },
-          "low": {
-            "title": "JE SCHATTING STAAT KLAAR",
-            "insight": "Je voorspelling is voltooid."
-          }
-        },
-        "preAdCopy": "Je voorspelling is voltooid."
-      }
-    ]
   }
 }
