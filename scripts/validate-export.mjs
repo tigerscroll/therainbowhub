@@ -44,7 +44,9 @@ if (!fs.existsSync(outputRoot)) {
     .sort();
 
   for (const slug of slugs) {
-    for (const locale of locales) {
+    const localizedLocales = locales.filter((locale) => locale === "en"
+      || fs.existsSync(path.join(quizRoot, slug, `${locale}.json`)));
+    for (const locale of localizedLocales) {
       const route = locale === "en" ? `/${slug}` : `/${locale}/${slug}`;
       const file = routeFile(route);
       if (!file) {
@@ -95,4 +97,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Static export validation passed for ${locales.length} locales and every active quiz.`);
+console.log("Static export validation passed for every supported quiz-locale route.");

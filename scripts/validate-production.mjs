@@ -6,6 +6,11 @@ import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
 const rootDir = process.cwd();
 const errors = [];
+const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
+
+if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
+  errors.push("The shared landing page must not render a quiz eyebrow above its title.");
+}
 
 function addError(message) {
   errors.push(message);

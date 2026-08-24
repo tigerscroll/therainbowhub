@@ -620,7 +620,6 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
       <section className="quiz-engine__landing">
         <div className="quiz-engine__landing-copy">
           <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{quiz.cardIcon}</span></div>
-          <span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>
           <h1>{quiz.title}</h1>
           <p className="quiz-engine__quick-start">{quiz.landing.quickStartText}</p>
           <SocialProof

@@ -370,6 +370,64 @@ for (const folder of folders) {
     fail(!allCopy.includes("Takeaway, laughter and talking it out"), "marry: worldwide-English copy must use Comfort food, not Takeaway.");
     fail(!/you will marry|is destined to|we identified (?:a )?real person|guarantees (?:a )?future/i.test(allCopy), "marry: copy must not imply certainty, destiny or real-person identification.");
   }
+  if (folder.name === "firefighter") {
+    const firefighterCategories = ["fire_smoke_science", "scene_hazard_awareness", "equipment_mechanical_reasoning", "numeracy_spatial_awareness", "communication_incident_judgement"];
+    const expectedCategoryMatrix = [
+      { fire_smoke_science: 2, scene_hazard_awareness: 2, equipment_mechanical_reasoning: 1, numeracy_spatial_awareness: 2, communication_incident_judgement: 1 },
+      { fire_smoke_science: 2, scene_hazard_awareness: 1, equipment_mechanical_reasoning: 2, numeracy_spatial_awareness: 1, communication_incident_judgement: 2 },
+      { fire_smoke_science: 1, scene_hazard_awareness: 2, equipment_mechanical_reasoning: 2, numeracy_spatial_awareness: 2, communication_incident_judgement: 1 },
+      { fire_smoke_science: 1, scene_hazard_awareness: 2, equipment_mechanical_reasoning: 1, numeracy_spatial_awareness: 2, communication_incident_judgement: 2 },
+      { fire_smoke_science: 2, scene_hazard_awareness: 1, equipment_mechanical_reasoning: 2, numeracy_spatial_awareness: 1, communication_incident_judgement: 2 },
+    ];
+    const actualCategoryMatrix = source.stages.map((stage) => Object.fromEntries(firefighterCategories.map((category) => [
+      category,
+      stage.questions.filter((question) => question.category === category).length,
+    ])));
+    const expectedCheckpointTitles = [
+      "First exam section complete",
+      "Second exam section complete",
+      "More than halfway through",
+      "Final assessment next",
+      "FIREFIGHTER ENTRANCE EXAM COMPLETE",
+    ];
+    const expectedCheckpointCopy = [
+      "Good start. The next section adds changing fire and smoke clues.",
+      "The next section tests tools, forces and practical reasoning.",
+      "The advanced incident section is next.",
+      "Only the integrated Final Alarm remains.",
+      "Your result is ready to reveal.",
+    ];
+    const expectedProfiles = [
+      "The Entrance Exam Standout",
+      "The Sharp Incident Thinker",
+      "The Calm Incident Solver",
+      "The Steady Crew Candidate",
+      "The Promising Recruit",
+      "The First-Alarm Explorer",
+    ];
+    const forbiddenOperationalCopy = /forced entry|force entry|ventilat(?:e|ion)|breathing apparatus|ladder position|structural entry|fire attack/i;
+    const questionsById = Object.fromEntries(sourceQuestions.map((question) => [question.id, question]));
+    const firefighterThemeCss = fs.readFileSync(path.join(directory, "theme.css"), "utf8");
+    const firefighterLandingBlocks = [...firefighterThemeCss.matchAll(/\[data-quiz-theme="firefighter"\] \.quiz-engine__landing\s*\{([^}]*)\}/g)]
+      .map((match) => match[1]);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.scoring === "correct-answer", "firefighter: must use correct-answer scoring and an 80% target.");
+    fail(source.title === "Only 11% Can Pass This Firefighter Entrance Exam", "firefighter/en.json: title changed.");
+    fail(source.landing?.cta === "Start Test" && config.listing?.socialProofCount === 268000, "firefighter: landing CTA and social proof must match the approved launch copy.");
+    fail(JSON.stringify(actualCategoryMatrix) === JSON.stringify(expectedCategoryMatrix), "firefighter/en.json: the five-stage primary-category matrix changed.");
+    fail(JSON.stringify(source.career?.stages?.map((stage) => stage.preAdTitle)) === JSON.stringify(expectedCheckpointTitles), "firefighter/en.json: entrance-exam checkpoint titles changed.");
+    fail(JSON.stringify(source.career?.stages?.map((stage) => stage.preAdCopy)) === JSON.stringify(expectedCheckpointCopy), "firefighter/en.json: entrance-exam checkpoint momentum copy changed.");
+    fail(JSON.stringify(source.career?.stages?.[4]?.preAdChecks) === JSON.stringify(["40 answers checked", "Five entrance areas compared", "Final score calculated"]), "firefighter/en.json: final result checklist changed.");
+    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.title)) === JSON.stringify(expectedProfiles), "firefighter/en.json: candidate profile names changed.");
+    fail(source.stages[4].questions.every((question) => question.reasoningSteps === 2 && /synthesis/.test(question.interactionStyle ?? "")), "firefighter/en.json: every Final Alarm question must declare two-step synthesis reasoning.");
+    fail(source.stages.every((stage) => new Set(stage.questions.map((question) => question.interactionStyle)).size >= 3), "firefighter/en.json: every exam stage must contain at least three reasoning styles.");
+    fail(source.stages.every((stage) => stage.questions.every((question, index, questions) => index < 2 || question.interactionStyle !== questions[index - 1].interactionStyle || question.interactionStyle !== questions[index - 2].interactionStyle)), "firefighter/en.json: one interaction style cannot appear three times consecutively.");
+    fail(!forbiddenOperationalCopy.test(sourceQuestions.map((question) => `${question.question} ${question.answers.join(" ")}`).join(" ")), "firefighter/en.json: operational firefighting instruction is outside the quiz scope.");
+    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: final answer review must remain free.");
+    fail(questionsById["firefighter-s3q6"]?.question === "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?", "firefighter/en.json: the radiation question must remain unambiguous.");
+    fail(JSON.stringify(questionsById["firefighter-s5q7"]?.visual?.items) === JSON.stringify(["METAL FRAME::Heat travels along it", "SHIELDED GAP::Nearby object warms without contact or moving hot air"]), "firefighter/en.json: the final heat-transfer visual must exclude moving hot air.");
+    fail(questionsById["firefighter-s3q2"]?.answers?.[1] === "60 metres" && questionsById["firefighter-s4q3"]?.answers?.[1] === "40 metres" && questionsById["firefighter-s4q8"]?.answers?.[0] === "6" && questionsById["firefighter-s5q6"]?.answers?.[3] === "12", "firefighter/en.json: approved hard numeracy answers changed.");
+    fail(firefighterLandingBlocks.length > 0 && firefighterLandingBlocks.every((block) => !/(?:^|;)\s*(?:grid-template-columns|width|padding(?:-[a-z]+)?)\s*:/m.test(block)), "firefighter/theme.css: shared landing grid, width and padding must not be overridden.");
+  }
   const entranceExamLabels = {
     oxford: "OXFORD",
     cambridge: "CAMBRIDGE",
