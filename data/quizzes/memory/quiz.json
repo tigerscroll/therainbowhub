@@ -43,7 +43,7 @@
     },
     "shape": {
       "cardRadius": "4px",
-      "buttonRadius": "4px"
+      "buttonRadius": "30px"
     },
     "effects": {
       "shadow": "dramatic",
@@ -59,81 +59,23 @@
       "icon": "🧠"
     }
   },
-  "template": "five-stage-rewarded-v1",
+  "template": "single-stage-rewarded-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "foundation",
+        "difficultyLevel": "final",
         "questionIds": [
           "memory-r1q1",
           "memory-r1q2",
           "memory-r1q3",
-          "memory-r1q4",
           "memory-r1q5",
-          "memory-r1q6",
           "memory-r1q7",
-          "memory-r1q8"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-2",
-        "difficultyLevel": "developing",
-        "questionIds": [
           "memory-r2q1",
-          "memory-r2q2",
-          "memory-r2q3",
           "memory-r2q4",
-          "memory-r2q5",
-          "memory-r2q6",
-          "memory-r2q7",
-          "memory-r2q8"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-3",
-        "difficultyLevel": "skilled",
-        "questionIds": [
-          "memory-r3q1",
-          "memory-r3q2",
-          "memory-r3q3",
-          "memory-r3q4",
-          "memory-r3q5",
-          "memory-r3q6",
-          "memory-r3q7",
-          "memory-r3q8"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-4",
-        "difficultyLevel": "advanced",
-        "questionIds": [
-          "memory-r4q1",
-          "memory-r4q2",
-          "memory-r4q3",
-          "memory-r4q4",
-          "memory-r4q5",
-          "memory-r4q6",
-          "memory-r4q7",
-          "memory-r4q8"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-5",
-        "difficultyLevel": "final",
-        "questionIds": [
+          "memory-r2q3",
           "memory-r5q1",
-          "memory-r5q2",
-          "memory-r5q3",
-          "memory-r5q4",
-          "memory-r5q5",
-          "memory-r5q6",
-          "memory-r5q7",
-          "memory-r5q8"
+          "memory-r5q6"
         ]
       }
     ],
@@ -165,29 +107,14 @@
         "category": "numbers",
         "choiceCount": 4
       },
-      "memory-r1q4": {
-        "correct": 2,
-        "category": "association",
-        "choiceCount": 4
-      },
       "memory-r1q5": {
-        "correct": 0,
+        "correct": 2,
         "category": "attention",
-        "choiceCount": 4
-      },
-      "memory-r1q6": {
-        "correct": 3,
-        "category": "word_recall",
         "choiceCount": 4
       },
       "memory-r1q7": {
         "correct": 1,
         "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r1q8": {
-        "correct": 2,
-        "category": "word_recall",
         "choiceCount": 4
       },
       "memory-r2q1": {
@@ -207,13 +134,13 @@
         "category": "visual",
         "choiceCount": 4
       },
-      "memory-r2q2": {
+      "memory-r2q4": {
         "study": {
-          "durationMs": 5000,
+          "durationMs": 5500,
           "mode": "automatic"
         },
         "correct": 0,
-        "category": "visual",
+        "category": "association",
         "choiceCount": 4
       },
       "memory-r2q3": {
@@ -221,213 +148,12 @@
         "category": "attention",
         "choiceCount": 4
       },
-      "memory-r2q4": {
-        "study": {
-          "durationMs": 5500,
-          "mode": "automatic"
-        },
-        "correct": 1,
-        "category": "association",
-        "choiceCount": 4
-      },
-      "memory-r2q5": {
-        "presentation": "icons",
-        "icons": [
-          "🔔",
-          "🧁",
-          "🧤",
-          "📷"
-        ],
-        "correct": 3,
-        "category": "visual",
-        "choiceCount": 4
-      },
-      "memory-r2q6": {
-        "correct": 1,
-        "category": "association",
-        "choiceCount": 4
-      },
-      "memory-r2q7": {
-        "correct": 0,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r2q8": {
-        "correct": 2,
-        "category": "attention",
-        "choiceCount": 4
-      },
-      "memory-r3q1": {
-        "study": {
-          "durationMs": 3000,
-          "mode": "automatic"
-        },
-        "correct": 3,
-        "category": "numbers",
-        "choiceCount": 4
-      },
-      "memory-r3q2": {
-        "correct": 1,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r3q3": {
-        "correct": 2,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r3q4": {
-        "study": {
-          "durationMs": 4500,
-          "mode": "automatic"
-        },
-        "correct": 0,
-        "category": "numbers",
-        "choiceCount": 4
-      },
-      "memory-r3q5": {
-        "study": {
-          "durationMs": 4000,
-          "mode": "automatic"
-        },
-        "correct": 1,
-        "category": "numbers",
-        "choiceCount": 4
-      },
-      "memory-r3q6": {
-        "correct": 2,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r3q7": {
-        "correct": 0,
-        "category": "numbers",
-        "choiceCount": 4
-      },
-      "memory-r3q8": {
-        "correct": 3,
-        "category": "attention",
-        "choiceCount": 4
-      },
-      "memory-r4q1": {
-        "study": {
-          "durationMs": 4500,
-          "mode": "automatic"
-        },
-        "correct": 0,
-        "category": "word_recall",
-        "choiceCount": 4
-      },
-      "memory-r4q2": {
-        "presentation": "icons",
-        "icons": [
-          "🔔",
-          "🧩",
-          "⚓",
-          "🧲"
-        ],
-        "study": {
-          "presentation": "icons",
-          "durationMs": 4500,
-          "mode": "automatic"
-        },
-        "correct": 2,
-        "category": "visual",
-        "choiceCount": 4
-      },
-      "memory-r4q3": {
-        "correct": 1,
-        "category": "attention",
-        "choiceCount": 4
-      },
-      "memory-r4q4": {
-        "study": {
-          "durationMs": 5500,
-          "mode": "automatic"
-        },
-        "correct": 3,
-        "category": "association",
-        "choiceCount": 4
-      },
-      "memory-r4q5": {
-        "correct": 2,
-        "category": "word_recall",
-        "choiceCount": 4
-      },
-      "memory-r4q6": {
-        "correct": 0,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r4q7": {
-        "presentation": "icons",
-        "icons": [
-          "🔔",
-          "🕯️",
-          "🧲",
-          "🪜"
-        ],
-        "correct": 3,
-        "category": "visual",
-        "choiceCount": 4
-      },
-      "memory-r4q8": {
-        "correct": 1,
-        "category": "association",
-        "choiceCount": 4
-      },
       "memory-r5q1": {
         "correct": 1,
         "category": "word_recall",
         "choiceCount": 4
       },
-      "memory-r5q2": {
-        "correct": 3,
-        "category": "numbers",
-        "choiceCount": 4
-      },
-      "memory-r5q3": {
-        "presentation": "icons",
-        "icons": [
-          "🔔",
-          "🧭",
-          "🎲",
-          "🍓"
-        ],
-        "study": {
-          "presentation": "icons",
-          "durationMs": 5500,
-          "mode": "automatic"
-        },
-        "correct": 0,
-        "category": "visual",
-        "choiceCount": 4
-      },
-      "memory-r5q4": {
-        "correct": 2,
-        "category": "working_memory",
-        "choiceCount": 4
-      },
-      "memory-r5q5": {
-        "study": {
-          "durationMs": 5500,
-          "mode": "automatic"
-        },
-        "correct": 3,
-        "category": "numbers",
-        "choiceCount": 4
-      },
       "memory-r5q6": {
-        "correct": 1,
-        "category": "attention",
-        "choiceCount": 4
-      },
-      "memory-r5q7": {
-        "correct": 2,
-        "category": "word_recall",
-        "choiceCount": 4
-      },
-      "memory-r5q8": {
         "correct": 0,
         "category": "association",
         "choiceCount": 4
@@ -467,42 +193,27 @@
         {
           "key": "dimension-1",
           "categories": [
-            "word_recall"
+            "word_recall",
+            "association"
           ]
         },
         {
           "key": "dimension-2",
           "categories": [
-            "visual"
+            "visual",
+            "attention"
           ]
         },
         {
           "key": "dimension-3",
           "categories": [
-            "numbers"
-          ]
-        },
-        {
-          "key": "dimension-4",
-          "categories": [
+            "numbers",
             "working_memory"
-          ]
-        },
-        {
-          "key": "dimension-5",
-          "categories": [
-            "association"
-          ]
-        },
-        {
-          "key": "dimension-6",
-          "categories": [
-            "attention"
           ]
         }
       ],
       "score": {
-        "showBestRound": true
+        "showBestRound": false
       }
     }
   }

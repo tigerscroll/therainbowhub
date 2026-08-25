@@ -6,7 +6,7 @@ const publicEnv = {
 
 const rewardedStartInstructionMode = process.env.LANDER
   ?? process.env.NEXT_PUBLIC_LANDER
-  ?? "on";
+  ?? "off";
 
 function getPublicEnv(name: keyof typeof publicEnv, fallback: string) {
   return publicEnv[name] || fallback;

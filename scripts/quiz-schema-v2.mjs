@@ -29,6 +29,7 @@ export function expandQuizLocale(manifest, text, locale) {
             alt: copy.image?.alt,
           } : undefined,
           question: copy.question,
+          headerLabel: copy.headerLabel,
           presentation: logic.presentation,
           answers,
           trapdoorErrors: copy.trapdoorErrors,

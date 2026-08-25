@@ -175,14 +175,14 @@ const requiredContinuousShellContract = [
   "href={shellCssHref}",
   "data-quiz-shell-contract",
   "quiz-shell-contract.${",
-  "--quiz-flow-width: 800px;",
+  "--quiz-flow-width: var(--quiz-shell-container-width);",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
   "--quiz-shell-action-width: 520px;",
   "--quiz-shell-action-height: 56px;",
   "--quiz-shell-proof-width: 416px;",
   "width: min(100%, var(--quiz-shell-action-width)) !important;",
   "min-height: var(--quiz-shell-action-height) !important;",
-  "border-radius: 30px !important;",
+  "border-radius: var(--quiz-button-radius) !important;",
   "width: calc(100vw - 16px) !important;",
   "quiz-engine__primary-arrow",
   "quiz-engine__landing--start-instruction",
@@ -235,6 +235,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
   const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
+  const isSingleStageTemplate = quizConfig.template === "single-stage-rewarded-v1";
+  const expectedStageCount = isSingleStageTemplate ? 1 : 5;
+  const expectedQuestionsPerStage = isSingleStageTemplate ? 10 : 8;
   if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {
     addError(`Quiz manifest must use its shared stable social-proof count: data/quizzes/${entry.name}/quiz.json`);
   }
@@ -244,25 +247,25 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (quizConfig.theme?.artwork?.landing !== undefined) {
     addError(`Landing artwork panels are not supported by the shared template: data/quizzes/${entry.name}/quiz.json`);
   }
-  if (quizConfig.template !== "five-stage-rewarded-v1") {
-    addError(`Quiz manifest must declare the shared five-stage-rewarded-v1 template: data/quizzes/${entry.name}/quiz.json`);
+  if (!["five-stage-rewarded-v1", "single-stage-rewarded-v1"].includes(quizConfig.template)) {
+    addError(`Quiz manifest must declare an approved shared rewarded template: data/quizzes/${entry.name}/quiz.json`);
   }
   if (!["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"].every((key) => quizConfig.engine?.[key] === undefined)) {
     addError(`Shared engine settings cannot be overridden by an individual manifest: data/quizzes/${entry.name}/quiz.json`);
   }
   if (fs.existsSync(englishContentPath)) {
     const englishContent = expandQuizLocale(quizConfig, JSON.parse(fs.readFileSync(englishContentPath, "utf8")), "en");
-    if (englishContent.stages?.length !== 5 || englishContent.stages.some((stage) => stage.questions?.length !== 8)) {
-      addError(`Every quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/en.json`);
+    if (englishContent.stages?.length !== expectedStageCount || englishContent.stages.some((stage) => stage.questions?.length !== expectedQuestionsPerStage)) {
+      addError(`Quiz content must match ${quizConfig.template}: data/quizzes/${entry.name}/en.json`);
     }
     const obsoleteCareerKeys = ["hideJourneyLength", "continuousShell", "showStageResults", "stageResultMode", "showCurrentScore", "showResultProgress", "compactGate"];
     if (!englishContent.career || obsoleteCareerKeys.some((key) => englishContent.career[key] !== undefined)) {
       addError(`Shared shell behavior must not be duplicated in locale content: data/quizzes/${entry.name}/en.json`);
     }
-    if (!englishContent.career?.stages?.slice(0, 4).every((stage) => stage.preAdButton === undefined && stage.preAdChecks === undefined && stage.next?.button === undefined)) {
+    if (!englishContent.career?.stages?.slice(0, -1).every((stage) => stage.preAdButton === undefined && stage.preAdChecks === undefined && stage.next?.button === undefined)) {
       addError(`Every quiz must use the shared intermediate Continue checkpoint: data/quizzes/${entry.name}/en.json`);
     }
-    if (englishContent.career?.stages?.[4]?.preAdChecks?.length !== 3) {
+    if (englishContent.career?.stages?.at(-1)?.preAdChecks?.length !== 3) {
       addError(`Every quiz must reserve its three-row result checklist for the final checkpoint: data/quizzes/${entry.name}/en.json`);
     }
     if (englishContent.stages?.flatMap((stage) => stage.questions ?? []).some((question) => question.explanation !== undefined)) {

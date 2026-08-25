@@ -696,6 +696,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
 
   if (screen === "checkpoint") {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
+    const isSingleStage = quiz.stages.length === 1;
     const checkpoint = quiz.checkpoint!;
     const career = quiz.career!;
     const careerStage = career.stages[completedStage];
@@ -705,6 +706,9 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     const checkpointVariantAssets = quiz.theme.artwork?.checkpointVariants;
+    const checkpointAdNote = isFinalStage
+      ? checkpoint.finalAdNote ?? translations.ad.continueNote
+      : translations.ad.continueNote;
     const checkpointVariant = checkpointVariantAssets
       ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
       : undefined;
@@ -712,7 +716,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
       ?? quiz.theme.artwork?.checkpoints?.[completedStage];
     return (
       <>
-      <section className="quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career" data-round={completedStage + 1}>
+      <section className={`quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career${isSingleStage ? " quiz-engine__checkpoint--single-stage" : ""}`} data-round={completedStage + 1}>
         <span className="quiz-engine__eyebrow">{careerStage.preAdBadge}</span>
         {checkpointArtwork ? (
           <div className="quiz-engine__checkpoint-artwork" aria-hidden="true">
@@ -728,19 +732,24 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
         ) : null}
-        <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%` } as CSSProperties}>
-          <div>
-            <span>{career.resultProgressLabel ?? "Challenge progress"}</span>
-            <strong>{(career.resultProgressComplete ?? "{value}% complete").replace("{value}", String(checkpointPercent))}</strong>
-          </div>
-          <i aria-hidden="true"><b /></i>
-        </section>
+        {!isSingleStage ? (
+          <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%` } as CSSProperties}>
+            <div>
+              <span>{career.resultProgressLabel ?? "Challenge progress"}</span>
+              <strong>{(career.resultProgressComplete ?? "{value}% complete").replace("{value}", String(checkpointPercent))}</strong>
+            </div>
+            <i aria-hidden="true"><b /></i>
+          </section>
+        ) : null}
         {!isFinalStage && careerStage.next ? (
           <div className="quiz-engine__checkpoint-next quiz-engine__checkpoint-next--career">
             <span>{careerStage.next.eyebrow}</span>
             <strong>{careerStage.next.title}</strong>
             <small>{careerStage.next.tagline}</small>
           </div>
+        ) : null}
+        {quiz.engine.rewarded.stages && checkpoint && isSingleStage ? (
+          <p className="quiz-engine__checkpoint-ad-note quiz-engine__checkpoint-ad-note--before-action">{checkpointAdNote}</p>
         ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
@@ -753,7 +762,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             </span>
           ) : null}
         </button>
-        {quiz.engine.rewarded.stages && checkpoint ? <p className="quiz-engine__checkpoint-ad-note">{isFinalStage ? checkpoint.finalAdNote ?? translations.ad.continueNote : translations.ad.continueNote}</p> : null}
+        {quiz.engine.rewarded.stages && checkpoint && !isSingleStage ? <p className="quiz-engine__checkpoint-ad-note">{checkpointAdNote}</p> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -1026,7 +1035,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
         <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
-        <strong>{quiz.stages[currentStage]}</strong>
+        <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
       </div>
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
         <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
