@@ -85,10 +85,12 @@ export function mountDisplayAd({
 
     googletag.setConfig?.({ adExpansion: { enabled: true } });
     const allSizes = sizes.map(([width, height]) => [width, height]);
-    const phoneSizes = allSizes.filter(([width]) => width <= 320);
+    const compactPhoneSizes = allSizes.filter(([width]) => width <= 300);
+    const phoneSizes = allSizes.filter(([width]) => width <= 336);
     const tabletSizes = allSizes.filter(([width]) => width <= 728);
     const mapping = googletag.sizeMapping?.()
-      .addSize([0, 0], phoneSizes.length ? phoneSizes : allSizes)
+      .addSize([0, 0], compactPhoneSizes.length ? compactPhoneSizes : allSizes)
+      .addSize([336, 0], phoneSizes.length ? phoneSizes : allSizes)
       .addSize([480, 0], tabletSizes.length ? tabletSizes : allSizes)
       .addSize([900, 0], allSizes)
       .build();

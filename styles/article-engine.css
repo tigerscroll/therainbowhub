@@ -154,7 +154,7 @@
   position: relative;
   left: 50%;
   display: grid;
-  width: min(100vw, var(--quiz-shell-container-width));
+  width: 100vw;
   max-width: none;
   height: auto;
   place-items: center;
@@ -163,7 +163,14 @@
 }
 
 .article-engine__ad[data-ad-filled] > div {
-  min-width: 300px;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+.article-engine__ad[data-ad-filled] > div > div,
+.article-engine__ad[data-ad-filled] iframe {
+  margin-inline: auto !important;
 }
 
 .article-engine__ad[data-ad-empty] { display: none; }
