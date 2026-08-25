@@ -748,9 +748,6 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        {quiz.engine.rewarded.stages && checkpoint && isSingleStage ? (
-          <p className="quiz-engine__checkpoint-ad-note quiz-engine__checkpoint-ad-note--before-action">{checkpointAdNote}</p>
-        ) : null}
         <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
@@ -762,7 +759,9 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             </span>
           ) : null}
         </button>
-        {quiz.engine.rewarded.stages && checkpoint && !isSingleStage ? <p className="quiz-engine__checkpoint-ad-note">{checkpointAdNote}</p> : null}
+        {quiz.engine.rewarded.stages && checkpoint ? (
+          <p className="quiz-engine__checkpoint-ad-note"><span aria-hidden="true">✓</span>{checkpointAdNote}</p>
+        ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
