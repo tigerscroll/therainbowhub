@@ -328,9 +328,11 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
   const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [showStartPrompt, setShowStartPrompt] = useState(false);
+  const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
+  const landingShellRef = useRef<HTMLElement | null>(null);
   const preloadedArtwork = useRef(new Set<string>());
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -566,6 +568,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
 
   function startQuiz() {
     if (quiz.engine.rewarded.start && startInstructionEnabled) {
+      setStartPromptMinHeight(landingShellRef.current?.getBoundingClientRect().height ?? null);
       setShowStartPrompt(true);
       scrollToTop();
     }
@@ -614,6 +617,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     setStudiedQuestions([]);
     setRewardClosedSent(false);
     setReviewUnlocked(false);
+    setStartPromptMinHeight(null);
     setShowStartPrompt(false);
     setScreen(quiz.engine.startOnLoad ? "question" : "landing");
     scrollToTop();
@@ -623,7 +627,11 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     if (showStartPrompt && startInstructionEnabled && quiz.engine.rewarded.start) {
       return (
         <>
-        <section className="quiz-engine__landing quiz-engine__landing--start-instruction" data-start-instruction="true">
+        <section
+          className="quiz-engine__landing quiz-engine__landing--start-instruction"
+          data-start-instruction="true"
+          style={startPromptMinHeight ? { minHeight: `${startPromptMinHeight}px` } : undefined}
+        >
           <div aria-live="polite" className="quiz-engine__start-instruction">
             <div aria-hidden="true" className="quiz-engine__landing-badge quiz-engine__start-instruction-icon"><span>✓</span></div>
             <h1>{translations.ad.readyTitle}</h1>
@@ -647,7 +655,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     }
     return (
       <>
-      <section className="quiz-engine__landing">
+      <section className="quiz-engine__landing" ref={landingShellRef}>
         <div className="quiz-engine__landing-copy">
           <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{quiz.cardIcon}</span></div>
           <h1>{quiz.title}</h1>
