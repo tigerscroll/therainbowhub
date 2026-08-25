@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { mountDisplayAd, requestRewardedAd } from "@/components/quiz/rewardedAds";
 import { siteConfig } from "@/lib/siteConfig";
@@ -132,28 +132,29 @@ function ArticleDisplayAd({ page, position }: { page: number; position: number }
 }
 
 function ArticlePointList({ page, points }: { page: number; points: ArticlePoint[] }) {
+  function renderPoints(items: ArticlePoint[], offset: number) {
+    return (
+      <div className="article-engine__points">
+        {items.map((point, index) => (
+          <section className="article-engine__point" key={point.title}>
+            <span aria-hidden="true" className="article-engine__number">{offset + index + 1}</span>
+            <div>
+              <h2>{point.title}</h2>
+              {point.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </section>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <>
       <ArticleDisplayAd page={page} position={1} />
-      <div className="article-engine__points">
-        {points.map((point, index) => {
-          const itemNumber = index + 1;
-          const adPosition = itemNumber === 5 ? 2 : itemNumber === 10 ? 3 : null;
-
-          return (
-            <Fragment key={point.title}>
-              <section className="article-engine__point">
-                <span aria-hidden="true" className="article-engine__number">{itemNumber}</span>
-                <div>
-                  <h2>{point.title}</h2>
-                  {point.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                </div>
-              </section>
-              {adPosition ? <ArticleDisplayAd page={page} position={adPosition} /> : null}
-            </Fragment>
-          );
-        })}
-      </div>
+      {renderPoints(points.slice(0, 5), 0)}
+      <ArticleDisplayAd page={page} position={2} />
+      {renderPoints(points.slice(5, 10), 5)}
+      <ArticleDisplayAd page={page} position={3} />
     </>
   );
 }

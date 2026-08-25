@@ -106,6 +106,8 @@
 
 .article-engine__points {
   display: grid;
+  width: 100%;
+  min-width: 0;
   max-width: 710px;
   margin: 0 auto;
   padding: 0;
@@ -113,11 +115,15 @@
 
 .article-engine__point {
   display: grid;
+  width: 100%;
+  min-width: 0;
   grid-template-columns: 30px minmax(0, 1fr);
   gap: 12px;
   padding: 24px 0;
   border-top: 1px solid color-mix(in srgb, var(--quiz-border) 52%, transparent);
 }
+
+.article-engine__point > div { min-width: 0; }
 
 .article-engine__point:first-child { border-top: 0; }
 
