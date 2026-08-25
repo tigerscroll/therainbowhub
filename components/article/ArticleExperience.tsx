@@ -15,14 +15,32 @@ export type ArticleSource = {
   url: string;
 };
 
+export type ArticleSection = {
+  intro: string;
+  next?: {
+    copy: string;
+    cta: string;
+    eyebrow: string;
+    title: string;
+  };
+  points: ArticlePoint[];
+  title: string;
+};
+
 type ArticleExperienceProps = {
+  adElementPrefix?: string;
+  adNote?: string;
   articleTitle: string;
   avatars: string[];
   ctaLabel: string;
+  disclaimer?: string;
   icon: string;
   intro: string;
   landingTitle: string;
   points: ArticlePoint[];
+  sections?: ArticleSection[];
+  socialProofCount?: string;
+  socialProofLabel?: string;
   sources: ArticleSource[];
 };
 
@@ -112,8 +130,8 @@ const checkPoints: ArticlePoint[] = [
   },
 ];
 
-function ArticleDisplayAd({ page, position }: { page: number; position: number }) {
-  const elementId = `prostate-article-${page}-ad-${position}`;
+function ArticleDisplayAd({ prefix, page, position }: { prefix: string; page: number; position: number }) {
+  const elementId = `${prefix}-article-${page}-ad-${position}`;
 
   useEffect(() => {
     const controller = mountDisplayAd({
@@ -131,7 +149,7 @@ function ArticleDisplayAd({ page, position }: { page: number; position: number }
   );
 }
 
-function ArticlePointList({ page, points }: { page: number; points: ArticlePoint[] }) {
+function ArticlePointList({ prefix, page, points }: { prefix: string; page: number; points: ArticlePoint[] }) {
   function renderPoints(items: ArticlePoint[], offset: number) {
     return (
       <div className="article-engine__points">
@@ -150,23 +168,29 @@ function ArticlePointList({ page, points }: { page: number; points: ArticlePoint
 
   return (
     <>
-      <ArticleDisplayAd page={page} position={1} />
+      <ArticleDisplayAd page={page} position={1} prefix={prefix} />
       {renderPoints(points.slice(0, 5), 0)}
-      <ArticleDisplayAd page={page} position={2} />
+      <ArticleDisplayAd page={page} position={2} prefix={prefix} />
       {renderPoints(points.slice(5, 10), 5)}
-      <ArticleDisplayAd page={page} position={3} />
+      <ArticleDisplayAd page={page} position={3} prefix={prefix} />
     </>
   );
 }
 
 export function ArticleExperience({
+  adElementPrefix = "prostate",
+  adNote = "One short ad, then see the warning signs.",
   articleTitle,
   avatars,
   ctaLabel,
+  disclaimer = "General information only. This article is not a diagnosis, medical assessment or substitute for advice from a qualified healthcare professional.",
   icon,
   intro,
   landingTitle,
   points,
+  sections,
+  socialProofCount = "125,000+",
+  socialProofLabel = "read this today",
   sources,
 }: ArticleExperienceProps) {
   const adRequestActive = useRef(false);
@@ -174,6 +198,36 @@ export function ArticleExperience({
   const [adBusy, setAdBusy] = useState(false);
   const [started, setStarted] = useState(false);
   const [unlockedSection, setUnlockedSection] = useState(1);
+
+  const resolvedSections: ArticleSection[] = sections ?? [
+    {
+      title: articleTitle,
+      intro: "Early prostate cancer often causes no symptoms. When changes do appear, they can overlap with common non-cancerous conditions, so symptoms alone cannot tell you the cause.",
+      points,
+      next: {
+        eyebrow: "Next section",
+        title: "Could you be at higher risk?",
+        copy: "See the established factors linked with a higher chance of prostate cancer.",
+        cta: "See Risk Factors",
+      },
+    },
+    {
+      title: "Prostate Cancer Risk Factors",
+      intro: "Some risk factors are well established, but none can predict an individual diagnosis. Here are the factors a healthcare professional may consider.",
+      points: riskPoints,
+      next: {
+        eyebrow: "Final section",
+        title: "What happens next?",
+        copy: "See how prostate symptoms and test results may be checked.",
+        cta: "See How A Check Works",
+      },
+    },
+    {
+      title: "What Happens at a Prostate Check?",
+      intro: "There is no single test that answers every question. A prostate assessment usually combines symptoms, history and test results before deciding what should happen next.",
+      points: checkPoints,
+    },
+  ];
 
   useEffect(() => () => adRequestController.current?.abort(), []);
 
@@ -229,72 +283,50 @@ export function ArticleExperience({
                 <span key={index} style={{ backgroundImage: `url(${avatar})` }} />
               ))}
             </div>
-            <div className="quiz-engine__social-text"><strong>125,000+</strong><span> read this today</span></div>
+            <div className="quiz-engine__social-text"><strong>{socialProofCount}</strong><span> {socialProofLabel}</span></div>
           </div>
           <button className="quiz-engine__primary" disabled={adBusy} onClick={showArticle} type="button">
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? "Loading ad…" : ctaLabel}
           </button>
-          <p className="quiz-engine__ad-note"><span>✓</span>One short ad, then see the warning signs.</p>
+          <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p>
         </div>
       </section>
     );
   }
 
-  const currentTitle = unlockedSection === 1
-    ? articleTitle
-    : unlockedSection === 2
-      ? "Prostate Cancer Risk Factors"
-      : "What Happens at a Prostate Check?";
-  const currentIntro = unlockedSection === 1
-    ? "Early prostate cancer often causes no symptoms. When changes do appear, they can overlap with common non-cancerous conditions, so symptoms alone cannot tell you the cause."
-    : unlockedSection === 2
-      ? "Some risk factors are well established, but none can predict an individual diagnosis. Here are the factors a healthcare professional may consider."
-      : "There is no single test that answers every question. A prostate assessment usually combines symptoms, history and test results before deciding what should happen next.";
-  const currentPoints = unlockedSection === 1 ? points : unlockedSection === 2 ? riskPoints : checkPoints;
+  const currentSection = resolvedSections[unlockedSection - 1] ?? resolvedSections[0];
+  const isFinalSection = unlockedSection >= resolvedSections.length;
 
   return (
     <article className="article-engine__article quiz-engine__continuous-shell" key={unlockedSection}>
       <header className="article-engine__header">
-        <h1>{currentTitle}</h1>
-        <p>{currentIntro}</p>
+        <h1>{currentSection.title}</h1>
+        <p>{currentSection.intro}</p>
       </header>
 
-      <ArticlePointList page={unlockedSection} points={currentPoints} />
+      <ArticlePointList page={unlockedSection} points={currentSection.points} prefix={adElementPrefix} />
 
-      {unlockedSection === 1 ? (
+      {currentSection.next ? (
         <section className="article-engine__unlock">
-          <span>Next section</span>
-          <h2>Could you be at higher risk?</h2>
-          <p>See the established factors linked with a higher chance of prostate cancer.</p>
-          <button className="quiz-engine__primary" disabled={adBusy} onClick={() => unlockSection(2)} type="button">
+          <span>{currentSection.next.eyebrow}</span>
+          <h2>{currentSection.next.title}</h2>
+          <p>{currentSection.next.copy}</p>
+          <button className="quiz-engine__primary" disabled={adBusy} onClick={() => unlockSection(unlockedSection + 1)} type="button">
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-            {adBusy ? "Loading ad…" : "See Risk Factors"}
+            {adBusy ? "Loading ad…" : currentSection.next.cta}
           </button>
           <small>One short ad, then continue.</small>
         </section>
       ) : null}
 
-      {unlockedSection === 2 ? (
-        <section className="article-engine__unlock">
-          <span>Final section</span>
-          <h2>What happens next?</h2>
-          <p>See how prostate symptoms and test results may be checked.</p>
-          <button className="quiz-engine__primary" disabled={adBusy} onClick={() => unlockSection(3)} type="button">
-            <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-            {adBusy ? "Loading ad…" : "See How A Check Works"}
-          </button>
-          <small>One short ad, then continue.</small>
-        </section>
-      ) : null}
-
-      {unlockedSection === 3 ? (
+      {isFinalSection ? (
         <footer className="article-engine__sources">
           <p>Sources: {sources.map((source, index) => (
             <span key={source.url}>{index ? " · " : ""}<a href={source.url} rel="noreferrer" target="_blank">{source.label}</a></span>
           ))}</p>
           <p className="article-engine__disclaimer">
-            General information only. This article is not a diagnosis, medical assessment or substitute for advice from a qualified healthcare professional.
+            {disclaimer}
           </p>
         </footer>
       ) : null}
