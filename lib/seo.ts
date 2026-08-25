@@ -215,5 +215,12 @@ export function getSitemapEntries() {
     }
   }
 
+  entries.push({
+    url: absoluteUrl("/prostate"),
+    lastModified: new Date("2026-08-25T00:00:00Z"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  });
+
   return entries;
 }

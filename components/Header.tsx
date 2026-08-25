@@ -10,6 +10,7 @@ import {
 import { getQuizBySlug } from "@/lib/quizzes";
 
 type HeaderProps = {
+  availableLocales?: SupportedLocale[];
   currentPath: string;
   locale: SupportedLocale;
   translations: Translations;
@@ -19,10 +20,12 @@ function localizedPath(locale: SupportedLocale, path: string) {
   return locale === getDefaultLocale() ? path : getLocalePath(locale, path);
 }
 
-export function Header({ currentPath, locale, translations }: HeaderProps) {
+export function Header({ availableLocales, currentPath, locale, translations }: HeaderProps) {
   const quizSlug = currentPath.match(/^\/([a-z0-9-]+)$/)?.[1];
+  const availableLocaleSet = availableLocales ? new Set(availableLocales) : undefined;
   const languageOptions = getLocaleOptions().filter(
-    (option) => !quizSlug || Boolean(getQuizBySlug(quizSlug, option.code)),
+    (option) => (!availableLocaleSet || availableLocaleSet.has(option.code))
+      && (!quizSlug || Boolean(getQuizBySlug(quizSlug, option.code))),
   );
   const currentLanguage = languageOptions.find((option) => option.code === locale) ?? languageOptions[0];
 
@@ -49,7 +52,7 @@ export function Header({ currentPath, locale, translations }: HeaderProps) {
                 <Link href={getLocalePath(locale, "/info/accessibility")} prefetch={false}>{translations.footer.links.accessibility}</Link>
               </nav>
             </div>
-            <div className="site-menu__language-section">
+            {languageOptions.length > 1 ? <div className="site-menu__language-section">
               <details className="site-language-switcher">
                 <summary aria-label={`${translations.locale.switcherLabel}: ${currentLanguage.name}`}>
                   <span aria-hidden="true" className="site-language-switcher__flag">{currentLanguage.flag}</span>
@@ -77,7 +80,7 @@ export function Header({ currentPath, locale, translations }: HeaderProps) {
                   ))}
                 </div>
               </details>
-            </div>
+            </div> : null}
           </div>
         </details>
       </div>
