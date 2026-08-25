@@ -163,9 +163,11 @@ export default function ProstateArticlePage() {
           landingTitle={landingTitle}
           points={points}
           sources={[
-            { label: "NHS: Prostate cancer symptoms", url: "https://www.nhs.uk/conditions/prostate-cancer/symptoms/" },
-            { label: "National Cancer Institute: Understanding prostate changes", url: "https://www.cancer.gov/types/prostate/understanding-prostate-changes" },
-            { label: "American Cancer Society: Prostate cancer signs and symptoms", url: "https://www.cancer.org/cancer/types/prostate-cancer/detection-diagnosis-staging/signs-symptoms.html" },
+            { label: "NHS symptoms", url: "https://www.nhs.uk/conditions/prostate-cancer/symptoms/" },
+            { label: "NCI prostate changes", url: "https://www.cancer.gov/types/prostate/understanding-prostate-changes" },
+            { label: "NCI PSA test", url: "https://www.cancer.gov/types/prostate/psa-fact-sheet" },
+            { label: "ACS risk factors", url: "https://www.cancer.org/cancer/types/prostate-cancer/causes-risks-prevention/risk-factors.html" },
+            { label: "ACS diagnosis and tests", url: "https://www.cancer.org/cancer/types/prostate-cancer/detection-diagnosis-staging/how-diagnosed.html" },
           ]}
         />
       </QuizThemeBoundary>
