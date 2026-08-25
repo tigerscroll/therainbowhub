@@ -4,8 +4,8 @@
  * their colour, type and texture without changing the shared experience.
  */
 .quiz-theme[data-quiz-flow="continuous"] {
-  --quiz-shell-action-width: 520px;
-  --quiz-shell-action-height: 56px;
+  --quiz-shell-action-width: 480px;
+  --quiz-shell-action-height: 60px;
   --quiz-shell-content-inset: clamp(22px, 5vw, 46px);
   --quiz-shell-proof-width: 416px;
 }
@@ -192,6 +192,10 @@
   max-width: 100% !important;
 }
 
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy > .quiz-engine__quick-start {
+  margin-bottom: 0 !important;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell {
   --quiz-flow-width: var(--quiz-shell-container-width);
   --quiz-flow-min-height: clamp(590px, 82svh, 860px);
@@ -241,7 +245,7 @@
   grid-row: 1;
   min-width: 0;
   justify-self: end;
-  color: var(--quiz-muted);
+  color: var(--quiz-flow-progress-label, var(--quiz-muted));
   font-size: 12px;
   font-weight: 900;
   letter-spacing: .08em;
@@ -358,7 +362,7 @@
   justify-content: center;
   padding: 12px 22px !important;
   border-radius: var(--quiz-button-radius) !important;
-  font-size: 17px !important;
+  font-size: 19px !important;
   line-height: 1.15;
   box-shadow:
     0 4px 0 color-mix(in srgb, var(--quiz-primary) 54%, black),
@@ -377,7 +381,7 @@
   align-items: center;
   justify-content: center;
   gap: 13px;
-  margin: 0 auto 18px !important;
+  margin: 18px auto !important;
   padding: 4px 13px !important;
   border: 1px solid color-mix(in srgb, var(--quiz-border) 72%, transparent) !important;
   border-radius: 18px !important;
@@ -489,7 +493,7 @@
 
 @media (max-width: 700px) {
   .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] {
-    --quiz-shell-action-height: 54px;
+    --quiz-shell-action-height: 58px;
     --quiz-shell-content-inset: 18px;
     padding-top: 4px !important;
     padding-right: 0 !important;
@@ -577,7 +581,7 @@
     width: 100% !important;
     max-width: var(--quiz-shell-action-width) !important;
     min-height: var(--quiz-shell-action-height) !important;
-    font-size: 16px !important;
+    font-size: 19px !important;
   }
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__social {

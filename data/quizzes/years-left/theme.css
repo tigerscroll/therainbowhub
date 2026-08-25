@@ -913,6 +913,7 @@
    the legacy visual layers above. */
 [data-quiz-theme="years-left"]{
   --quiz-flow-background: radial-gradient(circle at 50% -8%, rgba(221, 174, 93, .2), transparent 38%), linear-gradient(180deg, rgba(57, 53, 63, .99), rgba(38, 35, 44, .995));
+  --quiz-flow-progress-label: #f0d08c;
   --quiz-flow-next-background: rgba(255, 247, 226, .075);
   --quiz-flow-next-border: rgba(255, 239, 204, .15);
   background:
@@ -946,6 +947,19 @@
 [data-quiz-theme="years-left"] .quiz-engine__landing{
   align-content: start;
   padding-top: 24px;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__landing h1{
+  color: #fff4d6;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, .34);
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__quick-start{
+  color: #e7dcc2;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__landing .quiz-engine__ad-note{
+  color: #d3c5a8;
 }
 
 @media (max-width: 700px) {
