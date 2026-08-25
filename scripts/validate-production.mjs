@@ -147,6 +147,9 @@ const rewardedStartContract = [
   "runRewardedGate(beginQuiz)",
   "onClick={startQuiz}",
   "disabled={adBusy}",
+  "startInstructionEnabled",
+  "data-start-instruction=\"true\"",
+  "translations.ad.watchAdStart",
 ];
 for (const declaration of rewardedStartContract) {
   if (!quizEngineText.includes(declaration)) addError(`Direct rewarded-start contract is missing: ${declaration}`);
@@ -179,15 +182,21 @@ const requiredContinuousShellContract = [
   "--quiz-shell-proof-width: 416px;",
   "width: min(100%, var(--quiz-shell-action-width)) !important;",
   "min-height: var(--quiz-shell-action-height) !important;",
-  "border-radius: 999px !important;",
+  "border-radius: 30px !important;",
   "width: calc(100vw - 16px) !important;",
   "quiz-engine__primary-arrow",
+  "quiz-engine__landing--start-instruction",
+  "quiz-engine__start-instruction-return",
 ];
 const continuousShellSources = `${quizTemplateText}\n${quizThemeBoundaryText}\n${quizLoaderText}\n${quizShellContractText}`;
 for (const declaration of requiredContinuousShellContract) {
   if (!continuousShellSources.includes(declaration)) {
     addError(`Shared continuous-shell contract is missing \`${declaration}\`.`);
   }
+}
+
+if (!quizTemplateText.includes("startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}")) {
+  addError("The shared rewarded-start instruction must be controlled by the build-time site setting.");
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");

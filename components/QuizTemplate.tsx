@@ -46,7 +46,12 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
         }}
       />
       <QuizThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
-        <QuizEngine locale={locale} quiz={quiz} translations={translations} />
+        <QuizEngine
+          locale={locale}
+          quiz={quiz}
+          startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
+          translations={translations}
+        />
       </QuizThemeBoundary>
     </>
   );

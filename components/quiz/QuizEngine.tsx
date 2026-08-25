@@ -15,6 +15,7 @@ import { scoreQuiz, type QuizAnswers } from "./scoring";
 type QuizEngineProps = {
   locale: SupportedLocale;
   quiz: Quiz;
+  startInstructionEnabled: boolean;
   translations: Translations;
 };
 
@@ -316,7 +317,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   return { ...saved, answers } as SavedProgress;
 }
 
-export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, startInstructionEnabled, translations }: QuizEngineProps) {
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
@@ -466,14 +467,14 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }, []);
 
   useEffect(() => {
-    if (!showStartPrompt) return;
+    if (!showStartPrompt || startInstructionEnabled) return;
     document.documentElement.classList.add("quiz-reward-prompt-open");
     document.body.classList.add("quiz-reward-prompt-open");
     return () => {
       document.documentElement.classList.remove("quiz-reward-prompt-open");
       document.body.classList.remove("quiz-reward-prompt-open");
     };
-  }, [showStartPrompt]);
+  }, [showStartPrompt, startInstructionEnabled]);
 
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -564,7 +565,11 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   function startQuiz() {
-    if (quiz.engine.rewarded.start && quiz.engine.rewarded.confirmStart && quiz.landing.startPrompt) {
+    if (quiz.engine.rewarded.start && startInstructionEnabled) {
+      setShowStartPrompt(true);
+      scrollToTop();
+    }
+    else if (quiz.engine.rewarded.start && quiz.engine.rewarded.confirmStart && quiz.landing.startPrompt) {
       setShowStartPrompt(true);
     }
     else if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
@@ -615,6 +620,31 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
   }
 
   if (screen === "landing") {
+    if (showStartPrompt && startInstructionEnabled && quiz.engine.rewarded.start) {
+      return (
+        <>
+        <section className="quiz-engine__landing quiz-engine__landing--start-instruction" data-start-instruction="true">
+          <div aria-live="polite" className="quiz-engine__start-instruction">
+            <div aria-hidden="true" className="quiz-engine__landing-badge quiz-engine__start-instruction-icon"><span>✓</span></div>
+            <h1>{translations.ad.readyTitle}</h1>
+            <p className="quiz-engine__quick-start quiz-engine__start-instruction-copy">{translations.ad.readyCopy}</p>
+            <p className="quiz-engine__quick-start quiz-engine__start-instruction-return">
+              <span>{translations.ad.returnInstructionBefore} </span>
+              <strong>{translations.ad.returnInstructionAction}</strong>
+              <br />
+              <span>{translations.ad.returnInstructionAfter}</span>
+            </p>
+            <button autoFocus className="quiz-engine__primary" disabled={adBusy} onClick={confirmQuizStart} type="button">
+              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
+              {adBusy ? translations.ad.loading : translations.ad.watchAdStart}
+            </button>
+            <p className="quiz-engine__ad-note quiz-engine__start-instruction-reassurance">{translations.ad.startsImmediately}</p>
+          </div>
+        </section>
+        <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
+        </>
+      );
+    }
     return (
       <>
       <section className="quiz-engine__landing">
@@ -630,7 +660,7 @@ export function QuizEngine({ locale, quiz, translations }: QuizEngineProps) {
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
           </button>
-          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
+          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
         </div>
       </section>
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
