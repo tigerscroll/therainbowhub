@@ -28,8 +28,11 @@ type QuizRecommendation = {
   title: string;
 };
 
-type QuizScreen = "landing" | "question" | "checkpoint" | "results";
+type QuizScreen = "landing" | "question" | "preparing" | "checkpoint" | "results";
 type SavedScreen = Exclude<QuizScreen, "landing">;
+
+const RESULT_PREPARATION_MS = 1500;
+const RESULT_READY_CTA_DELAY_MS = 600;
 
 type SavedProgress = {
   version: 3;
@@ -342,7 +345,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (!isProgressTimestampFresh(saved.updatedAt)) return null;
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
-  if (!saved.screen || !["question", "checkpoint", "results"].includes(saved.screen)) return null;
+  if (!saved.screen || !["question", "preparing", "checkpoint", "results"].includes(saved.screen)) return null;
   if (saved.rewardClosedSent !== undefined && typeof saved.rewardClosedSent !== "boolean") return null;
   if (saved.reviewUnlocked !== undefined && typeof saved.reviewUnlocked !== "boolean") return null;
 
@@ -369,6 +372,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [showStartPrompt, setShowStartPrompt] = useState(false);
   const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
+  const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const [recommendedQuizzes, setRecommendedQuizzes] = useState<QuizRecommendation[]>([]);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
@@ -580,7 +584,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const nextIndex = questionIndex + 1;
     if (nextIndex >= quiz.questions.length) {
       setCompletedStage(currentStage);
-      setScreen("checkpoint");
+      setScreen("preparing");
       scrollToTop();
       return;
     }
@@ -604,6 +608,25 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     // moveForward intentionally uses the current question state.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedAnswer, screen, currentQuestion?.advanceDelayMs, quiz.engine.advanceDelayMs]);
+
+  useEffect(() => {
+    if (screen !== "preparing") return;
+    const timer = window.setTimeout(() => setScreen("checkpoint"), RESULT_PREPARATION_MS);
+    return () => window.clearTimeout(timer);
+  }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "checkpoint") {
+      setCheckpointCtaReady(false);
+      return;
+    }
+    if (completedStage < quiz.stages.length - 1) {
+      setCheckpointCtaReady(true);
+      return;
+    }
+    const timer = window.setTimeout(() => setCheckpointCtaReady(true), RESULT_READY_CTA_DELAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [completedStage, quiz.stages.length, screen]);
 
   function answerQuestion(choiceIndex: number) {
     if (!currentQuestion || selectedAnswer !== undefined) return;
@@ -748,6 +771,25 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     );
   }
 
+  if (screen === "preparing") {
+    return (
+      <section
+        aria-busy="true"
+        aria-live="polite"
+        className="quiz-engine__preparing quiz-engine__card quiz-engine__continuous-shell"
+        role="status"
+      >
+        <div aria-hidden="true" className="quiz-engine__result-icon quiz-engine__preparing-icon">
+          {quiz.theme.artwork?.icon ?? quiz.cardIcon}
+        </div>
+        <h2>Preparing your result…</h2>
+        <p>Reviewing your answers and building your result.</p>
+        <div aria-hidden="true" className="quiz-engine__preparing-mark"><span /><span /><span /></div>
+        <div aria-hidden="true" className="quiz-engine__preparing-progress"><i /></div>
+      </section>
+    );
+  }
+
   if (screen === "checkpoint") {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const isSingleStage = quiz.stages.length === 1;
@@ -770,7 +812,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       ?? quiz.theme.artwork?.checkpoints?.[completedStage];
     return (
       <>
-      <section className={`quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career${isSingleStage ? " quiz-engine__checkpoint--single-stage" : ""}`} data-round={completedStage + 1}>
+      <section
+        className={`quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career${isSingleStage ? " quiz-engine__checkpoint--single-stage" : ""}`}
+        data-cta-ready={isFinalStage ? checkpointCtaReady : undefined}
+        data-round={completedStage + 1}
+      >
         {checkpointArtwork ? (
           <div className="quiz-engine__checkpoint-artwork" aria-hidden="true">
             <img alt="" decoding="async" src={checkpointArtwork} />
@@ -801,7 +847,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        <button className="quiz-engine__primary" disabled={adBusy} onClick={continueAfterCheckpoint} type="button">
+        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
           {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
           {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
           {!isFinalStage && !adBusy ? (
