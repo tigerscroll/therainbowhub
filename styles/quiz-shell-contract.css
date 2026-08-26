@@ -635,3 +635,23 @@
     font-size: 12px !important;
   }
 }
+
+/* Memory keeps a compact, equal mobile page gutter around its editorial shell.
+   All flow states use the same geometry. */
+@media (max-width: 700px) {
+  .quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"] {
+    --quiz-shell-header-gap: 5px;
+    --quiz-shell-side-gutter: 5px;
+    --quiz-flow-border: 2px solid var(--memory-ink);
+    padding-top: var(--quiz-shell-header-gap) !important;
+    padding-inline: var(--quiz-shell-side-gutter) !important;
+  }
+
+  .quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell,
+  .quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"] .quiz-engine__checkpoint.quiz-engine__card,
+  .quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"] .quiz-engine__results.quiz-engine__card {
+    width: calc(100vw - 10px) !important;
+    max-width: calc(100vw - 10px) !important;
+    margin-inline: calc(50% - 50vw + 5px) !important;
+  }
+}
