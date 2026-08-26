@@ -247,7 +247,7 @@ export default function CelluliteArticlePage() {
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Treatment Options"
           disclaimer="General educational information only. Cellulite is a common cosmetic concern, and this guide is not medical advice or a recommendation for any procedure. Discuss suitability, benefits and risks with a qualified healthcare professional."
-          icon="✨"
+          icon="💆"
           intro="Which cellulite treatments really work? Compare the options, evidence and limitations before spending money."
           landingTitle={landingTitle}
           points={sections[0].points}

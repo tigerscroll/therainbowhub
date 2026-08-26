@@ -396,9 +396,6 @@ function validateGermanRegisterCorrections(quiz, content, location) {
     if (q("vision-r9q4")?.context !== "Drehe den Pfeil zunächst um 90 Grad im Uhrzeigersinn. Spiegle das Ergebnis anschließend an einer senkrechten Achse.") addError(`${location}#vision-r9q4.context: approved German direct-address wording changed.`);
     if (q("vision-r10q3")?.context !== "Verfolge den Formen- und den Füllzyklus getrennt.") addError(`${location}#vision-r10q3.context: approved German direct-address wording changed.`);
   }
-  if (quiz === "years-left") {
-    if (content.checkpoint?.finalAdNote !== "Erst eine kurze Werbung, dann sehen Sie Ihre Einschätzung.") addError(`${location}#checkpoint.finalAdNote: Years Left must retain formal German address.`);
-  }
   if (quiz === "memory") {
     const protectedThirdPersonCopy = new Set([
       "Sie können später wieder auftauchen.",
@@ -472,16 +469,7 @@ const recurringNativeCopyDefects = {
   ],
 };
 
-const yearsLeftThemeTerms = {
-  fr: { estimate: /estimation/iu, signals: /indices/iu, prediction: /prédiction/iu, lifestyle: /mode de vie/iu },
-  de: { estimate: /Einschätzung/iu, signals: /Signale/iu, prediction: /Prognose/iu, lifestyle: /Lebensstil/iu },
-  it: { estimate: /stima/iu, signals: /segnali/iu, prediction: /previsione/iu, lifestyle: /stile di vita/iu },
-  nl: { estimate: /schatting/iu, signals: /signalen/iu, prediction: /voorspelling/iu, lifestyle: /leefstijl/iu },
-  es: { estimate: /estimación/iu, signals: /señales/iu, prediction: /predicción/iu, lifestyle: /estilo de vida/iu },
-  pt: { estimate: /estimativa/iu, signals: /sinais/iu, prediction: /previsão/iu, lifestyle: /estilo de vida/iu },
-};
-
-const nonEntranceQuizzes = new Set(["memory", "vision", "mechanic", "iq", "grammar", "years-left"]);
+const nonEntranceQuizzes = new Set(["memory", "vision", "mechanic", "iq", "grammar"]);
 const genericShellValues = {
   fr: new Set(["Progression", "SCORE ACTUEL", "PARCOURS DU QUIZ", "{value} / {total} étapes terminées", "ÉTAPE TERMINÉE"]),
   de: new Set(["Fortschritt", "AKTUELLER PUNKTSTAND", "QUIZVERLAUF", "{value} / {total} Runden abgeschlossen", "RUNDE ABGESCHLOSSEN"]),
@@ -500,22 +488,7 @@ function validateNativeCopyPatterns(quiz, content, locale, location) {
     }
   }
 
-  if (quiz === "years-left") {
-    const terms = yearsLeftThemeTerms[locale];
-    const themedFields = [
-      ["checkpoint.finalAdNote", content.checkpoint?.finalAdNote, terms?.estimate],
-      ["career.resultProgressLabel", content.career?.resultProgressLabel, terms?.prediction],
-      ["career.stages", JSON.stringify(content.career?.stages ?? []), terms?.lifestyle],
-      ["career.stages.final", JSON.stringify(content.career?.stages?.at(-1) ?? {}), terms?.prediction],
-    ];
-    for (const [pathLabel, value, pattern] of themedFields) {
-      if (!pattern?.test(value ?? "")) {
-        addError(`${location}#${pathLabel}: Years Left shell copy lost its estimate, prediction or lifestyle framing.`);
-      }
-    }
-  }
-
-  if (locale === "de" && quiz !== "years-left") {
+  if (locale === "de") {
     const formalAddress = /\b(?:Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u;
     for (const { value, pathParts } of collectStrings(content)) {
       if (pathParts[0] !== "stages" && formalAddress.test(value)) {

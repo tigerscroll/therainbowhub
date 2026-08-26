@@ -760,7 +760,10 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
           ) : null}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? (
-          <p className="quiz-engine__checkpoint-ad-note"><span aria-hidden="true">✓</span>{checkpointAdNote}</p>
+          <p className="quiz-engine__checkpoint-ad-note">
+            {!isSingleStage ? <span aria-hidden="true">✓</span> : null}
+            {checkpointAdNote}
+          </p>
         ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />

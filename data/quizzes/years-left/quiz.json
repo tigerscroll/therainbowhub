@@ -32,24 +32,24 @@
     "socialProofCount": 267000
   },
   "theme": {
-    "preset": "immersive",
+    "preset": "editorial",
     "layout": {
       "landing": "split",
       "questions": "card",
       "results": "immersive"
     },
     "colors": {
-      "page": "#111015",
-      "pageAlt": "#241f2a",
-      "surface": "#f5eddd",
+      "page": "#211f25",
+      "pageAlt": "#343039",
+      "surface": "#eee7d9",
       "surfaceRaised": "#fffaf0",
-      "text": "#18161d",
-      "muted": "#6e665d",
-      "primary": "#d6a65a",
-      "primaryText": "#18130c",
-      "border": "#a9854f",
-      "correct": "#668b68",
-      "incorrect": "#a94f4f"
+      "text": "#211d1a",
+      "muted": "#6d6459",
+      "primary": "#bf8738",
+      "primaryText": "#21170d",
+      "border": "#554a3d",
+      "correct": "#4f765d",
+      "incorrect": "#a4524c"
     },
     "typography": {
       "heading": "serif",
@@ -57,96 +57,38 @@
     },
     "shape": {
       "cardRadius": "18px",
-      "buttonRadius": "12px"
+      "buttonRadius": "30px"
     },
     "effects": {
       "shadow": "dramatic",
       "texture": "grain"
     },
     "header": {
-      "background": "linear-gradient(90deg, rgba(21, 19, 15, 0.94), rgba(39, 34, 46, 0.94)), #17151c",
-      "text": "#f8efd9",
-      "border": "rgba(214, 166, 90, 0.55)",
-      "shadow": "0 8px 28px rgba(0, 0, 0, 0.28)"
+      "background": "linear-gradient(90deg, #171519, #332d35)",
+      "text": "#fff7e7",
+      "border": "#bf8738",
+      "shadow": "0 8px 26px rgba(12, 10, 14, 0.3)"
     },
     "artwork": {
       "icon": "🪦"
     }
   },
-  "template": "five-stage-rewarded-v1",
+  "template": "single-stage-rewarded-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "foundation",
-        "questionIds": [
-          "r1q3",
-          "r1q1",
-          "r1q2",
-          "r1q5",
-          "r1q6",
-          "r4q4",
-          "r9q3",
-          "r9q2"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-2",
-        "difficultyLevel": "developing",
-        "questionIds": [
-          "r2q1",
-          "r2q2",
-          "r2q3",
-          "r2q4",
-          "r2q6",
-          "r3q2",
-          "r3q6",
-          "r3q1"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-3",
-        "difficultyLevel": "skilled",
-        "questionIds": [
-          "r4q1",
-          "r4q2",
-          "r4q3",
-          "r4q5",
-          "r4q6",
-          "r10q3",
-          "r10q4",
-          "r9q4"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-4",
-        "difficultyLevel": "advanced",
-        "questionIds": [
-          "r6q1",
-          "r6q2",
-          "r6q3",
-          "r6q4",
-          "r6q5",
-          "r6q6",
-          "r7q4",
-          "r7q6"
-        ],
-        "uppercaseNextForLocales": []
-      },
-      {
-        "id": "stage-5",
         "difficultyLevel": "final",
         "questionIds": [
-          "r7q1",
-          "r7q2",
-          "r7q3",
+          "r1q3",
+          "r2q1",
+          "r3q2",
+          "r4q3",
+          "r4q2",
+          "r6q6",
+          "r7q4",
           "r8q1",
-          "r8q5",
           "r9q5",
-          "r10q2",
           "r10q6"
         ]
       }
@@ -155,959 +97,119 @@
       "r1q3": {
         "choiceCount": 3,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 0.000116728,
-            "steady_long_game": 0.000111585,
-            "balanced_realist": 0.000050101,
-            "weekend_chaos": 0.003318306,
-            "stress_sprinter": 0.002354788,
-            "comfort_creature": 0.000125996,
-            "adventure_fuse": 0.899303578,
-            "reset_needed": 0.002192038
-          },
-          {
-            "centenarian_energy": 0.927084651,
-            "steady_long_game": 0.001676413,
-            "balanced_realist": 0.000759863,
-            "weekend_chaos": 0.049884715,
-            "stress_sprinter": 0.035410831,
-            "comfort_creature": 0.001897495,
-            "adventure_fuse": 0.028922895,
-            "reset_needed": 0.032951227
-          },
-          {
-            "centenarian_energy": 0.000060567,
-            "steady_long_game": 0.000057989,
-            "balanced_realist": 0.000026094,
-            "weekend_chaos": 0.962437182,
-            "stress_sprinter": 0.001217854,
-            "comfort_creature": 0.000065518,
-            "adventure_fuse": 0.000994995,
-            "reset_needed": 0.001132274
-          }
-        ]
-      },
-      "r1q1": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "adventure_fuse": 0.846245013
-          }
-        ]
-      },
-      "r1q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "comfort_creature": 1.374612798
-          },
-          {
-            "balanced_realist": 0.959222869
-          }
-        ]
-      },
-      "r1q5": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "comfort_creature": 1.374612798
-          },
-          {
-            "balanced_realist": 0.959222869
-          }
-        ]
-      },
-      "r1q6": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "reset_needed": 1.141570473
-          },
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "weekend_chaos": 1.081951257
-          }
-        ]
-      },
-      "r4q4": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 1.165081789
-          },
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "stress_sprinter": 1.157163826
-          }
-        ]
-      },
-      "r9q3": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "comfort_creature": 1.374612798
-          },
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "adventure_fuse": 0.846245013
-          }
-        ]
-      },
-      "r9q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "balanced_realist": 0.959222869
-          }
+          { "adventure_fuse": 1.119403 },
+          { "centenarian_energy": 0.914634 },
+          { "weekend_chaos": 1.25 }
         ]
       },
       "r2q1": {
         "presentation": "icons",
-        "icons": [
-          "🍎",
-          "🍰",
-          "🫒",
-          "🍪"
-        ],
+        "icons": ["🍎", "🍰", "🫒", "🍪"],
         "choiceCount": 4,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 0.927084651,
-            "steady_long_game": 0.001676413,
-            "balanced_realist": 0.000759863,
-            "weekend_chaos": 0.049884715,
-            "stress_sprinter": 0.035410831,
-            "comfort_creature": 0.001897495,
-            "adventure_fuse": 0.028922895,
-            "reset_needed": 0.032951227
-          },
-          {
-            "centenarian_energy": 0.000060567,
-            "steady_long_game": 0.000057989,
-            "balanced_realist": 0.000026094,
-            "weekend_chaos": 0.962437182,
-            "stress_sprinter": 0.001217854,
-            "comfort_creature": 0.000065518,
-            "adventure_fuse": 0.000994995,
-            "reset_needed": 0.001132274
-          },
-          {
-            "centenarian_energy": 0.003540395,
-            "steady_long_game": 0.003393242,
-            "balanced_realist": 0.707926309,
-            "weekend_chaos": 0.100958611,
-            "stress_sprinter": 0.07166526,
-            "comfort_creature": 0.003840348,
-            "adventure_fuse": 0.058534214,
-            "reset_needed": 0.06669077
-          },
-          {
-            "centenarian_energy": 0.001782861,
-            "steady_long_game": 0.001708922,
-            "balanced_realist": 0.000774476,
-            "weekend_chaos": 0.050837219,
-            "stress_sprinter": 0.036086518,
-            "comfort_creature": 1.056817691,
-            "adventure_fuse": 0.02947436,
-            "reset_needed": 0.033581508
-          }
-        ]
-      },
-      "r2q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "steady_long_game": 0.789882145
-          }
-        ]
-      },
-      "r2q3": {
-        "choiceCount": 4,
-        "choiceMeanings": [
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "comfort_creature": 1.374612798
-          }
-        ]
-      },
-      "r2q4": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 1.165081789
-          },
-          {
-            "reset_needed": 1.141570473
-          },
-          {
-            "stress_sprinter": 1.157163826
-          }
-        ]
-      },
-      "r2q6": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
+          { "centenarian_energy": 0.914634 },
+          { "comfort_creature": 0.914634 },
+          { "balanced_realist": 0.842697 },
+          { "reset_needed": 0.949367 }
         ]
       },
       "r3q2": {
         "presentation": "icons",
-        "icons": [
-          "🚗",
-          "🚌",
-          "🚶",
-          "🚲"
-        ],
+        "icons": ["🚗", "🚌", "🚶", "🚲"],
         "choiceCount": 4,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 0.00214516,
-            "steady_long_game": 0.002055978,
-            "balanced_realist": 0.117369634,
-            "weekend_chaos": 0.061174683,
-            "stress_sprinter": 0.043425,
-            "comfort_creature": 0.874956796,
-            "adventure_fuse": 0.035467915,
-            "reset_needed": 0.04040955
-          },
-          {
-            "centenarian_energy": 0.002606568,
-            "steady_long_game": 0.314786047,
-            "balanced_realist": 0.425537985,
-            "weekend_chaos": 0.074325221,
-            "stress_sprinter": 0.052760197,
-            "comfort_creature": 0.002827343,
-            "adventure_fuse": 0.043093191,
-            "reset_needed": 0.049095897
-          },
-          {
-            "centenarian_energy": 0.205229487,
-            "steady_long_game": 0.587070459,
-            "balanced_realist": 0.000707675,
-            "weekend_chaos": 0.046450486,
-            "stress_sprinter": 0.0329731,
-            "comfort_creature": 0.001766459,
-            "adventure_fuse": 0.026931997,
-            "reset_needed": 0.03068389
-          },
-          {
-            "centenarian_energy": 0.017895788,
-            "steady_long_game": 0.000136187,
-            "balanced_realist": 0.000061582,
-            "weekend_chaos": 0.004050555,
-            "stress_sprinter": 0.002874702,
-            "comfort_creature": 0.000153715,
-            "adventure_fuse": 0.882979122,
-            "reset_needed": 0.00267544
-          }
-        ]
-      },
-      "r3q6": {
-        "presentation": "icons",
-        "icons": [
-          "🛋️",
-          "🚶",
-          "🚴",
-          "🏃"
-        ],
-        "choiceCount": 4,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 0.001782861,
-            "steady_long_game": 0.001708922,
-            "balanced_realist": 0.000774476,
-            "weekend_chaos": 0.050837219,
-            "stress_sprinter": 0.036086518,
-            "comfort_creature": 1.056817691,
-            "adventure_fuse": 0.02947436,
-            "reset_needed": 0.033581508
-          },
-          {
-            "centenarian_energy": 0.001718991,
-            "steady_long_game": 0.742364452,
-            "balanced_realist": 0.000746294,
-            "weekend_chaos": 0.04902495,
-            "stress_sprinter": 0.034799881,
-            "comfort_creature": 0.001864736,
-            "adventure_fuse": 0.028424037,
-            "reset_needed": 0.032383231
-          },
-          {
-            "centenarian_energy": 0.000116728,
-            "steady_long_game": 0.000111585,
-            "balanced_realist": 0.000050101,
-            "weekend_chaos": 0.003318306,
-            "stress_sprinter": 0.002354788,
-            "comfort_creature": 0.000125996,
-            "adventure_fuse": 0.899303578,
-            "reset_needed": 0.002192038
-          },
-          {
-            "centenarian_energy": 0.927084651,
-            "steady_long_game": 0.001676413,
-            "balanced_realist": 0.000759863,
-            "weekend_chaos": 0.049884715,
-            "stress_sprinter": 0.035410831,
-            "comfort_creature": 0.001897495,
-            "adventure_fuse": 0.028922895,
-            "reset_needed": 0.032951227
-          }
-        ]
-      },
-      "r3q1": {
-        "presentation": "icons",
-        "icons": [
-          "🚶",
-          "⚡",
-          "💃"
-        ],
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
-        ]
-      },
-      "r4q1": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "reset_needed": 1.141570473
-          }
-        ]
-      },
-      "r4q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 0.000086996,
-            "steady_long_game": 0.000083469,
-            "balanced_realist": 0.000037576,
-            "weekend_chaos": 0.002471099,
-            "stress_sprinter": 1.005257752,
-            "comfort_creature": 0.000094497,
-            "adventure_fuse": 0.001433084,
-            "reset_needed": 0.001631479
-          },
-          {
-            "centenarian_energy": 0.001782861,
-            "steady_long_game": 0.001708922,
-            "balanced_realist": 0.000774476,
-            "weekend_chaos": 0.050837219,
-            "stress_sprinter": 0.036086518,
-            "comfort_creature": 1.056817691,
-            "adventure_fuse": 0.02947436,
-            "reset_needed": 0.033581508
-          },
-          {
-            "centenarian_energy": 0.003540395,
-            "steady_long_game": 0.003393242,
-            "balanced_realist": 0.707926309,
-            "weekend_chaos": 0.100958611,
-            "stress_sprinter": 0.07166526,
-            "comfort_creature": 0.003840348,
-            "adventure_fuse": 0.058534214,
-            "reset_needed": 0.06669077
-          }
+          { "comfort_creature": 0.914634 },
+          { "balanced_realist": 0.842697 },
+          { "steady_long_game": 0.797872 },
+          { "adventure_fuse": 1.119403 }
         ]
       },
       "r4q3": {
         "presentation": "scale",
         "choiceCount": 5,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 0.000079287,
-            "steady_long_game": 0.00007644,
-            "balanced_realist": 0.000034444,
-            "weekend_chaos": 0.002274996,
-            "stress_sprinter": 0.001615376,
-            "comfort_creature": 0.000086937,
-            "adventure_fuse": 0.0013188,
-            "reset_needed": 0.924349506
-          },
-          {
-            "centenarian_energy": 0.000086996,
-            "steady_long_game": 0.000083469,
-            "balanced_realist": 0.000037576,
-            "weekend_chaos": 0.002471099,
-            "stress_sprinter": 1.005257752,
-            "comfort_creature": 0.000094497,
-            "adventure_fuse": 0.001433084,
-            "reset_needed": 0.001631479
-          },
-          {
-            "centenarian_energy": 0.003540395,
-            "steady_long_game": 0.003393242,
-            "balanced_realist": 0.707926309,
-            "weekend_chaos": 0.100958611,
-            "stress_sprinter": 0.07166526,
-            "comfort_creature": 0.003840348,
-            "adventure_fuse": 0.058534214,
-            "reset_needed": 0.06669077
-          },
-          {
-            "centenarian_energy": 0.001718991,
-            "steady_long_game": 0.742364452,
-            "balanced_realist": 0.000746294,
-            "weekend_chaos": 0.04902495,
-            "stress_sprinter": 0.034799881,
-            "comfort_creature": 0.001864736,
-            "adventure_fuse": 0.028424037,
-            "reset_needed": 0.032383231
-          },
-          {
-            "centenarian_energy": 0.927084651,
-            "steady_long_game": 0.001676413,
-            "balanced_realist": 0.000759863,
-            "weekend_chaos": 0.049884715,
-            "stress_sprinter": 0.035410831,
-            "comfort_creature": 0.001897495,
-            "adventure_fuse": 0.028922895,
-            "reset_needed": 0.032951227
-          }
+          { "reset_needed": 0.949367 },
+          { "stress_sprinter": 1.595745 },
+          { "balanced_realist": 0.842697 },
+          { "steady_long_game": 0.797872 },
+          { "centenarian_energy": 0.914634 }
         ]
       },
-      "r4q5": {
+      "r4q2": {
         "choiceCount": 3,
         "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "reset_needed": 1.141570473
-          }
-        ]
-      },
-      "r4q6": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "comfort_creature": 1.374612798
-          },
-          {
-            "steady_long_game": 0.789882145
-          }
-        ]
-      },
-      "r10q3": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 0.003540395,
-            "steady_long_game": 0.003393242,
-            "balanced_realist": 0.707926309,
-            "weekend_chaos": 0.100958611,
-            "stress_sprinter": 0.07166526,
-            "comfort_creature": 0.003840348,
-            "adventure_fuse": 0.058534214,
-            "reset_needed": 0.06669077
-          },
-          {
-            "centenarian_energy": 0.001782861,
-            "steady_long_game": 0.001708922,
-            "balanced_realist": 0.000774476,
-            "weekend_chaos": 0.050837219,
-            "stress_sprinter": 0.036086518,
-            "comfort_creature": 1.056817691,
-            "adventure_fuse": 0.02947436,
-            "reset_needed": 0.033581508
-          },
-          {
-            "centenarian_energy": 0.000079287,
-            "steady_long_game": 0.00007644,
-            "balanced_realist": 0.000034444,
-            "weekend_chaos": 0.002274996,
-            "stress_sprinter": 0.001615376,
-            "comfort_creature": 0.000086937,
-            "adventure_fuse": 0.0013188,
-            "reset_needed": 0.924349506
-          }
-        ]
-      },
-      "r10q4": {
-        "presentation": "text",
-        "choiceCount": 4,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 0.205229487,
-            "steady_long_game": 0.587070459,
-            "balanced_realist": 0.000707675,
-            "weekend_chaos": 0.046450486,
-            "stress_sprinter": 0.0329731,
-            "comfort_creature": 0.001766459,
-            "adventure_fuse": 0.026931997,
-            "reset_needed": 0.03068389
-          },
-          {
-            "centenarian_energy": 0.002606568,
-            "steady_long_game": 0.314786047,
-            "balanced_realist": 0.425537985,
-            "weekend_chaos": 0.074325221,
-            "stress_sprinter": 0.052760197,
-            "comfort_creature": 0.002827343,
-            "adventure_fuse": 0.043093191,
-            "reset_needed": 0.049095897
-          },
-          {
-            "centenarian_energy": 0.000089198,
-            "steady_long_game": 0.000085226,
-            "balanced_realist": 0.000038619,
-            "weekend_chaos": 0.951506576,
-            "stress_sprinter": 0.001796436,
-            "comfort_creature": 0.012128344,
-            "adventure_fuse": 0.00146755,
-            "reset_needed": 0.001670523
-          },
-          {
-            "centenarian_energy": 0.000099109,
-            "steady_long_game": 0.000094891,
-            "balanced_realist": 0.000042794,
-            "weekend_chaos": 0.002815005,
-            "stress_sprinter": 0.751441352,
-            "comfort_creature": 0.000107096,
-            "adventure_fuse": 0.001632627,
-            "reset_needed": 0.234327791
-          }
-        ]
-      },
-      "r9q4": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "reset_needed": 1.141570473
-          }
-        ]
-      },
-      "r6q1": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "balanced_realist": 0.479611434,
-            "adventure_fuse": 0.423122506
-          },
-          {
-            "adventure_fuse": 0.846245013
-          }
-        ]
-      },
-      "r6q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "weekend_chaos": 0.540975629,
-            "centenarian_energy": 0.582540895
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
-        ]
-      },
-      "r6q3": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "weekend_chaos": 0.540975629,
-            "balanced_realist": 0.479611434
-          },
-          {
-            "balanced_realist": 0.959222869
-          }
-        ]
-      },
-      "r6q4": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "steady_long_game": 0.394941072,
-            "adventure_fuse": 0.423122506
-          },
-          {
-            "adventure_fuse": 0.846245013
-          }
-        ]
-      },
-      "r6q5": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "adventure_fuse": 0.423122506,
-            "reset_needed": 0.570785237
-          },
-          {
-            "reset_needed": 1.141570473
-          }
+          { "stress_sprinter": 1.595745 },
+          { "comfort_creature": 0.914634 },
+          { "steady_long_game": 0.797872 }
         ]
       },
       "r6q6": {
         "presentation": "scale",
         "choiceCount": 5,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 0.000127741,
-            "steady_long_game": 0.000123007,
-            "balanced_realist": 0.00005532,
-            "weekend_chaos": 0.003657382,
-            "stress_sprinter": 0.002595527,
-            "comfort_creature": 0.017528518,
-            "adventure_fuse": 0.002120601,
-            "reset_needed": 0.908319179
-          },
-          {
-            "centenarian_energy": 0.000339173,
-            "steady_long_game": 0.000325091,
-            "balanced_realist": 0.000147171,
-            "weekend_chaos": 0.009676702,
-            "stress_sprinter": 0.006869143,
-            "comfort_creature": 0.138397428,
-            "adventure_fuse": 0.005609888,
-            "reset_needed": 0.805369602
-          },
-          {
-            "centenarian_energy": 0.002816899,
-            "steady_long_game": 0.002700887,
-            "balanced_realist": 0.460010514,
-            "weekend_chaos": 0.080346473,
-            "stress_sprinter": 0.057033813,
-            "comfort_creature": 0.385091917,
-            "adventure_fuse": 0.046583384,
-            "reset_needed": 0.053073731
-          },
-          {
-            "centenarian_energy": 0.205229487,
-            "steady_long_game": 0.587070459,
-            "balanced_realist": 0.000707675,
-            "weekend_chaos": 0.046450486,
-            "stress_sprinter": 0.0329731,
-            "comfort_creature": 0.001766459,
-            "adventure_fuse": 0.026931997,
-            "reset_needed": 0.03068389
-          },
-          {
-            "centenarian_energy": 0.138717413,
-            "steady_long_game": 0.000354085,
-            "balanced_realist": 0.000159697,
-            "weekend_chaos": 0.01052101,
-            "stress_sprinter": 0.007468967,
-            "comfort_creature": 0.000400666,
-            "adventure_fuse": 0.768610877,
-            "reset_needed": 0.006949822
-          }
+          { "reset_needed": 0.949367 },
+          { "comfort_creature": 0.914634 },
+          { "balanced_realist": 0.842697 },
+          { "steady_long_game": 0.797872 },
+          { "adventure_fuse": 1.119403 }
         ]
       },
       "r7q4": {
         "choiceCount": 3,
         "choiceMeanings": [
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "reset_needed": 1.141570473
-          }
-        ]
-      },
-      "r7q6": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "reset_needed": 1.141570473
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
-        ]
-      },
-      "r7q1": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "comfort_creature": 1.374612798
-          }
-        ]
-      },
-      "r7q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "steady_long_game": 0.789882145
-          }
-        ]
-      },
-      "r7q3": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "weekend_chaos": 1.081951257
-          }
+          { "steady_long_game": 0.797872 },
+          { "weekend_chaos": 1.25 },
+          { "reset_needed": 0.949367 }
         ]
       },
       "r8q1": {
         "presentation": "icons",
-        "icons": [
-          "🌿",
-          "😂",
-          "🛋️"
-        ],
+        "icons": ["🌿", "😂", "🛋️"],
         "choiceCount": 3,
         "choiceMeanings": [
-          {
-            "centenarian_energy": 1.165081789
-          },
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "comfort_creature": 1.374612798
-          }
-        ]
-      },
-      "r8q5": {
-        "presentation": "icons",
-        "icons": [
-          "🎉",
-          "🏠",
-          "☀️"
-        ],
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "weekend_chaos": 1.081951257
-          },
-          {
-            "comfort_creature": 1.374612798
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
+          { "centenarian_energy": 0.914634 },
+          { "weekend_chaos": 1.25 },
+          { "comfort_creature": 0.914634 }
         ]
       },
       "r9q5": {
         "choiceCount": 3,
         "choiceMeanings": [
-          {
-            "adventure_fuse": 0.846245013
-          },
-          {
-            "reset_needed": 1.141570473
-          },
-          {
-            "balanced_realist": 0.959222869
-          }
-        ]
-      },
-      "r10q2": {
-        "choiceCount": 3,
-        "choiceMeanings": [
-          {
-            "centenarian_energy": 1.165081789
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "reset_needed": 1.141570473
-          }
+          { "adventure_fuse": 1.119403 },
+          { "reset_needed": 0.949367 },
+          { "balanced_realist": 0.842697 }
         ]
       },
       "r10q6": {
-        "calibration": [
-          -1,
-          -0.25,
-          0.5,
-          1
-        ],
+        "calibration": [-1, -0.25, 0.5, 1],
         "choiceCount": 4,
         "choiceMeanings": [
-          {
-            "stress_sprinter": 1.157163826
-          },
-          {
-            "balanced_realist": 0.959222869
-          },
-          {
-            "steady_long_game": 0.789882145
-          },
-          {
-            "centenarian_energy": 1.165081789
-          }
+          { "stress_sprinter": 1.595745 },
+          { "balanced_realist": 0.842697 },
+          { "steady_long_game": 0.797872 },
+          { "centenarian_energy": 0.914634 }
         ]
       }
     },
     "checkpoint": {
-      "finalIcon": "⚰️"
+      "finalIcon": "⌛"
     },
     "results": {
       "profiles": [
-        {
-          "key": "centenarian_energy",
-          "id": "centenarian_energy"
-        },
-        {
-          "key": "steady_long_game",
-          "id": "steady_long_game"
-        },
-        {
-          "key": "balanced_realist",
-          "id": "balanced_realist"
-        },
-        {
-          "key": "weekend_chaos",
-          "id": "weekend_chaos"
-        },
-        {
-          "key": "stress_sprinter",
-          "id": "stress_sprinter"
-        },
-        {
-          "key": "comfort_creature",
-          "id": "comfort_creature"
-        },
-        {
-          "key": "adventure_fuse",
-          "id": "adventure_fuse"
-        },
-        {
-          "key": "reset_needed",
-          "id": "reset_needed"
-        }
+        { "key": "centenarian_energy", "id": "centenarian_energy" },
+        { "key": "steady_long_game", "id": "steady_long_game" },
+        { "key": "balanced_realist", "id": "balanced_realist" },
+        { "key": "weekend_chaos", "id": "weekend_chaos" },
+        { "key": "stress_sprinter", "id": "stress_sprinter" },
+        { "key": "comfort_creature", "id": "comfort_creature" },
+        { "key": "adventure_fuse", "id": "adventure_fuse" },
+        { "key": "reset_needed", "id": "reset_needed" }
       ],
       "dimensions": [
-        {
-          "key": "dimension-1",
-          "profiles": [
-            "centenarian_energy",
-            "steady_long_game"
-          ]
-        },
-        {
-          "key": "dimension-2",
-          "profiles": [
-            "balanced_realist",
-            "comfort_creature",
-            "reset_needed"
-          ]
-        },
-        {
-          "key": "dimension-3",
-          "profiles": [
-            "weekend_chaos",
-            "adventure_fuse"
-          ]
-        },
-        {
-          "key": "dimension-4",
-          "profiles": [
-            "stress_sprinter"
-          ]
-        }
+        { "key": "dimension-1", "profiles": ["centenarian_energy", "steady_long_game"] },
+        { "key": "dimension-2", "profiles": ["balanced_realist", "comfort_creature", "reset_needed"] },
+        { "key": "dimension-3", "profiles": ["weekend_chaos", "adventure_fuse"] },
+        { "key": "dimension-4", "profiles": ["stress_sprinter"] }
       ],
       "estimate": {
         "reviewUnlockRewarded": false

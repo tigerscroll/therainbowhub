@@ -444,18 +444,25 @@ for (const folder of folders) {
     fail(JSON.stringify(source.career?.stages?.[4]?.preAdChecks) === JSON.stringify(["40 answers checked", "Skill breakdown prepared", "Final score calculated"]), `${folder.name}/en.json: entrance-exam final checklist changed.`);
   }
   if (folder.name === "years-left") {
-    const expectedStages = ["Everyday Rhythm", "Fuel & Movement", "Rest & Resilience", "Connection & Choices", "Final Prediction"];
+    const expectedIds = ["r1q3", "r2q1", "r3q2", "r4q3", "r4q2", "r6q6", "r7q4", "r8q1", "r9q5", "r10q6"];
+    const expectedHeaderLabels = ["EVERYDAY RHYTHM", "FOOD AND FUEL", "DAILY MOVEMENT", "SLEEP AND RECOVERY", "STRESS RESPONSE", "SOCIAL CONNECTION", "ADAPTABILITY", "EVERYDAY JOY", "FUTURE SELF", "FINAL PREDICTION"];
     const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.engine?.flow === "staged" && source.progressLabel === "complete", "years-left: must use its staged prediction flow.");
-    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), "years-left/en.json: must contain five stages of eight interactions.");
-    fail(JSON.stringify(source.stages?.map((stage) => stage.title)) === JSON.stringify(expectedStages), "years-left/en.json: prediction-stage order changed.");
-    fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, "years-left/en.json: must contain 40 unique interactions.");
+    fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]), "years-left: must remain English-only.");
+    fail(config.template === "single-stage-rewarded-v1" && config.engine?.flow === "linear" && source.progressLabel === "complete", "years-left: must use the shared single-stage prediction flow.");
+    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10 && source.stages[0]?.title === "Lifestyle Prediction", "years-left/en.json: must contain one ten-question Lifestyle Prediction stage.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "years-left/en.json: compact question selection or order changed.");
+    fail(JSON.stringify(sourceQuestions.map((question) => question.headerLabel)) === JSON.stringify(expectedHeaderLabels), "years-left/en.json: question-type labels changed.");
+    fail(sourceQuestions.length === 10 && new Set(sourceQuestionIds).size === 10, "years-left/en.json: must contain ten unique interactions.");
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "years-left/en.json: compact screens must not use separate context banners.");
     fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
     fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
+    fail(sourceQuestions.every((question) => {
+      const answers = Object.keys(question.answers ?? {});
+      return answers.length >= 3 && answers.length <= 5 && new Set(answers).size === answers.length;
+    }), "years-left/en.json: every interaction needs three to five unique choices.");
     fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
     fail(config.engine?.startOnLoad === false && config.engine?.rewarded?.start === true && config.engine?.rewarded?.confirmStart === false, "years-left: must open on its landing and use the direct rewarded Start flow.");
-    fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs one rewarded result gate after every stage.");
+    fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs one rewarded result gate after the ten questions.");
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
     fail(source.landing?.startPrompt === undefined && source.landing?.startNote === undefined, "years-left/en.json: rewarded Start helper must use the shared template.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
@@ -463,26 +470,15 @@ for (const folder of folders) {
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
     fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: compact estimate calibration is incorrect.");
     fail(byId.get("r2q1")?.presentation === "icons" && byId.get("r2q1")?.icons?.length === 4, "years-left: snack-table interaction needs four aligned icons.");
-    fail(byId.get("r3q6")?.presentation === "icons" && JSON.stringify(byId.get("r3q6")?.icons) === JSON.stringify(["🛋️", "🚶", "🚴", "🏃"]), "years-left: movement interaction icons changed.");
     fail(byId.get("r4q3")?.presentation === "scale" && Object.keys(byId.get("r4q3")?.answers ?? {}).length === 5, "years-left: rested interaction must remain a five-stop scale.");
     fail(byId.get("r6q6")?.presentation === "scale" && Object.keys(byId.get("r6q6")?.answers ?? {}).length === 5, "years-left: social connection must remain a five-stop scale.");
-    fail(["r6q1", "r6q2", "r6q3", "r6q4", "r6q5"].every((id) => Object.keys(byId.get(id)?.answers ?? {}).length === 3), "years-left: the first five Connection & Choices interactions must retain three nuanced choices.");
-    fail(byId.get("r1q5")?.question === "When your energy dips halfway through the day, what helps most?", "years-left: Everyday Rhythm must not repeat the earlier free-evening interaction.");
     fail(byId.get("r3q2")?.presentation === "icons" && JSON.stringify(byId.get("r3q2")?.icons) === JSON.stringify(["🚗", "🚌", "🚶", "🚲"]), "years-left: everyday activity icons changed.");
-    fail(byId.get("r10q4")?.presentation === "text" && Object.keys(byId.get("r10q4")?.answers ?? {}).length === 4, "years-left: habit consistency must remain a compact four-choice interaction.");
     fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");
     fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("r10q6")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
-    fail(source.career?.stages?.[4]?.preAdButton === "See My Estimate", "years-left/en.json: final gate changed.");
-    fail(JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])) === JSON.stringify([
-      ["Your daily rhythm is in", "Your everyday habits have started shaping the estimate."],
-      ["Your lifestyle picture is sharpening", "Food and movement are now in the calculation."],
-      ["Recovery patterns added", "Sleep, stress and recovery have shifted the picture."],
-      ["Your estimate is almost ready", "One final prediction round remains."],
-      ["YOUR ESTIMATE IS READY", "Your prediction is complete."],
-    ]), "years-left/en.json: prediction checkpoint progression changed.");
-    fail(source.career?.stages?.slice(0, 4).every((stage) => stage.preAdChecks === undefined) && source.career?.stages?.[4]?.preAdChecks?.length === 3, "years-left/en.json: only the final estimate gate may show checklist rows.");
-    fail(source.checkpoint?.finalAdNote === "Short ad first — then see your estimate.", "years-left/en.json: final rewarded checkpoint helper copy changed.");
-    fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next?.button === undefined), "years-left/en.json: intermediate stage CTAs must use the shared Continue label.");
+    const gate = source.career?.stages?.[0];
+    fail(source.career?.stages?.length === 1 && gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final rewarded estimate gate.");
+    fail(gate?.preAdBadge === "LIFESTYLE QUIZ COMPLETE" && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "Your age estimate and lifestyle profile are ready to reveal." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
+    fail(source.checkpoint?.finalAdNote === "One short ad, then your estimate.", "years-left/en.json: final rewarded checkpoint helper copy changed.");
     fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
   }
   if (folder.name === "memory") {
@@ -497,7 +493,7 @@ for (const folder of folders) {
       "WORD RECALL",
       "VISUAL MEMORY",
       "NUMBER RECALL",
-      "CODE RECALL",
+      "CODE MATCH",
       "WORKING MEMORY",
       "ORDER RECALL",
       "DETAIL MEMORY",
