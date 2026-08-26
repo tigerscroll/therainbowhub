@@ -60,12 +60,27 @@ function RecommendationCard({ recommendation }: { recommendation: QuizRecommenda
         <img alt={recommendation.thumbnailAlt} decoding="async" loading="lazy" src={recommendation.thumbnailUrl} />
       </span>
       <div className="quiz-engine__recommendation-copy">
-        <span>RECOMMENDED NEXT</span>
         <h3>{recommendation.title}</h3>
         <p>{recommendation.summary}</p>
       </div>
       <span className="quiz-engine__recommendation-arrow" aria-hidden="true">→</span>
     </a>
+  );
+}
+
+function Recommendations({ recommendations }: { recommendations: QuizRecommendation[] }) {
+  return (
+    <section className="quiz-engine__recommendations" aria-label="Recommended quizzes">
+      <header>
+        <span>RECOMMENDED NEXT</span>
+        <h3>Try another challenge</h3>
+      </header>
+      <div className="quiz-engine__recommendation-grid">
+        {recommendations.map((recommendation) => (
+          <RecommendationCard key={recommendation.href} recommendation={recommendation} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -354,7 +369,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [showStartPrompt, setShowStartPrompt] = useState(false);
   const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
-  const [recommendation, setRecommendation] = useState<QuizRecommendation | null>(null);
+  const [recommendedQuizzes, setRecommendedQuizzes] = useState<QuizRecommendation[]>([]);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -414,10 +429,15 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
   useEffect(() => {
     if (!recommendations.length) return;
-    const randomValue = typeof window.crypto?.getRandomValues === "function"
-      ? window.crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32
-      : Math.random();
-    setRecommendation(recommendations[Math.floor(randomValue * recommendations.length)]);
+    const pool = [...recommendations];
+    for (let index = pool.length - 1; index > 0; index -= 1) {
+      const randomValue = typeof window.crypto?.getRandomValues === "function"
+        ? window.crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32
+        : Math.random();
+      const swapIndex = Math.floor(randomValue * (index + 1));
+      [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
+    }
+    setRecommendedQuizzes(pool.slice(0, 3));
   }, [recommendations]);
 
   useLayoutEffect(() => {
@@ -1037,7 +1057,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         ) : null}
           </>
         )}
-        {recommendation ? <RecommendationCard recommendation={recommendation} /> : null}
+        {recommendedQuizzes.length ? <Recommendations recommendations={recommendedQuizzes} /> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
