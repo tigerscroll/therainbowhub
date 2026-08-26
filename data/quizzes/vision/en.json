@@ -9,75 +9,34 @@
     "cta": "Start Test"
   },
   "about": {
-    "body": "This Optical Focus Lab condenses colour contrast, tiny details, patterns, visual memory, attention and spatial reasoning into five varied rounds and 40 visual challenges. Each screen uses a different visual task, from fast comparisons to a genuine contrast illusion and two-step rotations.\n\nThe quiz is designed for worldwide entertainment and general learning. It measures only how accurately you answer the puzzles shown on your current screen; brightness, display calibration, screen size, viewing distance and surrounding light can all affect what you see.\n\nYour final percentage reflects your answers in this quiz, not the health or quality of your eyesight. A real vision assessment requires appropriate equipment and a qualified eye-care professional. The 7% headline and participation figure are promotional entertainment wording, not live performance data.",
+    "body": "This entertainment challenge contains ten visual puzzles covering colour contrast, detail matching, spatial orientation, pattern tracking, attention and visual memory. The tasks become more demanding without relying on specialist terminology.\n\nStudy each image or symbol set carefully, then choose the answer best supported by what is shown. Some questions test perception and attention rather than eyesight itself.\n\nThis is not an eye examination, medical vision test or diagnosis. Seek qualified eye-care advice if you have concerns about your sight.",
     "howToPlay": {
       "title": "How to Play",
       "steps": [
-        "Complete 40 varied visual challenges across five increasingly difficult rounds.",
-        "Correct answers stay hidden while you play, so compare colours, symbols, records and rotations carefully.",
-        "Finish the test to reveal your Vision Score, strongest visual skill and complete result report."
+        "Complete ten carefully selected questions in one focused challenge.",
+        "Choose one answer each time. Correctness remains hidden until the final reveal.",
+        "Reveal your result, skill breakdown and complete answer review after the final question."
       ]
     },
     "disclaimer": "For entertainment only. This quiz is not an eye examination and cannot diagnose vision conditions."
   },
   "checkpoint": {
-    "finalAdNote": "Short ad first — then see your result."
+    "finalAdNote": "One short ad, then your results."
   },
   "career": {
     "resultProgressLabel": "Vision challenge",
     "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
-        "difficulty": "Foundation",
-        "preAdBadge": "FIRST FOCUS COMPLETE",
-        "preAdTitle": "First focus cleared",
-        "preAdCopy": "Good start. The next visual trap is harder.",
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · DEVELOPING",
-          "tagline": "Forms. Differences. Visual order."
-        }
-      },
-      "stage-2": {
-        "difficulty": "Developing",
-        "preAdBadge": "SHAPE & DETAIL COMPLETE",
-        "preAdTitle": "The details are getting tighter",
-        "preAdCopy": "Pattern Tracking is next.",
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · SKILLED",
-          "tagline": "Sequences. Rotation. Direction."
-        }
-      },
-      "stage-3": {
-        "difficulty": "Skilled",
-        "preAdBadge": "PATTERN TRACKING COMPLETE",
-        "preAdTitle": "More than halfway through",
-        "preAdCopy": "Optical Trapdoors are next.",
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · ADVANCED",
-          "tagline": "Interference. Tracking. Tiny changes."
-        }
-      },
-      "stage-4": {
-        "difficulty": "Advanced",
-        "preAdBadge": "OPTICAL TRAPDOORS COMPLETE",
-        "preAdTitle": "Final focus next",
-        "preAdCopy": "One last visual challenge remains.",
-        "next": {
-          "eyebrow": "NEXT CHALLENGE · FINAL ASSESSMENT",
-          "tagline": "Mixed clues. Final visual test."
-        }
-      },
-      "stage-5": {
-        "difficulty": "Final Assessment",
-        "preAdBadge": "VISION CHALLENGE COMPLETE",
-        "preAdTitle": "VISION CHALLENGE COMPLETE",
-        "preAdCopy": "Your visual-puzzle score is ready to reveal.",
+        "difficulty": "Vision Challenge",
+        "preAdTitle": "Your results are ready",
+        "preAdCopy": "Your vision-challenge score and three-skill breakdown are ready to reveal.",
         "preAdChecks": [
-          "40 answers checked",
-          "Six visual skills compared",
-          "Final score calculated"
+          "10 answers checked",
+          "Three visual skills compared",
+          "Your final score calculated"
         ],
-        "preAdButton": "See My Result"
+        "preAdButton": "Reveal My Results"
       }
     }
   },
@@ -132,7 +91,7 @@
       "correctLabel": "correct",
       "strongest": "Strongest visual skill",
       "trickiest": "Trickiest visual skill",
-      "bestRound": "Best challenge",
+      "bestRound": "Best section",
       "insights": {
         "overview": "Your vision score at a glance",
         "correct": "Correct answers",
@@ -142,12 +101,13 @@
         "snapshot": "What your focus profile suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      }
+      },
+      "showBestRound": false
     }
   },
   "stages": {
     "stage-1": {
-      "title": "First Focus",
+      "title": "Vision Challenge",
       "questions": {
         "vision-r1q1": {
           "visual": {
@@ -165,25 +125,8 @@
             "Bottom right",
             "Top right",
             "Bottom left"
-          ]
-        },
-        "vision-r3q4": {
-          "visual": {
-            "items": [
-              "left-half",
-              "left-half",
-              "right-half",
-              "left-half"
-            ],
-            "ariaLabel": "Four half-filled circles; the third is filled on the opposite side"
-          },
-          "question": "Which position contains the different symbol?",
-          "answers": [
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ]
+          ],
+          "headerLabel": "COLOUR CONTRAST"
         },
         "vision-r1q2": {
           "context": "REFERENCE: M7K2P9",
@@ -200,123 +143,8 @@
             "M7K2R9",
             "M7KZP9",
             "N7K2P9"
-          ]
-        },
-        "vision-r1q3": {
-          "visual": {
-            "items": [
-              "▲",
-              "●",
-              "▲",
-              "●",
-              "?"
-            ],
-            "ariaLabel": "Triangle, circle, triangle, circle, unknown"
-          },
-          "question": "What comes next in the pattern?",
-          "answers": [
-            "■",
-            "●",
-            "◆",
-            "▲"
-          ]
-        },
-        "vision-r1q4": {
-          "visual": {
-            "items": [
-              "↑",
-              "→",
-              "↓",
-              "?"
-            ],
-            "ariaLabel": "Up arrow, right arrow, down arrow, unknown"
-          },
-          "question": "The arrow turns right each time. What comes next?",
-          "answers": [
-            "↑",
-            "→",
-            "↓",
-            "←"
-          ]
-        },
-        "vision-r1q5": {
-          "question": "Which icon appeared first?",
-          "answers": [
-            "Star",
-            "Key",
-            "Umbrella",
-            "Lemon"
           ],
-          "study": {
-            "title": "Remember the order",
-            "items": [
-              "⭐",
-              "🍋",
-              "🔑",
-              "☂️"
-            ]
-          }
-        },
-        "vision-r1q6": {
-          "visual": {
-            "items": [
-              "● ● ○ ● ○ ●"
-            ],
-            "ariaLabel": "Four filled circles and two outline circles"
-          },
-          "question": "How many filled circles are shown?",
-          "answers": [
-            "3",
-            "6",
-            "5",
-            "4"
-          ]
-        },
-        "vision-r2q1": {
-          "visual": {
-            "items": [
-              "🔵",
-              "🔵",
-              "🔵",
-              "🔵",
-              "🟣",
-              "🔵",
-              "🔵",
-              "🔵",
-              "🔵"
-            ],
-            "ariaLabel": "A three by three grid with violet in the centre and blue elsewhere"
-          },
-          "question": "Where is the violet tile?",
-          "answers": [
-            "Centre",
-            "Bottom right",
-            "Top left",
-            "Top right"
-          ]
-        }
-      }
-    },
-    "stage-2": {
-      "title": "Shape & Detail",
-      "questions": {
-        "vision-r4q3": {
-          "visual": {
-            "items": [
-              "↗",
-              "↘",
-              "↙",
-              "?"
-            ],
-            "ariaLabel": "Four numbered rotation steps: northeast, southeast, southwest, then unknown"
-          },
-          "question": "Which arrow belongs in step 4?",
-          "answers": [
-            "↖",
-            "↘",
-            "↗",
-            "↓"
-          ]
+          "headerLabel": "DETAIL MATCH"
         },
         "vision-r5q1": {
           "visual": {
@@ -333,34 +161,8 @@
             "↘",
             "↗",
             "↖"
-          ]
-        },
-        "vision-r3q1": {
-          "question": "Which pair is completely identical?",
-          "answers": [
-            "R7Q3B6 / R7O3B6",
-            "K4M8P2 / K4M8P2",
-            "T9L2C5 / T9LZC5",
-            "A6D4N8 / A6D4M8"
-          ]
-        },
-        "vision-r3q2": {
-          "question": "Which row contains exactly seven dots?",
-          "answers": [
-            "••••••",
-            "•••••",
-            "••••••••",
-            "•••••••"
-          ]
-        },
-        "vision-r3q5": {
-          "question": "Which symbol looks unchanged after a half-turn?",
-          "answers": [
-            "L",
-            "↑",
-            "●",
-            "↗"
-          ]
+          ],
+          "headerLabel": "SPATIAL ORIENTATION"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
@@ -370,107 +172,8 @@
             "7",
             "8",
             "9"
-          ]
-        },
-        "vision-r5q5": {
-          "visual": {
-            "items": [
-              "■",
-              "□",
-              "□",
-              "■",
-              "□",
-              "□",
-              "?"
-            ],
-            "ariaLabel": "Filled square, two outline squares, filled square, two outline squares, unknown"
-          },
-          "question": "Which tile comes next?",
-          "answers": [
-            "●",
-            "□",
-            "■",
-            "◇"
-          ]
-        },
-        "vision-r5q6": {
-          "question": "Which object was in the bottom-left position?",
-          "answers": [
-            "Key",
-            "Leaf",
-            "Moon",
-            "Star"
           ],
-          "study": {
-            "title": "Remember the four positions",
-            "items": [
-              "TOP LEFT — STAR",
-              "TOP RIGHT — MOON",
-              "BOTTOM LEFT — KEY",
-              "BOTTOM RIGHT — LEAF"
-            ]
-          }
-        }
-      }
-    },
-    "stage-3": {
-      "title": "Pattern Tracking",
-      "questions": {
-        "vision-r9q5": {
-          "question": "What sat immediately right of the gold triangle?",
-          "answers": [
-            "Violet star",
-            "Coral square",
-            "Blue circle",
-            "Green diamond"
-          ],
-          "study": {
-            "title": "Memorise the five-tile row",
-            "items": [
-              "blue-circle",
-              "gold-triangle",
-              "coral-square",
-              "green-diamond",
-              "violet-star"
-            ],
-            "ariaLabel": "Blue circle, gold triangle, coral square, green diamond, violet star"
-          }
-        },
-        "vision-r7q2": {
-          "visual": {
-            "items": [
-              "A7Q",
-              "B4M",
-              "C2R",
-              "B4M"
-            ],
-            "ariaLabel": "Codes A7Q, B4M, C2R and B4M"
-          },
-          "question": "Which code appears twice?",
-          "answers": [
-            "B4M",
-            "A7Q",
-            "C2R",
-            "None"
-          ]
-        },
-        "vision-r4q1": {
-          "visual": {
-            "items": [
-              "▲",
-              "■",
-              "⬟",
-              "?"
-            ],
-            "ariaLabel": "Triangle, square, pentagon, unknown"
-          },
-          "question": "Which shape continues the increasing side count?",
-          "answers": [
-            "Circle",
-            "Hexagon",
-            "Triangle",
-            "Square"
-          ]
+          "headerLabel": "ATTENTION CONTROL"
         },
         "vision-r4q2": {
           "visual": {
@@ -490,7 +193,8 @@
             "XX",
             "OO",
             "X"
-          ]
+          ],
+          "headerLabel": "PATTERN TRACKING"
         },
         "vision-r4q5": {
           "question": "Which colour stands out most against deep navy?",
@@ -499,65 +203,8 @@
             "Swatch B",
             "Swatch D",
             "Swatch C"
-          ]
-        },
-        "vision-r4q6": {
-          "context": "REFERENCE: ◇ ● ▲ ■",
-          "question": "Which row repeats the reference exactly?",
-          "answers": [
-            "◇ ● ■ ▲",
-            "◇ ● ▲ ■",
-            "◇ ○ ▲ ■",
-            "● ◇ ▲ ■"
-          ]
-        },
-        "vision-r6q1": {
-          "question": "Which number was paired with blue?",
-          "answers": [
-            "2",
-            "7",
-            "4",
-            "9"
           ],
-          "study": {
-            "title": "Remember the colour–number pairs",
-            "items": [
-              "RED — 4",
-              "BLUE — 7",
-              "GOLD — 2"
-            ]
-          }
-        },
-        "vision-r6q6": {
-          "context": "REFERENCE: R3M8K2",
-          "question": "Which code is unchanged?",
-          "answers": [
-            "R3N8K2",
-            "R3M8K2",
-            "P3M8K2",
-            "R3M8KZ"
-          ]
-        }
-      }
-    },
-    "stage-4": {
-      "title": "Optical Trapdoors",
-      "questions": {
-        "vision-r9q1": {
-          "visual": {
-            "items": [
-              "light panel",
-              "dark panel"
-            ],
-            "ariaLabel": "Simultaneous contrast panels"
-          },
-          "question": "The centre squares are identical. Why can they still appear different?",
-          "answers": [
-            "One must secretly be brighter",
-            "The colour changes with viewing distance",
-            "Identical colours always look identical",
-            "Surrounding contrast changes their appearance"
-          ]
+          "headerLabel": "COLOUR FOCUS"
         },
         "vision-r8q3": {
           "image": {
@@ -569,50 +216,8 @@
             "B",
             "C",
             "D"
-          ]
-        },
-        "vision-r7q1": {
-          "context": "THE OTHER THEME HID THE WORD THE.",
-          "question": "How many standalone instances of THE appear?",
-          "answers": [
-            "5",
-            "4",
-            "3",
-            "6"
-          ]
-        },
-        "vision-r7q3": {
-          "visual": {
-            "items": [
-              "○  ○  ⊙  ○"
-            ],
-            "ariaLabel": "Four circles with a dot inside the third"
-          },
-          "question": "Which position contains the dot inside a circle?",
-          "answers": [
-            "First",
-            "Second",
-            "Fourth",
-            "Third"
-          ]
-        },
-        "vision-r7q5": {
-          "visual": {
-            "items": [
-              "⚫🟡⚫",
-              "⚫🟣⚫",
-              "⚫🔵⚫",
-              "⚫🟢⚫"
-            ],
-            "ariaLabel": "Four dark clusters with yellow, violet, blue and green centre tiles"
-          },
-          "question": "Which centre tile is easiest to spot in the dark cluster?",
-          "answers": [
-            "Bottom left",
-            "Top right",
-            "Top left",
-            "Bottom right"
-          ]
+          ],
+          "headerLabel": "VISUAL TRACKING"
         },
         "vision-r9q2": {
           "context": "VERSION A: FOCUS-M7Q2-2026\nVERSION B: F0CUS-M7Q2-2026",
@@ -622,50 +227,9 @@
             "The Q",
             "The second character",
             "The final digit"
-          ]
+          ],
+          "headerLabel": "DETAIL DETECTION"
         },
-        "vision-r9q4": {
-          "context": "First rotate the arrow 90° clockwise. Then reflect that result in a vertical mirror.",
-          "visual": {
-            "items": [
-              "↗",
-              "↻ 90°",
-              "│",
-              "?"
-            ],
-            "ariaLabel": "Northeast arrow, clockwise quarter-turn, then vertical mirror"
-          },
-          "question": "Where does the arrow finally point?",
-          "answers": [
-            "↗",
-            "↘",
-            "↙",
-            "↖"
-          ]
-        },
-        "vision-r9q6": {
-          "visual": {
-            "items": [
-              "BLUE 🟦",
-              "GREEN 🟩",
-              "RED 🟦",
-              "GOLD 🟨"
-            ],
-            "ariaLabel": "Four colour labels and tiles with the third label mismatched"
-          },
-          "question": "Which label conflicts with its colour tile?",
-          "answers": [
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ]
-        }
-      }
-    },
-    "stage-5": {
-      "title": "Final Focus",
-      "questions": {
         "vision-r10q2": {
           "visual": {
             "items": [
@@ -680,70 +244,8 @@
             "8 and 6",
             "Q and P",
             "K and R"
-          ]
-        },
-        "vision-r10q4": {
-          "image": {
-            "alt": "Four illustrated steps showing a square folded right, folded down, punched once through the small folded square, then unfolded to an unknown result"
-          },
-          "question": "A square is folded twice, then punched once through every layer away from folds. How many holes appear after unfolding?",
-          "answers": [
-            "1",
-            "2",
-            "4",
-            "8"
-          ]
-        },
-        "vision-r8q1": {
-          "visual": {
-            "items": [
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9"
-            ],
-            "ariaLabel": "Nine fixed blue swatches with one teal shift"
-          },
-          "question": "Which tile shifts toward green?",
-          "answers": [
-            "Top left",
-            "Centre",
-            "Bottom right",
-            "Bottom centre"
-          ]
-        },
-        "vision-r8q2": {
-          "context": "MATCH: V6K9-M2Q8",
-          "question": "Which code matches exactly?",
-          "answers": [
-            "V6K9-M2Q3",
-            "V6K9-M2Q8",
-            "V6K9-M2O8",
-            "V6K9-N2Q8"
-          ]
-        },
-        "vision-r8q4": {
-          "visual": {
-            "items": [
-              "↘",
-              "↻ 90°",
-              "↻ 90°",
-              "?"
-            ],
-            "ariaLabel": "Southeast arrow followed by two clockwise quarter-turns"
-          },
-          "question": "Turn ↘ right twice.",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ]
+          ],
+          "headerLabel": "CODE COMPARISON"
         },
         "vision-r8q5": {
           "question": "Which icon appeared fourth?",
@@ -762,44 +264,8 @@
               "⚓",
               "🪶"
             ]
-          }
-        },
-        "vision-r8q6": {
-          "visual": {
-            "items": [
-              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
-            ],
-            "ariaLabel": "Five filled stars mixed with seven outline or geometric distractors"
           },
-          "question": "How many filled stars?",
-          "answers": [
-            "5",
-            "3",
-            "4",
-            "2"
-          ]
-        },
-        "vision-r10q3": {
-          "context": "Track the shape cycle and fill cycle independently.",
-          "visual": {
-            "items": [
-              "●",
-              "□",
-              "○",
-              "■",
-              "○",
-              "□",
-              "?"
-            ],
-            "ariaLabel": "Six shapes combining an alternating circle-square cycle and a three-step fill cycle"
-          },
-          "question": "Which item follows the six shown?",
-          "answers": [
-            "●",
-            "■",
-            "○",
-            "□"
-          ]
+          "headerLabel": "VISUAL MEMORY"
         }
       }
     }

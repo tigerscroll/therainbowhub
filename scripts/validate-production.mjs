@@ -102,7 +102,6 @@ requireFile("public/_redirects");
 requireFile("public/og-default.svg");
 requireFile("app/robots.ts");
 requireFile("app/sitemap.ts");
-requireFile("app/[locale]/[quiz]/page.tsx");
 requireFile("app/not-found.tsx");
 requireFile("app/global-not-found.tsx");
 requireFile("components/GlobalNotFound.tsx");
@@ -178,7 +177,8 @@ const requiredContinuousShellContract = [
   "--quiz-flow-width: var(--quiz-shell-container-width);",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
   "--quiz-shell-action-width: 480px;",
-  "--quiz-shell-action-height: 60px;",
+  "--quiz-shell-action-height: 64px;",
+  "--quiz-shell-action-height: 62px;",
   "--quiz-shell-proof-width: 416px;",
   "margin: 18px auto !important;",
   '.quiz-engine__landing,\n.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell',
@@ -226,7 +226,6 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 }
 
 const quizRoot = path.join(rootDir, "data", "quizzes");
-const requiredQuizLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 if (new Set(Object.values(SOCIAL_PROOF_COUNTS)).size !== Object.values(SOCIAL_PROOF_COUNTS).length) {
   addError("Every quiz must have a different stable social-proof count.");
 }
@@ -236,16 +235,14 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
   const sortedLocaleFiles = localeFiles.sort();
   const isEnglishOnly = JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]);
-  const hasFullLocaleSet = JSON.stringify(sortedLocaleFiles) === JSON.stringify(requiredQuizLocaleFiles);
-  if (!isEnglishOnly && !hasFullLocaleSet) {
-    addError(`Quiz content must launch either English-only or with the complete en, fr, de, it, nl, es and pt set: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
+  if (!isEnglishOnly) {
+    addError(`Every active quiz must launch worldwide-English only: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
   }
   const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
   const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
-  const isSingleStageTemplate = quizConfig.template === "single-stage-rewarded-v1";
-  const expectedStageCount = isSingleStageTemplate ? 1 : 5;
-  const expectedQuestionsPerStage = isSingleStageTemplate ? 10 : 8;
+  const expectedStageCount = 1;
+  const expectedQuestionsPerStage = 10;
   if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {
     addError(`Quiz manifest must use its shared stable social-proof count: data/quizzes/${entry.name}/quiz.json`);
   }
@@ -255,8 +252,8 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (quizConfig.theme?.artwork?.landing !== undefined) {
     addError(`Landing artwork panels are not supported by the shared template: data/quizzes/${entry.name}/quiz.json`);
   }
-  if (!["five-stage-rewarded-v1", "single-stage-rewarded-v1"].includes(quizConfig.template)) {
-    addError(`Quiz manifest must declare an approved shared rewarded template: data/quizzes/${entry.name}/quiz.json`);
+  if (quizConfig.template !== "single-stage-rewarded-v1") {
+    addError(`Every quiz manifest must declare the shared single-stage rewarded template: data/quizzes/${entry.name}/quiz.json`);
   }
   if (!["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"].every((key) => quizConfig.engine?.[key] === undefined)) {
     addError(`Shared engine settings cannot be overridden by an individual manifest: data/quizzes/${entry.name}/quiz.json`);
@@ -289,26 +286,6 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
       addError(`Landing content may contain only intro and CTA copy: data/quizzes/${entry.name}/en.json`);
     }
 
-    for (const localeFile of requiredQuizLocaleFiles.filter((file) => file !== "en.json")) {
-      const localizedPath = path.join(quizRoot, entry.name, localeFile);
-      if (!fs.existsSync(localizedPath)) continue;
-      const localized = expandQuizLocale(quizConfig, JSON.parse(fs.readFileSync(localizedPath, "utf8")), path.basename(localeFile, ".json"));
-      if (localized.stages?.length !== 5 || localized.stages.some((stage) => stage.questions?.length !== 8)) {
-        addError(`Every localized quiz must contain exactly five stages of eight questions: data/quizzes/${entry.name}/${localeFile}`);
-      }
-      if (localized.stages?.flatMap((stage) => stage.questions ?? []).some((question) => question.explanation !== undefined)) {
-        addError(`Question explanations are forbidden by the shared quiz contract: data/quizzes/${entry.name}/${localeFile}`);
-      }
-      if (!(typeof localized.landing?.cta === "string" && localized.landing.cta.trim())) {
-        addError(`Localized landing CTA copy must be non-empty: data/quizzes/${entry.name}/${localeFile}`);
-      }
-      if (localized.landing?.socialProof !== undefined) {
-        addError(`Localized social-proof wording must come from shared i18n: data/quizzes/${entry.name}/${localeFile}`);
-      }
-      if (JSON.stringify(Object.keys(localized.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro"])) {
-        addError(`Localized landing content may contain only intro and CTA copy: data/quizzes/${entry.name}/${localeFile}`);
-      }
-    }
   }
   const themeRelativePath = `data/quizzes/${entry.name}/theme.css`;
   const themePath = path.join(rootDir, themeRelativePath);

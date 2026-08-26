@@ -74,8 +74,24 @@
   min-width: 0;
   align-content: start;
   gap: 9px;
-  padding: 9px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   text-align: center;
+}
+
+[data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer:hover:not(:disabled){
+  transform: none;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer[data-selected]{
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer-icon{
@@ -86,6 +102,7 @@
   border: 1px solid rgba(74, 57, 51, .18);
   border-radius: 13px;
   background: #efe5d7;
+  box-shadow: 0 7px 20px rgba(54, 37, 34, .09);
 }
 
 [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer-icon img{
@@ -97,9 +114,16 @@
 
 [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer strong{
   align-self: center;
+  min-height: 2.5em;
+  padding: 0 5px;
   overflow-wrap: normal;
   word-break: normal;
   text-wrap: balance;
+}
+
+[data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer[data-selected] .quiz-engine__answer-icon{
+  border-color: var(--marry-wine);
+  box-shadow: 0 0 0 3px rgba(127, 52, 70, .2), 0 9px 24px rgba(54, 37, 34, .14);
 }
 
 [data-quiz-theme="marry"] .quiz-engine__checkpoint-artwork{
@@ -166,9 +190,13 @@
   text-align: left;
 }
 
+[data-quiz-theme="marry"] .quiz-engine__result-signals{
+  border-radius: 18px;
+}
+
 @media (max-width: 480px) {
   [data-quiz-theme="marry"] .quiz-engine__answers--icons{ gap: 10px; }
-  [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer{ gap: 7px; padding: 7px; }
+  [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer{ gap: 7px; padding: 0; }
   [data-quiz-theme="marry"] .quiz-engine__answers--icons .quiz-engine__answer strong{ font-size: .88rem; line-height: 1.2; }
   [data-quiz-theme="marry"] .quiz-engine__checkpoint-artwork{ width: 120px; margin-bottom: 10px; }
 }

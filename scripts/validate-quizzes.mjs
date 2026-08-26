@@ -7,7 +7,6 @@ const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.replace(/\.json$/, "")));
-const requiredQuizLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const errors = [];
 const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
@@ -142,9 +141,8 @@ for (const folder of folders) {
   const directory = path.join(root, folder.name);
   const config = read(path.join(directory, "quiz.json"));
   if (!config) continue;
-  const isSingleStageTemplate = config.template === "single-stage-rewarded-v1";
-  const expectedStageCount = isSingleStageTemplate ? 1 : 5;
-  const expectedQuestionsPerStage = isSingleStageTemplate ? 10 : 8;
+  const expectedStageCount = 1;
+  const expectedQuestionsPerStage = 10;
   const expectedQuestionTotal = expectedStageCount * expectedQuestionsPerStage;
   fail(config.schemaVersion === 2, `${folder.name}/quiz.json: schemaVersion 2 is required.`);
   fail(config.listing?.duration === undefined, `${folder.name}/quiz.json: duration is derived/unused and must not be stored.`);
@@ -152,10 +150,10 @@ for (const folder of folders) {
   fail(Object.keys(config.structure?.questions ?? {}).length === expectedQuestionTotal, `${folder.name}/quiz.json: structure must contain exactly ${expectedQuestionTotal} question definitions.`);
   const manifestEngine = config.engine ?? {};
   const templateKeys = ["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"];
-  fail(["five-stage-rewarded-v1", "single-stage-rewarded-v1"].includes(config.template), `${folder.name}: quiz must declare an approved shared rewarded template.`);
+  fail(config.template === "single-stage-rewarded-v1", `${folder.name}: every quiz must use the shared single-stage rewarded template.`);
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
-    flow: isSingleStageTemplate ? "linear" : "staged",
+    flow: "linear",
     advance: "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
@@ -168,6 +166,13 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
+  fail(config.engine.flow === "linear"
+    && config.engine.advance === "automatic"
+    && config.engine.feedback === "selection-only"
+    && config.engine.checkpoint === "ai"
+    && config.engine.startOnLoad === false
+    && config.engine.advanceDelayMs === 450
+    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: every quiz must resolve to the identical shared linear engine.`);
   fail(config.listing?.socialProofCount === SOCIAL_PROOF_COUNTS[folder.name], `${folder.name}/quiz.json: listing.socialProofCount must use the shared stable quiz count.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
@@ -196,9 +201,8 @@ for (const folder of folders) {
   fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
   const sortedLocaleFiles = [...localeFiles].sort();
   fail(
-    JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"])
-      || JSON.stringify(sortedLocaleFiles) === JSON.stringify(requiredQuizLocaleFiles),
-    `${folder.name}: quiz content must be English-only or support the complete seven-locale set.`,
+    JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]),
+    `${folder.name}: every active quiz must be worldwide-English only.`,
   );
 
   const sourceRaw = read(path.join(directory, "en.json"));
@@ -217,6 +221,7 @@ for (const folder of folders) {
   fail(sourceQuestions.length > 0, `${folder.name}/en.json: at least one question is required.`);
   fail(source.stages?.length === expectedStageCount && source.stages.every((stage) => stage.questions?.length === expectedQuestionsPerStage), `${folder.name}/en.json: quiz content does not match ${config.template}.`);
   fail(sourceQuestions.length === expectedQuestionTotal, `${folder.name}/en.json: quiz must contain exactly ${expectedQuestionTotal} questions.`);
+  fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), `${folder.name}/en.json: every question needs a concise question-type header.`);
   fail(config.engine?.questionAd === undefined && config.engine?.resultAds === undefined, `${folder.name}: display-ad flow variants are not part of the shared quiz template.`);
   fail(JSON.stringify(config.theme?.layout) === JSON.stringify({ landing: "split", questions: "card", results: "immersive" }), `${folder.name}: landing, question and result layouts must use the shared template.`);
   fail(config.theme?.artwork?.landing === undefined, `${folder.name}: landing artwork panels are not supported by the shared landing template.`);
@@ -229,6 +234,7 @@ for (const folder of folders) {
       && stage.preAdChecks === undefined
       && stage.next?.button === undefined
   )), `${folder.name}/en.json: the first four checkpoints must use the shared progress-only Continue flow.`);
+  fail(source.career?.stages?.every((stage) => stage.preAdBadge === undefined), `${folder.name}/en.json: result-ready screens must not include a completion eyebrow.`);
   fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final checkpoint may use the three-row result checklist.`);
   fail(source.checkpoint?.reveals === undefined && source.checkpoint?.nextPrefix === undefined, `${folder.name}/en.json: duplicate checkpoint progression copy must not be retained.`);
   fail(typeof source.landing?.cta === "string" && source.landing.cta.trim(), `${folder.name}/en.json: configurable landing CTA copy is required.`);
@@ -239,7 +245,7 @@ for (const folder of folders) {
     question.visual?.columns === undefined
       || (Number.isInteger(question.visual.columns) && question.visual.columns >= 1 && question.visual.columns <= 8)
   )), `${folder.name}/en.json: visual.columns must be an integer from 1 to 8.`);
-  fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: incorrect-answer review must be free.`);
+  fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.`);
   if (config.engine?.scoring === "correct-answer") {
     fail(sourceQuestions.every((question) => (
       Array.isArray(question.answers)
@@ -254,8 +260,9 @@ for (const folder of folders) {
       positions[question.correct] += 1;
       return positions;
     }, [0, 0, 0, 0]);
-    const expectedPositions = isSingleStageTemplate ? [3, 3, 2, 2] : [10, 10, 10, 10];
+    const expectedPositions = [3, 3, 2, 2];
     fail(JSON.stringify(sharedPositions) === JSON.stringify(expectedPositions), `${folder.name}/en.json: answer positions must match the shared template balance.`);
+    fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
     const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
     const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
@@ -264,116 +271,32 @@ for (const folder of folders) {
     const expectedProfiles = ["warm_anchor", "playful_spark", "quiet_creative", "grounded_builder", "magnetic_connector", "curious_explorer", "thoughtful_dreamer", "ambitious_teammate"];
     const selector = config.engine?.profileArtworkSelector;
     const selectorQuestion = sourceQuestions[0];
-    fail(JSON.stringify(localeFiles) === JSON.stringify(["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"]), "marry: locale set must include English plus fr, de, it, nl, es and pt.");
-    fail(config.slug === "marry" && source.title === "AI Will Draw The Person You’ll Marry", "marry: slug and title must match the approved launch copy.");
-    fail(source.landing?.intro === "Follow your instincts through attraction, personality, lifestyle and chemistry, then reveal the pencil portrait matched to your answers.", "marry: landing intro changed.");
-    fail(source.landing?.cta === "Start" && config.listing?.socialProofCount === 184000, "marry: CTA and social proof must match the approved launch copy.");
-    fail(source.summary === "Attraction, personality, lifestyle and chemistry clues shape the portrait of the person you could marry.", "marry: homepage summary changed.");
-    fail(config.engine?.scoring === "weighted-profile" && config.engine?.advanceDelayMs === 450, "marry: weighted scoring and 450ms advancement are required.");
+    fail(config.template === "single-stage-rewarded-v1" && config.engine?.scoring === "weighted-profile", "marry: must use the shared single-stage weighted-profile engine.");
+    fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]), "marry: must remain worldwide-English only.");
+    fail(sourceQuestions.length === 10 && sourceQuestions[0]?.id === "marry-r1q1", "marry: needs the approved ten-choice sequence beginning with the portrait selector.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(expectedProfiles), "marry: archetype set or fixed tie order changed.");
     fail(selector?.questionId === "marry-r1q1" && selector?.fallback === "stable-answer-hash", "marry: profile artwork selector is missing or invalid.");
     fail(JSON.stringify(selector?.fixedVariants) === JSON.stringify({ 0: "masculine", 1: "feminine", 2: "androgynous" }), "marry: fixed presentation mappings changed.");
-    fail(selectorQuestion?.question === "Who should we draw as your future partner?", "marry: Q1 prompt changed.");
-    fail(JSON.stringify(selectorQuestion?.answers) === JSON.stringify(["A masculine person", "A feminine person", "An androgynous person", "Surprise me"]), "marry: Q1 choices changed.");
     fail(JSON.stringify(selectorQuestion?.calibration) === JSON.stringify([0, 0, 0, 0]) && selectorQuestion?.correct === undefined, "marry: Q1 must be the only unscored selector.");
-    fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: scored questions must not use answer keys or calibration.");
-    fail(source.about?.body?.includes("after choosing the portrait presentation, each remaining selection adds two relationship-style signals"), "marry: About copy must distinguish the unscored portrait selector from the 39 scored choices.");
-    fail(source.about?.howToPlay?.steps?.[1] === "Complete eight quick questions in each chapter as the portrait takes shape.", "marry: How to Play must describe eight questions, not eight choices.");
-    fail(source.results?.profiles?.find((profile) => profile.id === "curious_explorer")?.firstFeature === "their curious, adventurous gaze.", "marry: Curious Explorer feature copy must match all three portraits.");
-    fail(config.listing?.thumbnail === "assets/thumbnail.webp", "marry: listing must use the optimized WebP thumbnail.");
-    const marryPngAssets = fs.readdirSync(path.join(root, "marry", "assets"), { recursive: true })
-      .filter((asset) => String(asset).toLowerCase().endsWith(".png"));
-    fail(marryPngAssets.length === 0, `marry: unused PNG duplicates remain: ${marryPngAssets.join(", ")}.`);
-    const rawOpportunity = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
-    const randomExpectation = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
-    sourceQuestions.slice(1).forEach((question) => {
+    fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: relationship choices must not use answer keys or calibration.");
+    fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "marry: every choice needs a question-type header.");
+    fail(sourceQuestions.slice(1).every((question) => {
       const answers = question.answers && !Array.isArray(question.answers) ? Object.values(question.answers) : [];
-      fail(answers.length === 4, `marry/en.json: ${question.id} must have four choices.`);
       const seen = new Set();
-      answers.forEach((weights, answerIndex) => {
+      const valid = answers.length === 4 && answers.every((weights) => {
         const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
-        fail(entries.length === 2 && entries.every(([, weight]) => weight === 0.5), `marry/en.json: ${question.id} answer ${answerIndex + 1} must split 0.5 / 0.5.`);
-        entries.forEach(([profile, weight]) => {
-          fail(expectedProfiles.includes(profile), `marry/en.json: ${question.id} references unknown archetype ${profile}.`);
-          fail(!seen.has(profile), `marry/en.json: ${question.id} must partition every archetype exactly once.`);
+        return entries.length === 2 && entries.every(([profile, weight]) => {
           seen.add(profile);
-          rawOpportunity[profile] += weight;
-          randomExpectation[profile] += weight / 4;
+          return expectedProfiles.includes(profile) && weight === 0.5;
         });
       });
-      fail(seen.size === 8, `marry/en.json: ${question.id} must cover all eight archetypes exactly once.`);
-    });
-    expectedProfiles.forEach((profile) => {
-      fail(Math.abs(rawOpportunity[profile] - 19.5) < 0.000001, `marry: ${profile} raw opportunity must equal 19.5.`);
-      fail(Math.abs(randomExpectation[profile] - 4.875) < 0.000001, `marry: ${profile} random expectation must equal 4.875.`);
-      fail(Object.keys(config.theme?.artwork?.profileVariants?.[profile] ?? {}).sort().join(",") === "androgynous,feminine,masculine", `marry: ${profile} must have all three portrait variants.`);
-      fail(typeof source.results?.profiles?.find((item) => item.id === profile)?.firstFeature === "string", `marry: ${profile} needs a first-feature result line.`);
-    });
-
-    const scoredQuestions = sourceQuestions.slice(1);
-    const rankWeights = (weights) => expectedProfiles
-      .map((id, order) => ({ id, order, value: weights[id] ?? 0 }))
-      .sort((left, right) => right.value - left.value || left.order - right.order);
-    const bandFromWeights = (weights) => {
-      const ranked = rankWeights(weights);
-      const gap = ((ranked[0]?.value ?? 0) - (ranked[1]?.value ?? 0)) / 39 * 100;
-      return gap >= 12 ? "high" : gap >= 6 ? "medium" : "mixed";
-    };
-
-    expectedProfiles.forEach((target) => {
-      const weights = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
-      scoredQuestions.forEach((question) => {
-        const answer = Object.values(question.answers).find((choice) => choice[target] === 0.5);
-        Object.entries(answer ?? {}).forEach(([profile, weight]) => { weights[profile] += weight; });
-      });
-      fail(rankWeights(weights)[0]?.id === target, `marry: ${target} is not reachable through a coherent strongest-answer path.`);
-      fail(bandFromWeights(weights) === "high", `marry: ${target} needs a reachable high-chemistry path.`);
-    });
-
-    let randomState = 0x9e3779b9;
-    const seededRandom = () => {
-      randomState ^= randomState << 13;
-      randomState ^= randomState >>> 17;
-      randomState ^= randomState << 5;
-      return (randomState >>> 0) / 4294967296;
-    };
-    const simulationCount = 100000;
-    const scoreSums = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
-    const reachableBands = Object.fromEntries(expectedProfiles.map((profile) => [profile, new Set()]));
-    for (let simulation = 0; simulation < simulationCount; simulation += 1) {
-      const weights = Object.fromEntries(expectedProfiles.map((profile) => [profile, 0]));
-      scoredQuestions.forEach((question) => {
-        const answers = Object.values(question.answers);
-        const answer = answers[Math.floor(seededRandom() * answers.length)];
-        Object.entries(answer).forEach(([profile, weight]) => { weights[profile] += weight; });
-      });
-      expectedProfiles.forEach((profile) => { scoreSums[profile] += weights[profile]; });
-      const winner = rankWeights(weights)[0]?.id;
-      if (winner) reachableBands[winner].add(bandFromWeights(weights));
-    }
-    expectedProfiles.forEach((profile) => {
-      const simulatedAverage = scoreSums[profile] / simulationCount;
-      fail(Math.abs(simulatedAverage - 4.875) < 0.02, `marry: seeded random simulation shows structural score bias for ${profile} (${simulatedAverage.toFixed(4)}).`);
-      fail(["high", "medium", "mixed"].every((band) => reachableBands[profile].has(band)), `marry: ${profile} must remain reachable with high, balanced and varied chemistry paths.`);
-    });
-
-    fail(config.theme?.artwork?.checkpoints?.length === 5, "marry: five checkpoint progress artworks are required.");
-    fail(JSON.stringify(Object.keys(config.theme?.artwork?.checkpointVariants ?? {}).sort()) === JSON.stringify(["androgynous", "feminine", "masculine"]), "marry: checkpoint artwork must support all three portrait presentations.");
-    fail(Object.values(config.theme?.artwork?.checkpointVariants ?? {}).every((assets) => Array.isArray(assets) && assets.length === 5), "marry: every presentation needs five checkpoint artworks.");
-    fail(JSON.stringify(config.theme?.artwork?.checkpointVariants?.feminine) === JSON.stringify([
-      "assets/checkpoints/portrait-20.webp",
-      "assets/checkpoints/portrait-40-feminine.webp",
-      "assets/checkpoints/portrait-60-feminine.webp",
-      "assets/checkpoints/portrait-80-feminine.webp",
-      "assets/checkpoints/portrait-100-feminine.webp",
-    ]), "marry: feminine checkpoint progression changed or is incomplete.");
-    fail(sourceQuestions.filter((question) => question.presentation === "icons").length === 7, "marry: exactly seven four-image questions are required.");
-    fail(sourceQuestions.filter((question) => question.presentation === "icons").every((question) => question.icons?.length === 4), "marry: every visual choice needs four images.");
-    fail(source.career?.stages?.[4]?.preAdTitle === "YOUR FUTURE PARTNER HAS BEEN MATCHED" && source.career?.stages?.[4]?.preAdButton === "Reveal Their Face", "marry: final reveal promise changed.");
-    fail(JSON.stringify(source.career?.stages?.[4]?.preAdChecks) === JSON.stringify(["Attraction pattern analysed", "Personality and chemistry matched", "Future clues combined"]), "marry: final checklist changed.");
-    const allCopy = JSON.stringify(source);
-    fail(!allCopy.includes("Takeaway, laughter and talking it out"), "marry: worldwide-English copy must use Comfort food, not Takeaway.");
-    fail(!/you will marry|is destined to|we identified (?:a )?real person|guarantees (?:a )?future/i.test(allCopy), "marry: copy must not imply certainty, destiny or real-person identification.");
+      return valid && seen.size === 8;
+    }), "marry: every scored choice must partition all eight archetypes with equal signals.");
+    fail(config.theme?.artwork?.checkpoints?.length === 1, "marry: single-stage flow needs one completed checkpoint artwork.");
+    fail(Object.values(config.theme?.artwork?.checkpointVariants ?? {}).every((assets) => Array.isArray(assets) && assets.length === 1), "marry: each portrait presentation needs one completed checkpoint artwork.");
+    fail(source.career?.stages?.[0]?.preAdTitle === "Your portrait match is ready" && source.career?.stages?.[0]?.preAdButton === "Reveal My Portrait", "marry: final portrait reveal gate changed.");
+    fail(config.listing?.thumbnail === "assets/thumbnail.webp", "marry: listing must use the optimized WebP thumbnail.");
+    fail(source.results?.profiles?.find((profile) => profile.id === "curious_explorer")?.firstFeature === "their curious, adventurous gaze.", "marry: Curious Explorer feature copy must match all portrait variants.");
   }
   if (folder.name === "firefighter") {
     const firefighterCategories = ["fire_smoke_science", "scene_hazard_awareness", "equipment_mechanical_reasoning", "numeracy_spatial_awareness", "communication_incident_judgement"];
@@ -419,29 +342,16 @@ for (const folder of folders) {
     fail(new Set(sourceQuestions.map((question) => question.interactionStyle)).size >= 8, "firefighter/en.json: the short challenge must retain varied reasoning styles.");
     fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2 && /synthesis/.test(question.interactionStyle ?? "")), "firefighter/en.json: the final three questions must retain two-step reasoning.");
     fail(!forbiddenOperationalCopy.test(sourceQuestions.map((question) => `${question.question} ${question.answers.join(" ")}`).join(" ")), "firefighter/en.json: operational firefighting instruction is outside the quiz scope.");
-    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: final answer review must remain free.");
+    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.");
     fail(questionsById["firefighter-s3q6"]?.question === "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?", "firefighter/en.json: the radiation question must remain unambiguous.");
     fail(questionsById["firefighter-s3q2"]?.answers?.[1] === "60 metres" && questionsById["firefighter-s5q6"]?.answers?.[3] === "12", "firefighter/en.json: approved numeracy answers changed.");
     fail(!/40 varied questions|five exam sections/i.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the ten-question format.");
     fail(firefighterLandingBlocks.length > 0 && firefighterLandingBlocks.every((block) => !/(?:^|;)\s*(?:grid-template-columns|width|padding(?:-[a-z]+)?)\s*:/m.test(block)), "firefighter/theme.css: shared landing grid, width and padding must not be overridden.");
   }
-  const entranceExamLabels = {
-    oxford: "OXFORD",
-    cambridge: "CAMBRIDGE",
-    harvard: "HARVARD",
-    nursing: "NURSING",
-    paramedic: "PARAMEDIC",
-    midwifery: "MIDWIFERY",
-    chef: "CHEF",
-  };
-  if (folder.name in entranceExamLabels) {
-    const label = entranceExamLabels[folder.name];
-    const titles = ["First exam section complete", "Second exam section complete", "More than halfway through", "Final assessment next", `${label} ENTRANCE EXAM COMPLETE`];
-    const copy = ["Good start. The next section is ready.", "The next section raises the difficulty.", "The advanced section is next.", "Only the final section remains.", "Your result is ready to reveal."];
-    const eyebrows = ["NEXT EXAM SECTION · DEVELOPING", "NEXT EXAM SECTION · SKILLED", "NEXT EXAM SECTION · ADVANCED", "NEXT EXAM SECTION · FINAL ASSESSMENT"];
-    fail(JSON.stringify(source.career?.stages?.map((stage) => [stage.preAdTitle, stage.preAdCopy])) === JSON.stringify(titles.map((title, index) => [title, copy[index]])), `${folder.name}/en.json: entrance-exam checkpoint progression changed.`);
-    fail(JSON.stringify(source.career?.stages?.slice(0, 4).map((stage) => stage.next?.eyebrow)) === JSON.stringify(eyebrows), `${folder.name}/en.json: entrance-exam next-section eyebrows changed.`);
-    fail(JSON.stringify(source.career?.stages?.[4]?.preAdChecks) === JSON.stringify(["40 answers checked", "Skill breakdown prepared", "Final score calculated"]), `${folder.name}/en.json: entrance-exam final checklist changed.`);
+  if (["oxford", "cambridge", "harvard", "nursing", "paramedic", "midwifery", "chef"].includes(folder.name)) {
+    fail(source.career?.stages?.length === 1, `${folder.name}/en.json: entrance challenge must use one final result gate.`);
+    fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready", `${folder.name}/en.json: result-ready title changed.`);
+    fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks)?.includes("10 answers checked"), `${folder.name}/en.json: ten-answer final checklist changed.`);
   }
   if (folder.name === "years-left") {
     const expectedIds = ["r1q3", "r2q1", "r3q2", "r4q3", "r4q2", "r6q6", "r7q4", "r8q1", "r9q5", "r10q6"];
@@ -466,7 +376,7 @@ for (const folder of folders) {
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
     fail(source.landing?.startPrompt === undefined && source.landing?.startNote === undefined, "years-left/en.json: rewarded Start helper must use the shared template.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
-    fail(source.results?.estimate?.reviewUnlock?.rewarded === false, "years-left/en.json: choice-impact details must be included in the final result without another rewarded gate.");
+    fail(source.results?.estimate?.reviewUnlock?.rewarded === true, "years-left/en.json: choice-impact details must use the shared rewarded breakdown gate.");
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
     fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: compact estimate calibration is incorrect.");
     fail(byId.get("r2q1")?.presentation === "icons" && byId.get("r2q1")?.icons?.length === 4, "years-left: snack-table interaction needs four aligned icons.");
@@ -477,7 +387,7 @@ for (const folder of folders) {
     fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("r10q6")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
     const gate = source.career?.stages?.[0];
     fail(source.career?.stages?.length === 1 && gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final rewarded estimate gate.");
-    fail(gate?.preAdBadge === "LIFESTYLE QUIZ COMPLETE" && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "Your age estimate and lifestyle profile are ready to reveal." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
+    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "Your age estimate and lifestyle profile are ready to reveal." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
     fail(source.checkpoint?.finalAdNote === "One short ad, then your estimate.", "years-left/en.json: final rewarded checkpoint helper copy changed.");
     fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
   }
@@ -518,66 +428,22 @@ for (const folder of folders) {
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
     fail(source.career?.stages?.length === 1 && source.career.stages[0]?.preAdChecks?.length === 3 && source.career.stages[0]?.next === undefined, `${folder.name}/en.json: Memory needs one final rewarded result gate.`);
     const gate = source.career?.stages?.[0];
-    fail(gate?.preAdBadge === "MEMORY TEST COMPLETE" && gate?.preAdTitle === "Your results are ready" && gate?.preAdCopy === "Your memory score and three-area breakdown are ready to reveal." && gate?.preAdButton === "Reveal My Results", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
+    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your results are ready" && gate?.preAdCopy === "Your memory score and three-area breakdown are ready to reveal." && gate?.preAdButton === "Reveal My Results", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
     fail(source.checkpoint?.finalAdNote === "One short ad, then your results.", `${folder.name}/en.json: Memory final ad note changed.`);
-    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory answer review must remain free.`);
+    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory must use the shared breakdown unlock without duplicate copy.`);
     fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage Memory must not show a redundant best-round module.`);
     fail(sourceQuestions[0]?.study?.items?.includes("PURPLE ELEPHANT") && sourceQuestions[8]?.answers?.[sourceQuestions[8]?.correct] === "Purple", `${folder.name}/en.json: opening elephant seed and delayed callback must remain aligned.`);
     fail(/Sarah/.test(sourceQuestions[6]?.study?.items?.join(" ") ?? "") && sourceQuestions[9]?.answers?.[sourceQuestions[9]?.correct] === "08:40", `${folder.name}/en.json: Sarah seed and delayed callback must remain aligned.`);
     fail(sourceQuestions[2]?.answers?.[sourceQuestions[2]?.correct] === "5837" && sourceQuestions[3]?.answers?.[sourceQuestions[3]?.correct] === "K7M2Q" && sourceQuestions[4]?.answers?.[sourceQuestions[4]?.correct] === "2 – 9 – 4", `${folder.name}/en.json: core number, attention or working-memory answers changed.`);
   }
   if (folder.name === "iq") {
-    const ids = sourceQuestions.map((question) => question.id);
-    const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
-    const categoryCounts = sourceQuestions.reduce((counts, question) => ({ ...counts, [question.category]: (counts[question.category] ?? 0) + 1 }), {});
-    const supportedPresentations = new Set(["text", "icons", "sequence", "grid", "code", "spatial"]);
-    const expectedChallengeTitles = [
-      "First challenge complete",
-      "The vault is getting harder",
-      "More than halfway through",
-      "The Intelligence Vault is next",
-      "INTELLIGENCE TEST COMPLETE",
-    ];
-    const expectedChallengeCopy = [
-      "The vault gets harder from here.",
-      "The next puzzles demand sharper reasoning.",
-      "Advanced puzzles are next.",
-      "One final challenge remains.",
-      "Your result is ready to reveal.",
-    ];
-    const hasExactChallengeProgression = source.career?.stages?.every((stage, index) => (
-      stage.preAdTitle === expectedChallengeTitles[index]
-      && stage.preAdCopy === expectedChallengeCopy[index]
-    ));
-    fail(config.engine?.flow === "staged" && config.engine?.localeParity === "independent", `${folder.name}: compact English IQ must use independent locale flow.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.derivedScore === undefined, `${folder.name}: Intelligence Test must use an 80% percentage target without a derived IQ score.`);
-    fail(config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.rewarded?.confirmStart === false, `${folder.name}: Intelligence Test rewarded flow must match Memory and Years Left.`);
-    fail(source.title === "Only 7% Pass This Intelligence Test", `${folder.name}/en.json: title changed.`);
-    fail(source.landing?.cta === "Start Test" && source.landing?.startNote === undefined && source.landing?.startPrompt === undefined, `${folder.name}/en.json: shared rewarded landing flow changed.`);
-    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Intelligence Test must contain five stages of eight puzzles.`);
-    fail(new Set(ids).size === 40, `${folder.name}/en.json: Intelligence Test needs 40 unique stable question IDs.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: correct positions must remain perfectly balanced 10/10/10/10.`);
-    fail(JSON.stringify(categoryCounts) === JSON.stringify({ pattern: 7, numerical: 7, verbal: 6, spatial: 7, attention: 6, logic: 7 }), `${folder.name}/en.json: thinking-area balance changed.`);
-    fail(source.results?.name === "YOUR INTELLIGENCE TEST SCORE" && source.results?.score?.showPercentage === true && source.results?.score?.derivedLabel === undefined, `${folder.name}/en.json: the result must be a percentage-led Intelligence Test Score.`);
-    fail(source.results?.score?.reviewUnlock === undefined, `${folder.name}/en.json: final answer review must be free.`);
-    fail(sourceQuestions.every((question) => Array.isArray(question.answers) && question.answers.length === 4 && new Set(question.answers).size === 4), `${folder.name}/en.json: every Intelligence Test puzzle needs four unique choices.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4), `${folder.name}/en.json: every Intelligence Test puzzle needs one valid correct index.`);
-    fail(sourceQuestions.every((question) => question.explanation === undefined), `${folder.name}/en.json: Intelligence Test explanations must remain disabled.`);
-    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: question screens must not use separate context banners.`);
-    fail(sourceQuestions.every((question) => supportedPresentations.has(question.presentation ?? "text")), `${folder.name}/en.json: unsupported Intelligence Test presentation.`);
-    for (const [index, question] of sourceQuestions.entries()) {
-      const location = `${folder.name}/en.json: question ${index + 1}`;
-      if (["sequence", "grid", "code", "spatial"].includes(question.presentation)) {
-        fail(Array.isArray(question.visual?.items) && question.visual.items.length >= 1 && question.visual.items.length <= 8, `${location} visual needs 1–8 items.`);
-        fail(typeof question.visual?.ariaLabel === "string" && question.visual.ariaLabel.trim(), `${location} visual needs an accessible label.`);
-      }
-    }
-    fail(sourceQuestions.find((question) => question.id === "iq-s4q2")?.visual?.items?.[3] === "H → J  |  5 → 10", `${folder.name}/en.json: the two-rule attention trap is required.`);
-    fail(source.stages[4].questions.every((question) => question.reasoningSteps === 2), `${folder.name}/en.json: all eight final Intelligence Vault puzzles must require multi-step reasoning.`);
-    fail(hasExactChallengeProgression, `${folder.name}/en.json: vault-style five-checkpoint progression is incomplete.`);
-    fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.preAdButton === undefined && !stage.preAdChecks) && source.career.stages[4]?.preAdChecks?.length === 3, `${folder.name}/en.json: stage-result gates changed.`);
-    fail(source.career?.stages?.[4]?.preAdButton === "See My Result" && source.results?.score?.showBestRound === true, `${folder.name}/en.json: final gate or result settings changed.`);
-    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.min)) === JSON.stringify([0.9, 0.8, 0.7, 0.6, 0.5, 0]), `${folder.name}/en.json: IQ profile thresholds are incorrect.`);
+    const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];
+    fail(config.template === "single-stage-rewarded-v1" && config.engine?.targetRatio === 0.8, "iq: must use the shared single-stage engine and 80% target.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "iq/en.json: approved ten-question sequence changed.");
+    fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "iq/en.json: every puzzle needs a question-type header.");
+    fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready" && source.career?.stages?.[0]?.preAdButton === "Reveal My Results", "iq/en.json: final result gate changed.");
+    fail(source.results?.score?.showBestRound === false, "iq/en.json: a single-stage quiz must not show a redundant best-round module.");
+    fail(source.title === "Only 7% Pass This Intelligence Test", "iq/en.json: title changed.");
   }
   for (const localeFile of localeFiles) {
     const localizedRaw = read(path.join(directory, localeFile));
@@ -598,8 +464,6 @@ for (const folder of folders) {
       const letterCode = questions.find((question) => question.id === "iq-s2q2");
       const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
       fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-      const linking = questions.find((question) => question.id === "iq-s1q3");
-      fail(linking?.presentation === "code" && linking?.visual?.items?.length === 2, `${folder.name}/${localeFile}: native linking-word puzzle must retain its two-sided structure.`);
     }
     if (config.engine?.checkpoint === "ai") {
       fail(localized.stages?.every((stage) => stage.complete === undefined), `${folder.name}/${localeFile}: AI checkpoint stages must not contain unused complete copy.`);

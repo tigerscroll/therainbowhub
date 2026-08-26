@@ -3,6 +3,7 @@ import { getQuizStorageKey, PROGRESS_TTL_MS } from "@/components/quiz/progressSt
 import { QuizThemeBoundary } from "@/components/quiz/QuizThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
+import { getAllQuizzes } from "@/lib/quizzes";
 import { absoluteUrl, getQuizPath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -14,6 +15,15 @@ type QuizTemplateProps = {
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
   const storageKey = getQuizStorageKey(quiz.slug, locale);
+  const recommendations = getAllQuizzes(locale)
+    .filter((candidate) => candidate.slug !== quiz.slug)
+    .map((candidate) => ({
+      href: getQuizPath(locale, candidate.slug),
+      summary: candidate.summary,
+      thumbnailAlt: candidate.thumbnailAlt,
+      thumbnailUrl: `/quizzes/${candidate.slug}/assets/thumbnail-480.webp`,
+      title: candidate.title,
+    }));
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Quiz",
@@ -49,6 +59,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
         <QuizEngine
           locale={locale}
           quiz={quiz}
+          recommendations={recommendations}
           startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
           translations={translations}
         />

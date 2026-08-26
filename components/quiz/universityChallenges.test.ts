@@ -42,11 +42,11 @@ function question(slug: typeof slugs[number], id: string) {
   return found;
 }
 
-test("university challenges keep the approved English-only five-stage contract", () => {
+test("university challenges keep the approved English-only single-stage contract", () => {
   const expectedStages = {
-    oxford: ["Tutorial Foundations", "Evidence & Argument", "Logic at the Board", "Interview Trapdoors", "The Final Tutorial"],
-    cambridge: ["College Foundations", "Patterns & Proof", "Scientific Reasoning", "Supervision Challenge", "The Final Assessment"],
-    harvard: ["Admissions Briefing", "Evidence & Analysis", "Quantitative Decisions", "The Case Room", "The Final Committee"],
+    oxford: ["Oxford Entrance Challenge"],
+    cambridge: ["Cambridge Entrance Challenge"],
+    harvard: ["Harvard Entrance Challenge"],
   };
   for (const slug of slugs) {
     const quiz = source(slug);
@@ -59,41 +59,35 @@ test("university challenges keep the approved English-only five-stage contract",
     assert.equal(quiz.landing.startNote, undefined);
     assert.match(quiz.about.disclaimer, new RegExp(`Not an official ${slug}`, "i"));
     assert.equal(quiz.results.score.disclaimer, quiz.about.disclaimer);
-    assert.equal(manifest.template, "five-stage-rewarded-v1");
+    assert.equal(manifest.template, "single-stage-rewarded-v1");
     assert.equal(manifest.engine.flow, undefined);
     assert.equal(manifest.engine.localeParity, "independent");
     assert.equal(manifest.engine.targetRatio, 0.8);
     assert.equal(manifest.engine.rewarded, undefined);
     assert.deepEqual(manifest.theme.layout, { landing: "split", questions: "card", results: "immersive" });
     assert.equal(manifest.theme.artwork.landing, undefined);
-    assert.equal(quiz.stages.length, 5);
+    assert.equal(quiz.stages.length, 1);
     assert.deepEqual(quiz.stages.map((stage) => stage.title), expectedStages[slug]);
-    assert.ok(quiz.stages.every((stage) => stage.questions.length === 8));
-    assert.equal(questions.length, 40);
-    assert.equal(new Set(questions.map((item) => item.id)).size, 40);
+    assert.ok(quiz.stages.every((stage) => stage.questions.length === 10));
+    assert.equal(questions.length, 10);
+    assert.equal(new Set(questions.map((item) => item.id)).size, 10);
     assert.ok(questions.every((item) => item.answers.length === 4 && new Set(item.answers).size === 4 && item.explanation === undefined));
     assert.ok(questions.filter((item) => item.visual).every((item) => item.visual!.ariaLabel.trim().length > 4));
-    assert.deepEqual(correctPositionCounts, [10, 10, 10, 10]);
+    assert.deepEqual(correctPositionCounts, [3, 3, 2, 2]);
     assert.ok(questions.every((item) => item.category && item.category !== "missing"));
     assert.deepEqual(quiz.results.profiles.map((profile) => profile.min), [0.9, 0.8, 0.7, 0.6, 0.5, 0]);
-    assert.deepEqual(quiz.career.stages.slice(0, 4).map((stage) => stage.preAdTitle), [
-      "First exam section complete",
-      "Second exam section complete",
-      "More than halfway through",
-      "Final assessment next",
-    ]);
-    assert.ok(quiz.career.stages.slice(0, 4).every((stage) => stage.preAdChecks === undefined));
-    assert.equal(quiz.career.stages[4].preAdChecks?.length, 3);
+    assert.equal(quiz.career.stages[0].preAdTitle, "Your results are ready");
+    assert.equal(quiz.career.stages[0].preAdChecks?.length, 3);
   }
 });
 
 test("university result categories describe the skill each question actually tests", () => {
   assert.equal(question("oxford", "oxford-s1q6").category, "quantitative_reasoning");
-  assert.equal(question("oxford", "oxford-s1q7").category, "spatial_reasoning");
+  assert.equal(question("oxford", "oxford-s3q7").category, "spatial_reasoning");
   assert.equal(question("harvard", "harvard-s3q1").category, "quantitative_reasoning");
-  assert.equal(question("harvard", "harvard-s3q7").category, "data_interpretation");
-  assert.equal(question("cambridge", "cambridge-s3q1").category, "numerical_reasoning");
-  assert.equal(question("cambridge", "cambridge-s3q5").category, "spatial_reasoning");
+  assert.equal(question("harvard", "harvard-s3q4").category, "data_interpretation");
+  assert.equal(question("cambridge", "cambridge-s1q1").category, "numerical_reasoning");
+  assert.equal(question("cambridge", "cambridge-s5q5").category, "spatial_reasoning");
 });
 
 test("Oxford information-limit puzzle has multiple valid overlaps", () => {

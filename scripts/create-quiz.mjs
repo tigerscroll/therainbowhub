@@ -26,11 +26,9 @@ const socialProofCount = Number.isInteger(requestedCount) && requestedCount > 0
   : Math.ceil((Math.max(...Object.values(SOCIAL_PROOF_COUNTS)) + 1000) / 1000) * 1000;
 if (Object.values(SOCIAL_PROOF_COUNTS).includes(socialProofCount)) abort(`Social-proof count ${socialProofCount} is already used.`);
 
-const stageIds = Array.from({ length: 5 }, (_, index) => `stage-${index + 1}`);
-const questionIds = Array.from({ length: 40 }, (_, index) => `${slug}-q${String(index + 1).padStart(2, "0")}`);
+const stageIds = ["stage-1"];
+const questionIds = Array.from({ length: 10 }, (_, index) => `${slug}-q${String(index + 1).padStart(2, "0")}`);
 const categories = Array.from({ length: 5 }, (_, index) => `category_${index + 1}`);
-const levels = ["foundation", "developing", "skilled", "advanced", "final"];
-const labels = ["Foundation", "Developing", "Skilled", "Advanced", "Final Assessment"];
 const resultMins = [0.9, 0.8, 0.7, 0.6, 0.5, 0];
 
 const manifest = {
@@ -44,41 +42,34 @@ const manifest = {
     typography: { heading: "sans", body: "sans" }, shape: { cardRadius: "24px", buttonRadius: "14px" }, effects: { shadow: "soft", texture: "grain" },
     header: { background: "#243b36", text: "#fffaf1", border: "#b99152", shadow: "0 8px 26px rgba(20,27,25,.24)" }, artwork: { icon },
   },
-  template: "five-stage-rewarded-v1",
+  template: "single-stage-rewarded-v1",
   structure: {
-    stages: stageIds.map((id, index) => ({ id, difficultyLevel: levels[index], questionIds: questionIds.slice(index * 8, index * 8 + 8), ...(index < 4 ? { uppercaseNextForLocales: [] } : {}) })),
-    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correct: index % 4, category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], choiceCount: 4 }])),
+    stages: [{ id: "stage-1", difficultyLevel: "final", questionIds }],
+    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correct: [0, 1, 2, 3, 0, 1, 2, 3, 0, 1][index], category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], choiceCount: 4 }])),
     results: {
       profiles: resultMins.map((min, index) => ({ key: `profile-${index + 1}`, min })),
       dimensions: categories.map((category, index) => ({ key: `dimension-${index + 1}`, categories: [category] })),
-      score: { showPercentage: true, showBestRound: true },
+      score: { showPercentage: true, showBestRound: false },
     },
   },
 };
 
-const checkpoints = [
-  ["First section complete", "Good start. The next section is ready."],
-  ["Challenge progressing", "The next section raises the difficulty."],
-  ["More than halfway through", "The advanced section is next."],
-  ["Final assessment next", "Only the final section remains."],
-  ["YOUR RESULT IS READY", "Your complete result is ready to reveal."],
-];
 const content = {
   schemaVersion: 2, title, eyebrow: "THE CHALLENGE",
   summary: "A fast, escalating challenge designed to test your judgement from the first question to the final reveal.",
   landing: { intro: "Put your instincts to the test and see whether you can hold your nerve as the questions become harder.", cta: "Start Test" },
   about: {
-    body: "This entertainment quiz moves through five focused sections and becomes progressively more demanding.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a playful snapshot of this quiz performance, not a formal assessment.",
-    howToPlay: { title: "How to Play", steps: ["Answer each focused question.", "Follow your progress at each checkpoint.", "Reveal your score and answer review at the end."] },
+    body: "This entertainment quiz contains ten carefully selected questions in one focused challenge.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a snapshot of this quiz performance, not a formal assessment.",
+    howToPlay: { title: "How to Play", steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },
     disclaimer: "For entertainment and general learning only. This quiz is not a formal assessment.",
   },
-  checkpoint: { finalAdNote: "Short ad first — then see your result." },
+  checkpoint: { finalAdNote: "One short ad, then your results." },
   career: {
     resultProgressLabel: "Challenge progress", resultProgressComplete: "{value}% complete",
-    stages: Object.fromEntries(stageIds.map((id, index) => [id, {
-      difficulty: labels[index], preAdBadge: index === 4 ? "CHALLENGE COMPLETE" : `SECTION ${index + 1} COMPLETE`, preAdTitle: checkpoints[index][0], preAdCopy: checkpoints[index][1],
-      ...(index < 4 ? { next: { eyebrow: `NEXT CHALLENGE · ${labels[index + 1].toUpperCase()}`, tagline: "A sharper challenge is waiting.", copy: "Keep going to complete the full result." } } : { preAdChecks: ["40 answers checked", "Skill breakdown prepared", "Final score calculated"], preAdButton: "See My Result" }),
-    }])),
+    stages: { "stage-1": {
+      difficulty: "Final Challenge", preAdTitle: "Your results are ready", preAdCopy: "Your score and skill breakdown are ready to reveal.",
+      preAdChecks: ["10 answers checked", "Five skill areas compared", "Your final score calculated"], preAdButton: "Reveal My Results",
+    } },
   },
   results: {
     name: "YOUR SCORE",
@@ -86,10 +77,10 @@ const content = {
     dimensions: Object.fromEntries(categories.map((_, index) => [`dimension-${index + 1}`, { label: `Skill area ${index + 1}` }])),
     score: { passed: "You reached the challenge target!", finished: "Challenge complete", correctLabel: "correct", strongest: "Strongest area", trickiest: "Trickiest area", bestRound: "Best section", insights: { overview: "Your score at a glance", correct: "Correct answers", missed: "Questions missed", target: "Correct answers for 80%", breakdown: "Your skill breakdown", snapshot: "What your result suggests", targetReached: "80% challenge reached", targetRemaining: "More correct answers needed for 80%" } },
   },
-  stages: Object.fromEntries(stageIds.map((stageId, stageIndex) => [stageId, {
-    title: `Challenge ${stageIndex + 1}`,
-    questions: Object.fromEntries(questionIds.slice(stageIndex * 8, stageIndex * 8 + 8).map((id) => [id, { question: `Replace with a unique question for ${id}.`, answers: Array.from({ length: 4 }, (_, answerIndex) => `Unique option ${answerIndex + 1} for ${id}`) }])),
-  }])),
+  stages: { "stage-1": {
+    title: "Challenge",
+    questions: Object.fromEntries(questionIds.map((id, index) => [id, { headerLabel: `QUESTION TYPE ${index + 1}`, question: `Replace with a unique question for ${id}.`, answers: Array.from({ length: 4 }, (_, answerIndex) => `Unique option ${answerIndex + 1} for ${id}`) }])),
+  } },
 };
 
 fs.mkdirSync(path.join(directory, "assets"), { recursive: true });

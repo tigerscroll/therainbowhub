@@ -15,10 +15,10 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["five-stage-rewarded-v1", "single-stage-rewarded-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const SHARED_ENGINE_TEMPLATE = {
-  flow: "staged",
+  flow: "linear",
   advance: "automatic",
   feedback: "selection-only",
   checkpoint: "ai",
@@ -103,7 +103,6 @@ export type QuizEngineConfig = {
 
 export type QuizCareerStageCopy = {
   difficulty: string;
-  preAdBadge: string;
   preAdTitle: string;
   preAdCopy?: string;
   preAdChecks?: string[];
@@ -520,7 +519,12 @@ const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const RESERVED_SLUGS = new Set([...getSupportedLocales(), "info", "api", "_next"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
-const SOCIAL_AVATAR_POOL = Array.from({ length: 50 }, (_, index) => `/social-proof/avatars/${String(index + 1).padStart(2, "0")}.webp`);
+const SOCIAL_AVATAR_GROUPS = [
+  ["02", "05", "01", "08"],
+  ["04", "07", "10", "06"],
+  ["09", "03", "12", "08"],
+  ["06", "01", "07", "11"],
+].map((group) => group.map((id) => `/social-proof/avatars/${id}.webp`));
 
 function json<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
@@ -541,16 +545,8 @@ function quizAsset(slug: string, value?: string) {
 }
 
 function socialAvatarsFor(slug: string) {
-  let state = [...slug].reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619) >>> 0, 2166136261);
-  const pool = [...SOCIAL_AVATAR_POOL];
-  for (let index = pool.length - 1; index > 0; index -= 1) {
-    state ^= state << 13;
-    state ^= state >>> 17;
-    state ^= state << 5;
-    const swapIndex = (state >>> 0) % (index + 1);
-    [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
-  }
-  return pool.slice(0, 4);
+  const hash = [...slug].reduce((value, character) => Math.imul(value ^ character.charCodeAt(0), 16777619) >>> 0, 2166136261);
+  return SOCIAL_AVATAR_GROUPS[hash % SOCIAL_AVATAR_GROUPS.length];
 }
 
 function object(value: unknown, name: string, file: string): Record<string, unknown> {
@@ -580,13 +576,12 @@ function exactKeys(value: Record<string, unknown>, allowed: readonly string[], n
 function validateStructureV2(value: unknown, file: string, template: QuizTemplateId): QuizStructureV2 {
   const raw = object(value, "structure", file);
   exactKeys(raw, ["stages", "questions", "checkpoint", "results"], "structure", file);
-  const singleStage = template === "single-stage-rewarded-v1";
-  const expectedStageCount = singleStage ? 1 : 5;
-  const expectedQuestionCount = singleStage ? 10 : 8;
+  const expectedStageCount = 1;
+  const expectedQuestionCount = 10;
   if (!Array.isArray(raw.stages) || raw.stages.length !== expectedStageCount) {
     throw new Error(`${file}: ${template} requires exactly ${expectedStageCount} stage${expectedStageCount === 1 ? "" : "s"}.`);
   }
-  const expectedLevels = singleStage ? ["final"] : ["foundation", "developing", "skilled", "advanced", "final"];
+  const expectedLevels = ["final"];
   const stages = raw.stages.map((item, stageIndex) => {
     const stage = object(item, `structure.stages[${stageIndex}]`, file);
     exactKeys(stage, ["id", "difficultyLevel", "questionIds", "uppercaseNextForLocales"], `structure.stages[${stageIndex}]`, file);
@@ -979,10 +974,7 @@ function normalizeLocale(
   }
   if (!Array.isArray(value.stages) || !value.stages.length) throw new Error(`${file}: stages are required.`);
   if (!Array.isArray(value.results?.profiles) || !value.results.profiles.length) throw new Error(`${file}: result profiles are required.`);
-  const localeFlow = manifest.template === "single-stage-rewarded-v1"
-    ? "linear"
-    : manifest.engine.localeParity === "independent" && value.stages.length < 2 ? "linear" : manifest.engine.flow;
-  if (localeFlow === "staged" && value.stages.length < 2) throw new Error(`${file}: staged quizzes need at least two stages.`);
+  const localeFlow = "linear";
   if (manifest.engine.checkpoint === "ai") {
     if (!value.checkpoint) throw new Error(`${file}: AI checkpoints need checkpoint copy.`);
     if (value.checkpoint.finalAdNote !== undefined) text(value.checkpoint.finalAdNote, "checkpoint.finalAdNote", file);
@@ -1001,7 +993,7 @@ function normalizeLocale(
     if ((career as unknown as Record<string, unknown>).compactGate !== undefined) throw new Error(`${file}: career.compactGate is replaced by the shared checkpoint shell.`);
     if (!Array.isArray(career.stages) || career.stages.length !== value.stages.length) throw new Error(`${file}: career stages must match quiz stages.`);
     career.stages.forEach((stage, index) => {
-      (["difficulty", "preAdBadge", "preAdTitle"] as const)
+      (["difficulty", "preAdTitle"] as const)
         .forEach((key) => text(stage[key], `career.stages[${index}].${key}`, file));
       for (const key of ["resultIcon", "resultLabel", "resultBands", "promotion"]) {
         if ((stage as unknown as Record<string, unknown>)[key] !== undefined) throw new Error(`${file}: career.stages[${index}].${key} belongs to the removed stage-result screen.`);
@@ -1019,9 +1011,6 @@ function normalizeLocale(
       }
     });
     if (!manifest.engine.rewarded?.stages) throw new Error(`${file}: checkpoint mode requires the shared rewarded template.`);
-    if (manifest.template === "five-stage-rewarded-v1" && localeFlow !== "staged") {
-      throw new Error(`${file}: five-stage checkpoint mode requires staged flow.`);
-    }
   }
 
   const questions: QuizQuestion[] = [];

@@ -163,8 +163,8 @@ function looksLikeUntranslatedSentence({ source, localized, pathParts }) {
 
 function validateQuestions(content, location) {
   const questions = (content.stages ?? []).flatMap((stage) => stage.questions ?? []);
-  if (questions.length !== 40 || content.stages?.length !== 5 || content.stages.some((stage) => stage.questions?.length !== 8)) {
-    addError(`${location}: localized quiz must remain five stages of eight questions.`);
+  if (questions.length !== 10 || content.stages?.length !== 1 || content.stages.some((stage) => stage.questions?.length !== 10)) {
+    addError(`${location}: every active quiz must contain one stage of ten questions.`);
   }
   if (new Set(questions.map((question) => question.id)).size !== questions.length) {
     addError(`${location}: localized question IDs are not unique.`);
@@ -613,16 +613,16 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
   const isEnglishOnly = JSON.stringify(actualLocaleFiles) === JSON.stringify(["en.json"]);
-  const isFullyLocalized = JSON.stringify(actualLocaleFiles) === JSON.stringify(localeFiles);
-  if (!isEnglishOnly && !isFullyLocalized) {
-    addError(`data/quizzes/${entry.name}: locale set must be English-only or exactly ${localeFiles.join(", ")}.`);
+  if (!isEnglishOnly) {
+    addError(`data/quizzes/${entry.name}: active quizzes must be worldwide-English only and contain exactly en.json.`);
     continue;
   }
   const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
+  validateQuestions(english, `data/quizzes/${entry.name}/en.json`);
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
-  for (const localeFile of isEnglishOnly ? [] : translatedLocaleFiles) {
+  for (const localeFile of []) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
     const localized = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8")), locale);
@@ -719,4 +719,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Localization validation passed for every active quiz and all six translated locales.");
+console.log("Localization validation passed for every worldwide-English quiz and all translated shared site content.");

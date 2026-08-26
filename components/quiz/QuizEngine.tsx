@@ -15,8 +15,17 @@ import { scoreQuiz, type QuizAnswers } from "./scoring";
 type QuizEngineProps = {
   locale: SupportedLocale;
   quiz: Quiz;
+  recommendations: QuizRecommendation[];
   startInstructionEnabled: boolean;
   translations: Translations;
+};
+
+type QuizRecommendation = {
+  href: string;
+  summary: string;
+  thumbnailAlt: string;
+  thumbnailUrl: string;
+  title: string;
 };
 
 type QuizScreen = "landing" | "question" | "checkpoint" | "results";
@@ -42,6 +51,22 @@ function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
 
 function formatSocialProof(template: string, count: number, locale: SupportedLocale) {
   return template.replace("{count}", new Intl.NumberFormat(locale).format(count));
+}
+
+function RecommendationCard({ recommendation }: { recommendation: QuizRecommendation }) {
+  return (
+    <a className="quiz-engine__recommendation" href={recommendation.href}>
+      <span className="quiz-engine__recommendation-thumbnail">
+        <img alt={recommendation.thumbnailAlt} decoding="async" loading="lazy" src={recommendation.thumbnailUrl} />
+      </span>
+      <div className="quiz-engine__recommendation-copy">
+        <span>RECOMMENDED NEXT</span>
+        <h3>{recommendation.title}</h3>
+        <p>{recommendation.summary}</p>
+      </div>
+      <span className="quiz-engine__recommendation-arrow" aria-hidden="true">→</span>
+    </a>
+  );
 }
 
 type QuestionRendererProps = {
@@ -317,7 +342,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   return { ...saved, answers } as SavedProgress;
 }
 
-export function QuizEngine({ locale, quiz, startInstructionEnabled, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
@@ -329,6 +354,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [showStartPrompt, setShowStartPrompt] = useState(false);
   const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
+  const [recommendation, setRecommendation] = useState<QuizRecommendation | null>(null);
   const adRequestActive = useRef(false);
   const adRequestController = useRef<AbortController | null>(null);
   const adRequestGeneration = useRef(0);
@@ -385,6 +411,14 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
+
+  useEffect(() => {
+    if (!recommendations.length) return;
+    const randomValue = typeof window.crypto?.getRandomValues === "function"
+      ? window.crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32
+      : Math.random();
+    setRecommendation(recommendations[Math.floor(randomValue * recommendations.length)]);
+  }, [recommendations]);
 
   useLayoutEffect(() => {
     try {
@@ -717,7 +751,6 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     return (
       <>
       <section className={`quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career${isSingleStage ? " quiz-engine__checkpoint--single-stage" : ""}`} data-round={completedStage + 1}>
-        <span className="quiz-engine__eyebrow">{careerStage.preAdBadge}</span>
         {checkpointArtwork ? (
           <div className="quiz-engine__checkpoint-artwork" aria-hidden="true">
             <img alt="" decoding="async" src={checkpointArtwork} />
@@ -783,16 +816,15 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     const scoreInsights = scoreCopy?.insights;
     const estimateInsights = estimate?.insights;
     const resultInsights = scoreInsights ?? estimateInsights;
-    const incorrectQuestions = quiz.engine.scoring.type === "correct-answer"
+    const supportsAnswerReview = quiz.engine.scoring.type === "correct-answer" || quiz.engine.scoring.type === "hybrid-match";
+    const incorrectQuestions = supportsAnswerReview
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
     const reviewUnlockCopy = scoreCopy?.reviewUnlock;
     const estimateReviewUnlockCopy = estimate?.reviewUnlock;
-    const detailedResults = Boolean(reviewUnlockCopy || estimateReviewUnlockCopy);
+    const detailedResults = supportsAnswerReview || Boolean(estimateReviewUnlockCopy);
     const requiresReviewUnlock = Boolean(
-      reviewUnlockCopy
-      && incorrectQuestions.length
-      && !reviewUnlocked,
+      supportsAnswerReview && !reviewUnlocked,
     );
     const requiresEstimateReviewUnlock = Boolean(
       quiz.engine.scoring.type === "weighted-profile"
@@ -815,7 +847,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
     return (
       <>
       <section
-        className={`quiz-engine__results quiz-engine__card quiz-engine__continuous-shell${profileReveal ? " quiz-engine__profile-reveal" : ""}${detailedResults ? " quiz-engine__results--detailed" : ""}`}
+        className={`quiz-engine__results quiz-engine__card quiz-engine__continuous-shell${profileReveal ? " quiz-engine__profile-reveal" : ""}`}
         data-profile-id={profileReveal ? result.profile.id : undefined}
       >
         {profileReveal ? (
@@ -839,18 +871,44 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
                 <><span>{result.profile.aura}</span><span>{profileReveal.auraLabel}</span></>
               )}
             </p>
-            <p className="quiz-engine__profile-chemistry"><span>{profileReveal.consistency}</span><strong>{revealConsistency}</strong></p>
-            <p className="quiz-engine__profile-traits" aria-label={profileReveal.traitsLabel}>
-              {result.profile.traits?.map((trait) => <span key={trait}>{trait}</span>)}
-            </p>
-            <dl className="quiz-engine__result-signals">
-              <div><dt>{profileReveal.strongestEnergy}</dt><dd>{result.strongestSignal}</dd></div>
-              <div><dt>{profileReveal.hiddenEnergy}</dt><dd>{result.hiddenSignal}</dd></div>
-            </dl>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
-            {profileReveal.firstFeatureLabel && result.profile.firstFeature ? (
-              <p className="quiz-engine__profile-first-feature"><strong>{profileReveal.firstFeatureLabel}</strong> {result.profile.firstFeature}</p>
-            ) : null}
+            {!reviewUnlocked ? (
+              <section className="quiz-engine__answer-review-unlock">
+                <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+                <span>{translations.results.matchBreakdown.eyebrow}</span>
+                <h3>{translations.results.matchBreakdown.title}</h3>
+                <p>{translations.results.matchBreakdown.copy}</p>
+                <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+                  {adBusy ? translations.ad.loading : translations.results.matchBreakdown.button}
+                </button>
+                <small>{translations.results.matchBreakdown.adNote}</small>
+              </section>
+            ) : (
+              <>
+                <p className="quiz-engine__profile-chemistry"><span>{profileReveal.consistency}</span><strong>{revealConsistency}</strong></p>
+                <p className="quiz-engine__profile-traits" aria-label={profileReveal.traitsLabel}>
+                  {result.profile.traits?.map((trait) => <span key={trait}>{trait}</span>)}
+                </p>
+                <dl className="quiz-engine__result-signals">
+                  <div><dt>{profileReveal.strongestEnergy}</dt><dd>{result.strongestSignal}</dd></div>
+                  <div><dt>{profileReveal.hiddenEnergy}</dt><dd>{result.hiddenSignal}</dd></div>
+                </dl>
+                {Object.keys(result.dimensionScores).length ? (
+                  <div className="quiz-engine__dimensions quiz-engine__dimensions--summary">
+                    <h3>{translations.results.matchBreakdown.heading}</h3>
+                    {Object.entries(result.dimensionScores).map(([label, value]) => (
+                      <div className="quiz-engine__dimension" key={label}>
+                        <div><span>{label}</span><strong>{value}%</strong></div>
+                        <i><b style={{ width: `${value}%` }} /></i>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+                {profileReveal.firstFeatureLabel && result.profile.firstFeature ? (
+                  <p className="quiz-engine__profile-first-feature"><strong>{profileReveal.firstFeatureLabel}</strong> {result.profile.firstFeature}</p>
+                ) : null}
+              </>
+            )}
             <p className="quiz-engine__disclaimer">{profileReveal.disclaimer}</p>
           </>
         ) : (
@@ -866,18 +924,19 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
         {matchCopy ? <p className="quiz-engine__result-fraction"><span>{matchCopy.academicChallenge}: </span><strong>{result.percentage}% — {result.score} / {result.total}</strong> {matchCopy.correctLabel}</p> : null}
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
-        {detailedResults && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
+        <p className="quiz-engine__result-copy">{result.profile.copy}</p>
+        {supportsAnswerReview && requiresReviewUnlock ? (
           <section className="quiz-engine__answer-review-unlock">
             <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
-            <span>{translations.quiz.answersToReview}</span>
-            <h3>{reviewUnlockCopy?.title ?? translations.quiz.answersToReview}</h3>
-            {reviewUnlockCopy?.copy ? <p>{reviewUnlockCopy.copy}</p> : null}
+            <span>{translations.results.fullBreakdown.eyebrow}</span>
+            <h3>{reviewUnlockCopy?.title ?? translations.results.fullBreakdown.title}</h3>
+            <p>{reviewUnlockCopy?.copy ?? translations.results.fullBreakdown.copy}</p>
             <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.viewResults}
+              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
             </button>
-            <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
+            <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
           </section>
-        ) : detailedResults && quiz.engine.scoring.type === "correct-answer" ? (
+        ) : supportsAnswerReview && reviewUnlocked ? (
           <section className="quiz-engine__answer-review">
             <h3>{translations.quiz.answersToReview}</h3>
             {incorrectQuestions.length === 0 ? (
@@ -932,28 +991,20 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             </div>
           </section>
         ) : null}
-        {estimate ? (
+        {estimate && (!detailedResults || reviewUnlocked) ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{estimate.wildcard}</dt><dd>{result.wildcard}</dd></div>
             <div><dt>{estimate.consistency}</dt><dd>{consistency}</dd></div>
           </dl>
-        ) : !scoreCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
-        {!detailedResults ? <p className="quiz-engine__result-copy">{result.profile.copy}</p> : null}
-        {matchCopy ? (
+        ) : !estimate && !scoreCopy && !matchCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
+        {matchCopy && reviewUnlocked ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--match">
             <div><dt>{matchCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{matchCopy.preferredStyle}</dt><dd>{result.preferredStyle}</dd></div>
             <div><dt>{matchCopy.alternative}</dt><dd>{result.alternativeMatch}</dd></div>
             <div><dt>{matchCopy.wildcard}</dt><dd>{result.wildcardMatch}<small>{matchCopy.wildcardTemplate.replace("{value}", result.wildcardReason ?? "—")}</small></dd></div>
             <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
-          </dl>
-        ) : null}
-        {scoreCopy && !detailedResults ? (
-          <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
-            <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
-            <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
-            {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
@@ -966,7 +1017,7 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             <span>{translations.quiz.profile}</span>
           </div>
         </div> : null}
-        {(!estimate || detailedResults) && Object.keys(result.dimensionScores).length ? (
+        {reviewUnlocked && Object.keys(result.dimensionScores).length ? (
           <div className={`quiz-engine__dimensions${detailedResults && scoreCopy ? " quiz-engine__dimensions--summary" : ""}`}>
             {detailedResults && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
             {detailedResults && scoreCopy ? (
@@ -984,46 +1035,9 @@ export function QuizEngine({ locale, quiz, startInstructionEnabled, translations
             ))}
           </div>
         ) : null}
-        {!detailedResults && quiz.engine.scoring.type === "correct-answer" && requiresReviewUnlock ? (
-          <section className="quiz-engine__answer-review-unlock">
-            <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
-            <span>{translations.quiz.answersToReview}</span>
-            <h3>{reviewUnlockCopy?.title ?? translations.quiz.answersToReview}</h3>
-            {reviewUnlockCopy?.copy ? <p>{reviewUnlockCopy.copy}</p> : null}
-            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.viewResults}
-            </button>
-            <small>{reviewUnlockCopy?.adNote ?? translations.ad.stepOne}</small>
-          </section>
-        ) : !detailedResults && quiz.engine.scoring.type === "correct-answer" ? (
-          <section className="quiz-engine__answer-review">
-            <h3>{translations.quiz.answersToReview}</h3>
-            {incorrectQuestions.length === 0 ? (
-              <p>{translations.quiz.perfectReview}</p>
-            ) : (
-              <div>
-                {incorrectQuestions.map((question) => (
-                  <article key={question.id}>
-                    <span>{quiz.stages[question.stage]}</span>
-                    <h4>{question.prompt}</h4>
-                    <dl>
-                      <div><dt>{translations.quiz.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
-                      <div><dt>{translations.quiz.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
-                    </dl>
-                  </article>
-                ))}
-              </div>
-            )}
-          </section>
-        ) : null}
-        {detailedResults && resultInsights ? (
-          <section className="quiz-engine__result-takeaway">
-            <h3>{resultInsights.snapshot}</h3>
-            <p className="quiz-engine__result-copy">{result.profile.copy}</p>
-          </section>
-        ) : null}
           </>
         )}
+        {recommendation ? <RecommendationCard recommendation={recommendation} /> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>

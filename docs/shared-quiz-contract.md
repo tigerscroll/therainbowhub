@@ -5,21 +5,20 @@ Every quiz folder is automatically validated by both `npm run lint` and
 structure below.
 
 Start new quiz work with `npm run create:quiz -- <slug>`. The scaffolder emits
-schema-v2 data, the five-by-eight stage skeleton, a scoped token-based theme and
+schema-v2 data, the ten-question single-stage skeleton, a scoped token-based theme and
 a placeholder thumbnail. Placeholder copy and artwork must be replaced before
 production; the validators enforce the contract independently.
 
 ## Fixed structure
 
-- One manifest and theme per quiz, plus the complete supported locale set: `quiz.json`, `theme.css`, `en.json`, `fr.json`, `de.json`, `it.json`, `nl.json`, `es.json`, `pt.json`.
-- The manifest must declare `"template": "five-stage-rewarded-v1"`; shared flow, timing, checkpoint and rewarded settings may not be overridden per quiz.
-- Exactly five stages with exactly eight questions in each stage.
-- Shared staged, automatic, selection-only engine with a 450ms transition.
-- Rewarded Start and rewarded stage checkpoints with three unavailable-ad attempts.
+- One manifest, one scoped theme and one worldwide-English content file per quiz: `quiz.json`, `theme.css` and `en.json`.
+- The manifest must declare `"template": "single-stage-rewarded-v1"`; shared flow, timing, checkpoint and rewarded settings may not be overridden per quiz.
+- Exactly one stage containing exactly ten strong, unique questions.
+- Shared linear, automatic, selection-only engine with a 450ms transition.
+- Rewarded Start and one rewarded final-result reveal with three unavailable-ad attempts.
 - One persistent continuous shell for landing, questions, checkpoints and results.
-- Progress-only checkpoints after stages one to four; no intermediate stage score.
-- `Continue` plus the shared arrow for stages one to four.
-- A three-row result checklist only at the final checkpoint.
+- No intermediate checkpoints or scores.
+- One three-row result checklist after question ten.
 - Free incorrect-answer review and no question explanations.
 - No display-ad flow variants.
 - Standard split landing, card questions and immersive results.
@@ -42,7 +41,7 @@ repeat palette literals or shared geometry.
 ## Visual regression
 
 `npm run visual:update` records the approved shared-shell baseline. `npm run
-visual:test` replays all 40 interactions for every quiz at 320px, 390px, tablet
+visual:test` replays all 10 interactions for every quiz at 320px, 390px, tablet
 and desktop widths, including rewarded fallbacks, checkpoints and results. It
 also rejects true horizontal overflow. Update the baseline only after an
 intentional, reviewed visual change.
