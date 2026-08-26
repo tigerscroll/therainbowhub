@@ -31,7 +31,7 @@ type QuizRecommendation = {
 type QuizScreen = "landing" | "question" | "preparing" | "checkpoint" | "results";
 type SavedScreen = Exclude<QuizScreen, "landing">;
 
-const RESULT_PREPARATION_MS = 1500;
+const RESULT_PREPARATION_FALLBACK_MS = 1600;
 const RESULT_READY_CTA_DELAY_MS = 600;
 
 type SavedProgress = {
@@ -611,9 +611,17 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
   useEffect(() => {
     if (screen !== "preparing") return;
-    const timer = window.setTimeout(() => setScreen("checkpoint"), RESULT_PREPARATION_MS);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const reducedMotionTimer = window.setTimeout(() => setScreen("checkpoint"), 0);
+      return () => window.clearTimeout(reducedMotionTimer);
+    }
+    const timer = window.setTimeout(() => setScreen("checkpoint"), RESULT_PREPARATION_FALLBACK_MS);
     return () => window.clearTimeout(timer);
   }, [screen]);
+
+  function completeResultPreparation() {
+    setScreen((current) => current === "preparing" ? "checkpoint" : current);
+  }
 
   useEffect(() => {
     if (screen !== "checkpoint") {
@@ -785,7 +793,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <h2>Preparing your result…</h2>
         <p>Reviewing your answers and building your result.</p>
         <div aria-hidden="true" className="quiz-engine__preparing-mark"><span /><span /><span /></div>
-        <div aria-hidden="true" className="quiz-engine__preparing-progress"><i /></div>
+        <div aria-hidden="true" className="quiz-engine__preparing-progress">
+          <i onAnimationEnd={completeResultPreparation} />
+        </div>
       </section>
     );
   }
