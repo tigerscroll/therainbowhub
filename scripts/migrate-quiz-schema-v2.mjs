@@ -189,7 +189,6 @@ function buildTextFile(data, structure) {
       } : undefined,
     })];
   }));
-  const checkpoint = data.checkpoint ? compact({ finalAdNote: data.checkpoint.finalAdNote }) : undefined;
   return compact({
     schemaVersion: 2,
     title: data.title,
@@ -199,7 +198,6 @@ function buildTextFile(data, structure) {
     nextQuestionLabel: data.nextQuestionLabel,
     landing: data.landing,
     about: data.about,
-    checkpoint,
     career: {
       resultProgressLabel: data.career.resultProgressLabel,
       resultProgressComplete: data.career.resultProgressComplete,

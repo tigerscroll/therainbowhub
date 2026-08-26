@@ -745,7 +745,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
             {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
           </button>
-          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? <p className="quiz-engine__ad-note"><span>✓</span>{quiz.landing.startNote ?? translations.ad.startNote}</p> : null}
+          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? <p className="quiz-engine__ad-note"><span>✓</span>{translations.ad.startNote}</p> : null}
         </div>
       </section>
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
@@ -802,9 +802,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     const checkpointVariantAssets = quiz.theme.artwork?.checkpointVariants;
-    const checkpointAdNote = isFinalStage
-      ? checkpoint.finalAdNote ?? translations.ad.continueNote
-      : translations.ad.continueNote;
+    const checkpointAdNote = isFinalStage ? translations.ad.resultsNote : translations.ad.continueNote;
     const checkpointVariant = checkpointVariantAssets
       ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
       : undefined;
@@ -859,8 +857,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           ) : null}
         </button>
         {quiz.engine.rewarded.stages && checkpoint ? (
-          <p className="quiz-engine__checkpoint-ad-note">
-            {!isSingleStage ? <span aria-hidden="true">✓</span> : null}
+          <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
+            <span aria-hidden="true">✓</span>
             {checkpointAdNote}
           </p>
         ) : null}

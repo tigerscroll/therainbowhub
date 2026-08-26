@@ -331,6 +331,13 @@
   margin: 0 auto 4px !important;
 }
 
+/* Keep the result-ready copy, completed checks and CTA on one shared vertical
+   rhythm. This intentionally overrides older per-quiz checklist margins. */
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint--progress-career .quiz-engine__career-checklist {
+  margin-top: 28px !important;
+  margin-bottom: 24px !important;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint-journey-progress {
   box-sizing: border-box;
   width: 100% !important;
@@ -577,6 +584,11 @@
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint--progress-career h2 {
     font-size: clamp(28px, 8.5vw, 38px) !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint--progress-career .quiz-engine__career-checklist {
+    margin-top: 24px !important;
+    margin-bottom: 20px !important;
   }
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary,

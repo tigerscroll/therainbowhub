@@ -252,7 +252,6 @@ export type QuizTheme = {
 };
 
 export type QuizCheckpointCopy = {
-  finalAdNote?: string;
   finalIcon?: string;
   buttonIcon?: string;
 };
@@ -328,7 +327,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProofCount: number; socialAvatars: string[]; startNote?: string; startPrompt?: QuizRewardPrompt };
+  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -413,7 +412,7 @@ type QuizLocaleFile = {
   summary: string;
   progressLabel?: string;
   nextQuestionLabel?: string;
-  landing?: { intro?: string; badge?: string; cta?: string; startNote?: string; startPrompt?: QuizRewardPrompt };
+  landing?: { intro?: string; badge?: string; cta?: string; startPrompt?: QuizRewardPrompt };
   about?: {
     body: string;
     disclaimer?: string;
@@ -966,7 +965,6 @@ function normalizeLocale(
 ): Quiz {
   const title = text(value.title, "title", file);
   const summary = text(value.summary, "summary", file);
-  if (value.landing?.startNote !== undefined) text(value.landing.startNote, "landing.startNote", file);
   if (value.landing?.startPrompt) {
     if (!manifest.engine.rewarded?.start) throw new Error(`${file}: landing.startPrompt requires a rewarded start gate.`);
     (["eyebrow", "icon", "title", "copy", "button"] as const)
@@ -977,7 +975,6 @@ function normalizeLocale(
   const localeFlow = "linear";
   if (manifest.engine.checkpoint === "ai") {
     if (!value.checkpoint) throw new Error(`${file}: AI checkpoints need checkpoint copy.`);
-    if (value.checkpoint.finalAdNote !== undefined) text(value.checkpoint.finalAdNote, "checkpoint.finalAdNote", file);
     if (value.checkpoint.finalIcon !== undefined) text(value.checkpoint.finalIcon, "checkpoint.finalIcon", file);
     if (value.checkpoint.buttonIcon !== undefined) text(value.checkpoint.buttonIcon, "checkpoint.buttonIcon", file);
   }
@@ -1318,7 +1315,6 @@ function normalizeLocale(
       infoBadge: value.landing?.badge,
       socialProofCount: manifest.listing.socialProofCount,
       ctaLabel: value.landing?.cta,
-      startNote: value.landing?.startNote,
       socialAvatars,
       startPrompt: value.landing?.startPrompt,
     },

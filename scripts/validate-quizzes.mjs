@@ -124,6 +124,8 @@ function validateStudy(study, location) {
 
 const referenceUi = read(path.join(process.cwd(), "data", "i18n", "en.json"));
 const requiredUiKeys = referenceUi ? leafStringPaths(referenceUi).sort() : [];
+fail(referenceUi?.ad?.startNote === "One short ad, then you’ll begin.", "Shared rewarded Start note must use the universal template copy.");
+fail(referenceUi?.ad?.resultsNote === "One short ad, then your results.", "Shared rewarded results note must use the universal template copy.");
 
 for (const locale of supportedLocales) {
   const ui = read(path.join(process.cwd(), "data", "i18n", `${locale}.json`));
@@ -240,6 +242,7 @@ for (const folder of folders) {
   fail(typeof source.landing?.cta === "string" && source.landing.cta.trim(), `${folder.name}/en.json: configurable landing CTA copy is required.`);
   fail(JSON.stringify(Object.keys(source.landing ?? {}).sort()) === JSON.stringify(["cta", "intro"]), `${folder.name}/en.json: landing content may contain only intro and CTA copy; social proof is shared i18n.`);
   fail(source.landing?.startNote === undefined && source.landing?.startPrompt === undefined, `${folder.name}/en.json: rewarded Start helper copy must come from the shared template.`);
+  fail(sourceRaw.checkpoint === undefined, `${folder.name}/en.json: rewarded results helper copy must come from the shared template.`);
   fail(sourceQuestions.every((question) => question.explanation === undefined), `${folder.name}/en.json: question explanations are no longer supported.`);
   fail(sourceQuestions.every((question) => (
     question.visual?.columns === undefined
@@ -388,7 +391,6 @@ for (const folder of folders) {
     const gate = source.career?.stages?.[0];
     fail(source.career?.stages?.length === 1 && gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final rewarded estimate gate.");
     fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "Your age estimate and lifestyle profile are ready to reveal." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
-    fail(source.checkpoint?.finalAdNote === "One short ad, then your estimate.", "years-left/en.json: final rewarded checkpoint helper copy changed.");
     fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
   }
   if (folder.name === "memory") {
@@ -428,8 +430,7 @@ for (const folder of folders) {
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
     fail(source.career?.stages?.length === 1 && source.career.stages[0]?.preAdChecks?.length === 3 && source.career.stages[0]?.next === undefined, `${folder.name}/en.json: Memory needs one final rewarded result gate.`);
     const gate = source.career?.stages?.[0];
-    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your results are ready" && gate?.preAdCopy === "Your memory score and three-area breakdown are ready to reveal." && gate?.preAdButton === "Reveal My Results", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
-    fail(source.checkpoint?.finalAdNote === "One short ad, then your results.", `${folder.name}/en.json: Memory final ad note changed.`);
+    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your results are ready" && gate?.preAdCopy === "Your memory score and breakdown across three areas are ready to reveal." && gate?.preAdButton === "Reveal My Results", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory must use the shared breakdown unlock without duplicate copy.`);
     fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage Memory must not show a redundant best-round module.`);
     fail(sourceQuestions[0]?.study?.items?.includes("PURPLE ELEPHANT") && sourceQuestions[8]?.answers?.[sourceQuestions[8]?.correct] === "Purple", `${folder.name}/en.json: opening elephant seed and delayed callback must remain aligned.`);

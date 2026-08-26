@@ -63,7 +63,6 @@ const content = {
     howToPlay: { title: "How to Play", steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },
     disclaimer: "For entertainment and general learning only. This quiz is not a formal assessment.",
   },
-  checkpoint: { finalAdNote: "One short ad, then your results." },
   career: {
     resultProgressLabel: "Challenge progress", resultProgressComplete: "{value}% complete",
     stages: { "stage-1": {
