@@ -55,6 +55,70 @@
   font-weight: 600;
 }
 
+/* McDonald's-inspired editorial skin. It deliberately uses a typographic
+   badge rather than an official company logo because this is an independent
+   employment guide. */
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] {
+  --quiz-flow-background: #fff9e9;
+  --quiz-flow-border: 2px solid #2b1d15;
+  --quiz-flow-shadow: 0 22px 54px rgba(46, 16, 10, .24);
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid #ffc72c;
+  border-radius: 18px;
+  background: #da291c;
+  box-shadow: 6px 7px 0 rgba(72, 21, 14, .18), inset 0 0 0 3px rgba(255, 255, 255, .08);
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__landing .quiz-engine__landing-badge span {
+  display: grid;
+  width: 52px;
+  height: 42px;
+  place-items: center;
+  color: #ffc72c;
+  transform: none;
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__golden-arches {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: #ffc72c;
+  stroke-linecap: square;
+  stroke-linejoin: round;
+  stroke-width: 8;
+  filter: drop-shadow(0 2px 0 rgba(100, 15, 10, .22));
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .quiz-engine__social {
+  border-color: color-mix(in srgb, #da291c 35%, #d8ad48);
+  background: #fff5d4;
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .quiz-engine__social-text strong,
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__number,
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__unlock > span {
+  color: #c21f16;
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .quiz-engine__primary {
+  border-color: #8d1711;
+  background: linear-gradient(180deg, #df2d21, #c51f16);
+  color: #ffffff;
+  box-shadow: 0 8px 0 #7d1711, 0 14px 28px rgba(125, 23, 17, .2);
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .quiz-engine__primary:hover {
+  background: linear-gradient(180deg, #ec392c, #cf241a);
+}
+
+.quiz-theme[data-quiz-theme="mcdonalds-jobs"] .article-engine__article::before {
+  background: linear-gradient(90deg, #da291c 0 68%, #ffc72c 68% 100%);
+}
+
 .article-engine__article {
   position: relative;
   padding: clamp(28px, 5vw, 48px) clamp(20px, 6vw, 60px) clamp(34px, 6vw, 58px);

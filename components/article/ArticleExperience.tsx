@@ -35,6 +35,7 @@ type ArticleExperienceProps = {
   ctaLabel: string;
   disclaimer?: string;
   icon: string;
+  iconVariant?: "golden-arches";
   intro: string;
   landingTitle: string;
   points: ArticlePoint[];
@@ -185,6 +186,7 @@ export function ArticleExperience({
   ctaLabel,
   disclaimer = "General information only. This article is not a diagnosis, medical assessment or substitute for advice from a qualified healthcare professional.",
   icon,
+  iconVariant,
   intro,
   landingTitle,
   points,
@@ -274,7 +276,15 @@ export function ArticleExperience({
     return (
       <section className="article-engine__landing quiz-engine__landing">
         <div className="quiz-engine__landing-copy">
-          <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{icon}</span></div>
+          <div aria-hidden="true" className="quiz-engine__landing-badge">
+            <span>
+              {iconVariant === "golden-arches" ? (
+                <svg className="article-engine__golden-arches" focusable="false" viewBox="0 0 64 50">
+                  <path d="M7 44C9 12 19 6 31 43C44 6 55 12 57 44" />
+                </svg>
+              ) : icon}
+            </span>
+          </div>
           <h1>{landingTitle}</h1>
           <p className="quiz-engine__quick-start">{intro}</p>
           <div className="quiz-engine__social">
