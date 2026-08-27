@@ -96,6 +96,7 @@ if (!fs.existsSync(outputRoot)) {
     colon: 3,
     funeral: 3,
     kidney: 3,
+    nervous: 4,
     prostate: 3,
     signs: 5,
   };
