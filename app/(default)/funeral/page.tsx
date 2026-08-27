@@ -17,74 +17,86 @@ const description = "Discover the funeral songs families request most often, mor
 
 export const sections: ArticleSection[] = [
   {
-    title: "The 10 Most Requested Funeral Songs",
-    intro: "Funeral music charts change over time and differ by place. This list follows Co-op Funeralcare's 2025 UK chart, based on choices reported across more than 90,000 funerals.",
+    title: "20 Most Requested Funeral Songs: #20–#11",
+    intro: "This countdown follows the National Association of Funeral Directors' 2026 UK ranking. We begin at number 20 and work towards the songs families request most often.",
     points: [
       {
-        title: "Time to Say Goodbye — Sarah Brightman and Andrea Bocelli",
-        paragraphs: [
-          "The soaring duet combines a sense of farewell with grandeur, making it a natural choice for an entrance, a reflective moment or the close of a formal service.",
-        ],
+        numberLabel: "20",
+        title: "The Lord Is My Shepherd — Traditional hymn",
+        paragraphs: ["A familiar religious choice centred on comfort, guidance and peace. It remains especially meaningful where faith and congregational singing are important to the service."],
       },
       {
-        title: "My Way — Frank Sinatra",
-        paragraphs: [
-          "A long-standing funeral favourite, this song is often chosen to represent independence, resilience and a life lived on the person's own terms.",
-        ],
-      },
-      {
-        title: "Somewhere Over the Rainbow — Eva Cassidy",
-        paragraphs: [
-          "Eva Cassidy's gentle interpretation is frequently selected for its quiet warmth. It can create a reflective atmosphere without feeling overwhelmingly formal.",
-        ],
-      },
-      {
-        title: "You'll Never Walk Alone — Gerry and The Pacemakers",
-        paragraphs: [
-          "Its message of solidarity gives the song meaning well beyond football. Families often choose it to express community, loyalty and the promise that someone will be remembered.",
-        ],
-      },
-      {
-        title: "The Best — Tina Turner",
-        paragraphs: [
-          "Celebratory and affectionate, this choice works particularly well when a family wants the service to honour someone's energy, confidence and impact on the people around them.",
-        ],
-      },
-      {
-        title: "Supermarket Flowers — Ed Sheeran",
-        paragraphs: [
-          "Written from a family's perspective after a loss, this modern song has become a widely recognised expression of grief, memory and gratitude.",
-        ],
-      },
-      {
-        title: "Wind Beneath My Wings — Bette Midler",
-        paragraphs: [
-          "This enduring tribute is commonly chosen for someone whose support shaped other people's lives, especially a parent, partner, mentor or close friend.",
-        ],
-      },
-      {
+        numberLabel: "19",
         title: "Abide With Me — Traditional hymn",
-        paragraphs: [
-          "One of the most familiar funeral hymns, it can provide a strong sense of tradition, faith and communal participation during a religious or partly religious service.",
-        ],
+        paragraphs: ["One of the best-known funeral hymns, often chosen for its sense of reassurance, tradition and shared remembrance."],
       },
       {
+        numberLabel: "18",
         title: "We'll Meet Again — Vera Lynn",
-        paragraphs: [
-          "Its association with separation, hope and an earlier generation makes it especially meaningful for families who connect the song with wartime memories or family history.",
-        ],
+        paragraphs: ["Its themes of separation and reunion carry strong associations with wartime memory, family history and hope beyond a final goodbye."],
       },
       {
-        title: "You Raise Me Up — Westlife",
-        paragraphs: [
-          "The song's emotional build and message of encouragement make it a popular tribute to someone remembered for their guidance, strength or belief in others.",
-        ],
+        numberLabel: "17",
+        title: "In My Life — The Beatles",
+        paragraphs: ["A concise reflection on people, places and memories, making it a personal choice for a photographic tribute or quiet moment in the service."],
+      },
+      {
+        numberLabel: "16",
+        title: "Always Look on the Bright Side of Life — Monty Python",
+        paragraphs: ["Some families deliberately choose humour. This irreverent send-off can feel entirely right for someone remembered for optimism and refusing to take life too seriously."],
+      },
+      {
+        numberLabel: "15",
+        title: "Over the Rainbow — Eva Cassidy",
+        paragraphs: ["Cassidy's restrained recording brings warmth and reflection without feeling overly formal, which makes it a popular choice for a calm tribute."],
+      },
+      {
+        numberLabel: "14",
+        title: "What a Wonderful World — Louis Armstrong",
+        paragraphs: ["Warm and life-affirming, this song helps families focus on gratitude, beauty and the life that was lived."],
+      },
+      {
+        numberLabel: "13",
+        title: "Hallelujah — Leonard Cohen",
+        paragraphs: ["Its emotional melody has made many recordings popular at funerals, although families should listen to the complete lyrics and choose the exact version carefully."],
+      },
+      {
+        numberLabel: "12",
+        title: "Fix You — Coldplay",
+        paragraphs: ["The gradual build from vulnerability to support gives this modern favourite a strong emotional arc during reflection or a photo montage."],
+      },
+      {
+        numberLabel: "11",
+        title: "Danny Boy — Traditional song",
+        paragraphs: ["A long-established farewell with powerful cultural and family associations. The chosen singer and arrangement can make it intimate or ceremonial."],
       },
     ],
     next: {
-      eyebrow: "More requested songs",
-      title: "Want to see the modern favourites?",
-      copy: "Discover ten personal, contemporary and unexpected choices families also make.",
+      eyebrow: "The Top 10 are next",
+      title: "The most requested songs are still ahead",
+      copy: "Reveal numbers 10 to 1—and see which enduring farewell reaches the top spot.",
+      cta: "Reveal The Top 10",
+    },
+  },
+  {
+    title: "The 10 Most Requested Funeral Songs: #10–#1",
+    intro: "These are the top ten songs in the NAFD's 2026 ranking, counting down to the most requested funeral song.",
+    points: [
+      { numberLabel: "10", title: "Pie Jesu — Andrew Lloyd Webber", paragraphs: ["This sacred solo combines ceremony with tenderness and is often chosen for a formal service or quiet moment of reflection."] },
+      { numberLabel: "9", title: "Simply the Best — Tina Turner", paragraphs: ["Celebratory and affectionate, this choice honours someone remembered for their energy, confidence and impact on others."] },
+      { numberLabel: "8", title: "The Long and Winding Road — The Beatles", paragraphs: ["Its themes of distance, longing and an unfinished journey give it a reflective weight suited to remembrance."] },
+      { numberLabel: "7", title: "Unforgettable — Nat King Cole", paragraphs: ["Elegant and direct, this classic expresses enduring affection without needing an explicitly religious message."] },
+      { numberLabel: "6", title: "You Raise Me Up — Westlife", paragraphs: ["Its emotional build and message of encouragement make it a tribute to someone remembered for guidance, strength or belief in others."] },
+      { numberLabel: "5", title: "Somewhere Over the Rainbow — Israel Kamakawiwoʻole", paragraphs: ["The gentle ukulele recording feels hopeful and personal, creating a softer alternative to a formal farewell song."] },
+      { numberLabel: "4", title: "Time to Say Goodbye — Andrea Bocelli and Sarah Brightman", paragraphs: ["The soaring duet combines farewell with grandeur, making it a natural choice for an entrance or closing moment."] },
+      { numberLabel: "3", title: "Angels — Robbie Williams", paragraphs: ["A familiar modern classic associated with protection, comfort and continuing connection. Its chorus can make a service feel communal."] },
+      { numberLabel: "2", title: "Wind Beneath My Wings — Bette Midler", paragraphs: ["This enduring tribute is often chosen for a parent, partner, mentor or friend whose quiet support shaped other people's lives."] },
+      { numberLabel: "1", title: "My Way — Frank Sinatra", paragraphs: ["The chart's number-one choice celebrates independence, resilience and a life lived on the person's own terms—one reason it has endured across generations."] },
+    ],
+    next: {
+      eyebrow: "Beyond the chart",
+      title: "Want to see more personal choices?",
+      copy: "Discover ten modern, uplifting and unexpected songs families also choose.",
       cta: "See Modern Favourites",
     },
   },
@@ -206,7 +218,7 @@ export default function FuneralArticlePage() {
           adNote="One short ad, then reveal the songs."
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="Reveal The Songs"
-          disclaimer="Funeral music charts vary by year, region and provider. This guide uses the latest cited UK chart as a starting point, not a universal all-time ranking. Personal wishes, cultural traditions, venue requirements and the needs of those arranging the service should guide the final choice."
+          disclaimer="Funeral music charts vary by year, region and provider. The 20-song countdown follows the cited NAFD 2026 UK ranking; other charts may differ. Personal wishes, cultural traditions, venue requirements and the needs of those arranging the service should guide the final choice."
           icon={(
             <img
               alt=""
@@ -222,6 +234,7 @@ export default function FuneralArticlePage() {
           socialProofCount="147,000+"
           socialProofLabel="read this today"
           sources={[
+            { label: "National Association of Funeral Directors: Top 20 funeral songs for 2026", url: "https://www.funeral-directory.co.uk/guides/funeral-music-and-songs/" },
             { label: "Co-op Funeralcare 2025 music chart", url: "https://assets.digital.coop.co.uk/funeralcare/music" },
             { label: "Co-op Funeralcare music guidance", url: "https://www.coop.co.uk/funeralcare/music" },
             { label: "Co-op funeral music charts", url: "https://www.coop.co.uk/funeralcare/music/charts" },

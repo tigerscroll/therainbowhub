@@ -17,48 +17,80 @@ const description = "Discover the vintage household brands collectors search for
 
 export const sections: ArticleSection[] = [
   {
-    title: "10 Old Household Brands That Could Be Worth Thousands",
-    intro: "Some ordinary-looking bowls, tins and appliances hide the exact details collectors pay more for. See which familiar names deserve a closer look.",
+    title: "20 Old Household Brands: #20–#11",
+    intro: "This editorial countdown ranks familiar names by collector demand, rarity potential and the standout prices exceptional versions can reach. Most examples are modestly valued—the exact version matters.",
+    points: [
+      { numberLabel: "20", title: "Mason Cash mixing bowls", paragraphs: ["Older sizes, discontinued colours and well-preserved patterned bowls can appeal to kitchenware collectors. Check the impressed base mark and compare the exact design rather than relying on the familiar shape alone."] },
+      { numberLabel: "19", title: "Anchor Hocking glassware", paragraphs: ["Depression-era colours, unusual moulds and complete serving sets can be more desirable than common clear pieces. Tiny chips and dishwasher haze make a large difference to collector value."] },
+      { numberLabel: "18", title: "Kilner, Ball and Mason preserving jars", paragraphs: ["Early closures, unusual embossing, rare colours and original lids are worth researching. Many jars survive, so age alone does not make an ordinary clear example valuable."] },
+      { numberLabel: "17", title: "Fiesta tableware", paragraphs: ["Collectors distinguish original production from later reissues using colour, shape, glaze and base marks. Scarcer colours and complete undamaged place settings can attract stronger demand."] },
+      { numberLabel: "16", title: "Braun radios and small appliances", paragraphs: ["Mid-century Braun design has a dedicated following. Original parts, unbroken cases and a documented model number matter, while old electrical items should be checked professionally before use."] },
+      { numberLabel: "15", title: "Kenwood Chef mixers", paragraphs: ["Early mixers with their bowls, splash guards and complete attachment sets can interest appliance and design collectors. Condition, exact model and local shipping practicality all shape the price."] },
+      { numberLabel: "14", title: "Hornsea Pottery", paragraphs: ["Some discontinued patterns, unusual shapes and complete tea or storage sets are increasingly collected. Base marks, decoration quality and freedom from chips help separate the better finds."] },
+      { numberLabel: "13", title: "Royal Doulton figures and tableware", paragraphs: ["Discontinued figures, limited issues and less common patterns may have a collector market, but many pieces were produced in large numbers. Record every model name, number and backstamp."] },
+      { numberLabel: "12", title: "Vintage LEGO sets", paragraphs: ["Complete retired sets with instructions, boxes and rare minifigures can outperform loose mixed bricks. Match the set number and inventory carefully before comparing sold prices."] },
+      { numberLabel: "11", title: "Early Barbie dolls and accessories", paragraphs: ["The earliest dolls, scarce outfits and complete boxed examples can command serious collector attention. Reproduction clothing, replaced parts and identification mistakes are common, so small construction details matter."] },
+    ],
+    next: {
+      eyebrow: "The Top 10 are next",
+      title: "The biggest collector surprises are still ahead",
+      copy: "Reveal numbers 10 to 1—and see which familiar advertising brand takes the top spot.",
+      cta: "Reveal The Top 10",
+    },
+  },
+  {
+    title: "10 Old Household Brands: #10–#1",
+    intro: "These familiar names have produced the patterns, formats and rare survivors most likely to make collectors look twice. The ranking reflects standout potential, not the value of every item bearing the brand.",
     points: [
       {
-        title: "Pyrex patterned bowls and casseroles",
-        paragraphs: ["Collectors search for particular colours, promotional pieces and short-lived patterns rather than every Pyrex dish. Clear backstamps, bright decoration, the correct lid and a complete nesting set can make a major difference."],
-      },
-      {
-        title: "CorningWare casserole dishes",
-        paragraphs: ["Early marks, uncommon decorations, unusual sizes and complete dishes with matching lids attract the most attention. Blue Cornflower is famous, but familiarity alone does not make every example rare or expensive."],
-      },
-      {
-        title: "Coca-Cola trays, clocks and signs",
-        paragraphs: ["Original advertising with vivid graphics, an early date, a desirable subject or a scarce format can command strong prices. Reproductions are widespread, so construction, ageing, maker details and provenance matter."],
-      },
-      {
-        title: "Tupperware from the early party-plan era",
-        paragraphs: ["Unusual colours, discontinued shapes, complete sets and pieces with original paperwork can appeal to collectors of post-war design. Common used tubs are plentiful, so model and condition must be matched carefully."],
-      },
-      {
-        title: "Le Creuset in discontinued colours",
-        paragraphs: ["Older enamel cookware can be collectible when the colour, shape or production period is sought after. Chips, interior wear and replaced lids usually reduce value, while clean sets in a scarce finish can attract a premium."],
-      },
-      {
-        title: "Singer sewing machines and cabinets",
-        paragraphs: ["Serial numbers help date Singer machines, but many standard treadle and hand-crank models survive. Scarcer variants, ornate decals, accessories and exceptional cabinets tend to matter more than age by itself."],
-      },
-      {
-        title: "KitchenAid and Hobart mixers",
-        paragraphs: ["Heavy early mixers, unusual colours and well-preserved attachments can interest design and appliance collectors. Working order helps, but old electrical equipment should be professionally checked before use."],
-      },
-      {
-        title: "Cadbury, OXO and other advertising tins",
-        paragraphs: ["Old grocery and confectionery tins can be desirable when the graphics are striking, the subject is unusual and the surface remains bright. Rare early packaging can be worth far more than the later mass-produced tins found in many homes."],
-      },
-      {
+        numberLabel: "10",
         title: "Thermos and Stanley lunch gear",
         paragraphs: ["Early vacuum flasks, lunch boxes and matching sets can appeal to collectors of camping, transport and industrial design. Original cups, stoppers, handles and printed decoration are all worth checking."],
       },
       {
+        numberLabel: "9",
         title: "Hoover and Electrolux advertising pieces",
         paragraphs: ["The appliance itself may be bulky and common, while a dealer sign, shop display, boxed miniature or beautifully illustrated manual can be the more collectible object. Small branded extras are easy to overlook."],
+      },
+      {
+        numberLabel: "8",
+        title: "Tupperware from the early party-plan era",
+        paragraphs: ["Unusual colours, discontinued shapes, complete sets and pieces with original paperwork can appeal to collectors of post-war design. Common used tubs are plentiful, so model and condition must be matched carefully."],
+      },
+      {
+        numberLabel: "7",
+        title: "Le Creuset in discontinued colours",
+        paragraphs: ["Older enamel cookware can be collectible when the colour, shape or production period is sought after. Chips, interior wear and replaced lids usually reduce value, while clean sets in a scarce finish can attract a premium."],
+      },
+      {
+        numberLabel: "6",
+        title: "KitchenAid and Hobart mixers",
+        paragraphs: ["Heavy early mixers, unusual colours and well-preserved attachments can interest design and appliance collectors. Working order helps, but old electrical equipment should be professionally checked before use."],
+      },
+      {
+        numberLabel: "5",
+        title: "Singer sewing machines and cabinets",
+        paragraphs: ["Serial numbers help date Singer machines, but many standard treadle and hand-crank models survive. Scarcer variants, ornate decals, accessories and exceptional cabinets tend to matter more than age by itself."],
+      },
+      {
+        numberLabel: "4",
+        title: "Cadbury, OXO and other advertising tins",
+        paragraphs: ["Old grocery and confectionery tins can be desirable when the graphics are striking, the subject is unusual and the surface remains bright. Rare early packaging can be worth far more than the later mass-produced tins found in many homes."],
+      },
+      {
+        numberLabel: "3",
+        title: "CorningWare casserole dishes",
+        paragraphs: ["Early marks, uncommon decorations, unusual sizes and complete dishes with matching lids attract the most attention. Blue Cornflower is famous, but familiarity alone does not make every example rare or expensive."],
+      },
+      {
+        numberLabel: "2",
+        title: "Pyrex patterned bowls and casseroles",
+        paragraphs: ["Collectors search for particular colours, promotional pieces and short-lived patterns rather than every Pyrex dish. Clear backstamps, bright decoration, the correct lid and a complete nesting set can make a major difference."],
+      },
+      {
+        numberLabel: "1",
+        title: "Coca-Cola trays, clocks and signs",
+        paragraphs: ["Original advertising with vivid graphics, an early date, a desirable subject or a scarce format can command strong prices. Reproductions are widespread, so construction, ageing, maker details and provenance matter."],
       },
     ],
     next: {
@@ -298,7 +330,7 @@ export default function BrandsArticlePage() {
           adNote="One short ad, then see the items."
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Valuable Items →"
-          disclaimer="Values and sale examples are illustrative, dated and may change. Brand name, age or an online listing does not guarantee value. Confirm authenticity and compare recent completed sales; obtain an independent qualified appraisal for insurance, tax, estate or high-value decisions. Currency examples are stated in US dollars unless noted."
+          disclaimer="The 20-to-1 order is an editorial ranking based on collector demand, rarity potential and exceptional documented examples—not a guarantee that every item from a named brand is valuable. Values and sale examples are illustrative, dated and may change. Confirm authenticity and compare recent completed sales; obtain an independent qualified appraisal for high-value decisions."
           icon={(
             <svg className="article-engine__brands-icon" focusable="false" viewBox="0 0 72 72">
               <path className="article-engine__brands-tag" d="M10 18c0-4 3-7 7-7h24l21 21-29 29L10 38V18Z" />
