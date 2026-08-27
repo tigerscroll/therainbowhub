@@ -295,7 +295,7 @@ export default function MobilityScooterArticlePage() {
       >
         <ArticleExperience
           articleSlug="mobilityscooter"
-          adNote="One short ad, then check the funding options."
+          adNote="One short ad, then check then see the options."
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="Apply Now →"
           disclaimer="UK general information only. No route guarantees a free mobility scooter. Motability is normally a lease paid from a qualifying mobility allowance; statutory services may provide different equipment; and charitable awards depend on individual criteria and available funds. Rules, benefits and programme terms can change. Verify current eligibility with the official provider before applying, ordering equipment or sharing personal or financial information."
