@@ -210,8 +210,16 @@ export default function ProstateArticlePage() {
           articleSlug="prostate"
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Warning Signs"
-          icon="⚠️"
-          intro="Some warning signs are surprisingly easy to miss. See which 10 changes deserve attention."
+          icon={(
+            <svg className="article-engine__prostate-icon" focusable="false" viewBox="0 0 72 72">
+              <path className="article-engine__prostate-bladder" d="M22 8c-7 5-10 14-7 24 3 9 10 14 21 14s18-5 21-14c3-10 0-19-7-24-4-3-9-2-14 2-5-4-10-5-14-2Z" />
+              <path className="article-engine__prostate-bladder-detail" d="M24 16c-4 6-5 13-2 19" />
+              <path className="article-engine__prostate-gland" d="M18 43c4-6 11-8 18-4 7-4 14-2 18 4 4 7 0 15-7 20l-11 7-11-7c-7-5-11-13-7-20Z" />
+              <path className="article-engine__prostate-zone" d="M36 42c-5 5-5 13 0 20 5-7 5-15 0-20Z" />
+              <path className="article-engine__prostate-urethra" d="M36 34v35" />
+            </svg>
+          )}
+          intro="Some prostate changes are easy to miss. See which 10 warning signs deserve attention."
           landingTitle={landingTitle}
           sectionCount={sections.length}
           sources={[

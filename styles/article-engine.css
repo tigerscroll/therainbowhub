@@ -64,6 +64,43 @@ html.article-resuming .article-engine__landing {
   stroke-linejoin: round;
 }
 
+.article-engine__prostate-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.article-engine__prostate-bladder {
+  fill: #f4c3c8;
+  stroke: #6f1730;
+  stroke-width: 3;
+}
+
+.article-engine__prostate-bladder-detail {
+  stroke: #a83b52;
+  stroke-width: 2.2;
+}
+
+.article-engine__prostate-gland {
+  fill: #c84862;
+  stroke: #6f1730;
+  stroke-width: 3.2;
+}
+
+.article-engine__prostate-zone {
+  fill: #952c45;
+  stroke: #7d2037;
+  stroke-width: 1.7;
+}
+
+.article-engine__prostate-urethra {
+  stroke: #f8d9c9;
+  stroke-width: 2.4;
+}
+
 .article-engine__colon-outline {
   stroke: #6f1730;
   stroke-width: 15;
@@ -93,6 +130,12 @@ html.article-resuming .article-engine__landing {
 .quiz-theme[data-quiz-theme="colon-warning"] .article-engine__landing .quiz-engine__landing-badge {
   border: 3px solid var(--quiz-primary);
   background: #ffe9eb;
+  box-shadow: 5px 6px 0 rgba(91, 17, 39, .18);
+}
+
+.quiz-theme[data-quiz-theme="prostate-warning"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid var(--quiz-primary);
+  background: #ffedef;
   box-shadow: 5px 6px 0 rgba(91, 17, 39, .18);
 }
 

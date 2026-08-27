@@ -215,7 +215,7 @@ export default function ColonArticlePage() {
               <circle className="article-engine__colon-cecum" cx="16" cy="48" r="7" />
             </svg>
           )}
-          intro="These warning signs can be easy to dismiss. If a change is new or persistent, don't put off checking what it could mean."
+          intro="Some bowel changes are easy to miss. See which 10 warning signs deserve attention."
           landingTitle={landingTitle}
           sectionCount={sections.length}
           socialProofCount="132,000+"
