@@ -11,6 +11,11 @@ import {
 } from "@/components/article/articleProgress";
 
 export type ArticlePoint = {
+  image?: {
+    alt: string;
+    caption: string;
+    src: string;
+  };
   title: string;
   paragraphs: string[];
 };
@@ -59,7 +64,12 @@ function isArticleSection(value: unknown): value is ArticleSection {
     && section.points.every((point) => point
       && typeof point.title === "string"
       && Array.isArray(point.paragraphs)
-      && point.paragraphs.every((paragraph) => typeof paragraph === "string"));
+      && point.paragraphs.every((paragraph) => typeof paragraph === "string")
+      && (typeof point.image === "undefined" || (point.image
+        && typeof point.image === "object"
+        && typeof point.image.alt === "string"
+        && typeof point.image.caption === "string"
+        && typeof point.image.src === "string")));
 }
 
 function loadArticleSection(slug: string, section: number) {
@@ -131,6 +141,17 @@ function ArticlePointList({
             <span aria-hidden="true" className="article-engine__number">{index + 1}</span>
             <div>
               <h2>{point.title}</h2>
+              {point.image ? (
+                <figure className="article-engine__point-media">
+                  <img
+                    alt={point.image.alt}
+                    decoding="async"
+                    loading="lazy"
+                    src={point.image.src}
+                  />
+                  <figcaption>{point.image.caption}</figcaption>
+                </figure>
+              ) : null}
               {point.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
           </section>

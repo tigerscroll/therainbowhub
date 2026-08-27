@@ -3,6 +3,7 @@ import { sections as brandsSections } from "@/app/(default)/brands/page";
 import { sections as colonSections } from "@/app/(default)/colon/page";
 import { sections as funeralSections } from "@/app/(default)/funeral/page";
 import { sections as hivSections } from "@/app/(default)/hiv/page";
+import { sections as historicalSections } from "@/app/(default)/historical/page";
 import { sections as kidneySections } from "@/app/(default)/kidney/page";
 import { sections as nervousSections } from "@/app/(default)/nervous/page";
 import { sections as prostateSections } from "@/app/(default)/prostate/page";
@@ -14,6 +15,7 @@ const ARTICLE_SECTIONS = {
   colon: colonSections,
   funeral: funeralSections,
   hiv: hivSections,
+  historical: historicalSections,
   kidney: kidneySections,
   nervous: nervousSections,
   prostate: prostateSections,

@@ -18,6 +18,7 @@
 .quiz-theme[data-quiz-theme="end-of-life-signs"] { --article-landing-border: #80607b; }
 .quiz-theme[data-quiz-theme="nervous-breakdown"] { --article-landing-border: #d75b3f; }
 .quiz-theme[data-quiz-theme="hiv-women"] { --article-landing-border: #be3152; }
+.quiz-theme[data-quiz-theme="disturbing-history"] { --article-landing-border: #7f372f; }
 
 .quiz-theme[data-quiz-flow="continuous"] .article-engine__article {
   overflow: visible !important;
@@ -186,6 +187,28 @@ html.article-resuming .article-engine__landing {
 
 .article-engine__hiv-detail { fill: #fff0f3; }
 
+.article-engine__historical-icon {
+  display: block;
+  width: 53px;
+  height: 53px;
+}
+
+.article-engine__historical-camera {
+  fill: #29221e;
+  stroke: #6d352e;
+  stroke-width: 2.3;
+  stroke-linejoin: round;
+}
+
+.article-engine__historical-lens {
+  fill: #b28a50;
+  stroke: #f1d6a0;
+  stroke-width: 3;
+}
+
+.article-engine__historical-glint { fill: #fff4cf; }
+.article-engine__historical-flash { stroke: #e5bd77; stroke-width: 3; stroke-linecap: round; }
+
 .article-engine__brands-icon {
   display: block;
   width: 52px;
@@ -308,6 +331,23 @@ html.article-resuming .article-engine__landing {
     linear-gradient(145deg, #fffaf5, #fae8eb);
 }
 
+.quiz-theme[data-quiz-theme="disturbing-history"] .article-engine__landing {
+  background:
+    linear-gradient(rgba(74, 57, 43, .035) 1px, transparent 1px),
+    radial-gradient(circle at 86% 12%, rgba(132, 48, 42, .13), transparent 27%),
+    radial-gradient(circle at 8% 88%, rgba(120, 86, 48, .13), transparent 28%),
+    linear-gradient(145deg, #fbf3df, #ead9ba);
+  background-size: 100% 6px, auto, auto, auto;
+}
+
+.quiz-theme[data-quiz-theme="disturbing-history"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid #6b352e;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f2d8a0, #b88c52);
+  box-shadow: 6px 7px 0 rgba(45, 34, 27, .23), inset 0 0 0 5px rgba(255, 245, 218, .27);
+  transform: rotate(-2deg);
+}
+
 .quiz-theme[data-quiz-theme="hiv-women"] .article-engine__landing .quiz-engine__landing-badge {
   border: 3px solid #9e2445;
   border-radius: 50%;
@@ -383,6 +423,14 @@ html.article-resuming .article-engine__landing {
   color: #3b1728;
   font-weight: 950;
   letter-spacing: -.05em;
+}
+
+.quiz-theme[data-quiz-theme="disturbing-history"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="disturbing-history"] .article-engine__header h1 {
+  color: #2c211a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  letter-spacing: -.045em;
 }
 
 .quiz-theme[data-quiz-theme="colon-warning"] .quiz-engine__social {
@@ -474,6 +522,46 @@ html.article-resuming .article-engine__landing {
   border-color: #7e1735;
   background: linear-gradient(180deg, #cc3158, #ab1d45);
   box-shadow: 0 8px 0 #741431, 0 14px 28px rgba(105, 23, 51, .27);
+}
+
+.quiz-theme[data-quiz-theme="disturbing-history"] .quiz-engine__social {
+  border-color: #b89464;
+  background: #f7e7c8;
+}
+
+.quiz-theme[data-quiz-theme="disturbing-history"] .quiz-engine__social-text strong {
+  color: #84342e;
+}
+
+.quiz-theme[data-quiz-theme="disturbing-history"] .quiz-engine__primary {
+  border-color: #5f2925;
+  background: linear-gradient(180deg, #9b3b33, #792b28);
+  box-shadow: 0 8px 0 #52221f, 0 14px 28px rgba(75, 34, 30, .29);
+}
+
+.article-engine__point-media {
+  overflow: hidden;
+  margin: 14px 0 16px;
+  border: 1px solid color-mix(in srgb, var(--quiz-border) 82%, #2b251f);
+  border-radius: 5px;
+  background: #211d1a;
+  box-shadow: 0 8px 22px rgba(39, 31, 25, .14);
+}
+
+.article-engine__point-media img {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  background: #211d1a;
+}
+
+.article-engine__point-media figcaption {
+  padding: 9px 11px 10px;
+  color: #e8ddcc;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.4;
 }
 
 .article-engine__landing .quiz-engine__quick-start {
