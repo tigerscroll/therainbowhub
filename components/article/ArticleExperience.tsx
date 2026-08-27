@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useState, type ReactNode } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
@@ -80,17 +80,63 @@ function loadArticleSection(slug: string, section: number) {
   return request;
 }
 
-function ArticlePointList({ points }: { points: ArticlePoint[] }) {
+function ArticleInlineUnlock({
+  busy,
+  next,
+  onUnlock,
+}: {
+  busy: boolean;
+  next: NonNullable<ArticleSection["next"]>;
+  onUnlock: () => void;
+}) {
+  return (
+    <button
+      aria-label={`${next.title}. ${next.cta}. One short ad, then continue.`}
+      className="article-engine__inline-unlock"
+      disabled={busy}
+      onClick={onUnlock}
+      type="button"
+    >
+      <span className="article-engine__inline-unlock-copy">
+        <small>{next.eyebrow}</small>
+        <strong>{next.title}</strong>
+        <span>{next.copy}</span>
+        <b>{next.cta} →</b>
+        <em><i aria-hidden="true">✓</i>{busy ? "Loading ad…" : "One short ad, then open."}</em>
+      </span>
+      <span aria-hidden="true" className="article-engine__inline-unlock-icon">→</span>
+    </button>
+  );
+}
+
+function ArticlePointList({
+  busy,
+  insertAfter,
+  next,
+  onUnlock,
+  points,
+}: {
+  busy: boolean;
+  insertAfter: number;
+  next?: ArticleSection["next"];
+  onUnlock: () => void;
+  points: ArticlePoint[];
+}) {
   return (
     <div className="article-engine__points">
       {points.map((point, index) => (
-        <section className="article-engine__point" key={point.title}>
-          <span aria-hidden="true" className="article-engine__number">{index + 1}</span>
-          <div>
-            <h2>{point.title}</h2>
-            {point.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </div>
-        </section>
+        <Fragment key={point.title}>
+          <section className="article-engine__point">
+            <span aria-hidden="true" className="article-engine__number">{index + 1}</span>
+            <div>
+              <h2>{point.title}</h2>
+              {point.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </section>
+          {next && index + 1 === insertAfter ? (
+            <ArticleInlineUnlock busy={busy} next={next} onUnlock={onUnlock} />
+          ) : null}
+        </Fragment>
       ))}
     </div>
   );
@@ -228,19 +274,20 @@ export function ArticleExperience({
         <p>{currentSection.intro}</p>
       </header>
 
-      <ArticlePointList points={currentSection.points} />
+      <ArticlePointList
+        busy={adBusy || contentBusy}
+        insertAfter={5}
+        next={currentSection.next}
+        onUnlock={() => unlockSection(unlockedSection + 1)}
+        points={currentSection.points}
+      />
 
       {currentSection.next ? (
-        <section className="article-engine__unlock">
-          <span>{currentSection.next.eyebrow}</span>
-          <h2>{currentSection.next.title}</h2>
-          <p>{currentSection.next.copy}</p>
-          <button className="quiz-engine__primary" disabled={adBusy || contentBusy} onClick={() => unlockSection(unlockedSection + 1)} type="button">
-            <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-            {contentBusy ? "Preparing article…" : adBusy ? "Loading ad…" : currentSection.next.cta}
-          </button>
-          <small>One short ad, then continue.</small>
-        </section>
+        <ArticleInlineUnlock
+          busy={adBusy || contentBusy}
+          next={currentSection.next}
+          onUnlock={() => unlockSection(unlockedSection + 1)}
+        />
       ) : null}
 
       {isFinalSection ? (
