@@ -240,12 +240,13 @@ export default function HistoricalArticlePage() {
           ctaLabel="See The Photos →"
           disclaimer="This educational article includes authentic, non-graphic images connected with poverty, child labour, war, disaster and nuclear weapons. Historical details reflect the cited archive records; some identities and circumstances remain uncertain. Image captions identify the source and licensing information available from each linked file page."
           icon={(
-            <svg className="article-engine__historical-icon" focusable="false" viewBox="0 0 72 72">
-              <path className="article-engine__historical-camera" d="M10 24c0-4 3-7 7-7h9l4-6h13l4 6h8c4 0 7 3 7 7v29c0 4-3 7-7 7H17c-4 0-7-3-7-7V24Z" />
-              <circle className="article-engine__historical-lens" cx="36" cy="39" r="14" />
-              <circle className="article-engine__historical-glint" cx="31" cy="34" r="4" />
-              <path className="article-engine__historical-flash" d="M51 26h5" />
-            </svg>
+            <img
+              alt=""
+              className="article-engine__historical-icon"
+              height="1664"
+              src="/article-images/historical/migrant-mother.jpg"
+              width="1280"
+            />
           )}
           intro="Some captured disaster. Others became disturbing only after the truth emerged. Photo #6 was taken just days before tragedy."
           landingTitle={landingTitle}
