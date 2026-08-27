@@ -19,7 +19,7 @@ const photo = (name: string) => `/article-images/historical/${name}`;
 
 export const sections: ArticleSection[] = [
   {
-    title: "20 Disturbing Historical Photos: #20–#11",
+    title: "20 Disturbing Historical Photos",
     intro: "This editorial countdown ranks authentic, non-graphic photographs by historical consequence, emotional impact and what the frame reveals. It begins at number 20.",
     points: [
       {
@@ -91,7 +91,7 @@ export const sections: ArticleSection[] = [
     },
   },
   {
-    title: "10 Disturbing Historical Photos: #10–#1",
+    title: "10 Disturbing Historical Photos",
     intro: "The editorial countdown continues with ten images whose meaning grows more disturbing once their context is known.",
     points: [
       {

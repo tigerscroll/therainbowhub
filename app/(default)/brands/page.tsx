@@ -17,7 +17,7 @@ const description = "Discover the vintage household brands collectors search for
 
 export const sections: ArticleSection[] = [
   {
-    title: "20 Old Household Brands: #20–#11",
+    title: "20 Old Household Brands",
     intro: "This editorial countdown ranks familiar names by collector demand, rarity potential and the standout prices exceptional versions can reach. Most examples are modestly valued—the exact version matters.",
     points: [
       { numberLabel: "20", title: "Mason Cash mixing bowls", paragraphs: ["Older sizes, discontinued colours and well-preserved patterned bowls can appeal to kitchenware collectors. Check the impressed base mark and compare the exact design rather than relying on the familiar shape alone."] },
@@ -39,7 +39,7 @@ export const sections: ArticleSection[] = [
     },
   },
   {
-    title: "10 Old Household Brands: #10–#1",
+    title: "10 Old Household Brands",
     intro: "These familiar names have produced the patterns, formats and rare survivors most likely to make collectors look twice. The ranking reflects standout potential, not the value of every item bearing the brand.",
     points: [
       {

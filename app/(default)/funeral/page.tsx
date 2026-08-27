@@ -17,7 +17,7 @@ const description = "Discover the funeral songs families request most often, mor
 
 export const sections: ArticleSection[] = [
   {
-    title: "20 Most Requested Funeral Songs: #20–#11",
+    title: "20 Most Requested Funeral Songs",
     intro: "This countdown follows the National Association of Funeral Directors' 2026 UK ranking. We begin at number 20 and work towards the songs families request most often.",
     points: [
       {
@@ -79,7 +79,7 @@ export const sections: ArticleSection[] = [
     },
   },
   {
-    title: "The 10 Most Requested Funeral Songs: #10–#1",
+    title: "The 10 Most Requested Funeral Songs",
     intro: "These are the top ten songs in the NAFD's 2026 ranking, counting down to the most requested funeral song.",
     points: [
       { numberLabel: "10", title: "Pie Jesu — Andrew Lloyd Webber", paragraphs: ["This sacred solo combines ceremony with tenderness and is often chosen for a formal service or quiet moment of reflection."] },
