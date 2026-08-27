@@ -260,7 +260,7 @@ export default function DiabeticsArticlePage() {
           ctaLabel="See The 20 Foods →"
           disclaimer="General educational nutrition information only. This editorial ranking is not a clinical scale and no single food is automatically forbidden for everyone with diabetes. Carbohydrate amount, portion, timing, medication, activity and individual glucose response all matter. Do not change insulin, diabetes medicine or a prescribed eating plan without advice from a qualified healthcare professional. Sugary drinks or glucose may be required to treat hypoglycaemia according to an individual's treatment plan."
           icon="🍟"
-          intro="Some of the worst offenders look surprisingly harmless. See all 20 ranked from bad to worst — and discover which drink takes the #1 spot."
+          intro="Some of the worst offenders look surprisingly harmless. See all 20 ranked from bad to worst — and discover which takes the #1 spot."
           landingTitle={landingTitle}
           sectionCount={sections.length}
           showCtaIcon={false}
