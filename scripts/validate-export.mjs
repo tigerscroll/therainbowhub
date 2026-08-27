@@ -95,6 +95,7 @@ if (!fs.existsSync(outputRoot)) {
     cellulite: 3,
     colon: 3,
     funeral: 3,
+    hiv: 3,
     kidney: 3,
     nervous: 4,
     prostate: 3,
