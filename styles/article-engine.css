@@ -101,6 +101,31 @@ html.article-resuming .article-engine__landing {
   stroke-width: 2.4;
 }
 
+.article-engine__kidney-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.article-engine__kidney-organ {
+  fill: #bd4c62;
+  stroke: #652035;
+  stroke-width: 3.2;
+}
+
+.article-engine__kidney-hilum {
+  stroke: #f4b2b5;
+  stroke-width: 3;
+}
+
+.article-engine__kidney-ureter {
+  stroke: #8b3048;
+  stroke-width: 2.7;
+}
+
 .article-engine__colon-outline {
   stroke: #6f1730;
   stroke-width: 15;
@@ -139,11 +164,21 @@ html.article-resuming .article-engine__landing {
   box-shadow: 5px 6px 0 rgba(91, 17, 39, .18);
 }
 
+.quiz-theme[data-quiz-theme="kidney-warning"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid var(--quiz-primary);
+  background: #edf6f0;
+  box-shadow: 5px 6px 0 rgba(20, 61, 62, .2);
+}
+
 .quiz-theme[data-quiz-theme="colon-warning"] .article-engine__landing h1 {
   font-weight: 950;
 }
 
 .quiz-theme[data-quiz-theme="prostate-warning"] .article-engine__landing h1 {
+  font-weight: 950;
+}
+
+.quiz-theme[data-quiz-theme="kidney-warning"] .article-engine__landing h1 {
   font-weight: 950;
 }
 
@@ -155,6 +190,16 @@ html.article-resuming .article-engine__landing {
 .quiz-theme[data-quiz-theme="colon-warning"] .quiz-engine__primary {
   background: linear-gradient(180deg, #c42649, #a71736);
   box-shadow: 0 8px 0 #721027, 0 14px 28px rgba(114, 16, 39, .2);
+}
+
+.quiz-theme[data-quiz-theme="kidney-warning"] .quiz-engine__social {
+  border-color: color-mix(in srgb, var(--quiz-primary) 38%, var(--quiz-border));
+  background: #edf6f0;
+}
+
+.quiz-theme[data-quiz-theme="kidney-warning"] .quiz-engine__primary {
+  background: linear-gradient(180deg, #b73d57, #96263f);
+  box-shadow: 0 8px 0 #661b31, 0 14px 28px rgba(71, 24, 41, .2);
 }
 
 .article-engine__landing .quiz-engine__quick-start {

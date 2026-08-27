@@ -90,7 +90,7 @@ if (!fs.existsSync(outputRoot)) {
     }
   }
 
-  for (const slug of ["cellulite", "colon", "prostate"]) {
+  for (const slug of ["cellulite", "colon", "kidney", "prostate"]) {
     const articleFile = routeFile(`/${slug}`);
     if (!articleFile) {
       addError(`Missing exported article route: /${slug}`);
