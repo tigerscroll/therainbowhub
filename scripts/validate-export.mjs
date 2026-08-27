@@ -99,6 +99,7 @@ if (!fs.existsSync(outputRoot)) {
     hiv: 3,
     historical: 3,
     kidney: 3,
+    massage: 3,
     nervous: 4,
     prostate: 3,
     signs: 5,
