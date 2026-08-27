@@ -9,7 +9,7 @@
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
     "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",
-    "test": "node --experimental-strip-types --test components/quiz/*.test.ts",
+    "test": "node --experimental-strip-types --test components/article/*.test.ts components/quiz/*.test.ts",
     "validate": "node scripts/validate-quizzes.mjs",
     "validate:quizzes": "node scripts/validate-quizzes.mjs",
     "validate:production": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",

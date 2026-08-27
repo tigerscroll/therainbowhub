@@ -15,7 +15,7 @@ const path = "/colon";
 const landingTitle = "10 Colon Cancer Warning Signs You Shouldn't Ignore";
 const description = "Learn ten bowel changes and other possible colon cancer warning signs worth discussing with a healthcare professional, plus risk factors and what a check may involve.";
 
-const sections: ArticleSection[] = [
+export const sections: ArticleSection[] = [
   {
     title: "Colon Cancer Warning Signs",
     intro: "Colon cancer may cause no symptoms at first. When symptoms do appear, they can have many non-cancerous causes, so a healthcare professional needs to assess the whole picture.",
@@ -201,6 +201,7 @@ export default function ColonArticlePage() {
         themeCssHref={referenceQuiz.themeCssHref}
       >
         <ArticleExperience
+          articleSlug="colon"
           adNote="One short ad, then see the warning signs."
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Warning Signs"
@@ -216,7 +217,7 @@ export default function ColonArticlePage() {
           )}
           intro="These warning signs can be easy to dismiss. If a change is new or persistent, don't put off checking what it could mean."
           landingTitle={landingTitle}
-          sections={sections}
+          sectionCount={sections.length}
           socialProofCount="132,000+"
           socialProofLabel="read this today"
           sources={[

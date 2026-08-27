@@ -90,11 +90,11 @@ export function Header({ availableLocales, currentPath, locale, translations }: 
 
 function BrandMark() {
   return (
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-      <path d="M4 24a12 12 0 0 1 24 0" fill="none" stroke="#c83f55" strokeLinecap="round" strokeWidth="3.2" />
-      <path d="M7 24a9 9 0 0 1 18 0" fill="none" stroke="#ed8d37" strokeLinecap="round" strokeWidth="3.2" />
-      <path d="M10 24a6 6 0 0 1 12 0" fill="none" stroke="#46905f" strokeLinecap="round" strokeWidth="3.2" />
-      <path d="M13 24a3 3 0 0 1 6 0" fill="none" stroke="#3979aa" strokeLinecap="round" strokeWidth="3.2" />
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+      <path d="M3.5 16.5a8.5 8.5 0 0 1 17 0" fill="none" stroke="#c83f55" strokeLinecap="round" strokeWidth="2" />
+      <path d="M6 16.5a6 6 0 0 1 12 0" fill="none" stroke="#ed8d37" strokeLinecap="round" strokeWidth="2" />
+      <path d="M8.5 16.5a3.5 3.5 0 0 1 7 0" fill="none" stroke="#46905f" strokeLinecap="round" strokeWidth="2" />
+      <path d="M11 16.5a1 1 0 0 1 2 0" fill="none" stroke="#3979aa" strokeLinecap="round" strokeWidth="2" />
     </svg>
   );
 }

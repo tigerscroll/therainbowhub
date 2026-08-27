@@ -1,9 +1,14 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
+import {
+  ARTICLE_PROGRESS_VERSION,
+  getArticleProgressKey,
+  parseArticleProgress,
+} from "@/components/article/articleProgress";
 
 export type ArticlePoint = {
   title: string;
@@ -29,17 +34,51 @@ export type ArticleSection = {
 
 type ArticleExperienceProps = {
   adNote?: string;
+  articleSlug: string;
   avatars: string[];
   ctaLabel: string;
   disclaimer?: string;
   icon: ReactNode;
   intro: string;
   landingTitle: string;
-  sections: ArticleSection[];
+  sectionCount: number;
   socialProofCount?: string;
   socialProofLabel?: string;
   sources: ArticleSource[];
 };
+
+const sectionRequests = new Map<string, Promise<ArticleSection>>();
+
+function isArticleSection(value: unknown): value is ArticleSection {
+  if (!value || typeof value !== "object") return false;
+  const section = value as Partial<ArticleSection>;
+  return typeof section.title === "string"
+    && typeof section.intro === "string"
+    && Array.isArray(section.points)
+    && section.points.every((point) => point
+      && typeof point.title === "string"
+      && Array.isArray(point.paragraphs)
+      && point.paragraphs.every((paragraph) => typeof paragraph === "string"));
+}
+
+function loadArticleSection(slug: string, section: number) {
+  const key = `${slug}:${section}`;
+  const existing = sectionRequests.get(key);
+  if (existing) return existing;
+  const request = fetch(`/article-data/${encodeURIComponent(slug)}/${section}`, { cache: "force-cache" })
+    .then(async (response) => {
+      if (!response.ok) throw new Error(`Article section ${section} could not be loaded.`);
+      const value: unknown = await response.json();
+      if (!isArticleSection(value)) throw new Error(`Article section ${section} is invalid.`);
+      return value;
+    })
+    .catch((error) => {
+      sectionRequests.delete(key);
+      throw error;
+    });
+  sectionRequests.set(key, request);
+  return request;
+}
 
 function ArticlePointList({ points }: { points: ArticlePoint[] }) {
   return (
@@ -59,42 +98,114 @@ function ArticlePointList({ points }: { points: ArticlePoint[] }) {
 
 export function ArticleExperience({
   adNote = "One short ad, then see the warning signs.",
+  articleSlug,
   avatars,
   ctaLabel,
   disclaimer = "General information only. This article is not a diagnosis, medical assessment or substitute for advice from a qualified healthcare professional.",
   icon,
   intro,
   landingTitle,
-  sections,
+  sectionCount,
   socialProofCount = "125,000+",
   socialProofLabel = "read this today",
   sources,
 }: ArticleExperienceProps) {
   const [started, setStarted] = useState(false);
   const [unlockedSection, setUnlockedSection] = useState(1);
+  const [currentSection, setCurrentSection] = useState<ArticleSection | null>(null);
+  const [contentBusy, setContentBusy] = useState(false);
+  const [restoring, setRestoring] = useState(false);
   const { busy: adBusy, runGate } = useRewardedGate({ attempts: 3 });
+  const progressKey = getArticleProgressKey(articleSlug);
 
-  const resolvedSections = sections;
+  useEffect(() => {
+    let active = true;
+    let restoredSection: number | undefined;
+    try {
+      const raw = window.localStorage.getItem(progressKey);
+      const saved = raw ? parseArticleProgress(JSON.parse(raw), sectionCount) : null;
+      restoredSection = saved?.section;
+      if (!saved && raw) window.localStorage.removeItem(progressKey);
+    } catch {
+      try { window.localStorage.removeItem(progressKey); } catch { /* Storage can be unavailable. */ }
+    }
 
-  function openArticle() {
-    setStarted(true);
+    if (!restoredSection) {
+      document.documentElement.classList.remove("article-resuming");
+      return () => { active = false; };
+    }
+
+    setRestoring(true);
+    void loadArticleSection(articleSlug, restoredSection).then((section) => {
+      if (!active) return;
+      setCurrentSection(section);
+      setUnlockedSection(restoredSection);
+      setStarted(true);
+    }).catch(() => {
+      try { window.localStorage.removeItem(progressKey); } catch { /* Storage can be unavailable. */ }
+    }).finally(() => {
+      if (!active) return;
+      setRestoring(false);
+      document.documentElement.classList.remove("article-resuming");
+    });
+
+    return () => { active = false; };
+  }, [articleSlug, progressKey, sectionCount]);
+
+  function saveProgress(section: number) {
+    try {
+      window.localStorage.setItem(progressKey, JSON.stringify({
+        version: ARTICLE_PROGRESS_VERSION,
+        section,
+        updatedAt: new Date().toISOString(),
+      }));
+    } catch { /* Storage can be unavailable. */ }
+  }
+
+  function revealLoadedSection(section: number, request: Promise<ArticleSection>) {
+    setContentBusy(true);
+    void request.then((content) => {
+      setCurrentSection(content);
+      setUnlockedSection(section);
+      setStarted(true);
+      saveProgress(section);
+      window.scrollTo({ behavior: "smooth", top: 0 });
+    }).catch(() => {
+      setStarted(false);
+      try { window.localStorage.removeItem(progressKey); } catch { /* Storage can be unavailable. */ }
+    }).finally(() => setContentBusy(false));
   }
 
   function showArticle() {
-    void runGate(openArticle, { scrollBehavior: "smooth" });
+    const request = loadArticleSection(articleSlug, 1);
+    void runGate(() => revealLoadedSection(1, request), { scrollAfter: false });
   }
 
   function unlockSection(section: number) {
-    void runGate(() => setUnlockedSection(section), { scrollBehavior: "smooth" });
+    const request = loadArticleSection(articleSlug, section);
+    void runGate(() => revealLoadedSection(section, request), { scrollAfter: false });
+  }
+
+  if (restoring || (started && !currentSection)) {
+    return (
+      <section aria-busy="true" aria-live="polite" className="quiz-engine__preparing quiz-engine__card quiz-engine__continuous-shell" role="status">
+        <div aria-hidden="true" className="quiz-engine__result-icon quiz-engine__preparing-icon">{icon}</div>
+        <h2>Returning to your article…</h2>
+        <p>Loading your unlocked section.</p>
+        <div aria-hidden="true" className="quiz-engine__preparing-mark"><span /><span /><span /></div>
+      </section>
+    );
   }
 
   if (!started) {
     return (
+      <>
+      <script dangerouslySetInnerHTML={{ __html: `(function(){try{var r=window.localStorage.getItem(${JSON.stringify(progressKey)});if(r){var p=JSON.parse(r);if(p&&p.version===${ARTICLE_PROGRESS_VERSION}&&Number.isInteger(p.section)&&p.section>=1&&p.section<=${sectionCount})document.documentElement.classList.add("article-resuming")}}catch(e){}})();` }} />
       <ExperienceLanding
         adNote={adNote}
         avatars={avatars}
-        busy={adBusy}
-        busyLabel="Loading ad…"
+        busy={adBusy || contentBusy}
+        busyLabel={contentBusy ? "Preparing article…" : "Loading ad…"}
         ctaLabel={ctaLabel}
         className="article-engine__landing"
         icon={icon}
@@ -103,11 +214,12 @@ export function ArticleExperience({
         socialProofText={`${socialProofCount} ${socialProofLabel}`}
         title={landingTitle}
       />
+      </>
     );
   }
 
-  const currentSection = resolvedSections[unlockedSection - 1] ?? resolvedSections[0];
-  const isFinalSection = unlockedSection >= resolvedSections.length;
+  if (!currentSection) return null;
+  const isFinalSection = unlockedSection >= sectionCount;
 
   return (
     <article className="article-engine__article quiz-engine__continuous-shell" key={unlockedSection}>
@@ -123,9 +235,9 @@ export function ArticleExperience({
           <span>{currentSection.next.eyebrow}</span>
           <h2>{currentSection.next.title}</h2>
           <p>{currentSection.next.copy}</p>
-          <button className="quiz-engine__primary" disabled={adBusy} onClick={() => unlockSection(unlockedSection + 1)} type="button">
+          <button className="quiz-engine__primary" disabled={adBusy || contentBusy} onClick={() => unlockSection(unlockedSection + 1)} type="button">
             <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-            {adBusy ? "Loading ad…" : currentSection.next.cta}
+            {contentBusy ? "Preparing article…" : adBusy ? "Loading ad…" : currentSection.next.cta}
           </button>
           <small>One short ad, then continue.</small>
         </section>

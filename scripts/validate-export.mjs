@@ -89,6 +89,33 @@ if (!fs.existsSync(outputRoot)) {
       addError(`${path.relative(root, directory)} must contain exactly the current content-hashed shell stylesheet.`);
     }
   }
+
+  for (const slug of ["cellulite", "colon", "prostate"]) {
+    const articleFile = routeFile(`/${slug}`);
+    if (!articleFile) {
+      addError(`Missing exported article route: /${slug}`);
+      continue;
+    }
+    const html = fs.readFileSync(articleFile, "utf8");
+    if (html.includes("data-display-ad")) addError(`/${slug}: display-ad markup must not be exported.`);
+    for (let section = 1; section <= 3; section += 1) {
+      const payloadFile = path.join(outputRoot, "article-data", slug, String(section));
+      if (!fs.existsSync(payloadFile)) {
+        addError(`Missing lazy article payload: /article-data/${slug}/${section}`);
+        continue;
+      }
+      const payload = JSON.parse(fs.readFileSync(payloadFile, "utf8"));
+      if (!payload?.title || !Array.isArray(payload.points) || payload.points.length !== 10) {
+        addError(`/article-data/${slug}/${section}: expected a titled ten-point article section.`);
+      }
+      const firstPointTitle = payload.points?.[0]?.title;
+      if (firstPointTitle && html.includes(firstPointTitle)) {
+        addError(`/${slug}: locked section content leaked into the initial article payload.`);
+      }
+    }
+  }
+
+  if (routeFile("/mcdonalds")) addError("Removed /mcdonalds route must not be present in the static export.");
 }
 
 if (errors.length) {
@@ -97,4 +124,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Static export validation passed for every supported quiz-locale route.");
+console.log("Static export validation passed for every quiz, locale and lazy article-section route.");

@@ -80,7 +80,7 @@ const points: ArticlePoint[] = [
   },
 ];
 
-const sections: ArticleSection[] = [
+export const sections: ArticleSection[] = [
   {
     title: "Prostate Cancer Warning Signs",
     intro: "Early prostate cancer often causes no symptoms. When changes do appear, they can overlap with common non-cancerous conditions, so symptoms alone cannot tell you the cause.",
@@ -207,12 +207,13 @@ export default function ProstateArticlePage() {
         themeCssHref={referenceQuiz.themeCssHref}
       >
         <ArticleExperience
+          articleSlug="prostate"
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Warning Signs"
           icon="⚠️"
           intro="Some warning signs are surprisingly easy to miss. See which 10 changes deserve attention."
           landingTitle={landingTitle}
-          sections={sections}
+          sectionCount={sections.length}
           sources={[
             { label: "NHS symptoms", url: "https://www.nhs.uk/conditions/prostate-cancer/symptoms/" },
             { label: "NCI prostate changes", url: "https://www.cancer.gov/types/prostate/understanding-prostate-changes" },

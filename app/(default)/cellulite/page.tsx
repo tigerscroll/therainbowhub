@@ -15,7 +15,7 @@ const path = "/cellulite";
 const landingTitle = "Cellulite Reduction Treatments: What Actually Works?";
 const description = "Compare common cellulite treatments, what current evidence says, how long improvements may last and what to ask before booking a procedure.";
 
-const sections: ArticleSection[] = [
+export const sections: ArticleSection[] = [
   {
     title: "10 Cellulite Treatment Options Explained",
     intro: "Cellulite is extremely common and harmless. Some treatments can make dimpling less noticeable, but results vary and are often temporary.",
@@ -241,6 +241,7 @@ export default function CelluliteArticlePage() {
         themeCssHref={referenceQuiz.themeCssHref}
       >
         <ArticleExperience
+          articleSlug="cellulite"
           adNote="One short ad, then see the treatment guide."
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Treatment Options"
@@ -248,7 +249,7 @@ export default function CelluliteArticlePage() {
           icon="💆"
           intro="Which cellulite treatments really work? Compare the options, evidence and limitations before spending money."
           landingTitle={landingTitle}
-          sections={sections}
+          sectionCount={sections.length}
           socialProofCount="168,000+"
           socialProofLabel="read this today"
           sources={[
