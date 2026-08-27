@@ -2,6 +2,21 @@
   padding-top: var(--quiz-shell-header-gap) !important;
 }
 
+.quiz-theme[data-quiz-flow="continuous"][data-quiz-theme] .article-engine__landing {
+  border-color: var(--article-landing-border, var(--quiz-primary)) !important;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--article-landing-border, var(--quiz-primary)) 38%, transparent),
+    var(--quiz-flow-shadow, 0 24px 60px rgba(22, 24, 28, .14)) !important;
+}
+
+.quiz-theme[data-quiz-theme="cellulite-guide"] { --article-landing-border: #8f3d62; }
+.quiz-theme[data-quiz-theme="colon-warning"] { --article-landing-border: #b51f3f; }
+.quiz-theme[data-quiz-theme="prostate-warning"] { --article-landing-border: #aa2531; }
+.quiz-theme[data-quiz-theme="kidney-warning"] { --article-landing-border: #a82f49; }
+.quiz-theme[data-quiz-theme="funeral-songs"] { --article-landing-border: #806127; }
+.quiz-theme[data-quiz-theme="valuable-brands"] { --article-landing-border: #76542e; }
+.quiz-theme[data-quiz-theme="end-of-life-signs"] { --article-landing-border: #80607b; }
+
 .quiz-theme[data-quiz-flow="continuous"] .article-engine__article {
   overflow: visible !important;
 }
@@ -220,7 +235,6 @@ html.article-resuming .article-engine__landing {
 }
 
 .quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__landing {
-  border: 2px solid #8f7043;
   background:
     radial-gradient(circle at 12% 15%, rgba(205, 160, 70, .15), transparent 24%),
     radial-gradient(circle at 88% 84%, rgba(56, 87, 67, .13), transparent 26%),
@@ -233,6 +247,20 @@ html.article-resuming .article-engine__landing {
   border-radius: 50%;
   background: #f7e7bf;
   box-shadow: 5px 6px 0 rgba(71, 50, 30, .2), inset 0 0 0 5px rgba(181, 139, 58, .14);
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .article-engine__landing {
+  background:
+    radial-gradient(circle at 50% 2%, rgba(204, 169, 103, .14), transparent 27%),
+    radial-gradient(circle at 8% 88%, rgba(91, 69, 91, .11), transparent 28%),
+    linear-gradient(150deg, #fffaf0, #eee6dc);
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid #74566f;
+  border-radius: 50% 50% 45% 45%;
+  background: #f7eedc;
+  box-shadow: 5px 6px 0 rgba(39, 33, 46, .18), inset 0 0 0 6px rgba(183, 149, 87, .1);
 }
 
 .quiz-theme[data-quiz-theme="colon-warning"] .article-engine__landing h1 {
@@ -255,6 +283,14 @@ html.article-resuming .article-engine__landing {
 .quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__landing h1,
 .quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__header h1 {
   color: #30251b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  letter-spacing: -.045em;
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .article-engine__header h1 {
+  color: #2d2730;
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 900;
   letter-spacing: -.045em;
@@ -304,6 +340,21 @@ html.article-resuming .article-engine__landing {
   border-color: #64281d;
   background: linear-gradient(180deg, #ad5039, #8f3827);
   box-shadow: 0 8px 0 #5d281d, 0 14px 28px rgba(84, 43, 30, .23);
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .quiz-engine__social {
+  border-color: #a78a68;
+  background: #f8f0e4;
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .quiz-engine__social-text strong {
+  color: #694a66;
+}
+
+.quiz-theme[data-quiz-theme="end-of-life-signs"] .quiz-engine__primary {
+  border-color: #422d41;
+  background: linear-gradient(180deg, #7b5a76, #60435d);
+  box-shadow: 0 8px 0 #3e2b3d, 0 14px 28px rgba(42, 32, 45, .24);
 }
 
 .article-engine__landing .quiz-engine__quick-start {

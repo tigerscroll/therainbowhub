@@ -4,6 +4,7 @@ import { sections as colonSections } from "@/app/(default)/colon/page";
 import { sections as funeralSections } from "@/app/(default)/funeral/page";
 import { sections as kidneySections } from "@/app/(default)/kidney/page";
 import { sections as prostateSections } from "@/app/(default)/prostate/page";
+import { sections as signsSections } from "@/app/(default)/signs/page";
 
 const ARTICLE_SECTIONS = {
   brands: brandsSections,
@@ -12,6 +13,7 @@ const ARTICLE_SECTIONS = {
   funeral: funeralSections,
   kidney: kidneySections,
   prostate: prostateSections,
+  signs: signsSections,
 } as const;
 
 type ArticleSlug = keyof typeof ARTICLE_SECTIONS;

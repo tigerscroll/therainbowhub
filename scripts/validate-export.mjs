@@ -97,6 +97,7 @@ if (!fs.existsSync(outputRoot)) {
     funeral: 3,
     kidney: 3,
     prostate: 3,
+    signs: 5,
   };
 
   for (const [slug, sectionCount] of Object.entries(articleSectionCounts)) {
