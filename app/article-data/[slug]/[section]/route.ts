@@ -7,6 +7,7 @@ import { sections as hivSections } from "@/app/(default)/hiv/page";
 import { sections as historicalSections } from "@/app/(default)/historical/page";
 import { sections as kidneySections } from "@/app/(default)/kidney/page";
 import { sections as massageSections } from "@/app/(default)/massage/page";
+import { sections as mobilityScooterSections } from "@/app/(default)/mobilityscooter/page";
 import { sections as nervousSections } from "@/app/(default)/nervous/page";
 import { sections as prostateSections } from "@/app/(default)/prostate/page";
 import { sections as signsSections } from "@/app/(default)/signs/page";
@@ -21,6 +22,7 @@ const ARTICLE_SECTIONS = {
   historical: historicalSections,
   kidney: kidneySections,
   massage: massageSections,
+  mobilityscooter: mobilityScooterSections,
   nervous: nervousSections,
   prostate: prostateSections,
   signs: signsSections,

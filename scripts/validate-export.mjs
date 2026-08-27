@@ -100,6 +100,7 @@ if (!fs.existsSync(outputRoot)) {
     historical: 3,
     kidney: 3,
     massage: 3,
+    mobilityscooter: 4,
     nervous: 4,
     prostate: 3,
     signs: 5,
