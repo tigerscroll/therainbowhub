@@ -230,10 +230,10 @@ export function getSitemapEntries() {
   });
 
   entries.push({
-    url: absoluteUrl("/mcdonalds"),
-    lastModified: new Date("2026-08-26T00:00:00Z"),
-    changeFrequency: "weekly" as const,
-    priority: 0.75,
+    url: absoluteUrl("/colon"),
+    lastModified: new Date("2026-08-27T00:00:00Z"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   });
 
   return entries;

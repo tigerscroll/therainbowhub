@@ -16,11 +16,11 @@
       {
         "heading": "How A Quiz Works",
         "list": [
-          "Each current quiz is divided into five focused sections with eight interactions in each section.",
+          "Every current quiz uses the same focused ten-question flow, with its own theme, question types and result experience.",
           "Answers advance automatically, and correctness stays hidden until the final result so the challenge is not spoiled.",
           "Progress is stored locally in the browser for up to 30 minutes so a recent session can be restored after a refresh.",
-          "Checkpoint screens show overall progress without presenting an intermediate score as a final result.",
-          "At the end, scored quizzes show the final result and identify incorrect answers with the correct choices."
+          "After question ten, a short preparation state reviews the answers before the result-ready screen appears.",
+          "At the end, scored quizzes show the final result and can provide a detailed review of incorrect answers and correct choices."
         ]
       },
       {
@@ -58,7 +58,7 @@
       {
         "heading": "Advertising And Free Access",
         "paragraphs": [
-          "The site is free to use and may show rewarded advertising before a quiz begins or between sections. Advertising, analytics and measurement services help fund hosting, content development and technical maintenance.",
+          "The site is free to use and may show rewarded advertising before a quiz begins, before a result is revealed or before an optional detailed breakdown. Advertising, analytics and measurement services help fund hosting, content development and technical maintenance.",
           "An advertisement does not change the answers, score, profile or result. If no rewarded ad is genuinely available after the permitted attempts, the quiz flow provides its configured fallback."
         ]
       },
@@ -89,7 +89,7 @@
         "heading": "Report A Quiz Problem",
         "list": [
           "Give the quiz title and the full page address.",
-          "Include the section and question number shown on screen.",
+          "Include the question number shown on screen.",
           "Quote the prompt and the answer you believe needs review.",
           "Explain whether the issue concerns accuracy, wording, translation, accessibility or a visual.",
           "Attach a screenshot if the layout or image is important to the report."
@@ -113,7 +113,7 @@
         "heading": "Advertising And Technical Issues",
         "list": [
           "Include the page address, approximate date and time, country, device and browser.",
-          "Say whether the issue occurred before a quiz, at a checkpoint or during the final reveal.",
+          "Say whether the issue occurred before a quiz, during a question, on the result-ready screen or during the final reveal.",
           "For an advert problem, describe what appeared without clicking or sending any suspicious information.",
           "For a loading issue, say whether refreshing restored the saved session.",
           "Screenshots or a short screen recording are useful when they do not expose private information."
@@ -172,7 +172,7 @@
         "heading": "Rewarded Advertising",
         "paragraphs": [
           "Rewarded advertisements are supplied through third-party technology and may introduce controls or media outside our direct presentation layer. The quiz includes unavailable-ad fallbacks, but the accessibility of an individual advert is controlled by its provider and advertiser.",
-          "If an advert prevents keyboard, touch or assistive-technology access to the next quiz section, report the page, device, browser and approximate time so we can investigate the placement."
+          "If an advert prevents keyboard, touch or assistive-technology access to the next step, report the page, device, browser and approximate time so we can investigate the placement."
         ]
       },
       {
@@ -212,10 +212,10 @@
         "heading": "Information Collected Automatically",
         "list": [
           "Technical data such as IP address, browser type, operating system, device type, screen size, language and approximate location derived from an IP address.",
-          "Usage data such as page views, referring addresses, campaign parameters, quiz events, button interactions, session timing and whether a checkpoint or result was reached.",
+          "Usage data such as page views, referring addresses, campaign parameters, quiz events, button interactions, session timing and whether a result was reached.",
           "Advertising and measurement identifiers such as cookie IDs, pixels, tag identifiers, consent signals and device or browser identifiers used by participating providers.",
           "Diagnostic information such as loading failures, ad availability, browser errors, security events and aggregated performance measurements.",
-          "Quiz interaction data stored in your own browser, including selected answers, current section, reveal state and the time at which progress was last updated."
+          "Quiz interaction data stored in your own browser, including selected answers, current question, reveal state and the time at which progress was last updated."
         ]
       },
       {
@@ -228,7 +228,7 @@
       {
         "heading": "Local Quiz Progress",
         "paragraphs": [
-          "Quiz progress is saved in local storage on the device and browser being used. This can include answers, the current question, completed checkpoints, result state and whether the saved session has already recorded the relevant rewarded-ad event.",
+          "Quiz progress is saved in local storage on the device and browser being used. This can include answers, the current question, preparation and reveal states, result state and whether the saved session has already recorded the relevant rewarded-ad event.",
           "A saved quiz session is eligible for restoration for 30 minutes from its last update. Expired progress is removed when the quiz is opened again. You can remove it sooner by clearing site data in your browser or using a restart control where provided."
         ]
       },
@@ -347,7 +347,7 @@
       {
         "heading": "Functional Quiz Storage",
         "paragraphs": [
-          "The quiz engine uses browser local storage to retain recent progress. A saved record can contain selected answers, the current question, checkpoint and reveal states, result state, locale and the time of the last update.",
+          "The quiz engine uses browser local storage to retain recent progress. A saved record can contain selected answers, the current question, preparation and reveal states, result state, locale and the time of the last update.",
           "Progress is valid for up to 30 minutes and is then removed when that quiz is opened again. Local storage remains on the device unless the site or visitor removes it; unlike a traditional cookie, it is not automatically sent with every network request."
         ]
       },
@@ -431,7 +431,7 @@
       {
         "heading": "Rewarded Advertising",
         "paragraphs": [
-          "The site may ask you to view a short rewarded advertisement before a quiz begins or before the next section or final result becomes available. The button and supporting text identify that exchange before the request is made.",
+          "The site may ask you to view a short rewarded advertisement before a quiz begins, before a final result becomes available or before an optional detailed breakdown. The button and supporting text identify that exchange before the request is made.",
           "Ad availability is controlled by third-party systems and is not guaranteed. Early closure may return you to the same gate. Genuine unavailability is handled through the quiz's configured retry and fallback process."
         ]
       },
@@ -578,4 +578,3 @@
     ]
   }
 }
-

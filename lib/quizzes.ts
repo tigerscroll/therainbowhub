@@ -8,6 +8,17 @@ import {
   isSupportedLocale,
   type SupportedLocale,
 } from "@/lib/i18n";
+import {
+  assertExactKeys as exactKeys,
+  schemaObject as object,
+  schemaStrings as strings,
+  schemaText as text,
+} from "@/lib/quiz/schema";
+import {
+  normalizeQuizAsset,
+  normalizedSocialAvatars,
+  themeStylesheetHref,
+} from "@/lib/quiz/normalization";
 
 export type QuizFlow = {
   type: "linear" | "staged";
@@ -216,9 +227,9 @@ export type QuizTheme = {
   id: string;
   preset: "clean" | "editorial" | "playful" | "immersive";
   layout: {
-    landing: "card" | "split" | "immersive";
-    questions: "card" | "open";
-    results: "card" | "immersive";
+    landing: "split";
+    questions: "card";
+    results: "immersive";
   };
   colors: {
     page: string;
@@ -518,58 +529,13 @@ const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const RESERVED_SLUGS = new Set([...getSupportedLocales(), "info", "api", "_next"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
-const SOCIAL_AVATAR_GROUPS = [
-  ["02", "05", "01", "08"],
-  ["04", "07", "10", "06"],
-  ["09", "03", "12", "08"],
-  ["06", "01", "07", "11"],
-].map((group) => group.map((id) => `/social-proof/avatars/${id}.webp`));
+const quizCache = new Map<string, Quiz>();
+const quizListCache = new Map<string, Quiz[]>();
+const quizLocaleCache = new Map<string, SupportedLocale[]>();
+let quizSlugCache: string[] | undefined;
 
 function json<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
-}
-
-function quizAsset(slug: string, value?: string) {
-  if (!value || value.startsWith("/")) return value;
-  const file = path.join(directory(slug), value);
-  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) throw new Error(`${slug}: missing asset ${value}.`);
-  const publicValue = /^assets\/thumbnail\.(?:jpe?g|png|webp)$/i.test(value)
-    ? "assets/thumbnail-960.webp"
-    : value;
-  const publicFile = path.join(process.cwd(), "public", "quizzes", slug, publicValue);
-  if (!fs.existsSync(publicFile) || !fs.statSync(publicFile).isFile()) {
-    throw new Error(`${slug}: missing public asset ${publicValue}.`);
-  }
-  return `/quizzes/${slug}/${publicValue}`;
-}
-
-function socialAvatarsFor(slug: string) {
-  const hash = [...slug].reduce((value, character) => Math.imul(value ^ character.charCodeAt(0), 16777619) >>> 0, 2166136261);
-  return SOCIAL_AVATAR_GROUPS[hash % SOCIAL_AVATAR_GROUPS.length];
-}
-
-function object(value: unknown, name: string, file: string): Record<string, unknown> {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error(`${file}: ${name} must be an object.`);
-  }
-  return value as Record<string, unknown>;
-}
-
-function text(value: unknown, name: string, file: string) {
-  if (typeof value !== "string" || !value.trim()) throw new Error(`${file}: ${name} is required.`);
-  return value;
-}
-
-function strings(value: unknown, name: string, file: string) {
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || !item.trim())) {
-    throw new Error(`${file}: ${name} must be a string array.`);
-  }
-  return value as string[];
-}
-
-function exactKeys(value: Record<string, unknown>, allowed: readonly string[], name: string, file: string) {
-  const extras = Object.keys(value).filter((key) => !allowed.includes(key));
-  if (extras.length) throw new Error(`${file}: ${name} has unsupported keys: ${extras.join(", ")}.`);
 }
 
 function validateStructureV2(value: unknown, file: string, template: QuizTemplateId): QuizStructureV2 {
@@ -899,9 +865,9 @@ function validateTheme(value: unknown, file: string): QuizTheme {
   const colorKeys = ["page", "pageAlt", "surface", "surfaceRaised", "text", "muted", "primary", "primaryText", "border", "correct", "incorrect"];
   colorKeys.forEach((key) => text(colors[key], `colors.${key}`, file));
   if (!["clean", "editorial", "playful", "immersive"].includes(String(raw.preset))) throw new Error(`${file}: invalid preset.`);
-  if (!["card", "split", "immersive"].includes(String(layout.landing))) throw new Error(`${file}: invalid landing layout.`);
-  if (!["card", "open"].includes(String(layout.questions))) throw new Error(`${file}: invalid question layout.`);
-  if (!["card", "immersive"].includes(String(layout.results))) throw new Error(`${file}: invalid result layout.`);
+  if (layout.landing !== "split" || layout.questions !== "card" || layout.results !== "immersive") {
+    throw new Error(`${file}: all quizzes must use the shared split/card/immersive shell contract.`);
+  }
   if (!["sans", "serif", "rounded"].includes(String(typography.heading))) throw new Error(`${file}: invalid heading.`);
   if (!["sans", "serif"].includes(String(typography.body))) throw new Error(`${file}: invalid body font.`);
   if (!["none", "soft", "dramatic"].includes(String(effects.shadow))) throw new Error(`${file}: invalid shadow.`);
@@ -1341,55 +1307,63 @@ function normalizeLocale(
 function directory(slug: string) { return path.join(ROOT, slug); }
 function hasLocale(slug: string, locale: SupportedLocale) { return fs.existsSync(path.join(directory(slug), `${locale}.json`)); }
 function slugs() {
-  return fs.readdirSync(ROOT, { withFileTypes: true })
+  quizSlugCache ??= fs.readdirSync(ROOT, { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(ROOT, entry.name, "quiz.json")))
     .map((entry) => entry.name)
     .sort();
+  return quizSlugCache;
 }
 
 function readQuiz(slug: string, locale: SupportedLocale) {
+  const cacheKey = `${slug}:${locale}`;
+  const cached = quizCache.get(cacheKey);
+  if (cached) return cached;
   const manifest = validateManifest(json(path.join(directory(slug), "quiz.json")), `${slug}/quiz.json`);
   if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
-  manifest.listing.thumbnail = quizAsset(slug, manifest.listing.thumbnail);
+  manifest.listing.thumbnail = normalizeQuizAsset(ROOT, slug, manifest.listing.thumbnail);
   if (manifest.theme.artwork) {
-    manifest.theme.artwork.landing = quizAsset(slug, manifest.theme.artwork.landing);
-    manifest.theme.artwork.result = quizAsset(slug, manifest.theme.artwork.result);
+    manifest.theme.artwork.landing = normalizeQuizAsset(ROOT, slug, manifest.theme.artwork.landing);
+    manifest.theme.artwork.result = normalizeQuizAsset(ROOT, slug, manifest.theme.artwork.result);
     if (manifest.theme.artwork.profiles) {
       manifest.theme.artwork.profiles = Object.fromEntries(Object.entries(manifest.theme.artwork.profiles)
-        .map(([id, value]) => [id, quizAsset(slug, value)!]));
+        .map(([id, value]) => [id, normalizeQuizAsset(ROOT, slug, value)!]));
     }
     if (manifest.theme.artwork.profileVariants) {
       manifest.theme.artwork.profileVariants = Object.fromEntries(Object.entries(manifest.theme.artwork.profileVariants)
         .map(([profileId, variants]) => [profileId, Object.fromEntries(Object.entries(variants)
-          .map(([variantId, value]) => [variantId, quizAsset(slug, value)!]))]));
+          .map(([variantId, value]) => [variantId, normalizeQuizAsset(ROOT, slug, value)!]))]));
     }
     if (manifest.theme.artwork.checkpoints) {
-      manifest.theme.artwork.checkpoints = manifest.theme.artwork.checkpoints.map((value) => quizAsset(slug, value)!);
+      manifest.theme.artwork.checkpoints = manifest.theme.artwork.checkpoints.map((value) => normalizeQuizAsset(ROOT, slug, value)!);
     }
     if (manifest.theme.artwork.checkpointVariants) {
       manifest.theme.artwork.checkpointVariants = Object.fromEntries(Object.entries(manifest.theme.artwork.checkpointVariants)
-        .map(([variantId, assets]) => [variantId, assets.map((value) => quizAsset(slug, value)!)]));
+        .map(([variantId, assets]) => [variantId, assets.map((value) => normalizeQuizAsset(ROOT, slug, value)!)]));
     }
   }
   const cssFile = path.join(directory(slug), "theme.css");
   const themeCss = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf8") : undefined;
-  const themeCssHref = themeCss
-    ? `/quizzes/${slug}/theme.css?v=${createHash("sha256").update(themeCss).digest("hex").slice(0, 12)}`
-    : undefined;
-  const socialAvatars = socialAvatarsFor(slug);
+  const themeCssHref = themeCss ? themeStylesheetHref(slug, themeCss) : undefined;
+  const socialAvatars = normalizedSocialAvatars(slug);
   const localeFile = `${slug}/${locale}.json`;
   const rawLocale = json<unknown>(path.join(directory(slug), `${locale}.json`));
   const localized = expandLocaleV2(rawLocale, manifest, locale, localeFile);
-  return normalizeLocale(localized, manifest, manifest.theme, themeCssHref, socialAvatars, localeFile);
+  const quiz = normalizeLocale(localized, manifest, manifest.theme, themeCssHref, socialAvatars, localeFile);
+  quizCache.set(cacheKey, quiz);
+  return quiz;
 }
 
 export function getQuizLocales(slug: string) {
   if (!fs.existsSync(directory(slug))) return [];
-  return fs.readdirSync(directory(slug))
+  const cached = quizLocaleCache.get(slug);
+  if (cached) return [...cached];
+  const locales = fs.readdirSync(directory(slug))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .map((file) => file.replace(/\.json$/, ""))
     .filter((locale): locale is SupportedLocale => LOCALES.has(locale as SupportedLocale))
     .sort();
+  quizLocaleCache.set(slug, locales);
+  return [...locales];
 }
 
 export function getQuizBySlug(slug: string, locale?: string, options: { includeFallback?: boolean } = {}) {
@@ -1400,8 +1374,46 @@ export function getQuizBySlug(slug: string, locale?: string, options: { includeF
 }
 
 export function getAllQuizzes(locale?: string, options: { includeFallback?: boolean } = {}) {
-  return slugs().flatMap((slug) => {
+  const safeLocale = locale && isSupportedLocale(locale) ? locale : getDefaultLocale();
+  const cacheKey = `${safeLocale}:${options.includeFallback === true}`;
+  const cached = quizListCache.get(cacheKey);
+  if (cached) return [...cached];
+  const quizzes = slugs().flatMap((slug) => {
     const quiz = getQuizBySlug(slug, locale, options);
     return quiz ? [quiz] : [];
   });
+  quizListCache.set(cacheKey, quizzes);
+  return [...quizzes];
+}
+
+export type QuizRecommendation = {
+  href: string;
+  summary: string;
+  thumbnailAlt: string;
+  thumbnailUrl: string;
+  title: string;
+};
+
+function recommendationRank(seed: string, slug: string) {
+  return createHash("sha256").update(`${seed}:${slug}`).digest().readUInt32BE(0);
+}
+
+export function getQuizRecommendations(
+  currentSlug: string,
+  locale: SupportedLocale,
+  getHref: (slug: string) => string,
+  limit = 3,
+): QuizRecommendation[] {
+  const seed = `${locale}:${currentSlug}`;
+  return getAllQuizzes(locale)
+    .filter((candidate) => candidate.slug !== currentSlug)
+    .sort((left, right) => recommendationRank(seed, left.slug) - recommendationRank(seed, right.slug))
+    .slice(0, Math.max(0, limit))
+    .map((candidate) => ({
+      href: getHref(candidate.slug),
+      summary: candidate.summary,
+      thumbnailAlt: candidate.thumbnailAlt,
+      thumbnailUrl: `/quizzes/${candidate.slug}/assets/thumbnail-480.webp`,
+      title: candidate.title,
+    }));
 }

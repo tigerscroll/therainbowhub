@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArticleExperience, type ArticlePoint } from "@/components/article/ArticleExperience";
-import { QuizThemeBoundary } from "@/components/quiz/QuizThemeBoundary";
+import { ArticleExperience, type ArticlePoint, type ArticleSection } from "@/components/article/ArticleExperience";
+import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import { SiteShell } from "@/components/SiteShell";
 import { getDefaultLocale, getTranslations } from "@/lib/i18n";
 import { getQuizBySlug } from "@/lib/quizzes";
@@ -80,6 +80,58 @@ const points: ArticlePoint[] = [
   },
 ];
 
+const sections: ArticleSection[] = [
+  {
+    title: "Prostate Cancer Warning Signs",
+    intro: "Early prostate cancer often causes no symptoms. When changes do appear, they can overlap with common non-cancerous conditions, so symptoms alone cannot tell you the cause.",
+    points,
+    next: {
+      eyebrow: "Next section",
+      title: "Could you be at higher risk?",
+      copy: "See the established factors linked with a higher chance of prostate cancer.",
+      cta: "See Risk Factors",
+    },
+  },
+  {
+    title: "Prostate Cancer Risk Factors",
+    intro: "Some risk factors are well established, but none can predict an individual diagnosis. Here are the factors a healthcare professional may consider.",
+    points: [
+      { title: "Getting older", paragraphs: ["Age is the clearest established risk factor. Prostate cancer is uncommon in younger adults and becomes increasingly common with age, particularly after 50."] },
+      { title: "A close relative with prostate cancer", paragraphs: ["Risk can be higher when a father, brother or son has been diagnosed. Most people who develop prostate cancer still have no known family history."] },
+      { title: "Several affected relatives", paragraphs: ["A pattern involving several relatives can be more significant than one isolated diagnosis, especially when cases occur on the same side of a family."] },
+      { title: "A relative diagnosed at a younger age", paragraphs: ["Family history can carry more weight when prostate cancer was found relatively early. A clinician may ask how old relatives were when they were diagnosed."] },
+      { title: "Inherited BRCA gene changes", paragraphs: ["Harmful inherited changes in BRCA1 or BRCA2 can raise prostate cancer risk. BRCA2 changes have the stronger established association."] },
+      { title: "Other inherited cancer syndromes", paragraphs: ["Lynch syndrome and changes in certain DNA-repair genes can also increase risk. These inherited causes account for only a minority of prostate cancers."] },
+      { title: "A wider pattern of cancers in the family", paragraphs: ["A family history that includes prostate cancer alongside breast, ovarian, pancreatic or colorectal cancer may sometimes suggest an inherited cancer pattern worth discussing."] },
+      { title: "Black or African ancestry", paragraphs: ["Prostate cancer occurs more often among Black men and may be diagnosed at a younger age. The reasons are complex and can involve genetic, environmental and healthcare factors."] },
+      { title: "Benign prostate problems are different", paragraphs: ["Benign prostate enlargement and prostatitis can cause symptoms, but they are not themselves prostate cancer risk factors. Similar symptoms still need proper assessment."] },
+      { title: "Risk is not a diagnosis", paragraphs: ["Having one or several risk factors does not mean cancer will develop, and prostate cancer can occur without obvious risk factors. Personal screening decisions should be discussed with a healthcare professional."] },
+    ],
+    next: {
+      eyebrow: "Final section",
+      title: "What happens next?",
+      copy: "See how prostate symptoms and test results may be checked.",
+      cta: "See How A Check Works",
+    },
+  },
+  {
+    title: "What Happens at a Prostate Check?",
+    intro: "There is no single test that answers every question. A prostate assessment usually combines symptoms, history and test results before deciding what should happen next.",
+    points: [
+      { title: "Describe what has changed", paragraphs: ["A clinician will usually ask when symptoms began, how often they happen, whether they are worsening and how they affect sleep or daily life."] },
+      { title: "Review medical and family history", paragraphs: ["Medicines, previous urinary problems, infections and relevant cancers in close relatives can all help place symptoms and risk in context."] },
+      { title: "Check for other possible causes", paragraphs: ["Urinary symptoms are often caused by conditions other than cancer. A urine test may be used to look for infection, blood or other clues."] },
+      { title: "Carry out a physical examination", paragraphs: ["Depending on the situation, a clinician may examine the abdomen and discuss or perform a rectal examination to assess the prostate."] },
+      { title: "Discuss a PSA blood test", paragraphs: ["A prostate-specific antigen test measures PSA in the blood. It can support an assessment, but it is not a stand-alone cancer test."] },
+      { title: "Interpret PSA carefully", paragraphs: ["PSA can rise because of benign enlargement, inflammation, infection and other factors. A lower result does not completely rule out cancer either."] },
+      { title: "Repeat or review initial tests", paragraphs: ["A clinician may repeat a PSA test or review results over time before deciding whether specialist assessment is needed."] },
+      { title: "Use MRI when appropriate", paragraphs: ["An MRI can provide detailed images of the prostate and help identify areas that may need closer investigation. Not everyone follows exactly the same testing pathway."] },
+      { title: "Consider a biopsy if needed", paragraphs: ["A biopsy takes small tissue samples for examination under a microscope. It may be recommended when the overall assessment suggests that cancer needs to be confirmed or excluded."] },
+      { title: "Discuss the result and next steps", paragraphs: ["Results are considered together rather than in isolation. The next step might be reassurance, monitoring, additional testing or a discussion of treatment options if cancer is found."] },
+    ],
+  },
+];
+
 export const metadata: Metadata = buildMetadata({
   alternates: {
     canonical: absoluteUrl(path),
@@ -149,19 +201,18 @@ export default function ProstateArticlePage() {
       <style
         dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }}
       />
-      <QuizThemeBoundary
+      <ExperienceThemeBoundary
         shellCssHref={referenceQuiz.shellCssHref}
         theme={articleTheme}
         themeCssHref={referenceQuiz.themeCssHref}
       >
         <ArticleExperience
-          articleTitle="Prostate Cancer Warning Signs"
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Warning Signs"
           icon="⚠️"
           intro="Some warning signs are surprisingly easy to miss. See which 10 changes deserve attention."
           landingTitle={landingTitle}
-          points={points}
+          sections={sections}
           sources={[
             { label: "NHS symptoms", url: "https://www.nhs.uk/conditions/prostate-cancer/symptoms/" },
             { label: "NCI prostate changes", url: "https://www.cancer.gov/types/prostate/understanding-prostate-changes" },
@@ -170,7 +221,7 @@ export default function ProstateArticlePage() {
             { label: "ACS diagnosis and tests", url: "https://www.cancer.org/cancer/types/prostate-cancer/detection-diagnosis-staging/how-diagnosed.html" },
           ]}
         />
-      </QuizThemeBoundary>
+      </ExperienceThemeBoundary>
     </SiteShell>
   );
 }

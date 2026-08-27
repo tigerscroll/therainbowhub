@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleExperience, type ArticleSection } from "@/components/article/ArticleExperience";
-import { QuizThemeBoundary } from "@/components/quiz/QuizThemeBoundary";
+import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import { SiteShell } from "@/components/SiteShell";
 import { getDefaultLocale, getTranslations } from "@/lib/i18n";
 import { getQuizBySlug } from "@/lib/quizzes";
@@ -235,22 +235,19 @@ export default function CelluliteArticlePage() {
         type="application/ld+json"
       />
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }} />
-      <QuizThemeBoundary
+      <ExperienceThemeBoundary
         shellCssHref={referenceQuiz.shellCssHref}
         theme={articleTheme}
         themeCssHref={referenceQuiz.themeCssHref}
       >
         <ArticleExperience
-          adElementPrefix="cellulite"
           adNote="One short ad, then see the treatment guide."
-          articleTitle={sections[0].title}
           avatars={referenceQuiz.landing.socialAvatars}
           ctaLabel="See Treatment Options"
           disclaimer="General educational information only. Cellulite is a common cosmetic concern, and this guide is not medical advice or a recommendation for any procedure. Discuss suitability, benefits and risks with a qualified healthcare professional."
           icon="💆"
           intro="Which cellulite treatments really work? Compare the options, evidence and limitations before spending money."
           landingTitle={landingTitle}
-          points={sections[0].points}
           sections={sections}
           socialProofCount="168,000+"
           socialProofLabel="read this today"
@@ -260,7 +257,7 @@ export default function CelluliteArticlePage() {
             { label: "Mayo Clinic", url: "https://www.mayoclinic.org/diseases-conditions/cellulite/diagnosis-treatment/drc-20354949" },
           ]}
         />
-      </QuizThemeBoundary>
+      </ExperienceThemeBoundary>
     </SiteShell>
   );
 }

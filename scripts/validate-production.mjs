@@ -141,10 +141,11 @@ for (const declaration of requiredQuizShellContract) {
 }
 
 const quizEngineText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
+const experienceLandingText = fs.readFileSync(path.join(rootDir, "components", "experience", "ExperienceLanding.tsx"), "utf8");
 const rewardedStartContract = [
   "function startQuiz()",
   "runRewardedGate(beginQuiz)",
-  "onClick={startQuiz}",
+  "onStart={startQuiz}",
   "disabled={adBusy}",
   "startInstructionEnabled",
   "data-start-instruction=\"true\"",
@@ -152,6 +153,9 @@ const rewardedStartContract = [
 ];
 for (const declaration of rewardedStartContract) {
   if (!quizEngineText.includes(declaration)) addError(`Direct rewarded-start contract is missing: ${declaration}`);
+}
+if (!experienceLandingText.includes("onClick={onStart}")) {
+  addError("Shared experience landing must connect its primary CTA to onStart.");
 }
 if (/quiz\.slug\s*={2,3}|quiz\.slug\s*!={1,2}/.test(quizEngineText)) {
   addError("QuizEngine cannot contain slug-specific runtime branches; quiz differences must remain data/theme driven.");
@@ -165,7 +169,7 @@ for (const command of ["node scripts/validate-quizzes.mjs", "node scripts/valida
 }
 
 const quizTemplateText = fs.readFileSync(path.join(rootDir, "components", "QuizTemplate.tsx"), "utf8");
-const quizThemeBoundaryText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizThemeBoundary.tsx"), "utf8");
+const experienceThemeBoundaryText = fs.readFileSync(path.join(rootDir, "components", "experience", "ExperienceThemeBoundary.tsx"), "utf8");
 const quizLoaderText = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
 const quizShellContractText = fs.readFileSync(path.join(rootDir, "styles", "quiz-shell-contract.css"), "utf8");
 const requiredContinuousShellContract = [
@@ -179,27 +183,53 @@ const requiredContinuousShellContract = [
   "--quiz-shell-action-width: 480px;",
   "--quiz-shell-action-height: 64px;",
   "--quiz-shell-action-height: 62px;",
+  "--quiz-shell-action-radius: 14px;",
+  "--quiz-shell-control-radius: 12px;",
+  "--quiz-shell-border: 2px solid var(--quiz-text);",
+  "--quiz-shell-radius: 4px;",
   "--quiz-shell-proof-width: 416px;",
   "margin: 18px auto !important;",
   '.quiz-engine__landing,\n.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell',
-  "border: var(--quiz-flow-border, 1px solid var(--quiz-border)) !important;",
-  "border-radius: var(--quiz-flow-radius, var(--quiz-card-radius)) !important;",
+  "border: var(--quiz-shell-border) !important;",
+  "border-radius: var(--quiz-shell-radius) !important;",
   "background: var(--quiz-flow-background, var(--quiz-surface)) !important;",
   "box-shadow: var(--quiz-flow-shadow, 0 24px 60px rgba(22, 24, 28, .14)) !important;",
   "width: min(100%, var(--quiz-shell-action-width)) !important;",
   "min-height: var(--quiz-shell-action-height) !important;",
-  "border-radius: var(--quiz-button-radius) !important;",
+  "border-radius: var(--quiz-shell-action-radius) !important;",
+  "border-radius: var(--quiz-shell-control-radius) !important;",
   "padding-right: 0 !important;",
   "padding-left: 0 !important;",
-  "padding-top: 4px !important;",
+  "--quiz-shell-header-gap: 5px;",
   "quiz-engine__primary-arrow",
   "quiz-engine__landing--start-instruction",
   "quiz-engine__start-instruction-return",
 ];
-const continuousShellSources = `${quizTemplateText}\n${quizThemeBoundaryText}\n${quizLoaderText}\n${quizShellContractText}`;
+const continuousShellSources = `${quizTemplateText}\n${experienceThemeBoundaryText}\n${quizLoaderText}\n${quizShellContractText}`;
 for (const declaration of requiredContinuousShellContract) {
   if (!continuousShellSources.includes(declaration)) {
     addError(`Shared continuous-shell contract is missing \`${declaration}\`.`);
+  }
+}
+
+const articleEngineText = fs.readFileSync(path.join(rootDir, "components", "article", "ArticleExperience.tsx"), "utf8");
+if (/mountDisplayAd|data-display-ad|ArticleDisplayAd/.test(articleEngineText)) {
+  addError("The shared article engine must not mount display ads.");
+}
+if (quizTemplateText.includes("getAllQuizzes")) {
+  addError("QuizTemplate must select its lightweight recommendation pool server-side.");
+}
+if (!quizTemplateText.includes("getQuizRecommendations")) {
+  addError("QuizTemplate must use the cached server-side recommendation selector.");
+}
+
+const quizThemeRoot = path.join(rootDir, "data", "quizzes");
+for (const slug of fs.readdirSync(quizThemeRoot)) {
+  const themeFile = path.join(quizThemeRoot, slug, "theme.css");
+  if (!fs.existsSync(themeFile)) continue;
+  const themeCss = fs.readFileSync(themeFile, "utf8");
+  if (/--quiz-shell-[a-z0-9-]+\s*:/i.test(themeCss)) {
+    addError(`Quiz themes cannot declare protected --quiz-shell-* geometry tokens: data/quizzes/${slug}/theme.css`);
   }
 }
 

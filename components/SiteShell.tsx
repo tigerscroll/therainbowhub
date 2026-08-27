@@ -17,15 +17,22 @@ type SiteShellProps = {
 
 export function SiteShell({ availableLocales, children, currentPath, locale, quizTheme, translations }: SiteShellProps) {
   const direction = getLocaleDirection(locale);
-  const shellStyle = quizTheme?.header ? {
-    "--site-header-background": quizTheme.header.background,
-    "--site-header-text": quizTheme.header.text,
-    "--site-header-border": quizTheme.header.border,
-    "--site-header-shadow": quizTheme.header.shadow,
-    "--site-footer-background": quizTheme.header.background,
-    "--site-footer-text": quizTheme.header.text,
-    "--site-footer-border": quizTheme.header.border,
-    "--site-footer-accent": quizTheme.header.border,
+  const shellStyle = quizTheme ? {
+    "--site-chrome-primary": quizTheme.colors.primary,
+    "--site-chrome-primary-text": quizTheme.colors.primaryText,
+    "--site-chrome-surface": quizTheme.colors.surface,
+    "--site-chrome-surface-raised": quizTheme.colors.surfaceRaised,
+    "--site-chrome-text": quizTheme.colors.text,
+    "--site-chrome-muted": quizTheme.colors.muted,
+    "--site-chrome-correct": quizTheme.colors.correct,
+    "--site-header-background": `color-mix(in srgb, ${quizTheme.colors.primary} 8%, ${quizTheme.colors.surfaceRaised})`,
+    "--site-header-text": quizTheme.colors.text,
+    "--site-header-border": `color-mix(in srgb, ${quizTheme.colors.primary} 42%, transparent)`,
+    "--site-header-shadow": "none",
+    "--site-footer-background": `color-mix(in srgb, ${quizTheme.colors.primary} 5%, ${quizTheme.colors.surface})`,
+    "--site-footer-text": quizTheme.colors.text,
+    "--site-footer-border": quizTheme.colors.primary,
+    "--site-footer-accent": quizTheme.colors.primary,
   } as CSSProperties : undefined;
 
   return (

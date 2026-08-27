@@ -1,9 +1,9 @@
 import { QuizEngine } from "@/components/quiz/QuizEngine";
 import { getQuizStorageKey, PROGRESS_TTL_MS } from "@/components/quiz/progressStorage";
-import { QuizThemeBoundary } from "@/components/quiz/QuizThemeBoundary";
+import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
-import { getAllQuizzes } from "@/lib/quizzes";
+import { getQuizRecommendations } from "@/lib/quizzes";
 import { absoluteUrl, getQuizPath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -15,15 +15,11 @@ type QuizTemplateProps = {
 
 export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) {
   const storageKey = getQuizStorageKey(quiz.slug, locale);
-  const recommendations = getAllQuizzes(locale)
-    .filter((candidate) => candidate.slug !== quiz.slug)
-    .map((candidate) => ({
-      href: getQuizPath(locale, candidate.slug),
-      summary: candidate.summary,
-      thumbnailAlt: candidate.thumbnailAlt,
-      thumbnailUrl: `/quizzes/${candidate.slug}/assets/thumbnail-480.webp`,
-      title: candidate.title,
-    }));
+  const recommendations = getQuizRecommendations(
+    quiz.slug,
+    locale,
+    (slug) => getQuizPath(locale, slug),
+  );
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Quiz",
@@ -55,7 +51,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
           __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=window.localStorage.getItem(k);if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS}){document.documentElement.classList.add("quiz-resuming")}else{window.localStorage.removeItem(k)}}}catch(e){try{window.localStorage.removeItem(${JSON.stringify(storageKey)})}catch(x){}}})();`,
         }}
       />
-      <QuizThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
+      <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
         <QuizEngine
           locale={locale}
           quiz={quiz}
@@ -63,7 +59,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
           startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
           translations={translations}
         />
-      </QuizThemeBoundary>
+      </ExperienceThemeBoundary>
     </>
   );
 }

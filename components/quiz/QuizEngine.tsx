@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { flushSync } from "react-dom";
 
+import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
+import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
-import type { Quiz, QuizQuestion } from "@/lib/quizzes";
-import { siteConfig } from "@/lib/siteConfig";
+import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
-import { requestRewardedAd } from "./rewardedAds";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
+import { QuizRecommendations } from "./QuizRecommendations";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 
 type QuizEngineProps = {
@@ -18,14 +18,6 @@ type QuizEngineProps = {
   recommendations: QuizRecommendation[];
   startInstructionEnabled: boolean;
   translations: Translations;
-};
-
-type QuizRecommendation = {
-  href: string;
-  summary: string;
-  thumbnailAlt: string;
-  thumbnailUrl: string;
-  title: string;
 };
 
 type QuizScreen = "landing" | "question" | "preparing" | "checkpoint" | "results";
@@ -54,37 +46,6 @@ function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
 
 function formatSocialProof(template: string, count: number, locale: SupportedLocale) {
   return template.replace("{count}", new Intl.NumberFormat(locale).format(count));
-}
-
-function RecommendationCard({ recommendation }: { recommendation: QuizRecommendation }) {
-  return (
-    <a className="quiz-engine__recommendation" href={recommendation.href}>
-      <span className="quiz-engine__recommendation-thumbnail">
-        <img alt={recommendation.thumbnailAlt} decoding="async" loading="lazy" src={recommendation.thumbnailUrl} />
-      </span>
-      <div className="quiz-engine__recommendation-copy">
-        <h3>{recommendation.title}</h3>
-        <p>{recommendation.summary}</p>
-      </div>
-      <span className="quiz-engine__recommendation-arrow" aria-hidden="true">→</span>
-    </a>
-  );
-}
-
-function Recommendations({ recommendations }: { recommendations: QuizRecommendation[] }) {
-  return (
-    <section className="quiz-engine__recommendations" aria-label="Recommended quizzes">
-      <header>
-        <span>RECOMMENDED NEXT</span>
-        <h3>Try another challenge</h3>
-      </header>
-      <div className="quiz-engine__recommendation-grid">
-        {recommendations.map((recommendation) => (
-          <RecommendationCard key={recommendation.href} recommendation={recommendation} />
-        ))}
-      </div>
-    </section>
-  );
 }
 
 type QuestionRendererProps = {
@@ -287,30 +248,6 @@ function QuestionRenderer(props: QuestionRendererProps) {
   return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} /> : <ChoiceQuestion {...props} />;
 }
 
-function SocialProof({ avatars, text }: { avatars: string[]; text: string }) {
-  const availableAvatars = avatars ?? [];
-  const count = text.match(/\d[\d\s,.\u00a0'’]*\+?/);
-  const start = count?.index ?? 0;
-  const end = start + (count?.[0].length ?? text.length);
-
-  return (
-    <div className="quiz-engine__social">
-      {availableAvatars.length ? (
-        <div aria-hidden="true" className="quiz-engine__avatars">
-          {availableAvatars.map((avatar, index) => (
-            <span key={index} style={{ backgroundImage: `url(${avatar})` }} />
-          ))}
-        </div>
-      ) : null}
-      <div className="quiz-engine__social-text">
-        {start > 0 ? <span>{text.slice(0, start)}</span> : null}
-        <strong>{text.slice(start, end)}</strong>
-        {end < text.length ? <span>{text.slice(end)}</span> : null}
-      </div>
-    </div>
-  );
-}
-
 function QuizAbout({ label, onRestart, quiz, title }: { label?: string; onRestart?: () => void; quiz: Quiz; title: string }) {
   if (!quiz.footer) return null;
   const topicParagraphs = quiz.footer.topicText?.split(/\n\s*\n/).filter(Boolean) ?? [];
@@ -366,17 +303,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const [completedStage, setCompletedStage] = useState(0);
   const [screen, setScreen] = useState<QuizScreen>(() => quiz.engine.startOnLoad ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
-  const [adBusy, setAdBusy] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [showStartPrompt, setShowStartPrompt] = useState(false);
   const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
-  const [recommendedQuizzes, setRecommendedQuizzes] = useState<QuizRecommendation[]>([]);
-  const adRequestActive = useRef(false);
-  const adRequestController = useRef<AbortController | null>(null);
-  const adRequestGeneration = useRef(0);
   const landingShellRef = useRef<HTMLElement | null>(null);
   const preloadedArtwork = useRef(new Set<string>());
   const progressSignature = useMemo(
@@ -421,6 +353,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     [quiz],
   );
   const storageKey = getQuizStorageKey(quiz.slug, locale);
+  const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
+    attempts: quiz.engine.rewarded.attempts,
+    onRewardClosed: () => setRewardClosedSent(true),
+    rewardClosedAlreadySent: rewardClosedSent,
+  });
   const currentQuestion = quiz.questions[questionIndex];
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
   const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
@@ -430,19 +367,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
-
-  useEffect(() => {
-    if (!recommendations.length) return;
-    const pool = [...recommendations];
-    for (let index = pool.length - 1; index > 0; index -= 1) {
-      const randomValue = typeof window.crypto?.getRandomValues === "function"
-        ? window.crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32
-        : Math.random();
-      const swapIndex = Math.floor(randomValue * (index + 1));
-      [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
-    }
-    setRecommendedQuizzes(pool.slice(0, 3));
-  }, [recommendations]);
 
   useLayoutEffect(() => {
     try {
@@ -521,11 +445,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     });
   }, [answers, completedStage, currentQuestion, currentStage, questionIndex, quiz, screen]);
 
-  useEffect(() => () => {
-    adRequestGeneration.current += 1;
-    adRequestController.current?.abort();
-  }, []);
-
   useEffect(() => {
     if (!showStartPrompt || startInstructionEnabled) return;
     document.documentElement.classList.add("quiz-reward-prompt-open");
@@ -542,42 +461,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }
 
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
-    if (adRequestActive.current) return;
-    const generation = ++adRequestGeneration.current;
-    const controller = new AbortController();
-    adRequestController.current = controller;
-    adRequestActive.current = true;
-    setAdBusy(true);
-    let outcome;
-    try {
-      outcome = await requestRewardedAd({
-        adUnitPath: siteConfig.rewardedAdUnitPath,
-        attempts: quiz.engine.rewarded.attempts,
-        onRewardClosed: () => setRewardClosedSent(true),
-        rewardClosedAlreadySent: rewardClosedSent,
-        signal: controller.signal,
-      });
-    } catch {
-      if (generation !== adRequestGeneration.current) return;
-      adRequestController.current = null;
-      adRequestActive.current = false;
-      setAdBusy(false);
-      return;
-    }
-
-    if (generation !== adRequestGeneration.current) return;
-    adRequestController.current = null;
-    adRequestActive.current = false;
-    if (outcome === "closed") {
-      setAdBusy(false);
-      return;
-    }
-
-    flushSync(() => {
-      onComplete();
-      setAdBusy(false);
-    });
-    if (scrollAfter) scrollToTop();
+    await runGate(onComplete, { scrollAfter });
   }
 
   function moveForward() {
@@ -690,12 +574,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }
 
   function restartQuiz() {
-    adRequestGeneration.current += 1;
-    adRequestController.current?.abort();
-    adRequestController.current = null;
-    adRequestActive.current = false;
+    cancelGate();
     try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable. */ }
-    setAdBusy(false);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
@@ -740,22 +620,19 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     }
     return (
       <>
-      <section className="quiz-engine__landing" ref={landingShellRef}>
-        <div className="quiz-engine__landing-copy">
-          <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{quiz.cardIcon}</span></div>
-          <h1>{quiz.title}</h1>
-          <p className="quiz-engine__quick-start">{quiz.landing.quickStartText}</p>
-          <SocialProof
-            avatars={quiz.landing.socialAvatars}
-            text={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
-          />
-          <button className="quiz-engine__primary" disabled={adBusy} onClick={startQuiz} type="button">
-            <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-            {adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.startTest}
-          </button>
-          {quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? <p className="quiz-engine__ad-note"><span>✓</span>{translations.ad.startNote}</p> : null}
-        </div>
-      </section>
+      <ExperienceLanding
+        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? translations.ad.startNote : undefined}
+        avatars={quiz.landing.socialAvatars}
+        busy={adBusy}
+        busyLabel={translations.ad.loading}
+        ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.startTest}
+        icon={quiz.cardIcon}
+        intro={quiz.landing.quickStartText}
+        onStart={startQuiz}
+        ref={landingShellRef}
+        socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
+        title={quiz.title}
+      />
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
       {showStartPrompt && quiz.landing.startPrompt ? (
         <div className="quiz-engine__reward-prompt">
@@ -1111,7 +988,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         ) : null}
           </>
         )}
-        {recommendedQuizzes.length ? <Recommendations recommendations={recommendedQuizzes} /> : null}
+        {recommendations.length ? <QuizRecommendations recommendations={recommendations} /> : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
