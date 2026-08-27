@@ -1,5 +1,6 @@
 import { sections as celluliteSections } from "@/app/(default)/cellulite/page";
 import { sections as brandsSections } from "@/app/(default)/brands/page";
+import { sections as beachSections } from "@/app/(default)/beach/page";
 import { sections as colonSections } from "@/app/(default)/colon/page";
 import { sections as funeralSections } from "@/app/(default)/funeral/page";
 import { sections as hivSections } from "@/app/(default)/hiv/page";
@@ -10,6 +11,7 @@ import { sections as prostateSections } from "@/app/(default)/prostate/page";
 import { sections as signsSections } from "@/app/(default)/signs/page";
 
 const ARTICLE_SECTIONS = {
+  beach: beachSections,
   brands: brandsSections,
   cellulite: celluliteSections,
   colon: colonSections,

@@ -279,6 +279,13 @@ export function getSitemapEntries() {
   });
 
   entries.push({
+    url: absoluteUrl("/beach"),
+    lastModified: new Date("2026-08-27T00:00:00Z"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  });
+
+  entries.push({
     url: absoluteUrl("/nervous"),
     lastModified: new Date("2026-08-27T00:00:00Z"),
     changeFrequency: "monthly" as const,

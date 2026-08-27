@@ -19,6 +19,7 @@
 .quiz-theme[data-quiz-theme="nervous-breakdown"] { --article-landing-border: #d75b3f; }
 .quiz-theme[data-quiz-theme="hiv-women"] { --article-landing-border: #be3152; }
 .quiz-theme[data-quiz-theme="disturbing-history"] { --article-landing-border: #7f372f; }
+.quiz-theme[data-quiz-theme="adult-beaches"] { --article-landing-border: #d21b32; }
 
 .quiz-theme[data-quiz-flow="continuous"] .article-engine__article {
   overflow: visible !important;
@@ -327,6 +328,26 @@ html.article-resuming .article-engine__landing {
   background-size: 100% 6px, auto, auto, auto;
 }
 
+.quiz-theme[data-quiz-theme="adult-beaches"] .article-engine__landing {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(225, 32, 57, .19), transparent 27%),
+    radial-gradient(circle at 9% 88%, rgba(100, 12, 28, .12), transparent 30%),
+    linear-gradient(145deg, #fff9f1, #f6d9d6);
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .article-engine__landing .quiz-engine__landing-badge {
+  width: 82px;
+  height: 72px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .article-engine__landing .quiz-engine__landing-badge span {
+  font-size: 54px;
+}
+
 .quiz-theme[data-quiz-theme="disturbing-history"] .article-engine__landing .quiz-engine__landing-badge {
   overflow: hidden;
   border: 3px solid #6b352e;
@@ -425,6 +446,13 @@ html.article-resuming .article-engine__landing {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 900;
   letter-spacing: -.045em;
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="adult-beaches"] .article-engine__header h1 {
+  color: #351318;
+  font-weight: 950;
+  letter-spacing: -.055em;
 }
 
 .quiz-theme[data-quiz-theme="colon-warning"] .quiz-engine__social {
@@ -531,6 +559,21 @@ html.article-resuming .article-engine__landing {
   border-color: #5f2925;
   background: linear-gradient(180deg, #9b3b33, #792b28);
   box-shadow: 0 8px 0 #52221f, 0 14px 28px rgba(75, 34, 30, .29);
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .quiz-engine__social {
+  border-color: #db7a83;
+  background: #fff0ed;
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .quiz-engine__social-text strong {
+  color: #b3152d;
+}
+
+.quiz-theme[data-quiz-theme="adult-beaches"] .quiz-engine__primary {
+  border-color: #761224;
+  background: linear-gradient(180deg, #da2038, #ad142c);
+  box-shadow: 0 8px 0 #721022, 0 14px 28px rgba(102, 15, 34, .3);
 }
 
 .article-engine__point-media {

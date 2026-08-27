@@ -91,6 +91,7 @@ if (!fs.existsSync(outputRoot)) {
   }
 
   const articleSectionCounts = {
+    beach: 3,
     brands: 4,
     cellulite: 3,
     colon: 3,
