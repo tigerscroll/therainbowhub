@@ -35,6 +35,14 @@ img { display: block; max-width: 100%; }
   box-shadow: var(--site-header-shadow, none);
 }
 
+html.fbclid-traffic {
+  --site-header-height: 0px;
+}
+
+html.fbclid-traffic .hub-header {
+  display: none !important;
+}
+
 .hub-header__inner {
   display: flex;
   align-items: center;

@@ -10,6 +10,8 @@ type QuestionRendererProps = {
   onAnswer: (choiceIndex: number) => void;
   onStudyComplete: () => void;
   question: QuizQuestion;
+  studyBusy?: boolean;
+  studyBusyLabel?: string;
   studyComplete: boolean;
 };
 
@@ -124,9 +126,9 @@ function ChoiceQuestion({ answer, feedback, onAnswer, question }: QuestionRender
   );
 }
 
-function StudyCue({ onStudyComplete, question }: QuestionRendererProps) {
-  const [ready, setReady] = useState(false);
+function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel }: QuestionRendererProps) {
   const study = question.study!;
+  const [ready, setReady] = useState(() => study.mode === "manual");
 
   useLayoutEffect(() => {
     if (study.mode === "manual") {
@@ -151,7 +153,17 @@ function StudyCue({ onStudyComplete, question }: QuestionRendererProps) {
         {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
       </div>
       {study.mode === "manual" ? (
-        <button className="quiz-engine__primary" disabled={!ready} onClick={onStudyComplete} type="button">{study.continueLabel}</button>
+        <>
+          <button className="quiz-engine__primary" disabled={!ready || studyBusy} onClick={onStudyComplete} type="button">
+            {studyBusy ? studyBusyLabel : study.continueLabel}
+          </button>
+          {study.rewarded && study.adNote ? (
+            <p className="quiz-engine__ad-note quiz-engine__study-ad-note">
+              <span aria-hidden="true">✓</span>
+              {study.adNote}
+            </p>
+          ) : null}
+        </>
       ) : <span className="quiz-engine__study-timer" aria-live="polite">{ready ? "" : "•••"}</span>}
     </div>
   );

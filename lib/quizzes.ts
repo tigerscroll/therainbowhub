@@ -85,7 +85,9 @@ export type QuizStudyCue = {
   items: string[];
   durationMs: number;
   mode: "manual" | "automatic";
+  rewarded?: boolean;
   continueLabel?: string;
+  adNote?: string;
   ariaLabel?: string;
 };
 export type QuizEstimateConfig = {
@@ -388,6 +390,7 @@ type QuizQuestionStructureV2 = {
     presentation?: QuizStudyCue["presentation"];
     durationMs?: number;
     mode?: QuizStudyCue["mode"];
+    rewarded?: boolean;
   };
   calibration?: number[];
   delay?: number;
@@ -474,6 +477,8 @@ type QuizLocaleFile = {
         durationMs?: number;
         mode?: QuizStudyCue["mode"];
         continueLabel?: string;
+        rewarded?: boolean;
+        adNote?: string;
         ariaLabel?: string;
       };
       calibration?: number[];
@@ -501,6 +506,7 @@ type QuizQuestionTextV2 = {
     instruction?: string;
     items: string[];
     continueLabel?: string;
+    adNote?: string;
     ariaLabel?: string;
   };
 };
@@ -1002,6 +1008,7 @@ function normalizeLocale(
         const durationMs = rawQuestion.study.durationMs ?? 2000;
         if (!["text", "icons"].includes(studyPresentation)) throw new Error(`${file}: question ${index + 1} has an invalid study presentation.`);
         if (!["manual", "automatic"].includes(studyMode)) throw new Error(`${file}: question ${index + 1} has an invalid study mode.`);
+        if (rawQuestion.study.rewarded && studyMode !== "manual") throw new Error(`${file}: question ${index + 1} can only reward-gate a manual study cue.`);
         if (!Number.isInteger(durationMs) || durationMs < 1000 || durationMs > 6000) throw new Error(`${file}: question ${index + 1} study duration must be 1000–6000ms.`);
         const studyItems = strings(rawQuestion.study.items, `questions[${index}].study.items`, file);
         if (studyItems.length < 2 || studyItems.length > 8) throw new Error(`${file}: question ${index + 1} study needs two to eight items.`);
@@ -1012,10 +1019,13 @@ function normalizeLocale(
           items: studyItems,
           durationMs,
           mode: studyMode,
+          rewarded: rawQuestion.study.rewarded,
           continueLabel: rawQuestion.study.continueLabel,
+          adNote: rawQuestion.study.adNote,
           ariaLabel: rawQuestion.study.ariaLabel,
         };
         if (studyMode === "manual") text(study.continueLabel, `questions[${index}].study.continueLabel`, file);
+        if (study.rewarded) text(study.adNote, `questions[${index}].study.adNote`, file);
       }
       if (isMemoryCue && (!rawQuestion.memoryItems || rawQuestion.memoryItems.length < 3 || rawQuestion.memoryItems.length > 4)) throw new Error(`${file}: memory cue ${index + 1} needs three or four items.`);
       if (!isMemoryCue && (!rawQuestion.answers || typeof rawQuestion.answers !== "object")) throw new Error(`${file}: question ${index + 1} needs answers.`);

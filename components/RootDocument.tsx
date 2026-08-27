@@ -1,5 +1,7 @@
 import Script from "next/script";
+import { Suspense } from "react";
 
+import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
 import type { SupportedLocale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -12,8 +14,17 @@ type RootDocumentProps = {
 export function RootDocument({ children, direction, locale }: RootDocumentProps) {
   return (
     <html dir={direction} lang={locale} suppressHydrationWarning>
-      <head />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(new URLSearchParams(location.search).has("fbclid")){document.documentElement.classList.add("fbclid-traffic")}}catch{}`,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
+        <Suspense fallback={null}>
+          <FbclidHeaderVisibility />
+        </Suspense>
         <Script
           referrerPolicy="no-referrer-when-downgrade"
           src={siteConfig.assertiveYieldManagerUrl}

@@ -73,10 +73,11 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
 }
 
 export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
+  const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
-  const [screen, setScreen] = useState<QuizScreen>(() => quiz.engine.startOnLoad ? "question" : "landing");
+  const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [rewardClosedSent, setRewardClosedSent] = useState(false);
@@ -111,7 +112,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         question.choices,
         question.icons,
         question.memoryItems,
-        question.study ? [question.study.presentation, question.study.items, question.study.durationMs, question.study.mode] : null,
+        question.study ? [question.study.presentation, question.study.items, question.study.durationMs, question.study.mode, question.study.rewarded] : null,
         question.answerIndex,
         question.calibrationValues,
         question.choiceProfileIds,
@@ -302,8 +303,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
   function completeStudy() {
     if (!currentQuestion?.study) return;
-    setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
-    scrollToTop();
+    const complete = () => {
+      setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
+      scrollToTop();
+    };
+    if (currentQuestion.study.rewarded) void runRewardedGate(complete);
+    else complete();
   }
 
   function beginQuiz() {
@@ -359,7 +364,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     setReviewUnlocked(false);
     setStartPromptMinHeight(null);
     setShowStartPrompt(false);
-    setScreen(quiz.engine.startOnLoad ? "question" : "landing");
+    setScreen(startsOnQuestion ? "question" : "landing");
     scrollToTop();
   }
 
@@ -791,6 +796,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
+          studyBusy={adBusy}
+          studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
         {quiz.engine.flow.advance === "manual" ? (

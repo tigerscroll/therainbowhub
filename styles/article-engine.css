@@ -126,6 +126,14 @@ html.article-resuming .article-engine__landing {
   stroke-width: 2.7;
 }
 
+.article-engine__funeral-icon {
+  display: block;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(35, 26, 39, .2));
+}
+
 .article-engine__colon-outline {
   stroke: #6f1730;
   stroke-width: 15;
@@ -170,6 +178,12 @@ html.article-resuming .article-engine__landing {
   box-shadow: 5px 6px 0 rgba(20, 61, 62, .2);
 }
 
+.quiz-theme[data-quiz-theme="funeral-songs"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid var(--quiz-primary);
+  background: #f2ede4;
+  box-shadow: 5px 6px 0 rgba(23, 22, 28, .2);
+}
+
 .quiz-theme[data-quiz-theme="colon-warning"] .article-engine__landing h1 {
   font-weight: 950;
 }
@@ -179,6 +193,11 @@ html.article-resuming .article-engine__landing {
 }
 
 .quiz-theme[data-quiz-theme="kidney-warning"] .article-engine__landing h1 {
+  font-weight: 950;
+}
+
+.quiz-theme[data-quiz-theme="funeral-songs"] .article-engine__landing h1 {
+  color: #2c2730;
   font-weight: 950;
 }
 
@@ -200,6 +219,17 @@ html.article-resuming .article-engine__landing {
 .quiz-theme[data-quiz-theme="kidney-warning"] .quiz-engine__primary {
   background: linear-gradient(180deg, #b73d57, #96263f);
   box-shadow: 0 8px 0 #661b31, 0 14px 28px rgba(71, 24, 41, .2);
+}
+
+.quiz-theme[data-quiz-theme="funeral-songs"] .quiz-engine__social {
+  border-color: color-mix(in srgb, #8d7445 42%, var(--quiz-border));
+  background: #f3eee5;
+}
+
+.quiz-theme[data-quiz-theme="funeral-songs"] .quiz-engine__primary {
+  border-color: #3d3345;
+  background: linear-gradient(180deg, #75617f, #584561);
+  box-shadow: 0 8px 0 #342a3a, 0 14px 28px rgba(27, 22, 31, .22);
 }
 
 .article-engine__landing .quiz-engine__quick-start {

@@ -243,5 +243,12 @@ export function getSitemapEntries() {
     priority: 0.7,
   });
 
+  entries.push({
+    url: absoluteUrl("/funeral"),
+    lastModified: new Date("2026-08-27T00:00:00Z"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  });
+
   return entries;
 }
