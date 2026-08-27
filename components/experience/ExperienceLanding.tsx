@@ -12,6 +12,7 @@ type ExperienceLandingProps = {
   icon: ReactNode;
   intro: string;
   onStart: () => void;
+  showCtaIcon?: boolean;
   socialProofText: string;
   title: string;
 };
@@ -49,6 +50,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   icon,
   intro,
   onStart,
+  showCtaIcon = true,
   socialProofText,
   title,
 }, ref) {
@@ -60,7 +62,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         <p className="quiz-engine__quick-start">{intro}</p>
         <SocialProof avatars={avatars} text={socialProofText} />
         <button className="quiz-engine__primary" disabled={busy} onClick={onStart} type="button">
-          <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
+          {showCtaIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span> : null}
           {busy ? busyLabel : ctaLabel}
         </button>
         {adNote ? <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p> : null}

@@ -134,6 +134,41 @@ html.article-resuming .article-engine__landing {
   filter: drop-shadow(0 2px 2px rgba(35, 26, 39, .2));
 }
 
+.article-engine__brands-icon {
+  display: block;
+  width: 52px;
+  height: 52px;
+  overflow: visible;
+}
+
+.article-engine__brands-tag {
+  fill: #d9ae50;
+  stroke: #4c3826;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.article-engine__brands-hole {
+  fill: #fff4d7;
+  stroke: #4c3826;
+  stroke-width: 2.4;
+}
+
+.article-engine__brands-string {
+  fill: none;
+  stroke: #8e3d2c;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.article-engine__brands-pound {
+  fill: #573a26;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
 .article-engine__colon-outline {
   stroke: #6f1730;
   stroke-width: 15;
@@ -184,6 +219,22 @@ html.article-resuming .article-engine__landing {
   box-shadow: 5px 6px 0 rgba(23, 22, 28, .2);
 }
 
+.quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__landing {
+  border: 2px solid #8f7043;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(205, 160, 70, .15), transparent 24%),
+    radial-gradient(circle at 88% 84%, rgba(56, 87, 67, .13), transparent 26%),
+    linear-gradient(145deg, #fffaf0, #f2e4c8);
+  box-shadow: 0 9px 0 #705739, 0 24px 55px rgba(31, 44, 36, .25);
+}
+
+.quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px double #6b4d2e;
+  border-radius: 50%;
+  background: #f7e7bf;
+  box-shadow: 5px 6px 0 rgba(71, 50, 30, .2), inset 0 0 0 5px rgba(181, 139, 58, .14);
+}
+
 .quiz-theme[data-quiz-theme="colon-warning"] .article-engine__landing h1 {
   font-weight: 950;
 }
@@ -199,6 +250,14 @@ html.article-resuming .article-engine__landing {
 .quiz-theme[data-quiz-theme="funeral-songs"] .article-engine__landing h1 {
   color: #2c2730;
   font-weight: 950;
+}
+
+.quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="valuable-brands"] .article-engine__header h1 {
+  color: #30251b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  letter-spacing: -.045em;
 }
 
 .quiz-theme[data-quiz-theme="colon-warning"] .quiz-engine__social {
@@ -230,6 +289,21 @@ html.article-resuming .article-engine__landing {
   border-color: #3d3345;
   background: linear-gradient(180deg, #75617f, #584561);
   box-shadow: 0 8px 0 #342a3a, 0 14px 28px rgba(27, 22, 31, .22);
+}
+
+.quiz-theme[data-quiz-theme="valuable-brands"] .quiz-engine__social {
+  border-color: #a88955;
+  background: #fff7e6;
+}
+
+.quiz-theme[data-quiz-theme="valuable-brands"] .quiz-engine__social-text strong {
+  color: #963f2d;
+}
+
+.quiz-theme[data-quiz-theme="valuable-brands"] .quiz-engine__primary {
+  border-color: #64281d;
+  background: linear-gradient(180deg, #ad5039, #8f3827);
+  box-shadow: 0 8px 0 #5d281d, 0 14px 28px rgba(84, 43, 30, .23);
 }
 
 .article-engine__landing .quiz-engine__quick-start {

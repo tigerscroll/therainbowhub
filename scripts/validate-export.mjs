@@ -90,7 +90,16 @@ if (!fs.existsSync(outputRoot)) {
     }
   }
 
-  for (const slug of ["cellulite", "colon", "funeral", "kidney", "prostate"]) {
+  const articleSectionCounts = {
+    brands: 4,
+    cellulite: 3,
+    colon: 3,
+    funeral: 3,
+    kidney: 3,
+    prostate: 3,
+  };
+
+  for (const [slug, sectionCount] of Object.entries(articleSectionCounts)) {
     const articleFile = routeFile(`/${slug}`);
     if (!articleFile) {
       addError(`Missing exported article route: /${slug}`);
@@ -98,7 +107,7 @@ if (!fs.existsSync(outputRoot)) {
     }
     const html = fs.readFileSync(articleFile, "utf8");
     if (html.includes("data-display-ad")) addError(`/${slug}: display-ad markup must not be exported.`);
-    for (let section = 1; section <= 3; section += 1) {
+    for (let section = 1; section <= sectionCount; section += 1) {
       const payloadFile = path.join(outputRoot, "article-data", slug, String(section));
       if (!fs.existsSync(payloadFile)) {
         addError(`Missing lazy article payload: /article-data/${slug}/${section}`);

@@ -1,10 +1,12 @@
 import { sections as celluliteSections } from "@/app/(default)/cellulite/page";
+import { sections as brandsSections } from "@/app/(default)/brands/page";
 import { sections as colonSections } from "@/app/(default)/colon/page";
 import { sections as funeralSections } from "@/app/(default)/funeral/page";
 import { sections as kidneySections } from "@/app/(default)/kidney/page";
 import { sections as prostateSections } from "@/app/(default)/prostate/page";
 
 const ARTICLE_SECTIONS = {
+  brands: brandsSections,
   cellulite: celluliteSections,
   colon: colonSections,
   funeral: funeralSections,

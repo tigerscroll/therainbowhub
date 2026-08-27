@@ -42,6 +42,7 @@ type ArticleExperienceProps = {
   intro: string;
   landingTitle: string;
   sectionCount: number;
+  showCtaIcon?: boolean;
   socialProofCount?: string;
   socialProofLabel?: string;
   sources: ArticleSource[];
@@ -152,6 +153,7 @@ export function ArticleExperience({
   intro,
   landingTitle,
   sectionCount,
+  showCtaIcon = true,
   socialProofCount = "125,000+",
   socialProofLabel = "read this today",
   sources,
@@ -257,6 +259,7 @@ export function ArticleExperience({
         icon={icon}
         intro={intro}
         onStart={showArticle}
+        showCtaIcon={showCtaIcon}
         socialProofText={`${socialProofCount} ${socialProofLabel}`}
         title={landingTitle}
       />
