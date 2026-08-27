@@ -12,7 +12,7 @@ import { siteConfig } from "@/lib/siteConfig";
 const locale = getDefaultLocale();
 const translations = getTranslations(locale);
 const path = "/diabetics";
-const landingTitle = "20 Worst Foods For Diabetes";
+const landingTitle = "20 Worst Foods For Diabetics";
 const description = "See twenty foods and drinks ranked by common concerns for people with diabetes, then discover practical swaps and food-label checks.";
 
 export const sections: ArticleSection[] = [
