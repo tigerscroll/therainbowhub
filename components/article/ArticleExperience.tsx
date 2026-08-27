@@ -11,6 +11,7 @@ import {
 } from "@/components/article/articleProgress";
 
 export type ArticlePoint = {
+  numberLabel?: string;
   image?: {
     alt: string;
     caption: string;
@@ -63,6 +64,7 @@ function isArticleSection(value: unknown): value is ArticleSection {
     && Array.isArray(section.points)
     && section.points.every((point) => point
       && typeof point.title === "string"
+      && (typeof point.numberLabel === "undefined" || typeof point.numberLabel === "string")
       && Array.isArray(point.paragraphs)
       && point.paragraphs.every((paragraph) => typeof paragraph === "string")
       && (typeof point.image === "undefined" || (point.image
@@ -138,7 +140,7 @@ function ArticlePointList({
       {points.map((point, index) => (
         <Fragment key={point.title}>
           <section className="article-engine__point">
-            <span aria-hidden="true" className="article-engine__number">{index + 1}</span>
+            <span aria-hidden="true" className="article-engine__number">{point.numberLabel ?? index + 1}</span>
             <div>
               <h2>{point.title}</h2>
               {point.image ? (

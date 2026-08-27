@@ -95,6 +95,7 @@ if (!fs.existsSync(outputRoot)) {
     brands: 4,
     cellulite: 3,
     colon: 3,
+    diabetics: 4,
     funeral: 3,
     hiv: 3,
     historical: 3,

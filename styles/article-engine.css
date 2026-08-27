@@ -22,6 +22,7 @@
 .quiz-theme[data-quiz-theme="adult-beaches"] { --article-landing-border: #d21b32; }
 .quiz-theme[data-quiz-theme="mens-private-massage"] { --article-landing-border: #d21b32; }
 .quiz-theme[data-quiz-theme="mobility-scooter-funding"] { --article-landing-border: #087f67; }
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] { --article-landing-border: #bd2439; }
 
 .quiz-theme[data-quiz-flow="continuous"] .article-engine__article {
   overflow: visible !important;
@@ -359,6 +360,24 @@ html.article-resuming .article-engine__landing {
     linear-gradient(145deg, #fffdf7, #e4f1ed);
 }
 
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .article-engine__landing {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(201, 38, 57, .17), transparent 27%),
+    radial-gradient(circle at 8% 88%, rgba(242, 197, 68, .2), transparent 30%),
+    linear-gradient(145deg, #fffaf1, #f5ded8);
+}
+
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .article-engine__landing .quiz-engine__landing-badge {
+  border: 3px solid #a51d34;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff5df, #ffd478);
+  box-shadow: 5px 6px 0 rgba(86, 21, 34, .2), inset 0 0 0 5px rgba(255, 255, 255, .35);
+}
+
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .article-engine__landing .quiz-engine__landing-badge span {
+  font-size: 43px;
+}
+
 .quiz-theme[data-quiz-theme="mobility-scooter-funding"] .article-engine__landing .quiz-engine__landing-badge {
   width: 86px;
   height: 76px;
@@ -516,6 +535,13 @@ html.article-resuming .article-engine__landing {
   letter-spacing: -.055em;
 }
 
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .article-engine__header h1 {
+  color: #35161b;
+  font-weight: 950;
+  letter-spacing: -.055em;
+}
+
 .quiz-theme[data-quiz-theme="colon-warning"] .quiz-engine__social {
   border-color: color-mix(in srgb, var(--quiz-primary) 38%, var(--quiz-border));
   background: #fff0f1;
@@ -665,6 +691,21 @@ html.article-resuming .article-engine__landing {
   border-color: #07584b;
   background: linear-gradient(180deg, #11a181, #087661);
   box-shadow: 0 8px 0 #075246, 0 14px 28px rgba(6, 83, 71, .24);
+}
+
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .quiz-engine__social {
+  border-color: #da887e;
+  background: #fff0e9;
+}
+
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .quiz-engine__social-text strong {
+  color: #ad2036;
+}
+
+.quiz-theme[data-quiz-theme="diabetes-food-ranking"] .quiz-engine__primary {
+  border-color: #7b1326;
+  background: linear-gradient(180deg, #d62b43, #b31b35);
+  box-shadow: 0 8px 0 #741126, 0 14px 28px rgba(100, 18, 37, .27);
 }
 
 .article-engine__point-media {
