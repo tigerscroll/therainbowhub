@@ -95,7 +95,7 @@ test("every article locale file is a complete validated manifest", () => {
 test("rebuilt editorial journeys contain five complete lazy chapters", () => {
   const fiveChapterSlugs = [
     "beach", "brands", "colon", "diabetics", "funeral", "historical", "hotel",
-    "breastcancer", "dating", "hiv", "kidney", "mobilityscooter", "nervous", "prostate", "signs", "skincancer",
+    "breastcancer", "dating", "gross", "hiv", "kidney", "mobilityscooter", "nervous", "prostate", "signs", "skincancer",
   ];
   for (const slug of fiveChapterSlugs) {
     const value: unknown = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "articles", slug, "en.json"), "utf8"));

@@ -14,6 +14,7 @@
 .quiz-theme[data-quiz-theme="skin-cancer-warning"] { --article-landing-border: #a73535; }
 .quiz-theme[data-quiz-theme="senior-speed-dating"] { --article-landing-border: #b3315b; }
 .quiz-theme[data-quiz-theme="breast-cancer-warning"] { --article-landing-border: #b52e58; }
+.quiz-theme[data-quiz-theme="gross-confessions"] { --article-landing-border: #e92151; }
 .quiz-theme[data-quiz-theme="kidney-warning"] { --article-landing-border: #a82f49; }
 .quiz-theme[data-quiz-theme="funeral-songs"] { --article-landing-border: #806127; }
 .quiz-theme[data-quiz-theme="valuable-brands"] { --article-landing-border: #76542e; }
@@ -166,6 +167,24 @@
   border: 0;
   background: transparent;
   box-shadow: none;
+}
+
+.quiz-theme[data-quiz-theme="gross-confessions"] .article-engine__landing .quiz-engine__landing-badge {
+  width: 132px;
+  height: 76px;
+  overflow: hidden;
+  border: 2px solid #e92151;
+  border-radius: 18px;
+  background: #25dbd6;
+  box-shadow: 5px 6px 0 rgba(22, 133, 138, .22);
+  transform: none;
+}
+
+.article-engine__gross-woman-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .article-engine__kidney-icon {
@@ -558,6 +577,10 @@
 }
 
 .quiz-theme[data-quiz-theme="breast-cancer-warning"] .article-engine__landing h1 {
+  font-weight: 950;
+}
+
+.quiz-theme[data-quiz-theme="gross-confessions"] .article-engine__landing h1 {
   font-weight: 950;
 }
 
@@ -1443,4 +1466,10 @@
 
 @media (max-width: 360px) {
   .article-engine__article { padding-inline: 15px; }
+
+  .quiz-theme[data-quiz-theme="gross-confessions"] .article-engine__landing .quiz-engine__landing-badge {
+    width: 116px !important;
+    height: 66px !important;
+    border-radius: 14px;
+  }
 }
