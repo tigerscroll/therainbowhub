@@ -17,7 +17,7 @@ export function RootDocument({ children, direction, locale }: RootDocumentProps)
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(new URLSearchParams(location.search).has("fbclid")){document.documentElement.classList.add("fbclid-traffic")}}catch{}`,
+            __html: `try{const key="rainbowhub:fbclid-traffic";const hasFbclid=new URLSearchParams(location.search).has("fbclid");if(hasFbclid)sessionStorage.setItem(key,"1");if(hasFbclid||sessionStorage.getItem(key)==="1")document.documentElement.classList.add("fbclid-traffic")}catch{}`,
           }}
         />
       </head>

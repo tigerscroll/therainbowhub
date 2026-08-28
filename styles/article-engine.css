@@ -11,6 +11,7 @@
 
 .quiz-theme[data-quiz-theme="colon-warning"] { --article-landing-border: #b51f3f; }
 .quiz-theme[data-quiz-theme="prostate-warning"] { --article-landing-border: #aa2531; }
+.quiz-theme[data-quiz-theme="skin-cancer-warning"] { --article-landing-border: #a73535; }
 .quiz-theme[data-quiz-theme="kidney-warning"] { --article-landing-border: #a82f49; }
 .quiz-theme[data-quiz-theme="funeral-songs"] { --article-landing-border: #806127; }
 .quiz-theme[data-quiz-theme="valuable-brands"] { --article-landing-border: #76542e; }
@@ -117,6 +118,21 @@
 .article-engine__prostate-urethra {
   stroke: #f8d9c9;
   stroke-width: 2.4;
+}
+
+.article-engine__skincancer-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.quiz-theme[data-quiz-theme="skin-cancer-warning"] .article-engine__landing .quiz-engine__landing-badge {
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .article-engine__kidney-icon {
@@ -497,6 +513,10 @@
 }
 
 .quiz-theme[data-quiz-theme="prostate-warning"] .article-engine__landing h1 {
+  font-weight: 950;
+}
+
+.quiz-theme[data-quiz-theme="skin-cancer-warning"] .article-engine__landing h1 {
   font-weight: 950;
 }
 
