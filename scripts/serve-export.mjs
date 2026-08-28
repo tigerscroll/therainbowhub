@@ -32,7 +32,7 @@ function resolveRequest(pathname) {
     ? ["index.html"]
     : hasExtension
       ? [cleanPath]
-      : [`${cleanPath}.html`, path.join(cleanPath, "index.html")];
+      : [cleanPath, `${cleanPath}.html`, path.join(cleanPath, "index.html")];
 
   for (const candidate of candidates) {
     const file = safeFile(candidate);
@@ -53,9 +53,12 @@ const server = http.createServer((request, response) => {
   }
 
   const status = resolveRequest(pathname) ? 200 : 404;
+  const isArticlePayload = file.startsWith(path.join(root, "article-data") + path.sep);
   response.writeHead(status, {
     "Cache-Control": "no-cache",
-    "Content-Type": contentTypes[path.extname(file).toLowerCase()] ?? "application/octet-stream",
+    "Content-Type": isArticlePayload
+      ? "application/json; charset=utf-8"
+      : contentTypes[path.extname(file).toLowerCase()] ?? "application/octet-stream",
   });
 
   if (request.method === "HEAD") {

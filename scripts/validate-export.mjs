@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 const root = process.cwd();
 const outputRoot = path.join(root, "out");
 const quizRoot = path.join(root, "data", "quizzes");
+const articleRoot = path.join(root, "data", "articles");
 const locales = ["en", "fr", "de", "it", "nl", "es", "pt"];
 const errors = [];
 const shellCss = fs.readFileSync(path.join(root, "styles", "quiz-shell-contract.css"), "utf8");
@@ -90,24 +91,17 @@ if (!fs.existsSync(outputRoot)) {
     }
   }
 
-  const articleSectionCounts = {
-    beach: 3,
-    brands: 5,
-    cellulite: 3,
-    colon: 3,
-    diabetics: 4,
-    funeral: 4,
-    hiv: 3,
-    historical: 4,
-    kidney: 3,
-    massage: 3,
-    mobilityscooter: 4,
-    nervous: 4,
-    prostate: 3,
-    signs: 5,
-  };
+  const articleSectionPointCounts = Object.fromEntries(
+    fs.readdirSync(articleRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => {
+        const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
+        return [entry.name, manifest.sections.map((section) => section.points.length)];
+      }),
+  );
 
-  for (const [slug, sectionCount] of Object.entries(articleSectionCounts)) {
+  for (const [slug, pointCounts] of Object.entries(articleSectionPointCounts)) {
+    const sectionCount = pointCounts.length;
     const articleFile = routeFile(`/${slug}`);
     if (!articleFile) {
       addError(`Missing exported article route: /${slug}`);
@@ -116,14 +110,58 @@ if (!fs.existsSync(outputRoot)) {
     const html = fs.readFileSync(articleFile, "utf8");
     if (html.includes("data-display-ad")) addError(`/${slug}: display-ad markup must not be exported.`);
     for (let section = 1; section <= sectionCount; section += 1) {
+      const chapterRoute = `/${slug}/${section}`;
+      const chapterFile = routeFile(chapterRoute);
+      if (!chapterFile) {
+        addError(`Missing exported article chapter route: ${chapterRoute}`);
+      } else if (fs.readFileSync(chapterFile, "utf8").includes("data-display-ad")) {
+        addError(`${chapterRoute}: display-ad markup must not be exported.`);
+      }
       const payloadFile = path.join(outputRoot, "article-data", slug, String(section));
       if (!fs.existsSync(payloadFile)) {
         addError(`Missing lazy article payload: /article-data/${slug}/${section}`);
         continue;
       }
       const payload = JSON.parse(fs.readFileSync(payloadFile, "utf8"));
-      if (!payload?.title || !Array.isArray(payload.points) || payload.points.length !== 10) {
-        addError(`/article-data/${slug}/${section}: expected a titled ten-point article section.`);
+      const expectedPointCount = pointCounts[section - 1];
+      if (!payload?.title || !Array.isArray(payload.points) || payload.points.length !== expectedPointCount) {
+        addError(`/article-data/${slug}/${section}: expected a titled ${expectedPointCount}-point article section.`);
+      }
+      if (payload.next && (
+        typeof payload.next.copy !== "string"
+        || typeof payload.next.cta !== "string"
+        || typeof payload.next.eyebrow !== "string"
+        || typeof payload.next.title !== "string"
+        || (typeof payload.next.adNote !== "undefined" && typeof payload.next.adNote !== "string")
+      )) {
+        addError(`/article-data/${slug}/${section}: invalid next-section gate.`);
+      }
+      if (section < sectionCount && (!payload.next || typeof payload.next.adNote !== "string")) {
+        addError(`/article-data/${slug}/${section}: every internal gate must include its rewarded-ad note.`);
+      }
+      if (section === sectionCount && payload.next) {
+        addError(`/article-data/${slug}/${section}: final section must not include another gate.`);
+      }
+      for (const [pointIndex, point] of (payload.points ?? []).entries()) {
+        if (point.callouts && (!Array.isArray(point.callouts) || point.callouts.some((callout) => (
+          typeof callout?.question !== "string" || typeof callout?.answer !== "string"
+        )))) {
+          addError(`/article-data/${slug}/${section}: invalid callouts on point ${pointIndex + 1}.`);
+        }
+      }
+      if (payload.conclusion && (
+        typeof payload.conclusion.eyebrow !== "string" || typeof payload.conclusion.copy !== "string"
+      )) {
+        addError(`/article-data/${slug}/${section}: invalid editorial conclusion.`);
+      }
+      if (slug === "prostate") {
+        const calloutCounts = payload.points.map((point) => point.callouts?.length ?? 0);
+        if (section === 3 && (calloutCounts[3] !== 3 || calloutCounts.some((count, index) => index !== 3 && count !== 0))) {
+          addError("/article-data/prostate/3: the three PSA callouts must appear together after Step 4.");
+        }
+        if (section === 5 && (!payload.conclusion || payload.conclusion.eyebrow !== "THE MOST IMPORTANT POINT")) {
+          addError("/article-data/prostate/5: final editorial conclusion is missing.");
+        }
       }
       const firstPointTitle = payload.points?.[0]?.title;
       if (firstPointTitle && html.includes(firstPointTitle)) {

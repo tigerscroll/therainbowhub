@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAllArticleManifests } from "@/lib/articles";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
@@ -23,6 +24,10 @@ export function getQuizPath(locale: SupportedLocale, slug: string) {
 
 export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
   return locale === defaultLocale ? `/info/${slug}` : `/${locale}/info/${slug}`;
+}
+
+export function getArticlePath(locale: SupportedLocale, slug: string) {
+  return locale === defaultLocale ? `/${slug}` : `/${locale}/${slug}`;
 }
 
 function languageAlternates(pathForLocale: (locale: SupportedLocale) => string, locales = getSupportedLocales()) {
@@ -215,103 +220,16 @@ export function getSitemapEntries() {
     }
   }
 
-  entries.push({
-    url: absoluteUrl("/prostate"),
-    lastModified: new Date("2026-08-25T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/cellulite"),
-    lastModified: new Date("2026-08-25T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/colon"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/kidney"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/funeral"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/brands"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/signs"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/hiv"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/historical"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/beach"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/nervous"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/massage"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/mobilityscooter"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
-
-  entries.push({
-    url: absoluteUrl("/diabetics"),
-    lastModified: new Date("2026-08-27T00:00:00Z"),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  });
+  for (const article of getAllArticleManifests()) {
+    if (!getSupportedLocales().includes(article.locale as SupportedLocale)) continue;
+    const modified = article.metadata.dateModified ?? article.metadata.lastReviewed ?? "2026-08-27";
+    entries.push({
+      url: absoluteUrl(getArticlePath(article.locale as SupportedLocale, article.routeSlug ?? article.slug)),
+      lastModified: new Date(`${modified}T00:00:00Z`),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    });
+  }
 
   return entries;
 }

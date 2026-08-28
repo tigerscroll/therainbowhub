@@ -11,11 +11,12 @@ type SiteShellProps = {
   children: React.ReactNode;
   currentPath: string;
   locale: SupportedLocale;
+  localePaths?: Partial<Record<SupportedLocale, string>>;
   translations: Translations;
   quizTheme?: QuizTheme;
 };
 
-export function SiteShell({ availableLocales, children, currentPath, locale, quizTheme, translations }: SiteShellProps) {
+export function SiteShell({ availableLocales, children, currentPath, locale, localePaths, quizTheme, translations }: SiteShellProps) {
   const direction = getLocaleDirection(locale);
   const shellStyle = quizTheme ? {
     "--site-chrome-primary": quizTheme.colors.primary,
@@ -39,7 +40,7 @@ export function SiteShell({ availableLocales, children, currentPath, locale, qui
     <div className="site-shell" dir={direction} style={shellStyle}>
       <DocumentLocale direction={direction} locale={locale} />
       <TrackingPageView />
-      <Header availableLocales={availableLocales} currentPath={currentPath} locale={locale} translations={translations} />
+      <Header availableLocales={availableLocales} currentPath={currentPath} locale={locale} localePaths={localePaths} translations={translations} />
       <main className="site-content" style={quizTheme ? { background: quizTheme.colors.page } : undefined}>{children}</main>
       <Footer locale={locale} translations={translations} />
     </div>

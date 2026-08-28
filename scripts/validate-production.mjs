@@ -216,8 +216,11 @@ const articleEngineText = fs.readFileSync(path.join(rootDir, "components", "arti
 if (/mountDisplayAd|data-display-ad|ArticleDisplayAd/.test(articleEngineText)) {
   addError("The shared article engine must not mount display ads.");
 }
-for (const declaration of ["loadArticleSection", "getArticleProgressKey", "window.localStorage.setItem", "parseArticleProgress"]) {
-  if (!articleEngineText.includes(declaration)) addError(`Shared article progress contract is missing: ${declaration}`);
+for (const declaration of ["loadArticleSection", "getArticleChapterPath", "router.push"]) {
+  if (!articleEngineText.includes(declaration)) addError(`Shared article chapter-routing contract is missing: ${declaration}`);
+}
+if (/localStorage|articleProgress|ARTICLE_PROGRESS_VERSION/.test(articleEngineText)) {
+  addError("The shared article engine must use chapter URLs instead of localStorage progress.");
 }
 if (quizTemplateText.includes("getAllQuizzes")) {
   addError("QuizTemplate must select its lightweight recommendation pool server-side.");

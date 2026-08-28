@@ -7,12 +7,15 @@ type ExperienceLandingProps = {
   avatars: string[];
   busy: boolean;
   busyLabel: string;
+  ctaIcon?: ReactNode;
+  ctaIconPosition?: "start" | "end";
   ctaLabel: string;
   className?: string;
   icon: ReactNode;
   intro: string;
   onStart: () => void;
   showCtaIcon?: boolean;
+  showSocialProof?: boolean;
   socialProofText: string;
   title: string;
 };
@@ -45,12 +48,15 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   avatars,
   busy,
   busyLabel,
+  ctaIcon = "▶",
+  ctaIconPosition = "start",
   ctaLabel,
   className,
   icon,
   intro,
   onStart,
   showCtaIcon = true,
+  showSocialProof = true,
   socialProofText,
   title,
 }, ref) {
@@ -60,10 +66,11 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{icon}</span></div>
         <h1>{title}</h1>
         <p className="quiz-engine__quick-start">{intro}</p>
-        <SocialProof avatars={avatars} text={socialProofText} />
+        {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
         <button className="quiz-engine__primary" disabled={busy} onClick={onStart} type="button">
-          {showCtaIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span> : null}
+          {showCtaIcon && ctaIconPosition === "start" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
           {busy ? busyLabel : ctaLabel}
+          {showCtaIcon && ctaIconPosition === "end" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
         </button>
         {adNote ? <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p> : null}
       </div>

@@ -1,42 +1,14 @@
-import { sections as celluliteSections } from "@/app/(default)/cellulite/page";
-import { sections as brandsSections } from "@/app/(default)/brands/page";
-import { sections as beachSections } from "@/app/(default)/beach/page";
-import { sections as colonSections } from "@/app/(default)/colon/page";
-import { sections as diabeticsSections } from "@/app/(default)/diabetics/page";
-import { sections as funeralSections } from "@/app/(default)/funeral/page";
-import { sections as hivSections } from "@/app/(default)/hiv/page";
-import { sections as historicalSections } from "@/app/(default)/historical/page";
-import { sections as kidneySections } from "@/app/(default)/kidney/page";
-import { sections as massageSections } from "@/app/(default)/massage/page";
-import { sections as mobilityScooterSections } from "@/app/(default)/mobilityscooter/page";
-import { sections as nervousSections } from "@/app/(default)/nervous/page";
-import { sections as prostateSections } from "@/app/(default)/prostate/page";
-import { sections as signsSections } from "@/app/(default)/signs/page";
-
-const ARTICLE_SECTIONS = {
-  beach: beachSections,
-  brands: brandsSections,
-  cellulite: celluliteSections,
-  colon: colonSections,
-  diabetics: diabeticsSections,
-  funeral: funeralSections,
-  hiv: hivSections,
-  historical: historicalSections,
-  kidney: kidneySections,
-  massage: massageSections,
-  mobilityscooter: mobilityScooterSections,
-  nervous: nervousSections,
-  prostate: prostateSections,
-  signs: signsSections,
-} as const;
-
-type ArticleSlug = keyof typeof ARTICLE_SECTIONS;
+import { getAllArticleManifests, getArticleBySlug } from "@/lib/articles";
+import { getDefaultLocale } from "@/lib/i18n";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return Object.entries(ARTICLE_SECTIONS).flatMap(([slug, sections]) =>
-    sections.map((_, index) => ({ section: String(index + 1), slug })),
+  return getAllArticleManifests().flatMap((article) =>
+    article.sections.map((_, index) => ({
+      section: String(index + 1),
+      slug: article.locale === getDefaultLocale() ? article.slug : `${article.locale}--${article.slug}`,
+    })),
   );
 }
 
@@ -45,9 +17,11 @@ export async function GET(
   { params }: { params: Promise<{ section: string; slug: string }> },
 ) {
   const { section, slug } = await params;
+  const separator = slug.indexOf("--");
+  const locale = separator === -1 ? getDefaultLocale() : slug.slice(0, separator);
+  const stableSlug = separator === -1 ? slug : slug.slice(separator + 2);
   const index = Number(section) - 1;
-  const articleSections = ARTICLE_SECTIONS[slug as ArticleSlug];
-  const articleSection = articleSections?.[index];
+  const articleSection = getArticleBySlug(stableSlug, locale)?.sections[index];
 
   if (!articleSection) return Response.json({ error: "Article section not found." }, { status: 404 });
 
