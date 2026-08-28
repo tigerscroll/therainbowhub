@@ -94,7 +94,7 @@ test("every article locale file is a complete validated manifest", () => {
 
 test("rebuilt editorial journeys contain five complete lazy chapters", () => {
   const fiveChapterSlugs = [
-    "beach", "brands", "colon", "diabetics", "funeral", "historical",
+    "beach", "brands", "colon", "diabetics", "funeral", "historical", "hotel",
     "hiv", "kidney", "mobilityscooter", "nervous", "prostate", "signs",
   ];
   for (const slug of fiveChapterSlugs) {
