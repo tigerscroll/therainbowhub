@@ -21,6 +21,7 @@ type ArticleExperienceProps = {
   articlePath: string;
   articleSlug: string;
   avatars: string[];
+  contentVersion: string;
   ctaLabel: string;
   ctaIcon?: ReactNode;
   disclaimer?: string;
@@ -49,14 +50,14 @@ type ArticleExperienceProps = {
 
 const sectionRequests = new Map<string, Promise<ArticleSection>>();
 
-function loadArticleSection(slug: string, locale: string, section: number) {
-  const key = `${locale}:${slug}:${section}`;
+function loadArticleSection(slug: string, locale: string, section: number, contentVersion: string) {
+  const key = `${locale}:${slug}:${section}:${contentVersion}`;
   const existing = sectionRequests.get(key);
   if (existing) return existing;
   const payloadPath = locale === "en"
     ? `/article-data/${encodeURIComponent(slug)}/${section}`
     : `/article-data/${encodeURIComponent(`${locale}--${slug}`)}/${section}`;
-  const request = fetch(payloadPath, { cache: "force-cache" })
+  const request = fetch(`${payloadPath}?v=${encodeURIComponent(contentVersion)}`, { cache: "force-cache" })
     .then(async (response) => {
       if (!response.ok) throw new Error(`Article section ${section} could not be loaded.`);
       const value: unknown = await response.json();
@@ -189,6 +190,7 @@ export function ArticleExperience({
   articlePath,
   articleSlug,
   avatars,
+  contentVersion,
   ctaLabel,
   ctaIcon = "→",
   disclaimer = "General information only. This article is not a diagnosis, medical assessment or substitute for advice from a qualified healthcare professional.",
@@ -227,7 +229,7 @@ export function ArticleExperience({
 
     setStarted(true);
     setRestoring(true);
-    void loadArticleSection(articleSlug, articleLocale, initialSection).then((section) => {
+    void loadArticleSection(articleSlug, articleLocale, initialSection, contentVersion).then((section) => {
       if (!active) return;
       setCurrentSection(section);
     }).catch(() => {
@@ -245,12 +247,12 @@ export function ArticleExperience({
     });
 
     return () => { active = false; };
-  }, [articleLocale, articlePath, articleSlug, initialSection, router]);
+  }, [articleLocale, articlePath, articleSlug, contentVersion, initialSection, router]);
 
   function openSection(section: number) {
     const chapterPath = getArticleChapterPath(articlePath, section);
     const chapterHref = `${chapterPath}${window.location.search}`;
-    void loadArticleSection(articleSlug, articleLocale, section);
+    void loadArticleSection(articleSlug, articleLocale, section, contentVersion);
     router.prefetch(chapterPath);
     void runGate(() => {
       setNavigating(true);

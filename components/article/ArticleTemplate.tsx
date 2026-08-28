@@ -81,6 +81,15 @@ function renderIcon(icon: ArticleIcon) {
   return <img alt={icon.alt} className={icon.className} src={icon.src} />;
 }
 
+function getArticleContentVersion(article: ArticleManifest) {
+  const content = JSON.stringify(article.sections);
+  let hash = 2166136261;
+  for (let index = 0; index < content.length; index += 1) {
+    hash = Math.imul(hash ^ content.charCodeAt(index), 16777619);
+  }
+  return (hash >>> 0).toString(36);
+}
+
 export function buildArticleMetadata(article: ArticleManifest, initialSection?: number): Metadata {
   if (!isSupportedLocale(article.locale)) return {};
   const locales = getArticleLocales(article.slug).filter(isSupportedLocale);
@@ -154,6 +163,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
       url: siteConfig.siteUrl,
     },
   };
+  const contentVersion = getArticleContentVersion(article);
 
   return (
     <SiteShell
@@ -176,6 +186,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
       >
         <ArticleExperience
           articlePath={articleBasePath}
+          contentVersion={contentVersion}
           adNote={article.landing.cta.adNote}
           articleLocale={locale}
           articleSlug={article.slug}
