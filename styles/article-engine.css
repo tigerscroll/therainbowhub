@@ -14,7 +14,8 @@
 .quiz-theme[data-quiz-theme="skin-cancer-warning"] { --article-landing-border: #a73535; }
 .quiz-theme[data-quiz-theme="senior-speed-dating"] { --article-landing-border: #b3315b; }
 .quiz-theme[data-quiz-theme="breast-cancer-warning"] { --article-landing-border: #b52e58; }
-.quiz-theme[data-quiz-theme="gross-confessions"] { --article-landing-border: #e92151; }
+.quiz-theme[data-quiz-theme="gross-confessions"],
+.quiz-theme[data-quiz-theme="gross-60-confessions"] { --article-landing-border: #e92151; }
 .quiz-theme[data-quiz-theme="kidney-warning"] { --article-landing-border: #a82f49; }
 .quiz-theme[data-quiz-theme="funeral-songs"] { --article-landing-border: #806127; }
 .quiz-theme[data-quiz-theme="valuable-brands"] { --article-landing-border: #76542e; }
@@ -185,6 +186,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.quiz-theme[data-quiz-theme="gross-60-confessions"] .article-engine__landing .quiz-engine__landing-badge {
+  width: 86px;
+  height: 86px;
+  overflow: hidden;
+  border: 2px solid #e92151;
+  border-radius: 24px;
+  background: #d8f8f4;
+  box-shadow: 5px 6px 0 rgba(22, 133, 138, .22);
+}
+
+.article-engine__gross60-woman-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .article-engine__kidney-icon {
@@ -580,7 +598,8 @@
   font-weight: 950;
 }
 
-.quiz-theme[data-quiz-theme="gross-confessions"] .article-engine__landing h1 {
+.quiz-theme[data-quiz-theme="gross-confessions"] .article-engine__landing h1,
+.quiz-theme[data-quiz-theme="gross-60-confessions"] .article-engine__landing h1 {
   font-weight: 950;
 }
 
@@ -1471,5 +1490,11 @@
     width: 116px !important;
     height: 66px !important;
     border-radius: 14px;
+  }
+
+  .quiz-theme[data-quiz-theme="gross-60-confessions"] .article-engine__landing .quiz-engine__landing-badge {
+    width: 76px !important;
+    height: 76px !important;
+    border-radius: 21px;
   }
 }
