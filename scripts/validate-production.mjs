@@ -109,6 +109,26 @@ requireFile("scripts/prepare-quiz-assets.mjs");
 requireFile("scripts/create-quiz.mjs");
 requireFile("scripts/visual-regression.mjs");
 requireFile("docs/shared-quiz-contract.md");
+requireFile("docs/shared-article-contract.md");
+
+const siteShellSource = fs.readFileSync(path.join(rootDir, "components", "SiteShell.tsx"), "utf8");
+const globalNotFoundSource = fs.readFileSync(path.join(rootDir, "components", "GlobalNotFound.tsx"), "utf8");
+for (const contract of ["<Header", "<Footer"]) {
+  if (!siteShellSource.includes(contract)) addError(`SiteShell must render the shared chrome component: ${contract.trim()}`);
+}
+for (const contract of ["<HeaderChrome", "<FooterChrome"]) {
+  if (!globalNotFoundSource.includes(contract)) addError(`Global 404 must render the shared chrome component: ${contract.trim()}`);
+}
+
+const uiPageFiles = files.filter((filePath) => /(?:^|\/)app\/.+(?:page|not-found)\.tsx$/.test(filePath))
+  .filter((filePath) => !filePath.endsWith("app/global-not-found.tsx"));
+const sharedShellEntrypoints = ["SiteShell", "ArticleTemplate", "NotFoundContent", "GlobalNotFound"];
+for (const filePath of uiPageFiles) {
+  const source = fs.readFileSync(filePath, "utf8");
+  if (!sharedShellEntrypoints.some((entrypoint) => source.includes(entrypoint))) {
+    addError(`UI page bypasses the shared header/footer shell: ${relative(filePath)}`);
+  }
+}
 if (fs.existsSync(path.join(rootDir, "data", "quizzes", "schema.json"))) {
   addError("Remove the obsolete pre-v2 locale schema; executable validators own the schema-v2 contract.");
 }
@@ -222,6 +242,10 @@ for (const declaration of ["loadArticleSection", "getArticleChapterPath", "route
 if (/localStorage|articleProgress|ARTICLE_PROGRESS_VERSION/.test(articleEngineText)) {
   addError("The shared article engine must use chapter URLs instead of localStorage progress.");
 }
+requireFile("app/[locale]/page.tsx");
+requireFile("app/[locale]/[slug]/page.tsx");
+requireFile("app/[locale]/[slug]/[section]/page.tsx");
+requireFile("lib/contentCatalogue.ts");
 if (quizTemplateText.includes("getAllQuizzes")) {
   addError("QuizTemplate must select its lightweight recommendation pool server-side.");
 }
@@ -370,6 +394,39 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (targetsSharedFlow && declaresSharedGeometry) {
       addError(`Quiz themes may style the shared flow visually but cannot redefine its shared geometry: ${themeRelativePath}`);
       break;
+    }
+  }
+}
+
+const articleRoot = path.join(rootDir, "data", "articles");
+const supportedLocaleSegments = new Set(fs.readdirSync(infoRoot)
+  .filter((name) => name.endsWith(".json"))
+  .map((name) => name.slice(0, -5)));
+const quizRouteSegments = new Set(fs.readdirSync(quizRoot, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(quizRoot, entry.name, "quiz.json")))
+  .map((entry) => entry.name));
+const articleRoutesByLocale = new Map();
+
+for (const entry of fs.readdirSync(articleRoot, { withFileTypes: true })) {
+  if (!entry.isDirectory()) continue;
+  for (const filename of fs.readdirSync(path.join(articleRoot, entry.name)).filter((name) => name.endsWith(".json"))) {
+    const locale = filename.slice(0, -5);
+    const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, filename), "utf8"));
+    const routeSlug = manifest.routeSlug ?? manifest.slug;
+    const routeKey = `${locale}:${routeSlug}`;
+
+    if (articleRoutesByLocale.has(routeKey)) {
+      addError(`Duplicate article route /${locale === "en" ? "" : `${locale}/`}${routeSlug}: ${articleRoutesByLocale.get(routeKey)} and ${entry.name}/${filename}`);
+    }
+    articleRoutesByLocale.set(routeKey, `${entry.name}/${filename}`);
+
+    if (locale === "en") {
+      if (quizRouteSegments.has(routeSlug) || supportedLocaleSegments.has(routeSlug)) {
+        addError(`English article route /${routeSlug} conflicts with a quiz or locale route.`);
+      }
+      if (fs.existsSync(path.join(rootDir, "app", "(default)", routeSlug, "page.tsx"))) {
+        addError(`Article /${routeSlug} must use the automatic JSON router; remove its handwritten app/(default) wrapper.`);
+      }
     }
   }
 }

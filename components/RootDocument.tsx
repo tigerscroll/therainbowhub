@@ -8,10 +8,11 @@ import { siteConfig } from "@/lib/siteConfig";
 type RootDocumentProps = {
   children: React.ReactNode;
   direction: string;
+  head?: React.ReactNode;
   locale: SupportedLocale;
 };
 
-export function RootDocument({ children, direction, locale }: RootDocumentProps) {
+export function RootDocument({ children, direction, head, locale }: RootDocumentProps) {
   return (
     <html dir={direction} lang={locale} suppressHydrationWarning>
       <head>
@@ -20,6 +21,7 @@ export function RootDocument({ children, direction, locale }: RootDocumentProps)
             __html: `try{const key="rainbowhub:fbclid-traffic";const hasFbclid=new URLSearchParams(location.search).has("fbclid");if(hasFbclid)sessionStorage.setItem(key,"1");if(hasFbclid||sessionStorage.getItem(key)==="1")document.documentElement.classList.add("fbclid-traffic")}catch{}`,
           }}
         />
+        {head}
       </head>
       <body suppressHydrationWarning>
         <Suspense fallback={null}>

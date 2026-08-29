@@ -32,12 +32,6 @@ export function getArticleBySlug(slug: string, locale = "en") {
   return readManifest(slug, locale);
 }
 
-export function requireArticleBySlug(slug: string, locale = "en") {
-  const article = getArticleBySlug(slug, locale);
-  if (!article) throw new Error(`Article manifest not found: ${slug}/${locale}.json`);
-  return article;
-}
-
 export function getArticleByRouteSlug(routeSlug: string, locale = "en") {
   return getAllArticleManifests().find((article) => (
     article.locale === locale && (article.routeSlug ?? article.slug) === routeSlug

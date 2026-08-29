@@ -92,16 +92,31 @@ test("every article locale file is a complete validated manifest", () => {
   }
 });
 
-test("rebuilt editorial journeys contain five complete lazy chapters", () => {
-  const fiveChapterSlugs = [
-    "beach", "brands", "colon", "diabetics", "funeral", "historical", "hotel",
-    "breastcancer", "dating", "gross", "gross60", "hiv", "kidney", "mobilityscooter", "nervous", "prostate", "signs", "skincancer",
-  ];
-  for (const slug of fiveChapterSlugs) {
-    const value: unknown = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "articles", slug, "en.json"), "utf8"));
-    assert.equal(isArticleManifest(value), true);
-    if (isArticleManifest(value)) assert.equal(value.sections.length, 5, `${slug} should have five chapters`);
+test("every English article is automatically routable without a handwritten wrapper", () => {
+  const root = process.cwd();
+  const articleRoot = path.join(root, "data", "articles");
+  const quizRoot = path.join(root, "data", "quizzes");
+  const quizSlugs = new Set(fs.readdirSync(quizRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(quizRoot, entry.name, "quiz.json")))
+    .map((entry) => entry.name));
+  const routeSlugs = new Set<string>();
+
+  for (const entry of fs.readdirSync(articleRoot, { withFileTypes: true }).filter((item) => item.isDirectory())) {
+    const filename = path.join(articleRoot, entry.name, "en.json");
+    if (!fs.existsSync(filename)) continue;
+    const value: unknown = JSON.parse(fs.readFileSync(filename, "utf8"));
+    assert.equal(isArticleManifest(value), true, `${entry.name}/en.json should satisfy article schema v1`);
+    if (!isArticleManifest(value)) continue;
+
+    const routeSlug = value.routeSlug ?? value.slug;
+    assert.equal(routeSlugs.has(routeSlug), false, `duplicate English article route: /${routeSlug}`);
+    assert.equal(quizSlugs.has(routeSlug), false, `article route /${routeSlug} conflicts with a quiz`);
+    assert.equal(fs.existsSync(path.join(root, "app", "(default)", routeSlug, "page.tsx")), false,
+      `/${routeSlug} must use the shared JSON router instead of a handwritten page`);
+    routeSlugs.add(routeSlug);
   }
+
+  assert.ok(routeSlugs.size > 0, "at least one English article should be discovered");
 });
 
 test("localized manifests can customize their public slug and every CTA state", () => {

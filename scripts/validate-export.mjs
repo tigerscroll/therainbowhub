@@ -91,26 +91,28 @@ if (!fs.existsSync(outputRoot)) {
     }
   }
 
-  const articleSectionPointCounts = Object.fromEntries(
-    fs.readdirSync(articleRoot, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => {
-        const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
-        return [entry.name, manifest.sections.map((section) => section.points.length)];
-      }),
-  );
+  const articles = fs.readdirSync(articleRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(articleRoot, entry.name, "en.json")))
+    .map((entry) => {
+      const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
+      return {
+        pointCounts: manifest.sections.map((section) => section.points.length),
+        routeSlug: manifest.routeSlug ?? manifest.slug,
+        slug: manifest.slug,
+      };
+    });
 
-  for (const [slug, pointCounts] of Object.entries(articleSectionPointCounts)) {
+  for (const { pointCounts, routeSlug, slug } of articles) {
     const sectionCount = pointCounts.length;
-    const articleFile = routeFile(`/${slug}`);
+    const articleFile = routeFile(`/${routeSlug}`);
     if (!articleFile) {
-      addError(`Missing exported article route: /${slug}`);
+      addError(`Missing exported article route: /${routeSlug}`);
       continue;
     }
     const html = fs.readFileSync(articleFile, "utf8");
-    if (html.includes("data-display-ad")) addError(`/${slug}: display-ad markup must not be exported.`);
+    if (html.includes("data-display-ad")) addError(`/${routeSlug}: display-ad markup must not be exported.`);
     for (let section = 1; section <= sectionCount; section += 1) {
-      const chapterRoute = `/${slug}/${section}`;
+      const chapterRoute = `/${routeSlug}/${section}`;
       const chapterFile = routeFile(chapterRoute);
       if (!chapterFile) {
         addError(`Missing exported article chapter route: ${chapterRoute}`);
@@ -165,7 +167,7 @@ if (!fs.existsSync(outputRoot)) {
       }
       const firstPointTitle = payload.points?.[0]?.title;
       if (firstPointTitle && html.includes(firstPointTitle)) {
-        addError(`/${slug}: locked section content leaked into the initial article payload.`);
+        addError(`/${routeSlug}: locked section content leaked into the initial article payload.`);
       }
     }
   }

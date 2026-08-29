@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { ArticleTemplate, buildArticleMetadata } from "@/components/article/ArticleTemplate";
 import { HomePageContent } from "@/components/HomePageContent";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { getAllQuizzes, getQuizBySlug } from "@/lib/quizzes";
+import { getArticleByRouteSlug } from "@/lib/articles";
+import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
+import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
 
 type SegmentPageProps = {
@@ -17,12 +20,7 @@ type SegmentPageProps = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [
-    ...getSupportedLocales()
-      .filter((locale) => locale !== getDefaultLocale())
-      .map((locale) => ({ locale })),
-    ...getAllQuizzes(getDefaultLocale()).map((quiz) => ({ locale: quiz.slug })),
-  ];
+  return getTopLevelContentRoutes().map(({ segment: locale }) => ({ locale }));
 }
 
 export async function generateMetadata({ params }: SegmentPageProps): Promise<Metadata> {
@@ -44,22 +42,23 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
 
   const quiz = getQuizBySlug(segment, getDefaultLocale());
 
-  if (!quiz) {
-    return {};
+  if (quiz) {
+    return buildMetadata({
+      alternates: quizAlternates(quiz.slug),
+      description: quiz.summary,
+      image: {
+        alt: quiz.title,
+        height: 540,
+        path: `/quizzes/${quiz.slug}/assets/thumbnail-960.webp`,
+        width: 960,
+      },
+      path: getQuizPath(getDefaultLocale(), quiz.slug),
+      title: quiz.title,
+    });
   }
 
-  return buildMetadata({
-    alternates: quizAlternates(quiz.slug),
-    description: quiz.summary,
-    image: {
-      alt: quiz.title,
-      height: 540,
-      path: `/quizzes/${quiz.slug}/assets/thumbnail-960.webp`,
-      width: 960,
-    },
-    path: getQuizPath(getDefaultLocale(), quiz.slug),
-    title: quiz.title,
-  });
+  const article = getArticleByRouteSlug(segment, getDefaultLocale());
+  return article ? buildArticleMetadata(article) : {};
 }
 
 export default async function SegmentPage({ params }: SegmentPageProps) {
@@ -79,13 +78,15 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
   const translations = getTranslations(locale);
   const quiz = getQuizBySlug(segment, locale);
 
-  if (!quiz) {
-    notFound();
+  if (quiz) {
+    return (
+      <SiteShell currentPath={`/${quiz.slug}`} locale={locale} quizTheme={quiz.theme} translations={translations}>
+        <QuizTemplate locale={locale} quiz={quiz} translations={translations} />
+      </SiteShell>
+    );
   }
 
-  return (
-    <SiteShell currentPath={`/${quiz.slug}`} locale={locale} quizTheme={quiz.theme} translations={translations}>
-      <QuizTemplate locale={locale} quiz={quiz} translations={translations} />
-    </SiteShell>
-  );
+  const article = getArticleByRouteSlug(segment, locale);
+  if (!article) notFound();
+  return <ArticleTemplate article={article} />;
 }
