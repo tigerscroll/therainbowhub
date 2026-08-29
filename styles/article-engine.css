@@ -78,6 +78,30 @@
   line-height: 1;
 }
 
+/* Reusable photographic article icon: wide enough to retain a two-subject composition. */
+.article-engine__landing .quiz-engine__landing-badge:has(.article-engine__photo-icon) {
+  width: 124px;
+  height: 78px;
+  overflow: hidden;
+  border-width: 2px;
+  border-radius: 19px;
+  background: var(--quiz-surface);
+  box-shadow: 0 13px 30px color-mix(in srgb, var(--quiz-primary) 22%, transparent);
+}
+
+.article-engine__landing .quiz-engine__landing-badge span:has(.article-engine__photo-icon) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.article-engine__photo-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .article-engine__colon-icon {
   display: block;
   width: 48px;
@@ -1496,5 +1520,11 @@
     width: 76px !important;
     height: 76px !important;
     border-radius: 21px;
+  }
+
+  .article-engine__landing .quiz-engine__landing-badge:has(.article-engine__photo-icon) {
+    width: 112px !important;
+    height: 70px !important;
+    border-radius: 17px;
   }
 }
