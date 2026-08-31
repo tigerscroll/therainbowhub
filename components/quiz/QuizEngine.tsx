@@ -447,8 +447,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <div aria-hidden="true" className="quiz-engine__result-icon quiz-engine__preparing-icon">
           {quiz.theme.artwork?.icon ?? quiz.cardIcon}
         </div>
-        <h2>Preparing your result…</h2>
-        <p>Reviewing your answers and building your result.</p>
+        <h2>{translations.quiz.preparingResultTitle}</h2>
+        <p>{translations.quiz.preparingResultCopy}</p>
         <div aria-hidden="true" className="quiz-engine__preparing-mark"><span /><span /><span /></div>
         <div aria-hidden="true" className="quiz-engine__preparing-progress">
           <i onAnimationEnd={completeResultPreparation} />
