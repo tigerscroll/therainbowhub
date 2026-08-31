@@ -30,6 +30,7 @@ function fail(condition, message) { if (!condition) errors.push(message); }
 
 function validateTextOnlyLocale(value, config, location) {
   fail(value?.schemaVersion === 2, `${location}: locale schemaVersion must be 2.`);
+  fail(typeof value?.eyebrow === "string" && Boolean(value.eyebrow.trim()), `${location}: eyebrow is required.`);
   const stageIds = config.structure?.stages?.map((stage) => stage.id) ?? [];
   fail(value?.stages && !Array.isArray(value.stages), `${location}: locale stages must be keyed by stable stage IDs.`);
   fail(JSON.stringify(Object.keys(value?.stages ?? {}).sort()) === JSON.stringify([...stageIds].sort()), `${location}: locale stage IDs must exactly match quiz.json.`);

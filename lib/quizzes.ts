@@ -422,7 +422,7 @@ type QuizStructureV2 = {
 
 type QuizLocaleFile = {
   title: string;
-  eyebrow?: string;
+  eyebrow: string;
   summary: string;
   progressLabel?: string;
   nextQuestionLabel?: string;
@@ -936,6 +936,7 @@ function normalizeLocale(
   file: string,
 ): Quiz {
   const title = text(value.title, "title", file);
+  const eyebrow = text(value.eyebrow, "eyebrow", file);
   const summary = text(value.summary, "summary", file);
   if (value.landing?.startPrompt) {
     if (!manifest.engine.rewarded?.start) throw new Error(`${file}: landing.startPrompt requires a rewarded start gate.`);
@@ -1272,7 +1273,7 @@ function normalizeLocale(
     themeCssHref,
     shellCssHref: SHARED_SHELL_CSS_HREF,
     title,
-    eyebrow: value.eyebrow ?? "Quiz",
+    eyebrow,
     summary,
     progressLabel: value.progressLabel === undefined ? undefined : text(value.progressLabel, "progressLabel", file),
     nextQuestionLabel: value.nextQuestionLabel === undefined ? undefined : text(value.nextQuestionLabel, "nextQuestionLabel", file),

@@ -427,7 +427,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <h2 id="quiz-start-prompt-title">{quiz.landing.startPrompt.title}</h2>
             <p>{quiz.landing.startPrompt.copy}</p>
             <button autoFocus className="quiz-engine__primary" disabled={adBusy} onClick={confirmQuizStart} type="button">
-              {adBusy ? "Loading Ad…" : quiz.landing.startPrompt.button}
+              {adBusy ? translations.ad.loading : quiz.landing.startPrompt.button}
             </button>
           </section>
         </div>
@@ -499,8 +499,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         {!isSingleStage ? (
           <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%` } as CSSProperties}>
             <div>
-              <span>{career.resultProgressLabel ?? "Challenge progress"}</span>
-              <strong>{(career.resultProgressComplete ?? "{value}% complete").replace("{value}", String(checkpointPercent))}</strong>
+              <span>{career.resultProgressLabel ?? translations.quiz.challengeProgress}</span>
+              <strong>{(career.resultProgressComplete ?? translations.quiz.progressComplete).replace("{value}", String(checkpointPercent))}</strong>
             </div>
             <i aria-hidden="true"><b /></i>
           </section>
@@ -768,7 +768,16 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         ) : null}
           </>
         )}
-        {recommendations.length ? <QuizRecommendations recommendations={recommendations} /> : null}
+        {recommendations.length ? (
+          <QuizRecommendations
+            labels={{
+              eyebrow: translations.quiz.recommendationsEyebrow,
+              label: translations.quiz.recommendationsLabel,
+              title: translations.quiz.recommendationsTitle,
+            }}
+            recommendations={recommendations}
+          />
+        ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>

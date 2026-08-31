@@ -1,5 +1,11 @@
 import type { QuizRecommendation } from "@/lib/quizzes";
 
+type QuizRecommendationLabels = {
+  eyebrow: string;
+  label: string;
+  title: string;
+};
+
 function RecommendationCard({ recommendation }: { recommendation: QuizRecommendation }) {
   return (
     <a className="quiz-engine__recommendation" href={recommendation.href}>
@@ -15,12 +21,12 @@ function RecommendationCard({ recommendation }: { recommendation: QuizRecommenda
   );
 }
 
-export function QuizRecommendations({ recommendations }: { recommendations: QuizRecommendation[] }) {
+export function QuizRecommendations({ labels, recommendations }: { labels: QuizRecommendationLabels; recommendations: QuizRecommendation[] }) {
   return (
-    <section className="quiz-engine__recommendations" aria-label="Recommended quizzes">
+    <section className="quiz-engine__recommendations" aria-label={labels.label}>
       <header>
-        <span>RECOMMENDED NEXT</span>
-        <h3>Try another challenge</h3>
+        <span>{labels.eyebrow}</span>
+        <h3>{labels.title}</h3>
       </header>
       <div className="quiz-engine__recommendation-grid">
         {recommendations.map((recommendation) => (

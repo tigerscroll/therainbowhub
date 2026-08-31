@@ -7,11 +7,22 @@ import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 const rootDir = process.cwd();
 const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
+const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
+const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
 const multilingualQuizzes = new Set(["memory", "years-left"]);
 const multilingualLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");
+}
+if (["Loading Ad…", '?? "Challenge progress"', '?? "{value}% complete"'].some((copy) => quizEngineSource.includes(copy))) {
+  errors.push("Shared quiz runtime fallbacks must come from localized UI strings.");
+}
+if (["RECOMMENDED NEXT", "Try another challenge", 'aria-label="Recommended quizzes"'].some((copy) => quizRecommendationsSource.includes(copy))) {
+  errors.push("Quiz recommendation chrome must come from localized UI strings.");
+}
+if (quizDataSource.includes('value.eyebrow ?? "Quiz"')) {
+  errors.push("Quiz locale eyebrow must be required rather than silently defaulting to English.");
 }
 
 function addError(message) {
