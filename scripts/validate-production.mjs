@@ -7,6 +7,8 @@ import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 const rootDir = process.cwd();
 const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
+const multilingualQuizzes = new Set(["memory", "years-left"]);
+const multilingualLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");
@@ -294,9 +296,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
   const sortedLocaleFiles = localeFiles.sort();
-  const isEnglishOnly = JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]);
-  if (!isEnglishOnly) {
-    addError(`Every active quiz must launch worldwide-English only: data/quizzes/${entry.name} (found ${localeFiles.join(", ") || "none"})`);
+  const expectedLocaleFiles = multilingualQuizzes.has(entry.name) ? multilingualLocaleFiles : ["en.json"];
+  if (JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
+    addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (expected ${expectedLocaleFiles.join(", ")}; found ${localeFiles.join(", ") || "none"})`);
   }
   const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");

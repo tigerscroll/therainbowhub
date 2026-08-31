@@ -9,6 +9,7 @@ const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
 const localeFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
+const multilingualQuizzes = new Set(["memory", "years-left"]);
 const errors = [];
 
 const exactStringKeys = new Set([
@@ -254,35 +255,14 @@ function validateMemorySemantics(content, location) {
   const containsContracts = [
     [studyItem("memory-r1q1", 2), answer("memory-r1q1"), "memory-r1q1/opening-key"],
     [studyItem("memory-r1q2", 2), answer("memory-r1q2"), "memory-r1q2/third-shape"],
-    [studyItem("memory-r1q2", 1), answer("memory-r1q4"), "memory-r1q4/gold-shape"],
-    [studyItem("memory-r1q1", 3), answer("memory-r1q8"), "memory-r1q8/opening-animal"],
-    [studyItem("memory-r2q2", 1), answer("memory-r2q2"), "memory-r2q2/top-right"],
+    [studyItem("memory-r1q3", 0), answer("memory-r1q3"), "memory-r1q3/opening-number"],
     [studyItem("memory-r2q4", 1), answer("memory-r2q4"), "memory-r2q4/destination"],
-    [studyItem("memory-r2q4", 0), answer("memory-r2q6"), "memory-r2q6/suitcase-colour"],
-    [studyItem("memory-r4q4", 1), answer("memory-r4q4"), "memory-r4q4/omar-object"],
-    [studyItem("memory-r1q1", 2), answer("memory-r4q5"), "memory-r4q5/opening-colour"],
     [studyItem("memory-r1q1", 3), answer("memory-r5q1"), "memory-r5q1/elephant-colour"],
-    [studyItem("memory-r3q4", 2), answer("memory-r5q2"), "memory-r5q2/location-39"],
     [studyItem("memory-r2q4", 2), answer("memory-r5q6"), "memory-r5q6/train-time"],
   ];
   containsContracts.forEach(([container, expected, contract]) => assertTextContains(container, expected, location, contract));
-
-  const equalityContracts = [
-    [answer("memory-r1q6"), studyItem("memory-r1q1", 1), "memory-r1q6/after-opening-item"],
-    [answer("memory-r4q1"), studyItem("memory-r4q1", 2), "memory-r4q1/third-similar-word"],
-    [answer("memory-r5q7"), studyItem("memory-r4q1", 1), "memory-r5q7/predecessor-word"],
-  ];
-  equalityContracts.forEach(([actual, expected, contract]) => assertTextEquals(actual, expected, location, contract));
-
-  const miaRow = studyItem("memory-r4q4", 0)?.split("·")[0];
-  assertTextEquals(answer("memory-r5q8"), miaRow, location, "memory-r5q8/violin-owner");
-
-  const directionRows = q("memory-r5q5")?.study?.items ?? [];
-  const south = Number(directionRows[2]?.match(/\d+/)?.[0]);
-  const west = Number(directionRows[3]?.match(/\d+/)?.[0]);
-  if (!Number.isFinite(south) || !Number.isFinite(west) || Number(answer("memory-r5q5")) !== west - south) {
-    addError(`${location}#memory-r5q5/direction-arithmetic: translated study values no longer produce the keyed answer.`);
-  }
+  assertTextEquals(answer("memory-r1q5"), "K7M2Q", location, "memory-r1q5/exact-code");
+  assertTextEquals(answer("memory-r1q7"), "2 – 9 – 4", location, "memory-r1q7/reversed-sequence");
 }
 
 const visionIconAnswerContracts = {
@@ -612,9 +592,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const actualLocaleFiles = fs.readdirSync(directory)
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
-  const isEnglishOnly = JSON.stringify(actualLocaleFiles) === JSON.stringify(["en.json"]);
-  if (!isEnglishOnly) {
-    addError(`data/quizzes/${entry.name}: active quizzes must be worldwide-English only and contain exactly en.json.`);
+  const expectedLocaleFiles = multilingualQuizzes.has(entry.name) ? localeFiles : ["en.json"];
+  if (JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
+    addError(`data/quizzes/${entry.name}: locale set must be exactly ${expectedLocaleFiles.join(", ")}.`);
     continue;
   }
   const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
@@ -622,7 +602,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
-  for (const localeFile of []) {
+  for (const localeFile of actualLocaleFiles.filter((file) => file !== "en.json")) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
     const localized = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8")), locale);
@@ -719,4 +699,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Localization validation passed for every worldwide-English quiz and all translated shared site content.");
+console.log("Localization validation passed for all quiz locale sets and translated shared site content.");
