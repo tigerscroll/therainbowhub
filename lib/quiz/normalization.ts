@@ -10,7 +10,7 @@ const SOCIAL_AVATAR_GROUPS = [
 ].map((group) => group.map((id) => `/social-proof/avatars/${id}.webp`));
 
 const QUIZ_THEME_PATH_REVISIONS: Partial<Record<string, string>> = {
-  "years-left": "94627",
+  "years-left": "73184",
 };
 
 export function normalizeQuizAsset(root: string, slug: string, value?: string) {

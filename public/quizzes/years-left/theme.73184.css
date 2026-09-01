@@ -256,9 +256,15 @@
 
 [data-quiz-theme="years-left"] .quiz-engine__checkpoint-icon,
 [data-quiz-theme="years-left"] .quiz-engine__result-icon{
+  width: 76px;
+  height: 76px;
   border: 2px solid var(--years-brass-dark);
-  background: linear-gradient(180deg, #f0ce82, #c78334);
-  color: var(--quiz-primary-text);
+  border-radius: 38px 38px 12px 12px;
+  background:
+    url("./assets/items/hourglass-icon.webp") center / 60px 66px no-repeat,
+    linear-gradient(180deg, #f7f0e4, #d4c8b5);
+  color: transparent;
+  font-size: 0;
   box-shadow: 5px 5px 0 rgba(33, 29, 26, .16);
 }
 
@@ -389,6 +395,14 @@
   [data-quiz-theme="years-left"] .quiz-engine__landing:not(.quiz-engine__landing--start-instruction) .quiz-engine__landing-badge span{
     width: 52px;
     height: 57px;
+  }
+
+  [data-quiz-theme="years-left"] .quiz-engine__checkpoint-icon,
+  [data-quiz-theme="years-left"] .quiz-engine__result-icon{
+    width: 64px;
+    height: 64px;
+    border-radius: 32px 32px 10px 10px;
+    background-size: 52px 57px, auto;
   }
 
   [data-quiz-theme="years-left"] .quiz-engine__landing h1{

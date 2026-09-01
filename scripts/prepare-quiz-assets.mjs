@@ -7,7 +7,7 @@ import sharp from "sharp";
 
 const sourceRoot = path.join(process.cwd(), "data", "quizzes");
 const publicRoot = path.join(process.cwd(), "public", "quizzes");
-const quizThemePathRevisions = { "years-left": "94627" };
+const quizThemePathRevisions = { "years-left": "73184" };
 
 async function exists(file) {
   try {
