@@ -31,6 +31,7 @@
   margin-inline: auto !important;
   overflow: hidden;
   border: var(--quiz-shell-border) !important;
+  border-color: var(--quiz-flow-border-color, var(--quiz-text)) !important;
   border-radius: var(--quiz-shell-radius) !important;
   background: var(--quiz-flow-background, var(--quiz-surface)) !important;
   box-shadow: var(--quiz-flow-shadow, 0 24px 60px rgba(22, 24, 28, .14)) !important;
@@ -376,10 +377,10 @@
   border-radius: var(--quiz-shell-action-radius) !important;
   font-size: 20px !important;
   line-height: 1.15;
-  box-shadow:
+  box-shadow: var(--quiz-flow-primary-shadow,
     0 4px 0 color-mix(in srgb, var(--quiz-primary) 54%, black),
     0 10px 22px color-mix(in srgb, var(--quiz-primary) 18%, transparent),
-    inset 0 1px 0 rgba(255,255,255,.16) !important;
+    inset 0 1px 0 rgba(255,255,255,.16)) !important;
   text-align: center;
 }
 

@@ -410,6 +410,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         intro={quiz.landing.quickStartText}
         onStart={startQuiz}
         ref={landingShellRef}
+        showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
         title={quiz.title}
       />

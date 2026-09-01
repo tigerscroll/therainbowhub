@@ -340,7 +340,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
+  landing: { quickStartText: string; ctaLabel?: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -375,6 +375,7 @@ type QuizManifest = {
     published: string;
     difficulty: Quiz["difficulty"];
     icon: string;
+    showSocialProof?: boolean;
     socialProofCount: number;
   };
   theme: QuizTheme;
@@ -820,6 +821,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!DIFFICULTIES.has(String(listing.difficulty))) throw new Error(`${file}: invalid difficulty.`);
   const socialProofCount = Number(listing.socialProofCount);
   if (!Number.isInteger(socialProofCount) || socialProofCount < 1_000) throw new Error(`${file}: listing.socialProofCount must be an integer of at least 1,000.`);
+  if (listing.showSocialProof !== undefined && typeof listing.showSocialProof !== "boolean") throw new Error(`${file}: listing.showSocialProof must be a boolean.`);
   if (listing.thumbnail !== undefined && (typeof listing.thumbnail !== "string" || !ASSET_PATH.test(listing.thumbnail))) {
     throw new Error(`${file}: thumbnail must be a local asset path.`);
   }
@@ -854,6 +856,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       published: text(listing.published, "listing.published", file),
       difficulty: listing.difficulty as Quiz["difficulty"],
       icon: text(listing.icon, "listing.icon", file),
+      showSocialProof: listing.showSocialProof as boolean | undefined,
       socialProofCount,
     },
     theme: validateTheme({ ...object(raw.theme, "theme", file), id: slug }, file),
@@ -1290,6 +1293,7 @@ function normalizeLocale(
     landing: {
       quickStartText: value.landing?.intro ?? summary,
       infoBadge: value.landing?.badge,
+      showSocialProof: manifest.listing.showSocialProof ?? true,
       socialProofCount: manifest.listing.socialProofCount,
       ctaLabel: value.landing?.cta,
       socialAvatars,
