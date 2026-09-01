@@ -58,7 +58,7 @@ if (!fs.existsSync(outputRoot)) {
       if (!html.includes("data-quiz-shell-contract") || !html.includes(shellHref)) {
         addError(`${route}: shared cacheable shell stylesheet is not linked.`);
       }
-      if (!html.includes(`data-quiz-css=\"${slug}\"`) || !html.includes(`/quizzes/${slug}/theme.css?v=`)) {
+      if (!html.includes(`data-quiz-css=\"${slug}\"`) || !new RegExp(`/quizzes/${slug}/theme(?:\\.\\d+)?\\.css\\?v=`).test(html)) {
         addError(`${route}: versioned quiz theme stylesheet is not linked.`);
       }
       if (/data-quiz-shell-contract[^>]*>[^<]*<style/i.test(html) || html.includes("data-quiz-shell-styles")) {

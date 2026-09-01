@@ -9,6 +9,10 @@ const SOCIAL_AVATAR_GROUPS = [
   ["06", "01", "07", "11"],
 ].map((group) => group.map((id) => `/social-proof/avatars/${id}.webp`));
 
+const QUIZ_THEME_PATH_REVISIONS: Partial<Record<string, string>> = {
+  "years-left": "94627",
+};
+
 export function normalizeQuizAsset(root: string, slug: string, value?: string) {
   if (!value || value.startsWith("/")) return value;
   const file = path.join(root, slug, value);
@@ -29,5 +33,7 @@ export function normalizedSocialAvatars(slug: string) {
 }
 
 export function themeStylesheetHref(slug: string, css: string) {
-  return `/quizzes/${slug}/theme.css?v=${createHash("sha256").update(css).digest("hex").slice(0, 12)}`;
+  const revision = QUIZ_THEME_PATH_REVISIONS[slug];
+  const filename = revision ? `theme.${revision}.css` : "theme.css";
+  return `/quizzes/${slug}/${filename}?v=${createHash("sha256").update(css).digest("hex").slice(0, 12)}`;
 }

@@ -7,6 +7,7 @@ import sharp from "sharp";
 
 const sourceRoot = path.join(process.cwd(), "data", "quizzes");
 const publicRoot = path.join(process.cwd(), "public", "quizzes");
+const quizThemePathRevisions = { "years-left": "94627" };
 
 async function exists(file) {
   try {
@@ -35,7 +36,11 @@ async function prepareQuiz(slug) {
   const manifest = JSON.parse(await fs.readFile(path.join(source, "quiz.json"), "utf8"));
   const thumbnail = manifest.listing?.thumbnail;
 
-  await copyIfPresent(path.join(source, "theme.css"), path.join(destination, "theme.css"));
+  const themeSource = path.join(source, "theme.css");
+  await copyIfPresent(themeSource, path.join(destination, "theme.css"));
+  if (quizThemePathRevisions[slug]) {
+    await copyIfPresent(themeSource, path.join(destination, `theme.${quizThemePathRevisions[slug]}.css`));
+  }
 
   if (typeof thumbnail === "string" && !thumbnail.startsWith("/")) {
     const thumbnailFile = path.join(source, thumbnail);
