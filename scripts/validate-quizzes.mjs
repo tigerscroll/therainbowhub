@@ -429,7 +429,7 @@ for (const folder of folders) {
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
     fail(JSON.stringify(categoryCounts) === JSON.stringify({ word_recall: 2, visual: 2, numbers: 1, attention: 2, working_memory: 1, association: 2 }), `${folder.name}/en.json: Memory category distribution changed.`);
     fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
-    fail(sourceQuestions[0]?.study?.rewarded === true, `${folder.name}: must bypass the landing page and reward-gate the opening I’m ready action.`);
+    fail(sourceQuestions[0]?.study?.rewarded === false, `${folder.name}: must open on its landing page and avoid a second rewarded gate on the opening study cue.`);
     fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four separate items.`);
     fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || (question.study.durationMs >= 3000 && question.study.durationMs <= 6000)), `${folder.name}/en.json: automatic study cues must remain between 3000ms and 6000ms.`);
     fail(sourceQuestions.filter((question) => question.study).length === 5, `${folder.name}/en.json: Memory needs exactly five concise study moments.`);
