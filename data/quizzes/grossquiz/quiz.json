@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 2,
+  "slug": "grossquiz",
+  "engine": {
+    "scoring": "weighted-profile",
+    "localeParity": "independent",
+    "estimate": {
+      "baseAge": 50,
+      "minAge": 10,
+      "maxAge": 95,
+      "calibrationMax": 1,
+      "profileAdjustments": {
+        "spotless-saint": -36,
+        "secretly-questionable": -18,
+        "everyday-gross": 0,
+        "goblin-mode": 20,
+        "biohazard-legend": 42
+      },
+      "brainAdjustments": {
+        "0": 0
+      }
+    }
+  },
+  "listing": {
+    "thumbnail": "assets/items/grossquiz-icon.webp",
+    "published": "2026-09-09",
+    "difficulty": "Quick",
+    "icon": "🤢",
+    "socialProofCount": 219000,
+    "showSocialProof": false
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#351628",
+      "pageAlt": "#65334d",
+      "surface": "#f5eddc",
+      "surfaceRaised": "#fffaf0",
+      "text": "#271b22",
+      "muted": "#74676c",
+      "primary": "#752253",
+      "primaryText": "#fffaf0",
+      "border": "#a8c83f",
+      "correct": "#4a7a58",
+      "incorrect": "#b44858"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "22px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #2a1020, #612044)",
+      "text": "#fff9eb",
+      "border": "#b5d348",
+      "shadow": "0 8px 26px rgba(43, 15, 32, 0.3)"
+    },
+    "artwork": {
+      "icon": "🤢"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "grossquiz-q1",
+          "grossquiz-q2",
+          "grossquiz-q3",
+          "grossquiz-q4",
+          "grossquiz-q5",
+          "grossquiz-q6",
+          "grossquiz-q7",
+          "grossquiz-q8",
+          "grossquiz-q9",
+          "grossquiz-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "grossquiz-q1": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "goblin-mode": 1 },
+          { "everyday-gross": 1 }
+        ]
+      },
+      "grossquiz-q2": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "everyday-gross": 1 },
+          { "goblin-mode": 1 }
+        ]
+      },
+      "grossquiz-q3": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "everyday-gross": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q4": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "everyday-gross": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q5": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q6": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "secretly-questionable": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q7": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "everyday-gross": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q8": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "spotless-saint": 1 },
+          { "everyday-gross": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q9": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "secretly-questionable": 1 },
+          { "everyday-gross": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      },
+      "grossquiz-q10": {
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "secretly-questionable": 1 },
+          { "everyday-gross": 1 },
+          { "goblin-mode": 1 },
+          { "biohazard-legend": 1 }
+        ]
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "🤢"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "id": "spotless-saint" },
+        { "key": "profile-2", "id": "secretly-questionable" },
+        { "key": "profile-3", "id": "everyday-gross" },
+        { "key": "profile-4", "id": "goblin-mode" },
+        { "key": "profile-5", "id": "biohazard-legend" }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "profiles": ["spotless-saint"] },
+        { "key": "dimension-2", "profiles": ["secretly-questionable", "everyday-gross"] },
+        { "key": "dimension-3", "profiles": ["goblin-mode", "biohazard-legend"] }
+      ],
+      "estimate": {
+        "reviewUnlockRewarded": true
+      }
+    }
+  }
+}
