@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "slug": "bible",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/bible-icon.webp",
+    "published": "2026-09-09",
+    "difficulty": "Medium",
+    "icon": "📖",
+    "socialProofCount": 163000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#172940",
+      "pageAlt": "#294866",
+      "surface": "#f3ead7",
+      "surfaceRaised": "#fffaf0",
+      "text": "#251d16",
+      "muted": "#756a5b",
+      "primary": "#264e73",
+      "primaryText": "#fff8e8",
+      "border": "#ad8648",
+      "correct": "#3f7655",
+      "incorrect": "#b34e4d"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "18px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #13253a, #2a4c6d)",
+      "text": "#fff8e8",
+      "border": "#c89b4f",
+      "shadow": "0 8px 26px rgba(14, 31, 49, 0.28)"
+    },
+    "artwork": {
+      "icon": "📖"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "bible-q1",
+          "bible-q2",
+          "bible-q3",
+          "bible-q4",
+          "bible-q5",
+          "bible-q6",
+          "bible-q7",
+          "bible-q8",
+          "bible-q9",
+          "bible-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "bible-q1": { "correct": 0, "category": "foundations", "choiceCount": 4 },
+      "bible-q2": { "correct": 2, "category": "new_testament", "choiceCount": 4 },
+      "bible-q3": { "correct": 1, "category": "foundations", "choiceCount": 4 },
+      "bible-q4": { "correct": 3, "category": "people", "choiceCount": 4 },
+      "bible-q5": { "correct": 0, "category": "foundations", "choiceCount": 4 },
+      "bible-q6": { "correct": 2, "category": "foundations", "choiceCount": 4 },
+      "bible-q7": { "correct": 1, "category": "people", "choiceCount": 4 },
+      "bible-q8": { "correct": 3, "category": "new_testament", "choiceCount": 4 },
+      "bible-q9": { "correct": 0, "category": "people", "choiceCount": 4 },
+      "bible-q10": { "correct": 1, "category": "new_testament", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "📖"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["foundations"] },
+        { "key": "dimension-2", "categories": ["people"] },
+        { "key": "dimension-3", "categories": ["new_testament"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
