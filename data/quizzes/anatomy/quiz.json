@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "slug": "anatomy",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/anatomy-icon.webp",
+    "published": "2026-09-09",
+    "difficulty": "Medium",
+    "icon": "🫀",
+    "socialProofCount": 169000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#173d42",
+      "pageAlt": "#2f6869",
+      "surface": "#f3ecdf",
+      "surfaceRaised": "#fffaf1",
+      "text": "#18282a",
+      "muted": "#667274",
+      "primary": "#176f73",
+      "primaryText": "#fffaf0",
+      "border": "#d07a69",
+      "correct": "#367c5a",
+      "incorrect": "#b64e52"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #12363b, #286164)",
+      "text": "#fffaf0",
+      "border": "#d48776",
+      "shadow": "0 8px 26px rgba(16, 50, 54, 0.28)"
+    },
+    "artwork": {
+      "icon": "🫀"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "anatomy-q1",
+          "anatomy-q2",
+          "anatomy-q3",
+          "anatomy-q4",
+          "anatomy-q5",
+          "anatomy-q6",
+          "anatomy-q7",
+          "anatomy-q8",
+          "anatomy-q9",
+          "anatomy-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "anatomy-q1": { "correct": 0, "category": "organs", "choiceCount": 4 },
+      "anatomy-q2": { "correct": 1, "category": "body_systems", "choiceCount": 4 },
+      "anatomy-q3": { "correct": 2, "category": "skeletal", "choiceCount": 4 },
+      "anatomy-q4": { "correct": 3, "category": "organs", "choiceCount": 4 },
+      "anatomy-q5": { "correct": 0, "category": "skeletal", "choiceCount": 4 },
+      "anatomy-q6": { "correct": 1, "category": "skeletal", "choiceCount": 4 },
+      "anatomy-q7": { "correct": 2, "category": "body_systems", "choiceCount": 4 },
+      "anatomy-q8": { "correct": 3, "category": "organs", "choiceCount": 4 },
+      "anatomy-q9": { "correct": 0, "category": "body_systems", "choiceCount": 4 },
+      "anatomy-q10": { "correct": 1, "category": "organs", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🫀"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["organs"] },
+        { "key": "dimension-2", "categories": ["skeletal"] },
+        { "key": "dimension-3", "categories": ["body_systems"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

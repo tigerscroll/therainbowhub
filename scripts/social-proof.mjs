@@ -1,4 +1,5 @@
 export const SOCIAL_PROOF_COUNTS = Object.freeze({
+  anatomy: 169000,
   actors: 191000,
   bible: 163000,
   cambridge: 94000,
