@@ -1,0 +1,126 @@
+[data-quiz-theme="lovers"]{
+  --lovers-ink: var(--quiz-text);
+  --lovers-wine: var(--quiz-primary);
+  --lovers-rose-gold: var(--quiz-border);
+  --quiz-flow-border: 2px solid color-mix(in srgb, var(--quiz-border) 76%, transparent);
+  --quiz-flow-radius: 22px;
+  --quiz-flow-shadow: 10px 12px 0 rgba(38,16,23,.2), 0 28px 64px rgba(38,16,23,.3);
+  --quiz-flow-background: radial-gradient(circle at 50% 0%, #fffdf8 0%, var(--quiz-surface) 56%, #ead7cc 100%);
+  background: radial-gradient(circle at 50% 5%, #81515d 0%, var(--quiz-page) 58%, #251116 100%);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing,
+[data-quiz-theme="lovers"] .quiz-engine__continuous-shell,
+[data-quiz-theme="lovers"] .quiz-engine__about{
+  color: var(--lovers-ink);
+  background: var(--quiz-flow-background);
+  box-shadow: var(--quiz-flow-shadow);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing-copy{
+  align-content: start;
+  justify-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing-art,
+[data-quiz-theme="lovers"] .quiz-engine__landing-symbol{
+  display: none !important;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing-badge{
+  display: grid !important;
+  width: 110px;
+  height: 110px;
+  place-items: center;
+  margin: 0 auto 4px;
+  overflow: hidden;
+  border: 3px solid var(--lovers-rose-gold);
+  border-radius: 50%;
+  background: var(--lovers-wine);
+  box-shadow: 0 0 0 6px rgba(154,47,70,.12), 5px 7px 0 rgba(38,25,29,.16);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing:not(.quiz-engine__landing--start-instruction) .quiz-engine__landing-badge span{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("./assets/items/lovers-icon.webp") center / cover no-repeat;
+  color: transparent;
+  font-size: 0;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing h1{
+  max-width: 800px;
+  margin: 7px auto 10px;
+  color: var(--lovers-ink);
+  font-size: clamp(35px, 4.8vw, 52px);
+  font-weight: 950;
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__landing .quiz-engine__quick-start{
+  max-width: 680px;
+  margin: 12px auto 0;
+  padding-bottom: 20px;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__primary{
+  border: 2px solid #731e33;
+  background: linear-gradient(180deg, #b9465d, var(--lovers-wine));
+  color: var(--quiz-primary-text);
+  box-shadow: 0 6px 0 #65192b, 0 12px 22px rgba(72,22,35,.22);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__question-image{
+  overflow: hidden;
+  margin: 0 0 22px;
+  border: 3px solid var(--lovers-ink);
+  border-radius: 14px;
+  background: #d9c7c1;
+  box-shadow: 7px 8px 0 rgba(38,25,29,.14);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__question-image img{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__answers{
+  grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__answer{
+  min-height: 74px;
+  border: 2px solid rgba(107,63,73,.62);
+  background: var(--quiz-surface-raised);
+  color: var(--lovers-ink);
+  box-shadow: 4px 4px 0 rgba(38,25,29,.11);
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__answer > span{
+  background: linear-gradient(180deg, #d7a08f, var(--lovers-rose-gold));
+  color: #2c191e;
+}
+
+[data-quiz-theme="lovers"] .quiz-engine__progress i{
+  background: linear-gradient(90deg, var(--lovers-wine), var(--lovers-rose-gold));
+}
+
+@media(max-width:640px){
+  [data-quiz-theme="lovers"] .quiz-engine__landing-badge{width:82px;height:82px}
+  [data-quiz-theme="lovers"] .quiz-engine__landing h1{font-size:clamp(29px,8.4vw,38px)}
+  [data-quiz-theme="lovers"] .quiz-engine__landing .quiz-engine__quick-start{margin-top:13px;padding-bottom:18px;font-size:15px;line-height:1.42}
+  [data-quiz-theme="lovers"] .quiz-engine__question-image{margin-bottom:18px;border-width:2px}
+  [data-quiz-theme="lovers"] .quiz-engine__answer{min-height:66px;padding-inline:10px}
+  [data-quiz-theme="lovers"] .quiz-engine__answer strong{font-size:14px}
+}
