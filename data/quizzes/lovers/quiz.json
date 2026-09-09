@@ -3,7 +3,23 @@
   "slug": "lovers",
   "engine": {
     "scoring": "weighted-profile",
-    "localeParity": "independent"
+    "localeParity": "independent",
+    "estimate": {
+      "baseAge": 9,
+      "minAge": 2,
+      "maxAge": 27,
+      "calibrationMax": 1,
+      "profileAdjustments": {
+        "careful-romantic": -7,
+        "selective-charmer": -4,
+        "confident-flirt": 0,
+        "experienced-heartbreaker": 7,
+        "unforgettable-wildcard": 18
+      },
+      "brainAdjustments": {
+        "0": 0
+      }
+    }
   },
   "listing": {
     "thumbnail": "assets/items/lovers-icon.webp",
@@ -178,10 +194,17 @@
         { "key": "profile-4", "id": "experienced-heartbreaker" },
         { "key": "profile-5", "id": "unforgettable-wildcard" }
       ],
-      "dimensions": [],
+      "dimensions": [
+        { "key": "dimension-1", "profiles": ["careful-romantic", "selective-charmer"] },
+        { "key": "dimension-2", "profiles": ["confident-flirt", "experienced-heartbreaker"] },
+        { "key": "dimension-3", "profiles": ["unforgettable-wildcard"] }
+      ],
       "score": {
         "showPercentage": false,
         "showBestRound": false
+      },
+      "estimate": {
+        "reviewUnlockRewarded": true
       }
     }
   }
