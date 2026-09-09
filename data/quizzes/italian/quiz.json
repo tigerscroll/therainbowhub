@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 2,
+  "slug": "italian",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/italian-icon.webp",
+    "published": "2026-09-09",
+    "difficulty": "Hard",
+    "icon": "🍝",
+    "socialProofCount": 146000,
+    "showSocialProof": false
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#243429",
+      "pageAlt": "#49624c",
+      "surface": "#f4ecda",
+      "surfaceRaised": "#fffaf0",
+      "text": "#27251f",
+      "muted": "#766e61",
+      "primary": "#a62f28",
+      "primaryText": "#fffaf0",
+      "border": "#4f7753",
+      "correct": "#397052",
+      "incorrect": "#b2463d"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "22px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #203026, #3f5944)",
+      "text": "#fffaf0",
+      "border": "#c44438",
+      "shadow": "0 8px 26px rgba(25, 45, 31, 0.3)"
+    },
+    "artwork": {
+      "icon": "🍝"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "italian-q1",
+          "italian-q2",
+          "italian-q3",
+          "italian-q4",
+          "italian-q5",
+          "italian-q6",
+          "italian-q7",
+          "italian-q8",
+          "italian-q9",
+          "italian-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "italian-q1": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "classic_dishes",
+        "interactionStyle": "ingredient-identification",
+        "choiceCount": 4
+      },
+      "italian-q2": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "classic_dishes",
+        "interactionStyle": "ingredient-identification",
+        "choiceCount": 4
+      },
+      "italian-q3": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "ingredients",
+        "interactionStyle": "ingredient-identification",
+        "choiceCount": 4
+      },
+      "italian-q4": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "regions",
+        "interactionStyle": "regional-knowledge",
+        "choiceCount": 4
+      },
+      "italian-q5": {
+        "presentation": "text",
+        "correct": 2,
+        "category": "ingredients",
+        "interactionStyle": "ingredient-identification",
+        "choiceCount": 4
+      },
+      "italian-q6": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "regions",
+        "interactionStyle": "regional-knowledge",
+        "choiceCount": 4
+      },
+      "italian-q7": {
+        "presentation": "text",
+        "correct": 3,
+        "category": "pasta_language",
+        "interactionStyle": "translation",
+        "choiceCount": 4
+      },
+      "italian-q8": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "pasta_language",
+        "interactionStyle": "pairing",
+        "choiceCount": 4
+      },
+      "italian-q9": {
+        "presentation": "text",
+        "correct": 0,
+        "category": "ingredients",
+        "interactionStyle": "ingredient-identification",
+        "choiceCount": 4
+      },
+      "italian-q10": {
+        "presentation": "text",
+        "correct": 1,
+        "category": "regions",
+        "reasoningSteps": 2,
+        "interactionStyle": "cultural-origin",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✓"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.7 },
+        { "key": "profile-4", "min": 0.6 },
+        { "key": "profile-5", "min": 0.5 },
+        { "key": "profile-6", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["classic_dishes"] },
+        { "key": "dimension-2", "categories": ["ingredients"] },
+        { "key": "dimension-3", "categories": ["regions"] },
+        { "key": "dimension-4", "categories": ["pasta_language"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
