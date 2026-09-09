@@ -187,9 +187,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }, [answers, completedStage, hydrated, progressSignature, questionIndex, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => {
-    // Portrait-library quizzes warm only the next visual interaction. This keeps
-    // answer artwork instant without downloading an unreached stage up front.
-    if (!quiz.theme.artwork?.profileVariants) return;
+    // Warm only the current and next visual interaction. Decoding the next
+    // question image ahead of time prevents a blank frame during navigation
+    // without downloading the rest of an unreached quiz stage.
     const targetStage = screen === "checkpoint"
       ? Math.min(completedStage + 1, quiz.stages.length - 1)
       : currentStage;
@@ -204,12 +204,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const sources = preloadQuestions
       .flatMap((question) => [question.image?.src, ...(question.icons ?? [])])
       .filter((source): source is string => typeof source === "string" && source.startsWith("/quizzes/"));
-    const checkpointVariantAssets = quiz.theme.artwork.checkpointVariants;
+    const artwork = quiz.theme.artwork;
+    const checkpointVariantAssets = artwork?.checkpointVariants;
     const checkpointVariant = checkpointVariantAssets
       ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
       : undefined;
     const checkpoint = (checkpointVariant ? checkpointVariantAssets?.[checkpointVariant]?.[currentStage] : undefined)
-      ?? quiz.theme.artwork.checkpoints?.[currentStage];
+      ?? artwork?.checkpoints?.[currentStage];
     if (screen === "question" && checkpoint) sources.push(checkpoint);
 
     sources.forEach((source) => {
@@ -218,6 +219,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       const image = new window.Image();
       image.decoding = "async";
       image.src = source;
+      if (typeof image.decode === "function") void image.decode().catch(() => undefined);
     });
   }, [answers, completedStage, currentQuestion, currentStage, questionIndex, quiz, screen]);
 

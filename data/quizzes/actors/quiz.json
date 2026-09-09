@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 2,
+  "slug": "actors",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/q01.webp",
+    "published": "2026-09-09",
+    "difficulty": "Hard",
+    "icon": "🎞️",
+    "socialProofCount": 191000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#251a18",
+      "pageAlt": "#49302a",
+      "surface": "#f4ead9",
+      "surfaceRaised": "#fffaf0",
+      "text": "#211714",
+      "muted": "#74635b",
+      "primary": "#8f292c",
+      "primaryText": "#fff8e9",
+      "border": "#9d7b55",
+      "correct": "#397358",
+      "incorrect": "#b54949"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #1c1312, #492726)",
+      "text": "#fff8e9",
+      "border": "#c7a56a",
+      "shadow": "0 8px 26px rgba(24, 13, 12, 0.28)"
+    },
+    "artwork": {
+      "icon": "🎞️"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "actors-q1",
+          "actors-q2",
+          "actors-q3",
+          "actors-q4",
+          "actors-q5",
+          "actors-q6",
+          "actors-q7",
+          "actors-q8",
+          "actors-q9",
+          "actors-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "actors-q1": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q01.webp" },
+        "correct": 0,
+        "category": "classic_hollywood",
+        "choiceCount": 4
+      },
+      "actors-q2": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q02.webp" },
+        "correct": 3,
+        "category": "international_stars",
+        "choiceCount": 4
+      },
+      "actors-q3": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q03.webp" },
+        "correct": 2,
+        "category": "classic_hollywood",
+        "choiceCount": 4
+      },
+      "actors-q4": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q04.webp" },
+        "correct": 3,
+        "category": "screen_legends",
+        "choiceCount": 4
+      },
+      "actors-q5": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q05.webp" },
+        "correct": 1,
+        "category": "international_stars",
+        "choiceCount": 4
+      },
+      "actors-q6": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q06.webp" },
+        "correct": 0,
+        "category": "screen_legends",
+        "choiceCount": 4
+      },
+      "actors-q7": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q07.webp" },
+        "correct": 2,
+        "category": "classic_hollywood",
+        "choiceCount": 4
+      },
+      "actors-q8": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q08.webp" },
+        "correct": 1,
+        "category": "international_stars",
+        "choiceCount": 4
+      },
+      "actors-q9": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q09.webp" },
+        "correct": 1,
+        "category": "classic_hollywood",
+        "choiceCount": 4
+      },
+      "actors-q10": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/actors/assets/items/q10.webp" },
+        "correct": 0,
+        "category": "screen_legends",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "🎬"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.7 },
+        { "key": "profile-3", "min": 0.5 },
+        { "key": "profile-4", "min": 0.3 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["classic_hollywood"] },
+        { "key": "dimension-2", "categories": ["international_stars"] },
+        { "key": "dimension-3", "categories": ["screen_legends"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

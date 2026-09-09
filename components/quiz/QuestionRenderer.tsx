@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
@@ -71,8 +71,48 @@ function QuestionVisual({ question }: { question: QuizQuestion }) {
 }
 
 function QuestionImage({ question }: { question: QuizQuestion }) {
-  if (!question.image) return null;
-  return <figure className="quiz-engine__question-image"><img alt={question.image.alt} decoding="async" src={question.image.src} /></figure>;
+  const [displayedImage, setDisplayedImage] = useState(question.image);
+
+  useEffect(() => {
+    const requestedImage = question.image;
+    if (!requestedImage) {
+      setDisplayedImage(undefined);
+      return;
+    }
+    if (displayedImage?.src === requestedImage.src) {
+      if (displayedImage.alt !== requestedImage.alt) setDisplayedImage(requestedImage);
+      return;
+    }
+
+    let cancelled = false;
+    const pendingImage = new window.Image();
+    const reveal = () => {
+      if (!cancelled) setDisplayedImage(requestedImage);
+    };
+    const revealAfterDecode = () => {
+      if (typeof pendingImage.decode === "function") void pendingImage.decode().then(reveal, reveal);
+      else reveal();
+    };
+
+    pendingImage.decoding = "async";
+    pendingImage.onload = revealAfterDecode;
+    pendingImage.onerror = reveal;
+    pendingImage.src = requestedImage.src;
+    if (pendingImage.complete) revealAfterDecode();
+
+    return () => {
+      cancelled = true;
+      pendingImage.onload = null;
+      pendingImage.onerror = null;
+    };
+  }, [displayedImage, question.image]);
+
+  if (!displayedImage) return null;
+  return (
+    <figure className="quiz-engine__question-image">
+      <img alt={displayedImage.alt} decoding="async" loading="eager" src={displayedImage.src} />
+    </figure>
+  );
 }
 
 function ChoiceQuestion({ answer, feedback, onAnswer, question }: QuestionRendererProps) {

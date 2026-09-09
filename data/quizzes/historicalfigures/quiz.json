@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "slug": "historicalfigures",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/q01.webp",
+    "published": "2026-09-09",
+    "difficulty": "Hard",
+    "icon": "🏛️",
+    "socialProofCount": 157000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#25302f",
+      "pageAlt": "#475350",
+      "surface": "#eee5d2",
+      "surfaceRaised": "#fffaf0",
+      "text": "#25231d",
+      "muted": "#6d675b",
+      "primary": "#3f655e",
+      "primaryText": "#fffdf4",
+      "border": "#9f865d",
+      "correct": "#3d7756",
+      "incorrect": "#b04b49"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "18px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #1d2928, #405750)",
+      "text": "#fffaf0",
+      "border": "#c2a16b",
+      "shadow": "0 8px 26px rgba(18, 28, 27, 0.28)"
+    },
+    "artwork": {
+      "icon": "🏛️"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "historicalfigures-q1",
+          "historicalfigures-q2",
+          "historicalfigures-q3",
+          "historicalfigures-q4",
+          "historicalfigures-q5",
+          "historicalfigures-q6",
+          "historicalfigures-q7",
+          "historicalfigures-q8",
+          "historicalfigures-q9",
+          "historicalfigures-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "historicalfigures-q1": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q01.webp" }, "correct": 2, "category": "world_leaders", "choiceCount": 4 },
+      "historicalfigures-q2": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q02.webp" }, "correct": 0, "category": "world_leaders", "choiceCount": 4 },
+      "historicalfigures-q3": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q03.webp" }, "correct": 0, "category": "world_leaders", "choiceCount": 4 },
+      "historicalfigures-q4": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q04.webp" }, "correct": 0, "category": "great_minds", "choiceCount": 4 },
+      "historicalfigures-q5": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q05.webp" }, "correct": 1, "category": "great_minds", "choiceCount": 4 },
+      "historicalfigures-q6": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q06.webp" }, "correct": 1, "category": "world_leaders", "choiceCount": 4 },
+      "historicalfigures-q7": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q07.webp" }, "correct": 1, "category": "world_leaders", "choiceCount": 4 },
+      "historicalfigures-q8": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q08.webp" }, "correct": 2, "category": "historic_icons", "choiceCount": 4 },
+      "historicalfigures-q9": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q09.webp" }, "correct": 3, "category": "historic_icons", "choiceCount": 4 },
+      "historicalfigures-q10": { "presentation": "text", "image": { "src": "/quizzes/historicalfigures/assets/items/q10.webp" }, "correct": 3, "category": "historic_icons", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🏛️"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.7 },
+        { "key": "profile-3", "min": 0.5 },
+        { "key": "profile-4", "min": 0.3 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["world_leaders"] },
+        { "key": "dimension-2", "categories": ["great_minds"] },
+        { "key": "dimension-3", "categories": ["historic_icons"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
