@@ -21,5 +21,6 @@ export const SOCIAL_PROOF_COUNTS = Object.freeze({
   oxford: 112000,
   paramedic: 149000,
   vision: 203000,
+  word: 186000,
   "years-left": 267000,
 });

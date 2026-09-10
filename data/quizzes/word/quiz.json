@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "slug": "word",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.webp",
+    "published": "2026-09-10",
+    "difficulty": "Hard",
+    "icon": "🔗",
+    "socialProofCount": 186000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#2d2452",
+      "pageAlt": "#5b4387",
+      "surface": "#f5edda",
+      "surfaceRaised": "#fffaf0",
+      "text": "#241b35",
+      "muted": "#6f6479",
+      "primary": "#7540ad",
+      "primaryText": "#fffaf4",
+      "border": "#d19a3c",
+      "correct": "#39745d",
+      "incorrect": "#b54a58"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #261e47, #513978)",
+      "text": "#fffaf4",
+      "border": "#d5a84f",
+      "shadow": "0 8px 26px rgba(29, 21, 55, 0.3)"
+    },
+    "artwork": {
+      "icon": "A↔B"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "word-q1",
+          "word-q2",
+          "word-q3",
+          "word-q4",
+          "word-q5",
+          "word-q6",
+          "word-q7",
+          "word-q8",
+          "word-q9",
+          "word-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "word-q1": { "presentation": "text", "correct": 1, "category": "natural_links", "choiceCount": 4 },
+      "word-q2": { "presentation": "text", "correct": 3, "category": "natural_links", "choiceCount": 4 },
+      "word-q3": { "presentation": "text", "correct": 0, "category": "science_links", "choiceCount": 4 },
+      "word-q4": { "presentation": "text", "correct": 2, "category": "science_links", "choiceCount": 4 },
+      "word-q5": { "presentation": "text", "correct": 1, "category": "natural_links", "choiceCount": 4 },
+      "word-q6": { "presentation": "text", "correct": 3, "category": "science_links", "choiceCount": 4 },
+      "word-q7": { "presentation": "text", "correct": 0, "category": "science_links", "choiceCount": 4 },
+      "word-q8": { "presentation": "text", "correct": 2, "category": "word_links", "choiceCount": 4 },
+      "word-q9": { "presentation": "text", "correct": 0, "category": "word_links", "choiceCount": 4 },
+      "word-q10": { "presentation": "text", "correct": 1, "category": "word_links", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🔗"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["natural_links"] },
+        { "key": "dimension-2", "categories": ["science_links"] },
+        { "key": "dimension-3", "categories": ["word_links"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
