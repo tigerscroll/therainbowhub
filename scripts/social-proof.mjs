@@ -17,6 +17,7 @@ export const SOCIAL_PROOF_COUNTS = Object.freeze({
   memory: 241000,
   midwifery: 76000,
   nursing: 138000,
+  obsolete: 198000,
   oxford: 112000,
   paramedic: 149000,
   vision: 203000,

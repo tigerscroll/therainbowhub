@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 2,
+  "slug": "obsolete",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/obsolete-icon.webp",
+    "published": "2026-09-10",
+    "difficulty": "Hard",
+    "icon": "☎️",
+    "socialProofCount": 198000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#2d2923",
+      "pageAlt": "#5a5042",
+      "surface": "#f1e5cc",
+      "surfaceRaised": "#fff9ec",
+      "text": "#282119",
+      "muted": "#766858",
+      "primary": "#8a3529",
+      "primaryText": "#fff7e7",
+      "border": "#9a784d",
+      "correct": "#3f7055",
+      "incorrect": "#ad493f"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #25211c, #514638)",
+      "text": "#fff7e7",
+      "border": "#b08a56",
+      "shadow": "0 8px 26px rgba(32, 27, 21, 0.3)"
+    },
+    "artwork": {
+      "icon": "☎️"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "obsolete-q1",
+          "obsolete-q2",
+          "obsolete-q3",
+          "obsolete-q4",
+          "obsolete-q5",
+          "obsolete-q6",
+          "obsolete-q7",
+          "obsolete-q8",
+          "obsolete-q9",
+          "obsolete-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "obsolete-q1": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q01.webp" },
+        "correct": 0,
+        "category": "retro_technology",
+        "choiceCount": 4
+      },
+      "obsolete-q2": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q02.webp" },
+        "correct": 1,
+        "category": "retro_technology",
+        "choiceCount": 4
+      },
+      "obsolete-q3": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q03.webp" },
+        "correct": 2,
+        "category": "analog_inventions",
+        "choiceCount": 4
+      },
+      "obsolete-q4": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q04.webp" },
+        "correct": 3,
+        "category": "analog_inventions",
+        "choiceCount": 4
+      },
+      "obsolete-q5": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q05.webp" },
+        "correct": 0,
+        "category": "household_relics",
+        "choiceCount": 4
+      },
+      "obsolete-q6": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q06.webp" },
+        "correct": 1,
+        "category": "retro_technology",
+        "choiceCount": 4
+      },
+      "obsolete-q7": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q07.webp" },
+        "correct": 2,
+        "category": "retro_technology",
+        "choiceCount": 4
+      },
+      "obsolete-q8": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q08.webp" },
+        "correct": 3,
+        "category": "household_relics",
+        "choiceCount": 4
+      },
+      "obsolete-q9": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q09.webp" },
+        "correct": 0,
+        "category": "retro_technology",
+        "choiceCount": 4
+      },
+      "obsolete-q10": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/obsolete/assets/items/q10.webp" },
+        "correct": 1,
+        "category": "household_relics",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "⌛"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["retro_technology"] },
+        { "key": "dimension-2", "categories": ["household_relics"] },
+        { "key": "dimension-3", "categories": ["analog_inventions"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
