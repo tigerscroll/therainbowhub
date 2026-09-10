@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="A tooth and dental mirror">
+  <defs>
+    <radialGradient id="bg" cx="42%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#e9fbf9"/>
+      <stop offset="0.58" stop-color="#8fc5c6"/>
+      <stop offset="1" stop-color="#1f6874"/>
+    </radialGradient>
+    <linearGradient id="tooth" x1="0" y1="0" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.62" stop-color="#f4f1e8"/>
+      <stop offset="1" stop-color="#d6dfdc"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8d38b"/>
+      <stop offset="0.5" stop-color="#b77d2e"/>
+      <stop offset="1" stop-color="#75501f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="34" stdDeviation="30" flood-color="#10343c" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <circle cx="450" cy="408" r="320" fill="#ffffff" opacity="0.13"/>
+  <g filter="url(#shadow)">
+    <path d="M268 176C205 223 182 323 211 426C232 500 270 531 291 630C315 744 351 785 391 753C425 726 427 623 466 623C505 623 511 726 546 753C587 784 622 741 643 628C663 526 703 499 722 422C748 318 721 220 656 176C601 139 543 156 493 177C466 188 440 187 412 176C363 156 320 137 268 176Z" fill="url(#tooth)" stroke="#d9e3df" stroke-width="14"/>
+    <path d="M274 226C240 274 232 343 249 405" fill="none" stroke="#ffffff" stroke-width="25" stroke-linecap="round" opacity="0.72"/>
+  </g>
+  <g transform="rotate(-28 668 612)">
+    <rect x="635" y="430" width="66" height="355" rx="33" fill="url(#metal)" stroke="#6f4c24" stroke-width="9"/>
+    <circle cx="668" cy="367" r="116" fill="#e9fbf9" stroke="url(#metal)" stroke-width="30"/>
+    <circle cx="668" cy="367" r="78" fill="#6baeb5" opacity="0.72"/>
+    <path d="M620 326C644 295 687 283 720 303" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.68"/>
+  </g>
+</svg>

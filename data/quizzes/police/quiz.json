@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "slug": "police",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/police-icon.webp", "published": "2026-09-10", "difficulty": "Hard", "icon": "🛡️", "socialProofCount": 214000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#172c43", "pageAlt": "#355a79", "surface": "#edf1f3", "surfaceRaised": "#ffffff", "text": "#172635", "muted": "#62717e", "primary": "#1e527c", "primaryText": "#ffffff", "border": "#d1a545", "correct": "#34715c", "incorrect": "#ad454b" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #102238, #244d70)", "text": "#ffffff", "border": "#d1a545", "shadow": "0 8px 26px rgba(9, 28, 45, 0.3)" },
+    "artwork": { "icon": "🛡️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["police-q1", "police-q2", "police-q3", "police-q4", "police-q5", "police-q6", "police-q7", "police-q8", "police-q9", "police-q10"] }],
+    "questions": {
+      "police-q1": { "presentation": "text", "correct": 0, "category": "situational_judgment", "choiceCount": 4 },
+      "police-q2": { "presentation": "text", "correct": 1, "category": "communication", "choiceCount": 4 },
+      "police-q3": { "presentation": "text", "correct": 2, "category": "communication", "choiceCount": 4 },
+      "police-q4": { "presentation": "text", "correct": 3, "category": "evidence", "choiceCount": 4 },
+      "police-q5": { "presentation": "text", "correct": 0, "category": "integrity", "choiceCount": 4 },
+      "police-q6": { "presentation": "text", "correct": 1, "category": "communication", "choiceCount": 4 },
+      "police-q7": { "presentation": "text", "correct": 2, "category": "situational_judgment", "choiceCount": 4 },
+      "police-q8": { "presentation": "text", "correct": 3, "category": "evidence", "choiceCount": 4 },
+      "police-q9": { "presentation": "text", "correct": 0, "category": "integrity", "choiceCount": 4 },
+      "police-q10": { "presentation": "text", "correct": 1, "category": "situational_judgment", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "🛡️" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["situational_judgment"] },
+        { "key": "dimension-2", "categories": ["communication"] },
+        { "key": "dimension-3", "categories": ["evidence"] },
+        { "key": "dimension-4", "categories": ["integrity"] }
+      ],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 2,
+  "slug": "raf",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": { "categories": "harder-correct", "bestRound": "later" },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/raf-icon.webp",
+    "published": "2026-09-10",
+    "difficulty": "Hard",
+    "icon": "✈️",
+    "socialProofCount": 152000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": {
+      "page": "#172841",
+      "pageAlt": "#34577b",
+      "surface": "#eee9dc",
+      "surfaceRaised": "#fffaf0",
+      "text": "#19283a",
+      "muted": "#68717b",
+      "primary": "#a82632",
+      "primaryText": "#fffaf0",
+      "border": "#b88b42",
+      "correct": "#387258",
+      "incorrect": "#b34848"
+    },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "18px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": {
+      "background": "linear-gradient(90deg, #101f35, #294d72)",
+      "text": "#fffaf0",
+      "border": "#c39950",
+      "shadow": "0 8px 26px rgba(14, 31, 50, 0.3)"
+    },
+    "artwork": { "icon": "✈️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": ["raf-q1", "raf-q2", "raf-q3", "raf-q4", "raf-q5", "raf-q6", "raf-q7", "raf-q8", "raf-q9", "raf-q10"]
+      }
+    ],
+    "questions": {
+      "raf-q1": { "presentation": "text", "correct": 0, "category": "raf_history", "choiceCount": 4 },
+      "raf-q2": { "presentation": "text", "correct": 1, "category": "raf_history", "choiceCount": 4 },
+      "raf-q3": { "presentation": "text", "correct": 2, "category": "raf_history", "choiceCount": 4 },
+      "raf-q4": { "presentation": "text", "correct": 3, "category": "raf_identity", "choiceCount": 4 },
+      "raf-q5": { "presentation": "text", "correct": 0, "category": "raf_operations", "choiceCount": 4 },
+      "raf-q6": { "presentation": "text", "correct": 1, "category": "raf_ranks", "choiceCount": 4 },
+      "raf-q7": { "presentation": "text", "correct": 2, "category": "raf_aircraft", "choiceCount": 4 },
+      "raf-q8": { "presentation": "text", "correct": 3, "category": "raf_operations", "choiceCount": 4 },
+      "raf-q9": { "presentation": "text", "correct": 0, "category": "raf_aircraft", "choiceCount": 4 },
+      "raf-q10": { "presentation": "text", "correct": 1, "category": "raf_operations", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "✈️" },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["raf_history"] },
+        { "key": "dimension-2", "categories": ["raf_identity"] },
+        { "key": "dimension-3", "categories": ["raf_ranks"] },
+        { "key": "dimension-4", "categories": ["raf_aircraft"] },
+        { "key": "dimension-5", "categories": ["raf_operations"] }
+      ],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

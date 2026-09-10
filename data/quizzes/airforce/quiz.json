@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 2,
+  "slug": "airforce",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/airforce-icon.webp", "published": "2026-09-10", "difficulty": "Hard", "icon": "🛩️", "socialProofCount": 205000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#173654", "pageAlt": "#416f93", "surface": "#e9eff2", "surfaceRaised": "#fbfdff", "text": "#172b3e", "muted": "#647482", "primary": "#285d8a", "primaryText": "#ffffff", "border": "#ba8e45", "correct": "#34715c", "incorrect": "#b1484d" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #102b46, #315f86)", "text": "#ffffff", "border": "#c39a54", "shadow": "0 8px 26px rgba(13, 38, 61, 0.3)" },
+    "artwork": { "icon": "🛩️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["airforce-q1", "airforce-q2", "airforce-q3", "airforce-q4", "airforce-q5", "airforce-q6", "airforce-q7", "airforce-q8", "airforce-q9", "airforce-q10"] }],
+    "questions": {
+      "airforce-q1": { "presentation": "text", "correct": 0, "category": "flight_basics", "choiceCount": 4 },
+      "airforce-q2": { "presentation": "text", "correct": 1, "category": "instruments", "choiceCount": 4 },
+      "airforce-q3": { "presentation": "text", "correct": 2, "category": "flight_controls", "choiceCount": 4 },
+      "airforce-q4": { "presentation": "text", "correct": 3, "category": "navigation", "choiceCount": 4 },
+      "airforce-q5": { "presentation": "text", "correct": 0, "category": "flight_basics", "choiceCount": 4 },
+      "airforce-q6": { "presentation": "text", "correct": 1, "category": "navigation", "choiceCount": 4 },
+      "airforce-q7": { "presentation": "text", "correct": 2, "category": "navigation", "choiceCount": 4 },
+      "airforce-q8": { "presentation": "text", "correct": 3, "category": "flight_controls", "choiceCount": 4 },
+      "airforce-q9": { "presentation": "text", "correct": 0, "category": "flight_physics", "choiceCount": 4 },
+      "airforce-q10": { "presentation": "text", "correct": 1, "category": "flight_physics", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "🛩️" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["flight_basics"] },
+        { "key": "dimension-2", "categories": ["instruments"] },
+        { "key": "dimension-3", "categories": ["flight_controls"] },
+        { "key": "dimension-4", "categories": ["navigation"] },
+        { "key": "dimension-5", "categories": ["flight_physics"] }
+      ],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "slug": "dentist",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/dentist-icon.webp",
+    "published": "2026-09-10",
+    "difficulty": "Hard",
+    "icon": "🦷",
+    "socialProofCount": 174000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#183b45",
+      "pageAlt": "#346977",
+      "surface": "#edf2ed",
+      "surfaceRaised": "#fffdf7",
+      "text": "#182b30",
+      "muted": "#627377",
+      "primary": "#157587",
+      "primaryText": "#fffdf7",
+      "border": "#c39143",
+      "correct": "#347258",
+      "incorrect": "#b34949"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #12333c, #27606d)",
+      "text": "#fffdf7",
+      "border": "#cba15c",
+      "shadow": "0 8px 26px rgba(13, 45, 53, 0.3)"
+    },
+    "artwork": {
+      "icon": "🦷"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "dentist-q1",
+          "dentist-q2",
+          "dentist-q3",
+          "dentist-q4",
+          "dentist-q5",
+          "dentist-q6",
+          "dentist-q7",
+          "dentist-q8",
+          "dentist-q9",
+          "dentist-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "dentist-q1": { "presentation": "text", "correct": 0, "category": "dentition", "choiceCount": 4 },
+      "dentist-q2": { "presentation": "text", "correct": 1, "category": "tooth_anatomy", "choiceCount": 4 },
+      "dentist-q3": { "presentation": "text", "correct": 2, "category": "dentition", "choiceCount": 4 },
+      "dentist-q4": { "presentation": "text", "correct": 3, "category": "dentition", "choiceCount": 4 },
+      "dentist-q5": { "presentation": "text", "correct": 0, "category": "tooth_anatomy", "choiceCount": 4 },
+      "dentist-q6": { "presentation": "text", "correct": 1, "category": "oral_health", "choiceCount": 4 },
+      "dentist-q7": { "presentation": "text", "correct": 2, "category": "oral_health", "choiceCount": 4 },
+      "dentist-q8": { "presentation": "text", "correct": 3, "category": "tooth_anatomy", "choiceCount": 4 },
+      "dentist-q9": { "presentation": "text", "correct": 0, "category": "head_neck_anatomy", "choiceCount": 4 },
+      "dentist-q10": { "presentation": "text", "correct": 1, "category": "head_neck_anatomy", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🦷"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.6 },
+        { "key": "profile-4", "min": 0.4 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["dentition"] },
+        { "key": "dimension-2", "categories": ["tooth_anatomy"] },
+        { "key": "dimension-3", "categories": ["oral_health"] },
+        { "key": "dimension-4", "categories": ["head_neck_anatomy"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}
