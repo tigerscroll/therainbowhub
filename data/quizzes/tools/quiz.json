@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "slug": "tools",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": { "categories": "harder-correct", "bestRound": "later" },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/tools-icon.webp",
+    "published": "2026-09-11",
+    "difficulty": "Hard",
+    "icon": "🛠️",
+    "socialProofCount": 221000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": {
+      "page": "#172735",
+      "pageAlt": "#465c68",
+      "surface": "#eee9dd",
+      "surfaceRaised": "#fffaf0",
+      "text": "#20292e",
+      "muted": "#667176",
+      "primary": "#e46f24",
+      "primaryText": "#ffffff",
+      "border": "#d6a83c",
+      "correct": "#367251",
+      "incorrect": "#b8493d"
+    },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": {
+      "background": "linear-gradient(90deg, #152733, #3e5965)",
+      "text": "#fff8e8",
+      "border": "#f0a12b",
+      "shadow": "0 8px 26px rgba(16, 34, 45, 0.3)"
+    },
+    "artwork": { "icon": "🛠️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{
+      "id": "stage-1",
+      "difficultyLevel": "final",
+      "questionIds": ["tools-q1", "tools-q2", "tools-q3", "tools-q4", "tools-q5", "tools-q6", "tools-q7", "tools-q8", "tools-q9", "tools-q10"]
+    }],
+    "questions": {
+      "tools-q1": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q01.webp" }, "correct": 1, "category": "finishing", "choiceCount": 4 },
+      "tools-q2": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q02.webp" }, "correct": 0, "category": "site_handling", "choiceCount": 4 },
+      "tools-q3": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q03.webp" }, "correct": 2, "category": "finishing", "choiceCount": 4 },
+      "tools-q4": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q04.webp" }, "correct": 0, "category": "finishing", "choiceCount": 4 },
+      "tools-q5": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q05.webp" }, "correct": 2, "category": "site_handling", "choiceCount": 4 },
+      "tools-q6": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q06.webp" }, "correct": 3, "category": "finishing", "choiceCount": 4 },
+      "tools-q7": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q07.webp" }, "correct": 1, "category": "consolidation", "choiceCount": 4 },
+      "tools-q8": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q08.webp" }, "correct": 0, "category": "reinforcement", "choiceCount": 4 },
+      "tools-q9": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q09.webp" }, "correct": 1, "category": "finishing", "choiceCount": 4 },
+      "tools-q10": { "presentation": "text", "image": { "src": "/quizzes/tools/assets/items/q10.webp" }, "correct": 3, "category": "finishing", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "🛠️" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["finishing"] },
+        { "key": "dimension-2", "categories": ["site_handling"] },
+        { "key": "dimension-3", "categories": ["consolidation", "reinforcement"] }
+      ],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}
