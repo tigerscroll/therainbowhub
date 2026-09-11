@@ -31,6 +31,7 @@ export const SOCIAL_PROOF_COUNTS = Object.freeze({
   police: 214000,
   raf: 152000,
   socialworker: 196000,
+  surgeon: 236000,
   teacher: 209000,
   train: 188000,
   vision: 203000,
