@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "slug": "prostatetest",
-  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
-  "listing": { "thumbnail": "assets/items/prostate-test-icon.webp", "published": "2026-09-11", "difficulty": "Medium", "icon": "♂", "socialProofCount": 262000 },
+  "engine": { "scoring": "weighted-profile", "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/prostate-test-icon.webp", "published": "2026-09-11", "difficulty": "Quick", "icon": "♂", "socialProofCount": 262000 },
   "theme": {
     "preset": "editorial",
     "layout": { "landing": "split", "questions": "card", "results": "immersive" },
@@ -17,22 +17,31 @@
   "structure": {
     "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["prostate-test-q1", "prostate-test-q2", "prostate-test-q3", "prostate-test-q4", "prostate-test-q5", "prostate-test-q6", "prostate-test-q7", "prostate-test-q8", "prostate-test-q9", "prostate-test-q10"] }],
     "questions": {
-      "prostate-test-q1": { "presentation": "text", "correct": 0, "category": "basics", "choiceCount": 4 },
-      "prostate-test-q2": { "presentation": "text", "correct": 1, "category": "signs", "choiceCount": 4 },
-      "prostate-test-q3": { "presentation": "text", "correct": 2, "category": "signs", "choiceCount": 4 },
-      "prostate-test-q4": { "presentation": "text", "correct": 3, "category": "risk", "choiceCount": 4 },
-      "prostate-test-q5": { "presentation": "text", "correct": 0, "category": "risk", "choiceCount": 4 },
-      "prostate-test-q6": { "presentation": "text", "correct": 1, "category": "testing", "choiceCount": 4 },
-      "prostate-test-q7": { "presentation": "text", "correct": 2, "category": "basics", "choiceCount": 4 },
-      "prostate-test-q8": { "presentation": "text", "correct": 3, "category": "testing", "choiceCount": 4 },
-      "prostate-test-q9": { "presentation": "text", "correct": 0, "category": "signs", "choiceCount": 4 },
-      "prostate-test-q10": { "presentation": "text", "correct": 1, "category": "safety", "choiceCount": 4 }
+      "prostate-test-q1": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }] },
+      "prostate-test-q2": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }] },
+      "prostate-test-q3": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }, { "urinary-changes": 1 }] },
+      "prostate-test-q4": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }] },
+      "prostate-test-q5": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }] },
+      "prostate-test-q6": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }] },
+      "prostate-test-q7": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }] },
+      "prostate-test-q8": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }, { "pain-or-bleeding": 1 }] },
+      "prostate-test-q9": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }, { "risk-and-next-step": 1 }] },
+      "prostate-test-q10": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "no-current-changes": 1 }, { "urinary-changes": 1 }, { "pain-or-bleeding": 1 }, { "risk-and-next-step": 1 }] }
     },
     "checkpoint": { "finalIcon": "♂" },
     "results": {
-      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
-      "dimensions": [{ "key": "dimension-1", "categories": ["signs"] }, { "key": "dimension-2", "categories": ["risk", "basics"] }, { "key": "dimension-3", "categories": ["testing", "safety"] }],
-      "score": { "showPercentage": true, "showBestRound": false }
+      "profiles": [
+        { "key": "profile-1", "id": "no-current-changes" },
+        { "key": "profile-2", "id": "urinary-changes" },
+        { "key": "profile-3", "id": "pain-or-bleeding" },
+        { "key": "profile-4", "id": "risk-and-next-step" }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "profiles": ["no-current-changes"] },
+        { "key": "dimension-2", "profiles": ["urinary-changes"] },
+        { "key": "dimension-3", "profiles": ["pain-or-bleeding"] },
+        { "key": "dimension-4", "profiles": ["risk-and-next-step"] }
+      ]
     }
   }
 }
