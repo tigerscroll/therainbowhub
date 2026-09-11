@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "doctor",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/doctor-icon.webp", "published": "2026-09-11", "difficulty": "Hard", "icon": "🩺", "socialProofCount": 224000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#174a48", "pageAlt": "#568b82", "surface": "#edf3ef", "surfaceRaised": "#ffffff", "text": "#173633", "muted": "#637b76", "primary": "#08786c", "primaryText": "#ffffff", "border": "#d59a52", "correct": "#34715c", "incorrect": "#b4474d" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #113936, #176b62)", "text": "#ffffff", "border": "#d9a65e", "shadow": "0 8px 26px rgba(13, 53, 49, 0.3)" },
+    "artwork": { "icon": "🩺" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["doctor-q1", "doctor-q2", "doctor-q3", "doctor-q4", "doctor-q5", "doctor-q6", "doctor-q7", "doctor-q8", "doctor-q9", "doctor-q10"] }],
+    "questions": {
+      "doctor-q1": { "presentation": "text", "correct": 0, "category": "anatomy", "choiceCount": 4 },
+      "doctor-q2": { "presentation": "text", "correct": 1, "category": "clinical_reasoning", "choiceCount": 4 },
+      "doctor-q3": { "presentation": "text", "correct": 2, "category": "diagnostics", "choiceCount": 4 },
+      "doctor-q4": { "presentation": "text", "correct": 3, "category": "clinical_reasoning", "choiceCount": 4 },
+      "doctor-q5": { "presentation": "text", "correct": 0, "category": "physiology", "choiceCount": 4 },
+      "doctor-q6": { "presentation": "text", "correct": 1, "category": "diagnostics", "choiceCount": 4 },
+      "doctor-q7": { "presentation": "text", "correct": 2, "category": "emergencies", "choiceCount": 4 },
+      "doctor-q8": { "presentation": "text", "correct": 3, "category": "anatomy", "choiceCount": 4 },
+      "doctor-q9": { "presentation": "text", "correct": 0, "category": "emergencies", "choiceCount": 4 },
+      "doctor-q10": { "presentation": "text", "correct": 1, "category": "pharmacology", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "🩺" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["anatomy", "physiology"] }, { "key": "dimension-2", "categories": ["clinical_reasoning"] }, { "key": "dimension-3", "categories": ["diagnostics"] }, { "key": "dimension-4", "categories": ["emergencies"] }, { "key": "dimension-5", "categories": ["pharmacology"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "socialworker",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/socialworker-icon.webp", "published": "2026-09-11", "difficulty": "Hard", "icon": "🤝", "socialProofCount": 196000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#214d45", "pageAlt": "#6c9485", "surface": "#f5f0e8", "surfaceRaised": "#ffffff", "text": "#24352f", "muted": "#6f7b76", "primary": "#28765f", "primaryText": "#ffffff", "border": "#dc9b51", "correct": "#387259", "incorrect": "#b4484c" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #173c35, #2a6d5b)", "text": "#ffffff", "border": "#e0a45b", "shadow": "0 8px 26px rgba(23, 60, 53, 0.3)" },
+    "artwork": { "icon": "🤝" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["socialworker-q1", "socialworker-q2", "socialworker-q3", "socialworker-q4", "socialworker-q5", "socialworker-q6", "socialworker-q7", "socialworker-q8", "socialworker-q9", "socialworker-q10"] }],
+    "questions": {
+      "socialworker-q1": { "presentation": "text", "correct": 0, "category": "communication", "choiceCount": 4 },
+      "socialworker-q2": { "presentation": "text", "correct": 1, "category": "ethics", "choiceCount": 4 },
+      "socialworker-q3": { "presentation": "text", "correct": 2, "category": "ethics", "choiceCount": 4 },
+      "socialworker-q4": { "presentation": "text", "correct": 3, "category": "communication", "choiceCount": 4 },
+      "socialworker-q5": { "presentation": "text", "correct": 0, "category": "assessment", "choiceCount": 4 },
+      "socialworker-q6": { "presentation": "text", "correct": 1, "category": "professional_practice", "choiceCount": 4 },
+      "socialworker-q7": { "presentation": "text", "correct": 2, "category": "safeguarding", "choiceCount": 4 },
+      "socialworker-q8": { "presentation": "text", "correct": 3, "category": "professional_practice", "choiceCount": 4 },
+      "socialworker-q9": { "presentation": "text", "correct": 0, "category": "ethics", "choiceCount": 4 },
+      "socialworker-q10": { "presentation": "text", "correct": 1, "category": "assessment", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "🤝" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["communication"] }, { "key": "dimension-2", "categories": ["ethics"] }, { "key": "dimension-3", "categories": ["assessment"] }, { "key": "dimension-4", "categories": ["safeguarding"] }, { "key": "dimension-5", "categories": ["professional_practice"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "teacher",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/teacher-icon.webp", "published": "2026-09-11", "difficulty": "Hard", "icon": "📚", "socialProofCount": 209000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#3c2a58", "pageAlt": "#705f91", "surface": "#f4f0e9", "surfaceRaised": "#ffffff", "text": "#2b2337", "muted": "#746c7e", "primary": "#684aa0", "primaryText": "#ffffff", "border": "#e09b4f", "correct": "#3f7359", "incorrect": "#b3484d" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #2b1d43, #5b4388)", "text": "#ffffff", "border": "#e1a658", "shadow": "0 8px 26px rgba(43, 29, 67, 0.3)" },
+    "artwork": { "icon": "📚" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["teacher-q1", "teacher-q2", "teacher-q3", "teacher-q4", "teacher-q5", "teacher-q6", "teacher-q7", "teacher-q8", "teacher-q9", "teacher-q10"] }],
+    "questions": {
+      "teacher-q1": { "presentation": "text", "correct": 0, "category": "teaching_learning", "choiceCount": 4 },
+      "teacher-q2": { "presentation": "text", "correct": 1, "category": "communication", "choiceCount": 4 },
+      "teacher-q3": { "presentation": "text", "correct": 2, "category": "assessment", "choiceCount": 4 },
+      "teacher-q4": { "presentation": "text", "correct": 3, "category": "safeguarding", "choiceCount": 4 },
+      "teacher-q5": { "presentation": "text", "correct": 0, "category": "teaching_learning", "choiceCount": 4 },
+      "teacher-q6": { "presentation": "text", "correct": 1, "category": "numeracy_literacy", "choiceCount": 4 },
+      "teacher-q7": { "presentation": "text", "correct": 2, "category": "teaching_learning", "choiceCount": 4 },
+      "teacher-q8": { "presentation": "text", "correct": 3, "category": "assessment", "choiceCount": 4 },
+      "teacher-q9": { "presentation": "text", "correct": 0, "category": "communication", "choiceCount": 4 },
+      "teacher-q10": { "presentation": "text", "correct": 1, "category": "numeracy_literacy", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "📚" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["teaching_learning"] }, { "key": "dimension-2", "categories": ["assessment"] }, { "key": "dimension-3", "categories": ["communication"] }, { "key": "dimension-4", "categories": ["safeguarding"] }, { "key": "dimension-5", "categories": ["numeracy_literacy"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "medical",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/medical-icon.webp", "published": "2026-09-11", "difficulty": "Hard", "icon": "⚕️", "socialProofCount": 217000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#173c5b", "pageAlt": "#4b799e", "surface": "#edf2f5", "surfaceRaised": "#ffffff", "text": "#182f42", "muted": "#657783", "primary": "#1d668f", "primaryText": "#ffffff", "border": "#d78e4b", "correct": "#35715b", "incorrect": "#b3484d" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "19px", "buttonRadius": "14px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #102d48, #235f83)", "text": "#ffffff", "border": "#dc9c59", "shadow": "0 8px 26px rgba(13, 39, 61, 0.3)" },
+    "artwork": { "icon": "⚕️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["medical-q1", "medical-q2", "medical-q3", "medical-q4", "medical-q5", "medical-q6", "medical-q7", "medical-q8", "medical-q9", "medical-q10"] }],
+    "questions": {
+      "medical-q1": { "presentation": "text", "correct": 0, "category": "physiology", "choiceCount": 4 },
+      "medical-q2": { "presentation": "text", "correct": 1, "category": "cell_biology", "choiceCount": 4 },
+      "medical-q3": { "presentation": "text", "correct": 2, "category": "pharmacology", "choiceCount": 4 },
+      "medical-q4": { "presentation": "text", "correct": 3, "category": "microbiology", "choiceCount": 4 },
+      "medical-q5": { "presentation": "text", "correct": 0, "category": "physiology", "choiceCount": 4 },
+      "medical-q6": { "presentation": "text", "correct": 1, "category": "physiology", "choiceCount": 4 },
+      "medical-q7": { "presentation": "text", "correct": 2, "category": "anatomy", "choiceCount": 4 },
+      "medical-q8": { "presentation": "text", "correct": 3, "category": "anatomy", "choiceCount": 4 },
+      "medical-q9": { "presentation": "text", "correct": 0, "category": "clinical_safety", "choiceCount": 4 },
+      "medical-q10": { "presentation": "text", "correct": 1, "category": "physiology", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "⚕️" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["anatomy"] }, { "key": "dimension-2", "categories": ["physiology"] }, { "key": "dimension-3", "categories": ["cell_biology", "microbiology"] }, { "key": "dimension-4", "categories": ["pharmacology"] }, { "key": "dimension-5", "categories": ["clinical_safety"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}
