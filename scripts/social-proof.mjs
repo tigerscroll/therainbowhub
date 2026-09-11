@@ -7,6 +7,7 @@ export const SOCIAL_PROOF_COUNTS = Object.freeze({
   cambridge: 94000,
   chef: 123000,
   dentist: 174000,
+  dementia: 251000,
   doctor: 224000,
   firefighter: 268000,
   flightattendant: 193000,
