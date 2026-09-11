@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "maculardegeneration",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/macular-icon.webp", "published": "2026-09-11", "difficulty": "Medium", "icon": "👁️", "socialProofCount": 246000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#123f4b", "pageAlt": "#53858c", "surface": "#f5f2e8", "surfaceRaised": "#fffdf7", "text": "#17363b", "muted": "#667b7d", "primary": "#087b7a", "primaryText": "#ffffff", "border": "#d99945", "correct": "#3c735b", "incorrect": "#b34b52" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #0b303b, #0b6769)", "text": "#ffffff", "border": "#dea24e", "shadow": "0 8px 26px rgba(11, 48, 59, 0.3)" },
+    "artwork": { "icon": "👁️" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["macular-q1", "macular-q2", "macular-q3", "macular-q4", "macular-q5", "macular-q6", "macular-q7", "macular-q8", "macular-q9", "macular-q10"] }],
+    "questions": {
+      "macular-q1": { "presentation": "grid", "visual": { "columns": 3 }, "correct": 0, "category": "central_detail", "choiceCount": 4 },
+      "macular-q2": { "presentation": "code", "visual": {}, "correct": 1, "category": "attention", "choiceCount": 4 },
+      "macular-q3": { "presentation": "sequence", "visual": { "separator": "·" }, "correct": 2, "category": "attention", "choiceCount": 4 },
+      "macular-q4": { "presentation": "icons", "icons": ["📘", "🔑", "☕", "☀️"], "study": { "presentation": "icons", "durationMs": 2200, "mode": "automatic" }, "correct": 3, "category": "visual_memory", "choiceCount": 4 },
+      "macular-q5": { "presentation": "sequence", "visual": { "separator": "·" }, "correct": 0, "category": "central_detail", "choiceCount": 4 },
+      "macular-q6": { "presentation": "text", "correct": 1, "category": "amd_knowledge", "choiceCount": 4 },
+      "macular-q7": { "presentation": "text", "correct": 2, "category": "amd_knowledge", "choiceCount": 4 },
+      "macular-q8": { "presentation": "text", "correct": 3, "category": "amd_knowledge", "choiceCount": 4 },
+      "macular-q9": { "presentation": "text", "correct": 0, "category": "safety", "choiceCount": 4 },
+      "macular-q10": { "presentation": "text", "correct": 1, "category": "safety", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "👁️" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["central_detail", "attention"] }, { "key": "dimension-2", "categories": ["visual_memory"] }, { "key": "dimension-3", "categories": ["amd_knowledge", "safety"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "slug": "prostatetest",
+  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/prostate-test-icon.webp", "published": "2026-09-11", "difficulty": "Medium", "icon": "♂", "socialProofCount": 262000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#2a1719", "pageAlt": "#65353b", "surface": "#fff8f2", "surfaceRaised": "#fffdf9", "text": "#2b1718", "muted": "#705b5b", "primary": "#aa2531", "primaryText": "#ffffff", "border": "#d6a39f", "correct": "#42725b", "incorrect": "#aa2531" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #381418, #861f29)", "text": "#ffffff", "border": "#dca84a", "shadow": "0 8px 26px rgba(50, 12, 18, 0.28)" },
+    "artwork": { "icon": "♂" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["prostate-test-q1", "prostate-test-q2", "prostate-test-q3", "prostate-test-q4", "prostate-test-q5", "prostate-test-q6", "prostate-test-q7", "prostate-test-q8", "prostate-test-q9", "prostate-test-q10"] }],
+    "questions": {
+      "prostate-test-q1": { "presentation": "text", "correct": 0, "category": "basics", "choiceCount": 4 },
+      "prostate-test-q2": { "presentation": "text", "correct": 1, "category": "signs", "choiceCount": 4 },
+      "prostate-test-q3": { "presentation": "text", "correct": 2, "category": "signs", "choiceCount": 4 },
+      "prostate-test-q4": { "presentation": "text", "correct": 3, "category": "risk", "choiceCount": 4 },
+      "prostate-test-q5": { "presentation": "text", "correct": 0, "category": "risk", "choiceCount": 4 },
+      "prostate-test-q6": { "presentation": "text", "correct": 1, "category": "testing", "choiceCount": 4 },
+      "prostate-test-q7": { "presentation": "text", "correct": 2, "category": "basics", "choiceCount": 4 },
+      "prostate-test-q8": { "presentation": "text", "correct": 3, "category": "testing", "choiceCount": 4 },
+      "prostate-test-q9": { "presentation": "text", "correct": 0, "category": "signs", "choiceCount": 4 },
+      "prostate-test-q10": { "presentation": "text", "correct": 1, "category": "safety", "choiceCount": 4 }
+    },
+    "checkpoint": { "finalIcon": "♂" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
+      "dimensions": [{ "key": "dimension-1", "categories": ["signs"] }, { "key": "dimension-2", "categories": ["risk", "basics"] }, { "key": "dimension-3", "categories": ["testing", "safety"] }],
+      "score": { "showPercentage": true, "showBestRound": false }
+    }
+  }
+}
