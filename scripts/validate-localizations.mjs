@@ -407,7 +407,7 @@ function collectStrings(value, pathParts = [], output = []) {
   return output;
 }
 
-const portugueseVariantTerms = /\b(?:você|vocês|equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|tela|telas|registo|registos|registro|registros|secção|secções|seção|seções|prémio|prémios|prêmio|prêmios|comboio|comboios|trem|trens|íman|ímans|ímã|ímãs|câmara|câmaras|câmera|câmeras|telemóvel|telemóveis|celular|celulares|autocarro|autocarros|ônibus|ónibus|facto|factos|fato|fatos|contato|contatos|contacto|contactos|bebé|bebés|bebê|bebês|planeado|planeada|planeados|planeadas|planejado|planejada|planejados|planejadas|planeamento|planejamento|partilhado|partilhada|partilhados|partilhadas|compartilhado|compartilhada|compartilhados|compartilhadas|oxigénio|oxigênio|húmido|húmida|húmidos|húmidas|úmido|úmida|úmidos|úmidas|pequeno-almoço|fiável|fiáveis|confiável|confiáveis|eletrónico|eletrónica|eletrônicos|eletrônicas|eletrônico|eletrônica|académico|académica|acadêmico|acadêmica|económico|económica|econômico|econômica|fenómeno|fenómenos|fenômeno|fenômenos|género|géneros|gênero|gêneros|génio|gênio|travão|travões|travagem|freio|freios|frenagem|autónomo|autónoma|autônomo|autônoma|cronómetro|cronómetros|cronômetro|cronômetros|vómito|vómitos|vômito|vômitos|incómodo|incómoda|incômodo|incômoda|detetar|detetado|detetada|detetar-se|detectar|detectado|detectada|perceção|percepção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|decodificar|automóvel|automóveis|automotivo|automotiva|automotivos|automotivas|aspeto|aspetos|subtil|subtis)\b/iu;
+const portugueseVariantTerms = /(?<!\p{L})(?:você|vocês|equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|tela|telas|registo|registos|registro|registros|secção|secções|seção|seções|prémio|prémios|prêmio|prêmios|comboio|comboios|trem|trens|íman|ímans|ímã|ímãs|câmara|câmaras|câmera|câmeras|telemóvel|telemóveis|celular|celulares|autocarro|autocarros|ônibus|ónibus|facto|factos|fato|fatos|contato|contatos|contacto|contactos|bebé|bebés|bebê|bebês|planeado|planeada|planeados|planeadas|planejado|planejada|planejados|planejadas|planeamento|planejamento|partilhado|partilhada|partilhados|partilhadas|compartilhado|compartilhada|compartilhados|compartilhadas|oxigénio|oxigênio|húmido|húmida|húmidos|húmidas|úmido|úmida|úmidos|úmidas|pequeno-almoço|fiável|fiáveis|confiável|confiáveis|eletrónico|eletrónica|eletrônicos|eletrônicas|eletrônico|eletrônica|académico|académica|acadêmico|acadêmica|económico|económica|econômico|econômica|fenómeno|fenómenos|fenômeno|fenômenos|género|géneros|gênero|gêneros|génio|gênio|travão|travões|travagem|freio|freios|frenagem|autónomo|autónoma|autônomo|autônoma|cronómetro|cronómetros|cronômetro|cronômetros|vómito|vómitos|vômito|vômitos|incómodo|incómoda|incômodo|incômoda|detetar|detetado|detetada|detetar-se|detectar|detectado|detectada|perceção|percepção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|decodificar|automóvel|automóveis|automotivo|automotiva|automotivos|automotivas|aspeto|aspetos|subtil|subtis)(?!\p{L})/iu;
 
 function findPortugueseVariantTerm(value) {
   return value.match(/você/iu) ?? value.match(portugueseVariantTerms);
@@ -421,28 +421,43 @@ const recurringNativeCopyDefects = {
     { pattern: /\bPoint (?:fort|le plus difficile) visuelle\b/iu, quiz: "vision", message: "visual-skill label has incorrect agreement and word order" },
     { pattern: /\bEn progression\b/iu, message: "stale Developing difficulty label remains" },
     { pattern: /\b(?:solveur|résolveur|solutionneur|DEVINATION|Flight Attendant)\b/iu, message: "machine-translated or untranslated French UI terminology remains" },
+    { pattern: /\b(?:Rayon|Tendon)\b/iu, quiz: "anatomy", message: "literal rather than anatomical French terminology remains" },
+    { pattern: /Commencer la cueillette/iu, quiz: "lovers", message: "picking was mistranslated as harvesting" },
+    { pattern: /\b(?:avocat réfléchi|compte anonyme)\b/iu, quiz: "socialworker", message: "literal social-care translation remains" },
   ],
   de: [
     { pattern: /\bdeinen stärkster bereich\b/iu, message: "adjective and noun case agreement is incorrect" },
     { pattern: /\bdes (?:Küchentest|Grammatiktest|Intelligenztest|Gedächtnistest|Hebammen-Aufnahmetest|Pflege-Aufnahmetest|Rettungsdienst-Aufnahmetest)\b/iu, message: "the German genitive requires an -s suffix" },
     { pattern: /\bSehtest\b/iu, quiz: "vision", message: 'use "visueller Test" or "visuelle Herausforderung"' },
     { pattern: /\b(?:Foundations|Culinary Pass|Screening-Tool|CENTRAL-VISION|VERMÄTZUNG|APTITUDE|OPERATING-KAMER)\b/iu, message: "machine-translated or untranslated German UI terminology remains" },
+    { pattern: /\b(?:Solomon|Arbeit|Markieren|John)\b/iu, quiz: "bible", message: "a biblical name was mistranslated or left in English" },
+    { pattern: /\b(?:Membran|Lähmen)\b/iu, quiz: "anatomy", message: "literal rather than anatomical German terminology remains" },
+    { pattern: /\bScheck\b/iu, message: "an English homonym was translated with the wrong German meaning" },
+    { pattern: /\b(?:Anhang|Träne)\b/iu, quiz: "midwifery", message: "an English homonym was translated with the wrong German meaning" },
+    { pattern: /\b(?:Sozialarbeiter-Denker|nachdenkliche Anwalt|Zuhörer-Instinkt|zukünftige Route)\b/iu, quiz: "socialworker", message: "literal social-care translation remains" },
   ],
   it: [
     { pattern: /\bil tuo area\b/iu, message: 'use feminine "la tua area"' },
     { pattern: /\bArea più (?:forte|difficile) visiva\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
     { pattern: /\bMiglior risultato\s*·/iu, message: "stale literal best-round label remains" },
     { pattern: /\b(?:Culinary Pass|CENTRAL-VISION|ATTITUDE|DEVINATION|Flight Attendant)\b/iu, message: "machine-translated or untranslated Italian UI terminology remains" },
+    { pattern: /\b(?:Lavoro|Segno)\b/iu, quiz: "bible", message: "a biblical name was translated as an ordinary word" },
+    { pattern: /\b(?:Vescia|lacrima)\b/iu, quiz: "midwifery", message: "incorrect Italian medical or wrapper terminology remains" },
+    { pattern: /\b(?:Assegno personale|avvocato premuroso|percorso futuro)\b/iu, message: "an English homonym or idiom was translated literally" },
   ],
   es: [
     { pattern: /\bÁrea más (?:fuerte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
     { pattern: /\b(?:partitura de entretenimiento|conjusión|hipotesis|radiotransistores|Train Driver)\b/iu, message: "machine-translated, misspelled, or untranslated Spanish terminology remains" },
+    { pattern: /\b(?:rostro registrado|herida curativa|imagen completa)\b/iu, message: "literal Spanish phrasing remains" },
   ],
   nl: [
     { pattern: /\bpang edrag\b/iu, quiz: "chef", message: 'use the compound noun "pangedrag"' },
     { pattern: /\b(?:entertainmentuitdaging|entertainmentquiz|CENTRAL-VISION|APTITUDE|OPERATING-KAMER|brutoscore|CAPITUDE|NUMERACTIE|INCIDENTEST|PAARDEN)\b/iu, message: "machine-translated or untranslated Dutch UI terminology remains" },
     { pattern: /\bje (?:heeft|zich)\b/iu, message: "Dutch second-person agreement is incorrect" },
     { pattern: /Vrouw B\s*·\s*Juist/iu, message: "direction label was mistranslated as correctness" },
+    { pattern: /\b(?:Solomon|Functie|Markering|John)\b/iu, quiz: "bible", message: "a biblical name was mistranslated or left in English" },
+    { pattern: /\b(?:plukken|vertraagde noot|opgenomen kant|nadenkende advocaat|toekomstige route)\b/iu, message: "an English homonym or idiom was translated literally" },
+    { pattern: /\b(?:akkoordlijn|TAND FUNCTIE)\b/iu, message: "incorrect Dutch compound terminology remains" },
   ],
   pt: [
     { pattern: /\bÁrea mais (?:forte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
@@ -452,6 +467,11 @@ const recurringNativeCopyDefects = {
     { pattern: /\b(?:numeramento|compareção|Train Driver|Culinary Pass|perpésua|pontuação bruta|carro alegórico)\b/iu, message: "machine-translated, misspelled, or untranslated Portuguese terminology remains" },
     { pattern: /\b(?:da|na) visor\b/iu, message: "Portuguese article agreement is incorrect" },
     { pattern: /\bPerguntas perdidas\b/iu, message: "literal translation of missed questions remains" },
+    { pattern: /^(?:Trabalho|Marca|Peter|John)$/iu, quiz: "bible", message: "a biblical name was mistranslated or left in English" },
+    { pattern: /\bCheque Pessoal\b/iu, message: "an English homonym or idiom was translated literally" },
+    { pattern: /\b(?:plano de fundo|conta anônima|rotas futuras)\b/iu, quiz: "socialworker", message: "an English homonym or idiom was translated literally" },
+    { pattern: /\b(?:Esconda a lágrima|Linhas retas parecendo)\b/iu, quiz: "midwifery", message: "an English homonym or idiom was translated literally" },
+    { pattern: /\bHOMÓFONE\b/iu, quiz: "word", message: "homófono has the wrong grammatical gender" },
   ],
 };
 
