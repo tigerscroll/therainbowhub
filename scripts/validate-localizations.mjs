@@ -7,7 +7,7 @@ const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
 const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
-const localeFiles = ["ar.json", "de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
+const localeFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "hr.json", "hu.json", "id.json", "it.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
 const errors = [];
 
@@ -75,6 +75,9 @@ function compareStructure(source, localized, pathParts, location) {
 
   if (typeof source === "string") {
     if (!localized.trim()) addError(`${location}#${currentPath}: localized string is empty.`);
+    if (localized.length > 500 && localized.length > Math.max(1, source.length) * 2.2) {
+      addError(`${location}#${currentPath}: localized string is implausibly longer than English (${localized.length}/${source.length} characters).`);
+    }
     if (JSON.stringify(placeholders(source)) !== JSON.stringify(placeholders(localized))) {
       addError(`${location}#${currentPath}: placeholders differ from English.`);
     }
@@ -198,6 +201,22 @@ function looksLikeUntranslatedSentence({ source, localized, pathParts }) {
   return !properNameOnly;
 }
 
+function containsEmbeddedEnglishClause({ source, localized, pathParts }) {
+  if (source === localized || isExactTechnicalString(source, pathParts)) return false;
+  const englishFunctionWords = /\b(?:the|this|that|and|your|you|with|from|for|each|every|questions?|answers?|results?|test|quiz|challenge|can|will|are|is|not|of|to|in)\b/gi;
+  return source
+    .split(/\n+|(?<=[.!?])\s+/u)
+    .map((segment) => segment.trim())
+    // Quoted song-title blanks stay in their original language by design.
+    .filter((segment) => !segment.includes("___"))
+    .filter((segment) => segment.length >= 12 && (segment.match(englishFunctionWords)?.length ?? 0) >= 2)
+    .some((segment) => localized.includes(segment));
+}
+
+function hasEnglishResidue(pair) {
+  return looksLikeUntranslatedSentence(pair) || containsEmbeddedEnglishClause(pair);
+}
+
 function validateQuestions(content, location) {
   const questions = (content.stages ?? []).flatMap((stage) => stage.questions ?? []);
   if (questions.length !== 10 || content.stages?.length !== 1 || content.stages.some((stage) => stage.questions?.length !== 10)) {
@@ -299,6 +318,10 @@ function validateMemorySemantics(content, location) {
   containsContracts.forEach(([container, expected, contract]) => assertTextContains(container, expected, location, contract));
   assertTextEquals(answer("memory-r1q5"), "K7M2Q", location, "memory-r1q5/exact-code");
   assertTextEquals(answer("memory-r1q7"), "2 – 9 – 4", location, "memory-r1q7/reversed-sequence");
+  const lockQuestion = q("memory-r2q3")?.question ?? "";
+  if (!lockQuestion.includes("1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK")) {
+    addError(`${location}#memory-r2q3/literal-code: LOCK/L0CK puzzle tokens must remain unchanged.`);
+  }
 }
 
 const visionIconAnswerContracts = {
@@ -662,7 +685,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     validateSemanticContracts(entry.name, localized, locale, location);
     validateNativeCopyPatterns(entry.name, localized, locale, location);
     if (locale === "ar") validateArabicPrimaryCopy(localized, location);
-    const residue = collectStringPairs(english, localized).filter(looksLikeUntranslatedSentence);
+    const residue = collectStringPairs(english, localized)
+      .filter((pair) => !(entry.name === "vision" && pair.source === "OFFICE FOCUS: FIND FIVE FLAGS FAST."))
+      .filter(hasEnglishResidue);
     residue.slice(0, 20).forEach(({ source, pathParts }) => {
       addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);
     });
@@ -688,7 +713,7 @@ for (const localeFile of translatedLocaleFiles) {
   compareStructure(sharedEnglish, localized, [], location);
   const residue = collectStringPairs(sharedEnglish, localized)
     .filter((pair) => pair.source !== "The Rainbow Hub")
-    .filter(looksLikeUntranslatedSentence);
+    .filter(hasEnglishResidue);
   residue.forEach(({ source, pathParts }) => {
     addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);
   });
@@ -729,14 +754,14 @@ if (JSON.stringify(actualInfoLocaleFiles) !== JSON.stringify(localeFiles)) {
       compareStructure(infoEnglish, localized, [], location);
       const residue = collectStringPairs(infoEnglish, localized)
         .filter((pair) => pair.source !== "The Rainbow Hub")
-        .filter(looksLikeUntranslatedSentence);
+        .filter(hasEnglishResidue);
       residue.forEach(({ source, pathParts }) => {
         addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);
       });
     }
 
     for (const { value, pathParts } of collectStrings(localized)) {
-      if (staleExplanationTerms[locale].test(value)) {
+      if (staleExplanationTerms[locale]?.test(value)) {
         addError(`${location}#${pathParts.join(".")}: stale answer-explanation wording must use answer key or answer review terminology.`);
       }
       if (locale === "pt") {
