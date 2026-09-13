@@ -805,6 +805,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
         <QuestionRenderer
           answer={selectedAnswer}
+          answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}

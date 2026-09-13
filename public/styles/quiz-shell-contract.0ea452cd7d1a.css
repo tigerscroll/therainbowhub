@@ -191,6 +191,21 @@
   }
 }
 
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy,
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell,
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell {
+  text-align: right;
+}
+
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__avatars > span {
+  margin-right: -9px !important;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__avatars > span:first-child {
+  margin-right: 0 !important;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy > h1,
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing-copy > .quiz-engine__quick-start {
   box-sizing: border-box;

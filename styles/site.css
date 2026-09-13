@@ -617,6 +617,73 @@ html.fbclid-traffic .hub-header {
   .not-found-hero__button { width: 100%; margin-top: 24px; }
 }
 
+/* Arabic uses the same site shell with native RTL reading order. Keep icons
+   and directional affordances on the visual destination side. */
+[dir="rtl"] body {
+  font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] .hub-home,
+[dir="rtl"] .legal-page,
+[dir="rtl"] .info-page,
+[dir="rtl"] .not-found-page {
+  text-align: right;
+}
+
+[dir="rtl"] .hub-quiz-card__body {
+  text-align: right;
+}
+
+[dir="rtl"] .hub-quiz-card__arrow {
+  right: auto;
+  left: 18px;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .hub-quiz-card:hover .hub-quiz-card__arrow {
+  transform: translateX(-3px) scaleX(-1);
+}
+
+[dir="rtl"] .legal-page li {
+  padding-right: 25px;
+  padding-left: 0;
+}
+
+[dir="rtl"] .legal-page li::before {
+  right: 4px;
+  left: auto;
+}
+
+[dir="rtl"] .info-page__related a {
+  padding-right: 16px;
+  padding-left: 46px;
+}
+
+[dir="rtl"] .info-page__related a i {
+  right: auto;
+  left: 4px;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .info-page__kicker {
+  letter-spacing: 0;
+}
+
+@media (max-width: 760px) {
+  [dir="rtl"] .hub-quiz-card__body {
+    padding: 15px 16px 15px 52px;
+  }
+
+  [dir="rtl"] .hub-quiz-card__arrow {
+    right: auto;
+    left: 15px;
+  }
+}
+
 @media (min-width: 761px) and (max-width: 1024px) {
   :root { --site-header-height: 40px; }
   .legal-page { width: calc(100% - 36px); margin-top: 30px; }

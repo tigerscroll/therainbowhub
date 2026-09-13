@@ -7,7 +7,7 @@ const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
 const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
-const localeFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
+const localeFiles = ["ar.json", "de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
 const errors = [];
 
@@ -28,6 +28,23 @@ const exactStringKeys = new Set([
 
 function addError(message) {
   errors.push(message);
+}
+
+function validateArabicPrimaryCopy(content, location) {
+  const primaryPaths = new Set(["title", "eyebrow", "landing.intro", "landing.cta", "results.name"]);
+  for (const { value, pathParts } of collectStrings(content)) {
+    const currentPath = pathParts.join(".");
+    const isPrimary = primaryPaths.has(currentPath)
+      || currentPath.endsWith(".headerLabel")
+      || /^results\.profiles\.[^.]+\.title$/.test(currentPath);
+    if (!isPrimary) continue;
+    if (!/\p{Script=Arabic}/u.test(value)) {
+      addError(`${location}#${currentPath}: primary Arabic copy must contain Arabic script.`);
+    }
+    if (/[A-Za-z]{3,}/.test(value)) {
+      addError(`${location}#${currentPath}: mixed English remains in primary Arabic copy: ${JSON.stringify(value)}.`);
+    }
+  }
 }
 
 function placeholders(value) {
@@ -62,7 +79,7 @@ function compareStructure(source, localized, pathParts, location) {
       addError(`${location}#${currentPath}: placeholders differ from English.`);
     }
     const localizedVisionAsset = source.includes("paper-fold-punch.svg")
-      && /paper-fold-punch-(?:fr|de|it|nl|es|pt)\.svg(?:\?[^\s]*)?$/.test(localized);
+      && /paper-fold-punch-(?:fr|de|it|nl|es|pt|ar)\.svg(?:\?[^\s]*)?$/.test(localized);
     if (isExactTechnicalString(source, pathParts) && localized !== source && !localizedVisionAsset) {
       addError(`${location}#${currentPath}: technical or asset string must remain identical to English.`);
     }
@@ -285,6 +302,7 @@ function validateMemorySemantics(content, location) {
 }
 
 const visionIconAnswerContracts = {
+  ar: { "vision-r8q5": "مرساة" },
   fr: { "vision-r8q5": "Ancre" },
   de: { "vision-r8q5": "Anker" },
   it: { "vision-r8q5": "Ancora" },
@@ -313,6 +331,7 @@ const iqWordplayContracts = Object.fromEntries(
 );
 
 const localizedFoldLabels = {
+  ar: ["اطوِ من اليسار إلى اليمين", "اطوِ من الأعلى إلى الأسفل", "اثقب مرة واحدة", "افتح الطيات"],
   fr: ["PLIER DE GAUCHE À DROITE", "PLIER DE HAUT EN BAS", "PERFORER UNE FOIS", "DÉPLIER"],
   de: ["VON LINKS NACH RECHTS FALTEN", "VON OBEN NACH UNTEN FALTEN", "EINMAL LOCHEN", "AUFFALTEN"],
   it: ["PIEGA DA SINISTRA A DESTRA", "PIEGA DALL'ALTO VERSO IL BASSO", "FORA UNA VOLTA", "RIAPRI"],
@@ -642,6 +661,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (entry.name === "marry") validateMarryLocalization(english, localized, locale, location);
     validateSemanticContracts(entry.name, localized, locale, location);
     validateNativeCopyPatterns(entry.name, localized, locale, location);
+    if (locale === "ar") validateArabicPrimaryCopy(localized, location);
     const residue = collectStringPairs(english, localized).filter(looksLikeUntranslatedSentence);
     residue.slice(0, 20).forEach(({ source, pathParts }) => {
       addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);
@@ -662,6 +682,9 @@ const sharedEnglish = JSON.parse(fs.readFileSync(path.join(i18nRoot, "en.json"),
 for (const localeFile of translatedLocaleFiles) {
   const location = `data/i18n/${localeFile}`;
   const localized = JSON.parse(fs.readFileSync(path.join(i18nRoot, localeFile), "utf8"));
+  if (localeFile === "ar.json" && (localized.locale?.code !== "ar" || localized.locale?.direction !== "rtl")) {
+    addError(`${location}#locale: Arabic shared copy must declare code ar and direction rtl.`);
+  }
   compareStructure(sharedEnglish, localized, [], location);
   const residue = collectStringPairs(sharedEnglish, localized)
     .filter((pair) => pair.source !== "The Rainbow Hub")
@@ -688,6 +711,7 @@ if (JSON.stringify(actualInfoLocaleFiles) !== JSON.stringify(localeFiles)) {
 } else {
   const infoEnglish = JSON.parse(fs.readFileSync(path.join(infoPageRoot, "en.json"), "utf8"));
   const staleExplanationTerms = {
+    ar: /(?:تفسيرات|شروح)/u,
     en: /\bexplanations?\b/iu,
     fr: /\bexplications?\b/iu,
     de: /\bErklärungen\b/iu,

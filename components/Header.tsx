@@ -1,6 +1,5 @@
 import { HeaderChrome, type HeaderLanguageOption } from "@/components/HeaderChrome";
 import {
-  getDefaultLocale,
   getLocaleOptions,
   getLocalePath,
   type SupportedLocale,
@@ -17,7 +16,7 @@ type HeaderProps = {
 };
 
 function localizedPath(locale: SupportedLocale, path: string) {
-  return locale === getDefaultLocale() ? path : getLocalePath(locale, path);
+  return getLocalePath(locale, path);
 }
 
 export function Header({ availableLocales, currentPath, locale, localePaths, translations }: HeaderProps) {

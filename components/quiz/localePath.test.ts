@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { localizeInternalPath } from "../../lib/localePath.ts";
 
-const locales = ["en", "fr", "de", "it", "nl", "es", "pt"] as const;
+const locales = ["en", "fr", "de", "it", "nl", "es", "pt", "ar"] as const;
 
 test("language switching replaces an existing locale prefix", () => {
   assert.equal(localizeInternalPath("it", "/fr/cambridge", locales, "en"), "/it/cambridge");
@@ -19,5 +19,6 @@ test("language switching repairs nested locale prefixes", () => {
 test("language switching preserves routes, query strings and fragments", () => {
   assert.equal(localizeInternalPath("de", "/fr/info/about?from=menu#privacy", locales, "en"), "/de/info/about?from=menu#privacy");
   assert.equal(localizeInternalPath("pt", "/", locales, "en"), "/pt");
+  assert.equal(localizeInternalPath("ar", "/fr/cambridge", locales, "en"), "/ar/cambridge");
   assert.equal(localizeInternalPath("en", "/it", locales, "en"), "/");
 });

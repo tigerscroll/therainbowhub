@@ -6,6 +6,7 @@ import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
   answer?: number;
+  answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => void;
   onStudyComplete: () => void;
@@ -115,7 +116,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -155,7 +156,7 @@ function ChoiceQuestion({ answer, feedback, onAnswer, question }: QuestionRender
                     : icon}
                 </span>
               ) : null}
-              {!hasAnswerIcons && question.presentation !== "scale" ? <span>{String.fromCharCode(65 + index)}</span> : null}
+              {!hasAnswerIcons && question.presentation !== "scale" ? <span>{answerLabels?.[index] ?? String.fromCharCode(65 + index)}</span> : null}
               {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
               <strong>{choice}</strong>
             </button>

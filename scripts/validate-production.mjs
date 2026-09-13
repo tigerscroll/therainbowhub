@@ -9,7 +9,7 @@ const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
 const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
-const multilingualLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
+const multilingualLocaleFiles = ["ar.json", "de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");

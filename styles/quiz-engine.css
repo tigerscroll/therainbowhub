@@ -608,3 +608,63 @@ body.quiz-reward-prompt-open { overflow: hidden !important; overscroll-behavior:
 @media (max-width: 900px) {
   .quiz-engine__about { margin-top: var(--quiz-about-gap-compact, 300px); }
 }
+
+/* First-class RTL support for Arabic quiz copy. Structural grids stay intact;
+   only reading alignment, directional borders and arrows are mirrored. */
+[dir="rtl"] .quiz-theme[data-quiz-theme] {
+  font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] .quiz-engine__landing h1,
+[dir="rtl"] .quiz-engine__landing h2,
+[dir="rtl"] .quiz-engine__question h1,
+[dir="rtl"] .quiz-engine__question h2,
+[dir="rtl"] .quiz-engine__results h1,
+[dir="rtl"] .quiz-engine__results h2,
+[dir="rtl"] .quiz-engine__eyebrow,
+[dir="rtl"] .quiz-engine__header-label {
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] .quiz-engine__landing-copy,
+[dir="rtl"] .quiz-engine__about,
+[dir="rtl"] .quiz-engine__question,
+[dir="rtl"] .quiz-engine__answer,
+[dir="rtl"] .quiz-engine__answer strong,
+[dir="rtl"] .quiz-engine__checklist,
+[dir="rtl"] .quiz-engine__result-signals,
+[dir="rtl"] .quiz-engine__result-dimensions,
+[dir="rtl"] .quiz-engine__answer-review,
+[dir="rtl"] .quiz-engine__recommendation,
+[dir="rtl"] .quiz-engine__recommendations > header {
+  text-align: right;
+}
+
+[dir="rtl"] .quiz-engine__answer-review--impact article {
+  border-right: 4px solid var(--quiz-primary);
+  border-left: 0;
+}
+
+[dir="rtl"] .quiz-engine__preparing-progress i,
+[dir="rtl"] .quiz-engine__study-progress i {
+  transform-origin: right center;
+}
+
+[dir="rtl"] .quiz-engine__primary-arrow svg,
+[dir="rtl"] .quiz-engine__primary-icon,
+[dir="rtl"] .quiz-engine__recommendation-arrow {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .quiz-engine__primary:has(.quiz-engine__primary-icon) {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .quiz-engine__recommendation:hover .quiz-engine__recommendation-arrow {
+  transform: translateX(-3px) scaleX(-1);
+}
+
+[dir="rtl"] .quiz-engine__answers--scale .quiz-engine__answer {
+  justify-items: start;
+  text-align: right;
+}
