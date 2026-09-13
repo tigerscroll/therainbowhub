@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "slug": "catholic",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/catholic-icon.webp",
+    "published": "2026-09-13",
+    "difficulty": "Hard",
+    "icon": "✝️",
+    "socialProofCount": 275000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#321a25",
+      "pageAlt": "#714050",
+      "surface": "#f6ecd8",
+      "surfaceRaised": "#fffaf0",
+      "text": "#2b1c20",
+      "muted": "#79676a",
+      "primary": "#922e42",
+      "primaryText": "#fff8e8",
+      "border": "#c89a43",
+      "correct": "#39735a",
+      "incorrect": "#ad4f4f"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #28151f, #672b3c)",
+      "text": "#fff8e8",
+      "border": "#d3a954",
+      "shadow": "0 8px 26px rgba(39, 18, 29, 0.3)"
+    },
+    "artwork": {
+      "icon": "✝️"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "catholic-q1",
+          "catholic-q2",
+          "catholic-q3",
+          "catholic-q4",
+          "catholic-q5",
+          "catholic-q6",
+          "catholic-q7",
+          "catholic-q8",
+          "catholic-q9",
+          "catholic-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "catholic-q1": { "presentation": "text", "correct": 0, "category": "worship_sacraments", "choiceCount": 4 },
+      "catholic-q2": { "presentation": "text", "correct": 1, "category": "church_leadership", "choiceCount": 4 },
+      "catholic-q3": { "presentation": "text", "correct": 2, "category": "worship_sacraments", "choiceCount": 4 },
+      "catholic-q4": { "presentation": "text", "correct": 3, "category": "liturgical_year", "choiceCount": 4 },
+      "catholic-q5": { "presentation": "text", "correct": 0, "category": "prayer_devotion", "choiceCount": 4 },
+      "catholic-q6": { "presentation": "text", "correct": 1, "category": "scripture", "choiceCount": 4 },
+      "catholic-q7": { "presentation": "text", "correct": 2, "category": "worship_sacraments", "choiceCount": 4 },
+      "catholic-q8": { "presentation": "text", "correct": 3, "category": "prayer_devotion", "choiceCount": 4 },
+      "catholic-q9": { "presentation": "text", "correct": 0, "category": "liturgical_year", "choiceCount": 4 },
+      "catholic-q10": { "presentation": "text", "correct": 1, "category": "scripture", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🕯️"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.7 },
+        { "key": "profile-3", "min": 0.5 },
+        { "key": "profile-4", "min": 0.3 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["worship_sacraments"] },
+        { "key": "dimension-2", "categories": ["church_leadership"] },
+        { "key": "dimension-3", "categories": ["liturgical_year"] },
+        { "key": "dimension-4", "categories": ["prayer_devotion"] },
+        { "key": "dimension-5", "categories": ["scripture"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

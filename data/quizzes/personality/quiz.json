@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "slug": "personality",
+  "engine": {
+    "scoring": "weighted-profile",
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/personality-icon.webp",
+    "published": "2026-09-13",
+    "difficulty": "Quick",
+    "icon": "🌍",
+    "socialProofCount": 274000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#163f46",
+      "pageAlt": "#4a7e7c",
+      "surface": "#f7efe0",
+      "surfaceRaised": "#fffaf1",
+      "text": "#193438",
+      "muted": "#657576",
+      "primary": "#bf5b3d",
+      "primaryText": "#fffaf1",
+      "border": "#d4a64e",
+      "correct": "#39735a",
+      "incorrect": "#ad4f42"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "22px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "paper"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #12363c, #39706f)",
+      "text": "#fff9ed",
+      "border": "#e0b45d",
+      "shadow": "0 8px 26px rgba(13, 49, 55, 0.3)"
+    },
+    "artwork": {
+      "icon": "🌍",
+      "profiles": {
+        "italy": "assets/items/result-italy.webp",
+        "japan": "assets/items/result-japan.webp",
+        "australia": "assets/items/result-australia.webp",
+        "sweden": "assets/items/result-sweden.webp"
+      }
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "personality-q1",
+          "personality-q2",
+          "personality-q3",
+          "personality-q4",
+          "personality-q5",
+          "personality-q6",
+          "personality-q7",
+          "personality-q8",
+          "personality-q9",
+          "personality-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "personality-q1": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q01.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "australia": 1 },
+          { "japan": 1 },
+          { "sweden": 1 }
+        ]
+      },
+      "personality-q2": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q02.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "australia": 1 },
+          { "japan": 1 },
+          { "sweden": 1 }
+        ]
+      },
+      "personality-q3": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q03.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "australia": 1 },
+          { "sweden": 1 },
+          { "japan": 1 },
+          { "italy": 1 }
+        ]
+      },
+      "personality-q4": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q04.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "sweden": 1 },
+          { "australia": 1 },
+          { "japan": 1 }
+        ]
+      },
+      "personality-q5": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q05.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "sweden": 1 },
+          { "japan": 1 },
+          { "australia": 1 }
+        ]
+      },
+      "personality-q6": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q06.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "sweden": 1 },
+          { "australia": 1 },
+          { "japan": 1 }
+        ]
+      },
+      "personality-q7": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q07.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "australia": 1 },
+          { "italy": 1 },
+          { "sweden": 1 },
+          { "japan": 1 }
+        ]
+      },
+      "personality-q8": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q08.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "italy": 1 },
+          { "sweden": 1 },
+          { "australia": 1 },
+          { "japan": 1 }
+        ]
+      },
+      "personality-q9": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q09.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "sweden": 1 },
+          { "australia": 1 },
+          { "japan": 1 },
+          { "italy": 1 }
+        ]
+      },
+      "personality-q10": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/personality/assets/items/q10.webp" },
+        "choiceCount": 4,
+        "choiceMeanings": [
+          { "australia": 1 },
+          { "italy": 1 },
+          { "japan": 1 },
+          { "sweden": 1 }
+        ]
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "🧭"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "id": "italy" },
+        { "key": "profile-2", "id": "japan" },
+        { "key": "profile-3", "id": "australia" },
+        { "key": "profile-4", "id": "sweden" }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "profiles": ["italy"] },
+        { "key": "dimension-2", "profiles": ["japan"] },
+        { "key": "dimension-3", "profiles": ["australia"] },
+        { "key": "dimension-4", "profiles": ["sweden"] }
+      ],
+      "score": {
+        "showPercentage": false,
+        "showBestRound": false
+      },
+      "profileReveal": {
+        "auraLabelFirst": true
+      }
+    }
+  }
+}

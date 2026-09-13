@@ -205,10 +205,8 @@ for (const folder of folders) {
   fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
   const sortedLocaleFiles = [...localeFiles].sort();
   const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
-  fail(
-    JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles),
-    `${folder.name}: locale files must be exactly ${expectedLocaleFiles.join(", ")}.`,
-  );
+  const independentLocales = config.engine?.localeParity === "independent";
+  fail(independentLocales || JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
 
   const sourceRaw = read(path.join(directory, "en.json"));
   if (sourceRaw) validateTextOnlyLocale(sourceRaw, config, `${folder.name}/en.json`);

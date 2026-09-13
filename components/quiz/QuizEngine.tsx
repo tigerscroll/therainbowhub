@@ -543,6 +543,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const scoreCopy = quiz.result.score;
     const matchCopy = quiz.result.match;
     const profileReveal = quiz.result.profileReveal;
+    const profileBreakdown = profileReveal?.breakdown;
     const profileArtwork = resolveProfileArtwork(quiz, answers, result.profile.id);
     const hasDerivedScore = result.derivedScore !== undefined && Boolean(scoreCopy?.derivedLabel);
     const consistency = estimate?.consistencyLabels[result.consistency];
@@ -609,13 +610,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             {!reviewUnlocked ? (
               <section className="quiz-engine__answer-review-unlock">
                 <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
-                <span>{translations.results.matchBreakdown.eyebrow}</span>
-                <h3>{translations.results.matchBreakdown.title}</h3>
-                <p>{translations.results.matchBreakdown.copy}</p>
+                <span>{profileBreakdown?.eyebrow ?? translations.results.matchBreakdown.eyebrow}</span>
+                <h3>{profileBreakdown?.title ?? translations.results.matchBreakdown.title}</h3>
+                <p>{profileBreakdown?.copy ?? translations.results.matchBreakdown.copy}</p>
                 <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-                  {adBusy ? translations.ad.loading : translations.results.matchBreakdown.button}
+                  {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
                 </button>
-                <small>{translations.results.matchBreakdown.adNote}</small>
+                <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
               </section>
             ) : (
               <>
@@ -629,7 +630,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 </dl>
                 {Object.keys(result.dimensionScores).length ? (
                   <div className="quiz-engine__dimensions quiz-engine__dimensions--summary">
-                    <h3>{translations.results.matchBreakdown.heading}</h3>
+                    <h3>{profileBreakdown?.heading ?? translations.results.matchBreakdown.heading}</h3>
                     {Object.entries(result.dimensionScores).map(([label, value]) => (
                       <div className="quiz-engine__dimension" key={label}>
                         <div><span>{label}</span><strong>{value}%</strong></div>

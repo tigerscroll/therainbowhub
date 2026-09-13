@@ -221,6 +221,14 @@ export type QuizResultConfig = {
     consistencyLabels: { high: string; medium: string; mixed: string };
     firstFeatureLabel?: string;
     portraitAlt?: string;
+    breakdown?: {
+      eyebrow: string;
+      title: string;
+      copy: string;
+      button: string;
+      adNote: string;
+      heading: string;
+    };
     disclaimer: string;
   };
 };
@@ -1143,6 +1151,10 @@ function normalizeLocale(
     (["high", "medium", "mixed"] as const).forEach((key) => text(reveal.consistencyLabels?.[key], `results.profileReveal.consistencyLabels.${key}`, file));
     if (reveal.auraLabelFirst !== undefined && typeof reveal.auraLabelFirst !== "boolean") throw new Error(`${file}: results.profileReveal.auraLabelFirst must be a boolean.`);
     if (reveal.firstFeatureLabel !== undefined) text(reveal.firstFeatureLabel, "results.profileReveal.firstFeatureLabel", file);
+    if (reveal.breakdown !== undefined) {
+      (["eyebrow", "title", "copy", "button", "adNote", "heading"] as const)
+        .forEach((key) => text(reveal.breakdown?.[key], `results.profileReveal.breakdown.${key}`, file));
+    }
     if (reveal.portraitAlt !== undefined) {
       const portraitAlt = text(reveal.portraitAlt, "results.profileReveal.portraitAlt", file);
       if (!portraitAlt.includes("{profile}")) throw new Error(`${file}: results.profileReveal.portraitAlt must include {profile}.`);

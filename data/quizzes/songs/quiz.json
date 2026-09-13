@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "slug": "songs",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/songs-icon.webp",
+    "published": "2026-09-13",
+    "difficulty": "Hard",
+    "icon": "🎵",
+    "socialProofCount": 273000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#25203f",
+      "pageAlt": "#594b7c",
+      "surface": "#f7edda",
+      "surfaceRaised": "#fffaf0",
+      "text": "#241d2a",
+      "muted": "#756777",
+      "primary": "#9d3f55",
+      "primaryText": "#fff8e8",
+      "border": "#cf9c45",
+      "correct": "#39735a",
+      "incorrect": "#ad4f4f"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #201a38, #63344f)",
+      "text": "#fff8e8",
+      "border": "#d4a752",
+      "shadow": "0 8px 26px rgba(27, 20, 48, 0.3)"
+    },
+    "artwork": {
+      "icon": "🎵"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "songs-q1",
+          "songs-q2",
+          "songs-q3",
+          "songs-q4",
+          "songs-q5",
+          "songs-q6",
+          "songs-q7",
+          "songs-q8",
+          "songs-q9",
+          "songs-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "songs-q1": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q01.webp" },
+        "correct": 0,
+        "category": "solo_legends",
+        "choiceCount": 4
+      },
+      "songs-q2": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q02.webp" },
+        "correct": 1,
+        "category": "british_invasion",
+        "choiceCount": 4
+      },
+      "songs-q3": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q03.webp" },
+        "correct": 2,
+        "category": "motown_soul",
+        "choiceCount": 4
+      },
+      "songs-q4": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q04.webp" },
+        "correct": 3,
+        "category": "british_invasion",
+        "choiceCount": 4
+      },
+      "songs-q5": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q05.webp" },
+        "correct": 0,
+        "category": "british_invasion",
+        "choiceCount": 4
+      },
+      "songs-q6": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q06.webp" },
+        "correct": 1,
+        "category": "motown_soul",
+        "choiceCount": 4
+      },
+      "songs-q7": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q07.webp" },
+        "correct": 2,
+        "category": "rock_classics",
+        "choiceCount": 4
+      },
+      "songs-q8": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q08.webp" },
+        "correct": 3,
+        "category": "solo_legends",
+        "choiceCount": 4
+      },
+      "songs-q9": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q09.webp" },
+        "correct": 0,
+        "category": "motown_soul",
+        "choiceCount": 4
+      },
+      "songs-q10": {
+        "presentation": "text",
+        "image": { "src": "/quizzes/songs/assets/items/q10.webp" },
+        "correct": 1,
+        "category": "rock_classics",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "🎶"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.7 },
+        { "key": "profile-3", "min": 0.5 },
+        { "key": "profile-4", "min": 0.3 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["solo_legends"] },
+        { "key": "dimension-2", "categories": ["british_invasion"] },
+        { "key": "dimension-3", "categories": ["motown_soul"] },
+        { "key": "dimension-4", "categories": ["rock_classics"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

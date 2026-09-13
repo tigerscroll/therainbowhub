@@ -307,12 +307,13 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
   const sortedLocaleFiles = localeFiles.sort();
   const expectedLocaleFiles = multilingualLocaleFiles;
-  if (JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
-    addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (expected ${expectedLocaleFiles.join(", ")}; found ${localeFiles.join(", ") || "none"})`);
-  }
   const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
   const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
+  const independentLocales = quizConfig.engine?.localeParity === "independent";
+  if (!sortedLocaleFiles.includes("en.json") || (!independentLocales && JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles))) {
+    addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (${independentLocales ? "English plus any completed supported locales" : `exactly ${expectedLocaleFiles.join(", ")}`} required; found ${localeFiles.join(", ") || "none"})`);
+  }
   const expectedStageCount = 1;
   const expectedQuestionsPerStage = 10;
   if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {

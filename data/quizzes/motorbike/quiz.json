@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "slug": "motorbike",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/motorbike-icon.webp",
+    "published": "2026-09-13",
+    "difficulty": "Hard",
+    "icon": "🏍️",
+    "socialProofCount": 276000
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#173044",
+      "pageAlt": "#496d83",
+      "surface": "#eef2f1",
+      "surfaceRaised": "#ffffff",
+      "text": "#1c2d38",
+      "muted": "#66747b",
+      "primary": "#c33f35",
+      "primaryText": "#ffffff",
+      "border": "#d39b3e",
+      "correct": "#34715c",
+      "incorrect": "#ad474c"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #132b3e, #365f77)",
+      "text": "#ffffff",
+      "border": "#dea74c",
+      "shadow": "0 8px 26px rgba(14, 37, 53, 0.3)"
+    },
+    "artwork": {
+      "icon": "🏍️"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "motorbike-q1",
+          "motorbike-q2",
+          "motorbike-q3",
+          "motorbike-q4",
+          "motorbike-q5",
+          "motorbike-q6",
+          "motorbike-q7",
+          "motorbike-q8",
+          "motorbike-q9",
+          "motorbike-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "motorbike-q1": { "presentation": "text", "correct": 0, "category": "machine_checks", "choiceCount": 4 },
+      "motorbike-q2": { "presentation": "text", "correct": 1, "category": "cornering_control", "choiceCount": 4 },
+      "motorbike-q3": { "presentation": "text", "correct": 2, "category": "hazard_awareness", "choiceCount": 4 },
+      "motorbike-q4": { "presentation": "text", "correct": 3, "category": "braking_control", "choiceCount": 4 },
+      "motorbike-q5": { "presentation": "text", "correct": 0, "category": "hazard_awareness", "choiceCount": 4 },
+      "motorbike-q6": { "presentation": "text", "correct": 1, "category": "passenger_safety", "choiceCount": 4 },
+      "motorbike-q7": { "presentation": "text", "correct": 2, "category": "cornering_control", "choiceCount": 4 },
+      "motorbike-q8": { "presentation": "text", "correct": 3, "category": "hazard_awareness", "choiceCount": 4 },
+      "motorbike-q9": { "presentation": "text", "correct": 0, "category": "machine_checks", "choiceCount": 4 },
+      "motorbike-q10": { "presentation": "text", "correct": 1, "category": "rider_readiness", "choiceCount": 4 }
+    },
+    "checkpoint": {
+      "finalIcon": "🏁"
+    },
+    "results": {
+      "profiles": [
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.7 },
+        { "key": "profile-3", "min": 0.5 },
+        { "key": "profile-4", "min": 0.3 },
+        { "key": "profile-5", "min": 0 }
+      ],
+      "dimensions": [
+        { "key": "dimension-1", "categories": ["machine_checks"] },
+        { "key": "dimension-2", "categories": ["cornering_control"] },
+        { "key": "dimension-3", "categories": ["hazard_awareness"] },
+        { "key": "dimension-4", "categories": ["braking_control"] },
+        { "key": "dimension-5", "categories": ["passenger_safety"] },
+        { "key": "dimension-6", "categories": ["rider_readiness"] }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

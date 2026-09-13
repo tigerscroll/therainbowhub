@@ -617,8 +617,13 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
   const expectedLocaleFiles = localeFiles;
-  if (JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
-    addError(`data/quizzes/${entry.name}: locale set must be exactly ${expectedLocaleFiles.join(", ")}.`);
+  const independentLocales = manifest.engine?.localeParity === "independent";
+  if (!actualLocaleFiles.includes("en.json")) {
+    addError(`data/quizzes/${entry.name}: en.json is required.`);
+    continue;
+  }
+  if (!independentLocales && JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
+    addError(`data/quizzes/${entry.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
     continue;
   }
   const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
