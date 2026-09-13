@@ -7,7 +7,6 @@ const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.replace(/\.json$/, "")));
-const multilingualQuizzes = new Set(["memory", "years-left"]);
 const errors = [];
 const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
@@ -205,9 +204,7 @@ for (const folder of folders) {
   fail(!invalid.length, `${folder.name}: unsupported locale files: ${invalid.join(", ")}.`);
   fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
   const sortedLocaleFiles = [...localeFiles].sort();
-  const expectedLocaleFiles = multilingualQuizzes.has(folder.name)
-    ? [...supportedLocales].map((locale) => `${locale}.json`).sort()
-    : ["en.json"];
+  const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
   fail(
     JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles),
     `${folder.name}: locale files must be exactly ${expectedLocaleFiles.join(", ")}.`,
@@ -281,7 +278,6 @@ for (const folder of folders) {
     const selector = config.engine?.profileArtworkSelector;
     const selectorQuestion = sourceQuestions[0];
     fail(config.template === "single-stage-rewarded-v1" && config.engine?.scoring === "weighted-profile", "marry: must use the shared single-stage weighted-profile engine.");
-    fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(["en.json"]), "marry: must remain worldwide-English only.");
     fail(sourceQuestions.length === 10 && sourceQuestions[0]?.id === "marry-r1q1", "marry: needs the approved ten-choice sequence beginning with the portrait selector.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(expectedProfiles), "marry: archetype set or fixed tie order changed.");
     fail(selector?.questionId === "marry-r1q1" && selector?.fallback === "stable-answer-hash", "marry: profile artwork selector is missing or invalid.");

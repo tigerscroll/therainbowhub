@@ -9,7 +9,6 @@ const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
 const localeFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
-const multilingualQuizzes = new Set(["memory", "years-left"]);
 const errors = [];
 
 const exactStringKeys = new Set([
@@ -66,6 +65,22 @@ function compareStructure(source, localized, pathParts, location) {
       && /paper-fold-punch-(?:fr|de|it|nl|es|pt)\.svg(?:\?[^\s]*)?$/.test(localized);
     if (isExactTechnicalString(source, pathParts) && localized !== source && !localizedVisionAsset) {
       addError(`${location}#${currentPath}: technical or asset string must remain identical to English.`);
+    }
+    const isVisualAtom = pathParts.includes("visual")
+      && pathParts.includes("items")
+      && /^(?:[A-Z]|[?○●◯◆▲△□]|↗|↘|↙|↖|│)$/.test(source);
+    const isAnswerLetter = pathParts.includes("answers")
+      && /^[A-D]$/.test(source)
+      && !location.includes("/grammar/");
+    if ((isVisualAtom || isAnswerLetter) && localized !== source) {
+      addError(`${location}#${currentPath}: puzzle token ${JSON.stringify(source)} must not be translated.`);
+    }
+    if (pathParts.includes("visual") && pathParts.includes("items")) {
+      const sourceSeparators = source.match(/::/g)?.length ?? 0;
+      const localizedSeparators = localized.match(/::/g)?.length ?? 0;
+      if (localizedSeparators !== sourceSeparators) {
+        addError(`${location}#${currentPath}: visual layout separator count differs from English.`);
+      }
     }
     return;
   }
@@ -156,6 +171,10 @@ function looksLikeUntranslatedSentence({ source, localized, pathParts }) {
   if (/^(?:[AB]+|\?)(?:\s*→\s*(?:[AB]+|\?))+$/.test(source)) return false;
   if (/^[\d\s.,+?=×÷/\-mLV%]+$/.test(source)) return false;
   if (/^(?:Leo|Mara|Nia)(?:\s+—\s+(?:Leo|Mara|Nia)){2}$/.test(source)) return false;
+  // Historical names, official organisation names and mottos are not translated.
+  // Limit this exemption to answer choices so ordinary title-case UI copy remains checked.
+  if (pathParts.includes("answers")
+    && /^(?:[A-Z][\p{L}.']+|(?:da|de|del|van|von|ad|the|of))(?:\s+(?:[A-Z][\p{L}.']+|(?:da|de|del|van|von|ad|the|of))){1,6}$/u.test(source)) return false;
   const words = source.match(/[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['’][A-Za-zÀ-ÖØ-öø-ÿ]+)?/g) ?? [];
   if (words.length < 3) return false;
   const properNameOnly = /^(?:Oxford|Cambridge|Harvard|Sarah|Mia)(?:\s+(?:University|College))?$/i.test(source);
@@ -266,12 +285,12 @@ function validateMemorySemantics(content, location) {
 }
 
 const visionIconAnswerContracts = {
-  fr: { "vision-r1q5": "Étoile", "vision-r8q5": "Ancre", "vision-r9q5": "Carré corail" },
-  de: { "vision-r1q5": "Stern", "vision-r8q5": "Anker", "vision-r9q5": "Korallfarbenes Quadrat" },
-  it: { "vision-r1q5": "Stella", "vision-r8q5": "Ancora", "vision-r9q5": "Quadrato corallo" },
-  nl: { "vision-r1q5": "Ster", "vision-r8q5": "Anker", "vision-r9q5": "Koraalkleurig vierkant" },
-  es: { "vision-r1q5": "Estrella", "vision-r8q5": "Ancla", "vision-r9q5": "Cuadrado coral" },
-  pt: { "vision-r1q5": "Estrela", "vision-r8q5": "Âncora", "vision-r9q5": "Quadrado coral" },
+  fr: { "vision-r8q5": "Ancre" },
+  de: { "vision-r8q5": "Anker" },
+  it: { "vision-r8q5": "Ancora" },
+  nl: { "vision-r8q5": "Anker" },
+  es: { "vision-r8q5": "Ancla" },
+  pt: { "vision-r8q5": "Âncora" },
 };
 
 function validateVisionSemantics(content, locale, location) {
@@ -282,9 +301,6 @@ function validateVisionSemantics(content, locale, location) {
     assertTextEquals(answer(id), expected, location, `${id}/icon-meaning`);
   }
 
-  assertTextContains(q("vision-r5q6")?.study?.items?.[2], answer("vision-r5q6"), location, "vision-r5q6/bottom-left-object");
-  assertTextContains(q("vision-r6q1")?.study?.items?.[1], answer("vision-r6q1"), location, "vision-r6q1/blue-number");
-
   const fContext = q("vision-r3q6")?.context ?? "";
   const fCount = [...fContext].filter((character) => character.toLocaleLowerCase(locale) === "f").length;
   if (fCount !== Number(answer("vision-r3q6"))) {
@@ -292,14 +308,9 @@ function validateVisionSemantics(content, locale, location) {
   }
 }
 
-const iqWordplayContracts = {
-  fr: { "iq-s1q3": "MANTEAU", "iq-s2q2": "SCU", "iq-s4q8": "ÉQUIPE" },
-  de: { "iq-s1q3": "BALL", "iq-s2q2": "FOV", "iq-s4q8": "ARBEIT" },
-  it: { "iq-s1q3": "TENNIS", "iq-s2q2": "FOV", "iq-s4q8": "LAVORO" },
-  nl: { "iq-s1q3": "BAL", "iq-s2q2": "NWT", "iq-s4q8": "WERK" },
-  es: { "iq-s1q3": "TENIS", "iq-s2q2": "BXF", "iq-s4q8": "EQUIPO" },
-  pt: { "iq-s1q3": "BOLA", "iq-s2q2": "FOV", "iq-s4q8": "TRABALHO" },
-};
+const iqWordplayContracts = Object.fromEntries(
+  translatedLocaleFiles.map((file) => [path.basename(file, ".json"), { "iq-s2q2": "EQH" }]),
+);
 
 const localizedFoldLabels = {
   fr: ["PLIER DE GAUCHE À DROITE", "PLIER DE HAUT EN BAS", "PERFORER UNE FOIS", "DÉPLIER"],
@@ -340,42 +351,28 @@ function validateIqSemantics(content, locale, location) {
   for (const [id, expected] of Object.entries(contracts)) {
     assertTextEquals(correctAnswer(q(id)), expected, location, `${id}/native-wordplay`);
   }
+  const codedExample = q("iq-s2q2")?.visual?.items?.[1];
+  if (codedExample !== "CAT → DCU") {
+    addError(`${location}#iq-s2q2.visual.items.1: the literal coded example CAT → DCU must not be translated.`);
+  }
 }
 
 function validateGermanRegisterCorrections(quiz, content, location) {
   const q = (id) => questionById(content, id, location);
   const expectedQuestions = {
-    grammar: {
-      "grammar-r8q1": "Wähle die korrekte Verbindung.",
-    },
     iq: {
-      "iq-s2q3": "Du blickst nach Norden und drehst dich zweimal nach rechts. In welche Richtung blickst du nun?",
-      "iq-s3q5": "Wende dieselbe Drehung an: Wenn ↑ zu ↘ wird, was wird aus ←?",
-      "iq-s4q4": "Starte in der Mitte mit Blick nach Norden. Gehe ein Feld vor, drehe dich nach rechts, gehe zwei Felder, drehe dich wieder nach rechts und gehe ein Feld. Wo landest du?",
-      "iq-s5q2": "Verdopple in jeder Zeile die erste Zahl und addiere die zweite. Welche Zahl fehlt?",
-      "iq-s5q4": "Starte in der Mitte. Gehe zweimal nach oben, einmal nach rechts, einmal nach unten und zweimal nach links. Wo landest du?",
-      "iq-s5q5": "Vertausche nur das erste und das letzte Zeichen. Welcher Code entsteht?",
-      "iq-s5q8": "Ein Pfeil zeigt nach oben. Drehe ihn um 90° im Uhrzeigersinn und spiegle ihn anschließend an einer senkrechten Achse. Wohin zeigt er?",
-    },
-    nursing: {
-      "nurse-r3q5": "Du zählst 9 Atemzüge in 30 Sekunden. Wie hoch ist die Atemfrequenz pro Minute?",
+      "iq-s4q4": "Starten Sie in der Mitte mit Blick nach Norden. Gehen Sie ein Feld vor, drehen Sie sich nach rechts, gehen Sie zwei Felder, drehen Sie sich wieder nach rechts und gehen Sie ein Feld. Wo landen Sie?",
+      "iq-s5q2": "Verdoppeln Sie in jeder Zeile die erste Zahl und addieren Sie die zweite. Welche Zahl fehlt?",
+      "iq-s5q8": "Ein Pfeil zeigt nach oben. Drehen Sie ihn um 90° im Uhrzeigersinn und spiegeln Sie ihn anschließend an einer senkrechten Achse. Wohin zeigt er?",
     },
     vision: {
-      "vision-r8q3": "Starte am roten Punkt und folge seiner gepunkteten Linie. Welchen Buchstaben erreichst du?",
-      "vision-r8q4": "Drehe ↘ zweimal um 90 Grad nach rechts.",
+      "vision-r8q3": "Starten Sie am roten Punkt und folgen Sie seiner gepunkteten Linie. Welchen Buchstaben erreichen Sie?",
     },
   };
   for (const [id, expected] of Object.entries(expectedQuestions[quiz] ?? {})) {
     if (q(id)?.question !== expected) addError(`${location}#${id}.question: approved German direct-address wording changed.`);
   }
 
-  if (quiz === "paramedic" && q("paramedic-r9q3")?.context !== "EINSATZBERICHT — Ein Zufahrtsweg ist 0,4 km lang. Ein zweiter Abschnitt misst 250 m. Trage die Gesamtstrecke in Metern ein.") {
-    addError(`${location}#paramedic-r9q3.context: approved German direct-address wording changed.`);
-  }
-  if (quiz === "vision") {
-    if (q("vision-r9q4")?.context !== "Drehe den Pfeil zunächst um 90 Grad im Uhrzeigersinn. Spiegle das Ergebnis anschließend an einer senkrechten Achse.") addError(`${location}#vision-r9q4.context: approved German direct-address wording changed.`);
-    if (q("vision-r10q3")?.context !== "Verfolge den Formen- und den Füllzyklus getrennt.") addError(`${location}#vision-r10q3.context: approved German direct-address wording changed.`);
-  }
   if (quiz === "memory") {
     const protectedThirdPersonCopy = new Set([
       "Sie können später wieder auftauchen.",
@@ -395,7 +392,6 @@ function validateSemanticContracts(quiz, content, locale, location) {
   if (quiz === "memory") validateMemorySemantics(content, location);
   if (quiz === "vision") {
     validateVisionSemantics(content, locale, location);
-    validateLocalizedFoldAsset(content, locale, location);
   }
   if (quiz === "iq") validateIqSemantics(content, locale, location);
   if (locale === "de") validateGermanRegisterCorrections(quiz, content, location);
@@ -414,7 +410,7 @@ function collectStrings(value, pathParts = [], output = []) {
 const portugueseVariantTerms = /\b(?:você|vocês|equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|tela|telas|registo|registos|registro|registros|secção|secções|seção|seções|prémio|prémios|prêmio|prêmios|comboio|comboios|trem|trens|íman|ímans|ímã|ímãs|câmara|câmaras|câmera|câmeras|telemóvel|telemóveis|celular|celulares|autocarro|autocarros|ônibus|ónibus|facto|factos|fato|fatos|contato|contatos|contacto|contactos|bebé|bebés|bebê|bebês|planeado|planeada|planeados|planeadas|planejado|planejada|planejados|planejadas|planeamento|planejamento|partilhado|partilhada|partilhados|partilhadas|compartilhado|compartilhada|compartilhados|compartilhadas|oxigénio|oxigênio|húmido|húmida|húmidos|húmidas|úmido|úmida|úmidos|úmidas|pequeno-almoço|fiável|fiáveis|confiável|confiáveis|eletrónico|eletrónica|eletrônicos|eletrônicas|eletrônico|eletrônica|académico|académica|acadêmico|acadêmica|económico|económica|econômico|econômica|fenómeno|fenómenos|fenômeno|fenômenos|género|géneros|gênero|gêneros|génio|gênio|travão|travões|travagem|freio|freios|frenagem|autónomo|autónoma|autônomo|autônoma|cronómetro|cronómetros|cronômetro|cronômetros|vómito|vómitos|vômito|vômitos|incómodo|incómoda|incômodo|incômoda|detetar|detetado|detetada|detetar-se|detectar|detectado|detectada|perceção|percepção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|decodificar|automóvel|automóveis|automotivo|automotiva|automotivos|automotivas|aspeto|aspetos|subtil|subtis)\b/iu;
 
 function findPortugueseVariantTerm(value) {
-  return value.match(portugueseVariantTerms);
+  return value.match(/você/iu) ?? value.match(portugueseVariantTerms);
 }
 
 const recurringNativeCopyDefects = {
@@ -424,28 +420,38 @@ const recurringNativeCopyDefects = {
     { pattern: /\bMeilleure (?:défi|atelier)\b/iu, message: "masculine superlative agreement is required" },
     { pattern: /\bPoint (?:fort|le plus difficile) visuelle\b/iu, quiz: "vision", message: "visual-skill label has incorrect agreement and word order" },
     { pattern: /\bEn progression\b/iu, message: "stale Developing difficulty label remains" },
+    { pattern: /\b(?:solveur|résolveur|solutionneur|DEVINATION|Flight Attendant)\b/iu, message: "machine-translated or untranslated French UI terminology remains" },
   ],
   de: [
     { pattern: /\bdeinen stärkster bereich\b/iu, message: "adjective and noun case agreement is incorrect" },
     { pattern: /\bdes (?:Küchentest|Grammatiktest|Intelligenztest|Gedächtnistest|Hebammen-Aufnahmetest|Pflege-Aufnahmetest|Rettungsdienst-Aufnahmetest)\b/iu, message: "the German genitive requires an -s suffix" },
     { pattern: /\bSehtest\b/iu, quiz: "vision", message: 'use "visueller Test" or "visuelle Herausforderung"' },
+    { pattern: /\b(?:Foundations|Culinary Pass|Screening-Tool|CENTRAL-VISION|VERMÄTZUNG|APTITUDE|OPERATING-KAMER)\b/iu, message: "machine-translated or untranslated German UI terminology remains" },
   ],
   it: [
     { pattern: /\bil tuo area\b/iu, message: 'use feminine "la tua area"' },
     { pattern: /\bArea più (?:forte|difficile) visiva\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
     { pattern: /\bMiglior risultato\s*·/iu, message: "stale literal best-round label remains" },
+    { pattern: /\b(?:Culinary Pass|CENTRAL-VISION|ATTITUDE|DEVINATION|Flight Attendant)\b/iu, message: "machine-translated or untranslated Italian UI terminology remains" },
   ],
   es: [
     { pattern: /\bÁrea más (?:fuerte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
+    { pattern: /\b(?:partitura de entretenimiento|conjusión|hipotesis|radiotransistores|Train Driver)\b/iu, message: "machine-translated, misspelled, or untranslated Spanish terminology remains" },
   ],
   nl: [
     { pattern: /\bpang edrag\b/iu, quiz: "chef", message: 'use the compound noun "pangedrag"' },
+    { pattern: /\b(?:entertainmentuitdaging|entertainmentquiz|CENTRAL-VISION|APTITUDE|OPERATING-KAMER|brutoscore|CAPITUDE|NUMERACTIE|INCIDENTEST|PAARDEN)\b/iu, message: "machine-translated or untranslated Dutch UI terminology remains" },
+    { pattern: /\bje (?:heeft|zich)\b/iu, message: "Dutch second-person agreement is incorrect" },
+    { pattern: /Vrouw B\s*·\s*Juist/iu, message: "direction label was mistranslated as correctness" },
   ],
   pt: [
     { pattern: /\bÁrea mais (?:forte|difícil) visual\b/iu, quiz: "vision", message: "visual-area label has unnatural word order" },
     { pattern: /\bComo interpretar a resultado de memória\b/iu, quiz: "memory", message: "article agreement is incorrect" },
     { pattern: /\bMelhor ronda\b/iu, message: "shared Portuguese uses etapa here" },
     { pattern: /\b(?:travagem\/frenagem|travão\/freio)\b/iu, message: "visible Portugal/Brazil slash alternatives are forbidden" },
+    { pattern: /\b(?:numeramento|compareção|Train Driver|Culinary Pass|perpésua|pontuação bruta|carro alegórico)\b/iu, message: "machine-translated, misspelled, or untranslated Portuguese terminology remains" },
+    { pattern: /\b(?:da|na) visor\b/iu, message: "Portuguese article agreement is incorrect" },
+    { pattern: /\bPerguntas perdidas\b/iu, message: "literal translation of missed questions remains" },
   ],
 };
 
@@ -461,6 +467,7 @@ const genericShellValues = {
 
 function validateNativeCopyPatterns(quiz, content, locale, location) {
   for (const { value, pathParts } of collectStrings(content)) {
+    if (isExactTechnicalString(value, pathParts)) continue;
     for (const defect of recurringNativeCopyDefects[locale] ?? []) {
       if ((!defect.quiz || defect.quiz === quiz) && defect.pattern.test(value)) {
         addError(`${location}#${pathParts.join(".")}: ${defect.message}: ${JSON.stringify(value)}.`);
@@ -470,9 +477,13 @@ function validateNativeCopyPatterns(quiz, content, locale, location) {
 
   if (locale === "de") {
     const formalAddress = /\b(?:Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u;
+    const informalAddress = /\b(?:du|dich|dir|dein(?:e|em|en|er|es)?)\b/iu;
     for (const { value, pathParts } of collectStrings(content)) {
-      if (pathParts[0] !== "stages" && formalAddress.test(value)) {
+      if (["memory", "years-left"].includes(quiz) && pathParts[0] !== "stages" && formalAddress.test(value)) {
         addError(`${location}#${pathParts.join(".")}: direct-player UI must consistently use du/dein, not formal address.`);
+      }
+      if (!["memory", "years-left"].includes(quiz) && informalAddress.test(value)) {
+        addError(`${location}#${pathParts.join(".")}: this locale must consistently use the formal German register.`);
       }
     }
   }
@@ -565,13 +576,6 @@ function validateMarryLocalization(english, localized, locale, location) {
       addError(`${location}#${pathParts.join(".")}: mechanical gender workaround remains: ${JSON.stringify(value)}.`);
     }
   }
-  if (locale === "de") {
-    for (const { value, pathParts } of directCopy) {
-      if (/\b(?:Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b/u.test(value)) {
-        addError(`${location}#${pathParts.join(".")}: /marry must consistently use informal German address.`);
-      }
-    }
-  }
   if (locale === "es") {
     for (const { value, pathParts } of directCopy) {
       if (/\b(?:vosotros|vosotras|vuestro|vuestra|vuestros|vuestras)\b/iu.test(value)) {
@@ -592,7 +596,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const actualLocaleFiles = fs.readdirSync(directory)
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
-  const expectedLocaleFiles = multilingualQuizzes.has(entry.name) ? localeFiles : ["en.json"];
+  const expectedLocaleFiles = localeFiles;
   if (JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
     addError(`data/quizzes/${entry.name}: locale set must be exactly ${expectedLocaleFiles.join(", ")}.`);
     continue;

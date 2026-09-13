@@ -9,7 +9,6 @@ const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
 const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
-const multilingualQuizzes = new Set(["memory", "years-left"]);
 const multilingualLocaleFiles = ["de.json", "en.json", "es.json", "fr.json", "it.json", "nl.json", "pt.json"];
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
@@ -307,7 +306,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
   const sortedLocaleFiles = localeFiles.sort();
-  const expectedLocaleFiles = multilingualQuizzes.has(entry.name) ? multilingualLocaleFiles : ["en.json"];
+  const expectedLocaleFiles = multilingualLocaleFiles;
   if (JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
     addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (expected ${expectedLocaleFiles.join(", ")}; found ${localeFiles.join(", ") || "none"})`);
   }
