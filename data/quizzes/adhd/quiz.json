@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "slug": "adhd",
+  "engine": { "scoring": "weighted-profile", "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/adhd-icon.webp", "published": "2026-09-14", "difficulty": "Quick", "icon": "⚡", "socialProofCount": 289000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#173d79", "pageAlt": "#28758f", "surface": "#fff4df", "surfaceRaised": "#fffaf1", "text": "#26334a", "muted": "#687185", "primary": "#d55638", "primaryText": "#ffffff", "border": "#efb23d", "correct": "#398268", "incorrect": "#b53c4b" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #173d79, #147f89)", "text": "#ffffff", "border": "#efb23d", "shadow": "0 8px 26px rgba(19, 54, 107, 0.3)" },
+    "artwork": { "icon": "⚡" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["adhd-q1", "adhd-q2", "adhd-q3", "adhd-q4", "adhd-q5", "adhd-q6", "adhd-q7", "adhd-q8", "adhd-q9", "adhd-q10"] }],
+    "questions": {
+      "adhd-q1": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "attention-and-planning": 1 }, { "daily-impact": 1 }] },
+      "adhd-q2": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "attention-and-planning": 1 }, { "daily-impact": 1 }] },
+      "adhd-q3": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q4": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "attention-and-planning": 1 }, { "daily-impact": 1 }] },
+      "adhd-q5": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "restlessness-and-impulsivity": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q6": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "restlessness-and-impulsivity": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q7": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "restlessness-and-impulsivity": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q8": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q9": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] },
+      "adhd-q10": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "attention-and-planning": 1 }, { "restlessness-and-impulsivity": 1 }, { "daily-impact": 1 }] }
+    },
+    "checkpoint": { "finalIcon": "⚡" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "id": "few-current-patterns" }, { "key": "profile-2", "id": "attention-and-planning" }, { "key": "profile-3", "id": "restlessness-and-impulsivity" }, { "key": "profile-4", "id": "daily-impact" }],
+      "dimensions": [{ "key": "dimension-1", "profiles": ["few-current-patterns"] }, { "key": "dimension-2", "profiles": ["attention-and-planning"] }, { "key": "dimension-3", "profiles": ["restlessness-and-impulsivity"] }, { "key": "dimension-4", "profiles": ["daily-impact"] }]
+    }
+  }
+}

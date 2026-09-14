@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "slug": "ocd",
+  "engine": { "scoring": "weighted-profile", "localeParity": "independent" },
+  "listing": { "thumbnail": "assets/items/ocd-icon.webp", "published": "2026-09-14", "difficulty": "Quick", "icon": "↻", "socialProofCount": 287000 },
+  "theme": {
+    "preset": "editorial",
+    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
+    "colors": { "page": "#25274f", "pageAlt": "#4b607d", "surface": "#f7f1e8", "surfaceRaised": "#fffaf4", "text": "#29233d", "muted": "#71697b", "primary": "#147d7b", "primaryText": "#ffffff", "border": "#dc836f", "correct": "#42725b", "incorrect": "#a83e50" },
+    "typography": { "heading": "serif", "body": "sans" },
+    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
+    "effects": { "shadow": "dramatic", "texture": "grain" },
+    "header": { "background": "linear-gradient(90deg, #25274f, #147d7b)", "text": "#ffffff", "border": "#dc836f", "shadow": "0 8px 26px rgba(30, 32, 69, 0.3)" },
+    "artwork": { "icon": "↻" }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["ocd-q1", "ocd-q2", "ocd-q3", "ocd-q4", "ocd-q5", "ocd-q6", "ocd-q7", "ocd-q8", "ocd-q9", "ocd-q10"] }],
+    "questions": {
+      "ocd-q1": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q2": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q3": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q4": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q5": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q6": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q7": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q8": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q9": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] },
+      "ocd-q10": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-patterns": 1 }, { "intrusive-thoughts": 1 }, { "rituals-and-checking": 1 }, { "daily-impact": 1 }] }
+    },
+    "checkpoint": { "finalIcon": "↻" },
+    "results": {
+      "profiles": [{ "key": "profile-1", "id": "few-current-patterns" }, { "key": "profile-2", "id": "intrusive-thoughts" }, { "key": "profile-3", "id": "rituals-and-checking" }, { "key": "profile-4", "id": "daily-impact" }],
+      "dimensions": [{ "key": "dimension-1", "profiles": ["few-current-patterns"] }, { "key": "dimension-2", "profiles": ["intrusive-thoughts"] }, { "key": "dimension-3", "profiles": ["rituals-and-checking"] }, { "key": "dimension-4", "profiles": ["daily-impact"] }]
+    }
+  }
+}
