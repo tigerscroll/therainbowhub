@@ -4,6 +4,7 @@ import { forwardRef, type ReactNode } from "react";
 
 type ExperienceLandingProps = {
   adNote?: string;
+  disclaimer?: string;
   avatars: string[];
   busy: boolean;
   busyLabel: string;
@@ -45,6 +46,7 @@ function SocialProof({ avatars, text }: { avatars: string[]; text: string }) {
 
 export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>(function ExperienceLanding({
   adNote,
+  disclaimer,
   avatars,
   busy,
   busyLabel,
@@ -73,6 +75,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
           {showCtaIcon && ctaIconPosition === "end" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
         </button>
         {adNote ? <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p> : null}
+        {disclaimer ? <p className="quiz-engine__landing-disclaimer">{disclaimer}</p> : null}
       </div>
     </section>
   );

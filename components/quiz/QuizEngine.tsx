@@ -403,7 +403,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return (
       <>
       <ExperienceLanding
-        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && !startInstructionEnabled ? translations.ad.startNote : undefined}
+        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
+        className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
+        ctaIcon={quiz.landing.compact ? "→" : undefined}
+        ctaIconPosition={quiz.landing.compact ? "end" : undefined}
         avatars={quiz.landing.socialAvatars}
         busy={adBusy}
         busyLabel={translations.ad.loading}
