@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "slug": "treatments",
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/q01.webp",
+    "published": "2026-09-19",
+    "difficulty": "Medium",
+    "icon": "🩺",
+    "socialProofCount": 0,
+    "showSocialProof": false
+  },
+  "theme": {
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#143d37",
+      "pageAlt": "#37655a",
+      "surface": "#edf1e6",
+      "surfaceRaised": "#fffef7",
+      "text": "#17372f",
+      "muted": "#576b61",
+      "primary": "#197463",
+      "primaryText": "#ffffff",
+      "border": "#b6a366",
+      "correct": "#367251",
+      "incorrect": "#b8493d"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #143d37, #37655a)",
+      "text": "#fffef7",
+      "border": "#b6a366",
+      "shadow": "0 8px 26px rgba(20,61,55,.25)"
+    },
+    "artwork": {
+      "icon": "🩺"
+    }
+  },
+  "template": "single-stage-rewarded-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "treatments-q1",
+          "treatments-q2",
+          "treatments-q3",
+          "treatments-q4",
+          "treatments-q5",
+          "treatments-q6",
+          "treatments-q7",
+          "treatments-q8",
+          "treatments-q9",
+          "treatments-q10"
+        ]
+      }
+    ],
+    "questions": {
+      "treatments-q1": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q01.webp"
+        },
+        "correct": 1,
+        "category": "rehabilitation",
+        "choiceCount": 4
+      },
+      "treatments-q2": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q02.webp"
+        },
+        "correct": 3,
+        "category": "complementary",
+        "choiceCount": 4
+      },
+      "treatments-q3": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q03.webp"
+        },
+        "correct": 0,
+        "category": "complementary",
+        "choiceCount": 4
+      },
+      "treatments-q4": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q04.webp"
+        },
+        "correct": 1,
+        "category": "talking",
+        "choiceCount": 4
+      },
+      "treatments-q5": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q05.webp"
+        },
+        "correct": 2,
+        "category": "hospital",
+        "choiceCount": 4
+      },
+      "treatments-q6": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q06.webp"
+        },
+        "correct": 2,
+        "category": "hospital",
+        "choiceCount": 4
+      },
+      "treatments-q7": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q07.webp"
+        },
+        "correct": 0,
+        "category": "complementary",
+        "choiceCount": 4
+      },
+      "treatments-q8": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q08.webp"
+        },
+        "correct": 3,
+        "category": "hospital",
+        "choiceCount": 4
+      },
+      "treatments-q9": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q09.webp"
+        },
+        "correct": 1,
+        "category": "rehabilitation",
+        "choiceCount": 4
+      },
+      "treatments-q10": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/treatments/assets/items/q10.webp"
+        },
+        "correct": 0,
+        "category": "talking",
+        "choiceCount": 4
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "🩺"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.6
+        },
+        {
+          "key": "profile-4",
+          "min": 0.4
+        },
+        {
+          "key": "profile-5",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "rehabilitation",
+            "complementary"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "hospital"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "talking"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
+    }
+  }
+}

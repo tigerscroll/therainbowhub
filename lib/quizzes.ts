@@ -829,7 +829,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   }
   if (!DIFFICULTIES.has(String(listing.difficulty))) throw new Error(`${file}: invalid difficulty.`);
   const socialProofCount = Number(listing.socialProofCount);
-  if (!Number.isInteger(socialProofCount) || socialProofCount < 1_000) throw new Error(`${file}: listing.socialProofCount must be an integer of at least 1,000.`);
+  if (!Number.isInteger(socialProofCount) || (socialProofCount < 1_000 && !(socialProofCount === 0 && listing.showSocialProof === false))) throw new Error(`${file}: listing.socialProofCount must be at least 1,000, or zero with social proof explicitly disabled.`);
   if (listing.showSocialProof !== undefined && typeof listing.showSocialProof !== "boolean") throw new Error(`${file}: listing.showSocialProof must be a boolean.`);
   if (listing.compactLanding !== undefined && typeof listing.compactLanding !== "boolean") throw new Error(`${file}: listing.compactLanding must be a boolean.`);
   if (listing.thumbnail !== undefined && (typeof listing.thumbnail !== "string" || !ASSET_PATH.test(listing.thumbnail))) {
