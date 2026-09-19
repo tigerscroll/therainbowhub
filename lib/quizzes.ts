@@ -1307,9 +1307,9 @@ function normalizeLocale(
     } : undefined,
     landing: {
       quickStartText: value.landing?.intro ?? summary,
-      compact: manifest.listing.compactLanding ?? false,
+      compact: manifest.listing.compactLanding ?? true,
       infoBadge: value.landing?.badge,
-      showSocialProof: manifest.listing.showSocialProof ?? true,
+      showSocialProof: manifest.listing.showSocialProof ?? false,
       socialProofCount: manifest.listing.socialProofCount,
       ctaLabel: value.landing?.cta,
       socialAvatars,
