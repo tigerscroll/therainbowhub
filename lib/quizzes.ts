@@ -121,6 +121,8 @@ export type QuizStudyCue = {
   items: string[];
   durationMs: number;
   mode: "manual" | "automatic";
+  readyGate?: boolean;
+  readyLabel?: string;
   rewarded?: boolean;
   continueLabel?: string;
   adNote?: string;
@@ -439,6 +441,7 @@ type QuizQuestionStructureV2 = {
     presentation?: QuizStudyCue["presentation"];
     durationMs?: number;
     mode?: QuizStudyCue["mode"];
+    readyGate?: boolean;
     rewarded?: boolean;
   };
   calibration?: Record<string, number>;
@@ -532,6 +535,8 @@ type QuizLocaleFile = {
         items: string[];
         durationMs?: number;
         mode?: QuizStudyCue["mode"];
+        readyGate?: boolean;
+        readyLabel?: string;
         continueLabel?: string;
         rewarded?: boolean;
         adNote?: string;
@@ -563,6 +568,7 @@ type QuizQuestionTextV2 = {
     title: string;
     instruction?: string;
     items: string[];
+    readyLabel?: string;
     continueLabel?: string;
     adNote?: string;
     ariaLabel?: string;
@@ -895,7 +901,7 @@ function validateLocaleSourceV2(localeObject: Record<string, unknown>, file: str
       if (question?.image !== undefined) optionalLocaleObject(question.image, ["alt"], `stages.${stageId}.questions.${questionId}.image`, file);
       if (question?.answers !== undefined) object(question.answers, `stages.${stageId}.questions.${questionId}.answers`, file);
       if (question?.trapdoorErrors !== undefined) object(question.trapdoorErrors, `stages.${stageId}.questions.${questionId}.trapdoorErrors`, file);
-      if (question?.study !== undefined) optionalLocaleObject(question.study, ["title", "instruction", "items", "continueLabel", "adNote", "ariaLabel"], `stages.${stageId}.questions.${questionId}.study`, file);
+      if (question?.study !== undefined) optionalLocaleObject(question.study, ["title", "instruction", "items", "readyLabel", "continueLabel", "adNote", "ariaLabel"], `stages.${stageId}.questions.${questionId}.study`, file);
     });
   });
 }
@@ -1359,8 +1365,10 @@ function normalizeLocale(
         const studyPresentation = rawQuestion.study.presentation ?? "text";
         const studyMode = rawQuestion.study.mode ?? "manual";
         const durationMs = rawQuestion.study.durationMs ?? 2000;
+        const readyGate = rawQuestion.study.readyGate ?? false;
         if (!["text", "icons"].includes(studyPresentation)) throw new Error(`${file}: question ${index + 1} has an invalid study presentation.`);
         if (!["manual", "automatic"].includes(studyMode)) throw new Error(`${file}: question ${index + 1} has an invalid study mode.`);
+        if (readyGate && studyMode !== "automatic") throw new Error(`${file}: question ${index + 1} can only use a readiness gate with an automatic study cue.`);
         if (rawQuestion.study.rewarded && studyMode !== "manual") throw new Error(`${file}: question ${index + 1} can only reward-gate a manual study cue.`);
         if (!Number.isInteger(durationMs) || durationMs < 1000 || durationMs > 6000) throw new Error(`${file}: question ${index + 1} study duration must be 1000–6000ms.`);
         const studyItems = strings(rawQuestion.study.items, `questions[${index}].study.items`, file);
@@ -1372,12 +1380,15 @@ function normalizeLocale(
           items: studyItems,
           durationMs,
           mode: studyMode,
+          readyGate,
+          readyLabel: rawQuestion.study.readyLabel,
           rewarded: rawQuestion.study.rewarded,
           continueLabel: rawQuestion.study.continueLabel,
           adNote: rawQuestion.study.adNote,
           ariaLabel: rawQuestion.study.ariaLabel,
         };
         if (studyMode === "manual") text(study.continueLabel, `questions[${index}].study.continueLabel`, file);
+        if (readyGate) text(study.readyLabel, `questions[${index}].study.readyLabel`, file);
         if (study.rewarded) text(study.adNote, `questions[${index}].study.adNote`, file);
       }
       if (isMemoryCue && (!rawQuestion.memoryItems || rawQuestion.memoryItems.length < 3 || rawQuestion.memoryItems.length > 4)) throw new Error(`${file}: memory cue ${index + 1} needs three or four items.`);

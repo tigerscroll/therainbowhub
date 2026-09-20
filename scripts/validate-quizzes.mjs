@@ -145,7 +145,7 @@ function validateTextOnlyLocale(value, config, location, locale) {
       exactObjectKeys(question, ["context", "visual", "image", "question", "headerLabel", "answers", "trapdoorErrors", "memoryItems", "continueLabel", "study"], `${location}#stages.${stage.id}.questions.${questionId}`);
       if (question.visual !== undefined) exactObjectKeys(question.visual, ["items", "ariaLabel"], `${location}#stages.${stage.id}.questions.${questionId}.visual`);
       if (question.image !== undefined) exactObjectKeys(question.image, ["alt"], `${location}#stages.${stage.id}.questions.${questionId}.image`);
-      if (question.study !== undefined) exactObjectKeys(question.study, ["title", "instruction", "items", "continueLabel", "adNote", "ariaLabel"], `${location}#stages.${stage.id}.questions.${questionId}.study`);
+      if (question.study !== undefined) exactObjectKeys(question.study, ["title", "instruction", "items", "readyLabel", "continueLabel", "adNote", "ariaLabel"], `${location}#stages.${stage.id}.questions.${questionId}.study`);
       fail(forbiddenQuestionKeys.every((key) => question[key] === undefined), `${location}: ${questionId} repeats logic owned by quiz.json.`);
       fail(question.visual?.columns === undefined && question.visual?.separator === undefined, `${location}: ${questionId} visual geometry belongs in quiz.json.`);
       fail(question.image?.src === undefined, `${location}: ${questionId} image paths belong in quiz.json.`);
@@ -249,9 +249,11 @@ function validateStudy(study, location) {
   fail(Array.isArray(study.items) && study.items.length >= 2 && study.items.length <= 8, `${location}: study.items must contain 2–8 items.`);
   fail(Number.isInteger(study.durationMs ?? 2000) && (study.durationMs ?? 2000) >= 1000 && (study.durationMs ?? 2000) <= 6000, `${location}: study.durationMs must be 1000–6000ms.`);
   fail(["manual", "automatic"].includes(study.mode ?? "manual"), `${location}: study.mode must be manual or automatic.`);
+  fail(!study.readyGate || (study.mode ?? "manual") === "automatic", `${location}: readiness gates require automatic study cues.`);
   if ((study.mode ?? "manual") === "manual") {
     fail(typeof study.continueLabel === "string" && Boolean(study.continueLabel.trim()), `${location}: manual study cues need continueLabel.`);
   }
+  if (study.readyGate) fail(typeof study.readyLabel === "string" && Boolean(study.readyLabel.trim()), `${location}: readiness gates need readyLabel.`);
 }
 
 const referenceUi = read(path.join(process.cwd(), "data", "i18n", "en.json"));
@@ -551,6 +553,7 @@ for (const folder of folders) {
     }), {});
     const expectedStageHeaders = ["SNAPSHOT MEMORY", "PATTERN LOCK", "DISTRACTION ZONE", "PEOPLE & PAIRS", "FINAL VAULT"];
     const timedStudies = sourceQuestions.filter((question) => question.study?.mode === "automatic");
+    const manualStudies = sourceQuestions.filter((question) => question.study?.mode === "manual");
     fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged", `${folder.name}: English Memory must use the shared five-stage rewarded flow.`);
     fail(JSON.stringify(config.activeLocales) === JSON.stringify(["en"]), `${folder.name}: the expanded five-round Memory quiz must remain English-only until its new content is localized.`);
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
@@ -562,9 +565,9 @@ for (const folder of folders) {
     fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory correct positions must remain evenly balanced.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
     fail(JSON.stringify(categoryCounts) === JSON.stringify({ visual: 4, attention: 8, working_memory: 10, word_recall: 3, numbers: 4, association: 11 }), `${folder.name}/en.json: Memory category distribution changed.`);
-    fail(JSON.stringify(timedStudies.map((question) => question.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), `${folder.name}/en.json: only the three approved study boards may use timers.`);
-    fail(JSON.stringify(timedStudies.map((question) => question.study.durationMs)) === JSON.stringify([1800, 2000, 2000]), `${folder.name}/en.json: timed study cues must total only 5.8 seconds.`);
-    fail(sourceQuestions.every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: the fast Memory flow must not use manual study pauses.`);
+    fail(timedStudies.length === 0, `${folder.name}/en.json: Memory study boards must not use timers.`);
+    fail(JSON.stringify(manualStudies.map((question) => question.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), `${folder.name}/en.json: the three approved Memory boards must use unlimited manual study time.`);
+    fail(manualStudies.every((question) => question.study?.continueLabel === "I’m Ready" && question.study?.readyGate !== true), `${folder.name}/en.json: every Memory board must remain visible until I’m Ready is pressed.`);
     fail(timedStudies.every((question) => question.study?.rewarded === false), `${folder.name}: study cues must not add extra rewarded gates.`);
     fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four separate items.`);
     fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next), `${folder.name}/en.json: every non-final round needs a distinct next-round teaser.`);
@@ -682,11 +685,13 @@ for (const folder of folders) {
         items: question.study.items?.length,
         durationMs: question.study.durationMs ?? 2000,
         mode: question.study.mode ?? "manual",
+        readyGate: question.study.readyGate ?? false,
       } : undefined) === JSON.stringify(sourceQuestion?.study ? {
         presentation: sourceQuestion.study.presentation ?? "text",
         items: sourceQuestion.study.items?.length,
         durationMs: sourceQuestion.study.durationMs ?? 2000,
         mode: sourceQuestion.study.mode ?? "manual",
+        readyGate: sourceQuestion.study.readyGate ?? false,
       } : undefined), `${folder.name}/${localeFile}: question ${index + 1} study structure differs from English.`);
       if (config.engine.scoring === "weighted-profile" && !Array.isArray(question.answers)) {
         const meanings = Object.values(question.answers ?? {});

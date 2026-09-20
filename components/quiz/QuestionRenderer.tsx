@@ -181,33 +181,36 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
 
 function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel }: QuestionRendererProps) {
   const study = question.study!;
-  const [ready, setReady] = useState(() => study.mode === "manual");
+  const [started, setStarted] = useState(() => study.mode === "manual" || !study.readyGate);
 
   useLayoutEffect(() => {
-    if (study.mode === "manual") {
-      setReady(true);
-      return;
-    }
-    setReady(false);
+    if (study.mode === "manual" || !started) return;
     const timer = window.setTimeout(() => {
-      setReady(true);
       onStudyComplete();
     }, study.durationMs);
     return () => window.clearTimeout(timer);
     // The cue is restarted only when its content changes, not when the parent rerenders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [question.id, study.durationMs, study.mode]);
+  }, [question.id, started, study.durationMs, study.mode]);
+
+  const showStudyBoard = study.mode === "manual" || started;
 
   return (
     <div className={`quiz-engine__study quiz-engine__study--${study.presentation}`}>
-      {study.mode === "automatic" ? <div aria-hidden="true" className="quiz-engine__study-progress"><i style={{ animationDuration: `${study.durationMs}ms` }} /></div> : null}
+      {study.mode === "automatic" && started ? <div aria-hidden="true" className="quiz-engine__study-progress"><i style={{ animationDuration: `${study.durationMs}ms` }} /></div> : null}
       {study.instruction ? <p>{study.instruction}</p> : null}
-      <div className="quiz-engine__study-items" aria-label={study.ariaLabel ?? study.items.join(", ")}>
-        {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
-      </div>
+      {showStudyBoard ? (
+        <div className="quiz-engine__study-items" aria-label={study.ariaLabel ?? study.items.join(", ")}>
+          {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
+        </div>
+      ) : (
+        <div aria-hidden="true" className="quiz-engine__study-items quiz-engine__study-items--ready">
+          {study.items.map((_, index) => <strong key={`ready-${index}`}><span>?</span></strong>)}
+        </div>
+      )}
       {study.mode === "manual" ? (
         <>
-          <button className="quiz-engine__primary" disabled={!ready || studyBusy} onClick={onStudyComplete} type="button">
+          <button className="quiz-engine__primary" disabled={studyBusy} onClick={onStudyComplete} type="button">
             {studyBusy ? studyBusyLabel : study.continueLabel}
           </button>
           {study.rewarded && study.adNote ? (
@@ -217,7 +220,11 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
             </p>
           ) : null}
         </>
-      ) : <span className="quiz-engine__study-timer" aria-live="polite">{ready ? "" : "•••"}</span>}
+      ) : !started ? (
+        <button className="quiz-engine__primary quiz-engine__study-ready" onClick={() => setStarted(true)} type="button">
+          {study.readyLabel}
+        </button>
+      ) : <span className="quiz-engine__study-timer" aria-live="polite">•••</span>}
     </div>
   );
 }
@@ -243,6 +250,6 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
 }
 
 export function QuestionRenderer(props: QuestionRendererProps) {
-  if (props.question.study && !props.studyComplete) return <StudyCue {...props} />;
+  if (props.question.study && !props.studyComplete) return <StudyCue key={props.question.id} {...props} />;
   return props.question.presentation === "memory-cue" ? <MemoryCueQuestion {...props} /> : <ChoiceQuestion {...props} />;
 }

@@ -277,6 +277,17 @@
 }
 [data-quiz-theme="memory"] .quiz-engine__study-items strong:nth-child(even){ transform: rotate(.5deg); }
 [data-quiz-theme="memory"] .quiz-engine__study-items strong:nth-child(odd){ transform: rotate(-.5deg); }
+[data-quiz-theme="memory"] .quiz-engine__study-items--ready strong{
+  border-style: dashed;
+  background: rgba(255,250,240,.58);
+  color: #756d61;
+  box-shadow: 3px 3px 0 rgba(25,23,19,.08);
+}
+[data-quiz-theme="memory"] .quiz-engine__study-items--ready strong > span{
+  border-color: var(--memory-red);
+  color: var(--memory-red);
+  font-family: Arial, sans-serif;
+}
 [data-quiz-theme="memory"] .quiz-engine__study-timer{ color: var(--memory-red); }
 
 /* Ordered icon cues stay as genuinely separate items in one linear row. */
