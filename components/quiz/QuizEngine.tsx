@@ -97,6 +97,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         flow: quiz.engine.flow,
         scoring: quiz.engine.scoring,
         startOnLoad: quiz.engine.startOnLoad,
+        hardRefreshCheckpoints: quiz.engine.hardRefreshCheckpoints,
         targetRatio: quiz.engine.targetRatio,
         estimate: quiz.engine.estimate,
         derivedScore: quiz.engine.derivedScore,
@@ -248,6 +249,36 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
 
+  function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = answers[question.id];
+        const answerId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return answerId ? [[question.id, answerId]] : [];
+      })),
+      questionIndex: nextQuestionIndex,
+      completedStage: nextCompletedStage,
+      screen: nextScreen,
+      studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
+      updatedAt: new Date().toISOString(),
+    };
+    let progressSaved = false;
+    try {
+      const serialized = JSON.stringify(saved);
+      window.localStorage.setItem(storageKey, serialized);
+      progressSaved = window.localStorage.getItem(storageKey) === serialized;
+      if (progressSaved) {
+        window.location.reload();
+        return true;
+      }
+    } catch { /* Continue without refreshing when progress cannot be restored safely. */ }
+    return false;
+  }
+
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
     await runGate(onComplete, { scrollAfter });
   }
@@ -255,6 +286,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   function moveForward() {
     const nextIndex = questionIndex + 1;
     if (nextIndex >= quiz.questions.length) {
+      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(questionIndex, currentStage, "preparing")) return;
       setCompletedStage(currentStage);
       setScreen("preparing");
       scrollToTop();
@@ -262,11 +294,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     }
 
     const nextQuestion = quiz.questions[nextIndex];
-    setQuestionIndex(nextIndex);
     if (quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage) {
+      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(nextIndex, currentStage, "checkpoint")) return;
+      setQuestionIndex(nextIndex);
       setCompletedStage(currentStage);
       setScreen("checkpoint");
     } else {
+      setQuestionIndex(nextIndex);
       setScreen("question");
     }
     scrollToTop();

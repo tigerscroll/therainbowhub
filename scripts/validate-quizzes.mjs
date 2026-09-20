@@ -325,6 +325,7 @@ for (const folder of folders) {
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
+  fail(config.engine?.hardRefreshCheckpoints === undefined || typeof config.engine.hardRefreshCheckpoints === "boolean", `${folder.name}: engine.hardRefreshCheckpoints must be a boolean when provided.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
     const points = config.engine.derivedScore.breakpoints;
@@ -523,7 +524,7 @@ for (const folder of folders) {
       const answers = Object.keys(question.answers ?? {});
       return answers.length === 4 && new Set(Object.values(question.answers ?? {})).size === 4;
     }), "years-left/en.json: every interaction needs four unique choices.");
-    fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
+    fail(config.engine?.advanceDelayMs === 450 && config.engine?.hardRefreshCheckpoints === true, "years-left: the 450ms answer delay and checkpoint-only hard refresh must remain enabled.");
     fail(config.engine?.startOnLoad === false && config.engine?.rewarded?.start === true && config.engine?.rewarded?.confirmStart === false, "years-left: must open on its landing and use the direct rewarded Start flow.");
     fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: must retain its configured stage-gate behaviour.");
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
@@ -573,7 +574,7 @@ for (const folder of folders) {
     fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next), `${folder.name}/en.json: every non-final round needs a distinct next-round teaser.`);
     fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3 && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", `${folder.name}/en.json: the final Memory gate must summarize and reveal the result.`);
     fail(/40 varied|five fast rounds/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About copy must describe the five-by-eight format.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
+    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.advanceDelayMs === 450 && config.engine?.hardRefreshCheckpoints === true, `${folder.name}: Memory target, answer delay, checkpoint refresh or rewarded flow changed.`);
     const gate = source.career?.stages?.at(-1);
     fail(gate?.next === undefined && gate?.preAdTitle === "Your memory result is ready" && gate?.preAdCopy === "All five rounds have been scored. Your final result and memory-area breakdown are ready." && gate?.preAdButton === "Reveal My Result", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory must use the shared breakdown unlock without duplicate copy.`);

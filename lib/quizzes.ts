@@ -144,6 +144,7 @@ export type QuizEngineConfig = {
   localeParity: "strict" | "independent";
   rewarded: QuizRewardedConfig;
   advanceDelayMs: number;
+  hardRefreshCheckpoints: boolean;
   targetRatio?: number;
   estimate?: QuizEstimateConfig;
   derivedScore?: QuizDerivedScoreConfig;
@@ -412,6 +413,7 @@ type QuizManifest = {
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
+    hardRefreshCheckpoints?: boolean;
     targetRatio?: number;
     estimate?: QuizEstimateConfig;
     derivedScore?: QuizDerivedScoreConfig;
@@ -1083,6 +1085,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
   const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
   const advanceDelayMs = templateContract.engine.advanceDelayMs;
+  if (engine.hardRefreshCheckpoints !== undefined && typeof engine.hardRefreshCheckpoints !== "boolean") throw new Error(`${file}: engine.hardRefreshCheckpoints must be a boolean.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
   if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
   let derivedScore: QuizDerivedScoreConfig | undefined;
@@ -1630,6 +1633,7 @@ function normalizeLocale(
         confirmStart: manifest.engine.rewarded?.confirmStart ?? false,
       },
       advanceDelayMs: manifest.engine.advanceDelayMs ?? 275,
+      hardRefreshCheckpoints: manifest.engine.hardRefreshCheckpoints ?? false,
       targetRatio: manifest.engine.targetRatio,
       estimate: manifest.engine.estimate,
       derivedScore: manifest.engine.derivedScore,
