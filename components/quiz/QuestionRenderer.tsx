@@ -9,6 +9,7 @@ type QuestionRendererProps = {
   answer?: number;
   answerHref?: string;
   answerNavigationMode?: "document" | "spa";
+  interstitialEligible?: boolean;
   answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => boolean | void;
@@ -119,7 +120,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerHref, answerLabels, answerNavigationMode = "spa", feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerHref, answerLabels, answerNavigationMode = "spa", feedback, interstitialEligible = true, onAnswer, question }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -163,6 +164,7 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, answerNavigationMode
           return answerHref ? (
             <a
               {...sharedProps}
+              data-google-interstitial={interstitialEligible ? undefined : "false"}
               href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
@@ -248,7 +250,7 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
   );
 }
 
-function MemoryCueQuestion({ answer, answerHref, answerNavigationMode = "spa", onAnswer, question }: QuestionRendererProps) {
+function MemoryCueQuestion({ answer, answerHref, answerNavigationMode = "spa", interstitialEligible = true, onAnswer, question }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
     setReady(false);
@@ -264,6 +266,7 @@ function MemoryCueQuestion({ answer, answerHref, answerNavigationMode = "spa", o
       {answerHref && ready && answer === undefined ? (
         <a
           className="quiz-engine__primary"
+          data-google-interstitial={interstitialEligible ? undefined : "false"}
           href={answerHref}
           onClick={(event) => {
             const destination = new URL(window.location.href);

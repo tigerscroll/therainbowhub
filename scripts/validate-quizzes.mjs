@@ -323,6 +323,7 @@ for (const folder of folders) {
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
+  fail([undefined, "inherit", "hybrid"].includes(config.engine?.monetization), `${folder.name}: engine.monetization must be inherit or hybrid.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
     const points = config.engine.derivedScore.breakpoints;
@@ -504,12 +505,13 @@ for (const folder of folders) {
     fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks)?.includes("10 answers checked"), `${folder.name}/en.json: ten-answer final checklist changed.`);
   }
   if (folder.name === "years-left") {
-    const expectedHeaders = ["DAILY RHYTHM", "FOOD AND FUEL", "EVERYDAY MOVEMENT", "SLEEP AND RECOVERY", "PRESSURE AND PACE", "PEOPLE AND CONNECTION", "HABITS THAT STICK", "CURIOSITY AND JOY", "YOUR FUTURE SELF", "FINAL CLOCK READING"];
+    const expectedHeaders = ["DAILY PULSE", "ENERGY ENGINE", "PRESSURE & PEOPLE", "WILDCARD ROUND", "FUTURE CLOCK"];
     const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.template === "ten-stage-seven-question-v1" && config.engine?.flow === "staged" && sourceRaw.progressLabel === undefined, "years-left: must use the shared ten-stage prediction flow and progress copy.");
-    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 7), "years-left/en.json: must contain ten rounds of seven questions.");
-    fail(sourceQuestions.length === 70 && new Set(sourceQuestionIds).size === 70, "years-left/en.json: must contain seventy unique interactions.");
-    fail(sourceQuestionIds.every((id, index) => id === `yl-s${Math.floor(index / 7) + 1}q${(index % 7) + 1}`), "years-left/en.json: stable question IDs or order changed.");
+    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged" && config.engine?.monetization === "hybrid" && sourceRaw.progressLabel === undefined, "years-left: must use the shared five-stage hybrid prediction flow and progress copy.");
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), "years-left/en.json: must contain five rounds of eight questions.");
+    fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, "years-left/en.json: must contain forty unique interactions.");
+    fail(new Set(source.stages.map((stage) => stage.title)).size === 5 && new Set(sourceQuestions.map((question) => question.question)).size === 40, "years-left/en.json: every round title and prompt must remain unique.");
+    fail(sourceQuestionIds.every((id, index) => id === `yl-s${Math.floor(index / 8) + 1}q${(index % 8) + 1}`), "years-left/en.json: stable question IDs or order changed.");
     fail(source.stages.every((stage, index) => stage.questions.every((question) => question.headerLabel === expectedHeaders[index])), "years-left/en.json: round header labels changed.");
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "years-left/en.json: compact screens must not use separate context banners.");
     fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
@@ -528,13 +530,15 @@ for (const folder of folders) {
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
     fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: estimate calibration is incorrect.");
     fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");
-    fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("yl-s10q7")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
+    fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("yl-s5q8")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
     const careerStages = source.career?.stages ?? [];
-    const gate = careerStages[9];
-    fail(careerStages.length === 10 && careerStages.slice(0, 9).every((stage) => stage.next && stage.preAdChecks === undefined && stage.preAdButton === undefined), "years-left/en.json: first nine round checkpoints must continue without result-gate copy.");
-    fail(gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final estimate gate after seventy questions.");
-    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "All ten rounds have been compared. Your final age estimate and clock profile are ready." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
+    const gate = careerStages[4];
+    fail(careerStages.length === 5 && careerStages.slice(0, 4).every((stage) => stage.next && stage.preAdChecks === undefined && stage.preAdButton === undefined), "years-left/en.json: the first four checkpoints must use the shared rewarded Continue action.");
+    fail(new Set(careerStages.slice(0, 4).map((stage) => stage.preAdTitle)).size === 4 && new Set(careerStages.slice(0, 4).map((stage) => stage.preAdCopy)).size === 4, "years-left/en.json: each rewarded checkpoint must keep a distinct curiosity hook.");
+    fail(gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final estimate gate after forty questions.");
+    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "All five rounds have been compared. Your final age estimate and clock profile are ready." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
     fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full staged About and How to Play copy.");
+    fail(/forty-question quiz|five quick lifestyle rounds/i.test(source.about?.body ?? ""), "years-left/en.json: About copy must describe the five-by-eight format.");
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);

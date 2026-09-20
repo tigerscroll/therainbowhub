@@ -78,7 +78,8 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
 }
 
 export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
-  const usesRewardedAds = siteConfig.adMode === "rewarded";
+  const usesHybridAds = siteConfig.adMode === "interstitial" && quiz.engine.monetization === "hybrid";
+  const usesRewardedAds = siteConfig.adMode === "rewarded" || usesHybridAds;
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -139,6 +140,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const storageKey = getQuizStorageKey(quiz.slug, locale);
   const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
     attempts: quiz.engine.rewarded.attempts,
+    forceRewarded: usesHybridAds,
     onRewardClosed: () => setRewardClosedSent(true),
     rewardClosedAlreadySent: rewardClosedSent,
   });
@@ -148,6 +150,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
   const stageQuestionIndex = Math.max(0, stageQuestions.findIndex((question) => question.id === currentQuestion?.id));
+  const isHybridInterstitialOpportunity = usesHybridAds
+    && stageQuestionIndex >= 2
+    && stageQuestionIndex <= stageQuestions.length - 3;
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
@@ -316,7 +321,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return true;
   }
 
-  function answerQuestionAtCheckpointWithReload(choiceIndex: number) {
+  function answerQuestionWithReload(choiceIndex: number) {
     if (!currentQuestion || selectedAnswer !== undefined) return false;
     const choiceId = currentQuestion.choiceIds[choiceIndex];
     if (!choiceId) return false;
@@ -326,7 +331,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const reachedEnd = nextIndex >= quiz.questions.length;
     const nextQuestion = reachedEnd ? undefined : quiz.questions[nextIndex];
     const crossedStage = Boolean(nextQuestion && quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage);
-    if (!reachedEnd && !crossedStage) return false;
 
     const saved: SavedProgress = {
       version: STORAGE_VERSION,
@@ -338,7 +342,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       })),
       questionIndex: reachedEnd ? questionIndex : nextIndex,
       completedStage: currentStage,
-      screen: reachedEnd ? "preparing" : "checkpoint",
+      screen: reachedEnd ? "preparing" : crossedStage ? "checkpoint" : "question",
       studiedQuestions,
       rewardClosedSent,
       reviewUnlocked,
@@ -887,7 +891,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         answerNavigationMode={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-        onAnswer={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionAtCheckpointWithReload : answerQuestion}
+        interstitialEligible={!usesHybridAds || isHybridInterstitialOpportunity}
+        onAnswer={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionWithReload : answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}

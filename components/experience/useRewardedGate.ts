@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/siteConfig";
 
 type RewardedGateOptions = {
   attempts: number;
+  forceRewarded?: boolean;
   onRewardClosed?: () => void;
   rewardClosedAlreadySent?: boolean;
 };
@@ -22,7 +23,7 @@ function scrollExperienceToTop(behavior: ScrollBehavior) {
   window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior }));
 }
 
-export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadySent }: RewardedGateOptions) {
+export function useRewardedGate({ attempts, forceRewarded = false, onRewardClosed, rewardClosedAlreadySent }: RewardedGateOptions) {
   const [busy, setBusy] = useState(false);
   const active = useRef(false);
   const controller = useRef<AbortController | null>(null);
@@ -46,7 +47,7 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
     { scrollAfter = true, scrollBehavior = "auto" }: RunGateOptions = {},
   ) => {
     if (active.current) return;
-    if (siteConfig.adMode === "interstitial") {
+    if (siteConfig.adMode === "interstitial" && !forceRewarded) {
       flushSync(onComplete);
       if (scrollAfter) scrollExperienceToTop(scrollBehavior);
       return;
@@ -83,7 +84,7 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
       active.current = false;
       setBusy(false);
     }
-  }, [attempts, onRewardClosed, rewardClosedAlreadySent]);
+  }, [attempts, forceRewarded, onRewardClosed, rewardClosedAlreadySent]);
 
   return { busy, cancelGate, runGate };
 }

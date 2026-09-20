@@ -176,6 +176,7 @@ for (const declaration of requiredQuizShellContract) {
 const quizEngineText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const experienceLandingText = fs.readFileSync(path.join(rootDir, "components", "experience", "ExperienceLanding.tsx"), "utf8");
 const questionRendererText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuestionRenderer.tsx"), "utf8");
+const rewardedGateText = fs.readFileSync(path.join(rootDir, "components", "experience", "useRewardedGate.ts"), "utf8");
 const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
@@ -189,6 +190,7 @@ const reversibleAdModeContract = [
   "data-start-instruction=\"true\"",
   "translations.ad.watchAdStart",
   "siteConfig.adMode === \"rewarded\"",
+  'quiz.engine.monetization === "hybrid"',
 ];
 for (const declaration of reversibleAdModeContract) {
   if (!quizEngineText.includes(declaration)) addError(`Reversible ad-mode contract is missing: ${declaration}`);
@@ -203,8 +205,13 @@ for (const [source, declaration] of [
   [questionRendererText, "<a"],
   [questionRendererText, 'destination.searchParams.set("quizStep"'],
   [questionRendererText, 'window.history.replaceState(null, "", destination)'],
-  [quizEngineText, "answerQuestionAtCheckpointWithReload"],
+  [quizEngineText, "answerQuestionWithReload"],
   [quizEngineText, 'answerNavigationMode={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}'],
+  [questionRendererText, 'data-google-interstitial={interstitialEligible ? undefined : "false"}'],
+  [quizEngineText, "forceRewarded: usesHybridAds"],
+  [quizEngineText, "stageQuestionIndex >= 2"],
+  [quizEngineText, "stageQuestionIndex <= stageQuestions.length - 3"],
+  [rewardedGateText, 'siteConfig.adMode === "interstitial" && !forceRewarded'],
   [experienceLandingText, 'window.history.pushState(null, "", destination)'],
 ]) {
   if (!source.includes(declaration)) addError(`Global interstitial contract is missing: ${declaration}`);
@@ -236,8 +243,7 @@ const requiredContinuousShellContract = [
   "--quiz-flow-width: var(--quiz-shell-container-width);",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
   "--quiz-shell-action-width: 480px;",
-  "--quiz-shell-action-height: 64px;",
-  "--quiz-shell-action-height: 62px;",
+  "--quiz-shell-action-height: 78px;",
   "--quiz-shell-action-radius: 14px;",
   "--quiz-shell-control-radius: 12px;",
   "--quiz-shell-border: 2px solid var(--quiz-text);",

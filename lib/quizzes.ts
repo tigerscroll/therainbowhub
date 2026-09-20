@@ -27,7 +27,7 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "ten-stage-seven-question-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const QUIZ_TEMPLATE_CONTRACTS = {
   "single-stage-rewarded-v1": {
@@ -48,6 +48,20 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     stageCount: 10,
     questionsPerStage: 7,
     levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
+    engine: {
+      flow: "staged",
+      advance: "automatic",
+      feedback: "selection-only",
+      checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      advanceDelayMs: 450,
+    },
+  },
+  "five-stage-eight-question-v1": {
+    stageCount: 5,
+    questionsPerStage: 8,
+    levels: ["foundation", "developing", "skilled", "advanced", "final"],
     engine: {
       flow: "staged",
       advance: "automatic",
@@ -134,6 +148,7 @@ export type QuizEngineConfig = {
   tieBreaks?: QuizTieBreakConfig;
   match?: QuizMatchConfig;
   profileArtworkSelector?: QuizProfileArtworkSelector;
+  monetization: "inherit" | "hybrid";
 };
 
 export type QuizCareerStageCopy = {
@@ -402,6 +417,7 @@ type QuizManifest = {
     tieBreaks?: QuizTieBreakConfig;
     match?: QuizMatchConfig;
     profileArtworkSelector?: QuizProfileArtworkSelector;
+    monetization?: QuizEngineConfig["monetization"];
   };
   listing: {
     thumbnail?: string;
@@ -1057,6 +1073,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   }
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
+  if (engine.monetization !== undefined && !["inherit", "hybrid"].includes(String(engine.monetization))) throw new Error(`${file}: engine.monetization must be inherit or hybrid.`);
   const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
   const advanceDelayMs = templateContract.engine.advanceDelayMs;
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -1180,6 +1197,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       tieBreaks,
       match,
       profileArtworkSelector,
+      monetization: (engine.monetization ?? "inherit") as QuizEngineConfig["monetization"],
     } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
@@ -1607,6 +1625,7 @@ function normalizeLocale(
       tieBreaks: manifest.engine.tieBreaks,
       match: manifest.engine.match,
       profileArtworkSelector: manifest.engine.profileArtworkSelector,
+      monetization: manifest.engine.monetization ?? "inherit",
     },
     theme,
     themeCssHref,
