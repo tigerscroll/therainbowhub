@@ -6,6 +6,7 @@ import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
+import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
@@ -77,6 +78,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
 }
 
 export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
+  const usesRewardedAds = siteConfig.adMode === "rewarded";
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -313,6 +315,45 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
   }
 
+  function answerQuestionWithReload(choiceIndex: number) {
+    if (!currentQuestion || selectedAnswer !== undefined) return false;
+    const choiceId = currentQuestion.choiceIds[choiceIndex];
+    if (!choiceId) return false;
+
+    const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
+    const nextIndex = questionIndex + 1;
+    const reachedEnd = nextIndex >= quiz.questions.length;
+    const nextQuestion = reachedEnd ? undefined : quiz.questions[nextIndex];
+    const crossedStage = Boolean(nextQuestion && quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage);
+    const nextScreen: SavedScreen = reachedEnd ? "preparing" : crossedStage ? "checkpoint" : "question";
+    const nextQuestionIndex = reachedEnd ? questionIndex : nextIndex;
+    const nextCompletedStage = reachedEnd || crossedStage ? currentStage : completedStage;
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = nextAnswers[question.id];
+        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return selectedId ? [[question.id, selectedId]] : [];
+      })),
+      questionIndex: nextQuestionIndex,
+      completedStage: nextCompletedStage,
+      screen: nextScreen,
+      studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
+      updatedAt: new Date().toISOString(),
+    };
+
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(saved));
+      return true;
+    } catch {
+      answerQuestion(choiceIndex);
+      return false;
+    }
+  }
+
   function completeStudy() {
     if (!currentQuestion?.study) return;
     const complete = () => {
@@ -413,7 +454,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return (
       <>
       <ExperienceLanding
-        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
+        adNote={usesRewardedAds && quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
@@ -539,7 +580,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             </span>
           ) : null}
         </button>
-        {quiz.engine.rewarded.stages && checkpoint ? (
+        {usesRewardedAds && quiz.engine.rewarded.stages && checkpoint ? (
           <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
             <span aria-hidden="true">✓</span>
             {checkpointAdNote}
@@ -629,7 +670,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
                   {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
                 </button>
-                <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
+                {usesRewardedAds ? <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small> : null}
               </section>
             ) : (
               <>
@@ -682,7 +723,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
               {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
             </button>
-            <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
+            {usesRewardedAds ? <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small> : null}
           </section>
         ) : supportsAnswerReview && reviewUnlocked ? (
           <section className="quiz-engine__answer-review">
@@ -718,7 +759,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             >
               {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
             </button>
-            {estimateReviewUnlockCopy?.rewarded === false ? null : <small>{estimateReviewUnlockCopy?.adNote}</small>}
+            {usesRewardedAds && estimateReviewUnlockCopy?.rewarded !== false ? <small>{estimateReviewUnlockCopy?.adNote}</small> : null}
           </section>
         ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
@@ -816,11 +857,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
-        <QuestionRenderer
-          answer={selectedAnswer}
+      <QuestionRenderer
+        answer={selectedAnswer}
+        answerHref={siteConfig.adMode === "interstitial" ? `?quizStep=${questionIndex + 1}` : undefined}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-          onAnswer={answerQuestion}
+        onAnswer={siteConfig.adMode === "interstitial" ? answerQuestionWithReload : answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}

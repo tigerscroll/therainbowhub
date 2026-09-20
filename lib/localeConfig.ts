@@ -9,6 +9,8 @@ export const localeOptions = [
   { code: "es", name: "Spanish", flag: "🇪🇸" },
   { code: "pt", name: "Portuguese", flag: "🇵🇹" },
   { code: "ar", name: "Arabic", flag: "🌐" },
+  { code: "ja", name: "Japanese", flag: "🇯🇵" },
+  { code: "he", name: "Hebrew", flag: "🇮🇱" },
   { code: "pl", name: "Polish", flag: "🇵🇱" },
   { code: "sv", name: "Swedish", flag: "🇸🇪" },
   { code: "da", name: "Danish", flag: "🇩🇰" },

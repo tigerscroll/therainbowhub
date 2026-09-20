@@ -46,6 +46,11 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
     { scrollAfter = true, scrollBehavior = "auto" }: RunGateOptions = {},
   ) => {
     if (active.current) return;
+    if (siteConfig.adMode === "interstitial") {
+      flushSync(onComplete);
+      if (scrollAfter) scrollExperienceToTop(scrollBehavior);
+      return;
+    }
     const requestGeneration = ++generation.current;
     const requestController = new AbortController();
     controller.current = requestController;

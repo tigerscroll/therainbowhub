@@ -84,6 +84,8 @@ export function InfoPageContent({ locale, slug }: InfoPageContentProps) {
 const infoPageLabels: Record<SupportedLocale, { related: string }> = {
   ar: { related: "معلومات ذات صلة" },
   en: { related: "Related information" },
+  he: { related: "מידע קשור" },
+  ja: { related: "関連情報" },
   fr: { related: "Informations associées" },
   de: { related: "Verwandte Informationen" },
   it: { related: "Informazioni correlate" },

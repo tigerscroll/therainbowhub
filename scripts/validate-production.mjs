@@ -9,7 +9,7 @@ const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
 const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
-const multilingualLocaleFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "hr.json", "hu.json", "id.json", "it.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
+const multilingualLocaleFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "he.json", "hr.json", "hu.json", "id.json", "it.json", "ja.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");
@@ -174,7 +174,11 @@ for (const declaration of requiredQuizShellContract) {
 
 const quizEngineText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const experienceLandingText = fs.readFileSync(path.join(rootDir, "components", "experience", "ExperienceLanding.tsx"), "utf8");
-const rewardedStartContract = [
+const questionRendererText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuestionRenderer.tsx"), "utf8");
+const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
+const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
+const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
+const reversibleAdModeContract = [
   "function startQuiz()",
   "runRewardedGate(beginQuiz)",
   "onStart={startQuiz}",
@@ -182,9 +186,23 @@ const rewardedStartContract = [
   "startInstructionEnabled",
   "data-start-instruction=\"true\"",
   "translations.ad.watchAdStart",
+  "siteConfig.adMode === \"rewarded\"",
 ];
-for (const declaration of rewardedStartContract) {
-  if (!quizEngineText.includes(declaration)) addError(`Direct rewarded-start contract is missing: ${declaration}`);
+for (const declaration of reversibleAdModeContract) {
+  if (!quizEngineText.includes(declaration)) addError(`Reversible ad-mode contract is missing: ${declaration}`);
+}
+for (const [source, declaration] of [
+  [siteConfigText, 'export type AdMode = "interstitial" | "rewarded"'],
+  [siteConfigText, '"/23348925662/display"'],
+  [rootDocumentText, 'siteConfig.adMode === "interstitial" ? <WebInterstitialAd /> : null'],
+  [rewardedAdsText, "OutOfPageFormat?.INTERSTITIAL"],
+  [rewardedAdsText, "defineOutOfPageSlot(adUnitPath, format)"],
+  [quizEngineText, "answerQuestionWithReload"],
+  [quizEngineText, 'answerHref={siteConfig.adMode === "interstitial"'],
+  [questionRendererText, "<a"],
+  [questionRendererText, 'destination.searchParams.set("quizStep"'],
+]) {
+  if (!source.includes(declaration)) addError(`Global interstitial contract is missing: ${declaration}`);
 }
 if (!experienceLandingText.includes("onClick={onStart}")) {
   addError("Shared experience landing must connect its primary CTA to onStart.");
@@ -275,8 +293,8 @@ for (const slug of fs.readdirSync(quizThemeRoot)) {
   }
 }
 
-if (!quizTemplateText.includes("startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}")) {
-  addError("The shared rewarded-start instruction must be controlled by the build-time site setting.");
+if (!quizTemplateText.includes('startInstructionEnabled={siteConfig.adMode === "rewarded" && siteConfig.rewardedStartInstructionEnabled}')) {
+  addError("The shared rewarded-start instruction must be disabled while interstitial mode is active.");
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");

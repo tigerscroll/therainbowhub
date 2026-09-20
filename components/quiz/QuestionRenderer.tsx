@@ -6,9 +6,10 @@ import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
   answer?: number;
+  answerHref?: string;
   answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
-  onAnswer: (choiceIndex: number) => void;
+  onAnswer: (choiceIndex: number) => boolean | void;
   onStudyComplete: () => void;
   question: QuizQuestion;
   studyBusy?: boolean;
@@ -116,7 +117,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -133,23 +134,8 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
           const correct = revealCorrectness && index === question.answerIndex;
           const incorrect = revealCorrectness && selected && index !== question.answerIndex;
 
-          return (
-            <button
-              aria-checked={question.presentation === "scale" ? selected : undefined}
-              className="quiz-engine__answer"
-              data-answer-id={question.choiceIds[index]}
-              data-correct={correct || undefined}
-              data-incorrect={incorrect || undefined}
-              data-selected={selected || undefined}
-              disabled={answer !== undefined}
-              key={`${question.id}-${question.choiceIds[index]}`}
-              onClick={(event) => {
-                event.currentTarget.blur();
-                onAnswer(index);
-              }}
-              role={question.presentation === "scale" ? "radio" : undefined}
-              type="button"
-            >
+          const content = (
+            <>
               {hasAnswerIcons ? (
                 <span className="quiz-engine__answer-icon" aria-hidden="true">
                   {typeof icon === "string" && icon.startsWith("/quizzes/")
@@ -160,6 +146,46 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
               {!hasAnswerIcons && question.presentation !== "scale" ? <span>{answerLabels?.[index] ?? String.fromCharCode(65 + index)}</span> : null}
               {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
               <strong>{choice}</strong>
+            </>
+          );
+          const sharedProps = {
+            "aria-checked": question.presentation === "scale" ? selected : undefined,
+            className: "quiz-engine__answer",
+            "data-answer-id": question.choiceIds[index],
+            "data-correct": correct || undefined,
+            "data-incorrect": incorrect || undefined,
+            "data-selected": selected || undefined,
+            role: question.presentation === "scale" ? "radio" : undefined,
+          };
+
+          return answerHref ? (
+            <a
+              {...sharedProps}
+              href={answerHref}
+              key={`${question.id}-${question.choiceIds[index]}`}
+              onClick={(event) => {
+                const destination = new URL(window.location.href);
+                destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
+                event.currentTarget.href = destination.toString();
+                if (onAnswer(index) === false) event.preventDefault();
+              }}
+            >
+              {content}
+            </a>
+          ) : (
+            <button
+              {...sharedProps}
+              aria-checked={question.presentation === "scale" ? selected : undefined}
+              disabled={answer !== undefined}
+              key={`${question.id}-${question.choiceIds[index]}`}
+              onClick={(event) => {
+                event.currentTarget.blur();
+                onAnswer(index);
+              }}
+              role={question.presentation === "scale" ? "radio" : undefined}
+              type="button"
+            >
+              {content}
             </button>
           );
         })}
@@ -211,7 +237,7 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
   );
 }
 
-function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps) {
+function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
     setReady(false);
@@ -224,9 +250,24 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
       <div className="quiz-engine__memory-items" aria-label={question.memoryItems?.join(", ")}>
         {question.memoryItems?.map((item) => <strong key={item}>{item}</strong>)}
       </div>
-      <button className="quiz-engine__primary" disabled={!ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
-        {question.continueLabel}
-      </button>
+      {answerHref && ready && answer === undefined ? (
+        <a
+          className="quiz-engine__primary"
+          href={answerHref}
+          onClick={(event) => {
+            const destination = new URL(window.location.href);
+            destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
+            event.currentTarget.href = destination.toString();
+            if (onAnswer(0) === false) event.preventDefault();
+          }}
+        >
+          {question.continueLabel}
+        </a>
+      ) : (
+        <button className="quiz-engine__primary" disabled={!ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
+          {question.continueLabel}
+        </button>
+      )}
     </div>
   );
 }

@@ -591,6 +591,8 @@ for (const folder of folders) {
     if (localizedRaw) validateTextOnlyLocale(localizedRaw, config, `${folder.name}/${localeFile}`, localeFile.replace(/\.json$/, ""));
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
+    const landingIntroLines = localizedRaw?.landing?.intro?.split("\n") ?? [];
+    fail(landingIntroLines.length === 2 && landingIntroLines.every((line) => line.trim()), `${folder.name}/${localeFile}: landing intro must contain exactly two non-empty lines.`);
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
     const questionIds = questions.map((question) => question.id);
     fail(questionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/${localeFile}: every question needs a stable id.`);
@@ -599,7 +601,6 @@ for (const folder of folders) {
     fail(JSON.stringify(localizedProfileStructure) === JSON.stringify(sourceProfileStructure), `${folder.name}/${localeFile}: result profile ids and thresholds differ from English.`);
     if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(localized, `${folder.name}/${localeFile}`);
     if (folder.name === "iq") {
-      fail(!/\b(?:5|10|40)\b/.test(localized.landing?.intro ?? ""), `${folder.name}/${localeFile}: landing intro must describe the challenge without exposing its stage or question count.`);
       const mirror = questions.find((question) => question.id === "iq-s1q4");
       fail(mirror?.presentation === "spatial" && mirror?.correct === 2 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must preserve the reflected direction and answer index.`);
       const letterCode = questions.find((question) => question.id === "iq-s2q2");

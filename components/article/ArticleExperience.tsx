@@ -6,6 +6,7 @@ import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { getArticleChapterPath } from "@/components/article/articleRouting";
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
+import { siteConfig } from "@/lib/siteConfig";
 import {
   isArticleSection,
   type ArticlePoint,
@@ -119,7 +120,7 @@ function ArticleInlineUnlock({
         <strong>{next.title}</strong>
         <span>{next.copy}</span>
         <b>{next.cta}{showCtaIcon ? <ArticleArrow compact value={next.ctaIcon} /> : null}</b>
-        <em><i aria-hidden="true">✓</i>{busy ? (next.busyNote ?? gateBusyNote) : adNote}</em>
+        {adNote ? <em><i aria-hidden="true">✓</i>{busy ? (next.busyNote ?? gateBusyNote) : adNote}</em> : null}
       </span>
       {showCtaIcon ? <span aria-hidden="true" className="article-engine__inline-unlock-icon"><ArticleArrow value={next.ctaIcon} /></span> : null}
     </button>
@@ -208,13 +209,14 @@ export function ArticleExperience({
   sources,
   ui,
 }: ArticleExperienceProps) {
+  const usesRewardedAds = siteConfig.adMode === "rewarded";
   const router = useRouter();
   const [started, setStarted] = useState(Boolean(initialSection));
   const [currentSection, setCurrentSection] = useState<ArticleSection | null>(null);
   const [navigating, setNavigating] = useState(false);
   const [restoring, setRestoring] = useState(Boolean(initialSection));
   const { busy: adBusy, runGate } = useRewardedGate({ attempts: 3 });
-  const defaultGateAdNote = ui?.defaultGateAdNote ?? "One short ad, then continue.";
+  const defaultGateAdNote = usesRewardedAds ? (ui?.defaultGateAdNote ?? "One short ad, then continue.") : "";
   const gateBusyNote = ui?.gateBusyNote ?? "Loading ad…";
 
   useEffect(() => {
@@ -277,7 +279,7 @@ export function ArticleExperience({
   if (!started) {
     return (
       <ExperienceLanding
-        adNote={adNote}
+        adNote={usesRewardedAds ? adNote : undefined}
         avatars={avatars}
         busy={adBusy || navigating}
         busyLabel={navigating

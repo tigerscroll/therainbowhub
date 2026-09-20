@@ -7,7 +7,7 @@ const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
 const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
-const localeFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "hr.json", "hu.json", "id.json", "it.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
+const localeFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "he.json", "hr.json", "hu.json", "id.json", "it.json", "ja.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
 const requireAllLocales = process.argv.includes("--require-all-locales");
 const errors = [];
@@ -44,6 +44,25 @@ function validateArabicPrimaryCopy(content, location) {
     }
     if (/[A-Za-z]{3,}/.test(value)) {
       addError(`${location}#${currentPath}: mixed English remains in primary Arabic copy: ${JSON.stringify(value)}.`);
+    }
+  }
+}
+
+function validatePrimaryScriptCopy(content, location, localeFile) {
+  const patterns = {
+    "he.json": /\p{Script=Hebrew}/u,
+    "ja.json": /(?:\p{Script=Han}|\p{Script=Hiragana}|\p{Script=Katakana})/u,
+  };
+  const pattern = patterns[localeFile];
+  if (!pattern) return;
+  const primaryPaths = new Set(["title", "eyebrow", "landing.intro", "landing.cta", "results.name"]);
+  for (const { value, pathParts } of collectStrings(content)) {
+    const currentPath = pathParts.join(".");
+    const isPrimary = primaryPaths.has(currentPath)
+      || currentPath.endsWith(".headerLabel")
+      || /^results\.profiles\.[^.]+\.title$/.test(currentPath);
+    if (isPrimary && !pattern.test(value)) {
+      addError(`${location}#${currentPath}: primary localized copy must use the locale's native script.`);
     }
   }
 }
@@ -107,7 +126,7 @@ function compareStructure(source, localized, pathParts, location) {
       && pathParts.includes("items")
       && /^(?:[A-Z]|[?○●◯◆▲△□]|↗|↘|↙|↖|│)$/.test(source);
     const isAnswerLetter = pathParts.includes("answers")
-      && /^[A-D]$/.test(source)
+      && /^[A-Z]$/.test(source)
       && !location.includes("/grammar/");
     if ((isVisualAtom || isAnswerLetter) && localized !== source) {
       addError(`${location}#${currentPath}: puzzle token ${JSON.stringify(source)} must not be translated.`);
@@ -244,6 +263,18 @@ function validateQuestions(content, location) {
   }
   for (const question of questions) {
     if (question.explanation !== undefined) addError(`${location}#${question.id}: explanations are forbidden.`);
+    // Profile/self-assessment answers expand to keyed objects rather than the
+    // scored engine's arrays. Check both: translation can collapse adjacent
+    // scale labels even when there is no correct-answer index.
+    if (question.answers && !Array.isArray(question.answers)) {
+      const choices = Object.keys(question.answers);
+      const normalizedChoices = choices.map((answer) => String(answer)
+        .normalize("NFKC").replace(/\s+/gu, " ").trim().toLocaleLowerCase("und"));
+      if (choices.some((answer) => typeof answer !== "string" || !answer.trim())
+        || new Set(normalizedChoices).size !== choices.length) {
+        addError(`${location}#${question.id}: profile answer labels must be non-empty and visibly distinct.`);
+      }
+    }
     if (Array.isArray(question.answers)) {
       if (question.answers.length !== 4 || new Set(question.answers).size !== 4 || question.answers.some((answer) => typeof answer !== "string" || !answer.trim())) {
         addError(`${location}#${question.id}: requires four non-empty, unique localized answers.`);
@@ -711,8 +742,15 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     validateSemanticContracts(entry.name, localized, locale, location);
     validateNativeCopyPatterns(entry.name, localized, locale, location);
     if (locale === "ar") validateArabicPrimaryCopy(localized, location);
+    validatePrimaryScriptCopy(localized, location, localeFile);
     const residue = collectStringPairs(english, localized)
       .filter((pair) => !(entry.name === "vision" && pair.source === "OFFICE FOCUS: FIND FIVE FLAGS FAST."))
+      // Reviewed Filipino aviation terminology: these conventional English
+      // technical labels are intentional, not untranslated interface copy.
+      .filter((pair) => !(entry.name === "airforce" && locale === "fil" && (
+        (pair.pathParts.join(".") === "stages.0.questions.1.answers.3" && pair.source === "Vertical speed indicator")
+        || (pair.pathParts.join(".") === "stages.0.questions.7.answers.3" && pair.source === "Angle of attack")
+      )))
       .filter(hasEnglishResidue);
     residue.slice(0, 20).forEach(({ source, pathParts }) => {
       addError(`${location}#${pathParts.join(".")}: untranslated English remains: ${JSON.stringify(source)}.`);
@@ -735,6 +773,12 @@ for (const localeFile of translatedLocaleFiles) {
   const localized = JSON.parse(fs.readFileSync(path.join(i18nRoot, localeFile), "utf8"));
   if (localeFile === "ar.json" && (localized.locale?.code !== "ar" || localized.locale?.direction !== "rtl")) {
     addError(`${location}#locale: Arabic shared copy must declare code ar and direction rtl.`);
+  }
+  if (localeFile === "he.json" && (localized.locale?.code !== "he" || localized.locale?.direction !== "rtl")) {
+    addError(`${location}#locale: Hebrew shared copy must declare code he and direction rtl.`);
+  }
+  if (localeFile === "ja.json" && (localized.locale?.code !== "ja" || localized.locale?.direction !== "ltr")) {
+    addError(`${location}#locale: Japanese shared copy must declare code ja and direction ltr.`);
   }
   compareStructure(sharedEnglish, localized, [], location);
   const residue = collectStringPairs(sharedEnglish, localized)
