@@ -94,27 +94,21 @@ function ArticleInlineUnlock({
   busy,
   defaultAdNote,
   gateBusyNote,
+  href,
   next,
   onUnlock,
 }: {
   busy: boolean;
   defaultAdNote: string;
   gateBusyNote: string;
+  href?: string;
   next: NonNullable<ArticleSection["next"]>;
   onUnlock: () => void;
 }) {
   const adNote = next.adNote ?? defaultAdNote;
   const showCtaIcon = next.showCtaIcon ?? true;
-
-  return (
-    <button
-      aria-label={next.ariaLabel ?? `${next.title}. ${next.cta}. ${adNote}`}
-      aria-busy={busy}
-      className="article-engine__inline-unlock"
-      disabled={busy}
-      onClick={onUnlock}
-      type="button"
-    >
+  const content = (
+    <>
       <span className="article-engine__inline-unlock-copy">
         <small>{next.eyebrow}</small>
         <strong>{next.title}</strong>
@@ -123,6 +117,27 @@ function ArticleInlineUnlock({
         {adNote ? <em><i aria-hidden="true">✓</i>{busy ? (next.busyNote ?? gateBusyNote) : adNote}</em> : null}
       </span>
       {showCtaIcon ? <span aria-hidden="true" className="article-engine__inline-unlock-icon"><ArticleArrow value={next.ctaIcon} /></span> : null}
+    </>
+  );
+
+  return href && !busy ? (
+    <a
+      aria-label={next.ariaLabel ?? `${next.title}. ${next.cta}`}
+      className="article-engine__inline-unlock"
+      href={href}
+    >
+      {content}
+    </a>
+  ) : (
+    <button
+      aria-label={next.ariaLabel ?? `${next.title}. ${next.cta}. ${adNote}`}
+      aria-busy={busy}
+      className="article-engine__inline-unlock"
+      disabled={busy}
+      onClick={onUnlock}
+      type="button"
+    >
+      {content}
     </button>
   );
 }
@@ -131,6 +146,7 @@ function ArticlePointList({
   busy,
   defaultAdNote,
   gateBusyNote,
+  unlockHref,
   insertAfter,
   next,
   onUnlock,
@@ -139,6 +155,7 @@ function ArticlePointList({
   busy: boolean;
   defaultAdNote: string;
   gateBusyNote: string;
+  unlockHref?: string;
   insertAfter?: number;
   next?: ArticleSection["next"];
   onUnlock: () => void;
@@ -177,7 +194,7 @@ function ArticlePointList({
             </div>
           </section>
           {next && insertAfter && index + 1 === insertAfter ? (
-            <ArticleInlineUnlock busy={busy} defaultAdNote={defaultAdNote} gateBusyNote={gateBusyNote} next={next} onUnlock={onUnlock} />
+            <ArticleInlineUnlock busy={busy} defaultAdNote={defaultAdNote} gateBusyNote={gateBusyNote} href={unlockHref} next={next} onUnlock={onUnlock} />
           ) : null}
         </Fragment>
       ))}
@@ -291,7 +308,8 @@ export function ArticleExperience({
         className="article-engine__landing"
         icon={icon}
         intro={intro}
-        onStart={showArticle}
+        href={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, 1)}
+        onStart={usesRewardedAds ? showArticle : () => true}
         showCtaIcon={showCtaIcon}
         showSocialProof={showSocialProof}
         socialProofText={`${socialProofCount} ${socialProofLabel}`}
@@ -320,6 +338,7 @@ export function ArticleExperience({
         busy={adBusy || navigating}
         defaultAdNote={defaultGateAdNote}
         gateBusyNote={gateBusyNote}
+        unlockHref={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, currentSectionNumber + 1)}
         insertAfter={gatePlacement === "default" ? 5 : undefined}
         next={currentSection.next}
         onUnlock={() => unlockSection(currentSectionNumber + 1)}
@@ -331,6 +350,7 @@ export function ArticleExperience({
           busy={adBusy || navigating}
           defaultAdNote={defaultGateAdNote}
           gateBusyNote={gateBusyNote}
+          href={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, currentSectionNumber + 1)}
           next={currentSection.next}
           onUnlock={() => unlockSection(currentSectionNumber + 1)}
         />

@@ -14,7 +14,8 @@ type ExperienceLandingProps = {
   className?: string;
   icon: ReactNode;
   intro: string;
-  onStart: () => void;
+  href?: string;
+  onStart: () => boolean | void;
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
   socialProofText: string;
@@ -56,12 +57,21 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   className,
   icon,
   intro,
+  href,
   onStart,
   showCtaIcon = true,
   showSocialProof = true,
   socialProofText,
   title,
 }, ref) {
+  const ctaContent = (
+    <>
+      {showCtaIcon && ctaIconPosition === "start" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
+      {busy ? busyLabel : ctaLabel}
+      {showCtaIcon && ctaIconPosition === "end" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
+    </>
+  );
+
   return (
     <section className={["quiz-engine__landing", className].filter(Boolean).join(" ")} ref={ref}>
       <div className="quiz-engine__landing-copy">
@@ -69,11 +79,24 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         <h1>{title}</h1>
         <p className="quiz-engine__quick-start">{intro}</p>
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
-        <button className="quiz-engine__primary" disabled={busy} onClick={onStart} type="button">
-          {showCtaIcon && ctaIconPosition === "start" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
-          {busy ? busyLabel : ctaLabel}
-          {showCtaIcon && ctaIconPosition === "end" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
-        </button>
+        {href && !busy ? (
+          <a
+            className="quiz-engine__primary"
+            href={href}
+            onClick={(event) => {
+              const destination = new URL(href, window.location.href);
+              if (!destination.search) destination.search = window.location.search;
+              event.currentTarget.href = destination.toString();
+              if (onStart() === false) event.preventDefault();
+            }}
+          >
+            {ctaContent}
+          </a>
+        ) : (
+          <button className="quiz-engine__primary" disabled={busy} onClick={onStart} type="button">
+            {ctaContent}
+          </button>
+        )}
         {adNote ? <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p> : null}
         {disclaimer ? <p className="quiz-engine__landing-disclaimer">{disclaimer}</p> : null}
       </div>

@@ -181,7 +181,7 @@ const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"
 const reversibleAdModeContract = [
   "function startQuiz()",
   "runRewardedGate(beginQuiz)",
-  "onStart={startQuiz}",
+  "onStart={usesRewardedAds ? startQuiz : beginQuizWithReload}",
   "disabled={adBusy}",
   "startInstructionEnabled",
   "data-start-instruction=\"true\"",

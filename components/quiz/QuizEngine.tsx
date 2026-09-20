@@ -368,6 +368,28 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     setScreen("question");
   }
 
+  function beginQuizWithReload() {
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: {},
+      questionIndex: 0,
+      completedStage: 0,
+      screen: "question",
+      studiedQuestions: [],
+      rewardClosedSent: false,
+      reviewUnlocked: false,
+      updatedAt: new Date().toISOString(),
+    };
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(saved));
+      return true;
+    } catch {
+      beginQuiz();
+      return false;
+    }
+  }
+
   function startQuiz() {
     if (quiz.engine.rewarded.start && startInstructionEnabled) {
       setStartPromptMinHeight(landingShellRef.current?.getBoundingClientRect().height ?? null);
@@ -464,7 +486,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.startTest}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
-        onStart={startQuiz}
+        href={usesRewardedAds ? undefined : "?quizStep=0"}
+        onStart={usesRewardedAds ? startQuiz : beginQuizWithReload}
         ref={landingShellRef}
         showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
