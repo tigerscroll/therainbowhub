@@ -85,7 +85,10 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             href={href}
             onClick={(event) => {
               const destination = new URL(href, window.location.href);
-              if (!destination.search) destination.search = window.location.search;
+              const current = new URL(window.location.href);
+              current.searchParams.forEach((value, key) => {
+                if (!destination.searchParams.has(key)) destination.searchParams.append(key, value);
+              });
               event.currentTarget.href = destination.toString();
               if (onStart() === false) event.preventDefault();
             }}

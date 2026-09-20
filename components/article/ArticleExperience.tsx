@@ -125,6 +125,14 @@ function ArticleInlineUnlock({
       aria-label={next.ariaLabel ?? `${next.title}. ${next.cta}`}
       className="article-engine__inline-unlock"
       href={href}
+      onClick={(event) => {
+        const destination = new URL(href, window.location.href);
+        const current = new URL(window.location.href);
+        current.searchParams.forEach((value, key) => {
+          if (!destination.searchParams.has(key)) destination.searchParams.append(key, value);
+        });
+        event.currentTarget.href = destination.toString();
+      }}
     >
       {content}
     </a>
