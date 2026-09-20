@@ -2,7 +2,6 @@
 
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
-import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
@@ -165,14 +164,11 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, 
               href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
-                prepareFullPageNavigation(event.currentTarget);
+                event.preventDefault();
                 const destination = new URL(window.location.href);
                 destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
                 event.currentTarget.href = destination.toString();
-                if (onAnswer(index) === false) {
-                  cancelFullPageNavigation(event.currentTarget);
-                  event.preventDefault();
-                }
+                if (onAnswer(index) !== false) window.history.replaceState(null, "", destination);
               }}
             >
               {content}
@@ -260,14 +256,11 @@ function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionR
           className="quiz-engine__primary"
           href={answerHref}
           onClick={(event) => {
-            prepareFullPageNavigation(event.currentTarget);
+            event.preventDefault();
             const destination = new URL(window.location.href);
             destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
             event.currentTarget.href = destination.toString();
-            if (onAnswer(0) === false) {
-              cancelFullPageNavigation(event.currentTarget);
-              event.preventDefault();
-            }
+            if (onAnswer(0) !== false) window.history.replaceState(null, "", destination);
           }}
         >
           {question.continueLabel}

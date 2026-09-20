@@ -17,6 +17,7 @@ type ExperienceLandingProps = {
   icon: ReactNode;
   intro: string;
   href?: string;
+  navigationMode?: "document" | "spa";
   onStart: () => boolean | void;
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
@@ -60,6 +61,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   icon,
   intro,
   href,
+  navigationMode = "document",
   onStart,
   showCtaIcon = true,
   showSocialProof = true,
@@ -86,13 +88,18 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             className="quiz-engine__primary"
             href={href}
             onClick={(event) => {
-              prepareFullPageNavigation(event.currentTarget);
               const destination = new URL(href, window.location.href);
               const current = new URL(window.location.href);
               current.searchParams.forEach((value, key) => {
                 if (!destination.searchParams.has(key)) destination.searchParams.append(key, value);
               });
               event.currentTarget.href = destination.toString();
+              if (navigationMode === "spa") {
+                event.preventDefault();
+                if (onStart() !== false) window.history.pushState(null, "", destination);
+                return;
+              }
+              prepareFullPageNavigation(event.currentTarget);
               if (onStart() === false) {
                 cancelFullPageNavigation(event.currentTarget);
                 event.preventDefault();

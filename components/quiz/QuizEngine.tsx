@@ -3,7 +3,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
-import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
@@ -312,47 +311,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }, [completedStage, quiz.stages.length, screen]);
 
   function answerQuestion(choiceIndex: number) {
-    if (!currentQuestion || selectedAnswer !== undefined) return;
-    setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
-  }
-
-  function answerQuestionWithReload(choiceIndex: number) {
     if (!currentQuestion || selectedAnswer !== undefined) return false;
-    const choiceId = currentQuestion.choiceIds[choiceIndex];
-    if (!choiceId) return false;
-
-    const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
-    const nextIndex = questionIndex + 1;
-    const reachedEnd = nextIndex >= quiz.questions.length;
-    const nextQuestion = reachedEnd ? undefined : quiz.questions[nextIndex];
-    const crossedStage = Boolean(nextQuestion && quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage);
-    const nextScreen: SavedScreen = reachedEnd ? "preparing" : crossedStage ? "checkpoint" : "question";
-    const nextQuestionIndex = reachedEnd ? questionIndex : nextIndex;
-    const nextCompletedStage = reachedEnd || crossedStage ? currentStage : completedStage;
-    const saved: SavedProgress = {
-      version: STORAGE_VERSION,
-      signature: progressSignature,
-      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
-        const selectedIndex = nextAnswers[question.id];
-        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
-        return selectedId ? [[question.id, selectedId]] : [];
-      })),
-      questionIndex: nextQuestionIndex,
-      completedStage: nextCompletedStage,
-      screen: nextScreen,
-      studiedQuestions,
-      rewardClosedSent,
-      reviewUnlocked,
-      updatedAt: new Date().toISOString(),
-    };
-
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(saved));
-      return true;
-    } catch {
-      answerQuestion(choiceIndex);
-      return false;
-    }
+    setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
+    return true;
   }
 
   function completeStudy() {
@@ -367,28 +328,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
   function beginQuiz() {
     setScreen("question");
-  }
-
-  function beginQuizWithReload() {
-    const saved: SavedProgress = {
-      version: STORAGE_VERSION,
-      signature: progressSignature,
-      answers: {},
-      questionIndex: 0,
-      completedStage: 0,
-      screen: "question",
-      studiedQuestions: [],
-      rewardClosedSent: false,
-      reviewUnlocked: false,
-      updatedAt: new Date().toISOString(),
-    };
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(saved));
-      return true;
-    } catch {
-      beginQuiz();
-      return false;
-    }
   }
 
   function startQuiz() {
@@ -421,36 +360,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         setScreen("question");
       }
     };
-    if (quiz.engine.rewarded.stages) void runRewardedGate(next);
+    if (usesRewardedAds && quiz.engine.rewarded.stages) void runRewardedGate(next);
     else next();
-  }
-
-  function continueAfterCheckpointWithReload() {
-    const isFinalStage = completedStage >= quiz.stages.length - 1;
-    const saved: SavedProgress = {
-      version: STORAGE_VERSION,
-      signature: progressSignature,
-      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
-        const selectedIndex = answers[question.id];
-        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
-        return selectedId ? [[question.id, selectedId]] : [];
-      })),
-      questionIndex,
-      completedStage,
-      screen: isFinalStage ? "results" : "question",
-      studiedQuestions,
-      rewardClosedSent,
-      reviewUnlocked,
-      updatedAt: new Date().toISOString(),
-    };
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(saved));
-      if (isFinalStage) trackQuizEvent("QuizComplete", quiz, locale);
-      return true;
-    } catch {
-      continueAfterCheckpoint();
-      return false;
-    }
   }
 
   function unlockIncorrectAnswers() {
@@ -516,7 +427,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
         href={usesRewardedAds ? undefined : "?quizStep=0"}
-        onStart={usesRewardedAds ? startQuiz : beginQuizWithReload}
+        navigationMode={usesRewardedAds ? "document" : "spa"}
+        onStart={usesRewardedAds ? startQuiz : beginQuiz}
         ref={landingShellRef}
         showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
@@ -639,14 +551,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             className="quiz-engine__primary"
             href={`?quizStep=${isFinalStage ? "results" : questionIndex}`}
             onClick={(event) => {
-              prepareFullPageNavigation(event.currentTarget);
+              event.preventDefault();
               const destination = new URL(window.location.href);
               destination.searchParams.set("quizStep", isFinalStage ? "results" : String(questionIndex));
               event.currentTarget.href = destination.toString();
-              if (!continueAfterCheckpointWithReload()) {
-                cancelFullPageNavigation(event.currentTarget);
-                event.preventDefault();
-              }
+              window.history.replaceState(null, "", destination);
+              continueAfterCheckpoint();
             }}
           >
             {checkpointCtaContent}
@@ -938,7 +848,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         answerHref={siteConfig.adMode === "interstitial" ? `?quizStep=${questionIndex + 1}` : undefined}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-        onAnswer={siteConfig.adMode === "interstitial" ? answerQuestionWithReload : answerQuestion}
+        onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}

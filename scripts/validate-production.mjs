@@ -182,7 +182,8 @@ const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"
 const reversibleAdModeContract = [
   "function startQuiz()",
   "runRewardedGate(beginQuiz)",
-  "onStart={usesRewardedAds ? startQuiz : beginQuizWithReload}",
+  "onStart={usesRewardedAds ? startQuiz : beginQuiz}",
+  'navigationMode={usesRewardedAds ? "document" : "spa"}',
   "disabled={adBusy}",
   "startInstructionEnabled",
   "data-start-instruction=\"true\"",
@@ -198,10 +199,11 @@ for (const [source, declaration] of [
   [rootDocumentText, 'siteConfig.adMode === "interstitial" ? <WebInterstitialAd /> : null'],
   [rewardedAdsText, "OutOfPageFormat?.INTERSTITIAL"],
   [rewardedAdsText, "defineOutOfPageSlot(adUnitPath, format)"],
-  [quizEngineText, "answerQuestionWithReload"],
   [quizEngineText, 'answerHref={siteConfig.adMode === "interstitial"'],
   [questionRendererText, "<a"],
   [questionRendererText, 'destination.searchParams.set("quizStep"'],
+  [questionRendererText, 'window.history.replaceState(null, "", destination)'],
+  [experienceLandingText, 'window.history.pushState(null, "", destination)'],
 ]) {
   if (!source.includes(declaration)) addError(`Global interstitial contract is missing: ${declaration}`);
 }
