@@ -32,7 +32,7 @@ type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { INTERSTITIAL?: unknown; REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
   setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
   sizeMapping?: () => SizeMappingBuilder;
@@ -62,51 +62,6 @@ let activeRequest: ActiveRequest | null = null;
 let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
-let webInterstitialOwner = 0;
-let webInterstitialOwnerSequence = 0;
-let webInterstitialSlot: GptSlot | null = null;
-
-export function mountWebInterstitialAd({ adUnitPath }: { adUnitPath: string }) {
-  if (webInterstitialOwner) return { destroy() {} };
-
-  const owner = ++webInterstitialOwnerSequence;
-  webInterstitialOwner = owner;
-  window.googletag = window.googletag ?? { cmd: [] };
-  window.googletag.cmd.push(() => {
-    if (webInterstitialOwner !== owner) return;
-    const googletag = window.googletag;
-    const format = googletag?.enums?.OutOfPageFormat?.INTERSTITIAL;
-    const pubads = googletag?.pubads?.();
-    if (!googletag?.defineOutOfPageSlot || !googletag.display || !format || !pubads) {
-      webInterstitialOwner = 0;
-      return;
-    }
-
-    const slot = googletag.defineOutOfPageSlot(adUnitPath, format);
-    if (!slot) {
-      webInterstitialOwner = 0;
-      return;
-    }
-    webInterstitialSlot = slot;
-    slot.addService(pubads);
-    if (!servicesEnabled) {
-      googletag.enableServices?.();
-      servicesEnabled = true;
-    }
-    googletag.display(slot);
-  });
-
-  return {
-    destroy() {
-      if (webInterstitialOwner !== owner) return;
-      webInterstitialOwner = 0;
-      if (webInterstitialSlot) {
-        try { window.googletag?.destroySlots?.([webInterstitialSlot]); } catch { /* GPT cleanup is best effort. */ }
-        webInterstitialSlot = null;
-      }
-    },
-  };
-}
 
 export function mountDisplayAd({
   adUnitPath,

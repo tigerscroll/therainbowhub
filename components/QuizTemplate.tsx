@@ -56,7 +56,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
           locale={locale}
           quiz={quiz}
           recommendations={recommendations}
-          startInstructionEnabled={siteConfig.adMode === "rewarded" && siteConfig.rewardedStartInstructionEnabled}
+          startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
           translations={translations}
         />
       </ExperienceThemeBoundary>

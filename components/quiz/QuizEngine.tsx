@@ -6,7 +6,6 @@ import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
-import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
@@ -78,8 +77,6 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
 }
 
 export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
-  const usesHybridAds = siteConfig.adMode === "interstitial" && quiz.engine.monetization === "hybrid";
-  const usesRewardedAds = siteConfig.adMode === "rewarded" || usesHybridAds;
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -140,7 +137,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const storageKey = getQuizStorageKey(quiz.slug, locale);
   const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
     attempts: quiz.engine.rewarded.attempts,
-    forceRewarded: usesHybridAds,
     onRewardClosed: () => setRewardClosedSent(true),
     rewardClosedAlreadySent: rewardClosedSent,
   });
@@ -178,16 +174,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       document.body.style.removeProperty("background");
     }
   }, [progressSignature, quiz, storageKey]);
-
-  useEffect(() => {
-    if (!usesHybridAds) return;
-    const previous = document.body.getAttribute("data-google-interstitial");
-    document.body.setAttribute("data-google-interstitial", "false");
-    return () => {
-      if (previous === null) document.body.removeAttribute("data-google-interstitial");
-      else document.body.setAttribute("data-google-interstitial", previous);
-    };
-  }, [usesHybridAds]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -328,43 +314,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return true;
   }
 
-  function answerQuestionWithReload(choiceIndex: number) {
-    if (!currentQuestion || selectedAnswer !== undefined) return false;
-    const choiceId = currentQuestion.choiceIds[choiceIndex];
-    if (!choiceId) return false;
-
-    const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
-    const nextIndex = questionIndex + 1;
-    const reachedEnd = nextIndex >= quiz.questions.length;
-    const nextQuestion = reachedEnd ? undefined : quiz.questions[nextIndex];
-    const crossedStage = Boolean(nextQuestion && quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage);
-
-    const saved: SavedProgress = {
-      version: STORAGE_VERSION,
-      signature: progressSignature,
-      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
-        const selectedIndex = nextAnswers[question.id];
-        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
-        return selectedId ? [[question.id, selectedId]] : [];
-      })),
-      questionIndex: reachedEnd ? questionIndex : nextIndex,
-      completedStage: currentStage,
-      screen: reachedEnd ? "preparing" : crossedStage ? "checkpoint" : "question",
-      studiedQuestions,
-      rewardClosedSent,
-      reviewUnlocked,
-      updatedAt: new Date().toISOString(),
-    };
-
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(saved));
-      return true;
-    } catch {
-      answerQuestion(choiceIndex);
-      return false;
-    }
-  }
-
   function completeStudy() {
     if (!currentQuestion?.study) return;
     const complete = () => {
@@ -409,7 +358,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         setScreen("question");
       }
     };
-    if (usesRewardedAds && quiz.engine.rewarded.stages) void runRewardedGate(next);
+    if (quiz.engine.rewarded.stages) void runRewardedGate(next);
     else next();
   }
 
@@ -465,7 +414,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return (
       <>
       <ExperienceLanding
-        adNote={usesRewardedAds && quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
+        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
@@ -475,9 +424,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.startTest}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
-        href={usesRewardedAds ? undefined : "?quizStep=0"}
-        navigationMode={usesRewardedAds ? "document" : "spa"}
-        onStart={usesRewardedAds ? startQuiz : beginQuiz}
+        onStart={startQuiz}
         ref={landingShellRef}
         showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
@@ -595,27 +542,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        {!usesRewardedAds && !adBusy && (!isFinalStage || checkpointCtaReady) ? (
-          <a
-            className="quiz-engine__primary"
-            href={`?quizStep=${isFinalStage ? "results" : questionIndex}`}
-            onClick={(event) => {
-              event.preventDefault();
-              const destination = new URL(window.location.href);
-              destination.searchParams.set("quizStep", isFinalStage ? "results" : String(questionIndex));
-              event.currentTarget.href = destination.toString();
-              window.history.replaceState(null, "", destination);
-              continueAfterCheckpoint();
-            }}
-          >
-            {checkpointCtaContent}
-          </a>
-        ) : (
-          <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
-            {checkpointCtaContent}
-          </button>
-        )}
-        {usesRewardedAds && quiz.engine.rewarded.stages && checkpoint ? (
+        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
+          {checkpointCtaContent}
+        </button>
+        {quiz.engine.rewarded.stages && checkpoint ? (
           <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
             <span aria-hidden="true">✓</span>
             {checkpointAdNote}
@@ -705,7 +635,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
                   {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
                 </button>
-                {usesRewardedAds ? <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small> : null}
+                <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
               </section>
             ) : (
               <>
@@ -758,7 +688,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
               {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
             </button>
-            {usesRewardedAds ? <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small> : null}
+            <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
           </section>
         ) : supportsAnswerReview && reviewUnlocked ? (
           <section className="quiz-engine__answer-review">
@@ -794,7 +724,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             >
               {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
             </button>
-            {usesRewardedAds && estimateReviewUnlockCopy?.rewarded !== false ? <small>{estimateReviewUnlockCopy?.adNote}</small> : null}
+            {estimateReviewUnlockCopy?.rewarded !== false ? <small>{estimateReviewUnlockCopy?.adNote}</small> : null}
           </section>
         ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
@@ -894,12 +824,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
         answer={selectedAnswer}
-        answerHref={siteConfig.adMode === "interstitial" && !usesHybridAds ? `?quizStep=${questionIndex + 1}` : undefined}
-        answerNavigationMode={siteConfig.adMode === "interstitial" && !usesHybridAds && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-        interstitialEligible={!usesHybridAds}
-        onAnswer={siteConfig.adMode === "interstitial" && !usesHybridAds && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionWithReload : answerQuestion}
+          onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}

@@ -1,6 +1,7 @@
 {
   "schemaVersion": 2,
   "slug": "memory",
+  "activeLocales": ["en"],
   "engine": {
     "scoring": "correct-answer",
     "targetRatio": 0.8,
@@ -59,247 +60,132 @@
       "icon": "🧠"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-eight-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": ["memory-r1q1", "memory-r1q2", "memory-r1q3", "memory-r1q4", "memory-r1q5", "memory-r1q6", "memory-r1q7", "memory-r1q8"]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": ["memory-r2q1", "memory-r2q2", "memory-r2q3", "memory-r2q4", "memory-r2q5", "memory-r2q6", "memory-r2q7", "memory-r2q8"]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": ["memory-r3q1", "memory-r3q2", "memory-r3q3", "memory-r3q4", "memory-r3q5", "memory-r3q6", "memory-r3q7", "memory-r3q8"]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": ["memory-r4q1", "memory-r4q2", "memory-r4q3", "memory-r4q4", "memory-r4q5", "memory-r4q6", "memory-r4q7", "memory-r4q8"]
+      },
+      {
+        "id": "stage-5",
         "difficultyLevel": "final",
-        "questionIds": [
-          "memory-r1q1",
-          "memory-r1q2",
-          "memory-r1q3",
-          "memory-r1q5",
-          "memory-r1q7",
-          "memory-r2q1",
-          "memory-r2q4",
-          "memory-r2q3",
-          "memory-r5q1",
-          "memory-r5q6"
-        ]
+        "questionIds": ["memory-r5q1", "memory-r5q2", "memory-r5q3", "memory-r5q4", "memory-r5q5", "memory-r5q6", "memory-r5q7", "memory-r5q8"]
       }
     ],
     "questions": {
       "memory-r1q1": {
-        "study": {
-          "durationMs": 5000,
-          "mode": "manual",
-          "rewarded": false
-        },
-        "correctAnswerId": "a2",
-        "category": "word_recall",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
+        "study": { "durationMs": 1800, "mode": "automatic", "rewarded": false },
+        "correctAnswerId": "a1",
+        "category": "visual",
+        "answerIds": ["a1", "a2", "a3", "a4"]
       },
       "memory-r1q2": {
-        "study": {
-          "durationMs": 3500,
-          "mode": "automatic"
-        },
-        "correctAnswerId": "a4",
-        "category": "visual",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r1q3": {
-        "study": {
-          "durationMs": 3000,
-          "mode": "automatic"
-        },
-        "correctAnswerId": "a1",
-        "category": "numbers",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r1q5": {
-        "correctAnswerId": "a3",
-        "category": "attention",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "protectedTokens": [
-          {
-            "path": "question",
-            "value": "K7M2Q",
-            "count": 1
-          },
-          {
-            "path": "answers.a3",
-            "value": "K7M2Q",
-            "count": 1
-          },
-          {
-            "path": "answers.a2",
-            "value": "K7MZQ",
-            "count": 1
-          },
-          {
-            "path": "answers.a1",
-            "value": "K7N2Q",
-            "count": 1
-          },
-          {
-            "path": "answers.a4",
-            "value": "KTM2Q",
-            "count": 1
-          }
-        ]
-      },
-      "memory-r1q7": {
         "correctAnswerId": "a2",
-        "category": "working_memory",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
+        "category": "attention",
+        "answerIds": ["a1", "a2", "a3", "a4"],
+        "protectedTokens": [
+          { "path": "question", "value": "K7M2Q", "count": 1 },
+          { "path": "answers.a2", "value": "K7M2Q", "count": 1 }
         ]
       },
-      "memory-r2q1": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🪁",
-          "a2": "🧤",
-          "a3": "📷",
-          "a4": "🧁"
-        },
-        "study": {
-          "presentation": "icons",
-          "durationMs": 5000,
-          "mode": "automatic"
-        },
-        "correctAnswerId": "a3",
-        "category": "visual",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r2q4": {
-        "study": {
-          "durationMs": 5500,
-          "mode": "automatic"
-        },
+      "memory-r1q3": { "correctAnswerId": "a3", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r1q4": { "correctAnswerId": "a4", "category": "word_recall", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r1q5": { "correctAnswerId": "a1", "category": "attention", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r1q6": { "correctAnswerId": "a2", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r1q7": { "correctAnswerId": "a3", "category": "attention", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r1q8": { "correctAnswerId": "a4", "category": "visual", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q1": { "correctAnswerId": "a1", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q2": { "correctAnswerId": "a2", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q3": { "correctAnswerId": "a3", "category": "attention", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q4": { "correctAnswerId": "a4", "category": "numbers", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q5": { "correctAnswerId": "a1", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q6": { "correctAnswerId": "a2", "category": "word_recall", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q7": { "correctAnswerId": "a3", "category": "visual", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r2q8": { "correctAnswerId": "a4", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q1": {
+        "study": { "durationMs": 2000, "mode": "automatic", "rewarded": false },
         "correctAnswerId": "a1",
         "category": "association",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
+        "answerIds": ["a1", "a2", "a3", "a4"]
       },
-      "memory-r2q3": {
-        "correctAnswerId": "a4",
-        "category": "attention",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "protectedTokens": [
-          {
-            "path": "question",
-            "value": "L0CK",
-            "count": 1
-          }
-        ]
-      },
-      "memory-r5q1": {
+      "memory-r3q2": {
         "correctAnswerId": "a2",
-        "category": "word_recall",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
+        "category": "attention",
+        "answerIds": ["a1", "a2", "a3", "a4"],
+        "protectedTokens": [
+          { "path": "question", "value": "T8PL4", "count": 1 },
+          { "path": "answers.a2", "value": "T8PL4", "count": 1 }
         ]
       },
-      "memory-r5q6": {
+      "memory-r3q3": { "correctAnswerId": "a3", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q4": { "correctAnswerId": "a4", "category": "attention", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q5": { "correctAnswerId": "a1", "category": "numbers", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q6": { "correctAnswerId": "a2", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q7": { "correctAnswerId": "a3", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r3q8": { "correctAnswerId": "a4", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q1": {
+        "study": { "durationMs": 2000, "mode": "automatic", "rewarded": false },
         "correctAnswerId": "a1",
         "category": "association",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
+        "answerIds": ["a1", "a2", "a3", "a4"]
+      },
+      "memory-r4q2": {
+        "correctAnswerId": "a2",
+        "category": "attention",
+        "answerIds": ["a1", "a2", "a3", "a4"],
+        "protectedTokens": [
+          { "path": "question", "value": "B7RK", "count": 1 },
+          { "path": "answers.a2", "value": "B7KR", "count": 1 }
         ]
-      }
+      },
+      "memory-r4q3": { "correctAnswerId": "a3", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q4": { "correctAnswerId": "a4", "category": "numbers", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q5": { "correctAnswerId": "a1", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q6": { "correctAnswerId": "a2", "category": "word_recall", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q7": { "correctAnswerId": "a3", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r4q8": { "correctAnswerId": "a4", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q1": { "correctAnswerId": "a1", "category": "visual", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q2": { "correctAnswerId": "a2", "category": "numbers", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q3": { "correctAnswerId": "a3", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q4": { "correctAnswerId": "a4", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q5": { "correctAnswerId": "a1", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q6": { "correctAnswerId": "a2", "category": "association", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q7": { "correctAnswerId": "a3", "category": "attention", "answerIds": ["a1", "a2", "a3", "a4"] },
+      "memory-r5q8": { "correctAnswerId": "a4", "category": "working_memory", "answerIds": ["a1", "a2", "a3", "a4"] }
     },
-    "checkpoint": {
-      "finalIcon": "🧠"
-    },
+    "checkpoint": { "finalIcon": "🧠" },
     "results": {
       "profiles": [
-        {
-          "key": "profile-1",
-          "min": 0.9
-        },
-        {
-          "key": "profile-2",
-          "min": 0.8
-        },
-        {
-          "key": "profile-3",
-          "min": 0.7
-        },
-        {
-          "key": "profile-4",
-          "min": 0.6
-        },
-        {
-          "key": "profile-5",
-          "min": 0.5
-        },
-        {
-          "key": "profile-6",
-          "min": 0
-        }
+        { "key": "profile-1", "min": 0.9 },
+        { "key": "profile-2", "min": 0.8 },
+        { "key": "profile-3", "min": 0.7 },
+        { "key": "profile-4", "min": 0.6 },
+        { "key": "profile-5", "min": 0.5 },
+        { "key": "profile-6", "min": 0 }
       ],
       "dimensions": [
-        {
-          "key": "dimension-1",
-          "categories": [
-            "word_recall",
-            "association"
-          ]
-        },
-        {
-          "key": "dimension-2",
-          "categories": [
-            "visual",
-            "attention"
-          ]
-        },
-        {
-          "key": "dimension-3",
-          "categories": [
-            "numbers",
-            "working_memory"
-          ]
-        }
+        { "key": "dimension-1", "categories": ["word_recall", "association"] },
+        { "key": "dimension-2", "categories": ["visual", "attention"] },
+        { "key": "dimension-3", "categories": ["numbers", "working_memory"] }
       ],
-      "score": {
-        "showBestRound": false
-      }
+      "score": { "showBestRound": true }
     }
   }
 }

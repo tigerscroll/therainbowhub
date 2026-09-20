@@ -323,7 +323,6 @@ for (const folder of folders) {
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
-  fail([undefined, "inherit", "hybrid"].includes(config.engine?.monetization), `${folder.name}: engine.monetization must be inherit or hybrid.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
     const points = config.engine.derivedScore.breakpoints;
@@ -412,9 +411,11 @@ for (const folder of folders) {
       positions[question.correct] += 1;
       return positions;
     }, [0, 0, 0, 0]);
-    const expectedPositions = [3, 3, 2, 2];
+    const expectedPositions = [0, 1, 2, 3].map((index) => (
+      Math.floor(sourceQuestions.length / 4) + (index < sourceQuestions.length % 4 ? 1 : 0)
+    ));
     fail(JSON.stringify(sharedPositions) === JSON.stringify(expectedPositions), `${folder.name}/en.json: answer positions must match the shared template balance.`);
-    fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
+    fail(expectedStageCount > 1 || source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
     const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
     const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
@@ -507,7 +508,7 @@ for (const folder of folders) {
   if (folder.name === "years-left") {
     const expectedHeaders = ["DAILY PULSE", "ENERGY ENGINE", "PRESSURE & PEOPLE", "WILDCARD ROUND", "FUTURE CLOCK"];
     const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged" && config.engine?.monetization === "hybrid" && sourceRaw.progressLabel === undefined, "years-left: must use the shared five-stage hybrid prediction flow and progress copy.");
+    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged" && sourceRaw.progressLabel === undefined, "years-left: must use the shared five-stage rewarded prediction flow and progress copy.");
     fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), "years-left/en.json: must contain five rounds of eight questions.");
     fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, "years-left/en.json: must contain forty unique interactions.");
     fail(new Set(source.stages.map((stage) => stage.title)).size === 5 && new Set(sourceQuestions.map((question) => question.question)).size === 40, "years-left/en.json: every round title and prompt must remain unique.");
@@ -548,42 +549,32 @@ for (const folder of folders) {
       ...counts,
       [question.category]: (counts[question.category] ?? 0) + 1,
     }), {});
-    const expectedHeaderLabels = [
-      "WORD RECALL",
-      "VISUAL MEMORY",
-      "NUMBER RECALL",
-      "CODE MATCH",
-      "WORKING MEMORY",
-      "ORDER RECALL",
-      "DETAIL MEMORY",
-      "QUICK ATTENTION",
-      "DELAYED RECALL",
-      "FINAL MEMORY TEST",
-    ];
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.flow === "linear", `${folder.name}: English Memory must use the shared single-stage rewarded flow.`);
-    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10, `${folder.name}/en.json: Memory must contain one stage of ten questions.`);
-    fail(source.stages?.[0]?.title === "Memory Challenge", `${folder.name}/en.json: Memory stage title changed.`);
-    fail(ids.length === 10 && new Set(ids).size === 10, `${folder.name}/en.json: Memory needs ten unique scored questions.`);
-    fail(JSON.stringify(sourceQuestions.map((question) => question.headerLabel)) === JSON.stringify(expectedHeaderLabels), `${folder.name}/en.json: Memory question-type header labels changed.`);
+    const expectedStageHeaders = ["SNAPSHOT MEMORY", "PATTERN LOCK", "DISTRACTION ZONE", "PEOPLE & PAIRS", "FINAL VAULT"];
+    const timedStudies = sourceQuestions.filter((question) => question.study?.mode === "automatic");
+    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged", `${folder.name}: English Memory must use the shared five-stage rewarded flow.`);
+    fail(JSON.stringify(config.activeLocales) === JSON.stringify(["en"]), `${folder.name}: the expanded five-round Memory quiz must remain English-only until its new content is localized.`);
+    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
+    fail(ids.length === 40 && new Set(ids).size === 40, `${folder.name}/en.json: Memory needs forty unique scored questions.`);
+    fail(ids.every((id, index) => id === `memory-r${Math.floor(index / 8) + 1}q${(index % 8) + 1}`), `${folder.name}/en.json: stable Memory question IDs or order changed.`);
+    fail(source.stages.every((stage, index) => stage.questions.every((question) => question.headerLabel === expectedStageHeaders[index])), `${folder.name}/en.json: each Memory round needs its own consistent header label.`);
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Memory screens must not use separate context banners.`);
     fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length === 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs four unique choices and one valid answer.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([3, 3, 2, 2]), `${folder.name}/en.json: Memory correct positions must remain balanced 3/3/2/2.`);
+    fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory correct positions must remain evenly balanced.`);
     fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
-    fail(JSON.stringify(categoryCounts) === JSON.stringify({ word_recall: 2, visual: 2, numbers: 1, attention: 2, working_memory: 1, association: 2 }), `${folder.name}/en.json: Memory category distribution changed.`);
-    fail(sourceQuestions[0]?.study?.mode === "manual" && sourceQuestions.slice(1).every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: only the opening cue may be untimed.`);
-    fail(sourceQuestions[0]?.study?.rewarded === false, `${folder.name}: must open on its landing page and avoid a second rewarded gate on the opening study cue.`);
+    fail(JSON.stringify(categoryCounts) === JSON.stringify({ visual: 4, attention: 8, working_memory: 10, word_recall: 3, numbers: 4, association: 11 }), `${folder.name}/en.json: Memory category distribution changed.`);
+    fail(JSON.stringify(timedStudies.map((question) => question.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), `${folder.name}/en.json: only the three approved study boards may use timers.`);
+    fail(JSON.stringify(timedStudies.map((question) => question.study.durationMs)) === JSON.stringify([1800, 2000, 2000]), `${folder.name}/en.json: timed study cues must total only 5.8 seconds.`);
+    fail(sourceQuestions.every((question) => question.study?.mode !== "manual"), `${folder.name}/en.json: the fast Memory flow must not use manual study pauses.`);
+    fail(timedStudies.every((question) => question.study?.rewarded === false), `${folder.name}: study cues must not add extra rewarded gates.`);
     fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four separate items.`);
-    fail(sourceQuestions.every((question) => question.study?.mode !== "automatic" || (question.study.durationMs >= 3000 && question.study.durationMs <= 6000)), `${folder.name}/en.json: automatic study cues must remain between 3000ms and 6000ms.`);
-    fail(sourceQuestions.filter((question) => question.study).length === 5, `${folder.name}/en.json: Memory needs exactly five concise study moments.`);
+    fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next), `${folder.name}/en.json: every non-final round needs a distinct next-round teaser.`);
+    fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3 && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", `${folder.name}/en.json: the final Memory gate must summarize and reveal the result.`);
+    fail(/40 varied|five fast rounds/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About copy must describe the five-by-eight format.`);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, `${folder.name}: Memory target and rewarded flow changed.`);
-    fail(source.career?.stages?.length === 1 && source.career.stages[0]?.preAdChecks?.length === 3 && source.career.stages[0]?.next === undefined, `${folder.name}/en.json: Memory needs one final rewarded result gate.`);
-    const gate = source.career?.stages?.[0];
-    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your results are ready" && gate?.preAdCopy === "Your memory score and breakdown across three areas are ready to reveal." && gate?.preAdButton === "Reveal My Results", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
+    const gate = source.career?.stages?.at(-1);
+    fail(gate?.next === undefined && gate?.preAdTitle === "Your memory result is ready" && gate?.preAdCopy === "All five rounds have been scored. Your final result and memory-area breakdown are ready." && gate?.preAdButton === "Reveal My Result", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory must use the shared breakdown unlock without duplicate copy.`);
-    fail(source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage Memory must not show a redundant best-round module.`);
-    fail(sourceQuestions[0]?.study?.items?.includes("PURPLE ELEPHANT") && sourceQuestions[8]?.answers?.[sourceQuestions[8]?.correct] === "Purple", `${folder.name}/en.json: opening elephant seed and delayed callback must remain aligned.`);
-    fail(/Sarah/.test(sourceQuestions[6]?.study?.items?.join(" ") ?? "") && sourceQuestions[9]?.answers?.[sourceQuestions[9]?.correct] === "08:40", `${folder.name}/en.json: Sarah seed and delayed callback must remain aligned.`);
-    fail(sourceQuestions[2]?.answers?.[sourceQuestions[2]?.correct] === "5837" && sourceQuestions[3]?.answers?.[sourceQuestions[3]?.correct] === "K7M2Q" && sourceQuestions[4]?.answers?.[sourceQuestions[4]?.correct] === "2 – 9 – 4", `${folder.name}/en.json: core number, attention or working-memory answers changed.`);
+    fail(source.results?.score?.showBestRound === true, `${folder.name}/en.json: five-stage Memory must reveal the best round.`);
   }
   if (folder.name === "iq") {
     const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];

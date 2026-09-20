@@ -2,7 +2,6 @@ import Script from "next/script";
 import { Suspense } from "react";
 
 import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
-import { WebInterstitialAd } from "@/components/experience/WebInterstitialAd";
 import type { SupportedLocale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -25,7 +24,6 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
         {head}
       </head>
       <body suppressHydrationWarning>
-        {siteConfig.adMode === "interstitial" ? <WebInterstitialAd /> : null}
         <Suspense fallback={null}>
           <FbclidHeaderVisibility />
         </Suspense>

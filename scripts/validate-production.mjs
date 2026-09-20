@@ -180,41 +180,33 @@ const rewardedGateText = fs.readFileSync(path.join(rootDir, "components", "exper
 const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
-const reversibleAdModeContract = [
+const rewardedOnlyContract = [
   "function startQuiz()",
   "runRewardedGate(beginQuiz)",
-  "onStart={usesRewardedAds ? startQuiz : beginQuiz}",
-  'navigationMode={usesRewardedAds ? "document" : "spa"}',
+  "onStart={startQuiz}",
+  "onAnswer={answerQuestion}",
   "disabled={adBusy}",
   "startInstructionEnabled",
   "data-start-instruction=\"true\"",
   "translations.ad.watchAdStart",
-  "siteConfig.adMode === \"rewarded\"",
-  'quiz.engine.monetization === "hybrid"',
 ];
-for (const declaration of reversibleAdModeContract) {
-  if (!quizEngineText.includes(declaration)) addError(`Reversible ad-mode contract is missing: ${declaration}`);
+for (const declaration of rewardedOnlyContract) {
+  if (!quizEngineText.includes(declaration)) addError(`Rewarded-only ad contract is missing: ${declaration}`);
 }
-for (const [source, declaration] of [
-  [siteConfigText, 'export type AdMode = "interstitial" | "rewarded"'],
-  [siteConfigText, '"/22677279144/display"'],
-  [rootDocumentText, 'siteConfig.adMode === "interstitial" ? <WebInterstitialAd /> : null'],
-  [rewardedAdsText, "OutOfPageFormat?.INTERSTITIAL"],
-  [rewardedAdsText, "defineOutOfPageSlot(adUnitPath, format)"],
-  [quizEngineText, 'answerHref={siteConfig.adMode === "interstitial"'],
-  [questionRendererText, "<a"],
-  [questionRendererText, 'destination.searchParams.set("quizStep"'],
-  [questionRendererText, 'window.history.replaceState(null, "", destination)'],
-  [quizEngineText, "answerQuestionWithReload"],
-  [quizEngineText, 'answerNavigationMode={siteConfig.adMode === "interstitial" && !usesHybridAds && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}'],
-  [questionRendererText, 'data-google-interstitial={interstitialEligible ? undefined : "false"}'],
-  [quizEngineText, "forceRewarded: usesHybridAds"],
-  [quizEngineText, 'document.body.setAttribute("data-google-interstitial", "false")'],
-  [quizEngineText, "interstitialEligible={!usesHybridAds}"],
-  [rewardedGateText, 'siteConfig.adMode === "interstitial" && !forceRewarded'],
-  [experienceLandingText, 'window.history.pushState(null, "", destination)'],
+for (const [label, source] of [
+  ["site config", siteConfigText],
+  ["root document", rootDocumentText],
+  ["quiz engine", quizEngineText],
+  ["question renderer", questionRendererText],
+  ["rewarded gate", rewardedGateText],
+  ["rewarded ad runtime", rewardedAdsText],
 ]) {
-  if (!source.includes(declaration)) addError(`Global interstitial contract is missing: ${declaration}`);
+  if (/interstitial|gamInterstitial|NEXT_PUBLIC_AD_MODE|answerQuestionWithReload|quizStep/i.test(source)) {
+    addError(`Interstitial code must not exist in the rewarded-only ${label}.`);
+  }
+}
+if (fs.existsSync(path.join(rootDir, "components", "experience", "WebInterstitialAd.tsx"))) {
+  addError("The retired WebInterstitialAd component must not exist.");
 }
 if (!experienceLandingText.includes("onClick={onStart}")) {
   addError("Shared experience landing must connect its primary CTA to onStart.");
@@ -304,8 +296,8 @@ for (const slug of fs.readdirSync(quizThemeRoot)) {
   }
 }
 
-if (!quizTemplateText.includes('startInstructionEnabled={siteConfig.adMode === "rewarded" && siteConfig.rewardedStartInstructionEnabled}')) {
-  addError("The shared rewarded-start instruction must be disabled while interstitial mode is active.");
+if (!quizTemplateText.includes("startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}")) {
+  addError("The shared rewarded-start instruction must use the rewarded-only site setting.");
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");

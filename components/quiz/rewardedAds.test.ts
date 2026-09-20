@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { mountWebInterstitialAd, requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
+import { requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 
 test("rewarded ads reopen after early closes and only count genuine unavailability", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
@@ -110,51 +110,4 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   controller.abort();
   assert.equal(await cancelled, "closed", "aborting a gate must stop it without consuming unavailable attempts");
   assert.equal(requests, 10);
-});
-
-test("web interstitial setup creates one GPT-managed slot and leaves serving decisions to GPT", () => {
-  let definitions = 0;
-  let displays = 0;
-  let destroyed = 0;
-  const slot = { addService() { return this; } };
-  const pubads = {};
-  const googletag = {
-    cmd: {
-      push(command: () => void) {
-        command();
-      },
-    },
-    defineOutOfPageSlot(path: string, format: string) {
-      assert.equal(path, "/22677279144/display");
-      assert.equal(format, "interstitial");
-      definitions += 1;
-      return slot;
-    },
-    destroySlots(slots: object[]) {
-      assert.deepEqual(slots, [slot]);
-      destroyed += 1;
-    },
-    display(displayedSlot: object) {
-      assert.equal(displayedSlot, slot);
-      displays += 1;
-    },
-    enableServices() {},
-    enums: { OutOfPageFormat: { INTERSTITIAL: "interstitial" } },
-    pubads() { return pubads; },
-  };
-
-  Object.defineProperty(globalThis, "window", {
-    configurable: true,
-    value: { googletag },
-  });
-
-  const first = mountWebInterstitialAd({ adUnitPath: "/22677279144/display" });
-  const duplicate = mountWebInterstitialAd({ adUnitPath: "/22677279144/display" });
-  assert.equal(definitions, 1, "the GPT-managed format may only be defined once per page");
-  assert.equal(displays, 1);
-
-  duplicate.destroy();
-  assert.equal(destroyed, 0, "a duplicate mount does not own the shared slot");
-  first.destroy();
-  assert.equal(destroyed, 1);
 });

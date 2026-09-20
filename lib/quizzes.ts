@@ -148,7 +148,6 @@ export type QuizEngineConfig = {
   tieBreaks?: QuizTieBreakConfig;
   match?: QuizMatchConfig;
   profileArtworkSelector?: QuizProfileArtworkSelector;
-  monetization: "inherit" | "hybrid";
 };
 
 export type QuizCareerStageCopy = {
@@ -417,7 +416,6 @@ type QuizManifest = {
     tieBreaks?: QuizTieBreakConfig;
     match?: QuizMatchConfig;
     profileArtworkSelector?: QuizProfileArtworkSelector;
-    monetization?: QuizEngineConfig["monetization"];
   };
   listing: {
     thumbnail?: string;
@@ -1025,7 +1023,11 @@ function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: Supporte
     const uppercase = stage.uppercaseNextForLocales?.includes(locale) ?? false;
     const resolved = {
       ...copy,
-      preAdButton: copy.preAdButton ?? (manifest.engine.scoring === "correct-answer" ? shared.revealMyResults : undefined),
+      preAdButton: copy.preAdButton ?? (
+        manifest.engine.scoring === "correct-answer" && stageIndex === structure.stages.length - 1
+          ? shared.revealMyResults
+          : undefined
+      ),
       next: copy.next && nextStageCopy && nextCareerCopy ? {
         ...copy.next,
         title: uppercase ? nextStageCopy.title.toLocaleUpperCase(locale) : nextStageCopy.title,
@@ -1073,7 +1075,6 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   }
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
-  if (engine.monetization !== undefined && !["inherit", "hybrid"].includes(String(engine.monetization))) throw new Error(`${file}: engine.monetization must be inherit or hybrid.`);
   const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
   const advanceDelayMs = templateContract.engine.advanceDelayMs;
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -1197,7 +1198,6 @@ function validateManifest(value: unknown, file: string): QuizManifest {
       tieBreaks,
       match,
       profileArtworkSelector,
-      monetization: (engine.monetization ?? "inherit") as QuizEngineConfig["monetization"],
     } as QuizManifest["engine"],
     listing: {
       thumbnail: listing.thumbnail as string | undefined,
@@ -1625,7 +1625,6 @@ function normalizeLocale(
       tieBreaks: manifest.engine.tieBreaks,
       match: manifest.engine.match,
       profileArtworkSelector: manifest.engine.profileArtworkSelector,
-      monetization: manifest.engine.monetization ?? "inherit",
     },
     theme,
     themeCssHref,

@@ -105,7 +105,11 @@ export function expandQuizLocale(manifest, text, locale) {
     const uppercase = stage.uppercaseNextForLocales?.includes(locale) ?? false;
     const resolved = compact({
       ...copy,
-      preAdButton: copy.preAdButton ?? (manifest.engine.scoring === "correct-answer" ? shared.revealMyResults : undefined),
+      preAdButton: copy.preAdButton ?? (
+        manifest.engine.scoring === "correct-answer" && stageIndex === structure.stages.length - 1
+          ? shared.revealMyResults
+          : undefined
+      ),
       next: copy.next && nextStageCopy && nextCareerCopy ? {
         ...copy.next,
         title: uppercase ? nextStageCopy.title.toLocaleUpperCase(locale) : nextStageCopy.title,

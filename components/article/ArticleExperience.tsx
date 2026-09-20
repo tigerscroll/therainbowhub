@@ -7,7 +7,6 @@ import { getArticleChapterPath } from "@/components/article/articleRouting";
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
-import { siteConfig } from "@/lib/siteConfig";
 import {
   isArticleSection,
   type ArticlePoint,
@@ -236,14 +235,13 @@ export function ArticleExperience({
   sources,
   ui,
 }: ArticleExperienceProps) {
-  const usesRewardedAds = siteConfig.adMode === "rewarded";
   const router = useRouter();
   const [started, setStarted] = useState(Boolean(initialSection));
   const [currentSection, setCurrentSection] = useState<ArticleSection | null>(null);
   const [navigating, setNavigating] = useState(false);
   const [restoring, setRestoring] = useState(Boolean(initialSection));
   const { busy: adBusy, runGate } = useRewardedGate({ attempts: 3 });
-  const defaultGateAdNote = usesRewardedAds ? (ui?.defaultGateAdNote ?? "One short ad, then continue.") : "";
+  const defaultGateAdNote = ui?.defaultGateAdNote ?? "One short ad, then continue.";
   const gateBusyNote = ui?.gateBusyNote ?? "Loading ad…";
 
   useEffect(() => {
@@ -306,7 +304,7 @@ export function ArticleExperience({
   if (!started) {
     return (
       <ExperienceLanding
-        adNote={usesRewardedAds ? adNote : undefined}
+        adNote={adNote}
         avatars={avatars}
         busy={adBusy || navigating}
         busyLabel={navigating
@@ -318,8 +316,7 @@ export function ArticleExperience({
         className="article-engine__landing"
         icon={icon}
         intro={intro}
-        href={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, 1)}
-        onStart={usesRewardedAds ? showArticle : () => true}
+        onStart={showArticle}
         showCtaIcon={showCtaIcon}
         showSocialProof={showSocialProof}
         socialProofText={`${socialProofCount} ${socialProofLabel}`}
@@ -348,7 +345,6 @@ export function ArticleExperience({
         busy={adBusy || navigating}
         defaultAdNote={defaultGateAdNote}
         gateBusyNote={gateBusyNote}
-        unlockHref={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, currentSectionNumber + 1)}
         insertAfter={gatePlacement === "default" ? 5 : undefined}
         next={currentSection.next}
         onUnlock={() => unlockSection(currentSectionNumber + 1)}
@@ -360,7 +356,6 @@ export function ArticleExperience({
           busy={adBusy || navigating}
           defaultAdNote={defaultGateAdNote}
           gateBusyNote={gateBusyNote}
-          href={usesRewardedAds ? undefined : getArticleChapterPath(articlePath, currentSectionNumber + 1)}
           next={currentSection.next}
           onUnlock={() => unlockSection(currentSectionNumber + 1)}
         />

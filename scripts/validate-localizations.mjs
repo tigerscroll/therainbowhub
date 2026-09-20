@@ -358,20 +358,25 @@ function validateMemorySemantics(content, location) {
   // detail that the player originally studied. These relational checks are
   // deliberately language-agnostic and survive native rewrites.
   const containsContracts = [
-    [studyItem("memory-r1q1", 2), answer("memory-r1q1"), "memory-r1q1/opening-key"],
-    [studyItem("memory-r1q2", 2), answer("memory-r1q2"), "memory-r1q2/third-shape"],
-    [studyItem("memory-r1q3", 0), answer("memory-r1q3"), "memory-r1q3/opening-number"],
-    [studyItem("memory-r2q4", 1), answer("memory-r2q4"), "memory-r2q4/destination"],
-    [studyItem("memory-r1q1", 3), answer("memory-r5q1"), "memory-r5q1/elephant-colour"],
-    [studyItem("memory-r2q4", 2), answer("memory-r5q6"), "memory-r5q6/train-time"],
+    [studyItem("memory-r1q1", 0), answer("memory-r1q1"), "memory-r1q1/blue-key"],
+    [studyItem("memory-r1q1", 1), answer("memory-r1q4"), "memory-r1q4/opening-animal"],
+    [studyItem("memory-r1q1", 3), answer("memory-r5q1"), "memory-r5q1/kite-colour"],
+    [studyItem("memory-r1q1", 2), answer("memory-r5q2"), "memory-r5q2/train-number"],
+    [studyItem("memory-r3q1", 0), answer("memory-r3q1"), "memory-r3q1/coat-colour"],
+    [studyItem("memory-r3q1", 1), answer("memory-r3q7"), "memory-r3q7/station-time"],
+    [studyItem("memory-r3q1", 2), answer("memory-r3q8"), "memory-r3q8/apple-count"],
+    [studyItem("memory-r3q1", 3), answer("memory-r5q3"), "memory-r5q3/seat-type"],
+    [studyItem("memory-r3q1", 2), answer("memory-r5q6"), "memory-r5q6/bag-tag-colour"],
+    [studyItem("memory-r4q1", 1), answer("memory-r4q1"), "memory-r4q1/omar-object"],
+    [studyItem("memory-r4q1", 2), answer("memory-r4q5"), "memory-r4q5/compass-owner"],
+    [studyItem("memory-r4q1", 3), answer("memory-r4q8"), "memory-r4q8/scarf-owner"],
+    [studyItem("memory-r4q1", 0), answer("memory-r5q4"), "memory-r5q4/mia-object"],
   ];
   containsContracts.forEach(([container, expected, contract]) => assertTextContains(container, expected, location, contract));
-  assertTextEquals(answer("memory-r1q5"), "K7M2Q", location, "memory-r1q5/exact-code");
-  assertTextEquals(answer("memory-r1q7"), "2 – 9 – 4", location, "memory-r1q7/reversed-sequence");
-  const lockQuestion = q("memory-r2q3")?.question ?? "";
-  if (!lockQuestion.includes("1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK")) {
-    addError(`${location}#memory-r2q3/literal-code: LOCK/L0CK puzzle tokens must remain unchanged.`);
-  }
+  assertTextEquals(answer("memory-r1q2"), "K7M2Q", location, "memory-r1q2/exact-code");
+  assertTextEquals(answer("memory-r1q3"), "2 – 9 – 4", location, "memory-r1q3/reversed-sequence");
+  assertTextEquals(answer("memory-r3q2"), "T8PL4", location, "memory-r3q2/exact-code");
+  assertTextEquals(answer("memory-r4q2"), "B7KR", location, "memory-r4q2/swapped-code");
 }
 
 const visionIconAnswerContracts = {
