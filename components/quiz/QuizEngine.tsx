@@ -150,9 +150,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
   const stageQuestionIndex = Math.max(0, stageQuestions.findIndex((question) => question.id === currentQuestion?.id));
-  const isHybridInterstitialOpportunity = usesHybridAds
-    && stageQuestionIndex >= 2
-    && stageQuestionIndex <= stageQuestions.length - 3;
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
@@ -181,6 +178,16 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       document.body.style.removeProperty("background");
     }
   }, [progressSignature, quiz, storageKey]);
+
+  useEffect(() => {
+    if (!usesHybridAds) return;
+    const previous = document.body.getAttribute("data-google-interstitial");
+    document.body.setAttribute("data-google-interstitial", "false");
+    return () => {
+      if (previous === null) document.body.removeAttribute("data-google-interstitial");
+      else document.body.setAttribute("data-google-interstitial", previous);
+    };
+  }, [usesHybridAds]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -887,12 +894,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
         answer={selectedAnswer}
-        answerHref={siteConfig.adMode === "interstitial" ? `?quizStep=${questionIndex + 1}` : undefined}
-        answerNavigationMode={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}
+        answerHref={siteConfig.adMode === "interstitial" && !usesHybridAds ? `?quizStep=${questionIndex + 1}` : undefined}
+        answerNavigationMode={siteConfig.adMode === "interstitial" && !usesHybridAds && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-        interstitialEligible={!usesHybridAds || isHybridInterstitialOpportunity}
-        onAnswer={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionWithReload : answerQuestion}
+        interstitialEligible={!usesHybridAds}
+        onAnswer={siteConfig.adMode === "interstitial" && !usesHybridAds && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionWithReload : answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}
