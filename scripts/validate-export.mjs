@@ -45,7 +45,8 @@ if (!fs.existsSync(outputRoot)) {
     .sort();
 
   for (const slug of slugs) {
-    const localizedLocales = locales.filter((locale) => locale === "en"
+    const quizConfig = JSON.parse(fs.readFileSync(path.join(quizRoot, slug, "quiz.json"), "utf8"));
+    const localizedLocales = quizConfig.activeLocales ?? locales.filter((locale) => locale === "en"
       || fs.existsSync(path.join(quizRoot, slug, `${locale}.json`)));
     for (const locale of localizedLocales) {
       const route = locale === "en" ? `/${slug}` : `/${locale}/${slug}`;

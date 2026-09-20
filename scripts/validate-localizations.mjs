@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
+import { quizTemplateContract } from "./quiz-template-contracts.mjs";
 
 const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
@@ -253,10 +254,11 @@ function hasEnglishResidue(pair) {
   return looksLikeUntranslatedSentence(pair) || containsEmbeddedEnglishClause(pair);
 }
 
-function validateQuestions(content, location) {
+function validateQuestions(content, location, template) {
+  const contract = quizTemplateContract(template);
   const questions = (content.stages ?? []).flatMap((stage) => stage.questions ?? []);
-  if (questions.length !== 10 || content.stages?.length !== 1 || content.stages.some((stage) => stage.questions?.length !== 10)) {
-    addError(`${location}: every active quiz must contain one stage of ten questions.`);
+  if (!contract || questions.length !== contract.stageCount * contract.questionsPerStage || content.stages?.length !== contract.stageCount || content.stages.some((stage) => stage.questions?.length !== contract.questionsPerStage)) {
+    addError(`${location}: quiz content does not match template ${template}.`);
   }
   if (new Set(questions.map((question) => question.id)).size !== questions.length) {
     addError(`${location}: localized question IDs are not unique.`);
@@ -715,29 +717,32 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   const actualLocaleFiles = fs.readdirSync(directory)
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
+  const activeLocaleFiles = (manifest.activeLocales ?? actualLocaleFiles.map((file) => file.replace(/\.json$/, "")))
+    .map((locale) => `${locale}.json`)
+    .sort();
   const expectedLocaleFiles = localeFiles;
   const independentLocales = manifest.engine?.localeParity === "independent" && !requireAllLocales;
-  if (!actualLocaleFiles.includes("en.json")) {
+  if (!activeLocaleFiles.every((file) => actualLocaleFiles.includes(file)) || !activeLocaleFiles.includes("en.json")) {
     addError(`data/quizzes/${entry.name}: en.json is required.`);
     continue;
   }
-  if (!independentLocales && JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
+  if (!manifest.activeLocales && !independentLocales && JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)) {
     addError(`data/quizzes/${entry.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
     continue;
   }
   const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
-  validateQuestions(english, `data/quizzes/${entry.name}/en.json`);
+  validateQuestions(english, `data/quizzes/${entry.name}/en.json`, manifest.template);
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
-  for (const localeFile of actualLocaleFiles.filter((file) => file !== "en.json")) {
+  for (const localeFile of activeLocaleFiles.filter((file) => file !== "en.json")) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
     const localized = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8")), locale);
     if (localized.landing?.intro?.includes("—")) addError(`${location}#landing.intro: landing subtitles must not use em dashes.`);
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
     compareStructure(english, localized, [], location);
-    validateQuestions(localized, location);
+    validateQuestions(localized, location, manifest.template);
     if (entry.name === "marry") validateMarryLocalization(english, localized, locale, location);
     validateSemanticContracts(entry.name, localized, locale, location);
     validateNativeCopyPatterns(entry.name, localized, locale, location);

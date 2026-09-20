@@ -75,53 +75,142 @@
       "icon": "⌛"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "yl-s1q1",
+          "yl-s1q2",
+          "yl-s1q3",
+          "yl-s1q4",
+          "yl-s1q5",
+          "yl-s1q6",
+          "yl-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "yl-s2q1",
+          "yl-s2q2",
+          "yl-s2q3",
+          "yl-s2q4",
+          "yl-s2q5",
+          "yl-s2q6",
+          "yl-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "yl-s3q1",
+          "yl-s3q2",
+          "yl-s3q3",
+          "yl-s3q4",
+          "yl-s3q5",
+          "yl-s3q6",
+          "yl-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "yl-s4q1",
+          "yl-s4q2",
+          "yl-s4q3",
+          "yl-s4q4",
+          "yl-s4q5",
+          "yl-s4q6",
+          "yl-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "yl-s5q1",
+          "yl-s5q2",
+          "yl-s5q3",
+          "yl-s5q4",
+          "yl-s5q5",
+          "yl-s5q6",
+          "yl-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "yl-s6q1",
+          "yl-s6q2",
+          "yl-s6q3",
+          "yl-s6q4",
+          "yl-s6q5",
+          "yl-s6q6",
+          "yl-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "yl-s7q1",
+          "yl-s7q2",
+          "yl-s7q3",
+          "yl-s7q4",
+          "yl-s7q5",
+          "yl-s7q6",
+          "yl-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "yl-s8q1",
+          "yl-s8q2",
+          "yl-s8q3",
+          "yl-s8q4",
+          "yl-s8q5",
+          "yl-s8q6",
+          "yl-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "yl-s9q1",
+          "yl-s9q2",
+          "yl-s9q3",
+          "yl-s9q4",
+          "yl-s9q5",
+          "yl-s9q6",
+          "yl-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "r1q3",
-          "r2q1",
-          "r3q2",
-          "r4q3",
-          "r4q2",
-          "r6q6",
-          "r7q4",
-          "r8q1",
-          "r9q5",
-          "r10q6"
+          "yl-s10q1",
+          "yl-s10q2",
+          "yl-s10q3",
+          "yl-s10q4",
+          "yl-s10q5",
+          "yl-s10q6",
+          "yl-s10q7"
         ]
       }
     ],
     "questions": {
-      "r1q3": {
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "adventure_fuse": 1.119403
-          },
-          "a2": {
-            "centenarian_energy": 0.914634
-          },
-          "a3": {
-            "weekend_chaos": 1.25
-          }
-        }
-      },
-      "r2q1": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🍎",
-          "a2": "🍰",
-          "a3": "🫒",
-          "a4": "🍪"
-        },
+      "yl-s1q1": {
         "answerIds": [
           "a1",
           "a2",
@@ -130,27 +219,20 @@
         ],
         "choiceMeanings": {
           "a1": {
-            "centenarian_energy": 0.914634
+            "reset_needed": 1
           },
           "a2": {
-            "comfort_creature": 0.914634
+            "comfort_creature": 1
           },
           "a3": {
-            "balanced_realist": 0.842697
+            "balanced_realist": 1
           },
           "a4": {
-            "reset_needed": 0.949367
+            "centenarian_energy": 1
           }
         }
       },
-      "r3q2": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🚗",
-          "a2": "🚌",
-          "a3": "🚶",
-          "a4": "🚲"
-        },
+      "yl-s1q2": {
         "answerIds": [
           "a1",
           "a2",
@@ -159,177 +241,1519 @@
         ],
         "choiceMeanings": {
           "a1": {
-            "comfort_creature": 0.914634
+            "steady_long_game": 1
           },
           "a2": {
-            "balanced_realist": 0.842697
+            "adventure_fuse": 1
           },
           "a3": {
-            "steady_long_game": 0.797872
+            "stress_sprinter": 1
           },
           "a4": {
-            "adventure_fuse": 1.119403
+            "weekend_chaos": 1
           }
         }
       },
-      "r4q3": {
-        "presentation": "scale",
+      "yl-s1q3": {
         "answerIds": [
           "a1",
           "a2",
           "a3",
-          "a4",
-          "a5"
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
-            "reset_needed": 0.949367
+            "reset_needed": 1
           },
           "a2": {
-            "stress_sprinter": 1.595745
+            "comfort_creature": 1
           },
           "a3": {
-            "balanced_realist": 0.842697
+            "balanced_realist": 1
           },
           "a4": {
-            "steady_long_game": 0.797872
-          },
-          "a5": {
-            "centenarian_energy": 0.914634
+            "centenarian_energy": 1
           }
         }
       },
-      "r4q2": {
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "stress_sprinter": 1.595745
-          },
-          "a2": {
-            "comfort_creature": 0.914634
-          },
-          "a3": {
-            "steady_long_game": 0.797872
-          }
-        }
-      },
-      "r6q6": {
-        "presentation": "scale",
+      "yl-s1q4": {
         "answerIds": [
           "a1",
           "a2",
           "a3",
-          "a4",
-          "a5"
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
-            "reset_needed": 0.949367
+            "steady_long_game": 1
           },
           "a2": {
-            "comfort_creature": 0.914634
+            "adventure_fuse": 1
           },
           "a3": {
-            "balanced_realist": 0.842697
+            "stress_sprinter": 1
           },
           "a4": {
-            "steady_long_game": 0.797872
-          },
-          "a5": {
-            "adventure_fuse": 1.119403
+            "weekend_chaos": 1
           }
         }
       },
-      "r7q4": {
+      "yl-s1q5": {
         "answerIds": [
           "a1",
           "a2",
-          "a3"
+          "a3",
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
-            "steady_long_game": 0.797872
+            "reset_needed": 1
           },
           "a2": {
-            "weekend_chaos": 1.25
+            "comfort_creature": 1
           },
           "a3": {
-            "reset_needed": 0.949367
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
           }
         }
       },
-      "r8q1": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🌿",
-          "a2": "😂",
-          "a3": "🛋️"
+      "yl-s1q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s1q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s2q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s2q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s2q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s2q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s2q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s2q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s2q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s3q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s3q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s3q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s3q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s3q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s3q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s3q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s4q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s4q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s4q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s4q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s4q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s4q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s4q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s5q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s5q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s5q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s5q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s5q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s5q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s5q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s6q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s6q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s6q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s6q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s6q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s6q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s6q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s7q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s7q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s7q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s7q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s7q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s7q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s7q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s8q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s8q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s8q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s8q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s8q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s8q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s8q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s9q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s9q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s9q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s9q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s9q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s9q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s9q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s10q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s10q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s10q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s10q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s10q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
+        }
+      },
+      "yl-s10q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "reset_needed": 1
+          },
+          "a2": {
+            "comfort_creature": 1
+          },
+          "a3": {
+            "balanced_realist": 1
+          },
+          "a4": {
+            "centenarian_energy": 1
+          }
+        }
+      },
+      "yl-s10q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "steady_long_game": 1
+          },
+          "a2": {
+            "adventure_fuse": 1
+          },
+          "a3": {
+            "stress_sprinter": 1
+          },
+          "a4": {
+            "weekend_chaos": 1
+          }
         },
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "centenarian_energy": 0.914634
-          },
-          "a2": {
-            "weekend_chaos": 1.25
-          },
-          "a3": {
-            "comfort_creature": 0.914634
-          }
-        }
-      },
-      "r9q5": {
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "adventure_fuse": 1.119403
-          },
-          "a2": {
-            "reset_needed": 0.949367
-          },
-          "a3": {
-            "balanced_realist": 0.842697
-          }
-        }
-      },
-      "r10q6": {
         "calibration": {
           "a1": -1,
           "a2": -0.25,
           "a3": 0.5,
           "a4": 1
-        },
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "stress_sprinter": 1.595745
-          },
-          "a2": {
-            "balanced_realist": 0.842697
-          },
-          "a3": {
-            "steady_long_game": 0.797872
-          },
-          "a4": {
-            "centenarian_energy": 0.914634
-          }
         }
       }
     },
@@ -405,5 +1829,8 @@
         "reviewUnlockRewarded": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en"
+  ]
 }

@@ -2,6 +2,8 @@
 
 import { forwardRef, type ReactNode } from "react";
 
+import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
+
 type ExperienceLandingProps = {
   adNote?: string;
   disclaimer?: string;
@@ -84,8 +86,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             className="quiz-engine__primary"
             href={href}
             onClick={(event) => {
-              event.currentTarget.setAttribute("data-departing", "true");
-              event.currentTarget.setAttribute("aria-busy", "true");
+              prepareFullPageNavigation(event.currentTarget);
               const destination = new URL(href, window.location.href);
               const current = new URL(window.location.href);
               current.searchParams.forEach((value, key) => {
@@ -93,8 +94,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
               });
               event.currentTarget.href = destination.toString();
               if (onStart() === false) {
-                event.currentTarget.removeAttribute("data-departing");
-                event.currentTarget.removeAttribute("aria-busy");
+                cancelFullPageNavigation(event.currentTarget);
                 event.preventDefault();
               }
             }}

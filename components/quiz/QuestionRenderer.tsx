@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
+import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
@@ -164,14 +165,12 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, 
               href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
-                event.currentTarget.setAttribute("data-departing", "true");
-                event.currentTarget.setAttribute("aria-busy", "true");
+                prepareFullPageNavigation(event.currentTarget);
                 const destination = new URL(window.location.href);
                 destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
                 event.currentTarget.href = destination.toString();
                 if (onAnswer(index) === false) {
-                  event.currentTarget.removeAttribute("data-departing");
-                  event.currentTarget.removeAttribute("aria-busy");
+                  cancelFullPageNavigation(event.currentTarget);
                   event.preventDefault();
                 }
               }}
@@ -261,14 +260,12 @@ function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionR
           className="quiz-engine__primary"
           href={answerHref}
           onClick={(event) => {
-            event.currentTarget.setAttribute("data-departing", "true");
-            event.currentTarget.setAttribute("aria-busy", "true");
+            prepareFullPageNavigation(event.currentTarget);
             const destination = new URL(window.location.href);
             destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
             event.currentTarget.href = destination.toString();
             if (onAnswer(0) === false) {
-              event.currentTarget.removeAttribute("data-departing");
-              event.currentTarget.removeAttribute("aria-busy");
+              cancelFullPageNavigation(event.currentTarget);
               event.preventDefault();
             }
           }}

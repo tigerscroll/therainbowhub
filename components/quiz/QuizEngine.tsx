@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
+import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
@@ -424,6 +425,34 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     else next();
   }
 
+  function continueAfterCheckpointWithReload() {
+    const isFinalStage = completedStage >= quiz.stages.length - 1;
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = answers[question.id];
+        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return selectedId ? [[question.id, selectedId]] : [];
+      })),
+      questionIndex,
+      completedStage,
+      screen: isFinalStage ? "results" : "question",
+      studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
+      updatedAt: new Date().toISOString(),
+    };
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(saved));
+      if (isFinalStage) trackQuizEvent("QuizComplete", quiz, locale);
+      return true;
+    } catch {
+      continueAfterCheckpoint();
+      return false;
+    }
+  }
+
   function unlockIncorrectAnswers() {
     void runRewardedGate(() => setReviewUnlocked(true), false);
   }
@@ -555,6 +584,19 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       : undefined;
     const checkpointArtwork = (checkpointVariant ? checkpointVariantAssets?.[checkpointVariant]?.[completedStage] : undefined)
       ?? quiz.theme.artwork?.checkpoints?.[completedStage];
+    const checkpointCtaContent = (
+      <>
+        {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
+        {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
+        {!isFinalStage && !adBusy ? (
+          <span aria-hidden="true" className="quiz-engine__primary-arrow">
+            <svg focusable="false" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </span>
+        ) : null}
+      </>
+    );
     return (
       <>
       <section
@@ -592,17 +634,28 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
-          {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
-          {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
-          {!isFinalStage && !adBusy ? (
-            <span aria-hidden="true" className="quiz-engine__primary-arrow">
-              <svg focusable="false" viewBox="0 0 24 24">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </span>
-          ) : null}
-        </button>
+        {!usesRewardedAds && !adBusy && (!isFinalStage || checkpointCtaReady) ? (
+          <a
+            className="quiz-engine__primary"
+            href={`?quizStep=${isFinalStage ? "results" : questionIndex}`}
+            onClick={(event) => {
+              prepareFullPageNavigation(event.currentTarget);
+              const destination = new URL(window.location.href);
+              destination.searchParams.set("quizStep", isFinalStage ? "results" : String(questionIndex));
+              event.currentTarget.href = destination.toString();
+              if (!continueAfterCheckpointWithReload()) {
+                cancelFullPageNavigation(event.currentTarget);
+                event.preventDefault();
+              }
+            }}
+          >
+            {checkpointCtaContent}
+          </a>
+        ) : (
+          <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
+            {checkpointCtaContent}
+          </button>
+        )}
         {usesRewardedAds && quiz.engine.rewarded.stages && checkpoint ? (
           <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
             <span aria-hidden="true">✓</span>

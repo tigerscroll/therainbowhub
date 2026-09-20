@@ -37,8 +37,8 @@
 
 .site-shell { display: flex; min-height: 100vh; flex-direction: column; }
 .site-content { flex: 1; background: #f4f8f8; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: #111015; color: #172033; }
+html { background: var(--navigation-background, #111015); scroll-behavior: smooth; }
+body { margin: 0; background: var(--navigation-background, #111015); color: #172033; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { cursor: pointer; }

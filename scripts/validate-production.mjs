@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
+import { quizTemplateContract } from "./quiz-template-contracts.mjs";
 import process from "node:process";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
@@ -323,17 +324,24 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
   const localeFiles = fs.readdirSync(path.join(quizRoot, entry.name))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
-  const sortedLocaleFiles = localeFiles.sort();
-  const expectedLocaleFiles = multilingualLocaleFiles;
-  const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const quizConfigPath = path.join(quizRoot, entry.name, "quiz.json");
   const quizConfig = JSON.parse(fs.readFileSync(quizConfigPath, "utf8"));
+  const activeLocales = quizConfig.activeLocales ?? localeFiles.map((file) => file.replace(/\.json$/, ""));
+  const activeLocaleFiles = activeLocales.map((locale) => `${locale}.json`);
+  const sortedLocaleFiles = activeLocaleFiles.sort();
+  const expectedLocaleFiles = multilingualLocaleFiles;
+  const englishContentPath = path.join(quizRoot, entry.name, "en.json");
   const independentLocales = quizConfig.engine?.localeParity === "independent";
-  if (!sortedLocaleFiles.includes("en.json") || (!independentLocales && JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles))) {
+  if (!activeLocaleFiles.every((file) => localeFiles.includes(file)) || !sortedLocaleFiles.includes("en.json") || (!quizConfig.activeLocales && !independentLocales && JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles))) {
     addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (${independentLocales ? "English plus any completed supported locales" : `exactly ${expectedLocaleFiles.join(", ")}`} required; found ${localeFiles.join(", ") || "none"})`);
   }
-  const expectedStageCount = 1;
-  const expectedQuestionsPerStage = 10;
+  const templateContract = quizTemplateContract(quizConfig.template);
+  if (!templateContract) {
+    addError(`Unsupported quiz template: data/quizzes/${entry.name}/quiz.json`);
+    continue;
+  }
+  const expectedStageCount = templateContract.stageCount;
+  const expectedQuestionsPerStage = templateContract.questionsPerStage;
   if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {
     addError(`Quiz manifest must use its shared stable social-proof count: data/quizzes/${entry.name}/quiz.json`);
   }
@@ -342,9 +350,6 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   }
   if (quizConfig.theme?.artwork?.landing !== undefined) {
     addError(`Landing artwork panels are not supported by the shared template: data/quizzes/${entry.name}/quiz.json`);
-  }
-  if (quizConfig.template !== "single-stage-rewarded-v1") {
-    addError(`Every quiz manifest must declare the shared single-stage rewarded template: data/quizzes/${entry.name}/quiz.json`);
   }
   if (!["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"].every((key) => quizConfig.engine?.[key] === undefined)) {
     addError(`Shared engine settings cannot be overridden by an individual manifest: data/quizzes/${entry.name}/quiz.json`);

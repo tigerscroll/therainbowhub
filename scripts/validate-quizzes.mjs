@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
+import { quizTemplateContract } from "./quiz-template-contracts.mjs";
 
 const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
@@ -274,8 +275,11 @@ for (const folder of folders) {
   const directory = path.join(root, folder.name);
   const config = read(path.join(directory, "quiz.json"));
   if (!config) continue;
-  const expectedStageCount = 1;
-  const expectedQuestionsPerStage = 10;
+  const templateContract = quizTemplateContract(config.template);
+  fail(Boolean(templateContract), `${folder.name}: unsupported quiz template ${config.template}.`);
+  if (!templateContract) continue;
+  const expectedStageCount = templateContract.stageCount;
+  const expectedQuestionsPerStage = templateContract.questionsPerStage;
   const expectedQuestionTotal = expectedStageCount * expectedQuestionsPerStage;
   fail(config.schemaVersion === 2, `${folder.name}/quiz.json: schemaVersion 2 is required.`);
   fail(config.listing?.duration === undefined, `${folder.name}/quiz.json: duration is derived/unused and must not be stored.`);
@@ -292,10 +296,9 @@ for (const folder of folders) {
   }
   const manifestEngine = config.engine ?? {};
   const templateKeys = ["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"];
-  fail(config.template === "single-stage-rewarded-v1", `${folder.name}: every quiz must use the shared single-stage rewarded template.`);
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
-    flow: "linear",
+    flow: templateContract.flow,
     advance: "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
@@ -308,13 +311,13 @@ for (const folder of folders) {
   fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
-  fail(config.engine.flow === "linear"
+  fail(config.engine.flow === templateContract.flow
     && config.engine.advance === "automatic"
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
     && config.engine.startOnLoad === false
     && config.engine.advanceDelayMs === 450
-    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: every quiz must resolve to the identical shared linear engine.`);
+    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
   fail(config.listing?.socialProofCount === SOCIAL_PROOF_COUNTS[folder.name], `${folder.name}/quiz.json: listing.socialProofCount must use the shared stable quiz count.`);
   fail(config.listing?.showSocialProof === undefined || typeof config.listing.showSocialProof === "boolean", `${folder.name}/quiz.json: listing.showSocialProof must be a boolean when provided.`);
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
@@ -342,8 +345,12 @@ for (const folder of folders) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json");
   const invalid = localeFiles.filter((file) => !supportedLocales.has(file.replace(/\.json$/, "")));
   fail(!invalid.length, `${folder.name}: unsupported locale files: ${invalid.join(", ")}.`);
-  fail(localeFiles.includes("en.json"), `${folder.name}: en.json is required.`);
-  const sortedLocaleFiles = [...localeFiles].sort();
+  const activeLocales = config.activeLocales ?? localeFiles.map((file) => file.replace(/\.json$/, ""));
+  fail(Array.isArray(activeLocales) && activeLocales.length > 0 && new Set(activeLocales).size === activeLocales.length && activeLocales.every((locale) => supportedLocales.has(locale)), `${folder.name}: activeLocales must contain unique supported locale codes.`);
+  const activeLocaleFiles = activeLocales.map((locale) => `${locale}.json`);
+  fail(activeLocaleFiles.every((file) => localeFiles.includes(file)), `${folder.name}: every active locale must have a locale file.`);
+  fail(activeLocaleFiles.includes("en.json"), `${folder.name}: English must remain active.`);
+  const sortedLocaleFiles = [...activeLocaleFiles].sort();
   const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
   const independentLocales = config.engine?.localeParity === "independent";
   fail(independentLocales || JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
@@ -497,40 +504,37 @@ for (const folder of folders) {
     fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks)?.includes("10 answers checked"), `${folder.name}/en.json: ten-answer final checklist changed.`);
   }
   if (folder.name === "years-left") {
-    const expectedIds = ["r1q3", "r2q1", "r3q2", "r4q3", "r4q2", "r6q6", "r7q4", "r8q1", "r9q5", "r10q6"];
-    const expectedHeaderLabels = ["EVERYDAY RHYTHM", "FOOD AND FUEL", "DAILY MOVEMENT", "SLEEP AND RECOVERY", "STRESS RESPONSE", "SOCIAL CONNECTION", "ADAPTABILITY", "EVERYDAY JOY", "FUTURE SELF", "FINAL PREDICTION"];
+    const expectedHeaders = ["DAILY RHYTHM", "FOOD AND FUEL", "EVERYDAY MOVEMENT", "SLEEP AND RECOVERY", "PRESSURE AND PACE", "PEOPLE AND CONNECTION", "HABITS THAT STICK", "CURIOSITY AND JOY", "YOUR FUTURE SELF", "FINAL CLOCK READING"];
     const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.flow === "linear" && sourceRaw.progressLabel === undefined, "years-left: must use the shared single-stage prediction flow and progress copy.");
-    fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10 && source.stages[0]?.title === "Lifestyle Prediction", "years-left/en.json: must contain one ten-question Lifestyle Prediction stage.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "years-left/en.json: compact question selection or order changed.");
-    fail(JSON.stringify(sourceQuestions.map((question) => question.headerLabel)) === JSON.stringify(expectedHeaderLabels), "years-left/en.json: question-type labels changed.");
-    fail(sourceQuestions.length === 10 && new Set(sourceQuestionIds).size === 10, "years-left/en.json: must contain ten unique interactions.");
+    fail(config.template === "ten-stage-seven-question-v1" && config.engine?.flow === "staged" && sourceRaw.progressLabel === undefined, "years-left: must use the shared ten-stage prediction flow and progress copy.");
+    fail(source.stages?.length === 10 && source.stages.every((stage) => stage.questions?.length === 7), "years-left/en.json: must contain ten rounds of seven questions.");
+    fail(sourceQuestions.length === 70 && new Set(sourceQuestionIds).size === 70, "years-left/en.json: must contain seventy unique interactions.");
+    fail(sourceQuestionIds.every((id, index) => id === `yl-s${Math.floor(index / 7) + 1}q${(index % 7) + 1}`), "years-left/en.json: stable question IDs or order changed.");
+    fail(source.stages.every((stage, index) => stage.questions.every((question) => question.headerLabel === expectedHeaders[index])), "years-left/en.json: round header labels changed.");
     fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "years-left/en.json: compact screens must not use separate context banners.");
     fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
     fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
     fail(sourceQuestions.every((question) => {
       const answers = Object.keys(question.answers ?? {});
-      return answers.length >= 3 && answers.length <= 5 && new Set(answers).size === answers.length;
-    }), "years-left/en.json: every interaction needs three to five unique choices.");
+      return answers.length === 4 && new Set(Object.values(question.answers ?? {})).size === 4;
+    }), "years-left/en.json: every interaction needs four unique choices.");
     fail(config.engine?.advanceDelayMs === 450, "years-left: default advance delay must remain 450ms.");
     fail(config.engine?.startOnLoad === false && config.engine?.rewarded?.start === true && config.engine?.rewarded?.confirmStart === false, "years-left: must open on its landing and use the direct rewarded Start flow.");
-    fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: needs one rewarded result gate after the ten questions.");
+    fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: must retain its configured stage-gate behaviour.");
     fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
     fail(source.landing?.startPrompt === undefined && source.landing?.startNote === undefined, "years-left/en.json: rewarded Start helper must use the shared template.");
     fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
     fail(source.results?.estimate?.reviewUnlock?.rewarded === true, "years-left/en.json: choice-impact details must use the shared rewarded breakdown gate.");
     fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
-    fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: compact estimate calibration is incorrect.");
-    fail(byId.get("r2q1")?.presentation === "icons" && byId.get("r2q1")?.icons?.length === 4, "years-left: snack-table interaction needs four aligned icons.");
-    fail(byId.get("r4q3")?.presentation === "scale" && Object.keys(byId.get("r4q3")?.answers ?? {}).length === 5, "years-left: rested interaction must remain a five-stop scale.");
-    fail(byId.get("r6q6")?.presentation === "scale" && Object.keys(byId.get("r6q6")?.answers ?? {}).length === 5, "years-left: social connection must remain a five-stop scale.");
-    fail(byId.get("r3q2")?.presentation === "icons" && JSON.stringify(byId.get("r3q2")?.icons) === JSON.stringify(["🚗", "🚌", "🚶", "🚲"]), "years-left: everyday activity icons changed.");
+    fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: estimate calibration is incorrect.");
     fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");
-    fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("r10q6")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
-    const gate = source.career?.stages?.[0];
-    fail(source.career?.stages?.length === 1 && gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final rewarded estimate gate.");
-    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "Your age estimate and lifestyle profile are ready to reveal." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
-    fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full compact About and How to Play copy.");
+    fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("yl-s10q7")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
+    const careerStages = source.career?.stages ?? [];
+    const gate = careerStages[9];
+    fail(careerStages.length === 10 && careerStages.slice(0, 9).every((stage) => stage.next && stage.preAdChecks === undefined && stage.preAdButton === undefined), "years-left/en.json: first nine round checkpoints must continue without result-gate copy.");
+    fail(gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final estimate gate after seventy questions.");
+    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "All ten rounds have been compared. Your final age estimate and clock profile are ready." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
+    fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full staged About and How to Play copy.");
   }
   if (folder.name === "memory") {
     const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
@@ -586,7 +590,7 @@ for (const folder of folders) {
     fail(source.results?.score?.showBestRound === false, "iq/en.json: a single-stage quiz must not show a redundant best-round module.");
     fail(source.title === "Only 7% Pass This Intelligence Test", "iq/en.json: title changed.");
   }
-  for (const localeFile of localeFiles) {
+  for (const localeFile of activeLocaleFiles) {
     const localizedRaw = read(path.join(directory, localeFile));
     if (localizedRaw) validateTextOnlyLocale(localizedRaw, config, `${folder.name}/${localeFile}`, localeFile.replace(/\.json$/, ""));
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;

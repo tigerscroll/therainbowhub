@@ -27,16 +27,37 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "ten-stage-seven-question-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
-const SHARED_ENGINE_TEMPLATE = {
-  flow: "linear",
-  advance: "automatic",
-  feedback: "selection-only",
-  checkpoint: "ai",
-  startOnLoad: false,
-  rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
-  advanceDelayMs: 450,
+const QUIZ_TEMPLATE_CONTRACTS = {
+  "single-stage-rewarded-v1": {
+    stageCount: 1,
+    questionsPerStage: 10,
+    levels: ["final"],
+    engine: {
+      flow: "linear",
+      advance: "automatic",
+      feedback: "selection-only",
+      checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      advanceDelayMs: 450,
+    },
+  },
+  "ten-stage-seven-question-v1": {
+    stageCount: 10,
+    questionsPerStage: 7,
+    levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
+    engine: {
+      flow: "staged",
+      advance: "automatic",
+      feedback: "selection-only",
+      checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      advanceDelayMs: 450,
+    },
+  },
 } as const;
 const sharedShellCss = fs.readFileSync(path.join(process.cwd(), "styles", "quiz-shell-contract.css"), "utf8");
 const SHARED_SHELL_CSS_HREF = `/styles/quiz-shell-contract.${createHash("sha256").update(sharedShellCss).digest("hex").slice(0, 12)}.css`;
@@ -364,6 +385,7 @@ type QuizManifest = {
   schemaVersion: 2;
   template: QuizTemplateId;
   slug: string;
+  activeLocales?: SupportedLocale[];
   engine: {
     flow: QuizFlow["type"];
     advance: QuizFlow["advance"];
@@ -697,12 +719,13 @@ function json<T>(filePath: string): T {
 function validateStructureV2(value: unknown, file: string, template: QuizTemplateId): QuizStructureV2 {
   const raw = object(value, "structure", file);
   exactKeys(raw, ["stages", "questions", "checkpoint", "results"], "structure", file);
-  const expectedStageCount = 1;
-  const expectedQuestionCount = 10;
+  const contract = QUIZ_TEMPLATE_CONTRACTS[template];
+  const expectedStageCount = contract.stageCount;
+  const expectedQuestionCount = contract.questionsPerStage;
   if (!Array.isArray(raw.stages) || raw.stages.length !== expectedStageCount) {
     throw new Error(`${file}: ${template} requires exactly ${expectedStageCount} stage${expectedStageCount === 1 ? "" : "s"}.`);
   }
-  const expectedLevels = ["final"];
+  const expectedLevels = contract.levels;
   const stages = raw.stages.map((item, stageIndex) => {
     const stage = object(item, `structure.stages[${stageIndex}]`, file);
     exactKeys(stage, ["id", "difficultyLevel", "questionIds", "uppercaseNextForLocales"], `structure.stages[${stageIndex}]`, file);
@@ -1034,7 +1057,8 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   }
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
-  const advanceDelayMs = SHARED_ENGINE_TEMPLATE.advanceDelayMs;
+  const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
+  const advanceDelayMs = templateContract.engine.advanceDelayMs;
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
   if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
   let derivedScore: QuizDerivedScoreConfig | undefined;
@@ -1135,13 +1159,20 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.scoring !== "hybrid-match" && match) throw new Error(`${file}: engine.match is only supported by hybrid-match scoring.`);
   if (engine.scoring !== "weighted-profile" && profileArtworkSelector) throw new Error(`${file}: profileArtworkSelector is only supported by weighted-profile scoring.`);
   const structure = validateStructureV2(raw.structure, file, template);
+  const activeLocales = raw.activeLocales === undefined
+    ? undefined
+    : strings(raw.activeLocales, "activeLocales", file) as SupportedLocale[];
+  if (activeLocales && (!activeLocales.length || new Set(activeLocales).size !== activeLocales.length || activeLocales.some((locale) => !LOCALES.has(locale)))) {
+    throw new Error(`${file}: activeLocales must contain unique supported locale codes.`);
+  }
   return {
     schemaVersion: 2,
     template,
     slug,
+    activeLocales,
     engine: {
       ...engine,
-      ...SHARED_ENGINE_TEMPLATE,
+      ...templateContract.engine,
       advanceDelayMs,
       targetRatio,
       estimate,
@@ -1248,7 +1279,7 @@ function normalizeLocale(
   }
   if (!Array.isArray(value.stages) || !value.stages.length) throw new Error(`${file}: stages are required.`);
   if (!Array.isArray(value.results?.profiles) || !value.results.profiles.length) throw new Error(`${file}: result profiles are required.`);
-  const localeFlow = "linear";
+  const localeFlow = manifest.engine.flow;
   if (manifest.engine.checkpoint === "ai") {
     if (!value.checkpoint) throw new Error(`${file}: AI checkpoints need checkpoint copy.`);
     if (value.checkpoint.finalIcon !== undefined) text(value.checkpoint.finalIcon, "checkpoint.finalIcon", file);
@@ -1677,10 +1708,12 @@ export function getQuizLocales(slug: string) {
   if (!fs.existsSync(directory(slug))) return [];
   const cached = quizLocaleCache.get(slug);
   if (cached) return [...cached];
+  const configuredLocales = json<{ activeLocales?: string[] }>(path.join(directory(slug), "quiz.json")).activeLocales;
   const locales = fs.readdirSync(directory(slug))
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .map((file) => file.replace(/\.json$/, ""))
     .filter((locale): locale is SupportedLocale => LOCALES.has(locale as SupportedLocale))
+    .filter((locale) => !configuredLocales || configuredLocales.includes(locale))
     .sort();
   quizLocaleCache.set(slug, locales);
   return [...locales];
@@ -1689,6 +1722,7 @@ export function getQuizLocales(slug: string) {
 export function getQuizBySlug(slug: string, locale?: string, options: { includeFallback?: boolean } = {}) {
   const safeLocale = locale && isSupportedLocale(locale) ? locale : getDefaultLocale();
   if (!slugs().includes(slug)) return undefined;
+  if (!getQuizLocales(slug).includes(safeLocale)) return options.includeFallback ? readQuiz(slug, getDefaultLocale()) : undefined;
   if (!hasLocale(slug, safeLocale)) return options.includeFallback ? readQuiz(slug, getDefaultLocale()) : undefined;
   return readQuiz(slug, safeLocale);
 }

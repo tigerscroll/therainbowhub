@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState, type ReactNode } from "react";
 
 import { getArticleChapterPath } from "@/components/article/articleRouting";
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
+import { prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { siteConfig } from "@/lib/siteConfig";
 import {
@@ -126,8 +127,7 @@ function ArticleInlineUnlock({
       className="article-engine__inline-unlock"
       href={href}
       onClick={(event) => {
-        event.currentTarget.setAttribute("data-departing", "true");
-        event.currentTarget.setAttribute("aria-busy", "true");
+        prepareFullPageNavigation(event.currentTarget);
         const destination = new URL(href, window.location.href);
         const current = new URL(window.location.href);
         current.searchParams.forEach((value, key) => {
