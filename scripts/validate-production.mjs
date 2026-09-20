@@ -202,7 +202,7 @@ for (const [source, declaration] of [
   [quizEngineText, 'answerHref={siteConfig.adMode === "interstitial"'],
   [questionRendererText, "<a"],
   [questionRendererText, 'destination.searchParams.set("quizStep"'],
-  [questionRendererText, 'window.history.replaceState(null, "", destination)'],
+  [questionRendererText, 'window.history.pushState(null, "", destination)'],
   [experienceLandingText, 'window.history.pushState(null, "", destination)'],
 ]) {
   if (!source.includes(declaration)) addError(`Global interstitial contract is missing: ${declaration}`);

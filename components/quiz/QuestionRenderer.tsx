@@ -168,7 +168,7 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, 
                 const destination = new URL(window.location.href);
                 destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
                 event.currentTarget.href = destination.toString();
-                if (onAnswer(index) !== false) window.history.replaceState(null, "", destination);
+                if (onAnswer(index) !== false) window.history.pushState(null, "", destination);
               }}
             >
               {content}
@@ -260,7 +260,7 @@ function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionR
             const destination = new URL(window.location.href);
             destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
             event.currentTarget.href = destination.toString();
-            if (onAnswer(0) !== false) window.history.replaceState(null, "", destination);
+            if (onAnswer(0) !== false) window.history.pushState(null, "", destination);
           }}
         >
           {question.continueLabel}

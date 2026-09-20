@@ -555,7 +555,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
               const destination = new URL(window.location.href);
               destination.searchParams.set("quizStep", isFinalStage ? "results" : String(questionIndex));
               event.currentTarget.href = destination.toString();
-              window.history.replaceState(null, "", destination);
+              window.history.pushState(null, "", destination);
               continueAfterCheckpoint();
             }}
           >
