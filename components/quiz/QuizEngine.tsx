@@ -316,6 +316,44 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     return true;
   }
 
+  function answerQuestionAtCheckpointWithReload(choiceIndex: number) {
+    if (!currentQuestion || selectedAnswer !== undefined) return false;
+    const choiceId = currentQuestion.choiceIds[choiceIndex];
+    if (!choiceId) return false;
+
+    const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
+    const nextIndex = questionIndex + 1;
+    const reachedEnd = nextIndex >= quiz.questions.length;
+    const nextQuestion = reachedEnd ? undefined : quiz.questions[nextIndex];
+    const crossedStage = Boolean(nextQuestion && quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage);
+    if (!reachedEnd && !crossedStage) return false;
+
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = nextAnswers[question.id];
+        const selectedId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return selectedId ? [[question.id, selectedId]] : [];
+      })),
+      questionIndex: reachedEnd ? questionIndex : nextIndex,
+      completedStage: currentStage,
+      screen: reachedEnd ? "preparing" : "checkpoint",
+      studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
+      updatedAt: new Date().toISOString(),
+    };
+
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(saved));
+      return true;
+    } catch {
+      answerQuestion(choiceIndex);
+      return false;
+    }
+  }
+
   function completeStudy() {
     if (!currentQuestion?.study) return;
     const complete = () => {
@@ -555,7 +593,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
               const destination = new URL(window.location.href);
               destination.searchParams.set("quizStep", isFinalStage ? "results" : String(questionIndex));
               event.currentTarget.href = destination.toString();
-              window.history.pushState(null, "", destination);
+              window.history.replaceState(null, "", destination);
               continueAfterCheckpoint();
             }}
           >
@@ -846,9 +884,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <QuestionRenderer
         answer={selectedAnswer}
         answerHref={siteConfig.adMode === "interstitial" ? `?quizStep=${questionIndex + 1}` : undefined}
+        answerNavigationMode={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? "document" : "spa"}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
-        onAnswer={answerQuestion}
+        onAnswer={siteConfig.adMode === "interstitial" && stageQuestionIndex === stageQuestions.length - 1 ? answerQuestionAtCheckpointWithReload : answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
           studyBusy={adBusy}

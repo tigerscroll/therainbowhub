@@ -2,11 +2,13 @@
 
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
+import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
   answer?: number;
   answerHref?: string;
+  answerNavigationMode?: "document" | "spa";
   answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => boolean | void;
@@ -117,7 +119,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerHref, answerLabels, answerNavigationMode = "spa", feedback, onAnswer, question }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -164,11 +166,19 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, 
               href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
-                event.preventDefault();
                 const destination = new URL(window.location.href);
                 destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
                 event.currentTarget.href = destination.toString();
-                if (onAnswer(index) !== false) window.history.pushState(null, "", destination);
+                if (answerNavigationMode === "document") {
+                  prepareFullPageNavigation(event.currentTarget);
+                  if (onAnswer(index) === false) {
+                    cancelFullPageNavigation(event.currentTarget);
+                    event.preventDefault();
+                  }
+                  return;
+                }
+                event.preventDefault();
+                if (onAnswer(index) !== false) window.history.replaceState(null, "", destination);
               }}
             >
               {content}
@@ -238,7 +248,7 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
   );
 }
 
-function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionRendererProps) {
+function MemoryCueQuestion({ answer, answerHref, answerNavigationMode = "spa", onAnswer, question }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
     setReady(false);
@@ -256,11 +266,19 @@ function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionR
           className="quiz-engine__primary"
           href={answerHref}
           onClick={(event) => {
-            event.preventDefault();
             const destination = new URL(window.location.href);
             destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
             event.currentTarget.href = destination.toString();
-            if (onAnswer(0) !== false) window.history.pushState(null, "", destination);
+            if (answerNavigationMode === "document") {
+              prepareFullPageNavigation(event.currentTarget);
+              if (onAnswer(0) === false) {
+                cancelFullPageNavigation(event.currentTarget);
+                event.preventDefault();
+              }
+              return;
+            }
+            event.preventDefault();
+            if (onAnswer(0) !== false) window.history.replaceState(null, "", destination);
           }}
         >
           {question.continueLabel}
