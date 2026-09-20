@@ -125,7 +125,7 @@ test("web interstitial setup creates one GPT-managed slot and leaves serving dec
       },
     },
     defineOutOfPageSlot(path: string, format: string) {
-      assert.equal(path, "/23348925662/display");
+      assert.equal(path, "/22677279144/display");
       assert.equal(format, "interstitial");
       definitions += 1;
       return slot;
@@ -148,8 +148,8 @@ test("web interstitial setup creates one GPT-managed slot and leaves serving dec
     value: { googletag },
   });
 
-  const first = mountWebInterstitialAd({ adUnitPath: "/23348925662/display" });
-  const duplicate = mountWebInterstitialAd({ adUnitPath: "/23348925662/display" });
+  const first = mountWebInterstitialAd({ adUnitPath: "/22677279144/display" });
+  const duplicate = mountWebInterstitialAd({ adUnitPath: "/22677279144/display" });
   assert.equal(definitions, 1, "the GPT-managed format may only be defined once per page");
   assert.equal(displays, 1);
 

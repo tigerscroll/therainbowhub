@@ -193,7 +193,7 @@ for (const declaration of reversibleAdModeContract) {
 }
 for (const [source, declaration] of [
   [siteConfigText, 'export type AdMode = "interstitial" | "rewarded"'],
-  [siteConfigText, '"/23348925662/display"'],
+  [siteConfigText, '"/22677279144/display"'],
   [rootDocumentText, 'siteConfig.adMode === "interstitial" ? <WebInterstitialAd /> : null'],
   [rewardedAdsText, "OutOfPageFormat?.INTERSTITIAL"],
   [rewardedAdsText, "defineOutOfPageSlot(adUnitPath, format)"],
