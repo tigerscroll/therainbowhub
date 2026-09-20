@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "La plupart des adultes échouent à cet examen d’entrée en chirurgie",
   "eyebrow": "LE TEST D’APTITUDE AU BLOC OPÉRATOIRE",
   "summary": "Dix questions testent l'anatomie, la sécurité chirurgicale, les techniques et les décisions critiques.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les questions d'anatomie semblent gérables. Ensuite, le test passe à la pratique stérile, aux outils chirurgicaux et aux décisions où un détail change tout.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions s'appuie sur des notions générales d'anatomie et de sécurité chirurgicale communes aux principaux pays anglophones. Il va de la circulation sanguine et de l'asepsie aux contrôles de sécurité, à la chirurgie mini-invasive, aux signes d'alerte d'une plaie, à la surveillance du patient et au consentement éclairé.\n\nChoisissez une réponse à chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions de connaissances chirurgicales de plus en plus difficiles.",
         "Choisissez la réponse la mieux étayée.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée en chirurgie",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée de chirurgien",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score de connaissances chirurgicales est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Cinq zones chirurgicales comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Cinq zones chirurgicales comparées"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission du Chirurgien !",
       "finished": "Le test d'admission du chirurgien terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine chirurgical le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -99,8 +92,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Dans le système circulatoire, qu’est-ce qui définit une artère ?",
-          "answers": [
-            "Elle transporte le sang depuis le cœur vers les organes",
-            "Il transporte toujours du sang riche en oxygène",
-            "Il transporte le sang uniquement vers les poumons",
-            "Il ne contient pas de paroi musculaire"
-          ],
+          "answers": {
+            "a1": "Elle transporte le sang depuis le cœur vers les organes",
+            "a2": "Il transporte toujours du sang riche en oxygène",
+            "a3": "Il transporte le sang uniquement vers les poumons",
+            "a4": "Il ne contient pas de paroi musculaire"
+          },
           "headerLabel": "ANATOMIE CHIRURGICALE"
         },
         "surgeon-q2": {
           "question": "Quel est l’objectif principal du maintien d’un champ opératoire stérile ?",
-          "answers": [
-            "Pour conserver les instruments classés par taille",
-            "Pour réduire la contamination et le risque d’infection",
-            "Pour que la procédure se termine plus rapidement",
-            "Pour éviter tout saignement"
-          ],
+          "answers": {
+            "a1": "Pour conserver les instruments classés par taille",
+            "a2": "Pour réduire la contamination et le risque d’infection",
+            "a3": "Pour que la procédure se termine plus rapidement",
+            "a4": "Pour éviter tout saignement"
+          },
           "headerLabel": "PRATIQUE STÉRILE"
         },
         "surgeon-q3": {
           "question": "Que doit confirmer la pause de sécurité chirurgicale juste avant l'incision ?",
-          "answers": [
-            "Seule la durée prévue de la procédure",
-            "Uniquement l'équipement préféré du chirurgien",
-            "Le patient, la procédure et le site corporel corrects",
-            "Le choix des repas du patient après l'opération"
-          ],
+          "answers": {
+            "a1": "Seule la durée prévue de la procédure",
+            "a2": "Uniquement l'équipement préféré du chirurgien",
+            "a3": "Le patient, la procédure et le site corporel corrects",
+            "a4": "Le choix des repas du patient après l'opération"
+          },
           "headerLabel": "CONTRÔLE DE SÉCURITÉ"
         },
         "surgeon-q4": {
           "question": "Qu’est-ce qui différencie la chirurgie laparoscopique d’une approche ouverte traditionnelle ?",
-          "answers": [
-            "Cela ne nécessite jamais de contrôler la douleur",
-            "Il n'utilise aucun instrument chirurgical",
-            "Il ne peut examiner que la peau",
-            "Il utilise couramment une caméra et des instruments à travers de petites incisions"
-          ],
+          "answers": {
+            "a1": "Cela ne nécessite jamais de contrôler la douleur",
+            "a2": "Il n'utilise aucun instrument chirurgical",
+            "a3": "Il ne peut examiner que la peau",
+            "a4": "Il utilise couramment une caméra et des instruments à travers de petites incisions"
+          },
           "headerLabel": "TECHNIQUES CHIRURGICALES"
         },
         "surgeon-q5": {
           "question": "Quelle structure est retirée lors d’une appendicectomie ?",
-          "answers": [
-            "L'appendice",
-            "La vésicule biliaire",
-            "La rate",
-            "Le pancréas"
-          ],
+          "answers": {
+            "a1": "L'appendice",
+            "a2": "La vésicule biliaire",
+            "a3": "La rate",
+            "a4": "Le pancréas"
+          },
           "headerLabel": "ANATOMIE OPÉRATOIRE"
         },
         "surgeon-q6": {
           "question": "À quoi sert principalement un écarteur chirurgical ?",
-          "answers": [
-            "Mesurer la saturation en oxygène",
-            "Maintenir un tissu ou une incision ouverte pour améliorer l'accès",
-            "Fermer une plaie avec des points de suture",
-            "À enregistrer l'activité électrique du cœur"
-          ],
+          "answers": {
+            "a1": "Mesurer la saturation en oxygène",
+            "a2": "Maintenir un tissu ou une incision ouverte pour améliorer l'accès",
+            "a3": "Fermer une plaie avec des points de suture",
+            "a4": "À enregistrer l'activité électrique du cœur"
+          },
           "headerLabel": "INSTRUMENTS CHIRURGICAUX"
         },
         "surgeon-q7": {
           "question": "Quelle combinaison peut évoquer une infection du site opératoire ?",
-          "answers": [
-            "Une amélioration du confort et une cicatrisation sans écoulement",
-            "Un appétit constant et une température normale",
-            "Augmentation de la rougeur ou de la douleur, écoulement ou fièvre",
-            "Un pansement propre sans nouveaux symptômes"
-          ],
+          "answers": {
+            "a1": "Une amélioration du confort et une cicatrisation sans écoulement",
+            "a2": "Un appétit constant et une température normale",
+            "a3": "Augmentation de la rougeur ou de la douleur, écoulement ou fièvre",
+            "a4": "Un pansement propre sans nouveaux symptômes"
+          },
           "headerLabel": "SIGNES D'ALERTE POSTOPÉRATOIRES"
         },
         "surgeon-q8": {
           "question": "Quel appareil donne une estimation rapide et non invasive de la saturation en oxygène du sang pendant une intervention chirurgicale ?",
-          "answers": [
-            "Marteau à réflexes",
-            "Otoscope",
-            "Thermomètre",
-            "Oxymètre de pouls"
-          ],
+          "answers": {
+            "a1": "Marteau à réflexes",
+            "a2": "Otoscope",
+            "a3": "Thermomètre",
+            "a4": "Oxymètre de pouls"
+          },
           "headerLabel": "SUIVI DES PATIENTS"
         },
         "surgeon-q9": {
           "question": "Une personne ne répond plus et ne respire plus normalement. Quelle est la réponse générale immédiate la plus sûre ?",
-          "answers": [
-            "Appelez les services d’urgence et commencez les gestes de réanimation de base adaptés",
-            "Donner à manger ou à boire",
-            "Attendez plusieurs minutes sans agir",
-            "Demandez à la personne de se lever"
-          ],
+          "answers": {
+            "a1": "Appelez les services d’urgence et commencez les gestes de réanimation de base adaptés",
+            "a2": "Donner à manger ou à boire",
+            "a3": "Attendez plusieurs minutes sans agir",
+            "a4": "Demandez à la personne de se lever"
+          },
           "headerLabel": "URGENCES CHIRURGICALES"
         },
         "surgeon-q10": {
           "question": "Quelle description correspond le mieux au consentement éclairé avant la chirurgie ?",
-          "answers": [
-            "Le clinicien choisit sans expliquer les alternatives",
-            "Le patient reçoit les informations pertinentes et accepte volontairement",
-            "Un proche décide toujours pour chaque adulte",
-            "La signature d'un formulaire supprime le besoin de discussion"
-          ],
+          "answers": {
+            "a1": "Le clinicien choisit sans expliquer les alternatives",
+            "a2": "Le patient reçoit les informations pertinentes et accepte volontairement",
+            "a3": "Un proche décide toujours pour chaque adulte",
+            "a4": "La signature d'un formulaire supprime le besoin de discussion"
+          },
           "headerLabel": "QUESTION DE CONSENTEMENT FINAL"
         }
       }

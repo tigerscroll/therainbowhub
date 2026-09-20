@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 15% dorosłych może zdać ten egzamin wstępny do RAF",
   "eyebrow": "TEST WIEDZY RAF",
   "summary": "Dziesięć pytań sprawdza historię RAF, samoloty, stopnie i wiedzę operacyjną.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Słynne samoloty to dopiero początek. Te 10 pytań ujawni, ile naprawdę wiesz o RAF-ie.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To rozrywkowe wyzwanie składające się z dziesięciu pytań dotyczy formacji, historii, struktury rang, samolotów i współczesnych ról Królewskich Sił Powietrznych. Zaczyna się od znanych kamieni milowych, po czym przechodzi do szczegółów wymagających bliższej wiedzy o RAF-ie.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy możesz odblokować pełny przegląd odpowiedzi.\n\nFakty porównano z bieżącymi i historycznymi materiałami opublikowanymi przez Królewskie Siły Powietrzne.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań RAF.",
         "Wybierz jedną z czterech odpowiedzi bez pomocy z zewnątrz.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie wejścia do RAF-u",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny do RAF-u",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik wiedzy o RAF jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie pięciu obszarów wiedzy RAF",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie pięciu obszarów wiedzy RAF"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Udało Ci się zaliczyć wyzwanie wejścia do RAF-u!",
       "finished": "Wyzwanie wejścia do RAF-u ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obiekt RAF",
       "trickiest": "Najtrudniejszy temat RAF-u",
       "bestRound": "Najlepsza sekcja",
@@ -99,8 +92,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "W którym roku utworzono Królewskie Siły Powietrzne?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "POCHODZENIE RAF-u"
         },
         "raf-q2": {
           "question": "RAF powstał w wyniku połączenia Królewskiego Korpusu Lotniczego z jaką inną służbą?",
-          "answers": [
-            "Armia Powietrzna Floty",
-            "Królewska Służba Lotnicza Marynarki Wojennej",
-            "Korpus Powietrzny Armii",
-            "Królewski Korpus Obserwatorów"
-          ],
+          "answers": {
+            "a1": "Armia Powietrzna Floty",
+            "a2": "Królewska Służba Lotnicza Marynarki Wojennej",
+            "a3": "Korpus Powietrzny Armii",
+            "a4": "Królewski Korpus Obserwatorów"
+          },
           "headerLabel": "HISTORIA SERWISOWA"
         },
         "raf-q3": {
           "question": "W którym roku miała miejsce bitwa o Anglię?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "BITWA O BRYTANIĘ"
         },
         "raf-q4": {
           "question": "Jakie jest oficjalne motto Królewskich Sił Powietrznych?",
-          "answers": [
-            "Sempera Fidelisa",
-            "Kto się odważy, wygrywa",
-            "Służyć do przewodzenia",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Sempera Fidelisa",
+            "a2": "Kto się odważy, wygrywa",
+            "a3": "Służyć do przewodzenia",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "TOŻSAMOŚĆ RAF-u"
         },
         "raf-q5": {
           "question": "Jaka jest dziś główna rola RAF-u?",
-          "answers": [
-            "Ochrona nieba w Wielkiej Brytanii",
-            "Obsługa lotniskowców Royal Navy",
-            "Zarządzanie wszystkimi lotniskami cywilnymi",
-            "Szkolenie każdego rodzaju Sił Zbrojnych"
-          ],
+          "answers": {
+            "a1": "Ochrona nieba w Wielkiej Brytanii",
+            "a2": "Obsługa lotniskowców Royal Navy",
+            "a3": "Zarządzanie wszystkimi lotniskami cywilnymi",
+            "a4": "Szkolenie każdego rodzaju Sił Zbrojnych"
+          },
           "headerLabel": "NOWOCZESNA ROLA"
         },
         "raf-q6": {
           "question": "Który stopień służbowy RAF znajduje się bezpośrednio nad porucznikiem lotu?",
-          "answers": [
-            "Oficer latający",
-            "Dowódca eskadry",
-            "Dowódca Skrzydła",
-            "Kapitan Grupy"
-          ],
+          "answers": {
+            "a1": "Oficer latający",
+            "a2": "Dowódca eskadry",
+            "a3": "Dowódca Skrzydła",
+            "a4": "Kapitan Grupy"
+          },
           "headerLabel": "STRUKTURA RANGI"
         },
         "raf-q7": {
           "question": "Którym samolotem lata zespół akrobacyjny RAF, Red Arrows?",
-          "answers": [
-            "Tajfun FGR4",
-            "Nauczyciel T1",
-            "Hawk T1",
-            "Podróżnik"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "WIEDZA O SAMOLOTACH"
         },
         "raf-q8": {
           "question": "Czym był Chain Home podczas bitwy o Anglię?",
-          "answers": [
-            "Eskadra myśliwców",
-            "Plan produkcji samolotu",
-            "Nadbrzeżna służba ratownicza",
-            "Sieć radarowa wczesnego ostrzegania"
-          ],
+          "answers": {
+            "a1": "Eskadra myśliwców",
+            "a2": "Plan produkcji samolotu",
+            "a3": "Nadbrzeżna służba ratownicza",
+            "a4": "Sieć radarowa wczesnego ostrzegania"
+          },
           "headerLabel": "WCZESNE OSTRZEŻENIE"
         },
         "raf-q9": {
           "question": "Która nazwa firmy jest nierozerwalnie związana z konstrukcją Spitfire'a?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havillanda",
-            "Strona Handley'a"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havillanda",
+            "a4": "Strona Handley'a"
+          },
           "headerLabel": "HISTORYCZNY SAMOLOT"
         },
         "raf-q10": {
           "question": "Oprócz latania szybkimi odrzutowcami, wielosilnikowymi i wiropłatami, do jakiego czwartego strumienia mogą wejść piloci RAF-u?",
-          "answers": [
-            "Morski patrol celny",
-            "Systemy zdalnie sterowanych statków powietrznych",
-            "Dowództwo cywilnych linii lotniczych",
-            "Lotnictwo podwodne marynarki wojennej"
-          ],
+          "answers": {
+            "a1": "Morski patrol celny",
+            "a2": "Systemy zdalnie sterowanych statków powietrznych",
+            "a3": "Dowództwo cywilnych linii lotniczych",
+            "a4": "Lotnictwo podwodne marynarki wojennej"
+          },
           "headerLabel": "KOŃCOWE PYTANIE RAF-u"
         }
       }

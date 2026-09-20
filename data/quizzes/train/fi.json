@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 11 % aikuisista voi läpäistä tämän junankuljettajan pääsykokeen",
   "eyebrow": "RAUTATIETESTI",
   "summary": "Kymmenen kysymystä testaa kiskojen turvallisuutta, havainnointia, mekaanista päättelyä ja selkeää viestintää.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset signaalit näyttävät helpoilta. Sitten tentti siirtyy jarrutusmatkaan, vaaroihin ja rautateiden arviointiin.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja turvallisuus- ja päättelyperiaatteita, jotka kulkevat englanninkielisissä tason 1 rautatiejärjestelmissä. Se välttää maakohtaisia signaalinäkökohtia, toimintasääntöjä ja työnnimikkeitä testaamalla havainnointia, viestintää, jarrutustietoisuutta ja turvallisuuden ensisijaista arviointia.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan junankuljettajan soveltuvuuskysymykseen.",
         "Valitse turvallisin tai parhaiten tuettu vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Junankuljettajan sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Junankuljettajan pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkastettu ja rautatiesoveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Neljä rautatiealuetta vertaillaan",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Neljä rautatiealuetta vertaillaan"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Läpäisit Junankuljettajan sisäänpääsyhaasteen!",
       "finished": "Junankuljettajan sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin rautatiealue",
       "trickiest": "Hankalin rautatiealue",
       "bestRound": "Paras jakso",
@@ -96,8 +89,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Juna liikkuu odottamatonta estettä kohti. Mikä on kuljettajan etusijalla?",
-          "answers": [
-            "Käytä asianmukaista jarrutusta ja noudata hätämenettelyä",
-            "Viimeistele aikataulun syöttäminen",
-            "Avaa matkustajan ovet",
-            "Odota, että toinen juna ilmoittaa siitä"
-          ],
+          "answers": {
+            "a1": "Käytä asianmukaista jarrutusta ja noudata hätämenettelyä",
+            "a2": "Viimeistele aikataulun syöttäminen",
+            "a3": "Avaa matkustajan ovet",
+            "a4": "Odota, että toinen juna ilmoittaa siitä"
+          },
           "headerLabel": "TURVALLISUUDEN PRIORITEETIT"
         },
         "train-q2": {
           "question": "Miksi jatkuva huomio on välttämätöntä pitkän, tapahtumattoman radan aikana?",
-          "answers": [
-            "Juna kevenee ajan myötä",
-            "Kriittinen signaali tai vaara voi ilmaantua pitkän hiljaisen jakson jälkeen",
-            "Matkustajat odottavat toistuvia nopeuden muutoksia",
-            "Reitistä tulee automaattisesti vähemmän turvallinen keskipäivällä"
-          ],
+          "answers": {
+            "a1": "Juna kevenee ajan myötä",
+            "a2": "Kriittinen signaali tai vaara voi ilmaantua pitkän hiljaisen jakson jälkeen",
+            "a3": "Matkustajat odottavat toistuvia nopeuden muutoksia",
+            "a4": "Reitistä tulee automaattisesti vähemmän turvallinen keskipäivällä"
+          },
           "headerLabel": "KESKITTYMINEN"
         },
         "train-q3": {
           "question": "Jos nopeus kasvaa, mitä jarrutusmatkalle yleensä tapahtuu, kun muut olosuhteet pysyvät samanlaisina?",
-          "answers": [
-            "Se puolittuu aina",
-            "Se pysyy täsmälleen samana",
-            "Se lisääntyy",
-            "Se ei liity nopeuteen"
-          ],
+          "answers": {
+            "a1": "Se puolittuu aina",
+            "a2": "Se pysyy täsmälleen samana",
+            "a3": "Se lisääntyy",
+            "a4": "Se ei liity nopeuteen"
+          },
           "headerLabel": "JARRUTUSTIETOJA"
         },
         "train-q4": {
           "question": "Mikä radioviesti on hyödyllisin radan vaarasta raportoinnissa?",
-          "answers": [
-            "Pitkä arvaus sen syystä",
-            "Epämääräinen varoitus ilman sijaintia",
-            "Henkilökohtainen mielipide aikataulusta",
-            "Lyhyt faktakuvaus, jossa on tarkka sijainti ja kulkusuunta"
-          ],
+          "answers": {
+            "a1": "Pitkä arvaus sen syystä",
+            "a2": "Epämääräinen varoitus ilman sijaintia",
+            "a3": "Henkilökohtainen mielipide aikataulusta",
+            "a4": "Lyhyt faktakuvaus, jossa on tarkka sijainti ja kulkusuunta"
+          },
           "headerLabel": "RAUTATIEDONANTO"
         },
         "train-q5": {
           "question": "Miksi kuljettajan tulee välttää turvallisuuden kannalta kriittisten ohjeiden luottamista pelkästään muistiin?",
-          "answers": [
-            "Se on vahvistettava ja sitä on noudatettava hyväksytyn prosessin kautta",
-            "Kirjalliset ohjeet ovat aina valinnaisia",
-            "Muisti muuttuu täydelliseksi suuremmalla nopeudella",
-            "Matkustajien pitäisi sen sijaan tulkita se"
-          ],
+          "answers": {
+            "a1": "Se on vahvistettava ja sitä on noudatettava hyväksytyn prosessin kautta",
+            "a2": "Kirjalliset ohjeet ovat aina valinnaisia",
+            "a3": "Muisti muuttuu täydelliseksi suuremmalla nopeudella",
+            "a4": "Matkustajien pitäisi sen sijaan tulkita se"
+          },
           "headerLabel": "MENETTELYTURVALLISUUS"
         },
         "train-q6": {
           "question": "Varoitusilmaisin vaihtuu hetkeksi ja palaa sitten normaaliksi. Mikä on turvallisin tulkinta?",
-          "answers": [
-            "Ohita se, koska se katosi",
-            "Käsittele sitä asianmukaisena, seuraa sitä ja raportoi siitä asianmukaisen prosessin kautta",
-            "Nollaa jokainen järjestelmä välittömästi tarkistamatta",
-            "Oletetaan, että toinen juna aiheutti sen"
-          ],
+          "answers": {
+            "a1": "Ohita se, koska se katosi",
+            "a2": "Käsittele sitä asianmukaisena, seuraa sitä ja raportoi siitä asianmukaisen prosessin kautta",
+            "a3": "Nollaa jokainen järjestelmä välittömästi tarkistamatta",
+            "a4": "Oletetaan, että toinen juna aiheutti sen"
+          },
           "headerLabel": "HUOMAUTUS"
         },
         "train-q7": {
           "question": "Pyörän luistaminen on todennäköisintä, kun pyörän ja kiskon välinen veto on mitä?",
-          "answers": [
-            "Rajoittamaton",
-            "Täydellisen tasapainoinen",
-            "Vähennetty",
-            "Riippumatta säästä"
-          ],
+          "answers": {
+            "a1": "Rajoittamaton",
+            "a2": "Täydellisen tasapainoinen",
+            "a3": "Vähennetty",
+            "a4": "Riippumatta säästä"
+          },
           "headerLabel": "MEKAANINEN PERUSTELU"
         },
         "train-q8": {
           "question": "Et ole varma, kuuliko turvallisuuskriittisen ohjeen oikein. Mitä sinun pitäisi tehdä?",
-          "answers": [
-            "Arvaa kontekstista",
-            "Jatka ja kysy myöhemmin",
-            "Valitse nopein tulkinta",
-            "Toista se ja hanki vahvistus"
-          ],
+          "answers": {
+            "a1": "Arvaa kontekstista",
+            "a2": "Jatka ja kysy myöhemmin",
+            "a3": "Valitse nopein tulkinta",
+            "a4": "Toista se ja hanki vahvistus"
+          },
           "headerLabel": "SULJETTU VIESTINTÄ"
         },
         "train-q9": {
           "question": "Miksi väsymyksen hallinta on tärkeää juna-ajassa?",
-          "answers": [
-            "Väsymys voi heikentää huomiokykyä, reaktiota ja päätöksentekokykyä",
-            "Väsymys parantaa rutiinimuistia",
-            "Pitkät työajat vaikuttavat vain matkustajiin",
-            "Se muuttaa raideleveyttä"
-          ],
+          "answers": {
+            "a1": "Väsymys voi heikentää huomiokykyä, reaktiota ja päätöksentekokykyä",
+            "a2": "Väsymys parantaa rutiinimuistia",
+            "a3": "Pitkät työajat vaikuttavat vain matkustajiin",
+            "a4": "Se muuttaa raideleveyttä"
+          },
           "headerLabel": "IHMISTEN SUORITUSKYKY"
         },
         "train-q10": {
           "question": "Kaksi reittinäyttöä ovat ristiriidassa juuri ennen lähtöä. Mikä on turvallisin vastaus?",
-          "answers": [
-            "Seuraa sitä, kumpi näyttö on kirkkaampi",
-            "Älä jatka ennen kuin ristiriita on ratkaistu asianmukaisella prosessilla",
-            "Valitse reitti, joka näyttää lyhyemmältä",
-            "Pyydä matkustajaa tekemään päätös"
-          ],
+          "answers": {
+            "a1": "Seuraa sitä, kumpi näyttö on kirkkaampi",
+            "a2": "Älä jatka ennen kuin ristiriita on ratkaistu asianmukaisella prosessilla",
+            "a3": "Valitse reitti, joka näyttää lyhyemmältä",
+            "a4": "Pyydä matkustajaa tekemään päätös"
+          },
           "headerLabel": "LOPPUKYSYMYS"
         }
       }

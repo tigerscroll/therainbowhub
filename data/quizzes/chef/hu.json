@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 12%-a tette le a szakács felvételi vizsgát",
   "eyebrow": "A KULINÁRIS BÉRLET",
   "summary": "Íz-, tűz-, péksütemény- és szerviznyomás-próba, hogy képes-e tovább gondolkodni, amikor felmelegszik a konyha.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ez az egész világra kiterjedő szórakoztató kihívás tíz kérdést szolgál fel a konyhai eszközökkel, ízesítéssel, sütéssel, élelmiszerbiztonsággal, gyakorlati matematikával és hőszabályozással kapcsolatban. A nehézség a megalapozott alapoktól az olyan döntésekig terjed, amelyek egynél több nyomot egyesítenek.\n\nVálassza ki minden helyzetre a legjobb választ. A korrektség munka közben rejtve marad, így minden választás egy folyamatos konyhai kihívás részének tűnik.\n\nAz Ön eredménye csak ezt a tesztet írja le. Ez nem szakács végzettség, élelmiszer-biztonsági bizonyítvány vagy szakmai képzés.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Szakács kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Szakács kihívás",
@@ -29,10 +26,8 @@
         "preAdCopy": "A szakácspontszám és a hat készség lebontása készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Hat konyhai készség összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Hat konyhai készség összehasonlítása"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Sikerült a szakács belépő kihívásán!",
       "finished": "A kulináris kihívás teljes",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb konyharész",
       "trickiest": "A legtrükkösebb konyharész",
       "bestRound": "A legjobb szakasz",
@@ -106,8 +100,7 @@
         "snapshot": "Amit a szakácsprofilja sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Melyik eszköz a legjobb a forró ételek megfogására és forgatására egy serpenyőben?",
-          "answers": [
-            "Habverővel",
-            "Fogó",
-            "Hámozó",
-            "Merőkanál"
-          ],
+          "answers": {
+            "a1": "Habverővel",
+            "a2": "Fogó",
+            "a3": "Hámozó",
+            "a4": "Merőkanál"
+          },
           "headerLabel": "KONYHAI SZERSZÁMOK"
         },
         "chef-r1q2": {
           "question": "A szósz íze gazdag és nehéz, de hiányzik belőle a fényesség. Melyik kis adalék a legvalószínűbb, hogy helyreállítja az egyensúlyt?",
-          "answers": [
-            "Még több vajat",
-            "Több keményítő",
-            "Több krémet",
-            "Kis mennyiségű sav"
-          ],
+          "answers": {
+            "a1": "Még több vajat",
+            "a2": "Több keményítő",
+            "a3": "Több krémet",
+            "a4": "Kis mennyiségű sav"
+          },
           "headerLabel": "ÍZEGYENSÚLY"
         },
         "chef-r5q3": {
           "question": "A muffin receptje szerint addig kell keverni, amíg nem marad száraz liszt. Miért álljunk meg ezen a ponton?",
-          "answers": [
-            "Hogy elkerülje az összes emelőanyag elvesztését",
-            "Az extra keverés keményebbé teheti a morzsát",
-            "Hogy az olvadt zsír ne váljon szét",
-            "Hogy a teteje ne barnuljon túl korán"
-          ],
+          "answers": {
+            "a1": "Hogy elkerülje az összes emelőanyag elvesztését",
+            "a2": "Az extra keverés keményebbé teheti a morzsát",
+            "a3": "Hogy az olvadt zsír ne váljon szét",
+            "a4": "Hogy a teteje ne barnuljon túl korán"
+          },
           "headerLabel": "SÜTÉSTUDOMÁNY"
         },
         "chef-r2q6": {
           "question": "A fedetlen készétel mellett eltörik egy üvegedény. Mi történjen?",
-          "answers": [
-            "Távolítsa el a látható üveget, és tartsa meg az ételt",
-            "Vigye el az ételt, és folytassa a szolgáltatást",
-            "Dobja ki a kitett élelmiszert, és tisztítsa meg biztonságosan a területet",
-            "Fedje le az ételt, és tisztítás után tisztítsa meg"
-          ],
+          "answers": {
+            "a1": "Távolítsa el a látható üveget, és tartsa meg az ételt",
+            "a2": "Vigye el az ételt, és folytassa a szolgáltatást",
+            "a3": "Dobja ki a kitett élelmiszert, és tisztítsa meg biztonságosan a területet",
+            "a4": "Fedje le az ételt, és tisztítás után tisztítsa meg"
+          },
           "headerLabel": "ÉLELMISZER-BIZTONSÁG"
         },
         "chef-r6q1": {
           "question": "Egy recept 300 g rizst használ 4 adaghoz. Mennyi kell 10 adaghoz?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "KONYHAI MATETEK"
         },
         "chef-r3q1": {
           "question": "A zsúfolt forró serpenyőben a zöldségek sápadtak és nedvesek. Mi magyarázza a legjobban?",
-          "answers": [
-            "A felszabaduló nedvesség beszorult, így a zöldségek megpároltak",
-            "A serpenyő túl forró volt, és elzárta benne a nedvességet",
-            "A zöldségek felszívták az olajat, mielőtt barnulhattak volna",
-            "A túl gyakori forgatással extra nedvesség keletkezett"
-          ],
+          "answers": {
+            "a1": "A felszabaduló nedvesség beszorult, így a zöldségek megpároltak",
+            "a2": "A serpenyő túl forró volt, és elzárta benne a nedvességet",
+            "a3": "A zöldségek felszívták az olajat, mielőtt barnulhattak volna",
+            "a4": "A túl gyakori forgatással extra nedvesség keletkezett"
+          },
           "headerLabel": "HŐSZABÁLYOZÁS"
         },
         "chef-r8q1": {
           "question": "Melyik eszköz távolítja el a csomókat a száraz lisztből?",
-          "answers": [
-            "Habverővel",
-            "Fogó",
-            "Szita",
-            "Hámozó"
-          ],
+          "answers": {
+            "a1": "Habverővel",
+            "a2": "Fogó",
+            "a3": "Szita",
+            "a4": "Hámozó"
+          },
           "headerLabel": "KONYHAI SZERSZÁMOK"
         },
         "chef-r8q2": {
           "question": "Melyik összetevő mélyíti el a sós umamit?",
-          "answers": [
-            "Porcukor",
-            "Tejszínhab",
-            "Sima víz",
-            "Gomba"
-          ],
+          "answers": {
+            "a1": "Porcukor",
+            "a2": "Tejszínhab",
+            "a3": "Sima víz",
+            "a4": "Gomba"
+          },
           "headerLabel": "ÍZÉPÍTÉS"
         },
         "chef-r10q1": {
           "question": "Először a hagymát főzik, a friss fűszernövények pedig az ételt, de mindkettő egy tálban készült. Milyen beállításmódosítás követi a receptet?",
-          "answers": [
-            "Használatkor tartsa őket elkülönítve",
-            "Mindent a végén főzz meg",
-            "Az elején adjuk hozzá a fűszernövényeket",
-            "Hagyja mindkét összetevőt előkészítetlenül"
-          ],
+          "answers": {
+            "a1": "Használatkor tartsa őket elkülönítve",
+            "a2": "Mindent a végén főzz meg",
+            "a3": "Az elején adjuk hozzá a fűszernövényeket",
+            "a4": "Hagyja mindkét összetevőt előkészítetlenül"
+          },
           "headerLabel": "KONYHASZERVEZÉS"
         },
         "chef-r10q2": {
           "question": "Egy étel gazdag és nehéz ízű, de frissességre van szüksége. Melyik befejező beállítás biztosítja a legjobb egyensúlyt?",
-          "answers": [
-            "Még több tejszínt és vajat",
-            "Citrom és friss fűszernövények",
-            "Több lisztet",
-            "Még több szirupot"
-          ],
+          "answers": {
+            "a1": "Még több tejszínt és vajat",
+            "a2": "Citrom és friss fűszernövények",
+            "a3": "Több lisztet",
+            "a4": "Még több szirupot"
+          },
           "headerLabel": "VÉGSŐ ÍZTEST"
         }
       }

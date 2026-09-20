@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Which Country Matches Your Personality?",
   "eyebrow": "YOUR IDEAL COUNTRY MATCH",
   "summary": "Ten lifestyle choices reveal whether your personality most closely matches Italy, Japan, Australia or Sweden.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Your everyday choices may point to one country that fits you better than the rest. Ten quick questions reveal your closest match.",
     "cta": "Find My Country"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This ten-question entertainment quiz is adapted from the linked Times of India country-personality challenge. Each choice adds a signal for Italy, Japan, Australia or Sweden.\n\nChoose the answer that feels most natural rather than the one that sounds most impressive. Your strongest overall pattern determines the final country match.\n\nThe result describes a playful lifestyle archetype, not nationality, ancestry, citizenship, cultural identity or a relocation recommendation. Source-question concepts and images are reproduced from Times of India with the permission stated by the site owner commissioning this quiz.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Answer ten quick questions about your habits and preferences.",
         "Choose the option that feels most like you without overthinking it.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Country match",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Personality Match",
@@ -46,7 +42,11 @@
         "copy": "Warmth, expression and the pleasure of shared moments run through your choices. You value beauty and tradition, but you also know that life is better when there is time for conversation, food and the people who matter.",
         "icon": "🇮🇹",
         "aura": "Warm, expressive and pleasure-loving",
-        "traits": ["Sociable", "Appreciative", "Heart-led"]
+        "traits": [
+          "Sociable",
+          "Appreciative",
+          "Heart-led"
+        ]
       },
       "profile-2": {
         "tier": "JAPAN",
@@ -54,7 +54,11 @@
         "copy": "Your answers favour care, meaning and attention to detail. You are drawn to experiences that combine tradition with fresh thinking, and you appreciate calm spaces where small rituals can make an ordinary day feel intentional.",
         "icon": "🇯🇵",
         "aura": "Thoughtful, precise and quietly curious",
-        "traits": ["Observant", "Respectful", "Purposeful"]
+        "traits": [
+          "Observant",
+          "Respectful",
+          "Purposeful"
+        ]
       },
       "profile-3": {
         "tier": "AUSTRALIA",
@@ -62,7 +66,11 @@
         "copy": "Open space, easy conversation and a willingness to try something new shape your result. You prefer life with room to move, people who do not take themselves too seriously and plans that can become adventures.",
         "icon": "🇦🇺",
         "aura": "Easygoing, adventurous and open",
-        "traits": ["Independent", "Friendly", "Spontaneous"]
+        "traits": [
+          "Independent",
+          "Friendly",
+          "Spontaneous"
+        ]
       },
       "profile-4": {
         "tier": "SWEDEN",
@@ -70,14 +78,26 @@
         "copy": "Balance, simplicity and quiet quality stand out across your choices. You value personal space without losing connection, and you are happiest when comfort, nature and thoughtful design work together.",
         "icon": "🇸🇪",
         "aura": "Balanced, calm and quietly modern",
-        "traits": ["Grounded", "Considerate", "Independent"]
+        "traits": [
+          "Grounded",
+          "Considerate",
+          "Independent"
+        ]
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Italian warmth" },
-      "dimension-2": { "label": "Japanese mindfulness" },
-      "dimension-3": { "label": "Australian adventure" },
-      "dimension-4": { "label": "Swedish balance" }
+      "dimension-1": {
+        "label": "Italian warmth"
+      },
+      "dimension-2": {
+        "label": "Japanese mindfulness"
+      },
+      "dimension-3": {
+        "label": "Australian adventure"
+      },
+      "dimension-4": {
+        "label": "Swedish balance"
+      }
     },
     "profileReveal": {
       "eyebrow": "YOUR IDEAL COUNTRY MATCH",
@@ -102,72 +122,140 @@
       "portraitAlt": "Scenic illustration representing {profile}",
       "disclaimer": "For entertainment and self-reflection only. This result is a playful lifestyle match, not a statement about nationality, cultural identity or where you should live."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
       "title": "Your Country Match",
       "questions": {
         "personality-q1": {
-          "image": { "alt": "Friends greeting one another warmly" },
+          "image": {
+            "alt": "Friends greeting one another warmly"
+          },
           "question": "How do you greet someone new?",
-          "answers": ["Warm hug", "Friendly wave", "Respectful bow", "Casual nod"],
+          "answers": {
+            "a1": "Warm hug",
+            "a2": "Friendly wave",
+            "a3": "Respectful bow",
+            "a4": "Casual nod"
+          },
           "headerLabel": "FIRST IMPRESSION"
         },
         "personality-q2": {
-          "image": { "alt": "A bright landscape under changing skies" },
+          "image": {
+            "alt": "A bright landscape under changing skies"
+          },
           "question": "What kind of weather makes you happiest?",
-          "answers": ["Warm breezes", "Bright sunshine", "Chilly air", "Cool and crisp"],
+          "answers": {
+            "a1": "Warm breezes",
+            "a2": "Bright sunshine",
+            "a3": "Chilly air",
+            "a4": "Cool and crisp"
+          },
           "headerLabel": "PERFECT WEATHER"
         },
         "personality-q3": {
-          "image": { "alt": "A relaxed Sunday scene outdoors" },
+          "image": {
+            "alt": "A relaxed Sunday scene outdoors"
+          },
           "question": "How do you usually spend your Sundays?",
-          "answers": ["Outdoor adventures", "Staying cosy inside", "Quiet reflection", "Long family meals"],
+          "answers": {
+            "a1": "Outdoor adventures",
+            "a2": "Staying cosy inside",
+            "a3": "Quiet reflection",
+            "a4": "Long family meals"
+          },
           "headerLabel": "SUNDAY STYLE"
         },
         "personality-q4": {
-          "image": { "alt": "Morning coffee beside a peaceful window" },
+          "image": {
+            "alt": "Morning coffee beside a peaceful window"
+          },
           "question": "What is your ideal way to start the day?",
-          "answers": ["Strong coffee", "Gentle walk", "Ocean air", "Calm meditation"],
+          "answers": {
+            "a1": "Strong coffee",
+            "a2": "Gentle walk",
+            "a3": "Ocean air",
+            "a4": "Calm meditation"
+          },
           "headerLabel": "MORNING RHYTHM"
         },
         "personality-q5": {
-          "image": { "alt": "A colourful table filled with different dishes" },
+          "image": {
+            "alt": "A colourful table filled with different dishes"
+          },
           "question": "Which type of food excites you most?",
-          "answers": ["Refined flavours", "Simple and hearty", "Fresh seafood", "Comfort classics"],
+          "answers": {
+            "a1": "Refined flavours",
+            "a2": "Simple and hearty",
+            "a3": "Fresh seafood",
+            "a4": "Comfort classics"
+          },
           "headerLabel": "FOOD INSTINCT"
         },
         "personality-q6": {
-          "image": { "alt": "Gallery wall with varied styles of art" },
+          "image": {
+            "alt": "Gallery wall with varied styles of art"
+          },
           "question": "What kind of art draws you in?",
-          "answers": ["Timeless classics", "Clean simplicity", "Bold expression", "Delicate details"],
+          "answers": {
+            "a1": "Timeless classics",
+            "a2": "Clean simplicity",
+            "a3": "Bold expression",
+            "a4": "Delicate details"
+          },
           "headerLabel": "CREATIVE TASTE"
         },
         "personality-q7": {
-          "image": { "alt": "Four different drinks arranged together" },
+          "image": {
+            "alt": "Four different drinks arranged together"
+          },
           "question": "What is your drink of choice?",
-          "answers": ["Cold beer", "Wine", "Hot cocoa", "Green tea"],
+          "answers": {
+            "a1": "Cold beer",
+            "a2": "Wine",
+            "a3": "Hot cocoa",
+            "a4": "Green tea"
+          },
           "headerLabel": "DRINK OF CHOICE"
         },
         "personality-q8": {
-          "image": { "alt": "Friends celebrating a special occasion" },
+          "image": {
+            "alt": "Friends celebrating a special occasion"
+          },
           "question": "How do you like to celebrate big moments?",
-          "answers": ["Loud and lively", "Intimate and cosy", "Easygoing fun", "Meaningful rituals"],
+          "answers": {
+            "a1": "Loud and lively",
+            "a2": "Intimate and cosy",
+            "a3": "Easygoing fun",
+            "a4": "Meaningful rituals"
+          },
           "headerLabel": "CELEBRATION STYLE"
         },
         "personality-q9": {
-          "image": { "alt": "A montage of forests, coastline, temples and countryside" },
+          "image": {
+            "alt": "A montage of forests, coastline, temples and countryside"
+          },
           "question": "Which scenery feels most like home?",
-          "answers": ["Quiet forests", "Open coastline", "Historic temples", "Rolling countryside"],
+          "answers": {
+            "a1": "Quiet forests",
+            "a2": "Open coastline",
+            "a3": "Historic temples",
+            "a4": "Rolling countryside"
+          },
           "headerLabel": "SENSE OF HOME"
         },
         "personality-q10": {
-          "image": { "alt": "Traveller looking across a distant landscape" },
+          "image": {
+            "alt": "Traveller looking across a distant landscape"
+          },
           "question": "What is your travel style?",
-          "answers": ["Active exploring", "Slow wandering", "Cultural immersion", "Iconic sights"],
+          "answers": {
+            "a1": "Active exploring",
+            "a2": "Slow wandering",
+            "a3": "Cultural immersion",
+            "a4": "Iconic sights"
+          },
           "headerLabel": "FINAL DESTINATION"
         }
       }

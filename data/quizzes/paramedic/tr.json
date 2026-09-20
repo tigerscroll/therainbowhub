@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %8'i Bu Paramedik Giriş Sınavını Geçebiliyor",
   "eyebrow": "PARAMEDİK GİRİŞ ZORLUĞU",
   "summary": "Olay yeri tehlikeleri, hayati belirtiler ve hızlı tepki veren kararlar, her ipucu önemli olduğunda net düşünüp düşünemediğinizi test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Olay yeri tehlikeleri, hayati belirtiler, acil durum matematiği ve sakin muhakeme. Her ipucu önemli olduğunda net bir şekilde düşünebiliyor musunuz?",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dünya çapındaki bu eğlence mücadelesi, anatomi, gözlemler, aritmetik, iletişim, güvenlik ve öncelik değerlendirmesini kapsayan on adet giriş tarzı soru içermektedir. Yerel protokoller veya operasyonel prosedürler yerine dikkatli akıl yürütmeyi test eder.\n\nYalnızca gösterilen bilgileri kullanarak en iyi cevabı seçin. Güvenli seçenekler riskin tanınmasını, açık bir şekilde iletişim kurulmasını ve uygun nitelikli desteğin aranmasını tercih eder.\n\nBu, akredite bir sağlık görevlisi giriş sınavı, klinik değerlendirme, yeterlilik, eğitim kursu veya acil durum tavsiye kaynağı değildir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Paramedik giriş sınavı",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Paramedik Giriş Yarışması",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sağlık görevlisi giriş puanınız ve altı alanlı dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Altı giriş alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Altı giriş alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Sağlık görevlisi giriş sınavını geçtiniz!",
       "finished": "Sağlık görevlisi giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü giriş alanı",
       "trickiest": "En zorlu giriş alanı",
       "bestRound": "En iyi bölüm",
@@ -107,8 +100,7 @@
         "snapshot": "Aday profilinizin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Kanı vücuda pompalayan organ hangisidir?",
-          "answers": [
-            "Kalp",
-            "Akciğerler",
-            "Beyin",
-            "Kemikler"
-          ],
+          "answers": {
+            "a1": "Kalp",
+            "a2": "Akciğerler",
+            "a3": "Beyin",
+            "a4": "Kemikler"
+          },
           "headerLabel": "ANATOMİ VE FİZYOLOJİ"
         },
         "paramedic-r1q5": {
           "question": "Hangi açılış en net devir teslimi sağlar?",
-          "answers": [
-            "Muhtemelen daha önce bir şeyler değişti",
-            "İşte tüm küçük ayrıntılar rastgele sırayla",
-            "Saat 14:20'de nefes alma hızlandı ve uyanıklık azaldı",
-            "Buna neyin sebep olduğunu zaten tam olarak biliyorum"
-          ],
+          "answers": {
+            "a1": "Muhtemelen daha önce bir şeyler değişti",
+            "a2": "İşte tüm küçük ayrıntılar rastgele sırayla",
+            "a3": "Saat 14:20'de nefes alma hızlandı ve uyanıklık azaldı",
+            "a4": "Buna neyin sebep olduğunu zaten tam olarak biliyorum"
+          },
           "headerLabel": "DEVRİ TEMİZLE"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Nabız 80, sonra 92, sonra 108, solgunluk ve baş dönmesiyle birlikte"
           },
           "question": "Bu modelin en iyi yorumu nedir?",
-          "answers": [
-            "Rekor değişmedi",
-            "Birleşik eğilim, acil nitelikli değerlendirme gerektiren bozulmaya işaret ediyor",
-            "Yalnızca ilk sayı önemlidir",
-            "Hiçbir tanı gösterilmediğinden semptomlar göz ardı edilebilir"
-          ],
+          "answers": {
+            "a1": "Rekor değişmedi",
+            "a2": "Birleşik eğilim, acil nitelikli değerlendirme gerektiren bozulmaya işaret ediyor",
+            "a3": "Yalnızca ilk sayı önemlidir",
+            "a4": "Hiçbir tanı gösterilmediğinden semptomlar göz ardı edilebilir"
+          },
           "headerLabel": "GÖZLEM TRENDLERİ"
         },
         "paramedic-r2q4": {
           "question": "Hangi ifade böbrekleri en iyi şekilde tanımlar?",
-          "answers": [
-            "Oksijen ve karbondioksit alışverişi yaparlar",
-            "Kandaki atıkları uzaklaştırır ve su dengesinin düzenlenmesine yardımcı olurlar.",
-            "Kanı atardamarlara pompalarlar",
-            "Her gönüllü hareketi kontrol ediyorlar"
-          ],
+          "answers": {
+            "a1": "Oksijen ve karbondioksit alışverişi yaparlar",
+            "a2": "Kandaki atıkları uzaklaştırır ve su dengesinin düzenlenmesine yardımcı olurlar.",
+            "a3": "Kanı atardamarlara pompalarlar",
+            "a4": "Her gönüllü hareketi kontrol ediyorlar"
+          },
           "headerLabel": "GÖVDE SİSTEMLERİ"
         },
         "paramedic-r1q4": {
           "question": "Tek kapının karşısında canlı bir elektrik kablosu yatıyor. Önce ne gelir?",
-          "answers": [
-            "Üzerinden dikkatlice geçin",
-            "Herkesi uzak tutun ve güvenliği sağlamak için nitelikli yardım alın",
-            "Kuru bir nesneyle hareket ettirin",
-            "Çevrenizdeki bir kişiden bunu izlemesini isteyin"
-          ],
+          "answers": {
+            "a1": "Üzerinden dikkatlice geçin",
+            "a2": "Herkesi uzak tutun ve güvenliği sağlamak için nitelikli yardım alın",
+            "a3": "Kuru bir nesneyle hareket ettirin",
+            "a4": "Çevrenizdeki bir kişiden bunu izlemesini isteyin"
+          },
           "headerLabel": "SAHNE GÜVENLİĞİ"
         },
         "paramedic-r6q2": {
           "question": "Bir kişi başını sallamaya devam ediyor ama anlamadı. Bundan sonra ne olmalı?",
-          "answers": [
-            "Aynı açıklamayı daha yavaş tekrarlayın",
-            "'Anladın mı?' diye sorun ve evet derlerse devam edin",
-            "Açıklamayı kısaltın ancak aynı terminolojiyi koruyun",
-            "Sade kelimeler kullanın ve tekrar kontrol edin"
-          ],
+          "answers": {
+            "a1": "Aynı açıklamayı daha yavaş tekrarlayın",
+            "a2": "'Anladın mı?' diye sorun ve evet derlerse devam edin",
+            "a3": "Açıklamayı kısaltın ancak aynı terminolojiyi koruyun",
+            "a4": "Sade kelimeler kullanın ve tekrar kontrol edin"
+          },
           "headerLabel": "AÇIK İLETİŞİM"
         },
         "paramedic-r5q6": {
           "context": "A kişisi kendini iyi hissediyor ve gözlemleri sabit kalıyor. B kişisi yeni terlemiş ve başı dönüyor ve nabzı üç kontrolde yükseldi.",
           "question": "İlk önce kimin ilgiye ihtiyacı var?",
-          "answers": [
-            "B Kişisi, çünkü birçok değişiklik bozulmaya işaret ediyor",
-            "A kişisi, çünkü ilk önce gözlemleri kaydedildi",
-            "Her ikisi de bekleyebilir çünkü ikisinin de adlandırılmış bir tanısı yok",
-            "İsmi kısa olan kişi"
-          ],
+          "answers": {
+            "a1": "B Kişisi, çünkü birçok değişiklik bozulmaya işaret ediyor",
+            "a2": "A kişisi, çünkü ilk önce gözlemleri kaydedildi",
+            "a3": "Her ikisi de bekleyebilir çünkü ikisinin de adlandırılmış bir tanısı yok",
+            "a4": "İsmi kısa olan kişi"
+          },
           "headerLabel": "ÖNCELİKLİ KARAR"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litre artı 450 mililitre artı 250 mililitre toplamı eşittir"
           },
           "question": "Mililitre cinsinden birleşik kaydedilen hacim nedir?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1.000 mL",
-            "1.100 mL"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1.000 mL",
+            "a4": "1.100 mL"
+          },
           "headerLabel": "ACİL NUMARACİLİK"
         },
         "paramedic-r10q4": {
           "context": "OLAY KAYDI — Saldırgan bir kişi girişin yakınına nesneler fırlatıyor. Ekipman en yakın çıkış yolunu kısmen kapatıyor.",
           "question": "Birleşik tehlikelere karşı en güvenli tepki nedir?",
-          "answers": [
-            "Uzak durun, diğerlerini daha güvenli bir rotaya yönlendirin ve uygun yardımı uyarın",
-            "Kişi duruncaya kadar yaklaşın ve tartışın",
-            "Ayrılmadan önce kişinin yanındaki ekipmanı alın",
-            "Eğitimsiz bir kişiden fırlatılan nesneleri engellemesini isteyin"
-          ],
+          "answers": {
+            "a1": "Uzak durun, diğerlerini daha güvenli bir rotaya yönlendirin ve uygun yardımı uyarın",
+            "a2": "Kişi duruncaya kadar yaklaşın ve tartışın",
+            "a3": "Ayrılmadan önce kişinin yanındaki ekipmanı alın",
+            "a4": "Eğitimsiz bir kişiden fırlatılan nesneleri engellemesini isteyin"
+          },
           "headerLabel": "ENTEGRE GÜVENLİK"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Nefes alıyor 16 uyanık, sonra 22 endişeli, ardından 28 uykulu"
           },
           "question": "Tüm trendin en iyi yorumu nedir?",
-          "answers": [
-            "Kişi sürekli olarak iyileşiyor",
-            "Yalnızca orta kontrol önemlidir",
-            "Hiçbir teşhis adlandırılmadığından değerler göz ardı edilebilir",
-            "Yanıt verme azalırken nefes alma kötüleşiyor"
-          ],
+          "answers": {
+            "a1": "Kişi sürekli olarak iyileşiyor",
+            "a2": "Yalnızca orta kontrol önemlidir",
+            "a3": "Hiçbir teşhis adlandırılmadığından değerler göz ardı edilebilir",
+            "a4": "Yanıt verme azalırken nefes alma kötüleşiyor"
+          },
           "headerLabel": "NİHAİ CEVAP"
         }
       }

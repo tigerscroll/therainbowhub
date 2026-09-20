@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Gyors demencia teszt",
   "eyebrow": "10 KÉRDÉSES AGY ELLENŐRZÉS",
   "summary": "Gyors kihívás felidézésre, figyelemre, nyelvre és érvelésre.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Azt hiszi, még mindig éles a memóriája? Ez a 10 gyors kérdés az emlékezést, a figyelmet és az érvelést teszteli – és a késleltetett kérdések nehezebbek, mint amilyennek látszanak.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló agyi kihívás ötvözi az azonnali és késleltetett felidézést a figyelem, a nyelv, a vizuális memóriával és az egyszerű érveléssel. Úgy tervezték, hogy a mai teljesítmény lenyűgöző pillanatfelvétele legyen, nem pedig a demencia szűrőeszköze.\n\nA teljesítmény változhat alvással, stresszel, hangulattal, gyógyszerekkel, nyelvvel, oktatással, látással, hallással, eszközhasználattal és egyszerű véletlenekkel. Egy online kvízből származó pontszám nem erősítheti meg vagy zárhatja ki a demenciát.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Gondosan tanulmányozzon minden emlékjelet, amikor megjelenik.",
         "Minden kérdésre válasszon egy választ külső segítség nélkül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Gyors agyi kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Gyors demencia teszt",
@@ -30,10 +26,8 @@
         "preAdCopy": "A tíz válaszod ellenőrzésre került, és az agyi kihívás pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három gondolkodási területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három gondolkodási területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Tisztáztad a 80%-os agyi kihívást!",
       "finished": "Gyors agyi kihívás befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A mai legerősebb terület",
       "trickiest": "A mai legnehezebb terület",
       "bestRound": "A legjobb szakasz",
@@ -94,8 +87,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Melyik szó jelent meg harmadikként?",
           "headerLabel": "AZONNALI VISSZAHÍVÁS",
-          "answers": [
-            "Híd",
-            "Citrom",
-            "Kert",
-            "Óra"
-          ],
+          "answers": {
+            "a1": "Híd",
+            "a2": "Citrom",
+            "a3": "Kert",
+            "a4": "Óra"
+          },
           "study": {
             "title": "Emlékezz erre a négy szóra",
             "instruction": "Később visszatérhetnek a teszt során.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Melyik kód egyezik pontosan a P8L4T-vel?",
           "headerLabel": "ÖSSZPONTOSÍTOTT FIGYELEM",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Melyik elem nem tartozik a többihez?",
           "headerLabel": "SZÓKATEGÓRIÁK",
-          "answers": [
-            "Hegedű",
-            "Furulya",
-            "Sárgarépa",
-            "Trombita"
-          ]
+          "answers": {
+            "a1": "Hegedű",
+            "a2": "Furulya",
+            "a3": "Sárgarépa",
+            "a4": "Trombita"
+          }
         },
         "dementia-q4": {
           "question": "Melyik szám következik: 2, 4, 8, 16, ___?",
           "headerLabel": "MINTÁZÁS",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Melyik tárgy jelent meg másodikként?",
           "headerLabel": "VIZUÁLIS MEMÓRIA",
-          "answers": [
-            "Kesztyű",
-            "Kulcs",
-            "Kupa",
-            "Könyv"
-          ],
+          "answers": {
+            "a1": "Kesztyű",
+            "a2": "Kulcs",
+            "a3": "Kupa",
+            "a4": "Könyv"
+          },
           "study": {
             "title": "Tanulmányozza az objektumok sorrendjét",
             "instruction": "Ez automatikusan eltűnik.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Mit jelent a 7 – 2 – 9 visszafelé?",
           "headerLabel": "MŰKÖDÉSI MEMÓRIA",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Ha a percmutató 6-ra mutat, hány perccel múlt el az óra?",
           "headerLabel": "ÓRA ÉRTELKEZÉS",
-          "answers": [
-            "6 perc",
-            "15 perc",
-            "45 perc",
-            "30 perc"
-          ]
+          "answers": {
+            "a1": "6 perc",
+            "a2": "15 perc",
+            "a3": "45 perc",
+            "a4": "30 perc"
+          }
         },
         "dementia-q8": {
           "question": "A kölyökkutya olyan kutyának, mint a cica minek?",
           "headerLabel": "NYELVI KAPCSOLAT",
-          "answers": [
-            "Macska",
-            "Ló",
-            "Nyúl",
-            "Madár"
-          ]
+          "answers": {
+            "a1": "Macska",
+            "a2": "Ló",
+            "a3": "Nyúl",
+            "a4": "Madár"
+          }
         },
         "dementia-q9": {
           "question": "Gondolj vissza a nyitólistára. Melyik szó jelent meg először?",
           "headerLabel": "KÉSLELTETETT SZÓFELVÉTEL",
-          "answers": [
-            "Óra",
-            "Kert",
-            "Citrom",
-            "Híd"
-          ]
+          "answers": {
+            "a1": "Óra",
+            "a2": "Kert",
+            "a3": "Citrom",
+            "a4": "Híd"
+          }
         },
         "dementia-q10": {
           "question": "Gondoljon vissza az objektumsorozatra. Melyik tárgy jelent meg negyedikként?",
           "headerLabel": "VÉGLEGES KÉSLELTETETT VISSZAHÍVÁS",
-          "answers": [
-            "Könyv",
-            "Kulcs",
-            "Kesztyű",
-            "Kupa"
-          ]
+          "answers": {
+            "a1": "Könyv",
+            "a2": "Kulcs",
+            "a3": "Kesztyű",
+            "a4": "Kupa"
+          }
         }
       }
     }

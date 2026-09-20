@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 8% zdaje ten quiz z anatomii człowieka",
   "eyebrow": "WYZWANIE LUDZKIEGO CIAŁA",
   "summary": "Dziesięć pytań dotyczących narządów, kości i układów organizmu, dzięki którym wszystko działa.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Twoje ciało może być znajome, ale jego najmniejsze kości, największe narządy i ważne układy wciąż mogą Cię przykuć.",
     "cta": "Rozpocznij quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ten quiz rozrywkowy składający się z dziesięciu pytań sprawdza ogólną wiedzę o ludzkim ciele, od głównych narządów i kości po krążenie i oddychanie. Każde pytanie ma jedną jasną odpowiedź zaczerpniętą z powszechnie przyjętej anatomii wprowadzającej.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego odsłonięcia, podczas którego możesz przejrzeć cały zestaw i sprawdzić, który obszar anatomii był dla Ciebie najsilniejszy.\n\nSzczegóły anatomiczne mogą się naturalnie różnić u poszczególnych osób. W quizie zastosowano standardowe konwencje anatomii dorosłych powszechnie nauczane w szkołach ogólnych.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć pytań dotyczących anatomii człowieka w jednym konkretnym wyzwaniu.",
         "Na każde pytanie wybierz jedną z czterech odpowiedzi.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie anatomiczne",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Anatomia człowieka",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twój wynik z anatomii i pełny przegląd odpowiedzi są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie trzech obszarów anatomii",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech obszarów anatomii"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie z anatomii!",
       "finished": "Wyzwanie anatomii ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar anatomii",
       "trickiest": "Najtrudniejszy obszar anatomii",
       "bestRound": "Najlepsza sekcja",
@@ -93,8 +86,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "anatomy-q1": {
           "question": "Jaki jest największy narząd w organizmie człowieka?",
-          "answers": [
-            "Skóra",
-            "Wątroba",
-            "Płuca",
-            "Mózg"
-          ],
+          "answers": {
+            "a1": "Skóra",
+            "a2": "Wątroba",
+            "a3": "Płuca",
+            "a4": "Mózg"
+          },
           "headerLabel": "ORGANY"
         },
         "anatomy-q2": {
           "question": "Ile komór ma ludzkie serce?",
-          "answers": [
-            "Dwa",
-            "Cztery",
-            "Trzy",
-            "Pięć"
-          ],
+          "answers": {
+            "a1": "Dwa",
+            "a2": "Cztery",
+            "a3": "Trzy",
+            "a4": "Pięć"
+          },
           "headerLabel": "SERCE"
         },
         "anatomy-q3": {
           "question": "Jaka jest najdłuższa kość w organizmie człowieka?",
-          "answers": [
-            "Tibia",
-            "Kość ramienna",
-            "Kość udowa",
-            "Promień"
-          ],
+          "answers": {
+            "a1": "Tibia",
+            "a2": "Kość ramienna",
+            "a3": "Kość udowa",
+            "a4": "Promień"
+          },
           "headerLabel": "SZKIELET"
         },
         "anatomy-q4": {
           "question": "Który narząd wytwarza insulinę?",
-          "answers": [
-            "Wątroba",
-            "Nerka",
-            "Śledziona",
-            "Trzustka"
-          ],
+          "answers": {
+            "a1": "Wątroba",
+            "a2": "Nerka",
+            "a3": "Śledziona",
+            "a4": "Trzustka"
+          },
           "headerLabel": "ORGANY"
         },
         "anatomy-q5": {
           "question": "Jaka jest najmniejsza kość w ludzkim ciele?",
-          "answers": [
-            "Strzemię",
-            "Rzepka",
-            "kość ogonowa",
-            "Ulna"
-          ],
+          "answers": {
+            "a1": "Strzemię",
+            "a2": "Rzepka",
+            "a3": "kość ogonowa",
+            "a4": "Ulna"
+          },
           "headerLabel": "SZKIELET"
         },
         "anatomy-q6": {
           "question": "Ile kości zwykle znajduje się w ciele dorosłego człowieka?",
-          "answers": [
-            "201",
-            "206",
-            "212",
-            "218"
-          ],
+          "answers": {
+            "a1": "201",
+            "a2": "206",
+            "a3": "212",
+            "a4": "218"
+          },
           "headerLabel": "PODSTAWY CIAŁA"
         },
         "anatomy-q7": {
           "question": "Który główny mięsień znajduje się pod płucami i pomaga Ci oddychać?",
-          "answers": [
-            "Trapez",
-            "Naramienny",
-            "Przepona",
-            "Ścięgno podkolanowe"
-          ],
+          "answers": {
+            "a1": "Trapez",
+            "a2": "Naramienny",
+            "a3": "Przepona",
+            "a4": "Ścięgno podkolanowe"
+          },
           "headerLabel": "ODDYCHANIE"
         },
         "anatomy-q8": {
           "question": "Móżdżek jest częścią jakiego narządu?",
-          "answers": [
-            "Rdzeń kręgowy",
-            "Ucho wewnętrzne",
-            "Serce",
-            "Mózg"
-          ],
+          "answers": {
+            "a1": "Rdzeń kręgowy",
+            "a2": "Ucho wewnętrzne",
+            "a3": "Serce",
+            "a4": "Mózg"
+          },
           "headerLabel": "MÓZG"
         },
         "anatomy-q9": {
           "question": "Które naczynia krwionośne odprowadzają krew z serca?",
-          "answers": [
-            "Tętnice",
-            "Żyły",
-            "Kapilary",
-            "Venule"
-          ],
+          "answers": {
+            "a1": "Tętnice",
+            "a2": "Żyły",
+            "a3": "Kapilary",
+            "a4": "Venule"
+          },
           "headerLabel": "CYRKULACJA"
         },
         "anatomy-q10": {
           "question": "Jaki jest największy narząd wewnętrzny w organizmie człowieka?",
-          "answers": [
-            "Płuca",
-            "Wątroba",
-            "Żołądek",
-            "Nerki"
-          ],
+          "answers": {
+            "a1": "Płuca",
+            "a2": "Wątroba",
+            "a3": "Żołądek",
+            "a4": "Nerki"
+          },
           "headerLabel": "PYTANIE KOŃCOWE"
         }
       }

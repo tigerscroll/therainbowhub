@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test de degenerescență maculară",
   "eyebrow": "10 ÎNTREBĂRI VERIFICARE CENTRAL-VIZIE",
   "summary": "Detalii centrale, capcane vizuale și semne de avertizare AMD importante într-o singură provocare rapidă.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Puteți identifica detaliile centrale și puteți identifica semnele de avertizare? Aceste 10 verificări rapide devin mai grele.",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare de zece întrebări combină cinci puzzle-uri vizuale pe ecran cu cinci întrebări de conștientizare generală despre degenerescenta maculară legată de vârstă (AMD). Măsoară răspunsurile la acest test, nu sănătatea ochilor sau probabilitatea bolii.\n\nDimensiunea ecranului, luminozitatea, contrastul, vederea, lentilele corective, oboseala și setările dispozitivului pot afecta performanța. Noile linii ondulate sau distorsionate, o nouă zonă încețoșată sau goală în vederea centrală sau o agravare bruscă trebuie discutate prompt cu un oftalmolog calificat.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Completați cinci provocări cu detalii centrale și memorie vizuală.",
         "Răspundeți la cinci întrebări despre AMD și când să solicitați ajutor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocarea vederii centrale",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Test de degenerescență maculară",
@@ -30,10 +26,8 @@
         "preAdCopy": "Cele zece răspunsuri ale tale au fost verificate și scorul tău de provocare a vederii centrale este gata să fie dezvăluit.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Trei zone vizuale comparate",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Trei zone vizuale comparate"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Ai depășit provocarea vizuală de 80%!",
       "finished": "Provocarea viziunii centrale finalizată",
-      "correctLabel": "corect",
       "strongest": "Zona cea mai puternică azi",
       "trickiest": "Cea mai dificilă zonă azi",
       "bestRound": "Cea mai bună secțiune",
@@ -94,8 +87,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Care personaj se află exact în mijlocul grilei?",
           "headerLabel": "DETALUL CENTRAL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERINȚĂ: Q7M2P6",
           "question": "Care cod se potrivește exact cu referința?",
           "headerLabel": "MECI ÎNCHIS",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERINȚĂ",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Care simbol completează succesiunea alternativă?",
           "headerLabel": "Urmărirea modelelor",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Care obiect a apărut al treilea?",
           "headerLabel": "MEMORIE VIZUALĂ RAPIDĂ",
-          "answers": [
-            "carte",
-            "cheie",
-            "cupa",
-            "soare"
-          ],
+          "answers": {
+            "a1": "carte",
+            "a2": "cheie",
+            "a3": "cupa",
+            "a4": "soare"
+          },
           "study": {
             "title": "Studiați ordinea celor cinci obiecte",
             "instruction": "Aceasta va dispărea automat.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Care poziție conține cercul deschis?",
           "headerLabel": "FOCALIZAREA RÂNDULUI MIJLOCUI",
-          "answers": [
-            "În al patrulea rând",
-            "În al doilea rând",
-            "A cincea",
-            "În al treilea rând"
-          ],
+          "answers": {
+            "a1": "În al patrulea rând",
+            "a2": "În al doilea rând",
+            "a3": "A cincea",
+            "a4": "În al treilea rând"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Care parte a vederii este cel mai direct afectată de degenerescenta maculară legată de vârstă?",
           "headerLabel": "BAZELE AMD",
-          "answers": [
-            "Doar marginile exterioare îndepărtate",
-            "Vedere centrală ascuțită, drept înainte",
-            "Doar vedere pe timp de noapte",
-            "Doar percepția profunzimii"
-          ]
+          "answers": {
+            "a1": "Doar marginile exterioare îndepărtate",
+            "a2": "Vedere centrală ascuțită, drept înainte",
+            "a3": "Doar vedere pe timp de noapte",
+            "a4": "Doar percepția profunzimii"
+          }
         },
         "macular-q7": {
           "question": "Care schimbare vizuală este un semn de avertizare binecunoscut al AMD?",
           "headerLabel": "SEMNE DE AVERTIZARE",
-          "answers": [
-            "Sună din ce în ce mai liniștit",
-            "O mâncărime temporară pe pleoapă",
-            "Linii drepte care apar ondulate sau strâmbe",
-            "O genă care cade"
-          ]
+          "answers": {
+            "a1": "Sună din ce în ce mai liniștit",
+            "a2": "O mâncărime temporară pe pleoapă",
+            "a3": "Linii drepte care apar ondulate sau strâmbe",
+            "a4": "O genă care cade"
+          }
         },
         "macular-q8": {
           "question": "Ce evaluare poate folosi un specialist în îngrijirea ochilor pentru a căuta AMD?",
           "headerLabel": "EVALUARE PROFESIONALĂ",
-          "answers": [
-            "Un test de auz",
-            "Doar o citire a tensiunii arteriale",
-            "Un test de gust",
-            "O examinare cuprinzătoare a ochiului dilatat"
-          ]
+          "answers": {
+            "a1": "Un test de auz",
+            "a2": "Doar o citire a tensiunii arteriale",
+            "a3": "Un test de gust",
+            "a4": "O examinare cuprinzătoare a ochiului dilatat"
+          }
         },
         "macular-q9": {
           "question": "Care este cel mai sigur răspuns la înrăutățirea bruscă a vederii sau la o nouă zonă centrală încețoșată sau goală?",
           "headerLabel": "CÂND SĂ ACȚIONEAZĂ",
-          "answers": [
-            "Solicitați prompt sfaturi profesionale pentru îngrijirea ochilor",
-            "Așteptați câteva luni fără să menționați",
-            "Măriți luminozitatea ecranului și presupuneți că este fix",
-            "Bazează-te doar pe un test online"
-          ]
+          "answers": {
+            "a1": "Solicitați prompt sfaturi profesionale pentru îngrijirea ochilor",
+            "a2": "Așteptați câteva luni fără să menționați",
+            "a3": "Măriți luminozitatea ecranului și presupuneți că este fix",
+            "a4": "Bazează-te doar pe un test online"
+          }
         },
         "macular-q10": {
           "question": "Ce vă poate spune scorul la această provocare online?",
           "headerLabel": "VERIFICAREA FINALĂ A REALITATII",
-          "answers": [
-            "Dacă retina ta este sănătoasă",
-            "Doar cum te-ai descurcat la aceste zece întrebări",
-            "Fie că aveți nevoie de un anumit tratament",
-            "Dacă puteți exclude AMD"
-          ]
+          "answers": {
+            "a1": "Dacă retina ta este sănătoasă",
+            "a2": "Doar cum te-ai descurcat la aceste zece întrebări",
+            "a3": "Fie că aveți nevoie de un anumit tratament",
+            "a4": "Dacă puteți exclude AMD"
+          }
         }
       }
     }

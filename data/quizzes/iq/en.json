@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 7% Pass This Intelligence Test",
   "eyebrow": "THE INTELLIGENCE VAULT",
   "summary": "Patterns, number rules, word links and spatial traps test how quickly your reasoning finds the hidden rule.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Patterns, codes, word links and logic traps collide. How long can your reasoning stay one step ahead?",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This worldwide entertainment challenge brings together ten carefully selected puzzles covering patterns, numerical rules, verbal connections, spatial reasoning, attention and logical deduction. It is designed to feel playful and demanding rather than like a formal aptitude exam.\n\nEach puzzle has one answer supported by the information shown. The interaction changes regularly, so you may need to identify a rule, compare clues, transform a symbol, calculate mentally or notice a small inconsistency.\n\nYour Intelligence Test Score is the percentage of these entertainment puzzles you solve correctly. It describes this attempt only and does not measure your actual intelligence, IQ, aptitude or educational ability.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Complete ten carefully selected questions in one focused challenge.",
         "Choose one answer each time. Correctness remains hidden until the final reveal.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Intelligence challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Intelligence Challenge",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your intelligence-test score and three-area breakdown are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Three thinking areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three thinking areas compared"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "You passed the Intelligence Test challenge!",
       "finished": "Intelligence Test complete",
-      "correctLabel": "correct",
       "strongest": "Strongest thinking area",
       "trickiest": "Trickiest thinking area",
       "bestRound": "Best section",
@@ -98,8 +91,7 @@
         "snapshot": "What this attempt suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "circle, triangle, circle, triangle, unknown"
           },
           "question": "Which symbol comes next?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "PATTERN REASONING"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "up-right arrow beside a vertical mirror"
           },
           "question": "Which arrow is the reflection in a vertical mirror?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "SPATIAL REASONING"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "letter shifts plus one, plus two, plus one; CAT becomes DCU"
           },
           "question": "The shifts repeat +1, +2, +1. How is DOG coded?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBAL REASONING"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "number pyramid with bottom 3, 5, 4 and middle 8, 9"
           },
           "question": "Each block is the sum of the two below it. What goes on top?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "NUMERICAL REASONING"
         },
         "iq-s3q2": {
           "question": "A machine doubles a number, then adds 3. Which input produces 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "NUMERICAL REASONING"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Reference code K7M2-Q9. Find the option with one character changed."
           },
           "question": "Which copy differs from the reference by exactly one character?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "ATTENTION TO DETAIL"
         },
         "iq-s4q1": {
           "question": "Exactly one person tells the truth. A says B lies. B says C lies. C says A and B both lie. Who tells the truth?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Nobody"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Nobody"
+          },
           "headerLabel": "LOGICAL DEDUCTION"
         },
         "iq-s4q4": {
           "question": "Start in the centre facing north. Move forward one square, turn right, move two squares, turn right, then move one square. Where do you finish relative to the start?",
-          "answers": [
-            "Two squares right",
-            "One square up",
-            "Two squares left",
-            "Back at centre"
-          ],
+          "answers": {
+            "a1": "Two squares right",
+            "a2": "One square up",
+            "a3": "Two squares left",
+            "a4": "Back at centre"
+          },
           "headerLabel": "SPATIAL REASONING"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "rows 3, 4, 10; 5, 2, 12; 7, 3, unknown"
           },
           "question": "In each row, double the first number, then add the second. What replaces the question mark?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "NUMERICAL REASONING"
         },
         "iq-s5q8": {
           "question": "An arrow points up. Turn it 90° clockwise, then reflect it in a vertical mirror. Where does it point?",
-          "answers": [
-            "Up",
-            "Right",
-            "Down",
-            "Left"
-          ],
+          "answers": {
+            "a1": "Up",
+            "a2": "Right",
+            "a3": "Down",
+            "a4": "Left"
+          },
           "headerLabel": "FINAL SPATIAL TEST"
         }
       }

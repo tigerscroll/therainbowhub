@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %15'i Bu RAF Giriş Sınavını Geçebiliyor",
   "eyebrow": "RAF BİLGİ TESTİ",
   "summary": "On soru, RAF geçmişini, uçakları, rütbeleri ve operasyonel bilgiyi test ediyor.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Ünlü uçaklar sadece başlangıçtır. Bu 10 soru RAF hakkında gerçekte ne kadar bilgi sahibi olduğunuzu ortaya koyuyor.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, Kraliyet Hava Kuvvetlerinin oluşumunu, tarihini, rütbe yapısını, uçaklarını ve modern rollerini kapsıyor. Daha yakından RAF bilgisi gerektiren ayrıntılara geçmeden önce tanıdık kilometre taşlarıyla başlar.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin kilidini açabileceğiniz son açıklamaya kadar gizli kalır.\n\nGerçekler, Kraliyet Hava Kuvvetleri tarafından yayınlanan güncel ve tarihi materyallerle karşılaştırılarak kontrol edildi.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on RAF sorusunu yanıtlayın.",
         "Dışarıdan yardım almadan dört cevaptan birini seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "RAF giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "RAF Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve RAF bilgi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş RAF bilgi alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş RAF bilgi alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "RAF giriş sınavını geçtiniz!",
       "finished": "RAF giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü RAF konusu",
       "trickiest": "En zorlu RAF konusu",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "Kraliyet Hava Kuvvetleri hangi yılda kuruldu?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "RAF'IN KÖKENLERİ"
         },
         "raf-q2": {
           "question": "RAF, Kraliyet Uçan Kolordusu'nun başka hangi hizmetle birleştirilmesiyle oluşturuldu?",
-          "answers": [
-            "Filo Hava Kolu",
-            "Kraliyet Donanma Hava Servisi",
-            "Ordu Hava Kuvvetleri",
-            "Kraliyet Gözlemci Birliği"
-          ],
+          "answers": {
+            "a1": "Filo Hava Kolu",
+            "a2": "Kraliyet Donanma Hava Servisi",
+            "a3": "Ordu Hava Kuvvetleri",
+            "a4": "Kraliyet Gözlemci Birliği"
+          },
           "headerLabel": "HİZMET GEÇMİŞİ"
         },
         "raf-q3": {
           "question": "Britanya Savaşı hangi yılda gerçekleşti?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "İNGİLTERE SAVAŞI"
         },
         "raf-q4": {
           "question": "Kraliyet Hava Kuvvetlerinin resmi sloganı nedir?",
-          "answers": [
-            "Semper Fidelis",
-            "Kim Cesaret Edebilir?",
-            "Liderlik Etmek için Hizmet Edin",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Semper Fidelis",
+            "a2": "Kim Cesaret Edebilir?",
+            "a3": "Liderlik Etmek için Hizmet Edin",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "RAF KİMLİK"
         },
         "raf-q5": {
           "question": "Bugün RAF'ın birincil rolü nedir?",
-          "answers": [
-            "Birleşik Krallık göklerini korumak",
-            "Kraliyet Donanması'nın uçak gemilerini işletmek",
-            "Tüm sivil havalimanlarının yönetimi",
-            "Silahlı Kuvvetlerin her kolunu eğitmek"
-          ],
+          "answers": {
+            "a1": "Birleşik Krallık göklerini korumak",
+            "a2": "Kraliyet Donanması'nın uçak gemilerini işletmek",
+            "a3": "Tüm sivil havalimanlarının yönetimi",
+            "a4": "Silahlı Kuvvetlerin her kolunu eğitmek"
+          },
           "headerLabel": "MODERN ROL"
         },
         "raf-q6": {
           "question": "Hangi RAF rütbesi Uçuş Teğmeninin hemen üzerinde yer alıyor?",
-          "answers": [
-            "Uçan Subay",
-            "Filo Lideri",
-            "Kanat Komutanı",
-            "Grup Kaptanı"
-          ],
+          "answers": {
+            "a1": "Uçan Subay",
+            "a2": "Filo Lideri",
+            "a3": "Kanat Komutanı",
+            "a4": "Grup Kaptanı"
+          },
           "headerLabel": "SIRA YAPISI"
         },
         "raf-q7": {
           "question": "RAF Akrobasi Ekibi Red Arrows hangi uçağı kullanıyor?",
-          "answers": [
-            "Tayfun FGR4",
-            "Öğretmen T1",
-            "Hawk T1",
-            "Gezgin"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "UÇAK BİLGİSİ"
         },
         "raf-q8": {
           "question": "Britanya Savaşı sırasında Zincir Ev neydi?",
-          "answers": [
-            "Bir savaş filosu",
-            "Bir uçak üretim planı",
-            "Kıyı kurtarma servisi",
-            "Erken uyarı radar ağı"
-          ],
+          "answers": {
+            "a1": "Bir savaş filosu",
+            "a2": "Bir uçak üretim planı",
+            "a3": "Kıyı kurtarma servisi",
+            "a4": "Erken uyarı radar ağı"
+          },
           "headerLabel": "ERKEN UYARI"
         },
         "raf-q9": {
           "question": "Spitfire'ın tasarımıyla ayrılmaz bir şekilde bağlantılı olan şirket adı hangisidir?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havilland",
-            "Kullanışlı Sayfa"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havilland",
+            "a4": "Kullanışlı Sayfa"
+          },
           "headerLabel": "TARİHİ UÇAK"
         },
         "raf-q10": {
           "question": "Hızlı jet, çok motorlu ve döner kanatlı uçuşların yanı sıra RAF pilotları hangi dördüncü akıma girebilir?",
-          "answers": [
-            "Deniz gümrük devriyesi",
-            "Uzaktan Kumandalı Uçak Sistemleri",
-            "Sivil havayolu komutanlığı",
-            "Deniz denizaltı havacılığı"
-          ],
+          "answers": {
+            "a1": "Deniz gümrük devriyesi",
+            "a2": "Uzaktan Kumandalı Uçak Sistemleri",
+            "a3": "Sivil havayolu komutanlığı",
+            "a4": "Deniz denizaltı havacılığı"
+          },
           "headerLabel": "RAF'IN SON SORUSU"
         }
       }

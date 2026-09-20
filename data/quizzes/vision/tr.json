@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %7'si Bu Görme Testini Geçebilir",
   "eyebrow": "OPTİK ODAKLAMA LABORATUVARI",
   "summary": "Küçük farklılıklar, değişen desenler ve optik tuzaklar, çoğu insanın kaçırdığı şeyleri gözlerinizin yakalayıp yakalamadığını test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Gözlerin ne kadar keskin? Küçük farklılıkları tespit edin, değişen desenleri takip edin ve görsel tuzakları sizi yakalamadan önce yakalayın.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu eğlence mücadelesi, renk kontrastı, ayrıntı eşleştirme, mekansal yönelim, desen izleme, dikkat ve görsel hafızayı kapsayan on görsel bulmaca içerir. Uzman terminolojisine dayanılmadan görevler daha zorlu hale gelir.\n\nHer resim veya sembol setini dikkatlice inceleyin, ardından gösterilenlerle en iyi desteklenen cevabı seçin. Bazı sorular görme yeteneğinden ziyade algıyı ve dikkati test eder.\n\nBu bir göz muayenesi, tıbbi görme testi veya teşhis değildir. Görmenizle ilgili endişeleriniz varsa nitelikli göz bakımı tavsiyesine başvurun.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vizyon mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Vizyon Mücadelesi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Görüş-meydan okuma puanınız ve üç beceri dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç görsel beceri karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç görsel beceri karşılaştırıldı"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Vizyon sınavını geçtiniz!",
       "finished": "Vizyon mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü görsel beceri",
       "trickiest": "En zorlu görsel beceri",
       "bestRound": "En iyi bölüm",
@@ -98,8 +91,7 @@
         "snapshot": "Odak profilinizin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Sağ alt kısımda oldukça farklı bir döşemeye sahip dört yakın mavi renk örneği"
           },
           "question": "Hangi fayans farklı renk?",
-          "answers": [
-            "Sol üst",
-            "Sağ alt",
-            "Sağ üst",
-            "Sol alt"
-          ],
+          "answers": {
+            "a1": "Sol üst",
+            "a2": "Sağ alt",
+            "a3": "Sağ üst",
+            "a4": "Sol alt"
+          },
           "headerLabel": "RENK KONTRASTI"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Referans kodu M 7 K 2 P 9"
           },
           "question": "Hangi kod tam olarak eşleşiyor?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "DETAY EŞLEŞMESİ"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Dikey bir aynaya yansıyan kuzeydoğu oku"
           },
           "question": "Hangi ok ↗'nin dikey aynasıdır?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "UZAMSAL YÖNELİM"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Kaç tane F harfi gösteriliyor?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "DİKKAT KONTROLÜ"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, bilinmiyor"
           },
           "question": "Alternatif sırayı hangi karo tamamlıyor?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "ÖRÜNTÜ TAKİBİ"
         },
         "vision-r4q5": {
           "question": "Derin lacivert karşısında en çok hangi renk öne çıkıyor?",
-          "answers": [
-            "Renk örneği A",
-            "Renk örneği B",
-            "Renk örneği D",
-            "Renk örneği C"
-          ],
+          "answers": {
+            "a1": "Renk örneği A",
+            "a2": "Renk örneği B",
+            "a3": "Renk örneği D",
+            "a4": "Renk örneği C"
+          },
           "headerLabel": "RENK ODAĞI"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "A, B, C ve D uç noktalarına ulaşmadan önce tekrar tekrar kesişen dört eşleşen noktalı rotanın yer aldığı kırmızı bir başlangıç noktası"
           },
           "question": "Kırmızı noktadan başlayın ve noktalı rotayı takip edin. Hangi harfe ulaşıyorsun?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "GÖRSEL TAKİP"
         },
         "vision-r9q2": {
           "context": "VERSİYON A: FOCUS-M7Q2-2026\nVERSİYON B: F0CUS-M7Q2-2026",
           "question": "Versiyon B'de hangi kesin konum değişti?",
-          "answers": [
-            "İlk F",
-            "Q",
-            "İkinci karakter",
-            "Son rakam"
-          ],
+          "answers": {
+            "a1": "İlk F",
+            "a2": "Q",
+            "a3": "İkinci karakter",
+            "a4": "Son rakam"
+          },
           "headerLabel": "DETAY TESPİTİ"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "M8Q2 K7P4 R6N3'ü temel alın ve M8Q2 K1P4 R6M3'ü kopyalayın"
           },
           "question": "Hangi iki karakter değişti?",
-          "answers": [
-            "7 ve N",
-            "8 ve 6",
-            "Soru ve P",
-            "K ve R"
-          ],
+          "answers": {
+            "a1": "7 ve N",
+            "a2": "8 ve 6",
+            "a3": "Soru ve P",
+            "a4": "K ve R"
+          },
           "headerLabel": "KOD KARŞILAŞTIRMASI"
         },
         "vision-r8q5": {
           "question": "Dördüncü olarak hangi simge göründü?",
-          "answers": [
-            "Ay",
-            "Çapa",
-            "Güneş",
-            "Yıldız"
-          ],
+          "answers": {
+            "a1": "Ay",
+            "a2": "Çapa",
+            "a3": "Güneş",
+            "a4": "Yıldız"
+          },
           "study": {
             "title": "Hızlı anlık görüntü",
             "items": [

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 7 % kan namnge dessa föråldrade föremål - kan du?",
   "eyebrow": "TESTET FÖR FÖRLORADE OBJEKT",
   "summary": "Tio föremål som en gång kändes helt vanliga. Se hur många bortglömda namn du fortfarande kan komma ihåg.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Objekten kan se bekanta ut, men att korrekt namnge alla 10 är mycket svårare än det ser ut.",
     "cta": "Starta frågesport"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Innan smartphones, streaming och automatiska apparater förlitade sig vardagen på fysiska medier, mekaniska prylar och hushållsverktyg som nu ser konstigt främmande ut. Denna utmaning med tio frågor testar om deras namn har försvunnit från minnet tillsammans med själva föremålen.\n\nStudera varje fotografi, använd ledtråden om det behövs och välj ett av fyra möjliga namn. Korrektheten förblir dold tills den sista avslöjandet.\n\nDe första tio källfrågorna och deras bilder är återgivna från QuizDays med tillåtelse från webbplatsägaren som beställt detta frågesport.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Studera varje fotografi och läs dess korta ledtråd.",
         "Välj rätt namn bland fyra möjliga svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Utmaning för föråldrade föremål",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Förlorade föremål",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och din nostalgipoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 gamla föremål kontrollerade",
-          "Tre objektkategorier jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre objektkategorier jämförda"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarade utmaningen för föråldrade föremål!",
       "finished": "Utmaningen för föråldrade föremål är klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste objektkategori",
       "trickiest": "Den svåraste objektkategorin",
       "bestRound": "Bästa avsnittet",
@@ -93,8 +86,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "En svart 3,5-tums diskett på en neutral yta"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Diskett",
-            "Kassettband",
-            "LaserDisc",
-            "Zip-läsare"
-          ],
+          "answers": {
+            "a1": "Diskett",
+            "a2": "Kassettband",
+            "a3": "LaserDisc",
+            "a4": "Zip-läsare"
+          },
           "headerLabel": "FÖRLAPPAT OBJEKT 1 AV 10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "En vintage telefon med en cirkulär mekanisk urtavla"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Grammofon",
-            "Telefon med nummerskiva",
-            "Telegraf",
-            "Diktafon"
-          ],
+          "answers": {
+            "a1": "Grammofon",
+            "a2": "Telefon med nummerskiva",
+            "a3": "Telegraf",
+            "a4": "Diktafon"
+          },
           "headerLabel": "FÖRLAPPAT OBJEKT 2 AV 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "En röd stereoskopisk leksaksbetraktare med en rund bildrulle"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Diaprojektor",
-            "Stereoskop",
-            "View-Master",
-            "Filmkapsel"
-          ],
+          "answers": {
+            "a1": "Diaprojektor",
+            "a2": "Stereoskop",
+            "a3": "View-Master",
+            "a4": "Filmkapsel"
+          },
           "headerLabel": "FÖRLAPPAT OBJEKT 3 AV 10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "En mekanisk skrivmaskin med nycklar och ett färgband"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Inkwell",
-            "Mimeograf",
-            "Telegrafnyckel",
-            "Skrivmaskin"
-          ],
+          "answers": {
+            "a1": "Inkwell",
+            "a2": "Mimeograf",
+            "a3": "Telegrafnyckel",
+            "a4": "Skrivmaskin"
+          },
           "headerLabel": "FÖRLAPPAT OBJEKT 4 AV 10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "En tvättbräda i trä med en korrugerad metallyta"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Tvättbräda",
-            "Smörkärna",
-            "Kaffekvarn",
-            "Islåda"
-          ],
+          "answers": {
+            "a1": "Tvättbräda",
+            "a2": "Smörkärna",
+            "a3": "Kaffekvarn",
+            "a4": "Islåda"
+          },
           "headerLabel": "FÖRLAPPAT OBJEKT 5 AV 10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "En bärbar kassettspelare med trådbundna hörlurar"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Boombox",
-            "Walkman",
-            "Transistorrador",
-            "Grammofon"
-          ],
+          "answers": {
+            "a1": "Boombox",
+            "a2": "Walkman",
+            "a3": "Transistorrador",
+            "a4": "Grammofon"
+          },
           "headerLabel": "FÖRLUST OBJEKT 6 AV 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "En rektangulär hemmavideokassett"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Betamax tejp",
-            "Filmrulle",
-            "VHS-band",
-            "Kassettband"
-          ],
+          "answers": {
+            "a1": "Betamax tejp",
+            "a2": "Filmrulle",
+            "a3": "VHS-band",
+            "a4": "Kassettband"
+          },
           "headerLabel": "FÖRLAPPAT FÖREMÅL 7 AV 10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Ett vävt handhållet verktyg som en gång användes för att ta bort damm från mattor"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Isplocka",
-            "Sockertång",
-            "Skohorn",
-            "Mattvisp"
-          ],
+          "answers": {
+            "a1": "Isplocka",
+            "a2": "Sockertång",
+            "a3": "Skohorn",
+            "a4": "Mattvisp"
+          },
           "headerLabel": "FÖRLUST OBJEKT 8 AV 10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "En liten elektronisk meddelandemottagare med display och bältesklämma"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Personsökare",
-            "Game Boy",
-            "Talkie-walkie",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Personsökare",
+            "a2": "Game Boy",
+            "a3": "Talkie-walkie",
+            "a4": "PDA"
+          },
           "headerLabel": "FÖRLUST OBJEKT 9 AV 10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "En långskaftad metallpanna en gång fylld med kol för att värma en säng"
           },
           "question": "Vad heter det här gamla föremålet?",
-          "answers": [
-            "Oljelampa",
-            "Sängvärmare",
-            "Chamberstick",
-            "Gaslykta"
-          ],
+          "answers": {
+            "a1": "Oljelampa",
+            "a2": "Sängvärmare",
+            "a3": "Chamberstick",
+            "a4": "Gaslykta"
+          },
           "headerLabel": "SLUTLIGT FÖRLORT OBJEKT"
         }
       }

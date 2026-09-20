@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tes Degenerasi Makula",
   "eyebrow": "PEMERIKSAAN VISI PUSAT 10 PERTANYAAN",
   "summary": "Detail sentral, jebakan visual, dan tanda peringatan penting AMD dalam satu tantangan cepat.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Dapatkah Anda melihat detail utamanya dan mengidentifikasi tanda-tanda peringatannya? 10 pemeriksaan cepat ini semakin sulit.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan sepuluh pertanyaan ini menggabungkan lima teka-teki visual di layar dengan lima pertanyaan kesadaran umum tentang degenerasi makula terkait usia (AMD). Ini mengukur jawaban terhadap kuis ini, bukan kesehatan mata atau kemungkinan penyakit.\n\nUkuran layar, kecerahan, kontras, penglihatan, lensa korektif, kelelahan, dan pengaturan perangkat semuanya dapat memengaruhi kinerja. Garis baru yang bergelombang atau terdistorsi, area baru yang kabur atau kosong di penglihatan sentral, atau memburuk secara tiba-tiba harus segera didiskusikan dengan ahli perawatan mata profesional yang berkualifikasi.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan lima tantangan detail sentral dan memori visual.",
         "Jawab lima pertanyaan tentang AMD dan kapan harus mencari bantuan.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan visi sentral",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tes Degenerasi Makula",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor tantangan visi sentral Anda siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Tiga area visual dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga area visual dibandingkan"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Anda menyelesaikan tantangan visual 80%!",
       "finished": "Tantangan visi sentral selesai",
-      "correctLabel": "benar",
       "strongest": "Area terkuat saat ini",
       "trickiest": "Area tersulit saat ini",
       "bestRound": "Bagian terbaik",
@@ -94,8 +87,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Karakter manakah yang berada tepat di tengah grid?",
           "headerLabel": "DETAIL PUSAT",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENSI: Q7M2P6",
           "question": "Kode mana yang sama persis dengan referensi?",
           "headerLabel": "TUTUP PERTANDINGAN",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERENSI",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Simbol manakah yang melengkapi barisan bolak-balik?",
           "headerLabel": "PELACAKAN POLA",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Benda manakah yang muncul ketiga?",
           "headerLabel": "MEMORI VISUAL CEPAT",
-          "answers": [
-            "Buku",
-            "Kunci",
-            "Piala",
-            "Matahari"
-          ],
+          "answers": {
+            "a1": "Buku",
+            "a2": "Kunci",
+            "a3": "Piala",
+            "a4": "Matahari"
+          },
           "study": {
             "title": "Pelajari urutan lima objek",
             "instruction": "Ini akan hilang secara otomatis.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Posisi manakah yang berisi lingkaran terbuka?",
           "headerLabel": "FOKUS BARIS TENGAH",
-          "answers": [
-            "Keempat",
-            "Kedua",
-            "Kelima",
-            "Ketiga"
-          ],
+          "answers": {
+            "a1": "Keempat",
+            "a2": "Kedua",
+            "a3": "Kelima",
+            "a4": "Ketiga"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Bagian penglihatan manakah yang paling terkena dampak langsung dari degenerasi makula terkait usia?",
           "headerLabel": "DASAR-DASAR AMD",
-          "answers": [
-            "Hanya tepi terluarnya saja",
-            "Pandangan tajam ke tengah dan lurus ke depan",
-            "Hanya penglihatan malam",
-            "Hanya persepsi kedalaman"
-          ]
+          "answers": {
+            "a1": "Hanya tepi terluarnya saja",
+            "a2": "Pandangan tajam ke tengah dan lurus ke depan",
+            "a3": "Hanya penglihatan malam",
+            "a4": "Hanya persepsi kedalaman"
+          }
         },
         "macular-q7": {
           "question": "Perubahan visual manakah yang merupakan tanda peringatan AMD yang terkenal?",
           "headerLabel": "TANDA PERINGATAN",
-          "answers": [
-            "Kedengarannya menjadi lebih tenang",
-            "Gatal sementara pada kelopak mata",
-            "Garis lurus tampak bergelombang atau bengkok",
-            "Satu bulu mata rontok"
-          ]
+          "answers": {
+            "a1": "Kedengarannya menjadi lebih tenang",
+            "a2": "Gatal sementara pada kelopak mata",
+            "a3": "Garis lurus tampak bergelombang atau bengkok",
+            "a4": "Satu bulu mata rontok"
+          }
         },
         "macular-q8": {
           "question": "Penilaian manakah yang dapat digunakan oleh ahli perawatan mata untuk mencari AMD?",
           "headerLabel": "PENILAIAN PROFESIONAL",
-          "answers": [
-            "Tes pendengaran",
-            "Pembacaan tekanan darah saja",
-            "Tes rasa",
-            "Pemeriksaan mata melebar yang komprehensif"
-          ]
+          "answers": {
+            "a1": "Tes pendengaran",
+            "a2": "Pembacaan tekanan darah saja",
+            "a3": "Tes rasa",
+            "a4": "Pemeriksaan mata melebar yang komprehensif"
+          }
         },
         "macular-q9": {
           "question": "Apa respons paling aman terhadap penglihatan yang memburuk secara tiba-tiba atau area sentral yang kabur atau kosong?",
           "headerLabel": "KAPAN HARUS BERTINDAK",
-          "answers": [
-            "Carilah nasihat perawatan mata profesional segera",
-            "Tunggu beberapa bulan tanpa menyebutkannya",
-            "Tingkatkan kecerahan layar dan anggap sudah diperbaiki",
-            "Andalkan hanya pada kuis online"
-          ]
+          "answers": {
+            "a1": "Carilah nasihat perawatan mata profesional segera",
+            "a2": "Tunggu beberapa bulan tanpa menyebutkannya",
+            "a3": "Tingkatkan kecerahan layar dan anggap sudah diperbaiki",
+            "a4": "Andalkan hanya pada kuis online"
+          }
         },
         "macular-q10": {
           "question": "Berapa skor Anda pada tantangan online ini?",
           "headerLabel": "PEMERIKSAAN REALITAS AKHIR",
-          "answers": [
-            "Apakah retina Anda sehat",
-            "Hanya bagaimana kinerja Anda dalam sepuluh pertanyaan ini",
-            "Apakah Anda memerlukan perawatan tertentu",
-            "Apakah Anda bisa mengesampingkan AMD"
-          ]
+          "answers": {
+            "a1": "Apakah retina Anda sehat",
+            "a2": "Hanya bagaimana kinerja Anda dalam sepuluh pertanyaan ini",
+            "a3": "Apakah Anda memerlukan perawatan tertentu",
+            "a4": "Apakah Anda bisa mengesampingkan AMD"
+          }
         }
       }
     }

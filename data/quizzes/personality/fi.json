@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Mikä maa vastaa persoonallisuuttasi?",
   "eyebrow": "IDEALINEN MAASIT",
   "summary": "Kymmenen elämäntapavalintaa paljastavat, vastaako persoonallisuutesi eniten Italiaa, Japania, Australiaa vai Ruotsia.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Jokapäiväiset valintasi voivat viitata yhteen maahan, joka sopii sinulle paremmin kuin muut. Kymmenen nopeaa kysymystä paljastavat lähimmän ottelusi.",
     "cta": "Löysin kotimaani"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdevisa on muokattu linkitetystä Times of India -maapersoonallisuushaasteesta. Jokainen vaihtoehto lisää signaalin Italialle, Japanille, Australialle tai Ruotsille.\n\nValitse vastaus, joka tuntuu luontevimmalta mieluummin kuin se, joka kuulostaa vaikuttavimmalta. Vahvin kokonaismallisi määrittää lopullisen maakohtaisen ottelun.\n\nTulos kuvaa leikkisän elämäntavan arkkityyppiä, ei kansallisuutta, syntyperää, kansalaisuutta, kulttuuri-identiteettiä tai siirtosuositusta. Lähdekysymysten käsitteet ja kuvat on kopioitu Times of Indiasta tämän tietokilpailun tilaajan sivuston omistajan luvalla.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen nopeaan kysymykseen tottumuksistasi ja mieltymyksistäsi.",
         "Valitse vaihtoehto, joka tuntuu sinusta eniten ajattelematta sitä liikaa.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Maa-ottelu",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Henkilötiedot",
@@ -126,9 +122,7 @@
       "portraitAlt": "Luonnonkaunis kuva {profile}",
       "disclaimer": "Vain viihdettä ja itsetutkiskelua varten. Tämä tulos on leikkisä elämäntapaottelu, ei lausunto kansallisuudesta, kulttuuri-identiteetistä tai siitä, missä sinun pitäisi asua."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Ystävät tervehtivät toisiaan lämpimästi"
           },
           "question": "Miten tervehdit uutta?",
-          "answers": [
-            "Lämmin halaus",
-            "Ystävällinen aalto",
-            "Kunnioittava kumarrus",
-            "Rento nyökkäys"
-          ],
+          "answers": {
+            "a1": "Lämmin halaus",
+            "a2": "Ystävällinen aalto",
+            "a3": "Kunnioittava kumarrus",
+            "a4": "Rento nyökkäys"
+          },
           "headerLabel": "ENSIMMÄINEN VAIKUTELMA"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Kirkas maisema vaihtelevan taivaan alla"
           },
           "question": "Millainen sää tekee sinut onnelliseksi?",
-          "answers": [
-            "Lämpimiä tuulia",
-            "Kirkas auringonpaiste",
-            "Kylmä ilma",
-            "Viileä ja raikas"
-          ],
+          "answers": {
+            "a1": "Lämpimiä tuulia",
+            "a2": "Kirkas auringonpaiste",
+            "a3": "Kylmä ilma",
+            "a4": "Viileä ja raikas"
+          },
           "headerLabel": "TÄYDELLINEN SÄÄ"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Rento sunnuntaimaisema ulkona"
           },
           "question": "Miten yleensä vietät sunnuntaisi?",
-          "answers": [
-            "Seikkailuja ulkona",
-            "Viihtyisä sisällä",
-            "Hiljainen heijastus",
-            "Pitkät perheen ruokailut"
-          ],
+          "answers": {
+            "a1": "Seikkailuja ulkona",
+            "a2": "Viihtyisä sisällä",
+            "a3": "Hiljainen heijastus",
+            "a4": "Pitkät perheen ruokailut"
+          },
           "headerLabel": "SUNNUNTAI TYYLI"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Aamukahvit rauhallisen ikkunan vieressä"
           },
           "question": "Mikä on ihanteellinen tapasi aloittaa päivä?",
-          "answers": [
-            "Vahvaa kahvia",
-            "Lempeä kävely",
-            "Meren ilmaa",
-            "Rauhallinen meditaatio"
-          ],
+          "answers": {
+            "a1": "Vahvaa kahvia",
+            "a2": "Lempeä kävely",
+            "a3": "Meren ilmaa",
+            "a4": "Rauhallinen meditaatio"
+          },
           "headerLabel": "AAMURYTMI"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Värikäs pöytä täynnä erilaisia ruokia"
           },
           "question": "Millainen ruoka innostaa sinua eniten?",
-          "answers": [
-            "Hienostuneita makuja",
-            "Yksinkertaista ja sydämellistä",
-            "Tuoreet merenelävät",
-            "Mukavuus klassikoita"
-          ],
+          "answers": {
+            "a1": "Hienostuneita makuja",
+            "a2": "Yksinkertaista ja sydämellistä",
+            "a3": "Tuoreet merenelävät",
+            "a4": "Mukavuus klassikoita"
+          },
           "headerLabel": "RUOKAVAISTE"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Gallerian seinä erilaisilla taidetyyleillä"
           },
           "question": "Millainen taide houkuttelee sinua?",
-          "answers": [
-            "Ajattomia klassikoita",
-            "Puhdasta yksinkertaisuutta",
-            "Rohkea ilme",
-            "Herkkiä yksityiskohtia"
-          ],
+          "answers": {
+            "a1": "Ajattomia klassikoita",
+            "a2": "Puhdasta yksinkertaisuutta",
+            "a3": "Rohkea ilme",
+            "a4": "Herkkiä yksityiskohtia"
+          },
           "headerLabel": "LUOVA MAKU"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Neljä erilaista juomaa järjestettynä yhdessä"
           },
           "question": "Minkä juoman valitset?",
-          "answers": [
-            "Kylmä olut",
-            "Viini",
-            "Kuuma kaakao",
-            "Vihreä tee"
-          ],
+          "answers": {
+            "a1": "Kylmä olut",
+            "a2": "Viini",
+            "a3": "Kuuma kaakao",
+            "a4": "Vihreä tee"
+          },
           "headerLabel": "VALINNAN JUOMA"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Ystävät juhlivat erityistä tilaisuutta"
           },
           "question": "Miten sinä haluat juhlia suuria hetkiä?",
-          "answers": [
-            "Äänekäs ja eloisa",
-            "Intiimi ja kodikas",
-            "Rentouttavaa hauskaa",
-            "Merkittäviä rituaaleja"
-          ],
+          "answers": {
+            "a1": "Äänekäs ja eloisa",
+            "a2": "Intiimi ja kodikas",
+            "a3": "Rentouttavaa hauskaa",
+            "a4": "Merkittäviä rituaaleja"
+          },
           "headerLabel": "JUHLATTYYLI"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Montaasi metsiä, rannikkoa, temppeleitä ja maaseutua"
           },
           "question": "Mikä maisema tuntuu kodilta eniten?",
-          "answers": [
-            "Hiljaiset metsät",
-            "Avoin rantaviiva",
-            "Historialliset temppelit",
-            "Pyörivä maaseutu"
-          ],
+          "answers": {
+            "a1": "Hiljaiset metsät",
+            "a2": "Avoin rantaviiva",
+            "a3": "Historialliset temppelit",
+            "a4": "Pyörivä maaseutu"
+          },
           "headerLabel": "KODIN TUNNUS"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Matkustaja katselee kaukaisen maiseman yli"
           },
           "question": "Mikä on matkustustyylisi?",
-          "answers": [
-            "Aktiivinen tutkiminen",
-            "Hidasta vaeltelua",
-            "Kulttuurikylpy",
-            "Ikonisia nähtävyyksiä"
-          ],
+          "answers": {
+            "a1": "Aktiivinen tutkiminen",
+            "a2": "Hidasta vaeltelua",
+            "a3": "Kulttuurikylpy",
+            "a4": "Ikonisia nähtävyyksiä"
+          },
           "headerLabel": "LOPULLINEN KOHDE"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 1/10 Can Pass This Catholic Trivia Quiz",
   "eyebrow": "THE CATHOLIC KNOWLEDGE TEST",
   "summary": "Ten questions test your knowledge of Catholic worship, Scripture, prayer and the liturgical year.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "The first questions may feel familiar, but the final few expose gaps even regular churchgoers miss.",
     "cta": "Start Quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This worldwide-English entertainment quiz contains ten questions about Catholic worship, sacraments, Scripture, prayer and the liturgical year.\n\nChoose the single best answer each time. The questions focus on widely recognised Catholic teaching and practice rather than local customs.\n\nYour score measures performance on this short trivia set only and says nothing about anyone's faith, devotion or standing within the Church.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Read each Catholic trivia question carefully.",
         "Choose one answer from the four options.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Catholic trivia",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Catholic Trivia",
@@ -30,33 +26,60 @@
         "preAdCopy": "Your Catholic trivia score and complete answer review are ready.",
         "preAdChecks": [
           "10 answers checked",
-          "Five knowledge areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Five knowledge areas compared"
+        ]
       }
     }
   },
   "results": {
     "name": "YOUR CATHOLIC TRIVIA SCORE",
     "profiles": {
-      "profile-1": { "tier": "90–100%", "title": "The Catholic Scholar", "copy": "You moved confidently through worship, Scripture, prayer and the Church year. Very few Catholic trivia questions are likely to catch you out." },
-      "profile-2": { "tier": "70–89%", "title": "The Parish Expert", "copy": "Your Catholic knowledge is broad and dependable. Only one or two of the more detailed questions stood between you and a perfect score." },
-      "profile-3": { "tier": "50–69%", "title": "The Informed Observer", "copy": "You recognised many core Catholic beliefs and practices. The full review fills in a few details that are easy to overlook." },
-      "profile-4": { "tier": "30–49%", "title": "The Curious Learner", "copy": "Some traditions were familiar while others proved surprisingly specific. Your answer review gives you the complete picture." },
-      "profile-5": { "tier": "Below 30%", "title": "The Open Door", "copy": "This short test found plenty of room for discovery. The final review reveals every answer and the traditions behind the questions." }
+      "profile-1": {
+        "tier": "90–100%",
+        "title": "The Catholic Scholar",
+        "copy": "You moved confidently through worship, Scripture, prayer and the Church year. Very few Catholic trivia questions are likely to catch you out."
+      },
+      "profile-2": {
+        "tier": "70–89%",
+        "title": "The Parish Expert",
+        "copy": "Your Catholic knowledge is broad and dependable. Only one or two of the more detailed questions stood between you and a perfect score."
+      },
+      "profile-3": {
+        "tier": "50–69%",
+        "title": "The Informed Observer",
+        "copy": "You recognised many core Catholic beliefs and practices. The full review fills in a few details that are easy to overlook."
+      },
+      "profile-4": {
+        "tier": "30–49%",
+        "title": "The Curious Learner",
+        "copy": "Some traditions were familiar while others proved surprisingly specific. Your answer review gives you the complete picture."
+      },
+      "profile-5": {
+        "tier": "Below 30%",
+        "title": "The Open Door",
+        "copy": "This short test found plenty of room for discovery. The final review reveals every answer and the traditions behind the questions."
+      }
     },
     "dimensions": {
-      "dimension-1": { "label": "Worship and sacraments" },
-      "dimension-2": { "label": "Church leadership" },
-      "dimension-3": { "label": "Liturgical year" },
-      "dimension-4": { "label": "Prayer and devotion" },
-      "dimension-5": { "label": "Scripture" }
+      "dimension-1": {
+        "label": "Worship and sacraments"
+      },
+      "dimension-2": {
+        "label": "Church leadership"
+      },
+      "dimension-3": {
+        "label": "Liturgical year"
+      },
+      "dimension-4": {
+        "label": "Prayer and devotion"
+      },
+      "dimension-5": {
+        "label": "Scripture"
+      }
     },
     "score": {
       "passed": "You passed the Catholic trivia challenge!",
       "finished": "Catholic trivia challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest knowledge area",
       "trickiest": "Trickiest knowledge area",
       "bestRound": "Best section",
@@ -69,24 +92,113 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
     "stage-1": {
       "title": "Catholic Trivia",
       "questions": {
-        "catholic-q1": { "question": "What is the name of the Catholic Church's central act of worship?", "answers": ["The Mass", "The Rosary", "The Angelus", "The Stations of the Cross"], "headerLabel": "WORSHIP" },
-        "catholic-q2": { "question": "The Pope is also the bishop of which city?", "answers": ["Jerusalem", "Rome", "Assisi", "Bethlehem"], "headerLabel": "CHURCH LEADERSHIP" },
-        "catholic-q3": { "question": "How many sacraments does the Catholic Church recognise?", "answers": ["Five", "Six", "Seven", "Eight"], "headerLabel": "SACRAMENTS" },
-        "catholic-q4": { "question": "Which season of the Church year comes immediately before Christmas?", "answers": ["Lent", "Eastertide", "Ordinary Time", "Advent"], "headerLabel": "CHURCH YEAR" },
-        "catholic-q5": { "question": "Which set of Rosary mysteries was introduced by Pope John Paul II in 2002?", "answers": ["The Luminous Mysteries", "The Joyful Mysteries", "The Sorrowful Mysteries", "The Glorious Mysteries"], "headerLabel": "THE ROSARY" },
-        "catholic-q6": { "question": "Which book comes first in the Catholic Bible?", "answers": ["Exodus", "Genesis", "Psalms", "Matthew"], "headerLabel": "SCRIPTURE" },
-        "catholic-q7": { "question": "Which sacrament strengthens baptismal grace and is associated with the gifts of the Holy Spirit?", "answers": ["Anointing of the Sick", "Holy Orders", "Confirmation", "Matrimony"], "headerLabel": "FAITH & PRACTICE" },
-        "catholic-q8": { "question": "How many Stations of the Cross are traditionally observed?", "answers": ["Seven", "Ten", "Twelve", "Fourteen"], "headerLabel": "DEVOTION" },
-        "catholic-q9": { "question": "In the Latin Catholic tradition, which day begins Lent?", "answers": ["Ash Wednesday", "Palm Sunday", "Good Friday", "Pentecost"], "headerLabel": "LITURGICAL CALENDAR" },
-        "catholic-q10": { "question": "What event does Pentecost commemorate?", "answers": ["The Nativity of Jesus", "The descent of the Holy Spirit", "The Baptism of Jesus", "The Transfiguration"], "headerLabel": "FINAL QUESTION" }
+        "catholic-q1": {
+          "question": "What is the name of the Catholic Church's central act of worship?",
+          "answers": {
+            "a1": "The Mass",
+            "a2": "The Rosary",
+            "a3": "The Angelus",
+            "a4": "The Stations of the Cross"
+          },
+          "headerLabel": "WORSHIP"
+        },
+        "catholic-q2": {
+          "question": "The Pope is also the bishop of which city?",
+          "answers": {
+            "a1": "Jerusalem",
+            "a2": "Rome",
+            "a3": "Assisi",
+            "a4": "Bethlehem"
+          },
+          "headerLabel": "CHURCH LEADERSHIP"
+        },
+        "catholic-q3": {
+          "question": "How many sacraments does the Catholic Church recognise?",
+          "answers": {
+            "a1": "Five",
+            "a2": "Six",
+            "a3": "Seven",
+            "a4": "Eight"
+          },
+          "headerLabel": "SACRAMENTS"
+        },
+        "catholic-q4": {
+          "question": "Which season of the Church year comes immediately before Christmas?",
+          "answers": {
+            "a1": "Lent",
+            "a2": "Eastertide",
+            "a3": "Ordinary Time",
+            "a4": "Advent"
+          },
+          "headerLabel": "CHURCH YEAR"
+        },
+        "catholic-q5": {
+          "question": "Which set of Rosary mysteries was introduced by Pope John Paul II in 2002?",
+          "answers": {
+            "a1": "The Luminous Mysteries",
+            "a2": "The Joyful Mysteries",
+            "a3": "The Sorrowful Mysteries",
+            "a4": "The Glorious Mysteries"
+          },
+          "headerLabel": "THE ROSARY"
+        },
+        "catholic-q6": {
+          "question": "Which book comes first in the Catholic Bible?",
+          "answers": {
+            "a1": "Exodus",
+            "a2": "Genesis",
+            "a3": "Psalms",
+            "a4": "Matthew"
+          },
+          "headerLabel": "SCRIPTURE"
+        },
+        "catholic-q7": {
+          "question": "Which sacrament strengthens baptismal grace and is associated with the gifts of the Holy Spirit?",
+          "answers": {
+            "a1": "Anointing of the Sick",
+            "a2": "Holy Orders",
+            "a3": "Confirmation",
+            "a4": "Matrimony"
+          },
+          "headerLabel": "FAITH & PRACTICE"
+        },
+        "catholic-q8": {
+          "question": "How many Stations of the Cross are traditionally observed?",
+          "answers": {
+            "a1": "Seven",
+            "a2": "Ten",
+            "a3": "Twelve",
+            "a4": "Fourteen"
+          },
+          "headerLabel": "DEVOTION"
+        },
+        "catholic-q9": {
+          "question": "In the Latin Catholic tradition, which day begins Lent?",
+          "answers": {
+            "a1": "Ash Wednesday",
+            "a2": "Palm Sunday",
+            "a3": "Good Friday",
+            "a4": "Pentecost"
+          },
+          "headerLabel": "LITURGICAL CALENDAR"
+        },
+        "catholic-q10": {
+          "question": "What event does Pentecost commemorate?",
+          "answers": {
+            "a1": "The Nativity of Jesus",
+            "a2": "The descent of the Holy Spirit",
+            "a3": "The Baptism of Jesus",
+            "a4": "The Transfiguration"
+          },
+          "headerLabel": "FINAL QUESTION"
+        }
       }
     }
   }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Väčšina dospelých nemôže zložiť túto prijímaciu skúšku sociálneho pracovníka",
   "eyebrow": "TEST ĽUDIA A PRAX",
   "summary": "Desať otázok testuje počúvanie, etiku, ochranu a rozhodnutia o podpore v reálnom svete.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Prvé otázky testujú empatiu. Potom sa situácie presunú do dôvernosti, hraníc a rozhodnutí, kde záleží na každom detaile.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto zábavná výzva s desiatimi otázkami využíva široké princípy sociálnej práce, ktoré platia v anglicky hovoriacich krajinách úrovne 1. Prechádza od počúvania a súhlasu k dôvernosti, kultúrnej pokore, ochrane, dokumentácii a profesionálnym hraniciam.\n\nVyberte jednu odpoveď pre každú situáciu. Správnosť zostáva skrytá až do konečného odhalenia, kde je k dispozícii kompletná kontrola odpovede na odomknutie.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Odpovedzte na desať stále náročnejších cvičných scenárov.",
         "Vyberte jedinú najzodpovednejšiu všeobecnú odpoveď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupná výzva sociálneho pracovníka",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Prijímacia skúška sociálneho pracovníka",
@@ -30,10 +26,8 @@
         "preAdCopy": "Bolo skontrolovaných desať vašich odpovedí a vaše skóre profesionálneho úsudku je pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnalo sa päť praktických oblastí",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnalo sa päť praktických oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Uspeli ste vo vstupnej výzve sociálneho pracovníka!",
       "finished": "Vstupná výzva sociálneho pracovníka dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia cvičebná oblasť",
       "trickiest": "Najnáročnejšia oblasť cvičenia",
       "bestRound": "Najlepšia sekcia",
@@ -99,8 +92,7 @@
         "snapshot": "Čo naznačuje váš výsledok",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Ktorá úvodná otázka s najväčšou pravdepodobnosťou pomôže človeku vysvetliť, akú podporu chce?",
-          "answers": [
-            "S čím by ste dnes najradšej pomohli?",
-            "Prečo si to dovolil?",
-            "Súhlasíte s tým, že môj plán je najlepší?",
-            "Môžeme preskočiť pozadie a vyplniť formulár?"
-          ],
+          "answers": {
+            "a1": "S čím by ste dnes najradšej pomohli?",
+            "a2": "Prečo si to dovolil?",
+            "a3": "Súhlasíte s tým, že môj plán je najlepší?",
+            "a4": "Môžeme preskočiť pozadie a vyplniť formulár?"
+          },
           "headerLabel": "AKTÍVNE POČÚVANIE"
         },
         "socialworker-q2": {
           "question": "Čo je nevyhnutné pre informovaný súhlas?",
-          "answers": [
-            "Profesionál, ktorý bez diskusie rozhodne, čo je najlepšie",
-            "Osoba rozumie príslušným informáciám a dobrovoľne súhlasí",
-            "Podpísaný formulár v každej možnej situácii",
-            "Dohoda od člena rodiny namiesto osoby"
-          ],
+          "answers": {
+            "a1": "Profesionál, ktorý bez diskusie rozhodne, čo je najlepšie",
+            "a2": "Osoba rozumie príslušným informáciám a dobrovoľne súhlasí",
+            "a3": "Podpísaný formulár v každej možnej situácii",
+            "a4": "Dohoda od člena rodiny namiesto osoby"
+          },
           "headerLabel": "SÚHLAS"
         },
         "socialworker-q3": {
           "question": "Ktoré vyhlásenie o dôvernosti je najpresnejšie?",
-          "answers": [
-            "Informácie nemožno nikdy z akéhokoľvek dôvodu zdieľať",
-            "Všetko možno zdieľať s kýmkoľvek v tíme podpory",
-            "Súkromie je chránené, ale vážne obavy o bezpečnosť alebo zákonné povinnosti si môžu vyžadovať obmedzené zdieľanie",
-            "Dôvernosť končí po prvom stretnutí"
-          ],
+          "answers": {
+            "a1": "Informácie nemožno nikdy z akéhokoľvek dôvodu zdieľať",
+            "a2": "Všetko možno zdieľať s kýmkoľvek v tíme podpory",
+            "a3": "Súkromie je chránené, ale vážne obavy o bezpečnosť alebo zákonné povinnosti si môžu vyžadovať obmedzené zdieľanie",
+            "a4": "Dôvernosť končí po prvom stretnutí"
+          },
           "headerLabel": "DÔVERNOSŤ"
         },
         "socialworker-q4": {
           "question": "Ktorá odpoveď najlepšie demonštruje kultúrnu pokoru?",
-          "answers": [
-            "Predpokladajme, že všetci z rovnakého prostredia majú podobné potreby",
-            "Vyhnite sa diskusii o kultúre za každých okolností",
-            "Pred vypočutím perspektívy osoby použite štandardný plán",
-            "Spýtajte sa na preferencie danej osoby a buďte otvorení oprave svojich predpokladov"
-          ],
+          "answers": {
+            "a1": "Predpokladajme, že všetci z rovnakého prostredia majú podobné potreby",
+            "a2": "Vyhnite sa diskusii o kultúre za každých okolností",
+            "a3": "Pred vypočutím perspektívy osoby použite štandardný plán",
+            "a4": "Spýtajte sa na preferencie danej osoby a buďte otvorení oprave svojich predpokladov"
+          },
           "headerLabel": "KULTÚRNA POKORA"
         },
         "socialworker-q5": {
           "question": "Čo je najpravdepodobnejšie preskúmať hodnotenie založené na silných stránkach?",
-          "answers": [
-            "Schopnosti, zdroje, vzťahy a ciele osoby, ako aj jej potreby",
-            "Iba problémy uvedené v odporúčaní",
-            "Či daný človek súhlasí s každým odborným názorom",
-            "Ktorá služba vyžaduje najmenej dokumentácie"
-          ],
+          "answers": {
+            "a1": "Schopnosti, zdroje, vzťahy a ciele osoby, ako aj jej potreby",
+            "a2": "Iba problémy uvedené v odporúčaní",
+            "a3": "Či daný človek súhlasí s každým odborným názorom",
+            "a4": "Ktorá služba vyžaduje najmenej dokumentácie"
+          },
           "headerLabel": "PRAX ZALOŽENÁ NA SILE"
         },
         "socialworker-q6": {
           "question": "Osoba poberajúca podporu požiada svojho sociálneho pracovníka o osobnú pôžičku. Aká je najlepšia všeobecná odpoveď?",
-          "answers": [
-            "Požičajte si malú sumu, ale nechajte ju v súkromí",
-            "Udržujte si profesionálne hranice a skúmajte vhodné zdroje praktickej podpory",
-            "Požiadajte inú osobu, ktorá dostáva podporu, aby vám ju poskytla",
-            "Okamžite ukončite všetku podporu bez vysvetlenia"
-          ],
+          "answers": {
+            "a1": "Požičajte si malú sumu, ale nechajte ju v súkromí",
+            "a2": "Udržujte si profesionálne hranice a skúmajte vhodné zdroje praktickej podpory",
+            "a3": "Požiadajte inú osobu, ktorá dostáva podporu, aby vám ju poskytla",
+            "a4": "Okamžite ukončite všetku podporu bez vysvetlenia"
+          },
           "headerLabel": "PROFESIONÁLNE HRANICE"
         },
         "socialworker-q7": {
           "question": "Konverzácia vyvoláva vierohodné obavy, že dieťa alebo zraniteľná dospelá osoba môžu byť nebezpeční. Aký je najlepší všeobecný ďalší krok?",
-          "answers": [
-            "Predtým, ako to niekomu poviete, preskúmajte každý detail sám",
-            "Ignorujte to, pokiaľ nie sú dostupné fyzické dôkazy",
-            "Zaznamenajte problém a okamžite postupujte podľa príslušného postupu ochrany alebo hlásenia",
-            "Zverejnite anonymný účet online a požiadajte o radu"
-          ],
+          "answers": {
+            "a1": "Predtým, ako to niekomu poviete, preskúmajte každý detail sám",
+            "a2": "Ignorujte to, pokiaľ nie sú dostupné fyzické dôkazy",
+            "a3": "Zaznamenajte problém a okamžite postupujte podľa príslušného postupu ochrany alebo hlásenia",
+            "a4": "Zverejnite anonymný účet online a požiadajte o radu"
+          },
           "headerLabel": "ZABEZPEČENIE"
         },
         "socialworker-q8": {
           "question": "Ktorá prípadová poznámka je vo všeobecnosti najvhodnejšia?",
-          "answers": [
-            "Oneskorená poznámka založená hlavne na pamäti",
-            "Osobný názor na charakter človeka",
-            "Každý detail z celého dňa pracovníka",
-            "Včasný, relevantný a vecný záznam, ktorý odlišuje pozorovanie od názoru"
-          ],
+          "answers": {
+            "a1": "Oneskorená poznámka založená hlavne na pamäti",
+            "a2": "Osobný názor na charakter človeka",
+            "a3": "Každý detail z celého dňa pracovníka",
+            "a4": "Včasný, relevantný a vecný záznam, ktorý odlišuje pozorovanie od názoru"
+          },
           "headerLabel": "VEDENIE ZÁZNAMU"
         },
         "socialworker-q9": {
           "question": "Pri práci s inými odborníkmi, ktorý prístup zdieľania informácií je vo všeobecnosti najsilnejší?",
-          "answers": [
-            "Zdieľajte relevantné informácie zákonne, zapojte osobu, ak je to možné, a neprezrádzajte viac, ako je potrebné",
-            "Pošlite celý záznam automaticky do každej služby",
-            "Nikdy nezdieľajte informácie, aj keď sa na vás vzťahuje vážna bezpečnostná povinnosť",
-            "Spoľahnite sa len na neformálne verbálne aktualizácie"
-          ],
+          "answers": {
+            "a1": "Zdieľajte relevantné informácie zákonne, zapojte osobu, ak je to možné, a neprezrádzajte viac, ako je potrebné",
+            "a2": "Pošlite celý záznam automaticky do každej služby",
+            "a3": "Nikdy nezdieľajte informácie, aj keď sa na vás vzťahuje vážna bezpečnostná povinnosť",
+            "a4": "Spoľahnite sa len na neformálne verbálne aktualizácie"
+          },
           "headerLabel": "SPOLUPRACOVNÁ PRAX"
         },
         "socialworker-q10": {
           "question": "Schopný dospelý chápe možnosti, ale odmieta dobrovoľnícku službu. Aká je najlepšia všeobecná odpoveď?",
-          "answers": [
-            "Tlačte na nich, kým nebudú súhlasiť",
-            "Overte si porozumenie a okamžitú bezpečnosť, vysvetlite dostupné možnosti a rešpektujte informovaný výber, pokiaľ neplatí iná zákonná povinnosť",
-            "Kontaktujte ich zamestnávateľa, aby ich presvedčil",
-            "Odstráňte každú budúcu cestu späť na podporu"
-          ],
+          "answers": {
+            "a1": "Tlačte na nich, kým nebudú súhlasiť",
+            "a2": "Overte si porozumenie a okamžitú bezpečnosť, vysvetlite dostupné možnosti a rešpektujte informovaný výber, pokiaľ neplatí iná zákonná povinnosť",
+            "a3": "Kontaktujte ich zamestnávateľa, aby ich presvedčil",
+            "a4": "Odstráňte každú budúcu cestu späť na podporu"
+          },
           "headerLabel": "ZÁVEREČNÁ OTÁZKA O AUTONÓMII"
         }
       }

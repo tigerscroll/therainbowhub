@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pouze 6 % dospělých může složit tuto přijímací zkoušku k letectvu",
   "eyebrow": "TEST SCHOPNOSTI VZDUCHOVÉ SÍLY",
   "summary": "Deset otázek testuje principy letu, přístroje, navigaci a leteckou fyziku.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Základy kokpitu se zdají snadné. Poté se zkouška přesune do navigace, ovládání a fyziky letu.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavní výzva s deseti otázkami využívá principy letectví, které platí napříč vzdušnými silami a civilními lety po celém světě. Přesouvá se ze čtyř letových sil do přístrojů v kokpitu, směrového jazyka, ovládání letadla a základního aerodynamického uvažování.\n\nVyberte jednu odpověď pro každou otázku. Správnost zůstává skryta až do konečného odhalení, kde je k dispozici kompletní kontrola odpovědí k odemknutí.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších leteckých otázek.",
         "Vyberte jednu ze čtyř odpovědí bez cizí pomoci.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupní výzva pro letectvo",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Přijímací zkouška k letectvu",
@@ -30,10 +26,8 @@
         "preAdCopy": "Deset vašich odpovědí bylo zkontrolováno a vaše skóre vzdušné síly je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno pět leteckých oblastí",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno pět leteckých oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro letectvo!",
       "finished": "Vstupní výzva letectva dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější letecká oblast",
       "trickiest": "Nejošklivější oblast letectví",
       "bestRound": "Nejlepší sekce",
@@ -99,8 +92,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Která ze čtyř letových sil působí vzhůru proti hmotnosti?",
-          "answers": [
-            "Vztlak",
-            "Aerodynamický odpor",
-            "Tah",
-            "Setrvačnost"
-          ],
+          "answers": {
+            "a1": "Vztlak",
+            "a2": "Aerodynamický odpor",
+            "a3": "Tah",
+            "a4": "Setrvačnost"
+          },
           "headerLabel": "ZÁKLADY LETU"
         },
         "airforce-q2": {
           "question": "Který přístroj v kokpitu ukazuje výšku letadla?",
-          "answers": [
-            "Indikátor rychlosti vzduchu",
-            "Výškoměr",
-            "Otočte koordinátora",
-            "Vertikální ukazatel rychlosti"
-          ],
+          "answers": {
+            "a1": "Indikátor rychlosti vzduchu",
+            "a2": "Výškoměr",
+            "a3": "Otočte koordinátora",
+            "a4": "Vertikální ukazatel rychlosti"
+          },
           "headerLabel": "NÁSTROJE KOKPITU"
         },
         "airforce-q3": {
           "question": "Které primární ovládací prvky letu vedou k pohybu letadla?",
-          "answers": [
-            "Výšková kormidla",
-            "Kormidlo",
-            "Křidélka",
-            "Klapky"
-          ],
+          "answers": {
+            "a1": "Výšková kormidla",
+            "a2": "Kormidlo",
+            "a3": "Křidélka",
+            "a4": "Klapky"
+          },
           "headerLabel": "ŘÍZENÍ LETU"
         },
         "airforce-q4": {
           "question": "Jakým směrem přibližně ukazuje magnetický kurz 270 stupňů?",
-          "answers": [
-            "Sever",
-            "Východ",
-            "Jih",
-            "Západ"
-          ],
+          "answers": {
+            "a1": "Sever",
+            "a2": "Východ",
+            "a3": "Jih",
+            "a4": "Západ"
+          },
           "headerLabel": "NAVIGACE"
         },
         "airforce-q5": {
           "question": "Machovo číslo porovnává rychlost letadla s čím?",
-          "answers": [
-            "Místní rychlost zvuku",
-            "Rychlost světla",
-            "Rotace Země",
-            "Rychlost okolního větru"
-          ],
+          "answers": {
+            "a1": "Místní rychlost zvuku",
+            "a2": "Rychlost světla",
+            "a3": "Rotace Země",
+            "a4": "Rychlost okolního větru"
+          },
           "headerLabel": "RYCHLOST A ZVUK"
         },
         "airforce-q6": {
           "question": "Která strana letadla se v letectví nazývá přístav?",
-          "answers": [
-            "Správně",
-            "Vlevo",
-            "Přední",
-            "Zadní"
-          ],
+          "answers": {
+            "a1": "Správně",
+            "a2": "Vlevo",
+            "a3": "Přední",
+            "a4": "Zadní"
+          },
           "headerLabel": "LETECKÝ JAZYK"
         },
         "airforce-q7": {
           "question": "Přistávací dráha s číslem 09 je orientována přibližně ke kterému směru kompasu?",
-          "answers": [
-            "Sever",
-            "Jih",
-            "Východ",
-            "Západ"
-          ],
+          "answers": {
+            "a1": "Sever",
+            "a2": "Jih",
+            "a3": "Východ",
+            "a4": "Západ"
+          },
           "headerLabel": "UVÁDĚNÍ DRÁHY"
         },
         "airforce-q8": {
           "question": "Jak se nazývá úhel mezi čárou tětivy profilu a přicházejícím prouděním vzduchu?",
-          "answers": [
-            "Úhel náklonu",
-            "Úhel klouzání",
-            "Postoj na hřišti",
-            "Úhel náběhu"
-          ],
+          "answers": {
+            "a1": "Úhel náklonu",
+            "a2": "Úhel klouzání",
+            "a3": "Postoj na hřišti",
+            "a4": "Úhel náběhu"
+          },
           "headerLabel": "AERODYNAMIKA"
         },
         "airforce-q9": {
           "question": "Který z Newtonových zákonů lze nejpříměji vysvětlit tah trysky?",
-          "answers": [
-            "Třetí zákon",
-            "První zákon",
-            "Gravitační zákon",
-            "Druhý zákon termodynamiky"
-          ],
+          "answers": {
+            "a1": "Třetí zákon",
+            "a2": "První zákon",
+            "a3": "Gravitační zákon",
+            "a4": "Druhý zákon termodynamiky"
+          },
           "headerLabel": "FYZIKA POHONU"
         },
         "airforce-q10": {
           "question": "Pokud hustota vzduchu zůstane konstantní a rychlost vzduchu se zdvojnásobí, změní se přibližně o jaký faktor dynamický tlak?",
-          "answers": [
-            "Dvě",
-            "Čtyři",
-            "Osm",
-            "To se nemění"
-          ],
+          "answers": {
+            "a1": "Dvě",
+            "a2": "Čtyři",
+            "a3": "Osm",
+            "a4": "To se nemění"
+          },
           "headerLabel": "ZÁVĚREČNÁ OTÁZKA O SCHOPNOSTI"
         }
       }

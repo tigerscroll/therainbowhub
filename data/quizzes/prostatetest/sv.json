@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Snabbt test för prostatacancer",
   "eyebrow": "10-FRÅGOR PROSTATAKONTROLL",
   "summary": "Tio personliga frågor om prostataförändringar och riskkontext, följt av en försiktig nästa-stegsprofil.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Har du märkt förändringar som är lätta att avfärda som åldrande? Svara på 10 snabba frågor om symtom och riskfaktorer som kan ha betydelse.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna personliga check på tio frågor frågar om urinförändringar, blod, obehag, ihållande smärta och relevant riskkontext. Den grupperar dina svar i en försiktig nästa steg-profil; det beräknar inte din sannolikhet för cancer.\n\nProstatacancer kan inte ge några symtom i början, och urinförändringar har ofta icke-cancerösa orsaker såsom godartad prostataförstoring, infektion eller inflammation. Nya, ihållande eller förvärrade förändringar bör fortfarande diskuteras med en kvalificerad vårdpersonal.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Välj det svar som bäst matchar din senaste upplevelse.",
         "Tänk på förändringar som är nya, ihållande eller blir värre.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Personlig prostatakontroll",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Personlig check",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Har din urinström förändrats nyligen?",
           "headerLabel": "DITT URINFLÖDE",
-          "answers": [
-            "Ingen märkbar förändring",
-            "Det varierar då och då",
-            "Den är nyligen svag eller stannar och startar",
-            "Det blir värre eller påverkar vardagen"
-          ]
+          "answers": {
+            "a1": "Ingen märkbar förändring",
+            "a2": "Det varierar då och då",
+            "a3": "Den är nyligen svag eller stannar och startar",
+            "a4": "Det blir värre eller påverkar vardagen"
+          }
         },
         "prostate-test-q2": {
           "question": "Har du svårare att börja kissa?",
           "headerLabel": "BÖRJAR URINERA",
-          "answers": [
-            "Nej",
-            "Ibland, men det har inte hållit i sig",
-            "Ja, detta är en ny eller ihållande förändring",
-            "Ja, och det blir svårare"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Ibland, men det har inte hållit i sig",
+            "a3": "Ja, detta är en ny eller ihållande förändring",
+            "a4": "Ja, och det blir svårare"
+          }
         },
         "prostate-test-q3": {
           "question": "Kissar du oftare, speciellt under natten?",
           "headerLabel": "FREKVENS OCH NATT",
-          "answers": [
-            "Ingen förändring",
-            "Bara ibland",
-            "Ja, märkbart mer än tidigare",
-            "Ja, och det stör regelbundet sömnen eller vardagen"
-          ]
+          "answers": {
+            "a1": "Ingen förändring",
+            "a2": "Bara ibland",
+            "a3": "Ja, märkbart mer än tidigare",
+            "a4": "Ja, och det stör regelbundet sömnen eller vardagen"
+          }
         },
         "prostate-test-q4": {
           "question": "Känns din blåsa som om den inte har tömts helt?",
           "headerLabel": "TÖMMA DIN BLÅSA",
-          "answers": [
-            "Nej",
-            "Då och då",
-            "Ofta eller ihållande",
-            "Ja, och känslan blir värre"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Då och då",
+            "a3": "Ofta eller ihållande",
+            "a4": "Ja, och känslan blir värre"
+          }
         },
         "prostate-test-q5": {
           "question": "Har du utvecklat ny brådska eller läcker innan du når en toalett?",
           "headerLabel": "BRASKNING ELLER LÄCKA",
-          "answers": [
-            "Nej",
-            "Sällan",
-            "Ja, som en ny eller ihållande förändring",
-            "Ja, och det förvärrar eller påverkar det dagliga livet"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Sällan",
+            "a3": "Ja, som en ny eller ihållande förändring",
+            "a4": "Ja, och det förvärrar eller påverkar det dagliga livet"
+          }
         },
         "prostate-test-q6": {
           "question": "Har du märkt blod i din urin eller sperma?",
           "headerLabel": "BLOD",
-          "answers": [
-            "Nej",
-            "Jag är inte säker",
-            "Ja, en eller flera gånger",
-            "Ja, med kraftiga blödningar eller stora blodproppar"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Jag är inte säker",
+            "a3": "Ja, en eller flera gånger",
+            "a4": "Ja, med kraftiga blödningar eller stora blodproppar"
+          }
         },
         "prostate-test-q7": {
           "question": "Har du fått nya obehag vid urinering eller utlösning?",
           "headerLabel": "OBEKVÄM",
-          "answers": [
-            "Nej",
-            "Ibland, och det gick över",
-            "Ja, det är ihållande eller återkommer hela tiden",
-            "Ja, och det förvärras eller gör markant smärta"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Ibland, och det gick över",
+            "a3": "Ja, det är ihållande eller återkommer hela tiden",
+            "a4": "Ja, och det förvärras eller gör markant smärta"
+          }
         },
         "prostate-test-q8": {
           "question": "Har du haft oförklarlig smärta i rygg, höfter eller bäcken?",
           "headerLabel": "Ihållande smärta",
-          "answers": [
-            "Nej",
-            "En kort värk med en uppenbar orsak",
-            "Ja, det är ihållande eller återkommer hela tiden",
-            "Ja, det är allvarligt, förvärras snabbt eller så mår jag allvarligt illa"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "En kort värk med en uppenbar orsak",
+            "a3": "Ja, det är ihållande eller återkommer hela tiden",
+            "a4": "Ja, det är allvarligt, förvärras snabbt eller så mår jag allvarligt illa"
+          }
         },
         "prostate-test-q9": {
           "question": "Vilket alternativ matchar bäst din prostatacancerriskkontext?",
           "headerLabel": "DIN RISKKONTEXT",
-          "answers": [
-            "Inget av dessa, eller jag är osäker",
-            "Jag är 50 år eller äldre",
-            "Min far eller bror hade prostatacancer",
-            "Jag har svarta anor, en känd BRCA2-förändring eller ett starkt cancermönster i familjen"
-          ]
+          "answers": {
+            "a1": "Inget av dessa, eller jag är osäker",
+            "a2": "Jag är 50 år eller äldre",
+            "a3": "Min far eller bror hade prostatacancer",
+            "a4": "Jag har svarta anor, en känd BRCA2-förändring eller ett starkt cancermönster i familjen"
+          }
         },
         "prostate-test-q10": {
           "question": "Vad har du gjort åt några nya eller ihållande förändringar?",
           "headerLabel": "DITT NÄSTA STEG",
-          "answers": [
-            "Jag har inte märkt några förändringar",
-            "Jag håller koll för tillfället",
-            "Jag planerar att ordna en rutinmässig medicinsk diskussion",
-            "Jag ordnar omedelbar medicinsk rådgivning"
-          ]
+          "answers": {
+            "a1": "Jag har inte märkt några förändringar",
+            "a2": "Jag håller koll för tillfället",
+            "a3": "Jag planerar att ordna en rutinmässig medicinsk diskussion",
+            "a4": "Jag ordnar omedelbar medicinsk rådgivning"
+          }
         }
       }
     }

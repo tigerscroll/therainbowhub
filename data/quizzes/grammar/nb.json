@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 10 % kan bestå denne grammatikkquizen",
   "eyebrow": "KORREKTURUTFORDRINGEN",
   "summary": "Ødelagte setninger, tegnsettingsfeller og nesten riktig ordlyd tester om noen feil kan gli forbi deg.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Tror du grammatikken din er feilfri? Reparer ødelagte setninger, fang små tegnsettingsfeller og bevis at du kan oppdage feilen før den fanger deg.",
     "cta": "Start med quizen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspennende engelske utfordringen inneholder ti nøye varierte spørsmål om setningsstruktur, tegnsetting, tid, pronomen, referanseklarhet og presis redigering. Hvert element er skrevet spesifikt for engelsk i stedet for oversatt fra et annet språk.\n\nVelg det ene svaret som gjør setningen riktig og naturlig i den angitte konteksten. Korrektheten forblir skjult til den endelige avsløringen.\n\nPoengsummen din gjenspeiler kun denne korte språkutfordringen. Det er ikke en formell lese- og skrivevurdering eller utdanningskvalifikasjon.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Fullfør ti nøye utvalgte spørsmål i én fokusert utfordring.",
         "Velg ett svar hver gang. Korrektheten forblir skjult til den endelige avsløringen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Grammatikkutfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Grammatikkutfordring",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din grammatikkpoengsum og tre ferdigheter er klare til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Tre grammatikkferdigheter sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Tre grammatikkferdigheter sammenlignet"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du besto grammatikkutfordringen!",
       "finished": "Grammatikkutfordringen fullført",
-      "correctLabel": "riktig",
       "strongest": "Sterkeste grammatikkferdigheter",
       "trickiest": "Vanskeligste grammatikkferdigheter",
       "bestRound": "Beste seksjon",
@@ -98,8 +91,7 @@
         "snapshot": "Hva grammatikkprofilen din antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Hvilket alternativ er en hel setning?",
-          "answers": [
-            "Etter siste avsnitt",
-            "Redaktøren sjekket det siste avsnittet.",
-            "Fordi fristen endret seg",
-            "Mens alle ventet"
-          ],
+          "answers": {
+            "a1": "Etter siste avsnitt",
+            "a2": "Redaktøren sjekket det siste avsnittet.",
+            "a3": "Fordi fristen endret seg",
+            "a4": "Mens alle ventet"
+          },
           "headerLabel": "SETNINGSBYGNING"
         },
         "grammar-r1q3": {
           "context": "Notatene tilhører flere elever.",
           "question": "Hvilken setning gjengir betydningen riktig?",
-          "answers": [
-            "Elevenes notater ble organisert.",
-            "Notatet til én elev ble organisert.",
-            "Elevene hadde ingen notater.",
-            "Notatene tilhørte læreren."
-          ],
+          "answers": {
+            "a1": "Elevenes notater ble organisert.",
+            "a2": "Notatet til én elev ble organisert.",
+            "a3": "Elevene hadde ingen notater.",
+            "a4": "Notatene tilhørte læreren."
+          },
           "headerLabel": "EIENDOMSFORHOLD"
         },
         "grammar-r3q1": {
           "question": "Møtet begynte klokken 09.00. Leo fullførte diagrammet klokken 08.30. Hvilken setning er riktig?",
-          "answers": [
-            "Leo fullførte diagrammet etter at møtet begynte.",
-            "Leo hadde fullført diagrammet etter at møtet begynte.",
-            "Leo fullførte diagrammet akkurat da møtet begynte.",
-            "Leo hadde fullført diagrammet før møtet begynte."
-          ],
+          "answers": {
+            "a1": "Leo fullførte diagrammet etter at møtet begynte.",
+            "a2": "Leo hadde fullført diagrammet etter at møtet begynte.",
+            "a3": "Leo fullførte diagrammet akkurat da møtet begynte.",
+            "a4": "Leo hadde fullført diagrammet før møtet begynte."
+          },
           "headerLabel": "TIDSREKKEFØLGE"
         },
         "grammar-r4q3": {
           "question": "Hvilken setning bruker semikolon riktig?",
-          "answers": [
-            "Filen var stor; fordi den lastet sakte.",
-            "Filen var stor; det tok lang tid å laste den inn.",
-            "Filen var stor, den lastet sakte.",
-            "Filen var stor; selv om den lastet sakte."
-          ],
+          "answers": {
+            "a1": "Filen var stor; fordi den lastet sakte.",
+            "a2": "Filen var stor; det tok lang tid å laste den inn.",
+            "a3": "Filen var stor, den lastet sakte.",
+            "a4": "Filen var stor; selv om den lastet sakte."
+          },
           "headerLabel": "SEMIKOLON"
         },
         "grammar-r5q4": {
           "context": "Velg pronomenet i første person entall.",
           "question": "Hvilket ord viser til den som snakker?",
-          "answers": [
-            "jeg",
-            "du",
-            "han",
-            "vi"
-          ],
+          "answers": {
+            "a1": "jeg",
+            "a2": "du",
+            "a3": "han",
+            "a4": "vi"
+          },
           "headerLabel": "VALG AV PRONOMEN"
         },
         "grammar-r5q6": {
           "question": "Hvilken setning bruker komma riktig ved direkte tiltale til Ravi?",
-          "answers": [
-            "Ravi vær så snill, sjekk den siste linjen.",
-            "Ravi, sjekk den siste linjen.",
-            "Ravi vennligst sjekk, den siste linjen.",
-            "Ravi; vær så snill, sjekk den siste linjen."
-          ],
+          "answers": {
+            "a1": "Ravi vær så snill, sjekk den siste linjen.",
+            "a2": "Ravi, sjekk den siste linjen.",
+            "a3": "Ravi vennligst sjekk, den siste linjen.",
+            "a4": "Ravi; vær så snill, sjekk den siste linjen."
+          },
           "headerLabel": "DIREKTE TILTALE"
         },
         "grammar-r7q6": {
           "context": "En rapport inneholder et sammendrag og et vedlegg. Vedlegget oppdateres månedlig.",
           "question": "Hvilken redigering får den månedlige oppdateringen til å referere til vedlegget?",
-          "answers": [
-            "Rapporten inneholder et sammendrag og et vedlegg, og den oppdateres månedlig.",
-            "Rapporten inneholder et sammendrag som oppdateres månedlig, samt et vedlegg.",
-            "Rapporten inneholder et sammendrag og et vedlegg; vedlegget oppdateres månedlig.",
-            "Rapporten, som oppdateres månedlig, inneholder et sammendrag og vedlegg."
-          ],
+          "answers": {
+            "a1": "Rapporten inneholder et sammendrag og et vedlegg, og den oppdateres månedlig.",
+            "a2": "Rapporten inneholder et sammendrag som oppdateres månedlig, samt et vedlegg.",
+            "a3": "Rapporten inneholder et sammendrag og et vedlegg; vedlegget oppdateres månedlig.",
+            "a4": "Rapporten, som oppdateres månedlig, inneholder et sammendrag og vedlegg."
+          },
           "headerLabel": "TYDELIGE HENVISNINGER"
         },
         "grammar-r9q1": {
           "question": "Hvilken setning begynner med en leddsetning med «selv om» og har riktig tegnsetting?",
-          "answers": [
-            "Stormen tok slutt; selv om gatene forble oversvømmet.",
-            "Stormen tok slutt, men gatene forble oversvømmet.",
-            "Selv om stormen tok slutt; gatene forble oversvømmet.",
-            "Selv om stormen tok slutt, forble gatene oversvømmet."
-          ],
-          "trapdoorErrors": [
-            "semikolon skiller feil en hovedsetning fra en avhengig klausul",
-            "konjunktivt adverb mangler den nødvendige grensetegnsettingen",
-            "semikolon følger feil en avhengig klausul",
-            null
-          ],
+          "answers": {
+            "a1": "Stormen tok slutt; selv om gatene forble oversvømmet.",
+            "a2": "Stormen tok slutt, men gatene forble oversvømmet.",
+            "a3": "Selv om stormen tok slutt; gatene forble oversvømmet.",
+            "a4": "Selv om stormen tok slutt, forble gatene oversvømmet."
+          },
+          "trapdoorErrors": {
+            "a1": "semikolon skiller feil en hovedsetning fra en avhengig klausul",
+            "a2": "konjunktivt adverb mangler den nødvendige grensetegnsettingen",
+            "a3": "semikolon følger feil en avhengig klausul"
+          },
           "headerLabel": "MOTSETNINGER"
         },
         "grammar-r10q6": {
           "question": "Hvilken setning er helt riktig?",
-          "answers": [
-            "Etter å ha gjennomgått tallene bekreftet Maya at hver sum var riktig.",
-            "Etter å ha gjennomgått tallene, ble hver total bekreftet av Maya.",
-            "Etter å ha gjennomgått tallene bekreftet Maya at hver sum var riktige.",
-            "Etter å ha gjennomgått tallene, bekreftet Maya at hver av summene var nøyaktige."
-          ],
+          "answers": {
+            "a1": "Etter å ha gjennomgått tallene bekreftet Maya at hver sum var riktig.",
+            "a2": "Etter å ha gjennomgått tallene, ble hver total bekreftet av Maya.",
+            "a3": "Etter å ha gjennomgått tallene bekreftet Maya at hver sum var riktige.",
+            "a4": "Etter å ha gjennomgått tallene, bekreftet Maya at hver av summene var nøyaktige."
+          },
           "headerLabel": "NØYAKTIG REDIGERING"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Sluttrapportene ble kontrollert før redaktøren godkjente godkjente dem for publisering."
           },
           "question": "Hvilken del inneholder feilen?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SISTE KORREKTUR"
         }
       }

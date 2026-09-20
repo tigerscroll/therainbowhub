@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pouze 6 % dospělých může úspěšně složit tuto přijímací zkoušku na policistu",
   "eyebrow": "ZKOUŠKA SCHOPNOSTI POLICISTA",
   "summary": "Deset otázek testuje úsudek, komunikaci, zpracování důkazů a profesionální integritu.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "První hovory vypadají přímočaře. Poté se zkouška přesune do důkazů, úsudků a rozhodnutí ve zlomku sekundy.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavní výzva s deseti otázkami využívá široké principy, které jsou relevantní pro profesionální policejní práci v anglicky mluvících zemích úrovně 1. Testuje úsudek na prvním místě, pečlivou komunikaci svědků, integritu důkazů a odpovědné rozhodování, aniž by se spoléhal na zákony, hodnosti nebo postupy jedné země.\n\nVyberte jednu odpověď pro každou situaci. Správnost zůstává skryta až do konečného odhalení, kde je k dispozici kompletní kontrola odpovědí k odemknutí.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších otázek týkajících se policejních schopností.",
         "Vyberte nejbezpečnější, nejjasnější nebo nejlépe podporovanou odpověď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupní výzva pro policistu",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Přijímací zkouška na policistu",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre policejních schopností je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnány čtyři policejní oblasti",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnány čtyři policejní oblasti"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro policistu!",
       "finished": "Vstupní výzva pro policistu dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější policejní oblast",
       "trickiest": "Nejzáludnější policejní oblast",
       "bestRound": "Nejlepší sekce",
@@ -96,8 +89,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Dostanete se na scénu, kde někdo čelí bezprostřední hrozbě. Co je první prioritou?",
-          "answers": [
-            "Chraňte život a udělejte scénu co nejbezpečnější",
-            "Začněte s podrobnou písemnou zprávou",
-            "Sbírejte všechny svědecké výpovědi",
-            "Zjistěte, kdo je právně odpovědný"
-          ],
+          "answers": {
+            "a1": "Chraňte život a udělejte scénu co nejbezpečnější",
+            "a2": "Začněte s podrobnou písemnou zprávou",
+            "a3": "Sbírejte všechny svědecké výpovědi",
+            "a4": "Zjistěte, kdo je právně odpovědný"
+          },
           "headerLabel": "PRIORITY SCÉNY"
         },
         "police-q2": {
           "question": "Která úvodní otázka s největší pravděpodobností vyvolá vlastní nepřerušený výpověď svědka?",
-          "answers": [
-            "Ten člověk v červeném to začal, že?",
-            "Řekněte mi prosím, co se stalo od začátku",
-            "Neviděl jsi celý incident, že ne?",
-            "Byl podezřelý naštvaný nebo vyděšený?"
-          ],
+          "answers": {
+            "a1": "Ten člověk v červeném to začal, že?",
+            "a2": "Řekněte mi prosím, co se stalo od začátku",
+            "a3": "Neviděl jsi celý incident, že ne?",
+            "a4": "Byl podezřelý naštvaný nebo vyděšený?"
+          },
           "headerLabel": "KOMUNIKACE SVĚDKA"
         },
         "police-q3": {
           "question": "Proč mohou být svědci drženi odděleně, než budou provedeny jejich první zprávy?",
-          "answers": [
-            "Aby byly rozhovory kratší",
-            "Aby se rozhodlo, kdo je sebevědomější",
-            "Aby se snížila šance, že se jejich vzpomínky vzájemně ovlivňují",
-            "Aby bylo zaručeno, že každý účet odpovídá"
-          ],
+          "answers": {
+            "a1": "Aby byly rozhovory kratší",
+            "a2": "Aby se rozhodlo, kdo je sebevědomější",
+            "a3": "Aby se snížila šance, že se jejich vzpomínky vzájemně ovlivňují",
+            "a4": "Aby bylo zaručeno, že každý účet odpovídá"
+          },
           "headerLabel": "PAMĚŤ A DŮKAZY"
         },
         "police-q4": {
           "question": "Jaký je hlavní účel zdokumentovaného spotřebitelského řetězce?",
-          "answers": [
-            "Seřadit důkazy podle důležitosti",
-            "Aby podezřelý vlastnil každý předmět",
-            "Chcete-li nahradit fotografie scény",
-            "Zaznamenat, kdo s důkazy nakládal, a zachovat jejich integritu"
-          ],
+          "answers": {
+            "a1": "Seřadit důkazy podle důležitosti",
+            "a2": "Aby podezřelý vlastnil každý předmět",
+            "a3": "Chcete-li nahradit fotografie scény",
+            "a4": "Zaznamenat, kdo s důkazy nakládal, a zachovat jejich integritu"
+          },
           "headerLabel": "KONTROLA DŮKAZŮ"
         },
         "police-q5": {
           "question": "Který soubor zásad nejlépe popisuje odpovědné používání policejních pravomocí?",
-          "answers": [
-            "Zákonné, nezbytné, přiměřené a odpovědné",
-            "Rychlé, tajné, důrazné a konečné",
-            "Oblíbené, pohodlné, neformální a široké",
-            "Automatické, identické, neomezené a nezpochybnitelné"
-          ],
+          "answers": {
+            "a1": "Zákonné, nezbytné, přiměřené a odpovědné",
+            "a2": "Rychlé, tajné, důrazné a konečné",
+            "a3": "Oblíbené, pohodlné, neformální a široké",
+            "a4": "Automatické, identické, neomezené a nezpochybnitelné"
+          },
           "headerLabel": "ODBORNÝ ÚSUDEK"
         },
         "police-q6": {
           "question": "Které slovo v mezinárodní pravopisné abecedě představuje písmeno B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADIOKOMUNIKACE"
         },
         "police-q7": {
           "question": "Který přístup je nejvíce konzistentní s deeskalací napjaté, ale nikoli okamžité situace?",
-          "answers": [
-            "Mluvte rychle a bez varování se přibližujte",
-            "Vydejte několik konkurenčních pokynů najednou",
-            "Používejte klidný, jasný jazyk, poslouchejte a dopřejte si bezpečný prostor",
-            "Zvyšte svůj hlas, než kdokoli jiný může mluvit"
-          ],
+          "answers": {
+            "a1": "Mluvte rychle a bez varování se přibližujte",
+            "a2": "Vydejte několik konkurenčních pokynů najednou",
+            "a3": "Používejte klidný, jasný jazyk, poslouchejte a dopřejte si bezpečný prostor",
+            "a4": "Zvyšte svůj hlas, než kdokoli jiný může mluvit"
+          },
           "headerLabel": "DE-ESKALACE"
         },
         "police-q8": {
           "question": "Když je to bezpečné a praktické, co by se mělo stát, než se důležitý předmět na scéně přesune?",
-          "answers": [
-            "Mělo by být vyčištěno",
-            "Mělo by se to ukázat každému svědkovi",
-            "Měl by být umístěn s podobnými položkami",
-            "Jeho původní poloha a stav by měly být zdokumentovány"
-          ],
+          "answers": {
+            "a1": "Mělo by být vyčištěno",
+            "a2": "Mělo by se to ukázat každému svědkovi",
+            "a3": "Měl by být umístěn s podobnými položkami",
+            "a4": "Jeho původní poloha a stav by měly být zdokumentovány"
+          },
           "headerLabel": "POVĚDOMÍ O SCÉNĚ"
         },
         "police-q9": {
           "question": "V hlášení, které jste odeslali, zjistíte faktickou chybu. Jaká je nejprofesionálnější odpověď?",
-          "answers": [
-            "Okamžitě jej nahlaste a opravte správným postupem",
-            "Počkejte, zda si toho někdo všimne",
-            "Smažte celý přehled bez záznamu",
-            "Požádejte kolegu, aby převzal odpovědnost"
-          ],
+          "answers": {
+            "a1": "Okamžitě jej nahlaste a opravte správným postupem",
+            "a2": "Počkejte, zda si toho někdo všimne",
+            "a3": "Smažte celý přehled bez záznamu",
+            "a4": "Požádejte kolegu, aby převzal odpovědnost"
+          },
           "headerLabel": "TEST INTEGRITY"
         },
         "police-q10": {
           "question": "Která rádiová zpráva je nejužitečnější během rychle se pohybujícího incidentu?",
-          "answers": [
-            "Dlouhá osobní teorie bez umístění",
-            "Stručná faktická aktualizace s přesným umístěním a požadovanou nápovědou",
-            "Několik nepotvrzených zvěstí najednou",
-            "Vágní požadavek někoho někam poslat"
-          ],
+          "answers": {
+            "a1": "Dlouhá osobní teorie bez umístění",
+            "a2": "Stručná faktická aktualizace s přesným umístěním a požadovanou nápovědou",
+            "a3": "Několik nepotvrzených zvěstí najednou",
+            "a4": "Vágní požadavek někoho někam poslat"
+          },
           "headerLabel": "ZÁVĚREČNÁ OTÁZKA O SCHOPNOSTI"
         }
       }

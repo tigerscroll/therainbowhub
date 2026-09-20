@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hurtig katarakttest",
   "eyebrow": "SYNSQUIZ MED 10 SPØRGSMÅL",
   "summary": "Disige detaljer, tætte visuelle fælder og vigtige advarselsskilte for grå stær i én hurtig udfordring.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Grå stær kan være let at gå glip af i starten. Se om du kan se de subtile ledetråde på tværs af 10 hurtige spørgsmål - de sidste fanger de fleste mennesker.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne udfordring på ti spørgsmål kombinerer fem visuelle puslespil på skærmen med fem generelle spørgsmål om grå stær. Den måler svar på denne quiz, ikke syn, linsesundhed eller sandsynligheden for grå stær.\n\nSkærmstørrelse, lysstyrke, kontrast, syn, korrigerende linser, træthed og enhedsindstillinger kan alle påvirke ydeevnen. Vedvarende sløret eller sløret syn, blænding, glorier omkring lys, svært ved at se om natten eller toner, der virker mindre levende, bør diskuteres med en kvalificeret øjenplejer.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Gennemfør fem detaljer, mønster og visuel hukommelsesudfordringer.",
         "Besvar fem spørgsmål om grå stær og hvornår du skal søge hjælp.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Grå stær udfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Hurtig katarakttest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet kontrolleret, og din kataraktudfordringsscore er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Tre visuelle områder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre visuelle områder sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarede den visuelle udfordring på 80 %!",
       "finished": "Grå stær udfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste område i dag",
       "trickiest": "Det sværeste område i dag",
       "bestRound": "Bedste afsnit",
@@ -94,8 +87,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Hvilken karakter er præcis i midten af gitteret?",
           "headerLabel": "DETALJEN I MIDTEN",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "B8R3K5",
           "question": "Hvilken kode passer nøjagtigt til referencen?",
           "headerLabel": "SAMMENLIGNING AF SLØREDE TEGN",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENCE",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Hvilket symbol fuldender den skiftende sekvens?",
           "headerLabel": "MØNSTERSPORING",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Hvilken genstand dukkede op som tredje?",
           "headerLabel": "HURTIG VISUEL HUKOMMELSE",
-          "answers": [
-            "Bog",
-            "Nøgle",
-            "Citron",
-            "Paraply"
-          ],
+          "answers": {
+            "a1": "Bog",
+            "a2": "Nøgle",
+            "a3": "Citron",
+            "a4": "Paraply"
+          },
           "study": {
             "title": "Studer rækkefølgen med fem genstande",
             "instruction": "Dette forsvinder automatisk.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Hvilken position indeholder den blege cirkel?",
           "headerLabel": "DETALJETJEK",
-          "answers": [
-            "Femte",
-            "For det andet",
-            "Fjerde",
-            "Sjette"
-          ],
+          "answers": {
+            "a1": "Femte",
+            "a2": "For det andet",
+            "a3": "Fjerde",
+            "a4": "Sjette"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Hvad er en grå stær?",
           "headerLabel": "GRUNDVIDEN OM GRÅ STÆR",
-          "answers": [
-            "En ridse på øjenlåget",
-            "Et uklart område i øjets naturlige linse",
-            "Et problem begrænset til tårekanalen",
-            "En type ørebetændelse"
-          ]
+          "answers": {
+            "a1": "En ridse på øjenlåget",
+            "a2": "Et uklart område i øjets naturlige linse",
+            "a3": "Et problem begrænset til tårekanalen",
+            "a4": "En type ørebetændelse"
+          }
         },
         "cataract-q7": {
           "question": "Hvilken gruppe har almindelige kataraktsymptomer?",
           "headerLabel": "ADVARSELSTEGN",
-          "answers": [
-            "Kløende hud og ondt i halsen",
-            "Pludselig høretab og svimmelhed",
-            "Sløret eller sløret syn, blænding og glorier omkring lys",
-            "En stiv nakke og ømme skuldre"
-          ]
+          "answers": {
+            "a1": "Kløende hud og ondt i halsen",
+            "a2": "Pludselig høretab og svimmelhed",
+            "a3": "Sløret eller sløret syn, blænding og glorier omkring lys",
+            "a4": "En stiv nakke og ømme skuldre"
+          }
         },
         "cataract-q8": {
           "question": "Hvordan kan en øjenplejer tjekke for grå stær?",
           "headerLabel": "PROFESSIONEL VURDERING",
-          "answers": [
-            "Med en høretest",
-            "Brug af en hjemmeblodtryksaflæsning",
-            "Med en smagsprøve",
-            "Som en del af en omfattende udvidet øjenundersøgelse"
-          ]
+          "answers": {
+            "a1": "Med en høretest",
+            "a2": "Brug af en hjemmeblodtryksaflæsning",
+            "a3": "Med en smagsprøve",
+            "a4": "Som en del af en omfattende udvidet øjenundersøgelse"
+          }
         },
         "cataract-q9": {
           "question": "Hvad er den sikreste reaktion på pludseligt synstab, stærke øjensmerter eller en pludselig større ændring i synet?",
           "headerLabel": "HVORNÅR BØR DU HANDLE?",
-          "answers": [
-            "Søg akut professionel øjenplejerådgivning",
-            "Vent flere måneder uden at nævne det",
-            "Skift skærmens lysstyrke og antag, at den er fast",
-            "Stol kun på en online quiz"
-          ]
+          "answers": {
+            "a1": "Søg akut professionel øjenplejerådgivning",
+            "a2": "Vent flere måneder uden at nævne det",
+            "a3": "Skift skærmens lysstyrke og antag, at den er fast",
+            "a4": "Stol kun på en online quiz"
+          }
         },
         "cataract-q10": {
           "question": "Hvad kan din score på denne online udfordring fortælle dig?",
           "headerLabel": "ENDELIG REALITY CHECK",
-          "answers": [
-            "Om dine linser er sunde",
-            "Kun hvordan du klarede disse ti spørgsmål",
-            "Om du skal have operation for grå stær",
-            "Om du kan udelukke en grå stær"
-          ]
+          "answers": {
+            "a1": "Om dine linser er sunde",
+            "a2": "Kun hvordan du klarede disse ti spørgsmål",
+            "a3": "Om du skal have operation for grå stær",
+            "a4": "Om du kan udelukke en grå stær"
+          }
         }
       }
     }

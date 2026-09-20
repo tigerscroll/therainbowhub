@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 7%-uk tudja megnevezni ezeket az elavult tételeket – tudod?",
   "eyebrow": "AZ ELVESZTETT TÁRGYOK TESZT",
   "summary": "Tíz tárgy, ami egykor teljesen hétköznapinak tűnt. Nézze meg, hány elfelejtett nevet tud még felidézni.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az objektumok ismerősnek tűnhetnek, de mind a 10 helyes megnevezése sokkal nehezebb, mint amilyennek látszik.",
     "cta": "Indítsa el a kvízt"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Mielőtt az okostelefonok, a streaming és az automatikus készülékek léteztek, a mindennapi élet fizikai médiára, mechanikai eszközökre és háztartási eszközökre támaszkodott, amelyek most furcsán ismeretlenek. Ez a tíz kérdésből álló kihívás azt teszteli, hogy a nevük eltűnt-e az emlékezetből magukkal az objektumokkal együtt.\n\nTanulmányozza át az egyes fényképeket, használja a nyomot, ha szükséges, és válasszon egyet a négy lehetséges név közül. A helyesség a végső leleplezésig rejtve marad.\n\nAz első tíz forráskérdést és képeket a QuizDays-ből a webhely tulajdonosa, aki ezt a kérdést rendelte, engedéllyel reprodukálják.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Tanulmányozzon minden fényképet, és olvassa el a rövid nyomát.",
         "Válassza ki a megfelelő nevet a négy lehetséges válasz közül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Elavult elemek kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Elveszett tárgyak",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a nosztalgia pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 régi tárgyat, amit ellenőriztek",
-          "Három tárgykategória összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három tárgykategória összehasonlítása"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sikeresen teljesítette az elavult tárgyak kihívását!",
       "finished": "Az elavult elemek kihívása befejeződött",
-      "correctLabel": "helyes",
       "strongest": "Legerősebb tárgykategória",
       "trickiest": "A legtrükkösebb tárgykategória",
       "bestRound": "A legjobb szakasz",
@@ -93,8 +86,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Fekete 3,5 hüvelykes floppy lemez semleges felületen"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Floppy lemez",
-            "Kassette",
-            "LaserDisc",
-            "Zip meghajtó"
-          ],
+          "answers": {
+            "a1": "Floppy lemez",
+            "a2": "Kassette",
+            "a3": "LaserDisc",
+            "a4": "Zip meghajtó"
+          },
           "headerLabel": "10/1. ELVESZTETT TÁRGY"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "Régi telefon kör alakú mechanikus számlappal"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Gramofon",
-            "Tárcsás telefon",
-            "Telegraph",
-            "Diktafon"
-          ],
+          "answers": {
+            "a1": "Gramofon",
+            "a2": "Tárcsás telefon",
+            "a3": "Telegraph",
+            "a4": "Diktafon"
+          },
           "headerLabel": "A vesztett tárgy 2 A 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "Piros sztereoszkópikus játéknéző kerek képtekerccsel"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Diavetítő",
-            "Sztereoszkóp",
-            "View-Master",
-            "Filmdoboz"
-          ],
+          "answers": {
+            "a1": "Diavetítő",
+            "a2": "Sztereoszkóp",
+            "a3": "View-Master",
+            "a4": "Filmdoboz"
+          },
           "headerLabel": "10/3. ELVESZTETT TÁRGY"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "Mechanikus írógép kulcsokkal és tintaszalaggal"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Inkwell",
-            "Mimeográf",
-            "Távíró kulcs",
-            "Írógép"
-          ],
+          "answers": {
+            "a1": "Inkwell",
+            "a2": "Mimeográf",
+            "a3": "Távíró kulcs",
+            "a4": "Írógép"
+          },
           "headerLabel": "ELVESZTETT TÁRGY 10/4"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Fából készült mosodai tábla hullámos fém felülettel"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Mosódeszka",
-            "Vajkacska",
-            "Kávédaráló",
-            "Jégdoboz"
-          ],
+          "answers": {
+            "a1": "Mosódeszka",
+            "a2": "Vajkacska",
+            "a3": "Kávédaráló",
+            "a4": "Jégdoboz"
+          },
           "headerLabel": "ELVESZTETT TÁRGY 10/5"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "Hordozható kazettás lejátszó vezetékes fejhallgatóval"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Boombox",
-            "Walkman",
-            "Tranzisztoros rádió",
-            "Gramofon"
-          ],
+          "answers": {
+            "a1": "Boombox",
+            "a2": "Walkman",
+            "a3": "Tranzisztoros rádió",
+            "a4": "Gramofon"
+          },
           "headerLabel": "A vesztes tárgy 6 A 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "Téglalap alakú házi videó kazetta"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Betamax szalag",
-            "Filmtekercs",
-            "VHS szalag",
-            "Kassette"
-          ],
+          "answers": {
+            "a1": "Betamax szalag",
+            "a2": "Filmtekercs",
+            "a3": "VHS szalag",
+            "a4": "Kassette"
+          },
           "headerLabel": "ELVESZTETT TÁRGY 10/7"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Egy szőtt kézi eszköz egykor a szőnyegek porának leverésére"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Jégcsákány",
-            "Cukorfogó",
-            "Cipőkanál",
-            "Szőnyegverő"
-          ],
+          "answers": {
+            "a1": "Jégcsákány",
+            "a2": "Cukorfogó",
+            "a3": "Cipőkanál",
+            "a4": "Szőnyegverő"
+          },
           "headerLabel": "ELVESZTETT TÁRGY 10/8"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "Kisméretű elektronikus üzenetfogadó kijelzővel és övcsipesszel"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Pager",
-            "Game Boy",
-            "Talkie-walkie",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Pager",
+            "a2": "Game Boy",
+            "a3": "Talkie-walkie",
+            "a4": "PDA"
+          },
           "headerLabel": "ELVESZTETT TÁRGY 10/9"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "Egy hosszú nyelű fém serpenyő, amelyet egykor szénnel töltöttek, hogy felmelegítse az ágyat"
           },
           "question": "Mi ennek a régi tárgynak a neve?",
-          "answers": [
-            "Olajlámpa",
-            "Ágymelegítő",
-            "Chamberstick",
-            "Gázlámpás"
-          ],
+          "answers": {
+            "a1": "Olajlámpa",
+            "a2": "Ágymelegítő",
+            "a3": "Chamberstick",
+            "a4": "Gázlámpás"
+          },
           "headerLabel": "VÉGSŐ ELVESZTETT TÁRGY"
         }
       }

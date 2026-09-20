@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test na zwyrodnienie plamki żółtej",
   "eyebrow": "KONTROLA CENTRALNEGO WIZJI składająca się z 10 pytań",
   "summary": "Centralne detale, pułapki wizualne i ważne znaki ostrzegawcze AMD w jednym szybkim wyzwaniu.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Czy potrafisz dostrzec najważniejsze szczegóły i rozpoznać znaki ostrzegawcze? Te 10 szybkich kontroli staje się coraz trudniejsze.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie składające się z dziesięciu pytań łączy pięć wyświetlanych na ekranie łamigłówek wizualnych z pięcioma pytaniami dotyczącymi ogólnej świadomości na temat zwyrodnienia plamki żółtej związanego z wiekiem (AMD). Mierzy odpowiedzi na ten quiz, a nie zdrowie oczu czy prawdopodobieństwo choroby.\n\nRozmiar ekranu, jasność, kontrast, wzrok, soczewki korekcyjne, zmęczenie i ustawienia urządzenia mogą mieć wpływ na wydajność. Nowe faliste lub zniekształcone linie, nowy niewyraźny lub pusty obszar w polu widzenia centralnego lub nagłe pogorszenie należy natychmiast omówić z wykwalifikowanym okulistą.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Ukończ pięć wyzwań skupiających się na szczegółach centralnych i pamięci wzrokowej.",
         "Odpowiedz na pięć pytań dotyczących AMD i tego, kiedy szukać pomocy.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie widzenia centralnego",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Test na zwyrodnienie plamki żółtej",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik w wyzwaniu dotyczącym widzenia centralnego jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie trzech obszarów wizualnych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech obszarów wizualnych"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Udało Ci się pokonać wyzwanie wizualne w 80%!",
       "finished": "Wyzwanie centralnego widzenia ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar dzisiaj",
       "trickiest": "Najtrudniejszy obszar dzisiaj",
       "bestRound": "Najlepsza sekcja",
@@ -94,8 +87,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Która postać znajduje się dokładnie w środku siatki?",
           "headerLabel": "CENTRALNY SZCZEGÓŁ",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "ODNIESIENIE: Q7M2P6",
           "question": "Który kod dokładnie pasuje do odniesienia?",
           "headerLabel": "ZAMKNIJ MECZ",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "ODNIESIENIE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Który symbol uzupełnia naprzemienną sekwencję?",
           "headerLabel": "ŚLEDZENIE WZORÓW",
-          "answers": [
-            "▲▲",
-            "● ●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "● ●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Który obiekt pojawił się jako trzeci?",
           "headerLabel": "SZYBKA PAMIĘĆ WIZUALNA",
-          "answers": [
-            "Książka",
-            "Klucz",
-            "Puchar",
-            "niedziela"
-          ],
+          "answers": {
+            "a1": "Książka",
+            "a2": "Klucz",
+            "a3": "Puchar",
+            "a4": "niedziela"
+          },
           "study": {
             "title": "Przestudiuj porządek pięciu obiektów",
             "instruction": "To zniknie automatycznie.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "W której pozycji znajduje się otwarte koło?",
           "headerLabel": "KONSTRUKCJA W ŚRODKOWYM RZĄDZIE",
-          "answers": [
-            "Czwarty",
-            "Po drugie",
-            "Piąty",
-            "Trzeci"
-          ],
+          "answers": {
+            "a1": "Czwarty",
+            "a2": "Po drugie",
+            "a3": "Piąty",
+            "a4": "Trzeci"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Która część wzroku jest najbardziej dotknięta zwyrodnieniem plamki związanym z wiekiem?",
           "headerLabel": "PODSTAWY AMD",
-          "answers": [
-            "Tylko dalsze zewnętrzne krawędzie",
-            "Ostre widzenie centralne, na wprost",
-            "Tylko widzenie w nocy",
-            "Tylko percepcja głębi"
-          ]
+          "answers": {
+            "a1": "Tylko dalsze zewnętrzne krawędzie",
+            "a2": "Ostre widzenie centralne, na wprost",
+            "a3": "Tylko widzenie w nocy",
+            "a4": "Tylko percepcja głębi"
+          }
         },
         "macular-q7": {
           "question": "Która zmiana wizualna jest dobrze znanym sygnałem ostrzegawczym AMD?",
           "headerLabel": "ZNAKI OSTRZEGAWCZE",
-          "answers": [
-            "Brzmi coraz ciszej",
-            "Tymczasowe swędzenie powieki",
-            "Proste linie sprawiają wrażenie falistych lub krzywych",
-            "Wypada jedna rzęsa"
-          ]
+          "answers": {
+            "a1": "Brzmi coraz ciszej",
+            "a2": "Tymczasowe swędzenie powieki",
+            "a3": "Proste linie sprawiają wrażenie falistych lub krzywych",
+            "a4": "Wypada jedna rzęsa"
+          }
         },
         "macular-q8": {
           "question": "Z jakiej oceny może skorzystać specjalista okulista w celu wykrycia AMD?",
           "headerLabel": "OCENA PROFESJONALNA",
-          "answers": [
-            "Badanie słuchu",
-            "Sam odczyt ciśnienia krwi",
-            "Próba smaku",
-            "Kompleksowe badanie rozszerzonego oka"
-          ]
+          "answers": {
+            "a1": "Badanie słuchu",
+            "a2": "Sam odczyt ciśnienia krwi",
+            "a3": "Próba smaku",
+            "a4": "Kompleksowe badanie rozszerzonego oka"
+          }
         },
         "macular-q9": {
           "question": "Jaka jest najbezpieczniejsza reakcja na nagłe pogorszenie widzenia lub nowy centralny obszar zamazany lub pusty?",
           "headerLabel": "KIEDY DZIAŁAĆ",
-          "answers": [
-            "Zasięgnij szybkiej profesjonalnej porady dotyczącej pielęgnacji oczu",
-            "Poczekaj kilka miesięcy, nie wspominając o tym",
-            "Zwiększ jasność ekranu i załóż, że jest naprawiona",
-            "Polegaj wyłącznie na quizie online"
-          ]
+          "answers": {
+            "a1": "Zasięgnij szybkiej profesjonalnej porady dotyczącej pielęgnacji oczu",
+            "a2": "Poczekaj kilka miesięcy, nie wspominając o tym",
+            "a3": "Zwiększ jasność ekranu i załóż, że jest naprawiona",
+            "a4": "Polegaj wyłącznie na quizie online"
+          }
         },
         "macular-q10": {
           "question": "Co może Ci powiedzieć Twój wynik w tym wyzwaniu online?",
           "headerLabel": "KOŃCOWA KONTROLA RZECZYWISTOŚCI",
-          "answers": [
-            "Czy Twoja siatkówka jest zdrowa",
-            "Tylko to, jak wypadłeś w tych dziesięciu pytaniach",
-            "Czy potrzebujesz specjalnego leczenia",
-            "Czy można wykluczyć AMD"
-          ]
+          "answers": {
+            "a1": "Czy Twoja siatkówka jest zdrowa",
+            "a2": "Tylko to, jak wypadłeś w tych dziesięciu pytaniach",
+            "a3": "Czy potrzebujesz specjalnego leczenia",
+            "a4": "Czy można wykluczyć AMD"
+          }
         }
       }
     }

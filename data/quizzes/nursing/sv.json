@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 7 % klarar detta inträdesprov för sjuksköterskor",
   "eyebrow": "KLINISKT ANTAGNINGSLAB",
   "summary": "Anatomi, vitala tecken och patientvårdsbeslut testar om ditt omdöme förblir skarpt under press.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Kroppssystem, vitala tecken och patientvård. Kan du se vad som är viktigt och ringa det säkraste samtalet?",
     "cta": "Starta frågesport"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna världsomspännande underhållningsutmaning innehåller tio frågor i entréstil över anatomi, observationer, räknekunskaper inom sjukvården, förebyggande av infektioner, kommunikation och prioritetsbedömning. Det belönar lugn användning av informationen som visas.\n\nVälj det enskilt bästa svaret för varje situation. Innehållet förblir allmänt och undviker att förlita sig på ett lands professionella rutiner.\n\nDetta är inte en ackrediterad sjuksköterskeprov, klinisk bedömning, kvalifikation, utbildningskurs eller källa till medicinsk rådgivning.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Fyll i tio noggrant utvalda frågor i en fokuserad utmaning.",
         "Välj ett svar varje gång. Korrektheten förblir dold tills den sista avslöjandet.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sjuksköterskeprov",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Utmaning för blivande sjuksköterskor",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din ingångspoäng för vård och tre områden är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Tre entréområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre entréområden jämförda"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du klarade omvårdnadsutmaningen!",
       "finished": "Omvårdnad utmaning klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkast ingångsområde",
       "trickiest": "Knepigaste entrén",
       "bestRound": "Bästa avsnittet",
@@ -98,8 +91,7 @@
         "snapshot": "Vad din kandidatprofil föreslår",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Vilken gas har blod samlats upp när det kommer tillbaka från lungorna?",
-          "answers": [
-            "Kväve",
-            "Syre",
-            "Koldioxid",
-            "Väte"
-          ],
+          "answers": {
+            "a1": "Kväve",
+            "a2": "Syre",
+            "a3": "Koldioxid",
+            "a4": "Väte"
+          },
           "headerLabel": "ANATOMI & FYSIOLOGI"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 milliliter plus 250 milliliter motsvarar summan"
           },
           "question": "En kanna innehåller 750 ml. Ytterligare 250 ml tillsätts. Vad är summan?",
-          "answers": [
-            "900 ml",
-            "1 100 ml",
-            "1 250 ml",
-            "1 000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1 100 ml",
+            "a3": "1 250 ml",
+            "a4": "1 000 ml"
+          },
           "headerLabel": "HÄLSOVÅRDENS NUMERIK"
         },
         "nurse-r2q5": {
           "context": "Tidigare: andas bekvämt och prata normalt. Nu: andas snabbare och pausar mellan korta fraser.",
           "question": "Vilken förändring i denna observationsanteckning är viktigast?",
-          "answers": [
-            "Anteckningen innehåller två tidpunkter",
-            "Andningsmönstret har förvärrats",
-            "Personen talar fortfarande",
-            "Den tidigare anteckningen var kortare"
-          ],
+          "answers": {
+            "a1": "Anteckningen innehåller två tidpunkter",
+            "a2": "Andningsmönstret har förvärrats",
+            "a3": "Personen talar fortfarande",
+            "a4": "Den tidigare anteckningen var kortare"
+          },
           "headerLabel": "OBSERVATIONSTRENDER"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Överlämning säger vänster arm, diagram säger höger arm"
           },
           "question": "Vilken obalans ska klargöras?",
-          "answers": [
-            "Användning av versaler",
-            "Antalet ord",
-            "Diagrammet har en ram",
-            "Den inspelade sidan är annorlunda"
-          ],
+          "answers": {
+            "a1": "Användning av versaler",
+            "a2": "Antalet ord",
+            "a3": "Diagrammet har en ram",
+            "a4": "Den inspelade sidan är annorlunda"
+          },
           "headerLabel": "REGISTRERA NOGGRANNHET"
         },
         "nurse-r4q3": {
           "question": "En uppgift kan stänka kroppsvätska mot ansiktet. Vilket skydd adresserar den angivna risken?",
-          "answers": [
-            "En tygmössa",
-            "Lämpligt ögon- eller ansiktsskydd",
-            "Endast skoskydd",
-            "Inget skydd om uppgiften är kort"
-          ],
+          "answers": {
+            "a1": "En tygmössa",
+            "a2": "Lämpligt ögon- eller ansiktsskydd",
+            "a3": "Endast skoskydd",
+            "a4": "Inget skydd om uppgiften är kort"
+          },
           "headerLabel": "FÖREBYGGANDE AV INFEKTION"
         },
         "nurse-r6q3": {
           "question": "Någon ställer en känslig fråga i ett trafikerat offentligt område. Vad ska du göra?",
-          "answers": [
-            "Erbjud dig att fortsätta konversationen någonstans privat",
-            "Svara kort och tyst där du är",
-            "Be personer i närheten att ge dig lite utrymme",
-            "Ge bara den okänsliga delen av svaret"
-          ],
+          "answers": {
+            "a1": "Erbjud dig att fortsätta konversationen någonstans privat",
+            "a2": "Svara kort och tyst där du är",
+            "a3": "Be personer i närheten att ge dig lite utrymme",
+            "a4": "Ge bara den okänsliga delen av svaret"
+          },
           "headerLabel": "MEDLEMMANDE KOMMUNIKATION"
         },
         "nurse-r7q1": {
           "context": "Person A är bekväm med en något snabbare puls efter att ha gått. Person B är plötsligt förvirrad, andas snabbt och ser blek ut.",
           "question": "Vem behöver uppmärksamhet först?",
-          "answers": [
-            "Person B, eftersom flera nya tecken tyder på plötslig försämring",
-            "Person A, eftersom deras puls förändrades",
-            "Båda kan vänta på rutinmässiga observationer",
-            "Personen som kom först"
-          ],
+          "answers": {
+            "a1": "Person B, eftersom flera nya tecken tyder på plötslig försämring",
+            "a2": "Person A, eftersom deras puls förändrades",
+            "a3": "Båda kan vänta på rutinmässiga observationer",
+            "a4": "Personen som kom först"
+          },
           "headerLabel": "PRIORITERAD DOM"
         },
         "nurse-r3q1": {
           "question": "En vätsketotal stiger från 600 ml till 900 ml. Med hur många procent ökade den?",
-          "answers": [
-            "25 %",
-            "33 %",
-            "50 %",
-            "75 %"
-          ],
+          "answers": {
+            "a1": "25 %",
+            "a2": "33 %",
+            "a3": "50 %",
+            "a4": "75 %"
+          },
           "headerLabel": "HÄLSOVÅRDENS NUMERIK"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Luftvägarna blockerade, mindre luft till lungorna, okänt, mindre syre till vävnaderna"
           },
           "question": "En luftvägsblockering hindrar luft från att nå lungorna. Vilken nedströmseffekt följer mest direkt?",
-          "answers": [
-            "Mindre syre kommer in i blodet",
-            "Mer näringsämnen kommer in i magen",
-            "Njurarna bildar genast mer urin",
-            "Ben ger mer rörelse"
-          ],
+          "answers": {
+            "a1": "Mindre syre kommer in i blodet",
+            "a2": "Mer näringsämnen kommer in i magen",
+            "a3": "Njurarna bildar genast mer urin",
+            "a4": "Ben ger mer rörelse"
+          },
           "headerLabel": "INTEGRERAD FYSIOLOGI"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Person A är pigg med lätt stabilt obehag och normalt tal. Person B är blek, svår att väcka och andas oregelbundet."
           },
           "question": "Vem har omedelbar prioritet?",
-          "answers": [
-            "Person A, för obehag kommer alltid först",
-            "Båda kan vänta på en rutinkontroll",
-            "Person B, eftersom medvetande och andning plötsligt har förändrats",
-            "Välj utifrån vem som kom först"
-          ],
+          "answers": {
+            "a1": "Person A, för obehag kommer alltid först",
+            "a2": "Båda kan vänta på en rutinkontroll",
+            "a3": "Person B, eftersom medvetande och andning plötsligt har förändrats",
+            "a4": "Välj utifrån vem som kom först"
+          },
           "headerLabel": "SLUTLIG OVERLÄMNING"
         }
       }

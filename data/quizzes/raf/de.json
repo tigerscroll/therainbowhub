@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 15 % der Erwachsenen können diese RAF-Aufnahmeprüfung bestehen",
   "eyebrow": "DER RAF-WISSENSTEST",
   "summary": "Zehn Fragen testen die RAF-Geschichte, Flugzeuge, Dienstgrade und Einsatzkenntnisse.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Die berühmten Flugzeuge sind nur der Anfang. Diese 10 Fragen zeigen, wie viel Sie wirklich über die RAF wissen.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieses Unterhaltungsquiz mit zehn Fragen behandelt die Formation, Geschichte, Rangstruktur, Flugzeuge und moderne Rollen der Royal Air Force. Es beginnt mit bekannten Meilensteinen, bevor es zu Details geht, die genauere RAF-Kenntnisse erfordern.\n\nWählen Sie für jede Frage eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen, danach können Sie die vollständige Auswertung freischalten.\n\nDie Fakten wurden anhand von aktuellem und historischem Material überprüft, das von der Royal Air Force veröffentlicht wurde.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn immer schwieriger werdende RAF-Fragen.",
         "Wählen Sie ohne fremde Hilfe eine von vier Antworten.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "RAF-Einstiegstest",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "RAF-Aufnahmeprüfung",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Ergebnis zum RAF-Wissen kann nun angezeigt werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Fünf RAF-Wissensbereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Fünf RAF-Wissensbereiche im Vergleich"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sie haben die RAF-Einstiegstest bestanden!",
       "finished": "RAF-Einstiegstest abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkstes RAF-Thema",
       "trickiest": "Das heikelste RAF-Thema",
       "bestRound": "Stärkster Bereich",
@@ -99,8 +92,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "In welchem Jahr wurde die Royal Air Force gegründet?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "DIE ANFÄNGE DER RAF"
         },
         "raf-q2": {
           "question": "Die RAF entstand durch die Fusion des Royal Flying Corps mit welchem anderen Dienst?",
-          "answers": [
-            "Fleet Air Arm",
-            "Royal Naval Air Service",
-            "Army Air Corps",
-            "Royal Observer Corps"
-          ],
+          "answers": {
+            "a1": "Fleet Air Arm",
+            "a2": "Royal Naval Air Service",
+            "a3": "Army Air Corps",
+            "a4": "Royal Observer Corps"
+          },
           "headerLabel": "DIENSTGESCHICHTE"
         },
         "raf-q3": {
           "question": "In welchem Jahr fand die Luftschlacht um England statt?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "SCHLACHT UM GROSSBRITANNIEN"
         },
         "raf-q4": {
           "question": "Wie lautet das offizielle Motto der Royal Air Force?",
-          "answers": [
-            "Semper Fidelis",
-            "Who Dares Wins",
-            "Dienen und führen",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Semper Fidelis",
+            "a2": "Who Dares Wins",
+            "a3": "Dienen und führen",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "RAF-IDENTITÄT"
         },
         "raf-q5": {
           "question": "Was bleibt die Hauptaufgabe der RAF heute?",
-          "answers": [
-            "Den britischen Luftraum schützen",
-            "Betrieb der Flugzeugträger der Royal Navy",
-            "Verwaltung aller zivilen Flughäfen",
-            "Ausbildung aller Teilstreitkräfte"
-          ],
+          "answers": {
+            "a1": "Den britischen Luftraum schützen",
+            "a2": "Betrieb der Flugzeugträger der Royal Navy",
+            "a3": "Verwaltung aller zivilen Flughäfen",
+            "a4": "Ausbildung aller Teilstreitkräfte"
+          },
           "headerLabel": "MODERNE ROLLE"
         },
         "raf-q6": {
           "question": "Welcher Offiziersrang der RAF steht unmittelbar über Flight Lieutenant?",
-          "answers": [
-            "Flying Officer",
-            "Squadron Leader",
-            "Wing Commander",
-            "Group Captain"
-          ],
+          "answers": {
+            "a1": "Flying Officer",
+            "a2": "Squadron Leader",
+            "a3": "Wing Commander",
+            "a4": "Group Captain"
+          },
           "headerLabel": "RANGSTRUKTUR"
         },
         "raf-q7": {
           "question": "Welches Flugzeug fliegt die Kunstflugstaffel Red Arrows der RAF?",
-          "answers": [
-            "Typhoon FGR4",
-            "Tutor T1",
-            "Hawk T1",
-            "Voyager"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "FLUGZEUGWISSEN"
         },
         "raf-q8": {
           "question": "Was war Chain Home während der Luftschlacht um England?",
-          "answers": [
-            "Ein Jagdgeschwader",
-            "Ein Flugzeugproduktionsplan",
-            "Ein Küstenrettungsdienst",
-            "Ein Frühwarnradarnetz"
-          ],
+          "answers": {
+            "a1": "Ein Jagdgeschwader",
+            "a2": "Ein Flugzeugproduktionsplan",
+            "a3": "Ein Küstenrettungsdienst",
+            "a4": "Ein Frühwarnradarnetz"
+          },
           "headerLabel": "VORWARNUNG"
         },
         "raf-q9": {
           "question": "Welcher Firmenname ist untrennbar mit dem Design der Spitfire verbunden?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havilland",
-            "Handley Page"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havilland",
+            "a4": "Handley Page"
+          },
           "headerLabel": "HISTORISCHES FLUGZEUG"
         },
         "raf-q10": {
           "question": "Neben schnellen Jets, mehrmotorigen Maschinen und Drehflüglern: Für welchen vierten Bereich können RAF-Piloten ausgebildet werden?",
-          "answers": [
-            "Seezollpatrouille",
-            "Ferngesteuerte Flugzeugsysteme",
-            "Ziviles Fluglinienkommando",
-            "Marine-U-Boot-Luftfahrt"
-          ],
+          "answers": {
+            "a1": "Seezollpatrouille",
+            "a2": "Ferngesteuerte Flugzeugsysteme",
+            "a3": "Ziviles Fluglinienkommando",
+            "a4": "Marine-U-Boot-Luftfahrt"
+          },
           "headerLabel": "LETZTE RAF-FRAGE"
         }
       }

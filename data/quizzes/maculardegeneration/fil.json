@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pagsusuri sa Macular Degeneration",
   "eyebrow": "10 TANONG TUNGKOL SA GITNANG PANINGIN",
   "summary": "Mga sentral na detalye, mga visual na bitag at mahahalagang tanda ng babala ng AMD sa isang mabilis na hamon.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Maaari mo bang makita ang mga sentral na detalye at tukuyin ang mga palatandaan ng babala? Ang 10 mabilis na pagsusuri na ito ay nagiging mas mahirap.",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Pinagsasama ng sampung tanong na hamon na ito ang limang on-screen na visual na puzzle na may limang tanong sa pangkalahatang kamalayan tungkol sa age-related macular degeneration (AMD). Sinusukat nito ang mga sagot sa pagsusulit na ito, hindi ang kalusugan ng mata o ang posibilidad ng sakit.\n\nAng laki ng screen, liwanag, contrast, paningin, corrective lenses, fatigue at mga setting ng device ay maaaring makaapekto sa performance. Ang mga bagong kulot o baluktot na linya, isang bagong malabo o blangko na bahagi sa gitnang paningin, o biglaang paglala ay dapat talakayin kaagad sa isang kwalipikadong propesyonal sa pangangalaga sa mata.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Kumpletuhin ang limang pangunahing-detalye at visual-memory na mga hamon.",
         "Sagutin ang limang tanong tungkol sa AMD at kung kailan hihingi ng tulong.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "hamon sa gitnang paningin",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Pagsusuri sa Macular Degeneration",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong sampung sagot ay nasuri at ang iyong marka ng hamon sa gitnang paningin ay handa nang ipakita.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Tatlong visual na lugar ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong visual na lugar ang inihambing"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Na-clear mo ang 80% visual challenge!",
       "finished": "Kumpleto na ang hamon sa gitnang paningin",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na lugar ngayon",
       "trickiest": "Pinaka nakakalito na lugar ngayon",
       "bestRound": "Pinakamahusay na seksyon",
@@ -94,8 +87,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong resulta",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Aling karakter ang nasa eksaktong gitna ng grid?",
           "headerLabel": "DETALYE SA GITNA",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "SANGGUNIAN: Q7M2P6",
           "question": "Aling code ang eksaktong tumutugma sa reference?",
           "headerLabel": "PAKAKAPITANG",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "SANGGUNIAN",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Aling simbolo ang kumukumpleto sa alternating sequence?",
           "headerLabel": "PAGSUNOD SA PADRON",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Aling bagay ang lumitaw na pangatlo?",
           "headerLabel": "MABILISANG PAGSUBOK SA VISWAL NA MEMORYA",
-          "answers": [
-            "Aklat",
-            "Susi",
-            "tasa",
-            "Araw"
-          ],
+          "answers": {
+            "a1": "Aklat",
+            "a2": "Susi",
+            "a3": "tasa",
+            "a4": "Araw"
+          },
           "study": {
             "title": "Pag-aralan ang pagkakasunud-sunod ng limang bagay",
             "instruction": "Awtomatikong mawawala ito.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Aling posisyon ang naglalaman ng bukas na bilog?",
           "headerLabel": "PANG-FOCUS sa PANGGAWA ng Milyon",
-          "answers": [
-            "Pang-apat",
-            "Pangalawa",
-            "Panglima",
-            "Pangatlo"
-          ],
+          "answers": {
+            "a1": "Pang-apat",
+            "a2": "Pangalawa",
+            "a3": "Panglima",
+            "a4": "Pangatlo"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Aling bahagi ng paningin ang direktang apektado ng macular degeneration na nauugnay sa edad?",
           "headerLabel": "Ang mga Batas ng DMLA",
-          "answers": [
-            "Tanging ang malayong panlabas na mga gilid",
-            "Matalim sa gitna, tuwid na paningin",
-            "Night vision lang",
-            "Tanging malalim na pang-unawa"
-          ]
+          "answers": {
+            "a1": "Tanging ang malayong panlabas na mga gilid",
+            "a2": "Matalim sa gitna, tuwid na paningin",
+            "a3": "Night vision lang",
+            "a4": "Tanging malalim na pang-unawa"
+          }
         },
         "macular-q7": {
           "question": "Aling pagbabago sa visual ang isang kilalang tanda ng babala ng AMD?",
           "headerLabel": "MGA PALATANDAAN NG BABALA",
-          "answers": [
-            "Ang mga tunog ay nagiging mas tahimik",
-            "Pansamantalang kati sa talukap ng mata",
-            "Mga tuwid na linya na lumilitaw na kulot o baluktot",
-            "Nalaglag ang isang pilikmata"
-          ]
+          "answers": {
+            "a1": "Ang mga tunog ay nagiging mas tahimik",
+            "a2": "Pansamantalang kati sa talukap ng mata",
+            "a3": "Mga tuwid na linya na lumilitaw na kulot o baluktot",
+            "a4": "Nalaglag ang isang pilikmata"
+          }
         },
         "macular-q8": {
           "question": "Aling pagtatasa ang maaaring gamitin ng isang propesyonal sa pangangalaga sa mata upang maghanap ng AMD?",
           "headerLabel": "PAGSUSURI NG PROPESYONAL",
-          "answers": [
-            "Isang pagsubok sa pagdinig",
-            "Isang blood-pressure reading mag-isa",
-            "Isang pagsubok sa panlasa",
-            "Isang komprehensibong dilat na pagsusuri sa mata"
-          ]
+          "answers": {
+            "a1": "Isang pagsubok sa pagdinig",
+            "a2": "Isang blood-pressure reading mag-isa",
+            "a3": "Isang pagsubok sa panlasa",
+            "a4": "Isang komprehensibong dilat na pagsusuri sa mata"
+          }
         },
         "macular-q9": {
           "question": "Ano ang pinakaligtas na tugon sa biglaang lumalalang paningin o isang bagong sentral na malabo o blangko na lugar?",
           "headerLabel": "KAILAN KUMILOS",
-          "answers": [
-            "Humingi ng agarang propesyonal na payo sa pangangalaga sa mata",
-            "Maghintay ng ilang buwan nang hindi ito binabanggit",
-            "Dagdagan ang liwanag ng screen at ipagpalagay na ito ay naayos na",
-            "Umasa lamang sa isang online na pagsusulit"
-          ]
+          "answers": {
+            "a1": "Humingi ng agarang propesyonal na payo sa pangangalaga sa mata",
+            "a2": "Maghintay ng ilang buwan nang hindi ito binabanggit",
+            "a3": "Dagdagan ang liwanag ng screen at ipagpalagay na ito ay naayos na",
+            "a4": "Umasa lamang sa isang online na pagsusulit"
+          }
         },
         "macular-q10": {
           "question": "Ano ang masasabi sa iyo ng iyong iskor sa online challenge na ito?",
           "headerLabel": "PANGHULING REALITY CHECK",
-          "answers": [
-            "Kung malusog ang iyong retina",
-            "Tanging kung paano ka gumanap sa sampung tanong na ito",
-            "Kung kailangan mo ng isang partikular na paggamot",
-            "Kung maaari mong ibukod ang AMD"
-          ]
+          "answers": {
+            "a1": "Kung malusog ang iyong retina",
+            "a2": "Tanging kung paano ka gumanap sa sampung tanong na ito",
+            "a3": "Kung kailangan mo ng isang partikular na paggamot",
+            "a4": "Kung maaari mong ibukod ang AMD"
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De fleste sjåfører kan ikke bestå denne motorsykkelførerprøven",
   "eyebrow": "MOTORSYKKELFØRERTESTEN",
   "summary": "Ti verdensomspennende spørsmål om trafikksikkerhet tester om kjøreinstinktene dine overføres til to hjul.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Det er ikke nok å kjøre bil. Disse 10 motorsykkelspørsmålene avslører sikkerhetsdetaljene de fleste trafikanter savner.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspennende engelske underholdningsquizen tester brede motorsykkelsikkerhetsprinsipper som gjelder på tvers av mange veisystemer. Den unngår landsspesifikke skilt, lisensregler, fartsgrenser og juridiske formuleringer.\n\nVelg den sikreste generelle reaksjonen i hver situasjon. Ekte motorsykler, veier og lokale lover varierer, så følg alltid din offisielle førerhåndbok, opplæring og produsentens instruksjoner.\n\nÅ bestå denne quizen viser ikke praktiske kjøreferdigheter eller erstatter godkjent motorsykkelinstruksjon.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Les hvert sikkerhetsscenario for motorsykkel nøye.",
         "Velg det sikreste generelle svaret fra de fire alternativene.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Motorsykkel test",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Motorsykkelsikkerhet",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din motorsykkelsikkerhetspoeng og fullstendige svargjennomgang er klare.",
         "preAdChecks": [
           "10 rideavgjørelser sjekket",
-          "Seks sikkerhetsområder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Seks sikkerhetsområder sammenlignet"
+        ]
       }
     }
   },
@@ -89,7 +83,6 @@
     "score": {
       "passed": "Du besto motorsykkelførerprøven!",
       "finished": "Motorsykkelførerprøve fullført",
-      "correctLabel": "riktig",
       "strongest": "Det sterkeste sikkerhetsområdet",
       "trickiest": "Det vanskeligste sikkerhetsområdet",
       "bestRound": "Beste seksjon",
@@ -102,8 +95,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -112,102 +104,102 @@
       "questions": {
         "motorbike-q1": {
           "question": "Når er dekktrykket vanligvis best sjekket for en nøyaktig rutineavlesning?",
-          "answers": [
-            "Når dekkene er kalde",
-            "Umiddelbart etter en rask tur",
-            "Bare når en advarsel vises",
-            "Mens du frakter en passasjer"
-          ],
+          "answers": {
+            "a1": "Når dekkene er kalde",
+            "a2": "Umiddelbart etter en rask tur",
+            "a3": "Bare når en advarsel vises",
+            "a4": "Mens du frakter en passasjer"
+          },
           "headerLabel": "MASKINKONTROLL"
         },
         "motorbike-q2": {
           "question": "Hvor bør en rytter generelt rette synet sitt mens han reiser gjennom en sving?",
-          "answers": [
-            "Ved forhjulet",
-            "Gjennom svingen mot tiltenkt sti",
-            "I kanten av veien",
-            "Ved kjøretøyet bak"
-          ],
+          "answers": {
+            "a1": "Ved forhjulet",
+            "a2": "Gjennom svingen mot tiltenkt sti",
+            "a3": "I kanten av veien",
+            "a4": "Ved kjøretøyet bak"
+          },
           "headerLabel": "HJØRENE"
         },
         "motorbike-q3": {
           "question": "Regnet begynner under en tur. Hva skal skje med plassen bak kjøretøyet foran?",
-          "answers": [
-            "Det skal forbli akkurat det samme",
-            "Den bør bli kortere",
-            "Det bør øke",
-            "Det betyr bare ved høy hastighet"
-          ],
+          "answers": {
+            "a1": "Det skal forbli akkurat det samme",
+            "a2": "Den bør bli kortere",
+            "a3": "Det bør øke",
+            "a4": "Det betyr bare ved høy hastighet"
+          },
           "headerLabel": "VÅTE FORHOLD"
         },
         "motorbike-q4": {
           "question": "På en moderne motorsykkel i rettlinjet nødstopp, hvilken bred teknikk er generelt tryggest?",
-          "answers": [
-            "Bruk kun bakbremsen",
-            "Bruk kun frontbremsen umiddelbart",
-            "Pump begge bremsene gjentatte ganger",
-            "Bruk begge bremsene gradvis mens du holder motorsykkelen stabil"
-          ],
+          "answers": {
+            "a1": "Bruk kun bakbremsen",
+            "a2": "Bruk kun frontbremsen umiddelbart",
+            "a3": "Pump begge bremsene gjentatte ganger",
+            "a4": "Bruk begge bremsene gradvis mens du holder motorsykkelen stabil"
+          },
           "headerLabel": "NØDBREMSING"
         },
         "motorbike-q5": {
           "question": "Hvilken vane bidrar best til å redusere sjansen for at en annen sjåfør overser en motorsykkel?",
-          "answers": [
-            "Hold deg unna blindsoner og plasser for synlighet",
-            "Kjør ved siden av et kjøretøy så lenge som mulig",
-            "Anta at øyekontakt betyr at sjåføren har sett deg",
-            "Bruk fjernlys kontinuerlig"
-          ],
+          "answers": {
+            "a1": "Hold deg unna blindsoner og plasser for synlighet",
+            "a2": "Kjør ved siden av et kjøretøy så lenge som mulig",
+            "a3": "Anta at øyekontakt betyr at sjåføren har sett deg",
+            "a4": "Bruk fjernlys kontinuerlig"
+          },
           "headerLabel": "SYNLIGHET"
         },
         "motorbike-q6": {
           "question": "Hvilken viktig endring bør en rytter forvente når han frakter en passasjer?",
-          "answers": [
-            "Motorsykkelen vil snu og stoppe nøyaktig det samme",
-            "Balanse, akselerasjon og bremselengde kan endres",
-            "Dekkenes tilstand betyr mindre",
-            "Passasjeren bør lene seg motsatt rytteren"
-          ],
+          "answers": {
+            "a1": "Motorsykkelen vil snu og stoppe nøyaktig det samme",
+            "a2": "Balanse, akselerasjon og bremselengde kan endres",
+            "a3": "Dekkenes tilstand betyr mindre",
+            "a4": "Passasjeren bør lene seg motsatt rytteren"
+          },
           "headerLabel": "PASSASJERSIKKERHET"
         },
         "motorbike-q7": {
           "question": "Hvordan bør en rytter krysse våtmalte markeringer når de ikke kan unngås?",
-          "answers": [
-            "Akselerer kraftig mens du lener deg",
-            "Brems hardt på markeringen",
-            "Hold motorsykkelen så oppreist og jevn som mulig",
-            "Vend brått over den"
-          ],
+          "answers": {
+            "a1": "Akselerer kraftig mens du lener deg",
+            "a2": "Brems hardt på markeringen",
+            "a3": "Hold motorsykkelen så oppreist og jevn som mulig",
+            "a4": "Vend brått over den"
+          },
           "headerLabel": "OVERFLATEFARE"
         },
         "motorbike-q8": {
           "question": "Før du endrer posisjon til et område et speil kanskje ikke viser, hvilken endelig observasjon er verdifull?",
-          "answers": [
-            "Et blikk på hastighetsdisplayet",
-            "En titt på forhjulet",
-            "En sjekk av drivstoffnivået",
-            "En direkte blindsonesjekk når det er trygt"
-          ],
+          "answers": {
+            "a1": "Et blikk på hastighetsdisplayet",
+            "a2": "En titt på forhjulet",
+            "a3": "En sjekk av drivstoffnivået",
+            "a4": "En direkte blindsonesjekk når det er trygt"
+          },
           "headerLabel": "OBSERVASJON"
         },
         "motorbike-q9": {
           "question": "Hvor bør en fører finne den riktige spesifikasjonen for drivkjedejustering for motorsykkelen sin?",
-          "answers": [
-            "Produsentens informasjon",
-            "En gjetning basert på en annen motorsykkel",
-            "Dekkets sidevegg",
-            "Et veiskilt"
-          ],
+          "answers": {
+            "a1": "Produsentens informasjon",
+            "a2": "En gjetning basert på en annen motorsykkel",
+            "a3": "Dekkets sidevegg",
+            "a4": "Et veiskilt"
+          },
           "headerLabel": "VEDLIKEHOLD"
         },
         "motorbike-q10": {
           "question": "En rytter merker at konsentrasjonen avtar på en lang reise. Hva er den sikreste responsen?",
-          "answers": [
-            "Kjør raskere for å fullføre raskere",
-            "Stopp et trygt sted og ta en skikkelig pause",
-            "Følg et annet kjøretøy nøye",
-            "Åpne visiret og fortsett"
-          ],
+          "answers": {
+            "a1": "Kjør raskere for å fullføre raskere",
+            "a2": "Stopp et trygt sted og ta en skikkelig pause",
+            "a3": "Følg et annet kjøretøy nøye",
+            "a4": "Åpne visiret og fortsett"
+          },
           "headerLabel": "ENDELIG SIKKERHETSANrop"
         }
       }

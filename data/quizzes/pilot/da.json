@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 3 % af de voksne kan bestå denne pilotoptagelsesprøve",
   "eyebrow": "PILOTÆNDESTESTEN",
   "summary": "Ti spørgsmål tester flyveprincipper, instrumenter, vejr, navigation og cockpit-bedømmelse.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Det grundlæggende i cockpittet ser enkelt ud. Derefter bevæger eksamen sig ind i vejr, navigation og beslutninger, som piloter ikke har råd til at gætte.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsudfordring med ti spørgsmål bruger internationale koncepter inden for civil luftfart i stedet for ét lands licensplan. Den tester brede flyveprincipper, cockpitinstrumenter, vejrbevidsthed, navigation og konservativ beslutningstagning.\n\nVælg et svar til hvert spørgsmål. Rigtigheden forbliver skjult indtil den sidste afsløring, hvor den komplette svargennemgang er tilgængelig til at låse op.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Besvar ti stadig sværere spørgsmål om pilotegenskaber.",
         "Vælg det sikreste eller mest præcise svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pilotindgangsudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Pilot optagelsesprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet kontrolleret, og din pilotscore er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fem luftfartsområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fem luftfartsområder sammenlignet"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du bestod Pilot-indgangsudfordringen!",
       "finished": "Pilotindgangsudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste luftfartsområde",
       "trickiest": "Det vanskeligste luftfartsområde",
       "bestRound": "Bedste afsnit",
@@ -99,8 +92,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Hvilken kraft virker opad mod et flys vægt?",
-          "answers": [
-            "Opdrift",
-            "Luftmodstand",
-            "Fremdriftskraft",
-            "Træghed"
-          ],
+          "answers": {
+            "a1": "Opdrift",
+            "a2": "Luftmodstand",
+            "a3": "Fremdriftskraft",
+            "a4": "Træghed"
+          },
           "headerLabel": "GRUNDLÆGGENDE FLYV"
         },
         "pilot-q2": {
           "question": "Hvilket cockpitinstrument angiver højden?",
-          "answers": [
-            "Lufthastighedsindikator",
-            "Højdemåler",
-            "Overskriftsindikator",
-            "Drejekoordinator"
-          ],
+          "answers": {
+            "a1": "Lufthastighedsindikator",
+            "a2": "Højdemåler",
+            "a3": "Overskriftsindikator",
+            "a4": "Drejekoordinator"
+          },
           "headerLabel": "INSTRUMENTER"
         },
         "pilot-q3": {
           "question": "Hvilken skytype er stærkest forbundet med tordenvejr og kraftig turbulens?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "LUFTVEJR"
         },
         "pilot-q4": {
           "question": "En kurs på 180 grader peger omtrent i hvilken retning?",
-          "answers": [
-            "Nord",
-            "Øst",
-            "Vest",
-            "Syd"
-          ],
+          "answers": {
+            "a1": "Nord",
+            "a2": "Øst",
+            "a3": "Vest",
+            "a4": "Syd"
+          },
           "headerLabel": "NAVIGATION"
         },
         "pilot-q5": {
           "question": "Vejret forværres hurtigere end forventet, og sikre marginer skrumper. Hvad er den bedste generelle beslutning?",
-          "answers": [
-            "Revurder tidligt og omdiriger eller land, mens sikre muligheder forbliver",
-            "Fortsæt, fordi den oprindelige plan skal være færdig",
-            "Gå ned under sikre grænser for at bevare visuel kontakt",
-            "Ignorer tendensen, indtil forholdene bliver kritiske"
-          ],
+          "answers": {
+            "a1": "Revurder tidligt og omdiriger eller land, mens sikre muligheder forbliver",
+            "a2": "Fortsæt, fordi den oprindelige plan skal være færdig",
+            "a3": "Gå ned under sikre grænser for at bevare visuel kontakt",
+            "a4": "Ignorer tendensen, indtil forholdene bliver kritiske"
+          },
           "headerLabel": "Aeronautisk DOM"
         },
         "pilot-q6": {
           "question": "Hvilke styreflader får et fly til at krænge om længdeaksen?",
-          "answers": [
-            "Højderor",
-            "Krængeror",
-            "Kun rorpedaler",
-            "Flaps"
-          ],
+          "answers": {
+            "a1": "Højderor",
+            "a2": "Krængeror",
+            "a3": "Kun rorpedaler",
+            "a4": "Flaps"
+          },
           "headerLabel": "FLYKONTROLLER"
         },
         "pilot-q7": {
           "question": "Hvilket instrument viser et flys stignings- eller nedstigningshastighed?",
-          "answers": [
-            "Kompas",
-            "Kun højdemåler",
-            "Lodret hastighedsindikator",
-            "Udvendig lufttemperaturmåler"
-          ],
+          "answers": {
+            "a1": "Kompas",
+            "a2": "Kun højdemåler",
+            "a3": "Lodret hastighedsindikator",
+            "a4": "Udvendig lufttemperaturmåler"
+          },
           "headerLabel": "COCKPIT-SCANNING"
         },
         "pilot-q8": {
           "question": "Hvad er vindskydning?",
-          "answers": [
-            "En jævn vind, der aldrig ændrer sig",
-            "Kun et mål for skyhøjde",
-            "Luft bevæger sig kun over vand",
-            "En hurtig ændring i vindhastighed eller retning over en kort afstand"
-          ],
+          "answers": {
+            "a1": "En jævn vind, der aldrig ændrer sig",
+            "a2": "Kun et mål for skyhøjde",
+            "a3": "Luft bevæger sig kun over vand",
+            "a4": "En hurtig ændring i vindhastighed eller retning over en kort afstand"
+          },
           "headerLabel": "VEJREFARER"
         },
         "pilot-q9": {
           "question": "En bane med nummer 27 er rettet omtrent mod hvilken retning?",
-          "answers": [
-            "Vest",
-            "Nord",
-            "Øst",
-            "Syd"
-          ],
+          "answers": {
+            "a1": "Vest",
+            "a2": "Nord",
+            "a3": "Øst",
+            "a4": "Syd"
+          },
           "headerLabel": "RÆNNEBANEN"
         },
         "pilot-q10": {
           "question": "Du bemærker en uforklarlig brændstofubalance under flyvningen. Hvad er det bedste generelle svar?",
-          "answers": [
-            "Antag, at måleren vil rette sig selv",
-            "Brug tjeklisten, overvåg situationen og kommuniker efter behov",
-            "Skift tilfældige systemer, indtil det forsvinder",
-            "Udsæt enhver handling indtil landing"
-          ],
+          "answers": {
+            "a1": "Antag, at måleren vil rette sig selv",
+            "a2": "Brug tjeklisten, overvåg situationen og kommuniker efter behov",
+            "a3": "Skift tilfældige systemer, indtil det forsvinder",
+            "a4": "Udsæt enhver handling indtil landing"
+          },
           "headerLabel": "ENDELIGT CCKPIT SPØRGSMÅL"
         }
       }

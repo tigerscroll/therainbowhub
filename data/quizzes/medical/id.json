@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kebanyakan Orang Dewasa Tidak Dapat Lulus Ujian Masuk Medis Ini",
   "eyebrow": "UJI ILMU KEDOKTERAN",
   "summary": "Sepuluh pertanyaan menguji anatomi, fisiologi, mikrobiologi, farmakologi dan keamanan klinis.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Pertanyaan pertama terlihat mendasar. Kemudian tes beralih ke fisiologi, mikroba, dan ilmu kedokteran yang dilupakan kebanyakan orang dewasa.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sepuluh pertanyaan ini menggunakan ilmu kedokteran dasar yang diajarkan di negara-negara berbahasa Inggris Tingkat 1. Ini menguji dasar-dasar anatomi, fisiologi, biologi sel, mikrobiologi, farmakologi dan pengendalian infeksi tanpa bergantung pada silabus penerimaan satu universitas.\n\nPilih satu jawaban untuk setiap pertanyaan. Kebenaran tetap tersembunyi hingga pengungkapan akhir, di mana tinjauan jawaban lengkap tersedia untuk dibuka.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Jawab sepuluh pertanyaan ilmu kedokteran yang semakin sulit.",
         "Pilih satu jawaban yang paling akurat.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan masuk medis",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Ujian Masuk Kedokteran",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor ilmu kedokteran Anda siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Lima bidang sains dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Lima bidang sains dibandingkan"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Anda lulus tantangan masuk Medis!",
       "finished": "Tantangan masuk medis selesai",
-      "correctLabel": "benar",
       "strongest": "Bidang sains terkuat",
       "trickiest": "Bidang sains paling rumit",
       "bestRound": "Bagian terbaik",
@@ -99,8 +92,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Protein manakah dalam sel darah merah yang membawa oksigen paling banyak?",
-          "answers": [
-            "Hemoglobin",
-            "Keratin",
-            "Kolagen",
-            "insulin"
-          ],
+          "answers": {
+            "a1": "Hemoglobin",
+            "a2": "Keratin",
+            "a3": "Kolagen",
+            "a4": "insulin"
+          },
           "headerLabel": "FISIOLOGI DARAH"
         },
         "medical-q2": {
           "question": "Dalam DNA, adenin biasanya berpasangan dengan basa yang mana?",
-          "answers": [
-            "Guanin",
-            "timin",
-            "sitosin",
-            "Urasil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "timin",
+            "a3": "sitosin",
+            "a4": "Urasil"
+          },
           "headerLabel": "BIOLOGI SEL"
         },
         "medical-q3": {
           "question": "Organ manakah yang merupakan tempat utama pemrosesan dan penguraian banyak obat?",
-          "answers": [
-            "Limpa",
-            "tiroid",
-            "hati",
-            "kandung kemih"
-          ],
+          "answers": {
+            "a1": "Limpa",
+            "a2": "tiroid",
+            "a3": "hati",
+            "a4": "kandung kemih"
+          },
           "headerLabel": "FARMAKOLOGI"
         },
         "medical-q4": {
           "question": "Pernyataan manakah yang paling membedakan virus dari bakteri?",
-          "answers": [
-            "Virus selalu lebih besar",
-            "Bakteri tidak dapat berkembang biak",
-            "Virus tidak mengandung materi genetik",
-            "Virus bergantung pada sel inang untuk bereplikasi"
-          ],
+          "answers": {
+            "a1": "Virus selalu lebih besar",
+            "a2": "Bakteri tidak dapat berkembang biak",
+            "a3": "Virus tidak mengandung materi genetik",
+            "a4": "Virus bergantung pada sel inang untuk bereplikasi"
+          },
           "headerLabel": "MIKROBIOLOGI"
         },
         "medical-q5": {
           "question": "Larutan yang pHnya dibawah 7 disebut?",
-          "answers": [
-            "Asam",
-            "Netral",
-            "basa",
-            "Isotonik"
-          ],
+          "answers": {
+            "a1": "Asam",
+            "a2": "Netral",
+            "a3": "basa",
+            "a4": "Isotonik"
+          },
           "headerLabel": "KIMIA TUBUH"
         },
         "medical-q6": {
           "question": "Bagian mana dari sistem saraf otonom yang berhubungan dengan aktivitas 'istirahat dan pencernaan'?",
-          "answers": [
-            "Sistem simpatik",
-            "Sistem parasimpatis",
-            "Sistem motorik somatik",
-            "Jalur visual sentral"
-          ],
+          "answers": {
+            "a1": "Sistem simpatik",
+            "a2": "Sistem parasimpatis",
+            "a3": "Sistem motorik somatik",
+            "a4": "Jalur visual sentral"
+          },
           "headerLabel": "SISTEM SARAF"
         },
         "medical-q7": {
           "question": "Struktur manakah yang mencegah makanan masuk ke saluran napas saat menelan?",
-          "answers": [
-            "patela",
-            "Retina",
-            "Epiglotis",
-            "pankreas"
-          ],
+          "answers": {
+            "a1": "patela",
+            "a2": "Retina",
+            "a3": "Epiglotis",
+            "a4": "pankreas"
+          },
           "headerLabel": "ANATOMI FUNGSIONAL"
         },
         "medical-q8": {
           "question": "Saraf kranial manakah yang membawa informasi visual dari mata?",
-          "answers": [
-            "saraf vagus",
-            "Saraf wajah",
-            "Saraf trigeminal",
-            "Saraf optik"
-          ],
+          "answers": {
+            "a1": "saraf vagus",
+            "a2": "Saraf wajah",
+            "a3": "Saraf trigeminal",
+            "a4": "Saraf optik"
+          },
           "headerLabel": "NEUROANATOMI"
         },
         "medical-q9": {
           "question": "Praktik manakah yang merupakan bagian inti dari pencegahan infeksi selama perawatan pasien?",
-          "answers": [
-            "Kebersihan tangan yang tepat",
-            "Menggunakan kembali sarung tangan sekali pakai",
-            "Melewatkan penilaian risiko",
-            "Berbagi peralatan yang tidak bersih"
-          ],
+          "answers": {
+            "a1": "Kebersihan tangan yang tepat",
+            "a2": "Menggunakan kembali sarung tangan sekali pakai",
+            "a3": "Melewatkan penilaian risiko",
+            "a4": "Berbagi peralatan yang tidak bersih"
+          },
           "headerLabel": "KEAMANAN KLINIS"
         },
         "medical-q10": {
           "question": "Apa yang dijelaskan oleh homeostatis?",
-          "answers": [
-            "Tidak adanya perubahan sama sekali pada tubuh",
-            "Pengaturan lingkungan internal yang relatif stabil",
-            "Pemecahan setiap obat oleh ginjal",
-            "Produksi antibodi saja"
-          ],
+          "answers": {
+            "a1": "Tidak adanya perubahan sama sekali pada tubuh",
+            "a2": "Pengaturan lingkungan internal yang relatif stabil",
+            "a3": "Pemecahan setiap obat oleh ginjal",
+            "a4": "Produksi antibodi saja"
+          },
           "headerLabel": "PERTANYAAN ILMU TERAKHIR"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Apenas 7% passam neste teste de inteligência",
   "eyebrow": "O COFRE DA INTELIGÊNCIA",
   "summary": "Padrões, regras numéricas, links de palavras e armadilhas espaciais testam a rapidez com que seu raciocínio encontra a regra oculta.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "Padrões, códigos, associações verbais e armadilhas lógicas entram em confronto. Até onde o seu raciocínio consegue manter-se um passo à frente?",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio mundial de entretenimento reúne dez quebra-cabeças cuidadosamente selecionados que abrangem padrões, regras numéricas, conexões verbais, raciocínio espacial, atenção e dedução lógica. Ele foi projetado para ser divertido e exigente, e não como um exame formal de aptidão.\n\nCada quebra-cabeça tem uma resposta apoiada pelas informações mostradas. A interação muda regularmente, então pode precisar identificar uma regra, comparar pistas, transformar um símbolo, calcular mentalmente ou perceber uma pequena inconsistência.\n\nSua pontuação no teste de inteligência é a porcentagem desses quebra-cabeças de entretenimento que resolve corretamente. Descreve apenas esta tentativa e não mede a sua inteligência, QI, aptidão ou capacidade educacional reais.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Complete dez perguntas cuidadosamente selecionadas em um desafio focado.",
         "Escolha uma resposta de cada vez. As respostas certas só serão reveladas no final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafio de inteligência",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "Desafio de Inteligência",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sua pontuação no teste de inteligência e análise em três áreas estão prontas para serem reveladas.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Três áreas de pensamento comparadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Três áreas de pensamento comparadas"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Passou no desafio do Teste de Inteligência!",
       "finished": "Teste de inteligência concluído",
-      "correctLabel": "corretas",
       "strongest": "Área de pensamento mais forte",
       "trickiest": "Área de pensamento mais complicada",
       "bestRound": "Melhor etapa",
@@ -98,8 +91,7 @@
         "snapshot": "O que esta tentativa sugere",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "círculo, triângulo, círculo, triângulo, desconhecido"
           },
           "question": "Qual símbolo vem a seguir?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "RACIOCÍNIO PADRÃO"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "seta para cima e para a direita ao lado de um espelho vertical"
           },
           "question": "Qual flecha é o reflexo em um espelho vertical?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RACIOCÍNIO ESPACIAL"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "mudanças de letras mais um, mais dois, mais um; CAT se torna DCU"
           },
           "question": "Os deslocamentos repetem-se: +1, +2, +1. Como se codifica DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "RACIOCÍNIO VERBAL"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "pirâmide numérica com 3, 5, 4 na parte inferior e 8, 9 no meio"
           },
           "question": "Cada bloco é a soma dos dois abaixo dele. O que vai por cima?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "RACIOCÍNIO NUMÉRICO"
         },
         "iq-s3q2": {
           "question": "Uma máquina dobra um número e depois adiciona 3. Qual entrada produz 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "RACIOCÍNIO NUMÉRICO"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Código de referência K7M2-Q9. Encontre a opção com um caractere alterado."
           },
           "question": "Qual cópia difere da referência em exatamente um caractere?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "ATENÇÃO AOS DETALHES"
         },
         "iq-s4q1": {
           "question": "Exatamente uma pessoa diz a verdade. A diz que B mente. B diz que C mente. C diz que A e B mentem. Quem diz a verdade?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Ninguém"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Ninguém"
+          },
           "headerLabel": "DEDUÇÃO LÓGICA"
         },
         "iq-s4q4": {
           "question": "Comece no centro voltado para o norte. Avance um quadrado, vire à direita, mova dois quadrados, vire à direita e depois mova um quadrado. Onde termina em relação ao início?",
-          "answers": [
-            "Dois quadrados à direita",
-            "Um quadrado para cima",
-            "Dois quadrados à esquerda",
-            "De volta ao centro"
-          ],
+          "answers": {
+            "a1": "Dois quadrados à direita",
+            "a2": "Um quadrado para cima",
+            "a3": "Dois quadrados à esquerda",
+            "a4": "De volta ao centro"
+          },
           "headerLabel": "RACIOCÍNIO ESPACIAL"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "linhas 3, 4, 10; 5, 2, 12; 7, 3, desconhecido"
           },
           "question": "Em cada linha, dobre o primeiro número e adicione o segundo. O que substitui o ponto de interrogação?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "RACIOCÍNIO NUMÉRICO"
         },
         "iq-s5q8": {
           "question": "Uma seta aponta para cima. Gire-o 90° no sentido horário e depois reflita-o em um espelho vertical. Para onde isso aponta?",
-          "answers": [
-            "Acima",
-            "Direita",
-            "Abaixo",
-            "Esquerda"
-          ],
+          "answers": {
+            "a1": "Acima",
+            "a2": "Direita",
+            "a3": "Abaixo",
+            "a4": "Esquerda"
+          },
           "headerLabel": "TESTE ESPACIAL FINAL"
         }
       }

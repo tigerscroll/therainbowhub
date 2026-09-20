@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Doar 6% dintre adulți pot promova acest examen de admitere în forțele aeriene",
   "eyebrow": "TESTUL DE APTITUDINE DE PUTEREA AERULUI",
   "summary": "Zece întrebări testează principiile zborului, instrumentele, navigația și fizica aviației.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Elementele de bază ale cockpitului par ușoare. Apoi examenul trece la navigație, controale și fizica zborului.",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare de divertisment cu zece întrebări folosește principiile aviației care se aplică forțelor aeriene și zborurilor civile din întreaga lume. Se trece de la cele patru forțe de zbor la instrumente din cabina de pilotaj, limbaj direcțional, comenzi ale aeronavei și raționament aerodinamic de bază.\n\nAlegeți un răspuns pentru fiecare întrebare. Corectitudinea rămâne ascunsă până la dezvăluirea finală, unde revizuirea completă a răspunsului este disponibilă pentru deblocare.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Răspunde la zece întrebări de aviație din ce în ce mai dificile.",
         "Alege unul dintre cele patru răspunsuri fără ajutor extern.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocare de intrare în Forțele Aeriene",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Examenul de admitere în forțele aeriene",
@@ -30,10 +26,8 @@
         "preAdCopy": "Cele zece răspunsuri ale tale au fost verificate și scorul tău de aptitudini la puterea aerului este gata să fie dezvăluit.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Comparativ cinci zone de aviație",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Comparativ cinci zone de aviație"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Ai trecut de provocarea de intrare în Forțele Aeriene!",
       "finished": "Provocarea de intrare în Forțele Aeriene a fost finalizată",
-      "correctLabel": "corect",
       "strongest": "Cea mai puternică zonă de aviație",
       "trickiest": "Cea mai dificilă zonă de aviație",
       "bestRound": "Cea mai bună secțiune",
@@ -99,8 +92,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Care dintre cele patru forțe de zbor acționează în sus împotriva greutății?",
-          "answers": [
-            "Portanță",
-            "Rezistență aerodinamică",
-            "Tracțiune",
-            "Inerție"
-          ],
+          "answers": {
+            "a1": "Portanță",
+            "a2": "Rezistență aerodinamică",
+            "a3": "Tracțiune",
+            "a4": "Inerție"
+          },
           "headerLabel": "BAZELE ZBORULUI"
         },
         "airforce-q2": {
           "question": "Ce instrument din cabina de pilotaj indică altitudinea unei aeronave?",
-          "answers": [
-            "Indicator de viteza aerului",
-            "Altimetru",
-            "Coordonator de rând",
-            "Indicator de viteză vertical"
-          ],
+          "answers": {
+            "a1": "Indicator de viteza aerului",
+            "a2": "Altimetru",
+            "a3": "Coordonator de rând",
+            "a4": "Indicator de viteză vertical"
+          },
           "headerLabel": "INSTRUMENTE DE CABINA"
         },
         "airforce-q3": {
           "question": "Ce comenzi primare de zbor fac ca o aeronavă să ruleze?",
-          "answers": [
-            "Profundoare",
-            "Cârmă",
-            "Eleroane",
-            "Flapsuri"
-          ],
+          "answers": {
+            "a1": "Profundoare",
+            "a2": "Cârmă",
+            "a3": "Eleroane",
+            "a4": "Flapsuri"
+          },
           "headerLabel": "CONTROALE DE ZBOR"
         },
         "airforce-q4": {
           "question": "O direcție magnetică de 270 de grade indică aproximativ în ce direcție?",
-          "answers": [
-            "la nord",
-            "est",
-            "Sud",
-            "Vest"
-          ],
+          "answers": {
+            "a1": "la nord",
+            "a2": "est",
+            "a3": "Sud",
+            "a4": "Vest"
+          },
           "headerLabel": "NAVIGAȚIE"
         },
         "airforce-q5": {
           "question": "Numărul Mach compară viteza unei aeronave cu ce?",
-          "answers": [
-            "Viteza locală a sunetului",
-            "Viteza luminii",
-            "Rotația Pământului",
-            "Viteza vântului din jur"
-          ],
+          "answers": {
+            "a1": "Viteza locală a sunetului",
+            "a2": "Viteza luminii",
+            "a3": "Rotația Pământului",
+            "a4": "Viteza vântului din jur"
+          },
           "headerLabel": "VITEZA SI SUNET"
         },
         "airforce-q6": {
           "question": "În aviație, care parte a unei aeronave se numește port?",
-          "answers": [
-            "Corect",
-            "Stânga",
-            "Față",
-            "Spate"
-          ],
+          "answers": {
+            "a1": "Corect",
+            "a2": "Stânga",
+            "a3": "Față",
+            "a4": "Spate"
+          },
           "headerLabel": "LIMBA DE AVIAȚIE"
         },
         "airforce-q7": {
           "question": "O pistă cu numărul 09 este aliniată aproximativ spre ce direcție busola?",
-          "answers": [
-            "la nord",
-            "Sud",
-            "est",
-            "Vest"
-          ],
+          "answers": {
+            "a1": "la nord",
+            "a2": "Sud",
+            "a3": "est",
+            "a4": "Vest"
+          },
           "headerLabel": "RAȚIONAMENTUL PISTEI"
         },
         "airforce-q8": {
           "question": "Cum se numește unghiul dintre linia coardei unei folii aerodinamice și fluxul de aer care se apropie?",
-          "answers": [
-            "Unghiul de înclinare",
-            "Unghiul de alunecare",
-            "Atitudine de pitch",
-            "Unghiul de atac"
-          ],
+          "answers": {
+            "a1": "Unghiul de înclinare",
+            "a2": "Unghiul de alunecare",
+            "a3": "Atitudine de pitch",
+            "a4": "Unghiul de atac"
+          },
           "headerLabel": "AERODINAMICĂ"
         },
         "airforce-q9": {
           "question": "Prin care dintre legile lui Newton se explică cel mai direct tracțiunea jetului?",
-          "answers": [
-            "A treia lege",
-            "Prima lege",
-            "Legea gravitației",
-            "A doua lege a termodinamicii"
-          ],
+          "answers": {
+            "a1": "A treia lege",
+            "a2": "Prima lege",
+            "a3": "Legea gravitației",
+            "a4": "A doua lege a termodinamicii"
+          },
           "headerLabel": "FIZICA PROPULSIEI"
         },
         "airforce-q10": {
           "question": "Dacă densitatea aerului rămâne constantă și viteza aerului se dublează, presiunea dinamică se modifică cu aproximativ ce factor?",
-          "answers": [
-            "Doi",
-            "Patru",
-            "Opt",
-            "Nu se schimbă"
-          ],
+          "answers": {
+            "a1": "Doi",
+            "a2": "Patru",
+            "a3": "Opt",
+            "a4": "Nu se schimbă"
+          },
           "headerLabel": "ÎNTREBARE FINALĂ DE APTITUDINE"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test de dégénérescence maculaire",
   "eyebrow": "VÉRIFICATION DE LA VISION CENTRALE EN 10 QUESTIONS",
   "summary": "Détails centraux, pièges visuels et signes d'alerte importants pour la DMLA dans un seul défi rapide.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Pouvez-vous repérer les détails centraux et identifier les signes d'alerte ? Ces 10 contrôles rapides deviennent plus difficiles.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de dix questions combine cinq énigmes visuelles à l'écran avec cinq questions de sensibilisation générale sur la dégénérescence maculaire liée à l'âge (DMLA). Il mesure les réponses à ce quiz, et non la santé oculaire ou le risque de maladie.\n\nLa taille de l’écran, la luminosité, le contraste, la vue, les verres correcteurs, la fatigue et les paramètres de l’appareil peuvent tous affecter les performances. De nouvelles lignes ondulées ou déformées, une nouvelle zone floue ou vide dans la vision centrale ou une aggravation soudaine doivent être discutées rapidement avec un professionnel de la vue qualifié.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Relevez cinq défis de détails centraux et de mémoire visuelle.",
         "Répondez à cinq questions sur la DMLA et quand demander de l'aide.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi de la vision centrale",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Test de dégénérescence maculaire",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score de défi de vision centrale est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Trois zones visuelles comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois zones visuelles comparées"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vous avez réussi le défi visuel de 80 % !",
       "finished": "Défi de vision centrale terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -94,8 +87,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Quel personnage se trouve exactement au milieu de la grille ?",
           "headerLabel": "DÉTAIL CENTRAL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "RÉFÉRENCE : Q7M2P6",
           "question": "Quel code correspond exactement à la référence ?",
           "headerLabel": "COMPARAISON RAPROCHÉE",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "RÉFÉRENCE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Quel symbole complète la séquence alternée ?",
           "headerLabel": "SUIVI DE MODÈLE",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Quel objet est apparu en troisième ?",
           "headerLabel": "MÉMOIRE VISUELLE RAPIDE",
-          "answers": [
-            "Livre",
-            "Clé",
-            "Tasse",
-            "Soleil"
-          ],
+          "answers": {
+            "a1": "Livre",
+            "a2": "Clé",
+            "a3": "Tasse",
+            "a4": "Soleil"
+          },
           "study": {
             "title": "Étudiez l’ordre des cinq objets",
             "instruction": "Cela disparaîtra automatiquement.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Quelle position contient le cercle ouvert ?",
           "headerLabel": "CONCENTRATION SUR LA RANGÉE DU MILIEU",
-          "answers": [
-            "Quatrième",
-            "Deuxième",
-            "Cinquième",
-            "Troisième"
-          ],
+          "answers": {
+            "a1": "Quatrième",
+            "a2": "Deuxième",
+            "a3": "Cinquième",
+            "a4": "Troisième"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Quelle partie de la vision est la plus directement affectée par la dégénérescence maculaire liée à l’âge ?",
           "headerLabel": "LES BASES DE LA DMLA",
-          "answers": [
-            "Seuls les bords extérieurs les plus éloignés",
-            "Vision centrale nette et directe",
-            "Uniquement la vision nocturne",
-            "Uniquement la perception de la profondeur"
-          ]
+          "answers": {
+            "a1": "Seuls les bords extérieurs les plus éloignés",
+            "a2": "Vision centrale nette et directe",
+            "a3": "Uniquement la vision nocturne",
+            "a4": "Uniquement la perception de la profondeur"
+          }
         },
         "macular-q7": {
           "question": "Quel changement visuel est un signe avant-coureur bien connu de la DMLA ?",
           "headerLabel": "SIGNES D'AVERTISSEMENT",
-          "answers": [
-            "Les sons deviennent plus silencieux",
-            "Une démangeaison temporaire sur la paupière",
-            "Lignes droites semblant ondulées ou tordues",
-            "Un cil qui tombe"
-          ]
+          "answers": {
+            "a1": "Les sons deviennent plus silencieux",
+            "a2": "Une démangeaison temporaire sur la paupière",
+            "a3": "Lignes droites semblant ondulées ou tordues",
+            "a4": "Un cil qui tombe"
+          }
         },
         "macular-q8": {
           "question": "Quelle évaluation un professionnel de la vue peut-il utiliser pour rechercher une DMLA ?",
           "headerLabel": "ÉVALUATION PROFESSIONNELLE",
-          "answers": [
-            "Un test auditif",
-            "Une lecture de la tension artérielle seule",
-            "Un test de goût",
-            "Un examen ophtalmologique complet avec dilatation des pupilles"
-          ]
+          "answers": {
+            "a1": "Un test auditif",
+            "a2": "Une lecture de la tension artérielle seule",
+            "a3": "Un test de goût",
+            "a4": "Un examen ophtalmologique complet avec dilatation des pupilles"
+          }
         },
         "macular-q9": {
           "question": "Quelle est la réponse la plus sûre à une détérioration soudaine de la vision ou à une nouvelle zone centrale floue ou vide ?",
           "headerLabel": "QUAND AGIR",
-          "answers": [
-            "Demandez rapidement des conseils professionnels en matière de soins oculaires",
-            "Attendre plusieurs mois sans en parler",
-            "Augmentez la luminosité de l'écran et supposez qu'elle est corrigée",
-            "Comptez uniquement sur un quiz en ligne"
-          ]
+          "answers": {
+            "a1": "Demandez rapidement des conseils professionnels en matière de soins oculaires",
+            "a2": "Attendre plusieurs mois sans en parler",
+            "a3": "Augmentez la luminosité de l'écran et supposez qu'elle est corrigée",
+            "a4": "Comptez uniquement sur un quiz en ligne"
+          }
         },
         "macular-q10": {
           "question": "Que peut réellement indiquer votre score à ce défi en ligne ?",
           "headerLabel": "VÉRIFICATION FINALE DE LA RÉALITÉ",
-          "answers": [
-            "Si votre rétine est saine",
-            "Seulement comment vous avez répondu à ces dix questions",
-            "Si vous avez besoin d'un traitement particulier",
-            "Si vous pouvez exclure la DMLA"
-          ]
+          "answers": {
+            "a1": "Si votre rétine est saine",
+            "a2": "Seulement comment vous avez répondu à ces dix questions",
+            "a3": "Si vous avez besoin d'un traitement particulier",
+            "a4": "Si vous pouvez exclure la DMLA"
+          }
         }
       }
     }

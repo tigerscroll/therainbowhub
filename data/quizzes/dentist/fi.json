@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 15 % aikuisista voi läpäistä tämän hammaslääkärin pääsykokeen",
   "eyebrow": "HAMMASTIETOJEN TESTI",
   "summary": "Kymmenen kysymystä siirtyy tutuista hampaista tulevaisuuden hammaslääkäreiden anatomiaan ja tieteeseen.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset kysymykset vaikuttavat yksinkertaisilta. Sitten koe siirtyy emalin alle ja todelliseen hammasanatomiaan.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste siirtyy perushampaisuudesta hampaiden anatomiaan, suusairauksiin ja pään ja kaulan tutkimukseen. Kysymykset muuttuvat teknisemmiksi kokeen edetessä ja päättyvät hammaslääkärikoulutuksessa yleisesti havaittuun tietoon.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jossa täydellinen arvostelu selittää, kuinka hammaslääketieteellisen tietämyksesi kesti.\n\nTosiasiallinen sisältö tarkistettiin American Dental Associationin, Yhdysvaltain tautien valvonta- ja ehkäisykeskusten ja Yhdysvaltain kansallisen lääkekirjaston antamien koulutustietojen perusteella.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan hammaslääketieteelliseen kysymykseen.",
         "Valitse yksi neljästä vastauksesta ilman ulkopuolista apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hammaslääkärin sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Hammaslääkärin pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja hammaslääketieteellisen tietämyspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Vertailussa neljä hammaslääketieteen osaamisaluetta",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Vertailussa neljä hammaslääketieteen osaamisaluetta"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Läpäisit hammaslääkärin sisäänpääsyhaasteen!",
       "finished": "Hammaslääkärin sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin hammaslääketieteen aihe",
       "trickiest": "Hankalin hammaslääketieteen aihe",
       "bestRound": "Paras jakso",
@@ -96,8 +89,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "dentist-q1": {
           "question": "Kuinka monta pysyvää hammasta tyypillisellä aikuisella on, kun kaikki neljä kolmatta poskihampaa ovat läsnä?",
-          "answers": [
-            "32",
-            "28",
-            "30",
-            "36"
-          ],
+          "answers": {
+            "a1": "32",
+            "a2": "28",
+            "a3": "30",
+            "a4": "36"
+          },
           "headerLabel": "HAMMASTIEDON PERUSTEET"
         },
         "dentist-q2": {
           "question": "Mikä kudos muodostaa hampaan kruunun kovan ulkokuoren?",
-          "answers": [
-            "Sementti",
-            "Hammaskiille",
-            "Dentiini",
-            "Sellu"
-          ],
+          "answers": {
+            "a1": "Sementti",
+            "a2": "Hammaskiille",
+            "a3": "Dentiini",
+            "a4": "Sellu"
+          },
           "headerLabel": "HAMPAN RAKENNE"
         },
         "dentist-q3": {
           "question": "Mitkä hampaat on ensisijaisesti muotoiltu leikkaamaan ruokaan?",
-          "answers": [
-            "Hampaat",
-            "Esihampaat",
-            "Etuhampaat",
-            "Kolmannet poskihampaat"
-          ],
+          "answers": {
+            "a1": "Hampaat",
+            "a2": "Esihampaat",
+            "a3": "Etuhampaat",
+            "a4": "Kolmannet poskihampaat"
+          },
           "headerLabel": "HAMPAAN TOIMINTA"
         },
         "dentist-q4": {
           "question": "Kuinka monta primaarihammasta normaalisti on täydellisessä lapsen hampaistossa?",
-          "answers": [
-            "16",
-            "24",
-            "28",
-            "20"
-          ],
+          "answers": {
+            "a1": "16",
+            "a2": "24",
+            "a3": "28",
+            "a4": "20"
+          },
           "headerLabel": "PRISIHAMMASTA"
         },
         "dentist-q5": {
           "question": "Mikä hampaan osa sisältää tärkeimmät verisuonet ja hermot?",
-          "answers": [
-            "Hammasydin",
-            "Hammaskiille",
-            "Sementti",
-            "Parodontaalitasku"
-          ],
+          "answers": {
+            "a1": "Hammasydin",
+            "a2": "Hammaskiille",
+            "a3": "Sementti",
+            "a4": "Parodontaalitasku"
+          },
           "headerLabel": "EMALIN ALALLA"
         },
         "dentist-q6": {
           "question": "Mitä plakista yleensä tulee, kun se kovettuu hampaiden mineraaliesiintymäksi?",
-          "answers": [
-            "Dentiini",
-            "Hammaskivi",
-            "Sementti",
-            "Pellicle"
-          ],
+          "answers": {
+            "a1": "Dentiini",
+            "a2": "Hammaskivi",
+            "a3": "Sementti",
+            "a4": "Pellicle"
+          },
           "headerLabel": "SUUNTERVEYSTIETEET"
         },
         "dentist-q7": {
           "question": "Mikä aloittaa hammaskiilteen liukenemisen suoraan hammaskarieksen kehittymisen aikana?",
-          "answers": [
-            "Aterioiden jälkeen valmistettu sylki",
-            "Hapen pääsy suuhun",
-            "Plakkibakteerien tuottamat hapot",
-            "Pureskelun aiheuttama paine"
-          ],
+          "answers": {
+            "a1": "Aterioiden jälkeen valmistettu sylki",
+            "a2": "Hapen pääsy suuhun",
+            "a3": "Plakkibakteerien tuottamat hapot",
+            "a4": "Pureskelun aiheuttama paine"
+          },
           "headerLabel": "KARIESPROSESSI"
         },
         "dentist-q8": {
           "question": "Mikä rakenne auttaa kiinnittämään hampaan juurta ympäröivään alveolaariseen luuhun?",
-          "answers": [
-            "Hammasydin",
-            "Kovainen silkki",
-            "Emali kynsinauho",
-            "Parodontaalinen nivelside"
-          ],
+          "answers": {
+            "a1": "Hammasydin",
+            "a2": "Kovainen silkki",
+            "a3": "Emali kynsinauho",
+            "a4": "Parodontaalinen nivelside"
+          },
           "headerLabel": "PERIODONTAALIANATOMIA"
         },
         "dentist-q9": {
           "question": "Mikä on yläleuan muodostavan luun anatominen nimi?",
-          "answers": [
-            "Maxilla",
-            "Alaleuka",
-            "Zygoma",
-            "Temporaalinen luu"
-          ],
+          "answers": {
+            "a1": "Maxilla",
+            "a2": "Alaleuka",
+            "a3": "Zygoma",
+            "a4": "Temporaalinen luu"
+          },
           "headerLabel": "PÄÄ JA KAULA"
         },
         "dentist-q10": {
           "question": "Mistä kallohermosta hampaiden aistinhermotus lopulta tulee?",
-          "answers": [
-            "Kasvojen hermo",
-            "Kolmoishermo",
-            "Vagus hermo",
-            "Hypoglossaalinen hermo"
-          ],
+          "answers": {
+            "a1": "Kasvojen hermo",
+            "a2": "Kolmoishermo",
+            "a3": "Vagus hermo",
+            "a4": "Hypoglossaalinen hermo"
+          },
           "headerLabel": "VIIMEINEN KLIININEN KYSYMYS"
         }
       }

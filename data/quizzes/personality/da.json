@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hvilket land matcher din personlighed?",
   "eyebrow": "DIN IDEALE LANDSKAMP",
   "summary": "Ti livsstilsvalg afslører, om din personlighed bedst matcher Italien, Japan, Australien eller Sverige.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Dine hverdagsvalg kan pege på et land, der passer dig bedre end resten. Ti hurtige spørgsmål afslører dit nærmeste match.",
     "cta": "Find mit land"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsquiz med ti spørgsmål er tilpasset fra den tilknyttede Times of India-landspersonlighedsudfordring. Hvert valg tilføjer et signal for Italien, Japan, Australien eller Sverige.\n\nVælg det svar, der føles mest naturligt frem for det, der lyder mest imponerende. Dit stærkeste overordnede mønster afgør den sidste landskamp.\n\nResultatet beskriver en legende livsstilsarketype, ikke nationalitet, herkomst, statsborgerskab, kulturel identitet eller en flytteanbefaling. Kildespørgsmålskoncepter og -billeder er gengivet fra Times of India med tilladelse angivet af webstedsejeren, der bestilte denne quiz.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Besvar ti hurtige spørgsmål om dine vaner og præferencer.",
         "Vælg den mulighed, der føles mest som dig uden at overtænke det.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Landskamp",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Personlighedsmatch",
@@ -126,9 +122,7 @@
       "portraitAlt": "Naturskøn illustration, der repræsenterer {profile}",
       "disclaimer": "Kun til underholdning og selvrefleksion. Dette resultat er et legende livsstilsmatch, ikke et udsagn om nationalitet, kulturel identitet eller hvor du skal bo."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Venner hilser varmt på hinanden"
           },
           "question": "Hvordan hilser man på en ny?",
-          "answers": [
-            "Varmt kram",
-            "Venlig bølge",
-            "Respektfuld bue",
-            "Afslappet nik"
-          ],
+          "answers": {
+            "a1": "Varmt kram",
+            "a2": "Venlig bølge",
+            "a3": "Respektfuld bue",
+            "a4": "Afslappet nik"
+          },
           "headerLabel": "FØRSTE INDSYN"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Et lyst landskab under skiftende himmelstrøg"
           },
           "question": "Hvilken slags vejr gør dig mest glad?",
-          "answers": [
-            "Varme brise",
-            "Strålende solskin",
-            "Kølig luft",
-            "Køl og sprød"
-          ],
+          "answers": {
+            "a1": "Varme brise",
+            "a2": "Strålende solskin",
+            "a3": "Kølig luft",
+            "a4": "Køl og sprød"
+          },
           "headerLabel": "PERFEKT VEJR"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "En afslappet søndagsscene udendørs"
           },
           "question": "Hvordan plejer du at bruge dine søndage?",
-          "answers": [
-            "Udendørs eventyr",
-            "At bo hyggeligt indenfor",
-            "Stille refleksion",
-            "Lange familiemåltider"
-          ],
+          "answers": {
+            "a1": "Udendørs eventyr",
+            "a2": "At bo hyggeligt indenfor",
+            "a3": "Stille refleksion",
+            "a4": "Lange familiemåltider"
+          },
           "headerLabel": "SØNDAGSSTIL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Morgenkaffe ved siden af et fredeligt vindue"
           },
           "question": "Hvad er din ideelle måde at starte dagen på?",
-          "answers": [
-            "Stærk kaffe",
-            "Blid gåtur",
-            "Havluft",
-            "Rolig meditation"
-          ],
+          "answers": {
+            "a1": "Stærk kaffe",
+            "a2": "Blid gåtur",
+            "a3": "Havluft",
+            "a4": "Rolig meditation"
+          },
           "headerLabel": "MORGENRYTME"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Et farverigt bord fyldt med forskellige retter"
           },
           "question": "Hvilken type mad ophidser dig mest?",
-          "answers": [
-            "Raffinerede smagsvarianter",
-            "Enkel og hjertelig",
-            "Frisk fisk og skaldyr",
-            "Komfort klassikere"
-          ],
+          "answers": {
+            "a1": "Raffinerede smagsvarianter",
+            "a2": "Enkel og hjertelig",
+            "a3": "Frisk fisk og skaldyr",
+            "a4": "Komfort klassikere"
+          },
           "headerLabel": "MADINSTINKT"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Gallerivæg med forskellige stilarter af kunst"
           },
           "question": "Hvilken slags kunst tiltrækker dig?",
-          "answers": [
-            "Tidløse klassikere",
-            "Ren enkelhed",
-            "Fedt udtryk",
-            "Delikate detaljer"
-          ],
+          "answers": {
+            "a1": "Tidløse klassikere",
+            "a2": "Ren enkelhed",
+            "a3": "Fedt udtryk",
+            "a4": "Delikate detaljer"
+          },
           "headerLabel": "KREATIV SMAG"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Fire forskellige drinks arrangeret sammen"
           },
           "question": "Hvad er din foretrukne drink?",
-          "answers": [
-            "Kold øl",
-            "Vin",
-            "Varm kakao",
-            "Grøn te"
-          ],
+          "answers": {
+            "a1": "Kold øl",
+            "a2": "Vin",
+            "a3": "Varm kakao",
+            "a4": "Grøn te"
+          },
           "headerLabel": "VALGTE DRIK"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Venner fejrer en særlig lejlighed"
           },
           "question": "Hvordan kan du lide at fejre store øjeblikke?",
-          "answers": [
-            "Højt og livligt",
-            "Intimt og hyggeligt",
-            "Afslappet sjov",
-            "Meningsfulde ritualer"
-          ],
+          "answers": {
+            "a1": "Højt og livligt",
+            "a2": "Intimt og hyggeligt",
+            "a3": "Afslappet sjov",
+            "a4": "Meningsfulde ritualer"
+          },
           "headerLabel": "FESTIGELSESSTIL"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "En montage af skove, kystlinje, templer og landskab"
           },
           "question": "Hvilket landskab føles mest som hjemme?",
-          "answers": [
-            "Stille skove",
-            "Åben kystlinje",
-            "Historiske templer",
-            "Bølgende landskab"
-          ],
+          "answers": {
+            "a1": "Stille skove",
+            "a2": "Åben kystlinje",
+            "a3": "Historiske templer",
+            "a4": "Bølgende landskab"
+          },
           "headerLabel": "HJEMMEFØLELSE"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Rejsende ser hen over et fjernt landskab"
           },
           "question": "Hvad er din rejsestil?",
-          "answers": [
-            "Aktiv udforskning",
-            "Langsom vandring",
-            "Kulturel fordybelse",
-            "Ikoniske seværdigheder"
-          ],
+          "answers": {
+            "a1": "Aktiv udforskning",
+            "a2": "Langsom vandring",
+            "a3": "Kulturel fordybelse",
+            "a4": "Ikoniske seværdigheder"
+          },
           "headerLabel": "ENDELIG DESTINATION"
         }
       }

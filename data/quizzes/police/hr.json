@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 6% odraslih može položiti ovaj prijemni ispit za policajca",
   "eyebrow": "PROVJERA SPOSOBNOSTI POLICAJCA",
   "summary": "Deset pitanja ispituje prosuđivanje, komunikaciju, rukovanje dokazima i profesionalni integritet.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Prvi pozivi čine se jednostavnima. Zatim ispit prelazi na dokaze, prosuđivanje i odluke u djeliću sekunde.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov od deset pitanja koristi široka načela koja su relevantna za profesionalnu policiju u zemljama Tier 1 engleskog govornog područja. Testira prosuđivanje na prvom mjestu sigurnosti, pažljivu komunikaciju sa svjedocima, integritet dokaza i odgovorno donošenje odluka bez oslanjanja na zakone, rangove ili procedure jedne zemlje.\n\nOdaberite jedan odgovor za svaku situaciju. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih pitanja o policijskim sposobnostima.",
         "Odaberite najsigurniji, najjasniji ili najbolje podržan odgovor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ulazni izazov za policajca",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni ispit za policijskog službenika",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaša ocjena policijskih sposobnosti je spremna za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena četiri policijska područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena četiri policijska područja"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Prošli ste ulazni izazov Policajac!",
       "finished": "Ulazni izazov za policajca dovršen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače policijsko područje",
       "trickiest": "Najzahtjevnije policijsko područje",
       "bestRound": "Najbolja sekcija",
@@ -96,8 +89,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Dolazite na mjesto gdje se netko suočava s neposrednom prijetnjom. Što je prvi prioritet?",
-          "answers": [
-            "Zaštitite život i učinite mjesto događaja što sigurnijim",
-            "Započnite detaljno pisano izvješće",
-            "Prikupite svaku izjavu svjedoka",
-            "Utvrdite tko je zakonski odgovoran"
-          ],
+          "answers": {
+            "a1": "Zaštitite život i učinite mjesto događaja što sigurnijim",
+            "a2": "Započnite detaljno pisano izvješće",
+            "a3": "Prikupite svaku izjavu svjedoka",
+            "a4": "Utvrdite tko je zakonski odgovoran"
+          },
           "headerLabel": "PRIORITETI SCENE"
         },
         "police-q2": {
           "question": "Koje će uvodno pitanje najvjerojatnije proizvesti neprekinuti iskaz svjedoka?",
-          "answers": [
-            "Osoba u crvenom je započela, točno?",
-            "Molim te, reci mi što se dogodilo od početka",
-            "Niste vidjeli cijeli incident, zar ne?",
-            "Je li osumnjičenik bio ljut ili uplašen?"
-          ],
+          "answers": {
+            "a1": "Osoba u crvenom je započela, točno?",
+            "a2": "Molim te, reci mi što se dogodilo od početka",
+            "a3": "Niste vidjeli cijeli incident, zar ne?",
+            "a4": "Je li osumnjičenik bio ljut ili uplašen?"
+          },
           "headerLabel": "KOMUNIKACIJA SVJEDOKA"
         },
         "police-q3": {
           "question": "Zašto se svjedoci mogu držati odvojeno prije nego što se sačine njihovi početni iskazi?",
-          "answers": [
-            "Da intervjui budu kraći",
-            "Odlučiti tko ima najviše samopouzdanja",
-            "Kako bi smanjili mogućnost da njihova sjećanja utječu jedno na drugo",
-            "Kako bismo zajamčili da se svaki račun podudara"
-          ],
+          "answers": {
+            "a1": "Da intervjui budu kraći",
+            "a2": "Odlučiti tko ima najviše samopouzdanja",
+            "a3": "Kako bi smanjili mogućnost da njihova sjećanja utječu jedno na drugo",
+            "a4": "Kako bismo zajamčili da se svaki račun podudara"
+          },
           "headerLabel": "SJEĆANJE I DOKAZI"
         },
         "police-q4": {
           "question": "Koja je glavna svrha dokumentiranog lanca nadzora?",
-          "answers": [
-            "Za rangiranje dokaza po važnosti",
-            "Da se dokaže da je osumnjičenik posjedovao svaki predmet",
-            "Za zamjenu fotografija mjesta događaja",
-            "Zabilježiti tko je rukovao dokazima i sačuvati njihov integritet"
-          ],
+          "answers": {
+            "a1": "Za rangiranje dokaza po važnosti",
+            "a2": "Da se dokaže da je osumnjičenik posjedovao svaki predmet",
+            "a3": "Za zamjenu fotografija mjesta događaja",
+            "a4": "Zabilježiti tko je rukovao dokazima i sačuvati njihov integritet"
+          },
           "headerLabel": "KONTROLA DOKAZA"
         },
         "police-q5": {
           "question": "Koji skup načela najbolje opisuje odgovornu uporabu policijskih ovlasti?",
-          "answers": [
-            "Zakonito, potrebno, razmjerno i odgovorno",
-            "Brzo, tajno, snažno i konačno",
-            "Popularno, zgodno, neformalno i široko",
-            "Automatski, identičan, neograničen i neupitan"
-          ],
+          "answers": {
+            "a1": "Zakonito, potrebno, razmjerno i odgovorno",
+            "a2": "Brzo, tajno, snažno i konačno",
+            "a3": "Popularno, zgodno, neformalno i široko",
+            "a4": "Automatski, identičan, neograničen i neupitan"
+          },
           "headerLabel": "STRUČNA PROCJENA"
         },
         "police-q6": {
           "question": "U međunarodnoj pravopisnoj abecedi, koja riječ predstavlja slovo B?",
-          "answers": [
-            "Baker",
-            "bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADIOKOMUNIKACIJE"
         },
         "police-q7": {
           "question": "Koji je pristup najdosljedniji deeskalaciji napete situacije koja nije trenutna?",
-          "answers": [
-            "Govorite brzo i približite se bez upozorenja",
-            "Izdajte nekoliko konkurentskih uputa odjednom",
-            "Koristite miran, jasan jezik, slušajte i ostavite siguran prostor",
-            "Povisi glas prije nego što itko drugi progovori"
-          ],
+          "answers": {
+            "a1": "Govorite brzo i približite se bez upozorenja",
+            "a2": "Izdajte nekoliko konkurentskih uputa odjednom",
+            "a3": "Koristite miran, jasan jezik, slušajte i ostavite siguran prostor",
+            "a4": "Povisi glas prije nego što itko drugi progovori"
+          },
           "headerLabel": "DEESKALACIJA"
         },
         "police-q8": {
           "question": "Kada je sigurno i praktično, što bi se trebalo dogoditi prije pomicanja važne stavke na mjestu događaja?",
-          "answers": [
-            "Trebalo bi ga očistiti",
-            "Treba ga pokazati svakom svjedoku",
-            "Treba ga postaviti sa sličnim predmetima",
-            "Njegov izvorni položaj i stanje treba dokumentirati"
-          ],
+          "answers": {
+            "a1": "Trebalo bi ga očistiti",
+            "a2": "Treba ga pokazati svakom svjedoku",
+            "a3": "Treba ga postaviti sa sličnim predmetima",
+            "a4": "Njegov izvorni položaj i stanje treba dokumentirati"
+          },
           "headerLabel": "SVIJEST PRIZORA"
         },
         "police-q9": {
           "question": "Otkrili ste činjeničnu pogrešku u izvješću koje ste podnijeli. Koji je najstručniji odgovor?",
-          "answers": [
-            "Prijavite i ispravite to odmah kroz odgovarajući postupak",
-            "Pričekajte da vidite hoće li netko primijetiti",
-            "Izbrišite cijelo izvješće bez zapisa",
-            "Zamolite kolegu da preuzme odgovornost"
-          ],
+          "answers": {
+            "a1": "Prijavite i ispravite to odmah kroz odgovarajući postupak",
+            "a2": "Pričekajte da vidite hoće li netko primijetiti",
+            "a3": "Izbrišite cijelo izvješće bez zapisa",
+            "a4": "Zamolite kolegu da preuzme odgovornost"
+          },
           "headerLabel": "TEST INTEGRITETA"
         },
         "police-q10": {
           "question": "Koja je radio poruka najkorisnija tijekom brzog incidenta?",
-          "answers": [
-            "Duga osobna teorija bez mjesta",
-            "Sažeto ažuriranje činjenica s točnom lokacijom i potrebnom pomoći",
-            "Nekoliko nepotvrđenih glasina isporučeno odjednom",
-            "Nejasan zahtjev da se nekoga pošalje nekamo"
-          ],
+          "answers": {
+            "a1": "Duga osobna teorija bez mjesta",
+            "a2": "Sažeto ažuriranje činjenica s točnom lokacijom i potrebnom pomoći",
+            "a3": "Nekoliko nepotvrđenih glasina isporučeno odjednom",
+            "a4": "Nejasan zahtjev da se nekoga pošalje nekamo"
+          },
           "headerLabel": "ZAVRŠNO PITANJE O SPOSOBNOSTIMA"
         }
       }

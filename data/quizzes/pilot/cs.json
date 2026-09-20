@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tuto přijímací zkoušku pro piloty složí jen 3 % dospělých",
   "eyebrow": "PILOTNÍ ZKOUŠKA SCHOPNOSTI",
   "summary": "Deset otázek testuje principy letu, přístroje, počasí, navigaci a úsudek v kokpitu.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Základy kokpitu vypadají jednoduše. Poté se zkouška přesune do počasí, navigace a rozhodnutí, která si piloti nemohou dovolit hádat.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavní výzva s deseti otázkami využívá spíše mezinárodní koncepty civilního letectví než licenční osnovy jedné země. Testuje široké principy letu, přístroje v kokpitu, povědomí o počasí, navigaci a konzervativní rozhodování.\n\nVyberte jednu odpověď pro každou otázku. Správnost zůstává skryta až do konečného odhalení, kde je k dispozici kompletní kontrola odpovědí k odemknutí.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších otázek týkajících se pilotních schopností.",
         "Vyberte nejbezpečnější nebo nejpřesnější odpověď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pilotní vstupní výzva",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Pilotní přijímací zkouška",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre pilotních schopností je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno pět leteckých oblastí",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno pět leteckých oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro pilota!",
       "finished": "Pilotní vstupní výzva dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější letecká oblast",
       "trickiest": "Nejošklivější oblast letectví",
       "bestRound": "Nejlepší sekce",
@@ -99,8 +92,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Která síla působí vzhůru proti váze letadla?",
-          "answers": [
-            "Vztlak",
-            "Aerodynamický odpor",
-            "Tah",
-            "Setrvačnost"
-          ],
+          "answers": {
+            "a1": "Vztlak",
+            "a2": "Aerodynamický odpor",
+            "a3": "Tah",
+            "a4": "Setrvačnost"
+          },
           "headerLabel": "ZÁKLADY LETU"
         },
         "pilot-q2": {
           "question": "Který přístroj v kokpitu ukazuje výšku?",
-          "answers": [
-            "Indikátor rychlosti vzduchu",
-            "Výškoměr",
-            "Indikátor směru",
-            "Otočte koordinátora"
-          ],
+          "answers": {
+            "a1": "Indikátor rychlosti vzduchu",
+            "a2": "Výškoměr",
+            "a3": "Indikátor směru",
+            "a4": "Otočte koordinátora"
+          },
           "headerLabel": "NÁSTROJE"
         },
         "pilot-q3": {
           "question": "Který typ oblačnosti je nejsilněji spojen s bouřkami a silnými turbulencemi?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "LETECKÉ POČASÍ"
         },
         "pilot-q4": {
           "question": "Kterým směrem přibližně ukazuje kurz 180 stupňů?",
-          "answers": [
-            "Sever",
-            "východní",
-            "Západ",
-            "Jih"
-          ],
+          "answers": {
+            "a1": "Sever",
+            "a2": "východní",
+            "a3": "Západ",
+            "a4": "Jih"
+          },
           "headerLabel": "NAVIGACE"
         },
         "pilot-q5": {
           "question": "Počasí se zhoršuje rychleji, než se předpokládalo, a bezpečné marže se zmenšují. Jaké je nejlepší obecné rozhodnutí?",
-          "answers": [
-            "Přehodnoťte včas a odkloňte nebo přistaňte, dokud zůstanou bezpečné možnosti",
-            "Pokračujte, protože původní plán musí být dokončen",
-            "Pro udržení vizuálního kontaktu sestupte pod bezpečné limity",
-            "Ignorujte trend, dokud se podmínky nestanou kritickými"
-          ],
+          "answers": {
+            "a1": "Přehodnoťte včas a odkloňte nebo přistaňte, dokud zůstanou bezpečné možnosti",
+            "a2": "Pokračujte, protože původní plán musí být dokončen",
+            "a3": "Pro udržení vizuálního kontaktu sestupte pod bezpečné limity",
+            "a4": "Ignorujte trend, dokud se podmínky nestanou kritickými"
+          },
           "headerLabel": "LETECKÝ ROZSUDEK"
         },
         "pilot-q6": {
           "question": "Které řídicí plochy otáčejí letadlem kolem jeho podélné osy?",
-          "answers": [
-            "Výšková kormidla",
-            "Křidélka",
-            "Pouze pedály směrovky",
-            "Klapky"
-          ],
+          "answers": {
+            "a1": "Výšková kormidla",
+            "a2": "Křidélka",
+            "a3": "Pouze pedály směrovky",
+            "a4": "Klapky"
+          },
           "headerLabel": "ŘÍZENÍ LETU"
         },
         "pilot-q7": {
           "question": "Který přístroj ukazuje rychlost stoupání nebo klesání letadla?",
-          "answers": [
-            "Kompas",
-            "Pouze výškoměr",
-            "Vertikální ukazatel rychlosti",
-            "Teploměr venkovního vzduchu"
-          ],
+          "answers": {
+            "a1": "Kompas",
+            "a2": "Pouze výškoměr",
+            "a3": "Vertikální ukazatel rychlosti",
+            "a4": "Teploměr venkovního vzduchu"
+          },
           "headerLabel": "SKENOVÁNÍ KOKPITU"
         },
         "pilot-q8": {
           "question": "Co je střih větru?",
-          "answers": [
-            "Stálý vítr, který se nikdy nemění",
-            "Pouze míra výšky oblačnosti",
-            "Vzduch se pohybuje pouze nad vodou",
-            "Rychlá změna rychlosti nebo směru větru na krátkou vzdálenost"
-          ],
+          "answers": {
+            "a1": "Stálý vítr, který se nikdy nemění",
+            "a2": "Pouze míra výšky oblačnosti",
+            "a3": "Vzduch se pohybuje pouze nad vodou",
+            "a4": "Rychlá změna rychlosti nebo směru větru na krátkou vzdálenost"
+          },
           "headerLabel": "NEBEZPEČÍ POČASÍ"
         },
         "pilot-q9": {
           "question": "Přistávací dráha s číslem 27 je orientována přibližně ke kterému směru?",
-          "answers": [
-            "Západ",
-            "Sever",
-            "východní",
-            "Jih"
-          ],
+          "answers": {
+            "a1": "Západ",
+            "a2": "Sever",
+            "a3": "východní",
+            "a4": "Jih"
+          },
           "headerLabel": "UVÁDĚNÍ DRÁHY"
         },
         "pilot-q10": {
           "question": "Během letu si všimnete nevysvětlitelné nerovnováhy paliva. Jaká je nejlepší obecná odpověď?",
-          "answers": [
-            "Předpokládejme, že se měřidlo opraví samo",
-            "Použijte kontrolní seznam, sledujte situaci a komunikujte podle potřeby",
-            "Přepínejte náhodné systémy, dokud nezmizí",
-            "Odložte jakoukoli akci až do přistání"
-          ],
+          "answers": {
+            "a1": "Předpokládejme, že se měřidlo opraví samo",
+            "a2": "Použijte kontrolní seznam, sledujte situaci a komunikujte podle potřeby",
+            "a3": "Přepínejte náhodné systémy, dokud nezmizí",
+            "a4": "Odložte jakoukoli akci až do přistání"
+          },
           "headerLabel": "ZÁVĚREČNÁ OTÁZKA K KOKPITU"
         }
       }

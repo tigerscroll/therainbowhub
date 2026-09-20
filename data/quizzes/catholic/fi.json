@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 1/10 voi läpäistä tämän katolisen triviavisan",
   "eyebrow": "KATOLINEN TIETOTESTI",
   "summary": "Kymmenen kysymystä testaavat tietosi katolilaisesta palvonnasta, Raamatusta, rukouksesta ja liturgian vuodesta.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset kysymykset saattavat tuntua tutulta, mutta viimeiset paljastavat puutteet, joita jopa säännölliset kirkonkäyttäjät eivät tee.",
     "cta": "Aloita tietokilpailu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen englantilainen viihdetietokilpailu sisältää kymmenen kysymystä katolisesta jumalanpalveluksesta, sakramenteista, Raamatusta, rukouksesta ja liturgisesta vuodesta.\n\nValitse aina paras vastaus. Kysymykset keskittyvät yleisesti tunnustettuihin katolisiin opetuksiin ja käytäntöihin eikä paikallisiin tapoihin.\n\nPisteet mittaavat suorituskykyä vain tässä lyhyessä triviasarjassa, eikä se kerro mitään kenenkään uskosta, omistautumisesta tai asemasta kirkossa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Lue jokainen katolinen triviakysymys huolellisesti.",
         "Valitse yksi vastaus neljästä vaihtoehdosta.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katolinen trivia",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Katolinen trivia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Katolinen trivia-tiedotteesi ja vastauksesi ovat valmiina.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä osaamisaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä osaamisaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit katolisen triviahaasteen!",
       "finished": "Katolinen triviahaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin tietoalue",
       "trickiest": "Hankalin tietoalue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "catholic-q1": {
           "question": "Mikä on katolisen kirkon keskeisen jumalanpalveluksen nimi?",
-          "answers": [
-            "Messu",
-            "Rosary",
-            "Angelus",
-            "Ristin asemat"
-          ],
+          "answers": {
+            "a1": "Messu",
+            "a2": "Rosary",
+            "a3": "Angelus",
+            "a4": "Ristin asemat"
+          },
           "headerLabel": "PALVELUSTA"
         },
         "catholic-q2": {
           "question": "Minkä kaupungin piispa on myös paavi?",
-          "answers": [
-            "Jerusalem",
-            "Rooma",
-            "Assisi",
-            "Betlehem"
-          ],
+          "answers": {
+            "a1": "Jerusalem",
+            "a2": "Rooma",
+            "a3": "Assisi",
+            "a4": "Betlehem"
+          },
           "headerLabel": "KIRKON JOHTAJA"
         },
         "catholic-q3": {
           "question": "Kuinka monta sakramenttia katolinen kirkko tunnustaa?",
-          "answers": [
-            "Viisi",
-            "Kuusi",
-            "Seitsemän",
-            "Kahdeksan"
-          ],
+          "answers": {
+            "a1": "Viisi",
+            "a2": "Kuusi",
+            "a3": "Seitsemän",
+            "a4": "Kahdeksan"
+          },
           "headerLabel": "SAKRAMENTIT"
         },
         "catholic-q4": {
           "question": "Mikä kirkkovuosi on juuri ennen joulua?",
-          "answers": [
-            "paasto",
-            "Pääsiäinen",
-            "Tavallinen aika",
-            "Adventti"
-          ],
+          "answers": {
+            "a1": "paasto",
+            "a2": "Pääsiäinen",
+            "a3": "Tavallinen aika",
+            "a4": "Adventti"
+          },
           "headerLabel": "KIRKKOVUOSI"
         },
         "catholic-q5": {
           "question": "Minkä rukousmysteerisarjan paavi Johannes Paavali II esitteli vuonna 2002?",
-          "answers": [
-            "Valoisat mysteerit",
-            "Iloiset mysteerit",
-            "Surulliset mysteerit",
-            "Loistavat mysteerit"
-          ],
+          "answers": {
+            "a1": "Valoisat mysteerit",
+            "a2": "Iloiset mysteerit",
+            "a3": "Surulliset mysteerit",
+            "a4": "Loistavat mysteerit"
+          },
           "headerLabel": "RUKUKUU"
         },
         "catholic-q6": {
           "question": "Mikä kirja on ensimmäisenä katolisessa Raamatussa?",
-          "answers": [
-            "Exodus",
-            "Ensimmäinen Mooseksen kirja",
-            "Psalmit",
-            "Matthew"
-          ],
+          "answers": {
+            "a1": "Exodus",
+            "a2": "Ensimmäinen Mooseksen kirja",
+            "a3": "Psalmit",
+            "a4": "Matthew"
+          },
           "headerLabel": "SCRIPTURE"
         },
         "catholic-q7": {
           "question": "Mikä sakramentti vahvistaa kasteen armoa ja liittyy Pyhän Hengen lahjoihin?",
-          "answers": [
-            "Anointing of the Sick",
-            "Holy Orders",
-            "Vahvistuksen sakramentti",
-            "Matrimony"
-          ],
+          "answers": {
+            "a1": "Anointing of the Sick",
+            "a2": "Holy Orders",
+            "a3": "Vahvistuksen sakramentti",
+            "a4": "Matrimony"
+          },
           "headerLabel": "USKO & KÄYTÄNNÖT"
         },
         "catholic-q8": {
           "question": "Kuinka monta ristin asemaa perinteisesti noudatetaan?",
-          "answers": [
-            "Seitsemän",
-            "Kymmenen",
-            "Kaksitoista",
-            "Neljätoista"
-          ],
+          "answers": {
+            "a1": "Seitsemän",
+            "a2": "Kymmenen",
+            "a3": "Kaksitoista",
+            "a4": "Neljätoista"
+          },
           "headerLabel": "DEVOTION"
         },
         "catholic-q9": {
           "question": "Mikä päivä latinalaiskatolisessa perinteessä alkaa paastona?",
-          "answers": [
-            "Tuhkakeskiviikko",
-            "Palm Sunday",
-            "Pitkäperjantai",
-            "Helluntai"
-          ],
+          "answers": {
+            "a1": "Tuhkakeskiviikko",
+            "a2": "Palm Sunday",
+            "a3": "Pitkäperjantai",
+            "a4": "Helluntai"
+          },
           "headerLabel": "LITURGINEN KALENTERI"
         },
         "catholic-q10": {
           "question": "Mitä tapahtumaa helluntaina vietetään?",
-          "answers": [
-            "The Nativity of Jesus",
-            "Pyhän Hengen laskeutuminen",
-            "The Baptism of Jesus",
-            "Muutos"
-          ],
+          "answers": {
+            "a1": "The Nativity of Jesus",
+            "a2": "Pyhän Hengen laskeutuminen",
+            "a3": "The Baptism of Jesus",
+            "a4": "Muutos"
+          },
           "headerLabel": "VIIMEINEN KYSYMYS"
         }
       }

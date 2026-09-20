@@ -9,6 +9,7 @@ const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
 const localeFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "hr.json", "hu.json", "id.json", "it.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
+const requireAllLocales = process.argv.includes("--require-all-locales");
 const errors = [];
 
 const exactStringKeys = new Set([
@@ -80,6 +81,22 @@ function compareStructure(source, localized, pathParts, location) {
     }
     if (JSON.stringify(placeholders(source)) !== JSON.stringify(placeholders(localized))) {
       addError(`${location}#${currentPath}: placeholders differ from English.`);
+    }
+    if (pathParts.includes("answers")) {
+      const sourceNumbers = source.replace(/\D/g, "");
+      const localizedNumbers = localized.replace(/\D/g, "");
+      if (sourceNumbers && JSON.stringify(sourceNumbers) !== JSON.stringify(localizedNumbers)) {
+        addError(`${location}#${currentPath}: numeric answer values differ from English.`);
+      }
+    }
+    const isPuzzleContent = pathParts.includes("stages")
+      && ["answers", "context", "question"].some((key) => pathParts.includes(key));
+    const sourcePuzzleTokens = isPuzzleContent
+      ? source.match(/\b(?=[A-Z0-9-]*[A-Z])(?=[A-Z0-9-]*\d)[A-Z0-9]+(?:-[A-Z0-9]+)*\b/g) ?? []
+      : [];
+    const missingPuzzleTokens = sourcePuzzleTokens.filter((token) => !localized.includes(token));
+    if (missingPuzzleTokens.length > 0) {
+      addError(`${location}#${currentPath}: puzzle token(s) ${missingPuzzleTokens.map((token) => JSON.stringify(token)).join(", ")} differ from English.`);
     }
     const localizedVisionAsset = source.includes("paper-fold-punch.svg")
       && /paper-fold-punch-(?:fr|de|it|nl|es|pt|ar)\.svg(?:\?[^\s]*)?$/.test(localized);
@@ -431,6 +448,15 @@ function validateGermanRegisterCorrections(quiz, content, location) {
 }
 
 function validateSemanticContracts(quiz, content, locale, location) {
+  if (quiz === "alzheimers") {
+    const q = (id) => questionById(content, `alzheimers-q${id}`, location);
+    assertTextEquals(q(1)?.study?.items?.[3], correctAnswer(q(1)), location, "alzheimers-q1/fourth-word");
+    assertTextEquals(q(1)?.study?.items?.[0], correctAnswer(q(9)), location, "alzheimers-q9/delayed-first-word");
+    assertTextEquals(q(5)?.answers?.[2], correctAnswer(q(10)), location, "alzheimers-q10/delayed-shoe");
+    assertTextEquals(correctAnswer(q(2)), "R4M7K", location, "alzheimers-q2/exact-code");
+    assertTextEquals(correctAnswer(q(6)), "8 – 1 – 4", location, "alzheimers-q6/reverse-order");
+    assertTextEquals(correctAnswer(q(8)), "14", location, "alzheimers-q8/subtraction");
+  }
   if (quiz === "memory") validateMemorySemantics(content, location);
   if (quiz === "vision") {
     validateVisionSemantics(content, locale, location);
@@ -659,7 +685,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .filter((file) => file.endsWith(".json") && file !== "quiz.json")
     .sort();
   const expectedLocaleFiles = localeFiles;
-  const independentLocales = manifest.engine?.localeParity === "independent";
+  const independentLocales = manifest.engine?.localeParity === "independent" && !requireAllLocales;
   if (!actualLocaleFiles.includes("en.json")) {
     addError(`data/quizzes/${entry.name}: en.json is required.`);
     continue;

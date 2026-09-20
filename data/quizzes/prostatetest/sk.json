@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Rýchly test rakoviny prostaty",
   "eyebrow": "10-OTÁZKOVÁ KONTROLA PROSTATY",
   "summary": "Desať osobných otázok o zmenách prostaty a rizikovom kontexte, po ktorých nasleduje opatrný profil ďalšieho kroku.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Všimli ste si zmeny, ktoré je ľahké odmietnuť ako starnutie? Odpovedzte na 10 rýchlych otázok o príznakoch a rizikových faktoroch, na ktorých môže záležať.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto osobná kontrola s desiatimi otázkami sa pýta na zmeny moču, krv, nepohodlie, pretrvávajúcu bolesť a relevantný rizikový kontext. Zoskupuje vaše odpovede do opatrného profilu ďalšieho kroku; nevypočítava vašu pravdepodobnosť rakoviny.\n\nRakovina prostaty nemusí spočiatku spôsobovať žiadne príznaky a zmeny moču majú často nerakovinové príčiny, ako je nezhubné zväčšenie prostaty, infekcia alebo zápal. Nové, pretrvávajúce alebo zhoršujúce sa zmeny by mali byť stále prediskutované s kvalifikovaným zdravotníckym pracovníkom.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Vyberte odpoveď, ktorá najviac zodpovedá vašej nedávnej skúsenosti.",
         "Premýšľajte o zmenách, ktoré sú nové, trvalé alebo sa zhoršujú.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Osobná kontrola prostaty",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Osobná kontrola",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Zmenil sa nedávno prúd vášho moču?",
           "headerLabel": "TOK VÁŠHO MOČU",
-          "answers": [
-            "Žiadna výrazná zmena",
-            "Občas sa to mení",
-            "Je novo slabý alebo sa zastaví a spustí",
-            "Zhoršuje sa alebo ovplyvňuje každodenný život"
-          ]
+          "answers": {
+            "a1": "Žiadna výrazná zmena",
+            "a2": "Občas sa to mení",
+            "a3": "Je novo slabý alebo sa zastaví a spustí",
+            "a4": "Zhoršuje sa alebo ovplyvňuje každodenný život"
+          }
         },
         "prostate-test-q2": {
           "question": "Je pre vás ťažšie začať močiť?",
           "headerLabel": "ZAČAŤ MOČIŤ",
-          "answers": [
-            "Nie",
-            "Občas, ale nepretrvalo to",
-            "Áno, ide o novú alebo pretrvávajúcu zmenu",
-            "Áno, a je to čoraz ťažšie"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "Občas, ale nepretrvalo to",
+            "a3": "Áno, ide o novú alebo pretrvávajúcu zmenu",
+            "a4": "Áno, a je to čoraz ťažšie"
+          }
         },
         "prostate-test-q3": {
           "question": "Močíte častejšie, najmä v noci?",
           "headerLabel": "FREKVENCIA A NOČNÝ ČAS",
-          "answers": [
-            "Žiadna zmena",
-            "Len občas",
-            "Áno, výrazne viac ako predtým",
-            "Áno, a pravidelne narúša spánok alebo každodenný život"
-          ]
+          "answers": {
+            "a1": "Žiadna zmena",
+            "a2": "Len občas",
+            "a3": "Áno, výrazne viac ako predtým",
+            "a4": "Áno, a pravidelne narúša spánok alebo každodenný život"
+          }
         },
         "prostate-test-q4": {
           "question": "Máte pocit, že váš močový mechúr nie je úplne vyprázdnený?",
           "headerLabel": "VYPRÁZDŇOVANIE MECHÚRA",
-          "answers": [
-            "Nie",
-            "Raz za čas",
-            "Často alebo vytrvalo",
-            "Áno, a ten pocit sa zhoršuje"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "Raz za čas",
+            "a3": "Často alebo vytrvalo",
+            "a4": "Áno, a ten pocit sa zhoršuje"
+          }
         },
         "prostate-test-q5": {
           "question": "Objavili ste novú nutkavosť alebo únik predtým, ako ste sa dostali na toaletu?",
           "headerLabel": "NALIEHAVOST ALEBO ÚNIK",
-          "answers": [
-            "Nie",
-            "Málokedy",
-            "Áno, ako nová alebo trvalá zmena",
-            "Áno, a zhoršuje to alebo ovplyvňuje každodenný život"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "Málokedy",
+            "a3": "Áno, ako nová alebo trvalá zmena",
+            "a4": "Áno, a zhoršuje to alebo ovplyvňuje každodenný život"
+          }
         },
         "prostate-test-q6": {
           "question": "Všimli ste si krv v moči alebo sperme?",
           "headerLabel": "KRV",
-          "answers": [
-            "Nie",
-            "nie som si istý",
-            "Áno, raz alebo viackrát",
-            "Áno, so silným krvácaním alebo veľkými zrazeninami"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "nie som si istý",
+            "a3": "Áno, raz alebo viackrát",
+            "a4": "Áno, so silným krvácaním alebo veľkými zrazeninami"
+          }
         },
         "prostate-test-q7": {
           "question": "Mali ste nové nepríjemné pocity pri močení alebo ejakulácii?",
           "headerLabel": "NEKOMFORT",
-          "answers": [
-            "Nie",
-            "Občas a prešlo to",
-            "Áno, je to trvalé alebo sa stále vracia",
-            "Áno, a zhoršuje sa alebo výrazne bolí"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "Občas a prešlo to",
+            "a3": "Áno, je to trvalé alebo sa stále vracia",
+            "a4": "Áno, a zhoršuje sa alebo výrazne bolí"
+          }
         },
         "prostate-test-q8": {
           "question": "Mali ste nevysvetliteľné bolesti chrbta, bedier alebo panvy?",
           "headerLabel": "PRETRVÁVAJÚCA BOLESŤ",
-          "answers": [
-            "Nie",
-            "Krátka bolesť so zjavnou príčinou",
-            "Áno, je to trvalé alebo sa stále vracia",
-            "Áno, je to vážne, rýchlo sa zhoršuje alebo sa cítim vážne zle"
-          ]
+          "answers": {
+            "a1": "Nie",
+            "a2": "Krátka bolesť so zjavnou príčinou",
+            "a3": "Áno, je to trvalé alebo sa stále vracia",
+            "a4": "Áno, je to vážne, rýchlo sa zhoršuje alebo sa cítim vážne zle"
+          }
         },
         "prostate-test-q9": {
           "question": "Ktorá možnosť najlepšie zodpovedá vášmu kontextu rizika rakoviny prostaty?",
           "headerLabel": "VÁŠ RIZIKOVÝ KONTEXT",
-          "answers": [
-            "Nič z toho, alebo si nie som istý",
-            "Mám 50 rokov alebo viac",
-            "Môj otec alebo brat mali rakovinu prostaty",
-            "Mám čiernych predkov, známu zmenu BRCA2 alebo silný rodinný vzor rakoviny"
-          ]
+          "answers": {
+            "a1": "Nič z toho, alebo si nie som istý",
+            "a2": "Mám 50 rokov alebo viac",
+            "a3": "Môj otec alebo brat mali rakovinu prostaty",
+            "a4": "Mám čiernych predkov, známu zmenu BRCA2 alebo silný rodinný vzor rakoviny"
+          }
         },
         "prostate-test-q10": {
           "question": "Čo ste urobili s akýmikoľvek novými alebo pretrvávajúcimi zmenami?",
           "headerLabel": "VÁŠ ĎALŠÍ KROK",
-          "answers": [
-            "Nezaznamenal som žiadne zmeny",
-            "Zatiaľ sledujem",
-            "Plánujem zorganizovať rutinnú lekársku diskusiu",
-            "Zabezpečujem rýchlu lekársku pomoc"
-          ]
+          "answers": {
+            "a1": "Nezaznamenal som žiadne zmeny",
+            "a2": "Zatiaľ sledujem",
+            "a3": "Plánujem zorganizovať rutinnú lekársku diskusiu",
+            "a4": "Zabezpečujem rýchlu lekársku pomoc"
+          }
         }
       }
     }

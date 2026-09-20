@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak a felnőttek 6%-a tudja letenni ezt a légierő felvételi vizsgát",
   "eyebrow": "A LEVEGŐTELJESÍTMÉNY-ALKALMAZÁSI TESZT",
   "summary": "Tíz kérdés teszteli a repülési elveket, a műszereket, a navigációt és a repülés fizikáját.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "A pilótafülke alapjai egyszerűnek tűnnek. Ezután a vizsga a navigációra, az irányításra és a repülésfizikára kerül.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás olyan repülési elveket alkalmaz, amelyek világszerte érvényesek a légierőkre és a polgári repülésekre. A négy repülési erőből áttér a pilótafülke műszereire, az iránynyelvre, a repülőgép vezérlésére és az alapvető aerodinamikai érvelésre.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb repülési kérdésre.",
         "Válasszon egyet a négy válasz közül külső segítség nélkül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "A légierő belépési kihívása",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Légierő felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a légierő-képességi pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt repülési területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt repülési területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült a légierő belépési kihívásán!",
       "finished": "A légierő belépési kihívása befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb repülési terület",
       "trickiest": "A legtrükkösebb repülési terület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "A négy repülési erő közül melyik hat felfelé a súlyra?",
-          "answers": [
-            "Felhajtóerő",
-            "Légellenállás",
-            "Tolóerő",
-            "Tehetetlenség"
-          ],
+          "answers": {
+            "a1": "Felhajtóerő",
+            "a2": "Légellenállás",
+            "a3": "Tolóerő",
+            "a4": "Tehetetlenség"
+          },
           "headerLabel": "REPÜLÉSI ALAPOK"
         },
         "airforce-q2": {
           "question": "Melyik pilótafülke műszer jelzi a repülőgép magasságát?",
-          "answers": [
-            "Légsebesség jelző",
-            "Magasságmérő",
-            "Kapcsolja be a koordinátort",
-            "Függőleges sebességjelző"
-          ],
+          "answers": {
+            "a1": "Légsebesség jelző",
+            "a2": "Magasságmérő",
+            "a3": "Kapcsolja be a koordinátort",
+            "a4": "Függőleges sebességjelző"
+          },
           "headerLabel": "PILÓTAFÜLE MŰSZEREK"
         },
         "airforce-q3": {
           "question": "Mely elsődleges repülési vezérlők gurítják a repülőgépet?",
-          "answers": [
-            "Magassági kormányok",
-            "Kormány",
-            "Csűrők",
-            "Fékszárnyak"
-          ],
+          "answers": {
+            "a1": "Magassági kormányok",
+            "a2": "Kormány",
+            "a3": "Csűrők",
+            "a4": "Fékszárnyak"
+          },
           "headerLabel": "REPÜLÉSIRÁNYÍTÁSOK"
         },
         "airforce-q4": {
           "question": "Egy 270 fokos mágneses irány körülbelül melyik irányba mutat?",
-          "answers": [
-            "Észak",
-            "Kelet",
-            "Dél",
-            "Nyugat"
-          ],
+          "answers": {
+            "a1": "Észak",
+            "a2": "Kelet",
+            "a3": "Dél",
+            "a4": "Nyugat"
+          },
           "headerLabel": "NAVIGÁCIÓ"
         },
         "airforce-q5": {
           "question": "Mihez hasonlítja a Mach-szám egy repülőgép sebességét?",
-          "answers": [
-            "A helyi hangsebesség",
-            "A fény sebessége",
-            "A Föld forgása",
-            "A környező szél sebessége"
-          ],
+          "answers": {
+            "a1": "A helyi hangsebesség",
+            "a2": "A fény sebessége",
+            "a3": "A Föld forgása",
+            "a4": "A környező szél sebessége"
+          },
           "headerLabel": "SEBESSÉG ÉS HANG"
         },
         "airforce-q6": {
           "question": "A repülésben a repülőgép melyik oldalát nevezik kikötőnek?",
-          "answers": [
-            "Igaz",
-            "Balra",
-            "Elöl",
-            "Hátsó"
-          ],
+          "answers": {
+            "a1": "Igaz",
+            "a2": "Balra",
+            "a3": "Elöl",
+            "a4": "Hátsó"
+          },
           "headerLabel": "REPÜLÉSI NYELV"
         },
         "airforce-q7": {
           "question": "A 09-es számú kifutópálya megközelítőleg melyik iránytű felé van igazítva?",
-          "answers": [
-            "Észak",
-            "Dél",
-            "Kelet",
-            "Nyugat"
-          ],
+          "answers": {
+            "a1": "Észak",
+            "a2": "Dél",
+            "a3": "Kelet",
+            "a4": "Nyugat"
+          },
           "headerLabel": "KIfutópálya-okoskodás"
         },
         "airforce-q8": {
           "question": "Milyen szögnek nevezzük a légszárny húrvonala és a szembejövő légáram közötti szöget?",
-          "answers": [
-            "Bankszög",
-            "Siklásszög",
-            "Pitch hozzáállás",
-            "Állásszög"
-          ],
+          "answers": {
+            "a1": "Bankszög",
+            "a2": "Siklásszög",
+            "a3": "Pitch hozzáállás",
+            "a4": "Állásszög"
+          },
           "headerLabel": "AERODINAMIKA"
         },
         "airforce-q9": {
           "question": "A sugárhajtást melyik Newton-törvény magyarázza a legközvetlenebbül?",
-          "answers": [
-            "Harmadik törvény",
-            "Első törvény",
-            "A gravitáció törvénye",
-            "A termodinamika második főtétele"
-          ],
+          "answers": {
+            "a1": "Harmadik törvény",
+            "a2": "Első törvény",
+            "a3": "A gravitáció törvénye",
+            "a4": "A termodinamika második főtétele"
+          },
           "headerLabel": "PROPULZIÓ FIZIKA"
         },
         "airforce-q10": {
           "question": "Ha a levegő sűrűsége állandó marad és a légsebesség megduplázódik, a dinamikus nyomás körülbelül milyen tényezővel változik?",
-          "answers": [
-            "Kettő",
-            "Négy",
-            "Nyolc",
-            "Nem változik"
-          ],
+          "answers": {
+            "a1": "Kettő",
+            "a2": "Négy",
+            "a3": "Nyolc",
+            "a4": "Nem változik"
+          },
           "headerLabel": "VÉGSŐ ALKALMASSÁGRA VONATKOZÓ KÉRDÉS"
         }
       }

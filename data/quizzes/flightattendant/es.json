@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 12% de los adultos pueden aprobar este examen de ingreso para asistentes de vuelo",
   "eyebrow": "PRUEBA DE APTITUD DE LA TRIPULACIÓN DE CABINA",
   "summary": "Diez preguntas evalúan la seguridad en la cabina, las emergencias, la coordinación de la tripulación y el conocimiento de la aeronave.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "Las preguntas sobre el servicio parecen fáciles. Luego, el examen pasa a la descompresión, la evacuación y la seguridad de la cabina.",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafío de entretenimiento de diez preguntas utiliza principios amplios de seguridad en cabina compartidos en toda la aviación internacional. Pone a prueba la seguridad de los pasajeros, las prioridades de emergencia, la coordinación de la tripulación y los sistemas de la aeronave sin depender de los comandos o procedimientos exactos de una aerolínea.\n\nElige una respuesta para cada pregunta. No sabrás qué respuestas son correctas hasta el final, cuando podrás desbloquear la revisión completa.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Responde diez preguntas cada vez más difíciles sobre tripulantes de cabina.",
         "Elige la respuesta más segura o precisa.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafío de entrada a la azafata de vuelo",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Examen de ingreso para asistente de vuelo",
@@ -30,10 +26,8 @@
         "preAdCopy": "Se han verificado tus diez respuestas y tu puntuación de aptitud como tripulante de cabina está lista para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Comparación de cuatro áreas de seguridad de la cabina",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Comparación de cuatro áreas de seguridad de la cabina"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de ingreso a la azafata!",
       "finished": "Desafío de entrada de asistente de vuelo completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -96,8 +89,7 @@
         "snapshot": "Lo que sugiere tu resultado",
         "targetReached": "80% del desafío alcanzado",
         "targetRemaining": "Respuestas correctas que faltan para alcanzar el 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "¿Cuál es la responsabilidad principal de un asistente de vuelo?",
-          "answers": [
-            "La seguridad de los pasajeros",
-            "Vender productos a bordo",
-            "Servir las comidas rápidamente",
-            "Anunciar el destino"
-          ],
+          "answers": {
+            "a1": "La seguridad de los pasajeros",
+            "a2": "Vender productos a bordo",
+            "a3": "Servir las comidas rápidamente",
+            "a4": "Anunciar el destino"
+          },
           "headerLabel": "PRIORIDADES DE CABINA"
         },
         "flightattendant-q2": {
           "question": "Cuando comienza una turbulencia significativa, ¿cuál es la prioridad clave inmediata en cabina?",
-          "answers": [
-            "Continuar el servicio para evitar retrasos",
-            "Protegerte y asegurar la cabina según los procedimientos",
-            "Abrir todos los compartimentos superiores",
-            "Pedir a los pasajeros que se levanten y se estiren"
-          ],
+          "answers": {
+            "a1": "Continuar el servicio para evitar retrasos",
+            "a2": "Protegerte y asegurar la cabina según los procedimientos",
+            "a3": "Abrir todos los compartimentos superiores",
+            "a4": "Pedir a los pasajeros que se levanten y se estiren"
+          },
           "headerLabel": "TURBULENCIA"
         },
         "flightattendant-q3": {
           "question": "Si las máscaras de oxígeno se caen durante la descompresión, ¿qué debería hacer normalmente antes de ayudar a otra persona?",
-          "answers": [
-            "Quítate el cinturón de seguridad",
-            "Espera a que se enciendan las luces de la cabina.",
-            "Ponte tu propia máscara",
-            "Muévete al pasillo"
-          ],
+          "answers": {
+            "a1": "Quítate el cinturón de seguridad",
+            "a2": "Espera a que se enciendan las luces de la cabina.",
+            "a3": "Ponte tu propia máscara",
+            "a4": "Muévete al pasillo"
+          },
           "headerLabel": "DESCOMPRESIÓN"
         },
         "flightattendant-q4": {
           "question": "Durante una evacuación de emergencia, ¿qué deben hacer generalmente los pasajeros con el equipaje de mano?",
-          "answers": [
-            "Llevar solo bolsos pequeños",
-            "Llevar el bolso al hombro",
-            "Entregar el equipaje a la tripulación",
-            "Dejar todo el equipaje"
-          ],
+          "answers": {
+            "a1": "Llevar solo bolsos pequeños",
+            "a2": "Llevar el bolso al hombro",
+            "a3": "Entregar el equipaje a la tripulación",
+            "a4": "Dejar todo el equipaje"
+          },
           "headerLabel": "EVACUACIÓN"
         },
         "flightattendant-q5": {
           "question": "¿Por qué los pasajeros deberían contar las filas entre su asiento y las salidas utilizables más cercanas?",
-          "answers": [
-            "El humo o la oscuridad pueden hacer que las salidas sean más difíciles de ver",
-            "Determina el orden del servicio de comidas.",
-            "Identifica el asiento más silencioso",
-            "Cambia el equilibrio del avión."
-          ],
+          "answers": {
+            "a1": "El humo o la oscuridad pueden hacer que las salidas sean más difíciles de ver",
+            "a2": "Determina el orden del servicio de comidas.",
+            "a3": "Identifica el asiento más silencioso",
+            "a4": "Cambia el equilibrio del avión."
+          },
           "headerLabel": "CONCIENCIA DE SALIDA"
         },
         "flightattendant-q6": {
           "question": "En la aviación, ¿qué pretende fortalecer principalmente la gestión de recursos de la tripulación?",
-          "answers": [
-            "El precio de los billetes y la programación",
-            "Comunicación, trabajo en equipo y toma de decisiones.",
-            "Entretenimiento para pasajeros",
-            "Velocidad de fabricación de aviones"
-          ],
+          "answers": {
+            "a1": "El precio de los billetes y la programación",
+            "a2": "Comunicación, trabajo en equipo y toma de decisiones.",
+            "a3": "Entretenimiento para pasajeros",
+            "a4": "Velocidad de fabricación de aviones"
+          },
           "headerLabel": "COORDINACIÓN DE LA TRIPULACIÓN"
         },
         "flightattendant-q7": {
           "question": "¿Qué significa hipoxia?",
-          "answers": [
-            "Ruido excesivo en cabina",
-            "Un rápido cambio de dirección",
-            "No llega suficiente oxígeno a los tejidos del cuerpo.",
-            "Un retraso en el embarque"
-          ],
+          "answers": {
+            "a1": "Ruido excesivo en cabina",
+            "a2": "Un rápido cambio de dirección",
+            "a3": "No llega suficiente oxígeno a los tejidos del cuerpo.",
+            "a4": "Un retraso en el embarque"
+          },
           "headerLabel": "SALUD AERONÁUTICA"
         },
         "flightattendant-q8": {
           "question": "¿Qué tres elementos forman el triángulo del fuego?",
-          "answers": [
-            "Humo, llamas y cenizas.",
-            "Agua, aire y metal.",
-            "Combustible, presión y vapor.",
-            "Calor, combustible y oxígeno."
-          ],
+          "answers": {
+            "a1": "Humo, llamas y cenizas.",
+            "a2": "Agua, aire y metal.",
+            "a3": "Combustible, presión y vapor.",
+            "a4": "Calor, combustible y oxígeno."
+          },
           "headerLabel": "SEGURIDAD CONTRA INCENDIOS"
         },
         "flightattendant-q9": {
           "question": "¿Cuál es el objetivo principal de las luces de emergencia situadas a ras del suelo?",
-          "answers": [
-            "Para ayudar a guiar a las personas hacia las salidas cuando la visibilidad es deficiente.",
-            "Para iluminar bandejas de comida.",
-            "Para mostrar la velocidad del avión.",
-            "Para marcar asientos premium"
-          ],
+          "answers": {
+            "a1": "Para ayudar a guiar a las personas hacia las salidas cuando la visibilidad es deficiente.",
+            "a2": "Para iluminar bandejas de comida.",
+            "a3": "Para mostrar la velocidad del avión.",
+            "a4": "Para marcar asientos premium"
+          },
           "headerLabel": "SISTEMAS DE CABINA"
         },
         "flightattendant-q10": {
           "question": "¿Por qué los pasajeros deben prestar atención a las instrucciones de seguridad incluso si vuelan con frecuencia?",
-          "answers": [
-            "Revela la altitud de crucero del vuelo.",
-            "Los equipos y procedimientos de emergencia pueden variar según el avión.",
-            "Determina el orden de entrega del equipaje",
-            "Explica cómo se fijaron los precios de las entradas."
-          ],
+          "answers": {
+            "a1": "Revela la altitud de crucero del vuelo.",
+            "a2": "Los equipos y procedimientos de emergencia pueden variar según el avión.",
+            "a3": "Determina el orden de entrega del equipaje",
+            "a4": "Explica cómo se fijaron los precios de las entradas."
+          },
           "headerLabel": "PREGUNTA FINAL DE CABINA"
         }
       }

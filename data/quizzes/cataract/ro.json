@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test rapid de cataractă",
   "eyebrow": "VERIFICAREA VEZIUNII 10 ÎNTREBĂRI",
   "summary": "Detalii neclare, capcane vizuale apropiate și semne importante de avertizare pentru cataractă într-o singură provocare rapidă.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Cataracta poate fi ușor de ratat la început. Vedeți dacă puteți identifica indiciile subtile din 10 întrebări rapide - cele finale îi atrag pe majoritatea oamenilor.",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare de zece întrebări combină cinci puzzle-uri vizuale pe ecran cu cinci întrebări de conștientizare generală despre cataractă. Măsoară răspunsurile la acest test, nu vederea, sănătatea cristalinului sau probabilitatea cataractei.\n\nDimensiunea ecranului, luminozitatea, contrastul, vederea, lentilele corective, oboseala și setările dispozitivului pot afecta performanța. Vedere persistentă încețoșată sau încețoșată, strălucire, halouri în jurul luminilor, dificultăți de a vedea noaptea sau tonuri care par mai puțin vii trebuie discutate cu un specialist calificat în îngrijirea ochilor.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Completați cinci provocări de detalii, model și memorie vizuală.",
         "Răspunde la cinci întrebări despre cataractă și când să caute ajutor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocarea cataractei",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Test rapid de cataractă",
@@ -30,10 +26,8 @@
         "preAdCopy": "Cele zece răspunsuri ale tale au fost verificate și scorul tău de provocare a cataractei este gata să fie dezvăluit.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Trei zone vizuale comparate",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Trei zone vizuale comparate"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Ai depășit provocarea vizuală de 80%!",
       "finished": "Provocarea cataractei finalizată",
-      "correctLabel": "corect",
       "strongest": "Zona cea mai puternică azi",
       "trickiest": "Cea mai dificilă zonă azi",
       "bestRound": "Cea mai bună secțiune",
@@ -94,8 +87,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Care personaj se află exact în mijlocul grilei?",
           "headerLabel": "DETALUL CENTRAL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERINȚA: B8R3K5",
           "question": "Care cod se potrivește exact cu referința?",
           "headerLabel": "MECI CELEBRĂ",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERINȚĂ",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Care simbol completează succesiunea alternativă?",
           "headerLabel": "Urmărirea modelelor",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Care obiect a apărut al treilea?",
           "headerLabel": "MEMORIE VIZUALĂ RAPIDĂ",
-          "answers": [
-            "carte",
-            "cheie",
-            "Lămâie",
-            "umbrelă"
-          ],
+          "answers": {
+            "a1": "carte",
+            "a2": "cheie",
+            "a3": "Lămâie",
+            "a4": "umbrelă"
+          },
           "study": {
             "title": "Studiați ordinea celor cinci obiecte",
             "instruction": "Aceasta va dispărea automat.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Care poziție conține cercul pal?",
           "headerLabel": "VERIFICAREA DETALIILOR",
-          "answers": [
-            "A cincea",
-            "În al doilea rând",
-            "În al patrulea rând",
-            "Al șaselea"
-          ],
+          "answers": {
+            "a1": "A cincea",
+            "a2": "În al doilea rând",
+            "a3": "În al patrulea rând",
+            "a4": "Al șaselea"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Ce este cataracta?",
           "headerLabel": "BAZELE CATARACTEI",
-          "answers": [
-            "O zgârietură pe pleoapă",
-            "O zonă tulbure din cristalinul natural al ochiului",
-            "O problemă limitată la canalul lacrimal",
-            "Un tip de infecție a urechii"
-          ]
+          "answers": {
+            "a1": "O zgârietură pe pleoapă",
+            "a2": "O zonă tulbure din cristalinul natural al ochiului",
+            "a3": "O problemă limitată la canalul lacrimal",
+            "a4": "Un tip de infecție a urechii"
+          }
         },
         "cataract-q7": {
           "question": "Care grup conține simptome comune de cataractă?",
           "headerLabel": "SEMNE DE AVERTIZARE",
-          "answers": [
-            "Mâncărime de piele și durere în gât",
-            "Pierderea bruscă a auzului și amețeli",
-            "Vedere încețoșată sau încețoșată, strălucire și halouri în jurul luminilor",
-            "Un gât înțepenit și umerii dornici"
-          ]
+          "answers": {
+            "a1": "Mâncărime de piele și durere în gât",
+            "a2": "Pierderea bruscă a auzului și amețeli",
+            "a3": "Vedere încețoșată sau încețoșată, strălucire și halouri în jurul luminilor",
+            "a4": "Un gât înțepenit și umerii dornici"
+          }
         },
         "cataract-q8": {
           "question": "Cum poate un specialist în îngrijirea ochilor să verifice dacă există cataractă?",
           "headerLabel": "EVALUARE PROFESIONALĂ",
-          "answers": [
-            "Cu un test de auz",
-            "Folosind o citire a tensiunii arteriale la domiciliu",
-            "Cu un test de gust",
-            "Ca parte a unei examinări cuprinzătoare a ochiului dilatat"
-          ]
+          "answers": {
+            "a1": "Cu un test de auz",
+            "a2": "Folosind o citire a tensiunii arteriale la domiciliu",
+            "a3": "Cu un test de gust",
+            "a4": "Ca parte a unei examinări cuprinzătoare a ochiului dilatat"
+          }
         },
         "cataract-q9": {
           "question": "Care este cel mai sigur răspuns la pierderea bruscă a vederii, durerea oculară severă sau o schimbare majoră bruscă a vederii?",
           "headerLabel": "CÂND SĂ ACȚIONEAZĂ",
-          "answers": [
-            "Solicitați sfaturi profesionale urgente pentru îngrijirea ochilor",
-            "Așteptați câteva luni fără să menționați",
-            "Schimbați luminozitatea ecranului și presupuneți că este fix",
-            "Bazează-te doar pe un test online"
-          ]
+          "answers": {
+            "a1": "Solicitați sfaturi profesionale urgente pentru îngrijirea ochilor",
+            "a2": "Așteptați câteva luni fără să menționați",
+            "a3": "Schimbați luminozitatea ecranului și presupuneți că este fix",
+            "a4": "Bazează-te doar pe un test online"
+          }
         },
         "cataract-q10": {
           "question": "Ce vă poate spune scorul la această provocare online?",
           "headerLabel": "VERIFICAREA FINALĂ A REALITATII",
-          "answers": [
-            "Indiferent dacă lentilele tale sunt sănătoase",
-            "Doar cum te-ai descurcat la aceste zece întrebări",
-            "Indiferent dacă aveți nevoie de o operație de cataractă",
-            "Dacă poți exclude o cataractă"
-          ]
+          "answers": {
+            "a1": "Indiferent dacă lentilele tale sunt sănătoase",
+            "a2": "Doar cum te-ai descurcat la aceste zece întrebări",
+            "a3": "Indiferent dacă aveți nevoie de o operație de cataractă",
+            "a4": "Dacă poți exclude o cataractă"
+          }
         }
       }
     }

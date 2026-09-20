@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo l'8% supera l'esame di ammissione per paramedico",
   "eyebrow": "SFIDA DI INGRESSO PARAMEDICO",
   "summary": "I rischi della scena, i segni vitali e le decisioni a risposta rapida mettono alla prova se riesci a pensare chiaramente quando ogni indizio conta.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Pericoli della scena, segni vitali, calcoli di emergenza e giudizio calmo. Riesci a pensare chiaramente quando ogni indizio conta?",
     "cta": "Inizia il test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di intrattenimento mondiale contiene dieci domande in stile ingresso su anatomia, osservazione, matematica, comunicazione, sicurezza e giudizio prioritario. Mette alla prova un ragionamento attento piuttosto che protocolli locali o procedure operative.\n\nScegli la risposta migliore utilizzando solo le informazioni mostrate. Le opzioni sicure favoriscono il riconoscimento del rischio, la comunicazione chiara e la ricerca di un supporto qualificato e adeguato.\n\nQuesto non è un esame di ammissione per paramedico accreditato, una valutazione clinica, una qualifica, un corso di formazione o una fonte di consulenza in caso di emergenza.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa dieci domande accuratamente selezionate in un'unica sfida mirata.",
         "Scegli una risposta ogni volta. Le risposte corrette restano nascoste fino al risultato finale.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Esame di ammissione per paramedico",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Sfida per l'ingresso del paramedico",
@@ -30,10 +26,8 @@
         "preAdCopy": "Il tuo punteggio di ammissione al paramedico e la suddivisione in sei aree sono pronti per essere rivelati.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Sei aree d'ingresso a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Sei aree d'ingresso a confronto"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Hai superato la sfida d'ingresso del paramedico!",
       "finished": "Sfida per l'ingresso del paramedico completata",
-      "correctLabel": "corrette",
       "strongest": "Area valutata più forte",
       "trickiest": "Area valutata più difficile",
       "bestRound": "La sezione migliore",
@@ -107,8 +100,7 @@
         "snapshot": "Cosa suggerisce il tuo profilo da candidato",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Quale organo pompa il sangue nel corpo?",
-          "answers": [
-            "Cuore",
-            "Polmoni",
-            "Cervello",
-            "Ossa"
-          ],
+          "answers": {
+            "a1": "Cuore",
+            "a2": "Polmoni",
+            "a3": "Cervello",
+            "a4": "Ossa"
+          },
           "headerLabel": "ANATOMIA E FISIOLOGIA"
         },
         "paramedic-r1q5": {
           "question": "Quale apertura rende il passaggio di consegne più chiaro?",
-          "answers": [
-            "Qualcosa è cambiato prima, probabilmente",
-            "Ecco tutti i dettagli minori in ordine casuale",
-            "Alle 14:20, la respirazione è diventata più veloce e la vigilanza è diminuita",
-            "So già esattamente cosa l'ha causato"
-          ],
+          "answers": {
+            "a1": "Qualcosa è cambiato prima, probabilmente",
+            "a2": "Ecco tutti i dettagli minori in ordine casuale",
+            "a3": "Alle 14:20, la respirazione è diventata più veloce e la vigilanza è diminuita",
+            "a4": "So già esattamente cosa l'ha causato"
+          },
           "headerLabel": "CONSEGNA CHIARA"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Polso 80 poi 92 poi 108, con pallore e vertigini"
           },
           "question": "Qual è la migliore interpretazione di questo modello?",
-          "answers": [
-            "Il registro è invariato",
-            "La tendenza combinata suggerisce un deterioramento che necessita di una tempestiva valutazione qualificata",
-            "Conta solo il primo numero",
-            "I sintomi possono essere ignorati perché non viene mostrata alcuna diagnosi"
-          ],
+          "answers": {
+            "a1": "Il registro è invariato",
+            "a2": "La tendenza combinata suggerisce un deterioramento che necessita di una tempestiva valutazione qualificata",
+            "a3": "Conta solo il primo numero",
+            "a4": "I sintomi possono essere ignorati perché non viene mostrata alcuna diagnosi"
+          },
           "headerLabel": "TENDENZE DELL'OSSERVAZIONE"
         },
         "paramedic-r2q4": {
           "question": "Quale affermazione descrive meglio i reni?",
-          "answers": [
-            "Scambiano ossigeno e anidride carbonica",
-            "Rimuovono i rifiuti dal sangue e aiutano a regolare l'equilibrio idrico",
-            "Pompano il sangue attraverso le arterie",
-            "Controllano ogni movimento volontario"
-          ],
+          "answers": {
+            "a1": "Scambiano ossigeno e anidride carbonica",
+            "a2": "Rimuovono i rifiuti dal sangue e aiutano a regolare l'equilibrio idrico",
+            "a3": "Pompano il sangue attraverso le arterie",
+            "a4": "Controllano ogni movimento volontario"
+          },
           "headerLabel": "SISTEMI DEL CORPO"
         },
         "paramedic-r1q4": {
           "question": "Un cavo elettrico sotto tensione passa attraverso l'unica porta. Cosa viene prima?",
-          "answers": [
-            "Superalo con attenzione",
-            "Mantieni tutti lontani e ottieni aiuto qualificato per renderlo sicuro",
-            "Spostalo con un oggetto asciutto",
-            "Chiedi a uno spettatore di guardarlo"
-          ],
+          "answers": {
+            "a1": "Superalo con attenzione",
+            "a2": "Mantieni tutti lontani e ottieni aiuto qualificato per renderlo sicuro",
+            "a3": "Spostalo con un oggetto asciutto",
+            "a4": "Chiedi a uno spettatore di guardarlo"
+          },
           "headerLabel": "SICUREZZA DELLA SCENA"
         },
         "paramedic-r6q2": {
           "question": "Una persona continua ad annuire ma non ha capito. Cosa dovrebbe succedere dopo?",
-          "answers": [
-            "Ripeti la stessa spiegazione più lentamente",
-            "Chiedi: \"Hai capito?\" e continua se dicono di sì",
-            "Accorcia la spiegazione ma mantieni la stessa terminologia",
-            "Usa parole semplici e verifica che siano state comprese"
-          ],
+          "answers": {
+            "a1": "Ripeti la stessa spiegazione più lentamente",
+            "a2": "Chiedi: \"Hai capito?\" e continua se dicono di sì",
+            "a3": "Accorcia la spiegazione ma mantieni la stessa terminologia",
+            "a4": "Usa parole semplici e verifica che siano state comprese"
+          },
           "headerLabel": "COMUNICAZIONE CHIARA"
         },
         "paramedic-r5q6": {
           "context": "La persona A si sente bene e le sue osservazioni rimangono stabili. La persona B è di nuovo sudata e stordita e il suo battito cardiaco è aumentato durante tre controlli.",
           "question": "Chi ha bisogno di attenzione per primo?",
-          "answers": [
-            "Persona B, perché diversi cambiamenti indicano un peggioramento",
-            "Persona A, perché le sue osservazioni sono state registrate per prime",
-            "Entrambi possono aspettare perché nessuno dei due ha una diagnosi precisa",
-            "La persona con il nome più breve"
-          ],
+          "answers": {
+            "a1": "Persona B, perché diversi cambiamenti indicano un peggioramento",
+            "a2": "Persona A, perché le sue osservazioni sono state registrate per prime",
+            "a3": "Entrambi possono aspettare perché nessuno dei due ha una diagnosi precisa",
+            "a4": "La persona con il nome più breve"
+          },
           "headerLabel": "GIUDIZIO PRIORITARIO"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litri più 450 millilitri più 250 millilitri equivalgono al totale"
           },
           "question": "Qual è il volume registrato combinato in millilitri?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1.000 ml",
-            "1.100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1.000 ml",
+            "a4": "1.100 ml"
+          },
           "headerLabel": "NUMERO DI EMERGENZA"
         },
         "paramedic-r10q4": {
           "context": "RECORD DELL'INCIDENTE — Una persona aggressiva lancia oggetti vicino all'ingresso. Le attrezzature bloccano parzialmente la via d'uscita più vicina.",
           "question": "Qual è la risposta più sicura ai rischi combinati?",
-          "answers": [
-            "Tenersi lontani, spostare gli altri verso un percorso più sicuro e allertare i soccorsi appropriati",
-            "Avvicinati e discuti finché la persona non si ferma",
-            "Recuperare l'attrezzatura accanto alla persona prima di allontanarsi",
-            "Chiedere a uno spettatore non addestrato di bloccare gli oggetti lanciati"
-          ],
+          "answers": {
+            "a1": "Tenersi lontani, spostare gli altri verso un percorso più sicuro e allertare i soccorsi appropriati",
+            "a2": "Avvicinati e discuti finché la persona non si ferma",
+            "a3": "Recuperare l'attrezzatura accanto alla persona prima di allontanarsi",
+            "a4": "Chiedere a uno spettatore non addestrato di bloccare gli oggetti lanciati"
+          },
           "headerLabel": "SICUREZZA INTEGRATA"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Respirazione 16 vigile, poi 22 ansiosa, poi 28 sonnolenta"
           },
           "question": "Qual è la migliore interpretazione del trend completo?",
-          "answers": [
-            "La persona sta migliorando costantemente",
-            "Conta solo il controllo intermedio",
-            "I valori possono essere ignorati perché non viene nominata alcuna diagnosi",
-            "La respirazione peggiora mentre la reattività diminuisce"
-          ],
+          "answers": {
+            "a1": "La persona sta migliorando costantemente",
+            "a2": "Conta solo il controllo intermedio",
+            "a3": "I valori possono essere ignorati perché non viene nominata alcuna diagnosi",
+            "a4": "La respirazione peggiora mentre la reattività diminuisce"
+          },
           "headerLabel": "RISPOSTA FINALE"
         }
       }

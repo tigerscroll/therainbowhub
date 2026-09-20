@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 10 % kan bestå denne grammatikquiz",
   "eyebrow": "KORREKTURUDFORDRING",
   "summary": "Ødelagte sætninger, tegnsætningsfælder og næsten korrekte formuleringer tester, om en fejl kan glide forbi dig.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Tror du, at din grammatik er fejlfri? Reparer ødelagte sætninger, fang små tegnsætningsfælder og bevis, at du kan opdage fejlen, før den fanger dig.",
     "cta": "Start quizzen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende engelske udfordring indeholder ti omhyggeligt varierede spørgsmål om sætningsstruktur, tegnsætning, tid, stedord, referenceklarhed og præcis redigering. Hver genstand er skrevet specifikt til engelsk i stedet for oversat fra et andet sprog.\n\nVælg det ene svar, der gør sætningen korrekt og naturlig i dens angivne sammenhæng. Rigtigheden forbliver skjult indtil den endelige afsløring.\n\nDin score afspejler kun denne korte sprogudfordring. Det er ikke en formel læse- og skrivevurdering eller uddannelseskvalifikation.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
         "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Grammatikudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Grammatik udfordring",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din grammatikscore og tre færdigheder er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Tre grammatikfærdigheder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre grammatikfærdigheder sammenlignet"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du bestod grammatikudfordringen!",
       "finished": "Grammatikudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste grammatikfærdighed",
       "trickiest": "Den vanskeligste grammatikfærdighed",
       "bestRound": "Bedste afsnit",
@@ -98,8 +91,7 @@
         "snapshot": "Hvad din grammatikprofil antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Hvilken mulighed er en hel sætning?",
-          "answers": [
-            "Efter sidste afsnit",
-            "Redaktøren tjekkede det sidste afsnit.",
-            "Fordi fristen ændrede sig",
-            "Mens alle ventede"
-          ],
+          "answers": {
+            "a1": "Efter sidste afsnit",
+            "a2": "Redaktøren tjekkede det sidste afsnit.",
+            "a3": "Fordi fristen ændrede sig",
+            "a4": "Mens alle ventede"
+          },
           "headerLabel": "SÆTNINGSSTRUKTUR"
         },
         "grammar-r1q3": {
           "context": "Sedlerne tilhører flere elever.",
           "question": "Hvilken sætning gengiver betydningen korrekt?",
-          "answers": [
-            "Elevernes noter blev organiseret.",
-            "En elevs note blev organiseret.",
-            "Eleverne havde ingen noter.",
-            "Noterne tilhørte læreren."
-          ],
+          "answers": {
+            "a1": "Elevernes noter blev organiseret.",
+            "a2": "En elevs note blev organiseret.",
+            "a3": "Eleverne havde ingen noter.",
+            "a4": "Noterne tilhørte læreren."
+          },
           "headerLabel": "EJEFORHOLD"
         },
         "grammar-r3q1": {
           "question": "Mødet begyndte klokken 09.00. Leo afsluttede diagrammet kl. 08:30. Hvilken sætning er korrekt?",
-          "answers": [
-            "Leo færdiggjorde skemaet efter mødet begyndte.",
-            "Leo havde udfyldt skemaet efter mødet begyndte.",
-            "Leo færdiggjorde diagrammet, netop som mødet begyndte.",
-            "Leo havde færdiggjort diagrammet, før mødet begyndte."
-          ],
+          "answers": {
+            "a1": "Leo færdiggjorde skemaet efter mødet begyndte.",
+            "a2": "Leo havde udfyldt skemaet efter mødet begyndte.",
+            "a3": "Leo færdiggjorde diagrammet, netop som mødet begyndte.",
+            "a4": "Leo havde færdiggjort diagrammet, før mødet begyndte."
+          },
           "headerLabel": "TIDSFØLGE"
         },
         "grammar-r4q3": {
           "question": "Hvilken sætning bruger et semikolon korrekt?",
-          "answers": [
-            "Filen var stor; fordi den loadede langsomt.",
-            "Filen var stor; det tog lang tid at indlæse den.",
-            "Filen var stor, den blev indlæst langsomt.",
-            "Filen var stor; selvom det loadede langsomt."
-          ],
+          "answers": {
+            "a1": "Filen var stor; fordi den loadede langsomt.",
+            "a2": "Filen var stor; det tog lang tid at indlæse den.",
+            "a3": "Filen var stor, den blev indlæst langsomt.",
+            "a4": "Filen var stor; selvom det loadede langsomt."
+          },
           "headerLabel": "SEMIKOLON"
         },
         "grammar-r5q4": {
           "context": "Vælg pronomenet i første person ental.",
           "question": "Hvilket ord henviser til den, der taler?",
-          "answers": [
-            "jeg",
-            "du",
-            "han",
-            "vi"
-          ],
+          "answers": {
+            "a1": "jeg",
+            "a2": "du",
+            "a3": "han",
+            "a4": "vi"
+          },
           "headerLabel": "VALG AF PRONOMEN"
         },
         "grammar-r5q6": {
           "question": "Hvilken sætning bruger kommaet korrekt ved tiltale til Ravi?",
-          "answers": [
-            "Ravi venligst, tjek den sidste linje.",
-            "Ravi, tjek venligst den sidste linje.",
-            "Ravi venligst tjek, den sidste linje.",
-            "Ravi; tjek venligst den sidste linje."
-          ],
+          "answers": {
+            "a1": "Ravi venligst, tjek den sidste linje.",
+            "a2": "Ravi, tjek venligst den sidste linje.",
+            "a3": "Ravi venligst tjek, den sidste linje.",
+            "a4": "Ravi; tjek venligst den sidste linje."
+          },
           "headerLabel": "DIREKTE TILTALE"
         },
         "grammar-r7q6": {
           "context": "En rapport indeholder et resumé og et bilag. Bilaget opdateres månedligt.",
           "question": "Hvilken redigering får den månedlige opdatering til at henvise til bilaget?",
-          "answers": [
-            "Rapporten indeholder et resumé og et bilag, og den opdateres månedligt.",
-            "Rapporten indeholder et resumé, der opdateres månedligt, samt et bilag.",
-            "Rapporten indeholder et resumé og et bilag; bilaget opdateres månedligt.",
-            "Rapporten, der opdateres månedligt, indeholder et resumé og dets bilag."
-          ],
+          "answers": {
+            "a1": "Rapporten indeholder et resumé og et bilag, og den opdateres månedligt.",
+            "a2": "Rapporten indeholder et resumé, der opdateres månedligt, samt et bilag.",
+            "a3": "Rapporten indeholder et resumé og et bilag; bilaget opdateres månedligt.",
+            "a4": "Rapporten, der opdateres månedligt, indeholder et resumé og dets bilag."
+          },
           "headerLabel": "TYDELIGE HENVISNINGER"
         },
         "grammar-r9q1": {
           "question": "Hvilken sætning begynder med en ledsætning med “selvom” og har korrekt tegnsætning?",
-          "answers": [
-            "Stormen sluttede; selvom gaderne forblev oversvømmede.",
-            "Stormen sluttede, men gaderne forblev oversvømmede.",
-            "Skønt stormen sluttede; gaderne forblev oversvømmede.",
-            "Selvom stormen sluttede, forblev gaderne oversvømmede."
-          ],
-          "trapdoorErrors": [
-            "semikolon adskiller forkert en hovedsætning fra en afhængig klausul",
-            "konjunktivt adverbium mangler den nødvendige grænsetegnsætning",
-            "semikolon følger forkert efter en afhængig klausul",
-            null
-          ],
+          "answers": {
+            "a1": "Stormen sluttede; selvom gaderne forblev oversvømmede.",
+            "a2": "Stormen sluttede, men gaderne forblev oversvømmede.",
+            "a3": "Skønt stormen sluttede; gaderne forblev oversvømmede.",
+            "a4": "Selvom stormen sluttede, forblev gaderne oversvømmede."
+          },
+          "trapdoorErrors": {
+            "a1": "semikolon adskiller forkert en hovedsætning fra en afhængig klausul",
+            "a2": "konjunktivt adverbium mangler den nødvendige grænsetegnsætning",
+            "a3": "semikolon følger forkert efter en afhængig klausul"
+          },
           "headerLabel": "MODSÆTNINGER"
         },
         "grammar-r10q6": {
           "question": "Hvilken sætning er helt korrekt?",
-          "answers": [
-            "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtig.",
-            "Efter gennemgang af tallene hver total blev bekræftet af Maya.",
-            "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtig nøjagtig.",
-            "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtige."
-          ],
+          "answers": {
+            "a1": "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtig.",
+            "a2": "Efter gennemgang af tallene hver total blev bekræftet af Maya.",
+            "a3": "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtig nøjagtig.",
+            "a4": "Efter at have gennemgået tallene bekræftede Maya, at hver total var nøjagtige."
+          },
           "headerLabel": "PRÆCIS REDIGERING"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "De endelige rapporter blev kontrolleret før redaktøren godkendte godkendte dem til offentliggørelse."
           },
           "question": "Hvilken del indeholder fejlen?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SIDSTE KORREKTUR"
         }
       }

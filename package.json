@@ -15,6 +15,7 @@
     "validate:production": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",
     "validate:export": "node scripts/validate-export.mjs",
     "validate:localizations": "node scripts/validate-localizations.mjs",
+    "validate:all-locales": "node scripts/validate-localizations.mjs --require-all-locales",
     "visual:test": "node scripts/visual-regression.mjs",
     "visual:update": "node scripts/visual-regression.mjs --update",
     "create:quiz": "node scripts/create-quiz.mjs"

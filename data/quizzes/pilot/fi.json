@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 3 % aikuisista voi läpäistä tämän pilottipääsykokeen",
   "eyebrow": "PILOTIN SOVELTUMISTESTI",
   "summary": "Kymmenen kysymystä testaa lentoperiaatteita, instrumentteja, säätä, navigointia ja ohjaamon arviointia.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ohjaamon perusasiat näyttävät yksinkertaisilta. Sitten koe siirtyy säähän, navigointiin ja päätöksiin, joita lentäjillä ei ole varaa arvata.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää kansainvälisiä siviili-ilmailun konsepteja yhden maan lisensointiohjelman sijaan. Se testaa laajoja lentoperiaatteita, ohjaamon instrumentteja, säätietoisuutta, navigointia ja konservatiivista päätöksentekoa.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeammaksi lentäjän soveltuvuutta koskevaan kysymykseen.",
         "Valitse turvallisin tai tarkin vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pilotin sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Pilotin pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja lentäjän soveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä lentoaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä lentoaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit Pilot-pääsyhaasteen!",
       "finished": "Pilotin sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin ilmailualue",
       "trickiest": "Hankalin ilmailualue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Mikä voima vaikuttaa ylöspäin lentokoneen painoa vastaan?",
-          "answers": [
-            "Nostovoima",
-            "Ilmanvastus",
-            "Työntövoima",
-            "Inertia"
-          ],
+          "answers": {
+            "a1": "Nostovoima",
+            "a2": "Ilmanvastus",
+            "a3": "Työntövoima",
+            "a4": "Inertia"
+          },
           "headerLabel": "LENNON PERUSTEET"
         },
         "pilot-q2": {
           "question": "Mikä ohjaamon mittari näyttää korkeuden?",
-          "answers": [
-            "Ilmanopeuden ilmaisin",
-            "Korkeusmittari",
-            "Suunnan ilmaisin",
-            "Käänny koordinaattoriin"
-          ],
+          "answers": {
+            "a1": "Ilmanopeuden ilmaisin",
+            "a2": "Korkeusmittari",
+            "a3": "Suunnan ilmaisin",
+            "a4": "Käänny koordinaattoriin"
+          },
           "headerLabel": "INSTRUMENTIT"
         },
         "pilot-q3": {
           "question": "Mikä pilvityyppi liittyy voimakkaimmin ukkosmyrskyihin ja vakavaan turbulenssiin?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "ILMAILUN SÄÄ"
         },
         "pilot-q4": {
           "question": "Mihin suuntaan 180 asteen suunta osoittaa suunnilleen?",
-          "answers": [
-            "North",
-            "East",
-            "länteen",
-            "Etelä"
-          ],
+          "answers": {
+            "a1": "North",
+            "a2": "East",
+            "a3": "länteen",
+            "a4": "Etelä"
+          },
           "headerLabel": "NAVIGOINTI"
         },
         "pilot-q5": {
           "question": "Sää huononee ennakoitua nopeammin ja turvamarginaalit pienenevät. Mikä on paras yleinen päätös?",
-          "answers": [
-            "Arvioi uudelleen ajoissa ja suuntaa tai laskeudu, kun turvallisia vaihtoehtoja on jäljellä",
-            "Jatka, koska alkuperäinen suunnitelma on saatava päätökseen",
-            "Laske turvallisten rajojen alapuolelle säilyttääksesi visuaalisen kontaktin",
-            "Ohita trendi, kunnes olosuhteet muuttuvat kriittisiksi"
-          ],
+          "answers": {
+            "a1": "Arvioi uudelleen ajoissa ja suuntaa tai laskeudu, kun turvallisia vaihtoehtoja on jäljellä",
+            "a2": "Jatka, koska alkuperäinen suunnitelma on saatava päätökseen",
+            "a3": "Laske turvallisten rajojen alapuolelle säilyttääksesi visuaalisen kontaktin",
+            "a4": "Ohita trendi, kunnes olosuhteet muuttuvat kriittisiksi"
+          },
           "headerLabel": "AERONAUTILINEN TUOMIO"
         },
         "pilot-q6": {
           "question": "Mitkä ohjainpinnat saavat lentokoneen kallistumaan pituusakselinsa ympäri?",
-          "answers": [
-            "Korkeusperäsimet",
-            "Siivekkeet",
-            "Vain peräsinpolkimet",
-            "Laskusiivekkeet"
-          ],
+          "answers": {
+            "a1": "Korkeusperäsimet",
+            "a2": "Siivekkeet",
+            "a3": "Vain peräsinpolkimet",
+            "a4": "Laskusiivekkeet"
+          },
           "headerLabel": "LENTOOHJAIMET"
         },
         "pilot-q7": {
           "question": "Mikä instrumentti näyttää lentokoneen nousu- tai laskunopeuden?",
-          "answers": [
-            "Kompassi",
-            "Vain korkeusmittari",
-            "Pystysuuntainen nopeuden ilmaisin",
-            "Ulkoilman lämpötilamittari"
-          ],
+          "answers": {
+            "a1": "Kompassi",
+            "a2": "Vain korkeusmittari",
+            "a3": "Pystysuuntainen nopeuden ilmaisin",
+            "a4": "Ulkoilman lämpötilamittari"
+          },
           "headerLabel": "Kokpitin analyysi"
         },
         "pilot-q8": {
           "question": "Mikä on tuulen leikkaus?",
-          "answers": [
-            "Tasainen tuuli, joka ei koskaan muutu",
-            "Vain pilven korkeuden mitta",
-            "Ilma liikkuu vain veden päällä",
-            "Tuulen nopeuden tai suunnan nopea muutos lyhyellä matkalla"
-          ],
+          "answers": {
+            "a1": "Tasainen tuuli, joka ei koskaan muutu",
+            "a2": "Vain pilven korkeuden mitta",
+            "a3": "Ilma liikkuu vain veden päällä",
+            "a4": "Tuulen nopeuden tai suunnan nopea muutos lyhyellä matkalla"
+          },
           "headerLabel": "SÄÄVAARAT"
         },
         "pilot-q9": {
           "question": "Mihin suuntaan kiitotie numero 27 on suunnattu suunnilleen?",
-          "answers": [
-            "länteen",
-            "North",
-            "East",
-            "Etelä"
-          ],
+          "answers": {
+            "a1": "länteen",
+            "a2": "North",
+            "a3": "East",
+            "a4": "Etelä"
+          },
           "headerLabel": "KIITOTEEN PERUSTELU"
         },
         "pilot-q10": {
           "question": "Huomaat selittämättömän polttoaineen epätasapainon lennon aikana. Mikä on paras yleinen vastaus?",
-          "answers": [
-            "Oletetaan, että mittari korjaa itseään",
-            "Käytä tarkistuslistaa, seuraa tilannetta ja kommunikoi tarvittaessa",
-            "Vaihda satunnaisia järjestelmiä, kunnes se katoaa",
-            "Viivytä kaikkia toimia laskeutumiseen asti"
-          ],
+          "answers": {
+            "a1": "Oletetaan, että mittari korjaa itseään",
+            "a2": "Käytä tarkistuslistaa, seuraa tilannetta ja kommunikoi tarvittaessa",
+            "a3": "Vaihda satunnaisia järjestelmiä, kunnes se katoaa",
+            "a4": "Viivytä kaikkia toimia laskeutumiseen asti"
+          },
           "headerLabel": "VIIMEINEN KYSYMYS ohjaamoon"
         }
       }

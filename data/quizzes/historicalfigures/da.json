@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 1 ud af 10 personer kan navngive disse historiske personer",
   "eyebrow": "HISTORIE PORTRÆT UDFORDRING",
   "summary": "Ti ansigter, der formede verden. Test, om du kan identificere lederne, tænkerne og ikonerne alene ud fra deres portrætter.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Du kender deres navne, men kender du deres ansigter? Ti berømte portrætter venter.",
     "cta": "Start"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsquiz præsenterer ti bredt anerkendte personer fra politisk, videnskabelig, kunstnerisk og kulturel historie. Hvert portræt kommer med fire mulige navne.\n\nStuder ansigtet, før du vælger. Sættet bevæger sig på tværs af århundreder og lande, så anerkendelse betyder lige så meget som huskede datoer.\n\nBilleder og kildespørgsmålskoncepter er gengivet fra QuizDays med tilladelse angivet af webstedsejeren, der bestilte denne quiz.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Studer hvert historisk portræt omhyggeligt.",
         "Vælg det navn, der matcher den viste person.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Historie udfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Historiske figurer",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din historiescore og komplette portrætafsløring er klar.",
         "preAdChecks": [
           "10 portrætter kontrolleret",
-          "Tre områder af historien sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre områder af historien sammenlignet"
+        ]
       }
     }
   },
@@ -58,7 +52,7 @@
       "profile-4": {
         "tier": "30-49 %",
         "title": "Den nysgerrige historiker",
-        "copy": "Flere berømte portrætter klikkede, mens andre beviste, at at kende et navn ikke er det samme som at genkende et ansigt."
+        "copy": "Flere berømte portrætter klikkede, mens andre viste, at det at kende et navn ikke er det samme som at genkende et ansigt."
       },
       "profile-5": {
         "tier": "Under 30 %",
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du bestod udfordringen med historiske tal!",
       "finished": "Historieudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste historieområde",
       "trickiest": "Det sværeste historieområde",
       "bestRound": "Bedste afsnit",
@@ -93,8 +86,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Sort-hvid portræt af Abraham Lincoln"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "George Washington",
-            "Thomas Jefferson",
-            "Abraham Lincoln",
-            "Theodore Roosevelt"
-          ],
+          "answers": {
+            "a1": "George Washington",
+            "a2": "Thomas Jefferson",
+            "a3": "Abraham Lincoln",
+            "a4": "Theodore Roosevelt"
+          },
           "headerLabel": "PORTRÆT 1 AF 10"
         },
         "historicalfigures-q2": {
@@ -119,12 +111,12 @@
             "alt": "Historisk portræt af Napoleon Bonaparte"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Napoleon Bonaparte",
-            "Julius Cæsar",
-            "Alexander den Store",
-            "Karl den Store"
-          ],
+          "answers": {
+            "a1": "Napoleon Bonaparte",
+            "a2": "Julius Cæsar",
+            "a3": "Alexander den Store",
+            "a4": "Karl den Store"
+          },
           "headerLabel": "PORTRÆT 2 AF 10"
         },
         "historicalfigures-q3": {
@@ -132,12 +124,12 @@
             "alt": "Historisk portræt af Cleopatra"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Kleopatra",
-            "Dronning Victoria",
-            "Marie Antoinette",
-            "Elizabeth I"
-          ],
+          "answers": {
+            "a1": "Kleopatra",
+            "a2": "Dronning Victoria",
+            "a3": "Marie Antoinette",
+            "a4": "Elizabeth I"
+          },
           "headerLabel": "PORTRÆT 3 AF 10"
         },
         "historicalfigures-q4": {
@@ -145,12 +137,12 @@
             "alt": "Historisk portræt af Leonardo da Vinci"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Michelangelo",
-            "Raphael",
-            "Donatello"
-          ],
+          "answers": {
+            "a1": "Leonardo da Vinci",
+            "a2": "Michelangelo",
+            "a3": "Raphael",
+            "a4": "Donatello"
+          },
           "headerLabel": "PORTRÆT 4 AF 10"
         },
         "historicalfigures-q5": {
@@ -158,12 +150,12 @@
             "alt": "Sort-hvid portræt af Albert Einstein"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Isaac Newton",
-            "Albert Einstein",
-            "Galileo Galilei",
-            "Nikola Tesla"
-          ],
+          "answers": {
+            "a1": "Isaac Newton",
+            "a2": "Albert Einstein",
+            "a3": "Galileo Galilei",
+            "a4": "Nikola Tesla"
+          },
           "headerLabel": "PORTRÆT 5 AF 10"
         },
         "historicalfigures-q6": {
@@ -171,12 +163,12 @@
             "alt": "Sort-hvidt portræt af Winston Churchill"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Franklin D. Roosevelt",
-            "Winston Churchill",
-            "Harry Truman",
-            "Dwight D. Eisenhower"
-          ],
+          "answers": {
+            "a1": "Franklin D. Roosevelt",
+            "a2": "Winston Churchill",
+            "a3": "Harry Truman",
+            "a4": "Dwight D. Eisenhower"
+          },
           "headerLabel": "PORTRÆT 6 AF 10"
         },
         "historicalfigures-q7": {
@@ -184,12 +176,12 @@
             "alt": "Sort-hvid portræt af Mahatma Gandhi"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Jawaharlal Nehru",
-            "Mahatma Gandhi",
-            "Nelson Mandela",
-            "Martin Luther King Jr."
-          ],
+          "answers": {
+            "a1": "Jawaharlal Nehru",
+            "a2": "Mahatma Gandhi",
+            "a3": "Nelson Mandela",
+            "a4": "Martin Luther King Jr."
+          },
           "headerLabel": "PORTRÆT 7 AF 10"
         },
         "historicalfigures-q8": {
@@ -197,12 +189,12 @@
             "alt": "Historisk portræt af Jeanne d'Arc"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Florence Nightingale",
-            "Katarina den Store",
-            "Jeanne d'Arc",
-            "Enkekejserinde Cixi"
-          ],
+          "answers": {
+            "a1": "Florence Nightingale",
+            "a2": "Katarina den Store",
+            "a3": "Jeanne d'Arc",
+            "a4": "Enkekejserinde Cixi"
+          },
           "headerLabel": "PORTRÆT 8 AF 10"
         },
         "historicalfigures-q9": {
@@ -210,12 +202,12 @@
             "alt": "Historisk portræt af opdagelsesrejsende Marco Polo"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Christopher Columbus",
-            "Ferdinand Magellan",
-            "Vasco da Gama",
-            "Marco Polo"
-          ],
+          "answers": {
+            "a1": "Christopher Columbus",
+            "a2": "Ferdinand Magellan",
+            "a3": "Vasco da Gama",
+            "a4": "Marco Polo"
+          },
           "headerLabel": "PORTRÆT 9 AF 10"
         },
         "historicalfigures-q10": {
@@ -223,12 +215,12 @@
             "alt": "Sort-hvid portræt af dronning Victoria"
           },
           "question": "Hvem er denne historiske figur?",
-          "answers": [
-            "Dronning Elizabeth II",
-            "Prinsesse Diana",
-            "Margaret Thatcher",
-            "Dronning Victoria"
-          ],
+          "answers": {
+            "a1": "Dronning Elizabeth II",
+            "a2": "Prinsesse Diana",
+            "a3": "Margaret Thatcher",
+            "a4": "Dronning Victoria"
+          },
           "headerLabel": "ENDELIGT PORTRÆT"
         }
       }

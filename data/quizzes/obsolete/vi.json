@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 7% có thể kể tên những món đồ lỗi thời này - Bạn có làm được không?",
   "eyebrow": "KIỂM TRA VẬT BỊ MẤT",
   "summary": "Mười đồ vật từng có vẻ hoàn toàn bình thường. Hãy xem bạn vẫn còn nhớ được bao nhiêu cái tên đã quên.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Các đồ vật có thể trông quen thuộc nhưng việc đặt tên chính xác cho cả 10 món đồ này khó hơn nhiều so với vẻ ngoài của nó.",
     "cta": "Bắt đầu bài kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Trước điện thoại thông minh, thiết bị phát trực tuyến và tự động, cuộc sống hàng ngày phụ thuộc vào các phương tiện vật lý, thiết bị cơ khí và dụng cụ gia đình giờ đây trông xa lạ một cách kỳ lạ. Thử thách mười câu hỏi này kiểm tra xem tên của họ có biến mất khỏi bộ nhớ cùng với các đồ vật hay không.\n\nNghiên cứu từng bức ảnh, sử dụng manh mối nếu cần và chọn một trong bốn cái tên có thể. Sự đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.\n\nMười câu hỏi nguồn đầu tiên và hình ảnh của chúng được sao chép từ QuizDays với sự cho phép của chủ sở hữu trang web thực hiện bài kiểm tra này.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Nghiên cứu từng bức ảnh và đọc manh mối ngắn gọn của nó.",
         "Chọn tên đúng từ bốn câu trả lời có thể.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đồ lỗi thời",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Đồ vật bị thất lạc",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm hoài niệm của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "10 đồ vật cũ đã được kiểm tra",
-          "Ba loại đối tượng được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Ba loại đối tượng được so sánh"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách vật phẩm lỗi thời!",
       "finished": "Thử thách các vật phẩm lỗi thời đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Loại đối tượng mạnh nhất",
       "trickiest": "Danh mục đồ vật phức tạp nhất",
       "bestRound": "Phần hay nhất",
@@ -93,8 +86,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Một đĩa mềm 3,5 inch màu đen trên bề mặt trung tính"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Đĩa mềm",
-            "băng cassette",
-            "Đĩa Laser",
-            "Ổ đĩa zip"
-          ],
+          "answers": {
+            "a1": "Đĩa mềm",
+            "a2": "băng cassette",
+            "a3": "Đĩa Laser",
+            "a4": "Ổ đĩa zip"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT 1 TRÊN 10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "Một chiếc điện thoại cổ điển với mặt số cơ hình tròn"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "máy hát",
-            "Điện thoại quay số",
-            "Điện báo",
-            "Máy ghi âm"
-          ],
+          "answers": {
+            "a1": "máy hát",
+            "a2": "Điện thoại quay số",
+            "a3": "Điện báo",
+            "a4": "Máy ghi âm"
+          },
           "headerLabel": "MẤT ĐỐI TƯỢNG 2 TRÊN 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "Máy xem đồ chơi lập thể màu đỏ có cuộn hình tròn"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Máy chiếu slide",
-            "kính soi nổi",
-            "View-Master",
-            "Hộp đựng phim"
-          ],
+          "answers": {
+            "a1": "Máy chiếu slide",
+            "a2": "kính soi nổi",
+            "a3": "View-Master",
+            "a4": "Hộp đựng phim"
+          },
           "headerLabel": "MẤT ĐỐI TƯỢNG 3 TRÊN 10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "Một máy viết cơ học có phím và ruy băng mực"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Lọ mực",
-            "Mimeograph",
-            "Phím điện báo",
-            "Máy đánh chữ"
-          ],
+          "answers": {
+            "a1": "Lọ mực",
+            "a2": "Mimeograph",
+            "a3": "Phím điện báo",
+            "a4": "Máy đánh chữ"
+          },
           "headerLabel": "MẤT ĐỐI TƯỢNG 4 TRÊN 10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Bàn giặt bằng gỗ với bề mặt tôn sóng"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Tấm ván giặt",
-            "máy khuấy bơ",
-            "Máy xay cà phê",
-            "Hộp đá"
-          ],
+          "answers": {
+            "a1": "Tấm ván giặt",
+            "a2": "máy khuấy bơ",
+            "a3": "Máy xay cà phê",
+            "a4": "Hộp đá"
+          },
           "headerLabel": "MẤT ĐỐI TƯỢNG 5 TRÊN 10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "Máy nghe băng di động có tai nghe có dây"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "hộp bùng nổ",
-            "máy nghe nhạc",
-            "Đài phát thanh bán dẫn",
-            "máy hát"
-          ],
+          "answers": {
+            "a1": "hộp bùng nổ",
+            "a2": "máy nghe nhạc",
+            "a3": "Đài phát thanh bán dẫn",
+            "a4": "máy hát"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT 6 TRÊN 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "Một băng video gia đình hình chữ nhật"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "băng betamax",
-            "Cuộn phim",
-            "băng VHS",
-            "băng cassette"
-          ],
+          "answers": {
+            "a1": "băng betamax",
+            "a2": "Cuộn phim",
+            "a3": "băng VHS",
+            "a4": "băng cassette"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT 7 TRÊN 10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Một dụng cụ dệt cầm tay từng được dùng để đánh bụi trên thảm"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Chọn đá",
-            "kẹp đường",
-            "sừng giày",
-            "Dụng cụ đập bụi thảm"
-          ],
+          "answers": {
+            "a1": "Chọn đá",
+            "a2": "kẹp đường",
+            "a3": "sừng giày",
+            "a4": "Dụng cụ đập bụi thảm"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT 8 TRÊN 10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "Máy nhận tin nhắn điện tử nhỏ có màn hình và kẹp thắt lưng"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Máy nhắn tin",
-            "Game Boy",
-            "bộ đàm",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Máy nhắn tin",
+            "a2": "Game Boy",
+            "a3": "bộ đàm",
+            "a4": "PDA"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT 9 TRÊN 10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "Một chiếc chảo kim loại có cán dài chứa đầy than để sưởi ấm giường"
           },
           "question": "Tên của món đồ cũ này là gì?",
-          "answers": [
-            "Đèn dầu",
-            "Dụng cụ làm ấm giường",
-            "buồng trứng",
-            "Đèn gas"
-          ],
+          "answers": {
+            "a1": "Đèn dầu",
+            "a2": "Dụng cụ làm ấm giường",
+            "a3": "buồng trứng",
+            "a4": "Đèn gas"
+          },
           "headerLabel": "ĐỐI TƯỢNG MẤT CUỐI CÙNG"
         }
       }

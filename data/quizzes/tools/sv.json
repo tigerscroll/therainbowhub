@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 1 av 5 klarar detta quiz om verktyg för betongarbete",
   "eyebrow": "TESTET FÖR BETONGVERKTYG",
   "summary": "Tio byggarbetsplatsverktyg och en oförlåtlig konkret utmaning.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Dessa verktyg ser självklara ut på en arbetsplats, men deras verkliga användning fångar de flesta. Kan du få alla 10 rätt?",
     "cta": "Starta frågesport"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Att arbeta betong kräver mycket mer än en blandare och en spade. Tidpunkten, formen och syftet med varje specialverktyg kan avgöra om en platta blir platt, stark och sprickkontrollerad – eller förvandlas till ett kostsamt misstag.\n\nStudera varje fotografi och välj verktygets rätta jobb eller användningsstadium. Korrektheten förblir dold tills den sista avslöjandet.\n\nDe första tio källfrågorna, svarsvalen och fotografierna är återgivna från Log Cabin Daily med tillstånd från webbplatsägaren som beställde detta frågesport.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Studera verktyget som visas på varje fotografi.",
         "Välj dess korrekta användning eller stadium av betongprocessen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Utmaning med konkreta verktyg",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Betongverktyg",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och dina konkreta verktyg är redo att avslöjas.",
         "preAdChecks": [
           "10 verktyg kontrollerade",
-          "Tre handelsområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre handelsområden jämförda"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarade utmaningen med betongverktyg!",
       "finished": "Utmaningen med betongverktyg klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste handelsområde",
       "trickiest": "Knepigaste handelsområdet",
       "bestRound": "Bästa avsnittet",
@@ -94,8 +87,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "En betongspackel som jämnar ut nygjuten betong"
           },
           "question": "Vad används detta verktyg till?",
-          "answers": [
-            "Skärande armeringsjärn",
-            "Spridning och utjämning av våt betong",
-            "Blanda torr betong",
-            "Slå sönder gammal betong"
-          ],
+          "answers": {
+            "a1": "Skärande armeringsjärn",
+            "a2": "Spridning och utjämning av våt betong",
+            "a3": "Blanda torr betong",
+            "a4": "Slå sönder gammal betong"
+          },
           "headerLabel": "VERKTYG 1 AV 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "En skottkärra som bär betongblandning på en arbetsplats"
           },
           "question": "Vad används detta verktyg till?",
-          "answers": [
-            "Transportera våt betong och verktyg",
-            "Efterbehandling av betongkanter",
-            "Mätning av betongtemperatur",
-            "Komprimerande grus"
-          ],
+          "answers": {
+            "a1": "Transportera våt betong och verktyg",
+            "a2": "Efterbehandling av betongkanter",
+            "a3": "Mätning av betongtemperatur",
+            "a4": "Komprimerande grus"
+          },
           "headerLabel": "VERKTYG 2 AV 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "En betongflotta rör sig över ytan av färsk betong"
           },
           "question": "Vad används detta verktyg till?",
-          "answers": [
-            "Komprimerande jord",
-            "Flytande träformer",
-            "Avjämning och utjämning av betongytan",
-            "Skär genom armeringsjärn"
-          ],
+          "answers": {
+            "a1": "Komprimerande jord",
+            "a2": "Flytande träformer",
+            "a3": "Avjämning och utjämning av betongytan",
+            "a4": "Skär genom armeringsjärn"
+          },
           "headerLabel": "VERKTYG 3 AV 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "En betongkantskärare som formar kanten på en platta"
           },
           "question": "Vad används detta verktyg till?",
-          "answers": [
-            "Kantning av trottoarer och plattor för rena bårder",
-            "Lyft av betongblock",
-            "Skärning av fogar i betong",
-            "Transport av betongblandning"
-          ],
+          "answers": {
+            "a1": "Kantning av trottoarer och plattor för rena bårder",
+            "a2": "Lyft av betongblock",
+            "a3": "Skärning av fogar i betong",
+            "a4": "Transport av betongblandning"
+          },
           "headerLabel": "VERKTYG 4 AV 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "En bärbar betongblandare tippar färsk betong"
           },
           "question": "Vad gör det här verktyget?",
-          "answers": [
-            "Uppvärmning av betong",
-            "Häll torr cement",
-            "Blanda cement, sand och vatten till betong",
-            "Slipning av gammal betong"
-          ],
+          "answers": {
+            "a1": "Uppvärmning av betong",
+            "a2": "Häll torr cement",
+            "a3": "Blanda cement, sand och vatten till betong",
+            "a4": "Slipning av gammal betong"
+          },
           "headerLabel": "VERKTYG 5 AV 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "En långskaftad tjurflotta som jämnar ut en bred betongplatta"
           },
           "question": "Vilket steg i betongarbete kräver vanligtvis en tjurflotta?",
-          "answers": [
-            "Transportera våt betong till gjutplatsen",
-            "Bryter upp gamla betongplattor",
-            "Kapning av expansionsfogar",
-            "Släta ut stora ytor omedelbart efter skridning"
-          ],
+          "answers": {
+            "a1": "Transportera våt betong till gjutplatsen",
+            "a2": "Bryter upp gamla betongplattor",
+            "a3": "Kapning av expansionsfogar",
+            "a4": "Släta ut stora ytor omedelbart efter skridning"
+          },
           "headerLabel": "VERKTYG 6 AV 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "En arbetare som använder en betongvibrator i nygjuten betong"
           },
           "question": "När skulle en betongvibrator vanligtvis användas?",
-          "answers": [
-            "Innan betongen gjuts",
-            "Efter att ha hällt betong, för att ta bort luftfickor",
-            "Medan du placerar armeringsjärn i former",
-            "Under efterbehandling, för att jämna ut ytan"
-          ],
+          "answers": {
+            "a1": "Innan betongen gjuts",
+            "a2": "Efter att ha hällt betong, för att ta bort luftfickor",
+            "a3": "Medan du placerar armeringsjärn i former",
+            "a4": "Under efterbehandling, för att jämna ut ytan"
+          },
           "headerLabel": "VERKTYG 7 AV 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "En motordriven armeringsskär som trimmer armeringsstål"
           },
           "question": "Vilken är den primära uppgiften som utförs med en armeringsjärnsskärare?",
-          "answers": [
-            "Trimma armeringsstål till önskade längder",
-            "Utjämna betongkanter",
-            "Skärning av styrfogar till härdad betong",
-            "Flisa bort lös betong"
-          ],
+          "answers": {
+            "a1": "Trimma armeringsstål till önskade längder",
+            "a2": "Utjämna betongkanter",
+            "a3": "Skärning av styrfogar till härdad betong",
+            "a4": "Flisa bort lös betong"
+          },
           "headerLabel": "VERKTYG 8 AV 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "En spårfräs med långa skaft som skär en lina till våt betong"
           },
           "question": "Ett spårverktyg är bäst att använda under vilket skede av en betonggjutning?",
-          "answers": [
-            "Innan du häller, för att förbereda marken",
-            "Under efterbehandling, för att skapa kontrollfogar",
-            "Under härdning, för att applicera tätningsmedel",
-            "Efter torkning, för att polera ytan"
-          ],
+          "answers": {
+            "a1": "Innan du häller, för att förbereda marken",
+            "a2": "Under efterbehandling, för att skapa kontrollfogar",
+            "a3": "Under härdning, för att applicera tätningsmedel",
+            "a4": "Efter torkning, för att polera ytan"
+          },
           "headerLabel": "VERKTYG 9 AV 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "En rak skrid som slår av nygjuten betong"
           },
           "question": "I vilket skede används en betongmassa oftast?",
-          "answers": [
-            "Efter härdning för att polera ytan",
-            "Efter torkning att applicera tätningsmedel",
-            "Under armeringskonstruktion",
-            "Omedelbart efter gjutning för att jämna ut betongen"
-          ],
+          "answers": {
+            "a1": "Efter härdning för att polera ytan",
+            "a2": "Efter torkning att applicera tätningsmedel",
+            "a3": "Under armeringskonstruktion",
+            "a4": "Omedelbart efter gjutning för att jämna ut betongen"
+          },
           "headerLabel": "SLUTLIGT VERKTYG"
         }
       }

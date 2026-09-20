@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 7% zdaje ten quiz z mechaniki samochodowej",
   "eyebrow": "PRECYZYJNE STANOWISKO SERWISOWE",
   "summary": "Lampki ostrzegawcze, ukryte usterki i dziwne objawy drogowe sprawdzają, czy możesz zdiagnozować usterkę, zanim stanie się ona kosztowna.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ten ogólnoświatowy test rozrywkowy zawiera dziesięć praktycznych pytań dotyczących układów pojazdu, oceny warsztatu i wyszukiwania usterek. Przechodzi od znanych znaków ostrzegawczych do powiązanych objawów, które wymagają dokładnej diagnozy.\n\nWybierz najlepszą odpowiedź z wyświetlonych informacji. Pytania wykorzystują ogólne zasady dotyczące pojazdów i unikają zakładania jednej marki, modelu lub lokalnego standardu kontroli.\n\nTwój wynik odzwierciedla tylko to krótkie wyzwanie. Nie jest to kwalifikacja handlowa, kontrola bezpieczeństwa ani substytut diagnozy dokonanej przez wykwalifikowanego mechanika.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Rozwiąż dziesięć starannie wybranych pytań w ramach jednego ukierunkowanego wyzwania.",
         "Za każdym razem wybierz jedną odpowiedź. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie mechanika",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie warsztatowe",
@@ -29,10 +26,8 @@
         "preAdCopy": "Twój wynik w mechanice i podział na sześć systemów są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie sześciu systemów pojazdu",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie sześciu systemów pojazdu"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie mechanika!",
       "finished": "Wyzwanie warsztatowe ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy system pojazdu",
       "trickiest": "Najtrudniejszy system pojazdu",
-      "bestRound": "Najlepsza sekcja",
-      "showBestRound": false
+      "bestRound": "Najlepsza sekcja"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Który symbol ostrzegawczy najbardziej bezpośrednio odnosi się do ciśnienia oleju silnikowego?",
-          "answers": [
-            "Puszka oleju",
-            "Bateria",
-            "Termometr",
-            "Kierownica"
-          ],
+          "answers": {
+            "a1": "Puszka oleju",
+            "a2": "Bateria",
+            "a3": "Termometr",
+            "a4": "Kierownica"
+          },
           "headerLabel": "UKŁADY SILNIKOWE"
         },
         "mech-r1q2": {
           "question": "Czerwone ostrzeżenie o hamulcach pozostaje włączone po zwolnieniu hamulca postojowego. Jaka jest najbezpieczniejsza reakcja?",
-          "answers": [
-            "Jedź szybciej, aby to przetestować",
-            "Zatrzymaj się bezpiecznie i zleć sprawdzenie układu hamulcowego",
-            "Pompuj opony mocniej",
-            "Zignoruj to do następnego serwisu"
-          ],
+          "answers": {
+            "a1": "Jedź szybciej, aby to przetestować",
+            "a2": "Zatrzymaj się bezpiecznie i zleć sprawdzenie układu hamulcowego",
+            "a3": "Pompuj opony mocniej",
+            "a4": "Zignoruj to do następnego serwisu"
+          },
           "headerLabel": "HAMULCE I BEZPIECZEŃSTWO"
         },
         "mech-r4q5": {
           "question": "Rytmiczne klikanie staje się szybsze w ciasnych zakrętach. Która część jest prawdopodobną przyczyną?",
-          "answers": [
-            "termostat",
-            "Pompa paliwa",
-            "Zewnętrzny przegub homokinetyczny",
-            "Wentylator kabinowy"
-          ],
+          "answers": {
+            "a1": "termostat",
+            "a2": "Pompa paliwa",
+            "a3": "Zewnętrzny przegub homokinetyczny",
+            "a4": "Wentylator kabinowy"
+          },
           "headerLabel": "NAPĘD"
         },
         "mech-r4q6": {
           "question": "Jedna opona ma głębokie wybrzuszenie ściany bocznej. Co powinieneś zrobić?",
-          "answers": [
-            "Zmniejsz ciśnienie i kontynuuj",
-            "Naciśnij wybrzuszenie na płasko",
-            "Przenieś go na inne koło",
-            "Przestań używać opony i zorganizuj wymianę"
-          ],
+          "answers": {
+            "a1": "Zmniejsz ciśnienie i kontynuuj",
+            "a2": "Naciśnij wybrzuszenie na płasko",
+            "a3": "Przenieś go na inne koło",
+            "a4": "Przestań używać opony i zorganizuj wymianę"
+          },
           "headerLabel": "BEZPIECZEŃSTWO POJAZDU"
         },
         "mech-r5q5": {
           "question": "Silnik przegrzewa się w ruchu ulicznym, ale ochładza się przy prędkości drogowej. Który komponent zasługuje na wczesną kontrolę?",
-          "answers": [
-            "Wentylator chłodnicy",
-            "Pas bezpieczeństwa",
-            "Korek wlewu paliwa",
-            "Łożysko koła"
-          ],
+          "answers": {
+            "a1": "Wentylator chłodnicy",
+            "a2": "Pas bezpieczeństwa",
+            "a3": "Korek wlewu paliwa",
+            "a4": "Łożysko koła"
+          },
           "headerLabel": "SYSTEMY CHŁODZENIA"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Oczekiwane napięcie akumulatora 12,6 V, zmierzone 10,5 V"
           },
           "question": "Zdrowy akumulator 12 V ma w stanie spoczynku około 12,6 V. Ten odczytuje 10,5 V. Co to sugeruje?",
-          "answers": [
-            "Opony są zużyte",
-            "Płyn chłodzący jest zbyt mocny",
-            "Akumulator jest głęboko rozładowany lub ma uszkodzone ogniwo",
-            "Pasek alternatora jest nowy"
-          ],
+          "answers": {
+            "a1": "Opony są zużyte",
+            "a2": "Płyn chłodzący jest zbyt mocny",
+            "a3": "Akumulator jest głęboko rozładowany lub ma uszkodzone ogniwo",
+            "a4": "Pasek alternatora jest nowy"
+          },
           "headerLabel": "SYSTEMY ELEKTRYCZNE"
         },
         "mech-r7q1": {
           "question": "Kierownica wibruje głównie w jednym zakresie prędkości drogowych. Kto jest prawdopodobnym pierwszym podejrzanym?",
-          "answers": [
-            "Nierównowaga kół",
-            "Jakość paliwa",
-            "Filtr kabinowy",
-            "Kolor płynu chłodzącego"
-          ],
+          "answers": {
+            "a1": "Nierównowaga kół",
+            "a2": "Jakość paliwa",
+            "a3": "Filtr kabinowy",
+            "a4": "Kolor płynu chłodzącego"
+          },
           "headerLabel": "STEROWANIE I RÓWNOWAGA"
         },
         "mech-r7q6": {
           "question": "Po uderzeniu w zagrożenie drogowe pojawiają się nowe, silne wibracje. Co powinieneś zrobić?",
-          "answers": [
-            "Zwiększ prędkość, aby to wygładzić",
-            "Przed kontynuowaniem zatrzymaj się bezpiecznie i sprawdź koło i oponę",
-            "Obniż ciśnienie w każdej oponie",
-            "Zignoruj to, jeśli nie pojawi się żadne ostrzeżenie"
-          ],
+          "answers": {
+            "a1": "Zwiększ prędkość, aby to wygładzić",
+            "a2": "Przed kontynuowaniem zatrzymaj się bezpiecznie i sprawdź koło i oponę",
+            "a3": "Obniż ciśnienie w każdej oponie",
+            "a4": "Zignoruj to, jeśli nie pojawi się żadne ostrzeżenie"
+          },
           "headerLabel": "BEZPIECZEŃSTWO POJAZDU"
         },
         "mech-r9q2": {
           "context": "KLIENT MÓWI",
           "question": "„Akumulator jest nowy, ale wielokrotnie się rozładowuje i podczas jazdy pojawia się ostrzeżenie o ładowaniu.” Co należy przetestować?",
-          "answers": [
-            "Wyrównanie opon",
-            "Układ ładowania i jego połączenia",
-            "Grubość klocków hamulcowych",
-            "Stężenie chłodziwa"
-          ],
+          "answers": {
+            "a1": "Wyrównanie opon",
+            "a2": "Układ ładowania i jego połączenia",
+            "a3": "Grubość klocków hamulcowych",
+            "a4": "Stężenie chłodziwa"
+          },
           "headerLabel": "SYSTEMY ŁADOWANIA"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Silnik chłodzi się przy prędkości drogowej, przegrzewa się na biegu jałowym, wentylator chłodnicy nie działa"
           },
           "question": "Silnik przegrzewa się tylko na biegu jałowym, chłodnica nie jest zatkana, a wentylator chłodzący nigdy nie działa. Co należy zdiagnozować w pierwszej kolejności?",
-          "answers": [
-            "Wyrównanie kół",
-            "Uszczelka korka wlewu paliwa",
-            "Zużycie klocków hamulcowych",
-            "Obwód wentylatora, silnik i polecenie sterujące"
-          ],
+          "answers": {
+            "a1": "Wyrównanie kół",
+            "a2": "Uszczelka korka wlewu paliwa",
+            "a3": "Zużycie klocków hamulcowych",
+            "a4": "Obwód wentylatora, silnik i polecenie sterujące"
+          },
           "headerLabel": "DIAGNOZA KOŃCOWA"
         }
       }

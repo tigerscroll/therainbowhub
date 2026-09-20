@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hầu hết người lớn không thể vượt qua kỳ thi tuyển sinh nhân viên xã hội này",
   "eyebrow": "CON NGƯỜI VÀ THỰC HÀNH KIỂM TRA",
   "summary": "Mười câu hỏi kiểm tra khả năng lắng nghe, đạo đức, biện pháp bảo vệ và các quyết định hỗ trợ trong thế giới thực.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những câu hỏi đầu tiên kiểm tra sự đồng cảm. Sau đó, các tình huống chuyển sang bảo mật, ranh giới và các quyết định mà mọi chi tiết đều quan trọng.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng các nguyên tắc công tác xã hội rộng rãi được áp dụng ở các quốc gia nói tiếng Anh Cấp 1. Nó chuyển từ việc lắng nghe và đồng ý sang bảo mật, khiêm tốn về văn hóa, bảo vệ, ghi chép và ranh giới nghề nghiệp.\n\nChọn một câu trả lời cho mỗi tình huống. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười tình huống thực hành ngày càng khó khăn.",
         "Chọn phản hồi chung có trách nhiệm nhất.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào của nhân viên xã hội",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh nhân viên xã hội",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm đánh giá chuyên môn của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Năm lĩnh vực thực hành được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Năm lĩnh vực thực hành được so sánh"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào của Nhân viên xã hội!",
       "finished": "Thử thách đầu vào của Nhân viên xã hội đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực tập luyện mạnh nhất",
       "trickiest": "Khu vực tập luyện khó khăn nhất",
       "bestRound": "Phần hay nhất",
@@ -99,8 +92,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Câu hỏi mở đầu nào có nhiều khả năng giúp một người giải thích họ muốn được hỗ trợ gì nhất?",
-          "answers": [
-            "Hôm nay bạn muốn được giúp đỡ điều gì nhất?",
-            "Tại sao bạn lại để điều này xảy ra?",
-            "Bạn có đồng ý rằng kế hoạch của tôi là tốt nhất?",
-            "Chúng ta có thể bỏ qua phần nền và hoàn thành biểu mẫu không?"
-          ],
+          "answers": {
+            "a1": "Hôm nay bạn muốn được giúp đỡ điều gì nhất?",
+            "a2": "Tại sao bạn lại để điều này xảy ra?",
+            "a3": "Bạn có đồng ý rằng kế hoạch của tôi là tốt nhất?",
+            "a4": "Chúng ta có thể bỏ qua phần nền và hoàn thành biểu mẫu không?"
+          },
           "headerLabel": "LẮNG NGHE CHỦ ĐỘNG"
         },
         "socialworker-q2": {
           "question": "Điều gì là cần thiết cho sự đồng ý có hiểu biết?",
-          "answers": [
-            "Một chuyên gia quyết định điều gì là tốt nhất mà không cần thảo luận",
-            "Người đó hiểu rõ thông tin liên quan và tự nguyện đồng ý",
-            "Một mẫu đơn đã ký trong mọi tình huống có thể",
-            "Sự đồng ý từ một thành viên trong gia đình thay vì cá nhân"
-          ],
+          "answers": {
+            "a1": "Một chuyên gia quyết định điều gì là tốt nhất mà không cần thảo luận",
+            "a2": "Người đó hiểu rõ thông tin liên quan và tự nguyện đồng ý",
+            "a3": "Một mẫu đơn đã ký trong mọi tình huống có thể",
+            "a4": "Sự đồng ý từ một thành viên trong gia đình thay vì cá nhân"
+          },
           "headerLabel": "ĐỒNG Ý"
         },
         "socialworker-q3": {
           "question": "Tuyên bố nào về tính bảo mật là chính xác nhất?",
-          "answers": [
-            "Thông tin không bao giờ có thể được chia sẻ vì bất kỳ lý do gì",
-            "Mọi thứ có thể được chia sẻ với bất kỳ ai trong nhóm hỗ trợ",
-            "Quyền riêng tư được bảo vệ nhưng những lo ngại nghiêm trọng về an toàn hoặc nghĩa vụ pháp lý có thể yêu cầu chia sẻ ở mức độ hạn chế",
-            "Sự bảo mật kết thúc sau lần gặp đầu tiên"
-          ],
+          "answers": {
+            "a1": "Thông tin không bao giờ có thể được chia sẻ vì bất kỳ lý do gì",
+            "a2": "Mọi thứ có thể được chia sẻ với bất kỳ ai trong nhóm hỗ trợ",
+            "a3": "Quyền riêng tư được bảo vệ nhưng những lo ngại nghiêm trọng về an toàn hoặc nghĩa vụ pháp lý có thể yêu cầu chia sẻ ở mức độ hạn chế",
+            "a4": "Sự bảo mật kết thúc sau lần gặp đầu tiên"
+          },
           "headerLabel": "BÍ MẬT"
         },
         "socialworker-q4": {
           "question": "Phản ứng nào thể hiện tốt nhất sự khiêm tốn về văn hóa?",
-          "answers": [
-            "Giả sử mọi người có hoàn cảnh giống nhau đều có nhu cầu giống nhau",
-            "Tránh thảo luận về văn hóa trong mọi trường hợp",
-            "Sử dụng một kế hoạch tiêu chuẩn trước khi nghe quan điểm của người đó",
-            "Hỏi về sở thích của người đó và sẵn sàng điều chỉnh những giả định của bạn"
-          ],
+          "answers": {
+            "a1": "Giả sử mọi người có hoàn cảnh giống nhau đều có nhu cầu giống nhau",
+            "a2": "Tránh thảo luận về văn hóa trong mọi trường hợp",
+            "a3": "Sử dụng một kế hoạch tiêu chuẩn trước khi nghe quan điểm của người đó",
+            "a4": "Hỏi về sở thích của người đó và sẵn sàng điều chỉnh những giả định của bạn"
+          },
           "headerLabel": "VĂN HÓA KHỎE MẠNH"
         },
         "socialworker-q5": {
           "question": "Đánh giá dựa trên điểm mạnh có nhiều khả năng khám phá nhất là gì?",
-          "answers": [
-            "Khả năng, nguồn lực, mối quan hệ và mục tiêu của con người cũng như nhu cầu của họ",
-            "Chỉ những vấn đề được liệt kê trong giấy giới thiệu",
-            "Liệu người đó có đồng ý với mọi ý kiến chuyên môn hay không",
-            "Dịch vụ nào yêu cầu ít tài liệu nhất"
-          ],
+          "answers": {
+            "a1": "Khả năng, nguồn lực, mối quan hệ và mục tiêu của con người cũng như nhu cầu của họ",
+            "a2": "Chỉ những vấn đề được liệt kê trong giấy giới thiệu",
+            "a3": "Liệu người đó có đồng ý với mọi ý kiến chuyên môn hay không",
+            "a4": "Dịch vụ nào yêu cầu ít tài liệu nhất"
+          },
           "headerLabel": "THỰC HÀNH DỰA TRÊN SỨC MẠNH"
         },
         "socialworker-q6": {
           "question": "Một người nhận được hỗ trợ yêu cầu nhân viên xã hội của họ cho vay cá nhân. Phản ứng chung tốt nhất là gì?",
-          "answers": [
-            "Cho vay một số tiền nhỏ nhưng giữ kín",
-            "Duy trì ranh giới chuyên môn và khám phá các nguồn hỗ trợ thực tế thích hợp",
-            "Yêu cầu người khác đang nhận hỗ trợ cung cấp nó",
-            "Chấm dứt mọi hỗ trợ ngay lập tức mà không cần giải thích"
-          ],
+          "answers": {
+            "a1": "Cho vay một số tiền nhỏ nhưng giữ kín",
+            "a2": "Duy trì ranh giới chuyên môn và khám phá các nguồn hỗ trợ thực tế thích hợp",
+            "a3": "Yêu cầu người khác đang nhận hỗ trợ cung cấp nó",
+            "a4": "Chấm dứt mọi hỗ trợ ngay lập tức mà không cần giải thích"
+          },
           "headerLabel": "GIỚI HẠN CHUYÊN NGHIỆP"
         },
         "socialworker-q7": {
           "question": "Cuộc trò chuyện nêu lên mối lo ngại đáng tin cậy rằng trẻ em hoặc người lớn dễ bị tổn thương có thể không an toàn. Bước tiếp theo chung tốt nhất là gì?",
-          "answers": [
-            "Điều tra từng chi tiết một mình trước khi nói với bất cứ ai",
-            "Bỏ qua nó trừ khi có bằng chứng vật lý",
-            "Ghi lại mối quan ngại và thực hiện kịp thời quy trình bảo vệ hoặc báo cáo hiện hành",
-            "Đăng tài khoản ẩn danh trực tuyến để được tư vấn"
-          ],
+          "answers": {
+            "a1": "Điều tra từng chi tiết một mình trước khi nói với bất cứ ai",
+            "a2": "Bỏ qua nó trừ khi có bằng chứng vật lý",
+            "a3": "Ghi lại mối quan ngại và thực hiện kịp thời quy trình bảo vệ hoặc báo cáo hiện hành",
+            "a4": "Đăng tài khoản ẩn danh trực tuyến để được tư vấn"
+          },
           "headerLabel": "BẢO VỆ"
         },
         "socialworker-q8": {
           "question": "Trường hợp nào lưu ý nói chung là phù hợp nhất?",
-          "answers": [
-            "Một ghi chú bị trì hoãn chủ yếu dựa vào trí nhớ",
-            "Ý kiến cá nhân về tính cách của một người",
-            "Từng chi tiết trong ngày của người công nhân",
-            "Một hồ sơ kịp thời, phù hợp và thực tế giúp phân biệt quan sát với ý kiến"
-          ],
+          "answers": {
+            "a1": "Một ghi chú bị trì hoãn chủ yếu dựa vào trí nhớ",
+            "a2": "Ý kiến cá nhân về tính cách của một người",
+            "a3": "Từng chi tiết trong ngày của người công nhân",
+            "a4": "Một hồ sơ kịp thời, phù hợp và thực tế giúp phân biệt quan sát với ý kiến"
+          },
           "headerLabel": "LƯU TRỮ HỒ SƠ"
         },
         "socialworker-q9": {
           "question": "Khi làm việc với các chuyên gia khác, phương pháp chia sẻ thông tin nào thường mạnh nhất?",
-          "answers": [
-            "Chia sẻ thông tin liên quan một cách hợp pháp, thu hút sự tham gia của người đó nếu có thể và không tiết lộ nhiều hơn mức cần thiết",
-            "Tự động gửi toàn bộ hồ sơ tới mọi dịch vụ",
-            "Không bao giờ chia sẻ thông tin ngay cả khi áp dụng nghĩa vụ an toàn nghiêm trọng",
-            "Chỉ dựa vào những cập nhật bằng lời nói không chính thức"
-          ],
+          "answers": {
+            "a1": "Chia sẻ thông tin liên quan một cách hợp pháp, thu hút sự tham gia của người đó nếu có thể và không tiết lộ nhiều hơn mức cần thiết",
+            "a2": "Tự động gửi toàn bộ hồ sơ tới mọi dịch vụ",
+            "a3": "Không bao giờ chia sẻ thông tin ngay cả khi áp dụng nghĩa vụ an toàn nghiêm trọng",
+            "a4": "Chỉ dựa vào những cập nhật bằng lời nói không chính thức"
+          },
           "headerLabel": "THỰC HÀNH HỢP TÁC"
         },
         "socialworker-q10": {
           "question": "Một người lớn có năng lực hiểu các lựa chọn nhưng từ chối dịch vụ tự nguyện. Phản ứng chung tốt nhất là gì?",
-          "answers": [
-            "Gây áp lực cho đến khi họ đồng ý",
-            "Kiểm tra sự hiểu biết và sự an toàn trước mắt, giải thích các lựa chọn có sẵn và tôn trọng lựa chọn sáng suốt trừ khi áp dụng nghĩa vụ pháp lý khác",
-            "Liên hệ với người chủ của họ để thuyết phục họ",
-            "Xóa mọi tuyến đường trong tương lai để hỗ trợ"
-          ],
+          "answers": {
+            "a1": "Gây áp lực cho đến khi họ đồng ý",
+            "a2": "Kiểm tra sự hiểu biết và sự an toàn trước mắt, giải thích các lựa chọn có sẵn và tôn trọng lựa chọn sáng suốt trừ khi áp dụng nghĩa vụ pháp lý khác",
+            "a3": "Liên hệ với người chủ của họ để thuyết phục họ",
+            "a4": "Xóa mọi tuyến đường trong tương lai để hỗ trợ"
+          },
           "headerLabel": "CÂU HỎI TỰ CHỦ CUỐI CÙNG"
         }
       }

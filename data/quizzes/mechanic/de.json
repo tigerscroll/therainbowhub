@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 7 % bestehen dieses Automechaniker-Quiz",
   "eyebrow": "PRÄZISIONSDIENSTSCHACHT",
   "summary": "Warnleuchten, versteckte Fehler und seltsame Straßensymptome testen, ob Sie Probleme diagnostizieren können, bevor sie teuer werden.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Dieser weltweite Unterhaltungstest enthält zehn praktische Fragen zu Fahrzeugsystemen, Werkstattbeurteilung und Fehlersuche. Es geht von bekannten Warnzeichen zu damit verbundenen Symptomen über, die eine sorgfältige Diagnose erfordern.\n\nWählen Sie aus den angezeigten Informationen die beste Antwort aus. Die Fragen basieren auf allgemeinen Fahrzeugprinzipien und vermeiden die Annahme einer Marke, eines Modells oder eines örtlichen Inspektionsstandards.\n\nIhre Punktzahl spiegelt nur diese kurze Herausforderung wider. Es handelt sich nicht um eine Berufsqualifikation, Sicherheitsinspektion oder Ersatz für die Diagnose durch einen qualifizierten Mechaniker.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn sorgfältig ausgewählte Fragen in einer fokussierten Herausforderung.",
         "Wählen Sie jeweils eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mechanische Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Workshop-Herausforderung",
@@ -29,10 +26,8 @@
         "preAdCopy": "Ihr Mechanik-Ergebnis und Ihre Sechs-System-Aufschlüsselung stehen zur Auswertung bereit.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Sechs Fahrzeugsysteme im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Sechs Fahrzeugsysteme im Vergleich"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Sie haben die Mechaniker-Herausforderung bestanden!",
       "finished": "Workshop-Herausforderung abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkstes Fahrzeugsystem",
       "trickiest": "Das kniffligste Fahrzeugsystem",
-      "bestRound": "Stärkster Bereich",
-      "showBestRound": false
+      "bestRound": "Stärkster Bereich"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Welches Warnsymbol bezieht sich am ehesten auf den Motoröldruck?",
-          "answers": [
-            "Ölkannensymbol",
-            "Batterie",
-            "Thermometer",
-            "Lenkrad"
-          ],
+          "answers": {
+            "a1": "Ölkannensymbol",
+            "a2": "Batterie",
+            "a3": "Thermometer",
+            "a4": "Lenkrad"
+          },
           "headerLabel": "MOTORSYSTEME"
         },
         "mech-r1q2": {
           "question": "Eine rote Bremswarnung bleibt an, nachdem die Feststellbremse gelöst wurde. Was ist die sicherste Reaktion?",
-          "answers": [
-            "Fahren Sie schneller, um es zu testen",
-            "Halten Sie sicher an und lassen Sie die Bremsanlage überprüfen",
-            "Pumpen Sie die Reifen stärker auf",
-            "Ignorieren Sie es bis zum nächsten Service"
-          ],
+          "answers": {
+            "a1": "Fahren Sie schneller, um es zu testen",
+            "a2": "Halten Sie sicher an und lassen Sie die Bremsanlage überprüfen",
+            "a3": "Pumpen Sie die Reifen stärker auf",
+            "a4": "Ignorieren Sie es bis zum nächsten Service"
+          },
           "headerLabel": "BREMSEN & SICHERHEIT"
         },
         "mech-r4q5": {
           "question": "In engen Kurven wird das rhythmische Klicken schneller. Welcher Teil ist eine wahrscheinliche Ursache?",
-          "answers": [
-            "Thermostat",
-            "Kraftstoffpumpe",
-            "Äußeres Gleichlaufgelenk",
-            "Kabinenventilator"
-          ],
+          "answers": {
+            "a1": "Thermostat",
+            "a2": "Kraftstoffpumpe",
+            "a3": "Äußeres Gleichlaufgelenk",
+            "a4": "Kabinenventilator"
+          },
           "headerLabel": "ANTRIEB"
         },
         "mech-r4q6": {
           "question": "Ein Reifen hat eine tiefe Seitenwandwölbung. Was sollten Sie tun?",
-          "answers": [
-            "Reduzieren Sie den Druck und fahren Sie fort",
-            "Drücken Sie die Ausbuchtung flach",
-            "Verschieben Sie es auf ein anderes Rad",
-            "Benutzen Sie den Reifen nicht mehr und veranlassen Sie einen Ersatz"
-          ],
+          "answers": {
+            "a1": "Reduzieren Sie den Druck und fahren Sie fort",
+            "a2": "Drücken Sie die Ausbuchtung flach",
+            "a3": "Verschieben Sie es auf ein anderes Rad",
+            "a4": "Benutzen Sie den Reifen nicht mehr und veranlassen Sie einen Ersatz"
+          },
           "headerLabel": "FAHRZEUGSICHERHEIT"
         },
         "mech-r5q5": {
           "question": "Der Motor überhitzt im Verkehr, kühlt jedoch bei Straßengeschwindigkeit ab. Welche Komponente verdient eine frühzeitige Überprüfung?",
-          "answers": [
-            "Kühlerlüfter",
-            "Sicherheitsgurt",
-            "Tankdeckel",
-            "Radlager"
-          ],
+          "answers": {
+            "a1": "Kühlerlüfter",
+            "a2": "Sicherheitsgurt",
+            "a3": "Tankdeckel",
+            "a4": "Radlager"
+          },
           "headerLabel": "KÜHLSYSTEME"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Erwartete Batteriespannung 12,6 Volt, gemessen 10,5 Volt"
           },
           "question": "Eine gesunde 12-Volt-Batterie zeigt im Ruhezustand etwa 12,6 V an. Dieser zeigt 10,5 V an. Was bedeutet das?",
-          "answers": [
-            "Die Reifen sind abgenutzt",
-            "Das Kühlmittel ist zu stark",
-            "Die Batterie ist tiefentladen oder eine Zelle ist defekt",
-            "Der Generatorriemen ist neu"
-          ],
+          "answers": {
+            "a1": "Die Reifen sind abgenutzt",
+            "a2": "Das Kühlmittel ist zu stark",
+            "a3": "Die Batterie ist tiefentladen oder eine Zelle ist defekt",
+            "a4": "Der Generatorriemen ist neu"
+          },
           "headerLabel": "ELEKTRISCHE SYSTEME"
         },
         "mech-r7q1": {
           "question": "Das Lenkrad vibriert hauptsächlich in einem bestimmten Fahrgeschwindigkeitsbereich. Was ist ein wahrscheinlicher erster Verdächtiger?",
-          "answers": [
-            "Radunwucht",
-            "Kraftstoffqualität",
-            "Innenraumfilter",
-            "Kühlmittelfarbe"
-          ],
+          "answers": {
+            "a1": "Radunwucht",
+            "a2": "Kraftstoffqualität",
+            "a3": "Innenraumfilter",
+            "a4": "Kühlmittelfarbe"
+          },
           "headerLabel": "LENKUNG & AUSGLEICH"
         },
         "mech-r7q6": {
           "question": "Nach dem Auftreffen auf eine Verkehrshindernis treten erneut starke Vibrationen auf. Was sollten Sie tun?",
-          "answers": [
-            "Erhöhen Sie die Geschwindigkeit, um die Vibrationen zu verringern",
-            "Halten Sie sicher an und überprüfen Sie Rad und Reifen, bevor Sie fortfahren",
-            "Senken Sie den Druck in allen Reifen",
-            "Ignorieren Sie es, wenn keine Warnung angezeigt wird"
-          ],
+          "answers": {
+            "a1": "Erhöhen Sie die Geschwindigkeit, um die Vibrationen zu verringern",
+            "a2": "Halten Sie sicher an und überprüfen Sie Rad und Reifen, bevor Sie fortfahren",
+            "a3": "Senken Sie den Druck in allen Reifen",
+            "a4": "Ignorieren Sie es, wenn keine Warnung angezeigt wird"
+          },
           "headerLabel": "FAHRZEUGSICHERHEIT"
         },
         "mech-r9q2": {
           "context": "KUNDE SAGT",
           "question": "„Die Batterie ist neu, aber während der Fahrt wird sie immer wieder leer und die Ladewarnung erscheint.“ Was soll getestet werden?",
-          "answers": [
-            "Reifenausrichtung",
-            "Das Ladesystem und seine Anschlüsse",
-            "Bremsbelagstärke",
-            "Kühlmittelkonzentration"
-          ],
+          "answers": {
+            "a1": "Reifenausrichtung",
+            "a2": "Das Ladesystem und seine Anschlüsse",
+            "a3": "Bremsbelagstärke",
+            "a4": "Kühlmittelkonzentration"
+          },
           "headerLabel": "LADESYSTEME"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motor kühlt bei Fahrgeschwindigkeit ab, überhitzt im Leerlauf, Kühlgebläse läuft nicht"
           },
           "question": "Der Motor überhitzt nur im Leerlauf, der Kühler ist frei und der Kühlerlüfter läuft nie. Was sollte zuerst diagnostiziert werden?",
-          "answers": [
-            "Achsvermessung",
-            "Tankdeckeldichtung",
-            "Verschleiß der Bremsbeläge",
-            "Der Lüfterkreis, der Motor und der Steuerbefehl"
-          ],
+          "answers": {
+            "a1": "Achsvermessung",
+            "a2": "Tankdeckeldichtung",
+            "a3": "Verschleiß der Bremsbeläge",
+            "a4": "Der Lüfterkreis, der Motor und der Steuerbefehl"
+          },
           "headerLabel": "ENDGÜLTIGE DIAGNOSE"
         }
       }

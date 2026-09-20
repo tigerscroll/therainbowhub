@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 11% Of Adults Pass This Bible Quiz",
   "eyebrow": "THE BIBLE KNOWLEDGE TEST",
   "summary": "Ten questions spanning famous people, places and stories from the Old and New Testaments.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "You may know the famous stories, but can you answer all ten without opening a Bible?",
     "cta": "Start Quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This ten-question entertainment quiz covers widely recognised people, places, books and events from the Bible. Questions draw from both the Old and New Testaments and avoid points that depend heavily on a particular modern translation.\n\nChoose one answer for each question. Correctness remains hidden until the final reveal, where you can review the complete set.\n\nBiblical book ordering and naming can vary between religious traditions. This quiz follows familiar English-language Christian naming conventions for its general-knowledge questions.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Answer ten Bible questions in one focused challenge.",
         "Choose one of four answers for every question.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Bible challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Bible Challenge",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your Bible score and complete answer review are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Three knowledge areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three knowledge areas compared"
+        ]
       }
     }
   },
@@ -67,14 +61,19 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Books and foundations" },
-      "dimension-2": { "label": "People and stories" },
-      "dimension-3": { "label": "New Testament" }
+      "dimension-1": {
+        "label": "Books and foundations"
+      },
+      "dimension-2": {
+        "label": "People and stories"
+      },
+      "dimension-3": {
+        "label": "New Testament"
+      }
     },
     "score": {
       "passed": "You passed the Bible challenge!",
       "finished": "Bible challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest knowledge area",
       "trickiest": "Trickiest knowledge area",
       "bestRound": "Best section",
@@ -87,8 +86,7 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -97,52 +95,102 @@
       "questions": {
         "bible-q1": {
           "question": "Who built the ark before the great flood?",
-          "answers": ["Noah", "Abraham", "Moses", "Jacob"],
+          "answers": {
+            "a1": "Noah",
+            "a2": "Abraham",
+            "a3": "Moses",
+            "a4": "Jacob"
+          },
           "headerLabel": "OLD TESTAMENT"
         },
         "bible-q2": {
           "question": "In which town was Jesus born?",
-          "answers": ["Nazareth", "Jerusalem", "Bethlehem", "Capernaum"],
+          "answers": {
+            "a1": "Nazareth",
+            "a2": "Jerusalem",
+            "a3": "Bethlehem",
+            "a4": "Capernaum"
+          },
           "headerLabel": "BIBLE PLACES"
         },
         "bible-q3": {
           "question": "What is the first book of the Bible?",
-          "answers": ["Exodus", "Genesis", "Psalms", "Matthew"],
+          "answers": {
+            "a1": "Exodus",
+            "a2": "Genesis",
+            "a3": "Psalms",
+            "a4": "Matthew"
+          },
           "headerLabel": "BIBLE BOOKS"
         },
         "bible-q4": {
           "question": "Who defeated Goliath with a sling and a stone?",
-          "answers": ["Saul", "Samuel", "Solomon", "David"],
+          "answers": {
+            "a1": "Saul",
+            "a2": "Samuel",
+            "a3": "Solomon",
+            "a4": "David"
+          },
           "headerLabel": "BIBLE PEOPLE"
         },
         "bible-q5": {
           "question": "Who received the Ten Commandments on Mount Sinai?",
-          "answers": ["Moses", "Aaron", "Joshua", "Elijah"],
+          "answers": {
+            "a1": "Moses",
+            "a2": "Aaron",
+            "a3": "Joshua",
+            "a4": "Elijah"
+          },
           "headerLabel": "OLD TESTAMENT"
         },
         "bible-q6": {
           "question": "Which biblical book contains 150 psalms in most Christian traditions?",
-          "answers": ["Proverbs", "Isaiah", "Psalms", "Job"],
+          "answers": {
+            "a1": "Proverbs",
+            "a2": "Isaiah",
+            "a3": "Psalms",
+            "a4": "Job"
+          },
           "headerLabel": "BIBLE BOOKS"
         },
         "bible-q7": {
           "question": "Who betrayed Jesus for thirty pieces of silver?",
-          "answers": ["Peter", "Judas Iscariot", "Thomas", "Pontius Pilate"],
+          "answers": {
+            "a1": "Peter",
+            "a2": "Judas Iscariot",
+            "a3": "Thomas",
+            "a4": "Pontius Pilate"
+          },
           "headerLabel": "NEW TESTAMENT"
         },
         "bible-q8": {
           "question": "On which island was Paul shipwrecked in the Book of Acts?",
-          "answers": ["Crete", "Cyprus", "Patmos", "Malta"],
+          "answers": {
+            "a1": "Crete",
+            "a2": "Cyprus",
+            "a3": "Patmos",
+            "a4": "Malta"
+          },
           "headerLabel": "BIBLE PLACES"
         },
         "bible-q9": {
           "question": "Which queen travelled to test King Solomon with difficult questions?",
-          "answers": ["The Queen of Sheba", "Queen Esther", "Queen Jezebel", "Queen Athaliah"],
+          "answers": {
+            "a1": "The Queen of Sheba",
+            "a2": "Queen Esther",
+            "a3": "Queen Jezebel",
+            "a4": "Queen Athaliah"
+          },
           "headerLabel": "BIBLE PEOPLE"
         },
         "bible-q10": {
           "question": "In which Gospel does the parable of the Good Samaritan appear?",
-          "answers": ["Matthew", "Luke", "Mark", "John"],
+          "answers": {
+            "a1": "Matthew",
+            "a2": "Luke",
+            "a3": "Mark",
+            "a4": "John"
+          },
           "headerLabel": "FINAL QUESTION"
         }
       }

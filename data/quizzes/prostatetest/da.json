@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hurtig test af prostatakræft",
   "eyebrow": "10 SPØRGSMÅL PROSTATAKONTROL",
   "summary": "Ti personlige spørgsmål om prostataændringer og risikokontekst, efterfulgt af en forsigtig næste-trins-profil.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Har du bemærket ændringer, der er nemme at afvise som ældning? Besvar 10 hurtige spørgsmål om de symptomer og risikofaktorer, der kan have betydning.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dette personlige tjek på ti spørgsmål spørger om urinændringer, blod, ubehag, vedvarende smerter og relevant risikosammenhæng. Den grupperer dine svar i en forsigtig næste-trins-profil; den beregner ikke din sandsynlighed for kræft.\n\nProstatakræft forårsager muligvis ingen symptomer i starten, og urinforandringer har ofte ikke-cancerøse årsager såsom godartet prostataforstørrelse, infektion eller betændelse. Nye, vedvarende eller forværrede ændringer bør stadig drøftes med en kvalificeret sundhedsperson.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Vælg det svar, der passer bedst til din seneste oplevelse.",
         "Tænk på ændringer, der er nye, vedvarende eller bliver værre.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Personligt prostata-tjek",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Personlig check",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Har din urinstrøm ændret sig for nylig?",
           "headerLabel": "DIN URINFLOW",
-          "answers": [
-            "Ingen mærkbar ændring",
-            "Det varierer indimellem",
-            "Den er nyligt svag eller stopper og starter",
-            "Det bliver værre eller påvirker dagligdagen"
-          ]
+          "answers": {
+            "a1": "Ingen mærkbar ændring",
+            "a2": "Det varierer indimellem",
+            "a3": "Den er nyligt svag eller stopper og starter",
+            "a4": "Det bliver værre eller påvirker dagligdagen"
+          }
         },
         "prostate-test-q2": {
           "question": "Har du sværere ved at begynde at tisse?",
           "headerLabel": "BEGYNDER AT TISSE",
-          "answers": [
-            "Nej",
-            "Ind imellem, men det har ikke varet ved",
-            "Ja, dette er en ny eller vedvarende ændring",
-            "Ja, og det bliver sværere"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Ind imellem, men det har ikke varet ved",
+            "a3": "Ja, dette er en ny eller vedvarende ændring",
+            "a4": "Ja, og det bliver sværere"
+          }
         },
         "prostate-test-q3": {
           "question": "Tisser du oftere, især om natten?",
           "headerLabel": "FREKVENS OG NAT-TID",
-          "answers": [
-            "Ingen ændring",
-            "Kun lejlighedsvis",
-            "Ja, mærkbart mere end før",
-            "Ja, og det forstyrrer regelmæssigt søvnen eller dagligdagen"
-          ]
+          "answers": {
+            "a1": "Ingen ændring",
+            "a2": "Kun lejlighedsvis",
+            "a3": "Ja, mærkbart mere end før",
+            "a4": "Ja, og det forstyrrer regelmæssigt søvnen eller dagligdagen"
+          }
         },
         "prostate-test-q4": {
           "question": "Føles din blære, som om den ikke er tømt helt?",
           "headerLabel": "TØMNING AF DIN BLÆRE",
-          "answers": [
-            "Nej",
-            "En gang imellem",
-            "Ofte eller vedvarende",
-            "Ja, og følelsen bliver værre"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "En gang imellem",
+            "a3": "Ofte eller vedvarende",
+            "a4": "Ja, og følelsen bliver værre"
+          }
         },
         "prostate-test-q5": {
           "question": "Har du udviklet nye haster eller utætheder, før du når et toilet?",
           "headerLabel": "HASTER ELLER lækager",
-          "answers": [
-            "Nej",
-            "Sjældent",
-            "Ja, som en ny eller vedvarende forandring",
-            "Ja, og det forværrer eller påvirker dagligdagen"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Sjældent",
+            "a3": "Ja, som en ny eller vedvarende forandring",
+            "a4": "Ja, og det forværrer eller påvirker dagligdagen"
+          }
         },
         "prostate-test-q6": {
           "question": "Har du bemærket blod i din urin eller sæd?",
           "headerLabel": "BLOD",
-          "answers": [
-            "Nej",
-            "Jeg er ikke sikker",
-            "Ja, én eller flere gange",
-            "Ja, med kraftige blødninger eller store blodpropper"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Jeg er ikke sikker",
+            "a3": "Ja, én eller flere gange",
+            "a4": "Ja, med kraftige blødninger eller store blodpropper"
+          }
         },
         "prostate-test-q7": {
           "question": "Har du fået nyt ubehag ved vandladning eller ejakulation?",
           "headerLabel": "UBEHAG",
-          "answers": [
-            "Nej",
-            "Ind imellem, og det gik over",
-            "Ja, det er vedvarende eller vender tilbage",
-            "Ja, og det er forværret eller væsentligt smertefuldt"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "Ind imellem, og det gik over",
+            "a3": "Ja, det er vedvarende eller vender tilbage",
+            "a4": "Ja, og det er forværret eller væsentligt smertefuldt"
+          }
         },
         "prostate-test-q8": {
           "question": "Har du haft uforklarlige smerter i din ryg, hofter eller bækken?",
           "headerLabel": "VEDVARENDE SMERTE",
-          "answers": [
-            "Nej",
-            "En kort smerte med en åbenlys årsag",
-            "Ja, det er vedvarende eller vender tilbage",
-            "Ja, det er alvorligt, forværres hurtigt, eller jeg føler mig alvorligt utilpas"
-          ]
+          "answers": {
+            "a1": "Nej",
+            "a2": "En kort smerte med en åbenlys årsag",
+            "a3": "Ja, det er vedvarende eller vender tilbage",
+            "a4": "Ja, det er alvorligt, forværres hurtigt, eller jeg føler mig alvorligt utilpas"
+          }
         },
         "prostate-test-q9": {
           "question": "Hvilken mulighed passer bedst til din risiko for prostatakræft?",
           "headerLabel": "DIN RISIKO KONTEKST",
-          "answers": [
-            "Ingen af disse, eller jeg er usikker",
-            "Jeg er 50 år eller ældre",
-            "Min far eller bror havde prostatakræft",
-            "Jeg har sorte aner, en kendt BRCA2-ændring eller et stærkt familiekræftmønster"
-          ]
+          "answers": {
+            "a1": "Ingen af disse, eller jeg er usikker",
+            "a2": "Jeg er 50 år eller ældre",
+            "a3": "Min far eller bror havde prostatakræft",
+            "a4": "Jeg har sorte aner, en kendt BRCA2-ændring eller et stærkt familiekræftmønster"
+          }
         },
         "prostate-test-q10": {
           "question": "Hvad har du gjort ved eventuelle nye eller vedvarende ændringer?",
           "headerLabel": "DIT NÆSTE TRIN",
-          "answers": [
-            "Jeg har ikke bemærket nogen ændringer",
-            "Jeg følger lige nu",
-            "Jeg planlægger at arrangere en rutinemæssig lægesamtale",
-            "Jeg arrangerer hurtig lægehjælp"
-          ]
+          "answers": {
+            "a1": "Jeg har ikke bemærket nogen ændringer",
+            "a2": "Jeg følger lige nu",
+            "a3": "Jeg planlægger at arrangere en rutinemæssig lægesamtale",
+            "a4": "Jeg arrangerer hurtig lægehjælp"
+          }
         }
       }
     }

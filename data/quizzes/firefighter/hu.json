@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 11%-uk tudja letenni ezt a tűzoltó felvételi vizsgát",
   "eyebrow": "Tűzoltóság kihívása",
   "summary": "A tűztudomány, az eszközök, a veszélyek és a gyors eseményekkel kapcsolatos döntések tesztelik, mennyire tisztán gondolkodik nyomás alatt.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "A tűz viselkedése, a veszély észlelése, a mechanikus érvelés és a másodperc törtrésze szerinti ítélkezés. Tudsz nyugodt maradni, amikor minden nyom számít?",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez az egész világra kiterjedő szórakoztató kihívás tíz gondosan változatos kérdést használ fel a belépő szintű tűzoltó érvelésének feltárására. Tartalmazza a tűz- és füsttudományt, a helyszíni veszélyeket, a berendezések mechanikáját, a gyakorlati számolást, a térérzékelést, az egyértelmű kommunikációt és az események megítélését.\n\nA kihívás gyorsan átkerül a hozzáférhető alapoktól a változó körülmények, a gyakorlati mechanika és az integrált eseménydöntések felé. A kérdések világszerte biztonságos elveket alkalmaznak, nem pedig helyi rangokat, kódexeket, építési szabályokat vagy operatív tűzoltási eljárásokat.\n\nAz Ön végső százaléka csak az ebben a szórakoztató kvízben adott válaszokat tükrözi. Játékos pillanatfelvétel a legerősebbnek érzett bejárati területekről és a nagyobb kihívást jelentő témákról, nem pedig a működési felkészültség vagy a tűzoltói alkalmazásra való alkalmasság megítélése.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Dolgozzon végig mind a tíz kérdésen a saját tempójában; nincs időzítő vagy sebességbónusz.",
         "Válassza ki a látható nyomok által legjobban alátámasztott egyetlen lehetőséget. A helyesség a végső leleplezésig rejtve marad.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tűzoltó kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Tűzoltóság kihívása",
@@ -30,10 +26,8 @@
         "preAdCopy": "A tűzoltó pontszáma és az öt terület bontása készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt bejárati terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt bejárati terület összehasonlítása"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "Sikerült a tűzoltó belépési kihíváson!",
       "finished": "A tűzoltó belépési kihívása befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb bejárati terület",
       "trickiest": "A legtrükkösebb bejárati terület",
       "bestRound": "A legjobb esemény szakasz",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Hő és üzemanyag van jelen. Melyik harmadik elemre van szükség a tűzháromszög befejezéséhez?",
           "headerLabel": "TŰZTUDOMÁNY",
-          "answers": [
-            "Víz",
-            "Oxigén",
-            "Füstölni",
-            "Ash"
-          ]
+          "answers": {
+            "a1": "Víz",
+            "a2": "Oxigén",
+            "a3": "Füstölni",
+            "a4": "Ash"
+          }
         },
         "firefighter-s1q2": {
           "question": "Egy szikrázó elektromos panel egy víztó mellett áll. Mi a legbiztonságosabb első válasz?",
           "headerLabel": "VESZÉLYFELSZERELÉS",
-          "answers": [
-            "Lépjen át a vízen, hogy kikapcsolja",
-            "Öntsön több vizet a panelre",
-            "Mozgassa a panelt a külső házánál fogva",
-            "Tartsa tisztán az embereket, és figyelmeztesse a képzett válaszadókat"
-          ]
+          "answers": {
+            "a1": "Lépjen át a vízen, hogy kikapcsolja",
+            "a2": "Öntsön több vizet a panelre",
+            "a3": "Mozgassa a panelt a külső házánál fogva",
+            "a4": "Tartsa tisztán az embereket, és figyelmeztesse a képzett válaszadókat"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Melyik jelentés kommunikálja a legjobban a változást anélkül, hogy sejtené annak okát?",
           "headerLabel": "ESEMÉNYJELENTÉS",
-          "answers": [
-            "A füst az északi ajtóban világosról és egyenletesről gyorsan növekvőre változott",
-            "A füstből azonosították a pontos égő anyagot",
-            "Semmi lényeges nem változott, mert már volt füst",
-            "A tűz biztosan ugyanazon a területen marad"
-          ]
+          "answers": {
+            "a1": "A füst az északi ajtóban világosról és egyenletesről gyorsan növekvőre változott",
+            "a2": "A füstből azonosították a pontos égő anyagot",
+            "a3": "Semmi lényeges nem változott, mert már volt füst",
+            "a4": "A tűz biztosan ugyanazon a területen marad"
+          }
         },
         "firefighter-s1q5": {
           "question": "Karként egy feszítőrudat használnak. Mi történik általában, ha a markolat távolabb kerül a forgócsaptól?",
           "headerLabel": "MECHANIKAI ÉRTELKEZÉS",
-          "answers": [
-            "Mindig több erőre van szükség",
-            "A forgócsap leáll",
-            "Ugyanazon forgási hatás eléréséhez kevesebb erőre van szükség",
-            "A teher súlytalanná válik"
-          ]
+          "answers": {
+            "a1": "Mindig több erőre van szükség",
+            "a2": "A forgócsap leáll",
+            "a3": "Ugyanazon forgási hatás eléréséhez kevesebb erőre van szükség",
+            "a4": "A teher súlytalanná válik"
+          }
         },
         "firefighter-s3q6": {
           "question": "A forró felület több méterről érintés nélkül felmelegíti az arcát. Melyik hőátadási folyamat magyarázza ezt legjobban?",
           "headerLabel": "HŐÁLLÍTÁS",
-          "answers": [
-            "Sugárzás",
-            "Vezetés",
-            "Párolgás",
-            "Kondenzáció"
-          ]
+          "answers": {
+            "a1": "Sugárzás",
+            "a2": "Vezetés",
+            "a3": "Párolgás",
+            "a4": "Kondenzáció"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Mekkora valós távolságot jelent az útvonal?",
           "headerLabel": "GYAKORLATI SZÁMÍTÁS",
-          "answers": [
-            "50 méter",
-            "60 méter",
-            "65 méter",
-            "70 méter"
-          ]
+          "answers": {
+            "a1": "50 méter",
+            "a2": "60 méter",
+            "a3": "65 méter",
+            "a4": "70 méter"
+          }
         },
         "firefighter-s4q7": {
           "question": "Egy tűzkárosodott tető megereszkedik és friss repedések jelennek meg. Mi a legbiztonságosabb értelmezés?",
           "headerLabel": "SZERKEZETI VESZÉLYEK",
-          "answers": [
-            "A tető biztonságosan lehűl",
-            "A repedések pontosan mutatják, hol kell állni",
-            "Az összeomlás lehetséges, ezért tartsa távol magát, és jelentse a változó állapotot",
-            "A kár csak az eset után számít"
-          ]
+          "answers": {
+            "a1": "A tető biztonságosan lehűl",
+            "a2": "A repedések pontosan mutatják, hol kell állni",
+            "a3": "Az összeomlás lehetséges, ezért tartsa távol magát, és jelentse a változó állapotot",
+            "a4": "A kár csak az eset után számít"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "Az A sebességváltó hajtja a B-t, a B pedig a C-t. Merre fordul a C sebességváltó?",
           "headerLabel": "GEAR INDULÁS",
-          "answers": [
-            "Az óramutató járásával megegyező irányba, két irányváltás után",
-            "Az óramutató járásával ellentétes irányba, egy visszafordítás után",
-            "Nem tud elfordulni, mert három fokozat van használatban",
-            "Felfelé, mert az A sebességfokozat az első"
-          ]
+          "answers": {
+            "a1": "Az óramutató járásával megegyező irányba, két irányváltás után",
+            "a2": "Az óramutató járásával ellentétes irányba, egy visszafordítás után",
+            "a3": "Nem tud elfordulni, mert három fokozat van használatban",
+            "a4": "Felfelé, mert az A sebességfokozat az első"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Hány lámpát kell még kihúzni, hogy minden csapat fel legyen szerelve és két tartalék maradjon?",
           "headerLabel": "BERENDEZÉS MATEMATIKA",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "Mi a legjobb első lépés és jelentés?",
           "headerLabel": "VÉGSŐ ESEMÉNYTESZT",
-          "answers": [
-            "Fejezze be a számlálást, mielőtt jelentené a füstöt",
-            "Irányítsa az embereket keletre; jelentse a nyugati füstöt és két eltűnt személyt; elhalasztja a számolást",
-            "Használja a nyugati folyosót, mert az a legrövidebb",
-            "Csak a felszerelések számát jelentse"
-          ]
+          "answers": {
+            "a1": "Fejezze be a számlálást, mielőtt jelentené a füstöt",
+            "a2": "Irányítsa az embereket keletre; jelentse a nyugati füstöt és két eltűnt személyt; elhalasztja a számolást",
+            "a3": "Használja a nyugati folyosót, mert az a legrövidebb",
+            "a4": "Csak a felszerelések számát jelentse"
+          }
         }
       }
     }

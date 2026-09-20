@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 11% người lớn vượt qua bài kiểm tra Kinh thánh này",
   "eyebrow": "BÀI KIỂM TRA KIẾN THỨC KINH THÁNH",
   "summary": "Mười câu hỏi xoay quanh những người nổi tiếng, địa điểm và câu chuyện từ Cựu Ước và Tân Ước.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Bạn có thể biết những câu chuyện nổi tiếng, nhưng bạn có thể trả lời cả mười câu chuyện mà không cần mở Kinh thánh không?",
     "cta": "Bắt đầu bài kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Câu đố giải trí gồm mười câu hỏi này bao gồm những con người, địa điểm, sách và sự kiện được công nhận rộng rãi trong Kinh thánh. Các câu hỏi được rút ra từ cả Cựu Ước và Tân Ước và tránh những điểm phụ thuộc nhiều vào một bản dịch hiện đại cụ thể.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi bạn có thể xem lại bộ hoàn chỉnh.\n\nThứ tự và cách đặt tên sách Kinh thánh có thể khác nhau giữa các truyền thống tôn giáo. Bài kiểm tra này tuân theo các quy ước đặt tên Cơ đốc giáo bằng tiếng Anh quen thuộc cho các câu hỏi kiến thức chung.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi Kinh Thánh trong một thử thách tập trung.",
         "Chọn một trong bốn câu trả lời cho mỗi câu hỏi.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách Kinh Thánh",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Thử thách Kinh thánh",
@@ -30,10 +26,8 @@
         "preAdCopy": "Điểm Kinh thánh và đánh giá câu trả lời đầy đủ của bạn đã sẵn sàng để tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "So sánh ba lĩnh vực kiến thức",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "So sánh ba lĩnh vực kiến thức"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách Kinh Thánh!",
       "finished": "Thử thách Kinh Thánh đã hoàn tất",
-      "correctLabel": "đúng",
       "strongest": "Lĩnh vực kiến thức mạnh nhất",
       "trickiest": "Khu vực kiến thức khó nhất",
       "bestRound": "Phần hay nhất",
@@ -93,8 +86,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "bible-q1": {
           "question": "Ai đã đóng chiếc tàu trước trận lụt lớn?",
-          "answers": [
-            "Nô-ê",
-            "Áp-ra-ham",
-            "Môi-se",
-            "Jacob"
-          ],
+          "answers": {
+            "a1": "Nô-ê",
+            "a2": "Áp-ra-ham",
+            "a3": "Môi-se",
+            "a4": "Jacob"
+          },
           "headerLabel": "ƯỚC CỰU"
         },
         "bible-q2": {
           "question": "Chúa Giêsu sinh ra ở thị trấn nào?",
-          "answers": [
-            "Nazareth",
-            "Giêrusalem",
-            "Bêlem",
-            "Ca-bê-na-um"
-          ],
+          "answers": {
+            "a1": "Nazareth",
+            "a2": "Giêrusalem",
+            "a3": "Bêlem",
+            "a4": "Ca-bê-na-um"
+          },
           "headerLabel": "KINH THÁNH NƠI"
         },
         "bible-q3": {
           "question": "Cuốn sách đầu tiên của Kinh Thánh là gì?",
-          "answers": [
-            "Cuộc di cư",
-            "Sáng Thế Ký",
-            "Thánh vịnh",
-            "Matthew"
-          ],
+          "answers": {
+            "a1": "Cuộc di cư",
+            "a2": "Sáng Thế Ký",
+            "a3": "Thánh vịnh",
+            "a4": "Matthew"
+          },
           "headerLabel": "SÁCH KINH THÁNH"
         },
         "bible-q4": {
           "question": "Ai đã đánh bại Goliath bằng dây ném đá và hòn đá?",
-          "answers": [
-            "Sau-lơ",
-            "Samuel",
-            "Sa-lô-môn",
-            "David"
-          ],
+          "answers": {
+            "a1": "Sau-lơ",
+            "a2": "Samuel",
+            "a3": "Sa-lô-môn",
+            "a4": "David"
+          },
           "headerLabel": "KINH THÁNH"
         },
         "bible-q5": {
           "question": "Ai đã nhận được Mười Điều Răn trên Núi Sinai?",
-          "answers": [
-            "Môi-se",
-            "Aaron",
-            "Joshua",
-            "Ê-li"
-          ],
+          "answers": {
+            "a1": "Môi-se",
+            "a2": "Aaron",
+            "a3": "Joshua",
+            "a4": "Ê-li"
+          },
           "headerLabel": "ƯỚC CỰU"
         },
         "bible-q6": {
           "question": "Cuốn sách Kinh thánh nào chứa 150 thánh vịnh trong hầu hết các truyền thống Kitô giáo?",
-          "answers": [
-            "Tục ngữ",
-            "Ê-sai",
-            "Thánh vịnh",
-            "Công việc"
-          ],
+          "answers": {
+            "a1": "Tục ngữ",
+            "a2": "Ê-sai",
+            "a3": "Thánh vịnh",
+            "a4": "Công việc"
+          },
           "headerLabel": "SÁCH KINH THÁNH"
         },
         "bible-q7": {
           "question": "Ai đã phản bội Chúa Giêsu vì ba mươi đồng bạc?",
-          "answers": [
-            "Peter",
-            "Giuđa Iscariot",
-            "Thomas",
-            "Pontius Pilate"
-          ],
+          "answers": {
+            "a1": "Peter",
+            "a2": "Giuđa Iscariot",
+            "a3": "Thomas",
+            "a4": "Pontius Pilate"
+          },
           "headerLabel": "KINH ƯỚC MỚI"
         },
         "bible-q8": {
           "question": "Phao-lô bị đắm tàu ở hòn đảo nào trong Sách Công vụ?",
-          "answers": [
-            "đảo Crete",
-            "Síp",
-            "Bát-mô",
-            "Malta"
-          ],
+          "answers": {
+            "a1": "đảo Crete",
+            "a2": "Síp",
+            "a3": "Bát-mô",
+            "a4": "Malta"
+          },
           "headerLabel": "KINH THÁNH NƠI"
         },
         "bible-q9": {
           "question": "Nữ hoàng nào du hành để thử thách vua Solomon bằng những câu hỏi khó?",
-          "answers": [
-            "Nữ hoàng Sheba",
-            "Nữ hoàng Esther",
-            "Nữ hoàng Jezebel",
-            "Nữ hoàng Athaliah"
-          ],
+          "answers": {
+            "a1": "Nữ hoàng Sheba",
+            "a2": "Nữ hoàng Esther",
+            "a3": "Nữ hoàng Jezebel",
+            "a4": "Nữ hoàng Athaliah"
+          },
           "headerLabel": "KINH THÁNH"
         },
         "bible-q10": {
           "question": "Dụ ngôn người Samari nhân hậu xuất hiện trong Tin Mừng nào?",
-          "answers": [
-            "Matthew",
-            "Luca",
-            "Đánh dấu",
-            "John"
-          ],
+          "answers": {
+            "a1": "Matthew",
+            "a2": "Luca",
+            "a3": "Đánh dấu",
+            "a4": "John"
+          },
           "headerLabel": "CÂU HỎI CUỐI CÙNG"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 12% dorosłych może zdać ten egzamin wstępny na zakonnicę",
   "eyebrow": "TEST WIEDZY Z ŻYCIA RELIGIJNEGO",
   "summary": "Dziesięć pytań pełnych szacunku dotyczy ślubów, formacji, tradycji i codziennego życia zakonnego.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Znane pytania to dopiero początek. Następnie test przechodzi do ślubów, formacji i życia zakonnego.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To pełne szacunku wyzwanie rozrywkowe składające się z dziesięciu pytań bada życie religijne katolickich kobiet poprzez szeroko stosowane pojęcia, takie jak rady ewangeliczne, nowicjat, charyzmat, modlitwa i profesja. Wspólnoty różnią się zasadami, ubiorem, posługami i formacją, dlatego w quizie unika się traktowania każdego instytutu jako identycznego.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz bardziej szczegółowych pytań dotyczących życia zakonnego.",
         "Wybierz najlepszą odpowiedź spośród czterech opcji.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie życia religijnego",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na zakonnicę",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik wiedzy o życiu religijnym jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie czterech obszarów wiedzy",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie czterech obszarów wiedzy"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie wejścia do zakonnicy!",
       "finished": "Wyzwanie wejścia do zakonnicy ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar wiedzy",
       "trickiest": "Najtrudniejszy obszar wiedzy",
       "bestRound": "Najlepsza sekcja",
@@ -96,8 +89,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "nun-q1": {
           "question": "Które trzy zobowiązania są powszechnie nazywane radami ewangelicznymi?",
-          "answers": [
-            "Ubóstwo, czystość i posłuszeństwo",
-            "Cisza, post i pielgrzymka",
-            "Studia, podróże i nauczanie",
-            "Samotność, muzyka i służba"
-          ],
+          "answers": {
+            "a1": "Ubóstwo, czystość i posłuszeństwo",
+            "a2": "Cisza, post i pielgrzymka",
+            "a3": "Studia, podróże i nauczanie",
+            "a4": "Samotność, muzyka i służba"
+          },
           "headerLabel": "ŚLUBY ZAKONNE"
         },
         "nun-q2": {
           "question": "Jak potocznie nazywa się formalny okres przygotowania do pierwszej profesji?",
-          "answers": [
-            "Konklawe",
-            "Nowicjat",
-            "Synod",
-            "Diakonat"
-          ],
+          "answers": {
+            "a1": "Konklawe",
+            "a2": "Nowicjat",
+            "a3": "Synod",
+            "a4": "Diakonat"
+          },
           "headerLabel": "FORMACJA"
         },
         "nun-q3": {
           "question": "Jakie słowo często opisuje wyjątkowy dar duchowy i misję instytutu zakonnego?",
-          "answers": [
-            "Kanon",
-            "Parafia",
-            "Charyzmat",
-            "Sakrament"
-          ],
+          "answers": {
+            "a1": "Kanon",
+            "a2": "Parafia",
+            "a3": "Charyzmat",
+            "a4": "Sakrament"
+          },
           "headerLabel": "TOŻSAMOŚĆ WSPÓLNOTY"
         },
         "nun-q4": {
           "question": "Jak nazywa się cykl modlitw Kościoła o określonych porach dnia?",
-          "answers": [
-            "Lekcjonarz",
-            "Katechizm",
-            "Kalendarz różańcowy",
-            "Liturgia Godzin"
-          ],
+          "answers": {
+            "a1": "Lekcjonarz",
+            "a2": "Katechizm",
+            "a3": "Kalendarz różańcowy",
+            "a4": "Liturgia Godzin"
+          },
           "headerLabel": "CODZIENNA MODLITWA"
         },
         "nun-q5": {
           "question": "Z jakim tekstem założycielskim ściśle związana jest tradycja benedyktyńska?",
-          "answers": [
-            "Reguła Świętego Benedykta",
-            "Opowieści Canterbury",
-            "Książka Modlitwy wspólne",
-            "Suma Teologiczna"
-          ],
+          "answers": {
+            "a1": "Reguła Świętego Benedykta",
+            "a2": "Opowieści Canterbury",
+            "a3": "Książka Modlitwy wspólne",
+            "a4": "Suma Teologiczna"
+          },
           "headerLabel": "TRADYCJE MONASTYCZNE"
         },
         "nun-q6": {
           "question": "Który święty jest najściślej związany z założeniem Klarysek?",
-          "answers": [
-            "Święta Teresa z Kalkuty",
-            "Święta Klara z Asyżu",
-            "Święta Katarzyna ze Sieny",
-            "Święta Teresa z Lisieux"
-          ],
+          "answers": {
+            "a1": "Święta Teresa z Kalkuty",
+            "a2": "Święta Klara z Asyżu",
+            "a3": "Święta Katarzyna ze Sieny",
+            "a4": "Święta Teresa z Lisieux"
+          },
           "headerLabel": "ZAKONY RELIGIJNE"
         },
         "nun-q7": {
           "question": "Jak potocznie nazywa się śluby składane na czas określony przed profesją wieczystą?",
-          "answers": [
-            "Intencje prywatne",
-            "Obietnice duchowne",
-            "Śluby tymczasowe",
-            "Imiona chrzcielne"
-          ],
+          "answers": {
+            "a1": "Intencje prywatne",
+            "a2": "Obietnice duchowne",
+            "a3": "Śluby tymczasowe",
+            "a4": "Imiona chrzcielne"
+          },
           "headerLabel": "ZAWÓD"
         },
         "nun-q8": {
           "question": "Który opis najlepiej pasuje do wspólnoty kontemplacyjnej czy klauzurowej?",
-          "answers": [
-            "Społeczność skupiająca się głównie na urzędach politycznych",
-            "Grupa, która nie ma wspólnej modlitwy",
-            "Społeczność utworzona tylko dla podróży",
-            "Wspólnota mocno skupiona na modlitwie i bardziej zamkniętym sposobie życia"
-          ],
+          "answers": {
+            "a1": "Społeczność skupiająca się głównie na urzędach politycznych",
+            "a2": "Grupa, która nie ma wspólnej modlitwy",
+            "a3": "Społeczność utworzona tylko dla podróży",
+            "a4": "Wspólnota mocno skupiona na modlitwie i bardziej zamkniętym sposobie życia"
+          },
           "headerLabel": "ŻYCIE KONTEMPLACYJNE"
         },
         "nun-q9": {
           "question": "Co w życiu zakonnym oznacza profesja zakonna?",
-          "answers": [
-            "Publiczne składanie ślubów formalnie przyjętych przez Kościół",
-            "Wybór świeckiej kariery",
-            "Wybór biskupa",
-            "Wydanie modlitewnika"
-          ],
+          "answers": {
+            "a1": "Publiczne składanie ślubów formalnie przyjętych przez Kościół",
+            "a2": "Wybór świeckiej kariery",
+            "a3": "Wybór biskupa",
+            "a4": "Wydanie modlitewnika"
+          },
           "headerLabel": "JĘZYK POWOŁANIOWY"
         },
         "nun-q10": {
           "question": "Który opis najlepiej pasuje do apostolskiej wspólnoty religijnej?",
-          "answers": [
-            "Wspólnota bez wspólnego życia duchowego",
-            "Wspólnota łącząca modlitwę z czynną służbą lub posługą",
-            "Społeczność zajmująca się wyłącznie ochroną budynków",
-            "Społeczność, która nigdy nie działa poza swoimi członkami"
-          ],
+          "answers": {
+            "a1": "Wspólnota bez wspólnego życia duchowego",
+            "a2": "Wspólnota łącząca modlitwę z czynną służbą lub posługą",
+            "a3": "Społeczność zajmująca się wyłącznie ochroną budynków",
+            "a4": "Społeczność, która nigdy nie działa poza swoimi członkami"
+          },
           "headerLabel": "KOŃCOWE PYTANIE WIEDZY"
         }
       }

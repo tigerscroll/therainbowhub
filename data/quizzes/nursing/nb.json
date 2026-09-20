@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 7 % består denne opptaksprøven for sykepleier",
   "eyebrow": "KLINISK OPPTAKSLAB",
   "summary": "Anatomi, vitale tegn og beslutninger om pasientbehandling tester om dømmekraften din holder seg skarp under press.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Kroppssystemer, vitale tegn og pasientbehandling. Kan du se hva som betyr noe og ringe den tryggeste?",
     "cta": "Start med quizen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspennende underholdningsutfordringen inneholder ti inngangsspørsmål på tvers av anatomi, observasjoner, tallkunnskaper i helsevesenet, infeksjonsforebygging, kommunikasjon og prioritert vurdering. Det belønner rolig bruk av informasjonen som vises.\n\nVelg det beste svaret for hver situasjon. Innholdet forblir generelt og unngår å stole på ett lands profesjonelle prosedyrer.\n\nDette er ikke en akkreditert sykepleieropptaksprøve, klinisk vurdering, kvalifikasjon, opplæringskurs eller kilde til medisinsk rådgivning.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Fullfør ti nøye utvalgte spørsmål i én fokusert utfordring.",
         "Velg ett svar hver gang. Korrektheten forblir skjult til den endelige avsløringen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Opptaksprøve i sykepleie",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Utfordring for sykepleieinngang",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din sykepleierinngangspoengsum og tre-område-sammenbrudd er klare til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Tre inngangspartier sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Tre inngangspartier sammenlignet"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du besto sykepleieutfordringen!",
       "finished": "Sykepleieutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Sterkeste inngangsparti",
       "trickiest": "Vanskeligste inngangspartiet",
       "bestRound": "Beste seksjon",
@@ -98,8 +91,7 @@
         "snapshot": "Hva kandidatprofilen din foreslår",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Hvilken gass har blod plukket opp når det kommer tilbake fra lungene?",
-          "answers": [
-            "Nitrogen",
-            "Oksygen",
-            "Karbondioksid",
-            "Hydrogen"
-          ],
+          "answers": {
+            "a1": "Nitrogen",
+            "a2": "Oksygen",
+            "a3": "Karbondioksid",
+            "a4": "Hydrogen"
+          },
           "headerLabel": "ANATOMI OG FYSIOLOGI"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 milliliter pluss 250 milliliter tilsvarer totalsummen"
           },
           "question": "En kanne inneholder 750 ml. Ytterligere 250 ml tilsettes. Hva er totalen?",
-          "answers": [
-            "900 ml",
-            "1100 ml",
-            "1250 ml",
-            "1000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1100 ml",
+            "a3": "1250 ml",
+            "a4": "1000 ml"
+          },
           "headerLabel": "HELSEVED NUMERISKE"
         },
         "nurse-r2q5": {
           "context": "Tidligere: puste komfortabelt og snakke normalt. Nå: puste raskere og pause mellom korte fraser.",
           "question": "Hvilken endring i dette observasjonsnotatet er viktigst?",
-          "answers": [
-            "Notatet inneholder to tidspunkter",
-            "Pustemønsteret har forverret seg",
-            "Personen snakker fortsatt",
-            "Det tidligere notatet var kortere"
-          ],
+          "answers": {
+            "a1": "Notatet inneholder to tidspunkter",
+            "a2": "Pustemønsteret har forverret seg",
+            "a3": "Personen snakker fortsatt",
+            "a4": "Det tidligere notatet var kortere"
+          },
           "headerLabel": "OBSERVASJONSTRENDER"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Overlevering sier venstre arm, diagram sier høyre arm"
           },
           "question": "Hvilket misforhold bør avklares?",
-          "answers": [
-            "Bruk av store bokstaver",
-            "Antall ord",
-            "Kartet har en kantlinje",
-            "Den innspilte siden er annerledes"
-          ],
+          "answers": {
+            "a1": "Bruk av store bokstaver",
+            "a2": "Antall ord",
+            "a3": "Kartet har en kantlinje",
+            "a4": "Den innspilte siden er annerledes"
+          },
           "headerLabel": "REGISTRER NØYAKTIGHET"
         },
         "nurse-r4q3": {
           "question": "En oppgave kan sprute kroppsvæske mot ansiktet. Hvilken beskyttelse adresserer den oppgitte risikoen?",
-          "answers": [
-            "En stofflue",
-            "Passende øye- eller ansiktsbeskyttelse",
-            "Kun skotrekk",
-            "Ingen beskyttelse hvis oppgaven er kort"
-          ],
+          "answers": {
+            "a1": "En stofflue",
+            "a2": "Passende øye- eller ansiktsbeskyttelse",
+            "a3": "Kun skotrekk",
+            "a4": "Ingen beskyttelse hvis oppgaven er kort"
+          },
           "headerLabel": "FOREBYGGING AV INFEKSJON"
         },
         "nurse-r6q3": {
           "question": "Noen stiller et sensitivt spørsmål i et travelt offentlig område. Hva bør du gjøre?",
-          "answers": [
-            "Tilby å fortsette samtalen et privat sted",
-            "Svar kort og stille hvor du er",
-            "Be folk i nærheten om å gi deg litt plass",
-            "Gi bare den ikke-sensitive delen av svaret"
-          ],
+          "answers": {
+            "a1": "Tilby å fortsette samtalen et privat sted",
+            "a2": "Svar kort og stille hvor du er",
+            "a3": "Be folk i nærheten om å gi deg litt plass",
+            "a4": "Gi bare den ikke-sensitive delen av svaret"
+          },
           "headerLabel": "MEDLEDENS KOMMUNIKASJON"
         },
         "nurse-r7q1": {
           "context": "Person A er komfortabel med en litt raskere puls etter å ha gått. Person B er plutselig forvirret, puster raskt og ser blek ut.",
           "question": "Hvem trenger oppmerksomhet først?",
-          "answers": [
-            "Person B, fordi flere nye tegn tyder på plutselig forverring",
-            "Person A, fordi pulsen deres endret seg",
-            "Begge kan vente på rutinemessige observasjoner",
-            "Personen som kom først"
-          ],
+          "answers": {
+            "a1": "Person B, fordi flere nye tegn tyder på plutselig forverring",
+            "a2": "Person A, fordi pulsen deres endret seg",
+            "a3": "Begge kan vente på rutinemessige observasjoner",
+            "a4": "Personen som kom først"
+          },
           "headerLabel": "PRIORITET DOM"
         },
         "nurse-r3q1": {
           "question": "En væsketotal stiger fra 600 ml til 900 ml. Hvor mange prosent økte den med?",
-          "answers": [
-            "25 %",
-            "33 %",
-            "50 %",
-            "75 %"
-          ],
+          "answers": {
+            "a1": "25 %",
+            "a2": "33 %",
+            "a3": "50 %",
+            "a4": "75 %"
+          },
           "headerLabel": "HELSEVED NUMERISKE"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Luftveier blokkert, mindre luft til lungene, ukjent, mindre oksygen til vev"
           },
           "question": "En luftveisblokkering hindrer luft i å nå lungene. Hvilken nedstrømseffekt følger mest direkte?",
-          "answers": [
-            "Mindre oksygen kommer inn i blodet",
-            "Flere næringsstoffer kommer inn i magen",
-            "Nyrene danner umiddelbart mer urin",
-            "Bein produserer mer bevegelse"
-          ],
+          "answers": {
+            "a1": "Mindre oksygen kommer inn i blodet",
+            "a2": "Flere næringsstoffer kommer inn i magen",
+            "a3": "Nyrene danner umiddelbart mer urin",
+            "a4": "Bein produserer mer bevegelse"
+          },
           "headerLabel": "INTEGRERT FYSIOLOGI"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Person A er våken med mildt stabilt ubehag og normal tale. Person B er blek, vanskelig å vekke og puster uregelmessig."
           },
           "question": "Hvem har umiddelbar prioritet?",
-          "answers": [
-            "Person A, fordi ubehag kommer alltid først",
-            "Begge kan vente på en rutinesjekk",
-            "Person B, fordi bevissthet og pust plutselig har endret seg",
-            "Velg basert på hvem som kom først"
-          ],
+          "answers": {
+            "a1": "Person A, fordi ubehag kommer alltid først",
+            "a2": "Begge kan vente på en rutinesjekk",
+            "a3": "Person B, fordi bevissthet og pust plutselig har endret seg",
+            "a4": "Velg basert på hvem som kom først"
+          },
           "headerLabel": "ENDELIG OVERLEGGING"
         }
       }

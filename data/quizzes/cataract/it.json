@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test rapido della cataratta",
   "eyebrow": "CONTROLLO DELLA VISTA IN 10 DOMANDE",
   "summary": "Dettagli confusi, trappole visive ravvicinate e importanti segnali di allarme della cataratta in una rapida sfida.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "All'inizio è facile non notare la cataratta. Vedi se riesci a individuare gli indizi sottili in 10 domande veloci: quelle finali catturano la maggior parte delle persone.",
     "cta": "Inizia il test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di dieci domande combina cinque enigmi visivi sullo schermo con cinque domande di sensibilizzazione generale sulla cataratta. Misura le risposte a questo quiz, non la vista, la salute delle lenti o la probabilità di cataratta.\n\nDimensioni dello schermo, luminosità, contrasto, vista, lenti correttive, affaticamento e impostazioni del dispositivo possono influenzare le prestazioni. Visione sfocata o annebbiata persistente, abbagliamento, aloni intorno alle luci, difficoltà a vedere di notte o toni che sembrano meno vividi dovrebbero essere discussi con un oculista qualificato.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa cinque sfide relative a dettagli, schemi e memoria visiva.",
         "Rispondi a cinque domande sulla cataratta e quando cercare aiuto.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida alla cataratta",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Test rapido della cataratta",
@@ -30,10 +26,8 @@
         "preAdCopy": "Le tue dieci risposte sono state controllate e il tuo punteggio relativo alla sfida della cataratta è pronto per essere rivelato.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Tre aree visive a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Tre aree visive a confronto"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Hai superato la sfida visiva dell'80%!",
       "finished": "Prova di cataratta completata",
-      "correctLabel": "corrette",
       "strongest": "Zona più forte oggi",
       "trickiest": "La zona più difficile oggi",
       "bestRound": "La sezione migliore",
@@ -94,8 +87,7 @@
         "snapshot": "Cosa suggerisce il tuo risultato",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Quale personaggio si trova esattamente al centro della griglia?",
           "headerLabel": "DETTAGLIO CENTRALE",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "RIFERIMENTO: B8R3K5",
           "question": "Quale codice corrisponde esattamente al riferimento?",
           "headerLabel": "PARTITA NEBBOSA",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "RIFERIMENTO",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Quale simbolo completa la sequenza alternata?",
           "headerLabel": "TRACCIAMENTO DEL MODELLO",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Quale oggetto è apparso per terzo?",
           "headerLabel": "MEMORIA VISIVA RAPIDA",
-          "answers": [
-            "Libro",
-            "Chiave",
-            "Limone",
-            "Ombrello"
-          ],
+          "answers": {
+            "a1": "Libro",
+            "a2": "Chiave",
+            "a3": "Limone",
+            "a4": "Ombrello"
+          },
           "study": {
             "title": "Studia l'ordine dei cinque oggetti",
             "instruction": "Questo scomparirà automaticamente.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Quale posizione contiene il cerchio pallido?",
           "headerLabel": "VERIFICA DETTAGLI",
-          "answers": [
-            "Quinto",
-            "Secondo",
-            "Quarto",
-            "Sesto"
-          ],
+          "answers": {
+            "a1": "Quinto",
+            "a2": "Secondo",
+            "a3": "Quarto",
+            "a4": "Sesto"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Cos'è la cataratta?",
           "headerLabel": "NOZIONI DI BASE SULLA CATARATTA",
-          "answers": [
-            "Un graffio sulla palpebra",
-            "Un'area torbida nel cristallino naturale dell'occhio",
-            "Un problema limitato al condotto lacrimale",
-            "Un tipo di infezione all'orecchio"
-          ]
+          "answers": {
+            "a1": "Un graffio sulla palpebra",
+            "a2": "Un'area torbida nel cristallino naturale dell'occhio",
+            "a3": "Un problema limitato al condotto lacrimale",
+            "a4": "Un tipo di infezione all'orecchio"
+          }
         },
         "cataract-q7": {
           "question": "Quale gruppo contiene i sintomi comuni della cataratta?",
           "headerLabel": "SEGNALI DI AVVERTIMENTO",
-          "answers": [
-            "Prurito alla pelle e mal di gola",
-            "Perdita improvvisa dell'udito e vertigini",
-            "Visione offuscata o annebbiata, abbagliamento e aloni intorno alle luci",
-            "Collo rigido e spalle doloranti"
-          ]
+          "answers": {
+            "a1": "Prurito alla pelle e mal di gola",
+            "a2": "Perdita improvvisa dell'udito e vertigini",
+            "a3": "Visione offuscata o annebbiata, abbagliamento e aloni intorno alle luci",
+            "a4": "Collo rigido e spalle doloranti"
+          }
         },
         "cataract-q8": {
           "question": "Come può un oculista verificare la presenza di cataratta?",
           "headerLabel": "VALUTAZIONE PROFESSIONALE",
-          "answers": [
-            "Con un test dell'udito",
-            "Utilizzando una lettura della pressione sanguigna a casa",
-            "Con una prova di assaggio",
-            "Durante un esame oculistico completo con dilatazione pupillare"
-          ]
+          "answers": {
+            "a1": "Con un test dell'udito",
+            "a2": "Utilizzando una lettura della pressione sanguigna a casa",
+            "a3": "Con una prova di assaggio",
+            "a4": "Durante un esame oculistico completo con dilatazione pupillare"
+          }
         },
         "cataract-q9": {
           "question": "Qual è la risposta più sicura in caso di perdita improvvisa della vista, dolore oculare grave o cambiamento improvviso e importante della vista?",
           "headerLabel": "QUANDO AGIRE",
-          "answers": [
-            "Richiedi urgentemente una consulenza oculistica professionale",
-            "Aspetta diversi mesi senza dirlo",
-            "Modifica la luminosità dello schermo e presumi che sia fissa",
-            "Affidati solo a un quiz online"
-          ]
+          "answers": {
+            "a1": "Richiedi urgentemente una consulenza oculistica professionale",
+            "a2": "Aspetta diversi mesi senza dirlo",
+            "a3": "Modifica la luminosità dello schermo e presumi che sia fissa",
+            "a4": "Affidati solo a un quiz online"
+          }
         },
         "cataract-q10": {
           "question": "Cosa può dirti il tuo punteggio in questa sfida online?",
           "headerLabel": "VERIFICA FINALE DELLA REALTÀ",
-          "answers": [
-            "Se le tue lenti sono sane",
-            "Solo come hai risposto a queste dieci domande",
-            "Se hai bisogno di un intervento di cataratta",
-            "Se puoi escludere una cataratta"
-          ]
+          "answers": {
+            "a1": "Se le tue lenti sono sane",
+            "a2": "Solo come hai risposto a queste dieci domande",
+            "a3": "Se hai bisogno di un intervento di cataratta",
+            "a4": "Se puoi escludere una cataratta"
+          }
         }
       }
     }

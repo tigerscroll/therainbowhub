@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 6% odraslih može položiti ovaj prijemni ispit za zrakoplovstvo",
   "eyebrow": "TEST SPOSOBNOSTI ZA ZRAČNU MOĆ",
   "summary": "Deset pitanja testiraju principe letenja, instrumente, navigaciju i fiziku zrakoplovstva.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Čini se da je osnove kokpita jednostavne. Zatim ispit prelazi na navigaciju, kontrole i fiziku leta.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov od deset pitanja koristi načela zrakoplovstva koja se primjenjuju u zračnim snagama i civilnim letovima diljem svijeta. Prelazi s četiri sile leta na instrumente u kokpitu, jezik za usmjeravanje, kontrole zrakoplova i osnovno aerodinamičko zaključivanje.\n\nOdaberite jedan odgovor za svako pitanje. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih pitanja o zrakoplovstvu.",
         "Odaberite jedan od četiri odgovora bez vanjske pomoći.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov za ulazak u zrakoplovstvo",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni ispit za zrakoplovstvo",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaša ocjena sposobnosti za zračnu moć je spremna za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno je pet područja zrakoplovstva",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno je pet područja zrakoplovstva"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli ste izazov za ulazak u zrakoplovstvo!",
       "finished": "Dovršen izazov za ulazak u zrakoplovstvo",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače zrakoplovno područje",
       "trickiest": "Najzahtjevnije zrakoplovno područje",
       "bestRound": "Najbolja sekcija",
@@ -99,8 +92,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Koja od četiri sile leta djeluje prema gore protiv težine?",
-          "answers": [
-            "Uzgon",
-            "Aerodinamički otpor",
-            "Potisak",
-            "Inercija"
-          ],
+          "answers": {
+            "a1": "Uzgon",
+            "a2": "Aerodinamički otpor",
+            "a3": "Potisak",
+            "a4": "Inercija"
+          },
           "headerLabel": "OSNOVE LETA"
         },
         "airforce-q2": {
           "question": "Koji instrument u kokpitu pokazuje visinu zrakoplova?",
-          "answers": [
-            "Indikator brzine zraka",
-            "Visinomjer",
-            "Uključite koordinatora",
-            "Indikator vertikalne brzine"
-          ],
+          "answers": {
+            "a1": "Indikator brzine zraka",
+            "a2": "Visinomjer",
+            "a3": "Uključite koordinatora",
+            "a4": "Indikator vertikalne brzine"
+          },
           "headerLabel": "INSTRUMENTI U KOKBINI"
         },
         "airforce-q3": {
           "question": "Koje primarne komande leta upravljaju prevrtanjem zrakoplova?",
-          "answers": [
-            "Kormila visine",
-            "Kormilo",
-            "Krilca",
-            "Zakrilca"
-          ],
+          "answers": {
+            "a1": "Kormila visine",
+            "a2": "Kormilo",
+            "a3": "Krilca",
+            "a4": "Zakrilca"
+          },
           "headerLabel": "KOMANDE LETA"
         },
         "airforce-q4": {
           "question": "U kojem smjeru približno pokazuje magnetski smjer od 270 stupnjeva?",
-          "answers": [
-            "Sjever",
-            "istok",
-            "Jug",
-            "zapad"
-          ],
+          "answers": {
+            "a1": "Sjever",
+            "a2": "istok",
+            "a3": "Jug",
+            "a4": "zapad"
+          },
           "headerLabel": "NAVIGACIJA"
         },
         "airforce-q5": {
           "question": "Machov broj uspoređuje brzinu zrakoplova s čime?",
-          "answers": [
-            "Lokalna brzina zvuka",
-            "Brzina svjetlosti",
-            "Zemljina rotacija",
-            "Brzina okolnog vjetra"
-          ],
+          "answers": {
+            "a1": "Lokalna brzina zvuka",
+            "a2": "Brzina svjetlosti",
+            "a3": "Zemljina rotacija",
+            "a4": "Brzina okolnog vjetra"
+          },
           "headerLabel": "BRZINA I ZVUK"
         },
         "airforce-q6": {
           "question": "U zrakoplovstvu, koja se strana zrakoplova naziva lijevom?",
-          "answers": [
-            "točno",
-            "lijevo",
-            "Prednja strana",
-            "Stražnji"
-          ],
+          "answers": {
+            "a1": "točno",
+            "a2": "lijevo",
+            "a3": "Prednja strana",
+            "a4": "Stražnji"
+          },
           "headerLabel": "ZRAKOPLOVNI JEZIK"
         },
         "airforce-q7": {
           "question": "Uzletno-sletna staza s brojem 09 je približno usmjerena prema kojem smjeru kompasa?",
-          "answers": [
-            "Sjever",
-            "Jug",
-            "istok",
-            "zapad"
-          ],
+          "answers": {
+            "a1": "Sjever",
+            "a2": "Jug",
+            "a3": "istok",
+            "a4": "zapad"
+          },
           "headerLabel": "OBRAZLOŽENJE PISTE"
         },
         "airforce-q8": {
           "question": "Kako se zove kut između linije tetive aeroprofila i nadolazećeg strujanja zraka?",
-          "answers": [
-            "Kut nagiba",
-            "Kut klizanja",
-            "Stav visine",
-            "Napadni kut"
-          ],
+          "answers": {
+            "a1": "Kut nagiba",
+            "a2": "Kut klizanja",
+            "a3": "Stav visine",
+            "a4": "Napadni kut"
+          },
           "headerLabel": "AERODINAMIKA"
         },
         "airforce-q9": {
           "question": "Kojim se Newtonovim zakonom najizravnije objašnjava potisak mlaza?",
-          "answers": [
-            "Treći zakon",
-            "Prvi zakon",
-            "Zakon gravitacije",
-            "Drugi zakon termodinamike"
-          ],
+          "answers": {
+            "a1": "Treći zakon",
+            "a2": "Prvi zakon",
+            "a3": "Zakon gravitacije",
+            "a4": "Drugi zakon termodinamike"
+          },
           "headerLabel": "FIZIKA PROPULZIJE"
         },
         "airforce-q10": {
           "question": "Ako gustoća zraka ostane konstantna, a brzina se udvostruči, za koji faktor se približno mijenja dinamički tlak?",
-          "answers": [
-            "dva",
-            "četiri",
-            "osam",
-            "Ne mijenja se"
-          ],
+          "answers": {
+            "a1": "dva",
+            "a2": "četiri",
+            "a3": "osam",
+            "a4": "Ne mijenja se"
+          },
           "headerLabel": "ZAVRŠNO PITANJE O SPOSOBNOSTIMA"
         }
       }

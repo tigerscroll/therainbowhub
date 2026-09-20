@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 7 % bestehen diese Aufnahmeprüfung für Krankenpfleger",
   "eyebrow": "KLINISCHES ZULASSUNGSLABOR",
   "summary": "Anatomie, Vitalfunktionen und Entscheidungen zur Patientenversorgung stellen auf die Probe, ob Ihr Urteilsvermögen auch unter Druck scharf bleibt.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Körpersysteme, Vitalfunktionen und Patientenversorgung. Können Sie erkennen, worauf es ankommt, und den sichersten Anruf tätigen?",
     "cta": "Quiz starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieses internationale Unterhaltungsquiz enthält zehn Einstiegsfragen zu den Themen Anatomie, Beobachtungen, Rechnen im Gesundheitswesen, Infektionsprävention, Kommunikation und Prioritätsbeurteilung. Es belohnt den ruhigen Umgang mit den angezeigten Informationen.\n\nWählen Sie für jede Situation die beste Antwort. Der Inhalt bleibt allgemein gehalten und vermeidet eine Abhängigkeit von den professionellen Verfahren eines Landes.\n\nHierbei handelt es sich nicht um eine akkreditierte Aufnahmeprüfung für die Krankenpflege, keine klinische Beurteilung, keine Qualifikation, keinen Schulungskurs oder eine Quelle medizinischer Beratung.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn sorgfältig ausgewählte Fragen in einer fokussierten Herausforderung.",
         "Wählen Sie jeweils eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Aufnahmeprüfung für die Krankenpflege",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Herausforderung für den Eintritt in die Krankenpflege",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre Aufnahmebewertung für die Krankenpflege und eine Aufschlüsselung in drei Bereiche stehen zur Auswertung bereit.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Drei getestete Bereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Drei getestete Bereiche im Vergleich"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sie haben die Pflegeherausforderung bestanden!",
       "finished": "Pflegeherausforderung abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster getesteter Bereich",
       "trickiest": "Schwierigster getesteter Bereich",
       "bestRound": "Stärkster Bereich",
@@ -98,8 +91,7 @@
         "snapshot": "Was Ihr Kandidatenprofil vermuten lässt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Welches Gas nimmt das Blut auf, wenn es aus der Lunge zurückkehrt?",
-          "answers": [
-            "Stickstoff",
-            "Sauerstoff",
-            "Kohlendioxid",
-            "Wasserstoff"
-          ],
+          "answers": {
+            "a1": "Stickstoff",
+            "a2": "Sauerstoff",
+            "a3": "Kohlendioxid",
+            "a4": "Wasserstoff"
+          },
           "headerLabel": "ANATOMIE & PHYSIOLOGIE"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 Milliliter plus 250 Milliliter ergeben die Summe"
           },
           "question": "Eine Kanne enthält 750 ml. Weitere 250 ml werden hinzugefügt. Wie hoch ist die Summe?",
-          "answers": [
-            "900 ml",
-            "1.100 ml",
-            "1.250 ml",
-            "1.000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1.100 ml",
+            "a3": "1.250 ml",
+            "a4": "1.000 ml"
+          },
           "headerLabel": "GESUNDHEITSRECHNUNG"
         },
         "nurse-r2q5": {
           "context": "Früher: Bequemes Atmen und normales Sprechen. Jetzt: schneller atmen und zwischen kurzen Sätzen eine Pause einlegen.",
           "question": "Welche Änderung in dieser Beobachtungsnotiz ist am wichtigsten?",
-          "answers": [
-            "Die Notiz enthält zwei Zeitpunkte",
-            "Das Atemmuster hat sich verschlechtert",
-            "Die Person spricht immer noch",
-            "Die frühere Notiz war kürzer"
-          ],
+          "answers": {
+            "a1": "Die Notiz enthält zwei Zeitpunkte",
+            "a2": "Das Atemmuster hat sich verschlechtert",
+            "a3": "Die Person spricht immer noch",
+            "a4": "Die frühere Notiz war kürzer"
+          },
           "headerLabel": "BEOBACHTUNGSTRENDS"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Bei der Übergabe steht der linke Arm, auf der Karte steht der rechte Arm"
           },
           "question": "Welche Diskrepanz sollte geklärt werden?",
-          "answers": [
-            "Die Verwendung von Großbuchstaben",
-            "Die Anzahl der Wörter",
-            "Das Diagramm hat einen Rand",
-            "Die dokumentierte Körperseite stimmt nicht überein"
-          ],
+          "answers": {
+            "a1": "Die Verwendung von Großbuchstaben",
+            "a2": "Die Anzahl der Wörter",
+            "a3": "Das Diagramm hat einen Rand",
+            "a4": "Die dokumentierte Körperseite stimmt nicht überein"
+          },
           "headerLabel": "AUFZEICHNUNGSGENAUIGKEIT"
         },
         "nurse-r4q3": {
           "question": "Bei einer Aufgabe kann es passieren, dass Körperflüssigkeit ins Gesicht spritzt. Welcher Schutz begegnet dem genannten Risiko?",
-          "answers": [
-            "Ein Stoffhut",
-            "Geeigneter Augen- oder Gesichtsschutz",
-            "Nur Schuhüberzüge",
-            "Kein Schutz, wenn die Aufgabe kurz ist"
-          ],
+          "answers": {
+            "a1": "Ein Stoffhut",
+            "a2": "Geeigneter Augen- oder Gesichtsschutz",
+            "a3": "Nur Schuhüberzüge",
+            "a4": "Kein Schutz, wenn die Aufgabe kurz ist"
+          },
           "headerLabel": "INFEKTIONSPRÄVENTION"
         },
         "nurse-r6q3": {
           "question": "Jemand stellt in einem belebten öffentlichen Bereich eine heikle Frage. Was sollten Sie tun?",
-          "answers": [
-            "Bieten Sie an, das Gespräch an einem privaten Ort fortzusetzen",
-            "Antworten Sie kurz und leise, wo Sie sind",
-            "Bitten Sie die Menschen in der Nähe, Ihnen etwas Platz zu geben",
-            "Geben Sie nur den nicht sensiblen Teil der Antwort an"
-          ],
+          "answers": {
+            "a1": "Bieten Sie an, das Gespräch an einem privaten Ort fortzusetzen",
+            "a2": "Antworten Sie kurz und leise, wo Sie sind",
+            "a3": "Bitten Sie die Menschen in der Nähe, Ihnen etwas Platz zu geben",
+            "a4": "Geben Sie nur den nicht sensiblen Teil der Antwort an"
+          },
           "headerLabel": "MITFÜHLENDE KOMMUNIKATION"
         },
         "nurse-r7q1": {
           "context": "Person A fühlt sich mit einem leicht schnelleren Puls nach dem Gehen wohl. Person B ist plötzlich verwirrt, atmet schnell und sieht blass aus.",
           "question": "Wer braucht zuerst Aufmerksamkeit?",
-          "answers": [
-            "Person B, weil mehrere neue Anzeichen auf eine plötzliche Verschlechterung hinweisen",
-            "Person A, weil sich ihr Puls verändert hat",
-            "Beide können auf Routinebeobachtungen warten",
-            "Die Person, die zuerst ankam"
-          ],
+          "answers": {
+            "a1": "Person B, weil mehrere neue Anzeichen auf eine plötzliche Verschlechterung hinweisen",
+            "a2": "Person A, weil sich ihr Puls verändert hat",
+            "a3": "Beide können auf Routinebeobachtungen warten",
+            "a4": "Die Person, die zuerst ankam"
+          },
           "headerLabel": "PRIORITÄTSURTEIL"
         },
         "nurse-r3q1": {
           "question": "Die Flüssigkeitsmenge steigt von 600 ml auf 900 ml. Um wie viel Prozent ist es gestiegen?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "GESUNDHEITSRECHNUNG"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Atemwege blockiert, weniger Luft in die Lunge, unbekannt, weniger Sauerstoff ins Gewebe"
           },
           "question": "Eine Atemwegsblockade verhindert, dass Luft in die Lunge gelangt. Welcher Downstream-Effekt folgt am unmittelbarsten?",
-          "answers": [
-            "Es gelangt weniger Sauerstoff ins Blut",
-            "Es gelangen mehr Nährstoffe in den Magen",
-            "Die Nieren bilden sofort mehr Urin",
-            "Knochen erzeugen mehr Bewegung"
-          ],
+          "answers": {
+            "a1": "Es gelangt weniger Sauerstoff ins Blut",
+            "a2": "Es gelangen mehr Nährstoffe in den Magen",
+            "a3": "Die Nieren bilden sofort mehr Urin",
+            "a4": "Knochen erzeugen mehr Bewegung"
+          },
           "headerLabel": "INTEGRIERTE PHYSIOLOGIE"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Person A ist wachsam, hat leichte stabile Beschwerden und spricht normal. Person B ist blass, schwer zu wecken und atmet unregelmäßig."
           },
           "question": "Wer hat unmittelbar Vorrang?",
-          "answers": [
-            "Person A, weil das Unbehagen immer an erster Stelle steht",
-            "Beide können auf eine Routinekontrolle warten",
-            "Person B, weil sich Bewusstsein und Atmung plötzlich verändert haben",
-            "Nach der Reihenfolge des Eintreffens entscheiden"
-          ],
+          "answers": {
+            "a1": "Person A, weil das Unbehagen immer an erster Stelle steht",
+            "a2": "Beide können auf eine Routinekontrolle warten",
+            "a3": "Person B, weil sich Bewusstsein und Atmung plötzlich verändert haben",
+            "a4": "Nach der Reihenfolge des Eintreffens entscheiden"
+          },
           "headerLabel": "ENDGÜLTIGE ÜBERGABE"
         }
       }

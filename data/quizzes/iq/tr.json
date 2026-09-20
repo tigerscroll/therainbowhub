@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %7'si Bu Zeka Testini Geçebiliyor",
   "eyebrow": "İSTİHBARAT KUTUSU",
   "summary": "Desenler, sayı kuralları, kelime bağlantıları ve uzaysal tuzaklar, muhakeme yeteneğinizin gizli kuralı ne kadar hızlı bulduğunu test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Kalıplar, kodlar, kelime bağlantıları ve mantık tuzakları çarpışıyor. Mantığınız ne kadar süre bir adım önde kalabilir?",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dünya çapındaki bu eğlence mücadelesi, kalıpları, sayısal kuralları, sözel bağlantıları, mekansal akıl yürütmeyi, dikkati ve mantıksal çıkarımı kapsayan özenle seçilmiş on bulmacayı bir araya getiriyor. Resmi bir yetenek sınavından ziyade eğlenceli ve zorlu hissetmek için tasarlanmıştır.\n\nHer bulmacanın gösterilen bilgilerle desteklenen bir cevabı vardır. Etkileşim düzenli olarak değişir; bu nedenle bir kural tanımlamanız, ipuçlarını karşılaştırmanız, bir sembolü dönüştürmeniz, zihinsel olarak hesaplama yapmanız veya küçük bir tutarsızlığı fark etmeniz gerekebilir.\n\nZeka Testi Puanınız, bu eğlenceli bulmacaların doğru çözdüğünüz yüzdedir. Yalnızca bu girişimi açıklar ve gerçek zekanızı, IQ'nuzu, yeteneğinizi veya eğitim yeteneğinizi ölçmez.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "İstihbarat mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Zeka Mücadelesi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Zeka testi puanınız ve üç alanlı dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç düşünme alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç düşünme alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Zeka Testi yarışmasını geçtiniz!",
       "finished": "Zeka Testi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü düşünme alanı",
       "trickiest": "En zorlu düşünme alanı",
       "bestRound": "En iyi bölüm",
@@ -98,8 +91,7 @@
         "snapshot": "Bu girişimin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "daire, üçgen, daire, üçgen, bilinmiyor"
           },
           "question": "Sırada hangi sembol geliyor?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "MODEL AKIL VERME"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "dikey aynanın yanındaki sağ yukarı ok"
           },
           "question": "Dikey aynadaki yansıma hangi oktur?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "uzamsal akıl yürütme"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "harf kaymaları artı bir, artı iki, artı bir; CAT DCU'ya dönüşür"
           },
           "question": "Kaydırmalar +1, +2, +1'i tekrarlar. DOG nasıl kodlanır?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "SÖZLÜ AKIL VERME"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "alttaki 3, 5, 4 ve ortadaki 8, 9'dan oluşan sayı piramidi"
           },
           "question": "Her blok, altındaki ikisinin toplamıdır. Üstüne ne çıkıyor?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "SAYISAL AKIL VERME"
         },
         "iq-s3q2": {
           "question": "Bir makine bir sayıyı iki katına çıkarır ve ardından 3 ekler. Hangi girdi 17 değerini üretir?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "SAYISAL AKIL VERME"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Referans kodu K7M2-Q9. Bir karakterin değiştirildiği seçeneği bulun."
           },
           "question": "Hangi kopya referanstan tam olarak bir karakter farklıdır?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "DETAYLARA DİKKAT"
         },
         "iq-s4q1": {
           "question": "Tam olarak bir kişi doğruyu söylüyor. A, B'nin yalan söylediğini söylüyor. B, C'nin yalan söylediğini söylüyor. C, A ve B'nin ikisinin de yalan söylediğini söylüyor. Gerçeği kim söylüyor?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Hiç kimse"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Hiç kimse"
+          },
           "headerLabel": "MANTIKLI ÇIKARMA"
         },
         "iq-s4q4": {
           "question": "Kuzeye bakan merkezden başlayın. Bir kare ilerleyin, sağa dönün, iki kare ilerleyin, sağa dönün, ardından bir kare ilerleyin. Başlangıca göre nerede bitiriyorsunuz?",
-          "answers": [
-            "Sağa iki kare",
-            "Bir kare yukarı",
-            "İki kare kaldı",
-            "Merkeze geri dön"
-          ],
+          "answers": {
+            "a1": "Sağa iki kare",
+            "a2": "Bir kare yukarı",
+            "a3": "İki kare kaldı",
+            "a4": "Merkeze geri dön"
+          },
           "headerLabel": "uzamsal akıl yürütme"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "sıralar 3, 4, 10; 5, 2, 12; 7, 3, bilinmiyor"
           },
           "question": "Her satırda ilk sayıyı ikiye katlayın, ardından ikinciyi ekleyin. Soru işaretinin yerine ne gelir?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "SAYISAL AKIL VERME"
         },
         "iq-s5q8": {
           "question": "Bir ok yukarıyı gösteriyor. Saat yönünde 90° döndürün ve dikey bir aynaya yansıtın. Nereye işaret ediyor?",
-          "answers": [
-            "Yukarı",
-            "Sağ",
-            "Aşağı",
-            "Sol"
-          ],
+          "answers": {
+            "a1": "Yukarı",
+            "a2": "Sağ",
+            "a3": "Aşağı",
+            "a4": "Sol"
+          },
           "headerLabel": "NİHAİ UZAYLI TEST"
         }
       }

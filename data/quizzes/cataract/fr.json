@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test rapide de la cataracte",
   "eyebrow": "CONTRÔLE DE LA VISION EN 10 QUESTIONS",
   "summary": "Des détails flous, des pièges visuels rapprochés et des signes d'alerte importants de la cataracte dans un seul défi rapide.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les cataractes peuvent être faciles à ignorer au début. Voyez si vous pouvez repérer les indices subtils à travers 10 questions rapides – les dernières attirent l’attention de la plupart des gens.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de dix questions combine cinq énigmes visuelles à l'écran et cinq questions de sensibilisation générale sur la cataracte. Il mesure les réponses à ce quiz, et non la vue, la santé des lentilles ou la probabilité de cataracte.\n\nLa taille de l’écran, la luminosité, le contraste, la vue, les verres correcteurs, la fatigue et les paramètres de l’appareil peuvent tous affecter les performances. Une vision floue ou brumeuse persistante, des éblouissements, des halos autour des lumières, des difficultés à voir la nuit ou des tons qui semblent moins vifs doivent être discutés avec un professionnel de la vue qualifié.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Relevez cinq défis de détails, de motifs et de mémoire visuelle.",
         "Répondez à cinq questions sur la cataracte et quand demander de l'aide.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi cataracte",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Test rapide de la cataracte",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score au défi de la cataracte est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Trois zones visuelles comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois zones visuelles comparées"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vous avez réussi le défi visuel de 80 % !",
       "finished": "Défi de la cataracte terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -94,8 +87,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Quel personnage se trouve exactement au milieu de la grille ?",
           "headerLabel": "DÉTAIL CENTRAL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "RÉFÉRENCE : B8R3K5",
           "question": "Quel code correspond exactement à la référence ?",
           "headerLabel": "COMPARAISON FLOUE",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "RÉFÉRENCE",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Quel symbole complète la séquence alternée ?",
           "headerLabel": "SUIVI DE MODÈLE",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Quel objet est apparu en troisième ?",
           "headerLabel": "MÉMOIRE VISUELLE RAPIDE",
-          "answers": [
-            "Livre",
-            "Clé",
-            "Citron",
-            "Parapluie"
-          ],
+          "answers": {
+            "a1": "Livre",
+            "a2": "Clé",
+            "a3": "Citron",
+            "a4": "Parapluie"
+          },
           "study": {
             "title": "Étudiez l’ordre des cinq objets",
             "instruction": "Cela disparaîtra automatiquement.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Quelle position contient le cercle pâle ?",
           "headerLabel": "VÉRIFICATION DÉTAILLÉE",
-          "answers": [
-            "Cinquième",
-            "Deuxième",
-            "Quatrième",
-            "Sixième"
-          ],
+          "answers": {
+            "a1": "Cinquième",
+            "a2": "Deuxième",
+            "a3": "Quatrième",
+            "a4": "Sixième"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Qu'est-ce qu'une cataracte ?",
           "headerLabel": "LES BASES DE LA CATARACTE",
-          "answers": [
-            "Une égratignure sur la paupière",
-            "Une zone trouble dans le cristallin naturel de l'œil",
-            "Un problème limité au canal lacrymal",
-            "Un type d’infection de l’oreille"
-          ]
+          "answers": {
+            "a1": "Une égratignure sur la paupière",
+            "a2": "Une zone trouble dans le cristallin naturel de l'œil",
+            "a3": "Un problème limité au canal lacrymal",
+            "a4": "Un type d’infection de l’oreille"
+          }
         },
         "cataract-q7": {
           "question": "Quel groupe présente des symptômes courants de la cataracte ?",
           "headerLabel": "SIGNES D'AVERTISSEMENT",
-          "answers": [
-            "Démangeaisons cutanées et mal de gorge",
-            "Perte auditive soudaine et vertiges",
-            "Vision floue ou brumeuse, éblouissement et halos autour des lumières",
-            "Une raideur de la nuque et des épaules douloureuses"
-          ]
+          "answers": {
+            "a1": "Démangeaisons cutanées et mal de gorge",
+            "a2": "Perte auditive soudaine et vertiges",
+            "a3": "Vision floue ou brumeuse, éblouissement et halos autour des lumières",
+            "a4": "Une raideur de la nuque et des épaules douloureuses"
+          }
         },
         "cataract-q8": {
           "question": "Comment un professionnel de la vue peut-il vérifier la cataracte ?",
           "headerLabel": "ÉVALUATION PROFESSIONNELLE",
-          "answers": [
-            "Avec un test auditif",
-            "Utiliser une mesure de tension artérielle à domicile",
-            "Avec un test de goût",
-            "Lors d'un examen ophtalmologique complet avec dilatation des pupilles"
-          ]
+          "answers": {
+            "a1": "Avec un test auditif",
+            "a2": "Utiliser une mesure de tension artérielle à domicile",
+            "a3": "Avec un test de goût",
+            "a4": "Lors d'un examen ophtalmologique complet avec dilatation des pupilles"
+          }
         },
         "cataract-q9": {
           "question": "Quelle est la réponse la plus sûre à une perte de vision soudaine, à une douleur oculaire intense ou à un changement soudain et majeur de la vision ?",
           "headerLabel": "QUAND AGIR",
-          "answers": [
-            "Demandez des conseils urgents à un professionnel en matière de soins oculaires",
-            "Attendre plusieurs mois sans en parler",
-            "Modifiez la luminosité de l'écran et supposez qu'elle est corrigée",
-            "Comptez uniquement sur un quiz en ligne"
-          ]
+          "answers": {
+            "a1": "Demandez des conseils urgents à un professionnel en matière de soins oculaires",
+            "a2": "Attendre plusieurs mois sans en parler",
+            "a3": "Modifiez la luminosité de l'écran et supposez qu'elle est corrigée",
+            "a4": "Comptez uniquement sur un quiz en ligne"
+          }
         },
         "cataract-q10": {
           "question": "Que peut réellement indiquer votre score à ce défi en ligne ?",
           "headerLabel": "VÉRIFICATION FINALE DE LA RÉALITÉ",
-          "answers": [
-            "Si vos lentilles sont saines",
-            "Seulement comment vous avez répondu à ces dix questions",
-            "Si vous avez besoin d'une opération de la cataracte",
-            "Si vous pouvez exclure une cataracte"
-          ]
+          "answers": {
+            "a1": "Si vos lentilles sont saines",
+            "a2": "Seulement comment vous avez répondu à ces dix questions",
+            "a3": "Si vous avez besoin d'une opération de la cataracte",
+            "a4": "Si vous pouvez exclure une cataracte"
+          }
         }
       }
     }

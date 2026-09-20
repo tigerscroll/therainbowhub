@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 12 % läpäisee tämän kokin pääsykokeen",
   "eyebrow": "Maatekijä",
   "summary": "Maku-, tuli-, leivonnaisten ja palvelupainetesti, voitko jatkaa ajattelua, kun keittiö lämpenee.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdehaaste palvelee kymmentä kysymystä keittiövälineistä, mausta, leivonnasta, elintarviketurvallisuudesta, käytännön matematiikasta ja lämmönhallinnasta. Vaikeus nousee terveistä perusteista päätöksiin, joissa yhdistyy useampi kuin yksi vihje.\n\nValitse kuhunkin tilanteeseen paras vastaus. Oikeus pysyy piilossa työskennellessäsi, joten jokainen valinta tuntuu osalta yhtä jatkuvaa keittiön haastetta.\n\nTuloksesi kuvaa vain tätä tietokilpailuyritystä. Se ei ole kulinaarinen pätevyys, elintarviketurvallisuustodistus tai ammattikoulutus.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Johtajan haaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Johtajille asetettu haaste",
@@ -29,10 +26,8 @@
         "preAdCopy": "Kokkipisteesi ja kuuden taidon jakautuminen ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kuusi keittiötaitoa verrattuna",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kuusi keittiötaitoa verrattuna"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Läpäisit kokin sisäänpääsyhaasteen!",
       "finished": "Kulinaarinen haaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin keittiöalue",
       "trickiest": "Hankalin keittiötila",
       "bestRound": "Paras jakso",
@@ -106,8 +100,7 @@
         "snapshot": "Mitä kokkiprofiilisi ehdottaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Mikä työkalu sopii parhaiten kuuman ruoan tarttumiseen ja kääntämiseen pannussa?",
-          "answers": [
-            "Vispaa",
-            "Pihdit",
-            "Kuorija",
-            "Kauha"
-          ],
+          "answers": {
+            "a1": "Vispaa",
+            "a2": "Pihdit",
+            "a3": "Kuorija",
+            "a4": "Kauha"
+          },
           "headerLabel": "KEITTIÖTYÖKALUT"
         },
         "chef-r1q2": {
           "question": "Kastike maistuu täyteläiseltä ja raskaalta, mutta siitä puuttuu kirkkautta. Mikä pieni lisäys todennäköisimmin tasapainottaa sen?",
-          "answers": [
-            "Lisää voita",
-            "Lisää tärkkelystä",
-            "Lisää kermaa",
-            "Pieni määrä happoa"
-          ],
+          "answers": {
+            "a1": "Lisää voita",
+            "a2": "Lisää tärkkelystä",
+            "a3": "Lisää kermaa",
+            "a4": "Pieni määrä happoa"
+          },
           "headerLabel": "MAUTASAPAINO"
         },
         "chef-r5q3": {
           "question": "Muffinssiresepti sanoo, että sekoita vain, kunnes kuivia jauhoja ei ole jäljellä. Miksi lopettaa siinä vaiheessa?",
-          "answers": [
-            "Välttääksesi kaiken nostatusaineen menettämisen",
-            "Ylimääräinen sekoitus voi tehdä murusta kovempaa",
-            "Jotta sulanut rasva ei erottuisi",
-            "Jotta latvat tummuvat liian aikaisin"
-          ],
+          "answers": {
+            "a1": "Välttääksesi kaiken nostatusaineen menettämisen",
+            "a2": "Ylimääräinen sekoitus voi tehdä murusta kovempaa",
+            "a3": "Jotta sulanut rasva ei erottuisi",
+            "a4": "Jotta latvat tummuvat liian aikaisin"
+          },
           "headerLabel": "Leipomotiede"
         },
         "chef-r2q6": {
           "question": "Kannettoman valmisruoan viereen rikkoutuu lasipurkki. Mitä pitäisi tapahtua?",
-          "answers": [
-            "Poista näkyvä lasi ja säilytä ruoka",
-            "Siirrä ruoka pois ja jatka palvelua",
-            "Hävitä paljastunut ruoka ja puhdista alue turvallisesti",
-            "Peitä ruoka ja puhdista palvelun jälkeen"
-          ],
+          "answers": {
+            "a1": "Poista näkyvä lasi ja säilytä ruoka",
+            "a2": "Siirrä ruoka pois ja jatka palvelua",
+            "a3": "Hävitä paljastunut ruoka ja puhdista alue turvallisesti",
+            "a4": "Peitä ruoka ja puhdista palvelun jälkeen"
+          },
           "headerLabel": "ELINTARVIKKEET TURVALLISUUS"
         },
         "chef-r6q1": {
           "question": "Reseptissä käytetään 300 g riisiä 4 annokseen. Kuinka paljon tarvitaan 10 annokseen?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "KEITTIÖN MATEMIKA"
         },
         "chef-r3q1": {
           "question": "Kasvikset täynnä kuumalla pannulla muuttuvat vaaleiksi ja märkiksi. Mikä selittää sen parhaiten?",
-          "answers": [
-            "Vapautunut kosteus jäi loukkuun, joten vihannekset höyrystyivät",
-            "Pannu oli liian kuuma ja tiivisti kosteuden sisällä",
-            "Vihannekset imevät öljyä ennen kuin ne ehtivät ruskistua",
-            "Niiden kääntäminen liian usein loi ylimääräistä kosteutta"
-          ],
+          "answers": {
+            "a1": "Vapautunut kosteus jäi loukkuun, joten vihannekset höyrystyivät",
+            "a2": "Pannu oli liian kuuma ja tiivisti kosteuden sisällä",
+            "a3": "Vihannekset imevät öljyä ennen kuin ne ehtivät ruskistua",
+            "a4": "Niiden kääntäminen liian usein loi ylimääräistä kosteutta"
+          },
           "headerLabel": "LÄMMÖN SÄÄTÖ"
         },
         "chef-r8q1": {
           "question": "Mikä työkalu poistaa kokkareita kuivista jauhoista?",
-          "answers": [
-            "Vispaa",
-            "Pihdit",
-            "Seula",
-            "Kuorija"
-          ],
+          "answers": {
+            "a1": "Vispaa",
+            "a2": "Pihdit",
+            "a3": "Seula",
+            "a4": "Kuorija"
+          },
           "headerLabel": "KEITTIÖTYÖKALUT"
         },
         "chef-r8q2": {
           "question": "Mikä ainesosa syventää suolaista umamia?",
-          "answers": [
-            "Tomusokeri",
-            "Kermavaahtoa",
-            "Tavallinen vesi",
-            "Sienet"
-          ],
+          "answers": {
+            "a1": "Tomusokeri",
+            "a2": "Kermavaahtoa",
+            "a3": "Tavallinen vesi",
+            "a4": "Sienet"
+          },
           "headerLabel": "MAKURAKENNUS"
         },
         "chef-r10q1": {
           "question": "Sipuli paistaa ensin ja tuoreet yrtit viimeistelevät ruuan, mutta molemmat valmistettiin yhdessä kulhossa. Mikä asetusmuutos seuraa reseptiä?",
-          "answers": [
-            "Pidä ne erillään, kun niitä käytetään",
-            "Kypsennä kaikki lopussa",
-            "Lisää yrtit alussa",
-            "Jätä molemmat ainekset valmistamatta"
-          ],
+          "answers": {
+            "a1": "Pidä ne erillään, kun niitä käytetään",
+            "a2": "Kypsennä kaikki lopussa",
+            "a3": "Lisää yrtit alussa",
+            "a4": "Jätä molemmat ainekset valmistamatta"
+          },
           "headerLabel": "KEITTIÖJÄRJESTELY"
         },
         "chef-r10q2": {
           "question": "Ruokalaji maistuu täyteläiseltä ja raskaalta, mutta tarvitsee tuoreutta. Mikä viimeistelysäätö tasapainottaa sitä parhaiten?",
-          "answers": [
-            "Lisää kermaa ja voita",
-            "Sitruuna ja tuoreet yrtit",
-            "Lisää jauhoja",
-            "Lisää siirappia"
-          ],
+          "answers": {
+            "a1": "Lisää kermaa ja voita",
+            "a2": "Sitruuna ja tuoreet yrtit",
+            "a3": "Lisää jauhoja",
+            "a4": "Lisää siirappia"
+          },
           "headerLabel": "LOPULLINEN MAKUTESTI"
         }
       }

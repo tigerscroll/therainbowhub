@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 11 % af voksne kan bestå denne optagelsesprøve til lokomotivføreruddannelsen",
   "eyebrow": "JERNBANENS EGENDOMSTEST",
   "summary": "Ti spørgsmål tester jernbanesikkerhed, observation, mekanisk ræsonnement og klar kommunikation.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "De første signaler virker nemme. Derefter går eksamen over i bremselængde, farer og jernbanevurdering.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsudfordring med ti spørgsmål bruger brede sikkerheds- og ræsonnementprincipper, der rejser på tværs af Tier 1 engelsktalende jernbanesystemer. Den undgår landespecifikke signalaspekter, driftsregler og stillingsbetegnelser, mens den tester observation, kommunikation, bremsebevidsthed og sikkerhed først.\n\nVælg et svar til hvert spørgsmål. Rigtigheden forbliver skjult indtil den sidste afsløring, hvor den komplette svargennemgang er tilgængelig til at låse op.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Besvar ti stadig sværere spørgsmål om togførernes egnethed.",
         "Vælg det sikreste eller bedst understøttede svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Togførerindgangsudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Togfører adgangsprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet kontrolleret, og din score for jernbaneegnethed er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fire jernbaneområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fire jernbaneområder sammenlignet"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du bestod Train Driver-indgangsudfordringen!",
       "finished": "Togførerens indgangsudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste jernbaneområde",
       "trickiest": "Det vanskeligste jernbaneområde",
       "bestRound": "Bedste afsnit",
@@ -96,8 +89,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Et tog bevæger sig mod en uventet forhindring. Hvad er chaufførens første prioritet?",
-          "answers": [
-            "Anvend den passende bremsereaktion og følg nødproceduren",
-            "Afslut tidsplanindtastningen",
-            "Åbn passagerdørene",
-            "Vent på, at et andet tog melder det"
-          ],
+          "answers": {
+            "a1": "Anvend den passende bremsereaktion og følg nødproceduren",
+            "a2": "Afslut tidsplanindtastningen",
+            "a3": "Åbn passagerdørene",
+            "a4": "Vent på, at et andet tog melder det"
+          },
           "headerLabel": "SIKKERHEDSPRIORITETER"
         },
         "train-q2": {
           "question": "Hvorfor er vedvarende opmærksomhed afgørende under en lang, begivenhedsløs sektion af sporet?",
-          "answers": [
-            "Toget bliver lettere med tiden",
-            "Et kritisk signal eller fare kan opstå efter en lang stille periode",
-            "Passagerer forventer hyppige hastighedsændringer",
-            "Ruten bliver automatisk mindre sikker ved middagstid"
-          ],
+          "answers": {
+            "a1": "Toget bliver lettere med tiden",
+            "a2": "Et kritisk signal eller fare kan opstå efter en lang stille periode",
+            "a3": "Passagerer forventer hyppige hastighedsændringer",
+            "a4": "Ruten bliver automatisk mindre sikker ved middagstid"
+          },
           "headerLabel": "KONCENTRATION"
         },
         "train-q3": {
           "question": "Hvis hastigheden stiger, hvad sker der så generelt med bremselængden, når andre forhold forbliver ens?",
-          "answers": [
-            "Den halveres altid",
-            "Det forbliver nøjagtigt det samme",
-            "Det stiger",
-            "Det bliver ikke relateret til hastighed"
-          ],
+          "answers": {
+            "a1": "Den halveres altid",
+            "a2": "Det forbliver nøjagtigt det samme",
+            "a3": "Det stiger",
+            "a4": "Det bliver ikke relateret til hastighed"
+          },
           "headerLabel": "BREMSEOPLYSNING"
         },
         "train-q4": {
           "question": "Hvilken radiomeddelelse er mest nyttig, når du rapporterer en sporfare?",
-          "answers": [
-            "Et langt gæt om årsagen",
-            "En vag advarsel uden placering",
-            "En personlig mening om tidsplanen",
-            "En kortfattet faktuel beskrivelse med den nøjagtige placering og kørselsretning"
-          ],
+          "answers": {
+            "a1": "Et langt gæt om årsagen",
+            "a2": "En vag advarsel uden placering",
+            "a3": "En personlig mening om tidsplanen",
+            "a4": "En kortfattet faktuel beskrivelse med den nøjagtige placering og kørselsretning"
+          },
           "headerLabel": "JERNBANEKOMMUNIKATION"
         },
         "train-q5": {
           "question": "Hvorfor skal en chauffør undgå at stole på hukommelsen alene for en sikkerhedskritisk instruktion?",
-          "answers": [
-            "Det skal bekræftes og følges gennem den godkendte proces",
-            "Skriftlige instruktioner er altid valgfrie",
-            "Hukommelsen bliver perfekt ved højere hastighed",
-            "Passagererne bør tolke det i stedet"
-          ],
+          "answers": {
+            "a1": "Det skal bekræftes og følges gennem den godkendte proces",
+            "a2": "Skriftlige instruktioner er altid valgfrie",
+            "a3": "Hukommelsen bliver perfekt ved højere hastighed",
+            "a4": "Passagererne bør tolke det i stedet"
+          },
           "headerLabel": "PROCEDUREL SIKKERHED"
         },
         "train-q6": {
           "question": "En advarselsindikator skifter kort og vender derefter tilbage til normal. Hvad er den sikreste fortolkning?",
-          "answers": [
-            "Ignorer det, fordi det forsvandt",
-            "Behandl det som relevant, overvåg det og rapporter det gennem den korrekte proces",
-            "Nulstil alle systemer med det samme uden at kontrollere",
-            "Antag, at et andet tog forårsagede det"
-          ],
+          "answers": {
+            "a1": "Ignorer det, fordi det forsvandt",
+            "a2": "Behandl det som relevant, overvåg det og rapporter det gennem den korrekte proces",
+            "a3": "Nulstil alle systemer med det samme uden at kontrollere",
+            "a4": "Antag, at et andet tog forårsagede det"
+          },
           "headerLabel": "OBSERVATION"
         },
         "train-q7": {
           "question": "Hjulslip er mest sandsynligt, når trækkraft mellem hjul og skinne er hvad?",
-          "answers": [
-            "Ubegrænset",
-            "Perfekt afbalanceret",
-            "Reduceret",
-            "Uafhængigt af vejret"
-          ],
+          "answers": {
+            "a1": "Ubegrænset",
+            "a2": "Perfekt afbalanceret",
+            "a3": "Reduceret",
+            "a4": "Uafhængigt af vejret"
+          },
           "headerLabel": "MEKANISK RÆSONNER"
         },
         "train-q8": {
           "question": "Du er usikker på, om en sikkerhedskritisk instruktion blev hørt korrekt. Hvad skal du gøre?",
-          "answers": [
-            "Gæt ud fra kontekst",
-            "Fortsæt og spørg senere",
-            "Vælg den hurtigste fortolkning",
-            "Gentag det tilbage og få bekræftelse"
-          ],
+          "answers": {
+            "a1": "Gæt ud fra kontekst",
+            "a2": "Fortsæt og spørg senere",
+            "a3": "Vælg den hurtigste fortolkning",
+            "a4": "Gentag det tilbage og få bekræftelse"
+          },
           "headerLabel": "LUKKET KOMMUNIKATION"
         },
         "train-q9": {
           "question": "Hvorfor er træthedskontrol vigtige i togkørsel?",
-          "answers": [
-            "Træthed kan reducere opmærksomhed, reaktion og beslutningskvalitet",
-            "Træthed forbedrer rutinehukommelsen",
-            "Kun passagerer er berørt af lange timer",
-            "Det ændrer sporvidden"
-          ],
+          "answers": {
+            "a1": "Træthed kan reducere opmærksomhed, reaktion og beslutningskvalitet",
+            "a2": "Træthed forbedrer rutinehukommelsen",
+            "a3": "Kun passagerer er berørt af lange timer",
+            "a4": "Det ændrer sporvidden"
+          },
           "headerLabel": "MENNESKELIG PRÆSTATION"
         },
         "train-q10": {
           "question": "To rute viser konflikt umiddelbart før afgang. Hvad er det sikreste svar?",
-          "answers": [
-            "Følg den skærm, der er lysere",
-            "Fortsæt ikke, før uoverensstemmelsen er løst gennem den korrekte proces",
-            "Vælg den rute, der ser kortere ud",
-            "Bed en passager om at bestemme"
-          ],
+          "answers": {
+            "a1": "Følg den skærm, der er lysere",
+            "a2": "Fortsæt ikke, før uoverensstemmelsen er løst gennem den korrekte proces",
+            "a3": "Vælg den rute, der ser kortere ud",
+            "a4": "Bed en passager om at bestemme"
+          },
           "headerLabel": "SPØRGSMÅL OM ENDELIG ATTITUDE"
         }
       }

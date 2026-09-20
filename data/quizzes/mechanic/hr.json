@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 7% prolazi ovaj automehaničarski kviz",
   "eyebrow": "Smanjenje tačne službe",
   "summary": "Svjetla upozorenja, skrivene greške i čudni simptomi na cesti testiraju možete li dijagnosticirati problem prije nego postane skup.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ovaj svjetski zabavni test sadrži deset praktičnih pitanja o sustavima vozila, procjeni radionice i pronalaženju grešaka. Pomiče se od poznatih znakova upozorenja do povezanih simptoma koji zahtijevaju pažljivu dijagnozu.\n\nOdaberite najbolji odgovor iz prikazanih informacija. Pitanja koriste široka načela vozila i izbjegavaju pretpostavku jedne marke, modela ili lokalnog standarda inspekcije.\n\nVaš rezultat odražava samo ovaj kratki izazov. To nije trgovačka kvalifikacija, sigurnosna inspekcija ili zamjena za dijagnozu od strane kvalificiranog mehaničara.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
         "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mehanički izazov",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Izazov radionice",
@@ -29,10 +26,8 @@
         "preAdCopy": "Vaš rezultat mehanike i kvar na šest sustava spremni su za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno šest sustava vozila",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno šest sustava vozila"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Prošli ste izazov mehaničara!",
       "finished": "Izazov radionice završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjači sustav vozila",
       "trickiest": "Najzahtjevniji sustav vozila",
-      "bestRound": "Najbolja sekcija",
-      "showBestRound": false
+      "bestRound": "Najbolja sekcija"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Koji se simbol upozorenja najizravnije odnosi na tlak motornog ulja?",
-          "answers": [
-            "Kanta za ulje",
-            "Baterija",
-            "Toplomjer",
-            "Upravljač"
-          ],
+          "answers": {
+            "a1": "Kanta za ulje",
+            "a2": "Baterija",
+            "a3": "Toplomjer",
+            "a4": "Upravljač"
+          },
           "headerLabel": "SUSTAVI MOTORA"
         },
         "mech-r1q2": {
           "question": "Crveno upozorenje za kočnicu ostaje uključeno nakon otpuštanja parkirne kočnice. Koji je najsigurniji odgovor?",
-          "answers": [
-            "Vozite brže da biste ga testirali",
-            "Zaustavite se sigurno i dajte provjeriti kočioni sustav",
-            "Jače napumpajte gume",
-            "Ignorirajte to do sljedećeg servisa"
-          ],
+          "answers": {
+            "a1": "Vozite brže da biste ga testirali",
+            "a2": "Zaustavite se sigurno i dajte provjeriti kočioni sustav",
+            "a3": "Jače napumpajte gume",
+            "a4": "Ignorirajte to do sljedećeg servisa"
+          },
           "headerLabel": "KOČNICE & SIGURNOST"
         },
         "mech-r4q5": {
           "question": "Ritmično škljocanje postaje brže u uskim zavojima. Koji je dio vjerojatni uzrok?",
-          "answers": [
-            "Termostat",
-            "Pumpa za gorivo",
-            "Vanjski homokinetički zglob",
-            "Ventilator kabine"
-          ],
+          "answers": {
+            "a1": "Termostat",
+            "a2": "Pumpa za gorivo",
+            "a3": "Vanjski homokinetički zglob",
+            "a4": "Ventilator kabine"
+          },
           "headerLabel": "POGONSKI STROJ"
         },
         "mech-r4q6": {
           "question": "Jedna guma ima duboko ispupčenje bočne stijenke. Što bi trebao učiniti?",
-          "answers": [
-            "Smanjite pritisak i nastavite",
-            "Gurnite ispupčenje ravno",
-            "Premjestite ga na drugi kotač",
-            "Prestanite koristiti gumu i dogovorite zamjenu"
-          ],
+          "answers": {
+            "a1": "Smanjite pritisak i nastavite",
+            "a2": "Gurnite ispupčenje ravno",
+            "a3": "Premjestite ga na drugi kotač",
+            "a4": "Prestanite koristiti gumu i dogovorite zamjenu"
+          },
           "headerLabel": "SIGURNOST VOZILA"
         },
         "mech-r5q5": {
           "question": "Motor se pregrijava u prometu, ali se hladi pri brzini na cesti. Koja komponenta zaslužuje ranu provjeru?",
-          "answers": [
-            "Ventilator hladnjaka",
-            "Sigurnosni pojas",
-            "Čep goriva",
-            "Ležaj kotača"
-          ],
+          "answers": {
+            "a1": "Ventilator hladnjaka",
+            "a2": "Sigurnosni pojas",
+            "a3": "Čep goriva",
+            "a4": "Ležaj kotača"
+          },
           "headerLabel": "RASHLADNI SUSTAVI"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Očekivani napon baterije 12,6 volti, izmjereno 10,5 volti"
           },
           "question": "Zdrava baterija od 12 volti očitava oko 12,6 V u mirovanju. Ovaj pokazuje 10,5 V. Što to znači?",
-          "answers": [
-            "Gume su istrošene",
-            "Rashladna tekućina je prejaka",
-            "Baterija je duboko ispražnjena ili ima pokvarenu ćeliju",
-            "Remen alternatora je nov"
-          ],
+          "answers": {
+            "a1": "Gume su istrošene",
+            "a2": "Rashladna tekućina je prejaka",
+            "a3": "Baterija je duboko ispražnjena ili ima pokvarenu ćeliju",
+            "a4": "Remen alternatora je nov"
+          },
           "headerLabel": "ELEKTRIČNI SUSTAVI"
         },
         "mech-r7q1": {
           "question": "Upravljač vibrira uglavnom u jednom rasponu brzine na cesti. Što je vjerojatni prvi osumnjičenik?",
-          "answers": [
-            "Neuravnoteženost kotača",
-            "Kvaliteta goriva",
-            "Filter kabine",
-            "Boja rashladne tekućine"
-          ],
+          "answers": {
+            "a1": "Neuravnoteženost kotača",
+            "a2": "Kvaliteta goriva",
+            "a3": "Filter kabine",
+            "a4": "Boja rashladne tekućine"
+          },
           "headerLabel": "UPRAVLJANJE I BALANS"
         },
         "mech-r7q6": {
           "question": "Nova jaka vibracija pojavljuje se nakon udara u opasnost na cesti. Što bi trebao učiniti?",
-          "answers": [
-            "Povećajte brzinu kako biste ga izgladili",
-            "Zaustavite se sigurno i provjerite kotač i gumu prije nastavka",
-            "Smanjite svaki tlak u gumama",
-            "Ignorirajte ga ako se ne pojavi nikakvo upozorenje"
-          ],
+          "answers": {
+            "a1": "Povećajte brzinu kako biste ga izgladili",
+            "a2": "Zaustavite se sigurno i provjerite kotač i gumu prije nastavka",
+            "a3": "Smanjite svaki tlak u gumama",
+            "a4": "Ignorirajte ga ako se ne pojavi nikakvo upozorenje"
+          },
           "headerLabel": "SIGURNOST VOZILA"
         },
         "mech-r9q2": {
           "context": "KUPAC KAŽE",
           "question": "\"Baterija je nova, ali se neprestano prazni i tijekom vožnje se pojavljuje upozorenje o punjenju.\" Što treba testirati?",
-          "answers": [
-            "Usklađivanje guma",
-            "Sustav punjenja i njegove veze",
-            "Debljina kočione pločice",
-            "Koncentracija rashladnog sredstva"
-          ],
+          "answers": {
+            "a1": "Usklađivanje guma",
+            "a2": "Sustav punjenja i njegove veze",
+            "a3": "Debljina kočione pločice",
+            "a4": "Koncentracija rashladnog sredstva"
+          },
           "headerLabel": "SUSTAVI PUNJENJA"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motor se hladi pri brzini, pregrijava se u praznom hodu, ventilator ne radi"
           },
           "question": "Motor se pregrijava samo u praznom hodu, radijator nije začepljen i ventilator nikada ne radi. Što prvo treba dijagnosticirati?",
-          "answers": [
-            "Usklađivanje kotača",
-            "Brtva poklopca rezervoara za gorivo",
-            "Istrošenost kočione pločice",
-            "Krug ventilatora, motor i upravljačka naredba"
-          ],
+          "answers": {
+            "a1": "Usklađivanje kotača",
+            "a2": "Brtva poklopca rezervoara za gorivo",
+            "a3": "Istrošenost kočione pločice",
+            "a4": "Krug ventilatora, motor i upravljačka naredba"
+          },
           "headerLabel": "KONAČNA DIJAGNOZA"
         }
       }

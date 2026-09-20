@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Majoritatea adulților nu pot promova acest examen de admitere pentru profesor",
   "eyebrow": "PROBA DE APTITUDINE LA CLASĂ",
   "summary": "Zece întrebări testează judecata, evaluarea, protecția și predarea în clasă.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Primele întrebări de la clasă par evidente. Apoi, testul trece în evaluare, protejare și decizii pe care fiecare profesor trebuie să ia corect.",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare de divertisment cu zece întrebări folosește concepte ample de clasă care se aplică în țările de nivel 1 vorbitoare de limbă engleză. Se trece de la verificarea înțelegerii și răspunsul la greșeli la evaluare, comunicare, salvgardare și judecată profesională.\n\nAlegeți un răspuns pentru fiecare întrebare. Corectitudinea rămâne ascunsă până la dezvăluirea finală, unde revizuirea completă a răspunsului este disponibilă pentru deblocare.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Răspunde la zece întrebări din ce în ce mai dificile din clasă.",
         "Alegeți singurul răspuns cel mai bine acceptat.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocare de intrare a profesorilor",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Examen de admitere pentru profesor",
@@ -30,10 +26,8 @@
         "preAdCopy": "Cele zece răspunsuri ale tale au fost verificate și scorul tău de aptitudini la clasă este gata să fie dezvăluit.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Comparativ cinci domenii de predare",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Comparativ cinci domenii de predare"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Ai trecut de provocarea de intrare a Profesorului!",
       "finished": "Provocarea de intrare a profesorului a fost finalizată",
-      "correctLabel": "corect",
       "strongest": "Cel mai puternic domeniu de predare",
       "trickiest": "Cel mai dificil domeniu de predare",
       "bestRound": "Cea mai bună secțiune",
@@ -99,8 +92,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "teacher-q1": {
           "question": "Care abordare oferă unui profesor cea mai clară imagine rapidă a faptului dacă întreaga clasă a înțeles o idee nouă?",
-          "answers": [
-            "O scurtă verificare la care fiecare cursant răspunde",
-            "Întrebând doar cel mai rapid voluntar",
-            "Se așteaptă până la raportul de sfârșit de mandat",
-            "Repetând explicația fără a verifica"
-          ],
+          "answers": {
+            "a1": "O scurtă verificare la care fiecare cursant răspunde",
+            "a2": "Întrebând doar cel mai rapid voluntar",
+            "a3": "Se așteaptă până la raportul de sfârșit de mandat",
+            "a4": "Repetând explicația fără a verifica"
+          },
           "headerLabel": "VERIFICAREA ÎNȚELEGEREI"
         },
         "teacher-q2": {
           "question": "Un cursant dă un răspuns incorect. Care răspuns este cel mai probabil să susțină învățarea?",
-          "answers": [
-            "Mută-te imediat la altcineva",
-            "Rugați-i să-și explice gândirea, apoi ghidați-i cu întrebări concentrate",
-            "Anunțați răspunsul corect și continuați",
-            "Evitați să reveniți la idee"
-          ],
+          "answers": {
+            "a1": "Mută-te imediat la altcineva",
+            "a2": "Rugați-i să-și explice gândirea, apoi ghidați-i cu întrebări concentrate",
+            "a3": "Anunțați răspunsul corect și continuați",
+            "a4": "Evitați să reveniți la idee"
+          },
           "headerLabel": "RĂSPUNS LA GREȘELI"
         },
         "teacher-q3": {
           "question": "Care este denumirea obișnuită pentru evaluare folosită în timpul învățării pentru a ajuta la ajustarea predării?",
-          "answers": [
-            "Evaluarea finală",
-            "Evaluarea intrării",
-            "Evaluarea formativă",
-            "Evaluarea prezenței"
-          ],
+          "answers": {
+            "a1": "Evaluarea finală",
+            "a2": "Evaluarea intrării",
+            "a3": "Evaluarea formativă",
+            "a4": "Evaluarea prezenței"
+          },
           "headerLabel": "EVALUARE"
         },
         "teacher-q4": {
           "question": "Un cursant dezvăluie informații care sugerează că ar putea fi expus riscului de vătămare. Care este cel mai bun răspuns general?",
-          "answers": [
-            "Promiteți secret complet",
-            "Investigați singur întreaga situație",
-            "Așteptați să vedeți dacă o menționează din nou",
-            "Ascultați cu calm, evitați promiterea secretului și urmați procedura de protecție adecvată"
-          ],
+          "answers": {
+            "a1": "Promiteți secret complet",
+            "a2": "Investigați singur întreaga situație",
+            "a3": "Așteptați să vedeți dacă o menționează din nou",
+            "a4": "Ascultați cu calm, evitați promiterea secretului și urmați procedura de protecție adecvată"
+          },
           "headerLabel": "SALVgardarea"
         },
         "teacher-q5": {
           "question": "Care obiectiv de învățare le cere cursanților să emită cea mai complexă judecată?",
-          "answers": [
-            "Comparați două explicații și susțineți o concluzie cu dovezi",
-            "Copiați trei definiții",
-            "Enumerați zilele săptămânii",
-            "Subliniați fiecare titlu"
-          ],
+          "answers": {
+            "a1": "Comparați două explicații și susțineți o concluzie cu dovezi",
+            "a2": "Copiați trei definiții",
+            "a3": "Enumerați zilele săptămânii",
+            "a4": "Subliniați fiecare titlu"
+          },
           "headerLabel": "OBIECTIVE DE ÎNVĂȚARE"
         },
         "teacher-q6": {
           "question": "O clasă are 30 de cursanți care lucrează în grupuri egale de 5. De câte grupuri sunt necesare?",
-          "answers": [
-            "5",
-            "6",
-            "7",
-            "10"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "7",
+            "a4": "10"
+          },
           "headerLabel": "NUMERAȚIA CLASĂ"
         },
         "teacher-q7": {
           "question": "Ce implică cel mai exact instruirea diferențiată?",
-          "answers": [
-            "Oferind fiecărui cursant un conținut complet diferit de subiect",
-            "Scăderea așteptărilor pentru întreaga clasă",
-            "Adaptarea accesului, sprijinului sau provocării, păstrând în același timp obiectivele de învățare semnificative",
-            "Permițând doar cursanților încrezători să răspundă"
-          ],
+          "answers": {
+            "a1": "Oferind fiecărui cursant un conținut complet diferit de subiect",
+            "a2": "Scăderea așteptărilor pentru întreaga clasă",
+            "a3": "Adaptarea accesului, sprijinului sau provocării, păstrând în același timp obiectivele de învățare semnificative",
+            "a4": "Permițând doar cursanților încrezători să răspundă"
+          },
           "headerLabel": "PREDAREA ADAPTIVĂ"
         },
         "teacher-q8": {
           "question": "Când este descrisă o evaluare ca fiind fiabilă?",
-          "answers": [
-            "Când conține cel mai mare număr de întrebări",
-            "Când fiecare cursant primește o notă mare",
-            "Când poate fi finalizat rapid",
-            "Când produce rezultate rezonabil de consistente în condiții similare"
-          ],
+          "answers": {
+            "a1": "Când conține cel mai mare număr de întrebări",
+            "a2": "Când fiecare cursant primește o notă mare",
+            "a3": "Când poate fi finalizat rapid",
+            "a4": "Când produce rezultate rezonabil de consistente în condiții similare"
+          },
           "headerLabel": "CALITATEA EVALUAREA"
         },
         "teacher-q9": {
           "question": "Care instrucție este cel mai probabil să ajute cursanții să înceapă cu succes o nouă sarcină?",
-          "answers": [
-            "Dați o secvență scurtă, modelați un exemplu și verificați înțelegerea",
-            "Explicați fiecare excepție posibilă înainte de a declara sarcina",
-            "Scrie o propoziție vagă și începe imediat",
-            "Cereți cursanților să ghicească criteriile de succes"
-          ],
+          "answers": {
+            "a1": "Dați o secvență scurtă, modelați un exemplu și verificați înțelegerea",
+            "a2": "Explicați fiecare excepție posibilă înainte de a declara sarcina",
+            "a3": "Scrie o propoziție vagă și începe imediat",
+            "a4": "Cereți cursanților să ghicească criteriile de succes"
+          },
           "headerLabel": "INSTRUCȚIUNE CLARĂ"
         },
         "teacher-q10": {
           "question": "Care descriere definește cel mai bine plagiatul?",
-          "answers": [
-            "Revizuirea unei schițe după feedback",
-            "Prezentarea cuvintelor sau ideilor altei persoane ca fiind ale tale fără a fi recunoscute",
-            "Folosind mai mult de o sursă",
-            "Dezacord cu concluzia unui autor"
-          ],
+          "answers": {
+            "a1": "Revizuirea unei schițe după feedback",
+            "a2": "Prezentarea cuvintelor sau ideilor altei persoane ca fiind ale tale fără a fi recunoscute",
+            "a3": "Folosind mai mult de o sursă",
+            "a4": "Dezacord cu concluzia unui autor"
+          },
           "headerLabel": "ÎNTREBARE FINALĂ DE INTEGRITATE"
         }
       }

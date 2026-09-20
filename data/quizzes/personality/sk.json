@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Ktorá krajina zodpovedá vašej osobnosti?",
   "eyebrow": "VÁŠ IDEÁLNY ZÁPAS KRAJINY",
   "summary": "Desať možností životného štýlu odhalí, či sa vaša osobnosť najviac zhoduje s Talianskom, Japonskom, Austráliou alebo Švédskom.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Vaše každodenné voľby môžu ukazovať na jednu krajinu, ktorá vám vyhovuje viac ako ostatné. Desať rýchlych otázok odhalí váš najbližší zápas.",
     "cta": "Nájsť moju krajinu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tento zábavný kvíz s desiatimi otázkami je prevzatý z prepojenej výzvy Times of India pre osobnosť krajiny. Každá voľba pridá signál pre Taliansko, Japonsko, Austráliu alebo Švédsko.\n\nVyberte si odpoveď, ktorá je najprirodzenejšia, a nie tú, ktorá znie najpôsobivejšie. Váš najsilnejší celkový vzor určuje konečný zápas krajiny.\n\nVýsledok popisuje archetyp hravého životného štýlu, nie národnosť, pôvod, občianstvo, kultúrnu identitu alebo odporúčanie na premiestnenie. Koncepty a obrázky zdrojových otázok sú reprodukované z Times of India so súhlasom vlastníka stránky, ktorý zadáva tento kvíz.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Odpovedzte na desať rýchlych otázok o svojich zvykoch a preferenciách.",
         "Vyberte si možnosť, ktorá sa vám najviac páči, bez toho, aby ste o tom premýšľali.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Zápas krajiny",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Osobnostná zhoda",
@@ -126,9 +122,7 @@
       "portraitAlt": "Scénická ilustrácia predstavujúca {profile}",
       "disclaimer": "Len pre zábavu a sebareflexiu. Tento výsledok je hravým životným štýlom, nie vyhlásením o národnosti, kultúrnej identite alebo o tom, kde by ste mali žiť."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Priatelia sa srdečne pozdravujú"
           },
           "question": "Ako pozdravíte niekoho nového?",
-          "answers": [
-            "Teplé objatie",
-            "Priateľská vlna",
-            "Úctivá poklona",
-            "Ležérne prikývnutie"
-          ],
+          "answers": {
+            "a1": "Teplé objatie",
+            "a2": "Priateľská vlna",
+            "a3": "Úctivá poklona",
+            "a4": "Ležérne prikývnutie"
+          },
           "headerLabel": "PRVÝ DOJEM"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Svetlá krajina pod meniacou sa oblohou"
           },
           "question": "Aké počasie vám robí najväčšiu radosť?",
-          "answers": [
-            "Teplé vánky",
-            "Jasné slnečné lúče",
-            "Chladný vzduch",
-            "Chladné a svieže"
-          ],
+          "answers": {
+            "a1": "Teplé vánky",
+            "a2": "Jasné slnečné lúče",
+            "a3": "Chladný vzduch",
+            "a4": "Chladné a svieže"
+          },
           "headerLabel": "PERFEKTNÉ POČASIE"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Pohodová nedeľná scéna vonku"
           },
           "question": "Ako zvyčajne trávite nedeľu?",
-          "answers": [
-            "Vonkajšie dobrodružstvá",
-            "Zostať útulný vo vnútri",
-            "Tichý odraz",
-            "Dlhé rodinné jedlá"
-          ],
+          "answers": {
+            "a1": "Vonkajšie dobrodružstvá",
+            "a2": "Zostať útulný vo vnútri",
+            "a3": "Tichý odraz",
+            "a4": "Dlhé rodinné jedlá"
+          },
           "headerLabel": "NEDEĽNÝ ŠTÝL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Ranná káva pri pokojnom okne"
           },
           "question": "Aký je váš ideálny spôsob, ako začať deň?",
-          "answers": [
-            "Silná káva",
-            "Jemná chôdza",
-            "Oceánsky vzduch",
-            "Pokojná meditácia"
-          ],
+          "answers": {
+            "a1": "Silná káva",
+            "a2": "Jemná chôdza",
+            "a3": "Oceánsky vzduch",
+            "a4": "Pokojná meditácia"
+          },
           "headerLabel": "RANNÝ RYTHM"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Farebný stôl plný rôznych jedál"
           },
           "question": "Ktorý druh jedla vás najviac vzrušuje?",
-          "answers": [
-            "Rafinované príchute",
-            "Jednoduché a výdatné",
-            "Čerstvé morské plody",
-            "Pohodlná klasika"
-          ],
+          "answers": {
+            "a1": "Rafinované príchute",
+            "a2": "Jednoduché a výdatné",
+            "a3": "Čerstvé morské plody",
+            "a4": "Pohodlná klasika"
+          },
           "headerLabel": "POTRAVINOVÝ INŠTINKT"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Stena galérie s rôznymi umeleckými štýlmi"
           },
           "question": "Aký druh umenia vás priťahuje?",
-          "answers": [
-            "Nadčasová klasika",
-            "Čistá jednoduchosť",
-            "Odvážny výraz",
-            "Jemné detaily"
-          ],
+          "answers": {
+            "a1": "Nadčasová klasika",
+            "a2": "Čistá jednoduchosť",
+            "a3": "Odvážny výraz",
+            "a4": "Jemné detaily"
+          },
           "headerLabel": "KREATÍVNA CHUŤ"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Štyri rôzne nápoje usporiadané spolu"
           },
           "question": "Aký je váš obľúbený nápoj?",
-          "answers": [
-            "Studené pivo",
-            "Víno",
-            "Horúce kakao",
-            "Zelený čaj"
-          ],
+          "answers": {
+            "a1": "Studené pivo",
+            "a2": "Víno",
+            "a3": "Horúce kakao",
+            "a4": "Zelený čaj"
+          },
           "headerLabel": "NÁPOJ VÝBERU"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Priatelia oslavujú špeciálnu príležitosť"
           },
           "question": "Ako najradšej oslavujete veľké chvíle?",
-          "answers": [
-            "Hlasný a živý",
-            "Intímne a útulné",
-            "Nenáročná zábava",
-            "Zmysluplné rituály"
-          ],
+          "answers": {
+            "a1": "Hlasný a živý",
+            "a2": "Intímne a útulné",
+            "a3": "Nenáročná zábava",
+            "a4": "Zmysluplné rituály"
+          },
           "headerLabel": "ŠTÝL SLÁVNOSTI"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Montáž lesov, pobrežia, chrámov a krajiny"
           },
           "question": "Ktorá scenéria sa cíti ako doma?",
-          "answers": [
-            "Tiché lesy",
-            "Otvorené pobrežie",
-            "Historické chrámy",
-            "Zvlnená krajina"
-          ],
+          "answers": {
+            "a1": "Tiché lesy",
+            "a2": "Otvorené pobrežie",
+            "a3": "Historické chrámy",
+            "a4": "Zvlnená krajina"
+          },
           "headerLabel": "ZMYSEL DOMOVA"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Cestovateľ hľadá cez vzdialenú krajinu"
           },
           "question": "Aký je váš štýl cestovania?",
-          "answers": [
-            "Aktívne skúmanie",
-            "Pomalé blúdenie",
-            "Kultúrne ponorenie",
-            "Ikonické pamiatky"
-          ],
+          "answers": {
+            "a1": "Aktívne skúmanie",
+            "a2": "Pomalé blúdenie",
+            "a3": "Kultúrne ponorenie",
+            "a4": "Ikonické pamiatky"
+          },
           "headerLabel": "KONEČNÝ CIEĽ"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hızlı Demans Testi",
   "eyebrow": "10 SORULU BEYİN KONTROLÜ",
   "summary": "Hatırlama, dikkat, dil ve muhakeme için hızlı bir meydan okuma.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Hafızanızın hala keskin olduğunu mu düşünüyorsunuz? Bu 10 kısa soru hatırlamayı, dikkati ve muhakemeyi test eder ve gecikmiş sorular göründüğünden daha zordur.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk beyin mücadelesi, anında ve gecikmeli hatırlamayı dikkat, dil, görsel hafıza ve basit akıl yürütmeyle birleştiriyor. Bir demans tarama aracı olarak değil, günümüz performansının ilgi çekici bir anlık görüntüsü olarak tasarlanmıştır.\n\nPerformans uyku, stres, ruh hali, ilaç tedavisi, dil, eğitim, görme, işitme, cihaz kullanımı ve basit şansla değişebilir. Çevrimiçi bir sınavdan alınan puan demansı doğrulayamaz veya dışlayamaz.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Her anı ipucunu ortaya çıktığında dikkatle inceleyin.",
         "Dışarıdan yardım almadan her soru için bir cevap seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hızlı beyin mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Hızlı Demans Testi",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve beyin mücadelesi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç düşünme alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç düşünme alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "%80 beyin mücadelesini tamamladınız!",
       "finished": "Hızlı beyin mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "Bugün en güçlü bölge",
       "trickiest": "Bugünün en zorlu alanı",
       "bestRound": "En iyi bölüm",
@@ -94,8 +87,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Hangi kelime üçüncü çıktı?",
           "headerLabel": "HEMEN GERİ ÇAĞIRMA",
-          "answers": [
-            "Köprü",
-            "Limon",
-            "Bahçe",
-            "Saat"
-          ],
+          "answers": {
+            "a1": "Köprü",
+            "a2": "Limon",
+            "a3": "Bahçe",
+            "a4": "Saat"
+          },
           "study": {
             "title": "Bu dört kelimeyi hatırla",
             "instruction": "Testte daha sonra geri dönebilirler.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Hangi kod P8L4T ile tam olarak eşleşiyor?",
           "headerLabel": "ODAKLANMIŞ DİKKAT",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Hangi öğe diğerlerine ait değildir?",
           "headerLabel": "KELİME KATEGORİLERİ",
-          "answers": [
-            "Keman",
-            "Flüt",
-            "Havuç",
-            "Trompet"
-          ]
+          "answers": {
+            "a1": "Keman",
+            "a2": "Flüt",
+            "a3": "Havuç",
+            "a4": "Trompet"
+          }
         },
         "dementia-q4": {
           "question": "Sonra hangi sayı geliyor: 2, 4, 8, 16, ___?",
           "headerLabel": "MODEL AKIL VERME",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Hangi nesne ikinci sırada yer aldı?",
           "headerLabel": "GÖRSEL BELLEK",
-          "answers": [
-            "Eldiven",
-            "Anahtar",
-            "Fincan",
-            "Kitap"
-          ],
+          "answers": {
+            "a1": "Eldiven",
+            "a2": "Anahtar",
+            "a3": "Fincan",
+            "a4": "Kitap"
+          },
           "study": {
             "title": "Nesne sırasını inceleyin",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Geriye doğru 7 – 2 – 9 nedir?",
           "headerLabel": "ÇALIŞAN BELLEK",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Yelkovan 6'yı gösterdiğine göre saat kaç dakika geçmiştir?",
           "headerLabel": "SAAT AKIL VERME",
-          "answers": [
-            "6 dakika",
-            "15 dakika",
-            "45 dakika",
-            "30 dakika"
-          ]
+          "answers": {
+            "a1": "6 dakika",
+            "a2": "15 dakika",
+            "a3": "45 dakika",
+            "a4": "30 dakika"
+          }
         },
         "dementia-q8": {
           "question": "Yavru kedi neye göreyse, köpek yavrusu da köpeğe öyle mi?",
           "headerLabel": "DİL BAĞLANTISI",
-          "answers": [
-            "Kedi",
-            "At",
-            "Tavşan",
-            "Kuş"
-          ]
+          "answers": {
+            "a1": "Kedi",
+            "a2": "At",
+            "a3": "Tavşan",
+            "a4": "Kuş"
+          }
         },
         "dementia-q9": {
           "question": "Açılış listesini tekrar düşünün. İlk önce hangi kelime ortaya çıktı?",
           "headerLabel": "GECİKMELİ KELİME ÇAĞIRMA",
-          "answers": [
-            "Saat",
-            "Bahçe",
-            "Limon",
-            "Köprü"
-          ]
+          "answers": {
+            "a1": "Saat",
+            "a2": "Bahçe",
+            "a3": "Limon",
+            "a4": "Köprü"
+          }
         },
         "dementia-q10": {
           "question": "Nesne sırasını tekrar düşünün. Hangi nesne dördüncü olarak ortaya çıktı?",
           "headerLabel": "NİHAİ GECİKMELİ GERİ ÇAĞIRMA",
-          "answers": [
-            "Kitap",
-            "Anahtar",
-            "Eldiven",
-            "Fincan"
-          ]
+          "answers": {
+            "a1": "Kitap",
+            "a2": "Anahtar",
+            "a3": "Eldiven",
+            "a4": "Fincan"
+          }
         }
       }
     }

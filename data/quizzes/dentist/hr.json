@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 15% odraslih može položiti prijemni ispit za stomatologa",
   "eyebrow": "TEST STOMATOLOŠKOG ZNANJA",
   "summary": "Deset pitanja kreće se od poznatih zuba do anatomije i znanosti koju proučavaju budući stomatolozi.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Prvih nekoliko pitanja čini se jednostavnima. Zatim se pregled pomiče ispod cakline u stvarnu dentalnu anatomiju.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov s deset pitanja kreće se od osnovne denticije do anatomije zuba, bolesti usne šupljine i znanosti o glavi i vratu. Pitanja postaju sve tehničkija kako ispit napreduje, završavajući znanjem koje se obično susreće u stomatološkom obrazovanju.\n\nOdaberite jedan odgovor za svako pitanje. Ispravnost ostaje skrivena do konačnog otkrića, gdje kompletan pregled objašnjava koliko se vaše stomatološko znanje održalo.\n\nČinjenični sadržaj je provjeren u odnosu na obrazovne informacije Američke stomatološke udruge, Američkih centara za kontrolu i prevenciju bolesti i Nacionalne medicinske knjižnice SAD-a.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih stomatoloških pitanja.",
         "Odaberite jedan od četiri odgovora bez vanjske pomoći.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov za prijem kod zubara",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni stomatološki ispit",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat o stomatološkom znanju je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena četiri područja stomatološkog znanja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena četiri područja stomatološkog znanja"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Prošli ste prijemni izazov za zubara!",
       "finished": "Izazov za prijem kod zubara završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjači stomatološki predmet",
       "trickiest": "Najzahtjevnija stomatološka tema",
       "bestRound": "Najbolja sekcija",
@@ -96,8 +89,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "dentist-q1": {
           "question": "Koliko trajnih zuba ima tipična odrasla osoba kada ima sva četiri treća kutnjaka?",
-          "answers": [
-            "32",
-            "28",
-            "30",
-            "36"
-          ],
+          "answers": {
+            "a1": "32",
+            "a2": "28",
+            "a3": "30",
+            "a4": "36"
+          },
           "headerLabel": "OSNOVE DENTICIJE"
         },
         "dentist-q2": {
           "question": "Koje tkivo čini tvrdu vanjsku ovojnicu krune zuba?",
-          "answers": [
-            "Cementum",
-            "Caklina",
-            "Dentin",
-            "Pulpa"
-          ],
+          "answers": {
+            "a1": "Cementum",
+            "a2": "Caklina",
+            "a3": "Dentin",
+            "a4": "Pulpa"
+          },
           "headerLabel": "GRAĐA ZUBA"
         },
         "dentist-q3": {
           "question": "Koji su zubi prvenstveno oblikovani za rezanje hrane?",
-          "answers": [
-            "Kutnjaci",
-            "Pretkutnjaci",
-            "Sjekutići",
-            "Treći kutnjaci"
-          ],
+          "answers": {
+            "a1": "Kutnjaci",
+            "a2": "Pretkutnjaci",
+            "a3": "Sjekutići",
+            "a4": "Treći kutnjaci"
+          },
           "headerLabel": "FUNKCIJA ZUBA"
         },
         "dentist-q4": {
           "question": "Koliko je mliječnih zuba normalno prisutno u cijeloj dječjoj denticiji?",
-          "answers": [
-            "16",
-            "24",
-            "28",
-            "20"
-          ],
+          "answers": {
+            "a1": "16",
+            "a2": "24",
+            "a3": "28",
+            "a4": "20"
+          },
           "headerLabel": "PRIMARNA DENTICIJA"
         },
         "dentist-q5": {
           "question": "Koji dio zuba sadrži glavne krvne žile i živce?",
-          "answers": [
-            "Zubna pulpa",
-            "Caklina",
-            "Cementum",
-            "Parodontalni džep"
-          ],
+          "answers": {
+            "a1": "Zubna pulpa",
+            "a2": "Caklina",
+            "a3": "Cementum",
+            "a4": "Parodontalni džep"
+          },
           "headerLabel": "ISPOD EMAJLA"
         },
         "dentist-q6": {
           "question": "Što obično postane plak kada se stvrdne u mineralne naslage na zubima?",
-          "answers": [
-            "Dentin",
-            "Zubni kamenac",
-            "Cementum",
-            "Pelikul"
-          ],
+          "answers": {
+            "a1": "Dentin",
+            "a2": "Zubni kamenac",
+            "a3": "Cementum",
+            "a4": "Pelikul"
+          },
           "headerLabel": "ZNANOST O ORALNOM ZDRAVLJU"
         },
         "dentist-q7": {
           "question": "Što izravno počinje otapati caklinu tijekom razvoja zubnog karijesa?",
-          "answers": [
-            "Slina napravljena nakon jela",
-            "Kisik ulazi u usta",
-            "Kiseline koje proizvode bakterije plaka",
-            "Pritisak od žvakanja"
-          ],
+          "answers": {
+            "a1": "Slina napravljena nakon jela",
+            "a2": "Kisik ulazi u usta",
+            "a3": "Kiseline koje proizvode bakterije plaka",
+            "a4": "Pritisak od žvakanja"
+          },
           "headerLabel": "PROCES KARIJESA"
         },
         "dentist-q8": {
           "question": "Koja struktura pomaže pričvršćivanju korijena zuba za okolnu alveolarnu kost?",
-          "answers": [
-            "Zubna pulpa",
-            "Gingivalni sulkus",
-            "Caklina kutikule",
-            "Parodontalni ligament"
-          ],
+          "answers": {
+            "a1": "Zubna pulpa",
+            "a2": "Gingivalni sulkus",
+            "a3": "Caklina kutikule",
+            "a4": "Parodontalni ligament"
+          },
           "headerLabel": "ANATOMIJA PARODONTA"
         },
         "dentist-q9": {
           "question": "Koji je anatomski naziv kosti koja čini gornju čeljust?",
-          "answers": [
-            "Maksila",
-            "Mandibula",
-            "Zygoma",
-            "Temporalna kost"
-          ],
+          "answers": {
+            "a1": "Maksila",
+            "a2": "Mandibula",
+            "a3": "Zygoma",
+            "a4": "Temporalna kost"
+          },
           "headerLabel": "GLAVA I VRAT"
         },
         "dentist-q10": {
           "question": "Od kojeg kranijalnog živca u konačnici dolazi senzorna inervacija zuba?",
-          "answers": [
-            "Facijalni živac",
-            "Trigeminalni živac",
-            "Živac vagus",
-            "Hipoglosni živac"
-          ],
+          "answers": {
+            "a1": "Facijalni živac",
+            "a2": "Trigeminalni živac",
+            "a3": "Živac vagus",
+            "a4": "Hipoglosni živac"
+          },
           "headerLabel": "ZAVRŠNO KLINIČKO PITANJE"
         }
       }

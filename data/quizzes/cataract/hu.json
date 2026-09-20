@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Gyors szürkehályog teszt",
   "eyebrow": "10 KÉRDÉSES LÁTÁSTESZT",
   "summary": "Homályos részletek, szoros vizuális csapdák és fontos szürkehályog-figyelmeztető jelek egyetlen gyors kihívásban.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "A szürkehályog eleinte könnyen kimaradhat. Nézze meg, vajon észreveszi-e a finom nyomokat 10 gyors kérdésben – az utolsó kérdések megragadják a legtöbb embert.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló kihívás öt képernyőn megjelenő vizuális rejtvényt ötvöz öt, a szürkehályogról szóló általános tudatosítási kérdéssel. A kvízre adott válaszokat méri, nem a látást, a lencse egészségét vagy a szürkehályog valószínűségét.\n\nA képernyő mérete, a fényerő, a kontraszt, a látás, a korrekciós lencsék, a fáradtság és az eszközbeállítások egyaránt befolyásolhatják a teljesítményt. A tartósan homályos vagy homályos látást, a tükröződést, a fények körüli fényudvarokat, az éjszakai látási nehézségeket vagy a kevésbé élénknek tűnő hangokat beszélje meg egy képzett szemgondozóval.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Teljesíts öt részlet-, minta- és vizuális-memóriai kihívást.",
         "Válaszoljon öt kérdésre a szürkehályogról és arról, hogy mikor kérjen segítséget.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Szürkehályog kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Gyors szürkehályog teszt",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és készen áll a szürkehályog-kihívás pontszámának felfedésére.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három vizuális terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három vizuális terület összehasonlítása"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sikeresen teljesítetted a 80%-os vizuális kihívást!",
       "finished": "A szürkehályog kihívás befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A mai legerősebb terület",
       "trickiest": "A mai legnehezebb terület",
       "bestRound": "A legjobb szakasz",
@@ -94,8 +87,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Melyik karakter található pontosan a rács közepén?",
           "headerLabel": "KÖZPONTI RÉSZLET",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "HIVATKOZÁS: B8R3K5",
           "question": "Melyik kód egyezik pontosan a hivatkozással?",
           "headerLabel": "Összehasonlítás",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "HIVATKOZÁS",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Melyik szimbólum fejezi be a váltakozó sorozatot?",
           "headerLabel": "MINTÁZATKÖVETÉS",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Melyik tárgy jelent meg harmadikként?",
           "headerLabel": "GYORS VIZUÁLIS MEMÓRIA",
-          "answers": [
-            "Könyv",
-            "Kulcs",
-            "Citrom",
-            "Esernyő"
-          ],
+          "answers": {
+            "a1": "Könyv",
+            "a2": "Kulcs",
+            "a3": "Citrom",
+            "a4": "Esernyő"
+          },
           "study": {
             "title": "Tanulmányozd az öt objektum sorrendjét",
             "instruction": "Ez automatikusan eltűnik.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Melyik pozícióban található a halvány kör?",
           "headerLabel": "RÉSZLETEK ELLENŐRZÉSE",
-          "answers": [
-            "Ötödik",
-            "Másodszor",
-            "Negyedik",
-            "Hatodik"
-          ],
+          "answers": {
+            "a1": "Ötödik",
+            "a2": "Másodszor",
+            "a3": "Negyedik",
+            "a4": "Hatodik"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Mi az a szürkehályog?",
           "headerLabel": "SZÜRÖGSZÜLŐ ALAPOK",
-          "answers": [
-            "Egy karcolás a szemhéjon",
-            "Zavaros terület a szem természetes lencséjében",
-            "A könnycsatornára korlátozódó probléma",
-            "A fülfertőzés egy fajtája"
-          ]
+          "answers": {
+            "a1": "Egy karcolás a szemhéjon",
+            "a2": "Zavaros terület a szem természetes lencséjében",
+            "a3": "A könnycsatornára korlátozódó probléma",
+            "a4": "A fülfertőzés egy fajtája"
+          }
         },
         "cataract-q7": {
           "question": "Melyik csoport tartalmazza a szürkehályog általános tüneteit?",
           "headerLabel": "FIGYELMEZTETŐ JELEK",
-          "answers": [
-            "Viszkető bőr és torokfájás",
-            "Hirtelen hallásvesztés és szédülés",
-            "Homályos vagy homályos látás, tükröződés és fényudvar a fények körül",
-            "Merev nyak és fájó vállak"
-          ]
+          "answers": {
+            "a1": "Viszkető bőr és torokfájás",
+            "a2": "Hirtelen hallásvesztés és szédülés",
+            "a3": "Homályos vagy homályos látás, tükröződés és fényudvar a fények körül",
+            "a4": "Merev nyak és fájó vállak"
+          }
         },
         "cataract-q8": {
           "question": "Hogyan ellenőrizheti a szemészeti szakember a szürkehályogot?",
           "headerLabel": "SZAKMAI ÉRTÉKELÉS",
-          "answers": [
-            "Hallásvizsgálattal",
-            "Otthoni vérnyomásméréssel",
-            "Ízlési teszttel",
-            "Egy átfogó tágított szemvizsgálat részeként"
-          ]
+          "answers": {
+            "a1": "Hallásvizsgálattal",
+            "a2": "Otthoni vérnyomásméréssel",
+            "a3": "Ízlési teszttel",
+            "a4": "Egy átfogó tágított szemvizsgálat részeként"
+          }
         },
         "cataract-q9": {
           "question": "Mi a legbiztonságosabb válasz hirtelen látásvesztésre, súlyos szemfájdalomra vagy hirtelen jelentős látásváltozásra?",
           "headerLabel": "MIKOR CSELEKEDNI",
-          "answers": [
-            "Kérjen sürgős szakszerű szemészeti tanácsot",
-            "Várjon néhány hónapot anélkül, hogy megemlítené",
-            "Módosítsa a képernyő fényerejét, és feltételezze, hogy az javítva van",
-            "Csak egy online kvízre hagyatkozzon"
-          ]
+          "answers": {
+            "a1": "Kérjen sürgős szakszerű szemészeti tanácsot",
+            "a2": "Várjon néhány hónapot anélkül, hogy megemlítené",
+            "a3": "Módosítsa a képernyő fényerejét, és feltételezze, hogy az javítva van",
+            "a4": "Csak egy online kvízre hagyatkozzon"
+          }
         },
         "cataract-q10": {
           "question": "Mit tud mondani az online kihíváson elért pontszámod?",
           "headerLabel": "VÉGSŐ VALÓSÁG ELLENŐRZÉS",
-          "answers": [
-            "Hogy a lencséi egészségesek-e",
-            "Csak hogyan teljesített ezen a tíz kérdésen",
-            "Szükség van-e szürkehályog műtétre",
-            "Ki tudja-e zárni a szürkehályogot"
-          ]
+          "answers": {
+            "a1": "Hogy a lencséi egészségesek-e",
+            "a2": "Csak hogyan teljesített ezen a tíz kérdésen",
+            "a3": "Szükség van-e szürkehályog műtétre",
+            "a4": "Ki tudja-e zárni a szürkehályogot"
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "7٪ فقط يستطيعون إكمال عناوين أغاني الستينيات هذه",
   "eyebrow": "تحدي موسيقى الستينيات",
   "summary": "أكمل عشرة عناوين لا تُنسى من أغاني الستينيات واكتشف إن كانت ذاكرتك الموسيقية ضمن أفضل 7٪.",
-  "progressLabel": "مكتمل",
   "landing": {
     "intro": "عشرة عناوين أسطورية وكلمة ناقصة في كل عنوان. تبدو البداية سهلة، ثم تختبر الستينيات ذاكرتك بجدية.",
     "cta": "ابدأ الاختبار"
@@ -11,7 +9,6 @@
   "about": {
     "body": "يقدم هذا الاختبار الترفيهي عشرة أسئلة بعنوان الأغنية من 1960s، مقتبسة من تحدي OneIndia الموسيقي المرتبط. يتضمن كل سؤال صورته المصدرية وأربع كلمات مفقودة محتملة. اختر الكلمة التي تكمل كل عنوان بشكل صحيح. تبقى إجاباتك مخفية حتى الكشف النهائي. يتم استنساخ مفاهيم وصور الأسئلة المصدرية من OneIndia بإذن من مالك الموقع المكلف بهذا الاختبار.",
     "howToPlay": {
-      "title": "طريقة اللعب",
       "steps": [
         "انظر إلى صورة الفنان واقرأ العنوان غير المكتمل.",
         "اختر الكلمة التي تكمل عنوان الأغنية.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "تحدي الموسيقى",
-    "resultProgressComplete": "مكتمل بنسبة {value}٪",
     "stages": {
       "stage-1": {
         "difficulty": "1960s عناوين الأغاني",
@@ -30,10 +26,8 @@
         "preAdCopy": "تسجيل الموسيقى الخاص بك في 1960s والكشف عن العنوان الكامل جاهز.",
         "preAdChecks": [
           "تم التحقق من 10 عناوين أغنية",
-          "أربعة أنماط الموسيقى مقارنة",
-          "تم حساب نتيجتك النهائية"
-        ],
-        "preAdButton": "عرض نتائجي"
+          "أربعة أنماط الموسيقى مقارنة"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "لقد وصلت إلى هدف الموسيقى في الستينيات!",
       "finished": "1960s تحدي الموسيقى كاملة",
-      "correctLabel": "صحيحة",
       "strongest": "أقوى منطقة الموسيقى",
       "trickiest": "أصعب منطقة الموسيقى",
       "bestRound": "أفضل قسم",
@@ -96,8 +89,7 @@
         "snapshot": "ما الذي تشير إليه نتيجتك",
         "targetReached": "تم بلوغ هدف 80٪",
         "targetRemaining": "إجابات صحيحة إضافية لازمة للوصول إلى 80٪"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,12 +101,12 @@
             "alt": "إلفيس بريسلي يؤدي على خشبة المسرح"
           },
           "question": "جعل إلفيس هذا العنوان خالدًا: “Can’t Help Falling In ___”",
-          "answers": [
-            "Love",
-            "You",
-            "Dreams",
-            "Time"
-          ],
+          "answers": {
+            "a1": "Love",
+            "a2": "You",
+            "a3": "Dreams",
+            "a4": "Time"
+          },
           "headerLabel": "العنوان 1 من 10"
         },
         "songs-q2": {
@@ -122,12 +114,12 @@
             "alt": "The Rolling Stones معاً"
           },
           "question": "نشر The Rolling Stones هذه الأغنية في كل مكان: “(I Can’t Get No) ___”",
-          "answers": [
-            "Emotion",
-            "Satisfaction",
-            "Reaction",
-            "Attention"
-          ],
+          "answers": {
+            "a1": "Emotion",
+            "a2": "Satisfaction",
+            "a3": "Reaction",
+            "a4": "Attention"
+          },
           "headerLabel": "العنوان 2 من 10"
         },
         "songs-q3": {
@@ -135,12 +127,12 @@
             "alt": "أداء Suprems في فساتين منسقة"
           },
           "question": "يمكنك تقريبًا تخيّل حركة اليد: “Stop! In The Name Of ___”",
-          "answers": [
-            "You",
-            "Time",
-            "Love",
-            "Truth"
-          ],
+          "answers": {
+            "a1": "You",
+            "a2": "Time",
+            "a3": "Love",
+            "a4": "Truth"
+          },
           "headerLabel": "العنوان 3 من 10"
         },
         "songs-q4": {
@@ -148,12 +140,12 @@
             "alt": "البيتلز خلال حياتهم المهنية المبكرة"
           },
           "question": "بدأت موجة Beatlemania الأولى هنا: “I Want To Hold Your ___”",
-          "answers": [
-            "Heart",
-            "Life",
-            "Love",
-            "Hand"
-          ],
+          "answers": {
+            "a1": "Heart",
+            "a2": "Life",
+            "a3": "Love",
+            "a4": "Hand"
+          },
           "headerLabel": "العنوان 4 من 10"
         },
         "songs-q5": {
@@ -161,12 +153,12 @@
             "alt": "فرقة البيتلز معاً"
           },
           "question": "رددها الجميع فورًا: “She Loves ___”",
-          "answers": [
-            "You",
-            "Him",
-            "Us",
-            "Me"
-          ],
+          "answers": {
+            "a1": "You",
+            "a2": "Him",
+            "a3": "Us",
+            "a4": "Me"
+          },
           "headerLabel": "العنوان 5 من 10"
         },
         "songs-q6": {
@@ -174,12 +166,12 @@
             "alt": "الإغراءات في الدعاوى مطابقة"
           },
           "question": "توسّل The Temptations في هذه الأغنية: “Ain’t Too Proud To ___”",
-          "answers": [
-            "Cry",
-            "Beg",
-            "Wait",
-            "Try"
-          ],
+          "answers": {
+            "a1": "Cry",
+            "a2": "Beg",
+            "a3": "Wait",
+            "a4": "Try"
+          },
           "headerLabel": "العنوان 6 من 10"
         },
         "songs-q7": {
@@ -187,12 +179,12 @@
             "alt": "The Kinks أداء مع القيثارات"
           },
           "question": "ذلك الصوت المميز للغيتار: “You Really Got ___”",
-          "answers": [
-            "Love",
-            "You",
-            "Me",
-            "It"
-          ],
+          "answers": {
+            "a1": "Love",
+            "a2": "You",
+            "a3": "Me",
+            "a4": "It"
+          },
           "headerLabel": "العنوان 7 من 10"
         },
         "songs-q8": {
@@ -200,12 +192,12 @@
             "alt": "نانسي سيناترا في صورة في الستينيات"
           },
           "question": "يكاد صوت الحذاء يُسمع: “These Boots Are Made For ___”",
-          "answers": [
-            "Talkin'",
-            "Dancin'",
-            "Runnin'",
-            "Walkin'"
-          ],
+          "answers": {
+            "a1": "Talkin'",
+            "a2": "Dancin'",
+            "a3": "Runnin'",
+            "a4": "Walkin'"
+          },
           "headerLabel": "العنوان 8 من 10"
         },
         "songs-q9": {
@@ -213,12 +205,12 @@
             "alt": "مارفن غاي أداء"
           },
           "question": "إحدى كلاسيكيات Motown: “I Heard It Through The ___”",
-          "answers": [
-            "Grapevine",
-            "Telephone",
-            "Pipeline",
-            "Airwaves"
-          ],
+          "answers": {
+            "a1": "Grapevine",
+            "a2": "Telephone",
+            "a3": "Pipeline",
+            "a4": "Airwaves"
+          },
           "headerLabel": "العنوان 9 من 10"
         },
         "songs-q10": {
@@ -226,12 +218,12 @@
             "alt": "الأبواب في صورة ترويجية"
           },
           "question": "حوّل The Doors هذا العنوان إلى ظاهرة: “Light My ___”",
-          "answers": [
-            "Flame",
-            "Fire",
-            "Heart",
-            "Way"
-          ],
+          "answers": {
+            "a1": "Flame",
+            "a2": "Fire",
+            "a3": "Heart",
+            "a4": "Way"
+          },
           "headerLabel": "العنوان الأخير"
         }
       }

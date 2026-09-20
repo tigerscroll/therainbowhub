@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %6'sı Bu Polis Memuru Giriş Sınavını Geçebiliyor",
   "eyebrow": "POLİS MEMURU YETENEK TESTİ",
   "summary": "On soru, muhakemeyi, iletişimi, delilleri işlemeyi ve mesleki dürüstlüğü test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "İlk aramalar basit görünüyor. Daha sonra sınav kanıtlara, yargılamaya ve anlık kararlara geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesinde, 1. Kademe İngilizce konuşulan ülkelerde profesyonel polislik ile ilgili genel ilkeler kullanılmaktadır. Tek bir ülkenin yasalarına, rütbelerine veya prosedürlerine bağlı kalmaksızın, önce güvenlik kararını, dikkatli tanık iletişimini, kanıt bütünlüğünü ve sorumlu karar almayı test eder.\n\nHer durum için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on polis yetenek sorusunu yanıtlayın.",
         "En güvenli, en net veya en iyi desteklenen yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Polis memuru giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Polis Memuru Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve polislik yetenek puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Dört polis alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Dört polis alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Polis Memuru giriş sınavını geçtiniz!",
       "finished": "Polis Memuru giriş sınavı tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü polislik alanı",
       "trickiest": "En zor polislik alanı",
       "bestRound": "En iyi bölüm",
@@ -96,8 +89,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Birisinin acil bir tehditle karşı karşıya olduğu bir sahneye varıyorsunuz. Birinci öncelik nedir?",
-          "answers": [
-            "Hayatı koruyun ve sahneyi mümkün olduğunca güvenli hale getirin",
-            "Ayrıntılı bir yazılı rapora başlayın",
-            "Her tanığın ifadesini toplayın",
-            "Yasal olarak kimin sorumlu olduğunu öğrenin"
-          ],
+          "answers": {
+            "a1": "Hayatı koruyun ve sahneyi mümkün olduğunca güvenli hale getirin",
+            "a2": "Ayrıntılı bir yazılı rapora başlayın",
+            "a3": "Her tanığın ifadesini toplayın",
+            "a4": "Yasal olarak kimin sorumlu olduğunu öğrenin"
+          },
           "headerLabel": "SAHNE ÖNCELİKLERİ"
         },
         "police-q2": {
           "question": "Hangi açılış sorusunun bir tanığın kendi kesintisiz anlatımını oluşturması daha olasıdır?",
-          "answers": [
-            "Kırmızılı kişi başlattı değil mi?",
-            "Lütfen bana başından beri ne olduğunu anlat",
-            "Olayın tamamını görmedin değil mi?",
-            "Şüpheli kızgın mıydı yoksa korkmuş muydu?"
-          ],
+          "answers": {
+            "a1": "Kırmızılı kişi başlattı değil mi?",
+            "a2": "Lütfen bana başından beri ne olduğunu anlat",
+            "a3": "Olayın tamamını görmedin değil mi?",
+            "a4": "Şüpheli kızgın mıydı yoksa korkmuş muydu?"
+          },
           "headerLabel": "TANIK İLETİŞİMİ"
         },
         "police-q3": {
           "question": "Tanıklar ilk ifadeleri alınmadan önce neden ayrı tutulabilir?",
-          "answers": [
-            "Görüşmeleri kısaltmak için",
-            "Kimin kendine en çok güvendiğine karar vermek",
-            "Anılarının birbirini etkileme olasılığını azaltmak için",
-            "Her hesabın eşleştiğini garanti etmek için"
-          ],
+          "answers": {
+            "a1": "Görüşmeleri kısaltmak için",
+            "a2": "Kimin kendine en çok güvendiğine karar vermek",
+            "a3": "Anılarının birbirini etkileme olasılığını azaltmak için",
+            "a4": "Her hesabın eşleştiğini garanti etmek için"
+          },
           "headerLabel": "BELLEK VE KANIT"
         },
         "police-q4": {
           "question": "Belgelenmiş bir gözetim zincirinin temel amacı nedir?",
-          "answers": [
-            "Kanıtları önem sırasına göre sıralamak",
-            "Bir şüphelinin her eşyaya sahip olduğunu kanıtlamak için",
-            "Olay yerinin fotoğraflarını değiştirmek için",
-            "Kanıtı kimin kullandığını kaydetmek ve bütünlüğünü korumak"
-          ],
+          "answers": {
+            "a1": "Kanıtları önem sırasına göre sıralamak",
+            "a2": "Bir şüphelinin her eşyaya sahip olduğunu kanıtlamak için",
+            "a3": "Olay yerinin fotoğraflarını değiştirmek için",
+            "a4": "Kanıtı kimin kullandığını kaydetmek ve bütünlüğünü korumak"
+          },
           "headerLabel": "DELİL KONTROLÜ"
         },
         "police-q5": {
           "question": "Hangi ilkeler dizisi polis yetkilerinin sorumlu kullanımını en iyi şekilde tanımlar?",
-          "answers": [
-            "Yasal, gerekli, orantılı ve hesap verebilir",
-            "Hızlı, gizli, güçlü ve kesin",
-            "Popüler, kullanışlı, resmi olmayan ve geniş",
-            "Otomatik, aynı, sınırsız ve sorgulanamaz"
-          ],
+          "answers": {
+            "a1": "Yasal, gerekli, orantılı ve hesap verebilir",
+            "a2": "Hızlı, gizli, güçlü ve kesin",
+            "a3": "Popüler, kullanışlı, resmi olmayan ve geniş",
+            "a4": "Otomatik, aynı, sınırsız ve sorgulanamaz"
+          },
           "headerLabel": "MESLEKİ YARGI"
         },
         "police-q6": {
           "question": "Uluslararası yazım alfabesinde B harfini temsil eden kelime hangisidir?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADYO İLETİŞİMİ"
         },
         "police-q7": {
           "question": "Gergin ancak acil olmayan bir durumu hafifletmek için hangi yaklaşım en tutarlıdır?",
-          "answers": [
-            "Hızlı konuşun ve uyarmadan yaklaşın",
-            "Aynı anda birkaç rakip talimat verin",
-            "Sakin ve net bir dil kullanın, dinleyin ve güvenli alana izin verin",
-            "Başkası konuşamadan sesinizi yükseltin"
-          ],
+          "answers": {
+            "a1": "Hızlı konuşun ve uyarmadan yaklaşın",
+            "a2": "Aynı anda birkaç rakip talimat verin",
+            "a3": "Sakin ve net bir dil kullanın, dinleyin ve güvenli alana izin verin",
+            "a4": "Başkası konuşamadan sesinizi yükseltin"
+          },
           "headerLabel": "Gerginliği Azaltma"
         },
         "police-q8": {
           "question": "Güvenli ve pratik olduğunda, olay yerindeki önemli bir öğenin yeri değiştirilmeden önce ne yapılmalıdır?",
-          "answers": [
-            "Temizlenmelidir",
-            "Her tanığa gösterilmeli",
-            "Benzer öğelerle birlikte yerleştirilmelidir",
-            "Orijinal konumu ve durumu belgelenmelidir"
-          ],
+          "answers": {
+            "a1": "Temizlenmelidir",
+            "a2": "Her tanığa gösterilmeli",
+            "a3": "Benzer öğelerle birlikte yerleştirilmelidir",
+            "a4": "Orijinal konumu ve durumu belgelenmelidir"
+          },
           "headerLabel": "SAHNE FARKINDALIĞI"
         },
         "police-q9": {
           "question": "Gönderdiğiniz bir raporda maddi bir hata keşfettiniz. En profesyonel yanıt nedir?",
-          "answers": [
-            "Uygun süreç aracılığıyla derhal rapor edin ve düzeltin",
-            "Kimsenin fark edip etmediğini görmek için bekleyin",
-            "Raporun tamamını kayıt olmadan sil",
-            "Bir meslektaşınızdan sorumluluk almasını isteyin"
-          ],
+          "answers": {
+            "a1": "Uygun süreç aracılığıyla derhal rapor edin ve düzeltin",
+            "a2": "Kimsenin fark edip etmediğini görmek için bekleyin",
+            "a3": "Raporun tamamını kayıt olmadan sil",
+            "a4": "Bir meslektaşınızdan sorumluluk almasını isteyin"
+          },
           "headerLabel": "DÜRÜSTLÜK TESTİ"
         },
         "police-q10": {
           "question": "Hızlı gelişen bir olay sırasında hangi radyo mesajı en kullanışlıdır?",
-          "answers": [
-            "Konumu olmayan uzun bir kişisel teori",
-            "Tam konum ve gerekli yardımın yer aldığı kısa ve gerçeklere dayalı bir güncelleme",
-            "Aynı anda birkaç doğrulanmamış söylenti yayıldı",
-            "Birini bir yere göndermek için belirsiz bir istek"
-          ],
+          "answers": {
+            "a1": "Konumu olmayan uzun bir kişisel teori",
+            "a2": "Tam konum ve gerekli yardımın yer aldığı kısa ve gerçeklere dayalı bir güncelleme",
+            "a3": "Aynı anda birkaç doğrulanmamış söylenti yayıldı",
+            "a4": "Birini bir yere göndermek için belirsiz bir istek"
+          },
           "headerLabel": "SON YETENEK SORUSU"
         }
       }

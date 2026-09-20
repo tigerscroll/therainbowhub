@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 6 % av voksne kan bestå denne opptaksprøven for politibetjent",
   "eyebrow": "POLITIMEDELENS EGENHETSPRØVE",
   "summary": "Ti spørsmål tester dømmekraft, kommunikasjon, bevishåndtering og faglig integritet.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "De første samtalene virker greie. Deretter går eksamen over i bevis, dømmekraft og avgjørelser på et splitsekund.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsutfordringen med ti spørsmål bruker brede prinsipper som er relevante for profesjonell politiarbeid på tvers av engelsktalende land på nivå 1. Den tester sikkerhet først, nøye vitnekommunikasjon, bevisintegritet og ansvarlig beslutningstaking uten å stole på ett lands lover, rangeringer eller prosedyrer.\n\nVelg ett svar for hver situasjon. Korrektheten forblir skjult frem til den siste avsløringen, hvor hele svargjennomgangen er tilgjengelig for å låse opp.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Svar på ti stadig vanskeligere spørsmål om politiets egnethet.",
         "Velg det sikreste, klareste eller best støttede svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Politibetjent inngangsutfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Politibetjent opptaksprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket, og poengsummen for politiets egnethet er klar til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Fire politiområder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Fire politiområder sammenlignet"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du besto inngangsutfordringen for politibetjent!",
       "finished": "Politimannens inngangsutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Det sterkeste politiområdet",
       "trickiest": "Det vanskeligste politiområdet",
       "bestRound": "Beste seksjon",
@@ -96,8 +89,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Du kommer til en scene hvor noen står overfor en umiddelbar trussel. Hva er førsteprioritet?",
-          "answers": [
-            "Beskytt livet og gjør scenen så trygg som mulig",
-            "Start en detaljert skriftlig rapport",
-            "Samle hvert vitneutsagn",
-            "Finn ut hvem som er juridisk ansvarlig"
-          ],
+          "answers": {
+            "a1": "Beskytt livet og gjør scenen så trygg som mulig",
+            "a2": "Start en detaljert skriftlig rapport",
+            "a3": "Samle hvert vitneutsagn",
+            "a4": "Finn ut hvem som er juridisk ansvarlig"
+          },
           "headerLabel": "SCENEPRIORITETER"
         },
         "police-q2": {
           "question": "Hvilket åpningsspørsmål vil mest sannsynlig produsere et vitnes egen uavbrutt beretning?",
-          "answers": [
-            "Personen i rødt startet det, ikke sant?",
-            "Fortell meg hva som skjedde fra begynnelsen",
-            "Du så ikke hele hendelsen, gjorde du?",
-            "Var den mistenkte sint eller redd?"
-          ],
+          "answers": {
+            "a1": "Personen i rødt startet det, ikke sant?",
+            "a2": "Fortell meg hva som skjedde fra begynnelsen",
+            "a3": "Du så ikke hele hendelsen, gjorde du?",
+            "a4": "Var den mistenkte sint eller redd?"
+          },
           "headerLabel": "VITNEKOMMUNIKASJON"
         },
         "police-q3": {
           "question": "Hvorfor kan vitner holdes adskilt før deres første beretning blir tatt?",
-          "answers": [
-            "For å gjøre intervjuene kortere",
-            "Å bestemme hvem som er mest selvsikker",
-            "For å redusere sjansen for at minnene deres påvirker hverandre",
-            "For å garantere at hver konto samsvarer"
-          ],
+          "answers": {
+            "a1": "For å gjøre intervjuene kortere",
+            "a2": "Å bestemme hvem som er mest selvsikker",
+            "a3": "For å redusere sjansen for at minnene deres påvirker hverandre",
+            "a4": "For å garantere at hver konto samsvarer"
+          },
           "headerLabel": "MINNE OG BEVIS"
         },
         "police-q4": {
           "question": "Hva er hovedformålet med en dokumentert varetektskjede?",
-          "answers": [
-            "Å rangere bevis etter viktighet",
-            "For å bevise at en mistenkt eide hver gjenstand",
-            "For å erstatte fotografier av scenen",
-            "For å registrere hvem som håndterte bevis og bevare dets integritet"
-          ],
+          "answers": {
+            "a1": "Å rangere bevis etter viktighet",
+            "a2": "For å bevise at en mistenkt eide hver gjenstand",
+            "a3": "For å erstatte fotografier av scenen",
+            "a4": "For å registrere hvem som håndterte bevis og bevare dets integritet"
+          },
           "headerLabel": "BEVISKONTROLL"
         },
         "police-q5": {
           "question": "Hvilket sett med prinsipper beskriver best ansvarlig bruk av politimyndigheter?",
-          "answers": [
-            "Lovlig, nødvendig, forholdsmessig og ansvarlig",
-            "Rask, hemmelig, kraftfull og endelig",
-            "Populært, praktisk, uformelt og bredt",
-            "Automatisk, identisk, ubegrenset og ubestridt"
-          ],
+          "answers": {
+            "a1": "Lovlig, nødvendig, forholdsmessig og ansvarlig",
+            "a2": "Rask, hemmelig, kraftfull og endelig",
+            "a3": "Populært, praktisk, uformelt og bredt",
+            "a4": "Automatisk, identisk, ubegrenset og ubestridt"
+          },
           "headerLabel": "PROFESJONELL DOM"
         },
         "police-q6": {
           "question": "I det internasjonale stavealfabetet, hvilket ord representerer bokstaven B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADIOKOMMUNIKASJON"
         },
         "police-q7": {
           "question": "Hvilken tilnærming er mest forenlig med å deeskalere en spent, men ikke-umiddelbar situasjon?",
-          "answers": [
-            "Snakk raskt og gå nærmere uten forvarsel",
-            "Utsted flere konkurrerende instruksjoner samtidig",
-            "Bruk et rolig, tydelig språk, lytt og gi trygg plass",
-            "Hev stemmen før noen andre kan snakke"
-          ],
+          "answers": {
+            "a1": "Snakk raskt og gå nærmere uten forvarsel",
+            "a2": "Utsted flere konkurrerende instruksjoner samtidig",
+            "a3": "Bruk et rolig, tydelig språk, lytt og gi trygg plass",
+            "a4": "Hev stemmen før noen andre kan snakke"
+          },
           "headerLabel": "DE-EKALERING"
         },
         "police-q8": {
           "question": "Når det er trygt og praktisk, hva skal skje før en viktig gjenstand på en scene flyttes?",
-          "answers": [
-            "Det bør rengjøres",
-            "Det bør vises til ethvert vitne",
-            "Den bør plasseres med lignende gjenstander",
-            "Dens opprinnelige posisjon og tilstand bør dokumenteres"
-          ],
+          "answers": {
+            "a1": "Det bør rengjøres",
+            "a2": "Det bør vises til ethvert vitne",
+            "a3": "Den bør plasseres med lignende gjenstander",
+            "a4": "Dens opprinnelige posisjon og tilstand bør dokumenteres"
+          },
           "headerLabel": "SCENEBEVISSTHET"
         },
         "police-q9": {
           "question": "Du oppdager en faktafeil i en rapport du har sendt inn. Hva er den mest profesjonelle responsen?",
-          "answers": [
-            "Rapporter og korriger det raskt gjennom den riktige prosessen",
-            "Vent å se om noen legger merke til det",
-            "Slett hele rapporten uten registrering",
-            "Be en kollega ta ansvar"
-          ],
+          "answers": {
+            "a1": "Rapporter og korriger det raskt gjennom den riktige prosessen",
+            "a2": "Vent å se om noen legger merke til det",
+            "a3": "Slett hele rapporten uten registrering",
+            "a4": "Be en kollega ta ansvar"
+          },
           "headerLabel": "INTEGRITETSTEST"
         },
         "police-q10": {
           "question": "Hvilken radiomelding er mest nyttig under en hendelse som beveger seg raskt?",
-          "answers": [
-            "En lang personlig teori uten plassering",
-            "En kortfattet faktaoppdatering med nøyaktig plassering og nødvendig hjelp",
-            "Flere ubekreftede rykter ble levert på en gang",
-            "En vag forespørsel om å sende noen et sted"
-          ],
+          "answers": {
+            "a1": "En lang personlig teori uten plassering",
+            "a2": "En kortfattet faktaoppdatering med nøyaktig plassering og nødvendig hjelp",
+            "a3": "Flere ubekreftede rykter ble levert på en gang",
+            "a4": "En vag forespørsel om å sende noen et sted"
+          },
           "headerLabel": "SPØRSMÅL AV ENDELIG EVNE"
         }
       }

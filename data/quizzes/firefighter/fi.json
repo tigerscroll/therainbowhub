@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 11 % voi läpäistä tämän palomiehen pääsykokeen",
   "eyebrow": "Palomies Haaste",
   "summary": "Tulitiede, työkalut, vaarat ja nopeat tapauspäätökset - testaavat, miten selkeästi ajattelet paineessa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Tulikäyttäytyminen, vaaran havaitseminen, mekaaninen perustelu ja sekunnin erillinen arviointi. Pystytkö pysymään rauhallisena, kun jokaisella vihjeellä on merkitystä?",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdehaaste tutkii sisääntulotason palomiehen päättelyä kymmenellä huolellisesti vaihtelevalla kysymyksellä. Se kattaa palo- ja savutiedon, vaaratilanteet, laitemekaniikka, käytännön laskutaidon, tilatietoisuuden, selkeän viestinnän ja tapausten arvioinnin.\n\nHaaste siirtyy nopeasti esteettömästä perustasta muuttuviin olosuhteisiin, käytännön mekaniikkaan ja integroituihin tapahtumapäätöksiin. Kysymyksissä käytetään maailmanlaajuisesti turvallisia periaatteita eikä paikallisia rangaistuksia, koodeja, rakennusääntöjä tai paloturvallisuutta koskevia menettelyjä.\n\nLopullinen prosenttiosuusi heijastaa vain viihdevaikutuskilpailussa antamia vastauksia. Se on leikkisä tilannekuva vahvimmin tuntuneista sisäänkäyntialueista ja haastavammiksi osoittautuneista aiheista, ei arvio toimintavalmiudesta tai soveltuvuudesta palomiehen työhön.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Käy läpi kaikki kymmenen kysymystä omaan tahtiisi. ei ole ajastinta tai nopeusbonusta.",
         "Valitse yksittäinen vaihtoehto, jota näkyvät vihjeet tukevat parhaiten. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Palomiehen haaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Palomies Haaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Palomiespisteesi ja viiden alueen erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viisi sisäänkäyntialuetta verrattuna",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viisi sisäänkäyntialuetta verrattuna"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "Läpäisit palomiehen sisäänpääsyhaasteen!",
       "finished": "Palomiehen sisäänkäyntihaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin sisäänkäyntialue",
       "trickiest": "Hankalin sisäänkäyntialue",
       "bestRound": "Paras tapausosio",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Lämpöä ja polttoainetta löytyy. Mikä kolmas elementti tarvitaan tulikolmion täydentämiseen?",
           "headerLabel": "PALOTIEDE",
-          "answers": [
-            "Vesi",
-            "Happi",
-            "Savu",
-            "Ash"
-          ]
+          "answers": {
+            "a1": "Vesi",
+            "a2": "Happi",
+            "a3": "Savu",
+            "a4": "Ash"
+          }
         },
         "firefighter-s1q2": {
           "question": "Kipinöivä sähköpaneeli seisoo vesialtaan vieressä. Mikä on turvallisin ensimmäinen vastaus?",
           "headerLabel": "VAARA TÄRKEITÄ",
-          "answers": [
-            "Astu veden läpi sammuttaaksesi sen",
-            "Kaada lisää vettä paneelin päälle",
-            "Siirrä paneelia sen ulkokuoresta",
-            "Pidä ihmiset selkeänä ja valppaana pätevät palveluntarjoajat"
-          ]
+          "answers": {
+            "a1": "Astu veden läpi sammuttaaksesi sen",
+            "a2": "Kaada lisää vettä paneelin päälle",
+            "a3": "Siirrä paneelia sen ulkokuoresta",
+            "a4": "Pidä ihmiset selkeänä ja valppaana pätevät palveluntarjoajat"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Mikä raportti viestii muutoksesta parhaiten arvaamatta sen syytä?",
           "headerLabel": "TAPAHTUMARAPORTOINTI",
-          "answers": [
-            "Pohjoisovella oleva savua on muuttunut valoiselta ja tasaiselta nopeasti kasvavaksi.",
-            "Tupusta on löydetty täsmällinen polttoaine.",
-            "Mikään ei muuttunut, sillä tupakka oli jo läsnä.",
-            "Palo pysyy varmasti samalla alueella"
-          ]
+          "answers": {
+            "a1": "Pohjoisovella oleva savua on muuttunut valoiselta ja tasaiselta nopeasti kasvavaksi.",
+            "a2": "Tupusta on löydetty täsmällinen polttoaine.",
+            "a3": "Mikään ei muuttunut, sillä tupakka oli jo läsnä.",
+            "a4": "Palo pysyy varmasti samalla alueella"
+          }
         },
         "firefighter-s1q5": {
           "question": "Vipuna käytetään vääntötankoa. Mitä yleensä tapahtuu, kun tartunta liikkuu kauemmaksi pivotista?",
           "headerLabel": "MEKAANINEN PERUSTELU",
-          "answers": [
-            "Lisää voimaa tarvitaan aina",
-            "Pivot lakkaa toimimasta",
-            "Vähemmän voimaa tarvitaan samaan kääntövaikutukseen",
-            "Kuorma muuttuu painottomaksi"
-          ]
+          "answers": {
+            "a1": "Lisää voimaa tarvitaan aina",
+            "a2": "Pivot lakkaa toimimasta",
+            "a3": "Vähemmän voimaa tarvitaan samaan kääntövaikutukseen",
+            "a4": "Kuorma muuttuu painottomaksi"
+          }
         },
         "firefighter-s3q6": {
           "question": "Kuuma pinta lämmittää kasvojasi useista metrin päässä ilman kosketusta. Mikä lämmönsiirtoprosessi selittää tämän parhaiten?",
           "headerLabel": "LÄMMÖNSIIRTO",
-          "answers": [
-            "Säteily",
-            "Johtaminen",
-            "Haihtuminen",
-            "Kondensoituminen"
-          ]
+          "answers": {
+            "a1": "Säteily",
+            "a2": "Johtaminen",
+            "a3": "Haihtuminen",
+            "a4": "Kondensoituminen"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Mitä todellista etäisyyttä reitti edustaa?",
           "headerLabel": "KÄYTÄNNÖN NUMERONTAITO",
-          "answers": [
-            "50 metriä",
-            "60 metriä",
-            "65 metriä",
-            "70 metriä"
-          ]
+          "answers": {
+            "a1": "50 metriä",
+            "a2": "60 metriä",
+            "a3": "65 metriä",
+            "a4": "70 metriä"
+          }
         },
         "firefighter-s4q7": {
           "question": "Tulivaurioitunut katto heikkenee ja uusia reiviä ilmestyy. Mikä on turvallisin tulkinta?",
           "headerLabel": "RAKENNEVAARAT",
-          "answers": [
-            "Katto jäähtyy turvallisesti",
-            "Halkeamat osoittavat tarkalleen missä seisoa",
-            "Kolapsi on mahdollista, joten pysy selvällä ja ilmoita muuttuvasta tilasta.",
-            "Vahingolla on merkitystä vasta tapahtuman jälkeen"
-          ]
+          "answers": {
+            "a1": "Katto jäähtyy turvallisesti",
+            "a2": "Halkeamat osoittavat tarkalleen missä seisoa",
+            "a3": "Kolapsi on mahdollista, joten pysy selvällä ja ilmoita muuttuvasta tilasta.",
+            "a4": "Vahingolla on merkitystä vasta tapahtuman jälkeen"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "Vaihde A käyttää B:tä ja B C:tä. Mihin suuntaan vaihde C kääntyy?",
           "headerLabel": "VAIHTEIDEN PERUSTELU",
-          "answers": [
-            "Myötäpäivään kahden suunnan vaihdon jälkeen",
-            "Vastapäivään yhden peruutuksen jälkeen",
-            "Se ei voi kääntyä, koska käytössä on kolme vaihdetta",
-            "Ylöspäin, koska vaihde A on ensimmäinen"
-          ]
+          "answers": {
+            "a1": "Myötäpäivään kahden suunnan vaihdon jälkeen",
+            "a2": "Vastapäivään yhden peruutuksen jälkeen",
+            "a3": "Se ei voi kääntyä, koska käytössä on kolme vaihdetta",
+            "a4": "Ylöspäin, koska vaihde A on ensimmäinen"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Kuinka monta lamppua on vielä piirrettävä, jotta jokainen miehistö on varustettu ja kaksi varaosaa jää jäljelle?",
           "headerLabel": "LAITTEETMATEMIKA",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "Mikä on paras ensimmäinen toimenpide ja raportti?",
           "headerLabel": "VIIMEINEN TAPAHTUMATESTI",
-          "answers": [
-            "Lopeta laskenta ennen savun ilmoittamista",
-            "Direct people east; ilmoittaa lännen savusta ja kahdesta kadonneesta ihmisestä; lykätä laskemista",
-            "Käytä läntistä käytävää, koska se on lyhin",
-            "Ilmoita vain laitteiden määrä"
-          ]
+          "answers": {
+            "a1": "Lopeta laskenta ennen savun ilmoittamista",
+            "a2": "Direct people east; ilmoittaa lännen savusta ja kahdesta kadonneesta ihmisestä; lykätä laskemista",
+            "a3": "Käytä läntistä käytävää, koska se on lyhin",
+            "a4": "Ilmoita vain laitteiden määrä"
+          }
         }
       }
     }

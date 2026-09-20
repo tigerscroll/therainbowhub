@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 7 % klarar detta intelligenstest",
   "eyebrow": "INTELLIGENSVALVET",
   "summary": "Mönster, sifferregler, ordlänkar och rumsliga fällor testar hur snabbt ditt resonemang hittar den dolda regeln.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Mönster, koder, ordlänkar och logiska fällor kolliderar. Hur länge kan ditt resonemang ligga steget före?",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna världsomspännande underhållningsutmaning samlar tio noggrant utvalda pussel som täcker mönster, numeriska regler, verbala kopplingar, rumsliga resonemang, uppmärksamhet och logisk slutledning. Det är utformat för att kännas lekfullt och krävande snarare än som ett formellt lämplighetsprov.\n\nVarje pussel har ett svar som stöds av informationen som visas. Interaktionen ändras regelbundet, så du kan behöva identifiera en regel, jämföra ledtrådar, transformera en symbol, räkna mentalt eller lägga märke till en liten inkonsekvens.\n\nDitt intelligenstestresultat är procentandelen av dessa underhållningspussel du löser korrekt. Den beskriver endast detta försök och mäter inte din faktiska intelligens, IQ, begåvning eller utbildningsförmåga.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Fyll i tio noggrant utvalda frågor i en fokuserad utmaning.",
         "Välj ett svar varje gång. Korrektheten förblir dold tills den sista avslöjandet.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Intelligensutmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Intelligensutmaning",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ditt intelligenstestresultat och tre områden är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Tre tankeområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre tankeområden jämförda"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du klarade intelligenstestet!",
       "finished": "Intelligenstestet är klart",
-      "correctLabel": "korrekt",
       "strongest": "Starkast tankeområde",
       "trickiest": "Det knepigaste tankeområdet",
       "bestRound": "Bästa avsnittet",
@@ -98,8 +91,7 @@
         "snapshot": "Vad detta försök antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "cirkel, triangel, cirkel, triangel, okänd"
           },
           "question": "Vilken symbol kommer härnäst?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "MÖNSTERRESONER"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "upp-högerpil bredvid en vertikal spegel"
           },
           "question": "Vilken pil är reflektionen i en vertikal spegel?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RYMLIGT RESONAL"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "bokstavsskiften plus ett, plus två, plus ett; CAT blir DCU"
           },
           "question": "Skiften upprepar +1, +2, +1. Hur kodas DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBALA RESONER"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "nummerpyramid med botten 3, 5, 4 och mitten 8, 9"
           },
           "question": "Varje block är summan av de två under det. Vad går på toppen?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "NUMERISKT RESONAL"
         },
         "iq-s3q2": {
           "question": "En maskin dubblar ett tal och lägger sedan till 3. Vilken ingång ger 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "NUMERISKT RESONAL"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Referenskod K7M2-Q9. Hitta alternativet med ett tecken ändrat."
           },
           "question": "Vilken kopia skiljer sig från referensen med exakt ett tecken?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "OBS PÅ DETALJER"
         },
         "iq-s4q1": {
           "question": "Exakt en person säger sanningen. A säger att B ljuger. B säger att C ljuger. C säger att A och B båda ljuger. Vem säger sanningen?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Ingen"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Ingen"
+          },
           "headerLabel": "LOGISK AVDRAGNING"
         },
         "iq-s4q4": {
           "question": "Börja i mitten mot norr. Flytta en ruta framåt, sväng höger, flytta två rutor, sväng höger och flytta sedan en ruta. Var slutar du i förhållande till starten?",
-          "answers": [
-            "Två rutor till höger",
-            "En ruta upp",
-            "Två rutor kvar",
-            "Tillbaka i mitten"
-          ],
+          "answers": {
+            "a1": "Två rutor till höger",
+            "a2": "En ruta upp",
+            "a3": "Två rutor kvar",
+            "a4": "Tillbaka i mitten"
+          },
           "headerLabel": "RYMLIGT RESONAL"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "raderna 3, 4, 10; 5, 2, 12; 7, 3, okänd"
           },
           "question": "I varje rad, dubbla det första talet och lägg sedan till det andra. Vad ersätter frågetecknet?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "NUMERISKT RESONAL"
         },
         "iq-s5q8": {
           "question": "En pil pekar uppåt. Vrid den 90° medurs och reflektera den sedan i en vertikal spegel. Vart pekar det?",
-          "answers": [
-            "Upp",
-            "Rätt",
-            "Ner",
-            "Vänster"
-          ],
+          "answers": {
+            "a1": "Upp",
+            "a2": "Rätt",
+            "a3": "Ner",
+            "a4": "Vänster"
+          },
           "headerLabel": "SLUTLIGT RYMLIGT TEST"
         }
       }

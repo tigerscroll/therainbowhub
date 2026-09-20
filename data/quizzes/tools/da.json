@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 1 ud af 5 kan bestå denne quiz om værktøj til betonarbejde",
   "eyebrow": "TESTEN AF BETONVÆRKTØJ",
   "summary": "Ti byggepladsværktøjer og én uforsonlig konkret udfordring.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Disse værktøjer ser indlysende ud på en arbejdsplads, men deres reelle anvendelser fanger de fleste mennesker. Kan du få alle 10 rigtige?",
     "cta": "Start quizzen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "At arbejde med beton kræver langt mere end en blander og en skovl. Timingen, formen og formålet med hvert specialværktøj kan afgøre, om en plade bliver flad, stærk og revnekontrolleret – eller bliver til en kostbar fejl.\n\nStuder hvert fotografi og vælg værktøjets korrekte job eller brugstrin. Rigtigheden forbliver skjult indtil den sidste afsløring.\n\nDe første ti kildespørgsmål, svarvalg og fotografier er gengivet fra Log Cabin Daily med tilladelse angivet af webstedsejeren, der bestilte denne quiz.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Studer værktøjet vist på hvert fotografi.",
         "Vælg dens korrekte brug eller fase af den konkrete proces.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Udfordring med konkrete værktøjer",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Konkrete værktøjer",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet tjekket, og din konkrete værktøjsscore er klar til at afsløre.",
         "preAdChecks": [
           "10 værktøjer kontrolleret",
-          "Tre handelsområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre handelsområder sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du bestod udfordringen med konkrete værktøjer!",
       "finished": "Udfordring med konkrete værktøjer er fuldført",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste handelsområde",
       "trickiest": "Det vanskeligste handelsområde",
       "bestRound": "Bedste afsnit",
@@ -94,8 +87,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "En håndspartel i beton, der udglatter nystøbt beton"
           },
           "question": "Hvad bruges dette værktøj til?",
-          "answers": [
-            "Skærende armeringsjern",
-            "Spredning og udjævning af våd beton",
-            "Blanding af tør beton",
-            "At bryde gammel beton"
-          ],
+          "answers": {
+            "a1": "Skærende armeringsjern",
+            "a2": "Spredning og udjævning af våd beton",
+            "a3": "Blanding af tør beton",
+            "a4": "At bryde gammel beton"
+          },
           "headerLabel": "VÆRKTØJ 1 AF 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "En trillebør med betonblanding på en arbejdsplads"
           },
           "question": "Hvad bruges dette værktøj til?",
-          "answers": [
-            "Transport af våd beton og værktøj",
-            "Efterbehandling af betonkanter",
-            "Måling af betontemperatur",
-            "Komprimerende grus"
-          ],
+          "answers": {
+            "a1": "Transport af våd beton og værktøj",
+            "a2": "Efterbehandling af betonkanter",
+            "a3": "Måling af betontemperatur",
+            "a4": "Komprimerende grus"
+          },
           "headerLabel": "VÆRKTØJ 2 AF 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "En betonflyder bevæger sig over overfladen af frisk beton"
           },
           "question": "Hvad bruges dette værktøj til?",
-          "answers": [
-            "Komprimerende jord",
-            "Flydende træformer",
-            "Udjævning og udjævning af betonoverfladen",
-            "Skæring gennem armeringsjern"
-          ],
+          "answers": {
+            "a1": "Komprimerende jord",
+            "a2": "Flydende træformer",
+            "a3": "Udjævning og udjævning af betonoverfladen",
+            "a4": "Skæring gennem armeringsjern"
+          },
           "headerLabel": "VÆRKTØJ 3 AF 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "En betonkantskærer, der former kanten af en plade"
           },
           "question": "Hvad bruges dette værktøj til?",
-          "answers": [
-            "Kantning af fortove og plader til rene kanter",
-            "Løft af betonklodser",
-            "Udskæring af fuger i beton",
-            "Transport af betonblanding"
-          ],
+          "answers": {
+            "a1": "Kantning af fortove og plader til rene kanter",
+            "a2": "Løft af betonklodser",
+            "a3": "Udskæring af fuger i beton",
+            "a4": "Transport af betonblanding"
+          },
           "headerLabel": "VÆRKTØJ 4 AF 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "En bærbar betonblander tipper frisk beton"
           },
           "question": "Hvad gør dette værktøj?",
-          "answers": [
-            "Opvarmning af beton",
-            "Hældning af tør cement",
-            "Blanding af cement, sand og vand til beton",
-            "Slibning af gammel beton"
-          ],
+          "answers": {
+            "a1": "Opvarmning af beton",
+            "a2": "Hældning af tør cement",
+            "a3": "Blanding af cement, sand og vand til beton",
+            "a4": "Slibning af gammel beton"
+          },
           "headerLabel": "VÆRKTØJ 5 AF 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "En langskaftet tyreflyder, der udglatter en bred betonplade"
           },
           "question": "Hvilket trin i betonarbejde kræver almindeligvis en tyreflyder?",
-          "answers": [
-            "Transport af våd beton til udstøbningsstedet",
-            "Nedbrydning af gamle betonplader",
-            "Skæring af ekspansionsfuger",
-            "Udjævning af store overflader umiddelbart efter afretning"
-          ],
+          "answers": {
+            "a1": "Transport af våd beton til udstøbningsstedet",
+            "a2": "Nedbrydning af gamle betonplader",
+            "a3": "Skæring af ekspansionsfuger",
+            "a4": "Udjævning af store overflader umiddelbart efter afretning"
+          },
           "headerLabel": "VÆRKTØJ 6 AF 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "En arbejder, der bruger en betonvibrator i nystøbt beton"
           },
           "question": "Hvornår vil en betonvibrator typisk blive brugt?",
-          "answers": [
-            "Inden betonen udstøbes",
-            "Efter at have hældt beton, for at fjerne luftlommer",
-            "Mens du placerer armeringsjern i former",
-            "Under efterbehandling, for at glatte overfladen"
-          ],
+          "answers": {
+            "a1": "Inden betonen udstøbes",
+            "a2": "Efter at have hældt beton, for at fjerne luftlommer",
+            "a3": "Mens du placerer armeringsjern i former",
+            "a4": "Under efterbehandling, for at glatte overfladen"
+          },
           "headerLabel": "VÆRKTØJ 7 AF 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "En drevet armeringskniv, der trimmer armeringsstål"
           },
           "question": "Hvad er den primære opgave, der udføres ved hjælp af en armeringsjernsskærer?",
-          "answers": [
-            "Trimning af armeringsstål til de nødvendige længder",
-            "Udglatning af betonkanter",
-            "Skæring af kontrolsamlinger i hærdet beton",
-            "Afhugning af løs beton"
-          ],
+          "answers": {
+            "a1": "Trimning af armeringsstål til de nødvendige længder",
+            "a2": "Udglatning af betonkanter",
+            "a3": "Skæring af kontrolsamlinger i hærdet beton",
+            "a4": "Afhugning af løs beton"
+          },
           "headerLabel": "VÆRKTØJ 8 AF 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "En rille med lange skafter, der skærer en linje i våd beton"
           },
           "question": "Et rilleværktøj er bedst at bruge i hvilket trin af en betonstøbning?",
-          "answers": [
-            "Før hældning, for at forberede jorden",
-            "Under efterbehandling, for at skabe kontrolsamlinger",
-            "Under hærdning, at påføre fugemasse",
-            "Efter tørring, for at polere overfladen"
-          ],
+          "answers": {
+            "a1": "Før hældning, for at forberede jorden",
+            "a2": "Under efterbehandling, for at skabe kontrolsamlinger",
+            "a3": "Under hærdning, at påføre fugemasse",
+            "a4": "Efter tørring, for at polere overfladen"
+          },
           "headerLabel": "VÆRKTØJ 9 AF 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "En lige afretningslag, der slår af nystøbt beton"
           },
           "question": "På hvilket trin bruges en betonafretning mest almindeligt?",
-          "answers": [
-            "Efter hærdning for at polere overfladen",
-            "Efter tørring at anvende fugemasse",
-            "Under armeringsjernslayout",
-            "Umiddelbart efter udhældning for at udjævne betonen"
-          ],
+          "answers": {
+            "a1": "Efter hærdning for at polere overfladen",
+            "a2": "Efter tørring at anvende fugemasse",
+            "a3": "Under armeringsjernslayout",
+            "a4": "Umiddelbart efter udhældning for at udjævne betonen"
+          },
           "headerLabel": "ENDELIGT VÆRKTØJ"
         }
       }

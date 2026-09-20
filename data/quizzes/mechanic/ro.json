@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Doar 7% trec acest test de mecanic auto",
   "eyebrow": "RECOMENTUL DE SERVICIE PRECISIONĂ",
   "summary": "Luminile de avertizare, defecțiunile ascunse și simptomele ciudate ale drumului testează dacă puteți diagnostica probleme înainte ca acestea să devină scumpe.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Acest test de divertisment la nivel mondial conține zece întrebări practice despre sistemele vehiculelor, judecata atelierului și găsirea defecțiunilor. Se trece de la semne de avertizare familiare la simptome conexe care necesită un diagnostic atent.\n\nAlegeți cel mai bun răspuns din informațiile afișate. Întrebările folosesc principii largi ale vehiculelor și evită presupunerea unei mărci, model sau standard de inspecție local.\n\nScorul dvs. reflectă doar această provocare scurtă. Nu este o calificare comercială, o inspecție de siguranță sau un înlocuitor al diagnosticului de către un mecanic calificat.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Completați zece întrebări atent selectate într-o singură provocare concentrată.",
         "Alegeți câte un răspuns de fiecare dată. Corectitudinea rămâne ascunsă până la dezvăluirea finală.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocare mecanică",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Provocarea atelierului",
@@ -29,10 +26,8 @@
         "preAdCopy": "Scorul dvs. mecanic și defalcarea celor șase sisteme sunt gata să fie dezvăluite.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Comparativ cu șase sisteme de vehicule",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Comparativ cu șase sisteme de vehicule"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Ai trecut de provocarea mecanicului!",
       "finished": "Provocarea atelierului finalizată",
-      "correctLabel": "corect",
       "strongest": "Cel mai puternic sistem vehicul",
       "trickiest": "Cel mai complicat sistem de vehicule",
-      "bestRound": "Cea mai bună secțiune",
-      "showBestRound": false
+      "bestRound": "Cea mai bună secțiune"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Ce simbol de avertizare se referă cel mai direct la presiunea uleiului de motor?",
-          "answers": [
-            "Bidon de ulei",
-            "Bateria",
-            "Termometru",
-            "Volan"
-          ],
+          "answers": {
+            "a1": "Bidon de ulei",
+            "a2": "Bateria",
+            "a3": "Termometru",
+            "a4": "Volan"
+          },
           "headerLabel": "SISTEME MOTORE"
         },
         "mech-r1q2": {
           "question": "O avertizare roșie de frână rămâne aprinsă după eliberarea frânei de parcare. Care este cel mai sigur răspuns?",
-          "answers": [
-            "Conduceți mai repede pentru a-l testa",
-            "Opriți în siguranță și verificați sistemul de frânare",
-            "Pompați cauciucurile mai tare",
-            "Ignorați până la următorul service"
-          ],
+          "answers": {
+            "a1": "Conduceți mai repede pentru a-l testa",
+            "a2": "Opriți în siguranță și verificați sistemul de frânare",
+            "a3": "Pompați cauciucurile mai tare",
+            "a4": "Ignorați până la următorul service"
+          },
           "headerLabel": "FRÂNE ȘI SIGURANȚĂ"
         },
         "mech-r4q5": {
           "question": "Un clic ritmic devine mai rapid la viraje strânse. Care parte este o cauză probabilă?",
-          "answers": [
-            "Termostat",
-            "Pompa de combustibil",
-            "Articulație exterioară cu viteză constantă",
-            "Ventilator de cabină"
-          ],
+          "answers": {
+            "a1": "Termostat",
+            "a2": "Pompa de combustibil",
+            "a3": "Articulație exterioară cu viteză constantă",
+            "a4": "Ventilator de cabină"
+          },
           "headerLabel": "TRANSMISIUNEA"
         },
         "mech-r4q6": {
           "question": "O anvelopă are o umflătură adâncă a flancului. Ce ar trebui să faci?",
-          "answers": [
-            "Reduceți presiunea și continuați",
-            "Împingeți umflarea plat",
-            "Mutați-l pe altă roată",
-            "Nu mai folosiți anvelopa și aranjați înlocuirea"
-          ],
+          "answers": {
+            "a1": "Reduceți presiunea și continuați",
+            "a2": "Împingeți umflarea plat",
+            "a3": "Mutați-l pe altă roată",
+            "a4": "Nu mai folosiți anvelopa și aranjați înlocuirea"
+          },
           "headerLabel": "SIGURANȚA VEHICULUI"
         },
         "mech-r5q5": {
           "question": "Motorul se supraîncălzește în trafic, dar se răcește la viteza drumului. Ce componentă merită o verificare din timp?",
-          "answers": [
-            "Ventilatorul radiatorului",
-            "Centura de siguranta",
-            "Cap de combustibil",
-            "Rulment roata"
-          ],
+          "answers": {
+            "a1": "Ventilatorul radiatorului",
+            "a2": "Centura de siguranta",
+            "a3": "Cap de combustibil",
+            "a4": "Rulment roata"
+          },
           "headerLabel": "SISTEME DE RĂCIRE"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Tensiunea așteptată a bateriei 12,6 volți, măsurată 10,5 volți"
           },
           "question": "O baterie sănătoasă de 12 volți citește aproximativ 12,6 V în repaus. Acesta citește 10,5 V. Ce sugerează asta?",
-          "answers": [
-            "Cauciucurile sunt uzate",
-            "Lichidul de răcire este prea puternic",
-            "Bateria este profund descărcată sau are o celulă defectă",
-            "Cureaua alternatorului este noua"
-          ],
+          "answers": {
+            "a1": "Cauciucurile sunt uzate",
+            "a2": "Lichidul de răcire este prea puternic",
+            "a3": "Bateria este profund descărcată sau are o celulă defectă",
+            "a4": "Cureaua alternatorului este noua"
+          },
           "headerLabel": "SISTEME ELECTRICE"
         },
         "mech-r7q1": {
           "question": "Volanul vibrează în principal la un interval de viteză pe drum. Care este probabil primul suspect?",
-          "answers": [
-            "Dezechilibrul roților",
-            "Calitatea combustibilului",
-            "Filtru de cabina",
-            "Culoarea lichidului de răcire"
-          ],
+          "answers": {
+            "a1": "Dezechilibrul roților",
+            "a2": "Calitatea combustibilului",
+            "a3": "Filtru de cabina",
+            "a4": "Culoarea lichidului de răcire"
+          },
           "headerLabel": "DIRECȚIE ȘI ECHILIBRARE"
         },
         "mech-r7q6": {
           "question": "O nouă vibrație severă apare după lovirea unui pericol rutier. Ce ar trebui să faci?",
-          "answers": [
-            "Măriți viteza pentru a o netezi",
-            "Opriți-vă în siguranță și verificați roata și anvelopa înainte de a continua",
-            "Reduceți presiunea fiecărei anvelope",
-            "Ignorați-l dacă nu apare niciun avertisment"
-          ],
+          "answers": {
+            "a1": "Măriți viteza pentru a o netezi",
+            "a2": "Opriți-vă în siguranță și verificați roata și anvelopa înainte de a continua",
+            "a3": "Reduceți presiunea fiecărei anvelope",
+            "a4": "Ignorați-l dacă nu apare niciun avertisment"
+          },
           "headerLabel": "SIGURANȚA VEHICULUI"
         },
         "mech-r9q2": {
           "context": "CLIENTUL SPUNE",
           "question": "„Bateria este nouă, dar se descarcă în mod repetat și avertizarea de încărcare apare în timpul conducerii.” Ce ar trebui testat?",
-          "answers": [
-            "Alinierea anvelopelor",
-            "Sistemul de încărcare și conexiunile acestuia",
-            "Grosimea plăcuțelor de frână",
-            "Concentrația lichidului de răcire"
-          ],
+          "answers": {
+            "a1": "Alinierea anvelopelor",
+            "a2": "Sistemul de încărcare și conexiunile acestuia",
+            "a3": "Grosimea plăcuțelor de frână",
+            "a4": "Concentrația lichidului de răcire"
+          },
           "headerLabel": "SISTEME DE ÎNCĂRCARE"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motorul se răcește la viteza drumului, se supraîncălzește la ralanti, ventilatorul de răcire nu funcționează"
           },
           "question": "Motorul se supraincalzeste doar la ralanti, radiatorul este neobturat si ventilatorul de racire nu functioneaza niciodata. Ce ar trebui diagnosticat mai întâi?",
-          "answers": [
-            "Alinierea roților",
-            "Sigiliu capac de combustibil",
-            "Uzura plăcuțelor de frână",
-            "Circuitul ventilatorului, motorul și comanda de control"
-          ],
+          "answers": {
+            "a1": "Alinierea roților",
+            "a2": "Sigiliu capac de combustibil",
+            "a3": "Uzura plăcuțelor de frână",
+            "a4": "Circuitul ventilatorului, motorul și comanda de control"
+          },
           "headerLabel": "DIAGNOSTIC FINAL"
         }
       }

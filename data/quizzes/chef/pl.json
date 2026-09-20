@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 12% zdaje egzamin wstępny na szefa kuchni",
   "eyebrow": "KARNET KULINARNY",
   "summary": "Test smaku, ognia, ciasta i ciśnienia obsługi, czy potrafisz myśleć, gdy w kuchni nagrzewa się.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "To ogólnoświatowe wyzwanie rozrywkowe zawiera dziesięć pytań dotyczących narzędzi kuchennych, smaku, pieczenia, bezpieczeństwa żywności, praktycznej matematyki i kontroli ciepła. Trudność wzrasta od solidnych podstaw do decyzji, które łączą więcej niż jedną wskazówkę.\n\nWybierz najlepszą odpowiedź dla każdej sytuacji. Poprawność pozostaje ukryta podczas pracy, więc każdy wybór wydaje się częścią jednego ciągłego wyzwania kuchennego.\n\nTwój wynik opisuje wyłącznie tę próbę quizu. Nie jest to kwalifikacja kulinarna, świadectwo bezpieczeństwa żywności ani szkolenie zawodowe.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Rozwiąż dziesięć starannie wybranych pytań w ramach jednego ukierunkowanego wyzwania.",
         "Za każdym razem wybierz jedną odpowiedź. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie szefa kuchni",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie szefa kuchni",
@@ -29,10 +26,8 @@
         "preAdCopy": "Twój wynik szefa kuchni i podział sześciu umiejętności są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie sześciu umiejętności kuchennych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie sześciu umiejętności kuchennych"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Udało Ci się przejść wyzwanie wstępne dla szefa kuchni!",
       "finished": "Wyzwanie kulinarne zakończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejsza część kuchenna",
       "trickiest": "Najtrudniejsza część kuchni",
       "bestRound": "Najlepsza sekcja",
@@ -106,8 +100,7 @@
         "snapshot": "Co sugeruje Twój profil szefa kuchni",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Które narzędzie najlepiej nadaje się do chwytania i obracania gorącej potrawy na patelni?",
-          "answers": [
-            "Trzepaczka",
-            "Szczypce",
-            "Obieraczka",
-            "Chochla"
-          ],
+          "answers": {
+            "a1": "Trzepaczka",
+            "a2": "Szczypce",
+            "a3": "Obieraczka",
+            "a4": "Chochla"
+          },
           "headerLabel": "NARZĘDZIA KUCHENNE"
         },
         "chef-r1q2": {
           "question": "Sos ma bogaty i ciężki smak, ale brakuje mu jasności. Który mały dodatek najprawdopodobniej go zrównoważy?",
-          "answers": [
-            "Więcej masła",
-            "Więcej skrobi",
-            "Więcej kremu",
-            "Niewielka ilość kwasu"
-          ],
+          "answers": {
+            "a1": "Więcej masła",
+            "a2": "Więcej skrobi",
+            "a3": "Więcej kremu",
+            "a4": "Niewielka ilość kwasu"
+          },
           "headerLabel": "RÓWNOWAGA SMAKÓW"
         },
         "chef-r5q3": {
           "question": "Przepis na muffiny mówi, aby mieszać tylko do momentu, aż nie pozostanie już sucha mąka. Po co zatrzymywać się w tym momencie?",
-          "answers": [
-            "Aby uniknąć utraty całego środka spulchniającego",
-            "Dodatkowe mieszanie może sprawić, że miękisz będzie twardszy",
-            "Aby stopiony tłuszcz nie oddzielał się",
-            "Aby zapobiec zbyt wczesnemu brązowieniu wierzchu"
-          ],
+          "answers": {
+            "a1": "Aby uniknąć utraty całego środka spulchniającego",
+            "a2": "Dodatkowe mieszanie może sprawić, że miękisz będzie twardszy",
+            "a3": "Aby stopiony tłuszcz nie oddzielał się",
+            "a4": "Aby zapobiec zbyt wczesnemu brązowieniu wierzchu"
+          },
           "headerLabel": "NAUKA PIECZENIA"
         },
         "chef-r2q6": {
           "question": "Szklany słoik pęka obok nieprzykrytego przygotowanego jedzenia. Co powinno się wydarzyć?",
-          "answers": [
-            "Usuń widoczne szkło i zachowaj żywność",
-            "Odsuń żywność i kontynuuj obsługę",
-            "Wyrzuć odsłonięte jedzenie i bezpiecznie wyczyść obszar",
-            "Przykryj żywność i wyczyść po użyciu"
-          ],
+          "answers": {
+            "a1": "Usuń widoczne szkło i zachowaj żywność",
+            "a2": "Odsuń żywność i kontynuuj obsługę",
+            "a3": "Wyrzuć odsłonięte jedzenie i bezpiecznie wyczyść obszar",
+            "a4": "Przykryj żywność i wyczyść po użyciu"
+          },
           "headerLabel": "BEZPIECZEŃSTWO ŻYWNOŚCI"
         },
         "chef-r6q1": {
           "question": "Przepis wykorzystuje 300 g ryżu na 4 porcje. Ile potrzeba na 10 porcji?",
-          "answers": [
-            "750 gr",
-            "600 gr",
-            "700 gr",
-            "900 gr"
-          ],
+          "answers": {
+            "a1": "750 gr",
+            "a2": "600 gr",
+            "a3": "700 gr",
+            "a4": "900 gr"
+          },
           "headerLabel": "MATEMATYKA KUCHENNA"
         },
         "chef-r3q1": {
           "question": "Warzywa na zatłoczonej gorącej patelni stają się blade i mokre. Co najlepiej to wyjaśnia?",
-          "answers": [
-            "Uwolniona wilgoć została uwięziona, więc warzywa gotowały się na parze",
-            "Patelnia była zbyt gorąca i uszczelniła wilgoć w środku",
-            "Warzywa wchłonęły olej, zanim zdążyły się zrumienić",
-            "Zbyt częste ich obracanie powodowało dodatkową wilgoć"
-          ],
+          "answers": {
+            "a1": "Uwolniona wilgoć została uwięziona, więc warzywa gotowały się na parze",
+            "a2": "Patelnia była zbyt gorąca i uszczelniła wilgoć w środku",
+            "a3": "Warzywa wchłonęły olej, zanim zdążyły się zrumienić",
+            "a4": "Zbyt częste ich obracanie powodowało dodatkową wilgoć"
+          },
           "headerLabel": "KONTROLA CIEPŁA"
         },
         "chef-r8q1": {
           "question": "Które narzędzie usuwa grudki z suchej mąki?",
-          "answers": [
-            "Trzepaczka",
-            "Szczypce",
-            "Sito",
-            "Obieraczka"
-          ],
+          "answers": {
+            "a1": "Trzepaczka",
+            "a2": "Szczypce",
+            "a3": "Sito",
+            "a4": "Obieraczka"
+          },
           "headerLabel": "NARZĘDZIA KUCHENNE"
         },
         "chef-r8q2": {
           "question": "Który składnik pogłębia pikantne umami?",
-          "answers": [
-            "Cukier trzcinowy",
-            "Bita śmietana",
-            "Zwykła woda",
-            "Grzyby"
-          ],
+          "answers": {
+            "a1": "Cukier trzcinowy",
+            "a2": "Bita śmietana",
+            "a3": "Zwykła woda",
+            "a4": "Grzyby"
+          },
           "headerLabel": "BUDOWANIE SMAKU"
         },
         "chef-r10q1": {
           "question": "Najpierw gotuje się cebulę, a danie dopełniają świeże zioła, ale oba przyrządzono w jednej misce. Jaka zmiana konfiguracji jest zgodna z przepisem?",
-          "answers": [
-            "Trzymaj je oddzielnie do czasu użycia",
-            "Gotuj wszystko na koniec",
-            "Na początku dodaj zioła",
-            "Obydwa składniki pozostaw nieprzygotowane"
-          ],
+          "answers": {
+            "a1": "Trzymaj je oddzielnie do czasu użycia",
+            "a2": "Gotuj wszystko na koniec",
+            "a3": "Na początku dodaj zioła",
+            "a4": "Obydwa składniki pozostaw nieprzygotowane"
+          },
           "headerLabel": "ORGANIZACJA KUCHNI"
         },
         "chef-r10q2": {
           "question": "Danie ma bogaty i ciężki smak, ale wymaga świeżości. Która regulacja wykończenia najlepiej to równoważy?",
-          "answers": [
-            "Więcej śmietanki i masła",
-            "Cytryna i świeże zioła",
-            "Więcej mąki",
-            "Więcej syropu"
-          ],
+          "answers": {
+            "a1": "Więcej śmietanki i masła",
+            "a2": "Cytryna i świeże zioła",
+            "a3": "Więcej mąki",
+            "a4": "Więcej syropu"
+          },
           "headerLabel": "KOŃCOWY TEST SMAKU"
         }
       }

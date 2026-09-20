@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu Sürücü Bu Motosiklet Sürücüleri Testini Geçemiyor",
   "eyebrow": "MOTOSİKLET SÜRÜCÜSÜ TESTİ",
   "summary": "Dünya çapındaki on yol güvenliği sorusu, sürüş içgüdülerinizin iki tekerleğe aktarılıp aktarılmadığını test ediyor.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Araba kullanmak yeterli değildir. Bu 10 motosiklet sorusu, çoğu yol kullanıcısının gözden kaçırdığı güvenlik ayrıntılarını ortaya çıkarıyor.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu dünya çapında İngilizce eğlence testi, birçok yol sisteminde geçerli olan geniş motosiklet güvenliği ilkelerini test eder. Ülkeye özgü tabelalardan, lisans kurallarından, hız limitlerinden ve yasal ifadelerden kaçınır.\n\nHer durumda en güvenli genel yanıtı seçin. Gerçek motosikletler, yollar ve yerel yasalar değişiklik gösterebilir; bu nedenle her zaman resmi sürücü el kitabınıza, eğitiminize ve üreticinizin talimatlarına uyun.\n\nBu testi geçmek, pratik sürüş becerisini göstermez veya onaylı motosiklet eğitiminin yerine geçmez.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Her motosiklet güvenliği senaryosunu dikkatlice okuyun.",
         "Dört seçenekten en güvenli genel yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Motosiklet testi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Motosiklet Güvenliği",
@@ -30,10 +26,8 @@
         "preAdCopy": "Motosiklet güvenliği puanınız ve eksiksiz yanıt incelemeniz hazır.",
         "preAdChecks": [
           "10 sürüş kararı kontrol edildi",
-          "Altı güvenlik alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Altı güvenlik alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -89,7 +83,6 @@
     "score": {
       "passed": "Motosiklet sürücü sınavını geçtiniz!",
       "finished": "Motosiklet sürücü sınavı tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü güvenlik alanı",
       "trickiest": "En zor güvenlik alanı",
       "bestRound": "En iyi bölüm",
@@ -102,8 +95,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -112,102 +104,102 @@
       "questions": {
         "motorbike-q1": {
           "question": "Doğru bir rutin okuma için lastik basıncı genellikle en iyi ne zaman kontrol edilir?",
-          "answers": [
-            "Lastikler soğuk olduğunda",
-            "Hızlı bir yolculuğun hemen ardından",
-            "Yalnızca bir uyarı göründüğünde",
-            "Yolcu taşırken"
-          ],
+          "answers": {
+            "a1": "Lastikler soğuk olduğunda",
+            "a2": "Hızlı bir yolculuğun hemen ardından",
+            "a3": "Yalnızca bir uyarı göründüğünde",
+            "a4": "Yolcu taşırken"
+          },
           "headerLabel": "MAKİNE KONTROLÜ"
         },
         "motorbike-q2": {
           "question": "Bir sürücü virajda giderken görüşünü genellikle nereye yönlendirmelidir?",
-          "answers": [
-            "Ön tekerlekte",
-            "Viraj boyunca amaçlanan yola doğru",
-            "Yolun kenarında",
-            "Arkadaki araçta"
-          ],
+          "answers": {
+            "a1": "Ön tekerlekte",
+            "a2": "Viraj boyunca amaçlanan yola doğru",
+            "a3": "Yolun kenarında",
+            "a4": "Arkadaki araçta"
+          },
           "headerLabel": "viraj alma"
         },
         "motorbike-q3": {
           "question": "Yağmur yolculuk sırasında başlar. Öndeki aracın arkasındaki boşluğa ne olacak?",
-          "answers": [
-            "Tamamen aynı kalmalı",
-            "Daha kısa olmalı",
-            "Artmalı",
-            "Sadece yüksek hızda önemlidir"
-          ],
+          "answers": {
+            "a1": "Tamamen aynı kalmalı",
+            "a2": "Daha kısa olmalı",
+            "a3": "Artmalı",
+            "a4": "Sadece yüksek hızda önemlidir"
+          },
           "headerLabel": "ISLAK KOŞULLAR"
         },
         "motorbike-q4": {
           "question": "Modern bir motosiklette düz hatlı acil durdurmada hangi genel teknik genellikle en güvenlidir?",
-          "answers": [
-            "Yalnızca arka freni kullanın",
-            "Anında yalnızca ön freni kullanın",
-            "Her iki freni tekrar tekrar pompalayın",
-            "Motosikleti dengede tutarken her iki freni de kademeli olarak uygulayın"
-          ],
+          "answers": {
+            "a1": "Yalnızca arka freni kullanın",
+            "a2": "Anında yalnızca ön freni kullanın",
+            "a3": "Her iki freni tekrar tekrar pompalayın",
+            "a4": "Motosikleti dengede tutarken her iki freni de kademeli olarak uygulayın"
+          },
           "headerLabel": "ACİL FRENLEME"
         },
         "motorbike-q5": {
           "question": "Hangi alışkanlık, başka bir sürücünün motosikleti gözden kaçırma olasılığını azaltmaya en iyi şekilde yardımcı olur?",
-          "answers": [
-            "Kör noktalardan uzak durun ve görünürlük sağlayacak konumda olun",
-            "Mümkün olduğu kadar uzun süre bir aracın yanında yolculuk yapın",
-            "Göz temasının sürücünün sizi gördüğü anlamına geldiğini varsayın",
-            "Uzun farı sürekli kullanın"
-          ],
+          "answers": {
+            "a1": "Kör noktalardan uzak durun ve görünürlük sağlayacak konumda olun",
+            "a2": "Mümkün olduğu kadar uzun süre bir aracın yanında yolculuk yapın",
+            "a3": "Göz temasının sürücünün sizi gördüğü anlamına geldiğini varsayın",
+            "a4": "Uzun farı sürekli kullanın"
+          },
           "headerLabel": "GÖRÜNÜRLÜK"
         },
         "motorbike-q6": {
           "question": "Bir yolcu, yolcu taşırken ne gibi önemli değişiklikler beklemelidir?",
-          "answers": [
-            "Motosiklet tam olarak aynı şekilde dönecek ve duracak",
-            "Denge, hızlanma ve fren mesafesi değişebilir",
-            "Lastiğin durumu daha az önemli",
-            "Yolcu sürücünün karşısına yaslanmalıdır"
-          ],
+          "answers": {
+            "a1": "Motosiklet tam olarak aynı şekilde dönecek ve duracak",
+            "a2": "Denge, hızlanma ve fren mesafesi değişebilir",
+            "a3": "Lastiğin durumu daha az önemli",
+            "a4": "Yolcu sürücünün karşısına yaslanmalıdır"
+          },
           "headerLabel": "YOLCU GÜVENLİĞİ"
         },
         "motorbike-q7": {
           "question": "Kaçınılması mümkün olmayan bir sürücü ıslak boyalı işaretleri nasıl geçmelidir?",
-          "answers": [
-            "Eğilirken keskin bir şekilde hızlanın",
-            "İşaretlemede sert fren yapın",
-            "Motosikleti mümkün olduğunca dik ve pürüzsüz tutun",
-            "Aniden karşıya dönün"
-          ],
+          "answers": {
+            "a1": "Eğilirken keskin bir şekilde hızlanın",
+            "a2": "İşaretlemede sert fren yapın",
+            "a3": "Motosikleti mümkün olduğunca dik ve pürüzsüz tutun",
+            "a4": "Aniden karşıya dönün"
+          },
           "headerLabel": "YÜZEY TEHLİKESİ"
         },
         "motorbike-q8": {
           "question": "Aynanın göstermeyebileceği bir alana konum değiştirmeden önce hangi son gözlem değerlidir?",
-          "answers": [
-            "Hız göstergesine bir bakış",
-            "Ön tekerleğe bir bakış",
-            "Yakıt seviyesinin kontrolü",
-            "Güvenli olduğunda doğrudan kör nokta kontrolü"
-          ],
+          "answers": {
+            "a1": "Hız göstergesine bir bakış",
+            "a2": "Ön tekerleğe bir bakış",
+            "a3": "Yakıt seviyesinin kontrolü",
+            "a4": "Güvenli olduğunda doğrudan kör nokta kontrolü"
+          },
           "headerLabel": "GÖZLEM"
         },
         "motorbike-q9": {
           "question": "Bir sürücü motosikleti için doğru tahrik zinciri ayar özelliğini nerede bulmalıdır?",
-          "answers": [
-            "Üreticinin bilgileri",
-            "Başka bir motosiklete dayanan bir tahmin",
-            "Lastiğin yan duvarı",
-            "Yol kenarında bir tabela"
-          ],
+          "answers": {
+            "a1": "Üreticinin bilgileri",
+            "a2": "Başka bir motosiklete dayanan bir tahmin",
+            "a3": "Lastiğin yan duvarı",
+            "a4": "Yol kenarında bir tabela"
+          },
           "headerLabel": "BAKIM"
         },
         "motorbike-q10": {
           "question": "Bir sürücü, uzun bir yolculuk sırasında konsantrasyonlarının azaldığını fark eder. En güvenli yanıt nedir?",
-          "answers": [
-            "Daha çabuk bitirmek için daha hızlı sürün",
-            "Güvenli bir yerde durun ve uygun bir mola verin",
-            "Başka bir aracı yakından takip edin",
-            "Vizörü açın ve devam edin"
-          ],
+          "answers": {
+            "a1": "Daha çabuk bitirmek için daha hızlı sürün",
+            "a2": "Güvenli bir yerde durun ve uygun bir mola verin",
+            "a3": "Başka bir aracı yakından takip edin",
+            "a4": "Vizörü açın ve devam edin"
+          },
           "headerLabel": "SON GÜVENLİK ÇAĞRISI"
         }
       }

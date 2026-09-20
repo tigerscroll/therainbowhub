@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Iba 8 % prejde týmto kvízom o ľudskej anatómii",
   "eyebrow": "VÝZVA ĽUDSKÉHO TELA",
   "summary": "Desať otázok týkajúcich sa orgánov, kostí a telesných systémov, vďaka ktorým všetko funguje.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Vaše telo môže byť povedomé, no jeho najmenšie kosti, najväčšie orgány a životne dôležité systémy vás stále dokážu zachytiť.",
     "cta": "Spustiť kvíz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tento zábavný kvíz s desiatimi otázkami testuje všeobecné znalosti o ľudskom tele, od hlavných orgánov a kostí až po krvný obeh a dýchanie. Každá otázka má jednu jasnú odpoveď zo všeobecne uznávanej úvodnej anatómie.\n\nVyberte jednu odpoveď pre každú otázku. Správnosť zostáva skrytá až do konečného odhalenia, kde si môžete prezrieť kompletnú sadu a zistiť, ktorá oblasť anatómie bola vaša najsilnejšia.\n\nAnatomické detaily sa môžu medzi jednotlivcami prirodzene líšiť. Kvíz využíva štandardné konvencie anatómie dospelých bežne vyučované vo všeobecnom vzdelávaní.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Odpovedzte na desať otázok o ľudskej anatómii v jednej sústredenej výzve.",
         "Pre každú otázku vyberte jednu zo štyroch odpovedí.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Anatomická výzva",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Ľudská anatómia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre anatómie a úplná kontrola odpovedí sú pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnané tri anatomické oblasti",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnané tri anatomické oblasti"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Prekonali ste anatomickú výzvu!",
       "finished": "Anatomická výzva dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia oblasť anatómie",
       "trickiest": "Najchúlostivejšia oblasť anatómie",
       "bestRound": "Najlepšia sekcia",
@@ -93,8 +86,7 @@
         "snapshot": "Čo naznačuje váš výsledok",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "anatomy-q1": {
           "question": "Aký je najväčší orgán v ľudskom tele?",
-          "answers": [
-            "Koža",
-            "Pečeň",
-            "Pľúca",
-            "Mozog"
-          ],
+          "answers": {
+            "a1": "Koža",
+            "a2": "Pečeň",
+            "a3": "Pľúca",
+            "a4": "Mozog"
+          },
           "headerLabel": "ORGÁNY"
         },
         "anatomy-q2": {
           "question": "Koľko komôr má ľudské srdce?",
-          "answers": [
-            "Dvaja",
-            "Štyri",
-            "Tri",
-            "Päť"
-          ],
+          "answers": {
+            "a1": "Dvaja",
+            "a2": "Štyri",
+            "a3": "Tri",
+            "a4": "Päť"
+          },
           "headerLabel": "SRDCE"
         },
         "anatomy-q3": {
           "question": "Aká je najdlhšia kosť v ľudskom tele?",
-          "answers": [
-            "Tibia",
-            "Humerus",
-            "Femur",
-            "Polomer"
-          ],
+          "answers": {
+            "a1": "Tibia",
+            "a2": "Humerus",
+            "a3": "Femur",
+            "a4": "Polomer"
+          },
           "headerLabel": "KOSTRA"
         },
         "anatomy-q4": {
           "question": "Ktorý orgán produkuje inzulín?",
-          "answers": [
-            "Pečeň",
-            "obličky",
-            "Slezina",
-            "Pankreas"
-          ],
+          "answers": {
+            "a1": "Pečeň",
+            "a2": "obličky",
+            "a3": "Slezina",
+            "a4": "Pankreas"
+          },
           "headerLabel": "ORGÁNY"
         },
         "anatomy-q5": {
           "question": "Aká je najmenšia kosť v ľudskom tele?",
-          "answers": [
-            "Stapes",
-            "Patella",
-            "Coccyx",
-            "Ulna"
-          ],
+          "answers": {
+            "a1": "Stapes",
+            "a2": "Patella",
+            "a3": "Coccyx",
+            "a4": "Ulna"
+          },
           "headerLabel": "KOSTRA"
         },
         "anatomy-q6": {
           "question": "Koľko kostí sa zvyčajne nachádza v tele dospelého človeka?",
-          "answers": [
-            "201",
-            "206",
-            "212",
-            "218"
-          ],
+          "answers": {
+            "a1": "201",
+            "a2": "206",
+            "a3": "212",
+            "a4": "218"
+          },
           "headerLabel": "ZÁKLADY TELA"
         },
         "anatomy-q7": {
           "question": "Ktorý hlavný sval sa nachádza pod pľúcami a pomáha vám dýchať?",
-          "answers": [
-            "Trapezius",
-            "Deltoidný",
-            "Bránica",
-            "Podkolenná šľacha"
-          ],
+          "answers": {
+            "a1": "Trapezius",
+            "a2": "Deltoidný",
+            "a3": "Bránica",
+            "a4": "Podkolenná šľacha"
+          },
           "headerLabel": "DÝCHANIE"
         },
         "anatomy-q8": {
           "question": "Súčasťou ktorého orgánu je mozoček?",
-          "answers": [
-            "Miecha",
-            "Vnútorné ucho",
-            "Srdce",
-            "Mozog"
-          ],
+          "answers": {
+            "a1": "Miecha",
+            "a2": "Vnútorné ucho",
+            "a3": "Srdce",
+            "a4": "Mozog"
+          },
           "headerLabel": "MOZOG"
         },
         "anatomy-q9": {
           "question": "Ktoré krvné cievy odvádzajú krv zo srdca?",
-          "answers": [
-            "Tepny",
-            "Žily",
-            "Kapiláry",
-            "Venules"
-          ],
+          "answers": {
+            "a1": "Tepny",
+            "a2": "Žily",
+            "a3": "Kapiláry",
+            "a4": "Venules"
+          },
           "headerLabel": "CIRCULATION"
         },
         "anatomy-q10": {
           "question": "Aký je najväčší vnútorný orgán v ľudskom tele?",
-          "answers": [
-            "Pľúca",
-            "Pečeň",
-            "Žalúdok",
-            "Obličky"
-          ],
+          "answers": {
+            "a1": "Pľúca",
+            "a2": "Pečeň",
+            "a3": "Žalúdok",
+            "a4": "Obličky"
+          },
           "headerLabel": "ZÁVEREČNÁ OTÁZKA"
         }
       }

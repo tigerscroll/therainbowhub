@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 6 % des adultes peuvent réussir cet examen d’entrée au barreau",
   "eyebrow": "LE TEST DE RAISONNEMENT EN SALLE D’AUDIENCE",
   "summary": "Dix questions testent le langage utilisé dans la salle d'audience, les précédents, les preuves et le jugement professionnel.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les questions d’ouverture semblent familières. Ensuite, l’examen passe aux précédents, aux preuves et au raisonnement en salle d’audience.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions aborde des notions générales issues des systèmes de common law des principaux pays anglophones. Les règles et la terminologie varient selon les juridictions : les questions portent donc sur un raisonnement juridique transposable, et non sur le programme d'admission d'un pays précis.\n\nChoisissez une réponse à chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions d’audience de plus en plus difficiles.",
         "Choisissez le meilleur concept juridique ou la meilleure réponse de plaidoyer.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée d'avocat",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée d'avocat",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score de raisonnement en salle d’audience est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Quatre domaines juridiques comparés",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Quatre domaines juridiques comparés"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission au barreau !",
       "finished": "Défi d'entrée d'avocat terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -96,8 +89,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Dans un procès pénal, qui porte normalement la charge de prouver l’accusation ?",
-          "answers": [
-            "L’accusation",
-            "L'accusé",
-            "Le jury",
-            "Le greffier du tribunal"
-          ],
+          "answers": {
+            "a1": "L’accusation",
+            "a2": "L'accusé",
+            "a3": "Le jury",
+            "a4": "Le greffier du tribunal"
+          },
           "headerLabel": "LES BASES DE LA SALLE D’AUDIENCE"
         },
         "barrister-q2": {
           "question": "Quel principe traite un accusé comme innocent à moins que sa culpabilité ne soit prouvée ?",
-          "answers": [
-            "Responsabilité sans faute",
-            "La présomption d'innocence",
-            "Double peine",
-            "Avis judiciaire"
-          ],
+          "answers": {
+            "a1": "Responsabilité sans faute",
+            "a2": "La présomption d'innocence",
+            "a3": "Double peine",
+            "a4": "Avis judiciaire"
+          },
           "headerLabel": "PRINCIPES FONDAMENTAUX"
         },
         "barrister-q3": {
           "question": "Comment appelle-t-on une décision de justice antérieure qui pourrait guider une affaire similaire ultérieure ?",
-          "answers": [
-            "Un affidavit",
-            "Un acte d'accusation",
-            "Un précédent",
-            "Un règlement"
-          ],
+          "answers": {
+            "a1": "Un affidavit",
+            "a2": "Un acte d'accusation",
+            "a3": "Un précédent",
+            "a4": "Un règlement"
+          },
           "headerLabel": "JURISPRUDENCE"
         },
         "barrister-q4": {
           "question": "Comment appelle-t-on communément l’interrogatoire d’un témoin par la partie adverse ?",
-          "answers": [
-            "Examen direct",
-            "Contrôle judiciaire",
-            "Divulgation",
-            "Contre-interrogatoire"
-          ],
+          "answers": {
+            "a1": "Examen direct",
+            "a2": "Contrôle judiciaire",
+            "a3": "Divulgation",
+            "a4": "Contre-interrogatoire"
+          },
           "headerLabel": "PLAIDOYER"
         },
         "barrister-q5": {
           "question": "Quel terme latin décrit la raison juridique essentielle à la décision d’un tribunal ?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas corpus",
-            "Bona fide",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas corpus",
+            "a3": "Bona fide",
+            "a4": "Prima facie"
+          },
           "headerLabel": "PRÉCÉDENT"
         },
         "barrister-q6": {
           "question": "Qu’est-ce qu’une observation judiciaire qui n’est pas indispensable à la décision souvent appelée ?",
-          "answers": [
-            "Une ordonnance contraignante",
-            "Obiter dictum",
-            "Un plaidoyer de culpabilité",
-            "Une cause d'action"
-          ],
+          "answers": {
+            "a1": "Une ordonnance contraignante",
+            "a2": "Obiter dictum",
+            "a3": "Un plaidoyer de culpabilité",
+            "a4": "Une cause d'action"
+          },
           "headerLabel": "RAISONNEMENT JURIDIQUE"
         },
         "barrister-q7": {
           "question": "Quel terme décrit communément une déclaration extrajudiciaire proposée pour prouver la véracité de ce qu'elle dit ?",
-          "answers": [
-            "Privilège",
-            "Préclusion",
-            "Ouï-dire",
-            "Atténuation"
-          ],
+          "answers": {
+            "a1": "Privilège",
+            "a2": "Préclusion",
+            "a3": "Ouï-dire",
+            "a4": "Atténuation"
+          },
           "headerLabel": "PREUVE"
         },
         "barrister-q8": {
           "question": "Quelle question suggère le plus clairement la réponse attendue par celui qui interroge ?",
-          "answers": [
-            "Que s'est-il passé ensuite ?",
-            "Où étiez-vous ?",
-            "Comment était la pièce ?",
-            "Le feu était rouge quand vous avez traversé, n’est-ce pas ?"
-          ],
+          "answers": {
+            "a1": "Que s'est-il passé ensuite ?",
+            "a2": "Où étiez-vous ?",
+            "a3": "Comment était la pièce ?",
+            "a4": "Le feu était rouge quand vous avez traversé, n’est-ce pas ?"
+          },
           "headerLabel": "INTERROGATOIRE DES TÉMOINS"
         },
         "barrister-q9": {
           "question": "Sur quelle question le contrôle judiciaire porte-t-il principalement ?",
-          "answers": [
-            "Si une décision publique a été prise légalement",
-            "Si un jury a choisi le meilleur témoin",
-            "Si un contrat a généré des bénéfices",
-            "Si chaque appel devrait être accueilli"
-          ],
+          "answers": {
+            "a1": "Si une décision publique a été prise légalement",
+            "a2": "Si un jury a choisi le meilleur témoin",
+            "a3": "Si un contrat a généré des bénéfices",
+            "a4": "Si chaque appel devrait être accueilli"
+          },
           "headerLabel": "DROIT PUBLIC"
         },
         "barrister-q10": {
           "question": "D'une manière générale, que demande la « cab-rank rule » à un avocat disponible, sous réserve des règles professionnelles et de leurs exceptions ?",
-          "answers": [
-            "Acceptez uniquement les cas populaires",
-            "Accepter les mandats appropriés indépendamment de l’identité du client ou de la notoriété de l’affaire",
-            "Garantir un résultat réussi",
-            "Travailler uniquement devant les tribunaux pénaux"
-          ],
+          "answers": {
+            "a1": "Acceptez uniquement les cas populaires",
+            "a2": "Accepter les mandats appropriés indépendamment de l’identité du client ou de la notoriété de l’affaire",
+            "a3": "Garantir un résultat réussi",
+            "a4": "Travailler uniquement devant les tribunaux pénaux"
+          },
           "headerLabel": "DERNIÈRE QUESTION D'ÉTHIQUE"
         }
       }

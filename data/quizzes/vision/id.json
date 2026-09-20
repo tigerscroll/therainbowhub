@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 7% yang Bisa Lulus Tes Penglihatan Ini",
   "eyebrow": "LAB FOKUS OPTIK",
   "summary": "Perbedaan kecil, perubahan pola, dan perangkap optik menguji apakah mata Anda menangkap hal-hal yang terlewatkan oleh kebanyakan orang.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Seberapa tajam matamu? Temukan perbedaan kecil, lacak pola pergeseran, dan tangkap jebakan visual sebelum Anda tertangkap.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan ini berisi sepuluh teka-teki visual yang meliputi kontras warna, pencocokan detail, orientasi spasial, pelacakan pola, perhatian, dan memori visual. Tugas menjadi lebih berat tanpa bergantung pada terminologi khusus.\n\nPelajari setiap gambar atau kumpulan simbol dengan cermat, lalu pilihlah jawaban yang paling sesuai dengan apa yang ditampilkan. Beberapa pertanyaan menguji persepsi dan perhatian daripada penglihatan itu sendiri.\n\nIni bukan pemeriksaan mata, tes penglihatan medis atau diagnosis. Carilah nasihat perawatan mata yang berkualifikasi jika Anda memiliki kekhawatiran tentang penglihatan Anda.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan sepuluh pertanyaan yang dipilih dengan cermat dalam satu tantangan terfokus.",
         "Pilih satu jawaban setiap kali. Kebenarannya tetap tersembunyi sampai pengungkapan terakhir.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan visi",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tantangan Visi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skor tantangan visi dan rincian tiga keterampilan Anda siap terungkap.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Tiga keterampilan visual dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga keterampilan visual dibandingkan"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Anda lulus tantangan visi!",
       "finished": "Tantangan visi selesai",
-      "correctLabel": "benar",
       "strongest": "Keterampilan visual terkuat",
       "trickiest": "Keterampilan visual paling rumit",
       "bestRound": "Bagian terbaik",
@@ -98,8 +91,7 @@
         "snapshot": "Apa yang disarankan oleh profil fokus Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Empat contoh biru dekat dengan ubin kanan bawah yang sedikit berbeda"
           },
           "question": "Ubin mana yang warnanya berbeda?",
-          "answers": [
-            "Kiri atas",
-            "Kanan bawah",
-            "Kanan atas",
-            "Kiri bawah"
-          ],
+          "answers": {
+            "a1": "Kiri atas",
+            "a2": "Kanan bawah",
+            "a3": "Kanan atas",
+            "a4": "Kiri bawah"
+          },
           "headerLabel": "KONTRAS WARNA"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Kode referensi M 7 K 2 P 9"
           },
           "question": "Kode mana yang sama persis?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "PERTANDINGAN DETAIL"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Panah timur laut dipantulkan melintasi cermin vertikal"
           },
           "question": "Panah manakah yang merupakan cermin vertikal dari ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "ORIENTASI SPASIAL"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Berapa banyak huruf F yang ditampilkan?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "KONTROL PERHATIAN"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, tidak diketahui"
           },
           "question": "Ubin manakah yang melengkapi baris bergantian?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "PELACAKAN POLA"
         },
         "vision-r4q5": {
           "question": "Warna mana yang paling menonjol dibandingkan warna biru laut tua?",
-          "answers": [
-            "Contoh A",
-            "Contoh B",
-            "Contoh D",
-            "Contoh C"
-          ],
+          "answers": {
+            "a1": "Contoh A",
+            "a2": "Contoh B",
+            "a3": "Contoh D",
+            "a4": "Contoh C"
+          },
           "headerLabel": "FOKUS WARNA"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Titik awal berwarna merah dengan empat rute titik-titik yang cocok bersilangan berulang kali sebelum mencapai titik akhir A, B, C, dan D"
           },
           "question": "Mulailah dari titik merah dan ikuti rute putus-putusnya. Surat mana yang Anda dapatkan?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "PELACAKAN VISUAL"
         },
         "vision-r9q2": {
           "context": "VERSI A: FOCUS-M7Q2-2026\nVERSI B: F0CUS-M7Q2-2026",
           "question": "Posisi tepatnya manakah yang berubah di Versi B?",
-          "answers": [
-            "F pertama",
-            "Q",
-            "Karakter kedua",
-            "Angka terakhir"
-          ],
+          "answers": {
+            "a1": "F pertama",
+            "a2": "Q",
+            "a3": "Karakter kedua",
+            "a4": "Angka terakhir"
+          },
           "headerLabel": "DETEKSI DETAIL"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Basis M8Q2 K7P4 R6N3 dan salin M8Q2 K1P4 R6M3"
           },
           "question": "Dua karakter manakah yang berubah?",
-          "answers": [
-            "7 dan N",
-            "8 dan 6",
-            "Q dan P",
-            "K dan R"
-          ],
+          "answers": {
+            "a1": "7 dan N",
+            "a2": "8 dan 6",
+            "a3": "Q dan P",
+            "a4": "K dan R"
+          },
           "headerLabel": "PERBANDINGAN KODE"
         },
         "vision-r8q5": {
           "question": "Ikon manakah yang muncul keempat?",
-          "answers": [
-            "Bulan",
-            "Jangkar",
-            "Matahari",
-            "Bintang"
-          ],
+          "answers": {
+            "a1": "Bulan",
+            "a2": "Jangkar",
+            "a3": "Matahari",
+            "a4": "Bintang"
+          },
           "study": {
             "title": "Cuplikan cepat",
             "items": [

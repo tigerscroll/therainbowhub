@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %11'i Bu Tren Makinisti Giriş Sınavını Geçebiliyor",
   "eyebrow": "DEMİRYOLU YETENEK TESTİ",
   "summary": "On soru demiryolu güvenliğini, gözlemi, mekanik akıl yürütmeyi ve net iletişimi test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "İlk sinyaller kolay görünüyor. Daha sonra sınav fren mesafesi, tehlikeler ve demiryolu muhakemesine geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, 1. Seviye İngilizce konuşulan demiryolu sistemlerinde seyahat eden geniş güvenlik ve muhakeme ilkelerini kullanır. Gözlem, iletişim, frenleme farkındalığı ve güvenlik öncelikli kararı test ederken ülkeye özgü sinyal unsurlarından, çalışma kurallarından ve iş unvanlarından kaçınır.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on tren sürücüsü yetenek sorusunu yanıtlayın.",
         "En güvenli veya en iyi desteklenen yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tren sürücüsüne giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Tren Makinist Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve demiryolu yetenek puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Dört demiryolu alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Dört demiryolu alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Tren Sürücüsü giriş mücadelesini geçtiniz!",
       "finished": "Tren Sürücüsü giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü demiryolu bölgesi",
       "trickiest": "En zorlu demiryolu bölgesi",
       "bestRound": "En iyi bölüm",
@@ -96,8 +89,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Bir tren beklenmedik bir engele doğru ilerliyor. Sürücünün birinci önceliği nedir?",
-          "answers": [
-            "Uygun fren tepkisini uygulayın ve acil durum prosedürünü izleyin",
-            "Zaman çizelgesi girişini tamamlayın",
-            "Yolcu kapılarını açın",
-            "Başka bir trenin bunu rapor etmesini bekleyin"
-          ],
+          "answers": {
+            "a1": "Uygun fren tepkisini uygulayın ve acil durum prosedürünü izleyin",
+            "a2": "Zaman çizelgesi girişini tamamlayın",
+            "a3": "Yolcu kapılarını açın",
+            "a4": "Başka bir trenin bunu rapor etmesini bekleyin"
+          },
           "headerLabel": "GÜVENLİK ÖNCELİKLERİ"
         },
         "train-q2": {
           "question": "Pistin uzun ve olaysız bir bölümünde sürekli dikkat neden önemlidir?",
-          "answers": [
-            "Tren zamanla hafifliyor",
-            "Uzun bir sessiz dönemden sonra kritik bir sinyal veya tehlike ortaya çıkabilir",
-            "Yolcular sık hız değişiklikleri bekliyor",
-            "Rota öğle saatlerinde otomatik olarak daha az güvenli hale gelir"
-          ],
+          "answers": {
+            "a1": "Tren zamanla hafifliyor",
+            "a2": "Uzun bir sessiz dönemden sonra kritik bir sinyal veya tehlike ortaya çıkabilir",
+            "a3": "Yolcular sık hız değişiklikleri bekliyor",
+            "a4": "Rota öğle saatlerinde otomatik olarak daha az güvenli hale gelir"
+          },
           "headerLabel": "KONSANTRASYON"
         },
         "train-q3": {
           "question": "Hız artarsa, diğer koşullar aynı kaldığında genellikle durma mesafesine ne olur?",
-          "answers": [
-            "Her zaman yarım kalır",
-            "Tamamen aynı kalıyor",
-            "Artar",
-            "Hızla alakasız oluyor"
-          ],
+          "answers": {
+            "a1": "Her zaman yarım kalır",
+            "a2": "Tamamen aynı kalıyor",
+            "a3": "Artar",
+            "a4": "Hızla alakasız oluyor"
+          },
           "headerLabel": "FREN FARKINDALIĞI"
         },
         "train-q4": {
           "question": "Bir yol tehlikesini bildirirken hangi radyo mesajı en kullanışlıdır?",
-          "answers": [
-            "Sebebi hakkında uzun bir tahmin",
-            "Konumu olmayan belirsiz bir uyarı",
-            "Zaman çizelgesi hakkında kişisel bir görüş",
-            "Seyahatin tam konumu ve yönü ile kısa ve gerçeklere dayalı bir açıklama"
-          ],
+          "answers": {
+            "a1": "Sebebi hakkında uzun bir tahmin",
+            "a2": "Konumu olmayan belirsiz bir uyarı",
+            "a3": "Zaman çizelgesi hakkında kişisel bir görüş",
+            "a4": "Seyahatin tam konumu ve yönü ile kısa ve gerçeklere dayalı bir açıklama"
+          },
           "headerLabel": "DEMİRYOLU İLETİŞİMİ"
         },
         "train-q5": {
           "question": "Bir sürücünün güvenlik açısından kritik bir talimat için neden yalnızca belleğe güvenmekten kaçınması gerekir?",
-          "answers": [
-            "Onaylanmalı ve onaylanan süreç boyunca takip edilmelidir.",
-            "Yazılı talimatlar her zaman isteğe bağlıdır",
-            "Bellek daha yüksek hızda mükemmel hale gelir",
-            "Bunun yerine yolcular bunu yorumlamalıdır"
-          ],
+          "answers": {
+            "a1": "Onaylanmalı ve onaylanan süreç boyunca takip edilmelidir.",
+            "a2": "Yazılı talimatlar her zaman isteğe bağlıdır",
+            "a3": "Bellek daha yüksek hızda mükemmel hale gelir",
+            "a4": "Bunun yerine yolcular bunu yorumlamalıdır"
+          },
           "headerLabel": "PROSEDÜR GÜVENLİĞİ"
         },
         "train-q6": {
           "question": "Bir uyarı göstergesi kısa süreliğine değişir ve ardından normale döner. En güvenli yorumlama nedir?",
-          "answers": [
-            "Göz ardı edin çünkü ortadan kayboldu",
-            "İlgili olarak ele alın, izleyin ve uygun süreç aracılığıyla raporlayın",
-            "Her sistemi kontrol etmeden hemen sıfırlayın",
-            "Buna başka bir trenin sebep olduğunu varsayalım"
-          ],
+          "answers": {
+            "a1": "Göz ardı edin çünkü ortadan kayboldu",
+            "a2": "İlgili olarak ele alın, izleyin ve uygun süreç aracılığıyla raporlayın",
+            "a3": "Her sistemi kontrol etmeden hemen sıfırlayın",
+            "a4": "Buna başka bir trenin sebep olduğunu varsayalım"
+          },
           "headerLabel": "GÖZLEM"
         },
         "train-q7": {
           "question": "Tekerlek kayması büyük olasılıkla tekerlek ile ray arasındaki çekiş ne zaman meydana gelir?",
-          "answers": [
-            "Sınırsız",
-            "Mükemmel dengeli",
-            "Azaltılmış",
-            "Hava koşullarından bağımsız"
-          ],
+          "answers": {
+            "a1": "Sınırsız",
+            "a2": "Mükemmel dengeli",
+            "a3": "Azaltılmış",
+            "a4": "Hava koşullarından bağımsız"
+          },
           "headerLabel": "MEKANİK AKIL YÜRÜTME"
         },
         "train-q8": {
           "question": "Güvenlik açısından kritik bir talimatın doğru şekilde duyulup duyulmadığından emin değilsiniz. Ne yapmalısın?",
-          "answers": [
-            "Bağlamdan tahmin et",
-            "Devam et ve sonra sor",
-            "En hızlı tercümeyi seçin",
-            "Tekrar edin ve onay alın"
-          ],
+          "answers": {
+            "a1": "Bağlamdan tahmin et",
+            "a2": "Devam et ve sonra sor",
+            "a3": "En hızlı tercümeyi seçin",
+            "a4": "Tekrar edin ve onay alın"
+          },
           "headerLabel": "KAPALI DÖNGÜ İLETİŞİM"
         },
         "train-q9": {
           "question": "Tren sürüşünde yorgunluk kontrolleri neden önemlidir?",
-          "answers": [
-            "Yorgunluk dikkati, tepkiyi ve karar kalitesini azaltabilir",
-            "Yorgunluk rutin hafızayı geliştirir",
-            "Uzun çalışma saatlerinden sadece yolcular etkileniyor",
-            "Ray ölçüsünü değiştirir"
-          ],
+          "answers": {
+            "a1": "Yorgunluk dikkati, tepkiyi ve karar kalitesini azaltabilir",
+            "a2": "Yorgunluk rutin hafızayı geliştirir",
+            "a3": "Uzun çalışma saatlerinden sadece yolcular etkileniyor",
+            "a4": "Ray ölçüsünü değiştirir"
+          },
           "headerLabel": "İNSAN PERFORMANSI"
         },
         "train-q10": {
           "question": "İki rota kalkıştan hemen önce çakışıyor. En güvenli yanıt nedir?",
-          "answers": [
-            "Hangi ekran daha parlaksa onu takip edin",
-            "Tutarsızlık uygun süreçle çözülene kadar devam etmeyin",
-            "Daha kısa görünen rotayı seçin",
-            "Bir yolcunun karar vermesini isteyin"
-          ],
+          "answers": {
+            "a1": "Hangi ekran daha parlaksa onu takip edin",
+            "a2": "Tutarsızlık uygun süreçle çözülene kadar devam etmeyin",
+            "a3": "Daha kısa görünen rotayı seçin",
+            "a4": "Bir yolcunun karar vermesini isteyin"
+          },
           "headerLabel": "SON YETENEK SORUSU"
         }
       }

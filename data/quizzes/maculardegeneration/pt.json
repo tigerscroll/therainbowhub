@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Teste de degeneração macular",
   "eyebrow": "VERIFICAÇÃO DE VISÃO CENTRAL DE 10 PERGUNTAS",
   "summary": "Detalhes centrais, armadilhas visuais e importantes sinais de alerta da AMD em um desafio rápido.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "Consegue identificar os detalhes centrais e identificar os sinais de alerta? Essas 10 verificações rápidas ficam mais difíceis.",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio de dez perguntas combina cinco quebra-cabeças visuais no visor com cinco perguntas de conhecimentos gerais sobre degeneração macular relacionada à idade (DMRI). Avalia apenas as respostas dadas neste teste, não a saúde ocular nem a probabilidade de ter uma doença.\n\nO tamanho e o brilho do visor, o contraste, a visão, as lentes corretivas, o cansaço e as configurações do dispositivo podem afetar o desempenho. O aparecimento de linhas onduladas ou distorcidas, uma nova área embaçada ou em branco na visão central ou uma piora súbita devem ser discutidos prontamente com um profissional de saúde ocular qualificado.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Complete cinco desafios de detalhes centrais e memória visual.",
         "Responda cinco perguntas sobre a DMRI e quando procurar ajuda.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafio da visão central",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "Teste de Degeneração Macular",
@@ -30,10 +26,8 @@
         "preAdCopy": "Suas dez respostas foram verificadas e sua pontuação no desafio de visão central está pronta para ser revelada.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Três áreas visuais comparadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Três áreas visuais comparadas"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Superou o desafio visual de 80%!",
       "finished": "Desafio de visão central concluído",
-      "correctLabel": "corretas",
       "strongest": "Área mais forte hoje",
       "trickiest": "Área mais complicada hoje",
       "bestRound": "Melhor etapa",
@@ -94,8 +87,7 @@
         "snapshot": "O que o resultado indica",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Qual personagem está exatamente no meio da grade?",
           "headerLabel": "DETALHE CENTRAL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERÊNCIA: Q7M2P6",
           "question": "Qual código corresponde exatamente à referência?",
           "headerLabel": "FECHAR PARTIDA",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERÊNCIA",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Qual símbolo completa a sequência alternada?",
           "headerLabel": "RASTREAMENTO DE PADRÕES",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Qual objeto apareceu em terceiro lugar?",
           "headerLabel": "MEMÓRIA VISUAL RÁPIDA",
-          "answers": [
-            "Livro",
-            "Chave",
-            "Caneca",
-            "Sol"
-          ],
+          "answers": {
+            "a1": "Livro",
+            "a2": "Chave",
+            "a3": "Caneca",
+            "a4": "Sol"
+          },
           "study": {
             "title": "Estude a ordem dos cinco objetos",
             "instruction": "Isso desaparecerá automaticamente.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Qual posição contém o círculo aberto?",
           "headerLabel": "FOCO NA LINHA MÉDIA",
-          "answers": [
-            "Quarto",
-            "Segundo",
-            "Quinto",
-            "Terceiro"
-          ],
+          "answers": {
+            "a1": "Quarto",
+            "a2": "Segundo",
+            "a3": "Quinto",
+            "a4": "Terceiro"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Qual parte da visão é mais diretamente afetada pela degeneração macular relacionada à idade?",
           "headerLabel": "NOÇÕES BÁSICAS DA AMD",
-          "answers": [
-            "Somente as bordas externas",
-            "Visão central nítida e direta",
-            "Apenas visão noturna",
-            "Apenas visão em profundidade"
-          ]
+          "answers": {
+            "a1": "Somente as bordas externas",
+            "a2": "Visão central nítida e direta",
+            "a3": "Apenas visão noturna",
+            "a4": "Apenas visão em profundidade"
+          }
         },
         "macular-q7": {
           "question": "Qual mudança visual é um sinal de alerta bem conhecido da AMD?",
           "headerLabel": "SINAIS DE AVISO",
-          "answers": [
-            "Os sons parecem mais baixos",
-            "Uma irritação temporária na pálpebra",
-            "Linhas retas que parecem onduladas ou tortas",
-            "Um cílio caindo"
-          ]
+          "answers": {
+            "a1": "Os sons parecem mais baixos",
+            "a2": "Uma irritação temporária na pálpebra",
+            "a3": "Linhas retas que parecem onduladas ou tortas",
+            "a4": "Um cílio caindo"
+          }
         },
         "macular-q8": {
           "question": "Que avaliação um oftalmologista pode usar para procurar DMRI?",
           "headerLabel": "AVALIAÇÃO PROFISSIONAL",
-          "answers": [
-            "Um teste de audição",
-            "Uma leitura da pressão arterial sozinha",
-            "Um teste de sabor",
-            "Um exame oftalmológico completo com dilatação das pupilas"
-          ]
+          "answers": {
+            "a1": "Um teste de audição",
+            "a2": "Uma leitura da pressão arterial sozinha",
+            "a3": "Um teste de sabor",
+            "a4": "Um exame oftalmológico completo com dilatação das pupilas"
+          }
         },
         "macular-q9": {
           "question": "Qual é a resposta mais segura à piora repentina da visão ou a uma nova área central borrada ou em branco?",
           "headerLabel": "QUANDO AGIR",
-          "answers": [
-            "Procure aconselhamento profissional imediato sobre cuidados oftalmológicos",
-            "Espere vários meses sem mencionar isso",
-            "Aumente o brilho do visor e presuma que o problema está resolvido",
-            "Confie apenas em um teste online"
-          ]
+          "answers": {
+            "a1": "Procure aconselhamento profissional imediato sobre cuidados oftalmológicos",
+            "a2": "Espere vários meses sem mencionar isso",
+            "a3": "Aumente o brilho do visor e presuma que o problema está resolvido",
+            "a4": "Confie apenas em um teste online"
+          }
         },
         "macular-q10": {
           "question": "O que sua pontuação neste desafio online pode lhe dizer?",
           "headerLabel": "VERIFICAÇÃO FINAL DA REALIDADE",
-          "answers": [
-            "Se sua retina está saudável",
-            "Apenas o desempenho nestas dez perguntas",
-            "Se precisa de um tratamento específico",
-            "Se pode descartar a AMD"
-          ]
+          "answers": {
+            "a1": "Se sua retina está saudável",
+            "a2": "Apenas o desempenho nestas dez perguntas",
+            "a3": "Se precisa de um tratamento específico",
+            "a4": "Se pode descartar a AMD"
+          }
         }
       }
     }

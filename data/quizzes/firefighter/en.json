@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 11% Can Pass This Firefighter Entrance Exam",
   "eyebrow": "Firefighter Challenge",
   "summary": "Fire science, tools, hazards and fast incident decisions test how clearly you think under pressure.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Fire behaviour, hazard spotting, mechanical reasoning and split-second judgement. Can you stay calm when every clue matters?",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This worldwide entertainment challenge uses ten carefully varied questions to explore entrance-level firefighter reasoning. It covers fire and smoke science, scene hazards, equipment mechanics, practical numeracy, spatial awareness, clear communication and incident judgement.\n\nThe challenge moves quickly from accessible foundations into changing conditions, practical mechanics and integrated incident decisions. Questions use worldwide-safe principles rather than local ranks, codes, building rules or operational firefighting procedures.\n\nYour final percentage reflects only the answers given in this entertainment quiz. It is a playful snapshot of the entrance areas that felt strongest and the topics that proved more challenging, not a judgement of operational readiness or suitability for firefighter employment.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Work through all ten questions at your own pace; there is no timer or speed bonus.",
         "Choose the single option best supported by the visible clues. Correctness stays hidden until the final reveal.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Firefighter challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Firefighter Challenge",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your firefighter score and five-area breakdown are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Five entrance areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Five entrance areas compared"
+        ]
       }
     }
   },
@@ -72,16 +66,25 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Fire and smoke science" },
-      "dimension-2": { "label": "Scene and hazard awareness" },
-      "dimension-3": { "label": "Equipment and mechanical reasoning" },
-      "dimension-4": { "label": "Numeracy and spatial awareness" },
-      "dimension-5": { "label": "Communication and incident judgement" }
+      "dimension-1": {
+        "label": "Fire and smoke science"
+      },
+      "dimension-2": {
+        "label": "Scene and hazard awareness"
+      },
+      "dimension-3": {
+        "label": "Equipment and mechanical reasoning"
+      },
+      "dimension-4": {
+        "label": "Numeracy and spatial awareness"
+      },
+      "dimension-5": {
+        "label": "Communication and incident judgement"
+      }
     },
     "score": {
       "passed": "You passed the firefighter entrance challenge!",
       "finished": "Firefighter entrance challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest entrance area",
       "trickiest": "Trickiest entrance area",
       "bestRound": "Best incident section",
@@ -104,17 +107,22 @@
         "firefighter-s1q1": {
           "question": "Heat and fuel are present. Which third element is needed to complete the fire triangle?",
           "headerLabel": "FIRE SCIENCE",
-          "answers": ["Water", "Oxygen", "Smoke", "Ash"]
+          "answers": {
+            "a1": "Water",
+            "a2": "Oxygen",
+            "a3": "Smoke",
+            "a4": "Ash"
+          }
         },
         "firefighter-s1q2": {
           "question": "A sparking electrical panel stands beside a pool of water. What is the safest first response?",
           "headerLabel": "HAZARD SPOTTING",
-          "answers": [
-            "Step through the water to switch it off",
-            "Pour more water over the panel",
-            "Move the panel by its outer case",
-            "Keep people clear and alert qualified responders"
-          ]
+          "answers": {
+            "a1": "Step through the water to switch it off",
+            "a2": "Pour more water over the panel",
+            "a3": "Move the panel by its outer case",
+            "a4": "Keep people clear and alert qualified responders"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -127,69 +135,96 @@
           },
           "question": "Which report best communicates the change without guessing at its cause?",
           "headerLabel": "INCIDENT REPORTING",
-          "answers": [
-            "Smoke at the north doorway has changed from light and steady to rapidly increasing",
-            "The exact burning material has been identified from the smoke",
-            "Nothing important has changed because smoke was already present",
-            "The fire will definitely remain in the same area"
-          ]
+          "answers": {
+            "a1": "Smoke at the north doorway has changed from light and steady to rapidly increasing",
+            "a2": "The exact burning material has been identified from the smoke",
+            "a3": "Nothing important has changed because smoke was already present",
+            "a4": "The fire will definitely remain in the same area"
+          }
         },
         "firefighter-s1q5": {
           "question": "A pry bar is used as a lever. What usually happens when the grip moves farther from the pivot?",
           "headerLabel": "MECHANICAL REASONING",
-          "answers": [
-            "More force is always required",
-            "The pivot stops working",
-            "Less force is needed for the same turning effect",
-            "The load becomes weightless"
-          ]
+          "answers": {
+            "a1": "More force is always required",
+            "a2": "The pivot stops working",
+            "a3": "Less force is needed for the same turning effect",
+            "a4": "The load becomes weightless"
+          }
         },
         "firefighter-s3q6": {
           "question": "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?",
           "headerLabel": "HEAT TRANSFER",
-          "answers": ["Radiation", "Conduction", "Evaporation", "Condensation"]
+          "answers": {
+            "a1": "Radiation",
+            "a2": "Conduction",
+            "a3": "Evaporation",
+            "a4": "Condensation"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
-            "items": ["MAP SCALE::1 cm = 12.5 m", "ROUTE::4.8 cm"],
+            "items": [
+              "MAP SCALE::1 cm = 12.5 m",
+              "ROUTE::4.8 cm"
+            ],
             "ariaLabel": "A map scale of one centimetre to twelve point five metres and a route measuring four point eight centimetres"
           },
           "question": "What real distance does the route represent?",
           "headerLabel": "PRACTICAL NUMERACY",
-          "answers": ["50 metres", "60 metres", "65 metres", "70 metres"]
+          "answers": {
+            "a1": "50 metres",
+            "a2": "60 metres",
+            "a3": "65 metres",
+            "a4": "70 metres"
+          }
         },
         "firefighter-s4q7": {
           "question": "A fire-damaged roof is sagging and fresh cracks are appearing. What is the safest interpretation?",
           "headerLabel": "STRUCTURAL HAZARDS",
-          "answers": [
-            "The roof is cooling safely",
-            "The cracks show exactly where to stand",
-            "Collapse is possible, so keep clear and report the changing condition",
-            "The damage matters only after the incident"
-          ]
+          "answers": {
+            "a1": "The roof is cooling safely",
+            "a2": "The cracks show exactly where to stand",
+            "a3": "Collapse is possible, so keep clear and report the changing condition",
+            "a4": "The damage matters only after the incident"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
-            "items": ["GEAR A ↻", "GEAR B ?", "GEAR C ?"],
+            "items": [
+              "GEAR A ↻",
+              "GEAR B ?",
+              "GEAR C ?"
+            ],
             "ariaLabel": "Clockwise Gear A drives Gear B, which drives Gear C"
           },
           "question": "Gear A drives B, and B drives C. Which way does Gear C turn?",
           "headerLabel": "GEAR REASONING",
-          "answers": [
-            "Clockwise, after two direction reversals",
-            "Counterclockwise, after one reversal",
-            "It cannot turn because three gears are used",
-            "Upward because Gear A is first"
-          ]
+          "answers": {
+            "a1": "Clockwise, after two direction reversals",
+            "a2": "Counterclockwise, after one reversal",
+            "a3": "It cannot turn because three gears are used",
+            "a4": "Upward because Gear A is first"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
-            "items": ["CREWS::4", "PER CREW::3 lamps", "SPARES REQUIRED::2", "ALREADY ISSUED::2"],
+            "items": [
+              "CREWS::4",
+              "PER CREW::3 lamps",
+              "SPARES REQUIRED::2",
+              "ALREADY ISSUED::2"
+            ],
             "ariaLabel": "Four crews need three lamps each, two spare lamps are required and two lamps have already been issued"
           },
           "question": "How many more lamps must be drawn so every crew is equipped and two spares remain?",
           "headerLabel": "EQUIPMENT MATHS",
-          "answers": ["10", "14", "16", "12"]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -203,12 +238,12 @@
           },
           "question": "What is the best first action and report?",
           "headerLabel": "FINAL INCIDENT TEST",
-          "answers": [
-            "Finish the count before reporting the smoke",
-            "Direct people east; report west smoke and two missing people; defer the count",
-            "Use the west corridor because it is shortest",
-            "Report only the equipment count"
-          ]
+          "answers": {
+            "a1": "Finish the count before reporting the smoke",
+            "a2": "Direct people east; report west smoke and two missing people; defer the count",
+            "a3": "Use the west corridor because it is shortest",
+            "a4": "Report only the equipment count"
+          }
         }
       }
     }

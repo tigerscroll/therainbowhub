@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 7 % klarar detta bilmekanikerquiz",
   "eyebrow": "TILTALT TJURVIS",
   "summary": "Varningsljus, dolda fel och konstiga vägsymtom testar om du kan diagnostisera problem innan det blir dyrt.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Detta världsomspännande underhållningstest innehåller tio praktiska frågor om fordonssystem, verkstadsbedömning och felsökning. Det går från välbekanta varningstecken till relaterade symtom som kräver noggrann diagnos.\n\nVälj det bästa svaret från informationen som visas. Frågorna använder breda fordonsprinciper och undviker att anta ett märke, modell eller lokal besiktningsstandard.\n\nDin poäng återspeglar endast denna korta utmaning. Det är inte en yrkeskvalifikation, säkerhetsinspektion eller ersättning för diagnos av en kvalificerad mekaniker.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Fyll i tio noggrant utvalda frågor i en fokuserad utmaning.",
         "Välj ett svar varje gång. Korrektheten förblir dold tills den sista avslöjandet.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mekanisk utmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Verkstadsutmaning",
@@ -29,10 +26,8 @@
         "preAdCopy": "Dina mekanikerpoäng och sex-systemuppdelning är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Sex fordonssystem jämfördes",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Sex fordonssystem jämfördes"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Du klarade mekanikerutmaningen!",
       "finished": "Verkstadsutmaningen klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste fordonssystem",
       "trickiest": "Det knepigaste fordonssystemet",
-      "bestRound": "Bästa avsnittet",
-      "showBestRound": false
+      "bestRound": "Bästa avsnittet"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Vilken varningssymbol relaterar mest direkt till motoroljetrycket?",
-          "answers": [
-            "Oljeburk",
-            "Batteri",
-            "Termometer",
-            "Ratt"
-          ],
+          "answers": {
+            "a1": "Oljeburk",
+            "a2": "Batteri",
+            "a3": "Termometer",
+            "a4": "Ratt"
+          },
           "headerLabel": "MOTORSYSTEM"
         },
         "mech-r1q2": {
           "question": "En röd bromsvarning förblir på efter att parkeringsbromsen släppts. Vad är det säkraste svaret?",
-          "answers": [
-            "Kör snabbare för att testa det",
-            "Stanna säkert och låt bromssystemet kontrolleras",
-            "Pumpa däcken hårdare",
-            "Ignorera det tills nästa service"
-          ],
+          "answers": {
+            "a1": "Kör snabbare för att testa det",
+            "a2": "Stanna säkert och låt bromssystemet kontrolleras",
+            "a3": "Pumpa däcken hårdare",
+            "a4": "Ignorera det tills nästa service"
+          },
           "headerLabel": "BROMSAR & SÄKERHET"
         },
         "mech-r4q5": {
           "question": "Ett rytmiskt klick blir snabbare vid snäva svängar. Vilken del är en trolig orsak?",
-          "answers": [
-            "Termostat",
-            "Bränslepump",
-            "Yttre led med konstant hastighet",
-            "Hyttfläkt"
-          ],
+          "answers": {
+            "a1": "Termostat",
+            "a2": "Bränslepump",
+            "a3": "Yttre led med konstant hastighet",
+            "a4": "Hyttfläkt"
+          },
           "headerLabel": "DRIFTÅG"
         },
         "mech-r4q6": {
           "question": "Ett däck har en djup utbuktning på sidoväggen. Vad ska du göra?",
-          "answers": [
-            "Minska trycket och fortsätt",
-            "Tryck bulan platt",
-            "Flytta den till ett annat hjul",
-            "Sluta använda däcket och ordna byte"
-          ],
+          "answers": {
+            "a1": "Minska trycket och fortsätt",
+            "a2": "Tryck bulan platt",
+            "a3": "Flytta den till ett annat hjul",
+            "a4": "Sluta använda däcket och ordna byte"
+          },
           "headerLabel": "FORDONSSÄKERHET"
         },
         "mech-r5q5": {
           "question": "Motorn överhettas i trafiken men svalnar vid väghastighet. Vilken komponent förtjänar en tidig kontroll?",
-          "answers": [
-            "Kylarfläkt",
-            "Säkerhetsbälte",
-            "Bränslelock",
-            "Hjullager"
-          ],
+          "answers": {
+            "a1": "Kylarfläkt",
+            "a2": "Säkerhetsbälte",
+            "a3": "Bränslelock",
+            "a4": "Hjullager"
+          },
           "headerLabel": "KYLSYSTEM"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Förväntad batterispänning 12,6 volt, uppmätt 10,5 volt"
           },
           "question": "Ett friskt 12-volts batteri läser av cirka 12,6 V i vila. Den här läser på 10,5 V. Vad tyder det på?",
-          "answers": [
-            "Däcken är slitna",
-            "Kylvätskan är för stark",
-            "Batteriet är djupt urladdat eller har en trasig cell",
-            "Generatorremmen är ny"
-          ],
+          "answers": {
+            "a1": "Däcken är slitna",
+            "a2": "Kylvätskan är för stark",
+            "a3": "Batteriet är djupt urladdat eller har en trasig cell",
+            "a4": "Generatorremmen är ny"
+          },
           "headerLabel": "ELEKTRISKA SYSTEM"
         },
         "mech-r7q1": {
           "question": "Ratten vibrerar huvudsakligen vid ett hastighetsområde. Vad är en trolig första misstänkt?",
-          "answers": [
-            "Hjul obalans",
-            "Bränslekvalitet",
-            "Hyttfilter",
-            "Kylvätskefärg"
-          ],
+          "answers": {
+            "a1": "Hjul obalans",
+            "a2": "Bränslekvalitet",
+            "a3": "Hyttfilter",
+            "a4": "Kylvätskefärg"
+          },
           "headerLabel": "STYRNING & BALANS"
         },
         "mech-r7q6": {
           "question": "En ny kraftig vibration uppstår efter att ha träffat en vägfara. Vad ska du göra?",
-          "answers": [
-            "Öka hastigheten för att jämna ut det",
-            "Stanna säkert och inspektera hjulet och däcket innan du fortsätter",
-            "Sänk varje däcktryck",
-            "Ignorera det om ingen varning visas"
-          ],
+          "answers": {
+            "a1": "Öka hastigheten för att jämna ut det",
+            "a2": "Stanna säkert och inspektera hjulet och däcket innan du fortsätter",
+            "a3": "Sänk varje däcktryck",
+            "a4": "Ignorera det om ingen varning visas"
+          },
           "headerLabel": "FORDONSSÄKERHET"
         },
         "mech-r9q2": {
           "context": "KUNDEN SÄGER",
           "question": "\"Batteriet är nytt, men det blir urladdat flera gånger och laddningsvarningen visas under körning.\" Vad ska testas?",
-          "answers": [
-            "Däckinriktning",
-            "Laddningssystemet och dess anslutningar",
-            "Bromsbeläggstjocklek",
-            "Kylvätskekoncentration"
-          ],
+          "answers": {
+            "a1": "Däckinriktning",
+            "a2": "Laddningssystemet och dess anslutningar",
+            "a3": "Bromsbeläggstjocklek",
+            "a4": "Kylvätskekoncentration"
+          },
           "headerLabel": "LADDNINGSSYSTEM"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motorn kyler vid körhastighet, överhettas vid tomgång, kylfläkten går inte"
           },
           "question": "Motorn överhettas endast på tomgång, kylaren är fri och kylfläkten går aldrig. Vad ska diagnostiseras först?",
-          "answers": [
-            "Hjulinställning",
-            "Tanklockets tätning",
-            "Bromsbeläggsslitage",
-            "Fläktkrets, motor och styrkommando"
-          ],
+          "answers": {
+            "a1": "Hjulinställning",
+            "a2": "Tanklockets tätning",
+            "a3": "Bromsbeläggsslitage",
+            "a4": "Fläktkrets, motor och styrkommando"
+          },
           "headerLabel": "SLUTLIG DIAGNOS"
         }
       }

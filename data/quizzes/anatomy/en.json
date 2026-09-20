@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 8% Pass This Human Anatomy Quiz",
   "eyebrow": "HUMAN BODY CHALLENGE",
   "summary": "Ten questions spanning organs, bones and the body systems that keep everything working.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Your body may be familiar, but its smallest bones, largest organs and vital systems can still catch you out.",
     "cta": "Start Quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This ten-question entertainment quiz tests general knowledge of the human body, from major organs and bones to circulation and breathing. Every question has one clear answer drawn from widely accepted introductory anatomy.\n\nChoose one answer for each question. Correctness remains hidden until the final reveal, where you can review the complete set and see which area of anatomy was your strongest.\n\nAnatomical details can vary naturally between individuals. The quiz uses the standard adult anatomy conventions commonly taught in general education.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Answer ten human anatomy questions in one focused challenge.",
         "Choose one of four answers for every question.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Anatomy challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Human Anatomy",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your anatomy score and complete answer review are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Three anatomy areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three anatomy areas compared"
+        ]
       }
     }
   },
@@ -67,14 +61,19 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Organs and functions" },
-      "dimension-2": { "label": "Bones and skeleton" },
-      "dimension-3": { "label": "Body systems" }
+      "dimension-1": {
+        "label": "Organs and functions"
+      },
+      "dimension-2": {
+        "label": "Bones and skeleton"
+      },
+      "dimension-3": {
+        "label": "Body systems"
+      }
     },
     "score": {
       "passed": "You passed the anatomy challenge!",
       "finished": "Anatomy challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest anatomy area",
       "trickiest": "Trickiest anatomy area",
       "bestRound": "Best section",
@@ -87,8 +86,7 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -97,52 +95,102 @@
       "questions": {
         "anatomy-q1": {
           "question": "What is the largest organ in the human body?",
-          "answers": ["Skin", "Liver", "Lungs", "Brain"],
+          "answers": {
+            "a1": "Skin",
+            "a2": "Liver",
+            "a3": "Lungs",
+            "a4": "Brain"
+          },
           "headerLabel": "ORGANS"
         },
         "anatomy-q2": {
           "question": "How many chambers does the human heart have?",
-          "answers": ["Two", "Four", "Three", "Five"],
+          "answers": {
+            "a1": "Two",
+            "a2": "Four",
+            "a3": "Three",
+            "a4": "Five"
+          },
           "headerLabel": "THE HEART"
         },
         "anatomy-q3": {
           "question": "What is the longest bone in the human body?",
-          "answers": ["Tibia", "Humerus", "Femur", "Radius"],
+          "answers": {
+            "a1": "Tibia",
+            "a2": "Humerus",
+            "a3": "Femur",
+            "a4": "Radius"
+          },
           "headerLabel": "THE SKELETON"
         },
         "anatomy-q4": {
           "question": "Which organ produces insulin?",
-          "answers": ["Liver", "Kidney", "Spleen", "Pancreas"],
+          "answers": {
+            "a1": "Liver",
+            "a2": "Kidney",
+            "a3": "Spleen",
+            "a4": "Pancreas"
+          },
           "headerLabel": "ORGANS"
         },
         "anatomy-q5": {
           "question": "What is the smallest bone in the human body?",
-          "answers": ["Stapes", "Patella", "Coccyx", "Ulna"],
+          "answers": {
+            "a1": "Stapes",
+            "a2": "Patella",
+            "a3": "Coccyx",
+            "a4": "Ulna"
+          },
           "headerLabel": "THE SKELETON"
         },
         "anatomy-q6": {
           "question": "How many bones are usually found in an adult human body?",
-          "answers": ["201", "206", "212", "218"],
+          "answers": {
+            "a1": "201",
+            "a2": "206",
+            "a3": "212",
+            "a4": "218"
+          },
           "headerLabel": "BODY BASICS"
         },
         "anatomy-q7": {
           "question": "Which major muscle sits beneath the lungs and helps you breathe?",
-          "answers": ["Trapezius", "Deltoid", "Diaphragm", "Hamstring"],
+          "answers": {
+            "a1": "Trapezius",
+            "a2": "Deltoid",
+            "a3": "Diaphragm",
+            "a4": "Hamstring"
+          },
           "headerLabel": "BREATHING"
         },
         "anatomy-q8": {
           "question": "The cerebellum is part of which organ?",
-          "answers": ["Spinal cord", "Inner ear", "Heart", "Brain"],
+          "answers": {
+            "a1": "Spinal cord",
+            "a2": "Inner ear",
+            "a3": "Heart",
+            "a4": "Brain"
+          },
           "headerLabel": "THE BRAIN"
         },
         "anatomy-q9": {
           "question": "Which blood vessels carry blood away from the heart?",
-          "answers": ["Arteries", "Veins", "Capillaries", "Venules"],
+          "answers": {
+            "a1": "Arteries",
+            "a2": "Veins",
+            "a3": "Capillaries",
+            "a4": "Venules"
+          },
           "headerLabel": "CIRCULATION"
         },
         "anatomy-q10": {
           "question": "What is the largest internal organ in the human body?",
-          "answers": ["Lungs", "Liver", "Stomach", "Kidneys"],
+          "answers": {
+            "a1": "Lungs",
+            "a2": "Liver",
+            "a3": "Stomach",
+            "a4": "Kidneys"
+          },
           "headerLabel": "FINAL QUESTION"
         }
       }

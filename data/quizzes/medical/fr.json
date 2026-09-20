@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "La plupart des adultes ne peuvent pas réussir cet examen médical d’entrée",
   "eyebrow": "LE TEST DE SCIENCES MÉDICALES",
   "summary": "Dix questions testent l'anatomie, la physiologie, la microbiologie, la pharmacologie et la sécurité clinique.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les premières questions semblent basiques. Ensuite, le test passe à la physiologie, aux microbes et à la science médicale que la plupart des adultes ont oubliée.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de divertissement de dix questions utilise les sciences médicales fondamentales enseignées dans les principaux pays anglophones. Il teste les bases de l’anatomie, de la physiologie, de la biologie cellulaire, de la microbiologie, de la pharmacologie et du contrôle des infections sans dépendre du programme d’admission d’une université.\n\nChoisissez une réponse pour chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions médicales de plus en plus difficiles.",
         "Choisissez la réponse la plus précise.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée médicale",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen médical d'entrée",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score en sciences médicales est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Comparaison de cinq domaines scientifiques",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Comparaison de cinq domaines scientifiques"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission en médecine !",
       "finished": "Défi d’entrée médicale terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -99,8 +92,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Quelle protéine des globules rouges transporte le plus d’oxygène ?",
-          "answers": [
-            "Hémoglobine",
-            "Kératine",
-            "Collagène",
-            "Insuline"
-          ],
+          "answers": {
+            "a1": "Hémoglobine",
+            "a2": "Kératine",
+            "a3": "Collagène",
+            "a4": "Insuline"
+          },
           "headerLabel": "PHYSIOLOGIE DU SANG"
         },
         "medical-q2": {
           "question": "Dans l’ADN, l’adénine s’associe normalement à quelle base ?",
-          "answers": [
-            "Guanine",
-            "Thymine",
-            "Cytosine",
-            "Uracile"
-          ],
+          "answers": {
+            "a1": "Guanine",
+            "a2": "Thymine",
+            "a3": "Cytosine",
+            "a4": "Uracile"
+          },
           "headerLabel": "BIOLOGIE CELLULAIRE"
         },
         "medical-q3": {
           "question": "Quel organe est un site majeur de transformation et de dégradation de nombreux médicaments ?",
-          "answers": [
-            "Rate",
-            "Thyroïde",
-            "Foie",
-            "Vessie"
-          ],
+          "answers": {
+            "a1": "Rate",
+            "a2": "Thyroïde",
+            "a3": "Foie",
+            "a4": "Vessie"
+          },
           "headerLabel": "PHARMACOLOGIE"
         },
         "medical-q4": {
           "question": "Quelle affirmation distingue le mieux les virus des bactéries ?",
-          "answers": [
-            "Les virus sont toujours plus gros",
-            "Les bactéries ne peuvent pas se reproduire",
-            "Les virus ne contiennent aucun matériel génétique",
-            "Les virus dépendent des cellules hôtes pour se répliquer"
-          ],
+          "answers": {
+            "a1": "Les virus sont toujours plus gros",
+            "a2": "Les bactéries ne peuvent pas se reproduire",
+            "a3": "Les virus ne contiennent aucun matériel génétique",
+            "a4": "Les virus dépendent des cellules hôtes pour se répliquer"
+          },
           "headerLabel": "MICROBIOLOGIE"
         },
         "medical-q5": {
           "question": "Une solution avec un pH inférieur à 7 est décrite comme quoi ?",
-          "answers": [
-            "Acide",
-            "Neutre",
-            "Alcalin",
-            "Isotonique"
-          ],
+          "answers": {
+            "a1": "Acide",
+            "a2": "Neutre",
+            "a3": "Alcalin",
+            "a4": "Isotonique"
+          },
           "headerLabel": "CHIMIE CORPORELLE"
         },
         "medical-q6": {
           "question": "Quelle partie du système nerveux autonome est associée à l’activité « repos et digestion » ?",
-          "answers": [
-            "Système sympathique",
-            "Système parasympathique",
-            "Système nerveux somatique",
-            "Voie visuelle centrale"
-          ],
+          "answers": {
+            "a1": "Système sympathique",
+            "a2": "Système parasympathique",
+            "a3": "Système nerveux somatique",
+            "a4": "Voie visuelle centrale"
+          },
           "headerLabel": "SYSTÈME NERVEUX"
         },
         "medical-q7": {
           "question": "Quelle structure empêche les aliments de pénétrer dans les voies respiratoires lors de la déglutition ?",
-          "answers": [
-            "Rotule",
-            "Rétine",
-            "Épiglotte",
-            "Pancréas"
-          ],
+          "answers": {
+            "a1": "Rotule",
+            "a2": "Rétine",
+            "a3": "Épiglotte",
+            "a4": "Pancréas"
+          },
           "headerLabel": "ANATOMIE FONCTIONNELLE"
         },
         "medical-q8": {
           "question": "Quel nerf crânien transporte les informations visuelles de l’œil ?",
-          "answers": [
-            "Nerf vague",
-            "Nerf facial",
-            "Nerf trijumeau",
-            "Nerf optique"
-          ],
+          "answers": {
+            "a1": "Nerf vague",
+            "a2": "Nerf facial",
+            "a3": "Nerf trijumeau",
+            "a4": "Nerf optique"
+          },
           "headerLabel": "NEUROANATOMIE"
         },
         "medical-q9": {
           "question": "Quelle pratique est essentielle à la prévention des infections pendant les soins aux patients ?",
-          "answers": [
-            "Une hygiène des mains appropriée",
-            "Réutiliser des gants jetables",
-            "Ignorer l'évaluation des risques",
-            "Partager du matériel contaminé"
-          ],
+          "answers": {
+            "a1": "Une hygiène des mains appropriée",
+            "a2": "Réutiliser des gants jetables",
+            "a3": "Ignorer l'évaluation des risques",
+            "a4": "Partager du matériel contaminé"
+          },
           "headerLabel": "SÉCURITÉ CLINIQUE"
         },
         "medical-q10": {
           "question": "Que décrit l’homéostasie ?",
-          "answers": [
-            "L'absence totale de changement dans le corps",
-            "La régulation d’un environnement interne relativement stable",
-            "La dégradation de chaque médicament par les reins",
-            "La production d'anticorps uniquement"
-          ],
+          "answers": {
+            "a1": "L'absence totale de changement dans le corps",
+            "a2": "La régulation d’un environnement interne relativement stable",
+            "a3": "La dégradation de chaque médicament par les reins",
+            "a4": "La production d'anticorps uniquement"
+          },
           "headerLabel": "QUESTION SCIENTIFIQUE FINALE"
         }
       }

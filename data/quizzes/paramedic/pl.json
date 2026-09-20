@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 8% zdaje ten egzamin wstępny na ratownika medycznego",
   "eyebrow": "WYZWANIE WSTĘPOWE dla ratownika medycznego",
   "summary": "Zagrożenia na scenie, parametry życiowe i decyzje dotyczące szybkiej reakcji sprawdzają, czy potrafisz jasno myśleć, gdy liczy się każda wskazówka.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Zagrożenia na scenie, parametry życiowe, obliczenia awaryjne i spokojna ocena. Czy potrafisz jasno myśleć, gdy liczy się każda wskazówka?",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To ogólnoświatowe wyzwanie rozrywkowe zawiera dziesięć pytań wejściowych dotyczących anatomii, obserwacji, liczenia, komunikacji, bezpieczeństwa i oceny priorytetów. Testuje uważne rozumowanie, a nie lokalne protokoły lub procedury operacyjne.\n\nWybierz najlepszą odpowiedź, korzystając wyłącznie z podanych informacji. Bezpieczne opcje sprzyjają rozpoznawaniu ryzyka, jasnej komunikacji i poszukiwaniu odpowiedniego wykwalifikowanego wsparcia.\n\nNie jest to egzamin wstępny akredytowanego ratownika medycznego, ocena kliniczna, kwalifikacja, kurs szkoleniowy ani źródło porad w nagłych wypadkach.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Rozwiąż dziesięć starannie wybranych pytań w ramach jednego ukierunkowanego wyzwania.",
         "Za każdym razem wybierz jedną odpowiedź. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Egzamin wstępny na ratownika medycznego",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie wejścia na stanowisko ratownika medycznego",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twój wynik wejścia na stanowisko ratownika medycznego i podział na sześć obszarów są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie sześciu obszarów wejściowych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie sześciu obszarów wejściowych"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Udało Ci się zaliczyć wyzwanie wejścia na stanowisko ratownika medycznego!",
       "finished": "Wyzwanie wejścia na stanowisko ratownika medycznego ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejsza strefa wejściowa",
       "trickiest": "Najtrudniejsza strefa wejściowa",
       "bestRound": "Najlepsza sekcja",
@@ -107,8 +100,7 @@
         "snapshot": "Co sugeruje Twój profil kandydata",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Który narząd pompuje krew po organizmie?",
-          "answers": [
-            "Serce",
-            "Płuca",
-            "Mózg",
-            "Kości"
-          ],
+          "answers": {
+            "a1": "Serce",
+            "a2": "Płuca",
+            "a3": "Mózg",
+            "a4": "Kości"
+          },
           "headerLabel": "ANATOMIA I FIZJOLOGIA"
         },
         "paramedic-r1q5": {
           "question": "Które otwarcie oznacza najczystsze przekazanie?",
-          "answers": [
-            "Pewnie coś się zmieniło wcześniej",
-            "Oto wszystkie drobne szczegóły w losowej kolejności",
-            "O 14:20 oddech stał się szybszy, a czujność spadła",
-            "Wiem już dokładnie, co było tego przyczyną"
-          ],
+          "answers": {
+            "a1": "Pewnie coś się zmieniło wcześniej",
+            "a2": "Oto wszystkie drobne szczegóły w losowej kolejności",
+            "a3": "O 14:20 oddech stał się szybszy, a czujność spadła",
+            "a4": "Wiem już dokładnie, co było tego przyczyną"
+          },
           "headerLabel": "JASNE PRZEKAZANIE"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80, potem 92, potem 108, z bladością i zawrotami głowy"
           },
           "question": "Jaka jest najlepsza interpretacja tego wzoru?",
-          "answers": [
-            "Zapis bez zmian",
-            "Połączony trend sugeruje pogorszenie sytuacji wymagające szybkiej, wykwalifikowanej oceny",
-            "Liczy się tylko pierwsza liczba",
-            "Objawy można zignorować, ponieważ nie stawia się diagnozy"
-          ],
+          "answers": {
+            "a1": "Zapis bez zmian",
+            "a2": "Połączony trend sugeruje pogorszenie sytuacji wymagające szybkiej, wykwalifikowanej oceny",
+            "a3": "Liczy się tylko pierwsza liczba",
+            "a4": "Objawy można zignorować, ponieważ nie stawia się diagnozy"
+          },
           "headerLabel": "OBSERWACJA TENDENCJI"
         },
         "paramedic-r2q4": {
           "question": "Które stwierdzenie najlepiej opisuje nerki?",
-          "answers": [
-            "Wymieniają tlen i dwutlenek węgla",
-            "Usuwają produkty przemiany materii z krwi i pomagają regulować równowagę wodną",
-            "Pompują krew przez tętnice",
-            "Kontrolują każdy dobrowolny ruch"
-          ],
+          "answers": {
+            "a1": "Wymieniają tlen i dwutlenek węgla",
+            "a2": "Usuwają produkty przemiany materii z krwi i pomagają regulować równowagę wodną",
+            "a3": "Pompują krew przez tętnice",
+            "a4": "Kontrolują każdy dobrowolny ruch"
+          },
           "headerLabel": "SYSTEMY CIAŁA"
         },
         "paramedic-r1q4": {
           "question": "Za jedynymi drzwiami znajduje się kabel elektryczny pod napięciem. Co jest pierwsze?",
-          "answers": [
-            "Przejdź po nim ostrożnie",
-            "Zapewnij wszystkim bezpieczną odległość i uzyskaj wykwalifikowaną pomoc",
-            "Przesuwaj go suchym przedmiotem",
-            "Poproś świadka, aby to obejrzał"
-          ],
+          "answers": {
+            "a1": "Przejdź po nim ostrożnie",
+            "a2": "Zapewnij wszystkim bezpieczną odległość i uzyskaj wykwalifikowaną pomoc",
+            "a3": "Przesuwaj go suchym przedmiotem",
+            "a4": "Poproś świadka, aby to obejrzał"
+          },
           "headerLabel": "BEZPIECZEŃSTWO SCENY"
         },
         "paramedic-r6q2": {
           "question": "Osoba kiwa głową, ale nie rozumie. Co powinno się wydarzyć dalej?",
-          "answers": [
-            "Powtórz to samo wyjaśnienie wolniej",
-            "Zapytaj: „Czy rozumiesz?” i kontynuuj, jeśli odpowiedzą „tak”.",
-            "Skróć wyjaśnienie, ale zachowaj tę samą terminologię",
-            "Używaj prostych słów i sprawdź ponownie"
-          ],
+          "answers": {
+            "a1": "Powtórz to samo wyjaśnienie wolniej",
+            "a2": "Zapytaj: „Czy rozumiesz?” i kontynuuj, jeśli odpowiedzą „tak”.",
+            "a3": "Skróć wyjaśnienie, ale zachowaj tę samą terminologię",
+            "a4": "Używaj prostych słów i sprawdź ponownie"
+          },
           "headerLabel": "JASNA KOMUNIKACJA"
         },
         "paramedic-r5q6": {
           "context": "Osoba A czuje się dobrze, a jej obserwacje pozostają niezmienne. Osoba B jest niedawno spocona i ma zawroty głowy, a jej tętno wzrosło podczas trzech kontroli.",
           "question": "Kto potrzebuje uwagi jako pierwszy?",
-          "answers": [
-            "Osoba B, ponieważ kilka zmian wskazuje na pogorszenie",
-            "Osoba A, ponieważ jej obserwacje zostały zapisane jako pierwsze",
-            "Obaj mogą poczekać, ponieważ żaden nie ma nazwanej diagnozy",
-            "Osoba o krótszym imieniu"
-          ],
+          "answers": {
+            "a1": "Osoba B, ponieważ kilka zmian wskazuje na pogorszenie",
+            "a2": "Osoba A, ponieważ jej obserwacje zostały zapisane jako pierwsze",
+            "a3": "Obaj mogą poczekać, ponieważ żaden nie ma nazwanej diagnozy",
+            "a4": "Osoba o krótszym imieniu"
+          },
           "headerLabel": "OCENA PRIORYTETU"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litra plus 450 mililitrów plus 250 mililitrów równa się sumie"
           },
           "question": "Jaka jest łączna zarejestrowana objętość w mililitrach?",
-          "answers": [
-            "900ml",
-            "950ml",
-            "1000 ml",
-            "1100 ml"
-          ],
+          "answers": {
+            "a1": "900ml",
+            "a2": "950ml",
+            "a3": "1000 ml",
+            "a4": "1100 ml"
+          },
           "headerLabel": "NUMER AWARYJNY"
         },
         "paramedic-r10q4": {
           "context": "REJESTR ZDARZENIA — Agresywna osoba rzuca przedmiotami w pobliżu wejścia. Sprzęt częściowo blokuje najbliższą drogę wyjścia.",
           "question": "Jaka jest najbezpieczniejsza reakcja na połączone zagrożenia?",
-          "answers": [
-            "Zachowaj bezpieczną odległość, przekieruj innych na bezpieczniejszą trasę i wezwij odpowiednią pomoc",
-            "Podejdź i kłóć się, aż rozmówca przestanie",
-            "Przed wyjściem zabierz sprzęt obok osoby",
-            "Poproś nieprzeszkoloną osobę, aby zablokowała rzucane przedmioty"
-          ],
+          "answers": {
+            "a1": "Zachowaj bezpieczną odległość, przekieruj innych na bezpieczniejszą trasę i wezwij odpowiednią pomoc",
+            "a2": "Podejdź i kłóć się, aż rozmówca przestanie",
+            "a3": "Przed wyjściem zabierz sprzęt obok osoby",
+            "a4": "Poproś nieprzeszkoloną osobę, aby zablokowała rzucane przedmioty"
+          },
           "headerLabel": "ZINTEGROWANE BEZPIECZEŃSTWO"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Oddychanie 16 czujne, potem 22 niespokojne, potem 28 senne"
           },
           "question": "Jaka jest najlepsza interpretacja całego trendu?",
-          "answers": [
-            "Osoba stale się poprawia",
-            "Liczy się tylko środkowy czek",
-            "Wartości można zignorować, ponieważ nie wymieniono żadnej diagnozy",
-            "Oddychanie ulega pogorszeniu, a reaktywność maleje"
-          ],
+          "answers": {
+            "a1": "Osoba stale się poprawia",
+            "a2": "Liczy się tylko środkowy czek",
+            "a3": "Wartości można zignorować, ponieważ nie wymieniono żadnej diagnozy",
+            "a4": "Oddychanie ulega pogorszeniu, a reaktywność maleje"
+          },
           "headerLabel": "ODPOWIEDŹ KOŃCOWA"
         }
       }

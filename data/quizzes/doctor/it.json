@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "La maggior parte degli adulti non supera questo esame di ammissione a medicina",
   "eyebrow": "IL TEST DELLA CONOSCENZA CLINICA",
   "summary": "Dieci domande mettono alla prova l'anatomia, i sintomi, gli strumenti diagnostici e il ragionamento clinico sicuro.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Le domande di anatomia sembrano familiari. Poi il test si sposta sui sintomi, sulle emergenze e sulle decisioni cliniche.",
     "cta": "Inizia il test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di intrattenimento composta da dieci domande utilizza concetti medici generali che vengono insegnati e compresi nei paesi di lingua inglese di livello 1. Si passa dall’anatomia e dalla fisiologia agli strumenti diagnostici, ai modelli di sintomi, alle priorità di emergenza e all’uso responsabile della medicina.\n\nScegli una risposta per ogni domanda. La correttezza rimane nascosta fino alla rivelazione finale, dove è possibile sbloccare la revisione completa della risposta.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Rispondi a dieci domande di conoscenza clinica sempre più difficili.",
         "Scegli la risposta singola meglio supportata.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida per l'ingresso del dottore",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Esame di ammissione per dottore",
@@ -30,10 +26,8 @@
         "preAdCopy": "Le tue dieci risposte sono state controllate e il tuo punteggio di conoscenza clinica è pronto per essere rivelato.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Cinque aree mediche a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Cinque aree mediche a confronto"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Hai superato la sfida d'ingresso del Dottore!",
       "finished": "La sfida d'ingresso del dottore è stata completata",
-      "correctLabel": "corrette",
       "strongest": "Area medica più forte",
       "trickiest": "L'area medica più complicata",
       "bestRound": "La sezione migliore",
@@ -99,8 +92,7 @@
         "snapshot": "Cosa suggerisce il tuo risultato",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Quale camera del cuore pompa il sangue ricco di ossigeno nell'aorta?",
-          "answers": [
-            "Ventricolo sinistro",
-            "Ventricolo destro",
-            "Atrio sinistro",
-            "Atrio destro"
-          ],
+          "answers": {
+            "a1": "Ventricolo sinistro",
+            "a2": "Ventricolo destro",
+            "a3": "Atrio sinistro",
+            "a4": "Atrio destro"
+          },
           "headerLabel": "ANATOMIA CARDIACA"
         },
         "doctor-q2": {
           "question": "Un improvviso abbassamento del viso, debolezza delle braccia e difficoltà nel parlare dovrebbero sollevare preoccupazioni immediate: per cosa?",
-          "answers": [
-            "Una piccola intolleranza alimentare",
-            "Un possibile ictus",
-            "Un semplice stiramento muscolare",
-            "Allergie stagionali"
-          ],
+          "answers": {
+            "a1": "Una piccola intolleranza alimentare",
+            "a2": "Un possibile ictus",
+            "a3": "Un semplice stiramento muscolare",
+            "a4": "Allergie stagionali"
+          },
           "headerLabel": "RICONOSCIMENTO DEI SINTOMI"
         },
         "doctor-q3": {
           "question": "Quale dispositivo fornisce una stima rapida e non invasiva della saturazione di ossigeno nel sangue?",
-          "answers": [
-            "Otoscopio",
-            "Martello riflesso",
-            "Pulsossimetro",
-            "Termometro"
-          ],
+          "answers": {
+            "a1": "Otoscopio",
+            "a2": "Martello riflesso",
+            "a3": "Pulsossimetro",
+            "a4": "Termometro"
+          },
           "headerLabel": "STRUMENTI DIAGNOSTICI"
         },
         "doctor-q4": {
           "question": "In una presentazione classica di appendicite, il dolore addominale può spostarsi verso quale area?",
-          "answers": [
-            "Addome superiore sinistro",
-            "Al centro del petto",
-            "Spalla sinistra",
-            "Addome in basso a destra"
-          ],
+          "answers": {
+            "a1": "Addome superiore sinistro",
+            "a2": "Al centro del petto",
+            "a3": "Spalla sinistra",
+            "a4": "Addome in basso a destra"
+          },
           "headerLabel": "MODELLI CLINICI"
         },
         "doctor-q5": {
           "question": "Quali cellule del pancreas producono insulina?",
-          "answers": [
-            "Cellule beta",
-            "Globuli rossi",
-            "Osteoblasti",
-            "Neutrofili"
-          ],
+          "answers": {
+            "a1": "Cellule beta",
+            "a2": "Globuli rossi",
+            "a3": "Osteoblasti",
+            "a4": "Neutrofili"
+          },
           "headerLabel": "FISIOLOGIA ENDOCRINA"
         },
         "doctor-q6": {
           "question": "Cosa significa l'auscultazione durante un esame fisico?",
-          "answers": [
-            "Misurazione della temperatura corporea",
-            "Ascoltare i suoni interni del corpo",
-            "Test dell'acuità visiva",
-            "Esame di un campione di tessuto al microscopio"
-          ],
+          "answers": {
+            "a1": "Misurazione della temperatura corporea",
+            "a2": "Ascoltare i suoni interni del corpo",
+            "a3": "Test dell'acuità visiva",
+            "a4": "Esame di un campione di tessuto al microscopio"
+          },
           "headerLabel": "ESAME CLINICO"
         },
         "doctor-q7": {
           "question": "Quale descrizione corrisponde meglio alla sepsi?",
-          "answers": [
-            "Una reazione innocua all'esercizio",
-            "Una condizione causata solo da allergie",
-            "Una risposta estrema all’infezione pericolosa per la vita",
-            "Un tipo di frattura ossea"
-          ],
+          "answers": {
+            "a1": "Una reazione innocua all'esercizio",
+            "a2": "Una condizione causata solo da allergie",
+            "a3": "Una risposta estrema all’infezione pericolosa per la vita",
+            "a4": "Un tipo di frattura ossea"
+          },
           "headerLabel": "EMERGENZE MEDICHE"
         },
         "doctor-q8": {
           "question": "Come si chiama l'unità di filtraggio funzionale del rene?",
-          "answers": [
-            "Alveolo",
-            "Neurone",
-            "Villo",
-            "Nefrone"
-          ],
+          "answers": {
+            "a1": "Alveolo",
+            "a2": "Neurone",
+            "a3": "Villo",
+            "a4": "Nefrone"
+          },
           "headerLabel": "ANATOMIA RENALE"
         },
         "doctor-q9": {
           "question": "Una persona non risponde e non respira normalmente. Qual è la risposta generale immediata più sicura?",
-          "answers": [
-            "Chiama i servizi di emergenza e avvia un adeguato supporto vitale di base",
-            "Attendere diversi minuti per il recupero spontaneo",
-            "Dare cibo o bevande",
-            "Chiedi alla persona di fare un giro"
-          ],
+          "answers": {
+            "a1": "Chiama i servizi di emergenza e avvia un adeguato supporto vitale di base",
+            "a2": "Attendere diversi minuti per il recupero spontaneo",
+            "a3": "Dare cibo o bevande",
+            "a4": "Chiedi alla persona di fare un giro"
+          },
           "headerLabel": "PRIORITÀ DI EMERGENZA"
         },
         "doctor-q10": {
           "question": "Quale affermazione sugli antibiotici è più accurata?",
-          "answers": [
-            "Curano ogni febbre",
-            "Non trattano le infezioni virali come il comune raffreddore",
-            "Dovrebbero sempre essere interrotti non appena i sintomi migliorano",
-            "Funzionano abbassando direttamente la temperatura corporea"
-          ],
+          "answers": {
+            "a1": "Curano ogni febbre",
+            "a2": "Non trattano le infezioni virali come il comune raffreddore",
+            "a3": "Dovrebbero sempre essere interrotti non appena i sintomi migliorano",
+            "a4": "Funzionano abbassando direttamente la temperatura corporea"
+          },
           "headerLabel": "DOMANDA FINALE DI MEDICINA"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Doar 7% trec acest test de inteligență",
   "eyebrow": "BOLTA INTELIGENTEI",
   "summary": "Modelele, regulile numerice, legăturile de cuvinte și capcanele spațiale testează cât de repede raționamentul tău găsește regula ascunsă.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Modelele, codurile, legăturile de cuvinte și capcanele logice se ciocnesc. Cât timp poate raționamentul tău să rămână cu un pas înainte?",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare mondială de divertisment reunește zece puzzle-uri atent selectate care acoperă modele, reguli numerice, conexiuni verbale, raționament spațial, atenție și deducție logică. Este conceput pentru a se simți jucăuș și solicitant, mai degrabă decât ca un examen formal de aptitudini.\n\nFiecare puzzle are un răspuns susținut de informațiile afișate. Interacțiunea se schimbă în mod regulat, așa că poate fi necesar să identifici o regulă, să compari indicii, să transformi un simbol, să calculezi mental sau să observi o mică inconsecvență.\n\nScorul dvs. la testul de inteligență este procentul din aceste puzzle-uri de divertisment pe care le rezolvați corect. Descrie doar această încercare și nu măsoară inteligența reală, IQ-ul, aptitudinile sau capacitatea educațională.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Completați zece întrebări atent selectate într-o singură provocare concentrată.",
         "Alegeți câte un răspuns de fiecare dată. Corectitudinea rămâne ascunsă până la dezvăluirea finală.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocare de inteligență",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Provocarea Inteligenței",
@@ -30,10 +26,8 @@
         "preAdCopy": "Scorul dvs. la testul de inteligență și defalcarea în trei zone sunt gata să fie dezvăluite.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Trei domenii de gândire comparate",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Trei domenii de gândire comparate"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Ai trecut provocarea Testului de inteligență!",
       "finished": "Test de inteligență finalizat",
-      "correctLabel": "corect",
       "strongest": "Cea mai puternică zonă de gândire",
       "trickiest": "Cea mai dificilă zonă de gândire",
       "bestRound": "Cea mai bună secțiune",
@@ -98,8 +91,7 @@
         "snapshot": "Ce sugerează această încercare",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "cerc, triunghi, cerc, triunghi, necunoscut"
           },
           "question": "Care simbol urmează?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "RAȚIONAMENTUL MODELULUI"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "săgeată în sus, lângă o oglindă verticală"
           },
           "question": "Care săgeată este reflectarea într-o oglindă verticală?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RAȚIONAMENTUL SPATIAL"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "schimburi de litere plus unu, plus doi, plus unu; CAT devine DCU"
           },
           "question": "Schimbările se repetă +1, +2, +1. Cum este codificat DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "RAȚIONAMENTUL VERBAL"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "piramida numerelor cu fundul 3, 5, 4 și mijlocul 8, 9"
           },
           "question": "Fiecare bloc este suma celor doi de sub el. Ce merge deasupra?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "RAȚIONAMENTUL NUMERIC"
         },
         "iq-s3q2": {
           "question": "O mașină dublează un număr, apoi adaugă 3. Care intrare produce 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "RAȚIONAMENTUL NUMERIC"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Cod de referință K7M2-Q9. Găsiți opțiunea cu un caracter schimbat."
           },
           "question": "Care copie diferă de referință prin exact un caracter?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "ATENTIE LA DETALII"
         },
         "iq-s4q1": {
           "question": "Exact o persoană spune adevărul. A spune că B minte. B spune C minte. C spune că A și B mint ambii. Cine spune adevărul?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Nimeni"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Nimeni"
+          },
           "headerLabel": "DEDUCEREA LOGICA"
         },
         "iq-s4q4": {
           "question": "Începeți din centru, cu fața spre nord. Deplasați înainte cu un pătrat, întoarceți la dreapta, mutați două pătrate, întoarceți la dreapta, apoi mutați un pătrat. Unde termini față de început?",
-          "answers": [
-            "Două pătrate în dreapta",
-            "Un pătrat în sus",
-            "Au rămas două pătrate",
-            "Înapoi în centru"
-          ],
+          "answers": {
+            "a1": "Două pătrate în dreapta",
+            "a2": "Un pătrat în sus",
+            "a3": "Au rămas două pătrate",
+            "a4": "Înapoi în centru"
+          },
           "headerLabel": "RAȚIONAMENTUL SPATIAL"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "rândurile 3, 4, 10; 5, 2, 12; 7, 3, necunoscut"
           },
           "question": "În fiecare rând, dublați primul număr, apoi adăugați al doilea. Ce înlocuiește semnul întrebării?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "RAȚIONAMENTUL NUMERIC"
         },
         "iq-s5q8": {
           "question": "O săgeată indică în sus. Rotiți-l cu 90° în sensul acelor de ceasornic, apoi reflectați-l într-o oglindă verticală. Unde indică?",
-          "answers": [
-            "Sus",
-            "Corect",
-            "Jos",
-            "Stânga"
-          ],
+          "answers": {
+            "a1": "Sus",
+            "a2": "Corect",
+            "a3": "Jos",
+            "a4": "Stânga"
+          },
           "headerLabel": "PROBA SPATIALA FINALA"
         }
       }

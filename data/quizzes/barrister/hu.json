@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak a felnőttek 6%-a tudja letenni ezt az ügyvédi felvételi vizsgát",
   "eyebrow": "A TÖRVÉNYTERI INDOKOLÁSI TESZT",
   "summary": "Tíz kérdés teszteli a tárgyalótermi nyelvet, a precedenst, a bizonyítékokat és a szakmai ítéletet.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "A nyitó kérdések ismerősen csengenek. Ezután a vizsga áttér a precedensekre, a bizonyítékokra és a tárgyalótermi érvelésre.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás a Tier 1 angol nyelvű országok köztörvényes jogrendszereiben található tág fogalmakat alkalmazza. A pontos szabályok és a terminológia joghatóságonként eltérő, így a kérdések a hordozható tárgyalótermi érvelésre összpontosítanak, nem pedig egy ország felvételi tantervére.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb tárgyalótermi kérdésre.",
         "Válassza ki a legjobb jogi koncepciót vagy érdekképviseleti választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ügyvédi felvételi kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Ügyvédi felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a tárgyalótermi érvelési pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Négy jogi terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Négy jogi terület összehasonlítása"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Sikerült a Barrister felvételi kihíváson!",
       "finished": "Az ügyvédi felvételi kihívás befejeződött",
-      "correctLabel": "helyes",
       "strongest": "Legerősebb jogi terület",
       "trickiest": "A legtrükkösebb jogi terület",
       "bestRound": "A legjobb szakasz",
@@ -96,8 +89,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Büntetőperben általában ki viseli a vád bizonyításának terhét?",
-          "answers": [
-            "Az ügyészség",
-            "A vádlott",
-            "A zsűri",
-            "A bírósági titkár"
-          ],
+          "answers": {
+            "a1": "Az ügyészség",
+            "a2": "A vádlott",
+            "a3": "A zsűri",
+            "a4": "A bírósági titkár"
+          },
           "headerLabel": "BESZÁLLÍTÁSI ALAPOK"
         },
         "barrister-q2": {
           "question": "Melyik elv tekinti a vádlottat ártatlannak, hacsak nem bizonyítják bűnösségét?",
-          "answers": [
-            "Szigorú felelősség",
-            "Az ártatlanság vélelme",
-            "Kettős veszély",
-            "Bírói értesítés"
-          ],
+          "answers": {
+            "a1": "Szigorú felelősség",
+            "a2": "Az ártatlanság vélelme",
+            "a3": "Kettős veszély",
+            "a4": "Bírói értesítés"
+          },
           "headerLabel": "ALAPELVEK"
         },
         "barrister-q3": {
           "question": "Hogyan nevezzük azt a korábbi bírósági döntést, amely egy későbbi hasonló ügyben irányadó lehet?",
-          "answers": [
-            "Egy eskü alatt tett nyilatkozat",
-            "Egy vádirat",
-            "Egy precedens",
-            "Egy település"
-          ],
+          "answers": {
+            "a1": "Egy eskü alatt tett nyilatkozat",
+            "a2": "Egy vádirat",
+            "a3": "Egy precedens",
+            "a4": "Egy település"
+          },
           "headerLabel": "ESETI GYAKORLAT"
         },
         "barrister-q4": {
           "question": "Hogyan nevezik általában a szembenálló fél tanúkihallgatását?",
-          "answers": [
-            "Közvetlen vizsgálat",
-            "Bírósági felülvizsgálat",
-            "Közzététel",
-            "Keresztkérdés"
-          ],
+          "answers": {
+            "a1": "Közvetlen vizsgálat",
+            "a2": "Bírósági felülvizsgálat",
+            "a3": "Közzététel",
+            "a4": "Keresztkérdés"
+          },
           "headerLabel": "AZ ÉRDEKLŐDÉS"
         },
         "barrister-q5": {
           "question": "Melyik latin kifejezés írja le a bíróság döntésének alapvető jogi okát?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas corpus",
-            "Jóhiszemű",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas corpus",
+            "a3": "Jóhiszemű",
+            "a4": "Prima facie"
+          },
           "headerLabel": "PRECEDENT"
         },
         "barrister-q6": {
           "question": "Hogyan nevezik gyakran azt a bírói észrevételt, amely nem elengedhetetlen a döntéshez?",
-          "answers": [
-            "Kötelező végzés",
-            "Obiter dictum",
-            "Bűnös beismerés",
-            "A cselekvés oka"
-          ],
+          "answers": {
+            "a1": "Kötelező végzés",
+            "a2": "Obiter dictum",
+            "a3": "Bűnös beismerés",
+            "a4": "A cselekvés oka"
+          },
           "headerLabel": "JOGI INDOKOLÁS"
         },
         "barrister-q7": {
           "question": "Milyen kifejezéssel írják le általában a peren kívüli nyilatkozatot, amelyet az elmondottak igazságának bizonyítására ajánlanak fel?",
-          "answers": [
-            "Kiváltság",
-            "Estoppel",
-            "Hallomásból",
-            "Enyhítés"
-          ],
+          "answers": {
+            "a1": "Kiváltság",
+            "a2": "Estoppel",
+            "a3": "Hallomásból",
+            "a4": "Enyhítés"
+          },
           "headerLabel": "BIZONYÍTVÁNY"
         },
         "barrister-q8": {
           "question": "Melyik kérdésre utal a legvilágosabban a vizsgáztató által kívánt válasz?",
-          "answers": [
-            "Mi történt ezután?",
-            "hol álltál?",
-            "Hogy nézett ki a szoba?",
-            "A lámpa piros volt, amikor átkeltél, nem?"
-          ],
+          "answers": {
+            "a1": "Mi történt ezután?",
+            "a2": "hol álltál?",
+            "a3": "Hogy nézett ki a szoba?",
+            "a4": "A lámpa piros volt, amikor átkeltél, nem?"
+          },
           "headerLabel": "TANÚKÉRDEZÉS"
         },
         "barrister-q9": {
           "question": "Melyik kérdéssel foglalkozik elsősorban a bírósági felülvizsgálat?",
-          "answers": [
-            "Hogy jogszerűen született-e nyilvános döntés",
-            "Hogy egy esküdtszék a legjobb tanút választotta-e",
-            "Hogy egy szerződés nyereséget hozott-e",
-            "Minden fellebbezést engedélyezni kell-e"
-          ],
+          "answers": {
+            "a1": "Hogy jogszerűen született-e nyilvános döntés",
+            "a2": "Hogy egy esküdtszék a legjobb tanút választotta-e",
+            "a3": "Hogy egy szerződés nyereséget hozott-e",
+            "a4": "Minden fellebbezést engedélyezni kell-e"
+          },
           "headerLabel": "KÖZJOG"
         },
         "barrister-q10": {
           "question": "Általánosságban elmondható, hogy mit vár el a vezetőfülke-rang elve egy jogosult ügyvédtől, a szakmai szabályok és kivételek mellett?",
-          "answers": [
-            "Csak népszerű eseteket fogadjon el",
-            "Fogadja el a megfelelő utasításokat, függetlenül az ügyfél kilététől vagy az ügy népszerűségétől",
-            "Garantálja a sikeres eredményt",
-            "Csak büntetőbíróságon dolgozzon"
-          ],
+          "answers": {
+            "a1": "Csak népszerű eseteket fogadjon el",
+            "a2": "Fogadja el a megfelelő utasításokat, függetlenül az ügyfél kilététől vagy az ügy népszerűségétől",
+            "a3": "Garantálja a sikeres eredményt",
+            "a4": "Csak büntetőbíróságon dolgozzon"
+          },
           "headerLabel": "VÉGSŐ ETIKAI KÉRDÉS"
         }
       }

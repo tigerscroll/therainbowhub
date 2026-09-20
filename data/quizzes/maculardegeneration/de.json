@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Makuladegenerationstest",
   "eyebrow": "ZENTRALER VISIONS-CHECK MIT 10 FRAGEN",
   "summary": "Zentrale Details, visuelle Fallen und wichtige AMD-Warnzeichen in einer kurzen Herausforderung.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Können Sie die zentralen Details erkennen und die Warnzeichen erkennen? Diese 10 schnellen Checks werden schwieriger.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Diese Herausforderung mit zehn Fragen kombiniert fünf visuelle Rätsel auf dem Bildschirm mit fünf allgemeinen Fragen zur altersbedingten Makuladegeneration (AMD). Es misst die Antworten auf dieses Quiz, nicht die Augengesundheit oder die Wahrscheinlichkeit einer Erkrankung.\n\nBildschirmgröße, Helligkeit, Kontrast, Sehvermögen, Korrekturlinsen, Müdigkeit und Geräteeinstellungen können sich alle auf die Leistung auswirken. Neue wellige oder verzerrte Linien, ein neuer verschwommener oder leerer Bereich im zentralen Sehfeld oder eine plötzliche Verschlechterung sollten umgehend mit einem qualifizierten Augenarzt besprochen werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Schließe fünf zentrale Detail- und visuelle Gedächtnis-Herausforderungen ab.",
         "Beantworten Sie fünf Fragen zu AMD und wann Sie Hilfe suchen sollten.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Herausforderung des zentralen Sehens",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Makuladegenerationstest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Ergebnis zur zentralen Sehschärfe kann nun angezeigt werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Drei visuelle Bereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Drei visuelle Bereiche im Vergleich"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sie haben die visuelle Herausforderung zu 80 % gemeistert!",
       "finished": "Herausforderung zum zentralen Sehen abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Bereich heute",
       "trickiest": "Der schwierigste Bereich heute",
       "bestRound": "Stärkster Bereich",
@@ -94,8 +87,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Welcher Charakter befindet sich genau in der Mitte des Rasters?",
           "headerLabel": "ZENTRALES DETAIL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENZ: Q7M2P6",
           "question": "Welcher Code entspricht genau der Referenz?",
           "headerLabel": "ENGES SPIEL",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERENZ",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Welches Symbol vervollständigt die Wechselfolge?",
           "headerLabel": "MUSTERVERFOLGUNG",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Welches Objekt erschien als Drittes?",
           "headerLabel": "SCHNELLES VISUELLES GEDÄCHTNIS",
-          "answers": [
-            "Buch",
-            "Schlüssel",
-            "Tasse",
-            "Sonne"
-          ],
+          "answers": {
+            "a1": "Buch",
+            "a2": "Schlüssel",
+            "a3": "Tasse",
+            "a4": "Sonne"
+          },
           "study": {
             "title": "Studieren Sie die Fünf-Objekt-Reihenfolge",
             "instruction": "Dies verschwindet automatisch.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Welche Position enthält den offenen Kreis?",
           "headerLabel": "FOKUS IN DER MITTLEREN REIHE",
-          "answers": [
-            "Vierte",
-            "Zweite",
-            "Fünfte",
-            "Dritte"
-          ],
+          "answers": {
+            "a1": "Vierte",
+            "a2": "Zweite",
+            "a3": "Fünfte",
+            "a4": "Dritte"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Welcher Teil des Sehvermögens ist am stärksten von der altersbedingten Makuladegeneration betroffen?",
           "headerLabel": "AMD-GRUNDLAGEN",
-          "answers": [
-            "Nur die äußersten Randbereiche",
-            "Scharfes zentrales Sehen in Blickrichtung",
-            "Nur Nachtsicht",
-            "Nur Tiefenwahrnehmung"
-          ]
+          "answers": {
+            "a1": "Nur die äußersten Randbereiche",
+            "a2": "Scharfes zentrales Sehen in Blickrichtung",
+            "a3": "Nur Nachtsicht",
+            "a4": "Nur Tiefenwahrnehmung"
+          }
         },
         "macular-q7": {
           "question": "Welche optische Veränderung ist ein bekanntes Warnzeichen für AMD?",
           "headerLabel": "WARNSIGNALE",
-          "answers": [
-            "Geräusche werden leiser",
-            "Ein vorübergehender Juckreiz am Augenlid",
-            "Gerade Linien erscheinen wellig oder schief",
-            "Eine Wimper fällt aus"
-          ]
+          "answers": {
+            "a1": "Geräusche werden leiser",
+            "a2": "Ein vorübergehender Juckreiz am Augenlid",
+            "a3": "Gerade Linien erscheinen wellig oder schief",
+            "a4": "Eine Wimper fällt aus"
+          }
         },
         "macular-q8": {
           "question": "Anhand welcher Beurteilung kann ein Augenarzt nach AMD suchen?",
           "headerLabel": "PROFESSIONELLE BEWERTUNG",
-          "answers": [
-            "Ein Hörtest",
-            "Alleine eine Blutdruckmessung",
-            "Ein Geschmackstest",
-            "Eine umfassende Augenuntersuchung mit Pupillenerweiterung"
-          ]
+          "answers": {
+            "a1": "Ein Hörtest",
+            "a2": "Alleine eine Blutdruckmessung",
+            "a3": "Ein Geschmackstest",
+            "a4": "Eine umfassende Augenuntersuchung mit Pupillenerweiterung"
+          }
         },
         "macular-q9": {
           "question": "Was ist die sicherste Reaktion auf eine plötzliche Verschlechterung des Sehvermögens oder einen neuen zentralen verschwommenen oder leeren Bereich?",
           "headerLabel": "WANN HANDELN",
-          "answers": [
-            "Holen Sie zeitnah fachärztlichen Rat zur Augengesundheit ein",
-            "Warten Sie mehrere Monate, ohne es zu erwähnen",
-            "Erhöhen Sie die Bildschirmhelligkeit und gehen Sie davon aus, dass das Problem behoben ist",
-            "Verlassen Sie sich ausschließlich auf ein Online-Quiz"
-          ]
+          "answers": {
+            "a1": "Holen Sie zeitnah fachärztlichen Rat zur Augengesundheit ein",
+            "a2": "Warten Sie mehrere Monate, ohne es zu erwähnen",
+            "a3": "Erhöhen Sie die Bildschirmhelligkeit und gehen Sie davon aus, dass das Problem behoben ist",
+            "a4": "Verlassen Sie sich ausschließlich auf ein Online-Quiz"
+          }
         },
         "macular-q10": {
           "question": "Was kann Ihnen Ihre Punktzahl bei dieser Online-Challenge sagen?",
           "headerLabel": "LETZTER REALITÄTSCHECK",
-          "answers": [
-            "Ob Ihre Netzhaut gesund ist",
-            "Nur wie Sie bei diesen zehn Fragen abgeschnitten haben",
-            "Ob Sie eine bestimmte Behandlung benötigen",
-            "Ob man AMD ausschließen kann"
-          ]
+          "answers": {
+            "a1": "Ob Ihre Netzhaut gesund ist",
+            "a2": "Nur wie Sie bei diesen zehn Fragen abgeschnitten haben",
+            "a3": "Ob Sie eine bestimmte Behandlung benötigen",
+            "a4": "Ob man AMD ausschließen kann"
+          }
         }
       }
     }

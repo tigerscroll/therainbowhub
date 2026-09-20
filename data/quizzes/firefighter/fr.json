@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seulement 11 % peuvent réussir cet examen d’entrée de pompier",
   "eyebrow": "Défi pompier",
   "summary": "La science du feu, les outils, les dangers et les décisions rapides en cas d'incident testent votre clarté de réflexion sous pression.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Comportement du feu, détection des dangers, raisonnement mécanique et jugement en une fraction de seconde. Pouvez-vous rester calme lorsque chaque indice compte ?",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions explore le raisonnement mobilisé par les pompiers débutants. Il aborde la science du feu et de la fumée, les dangers sur les lieux, la mécanique du matériel, le calcul pratique, la perception de l'espace, la communication et le jugement en intervention.\n\nLe défi passe rapidement de bases accessibles à des situations évolutives et à des décisions qui combinent plusieurs indices. Les questions s'appuient sur de grands principes de sécurité plutôt que sur les grades, les codes du bâtiment ou les procédures opérationnelles propres à un pays.\n\nVotre pourcentage final reflète uniquement vos réponses à ce quiz de divertissement. Il ne permet pas d'évaluer votre aptitude opérationnelle ou professionnelle.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez aux dix questions à votre rythme ; il n'y a pas de minuterie ni de bonus de vitesse.",
         "Choisissez l’option la mieux étayée par les indices visibles. Les bonnes réponses restent cachées jusqu’au résultat final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi pompier",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Défi pompier",
@@ -30,10 +26,8 @@
         "preAdCopy": "Votre score de pompier et votre répartition en cinq zones sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Comparaison de cinq zones d'entrée",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Comparaison de cinq zones d'entrée"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission pompier !",
       "finished": "Défi d'entrée des pompiers terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "La chaleur et un combustible sont présents. Quel troisième élément faut-il pour compléter le triangle du feu ?",
           "headerLabel": "SCIENCE DU FEU",
-          "answers": [
-            "Eau",
-            "Oxygène",
-            "Fumée",
-            "Cendre"
-          ]
+          "answers": {
+            "a1": "Eau",
+            "a2": "Oxygène",
+            "a3": "Fumée",
+            "a4": "Cendre"
+          }
         },
         "firefighter-s1q2": {
           "question": "Un panneau électrique étincelant se trouve à côté d’une mare d’eau. Quelle est la première réponse la plus sûre ?",
           "headerLabel": "RECHERCHE DES RISQUES",
-          "answers": [
-            "Traversez l'eau pour l'éteindre",
-            "Versez plus d'eau sur le panneau",
-            "Déplacez le panneau par son boîtier extérieur",
-            "Gardez les gens à l’écart et alertez les intervenants qualifiés"
-          ]
+          "answers": {
+            "a1": "Traversez l'eau pour l'éteindre",
+            "a2": "Versez plus d'eau sur le panneau",
+            "a3": "Déplacez le panneau par son boîtier extérieur",
+            "a4": "Gardez les gens à l’écart et alertez les intervenants qualifiés"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Quel rapport communique le mieux le changement sans en deviner la cause ?",
           "headerLabel": "RAPPORT D'INCIDENTS",
-          "answers": [
-            "La fumée à la porte nord, auparavant légère et stable, augmente maintenant rapidement",
-            "Le matériau exact en feu a été identifié à partir de la fumée",
-            "Rien d'important n'a changé car de la fumée était déjà présente",
-            "Le feu restera définitivement dans la même zone"
-          ]
+          "answers": {
+            "a1": "La fumée à la porte nord, auparavant légère et stable, augmente maintenant rapidement",
+            "a2": "Le matériau exact en feu a été identifié à partir de la fumée",
+            "a3": "Rien d'important n'a changé car de la fumée était déjà présente",
+            "a4": "Le feu restera définitivement dans la même zone"
+          }
         },
         "firefighter-s1q5": {
           "question": "Une barre à mine est utilisée comme levier. Que se passe-t-il généralement lorsque la prise s'éloigne du point d'appui ?",
           "headerLabel": "RAISONNEMENT MÉCANIQUE",
-          "answers": [
-            "Plus de force est toujours nécessaire",
-            "Le point d'appui ne fonctionne plus",
-            "Moins de force est nécessaire pour le même effet de rotation",
-            "La charge devient en apesanteur"
-          ]
+          "answers": {
+            "a1": "Plus de force est toujours nécessaire",
+            "a2": "Le point d'appui ne fonctionne plus",
+            "a3": "Moins de force est nécessaire pour le même effet de rotation",
+            "a4": "La charge devient en apesanteur"
+          }
         },
         "firefighter-s3q6": {
           "question": "Une surface chaude réchauffe votre visage à plusieurs mètres sans contact. Quel processus de transfert de chaleur explique le mieux cela ?",
           "headerLabel": "TRANSFERT DE CHALEUR",
-          "answers": [
-            "Rayonnement",
-            "Conduction",
-            "Évaporation",
-            "Condensation"
-          ]
+          "answers": {
+            "a1": "Rayonnement",
+            "a2": "Conduction",
+            "a3": "Évaporation",
+            "a4": "Condensation"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Quelle distance réelle représente l’itinéraire ?",
           "headerLabel": "LE CALCUL PRATIQUE",
-          "answers": [
-            "50 mètres",
-            "60 mètres",
-            "65 mètres",
-            "70 mètres"
-          ]
+          "answers": {
+            "a1": "50 mètres",
+            "a2": "60 mètres",
+            "a3": "65 mètres",
+            "a4": "70 mètres"
+          }
         },
         "firefighter-s4q7": {
           "question": "Un toit endommagé par le feu s'affaisse et de nouvelles fissures apparaissent. Quelle est l’interprétation la plus sûre ?",
           "headerLabel": "RISQUES STRUCTURELS",
-          "answers": [
-            "Le toit refroidit en toute sécurité",
-            "Les fissures montrent exactement où se situer",
-            "Un effondrement est possible : restez à distance et signalez l'évolution de la situation",
-            "Le dommage ne compte qu’après l’incident"
-          ]
+          "answers": {
+            "a1": "Le toit refroidit en toute sécurité",
+            "a2": "Les fissures montrent exactement où se situer",
+            "a3": "Un effondrement est possible : restez à distance et signalez l'évolution de la situation",
+            "a4": "Le dommage ne compte qu’après l’incident"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "L'engrenage A entraîne B et B entraîne C. Dans quel sens l'engrenage C tourne-t-il ?",
           "headerLabel": "RAISONNEMENT D'ENGRENAGE",
-          "answers": [
-            "Dans le sens horaire, après deux inversions de sens",
-            "Dans le sens inverse des aiguilles d'une montre, après une inversion",
-            "Il ne peut pas tourner car trois engrenages sont utilisés",
-            "Vers le haut parce que l’engrenage A est le premier"
-          ]
+          "answers": {
+            "a1": "Dans le sens horaire, après deux inversions de sens",
+            "a2": "Dans le sens inverse des aiguilles d'une montre, après une inversion",
+            "a3": "Il ne peut pas tourner car trois engrenages sont utilisés",
+            "a4": "Vers le haut parce que l’engrenage A est le premier"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Combien de lampes supplémentaires faut-il prendre pour que chaque équipe soit équipée et qu'il en reste deux de rechange ?",
           "headerLabel": "MATHS D'ÉQUIPEMENT",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -241,16 +234,16 @@
               "SORTIE EST::Dégagée",
               "CONTRÔLE DE ROUTINE::À faire maintenant"
             ],
-            "ariaLabel": "La fumée s'épaissit dans le couloir ouest, deux personnes sont portées disparues, la sortie est est dégagée et un comptage de routine du matériel est prévu"
+            "ariaLabel": "La fumée s'épaissit dans le couloir ouest, deux personnes sont portées disparues, la sortie est dégagée et un comptage de routine du matériel est prévu"
           },
           "question": "Quelle est la meilleure première action et quel est le meilleur rapport ?",
           "headerLabel": "TEST D'INCIDENT FINAL",
-          "answers": [
-            "Terminez le décompte avant de signaler la fumée",
-            "Diriger les personnes vers l’est, signaler la fumée à l’ouest et les deux personnes disparues, puis reporter le décompte",
-            "Utilisez le couloir ouest car il est le plus court",
-            "Déclarez uniquement le nombre d’équipements"
-          ]
+          "answers": {
+            "a1": "Terminez le décompte avant de signaler la fumée",
+            "a2": "Diriger les personnes vers l’est, signaler la fumée à l’ouest et les deux personnes disparues, puis reporter le décompte",
+            "a3": "Utilisez le couloir ouest car il est le plus court",
+            "a4": "Déclarez uniquement le nombre d’équipements"
+          }
         }
       }
     }

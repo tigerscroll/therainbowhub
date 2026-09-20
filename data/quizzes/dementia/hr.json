@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Brzi test demencije",
   "eyebrow": "PROVJERA MOZGA OD 10 PITANJA",
   "summary": "Brzi izazov za prisjećanje, pozornost, jezik i rasuđivanje.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Mislite da vam je pamćenje još uvijek oštro? Ovih 10 brzih pitanja testiraju prisjećanje, pažnju i rasuđivanje - a odgođena pitanja su teža nego što izgledaju.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj moždani izazov s deset pitanja kombinira trenutno i odgođeno prisjećanje s pažnjom, jezikom, vizualnim pamćenjem i jednostavnim zaključivanjem. Osmišljen je kao zanimljiva snimka današnjeg učinka, a ne kao alat za provjeru demencije.\n\nIzvedba se može promijeniti sa spavanjem, stresom, raspoloženjem, lijekovima, jezikom, obrazovanjem, vidom, sluhom, upotrebom uređaja i jednostavnom slučajnošću. Rezultat iz online kviza ne može potvrditi niti isključiti demenciju.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Pažljivo proučite svaki znak sjećanja kada se pojavi.",
         "Odaberite jedan odgovor za svako pitanje bez vanjske pomoći.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Brzi moždani izazov",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Brzi test demencije",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat izazova mozga je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena tri područja razmišljanja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena tri područja razmišljanja"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Riješili ste izazov za 80% mozga!",
       "finished": "Brzi moždani izazov završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače područje danas",
       "trickiest": "Najzahtjevnije područje danas",
       "bestRound": "Najbolja sekcija",
@@ -94,8 +87,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Koja se riječ pojavila treća?",
           "headerLabel": "ODMAH OPOZIV",
-          "answers": [
-            "Most",
-            "Limun",
-            "Vrt",
-            "Sat"
-          ],
+          "answers": {
+            "a1": "Most",
+            "a2": "Limun",
+            "a3": "Vrt",
+            "a4": "Sat"
+          },
           "study": {
             "title": "Upamtite ove četiri riječi",
             "instruction": "Mogu se vratiti kasnije u testu.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Koji kod točno odgovara P8L4T?",
           "headerLabel": "FOKUSIRANA PAŽNJA",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Koji predmet ne spada među ostale?",
           "headerLabel": "KATEGORIJE RIJEČI",
-          "answers": [
-            "violina",
-            "Flauta",
-            "mrkva",
-            "truba"
-          ]
+          "answers": {
+            "a1": "violina",
+            "a2": "Flauta",
+            "a3": "mrkva",
+            "a4": "truba"
+          }
         },
         "dementia-q4": {
           "question": "Koji broj dolazi sljedeći: 2, 4, 8, 16, ___?",
           "headerLabel": "OBRAZAC RAZUMOVANJA",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Koji se objekt pojavio drugi?",
           "headerLabel": "VIZUALNO PAMĆENJE",
-          "answers": [
-            "rukavica",
-            "Ključ",
-            "šalica",
-            "Knjiga"
-          ],
+          "answers": {
+            "a1": "rukavica",
+            "a2": "Ključ",
+            "a3": "šalica",
+            "a4": "Knjiga"
+          },
           "study": {
             "title": "Proučite poredak objekata",
             "instruction": "Ovo će automatski nestati.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Koliko je 7 – 2 – 9 unatrag?",
           "headerLabel": "RADNA MEMORIJA",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Ako kazaljka za minute pokazuje 6, koliko je minuta iza sata?",
           "headerLabel": "OBRAZOVANJE SATA",
-          "answers": [
-            "6 minuta",
-            "15 minuta",
-            "45 minuta",
-            "30 minuta"
-          ]
+          "answers": {
+            "a1": "6 minuta",
+            "a2": "15 minuta",
+            "a3": "45 minuta",
+            "a4": "30 minuta"
+          }
         },
         "dementia-q8": {
           "question": "Štene je za psa kao što je mačić za što?",
           "headerLabel": "JEZIČNA VEZA",
-          "answers": [
-            "mačka",
-            "konj",
-            "zec",
-            "ptica"
-          ]
+          "answers": {
+            "a1": "mačka",
+            "a2": "konj",
+            "a3": "zec",
+            "a4": "ptica"
+          }
         },
         "dementia-q9": {
           "question": "Sjetite se početne liste. Koja se riječ prva pojavila?",
           "headerLabel": "ODGOĐENO PRISJEĆANJE RIJEČI",
-          "answers": [
-            "Sat",
-            "Vrt",
-            "Limun",
-            "Most"
-          ]
+          "answers": {
+            "a1": "Sat",
+            "a2": "Vrt",
+            "a3": "Limun",
+            "a4": "Most"
+          }
         },
         "dementia-q10": {
           "question": "Razmislite o nizu objekata. Koji se objekt pojavio četvrti?",
           "headerLabel": "KONAČNI ODGOĐENI OPOZIV",
-          "answers": [
-            "Knjiga",
-            "Ključ",
-            "rukavica",
-            "šalica"
-          ]
+          "answers": {
+            "a1": "Knjiga",
+            "a2": "Ključ",
+            "a3": "rukavica",
+            "a4": "šalica"
+          }
         }
       }
     }

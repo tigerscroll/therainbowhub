@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De flesta vuxna klarar inte detta inträdesprov till läkarutbildningen",
   "eyebrow": "DET KLINISKA KUNSKAPSTESTET",
   "summary": "Tio frågor testar anatomi, symtom, diagnostiska verktyg och säkra kliniska resonemang.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Anatomifrågorna verkar bekanta. Sedan går testet in på symtom, nödsituationer och kliniska beslut.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder breda medicinska begrepp som lärs ut och förstås i engelsktalande nivå 1-länder. Det går från anatomi och fysiologi till diagnostiska verktyg, symtommönster, akuta prioriteringar och ansvarsfull medicinanvändning.\n\nVälj ett svar för varje fråga. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare frågor om klinisk kunskap.",
         "Välj det enskilt svar som stöds bäst.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Läkarens ingångsutmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Läkarens inträdesprov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och dina kliniska kunskapspoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fem medicinska områden jämfört",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fem medicinska områden jämfört"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du klarade Doktorns entréutmaning!",
       "finished": "Doktorns inträdesutmaning klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste medicinska området",
       "trickiest": "Knepigaste medicinska området",
       "bestRound": "Bästa avsnittet",
@@ -99,8 +92,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Vilken kammare i hjärtat pumpar syrerikt blod in i aortan?",
-          "answers": [
-            "Vänster ventrikel",
-            "Höger ventrikel",
-            "Vänster atrium",
-            "Höger atrium"
-          ],
+          "answers": {
+            "a1": "Vänster ventrikel",
+            "a2": "Höger ventrikel",
+            "a3": "Vänster atrium",
+            "a4": "Höger atrium"
+          },
           "headerLabel": "HJÄRTSANATOMI"
         },
         "doctor-q2": {
           "question": "Plötsligt hängande ansikte, svag arm och talsvårigheter bör ge omedelbar oro för vad?",
-          "answers": [
-            "En liten matintolerans",
-            "En möjlig stroke",
-            "En enkel muskelbristning",
-            "Säsongsbetonade allergier"
-          ],
+          "answers": {
+            "a1": "En liten matintolerans",
+            "a2": "En möjlig stroke",
+            "a3": "En enkel muskelbristning",
+            "a4": "Säsongsbetonade allergier"
+          },
           "headerLabel": "SYMPTOM IGENKÄNNING"
         },
         "doctor-q3": {
           "question": "Vilken enhet ger en snabb, icke-invasiv uppskattning av blodets syremättnad?",
-          "answers": [
-            "Otoskop",
-            "Reflex hammare",
-            "Pulsoximeter",
-            "Termometer"
-          ],
+          "answers": {
+            "a1": "Otoskop",
+            "a2": "Reflex hammare",
+            "a3": "Pulsoximeter",
+            "a4": "Termometer"
+          },
           "headerLabel": "DIAGNOSTISKA VERKTYG"
         },
         "doctor-q4": {
           "question": "I en klassisk presentation av blindtarmsinflammation kan buksmärtor röra sig mot vilket område?",
-          "answers": [
-            "Övre vänstra magen",
-            "Mitt på bröstet",
-            "Vänster axel",
-            "Nedre högra magen"
-          ],
+          "answers": {
+            "a1": "Övre vänstra magen",
+            "a2": "Mitt på bröstet",
+            "a3": "Vänster axel",
+            "a4": "Nedre högra magen"
+          },
           "headerLabel": "KLINISKA MÖNSTER"
         },
         "doctor-q5": {
           "question": "Vilka celler i bukspottkörteln producerar insulin?",
-          "answers": [
-            "Betaceller",
-            "Röda blodkroppar",
-            "Osteoblaster",
-            "Neutrofiler"
-          ],
+          "answers": {
+            "a1": "Betaceller",
+            "a2": "Röda blodkroppar",
+            "a3": "Osteoblaster",
+            "a4": "Neutrofiler"
+          },
           "headerLabel": "ENDOKRIN FYSIOLOGI"
         },
         "doctor-q6": {
           "question": "Vad betyder auskultation vid en fysisk undersökning?",
-          "answers": [
-            "Mätning av kroppstemperatur",
-            "Lyssna på inre kroppsljud",
-            "Testa synskärpan",
-            "Undersöker ett vävnadsprov under ett mikroskop"
-          ],
+          "answers": {
+            "a1": "Mätning av kroppstemperatur",
+            "a2": "Lyssna på inre kroppsljud",
+            "a3": "Testa synskärpan",
+            "a4": "Undersöker ett vävnadsprov under ett mikroskop"
+          },
           "headerLabel": "KLINISK UNDERSÖKNING"
         },
         "doctor-q7": {
           "question": "Vilken beskrivning matchar bäst sepsis?",
-          "answers": [
-            "En ofarlig reaktion på träning",
-            "Ett tillstånd som endast orsakas av allergier",
-            "En livshotande extrem reaktion på infektion",
-            "En typ av benfraktur"
-          ],
+          "answers": {
+            "a1": "En ofarlig reaktion på träning",
+            "a2": "Ett tillstånd som endast orsakas av allergier",
+            "a3": "En livshotande extrem reaktion på infektion",
+            "a4": "En typ av benfraktur"
+          },
           "headerLabel": "MEDICINSKA NÖDSTOPP"
         },
         "doctor-q8": {
           "question": "Vad kallas njurens funktionella filtreringsenhet?",
-          "answers": [
-            "Alveolus",
-            "Neuron",
-            "Villus",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveolus",
+            "a2": "Neuron",
+            "a3": "Villus",
+            "a4": "Nephron"
+          },
           "headerLabel": "NJÄRANATOMI"
         },
         "doctor-q9": {
           "question": "En person svarar inte och andas inte normalt. Vad är det säkraste omedelbara allmänna svaret?",
-          "answers": [
-            "Ring räddningstjänsten och påbörja lämpligt grundläggande livstöd",
-            "Vänta flera minuter för spontan återhämtning",
-            "Ge mat eller dryck",
-            "Be personen att gå runt"
-          ],
+          "answers": {
+            "a1": "Ring räddningstjänsten och påbörja lämpligt grundläggande livstöd",
+            "a2": "Vänta flera minuter för spontan återhämtning",
+            "a3": "Ge mat eller dryck",
+            "a4": "Be personen att gå runt"
+          },
           "headerLabel": "NÖDPRIORITERINGAR"
         },
         "doctor-q10": {
           "question": "Vilket påstående om antibiotika är mest korrekt?",
-          "answers": [
-            "De behandlar varje feber",
-            "De behandlar inte virusinfektioner som förkylning",
-            "De ska alltid stoppas så snart symtomen förbättras",
-            "De fungerar genom att sänka kroppstemperaturen direkt"
-          ],
+          "answers": {
+            "a1": "De behandlar varje feber",
+            "a2": "De behandlar inte virusinfektioner som förkylning",
+            "a3": "De ska alltid stoppas så snart symtomen förbättras",
+            "a4": "De fungerar genom att sänka kroppstemperaturen direkt"
+          },
           "headerLabel": "SLUTLIG MEDICINFRÅGA"
         }
       }

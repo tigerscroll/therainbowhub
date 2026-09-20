@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo il 6% degli adulti può superare questo esame di ammissione per agente di polizia",
   "eyebrow": "IL TEST ATTITUDINE DELL'UFFICIALE DI POLIZIA",
   "summary": "Dieci domande mettono alla prova il giudizio, la comunicazione, la gestione delle prove e l'integrità professionale.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Le prime chiamate sembrano semplici. Quindi l'esame si sposta verso le prove, il giudizio e le decisioni in una frazione di secondo.",
     "cta": "Inizia il test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di intrattenimento composta da dieci domande utilizza principi generali rilevanti per la polizia professionale nei paesi di lingua inglese di livello 1. Mette alla prova il giudizio incentrato sulla sicurezza, l’attenta comunicazione dei testimoni, l’integrità delle prove e il processo decisionale responsabile senza fare affidamento sulle leggi, sui gradi o sulle procedure di un paese.\n\nScegli una risposta per ogni situazione. La correttezza rimane nascosta fino alla rivelazione finale, dove è possibile sbloccare la revisione completa della risposta.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Rispondi a dieci domande sempre più difficili sull'attitudine della polizia.",
         "Scegli la risposta più sicura, chiara o meglio supportata.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida per l'ingresso degli agenti di polizia",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Esame di ammissione per agente di polizia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Le tue dieci risposte sono state controllate e il tuo punteggio di attitudine al lavoro di polizia è pronto per essere rivelato.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Quattro aree di polizia a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Quattro aree di polizia a confronto"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Hai superato la sfida d'ingresso dell'Agente di Polizia!",
       "finished": "Sfida per l'ingresso dell'agente di polizia completata",
-      "correctLabel": "corrette",
       "strongest": "Area di polizia più forte",
       "trickiest": "L'area di polizia più complicata",
       "bestRound": "La sezione migliore",
@@ -96,8 +89,7 @@
         "snapshot": "Cosa suggerisce il tuo risultato",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Arrivi a una scena in cui qualcuno deve affrontare una minaccia immediata. Qual è la prima priorità?",
-          "answers": [
-            "Proteggi la vita e rendi la scena il più sicura possibile",
-            "Inizia un rapporto scritto dettagliato",
-            "Raccogli tutte le dichiarazioni dei testimoni",
-            "Scopri chi è legalmente responsabile"
-          ],
+          "answers": {
+            "a1": "Proteggi la vita e rendi la scena il più sicura possibile",
+            "a2": "Inizia un rapporto scritto dettagliato",
+            "a3": "Raccogli tutte le dichiarazioni dei testimoni",
+            "a4": "Scopri chi è legalmente responsabile"
+          },
           "headerLabel": "PRIORITÀ DELLA SCENA"
         },
         "police-q2": {
           "question": "Quale domanda di apertura ha maggiori probabilità di produrre il resoconto ininterrotto di un testimone?",
-          "answers": [
-            "La persona in rosso ha iniziato, giusto?",
-            "Per favore, dimmi cosa è successo dall'inizio",
-            "Non hai visto l'intero incidente, vero?",
-            "Il sospettato era arrabbiato o spaventato?"
-          ],
+          "answers": {
+            "a1": "La persona in rosso ha iniziato, giusto?",
+            "a2": "Per favore, dimmi cosa è successo dall'inizio",
+            "a3": "Non hai visto l'intero incidente, vero?",
+            "a4": "Il sospettato era arrabbiato o spaventato?"
+          },
           "headerLabel": "COMUNICAZIONE CON I TESTIMONI"
         },
         "police-q3": {
           "question": "Perché i testimoni possono essere tenuti separati prima che venga redatto il loro resoconto iniziale?",
-          "answers": [
-            "Per rendere le interviste più brevi",
-            "Per decidere chi è più fiducioso",
-            "Per ridurre la possibilità che i loro ricordi si influenzino a vicenda",
-            "Per garantire che tutti i resoconti coincidano"
-          ],
+          "answers": {
+            "a1": "Per rendere le interviste più brevi",
+            "a2": "Per decidere chi è più fiducioso",
+            "a3": "Per ridurre la possibilità che i loro ricordi si influenzino a vicenda",
+            "a4": "Per garantire che tutti i resoconti coincidano"
+          },
           "headerLabel": "MEMORIA E PROVA"
         },
         "police-q4": {
           "question": "Qual è lo scopo principale di una catena di custodia documentata?",
-          "answers": [
-            "Classificare le prove in base all'importanza",
-            "Per dimostrare che un sospettato possedeva ogni oggetto",
-            "Per sostituire le fotografie della scena",
-            "Per registrare chi ha gestito le prove e preservarne l'integrità"
-          ],
+          "answers": {
+            "a1": "Classificare le prove in base all'importanza",
+            "a2": "Per dimostrare che un sospettato possedeva ogni oggetto",
+            "a3": "Per sostituire le fotografie della scena",
+            "a4": "Per registrare chi ha gestito le prove e preservarne l'integrità"
+          },
           "headerLabel": "CONTROLLO DELLE PROVE"
         },
         "police-q5": {
           "question": "Quale insieme di principi descrive meglio l’uso responsabile dei poteri di polizia?",
-          "answers": [
-            "Lecito, necessario, proporzionato e responsabile",
-            "Veloce, segreto, potente e definitivo",
-            "Popolare, conveniente, informale e ampio",
-            "Automatico, identico, illimitato e indiscusso"
-          ],
+          "answers": {
+            "a1": "Lecito, necessario, proporzionato e responsabile",
+            "a2": "Veloce, segreto, potente e definitivo",
+            "a3": "Popolare, conveniente, informale e ampio",
+            "a4": "Automatico, identico, illimitato e indiscusso"
+          },
           "headerLabel": "GIUDIZIO PROFESSIONALE"
         },
         "police-q6": {
           "question": "Nell'alfabeto ortografico internazionale, quale parola rappresenta la lettera B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "COMUNICAZIONE RADIO"
         },
         "police-q7": {
           "question": "Quale approccio favorisce maggiormente la de-escalation di una situazione tesa che non presenta un pericolo immediato?",
-          "answers": [
-            "Parla rapidamente e avvicinati senza preavviso",
-            "Emettere diverse istruzioni concorrenti contemporaneamente",
-            "Usa un linguaggio calmo e chiaro, ascolta e concedi uno spazio sicuro",
-            "Alza la voce prima che qualcun altro possa parlare"
-          ],
+          "answers": {
+            "a1": "Parla rapidamente e avvicinati senza preavviso",
+            "a2": "Emettere diverse istruzioni concorrenti contemporaneamente",
+            "a3": "Usa un linguaggio calmo e chiaro, ascolta e concedi uno spazio sicuro",
+            "a4": "Alza la voce prima che qualcun altro possa parlare"
+          },
           "headerLabel": "DE-ESCALATION"
         },
         "police-q8": {
           "question": "Quando è sicuro e pratico, cosa dovrebbe succedere prima che un oggetto importante sulla scena venga spostato?",
-          "answers": [
-            "Dovrebbe essere pulito",
-            "Dovrebbe essere mostrato a ogni testimone",
-            "Dovrebbe essere posizionato con oggetti simili",
-            "La sua posizione e condizione originali dovrebbero essere documentate"
-          ],
+          "answers": {
+            "a1": "Dovrebbe essere pulito",
+            "a2": "Dovrebbe essere mostrato a ogni testimone",
+            "a3": "Dovrebbe essere posizionato con oggetti simili",
+            "a4": "La sua posizione e condizione originali dovrebbero essere documentate"
+          },
           "headerLabel": "CONSAPEVOLEZZA DELLA SCENA"
         },
         "police-q9": {
           "question": "Scopri un errore fattuale in una segnalazione che hai inviato. Qual è la risposta più professionale?",
-          "answers": [
-            "Segnalatelo e correggetelo tempestivamente attraverso la procedura adeguata",
-            "Aspetta di vedere se qualcuno se ne accorge",
-            "Elimina l’intero rapporto senza lasciarne traccia",
-            "Chiedi a un collega di assumersi la responsabilità"
-          ],
+          "answers": {
+            "a1": "Segnalatelo e correggetelo tempestivamente attraverso la procedura adeguata",
+            "a2": "Aspetta di vedere se qualcuno se ne accorge",
+            "a3": "Elimina l’intero rapporto senza lasciarne traccia",
+            "a4": "Chiedi a un collega di assumersi la responsabilità"
+          },
           "headerLabel": "PROVA DI INTEGRITÀ"
         },
         "police-q10": {
           "question": "Quale messaggio radio è più utile durante un incidente in rapido movimento?",
-          "answers": [
-            "Una lunga teoria personale senza collocazione",
-            "Un aggiornamento fattuale conciso con la posizione esatta e l'aiuto richiesto",
-            "Diverse voci non confermate si sono diffuse contemporaneamente",
-            "Una vaga richiesta di mandare qualcuno da qualche parte"
-          ],
+          "answers": {
+            "a1": "Una lunga teoria personale senza collocazione",
+            "a2": "Un aggiornamento fattuale conciso con la posizione esatta e l'aiuto richiesto",
+            "a3": "Diverse voci non confermate si sono diffuse contemporaneamente",
+            "a4": "Una vaga richiesta di mandare qualcuno da qualche parte"
+          },
           "headerLabel": "DOMANDA FINALE SULL'ATTITUDINE"
         }
       }

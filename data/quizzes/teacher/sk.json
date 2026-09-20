@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Väčšina dospelých nemôže zložiť túto učiteľskú prijímaciu skúšku",
   "eyebrow": "SKÚŠKA SCHOPNOSTI V TRIEDE",
   "summary": "Desať otázok testuje úsudok v triede, hodnotenie, ochranu a základy vyučovania.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Prvé otázky v triede sú zrejmé. Potom sa test presunie do hodnotenia, ochrany a rozhodnutí, ktoré musí mať každý učiteľ správne.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto zábavná výzva s desiatimi otázkami využíva široké koncepty tried, ktoré platia v anglicky hovoriacich krajinách úrovne 1. Prechádza od kontroly porozumenia a reagovania na chyby k hodnoteniu, komunikácii, ochrane a profesionálnemu úsudku.\n\nVyberte jednu odpoveď pre každú otázku. Správnosť zostáva skrytá až do konečného odhalenia, kde je k dispozícii kompletná kontrola odpovede na odomknutie.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Odpovedzte na desať stále zložitejších otázok v triede.",
         "Vyberte jedinú najlepšie podporovanú odpoveď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupná výzva pre učiteľov",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Učiteľská prijímacia skúška",
@@ -30,10 +26,8 @@
         "preAdCopy": "Desať odpovedí bolo skontrolovaných a vaše skóre schopností v triede je pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnalo sa päť vyučovacích oblastí",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnalo sa päť vyučovacích oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Uspeli ste vo vstupnej výzve pre učiteľov!",
       "finished": "Vstupná výzva pre učiteľa dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia oblasť výučby",
       "trickiest": "Najchúlostivejšia oblasť výučby",
       "bestRound": "Najlepšia sekcia",
@@ -99,8 +92,7 @@
         "snapshot": "Čo naznačuje váš výsledok",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "teacher-q1": {
           "question": "Ktorý prístup poskytuje učiteľovi najjasnejší rýchly obraz o tom, či celá trieda pochopila novú myšlienku?",
-          "answers": [
-            "Krátka kontrola, pri ktorej každý študent zareaguje",
-            "Pýtame sa len najrýchlejšieho dobrovoľníka",
-            "Čaká sa na správu z konca funkčného obdobia",
-            "Opakovanie vysvetlenia bez kontroly"
-          ],
+          "answers": {
+            "a1": "Krátka kontrola, pri ktorej každý študent zareaguje",
+            "a2": "Pýtame sa len najrýchlejšieho dobrovoľníka",
+            "a3": "Čaká sa na správu z konca funkčného obdobia",
+            "a4": "Opakovanie vysvetlenia bez kontroly"
+          },
           "headerLabel": "KONTROLA POROZUMENIA"
         },
         "teacher-q2": {
           "question": "Študent dáva nesprávnu odpoveď. Ktorá odpoveď s najväčšou pravdepodobnosťou podporí učenie?",
-          "answers": [
-            "Okamžite sa presuňte k niekomu inému",
-            "Požiadajte ich, aby vysvetlili svoje myslenie, a potom ich usmerňujte sústredenými otázkami",
-            "Oznámte správnu odpoveď a pokračujte",
-            "Vyhnite sa návratu k myšlienke"
-          ],
+          "answers": {
+            "a1": "Okamžite sa presuňte k niekomu inému",
+            "a2": "Požiadajte ich, aby vysvetlili svoje myslenie, a potom ich usmerňujte sústredenými otázkami",
+            "a3": "Oznámte správnu odpoveď a pokračujte",
+            "a4": "Vyhnite sa návratu k myšlienke"
+          },
           "headerLabel": "REAKCIA NA CHYBY"
         },
         "teacher-q3": {
           "question": "Aký je zvyčajný názov pre hodnotenie, ktoré sa používa počas učenia, aby pomohlo prispôsobiť vyučovanie?",
-          "answers": [
-            "Záverečné hodnotenie",
-            "Vstupné hodnotenie",
-            "Formatívne hodnotenie",
-            "Hodnotenie dochádzky"
-          ],
+          "answers": {
+            "a1": "Záverečné hodnotenie",
+            "a2": "Vstupné hodnotenie",
+            "a3": "Formatívne hodnotenie",
+            "a4": "Hodnotenie dochádzky"
+          },
           "headerLabel": "POSUDZOVANIE"
         },
         "teacher-q4": {
           "question": "Študent zverejňuje informácie naznačujúce, že môže byť vystavený riziku ujmy. Aká je najlepšia všeobecná odpoveď?",
-          "answers": [
-            "Sľúbte úplné tajomstvo",
-            "Preskúmajte celú situáciu sami",
-            "Počkajte, či to znova spomenú",
-            "Pokojne počúvajte, vyhnite sa prísľubu tajomstva a dodržujte príslušný ochranný postup"
-          ],
+          "answers": {
+            "a1": "Sľúbte úplné tajomstvo",
+            "a2": "Preskúmajte celú situáciu sami",
+            "a3": "Počkajte, či to znova spomenú",
+            "a4": "Pokojne počúvajte, vyhnite sa prísľubu tajomstva a dodržujte príslušný ochranný postup"
+          },
           "headerLabel": "ZABEZPEČENIE"
         },
         "teacher-q5": {
           "question": "Ktorý vzdelávací cieľ vyžaduje od študentov, aby urobili najkomplexnejší úsudok?",
-          "answers": [
-            "Porovnajte dve vysvetlenia a podporte záver dôkazmi",
-            "Skopírujte tri definície",
-            "Uveďte dni v týždni",
-            "Podčiarknite každý nadpis"
-          ],
+          "answers": {
+            "a1": "Porovnajte dve vysvetlenia a podporte záver dôkazmi",
+            "a2": "Skopírujte tri definície",
+            "a3": "Uveďte dni v týždni",
+            "a4": "Podčiarknite každý nadpis"
+          },
           "headerLabel": "CIELE VZDELÁVANIA"
         },
         "teacher-q6": {
           "question": "V triede je 30 žiakov, ktorí pracujú v rovnakých skupinách po 5. Koľko skupín je potrebných?",
-          "answers": [
-            "5",
-            "6",
-            "7",
-            "10"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "7",
+            "a4": "10"
+          },
           "headerLabel": "UMERAČNOSŤ V TRIEDE"
         },
         "teacher-q7": {
           "question": "Čo najpresnejšie zahŕňa diferencované vyučovanie?",
-          "answers": [
-            "Dať každému študentovi úplne iný obsah predmetu",
-            "Zníženie očakávaní pre celú triedu",
-            "Prispôsobenie prístupu, podpory alebo výzvy pri zachovaní zmysluplných vzdelávacích cieľov",
-            "Povoliť odpovedať iba sebavedomým študentom"
-          ],
+          "answers": {
+            "a1": "Dať každému študentovi úplne iný obsah predmetu",
+            "a2": "Zníženie očakávaní pre celú triedu",
+            "a3": "Prispôsobenie prístupu, podpory alebo výzvy pri zachovaní zmysluplných vzdelávacích cieľov",
+            "a4": "Povoliť odpovedať iba sebavedomým študentom"
+          },
           "headerLabel": "ADAPTÍVNE VYUČOVANIE"
         },
         "teacher-q8": {
           "question": "Kedy je hodnotenie označené ako spoľahlivé?",
-          "answers": [
-            "Keď obsahuje najväčší počet otázok",
-            "Keď každý študent dostane vysokú známku",
-            "Keď sa to dá rýchlo dokončiť",
-            "Keď poskytuje primerane konzistentné výsledky za podobných podmienok"
-          ],
+          "answers": {
+            "a1": "Keď obsahuje najväčší počet otázok",
+            "a2": "Keď každý študent dostane vysokú známku",
+            "a3": "Keď sa to dá rýchlo dokončiť",
+            "a4": "Keď poskytuje primerane konzistentné výsledky za podobných podmienok"
+          },
           "headerLabel": "KVALITA POSÚDENIA"
         },
         "teacher-q9": {
           "question": "Ktorý pokyn s najväčšou pravdepodobnosťou pomôže študentom úspešne začať novú úlohu?",
-          "answers": [
-            "Uveďte krátku sekvenciu, modelujte príklad a skontrolujte porozumenie",
-            "Pred zadaním úlohy vysvetlite všetky možné výnimky",
-            "Napíšte jednu nejasnú vetu a okamžite začnite",
-            "Požiadajte študentov, aby uhádli kritériá úspechu"
-          ],
+          "answers": {
+            "a1": "Uveďte krátku sekvenciu, modelujte príklad a skontrolujte porozumenie",
+            "a2": "Pred zadaním úlohy vysvetlite všetky možné výnimky",
+            "a3": "Napíšte jednu nejasnú vetu a okamžite začnite",
+            "a4": "Požiadajte študentov, aby uhádli kritériá úspechu"
+          },
           "headerLabel": "JASNÝ POKYN"
         },
         "teacher-q10": {
           "question": "Ktorý popis najlepšie definuje plagiátorstvo?",
-          "answers": [
-            "Úprava konceptu po spätnej väzbe",
-            "Prezentovať slová alebo myšlienky inej osoby ako svoje vlastné bez uznania",
-            "Použitie viac ako jedného zdroja",
-            "Nesúhlas s autorovým záverom"
-          ],
+          "answers": {
+            "a1": "Úprava konceptu po spätnej väzbe",
+            "a2": "Prezentovať slová alebo myšlienky inej osoby ako svoje vlastné bez uznania",
+            "a3": "Použitie viac ako jedného zdroja",
+            "a4": "Nesúhlas s autorovým záverom"
+          },
           "headerLabel": "ZÁVEREČNÁ OTÁZKA INTEGRITY"
         }
       }

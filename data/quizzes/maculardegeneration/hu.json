@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Makula degenerációs teszt",
   "eyebrow": "10 KÉRDÉSES KÖZPONTI LÁTÁS ELLENŐRZÉS",
   "summary": "Központi részletek, vizuális csapdák és fontos AMD figyelmeztető jelek egyetlen gyors kihívásban.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Meg tudja-e találni a központi részleteket, és felismeri a figyelmeztető jeleket? Ez a 10 gyors ellenőrzés még nehezebbé válik.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló kihívás öt képernyőn megjelenő vizuális rejtvényt ötvöz az életkorral összefüggő makuladegenerációval (AMD) kapcsolatos, általános tudatosságra vonatkozó öt kérdéssel. A kvízre adott válaszokat méri, nem a szem egészségét vagy a betegségek valószínűségét.\n\nA képernyő mérete, a fényerő, a kontraszt, a látás, a korrekciós lencsék, a fáradtság és az eszközbeállítások egyaránt befolyásolhatják a teljesítményt. Az új hullámos vagy torz vonalakat, a központi látás új homályos vagy üres területét vagy a hirtelen romlást haladéktalanul meg kell beszélni egy képzett szemgondozóval.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Teljesíts öt központi részletre és vizuális memóriára vonatkozó kihívást.",
         "Válaszoljon öt kérdésre az AMD-vel kapcsolatban, és hogy mikor kérjen segítséget.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Központi látás kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Makula degenerációs teszt",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a központi látás kihívásának pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három vizuális terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három vizuális terület összehasonlítása"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sikeresen teljesítetted a 80%-os vizuális kihívást!",
       "finished": "A központi látás kihívása kész",
-      "correctLabel": "helyes",
       "strongest": "A mai legerősebb terület",
       "trickiest": "A mai legnehezebb terület",
       "bestRound": "A legjobb szakasz",
@@ -94,8 +87,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Melyik karakter található pontosan a rács közepén?",
           "headerLabel": "KÖZPONTI RÉSZLET",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "HIVATKOZÁS: Q7M2P6",
           "question": "Melyik kód egyezik pontosan a hivatkozással?",
           "headerLabel": "MÉRKŐZÉS ZÁRÁSA",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "HIVATKOZÁS",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Melyik szimbólum fejezi be a váltakozó sorozatot?",
           "headerLabel": "MINTÁZATKÖVETÉS",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Melyik tárgy jelent meg harmadikként?",
           "headerLabel": "GYORS VIZUÁLIS MEMÓRIA",
-          "answers": [
-            "Könyv",
-            "Kulcs",
-            "Kupa",
-            "V"
-          ],
+          "answers": {
+            "a1": "Könyv",
+            "a2": "Kulcs",
+            "a3": "Kupa",
+            "a4": "V"
+          },
           "study": {
             "title": "Tanulmányozd az öt objektum sorrendjét",
             "instruction": "Ez automatikusan eltűnik.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Melyik pozíció tartalmazza a nyitott kört?",
           "headerLabel": "KÖZÉPSOR FÓKUSZ",
-          "answers": [
-            "Negyedik",
-            "Másodszor",
-            "Ötödik",
-            "Harmadik"
-          ],
+          "answers": {
+            "a1": "Negyedik",
+            "a2": "Másodszor",
+            "a3": "Ötödik",
+            "a4": "Harmadik"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "A látás mely részét érinti a legközvetlenebbül az időskori makuladegeneráció?",
           "headerLabel": "AMD ALAPOK",
-          "answers": [
-            "Csak a távoli külső szélei",
-            "Éles központi, egyenes látás",
-            "Csak éjszakai látás",
-            "Csak mélységérzékelés"
-          ]
+          "answers": {
+            "a1": "Csak a távoli külső szélei",
+            "a2": "Éles központi, egyenes látás",
+            "a3": "Csak éjszakai látás",
+            "a4": "Csak mélységérzékelés"
+          }
         },
         "macular-q7": {
           "question": "Melyik vizuális változás az AMD jól ismert figyelmeztető jele?",
           "headerLabel": "FIGYELMEZTETŐ JELEK",
-          "answers": [
-            "Egyre halkabbak a hangok",
-            "Átmeneti viszketés a szemhéjon",
-            "Hullámos vagy görbe egyenes vonalak",
-            "Egy szempilla kiesik"
-          ]
+          "answers": {
+            "a1": "Egyre halkabbak a hangok",
+            "a2": "Átmeneti viszketés a szemhéjon",
+            "a3": "Hullámos vagy görbe egyenes vonalak",
+            "a4": "Egy szempilla kiesik"
+          }
         },
         "macular-q8": {
           "question": "Milyen értékelést használhat a szemészeti szakember az AMD keresésére?",
           "headerLabel": "SZAKMAI ÉRTÉKELÉS",
-          "answers": [
-            "Hallásvizsgálat",
-            "Egyedül a vérnyomás mérése",
-            "Ízlési teszt",
-            "Átfogó kitágult szemvizsgálat"
-          ]
+          "answers": {
+            "a1": "Hallásvizsgálat",
+            "a2": "Egyedül a vérnyomás mérése",
+            "a3": "Ízlési teszt",
+            "a4": "Átfogó kitágult szemvizsgálat"
+          }
         },
         "macular-q9": {
           "question": "Mi a legbiztonságosabb válasz hirtelen romló látásra vagy egy új központi homályos vagy üres területre?",
           "headerLabel": "MIKOR CSELEKEDNI",
-          "answers": [
-            "Kérjen azonnali professzionális szemészeti tanácsot",
-            "Várjon néhány hónapot anélkül, hogy megemlítené",
-            "Növelje a képernyő fényerejét, és feltételezze, hogy rögzített",
-            "Csak egy online kvízre hagyatkozzon"
-          ]
+          "answers": {
+            "a1": "Kérjen azonnali professzionális szemészeti tanácsot",
+            "a2": "Várjon néhány hónapot anélkül, hogy megemlítené",
+            "a3": "Növelje a képernyő fényerejét, és feltételezze, hogy rögzített",
+            "a4": "Csak egy online kvízre hagyatkozzon"
+          }
         },
         "macular-q10": {
           "question": "Mit tud mondani az online kihíváson elért pontszámod?",
           "headerLabel": "VÉGSŐ VALÓSÁG ELLENŐRZÉS",
-          "answers": [
-            "Hogy a retinája egészséges-e",
-            "Csak hogyan teljesített ezen a tíz kérdésen",
-            "Függetlenül attól, hogy szüksége van-e egy adott kezelésre",
-            "Ki tudja-e zárni az AMD-t"
-          ]
+          "answers": {
+            "a1": "Hogy a retinája egészséges-e",
+            "a2": "Csak hogyan teljesített ezen a tíz kérdésen",
+            "a3": "Függetlenül attól, hogy szüksége van-e egy adott kezelésre",
+            "a4": "Ki tudja-e zárni az AMD-t"
+          }
         }
       }
     }

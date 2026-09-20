@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 6 % av voksne kan bestå denne opptaksprøven for advokat",
   "eyebrow": "RETSSAMENS BEGRUNNSNINGSTEST",
   "summary": "Ti spørsmål tester rettssalens språk, presedens, bevis og faglig skjønn.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Åpningsspørsmålene høres kjente ut. Deretter går eksamen over i presedens, bevis og rettssalsbegrunnelse.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsutfordringen med ti spørsmål bruker brede konsepter som finnes på tvers av allmennrettslige juridiske systemer i engelsktalende land på nivå 1. Nøyaktige regler og terminologi varierer etter jurisdiksjon, så spørsmålene fokuserer på bærbare rettssalresonnementer i stedet for ett lands opptakspensum.\n\nVelg ett svar for hvert spørsmål. Korrektheten forblir skjult frem til den siste avsløringen, hvor hele svargjennomgangen er tilgjengelig for å låse opp.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Svar på ti stadig vanskeligere spørsmål i rettssalen.",
         "Velg det beste juridiske konseptet eller advokatsvaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Barrister inngangsutfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Barrister opptaksprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket og begrunnelsen for rettssalen er klar til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Fire juridiske områder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Fire juridiske områder sammenlignet"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du besto Barrister-inngangsutfordringen!",
       "finished": "Barrister-inngangsutfordringen er fullført",
-      "correctLabel": "riktig",
       "strongest": "Sterkeste juridiske område",
       "trickiest": "Det vanskeligste juridiske området",
       "bestRound": "Beste seksjon",
@@ -96,8 +89,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Hvem har normalt bevisbyrden i en straffesak?",
-          "answers": [
-            "Påtalemyndigheten",
-            "Den siktede",
-            "Juryen",
-            "Rettssekretæren"
-          ],
+          "answers": {
+            "a1": "Påtalemyndigheten",
+            "a2": "Den siktede",
+            "a3": "Juryen",
+            "a4": "Rettssekretæren"
+          },
           "headerLabel": "GRUNNLEGGENDE RETTSROM"
         },
         "barrister-q2": {
           "question": "Hvilket prinsipp behandler en siktet som uskyldig med mindre skyld er bevist?",
-          "answers": [
-            "Objektivt ansvar",
-            "Presumpsjonen om uskyld",
-            "Dobbel fare",
-            "Rettsvarsel"
-          ],
+          "answers": {
+            "a1": "Objektivt ansvar",
+            "a2": "Presumpsjonen om uskyld",
+            "a3": "Dobbel fare",
+            "a4": "Rettsvarsel"
+          },
           "headerLabel": "GRUNNLEGGENDE PRINSIPPER"
         },
         "barrister-q3": {
           "question": "Hva kalles en tidligere rettsavgjørelse som kan lede en senere lignende sak?",
-          "answers": [
-            "En erklæring",
-            "En tiltale",
-            "En presedens",
-            "Et oppgjør"
-          ],
+          "answers": {
+            "a1": "En erklæring",
+            "a2": "En tiltale",
+            "a3": "En presedens",
+            "a4": "Et oppgjør"
+          },
           "headerLabel": "RETSPRØS"
         },
         "barrister-q4": {
           "question": "Hva kalles avhør av et vitne av den motsatte siden?",
-          "answers": [
-            "Direkte undersøkelse",
-            "Rettslig vurdering",
-            "Avsløring",
-            "Kryssavhør"
-          ],
+          "answers": {
+            "a1": "Direkte undersøkelse",
+            "a2": "Rettslig vurdering",
+            "a3": "Avsløring",
+            "a4": "Kryssavhør"
+          },
           "headerLabel": "FORSAMLING"
         },
         "barrister-q5": {
           "question": "Hvilket latinsk begrep beskriver den juridiske grunnen som er avgjørende for en domstols avgjørelse?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas corpus",
-            "Bona fide",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas corpus",
+            "a3": "Bona fide",
+            "a4": "Prima facie"
+          },
           "headerLabel": "PRESIDENT"
         },
         "barrister-q6": {
           "question": "Hva kalles en rettslig observasjon som ikke er vesentlig for avgjørelsen?",
-          "answers": [
-            "En bindende ordre",
-            "Obiter dictum",
-            "En skyldig erkjennelse",
-            "En saksårsak"
-          ],
+          "answers": {
+            "a1": "En bindende ordre",
+            "a2": "Obiter dictum",
+            "a3": "En skyldig erkjennelse",
+            "a4": "En saksårsak"
+          },
           "headerLabel": "JURIDISK BEGRUNDELSE"
         },
         "barrister-q7": {
           "question": "Hvilket begrep beskriver vanligvis en utenrettslig uttalelse som tilbys for å bevise sannheten i det den sier?",
-          "answers": [
-            "Privilegium",
-            "Estoppel",
-            "Annenhåndsopplysninger",
-            "Redusering"
-          ],
+          "answers": {
+            "a1": "Privilegium",
+            "a2": "Estoppel",
+            "a3": "Annenhåndsopplysninger",
+            "a4": "Redusering"
+          },
           "headerLabel": "BEVIS"
         },
         "barrister-q8": {
           "question": "Hvilket spørsmål antyder tydeligst svaret sensoren ønsker?",
-          "answers": [
-            "Hva skjedde videre?",
-            "Hvor sto du?",
-            "Hvordan så rommet ut?",
-            "Lyset var rødt da du krysset, var det ikke?"
-          ],
+          "answers": {
+            "a1": "Hva skjedde videre?",
+            "a2": "Hvor sto du?",
+            "a3": "Hvordan så rommet ut?",
+            "a4": "Lyset var rødt da du krysset, var det ikke?"
+          },
           "headerLabel": "VITNESSPØRSMÅL"
         },
         "barrister-q9": {
           "question": "Rettslig prøving er først og fremst opptatt av hvilken sak?",
-          "answers": [
-            "Om en offentlig avgjørelse er truffet lovlig",
-            "Om en jury valgte det beste vitnet",
-            "Om en kontrakt ga fortjeneste",
-            "Om enhver anke bør tillates"
-          ],
+          "answers": {
+            "a1": "Om en offentlig avgjørelse er truffet lovlig",
+            "a2": "Om en jury valgte det beste vitnet",
+            "a3": "Om en kontrakt ga fortjeneste",
+            "a4": "Om enhver anke bør tillates"
+          },
           "headerLabel": "OFFENTLIG LOV"
         },
         "barrister-q10": {
           "question": "Hva krever cab-rank-prinsippet en kvalifisert advokat om å gjøre, med forbehold om faglige regler og unntak?",
-          "answers": [
-            "Godta bare populære tilfeller",
-            "Godta passende instruksjoner uavhengig av klientens identitet eller sakens popularitet",
-            "Garanter et vellykket resultat",
-            "Arbeid kun i straffedomstolene"
-          ],
+          "answers": {
+            "a1": "Godta bare populære tilfeller",
+            "a2": "Godta passende instruksjoner uavhengig av klientens identitet eller sakens popularitet",
+            "a3": "Garanter et vellykket resultat",
+            "a4": "Arbeid kun i straffedomstolene"
+          },
           "headerLabel": "ENDELIG ETISK SPØRSMÅL"
         }
       }

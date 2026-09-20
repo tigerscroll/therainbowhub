@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 7% aprueba este cuestionario de mecánica de automóviles",
   "eyebrow": "BAHÍA DE SERVICIO DE PRECISIÓN",
   "summary": "Las luces de advertencia, las fallas ocultas y los síntomas extraños en la carretera prueban si puedes diagnosticar problemas antes de que resulte costoso.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Esta prueba de entretenimiento mundial contiene diez preguntas prácticas sobre los sistemas del vehículo, la evaluación del taller y la localización de fallas. Pasa de señales de advertencia familiares a síntomas relacionados que requieren un diagnóstico cuidadoso.\n\nElige la mejor respuesta de la información que se muestra. Las preguntas utilizan principios amplios sobre vehículos y evitan asumir una marca, modelo o estándar de inspección local.\n\nTu puntuación refleja únicamente este breve desafío. No es una calificación comercial, una inspección de seguridad ni un sustituto del diagnóstico realizado por un mecánico calificado.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Completa diez preguntas cuidadosamente seleccionadas en un único desafío.",
         "Elige una respuesta cada vez. No sabrás qué respuestas son correctas hasta el final.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "desafío mecánico",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Desafío del taller",
@@ -29,10 +26,8 @@
         "preAdCopy": "Tu puntuación mecánica y el desglose de los seis sistemas están listos para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Seis sistemas de vehículos comparados",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Seis sistemas de vehículos comparados"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "¡Pasaste el desafío mecánico!",
       "finished": "Desafío del taller completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
-      "bestRound": "Mejor categoría",
-      "showBestRound": false
+      "bestRound": "Mejor categoría"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "¿Qué símbolo de advertencia se relaciona más directamente con la presión del aceite del motor?",
-          "answers": [
-            "Símbolo del aceite",
-            "Batería",
-            "Termómetro",
-            "Volante"
-          ],
+          "answers": {
+            "a1": "Símbolo del aceite",
+            "a2": "Batería",
+            "a3": "Termómetro",
+            "a4": "Volante"
+          },
           "headerLabel": "SISTEMAS DE MOTOR"
         },
         "mech-r1q2": {
           "question": "Una advertencia de freno roja permanece encendida después de soltar el freno de mano. ¿Cuál es la respuesta más segura?",
-          "answers": [
-            "Conduce más rápido para probarlo",
-            "Detente en un lugar seguro y haz revisar el sistema de frenos",
-            "Infla los neumáticos con más fuerza",
-            "Ignóralo hasta la próxima revisión"
-          ],
+          "answers": {
+            "a1": "Conduce más rápido para probarlo",
+            "a2": "Detente en un lugar seguro y haz revisar el sistema de frenos",
+            "a3": "Infla los neumáticos con más fuerza",
+            "a4": "Ignóralo hasta la próxima revisión"
+          },
           "headerLabel": "FRENOS Y SEGURIDAD"
         },
         "mech-r4q5": {
           "question": "Un clic rítmico se vuelve más rápido en curvas cerradas. ¿Qué parte es una causa probable?",
-          "answers": [
-            "Termostato",
-            "bomba de combustible",
-            "Junta homocinética exterior",
-            "ventilador de cabina"
-          ],
+          "answers": {
+            "a1": "Termostato",
+            "a2": "bomba de combustible",
+            "a3": "Junta homocinética exterior",
+            "a4": "ventilador de cabina"
+          },
           "headerLabel": "TREN DE TRANSMISIÓN"
         },
         "mech-r4q6": {
           "question": "Un neumático tiene un bulto profundo en el flanco. ¿Qué deberías hacer?",
-          "answers": [
-            "Reduce la presión y continúa",
-            "Empuja el bulto hasta aplanarlo",
-            "Cámbialo a otra rueda",
-            "Deja de usar el neumático y organiza su sustitución"
-          ],
+          "answers": {
+            "a1": "Reduce la presión y continúa",
+            "a2": "Empuja el bulto hasta aplanarlo",
+            "a3": "Cámbialo a otra rueda",
+            "a4": "Deja de usar el neumático y organiza su sustitución"
+          },
           "headerLabel": "SEGURIDAD DEL VEHÍCULO"
         },
         "mech-r5q5": {
           "question": "El motor se sobrecalienta en el tráfico pero se enfría a alta velocidad. ¿Qué componente merece una revisión temprana?",
-          "answers": [
-            "ventilador del radiador",
-            "Cinturón de seguridad",
-            "tapa de combustible",
-            "Cojinete de rueda"
-          ],
+          "answers": {
+            "a1": "ventilador del radiador",
+            "a2": "Cinturón de seguridad",
+            "a3": "tapa de combustible",
+            "a4": "Cojinete de rueda"
+          },
           "headerLabel": "SISTEMAS DE ENFRIAMIENTO"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Voltaje esperado de la batería 12,6 voltios, medido 10,5 voltios"
           },
           "question": "Una batería de 12 voltios en buen estado indica aproximadamente 12,6 V en reposo. Éste lee 10,5 V. ¿Qué sugiere eso?",
-          "answers": [
-            "Los neumáticos están desgastados.",
-            "El refrigerante es demasiado fuerte.",
-            "La batería está muy descargada o tiene una celda defectuosa.",
-            "La correa del alternador es nueva."
-          ],
+          "answers": {
+            "a1": "Los neumáticos están desgastados.",
+            "a2": "El refrigerante es demasiado fuerte.",
+            "a3": "La batería está muy descargada o tiene una celda defectuosa.",
+            "a4": "La correa del alternador es nueva."
+          },
           "headerLabel": "SISTEMAS ELÉCTRICOS"
         },
         "mech-r7q1": {
           "question": "El volante vibra principalmente en un rango de velocidades. ¿Cuál es el primer sospechoso probable?",
-          "answers": [
-            "Desequilibrio de las ruedas",
-            "Calidad del combustible",
-            "Filtro de cabina",
-            "Color del refrigerante"
-          ],
+          "answers": {
+            "a1": "Desequilibrio de las ruedas",
+            "a2": "Calidad del combustible",
+            "a3": "Filtro de cabina",
+            "a4": "Color del refrigerante"
+          },
           "headerLabel": "DIRECCIÓN Y EQUILIBRIO"
         },
         "mech-r7q6": {
           "question": "Aparece una nueva vibración severa después de chocar con un peligro en la carretera. ¿Qué deberías hacer?",
-          "answers": [
-            "Aumenta la velocidad para reducir la vibración",
-            "Deténgase de manera segura e inspeccione la rueda y el neumático antes de continuar.",
-            "Bajar la presión de cada neumático",
-            "Ignóralo si no aparece ninguna advertencia."
-          ],
+          "answers": {
+            "a1": "Aumenta la velocidad para reducir la vibración",
+            "a2": "Deténgase de manera segura e inspeccione la rueda y el neumático antes de continuar.",
+            "a3": "Bajar la presión de cada neumático",
+            "a4": "Ignóralo si no aparece ninguna advertencia."
+          },
           "headerLabel": "SEGURIDAD DEL VEHÍCULO"
         },
         "mech-r9q2": {
           "context": "EL CLIENTE DICE",
           "question": "La batería es nueva, pero se descarga repetidamente y se enciende el testigo de carga durante la conducción. ¿Qué se debe comprobar?",
-          "answers": [
-            "Alineación de neumáticos",
-            "El sistema de carga y sus conexiones.",
-            "Grosor de las pastillas de freno",
-            "Concentración de refrigerante"
-          ],
+          "answers": {
+            "a1": "Alineación de neumáticos",
+            "a2": "El sistema de carga y sus conexiones.",
+            "a3": "Grosor de las pastillas de freno",
+            "a4": "Concentración de refrigerante"
+          },
           "headerLabel": "SISTEMAS DE CARGA"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "El motor se enfría a velocidad de carretera, se sobrecalienta al ralentí, el ventilador de refrigeración no funciona"
           },
           "question": "El motor se sobrecalienta solo al ralentí, el radiador no está obstruido y el ventilador de refrigeración nunca funciona. ¿Qué se debe diagnosticar primero?",
-          "answers": [
-            "Alineación de ruedas",
-            "Sello de tapa de combustible",
-            "Desgaste de las pastillas de freno",
-            "El circuito del ventilador, el motor y el comando de control."
-          ],
+          "answers": {
+            "a1": "Alineación de ruedas",
+            "a2": "Sello de tapa de combustible",
+            "a3": "Desgaste de las pastillas de freno",
+            "a4": "El circuito del ventilador, el motor y el comando de control."
+          },
           "headerLabel": "DIAGNÓSTICO FINAL"
         }
       }

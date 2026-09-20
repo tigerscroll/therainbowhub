@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 12 % av de vuxna kan klara detta inträdesprov för flygvärdinna",
   "eyebrow": "KABINBETECKNINGENS APPITUTESTEST",
   "summary": "Tio frågor testar kabinsäkerhet, nödsituationer, besättningskoordinering och flygplanskunskap.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Servicefrågorna verkar lätta. Därefter övergår provet till dekompression, evakuering och kabinsäkerhet.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder sig av breda kabinsäkerhetsprinciper som delas av internationellt flyg. Den testar passagerarsäkerhet, nödprioriteringar, besättningskoordinering och flygplanssystem utan att förlita sig på ett flygbolags exakta kommandon eller procedurer.\n\nVälj ett svar för varje fråga. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare kabinpersonalfrågor.",
         "Välj det säkraste eller mest exakta svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Entréutmaning för flygvärdinna",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Inträdesprov för flygvärdinna",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och din kabinpersonals kompetenspoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fyra kabinsäkerhetsområden jämfört",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fyra kabinsäkerhetsområden jämfört"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du klarade flygvärdinnans entréutmaning!",
       "finished": "Ingångsutmaningen för flygvärdinnan klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkast kabinsäkerhetsområde",
       "trickiest": "Knepigaste stugsäkerhetsområdet",
       "bestRound": "Bästa avsnittet",
@@ -96,8 +89,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Vilket är en flygvärdinnas primära ansvar?",
-          "answers": [
-            "Passagerarnas säkerhet",
-            "Säljer produkter ombord",
-            "Servera måltider snabbt",
-            "Tillkännage resmålet"
-          ],
+          "answers": {
+            "a1": "Passagerarnas säkerhet",
+            "a2": "Säljer produkter ombord",
+            "a3": "Servera måltider snabbt",
+            "a4": "Tillkännage resmålet"
+          },
           "headerLabel": "HUTTPRIORITETER"
         },
         "flightattendant-q2": {
           "question": "När betydande turbulens börjar, vad är den viktigaste omedelbara kabinprioriteringen?",
-          "answers": [
-            "Fortsätt service för att förhindra förseningar",
-            "Säkra dig själv och kabinen som procedurer kräver",
-            "Öppna varje överliggande fack",
-            "Be passagerarna att stå och sträcka på sig"
-          ],
+          "answers": {
+            "a1": "Fortsätt service för att förhindra förseningar",
+            "a2": "Säkra dig själv och kabinen som procedurer kräver",
+            "a3": "Öppna varje överliggande fack",
+            "a4": "Be passagerarna att stå och sträcka på sig"
+          },
           "headerLabel": "TURBULENS"
         },
         "flightattendant-q3": {
           "question": "Om syrgasmasker faller under dekompression, vad ska du normalt göra innan du hjälper en annan person?",
-          "answers": [
-            "Ta av ditt säkerhetsbälte",
-            "Vänta på kabinljusen",
-            "Montera din egen mask",
-            "Flytta till gången"
-          ],
+          "answers": {
+            "a1": "Ta av ditt säkerhetsbälte",
+            "a2": "Vänta på kabinljusen",
+            "a3": "Montera din egen mask",
+            "a4": "Flytta till gången"
+          },
           "headerLabel": "DEKOMPRESSION"
         },
         "flightattendant-q4": {
           "question": "Vad ska passagerare i allmänhet göra med kabinbagage under en nödutrymning?",
-          "answers": [
-            "Ta bara små påsar",
-            "Bär väskor över ena axeln",
-            "Skicka väskor till besättningsmedlemmar",
-            "Lämna allt bagage bakom dig"
-          ],
+          "answers": {
+            "a1": "Ta bara små påsar",
+            "a2": "Bär väskor över ena axeln",
+            "a3": "Skicka väskor till besättningsmedlemmar",
+            "a4": "Lämna allt bagage bakom dig"
+          },
           "headerLabel": "EVAKUERING"
         },
         "flightattendant-q5": {
           "question": "Varför ska passagerarna räkna raderna mellan sitt säte och de närmaste användbara utgångarna?",
-          "answers": [
-            "Rök eller mörker kan göra utgångar svårare att se",
-            "Det bestämmer måltidsserveringsordningen",
-            "Den identifierar det tystaste sätet",
-            "Det förändrar flygplanets balans"
-          ],
+          "answers": {
+            "a1": "Rök eller mörker kan göra utgångar svårare att se",
+            "a2": "Det bestämmer måltidsserveringsordningen",
+            "a3": "Den identifierar det tystaste sätet",
+            "a4": "Det förändrar flygplanets balans"
+          },
           "headerLabel": "AVSLUTA MEDVETENHET"
         },
         "flightattendant-q6": {
           "question": "Vad är besättningsresurshanteringen främst utformad för att stärka inom flyget?",
-          "answers": [
-            "Biljettprissättning och schemaläggning",
-            "Kommunikation, lagarbete och beslutsfattande",
-            "Passagerarunderhållning",
-            "Flygplanstillverkningshastighet"
-          ],
+          "answers": {
+            "a1": "Biljettprissättning och schemaläggning",
+            "a2": "Kommunikation, lagarbete och beslutsfattande",
+            "a3": "Passagerarunderhållning",
+            "a4": "Flygplanstillverkningshastighet"
+          },
           "headerLabel": "BESÄTTNINGSKOORDINERING"
         },
         "flightattendant-q7": {
           "question": "Vad betyder hypoxi?",
-          "answers": [
-            "Överdrivet kabinljud",
-            "En snabb förändring i riktning",
-            "Otillräckligt med syre når kroppens vävnader",
-            "En försening vid ombordstigning"
-          ],
+          "answers": {
+            "a1": "Överdrivet kabinljud",
+            "a2": "En snabb förändring i riktning",
+            "a3": "Otillräckligt med syre når kroppens vävnader",
+            "a4": "En försening vid ombordstigning"
+          },
           "headerLabel": "FLYGS HÄLSA"
         },
         "flightattendant-q8": {
           "question": "Vilka tre element utgör eldtriangeln?",
-          "answers": [
-            "Rök, låga och aska",
-            "Vatten, luft och metall",
-            "Bränsle, tryck och ånga",
-            "Värme, bränsle och syre"
-          ],
+          "answers": {
+            "a1": "Rök, låga och aska",
+            "a2": "Vatten, luft och metall",
+            "a3": "Bränsle, tryck och ånga",
+            "a4": "Värme, bränsle och syre"
+          },
           "headerLabel": "BRANDSÄKERHET"
         },
         "flightattendant-q9": {
           "question": "Vad är huvudsyftet med nödbelysning på golvnivå?",
-          "answers": [
-            "Att hjälpa till att vägleda människor mot utgångar när sikten är dålig",
-            "För att belysa matbrickor",
-            "För att visa flygplanets hastighet",
-            "För att markera premiumplatser"
-          ],
+          "answers": {
+            "a1": "Att hjälpa till att vägleda människor mot utgångar när sikten är dålig",
+            "a2": "För att belysa matbrickor",
+            "a3": "För att visa flygplanets hastighet",
+            "a4": "För att markera premiumplatser"
+          },
           "headerLabel": "KABINSYSTEM"
         },
         "flightattendant-q10": {
           "question": "Varför måste passagerare vara uppmärksamma på säkerhetsgenomgången även om de flyger ofta?",
-          "answers": [
-            "Den avslöjar flygets marschhöjd",
-            "Utrustning och procedurer för nödsituationer kan skilja sig åt beroende på flygplan",
-            "Det bestämmer ordningen för bagageleverans",
-            "Den förklarar hur biljettpriserna sattes"
-          ],
+          "answers": {
+            "a1": "Den avslöjar flygets marschhöjd",
+            "a2": "Utrustning och procedurer för nödsituationer kan skilja sig åt beroende på flygplan",
+            "a3": "Det bestämmer ordningen för bagageleverans",
+            "a4": "Den förklarar hur biljettpriserna sattes"
+          },
           "headerLabel": "SLUTFRÅGA FÖR HUTT"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 7% potrafi nazwać te przestarzałe przedmioty. Czy potrafisz to zrobić?",
   "eyebrow": "TEST ZGUBIONYCH PRZEDMIOTÓW",
   "summary": "Dziesięć obiektów, które kiedyś wydawały się zupełnie zwyczajne. Zobacz, ile zapomnianych imion wciąż pamiętasz.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Obiekty mogą wyglądać znajomo, ale prawidłowe nazwanie wszystkich 10 jest znacznie trudniejsze, niż się wydaje.",
     "cta": "Rozpocznij quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Przed smartfonami, urządzeniami do transmisji strumieniowej i urządzeniami automatycznymi życie codzienne opierało się na nośnikach fizycznych, gadżetach mechanicznych i narzędziach gospodarstwa domowego, które teraz wyglądają dziwnie obco. To wyzwanie składające się z dziesięciu pytań sprawdza, czy ich nazwy zniknęły z pamięci wraz z samymi przedmiotami.\n\nPrzeanalizuj każde zdjęcie, w razie potrzeby skorzystaj ze wskazówki i wybierz jedną z czterech możliwych nazw. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.\n\nPierwsze dziesięć pytań źródłowych i ich obrazy zostały powielone z QuizDays za zgodą właściciela witryny zlecającego ten quiz.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Przyjrzyj się każdemu zdjęciu i przeczytaj jego krótką wskazówkę.",
         "Wybierz poprawną nazwę spośród czterech możliwych odpowiedzi.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie dotyczące przestarzałych przedmiotów",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Zagubione obiekty",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik nostalgii jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 starych obiektów",
-          "Porównanie trzech kategorii obiektów",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech kategorii obiektów"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie dotyczące przestarzałych przedmiotów!",
       "finished": "Wyzwanie dotyczące przestarzałych przedmiotów zostało ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejsza kategoria obiektu",
       "trickiest": "Najtrudniejsza kategoria obiektów",
       "bestRound": "Najlepsza sekcja",
@@ -93,8 +86,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Czarna dyskietka 3,5 cala na neutralnej powierzchni"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Dyskietka",
-            "Kaseta magnetofonowa",
-            "Dysk Laserowy",
-            "Napęd zip"
-          ],
+          "answers": {
+            "a1": "Dyskietka",
+            "a2": "Kaseta magnetofonowa",
+            "a3": "Dysk Laserowy",
+            "a4": "Napęd zip"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 1 Z 10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "Zabytkowy telefon z okrągłą mechaniczną tarczą"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Gramofon",
-            "Telefon z tarczą",
-            "Telegraf",
-            "Dyktafon"
-          ],
+          "answers": {
+            "a1": "Gramofon",
+            "a2": "Telefon z tarczą",
+            "a3": "Telegraf",
+            "a4": "Dyktafon"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 2 Z 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "Czerwona stereoskopowa przeglądarka zabawek z okrągłą rolką ze zdjęciami"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Projektor slajdów",
-            "Stereoskop",
-            "View-Master",
-            "Kanister z filmem"
-          ],
+          "answers": {
+            "a1": "Projektor slajdów",
+            "a2": "Stereoskop",
+            "a3": "View-Master",
+            "a4": "Kanister z filmem"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 3 Z 10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "Mechaniczna maszyna do pisania z kluczami i taśmą barwiącą"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Kałamarz",
-            "Powielacz",
-            "Klucz telegraficzny",
-            "Maszyna do pisania"
-          ],
+          "answers": {
+            "a1": "Kałamarz",
+            "a2": "Powielacz",
+            "a3": "Klucz telegraficzny",
+            "a4": "Maszyna do pisania"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 4 Z 10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Drewniana deska do prania z powierzchnią z blachy falistej"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Tarka",
-            "Ubijanie masła",
-            "Młynek do kawy",
-            "Pudełko na lód"
-          ],
+          "answers": {
+            "a1": "Tarka",
+            "a2": "Ubijanie masła",
+            "a3": "Młynek do kawy",
+            "a4": "Pudełko na lód"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 5 Z 10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "Przenośny odtwarzacz kasetowy ze słuchawkami przewodowymi"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Boombox",
-            "Walkman",
-            "Radio tranzystorowe",
-            "Gramofon"
-          ],
+          "answers": {
+            "a1": "Boombox",
+            "a2": "Walkman",
+            "a3": "Radio tranzystorowe",
+            "a4": "Gramofon"
+          },
           "headerLabel": "ZGUBIONY OBIEKT 6 Z 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "Prostokątna kaseta wideo do użytku domowego"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Taśma Betamax",
-            "Rolka filmowa",
-            "taśma VHS",
-            "Kaseta magnetofonowa"
-          ],
+          "answers": {
+            "a1": "Taśma Betamax",
+            "a2": "Rolka filmowa",
+            "a3": "taśma VHS",
+            "a4": "Kaseta magnetofonowa"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 7 Z 10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Ręczne narzędzie tkane, używane niegdyś do usuwania kurzu z dywanów"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Szczypce do lodu",
-            "Szczypce do cukru",
-            "Łyżka do butów",
-            "Trzepaczka do dywanów"
-          ],
+          "answers": {
+            "a1": "Szczypce do lodu",
+            "a2": "Szczypce do cukru",
+            "a3": "Łyżka do butów",
+            "a4": "Trzepaczka do dywanów"
+          },
           "headerLabel": "ZGUBIONY OBIEKT 8 Z 10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "Mały elektroniczny odbiornik wiadomości z wyświetlaczem i zaczepem na pasek"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Pager",
-            "GameBoy",
-            "Telewizja",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Pager",
+            "a2": "GameBoy",
+            "a3": "Telewizja",
+            "a4": "PDA"
+          },
           "headerLabel": "ZGUBIONY PRZEDMIOT 9 Z 10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "Metalowa patelnia z długim uchwytem, wypełniona kiedyś węglem do ogrzania łóżka"
           },
           "question": "Jak nazywa się ten stary przedmiot?",
-          "answers": [
-            "Lampa naftowa",
-            "Podgrzewacz do łóżka",
-            "Chamberstick",
-            "Latarnia gazowa"
-          ],
+          "answers": {
+            "a1": "Lampa naftowa",
+            "a2": "Podgrzewacz do łóżka",
+            "a3": "Chamberstick",
+            "a4": "Latarnia gazowa"
+          },
           "headerLabel": "OSTATNI ZGUBIONY PRZEDMIOT"
         }
       }

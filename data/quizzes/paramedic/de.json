@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 8 % bestehen diese Aufnahmeprüfung zum Rettungssanitäter",
   "eyebrow": "HERAUSFORDERUNG ZUM EINTRITT DES SANITÄTERS",
   "summary": "Gefahren am Unfallort, Vitalfunktionen und schnelle Reaktionsentscheidungen stellen auf die Probe, ob Sie klar denken können, wenn es auf jeden Hinweis ankommt.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Gefahren am Unfallort, Vitalfunktionen, Notfallberechnung und ruhiges Urteilsvermögen. Können Sie klar denken, wenn jeder Hinweis zählt?",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieses internationale Unterhaltungsquiz enthält zehn Einstiegsfragen zu den Themen Anatomie, Beobachtungen, Rechnen, Kommunikation, Sicherheit und vorrangiges Urteilsvermögen. Es testet sorgfältiges Denken und nicht lokale Protokolle oder Betriebsabläufe.\n\nWählen Sie die beste Antwort, indem Sie nur die angezeigten Informationen verwenden. Sichere Optionen begünstigen das Erkennen von Risiken, eine klare Kommunikation und die Suche nach angemessener qualifizierter Unterstützung.\n\nDies ist keine akkreditierte Aufnahmeprüfung für Rettungssanitäter, keine klinische Beurteilung, keine Qualifikation, kein Schulungskurs oder keine Quelle für Notfallberatung.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn sorgfältig ausgewählte Fragen in einer fokussierten Herausforderung.",
         "Wählen Sie jeweils eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Aufnahmeprüfung für Rettungssanitäter",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Aufnahmeherausforderung für Rettungssanitäter",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihr Ergebnis bei der Zulassung zum Rettungssanitäter und die Aufschlüsselung in sechs Bereiche stehen zur Auswertung bereit.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Sechs Eingangsbereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Sechs Eingangsbereiche im Vergleich"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Sie haben die Aufnahmeprüfung für Rettungssanitäter bestanden!",
       "finished": "Herausforderung für den Zugang zum Rettungssanitäter abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster getesteter Bereich",
       "trickiest": "Schwierigster getesteter Bereich",
       "bestRound": "Stärkster Bereich",
@@ -107,8 +100,7 @@
         "snapshot": "Was Ihr Kandidatenprofil vermuten lässt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Welches Organ pumpt Blut durch den Körper?",
-          "answers": [
-            "Herz",
-            "Lunge",
-            "Gehirn",
-            "Knochen"
-          ],
+          "answers": {
+            "a1": "Herz",
+            "a2": "Lunge",
+            "a3": "Gehirn",
+            "a4": "Knochen"
+          },
           "headerLabel": "ANATOMIE & PHYSIOLOGIE"
         },
         "paramedic-r1q5": {
           "question": "Welche Öffnung sorgt für die klarste Übergabe?",
-          "answers": [
-            "Wahrscheinlich hat sich früher etwas geändert",
-            "Hier sind alle kleinen Details in zufälliger Reihenfolge",
-            "Um 14:20 Uhr wurde die Atmung schneller und die Aufmerksamkeit nahm ab",
-            "Ich weiß bereits genau, was die Ursache war"
-          ],
+          "answers": {
+            "a1": "Wahrscheinlich hat sich früher etwas geändert",
+            "a2": "Hier sind alle kleinen Details in zufälliger Reihenfolge",
+            "a3": "Um 14:20 Uhr wurde die Atmung schneller und die Aufmerksamkeit nahm ab",
+            "a4": "Ich weiß bereits genau, was die Ursache war"
+          },
           "headerLabel": "KLARE ÜBERGABE"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80, dann 92, dann 108, mit Blässe und Schwindel"
           },
           "question": "Was ist die beste Interpretation dieses Musters?",
-          "answers": [
-            "Die dokumentierten Werte sind unverändert",
-            "Der kombinierte Trend deutet auf eine Verschlechterung hin, die einer sofortigen qualifizierten Beurteilung bedarf",
-            "Nur die erste Zahl zählt",
-            "Die Symptome können ignoriert werden, da keine Diagnose angezeigt wird"
-          ],
+          "answers": {
+            "a1": "Die dokumentierten Werte sind unverändert",
+            "a2": "Der kombinierte Trend deutet auf eine Verschlechterung hin, die einer sofortigen qualifizierten Beurteilung bedarf",
+            "a3": "Nur die erste Zahl zählt",
+            "a4": "Die Symptome können ignoriert werden, da keine Diagnose angezeigt wird"
+          },
           "headerLabel": "BEOBACHTUNGSTRENDS"
         },
         "paramedic-r2q4": {
           "question": "Welche Aussage beschreibt die Nieren am besten?",
-          "answers": [
-            "Sie tauschen Sauerstoff und Kohlendioxid aus",
-            "Sie entfernen Abfallstoffe aus dem Blut und helfen, den Wasserhaushalt zu regulieren",
-            "Sie pumpen Blut durch Arterien",
-            "Sie kontrollieren jede willkürliche Bewegung"
-          ],
+          "answers": {
+            "a1": "Sie tauschen Sauerstoff und Kohlendioxid aus",
+            "a2": "Sie entfernen Abfallstoffe aus dem Blut und helfen, den Wasserhaushalt zu regulieren",
+            "a3": "Sie pumpen Blut durch Arterien",
+            "a4": "Sie kontrollieren jede willkürliche Bewegung"
+          },
           "headerLabel": "KÖRPERSYSTEME"
         },
         "paramedic-r1q4": {
           "question": "Über der einzigen Tür liegt ein stromführendes Stromkabel. Was kommt zuerst?",
-          "answers": [
-            "Steigen Sie vorsichtig darüber",
-            "Halten Sie alle Personen fern und holen Sie qualifizierte Hilfe, um die Gefahrenstelle zu sichern",
-            "Bewegen Sie es mit einem trockenen Gegenstand",
-            "Bitten Sie einen Umstehenden, es sich anzusehen"
-          ],
+          "answers": {
+            "a1": "Steigen Sie vorsichtig darüber",
+            "a2": "Halten Sie alle Personen fern und holen Sie qualifizierte Hilfe, um die Gefahrenstelle zu sichern",
+            "a3": "Bewegen Sie es mit einem trockenen Gegenstand",
+            "a4": "Bitten Sie einen Umstehenden, es sich anzusehen"
+          },
           "headerLabel": "SZENENSICHERHEIT"
         },
         "paramedic-r6q2": {
           "question": "Eine Person nickt ständig, hat aber nicht verstanden. Was soll als nächstes passieren?",
-          "answers": [
-            "Wiederholen Sie die gleiche Erklärung langsamer",
-            "Fragen Sie: „Verstehen Sie?“ und fahren Sie fort, wenn sie „Ja“ sagen",
-            "Kürzen Sie die Erklärung, behalten Sie aber die gleiche Terminologie bei",
-            "Verwenden Sie einfache Worte und prüfen Sie, ob alles verstanden wurde"
-          ],
+          "answers": {
+            "a1": "Wiederholen Sie die gleiche Erklärung langsamer",
+            "a2": "Fragen Sie: „Verstehen Sie?“ und fahren Sie fort, wenn sie „Ja“ sagen",
+            "a3": "Kürzen Sie die Erklärung, behalten Sie aber die gleiche Terminologie bei",
+            "a4": "Verwenden Sie einfache Worte und prüfen Sie, ob alles verstanden wurde"
+          },
           "headerLabel": "KLARE KOMMUNIKATION"
         },
         "paramedic-r5q6": {
           "context": "Person A fühlt sich wohl und ihre Beobachtungen bleiben stabil. Person B ist frisch feucht und schwindelig, und ihr Puls ist seit drei Kontrollen gestiegen.",
           "question": "Wer braucht zuerst Aufmerksamkeit?",
-          "answers": [
-            "Person B, weil mehrere Veränderungen auf eine Verschlechterung hindeuten",
-            "Person A, weil ihre Beobachtungen zuerst aufgezeichnet wurden",
-            "Beide können warten, da keiner von beiden eine benannte Diagnose hat",
-            "Die Person mit dem kürzeren Namen"
-          ],
+          "answers": {
+            "a1": "Person B, weil mehrere Veränderungen auf eine Verschlechterung hindeuten",
+            "a2": "Person A, weil ihre Beobachtungen zuerst aufgezeichnet wurden",
+            "a3": "Beide können warten, da keiner von beiden eine benannte Diagnose hat",
+            "a4": "Die Person mit dem kürzeren Namen"
+          },
           "headerLabel": "PRIORITÄTSURTEIL"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 Liter plus 450 Milliliter plus 250 Milliliter ergeben die Summe"
           },
           "question": "Wie groß ist das insgesamt aufgezeichnete Volumen in Millilitern?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1.000 ml",
-            "1.100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1.000 ml",
+            "a4": "1.100 ml"
+          },
           "headerLabel": "NOTFALLRECHNEN"
         },
         "paramedic-r10q4": {
           "context": "VORFALLSDATEN – Eine aggressive Person wirft Gegenstände in die Nähe des Eingangs. Die Ausrüstung blockiert teilweise den nächsten Ausgangsweg.",
           "question": "Was ist die sicherste Reaktion auf die kombinierten Gefahren?",
-          "answers": [
-            "Halten Sie Abstand, weisen Sie andere auf einen sichereren Weg und alarmieren Sie die entsprechende Hilfe",
-            "Gehen Sie auf die Person zu und argumentieren Sie, bis sie aufhört",
-            "Holen Sie die Ausrüstung neben der Person ab, bevor Sie gehen",
-            "Bitten Sie einen ungeübten Unbeteiligten, die geworfenen Gegenstände abzuwehren"
-          ],
+          "answers": {
+            "a1": "Halten Sie Abstand, weisen Sie andere auf einen sichereren Weg und alarmieren Sie die entsprechende Hilfe",
+            "a2": "Gehen Sie auf die Person zu und argumentieren Sie, bis sie aufhört",
+            "a3": "Holen Sie die Ausrüstung neben der Person ab, bevor Sie gehen",
+            "a4": "Bitten Sie einen ungeübten Unbeteiligten, die geworfenen Gegenstände abzuwehren"
+          },
           "headerLabel": "INTEGRIERTE SICHERHEIT"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Atmung 16 wach, dann 22 ängstlich, dann 28 schläfrig"
           },
           "question": "Was ist die beste Interpretation des Gesamttrends?",
-          "answers": [
-            "Die Person verbessert sich stetig",
-            "Nur die mittlere Kontrolle zählt",
-            "Die Werte können ignoriert werden, da keine Diagnose genannt wird",
-            "Die Atmung verschlechtert sich, während die Reaktionsfähigkeit nachlässt"
-          ],
+          "answers": {
+            "a1": "Die Person verbessert sich stetig",
+            "a2": "Nur die mittlere Kontrolle zählt",
+            "a3": "Die Werte können ignoriert werden, da keine Diagnose genannt wird",
+            "a4": "Die Atmung verschlechtert sich, während die Reaktionsfähigkeit nachlässt"
+          },
           "headerLabel": "ENDGÜLTIGE ANTWORT"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Apenas 7% passam neste exame de admissão de enfermagem",
   "eyebrow": "LABORATÓRIO DE ADMISSÕES CLÍNICAS",
   "summary": "Anatomia, sinais vitais e decisões de atendimento ao paciente testam se o seu julgamento permanece preciso sob pressão.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "Sistemas do corpo, sinais vitais e cuidados ao paciente. Consegue identificar o que importa e tomar a decisão mais segura?",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio de entretenimento contém dez perguntas introdutórias sobre anatomia, observação, cálculo em saúde, prevenção de infecções, comunicação e definição de prioridades. Valoriza o uso atento das informações apresentadas.\n\nEscolha a melhor resposta para cada situação. O conteúdo é geral e não depende dos procedimentos profissionais de um país específico.\n\nEste não é um exame de admissão reconhecido na área de enfermagem, uma avaliação clínica, uma qualificação, um curso de formação nem uma fonte de orientação médica.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Complete dez perguntas cuidadosamente selecionadas em um desafio focado.",
         "Escolha uma resposta de cada vez. As respostas certas só serão reveladas no final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "exame de admissão de enfermagem",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "Desafio de ingresso em enfermagem",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sua pontuação de admissão em enfermagem e divisão em três áreas estão prontas para serem reveladas.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Comparação de três áreas avaliadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Comparação de três áreas avaliadas"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Passou no desafio de enfermagem!",
       "finished": "Desafio de enfermagem concluído",
-      "correctLabel": "corretas",
       "strongest": "Área avaliada mais forte",
       "trickiest": "Área avaliada mais complicada",
       "bestRound": "Melhor etapa",
@@ -98,8 +91,7 @@
         "snapshot": "O que o seu perfil de candidato sugere",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Que gás o sangue capturou ao retornar dos pulmões?",
-          "answers": [
-            "N₂",
-            "O₂",
-            "Dióxido de carbono",
-            "H₂"
-          ],
+          "answers": {
+            "a1": "N₂",
+            "a2": "O₂",
+            "a3": "Dióxido de carbono",
+            "a4": "H₂"
+          },
           "headerLabel": "ANATOMIA E FISIOLOGIA"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 mililitros mais 250 mililitros equivalem a quanto total"
           },
           "question": "Um jarro contém 750 mL. Outros 250 mL são adicionados. Qual é o total?",
-          "answers": [
-            "900ml",
-            "1.100ml",
-            "1.250ml",
-            "1.000ml"
-          ],
+          "answers": {
+            "a1": "900ml",
+            "a2": "1.100ml",
+            "a3": "1.250ml",
+            "a4": "1.000ml"
+          },
           "headerLabel": "NUMERAÇÃO DE SAÚDE"
         },
         "nurse-r2q5": {
           "context": "Anteriormente: respirando confortavelmente e falando normalmente. Agora: respirando mais rápido e fazendo pausas entre frases curtas.",
           "question": "Qual mudança nesta nota de observação é mais importante?",
-          "answers": [
-            "A nota contém dois pontos no tempo",
-            "O padrão respiratório piorou",
-            "A pessoa ainda está falando",
-            "A nota anterior era mais curta"
-          ],
+          "answers": {
+            "a1": "A nota contém dois pontos no tempo",
+            "a2": "O padrão respiratório piorou",
+            "a3": "A pessoa ainda está falando",
+            "a4": "A nota anterior era mais curta"
+          },
           "headerLabel": "TENDÊNCIAS DE OBSERVAÇÃO"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "A transferência diz braço esquerdo, o gráfico diz braço direito"
           },
           "question": "Que incompatibilidade deve ser esclarecida?",
-          "answers": [
-            "O uso de letras maiúsculas",
-            "O número de palavras",
-            "O gráfico tem uma borda",
-            "O lado indicado na documentação é diferente"
-          ],
+          "answers": {
+            "a1": "O uso de letras maiúsculas",
+            "a2": "O número de palavras",
+            "a3": "O gráfico tem uma borda",
+            "a4": "O lado indicado na documentação é diferente"
+          },
           "headerLabel": "PRECISÃO DE dado"
         },
         "nurse-r4q3": {
           "question": "Uma tarefa pode espirrar fluido corporal em direção ao rosto. Qual proteção aborda esse risco declarado?",
-          "answers": [
-            "Um chapéu de tecido",
-            "Proteção adequada para os olhos ou rosto",
-            "Apenas capas de sapato",
-            "Nenhuma proteção se a tarefa for breve"
-          ],
+          "answers": {
+            "a1": "Um chapéu de tecido",
+            "a2": "Proteção adequada para os olhos ou rosto",
+            "a3": "Apenas capas de sapato",
+            "a4": "Nenhuma proteção se a tarefa for breve"
+          },
           "headerLabel": "PREVENÇÃO DE INFECÇÕES"
         },
         "nurse-r6q3": {
           "question": "Alguém faz uma pergunta delicada em uma área pública movimentada. O que deve fazer?",
-          "answers": [
-            "Ofereça-se para continuar a conversa em algum lugar privado",
-            "Responda brevemente e em voz baixa onde está",
-            "Peça às pessoas próximas que deem algum espaço",
-            "Dê apenas a parte não sensível da resposta"
-          ],
+          "answers": {
+            "a1": "Ofereça-se para continuar a conversa em algum lugar privado",
+            "a2": "Responda brevemente e em voz baixa onde está",
+            "a3": "Peça às pessoas próximas que deem algum espaço",
+            "a4": "Dê apenas a parte não sensível da resposta"
+          },
           "headerLabel": "COMUNICAÇÃO COMPASSIVA"
         },
         "nurse-r7q1": {
           "context": "A pessoa A sente-se confortável com um pulso ligeiramente mais rápido após caminhar. A pessoa B fica subitamente confusa, respirando rapidamente e parece pálida.",
           "question": "Quem precisa de atenção primeiro?",
-          "answers": [
-            "Pessoa B, porque vários novos sinais sugerem deterioração súbita",
-            "Pessoa A, porque seu pulso mudou",
-            "Ambos podem esperar por observações de rotina",
-            "A pessoa que chegou primeiro"
-          ],
+          "answers": {
+            "a1": "Pessoa B, porque vários novos sinais sugerem deterioração súbita",
+            "a2": "Pessoa A, porque seu pulso mudou",
+            "a3": "Ambos podem esperar por observações de rotina",
+            "a4": "A pessoa que chegou primeiro"
+          },
           "headerLabel": "JULGAMENTO DE PRIORIDADE"
         },
         "nurse-r3q1": {
           "question": "Um total de fluido aumenta de 600 mL para 900 mL. Em que porcentagem aumentou?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "NUMERAÇÃO DE SAÚDE"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Vias aéreas bloqueadas, menos ar para os pulmões, desconhecido, menos O₂ para os tecidos"
           },
           "question": "Um bloqueio das vias aéreas impede que o ar chegue aos pulmões. Qual efeito posterior segue mais diretamente?",
-          "answers": [
-            "Menos O₂ entra no sangue",
-            "Mais nutrientes entram no estômago",
-            "Os rins formam imediatamente mais urina",
-            "Ossos produzem mais movimento"
-          ],
+          "answers": {
+            "a1": "Menos O₂ entra no sangue",
+            "a2": "Mais nutrientes entram no estômago",
+            "a3": "Os rins formam imediatamente mais urina",
+            "a4": "Ossos produzem mais movimento"
+          },
           "headerLabel": "FISIOLOGIA INTEGRADA"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "A pessoa A está alerta, com desconforto leve e estável e fala normal. A pessoa B está pálida, tem dificuldade para acordar e respira irregularmente."
           },
           "question": "Quem tem prioridade imediata?",
-          "answers": [
-            "Pessoa A, porque o desconforto sempre vem em primeiro lugar",
-            "Ambos podem esperar por uma verificação de rotina",
-            "Pessoa B, porque a consciência e a respiração mudaram repentinamente",
-            "Escolha com base em quem chegou primeiro"
-          ],
+          "answers": {
+            "a1": "Pessoa A, porque o desconforto sempre vem em primeiro lugar",
+            "a2": "Ambos podem esperar por uma verificação de rotina",
+            "a3": "Pessoa B, porque a consciência e a respiração mudaram repentinamente",
+            "a4": "Escolha com base em quem chegou primeiro"
+          },
           "headerLabel": "ENTREGA FINAL"
         }
       }

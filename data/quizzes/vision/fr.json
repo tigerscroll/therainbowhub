@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seulement 7 % peuvent réussir ce test de vision",
   "eyebrow": "LABORATOIRE DE FOCALISATION OPTIQUE",
   "summary": "De minuscules différences, des motifs changeants et des pièges optiques testent si vos yeux captent ce que la plupart des gens manquent.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "À quel point vos yeux sont-ils perçants ? Repérez les petites différences, suivez les schémas changeants et détectez les pièges visuels avant qu'ils ne vous attrapent.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de divertissement contient dix énigmes visuelles couvrant le contraste des couleurs, la correspondance des détails, l'orientation spatiale, le suivi des motifs, l'attention et la mémoire visuelle. Les tâches deviennent plus exigeantes sans recourir à une terminologie spécialisée.\n\nÉtudiez attentivement chaque image ou symbole, puis choisissez la réponse la mieux étayée par ce qui est affiché. Certaines questions testent la perception et l'attention plutôt que la vue elle-même.\n\nIl ne s’agit pas d’un examen de la vue, d’un test de vision médical ou d’un diagnostic. Demandez des conseils en matière de soins oculaires qualifiés si vous avez des inquiétudes concernant votre vue.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions soigneusement sélectionnées dans un seul défi ciblé.",
         "Choisissez une réponse à chaque fois. Les bonnes réponses restent cachées jusqu’au résultat final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi visuel",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Défi Vision",
@@ -30,10 +26,8 @@
         "preAdCopy": "Votre score de défi visuel et votre répartition en trois compétences sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Trois compétences visuelles comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois compétences visuelles comparées"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Vous avez réussi le défi de la vision !",
       "finished": "Défi de vision terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -98,8 +91,7 @@
         "snapshot": "Ce que suggère votre profil de concentration",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Quatre échantillons bleus proches avec une vignette en bas à droite légèrement différente"
           },
           "question": "Quelle case est d'une couleur différente ?",
-          "answers": [
-            "En haut à gauche",
-            "En bas à droite",
-            "En haut à droite",
-            "En bas à gauche"
-          ],
+          "answers": {
+            "a1": "En haut à gauche",
+            "a2": "En bas à droite",
+            "a3": "En haut à droite",
+            "a4": "En bas à gauche"
+          },
           "headerLabel": "CONTRASTE DE COULEUR"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Code de référence M 7 K 2 P 9"
           },
           "question": "Quel code correspond exactement ?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "CORRESPONDANCE DE DÉTAIL"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Flèche nord-est réfléchie sur un miroir vertical"
           },
           "question": "Quelle flèche est le miroir vertical de ↗ ?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "ORIENTATION SPATIALE"
         },
         "vision-r3q6": {
           "context": "F F F F F F F",
           "question": "Combien de lettres F sont affichées ?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "CONTRÔLE D'ATTENTION"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, inconnu"
           },
           "question": "Quelle tuile complète la rangée alternée ?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "SUIVI DE MODÈLE"
         },
         "vision-r4q5": {
           "question": "Quelle couleur se démarque le plus du bleu marine foncé ?",
-          "answers": [
-            "Échantillon A",
-            "Échantillon B",
-            "Échantillon D",
-            "Échantillon C"
-          ],
+          "answers": {
+            "a1": "Échantillon A",
+            "a2": "Échantillon B",
+            "a3": "Échantillon D",
+            "a4": "Échantillon C"
+          },
           "headerLabel": "CONCENTRATION SUR LA COULEUR"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Un point de départ rouge avec quatre itinéraires en pointillés correspondants qui se croisent à plusieurs reprises avant d'atteindre les points finaux A, B, C et D."
           },
           "question": "Partez du point rouge et suivez le parcours en pointillés. Quelle lettre atteignez-vous ?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SUIVI VISUEL"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026\nB: F0CUS-M7Q2-2026",
           "question": "Quelle position précise a changé dans la version B ?",
-          "answers": [
-            "Le premier F",
-            "Le Q",
-            "Le deuxième caractère",
-            "Le dernier chiffre"
-          ],
+          "answers": {
+            "a1": "Le premier F",
+            "a2": "Le Q",
+            "a3": "Le deuxième caractère",
+            "a4": "Le dernier chiffre"
+          },
           "headerLabel": "DÉTECTION DE DÉTAIL"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Base M8Q2 K7P4 R6N3 et copie M8Q2 K1P4 R6M3"
           },
           "question": "Quels sont les deux caractères qui ont changé ?",
-          "answers": [
-            "7 et N",
-            "8 et 6",
-            "Q et P",
-            "K et R"
-          ],
+          "answers": {
+            "a1": "7 et N",
+            "a2": "8 et 6",
+            "a3": "Q et P",
+            "a4": "K et R"
+          },
           "headerLabel": "COMPARAISON DES CODES"
         },
         "vision-r8q5": {
           "question": "Quelle icône est apparue en quatrième position ?",
-          "answers": [
-            "Lune",
-            "Ancre",
-            "Soleil",
-            "Étoile"
-          ],
+          "answers": {
+            "a1": "Lune",
+            "a2": "Ancre",
+            "a3": "Soleil",
+            "a4": "Étoile"
+          },
           "study": {
             "title": "Aperçu rapide",
             "items": [

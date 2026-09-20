@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 7%-a tette le ezt az ápolói felvételi vizsgát",
   "eyebrow": "KLINIKAI FELVÉTELI LAB",
   "summary": "Az anatómia, az életjelzések és a betegkezelési döntések tesztelnek, hogy a bírálatod a nyomás alatt éles marad-e.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Testrendszerek, életjelek és betegellátás. Meg tudod találni, mi számít, és a legbiztonságosabb hívást?",
     "cta": "Indítsa el a kvízt"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tízkérdéses szórakoztató kihívás az anatómia, a megfigyelés, az egészségügyi számítások, a fertőzésmegelőzés, a kommunikáció és a fontossági sorrend témáit érinti. A nyugodt, kizárólag a megadott információkra épülő gondolkodást jutalmazza.\n\nMinden helyzetben válaszd ki az egyetlen legjobb választ. A tartalom szándékosan általános, és nem támaszkodik egyetlen ország szakmai eljárásaira sem.\n\nEz nem akkreditált ápolói felvételi vizsga, klinikai értékelés, képesítés, képzés vagy orvosi tanács.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ápolási felvételi vizsga",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Ápolási Belépő Kihívás",
@@ -30,10 +26,8 @@
         "preAdCopy": "Az ápolási bevételi pontszámod és a három területi felosztás készen áll ráadásul.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három bejárati területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három bejárati területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sikerült az ápolói kihíváson!",
       "finished": "Ápolási kihívás kész",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb bejárati terület",
       "trickiest": "A legtrükkösebb bejárati terület",
       "bestRound": "A legjobb szakasz",
@@ -98,8 +91,7 @@
         "snapshot": "Amit a jelölt profilja sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Melyik gázt szívja fel a vér, amikor visszatér a tüdőből?",
-          "answers": [
-            "Nitrogén",
-            "Oxigén",
-            "szén-dioxid",
-            "Hidrogén"
-          ],
+          "answers": {
+            "a1": "Nitrogén",
+            "a2": "Oxigén",
+            "a3": "szén-dioxid",
+            "a4": "Hidrogén"
+          },
           "headerLabel": "ANATÓMIA ÉS ÉLETTAN"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 milliliter plusz 250 milliliter megegyezik a teljes összeggel"
           },
           "question": "Egy kancsó 750 ml-t tartalmaz. További 250 ml-t adunk hozzá. Mennyi az össz?",
-          "answers": [
-            "900 ml",
-            "1100 ml",
-            "1250 ml",
-            "1000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1100 ml",
+            "a3": "1250 ml",
+            "a4": "1000 ml"
+          },
           "headerLabel": "EGÉSZSÉGÜGYI SZÁMÍTÁS"
         },
         "nurse-r2q5": {
           "context": "Korábban: kényelmesen lélegezzen és normálisan beszéljen. Most: gyorsabban lélegezzen, és szünetet tartson a rövid mondatok között.",
           "question": "Ebben a megjegyzésben melyik változás a legfontosabb?",
-          "answers": [
-            "A jegyzet két időpontot tartalmaz",
-            "A légzési minta romlott",
-            "A személy még mindig beszél",
-            "A korábbi hang rövidebb volt"
-          ],
+          "answers": {
+            "a1": "A jegyzet két időpontot tartalmaz",
+            "a2": "A légzési minta romlott",
+            "a3": "A személy még mindig beszél",
+            "a4": "A korábbi hang rövidebb volt"
+          },
           "headerLabel": "MEGFIGYELÉSI TRENDEK"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Az átadás azt mondja, hogy a bal kar, a diagram szerint a jobb kar"
           },
           "question": "Milyen eltérést kell tisztázni?",
-          "answers": [
-            "A nagybetűk használata",
-            "A szavak száma",
-            "A diagramnak van szegélye",
-            "A rögzített oldal más"
-          ],
+          "answers": {
+            "a1": "A nagybetűk használata",
+            "a2": "A szavak száma",
+            "a3": "A diagramnak van szegélye",
+            "a4": "A rögzített oldal más"
+          },
           "headerLabel": "FELVÉTEL PONTOSSÁGA"
         },
         "nurse-r4q3": {
           "question": "Egy feladat során testfolyadék fröccsenhet az arc felé. Melyik védelem kezeli az említett kockázatot?",
-          "answers": [
-            "Szövet sapka",
-            "Megfelelő szem- vagy arcvédelem",
-            "Csak cipőhuzatok",
-            "Nincs védelem, ha a feladat rövid"
-          ],
+          "answers": {
+            "a1": "Szövet sapka",
+            "a2": "Megfelelő szem- vagy arcvédelem",
+            "a3": "Csak cipőhuzatok",
+            "a4": "Nincs védelem, ha a feladat rövid"
+          },
           "headerLabel": "FERTŐZÉS MEGELŐZÉS"
         },
         "nurse-r6q3": {
           "question": "Valaki kényes kérdést tesz fel egy forgalmas közterületen. Mit kell tenned?",
-          "answers": [
-            "Ajánlja fel a beszélgetés folytatását egy privát helyen",
-            "Válaszoljon röviden és halkan, hogy hol van",
-            "Kérje meg a közeli embereket, hogy adjanak egy kis helyet",
-            "A válasznak csak a nem érzékeny részét adja meg"
-          ],
+          "answers": {
+            "a1": "Ajánlja fel a beszélgetés folytatását egy privát helyen",
+            "a2": "Válaszoljon röviden és halkan, hogy hol van",
+            "a3": "Kérje meg a közeli embereket, hogy adjanak egy kis helyet",
+            "a4": "A válasznak csak a nem érzékeny részét adja meg"
+          },
           "headerLabel": "EGYÜTTÉRŰ KOMMUNIKÁCIÓ"
         },
         "nurse-r7q1": {
           "context": "Az A személy kényelmesen érzi magát, és járás után enyhén gyorsabb pulzusa van. B személy hirtelen összezavarodik, gyorsan lélegzik és sápadtnak tűnik.",
           "question": "Kinek kell először figyelni?",
-          "answers": [
-            "B személy, mert több új jel is hirtelen romlásra utal",
-            "A személy, mert megváltozott a pulzusa",
-            "Mindketten várhatnak a rutin megfigyelésekre",
-            "Aki előbb érkezett"
-          ],
+          "answers": {
+            "a1": "B személy, mert több új jel is hirtelen romlásra utal",
+            "a2": "A személy, mert megváltozott a pulzusa",
+            "a3": "Mindketten várhatnak a rutin megfigyelésekre",
+            "a4": "Aki előbb érkezett"
+          },
           "headerLabel": "KIEMELT ÍTÉLET"
         },
         "nurse-r3q1": {
           "question": "A folyadék összmennyisége 600 ml-ről 900 ml-re emelkedik. hány százalékkal nőtt?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "EGÉSZSÉGÜGYI SZÁMÍTÁS"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "A légutak elzáródnak, kevesebb levegő jut a tüdőbe, ismeretlen, kevesebb oxigén jut a szövetekhez"
           },
           "question": "A légúti elzáródás megakadályozza, hogy a levegő elérje a tüdőt. Milyen downstream hatás következik a legközvetlenebbül?",
-          "answers": [
-            "Kevesebb oxigén kerül a vérbe",
-            "Több tápanyag kerül a gyomorba",
-            "A vesék azonnal több vizeletet képeznek",
-            "A csontok több mozgást eredményeznek"
-          ],
+          "answers": {
+            "a1": "Kevesebb oxigén kerül a vérbe",
+            "a2": "Több tápanyag kerül a gyomorba",
+            "a3": "A vesék azonnal több vizeletet képeznek",
+            "a4": "A csontok több mozgást eredményeznek"
+          },
           "headerLabel": "INTEGRÁLT ÉLETTAN"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Az A személy éber, enyhe stabil kényelmetlenséggel és normális beszéddel. B személy sápadt, nehezen felébred és szabálytalanul lélegzik."
           },
           "question": "Kinek van közvetlen elsőbbsége?",
-          "answers": [
-            "Az A személy, mert a kényelmetlenség mindig az első",
-            "Mindketten várhatnak a rutinellenőrzésre",
-            "B személy, mert a tudat és a légzés hirtelen megváltozott",
-            "Válasszon az alapján, hogy ki érkezett először"
-          ],
+          "answers": {
+            "a1": "Az A személy, mert a kényelmetlenség mindig az első",
+            "a2": "Mindketten várhatnak a rutinellenőrzésre",
+            "a3": "B személy, mert a tudat és a légzés hirtelen megváltozott",
+            "a4": "Válasszon az alapján, hogy ki érkezett először"
+          },
           "headerLabel": "VÉGSŐ ÁTADÁS"
         }
       }

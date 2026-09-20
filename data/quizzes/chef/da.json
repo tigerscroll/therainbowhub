@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 12 % består denne optagelsesprøve til kokkeuddannelsen",
   "eyebrow": "DET KULINARISKE PASS",
   "summary": "Smag, ild, wienerbrød og servicetryk tester, om du kan blive ved med at tænke, når køkkenet varmer op.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende underholdningsudfordring serverer ti spørgsmål inden for køkkenredskaber, smag, bagning, fødevaresikkerhed, praktisk matematik og varmekontrol. Vanskeligheden stiger fra sunde grundprincipper til beslutninger, der kombinerer mere end én ledetråd.\n\nVælg det bedste svar til hver situation. Korrekthed forbliver skjult, mens du arbejder, så ethvert valg føles som en del af en kontinuerlig køkkenudfordring.\n\nDit resultat beskriver kun dette quizforsøg. Det er ikke en kulinarisk kvalifikation, et fødevaresikkerhedscertifikat eller et professionelt uddannelseskursus.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
         "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Kokkeudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Chef udfordring",
@@ -29,10 +26,8 @@
         "preAdCopy": "Din koks score og seks færdigheder er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Seks køkkenfærdigheder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Seks køkkenfærdigheder sammenlignet"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Du bestod kokkens indgangsudfordring!",
       "finished": "Kulinarisk udfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste køkkenområde",
       "trickiest": "Det sværeste køkkenområde",
       "bestRound": "Bedste afsnit",
@@ -106,8 +100,7 @@
         "snapshot": "Hvad din kokkeprofil antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Hvilket værktøj er bedst til at gribe og vende varm mad i en gryde?",
-          "answers": [
-            "Pisk",
-            "Tænger",
-            "Skræller",
-            "Slev"
-          ],
+          "answers": {
+            "a1": "Pisk",
+            "a2": "Tænger",
+            "a3": "Skræller",
+            "a4": "Slev"
+          },
           "headerLabel": "KØKKENVÆRKTØJ"
         },
         "chef-r1q2": {
           "question": "En sauce smager rigt og tungt, men mangler lysstyrke. Hvilken lille tilføjelse er mest tilbøjelig til at rebalancere det?",
-          "answers": [
-            "Mere smør",
-            "Mere stivelse",
-            "Mere creme",
-            "En lille mængde syre"
-          ],
+          "answers": {
+            "a1": "Mere smør",
+            "a2": "Mere stivelse",
+            "a3": "Mere creme",
+            "a4": "En lille mængde syre"
+          },
           "headerLabel": "SMAGSBALANCE"
         },
         "chef-r5q3": {
           "question": "En muffinopskrift siger, at man kun skal blande, indtil der ikke er tørt mel tilbage. Hvorfor stoppe på det tidspunkt?",
-          "answers": [
-            "For at undgå at miste alt hævemidlet",
-            "Ekstra blanding kan gøre krummen sejere",
-            "For at forhindre, at smeltet fedt skiller sig",
-            "For at stoppe toppen med at brune for tidligt"
-          ],
+          "answers": {
+            "a1": "For at undgå at miste alt hævemidlet",
+            "a2": "Ekstra blanding kan gøre krummen sejere",
+            "a3": "For at forhindre, at smeltet fedt skiller sig",
+            "a4": "For at stoppe toppen med at brune for tidligt"
+          },
           "headerLabel": "BAGEVIDENSKAB"
         },
         "chef-r2q6": {
           "question": "En glaskrukke går i stykker ved siden af utildækket tilberedt mad. Hvad skal der ske?",
-          "answers": [
-            "Fjern synligt glas og gem maden",
-            "Flyt maden væk og fortsæt servicen",
-            "Kassér udsatte fødevarer og rengør området sikkert",
-            "Dæk maden til og rengør efter service"
-          ],
+          "answers": {
+            "a1": "Fjern synligt glas og gem maden",
+            "a2": "Flyt maden væk og fortsæt servicen",
+            "a3": "Kassér udsatte fødevarer og rengør området sikkert",
+            "a4": "Dæk maden til og rengør efter service"
+          },
           "headerLabel": "FØDEVARESIKKERHED"
         },
         "chef-r6q1": {
           "question": "En opskrift bruger 300 g ris til 4 portioner. Hvor meget skal der til 10 portioner?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "KØKKENMATH"
         },
         "chef-r3q1": {
           "question": "Grøntsager i en fyldt varm pande bliver blege og våde. Hvad forklarer det bedst?",
-          "answers": [
-            "Frigivet fugt blev fanget, så grøntsagerne dampede",
-            "Panden var for varm og forseglede fugten indeni",
-            "Grøntsagerne optog olien, før de kunne brune",
-            "At vende dem for ofte skabte den ekstra fugt"
-          ],
+          "answers": {
+            "a1": "Frigivet fugt blev fanget, så grøntsagerne dampede",
+            "a2": "Panden var for varm og forseglede fugten indeni",
+            "a3": "Grøntsagerne optog olien, før de kunne brune",
+            "a4": "At vende dem for ofte skabte den ekstra fugt"
+          },
           "headerLabel": "VARMEKONTROL"
         },
         "chef-r8q1": {
           "question": "Hvilket værktøj fjerner klumper fra tørt mel?",
-          "answers": [
-            "Pisk",
-            "Tænger",
-            "Sigte",
-            "Skræller"
-          ],
+          "answers": {
+            "a1": "Pisk",
+            "a2": "Tænger",
+            "a3": "Sigte",
+            "a4": "Skræller"
+          },
           "headerLabel": "KØKKENVÆRKTØJ"
         },
         "chef-r8q2": {
           "question": "Hvilken ingrediens uddyber velsmagende umami?",
-          "answers": [
-            "Strøsukker",
-            "Flødeskum",
-            "Almindelig vand",
-            "Svampe"
-          ],
+          "answers": {
+            "a1": "Strøsukker",
+            "a2": "Flødeskum",
+            "a3": "Almindelig vand",
+            "a4": "Svampe"
+          },
           "headerLabel": "SMAGSBYGNING"
         },
         "chef-r10q1": {
           "question": "Løg koger først og friske krydderurter afslutter retten, men begge blev tilberedt i en skål. Hvilken opsætningsændring følger opskriften?",
-          "answers": [
-            "Hold dem adskilt, når de er brugt",
-            "Kog alt til sidst",
-            "Tilsæt krydderurterne i starten",
-            "Lad begge ingredienser være uforberedte"
-          ],
+          "answers": {
+            "a1": "Hold dem adskilt, når de er brugt",
+            "a2": "Kog alt til sidst",
+            "a3": "Tilsæt krydderurterne i starten",
+            "a4": "Lad begge ingredienser være uforberedte"
+          },
           "headerLabel": "KØKKENORGANISATION"
         },
         "chef-r10q2": {
           "question": "En ret smager rigt og tungt, men har brug for friskhed. Hvilken efterbehandlingsjustering afbalancerer det bedst?",
-          "answers": [
-            "Mere fløde og smør",
-            "Citron og friske krydderurter",
-            "Mere mel",
-            "Mere sirup"
-          ],
+          "answers": {
+            "a1": "Mere fløde og smør",
+            "a2": "Citron og friske krydderurter",
+            "a3": "Mere mel",
+            "a4": "Mere sirup"
+          },
           "headerLabel": "ENDELIG SMAGSTEST"
         }
       }

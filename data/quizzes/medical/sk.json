@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Väčšina dospelých túto prijímaciu skúšku na medicínu nezvládne",
   "eyebrow": "LEKÁRSKY TEST",
   "summary": "Desať otázok testuje anatómiu, fyziológiu, mikrobiológiu, farmakológiu a klinickú bezpečnosť.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Prvé otázky vyzerajú základne. Potom sa test presunie do fyziológie, mikróbov a lekárskej vedy, na ktorú väčšina dospelých zabudla.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto zábavná výzva s desiatimi otázkami využíva základnú lekársku vedu vyučovanú v anglicky hovoriacich krajinách úrovne 1. Testuje anatómiu, fyziológiu, bunkovú biológiu, mikrobiológiu, farmakológiu a základy kontroly infekcií bez toho, aby sa spoliehal na prijímacie osnovy jednej univerzity.\n\nVyberte jednu odpoveď pre každú otázku. Správnosť zostáva skrytá až do konečného odhalenia, kde je k dispozícii kompletná kontrola odpovede na odomknutie.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Odpovedzte na desať stále náročnejších medicínsko-vedeckých otázok.",
         "Vyberte jednu najpresnejšiu odpoveď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupná lekárska výzva",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Lekárska prijímacia skúška",
@@ -30,10 +26,8 @@
         "preAdCopy": "Bolo skontrolovaných desať vašich odpovedí a vaše skóre z lekárskej vedy je pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnalo sa päť vedeckých oblastí",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnalo sa päť vedeckých oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Uspeli ste vo vstupnej lekárskej výzve!",
       "finished": "Vstupná lekárska výzva dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia vedecká oblasť",
       "trickiest": "Najchúlostivejšia vedecká oblasť",
       "bestRound": "Najlepšia sekcia",
@@ -99,8 +92,7 @@
         "snapshot": "Čo naznačuje váš výsledok",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Ktorý proteín v červených krvinkách nesie najviac kyslíka?",
-          "answers": [
-            "Hemoglobín",
-            "Keratín",
-            "Kolagén",
-            "inzulín"
-          ],
+          "answers": {
+            "a1": "Hemoglobín",
+            "a2": "Keratín",
+            "a3": "Kolagén",
+            "a4": "inzulín"
+          },
           "headerLabel": "FYZIOLÓGIA KRVI"
         },
         "medical-q2": {
           "question": "V DNA sa adenín normálne páruje s ktorou bázou?",
-          "answers": [
-            "guanín",
-            "tymín",
-            "Cytozín",
-            "uracil"
-          ],
+          "answers": {
+            "a1": "guanín",
+            "a2": "tymín",
+            "a3": "Cytozín",
+            "a4": "uracil"
+          },
           "headerLabel": "BIOLÓGIA BUNIEK"
         },
         "medical-q3": {
           "question": "Ktorý orgán je hlavným miestom spracovania a rozkladu mnohých liekov?",
-          "answers": [
-            "Slezina",
-            "Štítna žľaza",
-            "Pečeň",
-            "močového mechúra"
-          ],
+          "answers": {
+            "a1": "Slezina",
+            "a2": "Štítna žľaza",
+            "a3": "Pečeň",
+            "a4": "močového mechúra"
+          },
           "headerLabel": "FARMAKOLÓGIA"
         },
         "medical-q4": {
           "question": "Ktorý výrok najlepšie odlišuje vírusy od baktérií?",
-          "answers": [
-            "Vírusy sú vždy väčšie",
-            "Baktérie sa nemôžu množiť",
-            "Vírusy neobsahujú genetický materiál",
-            "Replikácia vírusov závisí od hostiteľských buniek"
-          ],
+          "answers": {
+            "a1": "Vírusy sú vždy väčšie",
+            "a2": "Baktérie sa nemôžu množiť",
+            "a3": "Vírusy neobsahujú genetický materiál",
+            "a4": "Replikácia vírusov závisí od hostiteľských buniek"
+          },
           "headerLabel": "MIKROBIOLÓGIA"
         },
         "medical-q5": {
           "question": "Ako sa opisuje roztok s pH nižším ako 7?",
-          "answers": [
-            "Kyslé",
-            "Neutrálne",
-            "Alkalický",
-            "Izotonický"
-          ],
+          "answers": {
+            "a1": "Kyslé",
+            "a2": "Neutrálne",
+            "a3": "Alkalický",
+            "a4": "Izotonický"
+          },
           "headerLabel": "CHÉMIA TELA"
         },
         "medical-q6": {
           "question": "Ktorá časť autonómneho nervového systému je spojená s „odpočinkom a trávením“?",
-          "answers": [
-            "Sympatický systém",
-            "Parasympatický systém",
-            "Somatický motorický systém",
-            "Centrálna zraková dráha"
-          ],
+          "answers": {
+            "a1": "Sympatický systém",
+            "a2": "Parasympatický systém",
+            "a3": "Somatický motorický systém",
+            "a4": "Centrálna zraková dráha"
+          },
           "headerLabel": "NERVOVÝ SYSTÉM"
         },
         "medical-q7": {
           "question": "Ktorá štruktúra zabraňuje vniknutiu potravy do dýchacích ciest pri prehĺtaní?",
-          "answers": [
-            "Patella",
-            "Retina",
-            "Epiglottis",
-            "Pankreas"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Retina",
+            "a3": "Epiglottis",
+            "a4": "Pankreas"
+          },
           "headerLabel": "FUNKČNÁ ANATÓMIA"
         },
         "medical-q8": {
           "question": "Ktorý hlavový nerv prenáša vizuálne informácie z oka?",
-          "answers": [
-            "Blúdivý nerv",
-            "Tvárový nerv",
-            "Trojklanný nerv",
-            "Optický nerv"
-          ],
+          "answers": {
+            "a1": "Blúdivý nerv",
+            "a2": "Tvárový nerv",
+            "a3": "Trojklanný nerv",
+            "a4": "Optický nerv"
+          },
           "headerLabel": "NEUROANATÓMIA"
         },
         "medical-q9": {
           "question": "Ktorá prax je základnou súčasťou prevencie infekcie počas starostlivosti o pacienta?",
-          "answers": [
-            "Primeraná hygiena rúk",
-            "Opätovné použitie jednorazových rukavíc",
-            "Vynechanie hodnotenia rizika",
-            "Zdieľanie nečistého vybavenia"
-          ],
+          "answers": {
+            "a1": "Primeraná hygiena rúk",
+            "a2": "Opätovné použitie jednorazových rukavíc",
+            "a3": "Vynechanie hodnotenia rizika",
+            "a4": "Zdieľanie nečistého vybavenia"
+          },
           "headerLabel": "KLINICKÁ BEZPEČNOSŤ"
         },
         "medical-q10": {
           "question": "Čo popisuje homeostáza?",
-          "answers": [
-            "Úplná absencia zmien v tele",
-            "Regulácia relatívne stabilného vnútorného prostredia",
-            "Rozpad každého lieku obličkami",
-            "Len produkcia protilátok"
-          ],
+          "answers": {
+            "a1": "Úplná absencia zmien v tele",
+            "a2": "Regulácia relatívne stabilného vnútorného prostredia",
+            "a3": "Rozpad každého lieku obličkami",
+            "a4": "Len produkcia protilátok"
+          },
           "headerLabel": "ZÁVEREČNÁ VEDECKÁ OTÁZKA"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb felnőtt nem tudja letenni ezt a sebész felvételi vizsgát",
   "eyebrow": "A MŰTŐI ALKALMASSÁGTESZT",
   "summary": "Tíz kérdés teszteli az anatómiát, a műtéti biztonságot, a technikákat és a kritikus döntéseket.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az anatómiai kérdések kezelhetőnek tűnnek. Ezután a teszt átkerül a steril gyakorlatba, sebészeti eszközökbe és döntésekbe, ahol egyetlen részlet mindent megváltoztat.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás tág anatómiai és sebészeti-biztonsági koncepciókat használ, amelyek az 1. szintű angol nyelvű országokban érvényesek. A véráramlástól és a steril gyakorlattól a biztonsági ellenőrzésekig, a kulcslyuk-műtétekig, a sebekre figyelmeztető táblákig, a beteg megfigyeléséig és a tájékozott beleegyezésig terjed.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb sebészeti ismeretekkel kapcsolatos kérdésre.",
         "Válassza ki a legjobban alátámasztott választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sebész belépési kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "A sebész bevételi vizsgája",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a sebészeti ismereteinek pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt műtéti területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt műtéti területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült a Sebész felvételi kihívásán!",
       "finished": "A sebész felvételi kihívása befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legsikeresebb sebészeti terület",
       "trickiest": "A legnehezebb terület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "A keringési rendszerben mi határozza meg az artériát?",
-          "answers": [
-            "Elhordja a vért a szívből",
-            "Mindig oxigéndús vért szállít",
-            "Csak a tüdőbe viszi a vért",
-            "Nem tartalmaz izmos falat"
-          ],
+          "answers": {
+            "a1": "Elhordja a vért a szívből",
+            "a2": "Mindig oxigéndús vért szállít",
+            "a3": "Csak a tüdőbe viszi a vért",
+            "a4": "Nem tartalmaz izmos falat"
+          },
           "headerLabel": "A műtét anatómiája"
         },
         "surgeon-q2": {
           "question": "Mi a fő célja a steril sebészeti terület fenntartásának?",
-          "answers": [
-            "A hangszerek méret szerinti elrendezése",
-            "A szennyeződés és a fertőzésveszély csökkentése érdekében",
-            "Az eljárás gyorsabb befejezése érdekében",
-            "Minden vérzés megelőzése érdekében"
-          ],
+          "answers": {
+            "a1": "A hangszerek méret szerinti elrendezése",
+            "a2": "A szennyeződés és a fertőzésveszély csökkentése érdekében",
+            "a3": "Az eljárás gyorsabb befejezése érdekében",
+            "a4": "Minden vérzés megelőzése érdekében"
+          },
           "headerLabel": "STERIL GYAKORLAT"
         },
         "surgeon-q3": {
           "question": "Mit kell megerősítenie a műtéti biztonsági szünetnek közvetlenül a metszés előtt?",
-          "answers": [
-            "Csak az eljárás várható hossza",
-            "Csak a sebész által preferált felszerelés",
-            "A megfelelő páciens, az eljárás és a test helye",
-            "A páciens ételválasztása műtét után"
-          ],
+          "answers": {
+            "a1": "Csak az eljárás várható hossza",
+            "a2": "Csak a sebész által preferált felszerelés",
+            "a3": "A megfelelő páciens, az eljárás és a test helye",
+            "a4": "A páciens ételválasztása műtét után"
+          },
           "headerLabel": "A biztonsági ellenőrzés"
         },
         "surgeon-q4": {
           "question": "Miben különbözik a laparoszkópos műtét a hagyományos nyitott megközelítéstől?",
-          "answers": [
-            "Soha nem igényel fájdalomcsillapítást",
-            "Nem használ sebészeti eszközöket",
-            "Csak a bőrt tudja megvizsgálni",
-            "Általában kamerát és műszereket használ kis bemetszések révén"
-          ],
+          "answers": {
+            "a1": "Soha nem igényel fájdalomcsillapítást",
+            "a2": "Nem használ sebészeti eszközöket",
+            "a3": "Csak a bőrt tudja megvizsgálni",
+            "a4": "Általában kamerát és műszereket használ kis bemetszések révén"
+          },
           "headerLabel": "SEBÉSZETI TECHNIKÁK"
         },
         "surgeon-q5": {
           "question": "Milyen szerkezetet távolítanak el a vakbélműtét során?",
-          "answers": [
-            "A féregnyúlvány",
-            "A galluscularis vesiculum",
-            "A lép",
-            "A hasnyálmirigy"
-          ],
+          "answers": {
+            "a1": "A féregnyúlvány",
+            "a2": "A galluscularis vesiculum",
+            "a3": "A lép",
+            "a4": "A hasnyálmirigy"
+          },
           "headerLabel": "MŰTÉSI ANATÓMIA"
         },
         "surgeon-q6": {
           "question": "Mire használják főként a sebészeti visszahúzót?",
-          "answers": [
-            "Oxigén telítettség mérése",
-            "Szövet vagy bemetszést tartva nyitva a hozzáférés javítása érdekében",
-            "Sebzárás öltéssel",
-            "Az elektromos szívműködés rögzítése"
-          ],
+          "answers": {
+            "a1": "Oxigén telítettség mérése",
+            "a2": "Szövet vagy bemetszést tartva nyitva a hozzáférés javítása érdekében",
+            "a3": "Sebzárás öltéssel",
+            "a4": "Az elektromos szívműködés rögzítése"
+          },
           "headerLabel": "A műtétben használt eszközök"
         },
         "surgeon-q7": {
           "question": "Melyik kombináció utalhat műtéti fertőzésre?",
-          "answers": [
-            "Kényelem javítása és száraz gyógyuló seb",
-            "Állandó étvágy és normál hőmérséklet",
-            "Fokozódó bőrpír vagy fájdalom, vízelvezetés vagy láz",
-            "Tiszta kötszer új tünetek nélkül"
-          ],
+          "answers": {
+            "a1": "Kényelem javítása és száraz gyógyuló seb",
+            "a2": "Állandó étvágy és normál hőmérséklet",
+            "a3": "Fokozódó bőrpír vagy fájdalom, vízelvezetés vagy láz",
+            "a4": "Tiszta kötszer új tünetek nélkül"
+          },
           "headerLabel": "MŰTÉT UTÁNI FIGYELMEZTETŐ JELEK"
         },
         "surgeon-q8": {
           "question": "Melyik készülék ad gyors, nem invazív becslést a vér oxigéntelítettségére a műtét során?",
-          "answers": [
-            "Reflex kalapács",
-            "Otoszkóp",
-            "Hőmérő",
-            "Pulzoximéter"
-          ],
+          "answers": {
+            "a1": "Reflex kalapács",
+            "a2": "Otoszkóp",
+            "a3": "Hőmérő",
+            "a4": "Pulzoximéter"
+          },
           "headerLabel": "BETEG MONITORING"
         },
         "surgeon-q9": {
           "question": "Egy személy nem reagál, és nem lélegzik rendesen. Mi a legbiztonságosabb azonnali általános válasz?",
-          "answers": [
-            "Hívja a segélyszolgálatot, és kezdje meg a megfelelő alapvető életfenntartást",
-            "Adjon ételt vagy italt",
-            "Várjon néhány percet cselekvés nélkül",
-            "Kérd meg az illetőt, hogy álljon fel"
-          ],
+          "answers": {
+            "a1": "Hívja a segélyszolgálatot, és kezdje meg a megfelelő alapvető életfenntartást",
+            "a2": "Adjon ételt vagy italt",
+            "a3": "Várjon néhány percet cselekvés nélkül",
+            "a4": "Kérd meg az illetőt, hogy álljon fel"
+          },
           "headerLabel": "SEBÉSZETI VÉSZHELYZETEK"
         },
         "surgeon-q10": {
           "question": "Melyik leírás felel meg leginkább a műtét előtti tájékozott beleegyezésnek?",
-          "answers": [
-            "A klinikus az alternatívák magyarázata nélkül választ",
-            "A beteg megkapja a vonatkozó információkat, és önként beleegyezik",
-            "Mindig egy hozzátartozó dönt minden felnőtt helyett",
-            "Az űrlap aláírásával nincs szükség megbeszélésre"
-          ],
+          "answers": {
+            "a1": "A klinikus az alternatívák magyarázata nélkül választ",
+            "a2": "A beteg megkapja a vonatkozó információkat, és önként beleegyezik",
+            "a3": "Mindig egy hozzátartozó dönt minden felnőtt helyett",
+            "a4": "Az űrlap aláírásával nincs szükség megbeszélésre"
+          },
           "headerLabel": "VÉGSŐ BEJELENTKEZÉS KÉRDÉS"
         }
       }

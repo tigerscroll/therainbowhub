@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 8% položi ovaj bolničarski prijemni ispit",
   "eyebrow": "ULAZNI IZAZOV ZA BOLNIČARE",
   "summary": "Opasnosti na sceni, vitalni znakovi i odluke o brzom odgovoru testiraju možete li jasno razmišljati kada je svaki trag važan.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Opasnosti na sceni, vitalni znakovi, hitna matematika i mirno prosuđivanje. Možete li jasno razmišljati kada je svaki trag važan?",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj svjetski zabavni izazov sadrži deset uvodnih pitanja o anatomiji, zapažanjima, računanju, komunikaciji, sigurnosti i prioritetnom prosuđivanju. Testira pažljivo razmišljanje, a ne lokalne protokole ili operativne procedure.\n\nOdaberite najbolji odgovor koristeći samo prikazane informacije. Sigurne opcije favoriziraju prepoznavanje rizika, jasno komuniciranje i traženje odgovarajuće kvalificirane podrške.\n\nOvo nije akreditirani prijemni ispit za bolničare, klinička procjena, kvalifikacija, tečaj obuke ili izvor hitnih savjeta.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
         "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Prijemni bolničarski ispit",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Bolničarski ulazni izazov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaš ulazni rezultat za bolničara i pregled šest područja spremni su za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno šest ulaznih područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno šest ulaznih područja"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Prošli ste izazov za bolničara!",
       "finished": "Izazov za ulazak bolničara završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjači ulazni prostor",
       "trickiest": "Najzahtjevniji ulazni prostor",
       "bestRound": "Najbolja sekcija",
@@ -107,8 +100,7 @@
         "snapshot": "Što sugerira vaš profil kandidata",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Koji organ pumpa krv po tijelu?",
-          "answers": [
-            "srce",
-            "pluća",
-            "Mozak",
-            "Kosti"
-          ],
+          "answers": {
+            "a1": "srce",
+            "a2": "pluća",
+            "a3": "Mozak",
+            "a4": "Kosti"
+          },
           "headerLabel": "ANATOMIJA & FIZIOLOGIJA"
         },
         "paramedic-r1q5": {
           "question": "Koji otvor čini najjasniju primopredaju?",
-          "answers": [
-            "Vjerojatno se nešto promijenilo ranije",
-            "Ovdje su svi manji detalji nasumičnim redoslijedom",
-            "U 14:20 disanje se ubrzalo i budnost se smanjila",
-            "Već znam točno što je uzrokovalo"
-          ],
+          "answers": {
+            "a1": "Vjerojatno se nešto promijenilo ranije",
+            "a2": "Ovdje su svi manji detalji nasumičnim redoslijedom",
+            "a3": "U 14:20 disanje se ubrzalo i budnost se smanjila",
+            "a4": "Već znam točno što je uzrokovalo"
+          },
           "headerLabel": "JASNA PRIMOPREDAJA"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80 pa 92 pa 108, uz bljedilo i vrtoglavicu"
           },
           "question": "Koje je najbolje tumačenje ovog uzorka?",
-          "answers": [
-            "Rekord je nepromijenjen",
-            "Kombinirani trend ukazuje na pogoršanje koje zahtijeva brzu kvalificiranu procjenu",
-            "Bitan je samo prvi broj",
-            "Simptomi se mogu zanemariti jer se ne prikazuje dijagnoza"
-          ],
+          "answers": {
+            "a1": "Rekord je nepromijenjen",
+            "a2": "Kombinirani trend ukazuje na pogoršanje koje zahtijeva brzu kvalificiranu procjenu",
+            "a3": "Bitan je samo prvi broj",
+            "a4": "Simptomi se mogu zanemariti jer se ne prikazuje dijagnoza"
+          },
           "headerLabel": "PROMATRANJE TRENDOVA"
         },
         "paramedic-r2q4": {
           "question": "Koja izjava najbolje opisuje bubrege?",
-          "answers": [
-            "Izmjenjuju kisik i ugljični dioksid",
-            "Oni uklanjaju otpad iz krvi i pomažu u regulaciji ravnoteže vode",
-            "Oni pumpaju krv kroz arterije",
-            "Oni kontroliraju svaki svojevoljni pokret"
-          ],
+          "answers": {
+            "a1": "Izmjenjuju kisik i ugljični dioksid",
+            "a2": "Oni uklanjaju otpad iz krvi i pomažu u regulaciji ravnoteže vode",
+            "a3": "Oni pumpaju krv kroz arterije",
+            "a4": "Oni kontroliraju svaki svojevoljni pokret"
+          },
           "headerLabel": "TIJELESNI SUSTAVI"
         },
         "paramedic-r1q4": {
           "question": "Električni kabel pod naponom nalazi se preko jedinog ulaza. Što dolazi prvo?",
-          "answers": [
-            "Oprezno prekoračite",
-            "Držite sve podalje i potražite kvalificiranu pomoć da to učinite sigurnim",
-            "Pomaknite ga suhim predmetom",
-            "Zamolite promatrača da to pogleda"
-          ],
+          "answers": {
+            "a1": "Oprezno prekoračite",
+            "a2": "Držite sve podalje i potražite kvalificiranu pomoć da to učinite sigurnim",
+            "a3": "Pomaknite ga suhim predmetom",
+            "a4": "Zamolite promatrača da to pogleda"
+          },
           "headerLabel": "SIGURNOST NA SCENI"
         },
         "paramedic-r6q2": {
           "question": "Osoba nastavlja klimati glavom, ali nije razumjela. Što bi se sljedeće trebalo dogoditi?",
-          "answers": [
-            "Ponovite isto objašnjenje sporije",
-            "Pitajte: 'Razumijete li?' i nastavite ako kažu da",
-            "Skratite objašnjenje, ali zadržite istu terminologiju",
-            "Koristite jednostavne riječi i provjerite ponovno"
-          ],
+          "answers": {
+            "a1": "Ponovite isto objašnjenje sporije",
+            "a2": "Pitajte: 'Razumijete li?' i nastavite ako kažu da",
+            "a3": "Skratite objašnjenje, ali zadržite istu terminologiju",
+            "a4": "Koristite jednostavne riječi i provjerite ponovno"
+          },
           "headerLabel": "JASNA KOMUNIKACIJA"
         },
         "paramedic-r5q6": {
           "context": "Osoba A se osjeća dobro i njezina su zapažanja stabilna. Osoba B je nedavno vlažna i ima vrtoglavicu, a puls joj je porastao nakon tri provjere.",
           "question": "Kome je prva potrebna pozornost?",
-          "answers": [
-            "Osoba B, jer nekoliko promjena ukazuje na pogoršanje",
-            "Osoba A, jer su njihova opažanja prva zabilježena",
-            "Obje mogu čekati jer niti jedna nema imenovanu dijagnozu",
-            "Osoba sa kraćim imenom"
-          ],
+          "answers": {
+            "a1": "Osoba B, jer nekoliko promjena ukazuje na pogoršanje",
+            "a2": "Osoba A, jer su njihova opažanja prva zabilježena",
+            "a3": "Obje mogu čekati jer niti jedna nema imenovanu dijagnozu",
+            "a4": "Osoba sa kraćim imenom"
+          },
           "headerLabel": "PRIORITETNA PRESUDA"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litre plus 450 mililitara plus 250 mililitara jednako je ukupnom iznosu"
           },
           "question": "Koliki je kombinirani zabilježeni volumen u mililitrima?",
-          "answers": [
-            "900 mL",
-            "950 mL",
-            "1000 ml",
-            "1.100 ml"
-          ],
+          "answers": {
+            "a1": "900 mL",
+            "a2": "950 mL",
+            "a3": "1000 ml",
+            "a4": "1.100 ml"
+          },
           "headerLabel": "HITNA BROJČANOST"
         },
         "paramedic-r10q4": {
           "context": "ZAPIS INCIDENTA — Agresivna osoba baca predmete u blizini ulaza. Oprema djelomično blokira najbliži izlaz.",
           "question": "Koji je najsigurniji odgovor na kombinirane opasnosti?",
-          "answers": [
-            "Držite se podalje, pomaknite druge prema sigurnijoj ruti i upozorite odgovarajuću pomoć",
-            "Priđite i raspravljajte dok osoba ne prestane",
-            "Uzmite opremu pored osobe prije odlaska",
-            "Zamolite neobučenog promatrača da blokira bačene predmete"
-          ],
+          "answers": {
+            "a1": "Držite se podalje, pomaknite druge prema sigurnijoj ruti i upozorite odgovarajuću pomoć",
+            "a2": "Priđite i raspravljajte dok osoba ne prestane",
+            "a3": "Uzmite opremu pored osobe prije odlaska",
+            "a4": "Zamolite neobučenog promatrača da blokira bačene predmete"
+          },
           "headerLabel": "INTEGRIRANA SIGURNOST"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Disanje 16 budno, zatim 22 tjeskobno, zatim 28 pospano"
           },
           "question": "Koja je najbolja interpretacija cjelokupnog trenda?",
-          "answers": [
-            "Osoba se stalno popravlja",
-            "Bitan je samo srednji ček",
-            "Vrijednosti se mogu zanemariti jer nije navedena dijagnoza",
-            "Disanje se pogoršava, a sposobnost reakcije opada"
-          ],
+          "answers": {
+            "a1": "Osoba se stalno popravlja",
+            "a2": "Bitan je samo srednji ček",
+            "a3": "Vrijednosti se mogu zanemariti jer nije navedena dijagnoza",
+            "a4": "Disanje se pogoršava, a sposobnost reakcije opada"
+          },
           "headerLabel": "KONAČNI ODGOVOR"
         }
       }

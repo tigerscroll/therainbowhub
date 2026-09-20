@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu Yetişkin Bu Hafıza Testinde %80 Puan Alamaz",
   "eyebrow": "Hafıza Mücadelesi",
   "summary": "Kelimeler, resimler, sayılar ve gecikmiş sürprizler hafızanızın neyi sakladığını ve neyin sessizce kayıp gittiğini test eder.",
   "about": {
     "body": "Bu kısa hafıza testi, hatırlamanın eğlenceli bir anlık görüntüsünü oluşturmak için özenle seçilmiş on kelime, resim, sayı, çağrışım ve dikkat zorluklarını kullanır.\n\nBazı ayrıntılar hemen test edilirken diğerleri, farklı görevler orijinal belleği kesintiye uğrattıktan sonra geri döner. Her ipucunu dikkatlice inceleyin, ancak acele etmeyin: hız asla puanınızı değiştirmez.\n\nSon puanınız on sorudan kaçının doğru olduğunu gösterir ve size en uygun hafıza alanlarını vurgular. Performans dikkat, yorgunluk, stres, aşinalık ve şansa bağlı olarak değişebilir; bu nedenle sonucu, beyin sağlığı veya uzun süreli hafıza yeteneği hakkında bir yargı olarak değil, eğlence olarak değerlendirin.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Her ipucunu ortaya çıktığında dikkatle inceleyin; bazı ayrıntılar daha sonra geri dönecek.",
         "Her zorluk için bir cevap seçin. Hız asla puanınızı değiştirmez.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Yalnızca eğlence ve kendini yansıtma amaçlıdır. Bu sınav tıbbi, nörolojik veya bilişsel bir değerlendirme değildir ve hafıza sorunlarını teşhis edemez. Hafızanız veya sağlığınız konusunda endişeleriniz varsa, kalifiye bir sağlık uzmanıyla görüşün."
   },
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Hafızanızın güçlü olduğunu mu düşünüyorsunuz?\n10 soruyla kanıtlayın.",
     "cta": "Başlat"
   },
   "career": {
     "resultProgressLabel": "Hafıza testi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Hafıza Mücadelesi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Hafıza puanınız ve üç alandaki dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç hafıza alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç hafıza alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "%80 mücadelesini yendin! 🧠",
       "finished": "Hafıza yarışmasını tamamladınız",
-      "correctLabel": "doğru",
       "strongest": "En güçlü hafıza alanınız",
       "trickiest": "En zorlu alanınız",
       "bestRound": "En iyi bölüm",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Açılış detaylarında hangi kelime yer aldı?",
           "headerLabel": "KELİME GERİ ÇAĞIRMA",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Bu ayrıntıları unutmayın",
             "instruction": "Bazıları testte daha sonra geri dönebilir.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Üçüncü olarak hangi şekil ortaya çıktı?",
           "headerLabel": "GÖRSEL BELLEK",
-          "answers": [
-            "daire",
-            "Elmas",
-            "Üçgen",
-            "Kare"
-          ],
+          "answers": {
+            "a1": "daire",
+            "a2": "Elmas",
+            "a3": "Üçgen",
+            "a4": "Kare"
+          },
           "study": {
             "title": "Renk ve şekil sırasını unutmayın",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Hangi numarayı gördün?",
           "headerLabel": "NUMARA GERİ ÇAĞIRMA",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Bu numarayı hatırla",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Hangi kod K7M2Q ile tam olarak eşleşiyor?",
           "headerLabel": "KOD EŞLEŞMESİ",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "4 – 9 – 2'nin tersi nedir?",
           "headerLabel": "ÇALIŞAN BELLEK",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Üçüncü olarak hangi nesne ortaya çıktı?",
           "headerLabel": "SİPARİŞ GERİ ÇAĞIRMA",
-          "answers": [
-            "Uçurtma",
-            "Eldiven",
-            "Kamera",
-            "kek"
-          ],
+          "answers": {
+            "a1": "Uçurtma",
+            "a2": "Eldiven",
+            "a3": "Kamera",
+            "a4": "kek"
+          },
           "study": {
             "title": "Dört nesne sırasını inceleyin",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Sarah nereye seyahat ediyordu?",
           "headerLabel": "DETAY HAFIZASI",
-          "answers": [
-            "Paris",
-            "Roma",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Paris",
+            "a2": "Roma",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Bu ayrıntıları bir kez okuyun",
             "instruction": "Bir ayrıntı daha sonra geri dönebilir.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Hangi kopyada O harfi yerine sıfır var?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "HIZLI DİKKAT",
-          "answers": [
-            "İlk",
-            "İkinci",
-            "Dördüncü",
-            "Üçüncü"
-          ]
+          "answers": {
+            "a1": "İlk",
+            "a2": "İkinci",
+            "a3": "Dördüncü",
+            "a4": "Üçüncü"
+          }
         },
         "memory-r5q1": {
           "question": "Başa dönüp düşünün: Fil ne renkti?",
           "headerLabel": "GECİKMELİ ÇAĞIRMA",
-          "answers": [
-            "Gümüş",
-            "Mor",
-            "Mavi",
-            "Altın"
-          ]
+          "answers": {
+            "a1": "Gümüş",
+            "a2": "Mor",
+            "a3": "Mavi",
+            "a4": "Altın"
+          }
         },
         "memory-r5q6": {
           "question": "Sarah'nın treni saat kaçta kalktı?",
           "headerLabel": "SON HAFIZA TESTİ",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

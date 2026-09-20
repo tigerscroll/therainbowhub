@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 1/10 yang Bisa Lulus Kuis Trivia Katolik Ini",
   "eyebrow": "UJI PENGETAHUAN KATOLIK",
   "summary": "Sepuluh pertanyaan menguji pengetahuan Anda tentang ibadah Katolik, Kitab Suci, doa dan tahun liturgi.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Pertanyaan-pertanyaan pertama mungkin terasa familier, namun beberapa pertanyaan terakhir mengungkap kesenjangan yang bahkan terlewatkan oleh pengunjung gereja biasa.",
     "cta": "Mulai Kuis"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Kuis hiburan berbahasa Inggris sedunia ini berisi sepuluh pertanyaan tentang ibadah Katolik, sakramen, Kitab Suci, doa dan tahun liturgi.\n\nPilih satu jawaban terbaik setiap saat. Pertanyaan-pertanyaan yang diajukan berfokus pada ajaran dan praktik Katolik yang diakui secara luas, bukan pada adat istiadat setempat.\n\nSkor Anda hanya mengukur kinerja pada kumpulan trivia singkat ini dan tidak menunjukkan apa pun tentang iman, pengabdian, atau kedudukan siapa pun dalam Gereja.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Bacalah setiap pertanyaan trivia Katolik dengan cermat.",
         "Pilih satu jawaban dari empat pilihan.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "hal-hal sepele Katolik",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Trivia Katolik",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skor trivia Katolik Anda dan ulasan jawaban lengkap sudah siap.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Lima bidang pengetahuan dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Lima bidang pengetahuan dibandingkan"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Anda lulus tantangan trivia Katolik!",
       "finished": "Tantangan trivia Katolik selesai",
-      "correctLabel": "benar",
       "strongest": "Bidang pengetahuan terkuat",
       "trickiest": "Bidang pengetahuan yang paling rumit",
       "bestRound": "Bagian terbaik",
@@ -99,8 +92,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "catholic-q1": {
           "question": "Apa nama pusat ibadah Gereja Katolik?",
-          "answers": [
-            "Misa",
-            "Rosario",
-            "Angelus",
-            "Jalan Salib"
-          ],
+          "answers": {
+            "a1": "Misa",
+            "a2": "Rosario",
+            "a3": "Angelus",
+            "a4": "Jalan Salib"
+          },
           "headerLabel": "IBADAH"
         },
         "catholic-q2": {
           "question": "Paus juga merupakan uskup di kota manakah?",
-          "answers": [
-            "Yerusalem",
-            "Roma",
-            "Assisi",
-            "Betlehem"
-          ],
+          "answers": {
+            "a1": "Yerusalem",
+            "a2": "Roma",
+            "a3": "Assisi",
+            "a4": "Betlehem"
+          },
           "headerLabel": "KEPEMIMPINAN GEREJA"
         },
         "catholic-q3": {
           "question": "Berapa banyak sakramen yang diakui Gereja Katolik?",
-          "answers": [
-            "Lima",
-            "Enam",
-            "Tujuh",
-            "Delapan"
-          ],
+          "answers": {
+            "a1": "Lima",
+            "a2": "Enam",
+            "a3": "Tujuh",
+            "a4": "Delapan"
+          },
           "headerLabel": "SAKRAMEN"
         },
         "catholic-q4": {
           "question": "Musim manakah dalam tahun Gereja yang datang tepat sebelum Natal?",
-          "answers": [
-            "Prapaskah",
-            "paskah",
-            "Waktu Biasa",
-            "Adven"
-          ],
+          "answers": {
+            "a1": "Prapaskah",
+            "a2": "paskah",
+            "a3": "Waktu Biasa",
+            "a4": "Adven"
+          },
           "headerLabel": "TAHUN GEREJA"
         },
         "catholic-q5": {
           "question": "Kumpulan misteri Rosario manakah yang diperkenalkan oleh Paus Yohanes Paulus II pada tahun 2002?",
-          "answers": [
-            "Misteri Bercahaya",
-            "Misteri yang Menyenangkan",
-            "Misteri yang Menyedihkan",
-            "Misteri Agung"
-          ],
+          "answers": {
+            "a1": "Misteri Bercahaya",
+            "a2": "Misteri yang Menyenangkan",
+            "a3": "Misteri yang Menyedihkan",
+            "a4": "Misteri Agung"
+          },
           "headerLabel": "ROSARI"
         },
         "catholic-q6": {
           "question": "Buku manakah yang pertama kali muncul dalam Alkitab Katolik?",
-          "answers": [
-            "Keluaran",
-            "Kejadian",
-            "Mazmur",
-            "Matius"
-          ],
+          "answers": {
+            "a1": "Keluaran",
+            "a2": "Kejadian",
+            "a3": "Mazmur",
+            "a4": "Matius"
+          },
           "headerLabel": "Kitab Suci"
         },
         "catholic-q7": {
           "question": "Sakramen manakah yang memperkuat rahmat baptisan dan dikaitkan dengan karunia Roh Kudus?",
-          "answers": [
-            "Pengurapan Orang Sakit",
-            "Perintah Suci",
-            "Sakramen Krisma",
-            "Pernikahan"
-          ],
+          "answers": {
+            "a1": "Pengurapan Orang Sakit",
+            "a2": "Perintah Suci",
+            "a3": "Sakramen Krisma",
+            "a4": "Pernikahan"
+          },
           "headerLabel": "IMAN & PRAKTEK"
         },
         "catholic-q8": {
           "question": "Berapa banyak Jalan Salib yang secara tradisional dijalankan?",
-          "answers": [
-            "Tujuh",
-            "Sepuluh",
-            "Dua belas",
-            "Empat belas"
-          ],
+          "answers": {
+            "a1": "Tujuh",
+            "a2": "Sepuluh",
+            "a3": "Dua belas",
+            "a4": "Empat belas"
+          },
           "headerLabel": "PENGABDIAN"
         },
         "catholic-q9": {
           "question": "Dalam tradisi Katolik Latin, hari manakah Prapaskah dimulai?",
-          "answers": [
-            "Rabu Abu",
-            "Minggu Palma",
-            "Jumat Agung",
-            "Pentakosta"
-          ],
+          "answers": {
+            "a1": "Rabu Abu",
+            "a2": "Minggu Palma",
+            "a3": "Jumat Agung",
+            "a4": "Pentakosta"
+          },
           "headerLabel": "KALENDER LITURGIS"
         },
         "catholic-q10": {
           "question": "Peristiwa apa yang diperingati Pentakosta?",
-          "answers": [
-            "Kelahiran Yesus",
-            "Turunnya Roh Kudus",
-            "Pembaptisan Yesus",
-            "Transfigurasi"
-          ],
+          "answers": {
+            "a1": "Kelahiran Yesus",
+            "a2": "Turunnya Roh Kudus",
+            "a3": "Pembaptisan Yesus",
+            "a4": "Transfigurasi"
+          },
           "headerLabel": "PERTANYAAN TERAKHIR"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vilket land matchar din personlighet?",
   "eyebrow": "DIN IDEELLA LANDSMATCH",
   "summary": "Tio livsstilsval avslöjar om din personlighet bäst matchar Italien, Japan, Australien eller Sverige.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Dina vardagliga val kan peka på ett land som passar dig bättre än resten. Tio snabba frågor avslöjar din närmaste match.",
     "cta": "Hitta mitt land"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Detta underhållningsquiz med tio frågor är anpassat från den länkade Times of India-landspersonlighetsutmaningen. Varje val lägger till en signal för Italien, Japan, Australien eller Sverige.\n\nVälj det svar som känns mest naturligt snarare än det som låter mest imponerande. Ditt starkaste övergripande mönster avgör den sista landsmatchen.\n\nResultatet beskriver en lekfull livsstilsarketyp, inte nationalitet, härkomst, medborgarskap, kulturell identitet eller en flyttrekommendation. Källfrågor och bilder är återgivna från Times of India med tillåtelse från webbplatsägaren som beställt detta frågesport.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio snabba frågor om dina vanor och preferenser.",
         "Välj det alternativ som känns mest som dig utan att tänka över det.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Landsmatch",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Personlighetsmatch",
@@ -126,9 +122,7 @@
       "portraitAlt": "Scenisk illustration som representerar {profile}",
       "disclaimer": "Endast för underhållning och självreflektion. Detta resultat är en lekfull livsstilsmatch, inte ett uttalande om nationalitet, kulturell identitet eller var du ska bo."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Vänner hälsar varandra varmt"
           },
           "question": "Hur hälsar man på någon ny?",
-          "answers": [
-            "Varm kram",
-            "Vänlig våg",
-            "Respektfull båge",
-            "Avslappnad nick"
-          ],
+          "answers": {
+            "a1": "Varm kram",
+            "a2": "Vänlig våg",
+            "a3": "Respektfull båge",
+            "a4": "Avslappnad nick"
+          },
           "headerLabel": "FÖRSTA INtryck"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Ett ljust landskap under växlande himmel"
           },
           "question": "Vilket väder gör dig lyckligast?",
-          "answers": [
-            "Varma vindar",
-            "Strålande solsken",
-            "Kylig luft",
-            "Sval och krispig"
-          ],
+          "answers": {
+            "a1": "Varma vindar",
+            "a2": "Strålande solsken",
+            "a3": "Kylig luft",
+            "a4": "Sval och krispig"
+          },
           "headerLabel": "PERFEKT VÄDER"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "En avslappnad söndagsscen utomhus"
           },
           "question": "Hur brukar du spendera dina söndagar?",
-          "answers": [
-            "Äventyr utomhus",
-            "Att ha det mysigt inne",
-            "Tyst reflektion",
-            "Långa familjemåltider"
-          ],
+          "answers": {
+            "a1": "Äventyr utomhus",
+            "a2": "Att ha det mysigt inne",
+            "a3": "Tyst reflektion",
+            "a4": "Långa familjemåltider"
+          },
           "headerLabel": "SÖNDAGSSTIL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Morgonkaffe bredvid ett fridfullt fönster"
           },
           "question": "Vilket är ditt perfekta sätt att börja dagen?",
-          "answers": [
-            "Starkt kaffe",
-            "Lätt promenad",
-            "Havsluft",
-            "Lugn meditation"
-          ],
+          "answers": {
+            "a1": "Starkt kaffe",
+            "a2": "Lätt promenad",
+            "a3": "Havsluft",
+            "a4": "Lugn meditation"
+          },
           "headerLabel": "MORGONRYTME"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Ett färgglatt bord fyllt med olika rätter"
           },
           "question": "Vilken typ av mat upphetsar dig mest?",
-          "answers": [
-            "Raffinerade smaker",
-            "Enkelt och rejäl",
-            "Färska skaldjur",
-            "Komfortklassiker"
-          ],
+          "answers": {
+            "a1": "Raffinerade smaker",
+            "a2": "Enkelt och rejäl",
+            "a3": "Färska skaldjur",
+            "a4": "Komfortklassiker"
+          },
           "headerLabel": "MATINSTINKT"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Gallerivägg med olika konststilar"
           },
           "question": "Vilken typ av konst lockar dig?",
-          "answers": [
-            "Tidlösa klassiker",
-            "Ren enkelhet",
-            "Djärvt uttryck",
-            "Fina detaljer"
-          ],
+          "answers": {
+            "a1": "Tidlösa klassiker",
+            "a2": "Ren enkelhet",
+            "a3": "Djärvt uttryck",
+            "a4": "Fina detaljer"
+          },
           "headerLabel": "KREATIV SMAK"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Fyra olika drinkar arrangerade tillsammans"
           },
           "question": "Vilken är din favoritdrink?",
-          "answers": [
-            "Kall öl",
-            "Vin",
-            "Varm kakao",
-            "Grönt te"
-          ],
+          "answers": {
+            "a1": "Kall öl",
+            "a2": "Vin",
+            "a3": "Varm kakao",
+            "a4": "Grönt te"
+          },
           "headerLabel": "VALFRI DRYCK"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Vänner firar ett speciellt tillfälle"
           },
           "question": "Hur tycker du om att fira stora ögonblick?",
-          "answers": [
-            "Högljutt och livligt",
-            "Intimt och mysigt",
-            "Lättsam kul",
-            "Meningsfulla ritualer"
-          ],
+          "answers": {
+            "a1": "Högljutt och livligt",
+            "a2": "Intimt och mysigt",
+            "a3": "Lättsam kul",
+            "a4": "Meningsfulla ritualer"
+          },
           "headerLabel": "FIRESTIL"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Ett montage av skogar, kustlinje, tempel och landsbygd"
           },
           "question": "Vilket landskap känns mest som hemma?",
-          "answers": [
-            "Tysta skogar",
-            "Öppen kustlinje",
-            "Historiska tempel",
-            "Böljande landskap"
-          ],
+          "answers": {
+            "a1": "Tysta skogar",
+            "a2": "Öppen kustlinje",
+            "a3": "Historiska tempel",
+            "a4": "Böljande landskap"
+          },
           "headerLabel": "KÄNSLA AV HEM"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Resenär som tittar över ett avlägset landskap"
           },
           "question": "Vad är din resstil?",
-          "answers": [
-            "Aktivt utforskande",
-            "Långsam vandring",
-            "Kulturell fördjupning",
-            "Ikoniska sevärdheter"
-          ],
+          "answers": {
+            "a1": "Aktivt utforskande",
+            "a2": "Långsam vandring",
+            "a3": "Kulturell fördjupning",
+            "a4": "Ikoniska sevärdheter"
+          },
           "headerLabel": "SLUTMEDEL"
         }
       }

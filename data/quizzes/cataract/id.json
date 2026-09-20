@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tes Katarak Cepat",
   "eyebrow": "PERIKSA VISI 10 PERTANYAAN",
   "summary": "Detail kabur, jebakan visual jarak dekat, dan tanda peringatan katarak yang penting dalam satu tantangan cepat.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Katarak mungkin mudah untuk dilewatkan pada awalnya. Lihat apakah Anda dapat menemukan petunjuk halus dalam 10 pertanyaan singkat - pertanyaan terakhir akan menarik perhatian kebanyakan orang.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan sepuluh pertanyaan ini menggabungkan lima teka-teki visual di layar dengan lima pertanyaan kesadaran umum tentang katarak. Ini mengukur jawaban terhadap kuis ini, bukan penglihatan, kesehatan lensa atau kemungkinan katarak.\n\nUkuran layar, kecerahan, kontras, penglihatan, lensa korektif, kelelahan, dan pengaturan perangkat semuanya dapat memengaruhi kinerja. Penglihatan kabur atau kabur yang terus-menerus, silau, lingkaran cahaya di sekitar lampu, kesulitan melihat di malam hari, atau nada suara yang tampak kurang jelas harus didiskusikan dengan ahli perawatan mata profesional yang berkualifikasi.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan lima tantangan detail, pola, dan memori visual.",
         "Jawab lima pertanyaan tentang katarak dan kapan harus mencari pertolongan.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan katarak",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tes Katarak Cepat",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor tantangan katarak Anda siap terungkap.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Tiga area visual dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga area visual dibandingkan"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Anda menyelesaikan tantangan visual 80%!",
       "finished": "Tantangan katarak selesai",
-      "correctLabel": "benar",
       "strongest": "Area terkuat saat ini",
       "trickiest": "Area tersulit saat ini",
       "bestRound": "Bagian terbaik",
@@ -94,8 +87,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Karakter manakah yang berada tepat di tengah grid?",
           "headerLabel": "DETAIL PUSAT",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENSI: B8R3K5",
           "question": "Kode mana yang sama persis dengan referensi?",
           "headerLabel": "PERTANDINGAN BERBURUK",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENSI",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Simbol manakah yang melengkapi barisan bolak-balik?",
           "headerLabel": "PELACAKAN POLA",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Benda manakah yang muncul ketiga?",
           "headerLabel": "MEMORI VISUAL CEPAT",
-          "answers": [
-            "Buku",
-            "Kunci",
-            "jeruk nipis",
-            "Payung"
-          ],
+          "answers": {
+            "a1": "Buku",
+            "a2": "Kunci",
+            "a3": "jeruk nipis",
+            "a4": "Payung"
+          },
           "study": {
             "title": "Pelajari urutan lima objek",
             "instruction": "Ini akan hilang secara otomatis.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Posisi manakah yang memuat lingkaran pucat?",
           "headerLabel": "PERIKSA DETAIL",
-          "answers": [
-            "Kelima",
-            "Kedua",
-            "Keempat",
-            "Keenam"
-          ],
+          "answers": {
+            "a1": "Kelima",
+            "a2": "Kedua",
+            "a3": "Keempat",
+            "a4": "Keenam"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Apa itu katarak?",
           "headerLabel": "DASAR-DASAR KATARAK",
-          "answers": [
-            "Goresan di kelopak mata",
-            "Area keruh pada lensa alami mata",
-            "Masalah terbatas pada saluran air mata",
-            "Suatu jenis infeksi telinga"
-          ]
+          "answers": {
+            "a1": "Goresan di kelopak mata",
+            "a2": "Area keruh pada lensa alami mata",
+            "a3": "Masalah terbatas pada saluran air mata",
+            "a4": "Suatu jenis infeksi telinga"
+          }
         },
         "cataract-q7": {
           "question": "Kelompok manakah yang memiliki gejala umum katarak?",
           "headerLabel": "TANDA PERINGATAN",
-          "answers": [
-            "Kulit gatal dan sakit tenggorokan",
-            "Tiba-tiba kehilangan pendengaran dan pusing",
-            "Penglihatan kabur atau kabur, silau dan lingkaran cahaya di sekitar lampu",
-            "Leher kaku dan bahu pegal"
-          ]
+          "answers": {
+            "a1": "Kulit gatal dan sakit tenggorokan",
+            "a2": "Tiba-tiba kehilangan pendengaran dan pusing",
+            "a3": "Penglihatan kabur atau kabur, silau dan lingkaran cahaya di sekitar lampu",
+            "a4": "Leher kaku dan bahu pegal"
+          }
         },
         "cataract-q8": {
           "question": "Bagaimana cara seorang profesional perawatan mata memeriksa katarak?",
           "headerLabel": "PENILAIAN PROFESIONAL",
-          "answers": [
-            "Dengan tes pendengaran",
-            "Menggunakan pembacaan tekanan darah di rumah",
-            "Dengan tes rasa",
-            "Sebagai bagian dari pemeriksaan mata melebar yang komprehensif"
-          ]
+          "answers": {
+            "a1": "Dengan tes pendengaran",
+            "a2": "Menggunakan pembacaan tekanan darah di rumah",
+            "a3": "Dengan tes rasa",
+            "a4": "Sebagai bagian dari pemeriksaan mata melebar yang komprehensif"
+          }
         },
         "cataract-q9": {
           "question": "Apa respons paling aman terhadap kehilangan penglihatan mendadak, sakit mata parah, atau perubahan besar penglihatan secara tiba-tiba?",
           "headerLabel": "KAPAN HARUS BERTINDAK",
-          "answers": [
-            "Carilah nasihat perawatan mata profesional yang mendesak",
-            "Tunggu beberapa bulan tanpa menyebutkannya",
-            "Ubah kecerahan layar dan anggap sudah diperbaiki",
-            "Andalkan hanya pada kuis online"
-          ]
+          "answers": {
+            "a1": "Carilah nasihat perawatan mata profesional yang mendesak",
+            "a2": "Tunggu beberapa bulan tanpa menyebutkannya",
+            "a3": "Ubah kecerahan layar dan anggap sudah diperbaiki",
+            "a4": "Andalkan hanya pada kuis online"
+          }
         },
         "cataract-q10": {
           "question": "Berapa skor Anda pada tantangan online ini?",
           "headerLabel": "PEMERIKSAAN REALITAS AKHIR",
-          "answers": [
-            "Apakah lensa Anda sehat",
-            "Hanya bagaimana kinerja Anda dalam sepuluh pertanyaan ini",
-            "Apakah Anda memerlukan operasi katarak",
-            "Apakah Anda bisa menyingkirkan katarak"
-          ]
+          "answers": {
+            "a1": "Apakah lensa Anda sehat",
+            "a2": "Hanya bagaimana kinerja Anda dalam sepuluh pertanyaan ini",
+            "a3": "Apakah Anda memerlukan operasi katarak",
+            "a4": "Apakah Anda bisa menyingkirkan katarak"
+          }
         }
       }
     }

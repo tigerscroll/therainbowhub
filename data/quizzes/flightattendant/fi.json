@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 12 % aikuisista voi läpäistä tämän lentoemäntäpääsykokeen",
   "eyebrow": "MATKAMIEHISTÖN SOVELTUMISTESTI",
   "summary": "Kymmenen kysymystä testaa matkustamon turvallisuutta, hätätilanteita, miehistön koordinointia ja lentokoneiden tuntemusta.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Palvelukysymykset näyttävät helpoilta. Sitten koe siirtyy dekompressioon, evakuointiin ja matkustamon turvallisuuteen.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste hyödyntää laajat matkustamoturvallisuusperiaatteet, jotka jaetaan kansainvälisessä ilmailussa. Se testaa matkustajien turvallisuutta, hätätilanteiden tärkeysjärjestystä, miehistön koordinointia ja lentokoneiden järjestelmiä ilman, että se luottaa yhden lentoyhtiön tarkkoihin komentoihin tai menettelyihin.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen matkustamomiehistön yhä vaikeampaan kysymykseen.",
         "Valitse turvallisin tai tarkin vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Lentoemäntien sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Lentoemäntä pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja matkustamohenkilöstön soveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Vertailussa neljä matkustamon turva-aluetta",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Vertailussa neljä matkustamon turva-aluetta"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Läpäisit lentoemäntähaasteen!",
       "finished": "Lentoemäntä-haaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin matkustamon turva-alue",
       "trickiest": "Hankalin hyttiturvallisuusalue",
       "bestRound": "Paras jakso",
@@ -96,8 +89,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Mikä on lentoemännän päävastuu?",
-          "answers": [
-            "Matkustajien turvallisuus",
-            "Myynti laivaan",
-            "Ruoka on tarjottava nopeasti",
-            "Määränpään ilmoittaminen"
-          ],
+          "answers": {
+            "a1": "Matkustajien turvallisuus",
+            "a2": "Myynti laivaan",
+            "a3": "Ruoka on tarjottava nopeasti",
+            "a4": "Määränpään ilmoittaminen"
+          },
           "headerLabel": "Talo on tärkein asia."
         },
         "flightattendant-q2": {
           "question": "Kun merkittävä turbulenssi alkaa, mikä on matkustamon tärkein välitön prioriteetti?",
-          "answers": [
-            "Jatka huoltoa viivästysten välttämiseksi",
-            "Suojaa itsesi ja matkustamo toimenpiteiden edellyttämällä tavalla",
-            "Avaa jokainen yläosasto",
-            "Pyydä matkustajia seisomaan ja venyttämään"
-          ],
+          "answers": {
+            "a1": "Jatka huoltoa viivästysten välttämiseksi",
+            "a2": "Suojaa itsesi ja matkustamo toimenpiteiden edellyttämällä tavalla",
+            "a3": "Avaa jokainen yläosasto",
+            "a4": "Pyydä matkustajia seisomaan ja venyttämään"
+          },
           "headerLabel": "TURBULENSSI"
         },
         "flightattendant-q3": {
           "question": "Jos happinaamarit putoavat dekompression aikana, mitä sinun tulee yleensä tehdä ennen toisen henkilön auttamista?",
-          "answers": [
-            "Irrota turvavyö",
-            "Odota ohjaamon valot",
-            "Laita ensin oma happinaamari kasvoillesi",
-            "Siirrä käytävälle"
-          ],
+          "answers": {
+            "a1": "Irrota turvavyö",
+            "a2": "Odota ohjaamon valot",
+            "a3": "Laita ensin oma happinaamari kasvoillesi",
+            "a4": "Siirrä käytävälle"
+          },
           "headerLabel": "DEKOMPRESSIO"
         },
         "flightattendant-q4": {
           "question": "Mitä matkustajien tulisi yleensä tehdä käsimatkatavaroille hätäevakuoinnin aikana?",
-          "answers": [
-            "Ota vain pieniä pusseja",
-            "Kanna laukkuja yhdellä olkapäällä",
-            "Anna laukut miehistön jäsenille",
-            "Jätä kaikki matkatavarat taakse"
-          ],
+          "answers": {
+            "a1": "Ota vain pieniä pusseja",
+            "a2": "Kanna laukkuja yhdellä olkapäällä",
+            "a3": "Anna laukut miehistön jäsenille",
+            "a4": "Jätä kaikki matkatavarat taakse"
+          },
           "headerLabel": "EVAKUOINTI"
         },
         "flightattendant-q5": {
           "question": "Miksi matkustajien pitäisi laskea rivit istuimen ja lähimpien käyttökelpoisten uloskäyntien välillä?",
-          "answers": [
-            "Savu tai pimeys voivat vaikeuttaa uloskäyntien näkemistä",
-            "Se määrittää ateriapalvelujärjestyksen",
-            "Se tunnistaa hiljaisimman istuimen",
-            "Se muuttaa lentokoneen tasapainoa"
-          ],
+          "answers": {
+            "a1": "Savu tai pimeys voivat vaikeuttaa uloskäyntien näkemistä",
+            "a2": "Se määrittää ateriapalvelujärjestyksen",
+            "a3": "Se tunnistaa hiljaisimman istuimen",
+            "a4": "Se muuttaa lentokoneen tasapainoa"
+          },
           "headerLabel": "POISTUMINEN"
         },
         "flightattendant-q6": {
           "question": "Mitä miehistön resurssien hallinta on ilmailussa pääasiallisesti suunniteltu vahvistamaan?",
-          "answers": [
-            "Lippujen hinnoittelu ja aikataulut",
-            "Viestintä, tiimityöskentely ja päätöksenteko",
-            "Matkustajien viihdettä",
-            "Lentokoneen valmistusnopeus"
-          ],
+          "answers": {
+            "a1": "Lippujen hinnoittelu ja aikataulut",
+            "a2": "Viestintä, tiimityöskentely ja päätöksenteko",
+            "a3": "Matkustajien viihdettä",
+            "a4": "Lentokoneen valmistusnopeus"
+          },
           "headerLabel": "MIehistön KOORDINOINTI"
         },
         "flightattendant-q7": {
           "question": "Mitä tarkoittaa hypoksia?",
-          "answers": [
-            "Liiallinen matkustamon melu",
-            "Nopea suunnanmuutos",
-            "Riittämätön hapen pääsy kehon kudoksiin",
-            "Lentoon pääsyn viivästyminen"
-          ],
+          "answers": {
+            "a1": "Liiallinen matkustamon melu",
+            "a2": "Nopea suunnanmuutos",
+            "a3": "Riittämätön hapen pääsy kehon kudoksiin",
+            "a4": "Lentoon pääsyn viivästyminen"
+          },
           "headerLabel": "ILMAILUN TERVEYS"
         },
         "flightattendant-q8": {
           "question": "Mitkä kolme elementtiä muodostavat tulikolmion?",
-          "answers": [
-            "Savua, liekkejä ja tuhkaa",
-            "Vesi, ilma ja metalli",
-            "Polttoaine, paine ja höyry",
-            "Lämpöä, polttoainetta ja happea"
-          ],
+          "answers": {
+            "a1": "Savua, liekkejä ja tuhkaa",
+            "a2": "Vesi, ilma ja metalli",
+            "a3": "Polttoaine, paine ja höyry",
+            "a4": "Lämpöä, polttoainetta ja happea"
+          },
           "headerLabel": "PALOTURVALLISUUS"
         },
         "flightattendant-q9": {
           "question": "Mikä on lattiatason turvavalaistuksen päätarkoitus?",
-          "answers": [
-            "Auttaa ohjaamaan ihmisiä kohti uloskäyntiä, kun näkyvyys on huono",
-            "Ateriatarjottimien valaisemiseen",
-            "Näyttää lentokoneen nopeuden",
-            "Premium-istuinten merkitsemiseen"
-          ],
+          "answers": {
+            "a1": "Auttaa ohjaamaan ihmisiä kohti uloskäyntiä, kun näkyvyys on huono",
+            "a2": "Ateriatarjottimien valaisemiseen",
+            "a3": "Näyttää lentokoneen nopeuden",
+            "a4": "Premium-istuinten merkitsemiseen"
+          },
           "headerLabel": "MAKSAJÄRJESTELMÄT"
         },
         "flightattendant-q10": {
           "question": "Miksi matkustajien tulee kiinnittää huomiota turvallisuusohjeisiin, vaikka lentävät usein?",
-          "answers": [
-            "Se paljastaa lennon matkalentokorkeuden",
-            "Hätälaitteet ja -menettelyt voivat vaihdella lentokoneittain",
-            "Se määrittää matkatavaroiden toimitusjärjestyksen",
-            "Se selittää, kuinka lippujen hinnat asetettiin"
-          ],
+          "answers": {
+            "a1": "Se paljastaa lennon matkalentokorkeuden",
+            "a2": "Hätälaitteet ja -menettelyt voivat vaihdella lentokoneittain",
+            "a3": "Se määrittää matkatavaroiden toimitusjärjestyksen",
+            "a4": "Se selittää, kuinka lippujen hinnat asetettiin"
+          },
           "headerLabel": "LOPPUKYSYMYS"
         }
       }

@@ -1,37 +1,359 @@
 {
   "schemaVersion": 2,
   "slug": "depression",
-  "engine": { "scoring": "weighted-profile", "localeParity": "independent" },
-  "listing": { "thumbnail": "assets/items/depression-icon.webp", "published": "2026-09-14", "difficulty": "Quick", "icon": "☁", "socialProofCount": 291000 },
+  "engine": {
+    "scoring": "weighted-profile",
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/depression-icon.webp",
+    "published": "2026-09-14",
+    "difficulty": "Quick",
+    "icon": "☁",
+    "socialProofCount": 291000
+  },
   "theme": {
     "preset": "editorial",
-    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
-    "colors": { "page": "#293047", "pageAlt": "#676b87", "surface": "#f5eee8", "surfaceRaised": "#fffaf5", "text": "#302b3c", "muted": "#746c7c", "primary": "#7a344f", "primaryText": "#ffffff", "border": "#c58a9d", "correct": "#49715e", "incorrect": "#9e3e50" },
-    "typography": { "heading": "serif", "body": "sans" },
-    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
-    "effects": { "shadow": "dramatic", "texture": "grain" },
-    "header": { "background": "linear-gradient(90deg, #293047, #7a344f)", "text": "#ffffff", "border": "#d39aa8", "shadow": "0 8px 26px rgba(31, 35, 55, 0.32)" },
-    "artwork": { "icon": "☁" }
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#293047",
+      "pageAlt": "#676b87",
+      "surface": "#f5eee8",
+      "surfaceRaised": "#fffaf5",
+      "text": "#302b3c",
+      "muted": "#746c7c",
+      "primary": "#7a344f",
+      "primaryText": "#ffffff",
+      "border": "#c58a9d",
+      "correct": "#49715e",
+      "incorrect": "#9e3e50"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #293047, #7a344f)",
+      "text": "#ffffff",
+      "border": "#d39aa8",
+      "shadow": "0 8px 26px rgba(31, 35, 55, 0.32)"
+    },
+    "artwork": {
+      "icon": "☁"
+    }
   },
   "template": "single-stage-rewarded-v1",
   "structure": {
-    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["depression-q1", "depression-q2", "depression-q3", "depression-q4", "depression-q5", "depression-q6", "depression-q7", "depression-q8", "depression-q9", "depression-q10"] }],
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "depression-q1",
+          "depression-q2",
+          "depression-q3",
+          "depression-q4",
+          "depression-q5",
+          "depression-q6",
+          "depression-q7",
+          "depression-q8",
+          "depression-q9",
+          "depression-q10"
+        ]
+      }
+    ],
     "questions": {
-      "depression-q1": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "low-mood": 1 }, { "daily-impact": 1 }] },
-      "depression-q2": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "loss-of-interest": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q3": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "loss-of-interest": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q4": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q5": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q6": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q7": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "low-mood": 1 }, { "daily-impact": 1 }] },
-      "depression-q8": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q9": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] },
-      "depression-q10": { "presentation": "text", "choiceCount": 4, "choiceMeanings": [{ "few-current-changes": 1 }, { "low-mood": 1 }, { "loss-of-interest": 1 }, { "daily-impact": 1 }] }
+      "depression-q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "low-mood": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "loss-of-interest": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "loss-of-interest": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "low-mood": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q8": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q9": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      },
+      "depression-q10": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "few-current-changes": 1
+          },
+          "a2": {
+            "low-mood": 1
+          },
+          "a3": {
+            "loss-of-interest": 1
+          },
+          "a4": {
+            "daily-impact": 1
+          }
+        }
+      }
     },
-    "checkpoint": { "finalIcon": "☁" },
+    "checkpoint": {
+      "finalIcon": "☁"
+    },
     "results": {
-      "profiles": [{ "key": "profile-1", "id": "few-current-changes" }, { "key": "profile-2", "id": "low-mood" }, { "key": "profile-3", "id": "loss-of-interest" }, { "key": "profile-4", "id": "daily-impact" }],
-      "dimensions": [{ "key": "dimension-1", "profiles": ["few-current-changes"] }, { "key": "dimension-2", "profiles": ["low-mood"] }, { "key": "dimension-3", "profiles": ["loss-of-interest"] }, { "key": "dimension-4", "profiles": ["daily-impact"] }]
+      "profiles": [
+        {
+          "key": "profile-1",
+          "id": "few-current-changes"
+        },
+        {
+          "key": "profile-2",
+          "id": "low-mood"
+        },
+        {
+          "key": "profile-3",
+          "id": "loss-of-interest"
+        },
+        {
+          "key": "profile-4",
+          "id": "daily-impact"
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "profiles": [
+            "few-current-changes"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "profiles": [
+            "low-mood"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "profiles": [
+            "loss-of-interest"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "profiles": [
+            "daily-impact"
+          ]
+        }
+      ]
     }
   }
 }

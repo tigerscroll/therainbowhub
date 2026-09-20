@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tuto přijímací zkoušku RAF může složit pouze 15 % dospělých",
   "eyebrow": "TEST ZNALOSTÍ RAF",
   "summary": "Deset otázek testuje historii RAF, letadla, hodnosti a operační znalosti.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Slavná letadla jsou jen začátek. Těchto 10 otázek odhalí, kolik toho o RAF skutečně víte.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavná výzva s deseti otázkami pokrývá formaci, historii, hodnostní strukturu, letadla a moderní role Royal Air Force. Začíná známými milníky, než se přesuneme do detailů, které vyžadují bližší znalosti RAF.\n\nVyberte jednu odpověď pro každou otázku. Správnost zůstává skryta až do konečného odhalení, kde můžete odemknout kompletní kontrolu odpovědí.\n\nFakta byla porovnána s aktuálními a historickými materiály publikovanými Royal Air Force.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších otázek RAF.",
         "Vyberte jednu ze čtyř odpovědí bez cizí pomoci.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupní výzva RAF",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Přijímací zkouška RAF",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre znalostí RAF je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno pět oblastí znalostí RAF",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno pět oblastí znalostí RAF"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou RAF!",
       "finished": "Vstupní výzva RAF dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější objekt RAF",
       "trickiest": "Nejzáludnější předmět RAF",
       "bestRound": "Nejlepší sekce",
@@ -99,8 +92,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "Ve kterém roce vzniklo Royal Air Force?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "PŮVOD RAF"
         },
         "raf-q2": {
           "question": "RAF vznikla sloučením Royal Flying Corps se kterou další službou?",
-          "answers": [
-            "Fleet Air Arm",
-            "Royal Naval Air Service",
-            "armádního leteckého sboru",
-            "Royal Observer Corps"
-          ],
+          "answers": {
+            "a1": "Fleet Air Arm",
+            "a2": "Royal Naval Air Service",
+            "a3": "armádního leteckého sboru",
+            "a4": "Royal Observer Corps"
+          },
           "headerLabel": "SERVISNÍ HISTORIE"
         },
         "raf-q3": {
           "question": "Ve kterém roce se odehrála bitva o Británii?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "BITVA O BRITÁNII"
         },
         "raf-q4": {
           "question": "Jaké je oficiální motto Royal Air Force?",
-          "answers": [
-            "Sempre Fidelis",
-            "Kdo se odváží, vyhrává",
-            "Slouží k vedení",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Sempre Fidelis",
+            "a2": "Kdo se odváží, vyhrává",
+            "a3": "Slouží k vedení",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "Známé jméno RAF"
         },
         "raf-q5": {
           "question": "Co dnes zůstává hlavní rolí RAF?",
-          "answers": [
-            "Ochrana nebe ve Spojeném království",
-            "Provozování letadlových lodí Royal Navy",
-            "Správa všech civilních letišť",
-            "Výcvik všech složek ozbrojených sil"
-          ],
+          "answers": {
+            "a1": "Ochrana nebe ve Spojeném království",
+            "a2": "Provozování letadlových lodí Royal Navy",
+            "a3": "Správa všech civilních letišť",
+            "a4": "Výcvik všech složek ozbrojených sil"
+          },
           "headerLabel": "MODERNÍ ROLE"
         },
         "raf-q6": {
           "question": "Která pověřená hodnost RAF sedí bezprostředně nad Flight Lieutenant?",
-          "answers": [
-            "Létající důstojník",
-            "Velitel letky",
-            "Wing Commander",
-            "Kapitán skupiny"
-          ],
+          "answers": {
+            "a1": "Létající důstojník",
+            "a2": "Velitel letky",
+            "a3": "Wing Commander",
+            "a4": "Kapitán skupiny"
+          },
           "headerLabel": "STRUKTURA POŘADÍ"
         },
         "raf-q7": {
           "question": "Které letadlo létá akrobatický tým RAF, Red Arrows?",
-          "answers": [
-            "Tajfun FGR4",
-            "Tutor T1",
-            "Hawk T1",
-            "Voyager"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "ZNALOST LETADLA"
         },
         "raf-q8": {
           "question": "Co byl Chain Home během bitvy o Británii?",
-          "answers": [
-            "Stíhací letka",
-            "Plán výroby letadel",
-            "Pobřežní záchranná služba",
-            "Radarová síť včasného varování"
-          ],
+          "answers": {
+            "a1": "Stíhací letka",
+            "a2": "Plán výroby letadel",
+            "a3": "Pobřežní záchranná služba",
+            "a4": "Radarová síť včasného varování"
+          },
           "headerLabel": "VČASNÉ VAROVÁNÍ"
         },
         "raf-q9": {
           "question": "Které jméno společnosti je neoddělitelně spjato s designem Spitfiru?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havilland",
-            "Handley Page"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havilland",
+            "a4": "Handley Page"
+          },
           "headerLabel": "HISTORICKÁ LETADLA"
         },
         "raf-q10": {
           "question": "Do kterého čtvrtého proudu, kromě létání s rychlými tryskami, vícemotorovými motory a rotačními křídly, mohou piloti RAF vstoupit?",
-          "answers": [
-            "Námořní celní hlídka",
-            "Vzdáleně řízené letecké systémy",
-            "Velení civilní letecké společnosti",
-            "Námořní ponorkové letectví"
-          ],
+          "answers": {
+            "a1": "Námořní celní hlídka",
+            "a2": "Vzdáleně řízené letecké systémy",
+            "a3": "Velení civilní letecké společnosti",
+            "a4": "Námořní ponorkové letectví"
+          },
           "headerLabel": "ZÁVĚREČNÁ RAF OTÁZKA"
         }
       }

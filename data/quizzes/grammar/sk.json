@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tento gramatický kvíz dokáže prejsť iba 10 % ľudí",
   "eyebrow": "VÝZVA KOREKTOROV",
   "summary": "Nefunkčné vety, interpunkčné pasce a takmer správne formulácie testujú, či vám nejaká chyba neprejde.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Myslíte si, že vaša gramatika je bezchybná? Opravte nefunkčné vety, chyťte drobné pasce s interpunkciou a dokážte, že dokážete odhaliť chybu skôr, ako vás zastihne.",
     "cta": "Spustiť kvíz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto celosvetová výzva v angličtine obsahuje desať starostlivo rôznorodých otázok o štruktúre viet, interpunkcii, čase, zámenách, zrozumiteľnosti odkazov a precíznej úprave. Každá položka je napísaná špeciálne pre angličtinu, nie preložená z iného jazyka.\n\nVyberte jednu odpoveď, vďaka ktorej je veta správna a prirodzená v jej uvedenom kontexte. Korektnosť zostáva skrytá až do konečného odhalenia.\n\nVaše skóre odráža iba túto krátku jazykovú výzvu. Nie je to formálne hodnotenie gramotnosti ani vzdelanostná kvalifikácia.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Vyplňte desať starostlivo vybraných otázok v jednej cielenej výzve.",
         "Vyberte vždy jednu odpoveď. Korektnosť zostáva skrytá až do konečného odhalenia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Gramatická výzva",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Gramatická výzva",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre gramatiky a rozpis troch zručností sú pripravené odhaliť.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnané tri gramatické zručnosti",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnané tri gramatické zručnosti"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Zvládli ste gramatickú výzvu!",
       "finished": "Gramatická výzva dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia gramatická zručnosť",
       "trickiest": "Najnáročnejšia gramatická zručnosť",
       "bestRound": "Najlepšia sekcia",
@@ -98,8 +91,7 @@
         "snapshot": "Čo naznačuje váš gramatický profil",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Ktorá možnosť je celá veta?",
-          "answers": [
-            "Po poslednom odseku",
-            "Redaktor skontroloval posledný odsek.",
-            "Pretože sa zmenil termín",
-            "Kým všetci čakali"
-          ],
+          "answers": {
+            "a1": "Po poslednom odseku",
+            "a2": "Redaktor skontroloval posledný odsek.",
+            "a3": "Pretože sa zmenil termín",
+            "a4": "Kým všetci čakali"
+          },
           "headerLabel": "ŠTRUKTÚRA VETY"
         },
         "grammar-r1q3": {
           "context": "Poznámky patria niekoľkým študentom.",
           "question": "Ktorá veta správne vyjadruje uvedený význam?",
-          "answers": [
-            "Poznámky študentov boli usporiadané.",
-            "Poznámka jedného študenta bola usporiadaná.",
-            "Študenti nemali žiadne poznámky.",
-            "Poznámky patrili učiteľovi."
-          ],
+          "answers": {
+            "a1": "Poznámky študentov boli usporiadané.",
+            "a2": "Poznámka jedného študenta bola usporiadaná.",
+            "a3": "Študenti nemali žiadne poznámky.",
+            "a4": "Poznámky patrili učiteľovi."
+          },
           "headerLabel": "VYJADRENIE VLASTNÍCTVA"
         },
         "grammar-r3q1": {
           "question": "Stretnutie sa začalo o 09:00. Leo dokončil tabuľku o 08:30. Ktorá veta je správna?",
-          "answers": [
-            "Leo dokončil tabuľku po začiatku stretnutia.",
-            "Leo dokončil tabuľku po začiatku stretnutia stretnutia.",
-            "Leo dokončil tabuľku pred začiatkom stretnutia stretnutia.",
-            "Leo dokončil tabuľku pred začiatkom stretnutia."
-          ],
+          "answers": {
+            "a1": "Leo dokončil tabuľku po začiatku stretnutia.",
+            "a2": "Leo dokončil tabuľku po začiatku stretnutia stretnutia.",
+            "a3": "Leo dokončil tabuľku pred začiatkom stretnutia stretnutia.",
+            "a4": "Leo dokončil tabuľku pred začiatkom stretnutia."
+          },
           "headerLabel": "ČASOVÁ NÁSLEDNOSŤ"
         },
         "grammar-r4q3": {
           "question": "V ktorej vete je správne použitá bodkočiarka?",
-          "answers": [
-            "Súbor bol veľký; pretože sa načítal pomaly.",
-            "Súbor bol veľký; načítaval sa pomaly.",
-            "Súbor bol veľký, načítal sa pomaly.",
-            "Súbor bol veľký; hoci sa načítal pomaly."
-          ],
+          "answers": {
+            "a1": "Súbor bol veľký; pretože sa načítal pomaly.",
+            "a2": "Súbor bol veľký; načítaval sa pomaly.",
+            "a3": "Súbor bol veľký, načítal sa pomaly.",
+            "a4": "Súbor bol veľký; hoci sa načítal pomaly."
+          },
           "headerLabel": "BODKOČIARKA"
         },
         "grammar-r5q4": {
           "context": "Vyberte zámeno v prvej osobe jednotného čísla.",
           "question": "Ktoré slovo označuje hovoriaceho?",
-          "answers": [
-            "ja",
-            "ty",
-            "on",
-            "my"
-          ],
+          "answers": {
+            "a1": "ja",
+            "a2": "ty",
+            "a3": "on",
+            "a4": "my"
+          },
           "headerLabel": "VÝBER ZÁMENA"
         },
         "grammar-r5q6": {
           "question": "V ktorej vete je oslovenie Ravi správne oddelené čiarkou?",
-          "answers": [
-            "Ravi, prosím, skontrolujte posledný riadok riadok.",
-            "Ravi, prosím, skontrolujte posledný riadok.",
-            "Ravi prosím skontrolujte, posledný riadok.",
-            "Ravi; prosím skontrolujte posledný riadok."
-          ],
+          "answers": {
+            "a1": "Ravi, prosím, skontrolujte posledný riadok riadok.",
+            "a2": "Ravi, prosím, skontrolujte posledný riadok.",
+            "a3": "Ravi prosím skontrolujte, posledný riadok.",
+            "a4": "Ravi; prosím skontrolujte posledný riadok."
+          },
           "headerLabel": "OSLOVENIE"
         },
         "grammar-r7q6": {
           "context": "Správa obsahuje zhrnutie a prílohu. Príloha sa aktualizuje mesačne.",
           "question": "Ktorá úprava spôsobuje, že mesačná aktualizácia odkazuje na prílohu?",
-          "answers": [
-            "Výkaz obsahuje súhrn a prílohu a aktualizuje sa mesačne.",
-            "Správa obsahuje zhrnutie, ktoré sa aktualizuje každý mesiac, a prílohu.",
-            "Správa obsahuje zhrnutie a prílohu; príloha sa aktualizuje mesačne.",
-            "Správa, aktualizovaná mesačne, obsahuje zhrnutie a jeho prílohu."
-          ],
+          "answers": {
+            "a1": "Výkaz obsahuje súhrn a prílohu a aktualizuje sa mesačne.",
+            "a2": "Správa obsahuje zhrnutie, ktoré sa aktualizuje každý mesiac, a prílohu.",
+            "a3": "Správa obsahuje zhrnutie a prílohu; príloha sa aktualizuje mesačne.",
+            "a4": "Správa, aktualizovaná mesačne, obsahuje zhrnutie a jeho prílohu."
+          },
           "headerLabel": "JASNOSŤ VYJADROVANIA"
         },
         "grammar-r9q1": {
           "question": "V ktorej vete je úvodná prípustková vedľajšia veta správne oddelená čiarkou?",
-          "answers": [
-            "Búrka skončila; hoci ulice zostali zaplavené.",
-            "Búrka skončila, ale ulice zostali zaplavené.",
-            "Hoci búrka skončila; ulice zostali zaplavené.",
-            "Hoci búrka skončila, ulice zostali zaplavené."
-          ],
-          "trapdoorErrors": [
-            "bodkočiarka nesprávne oddeľuje hlavnú vetu od závislej vety",
-            "spojovacej príslovke chýba požadovaná hraničná interpunkcia",
-            "bodkočiarka nesprávne nasleduje za závislou vetou",
-            null
-          ],
+          "answers": {
+            "a1": "Búrka skončila; hoci ulice zostali zaplavené.",
+            "a2": "Búrka skončila, ale ulice zostali zaplavené.",
+            "a3": "Hoci búrka skončila; ulice zostali zaplavené.",
+            "a4": "Hoci búrka skončila, ulice zostali zaplavené."
+          },
+          "trapdoorErrors": {
+            "a1": "bodkočiarka nesprávne oddeľuje hlavnú vetu od závislej vety",
+            "a2": "spojovacej príslovke chýba požadovaná hraničná interpunkcia",
+            "a3": "bodkočiarka nesprávne nasleduje za závislou vetou"
+          },
           "headerLabel": "VYJADRENIE PROTIKLADU"
         },
         "grammar-r10q6": {
           "question": "Ktorá veta je úplne správna?",
-          "answers": [
-            "Po preskúmaní údajov Maya potvrdila, že každý súčet bol presný.",
-            "Po preskúmaní čísel boli každá suma potvrdená Mayou.",
-            "Po preskúmaní údajov Maya potvrdila, že každý súčet bol presný presný.",
-            "Po preskúmaní údajov Maya potvrdila, že každý zo súčtov boli presné."
-          ],
+          "answers": {
+            "a1": "Po preskúmaní údajov Maya potvrdila, že každý súčet bol presný.",
+            "a2": "Po preskúmaní čísel boli každá suma potvrdená Mayou.",
+            "a3": "Po preskúmaní údajov Maya potvrdila, že každý súčet bol presný presný.",
+            "a4": "Po preskúmaní údajov Maya potvrdila, že každý zo súčtov boli presné."
+          },
           "headerLabel": "DÔKLADNÁ REDAKCIA"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Záverečné správy boli skontrolované, skôr než ich redaktor schválil schválil na uverejnenie."
           },
           "question": "Ktorá časť obsahuje chybu?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "ZÁVEREČNÁ KOREKTÚRA"
         }
       }

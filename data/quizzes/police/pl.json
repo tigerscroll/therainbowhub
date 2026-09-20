@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 6% dorosłych może zdać ten egzamin wstępny na funkcjonariusza policji",
   "eyebrow": "TEST UMIEJĘTNOŚCI POLICJANTA",
   "summary": "Dziesięć pytań sprawdza ocenę, komunikację, postępowanie z dowodami i uczciwość zawodową.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Pierwsze połączenia wydają się proste. Następnie egzamin przechodzi do dowodów, osądu i decyzji podejmowanych w ułamku sekundy.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie rozrywkowe składające się z dziesięciu pytań opiera się na ogólnych zasadach odnoszących się do profesjonalnych działań policji w krajach anglojęzycznych poziomu 1. Testuje ocenę stawiając przede wszystkim bezpieczeństwo, uważną komunikację ze świadkami, integralność dowodów i odpowiedzialne podejmowanie decyzji bez polegania na przepisach, rangach i procedurach jednego kraju.\n\nWybierz jedną odpowiedź dla każdej sytuacji. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań dotyczących umiejętności policyjnych.",
         "Wybierz najbezpieczniejszą, najwyraźniejszą lub najlepiej obsługiwaną odpowiedź.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie wstępne dla policjanta",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na stanowisko funkcjonariusza policji",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik umiejętności policyjnych jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie czterech obszarów policyjnych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie czterech obszarów policyjnych"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Udało Ci się zaliczyć wyzwanie wstępne na policjanta!",
       "finished": "Wyzwanie wstępne dla policjanta ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar policji",
       "trickiest": "Najtrudniejszy obszar policji",
       "bestRound": "Najlepsza sekcja",
@@ -96,8 +89,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Przybywasz na miejsce, w którym ktoś stoi w obliczu bezpośredniego zagrożenia. Co jest pierwszym priorytetem?",
-          "answers": [
-            "Chroń życie i uczyń miejsce zdarzenia tak bezpiecznym, jak to możliwe",
-            "Rozpocznij szczegółowy pisemny raport",
-            "Zbierz zeznania wszystkich świadków",
-            "Sprawdź, kto ponosi prawną odpowiedzialność"
-          ],
+          "answers": {
+            "a1": "Chroń życie i uczyń miejsce zdarzenia tak bezpiecznym, jak to możliwe",
+            "a2": "Rozpocznij szczegółowy pisemny raport",
+            "a3": "Zbierz zeznania wszystkich świadków",
+            "a4": "Sprawdź, kto ponosi prawną odpowiedzialność"
+          },
           "headerLabel": "PRIORYTETY SCENY"
         },
         "police-q2": {
           "question": "Które pytanie wstępne najprawdopodobniej doprowadzi do nieprzerwanej relacji świadka?",
-          "answers": [
-            "Zaczęła to osoba w czerwieni, prawda?",
-            "Proszę, opowiedz mi, co się stało od początku",
-            "Nie widziałeś całego zdarzenia, prawda?",
-            "Czy podejrzany był zły czy przestraszony?"
-          ],
+          "answers": {
+            "a1": "Zaczęła to osoba w czerwieni, prawda?",
+            "a2": "Proszę, opowiedz mi, co się stało od początku",
+            "a3": "Nie widziałeś całego zdarzenia, prawda?",
+            "a4": "Czy podejrzany był zły czy przestraszony?"
+          },
           "headerLabel": "KOMUNIKACJA ŚWIADKA"
         },
         "police-q3": {
           "question": "Dlaczego świadków można rozdzielić przed sporządzeniem ich wstępnych zeznań?",
-          "answers": [
-            "Żeby wywiady były krótsze",
-            "Aby zdecydować, kto jest najbardziej pewny siebie",
-            "Aby zmniejszyć ryzyko, że ich wspomnienia wpływają na siebie nawzajem",
-            "Aby zagwarantować, że każde konto pasuje"
-          ],
+          "answers": {
+            "a1": "Żeby wywiady były krótsze",
+            "a2": "Aby zdecydować, kto jest najbardziej pewny siebie",
+            "a3": "Aby zmniejszyć ryzyko, że ich wspomnienia wpływają na siebie nawzajem",
+            "a4": "Aby zagwarantować, że każde konto pasuje"
+          },
           "headerLabel": "PAMIĘĆ I DOWODY"
         },
         "police-q4": {
           "question": "Jaki jest główny cel udokumentowanego łańcucha dostaw?",
-          "answers": [
-            "Aby uszeregować dowody według ich ważności",
-            "Aby udowodnić, że podejrzany jest właścicielem każdego przedmiotu",
-            "Aby zastąpić zdjęcia miejsca zdarzenia",
-            "Aby zarejestrować, kto zajmował się dowodami, i zachować ich integralność"
-          ],
+          "answers": {
+            "a1": "Aby uszeregować dowody według ich ważności",
+            "a2": "Aby udowodnić, że podejrzany jest właścicielem każdego przedmiotu",
+            "a3": "Aby zastąpić zdjęcia miejsca zdarzenia",
+            "a4": "Aby zarejestrować, kto zajmował się dowodami, i zachować ich integralność"
+          },
           "headerLabel": "KONTROLA DOWODÓW"
         },
         "police-q5": {
           "question": "Który zestaw zasad najlepiej opisuje odpowiedzialne korzystanie z uprawnień policji?",
-          "answers": [
-            "Zgodne z prawem, konieczne, proporcjonalne i odpowiedzialne",
-            "Szybki, tajny, mocny i ostateczny",
-            "Popularny, wygodny, nieformalny i szeroki",
-            "Automatyczne, identyczne, nieograniczone i niekwestionowane"
-          ],
+          "answers": {
+            "a1": "Zgodne z prawem, konieczne, proporcjonalne i odpowiedzialne",
+            "a2": "Szybki, tajny, mocny i ostateczny",
+            "a3": "Popularny, wygodny, nieformalny i szeroki",
+            "a4": "Automatyczne, identyczne, nieograniczone i niekwestionowane"
+          },
           "headerLabel": "PROFESJONALNA OCENA"
         },
         "police-q6": {
           "question": "Które słowo w międzynarodowym alfabecie pisowni reprezentuje literę B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "KOMUNIKACJA RADIOWA"
         },
         "police-q7": {
           "question": "Które podejście jest najbardziej spójne z deeskalacją napiętej, ale nie natychmiastowej sytuacji?",
-          "answers": [
-            "Mów szybko i podchodź bliżej bez ostrzeżenia",
-            "Wydaj kilka konkurencyjnych instrukcji na raz",
-            "Używaj spokojnego, jasnego języka, słuchaj i zapewniaj bezpieczną przestrzeń",
-            "Podnieś głos, zanim ktokolwiek inny będzie mógł przemówić"
-          ],
+          "answers": {
+            "a1": "Mów szybko i podchodź bliżej bez ostrzeżenia",
+            "a2": "Wydaj kilka konkurencyjnych instrukcji na raz",
+            "a3": "Używaj spokojnego, jasnego języka, słuchaj i zapewniaj bezpieczną przestrzeń",
+            "a4": "Podnieś głos, zanim ktokolwiek inny będzie mógł przemówić"
+          },
           "headerLabel": "DEESKALACJA"
         },
         "police-q8": {
           "question": "Co powinno się wydarzyć, zanim ważny przedmiot na miejscu zdarzenia zostanie przeniesiony, jeśli jest to bezpieczne i praktyczne?",
-          "answers": [
-            "Należy to wyczyścić",
-            "Należy to pokazać każdemu świadkowi",
-            "Należy go umieścić razem z podobnymi przedmiotami",
-            "Należy udokumentować jego pierwotne położenie i stan"
-          ],
+          "answers": {
+            "a1": "Należy to wyczyścić",
+            "a2": "Należy to pokazać każdemu świadkowi",
+            "a3": "Należy go umieścić razem z podobnymi przedmiotami",
+            "a4": "Należy udokumentować jego pierwotne położenie i stan"
+          },
           "headerLabel": "ŚWIADOMOŚĆ SCENY"
         },
         "police-q9": {
           "question": "W przesłanym raporcie odkryłeś błąd merytoryczny. Jaka jest najbardziej profesjonalna reakcja?",
-          "answers": [
-            "Zgłoś go i niezwłocznie popraw w ramach odpowiedniego procesu",
-            "Poczekaj, aż ktoś to zauważy",
-            "Usuń cały raport bez rekordu",
-            "Poproś kolegę, aby wziął na siebie odpowiedzialność"
-          ],
+          "answers": {
+            "a1": "Zgłoś go i niezwłocznie popraw w ramach odpowiedniego procesu",
+            "a2": "Poczekaj, aż ktoś to zauważy",
+            "a3": "Usuń cały raport bez rekordu",
+            "a4": "Poproś kolegę, aby wziął na siebie odpowiedzialność"
+          },
           "headerLabel": "TEST INTEGRALNOŚCI"
         },
         "police-q10": {
           "question": "Który komunikat radiowy jest najbardziej przydatny podczas szybko zmieniającego się zdarzenia?",
-          "answers": [
-            "Długa osobista teoria bez lokalizacji",
-            "Zwięzła aktualizacja faktów z dokładną lokalizacją i wymaganą pomocą",
-            "Kilka niepotwierdzonych plotek podano na raz",
-            "Niejasna prośba, żeby kogoś gdzieś wysłać"
-          ],
+          "answers": {
+            "a1": "Długa osobista teoria bez lokalizacji",
+            "a2": "Zwięzła aktualizacja faktów z dokładną lokalizacją i wymaganą pomocą",
+            "a3": "Kilka niepotwierdzonych plotek podano na raz",
+            "a4": "Niejasna prośba, żeby kogoś gdzieś wysłać"
+          },
           "headerLabel": "KOŃCOWE PYTANIE DOTYCZĄCE UPRAWNOŚCI"
         }
       }

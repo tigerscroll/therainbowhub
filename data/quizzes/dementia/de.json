@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Schneller Demenztest",
   "eyebrow": "10-FRAGEN-GEHIRN-CHECK",
   "summary": "Eine schnelle Herausforderung für Gedächtnis, Aufmerksamkeit, Sprache und Argumentation.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Denken Sie, dass Ihr Gedächtnis immer noch scharf ist? Diese 10 kurzen Fragen testen Gedächtnis, Aufmerksamkeit und logisches Denken – und die verzögerten Fragen sind schwieriger, als sie aussehen.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Diese Denkaufgabe mit zehn Fragen verbindet unmittelbares und verzögertes Erinnern mit Aufmerksamkeit, Sprache, visuellem Gedächtnis und einfachem Schlussfolgern. Sie bietet eine unterhaltsame Momentaufnahme der heutigen Leistung und ist kein Verfahren zur Demenzfrüherkennung.\n\nSchlaf, Stress, Stimmung, Medikamente, Sprache, Bildung, Seh- und Hörvermögen, das verwendete Gerät und auch der Zufall können das Ergebnis beeinflussen. Ein Online-Quiz kann Demenz weder bestätigen noch ausschließen.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Studieren Sie jeden Erinnerungshinweis sorgfältig, wenn er erscheint.",
         "Wählen Sie für jede Frage eine Antwort ohne fremde Hilfe.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Schnelle Gehirn-Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Schneller Demenztest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Brain-Challenge-Ergebnis steht zur Auswertung bereit.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Drei Denkbereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Drei Denkbereiche im Vergleich"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sie haben die 80 %-Gehirn-Herausforderung gemeistert!",
       "finished": "Schnelle Gehirn-Herausforderung abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Bereich heute",
       "trickiest": "Der schwierigste Bereich heute",
       "bestRound": "Stärkster Bereich",
@@ -94,8 +87,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Welches Wort erschien als drittes?",
           "headerLabel": "SOFORTIGER RÜCKRUF",
-          "answers": [
-            "Brücke",
-            "Zitrone",
-            "Garten",
-            "Uhr"
-          ],
+          "answers": {
+            "a1": "Brücke",
+            "a2": "Zitrone",
+            "a3": "Garten",
+            "a4": "Uhr"
+          },
           "study": {
             "title": "Merken Sie sich diese vier Wörter",
             "instruction": "Sie können später im Test zurückkehren.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Welcher Code passt genau zu P8L4T?",
           "headerLabel": "KONZENTRIERTE AUFMERKSAMKEIT",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Welcher Gegenstand gehört nicht zu den anderen?",
           "headerLabel": "WORTKATEGORIEN",
-          "answers": [
-            "Violine",
-            "Flöte",
-            "Karotte",
-            "Trompete"
-          ]
+          "answers": {
+            "a1": "Violine",
+            "a2": "Flöte",
+            "a3": "Karotte",
+            "a4": "Trompete"
+          }
         },
         "dementia-q4": {
           "question": "Welche Zahl kommt als nächstes: 2, 4, 8, 16, ___?",
           "headerLabel": "MUSTERBEGRÜNDUNG",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Welches Objekt erschien als zweites?",
           "headerLabel": "VISUELLE ERINNERUNG",
-          "answers": [
-            "Handschuh",
-            "Schlüssel",
-            "Tasse",
-            "Buch"
-          ],
+          "answers": {
+            "a1": "Handschuh",
+            "a2": "Schlüssel",
+            "a3": "Tasse",
+            "a4": "Buch"
+          },
           "study": {
             "title": "Studieren Sie die Objektreihenfolge",
             "instruction": "Dies verschwindet automatisch.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Was ist 7 – 2 – 9 rückwärts?",
           "headerLabel": "ARBEITSSPEICHER",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Wenn der Minutenzeiger auf 6 zeigt, wie viele Minuten nach der vollen Stunde ist es dann?",
           "headerLabel": "UHR-GRÜNDUNG",
-          "answers": [
-            "6 Minuten",
-            "15 Minuten",
-            "45 Minuten",
-            "30 Minuten"
-          ]
+          "answers": {
+            "a1": "6 Minuten",
+            "a2": "15 Minuten",
+            "a3": "45 Minuten",
+            "a4": "30 Minuten"
+          }
         },
         "dementia-q8": {
           "question": "Ein Welpe verhält sich zum Hund wie ein Kätzchen zu was?",
           "headerLabel": "SPRACHVERBINDUNG",
-          "answers": [
-            "Katze",
-            "Pferd",
-            "Kaninchen",
-            "Vogel"
-          ]
+          "answers": {
+            "a1": "Katze",
+            "a2": "Pferd",
+            "a3": "Kaninchen",
+            "a4": "Vogel"
+          }
         },
         "dementia-q9": {
           "question": "Denken Sie an die Eröffnungsliste zurück. Welches Wort erschien zuerst?",
           "headerLabel": "VERZÖGERTER WORT-RÜCKRUF",
-          "answers": [
-            "Uhr",
-            "Garten",
-            "Zitrone",
-            "Brücke"
-          ]
+          "answers": {
+            "a1": "Uhr",
+            "a2": "Garten",
+            "a3": "Zitrone",
+            "a4": "Brücke"
+          }
         },
         "dementia-q10": {
           "question": "Denken Sie an die Objektsequenz zurück. Welches Objekt erschien als viertes?",
           "headerLabel": "LETZTER VERZÖGERTER RÜCKRUF",
-          "answers": [
-            "Buch",
-            "Schlüssel",
-            "Handschuh",
-            "Tasse"
-          ]
+          "answers": {
+            "a1": "Buch",
+            "a2": "Schlüssel",
+            "a3": "Handschuh",
+            "a4": "Tasse"
+          }
         }
       }
     }

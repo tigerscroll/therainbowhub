@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hızlı Katarakt Testi",
   "eyebrow": "10 SORULU VİZYON KONTROLÜ",
   "summary": "Tek bir hızlı mücadelede puslu ayrıntılar, yakın görsel tuzaklar ve önemli katarakt uyarı işaretleri.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Kataraktın ilk başta gözden kaçırılması kolay olabilir. Bakalım 10 kısa sorudaki ince ipuçlarını fark edebilecek misiniz? Son sorular çoğu kişinin dikkatini çekecek.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk meydan okuma, ekrandaki beş görsel bulmacayı kataraktla ilgili beş genel farkındalık sorusuyla birleştiriyor. Görme yeteneği, lens sağlığı veya katarakt olasılığını değil, bu testin yanıtlarını ölçer.\n\nEkran boyutu, parlaklık, kontrast, görme yeteneği, düzeltici lensler, yorgunluk ve cihaz ayarlarının tümü performansı etkileyebilir. Kalıcı bulanık veya puslu görme, parlama, ışıkların etrafında haleler, gece görmede zorluk veya daha az canlı görünen tonlar, kalifiye bir göz bakımı uzmanıyla görüşülmelidir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Beş detay, desen ve görsel hafıza mücadelesini tamamlayın.",
         "Katarakt ve ne zaman yardım aranacağıyla ilgili beş soruyu yanıtlayın.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katarakt mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Hızlı Katarakt Testi",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve katarakt testi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç görsel alan karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç görsel alan karşılaştırıldı"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "%80'lik görsel mücadeleyi tamamladınız!",
       "finished": "Katarakt mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "Bugün en güçlü bölge",
       "trickiest": "Bugünün en zorlu alanı",
       "bestRound": "En iyi bölüm",
@@ -94,8 +87,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Izgaranın tam ortasında hangi karakter var?",
           "headerLabel": "MERKEZ DETAY",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERANS: B8R3K5",
           "question": "Referansla tam olarak hangi kod eşleşiyor?",
           "headerLabel": "BULANIK MAÇ",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERANS",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Alternatif diziyi hangi sembol tamamlar?",
           "headerLabel": "ÖRÜNTÜ TAKİBİ",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Üçüncü olarak hangi nesne ortaya çıktı?",
           "headerLabel": "HIZLI GÖRSEL BELLEK",
-          "answers": [
-            "Kitap",
-            "Anahtar",
-            "Limon",
-            "Şemsiye"
-          ],
+          "answers": {
+            "a1": "Kitap",
+            "a2": "Anahtar",
+            "a3": "Limon",
+            "a4": "Şemsiye"
+          },
           "study": {
             "title": "Beş nesne sırasını inceleyin",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Soluk daire hangi konumda yer alıyor?",
           "headerLabel": "DETAY KONTROLÜ",
-          "answers": [
-            "Beşinci",
-            "İkinci",
-            "Dördüncü",
-            "Altıncı"
-          ],
+          "answers": {
+            "a1": "Beşinci",
+            "a2": "İkinci",
+            "a3": "Dördüncü",
+            "a4": "Altıncı"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Katarakt nedir?",
           "headerLabel": "KATARAKTIN TEMELLERİ",
-          "answers": [
-            "Göz kapağında bir çizik",
-            "Gözün doğal merceğinde bulanık bir alan",
-            "Gözyaşı kanalıyla sınırlı bir sorun",
-            "Bir tür kulak enfeksiyonu"
-          ]
+          "answers": {
+            "a1": "Göz kapağında bir çizik",
+            "a2": "Gözün doğal merceğinde bulanık bir alan",
+            "a3": "Gözyaşı kanalıyla sınırlı bir sorun",
+            "a4": "Bir tür kulak enfeksiyonu"
+          }
         },
         "cataract-q7": {
           "question": "Hangi grup ortak katarakt semptomlarını içerir?",
           "headerLabel": "UYARI İŞARETLERİ",
-          "answers": [
-            "Kaşıntılı cilt ve boğaz ağrısı",
-            "Ani işitme kaybı ve baş dönmesi",
-            "Bulanık veya puslu görme, parlama ve ışıkların etrafında haleler",
-            "Sert bir boyun ve ağrıyan omuzlar"
-          ]
+          "answers": {
+            "a1": "Kaşıntılı cilt ve boğaz ağrısı",
+            "a2": "Ani işitme kaybı ve baş dönmesi",
+            "a3": "Bulanık veya puslu görme, parlama ve ışıkların etrafında haleler",
+            "a4": "Sert bir boyun ve ağrıyan omuzlar"
+          }
         },
         "cataract-q8": {
           "question": "Bir göz doktoru kataraktı nasıl kontrol edebilir?",
           "headerLabel": "MESLEKİ DEĞERLENDİRME",
-          "answers": [
-            "İşitme testi ile",
-            "Evde kan basıncı ölçümü kullanma",
-            "Tat testi ile",
-            "Kapsamlı dilate göz muayenesinin bir parçası olarak"
-          ]
+          "answers": {
+            "a1": "İşitme testi ile",
+            "a2": "Evde kan basıncı ölçümü kullanma",
+            "a3": "Tat testi ile",
+            "a4": "Kapsamlı dilate göz muayenesinin bir parçası olarak"
+          }
         },
         "cataract-q9": {
           "question": "Ani görme kaybına, şiddetli göz ağrısına veya görmede ani büyük bir değişikliğe karşı en güvenli tepki nedir?",
           "headerLabel": "NE ZAMAN HAREKETE GEÇMELİ",
-          "answers": [
-            "Acil olarak profesyonel göz bakımı tavsiyesi alın",
-            "Birkaç ay boyunca bundan bahsetmeden bekleyin",
-            "Ekran parlaklığını değiştirin ve sabit olduğunu varsayalım",
-            "Yalnızca çevrimiçi testlere güvenin"
-          ]
+          "answers": {
+            "a1": "Acil olarak profesyonel göz bakımı tavsiyesi alın",
+            "a2": "Birkaç ay boyunca bundan bahsetmeden bekleyin",
+            "a3": "Ekran parlaklığını değiştirin ve sabit olduğunu varsayalım",
+            "a4": "Yalnızca çevrimiçi testlere güvenin"
+          }
         },
         "cataract-q10": {
           "question": "Bu çevrimiçi mücadeledeki puanınız size ne söyleyebilir?",
           "headerLabel": "NİHAİ GERÇEKLİK KONTROLÜ",
-          "answers": [
-            "Lenslerinizin sağlıklı olup olmadığı",
-            "Yalnızca bu on soruda nasıl performans gösterdiniz?",
-            "Katarakt ameliyatına ihtiyacınız olup olmadığı",
-            "Kataraktı ekarte edip edemeyeceğiniz"
-          ]
+          "answers": {
+            "a1": "Lenslerinizin sağlıklı olup olmadığı",
+            "a2": "Yalnızca bu on soruda nasıl performans gösterdiniz?",
+            "a3": "Katarakt ameliyatına ihtiyacınız olup olmadığı",
+            "a4": "Kataraktı ekarte edip edemeyeceğiniz"
+          }
         }
       }
     }

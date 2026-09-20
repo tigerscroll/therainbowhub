@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 1 trong 5 có thể vượt qua bài kiểm tra về công cụ bê tông này",
   "eyebrow": "KIỂM TRA CÔNG CỤ BÊ TÔNG",
   "summary": "Mười công cụ tại công trường và một thách thức cụ thể không thể tha thứ.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những công cụ này trông có vẻ hiển nhiên trên một trang web việc làm, nhưng công dụng thực sự của chúng khiến hầu hết mọi người đều chú ý. Bạn có thể nhận được tất cả 10 phải không?",
     "cta": "Bắt đầu bài kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Công tác bê tông cần nhiều công việc hơn là dùng máy trộn và xẻng. Thời gian, hình dạng và mục đích của từng công cụ chuyên dụng có thể quyết định liệu tấm sàn có được hoàn thiện bằng phẳng, chắc chắn và kiểm soát được vết nứt hay không hay biến thành một sai lầm tốn kém.\n\nNghiên cứu từng bức ảnh và chọn công việc hoặc giai đoạn sử dụng chính xác của công cụ. Sự đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.\n\nMười câu hỏi nguồn, lựa chọn câu trả lời và hình ảnh đầu tiên được sao chép từ Log Cabin Daily với sự cho phép của chủ sở hữu trang web khi thực hiện bài kiểm tra này.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Nghiên cứu công cụ được hiển thị trong mỗi bức ảnh.",
         "Chọn cách sử dụng hoặc giai đoạn chính xác của quá trình bê tông.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách dụng cụ bê tông",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Dụng cụ bê tông",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm số về công cụ cụ thể của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 công cụ",
-          "So sánh ba lĩnh vực thương mại",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "So sánh ba lĩnh vực thương mại"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách dùng dụng cụ bê tông!",
       "finished": "Thử thách dụng cụ bê tông đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực thương mại mạnh nhất",
       "trickiest": "Khu vực buôn bán khó khăn nhất",
       "bestRound": "Phần hay nhất",
@@ -94,8 +87,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "Máy xoa nền bê tông làm phẳng bê tông mới đổ"
           },
           "question": "Công cụ này được sử dụng để làm gì?",
-          "answers": [
-            "Cắt cốt thép",
-            "Trải và làm phẳng bê tông ướt",
-            "Trộn bê tông khô",
-            "Phá vỡ bê tông cũ"
-          ],
+          "answers": {
+            "a1": "Cắt cốt thép",
+            "a2": "Trải và làm phẳng bê tông ướt",
+            "a3": "Trộn bê tông khô",
+            "a4": "Phá vỡ bê tông cũ"
+          },
           "headerLabel": "CÔNG CỤ 1 TRÊN 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "Xe cút kít chở hỗn hợp bê tông tại công trường"
           },
           "question": "Công cụ này được sử dụng để làm gì?",
-          "answers": [
-            "Vận chuyển bê tông ướt và dụng cụ",
-            "Hoàn thiện các cạnh bê tông",
-            "Đo nhiệt độ bê tông",
-            "Nén sỏi"
-          ],
+          "answers": {
+            "a1": "Vận chuyển bê tông ướt và dụng cụ",
+            "a2": "Hoàn thiện các cạnh bê tông",
+            "a3": "Đo nhiệt độ bê tông",
+            "a4": "Nén sỏi"
+          },
           "headerLabel": "CÔNG CỤ 2 TRÊN 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "Một phao bê tông di chuyển trên bề mặt bê tông tươi"
           },
           "question": "Công cụ này được sử dụng để làm gì?",
-          "answers": [
-            "Nén đất",
-            "Mẫu gỗ nổi",
-            "San lấp mặt bằng và làm phẳng bề mặt bê tông",
-            "Cắt xuyên qua cốt thép"
-          ],
+          "answers": {
+            "a1": "Nén đất",
+            "a2": "Mẫu gỗ nổi",
+            "a3": "San lấp mặt bằng và làm phẳng bề mặt bê tông",
+            "a4": "Cắt xuyên qua cốt thép"
+          },
           "headerLabel": "CÔNG CỤ 3 TRÊN 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "Máy mài bê tông định hình đường viền của tấm"
           },
           "question": "Công cụ này được sử dụng để làm gì?",
-          "answers": [
-            "Viền vỉa hè và tấm để có đường viền sạch sẽ",
-            "Nâng khối bê tông",
-            "Cắt các mối nối vào bê tông",
-            "Vận chuyển hỗn hợp bê tông"
-          ],
+          "answers": {
+            "a1": "Viền vỉa hè và tấm để có đường viền sạch sẽ",
+            "a2": "Nâng khối bê tông",
+            "a3": "Cắt các mối nối vào bê tông",
+            "a4": "Vận chuyển hỗn hợp bê tông"
+          },
           "headerLabel": "CÔNG CỤ 4 TRÊN 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "Máy trộn bê tông di động trộn bê tông tươi"
           },
           "question": "Công cụ này làm gì?",
-          "answers": [
-            "Bê tông sưởi ấm",
-            "Đổ xi măng khô",
-            "Trộn xi măng, cát, nước vào bê tông",
-            "Mài bê tông cũ"
-          ],
+          "answers": {
+            "a1": "Bê tông sưởi ấm",
+            "a2": "Đổ xi măng khô",
+            "a3": "Trộn xi măng, cát, nước vào bê tông",
+            "a4": "Mài bê tông cũ"
+          },
           "headerLabel": "CÔNG CỤ 5 TRÊN 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "Một chiếc phao bò có tay cầm dài làm phẳng tấm bê tông rộng"
           },
           "question": "Bước nào trong công việc bê tông thường yêu cầu phao nổi?",
-          "answers": [
-            "Vận chuyển bê tông ướt đến nơi đổ",
-            "Phá vỡ tấm bê tông cũ",
-            "Cắt khe co giãn",
-            "Làm phẳng các bề mặt lớn ngay sau khi quét"
-          ],
+          "answers": {
+            "a1": "Vận chuyển bê tông ướt đến nơi đổ",
+            "a2": "Phá vỡ tấm bê tông cũ",
+            "a3": "Cắt khe co giãn",
+            "a4": "Làm phẳng các bề mặt lớn ngay sau khi quét"
+          },
           "headerLabel": "CÔNG CỤ 6 TRÊN 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "Một công nhân sử dụng máy rung bê tông trong bê tông mới đổ"
           },
           "question": "Máy rung bê tông thường được sử dụng khi nào?",
-          "answers": [
-            "Trước khi đổ bê tông",
-            "Sau khi đổ bê tông cần loại bỏ túi khí",
-            "Trong khi đặt cốt thép vào ván khuôn",
-            "Trong quá trình hoàn thiện, làm phẳng bề mặt"
-          ],
+          "answers": {
+            "a1": "Trước khi đổ bê tông",
+            "a2": "Sau khi đổ bê tông cần loại bỏ túi khí",
+            "a3": "Trong khi đặt cốt thép vào ván khuôn",
+            "a4": "Trong quá trình hoàn thiện, làm phẳng bề mặt"
+          },
           "headerLabel": "CÔNG CỤ 7 TRÊN 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "Máy cắt cốt thép có động cơ cắt cốt thép"
           },
           "question": "Nhiệm vụ chính được thực hiện khi sử dụng máy cắt cốt thép là gì?",
-          "answers": [
-            "Cắt cốt thép theo chiều dài yêu cầu",
-            "Làm phẳng các cạnh bê tông",
-            "Cắt các mối nối điều khiển vào bê tông cứng",
-            "Phá bỏ bê tông lỏng lẻo"
-          ],
+          "answers": {
+            "a1": "Cắt cốt thép theo chiều dài yêu cầu",
+            "a2": "Làm phẳng các cạnh bê tông",
+            "a3": "Cắt các mối nối điều khiển vào bê tông cứng",
+            "a4": "Phá bỏ bê tông lỏng lẻo"
+          },
           "headerLabel": "CÔNG CỤ 8 TRÊN 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "Máy cắt rãnh cán dài cắt một đường vào bê tông ướt"
           },
           "question": "Công cụ tạo rãnh được sử dụng tốt nhất trong giai đoạn nào của quá trình đổ bê tông?",
-          "answers": [
-            "Trước khi đổ phải chuẩn bị mặt bằng",
-            "Trong quá trình hoàn thiện, tạo các khớp điều khiển",
-            "Trong quá trình đóng rắn phải bôi keo",
-            "Sau khi khô, đánh bóng bề mặt"
-          ],
+          "answers": {
+            "a1": "Trước khi đổ phải chuẩn bị mặt bằng",
+            "a2": "Trong quá trình hoàn thiện, tạo các khớp điều khiển",
+            "a3": "Trong quá trình đóng rắn phải bôi keo",
+            "a4": "Sau khi khô, đánh bóng bề mặt"
+          },
           "headerLabel": "CÔNG CỤ 9 TRÊN 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "Lớp vữa thẳng nổi bật trên nền bê tông mới đổ"
           },
           "question": "Lớp vữa bê tông được sử dụng phổ biến nhất ở giai đoạn nào?",
-          "answers": [
-            "Sau khi đóng rắn đánh bóng bề mặt",
-            "Sau khi khô tiến hành dán keo",
-            "Trong quá trình bố trí cốt thép",
-            "Ngay sau khi đổ để san phẳng bê tông"
-          ],
+          "answers": {
+            "a1": "Sau khi đóng rắn đánh bóng bề mặt",
+            "a2": "Sau khi khô tiến hành dán keo",
+            "a3": "Trong quá trình bố trí cốt thép",
+            "a4": "Ngay sau khi đổ để san phẳng bê tông"
+          },
           "headerLabel": "CÔNG CỤ CUỐI CÙNG"
         }
       }

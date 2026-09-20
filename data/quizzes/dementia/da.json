@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hurtig demenstest",
   "eyebrow": "10 SPØRGSMÅL HJERNETJEK",
   "summary": "En hurtig udfordring til genkaldelse, opmærksomhed, sprog og ræsonnement.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Tror du, at din hukommelse stadig er skarp? Disse 10 hurtige spørgsmål tester genkaldelse, opmærksomhed og ræsonnement - og de forsinkede spørgsmål er sværere, end de ser ud til.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne hjerneudfordring med ti spørgsmål blander øjeblikkelig og forsinket genkaldelse med opmærksomhed, sprog, visuel hukommelse og enkle ræsonnementer. Det er designet som et engagerende øjebliksbillede af ydeevne i dag, ikke som et demensscreeningsværktøj.\n\nYdeevne kan ændre sig med søvn, stress, humør, medicin, sprog, uddannelse, syn, hørelse, brug af enheder og simple tilfældigheder. En score fra en online quiz kan ikke bekræfte eller udelukke demens.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Undersøg hver hukommelsessignal omhyggeligt, når den dukker op.",
         "Vælg ét svar til hvert spørgsmål uden hjælp udefra.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hurtig hjerneudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Hurtig demenstest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet tjekket, og din hjerneudfordringsscore er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Tre tankeområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre tankeområder sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarede 80 % hjerneudfordringen!",
       "finished": "Hurtig hjerneudfordring fuldført",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste område i dag",
       "trickiest": "Det sværeste område i dag",
       "bestRound": "Bedste afsnit",
@@ -94,8 +87,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Hvilket ord optrådte som tredje?",
           "headerLabel": "ØJEBLIKKELIG TILBAGEKALDELSE",
-          "answers": [
-            "Bro",
-            "Citron",
-            "Have",
-            "Ur"
-          ],
+          "answers": {
+            "a1": "Bro",
+            "a2": "Citron",
+            "a3": "Have",
+            "a4": "Ur"
+          },
           "study": {
             "title": "Husk disse fire ord",
             "instruction": "De kan vende tilbage senere i testen.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Hvilken kode passer nøjagtigt til P8L4T?",
           "headerLabel": "FOKUSET OPMÆRKSOMHED",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Hvilken vare hører ikke sammen med de andre?",
           "headerLabel": "ORDKATEGORIER",
-          "answers": [
-            "Violin",
-            "fløjte",
-            "Gulerod",
-            "Trompet"
-          ]
+          "answers": {
+            "a1": "Violin",
+            "a2": "fløjte",
+            "a3": "Gulerod",
+            "a4": "Trompet"
+          }
         },
         "dementia-q4": {
           "question": "Hvilket tal kommer dernæst: 2, 4, 8, 16, ___?",
           "headerLabel": "MØNSTER RÆSONNER",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Hvilken genstand dukkede op som nummer to?",
           "headerLabel": "VISUEL HUKOMMELSE",
-          "answers": [
-            "Handske",
-            "Nøgle",
-            "Kop",
-            "Bog"
-          ],
+          "answers": {
+            "a1": "Handske",
+            "a2": "Nøgle",
+            "a3": "Kop",
+            "a4": "Bog"
+          },
           "study": {
             "title": "Undersøg objektrækkefølgen",
             "instruction": "Dette forsvinder automatisk.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Hvad er 7 – 2 – 9 baglæns?",
           "headerLabel": "ARBEJDSHUKOMMELSE",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Hvis minutviseren peger på 6, hvor mange minutter over timen er det så?",
           "headerLabel": "UR RÆSONNER",
-          "answers": [
-            "6 minutter",
-            "15 minutter",
-            "45 minutter",
-            "30 minutter"
-          ]
+          "answers": {
+            "a1": "6 minutter",
+            "a2": "15 minutter",
+            "a3": "45 minutter",
+            "a4": "30 minutter"
+          }
         },
         "dementia-q8": {
           "question": "Hvad er hvalp for hund, som killing er for hvad?",
           "headerLabel": "SPROG FORBINDELSE",
-          "answers": [
-            "Kat",
-            "Hest",
-            "Kanin",
-            "Fugl"
-          ]
+          "answers": {
+            "a1": "Kat",
+            "a2": "Hest",
+            "a3": "Kanin",
+            "a4": "Fugl"
+          }
         },
         "dementia-q9": {
           "question": "Tænk tilbage på åbningslisten. Hvilket ord dukkede op først?",
           "headerLabel": "FORSINKET ORD TILBAGEKALDELSE",
-          "answers": [
-            "Ur",
-            "Have",
-            "Citron",
-            "Bro"
-          ]
+          "answers": {
+            "a1": "Ur",
+            "a2": "Have",
+            "a3": "Citron",
+            "a4": "Bro"
+          }
         },
         "dementia-q10": {
           "question": "Tænk tilbage på objektsekvensen. Hvilken genstand dukkede op på fjerdepladsen?",
           "headerLabel": "ENDELIG FORSINKET TILBAGEKALDELSE",
-          "answers": [
-            "Bog",
-            "Nøgle",
-            "Handske",
-            "Kop"
-          ]
+          "answers": {
+            "a1": "Bog",
+            "a2": "Nøgle",
+            "a3": "Handske",
+            "a4": "Kop"
+          }
         }
       }
     }

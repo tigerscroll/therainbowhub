@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 6% người lớn có thể vượt qua kỳ thi tuyển sinh luật sư này",
   "eyebrow": "BÀI KIỂM TRA LÝ LUẬN TẠI TÒA ÁN",
   "summary": "Mười câu hỏi kiểm tra ngôn ngữ phòng xử án, tiền lệ, bằng chứng và phán đoán chuyên môn.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những câu hỏi mở đầu nghe có vẻ quen thuộc. Sau đó, bài kiểm tra chuyển sang tiền lệ, bằng chứng và lập luận tại phòng xử án.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng các khái niệm rộng được tìm thấy trong các hệ thống pháp luật thông luật ở các quốc gia nói tiếng Anh Cấp 1. Các quy tắc và thuật ngữ chính xác khác nhau tùy theo khu vực pháp lý, vì vậy các câu hỏi tập trung vào lý luận trong phòng xử án di động hơn là giáo trình tuyển sinh của một quốc gia.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi ngày càng khó trong phòng xử án.",
         "Chọn một khái niệm pháp lý hoặc phản ứng vận động tốt nhất.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào luật sư",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh luật sư",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm lý luận trong phòng xử án của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "So sánh bốn lĩnh vực pháp lý",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "So sánh bốn lĩnh vực pháp lý"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào của Luật sư!",
       "finished": "Thử thách đầu vào của luật sư đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực pháp lý mạnh nhất",
       "trickiest": "Khu vực pháp lý rắc rối nhất",
       "bestRound": "Phần hay nhất",
@@ -96,8 +89,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Trong phiên tòa hình sự, thông thường ai là người chịu trách nhiệm chứng minh lời buộc tội?",
-          "answers": [
-            "Bên công tố",
-            "Bị cáo",
-            "bồi thẩm đoàn",
-            "Thư ký tòa án"
-          ],
+          "answers": {
+            "a1": "Bên công tố",
+            "a2": "Bị cáo",
+            "a3": "bồi thẩm đoàn",
+            "a4": "Thư ký tòa án"
+          },
           "headerLabel": "ĐIỀU CƠ BẢN TRONG PHÒNG TÒA"
         },
         "barrister-q2": {
           "question": "Nguyên tắc nào coi người bị buộc tội là vô tội trừ khi tội lỗi được chứng minh?",
-          "answers": [
-            "Trách nhiệm nghiêm ngặt",
-            "Suy đoán vô tội",
-            "Nguy hiểm gấp đôi",
-            "Thông báo tư pháp"
-          ],
+          "answers": {
+            "a1": "Trách nhiệm nghiêm ngặt",
+            "a2": "Suy đoán vô tội",
+            "a3": "Nguy hiểm gấp đôi",
+            "a4": "Thông báo tư pháp"
+          },
           "headerLabel": "CÁC NGUYÊN TẮC CƠ BẢN"
         },
         "barrister-q3": {
           "question": "Quyết định trước đó của tòa án có thể hướng dẫn một vụ án tương tự sau này được gọi là gì?",
-          "answers": [
-            "Một bản khai có tuyên thệ",
-            "Một bản cáo trạng",
-            "Một tiền lệ",
-            "Một khu định cư"
-          ],
+          "answers": {
+            "a1": "Một bản khai có tuyên thệ",
+            "a2": "Một bản cáo trạng",
+            "a3": "Một tiền lệ",
+            "a4": "Một khu định cư"
+          },
           "headerLabel": "Án lệ"
         },
         "barrister-q4": {
           "question": "Việc hỏi nhân chứng của bên đối lập thường được gọi là gì?",
-          "answers": [
-            "Kiểm tra trực tiếp",
-            "Xem xét tư pháp",
-            "Tiết lộ",
-            "Thẩm vấn chéo"
-          ],
+          "answers": {
+            "a1": "Kiểm tra trực tiếp",
+            "a2": "Xem xét tư pháp",
+            "a3": "Tiết lộ",
+            "a4": "Thẩm vấn chéo"
+          },
           "headerLabel": "ỦNG HỘ"
         },
         "barrister-q5": {
           "question": "Thuật ngữ Latin nào mô tả lý do pháp lý cần thiết cho quyết định của tòa án?",
-          "answers": [
-            "Ratio decidendi",
-            "thể Habeas",
-            "chân thành",
-            "sơ bộ"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "thể Habeas",
+            "a3": "chân thành",
+            "a4": "sơ bộ"
+          },
           "headerLabel": "TRƯỚC"
         },
         "barrister-q6": {
           "question": "Quan sát tư pháp không cần thiết cho quyết định thường được gọi là gì?",
-          "answers": [
-            "Lệnh ràng buộc",
-            "Obiter dictum",
-            "Lời nhận tội",
-            "Một nguyên nhân hành động"
-          ],
+          "answers": {
+            "a1": "Lệnh ràng buộc",
+            "a2": "Obiter dictum",
+            "a3": "Lời nhận tội",
+            "a4": "Một nguyên nhân hành động"
+          },
           "headerLabel": "LÝ LUẬN PHÁP LUẬT"
         },
         "barrister-q7": {
           "question": "Thuật ngữ nào thường mô tả một tuyên bố ngoài tòa án được đưa ra để chứng minh sự thật của những gì nó nói?",
-          "answers": [
-            "Đặc quyền",
-            "Estoppel",
-            "Lời khai nghe kể lại",
-            "Giảm nhẹ"
-          ],
+          "answers": {
+            "a1": "Đặc quyền",
+            "a2": "Estoppel",
+            "a3": "Lời khai nghe kể lại",
+            "a4": "Giảm nhẹ"
+          },
           "headerLabel": "BẰNG CHỨNG"
         },
         "barrister-q8": {
           "question": "Câu hỏi nào gợi ý rõ ràng nhất câu trả lời mà giám khảo mong muốn?",
-          "answers": [
-            "Điều gì đã xảy ra tiếp theo?",
-            "Bạn đã đứng ở đâu?",
-            "Căn phòng trông thế nào?",
-            "Đèn đỏ khi bạn băng qua phải không?"
-          ],
+          "answers": {
+            "a1": "Điều gì đã xảy ra tiếp theo?",
+            "a2": "Bạn đã đứng ở đâu?",
+            "a3": "Căn phòng trông thế nào?",
+            "a4": "Đèn đỏ khi bạn băng qua phải không?"
+          },
           "headerLabel": "HỎI NHÂN CHỨNG"
         },
         "barrister-q9": {
           "question": "Việc xét xử tư pháp chủ yếu quan tâm đến vấn đề nào?",
-          "answers": [
-            "Liệu một quyết định công khai có được đưa ra hợp pháp hay không",
-            "Liệu bồi thẩm đoàn có chọn nhân chứng tốt nhất hay không",
-            "Liệu một hợp đồng có tạo ra lợi nhuận hay không",
-            "Liệu mọi kháng cáo có nên được cho phép hay không"
-          ],
+          "answers": {
+            "a1": "Liệu một quyết định công khai có được đưa ra hợp pháp hay không",
+            "a2": "Liệu bồi thẩm đoàn có chọn nhân chứng tốt nhất hay không",
+            "a3": "Liệu một hợp đồng có tạo ra lợi nhuận hay không",
+            "a4": "Liệu mọi kháng cáo có nên được cho phép hay không"
+          },
           "headerLabel": "LUẬT CÔNG"
         },
         "barrister-q10": {
           "question": "Nhìn rộng ra, nguyên tắc cấp bậc xe taxi yêu cầu một luật sư đủ tư cách phải làm gì, tuân theo các quy tắc nghề nghiệp và các trường hợp ngoại lệ?",
-          "answers": [
-            "Chỉ chấp nhận những trường hợp phổ biến",
-            "Chấp nhận các hướng dẫn phù hợp bất kể danh tính của khách hàng hay mức độ phổ biến của vụ việc",
-            "Đảm bảo kết quả thành công",
-            "Chỉ làm việc tại tòa án hình sự"
-          ],
+          "answers": {
+            "a1": "Chỉ chấp nhận những trường hợp phổ biến",
+            "a2": "Chấp nhận các hướng dẫn phù hợp bất kể danh tính của khách hàng hay mức độ phổ biến của vụ việc",
+            "a3": "Đảm bảo kết quả thành công",
+            "a4": "Chỉ làm việc tại tòa án hình sự"
+          },
           "headerLabel": "CÂU HỎI ĐẠO ĐỨC CUỐI CÙNG"
         }
       }

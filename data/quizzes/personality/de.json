@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Welches Land passt zu Ihrer Persönlichkeit?",
   "eyebrow": "IHR IDEALES LAND",
   "summary": "Zehn Entscheidungen aus dem Alltag zeigen, ob Ihre Persönlichkeit am besten zu Italien, Japan, Australien oder Schweden passt.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Ihre Alltagsentscheidungen könnten auf ein Land hindeuten, das besonders gut zu Ihnen passt. Zehn kurze Fragen zeigen Ihre beste Übereinstimmung.",
     "cta": "Mein Land finden"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieses Unterhaltungsquiz mit zehn Fragen ist an die Länder-Persönlichkeits-Challenge der Times of India angelehnt. Jede Wahl verstärkt Ihre Übereinstimmung mit Italien, Japan, Australien oder Schweden.\n\nWählen Sie die Antwort, die sich für Sie am natürlichsten anfühlt, nicht die eindrucksvollste. Das Gesamtbild Ihrer Vorlieben bestimmt das Ergebnis.\n\nDas Ergebnis ist ein spielerisches Lebensstilprofil und keine Aussage über Nationalität, Herkunft, Staatsbürgerschaft, kulturelle Identität oder eine Umzugsempfehlung. Die Ideen und Bilder werden mit der vom Auftraggeber angegebenen Erlaubnis verwendet.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn kurze Fragen zu Ihren Gewohnheiten und Vorlieben.",
         "Wählen Sie ohne langes Nachdenken die Antwort, die am besten zu Ihnen passt.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Länderprofil",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Persönlichkeitsprofil",
@@ -31,7 +27,7 @@
         "preAdChecks": [
           "10 Antworten geprüft",
           "Alle Kategorien verglichen",
-          "Endergebnis berechnet"
+          "Das Land, das am besten zu Ihnen passt, steht fest"
         ],
         "preAdButton": "Mein Land anzeigen"
       }
@@ -126,9 +122,7 @@
       "portraitAlt": "Landschaftsillustration für {profile}",
       "disclaimer": "Nur zur Unterhaltung und Selbstreflexion. Das Ergebnis ist eine spielerische Übereinstimmung des Lebensstils und keine Aussage über Nationalität, kulturelle Identität oder darüber, wo Sie leben sollten."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Freunde begrüßen einander herzlich"
           },
           "question": "Wie begrüßen Sie jemanden, den Sie gerade erst kennengelernt haben?",
-          "answers": [
-            "Mit einer herzlichen Umarmung",
-            "Mit freundlichem Winken",
-            "Mit einer respektvollen Verbeugung",
-            "Mit einem lockeren Nicken"
-          ],
+          "answers": {
+            "a1": "Mit einer herzlichen Umarmung",
+            "a2": "Mit freundlichem Winken",
+            "a3": "Mit einer respektvollen Verbeugung",
+            "a4": "Mit einem lockeren Nicken"
+          },
           "headerLabel": "ERSTER EINDRUCK"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Helle Landschaft unter wechselndem Himmel"
           },
           "question": "Welches Wetter macht Sie am glücklichsten?",
-          "answers": [
-            "Eine warme Brise",
-            "Strahlender Sonnenschein",
-            "Kalte Luft",
-            "Kühl und frisch"
-          ],
+          "answers": {
+            "a1": "Eine warme Brise",
+            "a2": "Strahlender Sonnenschein",
+            "a3": "Kalte Luft",
+            "a4": "Kühl und frisch"
+          },
           "headerLabel": "IDEALES WETTER"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Ein entspannter Sonntag im Freien"
           },
           "question": "Wie verbringen Sie normalerweise Ihren Sonntag?",
-          "answers": [
-            "Bei einem Abenteuer im Freien",
-            "Gemütlich zu Hause",
-            "In ruhiger Besinnung",
-            "Bei einem langen Familienessen"
-          ],
+          "answers": {
+            "a1": "Bei einem Abenteuer im Freien",
+            "a2": "Gemütlich zu Hause",
+            "a3": "In ruhiger Besinnung",
+            "a4": "Bei einem langen Familienessen"
+          },
           "headerLabel": "SONNTAGSSTIL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Morgenkaffee an einem ruhigen Fenster"
           },
           "question": "Wie beginnen Sie am liebsten den Tag?",
-          "answers": [
-            "Mit starkem Kaffee",
-            "Mit einem ruhigen Spaziergang",
-            "Mit Meeresluft",
-            "Mit einer entspannten Meditation"
-          ],
+          "answers": {
+            "a1": "Mit starkem Kaffee",
+            "a2": "Mit einem ruhigen Spaziergang",
+            "a3": "Mit Meeresluft",
+            "a4": "Mit einer entspannten Meditation"
+          },
           "headerLabel": "MORGENRITUAL"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Bunter Tisch mit verschiedenen Gerichten"
           },
           "question": "Welche Art von Essen begeistert Sie am meisten?",
-          "answers": [
-            "Raffinierte Aromen",
-            "Einfache, herzhafte Gerichte",
-            "Frische Meeresfrüchte",
-            "Wohltuende Klassiker"
-          ],
+          "answers": {
+            "a1": "Raffinierte Aromen",
+            "a2": "Einfache, herzhafte Gerichte",
+            "a3": "Frische Meeresfrüchte",
+            "a4": "Wohltuende Klassiker"
+          },
           "headerLabel": "KULINARISCHE VORLIEBE"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Galeriewand mit unterschiedlichen Kunststilen"
           },
           "question": "Welche Art von Kunst spricht Sie an?",
-          "answers": [
-            "Zeitlose Klassiker",
-            "Klare Schlichtheit",
-            "Ausdrucksstarke Werke",
-            "Feine Details"
-          ],
+          "answers": {
+            "a1": "Zeitlose Klassiker",
+            "a2": "Klare Schlichtheit",
+            "a3": "Ausdrucksstarke Werke",
+            "a4": "Feine Details"
+          },
           "headerLabel": "KUNSTGESCHMACK"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Vier verschiedene Getränke nebeneinander"
           },
           "question": "Welches Getränk wählen Sie am liebsten?",
-          "answers": [
-            "Ein kühles Bier",
-            "Wein",
-            "Heiße Schokolade",
-            "Grüner Tee"
-          ],
+          "answers": {
+            "a1": "Ein kühles Bier",
+            "a2": "Wein",
+            "a3": "Heiße Schokolade",
+            "a4": "Grüner Tee"
+          },
           "headerLabel": "GETRÄNKEWAHL"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Freunde feiern einen besonderen Anlass"
           },
           "question": "Wie feiern Sie besondere Momente am liebsten?",
-          "answers": [
-            "Laut und lebhaft",
-            "Im kleinen, gemütlichen Kreis",
-            "Locker und ungezwungen",
-            "Mit bedeutungsvollen Ritualen"
-          ],
+          "answers": {
+            "a1": "Laut und lebhaft",
+            "a2": "Im kleinen, gemütlichen Kreis",
+            "a3": "Locker und ungezwungen",
+            "a4": "Mit bedeutungsvollen Ritualen"
+          },
           "headerLabel": "FEIERSTIL"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Collage aus Wäldern, Küste, Tempeln und Landschaft"
           },
           "question": "Welche Landschaft fühlt sich für Sie am ehesten wie Heimat an?",
-          "answers": [
-            "Stille Wälder",
-            "Eine weite Küste",
-            "Historische Tempel",
-            "Sanfte Hügellandschaften"
-          ],
+          "answers": {
+            "a1": "Stille Wälder",
+            "a2": "Eine weite Küste",
+            "a3": "Historische Tempel",
+            "a4": "Sanfte Hügellandschaften"
+          },
           "headerLabel": "HEIMATGEFÜHL"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Reisende Person blickt über eine ferne Landschaft"
           },
           "question": "Wie reisen Sie am liebsten?",
-          "answers": [
-            "Aktiv und entdeckungsfreudig",
-            "Langsam und ohne festen Plan",
-            "Mitten hinein in die Kultur",
-            "Zu den berühmtesten Sehenswürdigkeiten"
-          ],
+          "answers": {
+            "a1": "Aktiv und entdeckungsfreudig",
+            "a2": "Langsam und ohne festen Plan",
+            "a3": "Mitten hinein in die Kultur",
+            "a4": "Zu den berühmtesten Sehenswürdigkeiten"
+          },
           "headerLabel": "LETZTES REISEZIEL"
         }
       }

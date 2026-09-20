@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De fleste voksne kan ikke bestå denne medicinske adgangsprøve",
   "eyebrow": "DEN LÆGEVINKELIGE PRØVE",
   "summary": "Ti spørgsmål tester anatomi, fysiologi, mikrobiologi, farmakologi og klinisk sikkerhed.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "De første spørgsmål ser grundlæggende ud. Så bevæger testen sig ind i fysiologi, mikrober og lægevidenskab, de fleste voksne har glemt.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsudfordring med ti spørgsmål bruger grundlæggende medicinsk videnskab, der undervises på tværs af niveau 1 engelsktalende lande. Det tester anatomi, fysiologi, cellebiologi, mikrobiologi, farmakologi og infektionskontrol grundlæggende uden at stole på et universitets optagelsespensum.\n\nVælg et svar til hvert spørgsmål. Rigtigheden forbliver skjult indtil den sidste afsløring, hvor den komplette svargennemgang er tilgængelig til at låse op.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Besvar ti stadig sværere medicinsk-videnskabelige spørgsmål.",
         "Vælg det mest præcise svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Medicinsk indgangsudfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Medicinsk optagelsesprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet tjekket, og din lægevidenskabelige score er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fem videnskabelige områder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fem videnskabelige områder sammenlignet"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du bestod den medicinske indgangsudfordring!",
       "finished": "Medicinsk indgangsudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste videnskabsområde",
       "trickiest": "Det vanskeligste videnskabsområde",
       "bestRound": "Bedste afsnit",
@@ -99,8 +92,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Hvilket protein i røde blodlegemer bærer mest ilt?",
-          "answers": [
-            "Hæmoglobin",
-            "Keratin",
-            "Kollagen",
-            "Insulin"
-          ],
+          "answers": {
+            "a1": "Hæmoglobin",
+            "a2": "Keratin",
+            "a3": "Kollagen",
+            "a4": "Insulin"
+          },
           "headerLabel": "BLOD FYSIOLOGI"
         },
         "medical-q2": {
           "question": "I DNA parrer adenin sig normalt med hvilken base?",
-          "answers": [
-            "Guanin",
-            "Thymin",
-            "Cytosin",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "Thymin",
+            "a3": "Cytosin",
+            "a4": "Uracil"
+          },
           "headerLabel": "CELLEBIOLOGI"
         },
         "medical-q3": {
           "question": "Hvilket organ er et vigtigt sted for behandling og nedbrydning af mange lægemidler?",
-          "answers": [
-            "Milt",
-            "Skjoldbruskkirtel",
-            "Lever",
-            "Blære"
-          ],
+          "answers": {
+            "a1": "Milt",
+            "a2": "Skjoldbruskkirtel",
+            "a3": "Lever",
+            "a4": "Blære"
+          },
           "headerLabel": "FARMAKOLOGI"
         },
         "medical-q4": {
           "question": "Hvilket udsagn adskiller bedst vira fra bakterier?",
-          "answers": [
-            "Virus er altid større",
-            "Bakterier kan ikke formere sig",
-            "Virus indeholder intet genetisk materiale",
-            "Virus er afhængige af værtsceller for at replikere"
-          ],
+          "answers": {
+            "a1": "Virus er altid større",
+            "a2": "Bakterier kan ikke formere sig",
+            "a3": "Virus indeholder intet genetisk materiale",
+            "a4": "Virus er afhængige af værtsceller for at replikere"
+          },
           "headerLabel": "MIKROBIOLOGI"
         },
         "medical-q5": {
           "question": "Hvad beskrives en opløsning med en pH-værdi under 7 som?",
-          "answers": [
-            "Syrlig",
-            "Neutral",
-            "Alkalisk",
-            "Isotonisk"
-          ],
+          "answers": {
+            "a1": "Syrlig",
+            "a2": "Neutral",
+            "a3": "Alkalisk",
+            "a4": "Isotonisk"
+          },
           "headerLabel": "KROPPENS KEMI"
         },
         "medical-q6": {
           "question": "Hvilken del af det autonome nervesystem er forbundet med 'hvile og fordøje' aktivitet?",
-          "answers": [
-            "Sympatisk system",
-            "Parasympatiske system",
-            "Somatisk motorisk system",
-            "Central visuel vej"
-          ],
+          "answers": {
+            "a1": "Sympatisk system",
+            "a2": "Parasympatiske system",
+            "a3": "Somatisk motorisk system",
+            "a4": "Central visuel vej"
+          },
           "headerLabel": "NERVESYSTEMET"
         },
         "medical-q7": {
           "question": "Hvilken struktur forhindrer mad i at komme ind i luftvejene under synkning?",
-          "answers": [
-            "Patella",
-            "Nethinden",
-            "Epiglottis",
-            "Bugspytkirtel"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Nethinden",
+            "a3": "Epiglottis",
+            "a4": "Bugspytkirtel"
+          },
           "headerLabel": "FUNKTIONEL ANATOMI"
         },
         "medical-q8": {
           "question": "Hvilken kranienerve bærer visuel information fra øjet?",
-          "answers": [
-            "Væge nerver",
-            "Ansigtsnerve",
-            "Trigeminusnerven",
-            "Optisk nerve"
-          ],
+          "answers": {
+            "a1": "Væge nerver",
+            "a2": "Ansigtsnerve",
+            "a3": "Trigeminusnerven",
+            "a4": "Optisk nerve"
+          },
           "headerLabel": "NEUROANATOMI"
         },
         "medical-q9": {
           "question": "Hvilken praksis er en central del af forebyggelse af infektion under patientbehandling?",
-          "answers": [
-            "Passende håndhygiejne",
-            "Genbrug af engangshandsker",
-            "Springer risikovurdering over",
-            "Deling af urent udstyr"
-          ],
+          "answers": {
+            "a1": "Passende håndhygiejne",
+            "a2": "Genbrug af engangshandsker",
+            "a3": "Springer risikovurdering over",
+            "a4": "Deling af urent udstyr"
+          },
           "headerLabel": "KLINISK SIKKERHED"
         },
         "medical-q10": {
           "question": "Hvad beskriver homeostase?",
-          "answers": [
-            "Det fuldstændige fravær af forandring i kroppen",
-            "Reguleringen af et relativt stabilt indre miljø",
-            "Nedbrydning af enhver medicin af nyrerne",
-            "Kun produktion af antistoffer"
-          ],
+          "answers": {
+            "a1": "Det fuldstændige fravær af forandring i kroppen",
+            "a2": "Reguleringen af et relativt stabilt indre miljø",
+            "a3": "Nedbrydning af enhver medicin af nyrerne",
+            "a4": "Kun produktion af antistoffer"
+          },
           "headerLabel": "AFSLUTTENDE VIDENSKABELIGE SPØRGSMÅL"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %7'si Bu Hemşirelik Giriş Sınavını Geçebiliyor",
   "eyebrow": "KLİNİK KABUL LABORATUVARI",
   "summary": "Anatomi, hayati belirtiler ve hasta bakımı kararları, baskı altında karar verme yeteneğinizin keskin olup olmadığını test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Vücut sistemleri, yaşamsal belirtiler ve hasta bakımı. Neyin önemli olduğunu tespit edip en güvenli aramayı yapabilir misiniz?",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dünya çapındaki bu eğlence mücadelesi, anatomi, gözlemler, sağlık hizmetleri aritmetikleri, enfeksiyonların önlenmesi, iletişim ve öncelik kararına ilişkin on giriş tarzı soru içermektedir. Gösterilen bilgilerin sakin kullanımını ödüllendirir.\n\nHer durum için en iyi tek yanıtı seçin. İçerik genel kalıyor ve tek bir ülkenin mesleki prosedürlerine bağlı kalmaktan kaçınılıyor.\n\nBu, akredite bir hemşirelik giriş sınavı, klinik değerlendirme, yeterlilik, eğitim kursu veya tıbbi tavsiye kaynağı değildir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hemşirelik giriş sınavı",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Hemşireliğe Giriş Yarışması",
@@ -30,10 +26,8 @@
         "preAdCopy": "Hemşirelik giriş puanınız ve üç alanlı dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç giriş alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç giriş alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Hemşirelik sınavını geçtiniz!",
       "finished": "Hemşirelik yarışması tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü giriş alanı",
       "trickiest": "En zorlu giriş alanı",
       "bestRound": "En iyi bölüm",
@@ -98,8 +91,7 @@
         "snapshot": "Aday profilinizin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Kan akciğerlerden dönerken hangi gazı toplar?",
-          "answers": [
-            "Azot",
-            "Oksijen",
-            "Karbondioksit",
-            "Hidrojen"
-          ],
+          "answers": {
+            "a1": "Azot",
+            "a2": "Oksijen",
+            "a3": "Karbondioksit",
+            "a4": "Hidrojen"
+          },
           "headerLabel": "ANATOMİ VE FİZYOLOJİ"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 mililitre artı 250 mililitre toplamı kaça eşittir"
           },
           "question": "Bir sürahi 750 mL içerir. 250 mL daha eklenir. Toplam nedir?",
-          "answers": [
-            "900 ml",
-            "1.100 mL",
-            "1.250 mL",
-            "1.000 mL"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1.100 mL",
+            "a3": "1.250 mL",
+            "a4": "1.000 mL"
+          },
           "headerLabel": "SAĞLIK SAYISALLIĞI"
         },
         "nurse-r2q5": {
           "context": "Daha erken: rahat nefes alıyor ve normal konuşuyor. Şimdi: Daha hızlı nefes alıyorum ve kısa cümleler arasında duruyorum.",
           "question": "Bu gözlem notundaki hangi değişiklik en çok önemlidir?",
-          "answers": [
-            "Not iki zaman noktası içeriyor",
-            "Solunum düzeni kötüleşti",
-            "Adam hala konuşuyor",
-            "Önceki not daha kısaydı"
-          ],
+          "answers": {
+            "a1": "Not iki zaman noktası içeriyor",
+            "a2": "Solunum düzeni kötüleşti",
+            "a3": "Adam hala konuşuyor",
+            "a4": "Önceki not daha kısaydı"
+          },
           "headerLabel": "GÖZLEM TRENDLERİ"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Devir tesliminde sol kol yazıyor, çizelgede sağ kol yazıyor"
           },
           "question": "Hangi uyumsuzluk açıklığa kavuşturulmalıdır?",
-          "answers": [
-            "Büyük harf kullanımı",
-            "Kelime sayısı",
-            "Grafiğin bir sınırı var",
-            "Kaydedilen taraf farklı"
-          ],
+          "answers": {
+            "a1": "Büyük harf kullanımı",
+            "a2": "Kelime sayısı",
+            "a3": "Grafiğin bir sınırı var",
+            "a4": "Kaydedilen taraf farklı"
+          },
           "headerLabel": "KAYIT DOĞRULUĞU"
         },
         "nurse-r4q3": {
           "question": "Bir görev sırasında vücut sıvısı yüze sıçrayabilir. Hangi koruma belirtilen riski ele alır?",
-          "answers": [
-            "Bir kumaş şapka",
-            "Uygun göz veya yüz koruması",
-            "Yalnızca ayakkabı kılıfları",
-            "Görev kısaysa koruma yok"
-          ],
+          "answers": {
+            "a1": "Bir kumaş şapka",
+            "a2": "Uygun göz veya yüz koruması",
+            "a3": "Yalnızca ayakkabı kılıfları",
+            "a4": "Görev kısaysa koruma yok"
+          },
           "headerLabel": "ENFEKSİYON ÖNLEME"
         },
         "nurse-r6q3": {
           "question": "Birisi kalabalık bir kamusal alanda hassas bir soru soruyor. Ne yapmalısın?",
-          "answers": [
-            "Konuşmaya özel bir yerde devam etmeyi teklif edin",
-            "Nerede olduğunuzu kısaca ve sessizce yanıtlayın",
-            "Yakınınızdaki insanlardan size biraz yer vermelerini isteyin",
-            "Cevabın yalnızca hassas olmayan kısmını verin"
-          ],
+          "answers": {
+            "a1": "Konuşmaya özel bir yerde devam etmeyi teklif edin",
+            "a2": "Nerede olduğunuzu kısaca ve sessizce yanıtlayın",
+            "a3": "Yakınınızdaki insanlardan size biraz yer vermelerini isteyin",
+            "a4": "Cevabın yalnızca hassas olmayan kısmını verin"
+          },
           "headerLabel": "Şefkatli İletişim"
         },
         "nurse-r7q1": {
           "context": "A kişisi, yürüdükten sonra biraz daha hızlı bir nabız atması konusunda rahattır. B kişisinin kafası aniden karışıyor, hızlı nefes alıyor ve solgun görünüyor.",
           "question": "İlk önce kimin ilgiye ihtiyacı var?",
-          "answers": [
-            "B Kişisi, çünkü birkaç yeni işaret ani bir bozulmaya işaret ediyor",
-            "A kişisi, çünkü nabzı değişti",
-            "Her ikisi de rutin gözlemleri bekleyebilir",
-            "İlk gelen kişi"
-          ],
+          "answers": {
+            "a1": "B Kişisi, çünkü birkaç yeni işaret ani bir bozulmaya işaret ediyor",
+            "a2": "A kişisi, çünkü nabzı değişti",
+            "a3": "Her ikisi de rutin gözlemleri bekleyebilir",
+            "a4": "İlk gelen kişi"
+          },
           "headerLabel": "ÖNCELİKLİ KARAR"
         },
         "nurse-r3q1": {
           "question": "Sıvı toplamı 600 mL'den 900 mL'ye yükselir. Yüzde kaç arttı?",
-          "answers": [
-            "%25",
-            "%33",
-            "%50",
-            "%75"
-          ],
+          "answers": {
+            "a1": "%25",
+            "a2": "%33",
+            "a3": "%50",
+            "a4": "%75"
+          },
           "headerLabel": "SAĞLIK SAYISALLIĞI"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Hava yolu tıkalı, akciğerlere daha az hava gidiyor, bilinmiyor, dokulara daha az oksijen gidiyor"
           },
           "question": "Hava yolunun tıkanması havanın akciğerlere ulaşmasını engeller. Hangi alt etki etkisi en doğrudan takip eder?",
-          "answers": [
-            "Kana daha az oksijen girer",
-            "Mideye daha fazla besin girer",
-            "Böbrekler hemen daha fazla idrar oluşturur",
-            "Kemikler daha fazla hareket üretir"
-          ],
+          "answers": {
+            "a1": "Kana daha az oksijen girer",
+            "a2": "Mideye daha fazla besin girer",
+            "a3": "Böbrekler hemen daha fazla idrar oluşturur",
+            "a4": "Kemikler daha fazla hareket üretir"
+          },
           "headerLabel": "ENTEGRE FİZYOLOJİ"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "A kişisi uyanık, hafif stabil bir rahatsızlık duyuyor ve normal konuşuyor. B kişisi solgun, uyanması zor ve düzensiz nefes alıyor."
           },
           "question": "Kimin acil önceliği var?",
-          "answers": [
-            "A kişisi, çünkü rahatsızlık her zaman önce gelir",
-            "Her ikisi de rutin kontrolü bekleyebilir",
-            "B kişisi, çünkü bilinç ve nefes alma aniden değişti",
-            "İlk kimin geldiğine göre seçim yapın"
-          ],
+          "answers": {
+            "a1": "A kişisi, çünkü rahatsızlık her zaman önce gelir",
+            "a2": "Her ikisi de rutin kontrolü bekleyebilir",
+            "a3": "B kişisi, çünkü bilinç ve nefes alma aniden değişti",
+            "a4": "İlk kimin geldiğine göre seçim yapın"
+          },
           "headerLabel": "NİHAİ DEVİR"
         }
       }

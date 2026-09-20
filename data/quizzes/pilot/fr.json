@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 3 % des adultes réussissent cet examen d’admission à une formation de pilote",
   "eyebrow": "LE TEST D’APTITUDE DU PILOTE",
   "summary": "Dix questions testent les principes du vol, les instruments, la météo, la navigation et le jugement du cockpit.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les bases du cockpit semblent simples. L'examen passe ensuite à la météo, à la navigation et aux décisions que les pilotes ne peuvent pas se permettre de deviner.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de divertissement en dix questions utilise les concepts de l’aviation civile internationale plutôt que le programme de licence d’un pays. Il teste les principes généraux de vol, les instruments du cockpit, la sensibilisation à la météo, la navigation et la prise de décision prudente.\n\nChoisissez une réponse pour chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions d’aptitude de pilote de plus en plus difficiles.",
         "Choisissez la réponse la plus sûre ou la plus précise.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée pilote",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée pilote",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score d'aptitude pilote est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Cinq zones aéronautiques comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Cinq zones aéronautiques comparées"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission Pilote !",
       "finished": "Défi d’entrée pilote terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -99,8 +92,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Quelle force agit vers le haut contre le poids d’un avion ?",
-          "answers": [
-            "Portance",
-            "Traînée",
-            "Poussée",
-            "Inertie"
-          ],
+          "answers": {
+            "a1": "Portance",
+            "a2": "Traînée",
+            "a3": "Poussée",
+            "a4": "Inertie"
+          },
           "headerLabel": "LES BASES DU VOL"
         },
         "pilot-q2": {
           "question": "Quel instrument du cockpit indique l'altitude ?",
-          "answers": [
-            "Anémomètre",
-            "Altimètre",
-            "Indicateur de cap",
-            "Indicateur de virage"
-          ],
+          "answers": {
+            "a1": "Anémomètre",
+            "a2": "Altimètre",
+            "a3": "Indicateur de cap",
+            "a4": "Indicateur de virage"
+          },
           "headerLabel": "INSTRUMENTS"
         },
         "pilot-q3": {
           "question": "Quel type de nuages est le plus fortement associé aux orages et aux fortes turbulences ?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "MÉTÉO AÉRONAUTIQUE"
         },
         "pilot-q4": {
           "question": "Un cap de 180 degrés indique approximativement dans quelle direction ?",
-          "answers": [
-            "Nord",
-            "Est",
-            "Ouest",
-            "Sud"
-          ],
+          "answers": {
+            "a1": "Nord",
+            "a2": "Est",
+            "a3": "Ouest",
+            "a4": "Sud"
+          },
           "headerLabel": "NAVIGATION"
         },
         "pilot-q5": {
           "question": "Les conditions météorologiques se détériorent plus rapidement que prévu et les marges de sécurité se rétrécissent. Quelle est la meilleure décision générale ?",
-          "answers": [
-            "Réévaluer tôt et se dérouter ou atterrir tant que des options sûres demeurent",
-            "Continuer car le plan original doit être complété",
-            "Descendre en dessous des limites de sécurité pour maintenir le contact visuel",
-            "Ignorer la tendance jusqu'à ce que les conditions deviennent critiques"
-          ],
+          "answers": {
+            "a1": "Réévaluer tôt et se dérouter ou atterrir tant que des options sûres demeurent",
+            "a2": "Continuer car le plan original doit être complété",
+            "a3": "Descendre en dessous des limites de sécurité pour maintenir le contact visuel",
+            "a4": "Ignorer la tendance jusqu'à ce que les conditions deviennent critiques"
+          },
           "headerLabel": "JUGEMENT AÉRONAUTIQUE"
         },
         "pilot-q6": {
           "question": "Quelles gouvernes font pivoter un avion autour de son axe longitudinal ?",
-          "answers": [
-            "Gouvernes de profondeur",
-            "Ailerons",
-            "Pédales de direction uniquement",
-            "Volets"
-          ],
+          "answers": {
+            "a1": "Gouvernes de profondeur",
+            "a2": "Ailerons",
+            "a3": "Pédales de direction uniquement",
+            "a4": "Volets"
+          },
           "headerLabel": "COMMANDES DE VOL"
         },
         "pilot-q7": {
           "question": "Quel instrument indique le taux de montée ou de descente d’un avion ?",
-          "answers": [
-            "Boussole",
-            "Altimètre uniquement",
-            "Indicateur de vitesse verticale",
-            "Jauge de température d'air extérieur"
-          ],
+          "answers": {
+            "a1": "Boussole",
+            "a2": "Altimètre uniquement",
+            "a3": "Indicateur de vitesse verticale",
+            "a4": "Jauge de température d'air extérieur"
+          },
           "headerLabel": "ANALYSE DU COCKPIT"
         },
         "pilot-q8": {
           "question": "Qu’est-ce que le cisaillement du vent ?",
-          "answers": [
-            "Un vent constant qui ne change jamais",
-            "Une mesure de la hauteur des nuages uniquement",
-            "Air se déplaçant uniquement au-dessus de l'eau",
-            "Une variation rapide de la vitesse ou de la direction du vent sur une courte distance"
-          ],
+          "answers": {
+            "a1": "Un vent constant qui ne change jamais",
+            "a2": "Une mesure de la hauteur des nuages uniquement",
+            "a3": "Air se déplaçant uniquement au-dessus de l'eau",
+            "a4": "Une variation rapide de la vitesse ou de la direction du vent sur une courte distance"
+          },
           "headerLabel": "RISQUES CLIMATIQUES"
         },
         "pilot-q9": {
           "question": "Une piste numérotée 27 est orientée approximativement dans quelle direction ?",
-          "answers": [
-            "Ouest",
-            "Nord",
-            "Est",
-            "Sud"
-          ],
+          "answers": {
+            "a1": "Ouest",
+            "a2": "Nord",
+            "a3": "Est",
+            "a4": "Sud"
+          },
           "headerLabel": "RAISONNEMENT DE PISTE"
         },
         "pilot-q10": {
           "question": "Vous constatez un déséquilibre de carburant inexpliqué pendant le vol. Quelle est la meilleure réponse générale ?",
-          "answers": [
-            "Supposons que la jauge se corrige d'elle-même",
-            "Utiliser la liste de contrôle, surveiller la situation et communiquer au besoin",
-            "Changer de système au hasard jusqu’à ce que le problème disparaisse",
-            "Retarder toute action jusqu'à l'atterrissage"
-          ],
+          "answers": {
+            "a1": "Supposons que la jauge se corrige d'elle-même",
+            "a2": "Utiliser la liste de contrôle, surveiller la situation et communiquer au besoin",
+            "a3": "Changer de système au hasard jusqu’à ce que le problème disparaisse",
+            "a4": "Retarder toute action jusqu'à l'atterrissage"
+          },
           "headerLabel": "QUESTION DERNIÈRE SUR LE COCKPIT"
         }
       }

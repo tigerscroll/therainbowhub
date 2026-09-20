@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 3% dorosłych może zdać ten egzamin wstępny na pilota",
   "eyebrow": "TEST UMIEJĘTNOŚCI PILOTA",
   "summary": "Dziesięć pytań sprawdza zasady lotu, przyrządy, pogodę, nawigację i ocenę kokpitu.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Podstawy kokpitu wyglądają prosto. Następnie egzamin dotyczy pogody, nawigacji i decyzji, na które piloci nie mogą sobie pozwolić.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie rozrywkowe składające się z dziesięciu pytań wykorzystuje koncepcje międzynarodowego lotnictwa cywilnego, a nie program licencjonowania jednego kraju. Testuje ogólne zasady lotu, przyrządy w kokpicie, świadomość pogody, nawigację i konserwatywne podejmowanie decyzji.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań dotyczących umiejętności pilotażu.",
         "Wybierz najbezpieczniejszą lub najdokładniejszą odpowiedź.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie wejścia pilota",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na pilota",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik umiejętności pilotażu jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie pięciu obszarów lotniczych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie pięciu obszarów lotniczych"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie wejścia pilota!",
       "finished": "Wyzwanie wejścia pilota ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar lotniczy",
       "trickiest": "Najtrudniejszy obszar lotniczy",
       "bestRound": "Najlepsza sekcja",
@@ -99,8 +92,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Jaka siła działa w górę na ciężar samolotu?",
-          "answers": [
-            "Siła nośna",
-            "Opór aerodynamiczny",
-            "Siła ciągu",
-            "Bezwładność"
-          ],
+          "answers": {
+            "a1": "Siła nośna",
+            "a2": "Opór aerodynamiczny",
+            "a3": "Siła ciągu",
+            "a4": "Bezwładność"
+          },
           "headerLabel": "PODSTAWY LOTU"
         },
         "pilot-q2": {
           "question": "Który przyrząd w kokpicie wskazuje wysokość?",
-          "answers": [
-            "Wskaźnik prędkości",
-            "Wysokościomierz",
-            "Wskaźnik kursu",
-            "Koordynator skrętu"
-          ],
+          "answers": {
+            "a1": "Wskaźnik prędkości",
+            "a2": "Wysokościomierz",
+            "a3": "Wskaźnik kursu",
+            "a4": "Koordynator skrętu"
+          },
           "headerLabel": "INSTRUMENTY"
         },
         "pilot-q3": {
           "question": "Który typ chmur jest najsilniej kojarzony z burzami i silnymi turbulencjami?",
-          "answers": [
-            "Cirrus",
-            "Stratusa",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratusa",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "POGODA LOTNICZA"
         },
         "pilot-q4": {
           "question": "Kurs o 180 stopni wskazuje mniej więcej w jakim kierunku?",
-          "answers": [
-            "Północ",
-            "Wschód",
-            "Zachód",
-            "Południe"
-          ],
+          "answers": {
+            "a1": "Północ",
+            "a2": "Wschód",
+            "a3": "Zachód",
+            "a4": "Południe"
+          },
           "headerLabel": "NAWIGACJA"
         },
         "pilot-q5": {
           "question": "Pogoda pogarsza się szybciej niż prognozowano, a bezpieczne marże kurczą się. Jaka jest najlepsza ogólna decyzja?",
-          "answers": [
-            "Dokonaj ponownej oceny wcześniej i zawróć lub wyląduj, póki pozostają bezpieczne opcje",
-            "Kontynuuj, ponieważ pierwotny plan musi zostać ukończony",
-            "Zejdź poniżej bezpiecznych granic, aby utrzymać kontakt wzrokowy",
-            "Ignoruj trend, dopóki warunki nie staną się krytyczne"
-          ],
+          "answers": {
+            "a1": "Dokonaj ponownej oceny wcześniej i zawróć lub wyląduj, póki pozostają bezpieczne opcje",
+            "a2": "Kontynuuj, ponieważ pierwotny plan musi zostać ukończony",
+            "a3": "Zejdź poniżej bezpiecznych granic, aby utrzymać kontakt wzrokowy",
+            "a4": "Ignoruj trend, dopóki warunki nie staną się krytyczne"
+          },
           "headerLabel": "OCENA LOTNICZA"
         },
         "pilot-q6": {
           "question": "Które powierzchnie sterowe obracają samolot wokół jego osi podłużnej?",
-          "answers": [
-            "Stery wysokości",
-            "Lotki",
-            "Tylko pedały steru kierunku",
-            "Klapy"
-          ],
+          "answers": {
+            "a1": "Stery wysokości",
+            "a2": "Lotki",
+            "a3": "Tylko pedały steru kierunku",
+            "a4": "Klapy"
+          },
           "headerLabel": "KONTROLA LOTU"
         },
         "pilot-q7": {
           "question": "Który przyrząd pokazuje prędkość wznoszenia lub opadania statku powietrznego?",
-          "answers": [
-            "Kompas",
-            "Tylko wysokościomierz",
-            "Wskaźnik prędkości pionowej",
-            "Wskaźnik temperatury powietrza zewnętrznego"
-          ],
+          "answers": {
+            "a1": "Kompas",
+            "a2": "Tylko wysokościomierz",
+            "a3": "Wskaźnik prędkości pionowej",
+            "a4": "Wskaźnik temperatury powietrza zewnętrznego"
+          },
           "headerLabel": "SKAN KOKPITU"
         },
         "pilot-q8": {
           "question": "Co to jest uskok wiatru?",
-          "answers": [
-            "Stały wiatr, który nigdy się nie zmienia",
-            "Tylko miara wysokości chmur",
-            "Powietrze porusza się wyłącznie nad wodą",
-            "Gwałtowna zmiana prędkości lub kierunku wiatru na krótkim dystansie"
-          ],
+          "answers": {
+            "a1": "Stały wiatr, który nigdy się nie zmienia",
+            "a2": "Tylko miara wysokości chmur",
+            "a3": "Powietrze porusza się wyłącznie nad wodą",
+            "a4": "Gwałtowna zmiana prędkości lub kierunku wiatru na krótkim dystansie"
+          },
           "headerLabel": "ZAGROŻENIA POGODOWE"
         },
         "pilot-q9": {
           "question": "Pas startowy o numerze 27 jest ustawiony mniej więcej w jakim kierunku?",
-          "answers": [
-            "Zachód",
-            "Północ",
-            "Wschód",
-            "Południe"
-          ],
+          "answers": {
+            "a1": "Zachód",
+            "a2": "Północ",
+            "a3": "Wschód",
+            "a4": "Południe"
+          },
           "headerLabel": "Rozumowanie pasa startowego"
         },
         "pilot-q10": {
           "question": "Podczas lotu zauważasz niewyjaśniony brak równowagi paliwowej. Jaka jest najlepsza ogólna odpowiedź?",
-          "answers": [
-            "Załóżmy, że miernik sam się poprawi",
-            "Skorzystaj z listy kontrolnej, monitoruj sytuację i komunikuj się w razie potrzeby",
-            "Przełączaj losowe systemy, aż zniknie",
-            "Opóźnij jakąkolwiek akcję do momentu lądowania"
-          ],
+          "answers": {
+            "a1": "Załóżmy, że miernik sam się poprawi",
+            "a2": "Skorzystaj z listy kontrolnej, monitoruj sytuację i komunikuj się w razie potrzeby",
+            "a3": "Przełączaj losowe systemy, aż zniknie",
+            "a4": "Opóźnij jakąkolwiek akcję do momentu lądowania"
+          },
           "headerLabel": "KOŃCOWE PYTANIE DO KOKPITU"
         }
       }

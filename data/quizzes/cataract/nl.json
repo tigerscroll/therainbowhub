@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Snelle cataracttest",
   "eyebrow": "VISIECHECK MET 10 VRAGEN",
   "summary": "Wazige details, nauwe visuele vallen en belangrijke waarschuwingssignalen voor staar in één snelle uitdaging.",
-  "progressLabel": "voltooid",
   "landing": {
     "intro": "Cataract kan in het begin gemakkelijk over het hoofd worden gezien. Kijk of je de subtiele aanwijzingen in 10 korte vragen kunt ontdekken; de laatste vragen vallen de meeste mensen op.",
     "cta": "Start de test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Deze uitdaging met tien vragen combineert vijf visuele puzzels op het scherm met vijf algemene bewustzijnsvragen over staar. Het meet de antwoorden op deze quiz, niet het gezichtsvermogen, de gezondheid van de lens of de waarschijnlijkheid van cataract.\n\nSchermgrootte, helderheid, contrast, gezichtsvermogen, corrigerende lenzen, vermoeidheid en apparaatinstellingen kunnen allemaal de prestaties beïnvloeden. Aanhoudend wazig of wazig zicht, verblinding, halo's rond lampen, problemen met zien 's nachts of tonen die minder levendig lijken, moeten worden besproken met een gekwalificeerde oogzorgprofessional.",
     "howToPlay": {
-      "title": "Zo werkt het",
       "steps": [
         "Voltooi vijf uitdagingen op het gebied van details, patronen en visueel geheugen.",
         "Beantwoord vijf vragen over staar en wanneer je hulp moet zoeken.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Cataract-uitdaging",
-    "resultProgressComplete": "{value}% voltooid",
     "stages": {
       "stage-1": {
         "difficulty": "Snelle cataracttest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Je tien antwoorden zijn gecontroleerd en je cataract-uitdagingsscore is klaar om bekend te maken.",
         "preAdChecks": [
           "10 antwoorden gecontroleerd",
-          "Drie visuele gebieden vergeleken",
-          "Eindscore berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaten"
+          "Drie visuele gebieden vergeleken"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Je hebt de visuele uitdaging van 80% voltooid!",
       "finished": "Cataract-uitdaging voltooid",
-      "correctLabel": "goed",
       "strongest": "Sterkste gebied vandaag",
       "trickiest": "Het lastigste gebied vandaag",
       "bestRound": "Beste sectie",
@@ -94,8 +87,7 @@
         "snapshot": "Wat je resultaat doet vermoeden",
         "targetReached": "80% uitdaging bereikt",
         "targetRemaining": "Meer juiste antwoorden nodig voor 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Welk personage staat precies in het midden van het raster?",
           "headerLabel": "CENTRAAL DETAIL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENTIE: B8R3K5",
           "question": "Welke code komt precies overeen met de referentie?",
           "headerLabel": "WAZIGE VERGELIJKING",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENTIE",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Welk symbool voltooit de afwisselende reeks?",
           "headerLabel": "PATROON VOLGEN",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Welk object verscheen als derde?",
           "headerLabel": "SNEL VISUEEL GEHEUGEN",
-          "answers": [
-            "Boek",
-            "Sleutel",
-            "Citroen",
-            "Paraplu"
-          ],
+          "answers": {
+            "a1": "Boek",
+            "a2": "Sleutel",
+            "a3": "Citroen",
+            "a4": "Paraplu"
+          },
           "study": {
             "title": "Bestudeer de volgorde van vijf objecten",
             "instruction": "Dit verdwijnt automatisch.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Welke positie bevat de bleke cirkel?",
           "headerLabel": "DETAILCHECK",
-          "answers": [
-            "Vijfde",
-            "Seconde",
-            "Vierde",
-            "Zesde"
-          ],
+          "answers": {
+            "a1": "Vijfde",
+            "a2": "Seconde",
+            "a3": "Vierde",
+            "a4": "Zesde"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Wat is een cataract?",
           "headerLabel": "BASIS VAN CATARACT",
-          "answers": [
-            "Een kras op het ooglid",
-            "Een troebel gebied in de natuurlijke lens van het oog",
-            "Een probleem dat zich beperkt tot het traankanaal",
-            "Een soort oorontsteking"
-          ]
+          "answers": {
+            "a1": "Een kras op het ooglid",
+            "a2": "Een troebel gebied in de natuurlijke lens van het oog",
+            "a3": "Een probleem dat zich beperkt tot het traankanaal",
+            "a4": "Een soort oorontsteking"
+          }
         },
         "cataract-q7": {
           "question": "Welke groep bevat veel voorkomende symptomen van cataract?",
           "headerLabel": "WAARSCHUWINGSSIGNALEN",
-          "answers": [
-            "Jeukende huid en keelpijn",
-            "Plotseling gehoorverlies en duizeligheid",
-            "Wazig of wazig zicht, verblinding en halo's rond lampen",
-            "Een stijve nek en pijnlijke schouders"
-          ]
+          "answers": {
+            "a1": "Jeukende huid en keelpijn",
+            "a2": "Plotseling gehoorverlies en duizeligheid",
+            "a3": "Wazig of wazig zicht, verblinding en halo's rond lampen",
+            "a4": "Een stijve nek en pijnlijke schouders"
+          }
         },
         "cataract-q8": {
           "question": "Hoe kan een oogzorgprofessional controleren op staar?",
           "headerLabel": "PROFESSIONELE BEOORDELING",
-          "answers": [
-            "Met een gehoortest",
-            "Met behulp van een bloeddrukmeting thuis",
-            "Met een smaaktest",
-            "Als onderdeel van een uitgebreid oogonderzoek met pupilverwijding"
-          ]
+          "answers": {
+            "a1": "Met een gehoortest",
+            "a2": "Met behulp van een bloeddrukmeting thuis",
+            "a3": "Met een smaaktest",
+            "a4": "Als onderdeel van een uitgebreid oogonderzoek met pupilverwijding"
+          }
         },
         "cataract-q9": {
           "question": "Wat is de veiligste reactie op plotseling verlies van het gezichtsvermogen, ernstige oogpijn of een plotselinge grote verandering in het gezichtsvermogen?",
           "headerLabel": "WANNEER TE ACTIE",
-          "answers": [
-            "Zoek dringend professioneel oogzorgadvies",
-            "Wacht enkele maanden zonder er iets over te zeggen",
-            "Wijzig de helderheid van het scherm en ga ervan uit dat dit is opgelost",
-            "Vertrouw alleen op een online quiz"
-          ]
+          "answers": {
+            "a1": "Zoek dringend professioneel oogzorgadvies",
+            "a2": "Wacht enkele maanden zonder er iets over te zeggen",
+            "a3": "Wijzig de helderheid van het scherm en ga ervan uit dat dit is opgelost",
+            "a4": "Vertrouw alleen op een online quiz"
+          }
         },
         "cataract-q10": {
           "question": "Wat zegt je score op deze online quiz?",
           "headerLabel": "EINDE REALITEITSCHECK",
-          "answers": [
-            "Of je lenzen gezond zijn",
-            "Alleen hoe je op deze tien vragen hebt gepresteerd",
-            "Of je een staaroperatie nodig hebt",
-            "Of je cataract kunt uitsluiten"
-          ]
+          "answers": {
+            "a1": "Of je lenzen gezond zijn",
+            "a2": "Alleen hoe je op deze tien vragen hebt gepresteerd",
+            "a3": "Of je een staaroperatie nodig hebt",
+            "a4": "Of je cataract kunt uitsluiten"
+          }
         }
       }
     }

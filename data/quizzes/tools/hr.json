@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 1 od 5 može proći ovaj kviz o alatima za beton",
   "eyebrow": "TEST ALATA ZA BETON",
   "summary": "Deset alata za gradilište i jedan neumoljivi betonski izazov.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Ovi alati izgledaju očigledni na gradilištu, ali njihova stvarna upotreba zaokupi većinu ljudi. Možete li pogoditi svih 10 točno?",
     "cta": "Pokreni kviz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Za obradu betona potrebno je puno više od miješalice i lopate. Vrijeme, oblik i svrha svakog specijaliziranog alata mogu odlučiti hoće li ploča biti ravna, čvrsta i s kontroliranim pucanjem—ili će se pretvoriti u skupu pogrešku.\n\nProučite svaku fotografiju i odaberite ispravan posao ili fazu upotrebe alata. Ispravnost ostaje skrivena do konačnog razotkrivanja.\n\nPrvih deset izvornih pitanja, izbori odgovora i fotografije reproducirani su iz Log Cabin Daily uz dopuštenje vlasnika stranice koji je naručio ovaj kviz.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Proučite alat prikazan na svakoj fotografiji.",
         "Odaberite njegovu ispravnu upotrebu ili fazu betonskog procesa.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov alata za beton",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Alati za beton",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat za betonske alate je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 alata",
-          "Uspoređena tri trgovačka područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena tri trgovačka područja"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Prošli ste izazov s alatima za beton!",
       "finished": "Izazov alata za beton završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače trgovačko područje",
       "trickiest": "Najzahtjevnije trgovačko područje",
       "bestRound": "Najbolja sekcija",
@@ -94,8 +87,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "Ručna lopatica za beton zaglađuje svježe izliveni beton"
           },
           "question": "Za što se koristi ovaj alat?",
-          "answers": [
-            "Rezanje armature",
-            "Širenje i gletanje mokrog betona",
-            "Miješanje suhog betona",
-            "Razbijanje starog betona"
-          ],
+          "answers": {
+            "a1": "Rezanje armature",
+            "a2": "Širenje i gletanje mokrog betona",
+            "a3": "Miješanje suhog betona",
+            "a4": "Razbijanje starog betona"
+          },
           "headerLabel": "ALAT 1 OD 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "Kolica koja nose betonsku mješavinu na gradilištu"
           },
           "question": "Za što se koristi ovaj alat?",
-          "answers": [
-            "Prijevoz mokrog betona i alata",
-            "Završna obrada betonskih rubova",
-            "Mjerenje temperature betona",
-            "Sabijanje šljunka"
-          ],
+          "answers": {
+            "a1": "Prijevoz mokrog betona i alata",
+            "a2": "Završna obrada betonskih rubova",
+            "a3": "Mjerenje temperature betona",
+            "a4": "Sabijanje šljunka"
+          },
           "headerLabel": "ALAT 2 OD 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "Betonski plovak koji se kreće po površini svježeg betona"
           },
           "question": "Za što se koristi ovaj alat?",
-          "answers": [
-            "Zbijanje tla",
-            "Plutajuće drvene forme",
-            "Niveliranje i glačanje betonske površine",
-            "Rezanje kroz armaturu"
-          ],
+          "answers": {
+            "a1": "Zbijanje tla",
+            "a2": "Plutajuće drvene forme",
+            "a3": "Niveliranje i glačanje betonske površine",
+            "a4": "Rezanje kroz armaturu"
+          },
           "headerLabel": "ALAT 3 OD 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "Rub za beton koji oblikuje rub ploče"
           },
           "question": "Za što se koristi ovaj alat?",
-          "answers": [
-            "Obrubljivanje nogostupa i ploča za čiste rubove",
-            "Podizanje betonskih blokova",
-            "Rezanje spojeva u betonu",
-            "Prijevoz betonske mješavine"
-          ],
+          "answers": {
+            "a1": "Obrubljivanje nogostupa i ploča za čiste rubove",
+            "a2": "Podizanje betonskih blokova",
+            "a3": "Rezanje spojeva u betonu",
+            "a4": "Prijevoz betonske mješavine"
+          },
           "headerLabel": "ALAT 4 OD 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "Prijenosna miješalica za beton koja prevrće svježi beton"
           },
           "question": "Što radi ovaj alat?",
-          "answers": [
-            "Zagrijavanje betona",
-            "Izlijevanje suhog cementa",
-            "Miješanje cementa, pijeska i vode u beton",
-            "Brušenje starog betona"
-          ],
+          "answers": {
+            "a1": "Zagrijavanje betona",
+            "a2": "Izlijevanje suhog cementa",
+            "a3": "Miješanje cementa, pijeska i vode u beton",
+            "a4": "Brušenje starog betona"
+          },
           "headerLabel": "ALAT 5 OD 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "Plutalica za bika s dugom drškom glatka široku betonsku ploču"
           },
           "question": "Koji korak u konkretnom radu obično zahtijeva plutanje s bikom?",
-          "answers": [
-            "Prijevoz mokrog betona do mjesta izlijevanja",
-            "Razbijanje starih betonskih ploča",
-            "Rezanje dilatacijskih spojeva",
-            "Gletanje velikih površina odmah nakon postavljanja estriha"
-          ],
+          "answers": {
+            "a1": "Prijevoz mokrog betona do mjesta izlijevanja",
+            "a2": "Razbijanje starih betonskih ploča",
+            "a3": "Rezanje dilatacijskih spojeva",
+            "a4": "Gletanje velikih površina odmah nakon postavljanja estriha"
+          },
           "headerLabel": "ALAT 6 OD 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "Radnik koji koristi betonski vibrator u svježe izlivenom betonu"
           },
           "question": "Kada bi se obično koristio vibrator za beton?",
-          "answers": [
-            "Prije izlijevanja betona",
-            "Nakon izlijevanja betona, ukloniti zračne džepove",
-            "Prilikom postavljanja armature u oplate",
-            "Tijekom završne obrade, za glačanje površine"
-          ],
+          "answers": {
+            "a1": "Prije izlijevanja betona",
+            "a2": "Nakon izlijevanja betona, ukloniti zračne džepove",
+            "a3": "Prilikom postavljanja armature u oplate",
+            "a4": "Tijekom završne obrade, za glačanje površine"
+          },
           "headerLabel": "ALAT 7 OD 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "Motorni rezač armature za rezanje armaturnog čelika"
           },
           "question": "Koji je primarni zadatak koji se izvodi pomoću rezača armature?",
-          "answers": [
-            "Rezanje armaturnog čelika na potrebne duljine",
-            "Gletanje rubova betona",
-            "Rezanje kontrolnih spojeva u očvrsli beton",
-            "Odstranjivanje labavog betona"
-          ],
+          "answers": {
+            "a1": "Rezanje armaturnog čelika na potrebne duljine",
+            "a2": "Gletanje rubova betona",
+            "a3": "Rezanje kontrolnih spojeva u očvrsli beton",
+            "a4": "Odstranjivanje labavog betona"
+          },
           "headerLabel": "ALAT 8 OD 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "Žlijeb s dugom drškom koji reže liniju u mokrom betonu"
           },
           "question": "Tijekom koje faze izlijevanja betona najbolje je koristiti alat za utore?",
-          "answers": [
-            "Prije izlijevanja, pripremiti zemlju",
-            "Tijekom završne obrade, za izradu kontrolnih spojeva",
-            "Tijekom stvrdnjavanja nanesite brtvilo",
-            "Nakon sušenja, za poliranje površine"
-          ],
+          "answers": {
+            "a1": "Prije izlijevanja, pripremiti zemlju",
+            "a2": "Tijekom završne obrade, za izradu kontrolnih spojeva",
+            "a3": "Tijekom stvrdnjavanja nanesite brtvilo",
+            "a4": "Nakon sušenja, za poliranje površine"
+          },
           "headerLabel": "ALAT 9 OD 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "Ravni estrih koji odudara od tek izlivenog betona"
           },
           "question": "U kojoj fazi se najčešće koristi betonski estrih?",
-          "answers": [
-            "Nakon stvrdnjavanja za poliranje površine",
-            "Nakon sušenja nanijeti brtvilo",
-            "Tijekom postavljanja armature",
-            "Odmah nakon izlijevanja za izravnavanje betona"
-          ],
+          "answers": {
+            "a1": "Nakon stvrdnjavanja za poliranje površine",
+            "a2": "Nakon sušenja nanijeti brtvilo",
+            "a3": "Tijekom postavljanja armature",
+            "a4": "Odmah nakon izlijevanja za izravnavanje betona"
+          },
           "headerLabel": "ZAVRŠNI ALAT"
         }
       }

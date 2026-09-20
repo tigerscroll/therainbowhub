@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Tuto přijímací zkoušku pro kuchaře složí jen 12 % lidí",
   "eyebrow": "Kulinářský průkaz",
   "summary": "Chuť, oheň, pečivo a servisní tlaková zkouška, zda dokážete myslet, když se kuchyň zahřeje.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Tato celosvětová zábavní výzva obsahuje deset otázek týkajících se kuchyňských nástrojů, chutí, pečení, bezpečnosti potravin, praktické matematiky a regulace tepla. Obtížnost stoupá od zdravých základů k rozhodnutím, která kombinují více než jednu stopu.\n\nVyberte nejlepší odpověď pro každou situaci. Správnost zůstává při práci skrytá, takže každá volba působí jako součást jedné nepřetržité kuchyňské výzvy.\n\nVáš výsledek popisuje pouze tento pokus o kvíz. Nejedná se o kuchařskou kvalifikaci, osvědčení o nezávadnosti potravin nebo odborné školení.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Dokončete deset pečlivě vybraných otázek v jedné cílené výzvě.",
         "Vyberte vždy jednu odpověď. Správnost zůstává skryta až do konečného odhalení.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Výzva šéfkuchaře",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Výzva šéfkuchaře",
@@ -29,10 +26,8 @@
         "preAdCopy": "Vaše skóre šéfkuchaře a rozpis šesti dovedností jsou připraveny odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno šest kuchyňských dovedností",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno šest kuchyňských dovedností"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro kuchaře!",
       "finished": "Kulinářská výzva dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější kuchyňská linka",
       "trickiest": "Nejnáročnější kuchyňský kout",
       "bestRound": "Nejlepší sekce",
@@ -106,8 +100,7 @@
         "snapshot": "Co naznačuje váš profil šéfkuchaře",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Jaký nástroj je nejlepší pro uchopení a otáčení horkého jídla na pánvi?",
-          "answers": [
-            "Šlehejte",
-            "Kleště",
-            "Škrabka",
-            "Naběračka"
-          ],
+          "answers": {
+            "a1": "Šlehejte",
+            "a2": "Kleště",
+            "a3": "Škrabka",
+            "a4": "Naběračka"
+          },
           "headerLabel": "KUCHYŇSKÉ NÁŘADÍ"
         },
         "chef-r1q2": {
           "question": "Omáčka chutná bohatě a těžce, ale postrádá jas. Který malý přírůstek to s největší pravděpodobností znovu vyváží?",
-          "answers": [
-            "Více másla",
-            "Více škrobu",
-            "Více smetany",
-            "Malé množství kyseliny"
-          ],
+          "answers": {
+            "a1": "Více másla",
+            "a2": "Více škrobu",
+            "a3": "Více smetany",
+            "a4": "Malé množství kyseliny"
+          },
           "headerLabel": "VYVÁŽENÁ CHUŤ"
         },
         "chef-r5q3": {
           "question": "Recept na muffiny říká, že se má míchat jen tak dlouho, dokud nezůstane suchá mouka. Proč se v tom bodě zastavit?",
-          "answers": [
-            "Aby nedošlo ke ztrátě veškerého kypřícího prostředku",
-            "Extra míchání může udělat strouhanku tužší",
-            "Aby se rozpuštěný tuk neodděloval",
-            "Aby vršky příliš brzy nehnědly"
-          ],
+          "answers": {
+            "a1": "Aby nedošlo ke ztrátě veškerého kypřícího prostředku",
+            "a2": "Extra míchání může udělat strouhanku tužší",
+            "a3": "Aby se rozpuštěný tuk neodděloval",
+            "a4": "Aby vršky příliš brzy nehnědly"
+          },
           "headerLabel": "PEKAŘSKÁ VĚDA"
         },
         "chef-r2q6": {
           "question": "Skleněná nádoba se rozbije vedle nezakrytého připraveného jídla. Co by se mělo stát?",
-          "answers": [
-            "Odstraňte viditelné sklo a uchovejte jídlo",
-            "Přesuňte jídlo pryč a pokračujte v obsluze",
-            "Odkryté potraviny zlikvidujte a oblast bezpečně vyčistěte",
-            "Jídlo zakryjte a po servisu vyčistěte"
-          ],
+          "answers": {
+            "a1": "Odstraňte viditelné sklo a uchovejte jídlo",
+            "a2": "Přesuňte jídlo pryč a pokračujte v obsluze",
+            "a3": "Odkryté potraviny zlikvidujte a oblast bezpečně vyčistěte",
+            "a4": "Jídlo zakryjte a po servisu vyčistěte"
+          },
           "headerLabel": "BEZPEČNOST POTRAVIN"
         },
         "chef-r6q1": {
           "question": "Recept používá 300 g rýže na 4 porce. Kolik je potřeba na 10 porcí?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "KUCHYŇSKÁ MATEMATIKA"
         },
         "chef-r3q1": {
           "question": "Zelenina v přeplněné horké pánvi zbledne a zmokne. Co to nejlépe vysvětluje?",
-          "answers": [
-            "Uvolněná vlhkost se zachytila, takže se zelenina zapařila",
-            "Pánev byla příliš horká a utěsnila vlhkost uvnitř",
-            "Zelenina absorbovala olej dříve, než mohla zhnědnout",
-            "Jejich příliš časté otáčení vytvořilo dodatečnou vlhkost"
-          ],
+          "answers": {
+            "a1": "Uvolněná vlhkost se zachytila, takže se zelenina zapařila",
+            "a2": "Pánev byla příliš horká a utěsnila vlhkost uvnitř",
+            "a3": "Zelenina absorbovala olej dříve, než mohla zhnědnout",
+            "a4": "Jejich příliš časté otáčení vytvořilo dodatečnou vlhkost"
+          },
           "headerLabel": "ŘÍZENÍ TEPLA"
         },
         "chef-r8q1": {
           "question": "Jaký nástroj odstraňuje hrudky ze suché mouky?",
-          "answers": [
-            "Šlehejte",
-            "Kleště",
-            "Síto",
-            "Škrabka"
-          ],
+          "answers": {
+            "a1": "Šlehejte",
+            "a2": "Kleště",
+            "a3": "Síto",
+            "a4": "Škrabka"
+          },
           "headerLabel": "KUCHYŇSKÉ NÁŘADÍ"
         },
         "chef-r8q2": {
           "question": "Která složka prohlubuje slané umami?",
-          "answers": [
-            "Moučkový cukr",
-            "Šlehačka",
-            "Obyčejná voda",
-            "Houby"
-          ],
+          "answers": {
+            "a1": "Moučkový cukr",
+            "a2": "Šlehačka",
+            "a3": "Obyčejná voda",
+            "a4": "Houby"
+          },
           "headerLabel": "STAVBA PŘÍCHUŤŮ"
         },
         "chef-r10q1": {
           "question": "Cibule se vaří jako první a jídlo dokončují čerstvé bylinky, ale obojí bylo připraveno v jedné misce. Jaká změna nastavení se řídí receptem?",
-          "answers": [
-            "Uchovávejte je odděleně podle doby použití",
-            "Na závěr vše uvařte",
-            "Na začátku přidejte bylinky",
-            "Obě ingredience nechte nepřipravené"
-          ],
+          "answers": {
+            "a1": "Uchovávejte je odděleně podle doby použití",
+            "a2": "Na závěr vše uvařte",
+            "a3": "Na začátku přidejte bylinky",
+            "a4": "Obě ingredience nechte nepřipravené"
+          },
           "headerLabel": "ORGANIZACE KUCHYNĚ"
         },
         "chef-r10q2": {
           "question": "Pokrm chutná bohatě a těžce, ale potřebuje čerstvost. Která dokončovací úprava to nejlépe vyvažuje?",
-          "answers": [
-            "Více smetany a másla",
-            "Citron a čerstvé bylinky",
-            "Více mouky",
-            "Více sirupu"
-          ],
+          "answers": {
+            "a1": "Více smetany a másla",
+            "a2": "Citron a čerstvé bylinky",
+            "a3": "Více mouky",
+            "a4": "Více sirupu"
+          },
           "headerLabel": "ZÁVĚREČNÝ TEST PŘÍCHUTI"
         }
       }

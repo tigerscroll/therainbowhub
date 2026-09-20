@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A felnőttek mindössze 6%-a tudja letenni ezt a rendőrségi felvételi vizsgát",
   "eyebrow": "A RENDŐR ALKOTÁSVIZSGÁLAT",
   "summary": "Tíz kérdés teszteli az ítéletet, a kommunikációt, a bizonyítékkezelést és a szakmai feddhetetlenséget.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az első hívások egyértelműnek tűnnek. Aztán a vizsga bizonyításra, ítéletre és másodperccses döntésekre kerül.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás olyan tág elveket alkalmaz, amelyek relevánsak a professzionális rendészet számára az 1. szintű angol nyelvű országokban. Tesztelje a biztonság elsőbbségét, a gondos tanúk kommunikációját, a bizonyítékok integritását és az elszámoltatható döntéshozatalt anélkül, hogy egyetlen ország törvényeire, rangjára vagy eljárásaira hagyatkozna.\n\nVálassz egy választ minden helyzetre. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válasszon tíz egyre nehezebb rendőrségi képességre vonatkozó kérdésre.",
         "Válassza ki a legbiztonságosabb, legmegvilágosabb vagy leginkább támogatott választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Rendőrtiszt belépési kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Rendőr felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "A tíz válaszod ellenőrizték, és a rendőrképességed felfedésére készen áll.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Négy rendészeti területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Négy rendészeti területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Sikerült a Rendőrtiszt felvételi kihíváson!",
       "finished": "Rendőrtiszt belépő kihívás kész",
-      "correctLabel": "helyes",
       "strongest": "A legsikeresebb terület",
       "trickiest": "A legtrükkösebb rendőri körzet",
       "bestRound": "A legjobb szakasz",
@@ -96,8 +89,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Olyan helyszínre érkezik, ahol valakit közvetlen fenyegetés fenyeget. Mi az első prioritás?",
-          "answers": [
-            "Védje az életet, és tegye a helyszínt a lehető legbiztonságosabbá",
-            "Kezdjen el egy részletes írásos jelentést",
-            "Gyűjts össze minden tanúvallomást",
-            "Állapítsa meg, ki a jogi felelős"
-          ],
+          "answers": {
+            "a1": "Védje az életet, és tegye a helyszínt a lehető legbiztonságosabbá",
+            "a2": "Kezdjen el egy részletes írásos jelentést",
+            "a3": "Gyűjts össze minden tanúvallomást",
+            "a4": "Állapítsa meg, ki a jogi felelős"
+          },
           "headerLabel": "A JELENET PRIORITÁSAI"
         },
         "police-q2": {
           "question": "Melyik nyitó kérdés a legvalószínűbb, hogy a tanú saját megszakításmentes beszámolóját adja?",
-          "answers": [
-            "A piros ruhás kezdte, igaz?",
-            "Kérem, mesélje el, mi történt a kezdetektől",
-            "Nem láttad az egész incidenst, ugye?",
-            "A gyanúsított dühös volt vagy megijedt?"
-          ],
+          "answers": {
+            "a1": "A piros ruhás kezdte, igaz?",
+            "a2": "Kérem, mesélje el, mi történt a kezdetektől",
+            "a3": "Nem láttad az egész incidenst, ugye?",
+            "a4": "A gyanúsított dühös volt vagy megijedt?"
+          },
           "headerLabel": "TANÚ KOMMUNIKÁCIÓ"
         },
         "police-q3": {
           "question": "Miért lehet a tanúkat elválasztani, mielőtt az első számlálást készítenek?",
-          "answers": [
-            "Hogy az interjúk rövidebbek legyenek",
-            "Hogy eldöntse, ki a legmagabiztosabb",
-            "Csökkenteni annak esélyét, hogy emlékeik befolyásolják egymást",
-            "Annak garantálása érdekében, hogy minden fiók egyezik"
-          ],
+          "answers": {
+            "a1": "Hogy az interjúk rövidebbek legyenek",
+            "a2": "Hogy eldöntse, ki a legmagabiztosabb",
+            "a3": "Csökkenteni annak esélyét, hogy emlékeik befolyásolják egymást",
+            "a4": "Annak garantálása érdekében, hogy minden fiók egyezik"
+          },
           "headerLabel": "EMLÉKEZÉS ÉS BIZONYÍTVÁNY"
         },
         "police-q4": {
           "question": "Mi a dokumentált felügyeleti lánc fő célja?",
-          "answers": [
-            "A bizonyítékokat fontosság szerint rangsorolni",
-            "Bizonyítani kell, hogy egy gyanúsított birtokolja minden tárgyat",
-            "A helyszínről készült fényképek pótlására",
-            "Feljegyezni, ki kezelte a bizonyítékokat, és megőrizni azok integritását"
-          ],
+          "answers": {
+            "a1": "A bizonyítékokat fontosság szerint rangsorolni",
+            "a2": "Bizonyítani kell, hogy egy gyanúsított birtokolja minden tárgyat",
+            "a3": "A helyszínről készült fényképek pótlására",
+            "a4": "Feljegyezni, ki kezelte a bizonyítékokat, és megőrizni azok integritását"
+          },
           "headerLabel": "BIZONYÍTÉK ELLENŐRZÉS"
         },
         "police-q5": {
           "question": "Melyik alapelv írja le legjobban a rendőri jogkörök felelősségteljes használatát?",
-          "answers": [
-            "Jogszerű, szükséges, arányos és elszámoltatható",
-            "Gyors, titkos, erőteljes és végleges",
-            "Népszerű, kényelmes, informális és széleskörű",
-            "Automatikus, azonos, korlátlan és megkérdőjelezhetetlen"
-          ],
+          "answers": {
+            "a1": "Jogszerű, szükséges, arányos és elszámoltatható",
+            "a2": "Gyors, titkos, erőteljes és végleges",
+            "a3": "Népszerű, kényelmes, informális és széleskörű",
+            "a4": "Automatikus, azonos, korlátlan és megkérdőjelezhetetlen"
+          },
           "headerLabel": "SZAKMAI ÍTÉLET"
         },
         "police-q6": {
           "question": "A nemzetközi helyesírási ábécében melyik szó jelenti a B betűt?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RÁDIÓKOMMUNIKÁCIÓ"
         },
         "police-q7": {
           "question": "Melyik megközelítés felel meg leginkább a feszült, de nem azonnali helyzet enyhítésének?",
-          "answers": [
-            "Beszéljen gyorsan, és figyelmeztetés nélkül menjen közelebb",
-            "Adjon ki egyszerre több egymással versengő utasítást",
-            "Nyugodt, tiszta nyelvet használjon, figyeljen és hagyjon biztonságos teret",
-            "Emelje fel a hangját, mielőtt bárki más megszólalhatna"
-          ],
+          "answers": {
+            "a1": "Beszéljen gyorsan, és figyelmeztetés nélkül menjen közelebb",
+            "a2": "Adjon ki egyszerre több egymással versengő utasítást",
+            "a3": "Nyugodt, tiszta nyelvet használjon, figyeljen és hagyjon biztonságos teret",
+            "a4": "Emelje fel a hangját, mielőtt bárki más megszólalhatna"
+          },
           "headerLabel": "ESZKALÁCIÓ"
         },
         "police-q8": {
           "question": "Ha biztonságos és praktikus, mi történjen, mielőtt egy fontos tárgyat elmozdítanak a helyszínről?",
-          "answers": [
-            "Meg kell tisztítani",
-            "Minden tanúnak meg kell mutatni",
-            "Hasonló tárgyakkal kell elhelyezni",
-            "Eredeti helyzetét és állapotát dokumentálni kell"
-          ],
+          "answers": {
+            "a1": "Meg kell tisztítani",
+            "a2": "Minden tanúnak meg kell mutatni",
+            "a3": "Hasonló tárgyakkal kell elhelyezni",
+            "a4": "Eredeti helyzetét és állapotát dokumentálni kell"
+          },
           "headerLabel": "JELENET-tudatosság"
         },
         "police-q9": {
           "question": "Ténybeli hibát fedez fel a benyújtott jelentésben. Mi a legprofibb válasz?",
-          "answers": [
-            "Jelentse és javítsa ki azonnal a megfelelő eljárással",
-            "Várd meg, észreveszi-e valaki",
-            "Törölje a teljes jelentést rekord nélkül",
-            "Kérje meg kollégáját, hogy vállalja a felelősséget"
-          ],
+          "answers": {
+            "a1": "Jelentse és javítsa ki azonnal a megfelelő eljárással",
+            "a2": "Várd meg, észreveszi-e valaki",
+            "a3": "Törölje a teljes jelentést rekord nélkül",
+            "a4": "Kérje meg kollégáját, hogy vállalja a felelősséget"
+          },
           "headerLabel": "INTEGRITÁS TESZT"
         },
         "police-q10": {
           "question": "Melyik rádióüzenet a leghasznosabb egy gyorsan lezajló esemény során?",
-          "answers": [
-            "Egy hosszú személyes elmélet hely nélkül",
-            "Egy tömör tényfrissítés a pontos helyszínnel és a szükséges segítséggel",
-            "Egyszerre több meg nem erősített pletyka érkezett",
-            "Egy homályos kérés, hogy küldjenek valakit valahova"
-          ],
+          "answers": {
+            "a1": "Egy hosszú személyes elmélet hely nélkül",
+            "a2": "Egy tömör tényfrissítés a pontos helyszínnel és a szükséges segítséggel",
+            "a3": "Egyszerre több meg nem erősített pletyka érkezett",
+            "a4": "Egy homályos kérés, hogy küldjenek valakit valahova"
+          },
           "headerLabel": "VÉGSŐ ALKALMASSÁGRA VONATKOZÓ KÉRDÉS"
         }
       }

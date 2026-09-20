@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hầu hết người lớn không thể vượt qua kỳ thi tuyển sinh ngành sư phạm này",
   "eyebrow": "KIỂM TRA NĂNG LỰC LỚP HỌC",
   "summary": "Mười câu hỏi kiểm tra khả năng phán đoán, đánh giá, bảo vệ và giảng dạy trong lớp học.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những câu hỏi đầu tiên trong lớp học có vẻ hiển nhiên. Sau đó, bài kiểm tra chuyển sang phần đánh giá, bảo vệ và đưa ra những quyết định đúng đắn mà mọi giáo viên phải đưa ra.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng các khái niệm lớp học rộng rãi áp dụng trên khắp các quốc gia nói tiếng Anh Cấp 1. Nó chuyển từ việc kiểm tra sự hiểu biết và ứng phó với sai sót sang đánh giá, giao tiếp, bảo vệ và phán đoán chuyên môn.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi lớp học ngày càng khó khăn.",
         "Chọn một phản hồi được hỗ trợ tốt nhất.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào của giáo viên",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh của giáo viên",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm năng khiếu trong lớp của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Năm lĩnh vực giảng dạy được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Năm lĩnh vực giảng dạy được so sánh"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào của Giáo viên!",
       "finished": "Thử thách đầu vào của giáo viên đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực giảng dạy mạnh nhất",
       "trickiest": "Khu vực giảng dạy khó khăn nhất",
       "bestRound": "Phần hay nhất",
@@ -99,8 +92,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "teacher-q1": {
           "question": "Cách tiếp cận nào giúp giáo viên có được bức tranh nhanh chóng và rõ ràng nhất về việc liệu cả lớp có hiểu một ý tưởng mới hay không?",
-          "answers": [
-            "Một cuộc kiểm tra ngắn gọn trong đó mọi người học đều phản hồi",
-            "Chỉ yêu cầu tình nguyện viên nhanh nhất",
-            "Chờ báo cáo cuối kỳ",
-            "Lặp lại lời giải thích mà không kiểm tra"
-          ],
+          "answers": {
+            "a1": "Một cuộc kiểm tra ngắn gọn trong đó mọi người học đều phản hồi",
+            "a2": "Chỉ yêu cầu tình nguyện viên nhanh nhất",
+            "a3": "Chờ báo cáo cuối kỳ",
+            "a4": "Lặp lại lời giải thích mà không kiểm tra"
+          },
           "headerLabel": "KIỂM TRA HIỂU"
         },
         "teacher-q2": {
           "question": "Một học sinh trả lời sai. Phản ứng nào có khả năng hỗ trợ việc học tập nhất?",
-          "answers": [
-            "Chuyển ngay sang người khác",
-            "Yêu cầu họ giải thích suy nghĩ của mình, sau đó hướng dẫn họ bằng những câu hỏi tập trung",
-            "Thông báo câu trả lời đúng và tiếp tục",
-            "Tránh quay lại ý tưởng"
-          ],
+          "answers": {
+            "a1": "Chuyển ngay sang người khác",
+            "a2": "Yêu cầu họ giải thích suy nghĩ của mình, sau đó hướng dẫn họ bằng những câu hỏi tập trung",
+            "a3": "Thông báo câu trả lời đúng và tiếp tục",
+            "a4": "Tránh quay lại ý tưởng"
+          },
           "headerLabel": "XỬ LÝ SAI LẦM"
         },
         "teacher-q3": {
           "question": "Tên thông thường của đánh giá được sử dụng trong quá trình học tập nhằm giúp điều chỉnh việc giảng dạy là gì?",
-          "answers": [
-            "Đánh giá cuối cùng",
-            "Đánh giá đầu vào",
-            "Đánh giá quá trình",
-            "Đánh giá chuyên cần"
-          ],
+          "answers": {
+            "a1": "Đánh giá cuối cùng",
+            "a2": "Đánh giá đầu vào",
+            "a3": "Đánh giá quá trình",
+            "a4": "Đánh giá chuyên cần"
+          },
           "headerLabel": "ĐÁNH GIÁ"
         },
         "teacher-q4": {
           "question": "Người học tiết lộ thông tin cho thấy họ có thể có nguy cơ bị tổn hại. Phản ứng chung tốt nhất là gì?",
-          "answers": [
-            "Cam kết bí mật tuyệt đối",
-            "Điều tra toàn bộ tình hình một mình",
-            "Đợi xem họ có nhắc lại không",
-            "Bình tĩnh lắng nghe, tránh hứa hẹn giữ bí mật và thực hiện đúng quy trình bảo vệ thích hợp"
-          ],
+          "answers": {
+            "a1": "Cam kết bí mật tuyệt đối",
+            "a2": "Điều tra toàn bộ tình hình một mình",
+            "a3": "Đợi xem họ có nhắc lại không",
+            "a4": "Bình tĩnh lắng nghe, tránh hứa hẹn giữ bí mật và thực hiện đúng quy trình bảo vệ thích hợp"
+          },
           "headerLabel": "BẢO VỆ"
         },
         "teacher-q5": {
           "question": "Mục tiêu học tập nào yêu cầu người học đưa ra những phán đoán phức tạp nhất?",
-          "answers": [
-            "So sánh hai lời giải thích và hỗ trợ một kết luận bằng bằng chứng",
-            "Sao chép ba định nghĩa",
-            "Liệt kê các ngày trong tuần",
-            "Gạch dưới mỗi tiêu đề"
-          ],
+          "answers": {
+            "a1": "So sánh hai lời giải thích và hỗ trợ một kết luận bằng bằng chứng",
+            "a2": "Sao chép ba định nghĩa",
+            "a3": "Liệt kê các ngày trong tuần",
+            "a4": "Gạch dưới mỗi tiêu đề"
+          },
           "headerLabel": "MỤC TIÊU HỌC TẬP"
         },
         "teacher-q6": {
           "question": "Một lớp có 30 học sinh làm việc theo nhóm 5 em bằng nhau. Cần bao nhiêu nhóm?",
-          "answers": [
-            "5",
-            "6",
-            "7",
-            "10"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "7",
+            "a4": "10"
+          },
           "headerLabel": "SỐ LỚP HỌC"
         },
         "teacher-q7": {
           "question": "Hướng dẫn phân hóa liên quan chính xác nhất đến điều gì?",
-          "answers": [
-            "Cung cấp cho mỗi người học nội dung môn học hoàn toàn khác nhau",
-            "Giảm kỳ vọng cho cả lớp",
-            "Điều chỉnh quyền truy cập, hỗ trợ hoặc thử thách trong khi vẫn duy trì các mục tiêu học tập có ý nghĩa",
-            "Chỉ cho phép những người học tự tin trả lời"
-          ],
+          "answers": {
+            "a1": "Cung cấp cho mỗi người học nội dung môn học hoàn toàn khác nhau",
+            "a2": "Giảm kỳ vọng cho cả lớp",
+            "a3": "Điều chỉnh quyền truy cập, hỗ trợ hoặc thử thách trong khi vẫn duy trì các mục tiêu học tập có ý nghĩa",
+            "a4": "Chỉ cho phép những người học tự tin trả lời"
+          },
           "headerLabel": "GIẢNG DẠY THÍCH ỨNG"
         },
         "teacher-q8": {
           "question": "Khi nào một đánh giá được coi là đáng tin cậy?",
-          "answers": [
-            "Khi nó chứa số lượng câu hỏi lớn nhất",
-            "Khi mọi học sinh đều đạt điểm cao",
-            "Khi nó có thể được hoàn thành nhanh chóng",
-            "Khi nó tạo ra kết quả nhất quán hợp lý trong điều kiện tương tự"
-          ],
+          "answers": {
+            "a1": "Khi nó chứa số lượng câu hỏi lớn nhất",
+            "a2": "Khi mọi học sinh đều đạt điểm cao",
+            "a3": "Khi nó có thể được hoàn thành nhanh chóng",
+            "a4": "Khi nó tạo ra kết quả nhất quán hợp lý trong điều kiện tương tự"
+          },
           "headerLabel": "ĐÁNH GIÁ CHẤT LƯỢNG"
         },
         "teacher-q9": {
           "question": "Hướng dẫn nào có nhiều khả năng giúp người học bắt đầu một nhiệm vụ mới một cách thành công nhất?",
-          "answers": [
-            "Đưa ra một trình tự ngắn, làm mẫu một ví dụ và kiểm tra sự hiểu biết",
-            "Giải thích mọi ngoại lệ có thể xảy ra trước khi nêu nhiệm vụ",
-            "Viết một câu mơ hồ và bắt đầu ngay lập tức",
-            "Yêu cầu học viên đoán tiêu chí thành công"
-          ],
+          "answers": {
+            "a1": "Đưa ra một trình tự ngắn, làm mẫu một ví dụ và kiểm tra sự hiểu biết",
+            "a2": "Giải thích mọi ngoại lệ có thể xảy ra trước khi nêu nhiệm vụ",
+            "a3": "Viết một câu mơ hồ và bắt đầu ngay lập tức",
+            "a4": "Yêu cầu học viên đoán tiêu chí thành công"
+          },
           "headerLabel": "HƯỚNG DẪN RÕ RÀNG"
         },
         "teacher-q10": {
           "question": "Mô tả nào xác định rõ nhất đạo văn?",
-          "answers": [
-            "Chỉnh sửa bản dự thảo sau khi phản hồi",
-            "Trình bày lời nói hoặc ý tưởng của người khác như của riêng bạn mà không cần ghi nhận",
-            "Sử dụng nhiều nguồn",
-            "Không đồng ý với kết luận của tác giả"
-          ],
+          "answers": {
+            "a1": "Chỉnh sửa bản dự thảo sau khi phản hồi",
+            "a2": "Trình bày lời nói hoặc ý tưởng của người khác như của riêng bạn mà không cần ghi nhận",
+            "a3": "Sử dụng nhiều nguồn",
+            "a4": "Không đồng ý với kết luận của tác giả"
+          },
           "headerLabel": "CÂU HỎI CHÍNH TRỰC CUỐI CÙNG"
         }
       }

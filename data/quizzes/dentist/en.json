@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 15% Of Adults Can Pass This Dentist Entrance Exam",
   "eyebrow": "THE DENTAL KNOWLEDGE TEST",
   "summary": "Ten questions move from familiar teeth to the anatomy and science future dentists study.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "The first few questions seem simple. Then the exam moves beneath the enamel and into real dental anatomy.",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This ten-question entertainment challenge moves from basic dentition into tooth anatomy, oral disease and head-and-neck science. The questions become more technical as the exam progresses, ending with knowledge commonly encountered in dental education.\n\nChoose one answer for each question. Correctness stays hidden until the final reveal, where the complete review explains how your dental knowledge held up.\n\nThe factual content was checked against educational information from the American Dental Association, the US Centers for Disease Control and Prevention, and the US National Library of Medicine.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Answer ten increasingly difficult dental questions.",
         "Choose one of four answers without outside help.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Dentist entrance challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Dental Entrance Exam",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your ten answers have been checked and your dental knowledge score is ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Four dental knowledge areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Four dental knowledge areas compared"
+        ]
       }
     }
   },
@@ -67,15 +61,22 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Teeth and dentition" },
-      "dimension-2": { "label": "Tooth anatomy" },
-      "dimension-3": { "label": "Oral health science" },
-      "dimension-4": { "label": "Head and neck anatomy" }
+      "dimension-1": {
+        "label": "Teeth and dentition"
+      },
+      "dimension-2": {
+        "label": "Tooth anatomy"
+      },
+      "dimension-3": {
+        "label": "Oral health science"
+      },
+      "dimension-4": {
+        "label": "Head and neck anatomy"
+      }
     },
     "score": {
       "passed": "You passed the dentist entrance challenge!",
       "finished": "Dentist entrance challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest dental subject",
       "trickiest": "Trickiest dental subject",
       "bestRound": "Best section",
@@ -88,8 +89,7 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -98,52 +98,102 @@
       "questions": {
         "dentist-q1": {
           "question": "How many permanent teeth does a typical adult have when all four third molars are present?",
-          "answers": ["32", "28", "30", "36"],
+          "answers": {
+            "a1": "32",
+            "a2": "28",
+            "a3": "30",
+            "a4": "36"
+          },
           "headerLabel": "DENTITION BASICS"
         },
         "dentist-q2": {
           "question": "Which tissue forms the hard outer covering of a tooth’s crown?",
-          "answers": ["Cementum", "Enamel", "Dentin / dentine", "Pulp"],
+          "answers": {
+            "a1": "Cementum",
+            "a2": "Enamel",
+            "a3": "Dentin / dentine",
+            "a4": "Pulp"
+          },
           "headerLabel": "TOOTH STRUCTURE"
         },
         "dentist-q3": {
           "question": "Which teeth are primarily shaped for cutting into food?",
-          "answers": ["Molars", "Premolars", "Incisors", "Third molars"],
+          "answers": {
+            "a1": "Molars",
+            "a2": "Premolars",
+            "a3": "Incisors",
+            "a4": "Third molars"
+          },
           "headerLabel": "TOOTH FUNCTION"
         },
         "dentist-q4": {
           "question": "How many primary teeth are normally present in a complete child dentition?",
-          "answers": ["16", "24", "28", "20"],
+          "answers": {
+            "a1": "16",
+            "a2": "24",
+            "a3": "28",
+            "a4": "20"
+          },
           "headerLabel": "PRIMARY DENTITION"
         },
         "dentist-q5": {
           "question": "Which part of a tooth contains its main blood vessels and nerves?",
-          "answers": ["Dental pulp", "Enamel", "Cementum", "Periodontal pocket"],
+          "answers": {
+            "a1": "Dental pulp",
+            "a2": "Enamel",
+            "a3": "Cementum",
+            "a4": "Periodontal pocket"
+          },
           "headerLabel": "BENEATH THE ENAMEL"
         },
         "dentist-q6": {
           "question": "What does plaque usually become when it hardens into a mineral deposit on teeth?",
-          "answers": ["Dentin / dentine", "Calculus", "Cementum", "Pellicle"],
+          "answers": {
+            "a1": "Dentin / dentine",
+            "a2": "Calculus",
+            "a3": "Cementum",
+            "a4": "Pellicle"
+          },
           "headerLabel": "ORAL HEALTH SCIENCE"
         },
         "dentist-q7": {
           "question": "What directly begins dissolving enamel during the development of dental caries?",
-          "answers": ["Saliva made after meals", "Oxygen entering the mouth", "Acids produced by plaque bacteria", "Pressure from chewing"],
+          "answers": {
+            "a1": "Saliva made after meals",
+            "a2": "Oxygen entering the mouth",
+            "a3": "Acids produced by plaque bacteria",
+            "a4": "Pressure from chewing"
+          },
           "headerLabel": "CARIES PROCESS"
         },
         "dentist-q8": {
           "question": "Which structure helps attach a tooth’s root to the surrounding alveolar bone?",
-          "answers": ["Dental pulp", "Gingival sulcus", "Enamel cuticle", "Periodontal ligament"],
+          "answers": {
+            "a1": "Dental pulp",
+            "a2": "Gingival sulcus",
+            "a3": "Enamel cuticle",
+            "a4": "Periodontal ligament"
+          },
           "headerLabel": "PERIODONTAL ANATOMY"
         },
         "dentist-q9": {
           "question": "What is the anatomical name of the bone forming the upper jaw?",
-          "answers": ["Maxilla", "Mandible", "Zygoma", "Temporal bone"],
+          "answers": {
+            "a1": "Maxilla",
+            "a2": "Mandible",
+            "a3": "Zygoma",
+            "a4": "Temporal bone"
+          },
           "headerLabel": "HEAD AND NECK"
         },
         "dentist-q10": {
           "question": "Sensory innervation to the teeth ultimately comes from which cranial nerve?",
-          "answers": ["Facial nerve", "Trigeminal nerve", "Vagus nerve", "Hypoglossal nerve"],
+          "answers": {
+            "a1": "Facial nerve",
+            "a2": "Trigeminal nerve",
+            "a3": "Vagus nerve",
+            "a4": "Hypoglossal nerve"
+          },
           "headerLabel": "FINAL CLINICAL QUESTION"
         }
       }

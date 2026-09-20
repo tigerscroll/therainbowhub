@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seulement 8 % réussissent ce quiz sur l’anatomie humaine",
   "eyebrow": "DÉFI DU CORPS HUMAIN",
   "summary": "Dix questions couvrant les organes, les os et les systèmes corporels qui font que tout fonctionne.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Votre corps vous est peut-être familier, mais ses plus petits os, ses plus gros organes et ses systèmes vitaux peuvent toujours vous surprendre.",
     "cta": "Commencer le quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz ludique de dix questions teste les connaissances générales du corps humain, depuis les principaux organes et os jusqu'à la circulation et la respiration. Chaque question comporte une réponse claire fondée sur les notions d'anatomie généralement admises.\n\nChoisissez une réponse pour chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez consulter le corrigé complet et découvrir votre domaine anatomique le mieux réussi.\n\nLes détails anatomiques peuvent varier naturellement d’un individu à l’autre. Le quiz utilise les conventions standard de l’anatomie adulte couramment enseignées dans l’enseignement général.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions sur l'anatomie humaine dans un seul défi ciblé.",
         "Choisissez l'une des quatre réponses pour chaque question.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'anatomie",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Anatomie humaine",
@@ -30,10 +26,8 @@
         "preAdCopy": "Votre score d'anatomie et le corrigé complet sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Trois zones anatomiques comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois zones anatomiques comparées"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vous avez réussi le défi d'anatomie !",
       "finished": "Défi d'anatomie terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -93,8 +86,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "anatomy-q1": {
           "question": "Quel est le plus grand organe du corps humain ?",
-          "answers": [
-            "Peau",
-            "Foie",
-            "Poumons",
-            "Cerveau"
-          ],
+          "answers": {
+            "a1": "Peau",
+            "a2": "Foie",
+            "a3": "Poumons",
+            "a4": "Cerveau"
+          },
           "headerLabel": "ORGANES"
         },
         "anatomy-q2": {
           "question": "Combien de cavités le cœur humain possède-t-il ?",
-          "answers": [
-            "Deux",
-            "Quatre",
-            "Trois",
-            "Cinq"
-          ],
+          "answers": {
+            "a1": "Deux",
+            "a2": "Quatre",
+            "a3": "Trois",
+            "a4": "Cinq"
+          },
           "headerLabel": "LE COEUR"
         },
         "anatomy-q3": {
           "question": "Quel est l'os le plus long du corps humain ?",
-          "answers": [
-            "Tibia",
-            "Humérus",
-            "Fémur",
-            "Radius"
-          ],
+          "answers": {
+            "a1": "Tibia",
+            "a2": "Humérus",
+            "a3": "Fémur",
+            "a4": "Radius"
+          },
           "headerLabel": "LE SQUELETTE"
         },
         "anatomy-q4": {
           "question": "Quel organe produit l'insuline ?",
-          "answers": [
-            "Foie",
-            "Rein",
-            "Rate",
-            "Pancréas"
-          ],
+          "answers": {
+            "a1": "Foie",
+            "a2": "Rein",
+            "a3": "Rate",
+            "a4": "Pancréas"
+          },
           "headerLabel": "ORGANES"
         },
         "anatomy-q5": {
           "question": "Quel est le plus petit os du corps humain ?",
-          "answers": [
-            "Étrier",
-            "Rotule",
-            "Coccyx",
-            "Cubitus"
-          ],
+          "answers": {
+            "a1": "Étrier",
+            "a2": "Rotule",
+            "a3": "Coccyx",
+            "a4": "Cubitus"
+          },
           "headerLabel": "LE SQUELETTE"
         },
         "anatomy-q6": {
           "question": "Combien d’os trouve-t-on habituellement dans un corps humain adulte ?",
-          "answers": [
-            "201",
-            "206",
-            "212",
-            "218"
-          ],
+          "answers": {
+            "a1": "201",
+            "a2": "206",
+            "a3": "212",
+            "a4": "218"
+          },
           "headerLabel": "LES BASES DU CORPS"
         },
         "anatomy-q7": {
           "question": "Quel muscle principal se trouve sous les poumons et vous aide à respirer ?",
-          "answers": [
-            "Trapèze",
-            "Deltoïde",
-            "Diaphragme",
-            "Muscles ischio-jambiers"
-          ],
+          "answers": {
+            "a1": "Trapèze",
+            "a2": "Deltoïde",
+            "a3": "Diaphragme",
+            "a4": "Muscles ischio-jambiers"
+          },
           "headerLabel": "RESPIRATION"
         },
         "anatomy-q8": {
           "question": "Le cervelet fait partie de quel organe ?",
-          "answers": [
-            "Moelle épinière",
-            "Oreille interne",
-            "Cœur",
-            "Cerveau"
-          ],
+          "answers": {
+            "a1": "Moelle épinière",
+            "a2": "Oreille interne",
+            "a3": "Cœur",
+            "a4": "Cerveau"
+          },
           "headerLabel": "LE CERVEAU"
         },
         "anatomy-q9": {
           "question": "Quels vaisseaux sanguins transportent le sang depuis le cœur vers les organes ?",
-          "answers": [
-            "Artères",
-            "Veines",
-            "Capillaires",
-            "Veinules"
-          ],
+          "answers": {
+            "a1": "Artères",
+            "a2": "Veines",
+            "a3": "Capillaires",
+            "a4": "Veinules"
+          },
           "headerLabel": "CIRCULATION"
         },
         "anatomy-q10": {
           "question": "Quel est le plus grand organe interne du corps humain ?",
-          "answers": [
-            "Poumons",
-            "Foie",
-            "Estomac",
-            "Reins"
-          ],
+          "answers": {
+            "a1": "Poumons",
+            "a2": "Foie",
+            "a3": "Estomac",
+            "a4": "Reins"
+          },
           "headerLabel": "QUESTION FINALE"
         }
       }

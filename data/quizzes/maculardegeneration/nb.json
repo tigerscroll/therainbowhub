@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Makuladegenerasjonstest",
   "eyebrow": "10 SPØRSMÅL SENTRAL-VISJONSKJEKK",
   "summary": "Sentrale detaljer, visuelle feller og viktige AMD-varselskilt i én rask utfordring.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Kan du se de sentrale detaljene og identifisere varselskiltene? Disse 10 raske sjekkene blir vanskeligere.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne utfordringen på ti spørsmål kombinerer fem visuelle gåter på skjermen med fem generelle bevissthetsspørsmål om aldersrelatert makuladegenerasjon (AMD). Den måler svar på denne quizen, ikke øyehelse eller sannsynligheten for sykdom.\n\nSkjermstørrelse, lysstyrke, kontrast, syn, korrigerende linser, tretthet og enhetsinnstillinger kan alle påvirke ytelsen. Nye bølgete eller forvrengte linjer, et nytt uskarpt eller tomt område i sentralt syn, eller plutselig forverring bør diskuteres umiddelbart med en kvalifisert øyelege.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Fullfør fem sentrale detaljer og visuelle minneutfordringer.",
         "Svar på fem spørsmål om AMD og når du skal søke hjelp.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sentralsynsutfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Makuladegenerasjonstest",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket og poengsummen din for sentralsynsutfordring er klar til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Tre visuelle områder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Tre visuelle områder sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarte den visuelle utfordringen på 80 %!",
       "finished": "Sentralsynsutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Det sterkeste området i dag",
       "trickiest": "Det vanskeligste området i dag",
       "bestRound": "Beste seksjon",
@@ -94,8 +87,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Hvilket tegn er nøyaktig i midten av rutenettet?",
           "headerLabel": "SENTRAL DETALJ",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERANSE: Q7M2P6",
           "question": "Hvilken kode samsvarer nøyaktig med referansen?",
           "headerLabel": "AVSLUTT KAMP",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERANSE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Hvilket symbol fullfører den vekslende sekvensen?",
           "headerLabel": "MØNSTERSPORING",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Hvilket objekt dukket opp på tredjeplass?",
           "headerLabel": "RASK VISUELL MINNE",
-          "answers": [
-            "Bok",
-            "Nøkkel",
-            "Cup",
-            "Sol"
-          ],
+          "answers": {
+            "a1": "Bok",
+            "a2": "Nøkkel",
+            "a3": "Cup",
+            "a4": "Sol"
+          },
           "study": {
             "title": "Studer rekkefølgen med fem objekter",
             "instruction": "Dette forsvinner automatisk.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Hvilken posisjon inneholder den åpne sirkelen?",
           "headerLabel": "FOKUS PÅ MIDT RAD",
-          "answers": [
-            "Fjerde",
-            "For det andre",
-            "Femte",
-            "Tredje"
-          ],
+          "answers": {
+            "a1": "Fjerde",
+            "a2": "For det andre",
+            "a3": "Femte",
+            "a4": "Tredje"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Hvilken del av synet er mest direkte påvirket av aldersrelatert makuladegenerasjon?",
           "headerLabel": "AMD GRUNNLEGGENDE",
-          "answers": [
-            "Bare de ytterste kantene",
-            "Skarpt sentralt syn rett fram",
-            "Bare nattsyn",
-            "Bare dybdeoppfatning"
-          ]
+          "answers": {
+            "a1": "Bare de ytterste kantene",
+            "a2": "Skarpt sentralt syn rett fram",
+            "a3": "Bare nattsyn",
+            "a4": "Bare dybdeoppfatning"
+          }
         },
         "macular-q7": {
           "question": "Hvilken visuell endring er et velkjent varseltegn for AMD?",
           "headerLabel": "ADVARSELSKILT",
-          "answers": [
-            "Høres stadig roligere ut",
-            "En midlertidig kløe på øyelokket",
-            "Rette linjer virker bølgete eller skjeve",
-            "Den ene øyevippen faller ut"
-          ]
+          "answers": {
+            "a1": "Høres stadig roligere ut",
+            "a2": "En midlertidig kløe på øyelokket",
+            "a3": "Rette linjer virker bølgete eller skjeve",
+            "a4": "Den ene øyevippen faller ut"
+          }
         },
         "macular-q8": {
           "question": "Hvilken vurdering kan en øyelege bruke for å se etter AMD?",
           "headerLabel": "FAGLIG VURDERING",
-          "answers": [
-            "En hørselstest",
-            "En blodtrykksmåling alene",
-            "En smaksprøve",
-            "En omfattende utvidet øyeundersøkelse"
-          ]
+          "answers": {
+            "a1": "En hørselstest",
+            "a2": "En blodtrykksmåling alene",
+            "a3": "En smaksprøve",
+            "a4": "En omfattende utvidet øyeundersøkelse"
+          }
         },
         "macular-q9": {
           "question": "Hva er den sikreste responsen på plutselig forverret syn eller et nytt sentralt uskarpt eller tomt område?",
           "headerLabel": "NÅR SKAL HANDLE",
-          "answers": [
-            "Søk rask profesjonell øyepleieråd",
-            "Vent flere måneder uten å nevne det",
-            "Øk skjermens lysstyrke og anta at det er løst",
-            "Stol kun på en online quiz"
-          ]
+          "answers": {
+            "a1": "Søk rask profesjonell øyepleieråd",
+            "a2": "Vent flere måneder uten å nevne det",
+            "a3": "Øk skjermens lysstyrke og anta at det er løst",
+            "a4": "Stol kun på en online quiz"
+          }
         },
         "macular-q10": {
           "question": "Hva kan poengsummen din på denne nettutfordringen fortelle deg?",
           "headerLabel": "ENDELIG REALITETSKJEKK",
-          "answers": [
-            "Om netthinnen din er sunn",
-            "Bare hvordan du presterte på disse ti spørsmålene",
-            "Om du trenger en spesiell behandling",
-            "Om du kan utelukke AMD"
-          ]
+          "answers": {
+            "a1": "Om netthinnen din er sunn",
+            "a2": "Bare hvordan du presterte på disse ti spørsmålene",
+            "a3": "Om du trenger en spesiell behandling",
+            "a4": "Om du kan utelukke AMD"
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test makulární degenerace",
   "eyebrow": "10-OTÁZKOVÁ KONTROLA CENTRÁLNÍHO ZRAKU",
   "summary": "Centrální detaily, vizuální pasti a důležité varovné signály AMD v jedné rychlé výzvě.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Dokážete rozpoznat centrální detaily a identifikovat varovné signály? Těchto 10 rychlých kontrol bude těžších.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato výzva s deseti otázkami kombinuje pět vizuálních hádanek na obrazovce s pěti všeobecnými otázkami o věkem podmíněné makulární degeneraci (AMD). Měří odpovědi na tento kvíz, nikoli zdraví očí nebo pravděpodobnost onemocnění.\n\nVelikost obrazovky, jas, kontrast, zrak, korekční čočky, únava a nastavení zařízení, to vše může ovlivnit výkon. Nové zvlněné nebo zkreslené čáry, nová rozmazaná nebo prázdná oblast v centrálním vidění nebo náhlé zhoršení by měly být okamžitě projednány s kvalifikovaným očním specialistou.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Dokončete pět výzev centrálních detailů a vizuální paměti.",
         "Odpovězte na pět otázek o AMD a o tom, kdy hledat pomoc.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Výzva centrálního vidění",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Test makulární degenerace",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre výzvy centrálního vidění je připraveno k odhalení.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Tři vizuální oblasti byly porovnány",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Tři vizuální oblasti byly porovnány"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vyřešili jste 80% vizuální výzvu!",
       "finished": "Výzva centrálního vidění dokončena",
-      "correctLabel": "správně",
       "strongest": "Dnes nejsilnější oblast",
       "trickiest": "Nejošklivější oblast dneška",
       "bestRound": "Nejlepší sekce",
@@ -94,8 +87,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Která postava je přesně uprostřed mřížky?",
           "headerLabel": "CENTRÁLNÍ DETAIL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "ODKAZ: Q7M2P6",
           "question": "Který kód přesně odpovídá odkazu?",
           "headerLabel": "TĚSNÝ ZÁPAS",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERENCE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Který symbol doplňuje střídavou sekvenci?",
           "headerLabel": "SLEDOVÁNÍ VZORŮ",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Který předmět se objevil jako třetí?",
           "headerLabel": "RYCHLÁ VIZUÁLNÍ PAMĚŤ",
-          "answers": [
-            "Kniha",
-            "klíč",
-            "pohár",
-            "Slunce"
-          ],
+          "answers": {
+            "a1": "Kniha",
+            "a2": "klíč",
+            "a3": "pohár",
+            "a4": "Slunce"
+          },
           "study": {
             "title": "Prostudujte si pořadí pěti objektů",
             "instruction": "Toto automaticky zmizí.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Která pozice obsahuje otevřený kruh?",
           "headerLabel": "ZAMĚŘENÍ NA STŘEDNÍ ŘADU",
-          "answers": [
-            "Za čtvrté",
-            "Za druhé",
-            "Za páté",
-            "Třetí"
-          ],
+          "answers": {
+            "a1": "Za čtvrté",
+            "a2": "Za druhé",
+            "a3": "Za páté",
+            "a4": "Třetí"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Která část zraku je nejvíce přímo ovlivněna věkem podmíněnou makulární degenerací?",
           "headerLabel": "ZÁKLADY AMD",
-          "answers": [
-            "Pouze vzdálené vnější okraje",
-            "Ostré centrální vidění přímo vpřed",
-            "Pouze noční vidění",
-            "Pouze vnímání hloubky"
-          ]
+          "answers": {
+            "a1": "Pouze vzdálené vnější okraje",
+            "a2": "Ostré centrální vidění přímo vpřed",
+            "a3": "Pouze noční vidění",
+            "a4": "Pouze vnímání hloubky"
+          }
         },
         "macular-q7": {
           "question": "Která vizuální změna je známým varovným signálem AMD?",
           "headerLabel": "VAROVNÉ SIGNÁLY",
-          "answers": [
-            "Zvuky jsou stále tišší",
-            "Dočasné svědění očního víčka",
-            "Rovné čáry zvlněné nebo křivé",
-            "Jedna řasa vypadává"
-          ]
+          "answers": {
+            "a1": "Zvuky jsou stále tišší",
+            "a2": "Dočasné svědění očního víčka",
+            "a3": "Rovné čáry zvlněné nebo křivé",
+            "a4": "Jedna řasa vypadává"
+          }
         },
         "macular-q8": {
           "question": "Které hodnocení může oční specialista použít při hledání AMD?",
           "headerLabel": "ODBORNÉ POSOUZENÍ",
-          "answers": [
-            "Test sluchu",
-            "Pouze měření krevního tlaku",
-            "Chuťový test",
-            "Komplexní vyšetření dilatovaného oka"
-          ]
+          "answers": {
+            "a1": "Test sluchu",
+            "a2": "Pouze měření krevního tlaku",
+            "a3": "Chuťový test",
+            "a4": "Komplexní vyšetření dilatovaného oka"
+          }
         },
         "macular-q9": {
           "question": "Jaká je nejbezpečnější reakce na náhlé zhoršení vidění nebo novou centrální rozmazanou nebo prázdnou oblast?",
           "headerLabel": "KDY JEDNAT",
-          "answers": [
-            "Vyhledejte rychlou odbornou radu v oblasti péče o oči",
-            "Počkejte několik měsíců, aniž byste to zmínili",
-            "Zvyšte jas obrazovky a předpokládejte, že je opraven",
-            "Spolehněte se pouze na online kvíz"
-          ]
+          "answers": {
+            "a1": "Vyhledejte rychlou odbornou radu v oblasti péče o oči",
+            "a2": "Počkejte několik měsíců, aniž byste to zmínili",
+            "a3": "Zvyšte jas obrazovky a předpokládejte, že je opraven",
+            "a4": "Spolehněte se pouze na online kvíz"
+          }
         },
         "macular-q10": {
           "question": "Co vám může říct vaše skóre v této online výzvě?",
           "headerLabel": "KONEČNÁ KONTROLA REALITY",
-          "answers": [
-            "Zda je vaše sítnice zdravá",
-            "Jen jak jste si vedli v těchto deseti otázkách",
-            "Zda potřebujete zvláštní léčbu",
-            "Zda můžete vyloučit AMD"
-          ]
+          "answers": {
+            "a1": "Zda je vaše sítnice zdravá",
+            "a2": "Jen jak jste si vedli v těchto deseti otázkách",
+            "a3": "Zda potřebujete zvláštní léčbu",
+            "a4": "Zda můžete vyloučit AMD"
+          }
         }
       }
     }

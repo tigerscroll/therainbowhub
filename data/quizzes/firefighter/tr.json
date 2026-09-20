@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bu İtfaiyeci Giriş Sınavını Sadece %11 Geçebilir",
   "eyebrow": "İtfaiyeci Mücadelesi",
   "summary": "Yangın bilimi, araçlar, tehlikeler ve hızlı olay kararları, baskı altında ne kadar net düşündüğünüzü test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Yangın davranışı, tehlikeyi tespit etme, mekanik muhakeme ve anlık değerlendirme. Her ipucu önemli olduğunda sakin kalabilir misin?",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dünya çapındaki bu eğlence mücadelesi, giriş seviyesindeki itfaiyecilerin mantığını keşfetmek için özenle seçilmiş on soruyu kullanıyor. Yangın ve duman bilimi, olay yeri tehlikeleri, ekipman mekaniği, pratik aritmetik, mekansal farkındalık, açık iletişim ve olay muhakemesini kapsar.\n\nZorluk, erişilebilir temellerden hızla değişen koşullara, pratik mekaniklere ve entegre olay kararlarına doğru ilerliyor. Sorularda yerel rütbeler, kurallar, inşaat kuralları veya operasyonel yangınla mücadele prosedürleri yerine dünya çapında güvenli ilkeler kullanılır.\n\nSon yüzdeniz yalnızca bu eğlence testinde verilen yanıtları yansıtır. Bu, operasyonel hazırlığa veya itfaiyeci istihdamına uygunluğuna ilişkin bir yargı değil, en güçlü olduğu düşünülen giriş alanlarının ve daha zorlu olduğu anlaşılan konuların eğlenceli bir anlık görüntüsüdür.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "On sorunun tamamını kendi hızınızda çözün; zamanlayıcı veya hız bonusu yoktur.",
         "Görünür ipuçlarıyla en iyi desteklenen tek seçeneği seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "İtfaiyeci mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "İtfaiyeci Mücadelesi",
@@ -30,10 +26,8 @@
         "preAdCopy": "İtfaiyeci puanınız ve beş alanlı dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş giriş alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş giriş alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "İtfaiyeci giriş mücadelesini geçtiniz!",
       "finished": "İtfaiyeci giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü giriş alanı",
       "trickiest": "En zorlu giriş alanı",
       "bestRound": "En iyi olay bölümü",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Isı ve yakıt mevcuttur. Yangın üçgenini tamamlamak için hangi üçüncü elemente ihtiyaç vardır?",
           "headerLabel": "YANGIN BİLİMİ",
-          "answers": [
-            "Su",
-            "Oksijen",
-            "Duman",
-            "kül"
-          ]
+          "answers": {
+            "a1": "Su",
+            "a2": "Oksijen",
+            "a3": "Duman",
+            "a4": "kül"
+          }
         },
         "firefighter-s1q2": {
           "question": "Bir su havuzunun yanında kıvılcım saçan bir elektrik paneli duruyor. En güvenli ilk müdahale nedir?",
           "headerLabel": "TEHLİKE BELİRTME",
-          "answers": [
-            "Kapatmak için suyun içinden geçin",
-            "Panelin üzerine daha fazla su dökün",
-            "Paneli dış kasasından hareket ettirin",
-            "İnsanları uzak tutun ve nitelikli müdahale ekiplerini uyarın"
-          ]
+          "answers": {
+            "a1": "Kapatmak için suyun içinden geçin",
+            "a2": "Panelin üzerine daha fazla su dökün",
+            "a3": "Paneli dış kasasından hareket ettirin",
+            "a4": "İnsanları uzak tutun ve nitelikli müdahale ekiplerini uyarın"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Hangi rapor, nedenini tahmin etmeden değişikliği en iyi şekilde aktarır?",
           "headerLabel": "OLAY RAPORLAMA",
-          "answers": [
-            "Kuzey kapısındaki duman hafif ve sabit bir durumdan hızla artan bir duruma dönüştü",
-            "Dumandan yanan malzemenin kesin olduğu belirlendi",
-            "Önemli bir şey değişmedi çünkü duman zaten mevcuttu",
-            "Yangın mutlaka aynı bölgede kalacak"
-          ]
+          "answers": {
+            "a1": "Kuzey kapısındaki duman hafif ve sabit bir durumdan hızla artan bir duruma dönüştü",
+            "a2": "Dumandan yanan malzemenin kesin olduğu belirlendi",
+            "a3": "Önemli bir şey değişmedi çünkü duman zaten mevcuttu",
+            "a4": "Yangın mutlaka aynı bölgede kalacak"
+          }
         },
         "firefighter-s1q5": {
           "question": "Kaldıraç olarak bir gözetleme çubuğu kullanılır. Kavrama pivottan uzaklaştığında genellikle ne olur?",
           "headerLabel": "MEKANİK AKIL YÜRÜTME",
-          "answers": [
-            "Her zaman daha fazla güce ihtiyaç vardır",
-            "Pivot çalışmayı durduruyor",
-            "Aynı dönme etkisi için daha az kuvvet gerekir",
-            "Yük ağırlıksız hale gelir"
-          ]
+          "answers": {
+            "a1": "Her zaman daha fazla güce ihtiyaç vardır",
+            "a2": "Pivot çalışmayı durduruyor",
+            "a3": "Aynı dönme etkisi için daha az kuvvet gerekir",
+            "a4": "Yük ağırlıksız hale gelir"
+          }
         },
         "firefighter-s3q6": {
           "question": "Sıcak bir yüzey, birkaç metre uzaktan temas etmeden yüzünüzü ısıtır. Hangi ısı transfer süreci bunu en iyi şekilde açıklıyor?",
           "headerLabel": "ISI TRANSFERİ",
-          "answers": [
-            "Radyasyon",
-            "iletim",
-            "Buharlaşma",
-            "Yoğuşma"
-          ]
+          "answers": {
+            "a1": "Radyasyon",
+            "a2": "iletim",
+            "a3": "Buharlaşma",
+            "a4": "Yoğuşma"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Rota hangi gerçek mesafeyi temsil ediyor?",
           "headerLabel": "PRATİK SAYISALLIK",
-          "answers": [
-            "50 metre",
-            "60 metre",
-            "65 metre",
-            "70 metre"
-          ]
+          "answers": {
+            "a1": "50 metre",
+            "a2": "60 metre",
+            "a3": "65 metre",
+            "a4": "70 metre"
+          }
         },
         "firefighter-s4q7": {
           "question": "Yangından zarar gören çatı sarkıyor ve yeni çatlaklar ortaya çıkıyor. En güvenli yorumlama nedir?",
           "headerLabel": "YAPISAL TEHLİKELER",
-          "answers": [
-            "Çatı güvenli bir şekilde soğuyor",
-            "Çatlaklar tam olarak nerede duracağımızı gösteriyor",
-            "Çökme mümkündür, bu nedenle uzak durun ve değişen durumu bildirin",
-            "Hasar ancak olaydan sonra önem kazanır"
-          ]
+          "answers": {
+            "a1": "Çatı güvenli bir şekilde soğuyor",
+            "a2": "Çatlaklar tam olarak nerede duracağımızı gösteriyor",
+            "a3": "Çökme mümkündür, bu nedenle uzak durun ve değişen durumu bildirin",
+            "a4": "Hasar ancak olaydan sonra önem kazanır"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "A dişlisi B'yi, B dişlisi C'yi çalıştırır. C dişlisi hangi yöne dönüyor?",
           "headerLabel": "DİŞLİ AKIL VERME",
-          "answers": [
-            "İki yön değişiminden sonra saat yönünde",
-            "Bir ters dönüşten sonra saat yönünün tersine",
-            "Üç vites kullanıldığı için dönemiyor",
-            "Yukarı çünkü A Dişlisi ilk sıradadır"
-          ]
+          "answers": {
+            "a1": "İki yön değişiminden sonra saat yönünde",
+            "a2": "Bir ters dönüşten sonra saat yönünün tersine",
+            "a3": "Üç vites kullanıldığı için dönemiyor",
+            "a4": "Yukarı çünkü A Dişlisi ilk sıradadır"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Her mürettebatın donatılması ve iki yedek parçanın kalması için kaç tane daha lambanın çekilmesi gerekiyor?",
           "headerLabel": "EKİPMAN MATEMATİKLERİ",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "En iyi ilk eylem ve rapor nedir?",
           "headerLabel": "NİHAİ OLAY TESTİ",
-          "answers": [
-            "Dumanı bildirmeden önce sayımı bitirin",
-            "İnsanları doğuya yönlendirin; Batı dumanını ve iki kayıp kişiyi bildirin; sayımı ertelemek",
-            "En kısa olduğu için batı koridorunu kullanın",
-            "Yalnızca ekipman sayısını raporla"
-          ]
+          "answers": {
+            "a1": "Dumanı bildirmeden önce sayımı bitirin",
+            "a2": "İnsanları doğuya yönlendirin; Batı dumanını ve iki kayıp kişiyi bildirin; sayımı ertelemek",
+            "a3": "En kısa olduğu için batı koridorunu kullanın",
+            "a4": "Yalnızca ekipman sayısını raporla"
+          }
         }
       }
     }

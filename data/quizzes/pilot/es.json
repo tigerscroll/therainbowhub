@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 3 % de los adultos aprueba este examen de acceso a la formación de pilotos",
   "eyebrow": "LA PRUEBA DE APTITUD DEL PILOTO",
   "summary": "Diez preguntas ponen a prueba los principios de vuelo, los instrumentos, el clima, la navegación y el criterio de la cabina.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "Los conceptos básicos de la cabina parecen simples. Luego, el examen pasa al clima, la navegación y las decisiones que los pilotos no pueden darse el lujo de adivinar.",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafío de entretenimiento de diez preguntas utiliza conceptos de aviación civil internacional en lugar del plan de estudios de licencias de un país. Pone a prueba amplios principios de vuelo, instrumentos de cabina, conciencia meteorológica, navegación y toma de decisiones conservadoras.\n\nElige una respuesta para cada pregunta. No sabrás qué respuestas son correctas hasta el final, cuando podrás desbloquear la revisión completa.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Responde diez preguntas cada vez más difíciles sobre aptitud para piloto.",
         "Elige la respuesta más segura o precisa.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafío de entrada piloto",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Examen de ingreso piloto",
@@ -30,10 +26,8 @@
         "preAdCopy": "Se han verificado tus diez respuestas y tu puntuación de aptitud de piloto está listo para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Cinco áreas de aviación comparadas",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Cinco áreas de aviación comparadas"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de ingreso al piloto!",
       "finished": "Desafío de entrada piloto completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -99,8 +92,7 @@
         "snapshot": "Lo que sugiere tu resultado",
         "targetReached": "80% del desafío alcanzado",
         "targetRemaining": "Respuestas correctas que faltan para alcanzar el 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "¿Qué fuerza actúa hacia arriba contra el peso de una aeronave?",
-          "answers": [
-            "Sustentación",
-            "Resistencia",
-            "Empuje",
-            "Inercia"
-          ],
+          "answers": {
+            "a1": "Sustentación",
+            "a2": "Resistencia",
+            "a3": "Empuje",
+            "a4": "Inercia"
+          },
           "headerLabel": "FUNDAMENTOS DE VUELO"
         },
         "pilot-q2": {
           "question": "¿Qué instrumento de cabina indica la altitud?",
-          "answers": [
-            "Anemómetro",
-            "Altímetro",
-            "Indicador de rumbo",
-            "Coordinador de viraje"
-          ],
+          "answers": {
+            "a1": "Anemómetro",
+            "a2": "Altímetro",
+            "a3": "Indicador de rumbo",
+            "a4": "Coordinador de viraje"
+          },
           "headerLabel": "INSTRUMENTOS"
         },
         "pilot-q3": {
           "question": "¿Qué tipo de nube está más fuertemente asociada con tormentas eléctricas y turbulencias severas?",
-          "answers": [
-            "Cirro",
-            "Estrato",
-            "Cumulonimbo",
-            "Altostrato"
-          ],
+          "answers": {
+            "a1": "Cirro",
+            "a2": "Estrato",
+            "a3": "Cumulonimbo",
+            "a4": "Altostrato"
+          },
           "headerLabel": "TIEMPO DE AVIACIÓN"
         },
         "pilot-q4": {
           "question": "¿Un rumbo de 180 grados apunta aproximadamente en qué dirección?",
-          "answers": [
-            "Norte",
-            "Este",
-            "Oeste",
-            "Sur"
-          ],
+          "answers": {
+            "a1": "Norte",
+            "a2": "Este",
+            "a3": "Oeste",
+            "a4": "Sur"
+          },
           "headerLabel": "NAVEGACIÓN"
         },
         "pilot-q5": {
           "question": "El tiempo se está deteriorando más rápido de lo previsto y los márgenes de seguridad se están reduciendo. ¿Cuál es la mejor decisión general?",
-          "answers": [
-            "Reevaluar temprano y desviarse o aterrizar mientras existan opciones seguras",
-            "Continuar porque el plan original debe completarse.",
-            "Descender por debajo de los límites seguros para mantener el contacto visual.",
-            "Ignorar la tendencia hasta que las condiciones se vuelvan críticas"
-          ],
+          "answers": {
+            "a1": "Reevaluar temprano y desviarse o aterrizar mientras existan opciones seguras",
+            "a2": "Continuar porque el plan original debe completarse.",
+            "a3": "Descender por debajo de los límites seguros para mantener el contacto visual.",
+            "a4": "Ignorar la tendencia hasta que las condiciones se vuelvan críticas"
+          },
           "headerLabel": "JUICIO AERONÁUTICO"
         },
         "pilot-q6": {
           "question": "¿Qué superficies de control hacen que un avión gire sobre su eje longitudinal?",
-          "answers": [
-            "Timones de profundidad",
-            "Alerones",
-            "Solo los pedales del timón de dirección",
-            "Flaps"
-          ],
+          "answers": {
+            "a1": "Timones de profundidad",
+            "a2": "Alerones",
+            "a3": "Solo los pedales del timón de dirección",
+            "a4": "Flaps"
+          },
           "headerLabel": "CONTROLES DE VUELO"
         },
         "pilot-q7": {
           "question": "¿Qué instrumento muestra la velocidad de ascenso o descenso de una aeronave?",
-          "answers": [
-            "Brújula",
-            "Solo altímetro",
-            "Indicador de velocidad vertical",
-            "Indicador de temperatura del aire exterior"
-          ],
+          "answers": {
+            "a1": "Brújula",
+            "a2": "Solo altímetro",
+            "a3": "Indicador de velocidad vertical",
+            "a4": "Indicador de temperatura del aire exterior"
+          },
           "headerLabel": "ESCANEO DE CABINA"
         },
         "pilot-q8": {
           "question": "¿Qué es la cizalladura del viento?",
-          "answers": [
-            "Un viento constante que nunca cambia",
-            "Solo una medida de la altura de las nubes.",
-            "El aire se mueve solo sobre el agua.",
-            "Un cambio rápido en la velocidad o dirección del viento en una distancia corta."
-          ],
+          "answers": {
+            "a1": "Un viento constante que nunca cambia",
+            "a2": "Solo una medida de la altura de las nubes.",
+            "a3": "El aire se mueve solo sobre el agua.",
+            "a4": "Un cambio rápido en la velocidad o dirección del viento en una distancia corta."
+          },
           "headerLabel": "PELIGROS CLIMÁTICOS"
         },
         "pilot-q9": {
           "question": "¿En qué dirección está alineada aproximadamente una pista con el número 27?",
-          "answers": [
-            "Oeste",
-            "Norte",
-            "Este",
-            "Sur"
-          ],
+          "answers": {
+            "a1": "Oeste",
+            "a2": "Norte",
+            "a3": "Este",
+            "a4": "Sur"
+          },
           "headerLabel": "RAZONAMIENTO DE PISTA"
         },
         "pilot-q10": {
           "question": "Observa un desequilibrio de combustible inexplicable durante el vuelo. ¿Cuál es la mejor respuesta general?",
-          "answers": [
-            "Suponer que el indicador se corregirá solo",
-            "Seguir la lista de comprobación, vigilar la situación y comunicarla según sea necesario",
-            "Cambiar de sistema al azar hasta que desaparezca el problema.",
-            "Retrasar cualquier acción hasta aterrizar."
-          ],
+          "answers": {
+            "a1": "Suponer que el indicador se corregirá solo",
+            "a2": "Seguir la lista de comprobación, vigilar la situación y comunicarla según sea necesario",
+            "a3": "Cambiar de sistema al azar hasta que desaparezca el problema.",
+            "a4": "Retrasar cualquier acción hasta aterrizar."
+          },
           "headerLabel": "PREGUNTA FINAL DE CABINA"
         }
       }

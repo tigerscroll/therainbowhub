@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 7% vượt qua bài kiểm tra cơ khí ô tô này",
   "eyebrow": "BAY DỊCH VỤ CHÍNH XÁC",
   "summary": "Đèn cảnh báo, lỗi tiềm ẩn và các triệu chứng lạ trên đường kiểm tra xem bạn có thể chẩn đoán sự cố trước khi chi phí đắt đỏ hay không.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Bài kiểm tra giải trí toàn cầu này bao gồm 10 câu hỏi thực tế về hệ thống xe, phán đoán của xưởng và tìm lỗi. Nó chuyển từ các dấu hiệu cảnh báo quen thuộc sang các triệu chứng liên quan cần được chẩn đoán cẩn thận.\n\nChọn câu trả lời đúng nhất từ thông tin hiển thị. Các câu hỏi sử dụng các nguyên tắc chung về phương tiện và tránh giả định một nhãn hiệu, mẫu mã hoặc tiêu chuẩn kiểm tra địa phương.\n\nĐiểm của bạn chỉ phản ánh thử thách ngắn này. Nó không phải là bằng cấp thương mại, kiểm tra an toàn hoặc thay thế cho việc chẩn đoán bởi một thợ cơ khí có trình độ.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Hoàn thành mười câu hỏi được lựa chọn cẩn thận trong một thử thách tập trung.",
         "Chọn một câu trả lời mỗi lần. Tính đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách cơ khí",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Thử thách hội thảo",
@@ -29,10 +26,8 @@
         "preAdCopy": "Điểm cơ khí và phân tích sáu hệ thống của bạn đã sẵn sàng tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Sáu hệ thống xe được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Sáu hệ thống xe được so sánh"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách cơ khí!",
       "finished": "Thử thách hội thảo đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Hệ thống xe mạnh nhất",
       "trickiest": "Hệ thống xe phức tạp nhất",
-      "bestRound": "Phần hay nhất",
-      "showBestRound": false
+      "bestRound": "Phần hay nhất"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Biểu tượng cảnh báo nào liên quan trực tiếp nhất đến áp suất dầu động cơ?",
-          "answers": [
-            "Lon dầu",
-            "Pin",
-            "Nhiệt kế",
-            "Vô lăng"
-          ],
+          "answers": {
+            "a1": "Lon dầu",
+            "a2": "Pin",
+            "a3": "Nhiệt kế",
+            "a4": "Vô lăng"
+          },
           "headerLabel": "HỆ THỐNG ĐỘNG CƠ"
         },
         "mech-r1q2": {
           "question": "Cảnh báo phanh màu đỏ vẫn sáng sau khi nhả phanh tay. Phản ứng an toàn nhất là gì?",
-          "answers": [
-            "Lái xe nhanh hơn để kiểm tra nó",
-            "Dừng xe an toàn và kiểm tra hệ thống phanh",
-            "Bơm lốp mạnh hơn",
-            "Bỏ qua nó cho đến khi dịch vụ tiếp theo"
-          ],
+          "answers": {
+            "a1": "Lái xe nhanh hơn để kiểm tra nó",
+            "a2": "Dừng xe an toàn và kiểm tra hệ thống phanh",
+            "a3": "Bơm lốp mạnh hơn",
+            "a4": "Bỏ qua nó cho đến khi dịch vụ tiếp theo"
+          },
           "headerLabel": "PHANH & AN TOÀN"
         },
         "mech-r4q5": {
           "question": "Tiếng click nhịp nhàng sẽ trở nên nhanh hơn khi rẽ gấp. Phần nào có thể là nguyên nhân?",
-          "answers": [
-            "Máy điều nhiệt",
-            "Bơm nhiên liệu",
-            "Khớp vận tốc không đổi bên ngoài",
-            "quạt cabin"
-          ],
+          "answers": {
+            "a1": "Máy điều nhiệt",
+            "a2": "Bơm nhiên liệu",
+            "a3": "Khớp vận tốc không đổi bên ngoài",
+            "a4": "quạt cabin"
+          },
           "headerLabel": "HỆ THỐNG LÁI XE"
         },
         "mech-r4q6": {
           "question": "Một lốp có thành lốp bị phồng sâu. Bạn nên làm gì?",
-          "answers": [
-            "Giảm áp lực và tiếp tục",
-            "Đẩy chỗ phình ra bằng phẳng",
-            "Di chuyển nó sang bánh xe khác",
-            "Ngừng sử dụng lốp và sắp xếp thay thế"
-          ],
+          "answers": {
+            "a1": "Giảm áp lực và tiếp tục",
+            "a2": "Đẩy chỗ phình ra bằng phẳng",
+            "a3": "Di chuyển nó sang bánh xe khác",
+            "a4": "Ngừng sử dụng lốp và sắp xếp thay thế"
+          },
           "headerLabel": "AN TOÀN XE"
         },
         "mech-r5q5": {
           "question": "Động cơ quá nóng khi tham gia giao thông nhưng nguội đi ở tốc độ trên đường. Thành phần nào xứng đáng được kiểm tra sớm?",
-          "answers": [
-            "Quạt tản nhiệt",
-            "Dây an toàn",
-            "Nắp xăng",
-            "Vòng bi bánh xe"
-          ],
+          "answers": {
+            "a1": "Quạt tản nhiệt",
+            "a2": "Dây an toàn",
+            "a3": "Nắp xăng",
+            "a4": "Vòng bi bánh xe"
+          },
           "headerLabel": "HỆ THỐNG LÀM MÁT"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Điện áp pin dự kiến 12,6 volt, đo được 10,5 volt"
           },
           "question": "Một pin 12 volt khỏe mạnh sẽ đọc khoảng 12,6 V khi nghỉ. Cái này ghi là 10,5 V. Điều đó cho thấy điều gì?",
-          "answers": [
-            "Lốp xe bị mòn",
-            "Chất làm mát quá mạnh",
-            "Pin đã cạn kiệt hoặc bị hỏng cell",
-            "Đai máy phát điện còn mới"
-          ],
+          "answers": {
+            "a1": "Lốp xe bị mòn",
+            "a2": "Chất làm mát quá mạnh",
+            "a3": "Pin đã cạn kiệt hoặc bị hỏng cell",
+            "a4": "Đai máy phát điện còn mới"
+          },
           "headerLabel": "HỆ THỐNG ĐIỆN"
         },
         "mech-r7q1": {
           "question": "Vô lăng rung chủ yếu ở một dải tốc độ trên đường. Nghi phạm đầu tiên có khả năng là gì?",
-          "answers": [
-            "Mất cân bằng bánh xe",
-            "Chất lượng nhiên liệu",
-            "Bộ lọc cabin",
-            "Màu nước làm mát"
-          ],
+          "answers": {
+            "a1": "Mất cân bằng bánh xe",
+            "a2": "Chất lượng nhiên liệu",
+            "a3": "Bộ lọc cabin",
+            "a4": "Màu nước làm mát"
+          },
           "headerLabel": "CHỈ ĐẠO & CÂN BẰNG"
         },
         "mech-r7q6": {
           "question": "Một rung động nghiêm trọng mới xuất hiện sau khi gặp phải chướng ngại vật trên đường. Bạn nên làm gì?",
-          "answers": [
-            "Tăng tốc độ để làm mượt nó",
-            "Dừng lại an toàn và kiểm tra bánh xe, lốp trước khi đi tiếp",
-            "Giảm mọi áp suất lốp",
-            "Bỏ qua nếu không có cảnh báo xuất hiện"
-          ],
+          "answers": {
+            "a1": "Tăng tốc độ để làm mượt nó",
+            "a2": "Dừng lại an toàn và kiểm tra bánh xe, lốp trước khi đi tiếp",
+            "a3": "Giảm mọi áp suất lốp",
+            "a4": "Bỏ qua nếu không có cảnh báo xuất hiện"
+          },
           "headerLabel": "AN TOÀN XE"
         },
         "mech-r9q2": {
           "context": "KHÁCH HÀNG NÓI",
           "question": "“Ắc quy mới nhưng liên tục bị hết pin và xuất hiện cảnh báo sạc khi đang lái xe.” Những gì nên được kiểm tra?",
-          "answers": [
-            "Căn chỉnh lốp",
-            "Hệ thống sạc và các kết nối của nó",
-            "Độ dày má phanh",
-            "Nồng độ nước làm mát"
-          ],
+          "answers": {
+            "a1": "Căn chỉnh lốp",
+            "a2": "Hệ thống sạc và các kết nối của nó",
+            "a3": "Độ dày má phanh",
+            "a4": "Nồng độ nước làm mát"
+          },
           "headerLabel": "HỆ THỐNG SẠC"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Động cơ nguội đi khi chạy trên đường, quá nóng khi chạy không tải, quạt làm mát không chạy"
           },
           "question": "Động cơ chỉ quá nóng khi chạy không tải, bộ tản nhiệt không bị cản trở và quạt làm mát không bao giờ chạy. Điều gì cần được chẩn đoán đầu tiên?",
-          "answers": [
-            "Căn chỉnh bánh xe",
-            "Niêm phong nắp nhiên liệu",
-            "Độ mòn của má phanh",
-            "Mạch quạt, động cơ và lệnh điều khiển"
-          ],
+          "answers": {
+            "a1": "Căn chỉnh bánh xe",
+            "a2": "Niêm phong nắp nhiên liệu",
+            "a3": "Độ mòn của má phanh",
+            "a4": "Mạch quạt, động cơ và lệnh điều khiển"
+          },
           "headerLabel": "CHẨN ĐOÁN CUỐI CÙNG"
         }
       }

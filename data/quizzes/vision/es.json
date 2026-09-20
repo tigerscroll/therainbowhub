@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 7% puede aprobar este examen de la vista",
   "eyebrow": "LABORATORIO DE ENFOQUE ÓPTICO",
   "summary": "Pequeñas diferencias, patrones cambiantes y trampas ópticas prueban si tus ojos captan lo que la mayoría de la gente pasa por alto.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "¿Qué tan agudos son tus ojos? Detecta pequeñas diferencias, sigue patrones cambiantes y detecta trampas visuales antes de que te atrapen.",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este quiz contiene diez acertijos visuales sobre contraste de color, coincidencia de detalles, orientación espacial, seguimiento de patrones, atención y memoria visual. Las tareas se vuelven más exigentes sin recurrir a terminología especializada.\n\nObserva con atención cada imagen o conjunto de símbolos y elige la respuesta mejor respaldada por lo que ves. Algunas preguntas ponen a prueba la percepción y la atención, no la vista en sí.\n\nEsto no es un examen de la vista, una prueba médica ni un diagnóstico. Consulta a un profesional cualificado si te preocupa tu visión.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Completa diez preguntas cuidadosamente seleccionadas en un único desafío.",
         "Elige una respuesta cada vez. No sabrás qué respuestas son correctas hasta el final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafío de visión",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Desafío de visión",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tu puntuación de desafío de visión y el desglose de tus tres habilidades están listos para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Tres habilidades visuales comparadas",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Tres habilidades visuales comparadas"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de la visión!",
       "finished": "Desafío de visión completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -98,8 +91,7 @@
         "snapshot": "Lo que sugiere tu perfil de enfoque",
         "targetReached": "80% del desafío alcanzado",
         "targetRemaining": "Respuestas correctas que faltan para alcanzar el 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Cuatro muestras azules cercanas con un mosaico inferior derecho sutilmente diferente"
           },
           "question": "¿Qué casilla tiene un color diferente?",
-          "answers": [
-            "Arriba a la izquierda",
-            "Abajo a la derecha",
-            "Arriba a la derecha",
-            "Abajo a la izquierda"
-          ],
+          "answers": {
+            "a1": "Arriba a la izquierda",
+            "a2": "Abajo a la derecha",
+            "a3": "Arriba a la derecha",
+            "a4": "Abajo a la izquierda"
+          },
           "headerLabel": "CONTRASTE DE COLOR"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Código de referencia M 7 K 2 P 9"
           },
           "question": "¿Qué código coincide exactamente?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "COINCIDENCIA EXACTA"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Flecha noreste reflejada en un espejo vertical"
           },
           "question": "¿Qué flecha es el espejo vertical de ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "ORIENTACIÓN ESPACIAL"
         },
         "vision-r3q6": {
           "context": "F F F F F F F",
           "question": "¿Cuántas letras F se muestran?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "CONTROL DE ATENCIÓN"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, desconocido"
           },
           "question": "¿Qué ficha completa la fila alterna?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "SEGUIMIENTO DE PATRONES"
         },
         "vision-r4q5": {
           "question": "¿Qué color destaca más frente al azul marino intenso?",
-          "answers": [
-            "Muestra A",
-            "Muestra B",
-            "Muestra D",
-            "Muestra C"
-          ],
+          "answers": {
+            "a1": "Muestra A",
+            "a2": "Muestra B",
+            "a3": "Muestra D",
+            "a4": "Muestra C"
+          },
           "headerLabel": "ENFOQUE DE COLOR"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Un punto de inicio rojo con cuatro rutas de puntos coincidentes que se cruzan repetidamente antes de llegar a los puntos finales A, B, C y D."
           },
           "question": "Comience en el punto rojo y siga su ruta punteada. ¿A qué letra llegas?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SEGUIMIENTO VISUAL"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026\nB: F0CUS-M7Q2-2026",
           "question": "¿Qué posición precisa cambió en la versión B?",
-          "answers": [
-            "La primera F",
-            "La Q",
-            "El segundo carácter",
-            "El último dígito"
-          ],
+          "answers": {
+            "a1": "La primera F",
+            "a2": "La Q",
+            "a3": "El segundo carácter",
+            "a4": "El último dígito"
+          },
           "headerLabel": "DETECCIÓN DE DETALLE"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Base M8Q2 K7P4 R6N3 y copia M8Q2 K1P4 R6M3"
           },
           "question": "¿Qué dos personajes cambiaron?",
-          "answers": [
-            "7 y N",
-            "8 y 6",
-            "Q y P",
-            "K y R"
-          ],
+          "answers": {
+            "a1": "7 y N",
+            "a2": "8 y 6",
+            "a3": "Q y P",
+            "a4": "K y R"
+          },
           "headerLabel": "COMPARACIÓN DE CÓDIGOS"
         },
         "vision-r8q5": {
           "question": "¿Qué icono apareció en cuarto lugar?",
-          "answers": [
-            "Luna",
-            "Ancla",
-            "Sol",
-            "Estrella"
-          ],
+          "answers": {
+            "a1": "Luna",
+            "a2": "Ancla",
+            "a3": "Sol",
+            "a4": "Estrella"
+          },
           "study": {
             "title": "Instantánea rápida",
             "items": [

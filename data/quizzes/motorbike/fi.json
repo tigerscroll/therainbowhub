@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat kuljettajat eivät voi läpäistä tätä moottoripyörän kuljettajatestiä",
   "eyebrow": "MOOTTORIPYÖRÄKULJETTAJAN TESTI",
   "summary": "Kymmenen maailmanlaajuista liikenneturvallisuuskysymystä testaavat siirtyvätkö ajovaistosi kahdelle pyörälle.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Autolla ajaminen ei riitä. Nämä 10 moottoripyöräkysymystä paljastavat turvallisuustiedot, joita useimmat tienkäyttäjät kaipaavat.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen englanninkielinen viihdetietokilpailu testaa laajat moottoripyörän turvallisuusperiaatteet, jotka koskevat monia tiejärjestelmiä. Se välttää maakohtaisia merkkejä, lupasääntöjä, nopeusrajoituksia ja lakitekstejä.\n\nValitse turvallisin yleinen vastaus kussakin tilanteessa. Oikeat moottoripyörät, tiet ja paikalliset lait vaihtelevat, joten noudata aina virallista ajajan käsikirjaa, koulutusta ja valmistajan ohjeita.\n\nTämän testin läpäiseminen ei osoita käytännön ajotaitoa tai korvaa hyväksyttyä moottoripyörän opetusta.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Lue jokainen moottoripyörän turvallisuusskenaario huolellisesti.",
         "Valitse neljästä vaihtoehdosta turvallisin yleinen vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Moottoripyörän testi",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Moottoripyörän turvallisuus",
@@ -30,10 +26,8 @@
         "preAdCopy": "Moottoripyörän turvallisuuspisteesi ja täydellinen vastaustarkistus ovat valmiit.",
         "preAdChecks": [
           "10 ratsastuspäätöstä tarkistettu",
-          "Vertailussa kuusi turvallisuusaluetta",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Vertailussa kuusi turvallisuusaluetta"
+        ]
       }
     }
   },
@@ -89,7 +83,6 @@
     "score": {
       "passed": "Läpäisit moottoripyörän kuljettajakokeen!",
       "finished": "Moottoripyörän kuljettajakoe suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin turva-alue",
       "trickiest": "Hankalin turvallisuusalue",
       "bestRound": "Paras jakso",
@@ -102,8 +95,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -112,102 +104,102 @@
       "questions": {
         "motorbike-q1": {
           "question": "Milloin rengaspaineet on yleensä parasta tarkistaa tarkan rutiinilukeman saamiseksi?",
-          "answers": [
-            "Kun renkaat ovat kylmät",
-            "Heti nopean ajon jälkeen",
-            "Vain kun varoitus tulee näkyviin",
-            "Matkustajaa kuljettaessaan"
-          ],
+          "answers": {
+            "a1": "Kun renkaat ovat kylmät",
+            "a2": "Heti nopean ajon jälkeen",
+            "a3": "Vain kun varoitus tulee näkyviin",
+            "a4": "Matkustajaa kuljettaessaan"
+          },
           "headerLabel": "KONEEN TARKISTUS"
         },
         "motorbike-q2": {
           "question": "Mihin ratsastajan tulisi yleensä suunnata näkemyksensä kulkiessaan mutkassa?",
-          "answers": [
-            "Etupyörässä",
-            "Kaarteen kautta aiottua polkua kohti",
-            "Tien reunassa",
-            "Takana olevassa ajoneuvossa"
-          ],
+          "answers": {
+            "a1": "Etupyörässä",
+            "a2": "Kaarteen kautta aiottua polkua kohti",
+            "a3": "Tien reunassa",
+            "a4": "Takana olevassa ajoneuvossa"
+          },
           "headerLabel": "KULMA"
         },
         "motorbike-q3": {
           "question": "Sade alkaa ajon aikana. Mitä pitäisi tapahtua edessä olevan ajoneuvon takana olevalle tilalle?",
-          "answers": [
-            "Sen pitäisi pysyä täsmälleen samana",
-            "Sen pitäisi olla lyhyempi",
-            "Sen pitäisi lisääntyä",
-            "Sillä on merkitystä vain suurella nopeudella"
-          ],
+          "answers": {
+            "a1": "Sen pitäisi pysyä täsmälleen samana",
+            "a2": "Sen pitäisi olla lyhyempi",
+            "a3": "Sen pitäisi lisääntyä",
+            "a4": "Sillä on merkitystä vain suurella nopeudella"
+          },
           "headerLabel": "MÄRKÄT OLOSUHTEET"
         },
         "motorbike-q4": {
           "question": "Mikä laaja tekniikka on yleensä turvallisin nykyaikaisessa moottoripyörässä suorassa hätäpysäytystilassa?",
-          "answers": [
-            "Käytä vain takajarrua",
-            "Käytä välittömästi vain etujarrua",
-            "Pumppaa molempia jarruja toistuvasti",
-            "Käytä molempia jarruja asteittain ja pidä moottoripyörä vakaana"
-          ],
+          "answers": {
+            "a1": "Käytä vain takajarrua",
+            "a2": "Käytä välittömästi vain etujarrua",
+            "a3": "Pumppaa molempia jarruja toistuvasti",
+            "a4": "Käytä molempia jarruja asteittain ja pidä moottoripyörä vakaana"
+          },
           "headerLabel": "HÄTÄJARRUTUS"
         },
         "motorbike-q5": {
           "question": "Mikä tapa auttaa parhaiten vähentämään mahdollisuutta, että toinen kuljettaja näkee moottoripyörän?",
-          "answers": [
-            "Pysy poissa kuolleista kulmista ja aseta näkyvyys",
-            "Aja ajoneuvon vieressä mahdollisimman pitkään",
-            "Oletetaan, että katsekontakti tarkoittaa, että kuljettaja on nähnyt sinut",
-            "Käytä kaukovaloja jatkuvasti"
-          ],
+          "answers": {
+            "a1": "Pysy poissa kuolleista kulmista ja aseta näkyvyys",
+            "a2": "Aja ajoneuvon vieressä mahdollisimman pitkään",
+            "a3": "Oletetaan, että katsekontakti tarkoittaa, että kuljettaja on nähnyt sinut",
+            "a4": "Käytä kaukovaloja jatkuvasti"
+          },
           "headerLabel": "NÄKYVYYS"
         },
         "motorbike-q6": {
           "question": "Mitä tärkeää muutosta ratsastajan tulee odottaa kuljettaessaan matkustajaa?",
-          "answers": [
-            "Moottoripyörä kääntyy ja pysähtyy täsmälleen samalla tavalla",
-            "Tasapaino, kiihtyvyys ja jarrutusmatka voivat muuttua",
-            "Renkaiden kunto ei ole niin tärkeä",
-            "Matkustajan tulee nojata ajajaa vastapäätä"
-          ],
+          "answers": {
+            "a1": "Moottoripyörä kääntyy ja pysähtyy täsmälleen samalla tavalla",
+            "a2": "Tasapaino, kiihtyvyys ja jarrutusmatka voivat muuttua",
+            "a3": "Renkaiden kunto ei ole niin tärkeä",
+            "a4": "Matkustajan tulee nojata ajajaa vastapäätä"
+          },
           "headerLabel": "MATKUSTAJIEN TURVALLISUUS"
         },
         "motorbike-q7": {
           "question": "Miten ratsastajan tulisi ylittää märkämaalatut merkinnät, kun niitä ei voida välttää?",
-          "answers": [
-            "Kiihdytä jyrkästi nojaten",
-            "Jarruta kovaa merkintää",
-            "Pidä moottoripyörä mahdollisimman pystyssä ja tasaisena",
-            "Käänny äkillisesti sen poikki"
-          ],
+          "answers": {
+            "a1": "Kiihdytä jyrkästi nojaten",
+            "a2": "Jarruta kovaa merkintää",
+            "a3": "Pidä moottoripyörä mahdollisimman pystyssä ja tasaisena",
+            "a4": "Käänny äkillisesti sen poikki"
+          },
           "headerLabel": "PINNAN VAARA"
         },
         "motorbike-q8": {
           "question": "Mikä lopullinen havainto on arvokas ennen asennon muuttamista alueelle, jota peili ei välttämättä näy?",
-          "answers": [
-            "Vilkaisu nopeusnäyttöön",
-            "Katsaus etupyörään",
-            "Polttoainetason tarkistus",
-            "Suora kuolleen kulman tarkastus, kun se on turvallista"
-          ],
+          "answers": {
+            "a1": "Vilkaisu nopeusnäyttöön",
+            "a2": "Katsaus etupyörään",
+            "a3": "Polttoainetason tarkistus",
+            "a4": "Suora kuolleen kulman tarkastus, kun se on turvallista"
+          },
           "headerLabel": "HUOMAUTUS"
         },
         "motorbike-q9": {
           "question": "Mistä ajajan pitäisi löytää oikeat moottoripyöränsä vetoketjun säätötiedot?",
-          "answers": [
-            "Valmistajan tiedot",
-            "Arvaus toisen moottoripyörän perusteella",
-            "Renkaan sivuseinä",
-            "Tienvarsimerkki"
-          ],
+          "answers": {
+            "a1": "Valmistajan tiedot",
+            "a2": "Arvaus toisen moottoripyörän perusteella",
+            "a3": "Renkaan sivuseinä",
+            "a4": "Tienvarsimerkki"
+          },
           "headerLabel": "HUOLTO"
         },
         "motorbike-q10": {
           "question": "Ratsastaja huomaa keskittymisensä hiipuvan pitkällä matkalla. Mikä on turvallisin vastaus?",
-          "answers": [
-            "Aja nopeammin päästäksesi nopeammin maaliin",
-            "Pysähdy turvalliseen paikkaan ja pidä oikea tauko",
-            "Seuraa toista ajoneuvoa tarkasti",
-            "Avaa visiiri ja jatka"
-          ],
+          "answers": {
+            "a1": "Aja nopeammin päästäksesi nopeammin maaliin",
+            "a2": "Pysähdy turvalliseen paikkaan ja pidä oikea tauko",
+            "a3": "Seuraa toista ajoneuvoa tarkasti",
+            "a4": "Avaa visiiri ja jatka"
+          },
           "headerLabel": "VIIMEINEN TURVALLISUUSPUHELU"
         }
       }

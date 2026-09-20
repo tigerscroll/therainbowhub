@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 7% Can Pass This Vision Test",
   "eyebrow": "OPTICAL FOCUS LAB",
   "summary": "Tiny differences, shifting patterns and optical traps test whether your eyes catch what most people miss.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "How sharp are your eyes? Spot tiny differences, track shifting patterns and catch visual traps before they catch you.",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This entertainment challenge contains ten visual puzzles covering colour contrast, detail matching, spatial orientation, pattern tracking, attention and visual memory. The tasks become more demanding without relying on specialist terminology.\n\nStudy each image or symbol set carefully, then choose the answer best supported by what is shown. Some questions test perception and attention rather than eyesight itself.\n\nThis is not an eye examination, medical vision test or diagnosis. Seek qualified eye-care advice if you have concerns about your sight.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Complete ten carefully selected questions in one focused challenge.",
         "Choose one answer each time. Correctness remains hidden until the final reveal.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vision challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Vision Challenge",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your vision-challenge score and three-skill breakdown are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Three visual skills compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three visual skills compared"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "You passed the vision challenge!",
       "finished": "Vision challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest visual skill",
       "trickiest": "Trickiest visual skill",
       "bestRound": "Best section",
@@ -98,8 +91,7 @@
         "snapshot": "What your focus profile suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Four close blue swatches with a subtly different bottom-right tile"
           },
           "question": "Which tile is a different colour?",
-          "answers": [
-            "Top left",
-            "Bottom right",
-            "Top right",
-            "Bottom left"
-          ],
+          "answers": {
+            "a1": "Top left",
+            "a2": "Bottom right",
+            "a3": "Top right",
+            "a4": "Bottom left"
+          },
           "headerLabel": "COLOUR CONTRAST"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Reference code M 7 K 2 P 9"
           },
           "question": "Which code matches exactly?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "DETAIL MATCH"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Northeast arrow reflected across a vertical mirror"
           },
           "question": "Which arrow is the vertical mirror of ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "SPATIAL ORIENTATION"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "How many letter Fs are shown?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "ATTENTION CONTROL"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, unknown"
           },
           "question": "Which tile completes the alternating row?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "PATTERN TRACKING"
         },
         "vision-r4q5": {
           "question": "Which colour stands out most against deep navy?",
-          "answers": [
-            "Swatch A",
-            "Swatch B",
-            "Swatch D",
-            "Swatch C"
-          ],
+          "answers": {
+            "a1": "Swatch A",
+            "a2": "Swatch B",
+            "a3": "Swatch D",
+            "a4": "Swatch C"
+          },
           "headerLabel": "COLOUR FOCUS"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "A red starting dot with four matching dotted routes crossing repeatedly before reaching endpoints A, B, C and D"
           },
           "question": "Start at the red dot and follow its dotted route. Which letter do you reach?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "VISUAL TRACKING"
         },
         "vision-r9q2": {
           "context": "VERSION A: FOCUS-M7Q2-2026\nVERSION B: F0CUS-M7Q2-2026",
           "question": "Which precise position changed in Version B?",
-          "answers": [
-            "The first F",
-            "The Q",
-            "The second character",
-            "The final digit"
-          ],
+          "answers": {
+            "a1": "The first F",
+            "a2": "The Q",
+            "a3": "The second character",
+            "a4": "The final digit"
+          },
           "headerLabel": "DETAIL DETECTION"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Base M8Q2 K7P4 R6N3 and copy M8Q2 K1P4 R6M3"
           },
           "question": "Which two characters changed?",
-          "answers": [
-            "7 and N",
-            "8 and 6",
-            "Q and P",
-            "K and R"
-          ],
+          "answers": {
+            "a1": "7 and N",
+            "a2": "8 and 6",
+            "a3": "Q and P",
+            "a4": "K and R"
+          },
           "headerLabel": "CODE COMPARISON"
         },
         "vision-r8q5": {
           "question": "Which icon appeared fourth?",
-          "answers": [
-            "Moon",
-            "Anchor",
-            "Sun",
-            "Star"
-          ],
+          "answers": {
+            "a1": "Moon",
+            "a2": "Anchor",
+            "a3": "Sun",
+            "a4": "Star"
+          },
           "study": {
             "title": "Quick snapshot",
             "items": [

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 7 % bestehen diesen Intelligenztest",
   "eyebrow": "DER INTELLIGENZ-TRESOR",
   "summary": "Muster, Zahlenregeln, Wortverknüpfungen und räumliche Fallen testen, wie schnell Ihr Denken die verborgene Regel findet.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Muster, Codes, Wortverknüpfungen und logische Fallen prallen aufeinander. Wie lange können Sie mit Ihrer Argumentation immer einen Schritt voraus sein?",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieses internationale Unterhaltungsquiz vereint zehn sorgfältig ausgewählte Rätsel zu Mustern, numerischen Regeln, verbalen Verbindungen, räumlichem Denken, Aufmerksamkeit und logischer Schlussfolgerung. Es soll eher spielerisch und anspruchsvoll wirken als eine formelle Eignungsprüfung.\n\nFür jedes Rätsel gibt es eine Antwort, die durch die angezeigten Informationen unterstützt wird. Die Interaktion ändert sich regelmäßig, sodass Sie möglicherweise eine Regel identifizieren, Hinweise vergleichen, ein Symbol umwandeln, im Kopf rechnen müssen oder eine kleine Inkonsistenz bemerken müssen.\n\nIhr Intelligenztestergebnis ist der Prozentsatz dieser Unterhaltungsrätsel, den Sie richtig gelöst haben. Es beschreibt nur diesen Versuch und misst nicht Ihre tatsächliche Intelligenz, Ihren IQ, Ihre Begabung oder Ihre Bildungsfähigkeit.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn sorgfältig ausgewählte Fragen in einer fokussierten Herausforderung.",
         "Wählen Sie jeweils eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Geheimdienst-Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Geheimdienst-Herausforderung",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihr Intelligenztest-Ergebnis und die Aufschlüsselung in drei Bereiche können jetzt angezeigt werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Drei Denkbereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Drei Denkbereiche im Vergleich"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sie haben die Intelligenztest-Herausforderung bestanden!",
       "finished": "Intelligenztest abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Denkbereich",
       "trickiest": "Der schwierigste Denkbereich",
       "bestRound": "Stärkster Bereich",
@@ -98,8 +91,7 @@
         "snapshot": "Was dieser Versuch suggeriert",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "Kreis, Dreieck, Kreis, Dreieck, unbekannt"
           },
           "question": "Welches Symbol kommt als nächstes?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "MUSTERERKENNUNG"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Pfeil nach oben rechts neben einem vertikalen Spiegel"
           },
           "question": "Welcher Pfeil ist die Reflexion in einem vertikalen Spiegel?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RÄUMLICHES DENKEN"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "Buchstabenverschiebungen plus eins, plus zwei, plus eins; Aus CAT wird DCU"
           },
           "question": "Die Verschiebungen wiederholen sich: +1, +2, +1. Wie wird DOG codiert?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBALE SCHLUSSFOLGERUNG"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "Zahlenpyramide mit unten 3, 5, 4 und in der Mitte 8, 9"
           },
           "question": "Jeder Block ist die Summe der beiden darunterliegenden. Welche Zahl gehört nach oben?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "NUMERISCHES DENKEN"
         },
         "iq-s3q2": {
           "question": "Eine Maschine verdoppelt eine Zahl und addiert dann 3. Welche Eingabe ergibt 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "NUMERISCHES DENKEN"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Referenzcode K7M2-Q9. Suchen Sie die Option, bei der ein Zeichen geändert wurde."
           },
           "question": "Welche Kopie unterscheidet sich von der Referenz um genau ein Zeichen?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "GENAUIGKEIT"
         },
         "iq-s4q1": {
           "question": "Genau eine Person sagt die Wahrheit. A sagt, B lüge. B sagt, dass C lügt. C sagt, dass A und B beide lügen. Wer sagt die Wahrheit?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Niemand"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Niemand"
+          },
           "headerLabel": "LOGISCHE SCHLUSSFOLGERUNG"
         },
         "iq-s4q4": {
           "question": "Starten Sie in der Mitte mit Blick nach Norden. Gehen Sie ein Feld vor, drehen Sie sich nach rechts, gehen Sie zwei Felder, drehen Sie sich wieder nach rechts und gehen Sie ein Feld. Wo landen Sie?",
-          "answers": [
-            "Zwei Felder rechts",
-            "Ein Feld nach oben",
-            "Zwei Felder links",
-            "Zurück in der Mitte"
-          ],
+          "answers": {
+            "a1": "Zwei Felder rechts",
+            "a2": "Ein Feld nach oben",
+            "a3": "Zwei Felder links",
+            "a4": "Zurück in der Mitte"
+          },
           "headerLabel": "RÄUMLICHES DENKEN"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "Reihen 3, 4, 10; 5, 2, 12; 7, 3, unbekannt"
           },
           "question": "Verdoppeln Sie in jeder Zeile die erste Zahl und addieren Sie die zweite. Welche Zahl fehlt?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "NUMERISCHES DENKEN"
         },
         "iq-s5q8": {
           "question": "Ein Pfeil zeigt nach oben. Drehen Sie ihn um 90° im Uhrzeigersinn und spiegeln Sie ihn anschließend an einer senkrechten Achse. Wohin zeigt er?",
-          "answers": [
-            "Nach oben",
-            "Nach rechts",
-            "Nach unten",
-            "Nach links"
-          ],
+          "answers": {
+            "a1": "Nach oben",
+            "a2": "Nach rechts",
+            "a3": "Nach unten",
+            "a4": "Nach links"
+          },
           "headerLabel": "ABSCHLIESSENDER RÄUMLICHER TEST"
         }
       }

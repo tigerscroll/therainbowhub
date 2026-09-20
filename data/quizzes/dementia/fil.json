@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Mabilis na Pagsusuri sa Dementia",
   "eyebrow": "10-TANONG BRAIN CHECK",
   "summary": "Isang mabilis na hamon para sa paggunita, atensyon, wika at pangangatwiran.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Sa tingin mo ba ay matalas pa rin ang iyong memorya? Ang 10 mabilis na tanong na ito ay sumusubok sa paggunita, atensyon at pangangatwiran - at ang mga naantalang tanong ay mas mahirap kaysa sa hitsura nila.",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ang sampung tanong na hamon sa utak na ito ay pinaghahalo ang agaran at naantalang pag-alaala sa atensyon, wika, visual na memorya at simpleng pangangatwiran. Dinisenyo ito bilang isang nakakaengganyong snapshot ng performance ngayon, hindi bilang isang tool sa screening ng dementia.\n\nMaaaring magbago ang performance sa pagtulog, stress, mood, gamot, wika, edukasyon, paningin, pandinig, paggamit ng device at simpleng pagkakataon. Ang isang marka mula sa isang online na pagsusulit ay hindi maaaring makumpirma o maalis ang dementia.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Pag-aralan nang mabuti ang bawat memory cue kapag lumitaw ito.",
         "Pumili ng isang sagot para sa bawat tanong nang walang tulong mula sa labas.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mabilis na hamon sa utak",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Mabilis na Pagsusuri sa Dementia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong sampung sagot ay nasuri at ang iyong marka ng hamon sa utak ay handa nang ipakita.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Tatlong lugar ng pag-iisip ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong lugar ng pag-iisip ang inihambing"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Na-clear mo ang 80% brain challenge!",
       "finished": "Kumpleto ang mabilisang hamon sa utak",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na lugar ngayon",
       "trickiest": "Pinaka nakakalito na lugar ngayon",
       "bestRound": "Pinakamahusay na seksyon",
@@ -94,8 +87,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong resulta",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Aling salita ang lumitaw na pangatlo?",
           "headerLabel": "AGAD RECALL",
-          "answers": [
-            "tulay",
-            "limon",
-            "Hardin",
-            "orasan"
-          ],
+          "answers": {
+            "a1": "tulay",
+            "a2": "limon",
+            "a3": "Hardin",
+            "a4": "orasan"
+          },
           "study": {
             "title": "Tandaan ang apat na salitang ito",
             "instruction": "Maaari silang bumalik mamaya sa pagsusulit.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Aling code ang eksaktong tugma para sa P8L4T?",
           "headerLabel": "TINUTUKOY NA PANSIN",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Aling item ang hindi kabilang sa iba?",
           "headerLabel": "MGA KATEGORYA NG SALITA",
-          "answers": [
-            "byolin",
-            "plauta",
-            "karot",
-            "Trumpeta"
-          ]
+          "answers": {
+            "a1": "byolin",
+            "a2": "plauta",
+            "a3": "karot",
+            "a4": "Trumpeta"
+          }
         },
         "dementia-q4": {
           "question": "Anong numero ang susunod: 2, 4, 8, 16, ___?",
           "headerLabel": "PAGKALAN sa PANUNANG-PANUNANG",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Aling bagay ang pangalawang lumitaw?",
           "headerLabel": "Ang Pananaw na Pananaginip",
-          "answers": [
-            "Glove",
-            "Susi",
-            "tasa",
-            "Aklat"
-          ],
+          "answers": {
+            "a1": "Glove",
+            "a2": "Susi",
+            "a3": "tasa",
+            "a4": "Aklat"
+          },
           "study": {
             "title": "Pag-aralan ang pagkakasunud-sunod ng bagay",
             "instruction": "Awtomatikong mawawala ito.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Ano ang 7 – 2 – 9 pabalik?",
           "headerLabel": "Tandaan sa Pagtrabaho",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Kung ang minutong kamay ay tumuturo sa 6, ilang minuto ang lumipas sa oras?",
           "headerLabel": "PANGANGATWIRAN NG Orasan",
-          "answers": [
-            "6 minuto",
-            "15 minuto",
-            "45 minuto",
-            "30 minuto"
-          ]
+          "answers": {
+            "a1": "6 minuto",
+            "a2": "15 minuto",
+            "a3": "45 minuto",
+            "a4": "30 minuto"
+          }
         },
         "dementia-q8": {
           "question": "Puppy ay sa aso bilang kuting ay sa ano?",
           "headerLabel": "KONEKSIYON NG WIKA",
-          "answers": [
-            "Pusa",
-            "Kabayo",
-            "Kuneho",
-            "ibon"
-          ]
+          "answers": {
+            "a1": "Pusa",
+            "a2": "Kabayo",
+            "a3": "Kuneho",
+            "a4": "ibon"
+          }
         },
         "dementia-q9": {
           "question": "Isipin muli ang pambungad na listahan. Aling salita ang unang lumitaw?",
           "headerLabel": "NAantalang WORD RECALL",
-          "answers": [
-            "orasan",
-            "Hardin",
-            "limon",
-            "tulay"
-          ]
+          "answers": {
+            "a1": "orasan",
+            "a2": "Hardin",
+            "a3": "limon",
+            "a4": "tulay"
+          }
         },
         "dementia-q10": {
           "question": "Isipin muli ang pagkakasunud-sunod ng bagay. Aling bagay ang lumitaw sa ikaapat?",
           "headerLabel": "Ang late night rappel",
-          "answers": [
-            "Aklat",
-            "Susi",
-            "Glove",
-            "tasa"
-          ]
+          "answers": {
+            "a1": "Aklat",
+            "a2": "Susi",
+            "a3": "Glove",
+            "a4": "tasa"
+          }
         }
       }
     }

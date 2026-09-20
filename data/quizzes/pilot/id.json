@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 3% orang dewasa yang bisa lulus ujian masuk pendidikan pilot ini",
   "eyebrow": "UJI KEMAMPUAN PILOT",
   "summary": "Sepuluh pertanyaan menguji prinsip penerbangan, instrumen, cuaca, navigasi, dan penilaian kokpit.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Dasar-dasar kokpit terlihat sederhana. Kemudian ujian beralih ke cuaca, navigasi, dan keputusan yang tidak dapat ditebak oleh pilot.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sepuluh pertanyaan ini menggunakan konsep penerbangan sipil internasional dan bukan silabus perizinan satu negara. Ini menguji prinsip-prinsip penerbangan yang luas, instrumen kokpit, kesadaran cuaca, navigasi dan pengambilan keputusan yang konservatif.\n\nPilih satu jawaban untuk setiap pertanyaan. Kebenaran tetap tersembunyi hingga pengungkapan akhir, di mana tinjauan jawaban lengkap tersedia untuk dibuka.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Jawab sepuluh pertanyaan bakat pilot yang semakin sulit.",
         "Pilih respons yang paling aman dan akurat.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan masuk percontohan",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Ujian Masuk Percontohan",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor bakat pilot Anda siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Lima bidang penerbangan dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Lima bidang penerbangan dibandingkan"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Anda lulus tantangan masuk Pilot!",
       "finished": "Tantangan masuk percontohan selesai",
-      "correctLabel": "benar",
       "strongest": "Area penerbangan terkuat",
       "trickiest": "Area penerbangan paling rumit",
       "bestRound": "Bagian terbaik",
@@ -99,8 +92,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Gaya manakah yang bekerja ke atas melawan berat pesawat?",
-          "answers": [
-            "Gaya angkat",
-            "Gaya hambat",
-            "Gaya dorong",
-            "Inersia"
-          ],
+          "answers": {
+            "a1": "Gaya angkat",
+            "a2": "Gaya hambat",
+            "a3": "Gaya dorong",
+            "a4": "Inersia"
+          },
           "headerLabel": "DASAR PENERBANGAN"
         },
         "pilot-q2": {
           "question": "Instrumen kokpit mana yang menunjukkan ketinggian?",
-          "answers": [
-            "Indikator kecepatan udara",
-            "Altimeter",
-            "Indikator pos",
-            "Giliran koordinator"
-          ],
+          "answers": {
+            "a1": "Indikator kecepatan udara",
+            "a2": "Altimeter",
+            "a3": "Indikator pos",
+            "a4": "Giliran koordinator"
+          },
           "headerLabel": "INSTRUMEN"
         },
         "pilot-q3": {
           "question": "Jenis awan manakah yang paling erat hubungannya dengan badai petir dan turbulensi hebat?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Kumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Kumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "CUACA PENERBANGAN"
         },
         "pilot-q4": {
           "question": "Arah 180 derajat menunjukkan kira-kira ke arah mana?",
-          "answers": [
-            "Utara",
-            "Timur",
-            "Barat",
-            "Selatan"
-          ],
+          "answers": {
+            "a1": "Utara",
+            "a2": "Timur",
+            "a3": "Barat",
+            "a4": "Selatan"
+          },
           "headerLabel": "NAVIGASI"
         },
         "pilot-q5": {
           "question": "Cuaca memburuk lebih cepat dari perkiraan dan margin aman menyusut. Apa keputusan umum terbaik?",
-          "answers": [
-            "Menilai kembali sejak dini dan mengalihkan atau mendarat selagi masih ada pilihan yang aman",
-            "Lanjutkan karena rencana awal harus selesai",
-            "Turun di bawah batas aman untuk menjaga kontak visual",
-            "Abaikan tren tersebut hingga kondisi menjadi kritis"
-          ],
+          "answers": {
+            "a1": "Menilai kembali sejak dini dan mengalihkan atau mendarat selagi masih ada pilihan yang aman",
+            "a2": "Lanjutkan karena rencana awal harus selesai",
+            "a3": "Turun di bawah batas aman untuk menjaga kontak visual",
+            "a4": "Abaikan tren tersebut hingga kondisi menjadi kritis"
+          },
           "headerLabel": "PENILAIAN AERONAUTIK"
         },
         "pilot-q6": {
           "question": "Permukaan kendali apa yang membuat pesawat berguling pada sumbu longitudinalnya?",
-          "answers": [
-            "Kemudi tinggi",
-            "Aileron",
-            "Hanya pedal kemudi",
-            "Flap"
-          ],
+          "answers": {
+            "a1": "Kemudi tinggi",
+            "a2": "Aileron",
+            "a3": "Hanya pedal kemudi",
+            "a4": "Flap"
+          },
           "headerLabel": "KONTROL PENERBANGAN"
         },
         "pilot-q7": {
           "question": "Instrumen manakah yang menunjukkan tingkat pendakian atau penurunan pesawat?",
-          "answers": [
-            "Kompas",
-            "Hanya altimeter",
-            "Indikator kecepatan vertikal",
-            "Pengukur suhu udara luar"
-          ],
+          "answers": {
+            "a1": "Kompas",
+            "a2": "Hanya altimeter",
+            "a3": "Indikator kecepatan vertikal",
+            "a4": "Pengukur suhu udara luar"
+          },
           "headerLabel": "PINDAI COCKPIT"
         },
         "pilot-q8": {
           "question": "Apa itu geser angin?",
-          "answers": [
-            "Angin stabil yang tidak pernah berubah",
-            "Ukuran ketinggian awan saja",
-            "Udara hanya bergerak di atas air",
-            "Perubahan cepat dalam kecepatan atau arah angin dalam jarak dekat"
-          ],
+          "answers": {
+            "a1": "Angin stabil yang tidak pernah berubah",
+            "a2": "Ukuran ketinggian awan saja",
+            "a3": "Udara hanya bergerak di atas air",
+            "a4": "Perubahan cepat dalam kecepatan atau arah angin dalam jarak dekat"
+          },
           "headerLabel": "BAHAYA CUACA"
         },
         "pilot-q9": {
           "question": "Sebuah landasan pacu bernomor 27 disejajarkan kira-kira ke arah manakah?",
-          "answers": [
-            "Barat",
-            "Utara",
-            "Timur",
-            "Selatan"
-          ],
+          "answers": {
+            "a1": "Barat",
+            "a2": "Utara",
+            "a3": "Timur",
+            "a4": "Selatan"
+          },
           "headerLabel": "ALASAN RUNWAY"
         },
         "pilot-q10": {
           "question": "Anda melihat ketidakseimbangan bahan bakar yang tidak dapat dijelaskan selama penerbangan. Apa tanggapan umum terbaik?",
-          "answers": [
-            "Asumsikan pengukur akan mengoreksi dirinya sendiri",
-            "Gunakan daftar periksa, pantau situasi dan komunikasikan sesuai kebutuhan",
-            "Ganti sistem acak sampai hilang",
-            "Tunda tindakan apa pun hingga mendarat"
-          ],
+          "answers": {
+            "a1": "Asumsikan pengukur akan mengoreksi dirinya sendiri",
+            "a2": "Gunakan daftar periksa, pantau situasi dan komunikasikan sesuai kebutuhan",
+            "a3": "Ganti sistem acak sampai hilang",
+            "a4": "Tunda tindakan apa pun hingga mendarat"
+          },
           "headerLabel": "PERTANYAAN COCKPIT TERAKHIR"
         }
       }

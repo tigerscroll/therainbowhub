@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb sofőr nem tud átmenni ezen a motorkerékpár-vezetői teszten",
   "eyebrow": "A MOTORKERÉKPÁRVEZETŐI TESZT",
   "summary": "Tíz világméretű közlekedésbiztonsági kérdés teszteli, hogy a vezetési ösztönei átkerülnek-e két kerékre.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Autót vezetni nem elég. Ez a 10 motorkerékpáros kérdés felfedi azokat a biztonsági részleteket, amelyeket a legtöbb úthasználó hiányol.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a világméretű angol szórakoztató kvíz a motorkerékpárok széles körű biztonsági elveit teszteli, amelyek számos útrendszerre vonatkoznak. Kerüli az országspecifikus táblákat, engedélyszabályokat, sebességkorlátozásokat és jogi megfogalmazásokat.\n\nVálassza ki a legbiztonságosabb általános választ minden helyzetben. A valódi motorkerékpárok, az utak és a helyi törvények eltérőek, ezért mindig kövesse a hivatalos motoros kézikönyvet, a képzést és a gyártó utasításait.\n\nA kvíz teljesítése nem bizonyítja a gyakorlati vezetési képességeket, és nem helyettesíti a jóváhagyott motorkerékpár-oktatást.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Olvassa el figyelmesen az egyes motorkerékpár-biztonsági forgatókönyveket.",
         "Válassza ki a legbiztonságosabb általános választ a négy lehetőség közül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Motoros teszt",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Motorkerékpár biztonság",
@@ -30,10 +26,8 @@
         "preAdCopy": "A motorkerékpár-biztonsági pontszám és a teljes válaszáttekintés készen áll.",
         "preAdChecks": [
           "10 lovaglási döntés ellenőrizve",
-          "Hat biztonsági területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Hat biztonsági területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -89,7 +83,6 @@
     "score": {
       "passed": "Sikerült a motoros vezetői vizsgán!",
       "finished": "A motorkerékpár vezetői vizsga befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb biztonsági terület",
       "trickiest": "A legtrükkösebb biztonsági terület",
       "bestRound": "A legjobb szakasz",
@@ -102,8 +95,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -112,102 +104,102 @@
       "questions": {
         "motorbike-q1": {
           "question": "Általában mikor érdemes ellenőrizni a gumiabroncsok nyomását a pontos rutinleolvasás érdekében?",
-          "answers": [
-            "Amikor a gumik hidegek",
-            "Közvetlenül egy gyors menet után",
-            "Csak ha figyelmeztetés jelenik meg",
-            "Utasszállítás közben"
-          ],
+          "answers": {
+            "a1": "Amikor a gumik hidegek",
+            "a2": "Közvetlenül egy gyors menet után",
+            "a3": "Csak ha figyelmeztetés jelenik meg",
+            "a4": "Utasszállítás közben"
+          },
           "headerLabel": "A GÉP ELLENŐRZÉSE"
         },
         "motorbike-q2": {
           "question": "Általában hova kell irányítania a látást a lovasnak, miközben egy kanyarban halad át?",
-          "answers": [
-            "Az első keréken",
-            "A kanyarban át a tervezett út felé",
-            "Az út szélén",
-            "A mögötte lévő járműnél"
-          ],
+          "answers": {
+            "a1": "Az első keréken",
+            "a2": "A kanyarban át a tervezett út felé",
+            "a3": "Az út szélén",
+            "a4": "A mögötte lévő járműnél"
+          },
           "headerLabel": "SAROKOZÁS"
         },
         "motorbike-q3": {
           "question": "Utazás közben kezdődik az eső. Mi történjen az elöl haladó jármű mögötti térrel?",
-          "answers": [
-            "Pontosan ugyanannak kell maradnia",
-            "Rövidebbé kell válnia",
-            "Növekednie kell",
-            "Csak nagy sebességnél számít"
-          ],
+          "answers": {
+            "a1": "Pontosan ugyanannak kell maradnia",
+            "a2": "Rövidebbé kell válnia",
+            "a3": "Növekednie kell",
+            "a4": "Csak nagy sebességnél számít"
+          },
           "headerLabel": "NEDVES KÖRÜLMÉNYEK"
         },
         "motorbike-q4": {
           "question": "Egy modern motorkerékpáron egyenes vonalú vészleállásban, melyik széles technika a legbiztonságosabb?",
-          "answers": [
-            "Csak a hátsó féket használja",
-            "Azonnal csak az első féket használja",
-            "Ismételten szivattyúzza mindkét féket",
-            "Fokozatosan húzza be mindkét féket, miközben stabilan tartja a motorkerékpárt"
-          ],
+          "answers": {
+            "a1": "Csak a hátsó féket használja",
+            "a2": "Azonnal csak az első féket használja",
+            "a3": "Ismételten szivattyúzza mindkét féket",
+            "a4": "Fokozatosan húzza be mindkét féket, miközben stabilan tartja a motorkerékpárt"
+          },
           "headerLabel": "VÉSZFÉKEZÉS"
         },
         "motorbike-q5": {
           "question": "Melyik szokás csökkenti a legjobban annak az esélyét, hogy egy másik vezető elnézzen egy motorkerékpárt?",
-          "answers": [
-            "Maradjon távol a holttértől, és helyezze el a láthatóságot",
-            "Utazz egy jármű mellett, ameddig csak lehetséges",
-            "Tegyük fel, hogy a szemkontaktus azt jelenti, hogy a vezető látta Önt",
-            "Folyamatosan használja a távolsági fényt"
-          ],
+          "answers": {
+            "a1": "Maradjon távol a holttértől, és helyezze el a láthatóságot",
+            "a2": "Utazz egy jármű mellett, ameddig csak lehetséges",
+            "a3": "Tegyük fel, hogy a szemkontaktus azt jelenti, hogy a vezető látta Önt",
+            "a4": "Folyamatosan használja a távolsági fényt"
+          },
           "headerLabel": "LÁTHATÓSÁG"
         },
         "motorbike-q6": {
           "question": "Milyen fontos változásra számítson a versenyző az utasszállítás során?",
-          "answers": [
-            "A motorkerékpár pontosan ugyanúgy fog fordulni és megállni",
-            "Az egyensúly, a gyorsulás és a fékút változhat",
-            "A gumik állapota kevésbé számít",
-            "Az utasnak a motorossal szemben kell dőlnie"
-          ],
+          "answers": {
+            "a1": "A motorkerékpár pontosan ugyanúgy fog fordulni és megállni",
+            "a2": "Az egyensúly, a gyorsulás és a fékút változhat",
+            "a3": "A gumik állapota kevésbé számít",
+            "a4": "Az utasnak a motorossal szemben kell dőlnie"
+          },
           "headerLabel": "UTASBIZTONSÁG"
         },
         "motorbike-q7": {
           "question": "Hogyan léphet át egy lovas a nedvesen festett jelzéseket, ha azokat nem lehet elkerülni?",
-          "answers": [
-            "Hajlás közben élesen gyorsítson",
-            "Fékezzen erősen a jelölésen",
-            "Tartsa a motorkerékpárt függőlegesen és simábban, amennyire csak lehetséges",
-            "Fordulj át rajta hirtelen"
-          ],
+          "answers": {
+            "a1": "Hajlás közben élesen gyorsítson",
+            "a2": "Fékezzen erősen a jelölésen",
+            "a3": "Tartsa a motorkerékpárt függőlegesen és simábban, amennyire csak lehetséges",
+            "a4": "Fordulj át rajta hirtelen"
+          },
           "headerLabel": "FELÜLET VESZÉLY"
         },
         "motorbike-q8": {
           "question": "Mielőtt helyzetet változtatna egy területre, egy tükör nem mutathatja meg, melyik végső megfigyelés értékes?",
-          "answers": [
-            "Egy pillantás a sebességkijelzőre",
-            "Egy pillantás az első kerékre",
-            "Az üzemanyagszint ellenőrzése",
-            "Közvetlen holttér-ellenőrzés, ha biztonságos"
-          ],
+          "answers": {
+            "a1": "Egy pillantás a sebességkijelzőre",
+            "a2": "Egy pillantás az első kerékre",
+            "a3": "Az üzemanyagszint ellenőrzése",
+            "a4": "Közvetlen holttér-ellenőrzés, ha biztonságos"
+          },
           "headerLabel": "MEGFIGYELÉS"
         },
         "motorbike-q9": {
           "question": "Hol találhatja meg a motoros a motorkerékpárjához megfelelő hajtáslánc-beállítási specifikációt?",
-          "answers": [
-            "A gyártó adatai",
-            "Találgatás egy másik motorkerékpár alapján",
-            "A gumiabroncs oldalfala",
-            "Egy út menti tábla"
-          ],
+          "answers": {
+            "a1": "A gyártó adatai",
+            "a2": "Találgatás egy másik motorkerékpár alapján",
+            "a3": "A gumiabroncs oldalfala",
+            "a4": "Egy út menti tábla"
+          },
           "headerLabel": "KARBANTARTÁS"
         },
         "motorbike-q10": {
           "question": "Egy lovas észreveszi, hogy koncentrációja elhalványul egy hosszú utazás során. Mi a legbiztonságosabb válasz?",
-          "answers": [
-            "Menj gyorsabban, hogy hamarabb érj el",
-            "Álljon meg egy biztonságos helyen, és tartson egy megfelelő szünetet",
-            "Szorosan kövessen egy másik járművet",
-            "Nyissa ki a napellenzőt és folytassa"
-          ],
+          "answers": {
+            "a1": "Menj gyorsabban, hogy hamarabb érj el",
+            "a2": "Álljon meg egy biztonságos helyen, és tartson egy megfelelő szünetet",
+            "a3": "Szorosan kövessen egy másik járművet",
+            "a4": "Nyissa ki a napellenzőt és folytassa"
+          },
           "headerLabel": "VÉGSŐ BIZTONSÁGI HÍVÁS"
         }
       }

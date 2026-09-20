@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 11% dorosłych zdaje ten quiz biblijny",
   "eyebrow": "TEST ZE WIEDZY BIBLIJNEJ",
   "summary": "Dziesięć pytań dotyczących znanych osób, miejsc i historii ze Starego i Nowego Testamentu.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Być może znasz te słynne historie, ale czy potrafisz odpowiedzieć na wszystkie dziesięć bez otwierania Biblii?",
     "cta": "Rozpocznij quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ten rozrywkowy quiz składający się z dziesięciu pytań dotyczy powszechnie znanych osób, miejsc, książek i wydarzeń z Biblii. Pytania czerpią zarówno ze Starego, jak i Nowego Testamentu i unikają kwestii, które w dużym stopniu zależą od konkretnego współczesnego tłumaczenia.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, podczas którego można przejrzeć cały zestaw.\n\nPorządek i nazewnictwo ksiąg biblijnych może się różnić w zależności od tradycji religijnych. Ten quiz jest zgodny ze znanymi anglojęzycznymi chrześcijańskimi konwencjami nazewnictwa w przypadku pytań z zakresu wiedzy ogólnej.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć pytań biblijnych w jednym konkretnym wyzwaniu.",
         "Na każde pytanie wybierz jedną z czterech odpowiedzi.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie biblijne",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie biblijne",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twój wynik biblijny i pełny przegląd odpowiedzi są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie trzech obszarów wiedzy",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech obszarów wiedzy"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Udało Ci się sprostać biblijnemu wyzwaniu!",
       "finished": "Wyzwanie biblijne ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar wiedzy",
       "trickiest": "Najtrudniejszy obszar wiedzy",
       "bestRound": "Najlepsza sekcja",
@@ -93,8 +86,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "bible-q1": {
           "question": "Kto zbudował Arkę przed wielką powodzią?",
-          "answers": [
-            "Noe",
-            "Abrahama",
-            "Mojżesz",
-            "Jakub"
-          ],
+          "answers": {
+            "a1": "Noe",
+            "a2": "Abrahama",
+            "a3": "Mojżesz",
+            "a4": "Jakub"
+          },
           "headerLabel": "STARY TESTAMENT"
         },
         "bible-q2": {
           "question": "W jakim mieście urodził się Jezus?",
-          "answers": [
-            "Nazaret",
-            "Jerozolima",
-            "Betlejem",
-            "Kafarnaum"
-          ],
+          "answers": {
+            "a1": "Nazaret",
+            "a2": "Jerozolima",
+            "a3": "Betlejem",
+            "a4": "Kafarnaum"
+          },
           "headerLabel": "MIEJSCA BIBLIJNE"
         },
         "bible-q3": {
           "question": "Jaka jest pierwsza księga Biblii?",
-          "answers": [
-            "Wyjście",
-            "Księga Rodzaju",
-            "Psalmy",
-            "Mateusz"
-          ],
+          "answers": {
+            "a1": "Wyjście",
+            "a2": "Księga Rodzaju",
+            "a3": "Psalmy",
+            "a4": "Mateusz"
+          },
           "headerLabel": "KSIĄŻKI BIBLIJNE"
         },
         "bible-q4": {
           "question": "Kto pokonał Goliata procą i kamieniem?",
-          "answers": [
-            "Saul",
-            "Samuela",
-            "Salomon",
-            "Dawid"
-          ],
+          "answers": {
+            "a1": "Saul",
+            "a2": "Samuela",
+            "a3": "Salomon",
+            "a4": "Dawid"
+          },
           "headerLabel": "LUDZIE BIBLIJNI"
         },
         "bible-q5": {
           "question": "Kto otrzymał Dziesięć Przykazań na Górze Synaj?",
-          "answers": [
-            "Mojżesz",
-            "Aarona",
-            "Jozue",
-            "Eliasz"
-          ],
+          "answers": {
+            "a1": "Mojżesz",
+            "a2": "Aarona",
+            "a3": "Jozue",
+            "a4": "Eliasz"
+          },
           "headerLabel": "STARY TESTAMENT"
         },
         "bible-q6": {
           "question": "Która księga biblijna zawiera 150 psalmów w większości tradycji chrześcijańskich?",
-          "answers": [
-            "Przysłowia",
-            "Izajasz",
-            "Psalmy",
-            "Praca"
-          ],
+          "answers": {
+            "a1": "Przysłowia",
+            "a2": "Izajasz",
+            "a3": "Psalmy",
+            "a4": "Praca"
+          },
           "headerLabel": "KSIĄŻKI BIBLIJNE"
         },
         "bible-q7": {
           "question": "Kto wydał Jezusa za trzydzieści srebrników?",
-          "answers": [
-            "Piotr",
-            "Judasz Iskariota",
-            "Tomasz",
-            "Poncjusz Piłat"
-          ],
+          "answers": {
+            "a1": "Piotr",
+            "a2": "Judasz Iskariota",
+            "a3": "Tomasz",
+            "a4": "Poncjusz Piłat"
+          },
           "headerLabel": "NOWY TESTAMENT"
         },
         "bible-q8": {
           "question": "Na jakiej wyspie Paweł rozbił się według Dziejów Apostolskich?",
-          "answers": [
-            "Kreta",
-            "Cypr",
-            "Patmos",
-            "Malta"
-          ],
+          "answers": {
+            "a1": "Kreta",
+            "a2": "Cypr",
+            "a3": "Patmos",
+            "a4": "Malta"
+          },
           "headerLabel": "MIEJSCA BIBLIJNE"
         },
         "bible-q9": {
           "question": "Która królowa udała się, aby wystawić króla Salomona na próbę trudnymi pytaniami?",
-          "answers": [
-            "Królowa Saby",
-            "Królowa Estera",
-            "Królowa Izebel",
-            "Królowa Atalia"
-          ],
+          "answers": {
+            "a1": "Królowa Saby",
+            "a2": "Królowa Estera",
+            "a3": "Królowa Izebel",
+            "a4": "Królowa Atalia"
+          },
           "headerLabel": "LUDZIE BIBLIJNI"
         },
         "bible-q10": {
           "question": "W której Ewangelii pojawia się przypowieść o miłosiernym Samarytaninie?",
-          "answers": [
-            "Mateusz",
-            "Łukasz",
-            "Marek",
-            "Jan"
-          ],
+          "answers": {
+            "a1": "Mateusz",
+            "a2": "Łukasz",
+            "a3": "Marek",
+            "a4": "Jan"
+          },
           "headerLabel": "PYTANIE KOŃCOWE"
         }
       }

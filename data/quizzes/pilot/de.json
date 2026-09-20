@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 3 % der Erwachsenen können diese Pilot-Aufnahmeprüfung bestehen",
   "eyebrow": "DER PILOT-EIGNUNGSTEST",
   "summary": "Zehn Fragen testen Flugprinzipien, Instrumente, Wetter, Navigation und Urteilsvermögen im Cockpit.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Die Cockpit-Grundlagen sehen einfach aus. Dann befasst sich die Prüfung mit Wetter, Navigation und Entscheidungen, die Piloten nicht erraten können.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bei diesem Unterhaltungsquiz mit zehn Fragen werden internationale Konzepte der Zivilluftfahrt und nicht der Lizenzlehrplan eines Landes verwendet. Es testet allgemeine Flugprinzipien, Cockpitinstrumente, Wetterbewusstsein, Navigation und konservative Entscheidungsfindung.\n\nWählen Sie für jede Frage eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen, danach kann die vollständige Auswertung freigeschaltet werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn immer schwieriger werdende Fragen zur Piloteneignung.",
         "Wählen Sie die sicherste oder genaueste Antwort.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Piloteneintrittsherausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Aufnahmeprüfung für Piloten",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Pilotentauglichkeitsergebnis kann jetzt angezeigt werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Fünf Luftfahrtbereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Fünf Luftfahrtbereiche im Vergleich"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sie haben die Piloten-Einstiegstest bestanden!",
       "finished": "Piloteneintrittsherausforderung abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Luftfahrtbereich",
       "trickiest": "Schwierigster Luftfahrtbereich",
       "bestRound": "Stärkster Bereich",
@@ -99,8 +92,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Welche Kraft wirkt nach oben gegen das Gewicht eines Flugzeugs?",
-          "answers": [
-            "Auftrieb",
-            "Luftwiderstand",
-            "Schub",
-            "Trägheit"
-          ],
+          "answers": {
+            "a1": "Auftrieb",
+            "a2": "Luftwiderstand",
+            "a3": "Schub",
+            "a4": "Trägheit"
+          },
           "headerLabel": "FLUGGRUNDLAGEN"
         },
         "pilot-q2": {
           "question": "Welches Cockpit-Instrument zeigt die Höhe an?",
-          "answers": [
-            "Fluggeschwindigkeitsanzeige",
-            "Höhenmesser",
-            "Kursanzeige",
-            "Wendekoordinator"
-          ],
+          "answers": {
+            "a1": "Fluggeschwindigkeitsanzeige",
+            "a2": "Höhenmesser",
+            "a3": "Kursanzeige",
+            "a4": "Wendekoordinator"
+          },
           "headerLabel": "INSTRUMENTE"
         },
         "pilot-q3": {
           "question": "Welcher Wolkentyp ist am stärksten mit Gewittern und schweren Turbulenzen verbunden?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "FLUGWETTER"
         },
         "pilot-q4": {
           "question": "In welche Richtung zeigt ein Kurs von 180 Grad ungefähr?",
-          "answers": [
-            "Norden",
-            "Ost",
-            "Westen",
-            "Süden"
-          ],
+          "answers": {
+            "a1": "Norden",
+            "a2": "Ost",
+            "a3": "Westen",
+            "a4": "Süden"
+          },
           "headerLabel": "NAVIGATION"
         },
         "pilot-q5": {
           "question": "Das Wetter verschlechtert sich schneller als prognostiziert und die Sicherheitsmargen schrumpfen. Was ist die beste allgemeine Entscheidung?",
-          "answers": [
-            "Frühzeitig neu bewerten und umleiten oder landen, solange sichere Optionen übrig bleiben",
-            "Weiterfliegen, weil der ursprüngliche Plan eingehalten werden muss",
-            "Unter die sicheren Grenzwerte sinken, um Sichtkontakt zu halten",
-            "Die Entwicklung ignorieren, bis die Bedingungen kritisch werden"
-          ],
+          "answers": {
+            "a1": "Frühzeitig neu bewerten und umleiten oder landen, solange sichere Optionen übrig bleiben",
+            "a2": "Weiterfliegen, weil der ursprüngliche Plan eingehalten werden muss",
+            "a3": "Unter die sicheren Grenzwerte sinken, um Sichtkontakt zu halten",
+            "a4": "Die Entwicklung ignorieren, bis die Bedingungen kritisch werden"
+          },
           "headerLabel": "LUFTFAHRTURTEIL"
         },
         "pilot-q6": {
           "question": "Welche Steuerflächen drehen ein Flugzeug um seine Längsachse?",
-          "answers": [
-            "Höhenruder",
-            "Querruder",
-            "Nur Ruderpedale",
-            "Klappen"
-          ],
+          "answers": {
+            "a1": "Höhenruder",
+            "a2": "Querruder",
+            "a3": "Nur Ruderpedale",
+            "a4": "Klappen"
+          },
           "headerLabel": "FLUGSTEUERUNG"
         },
         "pilot-q7": {
           "question": "Welches Instrument zeigt die Steig- oder Sinkgeschwindigkeit eines Flugzeugs an?",
-          "answers": [
-            "Kompass",
-            "Nur Höhenmesser",
-            "Variometer",
-            "Außenlufttemperaturanzeige"
-          ],
+          "answers": {
+            "a1": "Kompass",
+            "a2": "Nur Höhenmesser",
+            "a3": "Variometer",
+            "a4": "Außenlufttemperaturanzeige"
+          },
           "headerLabel": "COCKPIT-SCAN"
         },
         "pilot-q8": {
           "question": "Was ist Windscherung?",
-          "answers": [
-            "Ein stetiger Wind, der sich nie ändert",
-            "Nur ein Maß für die Wolkenhöhe",
-            "Luft bewegt sich nur über Wasser",
-            "Eine schnelle Änderung der Windgeschwindigkeit oder -richtung über eine kurze Distanz"
-          ],
+          "answers": {
+            "a1": "Ein stetiger Wind, der sich nie ändert",
+            "a2": "Nur ein Maß für die Wolkenhöhe",
+            "a3": "Luft bewegt sich nur über Wasser",
+            "a4": "Eine schnelle Änderung der Windgeschwindigkeit oder -richtung über eine kurze Distanz"
+          },
           "headerLabel": "WETTERGEFAHREN"
         },
         "pilot-q9": {
           "question": "In welche Richtung ist eine Landebahn mit der Nummer 27 ungefähr ausgerichtet?",
-          "answers": [
-            "Westen",
-            "Norden",
-            "Ost",
-            "Süden"
-          ],
+          "answers": {
+            "a1": "Westen",
+            "a2": "Norden",
+            "a3": "Ost",
+            "a4": "Süden"
+          },
           "headerLabel": "RUNWAY-BEGRÜNDUNG"
         },
         "pilot-q10": {
           "question": "Sie bemerken während des Fluges ein unerklärliches Treibstoffungleichgewicht. Was ist die beste allgemeine Antwort?",
-          "answers": [
-            "Gehen Sie davon aus, dass sich das Messgerät selbst korrigiert",
-            "Nutzen Sie die Checkliste, beobachten Sie die Situation und kommunizieren Sie bei Bedarf",
-            "Wechseln Sie zufällige Systeme, bis es verschwindet",
-            "Verzögern Sie jede Aktion bis zur Landung"
-          ],
+          "answers": {
+            "a1": "Gehen Sie davon aus, dass sich das Messgerät selbst korrigiert",
+            "a2": "Nutzen Sie die Checkliste, beobachten Sie die Situation und kommunizieren Sie bei Bedarf",
+            "a3": "Wechseln Sie zufällige Systeme, bis es verschwindet",
+            "a4": "Verzögern Sie jede Aktion bis zur Landung"
+          },
           "headerLabel": "LETZTE FRAGE ZUM COCKPIT"
         }
       }

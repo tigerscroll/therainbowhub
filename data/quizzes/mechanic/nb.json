@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 7 % består denne bilmekanikerquizen",
   "eyebrow": "PRESISION SERVICE BAY",
   "summary": "Varsellys, skjulte feil og merkelige veisymptomer tester om du kan diagnostisere trøbbel før det blir dyrt.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspennende underholdningstesten inneholder ti praktiske spørsmål om kjøretøysystemer, verkstedsvurdering og feilsøking. Det beveger seg fra kjente advarselssignaler til tilknyttede symptomer som krever nøye diagnose.\n\nVelg det beste svaret fra informasjonen som vises. Spørsmålene bruker brede kjøretøyprinsipper og unngår å anta ett merke, modell eller lokal inspeksjonsstandard.\n\nPoengsummen din gjenspeiler kun denne korte utfordringen. Det er ikke en fagkvalifikasjon, sikkerhetsinspeksjon eller erstatning for diagnose av en kvalifisert mekaniker.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Fullfør ti nøye utvalgte spørsmål i én fokusert utfordring.",
         "Velg ett svar hver gang. Korrektheten forblir skjult til den endelige avsløringen.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mekanisk utfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Verkstedutfordring",
@@ -29,10 +26,8 @@
         "preAdCopy": "Din mekanikerpoengsum og seks-systemsammenbrudd er klare til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Seks kjøretøysystemer sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Seks kjøretøysystemer sammenlignet"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Du besto mekanikerutfordringen!",
       "finished": "Verkstedutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Det sterkeste kjøretøysystemet",
       "trickiest": "Det vanskeligste kjøretøysystemet",
-      "bestRound": "Beste seksjon",
-      "showBestRound": false
+      "bestRound": "Beste seksjon"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Hvilket varselsymbol er mest direkte knyttet til motoroljetrykket?",
-          "answers": [
-            "Oljekanne",
-            "Batteri",
-            "Termometer",
-            "Ratt"
-          ],
+          "answers": {
+            "a1": "Oljekanne",
+            "a2": "Batteri",
+            "a3": "Termometer",
+            "a4": "Ratt"
+          },
           "headerLabel": "MOTORSYSTEMER"
         },
         "mech-r1q2": {
           "question": "En rød bremsevarsel forblir på etter at parkeringsbremsen er løsnet. Hva er den sikreste responsen?",
-          "answers": [
-            "Kjør raskere for å teste den",
-            "Stopp trygt og få sjekket bremsesystemet",
-            "Pump dekkene hardere",
-            "Ignorer det til neste service"
-          ],
+          "answers": {
+            "a1": "Kjør raskere for å teste den",
+            "a2": "Stopp trygt og få sjekket bremsesystemet",
+            "a3": "Pump dekkene hardere",
+            "a4": "Ignorer det til neste service"
+          },
           "headerLabel": "BREMSER OG SIKKERHET"
         },
         "mech-r4q5": {
           "question": "Et rytmisk klikk blir raskere i trange svinger. Hvilken del er en sannsynlig årsak?",
-          "answers": [
-            "Termostat",
-            "Drivstoffpumpe",
-            "Ytre ledd med konstant hastighet",
-            "Hyttevifte"
-          ],
+          "answers": {
+            "a1": "Termostat",
+            "a2": "Drivstoffpumpe",
+            "a3": "Ytre ledd med konstant hastighet",
+            "a4": "Hyttevifte"
+          },
           "headerLabel": "DRIVETOG"
         },
         "mech-r4q6": {
           "question": "Det ene dekket har en dyp sideveggbule. Hva bør du gjøre?",
-          "answers": [
-            "Reduser trykket og fortsett",
-            "Skyv bulen flat",
-            "Flytt den til et annet hjul",
-            "Slutt å bruke dekket og avtal utskifting"
-          ],
+          "answers": {
+            "a1": "Reduser trykket og fortsett",
+            "a2": "Skyv bulen flat",
+            "a3": "Flytt den til et annet hjul",
+            "a4": "Slutt å bruke dekket og avtal utskifting"
+          },
           "headerLabel": "KJØRETØYSIKKERHET"
         },
         "mech-r5q5": {
           "question": "Motoren overopphetes i trafikken, men avkjøles ved kjørehastighet. Hvilken komponent fortjener en tidlig sjekk?",
-          "answers": [
-            "Radiatorvifte",
-            "Sikkerhetsbelte",
-            "Drivstofflokk",
-            "Hjullager"
-          ],
+          "answers": {
+            "a1": "Radiatorvifte",
+            "a2": "Sikkerhetsbelte",
+            "a3": "Drivstofflokk",
+            "a4": "Hjullager"
+          },
           "headerLabel": "KJØLESYSTEMER"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Forventet batterispenning 12,6 volt, målt 10,5 volt"
           },
           "question": "Et sunt 12-volts batteri leser omtrent 12,6 V i hvile. Denne leser 10,5 V. Hva tyder det på?",
-          "answers": [
-            "Dekkene er slitte",
-            "Kjølevæsken er for sterk",
-            "Batteriet er dypt utladet eller har en defekt celle",
-            "Generatorremmen er ny"
-          ],
+          "answers": {
+            "a1": "Dekkene er slitte",
+            "a2": "Kjølevæsken er for sterk",
+            "a3": "Batteriet er dypt utladet eller har en defekt celle",
+            "a4": "Generatorremmen er ny"
+          },
           "headerLabel": "ELEKTRISKE SYSTEMER"
         },
         "mech-r7q1": {
           "question": "Rattet vibrerer hovedsakelig ved ett hastighetsområde. Hva er en sannsynlig første mistenkt?",
-          "answers": [
-            "Hjul ubalanse",
-            "Drivstoffkvalitet",
-            "Hyttefilter",
-            "Kjølevæske farge"
-          ],
+          "answers": {
+            "a1": "Hjul ubalanse",
+            "a2": "Drivstoffkvalitet",
+            "a3": "Hyttefilter",
+            "a4": "Kjølevæske farge"
+          },
           "headerLabel": "STYRING OG BALANSE"
         },
         "mech-r7q6": {
           "question": "En ny kraftig vibrasjon oppstår etter å ha truffet en veifare. Hva bør du gjøre?",
-          "answers": [
-            "Øk hastigheten for å jevne den ut",
-            "Stopp trygt og inspiser hjulet og dekket før du fortsetter",
-            "Senk hvert dekktrykk",
-            "Ignorer det hvis ingen advarsel vises"
-          ],
+          "answers": {
+            "a1": "Øk hastigheten for å jevne den ut",
+            "a2": "Stopp trygt og inspiser hjulet og dekket før du fortsetter",
+            "a3": "Senk hvert dekktrykk",
+            "a4": "Ignorer det hvis ingen advarsel vises"
+          },
           "headerLabel": "KJØRETØYSIKKERHET"
         },
         "mech-r9q2": {
           "context": "KUNDEN SIER",
           "question": "\"Batteriet er nytt, men det blir tomt gjentatte ganger og ladeadvarselen vises under kjøring.\" Hva bør testes?",
-          "answers": [
-            "Dekkjustering",
-            "Ladesystemet og dets tilkoblinger",
-            "Bremseklosstykkelse",
-            "Kjølevæskekonsentrasjon"
-          ],
+          "answers": {
+            "a1": "Dekkjustering",
+            "a2": "Ladesystemet og dets tilkoblinger",
+            "a3": "Bremseklosstykkelse",
+            "a4": "Kjølevæskekonsentrasjon"
+          },
           "headerLabel": "LADESYSTEMER"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motoren avkjøles ved kjørehastighet, overopphetes ved tomgang, kjøleviften går ikke"
           },
           "question": "Motoren overopphetes kun på tomgang, radiatoren er uhindret og kjøleviften går aldri. Hva bør diagnostiseres først?",
-          "answers": [
-            "Hjuljustering",
-            "Tanklokktetning",
-            "Bremseklossslitasje",
-            "Viftekretsen, motoren og kontrollkommandoen"
-          ],
+          "answers": {
+            "a1": "Hjuljustering",
+            "a2": "Tanklokktetning",
+            "a3": "Bremseklossslitasje",
+            "a4": "Viftekretsen, motoren og kontrollkommandoen"
+          },
           "headerLabel": "ENDELIG DIAGNOSE"
         }
       }

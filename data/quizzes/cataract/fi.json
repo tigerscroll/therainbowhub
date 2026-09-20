@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pikakaihitesti",
   "eyebrow": "10 KYSYMYKSEN NÄKÖTARKASTUS",
   "summary": "Sumuisia yksityiskohtia, läheisiä visuaalisia ansoja ja tärkeitä kaihivaroitusmerkkejä yhdessä nopeassa haasteessa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Kaihi voi olla helppo missata aluksi. Katso, voitko havaita hienovaraiset vihjeet 10 nopeasta kysymyksestä – viimeiset saavat useimmat ihmiset kiinni.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen haaste yhdistää viisi näytöllä näkyvää visuaalista pulmapeliä ja viisi yleistä tietoisuutta kaihia koskevaa kysymystä. Se mittaa tämän tietokilpailun vastauksia, ei näköä, linssien terveyttä tai kaihien todennäköisyyttä.\n\nNäytön koko, kirkkaus, kontrasti, näkö, korjaavat linssit, väsymys ja laiteasetukset voivat kaikki vaikuttaa suorituskykyyn. Pysyvä epäselvä tai utuinen näkö, häikäisy, valokehät valojen ympärillä, näkemisvaikeudet yöllä tai sävyt, jotka näyttävät vähemmän eläviltä, tulee keskustella pätevän näönhuollon ammattilaisen kanssa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Suorita viisi yksityiskohta-, kuvio- ja visuaalisen muistin haastetta.",
         "Vastaa viiteen kysymykseen kaihista ja siitä, milloin hakea apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Kaihihaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Pikakaihitesti",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja kaihihaastepisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolmea visuaalista aluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolmea visuaalista aluetta verrattiin"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Selvisit 80 % visuaalisen haasteen!",
       "finished": "Kaihihaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Tämän päivän vahvin alue",
       "trickiest": "Tämän päivän vaikein alue",
       "bestRound": "Paras jakso",
@@ -94,8 +87,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Mikä hahmo on tarkalleen ruudukon keskellä?",
           "headerLabel": "KESKEISET TIEDOT",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "VIITE: B8R3K5",
           "question": "Mikä koodi vastaa tarkalleen viittausta?",
           "headerLabel": "SUMEIDEN MERKKIEN VERTAILU",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "VIITE",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Mikä symboli päättää vuorottelevan sarjan?",
           "headerLabel": "KUVION SEURANTA",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Mikä esine ilmestyi kolmanneksi?",
           "headerLabel": "NOPEA VISUAALINEN MUISTI",
-          "answers": [
-            "Kirja",
-            "Avain",
-            "Sitruuna",
-            "Sateenvarjo"
-          ],
+          "answers": {
+            "a1": "Kirja",
+            "a2": "Avain",
+            "a3": "Sitruuna",
+            "a4": "Sateenvarjo"
+          },
           "study": {
             "title": "Tutki viiden kohteen järjestystä",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Mikä asema sisältää vaalean ympyrän?",
           "headerLabel": "YKSITYISKOHTAISET TARKISTUKSET",
-          "answers": [
-            "Viides",
-            "Toinen",
-            "Neljäs",
-            "Kuudes"
-          ],
+          "answers": {
+            "a1": "Viides",
+            "a2": "Toinen",
+            "a3": "Neljäs",
+            "a4": "Kuudes"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Mikä on kaihi?",
           "headerLabel": "KATARAKTIN PERUSTEET",
-          "answers": [
-            "Naarmu silmäluomessa",
-            "Pilvinen alue silmän luonnollisessa linssissä",
-            "Ongelma rajoittuu kyynelkanavaan",
-            "Eräänlainen korvatulehdus"
-          ]
+          "answers": {
+            "a1": "Naarmu silmäluomessa",
+            "a2": "Pilvinen alue silmän luonnollisessa linssissä",
+            "a3": "Ongelma rajoittuu kyynelkanavaan",
+            "a4": "Eräänlainen korvatulehdus"
+          }
         },
         "cataract-q7": {
           "question": "Mikä ryhmä sisältää yleisiä kaihioireita?",
           "headerLabel": "VAROITUSMERKIT",
-          "answers": [
-            "Kutiava iho ja kurkkukipu",
-            "Äkillinen kuulon menetys ja huimaus",
-            "Epäselvä tai utuinen näkö, häikäisy ja halot valojen ympärillä",
-            "Jäykkä niska ja kipeät hartiat"
-          ]
+          "answers": {
+            "a1": "Kutiava iho ja kurkkukipu",
+            "a2": "Äkillinen kuulon menetys ja huimaus",
+            "a3": "Epäselvä tai utuinen näkö, häikäisy ja halot valojen ympärillä",
+            "a4": "Jäykkä niska ja kipeät hartiat"
+          }
         },
         "cataract-q8": {
           "question": "Kuinka näönhuollon ammattilainen voi tarkistaa kaihien varalta?",
           "headerLabel": "AMMATILLINEN ARVIOINTI",
-          "answers": [
-            "Kuulokestin kanssa",
-            "Kodin verenpainelukeman käyttö",
-            "Makutestin kanssa",
-            "Osana kattavaa laajentuneen silmän tutkimusta"
-          ]
+          "answers": {
+            "a1": "Kuulokestin kanssa",
+            "a2": "Kodin verenpainelukeman käyttö",
+            "a3": "Makutestin kanssa",
+            "a4": "Osana kattavaa laajentuneen silmän tutkimusta"
+          }
         },
         "cataract-q9": {
           "question": "Mikä on turvallisin reaktio äkilliseen näön menetykseen, voimakkaaseen silmäkipuun tai äkilliseen suureen näkömuutokseen?",
           "headerLabel": "MILLOIN TOIMIA",
-          "answers": [
-            "Pyydä kiireellistä ammatillista näönhoitoneuvontaa",
-            "Odota useita kuukausia mainitsematta sitä",
-            "Muuta näytön kirkkautta ja oleta, että se on korjattu",
-            "Luota vain online-kyselyyn"
-          ]
+          "answers": {
+            "a1": "Pyydä kiireellistä ammatillista näönhoitoneuvontaa",
+            "a2": "Odota useita kuukausia mainitsematta sitä",
+            "a3": "Muuta näytön kirkkautta ja oleta, että se on korjattu",
+            "a4": "Luota vain online-kyselyyn"
+          }
         },
         "cataract-q10": {
           "question": "Mitä pistemääräsi tässä verkkohaasteessa voi kertoa sinulle?",
           "headerLabel": "LOPPU TODELLISUUDEN TARKISTUS",
-          "answers": [
-            "Ovatko linssi terveet",
-            "Vain miten suoriuduit näissä kymmenessä kysymyksessä",
-            "Tarvitsetko kaihileikkausta",
-            "Voitko sulkea pois kaihien"
-          ]
+          "answers": {
+            "a1": "Ovatko linssi terveet",
+            "a2": "Vain miten suoriuduit näissä kymmenessä kysymyksessä",
+            "a3": "Tarvitsetko kaihileikkausta",
+            "a4": "Voitko sulkea pois kaihien"
+          }
         }
       }
     }

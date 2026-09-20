@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 7 % läpäisee tämän automekaanikkovisan",
   "eyebrow": "TARKKUUSPALVELULAKKA",
   "summary": "Varoitusvalot, piilotetut viat ja omituiset liikenneoireet testaavat, voitko diagnosoida ongelman ennen kuin se tulee kalliiksi.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdytesti sisältää kymmenen käytännön kysymystä ajoneuvon järjestelmistä, työpajan arvioinnista ja virheiden löytämisestä. Se siirtyy tuttuista varoitusmerkeistä siihen liittyviin oireisiin, jotka vaativat huolellista diagnoosia.\n\nValitse parhaat vastaukset näytetyistä tiedoista. Kysymyksissä käytetään laajoja ajoneuvopohjeita ja vältetään yhden tuotemerkkin, mallin tai paikallisen tarkastusstandardin oletamista.\n\nArvopisteesi heijastaa vain tätä lyhyen haasteen. Se ei ole ammatillinen pätevyys, turvallisuustarkastus tai pätevän mekaanikon tekemän diagnoosin korvaaja.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mekaanikon haaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Työpajan haaste",
@@ -29,10 +26,8 @@
         "preAdCopy": "Mekaanikkopisteesi ja kuuden järjestelmän erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kuutta ajoneuvojärjestelmää verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kuutta ajoneuvojärjestelmää verrattiin"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Läpäisit mekaanikkohaasteen!",
       "finished": "Työpajahaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin ajoneuvojärjestelmä",
       "trickiest": "Hankalin ajoneuvojärjestelmä",
-      "bestRound": "Paras jakso",
-      "showBestRound": false
+      "bestRound": "Paras jakso"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Mikä varoitussymboli liittyy suorimmin moottorin öljynpaineeseen?",
-          "answers": [
-            "Öljypurkki",
-            "Akku",
-            "Thermometer",
-            "Ohjauspyörä"
-          ],
+          "answers": {
+            "a1": "Öljypurkki",
+            "a2": "Akku",
+            "a3": "Thermometer",
+            "a4": "Ohjauspyörä"
+          },
           "headerLabel": "MOOTTORIJÄRJESTELMÄT"
         },
         "mech-r1q2": {
           "question": "Punainen jarruvaroitus jää palamaan seisontajarrun vapauttamisen jälkeen. Mikä on turvallisin vastaus?",
-          "answers": [
-            "Aja nopeammin testataksesi sitä",
-            "Pysähdy turvallisesti ja tarkastuta jarrujärjestelmä",
-            "Pumppaa renkaita kovemmin",
-            "Ohita se seuraavaan huoltoon asti"
-          ],
+          "answers": {
+            "a1": "Aja nopeammin testataksesi sitä",
+            "a2": "Pysähdy turvallisesti ja tarkastuta jarrujärjestelmä",
+            "a3": "Pumppaa renkaita kovemmin",
+            "a4": "Ohita se seuraavaan huoltoon asti"
+          },
           "headerLabel": "JARRUT & TURVALLISUUS"
         },
         "mech-r4q5": {
           "question": "Rytminen naksahdus nopeutuu tiukoissa käännöksissä. Mikä osa on todennäköinen syy?",
-          "answers": [
-            "Termostaatti",
-            "Polttoainepumppu",
-            "Ulompi vetonivel",
-            "Ohjaamon tuuletin"
-          ],
+          "answers": {
+            "a1": "Termostaatti",
+            "a2": "Polttoainepumppu",
+            "a3": "Ulompi vetonivel",
+            "a4": "Ohjaamon tuuletin"
+          },
           "headerLabel": "AJOJÄRJESTELMÄ"
         },
         "mech-r4q6": {
           "question": "Yhdessä renkaassa on syvä sivuseinämä pullistuma. Mitä sinun pitäisi tehdä?",
-          "answers": [
-            "Vähennä painetta ja jatka",
-            "Työnnä pullistuma tasaiseksi",
-            "Siirrä se toiselle pyörälle",
-            "Lopeta renkaan käyttö ja vaihda se"
-          ],
+          "answers": {
+            "a1": "Vähennä painetta ja jatka",
+            "a2": "Työnnä pullistuma tasaiseksi",
+            "a3": "Siirrä se toiselle pyörälle",
+            "a4": "Lopeta renkaan käyttö ja vaihda se"
+          },
           "headerLabel": "AJONEUVOJEN TURVALLISUUS"
         },
         "mech-r5q5": {
           "question": "Moottori ylikuumenee liikenteessä, mutta jäähtyy tienopeudella. Mikä komponentti ansaitsee ennakkotarkastuksen?",
-          "answers": [
-            "Jäähdyttimen tuuletin",
-            "Turvavyö",
-            "Polttoainekorkki",
-            "Pyörän laakeri"
-          ],
+          "answers": {
+            "a1": "Jäähdyttimen tuuletin",
+            "a2": "Turvavyö",
+            "a3": "Polttoainekorkki",
+            "a4": "Pyörän laakeri"
+          },
           "headerLabel": "JÄÄHDYTYSJÄRJESTELMÄT"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Akun odotettu jännite 12,6 volttia, mitattu 10,5 volttia"
           },
           "question": "Terve 12 voltin akku lukee noin 12,6 V levossa. Tämä lukee 10,5 V. Mitä se viittaa?",
-          "answers": [
-            "Renkaat ovat kuluneet",
-            "Jäähdytysneste on liian vahvaa",
-            "Akku on syvästi tyhjä tai siinä on viallinen kenno",
-            "Laturi hihna on uusi"
-          ],
+          "answers": {
+            "a1": "Renkaat ovat kuluneet",
+            "a2": "Jäähdytysneste on liian vahvaa",
+            "a3": "Akku on syvästi tyhjä tai siinä on viallinen kenno",
+            "a4": "Laturi hihna on uusi"
+          },
           "headerLabel": "SÄHKÖJÄRJESTELMÄT"
         },
         "mech-r7q1": {
           "question": "Ohjauspyörä tärisee pääasiassa yhdellä tienopeusalueella. Mikä on todennäköinen ensimmäinen epäilty?",
-          "answers": [
-            "Pyörän epätasapaino",
-            "Polttoaineen laatu",
-            "Ohjaamon suodatin",
-            "Jäähdytysnesteen väri"
-          ],
+          "answers": {
+            "a1": "Pyörän epätasapaino",
+            "a2": "Polttoaineen laatu",
+            "a3": "Ohjaamon suodatin",
+            "a4": "Jäähdytysnesteen väri"
+          },
           "headerLabel": "OHJAUS & TASAPAINO"
         },
         "mech-r7q6": {
           "question": "Uusi voimakas tärinä ilmaantuu tievaaraan osumisen jälkeen. Mitä sinun pitäisi tehdä?",
-          "answers": [
-            "Lisää nopeutta tasataksesi sen",
-            "Pysähdy turvallisesti ja tarkasta pyörä ja rengas ennen kuin jatkat",
-            "Alenna jokaista rengaspainetta",
-            "Ohita se, jos varoitusta ei tule näkyviin"
-          ],
+          "answers": {
+            "a1": "Lisää nopeutta tasataksesi sen",
+            "a2": "Pysähdy turvallisesti ja tarkasta pyörä ja rengas ennen kuin jatkat",
+            "a3": "Alenna jokaista rengaspainetta",
+            "a4": "Ohita se, jos varoitusta ei tule näkyviin"
+          },
           "headerLabel": "AJONEUVOJEN TURVALLISUUS"
         },
         "mech-r9q2": {
           "context": "ASIAKAS SANOO",
           "question": "\"Akku on uusi, mutta se tyhjenee toistuvasti ja latausvaroitus tulee näkyviin ajon aikana.\" Mitä pitäisi testata?",
-          "answers": [
-            "Renkaiden linjaus",
-            "Latausjärjestelmä ja sen liitännät",
-            "Jarrupalan paksuus",
-            "Jäähdytysnesteen pitoisuus"
-          ],
+          "answers": {
+            "a1": "Renkaiden linjaus",
+            "a2": "Latausjärjestelmä ja sen liitännät",
+            "a3": "Jarrupalan paksuus",
+            "a4": "Jäähdytysnesteen pitoisuus"
+          },
           "headerLabel": "LATAUSJÄRJESTELMÄT"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Moottori jäähtyy tienopeudella, ylikuumenee tyhjäkäynnillä, jäähdytystuuletin ei käy"
           },
           "question": "Moottori ylikuumenee vain tyhjäkäynnillä, jäähdytin on esteetön ja jäähdytystuuletin ei koskaan käy. Mikä pitäisi ensin diagnosoida?",
-          "answers": [
-            "Pyörän suuntaus",
-            "Polttoainekorkin tiiviste",
-            "Jarrupalojen kuluminen",
-            "Puhallinpiiri, moottori ja ohjauskomento"
-          ],
+          "answers": {
+            "a1": "Pyörän suuntaus",
+            "a2": "Polttoainekorkin tiiviste",
+            "a3": "Jarrupalojen kuluminen",
+            "a4": "Puhallinpiiri, moottori ja ohjauskomento"
+          },
           "headerLabel": "LOPPUDIAGNOOSI"
         }
       }

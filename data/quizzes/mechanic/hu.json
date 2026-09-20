@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 7%-a teljesítette ezt az autószerelő kvízt",
   "eyebrow": "PRECÍZIÓS SZERVIZ ÖBÖR",
   "summary": "Figyelmeztető lámpák, rejtett hibák és furcsa útjelek azt tesztelik, hogy sikerül-e diagnosztizálni a problémát, mielőtt az drágulna.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ez a világméretű szórakoztató teszt tíz gyakorlati kérdést tartalmaz a járműrendszerekről, a műhely megítéléséről és a hibamegállapításról. Az ismerős figyelmeztető jelektől a gondos diagnózist igénylő, összefüggő tünetek felé halad.\n\nVálassza ki a legjobb választ a megjelenített információk közül. A kérdések tág járműelveket alkalmaznak, és kerülik egy márka, modell vagy helyi ellenőrzési szabvány feltételezését.\n\nAz Ön pontszáma csak ezt a rövid kihívást tükrözi. Ez nem kereskedelmi minősítés, biztonsági ellenőrzés vagy szakképzett szerelő által végzett diagnózis helyettesítője.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Szerelő kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "A műhely kihívása",
@@ -29,10 +26,8 @@
         "preAdCopy": "A szerelő pontszáma és a hat rendszer bontása készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Hat járműrendszert hasonlított össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Hat járműrendszert hasonlított össze"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Sikerült a szerelő kihíváson!",
       "finished": "A workshop kihívása kész",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb járműrendszer",
       "trickiest": "A legtrükkösebb járműrendszer",
-      "bestRound": "A legjobb szakasz",
-      "showBestRound": false
+      "bestRound": "A legjobb szakasz"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Melyik figyelmeztető szimbólum kapcsolódik a legközvetlenebbül a motorolajnyomáshoz?",
-          "answers": [
-            "Olajkanna",
-            "Akkumulátor",
-            "Hőmérő",
-            "Kormánykerék"
-          ],
+          "answers": {
+            "a1": "Olajkanna",
+            "a2": "Akkumulátor",
+            "a3": "Hőmérő",
+            "a4": "Kormánykerék"
+          },
           "headerLabel": "MOTORRENDSZEREK"
         },
         "mech-r1q2": {
           "question": "A rögzítőfék kioldása után a piros fék figyelmeztetés világít. Mi a legbiztonságosabb válasz?",
-          "answers": [
-            "Vezessen gyorsabban, hogy tesztelje",
-            "Álljon meg biztonságosan, és ellenőrizze a fékrendszert",
-            "Erősebben pumpálja a gumikat",
-            "Hagyja figyelmen kívül a következő szervizig"
-          ],
+          "answers": {
+            "a1": "Vezessen gyorsabban, hogy tesztelje",
+            "a2": "Álljon meg biztonságosan, és ellenőrizze a fékrendszert",
+            "a3": "Erősebben pumpálja a gumikat",
+            "a4": "Hagyja figyelmen kívül a következő szervizig"
+          },
           "headerLabel": "FÉKEK ÉS BIZTONSÁG"
         },
         "mech-r4q5": {
           "question": "A ritmikus kattogás felgyorsul szűk kanyarokban. Melyik rész valószínű oka?",
-          "answers": [
-            "Termosztát",
-            "Üzemanyag szivattyú",
-            "Külső féltengelycsukló",
-            "Kabin ventilátor"
-          ],
+          "answers": {
+            "a1": "Termosztát",
+            "a2": "Üzemanyag szivattyú",
+            "a3": "Külső féltengelycsukló",
+            "a4": "Kabin ventilátor"
+          },
           "headerLabel": "HAJTÓVONAT"
         },
         "mech-r4q6": {
           "question": "Az egyik abroncs oldalfala mély kidudorodással rendelkezik. Mit kell tenned?",
-          "answers": [
-            "Csökkentse a nyomást és folytassa",
-            "Nyomja laposra a dudort",
-            "Helyezze át egy másik kerékre",
-            "Hagyja abba a gumiabroncs használatát, és gondoskodjon a cseréről"
-          ],
+          "answers": {
+            "a1": "Csökkentse a nyomást és folytassa",
+            "a2": "Nyomja laposra a dudort",
+            "a3": "Helyezze át egy másik kerékre",
+            "a4": "Hagyja abba a gumiabroncs használatát, és gondoskodjon a cseréről"
+          },
           "headerLabel": "A GÉPJÁRMŰ BIZTONSÁGA"
         },
         "mech-r5q5": {
           "question": "A motor túlmelegszik a forgalomban, de lehűl közúti sebességnél. Melyik alkatrész érdemes korai ellenőrzést?",
-          "answers": [
-            "Hűtőventilátor",
-            "Biztonsági öv",
-            "Üzemanyag sapka",
-            "Kerékcsapágy"
-          ],
+          "answers": {
+            "a1": "Hűtőventilátor",
+            "a2": "Biztonsági öv",
+            "a3": "Üzemanyag sapka",
+            "a4": "Kerékcsapágy"
+          },
           "headerLabel": "HŰTÉSRENDSZEREK"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Az akkumulátor várható feszültsége 12,6 volt, mért 10,5 volt"
           },
           "question": "Egy egészséges 12 voltos akkumulátor körülbelül 12,6 V-ot mutat nyugalmi állapotban. Ez 10,5 V feszültséget mutat. Mire utal ez?",
-          "answers": [
-            "A gumik kopottak",
-            "A hűtőfolyadék túl erős",
-            "Az akkumulátor mélyen lemerült, vagy meghibásodott a cellája",
-            "A generátor szíj új"
-          ],
+          "answers": {
+            "a1": "A gumik kopottak",
+            "a2": "A hűtőfolyadék túl erős",
+            "a3": "Az akkumulátor mélyen lemerült, vagy meghibásodott a cellája",
+            "a4": "A generátor szíj új"
+          },
           "headerLabel": "ELEKTROMOS RENDSZEREK"
         },
         "mech-r7q1": {
           "question": "A kormánykerék főként egy közúti sebességtartományban rezeg. Mi az első gyanúsított?",
-          "answers": [
-            "Kerékkiegyensúlyozatlanság",
-            "Üzemanyag minőség",
-            "Fülkeszűrő",
-            "Hűtőfolyadék színe"
-          ],
+          "answers": {
+            "a1": "Kerékkiegyensúlyozatlanság",
+            "a2": "Üzemanyag minőség",
+            "a3": "Fülkeszűrő",
+            "a4": "Hűtőfolyadék színe"
+          },
           "headerLabel": "KORMÁNYZÁS ÉS EGYENSÚLY"
         },
         "mech-r7q6": {
           "question": "Új, erős vibráció jelenik meg a közúti veszélybe ütközés után. Mit kell tenned?",
-          "answers": [
-            "Növelje a sebességet, hogy kisimítsa",
-            "Biztonságosan álljon meg, és ellenőrizze a kereket és a gumiabroncsot, mielőtt folytatná",
-            "Csökkentse az összes gumiabroncs nyomását",
-            "Figyelmen kívül hagyja, ha nem jelenik meg figyelmeztetés"
-          ],
+          "answers": {
+            "a1": "Növelje a sebességet, hogy kisimítsa",
+            "a2": "Biztonságosan álljon meg, és ellenőrizze a kereket és a gumiabroncsot, mielőtt folytatná",
+            "a3": "Csökkentse az összes gumiabroncs nyomását",
+            "a4": "Figyelmen kívül hagyja, ha nem jelenik meg figyelmeztetés"
+          },
           "headerLabel": "A GÉPJÁRMŰ BIZTONSÁGA"
         },
         "mech-r9q2": {
           "context": "AZ ÜGYFÉL MONDJA",
           "question": "\"Az akkumulátor új, de többször lemerül, és vezetés közben megjelenik a töltési figyelmeztetés.\" Mit kell tesztelni?",
-          "answers": [
-            "Gumiabroncs beállítás",
-            "A töltőrendszer és csatlakozásai",
-            "Fékbetét vastagság",
-            "Hűtőfolyadék koncentráció"
-          ],
+          "answers": {
+            "a1": "Gumiabroncs beállítás",
+            "a2": "A töltőrendszer és csatlakozásai",
+            "a3": "Fékbetét vastagság",
+            "a4": "Hűtőfolyadék koncentráció"
+          },
           "headerLabel": "TÖLTŐRENDSZEREK"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "A motor közúti fordulatszámon hűl, alapjáraton túlmelegszik, a hűtőventilátor nem jár"
           },
           "question": "A motor csak alapjáraton melegszik túl, a hűtő akadálytalan és a hűtőventilátor soha nem jár. Mit kell először diagnosztizálni?",
-          "answers": [
-            "Kerékbeállítás",
-            "Üzemanyag-sapka tömítés",
-            "Fékbetét kopás",
-            "A ventilátor áramkör, a motor és a vezérlőparancs"
-          ],
+          "answers": {
+            "a1": "Kerékbeállítás",
+            "a2": "Üzemanyag-sapka tömítés",
+            "a3": "Fékbetét kopás",
+            "a4": "A ventilátor áramkör, a motor és a vezérlőparancs"
+          },
           "headerLabel": "VÉGSŐ DIAGNÓZIS"
         }
       }

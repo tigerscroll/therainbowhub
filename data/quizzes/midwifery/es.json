@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 7% aprueba este examen de ingreso a partería",
   "eyebrow": "CENTRO DE NACIMIENTO CALMA",
   "summary": "El embarazo, el parto, el cuidado del recién nacido y la calma ponen a prueba lo que notas cuando cada detalle importa.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "Embarazo, parto y cuidados del recién nacido. ¿Puedes mantener la calma y detectar el detalle que más importa?",
     "cta": "Empezar el quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafío de entretenimiento mundial contiene diez preguntas de entrada sobre fisiología del embarazo, bienestar prenatal, parto, atención del recién nacido, prevención de infecciones y comunicación respetuosa. Pone a prueba un razonamiento cuidadoso sin depender de la vía clínica de un país.\n\nElige la mejor respuesta de los hechos mostrados. Las preguntas favorecen la observación, la comunicación clara y la escalada adecuada en lugar de la certeza sin fundamento.\n\nEste no es un examen de ingreso acreditado para partería, una evaluación clínica, una calificación, un curso de capacitación ni una fuente de asesoramiento médico.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Completa diez preguntas cuidadosamente seleccionadas en un único desafío.",
         "Elige una respuesta cada vez. No sabrás qué respuestas son correctas hasta el final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Examen de ingreso a partería",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Desafío de ingreso a la partería",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tu puntuación de ingreso a la partería y el desglose de tres áreas están listos para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Tres áreas evaluadas",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Tres áreas evaluadas"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de partería!",
       "finished": "Desafío de partería completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -98,8 +91,7 @@
         "snapshot": "Lo que sugiere tu perfil de candidato",
         "targetReached": "80% del desafío alcanzado",
         "targetRemaining": "Respuestas correctas que faltan para alcanzar el 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,103 +100,103 @@
       "questions": {
         "mid-r1q1": {
           "question": "¿Qué órgano favorece el intercambio durante el embarazo?",
-          "answers": [
-            "Vejiga",
-            "Placenta",
-            "Páncreas",
-            "Apéndice"
-          ],
+          "answers": {
+            "a1": "Vejiga",
+            "a2": "Placenta",
+            "a3": "Páncreas",
+            "a4": "Apéndice"
+          },
           "headerLabel": "FISIOLOGÍA DEL EMBARAZO"
         },
         "mid-r1q4": {
           "question": "¿Qué ayuda a un recién nacido estable a conservar el calor poco después del nacimiento?",
-          "answers": [
-            "Un baño frío",
-            "Dejar mantas mojadas en su lugar",
-            "Secado y contacto piel con piel.",
-            "Separar a los padres y al bebé de forma rutinaria"
-          ],
+          "answers": {
+            "a1": "Un baño frío",
+            "a2": "Dejar mantas mojadas en su lugar",
+            "a3": "Secado y contacto piel con piel.",
+            "a4": "Separar a los padres y al bebé de forma rutinaria"
+          },
           "headerLabel": "CALIDEZ DEL RECIÉN NACIDO"
         },
         "mid-r3q2": {
           "question": "Aparece un nuevo dolor de cabeza intenso con cambios visuales durante el embarazo. ¿Cuál es la respuesta más segura?",
-          "answers": [
-            "Descansar y volver a valorar la situación al cabo de una hora",
-            "Esperar a la siguiente cita rutinaria",
-            "Pedir a alguien de casa que vigile los síntomas",
-            "Buscar de inmediato una valoración de un profesional de atención materna"
-          ],
+          "answers": {
+            "a1": "Descansar y volver a valorar la situación al cabo de una hora",
+            "a2": "Esperar a la siguiente cita rutinaria",
+            "a3": "Pedir a alguien de casa que vigile los síntomas",
+            "a4": "Buscar de inmediato una valoración de un profesional de atención materna"
+          },
           "headerLabel": "BIENESTAR PRENATAL"
         },
         "mid-r5q4": {
           "question": "El bebé nace pero la placenta aún no ha salido. ¿Qué etapa del parto es esta?",
-          "answers": [
-            "La tercera etapa",
-            "la primera etapa",
-            "La segunda etapa",
-            "Una nueva etapa del embarazo"
-          ],
+          "answers": {
+            "a1": "La tercera etapa",
+            "a2": "la primera etapa",
+            "a3": "La segunda etapa",
+            "a4": "Una nueva etapa del embarazo"
+          },
           "headerLabel": "ETAPAS LABORALES"
         },
         "mid-r4q3": {
           "question": "Una mujer dice que no quiere que haya estudiantes presentes. ¿Cuál es la mejor respuesta?",
-          "answers": [
-            "Dile que la asistencia elimina esa elección.",
-            "Discute su negativa en el pasillo.",
-            "Respeta su decisión y protege su privacidad",
-            "Continuar sin reconocerlo"
-          ],
+          "answers": {
+            "a1": "Dile que la asistencia elimina esa elección.",
+            "a2": "Discute su negativa en el pasillo.",
+            "a3": "Respeta su decisión y protege su privacidad",
+            "a4": "Continuar sin reconocerlo"
+          },
           "headerLabel": "CONSENTIMIENTO Y RESPETO"
         },
         "mid-r5q6": {
           "question": "El envoltorio estéril del equipo se rompe antes de su uso. ¿Cuál es la respuesta más segura?",
-          "answers": [
-            "No considerarlo estéril; sustituirlo o comunicarlo según corresponda",
-            "Pegar el envoltorio y continuar",
-            "Ocultar la rotura",
-            "Tocar el contenido para comprobarlo"
-          ],
+          "answers": {
+            "a1": "No considerarlo estéril; sustituirlo o comunicarlo según corresponda",
+            "a2": "Pegar el envoltorio y continuar",
+            "a3": "Ocultar la rotura",
+            "a4": "Tocar el contenido para comprobarlo"
+          },
           "headerLabel": "PREVENCIÓN DE INFECCIONES"
         },
         "mid-r5q3": {
           "question": "¿Qué cambio describe mejor el proceso de consolidación del trabajo?",
-          "answers": [
-            "Las contracciones generalmente se vuelven más fuertes, más largas y más regulares.",
-            "Las contracciones se detienen permanentemente.",
-            "La placenta siempre sale antes que el bebé.",
-            "El cuello uterino vuelve a su estado anterior al embarazo."
-          ],
+          "answers": {
+            "a1": "Las contracciones generalmente se vuelven más fuertes, más largas y más regulares.",
+            "a2": "Las contracciones se detienen permanentemente.",
+            "a3": "La placenta siempre sale antes que el bebé.",
+            "a4": "El cuello uterino vuelve a su estado anterior al embarazo."
+          },
           "headerLabel": "PATRONES LABORALES"
         },
         "mid-r7q3": {
           "question": "Un recién nacido no se alimenta como de costumbre y respira notablemente más rápido. ¿Qué es más seguro?",
-          "answers": [
-            "Esperar varios días sin decírselo a nadie.",
-            "Elige un diagnóstico en casa.",
-            "Dar un tratamiento sin receta",
-            "Reconocer el cambio y buscar una evaluación calificada inmediata."
-          ],
+          "answers": {
+            "a1": "Esperar varios días sin decírselo a nadie.",
+            "a2": "Elige un diagnóstico en casa.",
+            "a3": "Dar un tratamiento sin receta",
+            "a4": "Reconocer el cambio y buscar una evaluación calificada inmediata."
+          },
           "headerLabel": "OBSERVACIÓN DEL RECIÉN NACIDO"
         },
         "mid-r10q2": {
           "context": "Tabla de fluidos: 650 mL + 450 mL. Cuadro de observación: anterior 74, último 82.",
           "question": "¿Qué total y qué tendencia deben comunicarse?",
-          "answers": [
-            "650 ml en total sin cambios",
-            "1100 ml en total, siendo la última observación más alta que la primera",
-            "1.650 ml en total con tendencia a la baja",
-            "450 ml en total sin tendencia"
-          ],
+          "answers": {
+            "a1": "650 ml en total sin cambios",
+            "a2": "1100 ml en total, siendo la última observación más alta que la primera",
+            "a3": "1.650 ml en total con tendencia a la baja",
+            "a4": "450 ml en total sin tendencia"
+          },
           "headerLabel": "TENDENCIAS PRENATALES"
         },
         "mid-r7q5": {
           "question": "¿Cómo se debe tratar generalmente un muñón de cordón umbilical limpio y seco?",
-          "answers": [
-            "Cúbrelo con sustancias no recetadas.",
-            "Manténgalo limpio y seco y busque asesoramiento si aparecen cambios preocupantes.",
-            "Tira de él para que se separe.",
-            "Mantenlo continuamente mojado."
-          ],
+          "answers": {
+            "a1": "Cúbrelo con sustancias no recetadas.",
+            "a2": "Manténgalo limpio y seco y busque asesoramiento si aparecen cambios preocupantes.",
+            "a3": "Tira de él para que se separe.",
+            "a4": "Mantenlo continuamente mojado."
+          },
           "headerLabel": "CUIDADO DEL RECIÉN NACIDO"
         }
       }

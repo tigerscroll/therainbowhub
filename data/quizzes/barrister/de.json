@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nur 6 % der Erwachsenen können diese Aufnahmeprüfung zum Anwalt bestehen",
   "eyebrow": "DER ARGUMENTATIONSTEST IM GERICHTSSAAL",
   "summary": "Zehn Fragen prüfen die Gerichtssprache, Präzedenzfälle, Beweise und professionelles Urteilsvermögen.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Die Eröffnungsfragen kommen mir bekannt vor. Anschließend befasst sich die Prüfung mit Präzedenzfällen, Beweismitteln und Gerichtsbegründungen.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bei diesem Unterhaltungsquiz mit zehn Fragen werden umfassende Konzepte verwendet, die in allen Rechtssystemen des Common Law in führenden englischsprachigen Ländern zu finden sind. Genaue Regeln und Terminologie variieren je nach Gerichtsbarkeit, daher konzentrieren sich die Fragen auf die Argumentation im Gerichtssaal und nicht auf den Zulassungslehrplan eines Landes.\n\nWählen Sie für jede Frage eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen, danach kann die vollständige Auswertung freigeschaltet werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn immer schwieriger werdende Gerichtsfragen.",
         "Wählen Sie das beste rechtliche Konzept oder die beste Interessenvertretung.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Herausforderung bei der Aufnahme als Rechtsanwalt",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Aufnahmeprüfung zum Rechtsanwalt",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Urteil zur Gerichtsbegründung steht zur Auswertung bereit.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Vier Rechtsgebiete im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Vier Rechtsgebiete im Vergleich"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Sie haben die Zulassungsprüfung zum Anwalt bestanden!",
       "finished": "Herausforderung für den Eintritt als Rechtsanwalt abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Rechtsbereich",
       "trickiest": "Schwierigster Rechtsbereich",
       "bestRound": "Stärkster Bereich",
@@ -96,8 +89,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Wer trägt in einem Strafverfahren normalerweise die Beweislast für die Anklage?",
-          "answers": [
-            "Die Anklage",
-            "Der Angeklagte",
-            "Die Jury",
-            "Der Gerichtsschreiber"
-          ],
+          "answers": {
+            "a1": "Die Anklage",
+            "a2": "Der Angeklagte",
+            "a3": "Die Jury",
+            "a4": "Der Gerichtsschreiber"
+          },
           "headerLabel": "GRUNDLAGEN DES GERICHTSAALS"
         },
         "barrister-q2": {
           "question": "Nach welchem Grundsatz gilt eine beschuldigte Person als unschuldig, solange ihre Schuld nicht bewiesen ist?",
-          "answers": [
-            "Gefährdungshaftung",
-            "Die Unschuldsvermutung",
-            "Doppelte Gefahr",
-            "Gerichtsbescheid"
-          ],
+          "answers": {
+            "a1": "Gefährdungshaftung",
+            "a2": "Die Unschuldsvermutung",
+            "a3": "Doppelte Gefahr",
+            "a4": "Gerichtsbescheid"
+          },
           "headerLabel": "GRUNDPRINZIPIEN"
         },
         "barrister-q3": {
           "question": "Wie heißt eine frühere Gerichtsentscheidung, die einen späteren ähnlichen Fall leiten kann?",
-          "answers": [
-            "Eine eidesstattliche Erklärung",
-            "Eine Anklage",
-            "Ein Präzedenzfall",
-            "Eine Siedlung"
-          ],
+          "answers": {
+            "a1": "Eine eidesstattliche Erklärung",
+            "a2": "Eine Anklage",
+            "a3": "Ein Präzedenzfall",
+            "a4": "Eine Siedlung"
+          },
           "headerLabel": "RECHTSPRECHUNG"
         },
         "barrister-q4": {
           "question": "Wie nennt man gemeinhin die Befragung eines Zeugen durch die Gegenseite?",
-          "answers": [
-            "Direkte Untersuchung",
-            "Gerichtliche Überprüfung",
-            "Offenlegung",
-            "Kreuzverhör"
-          ],
+          "answers": {
+            "a1": "Direkte Untersuchung",
+            "a2": "Gerichtliche Überprüfung",
+            "a3": "Offenlegung",
+            "a4": "Kreuzverhör"
+          },
           "headerLabel": "INTERESSENVERTRETUNG"
         },
         "barrister-q5": {
           "question": "Welcher lateinische Begriff beschreibt den für die Entscheidung eines Gerichts wesentlichen Rechtsgrund?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas corpus",
-            "Bona fide",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas corpus",
+            "a3": "Bona fide",
+            "a4": "Prima facie"
+          },
           "headerLabel": "PRÄZEDENZFALL"
         },
         "barrister-q6": {
           "question": "Was ist eine richterliche Beobachtung, die für die oft genannte Entscheidung nicht wesentlich ist?",
-          "answers": [
-            "Eine verbindliche Anordnung",
-            "Obiter dictum",
-            "Ein Schuldeingeständnis",
-            "Ein Grund zum Handeln"
-          ],
+          "answers": {
+            "a1": "Eine verbindliche Anordnung",
+            "a2": "Obiter dictum",
+            "a3": "Ein Schuldeingeständnis",
+            "a4": "Ein Grund zum Handeln"
+          },
           "headerLabel": "RECHTLICHE BEGRÜNDUNG"
         },
         "barrister-q7": {
           "question": "Welcher Begriff beschreibt üblicherweise eine außergerichtliche Stellungnahme, die angeboten wird, um den Wahrheitsgehalt einer Aussage zu beweisen?",
-          "answers": [
-            "Privileg",
-            "Esstoppel",
-            "Hörensagen",
-            "Schadensbegrenzung"
-          ],
+          "answers": {
+            "a1": "Privileg",
+            "a2": "Esstoppel",
+            "a3": "Hörensagen",
+            "a4": "Schadensbegrenzung"
+          },
           "headerLabel": "BEWEIS"
         },
         "barrister-q8": {
           "question": "Welche Frage deutet am deutlichsten auf die vom Prüfer gewünschte Antwort hin?",
-          "answers": [
-            "Was geschah als nächstes?",
-            "Wo standen Sie?",
-            "Wie sah das Zimmer aus?",
-            "Die Ampel war rot, als Sie überquerten, nicht wahr?"
-          ],
+          "answers": {
+            "a1": "Was geschah als nächstes?",
+            "a2": "Wo standen Sie?",
+            "a3": "Wie sah das Zimmer aus?",
+            "a4": "Die Ampel war rot, als Sie überquerten, nicht wahr?"
+          },
           "headerLabel": "ZEUGENBEFRAGUNG"
         },
         "barrister-q9": {
           "question": "Mit welcher Frage befasst sich die gerichtliche Prüfung in erster Linie?",
-          "answers": [
-            "Ob eine öffentliche Entscheidung rechtmäßig getroffen wurde",
-            "Ob eine Jury den besten Zeugen wählte",
-            "Ob ein Vertrag einen Gewinn brachte",
-            "Ob jeder Berufung stattgegeben werden sollte"
-          ],
+          "answers": {
+            "a1": "Ob eine öffentliche Entscheidung rechtmäßig getroffen wurde",
+            "a2": "Ob eine Jury den besten Zeugen wählte",
+            "a3": "Ob ein Vertrag einen Gewinn brachte",
+            "a4": "Ob jeder Berufung stattgegeben werden sollte"
+          },
           "headerLabel": "ÖFFENTLICHES RECHT"
         },
         "barrister-q10": {
           "question": "Was verlangt das Cab-Rank-Prinzip im Großen und Ganzen von einem zugelassenen Rechtsanwalt, vorbehaltlich berufsrechtlicher Regeln und Ausnahmen?",
-          "answers": [
-            "Akzeptieren Sie nur beliebte Fälle",
-            "Geeignete Mandate unabhängig von der Person des Mandanten oder der Bekanntheit des Falls annehmen",
-            "Garantieren Sie ein erfolgreiches Ergebnis",
-            "Arbeiten Sie nur in Strafgerichten"
-          ],
+          "answers": {
+            "a1": "Akzeptieren Sie nur beliebte Fälle",
+            "a2": "Geeignete Mandate unabhängig von der Person des Mandanten oder der Bekanntheit des Falls annehmen",
+            "a3": "Garantieren Sie ein erfolgreiches Ergebnis",
+            "a4": "Arbeiten Sie nur in Strafgerichten"
+          },
           "headerLabel": "LETZTE ETHIKFRAGE"
         }
       }

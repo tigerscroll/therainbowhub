@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 7 % klarar detta syntest",
   "eyebrow": "OPTISKT FOKUSLABB",
   "summary": "Små skillnader, skiftande mönster och optiska fällor testar om dina ögon fångar det de flesta missar.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Hur skarpa är dina ögon? Upptäck små skillnader, spåra skiftmönster och fånga visuella fällor innan de fångar dig.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning innehåller tio visuella pussel som täcker färgkontrast, detaljmatchning, rumslig orientering, mönsterspårning, uppmärksamhet och visuellt minne. Arbetsuppgifterna blir mer krävande utan att förlita sig på specialistterminologi.\n\nStudera varje bild eller symboluppsättning noggrant och välj sedan det svar som bäst stöds av det som visas. Vissa frågor testar uppfattning och uppmärksamhet snarare än synen i sig.\n\nDetta är inte en ögonundersökning, medicinskt syntest eller diagnos. Sök kvalificerad ögonvårdsråd om du är orolig för din syn.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Fyll i tio noggrant utvalda frågor i en fokuserad utmaning.",
         "Välj ett svar varje gång. Korrektheten förblir dold tills den sista avslöjandet.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vision utmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Utmaning Vision",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din vision-utmaning poäng och tre-färdighet uppdelning är redo att avslöja.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Tre visuella färdigheter jämförs",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre visuella färdigheter jämförs"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du klarade synutmaningen!",
       "finished": "Vision utmaning klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkast visuell skicklighet",
       "trickiest": "Den svåraste visuella färdigheten",
       "bestRound": "Bästa avsnittet",
@@ -98,8 +91,7 @@
         "snapshot": "Vad din fokusprofil antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Fyra nära blå färgrutor med en subtilt annorlunda platta längst ner till höger"
           },
           "question": "Vilken kakel har en annan färg?",
-          "answers": [
-            "Överst till vänster",
-            "Nederst till höger",
-            "Överst till höger",
-            "Nederst till vänster"
-          ],
+          "answers": {
+            "a1": "Överst till vänster",
+            "a2": "Nederst till höger",
+            "a3": "Överst till höger",
+            "a4": "Nederst till vänster"
+          },
           "headerLabel": "FÄRGKONTRAST"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Referenskod M 7 K 2 P 9"
           },
           "question": "Vilken kod matchar exakt?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "DETALJJÄMFÖRELSE"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Nordostpil reflekteras över en vertikal spegel"
           },
           "question": "Vilken pil är den vertikala spegeln av ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "RUMSLIG ORIENTERING"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Hur många bokstäver F visas?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "UPPMÄRKSAMHETSKONTROLL"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, okänt"
           },
           "question": "Vilken bricka kompletterar den alternerande raden?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "MÖNSTERSPÅRNING"
         },
         "vision-r4q5": {
           "question": "Vilken färg sticker ut mest mot djup marinblått?",
-          "answers": [
-            "Färgprov A",
-            "Färgprov B",
-            "Färgprov D",
-            "Färgprov C"
-          ],
+          "answers": {
+            "a1": "Färgprov A",
+            "a2": "Färgprov B",
+            "a3": "Färgprov D",
+            "a4": "Färgprov C"
+          },
           "headerLabel": "FÄRGFOKUS"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "En röd startpunkt med fyra matchande prickade rutter som korsar upprepade gånger innan de når slutpunkterna A, B, C och D"
           },
           "question": "Börja vid den röda pricken och följ dess prickade rutt. Vilken bokstav når du?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "VISUELL SPÅRNING"
         },
         "vision-r9q2": {
-          "context": "För att kunna uppnå en fullständig och effektiv bedömning av risken för att skada en person",
+          "context": "VARIANT A: FOCUS-M7Q2-2026\nVARIANT B: F0CUS-M7Q2-2026",
           "question": "Vilken exakt position ändrades i version B?",
-          "answers": [
-            "Den första F",
-            "Q",
-            "Det andra tecknet",
-            "Den sista siffran"
-          ],
+          "answers": {
+            "a1": "Den första F",
+            "a2": "Q",
+            "a3": "Det andra tecknet",
+            "a4": "Den sista siffran"
+          },
           "headerLabel": "DETALJDETEKTION"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Bas M8Q2 K7P4 R6N3 och kopia M8Q2 K1P4 R6M3"
           },
           "question": "Vilka två karaktärer ändrades?",
-          "answers": [
-            "7 och N",
-            "8 och 6",
-            "Q och P",
-            "K och R"
-          ],
+          "answers": {
+            "a1": "7 och N",
+            "a2": "8 och 6",
+            "a3": "Q och P",
+            "a4": "K och R"
+          },
           "headerLabel": "KODJÄMFÖRELSE"
         },
         "vision-r8q5": {
           "question": "Vilken ikon dök upp på fjärde plats?",
-          "answers": [
-            "Månen",
-            "Ankare",
-            "Sol",
-            "Stjärna"
-          ],
+          "answers": {
+            "a1": "Månen",
+            "a2": "Ankare",
+            "a3": "Sol",
+            "a4": "Stjärna"
+          },
           "study": {
             "title": "Snabb ögonblicksbild",
             "items": [

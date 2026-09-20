@@ -82,73 +82,143 @@
     "questions": {
       "songs-q1": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q01.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q01.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "solo_legends",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q2": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q02.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q02.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "british_invasion",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q3": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q03.webp" },
-        "correct": 2,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q03.webp"
+        },
+        "correctAnswerId": "a3",
         "category": "motown_soul",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q4": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q04.webp" },
-        "correct": 3,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q04.webp"
+        },
+        "correctAnswerId": "a4",
         "category": "british_invasion",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q5": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q05.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q05.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "british_invasion",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q6": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q06.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q06.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "motown_soul",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q7": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q07.webp" },
-        "correct": 2,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q07.webp"
+        },
+        "correctAnswerId": "a3",
         "category": "rock_classics",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q8": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q08.webp" },
-        "correct": 3,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q08.webp"
+        },
+        "correctAnswerId": "a4",
         "category": "solo_legends",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q9": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q09.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q09.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "motown_soul",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "songs-q10": {
         "presentation": "text",
-        "image": { "src": "/quizzes/songs/assets/items/q10.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/songs/assets/items/q10.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "rock_classics",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       }
     },
     "checkpoint": {
@@ -156,17 +226,52 @@
     },
     "results": {
       "profiles": [
-        { "key": "profile-1", "min": 0.9 },
-        { "key": "profile-2", "min": 0.7 },
-        { "key": "profile-3", "min": 0.5 },
-        { "key": "profile-4", "min": 0.3 },
-        { "key": "profile-5", "min": 0 }
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.7
+        },
+        {
+          "key": "profile-3",
+          "min": 0.5
+        },
+        {
+          "key": "profile-4",
+          "min": 0.3
+        },
+        {
+          "key": "profile-5",
+          "min": 0
+        }
       ],
       "dimensions": [
-        { "key": "dimension-1", "categories": ["solo_legends"] },
-        { "key": "dimension-2", "categories": ["british_invasion"] },
-        { "key": "dimension-3", "categories": ["motown_soul"] },
-        { "key": "dimension-4", "categories": ["rock_classics"] }
+        {
+          "key": "dimension-1",
+          "categories": [
+            "solo_legends"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "british_invasion"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "motown_soul"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "categories": [
+            "rock_classics"
+          ]
+        }
       ],
       "score": {
         "showPercentage": true,

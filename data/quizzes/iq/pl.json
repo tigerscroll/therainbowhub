@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 7% zdaje ten test na inteligencję",
   "eyebrow": "SKLEP INTELIGENCJI",
   "summary": "Wzorce, reguły liczbowe, powiązania słów i pułapki przestrzenne sprawdzają, jak szybko Twoje rozumowanie odnajduje ukrytą regułę.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Wzorce, kody, powiązania słowne i pułapki logiczne zderzają się. Jak długo Twoje rozumowanie może pozostać o krok do przodu?",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To ogólnoświatowe wyzwanie rozrywkowe składa się z dziesięciu starannie wybranych łamigłówek obejmujących wzory, reguły liczbowe, połączenia werbalne, rozumowanie przestrzenne, uwagę i logiczne dedukcje. Został zaprojektowany tak, aby był zabawny i wymagający, a nie przypominał formalny egzamin umiejętności.\n\nKażda łamigłówka ma jedną odpowiedź popartą pokazanymi informacjami. Interakcja zmienia się regularnie, więc może zaistnieć potrzeba zidentyfikowania reguły, porównania wskazówek, przekształcenia symbolu, obliczenia w myślach lub zauważenia małej niespójności.\n\nTwój wynik testu na inteligencję to odsetek poprawnie rozwiązanych łamigłówek rozrywkowych. Opisuje jedynie tę próbę i nie mierzy Twojej rzeczywistej inteligencji, IQ, uzdolnień ani zdolności edukacyjnych.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Rozwiąż dziesięć starannie wybranych pytań w ramach jednego ukierunkowanego wyzwania.",
         "Za każdym razem wybierz jedną odpowiedź. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie inteligencji",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie Inteligencji",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twój wynik testu na inteligencję i podział na trzy obszary są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie trzech obszarów myślenia",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech obszarów myślenia"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Zdałeś wyzwanie Testu Inteligencji!",
       "finished": "Test inteligencji ukończony",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar myślenia",
       "trickiest": "Najtrudniejszy obszar myślenia",
       "bestRound": "Najlepsza sekcja",
@@ -98,8 +91,7 @@
         "snapshot": "Co sugeruje ta próba",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "koło, trójkąt, koło, trójkąt, nieznane"
           },
           "question": "Który symbol będzie następny?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "ROZUMOWANIE WZORÓW"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "strzałka w górę w prawo obok lustra pionowego"
           },
           "question": "Która strzałka jest odbiciem w zwierciadle pionowym?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "ROZUMOWANIE PRZESTRZENNE"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "przesunięcie liter plus jeden, plus dwa, plus jeden; CAT staje się DCU"
           },
           "question": "Przesunięcia powtarzają się +1, +2, +1. Jak kodowany jest DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "UZASADNIENIE WERBALNE"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "Piramida liczbowa z dolnym 3, 5, 4 i środkowym 8, 9"
           },
           "question": "Każdy blok jest sumą dwóch znajdujących się pod nim. Co idzie na górę?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "ROZUMOWANIE NUMERYCZNE"
         },
         "iq-s3q2": {
           "question": "Maszyna podwaja liczbę, a następnie dodaje 3. Które dane wejściowe dają 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "ROZUMOWANIE NUMERYCZNE"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Kod referencyjny K7M2-Q9. Znajdź opcję ze zmienionym jednym znakiem."
           },
           "question": "Który egzemplarz różni się od referencji dokładnie jednym znakiem?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "Dbałość o szczegóły"
         },
         "iq-s4q1": {
           "question": "Dokładnie jedna osoba mówi prawdę. A mówi, że B kłamie. B mówi, że C kłamie. C mówi, że A i B kłamią. Kto mówi prawdę?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Nikt"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Nikt"
+          },
           "headerLabel": "DEDUKCJA LOGICZNA"
         },
         "iq-s4q4": {
           "question": "Zacznij od środka, zwrócony na północ. Przejdź o jedno pole do przodu, skręć w prawo, przesuń się o dwa pola, skręć w prawo, a następnie przesuń się o jedno pole. Gdzie kończysz w stosunku do początku?",
-          "answers": [
-            "Dwa kwadraty w prawo",
-            "Jedno pole w górę",
-            "Zostały dwa kwadraty",
-            "Z powrotem na środku"
-          ],
+          "answers": {
+            "a1": "Dwa kwadraty w prawo",
+            "a2": "Jedno pole w górę",
+            "a3": "Zostały dwa kwadraty",
+            "a4": "Z powrotem na środku"
+          },
           "headerLabel": "ROZUMOWANIE PRZESTRZENNE"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "rzędy 3, 4, 10; 5, 2, 12; 7, 3, nieznane"
           },
           "question": "W każdym rzędzie podwoj pierwszą liczbę, a następnie dodaj drugą. Co zastępuje znak zapytania?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "ROZUMOWANIE NUMERYCZNE"
         },
         "iq-s5q8": {
           "question": "Strzałka wskazuje w górę. Obróć go o 90° zgodnie z ruchem wskazówek zegara, a następnie odbij go w pionowym lustrze. Gdzie to wskazuje?",
-          "answers": [
-            "W górę",
-            "Jasne",
-            "W dół",
-            "Lewy"
-          ],
+          "answers": {
+            "a1": "W górę",
+            "a2": "Jasne",
+            "a3": "W dół",
+            "a4": "Lewy"
+          },
           "headerLabel": "KOŃCOWY TEST PRZESTRZENNY"
         }
       }

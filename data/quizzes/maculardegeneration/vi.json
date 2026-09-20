@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kiểm tra thoái hóa điểm vàng",
   "eyebrow": "KIỂM TRA TẦM NHÌN TRUNG TÂM 10 CÂU HỎI",
   "summary": "Chi tiết trung tâm, bẫy hình ảnh và các dấu hiệu cảnh báo AMD quan trọng trong một thử thách nhanh chóng.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Bạn có thể nhận ra các chi tiết trung tâm và xác định các dấu hiệu cảnh báo không? 10 lần kiểm tra nhanh này ngày càng khó hơn.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách gồm mười câu hỏi này kết hợp năm câu đố trực quan trên màn hình với năm câu hỏi nâng cao nhận thức chung về bệnh thoái hóa điểm vàng liên quan đến tuổi tác (AMD). Nó đo lường câu trả lời cho bài kiểm tra này, chứ không phải sức khỏe của mắt hay khả năng mắc bệnh.\n\nKích thước màn hình, độ sáng, độ tương phản, thị lực, thấu kính điều chỉnh, độ mỏi và cài đặt thiết bị đều có thể ảnh hưởng đến hiệu suất. Các đường lượn sóng hoặc bị biến dạng mới, một vùng mới bị mờ hoặc trống ở tầm nhìn trung tâm hoặc tình trạng xấu đi đột ngột cần được thảo luận kịp thời với chuyên gia chăm sóc mắt có trình độ.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Hoàn thành năm thử thách về chi tiết trung tâm và trí nhớ hình ảnh.",
         "Trả lời năm câu hỏi về AMD và khi nào cần tìm sự trợ giúp.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách tầm nhìn trung tâm",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kiểm tra thoái hóa điểm vàng",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm thử thách tầm nhìn trung tâm của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Ba khu vực thị giác được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Ba khu vực thị giác được so sánh"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách hình ảnh 80%!",
       "finished": "Thử thách tầm nhìn trung tâm đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực mạnh nhất hiện nay",
       "trickiest": "Khu vực khó khăn nhất hiện nay",
       "bestRound": "Phần hay nhất",
@@ -94,8 +87,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Nhân vật nào ở chính giữa lưới?",
           "headerLabel": "CHI TIẾT TRUNG TÂM",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "THAM KHẢO: Q7M2P6",
           "question": "Mã nào khớp chính xác với tham chiếu?",
           "headerLabel": "ĐÓNG TRẬN ĐẤU",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "THAM KHẢO",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Biểu tượng nào hoàn thành chuỗi xen kẽ?",
           "headerLabel": "THEO DÕI MẪU",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Vật nào xuất hiện thứ ba?",
           "headerLabel": "NHỚ NHANH",
-          "answers": [
-            "Sách",
-            "Chìa khóa",
-            "Cúp",
-            "mặt trời"
-          ],
+          "answers": {
+            "a1": "Sách",
+            "a2": "Chìa khóa",
+            "a3": "Cúp",
+            "a4": "mặt trời"
+          },
           "study": {
             "title": "Nghiên cứu thứ tự năm đồ vật",
             "instruction": "Điều này sẽ tự động biến mất.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Vị trí nào chứa vòng tròn mở?",
           "headerLabel": "TẬP TRUNG HÀNG GIỮA",
-          "answers": [
-            "thứ tư",
-            "thứ hai",
-            "thứ năm",
-            "thứ ba"
-          ],
+          "answers": {
+            "a1": "thứ tư",
+            "a2": "thứ hai",
+            "a3": "thứ năm",
+            "a4": "thứ ba"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Phần nào của thị lực bị ảnh hưởng trực tiếp nhất bởi thoái hóa điểm vàng liên quan đến tuổi tác?",
           "headerLabel": "CƠ BẢN AMD",
-          "answers": [
-            "Chỉ có các cạnh ngoài xa",
-            "Tầm nhìn trung tâm sắc nét, nhìn thẳng",
-            "Chỉ có tầm nhìn ban đêm",
-            "Chỉ nhận thức sâu sắc"
-          ]
+          "answers": {
+            "a1": "Chỉ có các cạnh ngoài xa",
+            "a2": "Tầm nhìn trung tâm sắc nét, nhìn thẳng",
+            "a3": "Chỉ có tầm nhìn ban đêm",
+            "a4": "Chỉ nhận thức sâu sắc"
+          }
         },
         "macular-q7": {
           "question": "Sự thay đổi hình ảnh nào là dấu hiệu cảnh báo nổi tiếng của AMD?",
           "headerLabel": "CÁC DẤU HIỆU CẢNH BÁO",
-          "answers": [
-            "Âm thanh trở nên yên tĩnh hơn",
-            "Ngứa tạm thời trên mí mắt",
-            "Các đường thẳng xuất hiện lượn sóng hoặc quanh co",
-            "Một sợi lông mi rơi ra"
-          ]
+          "answers": {
+            "a1": "Âm thanh trở nên yên tĩnh hơn",
+            "a2": "Ngứa tạm thời trên mí mắt",
+            "a3": "Các đường thẳng xuất hiện lượn sóng hoặc quanh co",
+            "a4": "Một sợi lông mi rơi ra"
+          }
         },
         "macular-q8": {
           "question": "Chuyên gia chăm sóc mắt có thể sử dụng đánh giá nào để phát hiện AMD?",
           "headerLabel": "ĐÁNH GIÁ CHUYÊN NGHIỆP",
-          "answers": [
-            "Kiểm tra thính lực",
-            "Chỉ đo huyết áp thôi",
-            "Một thử nghiệm hương vị",
-            "Khám mắt giãn nở toàn diện"
-          ]
+          "answers": {
+            "a1": "Kiểm tra thính lực",
+            "a2": "Chỉ đo huyết áp thôi",
+            "a3": "Một thử nghiệm hương vị",
+            "a4": "Khám mắt giãn nở toàn diện"
+          }
         },
         "macular-q9": {
           "question": "Phản ứng an toàn nhất khi thị lực giảm sút đột ngột hoặc vùng trung tâm mới bị mờ hoặc trống rỗng là gì?",
           "headerLabel": "KHI NÀO HÀNH ĐỘNG",
-          "answers": [
-            "Tìm kiếm lời khuyên chăm sóc mắt chuyên nghiệp nhanh chóng",
-            "Chờ vài tháng mà không nhắc tới",
-            "Tăng độ sáng màn hình và cho rằng nó đã được sửa",
-            "Chỉ dựa vào một bài kiểm tra trực tuyến"
-          ]
+          "answers": {
+            "a1": "Tìm kiếm lời khuyên chăm sóc mắt chuyên nghiệp nhanh chóng",
+            "a2": "Chờ vài tháng mà không nhắc tới",
+            "a3": "Tăng độ sáng màn hình và cho rằng nó đã được sửa",
+            "a4": "Chỉ dựa vào một bài kiểm tra trực tuyến"
+          }
         },
         "macular-q10": {
           "question": "Điểm số của bạn trong thử thách trực tuyến này có thể cho bạn biết điều gì?",
           "headerLabel": "KIỂM TRA THỰC TẾ CUỐI CÙNG",
-          "answers": [
-            "Võng mạc của bạn có khỏe mạnh không",
-            "Chỉ cách bạn thực hiện mười câu hỏi này",
-            "Cho dù bạn cần một điều trị cụ thể",
-            "Liệu bạn có thể loại trừ AMD hay không"
-          ]
+          "answers": {
+            "a1": "Võng mạc của bạn có khỏe mạnh không",
+            "a2": "Chỉ cách bạn thực hiện mười câu hỏi này",
+            "a3": "Cho dù bạn cần một điều trị cụ thể",
+            "a4": "Liệu bạn có thể loại trừ AMD hay không"
+          }
         }
       }
     }

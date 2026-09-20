@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Teste rápido de cataratas",
   "eyebrow": "VERIFICAÇÃO DE VISÃO DE 10 PERGUNTAS",
   "summary": "Detalhes nebulosos, pequenas diferenças visuais e importantes sinais de alerta de catarata num desafio rápido.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "A catarata pode passar despercebida no início. Veja se consegue identificar as pistas discretas em 10 perguntas rápidas - as últimas surpreendem a maioria das pessoas.",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio de dez perguntas combina cinco quebra-cabeças visuais no visor com cinco perguntas de conhecimentos gerais sobre catarata. Avalia apenas as respostas dadas neste teste, não a visão, a saúde do cristalino nem a probabilidade de ter catarata.\n\nO tamanho e o brilho do visor, o contraste, a visão, as lentes corretivas, o cansaço e as configurações do dispositivo podem afetar o desempenho. Visão persistentemente embaçada ou turva, ofuscamento, halos em torno das luzes, dificuldade para ver à noite ou cores menos vivas devem ser discutidos com um profissional de saúde ocular qualificado.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Complete cinco desafios de detalhes, padrões e memória visual.",
         "Responda cinco perguntas sobre catarata e quando procurar ajuda.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafio de catarata",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "Teste Rápido de Catarata",
@@ -30,10 +26,8 @@
         "preAdCopy": "Suas dez respostas foram verificadas e sua pontuação no desafio de catarata está pronta para ser revelada.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Três áreas visuais comparadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Três áreas visuais comparadas"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Superou o desafio visual de 80%!",
       "finished": "Desafio de catarata concluído",
-      "correctLabel": "corretas",
       "strongest": "Área mais forte hoje",
       "trickiest": "Área mais complicada hoje",
       "bestRound": "Melhor etapa",
@@ -94,8 +87,7 @@
         "snapshot": "O que o resultado indica",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Qual personagem está exatamente no meio da grade?",
           "headerLabel": "DETALHE CENTRAL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERÊNCIA: B8R3K5",
           "question": "Qual código corresponde exatamente à referência?",
           "headerLabel": "PARTIDA NEBULA",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERÊNCIA",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Qual símbolo completa a sequência alternada?",
           "headerLabel": "RASTREAMENTO DE PADRÕES",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Qual objeto apareceu em terceiro lugar?",
           "headerLabel": "MEMÓRIA VISUAL RÁPIDA",
-          "answers": [
-            "Livro",
-            "Chave",
-            "Limão",
-            "Guarda-chuva"
-          ],
+          "answers": {
+            "a1": "Livro",
+            "a2": "Chave",
+            "a3": "Limão",
+            "a4": "Guarda-chuva"
+          },
           "study": {
             "title": "Estude a ordem dos cinco objetos",
             "instruction": "Isso desaparecerá automaticamente.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Qual posição contém o círculo claro?",
           "headerLabel": "VERIFICAÇÃO DE DETALHES",
-          "answers": [
-            "Quinto",
-            "Segundo",
-            "Quarto",
-            "Sexto"
-          ],
+          "answers": {
+            "a1": "Quinto",
+            "a2": "Segundo",
+            "a3": "Quarto",
+            "a4": "Sexto"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "O que é uma catarata?",
           "headerLabel": "NOÇÕES BÁSICAS DA CATARATA",
-          "answers": [
-            "Um arranhão na pálpebra",
-            "Uma área turva no cristalino do olho",
-            "Um problema limitado ao canal lacrimal",
-            "Um tipo de infecção no ouvido"
-          ]
+          "answers": {
+            "a1": "Um arranhão na pálpebra",
+            "a2": "Uma área turva no cristalino do olho",
+            "a3": "Um problema limitado ao canal lacrimal",
+            "a4": "Um tipo de infecção no ouvido"
+          }
         },
         "cataract-q7": {
           "question": "Qual grupo contém sintomas comuns de catarata?",
           "headerLabel": "SINAIS DE AVISO",
-          "answers": [
-            "Pele com coceira e dor de garganta",
-            "Perda auditiva repentina e tontura",
-            "Visão desfocada ou turva, excesso de brilho e halos em torno das luzes",
-            "Rigidez no pescoço e ombros doloridos"
-          ]
+          "answers": {
+            "a1": "Pele com coceira e dor de garganta",
+            "a2": "Perda auditiva repentina e tontura",
+            "a3": "Visão desfocada ou turva, excesso de brilho e halos em torno das luzes",
+            "a4": "Rigidez no pescoço e ombros doloridos"
+          }
         },
         "cataract-q8": {
           "question": "Como um oftalmologista pode verificar se há catarata?",
           "headerLabel": "AVALIAÇÃO PROFISSIONAL",
-          "answers": [
-            "Com um teste de audição",
-            "Usando uma leitura doméstica de pressão arterial",
-            "Com um teste de sabor",
-            "Durante um exame oftalmológico completo com dilatação das pupilas"
-          ]
+          "answers": {
+            "a1": "Com um teste de audição",
+            "a2": "Usando uma leitura doméstica de pressão arterial",
+            "a3": "Com um teste de sabor",
+            "a4": "Durante um exame oftalmológico completo com dilatação das pupilas"
+          }
         },
         "cataract-q9": {
           "question": "Qual é a resposta mais segura à perda súbita de visão, dor ocular intensa ou mudança repentina e importante na visão?",
           "headerLabel": "QUANDO AGIR",
-          "answers": [
-            "Procure aconselhamento oftalmológico profissional urgente",
-            "Espere vários meses sem mencionar isso",
-            "Altere o brilho do visor e presuma que o problema está resolvido",
-            "Confie apenas em um teste online"
-          ]
+          "answers": {
+            "a1": "Procure aconselhamento oftalmológico profissional urgente",
+            "a2": "Espere vários meses sem mencionar isso",
+            "a3": "Altere o brilho do visor e presuma que o problema está resolvido",
+            "a4": "Confie apenas em um teste online"
+          }
         },
         "cataract-q10": {
           "question": "O que sua pontuação neste desafio online pode lhe dizer?",
           "headerLabel": "VERIFICAÇÃO FINAL DA REALIDADE",
-          "answers": [
-            "Se suas lentes são saudáveis",
-            "Apenas o desempenho nestas dez perguntas",
-            "Se precisa de cirurgia de catarata",
-            "Se pode descartar uma catarata"
-          ]
+          "answers": {
+            "a1": "Se suas lentes são saudáveis",
+            "a2": "Apenas o desempenho nestas dez perguntas",
+            "a3": "Se precisa de cirurgia de catarata",
+            "a4": "Se pode descartar uma catarata"
+          }
         }
       }
     }

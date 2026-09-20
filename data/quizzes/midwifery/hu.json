@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 7%-a tette le ezt a szülésznői felvételi vizsgát",
   "eyebrow": "NYUGADOTT SZÜLETÉSI KÖZPONT",
   "summary": "A terhesség, a vajúdás, az újszülöttgondozás és a nyugodt ítélőképesség próbára teszi, mit vesz észre, amikor minden részlet számít.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Terhesség, szülés és újszülöttgondozás. Tudsz nyugodt maradni, és észreveszed a legfontosabb részleteket?",
     "cta": "Indítsa el a kvízt"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a világméretű szórakoztató kihívás tíz belépési kérdést tartalmaz a terhesség fiziológiájáról, a születés előtti jólétről, a munkavállalásról, az újszülöttek gondozásáról, a fertőzések megelőzéséről és a tiszteletteljes kommunikációról. A gondos érvelést teszteli anélkül, hogy az adott ország klinikai útjától függne.\n\nVálassza ki a legjobb választ a bemutatott tények közül. A kérdések a megfigyelést, az egyértelmű kommunikációt és a megfelelő eszkalációt részesítik előnyben, nem pedig a nem alátámasztott bizonyosságot.\n\nEz nem egy akkreditált szülésznő bevételi vizsgája, klinikai értékelése, képesítése, képzési kurzus vagy orvosi tanácsadás forrása.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Szülésznői felvételi vizsga",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Szülésznői belépési kihívás",
@@ -30,10 +26,8 @@
         "preAdCopy": "A szülésznői felvételi pontszám és a három területre vonatkozó bontás készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három bejárati területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három bejárati területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sikerült a szülésznői kihíváson!",
       "finished": "A szülésznői kihívás teljes",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb bejárati terület",
       "trickiest": "A legtrükkösebb bejárati terület",
       "bestRound": "A legjobb szakasz",
@@ -98,8 +91,7 @@
         "snapshot": "Amit a jelölt profilja sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,103 +100,103 @@
       "questions": {
         "mid-r1q1": {
           "question": "Melyik szerv támogatja a cserét a terhesség alatt?",
-          "answers": [
-            "Hólyag",
-            "Placenta",
-            "Hasnyálmirigy",
-            "függelék"
-          ],
+          "answers": {
+            "a1": "Hólyag",
+            "a2": "Placenta",
+            "a3": "Hasnyálmirigy",
+            "a4": "függelék"
+          },
           "headerLabel": "TERHESSÉGÉLETTAN"
         },
         "mid-r1q4": {
           "question": "Mi segít egy stabil újszülöttnek megőrizni a meleget hamarosan a születés után?",
-          "answers": [
-            "Hideg fürdő",
-            "A nedves takarót a helyükön hagyva",
-            "Száradás és bőrrel érintkezés",
-            "A szülő és a baba rutinszerű elválasztása"
-          ],
+          "answers": {
+            "a1": "Hideg fürdő",
+            "a2": "A nedves takarót a helyükön hagyva",
+            "a3": "Száradás és bőrrel érintkezés",
+            "a4": "A szülő és a baba rutinszerű elválasztása"
+          },
           "headerLabel": "ÚJSZÜLETETT MELEGSÉG"
         },
         "mid-r3q2": {
           "question": "Új, súlyos fejfájás jelenik meg a terhesség alatti vizuális változásokkal. Mi a legbiztonságosabb válasz?",
-          "answers": [
-            "Pihenjen, és egy óra múlva értékelje újra",
-            "Várja meg a következő rutin találkozót",
-            "Kérjen meg valakit otthon, hogy tartsa szemmel a tüneteket",
-            "Kérjen azonnali értékelést egy képzett szülészeti szakembertől"
-          ],
+          "answers": {
+            "a1": "Pihenjen, és egy óra múlva értékelje újra",
+            "a2": "Várja meg a következő rutin találkozót",
+            "a3": "Kérjen meg valakit otthon, hogy tartsa szemmel a tüneteket",
+            "a4": "Kérjen azonnali értékelést egy képzett szülészeti szakembertől"
+          },
           "headerLabel": "ANTENATÁLIS JÓLÉT"
         },
         "mid-r5q4": {
           "question": "A baba megszületett, de a placenta még nem született meg. Melyik szülésszakasz ez?",
-          "answers": [
-            "A harmadik szakasz",
-            "Az első szakasz",
-            "A második szakasz",
-            "Új terhességi szakasz"
-          ],
+          "answers": {
+            "a1": "A harmadik szakasz",
+            "a2": "Az első szakasz",
+            "a3": "A második szakasz",
+            "a4": "Új terhességi szakasz"
+          },
           "headerLabel": "SZÜKSÉGES SZAKASZOK"
         },
         "mid-r4q3": {
           "question": "Egy nő azt mondja, nem akarja, hogy diákok jelenjenek meg. Mi a legjobb válasz?",
-          "answers": [
-            "Mondja meg neki, hogy a részvétel megszünteti ezt a választást",
-            "Beszéljétek meg az elutasítását a folyosón",
-            "Tartsa tiszteletben döntését, és óvja magánéletét",
-            "Nyugtázás nélkül folytassa"
-          ],
+          "answers": {
+            "a1": "Mondja meg neki, hogy a részvétel megszünteti ezt a választást",
+            "a2": "Beszéljétek meg az elutasítását a folyosón",
+            "a3": "Tartsa tiszteletben döntését, és óvja magánéletét",
+            "a4": "Nyugtázás nélkül folytassa"
+          },
           "headerLabel": "BEVEZETÉS ÉS TISZTELET"
         },
         "mid-r5q6": {
           "question": "Használat előtt a készülék steril csomagolását felszakítják. Mi a legbiztonságosabb válasz?",
-          "answers": [
-            "Ne kezelje sterilként; megfelelően cserélje ki vagy fokozza",
-            "Ragassza fel a csomagolóanyagot, és folytassa",
-            "Rejtsd el a könnyet",
-            "Érintse meg a tartalmat a teszteléshez"
-          ],
+          "answers": {
+            "a1": "Ne kezelje sterilként; megfelelően cserélje ki vagy fokozza",
+            "a2": "Ragassza fel a csomagolóanyagot, és folytassa",
+            "a3": "Rejtsd el a könnyet",
+            "a4": "Érintse meg a tartalmat a teszteléshez"
+          },
           "headerLabel": "FERTŐZÉS MEGELŐZÉS"
         },
         "mid-r5q3": {
           "question": "Melyik változás írja le legjobban a munkaerő meghonosodását?",
-          "answers": [
-            "A kontrakciók általában erősebbek, hosszabbak és rendszeresebbek",
-            "Az összehúzódások végleg leállnak",
-            "A méhlepény mindig a baba előtt megszületik",
-            "A méhnyak visszatér a terhesség előtti állapotba"
-          ],
+          "answers": {
+            "a1": "A kontrakciók általában erősebbek, hosszabbak és rendszeresebbek",
+            "a2": "Az összehúzódások végleg leállnak",
+            "a3": "A méhlepény mindig a baba előtt megszületik",
+            "a4": "A méhnyak visszatér a terhesség előtti állapotba"
+          },
           "headerLabel": "MUNKAÜGYI MINTÁK"
         },
         "mid-r7q3": {
           "question": "Az újszülött nem a szokásos módon táplálkozik, és észrevehetően gyorsabban lélegzik. Mi a legbiztonságosabb?",
-          "answers": [
-            "Várjon néhány napot anélkül, hogy szólna senkinek",
-            "Válasszon otthoni diagnózist",
-            "Adjon fel nem írt kezelést",
-            "Ismerje fel a változást, és kérjen azonnali minősített értékelést"
-          ],
+          "answers": {
+            "a1": "Várjon néhány napot anélkül, hogy szólna senkinek",
+            "a2": "Válasszon otthoni diagnózist",
+            "a3": "Adjon fel nem írt kezelést",
+            "a4": "Ismerje fel a változást, és kérjen azonnali minősített értékelést"
+          },
           "headerLabel": "ÚJSZÜLETETT MEGFIGYELÉS"
         },
         "mid-r10q2": {
           "context": "Folyadékdiagram: 650 ml + 450 ml. Megfigyelési diagram: korábbi 74, legújabb 82.",
           "question": "Milyen összeget és trendet kell átadni?",
-          "answers": [
-            "650 ml összesen, változtatás nélkül",
-            "1100 ml összesen, a legutóbbi megfigyelés magasabb, mint az első",
-            "1650 ml összesen, csökkenő tendenciával",
-            "Összesen 450 ml, trend nélkül"
-          ],
+          "answers": {
+            "a1": "650 ml összesen, változtatás nélkül",
+            "a2": "1100 ml összesen, a legutóbbi megfigyelés magasabb, mint az első",
+            "a3": "1650 ml összesen, csökkenő tendenciával",
+            "a4": "Összesen 450 ml, trend nélkül"
+          },
           "headerLabel": "ANTENATÁLIS TRENDEK"
         },
         "mid-r7q5": {
           "question": "Általában hogyan kell kezelni a tiszta, száraz köldökzsinórcsonkot?",
-          "answers": [
-            "Fedje le fel nem írt szerekkel",
-            "Tartsa tisztán és szárazon, és kérjen tanácsot, ha bármilyen változás jelentkezik",
-            "Húzza meg, hogy leváljon",
-            "Tartsa folyamatosan nedvesen"
-          ],
+          "answers": {
+            "a1": "Fedje le fel nem írt szerekkel",
+            "a2": "Tartsa tisztán és szárazon, és kérjen tanácsot, ha bármilyen változás jelentkezik",
+            "a3": "Húzza meg, hogy leváljon",
+            "a4": "Tartsa folyamatosan nedvesen"
+          },
           "headerLabel": "ÚJSZÜLETETT GONDOZÁS"
         }
       }

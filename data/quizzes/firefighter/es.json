@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 11% puede aprobar este examen de ingreso para bomberos",
   "eyebrow": "Desafío de bombero",
   "summary": "La ciencia del fuego, las herramientas, los peligros y las decisiones rápidas sobre incidentes ponen a prueba tu claridad de pensamiento bajo presión.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "Comportamiento del fuego, detección de peligros, razonamiento mecánico y juicio en fracciones de segundo. ¿Podrás mantener la calma cuando cada pista importa?",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafío de entretenimiento mundial utiliza diez preguntas cuidadosamente variadas para explorar el razonamiento básico de los bomberos. Cubre la ciencia del fuego y el humo, los peligros de la escena, la mecánica de los equipos, la aritmética práctica, la atención espacial, la comunicación clara y el juicio de incidentes.\n\nEl desafío pasa rápidamente de cimientos accesibles a condiciones cambiantes, mecánicas prácticas y decisiones integradas sobre incidentes. Las preguntas utilizan principios de seguridad mundial en lugar de rangos, códigos, reglas de construcción o procedimientos operativos de extinción de incendios locales.\n\nTu porcentaje final refleja solo las respuestas dadas en este cuestionario de entretenimiento. Es una instantánea divertida de las categorías del test que se sintieron más fuertes y los temas que resultaron más desafiantes, no un juicio sobre la preparación operativa o la idoneidad para el empleo de bombero.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Resuelva las diez preguntas a tu propio ritmo; no hay cronómetro ni bonificación de velocidad.",
         "Elige la única opción que esté mejor respaldada por las pistas visibles. No sabrás qué respuestas son correctas hasta el final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "desafío bombero",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Desafío de bombero",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tu puntuación de bombero y tu desglose de cinco áreas están listos para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Cinco zonas de entrada comparadas",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Cinco zonas de entrada comparadas"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de entrada de bombero!",
       "finished": "Desafío de entrada de bombero completado.",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Hay calor y combustible. ¿Qué tercer elemento se necesita para completar el triángulo del fuego?",
           "headerLabel": "CIENCIA DEL FUEGO",
-          "answers": [
-            "Agua",
-            "Oxígeno",
-            "Humo",
-            "Ceniza"
-          ]
+          "answers": {
+            "a1": "Agua",
+            "a2": "Oxígeno",
+            "a3": "Humo",
+            "a4": "Ceniza"
+          }
         },
         "firefighter-s1q2": {
           "question": "Un panel eléctrico que chispea se encuentra junto a un charco de agua. ¿Cuál es la primera respuesta más segura?",
           "headerLabel": "DETECCIÓN DE PELIGROS",
-          "answers": [
-            "Pasa por el agua para apagarlo.",
-            "Vierte más agua sobre el panel",
-            "Mueve el panel agarrándolo por la carcasa exterior",
-            "Mantén alejadas a las personas y avisa a profesionales cualificados"
-          ]
+          "answers": {
+            "a1": "Pasa por el agua para apagarlo.",
+            "a2": "Vierte más agua sobre el panel",
+            "a3": "Mueve el panel agarrándolo por la carcasa exterior",
+            "a4": "Mantén alejadas a las personas y avisa a profesionales cualificados"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "¿Qué informe comunica mejor el cambio sin adivinar su causa?",
           "headerLabel": "INFORME DE INCIDENTE",
-          "answers": [
-            "El humo en la entrada norte, antes ligero y constante, aumenta ahora con rapidez",
-            "Se ha identificado el material exacto en llamas a partir del humo.",
-            "Nada importante ha cambiado porque ya había humo.",
-            "El incendio definitivamente permanecerá en la misma zona."
-          ]
+          "answers": {
+            "a1": "El humo en la entrada norte, antes ligero y constante, aumenta ahora con rapidez",
+            "a2": "Se ha identificado el material exacto en llamas a partir del humo.",
+            "a3": "Nada importante ha cambiado porque ya había humo.",
+            "a4": "El incendio definitivamente permanecerá en la misma zona."
+          }
         },
         "firefighter-s1q5": {
           "question": "Una barra se utiliza como palanca. ¿Qué suele ocurrir cuando el punto de agarre se aleja del apoyo?",
           "headerLabel": "RAZONAMIENTO MECÁNICO",
-          "answers": [
-            "Siempre se requiere más fuerza",
-            "El pivote deja de funcionar",
-            "Se necesita menos fuerza para obtener el mismo efecto de giro.",
-            "La carga se vuelve ingrávida."
-          ]
+          "answers": {
+            "a1": "Siempre se requiere más fuerza",
+            "a2": "El pivote deja de funcionar",
+            "a3": "Se necesita menos fuerza para obtener el mismo efecto de giro.",
+            "a4": "La carga se vuelve ingrávida."
+          }
         },
         "firefighter-s3q6": {
           "question": "Una superficie caliente calienta tu cara a varios metros de distancia sin contacto. ¿Qué proceso de transferencia de calor explica mejor esto?",
           "headerLabel": "TRANSFERENCIA DE CALOR",
-          "answers": [
-            "Radiación térmica",
-            "Conducción",
-            "Evaporación",
-            "Condensación"
-          ]
+          "answers": {
+            "a1": "Radiación térmica",
+            "a2": "Conducción",
+            "a3": "Evaporación",
+            "a4": "Condensación"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "¿Qué distancia real representa la ruta?",
           "headerLabel": "CÁLCULO PRÁCTICO",
-          "answers": [
-            "50 metros",
-            "60 metros",
-            "65 metros",
-            "70 metros"
-          ]
+          "answers": {
+            "a1": "50 metros",
+            "a2": "60 metros",
+            "a3": "65 metros",
+            "a4": "70 metros"
+          }
         },
         "firefighter-s4q7": {
           "question": "Un tejado dañado por el fuego se está hundiendo y aparecen nuevas grietas. ¿Cuál es la interpretación más segura?",
           "headerLabel": "PELIGROS ESTRUCTURALES",
-          "answers": [
-            "El techo se enfría de forma segura",
-            "Las grietas muestran exactamente dónde pararse",
-            "Podría producirse un derrumbe: mantente alejado e informa del cambio",
-            "El daño importa solo después del incidente."
-          ]
+          "answers": {
+            "a1": "El techo se enfría de forma segura",
+            "a2": "Las grietas muestran exactamente dónde pararse",
+            "a3": "Podría producirse un derrumbe: mantente alejado e informa del cambio",
+            "a4": "El daño importa solo después del incidente."
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "El engranaje A impulsa a B y B impulsa a C. ¿En qué dirección gira el engranaje C?",
           "headerLabel": "RAZONAMIENTO DEL ENGRANAJE",
-          "answers": [
-            "En el sentido de las agujas del reloj, después de dos inversiones de dirección",
-            "En sentido antihorario, después de una inversión",
-            "No puede girar porque se utilizan tres engranajes",
-            "Hacia arriba porque el engranaje A es el primero."
-          ]
+          "answers": {
+            "a1": "En el sentido de las agujas del reloj, después de dos inversiones de dirección",
+            "a2": "En sentido antihorario, después de una inversión",
+            "a3": "No puede girar porque se utilizan tres engranajes",
+            "a4": "Hacia arriba porque el engranaje A es el primero."
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "¿Cuántas lámparas más hay que retirar para que cada equipo esté equipado y queden dos de repuesto?",
           "headerLabel": "MATEMÁTICAS DEL EQUIPO",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "¿Cuál es la mejor primera acción e informe?",
           "headerLabel": "PRUEBA FINAL DE INCIDENTE",
-          "answers": [
-            "Termina el conteo antes de informar sobre el humo.",
-            "Dirige a la gente hacia el este; informa del humo al oeste y de las dos personas desaparecidas; aplaza el recuento",
-            "Utilice el corredor oeste porque es el más corto.",
-            "Informar solo el recuento de equipos"
-          ]
+          "answers": {
+            "a1": "Termina el conteo antes de informar sobre el humo.",
+            "a2": "Dirige a la gente hacia el este; informa del humo al oeste y de las dos personas desaparecidas; aplaza el recuento",
+            "a3": "Utilice el corredor oeste porque es el más corto.",
+            "a4": "Informar solo el recuento de equipos"
+          }
         }
       }
     }

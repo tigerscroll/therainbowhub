@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "7% lang ang kayang tukuyin ang mga maalamat na aktor na ito",
   "eyebrow": "KATAWANG PEDAL sa PEDAL",
   "summary": "Sampung hindi mapag-aalinlanganang mukha mula sa kasaysayan ng sinehan. Tingnan kung gaano karaming mga maalamat na aktor ang maaari mong pangalanan nang walang pamagat ng pelikula na makakatulong.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Sampung maalamat na mukha. Walang mga pamagat ng pelikula. Ilan ang makikilala mo nang walang pahiwatig?",
     "cta": "Magsimula"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Nagtatampok ang entertainment quiz na ito ng sampung kilalang aktor mula sa klasikong sinehan at kasaysayan ng screen sa ibang pagkakataon. Ang bawat tanong ay nagpapakita ng litrato ng aktor at apat na posibleng pangalan.\n\nTingnang mabuti ang mukha at gamitin lamang ang clue kung kailangan mo ito. Ang iyong mga sagot ay mananatiling nakatago hanggang sa huling paghahayag.\n\nAng mga imahe at konsepto ng source-question ay ginawa mula sa QuizDays na may pahintulot na ipinahayag ng may-ari ng site na nagkomisyon sa pagsusulit na ito.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Pag-aralan ang bawat larawan at basahin ang maikling pahiwatig.",
         "Pumili ng isa sa apat na pangalan ng aktor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hamon ng aktor",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Mga Maalamat na Aktor",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong marka ng classic-cinema at kumpletong paghahayag ng aktor ay handa na.",
         "preAdChecks": [
           "Sinuri ang 10 sikat na mukha",
-          "Tatlong panahon ng screen ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong panahon ng screen ang inihambing"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Nalampasan mo ang hamon ng mga maalamat na aktor!",
       "finished": "Kumpleto ang hamon ng aktor",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na panahon ng screen",
       "trickiest": "Pinaka nakakalito na panahon ng screen",
       "bestRound": "Pinakamahusay na seksyon",
@@ -93,8 +86,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong resulta",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Black-and-white portrait ni John Wayne na nakasuot ng cowboy hat"
           },
           "question": "Sinong maalamat na aktor ang lumabas sa mahigit 140 na pelikula?",
-          "answers": [
-            "John Wayne",
-            "Jerry Lewis",
-            "Paul Newman",
-            "Lee Marvin"
-          ],
+          "answers": {
+            "a1": "John Wayne",
+            "a2": "Jerry Lewis",
+            "a3": "Paul Newman",
+            "a4": "Lee Marvin"
+          },
           "headerLabel": "MUKHA 1 NG 10"
         },
         "actors-q2": {
@@ -119,12 +111,12 @@
             "alt": "Larawan ng aktor ng Egypt na si Omar Sharif"
           },
           "question": "Aling Egyptian screen legend ang nakalarawan?",
-          "answers": [
-            "Sidney Poitier",
-            "James Garner",
-            "Erik Estrada",
-            "Omar Sharif"
-          ],
+          "answers": {
+            "a1": "Sidney Poitier",
+            "a2": "James Garner",
+            "a3": "Erik Estrada",
+            "a4": "Omar Sharif"
+          },
           "headerLabel": "MUKHA 2 NG 10"
         },
         "actors-q3": {
@@ -132,12 +124,12 @@
             "alt": "Larawan ng aktor na si Jack Lemmon"
           },
           "question": "Sinong artista ang madalas lumabas kasama ni Walter Matthau?",
-          "answers": [
-            "Michael Caine",
-            "Larry Hagman",
-            "Jack Lemmon",
-            "Lee Marvin"
-          ],
+          "answers": {
+            "a1": "Michael Caine",
+            "a2": "Larry Hagman",
+            "a3": "Jack Lemmon",
+            "a4": "Lee Marvin"
+          },
           "headerLabel": "MUKHA 3 NG 10"
         },
         "actors-q4": {
@@ -145,12 +137,12 @@
             "alt": "Larawan ng aktor at direktor na si Robert Redford"
           },
           "question": "Sinong aktor at direktor ang nagsimula ng kanyang screen career noong 1960?",
-          "answers": [
-            "Jon Voight",
-            "Richard Dreyfuss",
-            "Paul Newman",
-            "Robert Redford"
-          ],
+          "answers": {
+            "a1": "Jon Voight",
+            "a2": "Richard Dreyfuss",
+            "a3": "Paul Newman",
+            "a4": "Robert Redford"
+          },
           "headerLabel": "MUKHA 4 NG 10"
         },
         "actors-q5": {
@@ -158,12 +150,12 @@
             "alt": "Larawan ng British actor na si Michael Caine"
           },
           "question": "Sinong sikat na British actor ang nasa larawan?",
-          "answers": [
-            "Gene Hackman",
-            "Michael Caine",
-            "Jerry Lewis",
-            "Charlton Heston"
-          ],
+          "answers": {
+            "a1": "Gene Hackman",
+            "a2": "Michael Caine",
+            "a3": "Jerry Lewis",
+            "a4": "Charlton Heston"
+          },
           "headerLabel": "MUKHA 5 NG 10"
         },
         "actors-q6": {
@@ -171,12 +163,12 @@
             "alt": "Larawan ng aktor na si James Garner"
           },
           "question": "Sinong aktor ang naging masugid ding manlalaro ng golp?",
-          "answers": [
-            "James Garner",
-            "Al Pacino",
-            "Richard Dreyfuss",
-            "Roy Scheider"
-          ],
+          "answers": {
+            "a1": "James Garner",
+            "a2": "Al Pacino",
+            "a3": "Richard Dreyfuss",
+            "a4": "Roy Scheider"
+          },
           "headerLabel": "MUKHA 6 NG 10"
         },
         "actors-q7": {
@@ -184,12 +176,12 @@
             "alt": "Larawan ng aktor na si Cary Grant"
           },
           "question": "Sinong bituin ang lumabas sa ilang pelikula ni Alfred Hitchcock?",
-          "answers": [
-            "Clark Gable",
-            "James Dean",
-            "Cary Grant",
-            "Tony Curtis"
-          ],
+          "answers": {
+            "a1": "Clark Gable",
+            "a2": "James Dean",
+            "a3": "Cary Grant",
+            "a4": "Tony Curtis"
+          },
           "headerLabel": "MUKHA 7 NG 10"
         },
         "actors-q8": {
@@ -197,12 +189,12 @@
             "alt": "Omar Sharif bilang Sherif Ali sa Lawrence ng Arabia"
           },
           "question": "Sinong aktor ang gumanap na Sherif Ali katapat ni Peter O'Toole sa Lawrence of Arabia?",
-          "answers": [
-            "James Garner",
-            "Omar Sharif",
-            "Jack Lemmon",
-            "Paul Newman"
-          ],
+          "answers": {
+            "a1": "James Garner",
+            "a2": "Omar Sharif",
+            "a3": "Jack Lemmon",
+            "a4": "Paul Newman"
+          },
           "headerLabel": "MUKHA 8 NG 10"
         },
         "actors-q9": {
@@ -210,12 +202,12 @@
             "alt": "Larawan ng komedyante at aktor na si Jerry Lewis"
           },
           "question": "Sino ang sikat na binansagang \"The King of Comedy\"?",
-          "answers": [
-            "Fred Ward",
-            "Jerry Lewis",
-            "Charles Durning",
-            "Ned Beatty"
-          ],
+          "answers": {
+            "a1": "Fred Ward",
+            "a2": "Jerry Lewis",
+            "a3": "Charles Durning",
+            "a4": "Ned Beatty"
+          },
           "headerLabel": "MUKHA 9 NG 10"
         },
         "actors-q10": {
@@ -223,12 +215,12 @@
             "alt": "Larawan ng aktor na si Richard Dreyfuss"
           },
           "question": "Sinong aktor ang sikat na nakipag-away kay Bill Murray?",
-          "answers": [
-            "Richard Dreyfuss",
-            "Donald Sutherland",
-            "Jerry Lewis",
-            "Cary Grant"
-          ],
+          "answers": {
+            "a1": "Richard Dreyfuss",
+            "a2": "Donald Sutherland",
+            "a3": "Jerry Lewis",
+            "a4": "Cary Grant"
+          },
           "headerLabel": "PANGHULING MUKHA"
         }
       }

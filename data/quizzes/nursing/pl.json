@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 7% zdaje ten egzamin wstępny na pielęgniarstwo",
   "eyebrow": "PRACOWNIA PRZYJĘĆ KLINICZNYCH",
   "summary": "Anatomia, parametry życiowe i decyzje dotyczące opieki nad pacjentem sprawdzają, czy Twój osąd pozostaje ostry pod presją.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Układy organizmu, parametry życiowe i opieka nad pacjentem. Czy potrafisz dostrzec to, co ważne i wykonać najbezpieczniejszą rozmowę?",
     "cta": "Rozpocznij quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To ogólnoświatowe wyzwanie rozrywkowe zawiera dziesięć pytań wejściowych dotyczących anatomii, obserwacji, liczenia w zakresie opieki zdrowotnej, zapobiegania infekcjom, komunikacji i oceny priorytetów. Nagradza spokojne korzystanie z pokazanych informacji.\n\nWybierz jedną najlepszą odpowiedź dla każdej sytuacji. Treść pozostaje ogólna i nie opiera się na procedurach zawodowych jednego kraju.\n\nNie jest to akredytowany egzamin wstępny dla pielęgniarek, ocena kliniczna, kwalifikacja, kurs szkoleniowy ani źródło porad medycznych.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Rozwiąż dziesięć starannie wybranych pytań w ramach jednego ukierunkowanego wyzwania.",
         "Za każdym razem wybierz jedną odpowiedź. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Egzamin wstępny na pielęgniarstwo",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Wyzwanie wstępne dla pielęgniarek",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoja ocena wstępna do pielęgniarstwa i podział na trzy obszary są gotowe do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie trzech obszarów wejściowych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech obszarów wejściowych"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Udało Ci się sprostać wyzwaniu pielęgniarskiemu!",
       "finished": "Wyzwanie pielęgniarskie zakończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejsza strefa wejściowa",
       "trickiest": "Najtrudniejsza strefa wejściowa",
       "bestRound": "Najlepsza sekcja",
@@ -98,8 +91,7 @@
         "snapshot": "Co sugeruje Twój profil kandydata",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Jaki gaz została wchłonięta przez krew powracającą z płuc?",
-          "answers": [
-            "Azot",
-            "Tlen",
-            "Dwutlenek węgla",
-            "Wodór"
-          ],
+          "answers": {
+            "a1": "Azot",
+            "a2": "Tlen",
+            "a3": "Dwutlenek węgla",
+            "a4": "Wodór"
+          },
           "headerLabel": "ANATOMIA I FIZJOLOGIA"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 mililitrów plus 250 mililitrów równa się sumie"
           },
           "question": "Dzbanek zawiera 750 ml. Dodaje się kolejne 250 ml. Jaka jest suma?",
-          "answers": [
-            "900ml",
-            "1100 ml",
-            "1250 ml",
-            "1000 ml"
-          ],
+          "answers": {
+            "a1": "900ml",
+            "a2": "1100 ml",
+            "a3": "1250 ml",
+            "a4": "1000 ml"
+          },
           "headerLabel": "NUMERACJA OPIEKI ZDROWOTNEJ"
         },
         "nurse-r2q5": {
           "context": "Wcześniej: oddychaj swobodnie i rozmawiaj normalnie. Teraz: szybszy oddech i przerwy pomiędzy krótkimi frazami.",
           "question": "Która zmiana w tej notatce obserwacyjnej ma największe znaczenie?",
-          "answers": [
-            "Notatka zawiera dwa punkty czasowe",
-            "Pogorszył się wzorzec oddychania",
-            "Osoba nadal mówi",
-            "Wcześniejsza notatka była krótsza"
-          ],
+          "answers": {
+            "a1": "Notatka zawiera dwa punkty czasowe",
+            "a2": "Pogorszył się wzorzec oddychania",
+            "a3": "Osoba nadal mówi",
+            "a4": "Wcześniejsza notatka była krótsza"
+          },
           "headerLabel": "OBSERWACJA TENDENCJI"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Przekazanie mówi o lewym ramieniu, wykres mówi o prawym ramieniu"
           },
           "question": "Jakie rozbieżności należy wyjaśnić?",
-          "answers": [
-            "Stosowanie wielkich liter",
-            "Liczba słów",
-            "Wykres ma obramowanie",
-            "Nagrana strona jest inna"
-          ],
+          "answers": {
+            "a1": "Stosowanie wielkich liter",
+            "a2": "Liczba słów",
+            "a3": "Wykres ma obramowanie",
+            "a4": "Nagrana strona jest inna"
+          },
           "headerLabel": "DOKŁADNOŚĆ ZAPISU"
         },
         "nurse-r4q3": {
           "question": "Zadanie może rozpryskać płyn ustrojowy w stronę twarzy. Które zabezpieczenie odnosi się do stwierdzonego ryzyka?",
-          "answers": [
-            "Materiałowy kapelusz",
-            "Odpowiednia ochrona oczu lub twarzy",
-            "Tylko ochraniacze na buty",
-            "Brak ochrony, jeśli zadanie jest krótkie"
-          ],
+          "answers": {
+            "a1": "Materiałowy kapelusz",
+            "a2": "Odpowiednia ochrona oczu lub twarzy",
+            "a3": "Tylko ochraniacze na buty",
+            "a4": "Brak ochrony, jeśli zadanie jest krótkie"
+          },
           "headerLabel": "ZAPOBIEGANIE INFEKcjom"
         },
         "nurse-r6q3": {
           "question": "Ktoś zadaje drażliwe pytanie w ruchliwym miejscu publicznym. Co powinieneś zrobić?",
-          "answers": [
-            "Zaproponuj kontynuację rozmowy w prywatnym miejscu",
-            "Odpowiedz krótko i cicho, gdzie jesteś",
-            "Poproś osoby znajdujące się w pobliżu, aby udostępniły Ci trochę miejsca",
-            "Podaj tylko niewrażliwą część odpowiedzi"
-          ],
+          "answers": {
+            "a1": "Zaproponuj kontynuację rozmowy w prywatnym miejscu",
+            "a2": "Odpowiedz krótko i cicho, gdzie jesteś",
+            "a3": "Poproś osoby znajdujące się w pobliżu, aby udostępniły Ci trochę miejsca",
+            "a4": "Podaj tylko niewrażliwą część odpowiedzi"
+          },
           "headerLabel": "WSPÓŁCZUJĄCA KOMUNIKACJA"
         },
         "nurse-r7q1": {
           "context": "Osoba A czuje się komfortowo, po chodzeniu ma nieco szybszy puls. Osoba B jest nagle zdezorientowana, oddycha szybko i jest blada.",
           "question": "Kto potrzebuje uwagi jako pierwszy?",
-          "answers": [
-            "Osoba B, ponieważ kilka nowych objawów sugeruje nagłe pogorszenie",
-            "Osoba A, ponieważ zmienił się jej puls",
-            "Obaj mogą poczekać na rutynowe obserwacje",
-            "Osoba, która przybyła pierwsza"
-          ],
+          "answers": {
+            "a1": "Osoba B, ponieważ kilka nowych objawów sugeruje nagłe pogorszenie",
+            "a2": "Osoba A, ponieważ zmienił się jej puls",
+            "a3": "Obaj mogą poczekać na rutynowe obserwacje",
+            "a4": "Osoba, która przybyła pierwsza"
+          },
           "headerLabel": "OCENA PRIORYTETU"
         },
         "nurse-r3q1": {
           "question": "Całkowita ilość płynu wzrasta z 600 ml do 900 ml. O ile procent wzrosła?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "NUMERACJA OPIEKI ZDROWOTNEJ"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Drogi oddechowe zablokowane, mniej powietrza w płucach, nieznana, mniej tlenu w tkankach"
           },
           "question": "Zablokowanie dróg oddechowych uniemożliwia przedostanie się powietrza do płuc. Jaki dalszy skutek następuje najbardziej bezpośrednio?",
-          "answers": [
-            "Mniej tlenu dostaje się do krwi",
-            "Więcej składników odżywczych dostaje się do żołądka",
-            "Nerki natychmiast wytwarzają więcej moczu",
-            "Kości wytwarzają więcej ruchu"
-          ],
+          "answers": {
+            "a1": "Mniej tlenu dostaje się do krwi",
+            "a2": "Więcej składników odżywczych dostaje się do żołądka",
+            "a3": "Nerki natychmiast wytwarzają więcej moczu",
+            "a4": "Kości wytwarzają więcej ruchu"
+          },
           "headerLabel": "ZINTEGROWANA FIZJOLOGIA"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Osoba A jest przytomna, ma łagodny, stabilny dyskomfort i normalną mowę. Osoba B jest blada, trudno ją obudzić i oddycha nieregularnie."
           },
           "question": "Kto ma bezpośrednie pierwszeństwo?",
-          "answers": [
-            "Osoba A, ponieważ dyskomfort zawsze jest na pierwszym miejscu",
-            "Obydwa mogą poczekać na rutynową kontrolę",
-            "Osoba B, ponieważ świadomość i oddech nagle się zmieniły",
-            "Wybierz na podstawie tego, kto przybył pierwszy"
-          ],
+          "answers": {
+            "a1": "Osoba A, ponieważ dyskomfort zawsze jest na pierwszym miejscu",
+            "a2": "Obydwa mogą poczekać na rutynową kontrolę",
+            "a3": "Osoba B, ponieważ świadomość i oddech nagle się zmieniły",
+            "a4": "Wybierz na podstawie tego, kto przybył pierwszy"
+          },
           "headerLabel": "KOŃCOWE PRZEKAZANIE"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A maioria dos adultos não consegue passar neste exame de admissão para médico",
   "eyebrow": "O TESTE DE CONHECIMENTO CLÍNICO",
   "summary": "Dez questões testam anatomia, sintomas, ferramentas de diagnóstico e raciocínio clínico seguro.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "As questões de anatomia parecem familiares. Em seguida, o teste passa para sintomas, emergências e decisões clínicas.",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio de entretenimento de dez perguntas utiliza conceitos médicos amplos que são ensinados e compreendidos em países de língua inglesa. Passa da anatomia e fisiologia para ferramentas de diagnóstico, padrões de sintomas, prioridades de emergência e uso responsável de medicamentos.\n\nEscolha uma resposta para cada pergunta. As respostas certas só serão reveladas no final, quando será possível desbloquear a revisão completa.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Responda a dez questões de conhecimento clínico cada vez mais difíceis.",
         "Escolha a resposta mais bem suportada.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafio de admissão do médico",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "exame de admissão para Doutor",
@@ -30,10 +26,8 @@
         "preAdCopy": "Suas dez respostas foram verificadas e sua pontuação de conhecimento clínico está pronta para ser revelada.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Cinco áreas médicas comparadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Cinco áreas médicas comparadas"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Passou no desafio de admissão do Doutor!",
       "finished": "Desafio de admissão do médico concluído",
-      "correctLabel": "corretas",
       "strongest": "Área médica mais forte",
       "trickiest": "Área médica mais complicada",
       "bestRound": "Melhor etapa",
@@ -99,8 +92,7 @@
         "snapshot": "O que o resultado indica",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Qual cavidades do coração bombeia sangue rico em O₂ para a aorta?",
-          "answers": [
-            "Ventrículo esquerdo",
-            "Ventrículo direito",
-            "Átrio esquerdo",
-            "Átrio direito"
-          ],
+          "answers": {
+            "a1": "Ventrículo esquerdo",
+            "a2": "Ventrículo direito",
+            "a3": "Átrio esquerdo",
+            "a4": "Átrio direito"
+          },
           "headerLabel": "ANATOMIA CARDÍACA"
         },
         "doctor-q2": {
           "question": "Queda facial repentina, fraqueza nos braços e dificuldade de fala devem levantar preocupação imediata sobre o quê?",
-          "answers": [
-            "Uma pequena intolerância alimentar",
-            "Um possível acidente vascular cerebral",
-            "Uma simples distensão muscular",
-            "Alergias sazonais"
-          ],
+          "answers": {
+            "a1": "Uma pequena intolerância alimentar",
+            "a2": "Um possível acidente vascular cerebral",
+            "a3": "Uma simples distensão muscular",
+            "a4": "Alergias sazonais"
+          },
           "headerLabel": "RECONHECIMENTO DE SINTOMAS"
         },
         "doctor-q3": {
           "question": "Qual dispositivo fornece uma estimativa rápida e não invasiva da saturação de O₂ no sangue?",
-          "answers": [
-            "Otoscópio",
-            "Martelo reflexo",
-            "Oxímetro de pulso",
-            "Termômetro"
-          ],
+          "answers": {
+            "a1": "Otoscópio",
+            "a2": "Martelo reflexo",
+            "a3": "Oxímetro de pulso",
+            "a4": "Termômetro"
+          },
           "headerLabel": "FERRAMENTAS DE DIAGNÓSTICO"
         },
         "doctor-q4": {
           "question": "Numa apresentação clássica de apendicite, a dor abdominal pode se deslocar para qual área?",
-          "answers": [
-            "Abdome superior esquerdo",
-            "Meio do peito",
-            "Ombro esquerdo",
-            "Abdome inferior direito"
-          ],
+          "answers": {
+            "a1": "Abdome superior esquerdo",
+            "a2": "Meio do peito",
+            "a3": "Ombro esquerdo",
+            "a4": "Abdome inferior direito"
+          },
           "headerLabel": "PADRÕES CLÍNICOS"
         },
         "doctor-q5": {
           "question": "Quais células do pâncreas produzem insulina?",
-          "answers": [
-            "Células beta",
-            "Glóbulos vermelhos",
-            "Osteoblastos",
-            "Neutrófilos"
-          ],
+          "answers": {
+            "a1": "Células beta",
+            "a2": "Glóbulos vermelhos",
+            "a3": "Osteoblastos",
+            "a4": "Neutrófilos"
+          },
           "headerLabel": "FISIOLOGIA ENDÓCRINA"
         },
         "doctor-q6": {
           "question": "O que significa ausculta durante um exame físico?",
-          "answers": [
-            "Medir a temperatura corporal",
-            "Ouvir sons internos do corpo",
-            "Testar a acuidade visual",
-            "Examinar uma amostra de tecido ao microscópio"
-          ],
+          "answers": {
+            "a1": "Medir a temperatura corporal",
+            "a2": "Ouvir sons internos do corpo",
+            "a3": "Testar a acuidade visual",
+            "a4": "Examinar uma amostra de tecido ao microscópio"
+          },
           "headerLabel": "EXAME CLÍNICO"
         },
         "doctor-q7": {
           "question": "Qual descrição corresponde melhor à sepse?",
-          "answers": [
-            "Uma reação inofensiva ao exercício",
-            "Uma condição causada apenas por alergias",
-            "Uma resposta extrema à infecção com risco de vida",
-            "Um tipo de fratura óssea"
-          ],
+          "answers": {
+            "a1": "Uma reação inofensiva ao exercício",
+            "a2": "Uma condição causada apenas por alergias",
+            "a3": "Uma resposta extrema à infecção com risco de vida",
+            "a4": "Um tipo de fratura óssea"
+          },
           "headerLabel": "EMERGÊNCIAS MÉDICAS"
         },
         "doctor-q8": {
           "question": "Como é chamada a unidade de filtragem funcional do rim?",
-          "answers": [
-            "Alvéolo",
-            "Neurônio",
-            "Vilosidade intestinal",
-            "Néfron"
-          ],
+          "answers": {
+            "a1": "Alvéolo",
+            "a2": "Neurônio",
+            "a3": "Vilosidade intestinal",
+            "a4": "Néfron"
+          },
           "headerLabel": "ANATOMIA RENAL"
         },
         "doctor-q9": {
           "question": "Uma pessoa não responda e não respira normalmente. Qual é a resposta geral imediata mais segura?",
-          "answers": [
-            "Ligue para os serviços de emergência e inicie o suporte básico de vida adequado",
-            "Aguarde alguns minutos para recuperação espontânea",
-            "Dê comida ou bebida",
-            "Peça à pessoa para caminhar"
-          ],
+          "answers": {
+            "a1": "Ligue para os serviços de emergência e inicie o suporte básico de vida adequado",
+            "a2": "Aguarde alguns minutos para recuperação espontânea",
+            "a3": "Dê comida ou bebida",
+            "a4": "Peça à pessoa para caminhar"
+          },
           "headerLabel": "PRIORIDADES DE EMERGÊNCIA"
         },
         "doctor-q10": {
           "question": "Qual afirmação sobre antibióticos é mais precisa?",
-          "answers": [
-            "Eles tratam todas as febres",
-            "Eles não tratam infecções virais, como o resfriado comum",
-            "Eles devem sempre ser interrompidos assim que os sintomas melhorarem",
-            "Eles atuam reduzindo diretamente a temperatura corporal"
-          ],
+          "answers": {
+            "a1": "Eles tratam todas as febres",
+            "a2": "Eles não tratam infecções virais, como o resfriado comum",
+            "a3": "Eles devem sempre ser interrompidos assim que os sintomas melhorarem",
+            "a4": "Eles atuam reduzindo diretamente a temperatura corporal"
+          },
           "headerLabel": "PERGUNTA FINAL DE MEDICINA"
         }
       }

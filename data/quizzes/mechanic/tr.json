@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %7'si Bu Araba Tamircisi Testini Geçebiliyor",
   "eyebrow": "HASSAS SERVİS BÖLMESİ",
   "summary": "Uyarı ışıkları, gizli arızalar ve garip yol belirtileri, sorunu pahalı hale gelmeden teşhis edip edemeyeceğinizi test eder.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Dünya çapındaki bu eğlence testi, araç sistemleri, servis kararı ve arıza bulma hakkında on pratik soru içermektedir. Tanıdık uyarı işaretlerinden dikkatli teşhis gerektiren bağlantılı semptomlara doğru ilerliyor.\n\nGösterilen bilgilerden en iyi cevabı seçin. Sorularda geniş kapsamlı araç prensipleri kullanılır ve tek bir marka, model veya yerel denetim standardı varsayımından kaçınılır.\n\nPuanınız yalnızca bu kısa mücadeleyi yansıtıyor. Ticari yeterlilik, güvenlik denetimi veya kalifiye bir tamirci tarafından yapılan teşhisin yerine geçmez.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mekanik zorluk",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Atölye Mücadelesi",
@@ -29,10 +26,8 @@
         "preAdCopy": "Mekanik puanınız ve altı sistemli dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Altı araç sistemi karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Altı araç sistemi karşılaştırıldı"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Mekanik mücadelesini geçtin!",
       "finished": "Atölye mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü araç sistemi",
       "trickiest": "En zorlu araç sistemi",
-      "bestRound": "En iyi bölüm",
-      "showBestRound": false
+      "bestRound": "En iyi bölüm"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Hangi uyarı sembolü motor yağı basıncıyla en doğrudan ilgilidir?",
-          "answers": [
-            "Yağ tenekesi",
-            "Pil",
-            "Termometre",
-            "Direksiyon simidi"
-          ],
+          "answers": {
+            "a1": "Yağ tenekesi",
+            "a2": "Pil",
+            "a3": "Termometre",
+            "a4": "Direksiyon simidi"
+          },
           "headerLabel": "MOTOR SİSTEMLERİ"
         },
         "mech-r1q2": {
           "question": "Park freni serbest bırakıldıktan sonra kırmızı fren uyarısı yanık kalır. En güvenli yanıt nedir?",
-          "answers": [
-            "Test etmek için daha hızlı sürün",
-            "Güvenli bir şekilde durun ve fren sistemini kontrol ettirin",
-            "Lastikleri daha sert pompalayın",
-            "Bir sonraki servise kadar görmezden gelin"
-          ],
+          "answers": {
+            "a1": "Test etmek için daha hızlı sürün",
+            "a2": "Güvenli bir şekilde durun ve fren sistemini kontrol ettirin",
+            "a3": "Lastikleri daha sert pompalayın",
+            "a4": "Bir sonraki servise kadar görmezden gelin"
+          },
           "headerLabel": "FRENLER VE GÜVENLİK"
         },
         "mech-r4q5": {
           "question": "Dar dönüşlerde ritmik tıklama hızlanır. Olası neden hangi kısımdır?",
-          "answers": [
-            "Termostat",
-            "Yakıt pompası",
-            "Dış sabit hız eklemi",
-            "Kabin fanı"
-          ],
+          "answers": {
+            "a1": "Termostat",
+            "a2": "Yakıt pompası",
+            "a3": "Dış sabit hız eklemi",
+            "a4": "Kabin fanı"
+          },
           "headerLabel": "AKTARMA AKTARIMI"
         },
         "mech-r4q6": {
           "question": "Bir lastiğin yanağında derin bir çıkıntı var. Ne yapmalısın?",
-          "answers": [
-            "Basıncı azaltın ve devam edin",
-            "Çıkıntıyı düz bir şekilde itin",
-            "Başka bir tekerleğe taşıyın",
-            "Lastiği kullanmayı bırakın ve değiştirilmesini sağlayın"
-          ],
+          "answers": {
+            "a1": "Basıncı azaltın ve devam edin",
+            "a2": "Çıkıntıyı düz bir şekilde itin",
+            "a3": "Başka bir tekerleğe taşıyın",
+            "a4": "Lastiği kullanmayı bırakın ve değiştirilmesini sağlayın"
+          },
           "headerLabel": "ARAÇ GÜVENLİĞİ"
         },
         "mech-r5q5": {
           "question": "Motor trafikte aşırı ısınır ancak yol hızında soğur. Hangi bileşen erken kontrolü hak ediyor?",
-          "answers": [
-            "Radyatör fanı",
-            "Emniyet kemeri",
-            "Yakıt kapağı",
-            "Tekerlek yatağı"
-          ],
+          "answers": {
+            "a1": "Radyatör fanı",
+            "a2": "Emniyet kemeri",
+            "a3": "Yakıt kapağı",
+            "a4": "Tekerlek yatağı"
+          },
           "headerLabel": "SOĞUTMA SİSTEMLERİ"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Beklenen akü voltajı 12,6 volt, ölçülen 10,5 volt"
           },
           "question": "Sağlıklı bir 12 voltluk pil, dinlenme halindeyken yaklaşık 12,6 V okur. Burada 10,5 V yazıyor. Bu ne anlama geliyor?",
-          "answers": [
-            "Lastikler aşınmış",
-            "Soğutma sıvısı çok güçlü",
-            "Pil tamamen boşalmış veya hücre arızası var",
-            "Alternatör kayışı yeni"
-          ],
+          "answers": {
+            "a1": "Lastikler aşınmış",
+            "a2": "Soğutma sıvısı çok güçlü",
+            "a3": "Pil tamamen boşalmış veya hücre arızası var",
+            "a4": "Alternatör kayışı yeni"
+          },
           "headerLabel": "ELEKTRİK SİSTEMLERİ"
         },
         "mech-r7q1": {
           "question": "Direksiyon simidi esas olarak bir yol hızı aralığında titreşir. Olası ilk şüpheli nedir?",
-          "answers": [
-            "Tekerlek dengesizliği",
-            "Yakıt kalitesi",
-            "Kabin filtresi",
-            "Soğutucu rengi"
-          ],
+          "answers": {
+            "a1": "Tekerlek dengesizliği",
+            "a2": "Yakıt kalitesi",
+            "a3": "Kabin filtresi",
+            "a4": "Soğutucu rengi"
+          },
           "headerLabel": "DİREKSİYON VE DENGE"
         },
         "mech-r7q6": {
           "question": "Bir yol tehlikesine çarptıktan sonra yeni bir şiddetli titreşim ortaya çıkıyor. Ne yapmalısın?",
-          "answers": [
-            "Sorunu düzeltmek için hızı artırın",
-            "Devam etmeden önce güvenli bir şekilde durun ve tekerleği ve lastiği kontrol edin.",
-            "Her lastik basıncını düşürün",
-            "Herhangi bir uyarı görünmezse dikkate almayın"
-          ],
+          "answers": {
+            "a1": "Sorunu düzeltmek için hızı artırın",
+            "a2": "Devam etmeden önce güvenli bir şekilde durun ve tekerleği ve lastiği kontrol edin.",
+            "a3": "Her lastik basıncını düşürün",
+            "a4": "Herhangi bir uyarı görünmezse dikkate almayın"
+          },
           "headerLabel": "ARAÇ GÜVENLİĞİ"
         },
         "mech-r9q2": {
           "context": "MÜŞTERİ Diyor",
           "question": "\"Pil yeni ama sürekli olarak boşalıyor ve sürüş esnasında şarj uyarısı çıkıyor.\" Ne test edilmeli?",
-          "answers": [
-            "Lastik hizalaması",
-            "Şarj sistemi ve bağlantıları",
-            "Fren balatası kalınlığı",
-            "Soğutma sıvısı konsantrasyonu"
-          ],
+          "answers": {
+            "a1": "Lastik hizalaması",
+            "a2": "Şarj sistemi ve bağlantıları",
+            "a3": "Fren balatası kalınlığı",
+            "a4": "Soğutma sıvısı konsantrasyonu"
+          },
           "headerLabel": "ŞARJ SİSTEMLERİ"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Motor yol hızında soğuyor, rölantide aşırı ısınıyor, soğutma fanı çalışmıyor"
           },
           "question": "Motor yalnızca rölantide aşırı ısınıyor, radyatörde tıkanıklık yok ve soğutma fanı hiç çalışmıyor. İlk önce ne teşhis edilmeli?",
-          "answers": [
-            "Tekerlek hizalaması",
-            "Yakıt kapağı contası",
-            "Fren balatası aşınması",
-            "Fan devresi, motor ve kontrol komutu"
-          ],
+          "answers": {
+            "a1": "Tekerlek hizalaması",
+            "a2": "Yakıt kapağı contası",
+            "a3": "Fren balatası aşınması",
+            "a4": "Fan devresi, motor ve kontrol komutu"
+          },
           "headerLabel": "NİHAİ TEŞHİS"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu yetişkin bu cerrahlık giriş sınavını geçemiyor",
   "eyebrow": "AMELİYATHANE YETENEK TESTİ",
   "summary": "On soru anatomiyi, cerrahi güvenliği, teknikleri ve kritik kararları test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Anatomi soruları idare edilebilir görünüyor. Daha sonra test, bir detayın her şeyi değiştirdiği steril uygulamaya, cerrahi aletlere ve kararlara geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesinde, 1. Kademe İngilizce konuşulan ülkelerde geçerli olan geniş anatomi ve cerrahi güvenlik kavramları kullanılmaktadır. Kan akışı ve steril uygulamadan güvenlik kontrollerine, anahtar deliği ameliyatına, yara uyarı işaretlerine, hasta takibine ve bilgilendirilmiş onam aşamasına geçilir.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on cerrahi bilgi sorusunu yanıtlayın.",
         "En iyi desteklenen tek yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Cerrah giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Cerrah Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve cerrahi bilgi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş cerrahi alan karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş cerrahi alan karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Cerrahın giriş sınavını geçtiniz!",
       "finished": "Cerrahın giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü cerrahi alan",
       "trickiest": "En zorlu cerrahi alan",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Dolaşım sisteminde bir atardamarı ne tanımlar?",
-          "answers": [
-            "Kanı kalpten uzaklaştırır",
-            "Her zaman oksijenden zengin kan taşır",
-            "Kanı sadece akciğerlere taşır",
-            "Kas duvarı içermez"
-          ],
+          "answers": {
+            "a1": "Kanı kalpten uzaklaştırır",
+            "a2": "Her zaman oksijenden zengin kan taşır",
+            "a3": "Kanı sadece akciğerlere taşır",
+            "a4": "Kas duvarı içermez"
+          },
           "headerLabel": "CERRAHİ ANATOMİ"
         },
         "surgeon-q2": {
           "question": "Steril bir cerrahi sahayı korumanın temel amacı nedir?",
-          "answers": [
-            "Aletleri boyutlarına göre düzenlenmiş halde tutmak için",
-            "Kontaminasyonu ve enfeksiyon riskini azaltmak için",
-            "Prosedürün daha hızlı bitmesini sağlamak için",
-            "Tüm kanamaları önlemek için"
-          ],
+          "answers": {
+            "a1": "Aletleri boyutlarına göre düzenlenmiş halde tutmak için",
+            "a2": "Kontaminasyonu ve enfeksiyon riskini azaltmak için",
+            "a3": "Prosedürün daha hızlı bitmesini sağlamak için",
+            "a4": "Tüm kanamaları önlemek için"
+          },
           "headerLabel": "STERİL UYGULAMA"
         },
         "surgeon-q3": {
           "question": "Bir kesiden hemen önce cerrahi güvenlik neyi onaylamalıdır?",
-          "answers": [
-            "Yalnızca beklenen prosedür uzunluğu",
-            "Yalnızca cerrahın tercih ettiği ekipman",
-            "Doğru hasta, prosedür ve vücut bölgesi",
-            "Hastanın ameliyat sonrası yemek seçimi"
-          ],
+          "answers": {
+            "a1": "Yalnızca beklenen prosedür uzunluğu",
+            "a2": "Yalnızca cerrahın tercih ettiği ekipman",
+            "a3": "Doğru hasta, prosedür ve vücut bölgesi",
+            "a4": "Hastanın ameliyat sonrası yemek seçimi"
+          },
           "headerLabel": "GÜVENLİK KONTROLÜ"
         },
         "surgeon-q4": {
           "question": "Laparoskopik cerrahiyi geleneksel açık yaklaşımdan farklı kılan nedir?",
-          "answers": [
-            "Asla ağrı kontrolü gerektirmez",
-            "Hiçbir cerrahi alet kullanmaz",
-            "Sadece cildi inceleyebilir",
-            "Genellikle küçük kesilerden kamera ve aletler kullanılır."
-          ],
+          "answers": {
+            "a1": "Asla ağrı kontrolü gerektirmez",
+            "a2": "Hiçbir cerrahi alet kullanmaz",
+            "a3": "Sadece cildi inceleyebilir",
+            "a4": "Genellikle küçük kesilerden kamera ve aletler kullanılır."
+          },
           "headerLabel": "CERRAHİ TEKNİKLER"
         },
         "surgeon-q5": {
           "question": "Apendektomi sırasında hangi yapı çıkarılır?",
-          "answers": [
-            "Apandis",
-            "Safra kesesi",
-            "Dalak",
-            "Pankreas"
-          ],
+          "answers": {
+            "a1": "Apandis",
+            "a2": "Safra kesesi",
+            "a3": "Dalak",
+            "a4": "Pankreas"
+          },
           "headerLabel": "AMELİYAT ANATOMİSİ"
         },
         "surgeon-q6": {
           "question": "Cerrahi ekartör esas olarak ne için kullanılır?",
-          "answers": [
-            "Oksijen doygunluğunun ölçülmesi",
-            "Erişimi iyileştirmek için dokuyu veya kesiği açık tutmak",
-            "Yaranın dikişle kapatılması",
-            "Elektriksel kalp aktivitesinin kaydedilmesi"
-          ],
+          "answers": {
+            "a1": "Oksijen doygunluğunun ölçülmesi",
+            "a2": "Erişimi iyileştirmek için dokuyu veya kesiği açık tutmak",
+            "a3": "Yaranın dikişle kapatılması",
+            "a4": "Elektriksel kalp aktivitesinin kaydedilmesi"
+          },
           "headerLabel": "CERRAHİ ALETLER"
         },
         "surgeon-q7": {
           "question": "Hangi kombinasyon cerrahi alan enfeksiyonuna işaret edebilir?",
-          "answers": [
-            "Konforun iyileştirilmesi ve kuru iyileşen bir yara",
-            "Sabit bir iştah ve normal sıcaklık",
-            "Artan kızarıklık veya ağrı, drenaj veya ateş",
-            "Yeni semptomların olmadığı temiz bir pansuman"
-          ],
+          "answers": {
+            "a1": "Konforun iyileştirilmesi ve kuru iyileşen bir yara",
+            "a2": "Sabit bir iştah ve normal sıcaklık",
+            "a3": "Artan kızarıklık veya ağrı, drenaj veya ateş",
+            "a4": "Yeni semptomların olmadığı temiz bir pansuman"
+          },
           "headerLabel": "AMELİYAT SONRASI UYARI İŞARETLERİ"
         },
         "surgeon-q8": {
           "question": "Hangi cihaz ameliyat sırasında kan oksijen doygunluğunun hızlı, invazif olmayan bir tahminini verir?",
-          "answers": [
-            "Refleks çekici",
-            "Otoskop",
-            "Termometre",
-            "Nabız oksimetresi"
-          ],
+          "answers": {
+            "a1": "Refleks çekici",
+            "a2": "Otoskop",
+            "a3": "Termometre",
+            "a4": "Nabız oksimetresi"
+          },
           "headerLabel": "HASTA İZLEME"
         },
         "surgeon-q9": {
           "question": "Kişi tepkisiz hale gelir ve normal nefes alamaz. En güvenli acil genel tepki nedir?",
-          "answers": [
-            "Acil servisleri arayın ve uygun temel yaşam desteğine başlayın",
-            "Yiyecek veya içecek verin",
-            "Hareket etmeden birkaç dakika bekleyin",
-            "Kişiden ayağa kalkmasını isteyin"
-          ],
+          "answers": {
+            "a1": "Acil servisleri arayın ve uygun temel yaşam desteğine başlayın",
+            "a2": "Yiyecek veya içecek verin",
+            "a3": "Hareket etmeden birkaç dakika bekleyin",
+            "a4": "Kişiden ayağa kalkmasını isteyin"
+          },
           "headerLabel": "CERRAHİ ACİL DURUMLAR"
         },
         "surgeon-q10": {
           "question": "Hangi tanım ameliyattan önce bilgilendirilmiş onamla en iyi şekilde eşleşir?",
-          "answers": [
-            "Klinisyen alternatifleri açıklamadan seçim yapar",
-            "Hasta ilgili bilgileri alır ve gönüllü olarak kabul eder",
-            "Her yetişkin adına her zaman bir akraba karar verir",
-            "Bir formu imzalamak tartışma ihtiyacını ortadan kaldırır"
-          ],
+          "answers": {
+            "a1": "Klinisyen alternatifleri açıklamadan seçim yapar",
+            "a2": "Hasta ilgili bilgileri alır ve gönüllü olarak kabul eder",
+            "a3": "Her yetişkin adına her zaman bir akraba karar verir",
+            "a4": "Bir formu imzalamak tartışma ihtiyacını ortadan kaldırır"
+          },
           "headerLabel": "NİHAİ ONAY SORUSU"
         }
       }

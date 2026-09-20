@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Only 7% Pass This Car Mechanic Quiz",
   "eyebrow": "PRECISION SERVICE BAY",
   "summary": "Warning lights, hidden faults and strange road symptoms test whether you can diagnose trouble before it gets expensive.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "This worldwide entertainment test contains ten practical questions about vehicle systems, workshop judgement and fault finding. It moves from familiar warning signs to connected symptoms that require careful diagnosis.\n\nChoose the best answer from the information shown. The questions use broad vehicle principles and avoid assuming one make, model or local inspection standard.\n\nYour score reflects this short challenge only. It is not a trade qualification, safety inspection or substitute for diagnosis by a qualified mechanic.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Complete ten carefully selected questions in one focused challenge.",
         "Choose one answer each time. Correctness remains hidden until the final reveal.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Mechanic challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Workshop Challenge",
@@ -29,10 +26,8 @@
         "preAdCopy": "Your mechanic score and six-system breakdown are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Six vehicle systems compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Six vehicle systems compared"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "You passed the mechanic challenge!",
       "finished": "Workshop challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest vehicle system",
       "trickiest": "Trickiest vehicle system",
-      "bestRound": "Best section",
-      "showBestRound": false
+      "bestRound": "Best section"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Which warning symbol most directly relates to engine oil pressure?",
-          "answers": [
-            "Oil can",
-            "Battery",
-            "Thermometer",
-            "Steering wheel"
-          ],
+          "answers": {
+            "a1": "Oil can",
+            "a2": "Battery",
+            "a3": "Thermometer",
+            "a4": "Steering wheel"
+          },
           "headerLabel": "ENGINE SYSTEMS"
         },
         "mech-r1q2": {
           "question": "A red brake warning stays on after the parking brake is released. What is the safest response?",
-          "answers": [
-            "Drive faster to test it",
-            "Stop safely and have the brake system checked",
-            "Pump the tyres harder",
-            "Ignore it until the next service"
-          ],
+          "answers": {
+            "a1": "Drive faster to test it",
+            "a2": "Stop safely and have the brake system checked",
+            "a3": "Pump the tyres harder",
+            "a4": "Ignore it until the next service"
+          },
           "headerLabel": "BRAKES & SAFETY"
         },
         "mech-r4q5": {
           "question": "A rhythmic clicking becomes faster on tight turns. Which part is a likely cause?",
-          "answers": [
-            "Thermostat",
-            "Fuel pump",
-            "Outer constant-velocity joint",
-            "Cabin fan"
-          ],
+          "answers": {
+            "a1": "Thermostat",
+            "a2": "Fuel pump",
+            "a3": "Outer constant-velocity joint",
+            "a4": "Cabin fan"
+          },
           "headerLabel": "DRIVETRAIN"
         },
         "mech-r4q6": {
           "question": "One tyre has a deep sidewall bulge. What should you do?",
-          "answers": [
-            "Reduce the pressure and continue",
-            "Push the bulge flat",
-            "Move it to another wheel",
-            "Stop using the tyre and arrange replacement"
-          ],
+          "answers": {
+            "a1": "Reduce the pressure and continue",
+            "a2": "Push the bulge flat",
+            "a3": "Move it to another wheel",
+            "a4": "Stop using the tyre and arrange replacement"
+          },
           "headerLabel": "VEHICLE SAFETY"
         },
         "mech-r5q5": {
           "question": "The engine overheats in traffic but cools at road speed. Which component deserves an early check?",
-          "answers": [
-            "Radiator fan",
-            "Seat belt",
-            "Fuel cap",
-            "Wheel bearing"
-          ],
+          "answers": {
+            "a1": "Radiator fan",
+            "a2": "Seat belt",
+            "a3": "Fuel cap",
+            "a4": "Wheel bearing"
+          },
           "headerLabel": "COOLING SYSTEMS"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Expected battery voltage 12.6 volts, measured 10.5 volts"
           },
           "question": "A healthy 12-volt battery reads about 12.6 V at rest. This one reads 10.5 V. What does that suggest?",
-          "answers": [
-            "The tyres are worn",
-            "The coolant is too strong",
-            "The battery is deeply discharged or has a failed cell",
-            "The alternator belt is new"
-          ],
+          "answers": {
+            "a1": "The tyres are worn",
+            "a2": "The coolant is too strong",
+            "a3": "The battery is deeply discharged or has a failed cell",
+            "a4": "The alternator belt is new"
+          },
           "headerLabel": "ELECTRICAL SYSTEMS"
         },
         "mech-r7q1": {
           "question": "The steering wheel vibrates mainly at one road-speed range. What is a likely first suspect?",
-          "answers": [
-            "Wheel imbalance",
-            "Fuel quality",
-            "Cabin filter",
-            "Coolant colour"
-          ],
+          "answers": {
+            "a1": "Wheel imbalance",
+            "a2": "Fuel quality",
+            "a3": "Cabin filter",
+            "a4": "Coolant colour"
+          },
           "headerLabel": "STEERING & BALANCE"
         },
         "mech-r7q6": {
           "question": "A new severe vibration appears after striking a road hazard. What should you do?",
-          "answers": [
-            "Increase speed to smooth it out",
-            "Stop safely and inspect the wheel and tyre before continuing",
-            "Lower every tyre pressure",
-            "Ignore it if no warning appears"
-          ],
+          "answers": {
+            "a1": "Increase speed to smooth it out",
+            "a2": "Stop safely and inspect the wheel and tyre before continuing",
+            "a3": "Lower every tyre pressure",
+            "a4": "Ignore it if no warning appears"
+          },
           "headerLabel": "VEHICLE SAFETY"
         },
         "mech-r9q2": {
           "context": "CUSTOMER SAYS",
           "question": "“The battery is new, but it repeatedly goes flat and the charging warning appears while driving.” What should be tested?",
-          "answers": [
-            "Tyre alignment",
-            "The charging system and its connections",
-            "Brake-pad thickness",
-            "Coolant concentration"
-          ],
+          "answers": {
+            "a1": "Tyre alignment",
+            "a2": "The charging system and its connections",
+            "a3": "Brake-pad thickness",
+            "a4": "Coolant concentration"
+          },
           "headerLabel": "CHARGING SYSTEMS"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Engine cools at road speed, overheats at idle, cooling fan does not run"
           },
           "question": "The engine overheats only at idle, the radiator is unobstructed and the cooling fan never runs. What should be diagnosed first?",
-          "answers": [
-            "Wheel alignment",
-            "Fuel cap seal",
-            "Brake-pad wear",
-            "The fan circuit, motor and control command"
-          ],
+          "answers": {
+            "a1": "Wheel alignment",
+            "a2": "Fuel cap seal",
+            "a3": "Brake-pad wear",
+            "a4": "The fan circuit, motor and control command"
+          },
           "headerLabel": "FINAL DIAGNOSIS"
         }
       }

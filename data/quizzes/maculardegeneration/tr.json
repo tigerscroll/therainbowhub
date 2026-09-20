@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Makula Dejenerasyonu Testi",
   "eyebrow": "10 SORULU MERKEZİ GÖRME KONTROLÜ",
   "summary": "Tek bir hızlı mücadelede merkezi ayrıntılar, görsel tuzaklar ve önemli AMD uyarı işaretleri.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Merkezi ayrıntıları tespit edip uyarı işaretlerini tanımlayabilir misiniz? Bu 10 hızlı kontrol giderek zorlaşıyor.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk meydan okuma, ekrandaki beş görsel bulmacayı yaşa bağlı makula dejenerasyonu (AMD) hakkında beş genel farkındalık sorusuyla birleştiriyor. Göz sağlığını veya hastalık olasılığını değil, bu testin yanıtlarını ölçer.\n\nEkran boyutu, parlaklık, kontrast, görme yeteneği, düzeltici lensler, yorgunluk ve cihaz ayarlarının tümü performansı etkileyebilir. Yeni dalgalı veya çarpık çizgiler, merkezi görüşte yeni bir bulanık veya boş alan veya ani kötüleşme, derhal kalifiye bir göz doktoruyla görüşülmelidir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Beş merkezi detay ve görsel hafıza mücadelesini tamamlayın.",
         "AMD ve ne zaman yardım aranacağıyla ilgili beş soruyu yanıtlayın.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Merkezi görüş sorunu",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Makula Dejenerasyonu Testi",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve merkezi görüş sınavı puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç görsel alan karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç görsel alan karşılaştırıldı"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "%80'lik görsel mücadeleyi tamamladınız!",
       "finished": "Merkezi görüş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "Bugün en güçlü bölge",
       "trickiest": "Bugünün en zorlu alanı",
       "bestRound": "En iyi bölüm",
@@ -94,8 +87,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Izgaranın tam ortasında hangi karakter var?",
           "headerLabel": "MERKEZ DETAY",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERANS: Q7M2P6",
           "question": "Referansla tam olarak hangi kod eşleşiyor?",
           "headerLabel": "MAÇI KAPAT",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERANS",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Alternatif diziyi hangi sembol tamamlar?",
           "headerLabel": "ÖRÜNTÜ TAKİBİ",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Üçüncü olarak hangi nesne ortaya çıktı?",
           "headerLabel": "HIZLI GÖRSEL BELLEK",
-          "answers": [
-            "Kitap",
-            "Anahtar",
-            "Fincan",
-            "Güneş"
-          ],
+          "answers": {
+            "a1": "Kitap",
+            "a2": "Anahtar",
+            "a3": "Fincan",
+            "a4": "Güneş"
+          },
           "study": {
             "title": "Beş nesne sırasını inceleyin",
             "instruction": "Bu otomatik olarak kaybolacaktır.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Açık daire hangi konumda yer alıyor?",
           "headerLabel": "ORTA SIRADA ODAK",
-          "answers": [
-            "Dördüncü",
-            "İkinci",
-            "Beşinci",
-            "Üçüncü"
-          ],
+          "answers": {
+            "a1": "Dördüncü",
+            "a2": "İkinci",
+            "a3": "Beşinci",
+            "a4": "Üçüncü"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Yaşa bağlı makula dejenerasyonundan görmenin hangi kısmı en doğrudan etkilenir?",
           "headerLabel": "AMD TEMELLERİ",
-          "answers": [
-            "Yalnızca uzak dış kenarlar",
-            "Keskin merkezi, düz görüş",
-            "Sadece gece görüşü",
-            "Sadece derinlik algısı"
-          ]
+          "answers": {
+            "a1": "Yalnızca uzak dış kenarlar",
+            "a2": "Keskin merkezi, düz görüş",
+            "a3": "Sadece gece görüşü",
+            "a4": "Sadece derinlik algısı"
+          }
         },
         "macular-q7": {
           "question": "Hangi görsel değişiklik AMD'nin iyi bilinen bir uyarı işaretidir?",
           "headerLabel": "UYARI İŞARETLERİ",
-          "answers": [
-            "Sesler giderek sessizleşiyor",
-            "Göz kapağında geçici kaşıntı",
-            "Dalgalı veya çarpık görünen düz çizgiler",
-            "Bir kirpik düşüyor"
-          ]
+          "answers": {
+            "a1": "Sesler giderek sessizleşiyor",
+            "a2": "Göz kapağında geçici kaşıntı",
+            "a3": "Dalgalı veya çarpık görünen düz çizgiler",
+            "a4": "Bir kirpik düşüyor"
+          }
         },
         "macular-q8": {
           "question": "Bir göz doktoru AMD'yi aramak için hangi değerlendirmeyi kullanabilir?",
           "headerLabel": "MESLEKİ DEĞERLENDİRME",
-          "answers": [
-            "Bir işitme testi",
-            "Tek başına kan basıncı ölçümü",
-            "Bir tat testi",
-            "Kapsamlı bir dilate göz muayenesi"
-          ]
+          "answers": {
+            "a1": "Bir işitme testi",
+            "a2": "Tek başına kan basıncı ölçümü",
+            "a3": "Bir tat testi",
+            "a4": "Kapsamlı bir dilate göz muayenesi"
+          }
         },
         "macular-q9": {
           "question": "Ani kötüleşen görüşe veya yeni merkezi bulanık veya boş alana karşı en güvenli tepki nedir?",
           "headerLabel": "NE ZAMAN HAREKETE GEÇMELİ",
-          "answers": [
-            "Derhal profesyonel göz bakımı tavsiyesi alın",
-            "Birkaç ay boyunca bundan bahsetmeden bekleyin",
-            "Ekran parlaklığını artırın ve sabit olduğunu varsayın",
-            "Yalnızca çevrimiçi testlere güvenin"
-          ]
+          "answers": {
+            "a1": "Derhal profesyonel göz bakımı tavsiyesi alın",
+            "a2": "Birkaç ay boyunca bundan bahsetmeden bekleyin",
+            "a3": "Ekran parlaklığını artırın ve sabit olduğunu varsayın",
+            "a4": "Yalnızca çevrimiçi testlere güvenin"
+          }
         },
         "macular-q10": {
           "question": "Bu çevrimiçi mücadeledeki puanınız size ne söyleyebilir?",
           "headerLabel": "NİHAİ GERÇEKLİK KONTROLÜ",
-          "answers": [
-            "Retinanızın sağlıklı olup olmadığı",
-            "Yalnızca bu on soruda nasıl performans gösterdiniz?",
-            "Özel bir tedaviye ihtiyacınız olup olmadığı",
-            "AMD'yi göz ardı edip edemeyeceğiniz"
-          ]
+          "answers": {
+            "a1": "Retinanızın sağlıklı olup olmadığı",
+            "a2": "Yalnızca bu on soruda nasıl performans gösterdiniz?",
+            "a3": "Özel bir tedaviye ihtiyacınız olup olmadığı",
+            "a4": "AMD'yi göz ardı edip edemeyeceğiniz"
+          }
         }
       }
     }

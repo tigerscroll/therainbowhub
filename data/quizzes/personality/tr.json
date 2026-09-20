@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hangi Ülke Kişiliğinize Uyum Sağlıyor?",
   "eyebrow": "İDEAL ÜLKE MAÇINIZ",
   "summary": "On yaşam tarzı seçeneği, kişiliğinizin İtalya'ya, Japonya'ya, Avustralya'ya veya İsveç'e en yakın olup olmadığını ortaya koyuyor.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Günlük seçimleriniz size diğerlerinden daha iyi uyan bir ülkeyi işaret edebilir. On kısa soru en yakın eşleşmenizi ortaya çıkarıyor.",
     "cta": "Ülkemi Bul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence testi, Times of India bağlantılı ülke kişiliği yarışmasından uyarlanmıştır. Her seçim İtalya, Japonya, Avustralya veya İsveç için bir sinyal ekler.\n\nKulağa en etkileyici gelen yanıttan ziyade en doğal hissettiren yanıtı seçin. En güçlü genel modeliniz son ülke maçını belirler.\n\nSonuç, uyruk, soy, vatandaşlık, kültürel kimlik veya yer değiştirme önerisini değil, eğlenceli bir yaşam tarzı arketipini tanımlıyor. Kaynak soru konseptleri ve görselleri, bu testi yaptıran site sahibinin belirttiği izinle Times of India'dan alınmıştır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Alışkanlıklarınız ve tercihleriniz hakkındaki on kısa soruyu yanıtlayın.",
         "Size en çok benzeyen seçeneği fazla düşünmeden seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ülke maçı",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Kişilik Eşleşmesi",
@@ -126,9 +122,7 @@
       "portraitAlt": "{profile}'yu temsil eden manzara çizimi",
       "disclaimer": "Yalnızca eğlence ve kendini yansıtma amaçlıdır. Bu sonuç, uyruğa, kültürel kimliğe veya nerede yaşamanız gerektiğine ilişkin bir açıklama değil, eğlenceli bir yaşam tarzı eşleşmesidir."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Arkadaşlar birbirlerini sıcak bir şekilde selamlıyor"
           },
           "question": "Yeni birini nasıl selamlarsınız?",
-          "answers": [
-            "Sıcak kucaklama",
-            "Dost canlısı dalga",
-            "Saygılı yay",
-            "Gündelik sallama"
-          ],
+          "answers": {
+            "a1": "Sıcak kucaklama",
+            "a2": "Dost canlısı dalga",
+            "a3": "Saygılı yay",
+            "a4": "Gündelik sallama"
+          },
           "headerLabel": "İLK İZLENİM"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Değişen gökyüzünün altında parlak bir manzara"
           },
           "question": "Seni en çok nasıl havalar mutlu eder?",
-          "answers": [
-            "Sıcak esintiler",
-            "Parlak güneş ışığı",
-            "Soğuk hava",
-            "Serin ve net"
-          ],
+          "answers": {
+            "a1": "Sıcak esintiler",
+            "a2": "Parlak güneş ışığı",
+            "a3": "Soğuk hava",
+            "a4": "Serin ve net"
+          },
           "headerLabel": "MÜKEMMEL HAVA"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Açık havada rahat bir Pazar manzarası"
           },
           "question": "Pazar günlerinizi genellikle nasıl geçirirsiniz?",
-          "answers": [
-            "Açık hava maceraları",
-            "İçeride rahat kalmak",
-            "Sessiz yansıma",
-            "Uzun aile yemekleri"
-          ],
+          "answers": {
+            "a1": "Açık hava maceraları",
+            "a2": "İçeride rahat kalmak",
+            "a3": "Sessiz yansıma",
+            "a4": "Uzun aile yemekleri"
+          },
           "headerLabel": "PAZAR STİLİ"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Huzurlu bir pencerenin yanında sabah kahvesi"
           },
           "question": "Güne başlamanın ideal yolu nedir?",
-          "answers": [
-            "Güçlü kahve",
-            "Nazik yürüyüş",
-            "Okyanus havası",
-            "Sakin meditasyon"
-          ],
+          "answers": {
+            "a1": "Güçlü kahve",
+            "a2": "Nazik yürüyüş",
+            "a3": "Okyanus havası",
+            "a4": "Sakin meditasyon"
+          },
           "headerLabel": "SABAH RİTMİ"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Farklı yemeklerle dolu rengarenk bir masa"
           },
           "question": "Sizi en çok hangi yemek türü heyecanlandırıyor?",
-          "answers": [
-            "Rafine tatlar",
-            "Basit ve doyurucu",
-            "Taze deniz ürünleri",
-            "Konfor klasikleri"
-          ],
+          "answers": {
+            "a1": "Rafine tatlar",
+            "a2": "Basit ve doyurucu",
+            "a3": "Taze deniz ürünleri",
+            "a4": "Konfor klasikleri"
+          },
           "headerLabel": "YEMEK İÇGÜDÜSÜ"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Çeşitli sanat tarzlarıyla galeri duvarı"
           },
           "question": "Ne tür sanat sizi çekiyor?",
-          "answers": [
-            "Zamansız klasikler",
-            "Temiz basitlik",
-            "Cesur ifade",
-            "Hassas ayrıntılar"
-          ],
+          "answers": {
+            "a1": "Zamansız klasikler",
+            "a2": "Temiz basitlik",
+            "a3": "Cesur ifade",
+            "a4": "Hassas ayrıntılar"
+          },
           "headerLabel": "YARATICI LEZZET"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Birlikte düzenlenmiş dört farklı içecek"
           },
           "question": "Tercih ettiğiniz içecek hangisi?",
-          "answers": [
-            "Soğuk bira",
-            "Şarap",
-            "Sıcak kakao",
-            "Yeşil çay"
-          ],
+          "answers": {
+            "a1": "Soğuk bira",
+            "a2": "Şarap",
+            "a3": "Sıcak kakao",
+            "a4": "Yeşil çay"
+          },
           "headerLabel": "SEÇİMLİ İÇECEK"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Özel bir günü kutlayan arkadaşlar"
           },
           "question": "Büyük anları nasıl kutlamayı seversiniz?",
-          "answers": [
-            "Yüksek sesle ve canlı",
-            "Samimi ve rahat",
-            "Kolay eğlence",
-            "Anlamlı ritüeller"
-          ],
+          "answers": {
+            "a1": "Yüksek sesle ve canlı",
+            "a2": "Samimi ve rahat",
+            "a3": "Kolay eğlence",
+            "a4": "Anlamlı ritüeller"
+          },
           "headerLabel": "KUTLAMA STİLİ"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Ormanların, kıyı şeridinin, tapınakların ve kırların montajı"
           },
           "question": "Hangi manzara en çok evinize benziyor?",
-          "answers": [
-            "Sessiz ormanlar",
-            "Açık kıyı şeridi",
-            "Tarihi tapınaklar",
-            "Kırsal kesim"
-          ],
+          "answers": {
+            "a1": "Sessiz ormanlar",
+            "a2": "Açık kıyı şeridi",
+            "a3": "Tarihi tapınaklar",
+            "a4": "Kırsal kesim"
+          },
           "headerLabel": "EV HİSSİ"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Uzak bir manzaraya bakan gezgin"
           },
           "question": "Seyahat tarzınız nedir?",
-          "answers": [
-            "Aktif keşif",
-            "Yavaş gezinme",
-            "Kültürel daldırma",
-            "İkonik manzaralar"
-          ],
+          "answers": {
+            "a1": "Aktif keşif",
+            "a2": "Yavaş gezinme",
+            "a3": "Kültürel daldırma",
+            "a4": "İkonik manzaralar"
+          },
           "headerLabel": "SON HEDEF"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 1/10 kan bestå denne katolske triviaquiz",
   "eyebrow": "DEN KATOLISKE VIDENSTEST",
   "summary": "Ti spørgsmål tester din viden om katolsk tilbedelse, Skriften, bøn og det liturgiske år.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "De første spørgsmål kan føles bekendte, men de sidste par afslører huller, selv almindelige kirkegængere savner.",
     "cta": "Start quizzen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende engelske underholdningsquiz indeholder ti spørgsmål om katolsk tilbedelse, sakramenter, Skriften, bøn og det liturgiske år.\n\nVælg det enkelte bedste svar hver gang. Spørgsmålene fokuserer på bredt anerkendt katolsk undervisning og praksis frem for lokale skikke.\n\nDit partitur måler kun ydeevne på dette korte trivia-sæt og siger intet om nogens tro, hengivenhed eller stilling i Kirken.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Læs hvert katolsk trivia-spørgsmål omhyggeligt.",
         "Vælg ét svar blandt de fire muligheder.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katolsk trivia",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Katolsk trivia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din katolske trivia-score og fuldstændige svargennemgang er klar.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fem vidensområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fem vidensområder sammenlignet"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du bestod den katolske trivia-udfordring!",
       "finished": "Katolsk trivia-udfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste vidensområde",
       "trickiest": "Det vanskeligste vidensområde",
       "bestRound": "Bedste afsnit",
@@ -99,8 +92,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "catholic-q1": {
           "question": "Hvad hedder den katolske kirkes centrale gudstjenestehandling?",
-          "answers": [
-            "Messen",
-            "Rosenkransen",
-            "Angelus",
-            "Korsets Stationer"
-          ],
+          "answers": {
+            "a1": "Messen",
+            "a2": "Rosenkransen",
+            "a3": "Angelus",
+            "a4": "Korsets Stationer"
+          },
           "headerLabel": "TILBEDELSE"
         },
         "catholic-q2": {
           "question": "Paven er også biskop i hvilken by?",
-          "answers": [
-            "Jerusalem",
-            "Rom",
-            "Assisi",
-            "Betlehem"
-          ],
+          "answers": {
+            "a1": "Jerusalem",
+            "a2": "Rom",
+            "a3": "Assisi",
+            "a4": "Betlehem"
+          },
           "headerLabel": "KIRKELS LEDELSE"
         },
         "catholic-q3": {
           "question": "Hvor mange sakramenter anerkender den katolske kirke?",
-          "answers": [
-            "Fem",
-            "Seks",
-            "Syv",
-            "Otte"
-          ],
+          "answers": {
+            "a1": "Fem",
+            "a2": "Seks",
+            "a3": "Syv",
+            "a4": "Otte"
+          },
           "headerLabel": "SAKRAMENTER"
         },
         "catholic-q4": {
           "question": "Hvilken årstid af kirkeåret kommer umiddelbart før jul?",
-          "answers": [
-            "fastelavn",
-            "Påsketid",
-            "Almindelig Tid",
-            "advent"
-          ],
+          "answers": {
+            "a1": "fastelavn",
+            "a2": "Påsketid",
+            "a3": "Almindelig Tid",
+            "a4": "advent"
+          },
           "headerLabel": "KIRKEÅR"
         },
         "catholic-q5": {
           "question": "Hvilket sæt rosenkransmysterier blev introduceret af pave Johannes Paul II i 2002?",
-          "answers": [
-            "De lysende mysterier",
-            "De glædelige mysterier",
-            "De sørgelige mysterier",
-            "De herlige mysterier"
-          ],
+          "answers": {
+            "a1": "De lysende mysterier",
+            "a2": "De glædelige mysterier",
+            "a3": "De sørgelige mysterier",
+            "a4": "De herlige mysterier"
+          },
           "headerLabel": "ROKANSEN"
         },
         "catholic-q6": {
           "question": "Hvilken bog kommer først i den katolske bibel?",
-          "answers": [
-            "Exodus",
-            "Første Mosebog",
-            "Salmer",
-            "Matthew"
-          ],
+          "answers": {
+            "a1": "Exodus",
+            "a2": "Første Mosebog",
+            "a3": "Salmer",
+            "a4": "Matthew"
+          },
           "headerLabel": "SKRIFTEN"
         },
         "catholic-q7": {
           "question": "Hvilket sakramente styrker dåbens nåde og er forbundet med Helligåndens gaver?",
-          "answers": [
-            "Salvelse af de syge",
-            "Hellige Ordner",
-            "Firmelse",
-            "Ægteskab"
-          ],
+          "answers": {
+            "a1": "Salvelse af de syge",
+            "a2": "Hellige Ordner",
+            "a3": "Firmelse",
+            "a4": "Ægteskab"
+          },
           "headerLabel": "TRO & PRAKSIS"
         },
         "catholic-q8": {
           "question": "Hvor mange korsstationer observeres traditionelt?",
-          "answers": [
-            "Syv",
-            "Ti",
-            "Tolv",
-            "Fjorten"
-          ],
+          "answers": {
+            "a1": "Syv",
+            "a2": "Ti",
+            "a3": "Tolv",
+            "a4": "Fjorten"
+          },
           "headerLabel": "HANDAGT"
         },
         "catholic-q9": {
           "question": "I den latin-katolske tradition, hvilken dag begynder fasten?",
-          "answers": [
-            "Askeonsdag",
-            "Palmesøndag",
-            "God fredag",
-            "pinse"
-          ],
+          "answers": {
+            "a1": "Askeonsdag",
+            "a2": "Palmesøndag",
+            "a3": "God fredag",
+            "a4": "pinse"
+          },
           "headerLabel": "LITURGISK KALENDER"
         },
         "catholic-q10": {
           "question": "Hvilken begivenhed fejres pinsen?",
-          "answers": [
-            "Jesu fødsel",
-            "Helligåndens nedstigning",
-            "Jesu dåb",
-            "Forvandlingen"
-          ],
+          "answers": {
+            "a1": "Jesu fødsel",
+            "a2": "Helligåndens nedstigning",
+            "a3": "Jesu dåb",
+            "a4": "Forvandlingen"
+          },
           "headerLabel": "ENDELIG SPØRGSMÅL"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kiểm tra đục thủy tinh thể nhanh",
   "eyebrow": "KIỂM TRA TẦM NHÌN 10 CÂU HỎI",
   "summary": "Các chi tiết mờ, bẫy thị giác gần và các dấu hiệu cảnh báo đục thủy tinh thể quan trọng trong một thử thách nhanh chóng.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Lúc đầu có thể dễ dàng bỏ sót bệnh đục thủy tinh thể. Hãy xem liệu bạn có thể phát hiện ra những manh mối tinh tế trong 10 câu hỏi nhanh hay không - những câu hỏi cuối cùng sẽ khiến hầu hết mọi người chú ý.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách mười câu hỏi này kết hợp năm câu đố trực quan trên màn hình với năm câu hỏi nâng cao nhận thức chung về bệnh đục thủy tinh thể. Nó đo lường câu trả lời cho bài kiểm tra này, chứ không phải thị lực, sức khỏe của thấu kính hoặc khả năng bị đục thủy tinh thể.\n\nKích thước màn hình, độ sáng, độ tương phản, thị lực, thấu kính điều chỉnh, độ mỏi và cài đặt thiết bị đều có thể ảnh hưởng đến hiệu suất. Tầm nhìn mờ hoặc mờ kéo dài, ánh sáng chói, quầng sáng quanh đèn, khó nhìn vào ban đêm hoặc tông màu có vẻ kém sống động nên được thảo luận với chuyên gia chăm sóc mắt có trình độ.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Hoàn thành năm thử thách về chi tiết, kiểu mẫu và trí nhớ hình ảnh.",
         "Trả lời năm câu hỏi về bệnh đục thủy tinh thể và khi nào cần tìm sự giúp đỡ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đục thủy tinh thể",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kiểm tra đục thủy tinh thể nhanh",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm thử thách đục thủy tinh thể của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Ba khu vực thị giác được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Ba khu vực thị giác được so sánh"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách hình ảnh 80%!",
       "finished": "Thử thách đục thủy tinh thể đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực mạnh nhất hiện nay",
       "trickiest": "Khu vực khó khăn nhất hiện nay",
       "bestRound": "Phần hay nhất",
@@ -94,8 +87,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Nhân vật nào ở chính giữa lưới?",
           "headerLabel": "CHI TIẾT TRUNG TÂM",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "THAM KHẢO: B8R3K5",
           "question": "Mã nào khớp chính xác với tham chiếu?",
           "headerLabel": "TRẬN ĐẤU MẶC BIỆT",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "THAM KHẢO",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Biểu tượng nào hoàn thành chuỗi xen kẽ?",
           "headerLabel": "THEO DÕI MẪU",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Vật nào xuất hiện thứ ba?",
           "headerLabel": "NHỚ NHANH",
-          "answers": [
-            "Sách",
-            "Chìa khóa",
-            "chanh",
-            "Ô dù"
-          ],
+          "answers": {
+            "a1": "Sách",
+            "a2": "Chìa khóa",
+            "a3": "chanh",
+            "a4": "Ô dù"
+          },
           "study": {
             "title": "Nghiên cứu thứ tự năm đồ vật",
             "instruction": "Điều này sẽ tự động biến mất.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Vị trí nào chứa vòng tròn nhạt?",
           "headerLabel": "KIỂM TRA CHI TIẾT",
-          "answers": [
-            "thứ năm",
-            "thứ hai",
-            "thứ tư",
-            "thứ sáu"
-          ],
+          "answers": {
+            "a1": "thứ năm",
+            "a2": "thứ hai",
+            "a3": "thứ tư",
+            "a4": "thứ sáu"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Đục thủy tinh thể là gì?",
           "headerLabel": "CƠ BẢN CƠ BẢN",
-          "answers": [
-            "Một vết xước trên mí mắt",
-            "Một vùng có mây trong thấu kính tự nhiên của mắt",
-            "Một vấn đề giới hạn ở ống dẫn nước mắt",
-            "Một loại nhiễm trùng tai"
-          ]
+          "answers": {
+            "a1": "Một vết xước trên mí mắt",
+            "a2": "Một vùng có mây trong thấu kính tự nhiên của mắt",
+            "a3": "Một vấn đề giới hạn ở ống dẫn nước mắt",
+            "a4": "Một loại nhiễm trùng tai"
+          }
         },
         "cataract-q7": {
           "question": "Nhóm nào có các triệu chứng đục thủy tinh thể thường gặp?",
           "headerLabel": "CÁC DẤU HIỆU CẢNH BÁO",
-          "answers": [
-            "Ngứa da và đau họng",
-            "Giảm thính lực đột ngột và chóng mặt",
-            "Tầm nhìn mờ hoặc mờ, chói và quầng sáng xung quanh đèn",
-            "Cứng cổ và đau vai"
-          ]
+          "answers": {
+            "a1": "Ngứa da và đau họng",
+            "a2": "Giảm thính lực đột ngột và chóng mặt",
+            "a3": "Tầm nhìn mờ hoặc mờ, chói và quầng sáng xung quanh đèn",
+            "a4": "Cứng cổ và đau vai"
+          }
         },
         "cataract-q8": {
           "question": "Làm thế nào một chuyên gia chăm sóc mắt có thể kiểm tra bệnh đục thủy tinh thể?",
           "headerLabel": "ĐÁNH GIÁ CHUYÊN NGHIỆP",
-          "answers": [
-            "Với bài kiểm tra thính giác",
-            "Sử dụng máy đo huyết áp tại nhà",
-            "Với thử nghiệm hương vị",
-            "Là một phần của khám mắt giãn nở toàn diện"
-          ]
+          "answers": {
+            "a1": "Với bài kiểm tra thính giác",
+            "a2": "Sử dụng máy đo huyết áp tại nhà",
+            "a3": "Với thử nghiệm hương vị",
+            "a4": "Là một phần của khám mắt giãn nở toàn diện"
+          }
         },
         "cataract-q9": {
           "question": "Phản ứng an toàn nhất đối với tình trạng mất thị lực đột ngột, đau mắt nghiêm trọng hoặc thay đổi lớn đột ngột về thị lực là gì?",
           "headerLabel": "KHI NÀO HÀNH ĐỘNG",
-          "answers": [
-            "Tìm kiếm lời khuyên chăm sóc mắt chuyên nghiệp khẩn cấp",
-            "Chờ vài tháng mà không nhắc tới",
-            "Thay đổi độ sáng màn hình và cho rằng nó đã được sửa",
-            "Chỉ dựa vào một bài kiểm tra trực tuyến"
-          ]
+          "answers": {
+            "a1": "Tìm kiếm lời khuyên chăm sóc mắt chuyên nghiệp khẩn cấp",
+            "a2": "Chờ vài tháng mà không nhắc tới",
+            "a3": "Thay đổi độ sáng màn hình và cho rằng nó đã được sửa",
+            "a4": "Chỉ dựa vào một bài kiểm tra trực tuyến"
+          }
         },
         "cataract-q10": {
           "question": "Điểm số của bạn trong thử thách trực tuyến này có thể cho bạn biết điều gì?",
           "headerLabel": "KIỂM TRA THỰC TẾ CUỐI CÙNG",
-          "answers": [
-            "Ống kính của bạn có khỏe mạnh không",
-            "Chỉ cách bạn thực hiện mười câu hỏi này",
-            "Cho dù bạn cần phẫu thuật đục thủy tinh thể",
-            "Liệu bạn có thể loại trừ bệnh đục thủy tinh thể hay không"
-          ]
+          "answers": {
+            "a1": "Ống kính của bạn có khỏe mạnh không",
+            "a2": "Chỉ cách bạn thực hiện mười câu hỏi này",
+            "a3": "Cho dù bạn cần phẫu thuật đục thủy tinh thể",
+            "a4": "Liệu bạn có thể loại trừ bệnh đục thủy tinh thể hay không"
+          }
         }
       }
     }

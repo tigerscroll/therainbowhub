@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Quale Paese rispecchia la tua personalità?",
   "eyebrow": "IL PAESE IDEALE PER TE",
   "summary": "Dieci scelte di vita rivelano se la tua personalità è più vicina all’Italia, al Giappone, all’Australia o alla Svezia.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Le tue scelte quotidiane potrebbero indicare il Paese più adatto a te. Dieci domande rapide rivelano l’abbinamento migliore.",
     "cta": "Trova il mio Paese"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questo quiz di intrattenimento in dieci domande è adattato dalla sfida di personalità legata ai Paesi del Times of India. Ogni scelta rafforza l’affinità con Italia, Giappone, Australia o Svezia.\n\nScegli la risposta che ti viene più naturale, non quella che sembra più brillante. Il quadro complessivo delle preferenze determina il risultato.\n\nIl risultato descrive un profilo di stile di vita giocoso, non nazionalità, origini, cittadinanza, identità culturale o un consiglio su dove trasferirsi. Concetti e immagini sono riprodotti con il permesso indicato dal proprietario del sito.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Rispondi a dieci domande su abitudini e preferenze.",
         "Scegli senza pensarci troppo l’opzione che ti rappresenta meglio.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Abbinamento del Paese",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Affinità di personalità",
@@ -126,9 +122,7 @@
       "portraitAlt": "Illustrazione paesaggistica che rappresenta {profile}",
       "disclaimer": "Solo per divertimento e riflessione personale. Il risultato è un abbinamento giocoso di stile di vita, non un’affermazione su nazionalità, identità culturale o sul luogo in cui dovresti vivere."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Amici che si salutano con affetto"
           },
           "question": "Come saluti una persona appena conosciuta?",
-          "answers": [
-            "Con un caloroso abbraccio",
-            "Con un gesto amichevole",
-            "Con un inchino rispettoso",
-            "Con un cenno informale"
-          ],
+          "answers": {
+            "a1": "Con un caloroso abbraccio",
+            "a2": "Con un gesto amichevole",
+            "a3": "Con un inchino rispettoso",
+            "a4": "Con un cenno informale"
+          },
           "headerLabel": "PRIMA IMPRESSIONE"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Paesaggio luminoso sotto un cielo mutevole"
           },
           "question": "Quale clima ti rende più felice?",
-          "answers": [
-            "Una brezza calda",
-            "Un sole splendente",
-            "Aria fredda",
-            "Fresco e frizzante"
-          ],
+          "answers": {
+            "a1": "Una brezza calda",
+            "a2": "Un sole splendente",
+            "a3": "Aria fredda",
+            "a4": "Fresco e frizzante"
+          },
           "headerLabel": "TEMPO IDEALE"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Una tranquilla domenica all’aperto"
           },
           "question": "Come trascorri di solito la domenica?",
-          "answers": [
-            "Con avventure all’aperto",
-            "Al caldo e comodo in casa",
-            "In tranquillità e riflessione",
-            "Con lunghi pranzi in famiglia"
-          ],
+          "answers": {
+            "a1": "Con avventure all’aperto",
+            "a2": "Al caldo e comodo in casa",
+            "a3": "In tranquillità e riflessione",
+            "a4": "Con lunghi pranzi in famiglia"
+          },
           "headerLabel": "DOMENICA IDEALE"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Caffè del mattino accanto a una finestra"
           },
           "question": "Qual è il tuo modo ideale di iniziare la giornata?",
-          "answers": [
-            "Un caffè forte",
-            "Una passeggiata tranquilla",
-            "L’aria di mare",
-            "Una meditazione rilassante"
-          ],
+          "answers": {
+            "a1": "Un caffè forte",
+            "a2": "Una passeggiata tranquilla",
+            "a3": "L’aria di mare",
+            "a4": "Una meditazione rilassante"
+          },
           "headerLabel": "RITUALE DEL MATTINO"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Tavola colorata con piatti diversi"
           },
           "question": "Quale tipo di cucina ti entusiasma di più?",
-          "answers": [
-            "Sapori raffinati",
-            "Piatti semplici e sostanziosi",
-            "Pesce e frutti di mare freschi",
-            "Grandi classici confortanti"
-          ],
+          "answers": {
+            "a1": "Sapori raffinati",
+            "a2": "Piatti semplici e sostanziosi",
+            "a3": "Pesce e frutti di mare freschi",
+            "a4": "Grandi classici confortanti"
+          },
           "headerLabel": "ISTINTO A TAVOLA"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Parete di una galleria con vari stili artistici"
           },
           "question": "Quale tipo di arte ti attrae di più?",
-          "answers": [
-            "Classici senza tempo",
-            "Semplicità essenziale",
-            "Espressività audace",
-            "Dettagli delicati"
-          ],
+          "answers": {
+            "a1": "Classici senza tempo",
+            "a2": "Semplicità essenziale",
+            "a3": "Espressività audace",
+            "a4": "Dettagli delicati"
+          },
           "headerLabel": "GUSTO ARTISTICO"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Quattro bevande diverse disposte insieme"
           },
           "question": "Quale bevanda scegli più volentieri?",
-          "answers": [
-            "Birra fresca",
-            "Vino",
-            "Cioccolata calda",
-            "Tè verde"
-          ],
+          "answers": {
+            "a1": "Birra fresca",
+            "a2": "Vino",
+            "a3": "Cioccolata calda",
+            "a4": "Tè verde"
+          },
           "headerLabel": "BEVANDA PREFERITA"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Amici che festeggiano un’occasione speciale"
           },
           "question": "Come ti piace celebrare i momenti importanti?",
-          "answers": [
-            "In modo vivace e rumoroso",
-            "In un ambiente intimo e accogliente",
-            "Con divertimento senza troppe formalità",
-            "Con rituali ricchi di significato"
-          ],
+          "answers": {
+            "a1": "In modo vivace e rumoroso",
+            "a2": "In un ambiente intimo e accogliente",
+            "a3": "Con divertimento senza troppe formalità",
+            "a4": "Con rituali ricchi di significato"
+          },
           "headerLabel": "STILE DEI FESTEGGIAMENTI"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Montaggio di foreste, costa, templi e campagna"
           },
           "question": "Quale paesaggio ti fa sentire più a casa?",
-          "answers": [
-            "Boschi tranquilli",
-            "Una costa aperta",
-            "Templi storici",
-            "Dolci colline di campagna"
-          ],
+          "answers": {
+            "a1": "Boschi tranquilli",
+            "a2": "Una costa aperta",
+            "a3": "Templi storici",
+            "a4": "Dolci colline di campagna"
+          },
           "headerLabel": "SENSO DI CASA"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Persona in viaggio che osserva un paesaggio lontano"
           },
           "question": "Qual è il tuo stile di viaggio?",
-          "answers": [
-            "Esplorazione attiva",
-            "Passeggiate senza fretta",
-            "Immersione nella cultura locale",
-            "Visita ai luoghi più iconici"
-          ],
+          "answers": {
+            "a1": "Esplorazione attiva",
+            "a2": "Passeggiate senza fretta",
+            "a3": "Immersione nella cultura locale",
+            "a4": "Visita ai luoghi più iconici"
+          },
           "headerLabel": "DESTINAZIONE FINALE"
         }
       }

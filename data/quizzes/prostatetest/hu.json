@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Gyors prosztatarák teszt",
   "eyebrow": "10 KÉRDÉSES PROSZTATA ELLENŐRZÉS",
   "summary": "Tíz személyes kérdés a prosztata változásairól és a kockázati kontextusról, majd egy óvatos következő lépés profilja.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Észrevett olyan változásokat, amelyeket könnyű elvetni az öregedés miatt? Válaszoljon 10 gyors kérdésre azokról a tünetekről és kockázati tényezőkről, amelyek számíthatnak.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló személyes ellenőrzés a vizelet elváltozásaira, a vérre, a kényelmetlenségre, a tartós fájdalomra és a releváns kockázati összefüggésekre kérdez rá. A válaszokat egy óvatos következő lépés profilba csoportosítja; nem számítja ki a rák valószínűségét.\n\nA prosztatarák először nem okoz tüneteket, és a vizelet elváltozásainak gyakran nem rákos okai vannak, például jóindulatú prosztata-megnagyobbodás, fertőzés vagy gyulladás. Az új, tartós vagy súlyosbodó változásokat továbbra is meg kell beszélni egy képzett egészségügyi szakemberrel.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válassza ki azt a választ, amelyik leginkább megfelel a legutóbbi tapasztalatainak.",
         "Gondoljon az új, tartós vagy súlyosbodó változásokra.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Személyes prosztata ellenőrzés",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Személyes csekk",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Változott a vizeletáradat az utóbbi időben?",
           "headerLabel": "AZ ÖN VEZETÉKÁRAMLÁSA",
-          "answers": [
-            "Nincs észrevehető változás",
-            "Időnként változik",
-            "Újonnan gyenge vagy leáll és elindul",
-            "Egyre rosszabb, vagy befolyásolja a mindennapi életet"
-          ]
+          "answers": {
+            "a1": "Nincs észrevehető változás",
+            "a2": "Időnként változik",
+            "a3": "Újonnan gyenge vagy leáll és elindul",
+            "a4": "Egyre rosszabb, vagy befolyásolja a mindennapi életet"
+          }
         },
         "prostate-test-q2": {
           "question": "Nehezebben kezd el vizelni?",
           "headerLabel": "VEZELÉS KEZDÉSE",
-          "answers": [
-            "Nem",
-            "Időnként, de nem maradt fenn",
-            "Igen, ez egy új vagy tartós változás",
-            "Igen, és ez egyre nehezebb"
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "Időnként, de nem maradt fenn",
+            "a3": "Igen, ez egy új vagy tartós változás",
+            "a4": "Igen, és ez egyre nehezebb"
+          }
         },
         "prostate-test-q3": {
           "question": "Gyakrabban vizel, főleg éjszaka?",
           "headerLabel": "FREKVENCIA ÉS ÉJSZAKAI IDŐ",
-          "answers": [
-            "Nincs változás",
-            "Csak alkalmanként",
-            "Igen, észrevehetően többet, mint korábban",
-            "Igen, és rendszeresen megzavarja az alvást vagy a mindennapi életet"
-          ]
+          "answers": {
+            "a1": "Nincs változás",
+            "a2": "Csak alkalmanként",
+            "a3": "Igen, észrevehetően többet, mint korábban",
+            "a4": "Igen, és rendszeresen megzavarja az alvást vagy a mindennapi életet"
+          }
         },
         "prostate-test-q4": {
           "question": "Úgy érzi, mintha nem ürült volna ki teljesen?",
           "headerLabel": "A HÓLYAG ÜRÍTÉSE",
-          "answers": [
-            "Nem",
-            "Egyszer-egyszer",
-            "Gyakran vagy kitartóan",
-            "Igen, és az érzés egyre rosszabb"
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "Egyszer-egyszer",
+            "a3": "Gyakran vagy kitartóan",
+            "a4": "Igen, és az érzés egyre rosszabb"
+          }
         },
         "prostate-test-q5": {
           "question": "Újabb sürgősség vagy szivárgás alakult ki, mielőtt elérte a WC-t?",
           "headerLabel": "SÜRGŐSSÉG VAGY SZIVÁRGÁS",
-          "answers": [
-            "Nem",
-            "Rarely",
-            "Igen, új vagy tartós változásként",
-            "Igen, és ez rontja vagy befolyásolja a mindennapi életet"
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "Rarely",
+            "a3": "Igen, új vagy tartós változásként",
+            "a4": "Igen, és ez rontja vagy befolyásolja a mindennapi életet"
+          }
         },
         "prostate-test-q6": {
           "question": "Észrevett-e vért a vizeletében vagy a spermájában?",
           "headerLabel": "VÉR",
-          "answers": [
-            "Nem",
-            "nem vagyok benne biztos",
-            "Igen, egyszer vagy többször is",
-            "Igen, erős vérzéssel vagy nagy vérrögökkel"
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "nem vagyok benne biztos",
+            "a3": "Igen, egyszer vagy többször is",
+            "a4": "Igen, erős vérzéssel vagy nagy vérrögökkel"
+          }
         },
         "prostate-test-q7": {
           "question": "Újabb kellemetlen érzései voltak vizeléskor vagy magömléskor?",
           "headerLabel": "DISCOMFORT",
-          "answers": [
-            "Nem",
-            "Időnként, és elmúlt",
-            "Igen, tartós vagy folyamatosan visszatér",
-            "Igen, és egyre rosszabb vagy jelentősen fájdalmas."
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "Időnként, és elmúlt",
+            "a3": "Igen, tartós vagy folyamatosan visszatér",
+            "a4": "Igen, és egyre rosszabb vagy jelentősen fájdalmas."
+          }
         },
         "prostate-test-q8": {
           "question": "Volt már megmagyarázhatatlan fájdalom a hátában, a csípőjében vagy a medencéjében?",
           "headerLabel": "TARTÓS FÁJDALOM",
-          "answers": [
-            "Nem",
-            "Rövid fájdalom nyilvánvaló okkal",
-            "Igen, tartós vagy folyamatosan visszatér",
-            "Igen, súlyos, gyorsan romlik, vagy nagyon rosszul érzem magam."
-          ]
+          "answers": {
+            "a1": "Nem",
+            "a2": "Rövid fájdalom nyilvánvaló okkal",
+            "a3": "Igen, tartós vagy folyamatosan visszatér",
+            "a4": "Igen, súlyos, gyorsan romlik, vagy nagyon rosszul érzem magam."
+          }
         },
         "prostate-test-q9": {
           "question": "Melyik lehetőség illik legjobban az Ön prosztatarák kockázati kontextusához?",
           "headerLabel": "AZ ÖN KOCKÁZATI KÖRNYEZETÉT",
-          "answers": [
-            "Ezek egyike sem, vagy nem vagyok biztos benne",
-            "50 éves vagyok vagy annál idősebb.",
-            "Apámnak vagy bátyámnak prosztatarákja volt",
-            "Fekete származású vagyok, ismert BRCA2 mutációval vagy családomban számos rákos betegséggel."
-          ]
+          "answers": {
+            "a1": "Ezek egyike sem, vagy nem vagyok biztos benne",
+            "a2": "50 éves vagyok vagy annál idősebb.",
+            "a3": "Apámnak vagy bátyámnak prosztatarákja volt",
+            "a4": "Fekete származású vagyok, ismert BRCA2 mutációval vagy családomban számos rákos betegséggel."
+          }
         },
         "prostate-test-q10": {
           "question": "Mit tettél az új vagy állandó változások miatt?",
           "headerLabel": "A KÖVETKEZŐ LÉPÉSED",
-          "answers": [
-            "Nem vettem észre semmilyen változást",
-            "Egyelőre nyomon követem",
-            "Tervezek egy rutin orvosi megbeszélést",
-            "Azonnali orvosi tanácsadást intézem"
-          ]
+          "answers": {
+            "a1": "Nem vettem észre semmilyen változást",
+            "a2": "Egyelőre nyomon követem",
+            "a3": "Tervezek egy rutin orvosi megbeszélést",
+            "a4": "Azonnali orvosi tanácsadást intézem"
+          }
         }
       }
     }

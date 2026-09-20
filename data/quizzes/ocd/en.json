@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Quick OCD Test",
   "eyebrow": "10-QUESTION PATTERN CHECK",
   "summary": "Ten personal questions about intrusive thoughts, repeated routines and how much they affect your day.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Do certain thoughts or routines feel harder to ignore than they should? These 10 quick questions look at the patterns people often dismiss.",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This ten-question self-check asks about unwanted recurring thoughts, checking, cleaning, counting, ordering, reassurance, avoidance and daily impact. It groups your answers into a cautious pattern summary; it does not calculate whether you have OCD.\n\nAlmost everyone has unwanted thoughts or repeats an action occasionally. OCD involves obsessions, compulsions or both that are difficult to control, time-consuming, distressing or disruptive. Other experiences and conditions can look similar, so only a qualified professional can assess the full picture.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Choose the answer that best matches your recent experience.",
         "Think about frequency, distress and disruption rather than one isolated day.",
@@ -22,13 +19,16 @@
   },
   "career": {
     "resultProgressLabel": "Personal pattern check",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Personal Check",
         "preAdTitle": "Your result is ready",
         "preAdCopy": "Your ten answers have been reviewed and your personal pattern summary is ready to reveal.",
-        "preAdChecks": ["10 personal answers reviewed", "Four pattern groups compared", "Your next-step summary prepared"],
+        "preAdChecks": [
+          "10 personal answers reviewed",
+          "Four pattern groups compared",
+          "Your next-step summary prepared"
+        ],
         "preAdButton": "Reveal My Result"
       }
     }
@@ -58,10 +58,18 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Few current patterns" },
-      "dimension-2": { "label": "Intrusive thoughts and doubt" },
-      "dimension-3": { "label": "Rituals and checking" },
-      "dimension-4": { "label": "Daily impact and next step" }
+      "dimension-1": {
+        "label": "Few current patterns"
+      },
+      "dimension-2": {
+        "label": "Intrusive thoughts and doubt"
+      },
+      "dimension-3": {
+        "label": "Rituals and checking"
+      },
+      "dimension-4": {
+        "label": "Daily impact and next step"
+      }
     }
   },
   "stages": {
@@ -71,52 +79,102 @@
         "ocd-q1": {
           "question": "How often do unwanted thoughts, images or urges return even when you try to dismiss them?",
           "headerLabel": "UNWANTED THOUGHTS",
-          "answers": ["Rarely or not at all", "Occasionally, but I can move on", "I do something repeatedly to make them go away", "Very often, and they disrupt my day"]
+          "answers": {
+            "a1": "Rarely or not at all",
+            "a2": "Occasionally, but I can move on",
+            "a3": "I do something repeatedly to make them go away",
+            "a4": "Very often, and they disrupt my day"
+          }
         },
         "ocd-q2": {
           "question": "What happens when you are unsure whether you locked a door or completed a task correctly?",
           "headerLabel": "CHECKING AND DOUBT",
-          "answers": ["I usually trust myself and move on", "The doubt lingers in my mind", "I check or repeat the action for reassurance", "I can lose significant time checking"]
+          "answers": {
+            "a1": "I usually trust myself and move on",
+            "a2": "The doubt lingers in my mind",
+            "a3": "I check or repeat the action for reassurance",
+            "a4": "I can lose significant time checking"
+          }
         },
         "ocd-q3": {
           "question": "How do concerns about germs, contamination or cleanliness affect you?",
           "headerLabel": "CONTAMINATION CONCERNS",
-          "answers": ["They rarely affect me", "The thoughts sometimes linger", "I wash, clean or seek reassurance repeatedly", "They make me avoid things or disrupt daily life"]
+          "answers": {
+            "a1": "They rarely affect me",
+            "a2": "The thoughts sometimes linger",
+            "a3": "I wash, clean or seek reassurance repeatedly",
+            "a4": "They make me avoid things or disrupt daily life"
+          }
         },
         "ocd-q4": {
           "question": "How do you react when objects or actions do not feel arranged, balanced or completed in the right way?",
           "headerLabel": "ORDER AND EXACTNESS",
-          "answers": ["I can usually leave them alone", "It bothers me more than I expect", "I repeat or rearrange things until they feel right", "I struggle to continue until I correct them"]
+          "answers": {
+            "a1": "I can usually leave them alone",
+            "a2": "It bothers me more than I expect",
+            "a3": "I repeat or rearrange things until they feel right",
+            "a4": "I struggle to continue until I correct them"
+          }
         },
         "ocd-q5": {
           "question": "Do you count, repeat words silently or perform mental routines to reduce anxiety?",
           "headerLabel": "MENTAL RITUALS",
-          "answers": ["Rarely or never", "I sometimes feel the urge", "Yes, I repeat them for temporary relief", "Yes, and stopping feels very difficult"]
+          "answers": {
+            "a1": "Rarely or never",
+            "a2": "I sometimes feel the urge",
+            "a3": "Yes, I repeat them for temporary relief",
+            "a4": "Yes, and stopping feels very difficult"
+          }
         },
         "ocd-q6": {
           "question": "How often do you ask other people for reassurance about the same worry?",
           "headerLabel": "REASSURANCE",
-          "answers": ["Rarely", "Sometimes, because the doubt sticks", "Repeatedly, even after an answer", "So often that it affects me or other people"]
+          "answers": {
+            "a1": "Rarely",
+            "a2": "Sometimes, because the doubt sticks",
+            "a3": "Repeatedly, even after an answer",
+            "a4": "So often that it affects me or other people"
+          }
         },
         "ocd-q7": {
           "question": "Do you avoid places, objects or situations because they may trigger distressing thoughts or routines?",
           "headerLabel": "AVOIDANCE",
-          "answers": ["Rarely or never", "Occasionally, because the thoughts are uncomfortable", "Often, to avoid needing a ritual", "Yes, and it limits normal activities"]
+          "answers": {
+            "a1": "Rarely or never",
+            "a2": "Occasionally, because the thoughts are uncomfortable",
+            "a3": "Often, to avoid needing a ritual",
+            "a4": "Yes, and it limits normal activities"
+          }
         },
         "ocd-q8": {
           "question": "After checking or completing a routine, how long does the relief usually last?",
           "headerLabel": "THE RELIEF LOOP",
-          "answers": ["I do not usually need a routine", "The worry sometimes returns later", "Relief is brief and I may repeat it", "The doubt returns quickly and the loop consumes time"]
+          "answers": {
+            "a1": "I do not usually need a routine",
+            "a2": "The worry sometimes returns later",
+            "a3": "Relief is brief and I may repeat it",
+            "a4": "The doubt returns quickly and the loop consumes time"
+          }
         },
         "ocd-q9": {
           "question": "How much control do you feel you have over these thoughts or repeated actions?",
           "headerLabel": "SENSE OF CONTROL",
-          "answers": ["They are easy to leave", "Some thoughts are difficult to dismiss", "I often feel driven to complete a routine", "Resisting causes major distress or disruption"]
+          "answers": {
+            "a1": "They are easy to leave",
+            "a2": "Some thoughts are difficult to dismiss",
+            "a3": "I often feel driven to complete a routine",
+            "a4": "Resisting causes major distress or disruption"
+          }
         },
         "ocd-q10": {
           "question": "Which description best matches the overall effect on your life?",
           "headerLabel": "DAILY IMPACT",
-          "answers": ["Little or no effect", "Emotionally tiring at times", "My routines take noticeable time", "They cause substantial distress or interfere with daily life"]
+          "answers": {
+            "a1": "Little or no effect",
+            "a2": "Emotionally tiring at times",
+            "a3": "My routines take noticeable time",
+            "a4": "They cause substantial distress or interfere with daily life"
+          }
         }
       }
     }

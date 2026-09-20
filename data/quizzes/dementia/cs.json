@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Rychlý test demence",
   "eyebrow": "10-OTÁZKOVÁ KONTROLA MOZKU",
   "summary": "Rychlá výzva pro zapamatování, pozornost, jazyk a uvažování.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Myslíte si, že vaše paměť je stále ostrá? Těchto 10 rychlých otázek testuje zapamatování, pozornost a uvažování – a zpožděné otázky jsou těžší, než vypadají.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato mozková výzva s deseti otázkami kombinuje okamžité a opožděné vybavování s pozorností, jazykem, vizuální pamětí a jednoduchým uvažováním. Je navržen jako poutavý snímek dnešního výkonu, nikoli jako nástroj pro screening demence.\n\nVýkon se může měnit se spánkem, stresem, náladou, léky, jazykem, vzděláním, zrakem, sluchem, používáním zařízení a jednoduchou náhodou. Skóre z online kvízu nemůže potvrdit ani vyloučit demenci.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Pečlivě si prostudujte každou paměťovou narážku, když se objeví.",
         "Vyberte jednu odpověď na každou otázku bez cizí pomoci.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Rychlá mozková výzva",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Rychlý test demence",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre mozkových výzev je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnány tři oblasti myšlení",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnány tři oblasti myšlení"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vyřešili jste 80% mozkovou výzvu!",
       "finished": "Rychlá mozková výzva dokončena",
-      "correctLabel": "správně",
       "strongest": "Dnes nejsilnější oblast",
       "trickiest": "Nejošklivější oblast dneška",
       "bestRound": "Nejlepší sekce",
@@ -94,8 +87,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Které slovo se objevilo jako třetí?",
           "headerLabel": "OKAMŽITÉ ODVOLÁNÍ",
-          "answers": [
-            "Most",
-            "Citron",
-            "Zahrada",
-            "Hodiny"
-          ],
+          "answers": {
+            "a1": "Most",
+            "a2": "Citron",
+            "a3": "Zahrada",
+            "a4": "Hodiny"
+          },
           "study": {
             "title": "Zapamatujte si tato čtyři slova",
             "instruction": "Mohou se vrátit později v testu.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Který kód přesně odpovídá P8L4T?",
           "headerLabel": "ZAMĚŘENÁ POZORNOST",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Který předmět nepatří k ostatním?",
           "headerLabel": "KATEGORIE SLOV",
-          "answers": [
-            "housle",
-            "flétna",
-            "Mrkev",
-            "trubka"
-          ]
+          "answers": {
+            "a1": "housle",
+            "a2": "flétna",
+            "a3": "Mrkev",
+            "a4": "trubka"
+          }
         },
         "dementia-q4": {
           "question": "Jaké číslo následuje: 2, 4, 8, 16, ___?",
           "headerLabel": "VZOROVÉ MYŠLENÍ",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Který předmět se objevil jako druhý?",
           "headerLabel": "VIZUÁLNÍ PAMĚŤ",
-          "answers": [
-            "Rukavice",
-            "klíč",
-            "pohár",
-            "Kniha"
-          ],
+          "answers": {
+            "a1": "Rukavice",
+            "a2": "klíč",
+            "a3": "pohár",
+            "a4": "Kniha"
+          },
           "study": {
             "title": "Prostudujte pořadí objektů",
             "instruction": "Toto automaticky zmizí.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Kolik je 7 – 2 – 9 dozadu?",
           "headerLabel": "PRACOVNÍ PAMĚŤ",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Pokud minutová ručička ukazuje na 6, kolik minut je po hodině?",
           "headerLabel": "ROZUMNĚNÍ HODIN",
-          "answers": [
-            "6 minut",
-            "15 minut",
-            "45 minut",
-            "30 minut"
-          ]
+          "answers": {
+            "a1": "6 minut",
+            "a2": "15 minut",
+            "a3": "45 minut",
+            "a4": "30 minut"
+          }
         },
         "dementia-q8": {
           "question": "Štěně je na psa jako kotě na co?",
           "headerLabel": "JAZYKOVÉ PŘIPOJENÍ",
-          "answers": [
-            "kočka",
-            "Kůň",
-            "Králík",
-            "Pták"
-          ]
+          "answers": {
+            "a1": "kočka",
+            "a2": "Kůň",
+            "a3": "Králík",
+            "a4": "Pták"
+          }
         },
         "dementia-q9": {
           "question": "Vzpomeňte si na úvodní seznam. Které slovo se objevilo jako první?",
           "headerLabel": "ZPOŽDĚNÉ VYVOLÁNÍ SLOVA",
-          "answers": [
-            "Hodiny",
-            "Zahrada",
-            "Citron",
-            "Most"
-          ]
+          "answers": {
+            "a1": "Hodiny",
+            "a2": "Zahrada",
+            "a3": "Citron",
+            "a4": "Most"
+          }
         },
         "dementia-q10": {
           "question": "Vzpomeňte si na sekvenci objektů. Který předmět se objevil čtvrtý?",
           "headerLabel": "KONEČNÉ ZPOŽDĚNÉ ODVOLÁNÍ",
-          "answers": [
-            "Kniha",
-            "klíč",
-            "Rukavice",
-            "pohár"
-          ]
+          "answers": {
+            "a1": "Kniha",
+            "a2": "klíč",
+            "a3": "Rukavice",
+            "a4": "pohár"
+          }
         }
       }
     }

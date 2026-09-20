@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Mabilis na Pagsusuri sa Katarata",
   "eyebrow": "PAGSUBOK SA PANINGIN NA MAY 10 TANONG",
   "summary": "Malabo na mga detalye, malapit na visual na mga bitag at mahalagang mga palatandaan ng babala ng katarata sa isang mabilis na hamon.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Ang mga katarata ay maaaring madaling makaligtaan sa simula. Tingnan kung makikita mo ang mga banayad na pahiwatig sa 10 mabilis na tanong - ang mga huling tanong ay nakakakuha ng karamihan sa mga tao.",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Pinagsasama ng sampung tanong na hamon na ito ang limang on-screen na visual na puzzle na may limang tanong sa pangkalahatang kamalayan tungkol sa mga katarata. Sinusukat nito ang mga sagot sa pagsusulit na ito, hindi ang paningin, kalusugan ng lens o ang posibilidad na magkaroon ng katarata.\n\nAng laki ng screen, liwanag, contrast, paningin, corrective lenses, fatigue at mga setting ng device ay maaaring makaapekto sa performance. Ang patuloy na malabo o malabo na paningin, liwanag na nakasisilaw, halos sa paligid ng mga ilaw, hirap makakita sa gabi o mga tono na tila hindi gaanong maliwanag ay dapat talakayin sa isang kwalipikadong propesyonal sa pangangalaga sa mata.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Kumpletuhin ang limang detalye, pattern at visual-memory na mga hamon.",
         "Sagutin ang limang tanong tungkol sa katarata at kung kailan dapat humingi ng tulong.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pangarap sa Cataract",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Mabilis na Pagsusuri sa Katarata",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong sampung sagot ay nasuri at ang iyong marka ng hamon sa katarata ay handa nang ipakita.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Tatlong visual na lugar ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong visual na lugar ang inihambing"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Na-clear mo ang 80% visual challenge!",
       "finished": "Kumpleto na ang hamon ng katarata",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na lugar ngayon",
       "trickiest": "Pinaka nakakalito na lugar ngayon",
       "bestRound": "Pinakamahusay na seksyon",
@@ -94,8 +87,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong resulta",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Aling karakter ang nasa eksaktong gitna ng grid?",
           "headerLabel": "DETALYE SA GITNA",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "SANGGUNIAN: B8R3K5",
           "question": "Aling code ang eksaktong tumutugma sa reference?",
           "headerLabel": "MALABONG PAGTUTUGMA",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "SANGGUNIAN",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Aling simbolo ang kumukumpleto sa alternating sequence?",
           "headerLabel": "PAGSUNOD SA PADRON",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Aling bagay ang lumitaw na pangatlo?",
           "headerLabel": "MABILISANG PAGSUBOK SA VISWAL NA MEMORYA",
-          "answers": [
-            "Aklat",
-            "Susi",
-            "limon",
-            "Payong"
-          ],
+          "answers": {
+            "a1": "Aklat",
+            "a2": "Susi",
+            "a3": "limon",
+            "a4": "Payong"
+          },
           "study": {
             "title": "Pag-aralan ang pagkakasunud-sunod ng limang bagay",
             "instruction": "Awtomatikong mawawala ito.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Aling posisyon ang naglalaman ng maputlang bilog?",
           "headerLabel": "PAGSUSURI NG DETALYE",
-          "answers": [
-            "Panglima",
-            "Pangalawa",
-            "Pang-apat",
-            "Pang-anim"
-          ],
+          "answers": {
+            "a1": "Panglima",
+            "a2": "Pangalawa",
+            "a3": "Pang-apat",
+            "a4": "Pang-anim"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Ano ang katarata?",
           "headerLabel": "MGA PANGUNAHING KAALAMAN TUNGKOL SA KATARATA",
-          "answers": [
-            "Isang gasgas sa talukap ng mata",
-            "Isang maulap na lugar sa natural na lens ng mata",
-            "Isang problema na limitado sa tear duct",
-            "Isang uri ng impeksyon sa tainga"
-          ]
+          "answers": {
+            "a1": "Isang gasgas sa talukap ng mata",
+            "a2": "Isang maulap na lugar sa natural na lens ng mata",
+            "a3": "Isang problema na limitado sa tear duct",
+            "a4": "Isang uri ng impeksyon sa tainga"
+          }
         },
         "cataract-q7": {
           "question": "Aling grupo ang naglalaman ng mga karaniwang sintomas ng katarata?",
           "headerLabel": "MGA PALATANDAAN NG BABALA",
-          "answers": [
-            "Makating balat at namamagang lalamunan",
-            "Biglang pagkawala ng pandinig at pagkahilo",
-            "Malabo o malabo ang paningin, liwanag na nakasisilaw at halos sa paligid ng mga ilaw",
-            "Isang matigas na leeg at masakit na balikat"
-          ]
+          "answers": {
+            "a1": "Makating balat at namamagang lalamunan",
+            "a2": "Biglang pagkawala ng pandinig at pagkahilo",
+            "a3": "Malabo o malabo ang paningin, liwanag na nakasisilaw at halos sa paligid ng mga ilaw",
+            "a4": "Isang matigas na leeg at masakit na balikat"
+          }
         },
         "cataract-q8": {
           "question": "Paano masusuri ng isang propesyonal sa pangangalaga sa mata ang mga katarata?",
           "headerLabel": "PAGSUSURI NG PROPESYONAL",
-          "answers": [
-            "Gamit ang isang pagsubok sa pagdinig",
-            "Paggamit ng home blood-pressure reading",
-            "Sa pamamagitan ng pagsubok sa panlasa",
-            "Bilang bahagi ng isang komprehensibong dilat na pagsusuri sa mata"
-          ]
+          "answers": {
+            "a1": "Gamit ang isang pagsubok sa pagdinig",
+            "a2": "Paggamit ng home blood-pressure reading",
+            "a3": "Sa pamamagitan ng pagsubok sa panlasa",
+            "a4": "Bilang bahagi ng isang komprehensibong dilat na pagsusuri sa mata"
+          }
         },
         "cataract-q9": {
           "question": "Ano ang pinakaligtas na tugon sa biglaang pagkawala ng paningin, matinding pananakit ng mata o isang biglaang malaking pagbabago sa paningin?",
           "headerLabel": "KAILAN KUMILOS",
-          "answers": [
-            "Humingi ng agarang propesyonal na payo sa pangangalaga sa mata",
-            "Maghintay ng ilang buwan nang hindi ito binabanggit",
-            "Baguhin ang liwanag ng screen at ipagpalagay na ito ay naayos na",
-            "Umasa lamang sa isang online na pagsusulit"
-          ]
+          "answers": {
+            "a1": "Humingi ng agarang propesyonal na payo sa pangangalaga sa mata",
+            "a2": "Maghintay ng ilang buwan nang hindi ito binabanggit",
+            "a3": "Baguhin ang liwanag ng screen at ipagpalagay na ito ay naayos na",
+            "a4": "Umasa lamang sa isang online na pagsusulit"
+          }
         },
         "cataract-q10": {
           "question": "Ano ang masasabi sa iyo ng iyong iskor sa online challenge na ito?",
           "headerLabel": "PANGHULING REALITY CHECK",
-          "answers": [
-            "Kung malusog ang iyong mga lente",
-            "Tanging kung paano ka gumanap sa sampung tanong na ito",
-            "Kung kailangan mo ng cataract surgery",
-            "Kung maaari mong ibukod ang isang katarata"
-          ]
+          "answers": {
+            "a1": "Kung malusog ang iyong mga lente",
+            "a2": "Tanging kung paano ka gumanap sa sampung tanong na ito",
+            "a3": "Kung kailangan mo ng cataract surgery",
+            "a4": "Kung maaari mong ibukod ang isang katarata"
+          }
         }
       }
     }

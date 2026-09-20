@@ -1,38 +1,291 @@
 {
   "schemaVersion": 2,
   "slug": "dementia",
-  "engine": { "scoring": "correct-answer", "targetRatio": 0.8, "tieBreaks": { "categories": "harder-correct", "bestRound": "later" }, "localeParity": "independent" },
-  "listing": { "thumbnail": "assets/items/dementia-icon.webp", "published": "2026-09-11", "difficulty": "Medium", "icon": "🧠", "socialProofCount": 251000 },
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent"
+  },
+  "listing": {
+    "thumbnail": "assets/items/dementia-icon.webp",
+    "published": "2026-09-11",
+    "difficulty": "Medium",
+    "icon": "🧠",
+    "socialProofCount": 251000
+  },
   "theme": {
     "preset": "editorial",
-    "layout": { "landing": "split", "questions": "card", "results": "immersive" },
-    "colors": { "page": "#4b315d", "pageAlt": "#8a6a91", "surface": "#f7f0e6", "surfaceRaised": "#fffaf3", "text": "#30243a", "muted": "#74697b", "primary": "#147d7b", "primaryText": "#ffffff", "border": "#d78c71", "correct": "#3e745d", "incorrect": "#ad4755" },
-    "typography": { "heading": "serif", "body": "sans" },
-    "shape": { "cardRadius": "20px", "buttonRadius": "15px" },
-    "effects": { "shadow": "dramatic", "texture": "grain" },
-    "header": { "background": "linear-gradient(90deg, #392247, #176967)", "text": "#ffffff", "border": "#d98c72", "shadow": "0 8px 26px rgba(57, 34, 71, 0.3)" },
-    "artwork": { "icon": "🧠" }
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#4b315d",
+      "pageAlt": "#8a6a91",
+      "surface": "#f7f0e6",
+      "surfaceRaised": "#fffaf3",
+      "text": "#30243a",
+      "muted": "#74697b",
+      "primary": "#147d7b",
+      "primaryText": "#ffffff",
+      "border": "#d78c71",
+      "correct": "#3e745d",
+      "incorrect": "#ad4755"
+    },
+    "typography": {
+      "heading": "serif",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "20px",
+      "buttonRadius": "15px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #392247, #176967)",
+      "text": "#ffffff",
+      "border": "#d98c72",
+      "shadow": "0 8px 26px rgba(57, 34, 71, 0.3)"
+    },
+    "artwork": {
+      "icon": "🧠"
+    }
   },
   "template": "single-stage-rewarded-v1",
   "structure": {
-    "stages": [{ "id": "stage-1", "difficultyLevel": "final", "questionIds": ["dementia-q1", "dementia-q2", "dementia-q3", "dementia-q4", "dementia-q5", "dementia-q6", "dementia-q7", "dementia-q8", "dementia-q9", "dementia-q10"] }],
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "dementia-q1",
+          "dementia-q2",
+          "dementia-q3",
+          "dementia-q4",
+          "dementia-q5",
+          "dementia-q6",
+          "dementia-q7",
+          "dementia-q8",
+          "dementia-q9",
+          "dementia-q10"
+        ]
+      }
+    ],
     "questions": {
-      "dementia-q1": { "study": { "durationMs": 5000, "mode": "manual", "rewarded": false }, "correct": 1, "category": "recall", "choiceCount": 4 },
-      "dementia-q2": { "presentation": "text", "correct": 3, "category": "attention", "choiceCount": 4 },
-      "dementia-q3": { "presentation": "text", "correct": 2, "category": "language", "choiceCount": 4 },
-      "dementia-q4": { "presentation": "text", "correct": 0, "category": "reasoning", "choiceCount": 4 },
-      "dementia-q5": { "presentation": "icons", "icons": ["🧤", "🔑", "☕", "📘"], "study": { "presentation": "icons", "durationMs": 5000, "mode": "automatic" }, "correct": 1, "category": "visual", "choiceCount": 4 },
-      "dementia-q6": { "presentation": "text", "correct": 2, "category": "working_memory", "choiceCount": 4 },
-      "dementia-q7": { "presentation": "text", "correct": 3, "category": "reasoning", "choiceCount": 4 },
-      "dementia-q8": { "presentation": "text", "correct": 0, "category": "language", "choiceCount": 4 },
-      "dementia-q9": { "presentation": "text", "correct": 1, "category": "recall", "choiceCount": 4 },
-      "dementia-q10": { "presentation": "text", "correct": 0, "category": "visual", "choiceCount": 4 }
+      "dementia-q1": {
+        "study": {
+          "durationMs": 5000,
+          "mode": "manual",
+          "rewarded": false
+        },
+        "correctAnswerId": "a2",
+        "category": "recall",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "attention",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "protectedTokens": [
+          {
+            "path": "answers.a1",
+            "value": "P8I4T",
+            "count": 1
+          },
+          {
+            "path": "answers.a3",
+            "value": "P8L4F",
+            "count": 1
+          },
+          {
+            "path": "question",
+            "value": "P8L4T",
+            "count": 1
+          },
+          {
+            "path": "answers.a4",
+            "value": "P8L4T",
+            "count": 1
+          },
+          {
+            "path": "answers.a2",
+            "value": "PBL4T",
+            "count": 1
+          }
+        ]
+      },
+      "dementia-q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "language",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "reasoning",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q5": {
+        "presentation": "icons",
+        "icons": {
+          "a1": "🧤",
+          "a2": "🔑",
+          "a3": "☕",
+          "a4": "📘"
+        },
+        "study": {
+          "presentation": "icons",
+          "durationMs": 5000,
+          "mode": "automatic"
+        },
+        "correctAnswerId": "a2",
+        "category": "visual",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "working_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "reasoning",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q8": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "language",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q9": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "recall",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dementia-q10": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "visual",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      }
     },
-    "checkpoint": { "finalIcon": "🧠" },
+    "checkpoint": {
+      "finalIcon": "🧠"
+    },
     "results": {
-      "profiles": [{ "key": "profile-1", "min": 0.9 }, { "key": "profile-2", "min": 0.8 }, { "key": "profile-3", "min": 0.6 }, { "key": "profile-4", "min": 0.4 }, { "key": "profile-5", "min": 0 }],
-      "dimensions": [{ "key": "dimension-1", "categories": ["recall", "working_memory"] }, { "key": "dimension-2", "categories": ["attention", "visual"] }, { "key": "dimension-3", "categories": ["language", "reasoning"] }],
-      "score": { "showPercentage": true, "showBestRound": false }
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.6
+        },
+        {
+          "key": "profile-4",
+          "min": 0.4
+        },
+        {
+          "key": "profile-5",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "recall",
+            "working_memory"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "attention",
+            "visual"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "language",
+            "reasoning"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": false
+      }
     }
   }
 }

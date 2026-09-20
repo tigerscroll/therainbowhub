@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Väčšina vodičov nemôže prejsť týmto testom vodičov motocyklov",
   "eyebrow": "SKÚŠKA VODIČA MOTOCYKLA",
   "summary": "Desať celosvetových otázok o bezpečnosti na cestách otestuje, či sa vaše jazdné inštinkty prenesú na dve kolesá.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Šoférovať auto nestačí. Týchto 10 otázok týkajúcich sa motocyklov odhaľuje bezpečnostné detaily, ktoré väčšine účastníkov cestnej premávky unikajú.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tento celosvetovo-anglický zábavný kvíz testuje široké zásady bezpečnosti motocyklov, ktoré platia pre mnohé cestné systémy. Vyhýba sa značkám špecifickým pre danú krajinu, licenčným pravidlám, rýchlostným obmedzeniam a právnym formuláciám.\n\nVyberte si najbezpečnejšiu všeobecnú reakciu v každej situácii. Skutočné motocykle, cesty a miestne zákony sa líšia, preto vždy dodržiavajte oficiálnu príručku pre jazdca, školenia a pokyny výrobcu.\n\nÚspešné absolvovanie tohto kvízu nepreukazuje praktické jazdecké zručnosti ani nenahrádza schválené pokyny pre motocykle.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Pozorne si prečítajte každý scenár bezpečnosti motocykla.",
         "Zo štyroch možností vyberte najbezpečnejšiu všeobecnú odpoveď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Test motocykla",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Bezpečnosť motocyklov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre bezpečnosti na motocykli a úplná kontrola odpovedí sú pripravené.",
         "preAdChecks": [
           "Skontrolovaných 10 jazdných rozhodnutí",
-          "Porovnalo sa šesť bezpečnostných oblastí",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnalo sa šesť bezpečnostných oblastí"
+        ]
       }
     }
   },
@@ -89,7 +83,6 @@
     "score": {
       "passed": "Prešli ste testom vodiča motocykla!",
       "finished": "Test vodiča motocykla dokončený",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia bezpečnostná zóna",
       "trickiest": "Najchúlostivejšia bezpečnostná oblasť",
       "bestRound": "Najlepšia sekcia",
@@ -102,8 +95,7 @@
         "snapshot": "Čo naznačuje váš výsledok",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -112,102 +104,102 @@
       "questions": {
         "motorbike-q1": {
           "question": "Kedy sa zvyčajne najlepšie kontroluje tlak v pneumatikách pre presné rutinné meranie?",
-          "answers": [
-            "Keď sú pneumatiky studené",
-            "Hneď po rýchlej jazde",
-            "Len keď sa objaví varovanie",
-            "Počas prepravy spolujazdca"
-          ],
+          "answers": {
+            "a1": "Keď sú pneumatiky studené",
+            "a2": "Hneď po rýchlej jazde",
+            "a3": "Len keď sa objaví varovanie",
+            "a4": "Počas prepravy spolujazdca"
+          },
           "headerLabel": "KONTROLA STROJA"
         },
         "motorbike-q2": {
           "question": "Kam by mal jazdec vo všeobecnosti nasmerovať svoj pohľad pri jazde cez zákrutu?",
-          "answers": [
-            "Na prednom kolese",
-            "Cez ohyb smerom k zamýšľanej ceste",
-            "Na okraji cesty",
-            "Pri vozidle za sebou"
-          ],
+          "answers": {
+            "a1": "Na prednom kolese",
+            "a2": "Cez ohyb smerom k zamýšľanej ceste",
+            "a3": "Na okraji cesty",
+            "a4": "Pri vozidle za sebou"
+          },
           "headerLabel": "ZÁHĽADY"
         },
         "motorbike-q3": {
           "question": "Počas jazdy začína dážď. Čo by sa malo stať s priestorom za vozidlom pred vami?",
-          "answers": [
-            "Malo by to zostať úplne rovnaké",
-            "Mala by sa skrátiť",
-            "Mala by sa zvýšiť",
-            "Záleží len na vysokej rýchlosti"
-          ],
+          "answers": {
+            "a1": "Malo by to zostať úplne rovnaké",
+            "a2": "Mala by sa skrátiť",
+            "a3": "Mala by sa zvýšiť",
+            "a4": "Záleží len na vysokej rýchlosti"
+          },
           "headerLabel": "MOKRÉ PODMIENKY"
         },
         "motorbike-q4": {
           "question": "Aká široká technika je vo všeobecnosti najbezpečnejšia na modernom motocykli pri núdzovom zastavení v priamom smere?",
-          "answers": [
-            "Používajte iba zadnú brzdu",
-            "Okamžite použite iba prednú brzdu",
-            "Opakovane pumpujte obe brzdy",
-            "Postupne zabrzdite obe brzdy, pričom držte motocykel stabilný"
-          ],
+          "answers": {
+            "a1": "Používajte iba zadnú brzdu",
+            "a2": "Okamžite použite iba prednú brzdu",
+            "a3": "Opakovane pumpujte obe brzdy",
+            "a4": "Postupne zabrzdite obe brzdy, pričom držte motocykel stabilný"
+          },
           "headerLabel": "NÚDZOVÉ BRZDENIE"
         },
         "motorbike-q5": {
           "question": "Ktorý zvyk najlepšie pomáha znižovať šancu, že iný vodič prehliadne motorku?",
-          "answers": [
-            "Držte sa mimo slepých uhlov a zaistite viditeľnosť",
-            "Jazdite vedľa vozidla tak dlho, ako je to možné",
-            "Predpokladajme, že očný kontakt znamená, že vás vodič videl",
-            "Neustále používajte diaľkové svetlá"
-          ],
+          "answers": {
+            "a1": "Držte sa mimo slepých uhlov a zaistite viditeľnosť",
+            "a2": "Jazdite vedľa vozidla tak dlho, ako je to možné",
+            "a3": "Predpokladajme, že očný kontakt znamená, že vás vodič videl",
+            "a4": "Neustále používajte diaľkové svetlá"
+          },
           "headerLabel": "VIDITEĽNOSŤ"
         },
         "motorbike-q6": {
           "question": "Akú dôležitú zmenu by mal očakávať jazdec pri preprave spolujazdca?",
-          "answers": [
-            "Motocykel sa otočí a zastaví úplne rovnako",
-            "Vyváženie, zrýchlenie a brzdná dráha sa môžu zmeniť",
-            "Na stave pneumatík nezáleží",
-            "Spolujazdec by sa mal nakloniť oproti jazdcovi"
-          ],
+          "answers": {
+            "a1": "Motocykel sa otočí a zastaví úplne rovnako",
+            "a2": "Vyváženie, zrýchlenie a brzdná dráha sa môžu zmeniť",
+            "a3": "Na stave pneumatík nezáleží",
+            "a4": "Spolujazdec by sa mal nakloniť oproti jazdcovi"
+          },
           "headerLabel": "BEZPEČNOSŤ CESTUJÚCICH"
         },
         "motorbike-q7": {
           "question": "Ako by mal jazdec prechádzať cez mokré maľované značky, keď sa im nedá vyhnúť?",
-          "answers": [
-            "Pri nakláňaní prudko zrýchlite",
-            "Prudko zabrzdite na značke",
-            "Udržujte motocykel čo najviac vzpriamený a hladký",
-            "Prudko cez ňu otočte"
-          ],
+          "answers": {
+            "a1": "Pri nakláňaní prudko zrýchlite",
+            "a2": "Prudko zabrzdite na značke",
+            "a3": "Udržujte motocykel čo najviac vzpriamený a hladký",
+            "a4": "Prudko cez ňu otočte"
+          },
           "headerLabel": "POVRCHOVÉ RIZIKO"
         },
         "motorbike-q8": {
           "question": "Aké záverečné pozorovanie je cenné pred zmenou polohy do oblasti, v ktorej sa zrkadlo nemusí zobraziť?",
-          "answers": [
-            "Pohľad na ukazovateľ rýchlosti",
-            "Pohľad na predné koleso",
-            "Kontrola hladiny paliva",
-            "Priama kontrola mŕtveho uhla, keď je to bezpečné"
-          ],
+          "answers": {
+            "a1": "Pohľad na ukazovateľ rýchlosti",
+            "a2": "Pohľad na predné koleso",
+            "a3": "Kontrola hladiny paliva",
+            "a4": "Priama kontrola mŕtveho uhla, keď je to bezpečné"
+          },
           "headerLabel": "POZOROVANIE"
         },
         "motorbike-q9": {
           "question": "Kde by mal jazdec nájsť správnu špecifikáciu nastavenia hnacej reťaze pre svoj motocykel?",
-          "answers": [
-            "Informácie výrobcu",
-            "Odhad založený na inej motorke",
-            "Bočná stena pneumatiky",
-            "Značka pri ceste"
-          ],
+          "answers": {
+            "a1": "Informácie výrobcu",
+            "a2": "Odhad založený na inej motorke",
+            "a3": "Bočná stena pneumatiky",
+            "a4": "Značka pri ceste"
+          },
           "headerLabel": "ÚDRŽBA"
         },
         "motorbike-q10": {
           "question": "Jazdec si všimne, že ich koncentrácia na dlhej ceste slabne. Aká je najbezpečnejšia reakcia?",
-          "answers": [
-            "Jazdite rýchlejšie, aby ste skončili skôr",
-            "Zastavte sa niekde v bezpečí a urobte si poriadnu prestávku",
-            "Pozorne sledujte ďalšie vozidlo",
-            "Otvorte priezor a pokračujte"
-          ],
+          "answers": {
+            "a1": "Jazdite rýchlejšie, aby ste skončili skôr",
+            "a2": "Zastavte sa niekde v bezpečí a urobte si poriadnu prestávku",
+            "a3": "Pozorne sledujte ďalšie vozidlo",
+            "a4": "Otvorte priezor a pokračujte"
+          },
           "headerLabel": "KONEČNÁ BEZPEČNOSTNÁ VOLBA"
         }
       }

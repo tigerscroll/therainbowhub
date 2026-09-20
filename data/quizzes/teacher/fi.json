@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät voi läpäistä tätä opettajan pääsykoetta",
   "eyebrow": "LUOKAN SOVELTAMISTESTI",
   "summary": "Kymmenen kysymystä testaa luokkahuoneen harkintaa, arviointia, turvaamista ja opetusta.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset luokkahuonekysymykset näyttävät ilmeisiltä. Sitten testi siirtyy arviointiin, turvaamiseen ja päätöksiin, jotka jokaisen opettajan on tehtävä oikein.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja luokkahuonekonsepteja, joita sovelletaan kaikissa tason 1 englanninkielisissä maissa. Se siirtyy ymmärtämisen tarkistamisesta ja virheisiin vastaamisesta arviointiin, viestintään, turvaamiseen ja ammatilliseen harkintaan.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan luokkahuonekysymykseen.",
         "Valitse yksi parhaiten tuettu vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Opettajan sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Opettajan pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja luokkahuoneen soveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä opetusaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä opetusaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit Opettajan sisäänpääsyhaasteen!",
       "finished": "Opettajan pääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin opetusalue",
       "trickiest": "Hankalin opetusalue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "teacher-q1": {
           "question": "Mikä lähestymistapa antaa opettajalle selkeimmän nopean kuvan siitä, ymmärsikö koko luokka uuden idean?",
-          "answers": [
-            "Lyhyt tarkistus, johon jokainen oppija vastaa",
-            "Pyydä vain nopein vapaaehtois",
-            "Odotetaan kauden loppuraporttia",
-            "Selityksen toistaminen tarkistamatta"
-          ],
+          "answers": {
+            "a1": "Lyhyt tarkistus, johon jokainen oppija vastaa",
+            "a2": "Pyydä vain nopein vapaaehtois",
+            "a3": "Odotetaan kauden loppuraporttia",
+            "a4": "Selityksen toistaminen tarkistamatta"
+          },
           "headerLabel": "TARKISTAA YMMÄRTÄMINEN"
         },
         "teacher-q2": {
           "question": "Oppija antaa väärän vastauksen. Mikä vastaus todennäköisimmin tukee oppimista?",
-          "answers": [
-            "Siirrä heti toisen luo",
-            "Pyydä heitä selittämään ajattelunsa ja ohjaa heitä sitten kohdistetuilla kysymyksillä",
-            "Ilmoita oikea vastaus ja jatka",
-            "Vältä palaamasta ajatukseen"
-          ],
+          "answers": {
+            "a1": "Siirrä heti toisen luo",
+            "a2": "Pyydä heitä selittämään ajattelunsa ja ohjaa heitä sitten kohdistetuilla kysymyksillä",
+            "a3": "Ilmoita oikea vastaus ja jatka",
+            "a4": "Vältä palaamasta ajatukseen"
+          },
           "headerLabel": "VIRHEISIIN VASTAAMINEN"
         },
         "teacher-q3": {
           "question": "Mikä on oppimisen aikana käytettävä arvioinnin tavallinen nimi opetuksen mukauttamisessa?",
-          "answers": [
-            "Loppuarviointi",
-            "Osallistumisarviointi",
-            "Formatiivinen arviointi",
-            "Läsnäoloarvio"
-          ],
+          "answers": {
+            "a1": "Loppuarviointi",
+            "a2": "Osallistumisarviointi",
+            "a3": "Formatiivinen arviointi",
+            "a4": "Läsnäoloarvio"
+          },
           "headerLabel": "ARVIOINTI"
         },
         "teacher-q4": {
           "question": "Oppija paljastaa tietoja, jotka viittaavat siihen, että hän saattaa olla vaarassa loukkaantua. Mikä on paras yleinen vastaus?",
-          "answers": [
-            "Lupaa täydellistä salassapitoa",
-            "Tutki koko tilannetta yksin",
-            "Odota, mainitsevatko he sen uudelleen",
-            "Kuuntele rauhallisesti, vältä lupaavaa salassapitoa ja noudata asianmukaista suojamenettelyä"
-          ],
+          "answers": {
+            "a1": "Lupaa täydellistä salassapitoa",
+            "a2": "Tutki koko tilannetta yksin",
+            "a3": "Odota, mainitsevatko he sen uudelleen",
+            "a4": "Kuuntele rauhallisesti, vältä lupaavaa salassapitoa ja noudata asianmukaista suojamenettelyä"
+          },
           "headerLabel": "SUOJAUS"
         },
         "teacher-q5": {
           "question": "Mikä oppimistavoite vaatii oppijoita tekemään monimutkaisimman arvion?",
-          "answers": [
-            "Vertaa kahta selitystä ja tue johtopäätös todisteilla",
-            "Kopioi kolme määritelmää",
-            "Listaa viikonpäivät",
-            "Alleviivaa jokainen otsikko"
-          ],
+          "answers": {
+            "a1": "Vertaa kahta selitystä ja tue johtopäätös todisteilla",
+            "a2": "Kopioi kolme määritelmää",
+            "a3": "Listaa viikonpäivät",
+            "a4": "Alleviivaa jokainen otsikko"
+          },
           "headerLabel": "OPPITAVOITTEET"
         },
         "teacher-q6": {
           "question": "Luokassa on 30 oppilasta samansuuruisissa 5 hengen ryhmissä. Kuinka monta ryhmää tarvitaan?",
-          "answers": [
-            "5",
-            "6",
-            "7",
-            "10"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "7",
+            "a4": "10"
+          },
           "headerLabel": "LUOKAN NUMERONTASO"
         },
         "teacher-q7": {
           "question": "Mitä eriytetty opetus sisältää tarkimmin?",
-          "answers": [
-            "Tarjotaan jokaiselle oppijalle täysin erilainen ainesisältö",
-            "Alentaa odotuksia koko luokkaa kohtaan",
-            "Käyttömahdollisuuksien, tuen tai haasteiden mukauttaminen säilyttäen samalla mielekkäät oppimistavoitteet",
-            "Vain itsevarmat oppijat voivat vastata"
-          ],
+          "answers": {
+            "a1": "Tarjotaan jokaiselle oppijalle täysin erilainen ainesisältö",
+            "a2": "Alentaa odotuksia koko luokkaa kohtaan",
+            "a3": "Käyttömahdollisuuksien, tuen tai haasteiden mukauttaminen säilyttäen samalla mielekkäät oppimistavoitteet",
+            "a4": "Vain itsevarmat oppijat voivat vastata"
+          },
           "headerLabel": "ADAPTIIVINEN OPETUS"
         },
         "teacher-q8": {
           "question": "Milloin arviointia pidetään luotettavana?",
-          "answers": [
-            "Kun se sisältää eniten kysymyksiä",
-            "Kun jokainen oppija saa korkean arvosanan",
-            "Kun sen saa nopeasti valmiiksi",
-            "Kun se tuottaa kohtuullisen yhdenmukaisia tuloksia vastaavissa olosuhteissa"
-          ],
+          "answers": {
+            "a1": "Kun se sisältää eniten kysymyksiä",
+            "a2": "Kun jokainen oppija saa korkean arvosanan",
+            "a3": "Kun sen saa nopeasti valmiiksi",
+            "a4": "Kun se tuottaa kohtuullisen yhdenmukaisia tuloksia vastaavissa olosuhteissa"
+          },
           "headerLabel": "ARVIOINTILAATU"
         },
         "teacher-q9": {
           "question": "Mikä ohje todennäköisimmin auttaa oppilaita aloittamaan uuden tehtävän onnistuneesti?",
-          "answers": [
-            "Anna lyhyt sekvenssi, mallinna esimerkki ja tarkista ymmärrys",
-            "Selitä kaikki mahdolliset poikkeukset ennen tehtävän esittämistä",
-            "Kirjoita yksi epämääräinen lause ja aloita heti",
-            "Pyydä oppilaita arvaamaan menestyskriteerit"
-          ],
+          "answers": {
+            "a1": "Anna lyhyt sekvenssi, mallinna esimerkki ja tarkista ymmärrys",
+            "a2": "Selitä kaikki mahdolliset poikkeukset ennen tehtävän esittämistä",
+            "a3": "Kirjoita yksi epämääräinen lause ja aloita heti",
+            "a4": "Pyydä oppilaita arvaamaan menestyskriteerit"
+          },
           "headerLabel": "TYHJENNÄ OHJEET"
         },
         "teacher-q10": {
           "question": "Mikä kuvaus määrittelee parhaiten plagioinnin?",
-          "answers": [
-            "Luonnoksen tarkistaminen palautteen jälkeen",
-            "Toisen henkilön sanojen tai ideoiden esittäminen omina ilman tunnustusta",
-            "Useamman kuin yhden lähteen käyttäminen",
-            "Eri mieltä kirjoittajan johtopäätöksestä"
-          ],
+          "answers": {
+            "a1": "Luonnoksen tarkistaminen palautteen jälkeen",
+            "a2": "Toisen henkilön sanojen tai ideoiden esittäminen omina ilman tunnustusta",
+            "a3": "Useamman kuin yhden lähteen käyttäminen",
+            "a4": "Eri mieltä kirjoittajan johtopäätöksestä"
+          },
           "headerLabel": "VIIMEINEN KYSYMYS"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 12 % av voksne kan bestå denne opptaksprøven for flyvertinnen",
   "eyebrow": "HYTTEBESETNINGENS EGENHETSTEST",
   "summary": "Ti spørsmål tester kabinsikkerhet, nødsituasjoner, mannskapskoordinering og flykunnskap.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Servicespørsmålene virker enkle. Deretter går eksamen over i dekompresjon, evakuering og kabinsikkerhet.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsutfordringen med ti spørsmål bruker brede kabinsikkerhetsprinsipper som deles på tvers av internasjonal luftfart. Den tester passasjersikkerhet, nødprioriteringer, mannskapskoordinering og flysystemer uten å stole på ett flyselskaps eksakte kommandoer eller prosedyrer.\n\nVelg ett svar for hvert spørsmål. Korrektheten forblir skjult frem til den siste avsløringen, hvor hele svargjennomgangen er tilgjengelig for å låse opp.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Svar på ti stadig vanskeligere spørsmål om kabinansatte.",
         "Velg det sikreste eller mest nøyaktige svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Inngangsutfordring for flyvertinne",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Flyvertinne-opptaksprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket, og kapasitetsscore for kabinansatte er klare til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Fire hytte-sikkerhetsområder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Fire hytte-sikkerhetsområder sammenlignet"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du besto inngangsutfordringen for flyvertinnen!",
       "finished": "Inngangsutfordring for flyvertinne fullført",
-      "correctLabel": "riktig",
       "strongest": "Sterkeste hyttesikkerhetsområde",
       "trickiest": "Vanskeligste hyttesikkerhetsområde",
       "bestRound": "Beste seksjon",
@@ -96,8 +89,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Hva er flyvertinnens hovedansvar?",
-          "answers": [
-            "Passasjersikkerhet",
-            "Selger produkter ombord",
-            "Servering av måltider raskt",
-            "Kunngjør destinasjonen"
-          ],
+          "answers": {
+            "a1": "Passasjersikkerhet",
+            "a2": "Selger produkter ombord",
+            "a3": "Servering av måltider raskt",
+            "a4": "Kunngjør destinasjonen"
+          },
           "headerLabel": "HYTTEPRIORITETER"
         },
         "flightattendant-q2": {
           "question": "Når betydelig turbulens begynner, hva er den viktigste umiddelbare kabinprioriteten?",
-          "answers": [
-            "Fortsett tjenesten for å unngå forsinkelser",
-            "Sikre deg selv og hytta som prosedyrer krever",
-            "Åpne alle overliggende rom",
-            "Be passasjerene stå og strekke seg"
-          ],
+          "answers": {
+            "a1": "Fortsett tjenesten for å unngå forsinkelser",
+            "a2": "Sikre deg selv og hytta som prosedyrer krever",
+            "a3": "Åpne alle overliggende rom",
+            "a4": "Be passasjerene stå og strekke seg"
+          },
           "headerLabel": "TURBULENS"
         },
         "flightattendant-q3": {
           "question": "Hvis oksygenmasker faller under dekompresjon, hva bør du vanligvis gjøre før du hjelper en annen person?",
-          "answers": [
-            "Ta av sikkerhetsbeltet",
-            "Vent på kabinlysene",
-            "Sett på din egen maske",
-            "Flytt til midtgangen"
-          ],
+          "answers": {
+            "a1": "Ta av sikkerhetsbeltet",
+            "a2": "Vent på kabinlysene",
+            "a3": "Sett på din egen maske",
+            "a4": "Flytt til midtgangen"
+          },
           "headerLabel": "DEKOMPRESSERING"
         },
         "flightattendant-q4": {
           "question": "Hva bør passasjerer generelt gjøre med håndbagasje under en nødevakuering?",
-          "answers": [
-            "Ta bare små poser",
-            "Bær poser over den ene skulderen",
-            "Send poser til besetningsmedlemmer",
-            "Legg igjen all bagasje"
-          ],
+          "answers": {
+            "a1": "Ta bare små poser",
+            "a2": "Bær poser over den ene skulderen",
+            "a3": "Send poser til besetningsmedlemmer",
+            "a4": "Legg igjen all bagasje"
+          },
           "headerLabel": "EVAKUERING"
         },
         "flightattendant-q5": {
           "question": "Hvorfor skal passasjerene telle radene mellom setet og de nærmeste brukbare utgangene?",
-          "answers": [
-            "Røyk eller mørke kan gjøre utganger vanskeligere å se",
-            "Det bestemmer rekkefølgen på måltidsserveringen",
-            "Den identifiserer det mest stillegående setet",
-            "Det endrer flyets balanse"
-          ],
+          "answers": {
+            "a1": "Røyk eller mørke kan gjøre utganger vanskeligere å se",
+            "a2": "Det bestemmer rekkefølgen på måltidsserveringen",
+            "a3": "Den identifiserer det mest stillegående setet",
+            "a4": "Det endrer flyets balanse"
+          },
           "headerLabel": "EXIT BEVISSTHET"
         },
         "flightattendant-q6": {
           "question": "Hva er bemanningsressursstyringen i luftfarten hovedsakelig designet for å styrke?",
-          "answers": [
-            "Billettpriser og planlegging",
-            "Kommunikasjon, teamarbeid og beslutningstaking",
-            "Passasjerunderholdning",
-            "Flyproduksjonshastighet"
-          ],
+          "answers": {
+            "a1": "Billettpriser og planlegging",
+            "a2": "Kommunikasjon, teamarbeid og beslutningstaking",
+            "a3": "Passasjerunderholdning",
+            "a4": "Flyproduksjonshastighet"
+          },
           "headerLabel": "MANNSKAPSKOORDINERING"
         },
         "flightattendant-q7": {
           "question": "Hva betyr hypoksi?",
-          "answers": [
-            "Overdreven hyttestøy",
-            "En rask retningsendring",
-            "Utilstrekkelig oksygen når kroppens vev",
-            "En forsinkelse i ombordstigning"
-          ],
+          "answers": {
+            "a1": "Overdreven hyttestøy",
+            "a2": "En rask retningsendring",
+            "a3": "Utilstrekkelig oksygen når kroppens vev",
+            "a4": "En forsinkelse i ombordstigning"
+          },
           "headerLabel": "LUFTHELSE"
         },
         "flightattendant-q8": {
           "question": "Hvilke tre elementer utgjør ildtrekanten?",
-          "answers": [
-            "Røyk, flamme og aske",
-            "Vann, luft og metall",
-            "Drivstoff, trykk og damp",
-            "Varme, drivstoff og oksygen"
-          ],
+          "answers": {
+            "a1": "Røyk, flamme og aske",
+            "a2": "Vann, luft og metall",
+            "a3": "Drivstoff, trykk og damp",
+            "a4": "Varme, drivstoff og oksygen"
+          },
           "headerLabel": "BRANNSIKKERHET"
         },
         "flightattendant-q9": {
           "question": "Hva er hovedformålet med nødbelysning på gulvnivå?",
-          "answers": [
-            "For å hjelpe med å lede folk mot utganger når sikten er dårlig",
-            "For å lyse opp måltidsbrett",
-            "For å vise flyets hastighet",
-            "For å markere premium seter"
-          ],
+          "answers": {
+            "a1": "For å hjelpe med å lede folk mot utganger når sikten er dårlig",
+            "a2": "For å lyse opp måltidsbrett",
+            "a3": "For å vise flyets hastighet",
+            "a4": "For å markere premium seter"
+          },
           "headerLabel": "HYTTESYSTEMER"
         },
         "flightattendant-q10": {
           "question": "Hvorfor må passasjerene ta hensyn til sikkerhetsinformasjonen selv om de flyr ofte?",
-          "answers": [
-            "Den avslører flyets marsjhøyde",
-            "Nødutstyr og prosedyrer kan variere fra fly til fly",
-            "Det bestemmer rekkefølgen på bagasjelevering",
-            "Den forklarer hvordan billettprisene ble satt"
-          ],
+          "answers": {
+            "a1": "Den avslører flyets marsjhøyde",
+            "a2": "Nødutstyr og prosedyrer kan variere fra fly til fly",
+            "a3": "Det bestemmer rekkefølgen på bagasjelevering",
+            "a4": "Den forklarer hvordan billettprisene ble satt"
+          },
           "headerLabel": "ENDELIG HYTTESPØRSMÅL"
         }
       }

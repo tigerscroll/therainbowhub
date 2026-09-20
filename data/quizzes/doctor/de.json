@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Die meisten Erwachsenen können diese Aufnahmeprüfung für den Arzt nicht bestehen",
   "eyebrow": "DER KLINISCHE WISSENSTEST",
   "summary": "Zehn Fragen testen Anatomie, Symptome, Diagnosewerkzeuge und sicheres klinisches Denken.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Die Anatomiefragen kommen mir bekannt vor. Anschließend befasst sich der Test mit Symptomen, Notfällen und klinischen Entscheidungen.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bei diesem Unterhaltungsquiz mit zehn Fragen werden umfassende medizinische Konzepte verwendet, die in allen führenden englischsprachigen Ländern gelehrt und verstanden werden. Es geht von Anatomie und Physiologie zu diagnostischen Instrumenten, Symptommustern, Notfallprioritäten und dem verantwortungsvollen Einsatz von Medikamenten.\n\nWählen Sie für jede Frage eine Antwort. Die Richtigkeit bleibt bis zur abschließenden Auswertung verborgen, danach kann die vollständige Auswertung freigeschaltet werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Beantworten Sie zehn immer schwieriger werdende Fragen zum klinischen Wissen.",
         "Wählen Sie die am besten unterstützte Antwort.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Herausforderung für den Arzteingang",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Aufnahmeprüfung für den Arzt",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Ergebnis zum klinischen Wissen kann nun angezeigt werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Fünf medizinische Bereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Fünf medizinische Bereiche im Vergleich"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sie haben die Aufnahmeprüfung des Doktors bestanden!",
       "finished": "Die Einstiegstest des Arztes ist abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster medizinischer Bereich",
       "trickiest": "Der schwierigste medizinische Bereich",
       "bestRound": "Stärkster Bereich",
@@ -99,8 +92,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Welche Herzkammer pumpt sauerstoffreiches Blut in die Aorta?",
-          "answers": [
-            "Linker Ventrikel",
-            "Rechter Ventrikel",
-            "Linkes Atrium",
-            "Rechter Vorhof"
-          ],
+          "answers": {
+            "a1": "Linker Ventrikel",
+            "a2": "Rechter Ventrikel",
+            "a3": "Linkes Atrium",
+            "a4": "Rechter Vorhof"
+          },
           "headerLabel": "HERZANATOMIE"
         },
         "doctor-q2": {
           "question": "Plötzliches Erschlaffen des Gesichts, schwache Arme und Schwierigkeiten beim Sprechen sollten Anlass zur sofortigen Besorgnis geben.",
-          "answers": [
-            "Eine leichte Nahrungsmittelunverträglichkeit",
-            "Ein möglicher Schlaganfall",
-            "Eine einfache Muskelzerrung",
-            "Saisonale Allergien"
-          ],
+          "answers": {
+            "a1": "Eine leichte Nahrungsmittelunverträglichkeit",
+            "a2": "Ein möglicher Schlaganfall",
+            "a3": "Eine einfache Muskelzerrung",
+            "a4": "Saisonale Allergien"
+          },
           "headerLabel": "SYMPTOMERKENNUNG"
         },
         "doctor-q3": {
           "question": "Welches Gerät ermöglicht eine schnelle, nicht-invasive Schätzung der Blutsauerstoffsättigung?",
-          "answers": [
-            "Otoskop",
-            "Reflexhammer",
-            "Pulsoximeter",
-            "Thermometer"
-          ],
+          "answers": {
+            "a1": "Otoskop",
+            "a2": "Reflexhammer",
+            "a3": "Pulsoximeter",
+            "a4": "Thermometer"
+          },
           "headerLabel": "DIAGNOSEWERKZEUGE"
         },
         "doctor-q4": {
           "question": "Bei einer klassischen Blinddarmentzündung können sich Bauchschmerzen in welche Region ausbreiten?",
-          "answers": [
-            "Oberer linker Bauch",
-            "Mitte der Brust",
-            "Linke Schulter",
-            "Unterer rechter Bauch"
-          ],
+          "answers": {
+            "a1": "Oberer linker Bauch",
+            "a2": "Mitte der Brust",
+            "a3": "Linke Schulter",
+            "a4": "Unterer rechter Bauch"
+          },
           "headerLabel": "KLINISCHE MUSTER"
         },
         "doctor-q5": {
           "question": "Welche Zellen in der Bauchspeicheldrüse produzieren Insulin?",
-          "answers": [
-            "Betazellen",
-            "Rote Blutkörperchen",
-            "Osteoblasten",
-            "Neutrophile"
-          ],
+          "answers": {
+            "a1": "Betazellen",
+            "a2": "Rote Blutkörperchen",
+            "a3": "Osteoblasten",
+            "a4": "Neutrophile"
+          },
           "headerLabel": "ENDOKRINE PHYSIOLOGIE"
         },
         "doctor-q6": {
           "question": "Was bedeutet Auskultation bei einer körperlichen Untersuchung?",
-          "answers": [
-            "Messung der Körpertemperatur",
-            "Auf innere Körpergeräusche hören",
-            "Prüfung der Sehschärfe",
-            "Untersuchung einer Gewebeprobe unter einem Mikroskop"
-          ],
+          "answers": {
+            "a1": "Messung der Körpertemperatur",
+            "a2": "Auf innere Körpergeräusche hören",
+            "a3": "Prüfung der Sehschärfe",
+            "a4": "Untersuchung einer Gewebeprobe unter einem Mikroskop"
+          },
           "headerLabel": "KLINISCHE UNTERSUCHUNG"
         },
         "doctor-q7": {
           "question": "Welche Beschreibung passt am besten zu Sepsis?",
-          "answers": [
-            "Eine harmlose Reaktion auf körperliche Betätigung",
-            "Ein Zustand, der nur durch Allergien verursacht wird",
-            "Eine lebensbedrohliche extreme Reaktion auf eine Infektion",
-            "Eine Art Knochenbruch"
-          ],
+          "answers": {
+            "a1": "Eine harmlose Reaktion auf körperliche Betätigung",
+            "a2": "Ein Zustand, der nur durch Allergien verursacht wird",
+            "a3": "Eine lebensbedrohliche extreme Reaktion auf eine Infektion",
+            "a4": "Eine Art Knochenbruch"
+          },
           "headerLabel": "MEDIZINISCHE NOTFÄLLE"
         },
         "doctor-q8": {
           "question": "Wie heißt die funktionelle Filtereinheit der Niere?",
-          "answers": [
-            "Alveole",
-            "Neuron",
-            "Zotte",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveole",
+            "a2": "Neuron",
+            "a3": "Zotte",
+            "a4": "Nephron"
+          },
           "headerLabel": "NIERENANATOMIE"
         },
         "doctor-q9": {
           "question": "Eine Person ist nicht ansprechbar und atmet nicht normal. Was ist die sicherste unmittelbare allgemeine Reaktion?",
-          "answers": [
-            "Rufen Sie den Rettungsdienst und beginnen Sie mit geeigneten lebensrettenden Sofortmaßnahmen",
-            "Warten Sie einige Minuten auf eine spontane Erholung",
-            "Geben Sie Essen oder Trinken",
-            "Bitten Sie die Person, herumzulaufen"
-          ],
+          "answers": {
+            "a1": "Rufen Sie den Rettungsdienst und beginnen Sie mit geeigneten lebensrettenden Sofortmaßnahmen",
+            "a2": "Warten Sie einige Minuten auf eine spontane Erholung",
+            "a3": "Geben Sie Essen oder Trinken",
+            "a4": "Bitten Sie die Person, herumzulaufen"
+          },
           "headerLabel": "NOTFALLPRIORITÄTEN"
         },
         "doctor-q10": {
           "question": "Welche Aussage zu Antibiotika ist am zutreffendsten?",
-          "answers": [
-            "Sie behandeln jedes Fieber",
-            "Sie behandeln keine Virusinfektionen wie Erkältungen",
-            "Sie sollten immer abgesetzt werden, sobald sich die Symptome bessern",
-            "Sie wirken, indem sie die Körpertemperatur direkt senken"
-          ],
+          "answers": {
+            "a1": "Sie behandeln jedes Fieber",
+            "a2": "Sie behandeln keine Virusinfektionen wie Erkältungen",
+            "a3": "Sie sollten immer abgesetzt werden, sobald sich die Symptome bessern",
+            "a4": "Sie wirken, indem sie die Körpertemperatur direkt senken"
+          },
           "headerLabel": "LETZTE MEDIZINISCHE FRAGE"
         }
       }

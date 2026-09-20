@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Rychlý test šedého zákalu",
   "eyebrow": "10-OTÁZKOVÁ KONTROLA ZRAKU",
   "summary": "Zamlžené detaily, blízké vizuální pasti a důležité varovné signály šedého zákalu v jedné rychlé výzvě.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Kataraktu lze zpočátku snadno přehlédnout. Zjistěte, zda dokážete najít jemné vodítka v 10 rychlých otázkách – ty poslední chytnou většinu lidí.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato výzva s deseti otázkami kombinuje pět vizuálních hádanek na obrazovce s pěti všeobecnými otázkami o šedém zákalu. Měří odpovědi na tento kvíz, nikoli zrak, zdraví čočky nebo pravděpodobnost šedého zákalu.\n\nVelikost obrazovky, jas, kontrast, zrak, korekční čočky, únava a nastavení zařízení, to vše může ovlivnit výkon. Přetrvávající rozmazané nebo mlhavé vidění, oslnění, halo kolem světel, potíže s viděním v noci nebo tóny, které se zdají být méně živé, by měly být projednány s kvalifikovaným očním specialistou.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Dokončete pět výzev týkajících se detailů, vzorů a vizuální paměti.",
         "Odpovězte na pět otázek o šedém zákalu a o tom, kdy vyhledat pomoc.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Výzva šedého zákalu",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Rychlý test šedého zákalu",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre katarakty je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Tři vizuální oblasti byly porovnány",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Tři vizuální oblasti byly porovnány"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vyřešili jste 80% vizuální výzvu!",
       "finished": "Výzva šedého zákalu dokončena",
-      "correctLabel": "správně",
       "strongest": "Dnes nejsilnější oblast",
       "trickiest": "Nejošklivější oblast dneška",
       "bestRound": "Nejlepší sekce",
@@ -94,8 +87,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Která postava je přesně uprostřed mřížky?",
           "headerLabel": "CENTRÁLNÍ DETAIL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "ODKAZ: B8R3K5",
           "question": "Který kód přesně odpovídá odkazu?",
           "headerLabel": "POROVNÁVÁNÍ ROZMAZANÝCH ZNAKŮ",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENCE",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Který symbol doplňuje střídavou sekvenci?",
           "headerLabel": "SLEDOVÁNÍ VZORŮ",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Který předmět se objevil jako třetí?",
           "headerLabel": "RYCHLÁ VIZUÁLNÍ PAMĚŤ",
-          "answers": [
-            "Kniha",
-            "klíč",
-            "Citron",
-            "Deštník"
-          ],
+          "answers": {
+            "a1": "Kniha",
+            "a2": "klíč",
+            "a3": "Citron",
+            "a4": "Deštník"
+          },
           "study": {
             "title": "Prostudujte si pořadí pěti objektů",
             "instruction": "Toto automaticky zmizí.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Která pozice obsahuje světlý kruh?",
           "headerLabel": "DETAILNÍ KONTROLA",
-          "answers": [
-            "Za páté",
-            "Za druhé",
-            "Za čtvrté",
-            "Šesté"
-          ],
+          "answers": {
+            "a1": "Za páté",
+            "a2": "Za druhé",
+            "a3": "Za čtvrté",
+            "a4": "Šesté"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Co je šedý zákal?",
           "headerLabel": "ZÁKLADNÍ INFORMACE O ŠEDÉM ZÁKALU",
-          "answers": [
-            "Škrábance na očním víčku",
-            "Zakalená oblast v přirozené čočce oka",
-            "Problém omezený na slzný kanál",
-            "Typ ušní infekce"
-          ]
+          "answers": {
+            "a1": "Škrábance na očním víčku",
+            "a2": "Zakalená oblast v přirozené čočce oka",
+            "a3": "Problém omezený na slzný kanál",
+            "a4": "Typ ušní infekce"
+          }
         },
         "cataract-q7": {
           "question": "Která skupina obsahuje běžné příznaky katarakty?",
           "headerLabel": "VAROVNÉ SIGNÁLY",
-          "answers": [
-            "Svědění kůže a bolest v krku",
-            "Náhlá ztráta sluchu a závratě",
-            "Rozmazané nebo mlhavé vidění, oslnění a halo kolem světel",
-            "Ztuhlý krk a bolavá ramena"
-          ]
+          "answers": {
+            "a1": "Svědění kůže a bolest v krku",
+            "a2": "Náhlá ztráta sluchu a závratě",
+            "a3": "Rozmazané nebo mlhavé vidění, oslnění a halo kolem světel",
+            "a4": "Ztuhlý krk a bolavá ramena"
+          }
         },
         "cataract-q8": {
           "question": "Jak může oční specialista zkontrolovat šedý zákal?",
           "headerLabel": "ODBORNÉ POSOUZENÍ",
-          "answers": [
-            "S testem sluchu",
-            "Pomocí domácího měření krevního tlaku",
-            "S testem chuti",
-            "V rámci komplexního vyšetření dilatačního oka"
-          ]
+          "answers": {
+            "a1": "S testem sluchu",
+            "a2": "Pomocí domácího měření krevního tlaku",
+            "a3": "S testem chuti",
+            "a4": "V rámci komplexního vyšetření dilatačního oka"
+          }
         },
         "cataract-q9": {
           "question": "Jaká je nejbezpečnější reakce na náhlou ztrátu zraku, silnou bolest očí nebo náhlou velkou změnu vidění?",
           "headerLabel": "KDY JEDNAT",
-          "answers": [
-            "Vyhledejte naléhavou odbornou radu v oblasti péče o oči",
-            "Počkejte několik měsíců, aniž byste to zmínili",
-            "Změňte jas obrazovky a předpokládejte, že je pevný",
-            "Spolehněte se pouze na online kvíz"
-          ]
+          "answers": {
+            "a1": "Vyhledejte naléhavou odbornou radu v oblasti péče o oči",
+            "a2": "Počkejte několik měsíců, aniž byste to zmínili",
+            "a3": "Změňte jas obrazovky a předpokládejte, že je pevný",
+            "a4": "Spolehněte se pouze na online kvíz"
+          }
         },
         "cataract-q10": {
           "question": "Co vám může říct vaše skóre v této online výzvě?",
           "headerLabel": "KONEČNÁ KONTROLA REALITY",
-          "answers": [
-            "Zda jsou vaše čočky zdravé",
-            "Jen jak jste si vedli v těchto deseti otázkách",
-            "Ať už potřebujete operaci šedého zákalu",
-            "Zda můžete vyloučit šedý zákal"
-          ]
+          "answers": {
+            "a1": "Zda jsou vaše čočky zdravé",
+            "a2": "Jen jak jste si vedli v těchto deseti otázkách",
+            "a3": "Ať už potřebujete operaci šedého zákalu",
+            "a4": "Zda můžete vyloučit šedý zákal"
+          }
         }
       }
     }

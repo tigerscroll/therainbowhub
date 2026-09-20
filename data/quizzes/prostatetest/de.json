@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Schneller Prostatakrebstest",
   "eyebrow": "PROSTATA-CHECK MIT 10 FRAGEN",
   "summary": "Zehn persönliche Fragen zu Prostataveränderungen und Risikokontext, gefolgt von einem vorsichtigen Profil des nächsten Schritts.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Sind Ihnen Veränderungen aufgefallen, die man leicht als Alterung abtun kann? Beantworten Sie 10 kurze Fragen zu den Symptomen und Risikofaktoren, die von Bedeutung sein können.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dieser persönliche Check mit zehn Fragen fragt nach Harnveränderungen, Blut, Beschwerden, anhaltenden Schmerzen und relevantem Risikokontext. Es gruppiert Ihre Antworten in einem vorsichtigen Profil für den nächsten Schritt. Es berechnet nicht Ihre Wahrscheinlichkeit, an Krebs zu erkranken.\n\nProstatakrebs kann zunächst keine Symptome hervorrufen und Veränderungen im Harnbereich haben oft nicht krebsartige Ursachen wie eine gutartige Prostatavergrößerung, eine Infektion oder eine Entzündung. Neue, anhaltende oder sich verschlimmernde Veränderungen sollten dennoch mit einem qualifizierten medizinischen Fachpersonal besprochen werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Wählen Sie die Antwort, die Ihren jüngsten Erfahrungen am ehesten entspricht.",
         "Denken Sie an Veränderungen, die neu sind, anhaltend sind oder sich verschlimmern.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Persönlicher Prostata-Check",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Persönliche Selbsteinschätzung",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Hat sich Ihr Urinstrahl in letzter Zeit verändert?",
           "headerLabel": "IHR HARNFLUSS",
-          "answers": [
-            "Keine spürbare Veränderung",
-            "Es variiert gelegentlich",
-            "Es ist neu schwach oder stoppt und startet",
-            "Es wird schlimmer oder beeinträchtigt das tägliche Leben"
-          ]
+          "answers": {
+            "a1": "Keine spürbare Veränderung",
+            "a2": "Es variiert gelegentlich",
+            "a3": "Es ist neu schwach oder stoppt und startet",
+            "a4": "Es wird schlimmer oder beeinträchtigt das tägliche Leben"
+          }
         },
         "prostate-test-q2": {
           "question": "Fällt es Ihnen schwerer, mit dem Wasserlassen zu beginnen?",
           "headerLabel": "BEGINN DES WASSERLASSENS",
-          "answers": [
-            "NEIN",
-            "Gelegentlich, aber es blieb nicht bestehen",
-            "Ja, dies ist eine neue oder dauerhafte Änderung",
-            "Ja, und es wird immer schwieriger"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Gelegentlich, aber es blieb nicht bestehen",
+            "a3": "Ja, dies ist eine neue oder dauerhafte Änderung",
+            "a4": "Ja, und es wird immer schwieriger"
+          }
         },
         "prostate-test-q3": {
           "question": "Urinieren Sie häufiger, besonders nachts?",
           "headerLabel": "HÄUFIGKEIT UND NÄCHTLICHER HARNDRANG",
-          "answers": [
-            "Keine Änderung",
-            "Nur gelegentlich",
-            "Ja, spürbar mehr als zuvor",
-            "Ja, und es stört regelmäßig den Schlaf oder das tägliche Leben"
-          ]
+          "answers": {
+            "a1": "Keine Änderung",
+            "a2": "Nur gelegentlich",
+            "a3": "Ja, spürbar mehr als zuvor",
+            "a4": "Ja, und es stört regelmäßig den Schlaf oder das tägliche Leben"
+          }
         },
         "prostate-test-q4": {
           "question": "Fühlt sich Ihre Blase an, als wäre sie nicht vollständig entleert?",
           "headerLabel": "BLASENENTLEERUNG",
-          "answers": [
-            "NEIN",
-            "Hin und wieder",
-            "Häufig oder anhaltend",
-            "Ja, und das Gefühl wird immer schlimmer"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Hin und wieder",
+            "a3": "Häufig oder anhaltend",
+            "a4": "Ja, und das Gefühl wird immer schlimmer"
+          }
         },
         "prostate-test-q5": {
           "question": "Haben Sie einen neuen Harndrang verspürt oder haben Sie schon vor dem Erreichen einer Toilette ein Auslaufen festgestellt?",
           "headerLabel": "PLÖTZLICHER HARNDRANG ODER HARNVERLUST",
-          "answers": [
-            "NEIN",
-            "Selten",
-            "Ja, als neue oder dauerhafte Änderung",
-            "Ja, und es verschlimmert oder beeinträchtigt das tägliche Leben"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Selten",
+            "a3": "Ja, als neue oder dauerhafte Änderung",
+            "a4": "Ja, und es verschlimmert oder beeinträchtigt das tägliche Leben"
+          }
         },
         "prostate-test-q6": {
           "question": "Haben Sie Blut in Ihrem Urin oder Sperma bemerkt?",
           "headerLabel": "BLUT",
-          "answers": [
-            "NEIN",
-            "Ich bin nicht sicher",
-            "Ja, einmal oder mehrmals",
-            "Ja, bei starken Blutungen oder großen Blutgerinnseln"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Ich bin nicht sicher",
+            "a3": "Ja, einmal oder mehrmals",
+            "a4": "Ja, bei starken Blutungen oder großen Blutgerinnseln"
+          }
         },
         "prostate-test-q7": {
           "question": "Hatten Sie erneut Beschwerden beim Wasserlassen oder beim Samenerguss?",
           "headerLabel": "UNBEHAGEN",
-          "answers": [
-            "NEIN",
-            "Gelegentlich, und es ging vorbei",
-            "Ja, es bleibt bestehen oder tritt immer wieder auf",
-            "Ja, und es verschlimmert sich oder ist erheblich schmerzhaft"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Gelegentlich, und es ging vorbei",
+            "a3": "Ja, es bleibt bestehen oder tritt immer wieder auf",
+            "a4": "Ja, und es verschlimmert sich oder ist erheblich schmerzhaft"
+          }
         },
         "prostate-test-q8": {
           "question": "Hatten Sie unerklärliche Schmerzen im Rücken, in der Hüfte oder im Becken?",
           "headerLabel": "ANHALTENDE SCHMERZEN",
-          "answers": [
-            "NEIN",
-            "Ein kurzer Schmerz mit offensichtlicher Ursache",
-            "Ja, es bleibt bestehen oder tritt immer wieder auf",
-            "Ja, es ist schwerwiegend, verschlechtert sich schnell oder ich fühle mich ernsthaft unwohl"
-          ]
+          "answers": {
+            "a1": "NEIN",
+            "a2": "Ein kurzer Schmerz mit offensichtlicher Ursache",
+            "a3": "Ja, es bleibt bestehen oder tritt immer wieder auf",
+            "a4": "Ja, es ist schwerwiegend, verschlechtert sich schnell oder ich fühle mich ernsthaft unwohl"
+          }
         },
         "prostate-test-q9": {
           "question": "Welche Option passt am besten zu Ihrem Risikokontext für Prostatakrebs?",
           "headerLabel": "IHR RISIKOKONTEXT",
-          "answers": [
-            "Keines davon, sonst bin ich mir nicht sicher",
-            "Ich bin 50 oder älter",
-            "Mein Vater oder mein Bruder hatten Prostatakrebs",
-            "Ich habe schwarze Vorfahren, eine bekannte BRCA2-Veränderung oder ein starkes familiäres Krebsmuster"
-          ]
+          "answers": {
+            "a1": "Keines davon, sonst bin ich mir nicht sicher",
+            "a2": "Ich bin 50 oder älter",
+            "a3": "Mein Vater oder mein Bruder hatten Prostatakrebs",
+            "a4": "Ich habe schwarze Vorfahren, eine bekannte BRCA2-Veränderung oder ein starkes familiäres Krebsmuster"
+          }
         },
         "prostate-test-q10": {
           "question": "Was haben Sie gegen neue oder anhaltende Änderungen unternommen?",
           "headerLabel": "IHR NÄCHSTER SCHRITT",
-          "answers": [
-            "Ich habe keine Änderungen bemerkt",
-            "Ich behalte vorerst den Überblick",
-            "Ich habe vor, ein routinemäßiges medizinisches Gespräch zu vereinbaren",
-            "Ich sorge für eine zeitnahe ärztliche Beratung"
-          ]
+          "answers": {
+            "a1": "Ich habe keine Änderungen bemerkt",
+            "a2": "Ich behalte vorerst den Überblick",
+            "a3": "Ich habe vor, ein routinemäßiges medizinisches Gespräch zu vereinbaren",
+            "a4": "Ich sorge für eine zeitnahe ärztliche Beratung"
+          }
         }
       }
     }

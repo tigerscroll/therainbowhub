@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hầu hết người lớn không thể vượt qua kỳ thi tuyển sinh y khoa này",
   "eyebrow": "KIỂM TRA KHOA HỌC Y TẾ",
   "summary": "Mười câu hỏi kiểm tra giải phẫu, sinh lý, vi sinh, dược lý và an toàn lâm sàng.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những câu hỏi đầu tiên có vẻ cơ bản. Sau đó, bài kiểm tra chuyển sang sinh lý học, vi khuẩn và khoa học y tế mà hầu hết người lớn đã quên.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng khoa học y tế cơ bản được giảng dạy ở các quốc gia nói tiếng Anh Cấp 1. Nó kiểm tra các vấn đề cơ bản về giải phẫu, sinh lý học, sinh học tế bào, vi sinh, dược lý và kiểm soát nhiễm trùng mà không cần dựa vào giáo trình tuyển sinh của một trường đại học.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi y khoa ngày càng khó.",
         "Hãy chọn câu trả lời chính xác nhất.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào ngành y",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh y khoa",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm y khoa của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Năm lĩnh vực khoa học được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Năm lĩnh vực khoa học được so sánh"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào ngành Y!",
       "finished": "Thử thách đầu vào ngành y đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực khoa học mạnh nhất",
       "trickiest": "Khu vực khoa học phức tạp nhất",
       "bestRound": "Phần hay nhất",
@@ -99,8 +92,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Protein nào trong hồng cầu mang nhiều oxy nhất?",
-          "answers": [
-            "Huyết sắc tố",
-            "Keratin",
-            "colagen",
-            "insulin"
-          ],
+          "answers": {
+            "a1": "Huyết sắc tố",
+            "a2": "Keratin",
+            "a3": "colagen",
+            "a4": "insulin"
+          },
           "headerLabel": "SINH LÝ MÁU"
         },
         "medical-q2": {
           "question": "Trong ADN, adenine thường kết hợp với bazơ nào?",
-          "answers": [
-            "Guanin",
-            "Thymine",
-            "Cytosine",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "Thymine",
+            "a3": "Cytosine",
+            "a4": "Uracil"
+          },
           "headerLabel": "SINH HỌC TẾ BÀO"
         },
         "medical-q3": {
           "question": "Cơ quan nào là nơi chủ yếu xử lý và phân hủy nhiều loại thuốc?",
-          "answers": [
-            "lá lách",
-            "Tuyến giáp",
-            "Gan",
-            "Bàng quang"
-          ],
+          "answers": {
+            "a1": "lá lách",
+            "a2": "Tuyến giáp",
+            "a3": "Gan",
+            "a4": "Bàng quang"
+          },
           "headerLabel": "DƯỢC LỰC"
         },
         "medical-q4": {
           "question": "Câu nào phân biệt tốt nhất virus với vi khuẩn?",
-          "answers": [
-            "Virus luôn lớn hơn",
-            "Vi khuẩn không thể sinh sản",
-            "Virus không chứa vật chất di truyền",
-            "Virus phụ thuộc vào tế bào chủ để nhân lên"
-          ],
+          "answers": {
+            "a1": "Virus luôn lớn hơn",
+            "a2": "Vi khuẩn không thể sinh sản",
+            "a3": "Virus không chứa vật chất di truyền",
+            "a4": "Virus phụ thuộc vào tế bào chủ để nhân lên"
+          },
           "headerLabel": "VI SINH"
         },
         "medical-q5": {
           "question": "Dung dịch có độ pH dưới 7 được mô tả là gì?",
-          "answers": [
-            "Có tính axit",
-            "trung lập",
-            "Kiềm",
-            "đẳng trương"
-          ],
+          "answers": {
+            "a1": "Có tính axit",
+            "a2": "trung lập",
+            "a3": "Kiềm",
+            "a4": "đẳng trương"
+          },
           "headerLabel": "HÓA HỌC CƠ THỂ"
         },
         "medical-q6": {
           "question": "Phần nào của hệ thần kinh tự trị có liên quan đến hoạt động 'nghỉ ngơi và tiêu hóa'?",
-          "answers": [
-            "Hệ thống giao cảm",
-            "Hệ phó giao cảm",
-            "Hệ thống vận động cơ thể",
-            "Con đường thị giác trung tâm"
-          ],
+          "answers": {
+            "a1": "Hệ thống giao cảm",
+            "a2": "Hệ phó giao cảm",
+            "a3": "Hệ thống vận động cơ thể",
+            "a4": "Con đường thị giác trung tâm"
+          },
           "headerLabel": "HỆ THẦN KINH"
         },
         "medical-q7": {
           "question": "Cấu trúc nào ngăn chặn thức ăn đi vào đường thở khi nuốt?",
-          "answers": [
-            "xương bánh chè",
-            "Võng mạc",
-            "nắp thanh quản",
-            "Tuyến tụy"
-          ],
+          "answers": {
+            "a1": "xương bánh chè",
+            "a2": "Võng mạc",
+            "a3": "nắp thanh quản",
+            "a4": "Tuyến tụy"
+          },
           "headerLabel": "GIẢI PHẪU CHỨC NĂNG"
         },
         "medical-q8": {
           "question": "Dây thần kinh sọ nào mang thông tin thị giác từ mắt?",
-          "answers": [
-            "Dây thần kinh phế vị",
-            "Dây thần kinh mặt",
-            "Dây thần kinh sinh ba",
-            "Dây thần kinh thị giác"
-          ],
+          "answers": {
+            "a1": "Dây thần kinh phế vị",
+            "a2": "Dây thần kinh mặt",
+            "a3": "Dây thần kinh sinh ba",
+            "a4": "Dây thần kinh thị giác"
+          },
           "headerLabel": "GIẢI PHẪU THẦN KINH"
         },
         "medical-q9": {
           "question": "Thực hành nào là phần cốt lõi của việc ngăn ngừa nhiễm trùng trong quá trình chăm sóc bệnh nhân?",
-          "answers": [
-            "Vệ sinh tay phù hợp",
-            "Tái sử dụng găng tay dùng một lần",
-            "Bỏ qua đánh giá rủi ro",
-            "Chia sẻ thiết bị ô uế"
-          ],
+          "answers": {
+            "a1": "Vệ sinh tay phù hợp",
+            "a2": "Tái sử dụng găng tay dùng một lần",
+            "a3": "Bỏ qua đánh giá rủi ro",
+            "a4": "Chia sẻ thiết bị ô uế"
+          },
           "headerLabel": "AN TOÀN LÂM SÀNG"
         },
         "medical-q10": {
           "question": "Cân bằng nội môi mô tả điều gì?",
-          "answers": [
-            "Sự vắng mặt hoàn toàn của sự thay đổi trong cơ thể",
-            "Sự điều tiết của môi trường bên trong tương đối ổn định",
-            "Thận phân hủy mọi loại thuốc",
-            "Chỉ sản xuất kháng thể"
-          ],
+          "answers": {
+            "a1": "Sự vắng mặt hoàn toàn của sự thay đổi trong cơ thể",
+            "a2": "Sự điều tiết của môi trường bên trong tương đối ổn định",
+            "a3": "Thận phân hủy mọi loại thuốc",
+            "a4": "Chỉ sản xuất kháng thể"
+          },
           "headerLabel": "CÂU HỎI KHOA HỌC CUỐI CÙNG"
         }
       }

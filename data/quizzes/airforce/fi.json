@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 6 % aikuisista voi läpäistä tämän ilmavoimien pääsykokeen",
   "eyebrow": "ILMATEHOSOPIVUSTESTI",
   "summary": "Kymmenen kysymystä koelentoperiaatteita, instrumentteja, navigointia ja lentofysiikkaa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ohjaamon perusasiat näyttävät helpolta. Sitten koe siirtyy navigointiin, ohjaimiin ja lentofysiikkaan.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää ilmailun periaatteita, jotka koskevat ilmavoimia ja siviililentotoimintaa maailmanlaajuisesti. Se siirtyy neljästä lentovoimasta ohjaamon instrumentteihin, suuntakieleen, lentokoneen ohjaimiin ja aerodynaamisen perusajatteluun.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan ilmailukysymykseen.",
         "Valitse yksi neljästä vastauksesta ilman ulkopuolista apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ilmavoimien sisäänkäyntihaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Ilmavoimien pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu, ja ilmavoiman soveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä lentoaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä lentoaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit ilmavoimien sisäänpääsyhaasteen!",
       "finished": "Ilmavoimien sisäänkäyntihaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin ilmailualue",
       "trickiest": "Hankalin ilmailualue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Mikä neljästä lentovoimasta vaikuttaa ylöspäin painoa vastaan?",
-          "answers": [
-            "Nostovoima",
-            "Ilmanvastus",
-            "Työntövoima",
-            "Inertia"
-          ],
+          "answers": {
+            "a1": "Nostovoima",
+            "a2": "Ilmanvastus",
+            "a3": "Työntövoima",
+            "a4": "Inertia"
+          },
           "headerLabel": "LENNON PERUSTEET"
         },
         "airforce-q2": {
           "question": "Mikä ohjaamon mittari näyttää lentokoneen korkeuden?",
-          "answers": [
-            "Ilmanopeuden ilmaisin",
-            "Korkeusmittari",
-            "Käänny koordinaattoriin",
-            "Pystysuuntainen nopeuden ilmaisin"
-          ],
+          "answers": {
+            "a1": "Ilmanopeuden ilmaisin",
+            "a2": "Korkeusmittari",
+            "a3": "Käänny koordinaattoriin",
+            "a4": "Pystysuuntainen nopeuden ilmaisin"
+          },
           "headerLabel": "OHJAAMINEN INSTRUMENTIT"
         },
         "airforce-q3": {
           "question": "Mitkä ensisijaiset lennonohjaimet saavat lentokoneen rullaamaan?",
-          "answers": [
-            "Korkeusperäsimet",
-            "Rudder",
-            "Siivekkeet",
-            "Laskusiivekkeet"
-          ],
+          "answers": {
+            "a1": "Korkeusperäsimet",
+            "a2": "Rudder",
+            "a3": "Siivekkeet",
+            "a4": "Laskusiivekkeet"
+          },
           "headerLabel": "LENTOOHJAIMET"
         },
         "airforce-q4": {
           "question": "Mihin suuntaan 270 asteen magneettinen suunta osoittaa suunnilleen?",
-          "answers": [
-            "North",
-            "Itä",
-            "Etelä",
-            "länteen"
-          ],
+          "answers": {
+            "a1": "North",
+            "a2": "Itä",
+            "a3": "Etelä",
+            "a4": "länteen"
+          },
           "headerLabel": "NAVIGOINTI"
         },
         "airforce-q5": {
           "question": "Mihin Mach-luku vertaa lentokoneen nopeutta?",
-          "answers": [
-            "Paikallinen äänen nopeus",
-            "Valon nopeus",
-            "Maan pyöriminen",
-            "Ympäröivän tuulen nopeus"
-          ],
+          "answers": {
+            "a1": "Paikallinen äänen nopeus",
+            "a2": "Valon nopeus",
+            "a3": "Maan pyöriminen",
+            "a4": "Ympäröivän tuulen nopeus"
+          },
           "headerLabel": "NOPEUS JA ÄÄNI"
         },
         "airforce-q6": {
           "question": "Mitä lentokoneen puolta kutsutaan ilmailussa satamaksi?",
-          "answers": [
-            "Oikein",
-            "Vasen",
-            "Edessä",
-            "Takaosa"
-          ],
+          "answers": {
+            "a1": "Oikein",
+            "a2": "Vasen",
+            "a3": "Edessä",
+            "a4": "Takaosa"
+          },
           "headerLabel": "ILMAILUKIELI"
         },
         "airforce-q7": {
           "question": "Mihin kompassin suuntaan on kiitotie, jonka numero on 09?",
-          "answers": [
-            "North",
-            "Etelä",
-            "Itä",
-            "länteen"
-          ],
+          "answers": {
+            "a1": "North",
+            "a2": "Etelä",
+            "a3": "Itä",
+            "a4": "länteen"
+          },
           "headerLabel": "KIITOTEEN PERUSTELU"
         },
         "airforce-q8": {
           "question": "Mikä on kantosiiven jännelinjan ja vastaantulevan ilmavirran välinen kulma?",
-          "answers": [
-            "Kallistuskulma",
-            "Liukukulma",
-            "Pitch asenne",
-            "Kohtauskulma"
-          ],
+          "answers": {
+            "a1": "Kallistuskulma",
+            "a2": "Liukukulma",
+            "a3": "Pitch asenne",
+            "a4": "Kohtauskulma"
+          },
           "headerLabel": "AERODYNAMIIKKA"
         },
         "airforce-q9": {
           "question": "Mikä Newtonin laki selittää suihkun työntövoiman suorimmin?",
-          "answers": [
-            "Kolmas laki",
-            "Ensimmäinen laki",
-            "Gravitaatiolaki",
-            "Termodynamiikan toinen pääsääntö"
-          ],
+          "answers": {
+            "a1": "Kolmas laki",
+            "a2": "Ensimmäinen laki",
+            "a3": "Gravitaatiolaki",
+            "a4": "Termodynamiikan toinen pääsääntö"
+          },
           "headerLabel": "PROPULSIOFYSIIKKA"
         },
         "airforce-q10": {
           "question": "Jos ilman tiheys pysyy vakiona ja ilmanopeus kaksinkertaistuu, dynaaminen paine muuttuu suunnilleen millä kertoimella?",
-          "answers": [
-            "Kaksi",
-            "Neljä",
-            "Kahdeksan",
-            "Se ei muutu"
-          ],
+          "answers": {
+            "a1": "Kaksi",
+            "a2": "Neljä",
+            "a3": "Kahdeksan",
+            "a4": "Se ei muutu"
+          },
           "headerLabel": "LOPPUKYSYMYS"
         }
       }

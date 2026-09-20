@@ -5,6 +5,7 @@ import { createHash } from "node:crypto";
 import {
   getDefaultLocale,
   getSupportedLocales,
+  getTranslations,
   isSupportedLocale,
   type SupportedLocale,
 } from "@/lib/i18n";
@@ -137,6 +138,7 @@ export type QuizCareerCopy = {
 
 export type QuizQuestion = {
   id: string;
+  choiceIds: string[];
   type: "single-choice";
   presentation: QuizPresentation;
   context?: string;
@@ -152,6 +154,7 @@ export type QuizQuestion = {
   calibrationValues?: number[];
   advanceDelayMs?: number;
   answerIndex?: number;
+  correctAnswerId?: string;
   choiceProfileIds?: string[];
   choiceWeights?: Record<string, number>[];
   category?: string;
@@ -395,21 +398,28 @@ type QuizQuestionStructureV2 = {
   presentation?: QuizPresentation;
   visual?: { columns?: number; separator?: string };
   image?: { src: string; localizedSrc?: Record<string, string> };
-  icons?: string[];
+  icons?: Record<string, string>;
   study?: {
     presentation?: QuizStudyCue["presentation"];
     durationMs?: number;
     mode?: QuizStudyCue["mode"];
     rewarded?: boolean;
   };
-  calibration?: number[];
+  calibration?: Record<string, number>;
   delay?: number;
-  correct?: number;
+  correctAnswerId?: string;
   category?: string;
   reasoningSteps?: number;
   interactionStyle?: string;
-  choiceCount: number;
-  choiceMeanings?: Array<string | Record<string, number>>;
+  answerIds: string[];
+  choiceMeanings?: Record<string, string | Record<string, number>>;
+  protectedTokens?: QuizProtectedTokenRule[];
+};
+
+type QuizProtectedTokenRule = {
+  path: string;
+  value: string;
+  count: number;
 };
 
 type QuizStructureV2 = {
@@ -494,6 +504,8 @@ type QuizLocaleFile = {
       calibration?: number[];
       delay?: number;
       correct?: number;
+      answerIds?: string[];
+      correctAnswerId?: string;
       category?: string;
       reasoningSteps?: number;
       interactionStyle?: string;
@@ -507,8 +519,8 @@ type QuizQuestionTextV2 = {
   image?: { alt: string };
   question: string;
   headerLabel?: string;
-  answers?: string[];
-  trapdoorErrors?: Array<string | null>;
+  answers?: Record<string, string>;
+  trapdoorErrors?: Record<string, string>;
   memoryItems?: string[];
   continueLabel?: string;
   study?: {
@@ -521,21 +533,149 @@ type QuizQuestionTextV2 = {
   };
 };
 
-type QuizLocaleTextV2 = Omit<QuizLocaleFile, "stages" | "career" | "results"> & {
-  schemaVersion: 2;
+type QuizLocaleProfileTextV2 = {
+  tier: string;
+  title: string;
+  copy: string;
+  label?: string;
+  icon?: string;
+  aura?: string;
+  traits?: string[];
+  firstFeature?: string;
+};
+
+type QuizLocaleScoreTextV2 = {
+  passed: string;
+  finished: string;
+  correctLabel?: string;
+  strongest: string;
+  trickiest: string;
+  bestRound: string;
+  disclaimer?: string;
+  derivedLabel?: string;
+  retryLabel?: string;
+  reviewUnlock?: {
+    title: string;
+    copy: string;
+    button: string;
+    adNote: string;
+  };
+  insights?: {
+    overview: string;
+    correct: string;
+    missed: string;
+    target: string;
+    breakdown: string;
+    snapshot: string;
+    targetReached?: string;
+    targetRemaining?: string;
+  };
+};
+
+type QuizLocaleEstimateTextV2 = {
+  eyebrow: string;
+  ageSuffix: string;
+  strongestSignal: string;
+  wildcard: string;
+  consistency: string;
+  consistencyLabels: { high: string; medium: string; mixed: string };
+  disclaimer?: string;
+  reviewUnlock?: {
+    title: string;
+    copy: string;
+    button: string;
+    adNote: string;
+    reviewTitle: string;
+    yourChoice: string;
+    raised: string;
+    lowered: string;
+    neutral: string;
+    raisedCopy: string;
+    loweredCopy: string;
+    neutralCopy: string;
+  };
+  insights?: {
+    overview: string;
+    estimate: string;
+    signal: string;
+    consistency: string;
+    breakdown: string;
+    snapshot: string;
+  };
+};
+
+type QuizLocaleProfileRevealTextV2 = {
+  eyebrow: string;
+  auraLabel: string;
+  traitsLabel: string;
+  strongestEnergy: string;
+  hiddenEnergy: string;
+  consistency: string;
+  consistencyLabels: { high: string; medium: string; mixed: string };
+  firstFeatureLabel?: string;
+  portraitAlt?: string;
+  breakdown?: {
+    eyebrow: string;
+    title: string;
+    copy: string;
+    button: string;
+    adNote: string;
+    heading: string;
+  };
+  disclaimer?: string;
+};
+
+type QuizLocaleMatchTextV2 = {
+  academicChallenge: string;
+  correctLabel: string;
+  strongest: string;
+  preferredStyle: string;
+  alternative: string;
+  wildcard: string;
+  wildcardTemplate: string;
+  bestRound: string;
+  disclaimer: string;
+  traitLabels: Record<string, string>;
+};
+
+type QuizLocaleTextV2 = {
+  title: string;
+  eyebrow: string;
+  summary: string;
+  landing?: { intro?: string; badge?: string; cta?: string };
+  about?: {
+    body: string;
+    disclaimer?: string;
+    howToPlay?: { title?: string; steps: string[] };
+  };
   stages: Record<string, {
     title: string;
     complete?: string;
     questions: Record<string, QuizQuestionTextV2>;
   }>;
-  career: Omit<QuizCareerCopy, "stages"> & {
-    stages: Record<string, Omit<QuizCareerStageCopy, "next"> & {
-      next?: Omit<NonNullable<QuizCareerStageCopy["next"]>, "title" | "difficulty">;
+  career: {
+    resultProgressLabel?: string;
+    stages: Record<string, {
+      difficulty: string;
+      preAdTitle: string;
+      preAdCopy?: string;
+      preAdChecks?: string[];
+      preAdButton?: string;
+      next?: {
+        eyebrow: string;
+        tagline: string;
+        copy?: string;
+      };
     }>;
   };
-  results: Omit<QuizLocaleFile["results"], "profiles" | "dimensions"> & {
-    profiles: Record<string, Omit<QuizLocaleFile["results"]["profiles"][number], "id" | "min">>;
-    dimensions: Record<string, Omit<NonNullable<QuizLocaleFile["results"]["dimensions"]>[number], "profiles" | "categories">>;
+  results: {
+    name: string;
+    profiles: Record<string, QuizLocaleProfileTextV2>;
+    dimensions: Record<string, { label: string }>;
+    estimate?: QuizLocaleEstimateTextV2;
+    profileReveal?: QuizLocaleProfileRevealTextV2;
+    score?: QuizLocaleScoreTextV2;
+    match?: QuizLocaleMatchTextV2;
   };
 };
 
@@ -585,14 +725,53 @@ function validateStructureV2(value: unknown, file: string, template: QuizTemplat
   if (JSON.stringify(Object.keys(rawQuestions).sort()) !== JSON.stringify([...allQuestionIds].sort())) throw new Error(`${file}: structure.questions must exactly match staged question ids.`);
   const questions = Object.fromEntries(allQuestionIds.map((questionId) => {
     const question = object(rawQuestions[questionId], `structure.questions.${questionId}`, file);
-    exactKeys(question, ["presentation", "visual", "image", "icons", "study", "calibration", "delay", "correct", "category", "reasoningSteps", "interactionStyle", "choiceCount", "choiceMeanings"], `structure.questions.${questionId}`, file);
-    const choiceCount = Number(question.choiceCount);
-    if (!Number.isInteger(choiceCount) || choiceCount < 1 || choiceCount > 5) throw new Error(`${file}: ${questionId} choiceCount must be 1–5.`);
-    if (question.correct !== undefined && (!Number.isInteger(question.correct) || Number(question.correct) < 0 || Number(question.correct) >= choiceCount)) throw new Error(`${file}: ${questionId} has an invalid correct index.`);
-    if (question.choiceMeanings !== undefined && (!Array.isArray(question.choiceMeanings) || question.choiceMeanings.length !== choiceCount)) throw new Error(`${file}: ${questionId} choiceMeanings must match choiceCount.`);
+    exactKeys(question, ["presentation", "visual", "image", "icons", "study", "calibration", "delay", "correctAnswerId", "category", "reasoningSteps", "interactionStyle", "answerIds", "choiceMeanings", "protectedTokens"], `structure.questions.${questionId}`, file);
+    const answerIds = strings(question.answerIds, `structure.questions.${questionId}.answerIds`, file);
+    if (answerIds.length < 1 || answerIds.length > 5 || new Set(answerIds).size !== answerIds.length || answerIds.some((answerId) => !/^[a-z][a-z0-9_-]*$/.test(answerId))) {
+      throw new Error(`${file}: ${questionId} answerIds must contain 1–5 unique stable ids.`);
+    }
+    const correctAnswerId = question.correctAnswerId === undefined ? undefined : text(question.correctAnswerId, `structure.questions.${questionId}.correctAnswerId`, file);
+    if (correctAnswerId !== undefined && !answerIds.includes(correctAnswerId)) throw new Error(`${file}: ${questionId} correctAnswerId must reference answerIds.`);
+    const keyedAnswerField = (key: "icons" | "calibration" | "choiceMeanings") => {
+      if (question[key] === undefined) return undefined;
+      const value = object(question[key], `structure.questions.${questionId}.${key}`, file);
+      if (JSON.stringify(Object.keys(value).sort()) !== JSON.stringify([...answerIds].sort())) throw new Error(`${file}: ${questionId} ${key} must be keyed by every answer id.`);
+      return value;
+    };
+    const icons = keyedAnswerField("icons");
+    if (icons && Object.values(icons).some((value) => typeof value !== "string" || !value.trim())) throw new Error(`${file}: ${questionId} icons must contain non-empty strings.`);
+    const calibration = keyedAnswerField("calibration");
+    if (calibration && Object.values(calibration).some((value) => typeof value !== "number" || !Number.isFinite(value) || value < -1 || value > 1)) throw new Error(`${file}: ${questionId} calibration values must be between -1 and 1.`);
+    const choiceMeanings = keyedAnswerField("choiceMeanings");
+    const protectedTokens = question.protectedTokens === undefined ? undefined : (() => {
+      if (!Array.isArray(question.protectedTokens)) throw new Error(`${file}: structure.questions.${questionId}.protectedTokens must be an array.`);
+      const rules = question.protectedTokens.map((item, index) => {
+        const rule = object(item, `structure.questions.${questionId}.protectedTokens[${index}]`, file);
+        exactKeys(rule, ["path", "value", "count"], `structure.questions.${questionId}.protectedTokens[${index}]`, file);
+        const tokenPath = text(rule.path, `structure.questions.${questionId}.protectedTokens[${index}].path`, file);
+        const tokenValue = text(rule.value, `structure.questions.${questionId}.protectedTokens[${index}].value`, file);
+        const count = rule.count;
+        if (!Number.isInteger(count) || Number(count) < 1) throw new Error(`${file}: ${questionId} protected token count must be a positive integer.`);
+        if (!/^(?:context|question|headerLabel|continueLabel|visual\.(?:ariaLabel|items\.\d+)|image\.alt|answers\.[a-z][a-z0-9_-]*|trapdoorErrors\.[a-z][a-z0-9_-]*|memoryItems\.\d+|study\.(?:title|instruction|continueLabel|adNote|ariaLabel|items\.\d+))$/.test(tokenPath)) {
+          throw new Error(`${file}: ${questionId} protected token path ${JSON.stringify(tokenPath)} is not a supported visible-text field.`);
+        }
+        return { path: tokenPath, value: tokenValue, count: Number(count) };
+      });
+      const identities = rules.map((rule) => `${rule.path}\u0000${rule.value}`);
+      if (new Set(identities).size !== identities.length) throw new Error(`${file}: ${questionId} protected token rules must be unique by path and value.`);
+      return rules;
+    })();
     const presentation = question.presentation === undefined ? undefined : String(question.presentation) as QuizPresentation;
     if (presentation !== undefined && !["text", "icons", "scale", "memory-cue", "sequence", "grid", "code", "spatial"].includes(presentation)) throw new Error(`${file}: ${questionId} has an invalid presentation.`);
-    return [questionId, question as QuizQuestionStructureV2];
+    return [questionId, {
+      ...question,
+      answerIds,
+      correctAnswerId,
+      icons: icons as Record<string, string> | undefined,
+      calibration: calibration as Record<string, number> | undefined,
+      choiceMeanings: choiceMeanings as Record<string, string | Record<string, number>> | undefined,
+      protectedTokens,
+    } as QuizQuestionStructureV2];
   }));
   const checkpointRaw = raw.checkpoint === undefined ? undefined : object(raw.checkpoint, "structure.checkpoint", file);
   if (checkpointRaw) exactKeys(checkpointRaw, ["finalIcon", "buttonIcon"], "structure.checkpoint", file);
@@ -626,9 +805,85 @@ function validateStructureV2(value: unknown, file: string, template: QuizTemplat
   };
 }
 
+function optionalLocaleObject(value: unknown, allowedKeys: string[], label: string, file: string): Record<string, unknown> | undefined {
+  if (value === undefined) return undefined;
+  const raw = object(value, label, file);
+  exactKeys(raw, allowedKeys, label, file);
+  return raw;
+}
+
+function validateLocaleSourceV2(localeObject: Record<string, unknown>, file: string) {
+  optionalLocaleObject(localeObject.landing, ["intro", "badge", "cta"], "landing", file);
+  const about = optionalLocaleObject(localeObject.about, ["body", "disclaimer", "howToPlay"], "about", file);
+  if (about?.howToPlay !== undefined) optionalLocaleObject(about.howToPlay, ["title", "steps"], "about.howToPlay", file);
+
+  const career = object(localeObject.career, "career", file);
+  exactKeys(career, ["resultProgressLabel", "stages"], "career", file);
+  const careerStages = object(career.stages, "career.stages", file);
+  Object.entries(careerStages).forEach(([stageId, value]) => {
+    const stage = optionalLocaleObject(value, ["difficulty", "preAdTitle", "preAdCopy", "preAdChecks", "preAdButton", "next"], `career.stages.${stageId}`, file);
+    if (stage?.next !== undefined) optionalLocaleObject(stage.next, ["eyebrow", "tagline", "copy"], `career.stages.${stageId}.next`, file);
+  });
+
+  const results = object(localeObject.results, "results", file);
+  exactKeys(results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match"], "results", file);
+  const profiles = object(results.profiles, "results.profiles", file);
+  Object.entries(profiles).forEach(([profileId, value]) => {
+    optionalLocaleObject(value, ["tier", "title", "copy", "label", "icon", "aura", "traits", "firstFeature"], `results.profiles.${profileId}`, file);
+  });
+  const dimensions = object(results.dimensions, "results.dimensions", file);
+  Object.entries(dimensions).forEach(([dimensionId, value]) => {
+    optionalLocaleObject(value, ["label"], `results.dimensions.${dimensionId}`, file);
+  });
+  const score = optionalLocaleObject(results.score, ["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer", "derivedLabel", "retryLabel", "reviewUnlock", "insights"], "results.score", file);
+  if (score?.reviewUnlock !== undefined) optionalLocaleObject(score.reviewUnlock, ["title", "copy", "button", "adNote"], "results.score.reviewUnlock", file);
+  if (score?.insights !== undefined) optionalLocaleObject(score.insights, ["overview", "correct", "missed", "target", "breakdown", "snapshot", "targetReached", "targetRemaining"], "results.score.insights", file);
+  const estimate = optionalLocaleObject(results.estimate, ["eyebrow", "ageSuffix", "strongestSignal", "wildcard", "consistency", "consistencyLabels", "disclaimer", "reviewUnlock", "insights"], "results.estimate", file);
+  if (estimate?.consistencyLabels !== undefined) optionalLocaleObject(estimate.consistencyLabels, ["high", "medium", "mixed"], "results.estimate.consistencyLabels", file);
+  if (estimate?.reviewUnlock !== undefined) optionalLocaleObject(estimate.reviewUnlock, ["title", "copy", "button", "adNote", "reviewTitle", "yourChoice", "raised", "lowered", "neutral", "raisedCopy", "loweredCopy", "neutralCopy"], "results.estimate.reviewUnlock", file);
+  if (estimate?.insights !== undefined) optionalLocaleObject(estimate.insights, ["overview", "estimate", "signal", "consistency", "breakdown", "snapshot"], "results.estimate.insights", file);
+  const profileReveal = optionalLocaleObject(results.profileReveal, ["eyebrow", "auraLabel", "traitsLabel", "strongestEnergy", "hiddenEnergy", "consistency", "consistencyLabels", "firstFeatureLabel", "portraitAlt", "breakdown", "disclaimer"], "results.profileReveal", file);
+  if (profileReveal?.consistencyLabels !== undefined) optionalLocaleObject(profileReveal.consistencyLabels, ["high", "medium", "mixed"], "results.profileReveal.consistencyLabels", file);
+  if (profileReveal?.breakdown !== undefined) optionalLocaleObject(profileReveal.breakdown, ["eyebrow", "title", "copy", "button", "adNote", "heading"], "results.profileReveal.breakdown", file);
+  const match = optionalLocaleObject(results.match, ["academicChallenge", "correctLabel", "strongest", "preferredStyle", "alternative", "wildcard", "wildcardTemplate", "bestRound", "disclaimer", "traitLabels"], "results.match", file);
+  if (match?.traitLabels !== undefined) object(match.traitLabels, "results.match.traitLabels", file);
+
+  const stages = object(localeObject.stages, "stages", file);
+  Object.entries(stages).forEach(([stageId, value]) => {
+    const stage = optionalLocaleObject(value, ["title", "complete", "questions"], `stages.${stageId}`, file);
+    const questions = object(stage?.questions, `stages.${stageId}.questions`, file);
+    Object.entries(questions).forEach(([questionId, questionValue]) => {
+      const question = optionalLocaleObject(questionValue, ["context", "visual", "image", "question", "headerLabel", "answers", "trapdoorErrors", "memoryItems", "continueLabel", "study"], `stages.${stageId}.questions.${questionId}`, file);
+      if (question?.visual !== undefined) optionalLocaleObject(question.visual, ["items", "ariaLabel"], `stages.${stageId}.questions.${questionId}.visual`, file);
+      if (question?.image !== undefined) optionalLocaleObject(question.image, ["alt"], `stages.${stageId}.questions.${questionId}.image`, file);
+      if (question?.answers !== undefined) object(question.answers, `stages.${stageId}.questions.${questionId}.answers`, file);
+      if (question?.trapdoorErrors !== undefined) object(question.trapdoorErrors, `stages.${stageId}.questions.${questionId}.trapdoorErrors`, file);
+      if (question?.study !== undefined) optionalLocaleObject(question.study, ["title", "instruction", "items", "continueLabel", "adNote", "ariaLabel"], `stages.${stageId}.questions.${questionId}.study`, file);
+    });
+  });
+}
+
+function visibleStringAtPath(value: unknown, fieldPath: string): string | undefined {
+  const resolved = fieldPath.split(".").reduce<unknown>((current, segment) => {
+    if (Array.isArray(current) && /^\d+$/.test(segment)) return current[Number(segment)];
+    if (!current || typeof current !== "object" || !Object.prototype.hasOwnProperty.call(current, segment)) return undefined;
+    return (current as Record<string, unknown>)[segment];
+  }, value);
+  return typeof resolved === "string" ? resolved : undefined;
+}
+
+function tokenOccurrenceCount(value: string, token: string) {
+  return value.split(token).length - 1;
+}
+
 function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: SupportedLocale, file: string): QuizLocaleFile {
-  const raw = object(value, "locale", file) as unknown as QuizLocaleTextV2;
-  if (raw.schemaVersion !== 2) throw new Error(`${file}: schemaVersion must be 2.`);
+  const localeObject = object(value, "locale", file);
+  exactKeys(localeObject, ["title", "eyebrow", "summary", "landing", "about", "career", "results", "stages"], "locale", file);
+  validateLocaleSourceV2(localeObject, file);
+  const raw = localeObject as unknown as QuizLocaleTextV2;
+  const localizedShared = getTranslations(locale).quiz;
+  const englishShared = getTranslations(getDefaultLocale()).quiz;
+  const shared = { ...englishShared, ...localizedShared };
   const structure = manifest.structure;
   if (!structure) throw new Error(`${file}: schema v2 locale requires manifest structure.`);
   const stageKeys = Object.keys(raw.stages ?? {}).sort();
@@ -645,11 +900,29 @@ function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: Supporte
         const logic = structure.questions[questionId];
         const copy = stageCopy.questions[questionId];
         if (!copy) throw new Error(`${file}: missing question text for ${questionId}.`);
-        const answers = copy.answers === undefined ? undefined : logic.choiceMeanings
-          ? Object.fromEntries(copy.answers.map((answer, index) => [answer, logic.choiceMeanings?.[index]]))
-          : copy.answers;
+        if (copy.answers !== undefined) {
+          const answerKeys = Object.keys(copy.answers).sort();
+          if (JSON.stringify(answerKeys) !== JSON.stringify([...logic.answerIds].sort())) throw new Error(`${file}: ${questionId} answer copy must be keyed by quiz.json answerIds.`);
+          logic.answerIds.forEach((answerId) => text(copy.answers?.[answerId], `stages.${stage.id}.questions.${questionId}.answers.${answerId}`, file));
+        }
+        if (copy.trapdoorErrors !== undefined) {
+          const invalidKeys = Object.keys(copy.trapdoorErrors).filter((answerId) => !logic.answerIds.includes(answerId));
+          if (invalidKeys.length) throw new Error(`${file}: ${questionId} trapdoorErrors reference unknown answer ids.`);
+          Object.entries(copy.trapdoorErrors).forEach(([answerId, explanation]) => text(explanation, `stages.${stage.id}.questions.${questionId}.trapdoorErrors.${answerId}`, file));
+        }
+        logic.protectedTokens?.forEach((rule) => {
+          const protectedText = visibleStringAtPath(copy, rule.path);
+          if (protectedText === undefined || tokenOccurrenceCount(protectedText, rule.value) !== rule.count) {
+            throw new Error(`${file}: ${questionId}.${rule.path} must preserve ${rule.count} occurrence${rule.count === 1 ? "" : "s"} of protected token ${JSON.stringify(rule.value)}.`);
+          }
+        });
+        const answerLabels = copy.answers === undefined ? undefined : logic.answerIds.map((answerId) => copy.answers?.[answerId] ?? "");
+        const answers = answerLabels === undefined ? undefined : logic.choiceMeanings
+          ? Object.fromEntries(logic.answerIds.map((answerId, index) => [answerLabels[index], logic.choiceMeanings?.[answerId]]))
+          : answerLabels;
         return {
           id: questionId,
+          answerIds: logic.answerIds,
           context: copy.context,
           visual: logic.visual || copy.visual ? { ...copy.visual, ...logic.visual } as QuizQuestionVisual : undefined,
           image: logic.image || copy.image ? {
@@ -660,13 +933,14 @@ function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: Supporte
           headerLabel: copy.headerLabel,
           presentation: logic.presentation,
           answers,
-          icons: logic.icons,
+          icons: logic.icons ? logic.answerIds.map((answerId) => logic.icons?.[answerId] ?? "") : undefined,
           memoryItems: copy.memoryItems,
           continueLabel: copy.continueLabel,
           study: logic.study || copy.study ? { ...copy.study, ...logic.study } as QuizLocaleFile["stages"][number]["questions"][number]["study"] : undefined,
-          calibration: logic.calibration,
+          calibration: logic.calibration ? logic.answerIds.map((answerId) => logic.calibration?.[answerId] ?? 0) : undefined,
           delay: logic.delay,
-          correct: logic.correct,
+          correctAnswerId: logic.correctAnswerId,
+          correct: logic.correctAnswerId === undefined ? undefined : logic.answerIds.indexOf(logic.correctAnswerId),
           category: logic.category,
           reasoningSteps: logic.reasoningSteps,
           interactionStyle: logic.interactionStyle,
@@ -682,10 +956,13 @@ function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: Supporte
   if (JSON.stringify(dimensionKeys) !== JSON.stringify(expectedDimensionKeys)) throw new Error(`${file}: result dimensions must exactly match manifest dimension keys.`);
   const score = raw.results.score ? {
     ...raw.results.score,
+    correctLabel: raw.results.score.correctLabel ?? shared.scoreCorrect,
     ...structure.results.score,
     disclaimer: raw.results.score.disclaimer ?? raw.about?.disclaimer,
   } : undefined;
-  const estimate = raw.results.estimate ? structuredClone(raw.results.estimate) : undefined;
+  const estimate = raw.results.estimate
+    ? structuredClone(raw.results.estimate) as QuizResultConfig["estimate"]
+    : undefined;
   if (estimate) {
     estimate.disclaimer ??= raw.about?.disclaimer ?? "";
     if (estimate.reviewUnlock && structure.results.estimate?.reviewUnlockRewarded !== undefined) estimate.reviewUnlock.rewarded = structure.results.estimate.reviewUnlockRewarded;
@@ -707,19 +984,31 @@ function expandLocaleV2(value: unknown, manifest: QuizManifest, locale: Supporte
     const nextStageCopy = nextStage ? raw.stages[nextStage.id] : undefined;
     const nextCareerCopy = nextStage ? raw.career.stages[nextStage.id] : undefined;
     const uppercase = stage.uppercaseNextForLocales?.includes(locale) ?? false;
-    return {
+    const resolved = {
       ...copy,
+      preAdButton: copy.preAdButton ?? (manifest.engine.scoring === "correct-answer" ? shared.revealMyResults : undefined),
       next: copy.next && nextStageCopy && nextCareerCopy ? {
         ...copy.next,
         title: uppercase ? nextStageCopy.title.toLocaleUpperCase(locale) : nextStageCopy.title,
         difficulty: uppercase ? nextCareerCopy.difficulty.toLocaleUpperCase(locale) : nextCareerCopy.difficulty,
       } : undefined,
     };
+    if (manifest.engine.scoring === "correct-answer" && resolved.preAdChecks?.length === 2) {
+      resolved.preAdChecks = [...resolved.preAdChecks, shared.finalScoreCalculated];
+    }
+    return resolved;
   });
   return {
     ...raw,
-    checkpoint: raw.checkpoint || structure.checkpoint ? { ...raw.checkpoint, ...structure.checkpoint } : undefined,
-    career: { ...raw.career, stages: careerStages },
+    about: raw.about ? {
+      ...raw.about,
+      howToPlay: raw.about.howToPlay ? {
+        ...raw.about.howToPlay,
+        title: raw.about.howToPlay.title ?? shared.howToPlayTitle,
+      } : undefined,
+    } : undefined,
+    checkpoint: structure.checkpoint ? { ...structure.checkpoint } : undefined,
+    career: { ...raw.career, resultProgressComplete: shared.progressComplete, stages: careerStages },
     results: {
       ...raw.results,
       profiles: structure.results.profiles.map((profile) => ({ id: profile.id, min: profile.min, ...raw.results.profiles[profile.key] })),
@@ -797,9 +1086,9 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     const rawSelector = object(engine.profileArtworkSelector, "engine.profileArtworkSelector", file);
     const fixedVariants = object(rawSelector.fixedVariants, "engine.profileArtworkSelector.fixedVariants", file);
     if (Object.keys(fixedVariants).length < 1) throw new Error(`${file}: profileArtworkSelector needs at least one fixed variant.`);
-    const normalizedVariants = Object.fromEntries(Object.entries(fixedVariants).map(([choice, variant]) => {
-      if (!/^\d+$/.test(choice)) throw new Error(`${file}: profileArtworkSelector fixed-variant keys must be answer indices.`);
-      return [choice, text(variant, `engine.profileArtworkSelector.fixedVariants.${choice}`, file)];
+    const normalizedVariants = Object.fromEntries(Object.entries(fixedVariants).map(([answerId, variant]) => {
+      if (!/^[a-z][a-z0-9_-]*$/.test(answerId)) throw new Error(`${file}: profileArtworkSelector fixed-variant keys must be stable answer ids.`);
+      return [answerId, text(variant, `engine.profileArtworkSelector.fixedVariants.${answerId}`, file)];
     }));
     if (rawSelector.fallback !== "stable-answer-hash") throw new Error(`${file}: profileArtworkSelector fallback must be stable-answer-hash.`);
     profileArtworkSelector = {
@@ -973,7 +1262,7 @@ function normalizeLocale(
     }
     if (career.resultProgressLabel !== undefined) text(career.resultProgressLabel, "career.resultProgressLabel", file);
     const progressComplete = text(career.resultProgressComplete, "career.resultProgressComplete", file);
-    if (!progressComplete.includes("{value}")) throw new Error(`${file}: career.resultProgressComplete must include {value}.`);
+    if (!progressComplete.includes("{value}")) throw new Error(`${file}: shared career.resultProgressComplete must include {value}.`);
     if ((career as unknown as Record<string, unknown>).compactGate !== undefined) throw new Error(`${file}: career.compactGate is replaced by the shared checkpoint shell.`);
     if (!Array.isArray(career.stages) || career.stages.length !== value.stages.length) throw new Error(`${file}: career stages must match quiz stages.`);
     career.stages.forEach((stage, index) => {
@@ -1106,6 +1395,7 @@ function normalizeLocale(
       questionIds.add(id);
       questions.push({
         id,
+        choiceIds: rawQuestion.answerIds ?? choices.map((_, choiceIndex) => `a${choiceIndex + 1}`),
         type: "single-choice",
         presentation,
         context: rawQuestion.context === undefined ? undefined : text(rawQuestion.context, "question context", file),
@@ -1121,6 +1411,7 @@ function normalizeLocale(
         calibrationValues: rawQuestion.calibration,
         advanceDelayMs: rawQuestion.delay,
         answerIndex: rawQuestion.correct,
+        correctAnswerId: rawQuestion.correctAnswerId,
         choiceProfileIds: profileIds.some(Boolean) ? profileIds : undefined,
         choiceWeights: weights.some((item) => Object.keys(item).length) ? weights : undefined,
         category: rawQuestion.category,
@@ -1197,9 +1488,8 @@ function normalizeLocale(
     if (!selectorQuestion.calibrationValues?.every((value) => value === 0)) {
       throw new Error(`${file}: profileArtworkSelector question must be unscored with zero calibration values.`);
     }
-    Object.entries(selector.fixedVariants).forEach(([choiceIndex, variantId]) => {
-      const index = Number(choiceIndex);
-      if (!Number.isInteger(index) || index < 0 || index >= selectorQuestion.choices.length) throw new Error(`${file}: profileArtworkSelector choice ${choiceIndex} is invalid.`);
+    Object.entries(selector.fixedVariants).forEach(([answerId, variantId]) => {
+      if (!selectorQuestion.choiceIds.includes(answerId)) throw new Error(`${file}: profileArtworkSelector answer ${answerId} is invalid.`);
       profiles.forEach((profile) => {
         if (!profile.id || !manifest.theme.artwork?.profileVariants?.[profile.id]?.[variantId]) {
           throw new Error(`${file}: profile ${profile.id ?? "unknown"} is missing artwork variant ${variantId}.`);
@@ -1293,7 +1583,6 @@ function normalizeLocale(
     title,
     eyebrow,
     summary,
-    progressLabel: value.progressLabel === undefined ? undefined : text(value.progressLabel, "progressLabel", file),
     nextQuestionLabel: value.nextQuestionLabel === undefined ? undefined : text(value.nextQuestionLabel, "nextQuestionLabel", file),
     publishedAt: `${manifest.listing.published}T00:00:00Z`,
     difficulty: manifest.listing.difficulty,

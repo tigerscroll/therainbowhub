@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pouze 7 % projde tímto testem asociace slov",
   "eyebrow": "TEST SPOJENÍ SLOVA",
   "summary": "Deset slov. Každý ze čtyř možných připojení. Jen ty nejbystřejší mysli vidí každý skutečný zápas.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Každé slovo má jednu správnou shodu. Prvních pár se zdá samozřejmých - pak to začne být překvapivě složité.",
     "cta": "Spustit kvíz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Každé slovo nese síť možných významů, ale pouze jedna možnost v každém kole má přesné spojení, které otázka testuje. Tato výzva s deseti otázkami přechází od známých každodenních vazeb k vědě, konceptům a slovním hříčkám.\n\nVyberte si nejsilnější zápas ze čtyř možností. Správnost zůstává skryta až do konečného odhalení, takže záleží na instinktu a pečlivém uvažování.\n\nKvíz využívá jako inspiraci formát asociace s jedním klíčovým slovem propojené výzvy Times of India s originální sadou otázek, pořadím odpovědí a výsledky.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Přečtěte si klíčové slovo a rozhodněte, s čím se nejpřesněji pojí.",
         "Vyberte jednu odpověď ze čtyř možných shod.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Slovní asociační výzva",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Slovní spojení",
@@ -30,10 +26,8 @@
         "preAdCopy": "Bylo zkontrolováno vašich deset spojení a vaše skóre asociace slov je připraveno odhalit.",
         "preAdChecks": [
           "Zkontrolováno 10 připojení",
-          "Byly porovnány tři typy asociací",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Byly porovnány tři typy asociací"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Prošel jste testem slovní asociace!",
       "finished": "Test asociace slov dokončen",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější typ připojení",
       "trickiest": "Nejnáročnější typ připojení",
       "bestRound": "Nejlepší sekce",
@@ -93,8 +86,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "word-q1": {
           "question": "Které slovo nejvíce souvisí s výrazem „OCEÁN“?",
-          "answers": [
-            "Tužka",
-            "Příliv",
-            "Deka",
-            "Motor"
-          ],
+          "answers": {
+            "a1": "Tužka",
+            "a2": "Příliv",
+            "a3": "Deka",
+            "a4": "Motor"
+          },
           "headerLabel": "SLOVO 1 Z 10"
         },
         "word-q2": {
           "question": "Které slovo nejvíce souvisí s výrazem „SOPKA“?",
-          "answers": [
-            "Zrcadlo",
-            "Stuha",
-            "Peněženka",
-            "Láva"
-          ],
+          "answers": {
+            "a1": "Zrcadlo",
+            "a2": "Stuha",
+            "a3": "Peněženka",
+            "a4": "Láva"
+          },
           "headerLabel": "SLOVO 2 Z 10"
         },
         "word-q3": {
           "question": "Které slovo nejvíce souvisí s výrazem „KOMPAS“?",
-          "answers": [
-            "Sever",
-            "Příchuť",
-            "Tkanina",
-            "Echo"
-          ],
+          "answers": {
+            "a1": "Sever",
+            "a2": "Příchuť",
+            "a3": "Tkanina",
+            "a4": "Echo"
+          },
           "headerLabel": "SLOVO 3 Z 10"
         },
         "word-q4": {
           "question": "Které slovo nejvíce souvisí s výrazem „BATERIE“?",
-          "answers": [
-            "Stín",
-            "Sklizeň",
-            "Náboj",
-            "Melodie"
-          ],
+          "answers": {
+            "a1": "Stín",
+            "a2": "Sklizeň",
+            "a3": "Náboj",
+            "a4": "Melodie"
+          },
           "headerLabel": "SLOVO 4 Z 10"
         },
         "word-q5": {
           "question": "Které slovo nejvíce souvisí s výrazem „SOUOSTROVÍ“?",
-          "answers": [
-            "Tunely",
-            "ostrovy",
-            "Fosilie",
-            "Mraky"
-          ],
+          "answers": {
+            "a1": "Tunely",
+            "a2": "ostrovy",
+            "a3": "Fosilie",
+            "a4": "Mraky"
+          },
           "headerLabel": "SLOVO 5 Z 10"
         },
         "word-q6": {
           "question": "Které slovo nejvíce souvisí s výrazem „BAROMETR“?",
-          "answers": [
-            "Vzdálenost",
-            "Hlasitost",
-            "Rychlost",
-            "Tlak"
-          ],
+          "answers": {
+            "a1": "Vzdálenost",
+            "a2": "Hlasitost",
+            "a3": "Rychlost",
+            "a4": "Tlak"
+          },
           "headerLabel": "SLOVO 6 Z 10"
         },
         "word-q7": {
           "question": "Které slovo nejvíce souvisí s výrazem „ALGORITMUS“?",
-          "answers": [
-            "Kroky",
-            "Plátno",
-            "hrom",
-            "Samet"
-          ],
+          "answers": {
+            "a1": "Kroky",
+            "a2": "Plátno",
+            "a3": "hrom",
+            "a4": "Samet"
+          },
           "headerLabel": "SLOVO 7 Z 10"
         },
         "word-q8": {
           "question": "Které slovo nejvíce souvisí s výrazem „KLENÁK“?",
-          "answers": [
-            "Kompas",
-            "Závěs",
-            "Oblouk",
-            "Láhev"
-          ],
+          "answers": {
+            "a1": "Kompas",
+            "a2": "Závěs",
+            "a3": "Oblouk",
+            "a4": "Láhev"
+          },
           "headerLabel": "SLOVO 8 Z 10"
         },
         "word-q9": {
           "question": "Které slovo nejvíce souvisí s výrazem „HOMOFONUM“?",
-          "answers": [
-            "Zvuk",
-            "Barva",
-            "Tvar",
-            "Velikost"
-          ],
+          "answers": {
+            "a1": "Zvuk",
+            "a2": "Barva",
+            "a3": "Tvar",
+            "a4": "Velikost"
+          },
           "headerLabel": "SLOVO 9 Z 10"
         },
         "word-q10": {
           "question": "Které slovo nejvíce souvisí s výrazem „PALINDROM“?",
-          "answers": [
-            "Trojúhelník",
-            "Radar",
-            "kapitola",
-            "Kompas"
-          ],
+          "answers": {
+            "a1": "Trojúhelník",
+            "a2": "Radar",
+            "a3": "kapitola",
+            "a4": "Kompas"
+          },
           "headerLabel": "KONEČNÉ PŘIPOJENÍ"
         }
       }

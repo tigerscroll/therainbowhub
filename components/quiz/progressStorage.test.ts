@@ -21,7 +21,7 @@ test("invalid, missing and future timestamps cannot restore progress", () => {
 });
 
 test("storage remains isolated by quiz and locale", () => {
-  assert.equal(getQuizStorageKey("iq", "en"), "rainbowhub:quiz-progress:v3:iq:en");
+  assert.equal(getQuizStorageKey("iq", "en"), "rainbowhub:quiz-progress:v4:iq:en");
   assert.notEqual(getQuizStorageKey("iq", "en"), getQuizStorageKey("memory", "en"));
   assert.notEqual(getQuizStorageKey("iq", "en"), getQuizStorageKey("iq", "fr"));
 });

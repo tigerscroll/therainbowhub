@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Schneller Katarakttest",
   "eyebrow": "VISIONS-CHECK MIT 10 FRAGEN",
   "summary": "Verschwommene Details, nahe visuelle Fallen und wichtige Katarakt-Warnzeichen in einer schnellen Herausforderung.",
-  "progressLabel": "abgeschlossen",
   "landing": {
     "intro": "Der Graue Star kann zunächst leicht übersehen werden. Finden Sie in den zehn kurzen Fragen heraus, ob Sie die subtilen Hinweise erkennen können – die letzten Fragen überraschen die meisten Menschen.",
     "cta": "Test starten"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Diese Herausforderung mit zehn Fragen kombiniert fünf visuelle Rätsel auf dem Bildschirm mit fünf allgemeinen Fragen zum Thema Katarakte. Es misst die Antworten auf dieses Quiz, nicht das Sehvermögen, die Linsengesundheit oder die Wahrscheinlichkeit eines Katarakts.\n\nBildschirmgröße, Helligkeit, Kontrast, Sehvermögen, Korrekturlinsen, Müdigkeit und Geräteeinstellungen können sich alle auf die Leistung auswirken. Anhaltend verschwommenes oder verschwommenes Sehen, Blendung, Lichthöfe um Lichter, Schwierigkeiten beim Sehen bei Nacht oder Töne, die weniger lebendig erscheinen, sollten mit einem qualifizierten Augenarzt besprochen werden.",
     "howToPlay": {
-      "title": "So funktioniert es",
       "steps": [
         "Schließe fünf Detail-, Muster- und visuelle Gedächtnisaufgaben ab.",
         "Beantworten Sie fünf Fragen zum Thema Katarakte und wann Sie Hilfe suchen sollten.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katarakt-Herausforderung",
-    "resultProgressComplete": "{value} % abgeschlossen",
     "stages": {
       "stage-1": {
         "difficulty": "Schneller Katarakttest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ihre zehn Antworten wurden überprüft und Ihr Katarakt-Herausforderungsergebnis kann nun bekannt gegeben werden.",
         "preAdChecks": [
           "10 Antworten überprüft",
-          "Drei visuelle Bereiche im Vergleich",
-          "Ihr Endergebnis wurde berechnet"
-        ],
-        "preAdButton": "Meine Ergebnisse anzeigen"
+          "Drei visuelle Bereiche im Vergleich"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Sie haben die visuelle Herausforderung zu 80 % gemeistert!",
       "finished": "Katarakt-Herausforderung abgeschlossen",
-      "correctLabel": "richtig",
       "strongest": "Stärkster Bereich heute",
       "trickiest": "Der schwierigste Bereich heute",
       "bestRound": "Stärkster Bereich",
@@ -94,8 +87,7 @@
         "snapshot": "Was Ihr Ergebnis zeigt",
         "targetReached": "80 % Herausforderung erreicht",
         "targetRemaining": "Für 80 % sind mehr richtige Antworten erforderlich."
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Welcher Charakter befindet sich genau in der Mitte des Rasters?",
           "headerLabel": "ZENTRALES DETAIL",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENZ: B8R3K5",
           "question": "Welcher Code entspricht genau der Referenz?",
           "headerLabel": "VERGLEICH UNSCHARFER ZEICHEN",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENZ",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Welches Symbol vervollständigt die Wechselfolge?",
           "headerLabel": "MUSTERVERFOLGUNG",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Welches Objekt erschien als Drittes?",
           "headerLabel": "SCHNELLES VISUELLES GEDÄCHTNIS",
-          "answers": [
-            "Buch",
-            "Schlüssel",
-            "Zitrone",
-            "Regenschirm"
-          ],
+          "answers": {
+            "a1": "Buch",
+            "a2": "Schlüssel",
+            "a3": "Zitrone",
+            "a4": "Regenschirm"
+          },
           "study": {
             "title": "Studieren Sie die Fünf-Objekt-Reihenfolge",
             "instruction": "Dies verschwindet automatisch.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Welche Position enthält den hellen Kreis?",
           "headerLabel": "DETAILPRÜFUNG",
-          "answers": [
-            "Fünfte",
-            "Zweite",
-            "Vierte",
-            "Sechste"
-          ],
+          "answers": {
+            "a1": "Fünfte",
+            "a2": "Zweite",
+            "a3": "Vierte",
+            "a4": "Sechste"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Was ist ein Katarakt?",
           "headerLabel": "GRUNDWISSEN ZUM GRAUEN STAR",
-          "answers": [
-            "Ein Kratzer am Augenlid",
-            "Ein trüber Bereich in der natürlichen Linse des Auges",
-            "Ein Problem, das auf den Tränenkanal beschränkt ist",
-            "Eine Art Ohrenentzündung"
-          ]
+          "answers": {
+            "a1": "Ein Kratzer am Augenlid",
+            "a2": "Ein trüber Bereich in der natürlichen Linse des Auges",
+            "a3": "Ein Problem, das auf den Tränenkanal beschränkt ist",
+            "a4": "Eine Art Ohrenentzündung"
+          }
         },
         "cataract-q7": {
           "question": "Welche Gruppe enthält häufige Kataraktsymptome?",
           "headerLabel": "WARNSIGNALE",
-          "answers": [
-            "Juckende Haut und Halsschmerzen",
-            "Plötzlicher Hörverlust und Schwindel",
-            "Unscharfes oder getrübtes Sehen, Blendempfindlichkeit und Lichthöfe um Lichtquellen",
-            "Ein steifer Nacken und schmerzende Schultern"
-          ]
+          "answers": {
+            "a1": "Juckende Haut und Halsschmerzen",
+            "a2": "Plötzlicher Hörverlust und Schwindel",
+            "a3": "Unscharfes oder getrübtes Sehen, Blendempfindlichkeit und Lichthöfe um Lichtquellen",
+            "a4": "Ein steifer Nacken und schmerzende Schultern"
+          }
         },
         "cataract-q8": {
           "question": "Wie kann ein Augenarzt den Grauen Star untersuchen?",
           "headerLabel": "PROFESSIONELLE BEWERTUNG",
-          "answers": [
-            "Mit einem Hörtest",
-            "Verwendung einer Blutdruckmessung zu Hause",
-            "Mit einem Geschmackstest",
-            "Im Rahmen einer umfassenden Augenuntersuchung mit Pupillenerweiterung"
-          ]
+          "answers": {
+            "a1": "Mit einem Hörtest",
+            "a2": "Verwendung einer Blutdruckmessung zu Hause",
+            "a3": "Mit einem Geschmackstest",
+            "a4": "Im Rahmen einer umfassenden Augenuntersuchung mit Pupillenerweiterung"
+          }
         },
         "cataract-q9": {
           "question": "Was ist die sicherste Reaktion auf einen plötzlichen Sehverlust, starke Augenschmerzen oder eine plötzliche starke Sehveränderung?",
           "headerLabel": "WANN HANDELN",
-          "answers": [
-            "Holen Sie dringend fachärztlichen Rat zur Augengesundheit ein",
-            "Warten Sie mehrere Monate, ohne es zu erwähnen",
-            "Ändern Sie die Bildschirmhelligkeit und gehen Sie davon aus, dass das Problem behoben ist",
-            "Verlassen Sie sich ausschließlich auf ein Online-Quiz"
-          ]
+          "answers": {
+            "a1": "Holen Sie dringend fachärztlichen Rat zur Augengesundheit ein",
+            "a2": "Warten Sie mehrere Monate, ohne es zu erwähnen",
+            "a3": "Ändern Sie die Bildschirmhelligkeit und gehen Sie davon aus, dass das Problem behoben ist",
+            "a4": "Verlassen Sie sich ausschließlich auf ein Online-Quiz"
+          }
         },
         "cataract-q10": {
           "question": "Was kann Ihnen Ihre Punktzahl bei dieser Online-Challenge sagen?",
           "headerLabel": "LETZTER REALITÄTSCHECK",
-          "answers": [
-            "Ob Ihre Linsen gesund sind",
-            "Nur wie Sie bei diesen zehn Fragen abgeschnitten haben",
-            "Ob Sie eine Kataraktoperation benötigen",
-            "Ob man einen Grauen Star ausschließen kann"
-          ]
+          "answers": {
+            "a1": "Ob Ihre Linsen gesund sind",
+            "a2": "Nur wie Sie bei diesen zehn Fragen abgeschnitten haben",
+            "a3": "Ob Sie eine Kataraktoperation benötigen",
+            "a4": "Ob man einen Grauen Star ausschließen kann"
+          }
         }
       }
     }

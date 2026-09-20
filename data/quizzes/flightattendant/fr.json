@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 12 % des adultes peuvent réussir cet examen d’entrée pour agents de bord",
   "eyebrow": "LE TEST D’APTITUDE DE L’ÉQUIPAGE DE CABINE",
   "summary": "Dix questions testent la sécurité de la cabine, les urgences, la coordination de l'équipage et les connaissances de l'avion.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les questions de service semblent faciles. L’examen passe ensuite à la décompression, à l’évacuation et à la sécurité de la cabine.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi de divertissement composé de dix questions utilise les grands principes de sécurité en cabine partagés dans l’aviation internationale. Il teste la sécurité des passagers, les priorités d’urgence, la coordination des équipages et les systèmes de l’avion sans s’appuyer sur les commandes ou procédures exactes d’une compagnie aérienne.\n\nChoisissez une réponse pour chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions de plus en plus difficiles sur le personnel de cabine.",
         "Choisissez la réponse la plus sûre ou la plus précise.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée des agents de bord",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée pour agents de bord",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score d'aptitude du personnel de cabine est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Comparaison de quatre zones de sécurité en cabine",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Comparaison de quatre zones de sécurité en cabine"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Vous avez réussi le défi d'admission du personnel navigant commercial !",
       "finished": "Défi d'entrée pour les agents de bord terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -96,8 +89,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Quelle est la principale responsabilité d’un agent de bord ?",
-          "answers": [
-            "Assurer la sécurité des passagers",
-            "Vendre des produits à bord",
-            "Servir les repas rapidement",
-            "Annoncer la destination"
-          ],
+          "answers": {
+            "a1": "Assurer la sécurité des passagers",
+            "a2": "Vendre des produits à bord",
+            "a3": "Servir les repas rapidement",
+            "a4": "Annoncer la destination"
+          },
           "headerLabel": "PRIORITÉS DE LA CABINE"
         },
         "flightattendant-q2": {
           "question": "Lorsque des turbulences importantes commencent, quelle est la priorité immédiate de la cabine ?",
-          "answers": [
-            "Continuer le service pour éviter les retards",
-            "Se mettre soi-même et la cabine en sécurité, conformément aux procédures",
-            "Ouvrez tous les compartiments supérieurs",
-            "Demandez aux passagers de se lever et de s'étirer"
-          ],
+          "answers": {
+            "a1": "Continuer le service pour éviter les retards",
+            "a2": "Se mettre soi-même et la cabine en sécurité, conformément aux procédures",
+            "a3": "Ouvrez tous les compartiments supérieurs",
+            "a4": "Demandez aux passagers de se lever et de s'étirer"
+          },
           "headerLabel": "TURBULENCE"
         },
         "flightattendant-q3": {
           "question": "Si les masques à oxygène tombent pendant la décompression, que devez-vous normalement faire avant d'aider une autre personne ?",
-          "answers": [
-            "Retirez votre ceinture de sécurité",
-            "Attendez les lumières de la cabine",
-            "Ajustez votre propre masque",
-            "Déplacez-vous vers l'allée"
-          ],
+          "answers": {
+            "a1": "Retirez votre ceinture de sécurité",
+            "a2": "Attendez les lumières de la cabine",
+            "a3": "Ajustez votre propre masque",
+            "a4": "Déplacez-vous vers l'allée"
+          },
           "headerLabel": "DÉCOMPRESSION"
         },
         "flightattendant-q4": {
           "question": "Lors d'une évacuation d'urgence, que doivent généralement faire les passagers avec leurs bagages à main ?",
-          "answers": [
-            "Ne prenez que des petits sacs",
-            "Porter des sacs sur une épaule",
-            "Passer les sacs aux membres de l'équipage",
-            "Laisser tous leurs bagages sur place"
-          ],
+          "answers": {
+            "a1": "Ne prenez que des petits sacs",
+            "a2": "Porter des sacs sur une épaule",
+            "a3": "Passer les sacs aux membres de l'équipage",
+            "a4": "Laisser tous leurs bagages sur place"
+          },
           "headerLabel": "ÉVACUATION"
         },
         "flightattendant-q5": {
           "question": "Pourquoi les passagers devraient-ils compter les rangées entre leur siège et les sorties utilisables les plus proches ?",
-          "answers": [
-            "La fumée ou l'obscurité peuvent rendre les sorties plus difficiles à voir",
-            "Il détermine l'ordre du service de repas",
-            "Il identifie le siège le plus silencieux",
-            "Cela change l’équilibre de l’avion"
-          ],
+          "answers": {
+            "a1": "La fumée ou l'obscurité peuvent rendre les sorties plus difficiles à voir",
+            "a2": "Il détermine l'ordre du service de repas",
+            "a3": "Il identifie le siège le plus silencieux",
+            "a4": "Cela change l’équilibre de l’avion"
+          },
           "headerLabel": "REPÉRAGE DES ISSUES"
         },
         "flightattendant-q6": {
           "question": "Dans l’aviation, qu’est-ce que la gestion des ressources de l’équipage vise principalement à renforcer ?",
-          "answers": [
-            "Tarification et planification des billets",
-            "Communication, travail d'équipe et prise de décision",
-            "Divertissement des passagers",
-            "Vitesse de fabrication des avions"
-          ],
+          "answers": {
+            "a1": "Tarification et planification des billets",
+            "a2": "Communication, travail d'équipe et prise de décision",
+            "a3": "Divertissement des passagers",
+            "a4": "Vitesse de fabrication des avions"
+          },
           "headerLabel": "COORDINATION DE L'ÉQUIPAGE"
         },
         "flightattendant-q7": {
           "question": "Que signifie l’hypoxie ?",
-          "answers": [
-            "Bruit excessif dans la cabine",
-            "Un changement de direction rapide",
-            "Insuffisance d’oxygène atteignant les tissus corporels",
-            "Un retard à l'embarquement"
-          ],
+          "answers": {
+            "a1": "Bruit excessif dans la cabine",
+            "a2": "Un changement de direction rapide",
+            "a3": "Insuffisance d’oxygène atteignant les tissus corporels",
+            "a4": "Un retard à l'embarquement"
+          },
           "headerLabel": "SANTÉ AÉRIENNE"
         },
         "flightattendant-q8": {
           "question": "Quels sont les trois éléments qui composent le triangle du feu ?",
-          "answers": [
-            "Fumée, flammes et cendres",
-            "Eau, air et métal",
-            "Carburant, pression et vapeur",
-            "Chaleur, carburant et oxygène"
-          ],
+          "answers": {
+            "a1": "Fumée, flammes et cendres",
+            "a2": "Eau, air et métal",
+            "a3": "Carburant, pression et vapeur",
+            "a4": "Chaleur, carburant et oxygène"
+          },
           "headerLabel": "SÉCURITÉ INCENDIE"
         },
         "flightattendant-q9": {
           "question": "Quelle est la fonction principale de l’éclairage de secours au niveau du sol ?",
-          "answers": [
-            "Pour aider à guider les gens vers les sorties lorsque la visibilité est mauvaise",
-            "Pour éclairer les plateaux repas",
-            "Pour afficher la vitesse de l’avion",
-            "Pour repérer les sièges haut de gamme"
-          ],
+          "answers": {
+            "a1": "Pour aider à guider les gens vers les sorties lorsque la visibilité est mauvaise",
+            "a2": "Pour éclairer les plateaux repas",
+            "a3": "Pour afficher la vitesse de l’avion",
+            "a4": "Pour repérer les sièges haut de gamme"
+          },
           "headerLabel": "SYSTÈMES DE CABINE"
         },
         "flightattendant-q10": {
           "question": "Pourquoi les passagers doivent-ils prêter attention au briefing de sécurité même s'ils prennent souvent l'avion ?",
-          "answers": [
-            "Il révèle l’altitude de croisière du vol",
-            "L'équipement et les procédures d'urgence peuvent différer selon l'avion",
-            "Il détermine l'ordre de livraison des bagages",
-            "Il explique comment les prix des billets ont été fixés"
-          ],
+          "answers": {
+            "a1": "Il révèle l’altitude de croisière du vol",
+            "a2": "L'équipement et les procédures d'urgence peuvent différer selon l'avion",
+            "a3": "Il détermine l'ordre de livraison des bagages",
+            "a4": "Il explique comment les prix des billets ont été fixés"
+          },
           "headerLabel": "QUESTION FINALE SUR LA CABINE"
         }
       }

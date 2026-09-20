@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 3% odraslih može položiti ovaj pilotski prijemni ispit",
   "eyebrow": "TEST SPOSOBNOSTI PILOTA",
   "summary": "Deset pitanja testiraju principe letenja, instrumente, vremensku prognozu, navigaciju i procjenu kokpita.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Osnove kokpita izgledaju jednostavno. Zatim ispit prelazi na vrijeme, navigaciju i odluke koje si piloti ne mogu priuštiti da pogađaju.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov s deset pitanja koristi koncepte međunarodnog civilnog zrakoplovstva, a ne nastavni plan i program licenciranja jedne zemlje. Testira široka načela leta, instrumente u kokpitu, svijest o vremenskim prilikama, navigaciju i konzervativno donošenje odluka.\n\nOdaberite jedan odgovor za svako pitanje. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih pitanja o sposobnostima pilota.",
         "Odaberite najsigurniji ili najtočniji odgovor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov za ulazak pilota",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni pilotski ispit",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaša ocjena sposobnosti pilota je spremna za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno je pet područja zrakoplovstva",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno je pet područja zrakoplovstva"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli ste izazov za ulazak u pilota!",
       "finished": "Ulazni izazov za pilota završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače zrakoplovno područje",
       "trickiest": "Najzahtjevnije zrakoplovno područje",
       "bestRound": "Najbolja sekcija",
@@ -99,8 +92,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Koja sila djeluje prema gore protiv težine zrakoplova?",
-          "answers": [
-            "Uzgon",
-            "Aerodinamički otpor",
-            "Potisak",
-            "Inercija"
-          ],
+          "answers": {
+            "a1": "Uzgon",
+            "a2": "Aerodinamički otpor",
+            "a3": "Potisak",
+            "a4": "Inercija"
+          },
           "headerLabel": "OSNOVE LETA"
         },
         "pilot-q2": {
           "question": "Koji instrument u kokpitu pokazuje visinu?",
-          "answers": [
-            "Indikator brzine zraka",
-            "Visinomjer",
-            "Indikator smjera",
-            "Uključite koordinatora"
-          ],
+          "answers": {
+            "a1": "Indikator brzine zraka",
+            "a2": "Visinomjer",
+            "a3": "Indikator smjera",
+            "a4": "Uključite koordinatora"
+          },
           "headerLabel": "INSTRUMENTI"
         },
         "pilot-q3": {
           "question": "Koja je vrsta oblaka najjače povezana s grmljavinskim nevremenima i jakim turbulencijama?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Kumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Kumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "ZRAKOPLOVNO VRIJEME"
         },
         "pilot-q4": {
           "question": "Smjer od 180 stupnjeva otprilike pokazuje u kojem smjeru?",
-          "answers": [
-            "Sjever",
-            "istok",
-            "zapad",
-            "Jug"
-          ],
+          "answers": {
+            "a1": "Sjever",
+            "a2": "istok",
+            "a3": "zapad",
+            "a4": "Jug"
+          },
           "headerLabel": "NAVIGACIJA"
         },
         "pilot-q5": {
           "question": "Vrijeme se pogoršava brže od prognoze i sigurne granice se smanjuju. Koja je najbolja generalna odluka?",
-          "answers": [
-            "Rano ponovno procijenite i preusmjerite ili sletite dok postoje sigurne mogućnosti",
-            "Nastavite jer izvorni plan mora biti dovršen",
-            "Spustite se ispod sigurnih granica kako biste održali vizualni kontakt",
-            "Ignorirajte trend dok uvjeti ne postanu kritični"
-          ],
+          "answers": {
+            "a1": "Rano ponovno procijenite i preusmjerite ili sletite dok postoje sigurne mogućnosti",
+            "a2": "Nastavite jer izvorni plan mora biti dovršen",
+            "a3": "Spustite se ispod sigurnih granica kako biste održali vizualni kontakt",
+            "a4": "Ignorirajte trend dok uvjeti ne postanu kritični"
+          },
           "headerLabel": "ZRAKOPLOVNA PROCJENA"
         },
         "pilot-q6": {
           "question": "Koje upravljačke površine okreću zrakoplov oko njegove uzdužne osi?",
-          "answers": [
-            "Kormila visine",
-            "Krilca",
-            "Samo pedale kormila",
-            "Zakrilca"
-          ],
+          "answers": {
+            "a1": "Kormila visine",
+            "a2": "Krilca",
+            "a3": "Samo pedale kormila",
+            "a4": "Zakrilca"
+          },
           "headerLabel": "KOMANDE LETA"
         },
         "pilot-q7": {
           "question": "Koji instrument pokazuje brzinu penjanja ili spuštanja zrakoplova?",
-          "answers": [
-            "kompas",
-            "Samo visinomjer",
-            "Indikator vertikalne brzine",
-            "Mjerač vanjske temperature zraka"
-          ],
+          "answers": {
+            "a1": "kompas",
+            "a2": "Samo visinomjer",
+            "a3": "Indikator vertikalne brzine",
+            "a4": "Mjerač vanjske temperature zraka"
+          },
           "headerLabel": "SKEN KOBITE"
         },
         "pilot-q8": {
           "question": "Što je smicanje vjetra?",
-          "answers": [
-            "Stalan vjetar koji se ne mijenja",
-            "Samo mjera visine oblaka",
-            "Zrak se kreće samo iznad vode",
-            "Brza promjena brzine ili smjera vjetra na maloj udaljenosti"
-          ],
+          "answers": {
+            "a1": "Stalan vjetar koji se ne mijenja",
+            "a2": "Samo mjera visine oblaka",
+            "a3": "Zrak se kreće samo iznad vode",
+            "a4": "Brza promjena brzine ili smjera vjetra na maloj udaljenosti"
+          },
           "headerLabel": "VREMENSKI OPASNOSTI"
         },
         "pilot-q9": {
           "question": "Uzletno-sletna staza pod brojem 27 je približno usmjerena prema kojem smjeru?",
-          "answers": [
-            "zapad",
-            "Sjever",
-            "istok",
-            "Jug"
-          ],
+          "answers": {
+            "a1": "zapad",
+            "a2": "Sjever",
+            "a3": "istok",
+            "a4": "Jug"
+          },
           "headerLabel": "OBRAZLOŽENJE PISTE"
         },
         "pilot-q10": {
           "question": "Primijetili ste neobjašnjivu neravnotežu goriva tijekom leta. Koji je najbolji opći odgovor?",
-          "answers": [
-            "Pretpostavimo da će se mjerač sam ispraviti",
-            "Koristite kontrolni popis, pratite situaciju i komunicirajte po potrebi",
-            "Mijenjajte nasumične sustave dok ne nestane",
-            "Odgodite bilo kakvu akciju do slijetanja"
-          ],
+          "answers": {
+            "a1": "Pretpostavimo da će se mjerač sam ispraviti",
+            "a2": "Koristite kontrolni popis, pratite situaciju i komunicirajte po potrebi",
+            "a3": "Mijenjajte nasumične sustave dok ne nestane",
+            "a4": "Odgodite bilo kakvu akciju do slijetanja"
+          },
           "headerLabel": "ZADNJE PITANJE KOKPITA"
         }
       }

@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Yapay Zeka Evleneceğin Kişiyi Çizecek",
   "eyebrow": "AI Portre Eşleştirme",
   "summary": "Cazibe, kişilik, yaşam tarzı ve kimya ipuçları evlenebileceğiniz kişinin portresini şekillendirir.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence deneyimi, seçimlerinizi sekiz ilişki tarzı portreden biriyle eşleştiriyor. İlk tercih portre sunumunu belirler; kalan her seçim, maça iki ilişki tarzı sinyal ekler.\n\nCazibe, kişilik, yaşam tarzı ve kimya yoluyla içgüdülerinizi takip edin. Doğru ya da yanlış cevap yoktur ve hiçbir cevap cinsiyetinizi, cinselliğinizi ya da etnik kökeninizi belirlemek için kullanılmaz.\n\nSonuç, gerçek bir kişiyi tanımlamak veya kiminle evleneceğinizi tahmin etmek yerine, önceden oluşturulmuş deterministik bir portre kütüphanesinden gelir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Portre sunumunu seçin, ardından dokuz hızlı ilişki seçeneğini tamamlayın.",
         "İlk içgüdünüzü takip edin. Doğru ya da yanlış cevap yoktur.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Portre eşleşmesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Portre Eşleştirme",
@@ -180,102 +177,102 @@
       "questions": {
         "marry-r1q1": {
           "question": "Gelecekteki ortağınız olarak kimi çizmeliyiz?",
-          "answers": [
-            "Erkeksi bir insan",
-            "Kadınsı bir insan",
-            "Androjen bir kişi",
-            "Beni şaşırt"
-          ],
+          "answers": {
+            "a1": "Erkeksi bir insan",
+            "a2": "Kadınsı bir insan",
+            "a3": "Androjen bir kişi",
+            "a4": "Beni şaşırt"
+          },
           "headerLabel": "PORTRE STİLİ"
         },
         "marry-r1q3": {
           "question": "Hangi çift göz dikkatinizi çeker?",
-          "answers": [
-            "Nazik ve dikkatli",
-            "Cesur ve meraklı",
-            "Parlak ve etkileyici",
-            "Sakin ve odaklanmış"
-          ],
+          "answers": {
+            "a1": "Nazik ve dikkatli",
+            "a2": "Cesur ve meraklı",
+            "a3": "Parlak ve etkileyici",
+            "a4": "Sakin ve odaklanmış"
+          },
           "headerLabel": "İLK CAZİBE"
         },
         "marry-r2q2": {
           "question": "Sizin için güvenin en hızlı büyümesini sağlayan şey nedir?",
-          "answers": [
-            "Yakından dinlemek ve hatırlamak",
-            "Özgürlüğe saygı duyuyorum ve sizi destekliyorum",
-            "Dürüst kahkaha ve açık konuşma",
-            "Sessiz tutarlılık ve takip"
-          ],
+          "answers": {
+            "a1": "Yakından dinlemek ve hatırlamak",
+            "a2": "Özgürlüğe saygı duyuyorum ve sizi destekliyorum",
+            "a3": "Dürüst kahkaha ve açık konuşma",
+            "a4": "Sessiz tutarlılık ve takip"
+          },
           "headerLabel": "GÜVEN VE BAĞLANTI"
         },
         "marry-r2q4": {
           "question": "Hangi tür mizah sizi kazanır?",
-          "answers": [
-            "Herkesi içine çeken sıcak hikayeler",
-            "Bir macera sırasında kuru gözlemler",
-            "Sadece size özel sessiz, zekice şakalar",
-            "Mükemmel zamanlamayla cesur alay"
-          ],
+          "answers": {
+            "a1": "Herkesi içine çeken sıcak hikayeler",
+            "a2": "Bir macera sırasında kuru gözlemler",
+            "a3": "Sadece size özel sessiz, zekice şakalar",
+            "a4": "Mükemmel zamanlamayla cesur alay"
+          },
           "headerLabel": "PAYLAŞILAN MİZAH"
         },
         "marry-r3q2": {
           "question": "Hangi ev geleceğinize en çok benziyor?",
-          "answers": [
-            "Açık alanın yakınında misafirperver bir üs",
-            "İnsanlarla dolu güzel bir ev",
-            "İlerleme için inşa edilmiş, iyi tasarlanmış bir yer",
-            "Fikirlerle dolu renkli bir saklanma yeri"
-          ],
+          "answers": {
+            "a1": "Açık alanın yakınında misafirperver bir üs",
+            "a2": "İnsanlarla dolu güzel bir ev",
+            "a3": "İlerleme için inşa edilmiş, iyi tasarlanmış bir yer",
+            "a4": "Fikirlerle dolu renkli bir saklanma yeri"
+          },
           "headerLabel": "GELECEĞİN EVİ"
         },
         "marry-r3q4": {
           "question": "Paylaşılan seyahat ritminizi seçin.",
-          "answers": [
-            "Rahat, sakin ve iyi organize edilmiş",
-            "Kültür, sohbet ve gizli köşeler",
-            "Gevşek plan, cesur sapmalar, harika hikayeler",
-            "Anlamlı yerler ve rüya gibi bir seyahat programı"
-          ],
+          "answers": {
+            "a1": "Rahat, sakin ve iyi organize edilmiş",
+            "a2": "Kültür, sohbet ve gizli köşeler",
+            "a3": "Gevşek plan, cesur sapmalar, harika hikayeler",
+            "a4": "Anlamlı yerler ve rüya gibi bir seyahat programı"
+          },
           "headerLabel": "SEYAHAT RİTMİ"
         },
         "marry-r4q1": {
           "question": "Zor bir konuşma başlıyor. Ne doğru geliyor?",
-          "answers": [
-            "Dışarı çıkın, nefes alın ve dürüstçe konuşun",
-            "Duyguyu adlandırın ve sıcaklığı koruyun",
-            "Sorunu tanımlayın ve birlikte çözün",
-            "Mizahı nazikçe kullanın, sonra daha derine inin"
-          ],
+          "answers": {
+            "a1": "Dışarı çıkın, nefes alın ve dürüstçe konuşun",
+            "a2": "Duyguyu adlandırın ve sıcaklığı koruyun",
+            "a3": "Sorunu tanımlayın ve birlikte çözün",
+            "a4": "Mizahı nazikçe kullanın, sonra daha derine inin"
+          },
           "headerLabel": "İLETİŞİM TARZI"
         },
         "marry-r4q7": {
           "question": "İkiniz de bitkinsiniz. Bağlantıyı ne geri yükler?",
-          "answers": [
-            "Sessiz bir giriş ve ilgilenilme",
-            "Bir yürüyüş, bir plan ve bir sahne değişikliği",
-            "Rahatlatıcı yemekler, kahkahalar ve konuşarak",
-            "Yararlı bir şey yaparken rahat bir sessizlik"
-          ],
+          "answers": {
+            "a1": "Sessiz bir giriş ve ilgilenilme",
+            "a2": "Bir yürüyüş, bir plan ve bir sahne değişikliği",
+            "a3": "Rahatlatıcı yemekler, kahkahalar ve konuşarak",
+            "a4": "Yararlı bir şey yaparken rahat bir sessizlik"
+          },
           "headerLabel": "YENİDEN BAĞLANIYOR"
         },
         "marry-r5q5": {
           "question": "Hangi kapıyı açardın?",
-          "answers": [
-            "Sıcak bir şekilde aydınlatılmış kapı",
-            "Asma kaplı kapı",
-            "Oymalı stüdyo kapısı",
-            "Büyük açık kapı"
-          ],
+          "answers": {
+            "a1": "Sıcak bir şekilde aydınlatılmış kapı",
+            "a2": "Asma kaplı kapı",
+            "a3": "Oymalı stüdyo kapısı",
+            "a4": "Büyük açık kapı"
+          },
           "headerLabel": "GELECEK İPUCU"
         },
         "marry-r5q8": {
           "question": "Son içgüdü: Hangi duyguyu seçersiniz?",
-          "answers": [
-            "Biliniyor ve memnuniyetle karşılanıyor",
-            "Özgür ve yetenekli",
-            "Anladım ve ilham aldım",
-            "Enerjik ve durdurulamaz"
-          ],
+          "answers": {
+            "a1": "Biliniyor ve memnuniyetle karşılanıyor",
+            "a2": "Özgür ve yetenekli",
+            "a3": "Anladım ve ilham aldım",
+            "a4": "Enerjik ve durdurulamaz"
+          },
           "headerLabel": "SON İÇGÜDÜ"
         }
       }

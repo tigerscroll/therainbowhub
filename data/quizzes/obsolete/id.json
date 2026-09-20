@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 7% yang Dapat Memberi Nama Barang Usang Ini - Bisakah Anda?",
   "eyebrow": "UJI BENDA YANG HILANG",
   "summary": "Sepuluh objek yang dulunya terasa biasa saja. Lihat berapa banyak nama terlupakan yang masih dapat Anda ingat.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Benda-benda tersebut mungkin terlihat familier, tetapi menyebutkan 10 objek dengan benar jauh lebih sulit daripada yang terlihat.",
     "cta": "Mulai Kuis"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Sebelum adanya smartphone, streaming, dan peralatan otomatis, kehidupan sehari-hari bergantung pada media fisik, gadget mekanis, dan peralatan rumah tangga yang kini terlihat asing. Tantangan sepuluh pertanyaan ini menguji apakah nama mereka telah hilang dari ingatan bersama dengan benda itu sendiri.\n\nPelajari setiap foto, gunakan petunjuk jika diperlukan dan pilih satu dari empat kemungkinan nama. Kebenaran tetap tersembunyi sampai pengungkapan terakhir.\n\nSepuluh sumber pertanyaan pertama dan gambarnya direproduksi dari QuizDays dengan izin yang dinyatakan oleh pemilik situs yang menugaskan kuis ini.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Pelajari setiap foto dan bacalah petunjuk singkatnya.",
         "Pilih nama yang benar dari empat kemungkinan jawaban.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan barang usang",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Benda Hilang",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor nostalgia Anda siap terungkap.",
         "preAdChecks": [
           "10 benda lama diperiksa",
-          "Tiga kategori objek dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga kategori objek dibandingkan"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Anda lulus tantangan barang usang!",
       "finished": "Tantangan item usang selesai",
-      "correctLabel": "benar",
       "strongest": "Kategori objek terkuat",
       "trickiest": "Kategori objek paling rumit",
       "bestRound": "Bagian terbaik",
@@ -93,8 +86,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Floppy disk hitam 3,5 inci pada permukaan netral"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Disket",
-            "Pita kaset",
-            "Disk Laser",
-            "Pembaca Zip"
-          ],
+          "answers": {
+            "a1": "Disket",
+            "a2": "Pita kaset",
+            "a3": "Disk Laser",
+            "a4": "Pembaca Zip"
+          },
           "headerLabel": "HILANG OBJEK 1 DARI 10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "Telepon antik dengan putaran mekanis melingkar"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Gramofon",
-            "Telepon putar",
-            "Telegraf",
-            "Diktafon"
-          ],
+          "answers": {
+            "a1": "Gramofon",
+            "a2": "Telepon putar",
+            "a3": "Telegraf",
+            "a4": "Diktafon"
+          },
           "headerLabel": "HILANG OBJEK 2 DARI 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "Penampil mainan stereoskopis merah dengan gulungan gambar bulat"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Proyektor geser",
-            "Stereoskop",
-            "View-Master",
-            "tabung film"
-          ],
+          "answers": {
+            "a1": "Proyektor geser",
+            "a2": "Stereoskop",
+            "a3": "View-Master",
+            "a4": "tabung film"
+          },
           "headerLabel": "HILANG OBJEK 3 DARI 10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "Mesin tulis mekanis dengan kunci dan pita tinta"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "tempat tinta",
-            "Stensil",
-            "Kunci telegraf",
-            "Mesin tik"
-          ],
+          "answers": {
+            "a1": "tempat tinta",
+            "a2": "Stensil",
+            "a3": "Kunci telegraf",
+            "a4": "Mesin tik"
+          },
           "headerLabel": "HILANG OBJEK 4 DARI 10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Papan cucian kayu dengan permukaan logam bergelombang"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "papan cuci",
-            "Pengocok mentega",
-            "Penggiling kopi",
-            "Kotak es"
-          ],
+          "answers": {
+            "a1": "papan cuci",
+            "a2": "Pengocok mentega",
+            "a3": "Penggiling kopi",
+            "a4": "Kotak es"
+          },
           "headerLabel": "HILANG OBJEK 5 DARI 10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "Pemutar kaset portabel dengan headphone berkabel"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "kotak booming",
-            "Walkman",
-            "radio transistor",
-            "Gramofon"
-          ],
+          "answers": {
+            "a1": "kotak booming",
+            "a2": "Walkman",
+            "a3": "radio transistor",
+            "a4": "Gramofon"
+          },
           "headerLabel": "HILANG OBJEK 6 DARI 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "Kaset video rumahan berbentuk persegi panjang"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Pita betamax",
-            "Gulungan film",
-            "rekaman VHS",
-            "Pita kaset"
-          ],
+          "answers": {
+            "a1": "Pita betamax",
+            "a2": "Gulungan film",
+            "a3": "rekaman VHS",
+            "a4": "Pita kaset"
+          },
           "headerLabel": "HILANG OBJEK 7 DARI 10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Alat tenun genggam yang pernah digunakan untuk menghilangkan debu dari permadani"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "pemecah es",
-            "penjepit gula",
-            "sendok sepatu",
-            "Pemukul karpet"
-          ],
+          "answers": {
+            "a1": "pemecah es",
+            "a2": "penjepit gula",
+            "a3": "sendok sepatu",
+            "a4": "Pemukul karpet"
+          },
           "headerLabel": "HILANG OBJEK 8 DARI 10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "Penerima pesan elektronik kecil dengan layar dan klip sabuk"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Pager",
-            "Bocah Permainan",
-            "Telepon",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Pager",
+            "a2": "Bocah Permainan",
+            "a3": "Telepon",
+            "a4": "PDA"
+          },
           "headerLabel": "HILANG OBJEK 9 DARI 10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "Panci logam bergagang panjang yang pernah diisi batu bara untuk menghangatkan tempat tidur"
           },
           "question": "Apa nama barang lama ini?",
-          "answers": [
-            "Lampu minyak",
-            "Penghangat tempat tidur",
-            "Kamar",
-            "Lentera gas"
-          ],
+          "answers": {
+            "a1": "Lampu minyak",
+            "a2": "Penghangat tempat tidur",
+            "a3": "Kamar",
+            "a4": "Lentera gas"
+          },
           "headerLabel": "OBJEK AKHIR YANG HILANG"
         }
       }

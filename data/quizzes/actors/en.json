@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 7% Can Name These Legendary Actors",
   "eyebrow": "SILVER SCREEN CHALLENGE",
   "summary": "Ten unmistakable faces from cinema history. See how many legendary actors you can name without a film title to help.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Ten legendary faces. No film titles. How many can you recognise without a hint?",
     "cta": "Start"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This entertainment quiz features ten celebrated actors from classic cinema and later screen history. Each question presents an actor's photograph and four possible names.\n\nLook closely at the face and use the clue only if you need it. Your answers stay hidden until the final reveal.\n\nImages and source-question concepts are reproduced from QuizDays with permission stated by the site owner commissioning this quiz.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Study each photograph and read the short clue.",
         "Choose one of the four actor names.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Actor challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Legendary Actors",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your classic-cinema score and complete actor reveal are ready.",
         "preAdChecks": [
           "10 famous faces checked",
-          "Three screen eras compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three screen eras compared"
+        ]
       }
     }
   },
@@ -67,14 +61,19 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Classic Hollywood" },
-      "dimension-2": { "label": "International stars" },
-      "dimension-3": { "label": "Screen legends" }
+      "dimension-1": {
+        "label": "Classic Hollywood"
+      },
+      "dimension-2": {
+        "label": "International stars"
+      },
+      "dimension-3": {
+        "label": "Screen legends"
+      }
     },
     "score": {
       "passed": "You passed the legendary-actors challenge!",
       "finished": "Actor challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest screen era",
       "trickiest": "Trickiest screen era",
       "bestRound": "Best section",
@@ -87,8 +86,7 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -96,63 +94,133 @@
       "title": "Legendary Actors",
       "questions": {
         "actors-q1": {
-          "image": { "alt": "Black-and-white portrait of John Wayne wearing a cowboy hat" },
+          "image": {
+            "alt": "Black-and-white portrait of John Wayne wearing a cowboy hat"
+          },
           "question": "Which legendary actor appeared in more than 140 films?",
-          "answers": ["John Wayne", "Jerry Lewis", "Paul Newman", "Lee Marvin"],
+          "answers": {
+            "a1": "John Wayne",
+            "a2": "Jerry Lewis",
+            "a3": "Paul Newman",
+            "a4": "Lee Marvin"
+          },
           "headerLabel": "FACE 1 OF 10"
         },
         "actors-q2": {
-          "image": { "alt": "Portrait of Egyptian actor Omar Sharif" },
+          "image": {
+            "alt": "Portrait of Egyptian actor Omar Sharif"
+          },
           "question": "Which Egyptian screen legend is pictured?",
-          "answers": ["Sidney Poitier", "James Garner", "Erik Estrada", "Omar Sharif"],
+          "answers": {
+            "a1": "Sidney Poitier",
+            "a2": "James Garner",
+            "a3": "Erik Estrada",
+            "a4": "Omar Sharif"
+          },
           "headerLabel": "FACE 2 OF 10"
         },
         "actors-q3": {
-          "image": { "alt": "Portrait of actor Jack Lemmon" },
+          "image": {
+            "alt": "Portrait of actor Jack Lemmon"
+          },
           "question": "Which actor often appeared alongside Walter Matthau?",
-          "answers": ["Michael Caine", "Larry Hagman", "Jack Lemmon", "Lee Marvin"],
+          "answers": {
+            "a1": "Michael Caine",
+            "a2": "Larry Hagman",
+            "a3": "Jack Lemmon",
+            "a4": "Lee Marvin"
+          },
           "headerLabel": "FACE 3 OF 10"
         },
         "actors-q4": {
-          "image": { "alt": "Portrait of actor and director Robert Redford" },
+          "image": {
+            "alt": "Portrait of actor and director Robert Redford"
+          },
           "question": "Which actor and director began his screen career in 1960?",
-          "answers": ["Jon Voight", "Richard Dreyfuss", "Paul Newman", "Robert Redford"],
+          "answers": {
+            "a1": "Jon Voight",
+            "a2": "Richard Dreyfuss",
+            "a3": "Paul Newman",
+            "a4": "Robert Redford"
+          },
           "headerLabel": "FACE 4 OF 10"
         },
         "actors-q5": {
-          "image": { "alt": "Portrait of British actor Michael Caine" },
+          "image": {
+            "alt": "Portrait of British actor Michael Caine"
+          },
           "question": "Which renowned British actor is pictured?",
-          "answers": ["Gene Hackman", "Michael Caine", "Jerry Lewis", "Charlton Heston"],
+          "answers": {
+            "a1": "Gene Hackman",
+            "a2": "Michael Caine",
+            "a3": "Jerry Lewis",
+            "a4": "Charlton Heston"
+          },
           "headerLabel": "FACE 5 OF 10"
         },
         "actors-q6": {
-          "image": { "alt": "Portrait of actor James Garner" },
+          "image": {
+            "alt": "Portrait of actor James Garner"
+          },
           "question": "Which actor was also an avid golfer?",
-          "answers": ["James Garner", "Al Pacino", "Richard Dreyfuss", "Roy Scheider"],
+          "answers": {
+            "a1": "James Garner",
+            "a2": "Al Pacino",
+            "a3": "Richard Dreyfuss",
+            "a4": "Roy Scheider"
+          },
           "headerLabel": "FACE 6 OF 10"
         },
         "actors-q7": {
-          "image": { "alt": "Portrait of actor Cary Grant" },
+          "image": {
+            "alt": "Portrait of actor Cary Grant"
+          },
           "question": "Which star appeared in several Alfred Hitchcock films?",
-          "answers": ["Clark Gable", "James Dean", "Cary Grant", "Tony Curtis"],
+          "answers": {
+            "a1": "Clark Gable",
+            "a2": "James Dean",
+            "a3": "Cary Grant",
+            "a4": "Tony Curtis"
+          },
           "headerLabel": "FACE 7 OF 10"
         },
         "actors-q8": {
-          "image": { "alt": "Omar Sharif as Sherif Ali in Lawrence of Arabia" },
+          "image": {
+            "alt": "Omar Sharif as Sherif Ali in Lawrence of Arabia"
+          },
           "question": "Which actor played Sherif Ali opposite Peter O'Toole in Lawrence of Arabia?",
-          "answers": ["James Garner", "Omar Sharif", "Jack Lemmon", "Paul Newman"],
+          "answers": {
+            "a1": "James Garner",
+            "a2": "Omar Sharif",
+            "a3": "Jack Lemmon",
+            "a4": "Paul Newman"
+          },
           "headerLabel": "FACE 8 OF 10"
         },
         "actors-q9": {
-          "image": { "alt": "Portrait of comedian and actor Jerry Lewis" },
+          "image": {
+            "alt": "Portrait of comedian and actor Jerry Lewis"
+          },
           "question": "Who was famously nicknamed “The King of Comedy”?",
-          "answers": ["Fred Ward", "Jerry Lewis", "Charles Durning", "Ned Beatty"],
+          "answers": {
+            "a1": "Fred Ward",
+            "a2": "Jerry Lewis",
+            "a3": "Charles Durning",
+            "a4": "Ned Beatty"
+          },
           "headerLabel": "FACE 9 OF 10"
         },
         "actors-q10": {
-          "image": { "alt": "Portrait of actor Richard Dreyfuss" },
+          "image": {
+            "alt": "Portrait of actor Richard Dreyfuss"
+          },
           "question": "Which actor famously feuded with Bill Murray?",
-          "answers": ["Richard Dreyfuss", "Donald Sutherland", "Jerry Lewis", "Cary Grant"],
+          "answers": {
+            "a1": "Richard Dreyfuss",
+            "a2": "Donald Sutherland",
+            "a3": "Jerry Lewis",
+            "a4": "Cary Grant"
+          },
           "headerLabel": "FINAL FACE"
         }
       }

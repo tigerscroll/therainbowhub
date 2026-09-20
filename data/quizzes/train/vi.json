@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 11% người lớn có thể vượt qua kỳ thi tuyển sinh lái tàu này",
   "eyebrow": "KIỂM TRA NĂNG LỰC ĐƯỜNG SẮT",
   "summary": "Mười câu hỏi kiểm tra độ an toàn đường sắt, khả năng quan sát, lý luận cơ học và khả năng giao tiếp rõ ràng.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những tín hiệu đầu tiên có vẻ dễ dàng. Sau đó, bài kiểm tra chuyển sang khoảng cách phanh, mối nguy hiểm và phán đoán đường sắt.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng các nguyên tắc lý luận và an toàn rộng rãi xuyên suốt các hệ thống đường sắt nói tiếng Anh Cấp 1. Nó tránh các khía cạnh tín hiệu cụ thể của quốc gia, quy tắc vận hành và chức danh công việc trong khi kiểm tra khả năng quan sát, giao tiếp, nhận thức phanh và phán đoán an toàn là trên hết.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi về năng khiếu lái tàu ngày càng khó.",
         "Chọn phản hồi an toàn nhất hoặc được hỗ trợ tốt nhất.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào của người lái tàu",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh lái tàu hỏa",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm năng khiếu về đường sắt của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Bốn khu vực đường sắt được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Bốn khu vực đường sắt được so sánh"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào Lái tàu!",
       "finished": "Thử thách đầu vào của Người lái tàu đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực đường sắt mạnh nhất",
       "trickiest": "Khu vực đường sắt khó khăn nhất",
       "bestRound": "Phần hay nhất",
@@ -96,8 +89,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Một đoàn tàu đang di chuyển về phía một chướng ngại vật bất ngờ. Ưu tiên hàng đầu của người lái xe là gì?",
-          "answers": [
-            "Áp dụng phản ứng phanh thích hợp và làm theo quy trình khẩn cấp",
-            "Hoàn tất việc nhập thời gian biểu",
-            "Mở cửa hành khách",
-            "Đợi chuyến tàu khác báo cáo"
-          ],
+          "answers": {
+            "a1": "Áp dụng phản ứng phanh thích hợp và làm theo quy trình khẩn cấp",
+            "a2": "Hoàn tất việc nhập thời gian biểu",
+            "a3": "Mở cửa hành khách",
+            "a4": "Đợi chuyến tàu khác báo cáo"
+          },
           "headerLabel": "ƯU TIÊN AN TOÀN"
         },
         "train-q2": {
           "question": "Tại sao sự chú ý liên tục lại cần thiết trong suốt một đoạn đường dài và không có biến cố?",
-          "answers": [
-            "Tàu trở nên nhẹ hơn theo thời gian",
-            "Tín hiệu quan trọng hoặc mối nguy hiểm có thể xuất hiện sau một thời gian dài im lặng",
-            "Hành khách mong đợi sự thay đổi tốc độ thường xuyên",
-            "Tuyến đường tự động trở nên kém an toàn hơn vào buổi trưa"
-          ],
+          "answers": {
+            "a1": "Tàu trở nên nhẹ hơn theo thời gian",
+            "a2": "Tín hiệu quan trọng hoặc mối nguy hiểm có thể xuất hiện sau một thời gian dài im lặng",
+            "a3": "Hành khách mong đợi sự thay đổi tốc độ thường xuyên",
+            "a4": "Tuyến đường tự động trở nên kém an toàn hơn vào buổi trưa"
+          },
           "headerLabel": "Nồng độ"
         },
         "train-q3": {
           "question": "Nếu tốc độ tăng, điều gì thường xảy ra với khoảng cách dừng xe khi các điều kiện khác vẫn giữ nguyên?",
-          "answers": [
-            "Nó luôn luôn là một nửa",
-            "Nó vẫn giống hệt nhau",
-            "Nó tăng lên",
-            "Nó trở nên không liên quan đến tốc độ"
-          ],
+          "answers": {
+            "a1": "Nó luôn luôn là một nửa",
+            "a2": "Nó vẫn giống hệt nhau",
+            "a3": "Nó tăng lên",
+            "a4": "Nó trở nên không liên quan đến tốc độ"
+          },
           "headerLabel": "NHẬN THỨC PHANH"
         },
         "train-q4": {
           "question": "Thông điệp vô tuyến nào hữu ích nhất khi báo cáo mối nguy hiểm trên đường đi?",
-          "answers": [
-            "Một phỏng đoán dài về nguyên nhân của nó",
-            "Một cảnh báo mơ hồ không có vị trí",
-            "Ý kiến cá nhân về lịch trình",
-            "Mô tả thực tế ngắn gọn với vị trí và hướng di chuyển chính xác"
-          ],
+          "answers": {
+            "a1": "Một phỏng đoán dài về nguyên nhân của nó",
+            "a2": "Một cảnh báo mơ hồ không có vị trí",
+            "a3": "Ý kiến cá nhân về lịch trình",
+            "a4": "Mô tả thực tế ngắn gọn với vị trí và hướng di chuyển chính xác"
+          },
           "headerLabel": "TRUYỀN THÔNG ĐƯỜNG SẮT"
         },
         "train-q5": {
           "question": "Tại sao người lái xe phải tránh chỉ dựa vào trí nhớ để đưa ra chỉ dẫn quan trọng về an toàn?",
-          "answers": [
-            "Nó cần được xác nhận và tuân theo quy trình đã được phê duyệt",
-            "Hướng dẫn bằng văn bản luôn là tùy chọn",
-            "Bộ nhớ trở nên hoàn hảo ở tốc độ cao hơn",
-            "Thay vào đó hành khách nên giải thích nó"
-          ],
+          "answers": {
+            "a1": "Nó cần được xác nhận và tuân theo quy trình đã được phê duyệt",
+            "a2": "Hướng dẫn bằng văn bản luôn là tùy chọn",
+            "a3": "Bộ nhớ trở nên hoàn hảo ở tốc độ cao hơn",
+            "a4": "Thay vào đó hành khách nên giải thích nó"
+          },
           "headerLabel": "AN TOÀN THỦ TỤC"
         },
         "train-q6": {
           "question": "Chỉ báo cảnh báo thay đổi trong thời gian ngắn và sau đó trở lại bình thường. Cách giải thích an toàn nhất là gì?",
-          "answers": [
-            "Bỏ qua nó vì nó biến mất",
-            "Hãy coi nó là có liên quan, theo dõi và báo cáo nó thông qua quy trình thích hợp",
-            "Đặt lại mọi hệ thống ngay lập tức mà không cần kiểm tra",
-            "Giả sử một chuyến tàu khác đã gây ra nó"
-          ],
+          "answers": {
+            "a1": "Bỏ qua nó vì nó biến mất",
+            "a2": "Hãy coi nó là có liên quan, theo dõi và báo cáo nó thông qua quy trình thích hợp",
+            "a3": "Đặt lại mọi hệ thống ngay lập tức mà không cần kiểm tra",
+            "a4": "Giả sử một chuyến tàu khác đã gây ra nó"
+          },
           "headerLabel": "QUAN SÁT"
         },
         "train-q7": {
           "question": "Khả năng trượt bánh xe xảy ra nhiều nhất khi lực kéo giữa bánh xe và ray là gì?",
-          "answers": [
-            "Không giới hạn",
-            "Cân bằng hoàn hảo",
-            "Giảm",
-            "Không phụ thuộc vào thời tiết"
-          ],
+          "answers": {
+            "a1": "Không giới hạn",
+            "a2": "Cân bằng hoàn hảo",
+            "a3": "Giảm",
+            "a4": "Không phụ thuộc vào thời tiết"
+          },
           "headerLabel": "LÝ LUẬN CƠ KHÍ"
         },
         "train-q8": {
           "question": "Bạn không chắc liệu hướng dẫn quan trọng về an toàn có được nghe chính xác hay không. Bạn nên làm gì?",
-          "answers": [
-            "Đoán từ ngữ cảnh",
-            "Tiếp tục và hỏi sau",
-            "Chọn cách giải thích nhanh nhất",
-            "Lặp lại và nhận được xác nhận"
-          ],
+          "answers": {
+            "a1": "Đoán từ ngữ cảnh",
+            "a2": "Tiếp tục và hỏi sau",
+            "a3": "Chọn cách giải thích nhanh nhất",
+            "a4": "Lặp lại và nhận được xác nhận"
+          },
           "headerLabel": "GIAO TIẾP KÍN"
         },
         "train-q9": {
           "question": "Tại sao việc kiểm soát độ mỏi lại quan trọng khi lái tàu?",
-          "answers": [
-            "Mệt mỏi có thể làm giảm sự chú ý, phản ứng và chất lượng quyết định",
-            "Mệt mỏi cải thiện trí nhớ thường ngày",
-            "Chỉ hành khách bị ảnh hưởng bởi thời gian dài",
-            "Nó thay đổi thước đo đường đua"
-          ],
+          "answers": {
+            "a1": "Mệt mỏi có thể làm giảm sự chú ý, phản ứng và chất lượng quyết định",
+            "a2": "Mệt mỏi cải thiện trí nhớ thường ngày",
+            "a3": "Chỉ hành khách bị ảnh hưởng bởi thời gian dài",
+            "a4": "Nó thay đổi thước đo đường đua"
+          },
           "headerLabel": "HIỆU SUẤT CON NGƯỜI"
         },
         "train-q10": {
           "question": "Hai tuyến đường hiển thị xung đột ngay trước khi khởi hành. Phản ứng an toàn nhất là gì?",
-          "answers": [
-            "Theo dõi màn hình nào sáng hơn",
-            "Không tiếp tục cho đến khi sự khác biệt được giải quyết thông qua quy trình thích hợp",
-            "Chọn tuyến đường trông ngắn hơn",
-            "Yêu cầu hành khách quyết định"
-          ],
+          "answers": {
+            "a1": "Theo dõi màn hình nào sáng hơn",
+            "a2": "Không tiếp tục cho đến khi sự khác biệt được giải quyết thông qua quy trình thích hợp",
+            "a3": "Chọn tuyến đường trông ngắn hơn",
+            "a4": "Yêu cầu hành khách quyết định"
+          },
           "headerLabel": "CÂU HỎI NĂNG LỰC CUỐI CÙNG"
         }
       }

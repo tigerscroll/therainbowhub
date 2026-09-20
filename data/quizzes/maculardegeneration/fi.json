@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Makulan rappeumatesti",
   "eyebrow": "10 KYSYMYKSEN KESKUSNÄKÖTARKASTUS",
   "summary": "Keskeiset yksityiskohdat, visuaaliset ansoja ja tärkeät AMD-varoitusmerkit yhdessä nopeassa haasteessa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Löydätkö keskeiset yksityiskohdat ja tunnistatko varoitusmerkit? Nämä 10 nopeaa tarkistusta vaikeutuvat.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen haaste yhdistää viisi näytöllä näkyvää visuaalista pulmapeliä ja viisi yleistä tietoisuutta koskevaa kysymystä ikään liittyvästä silmänpohjan rappeutumisesta (AMD). Se mittaa vastauksia tähän tietokilpailuun, ei silmien terveyttä tai sairauksien todennäköisyyttä.\n\nNäytön koko, kirkkaus, kontrasti, näkö, korjaavat linssit, väsymys ja laiteasetukset voivat kaikki vaikuttaa suorituskykyyn. Uusista aaltoilevista tai vääristyneistä viivoista, uudesta epäselvästä tai tyhjästä alueesta keskusnäön alueella tai äkillisestä huononemisesta tulee keskustella viipymättä pätevän näönhuollon ammattilaisen kanssa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Suorita viisi keskitettyä yksityiskohtaa ja visuaalista muistia koskevaa haastetta.",
         "Vastaa viiteen kysymykseen AMD:stä ja milloin hakea apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Keskusnäköhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Makulan rappeumatesti",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja keskusnäön haastepisteesi on valmis julkistettavaksi.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolmea visuaalista aluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolmea visuaalista aluetta verrattiin"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Selvisit 80 % visuaalisen haasteen!",
       "finished": "Keskusnäköhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Tämän päivän vahvin alue",
       "trickiest": "Tämän päivän vaikein alue",
       "bestRound": "Paras jakso",
@@ -94,8 +87,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Mikä hahmo on tarkalleen ruudukon keskellä?",
           "headerLabel": "KESKEISET TIEDOT",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "VIITE: Q7M2P6",
           "question": "Mikä koodi vastaa tarkalleen viittausta?",
           "headerLabel": "SULJE OTTELU",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "VIITE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Mikä symboli päättää vuorottelevan sarjan?",
           "headerLabel": "KUVION SEURANTA",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Mikä esine ilmestyi kolmanneksi?",
           "headerLabel": "NOPEA VISUAALINEN MUISTI",
-          "answers": [
-            "Kirja",
-            "Avain",
-            "Cup",
-            "Sun"
-          ],
+          "answers": {
+            "a1": "Kirja",
+            "a2": "Avain",
+            "a3": "Cup",
+            "a4": "Sun"
+          },
           "study": {
             "title": "Tutki viiden kohteen järjestystä",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Mikä asema sisältää avoimen ympyrän?",
           "headerLabel": "KESKIRIVIN TARKOITUS",
-          "answers": [
-            "Neljäs",
-            "Toinen",
-            "Viides",
-            "Kolmanneksi"
-          ],
+          "answers": {
+            "a1": "Neljäs",
+            "a2": "Toinen",
+            "a3": "Viides",
+            "a4": "Kolmanneksi"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Mihin näön osaan ikään liittyvä silmänpohjan rappeuma vaikuttaa suorimmin?",
           "headerLabel": "AMD PERUSTEET",
-          "answers": [
-            "Vain kaukaa ulkoreunat",
-            "Terävä keskus, suoraan eteenpäin",
-            "Vain yönäkö",
-            "Vain syvyyden havainnointi"
-          ]
+          "answers": {
+            "a1": "Vain kaukaa ulkoreunat",
+            "a2": "Terävä keskus, suoraan eteenpäin",
+            "a3": "Vain yönäkö",
+            "a4": "Vain syvyyden havainnointi"
+          }
         },
         "macular-q7": {
           "question": "Mikä visuaalinen muutos on tunnettu AMD:n varoitusmerkki?",
           "headerLabel": "VAROITUSMERKIT",
-          "answers": [
-            "Kuulostaa hiljaisemmalta",
-            "Väliaikainen kutina silmäluomessa",
-            "Suorat viivat näyttävät aaltoilevilta tai vinoilta",
-            "Yksi ripsien putoaminen"
-          ]
+          "answers": {
+            "a1": "Kuulostaa hiljaisemmalta",
+            "a2": "Väliaikainen kutina silmäluomessa",
+            "a3": "Suorat viivat näyttävät aaltoilevilta tai vinoilta",
+            "a4": "Yksi ripsien putoaminen"
+          }
         },
         "macular-q8": {
           "question": "Mitä arviointia näönhuollon ammattilainen voi käyttää AMD:n etsimiseen?",
           "headerLabel": "AMMATILLINEN ARVIOINTI",
-          "answers": [
-            "Kuulokesti",
-            "Yksin verenpaineen lukema",
-            "Makutesti",
-            "Kattava laajennettu silmätutkimus"
-          ]
+          "answers": {
+            "a1": "Kuulokesti",
+            "a2": "Yksin verenpaineen lukema",
+            "a3": "Makutesti",
+            "a4": "Kattava laajennettu silmätutkimus"
+          }
         },
         "macular-q9": {
           "question": "Mikä on turvallisin reaktio äkilliseen näön heikkenemiseen tai uuteen keskushermostoon tai tyhjään alueeseen?",
           "headerLabel": "MILLOIN TOIMIA",
-          "answers": [
-            "Pyydä ammattitaitoista näönhoitoneuvontaa",
-            "Odota useita kuukausia mainitsematta sitä",
-            "Lisää näytön kirkkautta ja oleta, että se on korjattu",
-            "Luota vain online-kyselyyn"
-          ]
+          "answers": {
+            "a1": "Pyydä ammattitaitoista näönhoitoneuvontaa",
+            "a2": "Odota useita kuukausia mainitsematta sitä",
+            "a3": "Lisää näytön kirkkautta ja oleta, että se on korjattu",
+            "a4": "Luota vain online-kyselyyn"
+          }
         },
         "macular-q10": {
           "question": "Mitä pistemääräsi tässä verkkohaasteessa voi kertoa sinulle?",
           "headerLabel": "LOPPU TODELLISUUDEN TARKISTUS",
-          "answers": [
-            "Onko verkkokalvosi terve",
-            "Vain miten suoriuduit näissä kymmenessä kysymyksessä",
-            "Tarvitsetko tiettyä hoitoa",
-            "Voitko sulkea pois AMD:n"
-          ]
+          "answers": {
+            "a1": "Onko verkkokalvosi terve",
+            "a2": "Vain miten suoriuduit näissä kymmenessä kysymyksessä",
+            "a3": "Tarvitsetko tiettyä hoitoa",
+            "a4": "Voitko sulkea pois AMD:n"
+          }
         }
       }
     }

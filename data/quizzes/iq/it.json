@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo il 7% supera questo test di intelligenza",
   "eyebrow": "LA CASSAFORTE DELL'INTELLIGENZA",
   "summary": "Schemi, regole numeriche, collegamenti di parole e trappole spaziali mettono alla prova la velocità con cui il tuo ragionamento trova la regola nascosta.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Schemi, codici, collegamenti di parole e trappole logiche si scontrano. Per quanto tempo il tuo ragionamento può restare un passo avanti?",
     "cta": "Inizia il test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di intrattenimento mondiale riunisce dieci enigmi accuratamente selezionati che coprono schemi, regole numeriche, connessioni verbali, ragionamento spaziale, attenzione e deduzione logica. È progettato per sembrare giocoso ed impegnativo piuttosto che come un esame attitudinale formale.\n\nOgni puzzle ha una risposta supportata dalle informazioni mostrate. L'interazione cambia regolarmente, quindi potresti dover identificare una regola, confrontare indizi, trasformare un simbolo, fare calcoli mentali o notare una piccola incoerenza.\n\nIl tuo punteggio del test di intelligenza è la percentuale di questi enigmi di intrattenimento che risolvi correttamente. Descrive solo questo tentativo e non misura la tua reale intelligenza, QI, attitudine o capacità educativa.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa dieci domande accuratamente selezionate in un'unica sfida mirata.",
         "Scegli una risposta ogni volta. Le risposte corrette restano nascoste fino al risultato finale.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida dell'intelligenza",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Sfida dell'intelligenza",
@@ -30,10 +26,8 @@
         "preAdCopy": "Il tuo punteggio del test di intelligenza e la suddivisione in tre aree sono pronti per essere rivelati.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Tre aree di pensiero a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Tre aree di pensiero a confronto"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Hai superato la sfida del test di intelligenza!",
       "finished": "Test di intelligenza completato",
-      "correctLabel": "corrette",
       "strongest": "Area di pensiero più forte",
       "trickiest": "L'area di pensiero più complicata",
       "bestRound": "La sezione migliore",
@@ -98,8 +91,7 @@
         "snapshot": "Cosa suggerisce questo tentativo",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "cerchio, triangolo, cerchio, triangolo, sconosciuto"
           },
           "question": "Quale simbolo viene dopo?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "RAGIONAMENTO PER SCHEMI"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "freccia in alto a destra accanto a uno specchio verticale"
           },
           "question": "Quale freccia è riflessa in uno specchio verticale?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RAGIONAMENTO SPAZIALE"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "spostamenti di lettere più uno, più due, più uno; CAT diventa DCU"
           },
           "question": "Gli spostamenti si ripetono: +1, +2, +1. Come viene codificato DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "RAGIONAMENTO VERBALE"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "piramide numerica con 3, 5, 4 in basso e 8, 9 al centro"
           },
           "question": "Ogni blocco è la somma dei due sottostanti. Quale numero va in alto?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "RAGIONAMENTO NUMERICO"
         },
         "iq-s3q2": {
           "question": "Una macchina raddoppia un numero e poi aggiunge 3. Quale input produce 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "RAGIONAMENTO NUMERICO"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Codice di riferimento K7M2-Q9. Trova l'opzione con un carattere modificato."
           },
           "question": "Quale copia differisce dal riferimento esattamente di un carattere?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "ATTENZIONE AI DETTAGLI"
         },
         "iq-s4q1": {
           "question": "Esattamente una persona dice la verità. A dice che B mente. B dice che C mente. C dice che A e B mentono entrambi. Chi dice la verità?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Nessuno"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Nessuno"
+          },
           "headerLabel": "DEDUZIONE LOGICA"
         },
         "iq-s4q4": {
           "question": "Inizia dal centro, rivolto a nord. Vai avanti di una casella, gira a destra, muoviti di due caselle, gira a destra, poi muoviti di una casella. Dove finisci rispetto all'inizio?",
-          "answers": [
-            "Due caselle a destra",
-            "Una casella in alto",
-            "Due caselle a sinistra",
-            "Di nuovo al centro"
-          ],
+          "answers": {
+            "a1": "Due caselle a destra",
+            "a2": "Una casella in alto",
+            "a3": "Due caselle a sinistra",
+            "a4": "Di nuovo al centro"
+          },
           "headerLabel": "RAGIONAMENTO SPAZIALE"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "righe 3, 4, 10; 5, 2, 12; 7, 3, sconosciuto"
           },
           "question": "In ogni riga, raddoppia il primo numero, quindi aggiungi il secondo. Cosa sostituisce il punto interrogativo?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "RAGIONAMENTO NUMERICO"
         },
         "iq-s5q8": {
           "question": "Una freccia punta verso l’alto. Ruotala di 90° in senso orario, poi riflettila in uno specchio verticale. Dove punta?",
-          "answers": [
-            "In alto",
-            "A destra",
-            "In basso",
-            "A sinistra"
-          ],
+          "answers": {
+            "a1": "In alto",
+            "a2": "A destra",
+            "a3": "In basso",
+            "a4": "A sinistra"
+          },
           "headerLabel": "PROVA SPAZIALE FINALE"
         }
       }

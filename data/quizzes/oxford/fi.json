@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 7 % läpäisee tämän Oxfordin pääsykokeen",
   "eyebrow": "OPETUSHAASTE",
   "summary": "Argumentit, oletukset ja tarkat päätelmät testaavat, selviääkö päättelysi jokaisesta piilotetusta ansasta.",
-  "progressLabel": "TÄYDELLINEN",
   "landing": {
     "intro": "Argumentit, kuviot ja logiikkaansa törmäävät. Pystytkö puolustamaan oikeaa vastausta, kun jokainen vaihtoehto näyttää uskottavalta?",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdehaaste sisältää kymmenen Oxfordin inspiroimaa päättelykysymystä sanallisen, kvantitatiivisen, kriittisen, muodollisen, spatiaalisen ja näyttöön perustuvan ajattelun kautta. Se siirtyy esteettömästä perustasta kompakteihin monivaiheisiin ongelmiin.\n\nValitse vastaus, jota näytetyt tiedot tukevat parhaiten. Yliopiston erikoisosaamista ei vaadita, ja oikeellisuus pysyy piilossa lopulliseen paljastukseen asti.\n\nTämä ei ole virallinen Oxfordin yliopiston pääsykoe, hakemuksen arviointi tai pääsyn ennuste.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Oxfordin pääsykoe",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Oxfordissa pääsyhaaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Oxford-pääsypisteesi ja kolmen alueen erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolme sisäänkäyntialuetta verrattuna",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolme sisäänkäyntialuetta verrattuna"
+        ]
       }
     }
   },
@@ -85,11 +79,9 @@
     "score": {
       "passed": "Läpäisit Oxfordin sisäänpääsyhaasteen!",
       "finished": "Oxfordin sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin sisäänkäyntialue",
       "trickiest": "Hankalin sisäänkäyntialue",
-      "bestRound": "Paras jakso",
-      "showBestRound": false
+      "bestRound": "Paras jakso"
     }
   },
   "stages": {
@@ -98,52 +90,52 @@
       "questions": {
         "oxford-s1q1": {
           "question": "ARKISTO on RECORDSille, kuten ANTHOLOGY on…",
-          "answers": [
-            "Yksi kirjoittaja",
-            "Valitut teokset",
-            "Kirjakauppa",
-            "Sivunumerot"
-          ],
+          "answers": {
+            "a1": "Yksi kirjoittaja",
+            "a2": "Valitut teokset",
+            "a3": "Kirjakauppa",
+            "a4": "Sivunumerot"
+          },
           "headerLabel": "SUUNALLINEN PERUSTELU"
         },
         "oxford-s1q6": {
           "question": "Kirja maksaa 24 puntaa 20 % alennuksen jälkeen. Mikä oli sen alkuperäinen hinta?",
-          "answers": [
-            "£30",
-            "28 puntaa",
-            "29 puntaa",
-            "32 puntaa"
-          ],
+          "answers": {
+            "a1": "£30",
+            "a2": "28 puntaa",
+            "a3": "29 puntaa",
+            "a4": "32 puntaa"
+          },
           "headerLabel": "KVANTITATIIVINEN PERUSTELU"
         },
         "oxford-s2q2": {
           "question": "Tutkimuksen mukaan 100 opiskelijan joukossa oli 70 tutoriaalin käyttäjää ja 50 kirjaston käyttäjää. Molemmat tai kumpikaan eivät olleet sallittuja. Mikä on tarkka päällekkäisyys?",
-          "answers": [
-            "20",
-            "50",
-            "Sitä ei voida määrittää",
-            "70"
-          ],
+          "answers": {
+            "a1": "20",
+            "a2": "50",
+            "a3": "Sitä ei voida määrittää",
+            "a4": "70"
+          },
           "headerLabel": "TIEDON RAJAT"
         },
         "oxford-s2q4": {
           "question": "Jos argumentti sanoo, että pidempi kirjastopäivä lisää kävijöitä, minkä oletuksen se tarvitsee?",
-          "answers": [
-            "Jokainen opiskelija pitää kirjastoista",
-            "Kirjasto on tällä hetkellä täynnä",
-            "Pidemmät päivät parantavat aina arvosanoja",
-            "Jotkut opiskelijat, jotka eivät voi osallistua nyt, käyttäisivät lisätunteja"
-          ],
+          "answers": {
+            "a1": "Jokainen opiskelija pitää kirjastoista",
+            "a2": "Kirjasto on tällä hetkellä täynnä",
+            "a3": "Pidemmät päivät parantavat aina arvosanoja",
+            "a4": "Jotkut opiskelijat, jotka eivät voi osallistua nyt, käyttäisivät lisätunteja"
+          },
           "headerLabel": "KRIITTINEN PERUSTELU"
         },
         "oxford-s3q3": {
           "question": "Juuri yksi väite on totta. A sanoo \"B on totta.\" B sanoo \"A ja C ovat vääriä.\" C sanoo \"B on epätosi\". Kuka on totta?",
-          "answers": [
-            "A",
-            "B",
-            "Kaikki kolme",
-            "C"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "Kaikki kolme",
+            "a4": "C"
+          },
           "headerLabel": "MUODALLINEN LOGIIKKA"
         },
         "oxford-s3q7": {
@@ -156,52 +148,52 @@
             "ariaLabel": "YLÄVASEN → 180° → ?"
           },
           "question": "Merkki alkaa neliön vasemmasta yläkulmasta. Mihin se päättyy 180° kierron jälkeen?",
-          "answers": [
-            "Alhaalla oikealla",
-            "Ylhäällä oikea",
-            "Alhaalla-vasemmalla",
-            "Ylhäällä vasen"
-          ],
+          "answers": {
+            "a1": "Alhaalla oikealla",
+            "a2": "Ylhäällä oikea",
+            "a3": "Alhaalla-vasemmalla",
+            "a4": "Ylhäällä vasen"
+          },
           "headerLabel": "SPATIAL PERUSTEET"
         },
         "oxford-s4q3": {
           "question": "Mikä kysymys paljastaa puuttuvan tiedon kohdassa \"Useimmat opiskelijat pitävät opetusohjelmista\"?",
-          "answers": [
-            "Kuinka pitkä opetusohjelma on?",
-            "Kuinka monelta opiskelijalta kysyttiin ja miten heidät valittiin?",
-            "Kuka opettaa opetusohjelman?",
-            "Missä huone on?"
-          ],
+          "answers": {
+            "a1": "Kuinka pitkä opetusohjelma on?",
+            "a2": "Kuinka monelta opiskelijalta kysyttiin ja miten heidät valittiin?",
+            "a3": "Kuka opettaa opetusohjelman?",
+            "a4": "Missä huone on?"
+          },
           "headerLabel": "NÄYTTÖANALYYSI"
         },
         "oxford-s4q4": {
           "question": "Hakijan on toimitettava lomake ja viite. Mei lähetti vain lomakkeen. Mitä seuraa?",
-          "answers": [
-            "Mei täyttää vaatimuksen",
-            "Mei hylättiin",
-            "Mei ei ole vielä täyttänyt ilmoitettua vaatimusta",
-            "Viittaus on valinnainen"
-          ],
+          "answers": {
+            "a1": "Mei täyttää vaatimuksen",
+            "a2": "Mei hylättiin",
+            "a3": "Mei ei ole vielä täyttänyt ilmoitettua vaatimusta",
+            "a4": "Viittaus on valinnainen"
+          },
           "headerLabel": "MUODALLINEN LOGIIKKA"
         },
         "oxford-s5q6": {
           "question": "Kirjasto lisää ilta-aikoja ja käyntimäärät lisääntyvät. Mikä vertailu erottaa parhaiten tuntivaikutuksen kausittaisesta noususta?",
-          "answers": [
-            "Vertaa vastaavaan kirjastoon, joka piti aukioloaikansa samana ajanjaksona",
-            "Kysy vierailijoilta, pitävätkö he illasta",
-            "Laske uudet merkit",
-            "Vertaa tätä kuukautta itseensä"
-          ],
+          "answers": {
+            "a1": "Vertaa vastaavaan kirjastoon, joka piti aukioloaikansa samana ajanjaksona",
+            "a2": "Kysy vierailijoilta, pitävätkö he illasta",
+            "a3": "Laske uudet merkit",
+            "a4": "Vertaa tätä kuukautta itseensä"
+          },
           "headerLabel": "TODISTUSTEN VERTAILU"
         },
         "oxford-s5q7": {
           "question": "Sääntö hyväksyy hakijat, joiden logiikka ≥ 80 ja kirjoittaminen ≥ 70. Ava saa pisteet 84/68; Bo pisteet 79/90; Cy tekee 82/74. Kuka kelpuutetaan?",
-          "answers": [
-            "Ava",
-            "Cy",
-            "Bo",
-            "Ava ja Cy"
-          ],
+          "answers": {
+            "a1": "Ava",
+            "a2": "Cy",
+            "a3": "Bo",
+            "a4": "Ava ja Cy"
+          },
           "headerLabel": "VIIMEINEN LOGIIKKATESTI"
         }
       }

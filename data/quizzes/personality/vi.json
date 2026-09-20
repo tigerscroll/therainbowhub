@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Quốc gia nào phù hợp với tính cách của bạn?",
   "eyebrow": "TRẬN ĐẤU QUỐC GIA LÝ TƯỞNG CỦA BẠN",
   "summary": "Mười lựa chọn về lối sống tiết lộ tính cách của bạn có phù hợp nhất với Ý, Nhật Bản, Úc hay Thụy Điển hay không.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những lựa chọn hàng ngày của bạn có thể chỉ ra một quốc gia phù hợp với bạn hơn những quốc gia còn lại. Mười câu hỏi nhanh tiết lộ trận đấu gần nhất của bạn.",
     "cta": "Tìm đất nước của tôi"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Câu đố giải trí gồm mười câu hỏi này được chuyển thể từ thử thách tính cách đồng quê của Times of India được liên kết. Mỗi lựa chọn sẽ thêm một tín hiệu cho Ý, Nhật Bản, Úc hoặc Thụy Điển.\n\nChọn câu trả lời có vẻ tự nhiên nhất thay vì câu trả lời có vẻ ấn tượng nhất. Mẫu tổng thể mạnh nhất của bạn sẽ quyết định trận đấu cuối cùng của quốc gia.\n\nKết quả mô tả một nguyên mẫu lối sống vui tươi, không phải quốc tịch, tổ tiên, quốc tịch, bản sắc văn hóa hay đề xuất tái định cư. Các khái niệm và hình ảnh của câu hỏi nguồn được sao chép từ Times of India với sự cho phép của chủ sở hữu trang web thực hiện bài kiểm tra này.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi nhanh về thói quen và sở thích của bạn.",
         "Hãy chọn tùy chọn mà bạn cảm thấy phù hợp nhất mà không cần suy nghĩ quá nhiều về nó.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Trận đấu quốc gia",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Sự phù hợp về tính cách",
@@ -126,9 +122,7 @@
       "portraitAlt": "Hình minh họa tuyệt đẹp thể hiện {profile}",
       "disclaimer": "Chỉ để giải trí và tự suy ngẫm. Kết quả này là sự phù hợp về lối sống vui tươi chứ không phải là tuyên bố về quốc tịch, bản sắc văn hóa hay nơi bạn nên sống."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Bạn bè chào nhau nồng nhiệt"
           },
           "question": "Làm thế nào để bạn chào đón một người mới?",
-          "answers": [
-            "Cái ôm ấm áp",
-            "làn sóng thân thiện",
-            "Cúi đầu kính cẩn",
-            "Cái gật đầu ngẫu nhiên"
-          ],
+          "answers": {
+            "a1": "Cái ôm ấm áp",
+            "a2": "làn sóng thân thiện",
+            "a3": "Cúi đầu kính cẩn",
+            "a4": "Cái gật đầu ngẫu nhiên"
+          },
           "headerLabel": "ẤN TƯỢNG ĐẦU TIÊN"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Một khung cảnh tươi sáng dưới bầu trời thay đổi"
           },
           "question": "Thời tiết nào khiến bạn hạnh phúc nhất?",
-          "answers": [
-            "Những cơn gió ấm áp",
-            "Nắng chói chang",
-            "Không khí lạnh",
-            "Mát mẻ và sắc nét"
-          ],
+          "answers": {
+            "a1": "Những cơn gió ấm áp",
+            "a2": "Nắng chói chang",
+            "a3": "Không khí lạnh",
+            "a4": "Mát mẻ và sắc nét"
+          },
           "headerLabel": "THỜI TIẾT HOÀN HẢO"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Một khung cảnh chủ nhật thư giãn ngoài trời"
           },
           "question": "Bạn thường trải qua những ngày chủ nhật như thế nào?",
-          "answers": [
-            "Cuộc phiêu lưu ngoài trời",
-            "Giữ ấm cúng bên trong",
-            "Sự phản chiếu lặng lẽ",
-            "Bữa cơm gia đình kéo dài"
-          ],
+          "answers": {
+            "a1": "Cuộc phiêu lưu ngoài trời",
+            "a2": "Giữ ấm cúng bên trong",
+            "a3": "Sự phản chiếu lặng lẽ",
+            "a4": "Bữa cơm gia đình kéo dài"
+          },
           "headerLabel": "PHONG CÁCH CHỦ NHẬT"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Cà phê buổi sáng bên cửa sổ yên bình"
           },
           "question": "Cách lý tưởng của bạn để bắt đầu một ngày là gì?",
-          "answers": [
-            "Cà phê đậm đặc",
-            "Bước đi nhẹ nhàng",
-            "Không khí đại dương",
-            "Thiền tĩnh lặng"
-          ],
+          "answers": {
+            "a1": "Cà phê đậm đặc",
+            "a2": "Bước đi nhẹ nhàng",
+            "a3": "Không khí đại dương",
+            "a4": "Thiền tĩnh lặng"
+          },
           "headerLabel": "NHỊP ĐIỆU BUỔI SÁNG"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Một chiếc bàn đầy màu sắc với những món ăn khác nhau"
           },
           "question": "Loại thực phẩm nào khiến bạn thích thú nhất?",
-          "answers": [
-            "Hương vị tinh tế",
-            "Đơn giản và nồng nhiệt",
-            "Hải sản tươi sống",
-            "Tiện nghi kinh điển"
-          ],
+          "answers": {
+            "a1": "Hương vị tinh tế",
+            "a2": "Đơn giản và nồng nhiệt",
+            "a3": "Hải sản tươi sống",
+            "a4": "Tiện nghi kinh điển"
+          },
           "headerLabel": "BẢN THỰC PHẨM"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Bức tường trưng bày với nhiều phong cách nghệ thuật đa dạng"
           },
           "question": "Loại nghệ thuật nào thu hút bạn?",
-          "answers": [
-            "Kinh điển vượt thời gian",
-            "Sự đơn giản sạch sẽ",
-            "Biểu thức đậm",
-            "Chi tiết tinh tế"
-          ],
+          "answers": {
+            "a1": "Kinh điển vượt thời gian",
+            "a2": "Sự đơn giản sạch sẽ",
+            "a3": "Biểu thức đậm",
+            "a4": "Chi tiết tinh tế"
+          },
           "headerLabel": "HƯƠNG VỊ SÁNG TẠO"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Bốn loại đồ uống khác nhau được sắp xếp cùng nhau"
           },
           "question": "Lựa chọn đồ uống của bạn là gì?",
-          "answers": [
-            "Bia lạnh",
-            "rượu vang",
-            "Ca cao nóng",
-            "Trà xanh"
-          ],
+          "answers": {
+            "a1": "Bia lạnh",
+            "a2": "rượu vang",
+            "a3": "Ca cao nóng",
+            "a4": "Trà xanh"
+          },
           "headerLabel": "UỐNG LỰA CHỌN"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Bạn bè kỷ niệm một dịp đặc biệt"
           },
           "question": "Bạn muốn ăn mừng những khoảnh khắc quan trọng như thế nào?",
-          "answers": [
-            "Ồn ào và sống động",
-            "Thân mật và ấm cúng",
-            "Vui vẻ thoải mái",
-            "Những nghi lễ ý nghĩa"
-          ],
+          "answers": {
+            "a1": "Ồn ào và sống động",
+            "a2": "Thân mật và ấm cúng",
+            "a3": "Vui vẻ thoải mái",
+            "a4": "Những nghi lễ ý nghĩa"
+          },
           "headerLabel": "PHONG CÁCH LỄ HỘI"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Một bản dựng phim về rừng, bờ biển, đền chùa và vùng nông thôn"
           },
           "question": "Khung cảnh nào khiến bạn cảm thấy giống ở nhà nhất?",
-          "answers": [
-            "Rừng yên tĩnh",
-            "Bờ biển mở",
-            "Những ngôi đền lịch sử",
-            "Vùng quê lăn bánh"
-          ],
+          "answers": {
+            "a1": "Rừng yên tĩnh",
+            "a2": "Bờ biển mở",
+            "a3": "Những ngôi đền lịch sử",
+            "a4": "Vùng quê lăn bánh"
+          },
           "headerLabel": "CẢM GIÁC NHÀ"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Du khách nhìn qua một phong cảnh xa xôi"
           },
           "question": "Phong cách du lịch của bạn là gì?",
-          "answers": [
-            "Tích cực khám phá",
-            "Lang thang chậm rãi",
-            "Hòa nhập văn hóa",
-            "Điểm tham quan mang tính biểu tượng"
-          ],
+          "answers": {
+            "a1": "Tích cực khám phá",
+            "a2": "Lang thang chậm rãi",
+            "a3": "Hòa nhập văn hóa",
+            "a4": "Điểm tham quan mang tính biểu tượng"
+          },
           "headerLabel": "ĐỊA ĐIỂM CUỐI CÙNG"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 11 % av de vuxna kan klara detta inträdesprov för lokförare",
   "eyebrow": "TEST FÖR TÅGFÖRARE",
   "summary": "Tio frågor testar rälssäkerhet, observation, mekaniska resonemang och tydlig kommunikation.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "De första signalerna verkar lätta. Därefter övergår provet till bromssträcka, faror och järnvägsbedömning.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder breda säkerhets- och resonemangsprinciper som färdas över engelsktalande Tier 1-järnvägssystem. Den undviker landsspecifika signalaspekter, driftregler och jobbtitlar samtidigt som den testar observation, kommunikation, bromsmedvetenhet och säkerheten först.\n\nVälj ett svar för varje fråga. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare frågor om tågförares lämplighet.",
         "Välj det säkraste eller bäst stödda svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Entréutmaning för lokförare",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Inträdesprov för lokförare",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och din poäng för järnvägsbegåvning är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fyra järnvägsområden jämfört",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fyra järnvägsområden jämfört"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du klarade Train Driver-entréutmaningen!",
       "finished": "Train Driver-entréutmaningen klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste järnvägsområde",
       "trickiest": "Knepigaste järnvägsområdet",
       "bestRound": "Bästa avsnittet",
@@ -96,8 +89,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Ett tåg rör sig mot ett oväntat hinder. Vad är förarens första prioritet?",
-          "answers": [
-            "Använd lämplig bromsreaktion och följ nödproceduren",
-            "Avsluta tidtabellsinmatningen",
-            "Öppna passagerardörrarna",
-            "Vänta på att ett annat tåg ska rapportera det"
-          ],
+          "answers": {
+            "a1": "Använd lämplig bromsreaktion och följ nödproceduren",
+            "a2": "Avsluta tidtabellsinmatningen",
+            "a3": "Öppna passagerardörrarna",
+            "a4": "Vänta på att ett annat tåg ska rapportera det"
+          },
           "headerLabel": "SÄKERHETSPRIORITETER"
         },
         "train-q2": {
           "question": "Varför är ihållande uppmärksamhet viktigt under en lång, händelselös del av banan?",
-          "answers": [
-            "Tåget blir lättare med tiden",
-            "En kritisk signal eller fara kan uppstå efter en lång tyst period",
-            "Passagerarna förväntar sig frekventa hastighetsändringar",
-            "Rutten blir automatiskt mindre säker vid middagstid"
-          ],
+          "answers": {
+            "a1": "Tåget blir lättare med tiden",
+            "a2": "En kritisk signal eller fara kan uppstå efter en lång tyst period",
+            "a3": "Passagerarna förväntar sig frekventa hastighetsändringar",
+            "a4": "Rutten blir automatiskt mindre säker vid middagstid"
+          },
           "headerLabel": "KONCENTRATION"
         },
         "train-q3": {
           "question": "Om hastigheten ökar, vad händer i allmänhet med stoppsträckan när andra förhållanden förblir liknande?",
-          "answers": [
-            "Den halveras alltid",
-            "Det förblir exakt detsamma",
-            "Det ökar",
-            "Det blir inte relaterat till hastighet"
-          ],
+          "answers": {
+            "a1": "Den halveras alltid",
+            "a2": "Det förblir exakt detsamma",
+            "a3": "Det ökar",
+            "a4": "Det blir inte relaterat till hastighet"
+          },
           "headerLabel": "BROMS MEDVETENHET"
         },
         "train-q4": {
           "question": "Vilket radiomeddelande är mest användbart när du rapporterar en spårrisk?",
-          "answers": [
-            "En lång gissning om dess orsak",
-            "En vag varning utan plats",
-            "En personlig åsikt om tidtabellen",
-            "En kortfattad faktabeskrivning med exakt plats och färdriktning"
-          ],
+          "answers": {
+            "a1": "En lång gissning om dess orsak",
+            "a2": "En vag varning utan plats",
+            "a3": "En personlig åsikt om tidtabellen",
+            "a4": "En kortfattad faktabeskrivning med exakt plats och färdriktning"
+          },
           "headerLabel": "JÄRNVÄGSKOMMUNIKATION"
         },
         "train-q5": {
           "question": "Varför måste en förare undvika att förlita sig enbart på minnet för en säkerhetskritisk instruktion?",
-          "answers": [
-            "Det bör bekräftas och följas genom den godkända processen",
-            "Skriftliga instruktioner är alltid valfria",
-            "Minnet blir perfekt vid högre hastighet",
-            "Passagerarna borde tolka det istället"
-          ],
+          "answers": {
+            "a1": "Det bör bekräftas och följas genom den godkända processen",
+            "a2": "Skriftliga instruktioner är alltid valfria",
+            "a3": "Minnet blir perfekt vid högre hastighet",
+            "a4": "Passagerarna borde tolka det istället"
+          },
           "headerLabel": "PROCEDURELL SÄKERHET"
         },
         "train-q6": {
           "question": "En varningsindikator ändras kort och återgår sedan till det normala. Vilken är den säkraste tolkningen?",
-          "answers": [
-            "Ignorera det för det försvann",
-            "Behandla det som relevant, övervaka det och rapportera det genom rätt process",
-            "Återställ varje system omedelbart utan att kontrollera",
-            "Antag att ett annat tåg orsakade det"
-          ],
+          "answers": {
+            "a1": "Ignorera det för det försvann",
+            "a2": "Behandla det som relevant, övervaka det och rapportera det genom rätt process",
+            "a3": "Återställ varje system omedelbart utan att kontrollera",
+            "a4": "Antag att ett annat tåg orsakade det"
+          },
           "headerLabel": "OBSERVATION"
         },
         "train-q7": {
           "question": "Hjulslirning är mest sannolikt när dragkraft mellan hjul och räl är vad?",
-          "answers": [
-            "Obegränsad",
-            "Perfekt balanserad",
-            "Minskad",
-            "Oberoende av väder"
-          ],
+          "answers": {
+            "a1": "Obegränsad",
+            "a2": "Perfekt balanserad",
+            "a3": "Minskad",
+            "a4": "Oberoende av väder"
+          },
           "headerLabel": "MEKANISKT RESONAL"
         },
         "train-q8": {
           "question": "Du är osäker på om en säkerhetskritisk instruktion hördes korrekt. Vad ska du göra?",
-          "answers": [
-            "Gissa utifrån sammanhanget",
-            "Fortsätt och fråga senare",
-            "Välj den snabbaste tolkningen",
-            "Upprepa det tillbaka och få bekräftelse"
-          ],
+          "answers": {
+            "a1": "Gissa utifrån sammanhanget",
+            "a2": "Fortsätt och fråga senare",
+            "a3": "Välj den snabbaste tolkningen",
+            "a4": "Upprepa det tillbaka och få bekräftelse"
+          },
           "headerLabel": "KOMMUNIKATION MED STÄNGD SLINGA"
         },
         "train-q9": {
           "question": "Varför är utmattningskontroller viktiga vid tågkörning?",
-          "answers": [
-            "Trötthet kan minska uppmärksamhet, reaktion och beslutskvalitet",
-            "Trötthet förbättrar rutinminnet",
-            "Endast passagerare påverkas av långa timmar",
-            "Det ändrar spårvidden"
-          ],
+          "answers": {
+            "a1": "Trötthet kan minska uppmärksamhet, reaktion och beslutskvalitet",
+            "a2": "Trötthet förbättrar rutinminnet",
+            "a3": "Endast passagerare påverkas av långa timmar",
+            "a4": "Det ändrar spårvidden"
+          },
           "headerLabel": "MÄNNISKA PRESTATIONER"
         },
         "train-q10": {
           "question": "Två rutter visar konflikt omedelbart före avgång. Vad är det säkraste svaret?",
-          "answers": [
-            "Följ den skärm som är ljusare",
-            "Fortsätt inte förrän avvikelsen är löst genom rätt process",
-            "Välj den rutt som ser kortare ut",
-            "Be en passagerare att bestämma"
-          ],
+          "answers": {
+            "a1": "Följ den skärm som är ljusare",
+            "a2": "Fortsätt inte förrän avvikelsen är löst genom rätt process",
+            "a3": "Välj den rutt som ser kortare ut",
+            "a4": "Be en passagerare att bestämma"
+          },
           "headerLabel": "SLUTLIG ATTITUDFRÅGA"
         }
       }

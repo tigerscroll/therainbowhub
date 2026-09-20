@@ -137,11 +137,12 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
             <button
               aria-checked={question.presentation === "scale" ? selected : undefined}
               className="quiz-engine__answer"
+              data-answer-id={question.choiceIds[index]}
               data-correct={correct || undefined}
               data-incorrect={incorrect || undefined}
               data-selected={selected || undefined}
               disabled={answer !== undefined}
-              key={`${question.id}-${index}`}
+              key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
                 event.currentTarget.blur();
                 onAnswer(index);

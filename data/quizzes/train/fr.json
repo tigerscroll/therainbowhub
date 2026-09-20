@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 11 % des adultes peuvent réussir cet examen d’entrée de conducteur de train",
   "eyebrow": "LE TEST D’APTITUDE FERROVIAIRE",
   "summary": "Dix questions testent la sécurité ferroviaire, l'observation, le raisonnement mécanique et une communication claire.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les premiers signaux semblent faciles. L'examen aborde ensuite la distance de freinage, les dangers et le jugement ferroviaire.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions utilise des principes généraux de sécurité et de raisonnement applicables à de nombreux réseaux ferroviaires des grands pays anglophones. Il évite la signalisation, les règles d'exploitation et les intitulés de poste propres à un pays, tout en évaluant l'observation, la communication, la compréhension du freinage et le jugement axé sur la sécurité.\n\nChoisissez une réponse à chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions d’aptitude de plus en plus difficiles pour les conducteurs de train.",
         "Choisissez la réponse la plus sûre ou la mieux prise en charge.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée des conducteurs de train",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée de conducteur de train",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score d'aptitude ferroviaire est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Quatre zones ferroviaires comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Quatre zones ferroviaires comparées"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission Conducteur de train !",
       "finished": "Défi d'entrée du conducteur de train terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -96,8 +89,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Un train se dirige vers un obstacle inattendu. Quelle est la première priorité du conducteur ?",
-          "answers": [
-            "Appliquer la réponse de freinage appropriée et suivre la procédure d'urgence",
-            "Terminer la saisie de l'horaire",
-            "Ouvrez les portes passagers",
-            "Attendez qu'un autre train le signale"
-          ],
+          "answers": {
+            "a1": "Appliquer la réponse de freinage appropriée et suivre la procédure d'urgence",
+            "a2": "Terminer la saisie de l'horaire",
+            "a3": "Ouvrez les portes passagers",
+            "a4": "Attendez qu'un autre train le signale"
+          },
           "headerLabel": "PRIORITÉS DE SÉCURITÉ"
         },
         "train-q2": {
           "question": "Pourquoi une attention soutenue est-elle essentielle pendant un long tronçon de piste sans incident ?",
-          "answers": [
-            "Le train devient plus léger avec le temps",
-            "Un signal critique ou un danger peut apparaître après une longue période de silence",
-            "Les passagers s'attendent à des changements de vitesse fréquents",
-            "L'itinéraire devient automatiquement moins sûr à midi"
-          ],
+          "answers": {
+            "a1": "Le train devient plus léger avec le temps",
+            "a2": "Un signal critique ou un danger peut apparaître après une longue période de silence",
+            "a3": "Les passagers s'attendent à des changements de vitesse fréquents",
+            "a4": "L'itinéraire devient automatiquement moins sûr à midi"
+          },
           "headerLabel": "CONCENTRATION"
         },
         "train-q3": {
           "question": "Si la vitesse augmente, qu’arrive-t-il généralement à la distance d’arrêt lorsque les autres conditions restent similaires ?",
-          "answers": [
-            "C'est toujours la moitié",
-            "ça reste exactement pareil",
-            "Cela augmente",
-            "Cela n'a plus aucun rapport avec la vitesse"
-          ],
+          "answers": {
+            "a1": "C'est toujours la moitié",
+            "a2": "ça reste exactement pareil",
+            "a3": "Cela augmente",
+            "a4": "Cela n'a plus aucun rapport avec la vitesse"
+          },
           "headerLabel": "SENSIBILISATION AU FREINAGE"
         },
         "train-q4": {
           "question": "Quel message radio est le plus utile pour signaler un danger sur la voie ?",
-          "answers": [
-            "Une longue hypothèse sur sa cause",
-            "Un vague avertissement sans localisation",
-            "Un avis personnel sur le calendrier",
-            "Une description factuelle et concise, avec le lieu exact et le sens de circulation"
-          ],
+          "answers": {
+            "a1": "Une longue hypothèse sur sa cause",
+            "a2": "Un vague avertissement sans localisation",
+            "a3": "Un avis personnel sur le calendrier",
+            "a4": "Une description factuelle et concise, avec le lieu exact et le sens de circulation"
+          },
           "headerLabel": "COMMUNICATION FERROVIAIRE"
         },
         "train-q5": {
           "question": "Pourquoi un conducteur doit-il éviter de se fier uniquement à la mémoire pour une instruction critique pour la sécurité ?",
-          "answers": [
-            "Il doit être confirmé et suivi tout au long du processus approuvé.",
-            "Les instructions écrites sont toujours facultatives",
-            "La mémoire devient parfaite à une vitesse plus élevée",
-            "Les passagers devraient plutôt l'interpréter"
-          ],
+          "answers": {
+            "a1": "Il doit être confirmé et suivi tout au long du processus approuvé.",
+            "a2": "Les instructions écrites sont toujours facultatives",
+            "a3": "La mémoire devient parfaite à une vitesse plus élevée",
+            "a4": "Les passagers devraient plutôt l'interpréter"
+          },
           "headerLabel": "SÉCURITÉ DES PROCÉDURES"
         },
         "train-q6": {
           "question": "Un indicateur d'avertissement change brièvement puis revient à la normale. Quelle est l’interprétation la plus sûre ?",
-          "answers": [
-            "Ignore-le car il a disparu",
-            "Traitez-le comme pertinent, surveillez-le et signalez-le via le processus approprié",
-            "Réinitialisez chaque système immédiatement sans vérifier",
-            "Supposons qu'un autre train l'ait causé"
-          ],
+          "answers": {
+            "a1": "Ignore-le car il a disparu",
+            "a2": "Traitez-le comme pertinent, surveillez-le et signalez-le via le processus approprié",
+            "a3": "Réinitialisez chaque système immédiatement sans vérifier",
+            "a4": "Supposons qu'un autre train l'ait causé"
+          },
           "headerLabel": "OBSERVATION"
         },
         "train-q7": {
           "question": "Le patinage des roues est plus probable lorsque la traction entre la roue et le rail est quelle ?",
-          "answers": [
-            "Illimité",
-            "Parfaitement équilibré",
-            "Réduit",
-            "Indépendant de la météo"
-          ],
+          "answers": {
+            "a1": "Illimité",
+            "a2": "Parfaitement équilibré",
+            "a3": "Réduit",
+            "a4": "Indépendant de la météo"
+          },
           "headerLabel": "RAISONNEMENT MÉCANIQUE"
         },
         "train-q8": {
           "question": "Vous ne savez pas si une instruction critique pour la sécurité a été entendue correctement. Que devez-vous faire ?",
-          "answers": [
-            "Devinez à partir du contexte",
-            "Continuez et demandez plus tard",
-            "Choisissez l'interprétation la plus rapide",
-            "Répétez-le et obtenez une confirmation"
-          ],
+          "answers": {
+            "a1": "Devinez à partir du contexte",
+            "a2": "Continuez et demandez plus tard",
+            "a3": "Choisissez l'interprétation la plus rapide",
+            "a4": "Répétez-le et obtenez une confirmation"
+          },
           "headerLabel": "COMMUNICATION EN BOUCLE FERMÉE"
         },
         "train-q9": {
           "question": "Pourquoi le contrôle de la fatigue est-il important dans la conduite des trains ?",
-          "answers": [
-            "La fatigue peut réduire l’attention, la réaction et la qualité des décisions",
-            "La fatigue améliore la mémoire de routine",
-            "Seuls les passagers sont concernés par les longues heures d'ouverture",
-            "Ça change l'écartement des voies"
-          ],
+          "answers": {
+            "a1": "La fatigue peut réduire l’attention, la réaction et la qualité des décisions",
+            "a2": "La fatigue améliore la mémoire de routine",
+            "a3": "Seuls les passagers sont concernés par les longues heures d'ouverture",
+            "a4": "Ça change l'écartement des voies"
+          },
           "headerLabel": "PERFORMANCE HUMAINE"
         },
         "train-q10": {
           "question": "Deux itinéraires affichent un conflit immédiatement avant le départ. Quelle est la réponse la plus sûre ?",
-          "answers": [
-            "Suivre l'affichage le plus lumineux",
-            "Ne continuez pas tant que l'écart n'est pas résolu par le processus approprié.",
-            "Choisissez l'itinéraire qui semble le plus court",
-            "Demander à un passager de décider"
-          ],
+          "answers": {
+            "a1": "Suivre l'affichage le plus lumineux",
+            "a2": "Ne continuez pas tant que l'écart n'est pas résolu par le processus approprié.",
+            "a3": "Choisissez l'itinéraire qui semble le plus court",
+            "a4": "Demander à un passager de décider"
+          },
           "headerLabel": "QUESTION FINALE SUR LES APTITUDES"
         }
       }

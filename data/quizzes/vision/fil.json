@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "7% lang ang makakapasa sa vision test na ito",
   "eyebrow": "Ang mga ito ay may kaugnayan sa mga pang-aari ng mga tao.",
   "summary": "Sinusuri ng maliliit na pagkakaiba, nagbabagong pattern at optical traps kung nahuhuli ng iyong mga mata ang nakakaligtaan ng karamihan sa mga tao.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Gaano katalas ang iyong mga mata? Makita ang maliliit na pagkakaiba, subaybayan ang mga nagbabagong pattern at mahuli ang mga visual na bitag bago ka mahuli.",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ang entertainment challenge na ito ay naglalaman ng sampung visual na puzzle na sumasaklaw sa contrast ng kulay, pagtutugma ng detalye, spatial orientation, pattern tracking, atensyon at visual memory. Ang mga gawain ay nagiging mas hinihingi nang hindi umaasa sa mga terminolohiya ng espesyalista.\n\nPag-aralan nang mabuti ang bawat imahe o simbolo na itinakda, pagkatapos ay piliin ang sagot na pinaka-suportado ng ipinapakita. Ang ilang mga katanungan ay sumusubok sa pang-unawa at atensyon kaysa sa mismong paningin.\n\nIto ay hindi isang pagsusuri sa mata, medikal na pagsusuri sa paningin o diagnosis. Humingi ng kwalipikadong payo sa pangangalaga sa mata kung mayroon kang mga alalahanin tungkol sa iyong paningin.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Kumpletuhin ang sampung maingat na napiling tanong sa isang nakatuong hamon.",
         "Pumili ng isang sagot sa bawat pagkakataon. Nananatiling nakatago ang kawastuhan hanggang sa huling pagsisiwalat.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "hamon sa paningin",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Hamon sa Paningin",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong vision-challenge score at three-skill breakdown ay handa nang ipakita.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Tatlong visual na kasanayan ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong visual na kasanayan ang inihambing"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Nalampasan mo ang vision challenge!",
       "finished": "Kumpleto na ang hamon sa paningin",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na visual na kasanayan",
       "trickiest": "Pinaka nakakalito na visual na kasanayan",
       "bestRound": "Pinakamahusay na seksyon",
@@ -98,8 +91,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong focus profile",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Apat na malapit na asul na swatch na may kakaibang tile sa ibabang kanang bahagi"
           },
           "question": "Aling tile ang ibang kulay?",
-          "answers": [
-            "Kaliwa sa itaas",
-            "kanang ibaba",
-            "kanang itaas",
-            "Kaliwa sa ibaba"
-          ],
+          "answers": {
+            "a1": "Kaliwa sa itaas",
+            "a2": "kanang ibaba",
+            "a3": "kanang itaas",
+            "a4": "Kaliwa sa ibaba"
+          },
           "headerLabel": "COLOR CONTRAST"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Kode ng Referensya M 7 K 2 P 9"
           },
           "question": "Aling code ang eksaktong tumutugma?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "DETALYE MATCH"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Ang hilagang-silangan na arrow ay sumasalamin sa isang patayong salamin"
           },
           "question": "Aling arrow ang patayong salamin ng ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "PANALANG PANALIN"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Ilang letrang F ang ipinapakita?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "KONTROL NG PANSIN"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, hindi kilala"
           },
           "question": "Aling tile ang kumukumpleto sa alternating row?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "PAGSUNOD SA PADRON"
         },
         "vision-r4q5": {
           "question": "Aling kulay ang higit na namumukod-tangi laban sa malalim na hukbong-dagat?",
-          "answers": [
-            "Sample ng kulay A",
-            "Sample ng kulay B",
-            "Sample ng kulay D",
-            "Sample ng kulay C"
-          ],
+          "answers": {
+            "a1": "Sample ng kulay A",
+            "a2": "Sample ng kulay B",
+            "a3": "Sample ng kulay D",
+            "a4": "Sample ng kulay C"
+          },
           "headerLabel": "COLOR FOCUS"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Isang pulang panimulang tuldok na may apat na tumutugmang tuldok na ruta na paulit-ulit na tumatawid bago maabot ang mga endpoint na A, B, C at D"
           },
           "question": "Magsimula sa pulang tuldok at sundan ang may tuldok na ruta nito. Aling letra ang naabot mo?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "Ang mga Pangyayari"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026 B: F0CUS-M7Q2-2026",
           "question": "Aling tumpak na posisyon ang nagbago sa Bersyon B?",
-          "answers": [
-            "Ang unang F",
-            "Ang Q",
-            "Ang pangalawang karakter",
-            "Ang huling digit"
-          ],
+          "answers": {
+            "a1": "Ang unang F",
+            "a2": "Ang Q",
+            "a3": "Ang pangalawang karakter",
+            "a4": "Ang huling digit"
+          },
           "headerLabel": "DETEKSYON NG DETALYE"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Base M8Q2 K7P4 R6N3 at kopyahin ang M8Q2 K1P4 R6M3"
           },
           "question": "Aling dalawang karakter ang nagbago?",
-          "answers": [
-            "7 at N",
-            "8 at 6",
-            "Q at P",
-            "K at R"
-          ],
+          "answers": {
+            "a1": "7 at N",
+            "a2": "8 at 6",
+            "a3": "Q at P",
+            "a4": "K at R"
+          },
           "headerLabel": "PAGHAHAMBING NG CODE"
         },
         "vision-r8q5": {
           "question": "Aling icon ang lumitaw sa ikaapat?",
-          "answers": [
-            "Buwan",
-            "Angkla",
-            "Araw",
-            "Bituin"
-          ],
+          "answers": {
+            "a1": "Buwan",
+            "a2": "Angkla",
+            "a3": "Araw",
+            "a4": "Bituin"
+          },
           "study": {
             "title": "Mabilis na snapshot",
             "items": [

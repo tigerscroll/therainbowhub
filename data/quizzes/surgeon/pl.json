@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Większość dorosłych nie jest w stanie zdać tego egzaminu wstępnego dla chirurgów",
   "eyebrow": "TEST UMIEJĘTNOŚCI NA SALI OPERACYJNEJ",
   "summary": "Dziesięć pytań sprawdza anatomię, bezpieczeństwo chirurgiczne, techniki i krytyczne decyzje.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Pytania z anatomii wydają się łatwe do rozwiązania. Następnie test przenosi się w sterylną praktykę, narzędzia chirurgiczne i decyzje, gdzie jeden szczegół zmienia wszystko.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie rozrywkowe składające się z dziesięciu pytań wykorzystuje szerokie koncepcje anatomii i bezpieczeństwa chirurgicznego, które mają zastosowanie w krajach anglojęzycznych poziomu 1. Przechodzi od przepływu krwi i sterylnej praktyki do kontroli bezpieczeństwa, chirurgii przez dziurkę od klucza, znaków ostrzegawczych dotyczących ran, monitorowania pacjenta i świadomej zgody.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań z zakresu wiedzy chirurgicznej.",
         "Wybierz jedną najlepiej obsługiwaną odpowiedź.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie związane z wejściem na stanowisko chirurga",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na chirurga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik wiedzy chirurgicznej jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie pięciu obszarów chirurgicznych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie pięciu obszarów chirurgicznych"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Udało Ci się sprostać wyzwaniu wstępnemu Chirurga!",
       "finished": "Wyzwanie wejścia chirurga ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar chirurgiczny",
       "trickiest": "Najtrudniejszy obszar chirurgiczny",
       "bestRound": "Najlepsza sekcja",
@@ -99,8 +92,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Co w układzie krążenia definiuje tętnicę?",
-          "answers": [
-            "Odprowadza krew z serca",
-            "Zawsze niesie ze sobą krew bogatą w tlen",
-            "Niesie krew tylko do płuc",
-            "Nie zawiera ściany mięśniowej"
-          ],
+          "answers": {
+            "a1": "Odprowadza krew z serca",
+            "a2": "Zawsze niesie ze sobą krew bogatą w tlen",
+            "a3": "Niesie krew tylko do płuc",
+            "a4": "Nie zawiera ściany mięśniowej"
+          },
           "headerLabel": "ANATOMIA CHIRURGICZNA"
         },
         "surgeon-q2": {
           "question": "Jaki jest główny cel utrzymywania sterylnego pola operacyjnego?",
-          "answers": [
-            "Aby zachować instrumenty ułożone według rozmiaru",
-            "Aby zmniejszyć zanieczyszczenie i ryzyko infekcji",
-            "Aby procedura zakończyła się szybciej",
-            "Aby zapobiec wszelkiemu krwawieniu"
-          ],
+          "answers": {
+            "a1": "Aby zachować instrumenty ułożone według rozmiaru",
+            "a2": "Aby zmniejszyć zanieczyszczenie i ryzyko infekcji",
+            "a3": "Aby procedura zakończyła się szybciej",
+            "a4": "Aby zapobiec wszelkiemu krwawieniu"
+          },
           "headerLabel": "STERYLNA PRAKTYKA"
         },
         "surgeon-q3": {
           "question": "Co powinna potwierdzić przerwa chirurgiczna bezpośrednio przed nacięciem?",
-          "answers": [
-            "Tylko oczekiwana długość procedury",
-            "Tylko sprzęt preferowany przez chirurga",
-            "Właściwy pacjent, zabieg i miejsce na ciało",
-            "Wybór posiłku pacjenta po zabiegu"
-          ],
+          "answers": {
+            "a1": "Tylko oczekiwana długość procedury",
+            "a2": "Tylko sprzęt preferowany przez chirurga",
+            "a3": "Właściwy pacjent, zabieg i miejsce na ciało",
+            "a4": "Wybór posiłku pacjenta po zabiegu"
+          },
           "headerLabel": "KONTROLA BEZPIECZEŃSTWA"
         },
         "surgeon-q4": {
           "question": "Czym operacja laparoskopowa różni się od tradycyjnej metody otwartej?",
-          "answers": [
-            "Nigdy nie wymaga kontroli bólu",
-            "Nie używa żadnych narzędzi chirurgicznych",
-            "Może jedynie zbadać skórę",
-            "Zwykle używa aparatu i instrumentów poprzez małe nacięcia"
-          ],
+          "answers": {
+            "a1": "Nigdy nie wymaga kontroli bólu",
+            "a2": "Nie używa żadnych narzędzi chirurgicznych",
+            "a3": "Może jedynie zbadać skórę",
+            "a4": "Zwykle używa aparatu i instrumentów poprzez małe nacięcia"
+          },
           "headerLabel": "TECHNIKI CHIRURGICZNE"
         },
         "surgeon-q5": {
           "question": "Która struktura jest usuwana podczas wycięcia wyrostka robaczkowego?",
-          "answers": [
-            "Wyrostek robaczkowy",
-            "Woreczek żółciowy",
-            "Śledziona",
-            "Trzustka"
-          ],
+          "answers": {
+            "a1": "Wyrostek robaczkowy",
+            "a2": "Woreczek żółciowy",
+            "a3": "Śledziona",
+            "a4": "Trzustka"
+          },
           "headerLabel": "ANATOMIA OPERACYJNA"
         },
         "surgeon-q6": {
           "question": "Do czego głównie służy retraktor chirurgiczny?",
-          "answers": [
-            "Pomiar nasycenia tlenem",
-            "Trzymanie tkanki lub nacięcia otwartego, aby poprawić dostęp",
-            "Zamknięcie rany szwami",
-            "Rejestrowanie elektrycznej aktywności serca"
-          ],
+          "answers": {
+            "a1": "Pomiar nasycenia tlenem",
+            "a2": "Trzymanie tkanki lub nacięcia otwartego, aby poprawić dostęp",
+            "a3": "Zamknięcie rany szwami",
+            "a4": "Rejestrowanie elektrycznej aktywności serca"
+          },
           "headerLabel": "INSTRUMENTY CHIRURGICZNE"
         },
         "surgeon-q7": {
           "question": "Która kombinacja może sugerować zakażenie miejsca operowanego?",
-          "answers": [
-            "Poprawa komfortu i suchego gojenia się rany",
-            "Stały apetyt i normalna temperatura",
-            "Zwiększające się zaczerwienienie lub ból, drenaż lub gorączka",
-            "Czysty opatrunek, bez nowych objawów"
-          ],
+          "answers": {
+            "a1": "Poprawa komfortu i suchego gojenia się rany",
+            "a2": "Stały apetyt i normalna temperatura",
+            "a3": "Zwiększające się zaczerwienienie lub ból, drenaż lub gorączka",
+            "a4": "Czysty opatrunek, bez nowych objawów"
+          },
           "headerLabel": "ZNAKI OSTRZEGAWCZE PO ZABIEGU"
         },
         "surgeon-q8": {
           "question": "Które urządzenie umożliwia szybką i nieinwazyjną ocenę nasycenia krwi tlenem podczas operacji?",
-          "answers": [
-            "Młotek refleksyjny",
-            "Otoskop",
-            "Termometr",
-            "Pulsoksymetr"
-          ],
+          "answers": {
+            "a1": "Młotek refleksyjny",
+            "a2": "Otoskop",
+            "a3": "Termometr",
+            "a4": "Pulsoksymetr"
+          },
           "headerLabel": "MONITOROWANIE PACJENTA"
         },
         "surgeon-q9": {
           "question": "Osoba przestaje reagować i nie oddycha normalnie. Jaka jest najbezpieczniejsza natychmiastowa reakcja ogólna?",
-          "answers": [
-            "Wezwij służby ratunkowe i rozpocznij odpowiednie podstawowe czynności resuscytacyjne",
-            "Podaj jedzenie lub napój",
-            "Poczekaj kilka minut bez działania",
-            "Poproś tę osobę, aby wstała"
-          ],
+          "answers": {
+            "a1": "Wezwij służby ratunkowe i rozpocznij odpowiednie podstawowe czynności resuscytacyjne",
+            "a2": "Podaj jedzenie lub napój",
+            "a3": "Poczekaj kilka minut bez działania",
+            "a4": "Poproś tę osobę, aby wstała"
+          },
           "headerLabel": "NAGŁE SYTUACJE CHIRURGICZNE"
         },
         "surgeon-q10": {
           "question": "Który opis najlepiej pasuje do świadomej zgody przed operacją?",
-          "answers": [
-            "Lekarz dokonuje wyboru bez wyjaśniania alternatyw",
-            "Pacjent otrzymuje istotne informacje i wyraża zgodę dobrowolnie",
-            "Za każdego dorosłego zawsze decyduje krewny",
-            "Podpisanie formularza eliminuje potrzebę dyskusji"
-          ],
+          "answers": {
+            "a1": "Lekarz dokonuje wyboru bez wyjaśniania alternatyw",
+            "a2": "Pacjent otrzymuje istotne informacje i wyraża zgodę dobrowolnie",
+            "a3": "Za każdego dorosłego zawsze decyduje krewny",
+            "a4": "Podpisanie formularza eliminuje potrzebę dyskusji"
+          },
           "headerLabel": "KOŃCOWE PYTANIE O ZGODĘ"
         }
       }

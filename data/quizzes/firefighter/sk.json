@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Iba 11 % môže úspešne absolvovať túto prijímaciu skúšku pre hasičov",
   "eyebrow": "Hasičská výzva",
   "summary": "Veda o požiari, nástroje, nebezpečenstvá a rýchle rozhodnutia o incidentoch testujú, ako jasne myslíte pod tlakom.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Správanie sa pri požiari, rozpoznávanie nebezpečenstva, mechanické uvažovanie a úsudok v zlomku sekundy. Dokážeš zostať pokojný, keď na každej stope záleží?",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto celosvetová zábavná výzva využíva desať starostlivo rôznorodých otázok na preskúmanie uvažovania hasičov na základnej úrovni. Zahŕňa vedu o požiari a dyme, nebezpečenstvá na scéne, mechaniku zariadení, praktickú matematickú gramotnosť, priestorové povedomie, jasnú komunikáciu a posúdenie incidentu.\n\nVýzva rýchlo prechádza od dostupných základov k meniacim sa podmienkam, praktickej mechanike a integrovaným rozhodnutiam o incidentoch. Otázky využívajú skôr celosvetovo bezpečné princípy než miestne hodnosti, kódexy, stavebné pravidlá alebo prevádzkové protipožiarne postupy.\n\nVaše konečné percento odráža iba odpovede uvedené v tomto zábavnom kvíze. Je to hravá snímka vstupných priestorov, ktoré boli najsilnejšie, a tém, ktoré sa ukázali ako náročnejšie, nie posudzovanie operačnej pripravenosti alebo vhodnosti pre zamestnanie hasičov.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Prepracujte všetkých desať otázok vlastným tempom; neexistuje časovač ani rýchlostný bonus.",
         "Vyberte jedinú možnosť, ktorú najlepšie podporujú viditeľné stopy. Korektnosť zostáva skrytá až do konečného odhalenia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hasičská výzva",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Hasičská výzva",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre hasičov a rozdelenie podľa piatich oblastí sú pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnaných päť vstupných oblastí",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnaných päť vstupných oblastí"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "Prešli ste výzvou na vstup hasičov!",
       "finished": "Vstupná výzva pre hasičov dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejší vstupný priestor",
       "trickiest": "Najchúlostivejší vstupný priestor",
       "bestRound": "Najlepší incidentový úsek",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Teplo a palivo sú prítomné. Ktorý tretí prvok je potrebný na dokončenie požiarneho trojuholníka?",
           "headerLabel": "POŽIARNA VEDA",
-          "answers": [
-            "Voda",
-            "Kyslík",
-            "Dym",
-            "Ash"
-          ]
+          "answers": {
+            "a1": "Voda",
+            "a2": "Kyslík",
+            "a3": "Dym",
+            "a4": "Ash"
+          }
         },
         "firefighter-s1q2": {
           "question": "Iskriaci elektrický panel stojí vedľa bazéna s vodou. Aká je najbezpečnejšia prvá reakcia?",
           "headerLabel": "NEBEZPEČENSTVO",
-          "answers": [
-            "Prejdite cez vodu, aby ste ju vypli",
-            "Nalejte viac vody na panel",
-            "Presuňte panel za jeho vonkajší obal",
-            "Udržujte ľudí v čistote a varujte kvalifikovaných respondentov"
-          ]
+          "answers": {
+            "a1": "Prejdite cez vodu, aby ste ju vypli",
+            "a2": "Nalejte viac vody na panel",
+            "a3": "Presuňte panel za jeho vonkajší obal",
+            "a4": "Udržujte ľudí v čistote a varujte kvalifikovaných respondentov"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Ktorá správa najlepšie informuje o zmene bez uhádnutia jej príčiny?",
           "headerLabel": "HLÁSENIE INCIDENTU",
-          "answers": [
-            "Dym pri severných dverách sa zmenil zo svetlého a stáleho na rýchlo rastúci",
-            "Podľa dymu sa podarilo identifikovať presný horiaci materiál",
-            "Nič dôležité sa nezmenilo, pretože dym už bol prítomný",
-            "Oheň určite zostane v rovnakej oblasti"
-          ]
+          "answers": {
+            "a1": "Dym pri severných dverách sa zmenil zo svetlého a stáleho na rýchlo rastúci",
+            "a2": "Podľa dymu sa podarilo identifikovať presný horiaci materiál",
+            "a3": "Nič dôležité sa nezmenilo, pretože dym už bol prítomný",
+            "a4": "Oheň určite zostane v rovnakej oblasti"
+          }
         },
         "firefighter-s1q5": {
           "question": "Ako páka sa používa páčidlo. Čo sa zvyčajne stane, keď sa rukoväť posunie ďalej od čapu?",
           "headerLabel": "MECHANICKÉ DÔVODY",
-          "answers": [
-            "Vždy je potrebná väčšia sila",
-            "Pivot prestane fungovať",
-            "Na rovnaký efekt otáčania je potrebná menšia sila",
-            "Záťaž sa stáva beztiažovou"
-          ]
+          "answers": {
+            "a1": "Vždy je potrebná väčšia sila",
+            "a2": "Pivot prestane fungovať",
+            "a3": "Na rovnaký efekt otáčania je potrebná menšia sila",
+            "a4": "Záťaž sa stáva beztiažovou"
+          }
         },
         "firefighter-s3q6": {
           "question": "Horúci povrch zohrieva vašu tvár zo vzdialenosti niekoľkých metrov bez kontaktu. Ktorý proces prenosu tepla to najlepšie vysvetľuje?",
           "headerLabel": "PRENOS TEPLA",
-          "answers": [
-            "Žiarenie",
-            "Vedenie",
-            "Odparovanie",
-            "Kondenzácia"
-          ]
+          "answers": {
+            "a1": "Žiarenie",
+            "a2": "Vedenie",
+            "a3": "Odparovanie",
+            "a4": "Kondenzácia"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Akú skutočnú vzdialenosť predstavuje trasa?",
           "headerLabel": "PRAKTICKÉ ČÍTANIE",
-          "answers": [
-            "50 metrov",
-            "60 metrov",
-            "65 metrov",
-            "70 metrov"
-          ]
+          "answers": {
+            "a1": "50 metrov",
+            "a2": "60 metrov",
+            "a3": "65 metrov",
+            "a4": "70 metrov"
+          }
         },
         "firefighter-s4q7": {
           "question": "Strecha poškodená požiarom sa prepadá a objavujú sa nové trhliny. Aký je najbezpečnejší výklad?",
           "headerLabel": "ŠTRUKTURÁLNE RIZIKÁ",
-          "answers": [
-            "Strecha bezpečne chladí",
-            "Trhliny presne ukazujú, kde sa majú postaviť",
-            "Zrútenie je možné, preto sa vyhýbajte a nahláste meniaci sa stav",
-            "Škoda je dôležitá až po incidente"
-          ]
+          "answers": {
+            "a1": "Strecha bezpečne chladí",
+            "a2": "Trhliny presne ukazujú, kde sa majú postaviť",
+            "a3": "Zrútenie je možné, preto sa vyhýbajte a nahláste meniaci sa stav",
+            "a4": "Škoda je dôležitá až po incidente"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "Ozubené koleso A riadi B a B jazdí C. Ktorým smerom sa otáča ozubené koleso C?",
           "headerLabel": "ROZUMOVANIE PREVODOV",
-          "answers": [
-            "V smere hodinových ručičiek, po dvoch otočeniach smeru",
-            "Proti smeru hodinových ručičiek, po jednom otočení",
-            "Nemôže sa otáčať, pretože sa používajú tri prevody",
-            "Nahor, pretože Gear A je prvý"
-          ]
+          "answers": {
+            "a1": "V smere hodinových ručičiek, po dvoch otočeniach smeru",
+            "a2": "Proti smeru hodinových ručičiek, po jednom otočení",
+            "a3": "Nemôže sa otáčať, pretože sa používajú tri prevody",
+            "a4": "Nahor, pretože Gear A je prvý"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Koľko lámp treba ešte vytiahnuť, aby bola každá posádka vybavená a zostali dve náhradné?",
           "headerLabel": "VYBAVENIE MATEMATIKA",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "Aká je najlepšia prvá akcia a správa?",
           "headerLabel": "ZÁVEREČNÝ TEST UDÁLOSTI",
-          "answers": [
-            "Pred nahlásením dymu dokončite počítanie",
-            "Nasmerujte ľudí na východ; nahlásiť západný dym a dvoch nezvestných ľudí; odložiť počítanie",
-            "Použite západnú chodbu, pretože je najkratšia",
-            "Nahláste iba počet zariadení"
-          ]
+          "answers": {
+            "a1": "Pred nahlásením dymu dokončite počítanie",
+            "a2": "Nasmerujte ľudí na východ; nahlásiť západný dym a dvoch nezvestných ľudí; odložiť počítanie",
+            "a3": "Použite západnú chodbu, pretože je najkratšia",
+            "a4": "Nahláste iba počet zariadení"
+          }
         }
       }
     }

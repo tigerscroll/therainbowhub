@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 15 % des adultes peuvent réussir cet examen d’entrée à la RAF",
   "eyebrow": "LE TEST DE CONNAISSANCES RAF",
   "summary": "Dix questions testent l'histoire de la RAF, les avions, les grades et les connaissances opérationnelles.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les célèbres avions ne sont qu’un début. Ces 10 questions révèlent ce que vous savez réellement sur la RAF.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions porte sur la formation, l'histoire, les grades, les avions et les missions actuelles de la Royal Air Force. Il commence par des repères familiers avant d'aborder des détails qui exigent une connaissance plus approfondie de la RAF.\n\nChoisissez une réponse à chaque question. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.\n\nLes faits ont été vérifiés à partir de documents actuels et historiques publiés par la Royal Air Force.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions RAF de plus en plus difficiles.",
         "Choisissez l'une des quatre réponses sans aide extérieure.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d'entrée de la RAF",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d'entrée à la RAF",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score de connaissances RAF est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Comparaison de cinq domaines de connaissances du RAF",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Comparaison de cinq domaines de connaissances du RAF"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Vous avez réussi le test d'admission à la RAF !",
       "finished": "Défi d'entrée de la RAF terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -99,8 +92,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "En quelle année la Royal Air Force a-t-elle été créée ?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "ORIGINES DE LA RAF"
         },
         "raf-q2": {
           "question": "La RAF a été créée en fusionnant le Royal Flying Corps avec quel autre service ?",
-          "answers": [
-            "Fleet Air Arm",
-            "Royal Naval Air Service",
-            "Army Air Corps",
-            "Royal Observer Corps"
-          ],
+          "answers": {
+            "a1": "Fleet Air Arm",
+            "a2": "Royal Naval Air Service",
+            "a3": "Army Air Corps",
+            "a4": "Royal Observer Corps"
+          },
           "headerLabel": "HISTORIQUE DES SERVICES"
         },
         "raf-q3": {
           "question": "En quelle année a eu lieu la bataille d'Angleterre ?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "BATAILLE DE GRANDE-BRETAGNE"
         },
         "raf-q4": {
           "question": "Quelle est la devise officielle de la Royal Air Force ?",
-          "answers": [
-            "Semper Fidelis",
-            "Qui ose gagne",
-            "Servir pour diriger",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Semper Fidelis",
+            "a2": "Qui ose gagne",
+            "a3": "Servir pour diriger",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "IDENTITÉ DE LA RAF"
         },
         "raf-q5": {
           "question": "Quel reste le rôle principal de la RAF aujourd’hui ?",
-          "answers": [
-            "Défendre l'espace aérien du Royaume-Uni",
-            "Exploitation des porte-avions de la Royal Navy",
-            "Gestion de tous les aéroports civils",
-            "Former toutes les branches des forces armées"
-          ],
+          "answers": {
+            "a1": "Défendre l'espace aérien du Royaume-Uni",
+            "a2": "Exploitation des porte-avions de la Royal Navy",
+            "a3": "Gestion de tous les aéroports civils",
+            "a4": "Former toutes les branches des forces armées"
+          },
           "headerLabel": "RÔLE MODERNE"
         },
         "raf-q6": {
           "question": "Quel grade d'officier de la RAF se situe immédiatement au-dessus de Flight Lieutenant ?",
-          "answers": [
-            "Flying Officer",
-            "Squadron Leader",
-            "Wing Commander",
-            "Group Captain"
-          ],
+          "answers": {
+            "a1": "Flying Officer",
+            "a2": "Squadron Leader",
+            "a3": "Wing Commander",
+            "a4": "Group Captain"
+          },
           "headerLabel": "STRUCTURE DES RANGS"
         },
         "raf-q7": {
           "question": "Quel avion est piloté par l'équipe de voltige aérienne de la RAF, les Red Arrows ?",
-          "answers": [
-            "Typhoon FGR4",
-            "Tutor T1",
-            "Hawk T1",
-            "Voyager"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "CONNAISSANCE DES AÉRONEFS"
         },
         "raf-q8": {
           "question": "Qu'était Chain Home pendant la bataille d'Angleterre ?",
-          "answers": [
-            "Un escadron de chasse",
-            "Un plan de production aéronautique",
-            "Un service de secours côtier",
-            "Un réseau de radars d'alerte précoce"
-          ],
+          "answers": {
+            "a1": "Un escadron de chasse",
+            "a2": "Un plan de production aéronautique",
+            "a3": "Un service de secours côtier",
+            "a4": "Un réseau de radars d'alerte précoce"
+          },
           "headerLabel": "AVERTISSEMENT PRÉCOCE"
         },
         "raf-q9": {
           "question": "Quel nom d’entreprise est indissociable du design du Spitfire ?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havilland",
-            "Handley Page"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havilland",
+            "a4": "Handley Page"
+          },
           "headerLabel": "AVIONS HISTORIQUES"
         },
         "raf-q10": {
           "question": "Outre les filières avions à réaction rapide, multimoteurs et voilure tournante, quelle quatrième filière les pilotes de la RAF peuvent-ils rejoindre ?",
-          "answers": [
-            "Patrouille des douanes maritimes",
-            "Systèmes d'avions télépilotés",
-            "Commandement des compagnies aériennes civiles",
-            "Aviation sous-marine navale"
-          ],
+          "answers": {
+            "a1": "Patrouille des douanes maritimes",
+            "a2": "Systèmes d'avions télépilotés",
+            "a3": "Commandement des compagnies aériennes civiles",
+            "a4": "Aviation sous-marine navale"
+          },
           "headerLabel": "QUESTION FINALE SUR LA RAF"
         }
       }

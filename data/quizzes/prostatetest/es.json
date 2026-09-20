@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Prueba rápida de cáncer de próstata",
   "eyebrow": "CHEQUEO DE PRÓSTATA DE 10 PREGUNTAS",
   "summary": "Diez preguntas personales sobre los cambios en la próstata y el contexto de riesgo, seguidas de un perfil cauteloso del siguiente paso.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "¿Has notado cambios que es fácil atribuir al envejecimiento? Responde 10 preguntas rápidas sobre síntomas y factores de riesgo que pueden ser importantes.",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este chequeo personal de diez preguntas indaga sobre cambios urinarios, sangre, malestar, dolor persistente y contexto de riesgo relevante. Agrupa tus respuestas en un perfil cauteloso del siguiente paso; no calcula tu probabilidad de tener cáncer.\n\nEl cáncer de próstata puede no causar síntomas al principio y los cambios urinarios a menudo tienen causas no cancerosas, como agrandamiento benigno de la próstata, infección o inflamación. Los cambios nuevos, persistentes o que empeoran aún deben discutirse con un profesional sanitario cualificado.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Elige la respuesta que más se acerque a tu experiencia reciente.",
         "Piense en los cambios que son nuevos, persistentes o que están empeorando.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Chequeo personal de próstata",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Evaluación personal",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "¿Ha cambiado recientemente tu flujo de orina?",
           "headerLabel": "TU FLUJO URINARIO",
-          "answers": [
-            "Ningún cambio apreciable",
-            "Varía de vez en cuando",
-            "Se ha vuelto más débil o se corta y vuelve a empezar",
-            "Está empeorando o afecta a mi vida diaria"
-          ]
+          "answers": {
+            "a1": "Ningún cambio apreciable",
+            "a2": "Varía de vez en cuando",
+            "a3": "Se ha vuelto más débil o se corta y vuelve a empezar",
+            "a4": "Está empeorando o afecta a mi vida diaria"
+          }
         },
         "prostate-test-q2": {
           "question": "¿Te cuesta más empezar a orinar?",
           "headerLabel": "COMENZAR A ORINAR",
-          "answers": [
-            "No",
-            "Ocasionalmente, pero no ha persistido.",
-            "Sí, este es un cambio nuevo o persistente.",
-            "Sí, y cada vez es más difícil."
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "Ocasionalmente, pero no ha persistido.",
+            "a3": "Sí, este es un cambio nuevo o persistente.",
+            "a4": "Sí, y cada vez es más difícil."
+          }
         },
         "prostate-test-q3": {
           "question": "¿Orinas con más frecuencia, sobre todo por la noche?",
           "headerLabel": "FRECUENCIA Y HORARIO NOCTURNO",
-          "answers": [
-            "Sin cambios",
-            "Solo ocasionalmente",
-            "Sí, notablemente más que antes.",
-            "Sí, y perturba regularmente el sueño o la vida diaria."
-          ]
+          "answers": {
+            "a1": "Sin cambios",
+            "a2": "Solo ocasionalmente",
+            "a3": "Sí, notablemente más que antes.",
+            "a4": "Sí, y perturba regularmente el sueño o la vida diaria."
+          }
         },
         "prostate-test-q4": {
           "question": "¿Sientes que la vejiga no se vacía por completo?",
           "headerLabel": "VACIADO DE LA VEJIGA",
-          "answers": [
-            "No",
-            "De vez en cuando",
-            "Con frecuencia o persistentemente",
-            "Sí, y la sensación está empeorando."
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "De vez en cuando",
+            "a3": "Con frecuencia o persistentemente",
+            "a4": "Sí, y la sensación está empeorando."
+          }
         },
         "prostate-test-q5": {
           "question": "¿Has empezado a sentir una urgencia nueva o tienes pérdidas antes de llegar al baño?",
           "headerLabel": "URGENCIA O FUGAS",
-          "answers": [
-            "No",
-            "Casi nunca",
-            "Sí, como cambio nuevo o persistente",
-            "Sí, y está empeorando o afectando la vida diaria."
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "Casi nunca",
+            "a3": "Sí, como cambio nuevo o persistente",
+            "a4": "Sí, y está empeorando o afectando la vida diaria."
+          }
         },
         "prostate-test-q6": {
           "question": "¿Has notado sangre en tu orina o semen?",
           "headerLabel": "SANGRE",
-          "answers": [
-            "No",
-            "no estoy seguro",
-            "Sí, una o más de una vez.",
-            "Sí, con sangrado abundante o coágulos grandes."
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "no estoy seguro",
+            "a3": "Sí, una o más de una vez.",
+            "a4": "Sí, con sangrado abundante o coágulos grandes."
+          }
         },
         "prostate-test-q7": {
           "question": "¿Has tenido nuevas molestias al orinar o eyacular?",
           "headerLabel": "MALESTAR",
-          "answers": [
-            "No",
-            "De vez en cuando, pero se pasa",
-            "Sí, es persistente o sigue regresando.",
-            "Sí, y está empeorando o es significativamente doloroso."
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "De vez en cuando, pero se pasa",
+            "a3": "Sí, es persistente o sigue regresando.",
+            "a4": "Sí, y está empeorando o es significativamente doloroso."
+          }
         },
         "prostate-test-q8": {
           "question": "¿Has tenido dolores inexplicables en la espalda, las caderas o la pelvis?",
           "headerLabel": "DOLOR PERSISTENTE",
-          "answers": [
-            "No",
-            "Un dolor breve con una causa obvia.",
-            "Sí, es persistente o sigue regresando.",
-            "Sí, es grave, empeora rápidamente o me siento muy mal"
-          ]
+          "answers": {
+            "a1": "No",
+            "a2": "Un dolor breve con una causa obvia.",
+            "a3": "Sí, es persistente o sigue regresando.",
+            "a4": "Sí, es grave, empeora rápidamente o me siento muy mal"
+          }
         },
         "prostate-test-q9": {
           "question": "¿Qué opción describe mejor tu contexto de riesgo de cáncer de próstata?",
           "headerLabel": "SU CONTEXTO DE RIESGO",
-          "answers": [
-            "Ninguna de estas, o no estoy seguro",
-            "Tengo 50 años o más",
-            "Mi padre o mi hermano tuvo cáncer de próstata",
-            "Tengo ascendencia negra, una alteración conocida en BRCA2 o un fuerte patrón familiar de cáncer"
-          ]
+          "answers": {
+            "a1": "Ninguna de estas, o no estoy seguro",
+            "a2": "Tengo 50 años o más",
+            "a3": "Mi padre o mi hermano tuvo cáncer de próstata",
+            "a4": "Tengo ascendencia negra, una alteración conocida en BRCA2 o un fuerte patrón familiar de cáncer"
+          }
         },
         "prostate-test-q10": {
           "question": "¿Qué has hecho con respecto a los cambios nuevos o persistentes?",
           "headerLabel": "TU PRÓXIMO PASO",
-          "answers": [
-            "No he notado ningún cambio",
-            "Estoy siguiendo la pista por ahora",
-            "Planeo concertar una consulta médica de rutina.",
-            "Estoy organizando asesoramiento médico inmediato."
-          ]
+          "answers": {
+            "a1": "No he notado ningún cambio",
+            "a2": "Estoy siguiendo la pista por ahora",
+            "a3": "Planeo concertar una consulta médica de rutina.",
+            "a4": "Estoy organizando asesoramiento médico inmediato."
+          }
         }
       }
     }

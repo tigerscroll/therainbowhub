@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Pouze 8 % složí tuto přijímací zkoušku záchranáře",
   "eyebrow": "VSTUPNÍ VÝZVA PARAMEDIC",
   "summary": "Nebezpečí scén, vitální znaky a rychlá rozhodnutí otestují, zda dokážete myslet jasně, když záleží na každém vodítku.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Nebezpečí scény, životní funkce, nouzová matematika a klidný úsudek. Dokážete jasně myslet, když záleží na každém vodítku?",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato celosvětová zábavní výzva obsahuje deset vstupních otázek z oblasti anatomie, pozorování, numerické gramotnosti, komunikace, bezpečnosti a rozhodování o prioritách. Testuje pečlivé uvažování spíše než místní protokoly nebo provozní postupy.\n\nVyberte nejlepší odpověď pouze pomocí zobrazených informací. Bezpečné možnosti upřednostňují rozpoznání rizika, jasnou komunikaci a vyhledání vhodné kvalifikované podpory.\n\nToto není akreditovaná přijímací zkouška zdravotnického záchranáře, klinické hodnocení, kvalifikace, výcvikový kurz ani zdroj nouzového poradenství.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Dokončete deset pečlivě vybraných otázek v jedné cílené výzvě.",
         "Vyberte vždy jednu odpověď. Správnost zůstává skryta až do konečného odhalení.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Přijímací zkouška záchranáře",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Vstupní výzva pro zdravotníky",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre vstupu záchranáře a rozdělení na šest oblastí jsou připraveny k odhalení.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno šest vstupních oblastí",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno šest vstupních oblastí"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro záchranáře!",
       "finished": "Vstupní výzva pro záchranáře dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější vstupní prostor",
       "trickiest": "Nejnáročnější vstupní prostor",
       "bestRound": "Nejlepší sekce",
@@ -107,8 +100,7 @@
         "snapshot": "Co naznačuje váš profil kandidáta",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Který orgán pumpuje krev po těle?",
-          "answers": [
-            "srdce",
-            "Plíce",
-            "Mozek",
-            "Kosti"
-          ],
+          "answers": {
+            "a1": "srdce",
+            "a2": "Plíce",
+            "a3": "Mozek",
+            "a4": "Kosti"
+          },
           "headerLabel": "ANATOMIE A FYZIOLOGIE"
         },
         "paramedic-r1q5": {
           "question": "Které otevření umožňuje nejjasnější předání?",
-          "answers": [
-            "Něco se asi změnilo dříve",
-            "Zde jsou všechny drobné detaily v náhodném pořadí",
-            "Ve 14:20 se zrychlilo dýchání a snížila se bdělost",
-            "Už přesně vím, co to způsobilo"
-          ],
+          "answers": {
+            "a1": "Něco se asi změnilo dříve",
+            "a2": "Zde jsou všechny drobné detaily v náhodném pořadí",
+            "a3": "Ve 14:20 se zrychlilo dýchání a snížila se bdělost",
+            "a4": "Už přesně vím, co to způsobilo"
+          },
           "headerLabel": "JASNÉ PŘEDÁNÍ"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80, pak 92, pak 108, s bledostí a závratí"
           },
           "question": "Jaká je nejlepší interpretace tohoto vzoru?",
-          "answers": [
-            "Záznam je nezměněn",
-            "Kombinovaný trend naznačuje zhoršení vyžadující rychlé kvalifikované posouzení",
-            "Důležité je pouze první číslo",
-            "Příznaky mohou být ignorovány, protože není zobrazena žádná diagnóza"
-          ],
+          "answers": {
+            "a1": "Záznam je nezměněn",
+            "a2": "Kombinovaný trend naznačuje zhoršení vyžadující rychlé kvalifikované posouzení",
+            "a3": "Důležité je pouze první číslo",
+            "a4": "Příznaky mohou být ignorovány, protože není zobrazena žádná diagnóza"
+          },
           "headerLabel": "TRENDY POZOROVÁNÍ"
         },
         "paramedic-r2q4": {
           "question": "Které tvrzení nejlépe vystihuje ledviny?",
-          "answers": [
-            "Vyměňují kyslík a oxid uhličitý",
-            "Odstraňují odpadní látky z krve a pomáhají regulovat vodní rovnováhu",
-            "Pumpují krev tepnami",
-            "Řídí každý dobrovolný pohyb"
-          ],
+          "answers": {
+            "a1": "Vyměňují kyslík a oxid uhličitý",
+            "a2": "Odstraňují odpadní látky z krve a pomáhají regulovat vodní rovnováhu",
+            "a3": "Pumpují krev tepnami",
+            "a4": "Řídí každý dobrovolný pohyb"
+          },
           "headerLabel": "TĚLESNÉ SYSTÉMY"
         },
         "paramedic-r1q4": {
           "question": "Přes jediné dveře leží elektrický kabel pod napětím. co je první?",
-          "answers": [
-            "Opatrně to překračujte",
-            "Udržujte všechny v pořádku a získejte kvalifikovanou pomoc, aby to bylo bezpečné",
-            "Přesuňte ji suchým předmětem",
-            "Požádejte přihlížejícího, aby to sledoval"
-          ],
+          "answers": {
+            "a1": "Opatrně to překračujte",
+            "a2": "Udržujte všechny v pořádku a získejte kvalifikovanou pomoc, aby to bylo bezpečné",
+            "a3": "Přesuňte ji suchým předmětem",
+            "a4": "Požádejte přihlížejícího, aby to sledoval"
+          },
           "headerLabel": "BEZPEČNOST SCÉNY"
         },
         "paramedic-r6q2": {
           "question": "Člověk stále přikyvuje, ale nerozumí. Co by se mělo stát dál?",
-          "answers": [
-            "Opakujte stejné vysvětlení pomaleji",
-            "Zeptejte se: ‚Rozumíte?‘ a pokračujte, pokud řeknou ano",
-            "Zkraťte vysvětlení, ale zachovejte stejnou terminologii",
-            "Použijte srozumitelná slova a vraťte se"
-          ],
+          "answers": {
+            "a1": "Opakujte stejné vysvětlení pomaleji",
+            "a2": "Zeptejte se: ‚Rozumíte?‘ a pokračujte, pokud řeknou ano",
+            "a3": "Zkraťte vysvětlení, ale zachovejte stejnou terminologii",
+            "a4": "Použijte srozumitelná slova a vraťte se"
+          },
           "headerLabel": "JASNÁ KOMUNIKACE"
         },
         "paramedic-r5q6": {
           "context": "Osoba A se cítí dobře a její pozorování zůstává stabilní. Osoba B je nově vlhká a má závratě a její puls se zvýšil při třech kontrolách.",
           "question": "Kdo potřebuje pozornost jako první?",
-          "answers": [
-            "Osoba B, protože několik změn ukazuje na zhoršení",
-            "Osoba A, protože jejich pozorování byla zaznamenána jako první",
-            "Oba mohou čekat, protože ani jeden nemá stanovenou diagnózu",
-            "Osoba s kratším jménem"
-          ],
+          "answers": {
+            "a1": "Osoba B, protože několik změn ukazuje na zhoršení",
+            "a2": "Osoba A, protože jejich pozorování byla zaznamenána jako první",
+            "a3": "Oba mohou čekat, protože ani jeden nemá stanovenou diagnózu",
+            "a4": "Osoba s kratším jménem"
+          },
           "headerLabel": "ROZSUDEK PRIORITY"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litru plus 450 mililitrů plus 250 mililitrů se rovná celkové hodnotě"
           },
           "question": "Jaký je kombinovaný zaznamenaný objem v mililitrech?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1000 ml",
-            "1100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1000 ml",
+            "a4": "1100 ml"
+          },
           "headerLabel": "NOUZOVÉ ČÍSLO"
         },
         "paramedic-r10q4": {
           "context": "ZÁZNAM NEHODY — Agresivní osoba hází předměty poblíž vchodu. Zařízení částečně blokuje nejbližší výjezdovou cestu.",
           "question": "Jaká je nejbezpečnější reakce na kombinovaná nebezpečí?",
-          "answers": [
-            "Udržujte odstup, přesuňte ostatní na bezpečnější cestu a upozorněte vhodnou pomoc",
-            "Přistupujte a hádejte se, dokud se osoba nezastaví",
-            "Před odchodem vyzvedněte zařízení vedle osoby",
-            "Požádejte netrénovaného kolemjdoucího, aby zablokoval vržené předměty"
-          ],
+          "answers": {
+            "a1": "Udržujte odstup, přesuňte ostatní na bezpečnější cestu a upozorněte vhodnou pomoc",
+            "a2": "Přistupujte a hádejte se, dokud se osoba nezastaví",
+            "a3": "Před odchodem vyzvedněte zařízení vedle osoby",
+            "a4": "Požádejte netrénovaného kolemjdoucího, aby zablokoval vržené předměty"
+          },
           "headerLabel": "INTEGROVANÁ BEZPEČNOST"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Dýchání 16 bdělé, poté 22 úzkostné, poté 28 ospalé"
           },
           "question": "Jaká je nejlepší interpretace úplného trendu?",
-          "answers": [
-            "Osoba se neustále zlepšuje",
-            "Důležitá je pouze střední kontrola",
-            "Hodnoty lze ignorovat, protože není pojmenována žádná diagnóza",
-            "Dýchání se zhoršuje, zatímco citlivost klesá"
-          ],
+          "answers": {
+            "a1": "Osoba se neustále zlepšuje",
+            "a2": "Důležitá je pouze střední kontrola",
+            "a3": "Hodnoty lze ignorovat, protože není pojmenována žádná diagnóza",
+            "a4": "Dýchání se zhoršuje, zatímco citlivost klesá"
+          },
           "headerLabel": "KONEČNÁ ODPOVĚĎ"
         }
       }

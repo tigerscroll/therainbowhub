@@ -29,9 +29,9 @@ const RESULT_PREPARATION_FALLBACK_MS = 1600;
 const RESULT_READY_CTA_DELAY_MS = 600;
 
 type SavedProgress = {
-  version: 3;
+  version: typeof STORAGE_VERSION;
   signature: string;
-  answers: QuizAnswers;
+  answers: Record<string, string>;
   questionIndex: number;
   completedStage: number;
   screen: SavedScreen;
@@ -40,6 +40,8 @@ type SavedProgress = {
   reviewUnlocked?: boolean;
   updatedAt: string;
 };
+
+type RestoredProgress = Omit<SavedProgress, "answers"> & { answers: QuizAnswers };
 
 function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
   if (typeof window === "undefined") return;
@@ -50,7 +52,7 @@ function formatSocialProof(template: string, count: number, locale: SupportedLoc
   return template.replace("{count}", new Intl.NumberFormat(locale).format(count));
 }
 
-function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedProgress | null {
+function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): RestoredProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
   if (saved.version !== STORAGE_VERSION || saved.signature !== signature) return null;
@@ -65,11 +67,13 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): SavedPr
   if (saved.answers && typeof saved.answers === "object") {
     quiz.questions.forEach((question) => {
       const answer = saved.answers?.[question.id];
-      if (Number.isInteger(answer) && answer! >= 0 && answer! < question.choices.length) answers[question.id] = answer!;
+      if (typeof answer !== "string") return;
+      const answerIndex = question.choiceIds.indexOf(answer);
+      if (answerIndex >= 0) answers[question.id] = answerIndex;
     });
   }
 
-  return { ...saved, answers } as SavedProgress;
+  return { ...saved, answers } as RestoredProgress;
 }
 
 export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
@@ -109,11 +113,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         question.visual,
         question.image,
         question.prompt,
+        question.choiceIds,
         question.choices,
         question.icons,
         question.memoryItems,
         question.study ? [question.study.presentation, question.study.items, question.study.durationMs, question.study.mode, question.study.rewarded] : null,
         question.answerIndex,
+        question.correctAnswerId,
         question.calibrationValues,
         question.choiceProfileIds,
         question.choiceWeights,
@@ -174,7 +180,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const saved: SavedProgress = {
       version: STORAGE_VERSION,
       signature: progressSignature,
-      answers,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = answers[question.id];
+        const answerId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return answerId ? [[question.id, answerId]] : [];
+      })),
       questionIndex,
       completedStage,
       screen,
@@ -797,7 +807,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <div className="quiz-engine__progress-head">
         <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
-          : quiz.progressLabel ? `${progress}% ${quiz.progressLabel}` : `${translations.quiz.round} ${currentStage + 1}`}</span>
+          : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
         <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
       </div>
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>

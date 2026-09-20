@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 10% có thể vượt qua bài kiểm tra ngữ pháp này",
   "eyebrow": "THỬ THÁCH ĐỌC HIỆU",
   "summary": "Các câu bị hỏng, bẫy dấu câu và cách diễn đạt gần như chính xác sẽ kiểm tra xem bạn có mắc lỗi nào không.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Nghĩ rằng ngữ pháp của bạn là hoàn hảo? Sửa các câu bị hỏng, nắm bắt các dấu câu nhỏ và chứng minh rằng bạn có thể phát hiện ra lỗi trước khi nó phát hiện ra.",
     "cta": "Bắt đầu bài kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách tiếng Anh toàn cầu này bao gồm 10 câu hỏi được lựa chọn cẩn thận về cấu trúc câu, dấu câu, thì, đại từ, độ rõ ràng của tài liệu tham khảo và cách chỉnh sửa chính xác. Mỗi mục được viết riêng cho tiếng Anh chứ không phải được dịch từ ngôn ngữ khác.\n\nChọn một câu trả lời làm cho câu đúng và tự nhiên trong ngữ cảnh đã nêu. Tính đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.\n\nĐiểm của bạn chỉ phản ánh thử thách ngôn ngữ ngắn này. Đây không phải là một đánh giá chính thức về khả năng đọc viết hoặc trình độ học vấn.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Hoàn thành mười câu hỏi được lựa chọn cẩn thận trong một thử thách tập trung.",
         "Chọn một câu trả lời mỗi lần. Tính đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách ngữ pháp",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Thử thách ngữ pháp",
@@ -30,10 +26,8 @@
         "preAdCopy": "Điểm ngữ pháp và phân tích ba kỹ năng của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "So sánh ba kỹ năng ngữ pháp",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "So sánh ba kỹ năng ngữ pháp"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách ngữ pháp!",
       "finished": "Thử thách ngữ pháp đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Kỹ năng ngữ pháp mạnh nhất",
       "trickiest": "Kỹ năng ngữ pháp khó nhất",
       "bestRound": "Phần hay nhất",
@@ -98,8 +91,7 @@
         "snapshot": "Hồ sơ ngữ pháp của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Lựa chọn nào là một câu hoàn chỉnh?",
-          "answers": [
-            "Sau đoạn cuối",
-            "Biên tập viên đã kiểm tra đoạn cuối cùng.",
-            "Vì thời hạn đã thay đổi",
-            "Trong khi mọi người đang chờ đợi"
-          ],
+          "answers": {
+            "a1": "Sau đoạn cuối",
+            "a2": "Biên tập viên đã kiểm tra đoạn cuối cùng.",
+            "a3": "Vì thời hạn đã thay đổi",
+            "a4": "Trong khi mọi người đang chờ đợi"
+          },
           "headerLabel": "CẤU TRÚC CÂU"
         },
         "grammar-r1q3": {
           "context": "Các ghi chép thuộc về một số học sinh.",
           "question": "Câu nào diễn đạt đúng ý đã cho?",
-          "answers": [
-            "Ghi chép của các học sinh đã được sắp xếp.",
-            "Ghi chép của một học sinh đã được sắp xếp.",
-            "Các học sinh không có ghi chép.",
-            "Những ghi chép đó thuộc về giáo viên."
-          ],
+          "answers": {
+            "a1": "Ghi chép của các học sinh đã được sắp xếp.",
+            "a2": "Ghi chép của một học sinh đã được sắp xếp.",
+            "a3": "Các học sinh không có ghi chép.",
+            "a4": "Những ghi chép đó thuộc về giáo viên."
+          },
           "headerLabel": "QUAN HỆ SỞ HỮU"
         },
         "grammar-r3q1": {
           "question": "Cuộc họp bắt đầu lúc 09:00. Leo hoàn thành biểu đồ lúc 08:30. Câu nào đúng?",
-          "answers": [
-            "Leo hoàn thành biểu đồ sau khi cuộc họp bắt đầu.",
-            "Leo đã hoàn thành biểu đồ sau khi cuộc họp bắt đầu.",
-            "Leo đã hoàn thành biểu đồ trước khi cuộc họp bắt đầu đầu.",
-            "Leo đã hoàn thành biểu đồ trước khi cuộc họp bắt đầu."
-          ],
+          "answers": {
+            "a1": "Leo hoàn thành biểu đồ sau khi cuộc họp bắt đầu.",
+            "a2": "Leo đã hoàn thành biểu đồ sau khi cuộc họp bắt đầu.",
+            "a3": "Leo đã hoàn thành biểu đồ trước khi cuộc họp bắt đầu đầu.",
+            "a4": "Leo đã hoàn thành biểu đồ trước khi cuộc họp bắt đầu."
+          },
           "headerLabel": "TRÌNH TỰ THỜI GIAN"
         },
         "grammar-r4q3": {
           "question": "Câu nào sử dụng dấu chấm phẩy đúng?",
-          "answers": [
-            "Tệp lớn; vì nó tải chậm.",
-            "Tệp có dung lượng lớn; quá trình tải mất nhiều thời gian.",
-            "File lớn nên tải chậm.",
-            "Tệp lớn; mặc dù nó tải chậm."
-          ],
+          "answers": {
+            "a1": "Tệp lớn; vì nó tải chậm.",
+            "a2": "Tệp có dung lượng lớn; quá trình tải mất nhiều thời gian.",
+            "a3": "File lớn nên tải chậm.",
+            "a4": "Tệp lớn; mặc dù nó tải chậm."
+          },
           "headerLabel": "DẤU CHẤM PHẨY"
         },
         "grammar-r5q4": {
           "context": "Chọn đại từ ngôi thứ nhất số ít.",
           "question": "Từ nào chỉ người đang nói?",
-          "answers": [
-            "tôi",
-            "bạn",
-            "anh ấy",
-            "chúng tôi"
-          ],
+          "answers": {
+            "a1": "tôi",
+            "a2": "bạn",
+            "a3": "anh ấy",
+            "a4": "chúng tôi"
+          },
           "headerLabel": "LỰA CHỌN ĐẠI TỪ"
         },
         "grammar-r5q6": {
           "question": "Câu nào dùng dấu phẩy đúng khi gọi trực tiếp Ravi?",
-          "answers": [
-            "Ravi làm ơn kiểm tra dòng cuối cùng.",
-            "Ravi, vui lòng kiểm tra dòng cuối cùng.",
-            "Ravi vui lòng kiểm tra, dòng cuối cùng.",
-            "Ravi; làm ơn kiểm tra dòng cuối cùng"
-          ],
+          "answers": {
+            "a1": "Ravi làm ơn kiểm tra dòng cuối cùng.",
+            "a2": "Ravi, vui lòng kiểm tra dòng cuối cùng.",
+            "a3": "Ravi vui lòng kiểm tra, dòng cuối cùng.",
+            "a4": "Ravi; làm ơn kiểm tra dòng cuối cùng"
+          },
           "headerLabel": "GỌI ĐÁP"
         },
         "grammar-r7q6": {
           "context": "Báo cáo có phần tóm tắt và phụ lục. Phụ lục được cập nhật hàng tháng.",
           "question": "Chỉnh sửa nào làm cho bản cập nhật hàng tháng tham chiếu đến phụ lục?",
-          "answers": [
-            "Báo cáo có phần tóm tắt, phụ lục và được cập nhật hàng tháng.",
-            "Báo cáo gồm một bản tóm tắt được cập nhật hằng tháng và một phụ lục.",
-            "Báo cáo có phần tóm tắt và phụ lục; phụ lục được cập nhật hàng tháng.",
-            "Báo cáo được cập nhật hàng tháng, có phần tóm tắt và phụ lục."
-          ],
+          "answers": {
+            "a1": "Báo cáo có phần tóm tắt, phụ lục và được cập nhật hàng tháng.",
+            "a2": "Báo cáo gồm một bản tóm tắt được cập nhật hằng tháng và một phụ lục.",
+            "a3": "Báo cáo có phần tóm tắt và phụ lục; phụ lục được cập nhật hàng tháng.",
+            "a4": "Báo cáo được cập nhật hàng tháng, có phần tóm tắt và phụ lục."
+          },
           "headerLabel": "SỰ RÕ RÀNG CỦA CÁCH DIỄN ĐẠT"
         },
         "grammar-r9q1": {
           "question": "Câu nào dùng đầy đủ và đúng cặp quan hệ từ “dù… nhưng…”?",
-          "answers": [
-            "Cơn bão đã kết thúc; mặc dù đường phố vẫn ngập nước.",
-            "Cơn bão đã kết thúc nhưng đường phố vẫn ngập nước.",
-            "Dù cơn bão đã kết thúc; đường phố vẫn ngập nước.",
-            "Dù cơn bão đã kết thúc nhưng đường phố vẫn ngập nước."
-          ],
-          "trapdoorErrors": [
-            "dấu chấm phẩy phân tách sai mệnh đề chính khỏi mệnh đề phụ thuộc",
-            "trạng từ nối tiếp thiếu dấu câu cần thiết",
-            "dấu chấm phẩy không chính xác sau mệnh đề phụ thuộc",
-            null
-          ],
+          "answers": {
+            "a1": "Cơn bão đã kết thúc; mặc dù đường phố vẫn ngập nước.",
+            "a2": "Cơn bão đã kết thúc nhưng đường phố vẫn ngập nước.",
+            "a3": "Dù cơn bão đã kết thúc; đường phố vẫn ngập nước.",
+            "a4": "Dù cơn bão đã kết thúc nhưng đường phố vẫn ngập nước."
+          },
+          "trapdoorErrors": {
+            "a1": "dấu chấm phẩy phân tách sai mệnh đề chính khỏi mệnh đề phụ thuộc",
+            "a2": "trạng từ nối tiếp thiếu dấu câu cần thiết",
+            "a3": "dấu chấm phẩy không chính xác sau mệnh đề phụ thuộc"
+          },
           "headerLabel": "CÂU CHỈ SỰ TƯƠNG PHẢN"
         },
         "grammar-r10q6": {
           "question": "Câu nào đúng hoàn toàn?",
-          "answers": [
-            "Sau khi kiểm tra số liệu, Maya xác nhận rằng mọi tổng số đều chính xác.",
-            "Sau khi kiểm tra số liệu, Maya xác nhận rằng rằng mọi tổng số đều chính xác.",
-            "Sau khi kiểm tra số liệu, Maya xác nhận rằng mọi tổng số đều chính xác vì.",
-            "Sau khi xem xét các số liệu, Maya xác nhận rằng mỗi con số tổng đều chính xác xác."
-          ],
+          "answers": {
+            "a1": "Sau khi kiểm tra số liệu, Maya xác nhận rằng mọi tổng số đều chính xác.",
+            "a2": "Sau khi kiểm tra số liệu, Maya xác nhận rằng rằng mọi tổng số đều chính xác.",
+            "a3": "Sau khi kiểm tra số liệu, Maya xác nhận rằng mọi tổng số đều chính xác vì.",
+            "a4": "Sau khi xem xét các số liệu, Maya xác nhận rằng mỗi con số tổng đều chính xác xác."
+          },
           "headerLabel": "BIÊN TẬP KỸ LƯỠNG"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Các báo cáo cuối cùng đã được kiểm tra trước khi biên tập viên phê duyệt duyệt để xuất bản."
           },
           "question": "Phần nào có lỗi?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SOÁT LỖI LẦN CUỐI"
         }
       }

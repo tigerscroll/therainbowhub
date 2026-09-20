@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De fleste voksne kan ikke bestå denne optagelsesprøve for kirurger",
   "eyebrow": "OPERATIONSRUM INDHOLDSTESTEN",
   "summary": "Ti spørgsmål tester anatomi, kirurgisk sikkerhed, teknikker og kritiske beslutninger.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Anatomispørgsmålene virker overskuelige. Derefter går testen over i steril praksis, kirurgiske værktøjer og beslutninger, hvor én detalje ændrer alt.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsudfordring med ti spørgsmål bruger brede anatomiske og kirurgiske sikkerhedskoncepter, der gælder på tværs af Tier 1 engelsktalende lande. Det bevæger sig fra blodgennemstrømning og steril praksis til sikkerhedstjek, nøglehulskirurgi, såradvarselsskilte, patientovervågning og informeret samtykke.\n\nVælg et svar til hvert spørgsmål. Rigtigheden forbliver skjult indtil den sidste afsløring, hvor den komplette svargennemgang er tilgængelig til at låse op.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Besvar ti stadig sværere spørgsmål om kirurgisk viden.",
         "Vælg det enkelt bedst understøttede svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Indgangsudfordring for kirurg",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Kirurgens optagelsesprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet tjekket, og din kirurgiske vidensscore er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fem operationsområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fem operationsområder sammenlignet"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du bestod kirurgens indgangsudfordring!",
       "finished": "Kirurgens indgangsudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste operationsområde",
       "trickiest": "Det vanskeligste operationsområde",
       "bestRound": "Bedste afsnit",
@@ -99,8 +92,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Hvad definerer en arterie i kredsløbet?",
-          "answers": [
-            "Det fører blod væk fra hjertet",
-            "Det bærer altid iltrigt blod",
-            "Det fører kun blod til lungerne",
-            "Den indeholder ingen muskelvæg"
-          ],
+          "answers": {
+            "a1": "Det fører blod væk fra hjertet",
+            "a2": "Det bærer altid iltrigt blod",
+            "a3": "Det fører kun blod til lungerne",
+            "a4": "Den indeholder ingen muskelvæg"
+          },
           "headerLabel": "KIRURGISK ANATOMI"
         },
         "surgeon-q2": {
           "question": "Hvad er hovedformålet med at opretholde et sterilt operationsfelt?",
-          "answers": [
-            "At holde instrumenter arrangeret efter størrelse",
-            "For at reducere forurening og risikoen for infektion",
-            "For at gøre proceduren færdig hurtigere",
-            "For at forhindre al blødning"
-          ],
+          "answers": {
+            "a1": "At holde instrumenter arrangeret efter størrelse",
+            "a2": "For at reducere forurening og risikoen for infektion",
+            "a3": "For at gøre proceduren færdig hurtigere",
+            "a4": "For at forhindre al blødning"
+          },
           "headerLabel": "STERIL PRAKSIS"
         },
         "surgeon-q3": {
           "question": "Hvad skal en kirurgisk sikkerhedspause umiddelbart før et snit bekræfte?",
-          "answers": [
-            "Kun den forventede procedurelængde",
-            "Kun kirurgens foretrukne udstyr",
-            "Den korrekte patient, procedure og kropssted",
-            "Patientens måltidsvalg efter operationen"
-          ],
+          "answers": {
+            "a1": "Kun den forventede procedurelængde",
+            "a2": "Kun kirurgens foretrukne udstyr",
+            "a3": "Den korrekte patient, procedure og kropssted",
+            "a4": "Patientens måltidsvalg efter operationen"
+          },
           "headerLabel": "SIKKERHEDSKONTROL"
         },
         "surgeon-q4": {
           "question": "Hvad adskiller laparoskopisk kirurgi fra en traditionel åben tilgang?",
-          "answers": [
-            "Det kræver aldrig smertekontrol",
-            "Den bruger ingen kirurgiske instrumenter",
-            "Den kan kun undersøge huden",
-            "Det bruger almindeligvis et kamera og instrumenter gennem små snit"
-          ],
+          "answers": {
+            "a1": "Det kræver aldrig smertekontrol",
+            "a2": "Den bruger ingen kirurgiske instrumenter",
+            "a3": "Den kan kun undersøge huden",
+            "a4": "Det bruger almindeligvis et kamera og instrumenter gennem små snit"
+          },
           "headerLabel": "KIRURGISKE TEKNIKKER"
         },
         "surgeon-q5": {
           "question": "Hvilken struktur fjernes under en blindtarmsoperation?",
-          "answers": [
-            "Blindtarmens vedhæng",
-            "Galdeblæren",
-            "Milten",
-            "Bugspytkirtlen"
-          ],
+          "answers": {
+            "a1": "Blindtarmens vedhæng",
+            "a2": "Galdeblæren",
+            "a3": "Milten",
+            "a4": "Bugspytkirtlen"
+          },
           "headerLabel": "OPERATIV ANATOMI"
         },
         "surgeon-q6": {
           "question": "Hvad bruges en kirurgisk retraktor hovedsageligt til?",
-          "answers": [
-            "Måling af iltmætning",
-            "Hold væv eller et snit åbent for at forbedre adgangen",
-            "Lukning af et sår med sting",
-            "Registrering af elektrisk hjerteaktivitet"
-          ],
+          "answers": {
+            "a1": "Måling af iltmætning",
+            "a2": "Hold væv eller et snit åbent for at forbedre adgangen",
+            "a3": "Lukning af et sår med sting",
+            "a4": "Registrering af elektrisk hjerteaktivitet"
+          },
           "headerLabel": "KIRURGISKE INSTRUMENTER"
         },
         "surgeon-q7": {
           "question": "Hvilken kombination kan tyde på en infektion på operationsstedet?",
-          "answers": [
-            "Forbedring af komfort og et tørt helende sår",
-            "En stabil appetit og normal temperatur",
-            "Stigende rødme eller smerte, dræning eller feber",
-            "En ren forbinding uden nye symptomer"
-          ],
+          "answers": {
+            "a1": "Forbedring af komfort og et tørt helende sår",
+            "a2": "En stabil appetit og normal temperatur",
+            "a3": "Stigende rødme eller smerte, dræning eller feber",
+            "a4": "En ren forbinding uden nye symptomer"
+          },
           "headerLabel": "ADVARSELSTEGN EFTER kirurgi"
         },
         "surgeon-q8": {
           "question": "Hvilken enhed giver et hurtigt, ikke-invasivt estimat af blodets iltmætning under operationen?",
-          "answers": [
-            "Refleks hammer",
-            "Otoskop",
-            "Termometer",
-            "Pulsoximeter"
-          ],
+          "answers": {
+            "a1": "Refleks hammer",
+            "a2": "Otoskop",
+            "a3": "Termometer",
+            "a4": "Pulsoximeter"
+          },
           "headerLabel": "PATIENTOVERVÅGNING"
         },
         "surgeon-q9": {
           "question": "En person reagerer ikke og trækker ikke vejret normalt. Hvad er den sikreste umiddelbare generelle reaktion?",
-          "answers": [
-            "Ring til nødtjenester og begynd passende grundlæggende livsstøtte",
-            "Giv mad eller drikke",
-            "Vent flere minutter uden at handle",
-            "Bed personen om at stå"
-          ],
+          "answers": {
+            "a1": "Ring til nødtjenester og begynd passende grundlæggende livsstøtte",
+            "a2": "Giv mad eller drikke",
+            "a3": "Vent flere minutter uden at handle",
+            "a4": "Bed personen om at stå"
+          },
           "headerLabel": "kirurgiske nødstilfælde"
         },
         "surgeon-q10": {
           "question": "Hvilken beskrivelse matcher bedst informeret samtykke før operationen?",
-          "answers": [
-            "Klinikeren vælger uden at forklare alternativer",
-            "Patienten modtager relevant information og samtykker frivilligt",
-            "En pårørende bestemmer altid for hver voksen",
-            "At underskrive en formular fjerner behovet for diskussion"
-          ],
+          "answers": {
+            "a1": "Klinikeren vælger uden at forklare alternativer",
+            "a2": "Patienten modtager relevant information og samtykker frivilligt",
+            "a3": "En pårørende bestemmer altid for hver voksen",
+            "a4": "At underskrive en formular fjerner behovet for diskussion"
+          },
           "headerLabel": "SPØRGSMÅL TIL ENDELIGT SAMTYKKE"
         }
       }

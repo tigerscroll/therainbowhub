@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 8% yang Lulus Ujian Masuk Paramedis Ini",
   "eyebrow": "TANTANGAN MASUK PARAMEDIK",
   "summary": "Bahaya di tempat kejadian, tanda-tanda vital, dan keputusan tanggap cepat menguji apakah Anda dapat berpikir jernih ketika setiap petunjuk penting.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Bahaya pemandangan, tanda-tanda vital, matematika darurat, dan penilaian yang tenang. Bisakah Anda berpikir jernih ketika setiap petunjuk penting?",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sedunia ini berisi sepuluh pertanyaan gaya masuk seputar anatomi, observasi, berhitung, komunikasi, keselamatan, dan penilaian prioritas. Ini menguji penalaran yang cermat dibandingkan protokol lokal atau prosedur operasional.\n\nPilihlah jawaban terbaik hanya dengan menggunakan informasi yang ditampilkan. Pilihan yang aman adalah mengenali risiko, berkomunikasi dengan jelas, dan mencari dukungan yang memenuhi syarat.\n\nIni bukan ujian masuk paramedis terakreditasi, penilaian klinis, kualifikasi, kursus pelatihan, atau sumber nasihat darurat.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan sepuluh pertanyaan yang dipilih dengan cermat dalam satu tantangan terfokus.",
         "Pilih satu jawaban setiap kali. Kebenarannya tetap tersembunyi sampai pengungkapan terakhir.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ujian masuk paramedis",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tantangan Masuk Paramedis",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skor masuk paramedis Anda dan rincian enam area siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Enam area pintu masuk dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Enam area pintu masuk dibandingkan"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Anda lulus tantangan masuk paramedis!",
       "finished": "Tantangan masuk paramedis selesai",
-      "correctLabel": "benar",
       "strongest": "Area pintu masuk terkuat",
       "trickiest": "Area pintu masuk paling rumit",
       "bestRound": "Bagian terbaik",
@@ -107,8 +100,7 @@
         "snapshot": "Apa yang disarankan oleh profil kandidat Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Organ manakah yang memompa darah ke seluruh tubuh?",
-          "answers": [
-            "Jantung",
-            "Paru-paru",
-            "Otak",
-            "Tulang"
-          ],
+          "answers": {
+            "a1": "Jantung",
+            "a2": "Paru-paru",
+            "a3": "Otak",
+            "a4": "Tulang"
+          },
           "headerLabel": "ANATOMI & FISIOLOGI"
         },
         "paramedic-r1q5": {
           "question": "Pembukaan mana yang menunjukkan serah terima paling jelas?",
-          "answers": [
-            "Mungkin ada sesuatu yang berubah sebelumnya",
-            "Berikut semua detail kecil dalam urutan acak",
-            "Pukul 14.20 nafas menjadi lebih cepat dan kewaspadaan menurun",
-            "Saya sudah tahu persis apa penyebabnya"
-          ],
+          "answers": {
+            "a1": "Mungkin ada sesuatu yang berubah sebelumnya",
+            "a2": "Berikut semua detail kecil dalam urutan acak",
+            "a3": "Pukul 14.20 nafas menjadi lebih cepat dan kewaspadaan menurun",
+            "a4": "Saya sudah tahu persis apa penyebabnya"
+          },
           "headerLabel": "PENYERAHAN JELAS"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Nadi 80 lalu 92 lalu 108, pucat dan pusing"
           },
           "question": "Apa interpretasi terbaik dari pola ini?",
-          "answers": [
-            "Rekornya tidak berubah",
-            "Kecenderungan gabungan ini menunjukkan adanya kemunduran yang memerlukan penilaian segera dan berkualitas",
-            "Hanya angka pertama yang penting",
-            "Gejalanya bisa diabaikan karena tidak ada diagnosis yang ditampilkan"
-          ],
+          "answers": {
+            "a1": "Rekornya tidak berubah",
+            "a2": "Kecenderungan gabungan ini menunjukkan adanya kemunduran yang memerlukan penilaian segera dan berkualitas",
+            "a3": "Hanya angka pertama yang penting",
+            "a4": "Gejalanya bisa diabaikan karena tidak ada diagnosis yang ditampilkan"
+          },
           "headerLabel": "TREN OBSERVASI"
         },
         "paramedic-r2q4": {
           "question": "Pernyataan manakah yang paling tepat menggambarkan ginjal?",
-          "answers": [
-            "Mereka menukar oksigen dan karbon dioksida",
-            "Mereka menghilangkan limbah dari darah dan membantu mengatur keseimbangan air",
-            "Mereka memompa darah melalui arteri",
-            "Mereka mengontrol setiap gerakan sukarela"
-          ],
+          "answers": {
+            "a1": "Mereka menukar oksigen dan karbon dioksida",
+            "a2": "Mereka menghilangkan limbah dari darah dan membantu mengatur keseimbangan air",
+            "a3": "Mereka memompa darah melalui arteri",
+            "a4": "Mereka mengontrol setiap gerakan sukarela"
+          },
           "headerLabel": "SISTEM TUBUH"
         },
         "paramedic-r1q4": {
           "question": "Kabel listrik hidup terletak di satu-satunya pintu masuk. Apa yang lebih dulu?",
-          "answers": [
-            "Melangkahinya dengan hati-hati",
-            "Jaga agar semua orang tetap jelas dan dapatkan bantuan yang memenuhi syarat untuk membuatnya aman",
-            "Pindahkan dengan benda kering",
-            "Mintalah orang yang melihatnya untuk menontonnya"
-          ],
+          "answers": {
+            "a1": "Melangkahinya dengan hati-hati",
+            "a2": "Jaga agar semua orang tetap jelas dan dapatkan bantuan yang memenuhi syarat untuk membuatnya aman",
+            "a3": "Pindahkan dengan benda kering",
+            "a4": "Mintalah orang yang melihatnya untuk menontonnya"
+          },
           "headerLabel": "KEAMANAN ADEGAN"
         },
         "paramedic-r6q2": {
           "question": "Seseorang terus mengangguk tetapi belum mengerti. Apa yang harus terjadi selanjutnya?",
-          "answers": [
-            "Ulangi penjelasan yang sama dengan lebih lambat",
-            "Tanyakan, ‘Apakah Anda mengerti?’ dan lanjutkan jika mereka menjawab ya",
-            "Persingkat penjelasannya tetapi pertahankan terminologi yang sama",
-            "Gunakan kata-kata sederhana dan periksa kembali"
-          ],
+          "answers": {
+            "a1": "Ulangi penjelasan yang sama dengan lebih lambat",
+            "a2": "Tanyakan, ‘Apakah Anda mengerti?’ dan lanjutkan jika mereka menjawab ya",
+            "a3": "Persingkat penjelasannya tetapi pertahankan terminologi yang sama",
+            "a4": "Gunakan kata-kata sederhana dan periksa kembali"
+          },
           "headerLabel": "KOMUNIKASI YANG JELAS"
         },
         "paramedic-r5q6": {
           "context": "Orang A merasa sehat dan pengamatannya tetap stabil. Orang B baru saja berkeringat dan pusing, dan denyut nadinya meningkat dalam tiga pemeriksaan.",
           "question": "Siapa yang butuh perhatian terlebih dahulu?",
-          "answers": [
-            "Orang B, karena beberapa perubahan menunjukkan kemunduran",
-            "Orang A, karena pengamatannya dicatat terlebih dahulu",
-            "Keduanya bisa menunggu karena tidak ada yang memiliki nama diagnosis",
-            "Orang dengan nama pendek"
-          ],
+          "answers": {
+            "a1": "Orang B, karena beberapa perubahan menunjukkan kemunduran",
+            "a2": "Orang A, karena pengamatannya dicatat terlebih dahulu",
+            "a3": "Keduanya bisa menunggu karena tidak ada yang memiliki nama diagnosis",
+            "a4": "Orang dengan nama pendek"
+          },
           "headerLabel": "PENILAIAN PRIORITAS"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 liter ditambah 450 mililiter ditambah 250 mililiter sama dengan jumlah totalnya"
           },
           "question": "Berapa gabungan volume yang tercatat dalam mililiter?",
-          "answers": [
-            "900ml",
-            "950ml",
-            "1.000 ml",
-            "1.100 mL"
-          ],
+          "answers": {
+            "a1": "900ml",
+            "a2": "950ml",
+            "a3": "1.000 ml",
+            "a4": "1.100 mL"
+          },
           "headerLabel": "NUMERASI DARURAT"
         },
         "paramedic-r10q4": {
           "context": "CATATAN INSIDEN — Orang yang agresif melemparkan benda-benda di dekat pintu masuk. Peralatan sebagian menghalangi rute keluar terdekat.",
           "question": "Respons apa yang paling aman terhadap gabungan bahaya tersebut?",
-          "answers": [
-            "Tetap aman, pindahkan orang lain ke rute yang lebih aman dan berikan bantuan yang tepat",
-            "Dekati dan berdebatlah sampai orang tersebut berhenti",
-            "Ambil peralatan di samping orang tersebut sebelum pergi",
-            "Mintalah orang yang tidak terlatih untuk memblokir benda yang dilempar"
-          ],
+          "answers": {
+            "a1": "Tetap aman, pindahkan orang lain ke rute yang lebih aman dan berikan bantuan yang tepat",
+            "a2": "Dekati dan berdebatlah sampai orang tersebut berhenti",
+            "a3": "Ambil peralatan di samping orang tersebut sebelum pergi",
+            "a4": "Mintalah orang yang tidak terlatih untuk memblokir benda yang dilempar"
+          },
           "headerLabel": "KESELAMATAN TERINTEGRASI"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Pernapasan 16 waspada, lalu 22 cemas, lalu 28 mengantuk"
           },
           "question": "Apa interpretasi terbaik dari tren lengkap?",
-          "answers": [
-            "Orang tersebut terus membaik",
-            "Hanya pemeriksaan tengah yang penting",
-            "Nilai-nilai tersebut dapat diabaikan karena tidak ada diagnosis yang disebutkan",
-            "Pernafasan memburuk sementara daya tanggap menurun"
-          ],
+          "answers": {
+            "a1": "Orang tersebut terus membaik",
+            "a2": "Hanya pemeriksaan tengah yang penting",
+            "a3": "Nilai-nilai tersebut dapat diabaikan karena tidak ada diagnosis yang disebutkan",
+            "a4": "Pernafasan memburuk sementara daya tanggap menurun"
+          },
           "headerLabel": "RESPON AKHIR"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 7 % kan navngive disse forældede genstande - kan du?",
   "eyebrow": "TESTEN FOR TASTE GENSTANDE",
   "summary": "Ti genstande, der engang føltes helt almindelige. Se, hvor mange glemte navne du stadig kan huske.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Objekterne ser måske bekendte ud, men det er meget sværere at navngive alle 10 korrekt, end det ser ud.",
     "cta": "Start quizzen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Før smartphones, streaming og automatiske apparater var hverdagen afhængig af fysiske medier, mekaniske gadgets og husholdningsværktøjer, der nu ser mærkeligt ukendte ud. Denne udfordring på ti spørgsmål tester, om deres navne er forsvundet fra hukommelsen sammen med selve objekterne.\n\nStuder hvert fotografi, brug ledetråden om nødvendigt, og vælg et af fire mulige navne. Rigtigheden forbliver skjult indtil den sidste afsløring.\n\nDe første ti kildespørgsmål og deres billeder er gengivet fra QuizDays med tilladelse angivet af webstedsejeren, der bestilte denne quiz.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Studer hvert fotografi og læs dets korte ledetråd.",
         "Vælg det rigtige navn blandt fire mulige svar.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Udfordring med forældede varer",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Tabte genstande",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dine ti svar er blevet tjekket, og din nostalgi-score er klar til at afsløre.",
         "preAdChecks": [
           "10 gamle genstande kontrolleret",
-          "Tre objektkategorier sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre objektkategorier sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du bestod udfordringen med forældede varer!",
       "finished": "Udfordringen med forældede varer er fuldført",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste objektkategori",
       "trickiest": "Den vanskeligste objektkategori",
       "bestRound": "Bedste afsnit",
@@ -93,8 +86,7 @@
         "snapshot": "Hvad dit resultat antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "En sort 3,5-tommer diskette på en neutral overflade"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Diskette",
-            "Kassettebånd",
-            "LaserDisc",
-            "Zip-drev"
-          ],
+          "answers": {
+            "a1": "Diskette",
+            "a2": "Kassettebånd",
+            "a3": "LaserDisc",
+            "a4": "Zip-drev"
+          },
           "headerLabel": "MISTET OBJEKT 1 AF 10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "En vintage telefon med en cirkulær mekanisk urskive"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Grammofon",
-            "Telefon med drejeskive",
-            "Telegraf",
-            "Diktafon"
-          ],
+          "answers": {
+            "a1": "Grammofon",
+            "a2": "Telefon med drejeskive",
+            "a3": "Telegraf",
+            "a4": "Diktafon"
+          },
           "headerLabel": "MISTET OBJEKT 2 AF 10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "En rød stereoskopisk legetøjsbetragter med en rund billedspole"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Slide projektor",
-            "Stereoskop",
-            "View-Master",
-            "Filmdåse"
-          ],
+          "answers": {
+            "a1": "Slide projektor",
+            "a2": "Stereoskop",
+            "a3": "View-Master",
+            "a4": "Filmdåse"
+          },
           "headerLabel": "MISTET GENSTAND 3 AF 10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "En mekanisk skrivemaskine med nøgler og et farvebånd"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Blækhus",
-            "Mimeograf",
-            "Telegraf nøgle",
-            "Skrivemaskine"
-          ],
+          "answers": {
+            "a1": "Blækhus",
+            "a2": "Mimeograf",
+            "a3": "Telegraf nøgle",
+            "a4": "Skrivemaskine"
+          },
           "headerLabel": "MISTET OBJEKT 4 AF 10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Et vaskebræt af træ med en bølget metaloverflade"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Vaskebræt",
-            "Smørkærn",
-            "Kaffekværn",
-            "Isboks"
-          ],
+          "answers": {
+            "a1": "Vaskebræt",
+            "a2": "Smørkærn",
+            "a3": "Kaffekværn",
+            "a4": "Isboks"
+          },
           "headerLabel": "MISTET OBJEKT 5 AF 10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "En bærbar kassetteafspiller med hovedtelefoner med ledning"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Boombox",
-            "Walkman",
-            "Transistørradios",
-            "Grammofon"
-          ],
+          "answers": {
+            "a1": "Boombox",
+            "a2": "Walkman",
+            "a3": "Transistørradios",
+            "a4": "Grammofon"
+          },
           "headerLabel": "MISTET OBJEKT 6 AF 10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "En rektangulær hjemmevideokassette"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Betamax-bånd",
-            "Filmrulle",
-            "VHS bånd",
-            "Kassettebånd"
-          ],
+          "answers": {
+            "a1": "Betamax-bånd",
+            "a2": "Filmrulle",
+            "a3": "VHS bånd",
+            "a4": "Kassettebånd"
+          },
           "headerLabel": "MISTET OBJEKT 7 AF 10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Et vævet håndholdt værktøj engang brugt til at slå støv fra tæpper"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Ishakke",
-            "Sukkertang",
-            "Skohorn",
-            "Tæppepisker"
-          ],
+          "answers": {
+            "a1": "Ishakke",
+            "a2": "Sukkertang",
+            "a3": "Skohorn",
+            "a4": "Tæppepisker"
+          },
           "headerLabel": "MISTET OBJEKT 8 AF 10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "En lille elektronisk beskedmodtager med display og bælteclips"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Personsøger",
-            "Game Boy",
-            "Talkiewalkie",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Personsøger",
+            "a2": "Game Boy",
+            "a3": "Talkiewalkie",
+            "a4": "PDA"
+          },
           "headerLabel": "MISTET OBJEKT 9 AF 10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "En langskaftet metalpande engang fyldt med kul til at varme en seng op"
           },
           "question": "Hvad er navnet på denne gamle genstand?",
-          "answers": [
-            "Olielampe",
-            "Sengevarmer",
-            "Kammerstik",
-            "Gas lanterne"
-          ],
+          "answers": {
+            "a1": "Olielampe",
+            "a2": "Sengevarmer",
+            "a3": "Kammerstik",
+            "a4": "Gas lanterne"
+          },
           "headerLabel": "ENDELIG TASTE OBJEKT"
         }
       }

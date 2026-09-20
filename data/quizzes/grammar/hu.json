@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Ezt a nyelvtani kvízt csak 10%-uk tudja teljesíteni",
   "eyebrow": "A LEKTOROLÁSI KIHÍVÁS",
   "summary": "Tört mondatok, írásjel-csapdák és szinte helyes megfogalmazás teszteli, hogy elcsúszhat-e valamilyen hiba.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Úgy gondolja, hogy a nyelvtan hibátlan? Javítsd ki a hibás mondatokat, ragadj ki apró írásjel-csapdákat, és bizonyítsd be, hogy észreveszed a hibát, mielőtt elkapná.",
     "cta": "Indítsa el a kvízt"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a világméretű-angol kihívás tíz gondosan változatos kérdést tartalmaz a mondatszerkezetről, az írásjelekről, az időről, a névmásokról, a hivatkozások egyértelműségéről és a pontos szerkesztésről. Minden egyes tétel kifejezetten angol nyelvre készült, nem pedig más nyelvről fordították le.\n\nVálassza ki azt a választ, amely helyessé és természetessé teszi a mondatot a megfogalmazott szövegkörnyezetében. A helyesség rejtve marad a végső leleplezésig.\n\nAz Ön pontszáma csak ezt a rövid nyelvi kihívást tükrözi. Ez nem formális műveltségfelmérés vagy oktatási minősítés.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Nyelvtani kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Nyelvtani kihívás",
@@ -30,10 +26,8 @@
         "preAdCopy": "Nyelvtani pontszámod és három készséged lebontása készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három nyelvtani készség összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három nyelvtani készség összehasonlítása"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sikerült a nyelvtani kihíváson!",
       "finished": "Nyelvtani kihívás kész",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb nyelvtani készség",
       "trickiest": "A legtrükkösebb nyelvtani készség",
       "bestRound": "A legjobb szakasz",
@@ -98,8 +91,7 @@
         "snapshot": "Amit a nyelvtani profilod sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Melyik opció a teljes mondat?",
-          "answers": [
-            "Az utolsó bekezdés után",
-            "A szerkesztő ellenőrizte az utolsó bekezdést.",
-            "Mert megváltozott a határidő",
-            "Amíg mindenki várt"
-          ],
+          "answers": {
+            "a1": "Az utolsó bekezdés után",
+            "a2": "A szerkesztő ellenőrizte az utolsó bekezdést.",
+            "a3": "Mert megváltozott a határidő",
+            "a4": "Amíg mindenki várt"
+          },
           "headerLabel": "MONDATSZERKEZET"
         },
         "grammar-r1q3": {
           "context": "A jegyzetek több diáké.",
           "question": "Melyik mondat fejezi ki helyesen a megadott jelentést?",
-          "answers": [
-            "A diákok jegyzeteit rendezték.",
-            "Egy diák jegyzetét rendezték.",
-            "A diákoknak nem voltak jegyzeteik.",
-            "A jegyzetek a tanárhoz tartoztak."
-          ],
+          "answers": {
+            "a1": "A diákok jegyzeteit rendezték.",
+            "a2": "Egy diák jegyzetét rendezték.",
+            "a3": "A diákoknak nem voltak jegyzeteik.",
+            "a4": "A jegyzetek a tanárhoz tartoztak."
+          },
           "headerLabel": "BIRTOKVISZONY"
         },
         "grammar-r3q1": {
           "question": "Az ülés 09:00-kor kezdődött. Leo 08:30-kor fejezte be a diagramot. Melyik mondat a helyes?",
-          "answers": [
-            "Leo a találkozó kezdete után kiegészítette a táblázatot.",
-            "Leo a találkozó kezdete után kitöltötte a táblázatot.",
-            "Leo éppen az ülés kezdetekor fejezte be a diagramot.",
-            "Leo az ülés kezdete előtt fejezte be a diagramot."
-          ],
+          "answers": {
+            "a1": "Leo a találkozó kezdete után kiegészítette a táblázatot.",
+            "a2": "Leo a találkozó kezdete után kitöltötte a táblázatot.",
+            "a3": "Leo éppen az ülés kezdetekor fejezte be a diagramot.",
+            "a4": "Leo az ülés kezdete előtt fejezte be a diagramot."
+          },
           "headerLabel": "IDŐBELI SORREND"
         },
         "grammar-r4q3": {
           "question": "Melyik mondat használja helyesen a pontosvesszőt?",
-          "answers": [
-            "A fájl nagy volt; mert lassan betöltött.",
-            "A fájl nagy volt; lassan töltődött be.",
-            "A fájl nagy volt, lassan töltődött be.",
-            "A fájl nagy volt; bár lassan betöltött."
-          ],
+          "answers": {
+            "a1": "A fájl nagy volt; mert lassan betöltött.",
+            "a2": "A fájl nagy volt; lassan töltődött be.",
+            "a3": "A fájl nagy volt, lassan töltődött be.",
+            "a4": "A fájl nagy volt; bár lassan betöltött."
+          },
           "headerLabel": "PONTOSVESSZŐ"
         },
         "grammar-r5q4": {
           "context": "Válaszd ki az egyes szám első személyű névmást.",
           "question": "Melyik szó utal a beszélőre?",
-          "answers": [
-            "én",
-            "te",
-            "ő",
-            "mi"
-          ],
+          "answers": {
+            "a1": "én",
+            "a2": "te",
+            "a3": "ő",
+            "a4": "mi"
+          },
           "headerLabel": "NÉVMÁSVÁLASZTÁS"
         },
         "grammar-r5q6": {
           "question": "Melyik mondatban választja el helyesen a vessző a megszólítást?",
-          "answers": [
-            "Ravi kérem, ellenőrizze az utolsó sort.",
-            "Ravi, kérlek nézd meg az utolsó sort.",
-            "Ravi kérem, ellenőrizze az utolsó sort sort.",
-            "Ravi; kérem, ellenőrizze az utolsó sort."
-          ],
+          "answers": {
+            "a1": "Ravi kérem, ellenőrizze az utolsó sort.",
+            "a2": "Ravi, kérlek nézd meg az utolsó sort.",
+            "a3": "Ravi kérem, ellenőrizze az utolsó sort sort.",
+            "a4": "Ravi; kérem, ellenőrizze az utolsó sort."
+          },
           "headerLabel": "MEGSZÓLÍTÁS"
         },
         "grammar-r7q6": {
           "context": "A jelentés összefoglalót és mellékletet tartalmaz. A függelék havonta frissül.",
           "question": "Melyik szerkesztésben hivatkozik a havi frissítés a függelékre?",
-          "answers": [
-            "A jelentés összefoglalót és mellékletet tartalmaz, és havonta frissül.",
-            "A jelentés egy havonta frissülő összefoglalót és egy mellékletet tartalmaz.",
-            "A jelentés összefoglalót és mellékletet tartalmaz; a függelék havonta frissül.",
-            "A havonta frissített jelentés összefoglalót és annak mellékletét tartalmazza."
-          ],
+          "answers": {
+            "a1": "A jelentés összefoglalót és mellékletet tartalmaz, és havonta frissül.",
+            "a2": "A jelentés egy havonta frissülő összefoglalót és egy mellékletet tartalmaz.",
+            "a3": "A jelentés összefoglalót és mellékletet tartalmaz; a függelék havonta frissül.",
+            "a4": "A havonta frissített jelentés összefoglalót és annak mellékletét tartalmazza."
+          },
           "headerLabel": "EGYÉRTELMŰ UTALÁS"
         },
         "grammar-r9q1": {
           "question": "Melyik mondat kezdődik „bár” kötőszós tagmondattal, és használja helyesen a vesszőt?",
-          "answers": [
-            "A vihar véget ért; bár az utcák továbbra is elöntöttek.",
-            "A vihar véget ért, de az utcák továbbra is elöntöttek.",
-            "Bár a vihar véget ért; az utcák továbbra is elöntöttek.",
-            "Bár a vihar véget ért, az utcák továbbra is víz alatt álltak."
-          ],
-          "trapdoorErrors": [
-            "pontosvessző helytelenül választja el a főmondatot a függő tagmondattól",
-            "kötőszóból hiányzik a szükséges határvonal írásjel",
-            "a pontosvessző helytelenül egy függő záradékot követ",
-            null
-          ],
+          "answers": {
+            "a1": "A vihar véget ért; bár az utcák továbbra is elöntöttek.",
+            "a2": "A vihar véget ért, de az utcák továbbra is elöntöttek.",
+            "a3": "Bár a vihar véget ért; az utcák továbbra is elöntöttek.",
+            "a4": "Bár a vihar véget ért, az utcák továbbra is víz alatt álltak."
+          },
+          "trapdoorErrors": {
+            "a1": "pontosvessző helytelenül választja el a főmondatot a függő tagmondattól",
+            "a2": "kötőszóból hiányzik a szükséges határvonal írásjel",
+            "a3": "a pontosvessző helytelenül egy függő záradékot követ"
+          },
           "headerLabel": "ELLENTÉT KIFEJEZÉSE"
         },
         "grammar-r10q6": {
           "question": "Melyik mondat a teljesen helyes?",
-          "answers": [
-            "A számadatok áttekintése után Maya megerősítette, hogy minden összeg pontos.",
-            "A számadatok áttekintése után Maya megerősített, hogy minden összeg pontos.",
-            "A számadatok áttekintése után Maya megerősítette, hogy minden összeg pontosak.",
-            "A számadatok áttekintése után Maya megerősítette, hogy minden összegek pontos."
-          ],
+          "answers": {
+            "a1": "A számadatok áttekintése után Maya megerősítette, hogy minden összeg pontos.",
+            "a2": "A számadatok áttekintése után Maya megerősített, hogy minden összeg pontos.",
+            "a3": "A számadatok áttekintése után Maya megerősítette, hogy minden összeg pontosak.",
+            "a4": "A számadatok áttekintése után Maya megerősítette, hogy minden összegek pontos."
+          },
           "headerLabel": "GONDOS SZÖVEGJAVÍTÁS"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "A végleges jelentéseket ellenőrizték, mielőtt a szerkesztő jóváhagyta jóváhagyta őket közlésre."
           },
           "question": "Melyik rész tartalmazza a hibát?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "VÉGSŐ KORREKTÚRA"
         }
       }

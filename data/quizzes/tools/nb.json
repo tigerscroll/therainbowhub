@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Bare 1 av 5 kan bestå denne quizen om verktøy til betongarbeid",
   "eyebrow": "BETONGVERKTØYTESTEN",
   "summary": "Ti byggeplassverktøy og en uforsonlig konkret utfordring.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Disse verktøyene ser åpenbare ut på en arbeidsplass, men deres virkelige bruk fanger de fleste ut. Kan du få alle 10 riktig?",
     "cta": "Start med quizen"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bearbeiding av betong krever langt mer enn en blander og en spade. Timingen, formen og formålet til hvert spesialverktøy kan avgjøre om en plate blir flat, sterk og sprekkkontrollert – eller blir til en kostbar feil.\n\nStuder hvert fotografi og velg verktøyets riktige jobb eller bruksstadium. Korrektheten forblir skjult til den siste avsløringen.\n\nDe ti første kildespørsmålene, svarvalgene og fotografiene er gjengitt fra Log Cabin Daily med tillatelse oppgitt av nettstedets eier som bestilte denne quizen.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Studer verktøyet vist på hvert fotografi.",
         "Velg riktig bruk eller stadium av betongprosessen.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Utfordring med betongverktøy",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Betongverktøy",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket, og poengsummen for konkrete verktøy er klar til å avsløres.",
         "preAdChecks": [
           "10 verktøy sjekket",
-          "Tre handelsområder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Tre handelsområder sammenlignet"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du besto betongverktøyutfordringen!",
       "finished": "Betongverktøyutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Sterkeste handelsområde",
       "trickiest": "Vanskeligste handelsområdet",
       "bestRound": "Beste seksjon",
@@ -94,8 +87,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "En betongsparkel som glatter nystøpt betong"
           },
           "question": "Hva brukes dette verktøyet til?",
-          "answers": [
-            "Kutte armeringsjern",
-            "Spredning og utjevning av våt betong",
-            "Blanding av tørr betong",
-            "Å knuse gammel betong"
-          ],
+          "answers": {
+            "a1": "Kutte armeringsjern",
+            "a2": "Spredning og utjevning av våt betong",
+            "a3": "Blanding av tørr betong",
+            "a4": "Å knuse gammel betong"
+          },
           "headerLabel": "VERKTØY 1 AV 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "En trillebår som bærer betongblanding på en arbeidsplass"
           },
           "question": "Hva brukes dette verktøyet til?",
-          "answers": [
-            "Transport av våt betong og verktøy",
-            "Etterbehandling av betongkanter",
-            "Måling av betongtemperatur",
-            "Komprimerende grus"
-          ],
+          "answers": {
+            "a1": "Transport av våt betong og verktøy",
+            "a2": "Etterbehandling av betongkanter",
+            "a3": "Måling av betongtemperatur",
+            "a4": "Komprimerende grus"
+          },
           "headerLabel": "VERKTØY 2 AV 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "En betongflåte som beveger seg over overflaten av fersk betong"
           },
           "question": "Hva brukes dette verktøyet til?",
-          "answers": [
-            "Komprimerende jord",
-            "Flytende treformer",
-            "Avretting og utjevning av betongoverflaten",
-            "Skjærer gjennom armeringsjern"
-          ],
+          "answers": {
+            "a1": "Komprimerende jord",
+            "a2": "Flytende treformer",
+            "a3": "Avretting og utjevning av betongoverflaten",
+            "a4": "Skjærer gjennom armeringsjern"
+          },
           "headerLabel": "VERKTØY 3 AV 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "En betongkantskjærer som former kanten til en plate"
           },
           "question": "Hva brukes dette verktøyet til?",
-          "answers": [
-            "Kanting av fortau og plater for rene border",
-            "Løfting av betongblokker",
-            "Kutte skjøter i betong",
-            "Transport av betongblanding"
-          ],
+          "answers": {
+            "a1": "Kanting av fortau og plater for rene border",
+            "a2": "Løfting av betongblokker",
+            "a3": "Kutte skjøter i betong",
+            "a4": "Transport av betongblanding"
+          },
           "headerLabel": "VERKTØY 4 AV 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "En bærbar betongblander som tipper fersk betong"
           },
           "question": "Hva gjør dette verktøyet?",
-          "answers": [
-            "Oppvarming av betong",
-            "Helling av tørr sement",
-            "Blanding av sement, sand og vann til betong",
-            "Sliping av gammel betong"
-          ],
+          "answers": {
+            "a1": "Oppvarming av betong",
+            "a2": "Helling av tørr sement",
+            "a3": "Blanding av sement, sand og vann til betong",
+            "a4": "Sliping av gammel betong"
+          },
           "headerLabel": "VERKTØY 5 AV 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "En langskaftet okseflyter som glatter ut en bred betongplate"
           },
           "question": "Hvilket trinn i betongarbeid krever vanligvis en okseflottør?",
-          "answers": [
-            "Transport av våt betong til støpestedet",
-            "Bryte opp gamle betongplater",
-            "Kutting av ekspansjonsfuger",
-            "Utjevning av store flater umiddelbart etter avretting"
-          ],
+          "answers": {
+            "a1": "Transport av våt betong til støpestedet",
+            "a2": "Bryte opp gamle betongplater",
+            "a3": "Kutting av ekspansjonsfuger",
+            "a4": "Utjevning av store flater umiddelbart etter avretting"
+          },
           "headerLabel": "VERKTØY 6 AV 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "En arbeider som bruker en betongvibrator i nystøpt betong"
           },
           "question": "Når vil en betongvibrator vanligvis brukes?",
-          "answers": [
-            "Før betongen støpes",
-            "Etter å ha helle betong, for å fjerne luftlommer",
-            "Mens du plasserer armeringsjern i former",
-            "Under etterbehandling, for å glatte overflaten"
-          ],
+          "answers": {
+            "a1": "Før betongen støpes",
+            "a2": "Etter å ha helle betong, for å fjerne luftlommer",
+            "a3": "Mens du plasserer armeringsjern i former",
+            "a4": "Under etterbehandling, for å glatte overflaten"
+          },
           "headerLabel": "VERKTØY 7 AV 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "En drevet armeringskutter som trimmer armeringsstål"
           },
           "question": "Hva er den primære oppgaven som utføres med en armeringsskjærer?",
-          "answers": [
-            "Trimming av armeringsstål til nødvendige lengder",
-            "Utjevning av betongkanter",
-            "Kapping av kontrollfuger i herdet betong",
-            "Fliser bort løs betong"
-          ],
+          "answers": {
+            "a1": "Trimming av armeringsstål til nødvendige lengder",
+            "a2": "Utjevning av betongkanter",
+            "a3": "Kapping av kontrollfuger i herdet betong",
+            "a4": "Fliser bort løs betong"
+          },
           "headerLabel": "VERKTØY 8 AV 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "En langskaftet rille som skjærer en linje i våt betong"
           },
           "question": "Et rilleverktøy er best brukt under hvilket stadium av en betongstøping?",
-          "answers": [
-            "Før helling, for å forberede bakken",
-            "Under etterbehandling, for å lage kontrollfuger",
-            "Under herding, for å påføre fugemasse",
-            "Etter tørking, for å polere overflaten"
-          ],
+          "answers": {
+            "a1": "Før helling, for å forberede bakken",
+            "a2": "Under etterbehandling, for å lage kontrollfuger",
+            "a3": "Under herding, for å påføre fugemasse",
+            "a4": "Etter tørking, for å polere overflaten"
+          },
           "headerLabel": "VERKTØY 9 AV 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "En rett avrettingsmasse som slår av nystøpt betong"
           },
           "question": "På hvilket stadium er en betongmasse mest brukt?",
-          "answers": [
-            "Etter herding for å polere overflaten",
-            "Etter tørking for å påføre fugemasse",
-            "Under armeringsjern layout",
-            "Umiddelbart etter påstøping for å jevne ut betongen"
-          ],
+          "answers": {
+            "a1": "Etter herding for å polere overflaten",
+            "a2": "Etter tørking for å påføre fugemasse",
+            "a3": "Under armeringsjern layout",
+            "a4": "Umiddelbart etter påstøping for å jevne ut betongen"
+          },
           "headerLabel": "ENDELIG VERKTØY"
         }
       }

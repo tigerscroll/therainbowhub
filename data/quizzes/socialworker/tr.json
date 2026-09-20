@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu Yetişkin Bu Sosyal Hizmet Uzmanı Giriş Sınavını Geçemez",
   "eyebrow": "İNSANLAR VE UYGULAMA TESTİ",
   "summary": "On soru; dinlemeyi, etiği, korumayı ve gerçek dünyadaki destek kararlarını test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "İlk sorular empatiyi test ediyor. Daha sonra durumlar gizlilik, sınırlar ve her detayın önemli olduğu kararlara doğru ilerliyor.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, 1. Kademe İngilizce konuşulan ülkelerde geçerli olan geniş sosyal hizmet ilkelerini kullanır. Dinleme ve rızadan gizliliğe, kültürel tevazuya, korumaya, belgelemeye ve profesyonel sınırlara doğru ilerliyor.\n\nHer durum için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on uygulama senaryosunu yanıtlayın.",
         "En sorumlu genel yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sosyal hizmet uzmanına giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Sosyal Hizmet Uzmanı Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve mesleki muhakeme puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş uygulama alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş uygulama alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sosyal Hizmet Uzmanı giriş sınavını geçtiniz!",
       "finished": "Sosyal Görevli giriş sınavı tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü uygulama alanı",
       "trickiest": "En zorlu uygulama alanı",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Bir kişinin hangi desteği istediğini açıklamasına yardımcı olma olasılığı en yüksek olan açılış sorusu hangisidir?",
-          "answers": [
-            "Bugün en çok hangi konuda yardım almak istersiniz?",
-            "Bunun olmasına neden izin verdin?",
-            "Benim planımın en iyisi olduğuna katılıyor musun?",
-            "Arka planı atlayıp formu doldurabilir miyiz?"
-          ],
+          "answers": {
+            "a1": "Bugün en çok hangi konuda yardım almak istersiniz?",
+            "a2": "Bunun olmasına neden izin verdin?",
+            "a3": "Benim planımın en iyisi olduğuna katılıyor musun?",
+            "a4": "Arka planı atlayıp formu doldurabilir miyiz?"
+          },
           "headerLabel": "AKTİF DİNLEME"
         },
         "socialworker-q2": {
           "question": "Bilgilendirilmiş onam için neler gereklidir?",
-          "answers": [
-            "Tartışma olmadan neyin en iyi olduğuna karar veren bir profesyonel",
-            "Kişi ilgili bilgiyi anlar ve gönüllü olarak kabul eder",
-            "Mümkün olan her durumda imzalı bir form",
-            "Kişi yerine bir aile üyesinin anlaşması"
-          ],
+          "answers": {
+            "a1": "Tartışma olmadan neyin en iyi olduğuna karar veren bir profesyonel",
+            "a2": "Kişi ilgili bilgiyi anlar ve gönüllü olarak kabul eder",
+            "a3": "Mümkün olan her durumda imzalı bir form",
+            "a4": "Kişi yerine bir aile üyesinin anlaşması"
+          },
           "headerLabel": "ONAY"
         },
         "socialworker-q3": {
           "question": "Gizlilikle ilgili hangi ifade en doğrudur?",
-          "answers": [
-            "Bilgiler hiçbir sebeple paylaşılamaz",
-            "Her şey destek ekibindeki herkesle paylaşılabilir",
-            "Gizlilik korunmaktadır ancak ciddi güvenlik endişeleri veya yasal görevler sınırlı paylaşım gerektirebilir",
-            "Gizlilik ilk görüşmeden sonra sona erer"
-          ],
+          "answers": {
+            "a1": "Bilgiler hiçbir sebeple paylaşılamaz",
+            "a2": "Her şey destek ekibindeki herkesle paylaşılabilir",
+            "a3": "Gizlilik korunmaktadır ancak ciddi güvenlik endişeleri veya yasal görevler sınırlı paylaşım gerektirebilir",
+            "a4": "Gizlilik ilk görüşmeden sonra sona erer"
+          },
           "headerLabel": "GİZLİLİK"
         },
         "socialworker-q4": {
           "question": "Hangi tepki kültürel alçakgönüllülüğü en iyi şekilde gösterir?",
-          "answers": [
-            "Aynı geçmişe sahip herkesin benzer ihtiyaçları olduğunu varsayalım",
-            "Her koşulda kültürü tartışmaktan kaçının",
-            "Kişinin bakış açısını duymadan önce standart bir plan kullanın",
-            "Kişinin tercihlerini sorun ve varsayımlarınızı düzeltmeye açık olun"
-          ],
+          "answers": {
+            "a1": "Aynı geçmişe sahip herkesin benzer ihtiyaçları olduğunu varsayalım",
+            "a2": "Her koşulda kültürü tartışmaktan kaçının",
+            "a3": "Kişinin bakış açısını duymadan önce standart bir plan kullanın",
+            "a4": "Kişinin tercihlerini sorun ve varsayımlarınızı düzeltmeye açık olun"
+          },
           "headerLabel": "KÜLTÜREL ALçakgönüllülük"
         },
         "socialworker-q5": {
           "question": "Keşfedilmesi en muhtemel güçlü yönlere dayalı değerlendirme nedir?",
-          "answers": [
-            "Kişinin yetenekleri, kaynakları, ilişkileri ve hedefleri ile ihtiyaçları",
-            "Yalnızca yönlendirmede listelenen sorunlar",
-            "Kişinin her profesyonel görüşe katılıp katılmadığı",
-            "Hangi hizmet en az belge gerektirir?"
-          ],
+          "answers": {
+            "a1": "Kişinin yetenekleri, kaynakları, ilişkileri ve hedefleri ile ihtiyaçları",
+            "a2": "Yalnızca yönlendirmede listelenen sorunlar",
+            "a3": "Kişinin her profesyonel görüşe katılıp katılmadığı",
+            "a4": "Hangi hizmet en az belge gerektirir?"
+          },
           "headerLabel": "GÜÇ TABANLI UYGULAMA"
         },
         "socialworker-q6": {
           "question": "Destek alan kişi sosyal hizmet uzmanından bireysel kredi ister. En iyi genel yanıt nedir?",
-          "answers": [
-            "Küçük bir miktar borç verin ama gizli tutun",
-            "Mesleki sınırları koruyun ve uygun pratik destek kaynaklarını araştırın",
-            "Destek alan başka bir kişiden bunu sağlamasını isteyin",
-            "Açıklama yapmadan tüm desteği derhal sonlandırın"
-          ],
+          "answers": {
+            "a1": "Küçük bir miktar borç verin ama gizli tutun",
+            "a2": "Mesleki sınırları koruyun ve uygun pratik destek kaynaklarını araştırın",
+            "a3": "Destek alan başka bir kişiden bunu sağlamasını isteyin",
+            "a4": "Açıklama yapmadan tüm desteği derhal sonlandırın"
+          },
           "headerLabel": "MESLEKİ SINIRLAR"
         },
         "socialworker-q7": {
           "question": "Bir konuşma, bir çocuğun veya savunmasız bir yetişkinin güvensiz olabileceğine dair inandırıcı bir endişeyi gündeme getiriyor. Bir sonraki en iyi genel adım nedir?",
-          "answers": [
-            "Kimseye söylemeden önce her ayrıntıyı tek başınıza araştırın",
-            "Fiziksel kanıt mevcut olmadığı sürece görmezden gelin",
-            "Endişeyi kaydedin ve geçerli koruma veya raporlama sürecini derhal izleyin",
-            "Tavsiye için çevrimiçi olarak anonim bir hesap yayınlayın"
-          ],
+          "answers": {
+            "a1": "Kimseye söylemeden önce her ayrıntıyı tek başınıza araştırın",
+            "a2": "Fiziksel kanıt mevcut olmadığı sürece görmezden gelin",
+            "a3": "Endişeyi kaydedin ve geçerli koruma veya raporlama sürecini derhal izleyin",
+            "a4": "Tavsiye için çevrimiçi olarak anonim bir hesap yayınlayın"
+          },
           "headerLabel": "KORUMA"
         },
         "socialworker-q8": {
           "question": "Hangi vaka notu genellikle en uygundur?",
-          "answers": [
-            "Esas olarak belleğe dayalı gecikmeli bir not",
-            "Kişinin karakteri hakkında kişisel bir görüş",
-            "İşçinin tüm gününün her detayı",
-            "Gözlemi görüşten ayıran, zamanlı, ilgili ve gerçeklere dayalı bir kayıt"
-          ],
+          "answers": {
+            "a1": "Esas olarak belleğe dayalı gecikmeli bir not",
+            "a2": "Kişinin karakteri hakkında kişisel bir görüş",
+            "a3": "İşçinin tüm gününün her detayı",
+            "a4": "Gözlemi görüşten ayıran, zamanlı, ilgili ve gerçeklere dayalı bir kayıt"
+          },
           "headerLabel": "KAYIT TUTMA"
         },
         "socialworker-q9": {
           "question": "Diğer profesyonellerle çalışırken genellikle hangi bilgi paylaşımı yaklaşımı en güçlüdür?",
-          "answers": [
-            "İlgili bilgileri yasal olarak paylaşın, mümkün olduğunda kişiyi dahil edin ve gerekenden fazlasını ifşa etmeyin",
-            "Tam kaydı her hizmete otomatik olarak gönder",
-            "Ciddi bir güvenlik görevi söz konusu olduğunda bile asla bilgi paylaşmayın",
-            "Yalnızca resmi olmayan sözlü güncellemelere güvenin"
-          ],
+          "answers": {
+            "a1": "İlgili bilgileri yasal olarak paylaşın, mümkün olduğunda kişiyi dahil edin ve gerekenden fazlasını ifşa etmeyin",
+            "a2": "Tam kaydı her hizmete otomatik olarak gönder",
+            "a3": "Ciddi bir güvenlik görevi söz konusu olduğunda bile asla bilgi paylaşmayın",
+            "a4": "Yalnızca resmi olmayan sözlü güncellemelere güvenin"
+          },
           "headerLabel": "İŞBİRLİKÇİ UYGULAMA"
         },
         "socialworker-q10": {
           "question": "Yetenekli bir yetişkin seçenekleri anlar ancak gönüllü hizmeti reddeder. En iyi genel yanıt nedir?",
-          "answers": [
-            "Kabul edene kadar onlara baskı yapın",
-            "Anlayışı ve acil güvenliği kontrol edin, mevcut seçenekleri açıklayın ve başka bir yasal yükümlülük geçerli olmadığı sürece bilinçli tercihe saygı gösterin",
-            "Onları ikna etmek için işverenleriyle iletişime geçin",
-            "Gelecekte desteğe giden tüm rotaları kaldırın"
-          ],
+          "answers": {
+            "a1": "Kabul edene kadar onlara baskı yapın",
+            "a2": "Anlayışı ve acil güvenliği kontrol edin, mevcut seçenekleri açıklayın ve başka bir yasal yükümlülük geçerli olmadığı sürece bilinçli tercihe saygı gösterin",
+            "a3": "Onları ikna etmek için işverenleriyle iletişime geçin",
+            "a4": "Gelecekte desteğe giden tüm rotaları kaldırın"
+          },
           "headerLabel": "NİHAİ ÖZERKLİK SORUSU"
         }
       }

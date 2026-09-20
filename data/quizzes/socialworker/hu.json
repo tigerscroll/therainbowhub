@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb felnőtt nem tudja letenni ezt a szociális munkás felvételi vizsgát",
   "eyebrow": "AZ EMBER ÉS GYAKORLAT TESZT",
   "summary": "Tíz kérdés teszteli a hallgatást, az etikát, a védelmet és a valós támogatási döntéseket.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az első kérdések az empátiát tesztelik. Ezután a szituációk átkerülnek a titoktartásba, a határokba és a döntésekbe, ahol minden részlet számít.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás a szociális munka széleskörű elveit alkalmazza, amelyek az 1. szintű angol nyelvű országokban érvényesek. A meghallgatástól és a beleegyezéstől a titoktartás, a kulturális alázat, a védelem, a dokumentálás és a szakmai határok felé halad.\n\nVálasszon egy választ minden helyzethez. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb gyakorlati forgatókönyvre.",
         "Válassza ki a leginkább felelős általános választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Szociális munkás felvételi kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Szociális munkás felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a szakmai ítélőképessége készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt gyakorlati területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt gyakorlati területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült a szociális munkás felvételi kihíváson!",
       "finished": "Szociális munkás felvételi kihívás teljesítve",
-      "correctLabel": "helyes",
       "strongest": "A legsikeresebb terület",
       "trickiest": "A legnehezebb terület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Melyik nyitó kérdés segíthet a legvalószínűbb, hogy valaki elmagyarázza, milyen támogatásra van szüksége?",
-          "answers": [
-            "Miben szeretnél legszívesebben segítséget ma?",
-            "Miért hagytad ezt?",
-            "Egyetért azzal, hogy az én tervem a legjobb?",
-            "Kihagyhatjuk a hátteret és kitölthetjük az űrlapot?"
-          ],
+          "answers": {
+            "a1": "Miben szeretnél legszívesebben segítséget ma?",
+            "a2": "Miért hagytad ezt?",
+            "a3": "Egyetért azzal, hogy az én tervem a legjobb?",
+            "a4": "Kihagyhatjuk a hátteret és kitölthetjük az űrlapot?"
+          },
           "headerLabel": "AKTIVUS Hallgató"
         },
         "socialworker-q2": {
           "question": "Mi elengedhetetlen a tájékozott beleegyezéshez?",
-          "answers": [
-            "Egy szakember, aki vita nélkül dönti el, mi a legjobb",
-            "A személy megérti a vonatkozó információkat, és önként beleegyezik",
-            "Aláírt nyomtatvány minden lehetséges helyzetben",
-            "Egy családtag megállapodása a személy helyett"
-          ],
+          "answers": {
+            "a1": "Egy szakember, aki vita nélkül dönti el, mi a legjobb",
+            "a2": "A személy megérti a vonatkozó információkat, és önként beleegyezik",
+            "a3": "Aláírt nyomtatvány minden lehetséges helyzetben",
+            "a4": "Egy családtag megállapodása a személy helyett"
+          },
           "headerLabel": "BEJELENTKEZÉS"
         },
         "socialworker-q3": {
           "question": "Melyik titoktartási állítás a legpontosabb?",
-          "answers": [
-            "Az információkat soha, semmilyen okból nem lehet megosztani",
-            "Minden megosztható bárkivel a támogatási csapatból",
-            "Az adatvédelem védett, de súlyos biztonsági aggályok vagy jogi kötelezettségek korlátozott megosztást igényelhetnek",
-            "A titoktartás az első találkozás után megszűnik"
-          ],
+          "answers": {
+            "a1": "Az információkat soha, semmilyen okból nem lehet megosztani",
+            "a2": "Minden megosztható bárkivel a támogatási csapatból",
+            "a3": "Az adatvédelem védett, de súlyos biztonsági aggályok vagy jogi kötelezettségek korlátozott megosztást igényelhetnek",
+            "a4": "A titoktartás az első találkozás után megszűnik"
+          },
           "headerLabel": "BIZALMASSÁG"
         },
         "socialworker-q4": {
           "question": "Melyik válasz mutatja legjobban a kulturális alázatot?",
-          "answers": [
-            "Tételezzük fel, hogy mindenki azonos háttérrel rendelkezik hasonló szükségletekkel",
-            "Minden körülmények között kerülje a kultúra megvitatását",
-            "Használjon szabványos tervet, mielőtt meghallgatná a személy nézőpontját",
-            "Kérdezze meg a személy preferenciáit, és maradjon nyitott arra, hogy korrigálja feltételezéseit"
-          ],
+          "answers": {
+            "a1": "Tételezzük fel, hogy mindenki azonos háttérrel rendelkezik hasonló szükségletekkel",
+            "a2": "Minden körülmények között kerülje a kultúra megvitatását",
+            "a3": "Használjon szabványos tervet, mielőtt meghallgatná a személy nézőpontját",
+            "a4": "Kérdezze meg a személy preferenciáit, és maradjon nyitott arra, hogy korrigálja feltételezéseit"
+          },
           "headerLabel": "KULTURÁLIS ALÁZAT"
         },
         "socialworker-q5": {
           "question": "Mi a legvalószínűbb, hogy az erősségeken alapuló értékelés feltárja?",
-          "answers": [
-            "A személy képességei, erőforrásai, kapcsolatai és céljai, valamint szükségletei",
-            "Csak a beutalón szereplő problémák",
-            "Hogy az illető egyetért-e minden szakmai véleménnyel",
-            "Melyik szolgáltatás igényli a legkevesebb dokumentációt"
-          ],
+          "answers": {
+            "a1": "A személy képességei, erőforrásai, kapcsolatai és céljai, valamint szükségletei",
+            "a2": "Csak a beutalón szereplő problémák",
+            "a3": "Hogy az illető egyetért-e minden szakmai véleménnyel",
+            "a4": "Melyik szolgáltatás igényli a legkevesebb dokumentációt"
+          },
           "headerLabel": "ERŐSÉG ALAPÚ GYAKORLAT"
         },
         "socialworker-q6": {
           "question": "A támogatásban részesülő személy személyi kölcsönt kér a szociális munkásától. Mi a legjobb általános válasz?",
-          "answers": [
-            "Adjon kölcsön egy kis összeget, de tartsa titokban",
-            "Tartsa be a szakmai határokat, és fedezze fel a gyakorlati támogatás megfelelő forrásait",
-            "Kérjen meg egy támogatásban részesülő személyt, hogy nyújtsa azt",
-            "Azonnal fejezzen be minden támogatást, magyarázat nélkül"
-          ],
+          "answers": {
+            "a1": "Adjon kölcsön egy kis összeget, de tartsa titokban",
+            "a2": "Tartsa be a szakmai határokat, és fedezze fel a gyakorlati támogatás megfelelő forrásait",
+            "a3": "Kérjen meg egy támogatásban részesülő személyt, hogy nyújtsa azt",
+            "a4": "Azonnal fejezzen be minden támogatást, magyarázat nélkül"
+          },
           "headerLabel": "SZAKMAI HATÁROK"
         },
         "socialworker-q7": {
           "question": "Egy beszélgetés hiteles aggodalmat vet fel azzal kapcsolatban, hogy egy gyermek vagy kiszolgáltatott felnőtt nem lehet biztonságban. Mi a legjobb általános következő lépés?",
-          "answers": [
-            "Vizsgáljon meg minden részletet egyedül, mielőtt bárkinek elmondaná",
-            "Hagyja figyelmen kívül, hacsak nem áll rendelkezésre fizikai bizonyíték",
-            "Jegyezze fel az aggodalmat, és haladéktalanul kövesse a vonatkozó biztosítéki vagy jelentési eljárást",
-            "Adjon meg egy névtelen fiókot online tanácsért"
-          ],
+          "answers": {
+            "a1": "Vizsgáljon meg minden részletet egyedül, mielőtt bárkinek elmondaná",
+            "a2": "Hagyja figyelmen kívül, hacsak nem áll rendelkezésre fizikai bizonyíték",
+            "a3": "Jegyezze fel az aggodalmat, és haladéktalanul kövesse a vonatkozó biztosítéki vagy jelentési eljárást",
+            "a4": "Adjon meg egy névtelen fiókot online tanácsért"
+          },
           "headerLabel": "VÉDELEM"
         },
         "socialworker-q8": {
           "question": "Általában melyik esetleírás a legmegfelelőbb?",
-          "answers": [
-            "Késleltetett jegyzet, amely főleg a memórián alapul",
-            "Személyes vélemény a személy jelleméről",
-            "Minden részlet a dolgozó egész napjából",
-            "Időszerű, releváns és tényszerű feljegyzés, amely megkülönbözteti a megfigyelést a véleménytől"
-          ],
+          "answers": {
+            "a1": "Késleltetett jegyzet, amely főleg a memórián alapul",
+            "a2": "Személyes vélemény a személy jelleméről",
+            "a3": "Minden részlet a dolgozó egész napjából",
+            "a4": "Időszerű, releváns és tényszerű feljegyzés, amely megkülönbözteti a megfigyelést a véleménytől"
+          },
           "headerLabel": "NYILVÁNTARTÁS"
         },
         "socialworker-q9": {
           "question": "Ha más szakemberekkel dolgozik együtt, melyik információmegosztási megközelítés általában a legerősebb?",
-          "answers": [
-            "A releváns információkat jogszerűen ossza meg, lehetőség szerint vonja be a személyt, és a szükségesnél többet ne közöljön",
-            "A teljes rekord automatikus elküldése minden szolgáltatásnak",
-            "Soha ne osszon meg információkat, még akkor sem, ha komoly biztonsági kötelezettségről van szó",
-            "Csak az informális szóbeli frissítésekre hagyatkozzon"
-          ],
+          "answers": {
+            "a1": "A releváns információkat jogszerűen ossza meg, lehetőség szerint vonja be a személyt, és a szükségesnél többet ne közöljön",
+            "a2": "A teljes rekord automatikus elküldése minden szolgáltatásnak",
+            "a3": "Soha ne osszon meg információkat, még akkor sem, ha komoly biztonsági kötelezettségről van szó",
+            "a4": "Csak az informális szóbeli frissítésekre hagyatkozzon"
+          },
           "headerLabel": "EGYÜTTMŰKÖDÉSI GYAKORLAT"
         },
         "socialworker-q10": {
           "question": "Egy rátermett felnőtt megérti a lehetőségeket, de elutasítja az önkéntes szolgálatot. Mi a legjobb általános válasz?",
-          "answers": [
-            "Nyomkodjon rájuk, amíg bele nem egyeznek",
-            "Ellenőrizze a megértést és az azonnali biztonságot, magyarázza el a rendelkezésre álló lehetőségeket, és tartsa tiszteletben a tájékozott választást, hacsak más jogi kötelezettség nem vonatkozik rá",
-            "Lépjen kapcsolatba a munkáltatójával, hogy meggyőzze őket",
-            "Távolítson el minden jövőbeli útvonalat a támogatáshoz"
-          ],
+          "answers": {
+            "a1": "Nyomkodjon rájuk, amíg bele nem egyeznek",
+            "a2": "Ellenőrizze a megértést és az azonnali biztonságot, magyarázza el a rendelkezésre álló lehetőségeket, és tartsa tiszteletben a tájékozott választást, hacsak más jogi kötelezettség nem vonatkozik rá",
+            "a3": "Lépjen kapcsolatba a munkáltatójával, hogy meggyőzze őket",
+            "a4": "Távolítson el minden jövőbeli útvonalat a támogatáshoz"
+          },
           "headerLabel": "VÉGSŐ AUTONÓMIA KÉRDÉS"
         }
       }

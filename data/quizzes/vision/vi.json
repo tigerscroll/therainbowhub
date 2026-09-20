@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 7% có thể vượt qua bài kiểm tra thị lực này",
   "eyebrow": "PHÒNG THÍ NGHIỆM TẬP TRUNG QUANG HỌC",
   "summary": "Những khác biệt nhỏ, kiểu dịch chuyển và bẫy quang học kiểm tra xem mắt bạn có nắm bắt được điều mà hầu hết mọi người bỏ lỡ hay không.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Mắt bạn tinh đến mức nào? Phát hiện những khác biệt nhỏ, theo dõi các mô hình dịch chuyển và nắm bắt các bẫy trực quan trước khi chúng tóm được bạn.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí này bao gồm mười câu đố trực quan bao gồm độ tương phản màu sắc, khớp chi tiết, định hướng không gian, theo dõi mẫu, sự chú ý và trí nhớ thị giác. Các nhiệm vụ trở nên khắt khe hơn mà không cần dựa vào thuật ngữ chuyên môn.\n\nNghiên cứu cẩn thận từng hình ảnh hoặc bộ ký hiệu, sau đó chọn câu trả lời được hỗ trợ tốt nhất bởi nội dung được hiển thị. Một số câu hỏi kiểm tra nhận thức và sự chú ý hơn là thị lực.\n\nĐây không phải là khám mắt, kiểm tra thị lực y tế hoặc chẩn đoán. Tìm kiếm lời khuyên chăm sóc mắt có chuyên môn nếu bạn lo lắng về thị lực của mình.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Hoàn thành mười câu hỏi được lựa chọn cẩn thận trong một thử thách tập trung.",
         "Chọn một câu trả lời mỗi lần. Tính đúng đắn vẫn được giấu kín cho đến khi được tiết lộ cuối cùng.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách tầm nhìn",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Thử thách tầm nhìn",
@@ -30,10 +26,8 @@
         "preAdCopy": "Điểm thử thách tầm nhìn và phân tích ba kỹ năng của bạn đã sẵn sàng tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "So sánh ba kỹ năng thị giác",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "So sánh ba kỹ năng thị giác"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách tầm nhìn!",
       "finished": "Thử thách tầm nhìn đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Kỹ năng thị giác mạnh nhất",
       "trickiest": "Kỹ năng thị giác khó nhất",
       "bestRound": "Phần hay nhất",
@@ -98,8 +91,7 @@
         "snapshot": "Hồ sơ trọng tâm của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Bốn mẫu màu xanh lam gần gũi với ô xếp phía dưới bên phải có sự khác biệt tinh tế"
           },
           "question": "Gạch nào có màu khác?",
-          "answers": [
-            "Trên cùng bên trái",
-            "Dưới cùng bên phải",
-            "Trên cùng bên phải",
-            "Dưới cùng bên trái"
-          ],
+          "answers": {
+            "a1": "Trên cùng bên trái",
+            "a2": "Dưới cùng bên phải",
+            "a3": "Trên cùng bên phải",
+            "a4": "Dưới cùng bên trái"
+          },
           "headerLabel": "ĐỘ TƯƠNG PHẢN MÀU SẮC"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Mã tham chiếu M 7 K 2 P 9"
           },
           "question": "Mã nào khớp chính xác?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "SO KHỚP CHI TIẾT"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Mũi tên hướng đông bắc phản chiếu qua gương đứng"
           },
           "question": "Mũi tên nào là gương thẳng đứng của ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "ĐỊNH HƯỚNG KHÔNG GIAN"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Có bao nhiêu chữ cái F được hiển thị?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "KIỂM SOÁT CHÚ Ý"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, chưa biết"
           },
           "question": "Ngói nào hoàn thành hàng xen kẽ?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "THEO DÕI MẪU"
         },
         "vision-r4q5": {
           "question": "Màu nào nổi bật nhất so với màu xanh navy đậm?",
-          "answers": [
-            "Mẫu A",
-            "Mẫu B",
-            "Mẫu D",
-            "Mẫu C"
-          ],
+          "answers": {
+            "a1": "Mẫu A",
+            "a2": "Mẫu B",
+            "a3": "Mẫu D",
+            "a4": "Mẫu C"
+          },
           "headerLabel": "TẬP TRUNG MÀU SẮC"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Một dấu chấm bắt đầu màu đỏ với bốn tuyến đường có dấu chấm phù hợp đi qua liên tục trước khi đến các điểm cuối A, B, C và D"
           },
           "question": "Bắt đầu tại chấm đỏ và đi theo lộ trình chấm của nó. Bạn đạt được bức thư nào?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "THEO DÕI HÌNH ẢNH"
         },
         "vision-r9q2": {
           "context": "PHIÊN BẢN A: FOCUS-M7Q2-2026\nPHIÊN BẢN B: F0CUS-M7Q2-2026",
           "question": "Vị trí chính xác nào đã thay đổi trong Phiên bản B?",
-          "answers": [
-            "chữ F đầu tiên",
-            "Q",
-            "Ký tự thứ hai",
-            "Chữ số cuối cùng"
-          ],
+          "answers": {
+            "a1": "chữ F đầu tiên",
+            "a2": "Q",
+            "a3": "Ký tự thứ hai",
+            "a4": "Chữ số cuối cùng"
+          },
           "headerLabel": "PHÁT HIỆN CHI TIẾT"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Căn cứ M8Q2 K7P4 R6N3 và sao chép M8Q2 K1P4 R6M3"
           },
           "question": "Hai nhân vật nào đã thay đổi?",
-          "answers": [
-            "7 và N",
-            "8 và 6",
-            "Q và P",
-            "K và R"
-          ],
+          "answers": {
+            "a1": "7 và N",
+            "a2": "8 và 6",
+            "a3": "Q và P",
+            "a4": "K và R"
+          },
           "headerLabel": "SO SÁNH MÃ"
         },
         "vision-r8q5": {
           "question": "Biểu tượng nào xuất hiện thứ tư?",
-          "answers": [
-            "mặt trăng",
-            "mỏ neo",
-            "mặt trời",
-            "Ngôi sao"
-          ],
+          "answers": {
+            "a1": "mặt trăng",
+            "a2": "mỏ neo",
+            "a3": "mặt trời",
+            "a4": "Ngôi sao"
+          },
           "study": {
             "title": "Ảnh chụp nhanh",
             "items": [

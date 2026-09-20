@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 7 % osaa nimetä nämä vanhat esineet – osaatko sinä?",
   "eyebrow": "KADONNIEN ESINEIDEN TESTI",
   "summary": "Kymmenen esinettä, jotka tuntuivat kerran täysin tavallisilta. Katso kuinka monta unohdettua nimeä voit vielä muistaa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Esineet voivat näyttää tutuilta, mutta kaikkien 10 oikein nimeäminen on paljon vaikeampaa kuin miltä se näyttää.",
     "cta": "Aloita tietokilpailu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ennen älypuhelimia, suoratoistoa ja automaattisia laitteita arki perustui fyysiseen mediaan, mekaanisiin vempaimiin ja kodin työkaluihin, jotka näyttävät nyt oudon vierailta. Tässä kymmenen kysymyksen haasteessa testataan, ovatko heidän nimensä kadonneet muistista itse esineiden mukana.\n\nTutki jokaista valokuvaa, käytä tarvittaessa vihjettä ja valitse yksi neljästä mahdollisesta nimestä. Oikeus pysyy piilossa lopulliseen paljastukseen asti.\n\nEnsimmäiset kymmenen lähdekysymystä ja niiden kuvat on kopioitu QuizDaysista tämän tietokilpailun tilaajan sivuston omistajan luvalla.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Tutki jokaista valokuvaa ja lue sen lyhyt vihje.",
         "Valitse oikea nimi neljästä mahdollisesta vastauksesta.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vanhentuneiden esineiden haaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Kadonneet esineet",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja nostalgiapisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vanhaa esinettä tarkastettu",
-          "Vertailtu kolme kohdeluokkaa",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Vertailtu kolme kohdeluokkaa"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Läpäisit vanhentuneiden tuotteiden haasteen!",
       "finished": "Vanhentuneiden kohteiden haaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin esineluokka",
       "trickiest": "Hankalin esineluokka",
       "bestRound": "Paras jakso",
@@ -93,8 +86,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Musta 3,5 tuuman levyke neutraalilla pinnalla"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Levyke",
-            "Kasettinauha",
-            "LaserDisc",
-            "Zip-asema"
-          ],
+          "answers": {
+            "a1": "Levyke",
+            "a2": "Kasettinauha",
+            "a3": "LaserDisc",
+            "a4": "Zip-asema"
+          },
           "headerLabel": "Kadonnut OBJEKTI 1/10"
         },
         "obsolete-q2": {
@@ -119,12 +111,12 @@
             "alt": "Vintage-puhelin pyöreällä mekaanisella kellotaululla"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Gramofoni",
-            "Puhelin, jossa on valintalevy",
-            "Lennätin",
-            "Sanelukone"
-          ],
+          "answers": {
+            "a1": "Gramofoni",
+            "a2": "Puhelin, jossa on valintalevy",
+            "a3": "Lennätin",
+            "a4": "Sanelukone"
+          },
           "headerLabel": "Kadonnut OBJEKTI 2/10"
         },
         "obsolete-q3": {
@@ -132,12 +124,12 @@
             "alt": "Punainen stereoskooppinen lelukatselija pyöreällä kuvakelalla"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Diaprojektori",
-            "Stereoskooppi",
-            "View-Master",
-            "Filmikanisteri"
-          ],
+          "answers": {
+            "a1": "Diaprojektori",
+            "a2": "Stereoskooppi",
+            "a3": "View-Master",
+            "a4": "Filmikanisteri"
+          },
           "headerLabel": "Kadonnut OBJEKTI 3/10"
         },
         "obsolete-q4": {
@@ -145,12 +137,12 @@
             "alt": "Mekaaninen kirjoituskone avaimilla ja mustenauhalla"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Inkwell",
-            "Mimeografia",
-            "Lennätin avain",
-            "Kirjoituskone"
-          ],
+          "answers": {
+            "a1": "Inkwell",
+            "a2": "Mimeografia",
+            "a3": "Lennätin avain",
+            "a4": "Kirjoituskone"
+          },
           "headerLabel": "Kadonnut OBJEKTI 4/10"
         },
         "obsolete-q5": {
@@ -158,12 +150,12 @@
             "alt": "Puinen pyykkilevy, jossa aallotettu metallipinta"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Pesulauta",
-            "Voimurska",
-            "Kahvimylly",
-            "Jäälaatikko"
-          ],
+          "answers": {
+            "a1": "Pesulauta",
+            "a2": "Voimurska",
+            "a3": "Kahvimylly",
+            "a4": "Jäälaatikko"
+          },
           "headerLabel": "Kadonnut OBJEKTI 5/10"
         },
         "obsolete-q6": {
@@ -171,12 +163,12 @@
             "alt": "Kannettava kasettisoitin langallisilla kuulokkeilla"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Boombox",
-            "Walkman",
-            "Transistori radio",
-            "Gramofoni"
-          ],
+          "answers": {
+            "a1": "Boombox",
+            "a2": "Walkman",
+            "a3": "Transistori radio",
+            "a4": "Gramofoni"
+          },
           "headerLabel": "Kadonnut OBJEKTI 6/10"
         },
         "obsolete-q7": {
@@ -184,12 +176,12 @@
             "alt": "Suorakaiteen muotoinen kotivideokasetti"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Betamax teippi",
-            "Filmin kela",
-            "VHS nauha",
-            "Kasettinauha"
-          ],
+          "answers": {
+            "a1": "Betamax teippi",
+            "a2": "Filmin kela",
+            "a3": "VHS nauha",
+            "a4": "Kasettinauha"
+          },
           "headerLabel": "Kadonnut OBJEKTI 7/10"
         },
         "obsolete-q8": {
@@ -197,12 +189,12 @@
             "alt": "Kudottu käsityökalu, jota käytettiin aikoinaan pölyn poistamiseen matoista"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Jääpala",
-            "Sokeripihdit",
-            "Kengäntorvi",
-            "Mattopiiska"
-          ],
+          "answers": {
+            "a1": "Jääpala",
+            "a2": "Sokeripihdit",
+            "a3": "Kengäntorvi",
+            "a4": "Mattopiiska"
+          },
           "headerLabel": "Kadonnut OBJEKTI 8/10"
         },
         "obsolete-q9": {
@@ -210,12 +202,12 @@
             "alt": "Pieni sähköinen viestivastaanotin, jossa on näyttö ja vyöpidike"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Hakulaite",
-            "Game Boy",
-            "Radiopuhelin",
-            "PDA"
-          ],
+          "answers": {
+            "a1": "Hakulaite",
+            "a2": "Game Boy",
+            "a3": "Radiopuhelin",
+            "a4": "PDA"
+          },
           "headerLabel": "Kadonnut OBJEKTI 9/10"
         },
         "obsolete-q10": {
@@ -223,12 +215,12 @@
             "alt": "Pitkävartinen metallipannu, joka oli kerran täytetty hiilellä sängyn lämmittämiseksi"
           },
           "question": "Mikä tämän vanhan esineen nimi on?",
-          "answers": [
-            "Öljylamppu",
-            "Sängynlämmitin",
-            "Chamberstick",
-            "Kaasu lyhty"
-          ],
+          "answers": {
+            "a1": "Öljylamppu",
+            "a2": "Sängynlämmitin",
+            "a3": "Chamberstick",
+            "a4": "Kaasu lyhty"
+          },
           "headerLabel": "VIIMEINEN KADONNIN ESINE"
         }
       }

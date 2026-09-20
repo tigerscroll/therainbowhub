@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Većina odraslih ne može položiti ovaj liječnički prijemni ispit",
   "eyebrow": "TEST KLINIČKOG ZNANJA",
   "summary": "Deset pitanja ispituje anatomiju, simptome, dijagnostičke alate i sigurno kliničko zaključivanje.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Pitanja iz anatomije čine se poznatima. Zatim test prelazi na simptome, hitne slučajeve i kliničke odluke.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov od deset pitanja koristi široke medicinske koncepte koji se uče i razumiju u svim zemljama engleskog govornog područja Tier 1. Od anatomije i fiziologije prelazi na dijagnostičke alate, obrasce simptoma, hitne prioritete i odgovornu upotrebu lijekova.\n\nOdaberite jedan odgovor za svako pitanje. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih pitanja kliničkog znanja.",
         "Odaberite jedan najbolje podržani odgovor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov za ulazak u doktora",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni ispit za liječnike",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat kliničkog znanja je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno pet medicinskih područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno pet medicinskih područja"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli ste izazov za doktora!",
       "finished": "Dovršen izazov za prijem liječnika",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače medicinsko područje",
       "trickiest": "Najzahtjevnije medicinsko područje",
       "bestRound": "Najbolja sekcija",
@@ -99,8 +92,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Koja komora srca pumpa krv bogatu kisikom u aortu?",
-          "answers": [
-            "Lijeva klijetka",
-            "Desna klijetka",
-            "Lijevi atrij",
-            "Desni atrij"
-          ],
+          "answers": {
+            "a1": "Lijeva klijetka",
+            "a2": "Desna klijetka",
+            "a3": "Lijevi atrij",
+            "a4": "Desni atrij"
+          },
           "headerLabel": "ANATOMIJA SRCA"
         },
         "doctor-q2": {
           "question": "Iznenadno opadanje lica, slabost ruku i poteškoće s govorom trebali bi izazvati trenutnu zabrinutost za što?",
-          "answers": [
-            "Manja intolerancija na hranu",
-            "Mogući moždani udar",
-            "Jednostavno naprezanje mišića",
-            "Sezonske alergije"
-          ],
+          "answers": {
+            "a1": "Manja intolerancija na hranu",
+            "a2": "Mogući moždani udar",
+            "a3": "Jednostavno naprezanje mišića",
+            "a4": "Sezonske alergije"
+          },
           "headerLabel": "PREPOZNAVANJE SIMPTOMA"
         },
         "doctor-q3": {
           "question": "Koji uređaj omogućuje brzu, neinvazivnu procjenu zasićenosti krvi kisikom?",
-          "answers": [
-            "Otoskop",
-            "Refleksni čekić",
-            "Pulsni oksimetar",
-            "Toplomjer"
-          ],
+          "answers": {
+            "a1": "Otoskop",
+            "a2": "Refleksni čekić",
+            "a3": "Pulsni oksimetar",
+            "a4": "Toplomjer"
+          },
           "headerLabel": "DIJAGNOSTIČKI ALATI"
         },
         "doctor-q4": {
           "question": "U klasičnoj prezentaciji upale slijepog crijeva, prema kojem se području može kretati bol u trbuhu?",
-          "answers": [
-            "Gornji lijevi abdomen",
-            "Sredina prsa",
-            "Lijevo rame",
-            "Donji desni abdomen"
-          ],
+          "answers": {
+            "a1": "Gornji lijevi abdomen",
+            "a2": "Sredina prsa",
+            "a3": "Lijevo rame",
+            "a4": "Donji desni abdomen"
+          },
           "headerLabel": "KLINIČKI OBRACI"
         },
         "doctor-q5": {
           "question": "Koje stanice u gušterači proizvode inzulin?",
-          "answers": [
-            "Beta stanice",
-            "Crvena krvna zrnca",
-            "Osteoblasti",
-            "Neutrofili"
-          ],
+          "answers": {
+            "a1": "Beta stanice",
+            "a2": "Crvena krvna zrnca",
+            "a3": "Osteoblasti",
+            "a4": "Neutrofili"
+          },
           "headerLabel": "ENDOKRINA FIZIOLOGIJA"
         },
         "doctor-q6": {
           "question": "Što znači auskultacija tijekom fizičkog pregleda?",
-          "answers": [
-            "Mjerenje tjelesne temperature",
-            "Slušanje unutarnjih zvukova tijela",
-            "Ispitivanje vidne oštrine",
-            "Ispitivanje uzorka tkiva pod mikroskopom"
-          ],
+          "answers": {
+            "a1": "Mjerenje tjelesne temperature",
+            "a2": "Slušanje unutarnjih zvukova tijela",
+            "a3": "Ispitivanje vidne oštrine",
+            "a4": "Ispitivanje uzorka tkiva pod mikroskopom"
+          },
           "headerLabel": "KLINIČKI PREGLED"
         },
         "doctor-q7": {
           "question": "Koji opis najbolje odgovara sepsi?",
-          "answers": [
-            "Bezopasna reakcija na vježbanje",
-            "Stanje uzrokovano samo alergijama",
-            "Ekstremni odgovor na infekciju opasan po život",
-            "Vrsta prijeloma kostiju"
-          ],
+          "answers": {
+            "a1": "Bezopasna reakcija na vježbanje",
+            "a2": "Stanje uzrokovano samo alergijama",
+            "a3": "Ekstremni odgovor na infekciju opasan po život",
+            "a4": "Vrsta prijeloma kostiju"
+          },
           "headerLabel": "HITNA MEDICINSKA POMOĆ"
         },
         "doctor-q8": {
           "question": "Kako se zove funkcionalna jedinica za filtriranje bubrega?",
-          "answers": [
-            "Alveola",
-            "Neuron",
-            "Resice",
-            "Nefron"
-          ],
+          "answers": {
+            "a1": "Alveola",
+            "a2": "Neuron",
+            "a3": "Resice",
+            "a4": "Nefron"
+          },
           "headerLabel": "ANATOMIJA BUBREGA"
         },
         "doctor-q9": {
           "question": "Osoba ne reagira i ne diše normalno. Koji je najsigurniji neposredni opći odgovor?",
-          "answers": [
-            "Nazovite hitnu pomoć i započnite odgovarajuće osnovno održavanje života",
-            "Pričekajte nekoliko minuta za spontani oporavak",
-            "Dajte hranu ili piće",
-            "Zamolite osobu da hoda okolo"
-          ],
+          "answers": {
+            "a1": "Nazovite hitnu pomoć i započnite odgovarajuće osnovno održavanje života",
+            "a2": "Pričekajte nekoliko minuta za spontani oporavak",
+            "a3": "Dajte hranu ili piće",
+            "a4": "Zamolite osobu da hoda okolo"
+          },
           "headerLabel": "HITNI PRIORITETI"
         },
         "doctor-q10": {
           "question": "Koja je izjava o antibioticima najtočnija?",
-          "answers": [
-            "Liječe svaku groznicu",
-            "Ne liječe virusne infekcije kao što je prehlada",
-            "Uvijek ih treba prekinuti čim se simptomi poboljšaju",
-            "Djeluju tako da izravno snižavaju tjelesnu temperaturu"
-          ],
+          "answers": {
+            "a1": "Liječe svaku groznicu",
+            "a2": "Ne liječe virusne infekcije kao što je prehlada",
+            "a3": "Uvijek ih treba prekinuti čim se simptomi poboljšaju",
+            "a4": "Djeluju tako da izravno snižavaju tjelesnu temperaturu"
+          },
           "headerLabel": "ZAVRŠNO MEDICINSKO PITANJE"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A felnőttek mindössze 12%-a tudja letenni ezt az apáca felvételi vizsgát",
   "eyebrow": "A VALLÁSI ÉLETISMERET TESZT",
   "summary": "Tíz tiszteletteljes kérdés a fogadalmakat, a formációt, a hagyományokat és a mindennapi vallási életet vizsgálja.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az ismerős kérdések csak a kezdet. Ezután a próbatétel a fogadalomtételre, a képzésre és a vallási életre kerül.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tiszteletreméltó tíz kérdéses szórakoztató kihívás a katolikus nők vallási életét vizsgálja széles körben használt fogalmak révén, mint az evangéliumi tanácsok, a novitiátus, a karizmus, az imádság és a hivatás. A közösségek szabályaikban, ruházatukban, minisztériumaikban és formációjukban különböznek, így a kvíz elkerüli, hogy minden intézményt azonosként kezeljenek.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz egyre részletesebb kérdésre a vallási élettel kapcsolatban.",
         "Válassza ki a legjobb választ négy lehetőség közül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vallási élet kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Apáca felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a vallási életismereti pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Négy tudásterületet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Négy tudásterületet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Sikerült az Apáca belépő kihívásán!",
       "finished": "Apáca belépő kihívás kész",
-      "correctLabel": "helyes",
       "strongest": "Legerősebb tudásterület",
       "trickiest": "A legtrükkösebb tudásterület",
       "bestRound": "A legjobb szakasz",
@@ -96,8 +89,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "nun-q1": {
           "question": "Melyik három kötelezettséget nevezik evangéliumi tanácsnak?",
-          "answers": [
-            "Szegénység, tisztaság és engedelmesség",
-            "Csend, böjt és zarándoklat",
-            "Tanulás, utazás és tanítás",
-            "Magány, zene és szolgáltatás"
-          ],
+          "answers": {
+            "a1": "Szegénység, tisztaság és engedelmesség",
+            "a2": "Csend, böjt és zarándoklat",
+            "a3": "Tanulás, utazás és tanítás",
+            "a4": "Magány, zene és szolgáltatás"
+          },
           "headerLabel": "VALLÁSI ESKÉK"
         },
         "nun-q2": {
           "question": "Hogyan nevezik általában az első szakma előtti felkészülési időszakot?",
-          "answers": [
-            "Egy konklávé",
-            "A noviciátus",
-            "Zsinat",
-            "A diakonátus"
-          ],
+          "answers": {
+            "a1": "Egy konklávé",
+            "a2": "A noviciátus",
+            "a3": "Zsinat",
+            "a4": "A diakonátus"
+          },
           "headerLabel": "KIALAKULÁS"
         },
         "nun-q3": {
           "question": "Milyen szó jellemzi gyakran egy vallási intézmény jellegzetes lelki ajándékát és küldetését?",
-          "answers": [
-            "Canon",
-            "Parish",
-            "Karizma",
-            "Szentség"
-          ],
+          "answers": {
+            "a1": "Canon",
+            "a2": "Parish",
+            "a3": "Karizma",
+            "a4": "Szentség"
+          },
           "headerLabel": "KÖZÖSSÉGI IDENTITÁS"
         },
         "nun-q4": {
           "question": "Hogyan hívják az Egyház meghatározott napszakokban végzett imaciklusát?",
-          "answers": [
-            "A szótár",
-            "A katekizmus",
-            "A rózsafüzér naptár",
-            "Az órák liturgiája"
-          ],
+          "answers": {
+            "a1": "A szótár",
+            "a2": "A katekizmus",
+            "a3": "A rózsafüzér naptár",
+            "a4": "Az órák liturgiája"
+          },
           "headerLabel": "NAPI IMA"
         },
         "nun-q5": {
           "question": "Melyik alaptételekhez kapcsolódik szorosan a benediktinus hagyomány?",
-          "answers": [
-            "Szent Benedek regulája",
-            "A Canterbury-mesék",
-            "A közös imádság könyve",
-            "A Summa Theologica"
-          ],
+          "answers": {
+            "a1": "Szent Benedek regulája",
+            "a2": "A Canterbury-mesék",
+            "a3": "A közös imádság könyve",
+            "a4": "A Summa Theologica"
+          },
           "headerLabel": "SZERZETI HAGYOMÁNYOK"
         },
         "nun-q6": {
           "question": "Melyik szent kötődik a legszorosabban a klarisszák megalapításához?",
-          "answers": [
-            "Kalkuttai Szent Teréz",
-            "Assisi Szent Klára",
-            "Sienai Szent Katalin",
-            "Lisieux-i Szent Teréz"
-          ],
+          "answers": {
+            "a1": "Kalkuttai Szent Teréz",
+            "a2": "Assisi Szent Klára",
+            "a3": "Sienai Szent Katalin",
+            "a4": "Lisieux-i Szent Teréz"
+          },
           "headerLabel": "VALLÁSI RENDEK"
         },
         "nun-q7": {
           "question": "Hogyan nevezik az örökös hivatás előtt meghatározott időre tett fogadalmat?",
-          "answers": [
-            "Magán szándékok",
-            "Irodai ígéretek",
-            "Ideiglenes fogadalmak",
-            "Keresztségi nevek"
-          ],
+          "answers": {
+            "a1": "Magán szándékok",
+            "a2": "Irodai ígéretek",
+            "a3": "Ideiglenes fogadalmak",
+            "a4": "Keresztségi nevek"
+          },
           "headerLabel": "SZAKMA"
         },
         "nun-q8": {
           "question": "Milyen leírás megfelel a legtöbbet egy szemlélő vagy zárva álló közösségnek?",
-          "answers": [
-            "Főleg politikai hivatalokra koncentráló közösség",
-            "Egy csoport, amelynek nincs közös imája",
-            "Egy közösség, amely csak utazásra jött létre",
-            "Egy közösség, amely erősen arra összpontosított, hogy imádkozzanak, és hogy önállóbb életet éljenek"
-          ],
+          "answers": {
+            "a1": "Főleg politikai hivatalokra koncentráló közösség",
+            "a2": "Egy csoport, amelynek nincs közös imája",
+            "a3": "Egy közösség, amely csak utazásra jött létre",
+            "a4": "Egy közösség, amely erősen arra összpontosított, hogy imádkozzanak, és hogy önállóbb életet éljenek"
+          },
           "headerLabel": "TEMPLÁLÓ ÉLET"
         },
         "nun-q9": {
           "question": "Mit jelent a vallásos életben a vallásos hivatás?",
-          "answers": [
-            "Az egyház által formálisan elfogadott fogadalmak nyilvános letétele",
-            "A világi pálya kiválasztása",
-            "A püspökválasztás",
-            "Egy imakönyv kiadása"
-          ],
+          "answers": {
+            "a1": "Az egyház által formálisan elfogadott fogadalmak nyilvános letétele",
+            "a2": "A világi pálya kiválasztása",
+            "a3": "A püspökválasztás",
+            "a4": "Egy imakönyv kiadása"
+          },
           "headerLabel": "HIVATÁS NYELV"
         },
         "nun-q10": {
           "question": "Melyik leírás illik leginkább egy apostoli vallási közösséghez?",
-          "answers": [
-            "Egy közösség, amelynek nincs közös lelki élete",
-            "Egy közösség, amely az imádságot és az aktív szolgálatot egyesíti",
-            "Egy közösség, amely csak az épületek megőrzésével foglalkozik",
-            "Egy közösség, amely soha nem működik a saját tagjain túl"
-          ],
+          "answers": {
+            "a1": "Egy közösség, amelynek nincs közös lelki élete",
+            "a2": "Egy közösség, amely az imádságot és az aktív szolgálatot egyesíti",
+            "a3": "Egy közösség, amely csak az épületek megőrzésével foglalkozik",
+            "a4": "Egy közösség, amely soha nem működik a saját tagjain túl"
+          },
           "headerLabel": "VÉGSŐ TUDÁSKÉRDÉS"
         }
       }

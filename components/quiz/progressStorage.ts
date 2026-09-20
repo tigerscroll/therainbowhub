@@ -1,4 +1,4 @@
-export const STORAGE_VERSION = 3;
+export const STORAGE_VERSION = 4;
 export const PROGRESS_TTL_MS = 30 * 60 * 1000;
 
 export function getQuizStorageKey(slug: string, locale: string) {

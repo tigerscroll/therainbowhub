@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 8% Pass This Paramedic Entrance Exam",
   "eyebrow": "PARAMEDIC ENTRANCE CHALLENGE",
   "summary": "Scene hazards, vital signs and rapid-response decisions test whether you can think clearly when every clue matters.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Scene hazards, vital signs, emergency maths and calm judgement. Can you think clearly when every clue matters?",
     "cta": "Start Test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "This worldwide entertainment challenge contains ten entrance-style questions across anatomy, observations, numeracy, communication, safety and priority judgement. It tests careful reasoning rather than local protocols or operational procedures.\n\nChoose the best answer using only the information shown. Safe options favour recognising risk, communicating clearly and seeking appropriate qualified support.\n\nThis is not an accredited paramedic entrance exam, clinical assessment, qualification, training course or source of emergency advice.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Complete ten carefully selected questions in one focused challenge.",
         "Choose one answer each time. Correctness remains hidden until the final reveal.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Paramedic entrance exam",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Paramedic Entrance Challenge",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your paramedic entrance score and six-area breakdown are ready to reveal.",
         "preAdChecks": [
           "10 answers checked",
-          "Six entrance areas compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Six entrance areas compared"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "You passed the paramedic entrance challenge!",
       "finished": "Paramedic entrance challenge complete",
-      "correctLabel": "correct",
       "strongest": "Strongest entrance area",
       "trickiest": "Trickiest entrance area",
       "bestRound": "Best section",
@@ -107,8 +100,7 @@
         "snapshot": "What your candidate profile suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Which organ pumps blood around the body?",
-          "answers": [
-            "Heart",
-            "Lungs",
-            "Brain",
-            "Bones"
-          ],
+          "answers": {
+            "a1": "Heart",
+            "a2": "Lungs",
+            "a3": "Brain",
+            "a4": "Bones"
+          },
           "headerLabel": "ANATOMY & PHYSIOLOGY"
         },
         "paramedic-r1q5": {
           "question": "Which opening makes the clearest handover?",
-          "answers": [
-            "Something changed earlier, probably",
-            "Here are all the minor details in random order",
-            "At 14:20, breathing became faster and alertness decreased",
-            "I already know exactly what caused it"
-          ],
+          "answers": {
+            "a1": "Something changed earlier, probably",
+            "a2": "Here are all the minor details in random order",
+            "a3": "At 14:20, breathing became faster and alertness decreased",
+            "a4": "I already know exactly what caused it"
+          },
           "headerLabel": "CLEAR HANDOVER"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Pulse 80 then 92 then 108, with pallor and dizziness"
           },
           "question": "What is the best interpretation of this pattern?",
-          "answers": [
-            "The record is unchanged",
-            "The combined trend suggests deterioration needing prompt qualified assessment",
-            "Only the first number matters",
-            "The symptoms can be ignored because no diagnosis is shown"
-          ],
+          "answers": {
+            "a1": "The record is unchanged",
+            "a2": "The combined trend suggests deterioration needing prompt qualified assessment",
+            "a3": "Only the first number matters",
+            "a4": "The symptoms can be ignored because no diagnosis is shown"
+          },
           "headerLabel": "OBSERVATION TRENDS"
         },
         "paramedic-r2q4": {
           "question": "Which statement best describes the kidneys?",
-          "answers": [
-            "They exchange oxygen and carbon dioxide",
-            "They remove wastes from blood and help regulate water balance",
-            "They pump blood through arteries",
-            "They control every voluntary movement"
-          ],
+          "answers": {
+            "a1": "They exchange oxygen and carbon dioxide",
+            "a2": "They remove wastes from blood and help regulate water balance",
+            "a3": "They pump blood through arteries",
+            "a4": "They control every voluntary movement"
+          },
           "headerLabel": "BODY SYSTEMS"
         },
         "paramedic-r1q4": {
           "question": "A live electrical cable lies across the only doorway. What comes first?",
-          "answers": [
-            "Step over it carefully",
-            "Keep everyone clear and get qualified help to make it safe",
-            "Move it with a dry object",
-            "Ask a bystander to watch it"
-          ],
+          "answers": {
+            "a1": "Step over it carefully",
+            "a2": "Keep everyone clear and get qualified help to make it safe",
+            "a3": "Move it with a dry object",
+            "a4": "Ask a bystander to watch it"
+          },
           "headerLabel": "SCENE SAFETY"
         },
         "paramedic-r6q2": {
           "question": "A person keeps nodding but has not understood. What should happen next?",
-          "answers": [
-            "Repeat the same explanation more slowly",
-            "Ask, ‘Do you understand?’ and continue if they say yes",
-            "Shorten the explanation but keep the same terminology",
-            "Use plain words and check back"
-          ],
+          "answers": {
+            "a1": "Repeat the same explanation more slowly",
+            "a2": "Ask, ‘Do you understand?’ and continue if they say yes",
+            "a3": "Shorten the explanation but keep the same terminology",
+            "a4": "Use plain words and check back"
+          },
           "headerLabel": "CLEAR COMMUNICATION"
         },
         "paramedic-r5q6": {
           "context": "Person A feels well and their observations remain steady. Person B is newly clammy and dizzy, and their pulse has risen across three checks.",
           "question": "Who needs attention first?",
-          "answers": [
-            "Person B, because several changes point to deterioration",
-            "Person A, because their observations were recorded first",
-            "Both can wait because neither has a named diagnosis",
-            "The person with the shorter name"
-          ],
+          "answers": {
+            "a1": "Person B, because several changes point to deterioration",
+            "a2": "Person A, because their observations were recorded first",
+            "a3": "Both can wait because neither has a named diagnosis",
+            "a4": "The person with the shorter name"
+          },
           "headerLabel": "PRIORITY JUDGEMENT"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0.3 litres plus 450 millilitres plus 250 millilitres equals what total"
           },
           "question": "What is the combined recorded volume in millilitres?",
-          "answers": [
-            "900 mL",
-            "950 mL",
-            "1,000 mL",
-            "1,100 mL"
-          ],
+          "answers": {
+            "a1": "900 mL",
+            "a2": "950 mL",
+            "a3": "1,000 mL",
+            "a4": "1,100 mL"
+          },
           "headerLabel": "EMERGENCY NUMERACY"
         },
         "paramedic-r10q4": {
           "context": "INCIDENT RECORD — An aggressive person is throwing objects near the entrance. Equipment partly blocks the nearest exit route.",
           "question": "What is the safest response to the combined hazards?",
-          "answers": [
-            "Keep clear, move others towards a safer route and alert appropriate help",
-            "Approach and argue until the person stops",
-            "Retrieve the equipment beside the person before leaving",
-            "Ask an untrained bystander to block the thrown objects"
-          ],
+          "answers": {
+            "a1": "Keep clear, move others towards a safer route and alert appropriate help",
+            "a2": "Approach and argue until the person stops",
+            "a3": "Retrieve the equipment beside the person before leaving",
+            "a4": "Ask an untrained bystander to block the thrown objects"
+          },
           "headerLabel": "INTEGRATED SAFETY"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Breathing 16 alert, then 22 anxious, then 28 drowsy"
           },
           "question": "What is the best interpretation of the complete trend?",
-          "answers": [
-            "The person is steadily improving",
-            "Only the middle check matters",
-            "The values can be ignored because no diagnosis is named",
-            "Breathing is worsening while responsiveness is declining"
-          ],
+          "answers": {
+            "a1": "The person is steadily improving",
+            "a2": "Only the middle check matters",
+            "a3": "The values can be ignored because no diagnosis is named",
+            "a4": "Breathing is worsening while responsiveness is declining"
+          },
           "headerLabel": "FINAL RESPONSE"
         }
       }

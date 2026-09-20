@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 6% Orang Dewasa Yang Dapat Lulus Ujian Masuk Petugas Polisi Ini",
   "eyebrow": "UJI APTITUDE PETUGAS POLISI",
   "summary": "Sepuluh pertanyaan menguji penilaian, komunikasi, penanganan bukti dan integritas profesional.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Panggilan pertama tampak mudah. Kemudian ujian beralih ke bukti, penilaian, dan keputusan sepersekian detik.",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sepuluh pertanyaan ini menggunakan prinsip-prinsip luas yang relevan dengan kepolisian profesional di negara-negara berbahasa Inggris Tingkat 1. Sistem ini menguji penilaian yang mengutamakan keselamatan, komunikasi saksi yang cermat, integritas bukti, dan pengambilan keputusan yang dapat dipertanggungjawabkan tanpa bergantung pada undang-undang, peringkat, atau prosedur suatu negara.\n\nPilih satu jawaban untuk setiap situasi. Kebenaran tetap tersembunyi hingga pengungkapan akhir, di mana tinjauan jawaban lengkap tersedia untuk dibuka.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Jawab sepuluh pertanyaan bakat polisi yang semakin sulit.",
         "Pilih respons yang paling aman, paling jelas, atau paling didukung.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan masuk petugas polisi",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Ujian Masuk Petugas Polisi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Sepuluh jawaban Anda telah diperiksa dan skor bakat polisi Anda siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Empat bidang kepolisian dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Empat bidang kepolisian dibandingkan"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Anda lulus tantangan masuk Petugas Polisi!",
       "finished": "Tantangan masuk Petugas Polisi selesai",
-      "correctLabel": "benar",
       "strongest": "Area kepolisian terkuat",
       "trickiest": "Area kepolisian yang paling rumit",
       "bestRound": "Bagian terbaik",
@@ -96,8 +89,7 @@
         "snapshot": "Apa yang disarankan oleh hasil Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Anda tiba di lokasi di mana seseorang menghadapi ancaman langsung. Apa prioritas pertama?",
-          "answers": [
-            "Lindungi kehidupan dan buat tempat kejadian seaman mungkin",
-            "Mulailah laporan tertulis yang terperinci",
-            "Kumpulkan setiap pernyataan saksi",
-            "Cari tahu siapa yang bertanggung jawab secara hukum"
-          ],
+          "answers": {
+            "a1": "Lindungi kehidupan dan buat tempat kejadian seaman mungkin",
+            "a2": "Mulailah laporan tertulis yang terperinci",
+            "a3": "Kumpulkan setiap pernyataan saksi",
+            "a4": "Cari tahu siapa yang bertanggung jawab secara hukum"
+          },
           "headerLabel": "PRIORITAS ADEGAN"
         },
         "police-q2": {
           "question": "Pertanyaan pembuka manakah yang paling mungkin menghasilkan keterangan saksi yang tidak terputus?",
-          "answers": [
-            "Orang berbaju merah yang memulainya, benar?",
-            "Tolong beritahu saya apa yang terjadi dari awal",
-            "Anda tidak melihat keseluruhan kejadiannya, bukan?",
-            "Apakah tersangka marah atau takut?"
-          ],
+          "answers": {
+            "a1": "Orang berbaju merah yang memulainya, benar?",
+            "a2": "Tolong beritahu saya apa yang terjadi dari awal",
+            "a3": "Anda tidak melihat keseluruhan kejadiannya, bukan?",
+            "a4": "Apakah tersangka marah atau takut?"
+          },
           "headerLabel": "KOMUNIKASI SAKSI"
         },
         "police-q3": {
           "question": "Mengapa para saksi dipisah-pisahkan sebelum keterangan awal mereka diambil?",
-          "answers": [
-            "Untuk mempersingkat wawancara",
-            "Untuk memutuskan siapa yang paling percaya diri",
-            "Untuk mengurangi kemungkinan ingatan mereka mempengaruhi satu sama lain",
-            "Untuk menjamin bahwa setiap akun cocok"
-          ],
+          "answers": {
+            "a1": "Untuk mempersingkat wawancara",
+            "a2": "Untuk memutuskan siapa yang paling percaya diri",
+            "a3": "Untuk mengurangi kemungkinan ingatan mereka mempengaruhi satu sama lain",
+            "a4": "Untuk menjamin bahwa setiap akun cocok"
+          },
           "headerLabel": "MEMORI DAN BUKTI"
         },
         "police-q4": {
           "question": "Apa tujuan utama dari lacak balak yang terdokumentasi?",
-          "answers": [
-            "Untuk mengurutkan bukti berdasarkan kepentingannya",
-            "Untuk membuktikan tersangka memiliki setiap barang",
-            "Untuk menggantikan foto tempat kejadian",
-            "Untuk mencatat siapa yang menangani barang bukti dan menjaga integritasnya"
-          ],
+          "answers": {
+            "a1": "Untuk mengurutkan bukti berdasarkan kepentingannya",
+            "a2": "Untuk membuktikan tersangka memiliki setiap barang",
+            "a3": "Untuk menggantikan foto tempat kejadian",
+            "a4": "Untuk mencatat siapa yang menangani barang bukti dan menjaga integritasnya"
+          },
           "headerLabel": "PENGENDALIAN BUKTI"
         },
         "police-q5": {
           "question": "Rangkaian prinsip manakah yang paling tepat menggambarkan penggunaan wewenang polisi secara bertanggung jawab?",
-          "answers": [
-            "Sah, perlu, proporsional dan akuntabel",
-            "Cepat, rahasia, kuat, dan final",
-            "Populer, nyaman, informal dan luas",
-            "Otomatis, identik, tidak terbatas dan tidak perlu dipertanyakan lagi"
-          ],
+          "answers": {
+            "a1": "Sah, perlu, proporsional dan akuntabel",
+            "a2": "Cepat, rahasia, kuat, dan final",
+            "a3": "Populer, nyaman, informal dan luas",
+            "a4": "Otomatis, identik, tidak terbatas dan tidak perlu dipertanyakan lagi"
+          },
           "headerLabel": "PENILAIAN PROFESIONAL"
         },
         "police-q6": {
           "question": "Dalam alfabet ejaan internasional, kata manakah yang mewakili huruf B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "KOMUNIKASI RADIO"
         },
         "police-q7": {
           "question": "Pendekatan mana yang paling konsisten dalam meredakan situasi tegang namun tidak langsung?",
-          "answers": [
-            "Bicaralah dengan cepat dan mendekatlah tanpa peringatan",
-            "Keluarkan beberapa instruksi yang bersaing sekaligus",
-            "Gunakan bahasa yang tenang dan jelas, dengarkan dan berikan ruang yang aman",
-            "Angkat suara Anda sebelum orang lain dapat berbicara"
-          ],
+          "answers": {
+            "a1": "Bicaralah dengan cepat dan mendekatlah tanpa peringatan",
+            "a2": "Keluarkan beberapa instruksi yang bersaing sekaligus",
+            "a3": "Gunakan bahasa yang tenang dan jelas, dengarkan dan berikan ruang yang aman",
+            "a4": "Angkat suara Anda sebelum orang lain dapat berbicara"
+          },
           "headerLabel": "DE-ESkalASI"
         },
         "police-q8": {
           "question": "Jika aman dan praktis, apa yang harus dilakukan sebelum benda penting di lokasi kejadian dipindahkan?",
-          "answers": [
-            "Itu harus dibersihkan",
-            "Itu harus diperlihatkan kepada setiap saksi",
-            "Itu harus ditempatkan dengan barang serupa",
-            "Posisi dan kondisi aslinya harus didokumentasikan"
-          ],
+          "answers": {
+            "a1": "Itu harus dibersihkan",
+            "a2": "Itu harus diperlihatkan kepada setiap saksi",
+            "a3": "Itu harus ditempatkan dengan barang serupa",
+            "a4": "Posisi dan kondisi aslinya harus didokumentasikan"
+          },
           "headerLabel": "KESADARAN ADEGAN"
         },
         "police-q9": {
           "question": "Anda menemukan kesalahan faktual dalam laporan yang Anda kirimkan. Apa tanggapan paling profesional?",
-          "answers": [
-            "Laporkan dan perbaiki segera melalui proses yang benar",
-            "Tunggu untuk melihat apakah ada yang memperhatikan",
-            "Hapus seluruh laporan tanpa catatan",
-            "Minta rekan kerja untuk mengambil tanggung jawab"
-          ],
+          "answers": {
+            "a1": "Laporkan dan perbaiki segera melalui proses yang benar",
+            "a2": "Tunggu untuk melihat apakah ada yang memperhatikan",
+            "a3": "Hapus seluruh laporan tanpa catatan",
+            "a4": "Minta rekan kerja untuk mengambil tanggung jawab"
+          },
           "headerLabel": "UJI INTEGRITAS"
         },
         "police-q10": {
           "question": "Pesan radio manakah yang paling berguna saat terjadi insiden yang berlangsung cepat?",
-          "answers": [
-            "Teori pribadi yang panjang tanpa lokasi",
-            "Pembaruan faktual singkat dengan lokasi pasti dan bantuan yang diperlukan",
-            "Beberapa rumor yang belum dikonfirmasi disampaikan sekaligus",
-            "Permintaan samar untuk mengirim seseorang ke suatu tempat"
-          ],
+          "answers": {
+            "a1": "Teori pribadi yang panjang tanpa lokasi",
+            "a2": "Pembaruan faktual singkat dengan lokasi pasti dan bantuan yang diperlukan",
+            "a3": "Beberapa rumor yang belum dikonfirmasi disampaikan sekaligus",
+            "a4": "Permintaan samar untuk mengirim seseorang ke suatu tempat"
+          },
           "headerLabel": "PERTANYAAN KEMAMPUAN TERAKHIR"
         }
       }

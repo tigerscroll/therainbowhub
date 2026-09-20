@@ -82,73 +82,143 @@
     "questions": {
       "actors-q1": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q01.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q01.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "classic_hollywood",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q2": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q02.webp" },
-        "correct": 3,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q02.webp"
+        },
+        "correctAnswerId": "a4",
         "category": "international_stars",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q3": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q03.webp" },
-        "correct": 2,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q03.webp"
+        },
+        "correctAnswerId": "a3",
         "category": "classic_hollywood",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q4": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q04.webp" },
-        "correct": 3,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q04.webp"
+        },
+        "correctAnswerId": "a4",
         "category": "screen_legends",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q5": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q05.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q05.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "international_stars",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q6": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q06.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q06.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "screen_legends",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q7": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q07.webp" },
-        "correct": 2,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q07.webp"
+        },
+        "correctAnswerId": "a3",
         "category": "classic_hollywood",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q8": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q08.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q08.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "international_stars",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q9": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q09.webp" },
-        "correct": 1,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q09.webp"
+        },
+        "correctAnswerId": "a2",
         "category": "classic_hollywood",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       },
       "actors-q10": {
         "presentation": "text",
-        "image": { "src": "/quizzes/actors/assets/items/q10.webp" },
-        "correct": 0,
+        "image": {
+          "src": "/quizzes/actors/assets/items/q10.webp"
+        },
+        "correctAnswerId": "a1",
         "category": "screen_legends",
-        "choiceCount": 4
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
       }
     },
     "checkpoint": {
@@ -156,16 +226,46 @@
     },
     "results": {
       "profiles": [
-        { "key": "profile-1", "min": 0.9 },
-        { "key": "profile-2", "min": 0.7 },
-        { "key": "profile-3", "min": 0.5 },
-        { "key": "profile-4", "min": 0.3 },
-        { "key": "profile-5", "min": 0 }
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.7
+        },
+        {
+          "key": "profile-3",
+          "min": 0.5
+        },
+        {
+          "key": "profile-4",
+          "min": 0.3
+        },
+        {
+          "key": "profile-5",
+          "min": 0
+        }
       ],
       "dimensions": [
-        { "key": "dimension-1", "categories": ["classic_hollywood"] },
-        { "key": "dimension-2", "categories": ["international_stars"] },
-        { "key": "dimension-3", "categories": ["screen_legends"] }
+        {
+          "key": "dimension-1",
+          "categories": [
+            "classic_hollywood"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "international_stars"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "screen_legends"
+          ]
+        }
       ],
       "score": {
         "showPercentage": true,

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät voi läpäistä tätä sosiaalityöntekijän pääsykoetta",
   "eyebrow": "IHMISET JA KÄYTÄNNÖT -TESTI",
   "summary": "Kymmenen kysymystä testaa kuuntelua, etiikkaa, turvaamista ja todellisia tukipäätöksiä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset kysymykset testaavat empatiaa. Sitten tilanteet siirtyvät luottamuksellisuuteen, rajoihin ja päätöksiin, joissa jokaisella yksityiskohdalla on merkitystä.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja sosiaalityön periaatteita, jotka koskevat kaikkia tason 1 englanninkielisiä maita. Se siirtyy kuuntelemisesta ja suostumuksesta luottamuksellisuuteen, kulttuuriseen nöyryyteen, turvaamiseen, dokumentointiin ja ammatillisiin rajoihin.\n\nValitse yksi vastaus jokaiseen tilanteeseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan harjoitusskenaarioon.",
         "Valitse vastuullisin yleinen vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sosiaalityöntekijän sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Sosiaalityöntekijän pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja ammatillinen arviointipisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viisi harjoitusaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viisi harjoitusaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit sosiaalityöntekijän pääsyhaasteen!",
       "finished": "Sosiaalityöntekijän pääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin harjoitusalue",
       "trickiest": "Hankalin harjoitusalue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Mikä aloituskysymys todennäköisimmin auttaa henkilöä selittämään, mitä tukea hän haluaa?",
-          "answers": [
-            "Mihin asioihin kaipaisit eniten apua tänään?",
-            "Miksi annoit tämän tapahtua?",
-            "Oletko samaa mieltä siitä, että suunnitelmani on paras?",
-            "Voimmeko ohittaa taustan ja täyttää lomakkeen?"
-          ],
+          "answers": {
+            "a1": "Mihin asioihin kaipaisit eniten apua tänään?",
+            "a2": "Miksi annoit tämän tapahtua?",
+            "a3": "Oletko samaa mieltä siitä, että suunnitelmani on paras?",
+            "a4": "Voimmeko ohittaa taustan ja täyttää lomakkeen?"
+          },
           "headerLabel": "AKTIIVINEN KUUNTELU"
         },
         "socialworker-q2": {
           "question": "Mikä on olennaista tietoisen suostumuksen saamiseksi?",
-          "answers": [
-            "Ammattilainen päättää, mikä on parasta ilman keskustelua",
-            "Henkilö ymmärtää olennaiset tiedot ja suostuu vapaaehtoisesti",
-            "Allekirjoitettu lomake kaikissa mahdollisissa tilanteissa",
-            "Sopimus perheenjäseneltä henkilön sijaan"
-          ],
+          "answers": {
+            "a1": "Ammattilainen päättää, mikä on parasta ilman keskustelua",
+            "a2": "Henkilö ymmärtää olennaiset tiedot ja suostuu vapaaehtoisesti",
+            "a3": "Allekirjoitettu lomake kaikissa mahdollisissa tilanteissa",
+            "a4": "Sopimus perheenjäseneltä henkilön sijaan"
+          },
           "headerLabel": "SUOSTUMUS"
         },
         "socialworker-q3": {
           "question": "Mikä väite luottamuksellisuudesta on tarkin?",
-          "answers": [
-            "Tietoja ei saa koskaan jakaa mistään syystä",
-            "Kaikki voidaan jakaa kenen tahansa tukitiimin jäsenen kanssa",
-            "Yksityisyys on suojattu, mutta vakavat turvallisuusongelmat tai lailliset velvoitteet voivat edellyttää rajoitettua jakamista",
-            "Luottamuksellisuus päättyy ensimmäisen tapaamisen jälkeen"
-          ],
+          "answers": {
+            "a1": "Tietoja ei saa koskaan jakaa mistään syystä",
+            "a2": "Kaikki voidaan jakaa kenen tahansa tukitiimin jäsenen kanssa",
+            "a3": "Yksityisyys on suojattu, mutta vakavat turvallisuusongelmat tai lailliset velvoitteet voivat edellyttää rajoitettua jakamista",
+            "a4": "Luottamuksellisuus päättyy ensimmäisen tapaamisen jälkeen"
+          },
           "headerLabel": "LUOTTAMUKSELLISUUS"
         },
         "socialworker-q4": {
           "question": "Mikä vastaus osoittaa parhaiten kulttuurista nöyryyttä?",
-          "answers": [
-            "Oletetaan, että kaikilla samaa taustaa olevilla on samanlaiset tarpeet",
-            "Vältä keskustelua kulttuurista kaikissa olosuhteissa",
-            "Käytä vakiosuunnitelmaa ennen kuin kuulet henkilön näkökulman",
-            "Kysy henkilön mieltymyksistä ja pysy avoimena korjaamaan olettamuksiasi"
-          ],
+          "answers": {
+            "a1": "Oletetaan, että kaikilla samaa taustaa olevilla on samanlaiset tarpeet",
+            "a2": "Vältä keskustelua kulttuurista kaikissa olosuhteissa",
+            "a3": "Käytä vakiosuunnitelmaa ennen kuin kuulet henkilön näkökulman",
+            "a4": "Kysy henkilön mieltymyksistä ja pysy avoimena korjaamaan olettamuksiasi"
+          },
           "headerLabel": "KULTTUURI NÖÖRÖYS"
         },
         "socialworker-q5": {
           "question": "Mitä vahvuuksiin perustuvassa arvioinnissa todennäköisimmin tutkitaan?",
-          "answers": [
-            "Henkilön kyvyt, resurssit, ihmissuhteet ja tavoitteet sekä tarpeet",
-            "Vain lähetteessä mainitut ongelmat",
-            "Onko henkilö samaa mieltä jokaisen ammatillisen mielipiteen kanssa",
-            "Mikä palvelu vaatii vähiten dokumentaatiota"
-          ],
+          "answers": {
+            "a1": "Henkilön kyvyt, resurssit, ihmissuhteet ja tavoitteet sekä tarpeet",
+            "a2": "Vain lähetteessä mainitut ongelmat",
+            "a3": "Onko henkilö samaa mieltä jokaisen ammatillisen mielipiteen kanssa",
+            "a4": "Mikä palvelu vaatii vähiten dokumentaatiota"
+          },
           "headerLabel": "VAHVUUKSIIN PERUSTUVA KÄYTÄNTÖ"
         },
         "socialworker-q6": {
           "question": "Tukea saava henkilö pyytää sosiaalityöntekijältään henkilökohtaista lainaa. Mikä on paras yleinen vastaus?",
-          "answers": [
-            "Lainaa pieni summa, mutta pidä se yksityisenä",
-            "Säilytä ammatillinen raja ja etsi sopivia käytännön tuen lähteitä",
-            "Pyydä toista tukea saavaa henkilöä antamaan se",
-            "Lopeta kaikki tuki välittömästi ilman selityksiä"
-          ],
+          "answers": {
+            "a1": "Lainaa pieni summa, mutta pidä se yksityisenä",
+            "a2": "Säilytä ammatillinen raja ja etsi sopivia käytännön tuen lähteitä",
+            "a3": "Pyydä toista tukea saavaa henkilöä antamaan se",
+            "a4": "Lopeta kaikki tuki välittömästi ilman selityksiä"
+          },
           "headerLabel": "AMMATILLISET RAJAT"
         },
         "socialworker-q7": {
           "question": "Keskustelu herättää uskottavan huolen siitä, että lapsi tai haavoittuva aikuinen saattaa olla vaarassa. Mikä on paras yleinen seuraava askel?",
-          "answers": [
-            "Tutki jokainen yksityiskohta yksin ennen kuin kerrot kenellekään",
-            "Ohita se, ellei fyysisiä todisteita ole saatavilla",
-            "Tallenna huolenaihe ja noudata soveltuvaa suoja- tai raportointiprosessia viipymättä",
-            "Lähetä anonyymi tili verkkoon saadaksesi neuvoja"
-          ],
+          "answers": {
+            "a1": "Tutki jokainen yksityiskohta yksin ennen kuin kerrot kenellekään",
+            "a2": "Ohita se, ellei fyysisiä todisteita ole saatavilla",
+            "a3": "Tallenna huolenaihe ja noudata soveltuvaa suoja- tai raportointiprosessia viipymättä",
+            "a4": "Lähetä anonyymi tili verkkoon saadaksesi neuvoja"
+          },
           "headerLabel": "SUOJAUS"
         },
         "socialworker-q8": {
           "question": "Mikä tapausmuistio on yleensä sopivin?",
-          "answers": [
-            "Viivästynyt muistiinpano, joka perustuu pääasiassa muistiin",
-            "Henkilökohtainen mielipide henkilön luonteesta",
-            "Jokainen yksityiskohta työntekijän koko päivästä",
-            "Ajankohtainen, olennainen ja faktatieto, joka erottaa havainnon mielipiteestä"
-          ],
+          "answers": {
+            "a1": "Viivästynyt muistiinpano, joka perustuu pääasiassa muistiin",
+            "a2": "Henkilökohtainen mielipide henkilön luonteesta",
+            "a3": "Jokainen yksityiskohta työntekijän koko päivästä",
+            "a4": "Ajankohtainen, olennainen ja faktatieto, joka erottaa havainnon mielipiteestä"
+          },
           "headerLabel": "TIEDONPITO"
         },
         "socialworker-q9": {
           "question": "Mikä tiedonjakotapa on yleensä vahvin työskennellessäsi muiden ammattilaisten kanssa?",
-          "answers": [
-            "Jaa asiaankuuluvat tiedot laillisesti, ota henkilö mukaan mahdollisuuksien mukaan äläkä paljasta enempää kuin on tarpeen",
-            "Lähetä koko tietue automaattisesti jokaiseen palveluun",
-            "Älä koskaan jaa tietoja, vaikka se olisi vakava turvallisuusvelvollisuus",
-            "Luota vain epävirallisiin suullisiin päivityksiin"
-          ],
+          "answers": {
+            "a1": "Jaa asiaankuuluvat tiedot laillisesti, ota henkilö mukaan mahdollisuuksien mukaan äläkä paljasta enempää kuin on tarpeen",
+            "a2": "Lähetä koko tietue automaattisesti jokaiseen palveluun",
+            "a3": "Älä koskaan jaa tietoja, vaikka se olisi vakava turvallisuusvelvollisuus",
+            "a4": "Luota vain epävirallisiin suullisiin päivityksiin"
+          },
           "headerLabel": "YHTEISTYÖKÄYTÄNTÖ"
         },
         "socialworker-q10": {
           "question": "Pätevä aikuinen ymmärtää vaihtoehdot, mutta kieltäytyy vapaaehtoistyöstä. Mikä on paras yleinen vastaus?",
-          "answers": [
-            "Paina heitä, kunnes he ovat samaa mieltä",
-            "Tarkista ymmärrys ja välitön turvallisuus, selitä käytettävissä olevat vaihtoehdot ja kunnioita tietoon perustuvaa valintaa, ellei muuta lakisääteistä velvollisuutta sovelleta",
-            "Ota yhteyttä työnantajaansa vakuuttaaksesi heidät",
-            "Poista kaikki tulevat reitit takaisin tukeen"
-          ],
+          "answers": {
+            "a1": "Paina heitä, kunnes he ovat samaa mieltä",
+            "a2": "Tarkista ymmärrys ja välitön turvallisuus, selitä käytettävissä olevat vaihtoehdot ja kunnioita tietoon perustuvaa valintaa, ellei muuta lakisääteistä velvollisuutta sovelleta",
+            "a3": "Ota yhteyttä työnantajaansa vakuuttaaksesi heidät",
+            "a4": "Poista kaikki tulevat reitit takaisin tukeen"
+          },
           "headerLabel": "VIIMEINEN AUTONOMIAKYSYMYS"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu Yetişkin Bu Tıbbi Giriş Sınavını Geçemez",
   "eyebrow": "TIP BİLİMİ TESTİ",
   "summary": "On soru anatomi, fizyoloji, mikrobiyoloji, farmakoloji ve klinik güvenliği test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "İlk sorular basit görünüyor. Daha sonra test çoğu yetişkinin unuttuğu fizyoloji, mikroplar ve tıp bilimine geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlenceli yarışma, 1. Seviye İngilizce konuşulan ülkelerde öğretilen temel tıp bilimini kullanıyor. Tek bir üniversitenin kabul müfredatına bağlı kalmadan anatomi, fizyoloji, hücre biyolojisi, mikrobiyoloji, farmakoloji ve enfeksiyon kontrolü temellerini test eder.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on tıp bilimi sorusunu yanıtlayın.",
         "En doğru tek yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tıbbi giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Tıbbi Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve tıp bilimi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş bilim alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş bilim alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Tıbbi giriş sınavını geçtiniz!",
       "finished": "Tıbbi giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü bilim alanı",
       "trickiest": "En zorlu bilim alanı",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Kırmızı kan hücrelerindeki hangi protein en fazla oksijeni taşır?",
-          "answers": [
-            "Hemoglobin",
-            "Keratin",
-            "Kollajen",
-            "insülin"
-          ],
+          "answers": {
+            "a1": "Hemoglobin",
+            "a2": "Keratin",
+            "a3": "Kollajen",
+            "a4": "insülin"
+          },
           "headerLabel": "KAN FİZYOLOJİSİ"
         },
         "medical-q2": {
           "question": "DNA'da adenin normalde hangi bazla eşleşir?",
-          "answers": [
-            "Guanin",
-            "Timin",
-            "Sitozin",
-            "Urasil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "Timin",
+            "a3": "Sitozin",
+            "a4": "Urasil"
+          },
           "headerLabel": "HÜCRE BİYOLOJİSİ"
         },
         "medical-q3": {
           "question": "Birçok ilacın işlenmesi ve parçalanması için başlıca organ hangi organdır?",
-          "answers": [
-            "Dalak",
-            "Tiroid",
-            "Karaciğer",
-            "Mesane"
-          ],
+          "answers": {
+            "a1": "Dalak",
+            "a2": "Tiroid",
+            "a3": "Karaciğer",
+            "a4": "Mesane"
+          },
           "headerLabel": "FARMAKOLOJİ"
         },
         "medical-q4": {
           "question": "Hangi ifade virüsleri bakterilerden en iyi şekilde ayırır?",
-          "answers": [
-            "Virüsler her zaman daha büyüktür",
-            "Bakteriler çoğalamaz",
-            "Virüsler genetik materyal içermez",
-            "Virüsler çoğalmak için konakçı hücrelere bağımlıdır"
-          ],
+          "answers": {
+            "a1": "Virüsler her zaman daha büyüktür",
+            "a2": "Bakteriler çoğalamaz",
+            "a3": "Virüsler genetik materyal içermez",
+            "a4": "Virüsler çoğalmak için konakçı hücrelere bağımlıdır"
+          },
           "headerLabel": "MİKROBİYOLOJİ"
         },
         "medical-q5": {
           "question": "PH'ı 7'nin altında olan bir çözelti ne olarak tanımlanır?",
-          "answers": [
-            "Asidik",
-            "nötr",
-            "Alkali",
-            "İzotonik"
-          ],
+          "answers": {
+            "a1": "Asidik",
+            "a2": "nötr",
+            "a3": "Alkali",
+            "a4": "İzotonik"
+          },
           "headerLabel": "VÜCUT KİMYASI"
         },
         "medical-q6": {
           "question": "Otonom sinir sisteminin hangi kısmı 'dinlenme ve sindirim' aktivitesiyle ilişkilidir?",
-          "answers": [
-            "Sempatik sistem",
-            "Parasempatik sistem",
-            "Somatik motor sistemi",
-            "Merkezi görsel yol"
-          ],
+          "answers": {
+            "a1": "Sempatik sistem",
+            "a2": "Parasempatik sistem",
+            "a3": "Somatik motor sistemi",
+            "a4": "Merkezi görsel yol"
+          },
           "headerLabel": "SİNİR SİSTEMİ"
         },
         "medical-q7": {
           "question": "Besinlerin yutma sırasında hava yoluna kaçmasını engelleyen yapı hangisidir?",
-          "answers": [
-            "Patella",
-            "retina",
-            "Epiglottis",
-            "Pankreas"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "retina",
+            "a3": "Epiglottis",
+            "a4": "Pankreas"
+          },
           "headerLabel": "FONKSİYONEL ANATOMİ"
         },
         "medical-q8": {
           "question": "Hangi kraniyal sinir gözden görsel bilgiyi taşır?",
-          "answers": [
-            "Vagus siniri",
-            "Yüz siniri",
-            "Trigeminal sinir",
-            "Optik sinir"
-          ],
+          "answers": {
+            "a1": "Vagus siniri",
+            "a2": "Yüz siniri",
+            "a3": "Trigeminal sinir",
+            "a4": "Optik sinir"
+          },
           "headerLabel": "NÖROANATOMİ"
         },
         "medical-q9": {
           "question": "Hasta bakımı sırasında enfeksiyonu önlemenin temel parçası hangi uygulamadır?",
-          "answers": [
-            "Uygun el hijyeni",
-            "Tek kullanımlık eldivenlerin yeniden kullanılması",
-            "Risk değerlendirmesini atlamak",
-            "Temiz olmayan ekipmanların paylaşılması"
-          ],
+          "answers": {
+            "a1": "Uygun el hijyeni",
+            "a2": "Tek kullanımlık eldivenlerin yeniden kullanılması",
+            "a3": "Risk değerlendirmesini atlamak",
+            "a4": "Temiz olmayan ekipmanların paylaşılması"
+          },
           "headerLabel": "KLİNİK GÜVENLİK"
         },
         "medical-q10": {
           "question": "Homeostazis neyi tanımlar?",
-          "answers": [
-            "Vücutta hiçbir değişiklik olmaması",
-            "Nispeten istikrarlı bir iç ortamın düzenlenmesi",
-            "Her ilacın böbrekler tarafından parçalanması",
-            "Sadece antikor üretimi"
-          ],
+          "answers": {
+            "a1": "Vücutta hiçbir değişiklik olmaması",
+            "a2": "Nispeten istikrarlı bir iç ortamın düzenlenmesi",
+            "a3": "Her ilacın böbrekler tarafından parçalanması",
+            "a4": "Sadece antikor üretimi"
+          },
           "headerLabel": "NİHAİ FEN SORUSU"
         }
       }

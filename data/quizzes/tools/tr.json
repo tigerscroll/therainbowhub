@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Beton işlerinde kullanılan aletlerle ilgili bu testi yalnızca 5 kişiden 1’i geçebiliyor",
   "eyebrow": "BETON ARAÇLAR TESTİ",
   "summary": "On inşaat şantiyesi aleti ve affedilmez bir beton mücadelesi.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Bu araçlar bir şantiyede bariz görünür, ancak gerçek kullanımları çoğu insanı yakalar. 10'un hepsini doğru yapabilir misin?",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Betonu işlemek için bir mikser ve kürekten çok daha fazlası gerekir. Her bir uzman aletin zamanlaması, şekli ve amacı, bir levhanın düz, güçlü ve çatlak kontrollü olarak mı bitirileceğine yoksa maliyetli bir hataya mı dönüşeceğine karar verebilir.\n\nHer fotoğrafı inceleyin ve aracın doğru işini veya kullanım aşamasını seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.\n\nİlk on kaynak soru, cevap seçenekleri ve fotoğraflar, bu testi yaptıran site sahibinin izniyle Log Cabin Daily'den kopyalanmıştır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Her fotoğrafta gösterilen aleti inceleyin.",
         "Doğru kullanımını veya somut sürecin aşamasını seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Beton aletlerle mücadele",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Beton Araçları",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve somut aletler puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 araç kontrol edildi",
-          "Üç ticaret alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç ticaret alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Beton aletler yarışmasını geçtiniz!",
       "finished": "Beton aletler yarışması tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü ticaret bölgesi",
       "trickiest": "En zorlu ticaret bölgesi",
       "bestRound": "En iyi bölüm",
@@ -94,8 +87,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "Taze dökülmüş betonu düzelten beton el malası"
           },
           "question": "Bu araç ne için kullanılıyor?",
-          "answers": [
-            "İnşaat demiri kesme",
-            "Islak betonun yayılması ve düzeltilmesi",
-            "Kuru betonun karıştırılması",
-            "Eski betonun kırılması"
-          ],
+          "answers": {
+            "a1": "İnşaat demiri kesme",
+            "a2": "Islak betonun yayılması ve düzeltilmesi",
+            "a3": "Kuru betonun karıştırılması",
+            "a4": "Eski betonun kırılması"
+          },
           "headerLabel": "ARAÇ 1/10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "Bir şantiyede beton karışımı taşıyan bir el arabası"
           },
           "question": "Bu araç ne için kullanılıyor?",
-          "answers": [
-            "Islak beton ve aletlerin taşınması",
-            "Beton kenarların bitirilmesi",
-            "Beton sıcaklığının ölçülmesi",
-            "çakıl sıkıştırma"
-          ],
+          "answers": {
+            "a1": "Islak beton ve aletlerin taşınması",
+            "a2": "Beton kenarların bitirilmesi",
+            "a3": "Beton sıcaklığının ölçülmesi",
+            "a4": "çakıl sıkıştırma"
+          },
           "headerLabel": "ARAÇ 2/10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "Taze betonun yüzeyinde hareket eden beton şamandıra"
           },
           "question": "Bu araç ne için kullanılıyor?",
-          "answers": [
-            "Toprağın sıkıştırılması",
-            "Yüzen ahşap formlar",
-            "Beton yüzeyin tesviye edilmesi ve pürüzsüzleştirilmesi",
-            "İnşaat demirini kesmek"
-          ],
+          "answers": {
+            "a1": "Toprağın sıkıştırılması",
+            "a2": "Yüzen ahşap formlar",
+            "a3": "Beton yüzeyin tesviye edilmesi ve pürüzsüzleştirilmesi",
+            "a4": "İnşaat demirini kesmek"
+          },
           "headerLabel": "ARAÇ 3/10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "Bir levhanın kenarını şekillendiren beton kenar kesici"
           },
           "question": "Bu araç ne için kullanılıyor?",
-          "answers": [
-            "Temiz sınırlar için kaldırımların ve döşemelerin kenarları",
-            "Beton blokların kaldırılması",
-            "Betondaki derzlerin kesilmesi",
-            "Beton karışımının taşınması"
-          ],
+          "answers": {
+            "a1": "Temiz sınırlar için kaldırımların ve döşemelerin kenarları",
+            "a2": "Beton blokların kaldırılması",
+            "a3": "Betondaki derzlerin kesilmesi",
+            "a4": "Beton karışımının taşınması"
+          },
           "headerLabel": "ARAÇ 4/10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "Taze beton döken portatif beton karıştırıcı"
           },
           "question": "Bu araç ne işe yarar?",
-          "answers": [
-            "Betonun ısıtılması",
-            "Kuru çimento dökmek",
-            "Çimento, kum ve suyun betona karıştırılması",
-            "Eski betonun taşlanması"
-          ],
+          "answers": {
+            "a1": "Betonun ısıtılması",
+            "a2": "Kuru çimento dökmek",
+            "a3": "Çimento, kum ve suyun betona karıştırılması",
+            "a4": "Eski betonun taşlanması"
+          },
           "headerLabel": "ARAÇ 5/10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "Geniş bir beton levhayı düzleştiren uzun saplı bir boğa şamandırası"
           },
           "question": "Beton işinde hangi adım genellikle boğa şamandırası gerektirir?",
-          "answers": [
-            "Islak betonun döküm alanına taşınması",
-            "Eski beton levhaların kırılması",
-            "Genleşme derzlerinin kesilmesi",
-            "Şaplamadan hemen sonra geniş yüzeylerin düzleştirilmesi"
-          ],
+          "answers": {
+            "a1": "Islak betonun döküm alanına taşınması",
+            "a2": "Eski beton levhaların kırılması",
+            "a3": "Genleşme derzlerinin kesilmesi",
+            "a4": "Şaplamadan hemen sonra geniş yüzeylerin düzleştirilmesi"
+          },
           "headerLabel": "ARAÇ 6/10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "Taze dökülmüş betonda beton vibratörü kullanan bir işçi"
           },
           "question": "Beton vibratörü genellikle ne zaman kullanılır?",
-          "answers": [
-            "Beton dökülmeden önce",
-            "Beton döküldükten sonra hava ceplerini gidermek için",
-            "Formlara inşaat demiri yerleştirirken",
-            "Bitirme sırasında yüzeyi düzeltmek için"
-          ],
+          "answers": {
+            "a1": "Beton dökülmeden önce",
+            "a2": "Beton döküldükten sonra hava ceplerini gidermek için",
+            "a3": "Formlara inşaat demiri yerleştirirken",
+            "a4": "Bitirme sırasında yüzeyi düzeltmek için"
+          },
           "headerLabel": "ARAÇ 7/10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "Güçlendirilmiş inşaat demiri kesici, takviye çeliğini kesiyor"
           },
           "question": "İnşaat demiri kesici kullanılarak gerçekleştirilen birincil görev nedir?",
-          "answers": [
-            "Takviye çeliğinin gerekli uzunluklarda kesilmesi",
-            "Beton kenarların yumuşatılması",
-            "Sertleşmiş betondaki kontrol derzlerinin kesilmesi",
-            "Gevşek betonun ufalanması"
-          ],
+          "answers": {
+            "a1": "Takviye çeliğinin gerekli uzunluklarda kesilmesi",
+            "a2": "Beton kenarların yumuşatılması",
+            "a3": "Sertleşmiş betondaki kontrol derzlerinin kesilmesi",
+            "a4": "Gevşek betonun ufalanması"
+          },
           "headerLabel": "ARAÇ 8/10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "Islak betona çizgi kesen uzun saplı oluk açma makinesi"
           },
           "question": "Beton dökümünün hangi aşamasında oluk açma aleti en iyi şekilde kullanılır?",
-          "answers": [
-            "Dökmeden önce zemini hazırlamak",
-            "Son işlem sırasında kontrol derzleri oluşturmak için",
-            "Kürleme sırasında sızdırmazlık maddesi uygulamak için",
-            "Kuruduktan sonra yüzeyi cilalamak için"
-          ],
+          "answers": {
+            "a1": "Dökmeden önce zemini hazırlamak",
+            "a2": "Son işlem sırasında kontrol derzleri oluşturmak için",
+            "a3": "Kürleme sırasında sızdırmazlık maddesi uygulamak için",
+            "a4": "Kuruduktan sonra yüzeyi cilalamak için"
+          },
           "headerLabel": "ARAÇ 9/10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "Yeni dökülmüş betona çarpan düz bir şap"
           },
           "question": "Beton şap en çok hangi aşamada kullanılır?",
-          "answers": [
-            "Sertleştikten sonra yüzeyi cilalamak için",
-            "Sızdırmazlık maddesini uygulamak için kuruduktan sonra",
-            "İnşaat demiri düzeni sırasında",
-            "Betonu düzleştirmek için döktükten hemen sonra"
-          ],
+          "answers": {
+            "a1": "Sertleştikten sonra yüzeyi cilalamak için",
+            "a2": "Sızdırmazlık maddesini uygulamak için kuruduktan sonra",
+            "a3": "İnşaat demiri düzeni sırasında",
+            "a4": "Betonu düzleştirmek için döktükten hemen sonra"
+          },
           "headerLabel": "SON ARAÇ"
         }
       }

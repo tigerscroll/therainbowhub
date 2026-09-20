@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test makularne degeneracije",
   "eyebrow": "PROVJERA SREDIŠNJEG VIDA OD 10 PITANJA",
   "summary": "Središnji detalji, vizualne zamke i važni AMD znakovi upozorenja u jednom brzom izazovu.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Možete li uočiti središnje detalje i prepoznati znakove upozorenja? Ovih 10 brzih provjera postaje teže.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj izazov od deset pitanja kombinira pet vizualnih zagonetki na zaslonu s pet pitanja opće svijesti o makularnoj degeneraciji povezanoj sa starenjem (AMD). Mjeri odgovore na ovaj kviz, a ne zdravlje očiju ili vjerojatnost bolesti.\n\nVeličina zaslona, svjetlina, kontrast, vid, korektivne leće, umor i postavke uređaja mogu utjecati na performanse. Nove valovite ili iskrivljene linije, novo zamućeno ili prazno područje u središnjem vidu ili iznenadno pogoršanje treba odmah raspraviti s kvalificiranim oftalmologom.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite pet izazova središnjih detalja i vizualnog pamćenja.",
         "Odgovorite na pet pitanja o AMD-u i kada potražiti pomoć.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov središnjeg vida",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Test makularne degeneracije",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat izazova središnjeg vida je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena tri vizualna područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena tri vizualna područja"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Riješili ste 80% vizualnog izazova!",
       "finished": "Izazov središnjeg vida završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače područje danas",
       "trickiest": "Najzahtjevnije područje danas",
       "bestRound": "Najbolja sekcija",
@@ -94,8 +87,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Koji je lik točno u sredini mreže?",
           "headerLabel": "SREDIŠNJI DETALJ",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENCA: Q7M2P6",
           "question": "Koji kod točno odgovara referenci?",
           "headerLabel": "BLIZU MATČ",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERENCA",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Koji simbol dovršava izmjenični niz?",
           "headerLabel": "PRAĆENJE UZORAKA",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Koji se objekt pojavio treći?",
           "headerLabel": "BRZO VIZUALNO PAMĆENJE",
-          "answers": [
-            "Knjiga",
-            "Ključ",
-            "šalica",
-            "sunce"
-          ],
+          "answers": {
+            "a1": "Knjiga",
+            "a2": "Ključ",
+            "a3": "šalica",
+            "a4": "sunce"
+          },
           "study": {
             "title": "Proučite poredak od pet objekata",
             "instruction": "Ovo će automatski nestati.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Koja pozicija sadrži otvoreni krug?",
           "headerLabel": "FOKUS U SREDNJEM REDU",
-          "answers": [
-            "Četvrto",
-            "Drugo",
-            "Peto",
-            "treće"
-          ],
+          "answers": {
+            "a1": "Četvrto",
+            "a2": "Drugo",
+            "a3": "Peto",
+            "a4": "treće"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Na koji dio vida najizravnije utječe makularna degeneracija povezana sa starenjem?",
           "headerLabel": "OSNOVE AMD-a",
-          "answers": [
-            "Samo krajnji vanjski rubovi",
-            "Oštar središnji, ravno naprijed vid",
-            "Samo noćni vid",
-            "Samo percepcija dubine"
-          ]
+          "answers": {
+            "a1": "Samo krajnji vanjski rubovi",
+            "a2": "Oštar središnji, ravno naprijed vid",
+            "a3": "Samo noćni vid",
+            "a4": "Samo percepcija dubine"
+          }
         },
         "macular-q7": {
           "question": "Koja je vizualna promjena dobro poznati znak upozorenja na AMD?",
           "headerLabel": "ZNAKOVI UPOZORENJA",
-          "answers": [
-            "Zvukovi postaju tiši",
-            "Privremeni svrbež na kapku",
-            "Ravne linije izgledaju valovite ili krive",
-            "Ispadanje jedne trepavice"
-          ]
+          "answers": {
+            "a1": "Zvukovi postaju tiši",
+            "a2": "Privremeni svrbež na kapku",
+            "a3": "Ravne linije izgledaju valovite ili krive",
+            "a4": "Ispadanje jedne trepavice"
+          }
         },
         "macular-q8": {
           "question": "Koju procjenu oftalmolog može koristiti za traženje AMD-a?",
           "headerLabel": "STRUČNA OCJENA",
-          "answers": [
-            "Test sluha",
-            "Samo očitavanje krvnog tlaka",
-            "Test okusa",
-            "Sveobuhvatan dilatacijski pregled oka"
-          ]
+          "answers": {
+            "a1": "Test sluha",
+            "a2": "Samo očitavanje krvnog tlaka",
+            "a3": "Test okusa",
+            "a4": "Sveobuhvatan dilatacijski pregled oka"
+          }
         },
         "macular-q9": {
           "question": "Koji je najsigurniji odgovor na iznenadno pogoršanje vida ili novo središnje zamagljeno ili prazno područje?",
           "headerLabel": "KADA DJELOVATI",
-          "answers": [
-            "Potražite hitan profesionalni savjet o njezi očiju",
-            "Pričekajte nekoliko mjeseci a da to ne spomenete",
-            "Povećajte svjetlinu zaslona i pretpostavite da je fiksna",
-            "Oslonite se samo na online kviz"
-          ]
+          "answers": {
+            "a1": "Potražite hitan profesionalni savjet o njezi očiju",
+            "a2": "Pričekajte nekoliko mjeseci a da to ne spomenete",
+            "a3": "Povećajte svjetlinu zaslona i pretpostavite da je fiksna",
+            "a4": "Oslonite se samo na online kviz"
+          }
         },
         "macular-q10": {
           "question": "Što vam vaš rezultat na ovom online izazovu može reći?",
           "headerLabel": "KONAČNA PROVJERA STVARNOSTI",
-          "answers": [
-            "Je li vaša mrežnica zdrava",
-            "Samo kako si prošao s ovih deset pitanja",
-            "Trebate li poseban tretman",
-            "Možete li isključiti AMD"
-          ]
+          "answers": {
+            "a1": "Je li vaša mrežnica zdrava",
+            "a2": "Samo kako si prošao s ovih deset pitanja",
+            "a3": "Trebate li poseban tretman",
+            "a4": "Možete li isključiti AMD"
+          }
         }
       }
     }

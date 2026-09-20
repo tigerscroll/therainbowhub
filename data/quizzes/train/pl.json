@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 11% dorosłych może zdać ten egzamin wstępny na maszynistę",
   "eyebrow": "TEST UMIEJĘTNOŚCI KOLEJOWYCH",
   "summary": "Dziesięć pytań sprawdza bezpieczeństwo kolei, obserwację, rozumowanie mechaniczne i jasną komunikację.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Pierwsze sygnały wydają się łatwe. Następnie egzamin przechodzi do drogi hamowania, zagrożeń i oceny kolei.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie rozrywkowe składające się z dziesięciu pytań wykorzystuje szerokie zasady bezpieczeństwa i rozumowania obowiązujące w anglojęzycznych systemach kolejowych poziomu 1. Unika specyficznych dla kraju aspektów sygnałów, zasad działania i stanowisk, testując obserwację, komunikację, świadomość hamowania i ocenę bezpieczeństwa na pierwszym miejscu.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań dotyczących umiejętności maszynisty.",
         "Wybierz najbezpieczniejszą lub najlepiej wspieraną reakcję.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie związane z wejściem maszynisty",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na maszynistę",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik umiejętności kolejowych jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie czterech obszarów kolejowych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie czterech obszarów kolejowych"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie wstępne dla maszynisty!",
       "finished": "Wyzwanie wejścia maszynisty pociągu ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar kolejowy",
       "trickiest": "Najtrudniejszy obszar kolejowy",
       "bestRound": "Najlepsza sekcja",
@@ -96,8 +89,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "train-q1": {
           "question": "Pociąg zbliża się do niespodziewanej przeszkody. Co jest najważniejszym priorytetem kierowcy?",
-          "answers": [
-            "Zastosuj odpowiednią reakcję hamowania i postępuj zgodnie z procedurą awaryjną",
-            "Zakończ wprowadzanie harmonogramu",
-            "Otwórz drzwi pasażera",
-            "Poczekaj, aż inny pociąg to zgłosi"
-          ],
+          "answers": {
+            "a1": "Zastosuj odpowiednią reakcję hamowania i postępuj zgodnie z procedurą awaryjną",
+            "a2": "Zakończ wprowadzanie harmonogramu",
+            "a3": "Otwórz drzwi pasażera",
+            "a4": "Poczekaj, aż inny pociąg to zgłosi"
+          },
           "headerLabel": "PRIORYTETY BEZPIECZEŃSTWA"
         },
         "train-q2": {
           "question": "Dlaczego ciągła uwaga jest niezbędna podczas długiego, spokojnego odcinka toru?",
-          "answers": [
-            "Z biegiem czasu pociąg staje się lżejszy",
-            "Krytyczny sygnał lub zagrożenie może pojawić się po długim okresie spokoju",
-            "Pasażerowie oczekują częstych zmian prędkości",
-            "W południe trasa automatycznie staje się mniej bezpieczna"
-          ],
+          "answers": {
+            "a1": "Z biegiem czasu pociąg staje się lżejszy",
+            "a2": "Krytyczny sygnał lub zagrożenie może pojawić się po długim okresie spokoju",
+            "a3": "Pasażerowie oczekują częstych zmian prędkości",
+            "a4": "W południe trasa automatycznie staje się mniej bezpieczna"
+          },
           "headerLabel": "KONCENTRACJA"
         },
         "train-q3": {
           "question": "Jeśli prędkość wzrasta, co zazwyczaj dzieje się z drogą hamowania, gdy inne warunki pozostają podobne?",
-          "answers": [
-            "Zawsze dzieli się na pół",
-            "Pozostaje dokładnie takie samo",
-            "Zwiększa się",
-            "Nie ma to żadnego związku z prędkością"
-          ],
+          "answers": {
+            "a1": "Zawsze dzieli się na pół",
+            "a2": "Pozostaje dokładnie takie samo",
+            "a3": "Zwiększa się",
+            "a4": "Nie ma to żadnego związku z prędkością"
+          },
           "headerLabel": "ŚWIADOMOŚĆ HAMOWANIA"
         },
         "train-q4": {
           "question": "Który komunikat radiowy jest najbardziej przydatny przy zgłaszaniu zagrożenia na torze?",
-          "answers": [
-            "Długie domysły na temat przyczyny",
-            "Niejasne ostrzeżenie bez lokalizacji",
-            "Osobista opinia na temat rozkładu jazdy",
-            "Zwięzły opis faktyczny z dokładną lokalizacją i kierunkiem podróży"
-          ],
+          "answers": {
+            "a1": "Długie domysły na temat przyczyny",
+            "a2": "Niejasne ostrzeżenie bez lokalizacji",
+            "a3": "Osobista opinia na temat rozkładu jazdy",
+            "a4": "Zwięzły opis faktyczny z dokładną lokalizacją i kierunkiem podróży"
+          },
           "headerLabel": "KOMUNIKACJA KOLEJOWA"
         },
         "train-q5": {
           "question": "Dlaczego kierowca musi unikać polegania wyłącznie na pamięci w przypadku instrukcji krytycznych dla bezpieczeństwa?",
-          "answers": [
-            "Należy to potwierdzić i przeprowadzić zatwierdzony proces",
-            "Pisemne instrukcje są zawsze opcjonalne",
-            "Pamięć staje się idealna przy większej prędkości",
-            "Zamiast tego pasażerowie powinni to zinterpretować"
-          ],
+          "answers": {
+            "a1": "Należy to potwierdzić i przeprowadzić zatwierdzony proces",
+            "a2": "Pisemne instrukcje są zawsze opcjonalne",
+            "a3": "Pamięć staje się idealna przy większej prędkości",
+            "a4": "Zamiast tego pasażerowie powinni to zinterpretować"
+          },
           "headerLabel": "BEZPIECZEŃSTWO PROCEDURALNE"
         },
         "train-q6": {
           "question": "Wskaźnik ostrzegawczy zmienia się na chwilę, a następnie powraca do normalnego stanu. Jaka jest najbezpieczniejsza interpretacja?",
-          "answers": [
-            "Ignoruj to, bo zniknęło",
-            "Traktuj je jako istotne, monitoruj je i zgłaszaj w ramach odpowiedniego procesu",
-            "Zresetuj każdy system natychmiast, bez sprawdzania",
-            "Załóżmy, że spowodował to inny pociąg"
-          ],
+          "answers": {
+            "a1": "Ignoruj to, bo zniknęło",
+            "a2": "Traktuj je jako istotne, monitoruj je i zgłaszaj w ramach odpowiedniego procesu",
+            "a3": "Zresetuj każdy system natychmiast, bez sprawdzania",
+            "a4": "Załóżmy, że spowodował to inny pociąg"
+          },
           "headerLabel": "OBSERWACJA"
         },
         "train-q7": {
           "question": "Poślizg koła jest najbardziej prawdopodobny, gdy jaka jest przyczepność między kołem a szyną?",
-          "answers": [
-            "Nieograniczony",
-            "Idealnie zbalansowane",
-            "Zredukowany",
-            "Niezależny od pogody"
-          ],
+          "answers": {
+            "a1": "Nieograniczony",
+            "a2": "Idealnie zbalansowane",
+            "a3": "Zredukowany",
+            "a4": "Niezależny od pogody"
+          },
           "headerLabel": "ROZUMOWANIE MECHANICZNE"
         },
         "train-q8": {
           "question": "Nie masz pewności, czy instrukcja istotna dla bezpieczeństwa została prawidłowo usłyszana. Co powinieneś zrobić?",
-          "answers": [
-            "Zgadnij z kontekstu",
-            "Kontynuuj i zapytaj później",
-            "Wybierz najszybszą interpretację",
-            "Powtórz to i uzyskaj potwierdzenie"
-          ],
+          "answers": {
+            "a1": "Zgadnij z kontekstu",
+            "a2": "Kontynuuj i zapytaj później",
+            "a3": "Wybierz najszybszą interpretację",
+            "a4": "Powtórz to i uzyskaj potwierdzenie"
+          },
           "headerLabel": "KOMUNIKACJA W PĘTLI ZAMKNIĘTEJ"
         },
         "train-q9": {
           "question": "Dlaczego kontrola zmęczenia jest ważna w prowadzeniu pociągu?",
-          "answers": [
-            "Zmęczenie może zmniejszyć uwagę, reakcję i jakość decyzji",
-            "Zmęczenie poprawia pamięć rutynową",
-            "Długie godziny pracy dotykają jedynie pasażerów",
-            "Zmienia szerokość toru"
-          ],
+          "answers": {
+            "a1": "Zmęczenie może zmniejszyć uwagę, reakcję i jakość decyzji",
+            "a2": "Zmęczenie poprawia pamięć rutynową",
+            "a3": "Długie godziny pracy dotykają jedynie pasażerów",
+            "a4": "Zmienia szerokość toru"
+          },
           "headerLabel": "WYDAJNOŚĆ LUDZKA"
         },
         "train-q10": {
           "question": "Dwie trasy wyświetlają konflikt bezpośrednio przed odlotem. Jaka jest najbezpieczniejsza reakcja?",
-          "answers": [
-            "Podążaj za tym, który wyświetlacz jest jaśniejszy",
-            "Nie kontynuuj, dopóki rozbieżność nie zostanie usunięta w drodze odpowiedniego procesu",
-            "Wybierz trasę, która wygląda na krótszą",
-            "Poproś pasażera o podjęcie decyzji"
-          ],
+          "answers": {
+            "a1": "Podążaj za tym, który wyświetlacz jest jaśniejszy",
+            "a2": "Nie kontynuuj, dopóki rozbieżność nie zostanie usunięta w drodze odpowiedniego procesu",
+            "a3": "Wybierz trasę, która wygląda na krótszą",
+            "a4": "Poproś pasażera o podjęcie decyzji"
+          },
           "headerLabel": "KOŃCOWE PYTANIE DOTYCZĄCE UPRAWNOŚCI"
         }
       }

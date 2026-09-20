@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Çoğu yetişkin bu tıp giriş sınavını geçemiyor",
   "eyebrow": "KLİNİK BİLGİ TESTİ",
   "summary": "On soru anatomiyi, semptomları, teşhis araçlarını ve güvenli klinik akıl yürütmeyi test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Anatomi soruları tanıdık geliyor. Daha sonra test semptomlara, acil durumlara ve klinik kararlara geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence yarışmasında, 1. Seviye İngilizce konuşulan ülkelerde öğretilen ve anlaşılan geniş tıbbi kavramlar kullanılmaktadır. Anatomi ve fizyolojiden teşhis araçlarına, semptom modellerine, acil durum önceliklerine ve sorumlu ilaç kullanımına doğru ilerliyor.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on klinik bilgi sorusunu yanıtlayın.",
         "En iyi desteklenen tek yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Doktor giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Doktora Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve klinik bilgi puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş tıbbi alan karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş tıbbi alan karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Doktor'un giriş sınavını geçtiniz!",
       "finished": "Doktora giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü tıbbi alan",
       "trickiest": "En zorlu tıp alanı",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Kalbin hangi odası oksijenden zengin kanı aortaya pompalar?",
-          "answers": [
-            "Sol ventrikül",
-            "Sağ ventrikül",
-            "Sol atriyum",
-            "Sağ atriyum"
-          ],
+          "answers": {
+            "a1": "Sol ventrikül",
+            "a2": "Sağ ventrikül",
+            "a3": "Sol atriyum",
+            "a4": "Sağ atriyum"
+          },
           "headerLabel": "KALP ANATOMİSİ"
         },
         "doctor-q2": {
           "question": "Ani yüz sarkması, kol zayıflığı ve konuşma güçlüğü ne gibi acil endişelere yol açmalıdır?",
-          "answers": [
-            "Küçük bir gıda intoleransı",
-            "Olası bir felç",
-            "Basit bir kas gerginliği",
-            "Mevsimsel alerjiler"
-          ],
+          "answers": {
+            "a1": "Küçük bir gıda intoleransı",
+            "a2": "Olası bir felç",
+            "a3": "Basit bir kas gerginliği",
+            "a4": "Mevsimsel alerjiler"
+          },
           "headerLabel": "BELİRTİ TANIMA"
         },
         "doctor-q3": {
           "question": "Hangi cihaz kan oksijen doygunluğunun hızlı, invazif olmayan bir tahminini sağlar?",
-          "answers": [
-            "Otoskop",
-            "Refleks çekici",
-            "Nabız oksimetresi",
-            "Termometre"
-          ],
+          "answers": {
+            "a1": "Otoskop",
+            "a2": "Refleks çekici",
+            "a3": "Nabız oksimetresi",
+            "a4": "Termometre"
+          },
           "headerLabel": "TEŞHİS ARAÇLARI"
         },
         "doctor-q4": {
           "question": "Apandisitin klasik tablosunda karın ağrısı hangi bölgeye doğru ilerleyebilir?",
-          "answers": [
-            "Sol üst karın",
-            "Göğsün ortası",
-            "Sol omuz",
-            "Sağ alt karın"
-          ],
+          "answers": {
+            "a1": "Sol üst karın",
+            "a2": "Göğsün ortası",
+            "a3": "Sol omuz",
+            "a4": "Sağ alt karın"
+          },
           "headerLabel": "KLİNİK DESENLER"
         },
         "doctor-q5": {
           "question": "Pankreastaki hangi hücreler insülin üretir?",
-          "answers": [
-            "Beta hücreleri",
-            "Kırmızı kan hücreleri",
-            "Osteoblastlar",
-            "Nötrofiller"
-          ],
+          "answers": {
+            "a1": "Beta hücreleri",
+            "a2": "Kırmızı kan hücreleri",
+            "a3": "Osteoblastlar",
+            "a4": "Nötrofiller"
+          },
           "headerLabel": "ENDOKRİN FİZYOLOJİSİ"
         },
         "doctor-q6": {
           "question": "Fizik muayene sırasında oskültasyon ne anlama gelir?",
-          "answers": [
-            "Vücut sıcaklığının ölçülmesi",
-            "İç vücut seslerini dinlemek",
-            "Görme keskinliğinin test edilmesi",
-            "Bir doku örneğinin mikroskop altında incelenmesi"
-          ],
+          "answers": {
+            "a1": "Vücut sıcaklığının ölçülmesi",
+            "a2": "İç vücut seslerini dinlemek",
+            "a3": "Görme keskinliğinin test edilmesi",
+            "a4": "Bir doku örneğinin mikroskop altında incelenmesi"
+          },
           "headerLabel": "KLİNİK MUAYENE"
         },
         "doctor-q7": {
           "question": "Hangi tanım sepsisle en iyi eşleşir?",
-          "answers": [
-            "Egzersize zararsız bir tepki",
-            "Yalnızca alerjilerin neden olduğu bir durum",
-            "Enfeksiyona karşı hayatı tehdit eden aşırı tepki",
-            "Bir tür kemik kırığı"
-          ],
+          "answers": {
+            "a1": "Egzersize zararsız bir tepki",
+            "a2": "Yalnızca alerjilerin neden olduğu bir durum",
+            "a3": "Enfeksiyona karşı hayatı tehdit eden aşırı tepki",
+            "a4": "Bir tür kemik kırığı"
+          },
           "headerLabel": "TIBBİ ACİL DURUMLAR"
         },
         "doctor-q8": {
           "question": "Böbreğin fonksiyonel filtreleme ünitesine ne denir?",
-          "answers": [
-            "alveol",
-            "Nöron",
-            "Villus",
-            "Nefron"
-          ],
+          "answers": {
+            "a1": "alveol",
+            "a2": "Nöron",
+            "a3": "Villus",
+            "a4": "Nefron"
+          },
           "headerLabel": "BÖBREK ANATOMİSİ"
         },
         "doctor-q9": {
           "question": "Bir kişi yanıt vermiyor ve normal nefes almıyor. En güvenli acil genel tepki nedir?",
-          "answers": [
-            "Acil servisleri arayın ve uygun temel yaşam desteğine başlayın",
-            "Kendiliğinden iyileşme için birkaç dakika bekleyin",
-            "Yiyecek veya içecek verin",
-            "Kişiden etrafta dolaşmasını isteyin"
-          ],
+          "answers": {
+            "a1": "Acil servisleri arayın ve uygun temel yaşam desteğine başlayın",
+            "a2": "Kendiliğinden iyileşme için birkaç dakika bekleyin",
+            "a3": "Yiyecek veya içecek verin",
+            "a4": "Kişiden etrafta dolaşmasını isteyin"
+          },
           "headerLabel": "ACİL ÖNCELİKLER"
         },
         "doctor-q10": {
           "question": "Antibiyotiklerle ilgili hangi ifade en doğrudur?",
-          "answers": [
-            "Her ateşi tedavi ediyorlar",
-            "Soğuk algınlığı gibi viral enfeksiyonları tedavi etmezler",
-            "Semptomlar düzeldiğinde her zaman durdurulmalıdırlar",
-            "Doğrudan vücut ısısını düşürerek çalışırlar"
-          ],
+          "answers": {
+            "a1": "Her ateşi tedavi ediyorlar",
+            "a2": "Soğuk algınlığı gibi viral enfeksiyonları tedavi etmezler",
+            "a3": "Semptomlar düzeldiğinde her zaman durdurulmalıdırlar",
+            "a4": "Doğrudan vücut ısısını düşürerek çalışırlar"
+          },
           "headerLabel": "NİHAİ TIP SORUSU"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Većina odraslih ne može položiti ovaj medicinski prijemni ispit",
   "eyebrow": "TEST MEDICINSKIH ZNANOSTI",
   "summary": "Deset pitanja provjeravaju anatomiju, fiziologiju, mikrobiologiju, farmakologiju i kliničku sigurnost.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Prva pitanja izgledaju osnovno. Zatim se test seli u fiziologiju, mikrobe i medicinsku znanost koju je većina odraslih zaboravila.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov od deset pitanja koristi temeljnu medicinsku znanost koja se podučava u zemljama engleskog govornog područja razine 1. Ispituje anatomiju, fiziologiju, staničnu biologiju, mikrobiologiju, farmakologiju i osnove kontrole infekcija bez oslanjanja na nastavni plan i program jednog sveučilišta.\n\nOdaberite jedan odgovor za svako pitanje. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih medicinsko-znanstvenih pitanja.",
         "Odaberite jedini najtočniji odgovor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Medicinski ulazni izazov",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Medicinski prijemni ispit",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš medicinski rezultat je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno pet znanstvenih područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno pet znanstvenih područja"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli ste izazov Medicinski ulaz!",
       "finished": "Medicinski ulazni izazov dovršen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače znanstveno područje",
       "trickiest": "Najzahtjevnije znanstveno područje",
       "bestRound": "Najbolja sekcija",
@@ -99,8 +92,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Koji protein u crvenim krvnim stanicama nosi najviše kisika?",
-          "answers": [
-            "Hemoglobin",
-            "Keratin",
-            "Kolagen",
-            "Inzulin"
-          ],
+          "answers": {
+            "a1": "Hemoglobin",
+            "a2": "Keratin",
+            "a3": "Kolagen",
+            "a4": "Inzulin"
+          },
           "headerLabel": "FIZIOLOGIJA KRVI"
         },
         "medical-q2": {
           "question": "U DNK, adenin se normalno spaja s kojom bazom?",
-          "answers": [
-            "Guanin",
-            "timin",
-            "citozin",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "timin",
+            "a3": "citozin",
+            "a4": "Uracil"
+          },
           "headerLabel": "STANIČNA BIOLOGIJA"
         },
         "medical-q3": {
           "question": "Koji je organ glavno mjesto za obradu i razgradnju mnogih lijekova?",
-          "answers": [
-            "slezena",
-            "Štitnjača",
-            "Jetra",
-            "Mokraćni mjehur"
-          ],
+          "answers": {
+            "a1": "slezena",
+            "a2": "Štitnjača",
+            "a3": "Jetra",
+            "a4": "Mokraćni mjehur"
+          },
           "headerLabel": "FARMAKOLOGIJA"
         },
         "medical-q4": {
           "question": "Koja izjava najbolje razlikuje viruse od bakterija?",
-          "answers": [
-            "Virusi su uvijek veći",
-            "Bakterije se ne mogu razmnožavati",
-            "Virusi ne sadrže genetski materijal",
-            "Repliciranje virusa ovisi o stanicama domaćinima"
-          ],
+          "answers": {
+            "a1": "Virusi su uvijek veći",
+            "a2": "Bakterije se ne mogu razmnožavati",
+            "a3": "Virusi ne sadrže genetski materijal",
+            "a4": "Repliciranje virusa ovisi o stanicama domaćinima"
+          },
           "headerLabel": "MIKROBIOLOGIJA"
         },
         "medical-q5": {
           "question": "Kao što se opisuje otopina s pH ispod 7?",
-          "answers": [
-            "kiselo",
-            "Neutralan",
-            "Alkalna",
-            "Izotoničan"
-          ],
+          "answers": {
+            "a1": "kiselo",
+            "a2": "Neutralan",
+            "a3": "Alkalna",
+            "a4": "Izotoničan"
+          },
           "headerLabel": "KEMIJA TIJELA"
         },
         "medical-q6": {
           "question": "Koji je dio autonomnog živčanog sustava povezan s aktivnošću 'odmori i probavi'?",
-          "answers": [
-            "Simpatički sustav",
-            "Parasimpatički sustav",
-            "Somatski motorički sustav",
-            "Središnji vidni put"
-          ],
+          "answers": {
+            "a1": "Simpatički sustav",
+            "a2": "Parasimpatički sustav",
+            "a3": "Somatski motorički sustav",
+            "a4": "Središnji vidni put"
+          },
           "headerLabel": "ŽIVČANI SUSTAV"
         },
         "medical-q7": {
           "question": "Koja struktura sprječava ulazak hrane u dišni put tijekom gutanja?",
-          "answers": [
-            "Patella",
-            "Mrežnica",
-            "Epiglotis",
-            "Gušterača"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Mrežnica",
+            "a3": "Epiglotis",
+            "a4": "Gušterača"
+          },
           "headerLabel": "FUNKCIONALNA ANATOMIJA"
         },
         "medical-q8": {
           "question": "Koji kranijalni živac prenosi vizualne informacije iz oka?",
-          "answers": [
-            "Živac vagus",
-            "Facijalni živac",
-            "Trigeminalni živac",
-            "Vidni živac"
-          ],
+          "answers": {
+            "a1": "Živac vagus",
+            "a2": "Facijalni živac",
+            "a3": "Trigeminalni živac",
+            "a4": "Vidni živac"
+          },
           "headerLabel": "NEUROANATOMIJA"
         },
         "medical-q9": {
           "question": "Koja praksa je ključni dio sprječavanja infekcije tijekom skrbi za pacijenta?",
-          "answers": [
-            "Odgovarajuća higijena ruku",
-            "Ponovno korištenje jednokratnih rukavica",
-            "Preskakanje procjene rizika",
-            "Dijeljenje nečiste opreme"
-          ],
+          "answers": {
+            "a1": "Odgovarajuća higijena ruku",
+            "a2": "Ponovno korištenje jednokratnih rukavica",
+            "a3": "Preskakanje procjene rizika",
+            "a4": "Dijeljenje nečiste opreme"
+          },
           "headerLabel": "KLINIČKA SIGURNOST"
         },
         "medical-q10": {
           "question": "Što opisuje homeostaza?",
-          "answers": [
-            "Potpuni nedostatak promjena u tijelu",
-            "Regulacija relativno stabilnog unutarnjeg okruženja",
-            "Razgradnja svakog lijeka putem bubrega",
-            "Samo stvaranje antitijela"
-          ],
+          "answers": {
+            "a1": "Potpuni nedostatak promjena u tijelu",
+            "a2": "Regulacija relativno stabilnog unutarnjeg okruženja",
+            "a3": "Razgradnja svakog lijeka putem bubrega",
+            "a4": "Samo stvaranje antitijela"
+          },
           "headerLabel": "ZAVRŠNO ZNANSTVENO PITANJE"
         }
       }

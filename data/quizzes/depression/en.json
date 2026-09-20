@@ -1,49 +1,181 @@
 {
-  "schemaVersion": 2,
   "title": "Quick Depression Test",
   "eyebrow": "10-QUESTION MOOD CHECK",
   "summary": "Ten personal questions about mood, interest, energy and everyday functioning.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Has your mood, energy or interest changed more than you realised? These 10 quick questions look at patterns people often explain away.",
     "cta": "Start Test"
   },
   "about": {
     "body": "This ten-question self-check asks about low mood, loss of interest, energy, sleep, appetite, concentration, self-worth and daily functioning over the past two weeks. It groups your answers into a cautious pattern summary; it does not calculate whether you have depression.\n\nDepression can affect people differently, and sleep problems, stress, grief, medication and physical health conditions may cause similar changes. A professional assessment considers severity, duration, daily impact, safety and possible alternative explanations.",
-    "howToPlay": { "title": "How to Play", "steps": ["Choose the answer that best reflects the past two weeks.", "Think about frequency and impact rather than one difficult day.", "Reveal your personal mood summary after all ten questions."] },
+    "howToPlay": {
+      "steps": [
+        "Choose the answer that best reflects the past two weeks.",
+        "Think about frequency and impact rather than one difficult day.",
+        "Reveal your personal mood summary after all ten questions."
+      ]
+    },
     "disclaimer": "For general information only. This is not a diagnostic test, validated depression screener or substitute for professional care. It cannot confirm or rule out depression or another condition. If symptoms persist or interfere with daily life, speak with a qualified healthcare professional. If you may harm yourself or cannot stay safe, contact local emergency services or a crisis service now."
   },
   "career": {
     "resultProgressLabel": "Personal mood check",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
-      "stage-1": { "difficulty": "Personal Check", "preAdTitle": "Your result is ready", "preAdCopy": "Your ten answers have been reviewed and your cautious mood summary is ready to reveal.", "preAdChecks": ["10 personal answers reviewed", "Four response patterns compared", "Your next-step summary prepared"], "preAdButton": "Reveal My Result" }
+      "stage-1": {
+        "difficulty": "Personal Check",
+        "preAdTitle": "Your result is ready",
+        "preAdCopy": "Your ten answers have been reviewed and your cautious mood summary is ready to reveal.",
+        "preAdChecks": [
+          "10 personal answers reviewed",
+          "Four response patterns compared",
+          "Your next-step summary prepared"
+        ],
+        "preAdButton": "Reveal My Result"
+      }
     }
   },
   "results": {
     "name": "YOUR PERSONAL MOOD SUMMARY",
     "profiles": {
-      "profile-1": { "tier": "FEW CURRENT CHANGES STOOD OUT", "title": "No Strong Pattern Appeared", "copy": "Your answers did not highlight one dominant pattern of mood or functioning changes. That cannot rule out depression, and symptoms can vary over time. Seek professional advice if you remain concerned or something feels difficult to manage." },
-      "profile-2": { "tier": "LOW MOOD STOOD OUT", "title": "Your Emotional Load May Need Attention", "copy": "Your answers centred on sadness, emptiness, irritability, hopelessness or harsh self-judgement. If these changes persist, recur or feel difficult to manage, discussing them with a qualified healthcare professional is a sensible next step." },
-      "profile-3": { "tier": "INTEREST OR ENERGY CHANGES STOOD OUT", "title": "The Change May Be More Than Tiredness", "copy": "Your answers highlighted reduced enjoyment, low energy, sleep, appetite or concentration changes. Many factors can contribute, but a persistent cluster is worth discussing with a qualified healthcare professional." },
-      "profile-4": { "tier": "DAILY IMPACT STOOD OUT", "title": "Do Not Carry This Alone", "copy": "Your answers suggest that mood or energy changes may be interfering with responsibilities, relationships or self-care. This result is not a diagnosis, but it is a strong reason to seek timely professional support. If you cannot stay safe, contact emergency or crisis support now." }
+      "profile-1": {
+        "tier": "FEW CURRENT CHANGES STOOD OUT",
+        "title": "No Strong Pattern Appeared",
+        "copy": "Your answers did not highlight one dominant pattern of mood or functioning changes. That cannot rule out depression, and symptoms can vary over time. Seek professional advice if you remain concerned or something feels difficult to manage."
+      },
+      "profile-2": {
+        "tier": "LOW MOOD STOOD OUT",
+        "title": "Your Emotional Load May Need Attention",
+        "copy": "Your answers centred on sadness, emptiness, irritability, hopelessness or harsh self-judgement. If these changes persist, recur or feel difficult to manage, discussing them with a qualified healthcare professional is a sensible next step."
+      },
+      "profile-3": {
+        "tier": "INTEREST OR ENERGY CHANGES STOOD OUT",
+        "title": "The Change May Be More Than Tiredness",
+        "copy": "Your answers highlighted reduced enjoyment, low energy, sleep, appetite or concentration changes. Many factors can contribute, but a persistent cluster is worth discussing with a qualified healthcare professional."
+      },
+      "profile-4": {
+        "tier": "DAILY IMPACT STOOD OUT",
+        "title": "Do Not Carry This Alone",
+        "copy": "Your answers suggest that mood or energy changes may be interfering with responsibilities, relationships or self-care. This result is not a diagnosis, but it is a strong reason to seek timely professional support. If you cannot stay safe, contact emergency or crisis support now."
+      }
     },
-    "dimensions": { "dimension-1": { "label": "Few current changes" }, "dimension-2": { "label": "Low mood and outlook" }, "dimension-3": { "label": "Interest and energy" }, "dimension-4": { "label": "Daily impact and next step" } }
+    "dimensions": {
+      "dimension-1": {
+        "label": "Few current changes"
+      },
+      "dimension-2": {
+        "label": "Low mood and outlook"
+      },
+      "dimension-3": {
+        "label": "Interest and energy"
+      },
+      "dimension-4": {
+        "label": "Daily impact and next step"
+      }
+    }
   },
   "stages": {
     "stage-1": {
       "title": "Your Quick Mood Check",
       "questions": {
-        "depression-q1": { "question": "Over the past two weeks, how often have you felt low, empty, irritable or hopeless?", "headerLabel": "YOUR MOOD", "answers": ["Rarely or not at all", "On several days", "On more than half the days", "Nearly every day or with major impact"] },
-        "depression-q2": { "question": "How much interest or enjoyment have you had in things you normally value?", "headerLabel": "INTEREST AND ENJOYMENT", "answers": ["About the same as usual", "Slightly less than usual", "Much less on many days", "Very little, and it affects daily life"] },
-        "depression-q3": { "question": "How has your energy been recently?", "headerLabel": "ENERGY", "answers": ["Close to normal", "Lower on some days", "Low much of the time", "So low that ordinary tasks are difficult"] },
-        "depression-q4": { "question": "Has your sleep changed without a clear short-term reason?", "headerLabel": "SLEEP", "answers": ["No meaningful change", "Some restless or longer sleep", "Frequent insomnia, early waking or oversleeping", "A major change that disrupts daily functioning"] },
-        "depression-q5": { "question": "Has your appetite or eating pattern changed?", "headerLabel": "APPETITE", "answers": ["No meaningful change", "A small change on difficult days", "A noticeable loss or increase in appetite", "A major change affecting my health or routine"] },
-        "depression-q6": { "question": "How easy is it to concentrate, remember details or make decisions?", "headerLabel": "CONCENTRATION", "answers": ["About as easy as usual", "Harder when my mood is low", "Often difficult because of low energy", "So difficult that work or daily tasks suffer"] },
-        "depression-q7": { "question": "How often have guilt, worthlessness or harsh self-criticism taken over?", "headerLabel": "SELF-WORTH", "answers": ["Rarely", "Sometimes", "Often and hard to dismiss", "Nearly every day or with severe distress"] },
-        "depression-q8": { "question": "Have you felt noticeably slowed down, restless or unable to settle?", "headerLabel": "PACE AND RESTLESSNESS", "answers": ["No meaningful change", "Occasionally when distressed", "Frequently alongside low mood or energy", "Strongly enough to affect everyday activities"] },
-        "depression-q9": { "question": "Have you withdrawn from people, responsibilities or activities?", "headerLabel": "WITHDRAWAL", "answers": ["No meaningful change", "A little more than usual", "Often because I lack energy or interest", "Yes, and important parts of life are being affected"] },
-        "depression-q10": { "question": "Which statement best describes the overall pattern?", "headerLabel": "THE WIDER PICTURE", "answers": ["Brief changes with little impact", "Low mood has been the main change", "Low energy or lost interest has been the main change", "Several changes have persisted and interfere with daily life"] }
+        "depression-q1": {
+          "question": "Over the past two weeks, how often have you felt low, empty, irritable or hopeless?",
+          "headerLabel": "YOUR MOOD",
+          "answers": {
+            "a1": "Rarely or not at all",
+            "a2": "On several days",
+            "a3": "On more than half the days",
+            "a4": "Nearly every day or with major impact"
+          }
+        },
+        "depression-q2": {
+          "question": "How much interest or enjoyment have you had in things you normally value?",
+          "headerLabel": "INTEREST AND ENJOYMENT",
+          "answers": {
+            "a1": "About the same as usual",
+            "a2": "Slightly less than usual",
+            "a3": "Much less on many days",
+            "a4": "Very little, and it affects daily life"
+          }
+        },
+        "depression-q3": {
+          "question": "How has your energy been recently?",
+          "headerLabel": "ENERGY",
+          "answers": {
+            "a1": "Close to normal",
+            "a2": "Lower on some days",
+            "a3": "Low much of the time",
+            "a4": "So low that ordinary tasks are difficult"
+          }
+        },
+        "depression-q4": {
+          "question": "Has your sleep changed without a clear short-term reason?",
+          "headerLabel": "SLEEP",
+          "answers": {
+            "a1": "No meaningful change",
+            "a2": "Some restless or longer sleep",
+            "a3": "Frequent insomnia, early waking or oversleeping",
+            "a4": "A major change that disrupts daily functioning"
+          }
+        },
+        "depression-q5": {
+          "question": "Has your appetite or eating pattern changed?",
+          "headerLabel": "APPETITE",
+          "answers": {
+            "a1": "No meaningful change",
+            "a2": "A small change on difficult days",
+            "a3": "A noticeable loss or increase in appetite",
+            "a4": "A major change affecting my health or routine"
+          }
+        },
+        "depression-q6": {
+          "question": "How easy is it to concentrate, remember details or make decisions?",
+          "headerLabel": "CONCENTRATION",
+          "answers": {
+            "a1": "About as easy as usual",
+            "a2": "Harder when my mood is low",
+            "a3": "Often difficult because of low energy",
+            "a4": "So difficult that work or daily tasks suffer"
+          }
+        },
+        "depression-q7": {
+          "question": "How often have guilt, worthlessness or harsh self-criticism taken over?",
+          "headerLabel": "SELF-WORTH",
+          "answers": {
+            "a1": "Rarely",
+            "a2": "Sometimes",
+            "a3": "Often and hard to dismiss",
+            "a4": "Nearly every day or with severe distress"
+          }
+        },
+        "depression-q8": {
+          "question": "Have you felt noticeably slowed down, restless or unable to settle?",
+          "headerLabel": "PACE AND RESTLESSNESS",
+          "answers": {
+            "a1": "No meaningful change",
+            "a2": "Occasionally when distressed",
+            "a3": "Frequently alongside low mood or energy",
+            "a4": "Strongly enough to affect everyday activities"
+          }
+        },
+        "depression-q9": {
+          "question": "Have you withdrawn from people, responsibilities or activities?",
+          "headerLabel": "WITHDRAWAL",
+          "answers": {
+            "a1": "No meaningful change",
+            "a2": "A little more than usual",
+            "a3": "Often because I lack energy or interest",
+            "a4": "Yes, and important parts of life are being affected"
+          }
+        },
+        "depression-q10": {
+          "question": "Which statement best describes the overall pattern?",
+          "headerLabel": "THE WIDER PICTURE",
+          "answers": {
+            "a1": "Brief changes with little impact",
+            "a2": "Low mood has been the main change",
+            "a3": "Low energy or lost interest has been the main change",
+            "a4": "Several changes have persisted and interfere with daily life"
+          }
+        }
       }
     }
   }

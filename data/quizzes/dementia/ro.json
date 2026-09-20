@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Test rapid de demență",
   "eyebrow": "VERIFICAREA CREIERULUI 10 ÎNTREBĂRI",
   "summary": "O provocare rapidă pentru reamintire, atenție, limbaj și raționament.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Crezi că memoria ta este încă ascuțită? Aceste 10 întrebări rapide testează reamintirea, atenția și raționamentul - iar întrebările întârziate sunt mai grele decât par.",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare a creierului de zece întrebări combină amintirea imediată și întârziată cu atenția, limbajul, memoria vizuală și raționamentul simplu. Este conceput ca un instantaneu captivant al performanței de astăzi, nu ca un instrument de screening al demenței.\n\nPerformanța se poate schimba odată cu somnul, stresul, starea de spirit, medicamentele, limbajul, educația, vederea, auzul, utilizarea dispozitivului și șansa simplă. Un scor dintr-un test online nu poate confirma sau exclude demența.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Studiați cu atenție fiecare indiciu de memorie când apare.",
         "Alegeți un răspuns pentru fiecare întrebare fără ajutor extern.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocare rapidă a creierului",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Test rapid de demență",
@@ -30,10 +26,8 @@
         "preAdCopy": "Cele zece răspunsuri ale tale au fost verificate și scorul tău de provocare a creierului este gata să fie dezvăluit.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Trei domenii de gândire comparate",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Trei domenii de gândire comparate"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Ai depășit provocarea 80% a creierului!",
       "finished": "Provocare rapidă a creierului finalizată",
-      "correctLabel": "corect",
       "strongest": "Zona cea mai puternică azi",
       "trickiest": "Cea mai dificilă zonă azi",
       "bestRound": "Cea mai bună secțiune",
@@ -94,8 +87,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Care cuvânt a apărut al treilea?",
           "headerLabel": "RECHEMINARE IMMEDIATĂ",
-          "answers": [
-            "Podul",
-            "Lămâie",
-            "Grădină",
-            "Ceasul"
-          ],
+          "answers": {
+            "a1": "Podul",
+            "a2": "Lămâie",
+            "a3": "Grădină",
+            "a4": "Ceasul"
+          },
           "study": {
             "title": "Amintiți-vă aceste patru cuvinte",
             "instruction": "Ei pot reveni mai târziu în timpul testului.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Care cod este o potrivire exactă pentru P8L4T?",
           "headerLabel": "ATENȚIE FOCALIZATĂ",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Care articol nu este cu celelalte?",
           "headerLabel": "CATEGORII DE CUVINTE",
-          "answers": [
-            "vioară",
-            "Flaut",
-            "Morcov",
-            "trompeta"
-          ]
+          "answers": {
+            "a1": "vioară",
+            "a2": "Flaut",
+            "a3": "Morcov",
+            "a4": "trompeta"
+          }
         },
         "dementia-q4": {
           "question": "Ce număr urmează: 2, 4, 8, 16, ___?",
           "headerLabel": "RAȚIONAMENTUL MODELULUI",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Care obiect a apărut al doilea?",
           "headerLabel": "MEMORIA VIZUALĂ",
-          "answers": [
-            "Mănușă",
-            "cheie",
-            "cupa",
-            "carte"
-          ],
+          "answers": {
+            "a1": "Mănușă",
+            "a2": "cheie",
+            "a3": "cupa",
+            "a4": "carte"
+          },
           "study": {
             "title": "Studiați ordinea obiectelor",
             "instruction": "Aceasta va dispărea automat.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Ce înseamnă 7 – 2 – 9 înapoi?",
           "headerLabel": "MEMORIA DE LUCRU",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Dacă minutele indică 6, câte minute trec de oră?",
           "headerLabel": "RĂȚIONAMENTUL CEASULUI",
-          "answers": [
-            "6 minute",
-            "15 minute",
-            "45 de minute",
-            "30 de minute"
-          ]
+          "answers": {
+            "a1": "6 minute",
+            "a2": "15 minute",
+            "a3": "45 de minute",
+            "a4": "30 de minute"
+          }
         },
         "dementia-q8": {
           "question": "Cățelușul este pentru câine, așa cum este pisoiul pentru ce?",
           "headerLabel": "CONEXIUNEA DE LIMBĂ",
-          "answers": [
-            "Pisică",
-            "cal",
-            "Iepure",
-            "Pasăre"
-          ]
+          "answers": {
+            "a1": "Pisică",
+            "a2": "cal",
+            "a3": "Iepure",
+            "a4": "Pasăre"
+          }
         },
         "dementia-q9": {
           "question": "Gândește-te înapoi la lista de deschidere. Care cuvânt a apărut primul?",
           "headerLabel": "REAMINAREA CUVINTELOR ÎNTÂRZIATĂ",
-          "answers": [
-            "Ceasul",
-            "Grădină",
-            "Lămâie",
-            "Podul"
-          ]
+          "answers": {
+            "a1": "Ceasul",
+            "a2": "Grădină",
+            "a3": "Lămâie",
+            "a4": "Podul"
+          }
         },
         "dementia-q10": {
           "question": "Gândiți-vă înapoi la secvența obiectelor. Care obiect a apărut al patrulea?",
           "headerLabel": "RECHEMINARE FINALĂ ÎNTÂRZIATĂ",
-          "answers": [
-            "carte",
-            "cheie",
-            "Mănușă",
-            "cupa"
-          ]
+          "answers": {
+            "a1": "carte",
+            "a2": "cheie",
+            "a3": "Mănușă",
+            "a4": "cupa"
+          }
         }
       }
     }

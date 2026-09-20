@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Većina odraslih ne može položiti ovaj prijemni ispit za kirurga",
   "eyebrow": "TEST SPOSOBNOSTI ZA OPERACIJSKU SALU",
   "summary": "Deset pitanja ispituje anatomiju, kiruršku sigurnost, tehnike i kritične odluke.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Pitanja o anatomiji se čine podnošljivima. Zatim se test seli u sterilnu praksu, kirurške alate i odluke gdje jedan detalj mijenja sve.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj zabavni izazov od deset pitanja koristi široke koncepte anatomije i kirurške sigurnosti koji se primjenjuju u zemljama Tier 1 engleskog govornog područja. Od protoka krvi i sterilne prakse prelazi na sigurnosne provjere, operacije ključanice, znakove upozorenja na rane, praćenje pacijenata i informirani pristanak.\n\nOdaberite jedan odgovor za svako pitanje. Točnost ostaje skrivena do konačnog otkrivanja, gdje je kompletan pregled odgovora dostupan za otključavanje.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odgovorite na deset sve težih pitanja o kirurškom znanju.",
         "Odaberite jedan najbolje podržani odgovor.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ulazni izazov za kirurga",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Prijemni ispit za kirurga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat znanja o kirurgiji je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno pet kirurških područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno pet kirurških područja"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli ste prijemni izazov za kirurga!",
       "finished": "Ulazni izazov za kirurga završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače kirurško područje",
       "trickiest": "Najzahtjevnije kirurško područje",
       "bestRound": "Najbolja sekcija",
@@ -99,8 +92,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Što u krvožilnom sustavu definira arteriju?",
-          "answers": [
-            "Odnosi krv dalje od srca",
-            "Uvijek nosi krv bogatu kisikom",
-            "Nosi krv samo do pluća",
-            "Ne sadrži mišićni zid"
-          ],
+          "answers": {
+            "a1": "Odnosi krv dalje od srca",
+            "a2": "Uvijek nosi krv bogatu kisikom",
+            "a3": "Nosi krv samo do pluća",
+            "a4": "Ne sadrži mišićni zid"
+          },
           "headerLabel": "KIRURŠKA ANATOMIJA"
         },
         "surgeon-q2": {
           "question": "Koja je glavna svrha održavanja sterilnog kirurškog polja?",
-          "answers": [
-            "Da bi instrumenti bili raspoređeni po veličini",
-            "Kako bi se smanjila kontaminacija i rizik od infekcije",
-            "Kako bi se postupak brže završio",
-            "Za sprječavanje svih krvarenja"
-          ],
+          "answers": {
+            "a1": "Da bi instrumenti bili raspoređeni po veličini",
+            "a2": "Kako bi se smanjila kontaminacija i rizik od infekcije",
+            "a3": "Kako bi se postupak brže završio",
+            "a4": "Za sprječavanje svih krvarenja"
+          },
           "headerLabel": "STERILNA PRAKSA"
         },
         "surgeon-q3": {
           "question": "Što treba potvrditi kirurška sigurnosna pauza neposredno prije reza?",
-          "answers": [
-            "Samo očekivana duljina postupka",
-            "Samo kirurgova preferirana oprema",
-            "Ispravan pacijent, postupak i mjesto na tijelu",
-            "Izbor obroka pacijenta nakon operacije"
-          ],
+          "answers": {
+            "a1": "Samo očekivana duljina postupka",
+            "a2": "Samo kirurgova preferirana oprema",
+            "a3": "Ispravan pacijent, postupak i mjesto na tijelu",
+            "a4": "Izbor obroka pacijenta nakon operacije"
+          },
           "headerLabel": "SIGURNOSNA PROVJERA"
         },
         "surgeon-q4": {
           "question": "Po čemu se laparoskopska kirurgija razlikuje od tradicionalnog otvorenog pristupa?",
-          "answers": [
-            "Nikada ne zahtijeva kontrolu boli",
-            "Ne koristi kirurške instrumente",
-            "Može samo pregledati kožu",
-            "Obično koristi kameru i instrumente kroz male rezove"
-          ],
+          "answers": {
+            "a1": "Nikada ne zahtijeva kontrolu boli",
+            "a2": "Ne koristi kirurške instrumente",
+            "a3": "Može samo pregledati kožu",
+            "a4": "Obično koristi kameru i instrumente kroz male rezove"
+          },
           "headerLabel": "KIRURŠKE TEHNIKE"
         },
         "surgeon-q5": {
           "question": "Koja struktura se uklanja tijekom apendektomije?",
-          "answers": [
-            "slijepo crijevo",
-            "Žučni mjehur",
-            "Slezena",
-            "Gušterača"
-          ],
+          "answers": {
+            "a1": "slijepo crijevo",
+            "a2": "Žučni mjehur",
+            "a3": "Slezena",
+            "a4": "Gušterača"
+          },
           "headerLabel": "OPERATIVNA ANATOMIJA"
         },
         "surgeon-q6": {
           "question": "Za što se uglavnom koristi kirurški retraktor?",
-          "answers": [
-            "Mjerenje zasićenosti kisikom",
-            "Održavanje tkiva ili reza otvorenima radi poboljšanja pristupa",
-            "Zatvaranje rane šavovima",
-            "Snimanje električne aktivnosti srca"
-          ],
+          "answers": {
+            "a1": "Mjerenje zasićenosti kisikom",
+            "a2": "Održavanje tkiva ili reza otvorenima radi poboljšanja pristupa",
+            "a3": "Zatvaranje rane šavovima",
+            "a4": "Snimanje električne aktivnosti srca"
+          },
           "headerLabel": "KIRURŠKI INSTRUMENTI"
         },
         "surgeon-q7": {
           "question": "Koja kombinacija može upućivati na infekciju na mjestu operacije?",
-          "answers": [
-            "Poboljšanje udobnosti i suha rana koja zacjeljuje",
-            "Stabilan apetit i normalna temperatura",
-            "Pojačano crvenilo ili bol, drenaža ili groznica",
-            "Čist zavoj bez novih simptoma"
-          ],
+          "answers": {
+            "a1": "Poboljšanje udobnosti i suha rana koja zacjeljuje",
+            "a2": "Stabilan apetit i normalna temperatura",
+            "a3": "Pojačano crvenilo ili bol, drenaža ili groznica",
+            "a4": "Čist zavoj bez novih simptoma"
+          },
           "headerLabel": "ZNAKOVI UPOZORENJA NAKON OPERACIJE"
         },
         "surgeon-q8": {
           "question": "Koji uređaj daje brzu, neinvazivnu procjenu zasićenja krvi kisikom tijekom operacije?",
-          "answers": [
-            "Refleksni čekić",
-            "Otoskop",
-            "Toplomjer",
-            "Pulsni oksimetar"
-          ],
+          "answers": {
+            "a1": "Refleksni čekić",
+            "a2": "Otoskop",
+            "a3": "Toplomjer",
+            "a4": "Pulsni oksimetar"
+          },
           "headerLabel": "PRAĆENJE BOLESNIKA"
         },
         "surgeon-q9": {
           "question": "Osoba ne reagira i ne diše normalno. Koji je najsigurniji neposredni opći odgovor?",
-          "answers": [
-            "Nazovite hitnu pomoć i započnite odgovarajuće osnovno održavanje života",
-            "Dajte hranu ili piće",
-            "Pričekajte nekoliko minuta bez djelovanja",
-            "Zamolite osobu da ustane"
-          ],
+          "answers": {
+            "a1": "Nazovite hitnu pomoć i započnite odgovarajuće osnovno održavanje života",
+            "a2": "Dajte hranu ili piće",
+            "a3": "Pričekajte nekoliko minuta bez djelovanja",
+            "a4": "Zamolite osobu da ustane"
+          },
           "headerLabel": "KIRURŠKA HITNA STANJA"
         },
         "surgeon-q10": {
           "question": "Koji opis najbolje odgovara informiranom pristanku prije operacije?",
-          "answers": [
-            "Kliničar bira bez objašnjavanja alternativa",
-            "Pacijent dobiva relevantne informacije i dobrovoljno pristaje",
-            "Za svaku odraslu osobu uvijek odlučuje rodbina",
-            "Potpisivanje obrasca uklanja potrebu za raspravom"
-          ],
+          "answers": {
+            "a1": "Kliničar bira bez objašnjavanja alternativa",
+            "a2": "Pacijent dobiva relevantne informacije i dobrovoljno pristaje",
+            "a3": "Za svaku odraslu osobu uvijek odlučuje rodbina",
+            "a4": "Potpisivanje obrasca uklanja potrebu za raspravom"
+          },
           "headerLabel": "PITANJE KONAČNOG PRISTANKA"
         }
       }

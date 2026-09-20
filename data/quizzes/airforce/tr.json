@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %6'sı Hava Kuvvetlerine Giriş Sınavını Geçebiliyor",
   "eyebrow": "HAVA GÜCÜ YETENEK TESTİ",
   "summary": "On soru uçuş ilkelerini, aletleri, navigasyonu ve havacılık fiziğini test ediyor.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Kokpitin temelleri kolay görünüyor. Daha sonra sınav navigasyon, kontroller ve uçuş fiziği konularına geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, dünya çapında hava kuvvetleri ve sivil uçuşlarda geçerli olan havacılık ilkelerini kullanıyor. Uçuşun dört kuvvetinden kokpit aletlerine, yön diline, uçak kontrollerine ve temel aerodinamik muhakemeye doğru ilerliyor.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on havacılık sorusunu yanıtlayın.",
         "Dışarıdan yardım almadan dört cevaptan birini seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hava Kuvvetleri giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Hava Kuvvetleri Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve hava gücü yetenek puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş havacılık alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş havacılık alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Hava Kuvvetleri giriş sınavını geçtiniz!",
       "finished": "Hava Kuvvetlerine giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü havacılık alanı",
       "trickiest": "En zorlu havacılık alanı",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Dört uçuş kuvvetinden hangisi ağırlığa karşı yukarı doğru etki eder?",
-          "answers": [
-            "Kaldırma kuvveti",
-            "Sürükleme kuvveti",
-            "İtki",
-            "Atalet"
-          ],
+          "answers": {
+            "a1": "Kaldırma kuvveti",
+            "a2": "Sürükleme kuvveti",
+            "a3": "İtki",
+            "a4": "Atalet"
+          },
           "headerLabel": "UÇUŞ TEMELLERİ"
         },
         "airforce-q2": {
           "question": "Hangi kokpit cihazı uçağın yüksekliğini gösterir?",
-          "answers": [
-            "Hava hızı göstergesi",
-            "Altimetre",
-            "Dönüş koordinatörü",
-            "Dikey hız göstergesi"
-          ],
+          "answers": {
+            "a1": "Hava hızı göstergesi",
+            "a2": "Altimetre",
+            "a3": "Dönüş koordinatörü",
+            "a4": "Dikey hız göstergesi"
+          },
           "headerLabel": "KOKPİT ALETLERİ"
         },
         "airforce-q3": {
           "question": "Hangi birincil uçuş kontrolleri uçağın yuvarlanmasına neden olur?",
-          "answers": [
-            "İrtifa dümenleri",
-            "Dümen",
-            "Kanatçıklar",
-            "Flaplar"
-          ],
+          "answers": {
+            "a1": "İrtifa dümenleri",
+            "a2": "Dümen",
+            "a3": "Kanatçıklar",
+            "a4": "Flaplar"
+          },
           "headerLabel": "UÇUŞ KONTROLLERİ"
         },
         "airforce-q4": {
           "question": "270 derecelik bir manyetik yön yaklaşık olarak hangi yönü gösterir?",
-          "answers": [
-            "Kuzey",
-            "Doğu",
-            "Güney",
-            "Batı"
-          ],
+          "answers": {
+            "a1": "Kuzey",
+            "a2": "Doğu",
+            "a3": "Güney",
+            "a4": "Batı"
+          },
           "headerLabel": "NAVİGASYON"
         },
         "airforce-q5": {
           "question": "Mach sayısı bir uçağın hızını neyle karşılaştırır?",
-          "answers": [
-            "Yerel ses hızı",
-            "Işık hızı",
-            "Dünyanın dönüşü",
-            "Çevredeki rüzgar hızı"
-          ],
+          "answers": {
+            "a1": "Yerel ses hızı",
+            "a2": "Işık hızı",
+            "a3": "Dünyanın dönüşü",
+            "a4": "Çevredeki rüzgar hızı"
+          },
           "headerLabel": "HIZ VE SES"
         },
         "airforce-q6": {
           "question": "Havacılıkta uçağın hangi tarafına liman denir?",
-          "answers": [
-            "Sağ",
-            "Sol",
-            "Ön",
-            "Arka"
-          ],
+          "answers": {
+            "a1": "Sağ",
+            "a2": "Sol",
+            "a3": "Ön",
+            "a4": "Arka"
+          },
           "headerLabel": "HAVACILIK DİLİ"
         },
         "airforce-q7": {
           "question": "09 numaralı pist yaklaşık olarak hangi pusula yönüne doğru hizalanmıştır?",
-          "answers": [
-            "Kuzey",
-            "Güney",
-            "Doğu",
-            "Batı"
-          ],
+          "answers": {
+            "a1": "Kuzey",
+            "a2": "Güney",
+            "a3": "Doğu",
+            "a4": "Batı"
+          },
           "headerLabel": "PİST AKIL VERME"
         },
         "airforce-q8": {
           "question": "Kanat profilinin kiriş çizgisi ile yaklaşmakta olan hava akışı arasındaki açıya ne denir?",
-          "answers": [
-            "Yatış açısı",
-            "Kayma açısı",
-            "Satış konuşması tutumu",
-            "Hücum açısı"
-          ],
+          "answers": {
+            "a1": "Yatış açısı",
+            "a2": "Kayma açısı",
+            "a3": "Satış konuşması tutumu",
+            "a4": "Hücum açısı"
+          },
           "headerLabel": "AERODİNAMİK"
         },
         "airforce-q9": {
           "question": "Jet itişi en doğrudan Newton yasalarından hangisiyle açıklanır?",
-          "answers": [
-            "Üçüncü yasa",
-            "Birinci yasa",
-            "Yer çekimi kanunu",
-            "Termodinamiğin ikinci yasası"
-          ],
+          "answers": {
+            "a1": "Üçüncü yasa",
+            "a2": "Birinci yasa",
+            "a3": "Yer çekimi kanunu",
+            "a4": "Termodinamiğin ikinci yasası"
+          },
           "headerLabel": "İTİCİ FİZİĞİ"
         },
         "airforce-q10": {
           "question": "Hava yoğunluğu sabit kalırsa ve hava hızı iki katına çıkarsa dinamik basınç yaklaşık olarak hangi faktöre göre değişir?",
-          "answers": [
-            "iki",
-            "Dört",
-            "sekiz",
-            "Değişmiyor"
-          ],
+          "answers": {
+            "a1": "iki",
+            "a2": "Dört",
+            "a3": "sekiz",
+            "a4": "Değişmiyor"
+          },
           "headerLabel": "SON YETENEK SORUSU"
         }
       }

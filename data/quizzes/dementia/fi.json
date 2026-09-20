@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Nopea dementiatesti",
   "eyebrow": "10 KYSYMYKSEN AIVOJEN TARKISTUS",
   "summary": "Nopea haaste muistamiseen, huomioimiseen, kieleen ja päättelyyn.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Luuletko, että muistisi on edelleen terävä? Nämä 10 nopeaa kysymystä testaavat muistamisen, huomion ja päättelyn – ja viivästyneet kysymykset ovat vaikeampia kuin miltä ne näyttävät.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen aivohaaste yhdistää välittömän ja viivästyneen muistin huomion, kielen, visuaalisen muistin ja yksinkertaisen päättelyn. Se on suunniteltu kiinnostavaksi tilannekuvaksi tämän päivän suorituksista, ei dementian seulontatyökaluksi.\n\nSuorituskyky voi muuttua unen, stressin, mielialan, lääkityksen, kielen, koulutuksen, näön, kuulon, laitteen käytön ja yksinkertaisen sattuman myötä. Verkkokyselyn tulos ei voi vahvistaa tai sulkea pois dementiaa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Tutki kutakin muistivihjettä huolellisesti, kun se ilmestyy.",
         "Valitse jokaiseen kysymykseen yksi vastaus ilman ulkopuolista apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Nopea aivohaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Nopea dementiatesti",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja aivohaastepisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolme ajattelualuetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolme ajattelualuetta verrattiin"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Selvisit 80 % aivohaasteen!",
       "finished": "Nopea aivohaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Tämän päivän vahvin alue",
       "trickiest": "Tämän päivän vaikein alue",
       "bestRound": "Paras jakso",
@@ -94,8 +87,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Mikä sana ilmestyi kolmanneksi?",
           "headerLabel": "VÄLITTÖMÄN MUISTUTUS",
-          "answers": [
-            "Silta",
-            "Sitruuna",
-            "Puutarha",
-            "Kello"
-          ],
+          "answers": {
+            "a1": "Silta",
+            "a2": "Sitruuna",
+            "a3": "Puutarha",
+            "a4": "Kello"
+          },
           "study": {
             "title": "Muista nämä neljä sanaa",
             "instruction": "He voivat palata myöhemmin testissä.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Mikä koodi vastaa tarkasti P8L4T:tä?",
           "headerLabel": "KESKITTYNYT HUOMIO",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Mikä esine ei kuulu muiden joukkoon?",
           "headerLabel": "KATEGORIAA VALKASTA",
-          "answers": [
-            "Viulu",
-            "Huilu",
-            "Porkkana",
-            "Trumpetti"
-          ]
+          "answers": {
+            "a1": "Viulu",
+            "a2": "Huilu",
+            "a3": "Porkkana",
+            "a4": "Trumpetti"
+          }
         },
         "dementia-q4": {
           "question": "Mikä numero tulee seuraavaksi: 2, 4, 8, 16, ___?",
           "headerLabel": "KUVION PERUSTELU",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Mikä esine ilmestyi toiseksi?",
           "headerLabel": "VISUALISTA muistoa",
-          "answers": [
-            "Käsine",
-            "Avain",
-            "Cup",
-            "Kirja"
-          ],
+          "answers": {
+            "a1": "Käsine",
+            "a2": "Avain",
+            "a3": "Cup",
+            "a4": "Kirja"
+          },
           "study": {
             "title": "Tutki objektien järjestystä",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Mikä on 7 – 2 – 9 taaksepäin?",
           "headerLabel": "TYÖMUISTI",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Jos minuuttiosoitin osoittaa 6:ta, kuinka monta minuuttia on yli tunnin?",
           "headerLabel": "KATKASTAUTA",
-          "answers": [
-            "6 minutes",
-            "15 minuuttia",
-            "45 minuuttia",
-            "30 minuuttia"
-          ]
+          "answers": {
+            "a1": "6 minutes",
+            "a2": "15 minuuttia",
+            "a3": "45 minuuttia",
+            "a4": "30 minuuttia"
+          }
         },
         "dementia-q8": {
           "question": "Pentu on koiralle kuten kissanpentu mihin?",
           "headerLabel": "KIELELLINEN YHTEYS",
-          "answers": [
-            "Kissa",
-            "Horse",
-            "Rabbit",
-            "Lintu"
-          ]
+          "answers": {
+            "a1": "Kissa",
+            "a2": "Horse",
+            "a3": "Rabbit",
+            "a4": "Lintu"
+          }
         },
         "dementia-q9": {
           "question": "Ajattele vielä aloituslistaa. Mikä sana ilmestyi ensin?",
           "headerLabel": "VIIVÄSTYNYT SANAN MUISTUTUS",
-          "answers": [
-            "Kello",
-            "Puutarha",
-            "Sitruuna",
-            "Silta"
-          ]
+          "answers": {
+            "a1": "Kello",
+            "a2": "Puutarha",
+            "a3": "Sitruuna",
+            "a4": "Silta"
+          }
         },
         "dementia-q10": {
           "question": "Ajattele objektisarjaa. Mikä esine ilmestyi neljänneksi?",
           "headerLabel": "Kaksi päivää myöhemmin.",
-          "answers": [
-            "Kirja",
-            "Avain",
-            "Käsine",
-            "Cup"
-          ]
+          "answers": {
+            "a1": "Kirja",
+            "a2": "Avain",
+            "a3": "Käsine",
+            "a4": "Cup"
+          }
         }
       }
     }

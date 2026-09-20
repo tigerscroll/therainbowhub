@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 7%-a teljesíti ezt az intelligenciatesztet",
   "eyebrow": "AZ INTELLIGENCIA TARTOZÉK",
   "summary": "Minták, számszabályok, szóhivatkozások és térbeli csapdák tesztelik, milyen gyorsan találja meg érvelése a rejtett szabályt.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Minták, kódok, szóhivatkozások és logikai csapdák ütköznek. Meddig maradhat az érvelésed egy lépéssel előrébb?",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez az egész világra kiterjedő szórakoztató kihívás tíz gondosan kiválasztott rejtvényt gyűjt össze, amelyek a mintákat, a numerikus szabályokat, a verbális összefüggéseket, a térbeli érvelést, a figyelmet és a logikai levezetést fedik le. Úgy tervezték, hogy játékosnak és igényesnek érezze magát, nem pedig formális alkalmassági vizsgának.\n\nMinden rejtvényhez tartozik egy válasz, amelyet a megjelenített információ támogat. Az interakció rendszeresen változik, ezért előfordulhat, hogy meg kell határoznia egy szabályt, össze kell hasonlítania a nyomokat, átalakítania egy szimbólumot, fejben kell számolnia, vagy észre kell vennie egy kisebb következetlenséget.\n\nAz intelligenciateszt pontszáma a szórakoztató rejtvények helyes megoldásának százalékos aránya. Csak ezt a kísérletet írja le, és nem méri az Ön tényleges intelligenciáját, IQ-ját, alkalmasságát vagy oktatási képességét.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Töltse ki tíz gondosan kiválasztott kérdést egyetlen fókuszált kihívásban.",
         "Válasszon minden alkalommal egy választ. A helyesség rejtve marad a végső leleplezésig.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Intelligencia kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Intelligencia kihívás",
@@ -30,10 +26,8 @@
         "preAdCopy": "Az intelligenciateszt pontszáma és a három terület lebontása készen áll a feltárásra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három gondolkodási területet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három gondolkodási területet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Sikeresen teljesítetted az intelligenciatesztet!",
       "finished": "Intelligencia teszt kész",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb gondolkodási terület",
       "trickiest": "A legtrükkösebb gondolkodási terület",
       "bestRound": "A legjobb szakasz",
@@ -98,8 +91,7 @@
         "snapshot": "Mit sugall ez a próbálkozás",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "kör, háromszög, kör, háromszög, ismeretlen"
           },
           "question": "Melyik szimbólum következik?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "MINTÁZÁS"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "felfelé mutató nyíl egy függőleges tükör mellett"
           },
           "question": "Melyik nyíl tükröződik a függőleges tükörben?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "TÉRI ÉRTELKEZÉS"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "betűváltások plusz egy, plusz kettő, plusz egy; A CAT DCU lesz"
           },
           "question": "A váltások ismétlődnek +1, +2, +1. Hogyan történik a KUTYA kódolása?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBÁLIS INDOKOLÁS"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "számpiramis alja 3, 5, 4 és középső 8, 9"
           },
           "question": "Mindegyik blokk az alatta lévő kettő összege. Mi kerül a tetejére?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "SZÁMOS INDOKOLÁS"
         },
         "iq-s3q2": {
           "question": "Egy gép megdupláz egy számot, majd hozzáad 3-at. Melyik bemenet ad 17-et?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "SZÁMOS INDOKOLÁS"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Hivatkozási kód: K7M2-Q9. Keresse meg az opciót egy karakter megváltoztatásával."
           },
           "question": "Melyik példány különbözik pontosan egy karakterrel a hivatkozástól?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "FIGYELEM A RÉSZLETEKRE"
         },
         "iq-s4q1": {
           "question": "Pontosan egy ember mond igazat. A szerint B hazudik. B szerint C hazudik. C szerint A és B is hazudik. Ki mond igazat?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Senki"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Senki"
+          },
           "headerLabel": "LOGIKAI LEVETÉS"
         },
         "iq-s4q4": {
           "question": "Kezdje a központban, észak felé nézzen. Lépj előre egy mezőt, fordulj jobbra, mozgass két mezőt, fordulj jobbra, majd lépj egy mezőt. Hol végez a kezdéshez képest?",
-          "answers": [
-            "Két négyzet jobbra",
-            "Egy négyzet felfelé",
-            "Két négyzet maradt",
-            "Vissza középre"
-          ],
+          "answers": {
+            "a1": "Két négyzet jobbra",
+            "a2": "Egy négyzet felfelé",
+            "a3": "Két négyzet maradt",
+            "a4": "Vissza középre"
+          },
           "headerLabel": "TÉRI ÉRTELKEZÉS"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "3., 4., 10. sor; 5, 2, 12; 7, 3, ismeretlen"
           },
           "question": "Minden sorban duplázza meg az első számot, majd adja hozzá a másodikat. Mi helyettesíti a kérdőjelet?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "SZÁMOS INDOKOLÁS"
         },
         "iq-s5q8": {
           "question": "Egy nyíl felfelé mutat. Fordítsa el 90°-kal az óramutató járásával megegyező irányba, majd tükrözze vissza egy függőleges tükörben. Hová mutat?",
-          "answers": [
-            "Fel",
-            "Igaz",
-            "Le",
-            "Balra"
-          ],
+          "answers": {
+            "a1": "Fel",
+            "a2": "Igaz",
+            "a3": "Le",
+            "a4": "Balra"
+          },
           "headerLabel": "VÉGSŐ TÉRTESZT"
         }
       }

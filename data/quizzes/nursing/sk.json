@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Iba 7 % úspešne zvládne túto prijímaciu skúšku z ošetrovateľstva",
   "eyebrow": "KLINICKÉ PRIJÍMANIE LAB",
   "summary": "Anatómia, vitálne funkcie a rozhodnutia týkajúce sa starostlivosti o pacienta testujú, či váš úsudok zostane ostrý aj pod tlakom.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Systémy tela, vitálne funkcie a starostlivosť o pacienta. Dokážete zistiť, na čom záleží, a uskutočniť najbezpečnejší hovor?",
     "cta": "Spustiť kvíz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto celosvetová zábavná výzva obsahuje desať vstupných otázok naprieč anatómiou, pozorovaniami, matematickou gramotnosťou v zdravotníctve, prevenciou infekcií, komunikáciou a rozhodovaním o prioritách. Odmeňuje pokojné používanie zobrazených informácií.\n\nVyberte jednu najlepšiu odpoveď pre každú situáciu. Obsah zostáva všeobecný a vyhýba sa spoliehaniu sa na profesionálne postupy jednej krajiny.\n\nToto nie je akreditovaná vstupná skúška pre ošetrovateľstvo, klinické hodnotenie, kvalifikácia, školiaci kurz ani zdroj lekárskeho poradenstva.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Vyplňte desať starostlivo vybraných otázok v jednej cielenej výzve.",
         "Vyberte vždy jednu odpoveď. Korektnosť zostáva skrytá až do konečného odhalenia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ošetrovateľská prijímacia skúška",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Vstupná výzva pre ošetrovateľstvo",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše vstupné skóre do ošetrovateľstva a rozdelenie na tri oblasti sú pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnané tri vstupné oblasti",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnané tri vstupné oblasti"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Prešli ste ošetrovateľskou výzvou!",
       "finished": "Ošetrovateľská výzva dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejší vstupný priestor",
       "trickiest": "Najchúlostivejší vstupný priestor",
       "bestRound": "Najlepšia sekcia",
@@ -98,8 +91,7 @@
         "snapshot": "Čo naznačuje váš profil kandidáta",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Ktorý plyn zachytil krv, keď sa vracia z pľúc?",
-          "answers": [
-            "Dusík",
-            "Kyslík",
-            "Oxid uhličitý",
-            "Vodík"
-          ],
+          "answers": {
+            "a1": "Dusík",
+            "a2": "Kyslík",
+            "a3": "Oxid uhličitý",
+            "a4": "Vodík"
+          },
           "headerLabel": "ANATÓMIA A FYZIOLÓGIA"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 mililitrov plus 250 mililitrov sa rovná celkovej sume"
           },
           "question": "Džbán má objem 750 ml. Pridá sa ďalších 250 ml. Aký je celkový súčet?",
-          "answers": [
-            "900 ml",
-            "1100 ml",
-            "1250 ml",
-            "1000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1100 ml",
+            "a3": "1250 ml",
+            "a4": "1000 ml"
+          },
           "headerLabel": "ZDRAVOTNÁ NUMERITA"
         },
         "nurse-r2q5": {
           "context": "Skoršie: pohodlne dýchať a normálne hovoriť. Teraz: rýchlejšie dýchanie a pauzy medzi krátkymi frázami.",
           "question": "Ktorá zmena v tejto poznámke je najdôležitejšia?",
-          "answers": [
-            "Poznámka obsahuje dva časové body",
-            "Vzorec dýchania sa zhoršil",
-            "Osoba stále hovorí",
-            "Predchádzajúca poznámka bola kratšia"
-          ],
+          "answers": {
+            "a1": "Poznámka obsahuje dva časové body",
+            "a2": "Vzorec dýchania sa zhoršil",
+            "a3": "Osoba stále hovorí",
+            "a4": "Predchádzajúca poznámka bola kratšia"
+          },
           "headerLabel": "TRENDY POZOROVANIA"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Handover hovorí ľavá ruka, tabuľka hovorí pravá ruka"
           },
           "question": "Aký nesúlad by sa mal objasniť?",
-          "answers": [
-            "Používanie veľkých písmen",
-            "Počet slov",
-            "Graf má ohraničenie",
-            "Nahrávaná strana je iná"
-          ],
+          "answers": {
+            "a1": "Používanie veľkých písmen",
+            "a2": "Počet slov",
+            "a3": "Graf má ohraničenie",
+            "a4": "Nahrávaná strana je iná"
+          },
           "headerLabel": "PRESNOSŤ ZÁZNAMU"
         },
         "nurse-r4q3": {
           "question": "Úloha môže striekať telesnú tekutinu smerom k tvári. Ktorá ochrana sa zaoberá uvedeným rizikom?",
-          "answers": [
-            "Látkový klobúk",
-            "Vhodná ochrana očí alebo tváre",
-            "Len návleky na topánky",
-            "Žiadna ochrana, ak je úloha krátka"
-          ],
+          "answers": {
+            "a1": "Látkový klobúk",
+            "a2": "Vhodná ochrana očí alebo tváre",
+            "a3": "Len návleky na topánky",
+            "a4": "Žiadna ochrana, ak je úloha krátka"
+          },
           "headerLabel": "PREVENCIA INFEKCIÍ"
         },
         "nurse-r6q3": {
           "question": "Niekto položí citlivú otázku na rušnom verejnom priestranstve. Čo by ste mali urobiť?",
-          "answers": [
-            "Ponúknite pokračovanie konverzácie niekde v súkromí",
-            "Odpovedzte stručne a potichu, kde sa nachádzate",
-            "Požiadajte ľudí v okolí, aby vám dali priestor",
-            "Uveďte iba necitlivú časť odpovede"
-          ],
+          "answers": {
+            "a1": "Ponúknite pokračovanie konverzácie niekde v súkromí",
+            "a2": "Odpovedzte stručne a potichu, kde sa nachádzate",
+            "a3": "Požiadajte ľudí v okolí, aby vám dali priestor",
+            "a4": "Uveďte iba necitlivú časť odpovede"
+          },
           "headerLabel": "SÚCITNÁ KOMUNIKÁCIA"
         },
         "nurse-r7q1": {
           "context": "Osobe A vyhovuje mierne rýchlejší pulz po chôdzi. Osoba B je zrazu zmätená, rýchlo dýcha a vyzerá bledá.",
           "question": "Kto potrebuje pozornosť ako prvý?",
-          "answers": [
-            "Osoba B, pretože niekoľko nových znakov naznačuje náhle zhoršenie",
-            "Osoba A, pretože sa im zmenil pulz",
-            "Obaja môžu čakať na rutinné pozorovania",
-            "Osoba, ktorá prišla ako prvá"
-          ],
+          "answers": {
+            "a1": "Osoba B, pretože niekoľko nových znakov naznačuje náhle zhoršenie",
+            "a2": "Osoba A, pretože sa im zmenil pulz",
+            "a3": "Obaja môžu čakať na rutinné pozorovania",
+            "a4": "Osoba, ktorá prišla ako prvá"
+          },
           "headerLabel": "PRIORITNÝ ROZSUDOK"
         },
         "nurse-r3q1": {
           "question": "Celkový objem tekutiny stúpne zo 600 ml na 900 ml. O koľko percent sa zvýšil?",
-          "answers": [
-            "25 %",
-            "33 %",
-            "50 %",
-            "75 %"
-          ],
+          "answers": {
+            "a1": "25 %",
+            "a2": "33 %",
+            "a3": "50 %",
+            "a4": "75 %"
+          },
           "headerLabel": "ZDRAVOTNÁ NUMERITA"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Zablokované dýchacie cesty, menej vzduchu do pľúc, neznáme, menej kyslíka do tkanív"
           },
           "question": "Blokáda dýchacích ciest bráni vzduchu dostať sa do pľúc. Aký následný efekt nasleduje najpriamejšie?",
-          "answers": [
-            "Do krvi sa dostáva menej kyslíka",
-            "Do žalúdka vstupuje viac živín",
-            "Obličky okamžite tvoria viac moču",
-            "Kosti produkujú viac pohybu"
-          ],
+          "answers": {
+            "a1": "Do krvi sa dostáva menej kyslíka",
+            "a2": "Do žalúdka vstupuje viac živín",
+            "a3": "Obličky okamžite tvoria viac moču",
+            "a4": "Kosti produkujú viac pohybu"
+          },
           "headerLabel": "INTEGROVANÁ FYZIOLÓGIA"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Osoba A je ostražitá s miernym stabilným nepohodlím a normálnou rečou. Osoba B je bledá, ťažko sa prebúdza a dýcha nepravidelne."
           },
           "question": "Kto má bezprostrednú prednosť?",
-          "answers": [
-            "Osoba A, pretože nepohodlie je vždy na prvom mieste",
-            "Obaja môžu čakať na bežnú kontrolu",
-            "Osoba B, pretože vedomie a dýchanie sa náhle zmenili",
-            "Vyberajte podľa toho, kto prišiel ako prvý"
-          ],
+          "answers": {
+            "a1": "Osoba A, pretože nepohodlie je vždy na prvom mieste",
+            "a2": "Obaja môžu čakať na bežnú kontrolu",
+            "a3": "Osoba B, pretože vedomie a dýchanie sa náhle zmenili",
+            "a4": "Vyberajte podľa toho, kto prišiel ako prvý"
+          },
           "headerLabel": "KONEČNÉ ODOVZDÁVANIE"
         }
       }

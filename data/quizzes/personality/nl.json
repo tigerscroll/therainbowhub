@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Welk land past bij jouw persoonlijkheid?",
   "eyebrow": "JOUW IDEALE LAND",
   "summary": "Tien keuzes over je levensstijl laten zien of jouw persoonlijkheid het beste past bij Italië, Japan, Australië of Zweden.",
-  "progressLabel": "voltooid",
   "landing": {
     "intro": "Je dagelijkse keuzes kunnen wijzen op het land dat het beste bij je past. Tien korte vragen onthullen jouw sterkste match.",
     "cta": "Vind mijn land"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Deze luchtige quiz met tien vragen is gebaseerd op de landenpersoonlijkheidstest van Times of India. Elke keuze versterkt je match met Italië, Japan, Australië of Zweden.\n\nKies het antwoord dat het natuurlijkst voelt, niet het antwoord dat het indrukwekkendst klinkt. Het geheel van je voorkeuren bepaalt je uiteindelijke land.\n\nHet resultaat is een speels leefstijlprofiel en geen uitspraak over nationaliteit, afkomst, burgerschap, culturele identiteit of waar je zou moeten wonen. De ideeën en afbeeldingen worden gebruikt met de door de opdrachtgever aangegeven toestemming.",
     "howToPlay": {
-      "title": "Zo werkt het",
       "steps": [
         "Beantwoord tien korte vragen over je gewoonten en voorkeuren.",
         "Kies zonder lang na te denken de optie die het beste bij je past.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Landenmatch",
-    "resultProgressComplete": "{value}% voltooid",
     "stages": {
       "stage-1": {
         "difficulty": "Persoonlijkheidsprofiel",
@@ -126,9 +122,7 @@
       "portraitAlt": "Landschapsillustratie die {profile} uitbeeldt",
       "disclaimer": "Alleen voor entertainment en zelfreflectie. Dit resultaat is een speelse match op basis van levensstijl, geen uitspraak over nationaliteit, culturele identiteit of waar je zou moeten wonen."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Vrienden begroeten elkaar hartelijk"
           },
           "question": "Hoe begroet je iemand die je net hebt ontmoet?",
-          "answers": [
-            "Met een warme knuffel",
-            "Met een vriendelijk zwaaiend gebaar",
-            "Met een respectvolle buiging",
-            "Met een ontspannen knikje"
-          ],
+          "answers": {
+            "a1": "Met een warme knuffel",
+            "a2": "Met een vriendelijk zwaaiend gebaar",
+            "a3": "Met een respectvolle buiging",
+            "a4": "Met een ontspannen knikje"
+          },
           "headerLabel": "EERSTE INDRUK"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Helder landschap onder een veranderende lucht"
           },
           "question": "Van welk weer word je het gelukkigst?",
-          "answers": [
-            "Een warme bries",
-            "Felle zon",
-            "Koude lucht",
-            "Koel en fris"
-          ],
+          "answers": {
+            "a1": "Een warme bries",
+            "a2": "Felle zon",
+            "a3": "Koude lucht",
+            "a4": "Koel en fris"
+          },
           "headerLabel": "IDEAAL WEER"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Een ontspannen zondag in de buitenlucht"
           },
           "question": "Hoe breng je je zondag meestal door?",
-          "answers": [
-            "Op avontuur in de buitenlucht",
-            "Lekker knus binnen",
-            "In rust en bezinning",
-            "Met een lange familiemaaltijd"
-          ],
+          "answers": {
+            "a1": "Op avontuur in de buitenlucht",
+            "a2": "Lekker knus binnen",
+            "a3": "In rust en bezinning",
+            "a4": "Met een lange familiemaaltijd"
+          },
           "headerLabel": "ZONDAGSSTIJL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Ochtendkoffie bij een rustig raam"
           },
           "question": "Hoe begin je de dag het liefst?",
-          "answers": [
-            "Met sterke koffie",
-            "Met een rustige wandeling",
-            "Met zeelucht",
-            "Met een kalme meditatie"
-          ],
+          "answers": {
+            "a1": "Met sterke koffie",
+            "a2": "Met een rustige wandeling",
+            "a3": "Met zeelucht",
+            "a4": "Met een kalme meditatie"
+          },
           "headerLabel": "OCHTENDRITUEEL"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Kleurrijke tafel met verschillende gerechten"
           },
           "question": "Van welk soort eten word je het enthousiastst?",
-          "answers": [
-            "Verfijnde smaken",
-            "Eenvoudig en stevig",
-            "Verse vis en zeevruchten",
-            "Vertrouwde klassiekers"
-          ],
+          "answers": {
+            "a1": "Verfijnde smaken",
+            "a2": "Eenvoudig en stevig",
+            "a3": "Verse vis en zeevruchten",
+            "a4": "Vertrouwde klassiekers"
+          },
           "headerLabel": "SMAAKVOORKEUR"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Galerijwand met verschillende kunststijlen"
           },
           "question": "Welke kunst spreekt je het meest aan?",
-          "answers": [
-            "Tijdloze klassiekers",
-            "Strakke eenvoud",
-            "Krachtige expressie",
-            "Fijne details"
-          ],
+          "answers": {
+            "a1": "Tijdloze klassiekers",
+            "a2": "Strakke eenvoud",
+            "a3": "Krachtige expressie",
+            "a4": "Fijne details"
+          },
           "headerLabel": "KUNSTSMAAK"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Vier verschillende drankjes naast elkaar"
           },
           "question": "Welk drankje kies je het liefst?",
-          "answers": [
-            "Koud bier",
-            "Wijn",
-            "Warme chocolademelk",
-            "Groene thee"
-          ],
+          "answers": {
+            "a1": "Koud bier",
+            "a2": "Wijn",
+            "a3": "Warme chocolademelk",
+            "a4": "Groene thee"
+          },
           "headerLabel": "FAVORIETE DRANKJE"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Vrienden vieren een bijzondere gelegenheid"
           },
           "question": "Hoe vier je grote momenten het liefst?",
-          "answers": [
-            "Luid en levendig",
-            "Intiem en gezellig",
-            "Ontspannen en ongedwongen",
-            "Met betekenisvolle rituelen"
-          ],
+          "answers": {
+            "a1": "Luid en levendig",
+            "a2": "Intiem en gezellig",
+            "a3": "Ontspannen en ongedwongen",
+            "a4": "Met betekenisvolle rituelen"
+          },
           "headerLabel": "MANIER VAN VIEREN"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Montage van bossen, kust, tempels en platteland"
           },
           "question": "In welk landschap voel je je het meest thuis?",
-          "answers": [
-            "Rustige bossen",
-            "Een open kustlijn",
-            "Historische tempels",
-            "Glooiend platteland"
-          ],
+          "answers": {
+            "a1": "Rustige bossen",
+            "a2": "Een open kustlijn",
+            "a3": "Historische tempels",
+            "a4": "Glooiend platteland"
+          },
           "headerLabel": "THUISGEVOEL"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Reiziger kijkt uit over een ver landschap"
           },
           "question": "Wat voor reiziger ben je?",
-          "answers": [
-            "Een actieve ontdekker",
-            "Een rustige wandelaar",
-            "Een liefhebber van culturele onderdompeling",
-            "Een bezoeker van iconische plekken"
-          ],
+          "answers": {
+            "a1": "Een actieve ontdekker",
+            "a2": "Een rustige wandelaar",
+            "a3": "Een liefhebber van culturele onderdompeling",
+            "a4": "Een bezoeker van iconische plekken"
+          },
           "headerLabel": "EINDBESTEMMING"
         }
       }

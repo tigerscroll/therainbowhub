@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät voi läpäistä tätä kirurgin pääsykoetta",
   "eyebrow": "TOIMINTAhuoneen SOVELTUMISTESTI",
   "summary": "Kymmenen kysymystä testaa anatomiaa, leikkausturvallisuutta, tekniikoita ja kriittisiä päätöksiä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Anatomian kysymykset näyttävät olevan hallittavissa. Sitten testi siirtyy steriiliin käytäntöön, kirurgisiin työkaluihin ja päätöksiin, joissa yksi yksityiskohta muuttaa kaiken.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajaa anatomiaa ja kirurgisen turvallisuuden käsitteitä, joita sovelletaan kaikissa tason 1 englanninkielisissä maissa. Se siirtyy verenkierrosta ja steriilistä käytännöstä turvallisuustarkastuksiin, avaimenreikäkirurgiaan, haavan varoituskyltteihin, potilaan seurantaan ja tietoiseen suostumukseen.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampiin kirurgisia tietoja koskevaan kysymykseen.",
         "Valitse yksittäinen parhaiten tuettu vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Kirurgin sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Kirurgin pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja kirurgisen tietämyksesi pisteet ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä leikkausaluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä leikkausaluetta verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit kirurgin sisäänpääsyhaasteen!",
       "finished": "Kirurgin pääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin leikkausalue",
       "trickiest": "Hankalin leikkausalue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Mikä määrittelee valtimon verenkierrossa?",
-          "answers": [
-            "Se kuljettaa verta pois sydämestä",
-            "Se kuljettaa aina happirikasta verta",
-            "Se kuljettaa verta vain keuhkoihin",
-            "Se ei sisällä lihaksikasta seinämää"
-          ],
+          "answers": {
+            "a1": "Se kuljettaa verta pois sydämestä",
+            "a2": "Se kuljettaa aina happirikasta verta",
+            "a3": "Se kuljettaa verta vain keuhkoihin",
+            "a4": "Se ei sisällä lihaksikasta seinämää"
+          },
           "headerLabel": "KIRurginen ANATOMIA"
         },
         "surgeon-q2": {
           "question": "Mikä on steriilin leikkauskentän ylläpitämisen päätarkoitus?",
-          "answers": [
-            "Pitää instrumentit koon mukaan järjestettyinä",
-            "Saastumisen ja tartuntariskin vähentämiseksi",
-            "Jotta toimenpide valmistuisi nopeammin",
-            "Kaiken verenvuodon estämiseksi"
-          ],
+          "answers": {
+            "a1": "Pitää instrumentit koon mukaan järjestettyinä",
+            "a2": "Saastumisen ja tartuntariskin vähentämiseksi",
+            "a3": "Jotta toimenpide valmistuisi nopeammin",
+            "a4": "Kaiken verenvuodon estämiseksi"
+          },
           "headerLabel": "STERIILI KÄYTÄNTÖ"
         },
         "surgeon-q3": {
           "question": "Mitä leikkauksen turvapysähdyksen tulisi vahvistaa juuri ennen viiltoa?",
-          "answers": [
-            "Vain odotettu toimenpiteen pituus",
-            "Vain kirurgin suosimat laitteet",
-            "Oikea potilas, toimenpide ja kehon paikka",
-            "Potilaan ateriavalinta leikkauksen jälkeen"
-          ],
+          "answers": {
+            "a1": "Vain odotettu toimenpiteen pituus",
+            "a2": "Vain kirurgin suosimat laitteet",
+            "a3": "Oikea potilas, toimenpide ja kehon paikka",
+            "a4": "Potilaan ateriavalinta leikkauksen jälkeen"
+          },
           "headerLabel": "TURVALLISUUSTARKISTUS"
         },
         "surgeon-q4": {
           "question": "Mikä tekee laparoskooppisesta leikkauksesta erilaisen perinteisestä avoimesta lähestymistavasta?",
-          "answers": [
-            "Se ei koskaan vaadi kivunhallintaa",
-            "Se ei käytä kirurgisia instrumentteja",
-            "Se voi tutkia vain ihoa",
-            "Se käyttää yleensä kameraa ja instrumentteja pienten viiltojen kautta"
-          ],
+          "answers": {
+            "a1": "Se ei koskaan vaadi kivunhallintaa",
+            "a2": "Se ei käytä kirurgisia instrumentteja",
+            "a3": "Se voi tutkia vain ihoa",
+            "a4": "Se käyttää yleensä kameraa ja instrumentteja pienten viiltojen kautta"
+          },
           "headerLabel": "KIRURGISET TEKNIIKAT"
         },
         "surgeon-q5": {
           "question": "Mikä rakenne poistetaan umpilisäkkeen poiston aikana?",
-          "answers": [
-            "Umpilisäke",
-            "Sappirakko",
-            "Perna",
-            "Haima"
-          ],
+          "answers": {
+            "a1": "Umpilisäke",
+            "a2": "Sappirakko",
+            "a3": "Perna",
+            "a4": "Haima"
+          },
           "headerLabel": "OPERATIIVINEN ANATOMIA"
         },
         "surgeon-q6": {
           "question": "Mihin kirurgista kelauslaitetta pääasiassa käytetään?",
-          "answers": [
-            "Happisaturaation mittaus",
-            "Pidä kudosta tai viilto auki pääsyn parantamiseksi",
-            "Haavan sulkeminen ompeleilla",
-            "Sähköisen sydämen toiminnan tallennus"
-          ],
+          "answers": {
+            "a1": "Happisaturaation mittaus",
+            "a2": "Pidä kudosta tai viilto auki pääsyn parantamiseksi",
+            "a3": "Haavan sulkeminen ompeleilla",
+            "a4": "Sähköisen sydämen toiminnan tallennus"
+          },
           "headerLabel": "KIRURGISET VÄLINEET"
         },
         "surgeon-q7": {
           "question": "Mikä yhdistelmä voi viitata leikkauskohdan infektioon?",
-          "answers": [
-            "Parantaa mukavuutta ja parantaa kuivaa haavaa",
-            "Tasainen ruokahalu ja normaali lämpötila",
-            "Lisääntyvä punoitus tai kipu, vedeneritys tai kuume",
-            "Puhdas sidos ilman uusia oireita"
-          ],
+          "answers": {
+            "a1": "Parantaa mukavuutta ja parantaa kuivaa haavaa",
+            "a2": "Tasainen ruokahalu ja normaali lämpötila",
+            "a3": "Lisääntyvä punoitus tai kipu, vedeneritys tai kuume",
+            "a4": "Puhdas sidos ilman uusia oireita"
+          },
           "headerLabel": "LEIKKAUKSEN JÄLKEISET VAROITUSMERKIT"
         },
         "surgeon-q8": {
           "question": "Mikä laite antaa nopean, ei-invasiivisen arvion veren happisaturaatiosta leikkauksen aikana?",
-          "answers": [
-            "Vihreä martio",
-            "Otoskooppi",
-            "Thermometer",
-            "Pulssioksimetri"
-          ],
+          "answers": {
+            "a1": "Vihreä martio",
+            "a2": "Otoskooppi",
+            "a3": "Thermometer",
+            "a4": "Pulssioksimetri"
+          },
           "headerLabel": "POTILAS SEURANTA"
         },
         "surgeon-q9": {
           "question": "Henkilö ei reagoi eikä hengitä normaalisti. Mikä on turvallisin välitön yleinen vastaus?",
-          "answers": [
-            "Soita hätäpalveluille ja aloita asianmukainen peruselämän tukipalvelu",
-            "Anna ruokaa tai juomaa",
-            "Odota muutama minuutti toimimatta",
-            "Pyydä henkilöä seisomaan"
-          ],
+          "answers": {
+            "a1": "Soita hätäpalveluille ja aloita asianmukainen peruselämän tukipalvelu",
+            "a2": "Anna ruokaa tai juomaa",
+            "a3": "Odota muutama minuutti toimimatta",
+            "a4": "Pyydä henkilöä seisomaan"
+          },
           "headerLabel": "KIRURGISET HÄTÄTILAT"
         },
         "surgeon-q10": {
           "question": "Mikä kuvaus vastaa parhaiten tietoon perustuvaa suostumusta ennen leikkausta?",
-          "answers": [
-            "Kliinikko valitsee vaihtoehtoja selittämättä",
-            "Potilas saa asiaankuuluvat tiedot ja suostuu vapaaehtoisesti",
-            "Sukulainen päättää aina jokaisen aikuisen puolesta",
-            "Lomakkeen allekirjoittaminen poistaa keskustelun tarpeen"
-          ],
+          "answers": {
+            "a1": "Kliinikko valitsee vaihtoehtoja selittämättä",
+            "a2": "Potilas saa asiaankuuluvat tiedot ja suostuu vapaaehtoisesti",
+            "a3": "Sukulainen päättää aina jokaisen aikuisen puolesta",
+            "a4": "Lomakkeen allekirjoittaminen poistaa keskustelun tarpeen"
+          },
           "headerLabel": "LOPULLINEN SUOSTUMUSKYSYMYS"
         }
       }

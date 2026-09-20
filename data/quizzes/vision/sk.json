@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Iba 7 % môže prejsť týmto testom zraku",
   "eyebrow": "OPTICKÉ FOCUS LABORATÓR",
   "summary": "Drobné rozdiely, pohyblivé vzory a optické pasce testujú, či vaše oči zachytia to, čo väčšine ľudí uniká.",
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Aké ostré sú tvoje oči? Všimnite si drobné rozdiely, sledujte vzory radenia a chyťte vizuálne pasce skôr, ako chytia vás.",
     "cta": "Spustiť test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Táto zábavná výzva obsahuje desať vizuálnych hádaniek pokrývajúcich farebný kontrast, zhodu detailov, priestorovú orientáciu, sledovanie vzorov, pozornosť a vizuálnu pamäť. Úlohy sa stávajú náročnejšími bez spoliehania sa na odbornú terminológiu.\n\nPozorne si preštudujte každý obrázok alebo sadu symbolov a potom vyberte odpoveď, ktorú najlepšie podporuje to, čo je zobrazené. Niektoré otázky testujú skôr vnímanie a pozornosť ako samotný zrak.\n\nToto nie je očné vyšetrenie, test zraku alebo diagnóza. Ak máte obavy o svoj zrak, vyhľadajte kvalifikovanú radu v oblasti starostlivosti o oči.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Vyplňte desať starostlivo vybraných otázok v jednej cielenej výzve.",
         "Vyberte vždy jednu odpoveď. Korektnosť zostáva skrytá až do konečného odhalenia.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Výzva vízie",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Výzva vízie",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše skóre vízovej výzvy a rozdelenie troch zručností sú pripravené odhaliť.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnané tri vizuálne zručnosti",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnané tri vizuálne zručnosti"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Zvládli ste vízovú výzvu!",
       "finished": "Výzva vízie dokončená",
-      "correctLabel": "správne",
       "strongest": "Najsilnejšia vizuálna zručnosť",
       "trickiest": "Najnáročnejšia vizuálna zručnosť",
       "bestRound": "Najlepšia sekcia",
@@ -98,8 +91,7 @@
         "snapshot": "Čo naznačuje váš profil zamerania",
         "targetReached": "Dosiahnutá výzva na 80 %.",
         "targetRemaining": "Na 80 % je potrebných viac správnych odpovedí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Štyri blízke modré vzorky s jemne odlišnou dlaždicou vpravo dole"
           },
           "question": "Ktorá dlaždica má inú farbu?",
-          "answers": [
-            "Vľavo hore",
-            "Vpravo dole",
-            "Vpravo hore",
-            "Vľavo dole"
-          ],
+          "answers": {
+            "a1": "Vľavo hore",
+            "a2": "Vpravo dole",
+            "a3": "Vpravo hore",
+            "a4": "Vľavo dole"
+          },
           "headerLabel": "FAREBNÝ KONTRAST"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Referenčný kód M 7 K 2 P 9"
           },
           "question": "Ktorý kód sa presne zhoduje?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "POROVNÁVANIE DETAILOV"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Severovýchodná šípka odrážajúca sa cez vertikálne zrkadlo"
           },
           "question": "Ktorá šípka je zvislé zrkadlo ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "PRIESTOROVÁ ORIENTÁCIA"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Koľko písmen F je zobrazených?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "KONTROLA POZORNOSTI"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, neznáme"
           },
           "question": "Ktorá dlaždica dopĺňa striedavý rad?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "SLEDOVANIE VZORKU"
         },
         "vision-r4q5": {
           "question": "Ktorá farba najviac vyniká oproti deep navy?",
-          "answers": [
-            "Farebná vzorka A",
-            "Farebná vzorka B",
-            "Farebná vzorka D",
-            "Farebná vzorka C"
-          ],
+          "answers": {
+            "a1": "Farebná vzorka A",
+            "a2": "Farebná vzorka B",
+            "a3": "Farebná vzorka D",
+            "a4": "Farebná vzorka C"
+          },
           "headerLabel": "FAREBNÉ ZAMERANIE"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "Červená počiatočná bodka so štyrmi zodpovedajúcimi bodkovanými trasami, ktoré sa opakovane križujú pred dosiahnutím koncových bodov A, B, C a D"
           },
           "question": "Začnite pri červenej bodke a postupujte podľa jej bodkovanej trasy. Na ktoré písmeno sa dostanete?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "VIZUÁLNE SLEDOVANIE"
         },
         "vision-r9q2": {
           "context": "VERZIA A: FOCUS-M7Q2-2026\nVERZIA B: F0CUS-M7Q2-2026",
           "question": "Aká presná poloha sa zmenila vo verzii B?",
-          "answers": [
-            "Prvý F",
-            "Q",
-            "Druhý znak",
-            "Posledná číslica"
-          ],
+          "answers": {
+            "a1": "Prvý F",
+            "a2": "Q",
+            "a3": "Druhý znak",
+            "a4": "Posledná číslica"
+          },
           "headerLabel": "DETAILNÁ DETEKCIA"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Základňa M8Q2 K7P4 R6N3 a kópia M8Q2 K1P4 R6M3"
           },
           "question": "Ktoré dve postavy sa zmenili?",
-          "answers": [
-            "7 a N",
-            "8 a 6",
-            "Q a P",
-            "K a R"
-          ],
+          "answers": {
+            "a1": "7 a N",
+            "a2": "8 a 6",
+            "a3": "Q a P",
+            "a4": "K a R"
+          },
           "headerLabel": "POROVNANIE KÓDOV"
         },
         "vision-r8q5": {
           "question": "Ktorá ikona sa objavila ako štvrtá?",
-          "answers": [
-            "Mesiac",
-            "Kotva",
-            "Slnko",
-            "Star"
-          ],
+          "answers": {
+            "a1": "Mesiac",
+            "a2": "Kotva",
+            "a3": "Slnko",
+            "a4": "Star"
+          },
           "study": {
             "title": "Rýchla snímka",
             "items": [

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seulement 7 % réussissent ce test d’intelligence",
   "eyebrow": "LE VOÛT DU RENSEIGNEMENT",
   "summary": "Les modèles, les règles numériques, les liens de mots et les pièges spatiaux testent la rapidité avec laquelle votre raisonnement trouve la règle cachée.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les modèles, les codes, les liens de mots et les pièges logiques entrent en collision. Combien de temps votre raisonnement peut-il garder une longueur d’avance ?",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions réunit des énigmes de logique portant sur les suites, les règles numériques, les associations verbales, le raisonnement spatial, l'attention et la déduction. Il se veut ludique et exigeant, sans prétendre remplacer un véritable test d'aptitude.\n\nChaque énigme possède une réponse fondée sur les informations affichées. Le format change régulièrement : vous devrez repérer une règle, comparer des indices, transformer un symbole, calculer mentalement ou déceler une petite incohérence.\n\nVotre score correspond uniquement au pourcentage d'énigmes résolues lors de cette tentative. Il ne mesure ni votre intelligence, ni votre QI, ni vos aptitudes scolaires.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions soigneusement sélectionnées dans un seul défi ciblé.",
         "Choisissez une réponse à chaque fois. Les bonnes réponses restent cachées jusqu’au résultat final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi du renseignement",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Défi du renseignement",
@@ -30,10 +26,8 @@
         "preAdCopy": "Votre score au test d’intelligence et votre répartition en trois domaines sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Trois axes de réflexion comparés",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois axes de réflexion comparés"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Vous avez réussi le défi du test d'intelligence !",
       "finished": "Test d'intelligence terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -98,8 +91,7 @@
         "snapshot": "Ce que suggère cette tentative",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "cercle, triangle, cercle, triangle, inconnu"
           },
           "question": "Quel symbole vient ensuite ?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "RAISONNEMENT DE MODÈLE"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "flèche vers le haut vers la droite à côté d'un miroir vertical"
           },
           "question": "Quelle flèche est le reflet dans un miroir vertical ?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RAISONNEMENT SPATIAL"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "décalages de lettres plus un, plus deux, plus un ; CAT devient DCU"
           },
           "question": "Les décalages se répètent : +1, +2, +1. Comment code-t-on DOG ?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "RAISONNEMENT VERBAL"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "pyramide numérique avec le bas 3, 5, 4 et le milieu 8, 9"
           },
           "question": "Chaque bloc est la somme des deux blocs placés en dessous. Quel nombre se trouve tout en haut ?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "RAISONNEMENT NUMÉRIQUE"
         },
         "iq-s3q2": {
           "question": "Une machine double un nombre, puis en ajoute 3. Quelle entrée produit 17 ?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "RAISONNEMENT NUMÉRIQUE"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Code de référence K7M2-Q9. Recherchez l'option avec un caractère modifié."
           },
           "question": "Quelle copie diffère de la référence d’exactement un caractère ?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "ATTENTION AU DÉTAIL"
         },
         "iq-s4q1": {
           "question": "Exactement une personne dit la vérité. A dit que B ment. B dit que C ment. C dit que A et B mentent tous les deux. Qui dit la vérité ?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Personne"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Personne"
+          },
           "headerLabel": "DÉDUCTION LOGIQUE"
         },
         "iq-s4q4": {
           "question": "Commencez au centre face au nord. Avancez d’une case, tournez à droite, avancez de deux cases, tournez à droite, puis avancez d’une case. Où terminez-vous par rapport au départ ?",
-          "answers": [
-            "Deux cases à droite",
-            "Une case plus haut",
-            "Deux cases à gauche",
-            "De retour au centre"
-          ],
+          "answers": {
+            "a1": "Deux cases à droite",
+            "a2": "Une case plus haut",
+            "a3": "Deux cases à gauche",
+            "a4": "De retour au centre"
+          },
           "headerLabel": "RAISONNEMENT SPATIAL"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "rangées 3, 4, 10 ; 5, 2, 12 ; 7, 3, inconnu"
           },
           "question": "Dans chaque ligne, doublez le premier chiffre, puis ajoutez le second. Qu'est-ce qui remplace le point d'interrogation ?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "RAISONNEMENT NUMÉRIQUE"
         },
         "iq-s5q8": {
           "question": "Une flèche pointe vers le haut. Faites-la tourner de 90° dans le sens des aiguilles d'une montre, puis réfléchissez-la dans un miroir vertical. Où pointe-t-elle ?",
-          "answers": [
-            "En haut",
-            "Droite",
-            "Vers le bas",
-            "Gauche"
-          ],
+          "answers": {
+            "a1": "En haut",
+            "a2": "Droite",
+            "a3": "Vers le bas",
+            "a4": "Gauche"
+          },
           "headerLabel": "TEST SPATIAL FINAL"
         }
       }

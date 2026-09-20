@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %12'si Bu Uçuş Görevlisi Giriş Sınavını Geçebiliyor",
   "eyebrow": "KABİN PERSONELİ YETENEK TESTİ",
   "summary": "On soru, kabin güvenliğini, acil durumları, mürettebat koordinasyonunu ve uçak bilgisini test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Servis soruları kolay görünüyor. Daha sonra sınav basınç azaltma, tahliye ve kabin güvenliği konularına geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, uluslararası havacılıkta paylaşılan geniş kabin güvenliği ilkelerini kullanıyor. Tek bir havayolunun kesin komutlarına veya prosedürlerine bağlı kalmadan yolcu güvenliğini, acil durum önceliklerini, mürettebat koordinasyonunu ve uçak sistemlerini test eder.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on kabin ekibi sorusunu yanıtlayın.",
         "En güvenli veya en doğru yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Uçuş görevlisi giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Uçuş Görevlisi Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve kabin ekibi yetenek puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Dört kabin güvenlik alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Dört kabin güvenlik alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Uçuş Görevlisi giriş sınavını geçtiniz!",
       "finished": "Uçuş Görevlisi giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü kabin güvenlik alanı",
       "trickiest": "En zorlu kabin güvenlik alanı",
       "bestRound": "En iyi bölüm",
@@ -96,8 +89,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Uçuş görevlisinin birincil sorumluluğu nedir?",
-          "answers": [
-            "Yolcu güvenliği",
-            "Gemideki ürünlerin satışı",
-            "Yemeklerin hızlı servis edilmesi",
-            "Hedefin duyurulması"
-          ],
+          "answers": {
+            "a1": "Yolcu güvenliği",
+            "a2": "Gemideki ürünlerin satışı",
+            "a3": "Yemeklerin hızlı servis edilmesi",
+            "a4": "Hedefin duyurulması"
+          },
           "headerLabel": "KABİN ÖNCELİKLERİ"
         },
         "flightattendant-q2": {
           "question": "Önemli türbülans başladığında kabinin acil temel önceliği nedir?",
-          "answers": [
-            "Gecikmeleri önlemek için hizmete devam edin",
-            "Prosedürlerin gerektirdiği şekilde kendinizi ve kabini emniyete alın",
-            "Her baş üstü bölmesini açın",
-            "Yolculardan ayağa kalkmalarını ve esnemelerini isteyin"
-          ],
+          "answers": {
+            "a1": "Gecikmeleri önlemek için hizmete devam edin",
+            "a2": "Prosedürlerin gerektirdiği şekilde kendinizi ve kabini emniyete alın",
+            "a3": "Her baş üstü bölmesini açın",
+            "a4": "Yolculardan ayağa kalkmalarını ve esnemelerini isteyin"
+          },
           "headerLabel": "TÜRBÜLANS"
         },
         "flightattendant-q3": {
           "question": "Dekompresyon sırasında oksijen maskeleri düşerse normalde başka birine yardım etmeden önce ne yapmalısınız?",
-          "answers": [
-            "Emniyet kemerinizi çıkarın",
-            "Kabin ışıklarını bekleyin",
-            "Kendi maskenizi takın",
-            "Koridora git"
-          ],
+          "answers": {
+            "a1": "Emniyet kemerinizi çıkarın",
+            "a2": "Kabin ışıklarını bekleyin",
+            "a3": "Kendi maskenizi takın",
+            "a4": "Koridora git"
+          },
           "headerLabel": "DEKOMPRESYON"
         },
         "flightattendant-q4": {
           "question": "Acil bir tahliye sırasında yolcular kabin bagajını genel olarak ne yapmalıdır?",
-          "answers": [
-            "Sadece küçük çantalar alın",
-            "Çantaları tek omuzda taşımak",
-            "Çantaları mürettebat üyelerine iletin",
-            "Tüm bagajları arkanızda bırakın"
-          ],
+          "answers": {
+            "a1": "Sadece küçük çantalar alın",
+            "a2": "Çantaları tek omuzda taşımak",
+            "a3": "Çantaları mürettebat üyelerine iletin",
+            "a4": "Tüm bagajları arkanızda bırakın"
+          },
           "headerLabel": "TAHLİYE"
         },
         "flightattendant-q5": {
           "question": "Yolcular neden koltukları ile en yakın kullanılabilir çıkışlar arasındaki sıraları saymalıdır?",
-          "answers": [
-            "Duman veya karanlık çıkışların görülmesini zorlaştırabilir",
-            "Yemek servis sırasını belirler",
-            "En sessiz koltuğu tanımlar",
-            "Uçağın dengesini değiştirir"
-          ],
+          "answers": {
+            "a1": "Duman veya karanlık çıkışların görülmesini zorlaştırabilir",
+            "a2": "Yemek servis sırasını belirler",
+            "a3": "En sessiz koltuğu tanımlar",
+            "a4": "Uçağın dengesini değiştirir"
+          },
           "headerLabel": "FARKINDALIKTAN ÇIKIŞ"
         },
         "flightattendant-q6": {
           "question": "Havacılıkta mürettebat kaynak yönetimi temel olarak neyi güçlendirmek için tasarlanmıştır?",
-          "answers": [
-            "Bilet fiyatlandırması ve planlaması",
-            "İletişim, ekip çalışması ve karar verme",
-            "Yolcu eğlencesi",
-            "Uçak üretim hızı"
-          ],
+          "answers": {
+            "a1": "Bilet fiyatlandırması ve planlaması",
+            "a2": "İletişim, ekip çalışması ve karar verme",
+            "a3": "Yolcu eğlencesi",
+            "a4": "Uçak üretim hızı"
+          },
           "headerLabel": "EKİP KOORDİNASYONU"
         },
         "flightattendant-q7": {
           "question": "hipoksi ne demek?",
-          "answers": [
-            "Aşırı kabin gürültüsü",
-            "Hızlı bir yön değişikliği",
-            "Vücut dokularına yeterli oksijenin ulaşmaması",
-            "Uçağa binişte gecikme"
-          ],
+          "answers": {
+            "a1": "Aşırı kabin gürültüsü",
+            "a2": "Hızlı bir yön değişikliği",
+            "a3": "Vücut dokularına yeterli oksijenin ulaşmaması",
+            "a4": "Uçağa binişte gecikme"
+          },
           "headerLabel": "HAVACILIK SAĞLIĞI"
         },
         "flightattendant-q8": {
           "question": "Yangın üçgenini hangi üç unsur oluşturur?",
-          "answers": [
-            "Duman, alev ve kül",
-            "Su, hava ve metal",
-            "Yakıt, basınç ve buhar",
-            "Isı, yakıt ve oksijen"
-          ],
+          "answers": {
+            "a1": "Duman, alev ve kül",
+            "a2": "Su, hava ve metal",
+            "a3": "Yakıt, basınç ve buhar",
+            "a4": "Isı, yakıt ve oksijen"
+          },
           "headerLabel": "YANGIN GÜVENLİĞİ"
         },
         "flightattendant-q9": {
           "question": "Zemin seviyesinde acil durum aydınlatmasının temel amacı nedir?",
-          "answers": [
-            "Görünürlük zayıf olduğunda insanları çıkışlara doğru yönlendirmeye yardımcı olmak",
-            "Yemek tepsilerini aydınlatmak için",
-            "Uçağın hızını göstermek için",
-            "Premium koltukları işaretlemek için"
-          ],
+          "answers": {
+            "a1": "Görünürlük zayıf olduğunda insanları çıkışlara doğru yönlendirmeye yardımcı olmak",
+            "a2": "Yemek tepsilerini aydınlatmak için",
+            "a3": "Uçağın hızını göstermek için",
+            "a4": "Premium koltukları işaretlemek için"
+          },
           "headerLabel": "KABİN SİSTEMLERİ"
         },
         "flightattendant-q10": {
           "question": "Yolcular sık sık uçsalar bile neden güvenlik brifinglerine dikkat etmek zorundalar?",
-          "answers": [
-            "Uçuşun seyir irtifasını ortaya koyuyor",
-            "Acil durum ekipmanı ve prosedürleri uçağa göre farklılık gösterebilir",
-            "Bagaj teslim sırasını belirler",
-            "Bilet fiyatlarının nasıl belirlendiğini açıklıyor"
-          ],
+          "answers": {
+            "a1": "Uçuşun seyir irtifasını ortaya koyuyor",
+            "a2": "Acil durum ekipmanı ve prosedürleri uçağa göre farklılık gösterebilir",
+            "a3": "Bagaj teslim sırasını belirler",
+            "a4": "Bilet fiyatlarının nasıl belirlendiğini açıklıyor"
+          },
           "headerLabel": "SON KABİN SORUSU"
         }
       }

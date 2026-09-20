@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "Majoritatea adulților nu pot obține un scor de 80% la acest test de memorie",
   "eyebrow": "Provocarea memoriei",
   "summary": "Cuvintele, imaginile, cifrele și surprizele întârziate testează ceea ce îți păstrează memoria și ceea ce scapă în liniște.",
   "about": {
     "body": "Acest test de memorie scurtă folosește zece provocări atent variate de cuvinte, imagini, numere, asocieri și atenție pentru a crea un instantaneu jucăuș al reamintirii.\n\nUnele detalii sunt testate imediat, în timp ce altele revin după ce diferite sarcini au întrerupt memoria originală. Studiați fiecare indiciu cu atenție, dar nu vă grăbiți: viteza nu vă schimbă niciodată scorul.\n\nScorul final arată câte dintre cele zece întrebări au fost corecte și evidențiază zonele de memorie care ți se potriveau cel mai bine. Performanța poate varia în funcție de atenție, oboseală, stres, familiaritate și șansă, așa că tratați rezultatul mai degrabă ca pe un divertisment decât ca pe o judecată despre sănătatea creierului sau capacitatea de memorie pe termen lung.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Studiați fiecare indiciu cu atenție când apare; unele detalii revin mai târziu.",
         "Alegeți un răspuns pentru fiecare provocare. Viteza nu îți schimbă niciodată scorul.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Doar pentru divertisment și auto-reflecție. Acest test nu este o evaluare medicală, neurologică sau cognitivă și nu poate diagnostica problemele de memorie. Dacă sunteți îngrijorat cu privire la memoria sau sănătatea dumneavoastră, discutați cu un profesionist calificat."
   },
-  "progressLabel": "completă",
   "landing": {
     "intro": "Crezi că ai o memorie bună?\nDovedește-o cu 10 întrebări.",
     "cta": "Începeți"
   },
   "career": {
     "resultProgressLabel": "Test de memorie",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Provocarea memoriei",
@@ -30,10 +26,8 @@
         "preAdCopy": "Scorul dvs. de memorie și defalcarea în trei zone sunt gata să fie dezvăluite.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Comparativ trei zone de memorie",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Comparativ trei zone de memorie"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Ai depășit provocarea 80%! 🧠",
       "finished": "Ai terminat provocarea memoriei",
-      "correctLabel": "corect",
       "strongest": "Cea mai puternică zonă de memorie a ta",
       "trickiest": "Zona ta cea mai dificilă",
       "bestRound": "Cea mai bună secțiune",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Ce cuvânt a apărut în detaliile de deschidere?",
           "headerLabel": "REAMINARE DE CUVINTE",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Amintiți-vă aceste detalii",
             "instruction": "Unii pot reveni mai târziu în test.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Care formă a apărut a treia?",
           "headerLabel": "MEMORIA VIZUALĂ",
-          "answers": [
-            "Cercul",
-            "Diamant",
-            "Triunghi",
-            "pătrat"
-          ],
+          "answers": {
+            "a1": "Cercul",
+            "a2": "Diamant",
+            "a3": "Triunghi",
+            "a4": "pătrat"
+          },
           "study": {
             "title": "Amintiți-vă ordinea culorii și formei",
             "instruction": "Aceasta va dispărea automat.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Ce număr ai văzut?",
           "headerLabel": "RECAMARE NUMĂR",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Ține minte acest număr",
             "instruction": "Aceasta va dispărea automat.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Care cod este o potrivire exactă pentru K7M2Q?",
           "headerLabel": "POTRIVIRE LA COD",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "Ce înseamnă 4 – 9 – 2 înapoi?",
           "headerLabel": "MEMORIA DE LUCRU",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Care obiect a apărut al treilea?",
           "headerLabel": "RECHEMARE COMANDĂ",
-          "answers": [
-            "Zmeu",
-            "Mănușă",
-            "Camera foto",
-            "Cupcake"
-          ],
+          "answers": {
+            "a1": "Zmeu",
+            "a2": "Mănușă",
+            "a3": "Camera foto",
+            "a4": "Cupcake"
+          },
           "study": {
             "title": "Studiați ordinea celor patru obiecte",
             "instruction": "Aceasta va dispărea automat.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Unde călătorea Sarah?",
           "headerLabel": "MEMORIA DE DETALII",
-          "answers": [
-            "Paris",
-            "Roma",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Paris",
+            "a2": "Roma",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Citiți aceste detalii o dată",
             "instruction": "Un detaliu poate reveni mai târziu.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Care copie conține un zero în loc de litera O?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "ATENTIE RAPIDA",
-          "answers": [
-            "În primul rând",
-            "În al doilea rând",
-            "În al patrulea rând",
-            "În al treilea rând"
-          ]
+          "answers": {
+            "a1": "În primul rând",
+            "a2": "În al doilea rând",
+            "a3": "În al patrulea rând",
+            "a4": "În al treilea rând"
+          }
         },
         "memory-r5q1": {
           "question": "Gândește-te înapoi la început: ce culoare avea elefantul?",
           "headerLabel": "RECHERARE ÎNTÂRZIATĂ",
-          "answers": [
-            "Argint",
-            "violet",
-            "Albastru",
-            "Aur"
-          ]
+          "answers": {
+            "a1": "Argint",
+            "a2": "violet",
+            "a3": "Albastru",
+            "a4": "Aur"
+          }
         },
         "memory-r5q6": {
           "question": "La ce oră a plecat trenul lui Sarah?",
           "headerLabel": "TEST FINAL DE MEMORIE",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

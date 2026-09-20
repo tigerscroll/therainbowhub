@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 3 % av de vuxna kan klara detta pilotprov",
   "eyebrow": "PILOTATITUTESTET",
   "summary": "Tio frågor testar flygprinciper, instrument, väder, navigering och cockpitbedömning.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Grunderna i sittbrunnen ser enkla ut. Sedan går provet över till väder, navigering och beslut som piloter inte har råd att gissa.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder internationella civila luftfartskoncept snarare än ett lands licensieringsplan. Den testar breda flygprinciper, cockpitinstrument, vädermedvetenhet, navigering och konservativt beslutsfattande.\n\nVälj ett svar för varje fråga. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare frågor om pilotbegåvning.",
         "Välj det säkraste eller mest exakta svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pilotentréutmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Pilotinträdesprov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och din pilotbegåvningspoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fem flygområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fem flygområden jämförda"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du klarade Pilotentréutmaningen!",
       "finished": "Pilotentréutmaningen klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste flygområde",
       "trickiest": "Knepigaste flygområdet",
       "bestRound": "Bästa avsnittet",
@@ -99,8 +92,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Vilken kraft verkar uppåt mot ett flygplans vikt?",
-          "answers": [
-            "Lyftkraft",
-            "Luftmotstånd",
-            "Dragkraft",
-            "Tröghet"
-          ],
+          "answers": {
+            "a1": "Lyftkraft",
+            "a2": "Luftmotstånd",
+            "a3": "Dragkraft",
+            "a4": "Tröghet"
+          },
           "headerLabel": "GRUNDLÄGGANDE FLYG"
         },
         "pilot-q2": {
           "question": "Vilket cockpitinstrument indikerar höjd?",
-          "answers": [
-            "Lufthastighetsindikator",
-            "Höjdmätare",
-            "Kursindikator",
-            "Svängkoordinator"
-          ],
+          "answers": {
+            "a1": "Lufthastighetsindikator",
+            "a2": "Höjdmätare",
+            "a3": "Kursindikator",
+            "a4": "Svängkoordinator"
+          },
           "headerLabel": "INSTRUMENT"
         },
         "pilot-q3": {
           "question": "Vilken molntyp är starkast förknippad med åskväder och kraftig turbulens?",
-          "answers": [
-            "Cirrus",
-            "Stratus",
-            "Cumulonimbus",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Cirrus",
+            "a2": "Stratus",
+            "a3": "Cumulonimbus",
+            "a4": "Altostratus"
+          },
           "headerLabel": "FLYGVÄDER"
         },
         "pilot-q4": {
           "question": "En kurs på 180 grader pekar ungefär åt vilket håll?",
-          "answers": [
-            "Norr",
-            "Öst",
-            "Väst",
-            "Söder"
-          ],
+          "answers": {
+            "a1": "Norr",
+            "a2": "Öst",
+            "a3": "Väst",
+            "a4": "Söder"
+          },
           "headerLabel": "NAVIGATION"
         },
         "pilot-q5": {
           "question": "Vädret försämras snabbare än prognosen och säkerhetsmarginalerna krymper. Vilket är det bästa allmänna beslutet?",
-          "answers": [
-            "Omvärdera tidigt och avleda eller landa medan säkra alternativ kvarstår",
-            "Fortsätt eftersom den ursprungliga planen måste slutföras",
-            "Gå ner under säkra gränser för att upprätthålla visuell kontakt",
-            "Ignorera trenden tills förhållandena blir kritiska"
-          ],
+          "answers": {
+            "a1": "Omvärdera tidigt och avleda eller landa medan säkra alternativ kvarstår",
+            "a2": "Fortsätt eftersom den ursprungliga planen måste slutföras",
+            "a3": "Gå ner under säkra gränser för att upprätthålla visuell kontakt",
+            "a4": "Ignorera trenden tills förhållandena blir kritiska"
+          },
           "headerLabel": "FLYGDOM"
         },
         "pilot-q6": {
           "question": "Vilka roder får ett flygplan att rolla kring sin längdaxel?",
-          "answers": [
-            "Höjdroder",
-            "Skevroder",
-            "Endast roderpedaler",
-            "Vingklaffar"
-          ],
+          "answers": {
+            "a1": "Höjdroder",
+            "a2": "Skevroder",
+            "a3": "Endast roderpedaler",
+            "a4": "Vingklaffar"
+          },
           "headerLabel": "FLYGKONTROLLER"
         },
         "pilot-q7": {
           "question": "Vilket instrument visar ett flygplans stignings- eller nedstigningshastighet?",
-          "answers": [
-            "Kompass",
-            "Endast höjdmätare",
-            "Vertikal hastighetsindikator",
-            "Temperaturmätare för utomhusluft"
-          ],
+          "answers": {
+            "a1": "Kompass",
+            "a2": "Endast höjdmätare",
+            "a3": "Vertikal hastighetsindikator",
+            "a4": "Temperaturmätare för utomhusluft"
+          },
           "headerLabel": "CCKPIT SCAN"
         },
         "pilot-q8": {
           "question": "Vad är vindskjuvning?",
-          "answers": [
-            "En jämn vind som aldrig förändras",
-            "Endast ett mått på molnhöjd",
-            "Luft rör sig bara över vatten",
-            "En snabb förändring i vindhastighet eller riktning över en kort sträcka"
-          ],
+          "answers": {
+            "a1": "En jämn vind som aldrig förändras",
+            "a2": "Endast ett mått på molnhöjd",
+            "a3": "Luft rör sig bara över vatten",
+            "a4": "En snabb förändring i vindhastighet eller riktning över en kort sträcka"
+          },
           "headerLabel": "VÄDERFAROR"
         },
         "pilot-q9": {
           "question": "En bana med nummer 27 är riktad ungefär i vilken riktning?",
-          "answers": [
-            "Väst",
-            "Norr",
-            "Öst",
-            "Söder"
-          ],
+          "answers": {
+            "a1": "Väst",
+            "a2": "Norr",
+            "a3": "Öst",
+            "a4": "Söder"
+          },
           "headerLabel": "RÄNNINGSBAN"
         },
         "pilot-q10": {
           "question": "Du märker en oförklarlig bränsleobalans under flygningen. Vad är det bästa generella svaret?",
-          "answers": [
-            "Anta att mätaren korrigerar sig själv",
-            "Använd checklistan, övervaka situationen och kommunicera efter behov",
-            "Byt slumpmässigt system tills det försvinner",
-            "Fördröja alla åtgärder tills landning"
-          ],
+          "answers": {
+            "a1": "Anta att mätaren korrigerar sig själv",
+            "a2": "Använd checklistan, övervaka situationen och kommunicera efter behov",
+            "a3": "Byt slumpmässigt system tills det försvinner",
+            "a4": "Fördröja alla åtgärder tills landning"
+          },
           "headerLabel": "SLUTLIG CCKPITFRÅGA"
         }
       }

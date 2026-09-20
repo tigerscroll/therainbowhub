@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De fleste voksne kan ikke bestå denne medisinske opptaksprøven",
   "eyebrow": "DEN LEGEVITENSKAPENDE PRØVEN",
   "summary": "Ti spørsmål tester anatomi, fysiologi, mikrobiologi, farmakologi og klinisk sikkerhet.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "De første spørsmålene ser grunnleggende ut. Så går testen over på fysiologi, mikrober og medisinsk vitenskap de fleste voksne har glemt.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsutfordringen med ti spørsmål bruker grunnleggende medisinsk vitenskap som undervises i engelsktalende land på nivå 1. Den tester anatomi, fysiologi, cellebiologi, mikrobiologi, farmakologi og infeksjonskontroll grunnleggende uten å stole på ett universitets opptakspensum.\n\nVelg ett svar for hvert spørsmål. Korrektheten forblir skjult frem til den siste avsløringen, hvor hele svargjennomgangen er tilgjengelig for å låse opp.",
     "howToPlay": {
-      "title": "Hvordan spille",
       "steps": [
         "Svar på ti stadig vanskeligere medisinsk-vitenskapelige spørsmål.",
         "Velg det mest nøyaktige svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Medisinsk inngangsutfordring",
-    "resultProgressComplete": "{value} % fullført",
     "stages": {
       "stage-1": {
         "difficulty": "Medisinsk opptaksprøve",
@@ -30,10 +26,8 @@
         "preAdCopy": "De ti svarene dine er sjekket, og din medisinske vitenskapelige poengsum er klar til å avsløre.",
         "preAdChecks": [
           "10 svar sjekket",
-          "Fem vitenskapsområder sammenlignet",
-          "Din endelige poengsum beregnet"
-        ],
-        "preAdButton": "Avslør mine resultater"
+          "Fem vitenskapsområder sammenlignet"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du besto medisinsk inngangsutfordring!",
       "finished": "Medisinsk inngangsutfordring fullført",
-      "correctLabel": "riktig",
       "strongest": "Det sterkeste vitenskapsområdet",
       "trickiest": "Det vanskeligste vitenskapsområdet",
       "bestRound": "Beste seksjon",
@@ -99,8 +92,7 @@
         "snapshot": "Hva resultatet ditt antyder",
         "targetReached": "80 % utfordring nådd",
         "targetRemaining": "Flere riktige svar kreves for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Hvilket protein i røde blodceller bærer mest oksygen?",
-          "answers": [
-            "Hemoglobin",
-            "Keratin",
-            "Kollagen",
-            "Insulin"
-          ],
+          "answers": {
+            "a1": "Hemoglobin",
+            "a2": "Keratin",
+            "a3": "Kollagen",
+            "a4": "Insulin"
+          },
           "headerLabel": "BLOD FYSIOLOGI"
         },
         "medical-q2": {
           "question": "I DNA parrer adenin seg normalt med hvilken base?",
-          "answers": [
-            "Guanin",
-            "Tymin",
-            "Cytosin",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "Tymin",
+            "a3": "Cytosin",
+            "a4": "Uracil"
+          },
           "headerLabel": "CELLEBIOLOGI"
         },
         "medical-q3": {
           "question": "Hvilket organ er et viktig sted for behandling og nedbryting av mange medisiner?",
-          "answers": [
-            "Milt",
-            "Skjoldbruskkjertelen",
-            "Lever",
-            "Blære"
-          ],
+          "answers": {
+            "a1": "Milt",
+            "a2": "Skjoldbruskkjertelen",
+            "a3": "Lever",
+            "a4": "Blære"
+          },
           "headerLabel": "FARMAKOLOGI"
         },
         "medical-q4": {
           "question": "Hvilket utsagn skiller best virus fra bakterier?",
-          "answers": [
-            "Virus er alltid større",
-            "Bakterier kan ikke formere seg",
-            "Virus inneholder ikke genetisk materiale",
-            "Virus er avhengige av vertsceller for å replikere"
-          ],
+          "answers": {
+            "a1": "Virus er alltid større",
+            "a2": "Bakterier kan ikke formere seg",
+            "a3": "Virus inneholder ikke genetisk materiale",
+            "a4": "Virus er avhengige av vertsceller for å replikere"
+          },
           "headerLabel": "MIKROBIOLOGI"
         },
         "medical-q5": {
           "question": "En løsning med pH under 7 beskrives som hva?",
-          "answers": [
-            "Syrlig",
-            "Nøytral",
-            "Alkalisk",
-            "Isotonisk"
-          ],
+          "answers": {
+            "a1": "Syrlig",
+            "a2": "Nøytral",
+            "a3": "Alkalisk",
+            "a4": "Isotonisk"
+          },
           "headerLabel": "KROPPSKJEMI"
         },
         "medical-q6": {
           "question": "Hvilken del av det autonome nervesystemet er assosiert med \"hvile og fordøye\" aktivitet?",
-          "answers": [
-            "Sympatisk system",
-            "Parasympatisk system",
-            "Somatisk motorsystem",
-            "Sentral visuell vei"
-          ],
+          "answers": {
+            "a1": "Sympatisk system",
+            "a2": "Parasympatisk system",
+            "a3": "Somatisk motorsystem",
+            "a4": "Sentral visuell vei"
+          },
           "headerLabel": "NERVESYSTEMET"
         },
         "medical-q7": {
           "question": "Hvilken struktur hindrer mat i å komme inn i luftveiene under svelging?",
-          "answers": [
-            "Patella",
-            "Retina",
-            "Epiglottis",
-            "Bukspyttkjertelen"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Retina",
+            "a3": "Epiglottis",
+            "a4": "Bukspyttkjertelen"
+          },
           "headerLabel": "FUNKSJONELL ANATOMI"
         },
         "medical-q8": {
           "question": "Hvilken kranialnerve bærer visuell informasjon fra øyet?",
-          "answers": [
-            "Vague nerve",
-            "Ansiktsnerve",
-            "Trigeminusnerven",
-            "Optisk nerve"
-          ],
+          "answers": {
+            "a1": "Vague nerve",
+            "a2": "Ansiktsnerve",
+            "a3": "Trigeminusnerven",
+            "a4": "Optisk nerve"
+          },
           "headerLabel": "NEUROANATOMI"
         },
         "medical-q9": {
           "question": "Hvilken praksis er en sentral del av forebygging av infeksjon under pasientbehandling?",
-          "answers": [
-            "Riktig håndhygiene",
-            "Gjenbruk av engangshansker",
-            "Hopp over risikovurdering",
-            "Deling av urent utstyr"
-          ],
+          "answers": {
+            "a1": "Riktig håndhygiene",
+            "a2": "Gjenbruk av engangshansker",
+            "a3": "Hopp over risikovurdering",
+            "a4": "Deling av urent utstyr"
+          },
           "headerLabel": "KLINISK SIKKERHET"
         },
         "medical-q10": {
           "question": "Hva beskriver homeostase?",
-          "answers": [
-            "Det fullstendige fraværet av forandring i kroppen",
-            "Reguleringen av et relativt stabilt indre miljø",
-            "Nedbryting av hver medisin av nyrene",
-            "Kun produksjon av antistoffer"
-          ],
+          "answers": {
+            "a1": "Det fullstendige fraværet av forandring i kroppen",
+            "a2": "Reguleringen av et relativt stabilt indre miljø",
+            "a3": "Nedbryting av hver medisin av nyrene",
+            "a4": "Kun produksjon av antistoffer"
+          },
           "headerLabel": "ENDELIG VITENSKAPLIG SPØRSMÅL"
         }
       }

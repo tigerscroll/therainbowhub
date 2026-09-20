@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät saa tästä muistitestistä 80 % pisteistä",
   "eyebrow": "Muistin haaste",
   "summary": "Sanat, kuvat, numerot ja viivästyneet yllätykset testaavat, mitä muistisi säilyttää ja mikä hiljaa lipsahtaa pois.",
   "about": {
     "body": "Tämä lyhyt muistitesti käyttää kymmentä huolellisesti vaihdettua sanaa, kuvaa, numeroa, assosiaatio- ja huomiohaastetta luodakseen leikkisän tilannekuvan muistamisesta.\n\nJotkut yksityiskohdat testataan välittömästi, kun taas toiset palaavat sen jälkeen, kun erilaiset tehtävät ovat katkaisseet alkuperäisen muistin. Tutki jokaista vihjettä huolellisesti, mutta älä kiirehdi: nopeus ei koskaan muuta tulostasi.\n\nLopullinen pisteytesi osoittaa, kuinka moni kymmenestä kysymyksestä oli oikein, ja korostaa sinulle parhaiten soveltuvia muistialueita. Suorituskyky voi vaihdella huomion, väsymyksen, stressin, tuttavuuden ja sattuman mukaan, joten pidä tulosta viihteenä mieluummin kuin mielipidettä aivojen terveydestä tai pitkäaikaisesta muistista.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Tutki jokaista vihjettä huolellisesti, kun se ilmestyy; jotkut yksityiskohdat palaavat myöhemmin.",
         "Valitse jokaiseen haasteeseen yksi vastaus. Nopeus ei koskaan muuta tulostasi.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Vain viihdettä ja itsetutkiskelua varten. Tämä tietokilpailu ei ole lääketieteellinen, neurologinen tai kognitiivinen arviointi, eikä se voi diagnosoida muistiongelmia. Jos olet huolissasi muististasi tai terveydestäsi, keskustele pätevän terveydenhuollon ammattilaisen kanssa."
   },
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Onko muistisi mielestäsi terävä?\nTodista se vastaamalla 10 kysymykseen.",
     "cta": "Aloita"
   },
   "career": {
     "resultProgressLabel": "Muistin testi",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Muistin haaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Muistipisteesi ja kolmen alueen jakautuminen ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolmea muistialuetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolmea muistialuetta verrattiin"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Voitit 80 % haasteen! 🧠",
       "finished": "Olet suorittanut muistihaasteen",
-      "correctLabel": "oikein",
       "strongest": "Vahvin muistialueesi",
       "trickiest": "Vaikein alueesi",
       "bestRound": "Paras jakso",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Mikä sana esiintyi aloitustiedoissa?",
           "headerLabel": "SANAN MUISTUTUS",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Muista nämä yksityiskohdat",
             "instruction": "Jotkut saattavat palata myöhemmin testissä.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Mikä muoto ilmestyi kolmanneksi?",
           "headerLabel": "VISUALISTA muistoa",
-          "answers": [
-            "Ympyrä",
-            "Timantti",
-            "Kolmio",
-            "Neliö"
-          ],
+          "answers": {
+            "a1": "Ympyrä",
+            "a2": "Timantti",
+            "a3": "Kolmio",
+            "a4": "Neliö"
+          },
           "study": {
             "title": "Muista väri- ja muotojärjestys",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Minkä numeron näit?",
           "headerLabel": "NUMERON MUISTUTUS",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Muista tämä numero",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Mikä koodi vastaa tarkasti K7M2Q:ta?",
           "headerLabel": "KOODI OSTA",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "Mikä on 4 – 9 – 2 taaksepäin?",
           "headerLabel": "TYÖMUISTI",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Mikä esine ilmestyi kolmanneksi?",
           "headerLabel": "TILAUKSEEN VETO",
-          "answers": [
-            "Leija",
-            "Käsine",
-            "Kamera",
-            "Cupcake"
-          ],
+          "answers": {
+            "a1": "Leija",
+            "a2": "Käsine",
+            "a3": "Kamera",
+            "a4": "Cupcake"
+          },
           "study": {
             "title": "Tutki neljän kohteen järjestystä",
             "instruction": "Tämä katoaa automaattisesti.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Minne Saara matkusti?",
           "headerLabel": "YKSITYISKOHTAINEN MUISTI",
-          "answers": [
-            "Pariisi",
-            "Rooma",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Pariisi",
+            "a2": "Rooma",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Lue nämä tiedot kerran",
             "instruction": "Yksi yksityiskohta saattaa palata myöhemmin.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Mikä kopio sisältää nollan O-kirjaimen sijaan?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "NOPEA HUOMIO",
-          "answers": [
-            "Ensin",
-            "Toinen",
-            "Neljäs",
-            "Kolmanneksi"
-          ]
+          "answers": {
+            "a1": "Ensin",
+            "a2": "Toinen",
+            "a3": "Neljäs",
+            "a4": "Kolmanneksi"
+          }
         },
         "memory-r5q1": {
           "question": "Ajattele alkua: minkä värinen norsu oli?",
           "headerLabel": "VIIVÄSTYNYT MUISTUTUS",
-          "answers": [
-            "Hopeaa",
-            "Violetti",
-            "Sininen",
-            "Kulta"
-          ]
+          "answers": {
+            "a1": "Hopeaa",
+            "a2": "Violetti",
+            "a3": "Sininen",
+            "a4": "Kulta"
+          }
         },
         "memory-r5q6": {
           "question": "Mihin aikaan Saaran juna lähti?",
           "headerLabel": "VIIMEINEN MUISTITESTI",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo el 8% aprueba este examen de ingreso para paramédicos",
   "eyebrow": "DESAFÍO DE ENTRADA PARAMÉDICO",
   "summary": "Los peligros de la escena, los signos vitales y las decisiones de respuesta rápida ponen a prueba si puedes pensar con claridad cuando cada pista es importante.",
-  "progressLabel": "completado",
   "landing": {
     "intro": "Peligros en el lugar, signos vitales, cálculos de emergencia y juicio tranquilo. ¿Puedes pensar con claridad cuando cada pista importa?",
     "cta": "Empezar el test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafío de entretenimiento mundial contiene diez preguntas de entrada sobre anatomía, observaciones, aritmética, comunicación, seguridad y juicio de prioridad. Pone a prueba un razonamiento cuidadoso en lugar de protocolos o procedimientos operativos locales.\n\nElige la mejor respuesta utilizando solo la información que se muestra. Las opciones seguras favorecen reconocer el riesgo, comunicar con claridad y buscar el apoyo cualificado adecuado.\n\nEste no es un examen de ingreso paramédico acreditado, una evaluación clínica, una calificación, un curso de capacitación ni una fuente de asesoramiento de emergencia.",
     "howToPlay": {
-      "title": "Cómo funciona",
       "steps": [
         "Completa diez preguntas cuidadosamente seleccionadas en un único desafío.",
         "Elige una respuesta cada vez. No sabrás qué respuestas son correctas hasta el final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "examen de ingreso paramédico",
-    "resultProgressComplete": "{value}% completado",
     "stages": {
       "stage-1": {
         "difficulty": "Desafío de entrada paramédico",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tu puntuación de ingreso de paramédico y tu desglose de seis áreas están listos para revelarse.",
         "preAdChecks": [
           "10 respuestas comprobadas",
-          "Seis zonas de entrada comparadas",
-          "Puntuación final calculada"
-        ],
-        "preAdButton": "Ver mis resultados"
+          "Seis zonas de entrada comparadas"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "¡Pasaste el desafío de ingreso para paramédicos!",
       "finished": "Desafío de entrada paramédico completado",
-      "correctLabel": "correctas",
       "strongest": "Tu categoría más sólida",
       "trickiest": "Tu categoría más difícil",
       "bestRound": "Mejor categoría",
@@ -107,8 +100,7 @@
         "snapshot": "Lo que sugiere tu perfil de candidato",
         "targetReached": "80% del desafío alcanzado",
         "targetRemaining": "Respuestas correctas que faltan para alcanzar el 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "¿Qué órgano bombea sangre por el cuerpo?",
-          "answers": [
-            "Corazón",
-            "Pulmones",
-            "Cerebro",
-            "Huesos"
-          ],
+          "answers": {
+            "a1": "Corazón",
+            "a2": "Pulmones",
+            "a3": "Cerebro",
+            "a4": "Huesos"
+          },
           "headerLabel": "ANATOMÍA Y FISIOLOGÍA"
         },
         "paramedic-r1q5": {
           "question": "¿Qué apertura hace el traspaso más claro?",
-          "answers": [
-            "Algo cambió antes, probablemente",
-            "Aquí están todos los detalles menores en orden aleatorio.",
-            "A las 14:20, la respiración se aceleró y disminuyó el nivel de alerta",
-            "Ya sé exactamente qué lo causó."
-          ],
+          "answers": {
+            "a1": "Algo cambió antes, probablemente",
+            "a2": "Aquí están todos los detalles menores en orden aleatorio.",
+            "a3": "A las 14:20, la respiración se aceleró y disminuyó el nivel de alerta",
+            "a4": "Ya sé exactamente qué lo causó."
+          },
           "headerLabel": "COMUNICACIÓN CLARA"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Pulso 80 luego 92 luego 108, con palidez y mareos"
           },
           "question": "¿Cuál es la mejor interpretación de este patrón?",
-          "answers": [
-            "El registro no ha cambiado.",
-            "La tendencia combinada sugiere un deterioro que requiere una evaluación calificada inmediata.",
-            "Solo importa el primer número",
-            "Los síntomas pueden ignorarse porque no se muestra ningún diagnóstico."
-          ],
+          "answers": {
+            "a1": "El registro no ha cambiado.",
+            "a2": "La tendencia combinada sugiere un deterioro que requiere una evaluación calificada inmediata.",
+            "a3": "Solo importa el primer número",
+            "a4": "Los síntomas pueden ignorarse porque no se muestra ningún diagnóstico."
+          },
           "headerLabel": "TENDENCIAS DE OBSERVACIÓN"
         },
         "paramedic-r2q4": {
           "question": "¿Qué afirmación describe mejor los riñones?",
-          "answers": [
-            "Intercambian oxígeno y dióxido de carbono.",
-            "Eliminan desechos de la sangre y ayudan a regular el equilibrio hídrico.",
-            "Bombean sangre a través de las arterias.",
-            "Controlan cada movimiento voluntario."
-          ],
+          "answers": {
+            "a1": "Intercambian oxígeno y dióxido de carbono.",
+            "a2": "Eliminan desechos de la sangre y ayudan a regular el equilibrio hídrico.",
+            "a3": "Bombean sangre a través de las arterias.",
+            "a4": "Controlan cada movimiento voluntario."
+          },
           "headerLabel": "SISTEMAS DEL CUERPO"
         },
         "paramedic-r1q4": {
           "question": "A lo largo de la única puerta hay un cable eléctrico con corriente. ¿Qué viene primero?",
-          "answers": [
-            "Pasa por encima con cuidado",
-            "Mantenga a todos alejados y obtenga ayuda calificada para que sea seguro",
-            "Muévelo con un objeto seco.",
-            "Pídele a un espectador que lo vea."
-          ],
+          "answers": {
+            "a1": "Pasa por encima con cuidado",
+            "a2": "Mantenga a todos alejados y obtenga ayuda calificada para que sea seguro",
+            "a3": "Muévelo con un objeto seco.",
+            "a4": "Pídele a un espectador que lo vea."
+          },
           "headerLabel": "SEGURIDAD DE LA ESCENA"
         },
         "paramedic-r6q2": {
           "question": "Una persona sigue asintiendo pero no ha entendido. ¿Qué debería pasar a continuación?",
-          "answers": [
-            "Repite la misma explicación más lentamente.",
-            "Pregunte: \"¿Entiendes?\" y continúa si dicen que sí.",
-            "Acortar la explicación pero mantener la misma terminología.",
-            "Utilizar palabras sencillas y comprobar de nuevo la comprensión"
-          ],
+          "answers": {
+            "a1": "Repite la misma explicación más lentamente.",
+            "a2": "Pregunte: \"¿Entiendes?\" y continúa si dicen que sí.",
+            "a3": "Acortar la explicación pero mantener la misma terminología.",
+            "a4": "Utilizar palabras sencillas y comprobar de nuevo la comprensión"
+          },
           "headerLabel": "COMUNICACIÓN CLARA"
         },
         "paramedic-r5q6": {
           "context": "La persona A se siente bien y sus observaciones se mantienen estables. La persona B ahora está húmeda y mareada, y su pulso ha aumentado en tres controles.",
           "question": "¿Quién necesita atención primero?",
-          "answers": [
-            "Persona B, porque varios cambios apuntan a un deterioro",
-            "Persona A, porque sus observaciones se registraron primero",
-            "Ambos pueden esperar porque ninguno tiene un diagnóstico nombrado.",
-            "La persona con el nombre más corto."
-          ],
+          "answers": {
+            "a1": "Persona B, porque varios cambios apuntan a un deterioro",
+            "a2": "Persona A, porque sus observaciones se registraron primero",
+            "a3": "Ambos pueden esperar porque ninguno tiene un diagnóstico nombrado.",
+            "a4": "La persona con el nombre más corto."
+          },
           "headerLabel": "JUICIO DE PRIORIDAD"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0.3 litros más 450 mililitros más 250 mililitros es igual al total"
           },
           "question": "¿Cuál es el volumen registrado combinado en mililitros?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1000 ml",
-            "1100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1000 ml",
+            "a4": "1100 ml"
+          },
           "headerLabel": "CÁLCULO DE EMERGENCIA"
         },
         "paramedic-r10q4": {
           "context": "REGISTRO DEL INCIDENTE — Una persona agresiva arroja objetos cerca de la entrada. El equipo bloquea parcialmente la ruta de salida más cercana.",
           "question": "¿Cuál es la respuesta más segura a los peligros combinados?",
-          "answers": [
-            "Manténgase alejado, guíe a otros hacia una ruta más segura y avise de la ayuda adecuada.",
-            "Acércate y discute hasta que la persona se detenga.",
-            "Recupera el equipo al lado de la persona antes de salir.",
-            "Pídale a un transeúnte no capacitado que bloquee los objetos arrojados."
-          ],
+          "answers": {
+            "a1": "Manténgase alejado, guíe a otros hacia una ruta más segura y avise de la ayuda adecuada.",
+            "a2": "Acércate y discute hasta que la persona se detenga.",
+            "a3": "Recupera el equipo al lado de la persona antes de salir.",
+            "a4": "Pídale a un transeúnte no capacitado que bloquee los objetos arrojados."
+          },
           "headerLabel": "SEGURIDAD INTEGRADA"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Respiración 16 alerta, luego 22 ansiosa, luego 28 somnolienta"
           },
           "question": "¿Cuál es la mejor interpretación de la tendencia completa?",
-          "answers": [
-            "La persona está mejorando constantemente.",
-            "Solo importa la medición intermedia",
-            "Los valores se pueden ignorar porque no se menciona ningún diagnóstico.",
-            "La respiración empeora mientras que la capacidad de respuesta disminuye."
-          ],
+          "answers": {
+            "a1": "La persona está mejorando constantemente.",
+            "a2": "Solo importa la medición intermedia",
+            "a3": "Los valores se pueden ignorar porque no se menciona ningún diagnóstico.",
+            "a4": "La respiración empeora mientras que la capacidad de respuesta disminuye."
+          },
           "headerLabel": "RESPUESTA FINAL"
         }
       }

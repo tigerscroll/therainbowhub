@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 1/10 może przejść ten katolicki quiz o ciekawostkach",
   "eyebrow": "TEST WIEDZY KATOLICKIEJ",
   "summary": "Dziesięć pytań sprawdza Twoją wiedzę na temat kultu katolickiego, Pisma Świętego, modlitwy i roku liturgicznego.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Pierwsze pytania mogą wydawać się znajome, ale kilka ostatnich ujawnia luki, które pomijają nawet osoby regularnie chodzące do kościoła.",
     "cta": "Rozpocznij quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ten ogólnoświatowo-angielski quiz rozrywkowy zawiera dziesięć pytań na temat kultu katolickiego, sakramentów, Pisma Świętego, modlitwy i roku liturgicznego.\n\nZa każdym razem wybierz jedną najlepszą odpowiedź. Pytania skupiają się na szeroko uznanym nauczaniu i praktyce katolickiej, a nie na lokalnych zwyczajach.\n\nTwój wynik mierzy wyniki tylko w tym krótkim zestawie ciekawostek i nie mówi nic o czyjejkolwiek wierze, oddaniu czy pozycji w Kościele.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Przeczytaj uważnie każde katolickie pytanie o ciekawostki.",
         "Wybierz jedną odpowiedź z czterech opcji.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katolicka ciekawostka",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Ciekawostki katolickie",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twój wynik ciekawostek katolickich i pełny przegląd odpowiedzi są gotowe.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie pięciu obszarów wiedzy",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie pięciu obszarów wiedzy"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Udało Ci się przejść wyzwanie związane z ciekawostkami katolickimi!",
       "finished": "Wyzwanie dotyczące ciekawostek katolickich ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar wiedzy",
       "trickiest": "Najtrudniejszy obszar wiedzy",
       "bestRound": "Najlepsza sekcja",
@@ -99,8 +92,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "catholic-q1": {
           "question": "Jak nazywa się główny akt kultu Kościoła katolickiego?",
-          "answers": [
-            "Msza",
-            "Różaniec",
-            "Anioł Pański",
-            "Stacje Drogi Krzyżowej"
-          ],
+          "answers": {
+            "a1": "Msza",
+            "a2": "Różaniec",
+            "a3": "Anioł Pański",
+            "a4": "Stacje Drogi Krzyżowej"
+          },
           "headerLabel": "UWIELBIENIE"
         },
         "catholic-q2": {
           "question": "Papież jest także biskupem jakiego miasta?",
-          "answers": [
-            "Jerozolima",
-            "Rzym",
-            "Asyż",
-            "Betlejem"
-          ],
+          "answers": {
+            "a1": "Jerozolima",
+            "a2": "Rzym",
+            "a3": "Asyż",
+            "a4": "Betlejem"
+          },
           "headerLabel": "KIEROWNICTWO KOŚCIOŁA"
         },
         "catholic-q3": {
           "question": "Ile sakramentów uznaje Kościół katolicki?",
-          "answers": [
-            "Pięć",
-            "Sześć",
-            "Siedem",
-            "Osiem"
-          ],
+          "answers": {
+            "a1": "Pięć",
+            "a2": "Sześć",
+            "a3": "Siedem",
+            "a4": "Osiem"
+          },
           "headerLabel": "SAKRAMENTY"
         },
         "catholic-q4": {
           "question": "Która pora roku kościelnego przypada bezpośrednio przed Bożym Narodzeniem?",
-          "answers": [
-            "Wielki Post",
-            "Wielkanoc",
-            "Zwykły czas",
-            "Adwent"
-          ],
+          "answers": {
+            "a1": "Wielki Post",
+            "a2": "Wielkanoc",
+            "a3": "Zwykły czas",
+            "a4": "Adwent"
+          },
           "headerLabel": "ROK KOŚCIELNY"
         },
         "catholic-q5": {
           "question": "Który zbiór tajemnic różańcowych wprowadził papież Jan Paweł II w 2002 roku?",
-          "answers": [
-            "Tajemnice Światła",
-            "Tajemnice Radosne",
-            "Tajemnice bolesne",
-            "Tajemnice chwalebne"
-          ],
+          "answers": {
+            "a1": "Tajemnice Światła",
+            "a2": "Tajemnice Radosne",
+            "a3": "Tajemnice bolesne",
+            "a4": "Tajemnice chwalebne"
+          },
           "headerLabel": "RÓŻANIEC"
         },
         "catholic-q6": {
           "question": "Która księga zajmuje pierwsze miejsce w Biblii katolickiej?",
-          "answers": [
-            "Wyjście",
-            "Księga Rodzaju",
-            "Psalmy",
-            "Mateusz"
-          ],
+          "answers": {
+            "a1": "Wyjście",
+            "a2": "Księga Rodzaju",
+            "a3": "Psalmy",
+            "a4": "Mateusz"
+          },
           "headerLabel": "PISMO"
         },
         "catholic-q7": {
           "question": "Który sakrament wzmacnia łaskę chrztu i wiąże się z darami Ducha Świętego?",
-          "answers": [
-            "Namaszczenie chorych",
-            "Święcenia",
-            "Bierzmowanie",
-            "Małżeństwo"
-          ],
+          "answers": {
+            "a1": "Namaszczenie chorych",
+            "a2": "Święcenia",
+            "a3": "Bierzmowanie",
+            "a4": "Małżeństwo"
+          },
           "headerLabel": "WIARA I PRAKTYKA"
         },
         "catholic-q8": {
           "question": "Ile stacji Drogi Krzyżowej jest tradycyjnie przestrzeganych?",
-          "answers": [
-            "Siedem",
-            "Dziesięć",
-            "Dwanaście",
-            "Czternaście"
-          ],
+          "answers": {
+            "a1": "Siedem",
+            "a2": "Dziesięć",
+            "a3": "Dwanaście",
+            "a4": "Czternaście"
+          },
           "headerLabel": "Oddanie"
         },
         "catholic-q9": {
           "question": "W tradycji łacińsko-katolickiej, który dzień rozpoczyna Wielki Post?",
-          "answers": [
-            "Środa Popielcowa",
-            "Niedziela Palmowa",
-            "Dobry piątek",
-            "Pięćdziesiątnica"
-          ],
+          "answers": {
+            "a1": "Środa Popielcowa",
+            "a2": "Niedziela Palmowa",
+            "a3": "Dobry piątek",
+            "a4": "Pięćdziesiątnica"
+          },
           "headerLabel": "KALENDARZ LITURGICZNY"
         },
         "catholic-q10": {
           "question": "Jakie wydarzenie upamiętnia Pięćdziesiątnica?",
-          "answers": [
-            "Narodzenia Jezusa",
-            "Zstąpienie Ducha Świętego",
-            "Chrzest Jezusa",
-            "Przemienienie"
-          ],
+          "answers": {
+            "a1": "Narodzenia Jezusa",
+            "a2": "Zstąpienie Ducha Świętego",
+            "a3": "Chrzest Jezusa",
+            "a4": "Przemienienie"
+          },
           "headerLabel": "PYTANIE KOŃCOWE"
         }
       }

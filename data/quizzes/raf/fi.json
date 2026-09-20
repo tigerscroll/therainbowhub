@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 15 % aikuisista voi läpäistä tämän RAF-pääsykokeen",
   "eyebrow": "RAF-TIETOJEN TESTI",
   "summary": "Kymmenen kysymystä testaa RAF:n historiaa, lentokoneita, rivejä ja operatiivista tietämystä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Kuuluisat lentokoneet ovat vasta alkua. Nämä 10 kysymystä paljastavat, kuinka paljon tiedät RAFista.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste kattaa kuninkaallisten ilmavoimien muodostelman, historian, asemarakenteen, lentokoneet ja nykyajan roolit. Se alkaa tutuilla virstanpylväillä ennen kuin siirrytään yksityiskohtiin, jotka vaativat lähempää RAF-tietoa.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin voit avata täydellisen vastaustarkistuksen.\n\nFaktat verrattiin kuninkaallisten ilmavoimien julkaisemaan nykyiseen ja historialliseen aineistoon.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan RAF-kysymykseen.",
         "Valitse yksi neljästä vastauksesta ilman ulkopuolista apua.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "RAF:n sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "RAF-pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja RAF-tietopisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä RAF-osaamista verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä RAF-osaamista verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit RAF-pääsyhaasteen!",
       "finished": "RAF:n sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin RAF-kohde",
       "trickiest": "Hankalin RAF-aihe",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "raf-q1": {
           "question": "Minä vuonna kuninkaalliset ilmavoimat perustettiin?",
-          "answers": [
-            "1918",
-            "1903",
-            "1925",
-            "1939"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1903",
+            "a3": "1925",
+            "a4": "1939"
+          },
           "headerLabel": "RAF ALKUPERÄ"
         },
         "raf-q2": {
           "question": "Minkä muun palvelun kanssa RAF luotiin yhdistämällä Royal Flying Corps?",
-          "answers": [
-            "Fleet Air Arm",
-            "Royal Naval Air Service",
-            "Armeijan ilmajoukko",
-            "Royal Observer Corps"
-          ],
+          "answers": {
+            "a1": "Fleet Air Arm",
+            "a2": "Royal Naval Air Service",
+            "a3": "Armeijan ilmajoukko",
+            "a4": "Royal Observer Corps"
+          },
           "headerLabel": "PALVELUHISTORIA"
         },
         "raf-q3": {
           "question": "Minä vuonna Britannian taistelu käytiin?",
-          "answers": [
-            "1918",
-            "1936",
-            "1940",
-            "1944"
-          ],
+          "answers": {
+            "a1": "1918",
+            "a2": "1936",
+            "a3": "1940",
+            "a4": "1944"
+          },
           "headerLabel": "BRITANIAN TAISTELU"
         },
         "raf-q4": {
           "question": "Mikä on kuninkaallisten ilmavoimien virallinen motto?",
-          "answers": [
-            "Semper Fidelis",
-            "Kuka uskaltaa voittaa",
-            "Palvele johtaa",
-            "Per Ardua ad Astra"
-          ],
+          "answers": {
+            "a1": "Semper Fidelis",
+            "a2": "Kuka uskaltaa voittaa",
+            "a3": "Palvele johtaa",
+            "a4": "Per Ardua ad Astra"
+          },
           "headerLabel": "RAF-IDENTITY"
         },
         "raf-q5": {
           "question": "Mikä on RAF:n ensisijainen rooli nykyään?",
-          "answers": [
-            "Yhdistyneen kuningaskunnan taivaan suojelu",
-            "Kuninkaallisen laivaston lentotukialusten operointi",
-            "Hallitsee kaikkia siviililentokenttiä",
-            "Kouluttaa jokaista puolustusvoimien haaraa"
-          ],
+          "answers": {
+            "a1": "Yhdistyneen kuningaskunnan taivaan suojelu",
+            "a2": "Kuninkaallisen laivaston lentotukialusten operointi",
+            "a3": "Hallitsee kaikkia siviililentokenttiä",
+            "a4": "Kouluttaa jokaista puolustusvoimien haaraa"
+          },
           "headerLabel": "MODERNI ROOLI"
         },
         "raf-q6": {
           "question": "Mikä tilattu RAF-arvo on välittömästi lentoluutnantin yläpuolella?",
-          "answers": [
-            "Lentävä upseeri",
-            "Laivueen johtaja",
-            "Siiven komentaja",
-            "Ryhmän kapteeni"
-          ],
+          "answers": {
+            "a1": "Lentävä upseeri",
+            "a2": "Laivueen johtaja",
+            "a3": "Siiven komentaja",
+            "a4": "Ryhmän kapteeni"
+          },
           "headerLabel": "RAKENNE"
         },
         "raf-q7": {
           "question": "Mitä lentokonetta lennättää RAF Aerobatic Team, Red Arrows?",
-          "answers": [
-            "Taifuuni FGR4",
-            "Ohjaaja T1",
-            "Hawk T1",
-            "Matkailija"
-          ],
+          "answers": {
+            "a1": "Typhoon FGR4",
+            "a2": "Tutor T1",
+            "a3": "Hawk T1",
+            "a4": "Voyager"
+          },
           "headerLabel": "LENTOKONEETTIEDOT"
         },
         "raf-q8": {
           "question": "Mikä oli Chain Home Britannian taistelun aikana?",
-          "answers": [
-            "Hävittäjälentue",
-            "Lentokoneen tuotantosuunnitelma",
-            "Rannikkopelastuspalvelu",
-            "Varhaisvaroitustutkaverkko"
-          ],
+          "answers": {
+            "a1": "Hävittäjälentue",
+            "a2": "Lentokoneen tuotantosuunnitelma",
+            "a3": "Rannikkopelastuspalvelu",
+            "a4": "Varhaisvaroitustutkaverkko"
+          },
           "headerLabel": "ALKAINEN VAROITUS"
         },
         "raf-q9": {
           "question": "Minkä yrityksen nimi liittyy erottamattomasti Spitfiren suunnitteluun?",
-          "answers": [
-            "Supermarine",
-            "Avro",
-            "de Havilland",
-            "Handley sivu"
-          ],
+          "answers": {
+            "a1": "Supermarine",
+            "a2": "Avro",
+            "a3": "de Havilland",
+            "a4": "Handley sivu"
+          },
           "headerLabel": "HISTORIALLINEN LENTOKONE"
         },
         "raf-q10": {
           "question": "Mihin neljänteen virtaan RAF-lentäjät voivat päästä nopean suihkukoneen, monimoottorisen ja pyörivän siipilentämisen lisäksi?",
-          "answers": [
-            "Meritullin partio",
-            "Kauko-ohjattavat lentokonejärjestelmät",
-            "Siviililentoyhtiön komento",
-            "Merivoimien sukellusveneilmailu"
-          ],
+          "answers": {
+            "a1": "Meritullin partio",
+            "a2": "Kauko-ohjattavat lentokonejärjestelmät",
+            "a3": "Siviililentoyhtiön komento",
+            "a4": "Merivoimien sukellusveneilmailu"
+          },
           "headerLabel": "VIIMEINEN RAF-KYSYMYS"
         }
       }

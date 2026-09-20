@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 6 % aikuisista voi läpäistä tämän asianajajan pääsykokeen",
   "eyebrow": "TUOMIOISTUIMEN PERUSTELUTESTI",
   "summary": "Kymmenen kysymystä testaa oikeussalin kieltä, ennakkotapausta, todisteita ja ammatillista harkintaa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Aloituskysymykset kuulostavat tutulta. Sitten koe siirtyy ennakkotapauksiin, todisteisiin ja oikeussalin päättelyyn.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja käsitteitä, jotka löytyvät englanninkielisten 1. tason maiden yleisistä oikeusjärjestelmistä. Tarkat säännöt ja terminologia vaihtelevat lainkäyttöalueen mukaan, joten kysymykset keskittyvät siirrettäviin oikeussaleihin perustuviin perusteluihin yhden maan pääsyopetuksen sijaan.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan oikeussalin kysymykseen.",
         "Valitse yksittäinen paras oikeudellinen käsite tai edunvalvontareaktio.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Asianajajan sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Asianajajan pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja oikeussalin perustelupisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Verrattiin neljää lakialuetta",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Verrattiin neljää lakialuetta"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Läpäisit Barrister-pääsyhaasteen!",
       "finished": "Asianajajan pääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin lakialue",
       "trickiest": "Hankalin lakialue",
       "bestRound": "Paras jakso",
@@ -96,8 +89,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Kuka tavallisesti kantaa rikosoikeudenkäynnissä syytteen todistamistaakan?",
-          "answers": [
-            "Syyttäjä",
-            "Syytetty",
-            "Tuomaristo",
-            "Oikeudenkäynnin kirjailija"
-          ],
+          "answers": {
+            "a1": "Syyttäjä",
+            "a2": "Syytetty",
+            "a3": "Tuomaristo",
+            "a4": "Oikeudenkäynnin kirjailija"
+          },
           "headerLabel": "Kuulusteluhuoneen perustukset"
         },
         "barrister-q2": {
           "question": "Millä periaatteella syytettyä kohdellaan syyttömänä, ellei syyllisyyttä näytetty toteen?",
-          "answers": [
-            "Tiukka vastuu",
-            "Syyttömyysolettama",
-            "Kaksi kertaa enemmän",
-            "Oikeuden ilmoitus"
-          ],
+          "answers": {
+            "a1": "Tiukka vastuu",
+            "a2": "Syyttömyysolettama",
+            "a3": "Kaksi kertaa enemmän",
+            "a4": "Oikeuden ilmoitus"
+          },
           "headerLabel": "Tärkeät periaatteet"
         },
         "barrister-q3": {
           "question": "Millä nimellä kutsutaan aikaisempaa oikeuden päätöstä, joka voi ohjata myöhempää vastaavaa tapausta?",
-          "answers": [
-            "Vapauskirja",
-            "Syyte",
-            "Ennakkotapaus",
-            "Ratkaisu"
-          ],
+          "answers": {
+            "a1": "Vapauskirja",
+            "a2": "Syyte",
+            "a3": "Ennakkotapaus",
+            "a4": "Ratkaisu"
+          },
           "headerLabel": "Oikeudenkäsittely"
         },
         "barrister-q4": {
           "question": "Miten vastapuolen suorittamaa todistajan kuulustelua kutsutaan yleisesti?",
-          "answers": [
-            "Suora tutkimus",
-            "Oikeudellinen tarkistus",
-            "Disclosure",
-            "Vastakuulustelu"
-          ],
+          "answers": {
+            "a1": "Suora tutkimus",
+            "a2": "Oikeudellinen tarkistus",
+            "a3": "Disclosure",
+            "a4": "Vastakuulustelu"
+          },
           "headerLabel": "ADVOCACY"
         },
         "barrister-q5": {
           "question": "Mikä latinankielinen termi kuvaa tuomioistuimen päätöksen kannalta olennaista oikeudellista syytä?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas corpus",
-            "Hyvässä uskossa",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas corpus",
+            "a3": "Hyvässä uskossa",
+            "a4": "Prima facie"
+          },
           "headerLabel": "ENNAKKO"
         },
         "barrister-q6": {
           "question": "Mikä tuomioistuimen huomautus ei ole välttämätöntä päätöksessä, jota usein kutsutaan?",
-          "answers": [
-            "Sitova määräys",
-            "Obiter dictum",
-            "Syyllisyyden tunnustus",
-            "Toiminnan syy"
-          ],
+          "answers": {
+            "a1": "Sitova määräys",
+            "a2": "Obiter dictum",
+            "a3": "Syyllisyyden tunnustus",
+            "a4": "Toiminnan syy"
+          },
           "headerLabel": "OIKEUDELLINEN PERUSTELU"
         },
         "barrister-q7": {
           "question": "Mikä termi kuvaa yleisesti tuomioistuimen ulkopuolista lausuntoa, joka annetaan sen todentamiseksi?",
-          "answers": [
-            "Etuoikeus",
-            "Estoppel",
-            "Kuulopuhetta",
-            "Lieventäminen"
-          ],
+          "answers": {
+            "a1": "Etuoikeus",
+            "a2": "Estoppel",
+            "a3": "Kuulopuhetta",
+            "a4": "Lieventäminen"
+          },
           "headerLabel": "TODISTEET"
         },
         "barrister-q8": {
           "question": "Mikä kysymys viittaa selkeimmin vastaukseen, jota koettelija haluaa?",
-          "answers": [
-            "Mitä tapahtui seuraavaksi?",
-            "Missä seisot?",
-            "Miltä huone näytti?",
-            "Valo oli punainen, kun ylitit, eikö niin?"
-          ],
+          "answers": {
+            "a1": "Mitä tapahtui seuraavaksi?",
+            "a2": "Missä seisot?",
+            "a3": "Miltä huone näytti?",
+            "a4": "Valo oli punainen, kun ylitit, eikö niin?"
+          },
           "headerLabel": "TODISTAJAN KYSYMYKSET"
         },
         "barrister-q9": {
           "question": "Mihin kysymykseen oikeuskäytännön tarkastus keskittyy ensisijaisesti?",
-          "answers": [
-            "Onko julkinen päätös tehty laillisesti",
-            "Valitsiko tuomaristo parhaan todistajan",
-            "Onko sopimus tuottanut voittoa",
-            "Pitäisikö jokainen valitus hyväksyä"
-          ],
+          "answers": {
+            "a1": "Onko julkinen päätös tehty laillisesti",
+            "a2": "Valitsiko tuomaristo parhaan todistajan",
+            "a3": "Onko sopimus tuottanut voittoa",
+            "a4": "Pitäisikö jokainen valitus hyväksyä"
+          },
           "headerLabel": "JULKISEN LAKI"
         },
         "barrister-q10": {
           "question": "Mikä on yleisesti ottaen työluokan periaate, joka vaatii oikeutettuja asianajajia tekemään ammatillisten sääntöjen ja poikkeusten mukaisesti?",
-          "answers": [
-            "Hyväksy vain suosittuja tapauksia",
-            "Hyväksy sopivat ohjeet asiakkaan henkilöllisyydestä tai tapauksen suosiosta riippumatta",
-            "Takaa onnistunut lopputulos",
-            "Työskentele vain rikostuomioistuimissa"
-          ],
+          "answers": {
+            "a1": "Hyväksy vain suosittuja tapauksia",
+            "a2": "Hyväksy sopivat ohjeet asiakkaan henkilöllisyydestä tai tapauksen suosiosta riippumatta",
+            "a3": "Takaa onnistunut lopputulos",
+            "a4": "Työskentele vain rikostuomioistuimissa"
+          },
           "headerLabel": "VIIMEINEN EETIIKKAKYSYMYS"
         }
       }

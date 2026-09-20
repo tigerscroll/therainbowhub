@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 7 % består denne intelligenstest",
   "eyebrow": "EFTERRETNINGSVÆVLING",
   "summary": "Mønstre, talregler, ordlinks og rumlige fælder tester, hvor hurtigt dit ræsonnement finder den skjulte regel.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Mønstre, koder, ordlinks og logiske fælder støder sammen. Hvor længe kan dit ræsonnement være et skridt foran?",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende underholdningsudfordring samler ti nøje udvalgte puslespil, der dækker mønstre, numeriske regler, verbale forbindelser, rumlig ræsonnement, opmærksomhed og logisk deduktion. Det er designet til at føles legende og krævende snarere end som en formel egnethedseksamen.\n\nHvert puslespil har ét svar, der understøttes af den viste information. Interaktionen ændrer sig regelmæssigt, så du skal muligvis identificere en regel, sammenligne spor, transformere et symbol, regne mentalt eller bemærke en lille uoverensstemmelse.\n\nDin intelligenstestscore er procentdelen af disse underholdningsopgaver, du løser korrekt. Den beskriver kun dette forsøg og måler ikke din faktiske intelligens, IQ, aptitude eller uddannelsesmæssige evner.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
         "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Intelligens udfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "En udfordring med efterretningen",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din intelligens-testscore og tre-område-opdeling er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Tre tankeområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre tankeområder sammenlignet"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du bestod intelligenstesten!",
       "finished": "Intelligenstest gennemført",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste tankeområde",
       "trickiest": "Det vanskeligste tænkeområde",
       "bestRound": "Bedste afsnit",
@@ -98,8 +91,7 @@
         "snapshot": "Hvad dette forsøg antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "cirkel, trekant, cirkel, trekant, ukendt"
           },
           "question": "Hvilket symbol kommer næste gang?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "MØNSTER RÆSONNER"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "pil op til højre ved siden af et lodret spejl"
           },
           "question": "Hvilken pil er reflektionen i et lodret spejl?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "RUMMLIG RÆSONNER"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "bogstavskift plus én, plus to, plus én; CAT bliver DCU"
           },
           "question": "Skiftene gentager +1, +2, +1. Hvordan er HUND kodet?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBAL RÆSONNER"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "talpyramide med bund 3, 5, 4 og midterste 8, 9"
           },
           "question": "Hver blok er summen af de to under den. Hvad går ovenpå?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "NUMERISK BEGRÆNSNING"
         },
         "iq-s3q2": {
           "question": "En maskine fordobler et tal og tilføjer derefter 3. Hvilken input giver 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "NUMERISK BEGRÆNSNING"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Referencekode K7M2-Q9. Find indstillingen med ét tegn ændret."
           },
           "question": "Hvilken kopi adskiller sig fra referencen med præcis ét tegn?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "BEMÆRK PÅ DETALJER"
         },
         "iq-s4q1": {
           "question": "Præcis én person fortæller sandheden. A siger, at B lyver. B siger, at C lyver. C siger, at A og B begge lyver. Hvem fortæller sandheden?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Ingen"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Ingen"
+          },
           "headerLabel": "LOGISK DEDUKTION"
         },
         "iq-s4q4": {
           "question": "Start i midten mod nord. Flyt et felt frem, drej til højre, flyt to felter, drej til højre, og flyt derefter et felt. Hvor slutter du i forhold til starten?",
-          "answers": [
-            "To firkanter til højre",
-            "En firkant op",
-            "To firkanter tilbage",
-            "Tilbage i midten"
-          ],
+          "answers": {
+            "a1": "To firkanter til højre",
+            "a2": "En firkant op",
+            "a3": "To firkanter tilbage",
+            "a4": "Tilbage i midten"
+          },
           "headerLabel": "RUMMLIG RÆSONNER"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "rækker 3, 4, 10; 5, 2, 12; 7, 3, ukendt"
           },
           "question": "I hver række skal du fordoble det første tal, og derefter tilføje det andet. Hvad erstatter spørgsmålstegnet?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "NUMERISK BEGRÆNSNING"
         },
         "iq-s5q8": {
           "question": "En pil peger opad. Drej den 90° med uret, og reflekter den derefter i et lodret spejl. Hvor peger det?",
-          "answers": [
-            "Op",
-            "Højre",
-            "Ned",
-            "venstre"
-          ],
+          "answers": {
+            "a1": "Op",
+            "a2": "Højre",
+            "a3": "Ned",
+            "a4": "venstre"
+          },
           "headerLabel": "ENDELIG RUMPRØVE"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 7% potrafi wymienić tych legendarnych aktorów",
   "eyebrow": "WYZWANIE SREBRNEGO EKRANU",
   "summary": "Dziesięć niepowtarzalnych twarzy z historii kina. Zobacz, ilu legendarnych aktorów potrafisz wymienić bez podawania tytułu filmu.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Dziesięć legendarnych twarzy. Brak tytułów filmów. Ile można rozpoznać bez podpowiedzi?",
     "cta": "Zacznij"
@@ -11,7 +9,6 @@
   "about": {
     "body": "W tym rozrywkowym quizie bierze udział dziesięciu znanych aktorów z klasycznej historii kina i późniejszej historii kina. Każde pytanie przedstawia fotografię aktora i cztery możliwe nazwiska.\n\nPrzyjrzyj się uważnie twarzy i skorzystaj ze wskazówki tylko wtedy, gdy jej potrzebujesz. Twoje odpowiedzi pozostają ukryte aż do ostatecznego ujawnienia.\n\nObrazy i koncepcje pytań źródłowych zostały powielone z QuizDays za zgodą właściciela witryny zlecającego ten quiz.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Przyjrzyj się każdemu zdjęciu i przeczytaj krótką wskazówkę.",
         "Wybierz jedno z czterech imion aktora.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie aktorskie",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Legendarni aktorzy",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoja ścieżka dźwiękowa do kina klasycznego i pełna prezentacja aktorów są gotowe.",
         "preAdChecks": [
           "Sprawdzono 10 znanych twarzy",
-          "Porównanie trzech epok ekranowych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie trzech epok ekranowych"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Udało Ci się ukończyć wyzwanie legendarnych aktorów!",
       "finished": "Wyzwanie aktorskie ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejsza era ekranowa",
       "trickiest": "Najtrudniejsza era ekranowa",
       "bestRound": "Najlepsza sekcja",
@@ -93,8 +86,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Czarno-biały portret Johna Wayne'a w kowbojskim kapeluszu"
           },
           "question": "Który legendarny aktor wystąpił w ponad 140 filmach?",
-          "answers": [
-            "Johna Wayne’a",
-            "Jerry'ego Lewisa",
-            "Paula Newmana",
-            "Lee Marvina"
-          ],
+          "answers": {
+            "a1": "Johna Wayne’a",
+            "a2": "Jerry'ego Lewisa",
+            "a3": "Paula Newmana",
+            "a4": "Lee Marvina"
+          },
           "headerLabel": "TWARZ 1 Z 10"
         },
         "actors-q2": {
@@ -119,12 +111,12 @@
             "alt": "Portret egipskiego aktora Omara Sharifa"
           },
           "question": "Którą egipską legendę ekranu przedstawiono na zdjęciu?",
-          "answers": [
-            "Sidneya Poitiera",
-            "Jamesa Garnera",
-            "Erika Estrady",
-            "Omara Sharifa"
-          ],
+          "answers": {
+            "a1": "Sidneya Poitiera",
+            "a2": "Jamesa Garnera",
+            "a3": "Erika Estrady",
+            "a4": "Omara Sharifa"
+          },
           "headerLabel": "TWARZ 2 Z 10"
         },
         "actors-q3": {
@@ -132,12 +124,12 @@
             "alt": "Portret aktora Jacka Lemmona"
           },
           "question": "Który aktor często występował u boku Waltera Matthau?",
-          "answers": [
-            "Michaela Caine’a",
-            "Larry'ego Hagmana",
-            "Jacka Lemmona",
-            "Lee Marvina"
-          ],
+          "answers": {
+            "a1": "Michaela Caine’a",
+            "a2": "Larry'ego Hagmana",
+            "a3": "Jacka Lemmona",
+            "a4": "Lee Marvina"
+          },
           "headerLabel": "TWARZ 3 Z 10"
         },
         "actors-q4": {
@@ -145,12 +137,12 @@
             "alt": "Portret aktora i reżysera Roberta Redforda"
           },
           "question": "Który aktor i reżyser rozpoczął karierę ekranową w 1960 roku?",
-          "answers": [
-            "Jona Voighta",
-            "Ryszarda Dreyfussa",
-            "Paula Newmana",
-            "Roberta Redforda"
-          ],
+          "answers": {
+            "a1": "Jona Voighta",
+            "a2": "Ryszarda Dreyfussa",
+            "a3": "Paula Newmana",
+            "a4": "Roberta Redforda"
+          },
           "headerLabel": "TWARZ 4 Z 10"
         },
         "actors-q5": {
@@ -158,12 +150,12 @@
             "alt": "Portret brytyjskiego aktora Michaela Caine’a"
           },
           "question": "Który znany brytyjski aktor jest na zdjęciu?",
-          "answers": [
-            "Gene'a Hackmana",
-            "Michaela Caine’a",
-            "Jerry'ego Lewisa",
-            "Charltona Hestona"
-          ],
+          "answers": {
+            "a1": "Gene'a Hackmana",
+            "a2": "Michaela Caine’a",
+            "a3": "Jerry'ego Lewisa",
+            "a4": "Charltona Hestona"
+          },
           "headerLabel": "TWARZ 5 Z 10"
         },
         "actors-q6": {
@@ -171,12 +163,12 @@
             "alt": "Portret aktora Jamesa Garnera"
           },
           "question": "Który aktor był także zapalonym golfistą?",
-          "answers": [
-            "Jamesa Garnera",
-            "Ala Pacino",
-            "Ryszarda Dreyfussa",
-            "Roya Scheidera"
-          ],
+          "answers": {
+            "a1": "Jamesa Garnera",
+            "a2": "Ala Pacino",
+            "a3": "Ryszarda Dreyfussa",
+            "a4": "Roya Scheidera"
+          },
           "headerLabel": "TWARZ 6 Z 10"
         },
         "actors-q7": {
@@ -184,12 +176,12 @@
             "alt": "Portret aktora Cary'ego Granta"
           },
           "question": "Która gwiazda wystąpiła w kilku filmach Alfreda Hitchcocka?",
-          "answers": [
-            "Clarka Gable’a",
-            "Jamesa Deana",
-            "Cary’ego Granta",
-            "Tony’ego Curtisa"
-          ],
+          "answers": {
+            "a1": "Clarka Gable’a",
+            "a2": "Jamesa Deana",
+            "a3": "Cary’ego Granta",
+            "a4": "Tony’ego Curtisa"
+          },
           "headerLabel": "TWARZ 7 Z 10"
         },
         "actors-q8": {
@@ -197,12 +189,12 @@
             "alt": "Omar Sharif jako szeryf Ali w Lawrence z Arabii"
           },
           "question": "Który aktor zagrał Sherifa Alego u boku Petera O'Toole'a w Lawrence z Arabii?",
-          "answers": [
-            "Jamesa Garnera",
-            "Omara Sharifa",
-            "Jacka Lemmona",
-            "Paula Newmana"
-          ],
+          "answers": {
+            "a1": "Jamesa Garnera",
+            "a2": "Omara Sharifa",
+            "a3": "Jacka Lemmona",
+            "a4": "Paula Newmana"
+          },
           "headerLabel": "TWARZ 8 Z 10"
         },
         "actors-q9": {
@@ -210,12 +202,12 @@
             "alt": "Portret komika i aktora Jerry'ego Lewisa"
           },
           "question": "Kto zyskał przydomek „Króla Komedii”?",
-          "answers": [
-            "Freda Warda",
-            "Jerry'ego Lewisa",
-            "Charlesa Durninga",
-            "Neda Beatty’ego"
-          ],
+          "answers": {
+            "a1": "Freda Warda",
+            "a2": "Jerry'ego Lewisa",
+            "a3": "Charlesa Durninga",
+            "a4": "Neda Beatty’ego"
+          },
           "headerLabel": "TWARZ 9 Z 10"
         },
         "actors-q10": {
@@ -223,12 +215,12 @@
             "alt": "Portret aktora Richarda Dreyfussa"
           },
           "question": "Który aktor słynął z feudu z Billem Murrayem?",
-          "answers": [
-            "Ryszarda Dreyfussa",
-            "Donalda Sutherlanda",
-            "Jerry'ego Lewisa",
-            "Cary’ego Granta"
-          ],
+          "answers": {
+            "a1": "Ryszarda Dreyfussa",
+            "a2": "Donalda Sutherlanda",
+            "a3": "Jerry'ego Lewisa",
+            "a4": "Cary’ego Granta"
+          },
           "headerLabel": "OSTATNIE TWARZ"
         }
       }

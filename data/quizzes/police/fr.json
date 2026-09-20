@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 6 % des adultes peuvent réussir cet examen d’entrée de policier",
   "eyebrow": "LE TEST D'APTITUDE DU POLICIER",
   "summary": "Dix questions testent le jugement, la communication, le traitement des preuves et l’intégrité professionnelle.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Les premiers appels semblent simples. Ensuite, l’examen passe aux preuves, au jugement et aux décisions en une fraction de seconde.",
     "cta": "Commencer le test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions utilise des principes généraux du travail policier applicables dans plusieurs grands pays anglophones. Il évalue le jugement axé sur la sécurité, la conduite rigoureuse des entretiens, la préservation des preuves et la prise de décision responsable, sans dépendre des lois, des grades ou des procédures d'un pays précis.\n\nChoisissez une réponse à chaque situation. Les bonnes réponses restent cachées jusqu'à la révélation finale, où vous pourrez débloquer le corrigé complet.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions d’aptitude policière de plus en plus difficiles.",
         "Choisissez la réponse la plus sûre, la plus claire ou la mieux étayée.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi d’admission dans la police",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Examen d’entrée dans la police",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score d'aptitude policière est prêt à être révélé.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Quatre domaines de compétences policières comparés",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Quatre domaines de compétences policières comparés"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Vous avez réussi le test d’admission dans la police !",
       "finished": "Défi d’admission dans la police terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -96,8 +89,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Objectif de 80 % atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Vous arrivez sur les lieux alors qu’une personne est en danger immédiat. Quelle est la priorité ?",
-          "answers": [
-            "Protéger les personnes et sécuriser les lieux autant que possible",
-            "Commencer un rapport écrit détaillé",
-            "Recueillir la déclaration de chaque témoin",
-            "Déterminer qui est juridiquement responsable"
-          ],
+          "answers": {
+            "a1": "Protéger les personnes et sécuriser les lieux autant que possible",
+            "a2": "Commencer un rapport écrit détaillé",
+            "a3": "Recueillir la déclaration de chaque témoin",
+            "a4": "Déterminer qui est juridiquement responsable"
+          },
           "headerLabel": "PRIORITÉS SUR LES LIEUX"
         },
         "police-q2": {
           "question": "Quelle question permet le mieux à un témoin de raconter les faits avec ses propres mots, sans être interrompu ?",
-          "answers": [
-            "C'est la personne en rouge qui a commencé, n'est-ce pas ?",
-            "Pouvez-vous me raconter ce qui s’est passé depuis le début ?",
-            "Vous n'avez pas vu tout l'incident, n'est-ce pas ?",
-            "Le suspect était-il en colère ou effrayé ?"
-          ],
+          "answers": {
+            "a1": "C'est la personne en rouge qui a commencé, n'est-ce pas ?",
+            "a2": "Pouvez-vous me raconter ce qui s’est passé depuis le début ?",
+            "a3": "Vous n'avez pas vu tout l'incident, n'est-ce pas ?",
+            "a4": "Le suspect était-il en colère ou effrayé ?"
+          },
           "headerLabel": "ENTRETIEN AVEC UN TÉMOIN"
         },
         "police-q3": {
           "question": "Pourquoi les témoins peuvent-ils être séparés avant que leurs récits initiaux ne soient recueillis ?",
-          "answers": [
-            "Pour raccourcir les entretiens",
-            "Pour déterminer qui a le plus d’assurance",
-            "Pour réduire le risque que leurs souvenirs s'influencent mutuellement",
-            "Pour garantir que tous les récits soient identiques"
-          ],
+          "answers": {
+            "a1": "Pour raccourcir les entretiens",
+            "a2": "Pour déterminer qui a le plus d’assurance",
+            "a3": "Pour réduire le risque que leurs souvenirs s'influencent mutuellement",
+            "a4": "Pour garantir que tous les récits soient identiques"
+          },
           "headerLabel": "MÉMOIRE ET PREUVE"
         },
         "police-q4": {
           "question": "Quel est l’objectif principal d’une chaîne de traçabilité documentée ?",
-          "answers": [
-            "Classer les preuves par importance",
-            "Prouver qu’un suspect possédait chaque objet",
-            "Remplacer les photographies des lieux",
-            "Consigner qui a manipulé les éléments de preuve et préserver leur intégrité"
-          ],
+          "answers": {
+            "a1": "Classer les preuves par importance",
+            "a2": "Prouver qu’un suspect possédait chaque objet",
+            "a3": "Remplacer les photographies des lieux",
+            "a4": "Consigner qui a manipulé les éléments de preuve et préserver leur intégrité"
+          },
           "headerLabel": "CONTRÔLE DES PREUVES"
         },
         "police-q5": {
           "question": "Quel ensemble de principes décrit le mieux l’utilisation responsable des pouvoirs de la police ?",
-          "answers": [
-            "Légal, nécessaire, proportionné et responsable",
-            "Rapide, secret, puissant et final",
-            "Populaire, pratique, informel et large",
-            "Automatique, identique, illimité et incontesté"
-          ],
+          "answers": {
+            "a1": "Légal, nécessaire, proportionné et responsable",
+            "a2": "Rapide, secret, puissant et final",
+            "a3": "Populaire, pratique, informel et large",
+            "a4": "Automatique, identique, illimité et incontesté"
+          },
           "headerLabel": "JUGEMENT PROFESSIONNEL"
         },
         "police-q6": {
           "question": "Dans l’alphabet d’épellation international, quel mot correspond à la lettre B ?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "COMMUNICATION RADIO"
         },
         "police-q7": {
           "question": "Quelle méthode convient le mieux pour apaiser une situation tendue sans danger immédiat ?",
-          "answers": [
-            "Parler rapidement et se rapprocher sans prévenir",
-            "Donner plusieurs consignes contradictoires à la fois",
-            "Parler calmement et clairement, écouter et garder une distance de sécurité",
-            "Élever la voix avant que quelqu’un d’autre puisse parler"
-          ],
+          "answers": {
+            "a1": "Parler rapidement et se rapprocher sans prévenir",
+            "a2": "Donner plusieurs consignes contradictoires à la fois",
+            "a3": "Parler calmement et clairement, écouter et garder une distance de sécurité",
+            "a4": "Élever la voix avant que quelqu’un d’autre puisse parler"
+          },
           "headerLabel": "DÉSESCALADE"
         },
         "police-q8": {
           "question": "Lorsqu’il est possible de le faire sans danger, que faut-il faire avant de déplacer un objet important sur les lieux ?",
-          "answers": [
-            "Il faudrait le nettoyer",
-            "Il devrait être montré à chaque témoin",
-            "Il doit être placé avec des objets similaires",
-            "Sa position et son état d'origine doivent être documentés"
-          ],
+          "answers": {
+            "a1": "Il faudrait le nettoyer",
+            "a2": "Il devrait être montré à chaque témoin",
+            "a3": "Il doit être placé avec des objets similaires",
+            "a4": "Sa position et son état d'origine doivent être documentés"
+          },
           "headerLabel": "OBSERVATION DES LIEUX"
         },
         "police-q9": {
           "question": "Vous découvrez une erreur factuelle dans un rapport que vous avez soumis. Quelle est la réponse la plus professionnelle ?",
-          "answers": [
-            "Signaler l’erreur et la corriger rapidement selon la procédure prévue",
-            "Attendre de voir si quelqu’un la remarque",
-            "Supprimer tout le rapport sans laisser de trace",
-            "Demander à un collègue d’en assumer la responsabilité"
-          ],
+          "answers": {
+            "a1": "Signaler l’erreur et la corriger rapidement selon la procédure prévue",
+            "a2": "Attendre de voir si quelqu’un la remarque",
+            "a3": "Supprimer tout le rapport sans laisser de trace",
+            "a4": "Demander à un collègue d’en assumer la responsabilité"
+          },
           "headerLabel": "TEST D'INTÉGRITÉ"
         },
         "police-q10": {
           "question": "Quel message radio est le plus utile lors d’un incident qui évolue rapidement ?",
-          "answers": [
-            "Une longue théorie personnelle sans localisation",
-            "Une mise à jour factuelle concise avec l'emplacement exact et l'aide requise",
-            "Plusieurs rumeurs non confirmées rapportées d’un seul coup",
-            "Une vague demande d'envoyer quelqu'un quelque part"
-          ],
+          "answers": {
+            "a1": "Une longue théorie personnelle sans localisation",
+            "a2": "Une mise à jour factuelle concise avec l'emplacement exact et l'aide requise",
+            "a3": "Plusieurs rumeurs non confirmées rapportées d’un seul coup",
+            "a4": "Une vague demande d'envoyer quelqu'un quelque part"
+          },
           "headerLabel": "QUESTION FINALE SUR LES APTITUDES"
         }
       }

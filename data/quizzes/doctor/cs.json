@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Většina dospělých tuto přijímací zkoušku na medicínu nesloží",
   "eyebrow": "TEST KLINICKÝCH ZNALOSTÍ",
   "summary": "Deset otázek testuje anatomii, symptomy, diagnostické nástroje a bezpečné klinické uvažování.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Anatomické otázky se zdají povědomé. Poté se test přesune do symptomů, mimořádných událostí a klinických rozhodnutí.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavná výzva s deseti otázkami využívá široké lékařské koncepty, které jsou vyučovány a chápány v anglicky mluvících zemích úrovně 1. Posouvá se od anatomie a fyziologie k diagnostickým nástrojům, vzorcům symptomů, prioritám v případě nouze a zodpovědnému používání medicíny.\n\nVyberte jednu odpověď pro každou otázku. Správnost zůstává skryta až do konečného odhalení, kde je k dispozici kompletní kontrola odpovědí k odemknutí.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších otázek týkajících se klinických znalostí.",
         "Vyberte jedinou nejlépe podporovanou odpověď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupní výzva pro lékaře",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Přijímací zkouška k doktorovi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a vaše skóre klinických znalostí je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno pět lékařských oblastí",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno pět lékařských oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Uspěli jste v Doktorově vstupní výzvě!",
       "finished": "Doktorova vstupní výzva dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější lékařská oblast",
       "trickiest": "Nejnáročnější lékařská oblast",
       "bestRound": "Nejlepší sekce",
@@ -99,8 +92,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Která komora srdce pumpuje krev bohatou na kyslík do aorty?",
-          "answers": [
-            "Levá komora",
-            "Pravá komora",
-            "Levá předsíň",
-            "Pravá síň"
-          ],
+          "answers": {
+            "a1": "Levá komora",
+            "a2": "Pravá komora",
+            "a3": "Levá předsíň",
+            "a4": "Pravá síň"
+          },
           "headerLabel": "ANATOMIE SRDCE"
         },
         "doctor-q2": {
           "question": "Náhlé poklesnutí obličeje, slabost paží a potíže s řečí by měly okamžitě vzbudit obavy z čeho?",
-          "answers": [
-            "Mírná potravinová intolerance",
-            "Možná mrtvice",
-            "Jednoduché svalové napětí",
-            "Sezónní alergie"
-          ],
+          "answers": {
+            "a1": "Mírná potravinová intolerance",
+            "a2": "Možná mrtvice",
+            "a3": "Jednoduché svalové napětí",
+            "a4": "Sezónní alergie"
+          },
           "headerLabel": "ROZPOZNÁNÍ PŘÍZNAKŮ"
         },
         "doctor-q3": {
           "question": "Které zařízení poskytuje rychlý, neinvazivní odhad saturace krve kyslíkem?",
-          "answers": [
-            "Otoskop",
-            "Reflexní kladivo",
-            "Pulzní oxymetr",
-            "Teploměr"
-          ],
+          "answers": {
+            "a1": "Otoskop",
+            "a2": "Reflexní kladivo",
+            "a3": "Pulzní oxymetr",
+            "a4": "Teploměr"
+          },
           "headerLabel": "DIAGNOSTICKÉ NÁSTROJE"
         },
         "doctor-q4": {
           "question": "Při klasickém projevu apendicitidy se může bolest břicha pohybovat směrem k jaké oblasti?",
-          "answers": [
-            "Horní levé břicho",
-            "Střed hrudníku",
-            "Levé rameno",
-            "Pravá spodní část břicha"
-          ],
+          "answers": {
+            "a1": "Horní levé břicho",
+            "a2": "Střed hrudníku",
+            "a3": "Levé rameno",
+            "a4": "Pravá spodní část břicha"
+          },
           "headerLabel": "KLINICKÉ VZORCE"
         },
         "doctor-q5": {
           "question": "Které buňky ve slinivce produkují inzulín?",
-          "answers": [
-            "Beta buňky",
-            "Červené krvinky",
-            "Osteoblasty",
-            "Neutrofily"
-          ],
+          "answers": {
+            "a1": "Beta buňky",
+            "a2": "Červené krvinky",
+            "a3": "Osteoblasty",
+            "a4": "Neutrofily"
+          },
           "headerLabel": "ENDOKRINNÍ FYZIOLOGIE"
         },
         "doctor-q6": {
           "question": "Co znamená auskultace během fyzického vyšetření?",
-          "answers": [
-            "Měření tělesné teploty",
-            "Poslech vnitřních tělesných zvuků",
-            "Testování zrakové ostrosti",
-            "Zkoumání vzorku tkáně pod mikroskopem"
-          ],
+          "answers": {
+            "a1": "Měření tělesné teploty",
+            "a2": "Poslech vnitřních tělesných zvuků",
+            "a3": "Testování zrakové ostrosti",
+            "a4": "Zkoumání vzorku tkáně pod mikroskopem"
+          },
           "headerLabel": "KLINICKÉ VYŠETŘENÍ"
         },
         "doctor-q7": {
           "question": "Který popis nejlépe odpovídá sepsi?",
-          "answers": [
-            "Neškodná reakce na cvičení",
-            "Stav způsobený pouze alergií",
-            "Život ohrožující extrémní reakce na infekci",
-            "Typ zlomeniny kosti"
-          ],
+          "answers": {
+            "a1": "Neškodná reakce na cvičení",
+            "a2": "Stav způsobený pouze alergií",
+            "a3": "Život ohrožující extrémní reakce na infekci",
+            "a4": "Typ zlomeniny kosti"
+          },
           "headerLabel": "LÉKAŘSKÉ POHOTOVOSTNÍ PŘÍPADY"
         },
         "doctor-q8": {
           "question": "Jak se nazývá funkční filtrační jednotka ledvin?",
-          "answers": [
-            "Alveolus",
-            "Neuron",
-            "Villus",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveolus",
+            "a2": "Neuron",
+            "a3": "Villus",
+            "a4": "Nephron"
+          },
           "headerLabel": "Renální ANATOMIE"
         },
         "doctor-q9": {
           "question": "Člověk nereaguje a nedýchá normálně. Jaká je nejbezpečnější okamžitá obecná reakce?",
-          "answers": [
-            "Zavolejte záchrannou službu a začněte s vhodnou základní podporou života",
-            "Počkejte několik minut na spontánní zotavení",
-            "Dejte jídlo nebo pití",
-            "Požádejte osobu, aby šla kolem"
-          ],
+          "answers": {
+            "a1": "Zavolejte záchrannou službu a začněte s vhodnou základní podporou života",
+            "a2": "Počkejte několik minut na spontánní zotavení",
+            "a3": "Dejte jídlo nebo pití",
+            "a4": "Požádejte osobu, aby šla kolem"
+          },
           "headerLabel": "NOUZOVÉ PRIORITY"
         },
         "doctor-q10": {
           "question": "Které tvrzení o antibiotikách je nejpřesnější?",
-          "answers": [
-            "Léčí každou horečku",
-            "Neléčí virové infekce, jako je nachlazení",
-            "Vždy by měly být zastaveny, jakmile se příznaky zlepší",
-            "Fungují tak, že přímo snižují tělesnou teplotu"
-          ],
+          "answers": {
+            "a1": "Léčí každou horečku",
+            "a2": "Neléčí virové infekce, jako je nachlazení",
+            "a3": "Vždy by měly být zastaveny, jakmile se příznaky zlepší",
+            "a4": "Fungují tak, že přímo snižují tělesnou teplotu"
+          },
           "headerLabel": "ZÁVĚREČNÁ LÉKAŘSKÁ OTÁZKA"
         }
       }

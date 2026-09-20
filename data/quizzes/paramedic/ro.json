@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Doar 8% trec acest examen de admitere pentru paramedic",
   "eyebrow": "PROVOCAREA INTRAREA PARAMEDICILOR",
   "summary": "Pericolele din scenă, semnele vitale și deciziile cu răspuns rapid testează dacă poți gândi clar atunci când fiecare indiciu contează.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Pericole de scenă, semne vitale, matematică de urgență și judecată calmă. Poți să gândești clar când fiecare indiciu contează?",
     "cta": "Începeți testul"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Această provocare de divertisment la nivel mondial conține zece întrebări tip intrare în anatomie, observații, calcul, comunicare, siguranță și judecată de prioritate. Testează mai degrabă raționamentul atent decât protocoalele locale sau procedurile operaționale.\n\nAlegeți cel mai bun răspuns folosind doar informațiile afișate. Opțiunile sigure favorizează recunoașterea riscului, comunicarea clară și căutarea asistenței calificate adecvate.\n\nAcesta nu este un examen de admitere pentru paramedic acreditat, evaluare clinică, calificare, curs de formare sau sursă de consiliere de urgență.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Completați zece întrebări atent selectate într-o singură provocare concentrată.",
         "Alegeți câte un răspuns de fiecare dată. Corectitudinea rămâne ascunsă până la dezvăluirea finală.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Examen de admitere la paramedic",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Provocare de intrare pentru paramedic",
@@ -30,10 +26,8 @@
         "preAdCopy": "Scorul de intrare pentru paramedic și defalcarea în șase zone sunt gata să fie dezvăluite.",
         "preAdChecks": [
           "10 răspunsuri verificate",
-          "Comparativ cu șase zone de intrare",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Comparativ cu șase zone de intrare"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Ai trecut de provocarea de intrare pentru paramedic!",
       "finished": "Provocarea de intrare pentru paramedic s-a încheiat",
-      "correctLabel": "corect",
       "strongest": "Cea mai puternică zonă de intrare",
       "trickiest": "Cea mai dificilă zonă de intrare",
       "bestRound": "Cea mai bună secțiune",
@@ -107,8 +100,7 @@
         "snapshot": "Ce sugerează profilul dvs. de candidat",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Ce organ pompează sânge în jurul corpului?",
-          "answers": [
-            "inima",
-            "Plămânii",
-            "Creierul",
-            "Oasele"
-          ],
+          "answers": {
+            "a1": "inima",
+            "a2": "Plămânii",
+            "a3": "Creierul",
+            "a4": "Oasele"
+          },
           "headerLabel": "ANATOMIE & FIZIOLOGIE"
         },
         "paramedic-r1q5": {
           "question": "Care deschidere face cea mai clară predare?",
-          "answers": [
-            "Ceva s-a schimbat mai devreme, probabil",
-            "Iată toate detaliile minore în ordine aleatorie",
-            "La 14:20, respirația a devenit mai rapidă și vigilența a scăzut",
-            "Știu deja exact ce a cauzat-o"
-          ],
+          "answers": {
+            "a1": "Ceva s-a schimbat mai devreme, probabil",
+            "a2": "Iată toate detaliile minore în ordine aleatorie",
+            "a3": "La 14:20, respirația a devenit mai rapidă și vigilența a scăzut",
+            "a4": "Știu deja exact ce a cauzat-o"
+          },
           "headerLabel": "PREDARE LIBERĂ"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80 apoi 92 apoi 108, cu paloare și amețeli"
           },
           "question": "Care este cea mai bună interpretare a acestui tipar?",
-          "answers": [
-            "Înregistrarea este neschimbată",
-            "Tendința combinată sugerează o deteriorare care necesită o evaluare promptă calificată",
-            "Doar primul număr contează",
-            "Simptomele pot fi ignorate deoarece nu este prezentat niciun diagnostic"
-          ],
+          "answers": {
+            "a1": "Înregistrarea este neschimbată",
+            "a2": "Tendința combinată sugerează o deteriorare care necesită o evaluare promptă calificată",
+            "a3": "Doar primul număr contează",
+            "a4": "Simptomele pot fi ignorate deoarece nu este prezentat niciun diagnostic"
+          },
           "headerLabel": "TENDINȚE DE OBSERVAȚIE"
         },
         "paramedic-r2q4": {
           "question": "Care afirmație descrie cel mai bine rinichii?",
-          "answers": [
-            "Ei fac schimb de oxigen și dioxid de carbon",
-            "Îndepărtează reziduurile din sânge și ajută la reglarea echilibrului apei",
-            "Ele pompează sângele prin artere",
-            "Ei controlează fiecare mișcare voluntară"
-          ],
+          "answers": {
+            "a1": "Ei fac schimb de oxigen și dioxid de carbon",
+            "a2": "Îndepărtează reziduurile din sânge și ajută la reglarea echilibrului apei",
+            "a3": "Ele pompează sângele prin artere",
+            "a4": "Ei controlează fiecare mișcare voluntară"
+          },
           "headerLabel": "SISTEME CORP"
         },
         "paramedic-r1q4": {
           "question": "Un cablu electric se află peste singura ușă. Ce vine mai întâi?",
-          "answers": [
-            "Treceți peste el cu atenție",
-            "Păstrați toată lumea clară și obțineți ajutor calificat pentru a fi în siguranță",
-            "Mutați-l cu un obiect uscat",
-            "Cere unui spectator să-l privească"
-          ],
+          "answers": {
+            "a1": "Treceți peste el cu atenție",
+            "a2": "Păstrați toată lumea clară și obțineți ajutor calificat pentru a fi în siguranță",
+            "a3": "Mutați-l cu un obiect uscat",
+            "a4": "Cere unui spectator să-l privească"
+          },
           "headerLabel": "SIGURANȚA SCENEI"
         },
         "paramedic-r6q2": {
           "question": "O persoană continuă să dă din cap, dar nu a înțeles. Ce ar trebui să se întâmple în continuare?",
-          "answers": [
-            "Repetați aceeași explicație mai încet",
-            "Întrebați „Înțelegeți?” și continuați dacă ei spun da",
-            "Scurtați explicația, dar păstrați aceeași terminologie",
-            "Folosiți cuvinte simple și verificați înapoi"
-          ],
+          "answers": {
+            "a1": "Repetați aceeași explicație mai încet",
+            "a2": "Întrebați „Înțelegeți?” și continuați dacă ei spun da",
+            "a3": "Scurtați explicația, dar păstrați aceeași terminologie",
+            "a4": "Folosiți cuvinte simple și verificați înapoi"
+          },
           "headerLabel": "COMUNICARE CLARĂ"
         },
         "paramedic-r5q6": {
           "context": "Persoana A se simte bine și observațiile lor rămân constante. Persoana B este proaspăt moale și amețită, iar pulsul i-a crescut la trei verificări.",
           "question": "Cine are nevoie mai întâi de atenție?",
-          "answers": [
-            "Persoana B, deoarece mai multe modificări indică o deteriorare",
-            "Persoana A, deoarece observațiile lor au fost înregistrate mai întâi",
-            "Ambele pot aștepta, deoarece niciunul nu are un diagnostic numit",
-            "Persoana cu numele mai scurt"
-          ],
+          "answers": {
+            "a1": "Persoana B, deoarece mai multe modificări indică o deteriorare",
+            "a2": "Persoana A, deoarece observațiile lor au fost înregistrate mai întâi",
+            "a3": "Ambele pot aștepta, deoarece niciunul nu are un diagnostic numit",
+            "a4": "Persoana cu numele mai scurt"
+          },
           "headerLabel": "JUDECĂTA DE PRIORITATE"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litri plus 450 mililitri plus 250 mililitri este egal cu ceea ce total"
           },
           "question": "Care este volumul înregistrat combinat în mililitri?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1.000 ml",
-            "1.100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1.000 ml",
+            "a4": "1.100 ml"
+          },
           "headerLabel": "NUMERAȚIA DE URGENȚĂ"
         },
         "paramedic-r10q4": {
           "context": "ÎNREGISTRAREA INCIDENTELOR — O persoană agresivă aruncă obiecte în apropierea intrării. Echipamentul blochează parțial cea mai apropiată cale de ieșire.",
           "question": "Care este cel mai sigur răspuns la pericolele combinate?",
-          "answers": [
-            "Rămâneți la distanță, mutați-i pe ceilalți către o rută mai sigură și alertați ajutorul corespunzător",
-            "Apropiați-vă și certați până când persoana se oprește",
-            "Preluați echipamentul de lângă persoana înainte de a pleca",
-            "Cereți unui spectator neinstruit să blocheze obiectele aruncate"
-          ],
+          "answers": {
+            "a1": "Rămâneți la distanță, mutați-i pe ceilalți către o rută mai sigură și alertați ajutorul corespunzător",
+            "a2": "Apropiați-vă și certați până când persoana se oprește",
+            "a3": "Preluați echipamentul de lângă persoana înainte de a pleca",
+            "a4": "Cereți unui spectator neinstruit să blocheze obiectele aruncate"
+          },
           "headerLabel": "SIGURANȚĂ INTEGRATĂ"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Respirație 16 alertă, apoi 22 anxioasă, apoi 28 somnolență"
           },
           "question": "Care este cea mai bună interpretare a tendinței complete?",
-          "answers": [
-            "Persoana se îmbunătățește constant",
-            "Doar cecul din mijloc contează",
-            "Valorile pot fi ignorate deoarece nu este numit niciun diagnostic",
-            "Respirația se înrăutățește în timp ce capacitatea de răspuns scade"
-          ],
+          "answers": {
+            "a1": "Persoana se îmbunătățește constant",
+            "a2": "Doar cecul din mijloc contează",
+            "a3": "Valorile pot fi ignorate deoarece nu este numit niciun diagnostic",
+            "a4": "Respirația se înrăutățește în timp ce capacitatea de răspuns scade"
+          },
           "headerLabel": "RĂSPUNS FINAL"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo il 7% supera l'esame di ammissione per infermieri",
   "eyebrow": "LABORATORIO AMMISSIONI CLINICHE",
   "summary": "L'anatomia, i segni vitali e le decisioni sulla cura del paziente verificano se la tua capacità di giudizio rimane acuta anche sotto pressione.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Sistemi corporei, segni vitali e cura del paziente. Riesci a individuare ciò che conta ed effettuare la chiamata più sicura?",
     "cta": "Inizia il quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida di intrattenimento mondiale contiene dieci domande in stile ingresso su anatomia, osservazioni, matematica sanitaria, prevenzione delle infezioni, comunicazione e giudizio di priorità. Premia l'uso calmo delle informazioni mostrate.\n\nScegli la risposta migliore per ogni situazione. Il contenuto rimane generale ed evita di fare affidamento sulle procedure professionali di un paese.\n\nQuesto non è un esame di ammissione infermieristico accreditato, una valutazione clinica, una qualifica, un corso di formazione o una fonte di consulenza medica.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa dieci domande accuratamente selezionate in un'unica sfida mirata.",
         "Scegli una risposta ogni volta. Le risposte corrette restano nascoste fino al risultato finale.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Esame di ammissione per infermieri",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Sfida per l'ammissione agli infermieri",
@@ -30,10 +26,8 @@
         "preAdCopy": "Il tuo punteggio di ammissione infermieristica e la suddivisione in tre aree sono pronti per essere rivelati.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Tre aree valutate a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Tre aree valutate a confronto"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Hai superato la sfida infermieristica!",
       "finished": "Sfida infermieristica completata",
-      "correctLabel": "corrette",
       "strongest": "Area valutata più forte",
       "trickiest": "Area valutata più difficile",
       "bestRound": "La sezione migliore",
@@ -98,8 +91,7 @@
         "snapshot": "Cosa suggerisce il tuo profilo da candidato",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Quale gas ha raccolto il sangue mentre ritorna dai polmoni?",
-          "answers": [
-            "Azoto",
-            "Ossigeno",
-            "Anidride carbonica",
-            "Idrogeno"
-          ],
+          "answers": {
+            "a1": "Azoto",
+            "a2": "Ossigeno",
+            "a3": "Anidride carbonica",
+            "a4": "Idrogeno"
+          },
           "headerLabel": "ANATOMIA E FISIOLOGIA"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 millilitri più 250 millilitri equivalgono al totale"
           },
           "question": "Una brocca contiene 750 ml. Si aggiungono altri 250 ml. Qual è il totale?",
-          "answers": [
-            "900 ml",
-            "1.100 ml",
-            "1.250 ml",
-            "1.000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1.100 ml",
+            "a3": "1.250 ml",
+            "a4": "1.000 ml"
+          },
           "headerLabel": "NUMERAZIONE SANITARIA"
         },
         "nurse-r2q5": {
           "context": "Prima: respirare comodamente e parlare normalmente. Ora: respira più velocemente e fai una pausa tra le frasi brevi.",
           "question": "Quale cambiamento in questa nota di osservazione conta di più?",
-          "answers": [
-            "La nota contiene due punti temporali",
-            "Il modello respiratorio è peggiorato",
-            "La persona sta ancora parlando",
-            "La nota precedente era più breve"
-          ],
+          "answers": {
+            "a1": "La nota contiene due punti temporali",
+            "a2": "Il modello respiratorio è peggiorato",
+            "a3": "La persona sta ancora parlando",
+            "a4": "La nota precedente era più breve"
+          },
           "headerLabel": "TENDENZE DELL'OSSERVAZIONE"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "La consegna dice braccio sinistro, il grafico dice braccio destro"
           },
           "question": "Quale discrepanza dovrebbe essere chiarita?",
-          "answers": [
-            "L'uso delle maiuscole",
-            "Il numero di parole",
-            "Il grafico ha un bordo",
-            "Il lato registrato è diverso"
-          ],
+          "answers": {
+            "a1": "L'uso delle maiuscole",
+            "a2": "Il numero di parole",
+            "a3": "Il grafico ha un bordo",
+            "a4": "Il lato registrato è diverso"
+          },
           "headerLabel": "PRECISIONE DELLA REGISTRAZIONE"
         },
         "nurse-r4q3": {
           "question": "Un'attività può provocare schizzi di liquidi corporei verso il viso. Quale protezione affronta il rischio dichiarato?",
-          "answers": [
-            "Un cappello di stoffa",
-            "Protezione adeguata per gli occhi o il viso",
-            "Solo copriscarpe",
-            "Nessuna protezione se l'incarico è breve"
-          ],
+          "answers": {
+            "a1": "Un cappello di stoffa",
+            "a2": "Protezione adeguata per gli occhi o il viso",
+            "a3": "Solo copriscarpe",
+            "a4": "Nessuna protezione se l'incarico è breve"
+          },
           "headerLabel": "PREVENZIONE DELLE INFEZIONI"
         },
         "nurse-r6q3": {
           "question": "Qualcuno pone una domanda delicata in un'area pubblica affollata. Cosa dovresti fare?",
-          "answers": [
-            "Offriti di continuare la conversazione in un posto privato",
-            "Rispondi brevemente e a bassa voce dove ti trovi",
-            "Chiedi alle persone vicine di darti un po' di spazio",
-            "Fornisci solo la parte non sensibile della risposta"
-          ],
+          "answers": {
+            "a1": "Offriti di continuare la conversazione in un posto privato",
+            "a2": "Rispondi brevemente e a bassa voce dove ti trovi",
+            "a3": "Chiedi alle persone vicine di darti un po' di spazio",
+            "a4": "Fornisci solo la parte non sensibile della risposta"
+          },
           "headerLabel": "COMUNICAZIONE COMPASSIONANTE"
         },
         "nurse-r7q1": {
           "context": "La persona A si sente a suo agio con un polso leggermente più veloce dopo aver camminato. La persona B è improvvisamente confusa, respira rapidamente e appare pallida.",
           "question": "Chi ha bisogno di attenzione per primo?",
-          "answers": [
-            "Persona B, perché diversi nuovi segnali suggeriscono un improvviso peggioramento",
-            "Persona A, perché il suo polso è cambiato",
-            "Entrambi possono attendere le osservazioni di routine",
-            "La persona che è arrivata prima"
-          ],
+          "answers": {
+            "a1": "Persona B, perché diversi nuovi segnali suggeriscono un improvviso peggioramento",
+            "a2": "Persona A, perché il suo polso è cambiato",
+            "a3": "Entrambi possono attendere le osservazioni di routine",
+            "a4": "La persona che è arrivata prima"
+          },
           "headerLabel": "GIUDIZIO PRIORITARIO"
         },
         "nurse-r3q1": {
           "question": "Un totale di liquidi aumenta da 600 ml a 900 ml. In che percentuale è aumentato?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "NUMERAZIONE SANITARIA"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Vie aeree bloccate, meno aria ai polmoni, sconosciuto, meno ossigeno ai tessuti"
           },
           "question": "Un blocco delle vie aeree impedisce all’aria di raggiungere i polmoni. Quale effetto a valle segue più direttamente?",
-          "answers": [
-            "Meno ossigeno entra nel sangue",
-            "Più nutrienti entrano nello stomaco",
-            "I reni formano immediatamente più urina",
-            "Le ossa producono più movimento"
-          ],
+          "answers": {
+            "a1": "Meno ossigeno entra nel sangue",
+            "a2": "Più nutrienti entrano nello stomaco",
+            "a3": "I reni formano immediatamente più urina",
+            "a4": "Le ossa producono più movimento"
+          },
           "headerLabel": "FISIOLOGIA INTEGRATA"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "La persona A è vigile, presenta un lieve disagio stabile e parla normalmente. La persona B è pallida, ha difficoltà a svegliarsi e respira in modo irregolare."
           },
           "question": "Chi ha la priorità immediata?",
-          "answers": [
-            "Persona A, perché il disagio viene sempre al primo posto",
-            "Entrambi possono aspettare per un controllo di routine",
-            "Persona B, perché la coscienza e la respirazione sono improvvisamente cambiate",
-            "Scegli in base a chi è arrivato prima"
-          ],
+          "answers": {
+            "a1": "Persona A, perché il disagio viene sempre al primo posto",
+            "a2": "Entrambi possono aspettare per un controllo di routine",
+            "a3": "Persona B, perché la coscienza e la respirazione sono improvvisamente cambiate",
+            "a4": "Scegli in base a chi è arrivato prima"
+          },
           "headerLabel": "CONSEGNA FINALE"
         }
       }

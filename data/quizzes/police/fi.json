@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 6 % aikuisista voi läpäistä tämän poliisin pääsykokeen",
   "eyebrow": "POLIISI SOVELTAMISKOE",
   "summary": "Kymmenen kysymystä testaa harkintaa, viestintää, todisteiden käsittelyä ja ammatillista rehellisyyttä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset puhelut vaikuttavat yksinkertaisilta. Sitten koe siirtyy todisteisiin, tuomioihin ja sekunnin murto-osan päätöksiin.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja periaatteita, jotka ovat olennaisia ammatillisessa poliisitoiminnassa kaikissa englanninkielisissä tason 1 maissa. Se testaa turvallisuuden ensisijaista harkintaa, huolellista todistajaviestintää, todisteiden eheyttä ja vastuullista päätöksentekoa ilman, että se luottaa yhden maan lakeihin, arvoihin tai menettelyihin.\n\nValitse yksi vastaus jokaiseen tilanteeseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan poliisin soveltuvuuskysymykseen.",
         "Valitse turvallisin, selkein tai parhaiten tuettu vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Poliisin sisäänkäyntihaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Poliisin pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja poliisin soveltuvuuspisteesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Vertailussa neljä poliisialuetta",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Vertailussa neljä poliisialuetta"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Läpäisit Poliisipääsyhaasteen!",
       "finished": "Poliisin sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin poliisialue",
       "trickiest": "Hankalin poliisialue",
       "bestRound": "Paras jakso",
@@ -96,8 +89,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Saavut paikalle, jossa joku kohtaa välittömän uhan. Mikä on ensimmäinen prioriteetti?",
-          "answers": [
-            "Suojaa elämää ja tee tapahtumapaikasta mahdollisimman turvallinen",
-            "Aloita yksityiskohtainen kirjallinen raportti",
-            "Kerää jokainen todistajanlausunto",
-            "Selvitä, kuka on laillisesti vastuussa"
-          ],
+          "answers": {
+            "a1": "Suojaa elämää ja tee tapahtumapaikasta mahdollisimman turvallinen",
+            "a2": "Aloita yksityiskohtainen kirjallinen raportti",
+            "a3": "Kerää jokainen todistajanlausunto",
+            "a4": "Selvitä, kuka on laillisesti vastuussa"
+          },
           "headerLabel": "KOHTAUSTEN PRIORITEETIT"
         },
         "police-q2": {
           "question": "Mikä aloituskysymys tuottaa todennäköisimmin todistajan oman keskeytymättömän kertomuksen?",
-          "answers": [
-            "Punainen henkilö aloitti sen, eikö niin?",
-            "Kerro minulle, mitä tapahtui alusta alkaen",
-            "Etkö nähnyt koko tapausta?",
-            "Oliko epäilty vihainen tai peloissaan?"
-          ],
+          "answers": {
+            "a1": "Punainen henkilö aloitti sen, eikö niin?",
+            "a2": "Kerro minulle, mitä tapahtui alusta alkaen",
+            "a3": "Etkö nähnyt koko tapausta?",
+            "a4": "Oliko epäilty vihainen tai peloissaan?"
+          },
           "headerLabel": "TODISTAJIEN VIESTINTÄ"
         },
         "police-q3": {
           "question": "Miksi todistajat voidaan pitää erillään ennen kuin heidän alustava kertomus on otettu?",
-          "answers": [
-            "Jotta haastattelut olisivat lyhyempiä",
-            "Päättää, kuka on luottavaisin",
-            "Vähentääkseen mahdollisuutta, että heidän muistonsa vaikuttavat toisiinsa",
-            "Varmistaaksemme, että kaikki tilit täsmäävät"
-          ],
+          "answers": {
+            "a1": "Jotta haastattelut olisivat lyhyempiä",
+            "a2": "Päättää, kuka on luottavaisin",
+            "a3": "Vähentääkseen mahdollisuutta, että heidän muistonsa vaikuttavat toisiinsa",
+            "a4": "Varmistaaksemme, että kaikki tilit täsmäävät"
+          },
           "headerLabel": "MUISTI JA TODISTEET"
         },
         "police-q4": {
           "question": "Mikä on dokumentoidun alkuperäketjun päätarkoitus?",
-          "answers": [
-            "Järjestä todisteet tärkeyden mukaan",
-            "Todistaa, että epäilty omistaa kaikki tavarat",
-            "Korvaamaan valokuvat kohtauksesta",
-            "Kirjaa, kuka käsitteli todisteita, ja säilyttää sen eheys"
-          ],
+          "answers": {
+            "a1": "Järjestä todisteet tärkeyden mukaan",
+            "a2": "Todistaa, että epäilty omistaa kaikki tavarat",
+            "a3": "Korvaamaan valokuvat kohtauksesta",
+            "a4": "Kirjaa, kuka käsitteli todisteita, ja säilyttää sen eheys"
+          },
           "headerLabel": "NÄYTTÖOIKEUSTEN VALVONTA"
         },
         "police-q5": {
           "question": "Mitkä periaatteet kuvaavat parhaiten poliisin vastuullista käyttöä?",
-          "answers": [
-            "Laillista, tarpeellista, oikeasuhteista ja vastuullista",
-            "Nopea, salainen, voimakas ja lopullinen",
-            "Suosittu, kätevä, epävirallinen ja laaja",
-            "Automaattinen, identtinen, rajoittamaton ja kyseenalainen"
-          ],
+          "answers": {
+            "a1": "Laillista, tarpeellista, oikeasuhteista ja vastuullista",
+            "a2": "Nopea, salainen, voimakas ja lopullinen",
+            "a3": "Suosittu, kätevä, epävirallinen ja laaja",
+            "a4": "Automaattinen, identtinen, rajoittamaton ja kyseenalainen"
+          },
           "headerLabel": "AMMATILLINEN TUOMIO"
         },
         "police-q6": {
           "question": "Mikä sana edustaa kirjainta B kansainvälisessä oikeinkirjoitusaakkosissa?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADIOVIESTINTÄ"
         },
         "police-q7": {
           "question": "Mikä lähestymistapa sopii parhaiten jännittyneen mutta ei-välittömän tilanteen lieventämiseen?",
-          "answers": [
-            "Puhu nopeasti ja siirry lähemmäs varoittamatta",
-            "Anna useita kilpailevia ohjeita kerralla",
-            "Käytä rauhallista, selkeää kieltä, kuuntele ja anna turvallista tilaa",
-            "Nosta äänesi ennen kuin kukaan muu voi puhua"
-          ],
+          "answers": {
+            "a1": "Puhu nopeasti ja siirry lähemmäs varoittamatta",
+            "a2": "Anna useita kilpailevia ohjeita kerralla",
+            "a3": "Käytä rauhallista, selkeää kieltä, kuuntele ja anna turvallista tilaa",
+            "a4": "Nosta äänesi ennen kuin kukaan muu voi puhua"
+          },
           "headerLabel": "POISTAMINEN"
         },
         "police-q8": {
           "question": "Kun on turvallista ja käytännöllistä, mitä pitäisi tapahtua ennen kuin tärkeä esine siirretään tapahtumapaikalla?",
-          "answers": [
-            "Se pitäisi puhdistaa",
-            "Se pitäisi näyttää jokaiselle todistajalle",
-            "Se tulee sijoittaa samanlaisten esineiden kanssa",
-            "Sen alkuperäinen sijainti ja kunto tulee dokumentoida"
-          ],
+          "answers": {
+            "a1": "Se pitäisi puhdistaa",
+            "a2": "Se pitäisi näyttää jokaiselle todistajalle",
+            "a3": "Se tulee sijoittaa samanlaisten esineiden kanssa",
+            "a4": "Sen alkuperäinen sijainti ja kunto tulee dokumentoida"
+          },
           "headerLabel": "KOHTAUSTIETOJA"
         },
         "police-q9": {
           "question": "Löydät lähettämästäsi raportista tosiasiavirheen. Mikä on ammattimaisin vastaus?",
-          "answers": [
-            "Ilmoita ja korjaa se nopeasti oikean prosessin avulla",
-            "Odota, huomaako kukaan",
-            "Poista koko raportti ilman tietuetta",
-            "Pyydä kollegaa ottamaan vastuu"
-          ],
+          "answers": {
+            "a1": "Ilmoita ja korjaa se nopeasti oikean prosessin avulla",
+            "a2": "Odota, huomaako kukaan",
+            "a3": "Poista koko raportti ilman tietuetta",
+            "a4": "Pyydä kollegaa ottamaan vastuu"
+          },
           "headerLabel": "INTEGRITY TESTI"
         },
         "police-q10": {
           "question": "Mikä radioviesti on hyödyllisin nopeasti etenevän tapahtuman aikana?",
-          "answers": [
-            "Pitkä henkilökohtainen teoria ilman sijaintia",
-            "Lyhyt faktapäivitys, jossa tarkka sijainti ja tarvittava apu",
-            "Useita vahvistamattomia huhuja toimitettiin kerralla",
-            "Epämääräinen pyyntö lähettää joku jonnekin"
-          ],
+          "answers": {
+            "a1": "Pitkä henkilökohtainen teoria ilman sijaintia",
+            "a2": "Lyhyt faktapäivitys, jossa tarkka sijainti ja tarvittava apu",
+            "a3": "Useita vahvistamattomia huhuja toimitettiin kerralla",
+            "a4": "Epämääräinen pyyntö lähettää joku jonnekin"
+          },
           "headerLabel": "LOPPUKYSYMYS"
         }
       }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 11 % kan bestå denne optagelsesprøve for brandmand",
   "eyebrow": "Brandmandsudfordring",
   "summary": "Brandvidenskab, værktøjer, farer og hurtige hændelsesbeslutninger tester, hvor klart du tænker under pres.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Brandadfærd, hazard spotting, mekanisk ræsonnement og split-sekund bedømmelse. Kan du forblive rolig, når hvert spor betyder noget?",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende underholdningsudfordring bruger ti omhyggeligt varierede spørgsmål til at udforske brandmandsræsonnementer på indgangsniveau. Det dækker brand- og røgvidenskab, scenefarer, udstyrsmekanik, praktisk talforståelse, rumlig bevidsthed, klar kommunikation og hændelsesvurdering.\n\nUdfordringen bevæger sig hurtigt fra tilgængelige fundamenter til skiftende forhold, praktisk mekanik og integrerede hændelsesbeslutninger. Spørgsmål bruger verdensomspændende sikre principper snarere end lokale rækker, koder, byggeregler eller operationelle brandslukningsprocedurer.\n\nDin endelige procentdel afspejler kun svarene givet i denne underholdningsquiz. Det er et legende øjebliksbillede af de indgangsområder, der føltes stærkest, og de emner, der viste sig at være mere udfordrende, ikke en bedømmelse af operativt parathed eller egnethed til brandmandsansættelse.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Arbejd gennem alle ti spørgsmål i dit eget tempo; der er ingen timer eller hastighedsbonus.",
         "Vælg den enkelte mulighed, der bedst understøttes af de synlige ledetråde. Rigtigheden forbliver skjult indtil den sidste afsløring.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Brandmand udfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Brandmandsudfordring",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din brandmandsscore og fem-områdeopdeling er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Fem indgangsområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Fem indgangsområder sammenlignet"
+        ]
       }
     }
   },
@@ -91,7 +85,6 @@
     "score": {
       "passed": "Du bestod brandmandsindgangsudfordringen!",
       "finished": "Brandmandsindgangsudfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste indgangsparti",
       "trickiest": "Det vanskeligste indgangsparti",
       "bestRound": "Bedste hændelsesafsnit",
@@ -114,22 +107,22 @@
         "firefighter-s1q1": {
           "question": "Varme og brændstof er til stede. Hvilket tredje element er nødvendigt for at fuldføre ildtrekanten?",
           "headerLabel": "ILDVIDENSKAB",
-          "answers": [
-            "Vand",
-            "Ilt",
-            "Røg",
-            "Ask"
-          ]
+          "answers": {
+            "a1": "Vand",
+            "a2": "Ilt",
+            "a3": "Røg",
+            "a4": "Ask"
+          }
         },
         "firefighter-s1q2": {
           "question": "Et gnistrende elektrisk panel står ved siden af en vandbassin. Hvad er det sikreste første svar?",
           "headerLabel": "FAREPLETNING",
-          "answers": [
-            "Træd gennem vandet for at slukke for det",
-            "Hæld mere vand over panelet",
-            "Flyt panelet ved dets ydre kabinet",
-            "Hold folk klar og advare kvalificerede respondenter"
-          ]
+          "answers": {
+            "a1": "Træd gennem vandet for at slukke for det",
+            "a2": "Hæld mere vand over panelet",
+            "a3": "Flyt panelet ved dets ydre kabinet",
+            "a4": "Hold folk klar og advare kvalificerede respondenter"
+          }
         },
         "firefighter-s2q2": {
           "visual": {
@@ -142,32 +135,32 @@
           },
           "question": "Hvilken rapport kommunikerer bedst ændringen uden at gætte på årsagen?",
           "headerLabel": "HÆNDELSESRAPPORTERING",
-          "answers": [
-            "Røg ved den nordlige døråbning har ændret sig fra let og konstant til hurtigt stigende",
-            "Det nøjagtige brændende materiale er blevet identificeret fra røgen",
-            "Intet vigtigt har ændret sig, fordi der allerede var røg",
-            "Branden vil helt sikkert forblive i samme område"
-          ]
+          "answers": {
+            "a1": "Røg ved den nordlige døråbning har ændret sig fra let og konstant til hurtigt stigende",
+            "a2": "Det nøjagtige brændende materiale er blevet identificeret fra røgen",
+            "a3": "Intet vigtigt har ændret sig, fordi der allerede var røg",
+            "a4": "Branden vil helt sikkert forblive i samme område"
+          }
         },
         "firefighter-s1q5": {
           "question": "En lirkestang bruges som løftestang. Hvad sker der normalt, når grebet bevæger sig længere fra pivot?",
           "headerLabel": "MEKANISK RÆSONNER",
-          "answers": [
-            "Der kræves altid mere kraft",
-            "Pivot holder op med at virke",
-            "Mindre kraft er nødvendig for den samme drejeeffekt",
-            "Belastningen bliver vægtløs"
-          ]
+          "answers": {
+            "a1": "Der kræves altid mere kraft",
+            "a2": "Pivot holder op med at virke",
+            "a3": "Mindre kraft er nødvendig for den samme drejeeffekt",
+            "a4": "Belastningen bliver vægtløs"
+          }
         },
         "firefighter-s3q6": {
           "question": "En varm overflade varmer dit ansigt på flere meters afstand uden kontakt. Hvilken varmeoverførselsproces forklarer dette bedst?",
           "headerLabel": "VARMEOVERFØRSEL",
-          "answers": [
-            "Stråling",
-            "Ledning",
-            "Fordampning",
-            "Kondensation"
-          ]
+          "answers": {
+            "a1": "Stråling",
+            "a2": "Ledning",
+            "a3": "Fordampning",
+            "a4": "Kondensation"
+          }
         },
         "firefighter-s3q2": {
           "visual": {
@@ -179,22 +172,22 @@
           },
           "question": "Hvilken reel afstand repræsenterer ruten?",
           "headerLabel": "PRAKTISK RÆKNING",
-          "answers": [
-            "50 meter",
-            "60 meter",
-            "65 meter",
-            "70 meter"
-          ]
+          "answers": {
+            "a1": "50 meter",
+            "a2": "60 meter",
+            "a3": "65 meter",
+            "a4": "70 meter"
+          }
         },
         "firefighter-s4q7": {
           "question": "Et brandskadet tag hænger sammen, og der opstår nye revner. Hvad er den sikreste fortolkning?",
           "headerLabel": "STRUKTURELLE FARER",
-          "answers": [
-            "Taget køler sikkert",
-            "Revnerne viser præcis, hvor man skal stå",
-            "Det er muligt at skjule, så hold det klart og rapporter om den ændrede tilstand",
-            "Skaden har først betydning efter hændelsen"
-          ]
+          "answers": {
+            "a1": "Taget køler sikkert",
+            "a2": "Revnerne viser præcis, hvor man skal stå",
+            "a3": "Det er muligt at skjule, så hold det klart og rapporter om den ændrede tilstand",
+            "a4": "Skaden har først betydning efter hændelsen"
+          }
         },
         "firefighter-s5q5": {
           "visual": {
@@ -207,12 +200,12 @@
           },
           "question": "Gear A driver B, og B driver C. Hvilken vej drejer Gear C?",
           "headerLabel": "GEARBEGRÆNSNING",
-          "answers": [
-            "Med uret, efter to retningsvendinger",
-            "Mod uret, efter én vending",
-            "Den kan ikke dreje, fordi der bruges tre gear",
-            "Opad, fordi gear A er først"
-          ]
+          "answers": {
+            "a1": "Med uret, efter to retningsvendinger",
+            "a2": "Mod uret, efter én vending",
+            "a3": "Den kan ikke dreje, fordi der bruges tre gear",
+            "a4": "Opad, fordi gear A er først"
+          }
         },
         "firefighter-s5q6": {
           "visual": {
@@ -226,12 +219,12 @@
           },
           "question": "Hvor mange flere lamper skal trækkes, så hver besætning er udstyret, og der er to reservedele tilbage?",
           "headerLabel": "UDSTYR MAMATIK",
-          "answers": [
-            "10",
-            "14",
-            "16",
-            "12"
-          ]
+          "answers": {
+            "a1": "10",
+            "a2": "14",
+            "a3": "16",
+            "a4": "12"
+          }
         },
         "firefighter-s5q8": {
           "visual": {
@@ -245,12 +238,12 @@
           },
           "question": "Hvad er den bedste første handling og rapport?",
           "headerLabel": "ENDELIG HÆNDELSESTEST",
-          "answers": [
-            "Afslut optællingen, før du rapporterer røgen",
-            "Direkte folk mod øst; meld vestrøg og to savnede personer; udskyde optællingen",
-            "Brug den vestlige korridor, fordi den er kortest",
-            "Rapporter kun udstyret tæller"
-          ]
+          "answers": {
+            "a1": "Afslut optællingen, før du rapporterer røgen",
+            "a2": "Direkte folk mod øst; meld vestrøg og to savnede personer; udskyde optællingen",
+            "a3": "Brug den vestlige korridor, fordi den er kortest",
+            "a4": "Rapporter kun udstyret tæller"
+          }
         }
       }
     }

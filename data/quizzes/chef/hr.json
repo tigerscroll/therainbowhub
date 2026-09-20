@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 12% položi ovaj prijemni ispit za kuhare",
   "eyebrow": "KULINARSKA PROPUSNICA",
   "summary": "Okus, vatra, pecivo i pritisak posluživanja testiraju možete li nastaviti razmišljati kada se kuhinja zagrije.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ovaj svjetski zabavni izazov nudi deset pitanja o kuhinjskim alatima, okusima, pečenju, sigurnosti hrane, praktičnoj matematici i kontroli topline. Teškoća se penje od zdravih osnova do odluka koje kombiniraju više od jednog traga.\n\nOdaberite najbolji odgovor za svaku situaciju. Ispravnost ostaje skrivena dok radite tako da se svaki izbor čini kao dio jednog kontinuiranog kuhinjskog izazova.\n\nVaš rezultat opisuje samo ovaj pokušaj kviza. To nije kulinarska kvalifikacija, certifikat o sigurnosti hrane ili tečaj stručnog osposobljavanja.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
         "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Chef izazov",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Izazov vođe",
@@ -29,10 +26,8 @@
         "preAdCopy": "Vaš rezultat kuhara i pregled šest vještina spremni su za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređeno šest kuhinjskih vještina",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređeno šest kuhinjskih vještina"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Prošli ste chefov prijemni izazov!",
       "finished": "Kulinarski izazov završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjači kuhinjski prostor",
       "trickiest": "Najzahtjevniji kuhinjski prostor",
       "bestRound": "Najbolja sekcija",
@@ -106,8 +100,7 @@
         "snapshot": "Što sugerira vaš profil kuhara",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Koji je alat najbolji za hvatanje i okretanje vruće hrane u tavi?",
-          "answers": [
-            "Umutiti",
-            "Kliješta",
-            "Gulilica",
-            "Kutlača"
-          ],
+          "answers": {
+            "a1": "Umutiti",
+            "a2": "Kliješta",
+            "a3": "Gulilica",
+            "a4": "Kutlača"
+          },
           "headerLabel": "KUHINJSKI ALATI"
         },
         "chef-r1q2": {
           "question": "Umak je bogatog i teškog okusa, ali mu nedostaje svjetline. Koji mali dodatak će ga najvjerojatnije ponovno uravnotežiti?",
-          "answers": [
-            "Još maslaca",
-            "Više škroba",
-            "Još vrhnja",
-            "Mala količina kiseline"
-          ],
+          "answers": {
+            "a1": "Još maslaca",
+            "a2": "Više škroba",
+            "a3": "Još vrhnja",
+            "a4": "Mala količina kiseline"
+          },
           "headerLabel": "BALANS OKUSA"
         },
         "chef-r5q3": {
           "question": "Recept za muffine kaže da se miješa samo dok ne ostane suhog brašna. Zašto stati na toj točki?",
-          "answers": [
-            "Kako ne biste izgubili svo sredstvo za dizanje",
-            "Dodatno miješanje može učiniti mrvice žilavijima",
-            "Da se rastopljena mast ne odvaja",
-            "Da spriječi prerano smeđivanje vrhova"
-          ],
+          "answers": {
+            "a1": "Kako ne biste izgubili svo sredstvo za dizanje",
+            "a2": "Dodatno miješanje može učiniti mrvice žilavijima",
+            "a3": "Da se rastopljena mast ne odvaja",
+            "a4": "Da spriječi prerano smeđivanje vrhova"
+          },
           "headerLabel": "ZNANOST O PEKANJU"
         },
         "chef-r2q6": {
           "question": "Staklena posuda se razbije pokraj nepoklopljene pripremljene hrane. Što bi se trebalo dogoditi?",
-          "answers": [
-            "Uklonite vidljivo staklo i zadržite hranu",
-            "Maknite hranu i nastavite s posluživanjem",
-            "Bacite izloženu hranu i očistite prostor na siguran način",
-            "Pokrijte hranu i očistite nakon posluživanja"
-          ],
+          "answers": {
+            "a1": "Uklonite vidljivo staklo i zadržite hranu",
+            "a2": "Maknite hranu i nastavite s posluživanjem",
+            "a3": "Bacite izloženu hranu i očistite prostor na siguran način",
+            "a4": "Pokrijte hranu i očistite nakon posluživanja"
+          },
           "headerLabel": "SIGURNOST HRANE"
         },
         "chef-r6q1": {
           "question": "Recept koristi 300 g riže za 4 porcije. Koliko je potrebno za 10 porcija?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "KUHINJSKA MATEMATIKA"
         },
         "chef-r3q1": {
           "question": "Povrće u prepunoj vrućoj tavi postaje blijedo i mokro. Što to najbolje objašnjava?",
-          "answers": [
-            "Oslobođena vlaga je zarobljena, pa se povrće kuha na pari",
-            "Posuda je bila prevruća i zatvorila je vlagu iznutra",
-            "Povrće je upilo ulje prije nego što je stiglo smeđiti",
-            "Njihovo prečesto okretanje stvorilo je dodatnu vlagu"
-          ],
+          "answers": {
+            "a1": "Oslobođena vlaga je zarobljena, pa se povrće kuha na pari",
+            "a2": "Posuda je bila prevruća i zatvorila je vlagu iznutra",
+            "a3": "Povrće je upilo ulje prije nego što je stiglo smeđiti",
+            "a4": "Njihovo prečesto okretanje stvorilo je dodatnu vlagu"
+          },
           "headerLabel": "KONTROLA TOPLINE"
         },
         "chef-r8q1": {
           "question": "Koji alat uklanja grudice sa suhog brašna?",
-          "answers": [
-            "Umutiti",
-            "Kliješta",
-            "Sito",
-            "Gulilica"
-          ],
+          "answers": {
+            "a1": "Umutiti",
+            "a2": "Kliješta",
+            "a3": "Sito",
+            "a4": "Gulilica"
+          },
           "headerLabel": "KUHINJSKI ALATI"
         },
         "chef-r8q2": {
           "question": "Koji sastojak produbljuje slani umami?",
-          "answers": [
-            "Šećer u prahu",
-            "Šlag vrhnje",
-            "Obična voda",
-            "gljive"
-          ],
+          "answers": {
+            "a1": "Šećer u prahu",
+            "a2": "Šlag vrhnje",
+            "a3": "Obična voda",
+            "a4": "gljive"
+          },
           "headerLabel": "IZGRADNJA OKUSA"
         },
         "chef-r10q1": {
           "question": "Luk se prvo kuha, a svježe začinsko bilje završava jelo, no oboje se pripremalo u jednoj zdjeli. Koja promjena postavki slijedi nakon recepta?",
-          "answers": [
-            "Držite ih odvojeno do vremena upotrebe",
-            "Sve kuhati na kraju",
-            "Dodajte začinsko bilje na početku",
-            "Ostavite oba sastojka nepripremljena"
-          ],
+          "answers": {
+            "a1": "Držite ih odvojeno do vremena upotrebe",
+            "a2": "Sve kuhati na kraju",
+            "a3": "Dodajte začinsko bilje na početku",
+            "a4": "Ostavite oba sastojka nepripremljena"
+          },
           "headerLabel": "ORGANIZACIJA KUHINJE"
         },
         "chef-r10q2": {
           "question": "Jelo ima bogat i težak okus, ali mu je potrebna svježina. Koja ga završna prilagodba najbolje uravnotežuje?",
-          "answers": [
-            "Još vrhnja i maslaca",
-            "Limun i svježe začinsko bilje",
-            "Još brašna",
-            "Još sirupa"
-          ],
+          "answers": {
+            "a1": "Još vrhnja i maslaca",
+            "a2": "Limun i svježe začinsko bilje",
+            "a3": "Još brašna",
+            "a4": "Još sirupa"
+          },
           "headerLabel": "ZAVRŠNI TEST OKUSA"
         }
       }

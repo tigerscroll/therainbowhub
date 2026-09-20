@@ -8,6 +8,13 @@ const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data",
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.replace(/\.json$/, "")));
 const errors = [];
+const sharedCopyCache = new Map();
+const APPROVED_SHARED_OVERRIDE_PATHS = [
+  { localePath: "about.howToPlay.title", sharedKey: "howToPlayTitle" },
+  { localePath: "results.score.correctLabel", sharedKey: "scoreCorrect" },
+  { localePath: "career.stages.*.preAdButton", sharedKey: "revealMyResults" },
+  { localePath: "career.stages.*.preAdChecks.2", sharedKey: "finalScoreCalculated" },
+];
 const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
 
@@ -27,24 +34,147 @@ function read(file) {
 
 function fail(condition, message) { if (!condition) errors.push(message); }
 
-function validateTextOnlyLocale(value, config, location) {
-  fail(value?.schemaVersion === 2, `${location}: locale schemaVersion must be 2.`);
+function exactObjectKeys(value, allowed, location) {
+  fail(value && typeof value === "object" && !Array.isArray(value), `${location}: must be an object.`);
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const unexpected = Object.keys(value).filter((key) => !allowed.includes(key));
+  fail(!unexpected.length, `${location}: unsupported keys: ${unexpected.join(", ")}.`);
+  return value;
+}
+
+function visibleStringAtPath(value, fieldPath) {
+  const resolved = fieldPath.split(".").reduce((current, segment) => {
+    if (Array.isArray(current) && /^\d+$/.test(segment)) return current[Number(segment)];
+    if (!current || typeof current !== "object" || !Object.prototype.hasOwnProperty.call(current, segment)) return undefined;
+    return current[segment];
+  }, value);
+  return typeof resolved === "string" ? resolved : undefined;
+}
+
+function tokenOccurrenceCount(value, token) { return value.split(token).length - 1; }
+
+function sharedQuizCopy(locale) {
+  if (sharedCopyCache.has(locale)) return sharedCopyCache.get(locale);
+  const english = read(path.join(process.cwd(), "data", "i18n", "en.json"))?.quiz ?? {};
+  const localized = read(path.join(process.cwd(), "data", "i18n", `${locale}.json`))?.quiz ?? {};
+  const resolved = { ...english, ...localized };
+  sharedCopyCache.set(locale, resolved);
+  return resolved;
+}
+
+function valuesAtPathPattern(value, pathPattern) {
+  const segments = pathPattern.split(".");
+  const matches = [];
+  function visit(current, index, resolvedPath) {
+    if (index === segments.length) {
+      matches.push({ path: resolvedPath.join("."), value: current });
+      return;
+    }
+    if (current === undefined || current === null) return;
+    const segment = segments[index];
+    if (segment === "*") {
+      if (typeof current !== "object") return;
+      Object.entries(current).forEach(([key, item]) => visit(item, index + 1, [...resolvedPath, key]));
+      return;
+    }
+    if (typeof current !== "object" || !Object.prototype.hasOwnProperty.call(current, segment)) return;
+    visit(current[segment], index + 1, [...resolvedPath, segment]);
+  }
+  visit(value, 0, []);
+  return matches;
+}
+
+function validateTextOnlyLocale(value, config, location, locale) {
+  const localeKeys = ["title", "eyebrow", "summary", "landing", "about", "career", "results", "stages"];
+  fail(Object.keys(value ?? {}).every((key) => localeKeys.includes(key)), `${location}: locale root contains an unsupported or unapproved override key.`);
+  fail(value?.schemaVersion === undefined, `${location}: schemaVersion belongs in quiz.json, not locale content.`);
+  fail(value?.progressLabel === undefined, `${location}: shared progress copy belongs in data/i18n.`);
+  fail(value?.career?.resultProgressComplete === undefined, `${location}: resultProgressComplete belongs in data/i18n.`);
   fail(typeof value?.eyebrow === "string" && Boolean(value.eyebrow.trim()), `${location}: eyebrow is required.`);
+  const shared = sharedQuizCopy(locale);
+  for (const mapping of APPROVED_SHARED_OVERRIDE_PATHS) {
+    for (const match of valuesAtPathPattern(value, mapping.localePath)) {
+      fail(match.value !== shared[mapping.sharedKey], `${location}: ${match.path} duplicates shared i18n key quiz.${mapping.sharedKey}.`);
+    }
+  }
+  if (value?.landing !== undefined) exactObjectKeys(value.landing, ["intro", "badge", "cta"], `${location}#landing`);
+  if (value?.about !== undefined) {
+    exactObjectKeys(value.about, ["body", "disclaimer", "howToPlay"], `${location}#about`);
+    if (value.about.howToPlay !== undefined) exactObjectKeys(value.about.howToPlay, ["title", "steps"], `${location}#about.howToPlay`);
+  }
+  exactObjectKeys(value?.career, ["resultProgressLabel", "stages"], `${location}#career`);
+  for (const [stageId, stage] of Object.entries(value?.career?.stages ?? {})) {
+    exactObjectKeys(stage, ["difficulty", "preAdTitle", "preAdCopy", "preAdChecks", "preAdButton", "next"], `${location}#career.stages.${stageId}`);
+    if (stage.next !== undefined) exactObjectKeys(stage.next, ["eyebrow", "tagline", "copy"], `${location}#career.stages.${stageId}.next`);
+  }
+  exactObjectKeys(value?.results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match"], `${location}#results`);
+  for (const [profileId, profile] of Object.entries(value?.results?.profiles ?? {})) {
+    exactObjectKeys(profile, ["tier", "title", "copy", "label", "icon", "aura", "traits", "firstFeature"], `${location}#results.profiles.${profileId}`);
+  }
+  for (const [dimensionId, dimension] of Object.entries(value?.results?.dimensions ?? {})) {
+    exactObjectKeys(dimension, ["label"], `${location}#results.dimensions.${dimensionId}`);
+  }
+  if (value?.results?.score !== undefined) {
+    exactObjectKeys(value.results.score, ["passed", "finished", "correctLabel", "strongest", "trickiest", "bestRound", "disclaimer", "derivedLabel", "retryLabel", "reviewUnlock", "insights"], `${location}#results.score`);
+    if (value.results.score.reviewUnlock !== undefined) exactObjectKeys(value.results.score.reviewUnlock, ["title", "copy", "button", "adNote"], `${location}#results.score.reviewUnlock`);
+    if (value.results.score.insights !== undefined) exactObjectKeys(value.results.score.insights, ["overview", "correct", "missed", "target", "breakdown", "snapshot", "targetReached", "targetRemaining"], `${location}#results.score.insights`);
+  }
+  if (value?.results?.estimate !== undefined) {
+    exactObjectKeys(value.results.estimate, ["eyebrow", "ageSuffix", "strongestSignal", "wildcard", "consistency", "consistencyLabels", "disclaimer", "reviewUnlock", "insights"], `${location}#results.estimate`);
+    if (value.results.estimate.consistencyLabels !== undefined) exactObjectKeys(value.results.estimate.consistencyLabels, ["high", "medium", "mixed"], `${location}#results.estimate.consistencyLabels`);
+    if (value.results.estimate.reviewUnlock !== undefined) exactObjectKeys(value.results.estimate.reviewUnlock, ["title", "copy", "button", "adNote", "reviewTitle", "yourChoice", "raised", "lowered", "neutral", "raisedCopy", "loweredCopy", "neutralCopy"], `${location}#results.estimate.reviewUnlock`);
+    if (value.results.estimate.insights !== undefined) exactObjectKeys(value.results.estimate.insights, ["overview", "estimate", "signal", "consistency", "breakdown", "snapshot"], `${location}#results.estimate.insights`);
+  }
+  if (value?.results?.profileReveal !== undefined) {
+    exactObjectKeys(value.results.profileReveal, ["eyebrow", "auraLabel", "traitsLabel", "strongestEnergy", "hiddenEnergy", "consistency", "consistencyLabels", "firstFeatureLabel", "portraitAlt", "breakdown", "disclaimer"], `${location}#results.profileReveal`);
+    if (value.results.profileReveal.consistencyLabels !== undefined) exactObjectKeys(value.results.profileReveal.consistencyLabels, ["high", "medium", "mixed"], `${location}#results.profileReveal.consistencyLabels`);
+    if (value.results.profileReveal.breakdown !== undefined) exactObjectKeys(value.results.profileReveal.breakdown, ["eyebrow", "title", "copy", "button", "adNote", "heading"], `${location}#results.profileReveal.breakdown`);
+  }
+  if (value?.results?.match !== undefined) exactObjectKeys(value.results.match, ["academicChallenge", "correctLabel", "strongest", "preferredStyle", "alternative", "wildcard", "wildcardTemplate", "bestRound", "disclaimer", "traitLabels"], `${location}#results.match`);
   const stageIds = config.structure?.stages?.map((stage) => stage.id) ?? [];
   fail(value?.stages && !Array.isArray(value.stages), `${location}: locale stages must be keyed by stable stage IDs.`);
   fail(JSON.stringify(Object.keys(value?.stages ?? {}).sort()) === JSON.stringify([...stageIds].sort()), `${location}: locale stage IDs must exactly match quiz.json.`);
-  const forbiddenQuestionKeys = ["id", "presentation", "icons", "calibration", "delay", "correct", "category", "reasoningSteps", "interactionStyle"];
+  const forbiddenQuestionKeys = ["id", "answerIds", "correctAnswerId", "presentation", "icons", "calibration", "delay", "correct", "category", "reasoningSteps", "interactionStyle"];
   for (const stage of config.structure?.stages ?? []) {
     const localizedStage = value?.stages?.[stage.id];
+    exactObjectKeys(localizedStage, ["title", "complete", "questions"], `${location}#stages.${stage.id}`);
     fail(JSON.stringify(Object.keys(localizedStage?.questions ?? {}).sort()) === JSON.stringify([...stage.questionIds].sort()), `${location}: ${stage.id} question IDs must exactly match quiz.json.`);
     for (const questionId of stage.questionIds) {
       const question = localizedStage?.questions?.[questionId] ?? {};
+      exactObjectKeys(question, ["context", "visual", "image", "question", "headerLabel", "answers", "trapdoorErrors", "memoryItems", "continueLabel", "study"], `${location}#stages.${stage.id}.questions.${questionId}`);
+      if (question.visual !== undefined) exactObjectKeys(question.visual, ["items", "ariaLabel"], `${location}#stages.${stage.id}.questions.${questionId}.visual`);
+      if (question.image !== undefined) exactObjectKeys(question.image, ["alt"], `${location}#stages.${stage.id}.questions.${questionId}.image`);
+      if (question.study !== undefined) exactObjectKeys(question.study, ["title", "instruction", "items", "continueLabel", "adNote", "ariaLabel"], `${location}#stages.${stage.id}.questions.${questionId}.study`);
       fail(forbiddenQuestionKeys.every((key) => question[key] === undefined), `${location}: ${questionId} repeats logic owned by quiz.json.`);
       fail(question.visual?.columns === undefined && question.visual?.separator === undefined, `${location}: ${questionId} visual geometry belongs in quiz.json.`);
       fail(question.image?.src === undefined, `${location}: ${questionId} image paths belong in quiz.json.`);
       fail(question.study?.presentation === undefined && question.study?.durationMs === undefined && question.study?.mode === undefined, `${location}: ${questionId} study mechanics belong in quiz.json.`);
+      const answerIds = config.structure?.questions?.[questionId]?.answerIds ?? [];
+      if (question.answers !== undefined) {
+        fail(question.answers && !Array.isArray(question.answers) && typeof question.answers === "object", `${location}: ${questionId} answers must be keyed by stable answer IDs.`);
+        fail(JSON.stringify(Object.keys(question.answers ?? {}).sort()) === JSON.stringify([...answerIds].sort()), `${location}: ${questionId} answer IDs must exactly match quiz.json.`);
+      }
+      if (question.trapdoorErrors !== undefined) {
+        fail(question.trapdoorErrors && !Array.isArray(question.trapdoorErrors) && typeof question.trapdoorErrors === "object", `${location}: ${questionId} trapdoorErrors must be keyed by answer IDs.`);
+        fail(Object.keys(question.trapdoorErrors ?? {}).every((answerId) => answerIds.includes(answerId)), `${location}: ${questionId} trapdoorErrors reference an unknown answer ID.`);
+      }
+      for (const rule of config.structure?.questions?.[questionId]?.protectedTokens ?? []) {
+        fail(rule && typeof rule === "object" && !Array.isArray(rule), `${location}: ${questionId} protected token rules must be objects.`);
+        fail(JSON.stringify(Object.keys(rule ?? {}).sort()) === JSON.stringify(["count", "path", "value"]), `${location}: ${questionId} protected token rules require only count, path and value.`);
+        fail(Number.isInteger(rule?.count) && rule.count > 0, `${location}: ${questionId} protected token count must be a positive integer.`);
+        const protectedText = visibleStringAtPath(question, rule?.path ?? "");
+        fail(typeof protectedText === "string" && tokenOccurrenceCount(protectedText, rule?.value ?? "") === rule?.count, `${location}: ${questionId}.${rule?.path} must preserve ${rule?.count} occurrence(s) of ${JSON.stringify(rule?.value)}.`);
+      }
     }
   }
+  function validateStringLeaves(current, currentPath = "") {
+    if (typeof current === "string") return;
+    if (Array.isArray(current)) return current.forEach((item, index) => validateStringLeaves(item, `${currentPath}[${index}]`));
+    if (current && typeof current === "object") return Object.entries(current).forEach(([key, item]) => validateStringLeaves(item, currentPath ? `${currentPath}.${key}` : key));
+    fail(false, `${location}#${currentPath}: locale leaves must be user-facing strings, not ${current === null ? "null" : typeof current}.`);
+  }
+  validateStringLeaves(value);
+  fail(value?.results?.score?.showBestRound === undefined && value?.results?.score?.showPercentage === undefined, `${location}: result display configuration belongs in quiz.json.`);
   fail(value?.results?.profiles && !Array.isArray(value.results.profiles), `${location}: result profiles must be keyed text, not duplicated logic arrays.`);
   fail(value?.results?.dimensions && !Array.isArray(value.results.dimensions), `${location}: result dimensions must be keyed text, not duplicated logic arrays.`);
 }
@@ -151,6 +281,15 @@ for (const folder of folders) {
   fail(config.listing?.duration === undefined, `${folder.name}/quiz.json: duration is derived/unused and must not be stored.`);
   fail(config.structure?.stages?.length === expectedStageCount && config.structure.stages.every((stage) => stage.questionIds?.length === expectedQuestionsPerStage), `${folder.name}/quiz.json: structure does not match ${config.template}.`);
   fail(Object.keys(config.structure?.questions ?? {}).length === expectedQuestionTotal, `${folder.name}/quiz.json: structure must contain exactly ${expectedQuestionTotal} question definitions.`);
+  for (const [questionId, question] of Object.entries(config.structure?.questions ?? {})) {
+    const answerIds = question.answerIds;
+    fail(Array.isArray(answerIds) && answerIds.length >= 1 && answerIds.length <= 5 && new Set(answerIds).size === answerIds.length, `${folder.name}/quiz.json: ${questionId} needs 1–5 unique answerIds.`);
+    fail(question.choiceCount === undefined && question.correct === undefined, `${folder.name}/quiz.json: ${questionId} must not use positional choiceCount/correct fields.`);
+    fail(question.correctAnswerId === undefined || answerIds?.includes(question.correctAnswerId), `${folder.name}/quiz.json: ${questionId} correctAnswerId must reference answerIds.`);
+    for (const field of ["icons", "calibration", "choiceMeanings"]) {
+      if (question[field] !== undefined) fail(JSON.stringify(Object.keys(question[field]).sort()) === JSON.stringify([...answerIds].sort()), `${folder.name}/quiz.json: ${questionId}.${field} must be keyed by answerIds.`);
+    }
+  }
   const manifestEngine = config.engine ?? {};
   const templateKeys = ["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"];
   fail(config.template === "single-stage-rewarded-v1", `${folder.name}: every quiz must use the shared single-stage rewarded template.`);
@@ -210,7 +349,7 @@ for (const folder of folders) {
   fail(independentLocales || JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
 
   const sourceRaw = read(path.join(directory, "en.json"));
-  if (sourceRaw) validateTextOnlyLocale(sourceRaw, config, `${folder.name}/en.json`);
+  if (sourceRaw) validateTextOnlyLocale(sourceRaw, config, `${folder.name}/en.json`, "en");
   const source = sourceRaw ? expandQuizLocale(config, sourceRaw, "en") : null;
   if (!source) continue;
   fail(!source.landing?.intro?.includes("—"), `${folder.name}/en.json: landing subtitles must not use em dashes.`);
@@ -231,7 +370,7 @@ for (const folder of folders) {
   fail(config.theme?.artwork?.landing === undefined, `${folder.name}: landing artwork panels are not supported by the shared landing template.`);
   const obsoleteCareerKeys = ["hideJourneyLength", "continuousShell", "showStageResults", "stageResultMode", "showCurrentScore", "showResultProgress", "currentScoreLabel", "levelLabel", "scoreSuffix", "journeyLabel", "kitchensCleared", "currentRank", "ranks", "unlockEyebrow", "unlockTitle", "unlockCopy", "finalEyebrow", "finalCareerTitle", "strongestLabel", "compactGate"];
   fail(Boolean(source.career) && obsoleteCareerKeys.every((key) => source.career?.[key] === undefined), `${folder.name}/en.json: shared shell geometry and flow settings must not be repeated in locale content.`);
-  fail(typeof source.career?.resultProgressLabel === "string" && source.career?.resultProgressComplete?.includes("{value}"), `${folder.name}/en.json: checkpoint progress copy is required.`);
+  fail(typeof source.career?.resultProgressLabel === "string" && source.career?.resultProgressComplete?.includes("{value}"), `${folder.name}: themed progress label and shared completion copy are required after expansion.`);
   fail(source.career?.stages?.length === expectedStageCount, `${folder.name}/en.json: shared career/checkpoint data must match the quiz stages.`);
   fail(source.career?.stages?.slice(0, -1).every((stage) => (
     stage.preAdButton === undefined
@@ -280,7 +419,7 @@ for (const folder of folders) {
     fail(sourceQuestions.length === 10 && sourceQuestions[0]?.id === "marry-r1q1", "marry: needs the approved ten-choice sequence beginning with the portrait selector.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(expectedProfiles), "marry: archetype set or fixed tie order changed.");
     fail(selector?.questionId === "marry-r1q1" && selector?.fallback === "stable-answer-hash", "marry: profile artwork selector is missing or invalid.");
-    fail(JSON.stringify(selector?.fixedVariants) === JSON.stringify({ 0: "masculine", 1: "feminine", 2: "androgynous" }), "marry: fixed presentation mappings changed.");
+    fail(JSON.stringify(selector?.fixedVariants) === JSON.stringify({ a1: "masculine", a2: "feminine", a3: "androgynous" }), "marry: fixed presentation mappings changed.");
     fail(JSON.stringify(selectorQuestion?.calibration) === JSON.stringify([0, 0, 0, 0]) && selectorQuestion?.correct === undefined, "marry: Q1 must be the only unscored selector.");
     fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: relationship choices must not use answer keys or calibration.");
     fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "marry: every choice needs a question-type header.");
@@ -361,7 +500,7 @@ for (const folder of folders) {
     const expectedIds = ["r1q3", "r2q1", "r3q2", "r4q3", "r4q2", "r6q6", "r7q4", "r8q1", "r9q5", "r10q6"];
     const expectedHeaderLabels = ["EVERYDAY RHYTHM", "FOOD AND FUEL", "DAILY MOVEMENT", "SLEEP AND RECOVERY", "STRESS RESPONSE", "SOCIAL CONNECTION", "ADAPTABILITY", "EVERYDAY JOY", "FUTURE SELF", "FINAL PREDICTION"];
     const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.flow === "linear" && source.progressLabel === "complete", "years-left: must use the shared single-stage prediction flow.");
+    fail(config.template === "single-stage-rewarded-v1" && config.engine?.flow === "linear" && sourceRaw.progressLabel === undefined, "years-left: must use the shared single-stage prediction flow and progress copy.");
     fail(source.stages?.length === 1 && source.stages[0]?.questions?.length === 10 && source.stages[0]?.title === "Lifestyle Prediction", "years-left/en.json: must contain one ten-question Lifestyle Prediction stage.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "years-left/en.json: compact question selection or order changed.");
     fail(JSON.stringify(sourceQuestions.map((question) => question.headerLabel)) === JSON.stringify(expectedHeaderLabels), "years-left/en.json: question-type labels changed.");
@@ -449,7 +588,7 @@ for (const folder of folders) {
   }
   for (const localeFile of localeFiles) {
     const localizedRaw = read(path.join(directory, localeFile));
-    if (localizedRaw) validateTextOnlyLocale(localizedRaw, config, `${folder.name}/${localeFile}`);
+    if (localizedRaw) validateTextOnlyLocale(localizedRaw, config, `${folder.name}/${localeFile}`, localeFile.replace(/\.json$/, ""));
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);

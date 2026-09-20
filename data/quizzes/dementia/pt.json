@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Teste Rápido de Demência",
   "eyebrow": "VERIFICAÇÃO DO CÉREBRO DE 10 PERGUNTAS",
   "summary": "Um desafio rápido para recordação, atenção, linguagem e raciocínio.",
-  "progressLabel": "concluído",
   "landing": {
     "intro": "Acha que sua memória ainda está nítida? Estas 10 perguntas rápidas testam a memória, a atenção e o raciocínio - e as perguntas atrasadas são mais difíceis do que parecem.",
     "cta": "Começar o teste"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Este desafio cerebral de dez perguntas mistura recordação imediata e retardada com atenção, linguagem, memória visual e raciocínio simples. Ele foi concebido como um instantâneo envolvente do desempenho atual, e não como uma ferramenta de triagem de demência.\n\nO desempenho pode mudar com o sono, o estresse, o humor, a medicação, a linguagem, a educação, a visão, a audição, o uso de dispositivos e o simples acaso. A pontuação de um questionário online não pode confirmar ou descartar a demência.",
     "howToPlay": {
-      "title": "Como funciona",
       "steps": [
         "Estude cada dica de memória cuidadosamente quando ela aparecer.",
         "Escolha uma resposta para cada pergunta sem ajuda externa.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Desafio cerebral rápido",
-    "resultProgressComplete": "{value}% concluído",
     "stages": {
       "stage-1": {
         "difficulty": "Teste Rápido de Demência",
@@ -30,10 +26,8 @@
         "preAdCopy": "Suas dez respostas foram verificadas e sua pontuação de desafio cerebral está pronta para ser revelada.",
         "preAdChecks": [
           "10 respostas verificadas",
-          "Três áreas de pensamento comparadas",
-          "Pontuação final calculada"
-        ],
-        "preAdButton": "Ver os resultados"
+          "Três áreas de pensamento comparadas"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Superou o desafio de 80% do cérebro!",
       "finished": "Desafio cerebral rápido concluído",
-      "correctLabel": "corretas",
       "strongest": "Área mais forte hoje",
       "trickiest": "Área mais complicada hoje",
       "bestRound": "Melhor etapa",
@@ -94,8 +87,7 @@
         "snapshot": "O que o resultado indica",
         "targetReached": "Desafio de 80% alcançado",
         "targetRemaining": "Mais respostas corretas necessárias para 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Qual palavra apareceu em terceiro lugar?",
           "headerLabel": "RECORDAÇÃO IMEDIATA",
-          "answers": [
-            "Ponte",
-            "Limão",
-            "Jardim",
-            "Relógio"
-          ],
+          "answers": {
+            "a1": "Ponte",
+            "a2": "Limão",
+            "a3": "Jardim",
+            "a4": "Relógio"
+          },
           "study": {
             "title": "Lembre-se destas quatro palavras",
             "instruction": "Eles podem retornar mais tarde no teste.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Qual código é uma correspondência exata para P8L4T?",
           "headerLabel": "ATENÇÃO FOCADA",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Qual item não pertence aos outros?",
           "headerLabel": "CATEGORIAS DE PALAVRAS",
-          "answers": [
-            "Violino",
-            "Flauta",
-            "Cenoura",
-            "Trombeta"
-          ]
+          "answers": {
+            "a1": "Violino",
+            "a2": "Flauta",
+            "a3": "Cenoura",
+            "a4": "Trombeta"
+          }
         },
         "dementia-q4": {
           "question": "Qual número vem a seguir: 2, 4, 8, 16, ___?",
           "headerLabel": "RACIOCÍNIO PADRÃO",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Qual objeto apareceu em segundo lugar?",
           "headerLabel": "MEMÓRIA VISUAL",
-          "answers": [
-            "Luva",
-            "Chave",
-            "Caneca",
-            "Livro"
-          ],
+          "answers": {
+            "a1": "Luva",
+            "a2": "Chave",
+            "a3": "Caneca",
+            "a4": "Livro"
+          },
           "study": {
             "title": "Estude a ordem dos objetos",
             "instruction": "Isso desaparecerá automaticamente.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Quanto é 7 – 2 – 9 ao contrário?",
           "headerLabel": "MEMÓRIA DE TRABALHO",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Se o ponteiro dos minutos apontar para 6, quantos minutos passaram da hora?",
           "headerLabel": "RACIOCÍNIO DO RELÓGIO",
-          "answers": [
-            "6 minutos",
-            "15 minutos",
-            "45 minutos",
-            "30 minutos"
-          ]
+          "answers": {
+            "a1": "6 minutos",
+            "a2": "15 minutos",
+            "a3": "45 minutos",
+            "a4": "30 minutos"
+          }
         },
         "dementia-q8": {
           "question": "O cachorrinho está para o cachorro assim como o gatinho está para o quê?",
           "headerLabel": "CONEXÃO DE IDIOMA",
-          "answers": [
-            "Gato",
-            "Cavalo",
-            "Coelho",
-            "Pássaro"
-          ]
+          "answers": {
+            "a1": "Gato",
+            "a2": "Cavalo",
+            "a3": "Coelho",
+            "a4": "Pássaro"
+          }
         },
         "dementia-q9": {
           "question": "Pense na lista de abertura. Qual palavra apareceu primeiro?",
           "headerLabel": "RECORDAÇÃO ATRASADA DE PALAVRA",
-          "answers": [
-            "Relógio",
-            "Jardim",
-            "Limão",
-            "Ponte"
-          ]
+          "answers": {
+            "a1": "Relógio",
+            "a2": "Jardim",
+            "a3": "Limão",
+            "a4": "Ponte"
+          }
         },
         "dementia-q10": {
           "question": "Pense novamente na sequência de objetos. Qual objeto apareceu em quarto lugar?",
           "headerLabel": "RECALL ATRASO FINAL",
-          "answers": [
-            "Livro",
-            "Chave",
-            "Luva",
-            "Caneca"
-          ]
+          "answers": {
+            "a1": "Livro",
+            "a2": "Chave",
+            "a3": "Luva",
+            "a4": "Caneca"
+          }
         }
       }
     }

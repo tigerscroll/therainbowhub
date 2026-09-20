@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Karamihan sa mga nasa hustong gulang ay hindi makapasa sa pagsusulit na ito para makapasok sa medisina",
   "eyebrow": "ANG CLINICAL KNOWLEDGE TEST",
   "summary": "Sampung tanong ang sumusubok sa anatomy, sintomas, diagnostic tool at ligtas na klinikal na pangangatwiran.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Parang pamilyar ang mga tanong sa anatomy. Pagkatapos ang pagsubok ay lumipat sa mga sintomas, emerhensiya at mga klinikal na desisyon.",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ang ten-question entertainment challenge na ito ay gumagamit ng malawak na medikal na konsepto na itinuturo at nauunawaan sa mga Tier 1 na bansang nagsasalita ng English. Lumilipat ito mula sa anatomy at physiology patungo sa mga diagnostic tool, pattern ng sintomas, mga priyoridad sa emergency at responsableng paggamit ng gamot.\n\nPumili ng isang sagot para sa bawat tanong. Nananatiling nakatago ang kawastuhan hanggang sa huling pagsisiwalat, kung saan ang kumpletong pagsusuri ng sagot ay magagamit upang i-unlock.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Sagutin ang sampung lalong mahirap na mga katanungan sa klinikal na kaalaman.",
         "Piliin ang nag-iisang pinaka-suportadong sagot.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hamon sa pagpasok ng doktor",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Pagsusulit sa Pagpasok ng Doktor",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ang iyong sampung sagot ay nasuri at ang iyong marka ng klinikal na kaalaman ay handa nang ipakita.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Limang medikal na lugar ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Limang medikal na lugar ang inihambing"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Nalampasan mo ang entrance challenge ng Doctor!",
       "finished": "Kumpleto na ang hamon sa pagpasok ng doktor",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na medikal na lugar",
       "trickiest": "Pinaka nakakalito na medikal na lugar",
       "bestRound": "Pinakamahusay na seksyon",
@@ -99,8 +92,7 @@
         "snapshot": "Ano ang iminumungkahi ng iyong resulta",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Aling silid ng puso ang nagbobomba ng dugong mayaman sa oxygen sa aorta?",
-          "answers": [
-            "Kaliwang ventricle",
-            "kanang ventricle",
-            "Kaliwang atrium",
-            "Kanang atrium"
-          ],
+          "answers": {
+            "a1": "Kaliwang ventricle",
+            "a2": "kanang ventricle",
+            "a3": "Kaliwang atrium",
+            "a4": "Kanang atrium"
+          },
           "headerLabel": "Kardiyo Anatomy"
         },
         "doctor-q2": {
           "question": "Ang biglaang paglaylay ng mukha, panghihina ng braso at kahirapan sa pagsasalita ay dapat magdulot ng agarang pag-aalala para sa ano?",
-          "answers": [
-            "Isang menor de edad na hindi pagpaparaan sa pagkain",
-            "Isang posibleng stroke",
-            "Isang simpleng muscle strain",
-            "Pana-panahong allergy"
-          ],
+          "answers": {
+            "a1": "Isang menor de edad na hindi pagpaparaan sa pagkain",
+            "a2": "Isang posibleng stroke",
+            "a3": "Isang simpleng muscle strain",
+            "a4": "Pana-panahong allergy"
+          },
           "headerLabel": "PAGKILALA NG SYMPTOM"
         },
         "doctor-q3": {
           "question": "Aling device ang nagbibigay ng mabilis, hindi nagsasalakay na pagtatantya ng saturation ng oxygen sa dugo?",
-          "answers": [
-            "Otoskopyo",
-            "Reflex martilyo",
-            "Pulse oximeter",
-            "Thermometer"
-          ],
+          "answers": {
+            "a1": "Otoskopyo",
+            "a2": "Reflex martilyo",
+            "a3": "Pulse oximeter",
+            "a4": "Thermometer"
+          },
           "headerLabel": "MGA TOOL SA DIAGNOSTIK"
         },
         "doctor-q4": {
           "question": "Sa isang klasikong pagtatanghal ng apendisitis, ang pananakit ng tiyan ay maaaring lumipat patungo sa aling bahagi?",
-          "answers": [
-            "Itaas na kaliwang tiyan",
-            "Gitna ng dibdib",
-            "Kaliwang balikat",
-            "Ibabang kanang tiyan"
-          ],
+          "answers": {
+            "a1": "Itaas na kaliwang tiyan",
+            "a2": "Gitna ng dibdib",
+            "a3": "Kaliwang balikat",
+            "a4": "Ibabang kanang tiyan"
+          },
           "headerLabel": "MGA CLINICAL PATTERN"
         },
         "doctor-q5": {
           "question": "Aling mga selula sa pancreas ang gumagawa ng insulin?",
-          "answers": [
-            "Mga beta cell",
-            "Mga pulang selula ng dugo",
-            "Mga Osteoblast",
-            "Neutrophils"
-          ],
+          "answers": {
+            "a1": "Mga beta cell",
+            "a2": "Mga pulang selula ng dugo",
+            "a3": "Mga Osteoblast",
+            "a4": "Neutrophils"
+          },
           "headerLabel": "PISYOLOGYYA ng Endocrine"
         },
         "doctor-q6": {
           "question": "Ano ang ibig sabihin ng auscultation sa panahon ng pisikal na pagsusuri?",
-          "answers": [
-            "Pagsukat ng temperatura ng katawan",
-            "Pakikinig sa panloob na mga tunog ng katawan",
-            "Pagsubok ng visual acuity",
-            "Pagsusuri ng sample ng tissue sa ilalim ng mikroskopyo"
-          ],
+          "answers": {
+            "a1": "Pagsukat ng temperatura ng katawan",
+            "a2": "Pakikinig sa panloob na mga tunog ng katawan",
+            "a3": "Pagsubok ng visual acuity",
+            "a4": "Pagsusuri ng sample ng tissue sa ilalim ng mikroskopyo"
+          },
           "headerLabel": "KINIKALINING PANUNGSAN"
         },
         "doctor-q7": {
           "question": "Aling paglalarawan ang pinakamahusay na tumutugma sa sepsis?",
-          "answers": [
-            "Isang hindi nakakapinsalang reaksyon sa ehersisyo",
-            "Isang kondisyon na dulot lamang ng mga allergy",
-            "Isang matinding tugon sa impeksyon na nagbabanta sa buhay",
-            "Isang uri ng bone fracture"
-          ],
+          "answers": {
+            "a1": "Isang hindi nakakapinsalang reaksyon sa ehersisyo",
+            "a2": "Isang kondisyon na dulot lamang ng mga allergy",
+            "a3": "Isang matinding tugon sa impeksyon na nagbabanta sa buhay",
+            "a4": "Isang uri ng bone fracture"
+          },
           "headerLabel": "MGA EMERGENSYONG MEDIKAL"
         },
         "doctor-q8": {
           "question": "Ano ang tawag sa functional filtering unit ng kidney?",
-          "answers": [
-            "Alveolus",
-            "Neuron",
-            "Villus",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveolus",
+            "a2": "Neuron",
+            "a3": "Villus",
+            "a4": "Nephron"
+          },
           "headerLabel": "ANATOMY NG BATO"
         },
         "doctor-q9": {
           "question": "Ang isang tao ay hindi tumutugon at hindi humihinga nang normal. Ano ang pinakaligtas na agarang pangkalahatang tugon?",
-          "answers": [
-            "Tumawag sa mga serbisyong pang-emergency at simulan ang naaangkop na pangunahing suporta sa buhay",
-            "Maghintay ng ilang minuto para sa kusang paggaling",
-            "Bigyan ng pagkain o inumin",
-            "Hilingin sa tao na maglakad-lakad"
-          ],
+          "answers": {
+            "a1": "Tumawag sa mga serbisyong pang-emergency at simulan ang naaangkop na pangunahing suporta sa buhay",
+            "a2": "Maghintay ng ilang minuto para sa kusang paggaling",
+            "a3": "Bigyan ng pagkain o inumin",
+            "a4": "Hilingin sa tao na maglakad-lakad"
+          },
           "headerLabel": "MGA PRAYORIDAD NG EMERGENCY"
         },
         "doctor-q10": {
           "question": "Aling pahayag tungkol sa mga antibiotic ang pinakatumpak?",
-          "answers": [
-            "Ginagamot nila ang bawat lagnat",
-            "Hindi nila ginagamot ang mga impeksyon sa viral tulad ng karaniwang sipon",
-            "Dapat silang palaging itigil sa sandaling bumuti ang mga sintomas",
-            "Gumagana ang mga ito sa pamamagitan ng direktang pagpapababa ng temperatura ng katawan"
-          ],
+          "answers": {
+            "a1": "Ginagamot nila ang bawat lagnat",
+            "a2": "Hindi nila ginagamot ang mga impeksyon sa viral tulad ng karaniwang sipon",
+            "a3": "Dapat silang palaging itigil sa sandaling bumuti ang mga sintomas",
+            "a4": "Gumagana ang mga ito sa pamamagitan ng direktang pagpapababa ng temperatura ng katawan"
+          },
           "headerLabel": "PANGHULING TANONG NG GAMOT"
         }
       }

@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "De flesta vuxna kan inte få 80 % på detta minnestest",
   "eyebrow": "Minnesutmaning",
   "summary": "Ord, bilder, siffror och försenade överraskningar testar vad ditt minne behåller och vad som tyst glider undan.",
   "about": {
     "body": "Detta kortminnesquiz använder tio noggrant varierade ord, bild, siffror, associationer och uppmärksamhetsutmaningar för att skapa en lekfull ögonblicksbild av återkallelse.\n\nVissa detaljer testas omedelbart, medan andra återkommer efter att olika uppgifter har avbrutit originalminnet. Studera varje cue noggrant, men skynda dig inte: hastigheten förändrar aldrig din poäng.\n\nDitt slutresultat visar hur många av de tio frågorna som var korrekta och framhäver de minnesområden som passade dig bäst. Prestanda kan variera med uppmärksamhet, trötthet, stress, förtrogenhet och slump, så behandla resultatet som underhållning snarare än en bedömning av hjärnans hälsa eller långtidsminnesförmåga.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Studera varje signal noggrant när den dyker upp; vissa detaljer återkommer senare.",
         "Välj ett svar för varje utmaning. Hastighet förändrar aldrig din poäng.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Endast för underhållning och självreflektion. Detta frågesport är inte en medicinsk, neurologisk eller kognitiv bedömning och kan inte diagnostisera minnesproblem. Om du är orolig för ditt minne eller din hälsa, tala med en kvalificerad vårdpersonal."
   },
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Tror du att ditt minne är skarpt?\nBevisa det med 10 frågor.",
     "cta": "Starta"
   },
   "career": {
     "resultProgressLabel": "Minnestest",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Minnesutmaning",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din minnespoäng och uppdelning över tre områden är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Tre minnesområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre minnesområden jämförda"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du slog 80%-utmaningen! 🧠",
       "finished": "Du avslutade minnesutmaningen",
-      "correctLabel": "korrekt",
       "strongest": "Ditt starkaste minnesområde",
       "trickiest": "Ditt knepigaste område",
       "bestRound": "Bästa avsnittet",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Vilket ord förekom i inledningen?",
           "headerLabel": "ORD ÅTERKALLNING",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Kom ihåg dessa detaljer",
             "instruction": "Vissa kan komma tillbaka senare i testet.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Vilken form dök upp på tredje plats?",
           "headerLabel": "VISUELLT MINNE",
-          "answers": [
-            "Cirkel",
-            "Diamant",
-            "Triangel",
-            "Square"
-          ],
+          "answers": {
+            "a1": "Cirkel",
+            "a2": "Diamant",
+            "a3": "Triangel",
+            "a4": "Square"
+          },
           "study": {
             "title": "Kom ihåg färg- och formordningen",
             "instruction": "Detta försvinner automatiskt.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Vilket nummer såg du?",
           "headerLabel": "NUMMER ÅTERKALLNING",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Kom ihåg detta nummer",
             "instruction": "Detta försvinner automatiskt.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Vilken kod är en exakt matchning för K7M2Q?",
           "headerLabel": "KOD MATCH",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "Vad är 4 – 9 – 2 baklänges?",
           "headerLabel": "ARBETSMINNE",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Vilket föremål dök upp på tredje plats?",
           "headerLabel": "ÅTERKRALLNING AV BESTÄLLNING",
-          "answers": [
-            "Drake",
-            "Handske",
-            "Kamera",
-            "Cupcake"
-          ],
+          "answers": {
+            "a1": "Drake",
+            "a2": "Handske",
+            "a3": "Kamera",
+            "a4": "Cupcake"
+          },
           "study": {
             "title": "Studera ordningen med fyra objekt",
             "instruction": "Detta försvinner automatiskt.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Vart reste Sarah?",
           "headerLabel": "DETALJMINNE",
-          "answers": [
-            "Paris",
-            "Rom",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Paris",
+            "a2": "Rom",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Läs dessa detaljer en gång",
             "instruction": "En detalj kan komma tillbaka senare.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Vilken kopia innehåller en nolla istället för bokstaven O?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "SNABB UPPMÄRKSAMHET",
-          "answers": [
-            "Först",
-            "För det andra",
-            "Fjärde",
-            "Tredje"
-          ]
+          "answers": {
+            "a1": "Först",
+            "a2": "För det andra",
+            "a3": "Fjärde",
+            "a4": "Tredje"
+          }
         },
         "memory-r5q1": {
           "question": "Tänk tillbaka på början: vilken färg hade elefanten?",
           "headerLabel": "FÖRSENAD ÅTERKALLNING",
-          "answers": [
-            "Silver",
-            "Lila",
-            "Blå",
-            "Guld"
-          ]
+          "answers": {
+            "a1": "Silver",
+            "a2": "Lila",
+            "a3": "Blå",
+            "a4": "Guld"
+          }
         },
         "memory-r5q6": {
           "question": "Vilken tid gick Sarahs tåg?",
           "headerLabel": "SLUTLIG MINNESTEST",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seule 1 personne sur 5 réussit ce quiz sur les outils pour le béton",
   "eyebrow": "LE TEST DES OUTILS À BÉTON",
   "summary": "Dix outils de chantier dans un quiz impitoyable sur le travail du béton.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Ces outils paraissent évidents sur un chantier, mais leur véritable usage surprend la plupart des gens. Réussirez-vous les 10 questions ?",
     "cta": "Commencer le quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Travailler le béton nécessite bien plus qu’un malaxeur et une pelle. Le timing, la forme et le but de chaque outil spécialisé peuvent décider si une dalle sera plate, solide et contrôlée contre les fissures, ou si elle se transformera en une erreur coûteuse.\n\nÉtudiez chaque photographie et choisissez le bon travail ou l'étape d'utilisation de l'outil. Les bonnes réponses restent cachées jusqu’au résultat final.\n\nLes dix premières questions sources, les choix de réponses et les photographies sont reproduits à partir de Log Cabin Daily avec l'autorisation du propriétaire du site qui a commandé ce quiz.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Étudiez l’outil montré sur chaque photographie.",
         "Choisissez son utilisation correcte ou son étape du processus de bétonnage.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Le défi des outils concrets",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Outils à béton",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vos dix réponses ont été vérifiées et votre score outils concrets est prêt à être révélé.",
         "preAdChecks": [
           "10 outils vérifiés",
-          "Trois zones de chalandise comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Trois zones de chalandise comparées"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Vous avez réussi le défi des outils concrets !",
       "finished": "Défi outils-béton terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -94,8 +87,7 @@
         "snapshot": "Ce que suggère votre résultat",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -107,12 +99,12 @@
             "alt": "Une truelle à béton lissant le béton fraîchement coulé"
           },
           "question": "À quoi sert cet outil ?",
-          "answers": [
-            "Couper les barres d'armature",
-            "Répandre et lisser du béton frais",
-            "Mélanger du béton sec",
-            "Casser du vieux béton"
-          ],
+          "answers": {
+            "a1": "Couper les barres d'armature",
+            "a2": "Répandre et lisser du béton frais",
+            "a3": "Mélanger du béton sec",
+            "a4": "Casser du vieux béton"
+          },
           "headerLabel": "OUTIL 1 SUR 10"
         },
         "tools-q2": {
@@ -120,12 +112,12 @@
             "alt": "Une brouette transportant du béton sur un chantier"
           },
           "question": "À quoi sert cet outil ?",
-          "answers": [
-            "Transporter du béton frais et des outils",
-            "Finition des bords en béton",
-            "Mesurer la température du béton",
-            "Compactage du gravier"
-          ],
+          "answers": {
+            "a1": "Transporter du béton frais et des outils",
+            "a2": "Finition des bords en béton",
+            "a3": "Mesurer la température du béton",
+            "a4": "Compactage du gravier"
+          },
           "headerLabel": "OUTIL 2 SUR 10"
         },
         "tools-q3": {
@@ -133,12 +125,12 @@
             "alt": "Un flotteur de béton se déplaçant sur la surface du béton frais"
           },
           "question": "À quoi sert cet outil ?",
-          "answers": [
-            "Compactage du sol",
-            "Lisser des coffrages en bois",
-            "Niveler et lisser la surface du béton",
-            "Couper les barres d'armature"
-          ],
+          "answers": {
+            "a1": "Compactage du sol",
+            "a2": "Lisser des coffrages en bois",
+            "a3": "Niveler et lisser la surface du béton",
+            "a4": "Couper les barres d'armature"
+          },
           "headerLabel": "OUTIL 3 SUR 10"
         },
         "tools-q4": {
@@ -146,12 +138,12 @@
             "alt": "Une bordure en béton façonnant la bordure d'une dalle"
           },
           "question": "À quoi sert cet outil ?",
-          "answers": [
-            "Finir proprement les bordures de trottoirs et de dalles",
-            "Levage de blocs de béton",
-            "Découper des joints dans le béton",
-            "Transport du mélange de béton"
-          ],
+          "answers": {
+            "a1": "Finir proprement les bordures de trottoirs et de dalles",
+            "a2": "Levage de blocs de béton",
+            "a3": "Découper des joints dans le béton",
+            "a4": "Transport du mélange de béton"
+          },
           "headerLabel": "OUTIL 4 SUR 10"
         },
         "tools-q5": {
@@ -159,12 +151,12 @@
             "alt": "Une bétonnière portable renversant du béton frais"
           },
           "question": "Que permet de faire cet outil ?",
-          "answers": [
-            "Béton chauffant",
-            "Couler du ciment sec",
-            "Mélanger du ciment, du sable et de l'eau pour fabriquer du béton",
-            "Meuler du vieux béton"
-          ],
+          "answers": {
+            "a1": "Béton chauffant",
+            "a2": "Couler du ciment sec",
+            "a3": "Mélanger du ciment, du sable et de l'eau pour fabriquer du béton",
+            "a4": "Meuler du vieux béton"
+          },
           "headerLabel": "OUTIL 5 SUR 10"
         },
         "tools-q6": {
@@ -172,12 +164,12 @@
             "alt": "Un flotteur à long manche lissant une large dalle de béton"
           },
           "question": "À quelle étape du travail du béton utilise-t-on généralement une taloche à long manche (bull float) ?",
-          "answers": [
-            "Transporter le béton humide jusqu'au chantier de coulée",
-            "Casser de vieilles dalles de béton",
-            "Couper les joints de dilatation",
-            "Pour lisser de grandes surfaces immédiatement après le nivellement"
-          ],
+          "answers": {
+            "a1": "Transporter le béton humide jusqu'au chantier de coulée",
+            "a2": "Casser de vieilles dalles de béton",
+            "a3": "Couper les joints de dilatation",
+            "a4": "Pour lisser de grandes surfaces immédiatement après le nivellement"
+          },
           "headerLabel": "OUTIL 6 SUR 10"
         },
         "tools-q7": {
@@ -185,12 +177,12 @@
             "alt": "Un travailleur utilisant un vibrateur à béton dans du béton fraîchement coulé"
           },
           "question": "Quand un vibrateur à béton est-il généralement utilisé ?",
-          "answers": [
-            "Avant que le béton ne soit coulé",
-            "Après la coulée, pour chasser les poches d'air",
-            "Pendant la pose des armatures dans le coffrage",
-            "Lors de la finition, pour lisser la surface"
-          ],
+          "answers": {
+            "a1": "Avant que le béton ne soit coulé",
+            "a2": "Après la coulée, pour chasser les poches d'air",
+            "a3": "Pendant la pose des armatures dans le coffrage",
+            "a4": "Lors de la finition, pour lisser la surface"
+          },
           "headerLabel": "OUTIL 7 SUR 10"
         },
         "tools-q8": {
@@ -198,12 +190,12 @@
             "alt": "Un coupe-barres motorisé pour couper l'acier d'armature"
           },
           "question": "Quelle est la fonction principale d'un coupe-fer à béton ?",
-          "answers": [
-            "Couper l'acier d'armature aux longueurs voulues",
-            "Lissage des bords du béton",
-            "Découpe de joints de contrôle dans du béton durci",
-            "Écailler le béton meuble"
-          ],
+          "answers": {
+            "a1": "Couper l'acier d'armature aux longueurs voulues",
+            "a2": "Lissage des bords du béton",
+            "a3": "Découpe de joints de contrôle dans du béton durci",
+            "a4": "Écailler le béton meuble"
+          },
           "headerLabel": "OUTIL 8 SUR 10"
         },
         "tools-q9": {
@@ -211,12 +203,12 @@
             "alt": "Une rainureuse à long manche coupant une ligne dans le béton humide"
           },
           "question": "À quelle étape d'une coulée de béton utilise-t-on de préférence une rainureuse ?",
-          "answers": [
-            "Avant de couler, pour préparer le terrain",
-            "Lors de la finition, pour créer des joints de contrôle",
-            "Pendant le durcissement, appliquer du mastic",
-            "Après séchage, pour polir la surface"
-          ],
+          "answers": {
+            "a1": "Avant de couler, pour préparer le terrain",
+            "a2": "Lors de la finition, pour créer des joints de contrôle",
+            "a3": "Pendant le durcissement, appliquer du mastic",
+            "a4": "Après séchage, pour polir la surface"
+          },
           "headerLabel": "OUTIL 9 SUR 10"
         },
         "tools-q10": {
@@ -224,12 +216,12 @@
             "alt": "Une chape droite décollant du béton fraîchement coulé"
           },
           "question": "À quelle étape utilise-t-on généralement une règle à béton ?",
-          "answers": [
-            "Après durcissement pour polir la surface",
-            "Après séchage, appliquer du mastic",
-            "Pendant la mise en place des armatures",
-            "Immédiatement après la coulée, pour niveler le béton"
-          ],
+          "answers": {
+            "a1": "Après durcissement pour polir la surface",
+            "a2": "Après séchage, appliquer du mastic",
+            "a3": "Pendant la mise en place des armatures",
+            "a4": "Immédiatement après la coulée, pour niveler le béton"
+          },
           "headerLabel": "OUTIL FINAL"
         }
       }

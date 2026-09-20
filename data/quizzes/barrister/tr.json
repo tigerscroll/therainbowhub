@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %6'sı Bu Avukatlık Giriş Sınavını Geçebiliyor",
   "eyebrow": "MAHKEME SALONU AKIL YÜRÜTME TESTİ",
   "summary": "On soru mahkeme salonu dilini, emsali, kanıtları ve mesleki muhakemeyi test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Açılış soruları tanıdık geliyor. Daha sonra sınav emsal, delil ve mahkeme salonu muhakemesine geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence mücadelesi, 1. Kademe İngilizce konuşulan ülkelerdeki ortak hukuk sistemlerinde bulunan geniş kavramları kullanır. Kesin kurallar ve terminoloji yargı yetkisine göre değişiklik gösterir; bu nedenle sorular, bir ülkenin kabul müfredatından ziyade taşınabilir mahkeme salonu muhakemesine odaklanır.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on mahkeme sorusunu yanıtlayın.",
         "En iyi hukuki kavramı veya savunuculuk yanıtını seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Avukat giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Avukatlık Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve mahkeme salonu muhakeme puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Dört yasal alan karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Dört yasal alan karşılaştırıldı"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Avukat giriş sınavını geçtiniz!",
       "finished": "Avukat giriş sınavı tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü yasal alan",
       "trickiest": "En zor yasal alan",
       "bestRound": "En iyi bölüm",
@@ -96,8 +89,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Bir ceza davasında normalde suçlamayı kanıtlama yükü kimdedir?",
-          "answers": [
-            "Savcılık",
-            "Sanık",
-            "Jüri",
-            "Mahkeme katibi"
-          ],
+          "answers": {
+            "a1": "Savcılık",
+            "a2": "Sanık",
+            "a3": "Jüri",
+            "a4": "Mahkeme katibi"
+          },
           "headerLabel": "MAHKEME SALONUNUN TEMELLERİ"
         },
         "barrister-q2": {
           "question": "Suçluluğu kanıtlanmadıkça sanığa masum muamelesi yapan ilke hangisidir?",
-          "answers": [
-            "Kesin sorumluluk",
-            "Masumiyet karinesi",
-            "Çifte tehlike",
-            "Adli bildirim"
-          ],
+          "answers": {
+            "a1": "Kesin sorumluluk",
+            "a2": "Masumiyet karinesi",
+            "a3": "Çifte tehlike",
+            "a4": "Adli bildirim"
+          },
           "headerLabel": "TEMEL İLKELER"
         },
         "barrister-q3": {
           "question": "Daha sonra açılacak benzer bir davaya yol gösterebilecek daha önceki bir mahkeme kararına ne ad verilir?",
-          "answers": [
-            "Yeminli beyan",
-            "Bir iddianame",
-            "Bir emsal",
-            "Bir yerleşim"
-          ],
+          "answers": {
+            "a1": "Yeminli beyan",
+            "a2": "Bir iddianame",
+            "a3": "Bir emsal",
+            "a4": "Bir yerleşim"
+          },
           "headerLabel": "DAVA HUKUKU"
         },
         "barrister-q4": {
           "question": "Bir tanığın karşı taraf tarafından sorgulanmasına genel olarak ne denir?",
-          "answers": [
-            "Doğrudan muayene",
-            "Adli inceleme",
-            "Açıklama",
-            "Çapraz sorgu"
-          ],
+          "answers": {
+            "a1": "Doğrudan muayene",
+            "a2": "Adli inceleme",
+            "a3": "Açıklama",
+            "a4": "Çapraz sorgu"
+          },
           "headerLabel": "SAVUNUCULUK"
         },
         "barrister-q5": {
           "question": "Hangi Latince terim bir mahkemenin kararı için gerekli olan hukuki gerekçeyi tanımlar?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas külliyatı",
-            "İyi niyetli",
-            "İlk bakışta"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas külliyatı",
+            "a3": "İyi niyetli",
+            "a4": "İlk bakışta"
+          },
           "headerLabel": "emsal"
         },
         "barrister-q6": {
           "question": "Çoğunlukla adı geçen karar için gerekli olmayan adli gözlem nedir?",
-          "answers": [
-            "Bağlayıcı bir emir",
-            "Obiter dictum",
-            "Bir suç duyurusu",
-            "Bir eylem nedeni"
-          ],
+          "answers": {
+            "a1": "Bağlayıcı bir emir",
+            "a2": "Obiter dictum",
+            "a3": "Bir suç duyurusu",
+            "a4": "Bir eylem nedeni"
+          },
           "headerLabel": "YASAL GEREKÇE"
         },
         "barrister-q7": {
           "question": "Söylediği şeyin doğruluğunu kanıtlamak için mahkeme dışında yapılan beyanı ifade eden terim hangisidir?",
-          "answers": [
-            "Ayrıcalık",
-            "Estoppel",
-            "Kulaktan dolma",
-            "Azaltma"
-          ],
+          "answers": {
+            "a1": "Ayrıcalık",
+            "a2": "Estoppel",
+            "a3": "Kulaktan dolma",
+            "a4": "Azaltma"
+          },
           "headerLabel": "DELİL"
         },
         "barrister-q8": {
           "question": "Hangi soru, denetçinin istediği cevabı en açık şekilde ortaya koyuyor?",
-          "answers": [
-            "Sonra ne oldu?",
-            "Nerede duruyordun?",
-            "Oda nasıl görünüyordu?",
-            "Karşıya geçtiğinizde ışık kırmızıydı, değil mi?"
-          ],
+          "answers": {
+            "a1": "Sonra ne oldu?",
+            "a2": "Nerede duruyordun?",
+            "a3": "Oda nasıl görünüyordu?",
+            "a4": "Karşıya geçtiğinizde ışık kırmızıydı, değil mi?"
+          },
           "headerLabel": "TANIK SORGULAMA"
         },
         "barrister-q9": {
           "question": "Adli inceleme öncelikle hangi konuyla ilgilidir?",
-          "answers": [
-            "Kamu kararının hukuka uygun olarak alınıp alınmadığı",
-            "Jürinin en iyi tanığı seçip seçmediği",
-            "Bir sözleşmenin kâr getirip getirmediği",
-            "Her itiraza izin verilip verilmemesi"
-          ],
+          "answers": {
+            "a1": "Kamu kararının hukuka uygun olarak alınıp alınmadığı",
+            "a2": "Jürinin en iyi tanığı seçip seçmediği",
+            "a3": "Bir sözleşmenin kâr getirip getirmediği",
+            "a4": "Her itiraza izin verilip verilmemesi"
+          },
           "headerLabel": "KAMU HUKUKU"
         },
         "barrister-q10": {
           "question": "Genel olarak, taksi rütbesi ilkesi, mesleki kurallara ve istisnalara tabi olarak, uygun bir avukattan ne yapmasını ister?",
-          "answers": [
-            "Yalnızca popüler vakaları kabul et",
-            "Müşterinin kimliğine veya vakanın popülaritesine bakılmaksızın uygun talimatları kabul edin",
-            "Başarılı bir sonucu garanti edin",
-            "Sadece ceza mahkemelerinde çalışın"
-          ],
+          "answers": {
+            "a1": "Yalnızca popüler vakaları kabul et",
+            "a2": "Müşterinin kimliğine veya vakanın popülaritesine bakılmaksızın uygun talimatları kabul edin",
+            "a3": "Başarılı bir sonucu garanti edin",
+            "a4": "Sadece ceza mahkemelerinde çalışın"
+          },
           "headerLabel": "SON ETİK SORUSU"
         }
       }

@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "Väčšina dospelých nemôže dosiahnuť 80 % v tomto teste pamäti",
   "eyebrow": "Pamäťová výzva",
   "summary": "Slová, obrázky, čísla a oneskorené prekvapenia testujú, čo si vaša pamäť uchová a čo potichu zmizne.",
   "about": {
     "body": "Tento krátky pamäťový kvíz využíva desať starostlivo rôznorodých slov, obrázkov, čísel, asociácií a úloh zameraných na pozornosť, aby vytvoril hravý záber spomienky.\n\nNiektoré detaily sa testujú okamžite, zatiaľ čo iné sa vrátia po tom, čo rôzne úlohy prerušili pôvodnú pamäť. Pozorne si preštudujte každé tágo, ale neponáhľajte sa: rýchlosť nikdy nezmení vaše skóre.\n\nVaše konečné skóre ukazuje, koľko z desiatich otázok bolo správnych, a zvýrazní oblasti pamäte, ktoré vám najviac vyhovovali. Výkon sa môže meniť v závislosti od pozornosti, únavy, stresu, známosti a náhody, takže výsledok berte skôr ako zábavu, než ako hodnotenie zdravia mozgu alebo schopnosti dlhodobej pamäti.",
     "howToPlay": {
-      "title": "Ako hrať",
       "steps": [
         "Pozorne si preštudujte každé tágo, keď sa objaví; niektoré detaily sa vrátia neskôr.",
         "Pre každú výzvu vyberte jednu odpoveď. Rýchlosť nikdy nezmení vaše skóre.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Len pre zábavu a sebareflexiu. Tento kvíz nie je lekárskym, neurologickým alebo kognitívnym hodnotením a nedokáže diagnostikovať problémy s pamäťou. Ak máte obavy o svoju pamäť alebo zdravie, porozprávajte sa s kvalifikovaným zdravotníckym pracovníkom."
   },
-  "progressLabel": "kompletný",
   "landing": {
     "intro": "Myslíte si, že máte dobrú pamäť?\nDokážte to v 10 otázkach.",
     "cta": "Štart"
   },
   "career": {
     "resultProgressLabel": "Test pamäti",
-    "resultProgressComplete": "{value} % dokončené",
     "stages": {
       "stage-1": {
         "difficulty": "Pamäťová výzva",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skóre vašej pamäte a rozdelenie v troch oblastiach sú pripravené na odhalenie.",
         "preAdChecks": [
           "10 skontrolovaných odpovedí",
-          "Porovnané tri pamäťové oblasti",
-          "Vaše konečné skóre je vypočítané"
-        ],
-        "preAdButton": "Odhaliť moje výsledky"
+          "Porovnané tri pamäťové oblasti"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Porazili ste 80% výzvu! 🧠",
       "finished": "Dokončili ste pamäťovú výzvu",
-      "correctLabel": "správne",
       "strongest": "Vaša najsilnejšia pamäťová oblasť",
       "trickiest": "Vaša najzložitejšia oblasť",
       "bestRound": "Najlepšia sekcia",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Ktoré slovo sa objavilo v úvodných detailoch?",
           "headerLabel": "SPAMÄŤ NA SLOVO",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Zapamätajte si tieto podrobnosti",
             "instruction": "Niektorí sa môžu vrátiť neskôr v teste.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Ktorý tvar sa objavil ako tretí?",
           "headerLabel": "VIZUÁLNA PAMÄŤ",
-          "answers": [
-            "Kruh",
-            "Diamantový",
-            "Trojuholník",
-            "Štvorcový"
-          ],
+          "answers": {
+            "a1": "Kruh",
+            "a2": "Diamantový",
+            "a3": "Trojuholník",
+            "a4": "Štvorcový"
+          },
           "study": {
             "title": "Zapamätajte si poradie farieb a tvarov",
             "instruction": "Toto automaticky zmizne.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Ktoré číslo ste videli?",
           "headerLabel": "VYVOLANIE ČÍSLA",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Zapamätajte si toto číslo",
             "instruction": "Toto automaticky zmizne.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Ktorý kód sa presne zhoduje s K7M2Q?",
           "headerLabel": "ZHODA KÓDU",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "Koľko je 4 – 9 – 2 dozadu?",
           "headerLabel": "PRACOVNÁ PAMÄŤ",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Ktorý predmet sa objavil ako tretí?",
           "headerLabel": "ODVOLANIE OBJEDNÁVKY",
-          "answers": [
-            "Kite",
-            "Rukavica",
-            "Fotoaparát",
-            "Košíček"
-          ],
+          "answers": {
+            "a1": "Kite",
+            "a2": "Rukavica",
+            "a3": "Fotoaparát",
+            "a4": "Košíček"
+          },
           "study": {
             "title": "Preštudujte si štvorobjektový poriadok",
             "instruction": "Toto automaticky zmizne.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Kam cestovala Sarah?",
           "headerLabel": "DETAILNÁ PAMÄŤ",
-          "answers": [
-            "Paríž",
-            "Rím",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Paríž",
+            "a2": "Rím",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Prečítajte si tieto podrobnosti raz",
             "instruction": "Jeden detail sa môže vrátiť neskôr.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Ktorá kópia obsahuje nulu namiesto písmena O?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "RÝCHLA POZORNOSŤ",
-          "answers": [
-            "Po prvé",
-            "Po druhé",
-            "Po štvrté",
-            "Po tretie"
-          ]
+          "answers": {
+            "a1": "Po prvé",
+            "a2": "Po druhé",
+            "a3": "Po štvrté",
+            "a4": "Po tretie"
+          }
         },
         "memory-r5q1": {
           "question": "Spomeňte si na začiatok: akú farbu mal slon?",
           "headerLabel": "ONESKORENÉ ODVOLANIE",
-          "answers": [
-            "Strieborná",
-            "Fialová",
-            "Modrá",
-            "Zlato"
-          ]
+          "answers": {
+            "a1": "Strieborná",
+            "a2": "Fialová",
+            "a3": "Modrá",
+            "a4": "Zlato"
+          }
         },
         "memory-r5q6": {
           "question": "Kedy odišiel Sarah vlak?",
           "headerLabel": "ZÁVEREČNÝ TEST PAMÄTE",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

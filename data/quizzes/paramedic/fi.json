@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 8 % läpäisee tämän ensihoitajan pääsykokeen",
   "eyebrow": "PARAMEDIC SISÄÄNPÄÄSY HAASTE",
   "summary": "Kohtauksen vaarat, elintoiminnot ja nopeat reagointipäätökset testaavat, voitko ajatella selkeästi, kun jokaisella vihjeellä on merkitystä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Kohtauksen vaarat, elintoiminnot, hätämatematiikka ja rauhallinen arvostelu. Pystytkö ajattelemaan selkeästi, kun jokaisella vihjeellä on merkitystä?",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdehaaste sisältää kymmenen sisääntulokysymystä anatomiasta, havainnoista, laskemistaidosta, viestinnästä, turvallisuudesta ja prioriteettien arvioinnista. Se testaa huolellista päättelyä paikallisten protokollien tai toimintamenetelmien sijaan.\n\nValitse paras vastaus käyttämällä vain näytettyjä tietoja. Turvalliset vaihtoehdot suosivat riskien tunnistamista, selkeää viestintää ja sopivan pätevän tuen hakemista.\n\nTämä ei ole akkreditoitu ensihoitajan pääsykoe, kliininen arviointi, pätevyys, koulutus tai hätäapuneuvonta.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ensihoitajan pääsykoe",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Ensihoitajan sisäänkäyntihaaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Ensihoitajan pääsypisteesi ja kuuden alueen erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kuusi sisäänkäyntialuetta verrattuna",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kuusi sisäänkäyntialuetta verrattuna"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Läpäisit ensihoitajan sisäänpääsyhaasteen!",
       "finished": "Ensihoitajan sisäänkäyntihaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin sisäänkäyntialue",
       "trickiest": "Hankalin sisäänkäyntialue",
       "bestRound": "Paras jakso",
@@ -107,8 +100,7 @@
         "snapshot": "Mitä ehdokasprofiilisi ehdottaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Mikä elin pumppaa verta ympäri kehoa?",
-          "answers": [
-            "Sydän",
-            "Keuhkot",
-            "Brain",
-            "Luut"
-          ],
+          "answers": {
+            "a1": "Sydän",
+            "a2": "Keuhkot",
+            "a3": "Brain",
+            "a4": "Luut"
+          },
           "headerLabel": "ANATOMIA JA FYSIOLOGIA"
         },
         "paramedic-r1q5": {
           "question": "Mikä aukko tekee selkeimmän luovutuksen?",
-          "answers": [
-            "Jotain on varmaan muuttunut aikaisemmin",
-            "Tässä on kaikki pienet yksityiskohdat satunnaisessa järjestyksessä",
-            "Klo 14.20 hengitys nopeutui ja vireys heikkeni",
-            "Tiedän jo tarkalleen, mistä se johtuu"
-          ],
+          "answers": {
+            "a1": "Jotain on varmaan muuttunut aikaisemmin",
+            "a2": "Tässä on kaikki pienet yksityiskohdat satunnaisessa järjestyksessä",
+            "a3": "Klo 14.20 hengitys nopeutui ja vireys heikkeni",
+            "a4": "Tiedän jo tarkalleen, mistä se johtuu"
+          },
           "headerLabel": "TYHJENNÄ LUOVUTUS"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Pulssi 80, sitten 92 ja sitten 108, kalpeutta ja huimausta"
           },
           "question": "Mikä on tämän mallin paras tulkinta?",
-          "answers": [
-            "Ennätys on ennallaan",
-            "Yhdistetty trendi viittaa heikkenemiseen, joka vaatii nopean pätevän arvioinnin",
-            "Vain ensimmäisellä numerolla on väliä",
-            "Oireet voidaan jättää huomiotta, koska diagnoosia ei näytetä"
-          ],
+          "answers": {
+            "a1": "Ennätys on ennallaan",
+            "a2": "Yhdistetty trendi viittaa heikkenemiseen, joka vaatii nopean pätevän arvioinnin",
+            "a3": "Vain ensimmäisellä numerolla on väliä",
+            "a4": "Oireet voidaan jättää huomiotta, koska diagnoosia ei näytetä"
+          },
           "headerLabel": "HAvainnointitrendejä"
         },
         "paramedic-r2q4": {
           "question": "Mikä lause kuvaa parhaiten munuaisia?",
-          "answers": [
-            "Ne vaihtavat happea ja hiilidioksidia",
-            "Ne poistavat kuona-aineita verestä ja auttavat säätelemään vesitasapainoa",
-            "Ne pumppaavat verta valtimoiden läpi",
-            "He hallitsevat jokaista vapaaehtoista liikettä"
-          ],
+          "answers": {
+            "a1": "Ne vaihtavat happea ja hiilidioksidia",
+            "a2": "Ne poistavat kuona-aineita verestä ja auttavat säätelemään vesitasapainoa",
+            "a3": "Ne pumppaavat verta valtimoiden läpi",
+            "a4": "He hallitsevat jokaista vapaaehtoista liikettä"
+          },
           "headerLabel": "BORY JÄRJESTELMÄT"
         },
         "paramedic-r1q4": {
           "question": "Ainoan oviaukon poikki kulkee jännitteinen sähkökaapeli. Mikä tulee ensin?",
-          "answers": [
-            "Astu sen yli varovasti",
-            "Pidä kaikki selvänä ja hanki pätevää apua sen turvaamiseksi",
-            "Siirrä sitä kuivalla esineellä",
-            "Pyydä sivullista katsomaan se"
-          ],
+          "answers": {
+            "a1": "Astu sen yli varovasti",
+            "a2": "Pidä kaikki selvänä ja hanki pätevää apua sen turvaamiseksi",
+            "a3": "Siirrä sitä kuivalla esineellä",
+            "a4": "Pyydä sivullista katsomaan se"
+          },
           "headerLabel": "KOHTAUSTEN TURVALLISUUS"
         },
         "paramedic-r6q2": {
           "question": "Ihminen nyökkää, mutta ei ymmärrä. Mitä seuraavaksi pitäisi tapahtua?",
-          "answers": [
-            "Toista sama selitys hitaammin",
-            "Kysy: \"Ymmärrätkö?\" ja jatka, jos he sanovat kyllä",
-            "Lyhennä selitystä, mutta säilytä sama terminologia",
-            "Käytä yksinkertaisia sanoja ja tarkista tilanne"
-          ],
+          "answers": {
+            "a1": "Toista sama selitys hitaammin",
+            "a2": "Kysy: \"Ymmärrätkö?\" ja jatka, jos he sanovat kyllä",
+            "a3": "Lyhennä selitystä, mutta säilytä sama terminologia",
+            "a4": "Käytä yksinkertaisia sanoja ja tarkista tilanne"
+          },
           "headerLabel": "SELKEÄ VIESTINTÄ"
         },
         "paramedic-r5q6": {
           "context": "Henkilö A voi hyvin ja hänen havainnot pysyvät vakaina. Henkilö B on hiljattain nihkeä ja huimaa, ja hänen pulssinsa on noussut kolmen tarkastuksen aikana.",
           "question": "Kuka tarvitsee huomiota ensin?",
-          "answers": [
-            "Henkilö B, koska useat muutokset viittaavat heikkenemiseen",
-            "Henkilö A, koska hänen havainnot kirjattiin ensin",
-            "Molemmat voivat odottaa, koska kummallakaan ei ole nimettyä diagnoosia",
-            "Henkilö, jolla on lyhyempi nimi"
-          ],
+          "answers": {
+            "a1": "Henkilö B, koska useat muutokset viittaavat heikkenemiseen",
+            "a2": "Henkilö A, koska hänen havainnot kirjattiin ensin",
+            "a3": "Molemmat voivat odottaa, koska kummallakaan ei ole nimettyä diagnoosia",
+            "a4": "Henkilö, jolla on lyhyempi nimi"
+          },
           "headerLabel": "ENSISIJAINEN TUOMIO"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 litraa plus 450 millilitraa plus 250 millilitraa vastaa kokonaismäärää"
           },
           "question": "Mikä on yhdistetty mitattu tilavuus millilitroina?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1000 ml",
-            "1100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1000 ml",
+            "a4": "1100 ml"
+          },
           "headerLabel": "HÄTÄTILANNE"
         },
         "paramedic-r10q4": {
           "context": "TAPAHTUMATIETUUS — Aggressiivinen henkilö heittelee esineitä sisäänkäynnin lähelle. Laitteet estävät osittain lähimmän poistumisreitin.",
           "question": "Mikä on turvallisin vastaus yhdistettyihin vaaroihin?",
-          "answers": [
-            "Pysy etäällä, siirrä muut turvallisemmalle reitille ja hälytä asianmukaista apua",
-            "Lähesty ja väittele, kunnes henkilö pysähtyy",
-            "Hae varusteet henkilön viereen ennen lähtöä",
-            "Pyydä kouluttamatonta sivustakatsojaa estämään lentävät esineet"
-          ],
+          "answers": {
+            "a1": "Pysy etäällä, siirrä muut turvallisemmalle reitille ja hälytä asianmukaista apua",
+            "a2": "Lähesty ja väittele, kunnes henkilö pysähtyy",
+            "a3": "Hae varusteet henkilön viereen ennen lähtöä",
+            "a4": "Pyydä kouluttamatonta sivustakatsojaa estämään lentävät esineet"
+          },
           "headerLabel": "INTEGROITU TURVALLISUUS"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Hengitys 16 valppaana, sitten 22 ahdistunut, sitten 28 unelias"
           },
           "question": "Mikä on koko trendin paras tulkinta?",
-          "answers": [
-            "Ihminen paranee jatkuvasti",
-            "Vain keskimmäisellä tarkastuksella on merkitystä",
-            "Arvot voidaan jättää huomiotta, koska diagnoosia ei ole nimetty",
-            "Hengitys huononee, kun taas vastekyky heikkenee"
-          ],
+          "answers": {
+            "a1": "Ihminen paranee jatkuvasti",
+            "a2": "Vain keskimmäisellä tarkastuksella on merkitystä",
+            "a3": "Arvot voidaan jättää huomiotta, koska diagnoosia ei ole nimetty",
+            "a4": "Hengitys huononee, kun taas vastekyky heikkenee"
+          },
           "headerLabel": "LOPULLINEN VASTAUS"
         }
       }

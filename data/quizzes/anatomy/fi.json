@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 8 % läpäisee tämän ihmisen anatomian tietokilpailun",
   "eyebrow": "IHMISKEHO HAASTE",
   "summary": "Kymmenen kysymystä, jotka koskevat elimiä, luita ja kehon järjestelmiä, jotka pitävät kaiken toiminnassa.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Kehosi voi olla tuttu, mutta sen pienimmät luut, suurimmat elimet ja elintärkeät järjestelmät voivat silti saada sinut ulos.",
     "cta": "Aloita tietokilpailu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdetietokilpailu testaa yleistä tietoa ihmiskehosta tärkeimmistä elimistä ja luista verenkiertoon ja hengitykseen. Jokaisella kysymyksellä on yksi selkeä vastaus, joka on peräisin laajalti hyväksytystä johdanto-anatomiasta.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jossa voit käydä läpi koko setin ja nähdä, mikä anatomian alue oli vahvin.\n\nAnatomiset yksityiskohdat voivat vaihdella luonnollisesti yksilöiden välillä. Tietokilpailussa käytetään yleissivistävässä opetuksessa yleisesti opetettuja aikuisten anatomian käytäntöjä.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen ihmisen anatomian kysymykseen yhdessä kohdistetussa haasteessa.",
         "Valitse jokaiseen kysymykseen yksi neljästä vastauksesta.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Anatomian haaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Ihmisen anatomia",
@@ -30,10 +26,8 @@
         "preAdCopy": "Anatomiapisteesi ja täydellinen vastausarviosi ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolmea anatomian aluetta verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolmea anatomian aluetta verrattiin"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Läpäisit anatomian haasteesta!",
       "finished": "Anatomian haaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Suurin menestys",
       "trickiest": "Vaikein osa",
       "bestRound": "Paras jakso",
@@ -93,8 +86,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -103,102 +95,102 @@
       "questions": {
         "anatomy-q1": {
           "question": "Mikä on ihmiskehon suurin elin?",
-          "answers": [
-            "Iho",
-            "Maksa",
-            "Keuhkot",
-            "Aivot"
-          ],
+          "answers": {
+            "a1": "Iho",
+            "a2": "Maksa",
+            "a3": "Keuhkot",
+            "a4": "Aivot"
+          },
           "headerLabel": "ORGANS"
         },
         "anatomy-q2": {
           "question": "Kuinka monta kammiota ihmisen sydämessä on?",
-          "answers": [
-            "Kaksi",
-            "Neljä",
-            "Three",
-            "Viisi"
-          ],
+          "answers": {
+            "a1": "Kaksi",
+            "a2": "Neljä",
+            "a3": "Three",
+            "a4": "Viisi"
+          },
           "headerLabel": "Sydämeni"
         },
         "anatomy-q3": {
           "question": "Mikä on ihmiskehon pisin luu?",
-          "answers": [
-            "Sääriluu",
-            "Humerus",
-            "reisiluu",
-            "Säde"
-          ],
+          "answers": {
+            "a1": "Sääriluu",
+            "a2": "Humerus",
+            "a3": "reisiluu",
+            "a4": "Säde"
+          },
           "headerLabel": "RAKOUS"
         },
         "anatomy-q4": {
           "question": "Mikä elin tuottaa insuliinia?",
-          "answers": [
-            "Maksa",
-            "Kidney",
-            "Perna",
-            "Haima"
-          ],
+          "answers": {
+            "a1": "Maksa",
+            "a2": "Kidney",
+            "a3": "Perna",
+            "a4": "Haima"
+          },
           "headerLabel": "ORGANS"
         },
         "anatomy-q5": {
           "question": "Mikä on ihmiskehon pienin luu?",
-          "answers": [
-            "Stapes",
-            "Patella",
-            "häntäluu",
-            "Ulna"
-          ],
+          "answers": {
+            "a1": "Stapes",
+            "a2": "Patella",
+            "a3": "häntäluu",
+            "a4": "Ulna"
+          },
           "headerLabel": "RAKOUS"
         },
         "anatomy-q6": {
           "question": "Kuinka monta luuta yleensä löytyy aikuisen ihmisen kehosta?",
-          "answers": [
-            "201",
-            "206",
-            "212",
-            "218"
-          ],
+          "answers": {
+            "a1": "201",
+            "a2": "206",
+            "a3": "212",
+            "a4": "218"
+          },
           "headerLabel": "KELPOJEN PERUSTEET"
         },
         "anatomy-q7": {
           "question": "Mikä suuri lihas sijaitsee keuhkojen alla ja auttaa sinua hengittämään?",
-          "answers": [
-            "Trapezius",
-            "Deltoidi",
-            "Pallea",
-            "Reisinauha"
-          ],
+          "answers": {
+            "a1": "Trapezius",
+            "a2": "Deltoidi",
+            "a3": "Pallea",
+            "a4": "Reisinauha"
+          },
           "headerLabel": "HENGITYS"
         },
         "anatomy-q8": {
           "question": "Minkä elimen osa pikkuaivot ovat?",
-          "answers": [
-            "Selkäydin",
-            "Sisäkorva",
-            "Sydän",
-            "Aivot"
-          ],
+          "answers": {
+            "a1": "Selkäydin",
+            "a2": "Sisäkorva",
+            "a3": "Sydän",
+            "a4": "Aivot"
+          },
           "headerLabel": "Aivot"
         },
         "anatomy-q9": {
           "question": "Mitkä verisuonet kuljettavat verta pois sydämestä?",
-          "answers": [
-            "Valtimot",
-            "Suonet",
-            "Kapillaarit",
-            "Venules"
-          ],
+          "answers": {
+            "a1": "Valtimot",
+            "a2": "Suonet",
+            "a3": "Kapillaarit",
+            "a4": "Venules"
+          },
           "headerLabel": "LEVIKKI"
         },
         "anatomy-q10": {
           "question": "Mikä on ihmiskehon suurin sisäelin?",
-          "answers": [
-            "Keuhkot",
-            "Maksa",
-            "Vatsa",
-            "Munuaiset"
-          ],
+          "answers": {
+            "a1": "Keuhkot",
+            "a2": "Maksa",
+            "a3": "Vatsa",
+            "a4": "Munuaiset"
+          },
           "headerLabel": "VIIMEINEN KYSYMYS"
         }
       }

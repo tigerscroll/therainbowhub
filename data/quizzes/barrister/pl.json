@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Tylko 6% dorosłych może zdać ten egzamin wstępny na adwokata",
   "eyebrow": "TEST ROZUMOWANIA NA SALI SĄDOWEJ",
   "summary": "Dziesięć pytań sprawdza język sali sądowej, precedens, dowody i profesjonalny osąd.",
-  "progressLabel": "kompletny",
   "landing": {
     "intro": "Pytania początkowe brzmią znajomo. Następnie egzamin przechodzi do precedensów, dowodów i uzasadnień na sali sądowej.",
     "cta": "Rozpocznij test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "To wyzwanie rozrywkowe składające się z dziesięciu pytań wykorzystuje szerokie koncepcje występujące w systemach prawnych prawa zwyczajowego w krajach anglojęzycznych poziomu 1. Dokładne zasady i terminologia różnią się w zależności od jurysdykcji, dlatego pytania koncentrują się na uzasadnieniu przenośnej sali sądowej, a nie na programie nauczania dotyczącym przyjmowania na studia w jednym kraju.\n\nWybierz jedną odpowiedź na każde pytanie. Poprawność pozostaje ukryta aż do ostatecznego ujawnienia, kiedy można odblokować pełny przegląd odpowiedzi.",
     "howToPlay": {
-      "title": "Jak grać",
       "steps": [
         "Odpowiedz na dziesięć coraz trudniejszych pytań na sali sądowej.",
         "Wybierz najlepszą koncepcję prawną lub odpowiedź.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Wyzwanie wstępne na adwokata",
-    "resultProgressComplete": "{value}% ukończono",
     "stages": {
       "stage-1": {
         "difficulty": "Egzamin wstępny na adwokata",
@@ -30,10 +26,8 @@
         "preAdCopy": "Twoje dziesięć odpowiedzi zostało sprawdzonych i Twój wynik rozumowania na sali sądowej jest gotowy do ujawnienia.",
         "preAdChecks": [
           "Sprawdzono 10 odpowiedzi",
-          "Porównanie czterech obszarów prawnych",
-          "Obliczono Twój wynik końcowy"
-        ],
-        "preAdButton": "Odkryj moje wyniki"
+          "Porównanie czterech obszarów prawnych"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Udało Ci się zaliczyć wyzwanie wstępne na adwokata!",
       "finished": "Wyzwanie wstępne na adwokata ukończone",
-      "correctLabel": "poprawne",
       "strongest": "Najsilniejszy obszar prawny",
       "trickiest": "Najtrudniejsza dziedzina prawa",
       "bestRound": "Najlepsza sekcja",
@@ -96,8 +89,7 @@
         "snapshot": "Co sugeruje twój wynik",
         "targetReached": "Osiągnięto 80% wyzwania",
         "targetRemaining": "Potrzeba więcej poprawnych odpowiedzi dla 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "barrister-q1": {
           "question": "Na kim zwykle w procesie karnym spoczywa ciężar udowodnienia zarzutów?",
-          "answers": [
-            "Prokuratura",
-            "Oskarżony",
-            "Jury",
-            "Urzędnik sądowy"
-          ],
+          "answers": {
+            "a1": "Prokuratura",
+            "a2": "Oskarżony",
+            "a3": "Jury",
+            "a4": "Urzędnik sądowy"
+          },
           "headerLabel": "PODSTAWY SALI SĄDOWEJ"
         },
         "barrister-q2": {
           "question": "Która zasada traktuje oskarżonego jako niewinnego, jeśli wina nie zostanie udowodniona?",
-          "answers": [
-            "Ścisła odpowiedzialność",
-            "Domniemanie niewinności",
-            "Podwójne zagrożenie",
-            "Zawiadomienie sądowe"
-          ],
+          "answers": {
+            "a1": "Ścisła odpowiedzialność",
+            "a2": "Domniemanie niewinności",
+            "a3": "Podwójne zagrożenie",
+            "a4": "Zawiadomienie sądowe"
+          },
           "headerLabel": "PODSTAWOWE ZASADY"
         },
         "barrister-q3": {
           "question": "Jak nazywa się wcześniejsze orzeczenie sądu, które może mieć wpływ na późniejszą podobną sprawę?",
-          "answers": [
-            "Oświadczenie",
-            "Akt oskarżenia",
-            "Precedens",
-            "Osada"
-          ],
+          "answers": {
+            "a1": "Oświadczenie",
+            "a2": "Akt oskarżenia",
+            "a3": "Precedens",
+            "a4": "Osada"
+          },
           "headerLabel": "PRAWO SPRAWOWE"
         },
         "barrister-q4": {
           "question": "Jak potocznie nazywa się przesłuchanie świadka przez stronę przeciwną?",
-          "answers": [
-            "Badanie bezpośrednie",
-            "Przegląd sądowy",
-            "Ujawnienie",
-            "Przesłuchanie krzyżowe"
-          ],
+          "answers": {
+            "a1": "Badanie bezpośrednie",
+            "a2": "Przegląd sądowy",
+            "a3": "Ujawnienie",
+            "a4": "Przesłuchanie krzyżowe"
+          },
           "headerLabel": "rzecznictwo"
         },
         "barrister-q5": {
           "question": "Jaki łaciński termin opisuje podstawę prawną niezbędną do rozstrzygnięcia sądu?",
-          "answers": [
-            "Ratio decidendi",
-            "Habeas Corpus",
-            "W dobrej wierze",
-            "Prima facie"
-          ],
+          "answers": {
+            "a1": "Ratio decidendi",
+            "a2": "Habeas Corpus",
+            "a3": "W dobrej wierze",
+            "a4": "Prima facie"
+          },
           "headerLabel": "PRECEDENT"
         },
         "barrister-q6": {
           "question": "Jak często nazywa się obserwację sądową, która nie jest istotna dla podjęcia decyzji?",
-          "answers": [
-            "Wiążące zamówienie",
-            "Obiter dictum",
-            "Przyznanie się do winy",
-            "Przyczyna działania"
-          ],
+          "answers": {
+            "a1": "Wiążące zamówienie",
+            "a2": "Obiter dictum",
+            "a3": "Przyznanie się do winy",
+            "a4": "Przyczyna działania"
+          },
           "headerLabel": "UZASADNIENIE PRAWNE"
         },
         "barrister-q7": {
           "question": "Jaki termin powszechnie opisuje oświadczenie pozasądowe złożone w celu udowodnienia prawdziwości tego, co jest w nim zawarte?",
-          "answers": [
-            "Przywilej",
-            "Estoppel",
-            "Zeznania ze słyszenia",
-            "Łagodzenie"
-          ],
+          "answers": {
+            "a1": "Przywilej",
+            "a2": "Estoppel",
+            "a3": "Zeznania ze słyszenia",
+            "a4": "Łagodzenie"
+          },
           "headerLabel": "DOWÓD"
         },
         "barrister-q8": {
           "question": "Które pytanie najwyraźniej sugeruje odpowiedź, jakiej oczekuje egzaminator?",
-          "answers": [
-            "Co się stało dalej?",
-            "Gdzie stałeś?",
-            "Jak wyglądał pokój?",
-            "Kiedy przechodziłeś, światło było czerwone, prawda?"
-          ],
+          "answers": {
+            "a1": "Co się stało dalej?",
+            "a2": "Gdzie stałeś?",
+            "a3": "Jak wyglądał pokój?",
+            "a4": "Kiedy przechodziłeś, światło było czerwone, prawda?"
+          },
           "headerLabel": "PRZESŁUCHANIE ŚWIADKA"
         },
         "barrister-q9": {
           "question": "Jakiej kwestii dotyczy przede wszystkim kontrola sądowa?",
-          "answers": [
-            "Czy decyzja publiczna została podjęta zgodnie z prawem",
-            "Czy ława przysięgłych wybrała najlepszego świadka",
-            "Czy kontrakt przyniósł zysk",
-            "Czy każde odwołanie powinno zostać uwzględnione"
-          ],
+          "answers": {
+            "a1": "Czy decyzja publiczna została podjęta zgodnie z prawem",
+            "a2": "Czy ława przysięgłych wybrała najlepszego świadka",
+            "a3": "Czy kontrakt przyniósł zysk",
+            "a4": "Czy każde odwołanie powinno zostać uwzględnione"
+          },
           "headerLabel": "PRAWO PUBLICZNE"
         },
         "barrister-q10": {
           "question": "Ogólnie rzecz biorąc, czego zasada taksówki wymaga od uprawnionego adwokata, z zastrzeżeniem zasad i wyjątków zawodowych?",
-          "answers": [
-            "Akceptuj tylko popularne przypadki",
-            "Przyjmuj odpowiednie dyspozycje bez względu na tożsamość klienta i popularność sprawy",
-            "Gwarancja pomyślnego wyniku",
-            "Pracuj tylko w sądach karnych"
-          ],
+          "answers": {
+            "a1": "Akceptuj tylko popularne przypadki",
+            "a2": "Przyjmuj odpowiednie dyspozycje bez względu na tożsamość klienta i popularność sprawy",
+            "a3": "Gwarancja pomyślnego wyniku",
+            "a4": "Pracuj tylko w sądach karnych"
+          },
           "headerLabel": "KOŃCOWE PYTANIE ETYCZNE"
         }
       }

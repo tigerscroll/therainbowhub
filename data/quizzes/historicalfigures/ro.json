@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Doar 1 din 10 oameni poate numi aceste figuri istorice",
   "eyebrow": "PROVOCAREA PORTRETULUI DE ISTORIE",
   "summary": "Zece chipuri care au modelat lumea. Testați dacă puteți identifica liderii, gânditorii și icoanele numai din portretele lor.",
-  "progressLabel": "completă",
   "landing": {
     "intro": "Le știți numele, dar le cunoașteți fețele? Zece portrete celebre vă așteaptă.",
     "cta": "Începeți"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Acest test de divertisment prezintă zece figuri recunoscute pe scară largă din istoria politică, științifică, artistică și culturală. Fiecare portret vine cu patru nume posibile.\n\nStudiați fața înainte de a alege. Setul se mișcă de-a lungul secolelor și țărilor, așa că recunoașterea contează la fel de mult ca datele memorate.\n\nImaginile și conceptele de întrebare sursă sunt reproduse din QuizDays cu permisiunea declarată de proprietarul site-ului care a comandat acest test.",
     "howToPlay": {
-      "title": "Cum să joci",
       "steps": [
         "Studiați cu atenție fiecare portret istoric.",
         "Alegeți numele care se potrivește cu persoana afișată.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Provocarea istoriei",
-    "resultProgressComplete": "{value}% finalizat",
     "stages": {
       "stage-1": {
         "difficulty": "Figuri istorice",
@@ -30,10 +26,8 @@
         "preAdCopy": "Scorul tău istoric și dezvăluirea completă a portretului sunt gata.",
         "preAdChecks": [
           "10 portrete verificate",
-          "Trei domenii ale istoriei comparate",
-          "S-a calculat scorul final"
-        ],
-        "preAdButton": "Dezvăluie rezultatele mele"
+          "Trei domenii ale istoriei comparate"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Ai trecut de provocarea figurilor istorice!",
       "finished": "Provocarea istoriei finalizată",
-      "correctLabel": "corect",
       "strongest": "Cea mai puternică zonă de istorie",
       "trickiest": "Cea mai dificilă zonă de istorie",
       "bestRound": "Cea mai bună secțiune",
@@ -93,8 +86,7 @@
         "snapshot": "Ce sugerează rezultatul tău",
         "targetReached": "80% provocare atinsă",
         "targetRemaining": "Sunt necesare mai multe răspunsuri corecte pentru 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,12 +98,12 @@
             "alt": "Portretul alb-negru al lui Abraham Lincoln"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "George Washington",
-            "Thomas Jefferson",
-            "Abraham Lincoln",
-            "Theodore Roosevelt"
-          ],
+          "answers": {
+            "a1": "George Washington",
+            "a2": "Thomas Jefferson",
+            "a3": "Abraham Lincoln",
+            "a4": "Theodore Roosevelt"
+          },
           "headerLabel": "PORTRET 1 DIN 10"
         },
         "historicalfigures-q2": {
@@ -119,12 +111,12 @@
             "alt": "Portretul istoric al lui Napoleon Bonaparte"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Napoleon Bonaparte",
-            "Iulius Cezar",
-            "Alexandru cel Mare",
-            "Carol cel Mare"
-          ],
+          "answers": {
+            "a1": "Napoleon Bonaparte",
+            "a2": "Iulius Cezar",
+            "a3": "Alexandru cel Mare",
+            "a4": "Carol cel Mare"
+          },
           "headerLabel": "PORTRET 2 DIN 10"
         },
         "historicalfigures-q3": {
@@ -132,12 +124,12 @@
             "alt": "Portretul istoric al Cleopatrei"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Cleopatra",
-            "Regina Victoria",
-            "Maria Antonieta",
-            "Elisabeta I"
-          ],
+          "answers": {
+            "a1": "Cleopatra",
+            "a2": "Regina Victoria",
+            "a3": "Maria Antonieta",
+            "a4": "Elisabeta I"
+          },
           "headerLabel": "PORTRET 3 DIN 10"
         },
         "historicalfigures-q4": {
@@ -145,12 +137,12 @@
             "alt": "Portretul istoric al lui Leonardo da Vinci"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Michelangelo",
-            "Rafael",
-            "Donatello"
-          ],
+          "answers": {
+            "a1": "Leonardo da Vinci",
+            "a2": "Michelangelo",
+            "a3": "Rafael",
+            "a4": "Donatello"
+          },
           "headerLabel": "PORTRET 4 DIN 10"
         },
         "historicalfigures-q5": {
@@ -158,12 +150,12 @@
             "alt": "Portretul alb-negru al lui Albert Einstein"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Isaac Newton",
-            "Albert Einstein",
-            "Galileo Galilei",
-            "Nikola Tesla"
-          ],
+          "answers": {
+            "a1": "Isaac Newton",
+            "a2": "Albert Einstein",
+            "a3": "Galileo Galilei",
+            "a4": "Nikola Tesla"
+          },
           "headerLabel": "PORTRET 5 DIN 10"
         },
         "historicalfigures-q6": {
@@ -171,12 +163,12 @@
             "alt": "Portretul alb-negru al lui Winston Churchill"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Franklin D. Roosevelt",
-            "Winston Churchill",
-            "Harry Truman",
-            "Dwight D. Eisenhower"
-          ],
+          "answers": {
+            "a1": "Franklin D. Roosevelt",
+            "a2": "Winston Churchill",
+            "a3": "Harry Truman",
+            "a4": "Dwight D. Eisenhower"
+          },
           "headerLabel": "PORTRET 6 DIN 10"
         },
         "historicalfigures-q7": {
@@ -184,12 +176,12 @@
             "alt": "Portretul alb-negru al lui Mahatma Gandhi"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Jawaharlal Nehru",
-            "Mahatma Gandhi",
-            "Nelson Mandela",
-            "Martin Luther King Jr."
-          ],
+          "answers": {
+            "a1": "Jawaharlal Nehru",
+            "a2": "Mahatma Gandhi",
+            "a3": "Nelson Mandela",
+            "a4": "Martin Luther King Jr."
+          },
           "headerLabel": "PORTRET 7 DIN 10"
         },
         "historicalfigures-q8": {
@@ -197,12 +189,12 @@
             "alt": "Portretul istoric al Ioanei d'Arc"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Florence Nightingale",
-            "Ecaterina cea Mare",
-            "Ioana d'Arc",
-            "Împărăteasa văduvă Cixi"
-          ],
+          "answers": {
+            "a1": "Florence Nightingale",
+            "a2": "Ecaterina cea Mare",
+            "a3": "Ioana d'Arc",
+            "a4": "Împărăteasa văduvă Cixi"
+          },
           "headerLabel": "PORTRET 8 DIN 10"
         },
         "historicalfigures-q9": {
@@ -210,12 +202,12 @@
             "alt": "Portretul istoric al exploratorului Marco Polo"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Cristofor Columb",
-            "Ferdinand Magellan",
-            "Vasco da Gama",
-            "Marco Polo"
-          ],
+          "answers": {
+            "a1": "Cristofor Columb",
+            "a2": "Ferdinand Magellan",
+            "a3": "Vasco da Gama",
+            "a4": "Marco Polo"
+          },
           "headerLabel": "PORTRET 9 DIN 10"
         },
         "historicalfigures-q10": {
@@ -223,12 +215,12 @@
             "alt": "Portretul alb-negru al reginei Victoria"
           },
           "question": "Cine este acest personaj istoric?",
-          "answers": [
-            "Regina Elisabeta a II-a",
-            "Prințesa Diana",
-            "Margaret Thatcher",
-            "Regina Victoria"
-          ],
+          "answers": {
+            "a1": "Regina Elisabeta a II-a",
+            "a2": "Prințesa Diana",
+            "a3": "Margaret Thatcher",
+            "a4": "Regina Victoria"
+          },
           "headerLabel": "PORTRET FINAL"
         }
       }

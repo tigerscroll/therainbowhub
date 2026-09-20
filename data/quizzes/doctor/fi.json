@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät voi läpäistä tätä lääkärin pääsykoetta",
   "eyebrow": "KLIINISEN TIEDON TESTI",
   "summary": "Kymmenen kysymystä testaa anatomiaa, oireita, diagnostisia työkaluja ja turvallista kliinistä päättelyä.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Anatomiakysymykset tuntuvat tutuilta. Sitten testi siirtyy oireisiin, hätätilanteisiin ja kliinisiin päätöksiin.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää laajoja lääketieteellisiä käsitteitä, joita opetetaan ja ymmärretään tason 1 englanninkielisissä maissa. Se siirtyy anatomiasta ja fysiologiasta diagnostisiin työkaluihin, oiremalliin, ensiapuprioriteettiin ja vastuulliseen lääkkeiden käyttöön.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan kliinisen tiedon kysymykseen.",
         "Valitse yksittäinen parhaiten tuettu vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Lääkärin sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Lääkärin pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkastettu ja kliinisen tietosi pisteet ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä lääketieteen alaa verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä lääketieteen alaa verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit lääkärin sisäänpääsyhaasteen!",
       "finished": "Lääkärin pääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Suurin menestys",
       "trickiest": "Hankalin lääketieteen alue",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "Mikä sydämen kammio pumppaa happipitoista verta aorttaan?",
-          "answers": [
-            "Vasen kammio",
-            "Oikean ventrikolin",
-            "Vasemman korvan",
-            "Oikeankorvaus"
-          ],
+          "answers": {
+            "a1": "Vasen kammio",
+            "a2": "Oikean ventrikolin",
+            "a3": "Vasemman korvan",
+            "a4": "Oikeankorvaus"
+          },
           "headerLabel": "Sydänanatomia"
         },
         "doctor-q2": {
           "question": "Mitä äkillisen kasvojen roikkumisen, käsivarsien heikkouden ja puhevaikeuden pitäisi herättää välitöntä huolta?",
-          "answers": [
-            "Pieni ruoka-aineettomuus",
-            "Mahdollinen aivohalvaus",
-            "Lihasvaihto",
-            "Aikaisen allergian aiheuttamat oireet"
-          ],
+          "answers": {
+            "a1": "Pieni ruoka-aineettomuus",
+            "a2": "Mahdollinen aivohalvaus",
+            "a3": "Lihasvaihto",
+            "a4": "Aikaisen allergian aiheuttamat oireet"
+          },
           "headerLabel": "Tunnustetaan oireet"
         },
         "doctor-q3": {
           "question": "Mikä laite antaa nopean, ei-invasiivisen arvion veren happisaturaatiosta?",
-          "answers": [
-            "Otoskooppi",
-            "Vihreä martio",
-            "Pulssioksimetri",
-            "Thermometer"
-          ],
+          "answers": {
+            "a1": "Otoskooppi",
+            "a2": "Vihreä martio",
+            "a3": "Pulssioksimetri",
+            "a4": "Thermometer"
+          },
           "headerLabel": "DIAGNOSTISET TYÖKALUT"
         },
         "doctor-q4": {
           "question": "Umpilisäkkeen tulehduksen klassisessa esityksessä vatsakipu voi siirtyä mihin kohtaan?",
-          "answers": [
-            "Vasen ylävatsa",
-            "Rintakehän keskiosa",
-            "Vasen olkapää",
-            "Oikea alavatsa"
-          ],
+          "answers": {
+            "a1": "Vasen ylävatsa",
+            "a2": "Rintakehän keskiosa",
+            "a3": "Vasen olkapää",
+            "a4": "Oikea alavatsa"
+          },
           "headerLabel": "KLIINISET KUVIOT"
         },
         "doctor-q5": {
           "question": "Mitkä haiman solut tuottavat insuliinia?",
-          "answers": [
-            "Beetasolut",
-            "Punasolut",
-            "Osteoblastit",
-            "Neutrofiilit"
-          ],
+          "answers": {
+            "a1": "Beetasolut",
+            "a2": "Punasolut",
+            "a3": "Osteoblastit",
+            "a4": "Neutrofiilit"
+          },
           "headerLabel": "ENDOKRIININEN FYSIOLOGIA"
         },
         "doctor-q6": {
           "question": "Mitä auskultaatio tarkoittaa fyysisen tutkimuksen aikana?",
-          "answers": [
-            "Kehon lämpötilan mittaaminen",
-            "Kuuntelee kehon sisäisiä ääniä",
-            "Näöntarkkuuden testaus",
-            "Kudosnäytteen tutkiminen mikroskoopilla"
-          ],
+          "answers": {
+            "a1": "Kehon lämpötilan mittaaminen",
+            "a2": "Kuuntelee kehon sisäisiä ääniä",
+            "a3": "Näöntarkkuuden testaus",
+            "a4": "Kudosnäytteen tutkiminen mikroskoopilla"
+          },
           "headerLabel": "KLIININEN TUTKIMUS"
         },
         "doctor-q7": {
           "question": "Mikä kuvaus vastaa parhaiten sepsistä?",
-          "answers": [
-            "Harmiton reaktio harjoitteluun",
-            "Vain allergian aiheuttama tila",
-            "Henkeä uhkaava äärimmäinen vaste infektioon",
-            "Eräänlainen luunmurtuma"
-          ],
+          "answers": {
+            "a1": "Harmiton reaktio harjoitteluun",
+            "a2": "Vain allergian aiheuttama tila",
+            "a3": "Henkeä uhkaava äärimmäinen vaste infektioon",
+            "a4": "Eräänlainen luunmurtuma"
+          },
           "headerLabel": "HÄTÄTILANTEET LÄÄKINTÄ"
         },
         "doctor-q8": {
           "question": "Mikä on munuaisten toimiva suodatusyksikkö?",
-          "answers": [
-            "Alveolus",
-            "Neuron",
-            "Villus",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveolus",
+            "a2": "Neuron",
+            "a3": "Villus",
+            "a4": "Nephron"
+          },
           "headerLabel": "MUNUAISANATOMIA"
         },
         "doctor-q9": {
           "question": "Henkilö ei reagoi eikä hengitä normaalisti. Mikä on turvallisin välitön yleinen vastaus?",
-          "answers": [
-            "Soita hätäpalveluille ja aloita asianmukainen peruselämän tukipalvelu",
-            "Odota useita minuutteja spontaaniin toipumiseen",
-            "Anna ruokaa tai juomaa",
-            "Pyydä henkilöä kävelemään"
-          ],
+          "answers": {
+            "a1": "Soita hätäpalveluille ja aloita asianmukainen peruselämän tukipalvelu",
+            "a2": "Odota useita minuutteja spontaaniin toipumiseen",
+            "a3": "Anna ruokaa tai juomaa",
+            "a4": "Pyydä henkilöä kävelemään"
+          },
           "headerLabel": "HÄTÄTILAN PRIORITEETIT"
         },
         "doctor-q10": {
           "question": "Mikä lausunto antibiooteista on tarkin?",
-          "answers": [
-            "He hoitavat jokaista kuumetta",
-            "Ne eivät hoida virusinfektioita, kuten flunssaa",
-            "Heidän on aina pysäytettävä, kun oireet paranevat.",
-            "Ne toimivat alentamalla kehon lämpötilaa suoraan"
-          ],
+          "answers": {
+            "a1": "He hoitavat jokaista kuumetta",
+            "a2": "Ne eivät hoida virusinfektioita, kuten flunssaa",
+            "a3": "Heidän on aina pysäytettävä, kun oireet paranevat.",
+            "a4": "Ne toimivat alentamalla kehon lämpötilaa suoraan"
+          },
           "headerLabel": "LÄÄKEKYSYMYS"
         }
       }

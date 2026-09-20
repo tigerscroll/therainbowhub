@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Solo il 10% riesce a superare questo quiz di grammatica",
   "eyebrow": "LA SFIDA DELLA CORREZIONE DI BOZZE",
   "summary": "Frasi incomplete, trappole di punteggiatura e formulazioni quasi corrette mettono alla prova il tuo occhio per gli errori.",
-  "progressLabel": "completato",
   "landing": {
     "intro": "Pensi che la tua grammatica sia impeccabile? Completa le frasi, evita le trappole di punteggiatura e dimostra che nessun errore ti sfugge.",
     "cta": "Inizia il quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Questa sfida in italiano propone dieci domande diverse su struttura della frase, concordanza, punteggiatura, tempi verbali, pronomi e precisione espressiva. Ogni domanda è stata ideata appositamente per la lingua italiana.\n\nScegli l'unica risposta che rende la frase corretta e naturale nel contesto indicato. Scoprirai le risposte esatte soltanto alla fine.\n\nIl punteggio riguarda esclusivamente questa breve sfida linguistica. Non è una valutazione ufficiale delle tue competenze né un titolo di studio.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa dieci domande accuratamente selezionate in un'unica sfida mirata.",
         "Scegli una risposta ogni volta. Le risposte corrette restano nascoste fino al risultato finale.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida grammaticale",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Sfida grammaticale",
@@ -30,10 +26,8 @@
         "preAdCopy": "Il tuo punteggio grammaticale e l'analisi delle tre abilità sono pronti.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Tre abilità grammaticali a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Tre abilità grammaticali a confronto"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Hai superato la sfida di grammatica!",
       "finished": "Sfida di grammatica completata",
-      "correctLabel": "corrette",
       "strongest": "Abilità grammaticale più forte",
       "trickiest": "Abilità grammaticale più complicata",
       "bestRound": "La sezione migliore",
@@ -98,8 +91,7 @@
         "snapshot": "Cosa suggerisce il tuo profilo grammaticale",
         "targetReached": "Sfida dell'80% raggiunta",
         "targetRemaining": "Per l'80% sono necessarie più risposte corrette"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Quale opzione è una frase completa?",
-          "answers": [
-            "Dopo l’ultimo paragrafo",
-            "La redattrice ha controllato l’ultimo paragrafo.",
-            "Perché la scadenza è cambiata",
-            "Mentre tutti aspettavano"
-          ],
+          "answers": {
+            "a1": "Dopo l’ultimo paragrafo",
+            "a2": "La redattrice ha controllato l’ultimo paragrafo.",
+            "a3": "Perché la scadenza è cambiata",
+            "a4": "Mentre tutti aspettavano"
+          },
           "headerLabel": "STRUTTURA DELLA FRASE"
         },
         "grammar-r1q3": {
           "context": "Le note appartengono a più studenti.",
           "question": "Quale frase esprime correttamente questa idea?",
-          "answers": [
-            "Le note degli studenti erano ordinate.",
-            "Le note dello studente erano ordinate.",
-            "Le note dei studente erano ordinate.",
-            "La note degli studenti erano ordinate."
-          ],
+          "answers": {
+            "a1": "Le note degli studenti erano ordinate.",
+            "a2": "Le note dello studente erano ordinate.",
+            "a3": "Le note dei studente erano ordinate.",
+            "a4": "La note degli studenti erano ordinate."
+          },
           "headerLabel": "ACCORDO E POSSESSO"
         },
         "grammar-r3q1": {
           "question": "La riunione è iniziata alle 9:00. Leo ha finito il grafico alle 8:30. Quale frase è corretta?",
-          "answers": [
-            "Leo completò il grafico dopo l’inizio della riunione.",
-            "Leo aveva completato il grafico dopo l’inizio della riunione.",
-            "Leo ha completato il grafico prima che la riunione iniziava.",
-            "Leo aveva completato il grafico prima che la riunione iniziasse."
-          ],
+          "answers": {
+            "a1": "Leo completò il grafico dopo l’inizio della riunione.",
+            "a2": "Leo aveva completato il grafico dopo l’inizio della riunione.",
+            "a3": "Leo ha completato il grafico prima che la riunione iniziava.",
+            "a4": "Leo aveva completato il grafico prima che la riunione iniziasse."
+          },
           "headerLabel": "SEQUENZA DEI TEMPI"
         },
         "grammar-r4q3": {
           "question": "Quale frase usa correttamente il punto e virgola?",
-          "answers": [
-            "Il file era grande; perché si caricava lentamente.",
-            "Il file era grande; si caricava lentamente.",
-            "Il file era grande, si caricava lentamente.",
-            "Il file era grande; sebbene si caricasse lentamente."
-          ],
+          "answers": {
+            "a1": "Il file era grande; perché si caricava lentamente.",
+            "a2": "Il file era grande; si caricava lentamente.",
+            "a3": "Il file era grande, si caricava lentamente.",
+            "a4": "Il file era grande; sebbene si caricasse lentamente."
+          },
           "headerLabel": "PUNTO E VIRGOLA"
         },
         "grammar-r5q4": {
           "context": "Tra Lina e ___, questa decisione deve restare riservata.",
           "question": "Quale pronome completa correttamente la frase?",
-          "answers": [
-            "me",
-            "io",
-            "mio",
-            "mi"
-          ],
+          "answers": {
+            "a1": "me",
+            "a2": "io",
+            "a3": "mio",
+            "a4": "mi"
+          },
           "headerLabel": "SCELTA DEL PRONOME"
         },
         "grammar-r5q6": {
           "question": "Quale frase usa correttamente le virgole nel vocativo?",
-          "answers": [
-            "Ravi per favore, controlla l’ultima riga.",
-            "Ravi, per favore, controlla l’ultima riga.",
-            "Ravi per favore controlla, l’ultima riga.",
-            "Ravi; per favore, controlla l’ultima riga."
-          ],
+          "answers": {
+            "a1": "Ravi per favore, controlla l’ultima riga.",
+            "a2": "Ravi, per favore, controlla l’ultima riga.",
+            "a3": "Ravi per favore controlla, l’ultima riga.",
+            "a4": "Ravi; per favore, controlla l’ultima riga."
+          },
           "headerLabel": "VOCATIVO"
         },
         "grammar-r7q6": {
           "context": "Un rapporto contiene un riepilogo e un’appendice. L’appendice viene aggiornata ogni mese.",
           "question": "Quale formulazione chiarisce che l’aggiornamento mensile riguarda l’appendice?",
-          "answers": [
-            "Il rapporto contiene un riepilogo e un’appendice, e viene aggiornato ogni mese.",
-            "Il rapporto contiene un riepilogo, che viene aggiornato ogni mese, e un’appendice.",
-            "Il rapporto contiene un riepilogo e un’appendice; l’appendice viene aggiornata ogni mese.",
-            "Il rapporto, aggiornato ogni mese, contiene un riepilogo e la sua appendice."
-          ],
+          "answers": {
+            "a1": "Il rapporto contiene un riepilogo e un’appendice, e viene aggiornato ogni mese.",
+            "a2": "Il rapporto contiene un riepilogo, che viene aggiornato ogni mese, e un’appendice.",
+            "a3": "Il rapporto contiene un riepilogo e un’appendice; l’appendice viene aggiornata ogni mese.",
+            "a4": "Il rapporto, aggiornato ogni mese, contiene un riepilogo e la sua appendice."
+          },
           "headerLabel": "CHIAREZZA DEL RIFERIMENTO"
         },
         "grammar-r9q1": {
           "question": "Quale frase inizia con una subordinata introdotta da «sebbene» e usa correttamente la punteggiatura?",
-          "answers": [
-            "La tempesta è finita; sebbene le strade siano rimaste allagate.",
-            "La tempesta è finita tuttavia, le strade sono rimaste allagate.",
-            "Sebbene la tempesta sia finita; le strade sono rimaste allagate.",
-            "Sebbene la tempesta sia finita, le strade sono rimaste allagate."
-          ],
-          "trapdoorErrors": [
-            "il punto e virgola separa scorrettamente la principale dalla subordinata",
-            "il connettivo richiede una punteggiatura diversa",
-            "il punto e virgola segue scorrettamente una subordinata",
-            null
-          ],
+          "answers": {
+            "a1": "La tempesta è finita; sebbene le strade siano rimaste allagate.",
+            "a2": "La tempesta è finita tuttavia, le strade sono rimaste allagate.",
+            "a3": "Sebbene la tempesta sia finita; le strade sono rimaste allagate.",
+            "a4": "Sebbene la tempesta sia finita, le strade sono rimaste allagate."
+          },
+          "trapdoorErrors": {
+            "a1": "il punto e virgola separa scorrettamente la principale dalla subordinata",
+            "a2": "il connettivo richiede una punteggiatura diversa",
+            "a3": "il punto e virgola segue scorrettamente una subordinata"
+          },
           "headerLabel": "CONTRASTO NELLA FRASE"
         },
         "grammar-r10q6": {
           "question": "Quale frase è completamente corretta?",
-          "answers": [
-            "Dopo aver controllato i dati, Maya ha confermato che ogni totale era esatto.",
-            "Dopo aver controllato i dati, ogni totale sono stati confermati da Maya.",
-            "Dopo aver controllato i dati, Maya ha confermato che ogni totale erano esatto.",
-            "Dopo aver controllato i dati, Maya ha confermato che ciascuno dei totali erano esatti."
-          ],
+          "answers": {
+            "a1": "Dopo aver controllato i dati, Maya ha confermato che ogni totale era esatto.",
+            "a2": "Dopo aver controllato i dati, ogni totale sono stati confermati da Maya.",
+            "a3": "Dopo aver controllato i dati, Maya ha confermato che ogni totale erano esatto.",
+            "a4": "Dopo aver controllato i dati, Maya ha confermato che ciascuno dei totali erano esatti."
+          },
           "headerLabel": "REVISIONE DI PRECISIONE"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "I rapporti finali sono stati controllati prima che il redattore li approvare tutti"
           },
           "question": "Quale parte contiene l’errore?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "REVISIONE FINALE"
         }
       }

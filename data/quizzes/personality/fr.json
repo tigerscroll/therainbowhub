@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Quel pays correspond à votre personnalité ?",
   "eyebrow": "VOTRE PAYS IDÉAL",
   "summary": "Dix choix de vie révèlent si votre personnalité correspond davantage à l’Italie, au Japon, à l’Australie ou à la Suède.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Vos choix du quotidien pourraient révéler le pays qui vous convient le mieux. Dix questions rapides dévoilent votre meilleure correspondance.",
     "cta": "Trouver mon pays"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce quiz de divertissement en dix questions est adapté du test de personnalité par pays du Times of India. Chaque choix renforce votre correspondance avec l’Italie, le Japon, l’Australie ou la Suède.\n\nChoisissez la réponse qui vous ressemble le plus, sans chercher celle qui paraît la plus impressionnante. L’ensemble de vos préférences détermine votre pays.\n\nLe résultat décrit un profil ludique de style de vie, et non votre nationalité, vos origines, votre citoyenneté, votre identité culturelle ou une recommandation d’installation. Les concepts et les images sont reproduits avec l’autorisation indiquée par le propriétaire du site.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions sur vos habitudes et vos préférences.",
         "Choisissez sans trop réfléchir l’option qui vous ressemble le plus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Correspondance de pays",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Profil de personnalité",
@@ -126,9 +122,7 @@
       "portraitAlt": "Illustration de paysage représentant {profile}",
       "disclaimer": "Pour le divertissement et la réflexion personnelle uniquement. Ce résultat est une correspondance ludique de style de vie, et non une affirmation sur votre nationalité, votre identité culturelle ou le pays où vous devriez vivre."
     },
-    "score": {
-      "showBestRound": false
-    }
+    "score": {}
   },
   "stages": {
     "stage-1": {
@@ -139,12 +133,12 @@
             "alt": "Des amis se saluent chaleureusement"
           },
           "question": "Comment saluez-vous une personne que vous venez de rencontrer ?",
-          "answers": [
-            "Avec une accolade chaleureuse",
-            "Avec un signe amical de la main",
-            "Avec une inclinaison respectueuse",
-            "Avec un simple hochement de tête"
-          ],
+          "answers": {
+            "a1": "Avec une accolade chaleureuse",
+            "a2": "Avec un signe amical de la main",
+            "a3": "Avec une inclinaison respectueuse",
+            "a4": "Avec un simple hochement de tête"
+          },
           "headerLabel": "PREMIÈRE IMPRESSION"
         },
         "personality-q2": {
@@ -152,12 +146,12 @@
             "alt": "Paysage lumineux sous un ciel changeant"
           },
           "question": "Quel temps vous rend le plus heureux ?",
-          "answers": [
-            "Une douce brise chaude",
-            "Un grand soleil",
-            "Un air froid",
-            "Un temps frais et vif"
-          ],
+          "answers": {
+            "a1": "Une douce brise chaude",
+            "a2": "Un grand soleil",
+            "a3": "Un air froid",
+            "a4": "Un temps frais et vif"
+          },
           "headerLabel": "MÉTÉO IDÉALE"
         },
         "personality-q3": {
@@ -165,12 +159,12 @@
             "alt": "Un dimanche paisible en plein air"
           },
           "question": "Comment passez-vous généralement vos dimanches ?",
-          "answers": [
-            "À l’aventure en plein air",
-            "Bien au chaud chez vous",
-            "Dans le calme et la réflexion",
-            "Autour d’un long repas en famille"
-          ],
+          "answers": {
+            "a1": "À l’aventure en plein air",
+            "a2": "Bien au chaud chez vous",
+            "a3": "Dans le calme et la réflexion",
+            "a4": "Autour d’un long repas en famille"
+          },
           "headerLabel": "DIMANCHE IDÉAL"
         },
         "personality-q4": {
@@ -178,12 +172,12 @@
             "alt": "Café du matin près d’une fenêtre"
           },
           "question": "Comment aimez-vous commencer la journée ?",
-          "answers": [
-            "Avec un café corsé",
-            "Avec une promenade tranquille",
-            "Avec l’air marin",
-            "Avec une méditation apaisante"
-          ],
+          "answers": {
+            "a1": "Avec un café corsé",
+            "a2": "Avec une promenade tranquille",
+            "a3": "Avec l’air marin",
+            "a4": "Avec une méditation apaisante"
+          },
           "headerLabel": "RITUEL DU MATIN"
         },
         "personality-q5": {
@@ -191,12 +185,12 @@
             "alt": "Table colorée garnie de plats variés"
           },
           "question": "Quel type de cuisine vous attire le plus ?",
-          "answers": [
-            "Des saveurs raffinées",
-            "Des plats simples et généreux",
-            "Des fruits de mer frais",
-            "De grands classiques réconfortants"
-          ],
+          "answers": {
+            "a1": "Des saveurs raffinées",
+            "a2": "Des plats simples et généreux",
+            "a3": "Des fruits de mer frais",
+            "a4": "De grands classiques réconfortants"
+          },
           "headerLabel": "ENVIES CULINAIRES"
         },
         "personality-q6": {
@@ -204,12 +198,12 @@
             "alt": "Mur de galerie aux styles artistiques variés"
           },
           "question": "Quel art vous attire le plus ?",
-          "answers": [
-            "Les grands classiques",
-            "La simplicité épurée",
-            "Les œuvres expressives",
-            "Les détails délicats"
-          ],
+          "answers": {
+            "a1": "Les grands classiques",
+            "a2": "La simplicité épurée",
+            "a3": "Les œuvres expressives",
+            "a4": "Les détails délicats"
+          },
           "headerLabel": "GOÛTS ARTISTIQUES"
         },
         "personality-q7": {
@@ -217,12 +211,12 @@
             "alt": "Quatre boissons différentes côte à côte"
           },
           "question": "Quelle boisson choisiriez-vous ?",
-          "answers": [
-            "Une bière bien fraîche",
-            "Du vin",
-            "Un chocolat chaud",
-            "Du thé vert"
-          ],
+          "answers": {
+            "a1": "Une bière bien fraîche",
+            "a2": "Du vin",
+            "a3": "Un chocolat chaud",
+            "a4": "Du thé vert"
+          },
           "headerLabel": "BOISSON PRÉFÉRÉE"
         },
         "personality-q8": {
@@ -230,12 +224,12 @@
             "alt": "Des amis célèbrent une occasion spéciale"
           },
           "question": "Comment aimez-vous célébrer les grands moments ?",
-          "answers": [
-            "Dans une ambiance bruyante et animée",
-            "Dans un cadre intime et chaleureux",
-            "Dans une atmosphère simple et détendue",
-            "Avec des rituels qui ont du sens"
-          ],
+          "answers": {
+            "a1": "Dans une ambiance bruyante et animée",
+            "a2": "Dans un cadre intime et chaleureux",
+            "a3": "Dans une atmosphère simple et détendue",
+            "a4": "Avec des rituels qui ont du sens"
+          },
           "headerLabel": "FAÇON DE FÊTER"
         },
         "personality-q9": {
@@ -243,12 +237,12 @@
             "alt": "Montage de forêts, de côtes, de temples et de campagnes"
           },
           "question": "Quel paysage vous donne le plus l’impression d’être chez vous ?",
-          "answers": [
-            "Des forêts paisibles",
-            "Un littoral dégagé",
-            "Des temples historiques",
-            "Une campagne vallonnée"
-          ],
+          "answers": {
+            "a1": "Des forêts paisibles",
+            "a2": "Un littoral dégagé",
+            "a3": "Des temples historiques",
+            "a4": "Une campagne vallonnée"
+          },
           "headerLabel": "CHEZ SOI"
         },
         "personality-q10": {
@@ -256,12 +250,12 @@
             "alt": "Une personne contemple un paysage lointain"
           },
           "question": "Quel type de voyageur êtes-vous ?",
-          "answers": [
-            "Explorateur actif",
-            "Promeneur sans hâte",
-            "Passionné d’immersion culturelle",
-            "Amateur de lieux emblématiques"
-          ],
+          "answers": {
+            "a1": "Explorateur actif",
+            "a2": "Promeneur sans hâte",
+            "a3": "Passionné d’immersion culturelle",
+            "a4": "Amateur de lieux emblématiques"
+          },
           "headerLabel": "DESTINATION FINALE"
         }
       }

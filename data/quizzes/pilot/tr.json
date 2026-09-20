@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Yetişkinlerin Sadece %3'ü Bu Pilot Giriş Sınavını Geçebiliyor",
   "eyebrow": "PİLOT YETENEK TESTİ",
   "summary": "On soru, uçuş prensiplerini, aletleri, hava durumunu, navigasyonu ve kokpit muhakemesini test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Kokpitin temelleri basit görünüyor. Daha sonra sınav hava durumu, navigasyon ve pilotların tahmin edemeyeceği kararlara geçer.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence yarışmasında, tek bir ülkenin lisanslama müfredatı yerine uluslararası sivil havacılık kavramları kullanılıyor. Geniş uçuş prensiplerini, kokpit aletlerini, hava durumu farkındalığını, navigasyonu ve muhafazakar karar vermeyi test eder.\n\nHer soru için bir cevap seçin. Doğruluk, tam yanıt incelemesinin açılabileceği son açıklamaya kadar gizli kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Giderek zorlaşan on pilot yetenek sorusunu yanıtlayın.",
         "En güvenli veya en doğru yanıtı seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Pilot giriş mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Pilot Giriş Sınavı",
@@ -30,10 +26,8 @@
         "preAdCopy": "On cevabınız kontrol edildi ve pilotluk yetenek puanınız açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Beş havacılık alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Beş havacılık alanı karşılaştırıldı"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Pilot giriş mücadelesini geçtiniz!",
       "finished": "Pilot giriş mücadelesi tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü havacılık alanı",
       "trickiest": "En zorlu havacılık alanı",
       "bestRound": "En iyi bölüm",
@@ -99,8 +92,7 @@
         "snapshot": "Sonucunuzun önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "pilot-q1": {
           "question": "Hangi kuvvet uçağın ağırlığına karşı yukarı doğru etki eder?",
-          "answers": [
-            "Kaldırma kuvveti",
-            "Sürükleme kuvveti",
-            "İtki",
-            "Atalet"
-          ],
+          "answers": {
+            "a1": "Kaldırma kuvveti",
+            "a2": "Sürükleme kuvveti",
+            "a3": "İtki",
+            "a4": "Atalet"
+          },
           "headerLabel": "UÇUŞ TEMELLERİ"
         },
         "pilot-q2": {
           "question": "Hangi kokpit aleti yüksekliği gösterir?",
-          "answers": [
-            "Hava hızı göstergesi",
-            "Altimetre",
-            "Başlık göstergesi",
-            "Dönüş koordinatörü"
-          ],
+          "answers": {
+            "a1": "Hava hızı göstergesi",
+            "a2": "Altimetre",
+            "a3": "Başlık göstergesi",
+            "a4": "Dönüş koordinatörü"
+          },
           "headerLabel": "GÖSTERGELER"
         },
         "pilot-q3": {
           "question": "Gök gürültülü fırtınalar ve şiddetli türbülansla en güçlü şekilde ilişkili olan bulut türü hangisidir?",
-          "answers": [
-            "Sirrus",
-            "Stratus",
-            "Kümülonimbüs",
-            "Altostratus"
-          ],
+          "answers": {
+            "a1": "Sirrus",
+            "a2": "Stratus",
+            "a3": "Kümülonimbüs",
+            "a4": "Altostratus"
+          },
           "headerLabel": "HAVACILIK HAVA DURUMU"
         },
         "pilot-q4": {
           "question": "180 derecelik bir yön yaklaşık olarak hangi yönü gösterir?",
-          "answers": [
-            "Kuzey",
-            "Doğu",
-            "Batı",
-            "Güney"
-          ],
+          "answers": {
+            "a1": "Kuzey",
+            "a2": "Doğu",
+            "a3": "Batı",
+            "a4": "Güney"
+          },
           "headerLabel": "NAVİGASYON"
         },
         "pilot-q5": {
           "question": "Hava tahminlerden daha hızlı kötüleşiyor ve güvenli marjlar daralıyor. En iyi genel karar nedir?",
-          "answers": [
-            "Güvenli seçenekler devam ederken erken değerlendirme yapın ve yönünü değiştirin veya karaya çıkın",
-            "Devam edin çünkü orijinal planın tamamlanması gerekiyor",
-            "Görsel teması sürdürmek için güvenli sınırların altına inin",
-            "Koşullar kritik hale gelinceye kadar eğilimi göz ardı edin"
-          ],
+          "answers": {
+            "a1": "Güvenli seçenekler devam ederken erken değerlendirme yapın ve yönünü değiştirin veya karaya çıkın",
+            "a2": "Devam edin çünkü orijinal planın tamamlanması gerekiyor",
+            "a3": "Görsel teması sürdürmek için güvenli sınırların altına inin",
+            "a4": "Koşullar kritik hale gelinceye kadar eğilimi göz ardı edin"
+          },
           "headerLabel": "HAVACILIK KARARI"
         },
         "pilot-q6": {
           "question": "Hangi kumanda yüzeyleri uçağın boylamasına ekseni etrafında yatış yapmasını sağlar?",
-          "answers": [
-            "İrtifa dümenleri",
-            "Kanatçıklar",
-            "Yalnızca dümen pedalları",
-            "Flaplar"
-          ],
+          "answers": {
+            "a1": "İrtifa dümenleri",
+            "a2": "Kanatçıklar",
+            "a3": "Yalnızca dümen pedalları",
+            "a4": "Flaplar"
+          },
           "headerLabel": "UÇUŞ KONTROLLERİ"
         },
         "pilot-q7": {
           "question": "Hangi alet bir uçağın tırmanma veya alçalma hızını gösterir?",
-          "answers": [
-            "Pusula",
-            "Yalnızca altimetre",
-            "Dikey hız göstergesi",
-            "Dış hava sıcaklık göstergesi"
-          ],
+          "answers": {
+            "a1": "Pusula",
+            "a2": "Yalnızca altimetre",
+            "a3": "Dikey hız göstergesi",
+            "a4": "Dış hava sıcaklık göstergesi"
+          },
           "headerLabel": "KOKPİT TARAMA"
         },
         "pilot-q8": {
           "question": "Rüzgar kesmesi nedir?",
-          "answers": [
-            "Hiç değişmeyen sabit bir rüzgar",
-            "Yalnızca bulut yüksekliğinin ölçüsü",
-            "Hava yalnızca suyun üzerinde hareket eder",
-            "Rüzgar hızının veya yönünün kısa mesafe boyunca hızlı değişmesi"
-          ],
+          "answers": {
+            "a1": "Hiç değişmeyen sabit bir rüzgar",
+            "a2": "Yalnızca bulut yüksekliğinin ölçüsü",
+            "a3": "Hava yalnızca suyun üzerinde hareket eder",
+            "a4": "Rüzgar hızının veya yönünün kısa mesafe boyunca hızlı değişmesi"
+          },
           "headerLabel": "HAVA TEHLİKELERİ"
         },
         "pilot-q9": {
           "question": "27 numaralı pist yaklaşık olarak hangi yöne doğru uzanmaktadır?",
-          "answers": [
-            "Batı",
-            "Kuzey",
-            "Doğu",
-            "Güney"
-          ],
+          "answers": {
+            "a1": "Batı",
+            "a2": "Kuzey",
+            "a3": "Doğu",
+            "a4": "Güney"
+          },
           "headerLabel": "PİST AKIL VERME"
         },
         "pilot-q10": {
           "question": "Uçuş sırasında açıklanamayan bir yakıt dengesizliği fark ettiniz. En iyi genel yanıt nedir?",
-          "answers": [
-            "Göstergenin kendisini düzelteceğini varsayın",
-            "Kontrol listesini kullanın, durumu izleyin ve gerektiği şekilde iletişim kurun",
-            "Kayboluncaya kadar rastgele sistemleri değiştirin",
-            "İnişe kadar herhangi bir eylemi erteleyin"
-          ],
+          "answers": {
+            "a1": "Göstergenin kendisini düzelteceğini varsayın",
+            "a2": "Kontrol listesini kullanın, durumu izleyin ve gerektiği şekilde iletişim kurun",
+            "a3": "Kayboluncaya kadar rastgele sistemleri değiştirin",
+            "a4": "İnişe kadar herhangi bir eylemi erteleyin"
+          },
           "headerLabel": "SON KOKPİT SORUSU"
         }
       }

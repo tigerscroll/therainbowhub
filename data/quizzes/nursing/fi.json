@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 7 % läpäisee tämän sairaanhoitajan pääsykokeen",
   "eyebrow": "KLIINISET PÄÄSTÖT LAB",
   "summary": "Anatomia, elintoiminnot ja potilaan hoitopäätökset testaavat, pysyykö arvostelukykysi terävä paineen alla.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Kehon järjestelmät, elintoiminnot ja potilaan hoito. Pystytkö tunnistamaan tärkeimmät ja soittamaan turvallisimman puhelun?",
     "cta": "Aloita tietokilpailu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen viihdehaaste sisältää kymmenen sisääntulokysymystä anatomiasta, havainnoista, terveydenhuollon laskemistaidosta, infektioiden ehkäisystä, viestinnästä ja prioriteettien arvioinnista. Se palkitsee näytetyn tiedon rauhallisesta käytöstä.\n\nValitse yksittäinen paras vastaus kuhunkin tilanteeseen. Sisältö pysyy yleisenä ja vältetään luottamasta yhden maan ammatillisiin menettelytapoihin.\n\nTämä ei ole akkreditoitu sairaanhoitajan pääsykoe, kliininen arviointi, pätevyys, koulutus tai lääketieteellisen neuvonnan lähde.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sairaanhoitajan pääsykoe",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Sairaanhoitajan sisäänpääsyhaaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Hoitotyön pääsypisteesi ja kolmen alueen erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolme sisäänkäyntialuetta verrattuna",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolme sisäänkäyntialuetta verrattuna"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Läpäisit sairaanhoitajahaasteen!",
       "finished": "Hoitohaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin sisäänkäyntialue",
       "trickiest": "Hankalin sisäänkäyntialue",
       "bestRound": "Paras jakso",
@@ -98,8 +91,7 @@
         "snapshot": "Mitä ehdokasprofiilisi ehdottaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Mitä kaasua veri on kerännyt palatessaan keuhkoista?",
-          "answers": [
-            "Typpi",
-            "Happi",
-            "Hiilidioksidi",
-            "Vety"
-          ],
+          "answers": {
+            "a1": "Typpi",
+            "a2": "Happi",
+            "a3": "Hiilidioksidi",
+            "a4": "Vety"
+          },
           "headerLabel": "ANATOMIA JA FYSIOLOGIA"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 millilitraa plus 250 millilitraa vastaa kokonaismäärää"
           },
           "question": "Kannu sisältää 750 ml. Lisätään vielä 250 ml. Mikä on kokonaissumma?",
-          "answers": [
-            "900 ml",
-            "1100 ml",
-            "1250 ml",
-            "1000 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "1100 ml",
+            "a3": "1250 ml",
+            "a4": "1000 ml"
+          },
           "headerLabel": "TERVEYDENHUOLLON NUMEROTOIMINTA"
         },
         "nurse-r2q5": {
           "context": "Aikaisemmin: hengittää mukavasti ja puhua normaalisti. Nyt: hengitä nopeammin ja pysähdy lyhyiden lauseiden välissä.",
           "question": "Mikä muutos tässä huomautuksessa on tärkein?",
-          "answers": [
-            "Muistiinpano sisältää kaksi aikapistettä",
-            "Hengitystapa on huonontunut",
-            "Henkilö puhuu edelleen",
-            "Edellinen muistiinpano oli lyhyempi"
-          ],
+          "answers": {
+            "a1": "Muistiinpano sisältää kaksi aikapistettä",
+            "a2": "Hengitystapa on huonontunut",
+            "a3": "Henkilö puhuu edelleen",
+            "a4": "Edellinen muistiinpano oli lyhyempi"
+          },
           "headerLabel": "HAvainnointitrendejä"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Handover sanoo vasen käsi, kaavio sanoo oikea käsi"
           },
           "question": "Mikä ristiriita pitäisi selvittää?",
-          "answers": [
-            "Isojen kirjainten käyttö",
-            "Sanojen määrä",
-            "Kaaviossa on reunus",
-            "Tallennuspuoli on erilainen"
-          ],
+          "answers": {
+            "a1": "Isojen kirjainten käyttö",
+            "a2": "Sanojen määrä",
+            "a3": "Kaaviossa on reunus",
+            "a4": "Tallennuspuoli on erilainen"
+          },
           "headerLabel": "TALLENNUSTARKKUUS"
         },
         "nurse-r4q3": {
           "question": "Tehtävä voi roiskua kehon nestettä kasvoja kohti. Mikä suojaus kattaa mainitun riskin?",
-          "answers": [
-            "Kangas hattu",
-            "Asianmukainen silmien tai kasvojen suojaus",
-            "Vain kengänsuojat",
-            "Ei suojaa, jos tehtävä on lyhyt"
-          ],
+          "answers": {
+            "a1": "Kangas hattu",
+            "a2": "Asianmukainen silmien tai kasvojen suojaus",
+            "a3": "Vain kengänsuojat",
+            "a4": "Ei suojaa, jos tehtävä on lyhyt"
+          },
           "headerLabel": "TUNNUSTEN EHKÄISY"
         },
         "nurse-r6q3": {
           "question": "Joku kysyy arkaluonteisen kysymyksen vilkkaalla julkisella alueella. Mitä sinun pitäisi tehdä?",
-          "answers": [
-            "Tarjoa keskustelun jatkamista jossain yksityisessä paikassa",
-            "Vastaa lyhyesti ja hiljaa missä olet",
-            "Pyydä lähellä olevia ihmisiä antamaan sinulle tilaa",
-            "Anna vastauksesta vain ei-arkaluonteinen osa"
-          ],
+          "answers": {
+            "a1": "Tarjoa keskustelun jatkamista jossain yksityisessä paikassa",
+            "a2": "Vastaa lyhyesti ja hiljaa missä olet",
+            "a3": "Pyydä lähellä olevia ihmisiä antamaan sinulle tilaa",
+            "a4": "Anna vastauksesta vain ei-arkaluonteinen osa"
+          },
           "headerLabel": "Myötätuntoinen VIESTINTÄ"
         },
         "nurse-r7q1": {
           "context": "Henkilö A tuntee olonsa mukavaksi ja pulssi on hieman nopeampi kävelyn jälkeen. Henkilö B on yhtäkkiä hämmentynyt, hengittää nopeasti ja näyttää kalpealta.",
           "question": "Kuka tarvitsee huomiota ensin?",
-          "answers": [
-            "Henkilö B, koska useat uudet merkit viittaavat äkilliseen huononemiseen",
-            "Henkilö A, koska hänen pulssinsa muuttui",
-            "Molemmat voivat odottaa rutiinihavaintoja",
-            "Ensimmäisenä saapunut henkilö"
-          ],
+          "answers": {
+            "a1": "Henkilö B, koska useat uudet merkit viittaavat äkilliseen huononemiseen",
+            "a2": "Henkilö A, koska hänen pulssinsa muuttui",
+            "a3": "Molemmat voivat odottaa rutiinihavaintoja",
+            "a4": "Ensimmäisenä saapunut henkilö"
+          },
           "headerLabel": "ENSISIJAINEN TUOMIO"
         },
         "nurse-r3q1": {
           "question": "Nesteen kokonaismäärä nousee 600 ml:sta 900 ml:aan. Kuinka monta prosenttia se kasvoi?",
-          "answers": [
-            "25 %",
-            "33 %",
-            "50 %",
-            "75 %"
-          ],
+          "answers": {
+            "a1": "25 %",
+            "a2": "33 %",
+            "a3": "50 %",
+            "a4": "75 %"
+          },
           "headerLabel": "TERVEYDENHUOLLON NUMEROTOIMINTA"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Hengitystiet tukossa, vähemmän ilmaa keuhkoihin, tuntematon, vähemmän happea kudoksiin"
           },
           "question": "Hengitysteiden tukos estää ilman pääsyn keuhkoihin. Mikä loppupään vaikutus seuraa suorimmin?",
-          "answers": [
-            "Vähemmän happea pääsee vereen",
-            "Lisää ravintoaineita pääsee vatsaan",
-            "Munuaiset muodostavat välittömästi lisää virtsaa",
-            "Luut tuottavat enemmän liikettä"
-          ],
+          "answers": {
+            "a1": "Vähemmän happea pääsee vereen",
+            "a2": "Lisää ravintoaineita pääsee vatsaan",
+            "a3": "Munuaiset muodostavat välittömästi lisää virtsaa",
+            "a4": "Luut tuottavat enemmän liikettä"
+          },
           "headerLabel": "INTEGROIDUT FYSIOLOGIAT"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Henkilö A on hereillä, hänellä on lievä vakaa epämukavuus ja normaali puhe. Henkilö B on kalpea, vaikea herätä ja hengittää epäsäännöllisesti."
           },
           "question": "Kenellä on välitön etusija?",
-          "answers": [
-            "Henkilö A, koska epämukavuus tulee aina ensin",
-            "Molemmat voivat odottaa rutiinitarkastusta",
-            "Henkilö B, koska tajunta ja hengitys ovat yhtäkkiä muuttuneet",
-            "Valitse sen perusteella, kuka saapui ensin"
-          ],
+          "answers": {
+            "a1": "Henkilö A, koska epämukavuus tulee aina ensin",
+            "a2": "Molemmat voivat odottaa rutiinitarkastusta",
+            "a3": "Henkilö B, koska tajunta ja hengitys ovat yhtäkkiä muuttuneet",
+            "a4": "Valitse sen perusteella, kuka saapui ensin"
+          },
           "headerLabel": "LOPULLINEN LUOVUTUS"
         }
       }

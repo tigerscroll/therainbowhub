@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Endast 6 % av de vuxna kan klara det här inträdesprovet för polisman",
   "eyebrow": "POLISENS LÄNGDOMSPROV",
   "summary": "Tio frågor prövar omdöme, kommunikation, bevishantering och professionell integritet.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "De första samtalen verkar enkla. Sedan övergår provet till bevis, bedömning och beslut på en del av en sekund.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder breda principer som är relevanta för professionell polisverksamhet i engelsktalande nivå 1-länder. Den testar säkerheten först, noggrann vittneskommunikation, bevisintegritet och ansvarsfullt beslutsfattande utan att förlita sig på ett lands lagar, rangordningar eller procedurer.\n\nVälj ett svar för varje situation. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare frågor om polisens lämplighet.",
         "Välj det säkraste, tydligaste eller bästa svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Utmaning för polisens ingång",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Inträdesprov för polis",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och din polisbegåvningspoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fyra polisområden jämförs",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fyra polisområden jämförs"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Du klarade polisens ingångsutmaning!",
       "finished": "Ingångsutmaningen för polisen klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste polisområde",
       "trickiest": "Knepigaste polisområdet",
       "bestRound": "Bästa avsnittet",
@@ -96,8 +89,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "police-q1": {
           "question": "Du kommer till en plats där någon står inför ett omedelbart hot. Vad är första prioritet?",
-          "answers": [
-            "Skydda livet och gör scenen så säker som möjligt",
-            "Börja med en detaljerad skriftlig rapport",
-            "Samla alla vittnesuppgifter",
-            "Ta reda på vem som är juridiskt ansvarig"
-          ],
+          "answers": {
+            "a1": "Skydda livet och gör scenen så säker som möjligt",
+            "a2": "Börja med en detaljerad skriftlig rapport",
+            "a3": "Samla alla vittnesuppgifter",
+            "a4": "Ta reda på vem som är juridiskt ansvarig"
+          },
           "headerLabel": "SCENPRIORITETER"
         },
         "police-q2": {
           "question": "Vilken öppningsfråga ger mest sannolikt ett vittnes egen oavbrutna redogörelse?",
-          "answers": [
-            "Personen i rött började det, eller hur?",
-            "Berätta gärna vad som hände från början",
-            "Du såg inte hela händelsen, eller hur?",
-            "Var den misstänkte arg eller rädd?"
-          ],
+          "answers": {
+            "a1": "Personen i rött började det, eller hur?",
+            "a2": "Berätta gärna vad som hände från början",
+            "a3": "Du såg inte hela händelsen, eller hur?",
+            "a4": "Var den misstänkte arg eller rädd?"
+          },
           "headerLabel": "VITTNESKOMMUNIKATION"
         },
         "police-q3": {
           "question": "Varför kan vittnen hållas åtskilda innan deras första redogörelse tas?",
-          "answers": [
-            "För att göra intervjuerna kortare",
-            "Att bestämma vem som är mest säker",
-            "För att minska chansen att deras minnen påverkar varandra",
-            "För att garantera att alla konton matchar"
-          ],
+          "answers": {
+            "a1": "För att göra intervjuerna kortare",
+            "a2": "Att bestämma vem som är mest säker",
+            "a3": "För att minska chansen att deras minnen påverkar varandra",
+            "a4": "För att garantera att alla konton matchar"
+          },
           "headerLabel": "MINNE OCH BEVIS"
         },
         "police-q4": {
           "question": "Vad är huvudsyftet med en dokumenterad kedja av vårdnad?",
-          "answers": [
-            "Att rangordna bevis efter vikt",
-            "För att bevisa att en misstänkt ägde varje föremål",
-            "För att ersätta fotografier av scenen",
-            "Att registrera vem som hanterade bevis och bevara dess integritet"
-          ],
+          "answers": {
+            "a1": "Att rangordna bevis efter vikt",
+            "a2": "För att bevisa att en misstänkt ägde varje föremål",
+            "a3": "För att ersätta fotografier av scenen",
+            "a4": "Att registrera vem som hanterade bevis och bevara dess integritet"
+          },
           "headerLabel": "BEVISKONTROLL"
         },
         "police-q5": {
           "question": "Vilken uppsättning principer beskriver bäst ett ansvarsfullt utnyttjande av polisens befogenheter?",
-          "answers": [
-            "Laglig, nödvändig, proportionerlig och ansvarig",
-            "Snabbt, hemligt, kraftfullt och slutgiltigt",
-            "Populärt, bekvämt, informellt och brett",
-            "Automatisk, identisk, obegränsad och obestridd"
-          ],
+          "answers": {
+            "a1": "Laglig, nödvändig, proportionerlig och ansvarig",
+            "a2": "Snabbt, hemligt, kraftfullt och slutgiltigt",
+            "a3": "Populärt, bekvämt, informellt och brett",
+            "a4": "Automatisk, identisk, obegränsad och obestridd"
+          },
           "headerLabel": "PROFESSIONELL DOM"
         },
         "police-q6": {
           "question": "I det internationella stavningsalfabetet, vilket ord representerar bokstaven B?",
-          "answers": [
-            "Baker",
-            "Bravo",
-            "Beta",
-            "Boston"
-          ],
+          "answers": {
+            "a1": "Baker",
+            "a2": "Bravo",
+            "a3": "Beta",
+            "a4": "Boston"
+          },
           "headerLabel": "RADIOKOMMUNIKATION"
         },
         "police-q7": {
           "question": "Vilket tillvägagångssätt är mest förenligt med att deeskalera en spänd men icke-omedelbar situation?",
-          "answers": [
-            "Tala snabbt och gå närmare utan förvarning",
-            "Ge flera konkurrerande instruktioner samtidigt",
-            "Använd ett lugnt, tydligt språk, lyssna och ge tryggt utrymme",
-            "Höj rösten innan någon annan kan tala"
-          ],
+          "answers": {
+            "a1": "Tala snabbt och gå närmare utan förvarning",
+            "a2": "Ge flera konkurrerande instruktioner samtidigt",
+            "a3": "Använd ett lugnt, tydligt språk, lyssna och ge tryggt utrymme",
+            "a4": "Höj rösten innan någon annan kan tala"
+          },
           "headerLabel": "AVEKALERING"
         },
         "police-q8": {
           "question": "När det är säkert och praktiskt, vad ska hända innan ett viktigt föremål på en plats flyttas?",
-          "answers": [
-            "Den ska rengöras",
-            "Det bör visas för varje vittne",
-            "Den bör placeras med liknande föremål",
-            "Dess ursprungliga position och skick bör dokumenteras"
-          ],
+          "answers": {
+            "a1": "Den ska rengöras",
+            "a2": "Det bör visas för varje vittne",
+            "a3": "Den bör placeras med liknande föremål",
+            "a4": "Dess ursprungliga position och skick bör dokumenteras"
+          },
           "headerLabel": "SCEN MEDVETENHET"
         },
         "police-q9": {
           "question": "Du upptäcker ett sakfel i en anmälan du lämnat in. Vad är det mest professionella svaret?",
-          "answers": [
-            "Rapportera och korrigera det snabbt genom korrekt process",
-            "Vänta och se om någon märker det",
-            "Radera hela rapporten utan anteckning",
-            "Be en kollega att ta ansvar"
-          ],
+          "answers": {
+            "a1": "Rapportera och korrigera det snabbt genom korrekt process",
+            "a2": "Vänta och se om någon märker det",
+            "a3": "Radera hela rapporten utan anteckning",
+            "a4": "Be en kollega att ta ansvar"
+          },
           "headerLabel": "INTEGRITETSTEST"
         },
         "police-q10": {
           "question": "Vilket radiomeddelande är mest användbart under en händelse som rör sig snabbt?",
-          "answers": [
-            "En lång personlig teori utan plats",
-            "En kortfattad faktauppdatering med exakt plats och hjälp som krävs",
-            "Flera obekräftade rykten levererades på en gång",
-            "En vag begäran om att skicka någon någonstans"
-          ],
+          "answers": {
+            "a1": "En lång personlig teori utan plats",
+            "a2": "En kortfattad faktauppdatering med exakt plats och hjälp som krävs",
+            "a3": "Flera obekräftade rykten levererades på en gång",
+            "a4": "En vag begäran om att skicka någon någonstans"
+          },
           "headerLabel": "SLUTLIG ATTITUDFRÅGA"
         }
       }

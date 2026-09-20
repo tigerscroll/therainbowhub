@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Snabbt demenstest",
   "eyebrow": "10-FRÅGOR HJÄRNEKONTROLL",
   "summary": "En snabb utmaning för återkallelse, uppmärksamhet, språk och resonemang.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "Tror du att ditt minne fortfarande är skarpt? Dessa 10 snabba frågor testar återkallelse, uppmärksamhet och resonemang - och de försenade frågorna är svårare än de ser ut.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna hjärnutmaning med tio frågor blandar omedelbar och fördröjd återkallelse med uppmärksamhet, språk, visuellt minne och enkla resonemang. Den är utformad som en engagerande ögonblicksbild av prestandan idag, inte som ett verktyg för demensscreening.\n\nPrestanda kan förändras med sömn, stress, humör, medicinering, språk, utbildning, syn, hörsel, enhetsanvändning och enkel slump. Ett resultat från ett online-quiz kan inte bekräfta eller utesluta demens.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Studera varje minnessignal noggrant när den dyker upp.",
         "Välj ett svar för varje fråga utan hjälp utifrån.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Snabb hjärnutmaning",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Snabbt demenstest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och dina hjärnutmaningspoäng är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Tre tankeområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Tre tankeområden jämförda"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Du klarade 80 % hjärnutmaningen!",
       "finished": "Snabb hjärnutmaning klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkaste området idag",
       "trickiest": "Svåraste området idag",
       "bestRound": "Bästa avsnittet",
@@ -94,8 +87,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Vilket ord kom på tredje plats?",
           "headerLabel": "Omedelbar återkallelse",
-          "answers": [
-            "Bro",
-            "Citron",
-            "Trädgård",
-            "Klocka"
-          ],
+          "answers": {
+            "a1": "Bro",
+            "a2": "Citron",
+            "a3": "Trädgård",
+            "a4": "Klocka"
+          },
           "study": {
             "title": "Kom ihåg dessa fyra ord",
             "instruction": "De kan komma tillbaka senare i testet.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Vilken kod är en exakt matchning för P8L4T?",
           "headerLabel": "FOKUSERAD UPPMÄRKSAMHET",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Vilket föremål hör inte ihop med de andra?",
           "headerLabel": "ORDKATEGORIER",
-          "answers": [
-            "Violin",
-            "Flöjt",
-            "Morot",
-            "Trumpet"
-          ]
+          "answers": {
+            "a1": "Violin",
+            "a2": "Flöjt",
+            "a3": "Morot",
+            "a4": "Trumpet"
+          }
         },
         "dementia-q4": {
           "question": "Vilket nummer kommer härnäst: 2, 4, 8, 16, ___?",
           "headerLabel": "MÖNSTERRESONER",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Vilket föremål dök upp på andra plats?",
           "headerLabel": "VISUELLT MINNE",
-          "answers": [
-            "Handske",
-            "Nyckel",
-            "Cup",
-            "Bok"
-          ],
+          "answers": {
+            "a1": "Handske",
+            "a2": "Nyckel",
+            "a3": "Cup",
+            "a4": "Bok"
+          },
           "study": {
             "title": "Studera objektordningen",
             "instruction": "Detta försvinner automatiskt.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Vad är 7 – 2 – 9 baklänges?",
           "headerLabel": "ARBETSMINNE",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Om minutvisaren pekar på 6, hur många minuter efter timmen är det?",
           "headerLabel": "KLOCKSRESONERING",
-          "answers": [
-            "6 minuter",
-            "15 minuter",
-            "45 minuter",
-            "30 minuter"
-          ]
+          "answers": {
+            "a1": "6 minuter",
+            "a2": "15 minuter",
+            "a3": "45 minuter",
+            "a4": "30 minuter"
+          }
         },
         "dementia-q8": {
           "question": "Valp är för hund som kattunge är för vad?",
           "headerLabel": "SPRÅKANSLUTNING",
-          "answers": [
-            "Katt",
-            "Häst",
-            "Kanin",
-            "Fågel"
-          ]
+          "answers": {
+            "a1": "Katt",
+            "a2": "Häst",
+            "a3": "Kanin",
+            "a4": "Fågel"
+          }
         },
         "dementia-q9": {
           "question": "Tänk tillbaka på öppningslistan. Vilket ord dök upp först?",
           "headerLabel": "FÖRDRÖJT ORDÅTERKALLNING",
-          "answers": [
-            "Klocka",
-            "Trädgård",
-            "Citron",
-            "Bro"
-          ]
+          "answers": {
+            "a1": "Klocka",
+            "a2": "Trädgård",
+            "a3": "Citron",
+            "a4": "Bro"
+          }
         },
         "dementia-q10": {
           "question": "Tänk tillbaka på objektsekvensen. Vilket föremål dök upp på fjärde plats?",
           "headerLabel": "SLUTLIG FÖRDRÖJD ÅTERKALLNING",
-          "answers": [
-            "Bok",
-            "Nyckel",
-            "Handske",
-            "Cup"
-          ]
+          "answers": {
+            "a1": "Bok",
+            "a2": "Nyckel",
+            "a3": "Handske",
+            "a4": "Cup"
+          }
         }
       }
     }

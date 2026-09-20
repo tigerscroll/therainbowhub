@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A felnőttek mindössze 12%-a tudja letenni ezt a légiutaskísérői felvételi vizsgát",
   "eyebrow": "AZ utaskísérő személyzet alkalmassági vizsgája",
   "summary": "Tíz kérdés teszteli az utastér biztonságát, a vészhelyzeteket, a személyzet koordinációját és a repülőgép-ismereteket.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "A szervizkérdések egyszerűnek tűnnek. Ezután a vizsga áttér a dekompresszióra, az evakuálásra és az utastér biztonságára.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás a nemzetközi légi közlekedésben megosztott utastér-biztonsági elveket alkalmazza. Az utasok biztonságát, a vészhelyzeti prioritásokat, a személyzet koordinációját és a repülőgép-rendszereket teszteli anélkül, hogy egyetlen légitársaság pontos parancsaira vagy eljárásaira hagyatkozna.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon a légiutas-kísérők tíz, egyre nehezebbé váló kérdésére.",
         "Válassza ki a legbiztonságosabb vagy legpontosabb választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Légiutaskísérő belépő kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Légiutas-kísérő felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és a légiutas-kísérő alkalmassági pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Négy kabin-biztonsági terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Négy kabin-biztonsági terület összehasonlítása"
+        ]
       }
     }
   },
@@ -83,7 +77,6 @@
     "score": {
       "passed": "Sikerült a légiutaskísérő-felvételi kihíváson!",
       "finished": "A légiutaskísérői belépés kihívása kész",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb kabin-biztonsági terület",
       "trickiest": "A legtrükkösebb kabin-biztonsági terület",
       "bestRound": "A legjobb szakasz",
@@ -96,8 +89,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -106,102 +98,102 @@
       "questions": {
         "flightattendant-q1": {
           "question": "Mi a légiutas-kísérő elsődleges felelőssége?",
-          "answers": [
-            "Az utasok biztonsága",
-            "Fedélzeti termékek értékesítése",
-            "Az ételek gyors felszolgálása",
-            "Az úti cél bejelentése"
-          ],
+          "answers": {
+            "a1": "Az utasok biztonsága",
+            "a2": "Fedélzeti termékek értékesítése",
+            "a3": "Az ételek gyors felszolgálása",
+            "a4": "Az úti cél bejelentése"
+          },
           "headerLabel": "PRIORITÁSOK"
         },
         "flightattendant-q2": {
           "question": "Ha jelentős turbulencia kezdődik, mi a legfontosabb azonnali kabinprioritás?",
-          "answers": [
-            "Folytassa a szolgáltatást a késések elkerülése érdekében",
-            "Biztosítsa magát és a kabint az eljárásoknak megfelelően",
-            "Nyissa ki az összes felső rekeszt",
-            "Kérje meg az utasokat, hogy álljanak fel és nyújtózkodjanak"
-          ],
+          "answers": {
+            "a1": "Folytassa a szolgáltatást a késések elkerülése érdekében",
+            "a2": "Biztosítsa magát és a kabint az eljárásoknak megfelelően",
+            "a3": "Nyissa ki az összes felső rekeszt",
+            "a4": "Kérje meg az utasokat, hogy álljanak fel és nyújtózkodjanak"
+          },
           "headerLabel": "TURBULENCIA"
         },
         "flightattendant-q3": {
           "question": "Ha az oxigénmaszk leesik a dekompresszió során, mit kell tennie, mielőtt segítene egy másik személynek?",
-          "answers": [
-            "Távolítsa el a biztonsági övet",
-            "Várja meg a kabin világítását",
-            "Szerelje fel saját maszkját",
-            "Menjen a folyosóra"
-          ],
+          "answers": {
+            "a1": "Távolítsa el a biztonsági övet",
+            "a2": "Várja meg a kabin világítását",
+            "a3": "Szerelje fel saját maszkját",
+            "a4": "Menjen a folyosóra"
+          },
           "headerLabel": "DEKOMPRESSZIÓ"
         },
         "flightattendant-q4": {
           "question": "Vészkiürítéskor általában mit kell tennie az utasoknak a kézipoggyászával?",
-          "answers": [
-            "Csak kis táskákat vegyen",
-            "Hordjon táskákat az egyik vállán",
-            "Adja át a csomagokat a személyzet tagjainak",
-            "Hagyja maga mögött az összes poggyászt"
-          ],
+          "answers": {
+            "a1": "Csak kis táskákat vegyen",
+            "a2": "Hordjon táskákat az egyik vállán",
+            "a3": "Adja át a csomagokat a személyzet tagjainak",
+            "a4": "Hagyja maga mögött az összes poggyászt"
+          },
           "headerLabel": "KIürítés"
         },
         "flightattendant-q5": {
           "question": "Miért kell az utasoknak számolniuk az ülésük és a legközelebbi használható kijáratok közötti sorokat?",
-          "answers": [
-            "A füst vagy a sötétség megnehezítheti a kijáratok láthatóságát",
-            "Meghatározza az étkezési sorrendet",
-            "A legcsendesebb ülést azonosítja",
-            "Megváltoztatja a repülőgép egyensúlyát"
-          ],
+          "answers": {
+            "a1": "A füst vagy a sötétség megnehezítheti a kijáratok láthatóságát",
+            "a2": "Meghatározza az étkezési sorrendet",
+            "a3": "A legcsendesebb ülést azonosítja",
+            "a4": "Megváltoztatja a repülőgép egyensúlyát"
+          },
           "headerLabel": "KILÉPÉSI TUDATOSSÁG"
         },
         "flightattendant-q6": {
           "question": "A légi közlekedésben mi az, hogy a személyzeti erőforrás-gazdálkodást elsősorban erősítse?",
-          "answers": [
-            "Jegyek ára és menetrend",
-            "Kommunikáció, csapatmunka és döntéshozatal",
-            "Utasok szórakoztatása",
-            "Repülőgép gyártási sebesség"
-          ],
+          "answers": {
+            "a1": "Jegyek ára és menetrend",
+            "a2": "Kommunikáció, csapatmunka és döntéshozatal",
+            "a3": "Utasok szórakoztatása",
+            "a4": "Repülőgép gyártási sebesség"
+          },
           "headerLabel": "LÉNYEGSÉG KOORDINÁLÁSA"
         },
         "flightattendant-q7": {
           "question": "Mit jelent a hipoxia?",
-          "answers": [
-            "Túlzott kabinzaj",
-            "Gyors irányváltás",
-            "Elégtelen oxigén jut el a testszövetekhez",
-            "Késés a beszállásnál"
-          ],
+          "answers": {
+            "a1": "Túlzott kabinzaj",
+            "a2": "Gyors irányváltás",
+            "a3": "Elégtelen oxigén jut el a testszövetekhez",
+            "a4": "Késés a beszállásnál"
+          },
           "headerLabel": "REPÜLÉSI EGÉSZSÉGÜGY"
         },
         "flightattendant-q8": {
           "question": "Melyik három elem alkotja a tűzháromszöget?",
-          "answers": [
-            "Füst, láng és hamu",
-            "Víz, levegő és fém",
-            "Üzemanyag, nyomás és gőz",
-            "Hő, üzemanyag és oxigén"
-          ],
+          "answers": {
+            "a1": "Füst, láng és hamu",
+            "a2": "Víz, levegő és fém",
+            "a3": "Üzemanyag, nyomás és gőz",
+            "a4": "Hő, üzemanyag és oxigén"
+          },
           "headerLabel": "TŰZBIZTONSÁG"
         },
         "flightattendant-q9": {
           "question": "Mi a padlószintű vészvilágítás fő célja?",
-          "answers": [
-            "Segíteni az embereket a kijáratokhoz vezetni, amikor rossz a látási viszonyok",
-            "Étkezési tálcák megvilágítására",
-            "A repülőgép sebességének megjelenítése",
-            "Prémium ülések jelölésére"
-          ],
+          "answers": {
+            "a1": "Segíteni az embereket a kijáratokhoz vezetni, amikor rossz a látási viszonyok",
+            "a2": "Étkezési tálcák megvilágítására",
+            "a3": "A repülőgép sebességének megjelenítése",
+            "a4": "Prémium ülések jelölésére"
+          },
           "headerLabel": "FÜLKE RENDSZEREK"
         },
         "flightattendant-q10": {
           "question": "Miért kell az utasoknak odafigyelniük a biztonsági eligazításra, még akkor is, ha gyakran repülnek?",
-          "answers": [
-            "Felfedi a járat utazómagasságát",
-            "A vészhelyzeti felszerelések és eljárások repülőgépenként eltérőek lehetnek",
-            "Ez határozza meg a poggyászszállítás sorrendjét",
-            "Elmagyarázza, hogyan határozták meg a jegyárakat"
-          ],
+          "answers": {
+            "a1": "Felfedi a járat utazómagasságát",
+            "a2": "A vészhelyzeti felszerelések és eljárások repülőgépenként eltérőek lehetnek",
+            "a3": "Ez határozza meg a poggyászszállítás sorrendjét",
+            "a4": "Elmagyarázza, hogyan határozták meg a jegyárakat"
+          },
           "headerLabel": "VÉGLEGES KÉRDÉS"
         }
       }

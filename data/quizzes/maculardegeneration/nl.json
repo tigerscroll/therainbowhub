@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Maculadegeneratietest",
   "eyebrow": "CENTRALE VISIE CHECK MET 10 VRAGEN",
   "summary": "Centrale details, visuele vallen en belangrijke AMD-waarschuwingssignalen in één snelle uitdaging.",
-  "progressLabel": "voltooid",
   "landing": {
     "intro": "Kun jij de centrale details herkennen en de waarschuwingssignalen identificeren? Deze 10 snelle controles worden moeilijker.",
     "cta": "Start de test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Deze uitdaging met tien vragen combineert vijf visuele puzzels op het scherm met vijf algemene bewustzijnsvragen over leeftijdsgebonden maculaire degeneratie (AMD). Het meet de antwoorden op deze quiz, niet de gezondheid van het oog of de waarschijnlijkheid van ziekte.\n\nSchermgrootte, helderheid, contrast, gezichtsvermogen, corrigerende lenzen, vermoeidheid en apparaatinstellingen kunnen allemaal de prestaties beïnvloeden. Nieuwe golvende of vervormde lijnen, een nieuw wazig of leeg gebied in het centrale zicht, of een plotselinge verslechtering moeten onmiddellijk worden besproken met een gekwalificeerde oogzorgprofessional.",
     "howToPlay": {
-      "title": "Zo werkt het",
       "steps": [
         "Voltooi vijf uitdagingen op het gebied van centrale details en visueel geheugen.",
         "Beantwoord vijf vragen over AMD en wanneer je hulp moet zoeken.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Uitdaging centrale visie",
-    "resultProgressComplete": "{value}% voltooid",
     "stages": {
       "stage-1": {
         "difficulty": "Maculadegeneratietest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Je tien antwoorden zijn gecontroleerd en je Central Vision-uitdagingsscore is klaar om bekend te maken.",
         "preAdChecks": [
           "10 antwoorden gecontroleerd",
-          "Drie visuele gebieden vergeleken",
-          "Eindscore berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaten"
+          "Drie visuele gebieden vergeleken"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Je hebt de visuele uitdaging van 80% voltooid!",
       "finished": "Uitdaging centrale visie voltooid",
-      "correctLabel": "goed",
       "strongest": "Sterkste gebied vandaag",
       "trickiest": "Het lastigste gebied vandaag",
       "bestRound": "Beste sectie",
@@ -94,8 +87,7 @@
         "snapshot": "Wat je resultaat doet vermoeden",
         "targetReached": "80% uitdaging bereikt",
         "targetRemaining": "Meer juiste antwoorden nodig voor 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "macular-q1": {
           "question": "Welk personage staat precies in het midden van het raster?",
           "headerLabel": "CENTRAAL DETAIL",
-          "answers": [
-            "R",
-            "P",
-            "K",
-            "T"
-          ],
+          "answers": {
+            "a1": "R",
+            "a2": "P",
+            "a3": "K",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENTIE: Q7M2P6",
           "question": "Welke code komt precies overeen met de referentie?",
           "headerLabel": "SUBTIELE VERGELIJKING",
-          "answers": [
-            "Q7N2P6",
-            "Q7M2P6",
-            "Q7MZP6",
-            "O7M2P6"
-          ],
+          "answers": {
+            "a1": "Q7N2P6",
+            "a2": "Q7M2P6",
+            "a3": "Q7MZP6",
+            "a4": "O7M2P6"
+          },
           "visual": {
             "items": [
               "REFERENTIE",
@@ -147,12 +139,12 @@
         "macular-q3": {
           "question": "Welk symbool voltooit de afwisselende reeks?",
           "headerLabel": "PATROON VOLGEN",
-          "answers": [
-            "▲▲",
-            "●●",
-            "●",
-            "▲"
-          ],
+          "answers": {
+            "a1": "▲▲",
+            "a2": "●●",
+            "a3": "●",
+            "a4": "▲"
+          },
           "visual": {
             "items": [
               "▲",
@@ -168,12 +160,12 @@
         "macular-q4": {
           "question": "Welk object verscheen als derde?",
           "headerLabel": "SNEL VISUEEL GEHEUGEN",
-          "answers": [
-            "Boek",
-            "Sleutel",
-            "Beker",
-            "Zon"
-          ],
+          "answers": {
+            "a1": "Boek",
+            "a2": "Sleutel",
+            "a3": "Beker",
+            "a4": "Zon"
+          },
           "study": {
             "title": "Bestudeer de volgorde van vijf objecten",
             "instruction": "Dit verdwijnt automatisch.",
@@ -190,12 +182,12 @@
         "macular-q5": {
           "question": "Welke positie bevat de open cirkel?",
           "headerLabel": "FOCUS OP DE MIDDELSTE RIJ",
-          "answers": [
-            "Vierde",
-            "Seconde",
-            "Vijfde",
-            "Derde"
-          ],
+          "answers": {
+            "a1": "Vierde",
+            "a2": "Seconde",
+            "a3": "Vijfde",
+            "a4": "Derde"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "macular-q6": {
           "question": "Welk deel van het gezichtsvermogen wordt het meest direct beïnvloed door leeftijdsgebonden maculaire degeneratie?",
           "headerLabel": "AMD-BASIS",
-          "answers": [
-            "Alleen de uiterste buitenranden",
-            "Scherp centraal zicht recht vooruit",
-            "Alleen nachtzicht",
-            "Alleen dieptewaarneming"
-          ]
+          "answers": {
+            "a1": "Alleen de uiterste buitenranden",
+            "a2": "Scherp centraal zicht recht vooruit",
+            "a3": "Alleen nachtzicht",
+            "a4": "Alleen dieptewaarneming"
+          }
         },
         "macular-q7": {
           "question": "Welke visuele verandering is een bekend waarschuwingssignaal voor AMD?",
           "headerLabel": "WAARSCHUWINGSSIGNALEN",
-          "answers": [
-            "Klinkt steeds stiller",
-            "Een tijdelijke jeuk op het ooglid",
-            "Rechte lijnen lijken golvend of krom",
-            "Eén wimper valt uit"
-          ]
+          "answers": {
+            "a1": "Klinkt steeds stiller",
+            "a2": "Een tijdelijke jeuk op het ooglid",
+            "a3": "Rechte lijnen lijken golvend of krom",
+            "a4": "Eén wimper valt uit"
+          }
         },
         "macular-q8": {
           "question": "Welke beoordeling kan een oogzorgprofessional gebruiken om te zoeken naar AMD?",
           "headerLabel": "PROFESSIONELE BEOORDELING",
-          "answers": [
-            "Een gehoortest",
-            "Alleen al een bloeddrukmeting",
-            "Een smaaktest",
-            "Een uitgebreid oogonderzoek met pupilverwijding"
-          ]
+          "answers": {
+            "a1": "Een gehoortest",
+            "a2": "Alleen al een bloeddrukmeting",
+            "a3": "Een smaaktest",
+            "a4": "Een uitgebreid oogonderzoek met pupilverwijding"
+          }
         },
         "macular-q9": {
           "question": "Wat is de veiligste reactie op een plotselinge verslechtering van het gezichtsvermogen of een nieuw centraal wazig of leeg gebied?",
           "headerLabel": "WANNEER TE ACTIE",
-          "answers": [
-            "Zoek snel professioneel oogzorgadvies",
-            "Wacht enkele maanden zonder er iets over te zeggen",
-            "Verhoog de helderheid van het scherm en ga ervan uit dat het probleem is opgelost",
-            "Vertrouw alleen op een online quiz"
-          ]
+          "answers": {
+            "a1": "Zoek snel professioneel oogzorgadvies",
+            "a2": "Wacht enkele maanden zonder er iets over te zeggen",
+            "a3": "Verhoog de helderheid van het scherm en ga ervan uit dat het probleem is opgelost",
+            "a4": "Vertrouw alleen op een online quiz"
+          }
         },
         "macular-q10": {
           "question": "Wat zegt je score op deze online quiz?",
           "headerLabel": "EINDE REALITEITSCHECK",
-          "answers": [
-            "Of je netvlies gezond is",
-            "Alleen hoe je op deze tien vragen hebt gepresteerd",
-            "Of je een bepaalde behandeling nodig hebt",
-            "Of je AMD kunt uitsluiten"
-          ]
+          "answers": {
+            "a1": "Of je netvlies gezond is",
+            "a2": "Alleen hoe je op deze tien vragen hebt gepresteerd",
+            "a3": "Of je een bepaalde behandeling nodig hebt",
+            "a4": "Of je AMD kunt uitsluiten"
+          }
         }
       }
     }

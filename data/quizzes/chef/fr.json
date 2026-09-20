@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Seuls 12 % réussissent cet examen d’entrée en cuisine professionnelle",
   "eyebrow": "LE PASS CULINAIRE",
   "summary": "Saveur, feu, pâtisserie et pression de service testent si vous pouvez continuer à réfléchir lorsque la cuisine chauffe.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Ce quiz de dix questions aborde les ustensiles, les saveurs, la pâtisserie, la sécurité alimentaire, le calcul pratique et la maîtrise de la cuisson. Il commence par des bases accessibles avant de proposer des décisions qui combinent plusieurs indices.\n\nChoisissez la meilleure réponse à chaque situation. Les bonnes réponses restent cachées jusqu'à la révélation finale : chaque choix compte donc jusqu'au bout.\n\nVotre résultat ne décrit que cette tentative. Il ne constitue ni un diplôme de cuisine, ni une certification en sécurité alimentaire, ni une formation professionnelle.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions soigneusement sélectionnées dans un seul défi ciblé.",
         "Choisissez une réponse à chaque fois. Les bonnes réponses restent cachées jusqu’au résultat final.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi du chef",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Défi des chefs",
@@ -29,10 +26,8 @@
         "preAdCopy": "Votre score de chef et votre répartition en six compétences sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Six compétences en cuisine comparées",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Six compétences en cuisine comparées"
+        ]
       }
     }
   },
@@ -93,7 +88,6 @@
     "score": {
       "passed": "Vous avez réussi le test d’admission du chef !",
       "finished": "Défi culinaire terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -106,8 +100,7 @@
         "snapshot": "Ce que suggère votre profil de chef",
         "targetReached": "Défi 80% atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -116,102 +109,102 @@
       "questions": {
         "chef-r1q1": {
           "question": "Quel outil est le meilleur pour saisir et retourner des aliments chauds dans une poêle ?",
-          "answers": [
-            "Fouet",
-            "Une pince de cuisine",
-            "Éplucheur",
-            "Louche"
-          ],
+          "answers": {
+            "a1": "Fouet",
+            "a2": "Une pince de cuisine",
+            "a3": "Éplucheur",
+            "a4": "Louche"
+          },
           "headerLabel": "OUTILS DE CUISINE"
         },
         "chef-r1q2": {
           "question": "Une sauce est riche mais un peu lourde. Quel petit ajout a le plus de chances de la rééquilibrer ?",
-          "answers": [
-            "Plus de beurre",
-            "Plus d'amidon",
-            "Plus de crème",
-            "Une petite quantité d'acide"
-          ],
+          "answers": {
+            "a1": "Plus de beurre",
+            "a2": "Plus d'amidon",
+            "a3": "Plus de crème",
+            "a4": "Une petite quantité d'acide"
+          },
           "headerLabel": "ÉQUILIBRE DES SAVEURS"
         },
         "chef-r5q3": {
           "question": "Une recette de muffins dit de mélanger seulement jusqu'à ce qu'il ne reste plus de farine sèche. Pourquoi s'arrêter à ce point ?",
-          "answers": [
-            "Pour éviter de perdre tout l'agent levant",
-            "Un mélange supplémentaire peut rendre la mie plus dure",
-            "Pour empêcher la graisse fondue de se séparer",
-            "Pour éviter que le dessus ne brunisse trop tôt"
-          ],
+          "answers": {
+            "a1": "Pour éviter de perdre tout l'agent levant",
+            "a2": "Un mélange supplémentaire peut rendre la mie plus dure",
+            "a3": "Pour empêcher la graisse fondue de se séparer",
+            "a4": "Pour éviter que le dessus ne brunisse trop tôt"
+          },
           "headerLabel": "SCIENCES DE LA PÂTISSERIE"
         },
         "chef-r2q6": {
           "question": "Un bocal en verre se brise à côté de plats préparés découverts. Que devrait-il se passer ?",
-          "answers": [
-            "Retirez le verre visible et conservez les aliments",
-            "Éloignez la nourriture et continuez le service",
-            "Jetez les aliments exposés et nettoyez la zone en toute sécurité",
-            "Couvrir les aliments et nettoyer après le service"
-          ],
+          "answers": {
+            "a1": "Retirez le verre visible et conservez les aliments",
+            "a2": "Éloignez la nourriture et continuez le service",
+            "a3": "Jetez les aliments exposés et nettoyez la zone en toute sécurité",
+            "a4": "Couvrir les aliments et nettoyer après le service"
+          },
           "headerLabel": "SÉCURITÉ ALIMENTAIRE"
         },
         "chef-r6q1": {
           "question": "Une recette utilise 300 g de riz pour 4 portions. Combien faut-il pour 10 portions ?",
-          "answers": [
-            "750 g",
-            "600 g",
-            "700 g",
-            "900 g"
-          ],
+          "answers": {
+            "a1": "750 g",
+            "a2": "600 g",
+            "a3": "700 g",
+            "a4": "900 g"
+          },
           "headerLabel": "MATHS DE CUISINE"
         },
         "chef-r3q1": {
           "question": "Les légumes dans une poêle chaude et bondée deviennent pâles et humides. Qu'est-ce qui l'explique le mieux ?",
-          "answers": [
-            "L'humidité libérée a été emprisonnée, de sorte que les légumes ont été cuits à la vapeur",
-            "La poêle était trop chaude et a scellé l'humidité à l'intérieur",
-            "Les légumes ont absorbé l'huile avant de pouvoir dorer",
-            "Les retourner trop souvent a créé de l'humidité supplémentaire"
-          ],
+          "answers": {
+            "a1": "L'humidité libérée a été emprisonnée, de sorte que les légumes ont été cuits à la vapeur",
+            "a2": "La poêle était trop chaude et a scellé l'humidité à l'intérieur",
+            "a3": "Les légumes ont absorbé l'huile avant de pouvoir dorer",
+            "a4": "Les retourner trop souvent a créé de l'humidité supplémentaire"
+          },
           "headerLabel": "CONTRÔLE DE LA CHALEUR"
         },
         "chef-r8q1": {
           "question": "Quel outil permet d'éliminer les grumeaux de la farine ?",
-          "answers": [
-            "Fouet",
-            "Pinces",
-            "Tamis",
-            "Éplucheur"
-          ],
+          "answers": {
+            "a1": "Fouet",
+            "a2": "Pinces",
+            "a3": "Tamis",
+            "a4": "Éplucheur"
+          },
           "headerLabel": "OUTILS DE CUISINE"
         },
         "chef-r8q2": {
           "question": "Quel ingrédient approfondit l’umami savoureux ?",
-          "answers": [
-            "Sucre en poudre",
-            "Crème fouettée",
-            "Eau claire",
-            "Champignons"
-          ],
+          "answers": {
+            "a1": "Sucre en poudre",
+            "a2": "Crème fouettée",
+            "a3": "Eau claire",
+            "a4": "Champignons"
+          },
           "headerLabel": "CONSTRUCTION DE SAVEUR"
         },
         "chef-r10q1": {
           "question": "L'oignon doit cuire en premier et les herbes fraîches terminer le plat, mais les deux ont été préparés dans le même bol. Quelle meilleure organisation permet de respecter la recette ?",
-          "answers": [
-            "Gardez-les séparés lorsqu’ils sont utilisés",
-            "Cuire le tout à la fin",
-            "Ajoutez les herbes au début",
-            "Laissez les deux ingrédients non préparés"
-          ],
+          "answers": {
+            "a1": "Gardez-les séparés lorsqu’ils sont utilisés",
+            "a2": "Cuire le tout à la fin",
+            "a3": "Ajoutez les herbes au début",
+            "a4": "Laissez les deux ingrédients non préparés"
+          },
           "headerLabel": "ORGANISATION DE LA CUISINE"
         },
         "chef-r10q2": {
           "question": "Un plat a un goût riche et lourd mais a besoin de fraîcheur. Quel réglage de finition l’équilibre le mieux ?",
-          "answers": [
-            "Plus de crème et de beurre",
-            "Citron et herbes fraîches",
-            "Plus de farine",
-            "Plus de sirop"
-          ],
+          "answers": {
+            "a1": "Plus de crème et de beurre",
+            "a2": "Citron et herbes fraîches",
+            "a3": "Plus de farine",
+            "a4": "Plus de sirop"
+          },
           "headerLabel": "TEST DE SAVEUR FINALE"
         }
       }

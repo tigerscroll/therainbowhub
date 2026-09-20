@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 10% može proći ovaj gramatički kviz",
   "eyebrow": "IZAZOV LEKTURA",
   "summary": "Izlomljene rečenice, interpunkcijske zamke i gotovo točne riječi testiraju može li vam koja pogreška promaći.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Mislite da je vaša gramatika besprijekorna? Popravite pokvarene rečenice, uhvatite sitne interpunkcijske zamke i dokažite da možete uočiti pogrešku prije nego što ona uhvati vas.",
     "cta": "Pokreni kviz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj svjetski izazov na engleskom jeziku sadrži deset pažljivo različitih pitanja o strukturi rečenice, interpunkciji, vremenu, zamjenicama, jasnoći referenci i preciznom uređivanju. Svaka je stavka napisana posebno za engleski, a ne prevedena s drugog jezika.\n\nOdaberite jedan odgovor koji rečenicu čini ispravnom i prirodnom u navedenom kontekstu. Ispravnost ostaje skrivena do konačnog razotkrivanja.\n\nVaš rezultat odražava samo ovaj kratki jezični izazov. To nije formalna procjena pismenosti ili obrazovna kvalifikacija.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
         "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Gramatički izazov",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Gramatički izazov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaš rezultat iz gramatike i analiza triju vještina spremni su za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređuju se tri gramatičke vještine",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređuju se tri gramatičke vještine"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Prošli ste gramatički izazov!",
       "finished": "Gramatički izazov završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjača gramatička vještina",
       "trickiest": "Najzahtjevnija gramatička vještina",
       "bestRound": "Najbolja sekcija",
@@ -98,8 +91,7 @@
         "snapshot": "Što sugerira vaš gramatički profil",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Koja je opcija potpuna rečenica?",
-          "answers": [
-            "Nakon posljednjeg odlomka",
-            "Urednik je provjerio posljednji odlomak.",
-            "Jer se rok promijenio",
-            "Dok su svi čekali"
-          ],
+          "answers": {
+            "a1": "Nakon posljednjeg odlomka",
+            "a2": "Urednik je provjerio posljednji odlomak.",
+            "a3": "Jer se rok promijenio",
+            "a4": "Dok su svi čekali"
+          },
           "headerLabel": "STRUKTURA REČENICE"
         },
         "grammar-r1q3": {
           "context": "Bilješke pripadaju nekolicini učenika.",
           "question": "Koja rečenica ispravno prenosi zadano značenje?",
-          "answers": [
-            "Bilješke učenika bile su sređene.",
-            "Bilješka jednog učenika bila je sređena.",
-            "Učenici nisu imali bilješke.",
-            "Bilješke su pripadale učitelju."
-          ],
+          "answers": {
+            "a1": "Bilješke učenika bile su sređene.",
+            "a2": "Bilješka jednog učenika bila je sređena.",
+            "a3": "Učenici nisu imali bilješke.",
+            "a4": "Bilješke su pripadale učitelju."
+          },
           "headerLabel": "IZRAŽAVANJE PRIPADNOSTI"
         },
         "grammar-r3q1": {
           "question": "Sastanak je započeo u 09:00 sati. Leo je završio grafikon u 08:30. Koja je rečenica točna?",
-          "answers": [
-            "Leo je dovršio grafikon nakon što je sastanak započeo.",
-            "Leo je dovršio grafikon nakon što je sastanak započeo započeo.",
-            "Leo je dovršio grafikon prije početka sastanka sastanka.",
-            "Leo je dovršio grafikon prije početka sastanka."
-          ],
+          "answers": {
+            "a1": "Leo je dovršio grafikon nakon što je sastanak započeo.",
+            "a2": "Leo je dovršio grafikon nakon što je sastanak započeo započeo.",
+            "a3": "Leo je dovršio grafikon prije početka sastanka sastanka.",
+            "a4": "Leo je dovršio grafikon prije početka sastanka."
+          },
           "headerLabel": "VREMENSKI SLIJED"
         },
         "grammar-r4q3": {
           "question": "U kojoj se rečenici pravilno koristi točka-zarez?",
-          "answers": [
-            "Datoteka je bila velika; jer se sporo učitavao.",
-            "Datoteka je bila velika; učitavala se sporo.",
-            "Datoteka je bila velika, učitavala se sporo.",
-            "Datoteka je bila velika; iako se sporo učitavao."
-          ],
+          "answers": {
+            "a1": "Datoteka je bila velika; jer se sporo učitavao.",
+            "a2": "Datoteka je bila velika; učitavala se sporo.",
+            "a3": "Datoteka je bila velika, učitavala se sporo.",
+            "a4": "Datoteka je bila velika; iako se sporo učitavao."
+          },
           "headerLabel": "TOČKA SA ZAREZOM"
         },
         "grammar-r5q4": {
           "context": "Odaberite zamjenicu u prvom licu jednine.",
           "question": "Koja se riječ odnosi na osobu koja govori?",
-          "answers": [
-            "ja",
-            "ti",
-            "on",
-            "mi"
-          ],
+          "answers": {
+            "a1": "ja",
+            "a2": "ti",
+            "a3": "on",
+            "a4": "mi"
+          },
           "headerLabel": "IZBOR ZAMJENICE"
         },
         "grammar-r5q6": {
           "question": "U kojoj je rečenici obraćanje Raviju pravilno odvojeno zarezom?",
-          "answers": [
-            "Ravi molim te, provjeri posljednji redak.",
-            "Ravi, molim te provjeri posljednji redak.",
-            "Ravi molim te provjeri, posljednji redak.",
-            "Ravi; molimo, provjerite posljednji redak."
-          ],
+          "answers": {
+            "a1": "Ravi molim te, provjeri posljednji redak.",
+            "a2": "Ravi, molim te provjeri posljednji redak.",
+            "a3": "Ravi molim te provjeri, posljednji redak.",
+            "a4": "Ravi; molimo, provjerite posljednji redak."
+          },
           "headerLabel": "OBRAĆANJE"
         },
         "grammar-r7q6": {
           "context": "Izvješće sadrži sažetak i dodatak. Dodatak se ažurira mjesečno.",
           "question": "Koje uređivanje čini da se mjesečno ažuriranje odnosi na dodatak?",
-          "answers": [
-            "Izvješće sadrži sažetak i dodatak, a ažurira se mjesečno.",
-            "Izvješće sadrži sažetak koji se ažurira svaki mjesec te dodatak.",
-            "Izvješće sadrži sažetak i prilog; dodatak se ažurira mjesečno.",
-            "Izvješće, ažurirano mjesečno, sadrži sažetak i njegov dodatak."
-          ],
+          "answers": {
+            "a1": "Izvješće sadrži sažetak i dodatak, a ažurira se mjesečno.",
+            "a2": "Izvješće sadrži sažetak koji se ažurira svaki mjesec te dodatak.",
+            "a3": "Izvješće sadrži sažetak i prilog; dodatak se ažurira mjesečno.",
+            "a4": "Izvješće, ažurirano mjesečno, sadrži sažetak i njegov dodatak."
+          },
           "headerLabel": "JASNOĆA IZRAŽAVANJA"
         },
         "grammar-r9q1": {
           "question": "U kojoj je rečenici početna dopusna surečenica pravilno odvojena zarezom?",
-          "answers": [
-            "Oluja je završila; iako su ulice ostale poplavljene.",
-            "Oluja je završila, no ulice su ostale poplavljene.",
-            "Iako je oluja završila; ulice su ostale poplavljene.",
-            "Iako je oluja završila, ulice su ostale poplavljene."
-          ],
-          "trapdoorErrors": [
-            "točka-zarez netočno odvaja glavnu rečenicu od zavisne rečenice",
-            "konjunktivnom prilogu nedostaje potrebna granična interpunkcija",
-            "točka-zarez netočno slijedi iza zavisne rečenice",
-            null
-          ],
+          "answers": {
+            "a1": "Oluja je završila; iako su ulice ostale poplavljene.",
+            "a2": "Oluja je završila, no ulice su ostale poplavljene.",
+            "a3": "Iako je oluja završila; ulice su ostale poplavljene.",
+            "a4": "Iako je oluja završila, ulice su ostale poplavljene."
+          },
+          "trapdoorErrors": {
+            "a1": "točka-zarez netočno odvaja glavnu rečenicu od zavisne rečenice",
+            "a2": "konjunktivnom prilogu nedostaje potrebna granična interpunkcija",
+            "a3": "točka-zarez netočno slijedi iza zavisne rečenice"
+          },
           "headerLabel": "IZRAŽAVANJE SUPROTNOSTI"
         },
         "grammar-r10q6": {
           "question": "Koja je rečenica potpuno točna?",
-          "answers": [
-            "Nakon što je pregledala brojke, Maya je potvrdila da je svaki zbroj točan.",
-            "Nakon pregleda brojki, Maya su potvrdile svaki ukupni iznos.",
-            "Nakon što je pregledala brojke, Maya je potvrdila da je svaki zbroj točan točan.",
-            "Nakon što je pregledala brojke, Maya je potvrdila da je svaki od ukupnih iznosa točni."
-          ],
+          "answers": {
+            "a1": "Nakon što je pregledala brojke, Maya je potvrdila da je svaki zbroj točan.",
+            "a2": "Nakon pregleda brojki, Maya su potvrdile svaki ukupni iznos.",
+            "a3": "Nakon što je pregledala brojke, Maya je potvrdila da je svaki zbroj točan točan.",
+            "a4": "Nakon što je pregledala brojke, Maya je potvrdila da je svaki od ukupnih iznosa točni."
+          },
           "headerLabel": "PRECIZNO UREĐIVANJE"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Završna izvješća provjerena su prije nego što ih je urednik odobrio odobrio za objavu."
           },
           "question": "Koji dio sadrži pogrešku?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "ZAVRŠNA KOREKTURA"
         }
       }

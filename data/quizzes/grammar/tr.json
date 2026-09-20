@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %10'u Bu Gramer Sınavını Geçebilir",
   "eyebrow": "DÜZELTME ZORLUĞU",
   "summary": "Kırık cümleler, noktalama işareti tuzakları ve neredeyse doğru ifadeler, herhangi bir hatanın gözden kaçıp kaçamayacağını test eder.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "Gramerinizin kusursuz olduğunu mu düşünüyorsunuz? Bozuk cümleleri onarın, küçük noktalama işareti tuzaklarını yakalayın ve hatayı fark etmeden önce hatayı tespit edebildiğinizi kanıtlayın.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Dünya çapında İngilizce olan bu yarışma, cümle yapısı, noktalama işaretleri, zaman, zamirler, referansların netliği ve hassas düzenlemeyle ilgili özenle seçilmiş on soru içermektedir. Her öğe başka bir dilden tercüme edilmek yerine İngilizce için özel olarak yazılmıştır.\n\nCümleyi belirtilen bağlamda doğru ve doğal kılan bir cevabı seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.\n\nPuanınız yalnızca bu kısa dil sınavını yansıtmaktadır. Resmi bir okuryazarlık değerlendirmesi veya eğitimsel yeterlilik değildir.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Odaklanmış tek bir mücadelede özenle seçilmiş on soruyu tamamlayın.",
         "Her seferinde bir cevap seçin. Doğruluk, son ortaya çıkana kadar gizli kalır.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Dilbilgisi mücadelesi",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Gramer Mücadelesi",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dilbilgisi puanınız ve üç beceri dökümünüz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Üç gramer becerisi karşılaştırıldı",
-          "Son puanınız hesaplandı"
-        ],
-        "preAdButton": "Sonuçlarımı Göster"
+          "Üç gramer becerisi karşılaştırıldı"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Dilbilgisi sınavını geçtiniz!",
       "finished": "Dil bilgisi sınavı tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü gramer becerisi",
       "trickiest": "En zorlu dilbilgisi becerisi",
       "bestRound": "En iyi bölüm",
@@ -98,8 +91,7 @@
         "snapshot": "Dilbilgisi profilinizin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Hangi seçenek tam cümledir?",
-          "answers": [
-            "Son paragraftan sonra",
-            "Editör son paragrafı kontrol etti.",
-            "Çünkü son tarih değişti",
-            "Herkes beklerken"
-          ],
+          "answers": {
+            "a1": "Son paragraftan sonra",
+            "a2": "Editör son paragrafı kontrol etti.",
+            "a3": "Çünkü son tarih değişti",
+            "a4": "Herkes beklerken"
+          },
           "headerLabel": "CÜMLE YAPISI"
         },
         "grammar-r1q3": {
           "context": "Notlar birkaç öğrenciye aittir.",
           "question": "Hangi cümle verilen anlamı doğru ifade ediyor?",
-          "answers": [
-            "Öğrencilerin notları düzenlendi.",
-            "Bir öğrencinin notu düzenlendi.",
-            "Öğrencilerin hiç notu yoktu.",
-            "Notlar öğretmene aitti."
-          ],
+          "answers": {
+            "a1": "Öğrencilerin notları düzenlendi.",
+            "a2": "Bir öğrencinin notu düzenlendi.",
+            "a3": "Öğrencilerin hiç notu yoktu.",
+            "a4": "Notlar öğretmene aitti."
+          },
           "headerLabel": "İYELİK"
         },
         "grammar-r3q1": {
           "question": "Toplantı saat 09.00'da başladı. Leo grafiği 08:30'da bitirdi. Hangi cümle doğrudur?",
-          "answers": [
-            "Leo toplantı başladıktan sonra çizelgeyi tamamladı.",
-            "Leo toplantı başladıktan sonra çizelgeyi tamamlamıştı.",
-            "Leo çizelgeyi toplantı başladığı anda tamamladı.",
-            "Leo toplantı başlamadan önce çizelgeyi tamamlamıştı."
-          ],
+          "answers": {
+            "a1": "Leo toplantı başladıktan sonra çizelgeyi tamamladı.",
+            "a2": "Leo toplantı başladıktan sonra çizelgeyi tamamlamıştı.",
+            "a3": "Leo çizelgeyi toplantı başladığı anda tamamladı.",
+            "a4": "Leo toplantı başlamadan önce çizelgeyi tamamlamıştı."
+          },
           "headerLabel": "ZAMAN SIRALAMASI"
         },
         "grammar-r4q3": {
           "question": "Hangi cümlede noktalı virgül doğru kullanılmıştır?",
-          "answers": [
-            "Dosya büyüktü; çünkü yavaş yükleniyor.",
-            "Dosya büyüktü; yavaş yüklendi.",
-            "Dosya büyüktü, yavaş yüklendi.",
-            "Dosya büyüktü; Yavaş yüklenmesine rağmen."
-          ],
+          "answers": {
+            "a1": "Dosya büyüktü; çünkü yavaş yükleniyor.",
+            "a2": "Dosya büyüktü; yavaş yüklendi.",
+            "a3": "Dosya büyüktü, yavaş yüklendi.",
+            "a4": "Dosya büyüktü; Yavaş yüklenmesine rağmen."
+          },
           "headerLabel": "NOKTALI VİRGÜL"
         },
         "grammar-r5q4": {
           "context": "Birinci tekil kişi zamirini seçin.",
           "question": "Hangi sözcük konuşan kişiyi ifade eder?",
-          "answers": [
-            "ben",
-            "sen",
-            "o",
-            "biz"
-          ],
+          "answers": {
+            "a1": "ben",
+            "a2": "sen",
+            "a3": "o",
+            "a4": "biz"
+          },
           "headerLabel": "ZAMİR SEÇİMİ"
         },
         "grammar-r5q6": {
           "question": "Hangi cümlede Ravi’ye seslenirken virgül doğru kullanılmıştır?",
-          "answers": [
-            "Ravi lütfen, son satırı kontrol et.",
-            "Ravi, lütfen son satırı kontrol et.",
-            "Ravi lütfen son satırı kontrol edin.",
-            "Ravi; lütfen son satırı kontrol edin."
-          ],
+          "answers": {
+            "a1": "Ravi lütfen, son satırı kontrol et.",
+            "a2": "Ravi, lütfen son satırı kontrol et.",
+            "a3": "Ravi lütfen son satırı kontrol edin.",
+            "a4": "Ravi; lütfen son satırı kontrol edin."
+          },
           "headerLabel": "SESLENME"
         },
         "grammar-r7q6": {
           "context": "Bir rapor bir özet ve bir ek içerir. Ek aylık olarak güncellenmektedir.",
           "question": "Hangi düzenleme aylık güncellemenin eke atıfta bulunmasını sağlar?",
-          "answers": [
-            "Rapor bir özet ve bir ek içerir ve aylık olarak güncellenir.",
-            "Rapor, her ay güncellenen bir özet ve bir ek içerir.",
-            "Raporda bir özet ve bir ek yer almaktadır; ek aylık olarak güncellenmektedir.",
-            "Aylık olarak güncellenen rapor, bir özet ve eklerini içermektedir."
-          ],
+          "answers": {
+            "a1": "Rapor bir özet ve bir ek içerir ve aylık olarak güncellenir.",
+            "a2": "Rapor, her ay güncellenen bir özet ve bir ek içerir.",
+            "a3": "Raporda bir özet ve bir ek yer almaktadır; ek aylık olarak güncellenmektedir.",
+            "a4": "Aylık olarak güncellenen rapor, bir özet ve eklerini içermektedir."
+          },
           "headerLabel": "GÖNDERMENİN AÇIKLIĞI"
         },
         "grammar-r9q1": {
           "question": "Hangi cümlede “-mesine rağmen” yapısıyla başlayan bölüm doğru noktalanmıştır?",
-          "answers": [
-            "Fırtına sona erdi; sokaklar sular altında kalmasına rağmen.",
-            "Fırtına sona erdi ancak sokaklar sular altında kaldı.",
-            "Fırtına sona ermesine rağmen; sokaklar sular altında kaldı.",
-            "Fırtınanın sona ermesine rağmen sokaklar sular altında kaldı."
-          ],
-          "trapdoorErrors": [
-            "noktalı virgül hatalı bir şekilde ana cümleyi bağımlı cümleden ayırıyor",
-            "bağlaç zarfı gerekli sınır noktalama işaretinden yoksundur",
-            "noktalı virgül hatalı bir şekilde bağımlı bir cümleyi takip ediyor",
-            null
-          ],
+          "answers": {
+            "a1": "Fırtına sona erdi; sokaklar sular altında kalmasına rağmen.",
+            "a2": "Fırtına sona erdi ancak sokaklar sular altında kaldı.",
+            "a3": "Fırtına sona ermesine rağmen; sokaklar sular altında kaldı.",
+            "a4": "Fırtınanın sona ermesine rağmen sokaklar sular altında kaldı."
+          },
+          "trapdoorErrors": {
+            "a1": "noktalı virgül hatalı bir şekilde ana cümleyi bağımlı cümleden ayırıyor",
+            "a2": "bağlaç zarfı gerekli sınır noktalama işaretinden yoksundur",
+            "a3": "noktalı virgül hatalı bir şekilde bağımlı bir cümleyi takip ediyor"
+          },
           "headerLabel": "KARŞITLIK"
         },
         "grammar-r10q6": {
           "question": "Hangi cümle tamamen doğrudur?",
-          "answers": [
-            "Rakamları inceledikten sonra Maya her toplamın doğru olduğunu doğruladı.",
-            "Rakamlar incelendikten sonra her bir toplam Maya tarafından doğruladım.",
-            "Rakamları inceledikten sonra Maya her toplamın doğru olduğunu doğruladı doğruladı.",
-            "Rakamları inceledikten sonra Maya, toplamların her birinin doğru olduğunu doğruladın."
-          ],
+          "answers": {
+            "a1": "Rakamları inceledikten sonra Maya her toplamın doğru olduğunu doğruladı.",
+            "a2": "Rakamlar incelendikten sonra her bir toplam Maya tarafından doğruladım.",
+            "a3": "Rakamları inceledikten sonra Maya her toplamın doğru olduğunu doğruladı doğruladı.",
+            "a4": "Rakamları inceledikten sonra Maya, toplamların her birinin doğru olduğunu doğruladın."
+          },
           "headerLabel": "DİKKATLİ DÜZELTME"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Nihai raporlar yayımlanmak üzere editör tarafından onaylanmadan önce önce kontrol edildi."
           },
           "question": "Hangi bölümde hata var?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "SON OKUMA"
         }
       }

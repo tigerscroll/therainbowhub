@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 8% består denne paramedicinske optagelsesprøve",
   "eyebrow": "PARAMEDISK INDGANG UDFORDRING",
   "summary": "Scenefarer, vitale tegn og hurtige reaktionsbeslutninger tester, om du kan tænke klart, når hvert spor betyder noget.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Scenefarer, vitale tegn, nødmatematik og rolig dømmekraft. Kan du tænke klart, når hvert spor betyder noget?",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne verdensomspændende underholdningsudfordring indeholder ti spørgsmål i indgangsstil på tværs af anatomi, observationer, regnefærdigheder, kommunikation, sikkerhed og prioritetsbedømmelse. Det tester omhyggelig ræsonnement frem for lokale protokoller eller operationelle procedurer.\n\nVælg det bedste svar ved kun at bruge de viste oplysninger. Sikre muligheder fremmer genkendelse af risiko, kommunikation klart og søgning af passende kvalificeret support.\n\nDette er ikke en akkrediteret paramedicinsk optagelsesprøve, klinisk vurdering, kvalifikation, træningskursus eller kilde til nødrådgivning.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
         "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Paramediciner optagelsesprøve",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Det er en udfordring at komme ind i en paramedicinsk situation.",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din paramediciner-indgangsscore og seks områder er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Seks indgangsområder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Seks indgangsområder sammenlignet"
+        ]
       }
     }
   },
@@ -94,7 +88,6 @@
     "score": {
       "passed": "Du bestod paramedicinerindgangsudfordringen!",
       "finished": "Indgangsudfordringen til paramedicineren er fuldført",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste indgangsparti",
       "trickiest": "Det vanskeligste indgangsparti",
       "bestRound": "Bedste afsnit",
@@ -107,8 +100,7 @@
         "snapshot": "Hvad din kandidatprofil foreslår",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,22 +109,22 @@
       "questions": {
         "paramedic-r1q1": {
           "question": "Hvilket organ pumper blod rundt i kroppen?",
-          "answers": [
-            "Hjerte",
-            "Lunger",
-            "Hjerne",
-            "Knogler"
-          ],
+          "answers": {
+            "a1": "Hjerte",
+            "a2": "Lunger",
+            "a3": "Hjerne",
+            "a4": "Knogler"
+          },
           "headerLabel": "ANATOMI & FYSIOLOGI"
         },
         "paramedic-r1q5": {
           "question": "Hvilken åbning giver den klareste overdragelse?",
-          "answers": [
-            "Noget ændrede sig nok tidligere",
-            "Her er alle de mindre detaljer i tilfældig rækkefølge",
-            "14:20 blev vejrtrækningen hurtigere og årvågenheden faldt",
-            "Jeg ved allerede præcis, hvad der forårsagede det"
-          ],
+          "answers": {
+            "a1": "Noget ændrede sig nok tidligere",
+            "a2": "Her er alle de mindre detaljer i tilfældig rækkefølge",
+            "a3": "14:20 blev vejrtrækningen hurtigere og årvågenheden faldt",
+            "a4": "Jeg ved allerede præcis, hvad der forårsagede det"
+          },
           "headerLabel": "KLAR OVERLEGGELSE"
         },
         "paramedic-r5q4": {
@@ -144,53 +136,53 @@
             "ariaLabel": "Puls 80 derefter 92 derefter 108, med bleghed og svimmelhed"
           },
           "question": "Hvad er den bedste fortolkning af dette mønster?",
-          "answers": [
-            "Rekorden er uændret",
-            "Den kombinerede tendens tyder på, at forværring kræver en hurtig kvalificeret vurdering",
-            "Kun det første tal betyder noget",
-            "Symptomerne kan ignoreres, fordi der ikke er vist nogen diagnose"
-          ],
+          "answers": {
+            "a1": "Rekorden er uændret",
+            "a2": "Den kombinerede tendens tyder på, at forværring kræver en hurtig kvalificeret vurdering",
+            "a3": "Kun det første tal betyder noget",
+            "a4": "Symptomerne kan ignoreres, fordi der ikke er vist nogen diagnose"
+          },
           "headerLabel": "OBSERVATIONSTRENDS"
         },
         "paramedic-r2q4": {
           "question": "Hvilket udsagn beskriver bedst nyrerne?",
-          "answers": [
-            "De udveksler ilt og kuldioxid",
-            "De fjerner affald fra blodet og hjælper med at regulere vandbalancen",
-            "De pumper blod gennem arterier",
-            "De kontrollerer enhver frivillig bevægelse"
-          ],
+          "answers": {
+            "a1": "De udveksler ilt og kuldioxid",
+            "a2": "De fjerner affald fra blodet og hjælper med at regulere vandbalancen",
+            "a3": "De pumper blod gennem arterier",
+            "a4": "De kontrollerer enhver frivillig bevægelse"
+          },
           "headerLabel": "KROPSSYSTEMER"
         },
         "paramedic-r1q4": {
           "question": "Et strømførende elektrisk kabel ligger på tværs af den eneste døråbning. Hvad kommer først?",
-          "answers": [
-            "Træd forsigtigt over det",
-            "Hold alle klar og få kvalificeret hjælp til at gøre det sikkert",
-            "Flyt den med en tør genstand",
-            "Bed en tilskuer om at se det"
-          ],
+          "answers": {
+            "a1": "Træd forsigtigt over det",
+            "a2": "Hold alle klar og få kvalificeret hjælp til at gøre det sikkert",
+            "a3": "Flyt den med en tør genstand",
+            "a4": "Bed en tilskuer om at se det"
+          },
           "headerLabel": "SCENE SIKKERHED"
         },
         "paramedic-r6q2": {
           "question": "En person bliver ved med at nikke, men har ikke forstået. Hvad skal der så ske?",
-          "answers": [
-            "Gentag den samme forklaring langsommere",
-            "Spørg: ’Forstår du?’ og fortsæt, hvis de siger ja",
-            "Forkort forklaringen, men behold den samme terminologi",
-            "Brug almindelige ord og tjek tilbage"
-          ],
+          "answers": {
+            "a1": "Gentag den samme forklaring langsommere",
+            "a2": "Spørg: ’Forstår du?’ og fortsæt, hvis de siger ja",
+            "a3": "Forkort forklaringen, men behold den samme terminologi",
+            "a4": "Brug almindelige ord og tjek tilbage"
+          },
           "headerLabel": "Tydelig KOMMUNIKATION"
         },
         "paramedic-r5q6": {
           "context": "Person A har det godt, og deres observationer forbliver stabile. Person B er nyligt klam og svimmel, og deres puls er steget over tre kontroller.",
           "question": "Hvem har brug for opmærksomhed først?",
-          "answers": [
-            "Person B, fordi flere ændringer peger på forringelse",
-            "Person A, fordi deres observationer blev registreret først",
-            "Begge kan vente, fordi ingen af dem har en navngiven diagnose",
-            "Personen med det kortere navn"
-          ],
+          "answers": {
+            "a1": "Person B, fordi flere ændringer peger på forringelse",
+            "a2": "Person A, fordi deres observationer blev registreret først",
+            "a3": "Begge kan vente, fordi ingen af dem har en navngiven diagnose",
+            "a4": "Personen med det kortere navn"
+          },
           "headerLabel": "PRIORITET DOM"
         },
         "paramedic-r3q3": {
@@ -201,23 +193,23 @@
             "ariaLabel": "0,3 liter plus 450 milliliter plus 250 milliliter svarer til det samlede antal"
           },
           "question": "Hvad er det samlede registrerede volumen i milliliter?",
-          "answers": [
-            "900 ml",
-            "950 ml",
-            "1.000 ml",
-            "1.100 ml"
-          ],
+          "answers": {
+            "a1": "900 ml",
+            "a2": "950 ml",
+            "a3": "1.000 ml",
+            "a4": "1.100 ml"
+          },
           "headerLabel": "NØDTAL"
         },
         "paramedic-r10q4": {
           "context": "HÆNDELSESRECORD — En aggressiv person kaster genstande i nærheden af indgangen. Udstyr spærrer delvist for den nærmeste udkørselsvej.",
           "question": "Hvad er den sikreste reaktion på de kombinerede farer?",
-          "answers": [
-            "Hold dig fri, flyt andre mod en mere sikker rute og advare passende hjælp",
-            "Gå hen og argumenter, indtil personen stopper",
-            "Hent udstyret ved siden af personen, inden du tager af sted",
-            "Bed en utrænet tilskuer om at blokere de kastede genstande"
-          ],
+          "answers": {
+            "a1": "Hold dig fri, flyt andre mod en mere sikker rute og advare passende hjælp",
+            "a2": "Gå hen og argumenter, indtil personen stopper",
+            "a3": "Hent udstyret ved siden af personen, inden du tager af sted",
+            "a4": "Bed en utrænet tilskuer om at blokere de kastede genstande"
+          },
           "headerLabel": "INTEGRERET SIKKERHED"
         },
         "paramedic-r10q2": {
@@ -231,12 +223,12 @@
             "ariaLabel": "Vejrtrækning 16 årvågne, derefter 22 angste, så 28 døsige"
           },
           "question": "Hvad er den bedste fortolkning af hele trenden?",
-          "answers": [
-            "Personen forbedres støt",
-            "Kun den midterste markering betyder noget",
-            "Værdierne kan ignoreres, fordi der ikke er angivet nogen diagnose",
-            "Vejrtrækningen forværres, mens reaktionsevnen er faldende"
-          ],
+          "answers": {
+            "a1": "Personen forbedres støt",
+            "a2": "Kun den midterste markering betyder noget",
+            "a3": "Værdierne kan ignoreres, fordi der ikke er angivet nogen diagnose",
+            "a4": "Vejrtrækningen forværres, mens reaktionsevnen er faldende"
+          },
           "headerLabel": "ENDELIG SVAR"
         }
       }

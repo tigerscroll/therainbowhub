@@ -1,12 +1,10 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb felnőtt nem tud 80%-ot elérni ezen a memóriateszten",
   "eyebrow": "Memória kihívás",
   "summary": "Szavak, képek, számok és késleltetett meglepetések próbára teszik, mit őriz meg az emlékezet, és mi az, ami csendben elcsúszik.",
   "about": {
     "body": "Ez a rövid memória kérdőív tíz gondosan változatos szó, kép, szám, társulás és figyelem kihívást használ, hogy egy játékos pillanatnyilvánítást készítsen a visszaemlékezésről.\n\nEgyes részleteket azonnal tesztelnek, míg mások visszatérnek, miután különböző feladatok megszakították az eredeti memóriát. Gondosan tanulmányozzon minden jelzést, de ne rohanjon: a sebesség soha nem változtatja meg a pontszámot.\n\nA végső pontszám megmutatja, hogy a tíz kérdés közül hány volt helyes, és kiemeli az Ön számára leginkább megfelelő memóriaterületeket. A teljesítmény a figyelem, a fáradtság, a stressz, a ismerőség és a véletlen változhat, ezért a végeredmény szórakozásként kezelhető, nem pedig az agy egészségéről vagy a hosszú távú memória képességéről szóló ítéletként.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Gondosan tanulmányozzon minden jelzést, amikor megjelenik; néhány részlet később visszatér.",
         "Minden kihíváshoz válassz egy választ. A sebesség soha nem változtatja meg a pontszámot.",
@@ -15,14 +13,12 @@
     },
     "disclaimer": "Csak szórakoztatásra és önreflexióra. Ez a kvíz nem orvosi, neurológiai vagy kognitív értékelés, és nem képes memóriaproblémák diagnosztizálására. Ha aggódik a memóriája vagy az egészsége miatt, forduljon szakképzett egészségügyi szakemberhez."
   },
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Úgy gondolja, jó a memóriája?\nBizonyítsa be 10 kérdéssel!",
     "cta": "Indítsa el"
   },
   "career": {
     "resultProgressLabel": "Memória teszt",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Memória kihívás",
@@ -30,10 +26,8 @@
         "preAdCopy": "Memóriapontszáma és három terület szerinti bontása készen áll a feltárásra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Három memóriaterület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Három memóriaterület összehasonlítása"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Legyőzted a 80%-os kihívást! 🧠",
       "finished": "Befejezted a memória kihívást",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb memóriaterületed",
       "trickiest": "A legtrükkösebb területed",
       "bestRound": "A legjobb szakasz",
@@ -109,12 +102,12 @@
         "memory-r1q1": {
           "question": "Melyik szó szerepelt a nyitó részletekben?",
           "headerLabel": "SZÓ FELSOROLÁSA",
-          "answers": [
-            "LIME",
-            "KEY",
-            "GREEN",
-            "PLANE"
-          ],
+          "answers": {
+            "a1": "LIME",
+            "a2": "KEY",
+            "a3": "GREEN",
+            "a4": "PLANE"
+          },
           "study": {
             "title": "Emlékezzen ezekre a részletekre",
             "instruction": "Néhányan visszatérhetnek később a teszt során.",
@@ -130,12 +123,12 @@
         "memory-r1q2": {
           "question": "Melyik alak jelent meg harmadikként?",
           "headerLabel": "VIZUÁLIS MEMÓRIA",
-          "answers": [
-            "Kör",
-            "Gyémánt",
-            "Háromszög",
-            "Négyzet"
-          ],
+          "answers": {
+            "a1": "Kör",
+            "a2": "Gyémánt",
+            "a3": "Háromszög",
+            "a4": "Négyzet"
+          },
           "study": {
             "title": "Ne feledje a szín és forma sorrendjét",
             "instruction": "Ez automatikusan eltűnik.",
@@ -150,12 +143,12 @@
         "memory-r1q3": {
           "question": "Melyik számot láttad?",
           "headerLabel": "SZÁM FELVÉTELÉSE",
-          "answers": [
-            "5837",
-            "5873",
-            "5387",
-            "5738"
-          ],
+          "answers": {
+            "a1": "5837",
+            "a2": "5873",
+            "a3": "5387",
+            "a4": "5738"
+          },
           "study": {
             "title": "Emlékezzen erre a számra",
             "instruction": "Ez automatikusan eltűnik.",
@@ -168,32 +161,32 @@
         "memory-r1q5": {
           "question": "Melyik kód egyezik pontosan a K7M2Q-val?",
           "headerLabel": "KÓDegyeztetés",
-          "answers": [
-            "K7N2Q",
-            "K7MZQ",
-            "K7M2Q",
-            "KTM2Q"
-          ]
+          "answers": {
+            "a1": "K7N2Q",
+            "a2": "K7MZQ",
+            "a3": "K7M2Q",
+            "a4": "KTM2Q"
+          }
         },
         "memory-r1q7": {
           "question": "Mit jelent a 4 – 9 – 2 visszafelé?",
           "headerLabel": "MŰKÖDÉSI MEMÓRIA",
-          "answers": [
-            "2 – 4 – 9",
-            "2 – 9 – 4",
-            "9 – 2 – 4",
-            "4 – 2 – 9"
-          ]
+          "answers": {
+            "a1": "2 – 4 – 9",
+            "a2": "2 – 9 – 4",
+            "a3": "9 – 2 – 4",
+            "a4": "4 – 2 – 9"
+          }
         },
         "memory-r2q1": {
           "question": "Melyik tárgy jelent meg harmadikként?",
           "headerLabel": "MEGRENDELÉS VISSZAHÍVÁSA",
-          "answers": [
-            "Kite",
-            "Kesztyű",
-            "Fényképezőgép",
-            "Cupcake"
-          ],
+          "answers": {
+            "a1": "Kite",
+            "a2": "Kesztyű",
+            "a3": "Fényképezőgép",
+            "a4": "Cupcake"
+          },
           "study": {
             "title": "Tanulmányozza a négy objektum sorrendjét",
             "instruction": "Ez automatikusan eltűnik.",
@@ -209,12 +202,12 @@
         "memory-r2q4": {
           "question": "Hova utazott Sarah?",
           "headerLabel": "RÉSZLET MEMÓRIA",
-          "answers": [
-            "Párizs",
-            "Róma",
-            "Madrid",
-            "Dublin"
-          ],
+          "answers": {
+            "a1": "Párizs",
+            "a2": "Róma",
+            "a3": "Madrid",
+            "a4": "Dublin"
+          },
           "study": {
             "title": "Olvassa el egyszer ezeket a részleteket",
             "instruction": "Egy részlet később visszatérhet.",
@@ -228,32 +221,32 @@
         "memory-r2q3": {
           "question": "Melyik példányban van az O betű helyett nulla?  1 LOCK · 2 LOCK · 3 L0CK · 4 LOCK",
           "headerLabel": "GYORS FIGYELEM",
-          "answers": [
-            "Először is",
-            "Másodszor",
-            "Negyedik",
-            "Harmadik"
-          ]
+          "answers": {
+            "a1": "Először is",
+            "a2": "Másodszor",
+            "a3": "Negyedik",
+            "a4": "Harmadik"
+          }
         },
         "memory-r5q1": {
           "question": "Gondolj vissza az elejére: milyen színű volt az elefánt?",
           "headerLabel": "KÉSLELTETETT VISSZAHÍVÁS",
-          "answers": [
-            "Ezüst",
-            "Lila",
-            "kék",
-            "Arany"
-          ]
+          "answers": {
+            "a1": "Ezüst",
+            "a2": "Lila",
+            "a3": "kék",
+            "a4": "Arany"
+          }
         },
         "memory-r5q6": {
           "question": "Mikor indult Sarah vonata?",
           "headerLabel": "VÉGSŐ MEMÓRIATESZT",
-          "answers": [
-            "08:40",
-            "08:14",
-            "09:40",
-            "18:40"
-          ]
+          "answers": {
+            "a1": "08:40",
+            "a2": "08:14",
+            "a3": "09:40",
+            "a4": "18:40"
+          }
         }
       }
     }

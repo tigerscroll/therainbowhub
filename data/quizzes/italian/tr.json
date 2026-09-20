@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Sadece %3'ü Bu İtalyan Mutfağı Testini Geçebilir",
   "eyebrow": "İTALYAN MASASI",
   "summary": "On soru, İtalya'nın malzemelerini, bölgelerini, makarnalarını ve klasik yemeklerini gerçekten ne kadar iyi bildiğinizi test ediyor.",
-  "progressLabel": "tamamlandı",
   "landing": {
     "intro": "İtalyan yemeklerini bildiğinizi mi düşünüyorsunuz? Bu 10 soru sıradan makarna tutkunlarını İtalyan sofrasını gerçekten anlayan insanlardan ayırıyor.",
     "cta": "Testi Başlat"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Bu on soruluk eğlence testi, ünlü yemekleri, bölgesel kökenleri, geleneksel malzemeleri ve tanıdık İtalyan yemek adlarının ardındaki anlamları ele alıyor. Sorular klasiklerle başlıyor ve son aşamaya yaklaştıkça daha zorlu hale geliyor.\n\nHer seferinde bir cevap seçin. Doğruluk, son açıklamaya kadar gizli kalır, bu nedenle her karar, sürekli bir mutfak mücadelesinin parçası olarak kalır.",
     "howToPlay": {
-      "title": "Nasıl Oynanır",
       "steps": [
         "Otantik İtalyan mutfağıyla ilgili on soruyu yanıtlayın.",
         "Her yemek, malzeme veya bölgesel ipucu için bir cevap seçin.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "İtalyan mutfağı yarışması",
-    "resultProgressComplete": "{value}% tamamlandı",
     "stages": {
       "stage-1": {
         "difficulty": "Mutfak Mücadelesi",
@@ -30,8 +26,7 @@
         "preAdCopy": "On cevabınız kontrol edildi ve İtalyan masasındaki yeriniz açıklanmaya hazır.",
         "preAdChecks": [
           "10 yanıt kontrol edildi",
-          "Dört mutfak alanı karşılaştırıldı",
-          "Son puanınız hesaplandı"
+          "Dört mutfak alanı karşılaştırıldı"
         ],
         "preAdButton": "Puanımı Açıkla"
       }
@@ -88,7 +83,6 @@
     "score": {
       "passed": "İtalyan mutfağı yarışmasını geçtiniz!",
       "finished": "İtalyan mutfağı yarışması tamamlandı",
-      "correctLabel": "doğru",
       "strongest": "En güçlü mutfak alanı",
       "trickiest": "En zorlu mutfak alanı",
       "bestRound": "En iyi bölüm",
@@ -101,8 +95,7 @@
         "snapshot": "Yemek profilinizin önerdiği şey",
         "targetReached": "%80 zorluluğa ulaşıldı",
         "targetRemaining": "%80'i için daha fazla doğru yanıta ihtiyaç var"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -111,102 +104,102 @@
       "questions": {
         "italian-q1": {
           "question": "Klasik bir Pizza Margherita'yı hangi üç malzeme tanımlar?",
-          "answers": [
-            "Domates, ricotta ve kekik",
-            "Mozzarella peyniri, zeytin ve fesleğen",
-            "Domates, mozarella ve fesleğen",
-            "Domates, parmesan ve biberiye"
-          ],
+          "answers": {
+            "a1": "Domates, ricotta ve kekik",
+            "a2": "Mozzarella peyniri, zeytin ve fesleğen",
+            "a3": "Domates, mozarella ve fesleğen",
+            "a4": "Domates, parmesan ve biberiye"
+          },
           "headerLabel": "KLASİKLER"
         },
         "italian-q2": {
           "question": "Carbonara'da geleneksel olarak hangi kurutulmuş domuz eti kullanılır?",
-          "answers": [
-            "Guanciale",
-            "Yapışmış reçine",
-            "Mortadella",
-            "Benek"
-          ],
+          "answers": {
+            "a1": "Guanciale",
+            "a2": "Yapışmış reçine",
+            "a3": "Mortadella",
+            "a4": "Benek"
+          },
           "headerLabel": "ROMA MAKARNA"
         },
         "italian-q3": {
           "question": "Risotto alla Milanese'ye kendine özgü altın rengini veren şey nedir?",
-          "answers": [
-            "Zerdeçal",
-            "Balkabağı",
-            "Yumurta sarısı",
-            "safran"
-          ],
+          "answers": {
+            "a1": "Zerdeçal",
+            "a2": "Balkabağı",
+            "a3": "Yumurta sarısı",
+            "a4": "safran"
+          },
           "headerLabel": "İMZA İÇERİĞİ"
         },
         "italian-q4": {
           "question": "Pesto alla Genovese İtalya'nın hangi bölgesinden geliyor?",
-          "answers": [
-            "Toskana",
-            "Ligurya",
-            "Umbria",
-            "Calabria"
-          ],
+          "answers": {
+            "a1": "Toskana",
+            "a2": "Ligurya",
+            "a3": "Umbria",
+            "a4": "Calabria"
+          },
           "headerLabel": "BÖLGESEL KÖKENLER"
         },
         "italian-q5": {
           "question": "Cacio e pepe'de geleneksel olarak hangi peynir 'cacio'yu sağlar?",
-          "answers": [
-            "Taleggio",
-            "Gorgonzola",
-            "Pecorino Romano",
-            "Asyago"
-          ],
+          "answers": {
+            "a1": "Taleggio",
+            "a2": "Gorgonzola",
+            "a3": "Pecorino Romano",
+            "a4": "Asyago"
+          },
           "headerLabel": "PEYNİR BİLGİSİ"
         },
         "italian-q6": {
           "question": "Cannoli en çok hangi adayla ilişkilidir?",
-          "answers": [
-            "Sicilya",
-            "Sardunya",
-            "Kapri",
-            "Elba"
-          ],
+          "answers": {
+            "a1": "Sicilya",
+            "a2": "Sardunya",
+            "a3": "Kapri",
+            "a4": "Elba"
+          },
           "headerLabel": "TATLI BÖLGELER"
         },
         "italian-q7": {
           "question": "'Orecchiette' makarna adı neyi ifade ediyor?",
-          "answers": [
-            "Minik kabuklar",
-            "Küçük kurdeleler",
-            "Küçük şapkalar",
-            "Küçük kulaklar"
-          ],
+          "answers": {
+            "a1": "Minik kabuklar",
+            "a2": "Küçük kurdeleler",
+            "a3": "Küçük şapkalar",
+            "a4": "Küçük kulaklar"
+          },
           "headerLabel": "MAKARNA DİLİ"
         },
         "italian-q8": {
           "question": "Bologna'da geleneksel olarak ragù alla Bolognese ile hangi makarna eşleştirilir?",
-          "answers": [
-            "Spagetti",
-            "Tagliatelle",
-            "Penne",
-            "Linguine"
-          ],
+          "answers": {
+            "a1": "Spagetti",
+            "a2": "Tagliatelle",
+            "a3": "Penne",
+            "a4": "Linguine"
+          },
           "headerLabel": "DOĞRU EŞLEŞME"
         },
         "italian-q9": {
           "question": "Klasik saltimbocca alla Romana'da dana etinin üzerine hangi bitki konur?",
-          "answers": [
-            "Adaçayı",
-            "Fesleğen",
-            "Biberiye",
-            "Maydanoz"
-          ],
+          "answers": {
+            "a1": "Adaçayı",
+            "a2": "Fesleğen",
+            "a3": "Biberiye",
+            "a4": "Maydanoz"
+          },
           "headerLabel": "ROMA GELENEĞİ"
         },
         "italian-q10": {
           "question": "Pasta alla Norma, adını hangi bestecinin operasından almıştır?",
-          "answers": [
-            "Giacomo Puccini",
-            "Vincenzo Bellini",
-            "Giuseppe Verdi",
-            "Gioachino Rossini"
-          ],
+          "answers": {
+            "a1": "Giacomo Puccini",
+            "a2": "Vincenzo Bellini",
+            "a3": "Giuseppe Verdi",
+            "a4": "Gioachino Rossini"
+          },
           "headerLabel": "FİNAL DERS"
         }
       }

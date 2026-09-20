@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Kun 7 % kan bestå denne synstest",
   "eyebrow": "OPTISK FOKUS LAB",
   "summary": "Små forskelle, skiftende mønstre og optiske fælder tester, om dine øjne fanger det, de fleste går glip af.",
-  "progressLabel": "komplet",
   "landing": {
     "intro": "Hvor skarpe er dine øjne? Find små forskelle, spor skiftende mønstre og fang visuelle fælder, før de fanger dig.",
     "cta": "Start test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denne underholdningsudfordring indeholder ti visuelle puslespil, der dækker farvekontrast, detaljematch, rumlig orientering, mønstersporing, opmærksomhed og visuel hukommelse. Opgaverne bliver mere krævende uden at være afhængig af fagterminologi.\n\nStuder hvert billede eller symbolsæt omhyggeligt, og vælg derefter det svar, der bedst understøttes af det viste. Nogle spørgsmål tester opfattelse og opmærksomhed frem for selve synet.\n\nDette er ikke en øjenundersøgelse, medicinsk synstest eller diagnose. Søg kvalificeret øjenplejeråd, hvis du er bekymret for dit syn.",
     "howToPlay": {
-      "title": "Sådan spiller du",
       "steps": [
         "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
         "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vision udfordring",
-    "resultProgressComplete": "{value} % fuldført",
     "stages": {
       "stage-1": {
         "difficulty": "Vision Udfordring",
@@ -30,10 +26,8 @@
         "preAdCopy": "Din vision-udfordringsscore og tre-færdighedsfordeling er klar til at afsløre.",
         "preAdChecks": [
           "10 svar kontrolleret",
-          "Tre visuelle færdigheder sammenlignet",
-          "Din endelige score beregnet"
-        ],
-        "preAdButton": "Afslør mine resultater"
+          "Tre visuelle færdigheder sammenlignet"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Du bestod visionsudfordringen!",
       "finished": "Vision udfordring færdig",
-      "correctLabel": "korrekt",
       "strongest": "Stærkeste visuelle færdighed",
       "trickiest": "Den vanskeligste visuelle færdighed",
       "bestRound": "Bedste afsnit",
@@ -98,8 +91,7 @@
         "snapshot": "Hvad din fokusprofil antyder",
         "targetReached": "80 % udfordring nået",
         "targetRemaining": "Flere korrekte svar er nødvendige for 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -117,12 +109,12 @@
             "ariaLabel": "Fire tætte blå farveprøver med en subtilt anderledes flise nederst til højre"
           },
           "question": "Hvilken flise har en anden farve?",
-          "answers": [
-            "Øverst til venstre",
-            "Nederst til højre",
-            "Øverst til højre",
-            "Nederst til venstre"
-          ],
+          "answers": {
+            "a1": "Øverst til venstre",
+            "a2": "Nederst til højre",
+            "a3": "Øverst til højre",
+            "a4": "Nederst til venstre"
+          },
           "headerLabel": "FARVE KONTRAST"
         },
         "vision-r1q2": {
@@ -135,12 +127,12 @@
             "ariaLabel": "Referencekode M 7 K 2 P 9"
           },
           "question": "Hvilken kode passer præcist?",
-          "answers": [
-            "M7K2P9",
-            "M7K2R9",
-            "M7KZP9",
-            "N7K2P9"
-          ],
+          "answers": {
+            "a1": "M7K2P9",
+            "a2": "M7K2R9",
+            "a3": "M7KZP9",
+            "a4": "N7K2P9"
+          },
           "headerLabel": "DETALJKAMP"
         },
         "vision-r5q1": {
@@ -153,23 +145,23 @@
             "ariaLabel": "Nordøstpil reflekteret hen over et lodret spejl"
           },
           "question": "Hvilken pil er det lodrette spejl af ↗?",
-          "answers": [
-            "↙",
-            "↘",
-            "↗",
-            "↖"
-          ],
+          "answers": {
+            "a1": "↙",
+            "a2": "↘",
+            "a3": "↗",
+            "a4": "↖"
+          },
           "headerLabel": "RUMLIG ORIENTERING"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Hvor mange bogstaver F'er vises?",
-          "answers": [
-            "6",
-            "7",
-            "8",
-            "9"
-          ],
+          "answers": {
+            "a1": "6",
+            "a2": "7",
+            "a3": "8",
+            "a4": "9"
+          },
           "headerLabel": "OBS KONTROL"
         },
         "vision-r4q2": {
@@ -185,22 +177,22 @@
             "ariaLabel": "X, O, X, O, X, ukendt"
           },
           "question": "Hvilken flise fuldender den skiftende række?",
-          "answers": [
-            "O",
-            "XX",
-            "OO",
-            "X"
-          ],
+          "answers": {
+            "a1": "O",
+            "a2": "XX",
+            "a3": "OO",
+            "a4": "X"
+          },
           "headerLabel": "MØNSTERSPORING"
         },
         "vision-r4q5": {
           "question": "Hvilken farve skiller sig mest ud mod dyb navy?",
-          "answers": [
-            "Farveprøve A",
-            "Farveprøve B",
-            "Farveprøve D",
-            "Farveprøve C"
-          ],
+          "answers": {
+            "a1": "Farveprøve A",
+            "a2": "Farveprøve B",
+            "a3": "Farveprøve D",
+            "a4": "Farveprøve C"
+          },
           "headerLabel": "FARVEFOKUS"
         },
         "vision-r8q3": {
@@ -208,23 +200,23 @@
             "alt": "En rød startprik med fire matchende stiplede ruter, der krydser gentagne gange, før de når endepunkter A, B, C og D"
           },
           "question": "Start ved den røde prik og følg dens stiplede rute. Hvilket bogstav når du?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "VISUEL SPORING"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026 B: F0CUS-M7Q2-2026",
           "question": "Hvilken præcis position er ændret i version B?",
-          "answers": [
-            "Den første F",
-            "Q",
-            "Det andet tegn",
-            "Det sidste ciffer"
-          ],
+          "answers": {
+            "a1": "Den første F",
+            "a2": "Q",
+            "a3": "Det andet tegn",
+            "a4": "Det sidste ciffer"
+          },
           "headerLabel": "DETALJOPSØKELSE"
         },
         "vision-r10q2": {
@@ -236,22 +228,22 @@
             "ariaLabel": "Base M8Q2 K7P4 R6N3 og kopi M8Q2 K1P4 R6M3"
           },
           "question": "Hvilke to karakterer ændrede sig?",
-          "answers": [
-            "7 og N",
-            "8 og 6",
-            "Q og P",
-            "K og R"
-          ],
+          "answers": {
+            "a1": "7 og N",
+            "a2": "8 og 6",
+            "a3": "Q og P",
+            "a4": "K og R"
+          },
           "headerLabel": "KODE SAMMENLIGNING"
         },
         "vision-r8q5": {
           "question": "Hvilket ikon dukkede op på fjerdepladsen?",
-          "answers": [
-            "Måne",
-            "Anker",
-            "Sol",
-            "Stjerne"
-          ],
+          "answers": {
+            "a1": "Måne",
+            "a2": "Anker",
+            "a3": "Sol",
+            "a4": "Stjerne"
+          },
           "study": {
             "title": "Hurtigt snapshot",
             "items": [

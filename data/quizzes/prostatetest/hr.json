@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Brzi test za rak prostate",
   "eyebrow": "PROVJERA PROSTATE OD 10 PITANJA",
   "summary": "Deset osobnih pitanja o promjenama prostate i kontekstu rizika, nakon čega slijedi oprezan profil sljedećeg koraka.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Jeste li primijetili promjene koje je lako odbaciti kao starenje? Odgovorite na 10 kratkih pitanja o simptomima i čimbenicima rizika koji mogu biti važni.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj osobni pregled s deset pitanja postavlja pitanja o promjenama mokraćnog sustava, krvi, nelagodi, trajnoj boli i relevantnom kontekstu rizika. Grupira vaše odgovore u oprezan profil sljedećeg koraka; ne izračunava vašu vjerojatnost raka.\n\nRak prostate u početku ne mora uzrokovati simptome, a promjene mokraćnog sustava često nemaju nekancerogeni uzrok kao što je benigno povećanje prostate, infekcija ili upala. O novim, postojanim ili pogoršanim promjenama ipak treba razgovarati s kvalificiranim zdravstvenim djelatnikom.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Odaberite odgovor koji najviše odgovara vašem nedavnom iskustvu.",
         "Razmislite o promjenama koje su nove, uporne ili se pogoršavaju.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Osobni pregled prostate",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Osobni ček",
@@ -83,102 +79,102 @@
         "prostate-test-q1": {
           "question": "Je li vam se mlaz urina nedavno promijenio?",
           "headerLabel": "VAŠ TOK URINA",
-          "answers": [
-            "Nema primjetne promjene",
-            "Povremeno varira",
-            "Nedavno je oslabio ili se zaustavlja i pokreće",
-            "Postaje sve gore ili utječe na svakodnevni život"
-          ]
+          "answers": {
+            "a1": "Nema primjetne promjene",
+            "a2": "Povremeno varira",
+            "a3": "Nedavno je oslabio ili se zaustavlja i pokreće",
+            "a4": "Postaje sve gore ili utječe na svakodnevni život"
+          }
         },
         "prostate-test-q2": {
           "question": "Je li vam sve teže početi mokriti?",
           "headerLabel": "POČETI MOKRITI",
-          "answers": [
-            "br",
-            "Povremeno, ali nije potrajalo",
-            "Da, ovo je nova ili trajna promjena",
-            "Da, i to postaje sve teže"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "Povremeno, ali nije potrajalo",
+            "a3": "Da, ovo je nova ili trajna promjena",
+            "a4": "Da, i to postaje sve teže"
+          }
         },
         "prostate-test-q3": {
           "question": "Mokrite li češće, osobito tijekom noći?",
           "headerLabel": "UČESTALOST I NOĆNO VRIJEME",
-          "answers": [
-            "Bez promjene",
-            "Samo povremeno",
-            "Da, osjetno više nego prije",
-            "Da, i redovito remeti san ili svakodnevni život"
-          ]
+          "answers": {
+            "a1": "Bez promjene",
+            "a2": "Samo povremeno",
+            "a3": "Da, osjetno više nego prije",
+            "a4": "Da, i redovito remeti san ili svakodnevni život"
+          }
         },
         "prostate-test-q4": {
           "question": "Imate li osjećaj da vaš mjehur nije potpuno ispražnjen?",
           "headerLabel": "PRAZNJENJE VAŠEG MJEHURA",
-          "answers": [
-            "br",
-            "S vremena na vrijeme",
-            "Često ili uporno",
-            "Da, i osjećaj je sve gori"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "S vremena na vrijeme",
+            "a3": "Često ili uporno",
+            "a4": "Da, i osjećaj je sve gori"
+          }
         },
         "prostate-test-q5": {
           "question": "Jeste li razvili novu hitnost ili curenje prije nego što ste stigli do toaleta?",
           "headerLabel": "HITNO ILI CURI",
-          "answers": [
-            "br",
-            "Rijetko",
-            "Da, kao nova ili stalna promjena",
-            "Da, i pogoršava ili utječe na svakodnevni život"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "Rijetko",
+            "a3": "Da, kao nova ili stalna promjena",
+            "a4": "Da, i pogoršava ili utječe na svakodnevni život"
+          }
         },
         "prostate-test-q6": {
           "question": "Jeste li primijetili krv u urinu ili spermi?",
           "headerLabel": "KRV",
-          "answers": [
-            "br",
-            "Nisam siguran",
-            "Da, jednom ili više puta",
-            "Da, s teškim krvarenjem ili velikim ugrušcima"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "Nisam siguran",
+            "a3": "Da, jednom ili više puta",
+            "a4": "Da, s teškim krvarenjem ili velikim ugrušcima"
+          }
         },
         "prostate-test-q7": {
           "question": "Jeste li ponovno osjetili nelagodu pri mokrenju ili ejakulaciji?",
           "headerLabel": "NEUGODNOST",
-          "answers": [
-            "br",
-            "Povremeno, i to je prolazilo",
-            "Da, uporan je ili se stalno vraća",
-            "Da, i pogoršava se ili je značajno bolno"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "Povremeno, i to je prolazilo",
+            "a3": "Da, uporan je ili se stalno vraća",
+            "a4": "Da, i pogoršava se ili je značajno bolno"
+          }
         },
         "prostate-test-q8": {
           "question": "Jeste li imali neobjašnjivu bol u leđima, kukovima ili zdjelici?",
           "headerLabel": "STALNA BOL",
-          "answers": [
-            "br",
-            "Kratka bol s očitim uzrokom",
-            "Da, uporan je ili se stalno vraća",
-            "Da, teško je, brzo se pogoršava ili se osjećam ozbiljno loše"
-          ]
+          "answers": {
+            "a1": "br",
+            "a2": "Kratka bol s očitim uzrokom",
+            "a3": "Da, uporan je ili se stalno vraća",
+            "a4": "Da, teško je, brzo se pogoršava ili se osjećam ozbiljno loše"
+          }
         },
         "prostate-test-q9": {
           "question": "Koja opcija najbolje odgovara vašem kontekstu rizika od raka prostate?",
           "headerLabel": "VAŠ KONTEKST RIZIKA",
-          "answers": [
-            "Ništa od ovoga ili nisam siguran",
-            "Imam 50 ili više godina",
-            "Moj otac ili brat su imali rak prostate",
-            "Imam crno podrijetlo, poznatu promjenu BRCA2 ili snažan obiteljski obrazac raka"
-          ]
+          "answers": {
+            "a1": "Ništa od ovoga ili nisam siguran",
+            "a2": "Imam 50 ili više godina",
+            "a3": "Moj otac ili brat su imali rak prostate",
+            "a4": "Imam crno podrijetlo, poznatu promjenu BRCA2 ili snažan obiteljski obrazac raka"
+          }
         },
         "prostate-test-q10": {
           "question": "Što ste poduzeli u vezi s novim ili trajnim promjenama?",
           "headerLabel": "VAŠ SLJEDEĆI KORAK",
-          "answers": [
-            "Nisam primijetio nikakve promjene",
-            "Za sada pratim",
-            "Planiram organizirati rutinski medicinski razgovor",
-            "Dogovaram hitne medicinske savjete"
-          ]
+          "answers": {
+            "a1": "Nisam primijetio nikakve promjene",
+            "a2": "Za sada pratim",
+            "a3": "Planiram organizirati rutinski medicinski razgovor",
+            "a4": "Dogovaram hitne medicinske savjete"
+          }
         }
       }
     }

@@ -30,6 +30,7 @@ const stageIds = ["stage-1"];
 const questionIds = Array.from({ length: 10 }, (_, index) => `${slug}-q${String(index + 1).padStart(2, "0")}`);
 const categories = Array.from({ length: 5 }, (_, index) => `category_${index + 1}`);
 const resultMins = [0.9, 0.8, 0.7, 0.6, 0.5, 0];
+const answerIds = ["a1", "a2", "a3", "a4"];
 
 const manifest = {
   schemaVersion: 2,
@@ -45,7 +46,7 @@ const manifest = {
   template: "single-stage-rewarded-v1",
   structure: {
     stages: [{ id: "stage-1", difficultyLevel: "final", questionIds }],
-    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correct: [0, 1, 2, 3, 0, 1, 2, 3, 0, 1][index], category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], choiceCount: 4 }])),
+    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correctAnswerId: answerIds[[0, 1, 2, 3, 0, 1, 2, 3, 0, 1][index]], category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], answerIds }])),
     results: {
       profiles: resultMins.map((min, index) => ({ key: `profile-${index + 1}`, min })),
       dimensions: categories.map((category, index) => ({ key: `dimension-${index + 1}`, categories: [category] })),
@@ -55,30 +56,30 @@ const manifest = {
 };
 
 const content = {
-  schemaVersion: 2, title, eyebrow: "THE CHALLENGE",
+  title, eyebrow: "THE CHALLENGE",
   summary: "A fast, escalating challenge designed to test your judgement from the first question to the final reveal.",
   landing: { intro: "Put your instincts to the test and see whether you can hold your nerve as the questions become harder.", cta: "Start Test" },
   about: {
     body: "This entertainment quiz contains ten carefully selected questions in one focused challenge.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a snapshot of this quiz performance, not a formal assessment.",
-    howToPlay: { title: "How to Play", steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },
+    howToPlay: { steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },
     disclaimer: "For entertainment and general learning only. This quiz is not a formal assessment.",
   },
   career: {
-    resultProgressLabel: "Challenge progress", resultProgressComplete: "{value}% complete",
+    resultProgressLabel: "Challenge progress",
     stages: { "stage-1": {
       difficulty: "Final Challenge", preAdTitle: "Your results are ready", preAdCopy: "Your score and skill breakdown are ready to reveal.",
-      preAdChecks: ["10 answers checked", "Five skill areas compared", "Your final score calculated"], preAdButton: "Reveal My Results",
+      preAdChecks: ["10 answers checked", "Five skill areas compared"],
     } },
   },
   results: {
     name: "YOUR SCORE",
     profiles: Object.fromEntries(resultMins.map((_, index) => [`profile-${index + 1}`, { tier: ["90–100%", "80–89%", "70–79%", "60–69%", "50–59%", "Below 50%"][index], title: `Result Profile ${index + 1}`, copy: "Your answers created a clear result across this escalating challenge." }])),
     dimensions: Object.fromEntries(categories.map((_, index) => [`dimension-${index + 1}`, { label: `Skill area ${index + 1}` }])),
-    score: { passed: "You reached the challenge target!", finished: "Challenge complete", correctLabel: "correct", strongest: "Strongest area", trickiest: "Trickiest area", bestRound: "Best section", insights: { overview: "Your score at a glance", correct: "Correct answers", missed: "Questions missed", target: "Correct answers for 80%", breakdown: "Your skill breakdown", snapshot: "What your result suggests", targetReached: "80% challenge reached", targetRemaining: "More correct answers needed for 80%" } },
+    score: { passed: "You reached the challenge target!", finished: "Challenge complete", strongest: "Strongest area", trickiest: "Trickiest area", bestRound: "Best section", insights: { overview: "Your score at a glance", correct: "Correct answers", missed: "Questions missed", target: "Correct answers for 80%", breakdown: "Your skill breakdown", snapshot: "What your result suggests", targetReached: "80% challenge reached", targetRemaining: "More correct answers needed for 80%" } },
   },
   stages: { "stage-1": {
     title: "Challenge",
-    questions: Object.fromEntries(questionIds.map((id, index) => [id, { headerLabel: `QUESTION TYPE ${index + 1}`, question: `Replace with a unique question for ${id}.`, answers: Array.from({ length: 4 }, (_, answerIndex) => `Unique option ${answerIndex + 1} for ${id}`) }])),
+    questions: Object.fromEntries(questionIds.map((id, index) => [id, { headerLabel: `QUESTION TYPE ${index + 1}`, question: `Replace with a unique question for ${id}.`, answers: Object.fromEntries(answerIds.map((answerId, answerIndex) => [answerId, `Unique option ${answerIndex + 1} for ${id}`])) }])),
   } },
 };
 

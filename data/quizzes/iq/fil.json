@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "7% Lang ang Pumapasa sa Pagsusulit na Ito sa Talino",
   "eyebrow": "ANG INTELLIGENCE VAULT",
   "summary": "Ang mga pattern, mga panuntunan sa numero, mga link ng salita at mga spatial na bitag ay sumusubok kung gaano kabilis nahanap ng iyong pangangatwiran ang nakatagong panuntunan.",
-  "progressLabel": "kumpleto",
   "landing": {
     "intro": "Nagbanggaan ang mga pattern, code, link ng salita at logic traps. Gaano katagal mananatiling isang hakbang ang iyong pangangatwiran?",
     "cta": "Simulan ang Pagsusulit"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Pinagsasama ng pandaigdigang hamong ito para sa libangan ang sampung palaisipan tungkol sa mga padron, tuntuning pangnumero, ugnayang berbal, pangangatwirang pang-espasyo, atensyon at lohikal na paghinuha. Dinisenyo itong maging masaya ngunit mapanghamon, hindi tulad ng isang pormal na pagsusulit sa kakayahan.\n\nMay isang sagot sa bawat palaisipan na malinaw na sinusuportahan ng impormasyong ipinakita. Iba-iba ang paraan ng pagsagot, kaya maaaring kailanganin mong tukuyin ang tuntunin, paghambingin ang mga pahiwatig, baguhin ang isang simbolo, magkuwenta sa isip o mapansin ang isang maliit na pagkakaiba.\n\nAng iyong iskor ay ang porsyento ng sampung palaisipang nasagot mo nang tama. Inilalarawan lamang nito ang pagsubok na ito at hindi nito sinusukat ang iyong tunay na talino, IQ, kakayahan o potensyal sa pag-aaral.",
     "howToPlay": {
-      "title": "Paano maglaro",
       "steps": [
         "Kumpletuhin ang sampung maingat na napiling tanong sa isang nakatuong hamon.",
         "Pumili ng isang sagot sa bawat pagkakataon. Nananatiling nakatago ang kawastuhan hanggang sa huling pagsisiwalat.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Hamon sa katalinuhan",
-    "resultProgressComplete": "{value}% kumpleto",
     "stages": {
       "stage-1": {
         "difficulty": "Hamon sa Katalinuhan",
@@ -30,10 +26,8 @@
         "preAdCopy": "Handa nang ipakita ang iyong marka sa pagsusulit sa katalinuhan at tatlong lugar na breakdown.",
         "preAdChecks": [
           "10 sagot ang nasuri",
-          "Tatlong lugar ng pag-iisip ang inihambing",
-          "Kinakalkula ang iyong huling marka"
-        ],
-        "preAdButton": "Ibunyag ang Aking Mga Resulta"
+          "Tatlong lugar ng pag-iisip ang inihambing"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Naipasa mo ang pagsusulit sa talino!",
       "finished": "Tapos na ang pagsusulit sa talino",
-      "correctLabel": "tama",
       "strongest": "Pinakamalakas na lugar ng pag-iisip",
       "trickiest": "Pinaka nakakalito na lugar ng pag-iisip",
       "bestRound": "Pinakamahusay na seksyon",
@@ -98,8 +91,7 @@
         "snapshot": "Ano ang iminumungkahi ng pagtatangka na ito",
         "targetReached": "80% na hamon ang naabot",
         "targetRemaining": "Higit pang tamang sagot ang kailangan para sa 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "bilog, tatsulok, bilog, tatsulok, hindi kilala"
           },
           "question": "Aling simbolo ang susunod?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "PAGKALAN sa PANUNANG-PANUNANG"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "pataas-kanang arrow sa tabi ng patayong salamin"
           },
           "question": "Aling arrow ang repleksyon sa isang patayong salamin?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "PAGKALAN sa Espacio"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "mga paglilipat ng titik plus isa, kasama ang dalawa, kasama ang isa; Ang CAT ay naging DCU"
           },
           "question": "Ang mga shift ay umuulit ng +1, +2, +1. Paano naka-code ang DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "PAGKALANGKALANG PINAGKALANG"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "number pyramid na may ibabang 3, 5, 4 at gitnang 8, 9"
           },
           "question": "Ang bawat bloke ay ang kabuuan ng dalawa sa ibaba nito. Ano ang napupunta sa itaas?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "PAGKALAN sa Bilang"
         },
         "iq-s3q2": {
           "question": "Ang isang makina ay nagdodoble ng isang numero, pagkatapos ay nagdaragdag ng 3. Aling input ang gumagawa ng 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "PAGKALAN sa Bilang"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Reference code K7M2-Q9. Hanapin ang opsyon na may isang character na binago."
           },
           "question": "Aling kopya ang naiiba sa sanggunian sa pamamagitan ng eksaktong isang karakter?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "PANSIN SA DETALYE"
         },
         "iq-s4q1": {
           "question": "Eksaktong isang tao ang nagsasabi ng totoo. Nagsisinungaling si A. Nagsisinungaling si B. C sabi ni A at B na parehong nagsisinungaling. Sino ang nagsasabi ng totoo?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "walang tao"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "walang tao"
+          },
           "headerLabel": "LONGIKAL na Pag-aalaala"
         },
         "iq-s4q4": {
           "question": "Magsimula sa gitnang nakaharap sa hilaga. Sumulong sa isang parisukat, lumiko sa kanan, gumalaw ng dalawang parisukat, lumiko sa kanan, pagkatapos ay gumalaw ng isang parisukat. Saan ka nagtatapos sa simula?",
-          "answers": [
-            "Dalawang parisukat sa kanan",
-            "Isang parisukat pataas",
-            "Dalawang parisukat ang natitira",
-            "Bumalik sa gitna"
-          ],
+          "answers": {
+            "a1": "Dalawang parisukat sa kanan",
+            "a2": "Isang parisukat pataas",
+            "a3": "Dalawang parisukat ang natitira",
+            "a4": "Bumalik sa gitna"
+          },
           "headerLabel": "PAGKALAN sa Espacio"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "mga hilera 3, 4, 10; 5, 2, 12; 7, 3, hindi kilala"
           },
           "question": "Sa bawat hilera, doblehin ang unang numero, pagkatapos ay idagdag ang pangalawa. Ano ang pumapalit sa tandang pananong?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "PAGKALAN sa Bilang"
         },
         "iq-s5q8": {
           "question": "Isang arrow ang tumuturo pataas. Lumiko ito nang 90° clockwise, pagkatapos ay ipakita ito sa isang patayong salamin. Saan ito tumuturo?",
-          "answers": [
-            "pataas",
-            "Tama",
-            "Pababa",
-            "Kaliwa"
-          ],
+          "answers": {
+            "a1": "pataas",
+            "a2": "Tama",
+            "a3": "Pababa",
+            "a4": "Kaliwa"
+          },
           "headerLabel": "PANGHULING PAGSUSULIT SA SPATIAL"
         }
       }

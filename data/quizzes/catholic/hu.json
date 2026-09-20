@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Csak 1/10 tudja teljesíteni ezt a katolikus trivia kvízt",
   "eyebrow": "A KATOLIKUS TUDÁSTESZT",
   "summary": "Tíz kérdés teszi próbára tudását a katolikus istentiszteletről, a Szentírásról, az imáról és a liturgikus évről.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az első kérdések ismerősnek tűnhetnek, de az utolsó néhány olyan hiányosságokat tár fel, amelyeket még a rendszeres templomba járók is hiányoznak.",
     "cta": "Indítsa el a kvízt"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a világméretű angol szórakoztató kvíz tíz kérdést tartalmaz a katolikus istentiszteletről, a szentségekről, a Szentírásról, az imáról és a liturgikus évről.\n\nMinden alkalommal válassza ki a legjobb választ. A kérdések a széles körben elismert katolikus tanításra és gyakorlatra összpontosítanak, nem pedig a helyi szokásokra.\n\nAz Ön pontszáma csak ezen a rövid triviakészleten méri a teljesítményt, és nem mond semmit senki hitéről, odaadásáról vagy az egyházon belüli állásáról.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Olvassa el figyelmesen az egyes katolikus trivia kérdéseket.",
         "Válasszon egy választ a négy lehetőség közül.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Katolikus apróságok",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Katolikus apróságok",
@@ -30,10 +26,8 @@
         "preAdCopy": "A katolikus érdekességek pontszáma és a teljes válaszáttekintés készen áll.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt tudásterületet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt tudásterületet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült a katolikus trivia kihíváson!",
       "finished": "Katolikus trivia kihívás kész",
-      "correctLabel": "helyes",
       "strongest": "Legerősebb tudásterület",
       "trickiest": "A legtrükkösebb tudásterület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "catholic-q1": {
           "question": "Mi a neve a katolikus egyház központi istentiszteleti aktusának?",
-          "answers": [
-            "A szentmise",
-            "A rózsafüzér",
-            "Az Angelus",
-            "A keresztút"
-          ],
+          "answers": {
+            "a1": "A szentmise",
+            "a2": "A rózsafüzér",
+            "a3": "Az Angelus",
+            "a4": "A keresztút"
+          },
           "headerLabel": "istentisztelet"
         },
         "catholic-q2": {
           "question": "Melyik város püspöke a pápa is?",
-          "answers": [
-            "Jeruzsálem",
-            "Róma",
-            "Assisi",
-            "Betlehem"
-          ],
+          "answers": {
+            "a1": "Jeruzsálem",
+            "a2": "Róma",
+            "a3": "Assisi",
+            "a4": "Betlehem"
+          },
           "headerLabel": "EGYHÁZ VEZETÉSE"
         },
         "catholic-q3": {
           "question": "Hány szentséget ismer el a katolikus egyház?",
-          "answers": [
-            "Öt",
-            "Hat",
-            "Hét",
-            "Nyolc"
-          ],
+          "answers": {
+            "a1": "Öt",
+            "a2": "Hat",
+            "a3": "Hét",
+            "a4": "Nyolc"
+          },
           "headerLabel": "SZENTSÉGEK"
         },
         "catholic-q4": {
           "question": "Az egyházi év melyik időszaka következik közvetlenül karácsony előtt?",
-          "answers": [
-            "nagyböjt",
-            "húsvét",
-            "Hétköznapi idő",
-            "Advent"
-          ],
+          "answers": {
+            "a1": "nagyböjt",
+            "a2": "húsvét",
+            "a3": "Hétköznapi idő",
+            "a4": "Advent"
+          },
           "headerLabel": "EGYHÁZ ÉVE"
         },
         "catholic-q5": {
           "question": "János Pál pápa melyik rózsafüzér-titkot mutatta be 2002-ben?",
-          "answers": [
-            "A világító rejtélyek",
-            "Az örömteli rejtélyek",
-            "A szomorú rejtélyek",
-            "A dicsőséges rejtélyek"
-          ],
+          "answers": {
+            "a1": "A világító rejtélyek",
+            "a2": "Az örömteli rejtélyek",
+            "a3": "A szomorú rejtélyek",
+            "a4": "A dicsőséges rejtélyek"
+          },
           "headerLabel": "A RÓZSAfüzér"
         },
         "catholic-q6": {
           "question": "Melyik könyv az első a katolikus Bibliában?",
-          "answers": [
-            "Exodus",
-            "Genesis",
-            "Zsoltárok",
-            "Matthew"
-          ],
+          "answers": {
+            "a1": "Exodus",
+            "a2": "Genesis",
+            "a3": "Zsoltárok",
+            "a4": "Matthew"
+          },
           "headerLabel": "SZENTÍRÁS"
         },
         "catholic-q7": {
           "question": "Melyik szentség erősíti a keresztelési kegyelmet és kapcsolódik a Szentlélek ajándékaihoz?",
-          "answers": [
-            "Betegek kenete",
-            "szent rendek",
-            "Bérmálás",
-            "Házasság"
-          ],
+          "answers": {
+            "a1": "Betegek kenete",
+            "a2": "szent rendek",
+            "a3": "Bérmálás",
+            "a4": "Házasság"
+          },
           "headerLabel": "HIT ÉS GYAKORLAT"
         },
         "catholic-q8": {
           "question": "Hány keresztútját tartják meg hagyományosan?",
-          "answers": [
-            "Hét",
-            "Tíz",
-            "Tizenkettő",
-            "Tizennégy"
-          ],
+          "answers": {
+            "a1": "Hét",
+            "a2": "Tíz",
+            "a3": "Tizenkettő",
+            "a4": "Tizennégy"
+          },
           "headerLabel": "KÖTELEZETTSÉG"
         },
         "catholic-q9": {
           "question": "A latin katolikus hagyomány szerint melyik napon kezdődik a nagyböjt?",
-          "answers": [
-            "Hamvazószerda",
-            "Virágvasárnap",
-            "Nagypéntek",
-            "Pünkösd"
-          ],
+          "answers": {
+            "a1": "Hamvazószerda",
+            "a2": "Virágvasárnap",
+            "a3": "Nagypéntek",
+            "a4": "Pünkösd"
+          },
           "headerLabel": "LITURGIKAI NAPTÁR"
         },
         "catholic-q10": {
           "question": "Milyen eseményre emlékezik pünkösd?",
-          "answers": [
-            "Jézus születése",
-            "A Szentlélek leszállása",
-            "Jézus keresztsége",
-            "Az átváltozás"
-          ],
+          "answers": {
+            "a1": "Jézus születése",
+            "a2": "A Szentlélek leszállása",
+            "a3": "Jézus keresztsége",
+            "a4": "Az átváltozás"
+          },
           "headerLabel": "ZÁRÓ KÉRDÉS"
         }
       }

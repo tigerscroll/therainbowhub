@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Brzi test katarakte",
   "eyebrow": "PROVJERA VIDA OD 10 PITANJA",
   "summary": "Magloviti detalji, bliske vizualne zamke i važni znakovi upozorenja na kataraktu u jednom brzom izazovu.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Kataraktu je lako uočiti na početku. Pogledajte možete li uočiti suptilne tragove u 10 kratkih pitanja - ona posljednja izvuku većinu ljudi.",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj izazov od deset pitanja kombinira pet vizualnih zagonetki na zaslonu s pet pitanja opće svijesti o katarakti. Mjeri odgovore na ovaj kviz, a ne vid, zdravlje leće ili vjerojatnost katarakte.\n\nVeličina zaslona, svjetlina, kontrast, vid, korektivne leće, umor i postavke uređaja mogu utjecati na performanse. Stalno zamućen ili zamagljen vid, odsjaj, aureole oko svjetala, poteškoće s vidom noću ili tonovi koji izgledaju manje živopisni trebali bi se raspraviti s kvalificiranim oftalmologom.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite pet izazova s detaljima, uzorcima i vizualnim pamćenjem.",
         "Odgovorite na pet pitanja o katarakti i kada potražiti pomoć.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov katarakte",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Brzi test katarakte",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaših deset odgovora je provjereno i vaš rezultat izazova katarakte je spreman za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena tri vizualna područja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena tri vizualna područja"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Riješili ste 80% vizualnog izazova!",
       "finished": "Izazov katarakte završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače područje danas",
       "trickiest": "Najzahtjevnije područje danas",
       "bestRound": "Najbolja sekcija",
@@ -94,8 +87,7 @@
         "snapshot": "Što vaš rezultat sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "cataract-q1": {
           "question": "Koji je lik točno u sredini mreže?",
           "headerLabel": "SREDIŠNJI DETALJ",
-          "answers": [
-            "F",
-            "P",
-            "R",
-            "T"
-          ],
+          "answers": {
+            "a1": "F",
+            "a2": "P",
+            "a3": "R",
+            "a4": "T"
+          },
           "visual": {
             "items": [
               "A",
@@ -130,12 +122,12 @@
           "context": "REFERENCA: B8R3K5",
           "question": "Koji kod točno odgovara referenci?",
           "headerLabel": "USPOREDBA ZAMUĆENIH ZNAKOVA",
-          "answers": [
-            "B8P3K5",
-            "B8R3K5",
-            "B8R8K5",
-            "D8R3K5"
-          ],
+          "answers": {
+            "a1": "B8P3K5",
+            "a2": "B8R3K5",
+            "a3": "B8R8K5",
+            "a4": "D8R3K5"
+          },
           "visual": {
             "items": [
               "REFERENCA",
@@ -147,12 +139,12 @@
         "cataract-q3": {
           "question": "Koji simbol dovršava izmjenični niz?",
           "headerLabel": "PRAĆENJE UZORAKA",
-          "answers": [
-            "◆◆",
-            "○○",
-            "○",
-            "◆"
-          ],
+          "answers": {
+            "a1": "◆◆",
+            "a2": "○○",
+            "a3": "○",
+            "a4": "◆"
+          },
           "visual": {
             "items": [
               "◆",
@@ -168,12 +160,12 @@
         "cataract-q4": {
           "question": "Koji se objekt pojavio treći?",
           "headerLabel": "BRZO VIZUALNO PAMĆENJE",
-          "answers": [
-            "Knjiga",
-            "Ključ",
-            "Limun",
-            "kišobran"
-          ],
+          "answers": {
+            "a1": "Knjiga",
+            "a2": "Ključ",
+            "a3": "Limun",
+            "a4": "kišobran"
+          },
           "study": {
             "title": "Proučite poredak od pet objekata",
             "instruction": "Ovo će automatski nestati.",
@@ -190,12 +182,12 @@
         "cataract-q5": {
           "question": "Koja pozicija sadrži blijedi krug?",
           "headerLabel": "PROVJERA DETALJA",
-          "answers": [
-            "Peto",
-            "Drugo",
-            "Četvrto",
-            "Šesto"
-          ],
+          "answers": {
+            "a1": "Peto",
+            "a2": "Drugo",
+            "a3": "Četvrto",
+            "a4": "Šesto"
+          },
           "visual": {
             "items": [
               "●",
@@ -212,52 +204,52 @@
         "cataract-q6": {
           "question": "Što je katarakta?",
           "headerLabel": "OSNOVE KATARAKTE",
-          "answers": [
-            "Ogrebotina na kapku",
-            "Zamućeno područje u prirodnoj leći oka",
-            "Problem ograničen na suzni kanal",
-            "Vrsta infekcije uha"
-          ]
+          "answers": {
+            "a1": "Ogrebotina na kapku",
+            "a2": "Zamućeno područje u prirodnoj leći oka",
+            "a3": "Problem ograničen na suzni kanal",
+            "a4": "Vrsta infekcije uha"
+          }
         },
         "cataract-q7": {
           "question": "Koja skupina sadrži uobičajene simptome katarakte?",
           "headerLabel": "ZNAKOVI UPOZORENJA",
-          "answers": [
-            "Svrbež kože i bol u grlu",
-            "Iznenadni gubitak sluha i vrtoglavica",
-            "Mutan ili zamagljen vid, odsjaj i aureole oko svjetla",
-            "Ukočen vrat i bolna ramena"
-          ]
+          "answers": {
+            "a1": "Svrbež kože i bol u grlu",
+            "a2": "Iznenadni gubitak sluha i vrtoglavica",
+            "a3": "Mutan ili zamagljen vid, odsjaj i aureole oko svjetla",
+            "a4": "Ukočen vrat i bolna ramena"
+          }
         },
         "cataract-q8": {
           "question": "Kako oftalmolog može provjeriti ima li katarakta?",
           "headerLabel": "STRUČNA OCJENA",
-          "answers": [
-            "S ispitivanjem sluha",
-            "Korištenje kućnog očitanja krvnog tlaka",
-            "Uz test okusa",
-            "Kao dio sveobuhvatnog dilatacijskog pregleda oka"
-          ]
+          "answers": {
+            "a1": "S ispitivanjem sluha",
+            "a2": "Korištenje kućnog očitanja krvnog tlaka",
+            "a3": "Uz test okusa",
+            "a4": "Kao dio sveobuhvatnog dilatacijskog pregleda oka"
+          }
         },
         "cataract-q9": {
           "question": "Koji je najsigurniji odgovor na nagli gubitak vida, jaku bol u oku ili naglu veliku promjenu vida?",
           "headerLabel": "KADA DJELOVATI",
-          "answers": [
-            "Hitno potražite stručni savjet o njezi očiju",
-            "Pričekajte nekoliko mjeseci a da to ne spomenete",
-            "Promijenite svjetlinu zaslona i pretpostavite da je fiksna",
-            "Oslonite se samo na online kviz"
-          ]
+          "answers": {
+            "a1": "Hitno potražite stručni savjet o njezi očiju",
+            "a2": "Pričekajte nekoliko mjeseci a da to ne spomenete",
+            "a3": "Promijenite svjetlinu zaslona i pretpostavite da je fiksna",
+            "a4": "Oslonite se samo na online kviz"
+          }
         },
         "cataract-q10": {
           "question": "Što vam vaš rezultat na ovom online izazovu može reći?",
           "headerLabel": "KONAČNA PROVJERA STVARNOSTI",
-          "answers": [
-            "Jesu li vaše leće zdrave",
-            "Samo kako si prošao s ovih deset pitanja",
-            "Bilo da trebate operaciju katarakte",
-            "Možete li isključiti kataraktu"
-          ]
+          "answers": {
+            "a1": "Jesu li vaše leće zdrave",
+            "a2": "Samo kako si prošao s ovih deset pitanja",
+            "a3": "Bilo da trebate operaciju katarakte",
+            "a4": "Možete li isključiti kataraktu"
+          }
         }
       }
     }

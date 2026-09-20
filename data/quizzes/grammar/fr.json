@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Seulement 10 % peuvent réussir ce quiz de grammaire",
   "eyebrow": "LE DÉFI DE LA RELECTURE",
   "summary": "Phrases incomplètes, pièges de ponctuation et tournures presque justes : une seule erreur peut suffire à vous piéger.",
-  "progressLabel": "terminé",
   "landing": {
     "intro": "Vous pensez maîtriser la grammaire ? Corrigez les phrases, déjouez les pièges de ponctuation et prouvez qu'aucune faute ne vous échappe.",
     "cta": "Commencer le quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ce défi en français comporte dix questions variées sur la structure des phrases, les accords, la ponctuation, les temps verbaux, les pronoms et la précision du style. Chaque question a été conçue spécialement pour le français.\n\nChoisissez la seule réponse qui rende la phrase correcte et naturelle dans le contexte indiqué. Vous ne découvrirez les bonnes réponses qu'à la fin.\n\nVotre score reflète uniquement vos résultats à ce court défi linguistique. Il ne constitue ni une évaluation officielle de votre niveau, ni un diplôme.",
     "howToPlay": {
-      "title": "Comment jouer",
       "steps": [
         "Répondez à dix questions soigneusement sélectionnées dans un seul défi ciblé.",
         "Choisissez une réponse à chaque fois. Les bonnes réponses restent cachées jusqu’au résultat final.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Défi de grammaire",
-    "resultProgressComplete": "{value} % terminé",
     "stages": {
       "stage-1": {
         "difficulty": "Défi de grammaire",
@@ -30,10 +26,8 @@
         "preAdCopy": "Votre score de grammaire et votre répartition en trois compétences sont prêts à être révélés.",
         "preAdChecks": [
           "10 réponses vérifiées",
-          "Comparaison de trois compétences grammaticales",
-          "Score final calculé"
-        ],
-        "preAdButton": "Découvrir mes résultats"
+          "Comparaison de trois compétences grammaticales"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Vous avez réussi le défi de grammaire !",
       "finished": "Défi de grammaire terminé",
-      "correctLabel": "bonnes réponses",
       "strongest": "Domaine le mieux réussi",
       "trickiest": "Domaine le plus difficile",
       "bestRound": "Meilleure catégorie",
@@ -98,8 +91,7 @@
         "snapshot": "Ce que suggère votre profil grammatical",
         "targetReached": "Objectif de 80 % atteint",
         "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Quelle proposition forme une phrase complète ?",
-          "answers": [
-            "Après le dernier paragraphe",
-            "La rédactrice a vérifié le dernier paragraphe.",
-            "Parce que le délai a changé",
-            "Pendant que tout le monde attendait"
-          ],
+          "answers": {
+            "a1": "Après le dernier paragraphe",
+            "a2": "La rédactrice a vérifié le dernier paragraphe.",
+            "a3": "Parce que le délai a changé",
+            "a4": "Pendant que tout le monde attendait"
+          },
           "headerLabel": "STRUCTURE DE LA PHRASE"
         },
         "grammar-r1q3": {
           "context": "Les notes appartiennent à plusieurs étudiants.",
           "question": "Quelle phrase exprime correctement cette idée ?",
-          "answers": [
-            "Les notes des étudiants étaient bien classées.",
-            "Les notes de l’étudiant étaient bien classées.",
-            "Les notes des étudiant étaient bien classées.",
-            "Les note des étudiants étaient bien classées."
-          ],
+          "answers": {
+            "a1": "Les notes des étudiants étaient bien classées.",
+            "a2": "Les notes de l’étudiant étaient bien classées.",
+            "a3": "Les notes des étudiant étaient bien classées.",
+            "a4": "Les note des étudiants étaient bien classées."
+          },
           "headerLabel": "ACCORD ET POSSESSION"
         },
         "grammar-r3q1": {
           "question": "La réunion a commencé à 9 h. Léo a terminé le graphique à 8 h 30. Quelle phrase est correcte ?",
-          "answers": [
-            "Léo a terminé le graphique après le début de la réunion.",
-            "Léo avait terminé le graphique après le début de la réunion.",
-            "Léo termine le graphique avant le début de la réunion.",
-            "Léo avait terminé le graphique avant le début de la réunion."
-          ],
+          "answers": {
+            "a1": "Léo a terminé le graphique après le début de la réunion.",
+            "a2": "Léo avait terminé le graphique après le début de la réunion.",
+            "a3": "Léo termine le graphique avant le début de la réunion.",
+            "a4": "Léo avait terminé le graphique avant le début de la réunion."
+          },
           "headerLabel": "CHRONOLOGIE DES VERBES"
         },
         "grammar-r4q3": {
           "question": "Quelle phrase emploie correctement le point-virgule ?",
-          "answers": [
-            "Le fichier était volumineux ; parce qu’il se chargeait lentement.",
-            "Le fichier était volumineux ; il se chargeait lentement.",
-            "Le fichier était volumineux, il se chargeait lentement.",
-            "Le fichier était volumineux ; bien qu’il se chargeât lentement."
-          ],
+          "answers": {
+            "a1": "Le fichier était volumineux ; parce qu’il se chargeait lentement.",
+            "a2": "Le fichier était volumineux ; il se chargeait lentement.",
+            "a3": "Le fichier était volumineux, il se chargeait lentement.",
+            "a4": "Le fichier était volumineux ; bien qu’il se chargeât lentement."
+          },
           "headerLabel": "POINT-VIRGULE"
         },
         "grammar-r5q4": {
           "context": "Entre Lina et ___, cette décision doit rester confidentielle.",
           "question": "Quel pronom complète correctement la phrase ?",
-          "answers": [
-            "moi",
-            "je",
-            "mon",
-            "mien"
-          ],
+          "answers": {
+            "a1": "moi",
+            "a2": "je",
+            "a3": "mon",
+            "a4": "mien"
+          },
           "headerLabel": "CHOIX DU PRONOM"
         },
         "grammar-r5q6": {
           "question": "Quelle phrase ponctue correctement une apostrophe directe ?",
-          "answers": [
-            "Ravi s’il te plaît, vérifie la dernière ligne.",
-            "Ravi, s’il te plaît, vérifie la dernière ligne.",
-            "Ravi s’il te plaît vérifie, la dernière ligne.",
-            "Ravi ; s’il te plaît, vérifie la dernière ligne."
-          ],
+          "answers": {
+            "a1": "Ravi s’il te plaît, vérifie la dernière ligne.",
+            "a2": "Ravi, s’il te plaît, vérifie la dernière ligne.",
+            "a3": "Ravi s’il te plaît vérifie, la dernière ligne.",
+            "a4": "Ravi ; s’il te plaît, vérifie la dernière ligne."
+          },
           "headerLabel": "APOSTROPHE DIRECTE"
         },
         "grammar-r7q6": {
           "context": "Un rapport contient un résumé et une annexe. L’annexe est mise à jour chaque mois.",
           "question": "Quelle formulation indique clairement que la mise à jour mensuelle concerne l’annexe ?",
-          "answers": [
-            "Le rapport contient un résumé et une annexe, et il est mis à jour chaque mois.",
-            "Le rapport contient un résumé, qui est mis à jour chaque mois, ainsi qu’une annexe.",
-            "Le rapport contient un résumé et une annexe ; l’annexe est mise à jour chaque mois.",
-            "Le rapport, mis à jour chaque mois, contient un résumé et son annexe."
-          ],
+          "answers": {
+            "a1": "Le rapport contient un résumé et une annexe, et il est mis à jour chaque mois.",
+            "a2": "Le rapport contient un résumé, qui est mis à jour chaque mois, ainsi qu’une annexe.",
+            "a3": "Le rapport contient un résumé et une annexe ; l’annexe est mise à jour chaque mois.",
+            "a4": "Le rapport, mis à jour chaque mois, contient un résumé et son annexe."
+          },
           "headerLabel": "CLARTÉ DE LA RÉFÉRENCE"
         },
         "grammar-r9q1": {
           "question": "Quelle phrase commence par une proposition introduite par « bien que » et est correctement ponctuée ?",
-          "answers": [
-            "La tempête a cessé ; bien que les rues soient restées inondées.",
-            "La tempête a cessé cependant, les rues sont restées inondées.",
-            "Bien que la tempête ait cessé ; les rues sont restées inondées.",
-            "Bien que la tempête ait cessé, les rues sont restées inondées."
-          ],
-          "trapdoorErrors": [
-            "le point-virgule sépare incorrectement une proposition principale d’une subordonnée",
-            "l’adverbe de liaison exige une ponctuation différente",
-            "le point-virgule suit incorrectement une proposition subordonnée",
-            null
-          ],
+          "answers": {
+            "a1": "La tempête a cessé ; bien que les rues soient restées inondées.",
+            "a2": "La tempête a cessé cependant, les rues sont restées inondées.",
+            "a3": "Bien que la tempête ait cessé ; les rues sont restées inondées.",
+            "a4": "Bien que la tempête ait cessé, les rues sont restées inondées."
+          },
+          "trapdoorErrors": {
+            "a1": "le point-virgule sépare incorrectement une proposition principale d’une subordonnée",
+            "a2": "l’adverbe de liaison exige une ponctuation différente",
+            "a3": "le point-virgule suit incorrectement une proposition subordonnée"
+          },
           "headerLabel": "OPPOSITION DANS LA PHRASE"
         },
         "grammar-r10q6": {
           "question": "Quelle phrase est entièrement correcte ?",
-          "answers": [
-            "Après avoir vérifié les chiffres, Maya a confirmé que chaque total était exact.",
-            "Après avoir vérifié les chiffres, chaque total ont été confirmés par Maya.",
-            "Après avoir vérifié les chiffres, Maya a confirmé que chaque total étaient exact.",
-            "Après avoir vérifié les chiffres, Maya a confirmé que chacun des totaux étaient exacts."
-          ],
+          "answers": {
+            "a1": "Après avoir vérifié les chiffres, Maya a confirmé que chaque total était exact.",
+            "a2": "Après avoir vérifié les chiffres, chaque total ont été confirmés par Maya.",
+            "a3": "Après avoir vérifié les chiffres, Maya a confirmé que chaque total étaient exact.",
+            "a4": "Après avoir vérifié les chiffres, Maya a confirmé que chacun des totaux étaient exacts."
+          },
           "headerLabel": "RÉVISION DE PRÉCISION"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Les rapports définitifs ont été vérifiés avant que l’éditeur les approuver tous"
           },
           "question": "Quelle partie contient l’erreur ?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "DERNIÈRE RELECTURE"
         }
       }

@@ -80,33 +80,168 @@
       }
     ],
     "questions": {
-      "dentist-q1": { "presentation": "text", "correct": 0, "category": "dentition", "choiceCount": 4 },
-      "dentist-q2": { "presentation": "text", "correct": 1, "category": "tooth_anatomy", "choiceCount": 4 },
-      "dentist-q3": { "presentation": "text", "correct": 2, "category": "dentition", "choiceCount": 4 },
-      "dentist-q4": { "presentation": "text", "correct": 3, "category": "dentition", "choiceCount": 4 },
-      "dentist-q5": { "presentation": "text", "correct": 0, "category": "tooth_anatomy", "choiceCount": 4 },
-      "dentist-q6": { "presentation": "text", "correct": 1, "category": "oral_health", "choiceCount": 4 },
-      "dentist-q7": { "presentation": "text", "correct": 2, "category": "oral_health", "choiceCount": 4 },
-      "dentist-q8": { "presentation": "text", "correct": 3, "category": "tooth_anatomy", "choiceCount": 4 },
-      "dentist-q9": { "presentation": "text", "correct": 0, "category": "head_neck_anatomy", "choiceCount": 4 },
-      "dentist-q10": { "presentation": "text", "correct": 1, "category": "head_neck_anatomy", "choiceCount": 4 }
+      "dentist-q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "dentition",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "tooth_anatomy",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "dentition",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "dentition",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "tooth_anatomy",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "oral_health",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "oral_health",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q8": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "tooth_anatomy",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q9": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "head_neck_anatomy",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "dentist-q10": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "head_neck_anatomy",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      }
     },
     "checkpoint": {
       "finalIcon": "🦷"
     },
     "results": {
       "profiles": [
-        { "key": "profile-1", "min": 0.9 },
-        { "key": "profile-2", "min": 0.8 },
-        { "key": "profile-3", "min": 0.6 },
-        { "key": "profile-4", "min": 0.4 },
-        { "key": "profile-5", "min": 0 }
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.6
+        },
+        {
+          "key": "profile-4",
+          "min": 0.4
+        },
+        {
+          "key": "profile-5",
+          "min": 0
+        }
       ],
       "dimensions": [
-        { "key": "dimension-1", "categories": ["dentition"] },
-        { "key": "dimension-2", "categories": ["tooth_anatomy"] },
-        { "key": "dimension-3", "categories": ["oral_health"] },
-        { "key": "dimension-4", "categories": ["head_neck_anatomy"] }
+        {
+          "key": "dimension-1",
+          "categories": [
+            "dentition"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "tooth_anatomy"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "oral_health"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "categories": [
+            "head_neck_anatomy"
+          ]
+        }
       ],
       "score": {
         "showPercentage": true,

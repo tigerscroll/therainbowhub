@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb felnőtt nem tudja letenni ezt az orvosi felvételi vizsgát",
   "eyebrow": "AZ ORVOSTUDOMÁNYI TESZT",
   "summary": "Tíz kérdés teszt anatómiát, fiziológiát, mikrobiológiát, farmakológiát és klinikai biztonságot.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Az első kérdések alapvetőnek tűnnek. Ezután a teszt átkerül a fiziológiára, a mikrobákra és az orvostudományra, amit a legtöbb felnőtt elfelejtett.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás az alapozó orvostudományt használja az 1. szintű angol nyelvű országokban. Az anatómiát, a fiziológiát, a sejtbiológiát, a mikrobiológiát, a farmakológiát és a fertőzés-ellenőrzést vizsgálja, anélkül, hogy egy egyetemi felvételi tantervre támaszkodna.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb orvostudományi kérdésre.",
         "Válassza ki a legpontosabb választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Orvosi felvételi kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Orvosi felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és az orvostudományi pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt tudományterületet hasonlítottak össze",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt tudományterületet hasonlítottak össze"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült az orvosi felvételi kihíváson!",
       "finished": "Az orvosi felvételi kihívás befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb tudományterület",
       "trickiest": "A legtrükkösebb tudományos terület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "A vörösvértestekben melyik fehérje szállítja a legtöbb oxigént?",
-          "answers": [
-            "Hemoglobin",
-            "Keratin",
-            "Kollagén",
-            "Inzulin"
-          ],
+          "answers": {
+            "a1": "Hemoglobin",
+            "a2": "Keratin",
+            "a3": "Kollagén",
+            "a4": "Inzulin"
+          },
           "headerLabel": "VÉRÉLETA"
         },
         "medical-q2": {
           "question": "A DNS-ben az adenin általában melyik bázissal párosul?",
-          "answers": [
-            "Guanin",
-            "timin",
-            "Citozin",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guanin",
+            "a2": "timin",
+            "a3": "Citozin",
+            "a4": "Uracil"
+          },
           "headerLabel": "SEJTBIOLÓGIA"
         },
         "medical-q3": {
           "question": "Melyik szerv számos gyógyszer feldolgozásának és lebontásának fő helye?",
-          "answers": [
-            "Lép",
-            "Pajzsmirigy",
-            "Máj",
-            "Hólyag"
-          ],
+          "answers": {
+            "a1": "Lép",
+            "a2": "Pajzsmirigy",
+            "a3": "Máj",
+            "a4": "Hólyag"
+          },
           "headerLabel": "GYÓGYSZERTAN"
         },
         "medical-q4": {
           "question": "Melyik állítás különbözteti meg legjobban a vírusokat a baktériumoktól?",
-          "answers": [
-            "A vírusok mindig nagyobbak",
-            "A baktériumok nem tudnak szaporodni",
-            "A vírusok nem tartalmaznak genetikai anyagot",
-            "A vírusok a gazdasejtektől függenek, hogy szaporodjanak"
-          ],
+          "answers": {
+            "a1": "A vírusok mindig nagyobbak",
+            "a2": "A baktériumok nem tudnak szaporodni",
+            "a3": "A vírusok nem tartalmaznak genetikai anyagot",
+            "a4": "A vírusok a gazdasejtektől függenek, hogy szaporodjanak"
+          },
           "headerLabel": "MIKROBIOLÓGIA"
         },
         "medical-q5": {
           "question": "Miként írják le azt az oldatot, amelynek pH-ja 7 alatt van?",
-          "answers": [
-            "Savas",
-            "Semleges",
-            "Lúgos",
-            "Izotóniás"
-          ],
+          "answers": {
+            "a1": "Savas",
+            "a2": "Semleges",
+            "a3": "Lúgos",
+            "a4": "Izotóniás"
+          },
           "headerLabel": "TESTKÉMIA"
         },
         "medical-q6": {
           "question": "Az autonóm idegrendszer melyik része kapcsolódik a „pihenés és emésztés” tevékenységhez?",
-          "answers": [
-            "Szimpatikus rendszer",
-            "Paraszimpatikus rendszer",
-            "Szomatikus motoros rendszer",
-            "Központi vizuális útvonal"
-          ],
+          "answers": {
+            "a1": "Szimpatikus rendszer",
+            "a2": "Paraszimpatikus rendszer",
+            "a3": "Szomatikus motoros rendszer",
+            "a4": "Központi vizuális útvonal"
+          },
           "headerLabel": "IDEGRENDSZER"
         },
         "medical-q7": {
           "question": "Melyik szerkezet akadályozza meg, hogy az étel lenyeléskor a légutakba kerüljön?",
-          "answers": [
-            "Patella",
-            "Retina",
-            "Epiglottis",
-            "Hasnyálmirigy"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Retina",
+            "a3": "Epiglottis",
+            "a4": "Hasnyálmirigy"
+          },
           "headerLabel": "FUNKCIONÁLIS ANATÓMIA"
         },
         "medical-q8": {
           "question": "Melyik agyideg szállítja a vizuális információt a szemből?",
-          "answers": [
-            "Vagus ideg",
-            "Arcideg",
-            "Trigeminus ideg",
-            "Látóideg"
-          ],
+          "answers": {
+            "a1": "Vagus ideg",
+            "a2": "Arcideg",
+            "a3": "Trigeminus ideg",
+            "a4": "Látóideg"
+          },
           "headerLabel": "NEUROANATÓMIA"
         },
         "medical-q9": {
           "question": "Melyik gyakorlat része a fertőzések megelőzésének a betegellátás során?",
-          "answers": [
-            "Megfelelő kézhigiénia",
-            "Az eldobható kesztyűk újrafelhasználása",
-            "A kockázatértékelés kihagyása",
-            "A tisztátalan felszerelés megosztása"
-          ],
+          "answers": {
+            "a1": "Megfelelő kézhigiénia",
+            "a2": "Az eldobható kesztyűk újrafelhasználása",
+            "a3": "A kockázatértékelés kihagyása",
+            "a4": "A tisztátalan felszerelés megosztása"
+          },
           "headerLabel": "KLINIKAI BIZTONSÁG"
         },
         "medical-q10": {
           "question": "Mit ír le a homeosztázis?",
-          "answers": [
-            "A változás teljes hiánya a szervezetben",
-            "Viszonylag stabil belső környezet szabályozása",
-            "Minden gyógyszer lebontása a vesék által",
-            "Csak az antitestek termelése"
-          ],
+          "answers": {
+            "a1": "A változás teljes hiánya a szervezetben",
+            "a2": "Viszonylag stabil belső környezet szabályozása",
+            "a3": "Minden gyógyszer lebontása a vesék által",
+            "a4": "Csak az antitestek termelése"
+          },
           "headerLabel": "VÉGSŐ TUDOMÁNYOS KÉRDÉS"
         }
       }

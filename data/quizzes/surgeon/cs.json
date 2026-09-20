@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Většina dospělých tuto přijímací zkoušku pro chirurgy nesloží",
   "eyebrow": "ZKOUŠKA SCHOPNOSTI OPERAČNÍHO PROSTORU",
   "summary": "Deset otázek testuje anatomii, chirurgickou bezpečnost, techniky a kritická rozhodnutí.",
-  "progressLabel": "kompletní",
   "landing": {
     "intro": "Anatomické otázky se zdají být zvládnutelné. Poté se test přesune do sterilní praxe, chirurgických nástrojů a rozhodnutí, kde jeden detail vše změní.",
     "cta": "Spustit test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tato zábavní výzva s deseti otázkami využívá široké anatomii a koncepty chirurgické bezpečnosti, které platí v anglicky mluvících zemích úrovně 1. Přesouvá se od průtoku krve a sterilní praxe k bezpečnostním kontrolám, operacím klíčové dírky, varovným signálům ran, monitorování pacienta a informovanému souhlasu.\n\nVyberte jednu odpověď pro každou otázku. Správnost zůstává skryta až do konečného odhalení, kde je k dispozici kompletní kontrola odpovědí k odemknutí.",
     "howToPlay": {
-      "title": "Jak hrát",
       "steps": [
         "Odpovězte na deset stále obtížnějších chirurgických vědomostních otázek.",
         "Vyberte jedinou nejlépe podporovanou odpověď.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Vstupní výzva pro chirurga",
-    "resultProgressComplete": "{value} % hotovo",
     "stages": {
       "stage-1": {
         "difficulty": "Přijímací zkouška na chirurga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaše deset odpovědí bylo zkontrolováno a skóre vašich chirurgických znalostí je připraveno odhalit.",
         "preAdChecks": [
           "10 zaškrtnutých odpovědí",
-          "Porovnáno pět chirurgických oblastí",
-          "Vypočítá se vaše konečné skóre"
-        ],
-        "preAdButton": "Odhalte mé výsledky"
+          "Porovnáno pět chirurgických oblastí"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Prošli jste vstupní výzvou pro chirurga!",
       "finished": "Vstupní výzva chirurga dokončena",
-      "correctLabel": "správně",
       "strongest": "Nejsilnější operační oblast",
       "trickiest": "Nejnáročnější chirurgická oblast",
       "bestRound": "Nejlepší sekce",
@@ -99,8 +92,7 @@
         "snapshot": "Co napovídá váš výsledek",
         "targetReached": "Bylo dosaženo 80% výzvy",
         "targetRemaining": "Pro 80 % je potřeba více správných odpovědí"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "surgeon-q1": {
           "question": "Co definuje tepnu v oběhovém systému?",
-          "answers": [
-            "Odvádí krev ze srdce",
-            "Vždy nese krev bohatou na kyslík",
-            "Přenáší krev pouze do plic",
-            "Neobsahuje žádnou svalovou stěnu"
-          ],
+          "answers": {
+            "a1": "Odvádí krev ze srdce",
+            "a2": "Vždy nese krev bohatou na kyslík",
+            "a3": "Přenáší krev pouze do plic",
+            "a4": "Neobsahuje žádnou svalovou stěnu"
+          },
           "headerLabel": "CHIRURGICKÁ ANATOMIE"
         },
         "surgeon-q2": {
           "question": "Jaký je hlavní účel udržování sterilního operačního pole?",
-          "answers": [
-            "Aby byly nástroje uspořádány podle velikosti",
-            "Ke snížení kontaminace a rizika infekce",
-            "Aby byl postup rychlejší",
-            "Aby se zabránilo všemu krvácení"
-          ],
+          "answers": {
+            "a1": "Aby byly nástroje uspořádány podle velikosti",
+            "a2": "Ke snížení kontaminace a rizika infekce",
+            "a3": "Aby byl postup rychlejší",
+            "a4": "Aby se zabránilo všemu krvácení"
+          },
           "headerLabel": "STERILNÍ PRAXE"
         },
         "surgeon-q3": {
           "question": "Co by měla bezpečnostní chirurgická pauza těsně před incizí potvrdit?",
-          "answers": [
-            "Pouze předpokládaná délka procedury",
-            "Pouze zařízení preferované chirurgem",
-            "Správný pacient, postup a místo těla",
-            "Volba jídla pacienta po operaci"
-          ],
+          "answers": {
+            "a1": "Pouze předpokládaná délka procedury",
+            "a2": "Pouze zařízení preferované chirurgem",
+            "a3": "Správný pacient, postup a místo těla",
+            "a4": "Volba jídla pacienta po operaci"
+          },
           "headerLabel": "BEZPEČNOSTNÍ KONTROLA"
         },
         "surgeon-q4": {
           "question": "V čem se laparoskopická chirurgie liší od tradičního otevřeného přístupu?",
-          "answers": [
-            "Nikdy nevyžaduje kontrolu bolesti",
-            "Nepoužívá žádné chirurgické nástroje",
-            "Může zkoumat pouze kůži",
-            "Běžně používá kameru a nástroje prostřednictvím malých řezů"
-          ],
+          "answers": {
+            "a1": "Nikdy nevyžaduje kontrolu bolesti",
+            "a2": "Nepoužívá žádné chirurgické nástroje",
+            "a3": "Může zkoumat pouze kůži",
+            "a4": "Běžně používá kameru a nástroje prostřednictvím malých řezů"
+          },
           "headerLabel": "CHIRURGICKÉ TECHNIKY"
         },
         "surgeon-q5": {
           "question": "Která struktura je odstraněna během apendektomie?",
-          "answers": [
-            "Červovitý přívěsek slepého střeva",
-            "Žlučník",
-            "Slezina",
-            "Slinivka břišní"
-          ],
+          "answers": {
+            "a1": "Červovitý přívěsek slepého střeva",
+            "a2": "Žlučník",
+            "a3": "Slezina",
+            "a4": "Slinivka břišní"
+          },
           "headerLabel": "OPERATIVNÍ ANATOMIE"
         },
         "surgeon-q6": {
           "question": "K čemu se chirurgický retraktor hlavně používá?",
-          "answers": [
-            "Měření saturace kyslíkem",
-            "Držte tkáň nebo řez otevřenou pro zlepšení přístupu",
-            "Uzavření rány stehy",
-            "Záznam elektrické srdeční činnosti"
-          ],
+          "answers": {
+            "a1": "Měření saturace kyslíkem",
+            "a2": "Držte tkáň nebo řez otevřenou pro zlepšení přístupu",
+            "a3": "Uzavření rány stehy",
+            "a4": "Záznam elektrické srdeční činnosti"
+          },
           "headerLabel": "CHIRURGICKÉ NÁSTROJE"
         },
         "surgeon-q7": {
           "question": "Jaká kombinace může naznačovat infekci v místě chirurgického zákroku?",
-          "answers": [
-            "Zlepšení pohodlí a suché hojení rány",
-            "Stálá chuť k jídlu a normální teplota",
-            "Zvyšující se zarudnutí nebo bolest, odvodnění nebo horečka",
-            "Čistý obvaz bez nových příznaků"
-          ],
+          "answers": {
+            "a1": "Zlepšení pohodlí a suché hojení rány",
+            "a2": "Stálá chuť k jídlu a normální teplota",
+            "a3": "Zvyšující se zarudnutí nebo bolest, odvodnění nebo horečka",
+            "a4": "Čistý obvaz bez nových příznaků"
+          },
           "headerLabel": "VAROVNÉ SIGNÁLY PO OPERACI"
         },
         "surgeon-q8": {
           "question": "Které zařízení poskytuje rychlý, neinvazivní odhad saturace krve kyslíkem během operace?",
-          "answers": [
-            "Reflexní kladivo",
-            "Otoskop",
-            "Teploměr",
-            "Pulzní oxymetr"
-          ],
+          "answers": {
+            "a1": "Reflexní kladivo",
+            "a2": "Otoskop",
+            "a3": "Teploměr",
+            "a4": "Pulzní oxymetr"
+          },
           "headerLabel": "MONITOROVÁNÍ PACIENTŮ"
         },
         "surgeon-q9": {
           "question": "Člověk přestane reagovat a nedýchá normálně. Jaká je nejbezpečnější okamžitá obecná reakce?",
-          "answers": [
-            "Zavolejte záchrannou službu a začněte s vhodnou základní podporou života",
-            "Dejte jídlo nebo pití",
-            "Počkejte několik minut, aniž byste jednali",
-            "Požádejte osobu, aby se postavila"
-          ],
+          "answers": {
+            "a1": "Zavolejte záchrannou službu a začněte s vhodnou základní podporou života",
+            "a2": "Dejte jídlo nebo pití",
+            "a3": "Počkejte několik minut, aniž byste jednali",
+            "a4": "Požádejte osobu, aby se postavila"
+          },
           "headerLabel": "CHIRURGICKÉ NOUZE"
         },
         "surgeon-q10": {
           "question": "Který popis nejlépe odpovídá informovanému souhlasu před operací?",
-          "answers": [
-            "Lékař volí bez vysvětlení alternativ",
-            "Pacient dostává relevantní informace a dobrovolně souhlasí",
-            "Za každého dospělého vždy rozhoduje příbuzný",
-            "Podepsáním formuláře odpadá nutnost diskuse"
-          ],
+          "answers": {
+            "a1": "Lékař volí bez vysvětlení alternativ",
+            "a2": "Pacient dostává relevantní informace a dobrovolně souhlasí",
+            "a3": "Za každého dospělého vždy rozhoduje příbuzný",
+            "a4": "Podepsáním formuláře odpadá nutnost diskuse"
+          },
           "headerLabel": "OTÁZKA K ZÁVĚREČNÉMU SOUHLASU"
         }
       }

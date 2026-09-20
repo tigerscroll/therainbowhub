@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "A legtöbb felnőtt nem tudja letenni ezt az orvosi felvételi vizsgát",
   "eyebrow": "A KLINIKAI ISMERETEK TESZT",
   "summary": "Tíz kérdés teszteli az anatómiát, a tüneteket, a diagnosztikai eszközöket és a biztonságos klinikai érvelést.",
-  "progressLabel": "teljes",
   "landing": {
     "intro": "Ismerősnek tűnnek az anatómiai kérdések. Ezután a teszt áttér a tünetekre, a vészhelyzetekre és a klinikai döntésekre.",
     "cta": "Indítsa el a tesztet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ez a tíz kérdésből álló szórakoztató kihívás széles körű orvosi koncepciókat használ, amelyeket az 1. szintű angol nyelvű országokban tanítanak és megértenek. Az anatómiától és a fiziológiától kezdve a diagnosztikai eszközök, a tünetminták, a sürgősségi prioritások és a felelős gyógyszerhasználat felé halad.\n\nMinden kérdéshez válasszon egy választ. A helyesség a végső felfedésig rejtve marad, ahol a teljes válasz áttekintése elérhető a zárolás feloldásához.",
     "howToPlay": {
-      "title": "Hogyan kell játszani",
       "steps": [
         "Válaszoljon tíz, egyre nehezebb klinikai tudásra vonatkozó kérdésre.",
         "Válassza ki a legjobban alátámasztott választ.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Doktor felvételi kihívás",
-    "resultProgressComplete": "{value}% kész",
     "stages": {
       "stage-1": {
         "difficulty": "Orvosi felvételi vizsga",
@@ -30,10 +26,8 @@
         "preAdCopy": "Tíz válaszát ellenőriztük, és klinikai tudásának pontszáma készen áll a nyilvánosságra.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Öt orvosi terület összehasonlítása",
-          "Kiszámolták a végső pontszámot"
-        ],
-        "preAdButton": "Mutasd fel az eredményeimet"
+          "Öt orvosi terület összehasonlítása"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Sikerült a Doktori belépés kihíváson!",
       "finished": "Az orvosi felvételi kihívás befejeződött",
-      "correctLabel": "helyes",
       "strongest": "A legerősebb orvosi terület",
       "trickiest": "A legtrükkösebb orvosi terület",
       "bestRound": "A legjobb szakasz",
@@ -99,8 +92,7 @@
         "snapshot": "Amit az eredményed sugall",
         "targetReached": "80%-os kihívás elérve",
         "targetRemaining": "80%-hoz több helyes válasz szükséges"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "doctor-q1": {
           "question": "A szív melyik kamrája pumpálja az oxigénben gazdag vért az aortába?",
-          "answers": [
-            "Bal kamra",
-            "Jobb kamra",
-            "Bal pitvar",
-            "Jobb pitvar"
-          ],
+          "answers": {
+            "a1": "Bal kamra",
+            "a2": "Jobb kamra",
+            "a3": "Bal pitvar",
+            "a4": "Jobb pitvar"
+          },
           "headerLabel": "SZÍV ANATÓMIA"
         },
         "doctor-q2": {
           "question": "Miért kell azonnal aggodalomra ad okot a hirtelen arczuhanás, a kargyengeség és a beszédzavar?",
-          "answers": [
-            "Kisebb ételintolerancia",
-            "Lehetséges stroke",
-            "Egyszerű izomhúzódás",
-            "Szezonális allergiák"
-          ],
+          "answers": {
+            "a1": "Kisebb ételintolerancia",
+            "a2": "Lehetséges stroke",
+            "a3": "Egyszerű izomhúzódás",
+            "a4": "Szezonális allergiák"
+          },
           "headerLabel": "TÜNETFELISMERÉS"
         },
         "doctor-q3": {
           "question": "Melyik eszköz biztosítja a vér oxigéntelítettségének gyors, nem invazív becslését?",
-          "answers": [
-            "Otoszkóp",
-            "Reflex kalapács",
-            "Pulzoximéter",
-            "Hőmérő"
-          ],
+          "answers": {
+            "a1": "Otoszkóp",
+            "a2": "Reflex kalapács",
+            "a3": "Pulzoximéter",
+            "a4": "Hőmérő"
+          },
           "headerLabel": "DIAGNOSZTIKAI ESZKÖZÖK"
         },
         "doctor-q4": {
           "question": "A vakbélgyulladás klasszikus bemutatásában a hasi fájdalom melyik terület felé mozdulhat el?",
-          "answers": [
-            "Bal felső has",
-            "A mellkas közepe",
-            "Bal váll",
-            "Jobb alsó has"
-          ],
+          "answers": {
+            "a1": "Bal felső has",
+            "a2": "A mellkas közepe",
+            "a3": "Bal váll",
+            "a4": "Jobb alsó has"
+          },
           "headerLabel": "KLINIKAI MINTÁK"
         },
         "doctor-q5": {
           "question": "A hasnyálmirigy mely sejtjei termelnek inzulint?",
-          "answers": [
-            "Béta sejtek",
-            "Vörösvérsejtek",
-            "Osteoblasztok",
-            "Neutrophilek"
-          ],
+          "answers": {
+            "a1": "Béta sejtek",
+            "a2": "Vörösvérsejtek",
+            "a3": "Osteoblasztok",
+            "a4": "Neutrophilek"
+          },
           "headerLabel": "ENDOKRIN ÉLETTAN"
         },
         "doctor-q6": {
           "question": "Mit jelent az auskultáció a fizikális vizsgálat során?",
-          "answers": [
-            "Testhőmérséklet mérése",
-            "A test belső hangjainak hallgatása",
-            "A látásélesség tesztelése",
-            "Szövetminta vizsgálata mikroszkóp alatt"
-          ],
+          "answers": {
+            "a1": "Testhőmérséklet mérése",
+            "a2": "A test belső hangjainak hallgatása",
+            "a3": "A látásélesség tesztelése",
+            "a4": "Szövetminta vizsgálata mikroszkóp alatt"
+          },
           "headerLabel": "KLINIKAI VIZSGÁLAT"
         },
         "doctor-q7": {
           "question": "Melyik leírás illik legjobban a szepszishez?",
-          "answers": [
-            "Ártalmatlan reakció az edzésre",
-            "Csak allergia okozta állapot",
-            "Életveszélyes extrém reakció a fertőzésre",
-            "A csonttörés egy fajtája"
-          ],
+          "answers": {
+            "a1": "Ártalmatlan reakció az edzésre",
+            "a2": "Csak allergia okozta állapot",
+            "a3": "Életveszélyes extrém reakció a fertőzésre",
+            "a4": "A csonttörés egy fajtája"
+          },
           "headerLabel": "ORVOSI VÉSZHELYZETEK"
         },
         "doctor-q8": {
           "question": "Hogy hívják a vese funkcionális szűrőegységét?",
-          "answers": [
-            "Alveolus",
-            "Neuron",
-            "Villus",
-            "Nephron"
-          ],
+          "answers": {
+            "a1": "Alveolus",
+            "a2": "Neuron",
+            "a3": "Villus",
+            "a4": "Nephron"
+          },
           "headerLabel": "VESEANATÓMIA"
         },
         "doctor-q9": {
           "question": "Egy személy nem reagál, és nem lélegzik rendesen. Mi a legbiztonságosabb azonnali általános válasz?",
-          "answers": [
-            "Hívja a segélyszolgálatot, és kezdje meg a megfelelő alapvető életfenntartást",
-            "Várjon néhány percet a spontán gyógyulásig",
-            "Adjon ételt vagy italt",
-            "Kérd meg az illetőt, hogy járjon körbe"
-          ],
+          "answers": {
+            "a1": "Hívja a segélyszolgálatot, és kezdje meg a megfelelő alapvető életfenntartást",
+            "a2": "Várjon néhány percet a spontán gyógyulásig",
+            "a3": "Adjon ételt vagy italt",
+            "a4": "Kérd meg az illetőt, hogy járjon körbe"
+          },
           "headerLabel": "VÉSZHELYZETI PRIORITÁSOK"
         },
         "doctor-q10": {
           "question": "Melyik állítás a legpontosabb az antibiotikumokról?",
-          "answers": [
-            "Minden lázat kezelnek",
-            "Nem kezelik a vírusos fertőzéseket, például a megfázást",
-            "Ezeket mindig le kell állítani, amint a tünetek enyhülnek",
-            "A testhőmérséklet közvetlen csökkentésével működnek"
-          ],
+          "answers": {
+            "a1": "Minden lázat kezelnek",
+            "a2": "Nem kezelik a vírusos fertőzéseket, például a megfázást",
+            "a3": "Ezeket mindig le kell állítani, amint a tünetek enyhülnek",
+            "a4": "A testhőmérséklet közvetlen csökkentésével működnek"
+          },
           "headerLabel": "VÉGSŐ GYÓGYSZERKÉRDÉS"
         }
       }

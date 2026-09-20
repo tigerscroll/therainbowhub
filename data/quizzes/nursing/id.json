@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 7% yang Lulus Ujian Masuk Keperawatan Ini",
   "eyebrow": "LAB PENDAFTARAN KLINIS",
   "summary": "Anatomi, tanda-tanda vital, dan keputusan perawatan pasien menguji apakah penilaian Anda tetap tajam di bawah tekanan.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Sistem tubuh, tanda-tanda vital dan perawatan pasien. Bisakah Anda mengetahui hal yang penting dan melakukan panggilan teraman?",
     "cta": "Mulai Kuis"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sedunia ini berisi sepuluh pertanyaan gaya masuk seputar anatomi, observasi, penghitungan layanan kesehatan, pencegahan infeksi, komunikasi, dan penilaian prioritas. Ini menghargai penggunaan informasi yang ditampilkan dengan tenang.\n\nPilih satu jawaban terbaik untuk setiap situasi. Isinya bersifat umum dan tidak bergantung pada prosedur profesional suatu negara.\n\nIni bukan ujian masuk keperawatan terakreditasi, penilaian klinis, kualifikasi, kursus pelatihan atau sumber nasihat medis.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan sepuluh pertanyaan yang dipilih dengan cermat dalam satu tantangan terfokus.",
         "Pilih satu jawaban setiap kali. Kebenarannya tetap tersembunyi sampai pengungkapan terakhir.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Ujian masuk keperawatan",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tantangan Masuk Keperawatan",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skor masuk keperawatan Anda dan rincian tiga area siap diungkapkan.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Tiga area pintu masuk dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga area pintu masuk dibandingkan"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Anda lulus tantangan keperawatan!",
       "finished": "Tantangan keperawatan selesai",
-      "correctLabel": "benar",
       "strongest": "Area pintu masuk terkuat",
       "trickiest": "Area pintu masuk paling rumit",
       "bestRound": "Bagian terbaik",
@@ -98,8 +91,7 @@
         "snapshot": "Apa yang disarankan oleh profil kandidat Anda",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,12 +100,12 @@
       "questions": {
         "nurse-r1q1": {
           "question": "Gas manakah yang diambil darah saat kembali dari paru-paru?",
-          "answers": [
-            "Nitrogen",
-            "Oksigen",
-            "Karbon dioksida",
-            "Hidrogen"
-          ],
+          "answers": {
+            "a1": "Nitrogen",
+            "a2": "Oksigen",
+            "a3": "Karbon dioksida",
+            "a4": "Hidrogen"
+          },
           "headerLabel": "ANATOMI & FISIOLOGI"
         },
         "nurse-r1q2": {
@@ -124,23 +116,23 @@
             "ariaLabel": "750 mililiter ditambah 250 mililiter sama dengan jumlah totalnya"
           },
           "question": "Sebuah kendi berisi 750 mL. Ditambahkan 250 mL lagi. Berapa totalnya?",
-          "answers": [
-            "900ml",
-            "1.100 mL",
-            "1.250 ml",
-            "1.000 ml"
-          ],
+          "answers": {
+            "a1": "900ml",
+            "a2": "1.100 mL",
+            "a3": "1.250 ml",
+            "a4": "1.000 ml"
+          },
           "headerLabel": "NUMERASI PERAWATAN KESEHATAN"
         },
         "nurse-r2q5": {
           "context": "Sebelumnya: bernapas dengan nyaman dan berbicara dengan normal. Sekarang: bernapas lebih cepat dan jeda di antara frasa pendek.",
           "question": "Perubahan manakah dalam catatan observasi ini yang paling penting?",
-          "answers": [
-            "Catatan itu berisi dua titik waktu",
-            "Pola pernapasannya memburuk",
-            "Orang itu masih berbicara",
-            "Catatan sebelumnya lebih pendek"
-          ],
+          "answers": {
+            "a1": "Catatan itu berisi dua titik waktu",
+            "a2": "Pola pernapasannya memburuk",
+            "a3": "Orang itu masih berbicara",
+            "a4": "Catatan sebelumnya lebih pendek"
+          },
           "headerLabel": "TREN OBSERVASI"
         },
         "nurse-r5q4": {
@@ -152,53 +144,53 @@
             "ariaLabel": "Serah terima mengatakan lengan kiri, bagan mengatakan lengan kanan"
           },
           "question": "Ketidaksesuaian apa yang harus diklarifikasi?",
-          "answers": [
-            "Penggunaan huruf kapital",
-            "Jumlah kata",
-            "Bagan memiliki batas",
-            "Sisi yang direkam berbeda"
-          ],
+          "answers": {
+            "a1": "Penggunaan huruf kapital",
+            "a2": "Jumlah kata",
+            "a3": "Bagan memiliki batas",
+            "a4": "Sisi yang direkam berbeda"
+          },
           "headerLabel": "AKURASI REKAM"
         },
         "nurse-r4q3": {
           "question": "Suatu tugas mungkin memercikkan cairan tubuh ke wajah. Perlindungan manakah yang mengatasi risiko tersebut?",
-          "answers": [
-            "Topi kain",
-            "Perlindungan mata atau wajah yang sesuai",
-            "Hanya penutup sepatu",
-            "Tidak ada perlindungan jika tugasnya singkat"
-          ],
+          "answers": {
+            "a1": "Topi kain",
+            "a2": "Perlindungan mata atau wajah yang sesuai",
+            "a3": "Hanya penutup sepatu",
+            "a4": "Tidak ada perlindungan jika tugasnya singkat"
+          },
           "headerLabel": "PENCEGAHAN INFEKSI"
         },
         "nurse-r6q3": {
           "question": "Seseorang mengajukan pertanyaan sensitif di tempat umum yang sibuk. Apa yang harus kamu lakukan?",
-          "answers": [
-            "Tawarkan untuk melanjutkan percakapan di tempat yang pribadi",
-            "Jawablah dengan singkat dan pelan dimana anda berada",
-            "Mintalah orang-orang terdekat untuk memberi Anda ruang",
-            "Berikan hanya bagian jawaban yang tidak sensitif"
-          ],
+          "answers": {
+            "a1": "Tawarkan untuk melanjutkan percakapan di tempat yang pribadi",
+            "a2": "Jawablah dengan singkat dan pelan dimana anda berada",
+            "a3": "Mintalah orang-orang terdekat untuk memberi Anda ruang",
+            "a4": "Berikan hanya bagian jawaban yang tidak sensitif"
+          },
           "headerLabel": "KOMUNIKASI YANG BERMANFAAT"
         },
         "nurse-r7q1": {
           "context": "Orang A merasa nyaman dengan denyut nadi yang sedikit lebih cepat setelah berjalan. Orang B tiba-tiba bingung, napasnya cepat dan tampak pucat.",
           "question": "Siapa yang butuh perhatian terlebih dahulu?",
-          "answers": [
-            "Orang B, karena beberapa tanda baru menunjukkan kemunduran yang tiba-tiba",
-            "Orang A, karena denyut nadinya berubah",
-            "Keduanya bisa menunggu observasi rutin",
-            "Orang yang datang lebih dulu"
-          ],
+          "answers": {
+            "a1": "Orang B, karena beberapa tanda baru menunjukkan kemunduran yang tiba-tiba",
+            "a2": "Orang A, karena denyut nadinya berubah",
+            "a3": "Keduanya bisa menunggu observasi rutin",
+            "a4": "Orang yang datang lebih dulu"
+          },
           "headerLabel": "PENILAIAN PRIORITAS"
         },
         "nurse-r3q1": {
           "question": "Total cairan meningkat dari 600 mL menjadi 900 mL. Berapa persen peningkatannya?",
-          "answers": [
-            "25%",
-            "33%",
-            "50%",
-            "75%"
-          ],
+          "answers": {
+            "a1": "25%",
+            "a2": "33%",
+            "a3": "50%",
+            "a4": "75%"
+          },
           "headerLabel": "NUMERASI PERAWATAN KESEHATAN"
         },
         "nurse-r10q1": {
@@ -209,12 +201,12 @@
             "ariaLabel": "Jalan napas tersumbat, lebih sedikit udara ke paru-paru, tidak diketahui, lebih sedikit oksigen ke jaringan"
           },
           "question": "Penyumbatan saluran napas mencegah udara mencapai paru-paru. Dampak hilir apa yang paling langsung terjadi?",
-          "answers": [
-            "Lebih sedikit oksigen yang masuk ke dalam darah",
-            "Lebih banyak nutrisi yang masuk ke lambung",
-            "Ginjal segera membentuk lebih banyak urin",
-            "Tulang menghasilkan lebih banyak gerakan"
-          ],
+          "answers": {
+            "a1": "Lebih sedikit oksigen yang masuk ke dalam darah",
+            "a2": "Lebih banyak nutrisi yang masuk ke lambung",
+            "a3": "Ginjal segera membentuk lebih banyak urin",
+            "a4": "Tulang menghasilkan lebih banyak gerakan"
+          },
           "headerLabel": "FISIOLOGI TERINTEGRASI"
         },
         "nurse-r10q6": {
@@ -226,12 +218,12 @@
             "ariaLabel": "Orang A waspada dengan ketidaknyamanan ringan yang stabil dan kemampuan bicara normal. Orang B pucat, sulit dibangunkan, dan pernapasan tidak teratur."
           },
           "question": "Siapa yang memiliki prioritas utama?",
-          "answers": [
-            "Orang A, karena ketidaknyamanan selalu didahulukan",
-            "Keduanya bisa menunggu pemeriksaan rutin",
-            "Orang B, karena kesadaran dan pernafasannya tiba-tiba berubah",
-            "Pilih berdasarkan siapa yang datang lebih dulu"
-          ],
+          "answers": {
+            "a1": "Orang A, karena ketidaknyamanan selalu didahulukan",
+            "a2": "Keduanya bisa menunggu pemeriksaan rutin",
+            "a3": "Orang B, karena kesadaran dan pernafasannya tiba-tiba berubah",
+            "a4": "Pilih berdasarkan siapa yang datang lebih dulu"
+          },
           "headerLabel": "PENYERAHAN TERAKHIR"
         }
       }

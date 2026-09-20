@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Chỉ 6% người lớn có thể vượt qua kỳ thi tuyển sinh lực lượng không quân này",
   "eyebrow": "KIỂM TRA NĂNG LỰC KHÔNG KHÍ",
   "summary": "Mười câu hỏi kiểm tra nguyên tắc bay, dụng cụ, điều hướng và vật lý hàng không.",
-  "progressLabel": "hoàn thành",
   "landing": {
     "intro": "Những điều cơ bản về buồng lái có vẻ dễ dàng. Sau đó, bài kiểm tra sẽ chuyển sang phần điều hướng, điều khiển và vật lý chuyến bay.",
     "cta": "Bắt đầu kiểm tra"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Thử thách giải trí gồm mười câu hỏi này sử dụng các nguyên tắc hàng không áp dụng cho các lực lượng không quân và chuyến bay dân dụng trên toàn thế giới. Nó chuyển từ bốn lực của chuyến bay sang các công cụ trong buồng lái, ngôn ngữ định hướng, điều khiển máy bay và lý luận khí động học cơ bản.\n\nChọn một câu trả lời cho mỗi câu hỏi. Tính chính xác vẫn được ẩn cho đến khi được tiết lộ cuối cùng, nơi có sẵn bản đánh giá câu trả lời đầy đủ để mở khóa.",
     "howToPlay": {
-      "title": "Cách chơi",
       "steps": [
         "Trả lời mười câu hỏi hàng không ngày càng khó khăn.",
         "Chọn một trong bốn câu trả lời mà không cần sự trợ giúp từ bên ngoài.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Thử thách đầu vào của Lực lượng Không quân",
-    "resultProgressComplete": "{value}% đã hoàn thành",
     "stages": {
       "stage-1": {
         "difficulty": "Kỳ thi tuyển sinh Không quân",
@@ -30,10 +26,8 @@
         "preAdCopy": "Mười câu trả lời của bạn đã được kiểm tra và điểm năng lực không quân của bạn đã sẵn sàng được tiết lộ.",
         "preAdChecks": [
           "Đã kiểm tra 10 câu trả lời",
-          "Năm lĩnh vực hàng không được so sánh",
-          "Điểm số cuối cùng của bạn được tính toán"
-        ],
-        "preAdButton": "Tiết lộ kết quả của tôi"
+          "Năm lĩnh vực hàng không được so sánh"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Bạn đã vượt qua thử thách đầu vào của Lực lượng Không quân!",
       "finished": "Thử thách đầu vào của Lực lượng Không quân đã hoàn thành",
-      "correctLabel": "đúng",
       "strongest": "Khu vực hàng không mạnh nhất",
       "trickiest": "Khu vực hàng không khó khăn nhất",
       "bestRound": "Phần hay nhất",
@@ -99,8 +92,7 @@
         "snapshot": "Kết quả của bạn gợi ý điều gì",
         "targetReached": "Đã đạt được 80% thử thách",
         "targetRemaining": "Cần thêm câu trả lời đúng cho 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "airforce-q1": {
           "question": "Lực nào trong bốn lực bay tác dụng lên trọng lượng?",
-          "answers": [
-            "Lực nâng",
-            "Lực cản",
-            "Lực đẩy",
-            "Quán tính"
-          ],
+          "answers": {
+            "a1": "Lực nâng",
+            "a2": "Lực cản",
+            "a3": "Lực đẩy",
+            "a4": "Quán tính"
+          },
           "headerLabel": "THÔNG TIN CƠ BẢN VỀ CHUYẾN BAY"
         },
         "airforce-q2": {
           "question": "Dụng cụ nào trong buồng lái cho biết độ cao của máy bay?",
-          "answers": [
-            "Chỉ báo tốc độ bay",
-            "Máy đo độ cao",
-            "Điều phối viên lần lượt",
-            "Chỉ báo tốc độ dọc"
-          ],
+          "answers": {
+            "a1": "Chỉ báo tốc độ bay",
+            "a2": "Máy đo độ cao",
+            "a3": "Điều phối viên lần lượt",
+            "a4": "Chỉ báo tốc độ dọc"
+          },
           "headerLabel": "THIẾT BỊ COCKPIT"
         },
         "airforce-q3": {
           "question": "Điều khiển chuyến bay chính nào làm cho máy bay lăn?",
-          "answers": [
-            "Bánh lái độ cao",
-            "bánh lái",
-            "Ailerons",
-            "Cánh tà"
-          ],
+          "answers": {
+            "a1": "Bánh lái độ cao",
+            "a2": "bánh lái",
+            "a3": "Ailerons",
+            "a4": "Cánh tà"
+          },
           "headerLabel": "ĐIỀU KHIỂN BAY"
         },
         "airforce-q4": {
           "question": "Hướng từ 270 độ có hướng xấp xỉ theo hướng nào?",
-          "answers": [
-            "miền Bắc",
-            "Đông",
-            "miền Nam",
-            "Tây"
-          ],
+          "answers": {
+            "a1": "miền Bắc",
+            "a2": "Đông",
+            "a3": "miền Nam",
+            "a4": "Tây"
+          },
           "headerLabel": "ĐIỀU HƯỚNG"
         },
         "airforce-q5": {
           "question": "Số Mach so sánh tốc độ của máy bay với cái gì?",
-          "answers": [
-            "Tốc độ âm thanh cục bộ",
-            "Tốc độ ánh sáng",
-            "Sự quay của Trái Đất",
-            "Tốc độ gió xung quanh"
-          ],
+          "answers": {
+            "a1": "Tốc độ âm thanh cục bộ",
+            "a2": "Tốc độ ánh sáng",
+            "a3": "Sự quay của Trái Đất",
+            "a4": "Tốc độ gió xung quanh"
+          },
           "headerLabel": "TỐC ĐỘ VÀ ÂM THANH"
         },
         "airforce-q6": {
           "question": "Trong hàng không, phía nào của máy bay được gọi là cảng?",
-          "answers": [
-            "Đúng",
-            "trái",
-            "phía trước",
-            "phía sau"
-          ],
+          "answers": {
+            "a1": "Đúng",
+            "a2": "trái",
+            "a3": "phía trước",
+            "a4": "phía sau"
+          },
           "headerLabel": "NGÔN NGỮ HÀNG KHÔNG"
         },
         "airforce-q7": {
           "question": "Đường băng số 09 được căn chỉnh theo hướng la bàn nào?",
-          "answers": [
-            "miền Bắc",
-            "miền Nam",
-            "Đông",
-            "Tây"
-          ],
+          "answers": {
+            "a1": "miền Bắc",
+            "a2": "miền Nam",
+            "a3": "Đông",
+            "a4": "Tây"
+          },
           "headerLabel": "LÝ LUẬN ĐƯỜNG CHUYỂN"
         },
         "airforce-q8": {
           "question": "Góc giữa đường dây của cánh máy bay và luồng không khí đang tới được gọi là gì?",
-          "answers": [
-            "Góc ngân hàng",
-            "Góc trượt",
-            "Thái độ quảng cáo chiêu hàng",
-            "Góc tấn công"
-          ],
+          "answers": {
+            "a1": "Góc ngân hàng",
+            "a2": "Góc trượt",
+            "a3": "Thái độ quảng cáo chiêu hàng",
+            "a4": "Góc tấn công"
+          },
           "headerLabel": "KHÍ ĐỘNG HỌC"
         },
         "airforce-q9": {
           "question": "Lực đẩy phản lực được giải thích trực tiếp nhất bằng định luật nào của Newton?",
-          "answers": [
-            "Định luật thứ ba",
-            "Luật đầu tiên",
-            "Định luật hấp dẫn",
-            "Định luật thứ hai của nhiệt động lực học"
-          ],
+          "answers": {
+            "a1": "Định luật thứ ba",
+            "a2": "Luật đầu tiên",
+            "a3": "Định luật hấp dẫn",
+            "a4": "Định luật thứ hai của nhiệt động lực học"
+          },
           "headerLabel": "VẬT LÝ SỰ ĐẨY"
         },
         "airforce-q10": {
           "question": "Nếu mật độ không khí không đổi và tốc độ không khí tăng gấp đôi thì áp suất động thay đổi theo hệ số nào?",
-          "answers": [
-            "Hai",
-            "bốn",
-            "tám",
-            "Nó không thay đổi"
-          ],
+          "answers": {
+            "a1": "Hai",
+            "a2": "bốn",
+            "a3": "tám",
+            "a4": "Nó không thay đổi"
+          },
           "headerLabel": "CÂU HỎI NĂNG LỰC CUỐI CÙNG"
         }
       }

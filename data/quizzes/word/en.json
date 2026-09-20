@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Only 7% Pass This Word Association Test",
   "eyebrow": "THE WORD CONNECTION TEST",
   "summary": "Ten words. Four possible connections each. Only the sharpest minds spot every true match.",
-  "progressLabel": "complete",
   "landing": {
     "intro": "Each word has one correct match. The first few seem obvious - then it gets surprisingly tricky.",
     "cta": "Start Quiz"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Every word carries a web of possible meanings, but only one option in each round has the precise connection the question is testing. This ten-question challenge moves from familiar everyday links into science, concepts and wordplay.\n\nChoose the strongest match from four possibilities. Correctness stays hidden until the final reveal, so instinct and careful reasoning both matter.\n\nThe quiz uses the single-keyword association format of the linked Times of India challenge as inspiration, with an original question set, answer order and result experience.",
     "howToPlay": {
-      "title": "How to Play",
       "steps": [
         "Read the keyword and decide what it connects to most precisely.",
         "Choose one answer from the four possible matches.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Word association challenge",
-    "resultProgressComplete": "{value}% complete",
     "stages": {
       "stage-1": {
         "difficulty": "Word Connections",
@@ -30,10 +26,8 @@
         "preAdCopy": "Your ten connections have been checked and your word-association score is ready to reveal.",
         "preAdChecks": [
           "10 connections checked",
-          "Three association types compared",
-          "Your final score calculated"
-        ],
-        "preAdButton": "Reveal My Results"
+          "Three association types compared"
+        ]
       }
     }
   },
@@ -67,14 +61,19 @@
       }
     },
     "dimensions": {
-      "dimension-1": { "label": "Nature connections" },
-      "dimension-2": { "label": "Science and logic" },
-      "dimension-3": { "label": "Language and wordplay" }
+      "dimension-1": {
+        "label": "Nature connections"
+      },
+      "dimension-2": {
+        "label": "Science and logic"
+      },
+      "dimension-3": {
+        "label": "Language and wordplay"
+      }
     },
     "score": {
       "passed": "You passed the word association test!",
       "finished": "Word association test complete",
-      "correctLabel": "correct",
       "strongest": "Strongest connection type",
       "trickiest": "Trickiest connection type",
       "bestRound": "Best section",
@@ -87,8 +86,7 @@
         "snapshot": "What your result suggests",
         "targetReached": "80% challenge reached",
         "targetRemaining": "More correct answers needed for 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -97,52 +95,102 @@
       "questions": {
         "word-q1": {
           "question": "Which word has the strongest connection to OCEAN?",
-          "answers": ["Pencil", "Tide", "Blanket", "Engine"],
+          "answers": {
+            "a1": "Pencil",
+            "a2": "Tide",
+            "a3": "Blanket",
+            "a4": "Engine"
+          },
           "headerLabel": "WORD 1 OF 10"
         },
         "word-q2": {
           "question": "Which word has the strongest connection to VOLCANO?",
-          "answers": ["Mirror", "Ribbon", "Wallet", "Lava"],
+          "answers": {
+            "a1": "Mirror",
+            "a2": "Ribbon",
+            "a3": "Wallet",
+            "a4": "Lava"
+          },
           "headerLabel": "WORD 2 OF 10"
         },
         "word-q3": {
           "question": "Which word has the strongest connection to COMPASS?",
-          "answers": ["North", "Flavour", "Fabric", "Echo"],
+          "answers": {
+            "a1": "North",
+            "a2": "Flavour",
+            "a3": "Fabric",
+            "a4": "Echo"
+          },
           "headerLabel": "WORD 3 OF 10"
         },
         "word-q4": {
           "question": "Which word has the strongest connection to BATTERY?",
-          "answers": ["Shadow", "Harvest", "Charge", "Melody"],
+          "answers": {
+            "a1": "Shadow",
+            "a2": "Harvest",
+            "a3": "Charge",
+            "a4": "Melody"
+          },
           "headerLabel": "WORD 4 OF 10"
         },
         "word-q5": {
           "question": "Which word has the strongest connection to ARCHIPELAGO?",
-          "answers": ["Tunnels", "Islands", "Fossils", "Clouds"],
+          "answers": {
+            "a1": "Tunnels",
+            "a2": "Islands",
+            "a3": "Fossils",
+            "a4": "Clouds"
+          },
           "headerLabel": "WORD 5 OF 10"
         },
         "word-q6": {
           "question": "Which word has the strongest connection to BAROMETER?",
-          "answers": ["Distance", "Volume", "Speed", "Pressure"],
+          "answers": {
+            "a1": "Distance",
+            "a2": "Volume",
+            "a3": "Speed",
+            "a4": "Pressure"
+          },
           "headerLabel": "WORD 6 OF 10"
         },
         "word-q7": {
           "question": "Which word has the strongest connection to ALGORITHM?",
-          "answers": ["Steps", "Canvas", "Thunder", "Velvet"],
+          "answers": {
+            "a1": "Steps",
+            "a2": "Canvas",
+            "a3": "Thunder",
+            "a4": "Velvet"
+          },
           "headerLabel": "WORD 7 OF 10"
         },
         "word-q8": {
           "question": "Which word has the strongest connection to KEYSTONE?",
-          "answers": ["Compass", "Curtain", "Arch", "Bottle"],
+          "answers": {
+            "a1": "Compass",
+            "a2": "Curtain",
+            "a3": "Arch",
+            "a4": "Bottle"
+          },
           "headerLabel": "WORD 8 OF 10"
         },
         "word-q9": {
           "question": "Which word has the strongest connection to HOMOPHONE?",
-          "answers": ["Sound", "Colour", "Shape", "Size"],
+          "answers": {
+            "a1": "Sound",
+            "a2": "Colour",
+            "a3": "Shape",
+            "a4": "Size"
+          },
           "headerLabel": "WORD 9 OF 10"
         },
         "word-q10": {
           "question": "Which word has the strongest connection to PALINDROME?",
-          "answers": ["Triangle", "Racecar", "Chapter", "Compass"],
+          "answers": {
+            "a1": "Triangle",
+            "a2": "Racecar",
+            "a3": "Chapter",
+            "a4": "Compass"
+          },
           "headerLabel": "FINAL CONNECTION"
         }
       }

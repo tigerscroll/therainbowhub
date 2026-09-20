@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Hanya 7% yang Lulus Tes Intelegensi Ini",
   "eyebrow": "VAULT KECERDASAN",
   "summary": "Pola, aturan angka, tautan kata, dan jebakan spasial menguji seberapa cepat penalaran Anda menemukan aturan tersembunyi.",
-  "progressLabel": "selesai",
   "landing": {
     "intro": "Pola, kode, tautan kata, dan jebakan logika bertabrakan. Berapa lama pemikiran Anda bisa selangkah lebih maju?",
     "cta": "Mulai Tes"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tantangan hiburan sedunia ini menyatukan sepuluh teka-teki yang dipilih dengan cermat yang mencakup pola, aturan numerik, hubungan verbal, penalaran spasial, perhatian, dan deduksi logis. Ini dirancang agar terasa menyenangkan dan menuntut daripada seperti ujian bakat formal.\n\nSetiap teka-teki memiliki satu jawaban yang didukung oleh informasi yang ditampilkan. Interaksinya berubah secara teratur, jadi Anda mungkin perlu mengidentifikasi aturan, membandingkan petunjuk, mengubah simbol, menghitung secara mental, atau memperhatikan sedikit ketidakkonsistenan.\n\nSkor Tes Kecerdasan Anda adalah persentase teka-teki hiburan yang Anda pecahkan dengan benar. Ini hanya menggambarkan upaya ini dan tidak mengukur kecerdasan, IQ, bakat, atau kemampuan pendidikan Anda yang sebenarnya.",
     "howToPlay": {
-      "title": "Cara Bermain",
       "steps": [
         "Selesaikan sepuluh pertanyaan yang dipilih dengan cermat dalam satu tantangan terfokus.",
         "Pilih satu jawaban setiap kali. Kebenarannya tetap tersembunyi sampai pengungkapan terakhir.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Tantangan intelijen",
-    "resultProgressComplete": "{value}% selesai",
     "stages": {
       "stage-1": {
         "difficulty": "Tantangan Intelijen",
@@ -30,10 +26,8 @@
         "preAdCopy": "Skor tes kecerdasan dan pengelompokan tiga area Anda siap terungkap.",
         "preAdChecks": [
           "10 jawaban diperiksa",
-          "Tiga bidang pemikiran dibandingkan",
-          "Skor akhir Anda dihitung"
-        ],
-        "preAdButton": "Ungkapkan Hasil Saya"
+          "Tiga bidang pemikiran dibandingkan"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Anda lulus tantangan Tes Intelijen!",
       "finished": "Tes Intelegensi selesai",
-      "correctLabel": "benar",
       "strongest": "Area berpikir terkuat",
       "trickiest": "Area berpikir paling rumit",
       "bestRound": "Bagian terbaik",
@@ -98,8 +91,7 @@
         "snapshot": "Apa yang disarankan oleh upaya ini",
         "targetReached": "Tantangan 80% tercapai",
         "targetRemaining": "Dibutuhkan lebih banyak jawaban yang benar untuk 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "lingkaran, segitiga, lingkaran, segitiga, tidak diketahui"
           },
           "question": "Simbol manakah yang muncul selanjutnya?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "PENALARAN POLA"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "panah kanan atas di samping cermin vertikal"
           },
           "question": "Panah manakah yang dipantulkan pada cermin vertikal?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "PENALARAN SPASIAL"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "pergeseran huruf tambah satu, tambah dua, tambah satu; CAT menjadi DCU"
           },
           "question": "Pergeserannya berulang +1, +2, +1. Bagaimana kode DOG?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "PENALARAN VERBAL"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "piramida bilangan dengan bagian bawah 3, 5, 4 dan tengah 8, 9"
           },
           "question": "Setiap blok adalah jumlah dari dua blok di bawahnya. Apa yang terjadi di atas?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "PENALARAN NUMERIK"
         },
         "iq-s3q2": {
           "question": "Sebuah mesin menggandakan sebuah angka, lalu menambahkan 3. Input manakah yang menghasilkan 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "PENALARAN NUMERIK"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Kode referensi K7M2-Q9. Temukan opsi dengan satu karakter diubah."
           },
           "question": "Salinan mana yang berbeda dari referensi hanya dengan satu karakter?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "PERHATIAN TERHADAP DETAIL"
         },
         "iq-s4q1": {
           "question": "Tepatnya satu orang mengatakan yang sebenarnya. A bilang B bohong. B bilang C bohong. C bilang A dan B sama-sama bohong. Siapa yang mengatakan yang sebenarnya?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Tidak ada"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Tidak ada"
+          },
           "headerLabel": "PENGURANGAN LOGIS"
         },
         "iq-s4q4": {
           "question": "Mulailah dari tengah menghadap utara. Maju satu kotak, belok kanan, pindahkan dua kotak, belok kanan, lalu pindah satu kotak. Di mana Anda menyelesaikannya dibandingkan dengan awal?",
-          "answers": [
-            "Dua kotak ke kanan",
-            "Satu persegi",
-            "Tinggal dua kotak",
-            "Kembali ke tengah"
-          ],
+          "answers": {
+            "a1": "Dua kotak ke kanan",
+            "a2": "Satu persegi",
+            "a3": "Tinggal dua kotak",
+            "a4": "Kembali ke tengah"
+          },
           "headerLabel": "PENALARAN SPASIAL"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "baris 3, 4, 10; 5, 2, 12; 7, 3, tidak diketahui"
           },
           "question": "Di setiap baris, gandakan angka pertama, lalu tambahkan angka kedua. Apa yang menggantikan tanda tanya?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "PENALARAN NUMERIK"
         },
         "iq-s5q8": {
           "question": "Sebuah panah mengarah ke atas. Putarlah 90° searah jarum jam, lalu pantulkan pada cermin vertikal. Dimana maksudnya?",
-          "answers": [
-            "Naik",
-            "Benar",
-            "Turun",
-            "Kiri"
-          ],
+          "answers": {
+            "a1": "Naik",
+            "a2": "Benar",
+            "a3": "Turun",
+            "a4": "Kiri"
+          },
           "headerLabel": "UJI SPASIAL AKHIR"
         }
       }

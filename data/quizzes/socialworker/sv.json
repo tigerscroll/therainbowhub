@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "De flesta vuxna kan inte klara detta inträdesprov för socialarbetare",
   "eyebrow": "PROVET FÖR MÄNNISKOR OCH ÖVNING",
   "summary": "Tio frågor testar lyssnande, etik, skydd och verkliga stödbeslut.",
-  "progressLabel": "komplett",
   "landing": {
     "intro": "De första frågorna testar empati. Sedan flyttar situationerna in i sekretess, gränser och beslut där varje detalj spelar roll.",
     "cta": "Starta testet"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Denna underhållningsutmaning med tio frågor använder breda principer för socialt arbete som gäller i engelsktalande nivå 1-länder. Det går från lyssnande och samtycke till konfidentialitet, kulturell ödmjukhet, skydd, dokumentation och yrkesgränser.\n\nVälj ett svar för varje situation. Korrektheten förblir dold tills den sista avslöjandet, där hela svarsgranskningen är tillgänglig att låsa upp.",
     "howToPlay": {
-      "title": "Hur man spelar",
       "steps": [
         "Svara på tio allt svårare övningsscenarier.",
         "Välj det enskilt mest ansvarsfulla allmänna svaret.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Utmaning för socialsekreterare",
-    "resultProgressComplete": "{value} % klar",
     "stages": {
       "stage-1": {
         "difficulty": "Inträdesprov för socialarbetare",
@@ -30,10 +26,8 @@
         "preAdCopy": "Dina tio svar har kontrollerats och ditt professionella omdöme är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fem övningsområden jämförda",
-          "Ditt slutresultat beräknat"
-        ],
-        "preAdButton": "Avslöja mina resultat"
+          "Fem övningsområden jämförda"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Du klarade inträdesutmaningen för socialarbetare!",
       "finished": "Inträdesutmaningen för socialarbetare klar",
-      "correctLabel": "korrekt",
       "strongest": "Starkast övningsområde",
       "trickiest": "Knepigaste träningsområdet",
       "bestRound": "Bästa avsnittet",
@@ -99,8 +92,7 @@
         "snapshot": "Vad ditt resultat antyder",
         "targetReached": "80 % utmaning uppnådd",
         "targetRemaining": "Fler korrekta svar behövs för 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "socialworker-q1": {
           "question": "Vilken inledande fråga är mest sannolikt att hjälpa en person att förklara vilket stöd de vill ha?",
-          "answers": [
-            "Vad skulle du helst vilja ha hjälp med idag?",
-            "Varför lät du detta hända?",
-            "Håller du med om att min plan är bäst?",
-            "Kan vi hoppa över bakgrunden och fylla i formuläret?"
-          ],
+          "answers": {
+            "a1": "Vad skulle du helst vilja ha hjälp med idag?",
+            "a2": "Varför lät du detta hända?",
+            "a3": "Håller du med om att min plan är bäst?",
+            "a4": "Kan vi hoppa över bakgrunden och fylla i formuläret?"
+          },
           "headerLabel": "AKTIVT LYSSNA"
         },
         "socialworker-q2": {
           "question": "Vad är viktigt för informerat samtycke?",
-          "answers": [
-            "En professionell som bestämmer vad som är bäst utan diskussion",
-            "Personen förstår relevant information och samtycker frivilligt",
-            "En undertecknad blankett i alla möjliga situationer",
-            "Avtal från en familjemedlem istället för personen"
-          ],
+          "answers": {
+            "a1": "En professionell som bestämmer vad som är bäst utan diskussion",
+            "a2": "Personen förstår relevant information och samtycker frivilligt",
+            "a3": "En undertecknad blankett i alla möjliga situationer",
+            "a4": "Avtal från en familjemedlem istället för personen"
+          },
           "headerLabel": "SAMTYCKE"
         },
         "socialworker-q3": {
           "question": "Vilket uttalande om sekretess är mest korrekt?",
-          "answers": [
-            "Information kan aldrig delas av någon anledning",
-            "Allt kan delas med vem som helst i supportteamet",
-            "Sekretess är skyddad, men allvarliga säkerhetsproblem eller juridiska skyldigheter kan kräva begränsad delning",
-            "Sekretessen upphör efter det första mötet"
-          ],
+          "answers": {
+            "a1": "Information kan aldrig delas av någon anledning",
+            "a2": "Allt kan delas med vem som helst i supportteamet",
+            "a3": "Sekretess är skyddad, men allvarliga säkerhetsproblem eller juridiska skyldigheter kan kräva begränsad delning",
+            "a4": "Sekretessen upphör efter det första mötet"
+          },
           "headerLabel": "KONFIDENTIALITET"
         },
         "socialworker-q4": {
           "question": "Vilket svar visar bäst kulturell ödmjukhet?",
-          "answers": [
-            "Anta att alla från samma bakgrund har liknande behov",
-            "Undvik att diskutera kultur under alla omständigheter",
-            "Använd en standardplan innan du hör personens perspektiv",
-            "Fråga om personens preferenser och förbli öppen för att korrigera dina antaganden"
-          ],
+          "answers": {
+            "a1": "Anta att alla från samma bakgrund har liknande behov",
+            "a2": "Undvik att diskutera kultur under alla omständigheter",
+            "a3": "Använd en standardplan innan du hör personens perspektiv",
+            "a4": "Fråga om personens preferenser och förbli öppen för att korrigera dina antaganden"
+          },
           "headerLabel": "KULTURELL ÖDGÅNG"
         },
         "socialworker-q5": {
           "question": "Vad är det mest sannolikt att en styrkabaserad bedömning utforskar?",
-          "answers": [
-            "Personens förmågor, resurser, relationer och mål samt dennes behov",
-            "Endast de problem som anges på en remiss",
-            "Om personen håller med om varje professionell åsikt",
-            "Vilken tjänst kräver minst dokumentation"
-          ],
+          "answers": {
+            "a1": "Personens förmågor, resurser, relationer och mål samt dennes behov",
+            "a2": "Endast de problem som anges på en remiss",
+            "a3": "Om personen håller med om varje professionell åsikt",
+            "a4": "Vilken tjänst kräver minst dokumentation"
+          },
           "headerLabel": "STYRKORBASERAD PRAXIS"
         },
         "socialworker-q6": {
           "question": "En person som får stöd ber sin socialsekreterare om ett personligt lån. Vad är det bästa generella svaret?",
-          "answers": [
-            "Låna ett litet belopp men håll det privat",
-            "Behåll den yrkesmässiga gränsen och utforska lämpliga källor till praktiskt stöd",
-            "Be en annan person som får stöd att ge det",
-            "Avsluta all support omedelbart utan förklaring"
-          ],
+          "answers": {
+            "a1": "Låna ett litet belopp men håll det privat",
+            "a2": "Behåll den yrkesmässiga gränsen och utforska lämpliga källor till praktiskt stöd",
+            "a3": "Be en annan person som får stöd att ge det",
+            "a4": "Avsluta all support omedelbart utan förklaring"
+          },
           "headerLabel": "YRKESGRÄNSER"
         },
         "socialworker-q7": {
           "question": "Ett samtal väcker en trovärdig oro för att ett barn eller en sårbar vuxen kan vara osäker. Vilket är det bästa allmänna nästa steget?",
-          "answers": [
-            "Undersök varje detalj ensam innan du berättar för någon",
-            "Ignorera det om inte fysiska bevis finns tillgängliga",
-            "Registrera problemet och följ omgående tillämplig skydds- eller rapporteringsprocess",
-            "Lägg upp ett anonymt konto online för råd"
-          ],
+          "answers": {
+            "a1": "Undersök varje detalj ensam innan du berättar för någon",
+            "a2": "Ignorera det om inte fysiska bevis finns tillgängliga",
+            "a3": "Registrera problemet och följ omgående tillämplig skydds- eller rapporteringsprocess",
+            "a4": "Lägg upp ett anonymt konto online för råd"
+          },
           "headerLabel": "SKYDD"
         },
         "socialworker-q8": {
           "question": "Vilken ärendeanteckning är i allmänhet den mest lämpliga?",
-          "answers": [
-            "En fördröjd anteckning baserad främst på minne",
-            "En personlig åsikt om personens karaktär",
-            "Varje detalj från arbetarens hela dag",
-            "Ett aktuellt, relevant och sakligt dokument som skiljer observation från åsikt"
-          ],
+          "answers": {
+            "a1": "En fördröjd anteckning baserad främst på minne",
+            "a2": "En personlig åsikt om personens karaktär",
+            "a3": "Varje detalj från arbetarens hela dag",
+            "a4": "Ett aktuellt, relevant och sakligt dokument som skiljer observation från åsikt"
+          },
           "headerLabel": "REGISTRERING"
         },
         "socialworker-q9": {
           "question": "När man arbetar med andra yrkesverksamma, vilket tillvägagångssätt för informationsdelning är generellt sett starkast?",
-          "answers": [
-            "Dela relevant information lagligt, involvera personen där det är möjligt och avslöja inte mer än nödvändigt",
-            "Skicka hela posten automatiskt till varje tjänst",
-            "Dela aldrig information även när en allvarlig säkerhetsplikt gäller",
-            "Lita endast på informella verbala uppdateringar"
-          ],
+          "answers": {
+            "a1": "Dela relevant information lagligt, involvera personen där det är möjligt och avslöja inte mer än nödvändigt",
+            "a2": "Skicka hela posten automatiskt till varje tjänst",
+            "a3": "Dela aldrig information även när en allvarlig säkerhetsplikt gäller",
+            "a4": "Lita endast på informella verbala uppdateringar"
+          },
           "headerLabel": "SAMARBETSÖVNING"
         },
         "socialworker-q10": {
           "question": "En duktig vuxen förstår alternativen men tackar nej till en volontärtjänst. Vad är det bästa generella svaret?",
-          "answers": [
-            "Pressa dem tills de kommer överens",
-            "Kontrollera förståelse och omedelbar säkerhet, förklara tillgängliga alternativ och respektera det informerade valet om inte en annan laglig skyldighet gäller",
-            "Kontakta deras arbetsgivare för att övertala dem",
-            "Ta bort alla framtida vägar tillbaka till support"
-          ],
+          "answers": {
+            "a1": "Pressa dem tills de kommer överens",
+            "a2": "Kontrollera förståelse och omedelbar säkerhet, förklara tillgängliga alternativ och respektera det informerade valet om inte en annan laglig skyldighet gäller",
+            "a3": "Kontakta deras arbetsgivare för att övertala dem",
+            "a4": "Ta bort alla framtida vägar tillbaka till support"
+          },
           "headerLabel": "SLUTLIG AUTONOMIFRÅGA"
         }
       }

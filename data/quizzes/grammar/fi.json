@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Vain 10 % voi läpäistä tämän kielioppivisan",
   "eyebrow": "OIKKOLUKUHAASTE",
   "summary": "Rikkinäiset lauseet, välimerkit ja melkein oikea sanamuoto testaavat, voiko virhe lipsahtaa ohi.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Onko kielioppisi mielestäsi virheetön? Korjaa rikkoutuneita lauseita, ota kiinni pienet välimerkit ja todista, että huomaat virheen ennen kuin se tarttuu sinuun.",
     "cta": "Aloita tietokilpailu"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä maailmanlaajuinen englanninkielinen haaste sisältää kymmenen huolellisesti vaihdettua kysymystä lauserakenteesta, välimerkeistä, aikamuodosta, pronomineista, viitteiden selkeydestä ja tarkasta muokkauksesta. Jokainen kohde on kirjoitettu erityisesti englanniksi sen sijaan, että se olisi käännetty toisesta kielestä.\n\nValitse yksi vastaus, joka tekee lauseesta oikean ja luonnollisen sen ilmoitetussa kontekstissa. Oikeus pysyy piilossa lopulliseen paljastukseen asti.\n\nPisteet kuvastavat vain tätä lyhyttä kielihaastetta. Se ei ole muodollinen lukutaidon arviointi tai koulutus.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
         "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Kielioppihaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Grammatikan haaste",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kielioppipisteesi ja kolmen taidon erittely ovat valmiita paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kolmea kielioppitaitoa verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Kolmea kielioppitaitoa verrattiin"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Läpäisit kielioppihaasteen!",
       "finished": "Kielioppihaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin kieliopin taito",
       "trickiest": "Hankalin kieliopin taito",
       "bestRound": "Paras jakso",
@@ -98,8 +91,7 @@
         "snapshot": "Mitä kielioppiprofiilisi ehdottaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -108,101 +100,100 @@
       "questions": {
         "grammar-r1q1": {
           "question": "Mikä vaihtoehto on täydellinen lause?",
-          "answers": [
-            "Viimeisen kappaleen jälkeen",
-            "Toimittaja tarkisti viimeisen kappaleen.",
-            "Koska määräaika muuttui",
-            "Kun kaikki odottivat"
-          ],
+          "answers": {
+            "a1": "Viimeisen kappaleen jälkeen",
+            "a2": "Toimittaja tarkisti viimeisen kappaleen.",
+            "a3": "Koska määräaika muuttui",
+            "a4": "Kun kaikki odottivat"
+          },
           "headerLabel": "LAUSERAKENNE"
         },
         "grammar-r1q3": {
           "context": "Muistiinpanot kuuluvat useille opiskelijoille.",
           "question": "Mikä lause ilmaisee annetun merkityksen oikein?",
-          "answers": [
-            "Oppilaiden muistiinpanot järjestettiin.",
-            "Yhden oppilaan muistiinpano järjestettiin.",
-            "Oppilailla ei ollut muistiinpanoja.",
-            "Muistiinpanot kuuluivat opettajalle."
-          ],
+          "answers": {
+            "a1": "Oppilaiden muistiinpanot järjestettiin.",
+            "a2": "Yhden oppilaan muistiinpano järjestettiin.",
+            "a3": "Oppilailla ei ollut muistiinpanoja.",
+            "a4": "Muistiinpanot kuuluivat opettajalle."
+          },
           "headerLabel": "OMISTUSSUHTEET"
         },
         "grammar-r3q1": {
           "question": "Kokous alkoi klo 09.00. Leo viimeisteli kaavion klo 08.30. Mikä lause on oikea?",
-          "answers": [
-            "Leo täytti kaavion kokouksen alettua.",
-            "Leo oli täyttänyt kaavion kokouksen alettua.",
-            "Leo sai kaavion valmiiksi juuri kokouksen alkaessa.",
-            "Leo oli täyttänyt kaavion ennen kokouksen alkamista."
-          ],
+          "answers": {
+            "a1": "Leo täytti kaavion kokouksen alettua.",
+            "a2": "Leo oli täyttänyt kaavion kokouksen alettua.",
+            "a3": "Leo sai kaavion valmiiksi juuri kokouksen alkaessa.",
+            "a4": "Leo oli täyttänyt kaavion ennen kokouksen alkamista."
+          },
           "headerLabel": "AIKAMUODOT"
         },
         "grammar-r4q3": {
           "question": "Mikä lause käyttää puolipistettä oikein?",
-          "answers": [
-            "Tiedosto oli suuri; koska se latautui hitaasti.",
-            "Tiedosto oli suuri; se latautui hitaasti.",
-            "Tiedosto oli suuri, se latautui hitaasti.",
-            "Tiedosto oli suuri; vaikka latautui hitaasti."
-          ],
+          "answers": {
+            "a1": "Tiedosto oli suuri; koska se latautui hitaasti.",
+            "a2": "Tiedosto oli suuri; se latautui hitaasti.",
+            "a3": "Tiedosto oli suuri, se latautui hitaasti.",
+            "a4": "Tiedosto oli suuri; vaikka latautui hitaasti."
+          },
           "headerLabel": "PUOLIPISTE"
         },
         "grammar-r5q4": {
           "context": "Valitse yksikön ensimmäisen persoonan pronomini.",
           "question": "Mikä sana viittaa puhujaan?",
-          "answers": [
-            "minä",
-            "sinä",
-            "hän",
-            "me"
-          ],
+          "answers": {
+            "a1": "minä",
+            "a2": "sinä",
+            "a3": "hän",
+            "a4": "me"
+          },
           "headerLabel": "PRONOMININ VALINTA"
         },
         "grammar-r5q6": {
           "question": "Missä lauseessa puhuttelu on erotettu pilkulla oikein?",
-          "answers": [
-            "Ravi, tarkista viimeinen rivi rivi.",
-            "Ravi, tarkista viimeinen rivi.",
-            "Ravi, tarkista viimeinen rivi rivi rivi.",
-            "Ravi; ole hyvä ja tarkista viimeinen rivi."
-          ],
+          "answers": {
+            "a1": "Ravi, tarkista viimeinen rivi rivi.",
+            "a2": "Ravi, tarkista viimeinen rivi.",
+            "a3": "Ravi, tarkista viimeinen rivi rivi rivi.",
+            "a4": "Ravi; ole hyvä ja tarkista viimeinen rivi."
+          },
           "headerLabel": "PUHUTTELU"
         },
         "grammar-r7q6": {
           "context": "Raportti sisältää yhteenvedon ja liitteen. Liite päivitetään kuukausittain.",
           "question": "Mikä muokkaus saa kuukausipäivityksen viittaamaan liitteeseen?",
-          "answers": [
-            "Raportti sisältää yhteenvedon ja liitteen, ja se päivitetään kuukausittain.",
-            "Raportti sisältää kuukausittain päivitettävän yhteenvedon sekä liitteen.",
-            "Raportti sisältää yhteenvedon ja liitteen; liite päivitetään kuukausittain.",
-            "Kuukausittain päivitettävä raportti sisältää yhteenvedon ja sen liitteen."
-          ],
+          "answers": {
+            "a1": "Raportti sisältää yhteenvedon ja liitteen, ja se päivitetään kuukausittain.",
+            "a2": "Raportti sisältää kuukausittain päivitettävän yhteenvedon sekä liitteen.",
+            "a3": "Raportti sisältää yhteenvedon ja liitteen; liite päivitetään kuukausittain.",
+            "a4": "Kuukausittain päivitettävä raportti sisältää yhteenvedon ja sen liitteen."
+          },
           "headerLabel": "SELKEÄ VIITTAUS"
         },
         "grammar-r9q1": {
           "question": "Mikä lause alkaa vaikka-sivulauseella ja on välimerkeiltään oikein?",
-          "answers": [
-            "Myrsky päättyi; vaikka kadut olivat edelleen tulvivia.",
-            "Myrsky loppui, mutta kadut pysyivät veden alla.",
-            "Vaikka myrsky päättyi; kadut pysyivät veden alla.",
-            "Vaikka myrsky oli ohi, kadut olivat yhä veden alla."
-          ],
-          "trapdoorErrors": [
-            "puolipiste erottaa päälauseen väärin riippuvaisesta lauseesta",
-            "konjunktiiviadverbistä puuttuu vaaditut rajavälimerkit",
-            "puolipiste seuraa väärin riippuvaista lausetta",
-            null
-          ],
+          "answers": {
+            "a1": "Myrsky päättyi; vaikka kadut olivat edelleen tulvivia.",
+            "a2": "Myrsky loppui, mutta kadut pysyivät veden alla.",
+            "a3": "Vaikka myrsky päättyi; kadut pysyivät veden alla.",
+            "a4": "Vaikka myrsky oli ohi, kadut olivat yhä veden alla."
+          },
+          "trapdoorErrors": {
+            "a1": "puolipiste erottaa päälauseen väärin riippuvaisesta lauseesta",
+            "a2": "konjunktiiviadverbistä puuttuu vaaditut rajavälimerkit",
+            "a3": "puolipiste seuraa väärin riippuvaista lausetta"
+          },
           "headerLabel": "VASTAKOHDAN ILMAISEMINEN"
         },
         "grammar-r10q6": {
           "question": "Mikä lause on täysin oikea?",
-          "answers": [
-            "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea.",
-            "Luvut tarkastelun jälkeen Maya vahvisti jokaisen summan.",
-            "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea oikea.",
-            "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea oikea oikea."
-          ],
+          "answers": {
+            "a1": "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea.",
+            "a2": "Luvut tarkastelun jälkeen Maya vahvisti jokaisen summan.",
+            "a3": "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea oikea.",
+            "a4": "Tarkasteltuaan lukuja Maya vahvisti, että jokainen summa oli oikea oikea oikea."
+          },
           "headerLabel": "TARKKA KIELENHUOLTO"
         },
         "grammar-r7q2": {
@@ -216,12 +207,12 @@
             "ariaLabel": "Loppuraportit tarkistettiin, ennen kuin toimittaja hyväksyi hyväksyi ne julkaistaviksi."
           },
           "question": "Missä osassa on virhe?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "D"
+          },
           "headerLabel": "LOPPUOIKOLUKU"
         }
       }

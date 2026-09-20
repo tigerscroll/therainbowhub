@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Snelle dementietest",
   "eyebrow": "HERSENCHECK MET 10 VRAGEN",
   "summary": "Een snelle uitdaging voor herinnering, aandacht, taal en redenering.",
-  "progressLabel": "voltooid",
   "landing": {
     "intro": "Denk je dat je geheugen nog steeds scherp is? Deze 10 snelle vragen stellen het geheugen, de aandacht en het redeneren op de proef - en de uitgestelde vragen zijn moeilijker dan ze lijken.",
     "cta": "Start de test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Deze hersenuitdaging met tien vragen combineert onmiddellijke en uitgestelde herinnering met aandacht, taal, visueel geheugen en eenvoudig redeneren. Het is ontworpen als een boeiende momentopname van de prestaties van vandaag, niet als een hulpmiddel voor het screenen op dementie.\n\nPrestaties kunnen veranderen door slaap, stress, stemming, medicatie, taal, opleiding, gezichtsvermogen, gehoor, apparaatgebruik en eenvoudig toeval. Een score van een online quiz kan dementie niet bevestigen of uitsluiten.",
     "howToPlay": {
-      "title": "Zo werkt het",
       "steps": [
         "Bestudeer elke herinnering zorgvuldig wanneer deze verschijnt.",
         "Kies één antwoord op elke vraag zonder hulp van buitenaf.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Snelle hersenuitdaging",
-    "resultProgressComplete": "{value}% voltooid",
     "stages": {
       "stage-1": {
         "difficulty": "Snelle dementietest",
@@ -30,10 +26,8 @@
         "preAdCopy": "Je tien antwoorden zijn gecontroleerd en je hersenuitdagingsscore is klaar om bekend te maken.",
         "preAdChecks": [
           "10 antwoorden gecontroleerd",
-          "Drie denkgebieden vergeleken",
-          "Eindscore berekend"
-        ],
-        "preAdButton": "Bekijk mijn resultaten"
+          "Drie denkgebieden vergeleken"
+        ]
       }
     }
   },
@@ -80,7 +74,6 @@
     "score": {
       "passed": "Je hebt de 80% hersenuitdaging voltooid!",
       "finished": "Snelle hersenuitdaging voltooid",
-      "correctLabel": "goed",
       "strongest": "Sterkste gebied vandaag",
       "trickiest": "Het lastigste gebied vandaag",
       "bestRound": "Beste sectie",
@@ -94,8 +87,7 @@
         "snapshot": "Wat je resultaat doet vermoeden",
         "targetReached": "80% uitdaging bereikt",
         "targetRemaining": "Meer juiste antwoorden nodig voor 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -105,12 +97,12 @@
         "dementia-q1": {
           "question": "Welk woord verscheen als derde?",
           "headerLabel": "ONMIDDELLIJKE HERROEPING",
-          "answers": [
-            "Brug",
-            "Citroen",
-            "Tuin",
-            "Klok"
-          ],
+          "answers": {
+            "a1": "Brug",
+            "a2": "Citroen",
+            "a3": "Tuin",
+            "a4": "Klok"
+          },
           "study": {
             "title": "Onthoud deze vier woorden",
             "instruction": "Mogelijk komen ze later in de test terug.",
@@ -126,42 +118,42 @@
         "dementia-q2": {
           "question": "Welke code komt exact overeen met P8L4T?",
           "headerLabel": "GERICHTE AANDACHT",
-          "answers": [
-            "P8I4T",
-            "PBL4T",
-            "P8L4F",
-            "P8L4T"
-          ]
+          "answers": {
+            "a1": "P8I4T",
+            "a2": "PBL4T",
+            "a3": "P8L4F",
+            "a4": "P8L4T"
+          }
         },
         "dementia-q3": {
           "question": "Welk item hoort niet bij de anderen?",
           "headerLabel": "WOORDCATEGORIEËN",
-          "answers": [
-            "Viool",
-            "Fluit",
-            "Wortel",
-            "Trompet"
-          ]
+          "answers": {
+            "a1": "Viool",
+            "a2": "Fluit",
+            "a3": "Wortel",
+            "a4": "Trompet"
+          }
         },
         "dementia-q4": {
           "question": "Welk getal komt daarna: 2, 4, 8, 16, ___?",
           "headerLabel": "PATROON REDENEREN",
-          "answers": [
-            "32",
-            "24",
-            "18",
-            "30"
-          ]
+          "answers": {
+            "a1": "32",
+            "a2": "24",
+            "a3": "18",
+            "a4": "30"
+          }
         },
         "dementia-q5": {
           "question": "Welk object verscheen als tweede?",
           "headerLabel": "VISUEEL GEHEUGEN",
-          "answers": [
-            "Handschoen",
-            "Sleutel",
-            "Beker",
-            "Boek"
-          ],
+          "answers": {
+            "a1": "Handschoen",
+            "a2": "Sleutel",
+            "a3": "Beker",
+            "a4": "Boek"
+          },
           "study": {
             "title": "Bestudeer de objectvolgorde",
             "instruction": "Dit verdwijnt automatisch.",
@@ -177,52 +169,52 @@
         "dementia-q6": {
           "question": "Wat is 7 – 2 – 9 achterstevoren?",
           "headerLabel": "WERKGEHEUGEN",
-          "answers": [
-            "2 – 7 – 9",
-            "9 – 7 – 2",
-            "9 – 2 – 7",
-            "7 – 9 – 2"
-          ]
+          "answers": {
+            "a1": "2 – 7 – 9",
+            "a2": "9 – 7 – 2",
+            "a3": "9 – 2 – 7",
+            "a4": "7 – 9 – 2"
+          }
         },
         "dementia-q7": {
           "question": "Als de minutenwijzer naar 6 wijst, hoeveel minuten over het hele uur is dat dan?",
           "headerLabel": "KLOK REDENERING",
-          "answers": [
-            "6 minuten",
-            "15 minuten",
-            "45 minuten",
-            "30 minuten"
-          ]
+          "answers": {
+            "a1": "6 minuten",
+            "a2": "15 minuten",
+            "a3": "45 minuten",
+            "a4": "30 minuten"
+          }
         },
         "dementia-q8": {
           "question": "Puppy is voor hond, zoals kitten voor wat?",
           "headerLabel": "TAALVERBINDING",
-          "answers": [
-            "Kat",
-            "Paard",
-            "Konijn",
-            "Vogel"
-          ]
+          "answers": {
+            "a1": "Kat",
+            "a2": "Paard",
+            "a3": "Konijn",
+            "a4": "Vogel"
+          }
         },
         "dementia-q9": {
           "question": "Denk eens terug aan de openingslijst. Welk woord verscheen als eerste?",
           "headerLabel": "UITGESTELDE WOORDHERROEPING",
-          "answers": [
-            "Klok",
-            "Tuin",
-            "Citroen",
-            "Brug"
-          ]
+          "answers": {
+            "a1": "Klok",
+            "a2": "Tuin",
+            "a3": "Citroen",
+            "a4": "Brug"
+          }
         },
         "dementia-q10": {
           "question": "Denk eens terug aan de objectreeks. Welk object verscheen als vierde?",
           "headerLabel": "LAATSTE UITGESTELDE HERROEPING",
-          "answers": [
-            "Boek",
-            "Sleutel",
-            "Handschoen",
-            "Beker"
-          ]
+          "answers": {
+            "a1": "Boek",
+            "a2": "Sleutel",
+            "a3": "Handschoen",
+            "a4": "Beker"
+          }
         }
       }
     }

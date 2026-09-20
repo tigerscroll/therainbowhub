@@ -9,13 +9,14 @@ const quiz = {
     profileArtworkSelector: {
       questionId: "marry-r1q1",
       fixedVariants: {
-        "0": "masculine",
-        "1": "feminine",
-        "2": "androgynous",
+        a1: "masculine",
+        a2: "feminine",
+        a3: "androgynous",
       },
       fallback: "stable-answer-hash",
     },
   },
+  questions: [{ id: "marry-r1q1", choiceIds: ["a1", "a2", "a3", "a4"] }],
   theme: {
     artwork: {
       profiles: { warm_anchor: "/fallback.png" },

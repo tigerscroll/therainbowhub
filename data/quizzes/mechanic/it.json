@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "title": "Solo il 7% supera questo quiz di meccanica automobilistica",
   "eyebrow": "BAIA SERVIZIO DI PRECISIONE",
   "summary": "Spie, guasti nascosti e strani sintomi stradali mettono alla prova la tua capacità di diagnosticare i problemi prima che diventino costosi.",
@@ -10,7 +9,6 @@
   "about": {
     "body": "Questo test di intrattenimento mondiale contiene dieci domande pratiche sui sistemi del veicolo, sul giudizio dell'officina e sulla ricerca dei guasti. Si passa da segnali di allarme familiari a sintomi correlati che richiedono un'attenta diagnosi.\n\nScegli la risposta migliore tra le informazioni mostrate. Le domande utilizzano principi generali sui veicoli ed evitano di dare per scontato una marca, un modello o uno standard di ispezione locale.\n\nIl tuo punteggio riflette solo questa breve sfida. Non si tratta di una qualifica commerciale, di un'ispezione di sicurezza o di un sostituto della diagnosi da parte di un meccanico qualificato.",
     "howToPlay": {
-      "title": "Come funziona",
       "steps": [
         "Completa dieci domande accuratamente selezionate in un'unica sfida mirata.",
         "Scegli una risposta ogni volta. Le risposte corrette restano nascoste fino al risultato finale.",
@@ -21,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Sfida meccanica",
-    "resultProgressComplete": "{value}% completato",
     "stages": {
       "stage-1": {
         "difficulty": "Sfida in officina",
@@ -29,10 +26,8 @@
         "preAdCopy": "Il tuo punteggio meccanico e la suddivisione in sei sistemi sono pronti per essere rivelati.",
         "preAdChecks": [
           "10 risposte controllate",
-          "Sei sistemi di veicoli a confronto",
-          "Punteggio finale calcolato"
-        ],
-        "preAdButton": "Scopri i miei risultati"
+          "Sei sistemi di veicoli a confronto"
+        ]
       }
     }
   },
@@ -93,11 +88,9 @@
     "score": {
       "passed": "Hai superato la sfida del meccanico!",
       "finished": "Sfida del workshop completata",
-      "correctLabel": "corrette",
       "strongest": "Il sistema di veicoli più potente",
       "trickiest": "Il sistema di veicoli più complicato",
-      "bestRound": "La sezione migliore",
-      "showBestRound": false
+      "bestRound": "La sezione migliore"
     }
   },
   "stages": {
@@ -106,52 +99,52 @@
       "questions": {
         "mech-r1q1": {
           "question": "Quale simbolo di avvertenza si riferisce più direttamente alla pressione dell'olio motore?",
-          "answers": [
-            "Spia dell’olio",
-            "Batteria",
-            "Termometro",
-            "Volante"
-          ],
+          "answers": {
+            "a1": "Spia dell’olio",
+            "a2": "Batteria",
+            "a3": "Termometro",
+            "a4": "Volante"
+          },
           "headerLabel": "SISTEMI MOTORE"
         },
         "mech-r1q2": {
           "question": "L'avviso di frenata rosso rimane acceso dopo il rilascio del freno di stazionamento. Qual è la risposta più sicura?",
-          "answers": [
-            "Guida più veloce per testarlo",
-            "Fermarsi in sicurezza e far controllare l'impianto frenante",
-            "Pompare più forte le gomme",
-            "Ignoralo fino al prossimo servizio"
-          ],
+          "answers": {
+            "a1": "Guida più veloce per testarlo",
+            "a2": "Fermarsi in sicurezza e far controllare l'impianto frenante",
+            "a3": "Pompare più forte le gomme",
+            "a4": "Ignoralo fino al prossimo servizio"
+          },
           "headerLabel": "FRENI E SICUREZZA"
         },
         "mech-r4q5": {
           "question": "Un clic ritmico diventa più veloce nelle curve strette. Quale parte è una causa probabile?",
-          "answers": [
-            "Termostato",
-            "Pompa del carburante",
-            "Giunto omocinetico esterno",
-            "Ventilatore della cabina"
-          ],
+          "answers": {
+            "a1": "Termostato",
+            "a2": "Pompa del carburante",
+            "a3": "Giunto omocinetico esterno",
+            "a4": "Ventilatore della cabina"
+          },
           "headerLabel": "TRASMISSIONE"
         },
         "mech-r4q6": {
           "question": "Uno pneumatico ha un profondo rigonfiamento sul fianco. Cosa dovresti fare?",
-          "answers": [
-            "Ridurre la pressione e continuare",
-            "Spingere il rigonfiamento piatto",
-            "Spostalo su un'altra ruota",
-            "Smettere di utilizzare il pneumatico e organizzare la sostituzione"
-          ],
+          "answers": {
+            "a1": "Ridurre la pressione e continuare",
+            "a2": "Spingere il rigonfiamento piatto",
+            "a3": "Spostalo su un'altra ruota",
+            "a4": "Smettere di utilizzare il pneumatico e organizzare la sostituzione"
+          },
           "headerLabel": "SICUREZZA DEL VEICOLO"
         },
         "mech-r5q5": {
           "question": "Il motore si surriscalda nel traffico ma si raffredda a velocità su strada. Quale componente merita un controllo anticipato?",
-          "answers": [
-            "Ventola del radiatore",
-            "Cintura di sicurezza",
-            "Tappo del carburante",
-            "Cuscinetto ruota"
-          ],
+          "answers": {
+            "a1": "Ventola del radiatore",
+            "a2": "Cintura di sicurezza",
+            "a3": "Tappo del carburante",
+            "a4": "Cuscinetto ruota"
+          },
           "headerLabel": "SISTEMI DI RAFFREDDAMENTO"
         },
         "mech-r6q1": {
@@ -163,43 +156,43 @@
             "ariaLabel": "Voltaggio previsto della batteria 12,6 volt, misurato 10,5 volt"
           },
           "question": "Una batteria da 12 volt sana legge circa 12,6 V a riposo. Questo indica 10,5 V. Cosa suggerisce?",
-          "answers": [
-            "Le gomme sono usurate",
-            "Il liquido refrigerante è troppo forte",
-            "La batteria è completamente scarica o ha una cella guasta",
-            "La cinghia dell'alternatore è nuova"
-          ],
+          "answers": {
+            "a1": "Le gomme sono usurate",
+            "a2": "Il liquido refrigerante è troppo forte",
+            "a3": "La batteria è completamente scarica o ha una cella guasta",
+            "a4": "La cinghia dell'alternatore è nuova"
+          },
           "headerLabel": "IMPIANTI ELETTRICI"
         },
         "mech-r7q1": {
           "question": "Il volante vibra principalmente a una gamma di velocità su strada. Qual è il probabile primo sospettato?",
-          "answers": [
-            "Squilibrio delle ruote",
-            "Qualità del carburante",
-            "Filtro abitacolo",
-            "Colore del liquido di raffreddamento"
-          ],
+          "answers": {
+            "a1": "Squilibrio delle ruote",
+            "a2": "Qualità del carburante",
+            "a3": "Filtro abitacolo",
+            "a4": "Colore del liquido di raffreddamento"
+          },
           "headerLabel": "STERZO ED EQUILIBRIO"
         },
         "mech-r7q6": {
           "question": "Una nuova vibrazione grave appare dopo aver colpito un pericolo stradale. Cosa dovresti fare?",
-          "answers": [
-            "Aumentare la velocità per ridurre le vibrazioni",
-            "Fermarsi in sicurezza e ispezionare la ruota e il pneumatico prima di continuare",
-            "Abbassare la pressione di tutti i pneumatici",
-            "Ignoralo se non viene visualizzato alcun avviso"
-          ],
+          "answers": {
+            "a1": "Aumentare la velocità per ridurre le vibrazioni",
+            "a2": "Fermarsi in sicurezza e ispezionare la ruota e il pneumatico prima di continuare",
+            "a3": "Abbassare la pressione di tutti i pneumatici",
+            "a4": "Ignoralo se non viene visualizzato alcun avviso"
+          },
           "headerLabel": "SICUREZZA DEL VEICOLO"
         },
         "mech-r9q2": {
           "context": "IL CLIENTE DICE",
           "question": "\"La batteria è nuova, ma si scarica ripetutamente e durante la guida appare l'avviso di carica.\" Cosa dovrebbe essere testato?",
-          "answers": [
-            "Allineamento dei pneumatici",
-            "Il sistema di ricarica e le sue connessioni",
-            "Spessore delle pastiglie dei freni",
-            "Concentrazione del liquido refrigerante"
-          ],
+          "answers": {
+            "a1": "Allineamento dei pneumatici",
+            "a2": "Il sistema di ricarica e le sue connessioni",
+            "a3": "Spessore delle pastiglie dei freni",
+            "a4": "Concentrazione del liquido refrigerante"
+          },
           "headerLabel": "SISTEMI DI RICARICA"
         },
         "mech-r10q4": {
@@ -213,12 +206,12 @@
             "ariaLabel": "Il motore si raffredda alla velocità di marcia, si surriscalda al minimo, la ventola di raffreddamento non funziona"
           },
           "question": "Il motore si surriscalda solo al minimo, il radiatore non è ostruito e la ventola di raffreddamento non funziona mai. Cosa dovrebbe essere diagnosticato per primo?",
-          "answers": [
-            "Allineamento delle ruote",
-            "Guarnizione tappo carburante",
-            "Usura delle pastiglie dei freni",
-            "Il circuito della ventola, il motore e il relativo comando"
-          ],
+          "answers": {
+            "a1": "Allineamento delle ruote",
+            "a2": "Guarnizione tappo carburante",
+            "a3": "Usura delle pastiglie dei freni",
+            "a4": "Il circuito della ventola, il motore e il relativo comando"
+          },
           "headerLabel": "DIAGNOSI FINALE"
         }
       }

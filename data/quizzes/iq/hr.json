@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Samo 7% prolazi ovaj test inteligencije",
   "eyebrow": "OBAVJEŠTAJNI TREZOR",
   "summary": "Obrasci, brojevna pravila, veze riječi i prostorne zamke testiraju koliko brzo vaše razmišljanje pronalazi skriveno pravilo.",
-  "progressLabel": "potpuna",
   "landing": {
     "intro": "Uzorci, kodovi, poveznice riječi i logičke zamke se sudaraju. Koliko dugo vaše razmišljanje može biti korak ispred?",
     "cta": "Započni test"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Ovaj svjetski zabavni izazov okuplja deset pažljivo odabranih zagonetki koje pokrivaju obrasce, numerička pravila, verbalne veze, prostorno rezoniranje, pažnju i logičko zaključivanje. Osmišljen je da djeluje razigrano i zahtjevno, a ne kao formalni ispit sposobnosti.\n\nSvaka zagonetka ima jedan odgovor potkrijepljen prikazanim informacijama. Interakcija se redovito mijenja, pa ćete možda morati identificirati pravilo, usporediti tragove, transformirati simbol, mentalno izračunati ili primijetiti malu nedosljednost.\n\nVaš rezultat na testu inteligencije je postotak ovih zabavnih zagonetki koje ste točno riješili. Opisuje samo ovaj pokušaj i ne mjeri vašu stvarnu inteligenciju, IQ, sposobnost ili obrazovnu sposobnost.",
     "howToPlay": {
-      "title": "Kako igrati",
       "steps": [
         "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
         "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Izazov inteligencije",
-    "resultProgressComplete": "{value}% dovršeno",
     "stages": {
       "stage-1": {
         "difficulty": "Inteligencijski izazov",
@@ -30,10 +26,8 @@
         "preAdCopy": "Vaš rezultat na testu inteligencije i podjela na tri područja spremni su za otkrivanje.",
         "preAdChecks": [
           "Provjereno 10 odgovora",
-          "Uspoređena tri područja razmišljanja",
-          "Vaš konačni rezultat izračunat"
-        ],
-        "preAdButton": "Otkrij moje rezultate"
+          "Uspoređena tri područja razmišljanja"
+        ]
       }
     }
   },
@@ -85,7 +79,6 @@
     "score": {
       "passed": "Prošli ste izazov Test inteligencije!",
       "finished": "Test inteligencije završen",
-      "correctLabel": "ispraviti",
       "strongest": "Najjače područje razmišljanja",
       "trickiest": "Najzamršenije područje razmišljanja",
       "bestRound": "Najbolja sekcija",
@@ -98,8 +91,7 @@
         "snapshot": "Što ovaj pokušaj sugerira",
         "targetReached": "Dostignuto 80% izazova",
         "targetRemaining": "Potrebno više točnih odgovora za 80%"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -118,12 +110,12 @@
             "ariaLabel": "krug, trokut, krug, trokut, nepoznato"
           },
           "question": "Koji simbol dolazi sljedeći?",
-          "answers": [
-            "□",
-            "○",
-            "△",
-            "●"
-          ],
+          "answers": {
+            "a1": "□",
+            "a2": "○",
+            "a3": "△",
+            "a4": "●"
+          },
           "headerLabel": "OBRAZAC RAZUMOVANJA"
         },
         "iq-s1q4": {
@@ -135,12 +127,12 @@
             "ariaLabel": "strelica gore-desno pored okomitog zrcala"
           },
           "question": "Koja strelica je odraz u okomitom zrcalu?",
-          "answers": [
-            "↘",
-            "↗",
-            "↖",
-            "↙"
-          ],
+          "answers": {
+            "a1": "↘",
+            "a2": "↗",
+            "a3": "↖",
+            "a4": "↙"
+          },
           "headerLabel": "PROSTORNO RAZUMOVANJE"
         },
         "iq-s2q2": {
@@ -152,12 +144,12 @@
             "ariaLabel": "pomaci slova plus jedan, plus dva, plus jedan; CAT postaje DCU"
           },
           "question": "Smjene se ponavljaju +1, +2, +1. Kako je DOG kodiran?",
-          "answers": [
-            "EQH",
-            "EPH",
-            "FQH",
-            "ERJ"
-          ],
+          "answers": {
+            "a1": "EQH",
+            "a2": "EPH",
+            "a3": "FQH",
+            "a4": "ERJ"
+          },
           "headerLabel": "VERBALNO OBRAZLOŽENJE"
         },
         "iq-s2q6": {
@@ -170,22 +162,22 @@
             "ariaLabel": "brojčana piramida s donjim brojevima 3, 5, 4 i središnjim brojevima 8, 9"
           },
           "question": "Svaki blok je zbroj dva ispod njega. Što ide na vrh?",
-          "answers": [
-            "15",
-            "16",
-            "17",
-            "18"
-          ],
+          "answers": {
+            "a1": "15",
+            "a2": "16",
+            "a3": "17",
+            "a4": "18"
+          },
           "headerLabel": "NUMERIČKO RAZUMOVANJE"
         },
         "iq-s3q2": {
           "question": "Stroj udvostručuje broj, a zatim dodaje 3. Koji unos daje 17?",
-          "answers": [
-            "5",
-            "6",
-            "8",
-            "7"
-          ],
+          "answers": {
+            "a1": "5",
+            "a2": "6",
+            "a3": "8",
+            "a4": "7"
+          },
           "headerLabel": "NUMERIČKO RAZUMOVANJE"
         },
         "iq-s3q4": {
@@ -197,32 +189,32 @@
             "ariaLabel": "Referentni kod K7M2-Q9. Pronađite opciju s jednim promijenjenim znakom."
           },
           "question": "Koji se primjerak razlikuje od reference za točno jedan znak?",
-          "answers": [
-            "K7M2-P8",
-            "K7N2-Q9",
-            "K1M2-Q8",
-            "K7N3-Q9"
-          ],
+          "answers": {
+            "a1": "K7M2-P8",
+            "a2": "K7N2-Q9",
+            "a3": "K1M2-Q8",
+            "a4": "K7N3-Q9"
+          },
           "headerLabel": "PAŽNJA NA DETALJE"
         },
         "iq-s4q1": {
           "question": "Točno jedna osoba govori istinu. A kaže da B laže. B kaže C laže. C kaže da A i B lažu. Tko govori istinu?",
-          "answers": [
-            "A",
-            "B",
-            "C",
-            "Nitko"
-          ],
+          "answers": {
+            "a1": "A",
+            "a2": "B",
+            "a3": "C",
+            "a4": "Nitko"
+          },
           "headerLabel": "LOGIČNA DEDUKCIJA"
         },
         "iq-s4q4": {
           "question": "Počnite u središtu okrenutom prema sjeveru. Pomaknite se jedno polje naprijed, skrenite desno, pomaknite dva polja, okrenite se desno, zatim pomaknite jedno polje. Gdje završavate u odnosu na start?",
-          "answers": [
-            "Dva kvadrata desno",
-            "Jedan kvadrat gore",
-            "Ostala su dva kvadrata",
-            "Natrag u centar"
-          ],
+          "answers": {
+            "a1": "Dva kvadrata desno",
+            "a2": "Jedan kvadrat gore",
+            "a3": "Ostala su dva kvadrata",
+            "a4": "Natrag u centar"
+          },
           "headerLabel": "PROSTORNO RAZUMOVANJE"
         },
         "iq-s5q2": {
@@ -235,22 +227,22 @@
             "ariaLabel": "redovi 3, 4, 10; 5, 2, 12; 7, 3, nepoznato"
           },
           "question": "U svakom redu udvostručite prvi broj, a zatim dodajte drugi. Što zamjenjuje upitnik?",
-          "answers": [
-            "17",
-            "15",
-            "16",
-            "20"
-          ],
+          "answers": {
+            "a1": "17",
+            "a2": "15",
+            "a3": "16",
+            "a4": "20"
+          },
           "headerLabel": "NUMERIČKO RAZUMOVANJE"
         },
         "iq-s5q8": {
           "question": "Strelica pokazuje prema gore. Okrenite ga za 90° u smjeru kazaljke na satu, a zatim ga odrazite u okomitom zrcalu. Gdje pokazuje?",
-          "answers": [
-            "Gore",
-            "točno",
-            "dolje",
-            "lijevo"
-          ],
+          "answers": {
+            "a1": "Gore",
+            "a2": "točno",
+            "a3": "dolje",
+            "a4": "lijevo"
+          },
           "headerLabel": "ZAVRŠNI PROSTORNI TEST"
         }
       }

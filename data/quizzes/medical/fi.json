@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 2,
   "title": "Useimmat aikuiset eivät voi läpäistä tätä lääketieteellistä pääsykoetta",
   "eyebrow": "Lääketieteen TESTI",
   "summary": "Kymmenen kysymystä testaa anatomiaa, fysiologiaa, mikrobiologiaa, farmakologiaa ja kliinistä turvallisuutta.",
-  "progressLabel": "täydellinen",
   "landing": {
     "intro": "Ensimmäiset kysymykset näyttävät perustavanlaatuisilta. Sitten testi siirtyy fysiologiaan, mikrobeihin ja lääketieteeseen, jotka useimmat aikuiset ovat unohtaneet.",
     "cta": "Aloitetaan koetta"
@@ -11,7 +9,6 @@
   "about": {
     "body": "Tämä kymmenen kysymyksen viihdehaaste käyttää perustavanlaatuista lääketiedettä, jota opetetaan tason 1 englanninkielisissä maissa. Se testaa anatomiaa, fysiologiaa, solubiologiaa, mikrobiologiaa, farmakologiaa ja infektioiden hallinnan perusteita ilman yhden yliopiston hakusuunnitelmaa.\n\nValitse yksi vastaus jokaiseen kysymykseen. Oikeus pysyy piilossa viimeiseen paljastukseen asti, jolloin täydellinen vastaustarkistus on avattavissa.",
     "howToPlay": {
-      "title": "Kuinka pelata",
       "steps": [
         "Vastaa kymmeneen yhä vaikeampaan lääketieteen kysymykseen.",
         "Valitse tarkin yksittäinen vastaus.",
@@ -22,7 +19,6 @@
   },
   "career": {
     "resultProgressLabel": "Lääkärin sisäänpääsyhaaste",
-    "resultProgressComplete": "{value} % valmis",
     "stages": {
       "stage-1": {
         "difficulty": "Lääketieteellinen pääsykoe",
@@ -30,10 +26,8 @@
         "preAdCopy": "Kymmenen vastaustasi on tarkistettu ja lääketieteen pisteytesi on valmis paljastamaan.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Viittä tieteenalaa verrattiin",
-          "Lopullinen pisteesi on laskettu"
-        ],
-        "preAdButton": "Paljasta Tulokseni"
+          "Viittä tieteenalaa verrattiin"
+        ]
       }
     }
   },
@@ -86,7 +80,6 @@
     "score": {
       "passed": "Läpäisit lääketieteellisen sisäänpääsyhaasteen!",
       "finished": "Lääketieteellinen sisäänpääsyhaaste suoritettu",
-      "correctLabel": "oikein",
       "strongest": "Vahvin tiedealue",
       "trickiest": "Hankalin tieteenala",
       "bestRound": "Paras jakso",
@@ -99,8 +92,7 @@
         "snapshot": "Mitä tuloksesi viittaa",
         "targetReached": "80 % haaste saavutettu",
         "targetRemaining": "Lisää oikeita vastauksia tarvitaan 80 %"
-      },
-      "showBestRound": false
+      }
     }
   },
   "stages": {
@@ -109,102 +101,102 @@
       "questions": {
         "medical-q1": {
           "question": "Mikä punasolujen proteiini kuljettaa eniten happea?",
-          "answers": [
-            "Hemoglobiini",
-            "Keratiini",
-            "Kollageeni",
-            "Insuliini"
-          ],
+          "answers": {
+            "a1": "Hemoglobiini",
+            "a2": "Keratiini",
+            "a3": "Kollageeni",
+            "a4": "Insuliini"
+          },
           "headerLabel": "VEREN FYSIOLOGIA"
         },
         "medical-q2": {
           "question": "Minkä emäksen kanssa adeniini pariutuu normaalisti DNA:ssa?",
-          "answers": [
-            "Guaniini",
-            "Tymiini",
-            "Sytosiini",
-            "Uracil"
-          ],
+          "answers": {
+            "a1": "Guaniini",
+            "a2": "Tymiini",
+            "a3": "Sytosiini",
+            "a4": "Uracil"
+          },
           "headerLabel": "SOLUBIOLOGIA"
         },
         "medical-q3": {
           "question": "Mikä elin on tärkeä paikka monien lääkkeiden käsittelyssä ja hajotuksessa?",
-          "answers": [
-            "Perna",
-            "Kilpirauhanen",
-            "Maksa",
-            "Virtsarakko"
-          ],
+          "answers": {
+            "a1": "Perna",
+            "a2": "Kilpirauhanen",
+            "a3": "Maksa",
+            "a4": "Virtsarakko"
+          },
           "headerLabel": "FARMAKOLOGIAT"
         },
         "medical-q4": {
           "question": "Mikä lause erottaa parhaiten virukset bakteereista?",
-          "answers": [
-            "Virukset ovat aina suurempia",
-            "Bakteerit eivät voi lisääntyä",
-            "Virukset eivät sisällä geneettistä materiaalia",
-            "Virukset ovat riippuvaisia isäntäsoluista replikoituakseen"
-          ],
+          "answers": {
+            "a1": "Virukset ovat aina suurempia",
+            "a2": "Bakteerit eivät voi lisääntyä",
+            "a3": "Virukset eivät sisällä geneettistä materiaalia",
+            "a4": "Virukset ovat riippuvaisia isäntäsoluista replikoituakseen"
+          },
           "headerLabel": "MIKROBIOLOGIA"
         },
         "medical-q5": {
           "question": "Mikä on liuos, jonka pH on alle 7?",
-          "answers": [
-            "Hapan",
-            "Neutraali",
-            "Alkalinen",
-            "Isotoninen"
-          ],
+          "answers": {
+            "a1": "Hapan",
+            "a2": "Neutraali",
+            "a3": "Alkalinen",
+            "a4": "Isotoninen"
+          },
           "headerLabel": "KEMIAN KEMIA"
         },
         "medical-q6": {
           "question": "Mikä autonomisen hermoston osa liittyy lepo- ja sulatustoimintaan?",
-          "answers": [
-            "Sympaattinen systeemi",
-            "Parasympaattinen järjestelmä",
-            "Somaattinen moottorijärjestelmä",
-            "Keskeinen visuaalinen polku"
-          ],
+          "answers": {
+            "a1": "Sympaattinen systeemi",
+            "a2": "Parasympaattinen järjestelmä",
+            "a3": "Somaattinen moottorijärjestelmä",
+            "a4": "Keskeinen visuaalinen polku"
+          },
           "headerLabel": "HERMOJÄRJESTELMÄ"
         },
         "medical-q7": {
           "question": "Mikä rakenne estää ruoan pääsyn hengitysteihin nieltäessä?",
-          "answers": [
-            "Patella",
-            "Verkkokalvo",
-            "Epiglottis",
-            "Pancreas"
-          ],
+          "answers": {
+            "a1": "Patella",
+            "a2": "Verkkokalvo",
+            "a3": "Epiglottis",
+            "a4": "Pancreas"
+          },
           "headerLabel": "TOIMINNALLINEN ANATOMIA"
         },
         "medical-q8": {
           "question": "Mikä aivohermo kuljettaa visuaalista tietoa silmästä?",
-          "answers": [
-            "Vagus hermo",
-            "Kasvojen hermo",
-            "Kolmoishermo",
-            "Näköhermo"
-          ],
+          "answers": {
+            "a1": "Vagus hermo",
+            "a2": "Kasvojen hermo",
+            "a3": "Kolmoishermo",
+            "a4": "Näköhermo"
+          },
           "headerLabel": "NEUROANATOMIA"
         },
         "medical-q9": {
           "question": "Mikä käytäntö on keskeinen osa tartunnan ehkäisyä potilaan hoidon aikana?",
-          "answers": [
-            "Asianmukainen käsihygienia",
-            "Kertakäyttöisten käsineiden uudelleenkäyttö",
-            "Riskinarvioinnin ohittaminen",
-            "Epäpuhtaiden laitteiden jakaminen"
-          ],
+          "answers": {
+            "a1": "Asianmukainen käsihygienia",
+            "a2": "Kertakäyttöisten käsineiden uudelleenkäyttö",
+            "a3": "Riskinarvioinnin ohittaminen",
+            "a4": "Epäpuhtaiden laitteiden jakaminen"
+          },
           "headerLabel": "KLIININEN TURVALLISUUS"
         },
         "medical-q10": {
           "question": "Mitä homeostaasi kuvaa?",
-          "answers": [
-            "Muutoksen täydellinen puuttuminen kehossa",
-            "Suhteellisen vakaan sisäisen ympäristön säätely",
-            "Jokaisen lääkkeen hajoaminen munuaisten kautta",
-            "Vain vasta-aineiden tuotanto"
-          ],
+          "answers": {
+            "a1": "Muutoksen täydellinen puuttuminen kehossa",
+            "a2": "Suhteellisen vakaan sisäisen ympäristön säätely",
+            "a3": "Jokaisen lääkkeen hajoaminen munuaisten kautta",
+            "a4": "Vain vasta-aineiden tuotanto"
+          },
           "headerLabel": "TIETEELLINEN KYSYMYS"
         }
       }
