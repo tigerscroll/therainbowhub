@@ -178,6 +178,13 @@ body.quiz-reward-prompt-open { overflow: hidden !important; overscroll-behavior:
 .quiz-engine__answer > span { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--quiz-primary) 24%, var(--quiz-surface)); font-weight: 950; }
 .quiz-engine__answer strong { font-size: 16px; line-height: 1.35; }
 .quiz-engine__answer[data-selected] { border-color: var(--quiz-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--quiz-primary) 22%, transparent); }
+.quiz-engine__answer[data-departing],
+.quiz-engine__primary[data-departing] {
+  pointer-events: none;
+  transform: translateY(1px) scale(.985);
+  filter: saturate(.9);
+  opacity: .86;
+}
 .quiz-engine__answer[data-correct] { border-color: var(--quiz-correct); }
 .quiz-engine__answer[data-incorrect] { border-color: var(--quiz-incorrect); }
 .quiz-engine__answer:disabled:not([data-selected]):not([data-correct]) { opacity: .55; }

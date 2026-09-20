@@ -126,6 +126,8 @@ function ArticleInlineUnlock({
       className="article-engine__inline-unlock"
       href={href}
       onClick={(event) => {
+        event.currentTarget.setAttribute("data-departing", "true");
+        event.currentTarget.setAttribute("aria-busy", "true");
         const destination = new URL(href, window.location.href);
         const current = new URL(window.location.href);
         current.searchParams.forEach((value, key) => {

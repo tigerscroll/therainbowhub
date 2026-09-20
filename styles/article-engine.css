@@ -1105,6 +1105,12 @@
   box-shadow: 0 12px 30px color-mix(in srgb, var(--quiz-primary) 12%, transparent);
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
+.article-engine__inline-unlock[data-departing] {
+  pointer-events: none;
+  transform: translateY(1px) scale(.992);
+  filter: saturate(.9);
+  opacity: .88;
+}
 
 .article-engine__inline-unlock::after {
   position: absolute;

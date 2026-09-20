@@ -84,13 +84,19 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             className="quiz-engine__primary"
             href={href}
             onClick={(event) => {
+              event.currentTarget.setAttribute("data-departing", "true");
+              event.currentTarget.setAttribute("aria-busy", "true");
               const destination = new URL(href, window.location.href);
               const current = new URL(window.location.href);
               current.searchParams.forEach((value, key) => {
                 if (!destination.searchParams.has(key)) destination.searchParams.append(key, value);
               });
               event.currentTarget.href = destination.toString();
-              if (onStart() === false) event.preventDefault();
+              if (onStart() === false) {
+                event.currentTarget.removeAttribute("data-departing");
+                event.currentTarget.removeAttribute("aria-busy");
+                event.preventDefault();
+              }
             }}
           >
             {ctaContent}

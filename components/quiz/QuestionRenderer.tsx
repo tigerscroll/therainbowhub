@@ -164,10 +164,16 @@ function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, 
               href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
+                event.currentTarget.setAttribute("data-departing", "true");
+                event.currentTarget.setAttribute("aria-busy", "true");
                 const destination = new URL(window.location.href);
                 destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
                 event.currentTarget.href = destination.toString();
-                if (onAnswer(index) === false) event.preventDefault();
+                if (onAnswer(index) === false) {
+                  event.currentTarget.removeAttribute("data-departing");
+                  event.currentTarget.removeAttribute("aria-busy");
+                  event.preventDefault();
+                }
               }}
             >
               {content}
@@ -255,10 +261,16 @@ function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionR
           className="quiz-engine__primary"
           href={answerHref}
           onClick={(event) => {
+            event.currentTarget.setAttribute("data-departing", "true");
+            event.currentTarget.setAttribute("aria-busy", "true");
             const destination = new URL(window.location.href);
             destination.searchParams.set("quizStep", answerHref.replace(/^.*=/, ""));
             event.currentTarget.href = destination.toString();
-            if (onAnswer(0) === false) event.preventDefault();
+            if (onAnswer(0) === false) {
+              event.currentTarget.removeAttribute("data-departing");
+              event.currentTarget.removeAttribute("aria-busy");
+              event.preventDefault();
+            }
           }}
         >
           {question.continueLabel}
