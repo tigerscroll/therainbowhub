@@ -864,7 +864,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         <h1 key={currentQuestion.id}>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
         aboveAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-above`} id={`quiz-ad-${currentQuestion.id}-above`} /> : undefined}
-        belowAnswers={questionAds && questionIndex > 0 ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
+        belowAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
         answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}

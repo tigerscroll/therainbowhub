@@ -43,12 +43,12 @@ const QUIZ_TEMPLATE_CONTRACTS = {
   },
   "single-stage-display-manual-v1": {
     stageCount: 1,
-    questionsPerStage: 30,
+    questionsPerStage: 10,
     levels: ["final"],
     engine: {
       flow: "linear", advance: "manual", feedback: "selection-only", checkpoint: "ai",
-      startOnLoad: true,
-      rewarded: { start: false, stages: true, attempts: 3, confirmStart: false },
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },

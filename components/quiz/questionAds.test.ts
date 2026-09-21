@@ -11,6 +11,15 @@ test("Memory and Years Left are rewarded-only", () => {
   assert.equal(usesQuestionAds("years-left"), false);
   for (const slug of ["iq", "vision", "oxford", "memory-other", ""]) assert.equal(usesQuestionAds(slug), false);
 });
+test("Mechanic uses manual display questions with starting and final rewards", () => {
+  assert.equal(usesQuestionAds("mechanic"), true);
+  const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
+  assert.equal(manifest.template, "single-stage-display-manual-v1");
+  assert.equal(manifest.engine.hardRefreshCheckpoints, false);
+  assert.equal(manifest.structure.stages.length, 1);
+  assert.equal(manifest.structure.stages[0].questionIds.length, 10);
+  assert.equal(manifest.engine.targetRatio, 0.8);
+});
 test("rewarded and display use their own configured ad units", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);

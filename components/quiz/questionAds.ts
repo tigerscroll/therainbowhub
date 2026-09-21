@@ -1,3 +1,3 @@
-export function usesQuestionAds(_slug: string) {
-  return false;
+export function usesQuestionAds(slug: string) {
+  return slug === "mechanic";
 }
