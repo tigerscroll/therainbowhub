@@ -1,4 +1,5 @@
 [data-quiz-theme="years-left"]{
+  --quiz-answer-min-height: 76px;
   --years-ink: var(--quiz-text);
   --years-stone: var(--quiz-surface);
   --years-stone-light: var(--quiz-surface-raised);
@@ -198,7 +199,7 @@
 }
 
 [data-quiz-theme="years-left"] .quiz-engine__answer{
-  min-height: 76px;
+  min-height: var(--quiz-answer-min-height);
   border: 2px solid rgba(85, 74, 61, .72);
   border-radius: 12px;
   background: rgba(255, 250, 240, .88);
@@ -378,6 +379,7 @@
 
 @media (max-width: 700px) {
   .quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"]{
+    --quiz-answer-min-height: 68px;
     --quiz-flow-content-inset: 18px;
   }
 
@@ -415,7 +417,7 @@
   }
 
   [data-quiz-theme="years-left"] .quiz-engine__answer{
-    min-height: 68px;
+    min-height: var(--quiz-answer-min-height);
     border-radius: 10px;
   }
 

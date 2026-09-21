@@ -76,9 +76,15 @@ try {
           widths: ads.map(ad => [ad.clientWidth, ad.lastElementChild.clientWidth]),
           heightCaps: ads.map(ad => getComputedStyle(ad.lastElementChild).maxHeight),
           widthCaps: ads.map(ad => getComputedStyle(ad.lastElementChild).maxWidth),
+          buttonMinHeight: getComputedStyle(document.querySelector(".quiz-question-next")).minHeight,
+          answerMinHeight: getComputedStyle(document.querySelector(".quiz-engine__answer")).minHeight,
+          buttonWidth: cta.width,
+          answerWidth: document.querySelector(".quiz-engine__answer").getBoundingClientRect().width,
         };
       });
       assert.equal(geometry.overflow, false); assert.equal(geometry.above, true); assert.equal(geometry.below, true); assert.equal(geometry.next, true, JSON.stringify(geometry));
+      assert.equal(geometry.buttonMinHeight, geometry.answerMinHeight, "CTA matches answer-box base height");
+      assert.ok(Math.abs(geometry.buttonWidth - geometry.answerWidth) <= 1, "CTA matches full answer-box width");
       geometry.widths.forEach(([available, actual]) => {
         assert.ok(available >= actual);
         const expected = [336, 300].find(w => w <= available);

@@ -334,9 +334,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 54px;
   margin-top: 24px;
   text-align: center;
+}
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question[data-question-ads] .quiz-question-next {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: var(--quiz-answer-min-height, 72px) !important;
 }
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question[data-first-question] .quiz-question-next {
   margin-top: 32px !important;
