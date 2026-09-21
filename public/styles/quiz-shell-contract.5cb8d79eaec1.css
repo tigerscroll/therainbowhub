@@ -342,6 +342,11 @@
   max-width: 100% !important;
   min-height: var(--quiz-answer-min-height, 72px) !important;
 }
+@media (max-width: 700px) {
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question[data-question-ads]:has(.quiz-engine__answers--compact-grid) .quiz-question-next {
+    min-height: var(--quiz-answer-min-height, 64px) !important;
+  }
+}
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question[data-first-question] .quiz-question-next {
   margin-top: 32px !important;
 }

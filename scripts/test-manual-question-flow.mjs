@@ -79,7 +79,7 @@ try {
           buttonMinHeight: getComputedStyle(document.querySelector(".quiz-question-next")).minHeight,
           answerMinHeight: getComputedStyle(document.querySelector(".quiz-engine__answer")).minHeight,
           buttonWidth: cta.width,
-          answerWidth: document.querySelector(".quiz-engine__answer").getBoundingClientRect().width,
+          answerWidth: answers.width,
         };
       });
       assert.equal(geometry.overflow, false); assert.equal(geometry.above, true); assert.equal(geometry.below, true); assert.equal(geometry.next, true, JSON.stringify(geometry));
