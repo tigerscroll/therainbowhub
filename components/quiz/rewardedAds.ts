@@ -64,6 +64,14 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
+const displayAdSizes: Array<[number, number]> = [
+  [336, 280], [300, 250],
+];
+
+export function getDisplayAdSizes(availableWidth: number) {
+  return displayAdSizes.filter(([width]) => width <= availableWidth).map(([width, height]): [number, number] => [width, height]);
+}
+
 export function mountDisplayAd({
   adUnitPath,
   elementId,
@@ -85,7 +93,7 @@ export function mountDisplayAd({
     if (!googletag?.defineSlot || !googletag.display || !pubads) return;
 
     const allSizes = sizes.filter(([width, height]) =>
-      (width === 336 && height === 280) || (width === 300 && height === 250));
+      displayAdSizes.some(([allowedWidth, allowedHeight]) => width === allowedWidth && height === allowedHeight));
     if (!allSizes.length) return;
     const compactPhoneSizes = allSizes.filter(([width]) => width <= 300);
     const phoneSizes = allSizes.filter(([width]) => width <= 336);
@@ -99,7 +107,7 @@ export function mountDisplayAd({
 
     slot = googletag.defineSlot(adUnitPath, allSizes, elementId);
     if (!slot) return;
-    slot.setConfig?.({ adExpansion: { enabled: false } });
+    slot.setConfig?.({ adExpansion: { enabled: true } });
     if (mapping) slot.defineSizeMapping?.(mapping);
     slot.addService(pubads);
     renderListener = (event) => {

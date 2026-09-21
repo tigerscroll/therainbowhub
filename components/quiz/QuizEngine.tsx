@@ -851,7 +851,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     <>
     <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
-        <span>{quiz.career
+        <span>{questionAds ? `${progress}%` : quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
         <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
@@ -859,12 +859,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
         <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} data-question-ads={questionAds || undefined}>
+      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} data-question-ads={questionAds || undefined} data-first-question={questionAds && questionIndex === 0 || undefined}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
         aboveAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-above`} id={`quiz-ad-${currentQuestion.id}-above`} /> : undefined}
-        belowAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
+        belowAnswers={questionAds && questionIndex > 0 ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
         answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}

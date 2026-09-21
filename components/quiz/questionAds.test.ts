@@ -32,6 +32,8 @@ test("both quizzes have 30 unique questions, one stage and only a final result g
   for (const slug of ["memory", "years-left"]) {
     const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
     const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/en.json`, "utf8"));
+    assert.equal(copy.landing.intro.split("\n").length, 2);
+    assert.doesNotMatch(copy.landing.intro, /30|thirty/i);
     assert.equal(manifest.structure.stages.length, 1);
     const ids = manifest.structure.stages[0].questionIds;
     assert.equal(ids.length, 30);

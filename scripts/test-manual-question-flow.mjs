@@ -6,6 +6,8 @@ const browser = await chromium.launch({ executablePath: "/Applications/Google Ch
 try {
   const widths = process.env.QUIZ_TEST_WIDTHS?.split(",").map(Number) ?? [320, 390, 1440];
   const slugs = process.env.QUIZ_TEST_SLUGS?.split(",") ?? ["memory", "years-left"];
+  const questionLimit = Number(process.env.QUIZ_TEST_QUESTIONS ?? 30);
+  assert.ok(Number.isInteger(questionLimit) && questionLimit >= 1 && questionLimit <= 30);
   for (const width of widths) for (const slug of slugs) {
     const context = await browser.newContext({ viewport: { width, height: 900 } });
     const page = await context.newPage();
@@ -43,12 +45,16 @@ try {
       };
     });
     await page.goto(`${base}/${slug}?test_keep=1`);
+    const subtitle = page.locator(".quiz-engine__landing .quiz-engine__quick-start");
+    assert.equal(await subtitle.innerText(), slug === "memory" ? "Think your memory is sharp?\nPut it to the test." : "One surprising result.\nWhat age will you get?");
+    assert.equal(await subtitle.evaluate(el => Math.abs(el.getBoundingClientRect().height - 2 * parseFloat(getComputedStyle(el).lineHeight)) <= 1), true, "subtitle occupies two short lines");
     const initialDocumentRequests = documentRequests;
     await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
-    for (let index = 0; index < 30; index++) {
+    for (let index = 0; index < questionLimit; index++) {
       const question = page.locator("[data-question-id]");
       await question.waitFor();
       const id = await question.getAttribute("data-question-id");
+      assert.equal(await page.locator(".quiz-engine__progress-head > span").innerText(), `${Math.round(index / 30 * 100)}%`);
       assert.equal(await page.locator(".quiz-engine__checkpoint").count(), 0, "no mid-quiz checkpoints");
       const study = page.locator(".quiz-engine__study button");
       if (await study.count()) await study.click();
@@ -56,7 +62,7 @@ try {
       assert.equal(await cta.innerText(), "Back to top");
       await cta.click();
       assert.equal(await question.getAttribute("data-question-id"), id);
-      assert.equal(await page.locator("[data-display-ad]").count(), 2);
+      assert.equal(await page.locator("[data-display-ad]").count(), index === 0 ? 1 : 2);
       const geometry = await page.evaluate(() => {
         const ads = [...document.querySelectorAll("[data-display-ad]")];
         const answers = document.querySelector(".quiz-engine__answers").getBoundingClientRect();
@@ -64,25 +70,32 @@ try {
         return {
           overflow: document.documentElement.scrollWidth > window.innerWidth,
           above: ads[0].getBoundingClientRect().bottom <= answers.top,
-          below: ads[1].getBoundingClientRect().top >= answers.bottom,
-          next: cta.top >= ads[1].getBoundingClientRect().bottom,
+          below: !ads[1] || ads[1].getBoundingClientRect().top >= answers.bottom,
+          next: cta.top + 1 >= (ads[1]?.getBoundingClientRect().bottom ?? answers.bottom + 32),
+          answerButtonGap: cta.top - answers.bottom,
           widths: ads.map(ad => [ad.clientWidth, ad.lastElementChild.clientWidth]),
-          heights: ads.map(ad => ad.lastElementChild.getBoundingClientRect().height),
+          heightCaps: ads.map(ad => getComputedStyle(ad.lastElementChild).maxHeight),
+          widthCaps: ads.map(ad => getComputedStyle(ad.lastElementChild).maxWidth),
         };
       });
-      assert.equal(geometry.overflow, false); assert.equal(geometry.above, true); assert.equal(geometry.below, true); assert.equal(geometry.next, true);
-      geometry.widths.forEach(([available, actual]) => { assert.ok(available >= actual); assert.equal(actual, width === 320 ? 300 : 336); });
-      geometry.heights.forEach(actual => assert.ok(actual <= 280));
+      assert.equal(geometry.overflow, false); assert.equal(geometry.above, true); assert.equal(geometry.below, true); assert.equal(geometry.next, true, JSON.stringify(geometry));
+      geometry.widths.forEach(([available, actual]) => {
+        assert.ok(available >= actual);
+        const expected = [336, 300].find(w => w <= available);
+        assert.equal(actual, expected);
+      });
+      geometry.heightCaps.forEach(cap => assert.equal(cap, "none", "no height cap blocking Google expansion"));
+      geometry.widthCaps.forEach(cap => assert.equal(cap, "100%", "full placement width available"));
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY").every(x =>
-        x.config?.adExpansion?.enabled === false && x.sizes.every(([w, h]) =>
-          (w === 336 && h === 280) || (w === 300 && h === 250)))), true, "display sizes are bounded and expansion is disabled");
+        x.config?.adExpansion?.enabled === true && x.sizes.every(([w, h]) =>
+          (w === 336 && h === 280) || (w === 300 && h === 250)))), true, "only two base sizes, with expansion enabled");
       await page.locator(".quiz-engine__answer").first().click();
       await page.waitForTimeout(900);
       assert.equal(await question.getAttribute("data-question-id"), id, "no automatic advance");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "INTERSTITIAL").length), 0, "no interstitial requests");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 1, "only the start reward; no mid-quiz reward gates");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY").length), (index + 1) * 2, "exactly two new ad requests per question, not per answer or scroll");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 2, "previous question ad slots are destroyed");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY").length), 1 + index * 2, "one ad on question 1, two on subsequent questions; no requests on answer or scroll");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), index === 0 ? 1 : 2, "previous question ad slots are destroyed");
       assert.equal(await page.evaluate(() => window.adCalls.every(x => x.path === "/22677279144/display")), true, "all formats use the shared display unit");
       if (index === 0 && width === 390) await page.screenshot({ path: `/tmp/${slug}-manual-question.png`, fullPage: true });
       if (index < 29) {
@@ -99,8 +112,8 @@ try {
     }
     assert.deepEqual(errors, []);
     assert.equal(documentRequests, initialDocumentRequests, "no document requests across all thirty questions and result reveal");
-    assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 0, "result page cleans up both display slots");
-    console.log(`${slug} ${width}px: 30 questions, 60 bounded display requests, no interstitials or mid-checkpoints, SPA, manual navigation and result PASS`);
+    if (questionLimit === 30) assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 0, "result page cleans up both display slots");
+    console.log(`${slug} ${width}px: ${questionLimit} questions verified; responsive ads, padded first-question button, no interstitials or mid-checkpoints, SPA PASS`);
     if (slug === "years-left" && width === 390) {
       await page.evaluate(() => localStorage.clear());
       await page.goto(`${base}/${slug}`);

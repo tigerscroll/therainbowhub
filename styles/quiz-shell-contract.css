@@ -324,8 +324,10 @@
   text-align: center;
 }
 .quiz-question-ad > div {
-  max-width: min(100%, 336px);
-  max-height: 280px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .quiz-question-next {
   display: flex;
@@ -335,6 +337,9 @@
   min-height: 54px;
   margin-top: 24px;
   text-align: center;
+}
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question[data-first-question] .quiz-question-next {
+  margin-top: 32px !important;
 }
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell::before,
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question::before {
