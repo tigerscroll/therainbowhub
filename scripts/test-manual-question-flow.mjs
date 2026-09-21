@@ -54,7 +54,7 @@ try {
       const question = page.locator("[data-question-id]");
       await question.waitFor();
       const id = await question.getAttribute("data-question-id");
-      assert.equal(await page.locator(".quiz-engine__progress-head > span").innerText(), `${Math.round(index / 30 * 100)}%`);
+      assert.equal(await page.locator(".quiz-engine__progress-head > span").innerText(), `${Math.round(index / 30 * 100)}% COMPLETE`);
       assert.equal(await page.locator(".quiz-engine__checkpoint").count(), 0, "no mid-quiz checkpoints");
       const study = page.locator(".quiz-engine__study button");
       if (await study.count()) await study.click();

@@ -851,7 +851,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     <>
     <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
-        <span>{questionAds ? `${progress}%` : quiz.career
+        <span>{questionAds ? `${progress}% COMPLETE` : quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
         <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
