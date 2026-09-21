@@ -56,7 +56,7 @@ try {
         await question.waitFor();
         if (stageIndex === 0 && index === 0) {
           await page.screenshot({ path: `/tmp/years-left-polish-question-${width}.png`, fullPage: true, animations: "disabled" });
-          assert.equal(await page.locator(".quiz-engine__overall-progress").isVisible(), true);
+          assert.equal(await page.locator(".quiz-engine__overall-progress").count(), 0);
           assert.equal(await question.locator("h1").evaluate(node => getComputedStyle(node).animationName), "years-question-in");
         }
         assert.equal(await page.locator("[data-display-ad], .quiz-question-next").count(), 0, "no display placements or manual Next button");

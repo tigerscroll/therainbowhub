@@ -850,12 +850,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   return (
     <>
     <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
-      {quiz.stages.length > 1 ? (
-        <div className="quiz-engine__overall-progress">
-          <span>{quiz.career?.resultProgressLabel ?? translations.quiz.challengeProgress}</span>
-          <strong>{translations.quiz.progressComplete.replace("{value}", String(Math.round(quiz.questions.filter(question => answers[question.id] !== undefined).length / quiz.questions.length * 100)))}</strong>
-        </div>
-      ) : null}
       <div className="quiz-engine__progress-head">
         <span>{questionAds ? `${progress}% COMPLETE` : quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`

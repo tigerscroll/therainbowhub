@@ -432,31 +432,12 @@
 
 /* Hourglass artwork sizing; shared compact landing geometry lives in the shell. */
 [data-quiz-theme="years-left"] {
-  --quiz-overall-progress-display: flex;
   --quiz-about-gap-desktop: 48px;
   --quiz-about-gap-compact: 32px;
 }
 
 .quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__checkpoint {
   --quiz-flow-min-height: 0px;
-}
-
-[data-quiz-theme="years-left"] .quiz-engine__overall-progress {
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 18px 0 12px;
-  border-bottom: 1px solid rgba(122, 77, 31, .18);
-  color: var(--years-muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-}
-
-[data-quiz-theme="years-left"] .quiz-engine__overall-progress strong {
-  color: var(--years-brass-dark);
-  white-space: nowrap;
 }
 
 [data-quiz-theme="years-left"] .quiz-engine__question > h1 {
