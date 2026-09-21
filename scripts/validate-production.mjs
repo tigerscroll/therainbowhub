@@ -196,10 +196,8 @@ for (const declaration of rewardedOnlyContract) {
 for (const [label, source] of [
   ["site config", siteConfigText],
   ["root document", rootDocumentText],
-  ["quiz engine", quizEngineText],
   ["question renderer", questionRendererText],
   ["rewarded gate", rewardedGateText],
-  ["rewarded ad runtime", rewardedAdsText],
 ]) {
   if (/interstitial|gamInterstitial|NEXT_PUBLIC_AD_MODE|answerQuestionWithReload|quizStep/i.test(source)) {
     addError(`Interstitial code must not exist in the rewarded-only ${label}.`);
@@ -207,6 +205,9 @@ for (const [label, source] of [
 }
 if (!quizEngineText.includes("usesQuestionAds(quiz.slug)")) {
   addError("Question display ads must remain opt-in.");
+}
+if (!quizEngineText.includes("allowsQuestionInterstitial(questionIndex, quiz.questions.length)") || !quizEngineText.includes("window.history.replaceState")) {
+  addError("Quiz interstitials must keep question exclusions and SPA navigation.");
 }
 if (fs.existsSync(path.join(rootDir, "components", "experience", "WebInterstitialAd.tsx"))) {
   addError("The retired WebInterstitialAd component must not exist.");

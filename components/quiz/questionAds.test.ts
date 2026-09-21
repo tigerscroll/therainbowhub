@@ -1,18 +1,29 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
-import { usesQuestionAds } from "./questionAds.ts";
+import { allowsQuestionInterstitial, usesQuestionAds } from "./questionAds.ts";
 
 test("question ads are restricted to Memory and Years Left", () => {
   assert.equal(usesQuestionAds("memory"), true);
   assert.equal(usesQuestionAds("years-left"), true);
   for (const slug of ["iq", "vision", "oxford", "memory-other", ""]) assert.equal(usesQuestionAds(slug), false);
 });
+test("rewarded and display share the configured display ad unit", () => {
+  const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
+  assert.match(config, /rewardedAdUnitPath: "\/22677279144\/display"/);
+  assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
+  assert.ok(!config.includes("/22677279144/rewarded"));
+});
 test("both manual quizzes also reveal results without reloading", () => {
   for (const slug of ["memory", "years-left"]) {
     const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
     assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   }
+});
+test("interstitial eligibility excludes questions 1, 2, 9 and 10", () => {
+  assert.deepEqual(Array.from({ length: 10 }, (_, i) => allowsQuestionInterstitial(i, 10)),
+    [false, false, true, true, true, true, true, true, false, false]);
+  for (const index of [-1, 10, NaN, 2.5]) assert.equal(allowsQuestionInterstitial(index, 10), false);
 });
 
 test("Memory's shortened sequence retains recall prerequisites and an eight-answer pass target", () => {

@@ -44,7 +44,6 @@ try {
     });
     await page.goto(`${base}/${slug}?test_keep=1`);
     const initialDocumentRequests = documentRequests;
-    const initialUrl = page.url();
     await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
     for (let index = 0; index < 10; index++) {
       const question = page.locator("[data-question-id]");
@@ -74,15 +73,17 @@ try {
       await page.locator(".quiz-engine__answer").first().click();
       await page.waitForTimeout(900);
       assert.equal(await question.getAttribute("data-question-id"), id, "no automatic advance");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "INTERSTITIAL").length), 0);
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "INTERSTITIAL" && !x.destroyed).length), index >= 2 && index < 8 ? 1 : 0);
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "INTERSTITIAL").length), index >= 2 ? 1 : 0, "reuse a single interstitial across the eligible range");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY").length), (index + 1) * 2, "exactly two new ad requests per question, not per answer or scroll");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 2, "previous question ad slots are destroyed");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format !== "REWARDED").every(x => x.path === "/22677279144/display")), true);
+      assert.equal(await page.evaluate(() => window.adCalls.every(x => x.path === "/22677279144/display")), true, "all formats use the shared display unit");
       if (index === 0 && width === 390) await page.screenshot({ path: `/tmp/${slug}-manual-question.png`, fullPage: true });
       if (index < 9) {
         assert.equal(await cta.innerText(), "Next Question");
+        assert.equal(await cta.getAttribute("data-google-interstitial"), index >= 2 && index < 8 ? null : "false");
         await cta.click();
-        assert.equal(page.url(), initialUrl);
+        assert.equal(new URL(page.url()).searchParams.get("question"), String(index + 2));
         assert.equal(new URL(page.url()).searchParams.get("test_keep"), "1");
         await page.waitForFunction(previous => document.querySelector("[data-question-id]")?.getAttribute("data-question-id") !== previous && document.querySelector("[data-question-id]"), id);
       } else {
@@ -95,18 +96,18 @@ try {
     assert.deepEqual(errors, []);
     assert.equal(documentRequests, initialDocumentRequests, "no document requests across all ten questions and result reveal");
     assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 0, "result page cleans up both display slots");
-    console.log(`${slug} ${width}px: SPA, 20 display requests, slot cleanup, manual navigation, geometry and result PASS`);
+    console.log(`${slug} ${width}px: SPA, 20 display requests, scoped interstitial, slot cleanup, manual navigation, geometry and result PASS`);
     if (slug === "years-left" && width === 390) {
       await page.evaluate(() => localStorage.clear());
       await page.goto(`${base}/${slug}`);
       await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
       await page.locator(".quiz-engine__answer").first().click();
       const id = await page.locator("[data-question-id]").getAttribute("data-question-id");
-      const url = page.url();
+      const documentsBefore = documentRequests;
       await page.evaluate(() => { Storage.prototype.setItem = () => { throw new Error("Test: storage unavailable"); }; });
       await page.locator(".quiz-question-next").click();
       await page.waitForFunction(previous => document.querySelector("[data-question-id]")?.getAttribute("data-question-id") !== previous, id);
-      assert.equal(page.url(), url, "no navigation when next progress cannot be saved");
+      assert.equal(documentRequests, documentsBefore, "no document navigation when progress cannot be saved");
       assert.equal(await page.locator(".quiz-question-next").innerText(), "Back to top");
       assert.deepEqual(errors, []);
       console.log("Storage failure: continues in-page without losing answers PASS");
