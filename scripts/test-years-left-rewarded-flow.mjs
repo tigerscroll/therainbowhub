@@ -54,6 +54,7 @@ try {
       for (const [index, id] of stage.questionIds.entries()) {
         const question = page.locator(`[data-question-id="${id}"]`);
         await question.waitFor();
+        assert.equal(await question.locator(".quiz-engine__answer").evaluateAll(nodes => nodes.every(node => getComputedStyle(node).animationName === "none")), true, "answers appear immediately without staggered entry animations");
         if (stageIndex === 0 && index === 0) {
           await page.screenshot({ path: `/tmp/years-left-polish-question-${width}.png`, fullPage: true, animations: "disabled" });
           assert.equal(await page.locator(".quiz-engine__overall-progress").count(), 0);
