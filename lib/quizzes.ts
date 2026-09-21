@@ -36,8 +36,8 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     levels: ["final"],
     engine: {
       flow: "linear", advance: "manual", feedback: "selection-only", checkpoint: "ai",
-      startOnLoad: true,
-      rewarded: { start: false, stages: true, attempts: 3, confirmStart: false },
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },

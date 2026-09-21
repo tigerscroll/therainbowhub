@@ -4,8 +4,6 @@ export const QUIZ_TEMPLATE_CONTRACTS = {
     questionsPerStage: 30,
     flow: "linear",
     advance: "manual",
-    startOnLoad: true,
-    rewardedStart: false,
   },
   "single-stage-rewarded-v1": {
     stageCount: 1,
