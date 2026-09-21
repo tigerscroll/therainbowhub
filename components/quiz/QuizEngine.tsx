@@ -567,12 +567,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           </ul>
         ) : null}
         {!isSingleStage ? (
-          <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%` } as CSSProperties}>
+          <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%`, "--career-result-progress-from": `${Math.round((completedStageCount - 1) / quiz.stages.length * 100)}%` } as CSSProperties}>
             <div>
               <span>{career.resultProgressLabel ?? translations.quiz.challengeProgress}</span>
               <strong>{(career.resultProgressComplete ?? translations.quiz.progressComplete).replace("{value}", String(checkpointPercent))}</strong>
             </div>
-            <i aria-hidden="true"><b /></i>
+            <i role="progressbar" aria-label={career.resultProgressLabel ?? translations.quiz.challengeProgress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={checkpointPercent}><b /></i>
           </section>
         ) : null}
         {!isFinalStage && careerStage.next ? (
@@ -850,6 +850,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   return (
     <>
     <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
+      {quiz.stages.length > 1 ? (
+        <div className="quiz-engine__overall-progress">
+          <span>{quiz.career?.resultProgressLabel ?? translations.quiz.challengeProgress}</span>
+          <strong>{translations.quiz.progressComplete.replace("{value}", String(Math.round(quiz.questions.filter(question => answers[question.id] !== undefined).length / quiz.questions.length * 100)))}</strong>
+        </div>
+      ) : null}
       <div className="quiz-engine__progress-head">
         <span>{questionAds ? `${progress}% COMPLETE` : quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
@@ -861,7 +867,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       </div>
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} data-question-ads={questionAds || undefined} data-first-question={questionAds && questionIndex === 0 || undefined}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
-        <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
+        <h1 key={currentQuestion.id}>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
         aboveAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-above`} id={`quiz-ad-${currentQuestion.id}-above`} /> : undefined}
         belowAnswers={questionAds && questionIndex > 0 ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}

@@ -226,6 +226,11 @@
   flex-direction: column;
 }
 
+.quiz-engine__overall-progress {
+  display: var(--quiz-overall-progress-display, none);
+  margin-inline: var(--quiz-shell-content-inset);
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell {
   gap: 0 !important;
   padding: 0 !important;

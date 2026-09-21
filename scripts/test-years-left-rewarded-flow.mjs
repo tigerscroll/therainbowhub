@@ -7,8 +7,8 @@ const manifest = JSON.parse(fs.readFileSync("data/quizzes/years-left/quiz.json",
 const copy = JSON.parse(fs.readFileSync("data/quizzes/years-left/en.json", "utf8"));
 const browser = await chromium.launch({ executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", headless: true });
 try {
-  for (const width of [390, 1440]) {
-    const context = await browser.newContext({ viewport: { width, height: 900 } });
+  for (const width of (process.env.QUIZ_TEST_WIDTHS ?? "320,390,1440").split(",").map(Number)) {
+    const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: width === 320 ? "reduce" : "no-preference" });
     const page = await context.newPage();
     const errors = [];
     let documents = 0;
@@ -43,6 +43,7 @@ try {
     });
     await page.goto(`${base}/years-left?test_keep=1`);
     await page.locator(".quiz-engine__landing").waitFor();
+    await page.screenshot({ path: `/tmp/years-left-polish-landing-${width}.png`, fullPage: true, animations: "disabled" });
     assert.equal(await page.evaluate(() => window.adCalls.length), 0, "no ad before clicking Start");
     assert.match(await page.locator(".quiz-engine__landing").innerText(), /One short ad/i);
     await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
@@ -53,6 +54,11 @@ try {
       for (const [index, id] of stage.questionIds.entries()) {
         const question = page.locator(`[data-question-id="${id}"]`);
         await question.waitFor();
+        if (stageIndex === 0 && index === 0) {
+          await page.screenshot({ path: `/tmp/years-left-polish-question-${width}.png`, fullPage: true, animations: "disabled" });
+          assert.equal(await page.locator(".quiz-engine__overall-progress").isVisible(), true);
+          assert.equal(await question.locator("h1").evaluate(node => getComputedStyle(node).animationName), "years-question-in");
+        }
         assert.equal(await page.locator("[data-display-ad], .quiz-question-next").count(), 0, "no display placements or manual Next button");
         assert.equal((await page.locator(".quiz-engine__progress-head > span").innerText()).toUpperCase(), `${index + 1} OF 6`);
         assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
@@ -65,9 +71,21 @@ try {
       }
       const checkpoint = page.locator(".quiz-engine__checkpoint");
       await checkpoint.waitFor();
+      const progressBar = checkpoint.getByRole("progressbar");
+      assert.equal(await progressBar.getAttribute("aria-valuenow"), String((stageIndex + 1) * 20));
+      assert.equal(await checkpoint.locator(".quiz-engine__checkpoint-journey-progress").evaluate(node => node.style.getPropertyValue("--career-result-progress-from")), `${stageIndex * 20}%`);
+      assert.equal(await progressBar.locator("b").evaluate(node => getComputedStyle(node).animationName), "years-checkpoint-fill");
+      await page.waitForFunction(() => {
+        const bar = document.querySelector('.quiz-engine__checkpoint-journey-progress > i');
+        return Math.abs(bar.firstElementChild.getBoundingClientRect().width / bar.clientWidth * 100 - Number(bar.getAttribute('aria-valuenow'))) < 1;
+      });
       assert.equal(await checkpoint.getAttribute("data-round"), String(stageIndex + 1));
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, "round ad waits for Continue/Reveal click");
       await checkpoint.locator(".quiz-engine__checkpoint-ad-note").waitFor();
+      if (stageIndex === 0) {
+        assert.equal(await checkpoint.evaluate(node => getComputedStyle(node).minHeight), "0px");
+        await page.screenshot({ path: `/tmp/years-left-polish-checkpoint-${width}.png`, fullPage: true });
+      }
       assert.match(await checkpoint.locator(".quiz-engine__checkpoint-ad-note").innerText(), /short ad/i);
       if (stageIndex === 0 && width === 390) {
         await page.screenshot({ path: "/tmp/years-left-rewarded-checkpoint.png", fullPage: true });
@@ -81,9 +99,10 @@ try {
       expectedRewards++;
     }
     await page.locator(".quiz-engine__results").waitFor();
+    await page.screenshot({ path: `/tmp/years-left-polish-result-${width}.png`, fullPage: true, animations: "disabled" });
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
     assert.equal(expectedRewards + (width === 390 ? 1 : 0), 6, "six normal rewarded requests across the full journey");
-    assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === "REWARDED" && ad.path === "/22677279144/display")), true);
+    assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === "REWARDED" && ad.path === "/22677279144/rewarded")), true);
     assert.equal(documents, initialDocuments + (width === 390 ? 1 : 0), "SPA; only the deliberate test reload navigates");
     await page.locator(".quiz-engine__about-restart").click();
     await page.locator(".quiz-engine__landing").waitFor();

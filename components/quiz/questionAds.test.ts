@@ -11,11 +11,10 @@ test("question display ads are restricted to Memory", () => {
   assert.equal(usesQuestionAds("years-left"), false);
   for (const slug of ["iq", "vision", "oxford", "memory-other", ""]) assert.equal(usesQuestionAds(slug), false);
 });
-test("rewarded and display share the configured display ad unit", () => {
+test("rewarded and display use their own configured ad units", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
-  assert.match(config, /rewardedAdUnitPath: "\/22677279144\/display"/);
+  assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
   assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
-  assert.ok(!config.includes("/22677279144/rewarded"));
 });
 test("Memory and Years Left reveal results without reloading", () => {
   for (const slug of ["memory", "years-left"]) {
