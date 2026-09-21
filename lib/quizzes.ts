@@ -32,7 +32,7 @@ type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const QUIZ_TEMPLATE_CONTRACTS = {
   "single-stage-display-manual-v1": {
     stageCount: 1,
-    questionsPerStage: 10,
+    questionsPerStage: 30,
     levels: ["final"],
     engine: {
       flow: "linear", advance: "manual", feedback: "selection-only", checkpoint: "ai",

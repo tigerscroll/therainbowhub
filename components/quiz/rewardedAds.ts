@@ -4,7 +4,7 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
-  setConfig?: (config: { interstitial: { requireStorageAccess: boolean; triggers: Record<string, boolean> } }) => void;
+  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
   defineSizeMapping?: (mapping: unknown) => GptSlot;
 };
 
@@ -33,7 +33,7 @@ type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown; INTERSTITIAL?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
   setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
   sizeMapping?: () => SizeMappingBuilder;
@@ -84,8 +84,9 @@ export function mountDisplayAd({
     pubads = googletag?.pubads?.();
     if (!googletag?.defineSlot || !googletag.display || !pubads) return;
 
-    googletag.setConfig?.({ adExpansion: { enabled: true } });
-    const allSizes = sizes.map(([width, height]) => [width, height]);
+    const allSizes = sizes.filter(([width, height]) =>
+      (width === 336 && height === 280) || (width === 300 && height === 250));
+    if (!allSizes.length) return;
     const compactPhoneSizes = allSizes.filter(([width]) => width <= 300);
     const phoneSizes = allSizes.filter(([width]) => width <= 336);
     const tabletSizes = allSizes.filter(([width]) => width <= 728);
@@ -98,6 +99,7 @@ export function mountDisplayAd({
 
     slot = googletag.defineSlot(adUnitPath, allSizes, elementId);
     if (!slot) return;
+    slot.setConfig?.({ adExpansion: { enabled: false } });
     if (mapping) slot.defineSizeMapping?.(mapping);
     slot.addService(pubads);
     renderListener = (event) => {
@@ -125,39 +127,6 @@ export function mountDisplayAd({
       }
     },
   };
-}
-
-// GPT manages SPA navigation interception, consent and frequency capping.
-// Keep one slot across the eligible question range, not one request per answer.
-export function mountQuestionInterstitial(adUnitPath: string) {
-  let cancelled = false;
-  let slot: GptSlot | null = null;
-  const destroy = () => {
-    cancelled = true;
-    if (slot) {
-      try { window.googletag?.destroySlots?.([slot]); } catch { /* best effort */ }
-      slot = null;
-    }
-  };
-  window.googletag = window.googletag ?? { cmd: [] };
-  window.googletag.cmd.push(() => {
-    if (cancelled) return;
-    const tag = window.googletag;
-    const format = tag?.enums?.OutOfPageFormat?.INTERSTITIAL;
-    const pubads = tag?.pubads?.();
-    if (format === undefined || !pubads || !tag?.defineOutOfPageSlot || !tag.display) return;
-    try {
-      slot = tag.defineOutOfPageSlot(adUnitPath, format);
-      if (!slot) return;
-      slot.setConfig?.({ interstitial: { requireStorageAccess: true, triggers: {
-        navBar: false, unhideWindow: false, inactivity: false, endOfArticle: false, continueReading: false,
-      } } });
-      slot.addService(pubads);
-      if (!servicesEnabled) { tag.enableServices?.(); servicesEnabled = true; }
-      tag.display(slot);
-    } catch { destroy(); /* Ad failure must never prevent answering or navigation. */ }
-  });
-  return { destroy };
 }
 
 function sendQuizStartIfComplete(request: ActiveRequest) {

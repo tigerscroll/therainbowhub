@@ -511,19 +511,19 @@ for (const folder of folders) {
   if (["memory", "years-left"].includes(folder.name)) {
     const memory = folder.name === "memory";
     const expectedIds = memory
-      ? ["memory-r1q1", "memory-r1q2", "memory-r1q3", "memory-r1q4", "memory-r2q4", "memory-r2q6", "memory-r4q1", "memory-r4q3", "memory-r4q6", "memory-r5q8"]
-      : ["yl-s1q1", "yl-s1q2", "yl-s2q1", "yl-s2q2", "yl-s3q1", "yl-s3q2", "yl-s4q1", "yl-s4q2", "yl-s5q1", "yl-s5q8"];
+      ? [[1,2,3,4,7,8], [1,2,3,4,5,6], [1,2,3,5,7,8], [1,2,3,4,5,6], [1,2,3,4,6,8]].flatMap((qs,r) => qs.map(n => `memory-r${r+1}q${n}`))
+      : [[1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,8]].flatMap((qs,r) => qs.map(n => `yl-s${r+1}q${n}`));
     fail(config.template === "single-stage-display-manual-v1" && config.engine.flow === "linear" && config.engine.advance === "manual", folder.name + ": must use the single-stage manual flow.");
     fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
-    fail(source.stages.length === 1 && sourceQuestions.length === 10, folder.name + ": needs exactly ten questions in one stage.");
+    fail(source.stages.length === 1 && sourceQuestions.length === 30, folder.name + ": needs exactly thirty questions in one stage.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
     fail(sourceQuestions.every(q => { const choices = Array.isArray(q.answers) ? q.answers : Object.keys(q.answers); return choices.length === 4 && new Set(choices).size === 4; }), folder.name + ": needs four unique choices per question.");
-    fail(source.career.stages.length === 1 && !source.career.stages[0].next && source.career.stages[0].preAdChecks[0] === "10 answers checked", folder.name + ": needs one final result gate.");
+    fail(source.career.stages.length === 1 && !source.career.stages[0].next && source.career.stages[0].preAdChecks[0] === "30 answers checked", folder.name + ": needs one final result gate.");
     fail(!/five rounds|40 answers|forty|five quick|five fast/i.test(JSON.stringify(source)), folder.name + ": stale five-stage copy.");
     if (memory) {
       fail(config.engine.targetRatio === 0.8 && source.results.score.showBestRound === false, "memory: retain 80% target without a redundant best-round module.");
       fail(sourceQuestions.every(q => Number.isInteger(q.correct)), "memory: every answer must remain scored.");
-      fail(JSON.stringify(sourceQuestions.filter(q=>q.study).map(q=>q.id)) === JSON.stringify(["memory-r1q1", "memory-r4q1"]), "memory: retain both required recall boards.");
+      fail(JSON.stringify(sourceQuestions.filter(q=>q.study).map(q=>q.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), "memory: retain all three required recall boards.");
       fail(sourceQuestions.filter(q=>q.study).every(q=>q.study.mode === "manual" && q.study.continueLabel === "I’m Ready"), "memory: no timed study boards.");
     } else {
       fail(config.engine.estimate.baseAge === 84 && config.engine.estimate.minAge === 73 && config.engine.estimate.maxAge === 95, "years-left: preserve estimate safety clamp.");

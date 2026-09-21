@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
-import { allowsQuestionInterstitial, usesQuestionAds } from "./questionAds.ts";
+import { usesQuestionAds } from "./questionAds.ts";
 
 test("question ads are restricted to Memory and Years Left", () => {
   assert.equal(usesQuestionAds("memory"), true);
@@ -20,19 +20,43 @@ test("both manual quizzes also reveal results without reloading", () => {
     assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   }
 });
-test("interstitial eligibility excludes questions 1, 2, 9 and 10", () => {
-  assert.deepEqual(Array.from({ length: 10 }, (_, i) => allowsQuestionInterstitial(i, 10)),
-    [false, false, true, true, true, true, true, true, false, false]);
-  for (const index of [-1, 10, NaN, 2.5]) assert.equal(allowsQuestionInterstitial(index, 10), false);
+test("interstitial code is absent throughout the application", () => {
+  for (const directory of ["components", "lib", "app"]) {
+    for (const path of fs.readdirSync(directory, { recursive: true })) {
+      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /interstitial/i, `${directory}/${path}`);
+    }
+  }
+});
+test("both quizzes have 30 unique questions, one stage and only a final result gate", () => {
+  for (const slug of ["memory", "years-left"]) {
+    const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
+    const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/en.json`, "utf8"));
+    assert.equal(manifest.structure.stages.length, 1);
+    const ids = manifest.structure.stages[0].questionIds;
+    assert.equal(ids.length, 30);
+    assert.equal(new Set(ids).size, 30);
+    assert.equal(Object.keys(copy.career.stages).length, 1);
+    assert.equal(copy.career.stages["stage-1"].next, undefined);
+    assert.equal(copy.career.stages["stage-1"].preAdChecks[0], "30 answers checked");
+  }
 });
 
-test("Memory's shortened sequence retains recall prerequisites and an eight-answer pass target", () => {
+test("Memory retains recall prerequisites and a 24-answer pass target", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/memory/quiz.json", "utf8"));
   const copy = JSON.parse(fs.readFileSync("data/quizzes/memory/en.json", "utf8"));
   const ids = manifest.structure.stages[0].questionIds;
-  assert.equal(ids.length, 10);
-  assert.equal(ids.length * manifest.engine.targetRatio, 8);
+  assert.equal(ids.length, 30);
+  assert.equal(ids.length * manifest.engine.targetRatio, 24);
   const questions = copy.stages["stage-1"].questions;
+  for (const [board, recalls] of [
+    ["memory-r1q1", ["memory-r1q4", "memory-r1q8", "memory-r5q1", "memory-r5q2"]],
+    ["memory-r3q1", ["memory-r3q7", "memory-r3q8", "memory-r5q3", "memory-r5q6"]],
+    ["memory-r4q1", ["memory-r4q5", "memory-r4q6", "memory-r5q4"]],
+  ] as const) {
+    assert.ok(questions[board].study);
+    for (const recall of recalls) assert.ok(ids.indexOf(board) >= 0 && ids.indexOf(board) < ids.indexOf(recall), recall);
+  }
   assert.ok(ids.indexOf("memory-r1q1") < ids.indexOf("memory-r1q4"));
   assert.ok(questions["memory-r1q1"].study.items.includes("PURPLE ELEPHANT"));
   assert.equal(questions["memory-r1q4"].answers[manifest.structure.questions["memory-r1q4"].correctAnswerId], "Elephant");

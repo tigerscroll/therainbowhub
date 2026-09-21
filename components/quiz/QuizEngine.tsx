@@ -10,9 +10,7 @@ import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
 import { QuestionDisplayAd } from "./QuestionDisplayAd";
-import { allowsQuestionInterstitial, usesQuestionAds } from "./questionAds";
-import { mountQuestionInterstitial } from "./rewardedAds";
-import { siteConfig } from "@/lib/siteConfig";
+import { usesQuestionAds } from "./questionAds";
 import { QuizAbout } from "./QuizAbout";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -155,19 +153,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
   const questionAds = usesQuestionAds(quiz.slug);
-  const interstitialAllowed = questionAds && allowsQuestionInterstitial(questionIndex, quiz.questions.length);
-  const nextQuestionHref = hydrated ? (() => {
-    const url = new URL(window.location.href);
-    url.searchParams.set("question", String(questionIndex + 2));
-    url.hash = "";
-    return url.href;
-  })() : undefined;
-
-  useEffect(() => {
-    if (!hydrated || screen !== "question" || !interstitialAllowed) return;
-    const slot = mountQuestionInterstitial(siteConfig.displayAdUnitPath);
-    return () => slot.destroy();
-  }, [hydrated, screen, interstitialAllowed]);
 
   useLayoutEffect(() => {
     try {
@@ -894,16 +879,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           selectedAnswer === undefined ? (
             <button className="quiz-engine__primary quiz-question-next" onClick={scrollToTop} type="button">Back to top</button>
           ) : questionIndex < quiz.questions.length - 1 ? (
-            <a className="quiz-engine__primary quiz-question-next" href={nextQuestionHref}
-              data-google-interstitial={interstitialAllowed ? undefined : "false"}
-              onClick={(event) => {
-                event.preventDefault();
-                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-                // A real navigation link lets GPT handle its supported SPA trigger.
-                // Replace the URL in place: no reload or extra browser-back entries.
-                try { window.history.replaceState(null, "", event.currentTarget.href); } catch { /* navigation still works in memory */ }
-                moveForward();
-              }}>Next Question</a>
+            <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">Next Question</button>
           ) : <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">{translations.results.viewResults}</button>
         ) : !questionAds && quiz.engine.flow.advance === "manual" ? (
           <button

@@ -194,6 +194,8 @@ for (const declaration of rewardedOnlyContract) {
   if (!quizEngineText.includes(declaration)) addError(`Rewarded-only ad contract is missing: ${declaration}`);
 }
 for (const [label, source] of [
+  ["quiz engine", quizEngineText],
+  ["ad runtime", rewardedAdsText],
   ["site config", siteConfigText],
   ["root document", rootDocumentText],
   ["question renderer", questionRendererText],
@@ -205,9 +207,6 @@ for (const [label, source] of [
 }
 if (!quizEngineText.includes("usesQuestionAds(quiz.slug)")) {
   addError("Question display ads must remain opt-in.");
-}
-if (!quizEngineText.includes("allowsQuestionInterstitial(questionIndex, quiz.questions.length)") || !quizEngineText.includes("window.history.replaceState")) {
-  addError("Quiz interstitials must keep question exclusions and SPA navigation.");
 }
 if (fs.existsSync(path.join(rootDir, "components", "experience", "WebInterstitialAd.tsx"))) {
   addError("The retired WebInterstitialAd component must not exist.");
