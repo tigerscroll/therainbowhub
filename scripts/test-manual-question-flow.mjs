@@ -48,11 +48,9 @@ try {
       };
     });
     await page.goto(`${base}/${slug}?test_keep=1`);
-    const subtitle = page.locator(".quiz-engine__landing .quiz-engine__quick-start");
-    assert.equal(await subtitle.innerText(), slug === "memory" ? "Think your memory is sharp?\nPut it to the test." : "One surprising result.\nWhat age will you get?");
-    assert.equal(await subtitle.evaluate(el => Math.abs(el.getBoundingClientRect().height - 2 * parseFloat(getComputedStyle(el).lineHeight)) <= 1), true, "subtitle occupies two short lines");
+    await page.locator("[data-question-id]").waitFor();
+    assert.equal(await page.locator(".quiz-engine__landing").count(), 0, "opens directly on question 1 without a landing page");
     const initialDocumentRequests = documentRequests;
-    await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
     for (let index = 0; index < questionLimit; index++) {
       const question = page.locator("[data-question-id]");
       await question.waitFor();
@@ -110,7 +108,7 @@ try {
       await page.waitForTimeout(900);
       assert.equal(await question.getAttribute("data-question-id"), id, "no automatic advance");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "INTERSTITIAL").length), 0, "no interstitial requests");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 1, "only the start reward; no mid-quiz reward gates");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 0, "no start or mid-quiz reward gates");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY").length), 1 + index * 2, "one ad on question 1, two on subsequent questions; no requests on answer or scroll");
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), index === 0 ? 1 : 2, "previous question ad slots are destroyed");
       assert.equal(await page.evaluate(() => window.adCalls.every(x => x.path === "/22677279144/display")), true, "all formats use the shared display unit");
@@ -132,17 +130,19 @@ try {
     assert.equal(documentRequests, initialDocumentRequests, "no document requests across all thirty questions and result reveal");
     if (questionLimit === 30) {
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), 0, "result page cleans up both display slots");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 2, "starting and final result rewards remain");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 1, "only the final result reward remains");
       await page.locator(".quiz-engine__about-restart").click();
-      await page.locator(".quiz-engine__landing").waitFor();
-      assert.equal(await page.locator("[data-question-id]").count(), 0, "restart returns to the landing page");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 2, "landing waits for Start before requesting a reward");
+      await page.locator("[data-question-id]").waitFor();
+      assert.equal(await page.locator(".quiz-engine__landing").count(), 0, "restart also skips the landing page");
+      assert.equal(await page.locator(".quiz-engine__progress-head > span").innerText(), "0% COMPLETE");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 1, "restart does not request another starting reward");
     }
     console.log(`${slug} ${width}px: ${questionLimit} questions verified; responsive ads, padded first-question button, no interstitials or mid-checkpoints, SPA PASS`);
     if (slug === "years-left" && width === 390) {
       await page.evaluate(() => localStorage.clear());
       await page.goto(`${base}/${slug}`);
-      await page.locator(".quiz-engine__landing .quiz-engine__primary").click();
+      await page.locator("[data-question-id]").waitFor();
+      assert.equal(await page.locator(".quiz-engine__landing").count(), 0);
       await page.locator(".quiz-engine__answer").first().click();
       const id = await page.locator("[data-question-id]").getAttribute("data-question-id");
       const documentsBefore = documentRequests;

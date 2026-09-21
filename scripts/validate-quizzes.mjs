@@ -304,8 +304,8 @@ for (const folder of folders) {
     advance: templateContract.advance ?? "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
-    startOnLoad: false,
-    rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+    startOnLoad: templateContract.startOnLoad ?? false,
+    rewarded: { start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false },
     advanceDelayMs: 450,
     ...manifestEngine,
   };
@@ -317,9 +317,9 @@ for (const folder of folders) {
     && config.engine.advance === (templateContract.advance ?? "automatic")
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
-    && config.engine.startOnLoad === false
+    && config.engine.startOnLoad === (templateContract.startOnLoad ?? false)
     && config.engine.advanceDelayMs === 450
-    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
+    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
   fail(config.listing?.socialProofCount === SOCIAL_PROOF_COUNTS[folder.name], `${folder.name}/quiz.json: listing.socialProofCount must use the shared stable quiz count.`);
   fail(config.listing?.showSocialProof === undefined || typeof config.listing.showSocialProof === "boolean", `${folder.name}/quiz.json: listing.showSocialProof must be a boolean when provided.`);
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
@@ -514,7 +514,7 @@ for (const folder of folders) {
       ? [[1,2,3,4,7,8], [1,2,3,4,5,6], [1,2,3,5,7,8], [1,2,3,4,5,6], [1,2,3,4,6,8]].flatMap((qs,r) => qs.map(n => `memory-r${r+1}q${n}`))
       : [[1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,8]].flatMap((qs,r) => qs.map(n => `yl-s${r+1}q${n}`));
     fail(config.template === "single-stage-display-manual-v1" && config.engine.flow === "linear" && config.engine.advance === "manual", folder.name + ": must use the single-stage manual flow.");
-    fail(!config.engine.startOnLoad && config.engine.rewarded.start && config.engine.rewarded.stages, folder.name + ": must retain the landing page, starting reward and final reward.");
+    fail(config.engine.startOnLoad && !config.engine.rewarded.start && config.engine.rewarded.stages, folder.name + ": must start directly on the quiz without a start reward, retaining the final reward.");
     fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
     fail(source.stages.length === 1 && sourceQuestions.length === 30, folder.name + ": needs exactly thirty questions in one stage.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
