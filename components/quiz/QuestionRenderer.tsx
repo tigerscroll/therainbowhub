@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useState, type CSSProperties, type ReactNode } from "react";
 
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 
 type QuestionRendererProps = {
+  aboveAnswers?: ReactNode;
+  belowAnswers?: ReactNode;
   answer?: number;
   answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
@@ -116,7 +118,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question, aboveAnswers, belowAnswers }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -125,6 +127,7 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
     <>
       <QuestionImage question={question} />
       <QuestionVisual question={question} />
+      {aboveAnswers}
       <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}${hasLongUnbrokenChoice ? " quiz-engine__answers--long-word" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
         {question.choices.map((choice, index) => {
           const selected = answer === index;
@@ -175,6 +178,7 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
           );
         })}
       </div>
+      {belowAnswers}
     </>
   );
 }

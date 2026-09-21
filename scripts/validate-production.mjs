@@ -205,6 +205,9 @@ for (const [label, source] of [
     addError(`Interstitial code must not exist in the rewarded-only ${label}.`);
   }
 }
+if (!quizEngineText.includes("usesQuestionAds(quiz.slug)")) {
+  addError("Question display ads must remain opt-in.");
+}
 if (fs.existsSync(path.join(rootDir, "components", "experience", "WebInterstitialAd.tsx"))) {
   addError("The retired WebInterstitialAd component must not exist.");
 }

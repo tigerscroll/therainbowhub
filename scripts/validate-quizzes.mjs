@@ -301,7 +301,7 @@ for (const folder of folders) {
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
     flow: templateContract.flow,
-    advance: "automatic",
+    advance: templateContract.advance ?? "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
     startOnLoad: false,
@@ -314,7 +314,7 @@ for (const folder of folders) {
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
   fail(config.engine.flow === templateContract.flow
-    && config.engine.advance === "automatic"
+    && config.engine.advance === (templateContract.advance ?? "automatic")
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
     && config.engine.startOnLoad === false
@@ -508,77 +508,27 @@ for (const folder of folders) {
     fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready", `${folder.name}/en.json: result-ready title changed.`);
     fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks)?.includes("10 answers checked"), `${folder.name}/en.json: ten-answer final checklist changed.`);
   }
-  if (folder.name === "years-left") {
-    const expectedHeaders = ["DAILY PULSE", "ENERGY ENGINE", "PRESSURE & PEOPLE", "WILDCARD ROUND", "FUTURE CLOCK"];
-    const byId = new Map(sourceQuestions.map((question) => [question.id, question]));
-    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged" && sourceRaw.progressLabel === undefined, "years-left: must use the shared five-stage rewarded prediction flow and progress copy.");
-    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), "years-left/en.json: must contain five rounds of eight questions.");
-    fail(sourceQuestions.length === 40 && new Set(sourceQuestionIds).size === 40, "years-left/en.json: must contain forty unique interactions.");
-    fail(new Set(source.stages.map((stage) => stage.title)).size === 5 && new Set(sourceQuestions.map((question) => question.question)).size === 40, "years-left/en.json: every round title and prompt must remain unique.");
-    fail(sourceQuestionIds.every((id, index) => id === `yl-s${Math.floor(index / 8) + 1}q${(index % 8) + 1}`), "years-left/en.json: stable question IDs or order changed.");
-    fail(source.stages.every((stage, index) => stage.questions.every((question) => question.headerLabel === expectedHeaders[index])), "years-left/en.json: round header labels changed.");
-    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), "years-left/en.json: compact screens must not use separate context banners.");
-    fail(sourceQuestions.every((question) => question.delay === undefined), "years-left/en.json: questions must inherit the shared advance delay.");
-    fail(sourceQuestions.every((question) => question.question.trim().split(/\s+/).length <= 20), "years-left/en.json: compact prompts must stay at 20 words or fewer.");
-    fail(sourceQuestions.every((question) => {
-      const answers = Object.keys(question.answers ?? {});
-      return answers.length === 4 && new Set(Object.values(question.answers ?? {})).size === 4;
-    }), "years-left/en.json: every interaction needs four unique choices.");
-    fail(config.engine?.advanceDelayMs === 450 && config.engine?.hardRefreshCheckpoints === true, "years-left: the 450ms answer delay and checkpoint-only hard refresh must remain enabled.");
-    fail(config.engine?.startOnLoad === false && config.engine?.rewarded?.start === true && config.engine?.rewarded?.confirmStart === false, "years-left: must open on its landing and use the direct rewarded Start flow.");
-    fail(config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3, "years-left: must retain its configured stage-gate behaviour.");
-    fail(source.title === "How Long Do You Have Left To Live?", "years-left/en.json: title changed.");
-    fail(source.landing?.startPrompt === undefined && source.landing?.startNote === undefined, "years-left/en.json: rewarded Start helper must use the shared template.");
-    fail(source.results?.estimate?.reviewUnlock?.button === "See What Shaped It", "years-left/en.json: choice-impact reveal copy is incomplete.");
-    fail(source.results?.estimate?.reviewUnlock?.rewarded === true, "years-left/en.json: choice-impact details must use the shared rewarded breakdown gate.");
-    fail(config.engine?.estimate?.baseAge === 84 && config.engine?.estimate?.minAge === 73 && config.engine?.estimate?.maxAge === 95, "years-left: estimate base and safety clamp are incorrect.");
-    fail(config.engine?.estimate?.calibrationMax === 1 && JSON.stringify(config.engine?.estimate?.brainAdjustments) === JSON.stringify({ "0": 0 }), "years-left: estimate calibration is incorrect.");
-    fail(sourceQuestions.every((question) => question.presentation !== "memory-cue" && question.correct === undefined), "years-left: lifestyle flow must not contain unrelated Brain Check scoring.");
-    fail(sourceQuestions.filter((question) => question.calibration !== undefined).length === 1 && byId.get("yl-s5q8")?.calibration?.length === 4, "years-left: final calibration values must match every answer.");
-    const careerStages = source.career?.stages ?? [];
-    const gate = careerStages[4];
-    fail(careerStages.length === 5 && careerStages.slice(0, 4).every((stage) => stage.next && stage.preAdChecks === undefined && stage.preAdButton === undefined), "years-left/en.json: the first four checkpoints must use the shared rewarded Continue action.");
-    fail(new Set(careerStages.slice(0, 4).map((stage) => stage.preAdTitle)).size === 4 && new Set(careerStages.slice(0, 4).map((stage) => stage.preAdCopy)).size === 4, "years-left/en.json: each rewarded checkpoint must keep a distinct curiosity hook.");
-    fail(gate?.preAdChecks?.length === 3 && gate?.next === undefined, "years-left/en.json: needs one final estimate gate after forty questions.");
-    fail(gate?.preAdBadge === undefined && gate?.preAdTitle === "Your estimate is ready" && gate?.preAdCopy === "All five rounds have been compared. Your final age estimate and clock profile are ready." && gate?.preAdButton === "Reveal My Estimate", "years-left/en.json: estimate-ready gate hierarchy changed.");
-    fail(source.about?.body?.split(/\n\s*\n/).length === 3 && source.about?.howToPlay?.steps?.length === 3, "years-left/en.json: needs the full staged About and How to Play copy.");
-    fail(/forty-question quiz|five quick lifestyle rounds/i.test(source.about?.body ?? ""), "years-left/en.json: About copy must describe the five-by-eight format.");
-  }
-  if (folder.name === "memory") {
-    const categories = new Set(["word_recall", "visual", "numbers", "working_memory", "association", "attention"]);
-    const ids = sourceQuestions.map((question) => question.id);
-    const correctPositions = [0, 1, 2, 3].map((index) => sourceQuestions.filter((question) => question.correct === index).length);
-    const categoryCounts = sourceQuestions.reduce((counts, question) => ({
-      ...counts,
-      [question.category]: (counts[question.category] ?? 0) + 1,
-    }), {});
-    const expectedStageHeaders = ["SNAPSHOT MEMORY", "PATTERN LOCK", "DISTRACTION ZONE", "PEOPLE & PAIRS", "FINAL VAULT"];
-    const timedStudies = sourceQuestions.filter((question) => question.study?.mode === "automatic");
-    const manualStudies = sourceQuestions.filter((question) => question.study?.mode === "manual");
-    fail(config.template === "five-stage-eight-question-v1" && config.engine?.flow === "staged", `${folder.name}: English Memory must use the shared five-stage rewarded flow.`);
-    fail(JSON.stringify(config.activeLocales) === JSON.stringify(["en"]), `${folder.name}: the expanded five-round Memory quiz must remain English-only until its new content is localized.`);
-    fail(source.stages?.length === 5 && source.stages.every((stage) => stage.questions?.length === 8), `${folder.name}/en.json: Memory must contain five rounds of eight questions.`);
-    fail(ids.length === 40 && new Set(ids).size === 40, `${folder.name}/en.json: Memory needs forty unique scored questions.`);
-    fail(ids.every((id, index) => id === `memory-r${Math.floor(index / 8) + 1}q${(index % 8) + 1}`), `${folder.name}/en.json: stable Memory question IDs or order changed.`);
-    fail(source.stages.every((stage, index) => stage.questions.every((question) => question.headerLabel === expectedStageHeaders[index])), `${folder.name}/en.json: each Memory round needs its own consistent header label.`);
-    fail(sourceQuestions.every((question) => question.context === undefined && question.contextRequired === undefined), `${folder.name}/en.json: compact Memory screens must not use separate context banners.`);
-    fail(sourceQuestions.every((question) => Number.isInteger(question.correct) && question.answers?.length === 4 && new Set(question.answers).size === question.answers.length), `${folder.name}/en.json: every Memory question needs four unique choices and one valid answer.`);
-    fail(JSON.stringify(correctPositions) === JSON.stringify([10, 10, 10, 10]), `${folder.name}/en.json: Memory correct positions must remain evenly balanced.`);
-    fail(sourceQuestions.every((question) => categories.has(question.category)), `${folder.name}/en.json: every Memory question needs an approved category.`);
-    fail(JSON.stringify(categoryCounts) === JSON.stringify({ visual: 4, attention: 8, working_memory: 10, word_recall: 3, numbers: 4, association: 11 }), `${folder.name}/en.json: Memory category distribution changed.`);
-    fail(timedStudies.length === 0, `${folder.name}/en.json: Memory study boards must not use timers.`);
-    fail(JSON.stringify(manualStudies.map((question) => question.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), `${folder.name}/en.json: the three approved Memory boards must use unlimited manual study time.`);
-    fail(manualStudies.every((question) => question.study?.continueLabel === "I’m Ready" && question.study?.readyGate !== true), `${folder.name}/en.json: every Memory board must remain visible until I’m Ready is pressed.`);
-    fail(timedStudies.every((question) => question.study?.rewarded === false), `${folder.name}: study cues must not add extra rewarded gates.`);
-    fail(sourceQuestions.every((question) => !question.study || question.study.items?.length <= 4), `${folder.name}/en.json: Memory study cues may never exceed four separate items.`);
-    fail(source.career?.stages?.length === 5 && source.career.stages.slice(0, 4).every((stage) => stage.next), `${folder.name}/en.json: every non-final round needs a distinct next-round teaser.`);
-    fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3 && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", `${folder.name}/en.json: the final Memory gate must summarize and reveal the result.`);
-    fail(/40 varied|five fast rounds/i.test(source.about?.body ?? ""), `${folder.name}/en.json: About copy must describe the five-by-eight format.`);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.rewarded?.start === true && config.engine?.rewarded?.stages === true && config.engine?.rewarded?.attempts === 3 && config.engine?.advanceDelayMs === 450 && config.engine?.hardRefreshCheckpoints === true, `${folder.name}: Memory target, answer delay, checkpoint refresh or rewarded flow changed.`);
-    const gate = source.career?.stages?.at(-1);
-    fail(gate?.next === undefined && gate?.preAdTitle === "Your memory result is ready" && gate?.preAdCopy === "All five rounds have been scored. Your final result and memory-area breakdown are ready." && gate?.preAdButton === "Reveal My Result", `${folder.name}/en.json: Memory result-ready gate hierarchy changed.`);
-    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: Memory must use the shared breakdown unlock without duplicate copy.`);
-    fail(source.results?.score?.showBestRound === true, `${folder.name}/en.json: five-stage Memory must reveal the best round.`);
+  if (["memory", "years-left"].includes(folder.name)) {
+    const memory = folder.name === "memory";
+    const expectedIds = memory
+      ? ["memory-r1q1", "memory-r1q2", "memory-r1q3", "memory-r1q4", "memory-r2q4", "memory-r2q6", "memory-r4q1", "memory-r4q3", "memory-r4q6", "memory-r5q8"]
+      : ["yl-s1q1", "yl-s1q2", "yl-s2q1", "yl-s2q2", "yl-s3q1", "yl-s3q2", "yl-s4q1", "yl-s4q2", "yl-s5q1", "yl-s5q8"];
+    fail(config.template === "single-stage-display-manual-v1" && config.engine.flow === "linear" && config.engine.advance === "manual", folder.name + ": must use the single-stage manual flow.");
+    fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
+    fail(source.stages.length === 1 && sourceQuestions.length === 10, folder.name + ": needs exactly ten questions in one stage.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
+    fail(sourceQuestions.every(q => { const choices = Array.isArray(q.answers) ? q.answers : Object.keys(q.answers); return choices.length === 4 && new Set(choices).size === 4; }), folder.name + ": needs four unique choices per question.");
+    fail(source.career.stages.length === 1 && !source.career.stages[0].next && source.career.stages[0].preAdChecks[0] === "10 answers checked", folder.name + ": needs one final result gate.");
+    fail(!/five rounds|40 answers|forty|five quick|five fast/i.test(JSON.stringify(source)), folder.name + ": stale five-stage copy.");
+    if (memory) {
+      fail(config.engine.targetRatio === 0.8 && source.results.score.showBestRound === false, "memory: retain 80% target without a redundant best-round module.");
+      fail(sourceQuestions.every(q => Number.isInteger(q.correct)), "memory: every answer must remain scored.");
+      fail(JSON.stringify(sourceQuestions.filter(q=>q.study).map(q=>q.id)) === JSON.stringify(["memory-r1q1", "memory-r4q1"]), "memory: retain both required recall boards.");
+      fail(sourceQuestions.filter(q=>q.study).every(q=>q.study.mode === "manual" && q.study.continueLabel === "I’m Ready"), "memory: no timed study boards.");
+    } else {
+      fail(config.engine.estimate.baseAge === 84 && config.engine.estimate.minAge === 73 && config.engine.estimate.maxAge === 95, "years-left: preserve estimate safety clamp.");
+      fail(sourceQuestions.filter(q=>q.calibration).length === 1 && sourceQuestions.at(-1).calibration.length === 4, "years-left: preserve final calibration.");
+    }
   }
   if (folder.name === "iq") {
     const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];

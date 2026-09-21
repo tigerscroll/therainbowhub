@@ -9,6 +9,8 @@ import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
+import { QuestionDisplayAd } from "./QuestionDisplayAd";
+import { usesQuestionAds } from "./questionAds";
 import { QuizAbout } from "./QuizAbout";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -150,6 +152,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
+  const questionAds = usesQuestionAds(quiz.slug);
 
   useLayoutEffect(() => {
     try {
@@ -249,7 +252,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
 
-  function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
+  function saveNextScreen(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: SavedScreen) {
     const saved: SavedProgress = {
       version: STORAGE_VERSION,
       signature: progressSignature,
@@ -271,12 +274,15 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       const serialized = JSON.stringify(saved);
       window.localStorage.setItem(storageKey, serialized);
       progressSaved = window.localStorage.getItem(storageKey) === serialized;
-      if (progressSaved) {
-        window.location.reload();
-        return true;
-      }
+      if (progressSaved) return true;
     } catch { /* Continue without refreshing when progress cannot be restored safely. */ }
     return false;
+  }
+
+  function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
+    if (!saveNextScreen(nextQuestionIndex, nextCompletedStage, nextScreen)) return false;
+    window.location.reload();
+    return true;
   }
 
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
@@ -853,10 +859,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
         <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
+      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} data-question-ads={questionAds || undefined}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
+        aboveAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-above`} id={`quiz-ad-${currentQuestion.id}-above`} /> : undefined}
+        belowAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
         answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
@@ -867,7 +875,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
-        {quiz.engine.flow.advance === "manual" ? (
+        {questionAds && (!currentQuestion.study || studyComplete) ? (
+          selectedAnswer === undefined ? (
+            <button className="quiz-engine__primary quiz-question-next" onClick={scrollToTop} type="button">Back to top</button>
+          ) : questionIndex < quiz.questions.length - 1 ? (
+            <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">Next Question</button>
+          ) : <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">{translations.results.viewResults}</button>
+        ) : !questionAds && quiz.engine.flow.advance === "manual" ? (
           <button
             aria-hidden={selectedAnswer === undefined || undefined}
             className="quiz-engine__primary quiz-engine__next-question"
