@@ -56,10 +56,10 @@ try {
     for (const [index, id] of ids.entries()) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
-      await page.waitForFunction(count => window.adCalls.filter(slot => slot.format === "DISPLAY").length === count, (index + 1) * 2);
-      assert.equal(await question.locator("[data-display-ad]").count(), 2);
+      await page.waitForFunction(count => window.adCalls.filter(slot => slot.format === "DISPLAY").length === count, 1 + index * 2);
+      assert.equal(await question.locator("[data-display-ad]").count(), index === 0 ? 1 : 2);
       assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "REWARDED").length), 1, "no mid-quiz reward gates");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY" && !slot.destroyed).length), 2, "previous question slots destroyed");
+      assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY" && !slot.destroyed).length), index === 0 ? 1 : 2, "previous question slots destroyed");
       assert.equal(await page.evaluate(() => window.adCalls.every(slot => slot.path === `/22677279144/${slot.format === "DISPLAY" ? "display" : "rewarded"}`)), true);
       assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY").every(slot => slot.config.adExpansion.enabled && slot.sizes.every(([w,h]) => (w === 300 && h === 250) || (w === 336 && h === 280)))), true);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
@@ -74,9 +74,9 @@ try {
       assert.equal(await question.isVisible(), true, "selection does not auto-advance");
       assert.equal(await page.evaluate(() => window.adCalls.length), before, "selection does not refresh ads");
       const buttonBox = await next.boundingBox();
-      const bottomAd = await question.locator("[data-display-ad]").last().boundingBox();
+      const preceding = await question.locator(index === 0 ? ".quiz-engine__answers" : "[data-display-ad]").last().boundingBox();
       const card = await question.boundingBox();
-      assert.ok(buttonBox.y >= bottomAd.y + bottomAd.height, "Next sits below the lower ad");
+      assert.ok(buttonBox.y >= preceding.y + preceding.height + (index === 0 ? 30 : 0), "Next sits below answers with padding on Q1, and below the lower ad thereafter");
       assert.ok(Math.abs(buttonBox.x + buttonBox.width / 2 - card.x - card.width / 2) < 2, "Next is centered");
       if (index === 1) await page.screenshot({ path: `/tmp/mechanic-display-${width}.png`, fullPage: true, animations: "disabled" });
       assert.match(await next.innerText(), index === ids.length - 1 ? /results/i : /Next Question/);
@@ -107,7 +107,7 @@ try {
       await page.locator(`[data-question-id="${ids[1]}"]`).waitFor();
     }
     assert.deepEqual(errors, []);
-    console.log(`Mechanic ${width}px: 10 manual questions, 20 display requests, 2 rewards, correct unit paths, score and no-fill recovery PASS`);
+    console.log(`Mechanic ${width}px: 10 manual questions, 19 display requests, no lower ad on Q1, 2 rewards, correct unit paths and score PASS`);
     await context.close();
   }
 } finally { await browser.close(); }
