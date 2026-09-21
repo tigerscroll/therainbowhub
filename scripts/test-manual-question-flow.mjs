@@ -80,11 +80,16 @@ try {
           answerMinHeight: getComputedStyle(document.querySelector(".quiz-engine__answer")).minHeight,
           buttonWidth: cta.width,
           answerWidth: answers.width,
+          buttonCenter: cta.left + cta.width / 2,
+          answersCenter: answers.left + answers.width / 2,
+          buttonTextAlign: getComputedStyle(document.querySelector(".quiz-question-next")).textAlign,
         };
       });
       assert.equal(geometry.overflow, false); assert.equal(geometry.above, true); assert.equal(geometry.below, true); assert.equal(geometry.next, true, JSON.stringify(geometry));
       assert.equal(geometry.buttonMinHeight, geometry.answerMinHeight, "CTA matches answer-box base height");
       assert.ok(Math.abs(geometry.buttonWidth - geometry.answerWidth) <= 1, "CTA matches full answer-box width");
+      assert.ok(Math.abs(geometry.buttonCenter - geometry.answersCenter) <= 1, "CTA is centred within the answer area");
+      assert.equal(geometry.buttonTextAlign, "center");
       geometry.widths.forEach(([available, actual]) => {
         assert.ok(available >= actual);
         const expected = [336, 300].find(w => w <= available);
