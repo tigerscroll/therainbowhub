@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { chromium } from "playwright-core";
 
 const base = process.env.QUIZ_TEST_URL ?? "http://localhost:3198";
@@ -9,6 +10,8 @@ try {
   const questionLimit = Number(process.env.QUIZ_TEST_QUESTIONS ?? 30);
   assert.ok(Number.isInteger(questionLimit) && questionLimit >= 1 && questionLimit <= 30);
   for (const width of widths) for (const slug of slugs) {
+    const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
+    const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/en.json`, "utf8"));
     const context = await browser.newContext({ viewport: { width, height: 900 } });
     const page = await context.newPage();
     const errors = [];
@@ -58,6 +61,9 @@ try {
       assert.equal(await page.locator(".quiz-engine__checkpoint").count(), 0, "no mid-quiz checkpoints");
       const study = page.locator(".quiz-engine__study button");
       if (await study.count()) await study.click();
+      const expectedIds = manifest.structure.questions[id].answerIds;
+      assert.deepEqual(await page.locator(".quiz-engine__answer").evaluateAll(nodes => nodes.map(node => node.getAttribute("data-answer-id"))), expectedIds, "rendered answer order follows stable IDs");
+      assert.deepEqual(await page.locator(".quiz-engine__answer strong").allTextContents(), expectedIds.map(answerId => copy.stages["stage-1"].questions[id].answers[answerId]), "answer wording stays attached to the correct stable ID");
       const cta = page.locator(".quiz-question-next");
       assert.equal(await cta.innerText(), "Back to top");
       await cta.click();
@@ -109,6 +115,7 @@ try {
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "DISPLAY" && !x.destroyed).length), index === 0 ? 1 : 2, "previous question ad slots are destroyed");
       assert.equal(await page.evaluate(() => window.adCalls.every(x => x.path === "/22677279144/display")), true, "all formats use the shared display unit");
       if (index === 0 && width === 390) await page.screenshot({ path: `/tmp/${slug}-manual-question.png`, fullPage: true });
+      if (index === 29 && width === 390) await page.screenshot({ path: `/tmp/${slug}-final-question.png`, fullPage: true });
       if (index < 29) {
         assert.equal(await cta.innerText(), "Next Question");
         await cta.click();
