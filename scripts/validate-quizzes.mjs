@@ -513,18 +513,13 @@ for (const folder of folders) {
     const expectedIds = memory
       ? [[1,2,3,4,7,8], [1,2,3,4,5,6], [1,2,3,5,7,8], [1,2,3,4,5,6], [1,2,3,4,6,8]].flatMap((qs,r) => qs.map(n => `memory-r${r+1}q${n}`))
       : [[1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,8]].flatMap((qs,r) => qs.map(n => `yl-s${r+1}q${n}`));
-    if (memory) {
-      fail(config.template === "single-stage-display-manual-v1" && config.engine.flow === "linear" && config.engine.advance === "manual", "memory: must use the single-stage manual flow.");
-      fail(config.engine.startOnLoad && !config.engine.rewarded.start && config.engine.rewarded.stages, "memory: must start directly without a start reward, retaining the final reward.");
-    } else {
-      fail(config.template === "five-stage-six-question-v1" && config.engine.flow === "staged" && config.engine.advance === "automatic", "years-left: must use five automatic six-question rounds.");
-      fail(!config.engine.startOnLoad && config.engine.rewarded.start && config.engine.rewarded.stages, "years-left: must retain the landing page, starting reward and round rewards.");
-    }
+    fail(config.template === "five-stage-six-question-v1" && config.engine.flow === "staged" && config.engine.advance === "automatic", folder.name + ": must use five automatic six-question rounds.");
+    fail(!config.engine.startOnLoad && config.engine.rewarded.start && config.engine.rewarded.stages, folder.name + ": must retain the landing page, starting reward and round rewards.");
     fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
-    fail(source.stages.length === (memory ? 1 : 5) && sourceQuestions.length === 30, folder.name + ": needs exactly thirty questions in the correct number of stages.");
+    fail(source.stages.length === 5 && sourceQuestions.length === 30, folder.name + ": needs exactly thirty questions in five stages.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
     fail(sourceQuestions.every(q => { const choices = Array.isArray(q.answers) ? q.answers : Object.keys(q.answers); return choices.length === 4 && new Set(choices).size === 4; }), folder.name + ": needs four unique choices per question.");
-    fail(source.career.stages.length === (memory ? 1 : 5) && !source.career.stages.at(-1).next && source.career.stages.at(-1).preAdChecks[0] === "30 answers checked", folder.name + ": needs a final result gate after all thirty answers.");
+    fail(source.career.stages.length === 5 && !source.career.stages.at(-1).next && source.career.stages.at(-1).preAdChecks[0] === "30 answers checked", folder.name + ": needs a final result gate after all thirty answers.");
     fail(!/40 answers|forty/i.test(JSON.stringify(source)), folder.name + ": stale forty-question copy.");
     if (memory) {
       fail(config.engine.targetRatio === 0.8 && source.results.score.showBestRound === false, "memory: retain 80% target without a redundant best-round module.");

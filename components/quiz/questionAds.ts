@@ -1,3 +1,3 @@
-export function usesQuestionAds(slug: string) {
-  return slug === "memory";
+export function usesQuestionAds(_slug: string) {
+  return false;
 }

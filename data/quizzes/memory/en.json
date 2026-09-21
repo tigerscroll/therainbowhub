@@ -3,12 +3,12 @@
   "eyebrow": "Memory Challenge",
   "summary": "Word, number and recall challenges test the details your memory keeps.",
   "about": {
-    "body": "This memory quiz uses 30 word, number, association, attention and working-memory challenges in one continuous test. Three study boards stay visible until you press I’m Ready.\n\nSome details return after other questions have interrupted the original memory. Select one answer, then press Next Question when ready. Speed never changes your score.\n\nYour result shows your score and memory-area breakdown. Performance varies with attention, tiredness and chance. This is entertainment, not a medical or cognitive assessment.",
+    "body": "This memory quiz explores words, numbers, associations, attention and working memory across five short rounds. Three study boards stay visible until you press I’m Ready.\n\nSome details return after other questions have interrupted the original memory. Choose one answer and the next question opens automatically. There is no time limit and speed never changes your score. A short rewarded ad opens the quiz and each next round or final result.\n\nYour result shows your score and memory-area breakdown. Performance varies with attention, tiredness and chance. This is entertainment, not a medical or cognitive assessment.",
     "howToPlay": {
       "steps": [
-        "Study all three memory boards; press I’m Ready when you have memorised each one.",
-        "Select an answer, then press Next Question. Speed does not affect your score.",
-        "Finish all 30 questions to reveal your score and answer review."
+        "Press Start to watch a short rewarded ad and begin.",
+        "Study each memory board for as long as you need, then press I’m Ready. Choose one answer per question; the next question opens automatically.",
+        "Complete each six-question round, then continue through a rewarded ad. Your final score appears after the last round."
       ]
     },
     "disclaimer": "For entertainment and self-reflection only. This quiz is not a medical, neurological or cognitive assessment and cannot diagnose memory problems. If you are concerned about your memory or health, speak to a qualified healthcare professional."
@@ -18,9 +18,45 @@
     "cta": "Start"
   },
   "career": {
-    "resultProgressLabel": "Memory test",
+    "resultProgressLabel": "Your progress",
     "stages": {
       "stage-1": {
+        "difficulty": "Snapshot Memory",
+        "preAdTitle": "Snapshot captured",
+        "preAdCopy": "First round complete. Ready to put your focus to the test?",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Find the patterns hiding in plain sight."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Pattern Focus",
+        "preAdTitle": "Patterns complete",
+        "preAdCopy": "Two rounds down. A new scene is waiting to be remembered.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Take in a new scene and hold onto the details."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Journey Recall",
+        "preAdTitle": "Journey remembered",
+        "preAdCopy": "Over halfway there. Next, match the people to the details.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Remember the names, objects and connections."
+        }
+      },
+      "stage-4": {
+        "difficulty": "People & Details",
+        "preAdTitle": "Details locked in",
+        "preAdCopy": "One final round. Which earlier details stayed with you?",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Bring the earlier clues back together."
+        }
+      },
+      "stage-5": {
         "difficulty": "FINAL RESULT",
         "preAdTitle": "Your memory result is ready",
         "preAdCopy": "All 30 answers have been scored. Your final result and memory-area breakdown are ready.",
@@ -99,7 +135,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Memory Challenge",
+      "title": "Snapshot Memory",
       "questions": {
         "memory-r1q1": {
           "question": "Which object was blue?",
@@ -171,7 +207,12 @@
             "a3": "Silver",
             "a4": "Gold"
           }
-        },
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Pattern Focus",
+      "questions": {
         "memory-r2q1": {
           "question": "Reverse 7 – 2 – 9 – 4. Which number comes first?",
           "headerLabel": "PATTERN LOCK",
@@ -231,7 +272,12 @@
             "a3": "BOOT",
             "a4": "None"
           }
-        },
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Journey Recall",
+      "questions": {
         "memory-r3q1": {
           "question": "What colour was Maya’s coat?",
           "headerLabel": "DISTRACTION ZONE",
@@ -302,7 +348,12 @@
             "a3": "Four",
             "a4": "Three"
           }
-        },
+        }
+      }
+    },
+    "stage-4": {
+      "title": "People & Details",
+      "questions": {
         "memory-r4q1": {
           "question": "Which object belonged to Omar?",
           "headerLabel": "PEOPLE & PAIRS",
@@ -373,7 +424,12 @@
             "a3": "Lena — Compass",
             "a4": "Omar — Violin"
           }
-        },
+        }
+      }
+    },
+    "stage-5": {
+      "title": "The Final Recall",
+      "questions": {
         "memory-r5q1": {
           "question": "Think back to the opening board: what colour was the kite?",
           "headerLabel": "FINAL VAULT",

@@ -1,4 +1,6 @@
 [data-quiz-theme="memory"]{
+  --quiz-about-gap-desktop: 48px;
+  --quiz-about-gap-compact: 32px;
   --memory-ink: var(--quiz-text);
   --memory-paper: var(--quiz-surface);
   --memory-paper-light: var(--quiz-surface-raised);
@@ -792,6 +794,63 @@
 [data-quiz-theme="memory"] .quiz-engine__career-result-progress > i > b{
   border-radius: inherit;
   background: var(--memory-red);
+}
+
+.quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"] .quiz-engine__checkpoint {
+  --quiz-flow-min-height: 0px;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__question > h1,
+[data-quiz-theme="memory"] .quiz-engine__checkpoint > h2,
+[data-quiz-theme="memory"] .quiz-engine__results > h2 {
+  animation: memory-question-in .24s ease-out both;
+  text-wrap: balance;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__result-percentage {
+  animation: memory-result-in .55s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-journey-progress > i {
+  height: 14px;
+  border: 1px solid rgba(25,23,19,.12);
+  box-shadow: inset 0 2px 3px rgba(25,23,19,.07);
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-journey-progress > i > b {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--memory-red), var(--memory-green));
+  animation: memory-checkpoint-fill .8s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint-journey-progress > i > b::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(100deg, transparent 25%, rgba(255,255,255,.45) 50%, transparent 75%);
+  animation: memory-progress-shine 1s ease-out both;
+}
+
+@keyframes memory-question-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes memory-result-in {
+  from { opacity: 0; transform: translateY(10px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes memory-checkpoint-fill {
+  from { width: var(--career-result-progress-from, 0%); }
+  to { width: var(--career-result-progress); }
+}
+
+@keyframes memory-progress-shine {
+  from { transform: translateX(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
 }
 
 [data-quiz-theme="memory"] .quiz-engine__career-next{
