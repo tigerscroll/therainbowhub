@@ -27,9 +27,20 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "single-stage-display-manual-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "single-stage-display-manual-v1", "five-stage-six-question-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const QUIZ_TEMPLATE_CONTRACTS = {
+  "five-stage-six-question-v1": {
+    stageCount: 5,
+    questionsPerStage: 6,
+    levels: ["foundation", "developing", "skilled", "advanced", "final"],
+    engine: {
+      flow: "staged", advance: "automatic", feedback: "selection-only", checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      advanceDelayMs: 450,
+    },
+  },
   "single-stage-display-manual-v1": {
     stageCount: 1,
     questionsPerStage: 30,

@@ -6,7 +6,7 @@ const base = process.env.QUIZ_TEST_URL ?? "http://localhost:3198";
 const browser = await chromium.launch({ executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", headless: true });
 try {
   const widths = process.env.QUIZ_TEST_WIDTHS?.split(",").map(Number) ?? [320, 390, 1440];
-  const slugs = process.env.QUIZ_TEST_SLUGS?.split(",") ?? ["memory", "years-left"];
+  const slugs = process.env.QUIZ_TEST_SLUGS?.split(",") ?? ["memory"];
   const questionLimit = Number(process.env.QUIZ_TEST_QUESTIONS ?? 30);
   assert.ok(Number.isInteger(questionLimit) && questionLimit >= 1 && questionLimit <= 30);
   for (const width of widths) for (const slug of slugs) {
@@ -138,11 +138,12 @@ try {
       assert.equal(await page.evaluate(() => window.adCalls.filter(x => x.format === "REWARDED").length), 1, "restart does not request another starting reward");
     }
     console.log(`${slug} ${width}px: ${questionLimit} questions verified; responsive ads, padded first-question button, no interstitials or mid-checkpoints, SPA PASS`);
-    if (slug === "years-left" && width === 390) {
+    if (slug === "memory" && width === 390) {
       await page.evaluate(() => localStorage.clear());
       await page.goto(`${base}/${slug}`);
       await page.locator("[data-question-id]").waitFor();
       assert.equal(await page.locator(".quiz-engine__landing").count(), 0);
+      await page.locator(".quiz-engine__study button").click();
       await page.locator(".quiz-engine__answer").first().click();
       const id = await page.locator("[data-question-id]").getAttribute("data-question-id");
       const documentsBefore = documentRequests;

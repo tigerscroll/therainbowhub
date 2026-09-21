@@ -7,12 +7,12 @@
     "cta": "Start Test"
   },
   "about": {
-    "body": "This thirty-question quiz explores everyday habits, energy, relationships and outlook in one continuous challenge.\n\nSelect the answer that fits you, then press Next Question. There are no right or wrong answers and no time limit.\n\nYour result is a playful age estimate and lifestyle profile, not a medical prediction or a reliable estimate of life expectancy.",
+    "body": "This thirty-question quiz explores everyday habits, energy, relationships and outlook across five short rounds.\n\nChoose the answer that fits you. The next question opens automatically. There are no right or wrong answers and no time limit. A short rewarded ad opens the quiz and each next round or final result.\n\nYour result is a playful age estimate and lifestyle profile, not a medical prediction or a reliable estimate of life expectancy.",
     "howToPlay": {
       "steps": [
-        "Choose the answer that best describes you.",
-        "Select an answer, then press Next Question to continue.",
-        "Finish all 30 questions to reveal your estimate."
+        "Press Start Test to watch a short rewarded ad and begin.",
+        "Choose one answer per question; the next question opens automatically.",
+        "Complete each six-question round, then continue through a rewarded ad. Your estimate appears after the final round."
       ]
     },
     "disclaimer": "For entertainment and self-reflection only. This quiz does not predict lifespan, health, mortality risk or medical outcomes. If you have health concerns, speak to a qualified healthcare professional."
@@ -21,6 +21,42 @@
     "resultProgressLabel": "Lifestyle prediction",
     "stages": {
       "stage-1": {
+        "difficulty": "Daily Rhythm",
+        "preAdTitle": "Daily Rhythm complete",
+        "preAdCopy": "Your answers are saved. Next, explore energy engine.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Discover your everyday energy."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Energy Engine",
+        "preAdTitle": "Energy Engine complete",
+        "preAdCopy": "Your answers are saved. Next, explore pressure & recovery.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Explore how you handle pressure."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Pressure & Recovery",
+        "preAdTitle": "Pressure & Recovery complete",
+        "preAdCopy": "Your answers are saved. Next, explore adventure mode.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Find your curious side."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Adventure Mode",
+        "preAdTitle": "Adventure Mode complete",
+        "preAdCopy": "Your answers are saved. Next, explore future clock.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Finish with your outlook on the future."
+        }
+      },
+      "stage-5": {
         "difficulty": "FINAL RESULT",
         "preAdTitle": "Your estimate is ready",
         "preAdCopy": "All 30 answers have been compared. Your final age estimate and clock profile are ready.",
@@ -129,7 +165,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Your Life Clock",
+      "title": "Daily Rhythm",
       "questions": {
         "yl-s1q1": {
           "question": "Your alarm rings. What happens next?",
@@ -190,7 +226,12 @@
             "a3": "I reset it before the day ends",
             "a4": "I clean it before chaos gets ideas"
           }
-        },
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Energy Engine",
+      "questions": {
         "yl-s2q1": {
           "question": "Breakfast is available. Which option sounds most like you?",
           "headerLabel": "ENERGY ENGINE",
@@ -250,7 +291,12 @@
             "a3": "That sounds pleasant",
             "a4": "Shoes on. Where are we going?"
           }
-        },
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Pressure & Recovery",
+      "questions": {
         "yl-s3q1": {
           "question": "A deadline moves closer. What happens inside your head?",
           "headerLabel": "PRESSURE & PEOPLE",
@@ -310,7 +356,12 @@
             "a3": "Usually, when the boundary matters",
             "a4": "Cleanly and kindly"
           }
-        },
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Adventure Mode",
+      "questions": {
         "yl-s4q1": {
           "question": "A mystery day trip begins in one hour. Are you going?",
           "headerLabel": "WILDCARD",
@@ -370,7 +421,12 @@
             "a3": "One carefully chosen song",
             "a4": "Unexpected headline act"
           }
-        },
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Future Clock",
+      "questions": {
         "yl-s5q1": {
           "question": "Your future self sends one message back. What does it say?",
           "headerLabel": "FUTURE CLOCK",

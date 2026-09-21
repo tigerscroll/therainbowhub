@@ -6,9 +6,9 @@ import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
 import { scoreQuiz } from "./scoring.ts";
 import type { Quiz } from "../../lib/quizzes.ts";
 
-test("question ads are restricted to Memory and Years Left", () => {
+test("question display ads are restricted to Memory", () => {
   assert.equal(usesQuestionAds("memory"), true);
-  assert.equal(usesQuestionAds("years-left"), true);
+  assert.equal(usesQuestionAds("years-left"), false);
   for (const slug of ["iq", "vision", "oxford", "memory-other", ""]) assert.equal(usesQuestionAds(slug), false);
 });
 test("rewarded and display share the configured display ad unit", () => {
@@ -17,7 +17,7 @@ test("rewarded and display share the configured display ad unit", () => {
   assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
   assert.ok(!config.includes("/22677279144/rewarded"));
 });
-test("both manual quizzes also reveal results without reloading", () => {
+test("Memory and Years Left reveal results without reloading", () => {
   for (const slug of ["memory", "years-left"]) {
     const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
     assert.equal(manifest.engine.hardRefreshCheckpoints, false);
@@ -31,19 +31,24 @@ test("interstitial code is absent throughout the application", () => {
     }
   }
 });
-test("both quizzes have 30 unique questions, one stage and only a final result gate", () => {
+test("both quizzes retain 30 unique questions and their intended round structures", () => {
   for (const slug of ["memory", "years-left"]) {
     const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
     const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/en.json`, "utf8"));
     assert.equal(copy.landing.intro.split("\n").length, 2);
     assert.doesNotMatch(copy.landing.intro, /30|thirty/i);
-    assert.equal(manifest.structure.stages.length, 1);
-    const ids = manifest.structure.stages[0].questionIds;
+    const stages = slug === "memory" ? 1 : 5;
+    assert.equal(manifest.structure.stages.length, stages);
+    const ids = manifest.structure.stages.flatMap((stage: { questionIds: string[] }) => stage.questionIds);
     assert.equal(ids.length, 30);
     assert.equal(new Set(ids).size, 30);
-    assert.equal(Object.keys(copy.career.stages).length, 1);
-    assert.equal(copy.career.stages["stage-1"].next, undefined);
-    assert.equal(copy.career.stages["stage-1"].preAdChecks[0], "30 answers checked");
+    assert.equal(Object.keys(copy.career.stages).length, stages);
+    assert.equal(copy.career.stages[`stage-${stages}`].next, undefined);
+    assert.equal(copy.career.stages[`stage-${stages}`].preAdChecks[0], "30 answers checked");
+    if (slug === "years-left") {
+      assert.equal(manifest.template, "five-stage-six-question-v1");
+      assert.ok(manifest.structure.stages.every((stage: { questionIds: string[] }) => stage.questionIds.length === 6));
+    }
   }
 });
 
@@ -99,7 +104,8 @@ test("Years Left mixes stable answer positions evenly without changing scores or
   for (const question of Object.values(originalOrder.structure.questions) as { answerIds: string[] }[]) question.answerIds.sort();
   const expanded = expandQuizLocale(manifest, copy, "en");
   const baseline = expandQuizLocale(originalOrder, copy, "en");
-  const questions = expanded.stages[0].questions;
+  const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
+  const questionCopy = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
   for (const id of ["a1", "a2", "a3", "a4"]) {
     const positions = [0, 0, 0, 0];
     for (const q of questions) positions[q.answerIds.indexOf(id)]++;
@@ -108,7 +114,7 @@ test("Years Left mixes stable answer positions evenly without changing scores or
   for (const q of questions) {
     const logic = manifest.structure.questions[q.id];
     q.answerIds.forEach((id: string, index: number) => {
-      const label = copy.stages["stage-1"].questions[q.id].answers[id];
+      const label = questionCopy[q.id].answers[id];
       assert.equal(Object.keys(q.answers)[index], label);
       assert.deepEqual(Object.values(q.answers)[index], logic.choiceMeanings[id]);
       if (logic.calibration) assert.equal(q.calibration[index], logic.calibration[id]);
@@ -116,11 +122,11 @@ test("Years Left mixes stable answer positions evenly without changing scores or
   }
   const asQuiz = (data: typeof expanded) => ({
     engine: { scoring: { type: "weighted-profile" }, estimate: manifest.engine.estimate },
-    stages: ["Final"],
-    questions: data.stages[0].questions.map((q: typeof questions[number]) => ({
-      id: q.id, stage: 0, choiceIds: q.answerIds, choices: Object.keys(q.answers),
+    stages: data.stages.map((stage: { title: string }) => stage.title),
+    questions: data.stages.flatMap((stage: { questions: typeof questions }, stageIndex: number) => stage.questions.map((q: typeof questions[number]) => ({
+      id: q.id, stage: stageIndex, choiceIds: q.answerIds, choices: Object.keys(q.answers),
       choiceWeights: Object.values(q.answers), calibrationValues: q.calibration,
-    })),
+    }))),
     result: { profiles: data.results.profiles, scoreDimensions: data.results.dimensions.map((d: { label: string; profiles: string[] }) => ({ label: d.label, categories: d.profiles })) },
   }) as Quiz;
   const shuffledQuiz = asQuiz(expanded);
@@ -135,5 +141,5 @@ test("Years Left mixes stable answer positions evenly without changing scores or
     assert.deepEqual(scoreQuiz(shuffledQuiz, answers(shuffledQuiz)), scoreQuiz(baselineQuiz, answers(baselineQuiz)));
   }
   assert.deepEqual(manifest.structure.questions["yl-s5q8"].calibration, { a1: -1, a2: -0.25, a3: 0.5, a4: 1 });
-  assert.doesNotMatch(copy.stages["stage-1"].questions["yl-s5q8"].question, /how far|clock.*run/i);
+  assert.doesNotMatch(questionCopy["yl-s5q8"].question, /how far|clock.*run/i);
 });
