@@ -9,8 +9,6 @@ import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
-import { QuestionDisplayAd } from "./QuestionDisplayAd";
-import { usesQuestionAds } from "./questionAds";
 import { QuizAbout } from "./QuizAbout";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -152,7 +150,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
-  const questionAds = usesQuestionAds(quiz.slug);
 
   useLayoutEffect(() => {
     try {
@@ -851,7 +848,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     <>
     <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
-        <span>{questionAds ? `${progress}% COMPLETE` : quiz.career
+        <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
         <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
@@ -859,12 +856,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
         <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
       </div>
-      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id} data-question-ads={questionAds || undefined} data-first-question={questionAds && questionIndex === 0 || undefined}>
+      <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1 key={currentQuestion.id}>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
       <QuestionRenderer
-        aboveAnswers={questionAds ? <QuestionDisplayAd key={`${currentQuestion.id}-above`} id={`quiz-ad-${currentQuestion.id}-above`} /> : undefined}
-        belowAnswers={questionAds && questionIndex > 0 ? <QuestionDisplayAd key={`${currentQuestion.id}-below`} id={`quiz-ad-${currentQuestion.id}-below`} /> : undefined}
         answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
@@ -875,13 +870,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
-        {questionAds && (!currentQuestion.study || studyComplete) ? (
-          selectedAnswer === undefined ? (
-            <button className="quiz-engine__primary quiz-question-next" onClick={scrollToTop} type="button">Back to top</button>
-          ) : questionIndex < quiz.questions.length - 1 ? (
-            <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">Next Question</button>
-          ) : <button className="quiz-engine__primary quiz-question-next" onClick={moveForward} type="button">{translations.results.viewResults}</button>
-        ) : !questionAds && quiz.engine.flow.advance === "manual" ? (
+        {quiz.engine.flow.advance === "manual" ? (
           <button
             aria-hidden={selectedAnswer === undefined || undefined}
             className="quiz-engine__primary quiz-engine__next-question"

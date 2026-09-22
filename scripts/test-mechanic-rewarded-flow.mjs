@@ -27,22 +27,13 @@ try {
       const makeSlot = (path, format, id, sizes) => ({ path, format, id, sizes, addService() { return this; }, setConfig(config) { this.config = config; }, defineSizeMapping() {} });
       window.googletag = {
         cmd: { push(cb) { cb(); } },
-        defineSlot(path, sizes, id) { const slot = makeSlot(path, "DISPLAY", id, sizes); window.adCalls.push(slot); return slot; },
+        defineSlot() { window.adCalls.push({ format: "DISPLAY" }); throw Error("Display ads must never be requested"); },
         defineOutOfPageSlot(path, format) { const slot = makeSlot(path, format); window.adCalls.push(slot); return window.noAdFill ? null : slot; },
         pubads: () => pubads, enableServices() {}, setConfig() {},
         destroySlots(slots) { slots.forEach(slot => { slot.destroyed = true; }); },
         enums: { OutOfPageFormat: { REWARDED: "REWARDED", INTERSTITIAL: "INTERSTITIAL" } },
         display(target) {
-          if (typeof target === "string") {
-            const slot = window.adCalls.find(slot => slot.id === target && !slot.destroyed);
-            const box = document.getElementById(target);
-            if (!window.noAdFill) {
-              const creative = document.createElement("div");
-              creative.style.cssText = `width:${slot.sizes[0][0]}px;height:${slot.sizes[0][1]}px;background:#d9d9d9;flex-shrink:0`;
-              box.appendChild(creative);
-            }
-            queueMicrotask(() => emit("slotRenderEnded", slot, { isEmpty: Boolean(window.noAdFill) }));
-          } else queueMicrotask(() => emit("rewardedSlotReady", target, {
+          queueMicrotask(() => emit("rewardedSlotReady", target, {
             makeRewardedVisible() { queueMicrotask(() => { emit("rewardedSlotGranted", target); emit("rewardedSlotClosed", target); }); },
           }));
         },
@@ -56,31 +47,17 @@ try {
     for (const [index, id] of ids.entries()) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
-      await page.waitForFunction(count => window.adCalls.filter(slot => slot.format === "DISPLAY").length === count, 1 + index * 2);
-      assert.equal(await question.locator("[data-display-ad]").count(), index === 0 ? 1 : 2);
+      assert.equal(await question.locator("[data-display-ad], .quiz-question-ad").count(), 0);
       assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "REWARDED").length), 1, "no mid-quiz reward gates");
-      assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY" && !slot.destroyed).length), index === 0 ? 1 : 2, "previous question slots destroyed");
-      assert.equal(await page.evaluate(() => window.adCalls.every(slot => slot.path === `/22677279144/${slot.format === "DISPLAY" ? "display" : "rewarded"}`)), true);
-      assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY").every(slot => slot.config.adExpansion.enabled && slot.sizes.every(([w,h]) => (w === 300 && h === 250) || (w === 336 && h === 280)))), true);
+      assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "DISPLAY" && !slot.destroyed).length), 0, "no display slots created");
+      assert.equal(await page.evaluate(() => window.adCalls.every(slot => slot.format === "REWARDED" && slot.path === "/22677279144/rewarded")), true);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-      const next = question.locator(".quiz-question-next");
-      assert.equal(await next.innerText(), "Back to top");
+      assert.equal(await question.locator(".quiz-question-next, .quiz-engine__next-question").count(), 0);
       const before = await page.evaluate(() => window.adCalls.length);
-      await next.click();
-      assert.equal(await question.isVisible(), true, "unanswered question cannot advance");
-      assert.equal(await page.evaluate(() => window.adCalls.length), before);
+      if (index === 1) await page.screenshot({ path: `/tmp/mechanic-rewarded-${width}.png`, fullPage: true, animations: "disabled" });
       await question.locator(".quiz-engine__answer").first().click();
-      await page.waitForTimeout(650);
-      assert.equal(await question.isVisible(), true, "selection does not auto-advance");
-      assert.equal(await page.evaluate(() => window.adCalls.length), before, "selection does not refresh ads");
-      const buttonBox = await next.boundingBox();
-      const preceding = await question.locator(index === 0 ? ".quiz-engine__answers" : "[data-display-ad]").last().boundingBox();
-      const card = await question.boundingBox();
-      assert.ok(buttonBox.y >= preceding.y + preceding.height + (index === 0 ? 30 : 0), "Next sits below answers with padding on Q1, and below the lower ad thereafter");
-      assert.ok(Math.abs(buttonBox.x + buttonBox.width / 2 - card.x - card.width / 2) < 2, "Next is centered");
-      if (index === 1) await page.screenshot({ path: `/tmp/mechanic-display-${width}.png`, fullPage: true, animations: "disabled" });
-      assert.match(await next.innerText(), index === ids.length - 1 ? /results/i : /Next Question/);
-      await next.click();
+      await question.waitFor({ state: "detached" });
+      assert.equal(await page.evaluate(() => window.adCalls.length), before, "automatic progression requests no ads");
     }
     const checkpoint = page.locator(".quiz-engine__checkpoint");
     await checkpoint.waitFor();
@@ -103,11 +80,10 @@ try {
       await first.waitFor();
       assert.equal(await page.evaluate(() => window.adCalls.filter(slot => slot.format === "REWARDED").length), 5, "three bounded no-fill attempts");
       await first.locator(".quiz-engine__answer").first().click();
-      await first.locator(".quiz-question-next").click();
       await page.locator(`[data-question-id="${ids[1]}"]`).waitFor();
     }
     assert.deepEqual(errors, []);
-    console.log(`Mechanic ${width}px: 10 manual questions, 19 display requests, no lower ad on Q1, 2 rewards, correct unit paths and score PASS`);
+    console.log(`Mechanic ${width}px: 10 automatic questions, zero display requests, 2 rewards, correct unit paths and score PASS`);
     await context.close();
   }
 } finally { await browser.close(); }

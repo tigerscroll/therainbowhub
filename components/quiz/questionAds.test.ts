@@ -1,29 +1,31 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
-import { usesQuestionAds } from "./questionAds.ts";
 import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
 import { scoreQuiz } from "./scoring.ts";
 import type { Quiz } from "../../lib/quizzes.ts";
 
-test("Memory and Years Left are rewarded-only", () => {
-  assert.equal(usesQuestionAds("memory"), false);
-  assert.equal(usesQuestionAds("years-left"), false);
-  for (const slug of ["iq", "vision", "oxford", "memory-other", ""]) assert.equal(usesQuestionAds(slug), false);
+test("display-ad components and request code are absent site-wide", () => {
+  assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
+  for (const directory of ["components", "lib", "app"]) {
+    for (const path of fs.readdirSync(directory, { recursive: true })) {
+      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath|22677279144\/display/, `${directory}/${path}`);
+    }
+  }
 });
-test("Mechanic uses manual display questions with starting and final rewards", () => {
-  assert.equal(usesQuestionAds("mechanic"), true);
+test("Mechanic uses the automatic rewarded-only flow", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
-  assert.equal(manifest.template, "single-stage-display-manual-v1");
+  assert.equal(manifest.template, "single-stage-rewarded-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.equal(manifest.structure.stages.length, 1);
   assert.equal(manifest.structure.stages[0].questionIds.length, 10);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("rewarded and display use their own configured ad units", () => {
+test("only the rewarded ad unit is configured", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
+  assert.doesNotMatch(config, /displayAdUnitPath|22677279144\/display/);
 });
 test("Memory and Years Left reveal results without reloading", () => {
   for (const slug of ["memory", "years-left"]) {

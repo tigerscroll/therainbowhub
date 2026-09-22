@@ -4,8 +4,6 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
-  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
-  defineSizeMapping?: (mapping: unknown) => GptSlot;
 };
 
 type RewardedEvent = {
@@ -21,22 +19,14 @@ type PubAds = {
   updateCorrelator?: () => void;
 };
 
-type SizeMappingBuilder = {
-  addSize(viewport: number[], sizes: number[][]): SizeMappingBuilder;
-  build(): unknown;
-};
-
 type GoogleTag = {
   cmd: Array<() => void>;
-  defineSlot?: (path: string, sizes: number[][], elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
   enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
   pubads?: () => PubAds;
-  setConfig?: (config: { adExpansion?: { enabled: boolean } }) => void;
-  sizeMapping?: () => SizeMappingBuilder;
 };
 
 declare global {
@@ -64,78 +54,6 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
-const displayAdSizes: Array<[number, number]> = [
-  [336, 280], [300, 250],
-];
-
-export function getDisplayAdSizes(availableWidth: number) {
-  return displayAdSizes.filter(([width]) => width <= availableWidth).map(([width, height]): [number, number] => [width, height]);
-}
-
-export function mountDisplayAd({
-  adUnitPath,
-  elementId,
-  sizes,
-}: {
-  adUnitPath: string;
-  elementId: string;
-  sizes: Array<[number, number]>;
-}) {
-  let cancelled = false;
-  let slot: GptSlot | null = null;
-  let pubads: PubAds | undefined;
-  let renderListener: ((event: RewardedEvent) => void) | undefined;
-  window.googletag = window.googletag ?? { cmd: [] };
-  window.googletag.cmd.push(() => {
-    if (cancelled) return;
-    const googletag = window.googletag;
-    pubads = googletag?.pubads?.();
-    if (!googletag?.defineSlot || !googletag.display || !pubads) return;
-
-    const allSizes = sizes.filter(([width, height]) =>
-      displayAdSizes.some(([allowedWidth, allowedHeight]) => width === allowedWidth && height === allowedHeight));
-    if (!allSizes.length) return;
-    const compactPhoneSizes = allSizes.filter(([width]) => width <= 300);
-    const phoneSizes = allSizes.filter(([width]) => width <= 336);
-    const tabletSizes = allSizes.filter(([width]) => width <= 728);
-    const mapping = googletag.sizeMapping?.()
-      .addSize([0, 0], compactPhoneSizes.length ? compactPhoneSizes : allSizes)
-      .addSize([336, 0], phoneSizes.length ? phoneSizes : allSizes)
-      .addSize([480, 0], tabletSizes.length ? tabletSizes : allSizes)
-      .addSize([900, 0], allSizes)
-      .build();
-
-    slot = googletag.defineSlot(adUnitPath, allSizes, elementId);
-    if (!slot) return;
-    slot.setConfig?.({ adExpansion: { enabled: true } });
-    if (mapping) slot.defineSizeMapping?.(mapping);
-    slot.addService(pubads);
-    renderListener = (event) => {
-      if (event.slot !== slot) return;
-      const row = document.getElementById(elementId)?.closest<HTMLElement>("[data-display-ad]");
-      if (row) {
-        row.toggleAttribute("data-ad-empty", Boolean(event.isEmpty));
-        row.toggleAttribute("data-ad-filled", !event.isEmpty);
-      }
-    };
-    pubads.addEventListener("slotRenderEnded", renderListener);
-    if (!servicesEnabled) {
-      googletag.enableServices?.();
-      servicesEnabled = true;
-    }
-    googletag.display(elementId);
-  });
-
-  return {
-    destroy() {
-      cancelled = true;
-      if (pubads && renderListener) pubads.removeEventListener?.("slotRenderEnded", renderListener);
-      if (slot) {
-        try { window.googletag?.destroySlots?.([slot]); } catch { /* GPT cleanup is best effort. */ }
-      }
-    },
-  };
-}
 
 function sendQuizStartIfComplete(request: ActiveRequest) {
   if (!request.granted || !request.closed || request.sent || request.rewardClosedAlreadySent) return;

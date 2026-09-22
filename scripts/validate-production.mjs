@@ -205,8 +205,10 @@ for (const [label, source] of [
     addError(`Interstitial code must not exist in the rewarded-only ${label}.`);
   }
 }
-if (!quizEngineText.includes("usesQuestionAds(quiz.slug)")) {
-  addError("Question display ads must remain opt-in.");
+for (const source of [quizEngineText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText]) {
+  if (/mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath/.test(source)) {
+    addError("Display-ad code must not exist in the rewarded-only site.");
+  }
 }
 if (fs.existsSync(path.join(rootDir, "components", "experience", "WebInterstitialAd.tsx"))) {
   addError("The retired WebInterstitialAd component must not exist.");
