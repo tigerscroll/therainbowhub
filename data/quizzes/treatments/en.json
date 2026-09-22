@@ -1,33 +1,71 @@
 {
-  "title": "Only 16% Pass This Medical Treatments Quiz",
+  "title": "Can You Score 80% On This Treatments Quiz?",
   "eyebrow": "THE MEDICAL TREATMENTS QUIZ",
-  "summary": "Ten familiar therapies. Can you match each one to what it actually does?",
+  "summary": "Recognise treatments, unravel how they work and put your knowledge to the test across five different challenges.",
   "landing": {
-    "intro": "10 treatments. One simple test.\nDo you know what they mean?",
+    "intro": "Know your treatments?\nPut your knowledge to the test.",
     "cta": "Start Quiz"
   },
   "about": {
-    "body": "This ten-question trivia quiz covers treatment names, rehabilitation, talking therapies and hospital care. Look at each original source image and choose one of four answers.\n\nThe first ten questions, answer choices and images are reproduced from Log Cabin Daily with permission stated by the site owner commissioning this quiz. The source order and answer key are preserved.\n\nNaming a therapy does not establish whether it works for a particular condition. Evidence, risks and suitability differ between treatments. The headline percentage is promotional wording supplied for this quiz, not a measured pass rate.",
+    "body": "Five rounds. Five ways to test your treatment knowledge. Begin with familiar names, explore how treatments work, separate similar terms, spot accurate statements and finish with short descriptive scenarios.\n\nThere are six text-only questions per round. Choose one of four answers and the next question appears automatically. There is no time limit. A short rewarded ad opens the quiz, each next round and the final result. Your target is 24 correct answers out of 30.\n\nQuestions describe treatment names and general principles, not what care an individual needs. A familiar name does not establish effectiveness or suitability. The content was checked against NHS, National Cancer Institute and NCCIH information.",
     "howToPlay": {
       "steps": [
-        "Read each question and study its picture.",
-        "Choose the answer that best describes the treatment.",
-        "Reveal your score, then unlock a review of the answers you missed."
+        "Press Start Quiz, watch a short rewarded ad and begin.",
+        "Choose one answer per question. Each round changes the type of challenge, and questions advance automatically.",
+        "Complete all five rounds to reveal your score, strongest topic and answer review."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This is not medical advice, a clinical assessment or a healthcare qualification. Ask a qualified healthcare professional about treatment decisions."
   },
   "career": {
-    "resultProgressLabel": "Medical treatments challenge",
+    "resultProgressLabel": "Your progress",
     "stages": {
       "stage-1": {
-        "difficulty": "Medical Treatments",
-        "preAdTitle": "Your results are ready",
-        "preAdCopy": "Your ten answers have been checked. Reveal your score and see which treatment topics you knew best.",
+        "difficulty": "Name That Treatment",
+        "preAdTitle": "Names unlocked",
+        "preAdCopy": "You know the names. Now look behind them.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Go beyond the name to the method."
+        }
+      },
+      "stage-2": {
+        "difficulty": "How It Works",
+        "preAdTitle": "Methods explored",
+        "preAdCopy": "You have explored the methods. Next, separate the lookalikes.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Similar words. Different meanings."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Spot the Difference",
+        "preAdTitle": "Differences spotted",
+        "preAdCopy": "Three rounds complete. Can you spot a convincing mix-up?",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "One accurate statement. Three mix-ups."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Fact or Mix-Up?",
+        "preAdTitle": "Facts checked",
+        "preAdCopy": "One round left. Put the clues together in short scenarios.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Read the clues and identify the approach."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Put It Together",
+        "preAdTitle": "Your result is ready",
+        "preAdCopy": "All 30 answers are in. Reveal your score and see which topics stood out.",
         "preAdChecks": [
-          "10 answers checked",
-          "Three topic areas compared"
-        ]
+          "30 answers checked",
+          "Three topic areas compared",
+          "Your strongest topic identified"
+        ],
+        "preAdButton": "Reveal My Result"
       }
     }
   },
@@ -37,7 +75,7 @@
       "profile-1": {
         "tier": "90–100%",
         "title": "Treatment Trivia Expert",
-        "copy": "You matched almost every treatment to its meaning. Your score shows a strong grasp of these ten terms."
+        "copy": "You connected treatment names, methods and scenarios with impressive accuracy. That is a strong result on this general-knowledge challenge."
       },
       "profile-2": {
         "tier": "80–89%",
@@ -57,15 +95,15 @@
       "profile-5": {
         "tier": "Below 40%",
         "title": "A Fresh Start",
-        "copy": "Medical terminology can be confusing. Explore your missed answers to learn what these ten treatment names describe."
+        "copy": "Some treatment names were unfamiliar, and that is a useful starting point. Review your missed answers to build your knowledge."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "Physical and complementary therapies"
+        "label": "Physical and complementary approaches"
       },
       "dimension-2": {
-        "label": "Hospital treatments"
+        "label": "Medicines and hospital care"
       },
       "dimension-3": {
         "label": "Talking therapies"
@@ -73,10 +111,10 @@
     },
     "score": {
       "passed": "You passed the medical treatments challenge!",
-      "finished": "Medical treatments challenge complete",
+      "finished": "All five treatment challenges complete",
       "strongest": "Strongest topic",
       "trickiest": "Trickiest topic",
-      "bestRound": "Best section",
+      "bestRound": "Your best round",
       "disclaimer": "For entertainment and general learning only. Your score measures answers in this quiz, not clinical knowledge or fitness to provide healthcare.",
       "insights": {
         "overview": "Your score at a glance",
@@ -92,137 +130,327 @@
   },
   "stages": {
     "stage-1": {
-      "title": "The Medical Treatments Quiz",
+      "title": "Name That Treatment",
       "questions": {
-        "treatments-q1": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 1"
-          },
-          "question": "What does the term \"physical therapy\" mean?",
+        "treatments-r1q1": {
+          "question": "Which treatment uses tailored exercises to help restore movement?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A herbal medicine",
-            "a2": "Exercise-based care",
-            "a3": "A surgical operation",
-            "a4": "A radiation method"
-          },
-          "headerLabel": "QUESTION 1 OF 10"
+            "a1": "Chemotherapy",
+            "a2": "Physiotherapy",
+            "a3": "Dialysis",
+            "a4": "Radiotherapy"
+          }
         },
-        "treatments-q2": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 2"
-          },
-          "question": "What does the term \"acupuncture\" refer to?",
+        "treatments-r1q2": {
+          "question": "Which practice involves inserting fine needles at selected points?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A heat lamp",
-            "a2": "A herbal drink",
-            "a3": "A back massage",
-            "a4": "A needle-based therapy"
-          },
-          "headerLabel": "QUESTION 2 OF 10"
+            "a1": "Cupping",
+            "a2": "Hydrotherapy",
+            "a3": "Blood transfusion",
+            "a4": "Acupuncture"
+          }
         },
-        "treatments-q3": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 3"
-          },
-          "question": "What is chiropractic care?",
+        "treatments-r1q3": {
+          "question": "What kind of treatment is cognitive behavioural therapy (CBT)?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A spine-focused therapy",
-            "a2": "A cancer drug treatment",
-            "a3": "A herbal tea cure",
-            "a4": "A blood transfusion"
-          },
-          "headerLabel": "QUESTION 3 OF 10"
+            "a1": "A talking therapy",
+            "a2": "A surgical technique",
+            "a3": "A type of medication",
+            "a4": "A radiation treatment"
+          }
         },
-        "treatments-q4": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 4"
-          },
-          "question": "What is cognitive behavioral therapy (CBT)?",
+        "treatments-r1q4": {
+          "question": "Which cancer treatment uses medicines to kill cancer cells or stop their growth?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A herbal bath",
-            "a2": "A talk therapy",
-            "a3": "A joint massage",
-            "a4": "A cancer drug"
-          },
-          "headerLabel": "QUESTION 4 OF 10"
+            "a1": "Radiotherapy",
+            "a2": "Cancer surgery",
+            "a3": "Chemotherapy",
+            "a4": "A diagnostic scan"
+          }
         },
-        "treatments-q5": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 5"
-          },
-          "question": "What does radiation therapy usually mean?",
+        "treatments-r1q5": {
+          "question": "What gives cupping its name?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A massage technique",
-            "a2": "An exercise program",
-            "a3": "A high-energy treatment",
-            "a4": "A herbal drink"
-          },
-          "headerLabel": "QUESTION 5 OF 10"
+            "a1": "Cups used to measure medicines",
+            "a2": "Cups that create suction on the skin",
+            "a3": "Cups that deliver sound waves",
+            "a4": "Cups used to collect donated blood"
+          }
         },
-        "treatments-q6": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 6"
-          },
-          "question": "What is chemotherapy in cancer care?",
+        "treatments-r1q6": {
+          "question": "What is a blood transfusion?",
+          "headerLabel": "Name That Treatment",
           "answers": {
-            "a1": "A heat method",
-            "a2": "A spine massage",
-            "a3": "A drug treatment",
-            "a4": "A sound therapy"
-          },
-          "headerLabel": "QUESTION 6 OF 10"
+            "a1": "Giving donated blood components through a vein",
+            "a2": "Filtering waste out of the blood",
+            "a3": "Measuring blood pressure with a cuff",
+            "a4": "Removing a blood sample for testing"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "How It Works",
+      "questions": {
+        "treatments-r2q1": {
+          "question": "What does dialysis remove from the blood?",
+          "headerLabel": "How It Works",
+          "answers": {
+            "a1": "All of the body's oxygen",
+            "a2": "Only red blood cells",
+            "a3": "Waste products and excess fluid",
+            "a4": "Only disease-fighting antibodies"
+          }
         },
-        "treatments-q7": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 7"
-          },
-          "question": "What does the term \"cupping\" mean?",
+        "treatments-r2q2": {
+          "question": "What does insulin help the body do?",
+          "headerLabel": "How It Works",
           "answers": {
-            "a1": "A suction therapy",
-            "a2": "A radiation treatment",
-            "a3": "A spinal surgery",
-            "a4": "A sound machine"
-          },
-          "headerLabel": "QUESTION 7 OF 10"
+            "a1": "Use glucose for energy",
+            "a2": "Make bones longer",
+            "a3": "Replace damaged red blood cells",
+            "a4": "Turn sound into nerve signals"
+          }
         },
-        "treatments-q8": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 8"
-          },
-          "question": "What’s it called when surgery creates a new blood path to the heart?",
+        "treatments-r2q3": {
+          "question": "How do antibiotics act against susceptible bacteria?",
+          "headerLabel": "How It Works",
           "answers": {
-            "a1": "A skin repair",
-            "a2": "A tumor removal",
-            "a3": "A sugar test",
-            "a4": "A heart bypass"
-          },
-          "headerLabel": "QUESTION 8 OF 10"
+            "a1": "They replace bacteria with viruses",
+            "a2": "They remove all bacteria by filtering blood",
+            "a3": "They teach muscles to resist infection",
+            "a4": "They kill bacteria or stop them multiplying"
+          }
         },
-        "treatments-q9": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 9"
-          },
-          "question": "What does ultrasound therapy use?",
+        "treatments-r2q4": {
+          "question": "What does a TENS machine deliver through pads on the skin?",
+          "headerLabel": "How It Works",
           "answers": {
-            "a1": "Heat pads",
-            "a2": "Sound waves",
-            "a3": "Electric lamps",
-            "a4": "Herbal oils"
-          },
-          "headerLabel": "QUESTION 9 OF 10"
+            "a1": "High-dose radiation",
+            "a2": "A weak electrical current",
+            "a3": "Donated blood cells",
+            "a4": "A stream of ultrasound gel"
+          }
         },
-        "treatments-q10": {
-          "image": {
-            "alt": "Source image accompanying medical treatment question 10"
-          },
-          "question": "What does cognitive therapy focus on?",
+        "treatments-r2q5": {
+          "question": "In cancer care, what is immunotherapy designed to help do?",
+          "headerLabel": "How It Works",
           "answers": {
-            "a1": "Negative thoughts",
-            "a2": "Blood sugar",
-            "a3": "Joint pain",
-            "a4": "Skin rash"
-          },
-          "headerLabel": "FINAL QUESTION"
+            "a1": "Replace the immune system with donor blood",
+            "a2": "Bypass blocked arteries",
+            "a3": "Help the immune system fight cancer",
+            "a4": "Numb a small area for stitches"
+          }
+        },
+        "treatments-r2q6": {
+          "question": "What happens during general anaesthesia?",
+          "headerLabel": "How It Works",
+          "answers": {
+            "a1": "Only a small patch of skin becomes numb",
+            "a2": "The person stays fully alert without medication",
+            "a3": "The blood is replaced with a saline solution",
+            "a4": "Medicines make the person unconscious for the procedure"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Spot the Difference",
+      "questions": {
+        "treatments-r3q1": {
+          "question": "Which pairing correctly distinguishes chemotherapy from radiotherapy?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Chemotherapy: medicines; radiotherapy: radiation",
+            "a2": "Chemotherapy: radiation; radiotherapy: medicines",
+            "a3": "Chemotherapy: exercise; radiotherapy: surgery",
+            "a4": "Chemotherapy: surgery; radiotherapy: exercise"
+          }
+        },
+        "treatments-r3q2": {
+          "question": "Despite its name, occupational therapy is not just about jobs. What is its focus?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Matching applicants to employers",
+            "a2": "Measuring performance at work",
+            "a3": "Helping people manage everyday activities",
+            "a4": "Teaching medical staff how to operate"
+          }
+        },
+        "treatments-r3q3": {
+          "question": "Ultrasound therapy and radiotherapy sound similar. Which distinction is correct?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Ultrasound uses radiation; radiotherapy uses sound",
+            "a2": "Ultrasound uses sound; radiotherapy uses radiation",
+            "a3": "Both use electrical skin pads instead of waves",
+            "a4": "Both work by filtering the blood"
+          }
+        },
+        "treatments-r3q4": {
+          "question": "How does local anaesthesia differ from general anaesthesia?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Local makes you unconscious; general numbs an area",
+            "a2": "Local is a talking therapy; general is a medicine",
+            "a3": "Local replaces blood; general filters blood",
+            "a4": "Local numbs an area; general makes you unconscious"
+          }
+        },
+        "treatments-r3q5": {
+          "question": "Which pairing correctly describes a vaccine and an antibiotic?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Vaccine: prepares immunity; antibiotic: acts against bacteria",
+            "a2": "Vaccine: kills all bacteria; antibiotic: prepares immunity",
+            "a3": "Vaccine: treats fractures; antibiotic: blocks pain signals",
+            "a4": "Vaccine: filters blood; antibiotic: replaces blood cells"
+          }
+        },
+        "treatments-r3q6": {
+          "question": "Is physiotherapy simply another name for massage?",
+          "headerLabel": "Spot the Difference",
+          "answers": {
+            "a1": "Yes — every session must consist only of massage",
+            "a2": "No — it can include exercise, hands-on care and advice",
+            "a3": "No — it consists only of surgical procedures",
+            "a4": "Yes — but it is used only by professional athletes"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Fact or Mix-Up?",
+      "questions": {
+        "treatments-r4q1": {
+          "question": "Which statement about CBT is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "It replaces all thoughts with positive slogans",
+            "a2": "It is a medicine that must be injected",
+            "a3": "It works without any participation from the person",
+            "a4": "It explores links between thoughts, feelings and actions"
+          }
+        },
+        "treatments-r4q2": {
+          "question": "Which statement about chemotherapy is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "Chemotherapy can only be given through a vein",
+            "a2": "Some chemotherapy is taken as tablets or capsules",
+            "a3": "Chemotherapy never affects healthy cells",
+            "a4": "Chemotherapy is another name for radiotherapy"
+          }
+        },
+        "treatments-r4q3": {
+          "question": "Which statement about occupational therapy is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "It is only available to people with paid jobs",
+            "a2": "It is exclusively a treatment for broken bones",
+            "a3": "It can support people at home, school or work",
+            "a4": "It always requires the person to change career"
+          }
+        },
+        "treatments-r4q4": {
+          "question": "Which statement about the evidence for cupping is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "Evidence that it helps pain is limited, not conclusive",
+            "a2": "Its popularity proves it works for every condition",
+            "a3": "Skin marks prove a disease has been cured",
+            "a4": "It has no possible side effects because it is traditional"
+          }
+        },
+        "treatments-r4q5": {
+          "question": "Which statement about cancer radiotherapy is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "It works by replacing all the blood in the body",
+            "a2": "It is the same as having a routine diagnostic X-ray",
+            "a3": "It always destroys every cancer cell immediately",
+            "a4": "It can damage cancer-cell DNA to stop growth or kill cells"
+          }
+        },
+        "treatments-r4q6": {
+          "question": "Which statement about cancer treatment is accurate?",
+          "headerLabel": "Fact or Mix-Up?",
+          "answers": {
+            "a1": "Surgery and medicines can never be combined",
+            "a2": "Every type of cancer needs exactly the same treatment",
+            "a3": "A treatment plan may combine several approaches",
+            "a4": "Only one treatment can ever be used for a person"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Put It Together",
+      "questions": {
+        "treatments-r5q1": {
+          "question": "A therapist helps someone practise dressing and adapt everyday tasks after an illness. Which service is described?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Radiotherapy",
+            "a2": "Occupational therapy",
+            "a3": "Dialysis",
+            "a4": "Acupuncture"
+          }
+        },
+        "treatments-r5q2": {
+          "question": "A clinician works on swallowing difficulties as part of a specialist therapy service. Which profession fits?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Speech and language therapy",
+            "a2": "Radiography",
+            "a3": "Chiropractic care",
+            "a4": "Pharmacy"
+          }
+        },
+        "treatments-r5q3": {
+          "question": "A surgeon uses a blood vessel to create a route around a blocked coronary artery. What is the procedure?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Blood transfusion",
+            "a2": "Kidney dialysis",
+            "a3": "Coronary artery bypass graft",
+            "a4": "Local anaesthesia"
+          }
+        },
+        "treatments-r5q4": {
+          "question": "A person follows guided exercises in warm water as part of rehabilitation. What is this called?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Radiotherapy",
+            "a2": "Hydrotherapy",
+            "a3": "Immunotherapy",
+            "a4": "Cupping"
+          }
+        },
+        "treatments-r5q5": {
+          "question": "A team focuses on symptom relief, comfort and quality of life during a serious life-limiting illness. What care is described?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Routine vaccination",
+            "a2": "Diagnostic imaging",
+            "a3": "Blood donation",
+            "a4": "Palliative care"
+          }
+        },
+        "treatments-r5q6": {
+          "question": "In a structured session, someone examines an unhelpful thought and practises a different response with a therapist. Which approach fits?",
+          "headerLabel": "Put It Together",
+          "answers": {
+            "a1": "Cognitive behavioural therapy",
+            "a2": "Electrocardiography",
+            "a3": "Ultrasound therapy",
+            "a4": "General anaesthesia"
+          }
         }
       }
     }
