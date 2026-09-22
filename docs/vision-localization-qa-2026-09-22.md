@@ -1,5 +1,7 @@
 # Vision locale rollout — 22 September 2026
 
+Follow-up: see [the three-quiz final editorial audit](three-quiz-final-editorial-audit-2026-09-22.md) for the subsequent translation corrections and latest verification. The figures below describe the initial rollout.
+
 ## Scope
 
 The local Vision implementation now enables all 30 supported locales with the

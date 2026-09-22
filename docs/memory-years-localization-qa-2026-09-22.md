@@ -1,5 +1,7 @@
 # Memory and Years Left locale audit — 22 September 2026
 
+Follow-up: see [the three-quiz final editorial audit](three-quiz-final-editorial-audit-2026-09-22.md) for subsequent wording corrections, English prompt clarifications and the latest verification results. The figures below describe the initial locale rollout.
+
 ## Scope
 
 Both quizzes now enable all 30 supported locales: en, ar, bg, cs, da, de, el, es, fi, fil, fr, he, hr, hu, id, it, ja, ms, nb, nl, pl, pt, ro, sk, sr, sv, th, tr, uk and vi.
