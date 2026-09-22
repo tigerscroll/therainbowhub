@@ -3,30 +3,67 @@
   "eyebrow": "OPTISK FOKUS LAB",
   "summary": "Små forskelle, skiftende mønstre og optiske fælder tester, om dine øjne fanger det, de fleste går glip af.",
   "landing": {
-    "intro": "10 visuelle udfordringer. Små forskelle.\nHvor skarpe er dine øjne?",
+    "intro": "Små detaljer. Store overraskelser.\nHvor skarpt er dit blik?",
     "cta": "Start test"
   },
   "about": {
-    "body": "Denne underholdningsudfordring indeholder ti visuelle puslespil, der dækker farvekontrast, detaljematch, rumlig orientering, mønstersporing, opmærksomhed og visuel hukommelse. Opgaverne bliver mere krævende uden at være afhængig af fagterminologi.\n\nStuder hvert billede eller symbolsæt omhyggeligt, og vælg derefter det svar, der bedst understøttes af det viste. Nogle spørgsmål tester opfattelse og opmærksomhed frem for selve synet.\n\nDette er ikke en øjenundersøgelse, medicinsk synstest eller diagnose. Søg kvalificeret øjenplejeråd, hvis du er bekymret for dit syn.",
+    "body": "Denne underholdningsudfordring indeholder tredive visuelle puslespil i fem seks-spørgsmålsrunder, der dækker farvekontrast, detaljematch, rumlig orientering, mønstersporing, opmærksomhed og visuel hukommelse. Opgaverne bliver mere krævende uden at være afhængig af specialistterminologi.\n\nStuder hvert billede eller symbolsæt omhyggeligt, og vælg derefter det svar, der bedst understøttes af det viste. Nogle spørgsmål tester opfattelse og opmærksomhed frem for selve synet.\n\nDette er ikke en øjenundersøgelse, medicinsk synstest eller diagnose. Søg kvalificeret øjenplejeråd, hvis du er bekymret for dit syn.",
     "howToPlay": {
       "steps": [
-        "Udfyld ti nøje udvalgte spørgsmål i én fokuseret udfordring.",
-        "Vælg et svar hver gang. Rigtigheden forbliver skjult indtil den endelige afsløring.",
-        "Afslør dit resultat, færdighedsfordeling og komplet svargennemgang efter det sidste spørgsmål."
+        "Gennemfør fem runder med seks opgaver i hver. Efter hvert svar går du automatisk videre til næste spørgsmål.",
+        "Se godt på hvert billede. Du får først din score at se til sidst.",
+        "Fortsæt efter hver runde. Efter den sidste får du din score og et overblik over dine styrker."
       ]
     },
     "disclaimer": "Kun til underholdning. Denne quiz er ikke en øjenundersøgelse og kan ikke diagnosticere synsproblemer."
   },
   "career": {
-    "resultProgressLabel": "Vision udfordring",
+    "resultProgressLabel": "Dine fremskridt",
     "stages": {
       "stage-1": {
-        "difficulty": "Vision Udfordring",
-        "preAdTitle": "Dine resultater er klar",
-        "preAdCopy": "Din vision-udfordringsscore og tre-færdighedsfordeling er klar til at afsløre.",
+        "difficulty": "Første øjekast",
+        "preAdTitle": "Runde 1 er gennemført",
+        "preAdCopy": "Seks opgaver er klaret. Klar til at se nærmere på detaljerne?",
+        "next": {
+          "eyebrow": "Blik for detaljer",
+          "tagline": "Seks nye opgaver venter."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Blik for detaljer",
+        "preAdTitle": "Runde 2 er gennemført",
+        "preAdCopy": "To runder er gennemført. Nu gælder det mønstre og hukommelse.",
+        "next": {
+          "eyebrow": "Mønstre og hukommelse",
+          "tagline": "Seks nye opgaver venter."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Mønstre og hukommelse",
+        "preAdTitle": "Runde 3 er gennemført",
+        "preAdCopy": "Du er over halvvejs. Kan du gennemskue de optiske illusioner?",
+        "next": {
+          "eyebrow": "Optiske illusioner",
+          "tagline": "Seks nye opgaver venter."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Optiske illusioner",
+        "preAdTitle": "Runde 4 er gennemført",
+        "preAdCopy": "Der er én runde tilbage. Skærp blikket til de sidste opgaver.",
+        "next": {
+          "eyebrow": "Ørneblik",
+          "tagline": "Seks nye opgaver venter."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Ørneblik",
+        "preAdTitle": "Dit resultat er klar",
+        "preAdCopy": "Alle 30 svar er bedømt. Se dit resultat og dine stærkeste sider.",
         "preAdChecks": [
-          "10 svar kontrolleret",
-          "Tre visuelle færdigheder sammenlignet"
+          "30 svar vurderet",
+          "Seks visuelle færdigheder sammenlignet",
+          "Din stærkeste færdighed fundet"
         ]
       }
     }
@@ -96,7 +133,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Vision Udfordring",
+      "title": "Første øjekast",
       "questions": {
         "vision-r1q1": {
           "visual": {
@@ -115,7 +152,26 @@
             "a3": "Øverst til højre",
             "a4": "Nederst til venstre"
           },
-          "headerLabel": "FARVE KONTRAST"
+          "headerLabel": "FARVEKONTRAST"
+        },
+        "vision-r3q4": {
+          "visual": {
+            "items": [
+              "left-half",
+              "left-half",
+              "right-half",
+              "left-half"
+            ],
+            "ariaLabel": "Fire halvfyldte cirkler; den tredje er udfyldt på den modsatte side"
+          },
+          "question": "Hvilken position indeholder det forskellige symbol?",
+          "answers": {
+            "a1": "Først",
+            "a2": "For det andet",
+            "a3": "For det tredje",
+            "a4": "Fjerde"
+          },
+          "headerLabel": "SANS FOR DETALJER"
         },
         "vision-r1q2": {
           "context": "M7K2P9",
@@ -133,8 +189,71 @@
             "a3": "M7KZP9",
             "a4": "N7K2P9"
           },
-          "headerLabel": "DETALJKAMP"
+          "headerLabel": "SANS FOR DETALJER"
         },
+        "vision-r1q3": {
+          "visual": {
+            "items": [
+              "▲",
+              "●",
+              "▲",
+              "●",
+              "?"
+            ],
+            "ariaLabel": "Trekant, cirkel, trekant, cirkel, ukendt"
+          },
+          "question": "Hvad kommer dernæst i mønsteret?",
+          "answers": {
+            "a1": "■",
+            "a2": "●",
+            "a3": "◆",
+            "a4": "▲"
+          },
+          "headerLabel": "MØNSTRE"
+        },
+        "vision-r1q4": {
+          "visual": {
+            "items": [
+              "↑",
+              "→",
+              "↓",
+              "?"
+            ],
+            "ariaLabel": "Pil op, højre pil, pil ned, ukendt"
+          },
+          "question": "Pilen drejer 90° med uret hver gang. Hvor peger den næste gang?",
+          "answers": {
+            "a1": "↑",
+            "a2": "→",
+            "a3": "↓",
+            "a4": "←"
+          },
+          "headerLabel": "RUMLIG ORIENTERING"
+        },
+        "vision-r1q5": {
+          "question": "Hvilket ikon dukkede op først?",
+          "answers": {
+            "a1": "Stjerne",
+            "a2": "Nøgle",
+            "a3": "Paraply",
+            "a4": "Citron"
+          },
+          "study": {
+            "title": "Husk rækkefølgen",
+            "items": [
+              "⭐",
+              "🍋",
+              "🔑",
+              "☂️"
+            ]
+          },
+          "headerLabel": "VISUEL HUKOMMELSE"
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Blik for detaljer",
+      "questions": {
         "vision-r5q1": {
           "visual": {
             "items": [
@@ -144,12 +263,42 @@
             ],
             "ariaLabel": "Nordøstpil reflekteret hen over et lodret spejl"
           },
-          "question": "Hvilken pil er det lodrette spejl af ↗?",
+          "question": "Hvilken pil får du, hvis du spejlvender ↗ fra venstre mod højre?",
           "answers": {
             "a1": "↙",
             "a2": "↘",
             "a3": "↗",
             "a4": "↖"
+          },
+          "headerLabel": "RUMLIG ORIENTERING"
+        },
+        "vision-r3q1": {
+          "question": "I hvilket par er de to koder helt ens?",
+          "answers": {
+            "a1": "R7Q3B6 / R7O3B6",
+            "a2": "K4M8P2 / K4M8P2",
+            "a3": "T9L2C5 / T9LZC5",
+            "a4": "A6D4N8 / A6D4M8"
+          },
+          "headerLabel": "SANS FOR DETALJER"
+        },
+        "vision-r3q2": {
+          "question": "Hvilken række indeholder præcis syv prikker?",
+          "answers": {
+            "a1": "••••••",
+            "a2": "•••••",
+            "a3": "••••••••",
+            "a4": "•••••••"
+          },
+          "headerLabel": "SANS FOR DETALJER"
+        },
+        "vision-r3q5": {
+          "question": "Hvilket symbol ser ens ud efter en drejning på 180°?",
+          "answers": {
+            "a1": "L",
+            "a2": "↑",
+            "a3": "●",
+            "a4": "↗"
           },
           "headerLabel": "RUMLIG ORIENTERING"
         },
@@ -162,7 +311,90 @@
             "a3": "8",
             "a4": "9"
           },
-          "headerLabel": "OBS KONTROL"
+          "headerLabel": "OPMÆRKSOMHED"
+        },
+        "vision-r5q6": {
+          "question": "Hvilken genstand var i nederste venstre position?",
+          "answers": {
+            "a1": "Nøgle",
+            "a2": "Blad",
+            "a3": "Måne",
+            "a4": "Stjerne"
+          },
+          "study": {
+            "title": "Husk de fire positioner",
+            "items": [
+              "Øverst til venstre: Stjerne",
+              "Øverst til højre: Måne",
+              "Nederst til venstre: Nøgle",
+              "Nederst til højre: Blad"
+            ]
+          },
+          "headerLabel": "VISUEL HUKOMMELSE"
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Mønstre og hukommelse",
+      "questions": {
+        "vision-r9q5": {
+          "question": "Hvilken figur var lige til højre for den gyldne trekant?",
+          "answers": {
+            "a1": "Lilla stjerne",
+            "a2": "Koralfarvet kvadrat",
+            "a3": "Blå cirkel",
+            "a4": "Grøn rombe"
+          },
+          "study": {
+            "title": "Husk rækken med fem fliser",
+            "items": [
+              "blue-circle",
+              "gold-triangle",
+              "coral-square",
+              "green-diamond",
+              "violet-star"
+            ],
+            "ariaLabel": "Blå cirkel, guldtrekant, koralfirkant, grøn diamant, violet stjerne"
+          },
+          "headerLabel": "VISUEL HUKOMMELSE"
+        },
+        "vision-r7q2": {
+          "visual": {
+            "items": [
+              "A7Q",
+              "B4M",
+              "C2R",
+              "B4M"
+            ],
+            "ariaLabel": "KoderA7Q, B4M, C2RogB4M"
+          },
+          "question": "Hvilken kode vises to gange?",
+          "answers": {
+            "a1": "B4M",
+            "a2": "A7Q",
+            "a3": "C2R",
+            "a4": "Ingen"
+          },
+          "headerLabel": "OPMÆRKSOMHED"
+        },
+        "vision-r4q1": {
+          "visual": {
+            "items": [
+              "▲",
+              "■",
+              "⬟",
+              "?"
+            ],
+            "ariaLabel": "Trekant, firkant, femkant, ukendt"
+          },
+          "question": "Antallet af sider stiger for hvert trin. Hvilken figur kommer nu?",
+          "answers": {
+            "a1": "Cirkel",
+            "a2": "Sekskant",
+            "a3": "Trekant",
+            "a4": "Kvadrat"
+          },
+          "headerLabel": "MØNSTRE"
         },
         "vision-r4q2": {
           "visual": {
@@ -183,30 +415,74 @@
             "a3": "OO",
             "a4": "X"
           },
-          "headerLabel": "MØNSTERSPORING"
+          "headerLabel": "MØNSTRE"
         },
         "vision-r4q5": {
-          "question": "Hvilken farve skiller sig mest ud mod dyb navy?",
+          "question": "Hvilken farve skiller sig mest ud på den mørkeblå baggrund?",
           "answers": {
             "a1": "Farveprøve A",
             "a2": "Farveprøve B",
             "a3": "Farveprøve D",
             "a4": "Farveprøve C"
           },
-          "headerLabel": "FARVEFOKUS"
+          "headerLabel": "FARVEKONTRAST"
+        },
+        "vision-r4q6": {
+          "context": "◇ ● ▲ ■",
+          "question": "Hvilken række gentager referencen nøjagtigt?",
+          "answers": {
+            "a1": "◇ ● ■ ▲",
+            "a2": "◇ ● ▲ ■",
+            "a3": "◇ ○ ▲ ■",
+            "a4": "● ◇ ▲ ■"
+          },
+          "headerLabel": "OPMÆRKSOMHED"
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Optiske illusioner",
+      "questions": {
+        "vision-r9q1": {
+          "visual": {
+            "items": [
+              "lys panel",
+              "mørkt panel"
+            ],
+            "ariaLabel": "Samtidige kontrastpaneler"
+          },
+          "question": "De midterste firkanter er identiske. Hvorfor kan de stadig se anderledes ud?",
+          "answers": {
+            "a1": "Man skal i al hemmelighed være lysere",
+            "a2": "Farven skifter med synsafstand",
+            "a3": "Identiske farver ser altid identiske ud",
+            "a4": "Omgivende kontrast ændrer deres udseende"
+          },
+          "headerLabel": "FARVEKONTRAST"
         },
         "vision-r8q3": {
           "image": {
             "alt": "En rød startprik med fire matchende stiplede ruter, der krydser gentagne gange, før de når endepunkter A, B, C og D"
           },
-          "question": "Start ved den røde prik og følg dens stiplede rute. Hvilket bogstav når du?",
+          "question": "Start ved den røde prik, og følg den stiplede linje. Hvilket bogstav ender du ved?",
           "answers": {
             "a1": "A",
             "a2": "B",
             "a3": "C",
             "a4": "D"
           },
-          "headerLabel": "VISUEL SPORING"
+          "headerLabel": "MØNSTRE"
+        },
+        "vision-r7q1": {
+          "context": "THE OTHER THEME HID THE WORD THE.",
+          "question": "Hvor mange gange optræder THE som et selvstændigt ord i linjen?",
+          "answers": {
+            "a1": "5",
+            "a2": "4",
+            "a3": "3",
+            "a4": "6"
+          },
+          "headerLabel": "OPMÆRKSOMHED"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026 B: F0CUS-M7Q2-2026",
@@ -217,8 +493,52 @@
             "a3": "Det andet tegn",
             "a4": "Det sidste ciffer"
           },
-          "headerLabel": "DETALJOPSØKELSE"
+          "headerLabel": "SANS FOR DETALJER"
         },
+        "vision-r9q4": {
+          "context": "Drej først pilen 90° med uret. Afspejle derefter resultatet i et lodret spejl.",
+          "visual": {
+            "items": [
+              "↗",
+              "↻ 90°",
+              "│",
+              "?"
+            ],
+            "ariaLabel": "Nordøstpil, kvart omgang med uret, derefter lodret spejl"
+          },
+          "question": "Hvor peger pilen endelig?",
+          "answers": {
+            "a1": "↗",
+            "a2": "↘",
+            "a3": "↙",
+            "a4": "↖"
+          },
+          "headerLabel": "RUMLIG ORIENTERING"
+        },
+        "vision-r9q6": {
+          "visual": {
+            "items": [
+              "BLÅ 🟦",
+              "GRØN 🟩",
+              "RØD 🟦",
+              "GYLDEN 🟨"
+            ],
+            "ariaLabel": "Fire farveetiketter og fliser med den tredje etiket uoverensstemmende"
+          },
+          "question": "Hvilket farvenavn passer ikke til feltet ved siden af?",
+          "answers": {
+            "a1": "Først",
+            "a2": "For det andet",
+            "a3": "For det tredje",
+            "a4": "Fjerde"
+          },
+          "headerLabel": "OPMÆRKSOMHED"
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Ørneblik",
+      "questions": {
         "vision-r10q2": {
           "visual": {
             "items": [
@@ -227,14 +547,51 @@
             ],
             "ariaLabel": "Base M8Q2 K7P4 R6N3 og kopi M8Q2 K1P4 R6M3"
           },
-          "question": "Hvilke to karakterer ændrede sig?",
+          "question": "Hvilke to tegn er ændret?",
           "answers": {
             "a1": "7 og N",
             "a2": "8 og 6",
             "a3": "Q og P",
             "a4": "K og R"
           },
-          "headerLabel": "KODE SAMMENLIGNING"
+          "headerLabel": "SANS FOR DETALJER"
+        },
+        "vision-r10q4": {
+          "image": {
+            "alt": "Fire illustrerede trin, der viser en firkant foldet til højre, foldet ned, stanset én gang gennem den lille foldede firkant og derefter foldet ud til et ukendt resultat"
+          },
+          "question": "En firkant foldes to gange og stanses derefter én gang gennem hvert lag væk fra folder. Hvor mange huller vises efter udfoldning?",
+          "answers": {
+            "a1": "1",
+            "a2": "2",
+            "a3": "4",
+            "a4": "8"
+          },
+          "headerLabel": "RUMLIG ORIENTERING"
+        },
+        "vision-r8q1": {
+          "visual": {
+            "items": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "ariaLabel": "Ni faste blå farveprøver med et blågrønt skift"
+          },
+          "question": "Hvilken flise skifter mod grøn?",
+          "answers": {
+            "a1": "Øverst til venstre",
+            "a2": "Center",
+            "a3": "Nederst til højre",
+            "a4": "Nederst i midten"
+          },
+          "headerLabel": "FARVEKONTRAST"
         },
         "vision-r8q5": {
           "question": "Hvilket ikon dukkede op på fjerdepladsen?",
@@ -255,6 +612,45 @@
             ]
           },
           "headerLabel": "VISUEL HUKOMMELSE"
+        },
+        "vision-r8q6": {
+          "visual": {
+            "items": [
+              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
+            ],
+            "ariaLabel": "Fem fyldte stjerner blandet med syv omrids eller geometriske distraktorer"
+          },
+          "question": "Hvor mange fyldte stjerner?",
+          "answers": {
+            "a1": "5",
+            "a2": "3",
+            "a3": "4",
+            "a4": "2"
+          },
+          "headerLabel": "OPMÆRKSOMHED"
+        },
+        "vision-r10q3": {
+          "context": "Spor formcyklussen og udfyldningscyklussen uafhængigt.",
+          "visual": {
+            "items": [
+              "●",
+              "□",
+              "○",
+              "■",
+              "○",
+              "□",
+              "?"
+            ],
+            "ariaLabel": "Seks former, der kombinerer en skiftende cirkel-kvadrat-cyklus og en tre-trins udfyldningscyklus"
+          },
+          "question": "Hvilken figur fortsætter rækken?",
+          "answers": {
+            "a1": "●",
+            "a2": "■",
+            "a3": "○",
+            "a4": "□"
+          },
+          "headerLabel": "MØNSTRE"
         }
       }
     }

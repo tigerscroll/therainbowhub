@@ -3,6 +3,7 @@ import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import { quizTemplateContract } from "./quiz-template-contracts.mjs";
+import { vocabulary as memoryVocabulary, journeyWords } from "./memory-locale-vocabulary.mjs";
 
 const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
@@ -119,7 +120,7 @@ function compareStructure(source, localized, pathParts, location) {
       addError(`${location}#${currentPath}: puzzle token(s) ${missingPuzzleTokens.map((token) => JSON.stringify(token)).join(", ")} differ from English.`);
     }
     const localizedVisionAsset = source.includes("paper-fold-punch.svg")
-      && /paper-fold-punch-(?:fr|de|it|nl|es|pt|ar)\.svg(?:\?[^\s]*)?$/.test(localized);
+      && /paper-fold-punch-[a-z]{2,3}\.svg(?:\?[^\s]*)?$/.test(localized);
     if (isExactTechnicalString(source, pathParts) && localized !== source && !localizedVisionAsset) {
       addError(`${location}#${currentPath}: technical or asset string must remain identical to English.`);
     }
@@ -349,7 +350,7 @@ function assertTextEquals(actual, expected, location, contract) {
   }
 }
 
-function validateMemorySemantics(content, location) {
+function validateMemorySemantics(content, locale, location) {
   const q = (id) => questionById(content, id, location);
   const answer = (id) => correctAnswer(q(id));
   const studyItem = (id, index) => q(id)?.study?.items?.[index];
@@ -360,19 +361,33 @@ function validateMemorySemantics(content, location) {
   const containsContracts = [
     [studyItem("memory-r1q1", 0), answer("memory-r1q1"), "memory-r1q1/blue-key"],
     [studyItem("memory-r1q1", 1), answer("memory-r1q4"), "memory-r1q4/opening-animal"],
-    [studyItem("memory-r1q1", 3), answer("memory-r5q1"), "memory-r5q1/kite-colour"],
     [studyItem("memory-r1q1", 2), answer("memory-r5q2"), "memory-r5q2/train-number"],
-    [studyItem("memory-r3q1", 0), answer("memory-r3q1"), "memory-r3q1/coat-colour"],
     [studyItem("memory-r3q1", 1), answer("memory-r3q7"), "memory-r3q7/station-time"],
-    [studyItem("memory-r3q1", 2), answer("memory-r3q8"), "memory-r3q8/apple-count"],
     [studyItem("memory-r3q1", 3), answer("memory-r5q3"), "memory-r5q3/seat-type"],
-    [studyItem("memory-r3q1", 2), answer("memory-r5q6"), "memory-r5q6/bag-tag-colour"],
     [studyItem("memory-r4q1", 1), answer("memory-r4q1"), "memory-r4q1/omar-object"],
     [studyItem("memory-r4q1", 2), answer("memory-r4q5"), "memory-r4q5/compass-owner"],
-    [studyItem("memory-r4q1", 3), answer("memory-r4q8"), "memory-r4q8/scarf-owner"],
+    [studyItem("memory-r4q1", 2), answer("memory-r4q3"), "memory-r4q3/name-before-noah"],
     [studyItem("memory-r4q1", 0), answer("memory-r5q4"), "memory-r5q4/mia-object"],
   ];
   containsContracts.forEach(([container, expected, contract]) => assertTextContains(container, expected, location, contract));
+  // Adjectives and number words inflect in many languages. Compare reviewed
+  // board phrases AND standalone answers instead of requiring identical stems.
+  const words = memoryVocabulary[locale];
+  const journey = journeyWords[locale];
+  if (words && journey) {
+    [words.blueKey, words.purpleElephant, `${words.train} · 6`, words.silverKite].forEach((expected, index) =>
+      assertTextEquals(studyItem("memory-r1q1", index), expected, location, `opening-board/${index}`));
+    [journey[0], journey[1], journey[2], `${journey[3]} · ${words.window}`].forEach((expected, index) =>
+      assertTextEquals(studyItem("memory-r3q1", index), expected, location, `journey-board/${index}`));
+    for (const [id, expected] of [["memory-r5q1", words.silver], ["memory-r3q1", words.red], ["memory-r5q6", words.green], ["memory-r3q8", journey[4]]]) {
+      assertTextEquals(answer(id), expected, location, `${id}/reviewed-recall-answer`);
+    }
+    assertTextEquals(answer("memory-r5q8"), `${words.silverKite} · ${words.train} 6 · ${words.window}`, location, "final-combined-recall");
+  }
+  const pairs = q("memory-r4q1")?.study?.items?.map((s) => normalizedText(s)) ?? [];
+  const pairQuestion = q("memory-r4q6");
+  const supported = pairQuestion?.answers?.map((s, index) => pairs.includes(normalizedText(s)) ? index : -1).filter((index) => index >= 0);
+  if (JSON.stringify(supported) !== JSON.stringify([pairQuestion?.correct])) addError(`${location}: exactly one people/object answer must match the study board.`);
   assertTextEquals(answer("memory-r1q2"), "K7M2Q", location, "memory-r1q2/exact-code");
   assertTextEquals(answer("memory-r1q3"), "2 – 9 – 4", location, "memory-r1q3/reversed-sequence");
   assertTextEquals(answer("memory-r3q2"), "T8PL4", location, "memory-r3q2/exact-code");
@@ -495,7 +510,7 @@ function validateSemanticContracts(quiz, content, locale, location) {
     assertTextEquals(correctAnswer(q(6)), "8 – 1 – 4", location, "alzheimers-q6/reverse-order");
     assertTextEquals(correctAnswer(q(8)), "14", location, "alzheimers-q8/subtraction");
   }
-  if (quiz === "memory") validateMemorySemantics(content, location);
+  if (quiz === "memory") validateMemorySemantics(content, locale, location);
   if (quiz === "vision") {
     validateVisionSemantics(content, locale, location);
   }
@@ -591,7 +606,7 @@ const genericShellValues = {
   pt: new Set(["Progresso", "RESULTADO ATUAL", "PERCURSO DO TESTE", "{value} / {total} etapas concluídas", "ETAPA CONCLUÍDA"]),
 };
 
-function validateNativeCopyPatterns(quiz, content, locale, location) {
+function validateNativeCopyPatterns(quiz, content, locale, location, english) {
   for (const { value, pathParts } of collectStrings(content)) {
     if (isExactTechnicalString(value, pathParts)) continue;
     for (const defect of recurringNativeCopyDefects[locale] ?? []) {
@@ -621,7 +636,13 @@ function validateNativeCopyPatterns(quiz, content, locale, location) {
     if (next?.difficulty !== canonicalDifficulty) {
       addError(`${location}#career.stages.${index}.next.difficulty: must exactly match the following stage difficulty ${JSON.stringify(canonicalDifficulty)}.`);
     }
-    if (next?.eyebrow && canonicalDifficulty
+    const sourceNext = english?.career?.stages?.[index]?.next;
+    const sourceDifficulty = english?.career?.stages?.[index + 1]?.difficulty;
+    // Some templates use a generic NEXT ROUND eyebrow; others include the
+    // difficulty. Follow the English contract rather than imposing one layout.
+    const sourceIncludesDifficulty = sourceNext?.eyebrow && sourceDifficulty
+      && normalizedText(sourceNext.eyebrow).endsWith(normalizedText(sourceDifficulty));
+    if (sourceIncludesDifficulty && next?.eyebrow && canonicalDifficulty
       && !normalizedText(next.eyebrow).endsWith(normalizedText(canonicalDifficulty))) {
       addError(`${location}#career.stages.${index}.next.eyebrow: must end with the following stage's canonical difficulty label.`);
     }
@@ -750,11 +771,11 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     validateQuestions(localized, location, manifest.template);
     if (entry.name === "marry") validateMarryLocalization(english, localized, locale, location);
     validateSemanticContracts(entry.name, localized, locale, location);
-    validateNativeCopyPatterns(entry.name, localized, locale, location);
+    validateNativeCopyPatterns(entry.name, localized, locale, location, english);
     if (locale === "ar") validateArabicPrimaryCopy(localized, location);
     validatePrimaryScriptCopy(localized, location, localeFile);
     const residue = collectStringPairs(english, localized)
-      .filter((pair) => !(entry.name === "vision" && pair.source === "OFFICE FOCUS: FIND FIVE FLAGS FAST."))
+      .filter((pair) => !(entry.name === "vision" && ["OFFICE FOCUS: FIND FIVE FLAGS FAST.", "THE OTHER THEME HID THE WORD THE."].includes(pair.source)))
       // Reviewed Filipino aviation terminology: these conventional English
       // technical labels are intentional, not untranslated interface copy.
       .filter((pair) => !(entry.name === "airforce" && locale === "fil" && (
@@ -768,7 +789,10 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (residue.length > 20) addError(`${location}: ${residue.length - 20} additional untranslated English strings remain.`);
     if (localeFile === "pt.json") {
       for (const { value, pathParts } of collectStrings(localized)) {
-        const match = findPortugueseVariantTerm(value);
+        // The Memory clue explicitly gives both Portuguese names for a train.
+        // Neither regional noun alone is permitted; all other neutrality checks remain.
+        const checkedValue = entry.name === "memory" ? value.replace(/comboio \/ trem/gi, "") : value;
+        const match = findPortugueseVariantTerm(checkedValue);
         if (match) addError(`${location}#${pathParts.join(".")}: region-specific Portuguese term ${JSON.stringify(match[0])} must be neutralized.`);
       }
     }

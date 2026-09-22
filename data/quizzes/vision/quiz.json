@@ -8,7 +8,8 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "independent"
+    "localeParity": "strict",
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
@@ -59,23 +60,67 @@
       "icon": "👁️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "vision-r1q1",
+          "vision-r3q4",
           "vision-r1q2",
+          "vision-r1q3",
+          "vision-r1q4",
+          "vision-r1q5"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
           "vision-r5q1",
+          "vision-r3q1",
+          "vision-r3q2",
+          "vision-r3q5",
           "vision-r3q6",
+          "vision-r5q6"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "vision-r9q5",
+          "vision-r7q2",
+          "vision-r4q1",
           "vision-r4q2",
           "vision-r4q5",
+          "vision-r4q6"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "vision-r9q1",
           "vision-r8q3",
+          "vision-r7q1",
           "vision-r9q2",
+          "vision-r9q4",
+          "vision-r9q6"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
           "vision-r10q2",
-          "vision-r8q5"
+          "vision-r10q4",
+          "vision-r8q1",
+          "vision-r8q5",
+          "vision-r8q6",
+          "vision-r10q3"
         ]
       }
     ],
@@ -93,6 +138,20 @@
           "a3",
           "a4"
         ]
+      },
+      "vision-r3q4": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 4
+        },
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "vision-r1q2": {
         "presentation": "code",
@@ -138,6 +197,49 @@
           }
         ]
       },
+      "vision-r1q3": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "vision-r1q4": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "vision-r1q5": {
+        "study": {
+          "presentation": "icons",
+          "durationMs": 1800,
+          "mode": "automatic"
+        },
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
       "vision-r5q1": {
         "presentation": "spatial",
         "visual": {},
@@ -150,6 +252,36 @@
           "a4"
         ]
       },
+      "vision-r3q1": {
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "vision-r3q2": {
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "vision-r3q5": {
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
       "vision-r3q6": {
         "correctAnswerId": "a2",
         "category": "attention_control",
@@ -159,6 +291,70 @@
           "a3",
           "a4"
         ]
+      },
+      "vision-r5q6": {
+        "study": {
+          "durationMs": 2200,
+          "mode": "automatic"
+        },
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "vision-r9q5": {
+        "presentation": "icons",
+        "icons": {
+          "a1": "violet-star",
+          "a2": "coral-square",
+          "a3": "blue-circle",
+          "a4": "green-diamond"
+        },
+        "study": {
+          "presentation": "icons",
+          "durationMs": 3500,
+          "mode": "automatic"
+        },
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "vision-r7q2": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "vision-r4q1": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "vision-r4q2": {
         "presentation": "sequence",
@@ -191,6 +387,28 @@
           "a4"
         ]
       },
+      "vision-r4q6": {
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "vision-r9q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
       "vision-r8q3": {
         "presentation": "text",
         "image": {
@@ -204,6 +422,16 @@
           "a3",
           "a4"
         ]
+      },
+      "vision-r7q1": {
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "vision-r9q2": {
         "correctAnswerId": "a3",
@@ -226,6 +454,34 @@
             "count": 1
           }
         ]
+      },
+      "vision-r9q4": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "→"
+        },
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "vision-r9q6": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 2
+        },
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "vision-r10q2": {
         "presentation": "code",
@@ -310,6 +566,67 @@
           }
         ]
       },
+      "vision-r10q4": {
+        "presentation": "text",
+        "image": {
+          "src": "/quizzes/vision/assets/icons/paper-fold-punch.svg?v=20260819-2",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/paper-fold-punch-fr.svg?v=20260922",
+            "de": "/quizzes/vision/assets/icons/paper-fold-punch-de.svg?v=20260922",
+            "it": "/quizzes/vision/assets/icons/paper-fold-punch-it.svg?v=20260922",
+            "nl": "/quizzes/vision/assets/icons/paper-fold-punch-nl.svg?v=20260922",
+            "es": "/quizzes/vision/assets/icons/paper-fold-punch-es.svg?v=20260922",
+            "pt": "/quizzes/vision/assets/icons/paper-fold-punch-pt.svg?v=20260922",
+            "ar": "/quizzes/vision/assets/icons/paper-fold-punch-ar.svg?v=20260922",
+            "bg": "/quizzes/vision/assets/icons/paper-fold-punch-bg.svg?v=20260922",
+            "cs": "/quizzes/vision/assets/icons/paper-fold-punch-cs.svg?v=20260922",
+            "da": "/quizzes/vision/assets/icons/paper-fold-punch-da.svg?v=20260922",
+            "el": "/quizzes/vision/assets/icons/paper-fold-punch-el.svg?v=20260922",
+            "fi": "/quizzes/vision/assets/icons/paper-fold-punch-fi.svg?v=20260922",
+            "fil": "/quizzes/vision/assets/icons/paper-fold-punch-fil.svg?v=20260922",
+            "he": "/quizzes/vision/assets/icons/paper-fold-punch-he.svg?v=20260922",
+            "hr": "/quizzes/vision/assets/icons/paper-fold-punch-hr.svg?v=20260922",
+            "hu": "/quizzes/vision/assets/icons/paper-fold-punch-hu.svg?v=20260922",
+            "id": "/quizzes/vision/assets/icons/paper-fold-punch-id.svg?v=20260922",
+            "ja": "/quizzes/vision/assets/icons/paper-fold-punch-ja.svg?v=20260922",
+            "ms": "/quizzes/vision/assets/icons/paper-fold-punch-ms.svg?v=20260922",
+            "nb": "/quizzes/vision/assets/icons/paper-fold-punch-nb.svg?v=20260922",
+            "pl": "/quizzes/vision/assets/icons/paper-fold-punch-pl.svg?v=20260922",
+            "ro": "/quizzes/vision/assets/icons/paper-fold-punch-ro.svg?v=20260922",
+            "sk": "/quizzes/vision/assets/icons/paper-fold-punch-sk.svg?v=20260922",
+            "sr": "/quizzes/vision/assets/icons/paper-fold-punch-sr.svg?v=20260922",
+            "sv": "/quizzes/vision/assets/icons/paper-fold-punch-sv.svg?v=20260922",
+            "th": "/quizzes/vision/assets/icons/paper-fold-punch-th.svg?v=20260922",
+            "tr": "/quizzes/vision/assets/icons/paper-fold-punch-tr.svg?v=20260922",
+            "uk": "/quizzes/vision/assets/icons/paper-fold-punch-uk.svg?v=20260922",
+            "vi": "/quizzes/vision/assets/icons/paper-fold-punch-vi.svg?v=20260922"
+          }
+        },
+        "category": "spatial_orientation",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "vision-r8q1": {
+        "presentation": "grid",
+        "visual": {
+          "columns": 3
+        },
+        "delay": 350,
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
       "vision-r8q5": {
         "presentation": "icons",
         "icons": {
@@ -332,6 +649,34 @@
           "a3",
           "a4"
         ]
+      },
+      "vision-r8q6": {
+        "presentation": "spatial",
+        "visual": {},
+        "delay": 350,
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "vision-r10q3": {
+        "presentation": "sequence",
+        "visual": {
+          "separator": "·"
+        },
+        "category": "pattern_tracking",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
       }
     },
     "checkpoint": {
@@ -392,5 +737,37 @@
         "showBestRound": false
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

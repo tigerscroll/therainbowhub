@@ -3,30 +3,67 @@
   "eyebrow": "OPTIČKI FOKUS LAB",
   "summary": "Sitne razlike, promjenjivi obrasci i optičke zamke testiraju hoće li vaše oči uhvatiti ono što većini ljudi nedostaje.",
   "landing": {
-    "intro": "10 vizualnih izazova. Male razlike.\nKoliko vam je oštar vid?",
+    "intro": "Sitni detalji. Velika iznenađenja.\nKoliko vam je oko oštro?",
     "cta": "Započni test"
   },
   "about": {
-    "body": "Ovaj zabavni izazov sadrži deset vizualnih zagonetki koje pokrivaju kontrast boja, usklađivanje detalja, prostornu orijentaciju, praćenje uzoraka, pozornost i vizualno pamćenje. Zadaci postaju zahtjevniji bez oslanjanja na stručnu terminologiju.\n\nPažljivo proučite svaku sliku ili skup simbola, a zatim odaberite odgovor koji najbolje podržava ono što je prikazano. Neka pitanja testiraju percepciju i pažnju, a ne sam vid.\n\nOvo nije pregled oka, medicinski test vida ili dijagnoza. Potražite kvalificirani savjet za njegu očiju ako ste zabrinuti za svoj vid.",
+    "body": "Ovaj zabavni izazov sadrži trideset vizualnih zagonetki u pet rundi od šest pitanja koja pokrivaju kontrast boja, usklađivanje detalja, prostornu orijentaciju, praćenje uzoraka, pozornost i vizualno pamćenje. Zadaci postaju zahtjevniji bez oslanjanja na stručnu terminologiju.\n\nPažljivo proučite svaku sliku ili skup simbola, zatim odaberite odgovor koji najbolje podupire ono što je prikazano. Neka pitanja testiraju percepciju i pažnju, a ne sam vid.\n\nOvo nije pregled oka, medicinski test vida ili dijagnoza. Potražite kvalificirani savjet za njegu očiju ako ste zabrinuti za svoj vid.",
     "howToPlay": {
       "steps": [
-        "Ispunite deset pažljivo odabranih pitanja u jednom fokusiranom izazovu.",
-        "Svaki put odaberite jedan odgovor. Ispravnost ostaje skrivena do konačnog razotkrivanja.",
-        "Otkrijte svoj rezultat, pregled vještina i potpuni pregled odgovora nakon posljednjeg pitanja."
+        "Riješite pet krugova sa šest zagonetki u svakom. Nakon svakog odgovora automatski prelazite na sljedeće pitanje.",
+        "Pažljivo promotrite svaku sliku. Broj bodova saznat ćete tek na kraju.",
+        "Nastavite nakon svakog kruga. Nakon posljednjeg vidjet ćete svoj rezultat i najjače vještine."
       ]
     },
     "disclaimer": "Samo za zabavu. Ovaj kviz nije pregled oka i ne može dijagnosticirati stanja vida."
   },
   "career": {
-    "resultProgressLabel": "Izazov vizije",
+    "resultProgressLabel": "Vaš napredak",
     "stages": {
       "stage-1": {
-        "difficulty": "Izazov Vizija",
-        "preAdTitle": "Vaši rezultati su spremni",
-        "preAdCopy": "Vaš rezultat izazova vizije i analiza triju vještina spremni su za otkrivanje.",
+        "difficulty": "Prvi pogled",
+        "preAdTitle": "Krug 1 je završen",
+        "preAdCopy": "Šest zadataka je iza vas. Jeste li spremni uočiti sitne detalje?",
+        "next": {
+          "eyebrow": "Oko za detalje",
+          "tagline": "Čeka vas šest novih zadataka."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Oko za detalje",
+        "preAdTitle": "Krug 2 je završen",
+        "preAdCopy": "Dva kruga su završena. Sada su na redu uzorci i pamćenje.",
+        "next": {
+          "eyebrow": "Uzorci i pamćenje",
+          "tagline": "Čeka vas šest novih zadataka."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Uzorci i pamćenje",
+        "preAdTitle": "Krug 3 je završen",
+        "preAdCopy": "Prešli ste polovicu. Možete li prepoznati optičke varke?",
+        "next": {
+          "eyebrow": "Optičke varke",
+          "tagline": "Čeka vas šest novih zadataka."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Optičke varke",
+        "preAdTitle": "Krug 4 je završen",
+        "preAdCopy": "Preostaje još jedan krug. Usredotočite se na posljednje zadatke.",
+        "next": {
+          "eyebrow": "Oko sokolovo",
+          "tagline": "Čeka vas šest novih zadataka."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Oko sokolovo",
+        "preAdTitle": "Vaš je rezultat spreman",
+        "preAdCopy": "Svih 30 odgovora je ocijenjeno. Pogledajte rezultat i svoje jake strane.",
         "preAdChecks": [
-          "Provjereno 10 odgovora",
-          "Uspoređuju se tri vizualne vještine"
+          "Ocijenjeno je 30 odgovora",
+          "Uspoređeno je šest vizualnih vještina",
+          "Utvrđena je vaša najjača vještina"
         ]
       }
     }
@@ -96,7 +133,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Izazov Vizija",
+      "title": "Prvi pogled",
       "questions": {
         "vision-r1q1": {
           "visual": {
@@ -117,6 +154,25 @@
           },
           "headerLabel": "KONTRAST BOJA"
         },
+        "vision-r3q4": {
+          "visual": {
+            "items": [
+              "left-half",
+              "left-half",
+              "right-half",
+              "left-half"
+            ],
+            "ariaLabel": "Četiri poluispunjena kruga; treći se puni na suprotnoj strani"
+          },
+          "question": "Koja pozicija sadrži drugačiji simbol?",
+          "answers": {
+            "a1": "Prvo",
+            "a2": "Drugo",
+            "a3": "treće",
+            "a4": "Četvrto"
+          },
+          "headerLabel": "UOČAVANJE DETALJA"
+        },
         "vision-r1q2": {
           "context": "REFERENCA: M7K2P9",
           "visual": {
@@ -133,8 +189,71 @@
             "a3": "M7KZP9",
             "a4": "N7K2P9"
           },
-          "headerLabel": "PODudarnost detalja"
+          "headerLabel": "UOČAVANJE DETALJA"
         },
+        "vision-r1q3": {
+          "visual": {
+            "items": [
+              "▲",
+              "●",
+              "▲",
+              "●",
+              "?"
+            ],
+            "ariaLabel": "Trokut, krug, trokut, krug, nepoznato"
+          },
+          "question": "Što dolazi sljedeće u obrascu?",
+          "answers": {
+            "a1": "■",
+            "a2": "●",
+            "a3": "◆",
+            "a4": "▲"
+          },
+          "headerLabel": "PREPOZNAVANJE UZORAKA"
+        },
+        "vision-r1q4": {
+          "visual": {
+            "items": [
+              "↑",
+              "→",
+              "↓",
+              "?"
+            ],
+            "ariaLabel": "Strelica gore, strelica desno, strelica dolje, nepoznato"
+          },
+          "question": "Strelica se svaki put zakreće za 90° u smjeru kazaljke na satu. Kamo će pokazivati sljedeće?",
+          "answers": {
+            "a1": "↑",
+            "a2": "→",
+            "a3": "↓",
+            "a4": "←"
+          },
+          "headerLabel": "PROSTORNA ORIJENTACIJA"
+        },
+        "vision-r1q5": {
+          "question": "Koja se ikona prva pojavila?",
+          "answers": {
+            "a1": "Zvijezda",
+            "a2": "Ključ",
+            "a3": "kišobran",
+            "a4": "Limun"
+          },
+          "study": {
+            "title": "Zapamti redoslijed",
+            "items": [
+              "⭐",
+              "🍋",
+              "🔑",
+              "☂️"
+            ]
+          },
+          "headerLabel": "VIZUALNO PAMĆENJE"
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Oko za detalje",
+      "questions": {
         "vision-r5q1": {
           "visual": {
             "items": [
@@ -144,14 +263,44 @@
             ],
             "ariaLabel": "Sjeveroistočna strelica reflektirana preko okomitog zrcala"
           },
-          "question": "Koja strelica je okomito zrcalo ↗?",
+          "question": "Koja strelica nastaje zrcaljenjem ↗ preko okomite osi?",
           "answers": {
             "a1": "↙",
             "a2": "↘",
             "a3": "↗",
             "a4": "↖"
           },
-          "headerLabel": "ORIJENTACIJA U PROSTORU"
+          "headerLabel": "PROSTORNA ORIJENTACIJA"
+        },
+        "vision-r3q1": {
+          "question": "U kojem su paru oba koda potpuno jednaka?",
+          "answers": {
+            "a1": "R7Q3B6 / R7O3B6",
+            "a2": "K4M8P2 / K4M8P2",
+            "a3": "T9L2C5 / T9LZC5",
+            "a4": "A6D4N8 / A6D4M8"
+          },
+          "headerLabel": "UOČAVANJE DETALJA"
+        },
+        "vision-r3q2": {
+          "question": "Koji red sadrži točno sedam točaka?",
+          "answers": {
+            "a1": "••••••",
+            "a2": "•••••",
+            "a3": "••••••••",
+            "a4": "•••••••"
+          },
+          "headerLabel": "UOČAVANJE DETALJA"
+        },
+        "vision-r3q5": {
+          "question": "Koji simbol izgleda jednako i nakon zakretanja za 180°?",
+          "answers": {
+            "a1": "L",
+            "a2": "↑",
+            "a3": "●",
+            "a4": "↗"
+          },
+          "headerLabel": "PROSTORNA ORIJENTACIJA"
         },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
@@ -162,7 +311,90 @@
             "a3": "8",
             "a4": "9"
           },
-          "headerLabel": "KONTROLA PAŽNJE"
+          "headerLabel": "PAŽNJA"
+        },
+        "vision-r5q6": {
+          "question": "Koji je predmet bio u donjem lijevom položaju?",
+          "answers": {
+            "a1": "Ključ",
+            "a2": "List",
+            "a3": "Mjesec",
+            "a4": "Zvijezda"
+          },
+          "study": {
+            "title": "Zapamtite četiri položaja",
+            "items": [
+              "Gore lijevo: Zvijezda",
+              "Gore desno: Mjesec",
+              "Dolje lijevo: Ključ",
+              "Dolje desno: List"
+            ]
+          },
+          "headerLabel": "VIZUALNO PAMĆENJE"
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Uzorci i pamćenje",
+      "questions": {
+        "vision-r9q5": {
+          "question": "Koji se oblik nalazio odmah desno od zlatnog trokuta?",
+          "answers": {
+            "a1": "Ljubičasta zvijezda",
+            "a2": "Kvadrat koraljne boje",
+            "a3": "Plavi krug",
+            "a4": "Zeleni romb"
+          },
+          "study": {
+            "title": "Zapamtite red od pet pločica",
+            "items": [
+              "blue-circle",
+              "gold-triangle",
+              "coral-square",
+              "green-diamond",
+              "violet-star"
+            ],
+            "ariaLabel": "Plavi krug, zlatni trokut, koraljni kvadrat, zeleni dijamant, ljubičasta zvijezda"
+          },
+          "headerLabel": "VIZUALNO PAMĆENJE"
+        },
+        "vision-r7q2": {
+          "visual": {
+            "items": [
+              "A7Q",
+              "B4M",
+              "C2R",
+              "B4M"
+            ],
+            "ariaLabel": "KodoviA7Q, B4M, C2RiB4M"
+          },
+          "question": "Koji se kôd pojavljuje dva puta?",
+          "answers": {
+            "a1": "B4M",
+            "a2": "A7Q",
+            "a3": "C2R",
+            "a4": "Nijedan"
+          },
+          "headerLabel": "PAŽNJA"
+        },
+        "vision-r4q1": {
+          "visual": {
+            "items": [
+              "▲",
+              "■",
+              "⬟",
+              "?"
+            ],
+            "ariaLabel": "Trokut, kvadrat, peterokut, nepoznato"
+          },
+          "question": "Broj stranica raste u svakom koraku. Koji oblik dolazi sljedeći?",
+          "answers": {
+            "a1": "Krug",
+            "a2": "Šesterokut",
+            "a3": "Trokut",
+            "a4": "Kvadrat"
+          },
+          "headerLabel": "PREPOZNAVANJE UZORAKA"
         },
         "vision-r4q2": {
           "visual": {
@@ -183,30 +415,74 @@
             "a3": "OO",
             "a4": "X"
           },
-          "headerLabel": "PRAĆENJE UZORAKA"
+          "headerLabel": "PREPOZNAVANJE UZORAKA"
         },
         "vision-r4q5": {
-          "question": "Koja se boja najviše ističe u odnosu na tamnoplavu?",
+          "question": "Koja se boja najviše ističe na tamnoplavoj pozadini?",
           "answers": {
             "a1": "Uzorak boje A",
             "a2": "Uzorak boje B",
             "a3": "Uzorak boje D",
             "a4": "Uzorak boje C"
           },
-          "headerLabel": "FOKUS BOJE"
+          "headerLabel": "KONTRAST BOJA"
+        },
+        "vision-r4q6": {
+          "context": "REFERENCA: ◇ ● ▲ ■",
+          "question": "Koji redak točno ponavlja referencu?",
+          "answers": {
+            "a1": "◇ ● ■ ▲",
+            "a2": "◇ ● ▲ ■",
+            "a3": "◇ ○ ▲ ■",
+            "a4": "● ◇ ▲ ■"
+          },
+          "headerLabel": "PAŽNJA"
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Optičke varke",
+      "questions": {
+        "vision-r9q1": {
+          "visual": {
+            "items": [
+              "svjetlosna ploča",
+              "tamna ploča"
+            ],
+            "ariaLabel": "Simultane kontrastne ploče"
+          },
+          "question": "Središnji kvadrati su identični. Zašto se ipak mogu činiti drugačijima?",
+          "answers": {
+            "a1": "Čovjek mora potajno biti bistriji",
+            "a2": "Boja se mijenja s udaljenošću gledanja",
+            "a3": "Identične boje uvijek izgledaju identično",
+            "a4": "Okolni kontrast mijenja njihov izgled"
+          },
+          "headerLabel": "KONTRAST BOJA"
         },
         "vision-r8q3": {
           "image": {
             "alt": "Crvena početna točka s četiri podudarne točkaste rute koje se više puta križaju prije nego što stignu do krajnjih točaka A, B, C i D"
           },
-          "question": "Krenite od crvene točke i slijedite njezinu točkastu rutu. Do kojeg slova stižete?",
+          "question": "Krenite od crvene točke i slijedite isprekidanu liniju. Do kojeg slova dolazite?",
           "answers": {
             "a1": "A",
             "a2": "B",
             "a3": "C",
             "a4": "D"
           },
-          "headerLabel": "VIZUALNO PRAĆENJE"
+          "headerLabel": "PREPOZNAVANJE UZORAKA"
+        },
+        "vision-r7q1": {
+          "context": "THE OTHER THEME HID THE WORD THE.",
+          "question": "Koliko se puta THE pojavljuje kao zasebna riječ u retku?",
+          "answers": {
+            "a1": "5",
+            "a2": "4",
+            "a3": "3",
+            "a4": "6"
+          },
+          "headerLabel": "PAŽNJA"
         },
         "vision-r9q2": {
           "context": "VERZIJA A: FOCUS-M7Q2-2026\nVERZIJA B: F0CUS-M7Q2-2026",
@@ -217,8 +493,52 @@
             "a3": "Drugi znak",
             "a4": "Konačna znamenka"
           },
-          "headerLabel": "DETEKCIJA DETALJA"
+          "headerLabel": "UOČAVANJE DETALJA"
         },
+        "vision-r9q4": {
+          "context": "Prvo okrenite strelicu za 90° u smjeru kazaljke na satu. Zatim odrazite taj rezultat u okomitom zrcalu.",
+          "visual": {
+            "items": [
+              "↗",
+              "↻ 90°",
+              "│",
+              "?"
+            ],
+            "ariaLabel": "Sjeveroistočna strelica, četvrt okreta u smjeru kazaljke na satu, zatim okomito zrcalo"
+          },
+          "question": "Gdje strelica konačno pokazuje?",
+          "answers": {
+            "a1": "↗",
+            "a2": "↘",
+            "a3": "↙",
+            "a4": "↖"
+          },
+          "headerLabel": "PROSTORNA ORIJENTACIJA"
+        },
+        "vision-r9q6": {
+          "visual": {
+            "items": [
+              "PLAVO 🟦",
+              "ZELENO 🟩",
+              "CRVENO 🟦",
+              "ZLATNO 🟨"
+            ],
+            "ariaLabel": "Četiri oznake u boji i pločice s trećom oznakom ne odgovaraju"
+          },
+          "question": "Koji naziv boje ne odgovara kvadratiću pokraj njega?",
+          "answers": {
+            "a1": "Prvo",
+            "a2": "Drugo",
+            "a3": "treće",
+            "a4": "Četvrto"
+          },
+          "headerLabel": "PAŽNJA"
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Oko sokolovo",
+      "questions": {
         "vision-r10q2": {
           "visual": {
             "items": [
@@ -227,22 +547,59 @@
             ],
             "ariaLabel": "Baza M8Q2 K7P4 R6N3 i kopija M8Q2 K1P4 R6M3"
           },
-          "question": "Koja su se dva lika promijenila?",
+          "question": "Koja su se dva znaka promijenila?",
           "answers": {
             "a1": "7 i N",
             "a2": "8 i 6",
             "a3": "Q i P",
             "a4": "K i R"
           },
-          "headerLabel": "USPOREDBA KODOVA"
+          "headerLabel": "UOČAVANJE DETALJA"
+        },
+        "vision-r10q4": {
+          "image": {
+            "alt": "Četiri ilustrirana koraka koji prikazuju kvadrat presavijen udesno, presavijen prema dolje, jednom probušen kroz mali presavijeni kvadrat, zatim rasklopljen do nepoznatog rezultata"
+          },
+          "question": "Kvadrat je presavijen dvaput, a zatim jednom probušen kroz svaki sloj dalje od nabora. Koliko se rupa pojavi nakon rasklapanja?",
+          "answers": {
+            "a1": "1",
+            "a2": "2",
+            "a3": "4",
+            "a4": "8"
+          },
+          "headerLabel": "PROSTORNA ORIJENTACIJA"
+        },
+        "vision-r8q1": {
+          "visual": {
+            "items": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "ariaLabel": "Devet fiksnih plavih uzoraka s jednim plavozelenim pomakom"
+          },
+          "question": "Koja se pločica pomiče prema zelenoj?",
+          "answers": {
+            "a1": "Gore lijevo",
+            "a2": "Centar",
+            "a3": "Dolje desno",
+            "a4": "Donji centar"
+          },
+          "headerLabel": "KONTRAST BOJA"
         },
         "vision-r8q5": {
           "question": "Koja se ikona pojavila četvrta?",
           "answers": {
             "a1": "Mjesec",
             "a2": "Sidro",
-            "a3": "sunce",
-            "a4": "zvijezda"
+            "a3": "Sunce",
+            "a4": "Zvijezda"
           },
           "study": {
             "title": "Brza snimka",
@@ -255,6 +612,45 @@
             ]
           },
           "headerLabel": "VIZUALNO PAMĆENJE"
+        },
+        "vision-r8q6": {
+          "visual": {
+            "items": [
+              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
+            ],
+            "ariaLabel": "Pet ispunjenih zvijezda pomiješanih sa sedam obrisa ili geometrijskih distraktora"
+          },
+          "question": "Koliko ispunjenih zvjezdica?",
+          "answers": {
+            "a1": "5",
+            "a2": "3",
+            "a3": "4",
+            "a4": "2"
+          },
+          "headerLabel": "PAŽNJA"
+        },
+        "vision-r10q3": {
+          "context": "Neovisno pratite ciklus oblika i ciklus punjenja.",
+          "visual": {
+            "items": [
+              "●",
+              "□",
+              "○",
+              "■",
+              "○",
+              "□",
+              "?"
+            ],
+            "ariaLabel": "Šest oblika koji kombiniraju ciklus izmjeničnog kruga i kvadrata i ciklus punjenja u tri koraka"
+          },
+          "question": "Koji oblik nastavlja niz?",
+          "answers": {
+            "a1": "●",
+            "a2": "■",
+            "a3": "○",
+            "a4": "□"
+          },
+          "headerLabel": "PREPOZNAVANJE UZORAKA"
         }
       }
     }

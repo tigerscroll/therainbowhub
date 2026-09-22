@@ -3,30 +3,67 @@
   "eyebrow": "LABORATORIO DE ENFOQUE ÓPTICO",
   "summary": "Pequeñas diferencias, patrones cambiantes y trampas ópticas prueban si tus ojos captan lo que la mayoría de la gente pasa por alto.",
   "landing": {
-    "intro": "10 desafíos visuales. Pequeñas diferencias.\n¿Qué tan aguda es tu vista?",
+    "intro": "Pequeños detalles. Grandes sorpresas.\n¿Se te escapa algún detalle?",
     "cta": "Empezar el test"
   },
   "about": {
-    "body": "Este quiz contiene diez acertijos visuales sobre contraste de color, coincidencia de detalles, orientación espacial, seguimiento de patrones, atención y memoria visual. Las tareas se vuelven más exigentes sin recurrir a terminología especializada.\n\nObserva con atención cada imagen o conjunto de símbolos y elige la respuesta mejor respaldada por lo que ves. Algunas preguntas ponen a prueba la percepción y la atención, no la vista en sí.\n\nEsto no es un examen de la vista, una prueba médica ni un diagnóstico. Consulta a un profesional cualificado si te preocupa tu visión.",
+    "body": "Este desafío de entretenimiento contiene treinta acertijos visuales en cinco rondas de seis preguntas que cubren contraste de color, coincidencia de detalles, orientación espacial, seguimiento de patrones, atención y memoria visual. Las tareas se vuelven más exigentes sin depender de terminología especializada.\n\nEstudie detenidamente cada imagen o conjunto de símbolos y luego elija la respuesta que mejor se apoye en lo que se muestra. Algunas preguntas evalúan la percepción y la atención más que la vista en sí.\n\nEsto no es un examen de la vista, una prueba médica de la vista ni un diagnóstico. Busque asesoramiento especializado en el cuidado de los ojos si tiene dudas sobre su vista.",
     "howToPlay": {
       "steps": [
-        "Completa diez preguntas cuidadosamente seleccionadas en un único desafío.",
-        "Elige una respuesta cada vez. No sabrás qué respuestas son correctas hasta el final.",
-        "Después de la última pregunta, descubre el resultado, el desglose de habilidades y la revisión completa de respuestas."
+        "Completa cinco rondas de seis acertijos. Pasarás automáticamente a la siguiente pregunta después de cada respuesta.",
+        "Observa cada imagen con atención. Tu puntuación se mostrará al final.",
+        "Continúa al terminar cada ronda y descubre tu puntuación y tus puntos fuertes después de la última."
       ]
     },
     "disclaimer": "Solo para entretenimiento. Este cuestionario no es un examen de la vista y no puede diagnosticar afecciones de la visión."
   },
   "career": {
-    "resultProgressLabel": "Desafío de visión",
+    "resultProgressLabel": "Tu progreso",
     "stages": {
       "stage-1": {
-        "difficulty": "Desafío de visión",
+        "difficulty": "Primer vistazo",
+        "preAdTitle": "Ronda 1 completada",
+        "preAdCopy": "Seis acertijos completados. ¿Listo para fijarte en los detalles?",
+        "next": {
+          "eyebrow": "Atención al detalle",
+          "tagline": "Te esperan seis nuevos acertijos."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Atención al detalle",
+        "preAdTitle": "Ronda 2 completada",
+        "preAdCopy": "Dos rondas completadas. Ahora toca poner a prueba los patrones y la memoria.",
+        "next": {
+          "eyebrow": "Patrones y memoria",
+          "tagline": "Te esperan seis nuevos acertijos."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Patrones y memoria",
+        "preAdTitle": "Ronda 3 completada",
+        "preAdCopy": "Ya has pasado la mitad. ¿Puedes descubrir las ilusiones ópticas?",
+        "next": {
+          "eyebrow": "Ilusiones ópticas",
+          "tagline": "Te esperan seis nuevos acertijos."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Ilusiones ópticas",
+        "preAdTitle": "Ronda 4 completada",
+        "preAdCopy": "Queda una ronda. Afina la vista para los últimos acertijos.",
+        "next": {
+          "eyebrow": "Ojo de águila",
+          "tagline": "Te esperan seis nuevos acertijos."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Ojo de águila",
         "preAdTitle": "Tu resultado está listo",
-        "preAdCopy": "Tu puntuación de desafío de visión y el desglose de tus tres habilidades están listos para revelarse.",
+        "preAdCopy": "Ya hemos evaluado las 30 respuestas. Descubre tu resultado y tus puntos fuertes.",
         "preAdChecks": [
-          "10 respuestas comprobadas",
-          "Tres habilidades visuales comparadas"
+          "30 respuestas evaluadas",
+          "Seis habilidades visuales comparadas",
+          "Tu punto fuerte identificado"
         ]
       }
     }
@@ -96,7 +133,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Desafío de visión",
+      "title": "Primer vistazo",
       "questions": {
         "vision-r1q1": {
           "visual": {
@@ -117,6 +154,25 @@
           },
           "headerLabel": "CONTRASTE DE COLOR"
         },
+        "vision-r3q4": {
+          "visual": {
+            "items": [
+              "left-half",
+              "left-half",
+              "right-half",
+              "left-half"
+            ],
+            "ariaLabel": "Cuatro semicírculos rellenos; el tercero está relleno por el lado opuesto"
+          },
+          "question": "¿En qué posición está el símbolo diferente?",
+          "answers": {
+            "a1": "Primera",
+            "a2": "Segunda",
+            "a3": "Tercera",
+            "a4": "Cuarta"
+          },
+          "headerLabel": "DETECCIÓN DE DETALLES"
+        },
         "vision-r1q2": {
           "context": "REFERENCIA: M7K2P9",
           "visual": {
@@ -133,8 +189,71 @@
             "a3": "M7KZP9",
             "a4": "N7K2P9"
           },
-          "headerLabel": "COINCIDENCIA EXACTA"
+          "headerLabel": "DETECCIÓN DE DETALLES"
         },
+        "vision-r1q3": {
+          "visual": {
+            "items": [
+              "▲",
+              "●",
+              "▲",
+              "●",
+              "?"
+            ],
+            "ariaLabel": "Triángulo, círculo, triángulo, círculo, signo de interrogación"
+          },
+          "question": "¿Qué forma viene después?",
+          "answers": {
+            "a1": "■",
+            "a2": "●",
+            "a3": "◆",
+            "a4": "▲"
+          },
+          "headerLabel": "PATRONES"
+        },
+        "vision-r1q4": {
+          "visual": {
+            "items": [
+              "↑",
+              "→",
+              "↓",
+              "?"
+            ],
+            "ariaLabel": "Flecha hacia arriba, derecha, abajo, signo de interrogación"
+          },
+          "question": "La flecha gira 90 grados a la derecha en cada paso. ¿Cuál viene después?",
+          "answers": {
+            "a1": "↑",
+            "a2": "→",
+            "a3": "↓",
+            "a4": "←"
+          },
+          "headerLabel": "ORIENTACIÓN ESPACIAL"
+        },
+        "vision-r1q5": {
+          "question": "¿Qué símbolo apareció primero?",
+          "answers": {
+            "a1": "Estrella",
+            "a2": "Llave",
+            "a3": "Paraguas",
+            "a4": "Limón"
+          },
+          "study": {
+            "title": "Recuerda el orden",
+            "items": [
+              "⭐",
+              "🍋",
+              "🔑",
+              "☂️"
+            ]
+          },
+          "headerLabel": "MEMORIA VISUAL"
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Atención al detalle",
+      "questions": {
         "vision-r5q1": {
           "visual": {
             "items": [
@@ -144,12 +263,42 @@
             ],
             "ariaLabel": "Flecha noreste reflejada en un espejo vertical"
           },
-          "question": "¿Qué flecha es el espejo vertical de ↗?",
+          "question": "¿Qué flecha resulta de reflejar ↗ respecto a un eje vertical?",
           "answers": {
             "a1": "↙",
             "a2": "↘",
             "a3": "↗",
             "a4": "↖"
+          },
+          "headerLabel": "ORIENTACIÓN ESPACIAL"
+        },
+        "vision-r3q1": {
+          "question": "¿Qué pareja es completamente idéntica?",
+          "answers": {
+            "a1": "R7Q3B6 / R7O3B6",
+            "a2": "K4M8P2 / K4M8P2",
+            "a3": "T9L2C5 / T9LZC5",
+            "a4": "A6D4N8 / A6D4M8"
+          },
+          "headerLabel": "DETECCIÓN DE DETALLES"
+        },
+        "vision-r3q2": {
+          "question": "¿Qué fila contiene exactamente siete puntos?",
+          "answers": {
+            "a1": "••••••",
+            "a2": "•••••",
+            "a3": "••••••••",
+            "a4": "•••••••"
+          },
+          "headerLabel": "DETECCIÓN DE DETALLES"
+        },
+        "vision-r3q5": {
+          "question": "¿Qué símbolo se ve igual después de girarlo 180 grados?",
+          "answers": {
+            "a1": "L",
+            "a2": "↑",
+            "a3": "●",
+            "a4": "↗"
           },
           "headerLabel": "ORIENTACIÓN ESPACIAL"
         },
@@ -162,7 +311,90 @@
             "a3": "8",
             "a4": "9"
           },
-          "headerLabel": "CONTROL DE ATENCIÓN"
+          "headerLabel": "ATENCIÓN"
+        },
+        "vision-r5q6": {
+          "question": "¿Qué objeto estaba abajo a la izquierda?",
+          "answers": {
+            "a1": "Llave",
+            "a2": "Hoja",
+            "a3": "Luna",
+            "a4": "Estrella"
+          },
+          "study": {
+            "title": "Recuerda las cuatro posiciones",
+            "items": [
+              "Arriba a la izquierda: Estrella",
+              "Arriba a la derecha: Luna",
+              "Abajo a la izquierda: Llave",
+              "Abajo a la derecha: Hoja"
+            ]
+          },
+          "headerLabel": "MEMORIA VISUAL"
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Patrones y memoria",
+      "questions": {
+        "vision-r9q5": {
+          "question": "¿Qué forma estaba justo a la derecha del triángulo dorado?",
+          "answers": {
+            "a1": "Estrella violeta",
+            "a2": "Cuadrado coral",
+            "a3": "Círculo azul",
+            "a4": "Rombo verde"
+          },
+          "study": {
+            "title": "Memoriza las cinco formas",
+            "items": [
+              "blue-circle",
+              "gold-triangle",
+              "coral-square",
+              "green-diamond",
+              "violet-star"
+            ],
+            "ariaLabel": "Círculo azul, triángulo dorado, cuadrado coral, rombo verde y estrella violeta"
+          },
+          "headerLabel": "MEMORIA VISUAL"
+        },
+        "vision-r7q2": {
+          "visual": {
+            "items": [
+              "A7Q",
+              "B4M",
+              "C2R",
+              "B4M"
+            ],
+            "ariaLabel": "Códigos A7Q, B4M, C2R y B4M"
+          },
+          "question": "¿Qué código aparece dos veces?",
+          "answers": {
+            "a1": "B4M",
+            "a2": "A7Q",
+            "a3": "C2R",
+            "a4": "Ninguno"
+          },
+          "headerLabel": "ATENCIÓN"
+        },
+        "vision-r4q1": {
+          "visual": {
+            "items": [
+              "▲",
+              "■",
+              "⬟",
+              "?"
+            ],
+            "ariaLabel": "Triángulo, cuadrado, pentágono, signo de interrogación"
+          },
+          "question": "¿Qué forma continúa el aumento del número de lados?",
+          "answers": {
+            "a1": "Círculo",
+            "a2": "Hexágono",
+            "a3": "Triángulo",
+            "a4": "Cuadrado"
+          },
+          "headerLabel": "PATRONES"
         },
         "vision-r4q2": {
           "visual": {
@@ -183,42 +415,130 @@
             "a3": "OO",
             "a4": "X"
           },
-          "headerLabel": "SEGUIMIENTO DE PATRONES"
+          "headerLabel": "PATRONES"
         },
         "vision-r4q5": {
-          "question": "¿Qué color destaca más frente al azul marino intenso?",
+          "question": "¿Qué color destaca más sobre el fondo azul marino?",
           "answers": {
             "a1": "Muestra A",
             "a2": "Muestra B",
             "a3": "Muestra D",
             "a4": "Muestra C"
           },
-          "headerLabel": "ENFOQUE DE COLOR"
+          "headerLabel": "CONTRASTE DE COLOR"
+        },
+        "vision-r4q6": {
+          "context": "REFERENCIA: ◇ ● ▲ ■",
+          "question": "¿Qué fila reproduce exactamente el modelo?",
+          "answers": {
+            "a1": "◇ ● ■ ▲",
+            "a2": "◇ ● ▲ ■",
+            "a3": "◇ ○ ▲ ■",
+            "a4": "● ◇ ▲ ■"
+          },
+          "headerLabel": "ATENCIÓN"
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Ilusiones ópticas",
+      "questions": {
+        "vision-r9q1": {
+          "visual": {
+            "items": [
+              "panel de luz",
+              "panel oscuro"
+            ],
+            "ariaLabel": "Dos cuadrados centrales idénticos sobre fondos con distinto contraste"
+          },
+          "question": "Los cuadrados centrales son idénticos. ¿Por qué pueden parecer diferentes?",
+          "answers": {
+            "a1": "Uno debe de ser más claro",
+            "a2": "El color cambia con la distancia",
+            "a3": "Los colores idénticos siempre se ven iguales",
+            "a4": "El contraste del entorno cambia su apariencia"
+          },
+          "headerLabel": "CONTRASTE DE COLOR"
         },
         "vision-r8q3": {
           "image": {
             "alt": "Un punto de inicio rojo con cuatro rutas de puntos coincidentes que se cruzan repetidamente antes de llegar a los puntos finales A, B, C y D."
           },
-          "question": "Comience en el punto rojo y siga su ruta punteada. ¿A qué letra llegas?",
+          "question": "Empieza en el punto rojo y sigue la línea de puntos. ¿A qué letra llegas?",
           "answers": {
             "a1": "A",
             "a2": "B",
             "a3": "C",
             "a4": "D"
           },
-          "headerLabel": "SEGUIMIENTO VISUAL"
+          "headerLabel": "PATRONES"
+        },
+        "vision-r7q1": {
+          "context": "THE OTHER THEME HID THE WORD THE.",
+          "question": "¿Cuántas veces aparece THE como palabra independiente en la línea?",
+          "answers": {
+            "a1": "5",
+            "a2": "4",
+            "a3": "3",
+            "a4": "6"
+          },
+          "headerLabel": "ATENCIÓN"
         },
         "vision-r9q2": {
           "context": "A: FOCUS-M7Q2-2026\nB: F0CUS-M7Q2-2026",
           "question": "¿Qué posición precisa cambió en la versión B?",
           "answers": {
             "a1": "La primera F",
-            "a2": "La Q",
+            "a2": "Q",
             "a3": "El segundo carácter",
             "a4": "El último dígito"
           },
-          "headerLabel": "DETECCIÓN DE DETALLE"
+          "headerLabel": "DETECCIÓN DE DETALLES"
         },
+        "vision-r9q4": {
+          "context": "Primero gira la flecha 90° en sentido horario. Después refleja el resultado en un eje vertical.",
+          "visual": {
+            "items": [
+              "↗",
+              "↻ 90°",
+              "│",
+              "?"
+            ],
+            "ariaLabel": "Flecha al nordeste, cuarto de giro en sentido horario y reflejo vertical"
+          },
+          "question": "¿Hacia dónde apunta finalmente la flecha?",
+          "answers": {
+            "a1": "↗",
+            "a2": "↘",
+            "a3": "↙",
+            "a4": "↖"
+          },
+          "headerLabel": "ORIENTACIÓN ESPACIAL"
+        },
+        "vision-r9q6": {
+          "visual": {
+            "items": [
+              "AZUL 🟦",
+              "VERDE 🟩",
+              "ROJO 🟦",
+              "DORADO 🟨"
+            ],
+            "ariaLabel": "Cuatro etiquetas de color; la tercera no coincide con la casilla"
+          },
+          "question": "¿Qué etiqueta no coincide con el color de su casilla?",
+          "answers": {
+            "a1": "Primera",
+            "a2": "Segunda",
+            "a3": "Tercera",
+            "a4": "Cuarta"
+          },
+          "headerLabel": "ATENCIÓN"
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Ojo de águila",
+      "questions": {
         "vision-r10q2": {
           "visual": {
             "items": [
@@ -227,14 +547,51 @@
             ],
             "ariaLabel": "Base M8Q2 K7P4 R6N3 y copia M8Q2 K1P4 R6M3"
           },
-          "question": "¿Qué dos personajes cambiaron?",
+          "question": "¿Qué dos caracteres del código han cambiado?",
           "answers": {
             "a1": "7 y N",
             "a2": "8 y 6",
             "a3": "Q y P",
             "a4": "K y R"
           },
-          "headerLabel": "COMPARACIÓN DE CÓDIGOS"
+          "headerLabel": "DETECCIÓN DE DETALLES"
+        },
+        "vision-r10q4": {
+          "image": {
+            "alt": "Cuatro pasos ilustrados: un cuadrado doblado a la derecha, luego hacia abajo, perforado una vez y finalmente desdoblado"
+          },
+          "question": "Un cuadrado se dobla dos veces y luego se perfora una vez a través de todas las capas, lejos de los pliegues. ¿Cuántos agujeros se ven al desdoblarlo?",
+          "answers": {
+            "a1": "1",
+            "a2": "2",
+            "a3": "4",
+            "a4": "8"
+          },
+          "headerLabel": "ORIENTACIÓN ESPACIAL"
+        },
+        "vision-r8q1": {
+          "visual": {
+            "items": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ],
+            "ariaLabel": "Nueve tonos de azul fijos; uno tiende ligeramente al verde"
+          },
+          "question": "¿Qué casilla tiene un ligero tono verdoso?",
+          "answers": {
+            "a1": "Arriba a la izquierda",
+            "a2": "En el centro",
+            "a3": "Abajo a la derecha",
+            "a4": "Abajo en el centro"
+          },
+          "headerLabel": "CONTRASTE DE COLOR"
         },
         "vision-r8q5": {
           "question": "¿Qué icono apareció en cuarto lugar?",
@@ -255,6 +612,45 @@
             ]
           },
           "headerLabel": "MEMORIA VISUAL"
+        },
+        "vision-r8q6": {
+          "visual": {
+            "items": [
+              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
+            ],
+            "ariaLabel": "Cinco estrellas rellenas entre siete formas vacías o geométricas"
+          },
+          "question": "¿Cuántas estrellas rellenas aparecen?",
+          "answers": {
+            "a1": "5",
+            "a2": "3",
+            "a3": "4",
+            "a4": "2"
+          },
+          "headerLabel": "ATENCIÓN"
+        },
+        "vision-r10q3": {
+          "context": "Sigue por separado el ciclo de formas y el ciclo de relleno.",
+          "visual": {
+            "items": [
+              "●",
+              "□",
+              "○",
+              "■",
+              "○",
+              "□",
+              "?"
+            ],
+            "ariaLabel": "Seis formas que combinan una alternancia círculo-cuadrado y un ciclo de relleno de tres pasos"
+          },
+          "question": "¿Qué elemento sigue a las seis formas mostradas?",
+          "answers": {
+            "a1": "●",
+            "a2": "■",
+            "a3": "○",
+            "a4": "□"
+          },
+          "headerLabel": "PATRONES"
         }
       }
     }

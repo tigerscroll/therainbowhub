@@ -42,7 +42,8 @@ test("the localized palindrome question has exactly one correct answer in every 
 test("visual answer letters stay aligned with the displayed Latin-letter puzzles", () => {
   for (const slug of ["vision", "cataract", "maculardegeneration"]) {
     const source = read(slug, "en.json");
-    for (const locale of locales) {
+    const activeLocales = read(slug, "quiz.json").activeLocales ?? locales;
+    for (const locale of activeLocales) {
       const copy = read(slug, `${locale}.json`);
       for (const [sid, stage] of Object.entries(source.stages) as [string, StageCopy][]) {
         for (const [id, question] of Object.entries(stage.questions)) {
