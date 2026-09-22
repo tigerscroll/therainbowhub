@@ -16,7 +16,8 @@
     "published": "2026-08-13",
     "difficulty": "Hard",
     "icon": "🔧",
-    "socialProofCount": 87000
+    "socialProofCount": 87000,
+    "showSocialProof": false
   },
   "theme": {
     "id": "mechanic",
@@ -61,35 +62,205 @@
       "icon": "🔧"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "mechanic-r1q1",
+          "mechanic-r1q2",
+          "mechanic-r1q3",
+          "mechanic-r1q4",
+          "mechanic-r1q5",
+          "mechanic-r1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "mechanic-r2q1",
+          "mechanic-r2q2",
+          "mechanic-r2q3",
+          "mechanic-r2q4",
+          "mechanic-r2q5",
+          "mechanic-r2q6"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "mechanic-r3q1",
+          "mechanic-r3q2",
+          "mechanic-r3q3",
+          "mechanic-r3q4",
+          "mechanic-r3q5",
+          "mechanic-r3q6"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "mechanic-r4q1",
+          "mechanic-r4q2",
+          "mechanic-r4q3",
+          "mechanic-r4q4",
+          "mechanic-r4q5",
+          "mechanic-r4q6"
+        ]
+      },
+      {
+        "id": "stage-5",
         "difficultyLevel": "final",
         "questionIds": [
-          "mech-r1q1",
-          "mech-r1q2",
-          "mech-r4q5",
-          "mech-r4q6",
-          "mech-r5q5",
-          "mech-r6q1",
-          "mech-r7q1",
-          "mech-r7q6",
-          "mech-r9q2",
-          "mech-r10q4"
+          "mechanic-r5q1",
+          "mechanic-r5q2",
+          "mechanic-r5q3",
+          "mechanic-r5q4",
+          "mechanic-r5q5",
+          "mechanic-r5q6"
         ]
       }
     ],
     "questions": {
-      "mech-r1q1": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "/quizzes/mechanic/assets/icons/oil-pressure.svg",
-          "a2": "/quizzes/mechanic/assets/icons/battery-warning.svg",
-          "a3": "/quizzes/mechanic/assets/icons/coolant-warning.svg",
-          "a4": "/quizzes/mechanic/assets/icons/steering-wheel.svg"
-        },
+      "mechanic-r1q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "engine_fuel",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "brakes_grip",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "electrical",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cooling_fluids",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "drivetrain_steering",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "diagnosis_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "engine_fuel",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "brakes_grip",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "electrical",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "cooling_fluids",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "drivetrain_steering",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "diagnosis_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r3q1": {
+        "presentation": "text",
         "correctAnswerId": "a1",
         "category": "engine_fuel",
         "answerIds": [
@@ -99,7 +270,74 @@
           "a4"
         ]
       },
-      "mech-r1q2": {
+      "mechanic-r3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "brakes_grip",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "electrical",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "cooling_fluids",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "drivetrain_steering",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "diagnosis_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "engine_fuel",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r4q2": {
+        "presentation": "text",
         "correctAnswerId": "a2",
         "category": "brakes_grip",
         "answerIds": [
@@ -109,39 +347,8 @@
           "a4"
         ]
       },
-      "mech-r4q5": {
-        "correctAnswerId": "a3",
-        "category": "drivetrain_steering",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "mech-r4q6": {
-        "correctAnswerId": "a4",
-        "category": "diagnosis_safety",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "mech-r5q5": {
-        "correctAnswerId": "a1",
-        "category": "cooling_fluids",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "mech-r6q1": {
-        "presentation": "code",
-        "visual": {},
+      "mechanic-r4q3": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "electrical",
         "answerIds": [
@@ -151,8 +358,20 @@
           "a4"
         ]
       },
-      "mech-r7q1": {
+      "mechanic-r4q4": {
+        "presentation": "text",
         "correctAnswerId": "a1",
+        "category": "cooling_fluids",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
         "category": "drivetrain_steering",
         "answerIds": [
           "a1",
@@ -161,8 +380,9 @@
           "a4"
         ]
       },
-      "mech-r7q6": {
-        "correctAnswerId": "a2",
+      "mechanic-r4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
         "category": "diagnosis_safety",
         "answerIds": [
           "a1",
@@ -171,10 +391,10 @@
           "a4"
         ]
       },
-      "mech-r9q2": {
+      "mechanic-r5q1": {
+        "presentation": "text",
         "correctAnswerId": "a2",
-        "category": "electrical",
-        "reasoningSteps": 2,
+        "category": "engine_fuel",
         "answerIds": [
           "a1",
           "a2",
@@ -182,12 +402,54 @@
           "a4"
         ]
       },
-      "mech-r10q4": {
-        "presentation": "code",
-        "visual": {},
-        "correctAnswerId": "a4",
+      "mechanic-r5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "brakes_grip",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "electrical",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
         "category": "cooling_fluids",
-        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "drivetrain_steering",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "mechanic-r5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "diagnosis_safety",
         "answerIds": [
           "a1",
           "a2",
@@ -264,8 +526,11 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en"
+  ]
 }

@@ -16,10 +16,10 @@ test("display-ad components and request code are absent site-wide", () => {
 });
 test("Mechanic uses the automatic rewarded-only flow", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
-  assert.equal(manifest.template, "single-stage-rewarded-v1");
+  assert.equal(manifest.template, "five-stage-six-question-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
-  assert.equal(manifest.structure.stages.length, 1);
-  assert.equal(manifest.structure.stages[0].questionIds.length, 10);
+  assert.equal(manifest.structure.stages.length, 5);
+  assert.ok(manifest.structure.stages.every((stage: { questionIds: string[] }) => stage.questionIds.length === 6));
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
 test("only the rewarded ad unit is configured", () => {

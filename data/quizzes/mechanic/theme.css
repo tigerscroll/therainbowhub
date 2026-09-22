@@ -180,6 +180,10 @@
 [data-quiz-theme="mechanic"] .quiz-engine__answer[data-selected]{ border-color: #a56d18; background: #fff0cd; box-shadow: 0 0 0 3px rgba(241,173,50,.18), 0 8px 20px rgba(32,37,40,.12); }
 [data-quiz-theme="mechanic"] .quiz-engine__answers--icons .quiz-engine__answer-icon{ border: 0; background: transparent; box-shadow: none; font-size: 42px; }
 
+[data-quiz-theme="mechanic"] .quiz-engine__answers { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="mechanic"] .quiz-engine__answer { min-width: 0; grid-template-columns: 34px minmax(0, 1fr); }
+[data-quiz-theme="mechanic"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }
+
 @media (hover: hover) and (pointer: fine) {
   [data-quiz-theme="mechanic"] .quiz-engine__answer:hover:not(:disabled){ border-color: #a56d18; background: var(--quiz-header-text); transform: translateY(-2px); }
   [data-quiz-theme="mechanic"] .quiz-engine__primary:hover:not(:disabled){ filter: brightness(1.07); transform: translateY(-1px)}

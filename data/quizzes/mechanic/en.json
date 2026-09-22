@@ -1,33 +1,71 @@
 {
-  "title": "Only 7% Pass This Car Mechanic Quiz",
+  "title": "Can You Score 80% On This Car Mechanic Quiz?",
   "eyebrow": "PRECISION SERVICE BAY",
-  "summary": "Warning lights, hidden faults and strange road symptoms test whether you can diagnose trouble before it gets expensive.",
+  "summary": "Read dashboard clues, explore car systems and solve workshop puzzles across five different rounds.",
   "landing": {
-    "intro": "10 faults. One mechanic challenge.\nCan you diagnose them all?",
+    "intro": "Know your way around a car?\nPut your skills to the test.",
     "cta": "Start Quiz"
   },
   "about": {
-    "body": "This worldwide entertainment test contains ten practical questions about vehicle systems, workshop judgement and fault finding. It moves from familiar warning signs to connected symptoms that require careful diagnosis.\n\nChoose the best answer from the information shown. The questions use broad vehicle principles and avoid assuming one make, model or local inspection standard.\n\nYour score reflects this short challenge only. It is not a trade qualification, safety inspection or substitute for diagnosis by a qualified mechanic.",
+    "body": "Five rounds. Five ways to test your car knowledge. Read dashboard clues, explore how parts work, reason through supplied measurements, separate facts from myths and finish with short fault-finding scenarios.\n\nThere are six text-only questions per round. Choose one of four answers to move on automatically. There is no time limit. A short rewarded ad opens the quiz, each next round and the final result. Your target is 24 correct answers out of 30.\n\nThe questions use general vehicle principles, not country-specific road rules or inspection standards. Vehicle types, units and any example limits are stated where needed. A likely cause is a starting point for diagnosis, not proof that a part needs replacing.",
     "howToPlay": {
       "steps": [
-        "Press Start Quiz to watch a short rewarded ad and begin ten questions.",
-        "Choose one answer and the next question opens automatically. Correctness remains hidden until the final reveal.",
-        "After the final question, watch a short rewarded ad to reveal your score. Your full breakdown and answer review can be unlocked separately."
+        "Press Start Quiz, watch a short rewarded ad and begin.",
+        "Choose one answer per question. Each round changes the challenge, and questions advance automatically.",
+        "Complete all five rounds to reveal your score. You can then unlock your system breakdown and missed-answer review."
       ]
     },
     "disclaimer": "For entertainment and general learning only. This quiz is not a professional qualification or vehicle-repair diagnosis. Vehicles differ; consult the manufacturer’s guidance and a qualified technician."
   },
   "career": {
-    "resultProgressLabel": "Mechanic challenge",
+    "resultProgressLabel": "Your progress",
     "stages": {
       "stage-1": {
-        "difficulty": "Workshop Challenge",
-        "preAdTitle": "Your results are ready",
-        "preAdCopy": "Your mechanic score and six-system breakdown are ready to reveal.",
+        "difficulty": "Dashboard Detective",
+        "preAdTitle": "Dashboard decoded",
+        "preAdCopy": "Your first six answers are in. Now discover what happens behind those warning lights.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Match each part to its job."
+        }
+      },
+      "stage-2": {
+        "difficulty": "Inside the Car",
+        "preAdTitle": "Systems explored",
+        "preAdCopy": "Two rounds complete. Next, use the numbers and clues supplied.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Read the evidence. Work out the answer."
+        }
+      },
+      "stage-3": {
+        "difficulty": "Workshop Logic",
+        "preAdTitle": "Workshop logic complete",
+        "preAdCopy": "You have worked through the readings. Can you separate sound advice from common myths?",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "One accurate statement. Three wrong turns."
+        }
+      },
+      "stage-4": {
+        "difficulty": "Fact or Fiction?",
+        "preAdTitle": "Facts checked",
+        "preAdCopy": "One round left. Follow the clues without jumping to conclusions.",
+        "next": {
+          "eyebrow": "NEXT ROUND",
+          "tagline": "Six scenarios. Choose the strongest next step."
+        }
+      },
+      "stage-5": {
+        "difficulty": "Final Diagnosis",
+        "preAdTitle": "Your result is ready",
+        "preAdCopy": "All 30 answers are in. Reveal your score and discover your strongest vehicle system.",
         "preAdChecks": [
-          "10 answers checked",
-          "Six vehicle systems compared"
-        ]
+          "30 answers checked",
+          "Six vehicle systems compared",
+          "Your strongest system identified"
+        ],
+        "preAdButton": "Reveal My Result"
       }
     }
   },
@@ -36,8 +74,8 @@
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
-        "title": "The Master Diagnostician",
-        "copy": "You connected symptoms, systems and safety decisions with exceptional precision. Even the final multi-step faults rarely sent you down the wrong diagnostic path."
+        "title": "The Workshop Quiz Expert",
+        "copy": "You connected parts, measurements and diagnostic clues with excellent accuracy on this quiz. Your review shows how you handled each vehicle system."
       },
       "profile-2": {
         "tier": "80–89%",
@@ -47,7 +85,7 @@
       "profile-3": {
         "tier": "70–79%",
         "title": "The Skilled Fault Finder",
-        "copy": "You found most of the Service Bay’s important clues and handled a broad mix of systems well. A few specialist faults kept the workshop interesting."
+        "copy": "You followed most of the clues and handled a broad mix of vehicle systems well. Review the answers you missed to see where a closer look would help."
       },
       "profile-4": {
         "tier": "60–69%",
@@ -90,127 +128,331 @@
       "finished": "Workshop challenge complete",
       "strongest": "Strongest vehicle system",
       "trickiest": "Trickiest vehicle system",
-      "bestRound": "Best section"
+      "bestRound": "Your best round",
+      "disclaimer": "For entertainment and general learning only. This score is not a professional qualification, a vehicle safety inspection or repair advice."
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Workshop Challenge",
+      "title": "Dashboard Detective",
       "questions": {
-        "mech-r1q1": {
-          "question": "Which warning symbol most directly relates to engine oil pressure?",
+        "mechanic-r1q1": {
+          "question": "An oil-can warning light is commonly associated with which engine problem?",
           "answers": {
-            "a1": "Oil can",
-            "a2": "Battery",
-            "a3": "Thermometer",
-            "a4": "Steering wheel"
+            "a1": "Low fuel level",
+            "a2": "Low oil pressure",
+            "a3": "Low battery charge",
+            "a4": "Low washer-fluid level"
           },
-          "headerLabel": "ENGINE SYSTEMS"
+          "headerLabel": "DASHBOARD DETECTIVE"
         },
-        "mech-r1q2": {
-          "question": "A red brake warning stays on after the parking brake is released. What is the safest response?",
+        "mechanic-r1q2": {
+          "question": "What does ABS stand for on a car dashboard?",
           "answers": {
-            "a1": "Drive faster to test it",
-            "a2": "Stop safely and have the brake system checked",
-            "a3": "Pump the tyres harder",
-            "a4": "Ignore it until the next service"
+            "a1": "Automatic battery sensor",
+            "a2": "Air balance system",
+            "a3": "Active belt support",
+            "a4": "Anti-lock braking system"
           },
-          "headerLabel": "BRAKES & SAFETY"
+          "headerLabel": "DASHBOARD DETECTIVE"
         },
-        "mech-r4q5": {
-          "question": "A rhythmic clicking becomes faster on tight turns. Which part is a likely cause?",
+        "mechanic-r1q3": {
+          "question": "In a conventional fuel-powered car, a battery-shaped warning stays on while the engine runs. Which system needs checking?",
           "answers": {
-            "a1": "Thermostat",
-            "a2": "Fuel pump",
-            "a3": "Outer constant-velocity joint",
-            "a4": "Cabin fan"
+            "a1": "The charging system",
+            "a2": "The exhaust system",
+            "a3": "The cooling system",
+            "a4": "The steering system"
           },
-          "headerLabel": "DRIVETRAIN"
+          "headerLabel": "DASHBOARD DETECTIVE"
         },
-        "mech-r4q6": {
-          "question": "One tyre has a deep sidewall bulge. What should you do?",
+        "mechanic-r1q4": {
+          "question": "A thermometer symbol above wavy lines commonly warns about what?",
           "answers": {
-            "a1": "Reduce the pressure and continue",
-            "a2": "Push the bulge flat",
-            "a3": "Move it to another wheel",
-            "a4": "Stop using the tyre and arrange replacement"
+            "a1": "Outside air temperature",
+            "a2": "Engine oil age",
+            "a3": "Engine coolant temperature",
+            "a4": "Fuel temperature"
           },
-          "headerLabel": "VEHICLE SAFETY"
+          "headerLabel": "DASHBOARD DETECTIVE"
         },
-        "mech-r5q5": {
-          "question": "The engine overheats in traffic but cools at road speed. Which component deserves an early check?",
+        "mechanic-r1q5": {
+          "question": "A dashboard message says “Power steering assist fault.” Which task may become harder?",
           "answers": {
-            "a1": "Radiator fan",
-            "a2": "Seat belt",
-            "a3": "Fuel cap",
-            "a4": "Wheel bearing"
+            "a1": "Releasing the parking brake",
+            "a2": "Turning the steering wheel",
+            "a3": "Changing the fan speed",
+            "a4": "Opening the fuel cap"
           },
-          "headerLabel": "COOLING SYSTEMS"
+          "headerLabel": "DASHBOARD DETECTIVE"
         },
-        "mech-r6q1": {
-          "visual": {
-            "items": [
-              "Expected: 12.6 V",
-              "Measured: 10.5 V"
-            ],
-            "ariaLabel": "Expected battery voltage 12.6 volts, measured 10.5 volts"
-          },
-          "question": "A healthy 12-volt battery reads about 12.6 V at rest. This one reads 10.5 V. What does that suggest?",
+        "mechanic-r1q6": {
+          "question": "Some warning lights turn on briefly at startup, then go out as the manual describes. What can this be?",
           "answers": {
-            "a1": "The tyres are worn",
-            "a2": "The coolant is too strong",
-            "a3": "The battery is deeply discharged or has a failed cell",
-            "a4": "The alternator belt is new"
+            "a1": "A normal system or lamp check",
+            "a2": "Proof that every system is fault-free",
+            "a3": "A reminder to replace every sensor",
+            "a4": "A sign that the lights are disconnected"
           },
-          "headerLabel": "ELECTRICAL SYSTEMS"
+          "headerLabel": "DASHBOARD DETECTIVE"
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Inside the Car",
+      "questions": {
+        "mechanic-r2q1": {
+          "question": "What is the main job of an engine air filter?",
+          "answers": {
+            "a1": "Remove metal from engine oil",
+            "a2": "Cool the exhaust gases",
+            "a3": "Trap particles before air enters the engine",
+            "a4": "Regulate fuel pressure"
+          },
+          "headerLabel": "INSIDE THE CAR"
         },
-        "mech-r7q1": {
-          "question": "The steering wheel vibrates mainly at one road-speed range. What is a likely first suspect?",
+        "mechanic-r2q2": {
+          "question": "In a disc brake, what do the brake pads press against to slow the wheel?",
           "answers": {
-            "a1": "Wheel imbalance",
-            "a2": "Fuel quality",
-            "a3": "Cabin filter",
-            "a4": "Coolant colour"
+            "a1": "The rotating brake disc",
+            "a2": "The wheel bearing",
+            "a3": "The drive belt",
+            "a4": "The suspension spring"
           },
-          "headerLabel": "STEERING & BALANCE"
+          "headerLabel": "INSIDE THE CAR"
         },
-        "mech-r7q6": {
-          "question": "A new severe vibration appears after striking a road hazard. What should you do?",
+        "mechanic-r2q3": {
+          "question": "In a conventional car with a running engine, what is the alternator mainly doing?",
           "answers": {
-            "a1": "Increase speed to smooth it out",
-            "a2": "Stop safely and inspect the wheel and tyre before continuing",
-            "a3": "Lower every tyre pressure",
-            "a4": "Ignore it if no warning appears"
+            "a1": "Turning the engine before it starts",
+            "a2": "Cooling the battery with air",
+            "a3": "Measuring the fuel level",
+            "a4": "Supplying electrical power and charging the battery"
           },
-          "headerLabel": "VEHICLE SAFETY"
+          "headerLabel": "INSIDE THE CAR"
         },
-        "mech-r9q2": {
-          "context": "CUSTOMER SAYS",
-          "question": "“The battery is new, but it repeatedly goes flat and the charging warning appears while driving.” What should be tested?",
+        "mechanic-r2q4": {
+          "question": "What does a thermostat normally regulate in an engine cooling system?",
           "answers": {
-            "a1": "Tyre alignment",
-            "a2": "The charging system and its connections",
-            "a3": "Brake-pad thickness",
-            "a4": "Coolant concentration"
+            "a1": "Fuel flow into the engine",
+            "a2": "Coolant flow to help control engine temperature",
+            "a3": "Oil flow through the gearbox",
+            "a4": "Air flow into the cabin"
           },
-          "headerLabel": "CHARGING SYSTEMS"
+          "headerLabel": "INSIDE THE CAR"
         },
-        "mech-r10q4": {
-          "visual": {
-            "items": [
-              "Road speed: COOL",
-              "Idle: HOT",
-              "Fan command: expected",
-              "Fan movement: none"
-            ],
-            "ariaLabel": "Engine cools at road speed, overheats at idle, cooling fan does not run"
-          },
-          "question": "The engine overheats only at idle, the radiator is unobstructed and the cooling fan never runs. What should be diagnosed first?",
+        "mechanic-r2q5": {
+          "question": "Why does a conventional differential allow the driven wheels to turn at different speeds?",
           "answers": {
-            "a1": "Wheel alignment",
-            "a2": "Fuel cap seal",
-            "a3": "Brake-pad wear",
-            "a4": "The fan circuit, motor and control command"
+            "a1": "They must always turn in opposite directions",
+            "a2": "One wheel must stop whenever the car turns",
+            "a3": "They travel different distances when cornering",
+            "a4": "It prevents all wheel slip on every surface"
+          },
+          "headerLabel": "INSIDE THE CAR"
+        },
+        "mechanic-r2q6": {
+          "question": "Which tool is designed to tighten a fastener to a specified torque?",
+          "answers": {
+            "a1": "A multimeter",
+            "a2": "A pressure gauge",
+            "a3": "A feeler gauge",
+            "a4": "A torque wrench"
+          },
+          "headerLabel": "INSIDE THE CAR"
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Workshop Logic",
+      "questions": {
+        "mechanic-r3q1": {
+          "question": "A test car uses 18 L of fuel over 300 km. At the same rate, how much would it use over 100 km?",
+          "answers": {
+            "a1": "6 L",
+            "a2": "3 L",
+            "a3": "9 L",
+            "a4": "18 L"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        },
+        "mechanic-r3q2": {
+          "question": "A test car specifies 220 kPa for all four cold tires. Readings are 220, 220, 180 and 220 kPa. Which reading is below the stated target?",
+          "answers": {
+            "a1": "The first 220 kPa",
+            "a2": "The second 220 kPa",
+            "a3": "180 kPa",
+            "a4": "The final 220 kPa"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        },
+        "mechanic-r3q3": {
+          "question": "Two identical lamps share a power supply. One works and one does not. Which conclusion is supported by that fact alone?",
+          "answers": {
+            "a1": "The unlit bulb must be broken",
+            "a2": "The supply is not completely dead",
+            "a3": "Both switches must be broken",
+            "a4": "The working lamp has a short circuit"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        },
+        "mechanic-r3q4": {
+          "question": "A training example needs 4 L of a mixture containing 50% coolant concentrate by volume. How much concentrate is that?",
+          "answers": {
+            "a1": "1 L",
+            "a2": "3 L",
+            "a3": "4 L",
+            "a4": "2 L"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        },
+        "mechanic-r3q5": {
+          "question": "A gearbox has a 3:1 reduction ratio. If the input turns at 1,200 rpm, what is the output speed?",
+          "answers": {
+            "a1": "400 rpm",
+            "a2": "300 rpm",
+            "a3": "1,200 rpm",
+            "a4": "3,600 rpm"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        },
+        "mechanic-r3q6": {
+          "question": "The stated minimum thickness for a test component is 3.0 mm. It measures 2.5 mm. What does the measurement establish?",
+          "answers": {
+            "a1": "It meets the stated minimum",
+            "a2": "It is below the stated minimum",
+            "a3": "The measuring tool must be faulty",
+            "a4": "The component is exactly new thickness"
+          },
+          "headerLabel": "WORKSHOP LOGIC"
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Fact or Fiction?",
+      "questions": {
+        "mechanic-r4q1": {
+          "question": "Which statement about engine oil is accurate?",
+          "answers": {
+            "a1": "Thicker oil is best for every engine",
+            "a2": "All oils with the same colour are identical",
+            "a3": "Oil never needs changing if its level stays full",
+            "a4": "The specified grade matters; thicker is not always better"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        },
+        "mechanic-r4q2": {
+          "question": "Which statement about ABS is accurate?",
+          "answers": {
+            "a1": "It guarantees the shortest stop on every surface",
+            "a2": "It helps prevent wheel lock but cannot guarantee a shorter stop on every surface",
+            "a3": "It replaces the need for tire grip",
+            "a4": "It makes worn brake pads work like new ones"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        },
+        "mechanic-r4q3": {
+          "question": "Which statement about electric cars is accurate?",
+          "answers": {
+            "a1": "All electrical parts connect directly to the main drive battery",
+            "a2": "Electric cars cannot have low-voltage battery faults",
+            "a3": "Many have a separate low-voltage battery as well as the main drive battery",
+            "a4": "A charged drive battery proves every electrical system is healthy"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        },
+        "mechanic-r4q4": {
+          "question": "Which is the reliable way to choose a compatible engine coolant?",
+          "answers": {
+            "a1": "Follow the vehicle manufacturer’s coolant specification",
+            "a2": "Match its colour and ignore the specification",
+            "a3": "Choose whichever liquid looks clearest",
+            "a4": "Assume all products marked coolant are interchangeable"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        },
+        "mechanic-r4q5": {
+          "question": "Which statement separates wheel balancing from wheel alignment?",
+          "answers": {
+            "a1": "Both are names for the same adjustment",
+            "a2": "Balancing changes wheel angles; alignment adds wheel weights",
+            "a3": "Neither can affect how the car feels on the road",
+            "a4": "Balancing corrects weight imbalance; alignment adjusts wheel angles"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        },
+        "mechanic-r4q6": {
+          "question": "A diagnostic scan reports a sensor-circuit fault. What does that establish?",
+          "answers": {
+            "a1": "The sensor must always be replaced",
+            "a2": "The wiring has already passed every test",
+            "a3": "The circuit needs diagnosis; the sensor is not automatically the cause",
+            "a4": "Clearing the code permanently repairs the fault"
+          },
+          "headerLabel": "FACT OR FICTION?"
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Final Diagnosis",
+      "questions": {
+        "mechanic-r5q1": {
+          "question": "A trained technician moves an ignition coil to another cylinder during diagnosis. The misfire moves with it. Which suspect does this most strongly support?",
+          "answers": {
+            "a1": "The cabin air filter",
+            "a2": "The moved ignition coil",
+            "a3": "The fuel tank cap",
+            "a4": "The engine coolant thermostat"
+          },
+          "headerLabel": "FINAL DIAGNOSIS"
+        },
+        "mechanic-r5q2": {
+          "question": "A car suddenly pulls strongly to one side when braking. What is the safest next step?",
+          "answers": {
+            "a1": "Stop safely and arrange a professional inspection",
+            "a2": "Keep driving until the pull disappears",
+            "a3": "Use higher speed to compare the braking",
+            "a4": "Assume it is harmless if no warning light appears"
+          },
+          "headerLabel": "FINAL DIAGNOSIS"
+        },
+        "mechanic-r5q3": {
+          "question": "A new battery repeatedly loses charge, and the charging warning appears while the engine runs. What should be investigated?",
+          "answers": {
+            "a1": "Only the age of the new battery",
+            "a2": "Only the cabin temperature sensor",
+            "a3": "The charging system and its connections",
+            "a4": "Only the wheel alignment"
+          },
+          "headerLabel": "FINAL DIAGNOSIS"
+        },
+        "mechanic-r5q4": {
+          "question": "An engine overheats at idle but cools at road speed. During a technician’s test, the cooling fan is commanded on but does not run. What should be checked first?",
+          "answers": {
+            "a1": "The wheel-speed sensor",
+            "a2": "The fan motor, power supply and control circuit",
+            "a3": "The fuel cap seal",
+            "a4": "The steering-wheel position"
+          },
+          "headerLabel": "FINAL DIAGNOSIS"
+        },
+        "mechanic-r5q5": {
+          "question": "A steering-wheel vibration is strongest within one road-speed range. Which is a sensible early check, not a confirmed diagnosis?",
+          "answers": {
+            "a1": "The cabin temperature setting",
+            "a2": "The fuel-filler door hinge",
+            "a3": "The washer-fluid level",
+            "a4": "Wheel and tire condition and balance"
+          },
+          "headerLabel": "FINAL DIAGNOSIS"
+        },
+        "mechanic-r5q6": {
+          "question": "A car is supported only by a portable jack. Someone is about to work underneath it. What is the safe decision?",
+          "answers": {
+            "a1": "Do not go underneath until it is correctly supported with suitable equipment",
+            "a2": "Go underneath if the job will take less than a minute",
+            "a3": "Go underneath if the engine is switched off",
+            "a4": "Go underneath if another person holds the jack handle"
           },
           "headerLabel": "FINAL DIAGNOSIS"
         }
