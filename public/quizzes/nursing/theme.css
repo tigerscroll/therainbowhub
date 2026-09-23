@@ -666,3 +666,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="nursing"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="nursing"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

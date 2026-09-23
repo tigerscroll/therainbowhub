@@ -8,14 +8,16 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "independent"
+    "localeParity": "strict",
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/items/nun-icon.webp",
     "published": "2026-09-10",
     "difficulty": "Hard",
     "icon": "✝️",
-    "socialProofCount": 166000
+    "socialProofCount": 166000,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "editorial",
@@ -59,23 +61,67 @@
       "icon": "✝️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "nun-q1",
           "nun-q2",
+          "nun-round1-new1",
+          "nun-round1-new2",
+          "nun-round1-new3",
+          "nun-round1-new4"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
           "nun-q3",
           "nun-q4",
+          "nun-round2-new1",
+          "nun-round2-new2",
+          "nun-round2-new3",
+          "nun-round2-new4"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
           "nun-q5",
           "nun-q6",
+          "nun-round3-new1",
+          "nun-round3-new2",
+          "nun-round3-new3",
+          "nun-round3-new4"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
           "nun-q7",
           "nun-q8",
+          "nun-round4-new1",
+          "nun-round4-new2",
+          "nun-round4-new3",
+          "nun-round4-new4"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
           "nun-q9",
-          "nun-q10"
+          "nun-q10",
+          "nun-round5-new1",
+          "nun-round5-new2",
+          "nun-round5-new3",
+          "nun-round5-new4"
         ]
       }
     ],
@@ -85,8 +131,8 @@
         "correctAnswerId": "a1",
         "category": "vows",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -97,10 +143,54 @@
         "category": "formation",
         "answerIds": [
           "a1",
+          "a3",
+          "a4",
+          "a2"
+        ]
+      },
+      "nun-round1-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-round1-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-round1-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-round1-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
       },
       "nun-q3": {
         "presentation": "text",
@@ -118,11 +208,55 @@
         "correctAnswerId": "a4",
         "category": "daily_life",
         "answerIds": [
+          "a4",
           "a1",
           "a2",
+          "a3"
+        ]
+      },
+      "nun-round2-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-round2-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-round2-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-round2-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
       },
       "nun-q5": {
         "presentation": "text",
@@ -141,10 +275,54 @@
         "category": "orders_traditions",
         "answerIds": [
           "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "nun-round3-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-round3-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-round3-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-round3-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
       },
       "nun-q7": {
         "presentation": "text",
@@ -153,8 +331,8 @@
         "answerIds": [
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a3"
         ]
       },
       "nun-q8": {
@@ -163,18 +341,62 @@
         "category": "daily_life",
         "answerIds": [
           "a1",
+          "a4",
+          "a2",
+          "a3"
+        ]
+      },
+      "nun-round4-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "vows"
+      },
+      "nun-round4-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-round4-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-round4-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "vows"
       },
       "nun-q9": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "formation",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -184,11 +406,55 @@
         "correctAnswerId": "a2",
         "category": "daily_life",
         "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ]
+      },
+      "nun-round5-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-round5-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-round5-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-round5-new4": {
+        "presentation": "text",
+        "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
       }
     },
     "checkpoint": {
@@ -245,8 +511,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

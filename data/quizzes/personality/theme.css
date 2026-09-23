@@ -114,3 +114,33 @@
   [data-quiz-theme="personality"] .quiz-engine__landing .quiz-engine__quick-start{font-size:15px;line-height:1.38}
   [data-quiz-theme="personality"] .quiz-engine__question-image{margin-bottom:18px;border-width:2px}
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="personality"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="personality"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }
+
+[data-quiz-theme="personality"] .quiz-engine__profile-portrait {
+  width: min(100%, 520px);
+  margin: 20px auto;
+  overflow: clip;
+  border: 2px solid var(--personality-gold);
+  border-radius: 12px;
+}
+[data-quiz-theme="personality"] .quiz-engine__profile-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+[data-quiz-theme="personality"] .quiz-engine__profile-aura {
+  display: grid;
+  gap: 6px;
+  margin: 18px auto;
+}
+[data-quiz-theme="personality"] .quiz-engine__profile-aura > span:first-child {
+  color: var(--quiz-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}

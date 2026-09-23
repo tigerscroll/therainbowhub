@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "midwifery",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "targetRatio": 0.8
+    "targetRatio": 0.8,
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
     "difficulty": "Hard",
     "icon": "👶",
-    "socialProofCount": 76000
+    "socialProofCount": 76000,
+    "showSocialProof": false
   },
   "theme": {
     "id": "midwifery",
@@ -60,23 +62,67 @@
       "icon": "👶"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "mid-r1q1",
+          "mid-r1q2",
+          "mid-r1q3",
           "mid-r1q4",
+          "mid-r1q5",
+          "mid-r1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "mid-r2q1",
+          "mid-r2q3",
+          "mid-r2q4",
           "mid-r3q2",
-          "mid-r5q4",
-          "mid-r4q3",
+          "mid-r3q4",
+          "mid-r5q4"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "mid-r4q4",
           "mid-r5q6",
+          "mid-r4q1",
+          "mid-r4q2",
+          "mid-r4q3",
+          "mid-r4q6"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "mid-r6q3",
+          "mid-r7q2",
+          "mid-r7q4",
+          "mid-r5q2",
           "mid-r5q3",
-          "mid-r7q3",
+          "mid-r7q3"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "mid-r10q6",
+          "mid-r7q5",
+          "mid-r9q1",
+          "mid-r10q1",
           "mid-r10q2",
-          "mid-r7q5"
+          "mid-r10q3"
         ]
       }
     ],
@@ -98,6 +144,26 @@
           "a4"
         ]
       },
+      "mid-r1q2": {
+        "category": "antenatal_wellbeing",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "mid-r1q3": {
+        "category": "labour_birth",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
       "mid-r1q4": {
         "correctAnswerId": "a3",
         "category": "newborn_care",
@@ -108,55 +174,209 @@
           "a4"
         ]
       },
-      "mid-r3q2": {
-        "correctAnswerId": "a4",
-        "category": "antenatal_wellbeing",
+      "mid-r1q5": {
+        "category": "infection_safety",
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
-        ]
-      },
-      "mid-r5q4": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "labour_birth",
-        "answerIds": [
-          "a1",
           "a2",
-          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3"
       },
-      "mid-r4q3": {
-        "correctAnswerId": "a3",
+      "mid-r1q6": {
         "category": "communication_priorities",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1"
       },
-      "mid-r5q6": {
-        "correctAnswerId": "a1",
-        "category": "infection_safety",
+      "mid-r2q1": {
+        "presentation": "text",
+        "category": "pregnancy_physiology",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "mid-r2q3": {
+        "category": "pregnancy_physiology",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "mid-r2q4": {
+        "presentation": "spatial",
+        "visual": {},
+        "category": "pregnancy_physiology",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "mid-r3q2": {
+        "correctAnswerId": "a4",
+        "category": "antenatal_wellbeing",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
         ]
       },
-      "mid-r5q3": {
+      "mid-r3q4": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1,
+          "separator": "•"
+        },
+        "category": "antenatal_wellbeing",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "mid-r5q4": {
+        "presentation": "text",
         "correctAnswerId": "a1",
+        "category": "labour_birth",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ]
+      },
+      "mid-r4q4": {
+        "category": "communication_priorities",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "mid-r5q6": {
+        "correctAnswerId": "a1",
+        "category": "infection_safety",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ]
+      },
+      "mid-r4q1": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "mid-r4q2": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "mid-r4q3": {
+        "correctAnswerId": "a3",
+        "category": "communication_priorities",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ]
+      },
+      "mid-r4q6": {
+        "category": "communication_priorities",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "mid-r6q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "labour_birth",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "mid-r7q2": {
+        "category": "newborn_care",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "mid-r7q4": {
+        "category": "newborn_care",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "mid-r5q2": {
         "category": "labour_birth",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "mid-r5q3": {
+        "correctAnswerId": "a1",
+        "category": "labour_birth",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
         ]
       },
       "mid-r7q3": {
@@ -165,9 +385,56 @@
         "answerIds": [
           "a1",
           "a2",
+          "a4",
+          "a3"
+        ]
+      },
+      "mid-r10q6": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "communication_priorities",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "mid-r7q5": {
+        "correctAnswerId": "a2",
+        "category": "newborn_care",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
         ]
+      },
+      "mid-r9q1": {
+        "category": "antenatal_wellbeing",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "mid-r10q1": {
+        "category": "pregnancy_physiology",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
       },
       "mid-r10q2": {
         "correctAnswerId": "a2",
@@ -175,20 +442,21 @@
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
+          "a4",
+          "a2"
         ]
       },
-      "mid-r7q5": {
-        "correctAnswerId": "a2",
-        "category": "newborn_care",
+      "mid-r10q3": {
+        "category": "labour_birth",
+        "reasoningSteps": 2,
         "answerIds": [
+          "a4",
           "a1",
           "a2",
-          "a3",
-          "a4"
-        ]
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       }
     },
     "checkpoint": {
@@ -246,8 +514,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

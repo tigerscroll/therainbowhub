@@ -647,3 +647,7 @@
   [data-quiz-theme="iq"] .quiz-engine__continuous-shell .quiz-engine__primary{
     font-size: 16px}
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="iq"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="iq"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

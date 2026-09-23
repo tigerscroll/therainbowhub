@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "iq",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    }
+    },
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.jpg",
     "published": "2026-08-12",
     "difficulty": "Expert",
     "icon": "🧠",
-    "socialProofCount": 212000
+    "socialProofCount": 212000,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "immersive",
@@ -59,22 +61,66 @@
       "icon": "🧠"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "iq-s1q1",
+          "iq-s1q2",
+          "iq-s1q3",
           "iq-s1q4",
+          "iq-s1q5",
+          "iq-s1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "iq-s2q1",
           "iq-s2q2",
-          "iq-s2q6",
+          "iq-s2q3",
+          "iq-s2q4",
+          "iq-s2q5",
+          "iq-s2q6"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "iq-s3q1",
           "iq-s3q2",
+          "iq-s3q3",
           "iq-s3q4",
+          "iq-s3q5",
+          "iq-s3q6"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
           "iq-s4q1",
+          "iq-s4q2",
+          "iq-s4q3",
           "iq-s4q4",
+          "iq-s4q5",
+          "iq-s4q6"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "iq-s5q1",
           "iq-s5q2",
+          "iq-s5q3",
+          "iq-s5q4",
+          "iq-s5q5",
           "iq-s5q8"
         ]
       }
@@ -95,6 +141,34 @@
           "a4"
         ]
       },
+      "iq-s1q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "numerical",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "iq-s1q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "verbal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
       "iq-s1q4": {
         "presentation": "spatial",
         "visual": {
@@ -108,6 +182,45 @@
           "a3",
           "a4"
         ]
+      },
+      "iq-s1q5": {
+        "presentation": "code",
+        "visual": {
+          "columns": 4
+        },
+        "category": "attention",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "iq-s1q6": {
+        "category": "logic",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "iq-s2q1": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 4,
+          "separator": "→"
+        },
+        "category": "pattern",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "iq-s2q2": {
         "presentation": "code",
@@ -123,6 +236,40 @@
           "a4"
         ]
       },
+      "iq-s2q3": {
+        "category": "spatial",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "iq-s2q4": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "attention",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "iq-s2q5": {
+        "category": "logic",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
       "iq-s2q6": {
         "presentation": "code",
         "visual": {
@@ -133,9 +280,19 @@
         "answerIds": [
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a3"
         ]
+      },
+      "iq-s3q1": {
+        "category": "logic",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "iq-s3q2": {
         "correctAnswerId": "a4",
@@ -143,9 +300,23 @@
         "answerIds": [
           "a1",
           "a2",
+          "a4",
+          "a3"
+        ]
+      },
+      "iq-s3q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "logic",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1"
       },
       "iq-s3q4": {
         "presentation": "code",
@@ -156,9 +327,9 @@
         "category": "attention",
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
+          "a4",
+          "a2"
         ],
         "protectedTokens": [
           {
@@ -193,15 +364,68 @@
           }
         ]
       },
+      "iq-s3q5": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 2
+        },
+        "category": "spatial",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "iq-s3q6": {
+        "category": "verbal",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
       "iq-s4q1": {
         "correctAnswerId": "a2",
         "category": "logic",
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
+          "a4",
+          "a2"
         ]
+      },
+      "iq-s4q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "attention",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "iq-s4q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "numerical",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "iq-s4q4": {
         "correctAnswerId": "a1",
@@ -212,6 +436,42 @@
           "a3",
           "a4"
         ]
+      },
+      "iq-s4q5": {
+        "category": "verbal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "iq-s4q6": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 6,
+          "separator": "→"
+        },
+        "category": "pattern",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "iq-s5q1": {
+        "category": "logic",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "iq-s5q2": {
         "presentation": "code",
@@ -228,15 +488,61 @@
           "a4"
         ]
       },
+      "iq-s5q3": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 8,
+          "separator": "→"
+        },
+        "category": "pattern",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "iq-s5q4": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 6
+        },
+        "category": "spatial",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "iq-s5q5": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "attention",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
+      },
       "iq-s5q8": {
         "correctAnswerId": "a4",
         "category": "spatial",
         "reasoningSteps": 2,
         "answerIds": [
+          "a4",
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a3"
         ]
       }
     },
@@ -295,8 +601,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

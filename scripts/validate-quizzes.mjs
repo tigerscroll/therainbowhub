@@ -485,28 +485,28 @@ for (const folder of folders) {
     const firefighterLandingBlocks = [...firefighterThemeCss.matchAll(/\[data-quiz-theme="firefighter"\] \.quiz-engine__landing\s*\{([^}]*)\}/g)]
       .map((match) => match[1]);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.scoring === "correct-answer", "firefighter: must use correct-answer scoring and an 80% target.");
-    fail(config.template === "single-stage-rewarded-v1", "firefighter: must use the shared single-stage rewarded template.");
+    fail(config.template === "five-stage-six-question-v1", "firefighter: must use five six-question rounds.");
     fail(source.title === "Only 11% Can Pass This Firefighter Entrance Exam", "firefighter/en.json: title changed.");
     fail(source.landing?.cta === "Start Test" && config.listing?.socialProofCount === 268000, "firefighter: landing CTA and social proof must match the approved launch copy.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedQuestionIds), "firefighter/en.json: approved ten-question set or order changed.");
-    fail(firefighterCategories.every((category) => categoryCounts[category] === 2), "firefighter/en.json: every entrance area must appear exactly twice.");
+    fail(sourceQuestionIds.length === 30 && expectedQuestionIds.every(id => sourceQuestionIds.includes(id)), "firefighter/en.json: thirty questions must retain the previously approved questions.");
+    fail(firefighterCategories.every((category) => categoryCounts[category] >= 5), "firefighter/en.json: every entrance area must appear at least five times.");
     fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "firefighter/en.json: every question needs a distinct header label.");
-    fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready" && source.career?.stages?.[0]?.preAdButton === "Reveal My Results", "firefighter/en.json: final reveal gate must match the single-stage flow.");
-    fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks) === JSON.stringify(["10 answers checked", "Five entrance areas compared", "Your final score calculated"]), "firefighter/en.json: final result checklist changed.");
+    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready" && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", "firefighter/en.json: final reveal gate must follow all five rounds.");
+    fail(JSON.stringify(source.career?.stages?.at(-1)?.preAdChecks) === JSON.stringify(["30 answers checked", "Five rounds completed", "Your result prepared"]), "firefighter/en.json: final result checklist changed.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.title)) === JSON.stringify(expectedProfiles), "firefighter/en.json: candidate profile names changed.");
     fail(new Set(sourceQuestions.map((question) => question.interactionStyle)).size >= 8, "firefighter/en.json: the short challenge must retain varied reasoning styles.");
     fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2 && /synthesis/.test(question.interactionStyle ?? "")), "firefighter/en.json: the final three questions must retain two-step reasoning.");
     fail(!forbiddenOperationalCopy.test(sourceQuestions.map((question) => `${question.question} ${question.answers.join(" ")}`).join(" ")), "firefighter/en.json: operational firefighting instruction is outside the quiz scope.");
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.");
     fail(questionsById["firefighter-s3q6"]?.question === "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?", "firefighter/en.json: the radiation question must remain unambiguous.");
-    fail(questionsById["firefighter-s3q2"]?.answers?.[1] === "60 metres" && questionsById["firefighter-s5q6"]?.answers?.[3] === "12", "firefighter/en.json: approved numeracy answers changed.");
-    fail(!/40 varied questions|five exam sections/i.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the ten-question format.");
+    fail(questionsById["firefighter-s3q2"]?.answers?.[questionsById["firefighter-s3q2"].correct] === "60 metres" && questionsById["firefighter-s5q6"]?.answers?.[questionsById["firefighter-s5q6"].correct] === "12", "firefighter/en.json: approved numeracy answers changed.");
+    fail(/five rounds/i.test(source.about?.body ?? "") && /30/.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the thirty-question format.");
     fail(firefighterLandingBlocks.length > 0 && firefighterLandingBlocks.every((block) => !/(?:^|;)\s*(?:grid-template-columns|width|padding(?:-[a-z]+)?)\s*:/m.test(block)), "firefighter/theme.css: shared landing grid, width and padding must not be overridden.");
   }
   if (["oxford", "cambridge", "harvard", "nursing", "paramedic", "midwifery", "chef"].includes(folder.name)) {
-    fail(source.career?.stages?.length === 1, `${folder.name}/en.json: entrance challenge must use one final result gate.`);
-    fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready", `${folder.name}/en.json: result-ready title changed.`);
-    fail(JSON.stringify(source.career?.stages?.[0]?.preAdChecks)?.includes("10 answers checked"), `${folder.name}/en.json: ten-answer final checklist changed.`);
+    fail(source.career?.stages?.length === 5, `${folder.name}/en.json: entrance challenge must have five round gates.`);
+    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready", `${folder.name}/en.json: result-ready title changed.`);
+    fail(JSON.stringify(source.career?.stages?.at(-1)?.preAdChecks)?.includes("30 answers checked"), `${folder.name}/en.json: thirty-answer final checklist changed.`);
   }
   if (["memory", "years-left"].includes(folder.name)) {
     const memory = folder.name === "memory";
@@ -533,11 +533,11 @@ for (const folder of folders) {
   }
   if (folder.name === "iq") {
     const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.targetRatio === 0.8, "iq: must use the shared single-stage engine and 80% target.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "iq/en.json: approved ten-question sequence changed.");
+    fail(config.template === "five-stage-six-question-v1" && config.engine?.targetRatio === 0.8, "iq: must use five rounds and an 80% target.");
+    fail(sourceQuestionIds.length === 30 && expectedIds.every(id => sourceQuestionIds.includes(id)), "iq/en.json: thirty questions must retain the previously approved puzzles.");
     fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "iq/en.json: every puzzle needs a question-type header.");
-    fail(source.career?.stages?.[0]?.preAdTitle === "Your results are ready" && source.career?.stages?.[0]?.preAdButton === "Reveal My Results", "iq/en.json: final result gate changed.");
-    fail(source.results?.score?.showBestRound === false, "iq/en.json: a single-stage quiz must not show a redundant best-round module.");
+    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready" && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", "iq/en.json: final result gate changed.");
+    fail(source.results?.score?.showBestRound === true, "iq/en.json: five rounds must support the best-round summary.");
     fail(source.title === "Only 7% Pass This Intelligence Test", "iq/en.json: title changed.");
   }
   for (const localeFile of activeLocaleFiles) {

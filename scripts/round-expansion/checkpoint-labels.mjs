@@ -1,0 +1,35 @@
+// Subject-neutral labels: never borrow Memory-specific result wording.
+// Progress label, reveal button, ready title, ready description.
+export const checkpointLabels={
+ ar:['تقدمك','عرض نتيجتي','نتيجتك جاهزة','أجبت عن جميع الأسئلة الـ30. شاهد نتيجتك.'],
+ bg:['Твоят напредък','Виж резултата ми','Резултатът ти е готов','Отговори на всичките 30 въпроса. Виж резултата си.'],
+ cs:['Váš pokrok','Zobrazit můj výsledek','Váš výsledek je připraven','Odpověděli jste na všech 30 otázek. Podívejte se na svůj výsledek.'],
+ da:['Dine fremskridt','Se mit resultat','Dit resultat er klar','Du har besvaret alle 30 spørgsmål. Se dit resultat.'],
+ de:['Ihr Fortschritt','Mein Ergebnis anzeigen','Ihr Ergebnis ist bereit','Sie haben alle 30 Fragen beantwortet. Sehen Sie sich Ihr Ergebnis an.'],
+ el:['Η πρόοδός σου','Δες το αποτέλεσμά μου','Το αποτέλεσμά σου είναι έτοιμο','Απάντησες και στις 30 ερωτήσεις. Δες το αποτέλεσμά σου.'],
+ es:['Tu progreso','Ver mi resultado','Tu resultado está listo','Has respondido las 30 preguntas. Descubre tu resultado.'],
+ fi:['Edistymisesi','Näytä tulokseni','Tuloksesi on valmis','Olet vastannut kaikkiin 30 kysymykseen. Katso tuloksesi.'],
+ fil:['Iyong pag-usad','Tingnan ang resulta ko','Handa na ang resulta mo','Nasagutan mo na ang lahat ng 30 tanong. Tingnan ang resulta mo.'],
+ fr:['Votre progression','Voir mon résultat','Votre résultat est prêt','Vous avez répondu aux 30 questions. Découvrez votre résultat.'],
+ he:['ההתקדמות שלך','הצגת התוצאה שלי','התוצאה שלך מוכנה','כל 30 השאלות נענו. הגיע הזמן לגלות את התוצאה.'],
+ hr:['Tvoj napredak','Prikaži moj rezultat','Tvoj rezultat je spreman','Odgovoreno je na svih 30 pitanja. Pogledaj svoj rezultat.'],
+ hu:['Előrehaladásod','Mutasd az eredményem','Elkészült az eredményed','Mind a 30 kérdésre válaszoltál. Nézd meg az eredményed!'],
+ id:['Kemajuanmu','Lihat hasil saya','Hasilmu sudah siap','Kamu telah menjawab semua 30 pertanyaan. Lihat hasilmu.'],
+ it:['I tuoi progressi','Mostra il mio risultato','Il tuo risultato è pronto','Hai risposto a tutte le 30 domande. Scopri il tuo risultato.'],
+ ja:['進み具合','結果を見る','結果が出ました','全30問に回答しました。結果を見てみましょう。'],
+ ms:['Kemajuan anda','Lihat keputusan saya','Keputusan anda sudah sedia','Anda telah menjawab kesemua 30 soalan. Lihat keputusan anda.'],
+ nb:['Fremgangen din','Se resultatet mitt','Resultatet ditt er klart','Du har svart på alle 30 spørsmålene. Se resultatet ditt.'],
+ nl:['Je voortgang','Bekijk mijn resultaat','Je resultaat is klaar','Je hebt alle 30 vragen beantwoord. Ontdek je resultaat.'],
+ pl:['Twój postęp','Pokaż mój wynik','Twój wynik jest gotowy','Wszystkie 30 pytań za Tobą. Sprawdź swój wynik.'],
+ pt:['O seu progresso','Ver o meu resultado','O seu resultado está pronto','Respondeu às 30 perguntas. Descubra o seu resultado.'],
+ ro:['Progresul tău','Vezi rezultatul meu','Rezultatul tău este gata','Ai răspuns la toate cele 30 de întrebări. Descoperă rezultatul.'],
+ sk:['Váš pokrok','Zobraziť môj výsledok','Váš výsledok je pripravený','Odpovedali ste na všetkých 30 otázok. Pozrite si svoj výsledok.'],
+ sr:['Твој напредак','Прикажи мој резултат','Твој резултат је спреман','Одговорено је на свих 30 питања. Погледај свој резултат.'],
+ sv:['Dina framsteg','Visa mitt resultat','Ditt resultat är klart','Du har svarat på alla 30 frågor. Se ditt resultat.'],
+ th:['ความคืบหน้า','ดูผลของฉัน','ผลของคุณพร้อมแล้ว','คุณตอบครบทั้ง 30 ข้อแล้ว มาดูผลกัน'],
+ tr:['İlerlemen','Sonucumu göster','Sonucun hazır','30 sorunun tamamını yanıtladın. Sonucunu gör.'],
+ uk:['Твій прогрес','Показати мій результат','Твій результат готовий','Є відповіді на всі 30 запитань. Переглянь свій результат.'],
+ vi:['Tiến độ của bạn','Xem kết quả của tôi','Kết quả của bạn đã sẵn sàng','Bạn đã trả lời cả 30 câu hỏi. Hãy xem kết quả.'],
+};
+// Weighted-profile quizzes have no correct-answer reveal fallback.
+export const personalityReveal={fi:'Näytä persoonallisuusprofiilini',id:'Lihat profil kepribadian saya',ja:'性格診断の結果を見る',ms:'Lihat profil personaliti saya',vi:'Xem hồ sơ tính cách của tôi'};

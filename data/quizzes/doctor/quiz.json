@@ -8,14 +8,16 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "independent"
+    "localeParity": "strict",
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/items/doctor-icon.webp",
     "published": "2026-09-11",
     "difficulty": "Hard",
     "icon": "🩺",
-    "socialProofCount": 224000
+    "socialProofCount": 224000,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "editorial",
@@ -59,23 +61,67 @@
       "icon": "🩺"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "doctor-q1",
           "doctor-q2",
+          "doctor-round1-new1",
+          "doctor-round1-new2",
+          "doctor-round1-new3",
+          "doctor-round1-new4"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
           "doctor-q3",
           "doctor-q4",
+          "doctor-round2-new1",
+          "doctor-round2-new2",
+          "doctor-round2-new3",
+          "doctor-round2-new4"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
           "doctor-q5",
           "doctor-q6",
+          "doctor-round3-new1",
+          "doctor-round3-new2",
+          "doctor-round3-new3",
+          "doctor-round3-new4"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
           "doctor-q7",
           "doctor-q8",
+          "doctor-round4-new1",
+          "doctor-round4-new2",
+          "doctor-round4-new3",
+          "doctor-round4-new4"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
           "doctor-q9",
-          "doctor-q10"
+          "doctor-q10",
+          "doctor-round5-new1",
+          "doctor-round5-new2",
+          "doctor-round5-new3",
+          "doctor-round5-new4"
         ]
       }
     ],
@@ -85,8 +131,8 @@
         "correctAnswerId": "a1",
         "category": "anatomy",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -97,10 +143,54 @@
         "category": "clinical_reasoning",
         "answerIds": [
           "a1",
+          "a3",
+          "a4",
+          "a2"
+        ]
+      },
+      "doctor-round1-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
+      },
+      "doctor-round1-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "doctor-round1-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
+      },
+      "doctor-round1-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "diagnostics"
       },
       "doctor-q3": {
         "presentation": "text",
@@ -118,11 +208,55 @@
         "correctAnswerId": "a4",
         "category": "clinical_reasoning",
         "answerIds": [
+          "a4",
           "a1",
           "a2",
+          "a3"
+        ]
+      },
+      "doctor-round2-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "diagnostics"
+      },
+      "doctor-round2-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "diagnostics"
+      },
+      "doctor-round2-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
+      },
+      "doctor-round2-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
       },
       "doctor-q5": {
         "presentation": "text",
@@ -141,10 +275,54 @@
         "category": "diagnostics",
         "answerIds": [
           "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "doctor-round3-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
+      },
+      "doctor-round3-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
+      },
+      "doctor-round3-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "doctor-round3-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
       },
       "doctor-q7": {
         "presentation": "text",
@@ -153,8 +331,8 @@
         "answerIds": [
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a3"
         ]
       },
       "doctor-q8": {
@@ -163,18 +341,62 @@
         "category": "anatomy",
         "answerIds": [
           "a1",
+          "a4",
+          "a2",
+          "a3"
+        ]
+      },
+      "doctor-round4-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pharmacology"
+      },
+      "doctor-round4-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "pharmacology"
+      },
+      "doctor-round4-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "emergencies"
+      },
+      "doctor-round4-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
       },
       "doctor-q9": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "emergencies",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -184,11 +406,55 @@
         "correctAnswerId": "a2",
         "category": "pharmacology",
         "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ]
+      },
+      "doctor-round5-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "diagnostics"
+      },
+      "doctor-round5-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
+      },
+      "doctor-round5-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "diagnostics"
+      },
+      "doctor-round5-new4": {
+        "presentation": "text",
+        "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_reasoning"
       }
     },
     "checkpoint": {
@@ -252,8 +518,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

@@ -9,9 +9,9 @@ const copy=JSON.parse(fs.readFileSync(root+'en.json','utf8'));
 const expanded=expandQuizLocale(manifest,copy,'en');
 const questions=expanded.stages.flatMap((s:any)=>s.questions);
 
-test('Treatments is English-only, text-only and five distinct six-question rounds',()=>{
- assert.deepEqual(manifest.activeLocales,['en']);
- assert.equal(manifest.engine.localeParity,'independent');
+test('Treatments is localized, text-only and five distinct six-question rounds',()=>{
+ assert.equal(manifest.activeLocales.length,30);
+ assert.equal(manifest.engine.localeParity,'strict');
  assert.equal(manifest.template,'five-stage-six-question-v1');
  assert.equal(manifest.engine.hardRefreshCheckpoints,false);
  assert.equal(manifest.engine.targetRatio,.8);

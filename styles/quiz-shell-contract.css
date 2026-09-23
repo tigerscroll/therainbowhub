@@ -3,6 +3,12 @@
  * This style is deliberately mounted after folder theme CSS so themes may keep
  * their colour, type and texture without changing the shared experience.
  */
+/* Decorative theme artwork can extend past the viewport. Clip it without
+ * creating a scroll container that focus/scrollIntoView can shift sideways. */
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] {
+  overflow: clip;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] {
   --quiz-shell-action-width: 480px;
   --quiz-shell-action-height: 78px;

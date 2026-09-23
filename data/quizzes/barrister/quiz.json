@@ -8,14 +8,16 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "independent"
+    "localeParity": "strict",
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/items/barrister-icon.webp",
     "published": "2026-09-10",
     "difficulty": "Hard",
     "icon": "⚖️",
-    "socialProofCount": 181000
+    "socialProofCount": 181000,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "editorial",
@@ -59,23 +61,67 @@
       "icon": "⚖️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "barrister-q1",
           "barrister-q2",
+          "barrister-round1-new1",
+          "barrister-round1-new2",
+          "barrister-round1-new3",
+          "barrister-round1-new4"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
           "barrister-q3",
           "barrister-q4",
+          "barrister-round2-new1",
+          "barrister-round2-new2",
+          "barrister-round2-new3",
+          "barrister-round2-new4"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
           "barrister-q5",
           "barrister-q6",
+          "barrister-round3-new1",
+          "barrister-round3-new2",
+          "barrister-round3-new3",
+          "barrister-round3-new4"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
           "barrister-q7",
           "barrister-q8",
+          "barrister-round4-new1",
+          "barrister-round4-new2",
+          "barrister-round4-new3",
+          "barrister-round4-new4"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
           "barrister-q9",
-          "barrister-q10"
+          "barrister-q10",
+          "barrister-round5-new1",
+          "barrister-round5-new2",
+          "barrister-round5-new3",
+          "barrister-round5-new4"
         ]
       }
     ],
@@ -85,8 +131,8 @@
         "correctAnswerId": "a1",
         "category": "courtroom_basics",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -97,10 +143,54 @@
         "category": "courtroom_basics",
         "answerIds": [
           "a1",
+          "a3",
+          "a4",
+          "a2"
+        ]
+      },
+      "barrister-round1-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
+      },
+      "barrister-round1-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
+      },
+      "barrister-round1-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-round1-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
       },
       "barrister-q3": {
         "presentation": "text",
@@ -118,11 +208,55 @@
         "correctAnswerId": "a4",
         "category": "evidence_advocacy",
         "answerIds": [
+          "a4",
           "a1",
           "a2",
+          "a3"
+        ]
+      },
+      "barrister-round2-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-round2-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
+      },
+      "barrister-round2-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-round2-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
       },
       "barrister-q5": {
         "presentation": "text",
@@ -141,10 +275,54 @@
         "category": "precedent_reasoning",
         "answerIds": [
           "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "barrister-round3-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-round3-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-round3-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-round3-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
       },
       "barrister-q7": {
         "presentation": "text",
@@ -153,8 +331,8 @@
         "answerIds": [
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a3"
         ]
       },
       "barrister-q8": {
@@ -163,18 +341,62 @@
         "category": "evidence_advocacy",
         "answerIds": [
           "a1",
+          "a4",
+          "a2",
+          "a3"
+        ]
+      },
+      "barrister-round4-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-round4-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-round4-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-round4-new4": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
       },
       "barrister-q9": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "courtroom_basics",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -184,11 +406,55 @@
         "correctAnswerId": "a2",
         "category": "professional_principles",
         "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ]
+      },
+      "barrister-round5-new1": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-round5-new2": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-round5-new3": {
+        "presentation": "text",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-round5-new4": {
+        "presentation": "text",
+        "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
       }
     },
     "checkpoint": {
@@ -245,8 +511,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

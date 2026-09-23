@@ -23,3 +23,7 @@
 [data-quiz-theme="raf"] .quiz-engine__answer>span{background:linear-gradient(180deg,#d9b369,var(--raf-gold));color:#1d2d42}
 [data-quiz-theme="raf"] .quiz-engine__progress i{background:linear-gradient(90deg,var(--raf-red),var(--raf-gold))}
 @media(max-width:640px){[data-quiz-theme="raf"] .quiz-engine__landing-badge{width:78px;height:78px}[data-quiz-theme="raf"] .quiz-engine__landing h1{font-size:clamp(31px,8.7vw,40px)}[data-quiz-theme="raf"] .quiz-engine__landing .quiz-engine__quick-start{font-size:15px;line-height:1.38}}
+
+/* Five-round text-answer layout */
+[data-quiz-theme="raf"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="raf"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

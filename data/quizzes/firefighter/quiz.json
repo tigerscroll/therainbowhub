@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "firefighter",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    }
+    },
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.webp",
     "published": "2026-08-24",
     "difficulty": "Hard",
     "icon": "🚒",
-    "socialProofCount": 268000
+    "socialProofCount": 268000,
+    "showSocialProof": false
   },
   "theme": {
     "id": "firefighter",
@@ -60,20 +62,64 @@
       "icon": "🚒"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "firefighter-s1q1",
           "firefighter-s1q2",
-          "firefighter-s2q2",
+          "firefighter-s1q3",
+          "firefighter-s1q4",
           "firefighter-s1q5",
-          "firefighter-s3q6",
+          "firefighter-s1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "firefighter-s2q1",
+          "firefighter-s2q2",
+          "firefighter-s2q3",
+          "firefighter-s2q4",
+          "firefighter-s2q5",
+          "firefighter-s2q6"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "firefighter-s3q1",
           "firefighter-s3q2",
-          "firefighter-s4q7",
+          "firefighter-s3q3",
+          "firefighter-s3q4",
+          "firefighter-s3q5",
+          "firefighter-s3q6"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "firefighter-s4q1",
+          "firefighter-s4q2",
+          "firefighter-s4q3",
+          "firefighter-s4q4",
+          "firefighter-s4q5",
+          "firefighter-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "firefighter-s5q1",
+          "firefighter-s5q2",
+          "firefighter-s5q3",
           "firefighter-s5q5",
           "firefighter-s5q6",
           "firefighter-s5q8"
@@ -103,6 +149,65 @@
           "a4"
         ]
       },
+      "firefighter-s1q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2
+        },
+        "category": "numeracy_spatial_awareness",
+        "interactionStyle": "calculation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s1q4": {
+        "category": "communication_incident_judgement",
+        "interactionStyle": "communication",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "firefighter-s1q5": {
+        "correctAnswerId": "a3",
+        "category": "equipment_mechanical_reasoning",
+        "interactionStyle": "mechanical-reasoning",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "firefighter-s1q6": {
+        "category": "fire_smoke_science",
+        "interactionStyle": "science-reasoning",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s2q1": {
+        "category": "fire_smoke_science",
+        "interactionStyle": "science-reasoning",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
       "firefighter-s2q2": {
         "presentation": "code",
         "visual": {
@@ -118,8 +223,7 @@
           "a4"
         ]
       },
-      "firefighter-s1q5": {
-        "correctAnswerId": "a3",
+      "firefighter-s2q3": {
         "category": "equipment_mechanical_reasoning",
         "interactionStyle": "mechanical-reasoning",
         "answerIds": [
@@ -127,18 +231,56 @@
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4"
       },
-      "firefighter-s3q6": {
-        "correctAnswerId": "a1",
-        "category": "fire_smoke_science",
-        "interactionStyle": "science-reasoning",
+      "firefighter-s2q4": {
+        "category": "scene_hazard_awareness",
+        "interactionStyle": "hazard-recognition",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2"
+      },
+      "firefighter-s2q5": {
+        "category": "fire_smoke_science",
+        "interactionStyle": "evidence-check",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s2q6": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2
+        },
+        "category": "numeracy_spatial_awareness",
+        "interactionStyle": "calculation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "firefighter-s3q1": {
+        "category": "equipment_mechanical_reasoning",
+        "interactionStyle": "mechanical-reasoning",
+        "answerIds": [
+          "a4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       },
       "firefighter-s3q2": {
         "presentation": "code",
@@ -150,10 +292,118 @@
         "interactionStyle": "calculation",
         "answerIds": [
           "a1",
+          "a3",
           "a2",
+          "a4"
+        ]
+      },
+      "firefighter-s3q3": {
+        "category": "scene_hazard_awareness",
+        "interactionStyle": "hazard-recognition",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "firefighter-s3q4": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 4,
+          "separator": "→"
+        },
+        "category": "equipment_mechanical_reasoning",
+        "interactionStyle": "sequence",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s3q5": {
+        "category": "communication_incident_judgement",
+        "interactionStyle": "communication",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "firefighter-s3q6": {
+        "correctAnswerId": "a1",
+        "category": "fire_smoke_science",
+        "interactionStyle": "science-reasoning",
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
         ]
+      },
+      "firefighter-s4q1": {
+        "category": "communication_incident_judgement",
+        "interactionStyle": "prioritisation",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s4q2": {
+        "category": "scene_hazard_awareness",
+        "interactionStyle": "hazard-recognition",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "firefighter-s4q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 3
+        },
+        "category": "numeracy_spatial_awareness",
+        "interactionStyle": "calculation",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "firefighter-s4q4": {
+        "category": "fire_smoke_science",
+        "interactionStyle": "science-reasoning",
+        "answerIds": [
+          "a4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "firefighter-s4q5": {
+        "category": "communication_incident_judgement",
+        "interactionStyle": "communication",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
       },
       "firefighter-s4q7": {
         "correctAnswerId": "a3",
@@ -166,6 +416,50 @@
           "a4"
         ]
       },
+      "firefighter-s5q1": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "fire_smoke_science",
+        "reasoningSteps": 2,
+        "interactionStyle": "science-synthesis",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "firefighter-s5q2": {
+        "category": "equipment_mechanical_reasoning",
+        "reasoningSteps": 2,
+        "interactionStyle": "mechanical-synthesis",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "firefighter-s5q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "communication_incident_judgement",
+        "reasoningSteps": 2,
+        "interactionStyle": "communication-synthesis",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
       "firefighter-s5q5": {
         "presentation": "sequence",
         "visual": {
@@ -177,8 +471,8 @@
         "reasoningSteps": 2,
         "interactionStyle": "mechanical-synthesis",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -209,8 +503,8 @@
         "reasoningSteps": 2,
         "interactionStyle": "prioritisation-synthesis",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -277,11 +571,43 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     },
     "checkpoint": {
       "finalIcon": "🚒"
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

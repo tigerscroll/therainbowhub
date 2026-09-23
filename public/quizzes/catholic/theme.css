@@ -86,3 +86,7 @@
   [data-quiz-theme="catholic"] .quiz-engine__landing h1{font-size:clamp(32px,9vw,42px)}
   [data-quiz-theme="catholic"] .quiz-engine__landing .quiz-engine__quick-start{font-size:15px;line-height:1.38}
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="catholic"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="catholic"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

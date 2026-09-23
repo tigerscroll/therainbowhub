@@ -96,3 +96,7 @@
   [data-quiz-theme="anatomy"] .quiz-engine__landing h1{font-size:clamp(31px,8.9vw,40px)}
   [data-quiz-theme="anatomy"] .quiz-engine__landing .quiz-engine__quick-start{font-size:15px;line-height:1.38}
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="anatomy"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="anatomy"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

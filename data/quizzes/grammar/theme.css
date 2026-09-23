@@ -234,3 +234,7 @@
 [data-quiz-theme="grammar"] *::before,
 [data-quiz-theme="grammar"] *::after{ animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="grammar"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="grammar"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

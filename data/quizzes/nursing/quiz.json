@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "nursing",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "targetRatio": 0.8
+    "targetRatio": 0.8,
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
     "difficulty": "Hard",
     "icon": "🩺",
-    "socialProofCount": 138000
+    "socialProofCount": 138000,
+    "showSocialProof": false
   },
   "theme": {
     "id": "nursing",
@@ -60,23 +62,67 @@
       "icon": "🩺"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "nurse-r1q1",
           "nurse-r1q2",
+          "nurse-r1q3",
+          "nurse-r1q4",
+          "nurse-r1q5",
+          "nurse-r1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "nurse-r2q3",
+          "nurse-r2q4",
           "nurse-r2q5",
+          "nurse-r5q3",
           "nurse-r5q4",
+          "nurse-r5q5"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
           "nurse-r4q3",
           "nurse-r6q3",
+          "nurse-r4q1",
+          "nurse-r4q2",
+          "nurse-r4q4",
+          "nurse-r4q5"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "nurse-r7q2",
+          "nurse-r2q6",
+          "nurse-r4q6",
           "nurse-r7q1",
-          "nurse-r3q1",
+          "nurse-r7q5",
+          "nurse-r3q1"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "nurse-r10q6",
+          "nurse-r10q3",
+          "nurse-r3q4",
           "nurse-r10q1",
-          "nurse-r10q6"
+          "nurse-r10q2",
+          "nurse-r10q4"
         ]
       }
     ],
@@ -112,15 +158,97 @@
           "a4"
         ]
       },
-      "nurse-r2q5": {
-        "correctAnswerId": "a2",
+      "nurse-r1q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
         "category": "observation_vitals",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "nurse-r1q4": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "nurse-r1q5": {
+        "category": "communication_compassion",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r1q6": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "nurse-r2q3": {
+        "presentation": "icons",
+        "icons": {
+          "a1": "⚡",
+          "a2": "/quizzes/nursing/assets/icons/stomach.svg",
+          "a3": "🦴",
+          "a4": "/quizzes/nursing/assets/icons/kidneys.svg"
+        },
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "nurse-r2q4": {
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r2q5": {
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
         ]
+      },
+      "nurse-r5q3": {
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       },
       "nurse-r5q4": {
         "presentation": "code",
@@ -133,9 +261,19 @@
         "answerIds": [
           "a1",
           "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a3"
         ]
+      },
+      "nurse-r5q5": {
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
       },
       "nurse-r4q3": {
         "presentation": "icons",
@@ -148,8 +286,8 @@
         "correctAnswerId": "a2",
         "category": "infection_safety",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
@@ -158,11 +296,87 @@
         "correctAnswerId": "a1",
         "category": "communication_compassion",
         "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ]
+      },
+      "nurse-r4q1": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "nurse-r4q2": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r4q4": {
+        "category": "infection_safety",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r4q5": {
+        "category": "communication_compassion",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "nurse-r7q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "reasoning_priorities",
+        "reasoningSteps": 2,
+        "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4"
+      },
+      "nurse-r2q6": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r4q6": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "nurse-r7q1": {
         "correctAnswerId": "a1",
@@ -174,22 +388,19 @@
           "a4"
         ]
       },
+      "nurse-r7q5": {
+        "category": "observation_vitals",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1"
+      },
       "nurse-r3q1": {
         "correctAnswerId": "a3",
         "category": "numeracy_measurement",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "nurse-r10q1": {
-        "presentation": "spatial",
-        "visual": {},
-        "correctAnswerId": "a1",
-        "category": "anatomy_physiology",
-        "reasoningSteps": 2,
         "answerIds": [
           "a1",
           "a2",
@@ -208,10 +419,75 @@
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "nurse-r10q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "observation_vitals",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "nurse-r3q4": {
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "nurse-r10q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "correctAnswerId": "a1",
+        "category": "anatomy_physiology",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
         ]
+      },
+      "nurse-r10q2": {
+        "presentation": "spatial",
+        "visual": {
+          "columns": 1
+        },
+        "category": "numeracy_measurement",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "nurse-r10q4": {
+        "category": "infection_safety",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       }
     },
     "checkpoint": {
@@ -269,8 +545,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "paramedic",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    }
+    },
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-14",
     "difficulty": "Hard",
     "icon": "🚑",
-    "socialProofCount": 149000
+    "socialProofCount": 149000,
+    "showSocialProof": false
   },
   "theme": {
     "id": "paramedic",
@@ -60,23 +62,67 @@
       "icon": "🚑"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "paramedic-r1q1",
+          "paramedic-r3q2",
+          "paramedic-r4q3",
+          "paramedic-r5q2",
           "paramedic-r1q5",
-          "paramedic-r5q4",
+          "paramedic-r1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "paramedic-r2q1",
+          "paramedic-r2q3",
           "paramedic-r2q4",
+          "paramedic-r2q5",
+          "paramedic-r5q3",
+          "paramedic-r5q4"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
           "paramedic-r1q4",
-          "paramedic-r6q2",
+          "paramedic-r4q1",
+          "paramedic-r4q4",
+          "paramedic-r6q5",
+          "paramedic-r9q4",
+          "paramedic-r6q2"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "paramedic-r6q1",
+          "paramedic-r10q5",
+          "paramedic-r2q6",
           "paramedic-r5q6",
-          "paramedic-r3q3",
-          "paramedic-r10q4",
-          "paramedic-r10q2"
+          "paramedic-r7q1",
+          "paramedic-r3q3"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "paramedic-r10q6",
+          "paramedic-r10q1",
+          "paramedic-r10q3",
+          "paramedic-r10q2",
+          "paramedic-r8q2",
+          "paramedic-r10q4"
         ]
       }
     ],
@@ -92,21 +138,130 @@
         "correctAnswerId": "a1",
         "category": "anatomy_physiology",
         "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-r3q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "numeracy_measurement",
+        "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4"
+      },
+      "paramedic-r4q3": {
+        "presentation": "code",
+        "visual": {
+          "columns": 3,
+          "separator": "•"
+        },
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "paramedic-r5q2": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "paramedic-r1q5": {
         "correctAnswerId": "a3",
         "category": "communication_handover",
         "answerIds": [
           "a1",
+          "a3",
+          "a2",
+          "a4"
+        ]
+      },
+      "paramedic-r1q6": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "paramedic-r2q1": {
+        "presentation": "code",
+        "visual": {
+          "columns": 1
+        },
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "paramedic-r2q3": {
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a4",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "paramedic-r2q4": {
+        "correctAnswerId": "a2",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
         ]
+      },
+      "paramedic-r2q5": {
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "paramedic-r5q3": {
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       },
       "paramedic-r5q4": {
         "presentation": "code",
@@ -117,40 +272,106 @@
         "category": "observation_vitals",
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
-        ]
-      },
-      "paramedic-r2q4": {
-        "correctAnswerId": "a2",
-        "category": "anatomy_physiology",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
+          "a4",
+          "a2"
         ]
       },
       "paramedic-r1q4": {
         "correctAnswerId": "a2",
         "category": "scene_safety",
         "answerIds": [
-          "a1",
           "a2",
+          "a1",
           "a3",
           "a4"
         ]
+      },
+      "paramedic-r4q1": {
+        "category": "scene_safety",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "paramedic-r4q4": {
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "paramedic-r6q5": {
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "paramedic-r9q4": {
+        "presentation": "code",
+        "visual": {
+          "columns": 3,
+          "separator": "•"
+        },
+        "category": "scene_safety",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "paramedic-r6q2": {
         "correctAnswerId": "a4",
         "category": "communication_handover",
         "answerIds": [
           "a1",
+          "a4",
+          "a2",
+          "a3"
+        ]
+      },
+      "paramedic-r6q1": {
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4"
+      },
+      "paramedic-r10q5": {
+        "category": "communication_handover",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "paramedic-r2q6": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "paramedic-r5q6": {
         "correctAnswerId": "a1",
@@ -161,6 +382,16 @@
           "a3",
           "a4"
         ]
+      },
+      "paramedic-r7q1": {
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
       },
       "paramedic-r3q3": {
         "presentation": "spatial",
@@ -176,16 +407,45 @@
           "a4"
         ]
       },
-      "paramedic-r10q4": {
-        "correctAnswerId": "a1",
-        "category": "scene_safety",
+      "paramedic-r10q6": {
+        "presentation": "code",
+        "visual": {
+          "columns": 2,
+          "separator": "•"
+        },
+        "category": "reasoning_priorities",
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
+          "a3",
           "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "paramedic-r10q1": {
+        "presentation": "spatial",
+        "visual": {},
+        "category": "anatomy_physiology",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a2",
+          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2"
+      },
+      "paramedic-r10q3": {
+        "category": "numeracy_measurement",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
       },
       "paramedic-r10q2": {
         "presentation": "grid",
@@ -195,6 +455,27 @@
         },
         "correctAnswerId": "a4",
         "category": "observation_vitals",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ]
+      },
+      "paramedic-r8q2": {
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "paramedic-r10q4": {
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
@@ -274,8 +555,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

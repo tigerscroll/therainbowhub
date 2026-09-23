@@ -10,8 +10,8 @@ const expanded=expandQuizLocale(manifest,copy,'en');
 const questions=expanded.stages.flatMap((s:any)=>s.questions);
 
 test('Mechanic has five distinct English text-only rounds and a complete worldwide-friendly result',()=>{
- assert.deepEqual(manifest.activeLocales,['en']);
- assert.equal(manifest.engine.localeParity,'independent');
+ assert.equal(manifest.activeLocales.length,30);
+ assert.equal(manifest.engine.localeParity,'strict');
  assert.equal(manifest.structure.results.score.showBestRound,true);
  assert.deepEqual(expanded.stages.map((s:any)=>s.title),['Dashboard Detective','Inside the Car','Workshop Logic','Fact or Fiction?','Final Diagnosis']);
  assert.equal(new Set(questions.map((q:any)=>q.id)).size,30);

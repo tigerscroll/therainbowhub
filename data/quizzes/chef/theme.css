@@ -926,3 +926,7 @@
   from{ opacity: .72; transform: translateY(3px); }
   to{ opacity: 1; transform: translateY(0); }
 }
+
+/* Five-round text-answer layout */
+[data-quiz-theme="chef"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
+[data-quiz-theme="chef"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }

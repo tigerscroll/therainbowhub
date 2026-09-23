@@ -2,20 +2,22 @@
   "schemaVersion": 2,
   "slug": "cambridge",
   "engine": {
-    "localeParity": "independent",
+    "localeParity": "strict",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
-    }
+    },
+    "hardRefreshCheckpoints": false
   },
   "listing": {
     "thumbnail": "assets/thumbnail.png",
     "published": "2026-08-18",
     "difficulty": "Expert",
     "icon": "🔬",
-    "socialProofCount": 94000
+    "socialProofCount": 94000,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "clean",
@@ -59,23 +61,67 @@
       "icon": "⌬"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "five-stage-six-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "cambridge-s1q1",
-          "cambridge-s1q6",
-          "cambridge-s2q8",
+          "cambridge-s1q2",
+          "cambridge-s1q3",
+          "cambridge-s1q4",
+          "cambridge-s1q5",
+          "cambridge-s1q6"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "cambridge-s2q1",
+          "cambridge-s2q2",
+          "cambridge-s2q3",
+          "cambridge-s2q4",
           "cambridge-s2q7",
+          "cambridge-s2q8"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "cambridge-s3q1",
+          "cambridge-s3q2",
           "cambridge-s3q3",
-          "cambridge-s3q8",
-          "cambridge-s4q7",
-          "cambridge-s5q8",
+          "cambridge-s3q4",
+          "cambridge-s3q5",
+          "cambridge-s3q8"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "cambridge-s4q1",
+          "cambridge-s4q2",
+          "cambridge-s4q3",
+          "cambridge-s4q4",
+          "cambridge-s4q5",
+          "cambridge-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "cambridge-s5q1",
+          "cambridge-s5q2",
+          "cambridge-s5q3",
           "cambridge-s5q5",
-          "cambridge-s5q7"
+          "cambridge-s5q7",
+          "cambridge-s5q8"
         ]
       }
     ],
@@ -95,6 +141,46 @@
           "a4"
         ]
       },
+      "cambridge-s1q2": {
+        "category": "numerical_reasoning",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "cambridge-s1q3": {
+        "category": "pattern_analysis",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "cambridge-s1q4": {
+        "category": "data_interpretation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "cambridge-s1q5": {
+        "category": "spatial_reasoning",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
       "cambridge-s1q6": {
         "correctAnswerId": "a1",
         "category": "experimental_design",
@@ -105,15 +191,50 @@
           "a4"
         ]
       },
-      "cambridge-s2q8": {
-        "correctAnswerId": "a1",
+      "cambridge-s2q1": {
+        "presentation": "sequence",
+        "visual": {
+          "columns": 5,
+          "separator": "→"
+        },
+        "category": "pattern_analysis",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "cambridge-s2q2": {
+        "category": "numerical_reasoning",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "cambridge-s2q3": {
+        "category": "spatial_reasoning",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a4",
+          "a2"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "cambridge-s2q4": {
         "category": "experimental_design",
         "answerIds": [
           "a1",
+          "a4",
           "a2",
-          "a3",
-          "a4"
-        ]
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       },
       "cambridge-s2q7": {
         "correctAnswerId": "a3",
@@ -125,15 +246,65 @@
           "a4"
         ]
       },
+      "cambridge-s2q8": {
+        "correctAnswerId": "a1",
+        "category": "experimental_design",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ]
+      },
+      "cambridge-s3q1": {
+        "category": "numerical_reasoning",
+        "answerIds": [
+          "a2",
+          "a1",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "cambridge-s3q2": {
+        "category": "numerical_reasoning",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
+        ],
+        "correctAnswerId": "a1"
+      },
       "cambridge-s3q3": {
         "correctAnswerId": "a4",
         "category": "pattern_analysis",
         "answerIds": [
           "a1",
+          "a4",
           "a2",
-          "a3",
-          "a4"
+          "a3"
         ]
+      },
+      "cambridge-s3q4": {
+        "category": "data_interpretation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "cambridge-s3q5": {
+        "category": "spatial_reasoning",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
       },
       "cambridge-s3q8": {
         "correctAnswerId": "a2",
@@ -145,26 +316,98 @@
           "a4"
         ]
       },
-      "cambridge-s4q7": {
-        "correctAnswerId": "a1",
+      "cambridge-s4q1": {
+        "category": "numerical_reasoning",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a4",
+          "a1"
+        ],
+        "correctAnswerId": "a1"
+      },
+      "cambridge-s4q2": {
+        "category": "data_interpretation",
+        "answerIds": [
+          "a1",
+          "a4",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "cambridge-s4q3": {
+        "category": "data_interpretation",
+        "answerIds": [
+          "a1",
+          "a3",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a2"
+      },
+      "cambridge-s4q4": {
         "category": "spatial_reasoning",
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "cambridge-s4q5": {
+        "category": "data_interpretation",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
+        ],
+        "correctAnswerId": "a4"
+      },
+      "cambridge-s4q7": {
+        "correctAnswerId": "a1",
+        "category": "spatial_reasoning",
+        "answerIds": [
+          "a2",
+          "a3",
+          "a1",
+          "a4"
         ]
       },
-      "cambridge-s5q8": {
-        "correctAnswerId": "a4",
-        "category": "data_interpretation",
+      "cambridge-s5q1": {
+        "category": "numerical_reasoning",
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2"
+      },
+      "cambridge-s5q2": {
+        "category": "data_interpretation",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a3",
+          "a1",
+          "a2",
+          "a4"
+        ],
+        "correctAnswerId": "a3"
+      },
+      "cambridge-s5q3": {
+        "category": "pattern_analysis",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a1",
+          "a2",
+          "a4",
+          "a3"
+        ],
+        "correctAnswerId": "a4"
       },
       "cambridge-s5q5": {
         "correctAnswerId": "a3",
@@ -172,8 +415,8 @@
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
-          "a2",
           "a3",
+          "a2",
           "a4"
         ]
       },
@@ -183,9 +426,20 @@
         "reasoningSteps": 2,
         "answerIds": [
           "a1",
-          "a2",
           "a3",
-          "a4"
+          "a4",
+          "a2"
+        ]
+      },
+      "cambridge-s5q8": {
+        "correctAnswerId": "a4",
+        "category": "data_interpretation",
+        "reasoningSteps": 2,
+        "answerIds": [
+          "a4",
+          "a1",
+          "a2",
+          "a3"
         ]
       }
     },
@@ -244,8 +498,40 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
-  }
+  },
+  "activeLocales": [
+    "en",
+    "ar",
+    "bg",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "fi",
+    "fil",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ms",
+    "nb",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "sk",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "uk",
+    "vi"
+  ]
 }

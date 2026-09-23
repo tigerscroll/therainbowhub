@@ -30,7 +30,7 @@ test("all quiz locales retain visibly distinct answer labels, including profile 
 test("the localized palindrome question has exactly one correct answer in every locale", () => {
   const correctId = read("word", "quiz.json").structure.questions["word-q10"].correctAnswerId;
   for (const locale of locales) {
-    const question = read("word", `${locale}.json`).stages["stage-1"].questions["word-q10"] as QuestionCopy;
+    const question = (Object.values(read("word", `${locale}.json`).stages) as Array<{questions: Record<string, QuestionCopy>}>).find(stage => stage.questions["word-q10"])!.questions["word-q10"];
     const palindromeIds = Object.entries(question.answers).filter(([, answer]) => {
       const letters = Array.from(normalized(answer).replace(/[\p{P}\p{Z}\p{M}]/gu, ""));
       return letters.length > 1 && letters.join("") === [...letters].reverse().join("");
@@ -105,7 +105,7 @@ test("the barrister Latin-term question preserves exact choices under stable ans
   // definitions, or transliterating only the distractors, gives away the answer.
   // Compare by ID rather than display position so reordering remains safe.
   for (const locale of locales) {
-    const copy = read("barrister", `${locale}.json`).stages["stage-1"].questions[questionId];
+    const copy = (Object.values(read("barrister", `${locale}.json`).stages) as Array<{questions: Record<string, QuestionCopy>}>).find(stage => stage.questions[questionId])!.questions[questionId];
     assert.deepEqual(copy.answers, expected, `barrister/${locale}/${questionId}: preserve the Latin choices`);
   }
 });
