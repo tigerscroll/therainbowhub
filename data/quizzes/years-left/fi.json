@@ -7,12 +7,11 @@
     "cta": "Aloita testi"
   },
   "about": {
-    "body": "Kolmekymmentä kysymystä viidellä lyhyellä kierroksella käsittelee tapojasi, energiaasi, ihmissuhteitasi ja elämänasennettasi.\n\nValitse sinuun parhaiten sopiva vastaus. Seuraava kysymys ilmestyy automaattisesti. Ei oikeita tai vääriä vastauksia eikä kiirettä. Lyhyt mainos avaa visan, jokaisen uuden kierroksen ja lopputuloksen.\n\nTuloksena saat leikkimielisen ikäarvion ja elämäntapaprofiilin. Kyseessä ei ole lääketieteellinen ennuste tai luotettava arvio elinajanodotteesta.",
+    "body": "Katso, mitä arkiset tapasi kertovat sinusta.\n\nTuloksena saat leikkimielisen ikäarvion ja elämäntapaprofiilin. Kyseessä ei ole lääketieteellinen ennuste tai luotettava arvio elinajanodotteesta.",
     "howToPlay": {
       "steps": [
-        "Paina Aloita testi, katso lyhyt mainos ja aloita.",
-        "Valitse yksi vastaus per kysymys; seuraava kysymys avautuu automaattisesti.",
-        "Vastaa kierroksen kuuteen kysymykseen ja jatka lyhyen mainoksen jälkeen. Tuloksesi näkyy viimeisen kierroksen jälkeen."
+        "Valitse vastaus, joka tuntuu eniten todelliselta rutiiniltasi ajattelematta sitä liikaa.",
+        "Täytä kaikki kymmenen elämäntapakysymystä yhdellä keskeytymättömällä juoksulla."
       ]
     },
     "disclaimer": "Vain viihdettä ja itsetutkiskelua varten. Tämä tietokilpailu ei ennusta elinikää, terveyttä, kuolleisuusriskiä tai lääketieteellisiä tuloksia. Jos sinulla on terveysongelmia, keskustele pätevän terveydenhuollon ammattilaisen kanssa."
@@ -21,51 +20,15 @@
     "resultProgressLabel": "Visan eteneminen",
     "stages": {
       "stage-1": {
-        "difficulty": "Arjen rytmi",
-        "preAdTitle": "Kierros 1 valmis",
-        "preAdCopy": "Ensimmäinen kierros valmis! Mikä antaa sinulle energiaa?",
-        "next": {
-          "eyebrow": "SEURAAVA KIERROS",
-          "tagline": "Löydä arjen energiasi."
-        }
-      },
-      "stage-2": {
-        "difficulty": "Arjen energia",
-        "preAdTitle": "Kierros 2 valmis",
-        "preAdCopy": "Olet suorittanut kaksi kierrosta. Ota nyt selvää, kuinka saat energiasi takaisin.",
-        "next": {
-          "eyebrow": "SEURAAVA KIERROS",
-          "tagline": "Tutustu siihen, kuinka käsittelet painetta."
-        }
-      },
-      "stage-3": {
-        "difficulty": "Paineet ja palautuminen",
-        "preAdTitle": "Kierros 3 valmis",
-        "preAdCopy": "Olet jo yli puolivälin! Seuraavaksi päästetään seikkailunhalu esiin.",
-        "next": {
-          "eyebrow": "SEURAAVA KIERROS",
-          "tagline": "Löydä utelias puolesi."
-        }
-      },
-      "stage-4": {
-        "difficulty": "Seikkailunhalu",
-        "preAdTitle": "Kierros 4 valmis",
-        "preAdCopy": "Vain yksi kierros on jäljellä. Millaisena kuvittelet tulevaisuutesi?",
-        "next": {
-          "eyebrow": "SEURAAVA KIERROS",
-          "tagline": "Lopuksi käännetään katse tulevaisuuteesi."
-        }
-      },
-      "stage-5": {
-        "difficulty": "LOPPUTULOS",
-        "preAdTitle": "Tuloksesi on valmis",
-        "preAdCopy": "Kaikki 30 vastausta on vertailtu. Leikkimielinen ikäarvio ja profiilisi ovat valmiit.",
+        "difficulty": "Elämäntyylien ennustaminen",
+        "preAdTitle": "Arviosi on valmis",
+        "preAdCopy": "Ikäarviosi ja elämäntapaprofiilisi ovat valmiita paljastamaan.",
         "preAdChecks": [
-          "30 vastausta tarkistettu",
-          "Elämäntavat vertailtu",
-          "Arvioitu ikäsi laskettu"
+          "10 vastausta analysoitu",
+          "Neljää elämäntapasignaalia verrattiin",
+          "Arviosi laskettu"
         ],
-        "preAdButton": "Näytä arvioitu ikäni"
+        "preAdButton": "Paljasta arvioni"
       }
     }
   },
@@ -165,7 +128,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Arjen rytmi",
+      "title": "Elämäntyylien ennustaminen",
       "questions": {
         "yl-s1q1": {
           "question": "Herätyskello soi. Mitä teet?",
@@ -187,51 +150,6 @@
             "a4": "Lähden ulos ja käytän ajan hyvin"
           }
         },
-        "yl-s1q3": {
-          "question": "Suunnitelmasi muuttuvat äkisti. Mikä on ensimmäinen reaktiosi?",
-          "headerLabel": "Arjen rytmi",
-          "answers": {
-            "a1": "Mielialani romahtaa heti",
-            "a2": "Tarvitsen hetken totutteluun",
-            "a3": "Sopeudun ilman suurempaa draamaa",
-            "a4": "Innostun siitä, mitä uutta voi tapahtua"
-          }
-        },
-        "yl-s1q4": {
-          "question": "Miltä sinusta yleensä tuntuu kello kahdelta iltapäivällä?",
-          "headerLabel": "Arjen rytmi",
-          "answers": {
-            "a1": "Pysyn hädin tuskin hereillä",
-            "a2": "Etsin välipalaa ja motivaatiota",
-            "a3": "Jatkan tasaista tahtia",
-            "a4": "Tunnen uuden energiaryöpyn"
-          }
-        },
-        "yl-s1q5": {
-          "question": "Miltä tehtävälistasi näyttää päivän päätteeksi?",
-          "headerLabel": "Arjen rytmi",
-          "answers": {
-            "a1": "Se on jotenkin kasvanut",
-            "a2": "Ainakin helpot tehtävät ovat valmiit",
-            "a3": "Tärkeimmät asiat on enimmäkseen hoidettu",
-            "a4": "Kaikki on valmista, huominenkin suunniteltu"
-          }
-        },
-        "yl-s1q6": {
-          "question": "Huone menee yllättäen sotkuiseksi. Mitä teet?",
-          "headerLabel": "Arjen rytmi",
-          "answers": {
-            "a1": "Totun sotkuun",
-            "a2": "Siivoan, kun se alkaa häiritä",
-            "a3": "Laitan huoneen kuntoon vielä tänään",
-            "a4": "Siivoan heti, ennen kuin sotku pahenee"
-          }
-        }
-      }
-    },
-    "stage-2": {
-      "title": "Arjen energia",
-      "questions": {
         "yl-s2q1": {
           "question": "On aamiaisen aika. Mikä sopii sinuun parhaiten?",
           "headerLabel": "Arjen energia",
@@ -252,51 +170,6 @@
             "a4": "Portaat — ehkä ehdin ennen hissiäkin"
           }
         },
-        "yl-s2q3": {
-          "question": "Kuinka paljon liikut tavallisena päivänä?",
-          "headerLabel": "Arjen energia",
-          "answers": {
-            "a1": "Vähän, ellei minun tarvitse mennä jonnekin",
-            "a2": "Hieman, kun en enää malta istua paikoillani",
-            "a3": "Useimpina päivinä varaan aikaa liikkumiselle",
-            "a4": "Liikkuminen on jo osa päivärutiiniani"
-          }
-        },
-        "yl-s2q4": {
-          "question": "Iltapäivällä energia loppuu. Mitä teet?",
-          "headerLabel": "Arjen energia",
-          "answers": {
-            "a1": "Syön jotain makeaa ja toivon sen auttavan",
-            "a2": "Otan lisää kofeiinia",
-            "a3": "Juon, syön tai pidän pienen tauon",
-            "a4": "Käyn lyhyellä kävelyllä virkistymässä"
-          }
-        },
-        "yl-s2q5": {
-          "question": "Pitkän päivän jälkeen on illallisen aika. Mitä yleensä valitset?",
-          "headerLabel": "Arjen energia",
-          "answers": {
-            "a1": "Jotain mahdollisimman vaivatonta",
-            "a2": "Jotain nopeaa ja tuttua",
-            "a3": "Kunnollisen aterian, jos voimia riittää",
-            "a4": "Pidän yleensä huolen kunnon ateriasta"
-          }
-        },
-        "yl-s2q6": {
-          "question": "Ystävä ehdottaa pitkää kävelyä. Mikä on ensimmäinen ajatuksesi?",
-          "headerLabel": "Arjen energia",
-          "answers": {
-            "a1": "Voisimmeko mieluummin istua jossain?",
-            "a2": "Vain jos sää on hyvä",
-            "a3": "Kuulostaa mukavalta",
-            "a4": "Kengät ovat jo jalassa! Minne mennään?"
-          }
-        }
-      }
-    },
-    "stage-3": {
-      "title": "Paineet ja palautuminen",
-      "questions": {
         "yl-s3q1": {
           "question": "Määräaika lähestyy. Mitä mielessäsi tapahtuu?",
           "headerLabel": "Paineet ja palautuminen",
@@ -317,51 +190,6 @@
             "a4": "Vastaan heti, ennen kuin niitä kertyy lisää"
           }
         },
-        "yl-s3q3": {
-          "question": "Yhteinen illallinen peruuntuu viime hetkellä. Mitä nyt?",
-          "headerLabel": "Paineet ja palautuminen",
-          "answers": {
-            "a1": "Koko ilta tuntuu menneen pilalle",
-            "a2": "Vietän mukavan illan kotona",
-            "a3": "Keksin itselleni uuden suunnitelman",
-            "a4": "Kutsun jonkun muun tai lähden yksin"
-          }
-        },
-        "yl-s3q4": {
-          "question": "Kuka huomaa ensimmäisenä, kun stressisi kasvaa?",
-          "headerLabel": "Paineet ja palautuminen",
-          "answers": {
-            "a1": "Kaikki ympärilläni — sitä on vaikea peittää",
-            "a2": "Ei kukaan, mutta alan napostella enemmän",
-            "a3": "Joku läheinen",
-            "a4": "Huomaan sen ajoissa ja toimin"
-          }
-        },
-        "yl-s3q5": {
-          "question": "Viikkosi on täynnä, ja ystävä pyytää apua. Mitä teet?",
-          "headerLabel": "Paineet ja palautuminen",
-          "answers": {
-            "a1": "Suostun ja sitten tuskin jaksan kaikkea",
-            "a2": "Lykkään vastausta ja tunnen syyllisyyttä",
-            "a3": "Autan, mutta asetan selkeät rajat",
-            "a4": "Etsimme yhdessä käytännöllisen ratkaisun"
-          }
-        },
-        "yl-s3q6": {
-          "question": "Kuinka helposti sanot ei jäämättä murehtimaan sitä?",
-          "headerLabel": "Paineet ja palautuminen",
-          "answers": {
-            "a1": "Mietin vieläkin yhtä kieltäytymistä vuodelta 2019",
-            "a2": "En helposti, mutta opettelen",
-            "a3": "Yleensä pystyn, kun tärkeä raja on kyseessä",
-            "a4": "Kieltäydyn selkeästi ja ystävällisesti"
-          }
-        }
-      }
-    },
-    "stage-4": {
-      "title": "Seikkailunhalu",
-      "questions": {
         "yl-s4q1": {
           "question": "Yllätyspäiväretki alkaa tunnin kuluttua. Lähdetkö?",
           "headerLabel": "Seikkailunhalu",
@@ -382,51 +210,6 @@
             "a4": "Laulan ja tanssin ujostelematta"
           }
         },
-        "yl-s4q3": {
-          "question": "Sinulle tarjotaan täysin uutta ruokaa. Miten reagoit?",
-          "headerLabel": "Seikkailunhalu",
-          "answers": {
-            "a1": "Pysyn tutussa ruoassa",
-            "a2": "Maistan varovasti pienen palan",
-            "a3": "Miksipä ei? Kokeilen",
-            "a4": "Valitsen kaikkein erikoisimman vaihtoehdon"
-          }
-        },
-        "yl-s4q4": {
-          "question": "Sade pilaa ulkosuunnitelmat. Mikä on varasuunnitelmasi?",
-          "headerLabel": "Seikkailunhalu",
-          "answers": {
-            "a1": "Palaan kotiin ja luovutan",
-            "a2": "Etsin viihtyisän paikan",
-            "a3": "Keksin jotain hauskaa sisätiloissa",
-            "a4": "Jatkan — sade kuuluu seikkailuun"
-          }
-        },
-        "yl-s4q5": {
-          "question": "Millaiselle harrastukselle järjestäisit mieluiten aikaa?",
-          "headerLabel": "Seikkailunhalu",
-          "answers": {
-            "a1": "Sille, jonka välineet odottavat yhä paketissa",
-            "a2": "Jollekin tutulle ja rentouttavalle",
-            "a3": "Vanhalle mieluisalle taidolle",
-            "a4": "Jollekin minulle aivan uudelle"
-          }
-        },
-        "yl-s4q6": {
-          "question": "Sinut kutsutaan karaokeen. Miten osallistut?",
-          "headerLabel": "Seikkailunhalu",
-          "answers": {
-            "a1": "Vahdin takkeja",
-            "a2": "Kannustan yleisöstä",
-            "a3": "Laulan yhden tarkasti valitun kappaleen",
-            "a4": "Päädyn yllättäen illan tähdeksi"
-          }
-        }
-      }
-    },
-    "stage-5": {
-      "title": "Katse tulevaan",
-      "questions": {
         "yl-s5q1": {
           "question": "Tulevaisuuden minäsi lähettää viestin. Mitä siinä lukee?",
           "headerLabel": "Katse tulevaan",
@@ -435,46 +218,6 @@
             "a2": "Nauti enemmän rauhallisista hetkistä",
             "a3": "Valitse jatkossakin se, millä oikeasti on merkitystä",
             "a4": "Tartu kokemuksiin, joita on ilo muistella"
-          }
-        },
-        "yl-s5q2": {
-          "question": "Minkä pienen tavan säilyttäisit helpoimmin vuoden ajan?",
-          "headerLabel": "Katse tulevaan",
-          "answers": {
-            "a1": "Vähemmän puhelimen selaamista öisin",
-            "a2": "Rauhallisemman aamurutiinin",
-            "a3": "Säännölliset kävelyt tai kuulumisten vaihdon läheisen kanssa",
-            "a4": "Yhden uuden asian kokeilemisen joka viikko"
-          }
-        },
-        "yl-s5q3": {
-          "question": "Edessäsi on täysin vapaa viikonloppu. Mitä suunnittelet ensin?",
-          "headerLabel": "Katse tulevaan",
-          "answers": {
-            "a1": "En mitään — haluan levätä",
-            "a2": "Jotain mukavaa ja tuttua",
-            "a3": "Yhden itselleni merkityksellisen asian",
-            "a4": "Retken paikkaan, jossa en ole käynyt"
-          }
-        },
-        "yl-s5q4": {
-          "question": "Minkä kehun haluaisit kuulla vanhemmalta itseltäsi?",
-          "headerLabel": "Katse tulevaan",
-          "answers": {
-            "a1": "Opit vihdoin lepäämään",
-            "a2": "Loit itsellesi turvallisen elämän",
-            "a3": "Pysyit uskollisena tärkeille asioille",
-            "a4": "Et koskaan menettänyt uteliaisuuttasi"
-          }
-        },
-        "yl-s5q5": {
-          "question": "Saat yllättäen ylimääräistä rahaa itsellesi. Mitä teet sillä?",
-          "headerLabel": "Katse tulevaan",
-          "answers": {
-            "a1": "Laitan sen säästöön yllättäviä menoja varten",
-            "a2": "Hankin jotain, mitä olen pitkään halunnut",
-            "a3": "Käytän osan järkevästi ja osan iloksi",
-            "a4": "Valitsen kokemuksen, josta kerron vielä vuosien päästä"
           }
         },
         "yl-s5q8": {

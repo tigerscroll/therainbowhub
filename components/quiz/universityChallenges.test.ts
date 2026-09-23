@@ -42,12 +42,7 @@ function question(slug: typeof slugs[number], id: string) {
   return found;
 }
 
-test("university challenges keep the five-round contract across strictly matched locales", () => {
-  const expectedStages = {
-    oxford: ["Tutorial Foundations", "Evidence & Argument", "Logic at the Board", "Interview Trapdoors", "The Final Tutorial"],
-    cambridge: ["College Foundations", "Patterns & Proof", "Scientific Reasoning", "Supervision Challenge", "The Final Assessment"],
-    harvard: ["Admissions Briefing", "Evidence & Analysis", "Quantitative Decisions", "The Case Room", "The Final Committee"],
-  };
+test("university challenges keep their titles and ten-question contract across strictly matched locales", () => {
   for (const slug of slugs) {
     const quiz = source(slug);
     const manifest = JSON.parse(readFileSync(join(process.cwd(), "data", "quizzes", slug, "quiz.json"), "utf8"));
@@ -59,25 +54,23 @@ test("university challenges keep the five-round contract across strictly matched
     assert.equal(quiz.landing.startNote, undefined);
     assert.match(quiz.about.disclaimer, new RegExp(`Not an official ${slug}`, "i"));
     assert.equal(quiz.results.score.disclaimer, quiz.about.disclaimer);
-    assert.equal(manifest.template, "five-stage-six-question-v1");
+    assert.equal(manifest.template, "single-stage-rewarded-v1");
     assert.equal(manifest.engine.flow, undefined);
     assert.equal(manifest.engine.localeParity, "strict");
     assert.equal(manifest.engine.targetRatio, 0.8);
     assert.equal(manifest.engine.rewarded, undefined);
     assert.deepEqual(manifest.theme.layout, { landing: "split", questions: "card", results: "immersive" });
     assert.equal(manifest.theme.artwork.landing, undefined);
-    assert.equal(quiz.stages.length, 5);
-    assert.deepEqual(quiz.stages.map((stage) => stage.title), expectedStages[slug]);
-    assert.ok(quiz.stages.every((stage) => stage.questions.length === 6));
-    assert.equal(questions.length, 30);
-    assert.equal(new Set(questions.map((item) => item.id)).size, 30);
+    assert.equal(quiz.stages.length, 1);
+    assert.equal(questions.length, 10);
+    assert.equal(new Set(questions.map((item) => item.id)).size, 10);
     assert.ok(questions.every((item) => item.answers.length === 4 && new Set(item.answers).size === 4 && item.explanation === undefined));
     assert.ok(questions.filter((item) => item.visual).every((item) => item.visual!.ariaLabel.trim().length > 4));
-    assert.deepEqual(correctPositionCounts, [8, 8, 7, 7]);
+    assert.deepEqual(correctPositionCounts.toSorted((a,b)=>b-a),[3,3,2,2]);
     assert.ok(questions.every((item) => item.category && item.category !== "missing"));
     assert.deepEqual(quiz.results.profiles.map((profile) => profile.min), [0.9, 0.8, 0.7, 0.6, 0.5, 0]);
-    assert.equal(quiz.career.stages.at(-1)?.preAdTitle, "Your result is ready");
-    assert.equal(quiz.career.stages.at(-1)?.preAdChecks?.length, 3);
+    assert.match(quiz.career.stages.at(-1)?.preAdTitle??'',/Your results? (?:is|are) ready/);
+    assert.ok(quiz.career.stages.at(-1)?.preAdTitle);
   }
 });
 

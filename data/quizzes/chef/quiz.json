@@ -62,67 +62,23 @@
       "icon": "🧑‍🍳"
     }
   },
-  "template": "five-stage-six-question-v1",
+  "template": "single-stage-rewarded-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "foundation",
+        "difficultyLevel": "final",
         "questionIds": [
           "chef-r1q1",
           "chef-r1q2",
-          "chef-r1q3",
-          "chef-r1q4",
-          "chef-r1q5",
-          "chef-r1q6"
-        ]
-      },
-      {
-        "id": "stage-2",
-        "difficultyLevel": "developing",
-        "questionIds": [
-          "chef-r2q2",
-          "chef-r2q5",
-          "chef-r3q2",
           "chef-r5q3",
-          "chef-r5q6",
-          "chef-r2q6"
-        ]
-      },
-      {
-        "id": "stage-3",
-        "difficultyLevel": "skilled",
-        "questionIds": [
-          "chef-r2q3",
-          "chef-r4q2",
-          "chef-r3q1",
-          "chef-r5q2",
+          "chef-r2q6",
           "chef-r6q1",
-          "chef-r6q6"
-        ]
-      },
-      {
-        "id": "stage-4",
-        "difficultyLevel": "advanced",
-        "questionIds": [
+          "chef-r3q1",
           "chef-r8q1",
           "chef-r8q2",
-          "chef-r8q3",
-          "chef-r8q4",
-          "chef-r8q5",
-          "chef-r8q6"
-        ]
-      },
-      {
-        "id": "stage-5",
-        "difficultyLevel": "final",
-        "questionIds": [
           "chef-r10q1",
-          "chef-r10q2",
-          "chef-r10q3",
-          "chef-r10q4",
-          "chef-r10q5",
-          "chef-r10q6"
+          "chef-r10q2"
         ]
       }
     ],
@@ -151,90 +107,6 @@
           "a4"
         ]
       },
-      "chef-r1q3": {
-        "presentation": "text",
-        "category": "heat_methods",
-        "interactionStyle": "core-concept",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "chef-r1q4": {
-        "presentation": "text",
-        "category": "baking_pastry",
-        "interactionStyle": "core-concept",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a3"
-      },
-      "chef-r1q5": {
-        "presentation": "text",
-        "category": "kitchen_maths",
-        "interactionStyle": "calculation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a2"
-      },
-      "chef-r1q6": {
-        "presentation": "text",
-        "category": "safety_service",
-        "interactionStyle": "prioritisation",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a4"
-      },
-      "chef-r2q2": {
-        "presentation": "text",
-        "category": "kitchen_fundamentals",
-        "interactionStyle": "visual-identification",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a3"
-      },
-      "chef-r2q5": {
-        "presentation": "text",
-        "category": "ingredients_flavour",
-        "interactionStyle": "core-concept",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "chef-r3q2": {
-        "presentation": "text",
-        "category": "heat_methods",
-        "interactionStyle": "visual-identification",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a4"
-      },
       "chef-r5q3": {
         "presentation": "text",
         "correctAnswerId": "a2",
@@ -246,18 +118,6 @@
           "a3",
           "a4"
         ]
-      },
-      "chef-r5q6": {
-        "presentation": "text",
-        "category": "kitchen_maths",
-        "interactionStyle": "synthesis",
-        "answerIds": [
-          "a2",
-          "a3",
-          "a1",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
       },
       "chef-r2q6": {
         "presentation": "text",
@@ -271,29 +131,17 @@
           "a3"
         ]
       },
-      "chef-r2q3": {
+      "chef-r6q1": {
         "presentation": "text",
-        "category": "kitchen_fundamentals",
-        "interactionStyle": "cause-and-effect",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a4"
-      },
-      "chef-r4q2": {
-        "presentation": "text",
-        "category": "ingredients_flavour",
-        "interactionStyle": "flavour-correction",
+        "correctAnswerId": "a1",
+        "category": "kitchen_maths",
+        "interactionStyle": "recipe-scaling",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ],
-        "correctAnswerId": "a3"
+        ]
       },
       "chef-r3q1": {
         "presentation": "text",
@@ -307,42 +155,6 @@
           "a4"
         ]
       },
-      "chef-r5q2": {
-        "presentation": "text",
-        "category": "baking_pastry",
-        "interactionStyle": "ingredient-function",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ],
-        "correctAnswerId": "a2"
-      },
-      "chef-r6q1": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "kitchen_maths",
-        "interactionStyle": "recipe-scaling",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "chef-r6q6": {
-        "presentation": "text",
-        "category": "safety_service",
-        "interactionStyle": "safety-judgement",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a2"
-      },
       "chef-r8q1": {
         "presentation": "text",
         "delay": 350,
@@ -352,8 +164,8 @@
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
+          "a3",
+          "a4"
         ]
       },
       "chef-r8q2": {
@@ -364,58 +176,10 @@
         "interactionStyle": "core-concept",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
+          "a4",
           "a3"
         ]
-      },
-      "chef-r8q3": {
-        "presentation": "text",
-        "category": "heat_methods",
-        "interactionStyle": "visual-identification",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ],
-        "correctAnswerId": "a2"
-      },
-      "chef-r8q4": {
-        "presentation": "text",
-        "category": "baking_pastry",
-        "interactionStyle": "core-concept",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "chef-r8q5": {
-        "presentation": "text",
-        "category": "kitchen_maths",
-        "interactionStyle": "calculation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ],
-        "correctAnswerId": "a3"
-      },
-      "chef-r8q6": {
-        "presentation": "text",
-        "category": "safety_service",
-        "interactionStyle": "prioritisation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ],
-        "correctAnswerId": "a4"
       },
       "chef-r10q1": {
         "presentation": "text",
@@ -424,8 +188,8 @@
         "reasoningSteps": 2,
         "interactionStyle": "synthesis",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
         ]
@@ -442,58 +206,6 @@
           "a3",
           "a4"
         ]
-      },
-      "chef-r10q3": {
-        "presentation": "text",
-        "category": "heat_methods",
-        "reasoningSteps": 2,
-        "interactionStyle": "applied-scenario",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ],
-        "correctAnswerId": "a4"
-      },
-      "chef-r10q4": {
-        "presentation": "text",
-        "category": "baking_pastry",
-        "reasoningSteps": 2,
-        "interactionStyle": "ratio-analysis",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ],
-        "correctAnswerId": "a3"
-      },
-      "chef-r10q5": {
-        "presentation": "text",
-        "category": "kitchen_maths",
-        "reasoningSteps": 2,
-        "interactionStyle": "calculation",
-        "answerIds": [
-          "a2",
-          "a3",
-          "a4",
-          "a1"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "chef-r10q6": {
-        "presentation": "text",
-        "category": "safety_service",
-        "reasoningSteps": 2,
-        "interactionStyle": "prioritisation",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a2"
       }
     },
     "checkpoint": {
@@ -566,7 +278,7 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": true
+        "showBestRound": false
       }
     }
   },

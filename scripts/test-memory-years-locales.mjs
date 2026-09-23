@@ -50,15 +50,15 @@ async function check(slug,locale){
    }
    const checkpoint=page.locator('.quiz-engine__checkpoint');await checkpoint.waitFor();
    assert.equal(await checkpoint.getAttribute('data-round'),String(index+1));
-   assert.equal(await checkpoint.getByRole('progressbar').getAttribute('aria-valuenow'),String((index+1)*20));
+   assert.equal(await checkpoint.getByRole('progressbar').count(),0);
    assert.equal(await page.evaluate(()=>window.adCalls.length),index+1);
    await checkpoint.locator('.quiz-engine__primary').click();
   }
   await page.locator('.quiz-engine__results').waitFor();
   if(slug==='memory'){
    const correct=Object.values(manifest.structure.questions).filter(q=>q.answerIds[0]===q.correctAnswerId).length;
-   assert.equal(await page.locator('.quiz-engine__result-fraction strong').innerText(),`${correct} / 30`);
-   const profile=manifest.structure.results.profiles.find(p=>correct/30>=p.min);
+   assert.equal(await page.locator('.quiz-engine__result-fraction strong').innerText(),`${correct} / 10`);
+   const profile=manifest.structure.results.profiles.find(p=>correct/10>=p.min);
    assert.equal(await page.locator('.quiz-engine__result-profile').textContent(),copy.results.profiles[profile.key].title);
    assert.equal(await page.locator('.quiz-engine__result-copy').textContent(),copy.results.profiles[profile.key].copy);
   }else{
@@ -67,10 +67,10 @@ async function check(slug,locale){
    assert.ok(Object.values(copy.results.profiles).some(p=>p.title===undefined)===false);
    assert.ok(Object.values(copy.results.profiles).map(p=>p.title).includes(await page.locator('.quiz-engine__results h2').first().textContent()));
   }
-  assert.equal(await page.evaluate(()=>window.adCalls.length),6);
+  assert.equal(await page.evaluate(()=>window.adCalls.length),2);
   assert.equal(await page.evaluate(()=>window.adCalls.every(a=>a.path==='/22677279144/rewarded'&&a.format==='REWARDED')),true);
   assert.equal(documents,1);assert.deepEqual(errors,[]);
-  console.log(`${slug}/${locale}: 30 questions, five checkpoints, six mocked rewards, stable answers, no overflow PASS`);
+  console.log(`${slug}/${locale}: 10 questions, one result checkpoint, two mocked rewards, stable answers, no overflow PASS`);
  }finally{await context.close();}
 }
 try{await Promise.all(Array.from({length:6},async()=>{while(queue.length){const{slug,locale}=queue.shift();try{await check(slug,locale);}catch(error){failures.push({slug,locale,error:String(error)});console.error(slug,locale,String(error));}}}));}finally{await browser.close();}

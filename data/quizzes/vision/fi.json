@@ -7,12 +7,12 @@
     "cta": "Aloita testi"
   },
   "about": {
-    "body": "Tässä hauskassa haasteessa ratkot kolmekymmentä kuvapulmaa viidellä kuuden tehtävän kierroksella. Tehtävät testaavat värien ja yksityiskohtien erottamista, avaruudellista hahmottamista, kuvioiden seuraamista, tarkkaavaisuutta ja näkömuistia. Vaikeustaso nousee vähitellen, mutta et tarvitse alan erikoissanastoa.\n\nKatso jokaista kuvaa tai symboliryhmää tarkasti ja valitse vastaus näkemäsi perusteella. Osa tehtävistä testaa havaintokykyä ja tarkkaavaisuutta eikä varsinaista näöntarkkuutta.\n\nTämä ei ole näöntarkastus, lääketieteellinen tutkimus tai diagnoosi. Jos olet huolissasi näöstäsi, ota yhteyttä näönhuollon ammattilaiseen.",
+    "body": "Tämä viihdehaaste sisältää kymmenen visuaalista pulmapeliä, jotka kattavat värien kontrastin, yksityiskohtien yhteensovittamisen, tilasuunnan, kuvioiden seurannan, huomion ja visuaalisen muistin. Tehtävät muuttuvat vaativammiksi ilman erikoisterminologiaa.\n\nTutki kutakin kuvaa tai symbolijoukkoa huolellisesti ja valitse sitten vastaus, jota näkyy parhaiten. Jotkut kysymykset testaavat havainnointia ja huomiota pikemminkin kuin itse näön.\n\nTämä ei ole silmätutkimus, lääketieteellinen näkötesti tai diagnoosi. Pyydä pätevää näönhoitoapua, jos olet huolissasi näköstäsi.",
     "howToPlay": {
       "steps": [
-        "Ratkaise viisi kuuden tehtävän kierrosta. Jokaisen vastauksen jälkeen siirryt automaattisesti seuraavaan kysymykseen.",
-        "Katso jokaista kuvaa tarkasti. Näet pistemääräsi vasta lopuksi.",
-        "Jatka eteenpäin jokaisen kierroksen jälkeen. Viimeisen kierroksen jälkeen näet pisteesi ja vahvuutesi."
+        "Täytä kymmenen huolellisesti valittua kysymystä yhdessä kohdistetussa haasteessa.",
+        "Valitse joka kerta yksi vastaus. Oikeus pysyy piilossa lopulliseen paljastukseen asti.",
+        "Paljasta tuloksesi, taitojen jakautuminen ja suorita vastausten tarkistus viimeisen kysymyksen jälkeen."
       ]
     },
     "disclaimer": "Vain viihdettä varten. Tämä tietokilpailu ei ole näöntarkastus, eikä se voi diagnosoida näköhäiriöitä."
@@ -21,49 +21,12 @@
     "resultProgressLabel": "Edistymisesi",
     "stages": {
       "stage-1": {
-        "difficulty": "Ensisilmäys",
-        "preAdTitle": "Kierros 1 valmis",
-        "preAdCopy": "Kuusi tehtävää takana. Oletko valmis tarkastelemaan yksityiskohtia?",
-        "next": {
-          "eyebrow": "Tarkka katse",
-          "tagline": "Edessä on kuusi uutta tehtävää."
-        }
-      },
-      "stage-2": {
-        "difficulty": "Tarkka katse",
-        "preAdTitle": "Kierros 2 valmis",
-        "preAdCopy": "Kaksi kierrosta suoritettu. Nyt testataan kuvioiden tunnistamista ja muistia.",
-        "next": {
-          "eyebrow": "Kuviot ja muisti",
-          "tagline": "Edessä on kuusi uutta tehtävää."
-        }
-      },
-      "stage-3": {
-        "difficulty": "Kuviot ja muisti",
-        "preAdTitle": "Kierros 3 valmis",
-        "preAdCopy": "Olet yli puolivälin. Huomaatko näköharhat?",
-        "next": {
-          "eyebrow": "Näköharhat",
-          "tagline": "Edessä on kuusi uutta tehtävää."
-        }
-      },
-      "stage-4": {
-        "difficulty": "Näköharhat",
-        "preAdTitle": "Kierros 4 valmis",
-        "preAdCopy": "Yksi kierros jäljellä. Keskity vielä viimeisiin tehtäviin.",
-        "next": {
-          "eyebrow": "Kotkansilmä",
-          "tagline": "Edessä on kuusi uutta tehtävää."
-        }
-      },
-      "stage-5": {
-        "difficulty": "Kotkansilmä",
-        "preAdTitle": "Tuloksesi on valmis",
-        "preAdCopy": "Kaikki 30 vastausta on arvioitu. Katso tuloksesi ja vahvuutesi.",
+        "difficulty": "Vision haaste",
+        "preAdTitle": "Tuloksesi ovat valmiit",
+        "preAdCopy": "Näköhaastepisteesi ja kolmen taidon jakautuminen ovat valmiita paljastamaan.",
         "preAdChecks": [
-          "30 vastausta arvioitu",
-          "Kuusi havainnointitaitoa vertailtu",
-          "Vahvin taitosi tunnistettu"
+          "10 vastausta tarkistettu",
+          "Kolme visuaalista taitoa verrattiin"
         ]
       }
     }
@@ -133,7 +96,7 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Ensisilmäys",
+      "title": "Vision haaste",
       "questions": {
         "vision-r1q1": {
           "visual": {
@@ -154,82 +117,6 @@
           },
           "headerLabel": "VÄRIKONTRASTI"
         },
-        "vision-r3q4": {
-          "visual": {
-            "items": [
-              "left-half",
-              "left-half",
-              "right-half",
-              "left-half"
-            ],
-            "ariaLabel": "Neljä puolitäytettyä ympyrää; kolmas täytetään vastakkaiselle puolelle"
-          },
-          "question": "Mikä asema sisältää eri symbolin?",
-          "answers": {
-            "a1": "Ensimmäinen",
-            "a2": "Toinen",
-            "a3": "Kolmas",
-            "a4": "Neljäs"
-          },
-          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r1q2": {
-          "context": "VIITE: M7K2P9",
-          "visual": {
-            "items": [
-              "VIITE",
-              "M7K2P9"
-            ],
-            "ariaLabel": "Viitekoodi M 7 K 2 P 9"
-          },
-          "question": "Mikä koodi vastaa tarkalleen?",
-          "answers": {
-            "a1": "M7K2P9",
-            "a2": "M7K2R9",
-            "a3": "M7KZP9",
-            "a4": "N7K2P9"
-          },
-          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r1q3": {
-          "visual": {
-            "items": [
-              "▲",
-              "●",
-              "▲",
-              "●",
-              "?"
-            ],
-            "ariaLabel": "Kolmio, ympyrä, kolmio, ympyrä, tuntematon"
-          },
-          "question": "Mitä tulee seuraavaksi malliin?",
-          "answers": {
-            "a1": "■",
-            "a2": "●",
-            "a3": "◆",
-            "a4": "▲"
-          },
-          "headerLabel": "SARJOJEN TUNNISTAMINEN"
-        },
-        "vision-r1q4": {
-          "visual": {
-            "items": [
-              "↑",
-              "→",
-              "↓",
-              "?"
-            ],
-            "ariaLabel": "Nuoli ylös, oikea nuoli, alanuoli, tuntematon"
-          },
-          "question": "Nuoli kääntyy joka kerta 90 astetta myötäpäivään. Mihin se osoittaa seuraavaksi?",
-          "answers": {
-            "a1": "↑",
-            "a2": "→",
-            "a3": "↓",
-            "a4": "←"
-          },
-          "headerLabel": "AVARUUDELLINEN HAHMOTTAMINEN"
-        },
         "vision-r1q5": {
           "question": "Mikä kuvake ilmestyi ensimmäisenä?",
           "answers": {
@@ -248,12 +135,7 @@
             ]
           },
           "headerLabel": "NÄKÖMUISTI"
-        }
-      }
-    },
-    "stage-2": {
-      "title": "Tarkka katse",
-      "questions": {
+        },
         "vision-r5q1": {
           "visual": {
             "items": [
@@ -272,36 +154,6 @@
           },
           "headerLabel": "AVARUUDELLINEN HAHMOTTAMINEN"
         },
-        "vision-r3q1": {
-          "question": "Missä parissa molemmat koodit ovat täsmälleen samat?",
-          "answers": {
-            "a1": "R7Q3B6 / R7O3B6",
-            "a2": "K4M8P2 / K4M8P2",
-            "a3": "T9L2C5 / T9LZC5",
-            "a4": "A6D4N8 / A6D4M8"
-          },
-          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r3q2": {
-          "question": "Mikä rivi sisältää tarkalleen seitsemän pistettä?",
-          "answers": {
-            "a1": "••••••",
-            "a2": "•••••",
-            "a3": "••••••••",
-            "a4": "•••••••"
-          },
-          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r3q5": {
-          "question": "Mikä symboli näyttää samalta myös 180 asteen käännöksen jälkeen?",
-          "answers": {
-            "a1": "L",
-            "a2": "↑",
-            "a3": "●",
-            "a4": "↗"
-          },
-          "headerLabel": "AVARUUDELLINEN HAHMOTTAMINEN"
-        },
         "vision-r3q6": {
           "context": "OFFICE FOCUS: FIND FIVE FLAGS FAST.",
           "question": "Kuinka monta F-kirjainta näytetään?",
@@ -312,51 +164,6 @@
             "a4": "9"
           },
           "headerLabel": "TARKKAAVAISUUS"
-        },
-        "vision-r5q6": {
-          "question": "Mikä esine oli vasemmassa alakulmassa?",
-          "answers": {
-            "a1": "Avain",
-            "a2": "Lehti",
-            "a3": "Kuu",
-            "a4": "Tähti"
-          },
-          "study": {
-            "title": "Muista neljä asentoa",
-            "items": [
-              "Ylävasen: Tähti",
-              "Oikea yläkulma: Kuu",
-              "Vasemmalla alhaalla: Avain",
-              "Alhaalla oikealla: Lehti"
-            ]
-          },
-          "headerLabel": "NÄKÖMUISTI"
-        }
-      }
-    },
-    "stage-3": {
-      "title": "Kuviot ja muisti",
-      "questions": {
-        "vision-r9q5": {
-          "question": "Mikä kuvio oli heti kultaisen kolmion oikealla puolella?",
-          "answers": {
-            "a1": "Violetti tähti",
-            "a2": "Korallinvärinen neliö",
-            "a3": "Sininen ympyrä",
-            "a4": "Vihreä vinoneliö"
-          },
-          "study": {
-            "title": "Muista viiden laatan rivi",
-            "items": [
-              "blue-circle",
-              "gold-triangle",
-              "coral-square",
-              "green-diamond",
-              "violet-star"
-            ],
-            "ariaLabel": "Sininen ympyrä, kultainen kolmio, korallineliö, vihreä timantti, violetti tähti"
-          },
-          "headerLabel": "NÄKÖMUISTI"
         },
         "vision-r7q2": {
           "visual": {
@@ -377,46 +184,6 @@
           },
           "headerLabel": "TARKKAAVAISUUS"
         },
-        "vision-r4q1": {
-          "visual": {
-            "items": [
-              "▲",
-              "■",
-              "⬟",
-              "?"
-            ],
-            "ariaLabel": "Kolmio, neliö, viisikulmio, tuntematon"
-          },
-          "question": "Sivujen määrä kasvaa askel kerrallaan. Mikä kuvio tulee seuraavaksi?",
-          "answers": {
-            "a1": "Ympyrä",
-            "a2": "Kuusikulmio",
-            "a3": "Kolmio",
-            "a4": "Neliö"
-          },
-          "headerLabel": "SARJOJEN TUNNISTAMINEN"
-        },
-        "vision-r4q2": {
-          "visual": {
-            "items": [
-              "X",
-              "O",
-              "X",
-              "O",
-              "X",
-              "?"
-            ],
-            "ariaLabel": "X, O, X, O, X, tuntematon"
-          },
-          "question": "Mikä laatta täydentää vuorottelevan rivin?",
-          "answers": {
-            "a1": "O",
-            "a2": "XX",
-            "a3": "OO",
-            "a4": "X"
-          },
-          "headerLabel": "SARJOJEN TUNNISTAMINEN"
-        },
         "vision-r4q5": {
           "question": "Mikä väri erottuu parhaiten tummansiniseltä taustalta?",
           "answers": {
@@ -427,38 +194,16 @@
           },
           "headerLabel": "VÄRIKONTRASTI"
         },
-        "vision-r4q6": {
-          "context": "VIITE: ◇ ● ▲ ■",
-          "question": "Mikä rivi vastaa täsmälleen mallia?",
+        "vision-r9q2": {
+          "context": "VERSIO A: FOCUS-M7Q2-2026\nVERSIO B: F0CUS-M7Q2-2026",
+          "question": "Mikä tarkka sijainti muuttui versiossa B?",
           "answers": {
-            "a1": "◇ ● ■ ▲",
-            "a2": "◇ ● ▲ ■",
-            "a3": "◇ ○ ▲ ■",
-            "a4": "● ◇ ▲ ■"
+            "a1": "Ensimmäinen F",
+            "a2": "Q",
+            "a3": "Toinen merkki",
+            "a4": "Viimeinen numero"
           },
-          "headerLabel": "TARKKAAVAISUUS"
-        }
-      }
-    },
-    "stage-4": {
-      "title": "Näköharhat",
-      "questions": {
-        "vision-r9q1": {
-          "visual": {
-            "items": [
-              "valopaneeli",
-              "tumma paneeli"
-            ],
-            "ariaLabel": "Samanaikaiset kontrastipaneelit"
-          },
-          "question": "Keskimmäiset neliöt ovat identtiset. Miksi ne voivat silti näyttää erilaisilta?",
-          "answers": {
-            "a1": "Toinen neliö on oikeasti vaaleampi",
-            "a2": "Väri muuttuu katseluetäisyyden mukaan",
-            "a3": "Samat värit näyttävät aina samanlaisilta",
-            "a4": "Ympäröivä kontrasti muuttaa niiden ulkonäköä"
-          },
-          "headerLabel": "VÄRIKONTRASTI"
+          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
         },
         "vision-r8q3": {
           "image": {
@@ -473,72 +218,6 @@
           },
           "headerLabel": "SARJOJEN TUNNISTAMINEN"
         },
-        "vision-r7q1": {
-          "context": "THE OTHER THEME HID THE WORD THE.",
-          "question": "Kuinka monta kertaa THE esiintyy rivillä erillisenä sanana?",
-          "answers": {
-            "a1": "5",
-            "a2": "4",
-            "a3": "3",
-            "a4": "6"
-          },
-          "headerLabel": "TARKKAAVAISUUS"
-        },
-        "vision-r9q2": {
-          "context": "VERSIO A: FOCUS-M7Q2-2026\nVERSIO B: F0CUS-M7Q2-2026",
-          "question": "Mikä tarkka sijainti muuttui versiossa B?",
-          "answers": {
-            "a1": "Ensimmäinen F",
-            "a2": "Q",
-            "a3": "Toinen merkki",
-            "a4": "Viimeinen numero"
-          },
-          "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r9q4": {
-          "context": "Kierrä ensin nuolta 90° myötäpäivään. Kuvaa sitten tulos pystysuorassa peilissä.",
-          "visual": {
-            "items": [
-              "↗",
-              "↻ 90°",
-              "│",
-              "?"
-            ],
-            "ariaLabel": "Koillisnuoli, neljänneskierros myötäpäivään, sitten pystypeili"
-          },
-          "question": "Mihin nuoli lopulta osoittaa?",
-          "answers": {
-            "a1": "↗",
-            "a2": "↘",
-            "a3": "↙",
-            "a4": "↖"
-          },
-          "headerLabel": "AVARUUDELLINEN HAHMOTTAMINEN"
-        },
-        "vision-r9q6": {
-          "visual": {
-            "items": [
-              "SININEN 🟦",
-              "VIHREÄ 🟩",
-              "PUNAINEN 🟦",
-              "KULTAINEN 🟨"
-            ],
-            "ariaLabel": "Neljä väritarraa ja laatta, joista kolmas tarra ei täsmää"
-          },
-          "question": "Mikä värin nimi ei vastaa viereisen ruudun väriä?",
-          "answers": {
-            "a1": "Ensimmäinen",
-            "a2": "Toinen",
-            "a3": "Kolmas",
-            "a4": "Neljäs"
-          },
-          "headerLabel": "TARKKAAVAISUUS"
-        }
-      }
-    },
-    "stage-5": {
-      "title": "Kotkansilmä",
-      "questions": {
         "vision-r10q2": {
           "visual": {
             "items": [
@@ -555,43 +234,6 @@
             "a4": "K ja R"
           },
           "headerLabel": "YKSITYISKOHTIEN HAVAITSEMINEN"
-        },
-        "vision-r10q4": {
-          "image": {
-            "alt": "Neljä kuvitettua vaihetta, joissa näkyy neliö taitettuna oikealle, taitettuna alas, lyöty kerran pienen taitetun neliön läpi ja sitten auki taitettuna tuntemattomaan tulokseen"
-          },
-          "question": "Neliö taitetaan kahdesti ja lävistetään sitten kerran jokaisen kerroksen läpi pois taitoista. Kuinka monta reikää ilmestyy avauksen jälkeen?",
-          "answers": {
-            "a1": "1",
-            "a2": "2",
-            "a3": "4",
-            "a4": "8"
-          },
-          "headerLabel": "AVARUUDELLINEN HAHMOTTAMINEN"
-        },
-        "vision-r8q1": {
-          "visual": {
-            "items": [
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9"
-            ],
-            "ariaLabel": "Yhdeksän kiinteää sinistä swatchia yhdellä sinivihreän vaihdolla"
-          },
-          "question": "Missä ruudussa on hieman vihertävä sävy?",
-          "answers": {
-            "a1": "Ylävasen",
-            "a2": "Keskellä",
-            "a3": "Alhaalla oikealla",
-            "a4": "Alhaalla keskellä"
-          },
-          "headerLabel": "VÄRIKONTRASTI"
         },
         "vision-r8q5": {
           "question": "Mikä kuvake ilmestyi neljänneksi?",
@@ -612,45 +254,6 @@
             ]
           },
           "headerLabel": "NÄKÖMUISTI"
-        },
-        "vision-r8q6": {
-          "visual": {
-            "items": [
-              "★ ☆ ● ★ △ ★ ☆ ■ ★ ○ ☆ ★"
-            ],
-            "ariaLabel": "Viisi täytettyä tähteä sekoitettuna seitsemään ääriviiva- tai geometriseen häiriötekijään"
-          },
-          "question": "Kuinka monta täytettyä tähteä?",
-          "answers": {
-            "a1": "5",
-            "a2": "3",
-            "a3": "4",
-            "a4": "2"
-          },
-          "headerLabel": "TARKKAAVAISUUS"
-        },
-        "vision-r10q3": {
-          "context": "Seuraa muotosykliä ja täyttösykliä itsenäisesti.",
-          "visual": {
-            "items": [
-              "●",
-              "□",
-              "○",
-              "■",
-              "○",
-              "□",
-              "?"
-            ],
-            "ariaLabel": "Kuusi muotoa, jotka yhdistävät vuorottelevan ympyrä-neliöjakson ja kolmivaiheisen täyttöjakson"
-          },
-          "question": "Mikä kuvio jatkaa sarjaa?",
-          "answers": {
-            "a1": "●",
-            "a2": "■",
-            "a3": "○",
-            "a4": "□"
-          },
-          "headerLabel": "SARJOJEN TUNNISTAMINEN"
         }
       }
     }

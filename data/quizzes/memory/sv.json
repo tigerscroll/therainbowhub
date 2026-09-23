@@ -3,15 +3,15 @@
   "eyebrow": "Minnesutmaning",
   "summary": "Ord-, nummer- och återkallningsutmaningar testar detaljerna i ditt minne.",
   "about": {
-    "body": "Detta minnesquiz utforskar ord, siffror, associationer, uppmärksamhet och arbetsminne i fem korta omgångar. Tre minneskort visas tills du trycker på ”Jag är redo”.\n\nVissa detaljer återkommer efter att andra frågor har stört originalminnet. Välj ett svar och nästa fråga öppnas automatiskt. Det finns ingen tidsgräns och hastigheten ändrar aldrig din poäng. En kort belönad annons öppnar frågesporten och varje nästa omgång eller slutresultat.\n\nDitt resultat visar din poäng och minnesfördelning. Prestanda varierar med uppmärksamhet, trötthet och slump. Detta är underhållning, inte en medicinsk eller kognitiv bedömning.",
+    "body": "Detta kortminnesquiz använder tio noggrant varierade ord, bild, siffror, associationer och uppmärksamhetsutmaningar för att skapa en lekfull ögonblicksbild av återkallelse.\n\nVissa detaljer testas omedelbart, medan andra återkommer efter att olika uppgifter har avbrutit originalminnet. Studera varje cue noggrant, men skynda dig inte: hastigheten förändrar aldrig din poäng.\n\nDitt slutresultat visar hur många av de tio frågorna som var korrekta och framhäver de minnesområden som passade dig bäst. Prestanda kan variera med uppmärksamhet, trötthet, stress, förtrogenhet och slump, så behandla resultatet som underhållning snarare än en bedömning av hjärnans hälsa eller långtidsminnesförmåga.",
     "howToPlay": {
       "steps": [
-        "Tryck på Start för att titta på en kort premierad annons och börja.",
-        "Studera varje minneskort så länge du behöver och tryck sedan på ”Jag är redo”. Välj ett svar per fråga; nästa fråga öppnas automatiskt.",
-        "Slutför varje omgång med sex frågor och fortsätt sedan genom en belönad annons. Ditt slutresultat visas efter den sista omgången."
+        "Studera varje signal noggrant när den dyker upp; vissa detaljer återkommer senare.",
+        "Välj ett svar för varje utmaning. Hastighet förändrar aldrig din poäng.",
+        "Avsluta alla tio frågorna för att avslöja ditt resultat och svara granskning."
       ]
     },
-    "disclaimer": "Endast för underhållning och självreflektion. Detta frågesport är inte en medicinsk, neurologisk eller kognitiv bedömning och kan inte diagnostisera minnesproblem. Om du är orolig för ditt minne eller din hälsa, tala med en kvalificerad vårdpersonal."
+    "disclaimer": "Endast för underhållning och självreflektion. Den här frågesporten är ingen medicinsk, neurologisk eller kognitiv bedömning och kan inte diagnostisera minnesproblem. Om du är orolig för ditt minne eller din hälsa, tala med kvalificerad vårdpersonal."
   },
   "landing": {
     "intro": "Har du ett skarpt minne?\nSätt det på prov.",
@@ -21,121 +21,83 @@
     "resultProgressLabel": "Minnesutmaning",
     "stages": {
       "stage-1": {
-        "difficulty": "Minns detaljerna",
-        "preAdTitle": "Omgång 1 klar",
-        "preAdCopy": "Första omgången avklarad. Är du redo att sätta ditt fokus på prov?",
-        "next": {
-          "eyebrow": "NÄSTA OMGÅNG",
-          "tagline": "Titta noga för att hitta mönstren."
-        }
-      },
-      "stage-2": {
-        "difficulty": "Hitta mönstren",
-        "preAdTitle": "Omgång 2 klar",
-        "preAdCopy": "Du har genomfört två omgångar. Studera nu och kom ihåg en ny scen.",
-        "next": {
-          "eyebrow": "NÄSTA OMGÅNG",
-          "tagline": "Studera en ny scen och kom ihåg dess detaljer."
-        }
-      },
-      "stage-3": {
-        "difficulty": "Minns resan",
-        "preAdTitle": "Omgång 3 klar",
-        "preAdCopy": "Du har klarat mer än halva frågesporten. Kom sedan ihåg vilka detaljer som tillhör varje person.",
-        "next": {
-          "eyebrow": "NÄSTA OMGÅNG",
-          "tagline": "Kom ihåg varje namn och objektet som är parat med det."
-        }
-      },
-      "stage-4": {
-        "difficulty": "Personer och detaljer",
-        "preAdTitle": "Omgång 4 klar",
-        "preAdCopy": "Endast en omgång återstår. Vilka tidigare detaljer kan du fortfarande komma ihåg?",
-        "next": {
-          "eyebrow": "NÄSTA OMGÅNG",
-          "tagline": "Minns detaljer från de tidigare omgångarna."
-        }
-      },
-      "stage-5": {
-        "difficulty": "SLUTRESULTAT",
-        "preAdTitle": "Ditt minnestestresultat är klart",
-        "preAdCopy": "Alla 30 svaren har fått poäng. Ditt slutresultat och resultat för varje minnesfärdighet är klara.",
+        "difficulty": "Minnesutmaning",
+        "preAdTitle": "Dina resultat är klara",
+        "preAdCopy": "Din minnespoäng och uppdelning över tre områden är redo att avslöjas.",
         "preAdChecks": [
-          "30 svar kontrollerade",
-          "Sex minnesförmågor jämfört",
-          "Din starkaste minnesförmåga identifierad"
-        ],
-        "preAdButton": "Visa mitt minnesresultat"
+          "10 svar kontrollerade",
+          "Tre minnesområden jämförda"
+        ]
       }
     }
   },
   "results": {
-    "name": "DINA MINNESTESTRESULTAT",
+    "name": "DITT RESULTAT",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "Minnesmästare",
-        "copy": "Du kom ihåg ord, detaljer och sekvenser med enastående precision. Du var fokuserad även när frågorna återgick till tidigare ledtrådar."
+        "copy": "Du mindes ord, detaljer och talföljder med imponerande precision. Du höll fokus även när frågor återkom till tidigare ledtrådar."
       },
       "profile-2": {
         "tier": "80–89%",
         "title": "Knivskarpt minne",
-        "copy": "Du nådde målet på 80 % genom stark uppmärksamhet och minne. Du kom ihåg viktiga detaljer genom alla 30 frågorna."
+        "copy": "Du rensade 80%-linjen med en skarp blandning av uppmärksamhet och återkallelse. Detaljerna stannade hos dig när de gällde."
       },
       "profile-3": {
         "tier": "70–79%",
         "title": "Du kommer ihåg nästan allt",
-        "copy": "Ditt minne fångade det mesta av testet. En handfull noggrant placerade distraktioner höll avslutningen intressant."
+        "copy": "Du mindes de flesta detaljerna, även när nya uppgifter kom emellan. Några distraktioner gjorde slutomgången extra utmanande."
       },
       "profile-4": {
         "tier": "60–69%",
         "title": "Selektivt geni",
-        "copy": "Ditt minne vet vad det vill behålla. När en detalj kändes särpräglad eller meningsfull stannade den oftast kvar hos dig."
+        "copy": "Du mindes särskilt det som stack ut. Andra detaljer var svårare att plocka fram igen efter flera frågor."
       },
       "profile-5": {
         "tier": "50–59%",
         "title": "Ett selektivt minne",
-        "copy": "Ditt minne var selektivt om vad du skulle behålla. Vissa detaljer förblev tydliga, medan andra gled undan."
+        "copy": "Vissa detaljer var fortfarande tydliga, medan andra hade fallit ur minnet när du behövde dem igen."
       },
       "profile-6": {
         "tier": "Under 50 %",
-        "title": "Ett vandrande sinne",
-        "copy": "Testet fann många sätt att stjäla din uppmärksamhet. Du har fortfarande samlat några utmärkta detaljer längs vägen."
+        "title": "Tankarna på annat håll",
+        "copy": "Det var inte alltid lätt att hålla reda på detaljerna. Ändå mindes du flera av dem längs vägen."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "🧠 Återkallelse & association"
+        "label": "🧠 Minne och samband"
       },
       "dimension-2": {
         "label": "👀 Visuell uppmärksamhet"
       },
       "dimension-3": {
-        "label": "🔢 Siffror & arbetsminne"
+        "label": "🔢 Siffror och arbetsminne"
       }
     },
     "score": {
-      "passed": "Du slog 80%-utmaningen! 🧠",
-      "finished": "Du avslutade alla 30 minnesfrågorna",
+      "passed": "Du nådde målet på 80 %! 🧠",
+      "finished": "Du avslutade minnesutmaningen",
       "strongest": "Din starkaste minnesförmåga",
       "trickiest": "Din mest utmanande minnesförmåga",
       "bestRound": "Din bästa runda",
-      "disclaimer": "Endast för underhållning. Detta frågesport är inte en medicinsk eller kognitiv bedömning.",
+      "disclaimer": "Endast för underhållning. Det här testet är ingen medicinsk eller kognitiv bedömning.",
       "insights": {
-        "overview": "Din poäng på ett ögonkast",
+        "overview": "Ditt resultat i korthet",
         "correct": "Rätt svar",
         "missed": "Felaktiga svar",
-        "target": "Rätt svar krävs för att nå 80 %",
-        "breakdown": "Dina resultat genom minnesförmåga",
+        "target": "Rätt svar för att nå 80 %",
+        "breakdown": "Dina resultat per minnesförmåga",
         "snapshot": "Vad ditt resultat antyder",
-        "targetReached": "80 % utmaning uppnådd",
-        "targetRemaining": "Ytterligare korrekta svar krävs för att nå 80 %"
+        "targetReached": "Du nådde målet på 80 %",
+        "targetRemaining": "Fler rätta svar behövs för 80 %"
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Minns detaljerna",
+      "title": "Minnesutmaning",
       "questions": {
         "memory-r1q1": {
           "question": "Vilket föremål var blått?",
@@ -147,8 +109,8 @@
             "a4": "Elefant"
           },
           "study": {
-            "title": "Fånga dessa fyra detaljer",
-            "instruction": "Memorera dessa fyra detaljer. Senare frågor kan ställas om flera av dem.",
+            "title": "Minns de här fyra detaljerna",
+            "instruction": "Titta noga. Flera av detaljerna dyker upp i senare frågor.",
             "continueLabel": "Jag är redo",
             "items": [
               "Blå nyckel",
@@ -158,28 +120,8 @@
             ]
           }
         },
-        "memory-r1q2": {
-          "question": "Vilken kod är en exakt matchning för K7M2Q?",
-          "headerLabel": "Minns detaljerna",
-          "answers": {
-            "a1": "K7N2Q",
-            "a2": "K7M2Q",
-            "a3": "K7MZQ",
-            "a4": "KTM2Q"
-          }
-        },
-        "memory-r1q3": {
-          "question": "Vad är 4 – 9 – 2 baklänges?",
-          "headerLabel": "Minns detaljerna",
-          "answers": {
-            "a1": "9 – 2 – 4",
-            "a2": "2 – 4 – 9",
-            "a3": "2 – 9 – 4",
-            "a4": "4 – 2 – 9"
-          }
-        },
         "memory-r1q4": {
-          "question": "Vilket djur dök upp på öppningstavlan?",
+          "question": "Vilket djur fanns på den första minnestavlan?",
           "headerLabel": "Minns detaljerna",
           "answers": {
             "a1": "Kanin",
@@ -188,43 +130,8 @@
             "a4": "Elefant"
           }
         },
-        "memory-r1q7": {
-          "question": "Vilken kopia saknar en bokstav: MIRROR · MIRROR · MIROR · MIRROR?",
-          "headerLabel": "Minns detaljerna",
-          "answers": {
-            "a1": "Första",
-            "a2": "Andra",
-            "a3": "Tredje",
-            "a4": "Fjärde"
-          }
-        },
-        "memory-r1q8": {
-          "question": "Vilken färg syntes inte på öppningstavlan?",
-          "headerLabel": "Minns detaljerna",
-          "answers": {
-            "a1": "Blå",
-            "a2": "Lila",
-            "a3": "Silverfärgad",
-            "a4": "Guldfärgad"
-          }
-        }
-      }
-    },
-    "stage-2": {
-      "title": "Hitta mönstren",
-      "questions": {
-        "memory-r2q1": {
-          "question": "Omvänd 7 – 2 – 9 – 4. Vilket nummer kommer först?",
-          "headerLabel": "Hitta mönstren",
-          "answers": {
-            "a1": "4",
-            "a2": "9",
-            "a3": "2",
-            "a4": "7"
-          }
-        },
         "memory-r2q2": {
-          "question": "A – B – C blir B – C – A. Använd samma drag på 5 – 8 – 2.",
+          "question": "A – B – C blir B – C – A. Vad blir 5 – 8 – 2 med samma ändring?",
           "headerLabel": "Hitta mönstren",
           "answers": {
             "a1": "2 – 5 – 8",
@@ -243,43 +150,8 @@
             "a4": "Fjärde"
           }
         },
-        "memory-r2q4": {
-          "question": "Börja med 18. Lägg till 7 och subtrahera sedan 5. Vad blir resultatet?",
-          "headerLabel": "Hitta mönstren",
-          "answers": {
-            "a1": "25",
-            "a2": "16",
-            "a3": "30",
-            "a4": "20"
-          }
-        },
-        "memory-r2q5": {
-          "question": "Börja med 4 – 7 – 2 – 9. Flytta den sista siffran framåt och byt sedan om de två mittersta. Vad är resultatet?",
-          "headerLabel": "Hitta mönstren",
-          "answers": {
-            "a1": "9 – 7 – 4 – 2",
-            "a2": "9 – 4 – 7 – 2",
-            "a3": "2 – 7 – 4 – 9",
-            "a4": "9 – 7 – 2 – 4"
-          }
-        },
-        "memory-r2q6": {
-          "question": "Vänd på ordens ordning: Karta – Mynt – Stövel. Vilket ord blir kvar i mitten?",
-          "headerLabel": "Hitta mönstren",
-          "answers": {
-            "a1": "Karta",
-            "a2": "Mynt",
-            "a3": "Stövel",
-            "a4": "Inga"
-          }
-        }
-      }
-    },
-    "stage-3": {
-      "title": "Minns resan",
-      "questions": {
         "memory-r3q1": {
-          "question": "Vilken färg hade Mayas päls?",
+          "question": "Vilken färg hade Mayas kappa?",
           "headerLabel": "Minns resan",
           "answers": {
             "a1": "Röd",
@@ -288,7 +160,7 @@
             "a4": "Svart"
           },
           "study": {
-            "title": "Kom ihåg Mayas resa",
+            "title": "Minns Mayas resa",
             "instruction": "Detaljerna kommer tillbaka efter andra utmaningar.",
             "continueLabel": "Jag är redo",
             "items": [
@@ -299,38 +171,8 @@
             ]
           }
         },
-        "memory-r3q2": {
-          "question": "Vilken kod är en exakt matchning för T8PL4?",
-          "headerLabel": "Minns resan",
-          "answers": {
-            "a1": "T8P14",
-            "a2": "T8PL4",
-            "a3": "TBPL4",
-            "a4": "T8LP4"
-          }
-        },
-        "memory-r3q3": {
-          "question": "Vad är 6 – 1 – 4 baklänges?",
-          "headerLabel": "Minns resan",
-          "answers": {
-            "a1": "1 – 4 – 6",
-            "a2": "4 – 6 – 1",
-            "a3": "4 – 1 – 6",
-            "a4": "6 – 4 – 1"
-          }
-        },
-        "memory-r3q5": {
-          "question": "Börja med 15. Lägg till 9 och subtrahera sedan 6. Vad blir resultatet?",
-          "headerLabel": "Minns resan",
-          "answers": {
-            "a1": "18",
-            "a2": "24",
-            "a3": "12",
-            "a4": "30"
-          }
-        },
         "memory-r3q7": {
-          "question": "Vilken tid visades på Mayas resetavla?",
+          "question": "Vilken tid stod på minnestavlan om Mayas resa?",
           "headerLabel": "Minns resan",
           "answers": {
             "a1": "7:02",
@@ -339,23 +181,8 @@
             "a4": "8:20"
           }
         },
-        "memory-r3q8": {
-          "question": "Hur många äpplen var det i Mayas påse?",
-          "headerLabel": "Minns resan",
-          "answers": {
-            "a1": "En",
-            "a2": "Två",
-            "a3": "Fyra",
-            "a4": "Tre"
-          }
-        }
-      }
-    },
-    "stage-4": {
-      "title": "Personer och detaljer",
-      "questions": {
         "memory-r4q1": {
-          "question": "Vilket föremål parades ihop med Omar?",
+          "question": "Vilket föremål hörde till Omar?",
           "headerLabel": "Personer och detaljer",
           "answers": {
             "a1": "Tekanna",
@@ -364,8 +191,8 @@
             "a4": "Halsduk"
           },
           "study": {
-            "title": "Kom ihåg varje person och deras föremål",
-            "instruction": "Kom ihåg parningarna och deras ordning. Båda kommer tillbaka senare.",
+            "title": "Minns personerna och deras föremål",
+            "instruction": "Minns vem som hade vad och i vilken ordning namnen stod. Du får frågor om båda delarna senare.",
             "continueLabel": "Jag är redo",
             "items": [
               "Mia · Fiol",
@@ -385,63 +212,8 @@
             "a4": "BTRK"
           }
         },
-        "memory-r4q3": {
-          "question": "Tänk tillbaka på de fyra namnen på tavlan. Vilket namn kom omedelbart före Noah?",
-          "headerLabel": "Personer och detaljer",
-          "answers": {
-            "a1": "Mia",
-            "a2": "Omar",
-            "a3": "Lena",
-            "a4": "Noah"
-          }
-        },
-        "memory-r4q4": {
-          "question": "Lägg till en till varje nummer i 2 – 8 – 5. Vilken sekvens återstår?",
-          "headerLabel": "Personer och detaljer",
-          "answers": {
-            "a1": "2 – 9 – 6",
-            "a2": "3 – 8 – 6",
-            "a3": "3 – 9 – 5",
-            "a4": "3 – 9 – 6"
-          }
-        },
-        "memory-r4q5": {
-          "question": "Vem parades ihop med kompassen?",
-          "headerLabel": "Personer och detaljer",
-          "answers": {
-            "a1": "Lena",
-            "a2": "Mia",
-            "a3": "Noah",
-            "a4": "Omar"
-          }
-        },
-        "memory-r4q6": {
-          "question": "Tänk tillbaka på människor-och-föremål-tavlan. Vilket par är rätt?",
-          "headerLabel": "Personer och detaljer",
-          "answers": {
-            "a1": "Mia — Halsduk",
-            "a2": "Noah — Fiol",
-            "a3": "Lena — Kompass",
-            "a4": "Omar — Fiol"
-          }
-        }
-      }
-    },
-    "stage-5": {
-      "title": "Det sista minnesprovet",
-      "questions": {
-        "memory-r5q1": {
-          "question": "Tänk tillbaka på öppningstavlan: vilken färg hade draken?",
-          "headerLabel": "Det sista minnesprovet",
-          "answers": {
-            "a1": "Silverfärgad",
-            "a2": "Lila",
-            "a3": "Blå",
-            "a4": "Guldfärgad"
-          }
-        },
         "memory-r5q2": {
-          "question": "Vilket nummer parades med tåget på öppningstavlan?",
+          "question": "Vilken siffra stod tillsammans med tåget på den första minnestavlan?",
           "headerLabel": "Det sista minnesprovet",
           "answers": {
             "a1": "8",
@@ -450,44 +222,14 @@
             "a4": "9"
           }
         },
-        "memory-r5q3": {
-          "question": "Vilken typ av sittplats fanns på Mayas biljett?",
-          "headerLabel": "Det sista minnesprovet",
-          "answers": {
-            "a1": "Gångplats",
-            "a2": "Mitten",
-            "a3": "Fönsterplats",
-            "a4": "Plats längst fram"
-          }
-        },
         "memory-r5q4": {
-          "question": "Vilket objekt parades ihop med Mia?",
+          "question": "Vilket föremål hörde till Mia?",
           "headerLabel": "Det sista minnesprovet",
           "answers": {
             "a1": "Halsduk",
             "a2": "Kompass",
             "a3": "Tekanna",
             "a4": "Fiol"
-          }
-        },
-        "memory-r5q6": {
-          "question": "Vilken färg hade etiketten på Mayas väska?",
-          "headerLabel": "Det sista minnesprovet",
-          "answers": {
-            "a1": "Blå",
-            "a2": "Grön",
-            "a3": "Röd",
-            "a4": "Gul"
-          }
-        },
-        "memory-r5q8": {
-          "question": "Slutlig minneskontroll: vilken kombination är helt korrekt?",
-          "headerLabel": "Det sista minnesprovet",
-          "answers": {
-            "a1": "Silverfärgad drake · Tåg 6 · Fönsterplats",
-            "a2": "Blå drake · Tåg 6 · Gångplats",
-            "a3": "Silverfärgad drake · Tåg 8 · Fönsterplats",
-            "a4": "Lila drake · Tåg 6 · Plats längst fram"
           }
         }
       }

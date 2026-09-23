@@ -22,7 +22,7 @@ async function journey(score,width){
   await page.locator('.quiz-engine__landing').waitFor();await page.evaluate(()=>document.fonts.ready);
   assert.equal(await page.locator('.quiz-engine__quick-start').textContent(),e.landing.intro);
   assert.equal(await page.locator('.quiz-engine__quick-start').evaluate(n=>Math.round(n.getBoundingClientRect().height/parseFloat(getComputedStyle(n).lineHeight))),2);
-  if(score===24)await page.screenshot({path:'/tmp/mechanic-en-landing.png'});
+  if(score===8)await page.screenshot({path:'/tmp/mechanic-en-landing.png'});
   await page.locator('.quiz-engine__landing .quiz-engine__primary').click();let index=0;
   for(const [s,stage]of m.structure.stages.entries()){
    for(const id of stage.questionIds){
@@ -34,31 +34,31 @@ async function journey(score,width){
     assert.equal(await q.locator('.quiz-engine__answer strong').evaluateAll(nodes=>nodes.every(n=>n.scrollWidth<=n.clientWidth+1)),true,`Answer clipping: ${width}/${id}`);
     assert.equal(await q.locator('.quiz-engine__answers').evaluate(n=>getComputedStyle(n).gridTemplateColumns.trim().split(/\s+/).length),1,`Single-column answers: ${width}/${id}`);
     const correct=logic.answerIds.indexOf(logic.correctAnswerId),chosen=index++<score?correct:(correct+1)%4;
-    if(score===24&&s===4&&id.endsWith('q1'))await page.screenshot({path:'/tmp/mechanic-en-scenario.png'});
+    if(score===8&&id==='mechanic-r5q1')await page.screenshot({path:'/tmp/mechanic-en-scenario.png'});
     await q.locator('.quiz-engine__answer').nth(chosen).click();await q.waitFor({state:'detached'});
    }
    const checkpoint=page.locator('.quiz-engine__checkpoint');await checkpoint.waitFor();
    assert.equal(await checkpoint.getAttribute('data-round'),String(s+1));
-   assert.equal(await checkpoint.getByRole('progressbar').getAttribute('aria-valuenow'),String((s+1)*20));
+   assert.equal(await checkpoint.getByRole('progressbar').count(),0);
    assert.equal(await page.evaluate(()=>window.adCalls.length),s+1);
-   if(score===24&&s===0)await page.screenshot({path:'/tmp/mechanic-en-checkpoint.png'});
+   if(score===8&&s===0)await page.screenshot({path:'/tmp/mechanic-en-checkpoint.png'});
    await checkpoint.locator('.quiz-engine__primary').click();
   }
   const result=page.locator('.quiz-engine__results');await result.waitFor();
-  assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(),`${score} / 30`);
-  assert.equal(await result.locator('h2').first().innerText(),score>=24?e.results.score.passed:e.results.score.finished);
-  assert.equal(await page.evaluate(()=>window.adCalls.length),6);
-  if(score===24)await page.screenshot({path:'/tmp/mechanic-en-result.png'});
+  assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(),`${score} / 10`);
+  assert.equal(await result.locator('h2').first().innerText(),score>=8?e.results.score.passed:e.results.score.finished);
+  assert.equal(await page.evaluate(()=>window.adCalls.length),2);
+  if(score===8)await page.screenshot({path:'/tmp/mechanic-en-result.png'});
   await result.locator('.quiz-engine__answer-review-unlock button').click();
   await result.locator('.quiz-engine__answer-review').waitFor();
-  assert.equal(await result.locator('.quiz-engine__answer-review article').count(),30-score);
+  assert.equal(await result.locator('.quiz-engine__answer-review article').count(),10-score);
   const expected=m.structure.stages.flatMap(s=>s.questionIds.map(id=>({id,stage:s.id}))).slice(score).map(({id,stage})=>e.stages[stage].questions[id].answers[m.structure.questions[id].correctAnswerId]);
   assert.deepEqual(await result.locator('.quiz-engine__answer-review article dl div:last-child dd').allTextContents(),expected);
-  assert.equal(await page.evaluate(()=>window.adCalls.length),7);
+  assert.equal(await page.evaluate(()=>window.adCalls.length),3);
   assert.equal(await page.evaluate(()=>window.adCalls.every(a=>a.path==='/22677279144/rewarded'&&a.format==='REWARDED')),true);
   assert.equal(documents,1);assert.deepEqual(errors,[]);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-  console.log(`PASS ${score}/30 at ${width}px: five rounds, six main rewards + review, text-only SPA, correct score and missed-answer review`);
+  console.log(`PASS ${score}/10 at ${width}px: one stage, two main rewards + review, text-only SPA, correct score and missed-answer review`);
  }finally{await context.close();}
 }
-try{await Promise.all([[0,390],[23,1440],[24,320],[30,390]].map(([score,width])=>journey(score,width)));}finally{await browser.close();}
+try{await Promise.all([[0,390],[7,1440],[8,320],[10,390]].map(([score,width])=>journey(score,width)));}finally{await browser.close();}

@@ -30,7 +30,7 @@ async function check(locale){
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${locale}/${id}: page overflow`);
     assert.equal(await page.locator('[data-quiz-theme="vision"]').evaluate(n=>n.scrollLeft),0,`${locale}/${id}: internal horizontal scroll`);
     if(await q.locator('.quiz-engine__visual').count())assert.equal(await q.locator('.quiz-engine__visual').evaluate(n=>getComputedStyle(n).direction),'ltr',`${locale}/${id}: puzzle order`);
-    if(['ar','he','ja','de'].includes(locale)&&['vision-r1q1','vision-r9q5','vision-r10q4'].includes(id)){
+    if(['ar','he','ja','de'].includes(locale)&&['vision-r1q1','vision-r10q2'].includes(id)){
      await page.evaluate(async () => {await Promise.all(document.getAnimations().filter(a => Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a => a.finished.catch(()=>{})));});
      const bounds=await q.evaluate(n=>{const r=n.getBoundingClientRect();return{x:r.x,right:r.right,width:innerWidth,scrollX};});
      if(bounds.x < -1 || bounds.right > bounds.width+1) console.error(await q.evaluate(n=>{const out=[];for(let p=n;p;p=p.parentElement){const r=p.getBoundingClientRect(),s=getComputedStyle(p);out.push({tag:p.tagName,class:p.className,x:r.x,width:r.width,scrollWidth:p.scrollWidth,scrollLeft:p.scrollLeft,overflow:s.overflow,padding:s.padding,margin:s.margin,transform:s.transform});}return out;}));
@@ -41,16 +41,16 @@ async function check(locale){
    }
    const checkpoint=page.locator('.quiz-engine__checkpoint');await checkpoint.waitFor();
    assert.equal(await checkpoint.getAttribute('data-round'),String(index+1));
-   assert.equal(await checkpoint.getByRole('progressbar').getAttribute('aria-valuenow'),String((index+1)*20));
+   assert.equal(await checkpoint.getByRole('progressbar').count(),0);
    assert.equal(await page.evaluate(()=>window.adCalls.length),index+1);
    await checkpoint.locator('.quiz-engine__primary').click();
   }
   await page.locator('.quiz-engine__results').waitFor();
   const correct=Object.values(manifest.structure.questions).filter(q=>q.answerIds[0]===q.correctAnswerId).length;
-  assert.equal(await page.locator('.quiz-engine__result-fraction strong').innerText(),`${correct} / 30`);
-  assert.equal(await page.evaluate(()=>window.adCalls.length),6);
+  assert.equal(await page.locator('.quiz-engine__result-fraction strong').innerText(),`${correct} / 10`);
+  assert.equal(await page.evaluate(()=>window.adCalls.length),2);
   assert.equal(documents,1);assert.deepEqual(errors,[]);
-  console.log(`${locale}: 30 questions, five checkpoints, six mocked rewards, correct score, no overflow PASS`);
+  console.log(`${locale}: 10 questions, one result checkpoint, two mocked rewards, correct score, no overflow PASS`);
  }finally{await context.close();}
 }
 try{await Promise.all(Array.from({length:6},async()=>{while(queue.length){const locale=queue.shift();try{await check(locale);}catch(error){failures.push({locale,error:String(error)});console.error(locale,String(error));}}}));}finally{await browser.close();}

@@ -10,7 +10,7 @@ const cases=process.env.QUIZ_TEST_SAMPLE==='1'
  :selected.flatMap(slug=>locales.map(locale=>({slug,locale})));
 const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--disable-background-timer-throttling','--disable-renderer-backgrounding','--disable-backgrounding-occluded-windows']});
 const failures=[];
-async function journey(slug,locale='en',width=320,score=24){
+async function journey(slug,locale='en',width=320,score=8){
  const m=JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`)),e=JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`));
  const shared=JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`)).quiz;
  const context=await browser.newContext({viewport:{width,height:900}});
@@ -51,17 +51,17 @@ async function journey(slug,locale='en',width=320,score=24){
     assert.equal(await q.locator('.quiz-engine__answer strong').evaluateAll(nodes=>nodes.every(n=>n.scrollWidth<=n.clientWidth+1)),true,`Answer clipping: ${width}/${id}`);
     const correct=logic.answerIds.indexOf(logic.correctAnswerId);
     const chosen=slug==='personality'?logic.answerIds.findIndex(a=>logic.choiceMeanings[a].japan===1):index<score?correct:(correct+1)%4;
-    if(process.env.QUIZ_TEST_SCREENSHOTS!=='0'&&(index===0||index===26))await page.screenshot({path:`/tmp/five-round-${slug}-${locale}-q${index+1}.png`});
+    if(process.env.QUIZ_TEST_SCREENSHOTS!=='0'&&(index===0||index===7))await page.screenshot({path:`/tmp/five-round-${slug}-${locale}-q${index+1}.png`});
     index++;
     await q.locator('.quiz-engine__answer').nth(chosen).click();await q.waitFor({state:'detached'});
    }
    const checkpoint=page.locator('.quiz-engine__checkpoint');await checkpoint.waitFor();
-   await page.waitForFunction(({progress,result})=>{
+   await page.waitForFunction(({result})=>{
     const el=document.querySelector('.quiz-engine__checkpoint');
-    return el?.textContent.includes(progress)&&(!result||el.querySelector('.quiz-engine__primary')?.textContent.includes(result));
-   },{progress:e.career.resultProgressLabel,result:s===4?(e.career.stages['stage-5'].preAdButton??shared.revealMyResults):null},{timeout:15000});
+    return !result||el?.querySelector('.quiz-engine__primary')?.textContent.includes(result);
+   },{result:e.career.stages['stage-1'].preAdButton??shared.revealMyResults},{timeout:15000});
    assert.equal(await checkpoint.getAttribute('data-round'),String(s+1));
-   assert.equal(await checkpoint.getByRole('progressbar').getAttribute('aria-valuenow'),String((s+1)*20));
+   assert.equal(await checkpoint.getByRole('progressbar').count(),0);
    assert.equal(await page.evaluate(()=>window.adCalls.length),s+1);
    if(process.env.QUIZ_TEST_SCREENSHOTS!=='0'&&s===0)await page.screenshot({path:`/tmp/five-round-${slug}-${locale}-checkpoint.png`});
    await checkpoint.locator('.quiz-engine__primary').click();
@@ -76,28 +76,28 @@ async function journey(slug,locale='en',width=320,score=24){
    const profile=m.structure.results.profiles.find(p=>p.id==='japan');
    assert.ok((await result.innerText()).includes(e.results.profiles[profile.key].title));
   }else{
-   assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(),`${score} / 30`);
-   assert.equal(await result.locator('h2').first().innerText(),score>=24?e.results.score.passed:e.results.score.finished);
+   assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(),`${score} / 10`);
+   assert.equal(await result.locator('h2').first().innerText(),score>=8?e.results.score.passed:e.results.score.finished);
   }
-  assert.equal(await page.evaluate(()=>window.adCalls.length),6);
+  assert.equal(await page.evaluate(()=>window.adCalls.length),2);
   if(process.env.QUIZ_TEST_SCREENSHOTS!=='0')await page.screenshot({path:`/tmp/five-round-${slug}-${locale}-result.png`});
   if(slug==='personality'){
    await result.locator('.quiz-engine__answer-review-unlock button').click();
    await result.locator('.quiz-engine__answer-review-unlock').waitFor({state:'detached'});
-   assert.equal(await page.evaluate(()=>window.adCalls.length),7);
+   assert.equal(await page.evaluate(()=>window.adCalls.length),3);
   }
   if(slug!=='personality'){
    await result.locator('.quiz-engine__answer-review-unlock button').click();
    await result.locator('.quiz-engine__answer-review').waitFor();
-   assert.equal(await result.locator('.quiz-engine__answer-review article').count(),30-score);
+   assert.equal(await result.locator('.quiz-engine__answer-review article').count(),10-score);
    const expected=m.structure.stages.flatMap(s=>s.questionIds.map(id=>({id,stage:s.id}))).slice(score).map(({id,stage})=>e.stages[stage].questions[id].answers[m.structure.questions[id].correctAnswerId]);
    assert.deepEqual(await result.locator('.quiz-engine__answer-review article dl div:last-child dd').allTextContents(),expected);
-   assert.equal(await page.evaluate(()=>window.adCalls.length),7);
+   assert.equal(await page.evaluate(()=>window.adCalls.length),3);
   }
   assert.equal(await page.evaluate(()=>window.adCalls.every(a=>a.path==='/22677279144/rewarded'&&a.format==='REWARDED')),true);
   assert.equal(documents,1);assert.deepEqual(errors,[]);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-  console.log(`PASS ${slug}/${locale} ${width}px: 30 questions, 5 checkpoints, six main rewards, ${slug==='personality'?'Japan profile':score+'/30 + correct missed-answer review'}, no overflow or JS errors, one document`);
+  console.log(`PASS ${slug}/${locale} ${width}px: 10 questions, one result checkpoint, two main rewards, ${slug==='personality'?'Japan profile':score+'/10 + correct missed-answer review'}, no overflow or JS errors, one document`);
  }catch(error){
   failures.push(`${slug}/${locale}`);console.error(`FAIL ${slug}/${locale}: ${error.stack}`);
   console.error(await page.locator('.quiz-engine__question-shell').evaluate(el=>{const rows=[];for(let n=el;n;n=n.parentElement){const r=n.getBoundingClientRect();rows.push({class:n.className,x:r.x,width:r.width,scrollLeft:n.scrollLeft,scrollWidth:n.scrollWidth,clientWidth:n.clientWidth,overflow:getComputedStyle(n).overflow,transform:getComputedStyle(n).transform});}return rows;}).catch(()=>[]));
@@ -106,7 +106,7 @@ async function journey(slug,locale='en',width=320,score=24){
 }
 try{
  const concurrency=Number(process.env.QUIZ_TEST_CONCURRENCY??4);
- for(let i=0;i<cases.length;i+=concurrency)await Promise.all(cases.slice(i,i+concurrency).map(({slug,locale})=>journey(slug,locale,Number(process.env.QUIZ_TEST_WIDTH??320),Number(process.env.QUIZ_TEST_SCORE??24))));
+ for(let i=0;i<cases.length;i+=concurrency)await Promise.all(cases.slice(i,i+concurrency).map(({slug,locale})=>journey(slug,locale,Number(process.env.QUIZ_TEST_WIDTH??320),Number(process.env.QUIZ_TEST_SCORE??8))));
 }finally{await browser.close();}
 if(failures.length){console.error('Failed journeys:',failures.join(', '));process.exitCode=1;}
 console.log(`Completed ${cases.length} journeys; ${failures.length} failed.`);

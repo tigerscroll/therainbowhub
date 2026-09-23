@@ -43,7 +43,7 @@ export const corrections={
   },
   bg:{'stages.stage-1.questions.treatments-r1q3.answers.a1':'Терапия чрез разговор','stages.stage-2.questions.treatments-r2q2.answers.a1':'Да използва глюкозата за енергия','stages.stage-4.questions.treatments-r4q3.question':'Кое твърдение за ерготерапията е вярно?'},
   de:{
-   'results.score.passed':'Sie haben die Behandlungs-Challenge bestanden!','results.score.bestRound':'Ihre beste Runde',
+   'results.score.passed':'Sie haben die Herausforderung zu Behandlungsmethoden gemeistert!','results.score.bestRound':'Ihre beste Runde',
    'stages.stage-1.questions.treatments-r1q5.answers.a2':'Schröpfgefäße, die Unterdruck auf der Haut erzeugen',
    'stages.stage-2.questions.treatments-r2q2.question':'Wobei hilft Insulin dem Körper?',
    'stages.stage-2.questions.treatments-r2q2.answers.a1':'Glukose zur Energiegewinnung zu nutzen',
@@ -52,7 +52,7 @@ export const corrections={
    'stages.stage-4.questions.treatments-r4q1.answers.a4':'Sie untersucht Zusammenhänge zwischen Gedanken, Gefühlen und Handlungen',
    'stages.stage-4.questions.treatments-r4q3.answers.a3':'Sie kann Menschen zu Hause, in der Schule oder bei der Arbeit unterstützen',
    'stages.stage-4.questions.treatments-r4q5.answers.a4':'Sie kann die DNA von Krebszellen schädigen, um deren Wachstum zu stoppen oder die Zellen abzutöten',
-   'stages.stage-5.questions.treatments-r5q2.question':'Eine therapeutische Fachkraft hilft Menschen mit Schluckstörungen. Welcher Beruf passt dazu?',
+   'stages.stage-5.questions.treatments-r5q2.question':'Eine therapeutische Fachkraft hilft Menschen mit Schluckstörungen. Welcher Therapiebereich ist gemeint?',
    'stages.stage-5.questions.treatments-r5q3.answers.a3':'Koronararterien-Bypassoperation',
   },
   el:{'results.profiles.profile-1.title':'Άριστη γνώση των θεραπειών'},
@@ -67,7 +67,7 @@ export const corrections={
    'stages.stage-4.questions.treatments-r4q4.question':'Mikä väite kuppauksen tutkimusnäytöstä pitää paikkansa?',
   },
   fil:{'results.profiles.profile-2.title':'Maalam sa mga Terapiya','results.profiles.profile-3.title':'Mahusay Kumilala ng Paggamot','results.profiles.profile-4.title':'Masigasig Matuto Tungkol sa Kalusugan','stages.stage-5.questions.treatments-r5q3.answers.a3':'Operasyong lumilikha ng bagong daanan ng dugo sa paligid ng baradong coronary artery'},
-  hu:{'stages.stage-5.questions.treatments-r5q4.question':'Valaki a rehabilitáció részeként irányított gyakorlatokat végez meleg vízben. Mi ennek a neve?','stages.stage-5.questions.treatments-r5q6.question':'Egy strukturált terápiás ülésen valaki megvizsgál egy hátráltató gondolatot, majd másfajta reakciót gyakorol a terapeutával. Melyik megközelítés illik erre?'},
+  hu:{'stages.stage-5.questions.treatments-r5q3.answers.a2':'Vesedialízis','stages.stage-5.questions.treatments-r5q4.question':'Valaki a rehabilitáció részeként irányított gyakorlatokat végez meleg vízben. Mi ennek a neve?','stages.stage-5.questions.treatments-r5q5.answers.a2':'Diagnosztikai képalkotás','stages.stage-5.questions.treatments-r5q6.question':'Egy strukturált terápiás ülésen valaki megvizsgál egy hátráltató gondolatot, majd másfajta reakciót gyakorol a terapeutával. Melyik megközelítés illik erre?'},
   ja:{
    'results.profiles.profile-1.copy':'治療法の名前、しくみ、具体例を正確に結び付けられました。一般知識を問うこのクイズで、すばらしい成績を収めました。',
    'results.profiles.profile-2.copy':'治療法の名前をよく理解し、このクイズに合格しました。間違えた問題を見直して、理解をさらに深めましょう。',
@@ -79,7 +79,7 @@ export const corrections={
   it:{'stages.stage-1.questions.treatments-r1q3.answers.a1':'Una psicoterapia basata sul dialogo'},
   id:{'stages.stage-1.questions.treatments-r1q3.answers.a1':'Psikoterapi melalui percakapan','stages.stage-1.questions.treatments-r1q6.answers.a1':'Memberikan komponen darah donor melalui pembuluh vena'},
   th:{'stages.stage-1.questions.treatments-r1q6.answers.a1':'การให้ส่วนประกอบของเลือดที่ได้รับบริจาคผ่านทางหลอดเลือดดำ','stages.stage-3.questions.treatments-r3q6.answers.a2':'ไม่ใช่ กายภาพบำบัดอาจรวมถึงการออกกำลังกาย การรักษาด้วยมือของนักกายภาพบำบัด และการให้คำแนะนำ','stages.stage-5.questions.treatments-r5q6.answers.a1':'การบำบัดความคิดและพฤติกรรม'},
-  pt:{'results.score.insights.missed':'Respostas incorretas','stages.stage-1.questions.treatments-r1q3.answers.a1':'Uma psicoterapia baseada na conversa','stages.stage-1.questions.treatments-r1q6.answers.a1':'Administração de componentes de sangue doado através de uma veia','stages.stage-2.questions.treatments-r2q1.answers.a3':'Resíduos do metabolismo e excesso de líquido','stages.stage-2.questions.treatments-r2q2.answers.a1':'Utilizar glicose para obter energia','stages.stage-2.questions.treatments-r2q5.answers.a3':'Ajudar o sistema imunitário a combater o câncer'},
+  pt:{'results.score.insights.missed':'Respostas incorretas','stages.stage-1.questions.treatments-r1q3.answers.a1':'Uma psicoterapia baseada na conversa','stages.stage-1.questions.treatments-r1q6.answers.a1':'Administração de componentes de sangue doado através de uma veia','stages.stage-2.questions.treatments-r2q1.answers.a3':'Resíduos do metabolismo e excesso de líquido','stages.stage-2.questions.treatments-r2q2.answers.a1':'Utilizar glicose para obter energia','stages.stage-2.questions.treatments-r2q5.answers.a3':'Ajudar o sistema imunitário a combater células cancerígenas'},
  },
 };
 

@@ -7,12 +7,11 @@
     "cta": "Teszt indítása"
   },
   "about": {
-    "body": "Harminc kérdés, öt rövid forduló: megismerheted a szokásaidat, az energiaszintedet, a kapcsolataidat és az életszemléletedet.\n\nVálaszd azt, ami a leginkább illik rád! A következő kérdés automatikusan megjelenik. Nincs jó vagy rossz válasz, és nem kell sietned. Egy rövid reklám nyitja meg a kvízt, minden új fordulót és a végeredményt.\n\nAz eredmény egy játékos életkorbecslés és életmódprofil. Nem orvosi előrejelzés és nem a várható élettartam megbízható becslése.",
+    "body": "Fedezd fel, mit árulnak el rólad a mindennapi szokásaid.\n\nAz eredmény egy játékos életkorbecslés és életmódprofil. Nem orvosi előrejelzés és nem a várható élettartam megbízható becslése.",
     "howToPlay": {
       "steps": [
-        "Nyomd meg a „Teszt indítása” gombot, nézz meg egy rövid reklámot, és kezdheted is!",
-        "Minden kérdésnél válassz egy választ. A következő kérdés automatikusan megjelenik.",
-        "Válaszold meg a forduló hat kérdését, majd egy rövid reklám után folytasd. Az utolsó forduló után láthatod az eredményt."
+        "Válaszd ki azt a választ, amelyik leginkább az igazi rutinodhoz hasonlít, anélkül, hogy túlgondolnád.",
+        "Töltse ki mind a tíz életmódra vonatkozó kérdést egyetlen megszakítás nélküli futásban."
       ]
     },
     "disclaimer": "Csak szórakozásra és önismereti gondolatébresztőnek. A kvíz nem jelzi előre az élettartamot, az egészségi állapotot, a halálozási kockázatot vagy betegségek kimenetelét. Egészségügyi kérdéssel fordulj képzett szakemberhez."
@@ -21,51 +20,15 @@
     "resultProgressLabel": "A kvíz állása",
     "stages": {
       "stage-1": {
-        "difficulty": "Napi ritmus",
-        "preAdTitle": "Az 1. kör kész",
-        "preAdCopy": "Az első forduló kész! Most nézzük, mi ad neked energiát.",
-        "next": {
-          "eyebrow": "KÖVETKEZŐ FORDULÓ",
-          "tagline": "Fedezd fel a mindennapi energiaforrásaidat."
-        }
-      },
-      "stage-2": {
-        "difficulty": "Mindennapi energia",
-        "preAdTitle": "A 2. kör kész",
-        "preAdCopy": "Két forduló mögötted! Most a pihenés és a feltöltődés következik.",
-        "next": {
-          "eyebrow": "KÖVETKEZŐ FORDULÓ",
-          "tagline": "Fedezd fel, hogyan kezeled a stresszt."
-        }
-      },
-      "stage-3": {
-        "difficulty": "Nyomás és feltöltődés",
-        "preAdTitle": "A 3. kör kész",
-        "preAdCopy": "Már túl vagy a felén! Most jöhet a kalandvágyad.",
-        "next": {
-          "eyebrow": "KÖVETKEZŐ FORDULÓ",
-          "tagline": "Engedj teret a kíváncsiságodnak."
-        }
-      },
-      "stage-4": {
-        "difficulty": "Kalandvágy",
-        "preAdTitle": "A 4. kör kész",
-        "preAdCopy": "Már csak egy forduló van hátra. Milyennek képzeled a jövődet?",
-        "next": {
-          "eyebrow": "KÖVETKEZŐ FORDULÓ",
-          "tagline": "Zárásként gondolj a jövődre."
-        }
-      },
-      "stage-5": {
-        "difficulty": "VÉGSŐ EREDMÉNY",
-        "preAdTitle": "Elkészült az eredményed",
-        "preAdCopy": "Mind a 30 válasz összehasonlítása kész. Megnézheted a játékos életkorbecslésedet és a profilodat.",
+        "difficulty": "Életmód-előrejelzés",
+        "preAdTitle": "Elkészült a becslésed",
+        "preAdCopy": "Az Ön életkora és életmódprofilja készen áll a nyilvánosságra.",
         "preAdChecks": [
-          "30 válasz ellenőrizve",
-          "Életmódbeli szokások összevetve",
-          "Végső becslés kiszámítva"
+          "10 válasz elemzett",
+          "Négy életmódjelet hasonlított össze",
+          "A becslésed kiszámítva"
         ],
-        "preAdButton": "Mutasd az eredményem"
+        "preAdButton": "Mutassa be becslésemet"
       }
     }
   },
@@ -160,12 +123,12 @@
         "breakdown": "Életmódbeli tulajdonságaid",
         "snapshot": "Amit a profilod sugall"
       },
-      "disclaimer": "Csak szórakoztatásra. Ez nem orvosi vagy várható élettartam előrejelzés."
+      "disclaimer": "Csak szórakoztatásra. Ez nem orvosi előrejelzés, és nem jósolja meg a várható élettartamot."
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Napi ritmus",
+      "title": "Életmód-előrejelzés",
       "questions": {
         "yl-s1q1": {
           "question": "Megszólal az ébresztő. Mit teszel?",
@@ -187,51 +150,6 @@
             "a4": "Kimozdulok, és kihasználom az időt"
           }
         },
-        "yl-s1q3": {
-          "question": "Hirtelen megváltoznak a terveid. Mi az első reakciód?",
-          "headerLabel": "Napi ritmus",
-          "answers": {
-            "a1": "Rögtön elromlik a kedvem",
-            "a2": "Kell egy kis idő, amíg átállok",
-            "a3": "Különösebb gond nélkül alkalmazkodom",
-            "a4": "Örülök: hátha valami izgalmas sül ki belőle!"
-          }
-        },
-        "yl-s1q4": {
-          "question": "Hogy érzed magad általában délután kettőkor?",
-          "headerLabel": "Napi ritmus",
-          "answers": {
-            "a1": "Alig bírom nyitva tartani a szemem",
-            "a2": "Ennivalót és motivációt keresek",
-            "a3": "Egyenletes tempóban haladok",
-            "a4": "Újra tele vagyok energiával"
-          }
-        },
-        "yl-s1q5": {
-          "question": "Hogy fest a teendőlistád a nap végén?",
-          "headerLabel": "Napi ritmus",
-          "answers": {
-            "a1": "Valahogy még hosszabb lett",
-            "a2": "Legalább a könnyű feladatokkal végeztem",
-            "a3": "A fontos dolgok nagy része kész",
-            "a4": "Minden kész, még a holnapi terv is"
-          }
-        },
-        "yl-s1q6": {
-          "question": "Hirtelen rendetlenség lesz a szobában. Mit teszel?",
-          "headerLabel": "Napi ritmus",
-          "answers": {
-            "a1": "Hozzászokom",
-            "a2": "Akkor pakolok el, amikor már zavar",
-            "a3": "Még aznap rendet rakok",
-            "a4": "Rögtön elpakolok, mielőtt rosszabb lenne"
-          }
-        }
-      }
-    },
-    "stage-2": {
-      "title": "Mindennapi energia",
-      "questions": {
         "yl-s2q1": {
           "question": "Itt a reggeli ideje. Melyik illik rád leginkább?",
           "headerLabel": "Mindennapi energia",
@@ -252,51 +170,6 @@
             "a4": "A lépcsőt — hátha még a liftet is megelőzöm"
           }
         },
-        "yl-s2q3": {
-          "question": "Mennyi mozgás fér bele egy átlagos napodba?",
-          "headerLabel": "Mindennapi energia",
-          "answers": {
-            "a1": "Kevés, ha nem kell mennem valahová",
-            "a2": "Egy kicsi, amikor már nem bírok egy helyben ülni",
-            "a3": "A legtöbb napon időt szakítok rá",
-            "a4": "A mozgás már a napi rutinom része"
-          }
-        },
-        "yl-s2q4": {
-          "question": "Délután elfogy az energiád. Mihez kezdesz?",
-          "headerLabel": "Mindennapi energia",
-          "answers": {
-            "a1": "Eszem valami édeset, és remélem, segít",
-            "a2": "Jöhet még egy adag koffein",
-            "a3": "Iszom, eszem vagy tartok egy rövid szünetet",
-            "a4": "Sétálok egyet, és felfrissülök"
-          }
-        },
-        "yl-s2q5": {
-          "question": "Hosszú nap után vacsorázni kell. Mit választasz általában?",
-          "headerLabel": "Mindennapi energia",
-          "answers": {
-            "a1": "Ami szinte semmi erőfeszítést nem igényel",
-            "a2": "Valami gyorsat és jól beváltat",
-            "a3": "Rendes ételt, ha maradt rá energiám",
-            "a4": "Többnyire figyelek a teljes értékű vacsorára"
-          }
-        },
-        "yl-s2q6": {
-          "question": "Valaki hosszú sétára hív. Mi az első gondolatod?",
-          "headerLabel": "Mindennapi energia",
-          "answers": {
-            "a1": "Nem ülhetnénk inkább le valahol?",
-            "a2": "Csak ha jó az idő",
-            "a3": "Ez kellemesen hangzik",
-            "a4": "Már veszem is a cipőmet! Merre indulunk?"
-          }
-        }
-      }
-    },
-    "stage-3": {
-      "title": "Nyomás és feltöltődés",
-      "questions": {
         "yl-s3q1": {
           "question": "Közeleg egy határidő. Mi zajlik a fejedben?",
           "headerLabel": "Nyomás és feltöltődés",
@@ -317,51 +190,6 @@
             "a4": "Rögtön válaszolok, mielőtt felgyűlnének"
           }
         },
-        "yl-s3q3": {
-          "question": "Valaki az utolsó pillanatban lemondja a közös vacsorát. Mi lesz ezután?",
-          "headerLabel": "Nyomás és feltöltődés",
-          "answers": {
-            "a1": "Úgy érzem, oda az egész estém",
-            "a2": "Kényelmes estét tartok otthon",
-            "a3": "Kitalálok egy másik programot",
-            "a4": "Elhívok valaki mást, vagy egyedül is elmegyek"
-          }
-        },
-        "yl-s3q4": {
-          "question": "Ki veszi észre először, amikor nagyon stresszelsz?",
-          "headerLabel": "Nyomás és feltöltődés",
-          "answers": {
-            "a1": "Mindenki körülöttem — nem tudom titkolni",
-            "a2": "Senki, de többet kezdek nassolni",
-            "a3": "Valaki, aki közel áll hozzám",
-            "a4": "Én veszem észre időben, és teszek ellene"
-          }
-        },
-        "yl-s3q5": {
-          "question": "Zsúfolt heted van, és egy barátod segítséget kér. Mit teszel?",
-          "headerLabel": "Nyomás és feltöltődés",
-          "answers": {
-            "a1": "Igent mondok, aztán alig bírom a terhelést",
-            "a2": "Halogatom a választ, és bűntudatom van",
-            "a3": "Segítek, de világos határokat szabok",
-            "a4": "Közösen keresünk működő megoldást"
-          }
-        },
-        "yl-s3q6": {
-          "question": "Mennyire könnyen mondasz nemet utólagos rágódás nélkül?",
-          "headerLabel": "Nyomás és feltöltődés",
-          "answers": {
-            "a1": "Még egy 2019-es visszautasításon is rágódom",
-            "a2": "Nem könnyen, de tanulom",
-            "a3": "Többnyire megy, ha fontos határról van szó",
-            "a4": "Egyértelműen és kedvesen mondok nemet"
-          }
-        }
-      }
-    },
-    "stage-4": {
-      "title": "Kalandvágy",
-      "questions": {
         "yl-s4q1": {
           "question": "Egy óra múlva indul egy egynapos meglepetéskirándulás. Mész?",
           "headerLabel": "Kalandvágy",
@@ -382,51 +210,6 @@
             "a4": "Gátlások nélkül énekelek és táncolok"
           }
         },
-        "yl-s4q3": {
-          "question": "Teljesen új étellel kínálnak. Hogyan reagálsz?",
-          "headerLabel": "Kalandvágy",
-          "answers": {
-            "a1": "Maradok annál, amit ismerek",
-            "a2": "Óvatosan megkóstolok egy falatot",
-            "a3": "Miért ne? Kipróbálom",
-            "a4": "A legszokatlanabb változatot választom"
-          }
-        },
-        "yl-s4q4": {
-          "question": "Az eső keresztülhúzza a szabadtéri terveket. Mi a B terved?",
-          "headerLabel": "Kalandvágy",
-          "answers": {
-            "a1": "Hazamegyek, és feladom",
-            "a2": "Keresek egy kuckós helyet",
-            "a3": "Kitalálok egy jó beltéri programot",
-            "a4": "Folytatom — az eső is a kaland része"
-          }
-        },
-        "yl-s4q5": {
-          "question": "Melyik hobbira szakítanál legszívesebben időt?",
-          "headerLabel": "Kalandvágy",
-          "answers": {
-            "a1": "Arra, amelyiknek az eszközei még bontatlanul várnak",
-            "a2": "Valami ismerősre és megnyugtatóra",
-            "a3": "Egy régi kedvenc elfoglaltságomra",
-            "a4": "Valamire, amit még sosem próbáltam"
-          }
-        },
-        "yl-s4q6": {
-          "question": "Karaokéra hívnak. Hogyan veszel részt?",
-          "headerLabel": "Kalandvágy",
-          "answers": {
-            "a1": "Vigyázok a kabátokra",
-            "a2": "A nézőtérről biztatom a többieket",
-            "a3": "Eléneklek egy gondosan kiválasztott dalt",
-            "a4": "Váratlanul az este sztárja leszek"
-          }
-        }
-      }
-    },
-    "stage-5": {
-      "title": "Pillantás a jövőbe",
-      "questions": {
         "yl-s5q1": {
           "question": "A jövőbeli éned üzen neked. Mi áll az üzenetben?",
           "headerLabel": "Pillantás a jövőbe",
@@ -435,46 +218,6 @@
             "a2": "Élvezd jobban a nyugodt pillanatokat",
             "a3": "Továbbra is azt válaszd, ami igazán számít",
             "a4": "Mondj igent az emlékezetes élményekre"
-          }
-        },
-        "yl-s5q2": {
-          "question": "Melyik apró szokást tartanád meg legkönnyebben egy évig?",
-          "headerLabel": "Pillantás a jövőbe",
-          "answers": {
-            "a1": "Kevesebb késő esti telefonozást",
-            "a2": "Egy nyugodtabb reggeli rutint",
-            "a3": "Rendszeres sétát vagy beszélgetést valakivel, aki fontos",
-            "a4": "Hetente egy új dolog kipróbálását"
-          }
-        },
-        "yl-s5q3": {
-          "question": "Teljesen szabad hétvége áll előtted. Mit tervezel először?",
-          "headerLabel": "Pillantás a jövőbe",
-          "answers": {
-            "a1": "Semmit — pihenni szeretnék",
-            "a2": "Valami kényelmes, megszokott programot",
-            "a3": "Egy dolgot, aminek számomra értelme van",
-            "a4": "Egy számomra új hely felfedezését"
-          }
-        },
-        "yl-s5q4": {
-          "question": "Milyen dicséretet hallanál legszívesebben az idősebb énedtől?",
-          "headerLabel": "Pillantás a jövőbe",
-          "answers": {
-            "a1": "Végre megtanultál pihenni",
-            "a2": "Biztonságot teremtettél az életedben",
-            "a3": "Hű maradtál ahhoz, ami fontos",
-            "a4": "Sosem veszítetted el a kíváncsiságodat"
-          }
-        },
-        "yl-s5q5": {
-          "question": "Váratlanul kapsz egy kis pénzt magadra. Mire fordítod?",
-          "headerLabel": "Pillantás a jövőbe",
-          "answers": {
-            "a1": "Félreteszem váratlan kiadásokra",
-            "a2": "Megveszek valamit, amire régóta vágyom",
-            "a3": "Egy részét hasznosan költöm el, a többit élvezem",
-            "a4": "Olyan élményt választok, amiről évekig mesélhetek"
           }
         },
         "yl-s5q8": {

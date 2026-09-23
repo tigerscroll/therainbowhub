@@ -485,41 +485,41 @@ for (const folder of folders) {
     const firefighterLandingBlocks = [...firefighterThemeCss.matchAll(/\[data-quiz-theme="firefighter"\] \.quiz-engine__landing\s*\{([^}]*)\}/g)]
       .map((match) => match[1]);
     fail(config.engine?.targetRatio === 0.8 && config.engine?.scoring === "correct-answer", "firefighter: must use correct-answer scoring and an 80% target.");
-    fail(config.template === "five-stage-six-question-v1", "firefighter: must use five six-question rounds.");
+    fail(config.template === "single-stage-rewarded-v1", "firefighter: must use the ten-question rewarded flow.");
     fail(source.title === "Only 11% Can Pass This Firefighter Entrance Exam", "firefighter/en.json: title changed.");
     fail(source.landing?.cta === "Start Test" && config.listing?.socialProofCount === 268000, "firefighter: landing CTA and social proof must match the approved launch copy.");
-    fail(sourceQuestionIds.length === 30 && expectedQuestionIds.every(id => sourceQuestionIds.includes(id)), "firefighter/en.json: thirty questions must retain the previously approved questions.");
-    fail(firefighterCategories.every((category) => categoryCounts[category] >= 5), "firefighter/en.json: every entrance area must appear at least five times.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedQuestionIds), "firefighter/en.json: approved ten-question sequence changed.");
+    fail(firefighterCategories.every((category) => categoryCounts[category] >= 1), "firefighter/en.json: every entrance area must be represented.");
     fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "firefighter/en.json: every question needs a distinct header label.");
-    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready" && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", "firefighter/en.json: final reveal gate must follow all five rounds.");
-    fail(JSON.stringify(source.career?.stages?.at(-1)?.preAdChecks) === JSON.stringify(["30 answers checked", "Five rounds completed", "Your result prepared"]), "firefighter/en.json: final result checklist changed.");
+    fail(Boolean(source.career?.stages?.[0]?.preAdTitle) && Boolean(source.career?.stages?.[0]?.preAdButton), "firefighter/en.json: final reveal gate is missing.");
+    fail(source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", "firefighter/en.json: ten-answer result checklist changed.");
     fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.title)) === JSON.stringify(expectedProfiles), "firefighter/en.json: candidate profile names changed.");
-    fail(new Set(sourceQuestions.map((question) => question.interactionStyle)).size >= 8, "firefighter/en.json: the short challenge must retain varied reasoning styles.");
-    fail(sourceQuestions.slice(-3).every((question) => question.reasoningSteps === 2 && /synthesis/.test(question.interactionStyle ?? "")), "firefighter/en.json: the final three questions must retain two-step reasoning.");
+    fail(new Set(sourceQuestions.map((question) => question.interactionStyle)).size >= 5, "firefighter/en.json: the short challenge must retain varied reasoning styles.");
+    fail(sourceQuestions.at(-1)?.reasoningSteps === 2 && /synthesis/.test(sourceQuestions.at(-1)?.interactionStyle ?? ""), "firefighter/en.json: final question must retain two-step reasoning.");
     fail(!forbiddenOperationalCopy.test(sourceQuestions.map((question) => `${question.question} ${question.answers.join(" ")}`).join(" ")), "firefighter/en.json: operational firefighting instruction is outside the quiz scope.");
     fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.");
     fail(questionsById["firefighter-s3q6"]?.question === "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?", "firefighter/en.json: the radiation question must remain unambiguous.");
     fail(questionsById["firefighter-s3q2"]?.answers?.[questionsById["firefighter-s3q2"].correct] === "60 metres" && questionsById["firefighter-s5q6"]?.answers?.[questionsById["firefighter-s5q6"].correct] === "12", "firefighter/en.json: approved numeracy answers changed.");
-    fail(/five rounds/i.test(source.about?.body ?? "") && /30/.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the thirty-question format.");
+    fail(/ten.{0,20}questions/i.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the ten-question format.");
     fail(firefighterLandingBlocks.length > 0 && firefighterLandingBlocks.every((block) => !/(?:^|;)\s*(?:grid-template-columns|width|padding(?:-[a-z]+)?)\s*:/m.test(block)), "firefighter/theme.css: shared landing grid, width and padding must not be overridden.");
   }
   if (["oxford", "cambridge", "harvard", "nursing", "paramedic", "midwifery", "chef"].includes(folder.name)) {
-    fail(source.career?.stages?.length === 5, `${folder.name}/en.json: entrance challenge must have five round gates.`);
-    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready", `${folder.name}/en.json: result-ready title changed.`);
-    fail(JSON.stringify(source.career?.stages?.at(-1)?.preAdChecks)?.includes("30 answers checked"), `${folder.name}/en.json: thirty-answer final checklist changed.`);
+    fail(source.career?.stages?.length === 1, `${folder.name}/en.json: entrance challenge must have one result gate.`);
+    fail(Boolean(source.career?.stages?.[0]?.preAdTitle), `${folder.name}/en.json: result-ready title is missing.`);
+    fail(source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", `${folder.name}/en.json: ten-answer final checklist changed.`);
   }
   if (["memory", "years-left"].includes(folder.name)) {
     const memory = folder.name === "memory";
     const expectedIds = memory
-      ? [[1,2,3,4,7,8], [1,2,3,4,5,6], [1,2,3,5,7,8], [1,2,3,4,5,6], [1,2,3,4,6,8]].flatMap((qs,r) => qs.map(n => `memory-r${r+1}q${n}`))
-      : [[1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,8]].flatMap((qs,r) => qs.map(n => `yl-s${r+1}q${n}`));
-    fail(config.template === "five-stage-six-question-v1" && config.engine.flow === "staged" && config.engine.advance === "automatic", folder.name + ": must use five automatic six-question rounds.");
+      ? ["memory-r1q1", "memory-r1q4", "memory-r2q2", "memory-r2q3", "memory-r3q1", "memory-r3q7", "memory-r4q1", "memory-r4q2", "memory-r5q2", "memory-r5q4"]
+      : ["yl-s1q1", "yl-s1q2", "yl-s2q1", "yl-s2q2", "yl-s3q1", "yl-s3q2", "yl-s4q1", "yl-s4q2", "yl-s5q1", "yl-s5q8"];
+    fail(config.template === "single-stage-rewarded-v1" && config.engine.flow === "linear" && config.engine.advance === "automatic", folder.name + ": must use the ten-question automatic flow.");
     fail(!config.engine.startOnLoad && config.engine.rewarded.start && config.engine.rewarded.stages, folder.name + ": must retain the landing page, starting reward and round rewards.");
     fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
-    fail(source.stages.length === 5 && sourceQuestions.length === 30, folder.name + ": needs exactly thirty questions in five stages.");
+    fail(source.stages.length === 1 && sourceQuestions.length === 10, folder.name + ": needs exactly ten questions in one stage.");
     fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
     fail(sourceQuestions.every(q => { const choices = Array.isArray(q.answers) ? q.answers : Object.keys(q.answers); return choices.length === 4 && new Set(choices).size === 4; }), folder.name + ": needs four unique choices per question.");
-    fail(source.career.stages.length === 5 && !source.career.stages.at(-1).next && source.career.stages.at(-1).preAdChecks[0] === "30 answers checked", folder.name + ": needs a final result gate after all thirty answers.");
+    fail(source.career.stages.length === 1 && !source.career.stages[0].next && source.career.stages[0].preAdChecks[0].includes("10"), folder.name + ": needs a final result gate after ten answers.");
     fail(!/40 answers|forty/i.test(JSON.stringify(source)), folder.name + ": stale forty-question copy.");
     if (memory) {
       fail(config.engine.targetRatio === 0.8 && source.results.score.showBestRound === false, "memory: retain 80% target without a redundant best-round module.");
@@ -533,11 +533,11 @@ for (const folder of folders) {
   }
   if (folder.name === "iq") {
     const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];
-    fail(config.template === "five-stage-six-question-v1" && config.engine?.targetRatio === 0.8, "iq: must use five rounds and an 80% target.");
-    fail(sourceQuestionIds.length === 30 && expectedIds.every(id => sourceQuestionIds.includes(id)), "iq/en.json: thirty questions must retain the previously approved puzzles.");
+    fail(config.template === "single-stage-rewarded-v1" && config.engine?.targetRatio === 0.8, "iq: must use ten questions and an 80% target.");
+    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "iq/en.json: approved ten puzzles changed.");
     fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "iq/en.json: every puzzle needs a question-type header.");
-    fail(source.career?.stages?.at(-1)?.preAdTitle === "Your result is ready" && source.career?.stages?.at(-1)?.preAdButton === "Reveal My Result", "iq/en.json: final result gate changed.");
-    fail(source.results?.score?.showBestRound === true, "iq/en.json: five rounds must support the best-round summary.");
+    fail(Boolean(source.career?.stages?.[0]?.preAdTitle) && source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", "iq/en.json: final result gate changed.");
+    fail(source.results?.score?.showBestRound === false, "iq/en.json: a single-stage quiz must not show best round.");
     fail(source.title === "Only 7% Pass This Intelligence Test", "iq/en.json: title changed.");
   }
   for (const localeFile of activeLocaleFiles) {

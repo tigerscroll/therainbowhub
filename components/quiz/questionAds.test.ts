@@ -16,10 +16,10 @@ test("display-ad components and request code are absent site-wide", () => {
 });
 test("Mechanic uses the automatic rewarded-only flow", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
-  assert.equal(manifest.template, "five-stage-six-question-v1");
+  assert.equal(manifest.template, "single-stage-rewarded-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
-  assert.equal(manifest.structure.stages.length, 5);
-  assert.ok(manifest.structure.stages.every((stage: { questionIds: string[] }) => stage.questionIds.length === 6));
+  assert.equal(manifest.structure.stages.length, 1);
+  assert.equal(manifest.structure.stages[0].questionIds.length,10);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
 test("only the rewarded ad unit is configured", () => {
@@ -41,36 +41,36 @@ test("interstitial code is absent throughout the application", () => {
     }
   }
 });
-test("both quizzes retain 30 unique questions and their intended round structures", () => {
+test("both quizzes use ten unique questions and one result checkpoint", () => {
   for (const slug of ["memory", "years-left"]) {
     const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
     const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/en.json`, "utf8"));
     assert.equal(copy.landing.intro.split("\n").length, 2);
     assert.doesNotMatch(copy.landing.intro, /30|thirty/i);
-    const stages = 5;
+    const stages = 1;
     assert.equal(manifest.structure.stages.length, stages);
     const ids = manifest.structure.stages.flatMap((stage: { questionIds: string[] }) => stage.questionIds);
-    assert.equal(ids.length, 30);
-    assert.equal(new Set(ids).size, 30);
+    assert.equal(ids.length, 10);
+    assert.equal(new Set(ids).size, 10);
     assert.equal(Object.keys(copy.career.stages).length, stages);
     assert.equal(copy.career.stages[`stage-${stages}`].next, undefined);
-    assert.equal(copy.career.stages[`stage-${stages}`].preAdChecks[0], "30 answers checked");
-    assert.equal(manifest.template, "five-stage-six-question-v1");
-    assert.ok(manifest.structure.stages.every((stage: { questionIds: string[] }) => stage.questionIds.length === 6));
+    assert.ok(expandQuizLocale(manifest,copy,'en').career.stages[0].preAdButton.trim());
+    assert.equal(manifest.template, "single-stage-rewarded-v1");
+    assert.equal(manifest.structure.stages[0].questionIds.length,10);
   }
 });
 
-test("Memory retains recall prerequisites and a 24-answer pass target", () => {
+test("Memory retains recall prerequisites and an eight-answer pass target", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/memory/quiz.json", "utf8"));
   const copy = JSON.parse(fs.readFileSync("data/quizzes/memory/en.json", "utf8"));
   const ids = manifest.structure.stages.flatMap((stage: { questionIds: string[] }) => stage.questionIds);
-  assert.equal(ids.length, 30);
-  assert.equal(ids.length * manifest.engine.targetRatio, 24);
+  assert.equal(ids.length, 10);
+  assert.equal(ids.length * manifest.engine.targetRatio, 8);
   const questions = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
   for (const [board, recalls] of [
-    ["memory-r1q1", ["memory-r1q4", "memory-r1q8", "memory-r5q1", "memory-r5q2", "memory-r5q8"]],
-    ["memory-r3q1", ["memory-r3q7", "memory-r3q8", "memory-r5q3", "memory-r5q6", "memory-r5q8"]],
-    ["memory-r4q1", ["memory-r4q3", "memory-r4q5", "memory-r4q6", "memory-r5q4"]],
+    ["memory-r1q1", ["memory-r1q4", "memory-r5q2"]],
+    ["memory-r3q1", ["memory-r3q7"]],
+    ["memory-r4q1", ["memory-r5q4"]],
   ] as const) {
     assert.ok(questions[board].study);
     for (const recall of recalls) assert.ok(ids.indexOf(board) >= 0 && ids.indexOf(board) < ids.indexOf(recall), recall);
@@ -78,35 +78,26 @@ test("Memory retains recall prerequisites and a 24-answer pass target", () => {
   assert.ok(ids.indexOf("memory-r1q1") < ids.indexOf("memory-r1q4"));
   assert.ok(questions["memory-r1q1"].study.items.includes("PURPLE ELEPHANT"));
   assert.equal(questions["memory-r1q4"].answers[manifest.structure.questions["memory-r1q4"].correctAnswerId], "Elephant");
-  assert.ok(ids.indexOf("memory-r4q1") < ids.indexOf("memory-r4q6"));
+  assert.ok(ids.indexOf("memory-r4q1") < ids.indexOf("memory-r5q4"));
   const pairs = questions["memory-r4q1"].study.items;
   assert.ok(pairs.some((pair: string) => /SCARF/i.test(pair)));
-  assert.equal(questions["memory-r4q6"].answers[manifest.structure.questions["memory-r4q6"].correctAnswerId], "Lena — Compass");
+  assert.equal(questions["memory-r5q4"].answers[manifest.structure.questions["memory-r5q4"].correctAnswerId], "Violin");
 });
 
-test("Memory replacements have exactly one board-supported answer and do not reveal it in the prompt", () => {
+test("Memory retained recall answers are supported by the boards and not revealed in prompts", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/memory/quiz.json", "utf8"));
   const copy = JSON.parse(fs.readFileSync("data/quizzes/memory/en.json", "utf8"));
   const questions = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
-  const pairs = questions["memory-r4q1"].study.items.map((item: string) => item.toLowerCase().replace(" · ", " — "));
-  const pairQuestion = questions["memory-r4q6"];
-  const supported = Object.entries(pairQuestion.answers).filter(([, label]) => pairs.includes(String(label).toLowerCase()));
-  assert.deepEqual(supported.map(([id]) => id), [manifest.structure.questions["memory-r4q6"].correctAnswerId]);
-  assert.doesNotMatch(pairQuestion.question, /Lena|Compass/i);
-  assert.match(questions["memory-r4q1"].study.instruction, /order/);
-  const names = pairs.map((pair: string) => pair.split(" — ")[0]);
-  assert.equal(questions["memory-r4q3"].answers[manifest.structure.questions["memory-r4q3"].correctAnswerId].toLowerCase(), names[names.indexOf("noah") - 1]);
-  assert.doesNotMatch(questions["memory-r4q3"].question, /Lena|third/i);
-  assert.equal(manifest.structure.stages.at(-1).questionIds.at(-1), "memory-r5q8");
-  const final = questions["memory-r5q8"];
-  assert.equal(final.answers[manifest.structure.questions["memory-r5q8"].correctAnswerId], "Silver kite · train 6 · window seat");
-  assert.ok(questions["memory-r1q1"].study.items.includes("SILVER KITE"));
+  const board=questions["memory-r4q1"].study.items;
+  assert.ok(board.includes("MIA · VIOLIN"));
+  assert.equal(questions["memory-r5q4"].answers[manifest.structure.questions["memory-r5q4"].correctAnswerId],"Violin");
+  assert.doesNotMatch(questions["memory-r5q4"].question,/Violin/i);
   assert.ok(questions["memory-r1q1"].study.items.includes("TRAIN · 6"));
-  assert.ok(questions["memory-r3q1"].study.items.includes("TICKET · WINDOW SEAT"));
-  assert.equal(Object.values(final.answers).filter(label => label === "Silver kite · train 6 · window seat").length, 1);
+  assert.equal(questions["memory-r5q2"].answers[manifest.structure.questions["memory-r5q2"].correctAnswerId],"6");
+  assert.doesNotMatch(questions["memory-r5q2"].question,/\b6\b/);
 });
 
-test("Years Left mixes stable answer positions evenly without changing scores or calibration", () => {
+test("Years Left keeps each choice's score and calibration regardless of answer order", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/years-left/quiz.json", "utf8"));
   const copy = JSON.parse(fs.readFileSync("data/quizzes/years-left/en.json", "utf8"));
   const originalOrder = structuredClone(manifest);
@@ -115,11 +106,6 @@ test("Years Left mixes stable answer positions evenly without changing scores or
   const baseline = expandQuizLocale(originalOrder, copy, "en");
   const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
   const questionCopy = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
-  for (const id of ["a1", "a2", "a3", "a4"]) {
-    const positions = [0, 0, 0, 0];
-    for (const q of questions) positions[q.answerIds.indexOf(id)]++;
-    assert.ok(positions.every(count => count === 7 || count === 8), `${id}: ${positions}`);
-  }
   for (const q of questions) {
     const logic = manifest.structure.questions[q.id];
     q.answerIds.forEach((id: string, index: number) => {

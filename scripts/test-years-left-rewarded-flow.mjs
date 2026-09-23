@@ -73,7 +73,7 @@ try {
           assert.equal(await question.locator("h1").evaluate(node => getComputedStyle(node).animationName), `${slug === "years-left" ? "years" : slug}-question-in`);
         }
         assert.equal(await page.locator("[data-display-ad], .quiz-question-next").count(), 0, "no display placements or manual Next button");
-        assert.equal((await page.locator(".quiz-engine__progress-head > span").innerText()).toUpperCase(), `${index + 1} OF 6`);
+        assert.equal((await page.locator(".quiz-engine__progress-head > span").innerText()).toUpperCase(), `${index + 1} OF 10`);
         assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
         const answerIds = manifest.structure.questions[id].answerIds;
         assert.deepEqual(await question.locator(".quiz-engine__answer").evaluateAll(nodes => nodes.map(node => node.getAttribute("data-answer-id"))), answerIds);
@@ -85,14 +85,7 @@ try {
       }
       const checkpoint = page.locator(".quiz-engine__checkpoint");
       await checkpoint.waitFor();
-      const progressBar = checkpoint.getByRole("progressbar");
-      assert.equal(await progressBar.getAttribute("aria-valuenow"), String((stageIndex + 1) * 20));
-      assert.equal(await checkpoint.locator(".quiz-engine__checkpoint-journey-progress").evaluate(node => node.style.getPropertyValue("--career-result-progress-from")), `${stageIndex * 20}%`);
-      assert.equal(await progressBar.locator("b").evaluate(node => getComputedStyle(node).animationName), `${slug === "years-left" ? "years" : slug}-checkpoint-fill`);
-      await page.waitForFunction(() => {
-        const bar = document.querySelector('.quiz-engine__checkpoint-journey-progress > i');
-        return Math.abs(bar.firstElementChild.getBoundingClientRect().width / bar.clientWidth * 100 - Number(bar.getAttribute('aria-valuenow'))) < 1;
-      });
+      assert.equal(await checkpoint.getByRole("progressbar").count(),0);
       assert.equal(await checkpoint.getAttribute("data-round"), String(stageIndex + 1));
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, "round ad waits for Continue/Reveal click");
       await checkpoint.locator(".quiz-engine__checkpoint-ad-note").waitFor();
@@ -116,11 +109,11 @@ try {
     if (manifest.engine.scoring === "correct-answer") {
       const ids = manifest.structure.stages.flatMap(stage => stage.questionIds);
       const correct = ids.filter(id => manifest.structure.questions[id].answerIds[0] === manifest.structure.questions[id].correctAnswerId).length;
-      assert.equal(await page.locator(".quiz-engine__result-fraction strong").innerText(), `${correct} / 30`, "scoring preserved across all five rounds");
+      assert.equal(await page.locator(".quiz-engine__result-fraction strong").innerText(), `${correct} / 10`, "scoring preserved across all ten questions");
     }
     await page.screenshot({ path: `/tmp/${slug}-polish-result-${width}.png`, fullPage: true, animations: "disabled" });
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
-    assert.equal(expectedRewards + (width === 390 ? 1 : 0), 6, "six normal rewarded requests across the full journey");
+    assert.equal(expectedRewards + (width === 390 ? 1 : 0), 2, "two normal rewarded requests across the full journey");
     assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === "REWARDED" && ad.path === "/22677279144/rewarded")), true);
     assert.equal(documents, initialDocuments + (width === 390 ? 1 : 0), "SPA; only the deliberate test reload navigates");
     await page.locator(".quiz-engine__about-restart").click();
@@ -133,7 +126,7 @@ try {
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, "no-fill requests have a bounded retry budget and do not deadlock the quiz");
     }
     assert.deepEqual(errors, []);
-    console.log(`${slug} ${width}px: 30 questions, 5 rounds, 6 rewards, no display/interstitial requests, stable answer mapping and restart PASS`);
+    console.log(`${slug} ${width}px: 10 questions, one result checkpoint, two rewards, no display/interstitial requests, stable answer mapping and restart PASS`);
     await context.close();
   }
 } finally { await browser.close(); }
