@@ -58,7 +58,7 @@ const manifest = {
 const content = {
   title, eyebrow: "THE CHALLENGE",
   summary: "A fast, escalating challenge designed to test your judgement from the first question to the final reveal.",
-  landing: { intro: "Put your instincts to the test and see whether you can hold your nerve as the questions become harder.", cta: "Start Test" },
+  landing: { intro: "Put your instincts to the test and see whether you can hold your nerve as the questions become harder.", cta: "Start" },
   about: {
     body: "This entertainment quiz contains ten carefully selected questions in one focused challenge.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a snapshot of this quiz performance, not a formal assessment.",
     howToPlay: { steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },

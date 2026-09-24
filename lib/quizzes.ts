@@ -400,7 +400,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { compact?: boolean; quickStartText: string; ctaLabel?: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
+  landing: { compact?: boolean; quickStartText: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -1675,7 +1675,6 @@ function normalizeLocale(
       infoBadge: value.landing?.badge,
       showSocialProof: manifest.listing.showSocialProof ?? false,
       socialProofCount: manifest.listing.socialProofCount,
-      ctaLabel: value.landing?.cta,
       socialAvatars,
       startPrompt: value.landing?.startPrompt,
     },

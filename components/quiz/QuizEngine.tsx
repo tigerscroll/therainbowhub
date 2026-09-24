@@ -458,7 +458,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         avatars={quiz.landing.socialAvatars}
         busy={adBusy}
         busyLabel={translations.ad.loading}
-        ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.startTest}
+        ctaLabel={translations.quiz.start}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
         onStart={startQuiz}
