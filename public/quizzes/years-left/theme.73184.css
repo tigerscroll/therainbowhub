@@ -526,3 +526,50 @@
   width: 46px;
   height: 52px;
 }
+
+/* Short, one-shot chapter celebrations. Buttons stay available throughout. */
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+  animation: years-clock-turn .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+  animation: years-question-in .3s .06s ease-out both;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+  animation: years-question-in .34s .12s ease-out both;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+  animation: years-question-in .36s .18s ease-out both;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 28%, rgba(255, 241, 213, .2) 50%, transparent 72%);
+  animation: years-checkpoint-shine .75s .35s ease-out both;
+}
+
+@keyframes years-clock-turn {
+  from { opacity: 0; transform: rotate(-24deg) scale(.84); }
+  65% { opacity: 1; transform: rotate(5deg) scale(1.04); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="years-left"] *,
+  [data-quiz-theme="years-left"] *::before,
+  [data-quiz-theme="years-left"] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

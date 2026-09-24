@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
@@ -13,6 +13,7 @@ import { QuizAbout } from "./QuizAbout";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
+import { getChapterAnswers } from "./engagement";
 
 type QuizEngineProps = {
   locale: SupportedLocale;
@@ -338,7 +339,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       setCheckpointCtaReady(false);
       return;
     }
-    if (completedStage < quiz.stages.length - 1) {
+    if (completedStage < quiz.stages.length - 1 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setCheckpointCtaReady(true);
       return;
     }
@@ -518,6 +519,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const checkpoint = quiz.checkpoint!;
     const career = quiz.career!;
     const careerStage = career.stages[completedStage];
+    const chapterProfile = careerStage.preAdCopy?.includes("{profile}")
+      ? scoreQuiz(quiz, getChapterAnswers(quiz.questions, answers, completedStage)).profile
+      : undefined;
     const checkpointButton = isFinalStage
       ? careerStage.preAdButton ?? translations.results.viewResults
       : translations.quiz.continue;
@@ -534,7 +538,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       <>
         {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
         {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
-        {!isFinalStage && !adBusy ? (
+        {(!isFinalStage || isChapterFlow) && !adBusy ? (
           <span aria-hidden="true" className="quiz-engine__primary-arrow">
             <svg focusable="false" viewBox="0 0 24 24">
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -549,6 +553,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         className={`quiz-engine__checkpoint quiz-engine__card quiz-engine__continuous-shell quiz-engine__checkpoint--progress-career${isSingleStage ? " quiz-engine__checkpoint--single-stage" : ""}`}
         data-cta-ready={isFinalStage ? checkpointCtaReady : undefined}
         data-round={completedStage + 1}
+        data-chapter-flow={isChapterFlow || undefined}
       >
         {checkpointArtwork ? (
           <div className="quiz-engine__checkpoint-artwork" aria-hidden="true">
@@ -558,7 +563,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           <div className="quiz-engine__checkpoint-icon" aria-hidden="true">{isFinalStage ? checkpoint.finalIcon ?? "✦" : "✓"}</div>
         )}
         <h2>{careerStage.preAdTitle}</h2>
-        {careerStage.preAdCopy ? <p>{careerStage.preAdCopy}</p> : null}
+        {careerStage.preAdCopy ? <p className="quiz-engine__checkpoint-copy">
+          {careerStage.preAdCopy.split("{profile}").map((part, index) => (
+            <Fragment key={index}>{index > 0 ? <strong className="quiz-engine__checkpoint-profile">{chapterProfile?.title}</strong> : null}{part}</Fragment>
+          ))}
+        </p> : null}
         {careerStage.preAdChecks?.length ? (
           <ul className="quiz-engine__checklist quiz-engine__career-checklist">
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}

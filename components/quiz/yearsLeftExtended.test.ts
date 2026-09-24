@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
+import type {Quiz} from '../../lib/quizzes.ts';
+import {scoreQuiz} from './scoring.ts';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/english-extended/${file}.json`, 'utf8'));
 
@@ -25,5 +27,56 @@ test('English Years Left has ten distinct seven-question chapters and a rewarded
   assert.ok(quiz.career.stages.every((stage: {preAdTitle: string; preAdCopy: string}) => stage.preAdTitle && stage.preAdCopy));
   assert.doesNotMatch(copy.landing.intro, /\b(?:10|ten|70|seventy)\b|rounds?|stages?/i);
   assert.doesNotMatch(copy.summary, /\b(?:10|ten|70|seventy)\b|rounds?|stages?/i);
-  assert.doesNotMatch(JSON.stringify(copy.career.stages), /ROUND \d|OF 10|seven more choices|more precise/i);
+  assert.doesNotMatch(JSON.stringify(copy.career.stages), /ROUND \d|OF 10|seven more choices|more precise|halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
+  assert.doesNotMatch(copy.about.body, /\b(?:10|ten|70|seventy|7|seven)\b/);
+});
+
+test('English chapters preserve the requested landing and deliver distinct, mapped choices', () => {
+  const manifest = read('quiz');
+  const copy = read('en');
+  assert.deepEqual(copy.landing, { intro: 'One surprising result.\nWhat age will you get?', cta: 'Start' });
+  const answerSets = new Set();
+  for (const [index, stage] of manifest.structure.stages.entries()) {
+    const gate = copy.career.stages[stage.id];
+    assert.equal(gate.preAdButton, index < 9 ? 'Continue' : 'See My Result');
+    if (index < 9) assert.match(gate.preAdCopy, /\{profile\}/);
+    for (const id of stage.questionIds) {
+      const answers = copy.stages[stage.id].questions[id].answers;
+      const labels = Object.values(answers) as string[];
+      assert.ok(labels.every(label => label.length <= 66), id);
+      answerSets.add(JSON.stringify(labels));
+      assert.deepEqual(Object.keys(manifest.structure.questions[id].choiceMeanings), Object.keys(answers));
+    }
+  }
+  assert.equal(answerSets.size, 70, 'each question has its own answer set');
+  assert.deepEqual(manifest.structure.questions['yl-s1q1'].choiceMeanings.a3, { steady_long_game: 1 }, 'an unhurried morning means a steady routine');
+  assert.deepEqual(manifest.structure.questions['yl-s4q1'].choiceMeanings.a4, { stress_sprinter: 1 }, 'late replies mean pressure, not weekend spontaneity');
+  assert.deepEqual(manifest.structure.questions['yl-s6q6'].choiceMeanings.a1, { comfort_creature: 1 }, 'quiet time is comfort, not a negative social-health judgement');
+});
+
+test('all clock personalities are reachable and playful estimates retain their bounds', () => {
+  const manifest = read('quiz');
+  const copy = read('en');
+  const quiz = {
+    engine: { scoring: { type: 'weighted-profile' }, estimate: manifest.engine.estimate },
+    questions: manifest.structure.stages.flatMap((stage: {questionIds: string[]}, stageIndex: number) => stage.questionIds.map(id => {
+      const logic = manifest.structure.questions[id];
+      return { id, stage: stageIndex, choiceWeights: logic.answerIds.map((key: string) => logic.choiceMeanings[key]), calibrationValues: logic.calibration && logic.answerIds.map((key: string) => logic.calibration[key]) };
+    })),
+    result: {
+      profiles: manifest.structure.results.profiles.map((profile: {id: string}) => ({id: profile.id, ...copy.results.profiles[profile.id]})),
+      scoreDimensions: manifest.structure.results.dimensions.map((dimension: {key: string; profiles: string[]}) => ({ label: copy.results.dimensions[dimension.key].label, categories: dimension.profiles })),
+    },
+  } as Quiz;
+  for (const profile of quiz.result.profiles) {
+    const answers = Object.fromEntries(quiz.questions.map((question, index) => {
+      const match = question.choiceWeights!.findIndex(weights => weights[profile.id!] > 0);
+      return [question.id, match < 0 ? index % 4 : match];
+    }));
+    const result = scoreQuiz(quiz, answers);
+    assert.equal(result.profile.id, profile.id);
+    assert.ok(result.estimatedAge! >= 73 && result.estimatedAge! <= 95);
+  }
+  assert.equal(quiz.questions.filter(question => question.calibrationValues).length, 1);
+  assert.equal(manifest.engine.estimate.calibrationMax, 1);
 });
