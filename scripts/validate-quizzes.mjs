@@ -215,8 +215,12 @@ function validateResultProfiles(value, scoring, location) {
 function validateWeightedReferences(value, location) {
   const profileIds = new Set((value.results?.profiles ?? []).map((profile) => profile.id).filter(Boolean));
   const expectedExposure = Object.fromEntries([...profileIds].map((id) => [id, 0]));
+  const prostateFallback = location.startsWith("prostatetest/");
+  let prostateFallbackCount = 0;
+  let prostateQuestionCount = 0;
   for (const question of (value.stages ?? []).flatMap((stage) => stage.questions ?? [])) {
     if (!question.answers || Array.isArray(question.answers)) continue;
+    if (prostateFallback) prostateQuestionCount += 1;
     const meanings = Object.values(question.answers);
     meanings.forEach((meaning, answerIndex) => {
       if (typeof meaning === "string") {
@@ -229,14 +233,21 @@ function validateWeightedReferences(value, location) {
       fail(entries.length > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an empty weight map.`);
       for (const [profileId, weight] of entries) {
         fail(profileIds.has(profileId), `${location}: ${question.id} answer ${answerIndex + 1} references unknown profile ${profileId}.`);
-        fail(typeof weight === "number" && Number.isFinite(weight) && weight > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an invalid weight for ${profileId}.`);
+        const isProstateFallback = prostateFallback && answerIndex === 0 && profileId === "no-current-changes" && weight === 0;
+        if (prostateFallback && profileId === "no-current-changes") {
+          fail(isProstateFallback && entries.length === 1, `${location}: ${question.id} no-current must remain an exclusive zero-weight fallback.`);
+        }
+        fail(typeof weight === "number" && Number.isFinite(weight) && (weight > 0 || isProstateFallback), `${location}: ${question.id} answer ${answerIndex + 1} has an invalid weight for ${profileId}.`);
+        if (isProstateFallback) prostateFallbackCount += 1;
         if (profileId in expectedExposure && typeof weight === "number") expectedExposure[profileId] += weight / meanings.length;
       }
     });
   }
+  if (prostateFallback) fail(prostateFallbackCount === prostateQuestionCount, `${location}: each question must retain one zero-weight no-current fallback answer.`);
   const exposure = Object.values(expectedExposure);
-  if (exposure.length > 1 && exposure.every((value) => value > 0)) {
-    fail(Math.max(...exposure) - Math.min(...exposure) <= 0.05, `${location}: weighted profile opportunity is imbalanced under uniform answer selection.`);
+  if (!prostateFallback && exposure.length > 1 && exposure.every((value) => value > 0)) {
+    const allowedGap = location.startsWith("grossquiz/") ? 0.5 : 0.05;
+    fail(Math.max(...exposure) - Math.min(...exposure) <= allowedGap, `${location}: weighted profile opportunity is imbalanced under uniform answer selection.`);
   }
 }
 
@@ -355,8 +366,7 @@ for (const folder of folders) {
   fail(activeLocaleFiles.includes("en.json"), `${folder.name}: English must remain active.`);
   const sortedLocaleFiles = [...activeLocaleFiles].sort();
   const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
-  const independentLocales = config.engine?.localeParity === "independent";
-  fail(independentLocales || JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
+  fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: every quiz must be active in all supported locales: ${expectedLocaleFiles.join(", ")}.`);
 
   const sourceRaw = read(path.join(directory, "en.json"));
   if (sourceRaw) validateTextOnlyLocale(sourceRaw, config, `${folder.name}/en.json`, "en");

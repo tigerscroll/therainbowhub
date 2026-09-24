@@ -21,48 +21,48 @@
     "resultProgressLabel": "Előrehaladásod",
     "stages": {
       "stage-1": {
-        "difficulty": "Mentős bejárati kihívás",
+        "difficulty": "Kvíz",
         "preAdTitle": "Az eredmények készen állnak",
-        "preAdCopy": "A mentős felvételi pontszáma és a hat terület bontása készen áll a felfedésre.",
+        "preAdCopy": "A kvíz pontszáma és a témakörönkénti eredményei megtekinthetők.",
         "preAdChecks": [
           "10 válasz ellenőrizve",
-          "Hat bejárati területet hasonlított össze"
+          "Témakörönkénti eredmények készen"
         ]
       }
     }
   },
   "results": {
-    "name": "AZ ÖN PARAMEDIKUS PONTJA",
+    "name": "AZ ÖN KVÍZEREDMÉNYE",
     "profiles": {
       "profile-1": {
         "tier": "90-100%",
-        "title": "A vészhelyzeti kiállás",
-        "copy": "A kitűnő alapozó ismereteket a higgadt, bizonyítékokon alapuló ítélőképességgel kombinálta a teljes válaszértékelés során. A jelenet veszélyek, a megfigyelések változása és a kommunikációs részletek egyértelműek maradtak, még akkor is, amikor a végső esetek igényesek lettek."
+        "title": "Kiváló sürgősségi ismeretek",
+        "copy": "Pontosan válaszolt a helyszíni veszélyekről, a megfigyelések változásáról és a betegadatok átadásáról szóló kérdésekre. Ez kiváló kvízeredmény, nem szakmai képesítés."
       },
       "profile-2": {
         "tier": "80-89%",
-        "title": "A gyors reagálású természetes",
-        "copy": "Erős érzést mutatott a biztonságos vészhelyzetre reagálás tudásáért és ítélkezéséért. Az értékelés legtöbb trendje, számolási képessége, biztonsága és átadás-átvételi csapdája nem tántorította el Önt az irányból."
+        "title": "Jó érzék a gyors helyzetfelismeréshez",
+        "copy": "Jól felismerte a sürgős változásokat, és helyesen kezelte a biztonságról, számításokról és kommunikációról szóló feladatok többségét."
       },
       "profile-3": {
         "tier": "70-79%",
-        "title": "A nyugodt jelenet megoldója",
-        "copy": "Számos fontos gondolatot felismert, néhány kérdést pedig alaposabban kellett megvizsgálni. Áttekintése megmutatja, mely kapcsolatokat érdemes újra felkeresni."
+        "title": "Higgadt helyzetmegoldó",
+        "copy": "A sürgősségi ellátásról szóló kérdések közül sokra helyesen válaszolt, de néhány részlet több figyelmet igényelt. Nézze át a válaszokat, hogy lássa, mit tud már biztosan, és mit érdemes még gyakorolnia."
       },
       "profile-4": {
         "tier": "60-69%",
-        "title": "Az állandó válaszadó",
-        "copy": "Számos fontos gondolatot felismert, néhány kérdést pedig alaposabban kellett megvizsgálni. Áttekintése megmutatja, mely kapcsolatokat érdemes újra felkeresni."
+        "title": "Megbízható helyzetértékelő",
+        "copy": "A sürgősségi ellátásról szóló kérdések közül sokra helyesen válaszolt, de néhány részlet több figyelmet igényelt. Nézze át a válaszokat, hogy lássa, mit tud már biztosan, és mit érdemes még gyakorolnia."
       },
       "profile-5": {
         "tier": "50-59%",
         "title": "Az ígéretes jelölt",
-        "copy": "Számos fontos gondolatot felismert, néhány kérdést pedig alaposabban kellett megvizsgálni. Áttekintése megmutatja, mely kapcsolatokat érdemes újra felkeresni."
+        "copy": "A sürgősségi ellátásról szóló kérdések közül sokra helyesen válaszolt, de néhány részlet több figyelmet igényelt. Nézze át a válaszokat, hogy lássa, mit tud már biztosan, és mit érdemes még gyakorolnia."
       },
       "profile-6": {
         "tier": "50% alatt",
-        "title": "Az Első Response Explorer",
-        "copy": "Ez a kihívás ismeretlen ötleteket hozott. A válasz áttekintése segítségével fedezze fel, mit tud, és mit tanulhat meg ezután."
+        "title": "A sürgősségi alapok felfedezője",
+        "copy": "A sürgősségi ellátásról szóló kérdések közül több most nehéznek bizonyult. Nézze át a helyes válaszokat és a magyarázatokat, majd próbálja újra a kvízt."
       }
     },
     "dimensions": {
@@ -86,8 +86,8 @@
       }
     },
     "score": {
-      "passed": "Sikerült a mentős felvételi kihíváson!",
-      "finished": "Mentős belépő kihívás kész",
+      "passed": "Elérte a 80%-os célt ebben a kvízben!",
+      "finished": "A kvíz befejeződött",
       "strongest": "A legerősebb bejárati terület",
       "trickiest": "A legtrükkösebb bejárati terület",
       "bestRound": "A legjobb köröd",
@@ -118,7 +118,7 @@
           "headerLabel": "ANATÓMIA ÉS ÉLETTAN"
         },
         "paramedic-r1q5": {
-          "question": "Melyik nyitás teszi a legtisztább átadást?",
+          "question": "Melyik kezdő mondat teszi a beteg állapotának átadását a legvilágosabbá?",
           "answers": {
             "a1": "Valami megváltozott korábban, valószínűleg",
             "a2": "Itt az összes apró részlet véletlenszerű sorrendben",
@@ -130,15 +130,15 @@
         "paramedic-r5q4": {
           "visual": {
             "items": [
-              "PULSE::80 → 92 → 108",
-              "ÚJ VÁLTOZÁS::Sápadt + szédül"
+              "PULZUS::80 → 92 → 108",
+              "ÚJ VÁLTOZÁS::Sápadtság + szédülés"
             ],
             "ariaLabel": "Pulzus 80, majd 92, majd 108, sápadtsággal és szédüléssel"
           },
           "question": "Mi ennek a mintának a legjobb értelmezése?",
           "answers": {
-            "a1": "A rekord változatlan",
-            "a2": "A kombinált tendencia azonnali minősített értékelést igénylő állapotromlásra utal",
+            "a1": "A rögzített mért értékek nem változtak",
+            "a2": "Az együttes változások állapotromlásra utalnak, ezért szakképzett egészségügyi dolgozó sürgős vizsgálata szükséges",
             "a3": "Csak az első szám számít",
             "a4": "A tünetek figyelmen kívül hagyhatók, mivel nem mutatnak diagnózist"
           },
@@ -158,7 +158,7 @@
           "question": "Az egyetlen ajtónyíláson egy feszültség alatt álló elektromos kábel húzódik. Mi jön előbb?",
           "answers": {
             "a1": "Óvatosan lépj át rajta",
-            "a2": "Tartson tisztán mindenkit, és kérjen szakképzett segítséget a biztonság érdekében",
+            "a2": "Tartson mindenkit távol, és kérjen szakembert a helyszín biztonságossá tételéhez",
             "a3": "Száraz tárggyal mozgassa",
             "a4": "Kérj meg egy szemlélőt, hogy nézze meg"
           },
@@ -170,13 +170,13 @@
             "a1": "Lassabban ismételje meg ugyanezt a magyarázatot",
             "a2": "Kérdezd meg: „Megérted?”, és folytasd, ha igent mondanak",
             "a3": "Rövidítse le a magyarázatot, de tartsa meg ugyanazt a terminológiát",
-            "a4": "Használjon egyszerű szavakat, és nézzen vissza"
+            "a4": "Használjon közérthető szavakat, majd ellenőrizze, hogy a személy megértette-e"
           },
           "headerLabel": "TISZTA KOMMUNIKÁCIÓ"
         },
         "paramedic-r5q6": {
-          "context": "Az A személy jól érzi magát, és megfigyelései állandóak maradnak. B személy újonnan nyirkos és szédül, és a pulzusa három ellenőrzés alatt megemelkedett.",
-          "question": "Kinek kell először figyelni?",
+          "context": "A személy jól érzi magát, és mért értékei stabilak. B személynél hideg verejtékezés és szédülés jelentkezett, pulzusa pedig három egymást követő mérés során emelkedett.",
+          "question": "Kinek van először szüksége ellátásra?",
           "answers": {
             "a1": "B személy, mert több változás is romlásra utal",
             "a2": "A személy, mert az ő megfigyeléseit rögzítették először",
@@ -216,13 +216,13 @@
           "visual": {
             "items": [
               "16 — Éber és reagál",
-              "22 — SZONGOS",
-              "28 — ÁLMÁS",
-              "TREND — ?"
+              "22 — Szorong",
+              "28 — Álmos",
+              "VÁLTOZÁS — ?"
             ],
-            "ariaLabel": "16 — Éber és reagál. 22 — SZONGOS. 28 — ÁLMÁS. TREND — ?"
+            "ariaLabel": "16 — Éber és reagál. 22 — Szorong. 28 — Álmos. VÁLTOZÁS — ?"
           },
-          "question": "Mi a legjobb értelmezése a teljes trendnek?",
+          "question": "A számok a percenkénti légzésszámot jelzik. Hogyan értelmezhetők a légzés és az éberség változásai?",
           "answers": {
             "a1": "Az ember folyamatosan javul",
             "a2": "Csak a középső ellenőrzés számít",

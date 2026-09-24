@@ -39,6 +39,86 @@ test("the localized palindrome question has exactly one correct answer in every 
   }
 });
 
+test("Word association answers do not merely repeat the quoted keyword", () => {
+  const simple = (value: string) => value.normalize("NFKD").replace(/\p{M}/gu, "").replace(/[^\p{L}]/gu, "").toLocaleLowerCase("und");
+  for (const locale of locales) {
+    const copy = read("word", `${locale}.json`);
+    for (const stage of Object.values(copy.stages) as Array<{questions: Record<string, QuestionCopy & {question: string}>}>) {
+      for (const [id, question] of Object.entries(stage.questions)) {
+        const keyword = question.question.match(/[«“„「‘](.*?)[»”」’“]/u)?.[1];
+        if (!keyword) continue;
+        const normalizedKeyword = simple(keyword);
+        for (const [answerId, answer] of Object.entries(question.answers)) {
+          assert.notEqual(simple(answer), normalizedKeyword, `${locale}/${id}/${answerId}: answer repeats the prompt`);
+        }
+      }
+    }
+  }
+});
+
+test("reviewed Word copy keeps local address and association meaning", () => {
+  const spanish = read("word", "es.json");
+  assert.match(spanish.about.howToPlay.steps[0], /^Lee\b/u);
+  assert.doesNotMatch(JSON.stringify(spanish.results.profiles), /Reconoció|Utilice la revisión|Su revisión/u);
+
+  const portuguese = read("word", "pt.json");
+  assert.match(portuguese.about.howToPlay.steps[0], /^Lê /u);
+  assert.match(portuguese.career.resultProgressLabel, /teu/u);
+  assert.doesNotMatch(JSON.stringify(portuguese), /Suas dez|Sua melhor rodada|Use a revisão/u);
+
+  const polish = read("word", "pl.json");
+  assert.doesNotMatch(polish.results.score.insights.overview, /stowarzyszenia/iu);
+  assert.equal(polish.stages["stage-1"].questions["word-q4"].answers.a3, "Ładowanie");
+
+  const german = read("word", "de.json");
+  assert.doesNotMatch(german.results.profiles["profile-1"].copy, /Thread|Links/u);
+  const french = read("word", "fr.json");
+  assert.doesNotMatch(french.results.profiles["profile-3"].copy, /Votre avis/u);
+
+  const danish = read("word", "da.json");
+  assert.match(danish.results.score.passed, /ordassociationstesten/u);
+  assert.doesNotMatch(danish.about.body, /hverdagslinks|single-keyword/u);
+  const swedish = read("word", "sv.json");
+  assert.match(swedish.results.score.passed, /ordassociationstestet/u);
+  assert.doesNotMatch(swedish.about.disclaimer, /föreningar/u);
+  const norwegian = read("word", "nb.json");
+  assert.match(norwegian.results.score.passed, /ordassosiasjonstesten/u);
+
+  const malay = read("word", "ms.json");
+  assert.doesNotMatch(JSON.stringify(malay), /persatuan/iu);
+  for (const question of Object.values(malay.stages["stage-1"].questions) as QuestionCopy[]) {
+    for (const answer of Object.values(question.answers)) assert.match(answer, /^\p{Lu}/u);
+  }
+  const indonesian = read("word", "id.json");
+  assert.equal(indonesian.stages["stage-1"].questions["word-q5"].answers.a2, "Pulau-pulau");
+  assert.equal(indonesian.career.resultProgressLabel, "Kemajuan Anda");
+  assert.doesNotMatch(JSON.stringify(indonesian.about), /sambungan langsung|pengungkapan terakhir/iu);
+
+  const romanian = read("word", "ro.json");
+  assert.equal(romanian.landing.cta, "Începe testul");
+  assert.doesNotMatch(JSON.stringify(romanian.about), /Alegeți|Citiți|meci dintre/iu);
+  assert.doesNotMatch(JSON.stringify(romanian.results.profiles), /Ați|dvs\.|Utilizați/iu);
+  const turkish = read("word", "tr.json");
+  assert.equal(turkish.career.stages["stage-1"].preAdTitle, "Sonucun hazır");
+  assert.doesNotMatch(JSON.stringify(turkish.about), /seçin|okuyun|açıklayın/iu);
+  assert.doesNotMatch(JSON.stringify(turkish.results.profiles), /geçtiniz|fark ettiniz|bildiğinizi/iu);
+
+  const italian = read("word", "it.json");
+  assert.match(italian.eyebrow, /ASSOCIAZIONE DI PAROLE/u);
+  assert.doesNotMatch(JSON.stringify(italian.results.profiles), /La tua recensione|connessione è scattata/u);
+  const dutch = read("word", "nl.json");
+  assert.match(dutch.eyebrow, /WOORDASSOCIATIE/u);
+  assert.doesNotMatch(JSON.stringify(dutch.results.profiles), /\buw\b|de antwoordenoverzicht/iu);
+});
+
+test("Italian quiz results do not call a quiz stage a giro", () => {
+  for (const slug of fs.readdirSync(quizRoot)) {
+    if (!fs.existsSync(path.join(quizRoot, slug, "it.json"))) continue;
+    const copy = read(slug, "it.json");
+    assert.doesNotMatch(copy.results?.score?.bestRound ?? "", /giro migliore/iu, slug);
+  }
+});
+
 test("visual answer letters stay aligned with the displayed Latin-letter puzzles", () => {
   for (const slug of ["vision", "cataract", "maculardegeneration"]) {
     const source = read(slug, "en.json");

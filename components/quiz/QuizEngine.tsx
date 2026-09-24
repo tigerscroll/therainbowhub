@@ -795,7 +795,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <div><dt>{matchCopy.preferredStyle}</dt><dd>{result.preferredStyle}</dd></div>
             <div><dt>{matchCopy.alternative}</dt><dd>{result.alternativeMatch}</dd></div>
             <div><dt>{matchCopy.wildcard}</dt><dd>{result.wildcardMatch}<small>{matchCopy.wildcardTemplate.replace("{value}", result.wildcardReason ?? "—")}</small></dd></div>
-            <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div>
+            {quiz.stages.length > 1 ? <div><dt>{matchCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
           </dl>
         ) : null}
         {!estimate && !scoreCopy ? <div className="quiz-engine__result-summary" data-single={quiz.engine.scoring.type === "weighted-profile" || undefined}>
@@ -815,7 +815,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
               <dl className="quiz-engine__result-signals quiz-engine__result-signals--score">
                 <div><dt>{scoreCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
                 <div><dt>{scoreCopy.trickiest}</dt><dd>{result.weakestSignal}</dd></div>
-                {scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
+                {quiz.stages.length > 1 && scoreCopy.showBestRound !== false ? <div><dt>{scoreCopy.bestRound}</dt><dd>{result.bestStage}</dd></div> : null}
               </dl>
             ) : null}
             {Object.entries(result.dimensionScores).map(([label, value]) => (

@@ -21,22 +21,22 @@
     "resultProgressLabel": "Edistymisesi",
     "stages": {
       "stage-1": {
-        "difficulty": "Ensihoitajan sisäänkäyntihaaste",
+        "difficulty": "Tietovisa",
         "preAdTitle": "Tuloksesi ovat valmiit",
-        "preAdCopy": "Ensihoitajan pääsypisteesi ja kuuden alueen erittely ovat valmiita paljastamaan.",
+        "preAdCopy": "Tietovisan pisteet ja aihekohtaiset tulokset ovat valmiit.",
         "preAdChecks": [
           "10 vastausta tarkistettu",
-          "Kuusi sisäänkäyntialuetta verrattuna"
+          "Aihekohtaiset tulokset valmiit"
         ]
       }
     }
   },
   "results": {
-    "name": "PARAMEDIC PISTOSI",
+    "name": "TIETOVISAN TULOKSESI",
     "profiles": {
       "profile-1": {
         "tier": "90–100 %",
-        "title": "Hätätilanne",
+        "title": "Erinomaiset ensihoidon perustiedot",
         "copy": "Yhdistit erinomaisen perustavanlaatuisen tiedon rauhalliseen, todisteisiin perustuvaan harkintaan koko vastausarvioinnin aikana. Kohtausvaarat, muuttuvat havainnot ja viestintäyksityiskohdat pysyivät selkeinä, vaikka lopputapaukset tulivat vaativiksi."
       },
       "profile-2": {
@@ -47,22 +47,22 @@
       "profile-3": {
         "tier": "70–79 %",
         "title": "Rauhallinen kohtauksen ratkaisija",
-        "copy": "Tunnistit useita tärkeitä ideoita, kun taas joitain kysymyksiä oli tarkasteltava tarkemmin. Arvostelusi näyttää, mihin yhteyksiin kannattaa palata."
+        "copy": "Sait 7 kysymystä oikein kymmenestä. Vastausten läpikäynti näyttää, mitä osaat jo ja mitä kannattaa vielä harjoitella."
       },
       "profile-4": {
         "tier": "60–69 %",
         "title": "Tasainen vastaaja",
-        "copy": "Tunnistit useita tärkeitä ideoita, kun taas joitain kysymyksiä oli tarkasteltava tarkemmin. Arvostelusi näyttää, mihin yhteyksiin kannattaa palata."
+        "copy": "Sait 6 kysymystä oikein kymmenestä. Vastausten läpikäynti näyttää, mitä osaat jo ja mitä kannattaa vielä harjoitella."
       },
       "profile-5": {
         "tier": "50–59 %",
         "title": "Luvattava ehdokas",
-        "copy": "Tunnistit useita tärkeitä ideoita, kun taas joitain kysymyksiä oli tarkasteltava tarkemmin. Arvostelusi näyttää, mihin yhteyksiin kannattaa palata."
+        "copy": "Sait 5 kysymystä oikein kymmenestä. Käy vastaukset läpi ja katso, mitä aiheita voit harjoitella lisää."
       },
       "profile-6": {
         "tier": "alle 50 %",
-        "title": "First-Response Explorer",
-        "copy": "Tämä haaste toi joitain tuntemattomia ajatuksia. Käytä vastausarviointia selvittääksesi, mitä tiesit ja mitä voit oppia seuraavaksi."
+        "title": "Ensihoidosta kiinnostunut",
+        "copy": "Sait alle 5 kysymystä oikein kymmenestä. Käy oikeat vastaukset läpi omaan tahtiisi ja opi lisää."
       }
     },
     "dimensions": {
@@ -86,8 +86,8 @@
       }
     },
     "score": {
-      "passed": "Läpäisit ensihoitajan sisäänpääsyhaasteen!",
-      "finished": "Ensihoitajan sisäänkäyntihaaste suoritettu",
+      "passed": "Saavutit tietovisan 80 %:n tavoitteen!",
+      "finished": "Tietovisa valmis",
       "strongest": "Vahvin sisäänkäyntialue",
       "trickiest": "Hankalin sisäänkäyntialue",
       "bestRound": "Paras kierroksesi",
@@ -118,7 +118,7 @@
           "headerLabel": "ANATOMIA JA FYSIOLOGIA"
         },
         "paramedic-r1q5": {
-          "question": "Mikä aukko tekee selkeimmän luovutuksen?",
+          "question": "Mikä aloitus tekee potilaan tietojen luovutuksesta selkeimmän?",
           "answers": {
             "a1": "Jotain on varmaan muuttunut aikaisemmin",
             "a2": "Tässä on kaikki pienet yksityiskohdat satunnaisessa järjestyksessä",
@@ -131,13 +131,13 @@
           "visual": {
             "items": [
               "PULSSI::80 → 92 → 108",
-              "UUSI VAIHTO::Vaalea + huimaus"
+              "UUSI MUUTOS::Kalpeus + huimaus"
             ],
             "ariaLabel": "Pulssi 80, sitten 92 ja sitten 108, kalpeutta ja huimausta"
           },
           "question": "Mikä on tämän mallin paras tulkinta?",
           "answers": {
-            "a1": "Ennätys on ennallaan",
+            "a1": "Kirjatut mittausarvot eivät ole muuttuneet",
             "a2": "Yhdistetty trendi viittaa heikkenemiseen, joka vaatii nopean pätevän arvioinnin",
             "a3": "Vain ensimmäisellä numerolla on väliä",
             "a4": "Oireet voidaan jättää huomiotta, koska diagnoosia ei näytetä"
@@ -158,7 +158,7 @@
           "question": "Ainoan oviaukon poikki kulkee jännitteinen sähkökaapeli. Mikä tulee ensin?",
           "answers": {
             "a1": "Astu sen yli varovasti",
-            "a2": "Pidä kaikki selvänä ja hanki pätevää apua sen turvaamiseksi",
+            "a2": "Pidä kaikki loitolla ja pyydä ammattilaisia tekemään alue turvalliseksi",
             "a3": "Siirrä sitä kuivalla esineellä",
             "a4": "Pyydä sivullista katsomaan se"
           },
@@ -175,7 +175,7 @@
           "headerLabel": "SELKEÄ VIESTINTÄ"
         },
         "paramedic-r5q6": {
-          "context": "Henkilö A voi hyvin ja hänen havainnot pysyvät vakaina. Henkilö B on hiljattain nihkeä ja huimaa, ja hänen pulssinsa on noussut kolmen tarkastuksen aikana.",
+          "context": "Henkilö A voi hyvin, ja hänen mittaustuloksensa pysyvät vakaina. Henkilö B on alkanut hikoilla kylmästi ja tuntee huimausta; syke on noussut kolmessa peräkkäisessä mittauksessa.",
           "question": "Kuka tarvitsee huomiota ensin?",
           "answers": {
             "a1": "Henkilö B, koska useat muutokset viittaavat heikkenemiseen",
@@ -216,13 +216,13 @@
           "visual": {
             "items": [
               "16 — Hereillä ja reagoi",
-              "22 — HÄNTÖLLINEN",
-              "28 — UNELLINEN",
-              "TRENDI - ?"
+              "22 — Ahdistunut",
+              "28 — Unelias",
+              "MUUTOS — ?"
             ],
-            "ariaLabel": "16 — Hereillä ja reagoi. 22 — HÄNTÖLLINEN. 28 — UNELLINEN. TRENDI - ?"
+            "ariaLabel": "16 — Hereillä ja reagoi. 22 — Ahdistunut. 28 — Unelias. MUUTOS — ?"
           },
-          "question": "Mikä on koko trendin paras tulkinta?",
+          "question": "Luvut kertovat hengityskertojen määrän minuutissa. Miten hengityksen ja vireystilan muutokset tulisi tulkita?",
           "answers": {
             "a1": "Ihminen paranee jatkuvasti",
             "a2": "Vain keskimmäisellä tarkastuksella on merkitystä",

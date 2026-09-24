@@ -9,7 +9,7 @@ const root = process.cwd();
 const quizRoot = path.join(root, "data", "quizzes");
 const i18nRoot = path.join(root, "data", "i18n");
 const infoPageRoot = path.join(root, "data", "info-pages");
-const localeFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "he.json", "hr.json", "hu.json", "id.json", "it.json", "ja.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
+const localeFiles = fs.readdirSync(i18nRoot).filter((file) => file.endsWith(".json")).sort();
 const translatedLocaleFiles = localeFiles.filter((file) => file !== "en.json");
 const requireAllLocales = process.argv.includes("--require-all-locales");
 // Draft audit mode checks explicitly selected inactive locales without activating routes.
@@ -528,6 +528,7 @@ function collectStrings(value, pathParts = [], output = []) {
 }
 
 const portugueseVariantTerms = /(?<!\p{L})(?:você|vocês|equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|tela|telas|registo|registos|registro|registros|secção|secções|seção|seções|prémio|prémios|prêmio|prêmios|comboio|comboios|trem|trens|íman|ímans|ímã|ímãs|câmara|câmaras|câmera|câmeras|telemóvel|telemóveis|celular|celulares|autocarro|autocarros|ônibus|ónibus|facto|factos|fato|fatos|contato|contatos|contacto|contactos|bebé|bebés|bebê|bebês|planeado|planeada|planeados|planeadas|planejado|planejada|planejados|planejadas|planeamento|planejamento|partilhado|partilhada|partilhados|partilhadas|compartilhado|compartilhada|compartilhados|compartilhadas|oxigénio|oxigênio|húmido|húmida|húmidos|húmidas|úmido|úmida|úmidos|úmidas|pequeno-almoço|fiável|fiáveis|confiável|confiáveis|eletrónico|eletrónica|eletrônicos|eletrônicas|eletrônico|eletrônica|académico|académica|acadêmico|acadêmica|económico|económica|econômico|econômica|fenómeno|fenómenos|fenômeno|fenômenos|género|géneros|gênero|gêneros|génio|gênio|travão|travões|travagem|freio|freios|frenagem|autónomo|autónoma|autônomo|autônoma|cronómetro|cronómetros|cronômetro|cronômetros|vómito|vómitos|vômito|vômitos|incómodo|incómoda|incômodo|incômoda|detetar|detetado|detetada|detetar-se|detectar|detectado|detectada|perceção|percepção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|decodificar|automóvel|automóveis|automotivo|automotiva|automotivos|automotivas|aspeto|aspetos|subtil|subtis)(?!\p{L})/iu;
+const portugalQuizTerms = /^(?:equipa|equipas|ficheiro|ficheiros|ecrã|ecrãs|registo|registos|secção|secções|prémio|prémios|comboio|comboios|íman|ímans|câmara|câmaras|telemóvel|telemóveis|autocarro|autocarros|facto|factos|contacto|contactos|bebé|bebés|planeado|planeada|planeados|planeadas|planeamento|partilhado|partilhada|partilhados|partilhadas|oxigénio|húmido|húmida|húmidos|húmidas|pequeno-almoço|fiável|fiáveis|eletrónico|eletrónica|académico|académica|económico|económica|fenómeno|fenómenos|género|géneros|génio|travão|travões|travagem|autónomo|autónoma|cronómetro|cronómetros|vómito|vómitos|incómodo|incómoda|detetar|detetado|detetada|detetar-se|perceção|regressar|natas|tabuleiro|tabuleiros|encomenda|encomendas|empratamento|confeção|cozedura|descodificar|automóvel|automóveis|aspeto|aspetos|subtil|subtis)$/iu;
 
 function findPortugueseVariantTerm(value) {
   return value.match(/você/iu) ?? value.match(portugueseVariantTerms);
@@ -584,6 +585,7 @@ const recurringNativeCopyDefects = {
     { pattern: /\bComo interpretar a resultado de memória\b/iu, quiz: "memory", message: "article agreement is incorrect" },
     { pattern: /\bMelhor ronda\b/iu, message: "shared Portuguese uses etapa here" },
     { pattern: /\b(?:travagem\/frenagem|travão\/freio)\b/iu, message: "visible Portugal/Brazil slash alternatives are forbidden" },
+    { pattern: /\bTDAH\b/iu, message: "Portugal locale must use PHDA consistently, not the Brazilian acronym or a slash alternative" },
     { pattern: /\b(?:numeramento|compareção|Train Driver|Culinary Pass|perpésua|pontuação bruta|carro alegórico)\b/iu, message: "machine-translated, misspelled, or untranslated Portuguese terminology remains" },
     { pattern: /\b(?:da|na) visor\b/iu, message: "Portuguese article agreement is incorrect" },
     { pattern: /\bPerguntas perdidas\b/iu, message: "literal translation of missed questions remains" },
@@ -754,6 +756,13 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     .sort();
   const expectedLocaleFiles = localeFiles;
   const independentLocales = manifest.engine?.localeParity === "independent" && !requireAllLocales;
+  if (requireAllLocales && (
+    JSON.stringify(actualLocaleFiles) !== JSON.stringify(expectedLocaleFiles)
+    || JSON.stringify(activeLocaleFiles) !== JSON.stringify(expectedLocaleFiles)
+  )) {
+    addError(`data/quizzes/${entry.name}: every supported locale must have a file and be active (${expectedLocaleFiles.join(", ")}).`);
+    continue;
+  }
   if (!activeLocaleFiles.every((file) => actualLocaleFiles.includes(file)) || !activeLocaleFiles.includes("en.json")) {
     addError(`data/quizzes/${entry.name}: en.json is required.`);
     continue;
@@ -781,7 +790,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (locale === "ar") validateArabicPrimaryCopy(localized, location);
     validatePrimaryScriptCopy(localized, location, localeFile);
     const residue = collectStringPairs(english, localized)
-      .filter((pair) => !(entry.name === "vision" && ["OFFICE FOCUS: FIND FIVE FLAGS FAST.", "THE OTHER THEME HID THE WORD THE."].includes(pair.source)))
+      // This is a letter-scan stimulus, not English prose; every locale sees
+      // the same glyphs so the seven-F answer has equivalent difficulty.
+      .filter((pair) => !(entry.name === "vision" && pair.source === "EFPRE PEFER RFEPE PRFEF EPRFP PEFRE" && pair.pathParts.at(-1) === "context"))
       // Reviewed Filipino aviation terminology: these conventional English
       // technical labels are intentional, not untranslated interface copy.
       .filter((pair) => !(entry.name === "airforce" && locale === "fil" && (
@@ -794,19 +805,15 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (residue.length > 20) addError(`${location}: ${residue.length - 20} additional untranslated English strings remain.`);
     if (localeFile === "pt.json") {
       for (const { value, pathParts } of collectStrings(localized)) {
-        // The Memory clue explicitly gives both Portuguese names for a train.
-        // Neither regional noun alone is permitted; all other neutrality checks remain.
-        let checkedValue = entry.name === "memory" ? value.replace(/comboio \/ trem/gi, "") : value;
+        let checkedValue = value;
         const sourceValue=pathParts.reduce((object,key)=>object?.[key],english);
         // “Celular” is shared scientific Portuguese when it means cellular. It is
         // regional only when used as a noun for a mobile phone.
         if(/\bcell(?:s|ular)?\b/i.test(sourceValue??''))checkedValue=checkedValue.replace(/\bcelular(?:es)?\b/giu,'biológico');
         const match = findPortugueseVariantTerm(checkedValue);
-        // Automotive copy needs the ordinary technical word for brakes. Replacing it
-        // with vague circumlocutions damages meaning; use consistent Brazilian terms
-        // in this family rather than allowing visible Portugal/Brazil slash alternatives.
-        const automotiveTerm = entry.name === "mechanic" && match && /^(?:freio|freios|frenagem)$/iu.test(match[0]);
-        if (match && !automotiveTerm) addError(`${location}#${pathParts.join(".")}: region-specific Portuguese term ${JSON.stringify(match[0])} must be neutralized.`);
+        // The `pt` quiz locale is European Portuguese; native Portugal terms are valid.
+        const portugalTerm = match && portugalQuizTerms.test(match[0]);
+        if (match && !portugalTerm) addError(`${location}#${pathParts.join(".")}: Brazilian Portuguese term ${JSON.stringify(match[0])} is not suitable for the pt locale.`);
       }
     }
   }

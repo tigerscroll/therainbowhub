@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 
@@ -7,6 +7,7 @@ import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
 
 type SourceQuestion = {
   id: string;
+  question: string;
   context?: string;
   presentation?: string;
   category?: string;
@@ -90,7 +91,47 @@ test("Oxford information-limit puzzle has multiple valid overlaps", () => {
   assert.equal(minimumOverlap, 20);
   assert.equal(maximumOverlap, 50);
   assert.ok(maximumOverlap > minimumOverlap);
+  assert.match(q5.question, /may do both, just one or neither/);
   assert.equal(q5.answers[q5.correct], "It cannot be determined");
+});
+
+test("Oxford library-hours question asks for support, not a necessary condition", () => {
+  const item = question("oxford", "oxford-s2q4");
+  assert.match(item.question, /Which assumption best supports that claim\?/);
+  assert.equal(item.answers[item.correct], "Some students who cannot visit now would use the extra hours");
+});
+
+test("Oxford rotation moves the marked square about its centre", () => {
+  const item = question("oxford", "oxford-s3q7");
+  assert.match(item.question, /Rotate the square 180° around its centre/);
+  assert.equal(item.answers[item.correct], "Bottom-right");
+});
+
+test("Oxford application logic requires a recommendation letter", () => {
+  const item = question("oxford", "oxford-s4q4");
+  assert.match(item.question, /application form and a recommendation letter/);
+  assert.equal(item.answers[item.correct], "Mei has not yet met all submission requirements");
+});
+
+test("Oxford library comparison uses an unchanged library as its control", () => {
+  const item = question("oxford", "oxford-s5q6");
+  assert.match(item.question, /seasonal increase/);
+  assert.equal(item.answers[item.correct], "Compare visits with a similar library that kept the same opening hours during that period");
+  assert.ok(item.answers.includes("Compare this month's visits with last month's visits"));
+});
+
+test("Oxford threshold question keeps candidate identities consistent in every locale", () => {
+  const directory = join(process.cwd(), "data", "quizzes", "oxford");
+  for (const file of readdirSync(directory).filter((name) => name.endsWith(".json") && name !== "quiz.json")) {
+    const locale = JSON.parse(readFileSync(join(directory, file), "utf8"));
+    const item = locale.stages["stage-1"].questions["oxford-s5q7"];
+    for (const answerId of ["a1", "a2", "a3"]) {
+      assert.ok(item.question.includes(item.answers[answerId]), `${file}: ${answerId} must appear in the question`);
+    }
+    for (const answerId of ["a1", "a2"]) {
+      assert.ok(item.answers.a4.includes(item.answers[answerId]), `${file}: combined answer must match candidate names`);
+    }
+  }
 });
 
 test("Cambridge final movement cancels the vertical displacement", () => {

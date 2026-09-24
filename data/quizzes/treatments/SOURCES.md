@@ -1,10 +1,27 @@
 # Treatments source record
 
-## English five-round edition — 22 September 2026
+## Current ten-question global edition — 23 September 2026
 
-English now uses 30 original/adapted text-only questions in five six-question rounds. The old source order and answer key below describe the **legacy ten-question edition**, not the new English edition. New stable IDs are `treatments-r1q1` through `treatments-r5q6`. The English headline no longer claims an unmeasured 16% pass rate.
+The current `quiz.json` activates all 30 locales and contains one stage of ten text-only questions, with the same question IDs and answer keys in every locale. The earlier 30-question English version documented below is historical and is not the current release. None of the questions offers individual treatment advice.
 
-Only `en` is active while this structure is English-only. The 29 existing translation files and ten images remain intact for later migration; they are not activated against incompatible 30-question metadata. The question and landing flows no longer use the photographs; the hub listing thumbnail is retained.
+The active question set draws on these general definitions and principles, not on claims that every treatment is equally effective or suitable for a particular person:
+
+| Current question IDs | Reference |
+|---|---|
+| `treatments-r1q1` | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) |
+| `treatments-r1q2` | [NCCIH: Acupuncture](https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety) |
+| `treatments-r2q1` | [NHS: Kidney disease treatment](https://www.nhs.uk/conditions/kidney-disease/treatment/) |
+| `treatments-r2q2` | [NHS: Insulin](https://www.nhs.uk/medicines/insulin/insulin-for-type-1-diabetes/) |
+| `treatments-r3q1`, `treatments-r4q2` | [NCI: Chemotherapy](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy), [NCI: Radiation therapy](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy) |
+| `treatments-r3q2`, `treatments-r5q1` | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) |
+| `treatments-r4q1` | [NHS: CBT](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
+| `treatments-r5q2` | [NHS: Swallowing problems](https://www.nhs.uk/symptoms/swallowing-problems-dysphagia/) |
+
+## Archived English five-round edition — 22 September 2026
+
+This archived English edition used 30 original/adapted text-only questions in five six-question rounds. The old source order and answer key below describe the **legacy ten-question edition**, not this archived 30-question edition. Its stable IDs extended from `treatments-r1q1` through `treatments-r5q6`. The English headline did not claim an unmeasured 16% pass rate.
+
+At the time, only `en` was active because the five-round structure was English-only. The 29 translation files and ten images were retained for a later migration; those translations were not activated against the incompatible 30-question metadata. That historical edition did not use the photographs in the question or landing flows; the hub listing thumbnail was retained. The current ten-question global edition also uses text-only questions.
 
 Fact-check references consulted 22 September 2026 (UTC). These support definitions and general principles, not personal care recommendations or claims that all listed approaches have equal evidence:
 

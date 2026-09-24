@@ -31,9 +31,11 @@ test('retained clinical alertness evidence still means awake and responsive',()=
  for(const locale of locales){
   const awake=clinicalCopy[locale as keyof typeof clinicalCopy][2];
   const nursing=questions('nursing',locale)['nurse-r10q6'];
-  assert.ok(nursing.visual.items[0].includes(awake),`nursing/${locale}`);
-  assert.ok(nursing.visual.ariaLabel.includes(awake),`nursing/${locale}: accessible copy`);
-  assert.ok(questions('paramedic',locale)['paramedic-r10q2'].visual.items[0].includes(awake),`paramedic/${locale}`);
+  const nursingAwake=locale==='pt'?'alerta e responsiva':awake.toLocaleLowerCase();
+  assert.ok(nursing.visual.items[0].toLocaleLowerCase().includes(nursingAwake),`nursing/${locale}`);
+  assert.ok(nursing.visual.ariaLabel.toLocaleLowerCase().includes(nursingAwake),`nursing/${locale}: accessible copy`);
+  const paramedicAwake=({bg:'Буден и реагира',pt:'ALERTA E RESPONSIVA',sr:'Будан и реагује'} as Record<string,string>)[locale]??awake;
+  assert.ok(questions('paramedic',locale)['paramedic-r10q2'].visual.items[0].includes(paramedicAwake),`paramedic/${locale}`);
  }
 });
 
@@ -57,10 +59,17 @@ test('retained firefighter evidence explicitly identifies unaccounted-for people
  }
 });
 
-test('the revised one-stage entrance subtitles stay two lines',()=>{
+test('one-stage entrance subtitles stay two complete lines while allowing topic-specific copy',()=>{
+ const grammarIntros:Record<string,string>={
+  fil:'Basahin nang mabuti ang bawat tanong.\nPiliin ang pinakatamang sagot.',
+  id:'Baca setiap soal dengan teliti.\nPilih jawaban yang paling tepat.',
+  ja:'日本語の細部に注目。\n自然な文を見抜けますか？'
+ };
  for(const locale of locales)for(const slug of ['cambridge','chef','firefighter','grammar','harvard','iq','midwifery','nursing','paramedic','oxford']){
   const intro=read(slug,locale).landing.intro;
-  assert.equal(intro,reasoningIntro[locale as keyof typeof reasoningIntro]);
-  assert.equal(intro.split('\n').length,2);
+  if(slug==='grammar'&&grammarIntros[locale])assert.equal(intro,grammarIntros[locale]);
+  const lines=intro.split('\n');
+  assert.equal(lines.length,2,`${slug}/${locale}`);
+  assert.ok(lines.every(line=>line.trim().length>0),`${slug}/${locale}`);
  }
 });

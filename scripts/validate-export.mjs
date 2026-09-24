@@ -7,7 +7,10 @@ const root = process.cwd();
 const outputRoot = path.join(root, "out");
 const quizRoot = path.join(root, "data", "quizzes");
 const articleRoot = path.join(root, "data", "articles");
-const locales = ["en", "fr", "de", "it", "nl", "es", "pt", "ar", "pl", "sv", "da", "nb", "tr", "cs", "ro", "hu", "fi", "el", "id", "th", "vi", "ms", "fil", "uk", "bg", "hr", "sr", "sk"];
+const locales = fs.readdirSync(path.join(root, "data", "i18n"))
+  .filter((file) => file.endsWith(".json"))
+  .map((file) => file.slice(0, -5))
+  .sort();
 const errors = [];
 const shellCss = fs.readFileSync(path.join(root, "styles", "quiz-shell-contract.css"), "utf8");
 const shellHash = createHash("sha256").update(shellCss).digest("hex").slice(0, 12);
@@ -46,9 +49,17 @@ if (!fs.existsSync(outputRoot)) {
 
   for (const slug of slugs) {
     const quizConfig = JSON.parse(fs.readFileSync(path.join(quizRoot, slug, "quiz.json"), "utf8"));
-    const localizedLocales = quizConfig.activeLocales ?? locales.filter((locale) => locale === "en"
-      || fs.existsSync(path.join(quizRoot, slug, `${locale}.json`)));
-    for (const locale of localizedLocales) {
+    if (quizConfig.activeLocales && (
+      quizConfig.activeLocales.length !== locales.length
+      || locales.some((locale) => !quizConfig.activeLocales.includes(locale))
+    )) {
+      addError(`${slug}: activeLocales must include every supported locale.`);
+    }
+    for (const locale of locales) {
+      if (!fs.existsSync(path.join(quizRoot, slug, `${locale}.json`))) {
+        addError(`${slug}: missing quiz translation for ${locale}.`);
+        continue;
+      }
       const route = locale === "en" ? `/${slug}` : `/${locale}/${slug}`;
       const file = routeFile(route);
       if (!file) {
@@ -64,6 +75,12 @@ if (!fs.existsSync(outputRoot)) {
       }
       if (/data-quiz-shell-contract[^>]*>[^<]*<style/i.test(html) || html.includes("data-quiz-shell-styles")) {
         addError(`${route}: shared shell CSS was inlined instead of linked.`);
+      }
+      for (const availableLocale of locales) {
+        const languageRoute = availableLocale === "en" ? `/${slug}` : `/${availableLocale}/${slug}`;
+        if (!html.includes(`href="${languageRoute}"`)) {
+          addError(`${route}: language switcher is missing ${languageRoute}.`);
+        }
       }
 
       for (const match of html.matchAll(/<(?:script|img|link)\b[^>]*(?:src|href)=\"([^\"]+)\"/gi)) {

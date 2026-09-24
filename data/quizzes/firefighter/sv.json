@@ -26,7 +26,7 @@
         "preAdCopy": "Din brandmanspoäng och fem områdesfördelning är redo att avslöjas.",
         "preAdChecks": [
           "10 svar kontrollerade",
-          "Fem entréområden jämförda"
+          "Fem brandkunskapsområden bedömda"
         ]
       }
     }
@@ -36,33 +36,33 @@
     "profiles": {
       "profile-1": {
         "tier": "90–100 %",
-        "title": "Inträdesprovet Standout",
+        "title": "Särskilt stark på antagningsprovet",
         "copy": "Du kombinerade utmärkta brandvetenskapliga grunder med ett lugnt, bevisstyrt omdöme över hela utmaningen. Ändrade faror, mekaniska ledtrådar och kommunikationsdetaljer förblev tydliga även när de slutliga besluten blev krävande."
       },
       "profile-2": {
         "tier": "80–89 %",
-        "title": "Den som utpekar åtgärderna",
+        "title": "Den strategiska problemlösaren",
         "copy": "Du visade en stark känsla för vetenskapen, mekanik och säkerhetsresonemang bakom utmaningen. De flesta av risk-, beräknings- och prioriteringsfällorna drog dig inte ur kurs."
       },
       "profile-3": {
         "tier": "70–79 %",
         "title": "Den lugna incidentlösaren",
-        "copy": "Du kände igen flera viktiga idéer, medan vissa frågor behövde en närmare titt. Din recension visar vilka kopplingar du ska besöka igen."
+        "copy": "Du svarade rätt på flera frågor, medan andra krävde lite mer eftertanke. Gå igenom svaren för att se vad du kan öva vidare på."
       },
       "profile-4": {
         "tier": "60–69 %",
         "title": "Den stabila lagspelaren",
-        "copy": "Du kände igen flera viktiga idéer, medan vissa frågor behövde en närmare titt. Din recension visar vilka kopplingar du ska besöka igen."
+        "copy": "Du svarade rätt på flera frågor, medan andra krävde lite mer eftertanke. Gå igenom svaren för att se vad du kan öva vidare på."
       },
       "profile-5": {
         "tier": "50–59 %",
         "title": "Den lovande rekryten",
-        "copy": "Du kände igen flera viktiga idéer, medan vissa frågor behövde en närmare titt. Din recension visar vilka kopplingar du ska besöka igen."
+        "copy": "Du svarade rätt på flera frågor, medan andra krävde lite mer eftertanke. Gå igenom svaren för att se vad du kan öva vidare på."
       },
       "profile-6": {
         "tier": "Under 50 %",
-        "title": "First-Alarm Explorer",
-        "copy": "Denna utmaning introducerade några okända idéer. Använd svarsrecensionen för att utforska vad du visste och vad du kan lära dig härnäst."
+        "title": "Nyfiken på räddningstjänst",
+        "copy": "En del frågor kan ha känts ovana. Gå igenom svaren för att se vad du redan kunde och vad du kan lära dig mer om."
       }
     },
     "dimensions": {
@@ -121,7 +121,7 @@
             "a1": "Gå genom vattnet för att stänga av den",
             "a2": "Häll mer vatten över panelen",
             "a3": "Flytta panelen i dess yttre hölje",
-            "a4": "Håll människor tydliga och uppmärksamma kvalificerade svarspersonal"
+            "a4": "Håll människor borta från faran och larma kvalificerad personal"
           }
         },
         "firefighter-s2q2": {
@@ -185,20 +185,20 @@
           "answers": {
             "a1": "Taket kyler säkert",
             "a2": "Sprickorna visar exakt var man ska stå",
-            "a3": "Det är möjligt att kollapsa, så håll undan och rapportera det förändrade tillståndet",
+            "a3": "Taket kan rasa, så håll avstånd och rapportera förändringen",
             "a4": "Skadan har betydelse först efter händelsen"
           }
         },
         "firefighter-s5q5": {
           "visual": {
             "items": [
-              "VÄXEL A ↻",
-              "VÄXEL B ?",
-              "VÄXEL C ?"
+              "KUGGHJUL A ↻",
+              "KUGGHJUL B ?",
+              "KUGGHJUL C ?"
             ],
-            "ariaLabel": "Medurs växel A driver växel B, som driver växel C"
+            "ariaLabel": "Kugghjul A roterar medurs och driver kugghjul B, som driver kugghjul C"
           },
-          "question": "Kugghjul A driver B och B driver C. Vilken väg svänger Kugghjul C?",
+          "question": "Kugghjul A driver B och B driver C. Åt vilket håll roterar kugghjul C?",
           "headerLabel": "REDSKAPSRESONER",
           "answers": {
             "a1": "Medurs, efter två riktningsomkastningar",
@@ -212,12 +212,12 @@
             "items": [
               "Lag::4",
               "Per lag::3 lampor",
-              "RESERVDELAR KRÄVS::2",
-              "REDAN UTGIFT::2"
+              "RESERVLAMPOR BEHÖVS::2",
+              "LAMPOR REDAN UTLÄMNADE::2"
             ],
-            "ariaLabel": "Lag: 4. Per lag: 3 lampor. RESERVDELAR KRÄVS: 2. REDAN UTGIFT: 2"
+            "ariaLabel": "Fyra lag behöver tre lampor var, två reservlampor behövs och två lampor har redan lämnats ut"
           },
-          "question": "Hur många fler lampor måste dras så att varje besättning är utrustad och två reservdelar finns kvar?",
+          "question": "Hur många fler lampor behövs för att varje lag ska få tre och två lampor finnas kvar i reserv?",
           "headerLabel": "UTRUSTNING MATH",
           "answers": {
             "a1": "10",
@@ -232,15 +232,15 @@
               "Västra korridoren::Rökförtjockning",
               "Personer::Två personer saknas",
               "Östra utgången::Fri passage",
-              "Rutinräkning::Förfallo nu"
+              "Rutinräkning::Ska göras nu"
             ],
-            "ariaLabel": "Västra korridoren: Rökförtjockning. Personer: Två personer saknas. Östra utgången: Fri passage. Rutinräkning: Förfallo nu"
+            "ariaLabel": "Röken blir tätare i västra korridoren, två personer saknas, den östra utgången är fri och rutinräkningen ska göras nu"
           },
           "question": "Vilken är den bästa första åtgärden och rapporten?",
           "headerLabel": "SLUTGILTIGT TEST",
           "answers": {
             "a1": "Avsluta räkningen innan du rapporterar röken",
-            "a2": "Direkt människor österut; anmäl västerök och två försvunna personer; skjuta upp räkningen",
+            "a2": "Led människor till den östra utgången, rapportera tätare rök i västra korridoren och två saknade personer och skjut upp rutininventeringen",
             "a3": "Använd den västra korridoren eftersom den är kortast",
             "a4": "Rapportera endast utrustningen som räknas"
           }

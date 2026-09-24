@@ -43,6 +43,7 @@ test('all 30 Vision locales retain ten questions and literal puzzle tokens',()=>
   assert.ok(byId['vision-r5q1'].question.includes('↗'),`${locale}: mirror arrow`);
   assert.match(byId['vision-r3q6'].question,/F/,`${locale}: literal Latin F`);
   assert.equal((byId['vision-r3q6'].context.match(/f/gi)??[]).length,7,locale);
+  assert.equal(byId['vision-r3q6'].context,'EFPRE PEFER RFEPE PRFEF EPRFP PEFRE',`${locale}: equivalent language-neutral letter scan`);
   for(const id of ['vision-r1q5','vision-r8q5'])assert.deepEqual(byId[id].study.items,questions.find((question:any)=>question.id===id).study.items,`${locale}/${id}: unchanged board`);
   const raw=translated.stages['stage-1'].questions['vision-r10q2'].answers;
   assert.deepEqual(['a1','a2','a3','a4'].map(id=>raw[id].match(/[A-Z0-9]/g)),[['7','N'],['8','6'],['Q','P'],['K','R']],`${locale}: literal code characters`);
