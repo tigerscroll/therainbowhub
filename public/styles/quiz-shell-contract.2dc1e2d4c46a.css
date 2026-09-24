@@ -891,7 +891,7 @@
   background: color-mix(in srgb, var(--quiz-primary) 11%, var(--quiz-surface-raised));
   color: var(--quiz-primary);
   text-align: center;
-  animation: years-question-in .28s ease-out both;
+  animation: quizChapterIn .28s ease-out both;
 }
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__question-context {
@@ -903,7 +903,12 @@
   letter-spacing: normal;
   line-height: 1.4;
   text-transform: none;
-  animation: years-question-in .28s ease-out both;
+  animation: quizChapterIn .28s ease-out both;
+}
+
+@keyframes quizChapterIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .quiz-engine__checkpoint-profile { color: var(--quiz-text); }

@@ -520,7 +520,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const career = quiz.career!;
     const careerStage = career.stages[completedStage];
     const chapterProfile = careerStage.preAdCopy?.includes("{profile}")
-      ? scoreQuiz(quiz, getChapterAnswers(quiz.questions, answers, completedStage)).profile
+      ? scoreQuiz(
+          { ...quiz, questions: quiz.questions.filter((question) => question.stage === completedStage) },
+          getChapterAnswers(quiz.questions, answers, completedStage),
+        ).profile
       : undefined;
     const checkpointButton = isFinalStage
       ? careerStage.preAdButton ?? translations.results.viewResults

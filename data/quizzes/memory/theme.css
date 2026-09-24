@@ -24,6 +24,59 @@
   background-size: 28px 28px, 28px 28px, auto, auto;
 }
 
+/* Match the chapter checkpoint rhythm while keeping the memory palette. */
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+  animation: memory-chapter-mark .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+  animation: memory-question-in .3s .06s ease-out both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+  animation: memory-question-in .34s .12s ease-out both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+  animation: memory-question-in .36s .18s ease-out both;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+[data-quiz-theme="memory"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 28%, color-mix(in srgb, var(--quiz-primary-text) 20%, transparent) 50%, transparent 72%);
+  animation: memory-chapter-shine .75s .35s ease-out both;
+}
+
+@keyframes memory-chapter-mark {
+  from { opacity: 0; transform: rotate(-10deg) scale(.84); }
+  65% { opacity: 1; transform: rotate(3deg) scale(1.04); }
+  to { opacity: 1; transform: rotate(-2deg) scale(1); }
+}
+
+@keyframes memory-chapter-shine {
+  from { transform: translateX(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="memory"] *,
+  [data-quiz-theme="memory"] *::before,
+  [data-quiz-theme="memory"] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .quiz-theme[data-quiz-theme="memory"][data-quiz-flow="continuous"]{
   --quiz-flow-content-inset: clamp(34px, 5vw, 62px);
 }
