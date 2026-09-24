@@ -262,6 +262,9 @@ const requiredContinuousShellContract = [
   "quiz-engine__primary-arrow",
   "quiz-engine__landing--start-instruction",
   "quiz-engine__start-instruction-return",
+  "quiz-engine__flow-container",
+  ".quiz-engine__flow-container > .quiz-engine__about",
+  "min-height: calc(100svh - var(--site-header-height, 40px) - 12px) !important;",
 ];
 const continuousShellSources = `${quizTemplateText}\n${experienceThemeBoundaryText}\n${quizLoaderText}\n${quizShellContractText}`;
 for (const declaration of requiredContinuousShellContract) {

@@ -851,3 +851,27 @@
 }
 
 [dir="rtl"] .quiz-engine__landing--compact .quiz-engine__primary-icon { transform: scaleX(-1); }
+
+/* Keep every screen and its supporting content in the same persistent layout.
+   The active screen fills the mobile viewport; About follows at one shared gap. */
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container {
+  display: flex;
+  width: min(var(--quiz-shell-container-width), 100%);
+  margin-inline: auto;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container > .quiz-engine__about {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 820px) {
+  .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container > .quiz-engine__landing,
+  .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container > .quiz-engine__continuous-shell {
+    min-height: calc(100svh - var(--site-header-height, 40px) - 12px) !important;
+  }
+}

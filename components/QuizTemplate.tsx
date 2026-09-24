@@ -52,13 +52,15 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
         }}
       />
       <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
-        <QuizEngine
-          locale={locale}
-          quiz={quiz}
-          recommendations={recommendations}
-          startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
-          translations={translations}
-        />
+        <div className="quiz-engine__flow-container">
+          <QuizEngine
+            locale={locale}
+            quiz={quiz}
+            recommendations={recommendations}
+            startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
+            translations={translations}
+          />
+        </div>
       </ExperienceThemeBoundary>
     </>
   );

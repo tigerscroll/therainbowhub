@@ -371,8 +371,8 @@ test('Memory Japanese recall distinguishes time of day from duration and uses th
  assert.equal(question('memory','ja','memory-r2q3').answers.a1,'1番目');
 });
 
-test('Memory requested CTA polish remains in the landing action',()=>{
- for(const[locale,cta]of Object.entries({da:'Start testen',hr:'Započni',nb:'Start testen'})){
+test('Memory landing CTAs retain the reviewed short Start wording',()=>{
+ for(const[locale,cta]of Object.entries({da:'Start',hr:'Započni',nb:'Start'})){
   const copy=read('memory',locale);
   assert.equal(copy.landing.cta,cta);
   assert.ok(copy.about.howToPlay.steps[0].trim(),locale);

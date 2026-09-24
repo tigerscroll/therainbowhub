@@ -99,7 +99,7 @@
 .quiz-engine__ad-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; color: var(--quiz-muted); font-size: 13px; font-weight: 750; }
 .quiz-engine__ad-note span { display: grid; width: 20px; height: 20px; place-items: center; border: 1px solid var(--quiz-correct); border-radius: 50%; color: var(--quiz-correct); font-size: 11px; }
 
-.quiz-theme[data-quiz-theme] > .quiz-engine__reward-prompt {
+.quiz-theme[data-quiz-theme] .quiz-engine__flow-container > .quiz-engine__reward-prompt {
   position: fixed !important;
   inset: 0 !important;
   z-index: 1000 !important;
@@ -612,10 +612,6 @@ body.quiz-reward-prompt-open { overflow: hidden !important; overscroll-behavior:
   .quiz-engine__checklist li { opacity: 1; transform: none; animation: none; }
   .quiz-engine__preparing-mark span { animation: none; }
   .quiz-engine__preparing-progress i { animation: none; transform: scaleX(1); }
-}
-
-@media (max-width: 900px) {
-  .quiz-engine__about { margin-top: var(--quiz-about-gap-compact, 300px); }
 }
 
 /* First-class RTL support. Structural grids stay intact;
