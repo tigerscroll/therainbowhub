@@ -142,6 +142,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     rewardClosedAlreadySent: rewardClosedSent,
   });
   const currentQuestion = quiz.questions[questionIndex];
+  const isChapterFlow = quiz.engine.flow.type === "staged" && quiz.stages.length === 10;
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
   const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
   const currentStage = currentQuestion?.stage ?? 0;
@@ -563,7 +564,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             {careerStage.preAdChecks.map((item) => <li key={item}><span>✓</span>{item}</li>)}
           </ul>
         ) : null}
-        {!isSingleStage ? (
+        {!isSingleStage && !isChapterFlow ? (
           <section className="quiz-engine__career-result-progress quiz-engine__checkpoint-journey-progress" style={{ "--career-result-progress": `${checkpointPercent}%`, "--career-result-progress-from": `${Math.round((completedStageCount - 1) / quiz.stages.length * 100)}%` } as CSSProperties}>
             <div>
               <span>{career.resultProgressLabel ?? translations.quiz.challengeProgress}</span>
@@ -846,16 +847,18 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
   return (
     <>
-    <section className="quiz-engine__question-shell quiz-engine__continuous-shell" data-round={currentStage + 1}>
+    <section className={`quiz-engine__question-shell quiz-engine__continuous-shell${isChapterFlow ? " quiz-engine__question-shell--chapters" : ""}`} data-round={currentStage + 1}>
       <div className="quiz-engine__progress-head">
-        <span>{quiz.career
+        {!isChapterFlow ? <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
-          : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
-        <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
+          : translations.quiz.progressComplete.replace("{value}", String(progress))}</span> : null}
+        <strong key={currentQuestion.id}>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
       </div>
-      <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
-        <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
-      </div>
+      {!isChapterFlow ? (
+        <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
+          <i style={{ width: `${quiz.career ? displayedStageProgress : progress}%` }} />
+        </div>
+      ) : null}
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
         <h1 key={currentQuestion.id}>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>

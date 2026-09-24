@@ -1712,7 +1712,10 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cacheKey = `${slug}:${locale}`;
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
-  const manifest = validateManifest(json(path.join(directory(slug), "quiz.json")), `${slug}/quiz.json`);
+  const contentDirectory = slug === "years-left" && locale === "en"
+    ? path.join(directory(slug), "english-extended")
+    : directory(slug);
+  const manifest = validateManifest(json(path.join(contentDirectory, "quiz.json")), `${slug}/${locale}/quiz.json`);
   if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
   manifest.listing.thumbnail = normalizeQuizAsset(ROOT, slug, manifest.listing.thumbnail);
   if (manifest.theme.artwork) {
@@ -1740,7 +1743,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const themeCssHref = themeCss ? themeStylesheetHref(slug, themeCss) : undefined;
   const socialAvatars = normalizedSocialAvatars(slug);
   const localeFile = `${slug}/${locale}.json`;
-  const rawLocale = json<unknown>(path.join(directory(slug), `${locale}.json`));
+  const rawLocale = json<unknown>(path.join(contentDirectory, `${locale}.json`));
   const localized = expandLocaleV2(rawLocale, manifest, locale, localeFile);
   const quiz = normalizeLocale(localized, manifest, manifest.theme, themeCssHref, socialAvatars, localeFile);
   quizCache.set(cacheKey, quiz);

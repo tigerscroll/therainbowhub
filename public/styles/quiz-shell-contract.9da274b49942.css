@@ -875,3 +875,33 @@
     min-height: calc(100svh - var(--site-header-height, 40px) - 12px) !important;
   }
 }
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  padding-bottom: 14px !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head > strong {
+  grid-column: 1;
+  justify-self: center;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--quiz-primary) 35%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--quiz-primary) 11%, var(--quiz-surface-raised));
+  color: var(--quiz-primary);
+  text-align: center;
+  animation: years-question-in .28s ease-out both;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__question-context {
+  max-width: 34rem;
+  margin-bottom: 15px;
+  color: var(--quiz-muted);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: normal;
+  line-height: 1.4;
+  text-transform: none;
+  animation: years-question-in .28s ease-out both;
+}
