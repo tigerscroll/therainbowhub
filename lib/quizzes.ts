@@ -1712,7 +1712,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cacheKey = `${slug}:${locale}`;
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
-  const contentDirectory = ["years-left", "memory"].includes(slug) && locale === "en"
+  const contentDirectory = ["years-left", "memory", "treatments"].includes(slug) && locale === "en"
     ? path.join(directory(slug), "english-extended")
     : directory(slug);
   const manifest = validateManifest(json(path.join(contentDirectory, "quiz.json")), `${slug}/${locale}/quiz.json`);

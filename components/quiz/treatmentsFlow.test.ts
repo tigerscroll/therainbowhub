@@ -9,7 +9,7 @@ const copy=JSON.parse(fs.readFileSync(root+'en.json','utf8'));
 const expanded=expandQuizLocale(manifest,copy,'en');
 const questions=expanded.stages[0].questions;
 
-test('Treatments is localized, text-only and ten questions in one stage',()=>{
+test('Treatments shared translation baseline is text-only with ten questions in one stage',()=>{
  assert.equal(manifest.activeLocales.length,30);
  assert.equal(manifest.engine.localeParity,'strict');
  assert.equal(manifest.template,'single-stage-rewarded-v1');

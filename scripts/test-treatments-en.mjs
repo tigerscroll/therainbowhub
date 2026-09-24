@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {chromium} from 'playwright-core';
+if (!process.env.QUIZ_TEST_LOCALE || process.env.QUIZ_TEST_LOCALE === 'en') {
+ process.env.QUIZ_TEST_SLUG = 'treatments';
+ await import('./test-years-left-extended-flow.mjs');
+} else {
 const base=process.env.QUIZ_TEST_URL??'http://localhost:3198';
 const m=JSON.parse(fs.readFileSync('data/quizzes/treatments/quiz.json'));
 const locale=process.env.QUIZ_TEST_LOCALE??'en';
@@ -63,3 +67,4 @@ async function journey(score,width){
  }finally{await context.close();}
 }
 try{await Promise.all([[0,390],[7,1440],[8,320],[10,390]].map(([score,width])=>journey(score,width)));}finally{await browser.close();}
+}

@@ -1,8 +1,12 @@
 # Treatments source record
 
-## Current ten-question global edition — 23 September 2026
+## Current worldwide English edition — 24 September 2026
 
-The current `quiz.json` activates all 30 locales and contains one stage of ten text-only questions, with the same question IDs and answer keys in every locale. The earlier 30-question English version documented below is historical and is not the current release. None of the questions offers individual treatment advice.
+English `/treatments` uses the separate [ten-round, 70-question edition](english-extended/SOURCES.md), with the original title and landing subtitle. That record maps every answer to its reference. The shared manifest and translations below are retained for the other locales.
+
+## Ten-question translated edition — 23 September 2026
+
+The root `quiz.json` lists all 30 locales and contains one stage of ten text-only questions. Non-English routes use that structure; the English route loads `english-extended` instead. The earlier 30-question English version documented below is historical. None of the questions offers individual treatment advice.
 
 The active question set draws on these general definitions and principles, not on claims that every treatment is equally effective or suitable for a particular person:
 

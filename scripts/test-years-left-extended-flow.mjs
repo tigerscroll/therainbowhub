@@ -48,6 +48,7 @@ async function run(width) {
   await page.goto(`${base}/${slug}?test_keep=1`);
   const landing = page.locator('.quiz-engine__landing');
   await landing.waitFor();
+  assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.match(await landing.locator('.quiz-engine__primary').innerText(), /^Start\s*→?$/);
   assert.equal(await page.evaluate(() => window.adCalls.length), 0);
@@ -93,6 +94,11 @@ async function run(width) {
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
+      if (slug === 'treatments') {
+        assert.equal(await question.locator('img,.quiz-engine__visual,.quiz-engine__question-image').count(), 0, 'treatments stays text-only');
+        assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
+        assert.equal(await question.locator('.quiz-engine__answers').evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), 1);
+      }
       if (stageIndex === 0 && index === 0) await page.screenshot({ path: `/tmp/${slug}-engagement-question-${width}.png`, animations: 'disabled' });
       const correctIndex = answerIds.indexOf(logic.correctAnswerId);
       const choice = scored && (width === 320 || (width === 390 && stageIndex === 0))
@@ -121,7 +127,7 @@ async function run(width) {
       assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no animation lock on intermediate gates');
     }
     const animationNames = await checkpoint.locator('.quiz-engine__checkpoint-icon').evaluate(node => getComputedStyle(node).animationName);
-    assert.equal(animationNames, reduced ? 'none' : slug === 'memory' ? 'memory-chapter-mark' : 'years-clock-turn');
+    assert.equal(animationNames, reduced ? 'none' : slug === 'years-left' ? 'years-clock-turn' : `${slug}-chapter-mark`);
     assert.equal(await checkpoint.evaluate(node => node.getAnimations({ subtree: true }).every(animation => animation.effect.getTiming().iterations === 1)), true, 'checkpoint animations never loop');
     const button = checkpoint.locator('.quiz-engine__primary');
     await button.waitFor({ state: 'visible' });
@@ -155,6 +161,7 @@ async function run(width) {
   if (scored) {
     assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(), `${totalCorrect} / 70`);
     assert.equal(await result.locator('.quiz-engine__result-percentage strong').innerText(), `${Math.round(totalCorrect / 70 * 100)}%`);
+    assert.equal(await result.locator('h2').first().innerText(), totalCorrect >= 56 ? copy.results.score.passed : copy.results.score.finished);
   } else {
     age = Number(await result.locator('.quiz-engine__result-age strong').innerText());
     assert.ok(age >= 73 && age <= 95);
