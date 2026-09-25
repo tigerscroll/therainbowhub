@@ -14,6 +14,7 @@ import {polishAdditional} from './additional-corrections.mjs';
 import {polishNativeAdditional} from './native-additional.mjs';
 import {correctUniversityCurrency} from './university-currency.mjs';
 import {polishCatalogue} from './catalogue-native.mjs';
+import {polishNeutralPortuguese} from './portuguese-neutral.mjs';
 
 export function walk(value, callback, parts = []) {
   if (typeof value === 'string') return callback(value, parts);
@@ -59,4 +60,5 @@ export function polishCopy(slug, locale, copy, source, manifest) {
     return value;
   });
   polishCatalogue(slug, locale, copy, source, manifest);
+  if (locale === 'pt') polishNeutralPortuguese(slug, copy, manifest);
 }
