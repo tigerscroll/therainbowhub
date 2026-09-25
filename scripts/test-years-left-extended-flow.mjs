@@ -8,13 +8,18 @@ const root = `data/quizzes/${slug}/english-extended`;
 const manifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
 const copy = JSON.parse(fs.readFileSync(`${root}/en.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
+const textChapters = ['treatments', 'anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'].includes(slug);
+const testPages = new Map();
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 
 async function run(width) {
   const reduced = width === 320;
-  const height = slug === 'vision' && width === 320 ? 568 : width < 500 ? 844 : 960;
+  const height = (slug === 'vision' || textChapters) && width === 320 ? 568 : width < 500 ? 844 : 960;
   const context = await browser.newContext({ viewport: { width, height }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
   const page = await context.newPage();
+  testPages.set(width, page);
+  page.setDefaultTimeout(15_000);
+  page.setDefaultNavigationTimeout(30_000);
   const errors = [];
   let documents = 0;
   page.on('pageerror', error => errors.push(error.message));
@@ -53,9 +58,9 @@ async function run(width) {
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.match(await landing.locator('.quiz-engine__primary').innerText(), /^Start\s*→?$/);
   assert.equal(await page.evaluate(() => window.adCalls.length), 0);
-  if (slug === 'vision' && width === 320) {
+  if ((slug === 'vision' || textChapters) && width === 320) {
     assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
-    await page.screenshot({ path: '/tmp/vision-engagement-landing-small-phone.png', animations: 'disabled' });
+    await page.screenshot({ path: `/tmp/${slug}-engagement-landing-small-phone.png`, animations: 'disabled' });
   }
   await page.screenshot({ path: `/tmp/${slug}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
@@ -99,8 +104,8 @@ async function run(width) {
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
-      if (slug === 'treatments') {
-        assert.equal(await question.locator('img,.quiz-engine__visual,.quiz-engine__question-image').count(), 0, 'treatments stays text-only');
+      if (textChapters) {
+        assert.equal(await question.locator('img,.quiz-engine__visual,.quiz-engine__question-image').count(), 0, `${slug} stays text-only`);
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
         assert.equal(await question.locator('.quiz-engine__answers').evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), 1);
       }
@@ -157,9 +162,11 @@ async function run(width) {
     assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), 1, 'Continue and See My Result both have an arrow');
     const geometry = await button.evaluate(node => ({ top: node.getBoundingClientRect().top, bottom: node.getBoundingClientRect().bottom, viewport: innerHeight }));
     assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
-    if (slug === 'vision' && stageIndex === 9) {
+    if (slug === 'vision' || textChapters) {
+      assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, `chapter ${stageIndex + 1} ad note remains visible with its button`);
+    }
+    if ((slug === 'vision' || textChapters) && stageIndex === 9) {
       assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
-      assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'final ad note remains visible with the result button');
     }
     checkpoints.push({ chapter: stageIndex + 1, button: copy.career.stages[stage.id].preAdButton, animation: animationNames });
     if ([0, 4, 8, 9].includes(stageIndex)) await page.screenshot({ path: `/tmp/${slug}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
@@ -223,7 +230,16 @@ async function run(width) {
 }
 
 try {
-  const results = await Promise.allSettled((process.env.QUIZ_TEST_WIDTHS ?? '320,390,1440').split(',').map(Number).map(run));
+  const results = await Promise.allSettled((process.env.QUIZ_TEST_WIDTHS ?? '320,390,1440').split(',').map(Number).map(width => run(width).catch(async error => {
+    console.error(`${slug} ${width}px: ${error.stack ?? error}`);
+    const page = testPages.get(width);
+    if (page && !page.isClosed()) await page.screenshot({ path: `/tmp/${slug}-engagement-failure-${width}.png`, animations: 'disabled', timeout: 5_000 }).catch(() => {});
+    throw error;
+  })));
   const failures = results.filter(result => result.status === 'rejected');
   if (failures.length) throw new AggregateError(failures.map(result => result.reason), 'English extended browser checks failed');
-} finally { await browser.close(); }
+} finally {
+  console.log(`${slug}: closing test browser`);
+  await browser.close();
+  console.log(`${slug}: test browser closed`);
+}

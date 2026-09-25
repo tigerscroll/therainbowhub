@@ -482,3 +482,53 @@
 /* Five-round text-answer layout */
 [data-quiz-theme="midwifery"] .quiz-engine__answers:not(.quiz-engine__answers--icons):not(.quiz-engine__answers--scale) { grid-template-columns: minmax(0, 1fr); }
 [data-quiz-theme="midwifery"] .quiz-engine__answer strong { min-width: 0; overflow-wrap: anywhere; }
+
+/* English chapters: a brief reward animation, with no looping or answer delay. */
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+  animation: midwifery-chapter-mark .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+  animation: quizChapterIn .3s .06s ease-out both;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+  animation: quizChapterIn .34s .12s ease-out both;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+  animation: quizChapterIn .36s .18s ease-out both;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 28%, rgba(255,255,255,.2) 50%, transparent 72%);
+  animation: midwifery-chapter-shine .75s .35s ease-out both;
+}
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__ai-panel::after,
+[data-quiz-theme="midwifery"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__ai-top > span,
+[data-quiz-theme="midwifery"] .quiz-engine__answer {
+  animation: none;
+}
+@keyframes midwifery-chapter-mark {
+  from { opacity: 0; transform: scale(.8); }
+  60% { opacity: 1; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes midwifery-chapter-shine {
+  from { transform: translateX(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="midwifery"] *,
+  [data-quiz-theme="midwifery"] *::before,
+  [data-quiz-theme="midwifery"] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

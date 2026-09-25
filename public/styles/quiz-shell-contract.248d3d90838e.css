@@ -708,8 +708,28 @@
   }
 }
 
-/* Keep the chapter result button and its ad note together on short phones. */
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__answer:hover:not(:disabled) {
+  /* Moving a button out from under a pointer can repeatedly toggle :hover,
+     especially with reduced motion. Keep answer hit areas stationary. */
+  transform: none !important;
+}
+
+/* Keep each chapter's button and ad note together on short phones. */
 @media (max-width: 700px) and (max-height: 640px) {
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] {
+    padding-block: 18px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+    width: 44px !important;
+    height: 44px !important;
+    margin-block: 4px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+    padding-block: 12px !important;
+  }
+
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__career-checklist {
     margin-top: 12px !important;
     margin-bottom: 12px !important;
