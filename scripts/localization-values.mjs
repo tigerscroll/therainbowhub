@@ -3,7 +3,11 @@
 export function answerNumbers(text, locale = 'en') {
   let value = text.replace(/[٠-٩]/g, char => String('٠١٢٣٤٥٦٧٨٩'.indexOf(char))).replaceAll('−', '-');
   if (locale === 'ar') {
-    const words = {الأول: 1, الثاني: 2, الثالث: 3, الرابع: 4, الخامس: 5, السادس: 6, السابع: 7, الثامن: 8, التاسع: 9, العاشر: 10, بعشرة: 10, ساعتان: 2, ساعتين: 2, وحدتان: 2, وحدتين: 2, مربعين: 2, بمربعين: 2};
+    // Arabic grid moves may express one cell implicitly or two with a dual noun.
+    // Only count the singular noun when followed by a direction, not a cell ID.
+    value = value.replace(/(?<!\p{L})(و?)خانة(?=\s+إلى\s+(?:اليمين|اليسار|الأعلى|الأسفل)(?!\p{L}))/gu, '$1 1');
+    value = value.replace(/(?<!\p{L})نقطة واحدة(?!\p{L})/gu, '1').replace(/(?<!\p{L})نقطت(?:ان|ين)(?!\p{L})/gu, '2');
+    const words = {الأول: 1, الثاني: 2, الثالث: 3, الرابع: 4, الخامس: 5, السادس: 6, السابع: 7, الثامن: 8, التاسع: 9, العاشر: 10, بعشرة: 10, ساعتان: 2, ساعتين: 2, وحدتان: 2, وحدتين: 2, مربعين: 2, بمربعين: 2, خانتان: 2, خانتين: 2};
     value = value.replace(/[\p{Script=Arabic}]+/gu, word => String(words[word] ?? words[word.replace(/^و/, '')] ?? word));
   }
   value = value.replace(/\b(\d{1,2})h\b/g, '$1:00');

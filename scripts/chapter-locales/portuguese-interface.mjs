@@ -1,5 +1,7 @@
 // Shared Portuguese prose, avoiding literal English idioms and national forms
 // of address. These fields contain no question IDs or scoring information.
+import {editorialCambridgePortugueseIntro} from './editorial-cambridge.mjs';
+
 export function polishPortugueseInterface(slug, copy) {
   const summaries = {
     chef: 'Ponha à prova os seus conhecimentos de utensílios, ingredientes, técnicas e decisões na cozinha.',
@@ -27,6 +29,10 @@ export function polishPortugueseInterface(slug, copy) {
   if (['harvard', 'oxford', 'cambridge'].includes(slug)) {
     const name = {harvard: 'Harvard', oxford: 'Oxford', cambridge: 'Cambridge'}[slug];
     copy.about.body = `${copy.summary}\n\nUse as informações, regras e quantidades de cada pergunta. Não são necessários conhecimentos universitários especializados e a rapidez não altera a pontuação. Cada pausa mostra o resultado do tema que acabou de concluir. No final, veja a pontuação geral e consulte a revisão das respostas, se desejar.\n\nEste desafio independente é apenas para entretenimento. Não é um exame oficial de admissão em ${name}, não avalia o potencial para os estudos nem prevê a admissão nessa universidade.`;
+  }
+  if (slug === 'cambridge') {
+    copy.summary = editorialCambridgePortugueseIntro.summary;
+    copy.about.body = editorialCambridgePortugueseIntro.about;
   }
   if (slug === 'chef') copy.about.body = 'Explore utensílios, ingredientes, técnicas de cozinha, cálculos de receitas e decisões práticas. Cada tema apresenta um novo desafio.\n\nEscolha uma resposta e veja como correu o tema antes de continuar. No final, descubra a pontuação geral e consulte a revisão das respostas, se desejar.\n\nTodas as medidas indicam as unidades. As perguntas de segurança alimentar usam princípios gerais, sem depender das regras de um país. O resultado descreve apenas esta tentativa; não é uma avaliação prática de cozinha.';
   if (slug === 'iq') copy.about.body = 'Explore sequências numéricas, relações entre palavras, lógica, direções e atenção aos detalhes. Cada tema propõe uma forma diferente de raciocinar.\n\nCada pergunta apresenta as regras ou pistas necessárias. Use o tempo que precisar: a rapidez não altera a pontuação. Em cada pausa, veja como correu o tema. No final, descubra o resultado geral e consulte a revisão das respostas, se desejar.\n\nEste desafio é apenas para entretenimento. A pontuação não corresponde a um QI e não constitui uma avaliação clínica ou profissional das capacidades cognitivas.';
@@ -108,7 +114,7 @@ export function polishPortugueseInterface(slug, copy) {
       'vision-s4q6': 'Rode o quadrado 180°. Onde fica o ponto?',
       'vision-s4q7': 'Rode o anel 90° no sentido dos ponteiros do relógio. Onde fica a abertura?',
       'vision-s5q1': 'Que peça tem uma cor diferente?',
-      'vision-s5q2': 'Que peça cinzenta tem o tom mais claro?',
+      'vision-s5q2': 'Que peça em cinzento (cinza) tem o tom mais claro?',
       'vision-s5q3': 'Que peça azul tem o tom mais escuro?',
       'vision-s5q5': 'Que peça tem exatamente a cor do modelo?',
       'vision-s6q5': 'Que forma ocupava a terceira posição na imagem?',
@@ -123,7 +129,7 @@ export function polishPortugueseInterface(slug, copy) {
       'vision-s9q3': 'Que peça reproduz exatamente o padrão do modelo?',
       'vision-s10q2': 'Rode esta seta diagonal 90° no sentido dos ponteiros do relógio. Para onde aponta?',
       'vision-s10q3': 'Que símbolo ocupava a quarta posição na imagem?',
-      'vision-s10q5': 'Quantos quadrados cabem neste quadro retangular?',
+      'vision-s10q5': 'Quantos quadrados de todos os tamanhos consegue contar neste quadro retangular?',
       'vision-s10q6': 'Siga a linha de pontos a partir do ponto da esquerda. Onde termina?',
     };
     for (const stage of Object.values(copy.stages)) for (const [id, q] of Object.entries(stage.questions)) {

@@ -92,7 +92,7 @@ export default {
       ['Who recognises the risen Jesus by saying “My Lord and my God”?', 'Thomas', 'Judas Iscariot', 'Pilate', 'Herod', 'john/20'],
     ] },
     { title: 'Church Life', category: 'church_leadership', checkpoint: 'The roles connect', feedback: 'Church life: {profile}. Bring the wider picture together.', teaser: 'A mix of belief, worship and tradition awaits.', questions: [
-      ['What is a diocese ordinarily entrusted to a bishop called?', 'A local Church community', 'A single prayer service', 'A collection of hymns', 'A religious medal', 'code'],
+      ['What is a diocese, ordinarily entrusted to a bishop?', 'A local Church community', 'A single prayer service', 'A collection of hymns', 'A religious medal', 'code'],
       ['Who ordinarily leads a diocese?', 'A bishop', 'A sacristan', 'A choir director', 'A parish secretary', 'code'],
       ['What is a parish?', 'A stable local community within a diocese', 'A type of chalice', 'A set of Rosary beads', 'A season before Easter', 'parish'],
       ['Which ordained minister is normally entrusted with a parish’s pastoral care?', 'A priest', 'A reader', 'A choir director', 'A catechist without ordination', 'parish'],
@@ -103,7 +103,7 @@ export default {
     { title: 'Faith and Tradition', category: 'prayer_devotion', checkpoint: 'Your Catholic result is ready', questions: [
       ['Which theological virtue joins faith and hope?', 'Charity', 'Prudence', 'Fortitude', 'Temperance', 'faith'],
       ['Which term means a journey made for a religious purpose?', 'Pilgrimage', 'Ordination', 'Absolution', 'Confirmation', 'faith'],
-      ['Which event is remembered at the institution of the Eucharist?', 'The Last Supper', 'The flight into Egypt', 'The finding in the Temple', 'The Visitation', 'luke/22', 'worship_sacraments'],
+      ['Which event is associated with the institution of the Eucharist?', 'The Last Supper', 'The flight into Egypt', 'The finding in the Temple', 'The Visitation', 'luke/22', 'worship_sacraments'],
       ['Which pair of sacraments is described as the sacraments of healing?', 'Penance and Anointing of the Sick', 'Baptism and Matrimony', 'Confirmation and Holy Orders', 'Eucharist and Matrimony', 'sacraments', 'worship_sacraments'],
       ['In Catholic teaching, what does the Assumption concern?', 'Mary being taken into heavenly glory', 'Jesus being born in Bethlehem', 'Peter receiving the keys', 'Moses receiving the Law', 'rosary'],
       ['Which Gospel scene is linked to the first Joyful Mystery?', 'The Annunciation', 'The Crucifixion', 'The Ascension', 'The Transfiguration', 'rosary'],

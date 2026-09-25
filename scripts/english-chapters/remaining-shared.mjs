@@ -21,8 +21,8 @@ export function quiz(subject, rows, sources = {}, note = '') {
     rounds: rows.map(([title, category, questions, teaser], i) => ({
       title, category, questions,
       checkpoint: ['A strong start', 'The details matter', 'Connections made', 'A new perspective', 'Your knowledge in action', 'Another side revealed', 'The picture grows', 'Sharper connections', 'Ready for the final challenge', 'Your result is ready'][i],
-      feedback: `Your profile for ${title.toLowerCase()}: {profile}.`,
-      teaser: teaser ?? `Explore ${rows[i + 1]?.[0].toLowerCase() ?? 'your result'} next.`,
+      feedback: `${title}: {profile}.`,
+      teaser: teaser ?? `Up next: ${rows[i + 1]?.[0] ?? 'Your result'}.`,
     })),
   };
 }

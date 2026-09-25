@@ -108,6 +108,13 @@ test('localization checks respect native numbers and retain mathematical differe
   assert.deepEqual(answerNumbers('om 10.20 uur', 'nl'), answerNumbers('at 10:20'));
   assert.deepEqual(answerNumbers('ساعتان و 30 دقيقة', 'ar'), answerNumbers('2 hours 30 minutes'));
   assert.deepEqual(answerNumbers('الثالث والرابع', 'ar'), answerNumbers('3rd and 4th'));
+  assert.deepEqual(answerNumbers('خانتين إلى اليسار', 'ar'), answerNumbers('2 squares left'));
+  assert.deepEqual(answerNumbers('خانة إلى اليمين وخانة إلى الأعلى', 'ar'), answerNumbers('1 right and 1 up'));
+  assert.deepEqual(answerNumbers('خانة 4', 'ar'), answerNumbers('cell 4'));
+  assert.notDeepEqual(answerNumbers('خانة إلى اليسار', 'ar'), answerNumbers('2 squares left'));
+  assert.deepEqual(answerNumbers('نقطة واحدة', 'ar'), answerNumbers('1 dot'));
+  assert.deepEqual(answerNumbers('نقطتان', 'ar'), answerNumbers('2 dots'));
+  assert.notDeepEqual(answerNumbers('نقطتان', 'ar'), answerNumbers('3 dots'));
   assert.notDeepEqual(answerNumbers('12 L', 'fr'), answerNumbers('120 L'));
   assert.notEqual(normalizedAnswer('(3, 1)'), normalizedAnswer('(-3, 1)'));
 });

@@ -139,7 +139,7 @@ const vocabulary = [
  ['treinamentos', 'cursos de formação'], ['o treinamento', 'a formação'], ['do treinamento', 'da formação'],
  ['no treinamento', 'na formação'], ['seu treinamento', 'sua formação'], ['treinamento', 'formação'],
  ['monitoramento', 'acompanhamento'], ['escrutínio', 'análise cuidadosa'],
- ['questionário', 'teste'], ['questionários', 'testes'], ['cotidiano|quotidiano', 'dia a dia'],
+ ['cotidiano|quotidiano', 'dia a dia'],
  ['cotidianas', 'do dia a dia'], ['cotidian[oa]s?', 'do dia a dia'],
  ['checkpoints', 'pontos de pausa'], ['ponto de verificação', 'ponto de pausa'], ['pontos de verificação', 'pontos de pausa'],
  ['porcentagem', 'percentagem'], ['gerenciar', 'organizar'],

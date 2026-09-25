@@ -1,0 +1,30 @@
+// Doctor interface after question review. Columns: fr, de, it, nl, es, pt, ar.
+const phrases = {
+  "Most Adults Cannot Pass This Doctor's Entrance Exam": [null,'Die meisten Erwachsenen bestehen diesen Aufnahmetest für das Medizinstudium nicht',null,null,null,'A maioria dos adultos não passa neste exame de admissão em medicina',null],
+  'THE CLINICAL KNOWLEDGE TEST': [null,null,'IL TEST DI CONOSCENZE CLINICHE',null,'EL TEST DE CONOCIMIENTOS CLÍNICOS',null,null],
+  'Explore medical knowledge through clues, practical situations and fresh challenges.': [null,null,'Esplora le tue conoscenze mediche attraverso indizi, situazioni pratiche e nuove sfide.',null,'Explora tus conocimientos médicos con pistas, situaciones prácticas y nuevos retos.','Explore os seus conhecimentos médicos através de pistas, situações práticas e novos desafios.',null],
+  'For entertainment and general learning only. This is not a medical-school admission exam, professional qualification, diagnosis or medical advice. Seek qualified medical care for personal symptoms or emergencies.': [
+    'Uniquement pour se divertir et enrichir ses connaissances. Ce quiz n’est ni un examen d’admission en médecine, ni une qualification professionnelle, ni un diagnostic ou un avis médical. En cas de symptômes ou d’urgence, consultez un professionnel de santé qualifié.',
+    'Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dies ist kein echter Aufnahmetest für ein Medizinstudium und ersetzt weder eine Berufsqualifikation noch eine Diagnose oder medizinische Beratung. Wenden Sie sich bei Beschwerden oder Notfällen an qualifiziertes medizinisches Fachpersonal.',
+    'Solo per divertimento e cultura generale. Questo quiz non è un vero esame di ammissione a medicina, non conferisce una qualifica professionale e non fornisce diagnosi o consigli medici. In caso di sintomi o emergenze, rivolgiti a personale sanitario qualificato.',
+    'Alleen bedoeld voor je plezier en om iets te leren. Dit is geen echt toelatingsexamen voor geneeskunde, geen beroepskwalificatie en geen diagnose of medisch advies. Zoek bij klachten of noodsituaties hulp van een bevoegde zorgprofessional.',
+    'Solo para entretenimiento y aprendizaje general. Este test no es un examen real de admisión a medicina, no otorga una titulación profesional ni ofrece diagnósticos o asesoramiento médico. Si tienes síntomas o una emergencia, busca atención de profesionales sanitarios cualificados.',
+    'Apenas para entretenimento e aprendizagem geral. Este não é um verdadeiro exame de admissão em medicina, não confere uma qualificação profissional e não fornece diagnósticos ou aconselhamento médico. Em caso de sintomas ou emergências, procure ajuda de profissionais de saúde qualificados.',
+    'للترفيه والتعلم العام فقط. ليس هذا اختبار قبول حقيقيًا لدراسة الطب، ولا يمنح مؤهلًا مهنيًا، ولا يقدّم تشخيصًا أو نصيحة طبية. عند ظهور أعراض أو في حالات الطوارئ، اطلب الرعاية من مختصين طبيين مؤهلين.',
+  ],
+  'YOUR CLINICAL KNOWLEDGE SCORE': [null,'IHRE PUNKTZAHL IM MEDIZIN-QUIZ',null,'JE SCORE OP DE MEDISCHE KENNISTEST','TU PUNTUACIÓN EN CONOCIMIENTOS CLÍNICOS','A SUA PONTUAÇÃO EM CONHECIMENTOS CLÍNICOS','نتيجتك في اختبار المعرفة السريرية'],
+  'The Sharp Medical Mind': [null,null,null,null,null,null,'معرفة طبية جيدة'],
+  'Strongest medical area': ['Votre point fort en médecine','Ihr stärkstes medizinisches Themengebiet','L’argomento medico che conosci meglio','Je sterkste medische onderwerp','Tu punto fuerte en medicina',null,'أقوى موضوعاتك الطبية'],
+  'Trickiest medical area': ['Le thème médical le plus difficile','Ihr schwierigstes medizinisches Themengebiet','L’argomento medico più difficile per te','Je lastigste medische onderwerp','El tema médico que más te ha costado',null,'أصعب موضوع طبي بالنسبة لك'],
+  'Anatomy and physiology': [null,null,null,null,'Anatomía y fisiología',null,null],
+  'How the body works': [null,null,null,null,'Cómo funciona el cuerpo',null,null],
+  'HOW THE BODY WORKS': [null,null,null,null,'CÓMO FUNCIONA EL CUERPO',null,null],
+  'Up next: How the body works.': [null,null,null,null,'A continuación: cómo funciona el cuerpo. ¿Podrás conectar las pistas?',null,null],
+  'Medicines and effects': [null,null,null,null,'Medicamentos y efectos',null,null],
+  'MEDICINES AND EFFECTS': [null,null,null,null,'MEDICAMENTOS Y EFECTOS',null,null],
+  'Up next: Medicines and effects.': [null,null,null,null,'Ahora toca: medicamentos y efectos. ¿Qué sabrás reconocer?',null,null],
+  'Connecting the clues': [null,null,null,null,'Relacionar las pistas','Relacionar as pistas',null],
+  'CONNECTING THE CLUES': [null,null,null,null,'RELACIONAR LAS PISTAS','RELACIONAR AS PISTAS',null],
+  'Up next: Connecting the clues.': [null,null,null,null,'Ahora toca relacionar las pistas. ¿Qué sabrás reconocer?','Vamos relacionar as pistas. O que vai reconhecer?',null],
+};
+export const editorialDoctorFamily = {slugs: ['doctor'], phrases};

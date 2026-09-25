@@ -76,7 +76,7 @@ export default universityPack('cambridge', 'Follow patterns, compare measurement
     q('Predicted values are 12, 18 and 24; observations are 13, 17 and 24. What is the total absolute error?', '2', '0', '1', '3', '|13−12|+|17−18|+|24−24|=2.'),
     q('A model gives output = 2 × input + 3. Which input produces 19?', '8', '7', '9', '11', '(19−3)÷2=8.'),
     q('A sensor reads 3 units below the true value. It displays 14. What is the corrected value?', '17', '11', '14', '42', 'Add 3 to correct a reading that is 3 too low.'),
-    q('A line passes through (0, 2) and (2, 6) at a constant rate. What is its value at x = 3?', '8', '6', '9', '10', 'The slope is (6−2)÷2=2; y=2x+2 gives 8.'),
+    q('A straight line passes through (0, 2) and (2, 6). What is y when x = 3?', '8', '6', '9', '10', 'The slope is (6−2)÷2=2; y=2x+2 gives 8.'),
     q('A predicted total is 100 and the measured total is 90. The error as a percentage of the prediction is…', '10%', '9%', '11.1%', '90%', '|90−100|÷100×100=10%.'),
     q('Which is interpolation?', 'Estimating between two measured points', 'Predicting beyond all measured points', 'Deleting an unusual point', 'Changing a unit label only', 'Interpolation estimates within the observed range.'),
     q('A model matches past data exactly. What is the strongest next check?', 'Test its predictions on new data', 'Use a longer model name', 'Hide how it was built', 'Assume all future predictions are correct', 'New data test predictive performance beyond the fitting data.'),

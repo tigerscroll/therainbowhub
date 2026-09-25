@@ -12,7 +12,7 @@ test('Portuguese technical alternatives preserve meaning and grammatical context
   assert.equal(correct('anatomy', 'anatomy-s7q1'), 'Encéfalo e medula espinal');
   assert.equal(correct('anatomy', 'anatomy-s2q5'), 'Fémur (fêmur)');
   assert.match(correct('treatments', 'treatments-s6q2'), /músculos e articulações com as mãos/);
-  assert.match(questions('treatments')['treatments-s5q1'].question, /cancro \(câncer\)/);
+  assert.match(questions('treatments')['treatments-s5q1'].question, /tumores malignos/);
   assert.match(correct('treatments', 'treatments-s10q5'), /própria pessoa/);
   // A heart chamber is “câmara” in both countries; “câmera” means a camera.
   for (const slug of ['doctor', 'medical', 'nursing', 'paramedic', 'surgeon']) {
@@ -57,4 +57,6 @@ test('Portuguese editorial rules are repeatable and keep quiz structure intact',
   for (const term of ['Oxigénio (oxigênio)', 'Travões (freios)', 'Fumo (fumaça)', 'Génesis (Gênesis)']) {
     assert.equal(neutralPortugueseText(term), term);
   }
+  // A survey questionnaire is not an assessment of the respondent's ability.
+  assert.equal(neutralPortugueseText('60 pessoas responderam a um questionário.'), '60 pessoas responderam a um questionário.');
 });

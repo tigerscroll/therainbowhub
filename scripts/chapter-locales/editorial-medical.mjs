@@ -1,0 +1,31 @@
+// Medical-science interface. Columns: fr, de, it, nl, es, pt, ar.
+const phrases = {
+  'Most Adults Cannot Pass This Medical Entrance Exam': ['La plupart des adultes ne réussissent pas cet examen d’admission en médecine','Die meisten Erwachsenen bestehen diesen Aufnahmetest für das Medizinstudium nicht','La maggior parte degli adulti non supera questo esame di ammissione a medicina','De meeste volwassenen slagen niet voor dit toelatingsexamen voor geneeskunde','La mayoría de los adultos no supera este examen de ingreso en medicina',null,null],
+  'THE MEDICAL SCIENCE TEST': [null,'DER TEST ZU MEDIZINISCHEN GRUNDLAGEN','IL TEST DI SCIENZE MEDICHE','DE MEDISCH-WETENSCHAPPELIJKE KENNISTEST','EL TEST DE CIENCIAS MÉDICAS','TESTE DE CIÊNCIAS MÉDICAS',null],
+  'For entertainment and general learning only. This is not a medical-school admission exam, professional qualification, diagnosis or medical advice.': [
+    'Uniquement pour se divertir et enrichir ses connaissances. Ce quiz n’est ni un examen d’admission en médecine, ni une qualification professionnelle, ni un diagnostic ou un avis médical.',
+    'Nur zur Unterhaltung und allgemeinen Wissensvermittlung. Dies ist kein echter Aufnahmetest für ein Medizinstudium und ersetzt weder eine Berufsqualifikation noch eine Diagnose oder medizinische Beratung.',
+    'Solo per divertimento e cultura generale. Questo quiz non è un vero esame di ammissione a medicina, non conferisce una qualifica professionale e non fornisce diagnosi o consigli medici.',
+    'Alleen bedoeld voor je plezier en om iets te leren. Dit is geen echt toelatingsexamen voor geneeskunde, geen beroepskwalificatie en geen diagnose of medisch advies.',
+    'Solo para entretenimiento y aprendizaje general. Este test no es un examen real de admisión a medicina, no otorga una titulación profesional ni ofrece diagnósticos o asesoramiento médico.',
+    'Apenas para entretenimento e aprendizagem geral. Este não é um verdadeiro exame de admissão em medicina, não confere uma qualificação profissional e não fornece diagnósticos ou aconselhamento médico.',
+    'للترفيه والتعلم العام فقط. ليس هذا اختبار قبول حقيقيًا لدراسة الطب، ولا يمنح مؤهلًا مهنيًا، ولا يقدّم تشخيصًا أو نصيحة طبية.',
+  ],
+  'YOUR MEDICAL SCIENCE SCORE': [null,'IHRE PUNKTZAHL IN MEDIZINISCHEN GRUNDLAGEN',null,'JE SCORE VOOR MEDISCHE WETENSCHAP','TU PUNTUACIÓN EN CIENCIAS MÉDICAS','A SUA PONTUAÇÃO EM CIÊNCIAS MÉDICAS','نتيجتك في العلوم الطبية'],
+  'The Sharp Science Mind': ['Un bon raisonnement scientifique','Gutes naturwissenschaftliches Verständnis','Buon ragionamento scientifico','Goed wetenschappelijk inzicht','Buen razonamiento científico','Bom raciocínio científico','فهم علمي جيد'],
+  'Pharmacology': [null,null,null,null,null,null,'علم الأدوية'],
+  'Strongest science area': ['Votre point fort en sciences','Ihr stärkstes naturwissenschaftliches Thema','L’argomento scientifico che conosci meglio','Je sterkste wetenschappelijke onderwerp','Tu punto fuerte en ciencias',null,'أقوى موضوعاتك العلمية'],
+  'Trickiest science area': ['Le thème scientifique le plus difficile','Ihr schwierigstes naturwissenschaftliches Thema','L’argomento scientifico più difficile per te','Je lastigste wetenschappelijke onderwerp','El tema científico que más te ha costado',null,'أصعب موضوع علمي بالنسبة لك'],
+  'Cells and microbes': [null,null,null,null,'Células y microbios',null,null],
+  'Tissues and structures': [null,null,null,null,null,null,'الأنسجة والتراكيب'],
+  'TISSUES AND STRUCTURES': [null,null,null,null,null,null,'الأنسجة والتراكيب'],
+  'Up next: Tissues and structures.': [null,null,null,null,null,null,'تحدٍّ جديد: الأنسجة والتراكيب. التفاصيل تصنع الفرق.'],
+  'Medicines and effects': [null,null,null,null,'Medicamentos y efectos',null,null],
+  'MEDICINES AND EFFECTS': [null,null,null,null,'MEDICAMENTOS Y EFECTOS',null,null],
+  'Up next: Medicines and effects.': [null,null,null,null,'Nuevo reto: medicamentos y efectos. Los detalles marcarán la diferencia.',null,null],
+  'Microbes and infection': [null,null,null,null,'Microbios e infecciones',null,null],
+  'MICROBES AND INFECTION': [null,null,null,null,'MICROBIOS E INFECCIONES',null,null],
+  'Up next: Microbes and infection.': [null,null,null,null,'A continuación: microbios e infecciones. ¿Podrás conectar las pistas?',null,null],
+  'Scientific reasoning': [null,null,null,null,'Razonamiento científico',null,null],
+};
+export const editorialMedicalFamily = {slugs: ['medical'], phrases};
